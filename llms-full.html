@@ -11086,7 +11086,7 @@ export default class Example {
 &lt;!-- 44 = option height --&gt;
 &lt;!-- 4 = margin between options --&gt;
 &lt;!-- 8 = data list padding --&gt; @let items = countries | tuiFilterByInput; &lt;cdk-virtual-scroll-viewport tuiScrollable class=&quot;scroll&quot; [itemSize]=&quot;44&quot; [maxBufferPx]=&quot;44 * 10&quot; [minBufferPx]=&quot;44 * 5&quot; [style.height.px]=&quot;(items?.length || 1) * (44 + 4) + 8&quot; &gt;
-&lt;tui-data-list&gt;
+&lt;tui-data-list withVirtualScroll&gt;
 &lt;button *cdkVirtualFor=&quot;let item of items&quot; tuiOption type=&quot;button&quot; [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt;
 &lt;/tui-data-list&gt;
 &lt;/cdk-virtual-scroll-viewport&gt;
@@ -11103,6 +11103,8 @@ import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from &#039;@taiga-ui/core&#039;;
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from &#039;@taiga-ui/kit&#039;;
 
+import {WithVirtualScroll} from &#039;./with-virtual-scroll&#039;;
+
 @Component({
     imports: [
         FormsModule,
@@ -11112,6 +11114,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from &#039;@taiga-ui/kit&#039;;
         TuiDataList,
         TuiFilterByInputPipe,
         TuiScrollable,
+        WithVirtualScroll,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -11822,11 +11825,17 @@ export default class PageComponent extends Array {
         &#039;Override option component&#039;,
     ];
 
-    protected readonly [4] = {
+    protected readonly [5] = {
         &#039;database.ts&#039;: import(&#039;./examples/5/database.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
 
-    protected readonly [11] = {
+    protected readonly [10] = {
+        &#039;with-virtual-scroll.ts&#039;: import(&#039;./examples/10/with-virtual-scroll.ts?raw&#039;, {
+            with: {loader: &#039;text&#039;},
+        }),
+    };
+
+    protected readonly [12] = {
         &#039;option.ts&#039;: import(&#039;./examples/12/option.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
 
@@ -24977,6 +24986,7 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {maskitoParseTime} from &#039;@maskito/kit&#039;;
 import {TuiTime} from &#039;@taiga-ui/cdk&#039;;
 import {TuiInputTime, tuiInputTimeOptionsProvider} from &#039;@taiga-ui/kit&#039;;
 
@@ -24989,7 +24999,11 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from &#039;@taiga-ui/kit&#039
         tuiInputTimeOptionsProvider({
             valueTransformer: {
                 fromControlValue(controlValue: string): TuiTime | null {
-                    return controlValue ? TuiTime.fromString(controlValue) : null;
+                    return controlValue
+                        ? TuiTime.fromAbsoluteMilliseconds(
+                              maskitoParseTime(controlValue, {mode: &#039;HH:MM&#039;}),
+                          )
+                        : null;
                 },
                 toControlValue(time: TuiTime | null): string {
                     return time ? time.toString() : &#039;&#039;;
@@ -25106,6 +25120,8 @@ export default class PageComponent {
         &#039;HH:MM:SS.MSS&#039;,
         &#039;HH:MM:SS.MSS AA&#039;,
         &#039;MM:SS&#039;,
+        &#039;MM:SS.MSS&#039;,
+        &#039;SS.MSS&#039;,
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected readonly acceptVariants = [
@@ -31723,9 +31739,14 @@ Pins are used to show a location on a 2D plane. Use color , background , border 
 &lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;/div&gt;
 &lt;div tuiPin class=&quot;white&quot; &gt;
+&lt;span tuiPin&gt;
 &lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
+&lt;/span&gt;
 &lt;/div&gt;
-&lt;div tuiPin class=&quot;white&quot; &gt; 4.5 &lt;/div&gt;
+&lt;div tuiPin class=&quot;white&quot; &gt;
+&lt;span tuiPin&gt;4.5&lt;/span&gt;
+&lt;tui-icon iconStart=&quot;@tui.heart&quot; tuiBadge /&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -31733,10 +31754,10 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiIcon} from &#039;@taiga-ui/core&#039;;
-import {TuiPin} from &#039;@taiga-ui/kit&#039;;
+import {TuiBadge, TuiPin} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -31756,9 +31777,7 @@ export default class Example {}
 }
 
 .white {
-    background: var(--tui-background-base);
     color: var(--tui-background-accent-2);
-    border-width: 0.125rem;
 }
 ```
 
@@ -31826,9 +31845,12 @@ export default class Example {}
 &lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
 &lt;/button&gt;
 &lt;button title=&quot;dollar&quot; type=&quot;button&quot; class=&quot;link&quot; [style.inset-inline-start.rem]=&quot;10&quot; [tuiPin]=&quot;c&quot; (click)=&quot;c = !c&quot; &gt;
+&lt;span tuiPin&gt;
 &lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
+&lt;/span&gt;
+&lt;tui-icon iconStart=&quot;@tui.heart&quot; tuiBadge /&gt;
 &lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;crazy&quot; [style.inset-inline-start.rem]=&quot;15&quot; [tuiPin]=&quot;d&quot; (click)=&quot;d = !d&quot; &gt; 4.5 &lt;/button&gt;
+&lt;button type=&quot;button&quot; [style.inset-inline-start.rem]=&quot;15&quot; [tuiPin]=&quot;d&quot; (click)=&quot;d = !d&quot; &gt; 4.5 &lt;/button&gt;
 ```
 **TypeScript:**
 ```ts
@@ -31836,10 +31858,10 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiIcon} from &#039;@taiga-ui/core&#039;;
-import {TuiPin} from &#039;@taiga-ui/kit&#039;;
+import {TuiBadge, TuiPin} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -31863,22 +31885,80 @@ export default class Example {
     box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
 }
 
-[tuiPin] {
+button[tuiPin] {
     position: absolute;
     inset-block-start: 4rem;
 }
 
 .link {
-    border: 0.125rem solid var(--tui-text-action);
     color: var(--tui-text-action);
-    background: var(--tui-background-base);
+    background: var(--tui-background-elevation-1);
+}
+```
+
+#### Label
+
+**Template:**
+```html
+&lt;button type=&quot;button&quot; [tuiPin]=&quot;a&quot; (click)=&quot;a = !a&quot; &gt;
+&lt;img alt=&quot;avatar&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt;
+&lt;span tuiTitle&gt;Title&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; [tuiPin]=&quot;b&quot; (click)=&quot;b = !b&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
+&lt;span tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
+&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;link&quot; [tuiPin]=&quot;c&quot; (click)=&quot;c = !c&quot; &gt;
+&lt;span tuiPin&gt;
+&lt;tui-icon icon=&quot;@tui.dollar-sign&quot; /&gt;
+&lt;/span&gt;
+&lt;span tuiFade tuiTitle &gt; Very very long title that gets cut &lt;/span&gt;
+&lt;tui-icon iconStart=&quot;@tui.heart&quot; tuiBadge /&gt;
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;link&quot; [tuiPin]=&quot;d&quot; (click)=&quot;d = !d&quot; &gt;
+&lt;span tuiPin&gt;4.5&lt;/span&gt;
+&lt;span tuiTitle&gt; Title &lt;span tuiSubtitle&gt;
+&lt;tui-icon icon=&quot;@tui.heart&quot; /&gt; Subtitle with an icon &lt;/span&gt;
+&lt;/span&gt;
+&lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiBadge, TuiFade, TuiPin} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiBadge, TuiFade, TuiIcon, TuiPin, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected a = true;
+    protected b = false;
+    protected c = false;
+    protected d = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 2rem;
+    place-items: start;
+    padding: 3rem 6rem 0;
+    background-color: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
 }
 
-.crazy {
-    background: #ff9bda;
-    color: #0075ff;
-    border-color: #7b439e;
-    box-shadow: 0 0 0 0.125rem #b286ff;
+.link {
+    color: var(--tui-text-action);
 }
 ```
 
@@ -31896,7 +31976,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Default&#039;, &#039;Dot&#039;, &#039;Openable&#039;];
+    protected readonly examples = [&#039;Default&#039;, &#039;Dot&#039;, &#039;Openable&#039;, &#039;Label&#039;];
 }
 ```
 
