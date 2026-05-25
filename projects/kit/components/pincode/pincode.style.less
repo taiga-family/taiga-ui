@@ -219,8 +219,8 @@ input[tuiPincode] {
     &[data-mode='success']:not([type='password']) + .t-content .t-item_filled .t-value,
     &[data-mode='success'][type='password'] + .t-content .t-item_filled .t-dot_value {
         animation:
-            tuiPincodeWave var(--t-animation-cycle, 1000ms) linear infinite,
-            tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear infinite;
+            tuiPincodeWave var(--t-animation-cycle, 1000ms) linear 1,
+            tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear 1;
         animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
     }
 
