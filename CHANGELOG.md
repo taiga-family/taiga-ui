@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.84.0](https://github.com/taiga-family/taiga-ui/compare/v4.83.0...v4.84.0) (2026-05-25)
+
+### 🐞 Bug Fixes
+
+- **core:** `Textfield` fix `DataList` with `HideSelected` pipe
+  ([#14141](https://github.com/taiga-family/taiga-ui/issues/14141))
+  ([3304134](https://github.com/taiga-family/taiga-ui/commit/3304134314e5a89d2c156a2e99fd23a472cb58bb))
+- **kit:** apply overscroll-behavior only when there is an extra element inside the t-ghost
+  ([#14143](https://github.com/taiga-family/taiga-ui/issues/14143))
+  ([1ff2c2b](https://github.com/taiga-family/taiga-ui/commit/1ff2c2b1f61b9febc27eb2c38be479f418c6e4b4))
+
 ## [4.83.0](https://github.com/taiga-family/taiga-ui/compare/v4.82.0...v4.83.0) (2026-05-18)
 
 ### 🐞 Bug Fixes
