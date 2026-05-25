@@ -1,0 +1,19 @@
+import"./chunk-HU6DUUP4.js";var o=`:host {
+    position: relative;
+    display: block;
+    block-size: 5rem;
+    border-inline-start: 2rem solid transparent;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
+}
+
+button[tuiPin] {
+    position: absolute;
+    inset-block-start: 4rem;
+}
+
+.link {
+    color: var(--tui-text-action);
+    background: var(--tui-background-elevation-1);
+}
+`;export{o as default};

@@ -31730,9 +31730,14 @@ Pins are used to show a location on a 2D plane. Use color , background , border 
 <tui-icon icon="@tui.dollar-sign" />
 </div>
 <div tuiPin class="white" >
+<span tuiPin>
 <tui-icon icon="@tui.dollar-sign" />
+</span>
 </div>
-<div tuiPin class="white" > 4.5 </div>
+<div tuiPin class="white" >
+<span tuiPin>4.5</span>
+<tui-icon iconStart="@tui.heart" tuiBadge />
+</div>
 ```
 **TypeScript:**
 ```ts
@@ -31740,10 +31745,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiPin} from '@taiga-ui/kit';
+import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -31763,9 +31768,7 @@ export default class Example {}
 }
 
 .white {
-    background: var(--tui-background-base);
     color: var(--tui-background-accent-2);
-    border-width: 0.125rem;
 }
 ```
 
@@ -31833,9 +31836,12 @@ export default class Example {}
 <tui-icon icon="@tui.dollar-sign" />
 </button>
 <button title="dollar" type="button" class="link" [style.inset-inline-start.rem]="10" [tuiPin]="c" (click)="c = !c" >
+<span tuiPin>
 <tui-icon icon="@tui.dollar-sign" />
+</span>
+<tui-icon iconStart="@tui.heart" tuiBadge />
 </button>
-<button type="button" class="crazy" [style.inset-inline-start.rem]="15" [tuiPin]="d" (click)="d = !d" > 4.5 </button>
+<button type="button" [style.inset-inline-start.rem]="15" [tuiPin]="d" (click)="d = !d" > 4.5 </button>
 ```
 **TypeScript:**
 ```ts
@@ -31843,10 +31849,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiPin} from '@taiga-ui/kit';
+import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -31870,22 +31876,80 @@ export default class Example {
     box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
 }
 
-[tuiPin] {
+button[tuiPin] {
     position: absolute;
     inset-block-start: 4rem;
 }
 
 .link {
-    border: 0.125rem solid var(--tui-text-action);
     color: var(--tui-text-action);
-    background: var(--tui-background-base);
+    background: var(--tui-background-elevation-1);
+}
+```
+
+#### Label
+
+**Template:**
+```html
+<button type="button" [tuiPin]="a" (click)="a = !a" >
+<img alt="avatar" src="assets/images/avatar.jpg" />
+<span tuiTitle>Title</span>
+</button>
+<button type="button" [tuiPin]="b" (click)="b = !b" >
+<tui-icon icon="@tui.dollar-sign" />
+<span tuiTitle> Title <span tuiSubtitle>Subtitle</span>
+</span>
+</button>
+<button type="button" class="link" [tuiPin]="c" (click)="c = !c" >
+<span tuiPin>
+<tui-icon icon="@tui.dollar-sign" />
+</span>
+<span tuiFade tuiTitle > Very very long title that gets cut </span>
+<tui-icon iconStart="@tui.heart" tuiBadge />
+</button>
+<button type="button" class="link" [tuiPin]="d" (click)="d = !d" >
+<span tuiPin>4.5</span>
+<span tuiTitle> Title <span tuiSubtitle>
+<tui-icon icon="@tui.heart" /> Subtitle with an icon </span>
+</span>
+</button>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiFade, TuiPin} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiBadge, TuiFade, TuiIcon, TuiPin, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected a = true;
+    protected b = false;
+    protected c = false;
+    protected d = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 2rem;
+    place-items: start;
+    padding: 3rem 6rem 0;
+    background-color: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 2rem var(--tui-background-base-alt);
 }
 
-.crazy {
-    background: #ff9bda;
-    color: #0075ff;
-    border-color: #7b439e;
-    box-shadow: 0 0 0 0.125rem #b286ff;
+.link {
+    color: var(--tui-text-action);
 }
 ```
 
@@ -31903,7 +31967,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Default', 'Dot', 'Openable'];
+    protected readonly examples = ['Default', 'Dot', 'Openable', 'Label'];
 }
 ```
 
