@@ -1,12 +1,10 @@
-:host > .t-check,
-:host > .t-dummy {
+:host > .t-check {
     order: 100;
     margin-inline-start: auto;
     pointer-events: none;
 }
 
-:host[data-size='m'] > .t-check,
-:host[data-size='m'] > .t-dummy {
+:host[data-size='m'] > .t-check {
     margin-inline-end: 0.25rem;
 }
 
@@ -16,12 +14,4 @@
 
 .t-check::before {
     font-size: var(--t-size);
-}
-
-.t-dummy {
-    inline-size: 1rem;
-
-    :host[data-size='l'] & {
-        inline-size: 1.5rem;
-    }
 }
