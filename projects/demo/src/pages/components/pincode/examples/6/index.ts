@@ -69,10 +69,7 @@ export default class Example {
     };
 
     protected onKey(key: string): void {
-        if (
-            this.verification.value() !== null &&
-            this.verification.value() !== undefined
-        ) {
+        if (this.verification.value() != null) {
             return;
         }
 
