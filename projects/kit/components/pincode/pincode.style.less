@@ -166,11 +166,13 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']) + .t-content
+        &:not([type='password'])
+        + .t-content
         .t-item_focus:not(.t-item_filled)
         .t-dot_placeholder,
     [data-platform]:not([data-platform='web'])
-        &[type='password'] + .t-content
+        &[type='password']
+        + .t-content
         .t-item_focus:not(.t-item_filled)
         .t-dot_value {
         scale: 1;
@@ -202,18 +204,21 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
+        &:not([type='password']):not([data-paste]):not([data-mode])
+        + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
+        &[type='password']:not([data-paste]):not([data-mode])
+        + .t-content
         .t-item_filled
         .t-dot_value {
         animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode]) + .t-content
+        &[type='password']:not([data-mode])
+        + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
@@ -254,11 +259,13 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste]):not([type='password']) + .t-content
+        &[data-mode='pending']:not([data-paste]):not([type='password'])
+        + .t-content
         .t-item_filled:last-of-type
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste])[type='password'] + .t-content
+        &[data-mode='pending']:not([data-paste])[type='password']
+        + .t-content
         .t-item_filled:last-of-type
         .t-dot_value {
         animation:
