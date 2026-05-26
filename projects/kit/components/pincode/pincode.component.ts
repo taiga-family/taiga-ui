@@ -21,9 +21,6 @@ import {TuiPincodeContent} from './pincode-content.component';
 const BOUNCE_MS = 400;
 const STAGGER_MS = 100;
 const TAIL_MS = 300;
-const INITIAL_DELAY_MS = 500;
-const COLLAPSE_MS = 1000;
-const INVALID_MS = 1300;
 
 @Directive({
     selector: 'input[tuiPincode]',
@@ -42,6 +39,9 @@ const INVALID_MS = 1300;
     },
 })
 export class TuiPincodeComponent {
+    private waveCount = 0;
+    private collapseCount = 0;
+    private invalidCount = 0;
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
     public readonly paste = signal(false);
@@ -74,21 +74,45 @@ export class TuiPincodeComponent {
             }
         });
 
-        effect((onCleanup) => {
-            const validity = this.valid();
-
-            if (validity === null) {
-                return;
-            }
-
-            const abort = new AbortController();
-
-            onCleanup(() => abort.abort());
-
-            void (validity
-                ? this.runSuccess(abort.signal)
-                : this.runInvalid(abort.signal));
+        effect(() => {
+            this.valid();
+            this.waveCount = 0;
+            this.collapseCount = 0;
+            this.invalidCount = 0;
         });
+    }
+
+    public onAnimationEnd(event: AnimationEvent): void {
+        const validity = this.valid();
+
+        if (validity === null) {
+            return;
+        }
+
+        const filled = Math.min(this.value().length, this.el.maxLength);
+        const target = event.target as HTMLElement | null;
+
+        if (
+            validity &&
+            event.animationName === 'tuiPincodeWavePos' &&
+            ++this.waveCount === filled
+        ) {
+            this.animated.emit();
+        } else if (
+            validity &&
+            event.animationName === 'tuiPincodeDotCollapseScale' &&
+            ++this.collapseCount === filled
+        ) {
+            this.finished.emit();
+        } else if (
+            !validity &&
+            event.animationName === 'tuiScale' &&
+            target?.classList.contains('t-dot_placeholder') &&
+            ++this.invalidCount === filled
+        ) {
+            this.clearValue();
+            this.finished.emit();
+        }
     }
 
     public getStyle(index: number): Record<string, string> {
@@ -140,48 +164,8 @@ export class TuiPincodeComponent {
         }
     }
 
-    private async runSuccess(signal: AbortSignal): Promise<void> {
-        const waveMs =
-            INITIAL_DELAY_MS + (this.el.maxLength - 1) * STAGGER_MS + BOUNCE_MS;
-
-        await this.delay(waveMs, signal);
-
-        if (signal.aborted) {
-            return;
-        }
-
-        this.animated.emit();
-
-        await this.delay(COLLAPSE_MS, signal);
-
-        if (signal.aborted) {
-            return;
-        }
-
-        this.finished.emit();
-    }
-
-    private async runInvalid(signal: AbortSignal): Promise<void> {
-        await this.delay(INVALID_MS, signal);
-
-        if (signal.aborted) {
-            return;
-        }
-
-        this.clearValue();
-        this.finished.emit();
-    }
-
     private clearValue(): void {
         this.el.value = '';
         this.el.dispatchEvent(new Event('input'));
-    }
-
-    private async delay(ms: number, signal: AbortSignal): Promise<void> {
-        return new Promise<void>((resolve) => {
-            const id = setTimeout(resolve, ms);
-
-            signal.addEventListener('abort', () => clearTimeout(id), {once: true});
-        });
     }
 }
