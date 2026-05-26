@@ -37,6 +37,7 @@ const INVALID_MS = 1300;
         '[attr.data-mode]': 'mode()',
         '[attr.data-paste]': 'paste() ? "" : null',
         '(input)': 'onInput()',
+        '(beforeinput)': 'onBeforeInput($event)',
         '(selectionchange)': 'onSelection()',
     },
 })
@@ -107,6 +108,12 @@ export class TuiPincodeComponent {
             this.focused() &&
             index === Math.min(this.value().length, this.el.maxLength - 1)
         );
+    }
+
+    protected onBeforeInput(event: Event): void {
+        if (this.value().length >= this.el.maxLength) {
+            event.preventDefault();
+        }
     }
 
     protected onInput(): void {
