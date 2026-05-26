@@ -37,6 +37,7 @@ const INVALID_MS = 1300;
         maxlength: '4',
         spellcheck: 'false',
         '[attr.data-mode]': 'mode()',
+        '[attr.data-paste]': 'paste() ? "" : null',
         '(input)': 'onInput()',
         '(selectionchange)': 'onSelection()',
     },
@@ -44,6 +45,7 @@ const INVALID_MS = 1300;
 export class TuiPincodeComponent {
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
+    public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
     public readonly valid = input<boolean | null>(null);
@@ -111,7 +113,17 @@ export class TuiPincodeComponent {
     }
 
     protected onInput(): void {
-        this.value.set(this.el.value);
+        const oldLength = this.value().length;
+        const newValue = this.el.value;
+        const {maxLength} = this.el;
+
+        if (oldLength === 0 && newValue.length === maxLength) {
+            this.paste.set(true);
+        } else if (newValue.length === 0) {
+            this.paste.set(false);
+        }
+
+        this.value.set(newValue);
     }
 
     protected onSelection(): void {
