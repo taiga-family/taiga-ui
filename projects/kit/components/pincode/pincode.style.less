@@ -240,6 +240,18 @@ input[tuiPincode] {
         animation-delay: 0ms, calc(500ms + var(--t-animation-delay, 0ms)), calc(500ms + var(--t-animation-delay, 0ms));
     }
 
+    &[data-paste][data-mode='pending']:not([type='password']) + .t-content .t-item_filled .t-value,
+    &[data-paste][data-mode='pending'][type='password'] + .t-content .t-item_filled .t-dot_value {
+        scale: 0;
+        animation:
+            tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard) forwards,
+            @pending-wave-anim;
+        animation-delay:
+            var(--t-animation-delay, 0ms), calc(500ms + var(--t-animation-delay, 0ms)),
+            calc(500ms + var(--t-animation-delay, 0ms));
+        transition: none;
+    }
+
     tui-root:not(._mobile)
         &[data-mode='pending']:not([type='password']) + .t-content
         .t-item_filled:last-of-type
@@ -248,6 +260,20 @@ input[tuiPincode] {
         &[data-mode='pending'][type='password'] + .t-content
         .t-item_filled:last-of-type
         .t-dot_value {
+        animation: @pending-wave-anim;
+        animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
+        transition: none;
+    }
+
+    tui-root:not(._mobile)
+        &[data-paste][data-mode='pending']:not([type='password']) + .t-content
+        .t-item_filled
+        .t-value,
+    tui-root:not(._mobile)
+        &[data-paste][data-mode='pending'][type='password'] + .t-content
+        .t-item_filled
+        .t-dot_value {
+        scale: 1;
         animation: @pending-wave-anim;
         animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
         transition: none;
