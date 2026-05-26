@@ -1,7 +1,7 @@
 <button
     tuiButton
     type="button"
-    (click)="open = true"
+    (click)="open.set(true)"
 >
     Open dialog
 </button>
@@ -31,8 +31,9 @@
                 <input
                     tuiAutoFocus
                     tuiPincode
-                    [mode]="mode()"
+                    [valid]="verification.value() ?? null"
                     [(ngModel)]="pin"
+                    (animated)="onAnimated()"
                 />
             </tui-textfield>
         </div>

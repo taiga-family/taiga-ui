@@ -1,4 +1,12 @@
-import {afterRender, Directive, input, signal} from '@angular/core';
+import {
+    afterRender,
+    computed,
+    Directive,
+    effect,
+    input,
+    output,
+    signal,
+} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -10,10 +18,14 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TuiPincodeContent} from './pincode-content.component';
 
-export type TuiPincodeMode = 'invalid' | 'submitting' | 'success';
-
 // item width (1.25rem) + gap (0.625rem)
 const PITCH = 1.875;
+const BOUNCE_MS = 400;
+const STAGGER_MS = 100;
+const TAIL_MS = 300;
+const INITIAL_DELAY_MS = 500;
+const COLLAPSE_MS = 1000;
+const INVALID_MS = 1300;
 
 @Directive({
     selector: 'input[tuiPincode]',
@@ -24,8 +36,8 @@ const PITCH = 1.875;
         inputmode: 'numeric',
         maxlength: '4',
         spellcheck: 'false',
-        '[attr.data-mode]': 'effectiveMode',
-        '(input)': 'value.set(el.value)',
+        '[attr.data-mode]': 'mode()',
+        '(input)': 'onInput()',
         '(selectionchange)': 'onSelection()',
     },
 })
@@ -34,7 +46,25 @@ export class TuiPincodeComponent {
     public readonly value = signal('');
     public readonly focused = tuiFocusedIn(this.el);
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
-    public readonly mode = input<TuiPincodeMode | null>(null);
+    public readonly valid = input<boolean | null>(null);
+    public readonly animated = output();
+    public readonly finished = output();
+
+    public readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
+        const validity = this.valid();
+
+        if (validity === true) {
+            return 'success';
+        }
+
+        if (validity === false) {
+            return 'invalid';
+        }
+
+        const {maxLength} = this.el;
+
+        return maxLength > 0 && this.value().length === maxLength ? 'pending' : null;
+    });
 
     constructor() {
         afterRender(() => {
@@ -42,28 +72,31 @@ export class TuiPincodeComponent {
                 this.value.set(this.el.value);
             }
         });
-    }
 
-    public get effectiveMode(): TuiPincodeMode | 'pending' | null {
-        const mode = this.mode();
+        effect((onCleanup) => {
+            const validity = this.valid();
 
-        if (mode !== null) {
-            return mode;
-        }
+            if (validity === null) {
+                return;
+            }
 
-        const {maxLength} = this.el;
+            const abort = new AbortController();
 
-        return maxLength > 0 && this.value().length === maxLength ? 'pending' : null;
+            onCleanup(() => abort.abort());
+
+            void (validity
+                ? this.runSuccess(abort.signal)
+                : this.runInvalid(abort.signal));
+        });
     }
 
     public getStyle(index: number): Record<string, string> {
         const n = this.el.maxLength;
         const offset = index - (n - 1) / 2;
-        // spec: 400ms anim + (n-1)*100ms stagger + 300ms pause
-        const cycle = 400 + (n - 1) * 100 + 300;
+        const cycle = BOUNCE_MS + (n - 1) * STAGGER_MS + TAIL_MS;
 
         return {
-            '--t-animation-delay': `${index * 100}ms`,
+            '--t-animation-delay': `${index * STAGGER_MS}ms`,
             '--t-animation-cycle': `${cycle}ms`,
             '--t-spread-tx': `${offset * (PITCH / 3)}rem`,
             '--t-collapse-tx': `${-offset * PITCH}rem`,
@@ -77,6 +110,10 @@ export class TuiPincodeComponent {
         );
     }
 
+    protected onInput(): void {
+        this.value.set(this.el.value);
+    }
+
     protected onSelection(): void {
         const {maxLength} = this.el;
         const end = this.el.value.length;
@@ -85,5 +122,50 @@ export class TuiPincodeComponent {
         if (this.el.selectionStart !== start || this.el.selectionEnd !== end) {
             this.el.setSelectionRange(start, end);
         }
+    }
+
+    private async runSuccess(signal: AbortSignal): Promise<void> {
+        const waveMs =
+            INITIAL_DELAY_MS + (this.el.maxLength - 1) * STAGGER_MS + BOUNCE_MS;
+
+        await this.delay(waveMs, signal);
+
+        if (signal.aborted) {
+            return;
+        }
+
+        this.animated.emit();
+
+        await this.delay(COLLAPSE_MS, signal);
+
+        if (signal.aborted) {
+            return;
+        }
+
+        this.finished.emit();
+    }
+
+    private async runInvalid(signal: AbortSignal): Promise<void> {
+        await this.delay(INVALID_MS, signal);
+
+        if (signal.aborted) {
+            return;
+        }
+
+        this.clearValue();
+        this.finished.emit();
+    }
+
+    private clearValue(): void {
+        this.el.value = '';
+        this.el.dispatchEvent(new Event('input'));
+    }
+
+    private async delay(ms: number, signal: AbortSignal): Promise<void> {
+        return new Promise<void>((resolve) => {
+            const id = setTimeout(resolve, ms);
+
+            signal.addEventListener('abort', () => clearTimeout(id), {once: true});
+        });
     }
 }

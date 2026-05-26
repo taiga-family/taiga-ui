@@ -30,9 +30,9 @@
                     }
                     @case (3) {
                         <strong>Long loading</strong>
-                        — response over 700ms, auto-bounce while waiting then submitting transition with loader. Enter
+                        — response over 700ms, auto-bounce while waiting. Enter
                         <code>1234</code>
-                        for success (submitting), any other code for error
+                        for success, any other code for error
                     }
                     @case (4) {
                         <strong>Desktop dialog</strong>
@@ -61,8 +61,8 @@
                     tuiPincode
                     [formControl]="control"
                     [maxlength]="length"
-                    [mode]="mode()"
                     [type]="type()"
+                    [valid]="valid()"
                 />
             </tui-textfield>
         </tui-doc-demo>
@@ -80,20 +80,19 @@
                 to mask entered digits as filled dots
             </tr>
             <tr
-                name="[mode]"
+                name="[valid]"
                 tuiDocAPIItem
-                type="TuiPincodeMode"
-                [items]="modeVariants"
-                [value]="mode()"
-                (valueChange)="mode.set($event ?? null)"
+                type="boolean | null"
+                [items]="validVariants"
+                [value]="valid()"
+                (valueChange)="valid.set($event ?? null)"
             >
                 Verification result:
-                <code>invalid</code>
-                shakes red then auto-erases,
-                <code>success</code>
-                continues bouncing in blue (fast exit),
-                <code>submitting</code>
-                spreads into loader (long exit). Pulse animation triggers automatically when the code is fully entered
+                <code>true</code>
+                plays success bounce in blue,
+                <code>false</code>
+                shakes red then auto-erases. Pending pulse animation triggers automatically when the code is fully
+                entered
             </tr>
             <tr
                 name="maxlength"

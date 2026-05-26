@@ -1,7 +1,7 @@
 <button
     tuiButton
     type="button"
-    (click)="open = true"
+    (click)="open.set(true)"
 >
     Open sheet
 </button>
@@ -41,8 +41,9 @@
                 <input
                     inputmode="none"
                     tuiPincode
-                    [mode]="mode()"
+                    [valid]="verification.value() ?? null"
                     [(ngModel)]="pin"
+                    (animated)="onAnimated()"
                 />
             </tui-textfield>
         </div>
@@ -55,7 +56,7 @@
                     <button
                         type="button"
                         class="key"
-                        [disabled]="mode() !== null"
+                        [disabled]="verification.value() != null"
                         (click)="onKey(key)"
                     >
                         <tui-icon icon="@tui.delete" />
@@ -64,7 +65,7 @@
                     <button
                         type="button"
                         class="key"
-                        [disabled]="mode() !== null"
+                        [disabled]="verification.value() != null"
                         (click)="onKey(key)"
                     >
                         {{ key }}
