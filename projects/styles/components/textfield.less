@@ -51,9 +51,12 @@ tui-textfield:where(*&) {
     &[tuiIcons] {
         &::before {
             z-index: 1;
+            block-size: var(--t-height);
             inline-size: 1.5rem;
             margin-inline-end: 1rem;
             pointer-events: none;
+            // Cancelling zoom so it does not shift label
+            zoom: 1;
         }
 
         &::after {
@@ -62,10 +65,6 @@ tui-textfield:where(*&) {
             cursor: pointer;
             margin-inline-start: calc(0.25rem - var(--t-padding));
             margin-inline-end: calc(-1 * var(--t-padding));
-        }
-
-        &::before,
-        &::after {
             block-size: var(--t-height);
             // Compensating zoomed icons at high font-scaling
             max-block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
@@ -218,7 +217,6 @@ tui-textfield:where(*&) {
         box-sizing: border-box;
         border-radius: inherit;
         border-width: 0;
-        overscroll-behavior: none;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
         padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space));
         white-space: nowrap;

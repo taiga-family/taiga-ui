@@ -4,9 +4,12 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     type MaskitoDateTimeParams,
+    maskitoParseTime,
     maskitoSelectionChangeHandler,
+    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {
     DATE_FILLER_LENGTH,
     MILLISECONDS_IN_DAY,
@@ -171,7 +174,7 @@ export class TuiInputDateTimeDirective
                 : null;
 
         const parsedTime =
-            time.length === this.timeMode().length ? TuiTime.fromString(time) : null;
+            time.length === this.timeMode().length ? this.parseTime(time) : null;
 
         if (!parsedDate || (time && !parsedTime)) {
             return this.onChange(null);
@@ -199,13 +202,11 @@ export class TuiInputDateTimeDirective
             : dateString;
     }
 
-    protected onBlur(valueWithAffixes: string): void {
-        const [date = '', timeValue = ''] = valueWithAffixes.split(
-            this.options.dateTimeSeparator,
-        );
+    protected onBlur(value: string): void {
+        const [date = '', timeValue = ''] = value.split(this.options.dateTimeSeparator);
 
         if (timeValue && !this.value()) {
-            const time = TuiTime.fromString(timeValue);
+            const time = this.parseTime(timeValue);
 
             const newValue = [
                 TuiDay.normalizeParse(date, this.format().mode),
@@ -264,4 +265,31 @@ export class TuiInputDateTimeDirective
     ]): Date {
         return new Date(year, month, day, hours, minutes, seconds, ms);
     }
+
+    private parseTime(time: string): TuiTime {
+        const mode = this.timeMode();
+
+        return TuiTime.fromAbsoluteMilliseconds(
+            maskitoParseTime(padTimeSegments(time, mode), {mode}),
+        );
+    }
+}
+
+/**
+ * TODO: remove me when this fix https://github.com/taiga-family/maskito/issues/2725 is released
+ * and `maskitoParseTime` will do it internally
+ */
+function padTimeSegments(time: string, mode: MaskitoTimeMode): string {
+    if (time.length === mode.length) {
+        return time;
+    }
+
+    const split = (x: string): readonly string[] =>
+        x.split(/([^a-z0-9])/i).filter(Boolean);
+
+    const template = split(mode.replace(`${CHAR_NO_BREAK_SPACE}AA`, ''));
+
+    return split(time)
+        .map((segment, i) => segment.padStart(template[i]!.length, '0'))
+        .join('');
 }

@@ -4,6 +4,7 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
+    maskitoParseTime,
     maskitoRemoveOnBlurPlugin,
     maskitoSelectionChangeHandler,
     type MaskitoTimeMode,
@@ -12,6 +13,7 @@ import {
 } from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
@@ -60,6 +62,15 @@ export class TuiInputTimeDirective
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
+
+    private readonly params = computed<Required<MaskitoTimeParams>>(() => ({
+        ...this.options,
+        mode: this.timeMode(),
+        step: this.interactive() && !this.dropdown.content() ? 1 : 0,
+        prefix: this.prefix(),
+        postfix: this.postfix(),
+    }));
+
     protected readonly icon = tuiIconEnd(this.options.icon);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -75,18 +86,7 @@ export class TuiInputTimeDirective
         {},
     );
 
-    protected readonly mask = tuiMaskito(
-        computed(() =>
-            this.computeMask({
-                ...this.options,
-                mode: this.timeMode(),
-                step: this.interactive() && !this.dropdown.content() ? 1 : 0,
-                prefix: this.prefix(),
-                postfix: this.postfix(),
-            }),
-        ),
-    );
-
+    protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
     public readonly accept = input<readonly TuiTime[]>([]);
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
     public readonly prefix = input('');
@@ -124,8 +124,7 @@ export class TuiInputTimeDirective
             .replace(this.prefix(), '')
             .replace(this.postfix(), '');
 
-        const time =
-            value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
+        const time = value.length === this.timeMode().length ? this.parse(value) : null;
 
         const newValue =
             this.accept().length && time
@@ -150,7 +149,7 @@ export class TuiInputTimeDirective
             .replace(this.postfix(), '');
 
         if (value && !this.value()) {
-            const time = TuiTime.fromString(value);
+            const time = this.parse(value);
 
             const newValue = this.accept().length
                 ? this.findNearestTime(time, this.accept())
@@ -200,7 +199,32 @@ export class TuiInputTimeDirective
         );
     }
 
+    private parse(value: string): TuiTime {
+        return TuiTime.fromAbsoluteMilliseconds(
+            maskitoParseTime(padTimeSegments(value, this.timeMode()), this.params()),
+        );
+    }
+
     private stringify(time: TuiTime | null): string {
         return `${this.prefix()}${time?.toString(this.timeMode()) || ''}${this.postfix()}`;
     }
+}
+
+/**
+ * TODO: remove me when this fix https://github.com/taiga-family/maskito/issues/2725 is released
+ * and `maskitoParseTime` will do it internally
+ */
+function padTimeSegments(time: string, mode: MaskitoTimeMode): string {
+    if (time.length === mode.length) {
+        return time;
+    }
+
+    const split = (x: string): readonly string[] =>
+        x.split(/([^a-z0-9])/i).filter(Boolean);
+
+    const template = split(mode.replace(`${CHAR_NO_BREAK_SPACE}AA`, ''));
+
+    return split(time)
+        .map((segment, i) => segment.padStart(template[i]!.length, '0'))
+        .join('');
 }

@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
-import {TuiBadge, TuiPin} from '@taiga-ui/kit';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiFade, TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiBadge, TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiFade, TuiIcon, TuiPin, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -14,6 +14,6 @@ import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 export default class Example {
     protected a = true;
     protected b = false;
-    protected c = true;
+    protected c = false;
     protected d = false;
 }

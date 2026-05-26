@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "5.7.0",
+    "version": "5.8.0",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -148,10 +148,10 @@
         "@types/express": "4.17.25",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "25.6.0",
+        "@types/node": "25.7.0",
         "cpy-cli": "5.0.0",
         "date-fns": "4.1.0",
-        "express": "4.22.1",
+        "express": "4.22.2",
         "glob": "11.1.0",
         "husky": "9.1.7",
         "knip": "5.88.1",
