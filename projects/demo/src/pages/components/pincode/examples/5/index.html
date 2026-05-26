@@ -33,7 +33,7 @@
                     tuiPincode
                     [valid]="verification.value() ?? null"
                     [(ngModel)]="pin"
-                    (animated)="onAnimated()"
+                    (confirmed)="open.set(false); pin.set('')"
                 />
             </tui-textfield>
         </div>

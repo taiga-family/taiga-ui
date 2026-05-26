@@ -87,11 +87,4 @@ export default class Example {
 
         this.pin.set(`${value}${key}`);
     }
-
-    protected onAnimated(): void {
-        if (this.verification.value()) {
-            this.open.set(false);
-            this.pin.set('');
-        }
-    }
 }

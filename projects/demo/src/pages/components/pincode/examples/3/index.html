@@ -6,7 +6,7 @@
             tuiPincode
             [valid]="verification.value() ?? null"
             [(ngModel)]="pin"
-            (animated)="onAnimated()"
+            (confirmed)="done.set(true)"
         />
     </tui-textfield>
 }

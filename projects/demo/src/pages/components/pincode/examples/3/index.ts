@@ -34,10 +34,4 @@ export default class Example {
 
     protected readonly done = signal(false);
     protected readonly pin = signal('');
-
-    protected onAnimated(): void {
-        if (this.verification.value()) {
-            this.done.set(true);
-        }
-    }
 }
