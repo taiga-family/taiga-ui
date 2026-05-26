@@ -44,6 +44,8 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',
+        '[class._liquid-glass]':
+            'options.apis !== "stable" && (options.apis.all || options.apis.liquidGlass)',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -60,12 +62,13 @@ export class TuiRoot {
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
+    protected readonly options = inject(TUI_OPTIONS);
 
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
         !this.child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
-        inject(TUI_OPTIONS).scrollbars !== 'native';
+        this.options.scrollbars !== 'native';
 
     protected get parent(): boolean {
         return this.doc.fullscreenElement

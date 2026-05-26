@@ -1,5 +1,8 @@
 tui-app-bar {
-    box-shadow: var(--tui-shadow-small);
     inline-size: 20rem;
     margin-block-end: 1rem;
+
+    [data-platform='android'] & {
+        box-shadow: var(--tui-shadow-small);
+    }
 }
