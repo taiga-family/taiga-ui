@@ -1,8 +1,8 @@
-import {Component, effect, signal} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiPincode, type TuiPincodeMode} from '@taiga-ui/kit';
+import {TuiPincode} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiPincode],
@@ -21,36 +21,9 @@ export default class PageComponent {
 
     protected readonly lengths = [4, 5, 6] as const;
     protected length = this.lengths[0];
-
-    protected readonly modeVariants: readonly TuiPincodeMode[] = [
-        'invalid',
-        'submitting',
-        'success',
-    ];
-
+    protected readonly validVariants = [true, false] as const;
     protected readonly typeVariants = ['text', 'password'] as const;
-    protected readonly mode = signal<TuiPincodeMode | null>(null);
+    protected readonly valid = signal<boolean | null>(null);
     protected readonly type = signal<'password' | 'text'>('text');
     protected readonly control = new FormControl('');
-
-    constructor() {
-        effect((onCleanup) => {
-            const mode = this.mode();
-
-            const delays: Partial<Record<string, number>> = {
-                invalid: 1900,
-                submitting: 1900,
-            };
-
-            const delay = (mode && delays[mode]) || 0;
-
-            if (!delay) {
-                return;
-            }
-
-            const id = setTimeout(() => this.mode.set(null), delay);
-
-            onCleanup(() => clearTimeout(id));
-        });
-    }
 }

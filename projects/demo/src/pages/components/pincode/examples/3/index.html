@@ -1,7 +1,12 @@
-<tui-textfield>
-    <input
-        tuiPincode
-        [mode]="mode()"
-        [(ngModel)]="pin"
-    />
-</tui-textfield>
+@if (done()) {
+    <div class="done">PIN verified ✓</div>
+} @else {
+    <tui-textfield>
+        <input
+            tuiPincode
+            [valid]="verification.value() ?? null"
+            [(ngModel)]="pin"
+            (animated)="onAnimated()"
+        />
+    </tui-textfield>
+}

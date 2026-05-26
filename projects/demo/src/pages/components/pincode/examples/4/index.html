@@ -1,17 +1,22 @@
-<div
-    class="field"
-    [class.field_submitting]="mode() === 'submitting'"
->
-    <tui-loader
-        class="loader"
-        [inheritColor]="true"
-        [loading]="mode() === 'submitting'"
-    />
-    <tui-textfield>
-        <input
-            tuiPincode
-            [mode]="mode()"
-            [(ngModel)]="pin"
+@if (done()) {
+    <div class="done">PIN verified ✓</div>
+} @else {
+    <div
+        class="field"
+        [class.field_submitting]="verification.value() === true"
+    >
+        <tui-loader
+            class="loader"
+            [inheritColor]="true"
+            [loading]="verification.value() === true"
         />
-    </tui-textfield>
-</div>
+        <tui-textfield>
+            <input
+                tuiPincode
+                [valid]="verification.value() ?? null"
+                [(ngModel)]="pin"
+                (finished)="onFinished()"
+            />
+        </tui-textfield>
+    </div>
+}
