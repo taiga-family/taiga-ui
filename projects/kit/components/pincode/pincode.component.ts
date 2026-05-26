@@ -22,6 +22,12 @@ const BOUNCE_MS = 400;
 const STAGGER_MS = 100;
 const TAIL_MS = 300;
 
+const ANIMATION = {
+    verified: 'tuiPincodeDotIn',
+    collapsed: 'tuiPincodeDotCollapseScale',
+    rejected: 'tuiScale',
+} as const;
+
 @Directive({
     selector: 'input[tuiPincode]',
     providers: [tuiAsTextfieldContent(TuiPincodeContent)],
@@ -39,9 +45,8 @@ const TAIL_MS = 300;
     },
 })
 export class TuiPincodeComponent {
-    private collapseCount = 0;
-    private invalidCount = 0;
-    private animatedEmitted = false;
+    private phase = 0;
+    private bounced = false;
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
     public readonly paste = signal(false);
@@ -75,49 +80,40 @@ export class TuiPincodeComponent {
         });
 
         effect(() => {
-            this.valid();
-            this.collapseCount = 0;
-            this.invalidCount = 0;
-            this.animatedEmitted = false;
+            const v = this.valid();
+
+            this.phase =
+                v === null ? 0 : Math.min(this.value().length, this.el.maxLength);
+            this.bounced = false;
         });
     }
 
-    public onAnimationStart(event: AnimationEvent): void {
-        if (
-            this.valid() &&
-            event.animationName === 'tuiPincodeDotIn' &&
-            !this.animatedEmitted
-        ) {
-            this.animatedEmitted = true;
+    public onAnimationStart({animationName}: AnimationEvent): void {
+        if (this.valid() && animationName === ANIMATION.verified && !this.bounced) {
+            this.bounced = true;
             this.animated.emit();
         }
     }
 
-    public onAnimationEnd(event: AnimationEvent): void {
+    public onAnimationEnd({animationName, target}: AnimationEvent): void {
         const validity = this.valid();
 
-        if (validity === null) {
+        const isReject =
+            validity === false &&
+            animationName === ANIMATION.rejected &&
+            (target as HTMLElement | null)?.classList.contains('t-dot_placeholder');
+
+        const isCollapse = validity && animationName === ANIMATION.collapsed;
+
+        if ((!isReject && !isCollapse) || --this.phase) {
             return;
         }
 
-        const filled = Math.min(this.value().length, this.el.maxLength);
-        const target = event.target as HTMLElement | null;
-
-        if (
-            validity &&
-            event.animationName === 'tuiPincodeDotCollapseScale' &&
-            ++this.collapseCount === filled
-        ) {
-            this.finished.emit();
-        } else if (
-            !validity &&
-            event.animationName === 'tuiScale' &&
-            target?.classList.contains('t-dot_placeholder') &&
-            ++this.invalidCount === filled
-        ) {
+        if (isReject) {
             this.clearValue();
-            this.finished.emit();
         }
+
+        this.finished.emit();
     }
 
     public getStyle(index: number): Record<string, string> {
