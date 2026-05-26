@@ -75,9 +75,9 @@
                 [value]="type()"
                 (valueChange)="type.set($event ?? 'text')"
             >
-                Use
-                <code>type="password"</code>
-                to mask entered digits as filled dots
+                Native input type.
+                <code>"password"</code>
+                masks each digit as a filled dot
             </tr>
             <tr
                 name="[valid]"
@@ -87,12 +87,13 @@
                 [value]="valid()"
                 (valueChange)="valid.set($event ?? null)"
             >
-                Verification result:
+                Verification result.
+                <code>null</code>
+                — pending pulse,
                 <code>true</code>
-                plays success bounce in blue,
+                — success animation,
                 <code>false</code>
-                shakes red then auto-erases. Pending pulse animation triggers automatically when the code is fully
-                entered
+                — shake and auto-clear
             </tr>
             <tr
                 name="maxlength"
@@ -101,14 +102,21 @@
                 [items]="lengths"
                 [(value)]="length"
             >
-                Number of cells — native
-                <code>maxlength</code>
-                attribute, supported values:
-                <code>4</code>
-                ,
-                <code>5</code>
-                ,
-                <code>6</code>
+                Number of cells. Pending animation triggers once value reaches this length
+            </tr>
+            <tr
+                name="(animated)"
+                tuiDocAPIItem
+                type="void"
+            >
+                Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition
+            </tr>
+            <tr
+                name="(finished)"
+                tuiDocAPIItem
+                type="void"
+            >
+                Fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear
             </tr>
         </table>
     </ng-template>
