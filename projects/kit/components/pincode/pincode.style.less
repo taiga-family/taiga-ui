@@ -57,7 +57,7 @@ input[tuiPincode] {
             position: relative;
             flex: none;
             inline-size: 1.25rem;
-            block-size: 2.25rem;
+            block-size: 2.5rem;
             padding-inline: 0.125rem;
             cursor: text;
         }
@@ -70,24 +70,15 @@ input[tuiPincode] {
             translate: -50% -50%;
             scale: 0;
             transition:
-                translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
-                color 200ms var(--tui-curve-productive-standard),
-                background-color 200ms var(--tui-curve-productive-standard);
-        }
-
-        .t-value,
-        .t-dot_value {
-            transition:
-                scale 300ms var(--tui-curve-expressive-exit),
                 color 200ms var(--tui-curve-productive-standard),
                 background-color 200ms var(--tui-curve-productive-standard);
         }
 
         .t-value {
             color: var(--tui-text-primary);
-            font-size: 1.75rem;
-            font-weight: bold;
-            line-height: 1;
+            font-size: 2.25rem;
+            font-weight: 500;
+            line-height: 2.5rem;
             letter-spacing: 0;
         }
 
@@ -99,7 +90,6 @@ input[tuiPincode] {
 
         .t-dot_placeholder {
             background: var(--tui-background-neutral-2);
-            transition: scale 200ms var(--tui-curve-expressive-exit);
         }
 
         .t-dot_value {
@@ -108,31 +98,6 @@ input[tuiPincode] {
 
         .t-item:not(.t-item_filled) .t-dot_placeholder {
             scale: 1;
-            transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
-        }
-    }
-
-    tui-root:not(._mobile) & + .t-content {
-        .t-item {
-            block-size: 2.5rem;
-        }
-
-        .t-value {
-            font-size: 2.25rem;
-            font-weight: 500;
-            line-height: 2.5rem;
-        }
-
-        .t-value,
-        .t-dot,
-        .t-dot_value,
-        .t-dot_placeholder,
-        .t-item_filled .t-value,
-        .t-item_filled .t-dot_value,
-        .t-item:not(.t-item_filled) .t-dot_placeholder {
-            transition:
-                color 200ms var(--tui-curve-productive-standard),
-                background-color 200ms var(--tui-curve-productive-standard);
         }
 
         .t-item_focus:not(.t-item_filled) {
@@ -156,8 +121,55 @@ input[tuiPincode] {
         }
     }
 
-    &:not([type='password']):not([data-mode]) + .t-content .t-item_filled .t-value {
-        animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
+    [data-platform]:not([data-platform='web']) & + .t-content {
+        .t-item {
+            block-size: 2.25rem;
+        }
+
+        .t-value,
+        .t-dot {
+            transition:
+                translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
+                color 200ms var(--tui-curve-productive-standard),
+                background-color 200ms var(--tui-curve-productive-standard);
+        }
+
+        .t-value,
+        .t-dot_value {
+            transition:
+                scale 300ms var(--tui-curve-expressive-exit),
+                color 200ms var(--tui-curve-productive-standard),
+                background-color 200ms var(--tui-curve-productive-standard);
+        }
+
+        .t-value {
+            font-size: 1.75rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .t-dot_placeholder {
+            transition: scale 200ms var(--tui-curve-expressive-exit);
+        }
+
+        .t-item:not(.t-item_filled) .t-dot_placeholder {
+            transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
+        }
+
+        .t-item_focus:not(.t-item_filled)::before {
+            display: none;
+        }
+    }
+
+    [data-platform]:not([data-platform='web'])
+        &:not([type='password']) + .t-content
+        .t-item_focus:not(.t-item_filled)
+        .t-dot_placeholder,
+    [data-platform]:not([data-platform='web'])
+        &[type='password'] + .t-content
+        .t-item_focus:not(.t-item_filled)
+        .t-dot_value {
+        scale: 1;
     }
 
     &:not([type='password']) + .t-content .t-item_filled .t-value {
@@ -185,16 +197,22 @@ input[tuiPincode] {
         }
     }
 
-    &[type='password']:not([data-mode]) + .t-content .t-item_filled .t-dot_value {
+    [data-platform]:not([data-platform='web'])
+        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
+        .t-item_filled
+        .t-value,
+    [data-platform]:not([data-platform='web'])
+        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
+        .t-item_filled
+        .t-dot_value {
         animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
-        transition: background-color 200ms var(--tui-curve-expressive-standard);
     }
 
-    tui-root:not(._mobile) &:not([type='password']):not([data-mode]) + .t-content .t-item_filled .t-value,
-    tui-root:not(._mobile) &[type='password']:not([data-mode]) + .t-content .t-item_filled .t-dot_value,
-    tui-root:not(._mobile) &[type='password']:not([data-mode]) + .t-content .t-item:not(.t-item_filled) .t-dot_value {
-        animation: none;
-        transition: none;
+    [data-platform]:not([data-platform='web'])
+        &[type='password']:not([data-mode]) + .t-content
+        .t-item_filled
+        .t-dot_value {
+        transition: background-color 200ms var(--tui-curve-expressive-standard);
     }
 
     &[data-mode='invalid'] + .t-content {
@@ -232,51 +250,18 @@ input[tuiPincode] {
         animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
     }
 
-    &[data-mode='pending']:not([type='password']) + .t-content .t-item_filled:last-of-type .t-value,
-    &[data-mode='pending'][type='password'] + .t-content .t-item_filled:last-of-type .t-dot_value {
+    [data-platform]:not([data-platform='web'])
+        &[data-mode='pending']:not([data-paste]):not([type='password']) + .t-content
+        .t-item_filled:last-of-type
+        .t-value,
+    [data-platform]:not([data-platform='web'])
+        &[data-mode='pending']:not([data-paste])[type='password'] + .t-content
+        .t-item_filled:last-of-type
+        .t-dot_value {
         animation:
             tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard),
             @pending-wave-anim;
         animation-delay: 0ms, calc(500ms + var(--t-animation-delay, 0ms)), calc(500ms + var(--t-animation-delay, 0ms));
-    }
-
-    &[data-paste][data-mode='pending']:not([type='password']) + .t-content .t-item_filled .t-value,
-    &[data-paste][data-mode='pending'][type='password'] + .t-content .t-item_filled .t-dot_value {
-        scale: 0;
-        animation:
-            tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard) forwards,
-            @pending-wave-anim;
-        animation-delay:
-            var(--t-animation-delay, 0ms), calc(500ms + var(--t-animation-delay, 0ms)),
-            calc(500ms + var(--t-animation-delay, 0ms));
-        transition: none;
-    }
-
-    tui-root:not(._mobile)
-        &[data-mode='pending']:not([type='password']) + .t-content
-        .t-item_filled:last-of-type
-        .t-value,
-    tui-root:not(._mobile)
-        &[data-mode='pending'][type='password'] + .t-content
-        .t-item_filled:last-of-type
-        .t-dot_value {
-        animation: @pending-wave-anim;
-        animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
-        transition: none;
-    }
-
-    tui-root:not(._mobile)
-        &[data-paste][data-mode='pending']:not([type='password']) + .t-content
-        .t-item_filled
-        .t-value,
-    tui-root:not(._mobile)
-        &[data-paste][data-mode='pending'][type='password'] + .t-content
-        .t-item_filled
-        .t-dot_value {
-        scale: 1;
-        animation: @pending-wave-anim;
-        animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
-        transition: none;
     }
 
     &[data-mode='success']:not([type='password']) + .t-content .t-item_filled .t-value {
