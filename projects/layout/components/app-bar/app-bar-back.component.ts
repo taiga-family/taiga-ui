@@ -7,6 +7,8 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
+import {TuiAppBarButton} from './app-bar-button.directive';
+
 @Component({
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
     imports: [TuiIcon],
@@ -14,7 +16,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     styleUrl: './app-bar-back.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TuiAppBarBack)],
-    hostDirectives: [TuiWithAppearance],
+    hostDirectives: [TuiWithAppearance, TuiAppBarButton],
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
     protected readonly icons = inject(TUI_COMMON_ICONS);

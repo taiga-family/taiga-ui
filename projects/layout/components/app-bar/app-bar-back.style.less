@@ -34,6 +34,19 @@
         .t-web {
             display: none;
         }
+
+        :host-context(._liquid-glass) & {
+            display: flex;
+            font-size: 0;
+            block-size: 2.75rem;
+            inline-size: 2.75rem;
+            padding: 0;
+            justify-content: center;
+
+            .t-ios {
+                margin-inline-start: 0;
+            }
+        }
     }
 }
 
