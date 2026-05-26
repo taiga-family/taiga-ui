@@ -70,7 +70,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
 
             return merge(
                 focusout$.pipe(
-                    takeUntil(pointerdown$),
+                    takeUntil(pointerdown$.pipe(filter((e) => !e.defaultPrevented))),
                     repeat({delay: () => merge(mouseup$, pointercancel$)}),
                     withLatestFrom(removedElement$),
                     filter(([event, removedElement]) =>
