@@ -39,9 +39,9 @@ const TAIL_MS = 300;
     },
 })
 export class TuiPincodeComponent {
-    private waveCount = 0;
     private collapseCount = 0;
     private invalidCount = 0;
+    private animatedEmitted = false;
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
     public readonly paste = signal(false);
@@ -76,10 +76,21 @@ export class TuiPincodeComponent {
 
         effect(() => {
             this.valid();
-            this.waveCount = 0;
             this.collapseCount = 0;
             this.invalidCount = 0;
+            this.animatedEmitted = false;
         });
+    }
+
+    public onAnimationStart(event: AnimationEvent): void {
+        if (
+            this.valid() &&
+            event.animationName === 'tuiPincodeDotIn' &&
+            !this.animatedEmitted
+        ) {
+            this.animatedEmitted = true;
+            this.animated.emit();
+        }
     }
 
     public onAnimationEnd(event: AnimationEvent): void {
@@ -93,12 +104,6 @@ export class TuiPincodeComponent {
         const target = event.target as HTMLElement | null;
 
         if (
-            validity &&
-            event.animationName === 'tuiPincodeWavePos' &&
-            ++this.waveCount === filled
-        ) {
-            this.animated.emit();
-        } else if (
             validity &&
             event.animationName === 'tuiPincodeDotCollapseScale' &&
             ++this.collapseCount === filled
