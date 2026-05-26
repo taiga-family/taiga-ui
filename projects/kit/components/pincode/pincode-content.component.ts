@@ -15,6 +15,7 @@ import {TuiPincodeComponent} from './pincode.component';
     host: {
         '[style.display]': '"contents"',
         '(animationend)': 'pincode.onAnimationEnd($event)',
+        '(animationstart)': 'pincode.onAnimationStart($event)',
     },
 })
 export class TuiPincodeContent {
