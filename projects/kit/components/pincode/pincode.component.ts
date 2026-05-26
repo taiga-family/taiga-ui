@@ -36,8 +36,8 @@ const INVALID_MS = 1300;
         spellcheck: 'false',
         '[attr.data-mode]': 'mode()',
         '[attr.data-paste]': 'paste() ? "" : null',
-        '(input)': 'onInput()',
         '(beforeinput)': 'onBeforeInput($event)',
+        '(input)': 'onInput()',
         '(selectionchange)': 'onSelection()',
     },
 })
