@@ -23,7 +23,7 @@ const STAGGER_MS = 100;
 const TAIL_MS = 300;
 
 const ANIMATION = {
-    verified: 'tuiPincodeDotIn',
+    confirmed: 'tuiPincodeDotIn',
     collapsed: 'tuiPincodeDotCollapseScale',
     rejected: 'tuiScale',
 } as const;
@@ -53,7 +53,7 @@ export class TuiPincodeComponent {
     public readonly focused = tuiFocusedIn(this.el);
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
     public readonly valid = input<boolean | null>(null);
-    public readonly animated = output();
+    public readonly confirmed = output();
     public readonly finished = output();
 
     public readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
@@ -89,9 +89,9 @@ export class TuiPincodeComponent {
     }
 
     public onAnimationStart({animationName}: AnimationEvent): void {
-        if (this.valid() && animationName === ANIMATION.verified && !this.bounced) {
+        if (this.valid() && animationName === ANIMATION.confirmed && !this.bounced) {
             this.bounced = true;
-            this.animated.emit();
+            this.confirmed.emit();
         }
     }
 
@@ -101,7 +101,8 @@ export class TuiPincodeComponent {
         const isReject =
             validity === false &&
             animationName === ANIMATION.rejected &&
-            (target as HTMLElement | null)?.classList.contains('t-dot_placeholder');
+            target instanceof HTMLElement &&
+            target.classList.contains('t-dot_placeholder');
 
         const isCollapse = validity && animationName === ANIMATION.collapsed;
 
