@@ -12,7 +12,10 @@ import {TuiPincodeComponent} from './pincode.component';
     styleUrl: './pincode.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[style.display]': '"contents"'},
+    host: {
+        '[style.display]': '"contents"',
+        '(animationend)': 'pincode.onAnimationEnd($event)',
+    },
 })
 export class TuiPincodeContent {
     protected readonly pincode = inject(TuiPincodeComponent);
