@@ -37,6 +37,8 @@ input[tuiPincode] {
     }
 
     & + .t-content {
+        --t-pitch: 2.625rem;
+
         gap: 0;
         margin-inline: auto;
         cursor: text;
@@ -49,16 +51,15 @@ input[tuiPincode] {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.625rem;
+            gap: 1.25rem;
             block-size: 100%;
         }
 
         .t-item {
             position: relative;
             flex: none;
-            inline-size: 1.25rem;
+            inline-size: 1.375rem;
             block-size: 2.5rem;
-            padding-inline: 0.125rem;
             cursor: text;
         }
 
@@ -122,7 +123,10 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web']) & + .t-content {
+        --t-pitch: 2.5rem;
+
         .t-item {
+            inline-size: 1.25rem;
             block-size: 2.25rem;
         }
 
@@ -225,8 +229,7 @@ input[tuiPincode] {
         }
     }
 
-    &[data-mode='success'] + .t-content .t-value,
-    &[data-mode='submitting'] + .t-content .t-value {
+    &[data-mode='success'] + .t-content .t-value {
         color: var(--tui-text-action);
     }
 
@@ -293,7 +296,7 @@ input[tuiPincode] {
     }
 
     to {
-        translate: var(--t-spread-tx, 0) 0;
+        translate: calc(var(--t-offset, 0) * var(--t-pitch, 0px) / 3) 0;
     }
 }
 
@@ -303,7 +306,7 @@ input[tuiPincode] {
     }
 
     to {
-        translate: calc(-50% + var(--t-collapse-tx, 0px)) -50%;
+        translate: calc(-50% - var(--t-offset, 0) * var(--t-pitch, 0px)) -50%;
     }
 }
 

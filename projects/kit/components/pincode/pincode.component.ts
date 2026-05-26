@@ -18,8 +18,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TuiPincodeContent} from './pincode-content.component';
 
-// item width (1.25rem) + gap (0.625rem)
-const PITCH = 1.875;
 const BOUNCE_MS = 400;
 const STAGGER_MS = 100;
 const TAIL_MS = 300;
@@ -100,8 +98,7 @@ export class TuiPincodeComponent {
         return {
             '--t-animation-delay': `${index * STAGGER_MS}ms`,
             '--t-animation-cycle': `${cycle}ms`,
-            '--t-spread-tx': `${offset * (PITCH / 3)}rem`,
-            '--t-collapse-tx': `${-offset * PITCH}rem`,
+            '--t-offset': `${offset}`,
         };
     }
 
