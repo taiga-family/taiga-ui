@@ -9,6 +9,7 @@ import {
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
+import {maskitoCaretGuard} from '@maskito/kit';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -41,9 +42,7 @@ const ANIMATION = {
         spellcheck: 'false',
         '[attr.data-mode]': 'mode()',
         '[attr.data-paste]': 'paste() ? "" : null',
-        '(beforeinput)': 'onBeforeInput($event)',
         '(input)': 'onInput()',
-        '(selectionchange)': 'onSelection()',
     },
 })
 export class TuiPincodeComponent {
@@ -53,7 +52,16 @@ export class TuiPincodeComponent {
     public readonly value = signal('');
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
-    protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
+
+    protected readonly maskito = tuiMaskito({
+        mask: /^\d+$/,
+        overwriteMode: 'replace',
+        plugins: [maskitoCaretGuard((value) => [value.length, value.length])],
+        postprocessors: [
+            (newState, initialState) => (this.mode() !== null ? initialState : newState),
+        ],
+    });
+
     public readonly valid = input<boolean | null | undefined>(null);
     public readonly confirmed = output();
     public readonly finished = output();
@@ -138,12 +146,6 @@ export class TuiPincodeComponent {
         );
     }
 
-    protected onBeforeInput(event: InputEvent): void {
-        if (this.value().length >= this.el.maxLength) {
-            event.preventDefault();
-        }
-    }
-
     protected onInput(): void {
         const newValue = this.el.value;
 
@@ -154,15 +156,6 @@ export class TuiPincodeComponent {
         }
 
         this.value.set(newValue);
-    }
-
-    protected onSelection(): void {
-        const end = this.el.value.length;
-        const start = end === this.el.maxLength ? end - 1 : end;
-
-        if (this.el.selectionStart !== start || this.el.selectionEnd !== end) {
-            this.el.setSelectionRange(start, end);
-        }
     }
 
     private clearValue(): void {
