@@ -32992,8 +32992,12 @@ export default class Example {
 **Template:**
 ```html
 @if (value$ | async; as value) { <label tuiProgressLabel>
-<span class="text">COMPLETED</span>
-<span class="percent">{{ value }}%</span>
+<span tuiHeader="h6">
+<span tuiTitle>
+<span tuiSubtitle>Done</span>
+<b>{{ value }}%</b>
+</span>
+</span>
 <tui-progress-circle size="xl" [max]="max" [value]="value" />
 </label> }
 ```
@@ -33004,13 +33008,14 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiProgress],
+    imports: [AsyncPipe, TuiHeader, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -33025,17 +33030,6 @@ export default class Example {
                   startWith(30),
                   takeWhile((value) => value <= this.max),
               );
-}
-```
-**LESS:**
-```less
-.text {
-    font: var(--tui-typography-body-s);
-    color: var(--tui-text-tertiary);
-}
-
-.percent {
-    font: var(--tui-typography-heading-h6);
 }
 ```
 
@@ -33187,8 +33181,7 @@ export default class Example {
 **LESS:**
 ```less
 tui-progress-circle {
-    transform: scaleX(-1) // reversed direction
-        rotate(-90deg); // top side starting point
+    transform: scaleX(-1);
 }
 ```
 
