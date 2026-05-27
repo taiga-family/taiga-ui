@@ -19,25 +19,23 @@
     --t-stroke-width: var(--tui-thickness, 0.375em);
 
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--tui-background-accent-1);
-    transform: rotate(-90deg);
-    transform-origin: center;
     // TODO: delete this line after bumping browser support of Safari to 16+
     font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
     inline-size: var(--t-diameter);
     min-inline-size: var(--t-diameter);
     block-size: var(--t-diameter);
     border-radius: 100%;
+    stroke: var(--tui-background-neutral-1);
+    overflow: hidden;
     mask-image: radial-gradient(
         closest-side,
-        transparent calc(100% - var(--t-stroke-width)),
-        #000 calc(100% - var(--t-stroke-width) + 0.5px)
+        transparent calc(100% - var(--t-stroke-width) - 0.5px),
+        #000 calc(100% - var(--t-stroke-width))
     );
-
-    &._arc {
-        transform: rotate(135deg);
-    }
 
     &[data-size='xxs'] {
         --t-diameter: @diameter[xxs];
@@ -73,13 +71,11 @@
     fill: transparent;
     stroke-linecap: round;
     stroke-width: var(--t-stroke-width);
-    /* clean-css ignore:start */
     r: @radius;
-    /* clean-css ignore:end */
 }
 
 .t-track {
-    stroke: var(--tui-background-neutral-1);
+    stroke: inherit;
 
     :host._arc & {
         stroke-dasharray: calc(0.75 * @circumference) calc(0.25 * @circumference);
@@ -100,10 +96,17 @@
     }
 }
 
-.t-hidden-progress {
-    .sr-only();
+.t-hidden {
+    position: absolute;
+    clip-path: inset(50%);
 }
 
 .t-svg {
+    position: absolute;
+    transform: rotate(-90deg);
     overflow: unset;
+
+    :host._arc & {
+        transform: rotate(135deg);
+    }
 }
