@@ -60,12 +60,8 @@ export class TuiPincodeComponent {
     protected readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
         const validity = this.valid();
 
-        if (validity === true) {
-            return 'success';
-        }
-
-        if (validity === false) {
-            return 'invalid';
+        if (validity != null) {
+            return validity ? 'success' : 'invalid';
         }
 
         const {maxLength} = this.el;
