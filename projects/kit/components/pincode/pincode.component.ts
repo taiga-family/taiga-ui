@@ -9,8 +9,8 @@ import {
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {tuiFocusedIn} from '@taiga-ui/cdk/utils';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {
     tuiAsTextfieldContent,
     TuiTextfieldContent,
