@@ -58,7 +58,7 @@ export class TuiPincodeComponent {
         overwriteMode: 'replace',
         plugins: [maskitoCaretGuard((value) => [value.length, value.length])],
         postprocessors: [
-            (newState, initialState) => (this.mode() !== null ? initialState : newState),
+            (newState, initialState) => (this.mode() === null ? newState : initialState),
         ],
     });
 
