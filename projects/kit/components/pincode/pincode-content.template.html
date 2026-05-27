@@ -2,7 +2,7 @@
     aria-hidden="true"
     class="t-wrapper"
 >
-    @for (_ of '-'.repeat(pincode.el.maxLength); track $index) {
+    @for (_ of '-'.repeat(pincode.length()); track $index) {
         <span
             class="t-item"
             [class.t-item_filled]="!!pincode.value()[$index]"
