@@ -6,10 +6,11 @@ import {
     input,
     output,
     signal,
+    untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
+import {tuiFocusedIn} from '@taiga-ui/cdk/utils';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {
     tuiAsTextfieldContent,
     TuiTextfieldContent,
@@ -56,7 +57,7 @@ export class TuiPincodeComponent {
     public readonly confirmed = output();
     public readonly finished = output();
 
-    public readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
+    protected readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
         const validity = this.valid();
 
         if (validity === true) {
@@ -83,7 +84,12 @@ export class TuiPincodeComponent {
             const v = this.valid();
 
             this.phase =
-                v === null ? 0 : Math.min(this.value().length, this.el.maxLength);
+                v === null
+                    ? 0
+                    : Math.min(
+                          untracked(() => this.value().length),
+                          this.el.maxLength,
+                      );
             this.bounced = false;
         });
     }
@@ -136,7 +142,7 @@ export class TuiPincodeComponent {
         );
     }
 
-    protected onBeforeInput(event: Event): void {
+    protected onBeforeInput(event: InputEvent): void {
         if (this.value().length >= this.el.maxLength) {
             event.preventDefault();
         }
