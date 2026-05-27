@@ -1,0 +1,20 @@
+<div class="container">
+    <input
+        placeholder="—"
+        tuiKeypadInput
+        class="display"
+        [value]="value()"
+    />
+
+    <tui-keypad
+        class="custom"
+        [keys]="keys"
+        [(value)]="value"
+    >
+        <ng-template tuiKeypadKey="backspace">
+            @if (value()) {
+                <tui-icon icon="@tui.delete" />
+            }
+        </ng-template>
+    </tui-keypad>
+</div>

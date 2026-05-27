@@ -1,0 +1,33 @@
+:host {
+    display: block;
+    block-size: 100%;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    block-size: 100vh;
+    box-sizing: border-box;
+}
+
+.input {
+    flex: none;
+    inline-size: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: end;
+    border: none;
+    outline: none;
+    background: var(--tui-background-neutral-2);
+    border-radius: 0.5rem;
+    color: var(--tui-text-primary);
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--tui-text-secondary);
+    }
+}

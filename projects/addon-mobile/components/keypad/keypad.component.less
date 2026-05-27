@@ -1,0 +1,118 @@
+:host {
+    display: grid;
+    grid-template-columns: repeat(var(--tui-pad-columns, 3), 1fr);
+    justify-items: center;
+    inline-size: 100%;
+    max-inline-size: 37.5rem;
+    max-block-size: calc(var(--tui-pad-rows, 4) * var(--tui-pad-key-height, 4rem));
+    row-gap: 0;
+    transition:
+        row-gap var(--tui-duration) var(--tui-curve-productive-standard),
+        max-block-size var(--tui-duration) var(--tui-curve-productive-standard);
+
+    &[data-open='false'] {
+        max-block-size: 0;
+        overflow: hidden;
+        row-gap: -0.75rem;
+    }
+
+    --tui-pad-key-width: 5rem;
+    --tui-pad-key-height: 4rem;
+
+    &[data-size='s'] {
+        --tui-pad-key-width: 3.75rem;
+        --tui-pad-key-height: 3rem;
+    }
+
+    &[data-size='l'] {
+        --tui-pad-key-width: 6.25rem;
+        --tui-pad-key-height: 5rem;
+    }
+
+    &[data-size='fluid'] {
+        grid-auto-rows: 1fr;
+        place-items: center;
+        block-size: 100%;
+        max-inline-size: unset;
+        /* stylelint-disable-next-line plugin/use-baseline -- container queries are intentionally used for fluid sizing */
+        container-type: size;
+
+        .t-key {
+            /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list, plugin/no-unsupported-browser-features -- container query units are required for fluid mode */
+            --t-size: min(calc(100cqi / var(--tui-pad-columns, 3)), calc(100cqb / var(--tui-pad-rows, 4)));
+
+            inline-size: var(--t-size);
+            block-size: var(--t-size);
+            border-radius: 50%;
+            /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list, plugin/no-unsupported-browser-features -- container query units are required for fluid mode */
+            font-size: clamp(1.5rem, min(7cqi, 7cqb), 3rem);
+        }
+    }
+}
+
+:host-context([tuiFloatingContainer]) {
+    grid-area: auto / 1;
+}
+
+.t-row {
+    display: contents;
+}
+
+.t-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--tui-pad-key-width);
+    block-size: var(--tui-pad-key-height);
+    border: none;
+    border-radius: calc(var(--tui-pad-key-height) / 2);
+    background: transparent;
+    font: var(--tui-pad-font, 600 2rem/1 var(--tui-typography-family-display));
+    letter-spacing: var(--tui-pad-letter-spacing, 0.0225rem);
+    color: var(--tui-text-primary);
+    cursor: pointer;
+    transition:
+        background var(--tui-duration) ease-out,
+        transform var(--tui-duration) var(--tui-curve-expressive-entrance),
+        scale var(--tui-duration) var(--tui-curve-productive-standard) calc(var(--i, 0) * 30ms),
+        opacity var(--tui-duration) var(--tui-curve-productive-standard) calc(var(--i, 0) * 30ms);
+
+    :host([data-open='false']) & {
+        scale: 0.8;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:not(:disabled) {
+        @media (pointer: fine) {
+            &:hover {
+                background: var(--tui-background-neutral-1-hover);
+            }
+        }
+
+        &:active {
+            background: var(--tui-background-neutral-1-pressed);
+            transform: scale(1.2);
+        }
+    }
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: 0.125rem;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+.t-key_active {
+    background: var(--tui-background-neutral-1);
+    transform: scale(1.2);
+}
+
+.t-key_spacer {
+    visibility: hidden;
+    pointer-events: none;
+}

@@ -1,0 +1,60 @@
+@import '@taiga-ui/styles/utils.less';
+
+.sheet {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-block-size: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem 1rem;
+}
+
+.amount {
+    font: bold 2.5rem/1 var(--tui-typography-family-display);
+    text-align: center;
+    color: var(--tui-text-primary);
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    inline-size: 100%;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.middle {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-block-end: 1rem;
+}
+
+.card {
+    background: var(--tui-background-neutral-1);
+    border-radius: var(--tui-radius-l);
+    overflow: hidden;
+}
+
+.clamp {
+    .tui-line-clamp();
+
+    margin-block-start: 0.5rem;
+    min-block-size: 2rem;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
+}
