@@ -3,13 +3,13 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
-import {TuiProgress} from '@taiga-ui/kit';
-import {map, of, startWith, takeWhile, timer} from 'rxjs';
 import {TuiTitle} from '@taiga-ui/core';
+import {TuiProgress} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
+import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiProgress, TuiTitle, TuiHeader],
+    imports: [AsyncPipe, TuiHeader, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
