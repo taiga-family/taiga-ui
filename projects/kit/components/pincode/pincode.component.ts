@@ -50,6 +50,7 @@ export class TuiPincodeComponent {
     private bounced = false;
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
+    public readonly length = signal(4);
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
 
@@ -73,15 +74,19 @@ export class TuiPincodeComponent {
             return validity ? 'success' : 'invalid';
         }
 
-        const {maxLength} = this.el;
+        const length = this.length();
 
-        return maxLength > 0 && this.value().length === maxLength ? 'pending' : null;
+        return length > 0 && this.value().length === length ? 'pending' : null;
     });
 
     constructor() {
         afterRender(() => {
             if (this.value() !== this.el.value) {
                 this.value.set(this.el.value);
+            }
+
+            if (this.length() !== this.el.maxLength) {
+                this.length.set(this.el.maxLength);
             }
         });
 
