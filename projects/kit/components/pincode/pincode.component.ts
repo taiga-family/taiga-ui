@@ -145,13 +145,11 @@ export class TuiPincodeComponent {
     }
 
     protected onInput(): void {
-        const oldLength = this.value().length;
         const newValue = this.el.value;
-        const {maxLength} = this.el;
 
-        if (oldLength === 0 && newValue.length === maxLength) {
+        if (!this.value().length && newValue.length === this.el.maxLength) {
             this.paste.set(true);
-        } else if (newValue.length === 0) {
+        } else if (!newValue.length) {
             this.paste.set(false);
         }
 
@@ -159,9 +157,8 @@ export class TuiPincodeComponent {
     }
 
     protected onSelection(): void {
-        const {maxLength} = this.el;
         const end = this.el.value.length;
-        const start = end === maxLength ? end - 1 : end;
+        const start = end === this.el.maxLength ? end - 1 : end;
 
         if (this.el.selectionStart !== start || this.el.selectionEnd !== end) {
             this.el.setSelectionRange(start, end);
