@@ -31,7 +31,7 @@
                 <input
                     tuiAutoFocus
                     tuiPincode
-                    [valid]="verification.value() ?? null"
+                    [valid]="verification.value()"
                     [(ngModel)]="pin"
                     (confirmed)="open.set(false); pin.set('')"
                 />

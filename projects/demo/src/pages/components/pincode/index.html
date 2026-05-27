@@ -82,7 +82,7 @@
             <tr
                 name="[valid]"
                 tuiDocAPIItem
-                type="boolean | null"
+                type="boolean | null | undefined"
                 [items]="validVariants"
                 [value]="valid()"
                 (valueChange)="valid.set($event ?? null)"

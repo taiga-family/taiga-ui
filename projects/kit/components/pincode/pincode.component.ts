@@ -11,6 +11,7 @@ import {
 import {MaskitoDirective} from '@maskito/angular';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldContent,
     TuiTextfieldContent,
@@ -53,14 +54,14 @@ export class TuiPincodeComponent {
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
     protected readonly maskito = tuiMaskito({mask: /^\d+$/, overwriteMode: 'replace'});
-    public readonly valid = input<boolean | null>(null);
+    public readonly valid = input<boolean | null | undefined>(null);
     public readonly confirmed = output();
     public readonly finished = output();
 
     protected readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
         const validity = this.valid();
 
-        if (validity != null) {
+        if (tuiIsPresent(validity)) {
             return validity ? 'success' : 'invalid';
         }
 
@@ -79,13 +80,12 @@ export class TuiPincodeComponent {
         effect(() => {
             const v = this.valid();
 
-            this.phase =
-                v === null
-                    ? 0
-                    : Math.min(
-                          untracked(() => this.value().length),
-                          this.el.maxLength,
-                      );
+            this.phase = tuiIsPresent(v)
+                ? Math.min(
+                      untracked(() => this.value().length),
+                      this.el.maxLength,
+                  )
+                : 0;
             this.bounced = false;
         });
     }

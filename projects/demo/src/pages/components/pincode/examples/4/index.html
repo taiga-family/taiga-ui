@@ -13,7 +13,7 @@
         <tui-textfield>
             <input
                 tuiPincode
-                [valid]="verification.value() ?? null"
+                [valid]="verification.value()"
                 [(ngModel)]="pin"
                 (finished)="onFinished()"
             />
