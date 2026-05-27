@@ -5,11 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [AsyncPipe, TuiProgress],
+    imports: [AsyncPipe, TuiProgress, TuiTitle, TuiHeader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
