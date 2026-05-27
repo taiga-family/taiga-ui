@@ -13,10 +13,6 @@
             />
             <ng-template #description>
                 @switch ($index) {
-                    @case (0) {
-                        Basic usage with
-                        <code>[(ngModel)]</code>
-                    }
                     @case (1) {
                         Masked mode via
                         <code>type="password"</code>
@@ -63,6 +59,8 @@
                     [maxlength]="length"
                     [type]="type()"
                     [valid]="valid()"
+                    (confirmed)="confirmed.emitEvent($event)"
+                    (finished)="finished.emitEvent($event)"
                 />
             </tui-textfield>
         </tui-doc-demo>
@@ -99,12 +97,12 @@
                 name="maxlength"
                 tuiDocAPIItem
                 type="number"
-                [items]="lengths"
                 [(value)]="length"
             >
                 Number of cells. Pending animation triggers once value reaches this length
             </tr>
             <tr
+                #confirmed
                 name="(confirmed)"
                 tuiDocAPIItem
                 type="void"
@@ -112,6 +110,7 @@
                 Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition
             </tr>
             <tr
+                #finished
                 name="(finished)"
                 tuiDocAPIItem
                 type="void"

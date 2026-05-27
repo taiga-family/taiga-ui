@@ -10,15 +10,8 @@ import {TuiHeader} from '@taiga-ui/layout';
 
 const CORRECT = '1234';
 
-async function fakeApiVerify(pin: string, abort: AbortSignal): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
-        const id = setTimeout(() => resolve(pin === CORRECT), 1000);
-
-        abort.addEventListener('abort', () => {
-            clearTimeout(id);
-            reject(new DOMException('Aborted', 'AbortError'));
-        });
-    });
+async function fakeApiVerify(pin: string): Promise<boolean> {
+    return new Promise((resolve) => setTimeout(() => resolve(pin === CORRECT), 1000));
 }
 
 @Component({
@@ -40,8 +33,8 @@ async function fakeApiVerify(pin: string, abort: AbortSignal): Promise<boolean> 
 export default class Example {
     protected readonly verification = resource({
         request: () => this.pin(),
-        loader: async ({request, abortSignal}) =>
-            request.length === 4 ? fakeApiVerify(request, abortSignal) : null,
+        loader: async ({request}) =>
+            request.length === 4 ? fakeApiVerify(request) : null,
     });
 
     protected readonly open = signal(false);

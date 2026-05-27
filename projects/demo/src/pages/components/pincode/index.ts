@@ -19,8 +19,7 @@ export default class PageComponent {
         'Mobile',
     ];
 
-    protected readonly lengths = [4, 5, 6] as const;
-    protected length = this.lengths[0];
+    protected length = 4;
     protected readonly validVariants = [true, false] as const;
     protected readonly typeVariants = ['text', 'password'] as const;
     protected readonly valid = signal<boolean | null>(null);
