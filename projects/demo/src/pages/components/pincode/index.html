@@ -60,7 +60,7 @@
                     [type]="type()"
                     [valid]="valid()"
                     (confirmed)="confirmed.emitEvent($event)"
-                    (finished)="finished.emitEvent($event)"
+                    (finished)="finished.emitEvent($event); onFinished()"
                 />
             </tui-textfield>
         </tui-doc-demo>

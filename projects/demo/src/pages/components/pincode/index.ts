@@ -25,4 +25,11 @@ export default class PageComponent {
     protected readonly valid = signal<boolean | null>(null);
     protected readonly type = signal<'password' | 'text'>('text');
     protected readonly control = new FormControl('');
+
+    protected onFinished(): void {
+        setTimeout(() => {
+            this.valid.set(null);
+            this.control.reset('');
+        }, 300);
+    }
 }
