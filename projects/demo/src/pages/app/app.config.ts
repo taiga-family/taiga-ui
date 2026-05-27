@@ -46,6 +46,7 @@ import {
     TUI_HINT_OPTIONS,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
+import {TUI_POPOUT_CONFIG} from '@taiga-ui/experimental';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {provideHighlightOptions} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
@@ -271,6 +272,10 @@ export const config: ApplicationConfig = {
             }
         }),
         provideExperimentalZonelessChangeDetection(),
+        {
+            provide: TUI_POPOUT_CONFIG,
+            useValue: {providers: [provideExperimentalZonelessChangeDetection()]},
+        },
         {
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () =>
