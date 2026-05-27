@@ -30,15 +30,12 @@
     block-size: var(--t-diameter);
     border-radius: 100%;
     stroke: var(--tui-background-neutral-1);
+    overflow: hidden;
     mask-image: radial-gradient(
         closest-side,
         transparent calc(100% - var(--t-stroke-width) - 0.5px),
         #000 calc(100% - var(--t-stroke-width))
     );
-
-    &._arc {
-        transform: rotate(135deg);
-    }
 
     &[data-size='xxs'] {
         --t-diameter: @diameter[xxs];
@@ -108,4 +105,8 @@
     position: absolute;
     transform: rotate(-90deg);
     overflow: unset;
+
+    :host._arc & {
+        transform: rotate(135deg);
+    }
 }
