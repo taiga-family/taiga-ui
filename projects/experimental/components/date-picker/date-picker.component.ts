@@ -29,6 +29,12 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+type DatePicker<T> = T extends 'single'
+    ? TuiDay
+    : T extends 'multi'
+      ? readonly TuiDay[]
+      : TuiDayRange;
+
 /**
  * @deprecated: work in progress, do not use!
  */
@@ -49,7 +55,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'})],
 })
-export class TuiDatePicker {
+export class TuiDatePicker<T extends 'multi' | 'range' | 'single'> {
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
@@ -59,20 +65,20 @@ export class TuiDatePicker {
         () => (c) => this.i18n()[c.$implicit],
     );
 
-    protected readonly years = computed((value = this.value() || []) =>
+    protected readonly years = computed((value = this.value()) =>
         value instanceof TuiDayRange
             ? Array.from(
                   {length: value.to.year - value.from.year + 1},
                   (_, index) => value.from.year + index,
               )
-            : Array.from(new Set(coerceArray(value).map((day) => day.year))),
+            : Array.from(new Set(coerceArray<TuiDay>(value || []).map(({year}) => year))),
     );
 
-    protected readonly months = computed((value = this.value() || []) =>
+    protected readonly months = computed((value = this.value()) =>
         Array.from({length: 12}, (_, index) => index).filter((index) =>
             value instanceof TuiDayRange
                 ? value.monthInRange(new TuiMonth(this.current().year, index))
-                : coerceArray(value).some(
+                : coerceArray<TuiDay>(value ?? []).some(
                       ({month, year}) => this.current().year === year && index === month,
                   ),
         ),
@@ -120,9 +126,9 @@ export class TuiDatePicker {
     );
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
-    public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
+    public readonly value = model<DatePicker<T> | null>(null);
     public readonly current = model(TuiMonth.currentLocal());
-    public readonly mode = input<'multi' | 'range' | 'single'>('single');
+    public readonly mode = input<T>();
 
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
@@ -169,17 +175,15 @@ export class TuiDatePicker {
         }
 
         if (this.mode() === 'single') {
-            this.value.set(day);
+            this.value.set(day as any);
         } else if (this.mode() === 'multi') {
-            this.value.update((value) =>
-                value instanceof TuiDayRange
-                    ? [day]
-                    : tuiArrayToggle(coerceArray(value || []), day, (a, b) =>
-                          a.daySame(b),
-                      ),
+            this.value.update((value): any =>
+                Array.isArray(value)
+                    ? tuiArrayToggle(value, day, (a: TuiDay, b: TuiDay) => a.daySame(b))
+                    : [day],
             );
         } else {
-            this.value.update((value) =>
+            this.value.update((value): any =>
                 value instanceof TuiDayRange && value.from === value.to
                     ? TuiDayRange.sort(value.to, day.append({}))
                     : new TuiDayRange(day, day),
