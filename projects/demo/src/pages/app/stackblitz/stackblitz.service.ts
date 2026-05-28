@@ -91,9 +91,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
     private prepareAppComponent(file: string): string {
         const parts = file.split(/(@Component)/i);
-        const i = parts.findIndex((x) => x.includes('default class Example'));
-        const component = parts.slice(i - 1).join('');
-        const beginning = parts.slice(0, i - 1).join('');
+        const i = parts.findIndex((x) => x.includes('export default class'));
+        const component = i > 0 ? parts.slice(i - 1).join('') : file;
+        const beginning = i > 0 ? parts.slice(0, i - 1).join('') : '';
         const appCompTs = new TsFileComponentParser(component);
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
