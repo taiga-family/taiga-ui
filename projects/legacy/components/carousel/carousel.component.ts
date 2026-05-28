@@ -62,6 +62,7 @@ export class TuiCarouselComponent {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
+
     protected readonly transitioned = signal(true);
     protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});

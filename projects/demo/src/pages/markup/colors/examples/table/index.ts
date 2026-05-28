@@ -16,8 +16,10 @@ import {TUI_DARK_MODE} from '@taiga-ui/core';
 export class TableColors {
     private readonly win = inject(WA_WINDOW);
     private readonly styles = this.win.getComputedStyle(tuiInjectElement());
+
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly platform = inject(TuiPlatform);
+
     public readonly colors = input<readonly string[]>([]);
 
     protected getValue(variable: string, _p: string, _d: boolean): string {

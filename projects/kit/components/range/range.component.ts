@@ -49,7 +49,9 @@ import {TuiRangeChange} from './range-change.directive';
 export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
     private readonly sliders = viewChildren(TuiSliderComponent);
+
     protected lastActiveThumb: 'end' | 'start' = 'end';
+
     public readonly min = input(0);
     public readonly max = input(100);
     public readonly step = input(1);

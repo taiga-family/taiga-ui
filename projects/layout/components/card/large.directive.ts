@@ -42,5 +42,6 @@ class Styles {}
 export class TuiCardLarge {
     protected readonly options = inject(TUI_CARD_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiCardLarge = input(this.options.space);
 }

@@ -38,6 +38,7 @@ import {type TuiToastOptions} from './toast.options';
 export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly close = viewChild(TuiButton, {read: ElementRef});
     private readonly el = tuiInjectElement();
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
     protected readonly icons = inject(TUI_COMMON_ICONS);

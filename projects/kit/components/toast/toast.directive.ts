@@ -55,6 +55,7 @@ class Styles {}
 })
 export class TuiToastDirective {
     public readonly tuiShrinkWrap = input('min(calc(100vw - 4rem), 25rem)');
+
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly width = tuiDirectiveBinding(

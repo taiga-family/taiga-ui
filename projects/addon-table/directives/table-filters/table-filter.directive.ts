@@ -19,6 +19,7 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     private readonly head = inject(TuiTableHead<T>, {optional: true});
     private readonly delegate = inject(AbstractTuiTableFilter<T[keyof T], unknown>);
     private readonly control = inject(NgControl);
+
     protected readonly filters = inject(TuiTableFiltersDirective<T>);
 
     protected readonly key = computed<string | keyof T | undefined>(

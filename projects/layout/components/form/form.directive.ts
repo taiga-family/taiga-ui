@@ -69,6 +69,7 @@ class Styles {}
 export class TuiForm {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_FORM_OPTIONS);
+
     public readonly size = input(this.options.size, {alias: 'tuiForm'});
 }
 

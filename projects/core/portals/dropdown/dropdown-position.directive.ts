@@ -18,6 +18,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private previous?: TuiVerticalDirection;
+
     public readonly direction = new Subject<TuiVerticalDirection>();
     public readonly type = 'dropdown';
 

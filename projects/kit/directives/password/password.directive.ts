@@ -36,6 +36,7 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
 export class TuiPassword {
     private readonly options = inject(TUI_PASSWORD_OPTIONS);
     private readonly texts = inject(TUI_PASSWORD_TEXTS);
+
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
 

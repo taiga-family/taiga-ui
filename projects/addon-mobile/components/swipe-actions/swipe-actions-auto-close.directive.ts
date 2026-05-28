@@ -10,6 +10,7 @@ import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 })
 export class TuiSwipeActionsAutoClose {
     private readonly el = tuiInjectElement();
+
     public readonly autoClose = input<boolean | string>(true);
 
     protected handleEvent(event: Event): void {

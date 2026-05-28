@@ -21,6 +21,7 @@ import {TuiTabBarItem} from './tab-bar-item.component';
 })
 export class TuiTabBarComponent {
     private readonly tabs = contentChildren(TuiTabBarItem, {read: ElementRef});
+
     public readonly quantity = input(4);
     public readonly activeItemIndex = model(Number.NaN);
 

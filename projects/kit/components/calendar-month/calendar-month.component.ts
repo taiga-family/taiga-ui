@@ -43,6 +43,7 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonth {
     private hoveredItem: TuiMonth | null = null;
+
     protected isYearPickerShown = false;
     protected readonly months = inject(TUI_CALENDAR_MONTHS);
 

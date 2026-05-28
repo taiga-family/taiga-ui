@@ -51,7 +51,9 @@ export class TuiInputSearch implements OnChanges {
     private neighbor = this.textfield.el.nextSibling;
     private placeholder = '';
     private ref?: EmbeddedViewRef<unknown>;
+
     protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
+
     public readonly tuiInputSearch = input<PolymorpheusContent>();
     public readonly searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
 

@@ -23,6 +23,7 @@ export default class Page extends Array {
     private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
+
     protected readonly routes = DemoRoute;
 
     protected readonly examples = [

@@ -16,6 +16,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly preview = viewChild<TemplateRef<TuiDialogContext>>('preview');
 
     protected readonly contentSample =

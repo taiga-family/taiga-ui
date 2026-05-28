@@ -54,6 +54,7 @@ export class TuiLineClamp implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly isOverflown$ = new Subject<boolean>();
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
+
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);

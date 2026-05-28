@@ -13,6 +13,7 @@ import {type TuiPoint} from '@taiga-ui/core/types';
 })
 export class TuiLineClampPositionDirective extends TuiPositionAccessor {
     private readonly accessor = inject<TuiRectAccessor>(TuiHintDirective);
+
     public readonly type = 'hint';
 
     public getPosition(): TuiPoint {

@@ -41,6 +41,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 export abstract class AbstractDemo implements OnInit {
     protected abstract readonly storage: Storage | null;
     protected abstract readonly router: Router;
+
     private readonly today = new Date();
 
     public ngOnInit(): void {

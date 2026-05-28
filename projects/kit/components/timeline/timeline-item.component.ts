@@ -25,6 +25,7 @@ import {TuiTimelineComponent} from './timeline.component';
 export class TuiTimelineItem {
     protected readonly timeline = inject(TuiTimelineComponent);
     protected readonly offset = linkedSignal(() => this.value()[0]);
+
     public readonly draggable = input(true);
     public readonly resizable = input(true);
     public readonly value = model<readonly [number, number]>([0, 0]);

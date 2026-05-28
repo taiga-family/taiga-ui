@@ -56,6 +56,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
+
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
 

@@ -12,6 +12,7 @@ import {TuiTableControlDirective} from './table-control.directive';
 export class TuiCheckboxTableDirective {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly control = inject(NgControl);
+
     protected readonly parent = inject(TuiTableControlDirective);
 
     protected readonly update = effect(() => {

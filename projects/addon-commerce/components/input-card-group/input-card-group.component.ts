@@ -125,6 +125,7 @@ export class TuiInputCardGroup
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
     private readonly focusedIn = tuiFocusedIn(this.el);
+
     protected readonly cvcMask = computed(() => TUI_MASK_CVC(this.codeLength() ?? 3));
     protected readonly cvcHidden = this.options.cvcHidden;
     protected readonly dateTexts = inject(TUI_DATE_TEXTS);

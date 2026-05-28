@@ -14,6 +14,7 @@ import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 export class TuiSearchHotkey {
     private readonly platform = inject(WA_NAVIGATOR).platform;
     private readonly texts = inject(TUI_INPUT_SEARCH);
+
     protected readonly search = inject(TuiInputSearch);
 
     protected readonly placeholder = computed(({hotkey} = this.texts()) =>

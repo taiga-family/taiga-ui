@@ -17,6 +17,7 @@ import {TUI_COMMON_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 export class TuiSpinButton {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
+
     public readonly focusable = input(true);
     public readonly disabled = input(false);
     public readonly leftDisabled = input(false);

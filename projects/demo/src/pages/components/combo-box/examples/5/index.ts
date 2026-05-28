@@ -24,6 +24,7 @@ import {DatabaseServer} from './database';
 })
 export default class Example {
     private readonly api = inject(DatabaseServer);
+
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
     protected readonly search$ = new Subject<string>();

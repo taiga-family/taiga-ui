@@ -46,6 +46,7 @@ const ROTATION_ANGLE = 90;
 })
 export class TuiPreviewComponent {
     private readonly el = tuiInjectElement();
+
     protected minZoom = 1;
     protected width = 0;
     protected height = 0;

@@ -38,6 +38,7 @@ export class TuiTableExpand {
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
     private readonly server = isPlatformServer(inject(PLATFORM_ID));
+
     protected readonly transitioning = signal(false);
 
     protected readonly contentHeight = computed((_ = this.expanded()) =>

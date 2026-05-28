@@ -60,6 +60,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      * @deprecated use `item`
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
+
     protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected readonly month = signal(TuiMonth.currentLocal());
@@ -68,6 +69,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+
     public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
     public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
     public readonly minLength = input<TuiDayLike | null>(null);

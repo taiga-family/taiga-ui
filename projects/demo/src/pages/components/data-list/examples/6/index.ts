@@ -39,5 +39,6 @@ export default class Example {
     ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
+
     public control = new FormControl('');
 }

@@ -51,6 +51,7 @@ export class TuiHintDirective<C>
 {
     private readonly service = inject(TuiPopupService);
     private ref?: ComponentRef<unknown>;
+
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
 

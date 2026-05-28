@@ -41,8 +41,10 @@ export class TuiShimmer implements OnChanges {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
     private animation?: Animation;
+
     protected readonly nothing = tuiWithStyles(Styles);
     protected disabled = false;
+
     public readonly tuiShimmer = input(false);
 
     public ngOnChanges(): void {

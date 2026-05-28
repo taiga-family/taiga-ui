@@ -9,6 +9,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
 })
 export class TuiDropdownManual implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
+
     public readonly tuiDropdownManual = input<boolean | ''>(false);
 
     public ngOnChanges(): void {

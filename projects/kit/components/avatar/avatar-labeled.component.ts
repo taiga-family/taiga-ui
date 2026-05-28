@@ -30,5 +30,6 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 })
 export class TuiAvatarLabeled {
     public readonly label = input('');
+
     protected readonly words = computed(() => this.label().split(' '));
 }

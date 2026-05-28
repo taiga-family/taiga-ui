@@ -21,6 +21,7 @@ export class TuiHintAsideDirective {
     private readonly el = tuiInjectElement();
     private readonly aside = inject(TuiAsideComponent);
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
+
     public readonly tuiHintAside = input<PolymorpheusContent>(null);
 
     protected readonly binding = tuiDirectiveBinding(

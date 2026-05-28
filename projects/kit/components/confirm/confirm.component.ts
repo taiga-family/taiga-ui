@@ -26,6 +26,7 @@ export interface TuiConfirmData {
 })
 export class TuiConfirm {
     private readonly isMobile = inject(WA_IS_MOBILE);
+
     protected readonly words = inject(TUI_CONFIRM_WORDS);
 
     public readonly context =

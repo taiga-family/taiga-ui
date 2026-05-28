@@ -31,5 +31,6 @@ class Styles {}
 })
 export class TuiStatus {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiStatus = input('');
 }

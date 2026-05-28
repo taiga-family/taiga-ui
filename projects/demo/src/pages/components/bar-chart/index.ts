@@ -13,6 +13,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 })
 export default class Page {
     public readonly examples = ['With axes', 'Same values with collapsed mode'];
+
     protected collapsed = false;
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size: TuiSizeL | TuiSizeS | null = null;
