@@ -55,7 +55,7 @@ type DatePicker<T> = T extends 'single'
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'})],
 })
-export class TuiDatePicker<T extends 'multi' | 'range' | 'single'> {
+export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
