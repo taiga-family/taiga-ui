@@ -174,8 +174,12 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single'> {
             this.carousel()?.prev();
         }
 
-        if (this.mode() === 'single') {
-            this.value.set(day as any);
+        if (this.mode() === 'range') {
+            this.value.update((value): any =>
+                value instanceof TuiDayRange && value.from === value.to
+                    ? TuiDayRange.sort(value.to, day.append({}))
+                    : new TuiDayRange(day, day),
+            );
         } else if (this.mode() === 'multi') {
             this.value.update((value): any =>
                 Array.isArray(value)
@@ -183,11 +187,7 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single'> {
                     : [day],
             );
         } else {
-            this.value.update((value): any =>
-                value instanceof TuiDayRange && value.from === value.to
-                    ? TuiDayRange.sort(value.to, day.append({}))
-                    : new TuiDayRange(day, day),
-            );
+            this.value.set(day as any);
         }
     }
 }
