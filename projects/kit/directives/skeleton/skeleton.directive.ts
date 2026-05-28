@@ -44,6 +44,7 @@ export class TuiSkeleton implements OnChanges {
     private animation?: Animation;
     private readonly el = tuiInjectElement();
     private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
+
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly placeholder = computed((length = this.tuiSkeleton()) => {

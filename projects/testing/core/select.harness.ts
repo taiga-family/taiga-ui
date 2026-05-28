@@ -4,6 +4,7 @@ import {TuiDropdownOpenHarness} from './dropdown-open.harness';
 
 export class TuiSelectHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-select';
+
     private readonly dropdown = this.locatorFor(TuiDropdownOpenHarness);
 
     public async sendSpaceKey(): Promise<void> {

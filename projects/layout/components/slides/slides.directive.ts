@@ -38,6 +38,7 @@ export class TuiSlides {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly el = tuiInjectElement();
     protected readonly sign = computed(() => Math.sign(this.direction() || 0));
+
     public readonly direction = input<number | ''>('', {alias: 'tuiSlides'});
 
     protected onAnimation(target: Element): void {

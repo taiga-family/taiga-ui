@@ -58,6 +58,7 @@ export class TuiDropdownSelection
     implements TuiRectAccessor, OnDestroy
 {
     private ghost?: HTMLElement;
+
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);

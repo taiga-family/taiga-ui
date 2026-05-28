@@ -10,6 +10,7 @@ import {identity} from 'rxjs';
 })
 export class TuiCopyProcessor {
     private readonly win = inject(WA_WINDOW);
+
     public readonly tuiCopyProcessor = input<TuiStringHandler<string>>(identity);
 
     protected onCopy(event: ClipboardEvent): void {

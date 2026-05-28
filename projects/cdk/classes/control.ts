@@ -42,6 +42,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
     private readonly refresh$ = new Subject<void>();
     private readonly internal = signal(this.fallback);
+
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
 

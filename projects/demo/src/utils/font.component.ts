@@ -66,6 +66,7 @@ import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
 })
 export class TuiFont {
     public readonly tuiFont = input('');
+
     protected readonly el = tuiInjectElement();
     protected readonly platform = inject(TuiPlatform);
 

@@ -15,6 +15,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
+
     protected lineHeight = Number.NaN;
     protected lineLimit = Number.NaN;
 

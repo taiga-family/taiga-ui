@@ -40,8 +40,10 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
 export class TuiCalendarSheet {
     private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
     private readonly today = TuiDay.currentLocal();
+
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
+
     public readonly month = input(TuiMonth.currentLocal());
 
     public readonly disabledItemHandler =

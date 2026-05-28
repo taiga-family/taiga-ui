@@ -35,6 +35,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
 })
 export class TuiReorder<T> {
     private dragging = false;
+
     protected order = new Map<number, number>();
 
     protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
@@ -51,6 +52,7 @@ export class TuiReorder<T> {
 
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+
     public readonly enabled = model<readonly T[]>([]);
     public readonly items = model<readonly T[]>([]);
     public readonly content = input(TUI_STRINGIFY);

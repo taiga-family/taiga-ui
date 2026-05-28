@@ -96,6 +96,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);

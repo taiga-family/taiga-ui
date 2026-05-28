@@ -72,6 +72,7 @@ export class TuiHintComponent {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
+
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);

@@ -29,5 +29,6 @@ class Styles {}
 })
 export class TuiPin {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly open = input<boolean | ''>('', {alias: 'tuiPin'});
 }

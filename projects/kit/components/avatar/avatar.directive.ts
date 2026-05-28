@@ -54,9 +54,11 @@ class Styles {}
 })
 export class TuiAvatar {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly icons = inject(TuiIcons);
     protected readonly fallback = signal(false);
+
     public readonly size = input(this.options.size);
     public readonly round = input(this.options.round);
     public readonly badge = input('');

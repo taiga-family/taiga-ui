@@ -44,6 +44,7 @@ class Styles {}
 })
 export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly icons = tuiIconStart(

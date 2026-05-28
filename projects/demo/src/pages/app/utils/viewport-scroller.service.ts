@@ -9,6 +9,7 @@ export class TuiViewportScroller implements ViewportScroller {
     private readonly doc = inject(DOCUMENT);
     private readonly win = inject(WA_WINDOW);
     private readonly scroll$ = new ReplaySubject<Element>(1);
+
     public setOffset = noop;
 
     constructor() {

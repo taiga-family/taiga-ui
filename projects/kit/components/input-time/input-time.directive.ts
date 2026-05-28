@@ -87,6 +87,7 @@ export class TuiInputTimeDirective
     );
 
     protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
+
     public readonly accept = input<readonly TuiTime[]>([]);
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
     public readonly prefix = input('');

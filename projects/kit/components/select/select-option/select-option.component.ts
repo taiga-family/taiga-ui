@@ -42,6 +42,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 export class TuiSelectOption<T> {
     private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly value = tuiInjectValue<T>();
+
     protected readonly datalist = inject(TuiDataListComponent);
     protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
 

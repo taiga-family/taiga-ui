@@ -13,6 +13,7 @@ import {TuiAppBar, TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
     protected step = 0;
 
     protected open(template: TemplateRef<any>): void {

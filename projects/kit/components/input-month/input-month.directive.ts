@@ -36,6 +36,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly input = inject(TuiInputDirective);
     private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
+
     protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_OPTIONS).icon);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(

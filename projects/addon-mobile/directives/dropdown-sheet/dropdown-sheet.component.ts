@@ -30,6 +30,7 @@ export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
     private readonly dialogs = inject(TuiSheetDialogService);
     private readonly directive = inject(TuiDropdownSheet);
+
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 

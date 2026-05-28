@@ -14,6 +14,7 @@ import {tuiSum} from '@taiga-ui/cdk';
 })
 export default class Example {
     private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
+
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
     protected index = Number.NaN;

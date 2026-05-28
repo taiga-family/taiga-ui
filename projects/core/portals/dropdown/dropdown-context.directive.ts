@@ -29,6 +29,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
 export class TuiDropdownContext extends TuiRectAccessor {
     private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
+
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
     protected readonly activeZone = inject(TuiActiveZone);
     protected readonly driver = inject(TuiDropdownDriver);

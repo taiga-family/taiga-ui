@@ -16,6 +16,7 @@ export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy
     private readonly vcr = inject(ViewContainerRef);
     private readonly observer = inject(WaIntersectionObserverDirective);
     private readonly container = inject(TuiDynamicHeaderContainerDirective);
+
     public readonly templateRef = inject(TemplateRef<unknown>);
     public readonly view = this.vcr.createEmbeddedView(this.templateRef);
     public readonly visible = signal(false);

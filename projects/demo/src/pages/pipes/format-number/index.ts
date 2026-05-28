@@ -21,5 +21,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     public readonly control = new FormControl(100);
 }

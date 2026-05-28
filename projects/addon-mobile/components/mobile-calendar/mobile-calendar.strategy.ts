@@ -50,6 +50,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
     private viewport: CdkVirtualScrollViewport | null = null;
+
     public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {

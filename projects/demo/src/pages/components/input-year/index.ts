@@ -36,6 +36,8 @@ export default class PageComponent {
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
+
     public control = new FormControl<number | null>(null, Validators.required);
+
     protected readonly handler = (year: number): boolean => year % 3 === 0;
 }

@@ -46,6 +46,7 @@ import {
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     private readonly dateMultiOptions = inject(TUI_INPUT_DATE_MULTI_OPTIONS);
+
     protected readonly icon = tuiIconEnd(this.dateMultiOptions.icon);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);

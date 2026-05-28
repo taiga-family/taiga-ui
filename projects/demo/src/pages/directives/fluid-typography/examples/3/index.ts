@@ -17,6 +17,7 @@ import {
 })
 export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
+
     protected value = 'I am a very long value';
     protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
 

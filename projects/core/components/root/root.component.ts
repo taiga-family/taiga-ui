@@ -47,6 +47,7 @@ export class TuiRoot {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly child = !!inject(TuiRoot, {optional: true, skipSelf: true});
+
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);

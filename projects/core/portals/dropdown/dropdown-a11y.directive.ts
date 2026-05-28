@@ -9,6 +9,7 @@ export class TuiDropdownA11y {
     private readonly id = tuiGenerateId();
     private readonly host = inject(TUI_DROPDOWN_HOST);
     private readonly dropdown = inject(TuiDropdownDirective);
+
     public readonly tuiDropdownRole = input('listbox');
 
     protected readonly sync = effect(() => {

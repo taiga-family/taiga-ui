@@ -31,6 +31,7 @@ export class TuiButtonSelect<T>
 {
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+
     public readonly size = 's';
 
     public handleOption(option: T): void {

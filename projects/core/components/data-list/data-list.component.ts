@@ -88,6 +88,7 @@ export class TuiDataListComponent<T>
 
     protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
+
     public readonly emptyContent = input<PolymorpheusContent>();
     public readonly size = input(tuiInjectDataListSize());
 
