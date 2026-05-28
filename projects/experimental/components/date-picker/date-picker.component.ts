@@ -71,7 +71,7 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
                   {length: value.to.year - value.from.year + 1},
                   (_, index) => value.from.year + index,
               )
-            : Array.from(new Set(coerceArray<TuiDay>(value || []).map(({year}) => year))),
+            : Array.from(new Set(coerceArray<TuiDay>(value ?? []).map(({year}) => year))),
     );
 
     protected readonly months = computed((value = this.value()) =>
