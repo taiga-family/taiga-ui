@@ -2042,6 +2042,7 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected items = [&#039;one&#039;, &#039;two&#039;, &#039;three&#039;, &#039;four&#039;];
     protected control = new FormControl&lt;string[]&gt;([]);
     protected expanded = false;
@@ -2097,6 +2098,7 @@ import {TuiActionBar} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected readonly open = signal(false);
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 }
@@ -2434,6 +2436,7 @@ import {TuiAppBar, TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
     protected step = 0;
 
     protected open(template: TemplateRef&lt;any&gt;): void {
@@ -4405,6 +4408,7 @@ import {type TuiSizeL, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     public readonly examples = [&#039;With axes&#039;, &#039;Same values with collapsed mode&#039;];
+
     protected collapsed = false;
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected size: TuiSizeL | TuiSizeS | null = null;
@@ -5572,6 +5576,7 @@ import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected messages = [&#039;Check that awesome bottom sheet out!&#039;];
     protected value = &#039;&#039;;
 
@@ -6005,6 +6010,7 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
+
     protected readonly examples = [&#039;Basic&#039;, &#039;Overflow&#039;];
 
     protected readonly items = [
@@ -10753,6 +10759,7 @@ import {TuiChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly checked = [true, false, true];
     protected readonly values = [&#039;test&#039;, &#039;Some text&#039;, &#039;WOW!&#039;];
 
@@ -11435,6 +11442,7 @@ import {DatabaseServer} from &#039;./database&#039;;
 })
 export default class Example {
     private readonly api = inject(DatabaseServer);
+
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
     protected readonly search$ = new Subject&lt;string&gt;();
@@ -11807,6 +11815,7 @@ interface Country {
 })
 export default class PageComponent extends Array {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -12038,6 +12047,7 @@ import {TuiCompass} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly compass = viewChild(TuiCompass, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
@@ -12076,6 +12086,7 @@ export default class Page {
 
     protected color = this.colorVariants[0]!;
     protected degrees = 90;
+
     public readonly examples = [&#039;Basic&#039;, &#039;Direction&#039;];
 }
 ```
@@ -12169,9 +12180,11 @@ import {switchMap} from &#039;rxjs&#039;;
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly routes = DemoRoute;
     protected readonly examples = [&#039;Basic&#039;];
     protected readonly exampleService = import(&#039;./examples/import/service.md&#039;);
+
     public readonly appearances = [&#039;primary&#039;, &#039;accent&#039;, &#039;secondary&#039;];
     public appearance = this.appearances[0]!;
     public no = &#039;No&#039;;
@@ -12789,6 +12802,7 @@ import {TuiDataListDropdownManager} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = &#039;s&#039;;
 
@@ -13150,6 +13164,7 @@ export default class Example {
     ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
+
     public control = new FormControl(&#039;&#039;);
 }
 ```
@@ -13661,6 +13676,7 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Example {
     private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
+
     protected value = &#039;&#039;;
 
     protected onModelChange(value: string): void {
@@ -13908,6 +13924,7 @@ export default class Page extends Array {
     private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
+
     protected readonly routes = DemoRoute;
 
     protected readonly examples = [
@@ -22000,6 +22017,7 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected heading = &#039;Page heading&#039;;
     protected editing = false;
 
@@ -22070,6 +22088,7 @@ export default class Example implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
+
     protected readonly isE2E = inject(WA_IS_E2E);
     protected count = &#039;0&#039;;
 
@@ -23103,6 +23122,7 @@ import {TuiInputPhone} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly isIos = inject(WA_IS_IOS);
+
     public value = &#039;+71234567890&#039;;
 
     protected get pattern(): string | null {
@@ -23347,6 +23367,7 @@ export default class PageComponent {
 
     protected filler = &#039;&#039;;
     protected phoneMask = this.phoneMasks[0]!;
+
     public control = new FormControl(&#039;&#039;, [Validators.required, Validators.minLength(12)]);
 
     public readonly examples = [
@@ -25308,7 +25329,9 @@ export default class PageComponent {
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
+
     public control = new FormControl&lt;number | null&gt;(null, Validators.required);
+
     protected readonly handler = (year: number): boolean =&gt; year % 3 === 0;
 }
 ```
@@ -26303,6 +26326,7 @@ import {
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
     private enabled = Array.from&lt;unknown, boolean&gt;({length: 5}, () =&gt; true);
+
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = [&#039;Axes&#039;, &#039;Faxes&#039;, &#039;Taxes&#039;, &#039;Saxes&#039;, &#039;Other&#039;];
@@ -27092,6 +27116,7 @@ import {map, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
+
     protected readonly value = signal(&#039;&#039;);
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
@@ -27230,6 +27255,7 @@ import {TuiLineClamp} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
+
     protected lineHeight = Number.NaN;
     protected lineLimit = Number.NaN;
 
@@ -27798,6 +27824,7 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
+
     protected readonly maxLength: TuiDayLike = {month: 12};
 
     protected readonly range = signal(
@@ -30010,6 +30037,7 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from &#039;@taiga-ui/la
 })
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
+
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
@@ -31406,6 +31434,7 @@ import {TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
     protected open = false;
@@ -31451,6 +31480,7 @@ import {TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly alerts = inject(TuiNotificationService);
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
@@ -31497,6 +31527,7 @@ import {TuiBlockStatus, TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
     protected open = false;
@@ -32027,6 +32058,7 @@ import {type Subscription} from &#039;rxjs&#039;;
 export default class Example {
     private readonly popout = inject(TuiPopoutService);
     private sub: Subscription | null = null;
+
     protected readonly value = signal(&#039;Value&#039;);
 
     protected toggle(content: TemplateRef&lt;any&gt;): void {
@@ -32234,6 +32266,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from &#039;@taiga-ui/polym
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly contentSample =
@@ -32366,6 +32399,7 @@ import {TuiPreview, TuiPreviewDialogService} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected show(): void {
@@ -32426,6 +32460,7 @@ import {
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly items = [
@@ -33558,6 +33593,7 @@ import {Subject} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected items = Array.from({length: 10000}).map((_, i) =&gt; `Item #${i}`);
 
     protected onPull(): void {
@@ -34727,6 +34763,7 @@ import {tuiSum} from &#039;@taiga-ui/cdk&#039;;
 })
 export default class Example {
     private readonly labels = [&#039;Food&#039;, &#039;Cafe&#039;, &#039;Open Source&#039;, &#039;Taxi&#039;, &#039;other&#039;];
+
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
     protected index = Number.NaN;
@@ -34948,6 +34985,7 @@ const SOME_OFFSET_CONST = 20;
 })
 export default class Example {
     private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
@@ -36425,6 +36463,7 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -37124,6 +37163,7 @@ export default class Page {
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly exampleComponent = import(&#039;./examples/import/component.md&#039;);
 
     protected readonly examples = [
@@ -39761,6 +39801,7 @@ interface Item {
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 1;
 
     protected readonly items = [
@@ -41045,6 +41086,7 @@ function getAge(dob: TuiDay): number {
 })
 export default class Example {
     private readonly size$ = new BehaviorSubject(10);
+
     protected readonly page$ = new BehaviorSubject(0);
 
     protected readonly direction$ = new BehaviorSubject&lt;TuiSortDirection&gt;(
@@ -42123,6 +42165,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -42164,6 +42207,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -42329,6 +42373,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
     protected readonly steps = [&#039;Sales&#039;, &#039;Settings&#039;, &#039;News&#039;];
 
@@ -46416,6 +46461,7 @@ import {TuiButton, TuiDialogService, TuiInput} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     private readonly dialog = inject(TuiDialogService);
+
     protected active = false;
 
     protected onZone(active: boolean): void {
@@ -46941,6 +46987,7 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
@@ -48298,6 +48345,7 @@ import {
 })
 class TopRightDirective extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;dropdown&#039;;
 
     public getPosition({height}: DOMRect): TuiPoint {
@@ -49306,6 +49354,7 @@ import {
 })
 export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
+
     protected value = &#039;I am a very long value&#039;;
     protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
 
@@ -50346,6 +50395,7 @@ import {BehaviorSubject, map} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(
@@ -51907,6 +51957,7 @@ export default class Example {
     private readonly key = inject(TUI_DARK_MODE_KEY);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly media = inject(WA_WINDOW).matchMedia(&#039;(prefers-color-scheme: dark)&#039;);
+
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected reset(): void {
@@ -52889,6 +52940,7 @@ import {CustomPortalService} from &#039;./service&#039;;
 })
 export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
+
     protected templates: Array&lt;EmbeddedViewRef&lt;unknown&gt;&gt; = [];
 
     protected addTemplate(template: TemplateRef&lt;unknown&gt;): void {
@@ -53096,6 +53148,7 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from &#039;@taiga-ui/core&#
 })
 export default class Example extends TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -53206,6 +53259,7 @@ import {
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -53261,6 +53315,7 @@ import {TuiSegmented} from &#039;@taiga-ui/kit&#039;;
 })
 class PortalHost implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -54135,6 +54190,7 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     public readonly control = new FormControl(100);
 }
 ```
