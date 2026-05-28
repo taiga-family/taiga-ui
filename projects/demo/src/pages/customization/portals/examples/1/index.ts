@@ -11,7 +11,7 @@ import {CustomPortalService} from './service';
     styleUrl: './index.less',
     changeDetection,
 })
-export class TuiPortalsExample1 {
+export default class Example {
     private readonly customPortalService = inject(CustomPortalService);
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
 

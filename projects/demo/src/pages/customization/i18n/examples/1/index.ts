@@ -19,7 +19,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
     styleUrl: './index.less',
     changeDetection,
 })
-export class TuiI18nExample1 {
+export default class Example {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected language = this.switcher.language;
 

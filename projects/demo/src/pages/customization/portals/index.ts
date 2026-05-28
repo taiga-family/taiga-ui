@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
-import {TuiPortalsExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [TuiDemo, TuiPortalsExample1],
+    imports: [Example, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

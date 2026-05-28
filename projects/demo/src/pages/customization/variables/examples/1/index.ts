@@ -13,7 +13,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export class TuiVariablesExample1 {
+export default class Example {
     protected value = '';
     protected checkbox = true;
 }
