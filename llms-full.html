@@ -48350,6 +48350,14 @@ export default class PageComponent {
     protected readonly contentVariants = [&#039;Template&#039;, &#039;Custom string&#039;];
     protected content = this.contentVariants[0]!;
 
+    protected readonly examples = [
+        &#039;Menu&#039;,
+        &#039;With custom host&#039;,
+        &#039;With link&#039;,
+        &#039;Complex example&#039;,
+        &#039;Custom positioning&#039;,
+    ];
+
     protected get template(): boolean {
         return this.content === &#039;Template&#039;;
     }
