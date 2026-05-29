@@ -1,11 +1,7 @@
 @import '@taiga-ui/styles/utils.less';
 
-[tuiFile][data-orientation='horizontal'] {
-    padding-inline: 1rem;
-
-    &:has(> label:active) {
-        background: var(--tui-background-neutral-1);
-    }
+[tuiFile][data-orientation='horizontal']:has(> label:active) {
+    background: var(--tui-background-neutral-1);
 }
 
 [tuiFile][data-orientation='vertical'] {

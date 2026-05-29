@@ -10,6 +10,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiCell, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {tuiLoaderOptionsProvider} from '@taiga-ui/core/components/loader';
 import {tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {TuiAvatar, tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 
@@ -43,6 +44,7 @@ import {TUI_FILE_OPTIONS_OPTIONS} from './file.options';
         tuiButtonOptionsProvider({size: 's', appearance: 'action'}),
         tuiButtonXOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiLoaderOptionsProvider({size: 'm', inheritColor: true}),
+        tuiHintOptionsProvider({appearance: 'floating', direction: 'top'}),
     ],
     hostDirectives: [{directive: TuiCell, inputs: ['tuiCell: size']}],
     host: {

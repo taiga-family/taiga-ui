@@ -33,7 +33,6 @@
             clip-path: inset(50%);
         }
 
-        tui-icon,
         tui-loader {
             color: var(--tui-text-action);
         }
@@ -61,8 +60,11 @@
         }
     }
 
+    .tui-slide {
+        animation-duration: @tui-duration-fast;
+    }
+
     &[data-orientation='horizontal'] {
-        padding-inline: 0;
         grid-column: 1 / -1;
 
         &[data-size='m'] [tuiAvatar] {
@@ -89,6 +91,11 @@
             [tuiIconButton] {
                 --tui-icon-size: 1rem;
             }
+        }
+
+        [tuiButtonX] {
+            min-block-size: inherit;
+            align-self: start;
         }
     }
 
@@ -152,6 +159,14 @@
             font: var(--tui-typography-ui-s);
             hyphens: auto;
             overflow-wrap: break-word;
+        }
+
+        &[data-size='s'] [tuiTitle],
+        &[data-size='m'] [tuiTitle] {
+            position: absolute;
+            inset: 0.75rem;
+            justify-content: space-between;
+            flex-direction: column-reverse;
         }
     }
 }

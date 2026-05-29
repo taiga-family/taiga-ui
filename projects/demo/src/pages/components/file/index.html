@@ -4,6 +4,18 @@
     type="components"
 >
     <ng-template pageTab>
+        <div tuiNotification>
+            This component is based on
+            <a
+                tuiLink
+                [routerLink]="routes.Cell"
+            >
+                Cell
+            </a>
+            and therefore follows its rules on padding in horizontal mode. Reset
+            <code>padding-inline</code>
+            if you do not need it.
+        </div>
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
@@ -24,7 +36,7 @@
                         component it is built upon.
                     }
                     @case (1) {
-                        Card size adjusts to the grid with min/max width built-in.
+                        Card size has min/max width built-in according to specs.
                     }
                     @case (2) {
                         Long file names are allowed by default but can be trimmed using
