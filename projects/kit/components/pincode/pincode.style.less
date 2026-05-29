@@ -158,60 +158,28 @@ input[tuiPincode] {
         }
     }
 
-    [data-platform]:not([data-platform='web'])
-        &:not([type='password'])
-        + .t-content
-        .t-item_focus:not(.t-item_filled)
-        .t-dot_placeholder,
-    [data-platform]:not([data-platform='web'])
-        &[type='password']
-        + .t-content
-        .t-item_focus:not(.t-item_filled)
-        .t-dot_value {
-        scale: 1;
-    }
-
     &:not([type='password']) + .t-content .t-item_filled .t-value {
         scale: 1;
     }
 
-    &[type='password'] + .t-content {
-        .t-dot_value {
-            scale: 1;
-        }
-
-        .t-item_filled .t-dot_value {
-            background: var(--tui-text-action);
-        }
-
-        .t-item:not(.t-item_filled) {
-            .t-dot_value {
-                transition: background-color 150ms var(--tui-curve-expressive-exit);
-            }
-
-            .t-dot_placeholder {
-                scale: 0;
-                transition: none;
-            }
-        }
+    &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        scale: 1;
+        background: var(--tui-text-action);
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode])
-        + .t-content
+        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode])
-        + .t-content
+        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         animation: tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode])
-        + .t-content
+        &[type='password']:not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
@@ -222,7 +190,7 @@ input[tuiPincode] {
             color: var(--tui-text-negative);
         }
 
-        .t-item .t-dot_value {
+        .t-item_filled .t-dot_value {
             background: var(--tui-text-negative);
         }
     }
@@ -252,13 +220,11 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste]):not([type='password'])
-        + .t-content
+        &[data-mode='pending']:not([data-paste]):not([type='password']) + .t-content
         .t-item_filled:last-of-type
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste])[type='password']
-        + .t-content
+        &[data-mode='pending']:not([data-paste])[type='password'] + .t-content
         .t-item_filled:last-of-type
         .t-dot_value {
         animation:
