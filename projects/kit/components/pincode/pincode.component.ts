@@ -28,17 +28,16 @@ const ANIMATION = {
         autocomplete: 'one-time-code',
         inputmode: 'numeric',
         spellcheck: 'false',
-        '[value]': 'value()',
-        '[maxLength]': 'maxLength()',
         '[attr.data-state]': 'state()',
         '[class._paste]': 'paste()',
+        '[maxLength]': 'maxLength()',
+        '[value]': 'value()',
         '(input)': 'onInput($event.target.value)',
     },
 })
 export class TuiPincodeComponent extends TuiControl<string> {
     private phase = 0;
     private bounced = false;
-
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
