@@ -1,4 +1,4 @@
-@if (control()?.control?.valueChanges | async) {}
+@if (child()?.value() ?? (control()?.control?.valueChanges | async)) {}
 @if (rows() > 1) {
     <tui-scroll-controls class="t-scrollbar" />
 }

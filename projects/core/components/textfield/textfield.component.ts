@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
@@ -126,13 +127,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             (!!this.value() || !this.input()?.nativeElement.placeholder),
     );
 
-    protected readonly accessor = contentChild<TuiTextfieldAccessor<T>>(
-        TUI_TEXTFIELD_ACCESSOR,
-        {descendants: true},
-    );
+    protected readonly accessor =
+        contentChild<TuiTextfieldAccessor<T>>(TUI_TEXTFIELD_ACCESSOR);
 
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
+    public readonly child = contentChild(TuiControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
