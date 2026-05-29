@@ -36,6 +36,7 @@ export const TUI_USED_ICONS = [
     '@tui.circle-help',
     '@tui.circle-plus',
     '@tui.circle-question-mark',
+    '@tui.circle-x',
     '@tui.clock',
     '@tui.cloud',
     '@tui.cloud-download',

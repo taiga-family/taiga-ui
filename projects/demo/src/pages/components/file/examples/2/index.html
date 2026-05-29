@@ -1,0 +1,79 @@
+<tui-segmented>
+    @for (item of ['m', 'l']; track $index) {
+        <label>
+            {{ item }}
+            <input
+                name="size"
+                type="radio"
+                [value]="item"
+                [(ngModel)]="size"
+            />
+        </label>
+    }
+</tui-segmented>
+
+@for (item of content; track $index) {
+    <div
+        tuiFile
+        [size]="size()"
+        [tuiHint]="item === 'error' && size() === 'm' ? 'Error message' : ''"
+    >
+        @switch (item) {
+            @case ('icon') {
+                @if (size() === 'l') {
+                    <tui-icon icon="@tui.image" />
+                }
+            }
+            @case ('button') {
+                <button
+                    iconStart="@tui.rotate-cw"
+                    tuiIconButton
+                    type="button"
+                >
+                    Retry
+                </button>
+            }
+            @case ('progress') {
+                <tui-progress-circle [value]="0.6" />
+            }
+            @case ('loader') {
+                <tui-loader />
+            }
+            @case ('image') {
+                <img
+                    alt=""
+                    src="assets/images/avatar.jpg"
+                />
+            }
+            @case ('error') {
+                <tui-icon
+                    icon="@tui.circle-x"
+                    [style.color]="'var(--tui-text-negative)'"
+                />
+            }
+        }
+
+        @if (size() === 'l') {
+            <div tuiTitle>
+                file.png
+                @if (item === 'error') {
+                    <div
+                        tuiSubtitle
+                        [style.color]="'var(--tui-text-negative)'"
+                    >
+                        Error
+                    </div>
+                } @else {
+                    <div tuiSubtitle>30 MB</div>
+                }
+            </div>
+        } @else if (item !== 'image') {
+            <div tuiTitle>
+                file
+                <div tuiSubtitle>PNG</div>
+            </div>
+        }
+
+        <button tuiButtonX>Remove</button>
+    </div>
+}
