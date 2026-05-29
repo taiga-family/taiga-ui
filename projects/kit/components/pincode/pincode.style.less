@@ -159,13 +159,11 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password'])
-        + .t-content
+        &:not([type='password']) + .t-content
         .t-item_focus:not(.t-item_filled)
         .t-dot_placeholder,
     [data-platform]:not([data-platform='web'])
-        &[type='password']
-        + .t-content
+        &[type='password'] + .t-content
         .t-item_focus:not(.t-item_filled)
         .t-dot_value {
         scale: 1;
@@ -197,21 +195,18 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode])
-        + .t-content
+        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode])
-        + .t-content
+        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
-        animation: tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard);
+        animation: tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode])
-        + .t-content
+        &[type='password']:not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
@@ -252,17 +247,15 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste]):not([type='password'])
-        + .t-content
+        &[data-mode='pending']:not([data-paste]):not([type='password']) + .t-content
         .t-item_filled:last-of-type
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[data-mode='pending']:not([data-paste])[type='password']
-        + .t-content
+        &[data-mode='pending']:not([data-paste])[type='password'] + .t-content
         .t-item_filled:last-of-type
         .t-dot_value {
         animation:
-            tuiPincodeDotsInput 300ms var(--tui-curve-expressive-standard),
+            tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
             @pending-wave-anim;
         animation-delay: 0ms, calc(500ms + var(--t-animation-delay, 0ms)), calc(500ms + var(--t-animation-delay, 0ms));
     }
@@ -301,10 +294,6 @@ input[tuiPincode] {
 }
 
 @keyframes tuiPincodeDotCollapsePos {
-    from {
-        translate: -50% -50%;
-    }
-
     to {
         translate: calc(-50% - var(--t-offset, 0) * var(--t-pitch, 0px)) -50%;
     }
@@ -326,18 +315,9 @@ input[tuiPincode] {
     }
 }
 
-@keyframes tuiPincodeDotsInput {
-    0% {
+@keyframes tuiPincodeInput {
+    from {
         scale: 0;
-    }
-
-    66.67% {
-        scale: 1.2;
-        animation-timing-function: linear;
-    }
-
-    100% {
-        scale: 1;
     }
 }
 
