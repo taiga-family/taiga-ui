@@ -199,6 +199,13 @@ input[tuiPincode] {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
     }
 
+    [data-platform]:not([data-platform='web'])
+        &[type='password'] + .t-content
+        .t-item:not(.t-item_filled)
+        .t-dot_value {
+        transition: none;
+    }
+
     &[data-mode='pending'] {
         &:not([type='password']) + .t-content .t-item_filled .t-value,
         &[type='password'] + .t-content .t-item_filled .t-dot_value {
