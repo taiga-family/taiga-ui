@@ -160,6 +160,10 @@ input[tuiPincode] {
         .t-item_focus:not(.t-item_filled)::before {
             display: none;
         }
+
+        .t-item_focus:not(.t-item_filled) .t-dot_placeholder {
+            scale: 1;
+        }
     }
 
     &:not([type='password']) + .t-content .t-item_filled .t-value {
@@ -172,21 +176,18 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode])
-        + .t-content
+        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode])
-        + .t-content
+        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         animation: tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode])
-        + .t-content
+        &[type='password']:not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
@@ -200,13 +201,11 @@ input[tuiPincode] {
         }
 
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste]):not([type='password'])
-            + .t-content
+            &:not([data-paste]):not([type='password']) + .t-content
             .t-item_filled:last-of-type
             .t-value,
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste])[type='password']
-            + .t-content
+            &:not([data-paste])[type='password'] + .t-content
             .t-item_filled:last-of-type
             .t-dot_value {
             animation:
