@@ -1,4 +1,5 @@
 import {Component, inject, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -11,20 +12,19 @@ import {
 } from '@taiga-ui/core';
 import {TUI_FILE_OPTIONS_OPTIONS, TuiFile} from '@taiga-ui/experimental';
 import {TuiProgress, TuiSegmented} from '@taiga-ui/kit';
-import {FormsModule} from '@angular/forms';
 
 @Component({
     imports: [
+        FormsModule,
         TuiButton,
         TuiButtonX,
         TuiFile,
+        TuiHint,
         TuiIcon,
         TuiLoader,
         TuiProgress,
-        TuiTitle,
-        FormsModule,
         TuiSegmented,
-        TuiHint,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
