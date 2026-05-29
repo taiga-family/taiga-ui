@@ -1,13 +1,14 @@
 <span
     aria-hidden="true"
     class="t-wrapper"
+    [style.--t-length]="pincode.length()"
 >
     @for (_ of '-'.repeat(pincode.length()); track $index) {
         <span
             class="t-item"
             [class.t-item_filled]="!!pincode.value()[$index]"
             [class.t-item_focus]="pincode.isFocused($index)"
-            [style]="pincode.getStyle($index)"
+            [style.--t-index]="$index"
             (pointerdown.prevent)="pincode.el.focus()"
         >
             <span class="t-dot t-dot_placeholder"></span>

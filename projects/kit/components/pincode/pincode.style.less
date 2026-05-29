@@ -61,6 +61,10 @@ input[tuiPincode] {
             inline-size: 1.375rem;
             block-size: 2.5rem;
             cursor: text;
+
+            --t-animation-delay: calc(var(--t-index) * 100ms);
+            --t-animation-cycle: calc(600ms + var(--t-length) * 100ms);
+            --t-offset: calc(var(--t-index) - (var(--t-length) - 1) / 2);
         }
 
         .t-value,
