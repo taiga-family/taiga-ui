@@ -6,7 +6,6 @@ import {
     input,
     output,
     signal,
-    untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoCaretGuard} from '@maskito/kit';
@@ -94,10 +93,7 @@ export class TuiPincodeComponent {
             const v = this.valid();
 
             this.phase = tuiIsPresent(v)
-                ? Math.min(
-                      untracked(() => this.value().length),
-                      this.el.maxLength,
-                  )
+                ? Math.min(this.el.value.length, this.el.maxLength)
                 : 0;
             this.bounced = false;
         });
@@ -126,7 +122,8 @@ export class TuiPincodeComponent {
         }
 
         if (isReject) {
-            this.clearValue();
+            this.el.value = '';
+            this.el.dispatchEvent(new Event('input'));
         }
 
         this.finished.emit();
@@ -161,10 +158,5 @@ export class TuiPincodeComponent {
         }
 
         this.value.set(newValue);
-    }
-
-    private clearValue(): void {
-        this.el.value = '';
-        this.el.dispatchEvent(new Event('input'));
     }
 }

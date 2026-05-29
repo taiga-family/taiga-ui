@@ -30,6 +30,6 @@ export default class PageComponent {
         setTimeout(() => {
             this.valid.set(null);
             this.control.reset('');
-        }, 300);
+        }, 1500);
     }
 }
