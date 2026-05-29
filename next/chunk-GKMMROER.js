@@ -1,0 +1,31 @@
+import"./chunk-HU6DUUP4.js";var t=`<div tuiFile>
+    <input
+        #input
+        accept="image/*"
+        multiple
+        type="file"
+        (change)="select(input.files)"
+    />
+    <tui-icon icon="@tui.plus" />
+    <div tuiTitle>Upload a document</div>
+</div>
+@for (file of files(); track file) {
+    <div tuiFile>
+        @if (file.type.startsWith('image/')) {
+            <img
+                alt=""
+                [src]="file | tuiFile"
+            />
+        } @else {
+            <tui-icon icon="@tui.file" />
+        }
+        <div tuiTitle>{{ file.name }}</div>
+        <button
+            tuiButtonX
+            (click)="remove(file)"
+        >
+            Remove
+        </button>
+    </div>
+}
+`;export{t as default};

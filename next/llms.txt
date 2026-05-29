@@ -79,6 +79,7 @@
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
 - [Error](https://taiga-ui.dev/components/error) — Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls
 - [Expand](https://taiga-ui.dev/components/expand)
+- [File](https://taiga-ui.dev/components/file) — This component is based on Cell and therefore follows its rules on padding in horizontal mode. Reset padding-inline if you do not need it.
 - [Filter](https://taiga-ui.dev/components/filter) — Components shows separated items that can be used to filter content on the page. There are also an option with badges.
 - [Floating Container](https://taiga-ui.dev/components/floating-container) — FloatingContainer is a special container for creating different animated sticky footers
 - [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, Input or Button .
