@@ -1,14 +1,8 @@
-import {
-    afterRender,
-    computed,
-    Directive,
-    effect,
-    input,
-    output,
-    signal,
-} from '@angular/core';
+import {computed, Directive, effect, input, output, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoCaretGuard} from '@maskito/kit';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -23,30 +17,29 @@ import {TuiPincodeContent} from './pincode-content.component';
 const ANIMATION = {
     confirmed: 'tuiPincodeDotIn',
     collapsed: 'tuiPincodeDotCollapseScale',
-    rejected: 'tuiScale',
+    rejected: 'tuiPincodeScale',
 } as const;
 
 @Directive({
     selector: 'input[tuiPincode]',
-    providers: [tuiAsTextfieldContent(TuiPincodeContent)],
+    providers: [tuiAsTextfieldContent(TuiPincodeContent), tuiFallbackValueProvider('')],
     hostDirectives: [MaskitoDirective, TuiTextfieldContent],
     host: {
         autocomplete: 'one-time-code',
         inputmode: 'numeric',
-        maxlength: '4',
         spellcheck: 'false',
-        '[attr.data-mode]': 'mode()',
-        '[attr.data-paste]': 'paste() ? "" : null',
-        '(input)': 'onInput()',
+        '[value]': 'value()',
+        '[maxLength]': 'maxLength()',
+        '[attr.data-state]': 'state()',
+        '[class._paste]': 'paste()',
+        '(input)': 'onInput($event.target.value)',
     },
 })
-export class TuiPincodeComponent {
+export class TuiPincodeComponent extends TuiControl<string> {
     private phase = 0;
     private bounced = false;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
-    public readonly value = signal('');
-    public readonly length = signal(4);
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
 
@@ -54,73 +47,43 @@ export class TuiPincodeComponent {
         mask: /^\d+$/,
         overwriteMode: 'replace',
         plugins: [maskitoCaretGuard((value) => [value.length, value.length])],
-        postprocessors: [
-            (newState, initialState) => (this.mode() === null ? newState : initialState),
-        ],
+        postprocessors: [(newState, initial) => (this.state() ? initial : newState)],
     });
 
-    public readonly valid = input<boolean | null | undefined>(null);
+    public readonly maxLength = input(4);
     public readonly confirmed = output();
     public readonly finished = output();
 
-    protected readonly mode = computed<'invalid' | 'pending' | 'success' | null>(() => {
-        const validity = this.valid();
-
-        if (tuiIsPresent(validity)) {
-            return validity ? 'success' : 'invalid';
+    protected readonly state = computed<'invalid' | 'pending' | 'success' | null>(() => {
+        if (tuiIsPresent(this.pseudoInvalid())) {
+            return this.pseudoInvalid() ? 'invalid' : 'success';
         }
 
-        const length = this.length();
-
-        return length > 0 && this.value().length === length ? 'pending' : null;
+        return this.value().length === this.maxLength() ? 'pending' : null;
     });
 
-    constructor() {
-        afterRender(() => {
-            if (this.value() !== this.el.value) {
-                this.value.set(this.el.value);
-            }
-
-            if (this.length() !== this.el.maxLength) {
-                this.length.set(this.el.maxLength);
-            }
-        });
-
-        effect(() => {
-            const v = this.valid();
-
-            this.phase = tuiIsPresent(v)
-                ? Math.min(this.el.value.length, this.el.maxLength)
-                : 0;
-            this.bounced = false;
-        });
-    }
+    protected readonly effect = effect(() => {
+        this.bounced = false;
+        this.phase = tuiIsPresent(this.pseudoInvalid()) ? this.value().length : 0;
+    });
 
     public onAnimationStart({animationName}: AnimationEvent): void {
-        if (this.valid() && animationName === ANIMATION.confirmed && !this.bounced) {
+        if (animationName === ANIMATION.confirmed && !this.bounced) {
             this.bounced = true;
             this.confirmed.emit();
         }
     }
 
-    public onAnimationEnd({animationName, target}: AnimationEvent): void {
-        const validity = this.valid();
-
-        const isReject =
-            validity === false &&
-            animationName === ANIMATION.rejected &&
-            target instanceof HTMLElement &&
-            target.classList.contains('t-dot_placeholder');
-
-        const isCollapse = validity && animationName === ANIMATION.collapsed;
+    public onAnimationEnd({animationName}: AnimationEvent): void {
+        const isCollapse = animationName === ANIMATION.collapsed;
+        const isReject = animationName === ANIMATION.rejected;
 
         if ((!isReject && !isCollapse) || --this.phase) {
             return;
         }
 
         if (isReject) {
-            this.el.value = '';
-            this.el.dispatchEvent(new Event('input'));
+            this.onChange('');
         }
 
         this.finished.emit();
@@ -129,19 +92,12 @@ export class TuiPincodeComponent {
     public isFocused(index: number): boolean {
         return (
             this.focused() &&
-            index === Math.min(this.value().length, this.el.maxLength - 1)
+            index === Math.min(this.value().length, this.maxLength() - 1)
         );
     }
 
-    protected onInput(): void {
-        const newValue = this.el.value;
-
-        if (!this.value().length && newValue.length === this.el.maxLength) {
-            this.paste.set(true);
-        } else if (!newValue.length) {
-            this.paste.set(false);
-        }
-
-        this.value.set(newValue);
+    protected onInput(value: string): void {
+        this.paste.set(!this.value().length && value.length === this.maxLength());
+        this.onChange(value);
     }
 }

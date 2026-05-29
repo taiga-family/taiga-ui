@@ -50,19 +50,17 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = input(false);
-    public readonly pseudoInvalid = input<boolean | null>(null, {alias: 'invalid'});
+    public readonly pseudoInvalid = input<boolean | null>(undefined, {alias: 'invalid'});
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
     public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
 
-    public readonly invalid = computed(() => {
-        const pseudoInvalid = this.pseudoInvalid();
-
-        return pseudoInvalid === null
+    public readonly invalid = computed(() =>
+        this.pseudoInvalid() == null
             ? this.interactive() && this.touched() && this.status() === 'INVALID'
-            : pseudoInvalid && this.interactive();
-    });
+            : this.pseudoInvalid() && this.interactive(),
+    );
 
     public readonly mode = computed(() =>
         // eslint-disable-next-line no-nested-ternary

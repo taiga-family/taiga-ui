@@ -20,15 +20,15 @@ export default class PageComponent {
     ];
 
     protected length = 4;
-    protected readonly validVariants = [true, false] as const;
+    protected readonly invalidVariants = [true, false] as const;
     protected readonly typeVariants = ['text', 'password'] as const;
-    protected readonly valid = signal<boolean | null>(null);
+    protected readonly invalid = signal<boolean | null>(null);
     protected readonly type = signal<'password' | 'text'>('text');
     protected readonly control = new FormControl('');
 
     protected onFinished(): void {
         setTimeout(() => {
-            this.valid.set(null);
+            this.invalid.set(null);
             this.control.reset('');
         }, 1500);
     }

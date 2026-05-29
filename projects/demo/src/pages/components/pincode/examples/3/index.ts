@@ -7,9 +7,9 @@ import {TuiPincode} from '@taiga-ui/kit';
 const CORRECT = '1234';
 const FAST_LATENCY = 300;
 
-async function fakeApiVerify(pin: string): Promise<boolean> {
+async function fakeApiInvalidate(pin: string): Promise<boolean> {
     return new Promise((resolve) =>
-        setTimeout(() => resolve(pin === CORRECT), FAST_LATENCY),
+        setTimeout(() => resolve(pin !== CORRECT), FAST_LATENCY),
     );
 }
 
@@ -24,7 +24,7 @@ export default class Example {
     protected readonly verification = resource({
         request: () => this.pin(),
         loader: async ({request}) =>
-            request.length === 4 ? fakeApiVerify(request) : null,
+            request.length === 4 ? fakeApiInvalidate(request) : null,
     });
 
     protected readonly done = signal(false);
