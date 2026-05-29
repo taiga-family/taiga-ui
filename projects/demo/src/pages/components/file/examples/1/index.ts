@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiButtonX,
+    TuiCell,
     TuiIcon,
     TuiLoader,
     type TuiSizeL,
@@ -13,7 +14,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TUI_FILE_OPTIONS_OPTIONS, TuiFile} from '@taiga-ui/experimental';
-import {TuiProgress, TuiSegmented} from '@taiga-ui/kit';
+import {TuiAvatar, TuiProgress, TuiSegmented, TuiSkeleton} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -26,6 +27,9 @@ import {TuiProgress, TuiSegmented} from '@taiga-ui/kit';
         TuiProgress,
         TuiSegmented,
         TuiTitle,
+        TuiSkeleton,
+        TuiCell,
+        TuiAvatar,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

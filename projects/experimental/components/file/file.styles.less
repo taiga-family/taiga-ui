@@ -4,10 +4,16 @@
     > label {
         display: flex;
         gap: inherit;
+        align-items: center;
         flex: 1;
         min-inline-size: 0;
         max-inline-size: 100%;
         cursor: pointer;
+
+        &:has(input:focus-visible) {
+            box-shadow: inset 0 0 0 0.125rem var(--tui-border-focus);
+            border-radius: var(--tui-radius-xs);
+        }
     }
 
     [tuiAvatar] {
@@ -23,6 +29,11 @@
             min-inline-size: 100%;
         }
 
+        input {
+            clip-path: inset(50%);
+        }
+
+        tui-icon,
         tui-loader {
             color: var(--tui-text-action);
         }
@@ -86,6 +97,8 @@
         padding: 0;
         min-inline-size: 5rem;
         max-inline-size: 6rem;
+        flex: 1 1 auto;
+        border-radius: 1rem;
 
         > label {
             flex-direction: column;
@@ -134,12 +147,11 @@
         }
 
         [tuiTitle] {
+            inline-size: 100%;
             gap: 0.125rem;
             font: var(--tui-typography-ui-s);
-        }
-
-        [tuiSubtitle] {
-            font: var(--tui-typography-ui-xs);
+            hyphens: auto;
+            overflow-wrap: break-word;
         }
     }
 }

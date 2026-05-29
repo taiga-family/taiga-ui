@@ -14,6 +14,7 @@
 
 @for (item of content; track $index) {
     <div
+        orientation="horizontal"
         tuiFile
         [size]="size()"
     >
@@ -55,6 +56,24 @@
             <div tuiSubtitle>30 MB</div>
         </div>
 
-        <button tuiButtonX>Close</button>
+        <button tuiButtonX>Remove</button>
     </div>
 }
+
+<div
+    [style.padding-inline]="0"
+    [tuiCell]="size()"
+>
+    <span
+        tuiAvatar
+        [round]="false"
+        [tuiSkeleton]="true"
+    ></span>
+    <span tuiTitle>
+        <span tuiSkeleton="Loading file name"></span>
+        <span
+            tuiSkeleton="Loading"
+            tuiSubtitle
+        ></span>
+    </span>
+</div>

@@ -17,5 +17,7 @@ export default class Page {
         'Texts',
         'Transitions',
         'Preview',
+        'With file selector',
+        'InputFiles',
     ];
 }

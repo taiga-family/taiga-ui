@@ -1,8 +1,5 @@
 @for (item of content; track $index) {
-    <div
-        orientation="vertical"
-        tuiFile
-    >
+    <div tuiFile>
         @switch (item) {
             @case ('icon') {
                 <tui-icon icon="@tui.image" />
@@ -41,6 +38,6 @@
             <div tuiSubtitle>30 MB</div>
         </div>
 
-        <button tuiButtonX>Close</button>
+        <button tuiButtonX>Remove</button>
     </div>
 }

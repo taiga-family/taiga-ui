@@ -8,7 +8,7 @@ export interface TuiFileOptions {
 
 export const TUI_FILE_OPTIONS_DEFAULT_OPTIONS: TuiFileOptions = {
     size: 'l',
-    orientation: 'horizontal',
+    orientation: 'vertical',
 };
 
 export const [TUI_FILE_OPTIONS_OPTIONS, tuiFileOptionsProvider] = tuiCreateOptions(
