@@ -118,27 +118,6 @@ describe('TuiPincodeComponent', () => {
         });
     });
 
-    describe('getStyle', () => {
-        it('returns correct animation delay per index', () => {
-            expect(pincode.getStyle(0)['--t-animation-delay']).toBe('0ms');
-            expect(pincode.getStyle(1)['--t-animation-delay']).toBe('100ms');
-            expect(pincode.getStyle(3)['--t-animation-delay']).toBe('300ms');
-        });
-
-        it('returns correct cycle for maxlength 4', () => {
-            // BOUNCE_MS(400) + (4-1)*STAGGER_MS(100) + TAIL_MS(300) = 1000ms
-            expect(pincode.getStyle(0)['--t-animation-cycle']).toBe('1000ms');
-        });
-
-        it('returns correct offset for center alignment', () => {
-            // n=4, center=(4-1)/2=1.5 → offsets: -1.5, -0.5, 0.5, 1.5
-            expect(pincode.getStyle(0)['--t-offset']).toBe('-1.5');
-            expect(pincode.getStyle(1)['--t-offset']).toBe('-0.5');
-            expect(pincode.getStyle(2)['--t-offset']).toBe('0.5');
-            expect(pincode.getStyle(3)['--t-offset']).toBe('1.5');
-        });
-    });
-
     describe('isFocused', () => {
         it('returns false when input is not focused', () => {
             expect(pincode.isFocused(0)).toBe(false);

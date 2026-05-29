@@ -20,10 +20,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TuiPincodeContent} from './pincode-content.component';
 
-const BOUNCE_MS = 400;
-const STAGGER_MS = 100;
-const TAIL_MS = 300;
-
 const ANIMATION = {
     confirmed: 'tuiPincodeDotIn',
     collapsed: 'tuiPincodeDotCollapseScale',
@@ -128,18 +124,6 @@ export class TuiPincodeComponent {
         }
 
         this.finished.emit();
-    }
-
-    public getStyle(index: number): Record<string, string> {
-        const n = this.el.maxLength;
-        const offset = index - (n - 1) / 2;
-        const cycle = BOUNCE_MS + (n - 1) * STAGGER_MS + TAIL_MS;
-
-        return {
-            '--t-animation-delay': `${index * STAGGER_MS}ms`,
-            '--t-animation-cycle': `${cycle}ms`,
-            '--t-offset': `${offset}`,
-        };
     }
 
     public isFocused(index: number): boolean {
