@@ -13,6 +13,7 @@ import {TuiPincodeComponent} from './pincode.component';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[style.--t-length]': 'pincode.length()',
         '[style.display]': '"contents"',
         '(animationend)': 'pincode.onAnimationEnd($event)',
         '(animationstart)': 'pincode.onAnimationStart($event)',

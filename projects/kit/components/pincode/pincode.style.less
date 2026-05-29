@@ -56,15 +56,18 @@ input[tuiPincode] {
         }
 
         .t-item {
+            --t-bounce: 400ms;
+            --t-stagger: 100ms;
+            --t-tail: 300ms;
+            --t-animation-delay: calc(var(--t-index) * var(--t-stagger));
+            --t-animation-cycle: calc(var(--t-bounce) + (var(--t-length) - 1) * var(--t-stagger) + var(--t-tail));
+            --t-offset: calc(var(--t-index) - (var(--t-length) - 1) / 2);
+
             position: relative;
             flex: none;
             inline-size: 1.375rem;
             block-size: 2.5rem;
             cursor: text;
-
-            --t-animation-delay: calc(var(--t-index) * 100ms);
-            --t-animation-cycle: calc(600ms + var(--t-length) * 100ms);
-            --t-offset: calc(var(--t-index) - (var(--t-length) - 1) / 2);
         }
 
         .t-value,
@@ -176,21 +179,18 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode])
-        + .t-content
+        &:not([type='password']):not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode])
-        + .t-content
+        &[type='password']:not([data-paste]):not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         animation: tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode])
-        + .t-content
+        &[type='password']:not([data-mode]) + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color 200ms var(--tui-curve-expressive-standard);
@@ -204,13 +204,11 @@ input[tuiPincode] {
         }
 
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste]):not([type='password'])
-            + .t-content
+            &:not([data-paste]):not([type='password']) + .t-content
             .t-item_filled:last-of-type
             .t-value,
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste])[type='password']
-            + .t-content
+            &:not([data-paste])[type='password'] + .t-content
             .t-item_filled:last-of-type
             .t-dot_value {
             animation:
