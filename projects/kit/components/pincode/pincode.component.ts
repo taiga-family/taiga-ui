@@ -47,6 +47,7 @@ const ANIMATION = {
 export class TuiPincodeComponent {
     private phase = 0;
     private bounced = false;
+
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly value = signal('');
     public readonly length = signal(4);
