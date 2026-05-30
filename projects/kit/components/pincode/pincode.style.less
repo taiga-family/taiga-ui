@@ -181,29 +181,25 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not(._paste):not([data-state])
-        + .t-content
+        &:not([type='password']):not(._paste):not([data-state]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not(._paste):not([data-state])
-        + .t-content
+        &[type='password']:not(._paste):not([data-state]) + .t-content
         .t-item_filled
         .t-dot_value {
         animation: tuiPincodeInput var(--tui-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-state])
-        + .t-content
+        &[type='password']:not([data-state]) + .t-content
         .t-item_filled
         .t-dot_value {
         transition: background-color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-expressive-standard);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']
-        + .t-content
+        &[type='password'] + .t-content
         .t-item:not(.t-item_filled)
         .t-dot_value {
         transition: none;
@@ -217,13 +213,11 @@ input[tuiPincode] {
         }
 
         [data-platform]:not([data-platform='web'])
-            &:not(._paste):not([type='password'])
-            + .t-content
+            &:not(._paste):not([type='password']) + .t-content
             .t-item_filled:last-of-type
             .t-value,
         [data-platform]:not([data-platform='web'])
-            &:not(._paste)[type='password']
-            + .t-content
+            &:not(._paste)[type='password'] + .t-content
             .t-item_filled:last-of-type
             .t-dot_value {
             animation:
@@ -312,18 +306,40 @@ input[tuiPincode] {
             }
 
             & + .t-content .t-item_filled .t-dot_placeholder {
-                animation-delay: calc(var(--tui-duration) * 5 / 3);
+                animation-delay: 500ms;
             }
 
             &:not([type='password']) + .t-content .t-item_filled .t-value,
             &[type='password'] + .t-content .t-item_filled .t-dot_value {
-                animation-delay: calc(var(--tui-duration) * 5 / 3);
+                animation-delay: 500ms;
             }
+        }
+
+        [data-platform]:not([data-platform='web'])
+            &:not([type='password']):not(._paste):not([data-state]) + .t-content
+            .t-item_filled
+            .t-value,
+        [data-platform]:not([data-platform='web'])
+            &[type='password']:not(._paste):not([data-state]) + .t-content
+            .t-item_filled
+            .t-dot_value {
+            animation: none;
         }
 
         &[data-state='pending'] {
             &:not([type='password']) + .t-content .t-item_filled .t-value,
             &[type='password'] + .t-content .t-item_filled .t-dot_value {
+                animation: none;
+            }
+
+            [data-platform]:not([data-platform='web'])
+                &:not(._paste):not([type='password']) + .t-content
+                .t-item_filled:last-of-type
+                .t-value,
+            [data-platform]:not([data-platform='web'])
+                &:not(._paste)[type='password'] + .t-content
+                .t-item_filled:last-of-type
+                .t-dot_value {
                 animation: none;
             }
         }
