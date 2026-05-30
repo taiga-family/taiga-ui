@@ -52,10 +52,15 @@ describe('TuiPincodeComponent', () => {
         fixture.detectChanges();
     }
 
-    function fakeAnimationEnd(animationName: string, target?: HTMLElement): void {
-        const el = target ?? document.createElement('span');
+    function fakeAnimationEnd(animationName: string): void {
+        pincode.onAnimationEnd({
+            animationName,
+            target: document.createElement('span'),
+        } as unknown as AnimationEvent);
+    }
 
-        pincode.onAnimationEnd({animationName, target: el} as unknown as AnimationEvent);
+    function fakeAnimationStart(animationName: string): void {
+        pincode.onAnimationStart({animationName} as unknown as AnimationEvent);
     }
 
     describe('state', () => {
@@ -148,9 +153,7 @@ describe('TuiPincodeComponent', () => {
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
-            pincode.onAnimationStart({
-                animationName: 'tuiPincodeDotIn',
-            } as unknown as AnimationEvent);
+            fakeAnimationStart('tuiPincodeDotIn');
 
             expect(spy).toHaveBeenCalledTimes(1);
         });
@@ -163,12 +166,8 @@ describe('TuiPincodeComponent', () => {
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
-            pincode.onAnimationStart({
-                animationName: 'tuiPincodeDotIn',
-            } as unknown as AnimationEvent);
-            pincode.onAnimationStart({
-                animationName: 'tuiPincodeDotIn',
-            } as unknown as AnimationEvent);
+            fakeAnimationStart('tuiPincodeDotIn');
+            fakeAnimationStart('tuiPincodeDotIn');
 
             expect(spy).toHaveBeenCalledTimes(1);
         });
@@ -181,11 +180,30 @@ describe('TuiPincodeComponent', () => {
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
-            pincode.onAnimationStart({
-                animationName: 'tuiPincodeWave',
-            } as unknown as AnimationEvent);
+            fakeAnimationStart('tuiPincodeWave');
 
             expect(spy).not.toHaveBeenCalled();
+        });
+
+        it('fires again after a new validation cycle starts', () => {
+            const spy = jest.fn();
+
+            typeValue('1234');
+            testComponent.invalid.set(false);
+            fixture.detectChanges();
+
+            pincode.confirmed.subscribe(spy);
+            fakeAnimationStart('tuiPincodeDotIn');
+            expect(spy).toHaveBeenCalledTimes(1);
+
+            testComponent.invalid.set(null);
+            fixture.detectChanges();
+            typeValue('1234');
+            testComponent.invalid.set(false);
+            fixture.detectChanges();
+
+            fakeAnimationStart('tuiPincodeDotIn');
+            expect(spy).toHaveBeenCalledTimes(2);
         });
     });
 
@@ -207,40 +225,65 @@ describe('TuiPincodeComponent', () => {
             fakeAnimationEnd('tuiPincodeDotCollapseScale');
             expect(spy).toHaveBeenCalledTimes(1);
         });
+
+        it('does not clear value', () => {
+            typeValue('1234');
+            testComponent.invalid.set(false);
+            fixture.detectChanges();
+
+            fakeAnimationEnd('tuiPincodeDotCollapseScale');
+            fakeAnimationEnd('tuiPincodeDotCollapseScale');
+            fakeAnimationEnd('tuiPincodeDotCollapseScale');
+            fakeAnimationEnd('tuiPincodeDotCollapseScale');
+
+            fixture.detectChanges();
+            expect(pincode.el.value).toBe('1234');
+        });
     });
 
     describe('finished output (invalid)', () => {
         it('fires after all cells complete shake animation and clears value', () => {
             const spy = jest.fn();
-            const placeholder = document.createElement('span');
 
-            placeholder.classList.add('t-dot_placeholder');
             typeValue('1234');
             testComponent.invalid.set(true);
             fixture.detectChanges();
 
             pincode.finished.subscribe(spy);
 
-            fakeAnimationEnd('tuiPincodeScale', placeholder);
-            fakeAnimationEnd('tuiPincodeScale', placeholder);
-            fakeAnimationEnd('tuiPincodeScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale');
+            fakeAnimationEnd('tuiPincodeScale');
+            fakeAnimationEnd('tuiPincodeScale');
             expect(spy).not.toHaveBeenCalled();
 
-            fakeAnimationEnd('tuiPincodeScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale');
             expect(spy).toHaveBeenCalledTimes(1);
             fixture.detectChanges();
             expect(pincode.el.value).toBe('');
         });
 
-        it('does not clear value for unrelated animation end events', () => {
-            const placeholder = document.createElement('span');
+        it('requires only as many events as filled cells', () => {
+            const spy = jest.fn();
 
-            placeholder.classList.add('t-dot_placeholder');
+            typeValue('12');
+            testComponent.invalid.set(true);
+            fixture.detectChanges();
+
+            pincode.finished.subscribe(spy);
+
+            fakeAnimationEnd('tuiPincodeScale');
+            expect(spy).not.toHaveBeenCalled();
+
+            fakeAnimationEnd('tuiPincodeScale');
+            expect(spy).toHaveBeenCalledTimes(1);
+        });
+
+        it('does not clear value for unrelated animation end events', () => {
             typeValue('1234');
             testComponent.invalid.set(true);
             fixture.detectChanges();
 
-            fakeAnimationEnd('tuiPincodeShake', placeholder);
+            fakeAnimationEnd('tuiPincodeShake');
             expect(pincode.el.value).toBe('1234');
         });
     });

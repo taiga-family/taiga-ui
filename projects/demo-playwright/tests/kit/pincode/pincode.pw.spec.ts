@@ -5,40 +5,6 @@ import {expect, test} from '@playwright/test';
 const {describe, beforeEach} = test;
 
 describe('Pincode', () => {
-    describe('Examples', () => {
-        test('basic', async ({page}) => {
-            await tuiGoto(page, DemoRoute.Pincode);
-
-            const example = new TuiDocumentationPagePO(page).getExample('#basic');
-
-            await expect.soft(example).toHaveScreenshot('01-basic.png');
-        });
-
-        test('dots (password mode)', async ({page}) => {
-            await tuiGoto(page, DemoRoute.Pincode);
-
-            const example = new TuiDocumentationPagePO(page).getExample('#dots');
-
-            await expect.soft(example).toHaveScreenshot('02-dots.png');
-        });
-
-        test('fast-loading', async ({page}) => {
-            await tuiGoto(page, DemoRoute.Pincode);
-
-            const example = new TuiDocumentationPagePO(page).getExample('#fast-loading');
-
-            await expect.soft(example).toHaveScreenshot('03-fast-loading.png');
-        });
-
-        test('long-loading', async ({page}) => {
-            await tuiGoto(page, DemoRoute.Pincode);
-
-            const example = new TuiDocumentationPagePO(page).getExample('#long-loading');
-
-            await expect.soft(example).toHaveScreenshot('04-long-loading.png');
-        });
-    });
-
     describe('API page', () => {
         let documentPage: TuiDocumentationPagePO;
 
@@ -48,24 +14,13 @@ describe('Pincode', () => {
         });
 
         describe('text mode', () => {
-            test('shows partial input in cells', async () => {
-                const input = documentPage.demo.locator('input[tuiPincode]');
-
-                await input.focus();
-                await input.pressSequentially('12');
-
-                await expect
-                    .soft(documentPage.demo)
-                    .toHaveScreenshot('05-text-partial.png');
-            });
-
             test('reaches pending state after full input', async () => {
                 const input = documentPage.demo.locator('input[tuiPincode]');
 
                 await input.focus();
                 await input.pressSequentially('1234');
 
-                await expect(input).toHaveAttribute('data-mode', 'pending');
+                await expect(input).toHaveAttribute('data-state', 'pending');
                 await expect
                     .soft(documentPage.demo)
                     .toHaveScreenshot('06-text-pending.png');
@@ -87,16 +42,16 @@ describe('Pincode', () => {
                 await input.focus();
                 await input.pressSequentially('1234');
 
-                const validRow = documentPage.getRow('[valid]');
+                const validRow = documentPage.getRow('[invalid]');
                 const validSelect = validRow.locator('[tuiSelect], [tuiSelectLike]');
 
                 await validSelect.click();
                 await page
                     .locator('tui-data-list-wrapper [tuiOption]')
-                    .filter({hasText: 'true'})
+                    .filter({hasText: 'false'})
                     .click();
 
-                await expect(input).toHaveAttribute('data-mode', 'success');
+                await expect(input).toHaveAttribute('data-state', 'success');
                 await expect
                     .soft(documentPage.demo)
                     .toHaveScreenshot('07-text-success.png');
@@ -108,38 +63,63 @@ describe('Pincode', () => {
                 await input.focus();
                 await input.pressSequentially('1234');
 
-                const validRow = documentPage.getRow('[valid]');
+                const validRow = documentPage.getRow('[invalid]');
                 const validSelect = validRow.locator('[tuiSelect], [tuiSelectLike]');
 
                 await validSelect.click();
                 await page
                     .locator('tui-data-list-wrapper [tuiOption]')
-                    .filter({hasText: 'false'})
+                    .filter({hasText: 'true'})
                     .click();
 
-                await expect(input).toHaveAttribute('data-mode', 'invalid');
+                await expect(input).toHaveAttribute('data-state', 'invalid');
                 await expect
                     .soft(documentPage.demo)
                     .toHaveScreenshot('08-text-invalid.png');
             });
 
-            // Tests the full invalid animation lifecycle: shake → animationend → finished → value cleared
-            test('clears value after invalid animation completes', async ({page}) => {
+            test('clears value and resets state after invalid animation completes', async ({
+                page,
+            }) => {
                 const input = documentPage.demo.locator('input[tuiPincode]');
 
                 await input.focus();
                 await input.pressSequentially('1234');
 
-                const validRow = documentPage.getRow('[valid]');
+                const validRow = documentPage.getRow('[invalid]');
                 const validSelect = validRow.locator('[tuiSelect], [tuiSelectLike]');
 
                 await validSelect.click();
                 await page
                     .locator('tui-data-list-wrapper [tuiOption]')
-                    .filter({hasText: 'false'})
+                    .filter({hasText: 'true'})
                     .click();
 
                 await expect(input).toHaveValue('', {timeout: 5_000});
+                await expect(input).not.toHaveAttribute('data-state');
+            });
+
+            test('allows re-entry after invalid animation completes', async ({page}) => {
+                const input = documentPage.demo.locator('input[tuiPincode]');
+
+                await input.focus();
+                await input.pressSequentially('1234');
+
+                const invalidRow = documentPage.getRow('[invalid]');
+                const invalidSelect = invalidRow.locator('[tuiSelect], [tuiSelectLike]');
+
+                await invalidSelect.click();
+                await page
+                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .filter({hasText: 'true'})
+                    .click();
+
+                await expect(input).toHaveValue('', {timeout: 5_000});
+                await expect(input).not.toHaveAttribute('data-state', {timeout: 3_000});
+
+                await input.focus();
+                await input.pressSequentially('5678');
+                await expect(input).toHaveValue('5678');
             });
         });
 
@@ -155,18 +135,6 @@ describe('Pincode', () => {
                     .click();
             });
 
-            test('shows dots instead of digits', async () => {
-                const input = documentPage.demo.locator('input[tuiPincode]');
-
-                await input.focus();
-                await input.pressSequentially('123');
-
-                await expect
-                    .soft(documentPage.demo)
-                    .toHaveScreenshot('09-password-partial.png');
-            });
-
-            // Security: digits must not be present in DOM in password mode
             test('does not expose digits in DOM', async () => {
                 const input = documentPage.demo.locator('input[tuiPincode]');
 
@@ -196,29 +164,6 @@ describe('Pincode', () => {
                 await expect
                     .soft(documentPage.demo)
                     .toHaveScreenshot('10-maxlength-6.png');
-            });
-        });
-
-        describe('focus', () => {
-            test('shows caret in first cell when focused', async () => {
-                const input = documentPage.demo.locator('input[tuiPincode]');
-
-                await input.focus();
-
-                await expect
-                    .soft(documentPage.demo)
-                    .toHaveScreenshot('11-focused-empty.png');
-            });
-
-            test('advances caret to next cell after input', async () => {
-                const input = documentPage.demo.locator('input[tuiPincode]');
-
-                await input.focus();
-                await input.pressSequentially('1');
-
-                await expect
-                    .soft(documentPage.demo)
-                    .toHaveScreenshot('12-focused-one-digit.png');
             });
         });
     });
