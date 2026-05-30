@@ -35,7 +35,7 @@
                         with auto-focused input and full verification flow. Same logic as Mobile, native keyboard input.
                         Enter
                         <code>1234</code>
-                        for valid
+                        for successful validation
                     }
                     @case (5) {
                         <strong>Mobile bottom sheet</strong>
@@ -43,7 +43,7 @@
                         <code>inputmode="none"</code>
                         suppresses the native keyboard. Enter
                         <code>1234</code>
-                        for valid; wrong code triggers shake-clear-retry
+                        for successful validation; wrong code triggers shake-clear-retry
                     }
                 }
             </ng-template>
@@ -56,9 +56,9 @@
                 <input
                     tuiPincode
                     [formControl]="control"
-                    [maxlength]="length"
+                    [invalid]="invalid()"
+                    [maxLength]="length"
                     [type]="type()"
-                    [valid]="valid()"
                     (confirmed)="confirmed.emitEvent($event)"
                     (finished)="finished.emitEvent($event); onFinished()"
                 />
@@ -78,23 +78,22 @@
                 masks each digit as a filled dot
             </tr>
             <tr
-                name="[valid]"
+                name="[invalid]"
                 tuiDocAPIItem
-                type="boolean | null | undefined"
-                [items]="validVariants"
-                [value]="valid()"
-                (valueChange)="valid.set($event ?? null)"
+                type="boolean | null"
+                [items]="invalidVariants"
+                [(value)]="invalid"
             >
                 Verification result.
                 <code>null</code>
                 — pending pulse,
-                <code>true</code>
-                — success animation,
                 <code>false</code>
+                — success animation,
+                <code>true</code>
                 — shake and auto-clear
             </tr>
             <tr
-                name="maxlength"
+                name="maxLength"
                 tuiDocAPIItem
                 type="number"
                 [min]="1"

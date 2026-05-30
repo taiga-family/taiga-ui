@@ -42,7 +42,7 @@
                     inputmode="none"
                     tuiPincode
                     type="password"
-                    [valid]="verification.value()"
+                    [invalid]="verification.value()"
                     [(ngModel)]="pin"
                     (confirmed)="open.set(false); pin.set('')"
                 />

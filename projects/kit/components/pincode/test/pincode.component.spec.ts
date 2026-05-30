@@ -13,7 +13,7 @@ describe('TuiPincodeComponent', () => {
                     tuiPincode
                     [formControl]="control"
                     [maxlength]="maxlength"
-                    [valid]="valid()"
+                    [invalid]="invalid()"
                 />
             </tui-textfield>
         `,
@@ -24,7 +24,7 @@ describe('TuiPincodeComponent', () => {
         public readonly pincode = viewChild.required(TuiPincodeComponent);
         public readonly control = new FormControl('');
         public maxlength = 4;
-        public readonly valid = signal<boolean | null>(null);
+        public readonly invalid = signal<boolean | null>(null);
     }
 
     let fixture: ComponentFixture<Test>;
@@ -58,42 +58,42 @@ describe('TuiPincodeComponent', () => {
         pincode.onAnimationEnd({animationName, target: el} as unknown as AnimationEvent);
     }
 
-    describe('mode', () => {
+    describe('state', () => {
         it('is null when value is shorter than maxlength', () => {
             typeValue('12');
-            expect(pincode.el.getAttribute('data-mode')).toBeNull();
+            expect(pincode.el.getAttribute('data-state')).toBeNull();
         });
 
         it('is pending when value length equals maxlength', () => {
             typeValue('1234');
-            expect(pincode.el.getAttribute('data-mode')).toBe('pending');
+            expect(pincode.el.getAttribute('data-state')).toBe('pending');
         });
 
         it('is null when maxlength is 0', () => {
             testComponent.maxlength = 0;
             fixture.detectChanges();
-            expect(pincode.el.getAttribute('data-mode')).toBeNull();
+            expect(pincode.el.getAttribute('data-state')).toBeNull();
         });
 
-        it('is success when valid is true', () => {
+        it('is success when invalid is false', () => {
             typeValue('1234');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
-            expect(pincode.el.getAttribute('data-mode')).toBe('success');
+            expect(pincode.el.getAttribute('data-state')).toBe('success');
         });
 
-        it('is invalid when valid is false', () => {
+        it('is invalid when invalid is true', () => {
             typeValue('1234');
-            testComponent.valid.set(false);
+            testComponent.invalid.set(true);
             fixture.detectChanges();
-            expect(pincode.el.getAttribute('data-mode')).toBe('invalid');
+            expect(pincode.el.getAttribute('data-state')).toBe('invalid');
         });
 
         it('overrides pending with success even when value is shorter than maxlength', () => {
             typeValue('12');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
-            expect(pincode.el.getAttribute('data-mode')).toBe('success');
+            expect(pincode.el.getAttribute('data-state')).toBe('success');
         });
     });
 
@@ -144,7 +144,7 @@ describe('TuiPincodeComponent', () => {
             const spy = jest.fn();
 
             typeValue('1234');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
@@ -159,7 +159,7 @@ describe('TuiPincodeComponent', () => {
             const spy = jest.fn();
 
             typeValue('1234');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
@@ -177,7 +177,7 @@ describe('TuiPincodeComponent', () => {
             const spy = jest.fn();
 
             typeValue('1234');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
 
             pincode.confirmed.subscribe(spy);
@@ -194,7 +194,7 @@ describe('TuiPincodeComponent', () => {
             const spy = jest.fn();
 
             typeValue('1234');
-            testComponent.valid.set(true);
+            testComponent.invalid.set(false);
             fixture.detectChanges();
 
             pincode.finished.subscribe(spy);
@@ -216,7 +216,7 @@ describe('TuiPincodeComponent', () => {
 
             placeholder.classList.add('t-dot_placeholder');
             typeValue('1234');
-            testComponent.valid.set(false);
+            testComponent.invalid.set(true);
             fixture.detectChanges();
 
             pincode.finished.subscribe(spy);
@@ -236,7 +236,7 @@ describe('TuiPincodeComponent', () => {
 
             placeholder.classList.add('t-dot_placeholder');
             typeValue('1234');
-            testComponent.valid.set(false);
+            testComponent.invalid.set(true);
             fixture.detectChanges();
 
             fakeAnimationEnd('tuiPincodeShake', placeholder);

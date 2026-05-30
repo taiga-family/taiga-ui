@@ -3,17 +3,17 @@
 } @else {
     <div
         class="field"
-        [class.field_success]="verification.value() === true"
+        [class.field_success]="verification.value() === false"
     >
         <tui-loader
             class="loader"
             [inheritColor]="true"
-            [loading]="verification.value() === true"
+            [loading]="verification.value() === false"
         />
         <tui-textfield>
             <input
                 tuiPincode
-                [valid]="verification.value()"
+                [invalid]="verification.value()"
                 [(ngModel)]="pin"
                 (finished)="onFinished()"
             />

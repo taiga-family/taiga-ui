@@ -179,12 +179,12 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not([data-paste]):not([data-mode])
+        &:not([type='password']):not(._paste):not([data-state])
         + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-paste]):not([data-mode])
+        &[type='password']:not(._paste):not([data-state])
         + .t-content
         .t-item_filled
         .t-dot_value {
@@ -192,7 +192,7 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-mode])
+        &[type='password']:not([data-state])
         + .t-content
         .t-item_filled
         .t-dot_value {
@@ -207,7 +207,7 @@ input[tuiPincode] {
         transition: none;
     }
 
-    &[data-mode='pending'] {
+    &[data-state='pending'] {
         &:not([type='password']) + .t-content .t-item_filled .t-value,
         &[type='password'] + .t-content .t-item_filled .t-dot_value {
             animation: @pending-wave-anim;
@@ -215,12 +215,12 @@ input[tuiPincode] {
         }
 
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste]):not([type='password'])
+            &:not(._paste):not([type='password'])
             + .t-content
             .t-item_filled:last-of-type
             .t-value,
         [data-platform]:not([data-platform='web'])
-            &:not([data-paste])[type='password']
+            &:not(._paste)[type='password']
             + .t-content
             .t-item_filled:last-of-type
             .t-dot_value {
@@ -232,7 +232,7 @@ input[tuiPincode] {
         }
     }
 
-    &[data-mode='invalid'] {
+    &[data-state='invalid'] {
         & + .t-content {
             .t-value {
                 color: var(--tui-text-negative);
@@ -248,7 +248,7 @@ input[tuiPincode] {
 
             .t-item_filled .t-dot_placeholder {
                 scale: 1;
-                animation: tuiScale 150ms var(--tui-curve-expressive-standard) 1150ms both;
+                animation: tuiPincodeScale 150ms var(--tui-curve-expressive-standard) 1150ms both;
             }
         }
 
@@ -258,7 +258,7 @@ input[tuiPincode] {
         }
     }
 
-    &[data-mode='success'] {
+    &[data-state='success'] {
         & + .t-content {
             .t-value {
                 color: var(--tui-text-action);
@@ -376,5 +376,11 @@ input[tuiPincode] {
 
     20% {
         translate: -50% calc(-50% - 0.25rem);
+    }
+}
+
+@keyframes tuiPincodeScale {
+    from {
+        transform: scale(0);
     }
 }
