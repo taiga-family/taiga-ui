@@ -38,6 +38,7 @@ const ANIMATION = {
 export class TuiPincodeComponent extends TuiControl<string> {
     private phase = 0;
     private bounced = false;
+
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly paste = signal(false);
     public readonly focused = tuiFocusedIn(this.el);
