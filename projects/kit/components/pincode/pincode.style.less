@@ -1,18 +1,19 @@
 @import '@taiga-ui/styles/utils';
 
 @pending-wave-anim:
-    tuiPincodeWave var(--t-animation-cycle, 1000ms) linear infinite,
-    tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear infinite;
+    tuiPincodeWave var(--t-animation-cycle) linear infinite,
+    tuiPincodeWavePos var(--t-animation-cycle) linear infinite;
 
 @success-wave-anim:
-    tuiPincodeWave var(--t-animation-cycle, 1000ms) linear 1 calc(500ms + var(--t-animation-delay, 0ms)),
-    tuiPincodeWavePos var(--t-animation-cycle, 1000ms) linear 1 calc(500ms + var(--t-animation-delay, 0ms));
+    tuiPincodeWave var(--t-animation-cycle) linear 1 calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay)),
+    tuiPincodeWavePos var(--t-animation-cycle) linear 1 calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
 
 @success-dot-collapse-anim:
-    tuiPincodeDotIn 300ms var(--tui-curve-productive-exit) 1200ms forwards,
-    tuiPincodeDotCollapsePos 300ms var(--tui-curve-expressive-exit) 1900ms forwards,
-    tuiPincodeDotCollapseScale 300ms var(--tui-curve-productive-exit) 1900ms forwards,
-    tuiFade 50ms linear 2150ms reverse forwards;
+    tuiPincodeDotIn var(--tui-duration) var(--tui-curve-productive-exit) var(--t-collapse-start) forwards,
+    tuiPincodeDotCollapsePos var(--tui-duration) var(--tui-curve-expressive-exit) var(--t-collapse-delay) forwards,
+    tuiPincodeDotCollapseScale var(--tui-duration) var(--tui-curve-productive-exit) var(--t-collapse-delay) forwards,
+    tuiFade calc(var(--tui-duration) / 6) linear calc(var(--t-collapse-delay) + var(--tui-duration) * 5 / 6) reverse
+        forwards;
 
 tui-textfield:has(input[tuiPincode]) {
     inline-size: max-content;
@@ -56,12 +57,12 @@ input[tuiPincode] {
         }
 
         .t-item {
-            --t-bounce: 400ms;
-            --t-stagger: 100ms;
-            --t-tail: 300ms;
+            --t-stagger: calc(var(--tui-duration) / 3);
             --t-animation-delay: calc(var(--t-index) * var(--t-stagger));
-            --t-animation-cycle: calc(var(--t-bounce) + (var(--t-length) - 1) * var(--t-stagger) + var(--t-tail));
+            --t-animation-cycle: calc(var(--tui-duration) * 7 / 3 + (var(--t-length) - 1) * var(--t-stagger));
             --t-offset: calc(var(--t-index) - (var(--t-length) - 1) / 2);
+            --t-collapse-start: calc(var(--t-animation-cycle) + var(--tui-duration) * 2 / 3);
+            --t-collapse-delay: calc(var(--t-collapse-start) + var(--tui-duration) * 7 / 3);
 
             position: relative;
             flex: none;
@@ -78,8 +79,8 @@ input[tuiPincode] {
             translate: -50% -50%;
             scale: 0;
             transition:
-                color 200ms var(--tui-curve-productive-standard),
-                background-color 200ms var(--tui-curve-productive-standard);
+                color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard);
         }
 
         .t-value {
@@ -133,17 +134,17 @@ input[tuiPincode] {
         .t-value,
         .t-dot {
             transition:
-                translate var(--tui-duration-moderate, 300ms) var(--tui-curve-expressive-entrance),
-                color 200ms var(--tui-curve-productive-standard),
-                background-color 200ms var(--tui-curve-productive-standard);
+                translate var(--tui-duration) var(--tui-curve-expressive-entrance),
+                color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard);
         }
 
         .t-value,
         .t-dot_value {
             transition:
-                scale 300ms var(--tui-curve-expressive-exit),
-                color 200ms var(--tui-curve-productive-standard),
-                background-color 200ms var(--tui-curve-productive-standard);
+                scale var(--tui-duration) var(--tui-curve-expressive-exit),
+                color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-productive-standard);
         }
 
         .t-value {
@@ -153,11 +154,12 @@ input[tuiPincode] {
         }
 
         .t-dot_placeholder {
-            transition: scale 300ms var(--tui-curve-expressive-exit);
+            transition: scale var(--tui-duration) var(--tui-curve-expressive-exit);
         }
 
         .t-item:not(.t-item_filled) .t-dot_placeholder {
-            transition: scale 150ms var(--tui-curve-expressive-standard) 150ms;
+            transition: scale calc(var(--tui-duration) / 2) var(--tui-curve-expressive-standard)
+                calc(var(--tui-duration) / 2);
         }
 
         .t-item_focus:not(.t-item_filled)::before {
@@ -179,29 +181,25 @@ input[tuiPincode] {
     }
 
     [data-platform]:not([data-platform='web'])
-        &:not([type='password']):not(._paste):not([data-state])
-        + .t-content
+        &:not([type='password']):not(._paste):not([data-state]) + .t-content
         .t-item_filled
         .t-value,
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not(._paste):not([data-state])
-        + .t-content
+        &[type='password']:not(._paste):not([data-state]) + .t-content
         .t-item_filled
         .t-dot_value {
-        animation: tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: tuiPincodeInput var(--tui-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']:not([data-state])
-        + .t-content
+        &[type='password']:not([data-state]) + .t-content
         .t-item_filled
         .t-dot_value {
-        transition: background-color 200ms var(--tui-curve-expressive-standard);
+        transition: background-color calc(var(--tui-duration) * 2 / 3) var(--tui-curve-expressive-standard);
     }
 
     [data-platform]:not([data-platform='web'])
-        &[type='password']
-        + .t-content
+        &[type='password'] + .t-content
         .t-item:not(.t-item_filled)
         .t-dot_value {
         transition: none;
@@ -211,24 +209,23 @@ input[tuiPincode] {
         &:not([type='password']) + .t-content .t-item_filled .t-value,
         &[type='password'] + .t-content .t-item_filled .t-dot_value {
             animation: @pending-wave-anim;
-            animation-delay: calc(500ms + var(--t-animation-delay, 0ms));
+            animation-delay: calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
         }
 
         [data-platform]:not([data-platform='web'])
-            &:not(._paste):not([type='password'])
-            + .t-content
+            &:not(._paste):not([type='password']) + .t-content
             .t-item_filled:last-of-type
             .t-value,
         [data-platform]:not([data-platform='web'])
-            &:not(._paste)[type='password']
-            + .t-content
+            &:not(._paste)[type='password'] + .t-content
             .t-item_filled:last-of-type
             .t-dot_value {
             animation:
-                tuiPincodeInput 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                tuiPincodeInput var(--tui-duration) cubic-bezier(0.34, 1.56, 0.64, 1),
                 @pending-wave-anim;
             animation-delay:
-                0ms, calc(500ms + var(--t-animation-delay, 0ms)), calc(500ms + var(--t-animation-delay, 0ms));
+                0ms, calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay)),
+                calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
         }
     }
 
@@ -243,18 +240,20 @@ input[tuiPincode] {
             }
 
             .t-item {
-                animation: tuiPincodeShake 500ms var(--tui-curve-productive-standard);
+                animation: tuiPincodeShake calc(var(--tui-duration) * 5 / 3) var(--tui-curve-productive-standard);
             }
 
             .t-item_filled .t-dot_placeholder {
                 scale: 1;
-                animation: tuiPincodeScale 150ms var(--tui-curve-expressive-standard) 1150ms both;
+                animation: tuiPincodeScale calc(var(--tui-duration) / 2) var(--tui-curve-expressive-standard)
+                    calc(var(--t-animation-cycle) + var(--tui-duration) / 2) both;
             }
         }
 
         &:not([type='password']) + .t-content .t-item_filled .t-value,
         &[type='password'] + .t-content .t-item_filled .t-dot_value {
-            animation: tuiScale 200ms var(--tui-curve-expressive-exit) 1000ms reverse forwards;
+            animation: tuiScale calc(var(--tui-duration) * 2 / 3) var(--tui-curve-expressive-exit)
+                var(--t-animation-cycle) reverse forwards;
         }
     }
 
@@ -265,7 +264,8 @@ input[tuiPincode] {
             }
 
             .t-item_filled {
-                animation: tuiPincodeItemSpread 700ms var(--tui-curve-productive-entrance) 1200ms forwards;
+                animation: tuiPincodeItemSpread calc(var(--tui-duration) * 7 / 3) var(--tui-curve-productive-entrance)
+                    var(--t-collapse-start) forwards;
             }
 
             .t-item_filled .t-dot_value {
@@ -276,7 +276,8 @@ input[tuiPincode] {
         &:not([type='password']) + .t-content .t-item_filled .t-value {
             animation:
                 @success-wave-anim,
-                tuiScale 200ms var(--tui-curve-expressive-exit) 1200ms reverse forwards;
+                tuiScale calc(var(--tui-duration) * 2 / 3) var(--tui-curve-expressive-exit) var(--t-collapse-start)
+                    reverse forwards;
         }
 
         &:not([type='password']) + .t-content .t-item_filled .t-dot_value {
@@ -289,19 +290,67 @@ input[tuiPincode] {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    tui-textfield:has(input[tuiPincode]) {
+        --tui-duration: 0.1ms;
+    }
+
+    input[tuiPincode] {
+        & + .t-content .t-item_focus:not(.t-item_filled)::before {
+            animation: none;
+        }
+
+        &[data-state='invalid'] {
+            & + .t-content .t-item {
+                animation: none;
+            }
+
+            & + .t-content .t-item_filled .t-dot_placeholder {
+                animation-delay: calc(var(--tui-duration) * 5 / 3);
+            }
+
+            &:not([type='password']) + .t-content .t-item_filled .t-value,
+            &[type='password'] + .t-content .t-item_filled .t-dot_value {
+                animation-delay: calc(var(--tui-duration) * 5 / 3);
+            }
+        }
+
+        &[data-state='pending'] {
+            &:not([type='password']) + .t-content .t-item_filled .t-value,
+            &[type='password'] + .t-content .t-item_filled .t-dot_value {
+                animation: none;
+            }
+        }
+
+        &[data-state='success'] {
+            & + .t-content .t-item_filled {
+                animation: none;
+            }
+
+            &[type='password'] + .t-content .t-item_filled .t-dot_value {
+                animation: @success-dot-collapse-anim;
+            }
+
+            &:not([type='password']) + .t-content .t-item_filled .t-value {
+                animation: none;
+            }
+        }
+    }
+}
+
 @keyframes tuiPincodeItemSpread {
     from {
         translate: 0;
     }
 
     to {
-        translate: calc(var(--t-offset, 0) * var(--t-pitch, 0px) / 3) 0;
+        translate: calc(var(--t-offset) * var(--t-pitch) / 3) 0;
     }
 }
 
 @keyframes tuiPincodeDotCollapsePos {
     to {
-        translate: calc(-50% - var(--t-offset, 0) * var(--t-pitch, 0px)) -50%;
+        translate: calc(-50% - var(--t-offset) * var(--t-pitch)) -50%;
     }
 }
 

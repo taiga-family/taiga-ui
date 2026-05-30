@@ -221,13 +221,14 @@ describe('TuiPincodeComponent', () => {
 
             pincode.finished.subscribe(spy);
 
-            fakeAnimationEnd('tuiScale', placeholder);
-            fakeAnimationEnd('tuiScale', placeholder);
-            fakeAnimationEnd('tuiScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale', placeholder);
             expect(spy).not.toHaveBeenCalled();
 
-            fakeAnimationEnd('tuiScale', placeholder);
+            fakeAnimationEnd('tuiPincodeScale', placeholder);
             expect(spy).toHaveBeenCalledTimes(1);
+            fixture.detectChanges();
             expect(pincode.el.value).toBe('');
         });
 
