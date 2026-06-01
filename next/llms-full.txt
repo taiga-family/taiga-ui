@@ -26164,7 +26164,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected readonly required = 3;
 
@@ -26219,7 +26219,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }
@@ -26268,7 +26268,7 @@ import {TuiItemsWithMore} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 }
 ```
@@ -26297,7 +26297,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         'one',
         'two',
@@ -26410,7 +26410,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         {
             name: 'Very very long account name',
@@ -31746,7 +31746,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected length = 64;
     protected index = 10;
 
@@ -31791,7 +31791,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected activePadding = 2;
 }
 ```
@@ -31830,7 +31830,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected sidePadding = 3;
 }
 ```
@@ -31863,7 +31863,7 @@ import {TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 }
 ```
@@ -53068,7 +53068,7 @@ import {
         }),
     ],
 })
-export class TuiWrapperExample1 {
+export default class Example {
     protected value = '';
     protected checkbox = false;
 }
@@ -53206,10 +53206,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
-import {TuiWrapperExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
+    imports: [ClipboardModule, Example, TuiDemo, TuiLink],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
@@ -53336,7 +53336,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
     styleUrl: './index.less',
     changeDetection,
 })
-export class TuiI18nExample1 {
+export default class Example {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected language = this.switcher.language;
 
@@ -53384,10 +53384,10 @@ import {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
-import {TuiI18nExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiI18nExample1, TuiLink, TuiTablePagination],
+    imports: [Example, TuiAccordion, TuiDemo, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -53443,7 +53443,7 @@ import {CustomPortalService} from './service';
     styleUrl: './index.less',
     changeDetection,
 })
-export class TuiPortalsExample1 {
+export default class Example {
     private readonly customPortalService = inject(CustomPortalService);
 
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
@@ -53490,10 +53490,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
-import {TuiPortalsExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [TuiDemo, TuiPortalsExample1],
+    imports: [Example, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -53549,7 +53549,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export class TuiVariablesExample1 {
+export default class Example {
     protected value = '';
     protected checkbox = true;
 }
@@ -53582,10 +53582,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
-import {TuiVariablesExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [ClipboardModule, KeyValuePipe, TuiDemo, TuiLink, TuiVariablesExample1],
+    imports: [ClipboardModule, Example, KeyValuePipe, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })
