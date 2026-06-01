@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {TUI_FONT_SIZE_HANDLER} from '@taiga-ui/cdk/directives/font-size';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const TUI_FONT_OFFSET = new InjectionToken<Signal<number>>(
     ngDevMode ? 'TUI_FONT_OFFSET' : '',
