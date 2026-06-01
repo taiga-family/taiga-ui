@@ -986,6 +986,21 @@ describe('InputNumber', () => {
                 await expect(inputNumber.textfield).toHaveValue('42.10');
             });
 
+            test('decimalMode=always | Enter 123 => Blur => 123.00', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
+                );
+
+                await inputNumber.textfield.fill('123');
+
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+
+                await inputNumber.textfield.blur();
+
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+            });
+
             test('decimalMode=always | Enter 42 => 42.00', async ({page}) => {
                 await tuiGoto(
                     page,
