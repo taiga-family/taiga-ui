@@ -443,6 +443,11 @@
 ```text
   TuiPin
 ```
+### pincode
+
+```text
+  TuiPincode, TuiPincodeComponent, TuiPincodeContent
+```
 ### preview
 
 ```text
@@ -851,6 +856,11 @@
 
 ```text
   TuiDatePicker
+```
+### file
+
+```text
+  TuiFile, TuiFileOptions, TuiFilePipe
 ```
 ### popout
 
@@ -2042,6 +2052,7 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected items = [&#039;one&#039;, &#039;two&#039;, &#039;three&#039;, &#039;four&#039;];
     protected control = new FormControl&lt;string[]&gt;([]);
     protected expanded = false;
@@ -2097,6 +2108,7 @@ import {TuiActionBar} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected readonly open = signal(false);
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 }
@@ -2434,6 +2446,7 @@ import {TuiAppBar, TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
     protected step = 0;
 
     protected open(template: TemplateRef&lt;any&gt;): void {
@@ -4405,6 +4418,7 @@ import {type TuiSizeL, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
 })
 export default class Page {
     public readonly examples = [&#039;With axes&#039;, &#039;Same values with collapsed mode&#039;];
+
     protected collapsed = false;
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected size: TuiSizeL | TuiSizeS | null = null;
@@ -5572,6 +5586,7 @@ import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sheet = viewChild(TuiBottomSheet, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected messages = [&#039;Check that awesome bottom sheet out!&#039;];
     protected value = &#039;&#039;;
 
@@ -6005,6 +6020,7 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
+
     protected readonly examples = [&#039;Basic&#039;, &#039;Overflow&#039;];
 
     protected readonly items = [
@@ -10753,6 +10769,7 @@ import {TuiChip} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly checked = [true, false, true];
     protected readonly values = [&#039;test&#039;, &#039;Some text&#039;, &#039;WOW!&#039;];
 
@@ -11435,6 +11452,7 @@ import {DatabaseServer} from &#039;./database&#039;;
 })
 export default class Example {
     private readonly api = inject(DatabaseServer);
+
     protected readonly showLoader = signal(false);
     // Click on cleaner / datalist item triggers (input) events too
     protected readonly search$ = new Subject&lt;string&gt;();
@@ -11807,6 +11825,7 @@ interface Country {
 })
 export default class PageComponent extends Array {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -12038,6 +12057,7 @@ import {TuiCompass} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly compass = viewChild(TuiCompass, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
@@ -12076,6 +12096,7 @@ export default class Page {
 
     protected color = this.colorVariants[0]!;
     protected degrees = 90;
+
     public readonly examples = [&#039;Basic&#039;, &#039;Direction&#039;];
 }
 ```
@@ -12169,9 +12190,11 @@ import {switchMap} from &#039;rxjs&#039;;
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly routes = DemoRoute;
     protected readonly examples = [&#039;Basic&#039;];
     protected readonly exampleService = import(&#039;./examples/import/service.md&#039;);
+
     public readonly appearances = [&#039;primary&#039;, &#039;accent&#039;, &#039;secondary&#039;];
     public appearance = this.appearances[0]!;
     public no = &#039;No&#039;;
@@ -12789,6 +12812,7 @@ import {TuiDataListDropdownManager} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = &#039;s&#039;;
 
@@ -13150,6 +13174,7 @@ export default class Example {
     ];
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
+
     public control = new FormControl(&#039;&#039;);
 }
 ```
@@ -13661,6 +13686,7 @@ import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 export default class Example {
     private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
+
     protected value = &#039;&#039;;
 
     protected onModelChange(value: string): void {
@@ -13908,6 +13934,7 @@ export default class Page extends Array {
     private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
+
     protected readonly routes = DemoRoute;
 
     protected readonly examples = [
@@ -15175,6 +15202,515 @@ export default class Page {
         border-inline-end: 0.625rem solid transparent;
         transform: translate(-0.625rem, 0);
     }
+}
+```
+
+---
+# components/File
+- **Package**: `EXPERIMENTAL`
+- **Type**: components
+This component is based on Cell and therefore follows its rules on padding in horizontal mode. Reset padding-inline if you do not need it.
+
+### Usage Examples
+
+#### Horizontal
+
+**Template:**
+```html
+&lt;tui-segmented&gt; @for (item of [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;]; track $index) { &lt;label&gt; {{ item }} &lt;input name=&quot;size&quot; type=&quot;radio&quot; [value]=&quot;item&quot; [(ngModel)]=&quot;size&quot; /&gt;
+&lt;/label&gt; } &lt;/tui-segmented&gt; @for (item of content; track $index) { &lt;div orientation=&quot;horizontal&quot; tuiFile [size]=&quot;size()&quot; &gt; @switch (item) { @case (&#039;icon&#039;) { &lt;tui-icon icon=&quot;@tui.image&quot; /&gt; } @case (&#039;button&#039;) { &lt;button iconStart=&quot;@tui.rotate-cw&quot; tuiIconButton type=&quot;button&quot; &gt; Retry &lt;/button&gt; } @case (&#039;progress&#039;) { &lt;tui-progress-circle [value]=&quot;0.6&quot; /&gt; } @case (&#039;loader&#039;) { &lt;tui-loader [size]=&quot;getSize(size() || &#039;l&#039;)&quot; /&gt; } @case (&#039;image&#039;) { &lt;img alt=&quot;&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt; } @case (&#039;error&#039;) { &lt;tui-icon icon=&quot;@tui.circle-x&quot; [style.color]=&quot;&#039;var(--tui-text-negative)&#039;&quot; /&gt; } } &lt;div tuiTitle&gt; file.png &lt;div tuiSubtitle&gt;30 MB&lt;/div&gt;
+&lt;/div&gt;
+&lt;button tuiButtonX&gt;Remove&lt;/button&gt;
+&lt;/div&gt; } &lt;div [style.padding-inline]=&quot;0&quot; [tuiCell]=&quot;size()&quot; &gt;
+&lt;span tuiAvatar [round]=&quot;false&quot; [tuiSkeleton]=&quot;true&quot; &gt;&lt;/span&gt;
+&lt;span tuiTitle&gt;
+&lt;span tuiSkeleton=&quot;Loading file name&quot;&gt;&lt;/span&gt;
+&lt;span tuiSkeleton=&quot;Loading&quot; tuiSubtitle &gt;&lt;/span&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    TuiButton,
+    TuiButtonX,
+    TuiCell,
+    TuiIcon,
+    TuiLoader,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
+import {TUI_FILE_OPTIONS_OPTIONS, TuiFile} from &#039;@taiga-ui/experimental&#039;;
+import {TuiAvatar, TuiProgress, TuiSegmented, TuiSkeleton} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiButtonX,
+        TuiCell,
+        TuiFile,
+        TuiIcon,
+        TuiLoader,
+        TuiProgress,
+        TuiSegmented,
+        TuiSkeleton,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly size = signal(inject(TUI_FILE_OPTIONS_OPTIONS).size);
+
+    protected readonly content = [
+        &#039;icon&#039;,
+        &#039;button&#039;,
+        &#039;progress&#039;,
+        &#039;loader&#039;,
+        &#039;image&#039;,
+        &#039;error&#039;,
+    ];
+
+    protected getSize(size: TuiSizeL | TuiSizeS): TuiSizeXS {
+        switch (size) {
+            case &#039;l&#039;:
+                return &#039;m&#039;;
+            case &#039;m&#039;:
+                return &#039;s&#039;;
+            case &#039;s&#039;:
+                return &#039;xs&#039;;
+        }
+    }
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+tui-segmented {
+    inline-size: fit-content;
+    text-transform: uppercase;
+    margin-block-end: 0.5rem;
+}
+
+[tuiFile] {
+    padding-inline: 0;
+}
+```
+
+#### Vertical
+
+**Template:**
+```html
+&lt;tui-segmented&gt; @for (item of [&#039;m&#039;, &#039;l&#039;]; track $index) { &lt;label&gt; {{ item }} &lt;input name=&quot;size&quot; type=&quot;radio&quot; [value]=&quot;item&quot; [(ngModel)]=&quot;size&quot; /&gt;
+&lt;/label&gt; } &lt;/tui-segmented&gt; @for (item of content; track $index) { &lt;div tuiFile [size]=&quot;size()&quot; [tuiHint]=&quot;item === &#039;error&#039; &amp;&amp; size() === &#039;m&#039; ? &#039;Error message&#039; : &#039;&#039;&quot; &gt; @switch (item) { @case (&#039;icon&#039;) { @if (size() === &#039;l&#039;) { &lt;tui-icon icon=&quot;@tui.image&quot; /&gt; } } @case (&#039;button&#039;) { &lt;button iconStart=&quot;@tui.rotate-cw&quot; tuiIconButton type=&quot;button&quot; &gt; Retry &lt;/button&gt; } @case (&#039;progress&#039;) { &lt;tui-progress-circle [value]=&quot;0.6&quot; /&gt; } @case (&#039;loader&#039;) { &lt;tui-loader /&gt; } @case (&#039;image&#039;) { &lt;img alt=&quot;&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt; } @case (&#039;error&#039;) { &lt;tui-icon icon=&quot;@tui.circle-x&quot; [style.color]=&quot;&#039;var(--tui-text-negative)&#039;&quot; /&gt; } } @if (size() === &#039;l&#039;) { &lt;div tuiTitle&gt; file.png @if (item === &#039;error&#039;) { &lt;div tuiSubtitle [style.color]=&quot;&#039;var(--tui-text-negative)&#039;&quot; &gt; Error &lt;/div&gt; } @else { &lt;div tuiSubtitle&gt;30 MB&lt;/div&gt; } &lt;/div&gt; } @else if (item !== &#039;image&#039;) { &lt;div tuiTitle&gt; file &lt;div tuiSubtitle&gt;PNG&lt;/div&gt;
+&lt;/div&gt; } &lt;button tuiButtonX&gt;Remove&lt;/button&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    TuiButton,
+    TuiButtonX,
+    TuiHint,
+    TuiIcon,
+    TuiLoader,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
+import {TUI_FILE_OPTIONS_OPTIONS, TuiFile} from &#039;@taiga-ui/experimental&#039;;
+import {TuiProgress, TuiSegmented} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonX,
+        TuiFile,
+        TuiHint,
+        TuiIcon,
+        TuiLoader,
+        TuiProgress,
+        TuiSegmented,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly size = signal(inject(TUI_FILE_OPTIONS_OPTIONS).size);
+
+    protected readonly content = [
+        &#039;icon&#039;,
+        &#039;button&#039;,
+        &#039;progress&#039;,
+        &#039;loader&#039;,
+        &#039;image&#039;,
+        &#039;error&#039;,
+    ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+}
+
+tui-segmented {
+    grid-column: 1 / -1;
+    inline-size: fit-content;
+    text-transform: uppercase;
+}
+```
+
+#### Texts
+
+**Template:**
+```html
+@for (orientation of orientations; track $index) { &lt;div tuiFile [orientation]=&quot;orientation&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.image&quot; /&gt;
+&lt;div tuiTitle&gt; A very very long file name that spans many many lines.png &lt;div tuiSubtitle&gt;Some extra info about this file can also be very long and span multiple lines&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiFile [orientation]=&quot;orientation&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.image&quot; /&gt;
+&lt;div tuiTitle&gt;
+&lt;div class=&quot;clamp&quot;&gt;A very very long file name that spans many many lines.png&lt;/div&gt;
+&lt;div tuiSubtitle class=&quot;clamp&quot; &gt; You can use native &lt;code&gt;line-clamp&lt;/code&gt; CSS rule to keep text under a certain number of lines &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiFile} from &#039;@taiga-ui/experimental&#039;;
+
+@Component({
+    imports: [TuiFile, TuiIcon, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly orientations = [&#039;horizontal&#039;, &#039;vertical&#039;] as const;
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+:host {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    align-items: start;
+}
+
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+```
+
+#### Transitions
+
+**Template:**
+```html
+@for (orientation of orientations; track $index) { &lt;div tuiFile [orientation]=&quot;orientation&quot; &gt; @if (!progress()) { &lt;button iconStart=&quot;@tui.rotate-cw&quot; tuiAnimated tuiIconButton type=&quot;button&quot; (click)=&quot;trigger.next()&quot; &gt; Retry &lt;/button&gt; } @else if (progress() &lt; 5) { &lt;img alt=&quot;&quot; src=&quot;assets/images/avatar.jpg&quot; tuiAnimated /&gt; } @else { &lt;tui-icon icon=&quot;@tui.image&quot; tuiAnimated /&gt; } &lt;div tuiTitle&gt;
+&lt;div tuiSlides&gt; @if (progress()) { &lt;div tuiAnimated&gt;file.png&lt;/div&gt; } @else { &lt;div tuiAnimated&gt;Select file&lt;/div&gt; } &lt;/div&gt;
+&lt;div tuiSlides tuiSubtitle &gt; @if (progress()) { &lt;div tuiAnimated&gt;Uploading: {{ 10 - progress() }}MB of 10MB&lt;/div&gt; } @else { &lt;span tuiAnimated&gt;Server unavailable&lt;/span&gt; } &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {toSignal} from &#039;@angular/core/rxjs-interop&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiAnimated} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiFile} from &#039;@taiga-ui/experimental&#039;;
+import {TuiSlides} from &#039;@taiga-ui/layout&#039;;
+import {map, Subject, switchMap, takeWhile, timer} from &#039;rxjs&#039;;
+
+@Component({
+    imports: [TuiAnimated, TuiButton, TuiFile, TuiIcon, TuiSlides, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly orientations = [&#039;horizontal&#039;, &#039;vertical&#039;] as const;
+    protected readonly trigger = new Subject&lt;void&gt;();
+
+    protected readonly progress = toSignal(
+        this.trigger.pipe(
+            switchMap(() =&gt;
+                timer(0, 1000).pipe(
+                    map((i) =&gt; 10 - i),
+                    takeWhile(Boolean, true),
+                ),
+            ),
+        ),
+        {initialValue: 0},
+    );
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+span {
+    color: var(--tui-text-negative);
+}
+```
+
+#### Preview
+
+**Template:**
+```html
+&lt;tui-segmented&gt; @for (item of states; track $index) { &lt;label&gt; {{ item }} &lt;input name=&quot;size&quot; type=&quot;radio&quot; [value]=&quot;item&quot; [(ngModel)]=&quot;state&quot; /&gt;
+&lt;/label&gt; } &lt;/tui-segmented&gt; @for (orientation of orientations; track $index) { &lt;div tuiFile [orientation]=&quot;orientation&quot; &gt;
+&lt;img alt=&quot;&quot; src=&quot;assets/images/avatar.jpg&quot; /&gt; @switch (state()) { @case (&#039;progress&#039;) { &lt;tui-progress-circle [value]=&quot;0.6&quot; /&gt; } @case (&#039;loader&#039;) { &lt;tui-loader /&gt; } @case (&#039;error&#039;) { &lt;tui-icon icon=&quot;@tui.circle-x&quot; tuiAnimated [style.color]=&quot;&#039;var(--tui-text-negative)&#039;&quot; /&gt; } @case (&#039;button&#039;) { &lt;button iconStart=&quot;@tui.rotate-cw&quot; tuiIconButton type=&quot;button&quot; &gt; Retry &lt;/button&gt; } } &lt;div tuiTitle&gt; file.png &lt;div tuiSlides tuiSubtitle &gt; @switch (state()) { @case (&#039;normal&#039;) { &lt;div tuiAnimated&gt;5 MB&lt;/div&gt; } @case (&#039;error&#039;) { &lt;div tuiAnimated [style.color]=&quot;&#039;var(--tui-text-negative)&#039;&quot; &gt; Over 30 MB &lt;/div&gt; } @case (&#039;button&#039;) { &lt;div tuiAnimated&gt;Not uploaded&lt;/div&gt; } @default { &lt;div tuiAnimated&gt;Uploading...&lt;/div&gt; } } &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiAnimated} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiIcon, TuiLoader, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiFile} from &#039;@taiga-ui/experimental&#039;;
+import {TuiProgressCircle, TuiSegmented} from &#039;@taiga-ui/kit&#039;;
+import {TuiSlides} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAnimated,
+        TuiButton,
+        TuiFile,
+        TuiIcon,
+        TuiLoader,
+        TuiProgressCircle,
+        TuiSegmented,
+        TuiSlides,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly orientations = [&#039;horizontal&#039;, &#039;vertical&#039;] as const;
+    protected readonly state = signal(&#039;normal&#039;);
+
+    protected readonly states = [
+        &#039;normal&#039;,
+        &#039;progress&#039;,
+        &#039;loader&#039;,
+        &#039;error&#039;,
+        &#039;button&#039;,
+    ] as const;
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+```
+
+#### With file selector
+
+**Template:**
+```html
+&lt;div tuiFile&gt;
+&lt;input #input accept=&quot;image/*&quot; multiple type=&quot;file&quot; (change)=&quot;select(input.files)&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.plus&quot; /&gt;
+&lt;div tuiTitle&gt;Upload a document&lt;/div&gt;
+&lt;/div&gt; @for (file of files(); track file) { &lt;div tuiFile&gt; @if (file.type.startsWith(&#039;image/&#039;)) { &lt;img alt=&quot;&quot; [src]=&quot;file | tuiFile&quot; /&gt; } @else { &lt;tui-icon icon=&quot;@tui.file&quot; /&gt; } &lt;div tuiTitle&gt;{{ file.name }}&lt;/div&gt;
+&lt;button tuiButtonX (click)=&quot;remove(file)&quot; &gt; Remove &lt;/button&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButtonX, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiFile, TuiFilePipe} from &#039;@taiga-ui/experimental&#039;;
+
+@Component({
+    imports: [FormsModule, TuiButtonX, TuiFile, TuiFilePipe, TuiIcon, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly files = signal&lt;readonly File[]&gt;([]);
+
+    protected select(files: FileList | null): void {
+        this.files.set(Array.from(files || []));
+    }
+
+    protected remove(file: File): void {
+        this.files.update((files) =&gt; files.filter((f) =&gt; f !== file));
+    }
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+}
+
+[tuiFile]:first-child tui-icon {
+    color: var(--tui-text-action);
+}
+```
+
+#### InputFiles
+
+**Template:**
+```html
+&lt;label tuiInputFiles&gt;
+&lt;input multiple tuiInputFiles [(ngModel)]=&quot;files&quot; /&gt;
+&lt;/label&gt; @for (file of files(); track file) { &lt;section tuiAnimated&gt;
+&lt;div [style.overflow]=&quot;&#039;hidden&#039;&quot;&gt;
+&lt;div orientation=&quot;horizontal&quot; tuiFile &gt;
+&lt;tui-icon icon=&quot;@tui.file&quot; /&gt;
+&lt;div tuiTitle&gt; {{ file.name }} &lt;div tuiSubtitle&gt;{{ formatSize([&#039;B&#039;, &#039;KB&#039;, &#039;MB&#039;], file.size) }}&lt;/div&gt;
+&lt;/div&gt;
+&lt;button tuiButtonX (click)=&quot;remove(file)&quot; &gt; Remove &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiAnimated} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButtonX, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiFile} from &#039;@taiga-ui/experimental&#039;;
+import {TUI_FILE_OPTIONS, TuiFiles} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiAnimated, TuiButtonX, TuiFile, TuiFiles, TuiIcon, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly formatSize = inject(TUI_FILE_OPTIONS).formatSize;
+    protected readonly files = signal&lt;readonly File[]&gt;([]);
+
+    protected remove(file: File): void {
+        this.files.update((files) =&gt; files.filter((f) =&gt; f !== file));
+    }
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+label {
+    margin-block-end: 0.5rem;
+}
+
+section {
+    display: grid;
+
+    &amp;.tui-enter,
+    &amp;.tui-leave {
+        animation-name: tuiFade, tuiCollapse;
+    }
+}
+
+[tuiFile] {
+    padding-inline: 0;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {DemoRoute} from &#039;@demo/routes&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly routes = DemoRoute;
+
+    protected readonly examples = [
+        &#039;Horizontal&#039;,
+        &#039;Vertical&#039;,
+        &#039;Texts&#039;,
+        &#039;Transitions&#039;,
+        &#039;Preview&#039;,
+        &#039;With file selector&#039;,
+        &#039;InputFiles&#039;,
+    ];
 }
 ```
 
@@ -22000,6 +22536,7 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected heading = &#039;Page heading&#039;;
     protected editing = false;
 
@@ -22070,6 +22607,7 @@ export default class Example implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
+
     protected readonly isE2E = inject(WA_IS_E2E);
     protected count = &#039;0&#039;;
 
@@ -23103,6 +23641,7 @@ import {TuiInputPhone} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected readonly isIos = inject(WA_IS_IOS);
+
     public value = &#039;+71234567890&#039;;
 
     protected get pattern(): string | null {
@@ -23347,6 +23886,7 @@ export default class PageComponent {
 
     protected filler = &#039;&#039;;
     protected phoneMask = this.phoneMasks[0]!;
+
     public control = new FormControl(&#039;&#039;, [Validators.required, Validators.minLength(12)]);
 
     public readonly examples = [
@@ -25308,7 +25848,9 @@ export default class PageComponent {
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
+
     public control = new FormControl&lt;number | null&gt;(null, Validators.required);
+
     protected readonly handler = (year: number): boolean =&gt; year % 3 === 0;
 }
 ```
@@ -25636,7 +26178,7 @@ import {TuiChip, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject&lt;readonly string[]&gt;(&#039;Pythons&#039; as any);
     protected readonly required = 3;
 
@@ -25691,7 +26233,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject&lt;readonly string[]&gt;(&#039;Pythons&#039; as any);
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }
@@ -25740,7 +26282,7 @@ import {TuiItemsWithMore} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = inject&lt;readonly string[]&gt;(&#039;Pythons&#039; as any);
 }
 ```
@@ -25769,7 +26311,7 @@ import {TuiChip, TuiItemsWithMore} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         &#039;one&#039;,
         &#039;two&#039;,
@@ -25882,7 +26424,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         {
             name: &#039;Very very long account name&#039;,
@@ -26303,6 +26845,7 @@ import {
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
     private enabled = Array.from&lt;unknown, boolean&gt;({length: 5}, () =&gt; true);
+
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
     protected readonly sum = tuiSum(...this.data);
     protected readonly labels = [&#039;Axes&#039;, &#039;Faxes&#039;, &#039;Taxes&#039;, &#039;Saxes&#039;, &#039;Other&#039;];
@@ -27092,6 +27635,7 @@ import {map, timer} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
+
     protected readonly value = signal(&#039;&#039;);
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(
@@ -27230,6 +27774,7 @@ import {TuiLineClamp} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
+
     protected lineHeight = Number.NaN;
     protected lineLimit = Number.NaN;
 
@@ -27798,6 +28343,7 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
+
     protected readonly maxLength: TuiDayLike = {month: 12};
 
     protected readonly range = signal(
@@ -30010,6 +30556,7 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from &#039;@taiga-ui/la
 })
 export default class Example {
     private readonly theme = inject(TuiThemeColorService);
+
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
 
@@ -31213,7 +31760,7 @@ import {TuiInputSlider, TuiPagination} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected length = 64;
     protected index = 10;
 
@@ -31258,7 +31805,7 @@ import {TuiInputSlider, TuiPagination} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected activePadding = 2;
 }
 ```
@@ -31297,7 +31844,7 @@ import {TuiInputSlider, TuiPagination} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected sidePadding = 3;
 }
 ```
@@ -31330,7 +31877,7 @@ import {TuiPagination} from &#039;@taiga-ui/kit&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly days = [&#039;Mon&#039;, &#039;Tue&#039;, &#039;Wed&#039;, &#039;Thu&#039;, &#039;Fri&#039;, &#039;Sat&#039;, &#039;Sun&#039;];
 }
 ```
@@ -31406,6 +31953,7 @@ import {TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
     protected open = false;
@@ -31451,6 +31999,7 @@ import {TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly alerts = inject(TuiNotificationService);
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
@@ -31497,6 +32046,7 @@ import {TuiBlockStatus, TuiPdfViewer} from &#039;@taiga-ui/layout&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = &#039;/assets/media/taiga.pdf&#039;;
     protected open = false;
@@ -31981,6 +32531,569 @@ export default class Page {
 ```
 
 ---
+# components/Pincode
+- **Package**: `KIT`
+- **Type**: components
+
+### Example
+
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [formControl]=&quot;control&quot; [invalid]=&quot;invalid()&quot; [maxLength]=&quot;length&quot; [type]=&quot;type()&quot; (confirmed)=&quot;confirmed.emitEvent($event)&quot; (finished)=&quot;finished.emitEvent($event); onFinished()&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| type | `string` | masks each digit as a filled dot |
+| [invalid] | `boolean | null` | — shake and auto-clear |
+| maxLength | `number` | Number of cells. Pending animation triggers once value reaches this length |
+
+### API - Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| (confirmed) | `void` | Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition |
+| (finished) | `void` | Fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [(ngModel)]=&quot;value&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = &#039;&#039;;
+}
+```
+
+#### Dots
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode type=&quot;password&quot; [maxLength]=&quot;6&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = &#039;&#039;;
+}
+```
+
+#### Fast loading
+
+**Template:**
+```html
+@if (done()) { &lt;div class=&quot;done&quot;&gt;PIN verified ✓&lt;/div&gt; } @else { &lt;tui-textfield&gt;
+&lt;input tuiPincode [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;done.set(true)&quot; /&gt;
+&lt;/tui-textfield&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+const CORRECT = &#039;1234&#039;;
+const FAST_LATENCY = 300;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt;
+        setTimeout(() =&gt; resolve(pin !== CORRECT), FAST_LATENCY),
+    );
+}
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly done = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+```
+
+#### Long loading
+
+**Template:**
+```html
+@if (done()) { &lt;div class=&quot;done&quot;&gt;PIN verified ✓&lt;/div&gt; } @else { &lt;div class=&quot;field&quot; [class.field_success]=&quot;verification.value() === false&quot; &gt;
+&lt;tui-loader class=&quot;loader&quot; [inheritColor]=&quot;true&quot; [loading]=&quot;verification.value() === false&quot; /&gt;
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (finished)=&quot;onFinished()&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiLoader} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [FormsModule, TuiLoader, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly done = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+
+    protected onFinished(): void {
+        if (this.verification.value() === false) {
+            setTimeout(() =&gt; this.done.set(true), 2000);
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.done {
+    color: var(--tui-text-positive);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+tui-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tui-text-action);
+    scale: 0;
+    pointer-events: none;
+}
+
+.field_success tui-loader {
+    animation: loaderIn 500ms cubic-bezier(0, 0, 0.58, 1) 2150ms forwards;
+}
+
+@keyframes loaderIn {
+    0% {
+        scale: 0;
+    }
+
+    30% {
+        scale: 1.2;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+```
+
+#### Desktop
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open dialog &lt;/button&gt;
+&lt;ng-template let-observer [tuiDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;header tuiHeader=&quot;h5&quot; class=&quot;heading&quot; &gt;
+&lt;h2 tuiTitle&gt;Enter PIN&lt;/h2&gt;
+&lt;/header&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;tui-textfield&gt;
+&lt;input tuiAutoFocus tuiPincode type=&quot;password&quot; [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;open.set(false); pin.set(&#039;&#039;)&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+&lt;button appearance=&quot;flat&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Cancel &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiThumbnailCard} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiAutoFocus} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiDialog, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAutoFocus,
+        TuiButton,
+        TuiDialog,
+        TuiHeader,
+        TuiPincode,
+        TuiThumbnailCard,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly open = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+}
+```
+**LESS:**
+```less
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1.5rem 0;
+}
+
+.heading {
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-block-start: 0.5rem;
+}
+```
+
+#### Mobile
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open sheet &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;header class=&quot;header&quot;&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Close &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;/header&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;header tuiHeader=&quot;h5&quot;&gt;
+&lt;h2 tuiTitle&gt;Create a PIN&lt;/h2&gt;
+&lt;/header&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;tui-textfield&gt;
+&lt;input inputmode=&quot;none&quot; tuiPincode type=&quot;password&quot; [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;open.set(false); pin.set(&#039;&#039;)&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pad&quot;&gt; @for (key of keys; track key) { @if (key === &#039;&#039;) { &lt;span&gt;&lt;/span&gt; } @else if (key === &#039;backspace&#039;) { &lt;button type=&quot;button&quot; class=&quot;key&quot; [disabled]=&quot;verification.value() != null&quot; (click)=&quot;onKey(key)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt; } @else { &lt;button type=&quot;button&quot; class=&quot;key&quot; [disabled]=&quot;verification.value() != null&quot; (click)=&quot;onKey(key)&quot; &gt; {{ key }} &lt;/button&gt; } } &lt;/div&gt;
+&lt;button tuiLink type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Skip &lt;/button&gt;
+&lt;/div&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiThumbnailCard} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiIcon, TuiLink} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAppBar,
+        TuiButton,
+        TuiIcon,
+        TuiLink,
+        TuiPincode,
+        TuiSheetDialog,
+        TuiThumbnailCard,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly open = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+
+    protected readonly keys = [
+        &#039;1&#039;,
+        &#039;2&#039;,
+        &#039;3&#039;,
+        &#039;4&#039;,
+        &#039;5&#039;,
+        &#039;6&#039;,
+        &#039;7&#039;,
+        &#039;8&#039;,
+        &#039;9&#039;,
+        &#039;&#039;,
+        &#039;0&#039;,
+        &#039;backspace&#039;,
+    ] as const;
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        closable: false,
+        bar: false,
+        appearance: &#039;fullscreen&#039;,
+    };
+
+    protected onKey(key: string): void {
+        if (this.verification.value() != null) {
+            return;
+        }
+
+        const value = this.pin();
+
+        if (key === &#039;backspace&#039;) {
+            this.pin.set(value.slice(0, -1));
+
+            return;
+        }
+
+        if (value.length &gt;= 4) {
+            return;
+        }
+
+        this.pin.set(`${value}${key}`);
+    }
+}
+```
+**LESS:**
+```less
+.header {
+    margin-block-end: 1.5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+    margin-block-end: auto;
+}
+
+.pad {
+    display: grid;
+    grid-template-columns: repeat(3, 4.5rem);
+    gap: 0.5rem 1.5rem;
+    justify-items: center;
+    margin-block-end: 0.5rem;
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 4.5rem;
+    block-size: 4.5rem;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    font: 2.5rem/1 var(--tui-typography-family-display);
+    color: var(--tui-text-primary);
+    cursor: pointer;
+    transition: background var(--tui-duration-short, 150ms);
+
+    @media (pointer: fine) {
+        &amp;:hover {
+            background: var(--tui-background-neutral-1-hover);
+        }
+    }
+
+    &amp;:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: 0.125rem;
+    }
+
+    &amp;:active {
+        background: var(--tui-background-neutral-1-pressed);
+    }
+
+    &amp;:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+tui-app-bar {
+    align-self: stretch;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [ReactiveFormsModule, TuiDemo, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Dots&#039;,
+        &#039;Fast loading&#039;,
+        &#039;Long loading&#039;,
+        &#039;Desktop&#039;,
+        &#039;Mobile&#039;,
+    ];
+
+    protected length = 4;
+    protected readonly invalidVariants = [true, false] as const;
+    protected readonly typeVariants = [&#039;text&#039;, &#039;password&#039;] as const;
+    protected readonly invalid = signal&lt;boolean | null&gt;(null);
+    protected readonly type = signal&lt;&#039;password&#039; | &#039;text&#039;&gt;(&#039;text&#039;);
+    protected readonly control = new FormControl(&#039;&#039;);
+
+    protected onFinished(): void {
+        setTimeout(() =&gt; {
+            this.invalid.set(null);
+            this.control.reset(&#039;&#039;);
+        }, 1500);
+    }
+}
+```
+
+---
 # components/Popout
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
@@ -32027,6 +33140,7 @@ import {type Subscription} from &#039;rxjs&#039;;
 export default class Example {
     private readonly popout = inject(TuiPopoutService);
     private sub: Subscription | null = null;
+
     protected readonly value = signal(&#039;Value&#039;);
 
     protected toggle(content: TemplateRef&lt;any&gt;): void {
@@ -32234,6 +33348,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from &#039;@taiga-ui/polym
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly contentSample =
@@ -32366,6 +33481,7 @@ import {TuiPreview, TuiPreviewDialogService} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected show(): void {
@@ -32426,6 +33542,7 @@ import {
 })
 export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
+
     protected readonly preview = viewChild&lt;TemplateRef&lt;TuiDialogContext&gt;&gt;(&#039;preview&#039;);
 
     protected readonly items = [
@@ -33001,8 +34118,12 @@ export default class Example {
 **Template:**
 ```html
 @if (value$ | async; as value) { &lt;label tuiProgressLabel&gt;
-&lt;span class=&quot;text&quot;&gt;COMPLETED&lt;/span&gt;
-&lt;span class=&quot;percent&quot;&gt;{{ value }}%&lt;/span&gt;
+&lt;span tuiHeader=&quot;h6&quot;&gt;
+&lt;span tuiTitle&gt;
+&lt;span tuiSubtitle&gt;Done&lt;/span&gt;
+&lt;b&gt;{{ value }}%&lt;/b&gt;
+&lt;/span&gt;
+&lt;/span&gt;
 &lt;tui-progress-circle size=&quot;xl&quot; [max]=&quot;max&quot; [value]=&quot;value&quot; /&gt;
 &lt;/label&gt; }
 ```
@@ -33013,13 +34134,14 @@ import {Component, inject, PLATFORM_ID} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {WA_IS_E2E} from &#039;@ng-web-apis/platform&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiProgress} from &#039;@taiga-ui/kit&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 import {map, of, startWith, takeWhile, timer} from &#039;rxjs&#039;;
 
 @Component({
-    imports: [AsyncPipe, TuiProgress],
+    imports: [AsyncPipe, TuiHeader, TuiProgress, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
@@ -33034,17 +34156,6 @@ export default class Example {
                   startWith(30),
                   takeWhile((value) =&gt; value &lt;= this.max),
               );
-}
-```
-**LESS:**
-```less
-.text {
-    font: var(--tui-typography-body-s);
-    color: var(--tui-text-tertiary);
-}
-
-.percent {
-    font: var(--tui-typography-heading-h6);
 }
 ```
 
@@ -33196,8 +34307,7 @@ export default class Example {
 **LESS:**
 ```less
 tui-progress-circle {
-    transform: scaleX(-1) // reversed direction
-        rotate(-90deg); // top side starting point
+    transform: scaleX(-1);
 }
 ```
 
@@ -33565,6 +34675,7 @@ import {Subject} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected items = Array.from({length: 10000}).map((_, i) =&gt; `Item #${i}`);
 
     protected onPull(): void {
@@ -34734,6 +35845,7 @@ import {tuiSum} from &#039;@taiga-ui/cdk&#039;;
 })
 export default class Example {
     private readonly labels = [&#039;Food&#039;, &#039;Cafe&#039;, &#039;Open Source&#039;, &#039;Taxi&#039;, &#039;other&#039;];
+
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly total = tuiSum(...this.value);
     protected index = Number.NaN;
@@ -34955,6 +36067,7 @@ const SOME_OFFSET_CONST = 20;
 })
 export default class Example {
     private readonly scrollBar = viewChild(TuiScrollbar, {read: ElementRef&lt;HTMLElement&gt;});
+
     protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
@@ -36432,6 +37545,7 @@ interface Country {
 })
 export default class PageComponent {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -37131,6 +38245,7 @@ export default class Page {
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly exampleComponent = import(&#039;./examples/import/component.md&#039;);
 
     protected readonly examples = [
@@ -39768,6 +40883,7 @@ interface Item {
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 1;
 
     protected readonly items = [
@@ -41052,6 +42168,7 @@ function getAge(dob: TuiDay): number {
 })
 export default class Example {
     private readonly size$ = new BehaviorSubject(10);
+
     protected readonly page$ = new BehaviorSubject(0);
 
     protected readonly direction$ = new BehaviorSubject&lt;TuiSortDirection&gt;(
@@ -42130,6 +43247,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -42171,6 +43289,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
 
     protected onClick(item: string): void {
@@ -42336,6 +43455,7 @@ import {TuiInputNumber, TuiTabs} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected activeItemIndex = 0;
     protected readonly steps = [&#039;Sales&#039;, &#039;Settings&#039;, &#039;News&#039;];
 
@@ -46423,6 +47543,7 @@ import {TuiButton, TuiDialogService, TuiInput} from &#039;@taiga-ui/core&#039;;
 })
 export default class Example {
     private readonly dialog = inject(TuiDialogService);
+
     protected active = false;
 
     protected onZone(active: boolean): void {
@@ -46948,6 +48069,7 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
 
@@ -48305,6 +49427,7 @@ import {
 })
 class TopRightDirective extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;dropdown&#039;;
 
     public getPosition({height}: DOMRect): TuiPoint {
@@ -48356,6 +49479,14 @@ export default class PageComponent {
     protected enabledSelected = this.enabledVariants[0]!;
     protected readonly contentVariants = [&#039;Template&#039;, &#039;Custom string&#039;];
     protected content = this.contentVariants[0]!;
+
+    protected readonly examples = [
+        &#039;Menu&#039;,
+        &#039;With custom host&#039;,
+        &#039;With link&#039;,
+        &#039;Complex example&#039;,
+        &#039;Custom positioning&#039;,
+    ];
 
     protected get template(): boolean {
         return this.content === &#039;Template&#039;;
@@ -49305,6 +50436,7 @@ import {
 })
 export default class Example {
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
+
     protected value = &#039;I am a very long value&#039;;
     protected readonly range = signal([this.options.min * 16, this.options.max * 16]);
 
@@ -50345,6 +51477,7 @@ import {BehaviorSubject, map} from &#039;rxjs&#039;;
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(
@@ -51906,6 +53039,7 @@ export default class Example {
     private readonly key = inject(TUI_DARK_MODE_KEY);
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly media = inject(WA_WINDOW).matchMedia(&#039;(prefers-color-scheme: dark)&#039;);
+
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected reset(): void {
@@ -52511,7 +53645,7 @@ import {
         }),
     ],
 })
-export class TuiWrapperExample1 {
+export default class Example {
     protected value = &#039;&#039;;
     protected checkbox = false;
 }
@@ -52649,10 +53783,10 @@ import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TuiLink} from &#039;@taiga-ui/core&#039;;
 
-import {TuiWrapperExample1} from &#039;./examples/1&#039;;
+import Example from &#039;./examples/1&#039;;
 
 @Component({
-    imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
+    imports: [ClipboardModule, Example, TuiDemo, TuiLink],
     templateUrl: &#039;./index.html&#039;,
     encapsulation: ViewEncapsulation.None,
     changeDetection,
@@ -52779,7 +53913,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from &#039;@taiga-ui/ki
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
 })
-export class TuiI18nExample1 {
+export default class Example {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected language = this.switcher.language;
 
@@ -52827,10 +53961,10 @@ import {TuiTablePagination} from &#039;@taiga-ui/addon-table&#039;;
 import {TuiLink} from &#039;@taiga-ui/core&#039;;
 import {TuiAccordion} from &#039;@taiga-ui/kit&#039;;
 
-import {TuiI18nExample1} from &#039;./examples/1&#039;;
+import Example from &#039;./examples/1&#039;;
 
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiI18nExample1, TuiLink, TuiTablePagination],
+    imports: [Example, TuiAccordion, TuiDemo, TuiLink, TuiTablePagination],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -52886,8 +54020,9 @@ import {CustomPortalService} from &#039;./service&#039;;
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
 })
-export class TuiPortalsExample1 {
+export default class Example {
     private readonly customPortalService = inject(CustomPortalService);
+
     protected templates: Array&lt;EmbeddedViewRef&lt;unknown&gt;&gt; = [];
 
     protected addTemplate(template: TemplateRef&lt;unknown&gt;): void {
@@ -52932,10 +54067,10 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 
-import {TuiPortalsExample1} from &#039;./examples/1&#039;;
+import Example from &#039;./examples/1&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiPortalsExample1],
+    imports: [Example, TuiDemo],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -52991,7 +54126,7 @@ import {TuiCardLarge} from &#039;@taiga-ui/layout&#039;;
     encapsulation,
     changeDetection,
 })
-export class TuiVariablesExample1 {
+export default class Example {
     protected value = &#039;&#039;;
     protected checkbox = true;
 }
@@ -53024,10 +54159,10 @@ import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TuiLink} from &#039;@taiga-ui/core&#039;;
 
-import {TuiVariablesExample1} from &#039;./examples/1&#039;;
+import Example from &#039;./examples/1&#039;;
 
 @Component({
-    imports: [ClipboardModule, KeyValuePipe, TuiDemo, TuiLink, TuiVariablesExample1],
+    imports: [ClipboardModule, Example, KeyValuePipe, TuiDemo, TuiLink],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -53095,6 +54230,7 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from &#039;@taiga-ui/core&#
 })
 export default class Example extends TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -53205,6 +54341,7 @@ import {
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -53260,6 +54397,7 @@ import {TuiSegmented} from &#039;@taiga-ui/kit&#039;;
 })
 class PortalHost implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
+
     public readonly type = &#039;viewport&#039;;
 
     public getClientRect(): DOMRect {
@@ -54134,6 +55272,7 @@ import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+
     public readonly control = new FormControl(100);
 }
 ```
