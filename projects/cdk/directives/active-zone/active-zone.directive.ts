@@ -23,7 +23,7 @@ export class TuiActiveZone implements OnDestroy {
         inject(DOCUMENT).documentElement;
 
     public readonly tuiActiveZoneChange = this.active$.pipe(
-        map((element) => !!element && this.contains(element)),
+        map((element) => !!element && 'nodeType' in element && this.contains(element)),
         startWith(false),
         distinctUntilChanged(),
         skip(1),
