@@ -1,0 +1,9 @@
+import"./chunk-HU6DUUP4.js";var i=`<tui-textfield>
+    <input
+        tuiPincode
+        type="password"
+        [maxLength]="6"
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+`;export{i as default};

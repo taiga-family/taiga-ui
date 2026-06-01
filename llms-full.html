@@ -443,6 +443,11 @@
 ```text
   TuiPin
 ```
+### pincode
+
+```text
+  TuiPincode, TuiPincodeComponent, TuiPincodeContent
+```
 ### preview
 
 ```text
@@ -32522,6 +32527,569 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page {
     protected readonly examples = [&#039;Default&#039;, &#039;Dot&#039;, &#039;Openable&#039;, &#039;Label&#039;];
+}
+```
+
+---
+# components/Pincode
+- **Package**: `KIT`
+- **Type**: components
+
+### Example
+
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [formControl]=&quot;control&quot; [invalid]=&quot;invalid()&quot; [maxLength]=&quot;length&quot; [type]=&quot;type()&quot; (confirmed)=&quot;confirmed.emitEvent($event)&quot; (finished)=&quot;finished.emitEvent($event); onFinished()&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| type | `string` | masks each digit as a filled dot |
+| [invalid] | `boolean | null` | — shake and auto-clear |
+| maxLength | `number` | Number of cells. Pending animation triggers once value reaches this length |
+
+### API - Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| (confirmed) | `void` | Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition |
+| (finished) | `void` | Fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear |
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [(ngModel)]=&quot;value&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = &#039;&#039;;
+}
+```
+
+#### Dots
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;input tuiPincode type=&quot;password&quot; [maxLength]=&quot;6&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = &#039;&#039;;
+}
+```
+
+#### Fast loading
+
+**Template:**
+```html
+@if (done()) { &lt;div class=&quot;done&quot;&gt;PIN verified ✓&lt;/div&gt; } @else { &lt;tui-textfield&gt;
+&lt;input tuiPincode [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;done.set(true)&quot; /&gt;
+&lt;/tui-textfield&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+const CORRECT = &#039;1234&#039;;
+const FAST_LATENCY = 300;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt;
+        setTimeout(() =&gt; resolve(pin !== CORRECT), FAST_LATENCY),
+    );
+}
+
+@Component({
+    imports: [FormsModule, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly done = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+```
+
+#### Long loading
+
+**Template:**
+```html
+@if (done()) { &lt;div class=&quot;done&quot;&gt;PIN verified ✓&lt;/div&gt; } @else { &lt;div class=&quot;field&quot; [class.field_success]=&quot;verification.value() === false&quot; &gt;
+&lt;tui-loader class=&quot;loader&quot; [inheritColor]=&quot;true&quot; [loading]=&quot;verification.value() === false&quot; /&gt;
+&lt;tui-textfield&gt;
+&lt;input tuiPincode [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (finished)=&quot;onFinished()&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt; }
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiLoader} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [FormsModule, TuiLoader, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly done = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+
+    protected onFinished(): void {
+        if (this.verification.value() === false) {
+            setTimeout(() =&gt; this.done.set(true), 2000);
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.done {
+    color: var(--tui-text-positive);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+tui-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tui-text-action);
+    scale: 0;
+    pointer-events: none;
+}
+
+.field_success tui-loader {
+    animation: loaderIn 500ms cubic-bezier(0, 0, 0.58, 1) 2150ms forwards;
+}
+
+@keyframes loaderIn {
+    0% {
+        scale: 0;
+    }
+
+    30% {
+        scale: 1.2;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+```
+
+#### Desktop
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open dialog &lt;/button&gt;
+&lt;ng-template let-observer [tuiDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;header tuiHeader=&quot;h5&quot; class=&quot;heading&quot; &gt;
+&lt;h2 tuiTitle&gt;Enter PIN&lt;/h2&gt;
+&lt;/header&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;tui-textfield&gt;
+&lt;input tuiAutoFocus tuiPincode type=&quot;password&quot; [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;open.set(false); pin.set(&#039;&#039;)&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+&lt;button appearance=&quot;flat&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Cancel &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiThumbnailCard} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiAutoFocus} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiDialog, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAutoFocus,
+        TuiButton,
+        TuiDialog,
+        TuiHeader,
+        TuiPincode,
+        TuiThumbnailCard,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly open = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+}
+```
+**LESS:**
+```less
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1.5rem 0;
+}
+
+.heading {
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-block-start: 0.5rem;
+}
+```
+
+#### Mobile
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open sheet &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;header class=&quot;header&quot;&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Close &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;/header&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;header tuiHeader=&quot;h5&quot;&gt;
+&lt;h2 tuiTitle&gt;Create a PIN&lt;/h2&gt;
+&lt;/header&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;tui-textfield&gt;
+&lt;input inputmode=&quot;none&quot; tuiPincode type=&quot;password&quot; [invalid]=&quot;verification.value()&quot; [(ngModel)]=&quot;pin&quot; (confirmed)=&quot;open.set(false); pin.set(&#039;&#039;)&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/div&gt;
+&lt;div class=&quot;pad&quot;&gt; @for (key of keys; track key) { @if (key === &#039;&#039;) { &lt;span&gt;&lt;/span&gt; } @else if (key === &#039;backspace&#039;) { &lt;button type=&quot;button&quot; class=&quot;key&quot; [disabled]=&quot;verification.value() != null&quot; (click)=&quot;onKey(key)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt; } @else { &lt;button type=&quot;button&quot; class=&quot;key&quot; [disabled]=&quot;verification.value() != null&quot; (click)=&quot;onKey(key)&quot; &gt; {{ key }} &lt;/button&gt; } } &lt;/div&gt;
+&lt;button tuiLink type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Skip &lt;/button&gt;
+&lt;/div&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, resource, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiThumbnailCard} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiIcon, TuiLink} from &#039;@taiga-ui/core&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+
+const CORRECT = &#039;1234&#039;;
+
+async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(pin !== CORRECT), 1000));
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAppBar,
+        TuiButton,
+        TuiIcon,
+        TuiLink,
+        TuiPincode,
+        TuiSheetDialog,
+        TuiThumbnailCard,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly verification = resource({
+        request: () =&gt; this.pin(),
+        loader: async ({request}) =&gt;
+            request.length === 4 ? fakeApiInvalidate(request) : null,
+    });
+
+    protected readonly open = signal(false);
+    protected readonly pin = signal(&#039;&#039;);
+
+    protected readonly keys = [
+        &#039;1&#039;,
+        &#039;2&#039;,
+        &#039;3&#039;,
+        &#039;4&#039;,
+        &#039;5&#039;,
+        &#039;6&#039;,
+        &#039;7&#039;,
+        &#039;8&#039;,
+        &#039;9&#039;,
+        &#039;&#039;,
+        &#039;0&#039;,
+        &#039;backspace&#039;,
+    ] as const;
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        closable: false,
+        bar: false,
+        appearance: &#039;fullscreen&#039;,
+    };
+
+    protected onKey(key: string): void {
+        if (this.verification.value() != null) {
+            return;
+        }
+
+        const value = this.pin();
+
+        if (key === &#039;backspace&#039;) {
+            this.pin.set(value.slice(0, -1));
+
+            return;
+        }
+
+        if (value.length &gt;= 4) {
+            return;
+        }
+
+        this.pin.set(`${value}${key}`);
+    }
+}
+```
+**LESS:**
+```less
+.header {
+    margin-block-end: 1.5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+    margin-block-end: auto;
+}
+
+.pad {
+    display: grid;
+    grid-template-columns: repeat(3, 4.5rem);
+    gap: 0.5rem 1.5rem;
+    justify-items: center;
+    margin-block-end: 0.5rem;
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 4.5rem;
+    block-size: 4.5rem;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    font: 2.5rem/1 var(--tui-typography-family-display);
+    color: var(--tui-text-primary);
+    cursor: pointer;
+    transition: background var(--tui-duration-short, 150ms);
+
+    @media (pointer: fine) {
+        &amp;:hover {
+            background: var(--tui-background-neutral-1-hover);
+        }
+    }
+
+    &amp;:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: 0.125rem;
+    }
+
+    &amp;:active {
+        background: var(--tui-background-neutral-1-pressed);
+    }
+
+    &amp;:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+tui-app-bar {
+    align-self: stretch;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [ReactiveFormsModule, TuiDemo, TuiPincode],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Dots&#039;,
+        &#039;Fast loading&#039;,
+        &#039;Long loading&#039;,
+        &#039;Desktop&#039;,
+        &#039;Mobile&#039;,
+    ];
+
+    protected length = 4;
+    protected readonly invalidVariants = [true, false] as const;
+    protected readonly typeVariants = [&#039;text&#039;, &#039;password&#039;] as const;
+    protected readonly invalid = signal&lt;boolean | null&gt;(null);
+    protected readonly type = signal&lt;&#039;password&#039; | &#039;text&#039;&gt;(&#039;text&#039;);
+    protected readonly control = new FormControl(&#039;&#039;);
+
+    protected onFinished(): void {
+        setTimeout(() =&gt; {
+            this.invalid.set(null);
+            this.control.reset(&#039;&#039;);
+        }, 1500);
+    }
 }
 ```
 
