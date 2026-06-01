@@ -8,6 +8,6 @@
     >
         <span class="t-dot t-dot_placeholder"></span>
         <span class="t-dot t-dot_value"></span>
-        <span class="t-value">{{ pincode.value()[$index] }}</span>
+        <span class="t-value">{{ pincode.el.type === 'password' ? '' : pincode.value()[$index] }}</span>
     </span>
 }
