@@ -6,7 +6,7 @@
     }
 }
 
-:host {
+input[tuiInputPin] {
     position: absolute;
     inset: 0;
     color: transparent;
@@ -14,16 +14,8 @@
     border: none;
     outline: none;
 
-    & ::ng-deep + .t-content {
-        gap: inherit !important;
-    }
-
     // Hack for IOS Safari
     --t-caret-color: rgba(255, 255, 255, 0.01);
-
-    :host-context([tuiTheme='dark']) {
-        --t-caret-color: rgba(50, 50, 50, 0.01);
-    }
 
     caret-color: var(--t-caret-color);
 
@@ -34,10 +26,23 @@
     &::placeholder {
         color: transparent !important;
     }
+}
 
-    ::ng-deep + .t-content [tuiButtonX] {
-        display: none !important;
-    }
+[tuiTheme='dark'] input[tuiInputPin] {
+    --t-caret-color: rgba(50, 50, 50, 0.01);
+}
+
+input[tuiInputPin] + .t-content {
+    gap: inherit !important;
+}
+
+input[tuiInputPin] + .t-content [tuiButtonX] {
+    display: none !important;
+}
+
+tui-input-pin-content {
+    display: contents;
+    border-radius: inherit;
 }
 
 .t-wrapper {
