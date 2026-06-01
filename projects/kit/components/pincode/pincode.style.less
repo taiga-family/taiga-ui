@@ -9,9 +9,11 @@
     tuiPincodeWavePos var(--t-animation-cycle) linear 1 calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
 
 @success-dot-collapse-anim:
-    tuiPincodeDotIn var(--t-duration) var(--tui-curve-productive-exit) var(--t-collapse-start) forwards,
-    tuiPincodeDotCollapsePos var(--t-duration) var(--tui-curve-expressive-exit) var(--t-collapse-delay) forwards,
-    tuiPincodeDotCollapseScale var(--t-duration) var(--tui-curve-productive-exit) var(--t-collapse-delay) forwards,
+    tuiPincodeDotIn var(--t-duration) var(--tui-curve-productive-exit) max(var(--t-collapse-start), 0.1ms) forwards,
+    tuiPincodeDotCollapsePos var(--t-duration) var(--tui-curve-expressive-exit) max(var(--t-collapse-delay), 0.1ms)
+        forwards,
+    tuiPincodeDotCollapseScale var(--t-duration) var(--tui-curve-productive-exit) max(var(--t-collapse-delay), 0.1ms)
+        forwards,
     tuiFade calc(var(--t-duration) / 6) linear calc(var(--t-collapse-delay) + var(--t-duration) * 5 / 6) reverse
         forwards;
 
@@ -57,8 +59,8 @@ input[tuiPincode] {
         }
 
         .t-item {
-            // TODO: sync --t-duration in next release
-            --t-duration: max(var(--tui-duration), 150ms);
+            // TODO: bump to 150ms to sync with proprietary version in next release
+            --t-duration: min(var(--tui-duration), 150ms);
             --t-stagger: calc(var(--t-duration) / 3);
             --t-animation-delay: calc(var(--t-index) * var(--t-stagger));
             --t-animation-cycle: calc(var(--t-duration) * 7 / 3 + (var(--t-length) - 1) * var(--t-stagger));
@@ -269,7 +271,7 @@ input[tuiPincode] {
             .t-item_filled .t-dot_placeholder {
                 scale: 1;
                 animation: tuiPincodeScale calc(var(--t-duration) / 2) var(--tui-curve-expressive-standard)
-                    calc(var(--t-animation-cycle) + var(--t-duration) / 2) both;
+                    max(calc(var(--t-animation-cycle) + var(--t-duration) / 2), 0.1ms) both;
             }
         }
 
