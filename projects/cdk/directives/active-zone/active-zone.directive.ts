@@ -2,6 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayRemove} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, map, type Observable, share, skip, startWith} from 'rxjs';
 
@@ -23,7 +24,7 @@ export class TuiActiveZone implements OnDestroy {
         inject(DOCUMENT).documentElement;
 
     public readonly tuiActiveZoneChange = this.active$.pipe(
-        map((element) => !!element && 'nodeType' in element && this.contains(element)),
+        map((element) => tuiIsElement(element) && this.contains(element)),
         startWith(false),
         distinctUntilChanged(),
         skip(1),
