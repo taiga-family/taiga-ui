@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.9.0](https://github.com/taiga-family/taiga-ui/compare/v5.8.0...v5.9.0) (2026-06-01)
+
+### 🚀 Features
+
+- **experimental:** `File` add new component ([#13613](https://github.com/taiga-family/taiga-ui/issues/13613))
+  ([3573ec7](https://github.com/taiga-family/taiga-ui/commit/3573ec7321eb0131c48a65e8f9cd1ec2e9974fc6))
+- **experimental:** `Popout` add configurable providers
+  ([#13879](https://github.com/taiga-family/taiga-ui/issues/13879))
+  ([#14170](https://github.com/taiga-family/taiga-ui/issues/14170))
+  ([fa7f338](https://github.com/taiga-family/taiga-ui/commit/fa7f338d40e3e4d437b5b49e9e19ad258b3589af))
+- **kit:** `Pincode` add component ([#14056](https://github.com/taiga-family/taiga-ui/issues/14056))
+  ([5f069b5](https://github.com/taiga-family/taiga-ui/commit/5f069b52f1666ca1f2e89ffd5f4c8a904f431998))
+
+### 🐞 Bug Fixes
+
+- **cdk:** `ActiveZone` fix clicking disabled items ([#14164](https://github.com/taiga-family/taiga-ui/issues/14164))
+  ([8eba901](https://github.com/taiga-family/taiga-ui/commit/8eba9011c56829fd03478422676b43fccf4dd4e7))
+- **core:** `Cell` fix `Avatar` vertical margin and radius.
+  ([#14159](https://github.com/taiga-family/taiga-ui/issues/14159))
+  ([2b55438](https://github.com/taiga-family/taiga-ui/commit/2b5543803a1d3cd8c157cef958272b1f8e7ba2fd))
+- **core:** `Cell` fix font according to specs ([#14165](https://github.com/taiga-family/taiga-ui/issues/14165))
+  ([e48e459](https://github.com/taiga-family/taiga-ui/commit/e48e45930d4ec002c8812d79bf461d626ac5ea46))
+- **core:** `Dropdown` fix pointer events during animation
+  ([#14185](https://github.com/taiga-family/taiga-ui/issues/14185))
+  ([5fcce21](https://github.com/taiga-family/taiga-ui/commit/5fcce213bf025276280248ad30e33a644692d458))
+- **core:** `Textfield` fix change detection ([#14173](https://github.com/taiga-family/taiga-ui/issues/14173))
+  ([20af36f](https://github.com/taiga-family/taiga-ui/commit/20af36f3a7af2fb4d1a848ab52ad9cdc33a0f29f))
+- **kit:** `Connected` size ([#14186](https://github.com/taiga-family/taiga-ui/issues/14186))
+  ([0cd6509](https://github.com/taiga-family/taiga-ui/commit/0cd6509f3a8299d1005a0b690e2cfebcc4052e08))
+
 ## [5.8.0](https://github.com/taiga-family/taiga-ui/compare/v5.7.0...v5.8.0) (2026-05-25)
 
 ### 🚀 Features
