@@ -1,0 +1,50 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.done {
+    color: var(--tui-text-positive);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 4rem;
+}
+
+tui-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tui-text-action);
+    scale: 0;
+    pointer-events: none;
+}
+
+.field_success tui-loader {
+    animation: loaderIn 500ms cubic-bezier(0, 0, 0.58, 1) 2150ms forwards;
+}
+
+@keyframes loaderIn {
+    0% {
+        scale: 0;
+    }
+
+    30% {
+        scale: 1.2;
+    }
+
+    100% {
+        scale: 1;
+    }
+}

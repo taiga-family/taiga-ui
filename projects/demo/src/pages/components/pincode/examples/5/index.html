@@ -1,0 +1,54 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Open dialog
+</button>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="open"
+>
+    <div class="content">
+        <tui-thumbnail-card
+            paymentSystem="mir"
+            size="m"
+        >
+            2206
+        </tui-thumbnail-card>
+
+        <header
+            tuiHeader="h5"
+            class="heading"
+        >
+            <h2 tuiTitle>Enter PIN</h2>
+        </header>
+
+        <div class="container">
+            <tui-textfield>
+                <input
+                    tuiAutoFocus
+                    tuiPincode
+                    type="password"
+                    [invalid]="verification.value()"
+                    [(ngModel)]="pin"
+                    (confirmed)="open.set(false); pin.set('')"
+                />
+            </tui-textfield>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <button
+            appearance="flat"
+            size="m"
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Cancel
+        </button>
+    </footer>
+</ng-template>
