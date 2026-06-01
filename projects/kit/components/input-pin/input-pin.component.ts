@@ -28,10 +28,12 @@ import {TuiInputPinContent} from './input-pin-content.component';
 })
 export class TuiInputPinComponent {
     private readonly selectionStart = signal<number | null>(null);
+
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     public readonly control = inject(NgControl);
     public readonly value = signal('');
+
     protected readonly focused = tuiFocusedIn(this.el);
 
     protected readonly maskito = tuiMaskito(
