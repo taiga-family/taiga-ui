@@ -1009,6 +1009,41 @@ describe('InputNumber', () => {
 
                 await expect(inputNumber.textfield).toHaveValue('42.00');
             });
+
+            test('decimalMode=always | pressing Space in the middle of value does not delete a digit', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
+                );
+
+                await inputNumber.textfield.fill('123');
+                await page.keyboard.press('ArrowLeft');
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+
+                await inputNumber.textfield.blur();
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+
+                await inputNumber.textfield.focus();
+
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionStart',
+                    '12'.length,
+                );
+
+                await page.keyboard.press('Space');
+
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionStart',
+                    '12'.length,
+                );
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionEnd',
+                    '12'.length,
+                );
+            });
         });
 
         describe('[negativePattern]="minusFirst" with [prefix]="$"', () => {
