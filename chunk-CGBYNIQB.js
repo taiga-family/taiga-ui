@@ -1,0 +1,79 @@
+import"./chunk-HU6DUUP4.js";var e=`<tui-segmented>
+    @for (item of states; track $index) {
+        <label>
+            {{ item }}
+            <input
+                name="size"
+                type="radio"
+                [value]="item"
+                [(ngModel)]="state"
+            />
+        </label>
+    }
+</tui-segmented>
+
+@for (orientation of orientations; track $index) {
+    <div
+        tuiFile
+        [orientation]="orientation"
+    >
+        <img
+            alt=""
+            src="assets/images/avatar.jpg"
+        />
+
+        @switch (state()) {
+            @case ('progress') {
+                <tui-progress-circle [value]="0.6" />
+            }
+            @case ('loader') {
+                <tui-loader />
+            }
+            @case ('error') {
+                <tui-icon
+                    icon="@tui.circle-x"
+                    tuiAnimated
+                    [style.color]="'var(--tui-text-negative)'"
+                />
+            }
+            @case ('button') {
+                <button
+                    iconStart="@tui.rotate-cw"
+                    tuiIconButton
+                    type="button"
+                >
+                    Retry
+                </button>
+            }
+        }
+
+        <div tuiTitle>
+            file.png
+            <div
+                tuiSlides
+                tuiSubtitle
+            >
+                @switch (state()) {
+                    @case ('normal') {
+                        <div tuiAnimated>5 MB</div>
+                    }
+                    @case ('error') {
+                        <div
+                            tuiAnimated
+                            [style.color]="'var(--tui-text-negative)'"
+                        >
+                            Over 30 MB
+                        </div>
+                    }
+                    @case ('button') {
+                        <div tuiAnimated>Not uploaded</div>
+                    }
+                    @default {
+                        <div tuiAnimated>Uploading...</div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}
+`;export{e as default};

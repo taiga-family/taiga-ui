@@ -79,6 +79,7 @@
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
 - [Error](https://taiga-ui.dev/components/error) — Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls
 - [Expand](https://taiga-ui.dev/components/expand)
+- [File](https://taiga-ui.dev/components/file) — This component is based on Cell and therefore follows its rules on padding in horizontal mode. Reset padding-inline if you do not need it.
 - [Filter](https://taiga-ui.dev/components/filter) — Components shows separated items that can be used to filter content on the page. There are also an option with badges.
 - [Floating Container](https://taiga-ui.dev/components/floating-container) — FloatingContainer is a special container for creating different animated sticky footers
 - [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, Input or Button .
@@ -119,6 +120,7 @@
 - [Pager](https://taiga-ui.dev/components/pager)
 - [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on WA_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 - [Pin](https://taiga-ui.dev/components/pin) — Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
+- [Pincode](https://taiga-ui.dev/components/pincode)
 - [Popout](https://taiga-ui.dev/components/popout) — Using service to show content in a new window.
 - [Preview](https://taiga-ui.dev/components/preview) — Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
 - [Progress Bar](https://taiga-ui.dev/components/progress-bar) — tuiProgressBar – attribute component for native html tag '"> . Usage: '"> .

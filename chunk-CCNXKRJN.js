@@ -1,0 +1,49 @@
+import"./chunk-HU6DUUP4.js";var e=`@for (orientation of orientations; track $index) {
+    <div
+        tuiFile
+        [orientation]="orientation"
+    >
+        @if (!progress()) {
+            <button
+                iconStart="@tui.rotate-cw"
+                tuiAnimated
+                tuiIconButton
+                type="button"
+                (click)="trigger.next()"
+            >
+                Retry
+            </button>
+        } @else if (progress() < 5) {
+            <img
+                alt=""
+                src="assets/images/avatar.jpg"
+                tuiAnimated
+            />
+        } @else {
+            <tui-icon
+                icon="@tui.image"
+                tuiAnimated
+            />
+        }
+        <div tuiTitle>
+            <div tuiSlides>
+                @if (progress()) {
+                    <div tuiAnimated>file.png</div>
+                } @else {
+                    <div tuiAnimated>Select file</div>
+                }
+            </div>
+            <div
+                tuiSlides
+                tuiSubtitle
+            >
+                @if (progress()) {
+                    <div tuiAnimated>Uploading: {{ 10 - progress() }}MB of 10MB</div>
+                } @else {
+                    <span tuiAnimated>Server unavailable</span>
+                }
+            </div>
+        </div>
+    </div>
+}
+`;export{e as default};
