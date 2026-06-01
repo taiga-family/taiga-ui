@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.85.0](https://github.com/taiga-family/taiga-ui/compare/v4.84.0...v4.85.0) (2026-06-01)
+
+### 🐞 Bug Fixes
+
+- **core:** `Alert` fix label overlapping close button on long text
+  ([#14160](https://github.com/taiga-family/taiga-ui/issues/14160))
+  ([d2c93c6](https://github.com/taiga-family/taiga-ui/commit/d2c93c6826535cbd546e3e227bb7adfcc32f7e4c))
+- **kit:** add missing empty metadata fields ([#14157](https://github.com/taiga-family/taiga-ui/issues/14157))
+  ([3ce8d2a](https://github.com/taiga-family/taiga-ui/commit/3ce8d2a3a0d97e5db3a3bf30a5dd55ad5ae4dc2c))
+
 ## [4.84.0](https://github.com/taiga-family/taiga-ui/compare/v4.83.0...v4.84.0) (2026-05-25)
 
 ### 🐞 Bug Fixes
