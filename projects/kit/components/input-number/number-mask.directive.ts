@@ -72,6 +72,7 @@ export class TuiNumberMask {
     public stringify(value: bigint | number | null | undefined): string {
         const params = this.params();
         const precision = params.maximumFractionDigits;
+        const {decimalMode} = this.numberFormat();
 
         const rounded =
             typeof value === 'number' &&
@@ -87,8 +88,9 @@ export class TuiNumberMask {
         return maskitoStringifyNumber(rounded ?? null, {
             ...params,
             minimumFractionDigits:
-                String(rounded).includes(params.decimalSeparator) &&
-                this.numberFormat().decimalMode !== 'not-zero'
+                (String(rounded).includes(params.decimalSeparator) &&
+                    decimalMode === 'pad') ||
+                decimalMode === 'always'
                     ? params.maximumFractionDigits
                     : 0,
         });
