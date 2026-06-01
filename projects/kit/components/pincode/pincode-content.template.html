@@ -1,18 +1,13 @@
-<span
-    aria-hidden="true"
-    class="t-wrapper"
->
-    @for (_ of '-'.repeat(pincode.maxLength()); track $index) {
-        <span
-            class="t-item"
-            [class.t-item_filled]="!!pincode.value()[$index]"
-            [class.t-item_focus]="pincode.isFocused($index)"
-            [style.--t-index]="$index"
-            (pointerdown.prevent)="pincode.el.focus()"
-        >
-            <span class="t-dot t-dot_placeholder"></span>
-            <span class="t-dot t-dot_value"></span>
-            <span class="t-value">{{ pincode.el.type === 'password' ? '' : pincode.value()[$index] }}</span>
-        </span>
-    }
-</span>
+@for (_ of '-'.repeat(pincode.maxLength()); track $index) {
+    <span
+        class="t-item"
+        [class.t-item_filled]="pincode.value()[$index]"
+        [class.t-item_focus]="pincode.isFocused($index)"
+        [style.--t-index]="$index"
+        (pointerdown.prevent)="pincode.el.focus()"
+    >
+        <span class="t-dot t-dot_placeholder"></span>
+        <span class="t-dot t-dot_value"></span>
+        <span class="t-value">{{ pincode.value()[$index] }}</span>
+    </span>
+}
