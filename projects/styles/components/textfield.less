@@ -41,7 +41,7 @@ tui-textfield:where(*&) {
     }
 
     &[data-icon-start] {
-        --t-start: 2.5rem;
+        --t-start: calc(2.5rem * (1 + 0.25 * var(--t-zoom)));
     }
 
     &[data-icon-end] {
@@ -55,8 +55,8 @@ tui-textfield:where(*&) {
             inline-size: 1.5rem;
             margin-inline-end: 1rem;
             pointer-events: none;
-            // Cancelling zoom so it does not shift label
-            zoom: 1;
+            // Compensating zoomed icons at high font-scaling
+            max-block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
         }
 
         &::after {
@@ -145,7 +145,7 @@ tui-textfield:where(*&) {
         font: var(--tui-typography-ui-s);
 
         &[data-icon-start] {
-            --t-start: 2.125rem;
+            --t-start: calc(2.125rem * (1 + 0.25 * var(--t-zoom)));
         }
 
         &[data-icon-end] {

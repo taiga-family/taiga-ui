@@ -29,8 +29,8 @@ export function tuiEnableFontScaling(): Provider {
                 offset.set(current);
 
                 return documentElement.style.setProperty(
-                    '--tui-font-offset',
-                    tuiPx(current),
+                    '--t-font-offset',
+                    String(current),
                 );
             };
         },
