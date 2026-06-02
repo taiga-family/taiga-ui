@@ -47,6 +47,7 @@ export abstract class TuiNativeTimePicker {
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
     private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
+
     public readonly host = inject(TuiInputTimeDirective);
     public readonly value = computed(() => this.toISOString(this.control.value()));
     public readonly step = computed(() => this.getStep(this.host.timeMode()));
