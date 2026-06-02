@@ -20,9 +20,9 @@ import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
-    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
+    public readonly list = inject(new HostAttributeToken('list'), {optional: true});
 
-    protected getStep(timeMode: MaskitoTimeMode): number {
+    public getStep(timeMode: MaskitoTimeMode): number {
         switch (timeMode) {
             case 'HH:MM:SS':
             case 'HH:MM:SS AA':
@@ -35,7 +35,7 @@ export abstract class TuiNativeTimePicker {
         }
     }
 
-    protected toISOString(
+    public toISOString(
         value: TuiTime | readonly [TuiDay, TuiTime | null] | null,
     ): string {
         const [day, time] = Array.isArray(value) ? value : [null, value];
