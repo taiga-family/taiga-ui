@@ -20,6 +20,7 @@ import {TuiInputPinContent} from './input-pin-content.component';
     hostDirectives: [MaskitoDirective, TuiTextfieldContent],
     host: {
         inputmode: 'numeric',
+        maxlength: '4',
         spellcheck: 'false',
         '(pointerdown.prevent)': 'onClick(0)',
         '(selectionchange)': 'onSelection()',
