@@ -150,7 +150,7 @@
         "@types/markdown-it": "14.1.2",
         "@types/node": "25.9.0",
         "cpy-cli": "5.0.0",
-        "date-fns": "4.1.0",
+        "date-fns": "4.2.1",
         "express": "4.22.2",
         "glob": "11.1.0",
         "husky": "9.1.7",
