@@ -43,6 +43,7 @@ export class TuiInputDateTimeContent {
     protected readonly step = computed(() =>
         this.component.getStep(this.host.timeMode()),
     );
+
     protected readonly value = computed(() =>
         this.component.toISOString(this.host.value()),
     );
