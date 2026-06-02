@@ -2,7 +2,7 @@ import {computed, Directive, inject, input, signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -21,19 +21,16 @@ import {TuiInputPinContent} from './input-pin-content.component';
     host: {
         inputmode: 'numeric',
         spellcheck: 'false',
-        '(input)': 'value.set(el.value)',
         '(pointerdown.prevent)': 'onClick(0)',
         '(selectionchange)': 'onSelection()',
     },
 })
 export class TuiInputPinComponent {
     private readonly selectionStart = signal<number | null>(null);
-
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     public readonly control = inject(NgControl);
-    public readonly value = signal('');
-
+    public readonly value = tuiValue(this.el);
     protected readonly focused = tuiFocusedIn(this.el);
 
     protected readonly maskito = tuiMaskito(
