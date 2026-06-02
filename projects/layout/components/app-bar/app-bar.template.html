@@ -1,5 +1,7 @@
 <div #side>
-    <ng-content select="[tuiSlot='start']" />
+    <div tuiAppBarButton>
+        <ng-content select="[tuiSlot='start']" />
+    </div>
 </div>
 <div
     tuiFade
@@ -9,5 +11,9 @@
     <ng-content />
 </div>
 <div #side>
-    <ng-content select="[tuiSlot='end']" />
+    <div tuiAppBarButton>
+        <ng-content select="[tuiSlot='end']" />
+    </div>
 </div>
+
+<tui-progressive-blur />

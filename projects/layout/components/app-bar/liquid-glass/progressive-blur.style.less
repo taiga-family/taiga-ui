@@ -1,0 +1,53 @@
+:host {
+    position: absolute;
+    inset: 0;
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+
+    :host-context(._liquid-glass) & {
+        display: block;
+    }
+
+    :host-context(._liquid-glass_blur) & {
+        opacity: 1;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        transition: background-color var(--tui-duration) linear;
+        background: var(--tui-appbar-background, var(--tui-background-base));
+        mask-image: linear-gradient(
+            0deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.01) 7%,
+            rgba(0, 0, 0, 0.04) 13%,
+            rgba(0, 0, 0, 0.08) 20%,
+            rgba(0, 0, 0, 0.15) 27%,
+            rgba(0, 0, 0, 0.23) 33%,
+            rgba(0, 0, 0, 0.33) 40%,
+            rgba(0, 0, 0, 0.44) 47%,
+            rgba(0, 0, 0, 0.56) 53%,
+            rgba(0, 0, 0, 0.67) 60%,
+            rgba(0, 0, 0, 0.77) 67%,
+            rgba(0, 0, 0, 0.85) 73%,
+            rgba(0, 0, 0, 0.92) 80%,
+            rgba(0, 0, 0, 0.96) 87%,
+            rgba(0, 0, 0, 0.99) 93%,
+            #000 100%
+        );
+    }
+}
+
+span {
+    position: absolute;
+    z-index: calc(-1 * var(--t-step));
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    block-size: calc(12.5rem - 0.625rem * var(--t-step));
+    backdrop-filter: blur(calc(0.00375rem * var(--t-step)));
+}

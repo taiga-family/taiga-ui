@@ -1,4 +1,4 @@
-import {contentChildren, Directive, signal, type TemplateRef} from '@angular/core';
+import {Directive, signal, type TemplateRef} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     WaIntersectionObserverDirective,
@@ -8,7 +8,7 @@ import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, fromEvent, map, pairwise} from 'rxjs';
 
-import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive';
+import {type TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive';
 
 @Directive({
     selector: '[tuiDynamicHeaderContainer]',
@@ -17,11 +17,7 @@ import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive
 })
 export class TuiDynamicHeaderContainerDirective {
     private readonly el = tuiInjectElement();
-
-    protected readonly headers = contentChildren(TuiDynamicHeaderAnchorDirective, {
-        descendants: true,
-    });
-
+    private readonly headers = signal<TuiDynamicHeaderAnchorDirective[]>([]);
     public readonly hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
 
     public readonly scrollDir = toSignal(
@@ -33,6 +29,14 @@ export class TuiDynamicHeaderContainerDirective {
             tuiZoneOptimized(),
         ),
     );
+
+    public register(anchor: TuiDynamicHeaderAnchorDirective): void {
+        this.headers.update((headers) => [...headers, anchor]);
+    }
+
+    public unregister(anchor: TuiDynamicHeaderAnchorDirective): void {
+        this.headers.update((headers) => headers.filter((h) => h !== anchor));
+    }
 
     public update(): void {
         this.hiddenHeaders.set(

@@ -5,8 +5,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TuiAnimated} from '@taiga-ui/cdk/directives';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils';
-import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives';
 
 @Component({
     template: '',
@@ -23,10 +23,9 @@ class Styles {}
 
 @Directive({
     selector: '[tuiAppBarButton]',
-    providers: [tuiAppearanceOptionsProvider(TuiAppBarButton)],
+    hostDirectives: [TuiAnimated],
     host: {'data-tui-version': TUI_VERSION, tuiAppBarButton: ''},
 })
 export class TuiAppBarButton {
     protected readonly styles = tuiWithStyles(Styles);
-    public appearance = 'action-grayscale';
 }

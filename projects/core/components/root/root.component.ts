@@ -43,9 +43,8 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
     host: {
         'data-tui-version': TUI_VERSION,
+        '[class._liquid-glass]': 'liquidGlass',
         '[class._mobile]': 'breakpoint() === "mobile"',
-        '[class._liquid-glass]':
-            'options.apis !== "stable" && (options.apis.all || options.apis.liquidGlass)',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -74,5 +73,13 @@ export class TuiRoot {
         return this.doc.fullscreenElement
             ? this.doc.fullscreenElement === this.el
             : !this.child;
+    }
+
+    protected get liquidGlass(): boolean {
+        return (
+            !!this.el.closest("[data-platform='ios']") &&
+            this.options.apis !== 'stable' &&
+            (this.options.apis.all || !!this.options.apis.liquidGlass?.())
+        );
     }
 }

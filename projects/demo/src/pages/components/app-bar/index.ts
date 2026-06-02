@@ -7,12 +7,17 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {
+export default class Page extends Array {
     protected readonly examples = [
         'Mobile — medium size',
         'Desktop — large size',
         'Variants',
         'Dialog',
         'Dynamic header',
+        'Color background (iOS)',
     ];
+
+    protected readonly [4] = {
+        'component.ts': import('./examples/5/component.ts?raw', {with: {loader: 'text'}}),
+    };
 }
