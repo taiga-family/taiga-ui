@@ -20,7 +20,7 @@
 :where([tuiIcons]&) {
     --t-icon-start: none;
     --t-icon-end: none;
-    --t-zoom: ~'calc(clamp(0px, var(--tui-font-offset) - 10px, 1px) / 1px)';
+    --t-zoom: ~'calc(clamp(0, var(--t-font-offset, 0) - 10, 1))';
 
     &::before,
     &::after {
