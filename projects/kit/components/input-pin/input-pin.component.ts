@@ -28,12 +28,10 @@ import {TuiInputPinContent} from './input-pin-content.component';
 })
 export class TuiInputPinComponent {
     private readonly selectionStart = signal<number | null>(null);
-
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     public readonly control = inject(NgControl);
     public readonly value = tuiValue(this.el);
-
     protected readonly focused = tuiFocusedIn(this.el);
 
     protected readonly maskito = tuiMaskito(
@@ -51,20 +49,16 @@ export class TuiInputPinComponent {
     }
 
     public onSelection(): void {
-        this.selectionStart.set(this.el.selectionStart);
-
         if (this.el.selectionStart === this.el.maxLength) {
             this.el.setSelectionRange(this.el.maxLength - 1, this.el.maxLength - 1);
         }
+
+        this.selectionStart.set(this.el.selectionStart);
     }
 
     public isFocused(index: number): boolean {
-        const start = this.selectionStart() ?? this.el.selectionStart;
-
         return (
-            this.focused() &&
-            (start === index ||
-                (start === this.el.maxLength && index === this.el.maxLength - 1))
+            this.focused() && (this.selectionStart() ?? this.el.selectionStart) === index
         );
     }
 }
