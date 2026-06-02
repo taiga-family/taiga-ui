@@ -64,7 +64,7 @@ tui-textfield[multi][multi]:where(*&) {
             display: flex;
             align-items: center;
             flex: 1;
-            block-size: var(--t-item-height, 1.25em);
+            block-size: var(--t-item-height, calc(var(--t-height) - 2 * var(--t-vertical)));
             max-inline-size: 100%;
             pointer-events: none;
             transform: translateX(var(--t-scroll));

@@ -120,14 +120,9 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     }
 
     protected onItems({target}: ResizeObserverEntry): void {
-        const height =
-            this.rows() > 1 && this.control()?.value?.length
-                ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
-                : null;
-
-        if (height !== 0) {
-            this.height.set(height);
-        }
+        this.height.update(
+            (h) => target.querySelector('tui-textfield-item')?.clientHeight || h,
+        );
     }
 
     protected onLeft(event: any): void {

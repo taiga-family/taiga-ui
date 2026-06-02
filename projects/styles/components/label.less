@@ -29,11 +29,14 @@
 
     input[type='checkbox'],
     input[type='radio'] {
+        font: inherit;
+        inset-block-start: calc(var(--tui-lh) / 2);
+        transform: translateY(-50%);
         margin-inline-end: 0.5rem;
 
         &[data-size='s'] {
+            line-height: 1.2;
             margin-inline-end: 0.25rem;
-            margin-block-start: 0.125rem;
         }
     }
 
