@@ -15,7 +15,12 @@ import {TuiInputPinComponent} from './input-pin.component';
     styleUrl: './input-pin.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'aria-hidden': 'true'},
+    host: {
+        'aria-hidden': 'true',
+        '[style.border-radius]': '"inherit"',
+        '[style.display]': '"contents"',
+        '[style.gap]': '"inherit"',
+    },
 })
 export class TuiInputPinContent {
     protected readonly pin = inject(TuiInputPinComponent);
