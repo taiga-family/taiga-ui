@@ -21,6 +21,22 @@
     --tui-from: translateY(calc(200% * var(--t-dir)));
 }
 
+:host-context(._liquid-glass [data-platform='ios']) {
+    .tui-enter {
+        animation-name: tuiFade, tuiSlide, tuiBlur;
+
+        --tui-duration: 500ms;
+        --tui-from: translateY(calc(-50% * var(--t-dir)));
+    }
+
+    .tui-leave {
+        animation-name: tuiFade, tuiSlide, tuiBlur;
+
+        --tui-duration: 500ms;
+        --tui-from: translateY(calc(50% * var(--t-dir)));
+    }
+}
+
 .tui-enter:not(:first-of-type),
 .tui-leave:not(:first-of-type) {
     position: absolute;

@@ -19,10 +19,12 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
+import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
+import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
 
 @Component({
     selector: 'tui-app-bar',
-    imports: [AsyncPipe, TuiFade],
+    imports: [AsyncPipe, TuiAppBarButton, TuiFade, TuiProgressiveBlur],
     templateUrl: './app-bar.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {

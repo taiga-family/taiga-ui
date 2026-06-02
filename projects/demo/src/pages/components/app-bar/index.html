@@ -9,9 +9,20 @@
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample"
+                [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index]"
+                [description]="$index === 5 ? description : ''"
                 [heading]="example"
             />
         }
+    </ng-template>
+
+    <ng-template #description>
+        On iOS, a progressive blur effect should be enabled when the container is scrolled. To activate it, apply the
+        <code>_liquid-glass_blur</code>
+        class to the
+        <code>tui-app-bar</code>
+        component. Additionally, if the background is colored, you must provide it via the
+        <code>--tui-appbar-background</code>
+        CSS variable to ensure correct fading and a proper "liquid glass" effect simulation.
     </ng-template>
 </tui-doc-page>

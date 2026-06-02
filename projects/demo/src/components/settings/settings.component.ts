@@ -7,13 +7,16 @@ import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_DARK_MODE,
     TUI_DARK_MODE_KEY,
+    TUI_OPTIONS,
     TuiButton,
     tuiButtonOptionsProvider,
+    TuiCheckbox,
     TuiDataList,
     TuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOptionsProvider,
     TuiIcon,
+    TuiLabel,
     TuiTitle,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -26,6 +29,7 @@ import {
     TuiBadge,
     TuiButtonSelect,
     TuiChevron,
+    TuiChip,
     TuiFlagPipe,
     TuiSegmented,
     tuiSegmentedOptionsProvider,
@@ -48,6 +52,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiIcon,
         TuiSegmented,
         TuiTitle,
+        TuiChip,
     ],
     templateUrl: './settings.component.html',
     styleUrl: './settings.component.less',
@@ -55,7 +60,7 @@ import {TuiForm} from '@taiga-ui/layout';
     providers: [
         tuiSegmentedOptionsProvider({size: 's'}),
         tuiButtonOptionsProvider({appearance: '', size: 's'}),
-        tuiDropdownOptionsProvider({align: 'end'}),
+        tuiDropdownOptionsProvider({align: 'end', maxHeight: 500}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
@@ -63,6 +68,7 @@ export class SettingsComponent {
     private readonly doc = inject(DOCUMENT);
     private readonly switcher = inject(TuiLanguageSwitcherService);
     private readonly theme = inject(TUI_DARK_MODE);
+    private readonly options = inject(TUI_OPTIONS);
 
     private readonly stored = inject(WA_LOCAL_STORAGE)?.getItem(
         inject(TUI_DARK_MODE_KEY),
@@ -99,16 +105,22 @@ export class SettingsComponent {
         direction: 'ltr',
         language: this.switcher.language,
         platform: 'web',
+        liquid: this.options.apis !== 'stable' && !!this.options.apis.liquidGlass?.(),
     });
 
     protected readonly sync = this.form.valueChanges
         .pipe(takeUntilDestroyed())
         .subscribe(() => {
-            const {theme, direction, language, platform} = this.form.getRawValue();
+            const {theme, direction, language, platform, liquid} =
+                this.form.getRawValue();
 
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
             this.doc.documentElement.setAttribute('data-platform', platform);
+
+            if (this.options.apis !== 'stable') {
+                this.options.apis.liquidGlass?.set(liquid);
+            }
 
             if (theme === null) {
                 this.theme.reset();

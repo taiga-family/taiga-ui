@@ -1,13 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
-import {TuiAppBar, TuiAppBarBack, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
-import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-
-import {TUI_OPTIONS, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAppBar, TuiAppBarBack, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -120,16 +115,3 @@ import {FormsModule} from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {}
-
-@Component({
-    imports: [PolymorpheusOutlet, TuiDynamicHeader, TuiPlatform, TuiSegmented],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly apis = inject(TUI_OPTIONS).apis;
-    protected activeItemIndex = 0;
-    protected readonly content = new PolymorpheusComponent(ListComponent);
-}
