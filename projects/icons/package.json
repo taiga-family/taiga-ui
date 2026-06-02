@@ -32,6 +32,6 @@
         "./*": "./*"
     },
     "devDependencies": {
-        "lucide-static": "1.14.0"
+        "lucide-static": "1.16.0"
     }
 }
