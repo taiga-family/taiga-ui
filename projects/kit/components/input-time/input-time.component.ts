@@ -43,7 +43,7 @@ export abstract class TuiNativeTimePicker {
     selector: 'input[tuiInputTime][type="time"]',
     providers: [tuiAsTextfieldContent(TuiInputTimeContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
-    host: {'data-tui-version': TUI_VERSION},
+    host: {'data-tui-version': TUI_VERSION, '[attr.list]': 'null'},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
     private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
