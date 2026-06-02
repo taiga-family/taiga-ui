@@ -295,7 +295,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {figmaVersion: '1.8.0'},
+        meta: {figmaVersion: '1.8.1'},
     },
     {
         section: 'Components',
