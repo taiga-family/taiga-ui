@@ -147,6 +147,10 @@ input[tuiSurfaceLayer] {
         background: var(--tui-background-elevation-1);
         box-shadow: var(--tui-shadow-medium);
     });
+
+    [tuiTheme='dark'] & {
+        box-shadow: none !important;
+    }
 }
 
 [tuiSurface][data-appearance='neutral']:where(*&) {
