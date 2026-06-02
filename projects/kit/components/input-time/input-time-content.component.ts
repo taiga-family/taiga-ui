@@ -1,23 +1,27 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {maskitoParseTime} from '@maskito/kit';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TuiTime} from '@taiga-ui/cdk/date-time';
 
 import {TuiInputTimeComponent} from './input-time.component';
+import {TuiInputTimeDirective} from './input-time.directive';
 
 @Component({
     selector: 'tui-input-time-content',
     template: `
-        @if (component.host.native) {
+        @if (host.native) {
             <input
                 type="time"
                 [attr.list]="component.list"
-                [step]="component.step()"
-                [value]="component.value()"
-                (change)="component.setValue($any($event.target).value)"
+                [step]="step()"
+                [value]="value()"
+                (change)="setValue($any($event.target).value)"
             />
         }
     `,
@@ -31,4 +35,21 @@ import {TuiInputTimeComponent} from './input-time.component';
 })
 export class TuiInputTimeContent {
     protected readonly component = inject(TuiInputTimeComponent);
+    protected readonly host = inject(TuiInputTimeDirective);
+
+    protected readonly value = computed(() =>
+        this.component.toISOString(this.host.value()),
+    );
+
+    protected readonly step = computed(() =>
+        this.component.getStep(this.host.timeMode()),
+    );
+
+    protected setValue(value: string): void {
+        this.host.setValue(
+            TuiTime.fromAbsoluteMilliseconds(
+                maskitoParseTime(value, {mode: 'HH:MM:SS.MSS'}),
+            ),
+        );
+    }
 }
