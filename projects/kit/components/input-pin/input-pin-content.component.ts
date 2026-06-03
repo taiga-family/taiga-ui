@@ -14,7 +14,7 @@ import {TuiInputPinComponent} from './input-pin.component';
     selector: 'tui-input-pin-content',
     imports: [TuiAppearance],
     templateUrl: './input-pin-content.template.html',
-    styleUrls: ['./input-pin.style.less', './input-pin-content.style.less'],
+    styleUrl: './input-pin.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {'aria-hidden': 'true'},
