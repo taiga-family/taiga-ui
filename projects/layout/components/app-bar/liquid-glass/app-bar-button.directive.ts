@@ -5,8 +5,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {TuiAnimated} from '@taiga-ui/cdk/directives';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',

@@ -6,7 +6,7 @@ import {
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TUI_OPTIONS} from '@taiga-ui/core/utils';
+import {TUI_OPTIONS} from '@taiga-ui/core/utils/miscellaneous';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
     WaResizeObserverService,

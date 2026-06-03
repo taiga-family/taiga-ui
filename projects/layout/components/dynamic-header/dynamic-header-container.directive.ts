@@ -18,6 +18,7 @@ import {type TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.dire
 export class TuiDynamicHeaderContainerDirective {
     private readonly el = tuiInjectElement();
     private readonly headers = signal<TuiDynamicHeaderAnchorDirective[]>([]);
+
     public readonly hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
 
     public readonly scrollDir = toSignal(
