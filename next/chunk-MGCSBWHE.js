@@ -1,0 +1,65 @@
+import"./chunk-HU6DUUP4.js";var t=`:host {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: min-content;
+}
+
+.badge {
+    background: #aff218;
+    color: #333;
+}
+
+.money {
+    background: #ffdd2d;
+    color: #333;
+}
+
+.poster {
+    background: rgb(88, 192, 190);
+    color: #fff;
+    grid-column: span 2;
+    inline-size: auto;
+
+    [tuiSubtitle] {
+        color: #fff;
+    }
+
+    &::after {
+        background: url('/assets/images/poster.svg') bottom right no-repeat;
+    }
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+}
+
+.fly {
+    background: rgb(101, 174, 234);
+    color: #fff;
+
+    &::after {
+        background: url('/assets/images/fly.svg') bottom right no-repeat;
+    }
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+}
+
+.stock {
+    background: var(--tui-background-base-alt);
+
+    &:hover::after {
+        transform: scale(1.1);
+    }
+
+    [tuiSubtitle] {
+        color: #f00;
+    }
+
+    &::after {
+        background: url('/assets/images/google.svg') bottom right no-repeat;
+    }
+}
+`;export{t as default};

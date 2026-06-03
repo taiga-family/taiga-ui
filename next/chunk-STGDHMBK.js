@@ -1,0 +1,33 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="CardMedium"
+    package="LAYOUT"
+    path="layout/components/card"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            A layout component used to create various cards for the interface. Define visual styles of the cards
+            yourself or combine with
+            <a
+                tuiLink
+                [routerLink]="surface"
+            >
+                Surface
+            </a>
+            for visual presets.
+        </p>
+        <p>
+            If you customize size, make sure to multiply by
+            <code>--tui-font-scale</code>
+            variable if you want to accommodate font scaling on mobile OS.
+        </p>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
