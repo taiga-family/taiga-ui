@@ -21,7 +21,7 @@
     --tui-from: translateY(calc(200% * var(--t-dir)));
 }
 
-:host-context(._liquid-glass [data-platform='ios']) {
+:host-context([data-platform='ios']._liquid-glass) {
     .tui-enter {
         animation-name: tuiFade, tuiSlide, tuiBlur;
 

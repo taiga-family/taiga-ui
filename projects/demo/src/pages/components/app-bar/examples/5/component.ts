@@ -87,31 +87,7 @@ import {TuiAppBar, TuiAppBarBack, TuiDynamicHeader, TuiHeader} from '@taiga-ui/l
             }
         </div>
     `,
-    styles: `
-        tui-app-bar {
-            position: sticky;
-            z-index: 1;
-            inset-block-start: -0.5px;
-            margin-bottom: 0.75rem;
-            background: var(--tui-background-base);
-
-            ._liquid-glass {
-                & {
-                    background: transparent;
-                }
-            }
-        }
-
-        ._liquid-glass {
-            .content > [tuiHeader] {
-                transition: opacity 300ms linear;
-            }
-
-            .content > [tuiHeader]._hidden {
-                opacity: 0;
-            }
-        }
-    `,
+    styleUrl: 'component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {}

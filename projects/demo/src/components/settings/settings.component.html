@@ -142,22 +142,24 @@
         </tui-segmented>
     </fieldset>
 
-    <fieldset>
-        <legend tuiTitle>
-            Apis
-            <div tuiSubtitle>For experimental apis</div>
-        </legend>
-        <label
-            appearance=""
-            tuiChip
-        >
-            Liquid glass (IOS only)
-            <input
-                appearance="outline-grayscale"
-                formControlName="liquid"
+    @if (form.value.platform === 'ios') {
+        <fieldset>
+            <legend tuiTitle>
+                Apis
+                <div tuiSubtitle>For experimental apis</div>
+            </legend>
+            <label
+                appearance=""
                 tuiChip
-                type="checkbox"
-            />
-        </label>
-    </fieldset>
+            >
+                Liquid glass (IOS only)
+                <input
+                    appearance="outline-grayscale"
+                    formControlName="liquid"
+                    tuiChip
+                    type="checkbox"
+                />
+            </label>
+        </fieldset>
+    }
 </form>

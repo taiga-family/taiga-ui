@@ -10,19 +10,29 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index]"
-                [description]="$index === 5 ? description : ''"
+                [description]="description"
                 [heading]="example"
-            />
+            >
+                <ng-template #description>
+                    @switch ($index + 1) {
+                        @case (6) {
+                            To enable the liquid-glass mode, specify the option in
+                            <code>provideTaiga(&#123;apis: &#123;liquidGlass: signal(true)&#125;&#125;)</code>
+                        }
+                        @case (7) {
+                            On iOS, a progressive blur effect should be enabled when the container is scrolled. To
+                            activate it, apply the
+                            <code>_liquid-glass_blur</code>
+                            class to the
+                            <code>tui-app-bar</code>
+                            component. Additionally, if the background is colored, you must provide it via the
+                            <code>--tui-appbar-background</code>
+                            CSS variable to ensure correct fading and a proper "liquid glass" effect simulation.
+                        }
+                        @default {}
+                    }
+                </ng-template>
+            </tui-doc-example>
         }
-    </ng-template>
-
-    <ng-template #description>
-        On iOS, a progressive blur effect should be enabled when the container is scrolled. To activate it, apply the
-        <code>_liquid-glass_blur</code>
-        class to the
-        <code>tui-app-bar</code>
-        component. Additionally, if the background is colored, you must provide it via the
-        <code>--tui-appbar-background</code>
-        CSS variable to ensure correct fading and a proper "liquid glass" effect simulation.
     </ng-template>
 </tui-doc-page>

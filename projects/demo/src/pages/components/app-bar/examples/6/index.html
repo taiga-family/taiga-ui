@@ -1,42 +1,99 @@
-<div
-    #container
-    tuiDynamicHeaderContainer
+<section
     tuiPlatform="ios"
-    waIntersectionRootMargin="-120px 0px 1000000% 0px"
-    class="container _liquid-glass"
+    class="_liquid-glass"
 >
-    <tui-app-bar
-        [attr.tuiTheme]="color() || mode() ? 'dark' : 'light'"
-        [class._liquid-glass_blur]="container.scrollTop > 3"
-        [style.--tui-appbar-background]="color()"
-    >
+    <tui-app-bar>
+        <button
+            tuiButton
+            tuiSlot="start"
+            type="button"
+        >
+            Back
+        </button>
+        Taiga UI
+        <button
+            tuiButton
+            tuiSlot="end"
+            type="button"
+        >
+            Action
+        </button>
+    </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
+        >
+            Back
+        </button>
+        Taiga UI — Components library
+        <button
+            iconStart="@tui.user"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        >
+            User
+        </button>
+    </tui-app-bar>
+
+    <tui-app-bar>
         <button
             title="Back"
             tuiAppBarBack
             tuiSlot="start"
             type="button"
         ></button>
-        <div tuiDynamicHeader></div>
+        Taiga UI
+        <button
+            iconStart="@tui.user"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        >
+            User
+        </button>
+        <button
+            iconStart="@tui.settings"
+            title="Settings"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        ></button>
     </tui-app-bar>
-    <div class="content">
-        <div
-            *tuiDynamicHeaderAnchor
-            tuiHeader="h6"
+
+    <tui-app-bar>
+        <label tuiTitle>
+            Taiga UI
+            <span tuiSubtitle>Components library</span>
+        </label>
+        <button
+            iconStart="@tui.settings"
+            title="Settings"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        ></button>
+    </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
         >
-            <h6 tuiTitle="l">Backgrounds</h6>
+            Back
+        </button>
+
+        <div>
+            <progress
+                size="s"
+                tuiProgressBar
+                [max]="100"
+                [value]="35"
+            ></progress>
         </div>
-        <div
-            waIntersectionObserver
-            waIntersectionRootMargin="64px 0px -100% 0px"
-            waIntersectionThreshold="0.01"
-        >
-            @for (item of colors; track item) {
-                <div
-                    class="block"
-                    [style.background-color]="item"
-                    (waIntersectionObservee)="onIntersection(!!$event[0]?.isIntersecting, item)"
-                ></div>
-            }
-        </div>
-    </div>
-</div>
+    </tui-app-bar>
+</section>
