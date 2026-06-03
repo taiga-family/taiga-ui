@@ -17,10 +17,8 @@ tui-root {
     flex: 1;
     border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 0 100vh 0;
     -webkit-tap-highlight-color: transparent;
-    // stylelint-disable-next-line -- graceful degradation
-    interactivity: auto;
 
-    &:has(tui-modal) > .t-root-content {
+    &:has(> tui-popups tui-modal) > .t-root-content {
         // stylelint-disable-next-line -- graceful degradation
         interactivity: inert;
     }
