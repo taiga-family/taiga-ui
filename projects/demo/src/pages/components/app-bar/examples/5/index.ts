@@ -2,11 +2,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_OPTIONS} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 import {TuiDynamicHeader} from '@taiga-ui/layout';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TUI_OPTIONS} from '@taiga-ui/core';
 import {ListComponent} from './component';
 
 @Component({

@@ -10,13 +10,11 @@ import {
     TUI_OPTIONS,
     TuiButton,
     tuiButtonOptionsProvider,
-    TuiCheckbox,
     TuiDataList,
     TuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOptionsProvider,
     TuiIcon,
-    TuiLabel,
     TuiTitle,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
