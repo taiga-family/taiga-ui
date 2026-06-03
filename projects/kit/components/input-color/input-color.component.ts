@@ -40,8 +40,10 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
 })
 export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
+
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly list = inject(new HostAttributeToken('list'), {optional: true});
+
     protected readonly start = inject(TuiIcons).iconStart() || '';
 
     protected readonly icon = tuiIconStart(
