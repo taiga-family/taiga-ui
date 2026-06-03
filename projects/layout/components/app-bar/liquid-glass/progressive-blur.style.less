@@ -4,12 +4,10 @@
     display: none;
     pointer-events: none;
     opacity: 0;
-
-    :host-context(._liquid-glass) & {
-        display: block;
-    }
+    transition: opacity var(--tui-duration) linear;
 
     :host-context(._liquid-glass_blur) & {
+        display: block;
         opacity: 1;
     }
 

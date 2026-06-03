@@ -77,7 +77,6 @@ export class TuiRoot {
 
     protected get liquidGlass(): boolean {
         return (
-            !!this.el.closest("[data-platform='ios']") &&
             this.options.apis !== 'stable' &&
             (this.options.apis.all || !!this.options.apis.liquidGlass?.())
         );

@@ -14,10 +14,12 @@ export default class Page extends Array {
         'Variants',
         'Dialog',
         'Dynamic header',
-        'Color background (iOS)',
+        'iOS Liquid glass',
+        'Color background',
     ];
 
     protected readonly [4] = {
         'component.ts': import('./examples/5/component.ts?raw', {with: {loader: 'text'}}),
+        'component.less': import('./examples/5/component.less'),
     };
 }

@@ -45,6 +45,7 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiButton,
         TuiButtonSelect,
         TuiChevron,
+        TuiChip,
         TuiDataList,
         TuiDropdown,
         TuiFlagPipe,
@@ -52,7 +53,6 @@ import {TuiForm} from '@taiga-ui/layout';
         TuiIcon,
         TuiSegmented,
         TuiTitle,
-        TuiChip,
     ],
     templateUrl: './settings.component.html',
     styleUrl: './settings.component.less',
@@ -117,6 +117,7 @@ export class SettingsComponent {
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
             this.doc.documentElement.setAttribute('data-platform', platform);
+            this.doc.documentElement.classList.toggle('_liquid-glass', liquid);
 
             if (this.options.apis !== 'stable') {
                 this.options.apis.liquidGlass?.set(liquid);

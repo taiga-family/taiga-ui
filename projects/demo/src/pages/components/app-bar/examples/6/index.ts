@@ -1,35 +1,22 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TUI_DARK_MODE, TuiTitle} from '@taiga-ui/core';
-import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
+import {TUI_OPTIONS, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiProgressBar} from '@taiga-ui/kit';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        TuiAppBar,
-        TuiDynamicHeader,
-        TuiHeader,
-        TuiPlatform,
-        TuiTitle,
-        WaIntersectionObserver,
-    ],
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly mode = inject(TUI_DARK_MODE);
-    protected readonly colors = ['#2f3f5b', '#3a3f66', '#5a2f3f', '#3f4e37', '#5a3851'];
-    protected readonly color = signal('');
+    protected readonly apis = inject(TUI_OPTIONS).apis;
 
-    protected onIntersection(isIntersecting: boolean, color: string): void {
-        if (isIntersecting) {
-            this.color.set(color);
-        } else if (this.color() === color) {
-            this.color.set('');
-        }
+    constructor() {
+        this.apis !== 'stable' && this.apis.liquidGlass?.set(true);
     }
 }
