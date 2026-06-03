@@ -1,27 +1,25 @@
-<ng-container *tuiTextfieldContent>
-    <button
-        appearance="textfield"
-        tabindex="-1"
-        tuiButton
-        tuiChevron
-        type="button"
-        class="t-ipi-select"
-        [attr.data-mode]="mode()"
-        [class.t-ipi-select_readonly]="readOnly()"
-        [disabled]="disabled()"
-        [size]="size()"
-        [tuiAppearanceFocus]="open()"
-        (click.prevent)="interactive() && open.set(!open())"
-        (pointerdown.stop)="(0)"
-    >
-        <img
-            class="t-ipi-flag"
-            [alt]="names()[countryIsoCode()]"
-            [class.t-ipi-flag_small]="size() === 's'"
-            [src]="countryIsoCode() | tuiFlag"
-        />
-    </button>
-</ng-container>
+<button
+    appearance="textfield"
+    tabindex="-1"
+    tuiButton
+    tuiChevron
+    type="button"
+    class="t-ipi-select"
+    [attr.data-mode]="component.mode()"
+    [class.t-ipi-select_readonly]="component.readOnly()"
+    [disabled]="component.disabled()"
+    [size]="size()"
+    [tuiAppearanceFocus]="component.open()"
+    (click.prevent)="component.interactive() && component.open.set(!component.open())"
+    (pointerdown.stop)="(0)"
+>
+    <img
+        class="t-ipi-flag"
+        [alt]="names()[component.countryIsoCode()]"
+        [class.t-ipi-flag_small]="size() === 's'"
+        [src]="component.countryIsoCode() | tuiFlag"
+    />
+</button>
 <ng-template #filter>
     <div class="t-ipi-search">
         <tui-textfield
@@ -32,19 +30,18 @@
                 autocomplete="off"
                 tuiInput
                 type="text"
-                [ngModel]="search()"
+                [ngModel]="component.search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
                 [tuiAutoFocus]="!ios"
                 (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
-                (ngModelChange)="search.set($event)"
+                (ngModelChange)="component.search.set($event)"
             />
         </tui-textfield>
     </div>
 </ng-template>
 <ng-container *tuiDropdown>
-    <!-- To keep it under local injector -->
-    @if (countrySearch()) {
+    @if (component.countrySearch()) {
         <ng-container *ngTemplateOutlet="filter" />
     }
     <tui-data-list class="t-ipi-options">
@@ -52,7 +49,7 @@
             <button
                 tuiOption
                 type="button"
-                (click)="onItemClick(item.iso)"
+                (click)="component.onItemClick(item.iso)"
             >
                 <img
                     alt=""
