@@ -10,6 +10,7 @@ import {
 
 import {TuiInputTimeContent} from './input-time-content.component';
 
+@Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
     public readonly list = inject(new HostAttributeToken('list'), {optional: true});
 
@@ -41,6 +42,6 @@ export abstract class TuiNativeTimePicker {
     selector: 'input[tuiInputTime][type="time"]',
     providers: [tuiAsTextfieldContent(TuiInputTimeContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
-    host: {'data-tui-version': TUI_VERSION, '[attr.list]': 'null'},
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {}

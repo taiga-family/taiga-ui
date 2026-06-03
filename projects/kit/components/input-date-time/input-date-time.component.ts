@@ -30,7 +30,6 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     host: {
         'data-tui-version': TUI_VERSION,
         ngSkipHydration: 'true',
-        '[attr.list]': 'null',
     },
 })
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
