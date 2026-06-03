@@ -8836,7 +8836,7 @@ export default class Example {
 # components/CardMedium
 - **Package**: `LAYOUT`
 - **Type**: components
-A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets.
+A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets. If you customize size, make sure to multiply by --tui-font-scale variable if you want to accommodate font scaling on mobile OS.
 
 ### Usage Examples
 
@@ -9049,15 +9049,10 @@ export default class Example {
 <div tuiBadge class="badge" >
 <tui-icon icon="@tui.target" /> 10% </div>
 </div>
-<div tuiCardMedium class="google" >
+<div tuiCardMedium class="stock" >
 <h2 tuiTitle> Google <span tuiSubtitle>-2.7%</span>
 </h2>
 <div tuiBadge class="money" > $3,605.2 </div>
-</div>
-<div tuiCardMedium class="microsoft" >
-<h2 tuiTitle> Microsoft <span tuiSubtitle>-12.44%</span>
-</h2>
-<div tuiBadge class="money" > $1,095.3 </div>
 </div>
 ```
 **TypeScript:**
@@ -9081,9 +9076,10 @@ export default class Example {}
 **LESS:**
 ```less
 :host {
-    display: flex;
-    gap: 1.2rem;
-    min-inline-size: 40.625rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: min-content;
 }
 
 .badge {
@@ -9098,10 +9094,9 @@ export default class Example {}
 
 .poster {
     background: rgb(88, 192, 190);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 13.9375rem;
-    block-size: 8rem;
+    grid-column: span 2;
+    inline-size: auto;
 
     [tuiSubtitle] {
         color: #fff;
@@ -9118,10 +9113,7 @@ export default class Example {}
 
 .fly {
     background: rgb(101, 174, 234);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 8rem;
-    block-size: 8rem;
 
     &::after {
         background: url('/assets/images/fly.svg') bottom right no-repeat;
@@ -9132,35 +9124,19 @@ export default class Example {}
     }
 }
 
-.google,
-.microsoft {
-    padding: 0.75rem;
+.stock {
     background: var(--tui-background-base-alt);
-    block-size: 8rem;
-    inline-size: 8rem;
 
     &:hover::after {
         transform: scale(1.1);
     }
-}
 
-.google {
     [tuiSubtitle] {
         color: #f00;
     }
 
     &::after {
         background: url('/assets/images/google.svg') bottom right no-repeat;
-    }
-}
-
-.microsoft {
-    [tuiSubtitle] {
-        color: #00b92d;
-    }
-
-    &::after {
-        background: url('/assets/images/microsoft.svg') bottom right no-repeat;
     }
 }
 ```
@@ -9278,8 +9254,8 @@ export default class Example {
 }
 
 .card {
-    block-size: 6.5rem;
-    inline-size: 6.5rem;
+    block-size: calc(6.5rem * var(--tui-font-scale));
+    inline-size: calc(6.5rem * var(--tui-font-scale));
 }
 
 .mir {

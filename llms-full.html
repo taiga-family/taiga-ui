@@ -8845,7 +8845,7 @@ export default class Example {
 # components/CardMedium
 - **Package**: `LAYOUT`
 - **Type**: components
-A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets.
+A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets. If you customize size, make sure to multiply by --tui-font-scale variable if you want to accommodate font scaling on mobile OS.
 
 ### Usage Examples
 
@@ -9058,15 +9058,10 @@ export default class Example {
 &lt;div tuiBadge class=&quot;badge&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.target&quot; /&gt; 10% &lt;/div&gt;
 &lt;/div&gt;
-&lt;div tuiCardMedium class=&quot;google&quot; &gt;
+&lt;div tuiCardMedium class=&quot;stock&quot; &gt;
 &lt;h2 tuiTitle&gt; Google &lt;span tuiSubtitle&gt;-2.7%&lt;/span&gt;
 &lt;/h2&gt;
 &lt;div tuiBadge class=&quot;money&quot; &gt; $3,605.2 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div tuiCardMedium class=&quot;microsoft&quot; &gt;
-&lt;h2 tuiTitle&gt; Microsoft &lt;span tuiSubtitle&gt;-12.44%&lt;/span&gt;
-&lt;/h2&gt;
-&lt;div tuiBadge class=&quot;money&quot; &gt; $1,095.3 &lt;/div&gt;
 &lt;/div&gt;
 ```
 **TypeScript:**
@@ -9090,9 +9085,10 @@ export default class Example {}
 **LESS:**
 ```less
 :host {
-    display: flex;
-    gap: 1.2rem;
-    min-inline-size: 40.625rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: min-content;
 }
 
 .badge {
@@ -9107,10 +9103,9 @@ export default class Example {}
 
 .poster {
     background: rgb(88, 192, 190);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 13.9375rem;
-    block-size: 8rem;
+    grid-column: span 2;
+    inline-size: auto;
 
     [tuiSubtitle] {
         color: #fff;
@@ -9127,10 +9122,7 @@ export default class Example {}
 
 .fly {
     background: rgb(101, 174, 234);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 8rem;
-    block-size: 8rem;
 
     &amp;::after {
         background: url(&#039;/assets/images/fly.svg&#039;) bottom right no-repeat;
@@ -9141,35 +9133,19 @@ export default class Example {}
     }
 }
 
-.google,
-.microsoft {
-    padding: 0.75rem;
+.stock {
     background: var(--tui-background-base-alt);
-    block-size: 8rem;
-    inline-size: 8rem;
 
     &amp;:hover::after {
         transform: scale(1.1);
     }
-}
 
-.google {
     [tuiSubtitle] {
         color: #f00;
     }
 
     &amp;::after {
         background: url(&#039;/assets/images/google.svg&#039;) bottom right no-repeat;
-    }
-}
-
-.microsoft {
-    [tuiSubtitle] {
-        color: #00b92d;
-    }
-
-    &amp;::after {
-        background: url(&#039;/assets/images/microsoft.svg&#039;) bottom right no-repeat;
     }
 }
 ```
@@ -9287,8 +9263,8 @@ export default class Example {
 }
 
 .card {
-    block-size: 6.5rem;
-    inline-size: 6.5rem;
+    block-size: calc(6.5rem * var(--tui-font-scale));
+    inline-size: calc(6.5rem * var(--tui-font-scale));
 }
 
 .mir {
