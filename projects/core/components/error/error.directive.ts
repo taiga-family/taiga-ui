@@ -101,7 +101,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
     }
 
     protected onValidator(validator: TuiNativeValidator): void {
-        if (this.control.value && validator['control'].value === this.control.value) {
+        if (this.control.value && validator.control === this.control.value) {
             validator.id = this.id;
         }
     }

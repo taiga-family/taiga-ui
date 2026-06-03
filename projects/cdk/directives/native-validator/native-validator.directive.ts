@@ -14,9 +14,9 @@ import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 export class TuiNativeValidator implements Validator {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
-    private readonly control = new BehaviorSubject<AbstractControl | null>(null);
+    private readonly control$ = new BehaviorSubject<AbstractControl | null>(null);
 
-    protected readonly sub = this.control
+    protected readonly sub = this.control$
         .pipe(
             switchMap((control: any) => control?.events || of(null)),
             delay(0),
@@ -28,14 +28,18 @@ export class TuiNativeValidator implements Validator {
     public readonly tuiNativeValidator = input('Invalid');
     public id = '';
 
+    public get control(): AbstractControl | null {
+        return this.control$.value;
+    }
+
     public validate(control: AbstractControl): null {
-        this.control.next(control);
+        this.control$.next(control);
 
         return null;
     }
 
     protected handleValidation(): void {
-        const invalid = !!this.control.value?.touched && this.control.value?.invalid;
+        const invalid = !!this.control?.touched && this.control?.invalid;
 
         // TODO: Replace with :has(:invalid) when supported
         this.el.closest('tui-textfield')?.classList.toggle('tui-invalid', invalid);
