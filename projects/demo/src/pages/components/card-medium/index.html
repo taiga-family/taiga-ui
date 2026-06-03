@@ -16,6 +16,11 @@
             </a>
             for visual presets.
         </p>
+        <p>
+            If you customize size, make sure to multiply by
+            <code>--tui-font-scale</code>
+            variable if you want to accommodate font scaling on mobile OS.
+        </p>
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"

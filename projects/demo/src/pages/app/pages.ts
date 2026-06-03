@@ -1137,7 +1137,7 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {name: 'tui-card-medium'},
+                meta: {name: 'tui-card-medium', figmaVersion: '1.0.2'},
             },
             {
                 section: 'Layout',
