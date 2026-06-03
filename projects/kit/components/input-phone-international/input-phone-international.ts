@@ -5,8 +5,8 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
-import {TuiInputPhoneInternationalContent} from './input-phone-international-content.component';
 import {TuiInputPhoneInternationalComponent} from './input-phone-international.component';
+import {TuiInputPhoneInternationalContent} from './input-phone-international-content.component';
 
 export const TuiInputPhoneInternational = [
     TuiInputPhoneInternationalComponent,

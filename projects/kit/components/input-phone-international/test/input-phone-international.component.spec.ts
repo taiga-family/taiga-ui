@@ -89,7 +89,7 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component['onItemClick']('UA');
+            component.onItemClick('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();
@@ -107,7 +107,7 @@ describe('InputPhoneInternational', () => {
                 data,
             });
 
-            component['onPaste'](event);
+            component.onPaste(event);
             fixture.detectChanges();
 
             inputPO.sendText(data);
