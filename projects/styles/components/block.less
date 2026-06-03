@@ -25,6 +25,7 @@
 
     position: relative;
     display: inline-flex;
+    align-items: center;
     gap: 0.75rem;
     color: var(--tui-text-primary);
     border-radius: var(--t-radius);
@@ -128,5 +129,9 @@
         margin: 0.25rem;
         font-size: 1rem;
         border: none;
+    }
+
+    :where(:is(input[type='checkbox'], input[type='radio'])) {
+        align-self: flex-start;
     }
 }
