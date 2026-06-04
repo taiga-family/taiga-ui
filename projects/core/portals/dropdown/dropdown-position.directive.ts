@@ -32,6 +32,11 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     );
 
     public getPosition({width, height}: DOMRect): TuiPoint {
+        const zoom = this.el.currentCSSZoom || 1;
+
+        width = width * zoom;
+        height = height * zoom;
+
         if (!width && !height) {
             this.previous = undefined;
         }
