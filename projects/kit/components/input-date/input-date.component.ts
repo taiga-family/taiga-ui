@@ -17,6 +17,7 @@ import {TuiInputDateContent} from './input-date-content.component';
         '[attr.list]': 'null',
     },
 })
+// TODO(v6): rename to TuiInputDateDirective
 export class TuiInputDateComponent {
     public readonly list = input<string>();
 }
