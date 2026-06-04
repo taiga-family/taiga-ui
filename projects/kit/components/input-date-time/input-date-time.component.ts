@@ -15,4 +15,5 @@ import {TuiInputDateTimeContent} from './input-date-time-content.component';
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })
+// TODO(v6): rename to TuiInputDateTimeDirective
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {}
