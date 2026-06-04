@@ -44,4 +44,5 @@ export abstract class TuiNativeTimePicker {
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })
+// TODO(v6): rename to TuiInputTimeDirective
 export class TuiInputTimeComponent extends TuiNativeTimePicker {}
