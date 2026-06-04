@@ -18,13 +18,13 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/run/rebase@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/run/rebase@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
@@ -51,30 +51,30 @@ jobs:
     env:
       CYPRESS_RESULTS_FOLDER: 'projects/demo-cypress/tests-results'
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/setup/node@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/setup/cypress@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/cypress@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           ref: ${{ github.base_ref }}
           clean: false
-      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/setup/node@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         with:
           validate-peer-deps: false
-      - uses: taiga-family/ci/actions/setup/cypress@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/cypress@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
       - name: Run tests for baseline state
         run: npx nx component-test demo-cypress
         continue-on-error: true
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           clean: false
-      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - name: Debug output
         continue-on-error: true
@@ -120,15 +120,15 @@ jobs:
     name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
     runs-on: ${{ matrix.shard.os }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - name: Mac OS X building all dependencies
         if: ${{ contains( matrix.shard.os, 'macos') }}
         run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
 
-      - uses: taiga-family/ci/actions/setup/node@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/setup/playwright@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/playwright@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
@@ -136,7 +136,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/run/serve@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -151,12 +151,12 @@ jobs:
       - run: tree ./projects/demo-playwright/snapshots
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/run/clone@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/run/clone@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/run/serve@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -173,7 +173,7 @@ jobs:
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -215,9 +215,9 @@ jobs:
     needs: [playwright, cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
-      - uses: taiga-family/ci/actions/setup/node@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -272,7 +272,7 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@8e9ca4eb37b9a58851d6bc0a6befeb1242c86f48 # v1.216.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
         with:
           pw-result: ./total
 

@@ -27,7 +27,15 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 @Component({
     selector: 'tui-root',
     imports: [TuiPopups, TuiScrollControls],
-    templateUrl: './root.template.html',
+    template: `
+        <div class="t-root-content"><ng-content /></div>
+        @if (top()) {
+            @if (scrollbars) {
+                <tui-scroll-controls class="t-root-scrollbar" />
+            }
+            <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
+        }
+    `,
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
