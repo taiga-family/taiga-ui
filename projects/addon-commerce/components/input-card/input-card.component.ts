@@ -25,6 +25,7 @@ import {TuiInputCardContent} from './input-card-content.component';
         placeholder: '0000 0000 0000 0000',
     },
 })
+// TODO(v6): rename to TuiInputCardDirective
 export class TuiInputCardComponent implements OnInit {
     private readonly control = inject(NgControl);
 

@@ -43,7 +43,9 @@ export class TuiInputCardContent {
         {initialValue: ''},
     );
 
-    protected readonly image = computed(
-        (s = tuiGetPaymentSystem(this.value())) => (s && this.icons[s]) || '',
-    );
+    protected readonly image = computed(() => {
+        const system = tuiGetPaymentSystem(this.value());
+
+        return (system && this.icons[system]) || '';
+    });
 }
