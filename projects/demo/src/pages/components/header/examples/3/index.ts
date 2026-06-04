@@ -5,7 +5,7 @@ import {TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiHeader, TuiTitle, TuiLink],
+    imports: [TuiHeader, TuiLink, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
