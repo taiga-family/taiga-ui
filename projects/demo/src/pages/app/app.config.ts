@@ -7,7 +7,10 @@ import {
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {provideClientHydration} from '@angular/platform-browser';
+import {
+    provideClientHydration,
+    withIncrementalHydration,
+} from '@angular/platform-browser';
 import {
     NavigationStart,
     provideRouter,
@@ -64,7 +67,7 @@ import {TuiViewportScroller} from './utils/viewport-scroller.service';
 
 export const config: ApplicationConfig = {
     providers: [
-        ngDevMode ? [] : provideClientHydration(),
+        ngDevMode ? [] : provideClientHydration(withIncrementalHydration()),
         provideRouter(
             ROUTES,
             withInMemoryScrolling({
