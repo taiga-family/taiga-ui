@@ -29,9 +29,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
             outputs: ['tuiPresent'],
         },
     ],
-    host: {
-        '(tuiPresent)': 'visible$.next($event)',
-    },
+    host: {'(tuiPresent)': 'visible$.next($event)'},
 })
 export class TuiTableExpand {
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
@@ -41,7 +39,9 @@ export class TuiTableExpand {
     protected readonly transitioning = signal(false);
 
     protected readonly contentHeight = computed(() => {
-        if (!this.hydrated()) return 0;
+        if (!this.hydrated()) {
+            return 0;
+        }
 
         this.expanded();
 
@@ -62,7 +62,7 @@ export class TuiTableExpand {
     protected readonly transitioningEffect = effect(() => {
         this.expanded();
 
-        if (untracked(() => this.hydrated())) {
+        if (untracked(this.hydrated)) {
             this.transitioning.set(true);
         }
     });
