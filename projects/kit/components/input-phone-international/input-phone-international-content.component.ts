@@ -71,7 +71,7 @@ export class TuiInputPhoneInternationalContent {
             .countries()
             .map((iso) => ({
                 iso,
-                name: this.names()?.[iso] || '',
+                name: this.names()[iso] || '',
                 code: metadata ? `+${getCountryCallingCode(iso, metadata)}` : '',
             }))
             .filter(({name, code}) =>
