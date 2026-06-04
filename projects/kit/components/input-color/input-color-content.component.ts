@@ -6,20 +6,26 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiSlider} from '@taiga-ui/core/components/slider';
 
-import {TuiInputColorComponent} from './input-color.component';
+import {type TuiInputColorComponent} from './input-color.component';
 
 @Component({
     selector: 'tui-input-color-content',
     imports: [FormsModule, TuiSlider],
     templateUrl: './input-color-content.template.html',
-    styleUrl: './input-color.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-color.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputColorContent {
-    protected readonly color = inject(TuiInputColorComponent);
+    protected readonly color = inject(TuiControl) as TuiInputColorComponent;
 
     protected readonly filled = computed(() =>
         this.color.format() === 'hex'

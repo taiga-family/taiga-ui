@@ -38,6 +38,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
         '(input)': 'onChange($event.target.value)',
     },
 })
+// TODO(v6): rename to TuiInputColorDirective
 export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
 
