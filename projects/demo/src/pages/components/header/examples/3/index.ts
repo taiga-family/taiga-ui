@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiHeader, TuiIcon, TuiTitle],
+    imports: [TuiHeader, TuiTitle, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
