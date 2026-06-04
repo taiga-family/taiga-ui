@@ -9206,9 +9206,9 @@ export default class Example {}
 <label tuiCardMedium class="card" >
 <img alt="google-pay" src="assets/taiga-ui/icons/google-pay.svg" />
 <div tuiFade class="cards" >
-<tui-thumbnail-card iconStart="@tui.lock" paymentSystem="mastercard" size="m" > 4572 </tui-thumbnail-card>
-<tui-thumbnail-card iconStart="@tui.lock" paymentSystem="mir" size="m" class="mir" > 6733 </tui-thumbnail-card>
-<tui-thumbnail-card paymentSystem="visa" size="m" class="visa" > 5212 </tui-thumbnail-card>
+<span iconStart="@tui.lock" paymentSystem="mastercard" size="m" tuiThumbnailCard > 4572 </span>
+<span iconStart="@tui.lock" paymentSystem="mir" size="m" tuiThumbnailCard class="mir" > 6733 </span>
+<span paymentSystem="visa" size="m" tuiThumbnailCard class="visa" > 5212 </span>
 </div>
 <input tuiSurfaceLayer type="radio" class="selected" [value]="0" [(ngModel)]="value" />
 <div tuiRipple tuiSurfaceLayer [style.background-color]="'#fff6c7'" ></div>
@@ -9216,7 +9216,7 @@ export default class Example {}
 <label tuiCardMedium class="card" >
 <img alt="apple-pay" src="assets/taiga-ui/icons/apple-pay.svg" />
 <div tuiFade class="cards" >
-<tui-thumbnail-card paymentSystem="mir" size="m" class="mir" > 2222 </tui-thumbnail-card>
+<span paymentSystem="mir" size="m" tuiThumbnailCard class="mir" > 2222 </span>
 </div>
 <input tuiSurfaceLayer type="radio" [value]="1" [(ngModel)]="value" />
 <div tuiRipple tuiSurfaceLayer [style.background-color]="'#d5f6df'" ></div>
@@ -9756,7 +9756,7 @@ export default class Example {
 </div>
 <div tuiCell>
 <input tuiCheckbox type="checkbox" [(ngModel)]="value" />
-<tui-thumbnail-card paymentSystem="mastercard" size="s" > 1234 </tui-thumbnail-card>
+<span paymentSystem="mastercard" size="s" tuiThumbnailCard > 1234 </span>
 <div tuiTitle> Primary Card <div tuiSubtitle>**** **** **** 1234</div>
 </div>
 </div>
@@ -11515,7 +11515,7 @@ export default class Example {
 </tui-textfield>
 <ng-template #content let-card >
 <div class="card">
-<tui-thumbnail-card [paymentSystem]="card.paymentSystem"> {{ card.number.slice(-4) }} </tui-thumbnail-card> {{ card.name }} </div>
+<span tuiThumbnailCard [paymentSystem]="card.paymentSystem" > {{ card.number.slice(-4) }} </span> {{ card.name }} </div>
 </ng-template>
 ```
 **TypeScript:**
@@ -18670,7 +18670,7 @@ section {
 ```html
 <tui-textfield>
 <label tuiLabel>Card number</label>
-<input tuiInputCard [(ngModel)]="card" /> @if (card === '1234123412341234') { <tui-thumbnail-card iconStart="@tui.dollar-sign" paymentSystem="mastercard" size="s" [style.background]="'#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)'" /> } </tui-textfield>
+<input tuiInputCard [(ngModel)]="card" /> @if (card === '1234123412341234') { <span iconStart="@tui.dollar-sign" paymentSystem="mastercard" size="s" tuiThumbnailCard [style.background]="'#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)'" ></span> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -18830,7 +18830,7 @@ export default class Example {
 <tui-icon icon="@tui.plus" class="new" />
 <span class="label">New card</span>
 </button> @for (item of items; track item) { <button tuiOption type="button" [value]="item" >
-<tui-thumbnail-card size="s" class="card" > {{ item.card.slice(-4) }} </tui-thumbnail-card>
+<span size="s" tuiThumbnailCard class="card" > {{ item.card.slice(-4) }} </span>
 <span tuiTitle class="label" > {{ item.bank }} <span tuiSubtitle>{{ item.name }}</span>
 </span>
 <span>{{ item.card.slice(-5) }}</span>
@@ -32746,7 +32746,7 @@ tui-loader {
 <button tuiButton type="button" (click)="open.set(true)" > Open dialog </button>
 <ng-template let-observer [tuiDialogOptions]="{size: 's'}" [(tuiDialog)]="open" >
 <div class="content">
-<tui-thumbnail-card paymentSystem="mir" size="m" > 2206 </tui-thumbnail-card>
+<span paymentSystem="mir" size="m" tuiThumbnailCard > 2206 </span>
 <header tuiHeader="h5" class="heading" >
 <h2 tuiTitle>Enter PIN</h2>
 </header>
@@ -32848,7 +32848,7 @@ export default class Example {
 </tui-app-bar>
 </header>
 <div class="content">
-<tui-thumbnail-card paymentSystem="mir" size="m" > 2206 </tui-thumbnail-card>
+<span paymentSystem="mir" size="m" tuiThumbnailCard > 2206 </span>
 <header tuiHeader="h5">
 <h2 tuiTitle>Create a PIN</h2>
 </header>
@@ -32872,9 +32872,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiPincode} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
 
 const CORRECT = '1234';
 
@@ -32887,11 +32887,13 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
         FormsModule,
         TuiAppBar,
         TuiButton,
+        TuiHeader,
         TuiIcon,
         TuiLink,
         TuiPincode,
         TuiSheetDialog,
         TuiThumbnailCard,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -37113,7 +37115,7 @@ export default class Example {
 </tui-textfield>
 <ng-template #content let-card >
 <div class="card">
-<tui-thumbnail-card [paymentSystem]="card.paymentSystem"> {{ card.number.slice(-4) }} </tui-thumbnail-card> {{ card.name }} </div>
+<span tuiThumbnailCard [paymentSystem]="card.paymentSystem" > {{ card.number.slice(-4) }} </span> {{ card.name }} </div>
 </ng-template>
 ```
 **TypeScript:**
@@ -39913,8 +39915,8 @@ export default class Example {}
 </hgroup>
 </header>
 <footer class="footer">
-<tui-thumbnail-card paymentSystem="mastercard" [style.background]="'#337'" > 1234 </tui-thumbnail-card>
-<tui-thumbnail-card paymentSystem="visa" [style.background]="'#e33'" > 5678 </tui-thumbnail-card>
+<span paymentSystem="mastercard" tuiThumbnailCard [style.background]="'#337'" > 1234 </span>
+<span paymentSystem="visa" tuiThumbnailCard [style.background]="'#e33'" > 5678 </span>
 <button appearance="secondary" iconStart="@tui.plus" size="s" tuiIconButton type="button" class="add" > Add card </button>
 </footer>
 </div>
@@ -43980,7 +43982,7 @@ Customizable credit card thumbnail
 ### Example
 
 ```html
-<tui-thumbnail-card [iconEnd]="controlIcons.iconEnd" [iconStart]="controlIcons.iconStart" [paymentSystem]="paymentSystem" [size]="size" [style.background]="background" > {{ contentProjection }} </tui-thumbnail-card>
+<span tuiThumbnailCard [iconEnd]="controlIcons.iconEnd" [iconStart]="controlIcons.iconStart" [paymentSystem]="paymentSystem" [size]="size" [style.background]="background" > {{ contentProjection }} </span>
 ```
 
 ### API - Inputs
@@ -43996,7 +43998,7 @@ Customizable credit card thumbnail
 
 **Template:**
 ```html
-@for (size of sizes; track size) { <tui-thumbnail-card iconEnd="@tui.cloud" iconStart="@tui.lock" paymentSystem="mastercard" [size]="size" > 4572 </tui-thumbnail-card> }
+@for (size of sizes; track size) { <span iconEnd="@tui.cloud" iconStart="@tui.lock" paymentSystem="mastercard" tuiThumbnailCard [size]="size" > 4572 </span> }
 ```
 **TypeScript:**
 ```ts
@@ -44028,7 +44030,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-thumbnail-card paymentSystem="mir" class="logo" > 7777 </tui-thumbnail-card>
+<span paymentSystem="mir" tuiThumbnailCard class="logo" > 7777 </span>
 ```
 **TypeScript:**
 ```ts
@@ -44101,10 +44103,10 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-thumbnail-card iconEnd="@tui.user" paymentSystem="visa" size="l" class="star" > 1234 </tui-thumbnail-card>
-<tui-thumbnail-card iconEnd="@tui.user" paymentSystem="mastercard" size="l" class="gradient" > 5678 </tui-thumbnail-card>
-<tui-thumbnail-card paymentSystem="maestro" size="l" class="retrowave" > 9000 </tui-thumbnail-card>
-<tui-thumbnail-card paymentSystem="unionpay" size="l" class="radial" > 7777 </tui-thumbnail-card>
+<span iconEnd="@tui.user" paymentSystem="visa" size="l" tuiThumbnailCard class="star" > 1234 </span>
+<span iconEnd="@tui.user" paymentSystem="mastercard" size="l" tuiThumbnailCard class="gradient" > 5678 </span>
+<span paymentSystem="maestro" size="l" tuiThumbnailCard class="retrowave" > 9000 </span>
+<span paymentSystem="unionpay" size="l" tuiThumbnailCard class="radial" > 7777 </span>
 ```
 **TypeScript:**
 ```ts
@@ -44170,8 +44172,8 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-thumbnail-card iconEnd="@tui.user" paymentSystem="visa" >
-<img alt="external" src="https://github.com/waterplea.png?size=200" /> 1234 </tui-thumbnail-card>
+<button iconEnd="@tui.user" paymentSystem="visa" tuiThumbnailCard type="button" >
+<img alt="external" src="https://github.com/waterplea.png?size=200" /> 1234 </button>
 ```
 **TypeScript:**
 ```ts
@@ -44204,7 +44206,7 @@ export default class Example {}
 <tui-segmented> @for (state of statuses; track state) { <button type="button" (click)="status = state" > {{ state }} </button> } </tui-segmented>
 <tui-textfield>
 <label tuiLabel>Card number</label>
-<input icon="" tuiInputCard [disabled]="status === 'disabled'" [invalid]="status === 'invalid'" [readOnly]="status === 'readOnly'" [(ngModel)]="card" /> @if (card.startsWith('1234')) { <tui-thumbnail-card iconStart="@tui.dollar-sign" paymentSystem="visa" size="s" [style.background]="background" /> } </tui-textfield>
+<input icon="" tuiInputCard [disabled]="status === 'disabled'" [invalid]="status === 'invalid'" [readOnly]="status === 'readOnly'" [(ngModel)]="card" /> @if (card.startsWith('1234')) { <span iconStart="@tui.dollar-sign" paymentSystem="visa" size="s" tuiThumbnailCard [style.background]="background" ></span> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
