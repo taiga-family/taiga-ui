@@ -27,7 +27,10 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
     protected readonly host = inject(TuiInputDateTimeDirective);
