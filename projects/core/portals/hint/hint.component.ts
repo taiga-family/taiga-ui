@@ -142,9 +142,9 @@ export class TuiHintComponent {
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
-        const [beakTop, beakLeft] = this.vvs.correct([
-            rect.top + rect.height / 2 - top,
+        const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
+            rect.top + rect.height / 2 - top,
         ]);
 
         this.apply(
