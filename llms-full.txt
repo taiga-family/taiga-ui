@@ -331,7 +331,7 @@
 ### input-date-time
 
 ```text
-  TuiInputDateTime, TuiInputDateTimeComponent, TuiInputDateTimeDirective, TuiInputDateTimeOptions
+  TuiInputDateTime, TuiInputDateTimeComponent, TuiInputDateTimeContent, TuiInputDateTimeDirective, TuiInputDateTimeOptions
 ```
 ### input-inline
 
