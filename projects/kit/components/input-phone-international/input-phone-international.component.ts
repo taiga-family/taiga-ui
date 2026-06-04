@@ -59,10 +59,10 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '(input)': 'masked.set($event.target.value)',
     },
 })
+// TODO(v6): rename to TuiInputPhoneInternationalDirective
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-
     protected readonly ios = inject(WA_IS_IOS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly masked = tuiValue(this.el);
