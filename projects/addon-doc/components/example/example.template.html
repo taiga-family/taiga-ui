@@ -94,7 +94,9 @@
                         [style.display]="activeItemIndex === $index ? 'block' : 'none'"
                     >
                         <ng-container *ngTemplateOutlet="content" />
-                        <ng-container *ngComponentOutlet="lazyComponent.value() ?? null" />
+                        @defer (on immediate) {
+                            <ng-container *ngComponentOutlet="lazyComponent.value() ?? null" />
+                        }
                     </section>
                 }
                 @let code = processor()[tab] || '';
