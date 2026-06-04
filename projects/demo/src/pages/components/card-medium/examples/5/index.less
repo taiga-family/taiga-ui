@@ -1,7 +1,8 @@
 :host {
-    display: flex;
-    gap: 1.2rem;
-    min-inline-size: 40.625rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: min-content;
 }
 
 .badge {
@@ -16,10 +17,9 @@
 
 .poster {
     background: rgb(88, 192, 190);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 13.9375rem;
-    block-size: 8rem;
+    grid-column: span 2;
+    inline-size: auto;
 
     [tuiSubtitle] {
         color: #fff;
@@ -36,10 +36,7 @@
 
 .fly {
     background: rgb(101, 174, 234);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 8rem;
-    block-size: 8rem;
 
     &::after {
         background: url('/assets/images/fly.svg') bottom right no-repeat;
@@ -50,34 +47,18 @@
     }
 }
 
-.google,
-.microsoft {
-    padding: 0.75rem;
+.stock {
     background: var(--tui-background-base-alt);
-    block-size: 8rem;
-    inline-size: 8rem;
 
     &:hover::after {
         transform: scale(1.1);
     }
-}
 
-.google {
     [tuiSubtitle] {
         color: #f00;
     }
 
     &::after {
         background: url('/assets/images/google.svg') bottom right no-repeat;
-    }
-}
-
-.microsoft {
-    [tuiSubtitle] {
-        color: #00b92d;
-    }
-
-    &::after {
-        background: url('/assets/images/microsoft.svg') bottom right no-repeat;
     }
 }
