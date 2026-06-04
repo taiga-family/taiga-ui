@@ -5,6 +5,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
@@ -14,7 +15,11 @@ import {TuiInputPinComponent} from './input-pin.component';
     selector: 'tui-input-pin-content',
     imports: [TuiAppearance],
     templateUrl: './input-pin-content.template.html',
-    styleUrl: './input-pin.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-pin.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {'aria-hidden': 'true'},

@@ -24,6 +24,7 @@ import {TuiInputPinContent} from './input-pin-content.component';
         '(selectionchange)': 'onSelection()',
     },
 })
+// TODO(v6): rename to TuiInputPinDirective
 export class TuiInputPinComponent {
     private readonly selectionStart = signal<number | null>(null);
 
