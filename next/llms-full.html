@@ -391,7 +391,7 @@
 ### input-time
 
 ```text
-  TuiInputTime, TuiInputTimeComponent, TuiInputTimeDirective, TuiInputTimeOptions
+  TuiInputTime, TuiInputTimeComponent, TuiInputTimeContent, TuiInputTimeDirective, TuiInputTimeOptions
 ```
 ### input-year
 
@@ -14586,6 +14586,10 @@ export default class Example {
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
 &lt;tui-error formControlName=&quot;value&quot; /&gt;
+&lt;div tuiNotification&gt;
+&lt;span tuiTitle&gt; This is just a tech demo! &lt;span tuiSubtitle&gt; Avoid dynamic error messages as it will overwhelm assistive technologies like screen readers &lt;/span&gt;
+&lt;/span&gt;
+&lt;/div&gt;
 &lt;label tuiLabel&gt; Minimum number &lt;tui-textfield&gt;
 &lt;input formControlName=&quot;number&quot; placeholder=&quot;Value&quot; tuiInputNumber [step]=&quot;1&quot; /&gt;
 &lt;/tui-textfield&gt;
@@ -14601,13 +14605,27 @@ import {toSignal} from &#039;@angular/core/rxjs-interop&#039;;
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TUI_VALIDATION_ERRORS, TuiError, TuiInput} from &#039;@taiga-ui/core&#039;;
+import {
+    TUI_VALIDATION_ERRORS,
+    TuiError,
+    TuiInput,
+    TuiNotification,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 import {TuiForm} from &#039;@taiga-ui/layout&#039;;
 import {map, timer} from &#039;rxjs&#039;;
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInput, TuiInputNumber],
+    imports: [
+        ReactiveFormsModule,
+        TuiError,
+        TuiForm,
+        TuiInput,
+        TuiInputNumber,
+        TuiNotification,
+        TuiTitle,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
