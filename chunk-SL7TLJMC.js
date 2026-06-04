@@ -1,0 +1,34 @@
+import"./chunk-HU6DUUP4.js";var n=`<tui-textfield
+    tuiChevron
+    [content]="value && content"
+    [stringify]="stringify"
+>
+    <input
+        placeholder="Choose a card"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [itemContent]="content"
+        [items]="cards"
+    />
+</tui-textfield>
+
+<ng-template
+    #content
+    let-card
+>
+    <div class="card">
+        <span
+            tuiThumbnailCard
+            [paymentSystem]="card.paymentSystem"
+        >
+            {{ card.number.slice(-4) }}
+        </span>
+
+        {{ card.name }}
+    </div>
+</ng-template>
+`;export{n as default};

@@ -1,0 +1,38 @@
+import"./chunk-HU6DUUP4.js";var n=`<span
+    iconEnd="@tui.user"
+    paymentSystem="visa"
+    size="l"
+    tuiThumbnailCard
+    class="star"
+>
+    1234
+</span>
+
+<span
+    iconEnd="@tui.user"
+    paymentSystem="mastercard"
+    size="l"
+    tuiThumbnailCard
+    class="gradient"
+>
+    5678
+</span>
+
+<span
+    paymentSystem="maestro"
+    size="l"
+    tuiThumbnailCard
+    class="retrowave"
+>
+    9000
+</span>
+
+<span
+    paymentSystem="unionpay"
+    size="l"
+    tuiThumbnailCard
+    class="radial"
+>
+    7777
+</span>
+`;export{n as default};
