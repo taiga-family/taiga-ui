@@ -20,11 +20,12 @@
         [(ngModel)]="card"
     />
     @if (card.startsWith('1234')) {
-        <tui-thumbnail-card
+        <span
             iconStart="@tui.dollar-sign"
             paymentSystem="visa"
             size="s"
+            tuiThumbnailCard
             [style.background]="background"
-        />
+        ></span>
     }
 </tui-textfield>

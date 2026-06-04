@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiPincode} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
 
 const CORRECT = '1234';
 
@@ -19,11 +19,13 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
         FormsModule,
         TuiAppBar,
         TuiButton,
+        TuiHeader,
         TuiIcon,
         TuiLink,
         TuiPincode,
         TuiSheetDialog,
         TuiThumbnailCard,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

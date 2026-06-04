@@ -295,7 +295,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {figmaVersion: '1.8.0'},
+        meta: {figmaVersion: '1.8.1'},
     },
     {
         section: 'Components',
@@ -1137,7 +1137,7 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {name: 'tui-card-medium'},
+                meta: {name: 'tui-card-medium', figmaVersion: '1.0.2'},
             },
             {
                 section: 'Layout',
