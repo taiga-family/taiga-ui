@@ -68,7 +68,7 @@ class Styles {}
     host: {
         tuiTooltip: '',
         '[attr.data-size]': 'size()',
-        '(click.prevent)': '0',
+        '(mousedown.prevent)': '0',
         '(pointerdown)': 'onClick($event)',
     },
 })
@@ -102,8 +102,8 @@ export class TuiTooltip implements DoCheck {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
-        } else {
-            this.driver.toggle();
         }
+
+        this.driver.toggle();
     }
 }
