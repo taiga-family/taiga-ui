@@ -68,6 +68,7 @@ class Styles {}
     host: {
         tuiTooltip: '',
         '[attr.data-size]': 'size()',
+        '(click.prevent)': '0',
         '(mousedown.prevent)': '0',
         '(pointerdown)': 'onClick($event)',
     },

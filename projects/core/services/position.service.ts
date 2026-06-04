@@ -22,8 +22,8 @@ export class TuiPositionService extends Observable<TuiPoint> {
                     startWith(null),
                     map(() => {
                         const rect = this.el.getBoundingClientRect();
-                        const width = this.el.clientWidth || rect.width;
-                        const height = this.el.clientHeight || rect.height;
+                        const width = this.el.offsetWidth || rect.width;
+                        const height = this.el.offsetHeight || rect.height;
 
                         return this.accessor.getPosition({
                             top: rect.top,
