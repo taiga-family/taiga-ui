@@ -69,7 +69,7 @@ class Styles {}
         tuiTooltip: '',
         '[attr.data-size]': 'size()',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(pointerdown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
