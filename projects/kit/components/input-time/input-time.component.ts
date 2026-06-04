@@ -1,22 +1,14 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    Directive,
-    HostAttributeToken,
-    inject,
-    ViewEncapsulation,
-} from '@angular/core';
-import {maskitoParseTime, type MaskitoTimeMode} from '@maskito/kit';
-import {TuiControl} from '@taiga-ui/cdk/classes';
+import {Directive, HostAttributeToken, inject} from '@angular/core';
+import {type MaskitoTimeMode} from '@maskito/kit';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {type TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
+import {type TuiDay, type TuiTime} from '@taiga-ui/cdk/date-time';
 import {
+    tuiAsTextfieldContent,
     TuiTextfieldContent,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
-import {TuiInputTimeDirective} from './input-time.directive';
+import {TuiInputTimeContent} from './input-time-content.component';
 
 @Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
@@ -46,32 +38,11 @@ export abstract class TuiNativeTimePicker {
     }
 }
 
-@Component({
+@Directive({
     selector: 'input[tuiInputTime][type="time"]',
-    imports: [TuiTextfieldContent],
-    templateUrl: './input-time.template.html',
-    styles: `
-        [data-tui-version='${TUI_VERSION}'] {
-            @import './input-time.style.less';
-        }
-    `,
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithNativePicker],
-    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
+    providers: [tuiAsTextfieldContent(TuiInputTimeContent)],
+    hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
+    host: {'data-tui-version': TUI_VERSION},
 })
-export class TuiInputTimeComponent extends TuiNativeTimePicker {
-    private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
-
-    protected readonly host = inject(TuiInputTimeDirective);
-    protected readonly value = computed(() => this.toISOString(this.control.value()));
-    protected readonly step = computed(() => this.getStep(this.host.timeMode()));
-
-    protected setValue(value: string): void {
-        this.host.setValue(
-            TuiTime.fromAbsoluteMilliseconds(
-                maskitoParseTime(value, {mode: 'HH:MM:SS.MSS'}),
-            ),
-        );
-    }
-}
+// TODO(v6): rename to TuiInputTimeDirective
+export class TuiInputTimeComponent extends TuiNativeTimePicker {}
