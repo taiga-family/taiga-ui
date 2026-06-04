@@ -1,5 +1,5 @@
-import {isPlatformServer} from '@angular/common';
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -7,8 +7,8 @@ import {
     type ElementRef,
     inject,
     model,
-    PLATFORM_ID,
     signal,
+    untracked,
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -30,20 +30,23 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
         },
     ],
     host: {
-        ngSkipHydration: 'true',
         '(tuiPresent)': 'visible$.next($event)',
     },
 })
 export class TuiTableExpand {
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
-    private readonly server = isPlatformServer(inject(PLATFORM_ID));
+    private readonly hydrated = signal(false);
 
     protected readonly transitioning = signal(false);
 
-    protected readonly contentHeight = computed((_ = this.expanded()) =>
-        this.update(this.content()),
-    );
+    protected readonly contentHeight = computed(() => {
+        if (!this.hydrated()) return 0;
+
+        this.expanded();
+
+        return this.update(this.content());
+    });
 
     protected readonly visible$ = new Subject<boolean>();
 
@@ -56,16 +59,24 @@ export class TuiTableExpand {
 
     public readonly expanded = model(inject(TUI_TABLE_OPTIONS).open);
 
-    protected readonly transitioningEffect = effect((_, __ = this.expanded()) =>
-        this.transitioning.set(true),
-    );
+    protected readonly transitioningEffect = effect(() => {
+        this.expanded();
+
+        if (untracked(() => this.hydrated())) {
+            this.transitioning.set(true);
+        }
+    });
+
+    constructor() {
+        afterNextRender(() => this.hydrated.set(true));
+    }
 
     public toggle(): void {
         this.expanded.set(!this.expanded());
     }
 
     private update(content: ElementRef<HTMLElement> | undefined): number {
-        if (!content || this.server) {
+        if (!content) {
             return 0;
         }
 
