@@ -7,8 +7,6 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
-
 const {describe, beforeEach} = test;
 
 test.describe('InputTime', () => {
