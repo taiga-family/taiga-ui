@@ -101,7 +101,6 @@ export class TuiTooltip implements DoCheck {
 
     protected onClick(event: MouseEvent): void {
         if (this.isMobile) {
-            event.preventDefault();
             event.stopPropagation();
         }
 

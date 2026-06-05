@@ -170,15 +170,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
     }
 
-    protected onContentPointerDown(event: Event): void {
-        this.input()?.nativeElement.focus();
-
-        // Keep native default focus for native pickers (input[type=date/time/month])
-        if (!(event.target as HTMLElement)?.matches('input')) {
-            event.preventDefault();
-        }
-    }
-
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
         this.input()?.nativeElement.focus();

@@ -129,6 +129,7 @@ export class TuiHintComponent {
     private update(left: number, top: number): void {
         if (
             this.isMobile &&
+            this.el.getAnimations?.().length &&
             this.el
                 .getAnimations?.()
                 .every(({effect}) => effect?.getComputedTiming().progress !== null)
