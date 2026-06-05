@@ -34,6 +34,7 @@
         padding: 1.125rem 0.25rem;
         gap: 0.5rem;
         font: var(--tui-typography-ui-s);
+        min-block-size: var(--tui-height-l);
         max-inline-size: calc(50% - 1.75rem);
         cursor: pointer;
         color: var(--tui-text-action);
@@ -77,7 +78,7 @@
         }
     }
 
-    &:has(button:only-child) {
+    &:has(> :is(button, a):only-child) {
         border-radius: 1rem;
     }
 
@@ -88,5 +89,19 @@
         font: var(--tui-typography-ui-l);
         max-inline-size: 100%;
         justify-content: center;
+        padding-block: 0;
+    }
+
+    &._stack:not(:has(> :is(button, a):only-child)) {
+        flex-direction: column;
+        padding: 0.5rem 0;
+
+        button,
+        a {
+            min-block-size: var(--tui-height-m);
+            max-inline-size: 100%;
+            flex-direction: row;
+            padding: 0 1rem;
+        }
     }
 }
