@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_FONT_OFFSET} from '@taiga-ui/core';
+import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     template: '',
