@@ -9,7 +9,7 @@ import {TuiTableThead} from './directives/thead.directive';
 import {TuiSorterPipe} from './pipes/sorter.pipe';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
 import {TuiTableExpand} from './table-expand/table-expand.component';
-import {TuiTableTbody} from './tbody/tbody.component';
+import {TuiTableTbodyLegacy} from './tbody/tbody.component';
 import {TuiTableTd} from './td/td.component';
 import {TuiTableTh} from './th/th.component';
 import {TuiTableThGroup} from './th-group/th-group.component';
@@ -18,7 +18,7 @@ import {TuiTableTr} from './tr/tr.component';
 export const TuiTable = [
     TuiTableDirective,
     TuiTableCaption,
-    TuiTableTbody,
+    TuiTableTbodyLegacy,
     TuiTableThGroup,
     TuiTableTh,
     TuiTableTd,
