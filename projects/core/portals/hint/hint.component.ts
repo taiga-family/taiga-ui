@@ -127,6 +127,16 @@ export class TuiHintComponent {
     }
 
     private update(left: number, top: number): void {
+        const animating = this.el
+            .getAnimations?.()
+            .every(
+                (animation) => animation.effect?.getComputedTiming().progress !== null,
+            );
+
+        if (animating) {
+            return;
+        }
+
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
 
