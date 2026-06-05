@@ -17,7 +17,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 
 @Directive()
-export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
+export class TuiTableTbodyDirective<T extends Partial<Record<keyof T, unknown>>> {
     public readonly rows = contentChildren<TuiTableTr<T>>(forwardRef(() => TuiTableTr));
     public readonly data = input<readonly T[]>([]);
 }
@@ -31,12 +31,12 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
-            directive: TuiTableTbody,
+            directive: TuiTableTbodyDirective,
             inputs: ['data'],
         },
     ],
 })
-export class TuiTableTbodyLegacy<T extends Partial<Record<keyof T, unknown>>> {
+export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     protected readonly table = inject<TuiTableDirective<T>>(

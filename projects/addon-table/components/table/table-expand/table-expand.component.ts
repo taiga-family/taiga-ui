@@ -17,7 +17,7 @@ import {TuiPresent} from '@taiga-ui/kit/directives/present';
 import {BehaviorSubject, map, of, switchMap, timer} from 'rxjs';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
-import {TuiTableTbody} from '../tbody/tbody.component';
+import {TuiTableTbodyDirective} from '../tbody/tbody.component';
 
 @Component({
     // TODO(v6): delete `<tui-table-expand />` selector
@@ -32,7 +32,7 @@ import {TuiTableTbody} from '../tbody/tbody.component';
             outputs: ['tuiPresent'],
         },
         {
-            directive: TuiTableTbody,
+            directive: TuiTableTbodyDirective,
             inputs: ['data'],
         },
     ],
