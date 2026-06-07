@@ -22,7 +22,7 @@ import {TuiInputPinComponent} from './input-pin.component';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'aria-hidden': 'true'},
+    host: {'aria-hidden': 'true', 'data-tui-version': TUI_VERSION},
 })
 export class TuiInputPinContent {
     protected readonly pin = inject(TuiInputPinComponent);

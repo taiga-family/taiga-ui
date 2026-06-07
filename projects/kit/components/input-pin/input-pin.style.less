@@ -1,20 +1,61 @@
 @import '@taiga-ui/styles/utils';
 
-tui-input-pin-content {
-    .fullsize();
-
-    display: flex;
-    gap: inherit;
-    border-radius: inherit;
-}
-
 @keyframes blink {
     50% {
         opacity: 0;
     }
 }
 
-input[tuiInputPin] {
+tui-input-pin-content:where(*&) {
+    .fullsize();
+
+    display: flex;
+    gap: inherit;
+    border-radius: inherit;
+
+    .t-item {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        pointer-events: auto;
+        cursor: text;
+        margin-inline-start: 0.25rem;
+
+        &:first-child {
+            pointer-events: none;
+            margin: 0;
+        }
+
+        &[data-focus='true'] .t-value {
+            &_filled {
+                background: var(--tui-service-selection-background);
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            &::before {
+                content: '';
+                block-size: 1em;
+                border-inline-start: 1px solid var(--tui-text-primary);
+                animation: blink 1s steps(1) infinite;
+            }
+        }
+    }
+
+    .t-value {
+        color: var(--tui-text-secondary);
+
+        &_filled {
+            color: var(--tui-text-primary);
+        }
+    }
+}
+
+input[tuiInputPin]:where(*&) {
     position: absolute;
     inset: 0;
     color: transparent;
@@ -34,57 +75,16 @@ input[tuiInputPin] {
     &::placeholder {
         color: transparent !important;
     }
+
+    + .t-content {
+        gap: inherit !important;
+
+        [tuiButtonX] {
+            display: none !important;
+        }
+    }
 }
 
-[tuiTheme='dark'] input[tuiInputPin] {
+[tuiTheme='dark'] input[tuiInputPin]:where(*&) {
     --t-caret-color: rgba(50, 50, 50, 0.01);
-}
-
-input[tuiInputPin] + .t-content {
-    gap: inherit !important;
-}
-
-input[tuiInputPin] + .t-content [tuiButtonX] {
-    display: none !important;
-}
-
-.t-item {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    border-radius: inherit;
-    pointer-events: auto;
-    cursor: text;
-    margin-inline-start: 0.25rem;
-
-    &:first-child {
-        pointer-events: none;
-        margin: 0;
-    }
-
-    &[data-focus='true'] .t-value {
-        &_filled {
-            background: var(--tui-service-selection-background);
-
-            &::before {
-                display: none;
-            }
-        }
-
-        &::before {
-            content: '';
-            block-size: 1em;
-            border-inline-start: 1px solid var(--tui-text-primary);
-            animation: blink 1s steps(1) infinite;
-        }
-    }
-}
-
-.t-value {
-    color: var(--tui-text-secondary);
-
-    &_filled {
-        color: var(--tui-text-primary);
-    }
 }

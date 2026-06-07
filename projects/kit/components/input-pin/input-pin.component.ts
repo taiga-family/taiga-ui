@@ -1,6 +1,7 @@
 import {computed, Directive, input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -17,6 +18,7 @@ import {TuiInputPinContent} from './input-pin-content.component';
     providers: [tuiAsTextfieldContent(TuiInputPinContent)],
     hostDirectives: [MaskitoDirective, TuiTextfieldContent],
     host: {
+        'data-tui-version': TUI_VERSION,
         inputmode: 'numeric',
         maxlength: '4',
         spellcheck: 'false',
