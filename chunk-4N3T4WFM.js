@@ -1,0 +1,51 @@
+import"./chunk-HU6DUUP4.js";var e=`<table tuiTable>
+    <thead>
+        <tr>
+            <th tuiTh></th>
+            <th tuiTh>#</th>
+            <th tuiTh>Name</th>
+            <th tuiTh>Date of Birth</th>
+        </tr>
+    </thead>
+    @for (item of data; track $index; let i = $index) {
+        <tbody tuiTbody>
+            <tr>
+                <td tuiTd>
+                    <button
+                        appearance="flat-grayscale"
+                        size="xs"
+                        tuiIconButton
+                        type="button"
+                        [attr.title]="item.children.length ? null : 'No children'"
+                        [disabled]="!item.children.length"
+                        [style.border-radius.%]="100"
+                        [tuiChevron]="state[i] ?? false"
+                        (click)="state[i] = !state[i]"
+                    >
+                        Toggle
+                    </button>
+                </td>
+                <td tuiTd>{{ i + 1 }}</td>
+                <td tuiTd>{{ item.name }}</td>
+                <td tuiTd>{{ item.dob }}</td>
+            </tr>
+        </tbody>
+
+        <tbody
+            tuiTableExpand
+            [expanded]="state[i] ?? false"
+        >
+            @if (item.children.length) {
+                @for (child of item.children; track $index; let j = $index) {
+                    <tr>
+                        <td tuiTd></td>
+                        <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
+                        <td tuiTd>{{ child.name }}</td>
+                        <td tuiTd>{{ child.dob }}</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    }
+</table>
+`;export{e as default};
