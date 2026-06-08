@@ -33,6 +33,7 @@ import {switchMap, timer} from 'rxjs';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputCardContent {
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
