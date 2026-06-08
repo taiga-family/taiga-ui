@@ -964,7 +964,7 @@
 ### input-card
 
 ```text
-  TuiInputCVCDirective, TuiInputCard, TuiInputCardComponent, TuiInputExpireDirective
+  TuiInputCVCDirective, TuiInputCard, TuiInputCardComponent, TuiInputCardContent, TuiInputExpireDirective
 ```
 ### input-card-group
 
