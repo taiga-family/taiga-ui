@@ -22,7 +22,7 @@
                     <span
                         iconStart="@tui.check"
                         tuiBadge
-                        [appearance]="appearance.appearance"
+                        [appearance]="appearance"
                         [size]="size"
                     >
                         <div tuiFade>Taiga UI</div>
@@ -32,7 +32,7 @@
                 @if (contentType === 'text') {
                     <span
                         tuiBadge
-                        [appearance]="appearance.appearance"
+                        [appearance]="appearance"
                         [size]="size"
                     >
                         Taiga UI
@@ -44,7 +44,7 @@
                         alt="market"
                         src="assets/images/avatar.jpg"
                         tuiBadge
-                        [appearance]="appearance.appearance"
+                        [appearance]="appearance"
                         [size]="size"
                     />
                 }
@@ -69,10 +69,14 @@
                 [items]="sizeVariants"
                 [(value)]="size"
             ></tr>
-            <tbody
-                #appearance
-                tuiDocAppearance
-            ></tbody>
+
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            ></tr>
         </table>
     </ng-template>
 </tui-doc-page>
