@@ -40,7 +40,6 @@ import {TuiInputMonthDirective} from './input-month.directive';
 export class TuiInputMonthContent {
     protected readonly component = inject(TuiInputMonthComponent);
     protected readonly host = inject(TuiInputMonthDirective);
-
     protected readonly max = computed(() => this.component.max()?.toJSON());
     protected readonly min = computed(() => this.component.min()?.toJSON());
     protected readonly value = computed(() => this.host.value()?.toJSON());
