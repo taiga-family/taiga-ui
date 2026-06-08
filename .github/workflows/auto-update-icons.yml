@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
-      - uses: taiga-family/ci/actions/setup/node@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/setup/variables@44fd3eb3c46e9e6c39fd3820479c467aa75c8028 # v1.221.0
+      - uses: taiga-family/ci/actions/setup/node@44fd3eb3c46e9e6c39fd3820479c467aa75c8028 # v1.221.0
       - run: |
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix || echo "no file matching"
@@ -24,7 +24,7 @@ jobs:
           npx prettier ./projects/demo/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/demo-playwright/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/cdk/constants/used-icons.ts --write || echo "no file matching"
-      - uses: taiga-family/ci/actions/auto/push@a173bbdd44beec5cb34444b6fa497284da803031 # v1.217.0
+      - uses: taiga-family/ci/actions/auto/push@44fd3eb3c46e9e6c39fd3820479c467aa75c8028 # v1.221.0
         if: env.SUPPORT_AUTO_PUSH
         with:
           message: icons have changed
