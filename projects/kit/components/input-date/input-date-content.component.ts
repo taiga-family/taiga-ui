@@ -39,7 +39,6 @@ import {TuiInputDateDirective} from './input-date.directive';
 export class TuiInputDateContent {
     protected readonly component = inject(TuiInputDateComponent);
     protected readonly host = inject(TuiInputDateDirective);
-
     protected readonly max = computed(() => this.host.max().toJSON());
     protected readonly min = computed(() => this.host.min().toJSON());
     protected readonly value = computed(() => this.host.value()?.toJSON());
