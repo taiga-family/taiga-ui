@@ -31,6 +31,7 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
         '[style.border]':
             'textfield.options.size() === "s" ? "0.25rem solid transparent" : null',
         '(click)': 'toggle()',
+        '(mousedown.prevent)': '0',
     },
 })
 export class TuiPassword {

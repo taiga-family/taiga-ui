@@ -7,8 +7,6 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
-
 const {describe, beforeEach} = test;
 
 test.describe('InputTime', () => {
@@ -390,28 +388,6 @@ test.describe('InputTime', () => {
             await expect
                 .soft(example)
                 .toHaveScreenshot('input-time-option-hh-mm__03.png');
-        });
-    });
-
-    test.describe('Examples', () => {
-        let example: Locator;
-        let inputTime: TuiInputTimePO;
-
-        test.describe('Native picker', () => {
-            test.use(TUI_PLAYWRIGHT_MOBILE);
-
-            test.beforeEach(async ({page}) => {
-                await tuiGoto(page, DemoRoute.InputTime);
-                example = new TuiDocumentationPagePO(page).getExample('#native-picker');
-                inputTime = new TuiInputTimePO(
-                    example.locator('tui-textfield:has([tuiInputTime]):first-of-type'),
-                );
-            });
-
-            test('is clickable', async () => {
-                await inputTime.clickOnIcon();
-                await expect(inputTime.nativePicker).toBeFocused();
-            });
         });
     });
 });

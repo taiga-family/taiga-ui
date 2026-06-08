@@ -127,6 +127,16 @@ export class TuiHintComponent {
     }
 
     private update(left: number, top: number): void {
+        if (
+            this.isMobile &&
+            this.el.getAnimations?.().length &&
+            this.el
+                .getAnimations?.()
+                .every(({effect}) => effect?.getComputedTiming().progress !== null)
+        ) {
+            return;
+        }
+
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
 
@@ -142,9 +152,9 @@ export class TuiHintComponent {
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
-        const [beakTop, beakLeft] = this.vvs.correct([
-            rect.top + rect.height / 2 - top,
+        const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
+            rect.top + rect.height / 2 - top,
         ]);
 
         this.apply(
