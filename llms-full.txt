@@ -367,7 +367,7 @@
 ### input-pin
 
 ```text
-  TuiInputPin, TuiInputPinComponent
+  TuiInputPin, TuiInputPinComponent, TuiInputPinContent
 ```
 ### input-range
 
@@ -24314,7 +24314,7 @@ export default class PageComponent {
 **Template:**
 ```html
 <tui-textfield>
-<input maxlength="4" placeholder="••••" tuiInputPin [formControl]="control" />
+<input placeholder="••••" tuiInputPin [formControl]="control" />
 </tui-textfield>
 ```
 **TypeScript:**
