@@ -10,5 +10,5 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Accessories', 'Interactive'];
+    protected readonly examples = ['Sizes', 'Accessories', 'Interactive', 'Wrapping'];
 }

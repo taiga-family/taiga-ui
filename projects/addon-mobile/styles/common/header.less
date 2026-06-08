@@ -58,8 +58,12 @@
     [tuiAccessories] {
         gap: 1rem;
 
-        [tuiLink] {
+        [tuiLink][tuiLink] {
             font: var(--tui-typography-ui-l);
+        }
+
+        &::before {
+            margin-inline-end: -1rem;
         }
     }
 }
