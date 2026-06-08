@@ -34,6 +34,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputMonthContent {
     protected readonly component = inject(TuiInputMonthComponent);
