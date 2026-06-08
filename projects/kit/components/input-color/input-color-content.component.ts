@@ -23,6 +23,7 @@ import {type TuiInputColorComponent} from './input-color.component';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputColorContent {
     protected readonly color = inject(TuiControl) as TuiInputColorComponent;
