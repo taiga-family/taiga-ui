@@ -11,7 +11,7 @@ import {WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observe
 
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';
 
-@Directive({selector: '[tuiDynamicHeaderAnchor]', host: {'[class._header]': 'true'}})
+@Directive({selector: '[tuiDynamicHeaderAnchor]'})
 export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy {
     private readonly vcr = inject(ViewContainerRef);
     private readonly observer = inject(WaIntersectionObserverDirective);
@@ -30,9 +30,9 @@ export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy
             this.visible.set(!isIntersecting);
 
             if (isIntersecting) {
-                target.classList.remove('_hidden');
+                target.classList.remove('t-header_hidden');
             } else {
-                target.classList.add('_hidden');
+                target.classList.add('t-header_hidden');
             }
 
             this.container.update();

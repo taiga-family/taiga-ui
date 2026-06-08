@@ -6,7 +6,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {WA_IS_IOS, WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
@@ -43,7 +43,7 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[class._liquid-glass]': 'liquidGlass',
+        '[class.tui-liquid-glass]': 'liquidGlass',
         '[class._mobile]': 'breakpoint() === "mobile"',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
@@ -69,16 +69,14 @@ export class TuiRoot {
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
         this.options.scrollbars !== 'native';
 
+    protected readonly liquidGlass =
+        inject(WA_IS_IOS) &&
+        this.options.apis !== 'stable' &&
+        (this.options.apis.all || !!this.options.apis.liquidGlass?.());
+
     protected get parent(): boolean {
         return this.doc.fullscreenElement
             ? this.doc.fullscreenElement === this.el
             : !this.child;
-    }
-
-    protected get liquidGlass(): boolean {
-        return (
-            this.options.apis !== 'stable' &&
-            (this.options.apis.all || !!this.options.apis.liquidGlass?.())
-        );
     }
 }

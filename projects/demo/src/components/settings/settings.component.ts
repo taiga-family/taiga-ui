@@ -115,7 +115,7 @@ export class SettingsComponent {
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
             this.doc.documentElement.setAttribute('data-platform', platform);
-            this.doc.documentElement.classList.toggle('_liquid-glass', liquid);
+            this.doc.documentElement.classList.toggle('tui-liquid-glass', liquid);
 
             if (this.options.apis !== 'stable') {
                 this.options.apis.liquidGlass?.set(liquid);
