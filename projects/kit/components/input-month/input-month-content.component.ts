@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     effect,
     inject,
     ViewEncapsulation,
@@ -18,9 +19,9 @@ import {TuiInputMonthDirective} from './input-month.directive';
         @if (host.native) {
             <input
                 type="month"
-                [max]="component.max()?.toJSON()"
-                [min]="component.min()?.toJSON()"
-                [value]="host.value()?.toJSON()"
+                [max]="max()"
+                [min]="min()"
+                [value]="value()"
                 (click.stop.zoneless)="(0)"
                 (input)="onInput($any($event.target).value)"
                 (pointerdown.stop.zoneless)="(0)"
@@ -39,6 +40,10 @@ import {TuiInputMonthDirective} from './input-month.directive';
 export class TuiInputMonthContent {
     protected readonly component = inject(TuiInputMonthComponent);
     protected readonly host = inject(TuiInputMonthDirective);
+
+    protected readonly max = computed(() => this.component.max()?.toJSON());
+    protected readonly min = computed(() => this.component.min()?.toJSON());
+    protected readonly value = computed(() => this.host.value()?.toJSON());
 
     protected readonly calendarSync = effect(() => {
         const calendar = this.host.calendar();
