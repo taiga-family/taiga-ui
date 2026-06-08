@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -17,9 +18,9 @@ import {TuiInputDateDirective} from './input-date.directive';
             <input
                 type="date"
                 [attr.list]="component.list()"
-                [max]="host.max().toJSON()"
-                [min]="host.min().toJSON()"
-                [value]="host.value()?.toJSON()"
+                [max]="max()"
+                [min]="min()"
+                [value]="value()"
                 (click.stop.zoneless)="(0)"
                 (input)="onInput($any($event.target).value)"
                 (pointerdown.stop.zoneless)="(0)"
@@ -38,6 +39,10 @@ import {TuiInputDateDirective} from './input-date.directive';
 export class TuiInputDateContent {
     protected readonly component = inject(TuiInputDateComponent);
     protected readonly host = inject(TuiInputDateDirective);
+
+    protected readonly max = computed(() => this.host.max().toJSON());
+    protected readonly min = computed(() => this.host.min().toJSON());
+    protected readonly value = computed(() => this.host.value()?.toJSON());
 
     protected onInput(value: string): void {
         if (!value) {
