@@ -73,7 +73,7 @@
                 [value]="type()"
                 (valueChange)="type.set($event ?? 'text')"
             >
-                Native input type.
+                native input type.
                 <code>"password"</code>
                 masks each digit as a filled dot
             </tr>
@@ -84,7 +84,7 @@
                 [items]="invalidVariants"
                 [(value)]="invalid"
             >
-                Verification result.
+                verification result.
                 <code>null</code>
                 — pending pulse,
                 <code>false</code>
@@ -99,7 +99,7 @@
                 [min]="1"
                 [(value)]="length"
             >
-                Number of cells. Pending animation triggers once value reaches this length
+                number of cells, pending animation triggers once value reaches this length
             </tr>
             <tr
                 #confirmed
@@ -107,7 +107,7 @@
                 tuiDocAPIItem
                 type="void"
             >
-                Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition
+                fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition
             </tr>
             <tr
                 #finished
@@ -115,7 +115,7 @@
                 tuiDocAPIItem
                 type="void"
             >
-                Fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear
+                fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear
             </tr>
         </table>
     </ng-template>

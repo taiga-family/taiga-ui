@@ -20,7 +20,7 @@
         [value]="appearance"
         (valueChange)="selected = $event ?? ''"
     >
-        Appearance of the element
+        appearance of the element
     </tr>
 }
 @if (!hiddenOptions().includes('state')) {
@@ -31,7 +31,7 @@
         [items]="states"
         [(value)]="state"
     >
-        Manual interactive state override
+        manual interactive state override
     </tr>
 }
 @if (!hiddenOptions().includes('focus')) {
@@ -42,7 +42,7 @@
         [items]="focuses"
         [(value)]="focus"
     >
-        Manual focus state override
+        manual focus state override
     </tr>
 }
 @if (!hiddenOptions().includes('mode')) {
@@ -53,6 +53,6 @@
         [items]="modes"
         [(value)]="mode"
     >
-        Custom manual mode for the appearance
+        custom manual mode for the appearance
     </tr>
 }

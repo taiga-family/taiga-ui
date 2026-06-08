@@ -50,7 +50,7 @@
                             <strong>Key steps</strong>
                             – anchor points of non-uniform format between control's value and slider's position.
 
-                            <p class="tui-space_bottom-0">
+                            <p>
                                 When
                                 <code>[keySteps]</code>
                                 property is enabled,
@@ -95,7 +95,7 @@
                 type="boolean"
                 [(value)]="disabled"
             >
-                Disabled state (use
+                disabled state (use
                 <code>formControl.disable()</code>
                 )
             </tr>
@@ -105,7 +105,7 @@
                 type="number"
                 [(value)]="max"
             >
-                Native attribute
+                native attribute
                 <a
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#max"
                     rel="noreferrer"
@@ -123,7 +123,7 @@
                 type="number"
                 [(value)]="min"
             >
-                Native attribute
+                native attribute
                 <a
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#min"
                     rel="noreferrer"
@@ -141,7 +141,7 @@
                 type="number"
                 [(value)]="step"
             >
-                Native attribute
+                native attribute
                 <a
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#step"
                     rel="noreferrer"
@@ -160,13 +160,13 @@
                 [items]="segmentsVariants"
                 [(value)]="segments"
             >
+                A number of visual segments or an array, in which every number - is ratio of slider's track length in
+                range (0; 1) where to put tick
                 <p>
-                    A number of visual segments or an array, in which every number - is ratio of slider's track length
-                    in range (0; 1) where to put tick
+                    (use
+                    <code>1</code>
+                    for no ticks)
                 </p>
-                (use
-                <code>1</code>
-                for no ticks)
             </tr>
 
             <tbody>
@@ -184,7 +184,7 @@
                     type="number"
                     [(value)]="thumbSize"
                 >
-                    Size of thumb
+                    size of thumb
                 </tr>
             </tbody>
         </table>

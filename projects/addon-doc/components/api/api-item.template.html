@@ -1,20 +1,13 @@
 <td class="t-td">
     <code
-        tuiHintDirection="top-end"
         class="t-name"
         [class.t-name_banana]="isBananaBox()"
         [class.t-name_input]="isInput()"
         [class.t-name_output]="isOutput()"
-        [tuiHint]="hint"
     >
         {{ name() }}
     </code>
-    <ng-template #hint>
-        <ng-content>{{ name() }}</ng-content>
-    </ng-template>
-    <div class="t-description">
-        <ng-container *ngTemplateOutlet="hint" />
-    </div>
+    <div class="t-description"><ng-content /></div>
 </td>
 <td class="t-td">
     <code class="t-type">

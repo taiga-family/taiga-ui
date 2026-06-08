@@ -1040,7 +1040,7 @@ export const pages: DocRoutePages = [
         keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
-            {name: 'tui-cell', figmaVersion: '1.3.1'},
+            {name: 'tui-cell', figmaVersion: '1.4.0'},
             {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
             {name: 'tui-button-cell', figmaVersion: '1.0.1'},
             {name: 'list-item', scheme: 'beaver'},
