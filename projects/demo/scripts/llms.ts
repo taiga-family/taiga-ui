@@ -447,7 +447,7 @@ async function main(): Promise<void> {
     console.info(`- Skipped (legacy): ${skippedLegacy}`);
     console.info('========================================');
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
 
     console.info(`Successfully file saved: ${OUTPUT_FILE}`);
     console.info(`Total components in output: ${includedCount}`);

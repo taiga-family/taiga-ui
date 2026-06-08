@@ -534,7 +534,7 @@ async function main(): Promise<void> {
             'projects/demo/src/llms-header-sections/migration-guide-generated.md',
         );
 
-        await fs.writeFile(outputPath, markdown, 'utf-8');
+        await fs.writeFile(outputPath, markdown);
         console.info(`Saved to: ${outputPath}`);
     } catch (error) {
         console.error('Error:', error);
