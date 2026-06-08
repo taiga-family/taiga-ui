@@ -1104,8 +1104,8 @@
 
 ```text
   TuiSortChange, TuiSortDirection, TuiSortDirection, TuiSorterPipe, TuiStuck, TuiTable, TuiTableCaption, TuiTableCell, TuiTableDirective, TuiTableExpand
-  TuiTableHead, TuiTableOptions, TuiTableResized, TuiTableSortBy, TuiTableSortChange, TuiTableSortKeyException, TuiTableSortPipe, TuiTableSortable, TuiTableTbody, TuiTableTd
-  TuiTableTh, TuiTableThGroup, TuiTableThead, TuiTableTr
+  TuiTableHead, TuiTableOptions, TuiTableResized, TuiTableSortBy, TuiTableSortChange, TuiTableSortKeyException, TuiTableSortPipe, TuiTableSortable, TuiTableTbody, TuiTableTbodyDirective
+  TuiTableTd, TuiTableTh, TuiTableThGroup, TuiTableThead, TuiTableTr
 ```
 ### table-pagination
 
@@ -41182,7 +41182,8 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; dev &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }} &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tui-table-expand #expand [expanded]=&quot;true&quot; &gt; @for (item of basicData; track item) { &lt;tr tuiTr&gt;
+&lt;/tbody&gt;
+&lt;tbody #expand tuiTableExpand [expanded]=&quot;true&quot; &gt; @for (item of basicData; track item) { &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt;
 &lt;div&gt;
@@ -41192,8 +41193,7 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber }} &lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
+&lt;/tr&gt; } &lt;/tbody&gt;
 &lt;tbody tuiTbody&gt;
 &lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;manualToggle()&quot; &gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
@@ -41204,14 +41204,14 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; design &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }} &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tui-table-expand [expanded]=&quot;manualOpen&quot;&gt; @for (item of manualOpenData; track item) { &lt;tr tuiTr&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTableExpand [expanded]=&quot;manualOpen&quot; &gt; @for (item of manualOpenData; track item) { &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt; {{ item.firstName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber }} &lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
+&lt;/tr&gt; } &lt;/tbody&gt;
 &lt;tbody tuiTbody&gt;
 &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
@@ -41237,7 +41237,7 @@ export default class Example {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiTable, TuiTableExpand} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiTable} from &#039;@taiga-ui/addon-table&#039;;
 import {TuiMapperPipe} from &#039;@taiga-ui/cdk&#039;;
 import {TuiButton, TuiExpand, TuiFormatNumberPipe, TuiHint} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron, TuiChip} from &#039;@taiga-ui/kit&#039;;
@@ -41259,7 +41259,6 @@ interface Item {
         TuiHint,
         TuiMapperPipe,
         TuiTable,
-        TuiTableExpand,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -42624,21 +42623,22 @@ export default class Example {
 &lt;th tuiTh&gt;Name&lt;/th&gt;
 &lt;th tuiTh&gt;Date of Birth&lt;/th&gt;
 &lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody tuiTbody&gt; @for (item of data; track $index; let i = $index) { &lt;tr&gt;
+&lt;/thead&gt; @for (item of data; track $index; let i = $index) { &lt;tbody tuiTbody&gt;
+&lt;tr&gt;
 &lt;td tuiTd&gt;
 &lt;button appearance=&quot;flat-grayscale&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [attr.title]=&quot;item.children.length ? null : &#039;No children&#039;&quot; [disabled]=&quot;!item.children.length&quot; [style.border-radius.%]=&quot;100&quot; [tuiChevron]=&quot;state[i] ?? false&quot; (click)=&quot;state[i] = !state[i]&quot; &gt; Toggle &lt;/button&gt;
 &lt;/td&gt;
 &lt;td tuiTd&gt;{{ i + 1 }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ item.name }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ item.dob }}&lt;/td&gt;
-&lt;/tr&gt; @if (item.children.length) { &lt;tui-table-expand [expanded]=&quot;state[i] ?? false&quot;&gt; @for (child of item.children; track $index; let j = $index) { &lt;tr&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTableExpand [expanded]=&quot;state[i] ?? false&quot; &gt; @if (item.children.length) { @for (child of item.children; track $index; let j = $index) { &lt;tr&gt;
 &lt;td tuiTd&gt;&lt;/td&gt;
 &lt;td tuiTd&gt;{{ i + 1 }}.{{ j + 1 }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ child.name }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ child.dob }}&lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt; } } &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/tr&gt; } } &lt;/tbody&gt; } &lt;/table&gt;
 ```
 **TypeScript:**
 ```ts
