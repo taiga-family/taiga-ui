@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.86.0](https://github.com/taiga-family/taiga-ui/compare/v4.85.0...v4.86.0) (2026-06-08)
+
+### 🐞 Bug Fixes
+
+- **kit:** use CSS variable --tui-status-negative for tui-badge-notification background
+  ([#14197](https://github.com/taiga-family/taiga-ui/issues/14197))
+  ([a44c3f0](https://github.com/taiga-family/taiga-ui/commit/a44c3f04a1bac50c6829a83ccb0f2689283a12f1))
+
+### 🚀 Features
+
+- **core:** `Cell` add stretch directive ([#14247](https://github.com/taiga-family/taiga-ui/issues/14247))
+  ([3264f8e](https://github.com/taiga-family/taiga-ui/commit/3264f8e5ce2caaa17b0063d8d1849ec0076dd8f6))
+
 ## [4.85.0](https://github.com/taiga-family/taiga-ui/compare/v4.84.0...v4.85.0) (2026-06-01)
 
 ### 🐞 Bug Fixes
