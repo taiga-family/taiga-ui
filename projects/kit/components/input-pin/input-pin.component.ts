@@ -51,7 +51,7 @@ export class TuiInputPinComponent {
 
         if (selectionStart === maxLength) {
             this.el.setSelectionRange(maxLength - 1, maxLength - 1);
-        } else if (selectionStart === 0 && selectionEnd === 0 && value) {
+        } else if (!selectionStart && !selectionEnd && value) {
             this.el.setSelectionRange(0, 1);
         }
     }

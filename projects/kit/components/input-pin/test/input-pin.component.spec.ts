@@ -16,8 +16,7 @@ describe('TuiInputPinComponent', () => {
                 />
             </tui-textfield>
         `,
-        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-        changeDetection: ChangeDetectionStrategy.Default,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public readonly inputPin = viewChild.required(TuiInputPinComponent);
