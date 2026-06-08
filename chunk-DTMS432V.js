@@ -1,0 +1,40 @@
+import"./chunk-HU6DUUP4.js";var a=`<tui-doc-page
+    header="Header"
+    package="LAYOUT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [fullsize]="$first"
+                [heading]="example"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Buttons/badges sizes according to the header size.
+                    }
+                    @case (1) {
+                        Various content in the right side of the header.
+                    }
+                    @case (2) {
+                        Header can contain interactive button or link.
+                    }
+                    @case (3) {
+                        Accessories are not meant to take up much space. You should try to keep it this way, but if you
+                        cannot \u2013 you can enable wrapping using
+                        <code>flex-wrap: wrap</code>
+                        . Watch for
+                        <code>TUI_FONT_OFFSET</code>
+                        signal token if you only want to enable it due to OS font scaling. This would only wrap if title
+                        has to shrink below 60% to accommodate long accessories section.
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};
