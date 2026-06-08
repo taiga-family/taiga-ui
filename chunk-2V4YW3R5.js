@@ -1,0 +1,92 @@
+import"./chunk-HU6DUUP4.js";var s=`<label
+    tuiCardMedium
+    class="card"
+>
+    <img
+        alt="google-pay"
+        src="assets/taiga-ui/icons/google-pay.svg"
+    />
+    <div
+        tuiFade
+        class="cards"
+    >
+        <span
+            iconStart="@tui.lock"
+            paymentSystem="mastercard"
+            size="m"
+            tuiThumbnailCard
+        >
+            4572
+        </span>
+
+        <span
+            iconStart="@tui.lock"
+            paymentSystem="mir"
+            size="m"
+            tuiThumbnailCard
+            class="mir"
+        >
+            6733
+        </span>
+
+        <span
+            paymentSystem="visa"
+            size="m"
+            tuiThumbnailCard
+            class="visa"
+        >
+            5212
+        </span>
+    </div>
+
+    <input
+        tuiSurfaceLayer
+        type="radio"
+        class="selected"
+        [value]="0"
+        [(ngModel)]="value"
+    />
+
+    <div
+        tuiRipple
+        tuiSurfaceLayer
+        [style.background-color]="'#fff6c7'"
+    ></div>
+</label>
+
+<label
+    tuiCardMedium
+    class="card"
+>
+    <img
+        alt="apple-pay"
+        src="assets/taiga-ui/icons/apple-pay.svg"
+    />
+    <div
+        tuiFade
+        class="cards"
+    >
+        <span
+            paymentSystem="mir"
+            size="m"
+            tuiThumbnailCard
+            class="mir"
+        >
+            2222
+        </span>
+    </div>
+
+    <input
+        tuiSurfaceLayer
+        type="radio"
+        [value]="1"
+        [(ngModel)]="value"
+    />
+
+    <div
+        tuiRipple
+        tuiSurfaceLayer
+        [style.background-color]="'#d5f6df'"
+    ></div>
+</label>
+`;export{s as default};

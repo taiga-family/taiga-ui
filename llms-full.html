@@ -31,7 +31,7 @@
 ### cell
 
 ```text
-  TuiCell, TuiCellOptions
+  TuiCell, TuiCellOptions, TuiCellStretch
 ```
 ### checkbox
 
@@ -325,7 +325,7 @@
 ### input-date
 
 ```text
-  TuiInputDate, TuiInputDateComponent, TuiInputDateDirective, TuiInputDateOptions
+  TuiInputDate, TuiInputDateComponent, TuiInputDateContent, TuiInputDateDirective, TuiInputDateOptions
 ```
 ### input-date-multi
 
@@ -340,7 +340,7 @@
 ### input-date-time
 
 ```text
-  TuiInputDateTime, TuiInputDateTimeComponent, TuiInputDateTimeDirective, TuiInputDateTimeOptions
+  TuiInputDateTime, TuiInputDateTimeComponent, TuiInputDateTimeContent, TuiInputDateTimeDirective, TuiInputDateTimeOptions
 ```
 ### input-inline
 
@@ -350,7 +350,7 @@
 ### input-month
 
 ```text
-  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthDirective, TuiInputMonthOptions
+  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthContent, TuiInputMonthDirective, TuiInputMonthOptions
 ```
 ### input-month-range
 
@@ -376,7 +376,7 @@
 ### input-pin
 
 ```text
-  TuiInputPin, TuiInputPinComponent
+  TuiInputPin, TuiInputPinComponent, TuiInputPinContent
 ```
 ### input-range
 
@@ -391,7 +391,7 @@
 ### input-time
 
 ```text
-  TuiInputTime, TuiInputTimeComponent, TuiInputTimeDirective, TuiInputTimeOptions
+  TuiInputTime, TuiInputTimeComponent, TuiInputTimeContent, TuiInputTimeDirective, TuiInputTimeOptions
 ```
 ### input-year
 
@@ -973,7 +973,7 @@
 ### input-card
 
 ```text
-  TuiInputCVCDirective, TuiInputCard, TuiInputCardComponent, TuiInputExpireDirective
+  TuiInputCVCDirective, TuiInputCard, TuiInputCardComponent, TuiInputCardContent, TuiInputExpireDirective
 ```
 ### input-card-group
 
@@ -1104,8 +1104,8 @@
 
 ```text
   TuiSortChange, TuiSortDirection, TuiSortDirection, TuiSorterPipe, TuiStuck, TuiTable, TuiTableCaption, TuiTableCell, TuiTableDirective, TuiTableExpand
-  TuiTableHead, TuiTableOptions, TuiTableResized, TuiTableSortBy, TuiTableSortChange, TuiTableSortKeyException, TuiTableSortPipe, TuiTableSortable, TuiTableTbody, TuiTableTd
-  TuiTableTh, TuiTableThGroup, TuiTableThead, TuiTableTr
+  TuiTableHead, TuiTableOptions, TuiTableResized, TuiTableSortBy, TuiTableSortChange, TuiTableSortKeyException, TuiTableSortPipe, TuiTableSortable, TuiTableTbody, TuiTableTbodyDirective
+  TuiTableTd, TuiTableTh, TuiTableThGroup, TuiTableThead, TuiTableTr
 ```
 ### table-pagination
 
@@ -1600,9 +1600,9 @@ nx migrate --run-migrations
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [closeOthers] | `boolean` | Other sections are closed when user opens one |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
-| [(tuiAccordion)] | `boolean` | Individual item open state |
+| [closeOthers] | `boolean` | close other sections when user opens one |
+| [size] | `TuiSizeS | TuiSizeL` | — |
+| [(tuiAccordion)] | `boolean` | individual item open state |
 
 ### Usage Examples
 
@@ -2593,12 +2593,12 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [max] | `number` | Maximum value |
-| [maxLabel] | `string` | Label for maximum value |
-| [minLabel] | `string` | Label for minimum value |
-| [size] | `TuiSizeXL` | Size |
-| [value] | `readonly number[]` | Value |
-| [(activeItemIndex)] | `number` | Index of selected arc |
+| [max] | `number` | maximum value |
+| [maxLabel] | `string` | label for maximum value |
+| [minLabel] | `string` | label for minimum value |
+| [size] | `TuiSizeXL` | — |
+| [value] | `readonly number[]` | value array |
+| [(activeItemIndex)] | `number` | index of selected arc |
 
 ### Usage Examples
 
@@ -2782,9 +2782,9 @@ export default class Page {
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiAvatar] | `string` |  |
-| [badge] | `string` | Color of the dot badge indicator |
-| [round] | `boolean` | Use round shape |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [badge] | `string` | color of the dot badge indicator |
+| [round] | `boolean` | circle shape |
+| [size] | `TuiSizeS | TuiSizeL` | — |
 
 ### Usage Examples
 
@@ -3158,18 +3158,18 @@ Just axes for charts
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [centeredXLabels] | `boolean` | Center X labels |
+| [centeredXLabels] | `boolean` | center X axis labels |
 | [axisXLabels] | `ReadonlyArray&lt;string | null&gt;` | — no stroke |
-| [axisYInset] | `boolean` | Inset of labels on axis Y |
-| [axisYLabels] | `readonly string[]` | Labels for Y |
-| [axisYName] | `string` | Name of Y axis |
-| [axisYSecondaryInset] | `boolean` | Inset labels for Y |
-| [axisYSecondaryLabels] | `readonly string[]` | Secondary Y axis labels |
-| [axisYSecondaryName] | `string` | Secondary Y axis name |
-| [horizontalLines] | `number` | Horizontal lines number |
-| [horizontalLinesHandler] | `TuiLineHandler` | Horizontal lines type handler |
-| [verticalLines] | `number` | Number of vertical lines |
-| [verticalLinesHandle] | `TuiLineHandler` | Vertical lines type handler |
+| [axisYInset] | `boolean` | inset of labels on Y axis |
+| [axisYLabels] | `readonly string[]` | labels for Y axis |
+| [axisYName] | `string` | name of Y axis |
+| [axisYSecondaryInset] | `boolean` | inset labels for Y axis |
+| [axisYSecondaryLabels] | `readonly string[]` | secondary Y axis labels |
+| [axisYSecondaryName] | `string` | secondary Y axis name |
+| [horizontalLines] | `number` | horizontal lines number |
+| [horizontalLinesHandler] | `TuiLineHandler` | horizontal lines type handler |
+| [verticalLines] | `number` | number of vertical lines |
+| [verticalLinesHandle] | `TuiLineHandler` | vertical lines type handler |
 
 ### Usage Examples
 
@@ -3472,8 +3472,8 @@ Component for displaying text, pictures and icons.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeL` | Size |
-| [appearance] | `TuiStatus` | Appearance |
+| [size] | `TuiSizeL` | — |
+| [appearance] | `string` | — |
 
 ### Usage Examples
 
@@ -3766,7 +3766,7 @@ Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeL` | Size |
+| [size] | `TuiSizeL` | — |
 
 ### Usage Examples
 
@@ -3904,7 +3904,7 @@ BadgedContent is a wrapper for other components to add badges and notifications 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| style.--t-radius | `string` | Border radius |
+| style.--t-radius | `string` | border radius |
 
 ### Usage Examples
 
@@ -4088,11 +4088,11 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
-import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
-    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
+    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -4125,8 +4125,8 @@ A bar for bar chart
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | Size |
-| [value] | `readonly number[]` | An array of segments |
+| [size] | `TuiSizeS | TuiSizeL` | — |
+| [value] | `readonly number[]` | an array of segments |
 
 ### Usage Examples
 
@@ -4249,16 +4249,16 @@ Bar chart that can be used as a content to axes .
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [collapsed] | `boolean` | Shows data set in a single bar |
-| [max] | `number` | Sets chart max manually |
+| [collapsed] | `boolean` | shows data set in a single bar |
+| [max] | `number` | sets chart max manually |
 | [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
-| [value] | `ReadonlyArray&lt;readonly number[]&gt;` | Array of segments |
+| [value] | `ReadonlyArray&lt;readonly number[]&gt;` | array of segments |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (tapColumn) | `number` | Bar column click/enter event |
+| (tapColumn) | `number` | bar column click/enter event |
 
 ### Usage Examples
 
@@ -4465,9 +4465,9 @@ A group of bars for bar chart
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [collapsed] | `boolean` | Shows data set in a single bar |
+| [collapsed] | `boolean` | shows data set in a single bar |
 | [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
-| [value] | `readonly number[]` | Array of segments |
+| [value] | `readonly number[]` | array of segments |
 
 ### Usage Examples
 
@@ -4726,7 +4726,7 @@ Block is a special presentation of a checkbox/radiobutton which can display actu
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiBlock] | `TuiSizeL | TuiSizeS` | Size of the block |
+| [tuiBlock] | `TuiSizeL | TuiSizeS` | — |
 
 ### Usage Examples
 
@@ -5144,8 +5144,8 @@ Component for status screens, result screens and zero screens
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [card] | `boolean` | Enable border radius and padding for card view |
-| [size] | `TuiSizeL` | Size (for desktop only) |
+| [card] | `boolean` | enable border radius and padding for card view |
+| [size] | `TuiSizeL` | size (for desktop only) |
 
 ### Usage Examples
 
@@ -5531,7 +5531,7 @@ A non-modal draggable sheet
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [stops] | `readonly string[]` | Scroll snap stops |
+| [stops] | `readonly string[]` | scroll snap stops |
 
 ### Usage Examples
 
@@ -5858,8 +5858,8 @@ Navigation element that shows a path from root page to the current
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [itemsLimit] | `number` | Limit on visible items |
-| [size] | `TuiSizeL` | Text size |
+| [itemsLimit] | `number` | limit on visible items |
+| [size] | `TuiSizeL` | text size |
 
 ### Usage Examples
 
@@ -6056,7 +6056,7 @@ Button is a basic component used for both icon buttons and regular buttons with 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | Size of the button |
+| [size] | `TuiSizeXS | TuiSizeL` | — |
 | [loading] | `boolean` | ) |
 
 ### Usage Examples
@@ -6884,21 +6884,21 @@ A simple calendar. If you want a textfield with date, see InputDate and InputDat
 | Property | Type | Description |
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler&lt;TuiDay&gt;` |  |
-| [showAdjacent] | `boolean` | Show adjacent months days |
-| [(hoveredItem)] | `TuiDay | null` | Hovered date |
-| [markerHandler] | `TuiMarkerHandler | null` | A handler that gets date and returns null or a tuple with circled marker colors |
-| [max] | `TuiDay | null` | Maximal date to choose |
-| [maxViewedMonth] | `TuiMonth | null` | Maximal month to access |
-| [min] | `TuiDay | null` | Minimum date to choose |
-| [minViewedMonth] | `TuiMonth | null` | Minimum month to access |
-| [(month)] | `TuiMonth` | Current month |
-| [value] | `TuiDay | TuiDayRange | null` | Selected day or range |
+| [showAdjacent] | `boolean` | show adjacent months days |
+| [(hoveredItem)] | `TuiDay | null` | hovered date |
+| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [max] | `TuiDay | null` | maximal date to choose |
+| [maxViewedMonth] | `TuiMonth | null` | maximal month to access |
+| [min] | `TuiDay | null` | minimum date to choose |
+| [minViewedMonth] | `TuiMonth | null` | minimum month to access |
+| [(month)] | `TuiMonth` | current month |
+| [value] | `TuiDay | TuiDayRange | null` | selected day or range |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (dayClick) | `TuiDay` | Date click |
+| (dayClick) | `TuiDay` | date click |
 
 ### Usage Examples
 
@@ -7318,18 +7318,18 @@ Month picker component. If you want a textfield, see InputMonth
 | Property | Type | Description |
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler&lt;TuiMonth&gt;` |  |
-| [max] | `TuiMonth | null` | Maximal month |
-| [min] | `TuiMonth | null` | Minimal month |
-| [maxLength] | `number` | Maximum length |
-| [minLength] | `number` | Minimum length |
-| [value] | `TuiMonth | TuiMonthRange | null` | A single month or a range of months |
-| [(year)] | `TuiYear` | Current year |
+| [max] | `TuiMonth | null` | maximal month |
+| [min] | `TuiMonth | null` | minimal month |
+| [maxLength] | `number` | maximum length |
+| [minLength] | `number` | minimum length |
+| [value] | `TuiMonth | TuiMonthRange | null` | a single month or a range of months |
+| [(year)] | `TuiYear` | current year |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (monthClick) | `TuiMonth` | Selected month |
+| (monthClick) | `TuiMonth` | selected month |
 
 ### Usage Examples
 
@@ -7496,20 +7496,20 @@ Component for choosing date range in calendar
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [defaultViewedMonth] | `TuiMonth` | Default month to show |
+| [defaultViewedMonth] | `TuiMonth` | default month to show |
 | [disabledItemHandler] | `TuiBooleanHandler&lt;TuiDay&gt;` |  |
-| [items] | `TuiDayRangePeriod[]` | Fixed intervals (shows 2 calendars with empty array) |
-| [markerHandler] | `TuiMarkerHandler | null` | A handler that gets date and returns null or a tuple with circled marker colors |
-| [min] | `TuiDay | null` | Min date |
-| [max] | `TuiDay | null` | Max date |
-| [minLength] | `TuiDayLike | null` | Minimal length of range |
-| [maxLength] | `TuiDayLike | null` | Maximal length of range |
+| [items] | `TuiDayRangePeriod[]` | fixed intervals (shows 2 calendars with empty array) |
+| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [min] | `TuiDay | null` | min date |
+| [max] | `TuiDay | null` | max date |
+| [minLength] | `TuiDayLike | null` | minimal length of range |
+| [maxLength] | `TuiDayLike | null` | maximal length of range |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (rangeChange) | `TuiDayRange` | Selected date range |
+| (rangeChange) | `TuiDayRange` | selected date range |
 
 ### Usage Examples
 
@@ -8845,7 +8845,7 @@ export default class Example {
 # components/CardMedium
 - **Package**: `LAYOUT`
 - **Type**: components
-A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets.
+A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets. If you customize size, make sure to multiply by --tui-font-scale variable if you want to accommodate font scaling on mobile OS.
 
 ### Usage Examples
 
@@ -9058,15 +9058,10 @@ export default class Example {
 &lt;div tuiBadge class=&quot;badge&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.target&quot; /&gt; 10% &lt;/div&gt;
 &lt;/div&gt;
-&lt;div tuiCardMedium class=&quot;google&quot; &gt;
+&lt;div tuiCardMedium class=&quot;stock&quot; &gt;
 &lt;h2 tuiTitle&gt; Google &lt;span tuiSubtitle&gt;-2.7%&lt;/span&gt;
 &lt;/h2&gt;
 &lt;div tuiBadge class=&quot;money&quot; &gt; $3,605.2 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div tuiCardMedium class=&quot;microsoft&quot; &gt;
-&lt;h2 tuiTitle&gt; Microsoft &lt;span tuiSubtitle&gt;-12.44%&lt;/span&gt;
-&lt;/h2&gt;
-&lt;div tuiBadge class=&quot;money&quot; &gt; $1,095.3 &lt;/div&gt;
 &lt;/div&gt;
 ```
 **TypeScript:**
@@ -9090,9 +9085,10 @@ export default class Example {}
 **LESS:**
 ```less
 :host {
-    display: flex;
-    gap: 1.2rem;
-    min-inline-size: 40.625rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    inline-size: min-content;
 }
 
 .badge {
@@ -9107,10 +9103,9 @@ export default class Example {}
 
 .poster {
     background: rgb(88, 192, 190);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 13.9375rem;
-    block-size: 8rem;
+    grid-column: span 2;
+    inline-size: auto;
 
     [tuiSubtitle] {
         color: #fff;
@@ -9127,10 +9122,7 @@ export default class Example {}
 
 .fly {
     background: rgb(101, 174, 234);
-    padding: 0.75rem;
     color: #fff;
-    inline-size: 8rem;
-    block-size: 8rem;
 
     &amp;::after {
         background: url(&#039;/assets/images/fly.svg&#039;) bottom right no-repeat;
@@ -9141,35 +9133,19 @@ export default class Example {}
     }
 }
 
-.google,
-.microsoft {
-    padding: 0.75rem;
+.stock {
     background: var(--tui-background-base-alt);
-    block-size: 8rem;
-    inline-size: 8rem;
 
     &amp;:hover::after {
         transform: scale(1.1);
     }
-}
 
-.google {
     [tuiSubtitle] {
         color: #f00;
     }
 
     &amp;::after {
         background: url(&#039;/assets/images/google.svg&#039;) bottom right no-repeat;
-    }
-}
-
-.microsoft {
-    [tuiSubtitle] {
-        color: #00b92d;
-    }
-
-    &amp;::after {
-        background: url(&#039;/assets/images/microsoft.svg&#039;) bottom right no-repeat;
     }
 }
 ```
@@ -9239,9 +9215,9 @@ export default class Example {}
 &lt;label tuiCardMedium class=&quot;card&quot; &gt;
 &lt;img alt=&quot;google-pay&quot; src=&quot;assets/taiga-ui/icons/google-pay.svg&quot; /&gt;
 &lt;div tuiFade class=&quot;cards&quot; &gt;
-&lt;tui-thumbnail-card iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mastercard&quot; size=&quot;m&quot; &gt; 4572 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mir&quot; size=&quot;m&quot; class=&quot;mir&quot; &gt; 6733 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;visa&quot; size=&quot;m&quot; class=&quot;visa&quot; &gt; 5212 &lt;/tui-thumbnail-card&gt;
+&lt;span iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mastercard&quot; size=&quot;m&quot; tuiThumbnailCard &gt; 4572 &lt;/span&gt;
+&lt;span iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mir&quot; size=&quot;m&quot; tuiThumbnailCard class=&quot;mir&quot; &gt; 6733 &lt;/span&gt;
+&lt;span paymentSystem=&quot;visa&quot; size=&quot;m&quot; tuiThumbnailCard class=&quot;visa&quot; &gt; 5212 &lt;/span&gt;
 &lt;/div&gt;
 &lt;input tuiSurfaceLayer type=&quot;radio&quot; class=&quot;selected&quot; [value]=&quot;0&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;div tuiRipple tuiSurfaceLayer [style.background-color]=&quot;&#039;#fff6c7&#039;&quot; &gt;&lt;/div&gt;
@@ -9249,7 +9225,7 @@ export default class Example {}
 &lt;label tuiCardMedium class=&quot;card&quot; &gt;
 &lt;img alt=&quot;apple-pay&quot; src=&quot;assets/taiga-ui/icons/apple-pay.svg&quot; /&gt;
 &lt;div tuiFade class=&quot;cards&quot; &gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; class=&quot;mir&quot; &gt; 2222 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mir&quot; size=&quot;m&quot; tuiThumbnailCard class=&quot;mir&quot; &gt; 2222 &lt;/span&gt;
 &lt;/div&gt;
 &lt;input tuiSurfaceLayer type=&quot;radio&quot; [value]=&quot;1&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;div tuiRipple tuiSurfaceLayer [style.background-color]=&quot;&#039;#d5f6df&#039;&quot; &gt;&lt;/div&gt;
@@ -9287,8 +9263,8 @@ export default class Example {
 }
 
 .card {
-    block-size: 6.5rem;
-    inline-size: 6.5rem;
+    block-size: calc(6.5rem * var(--tui-font-scale));
+    inline-size: calc(6.5rem * var(--tui-font-scale));
 }
 
 .mir {
@@ -9354,9 +9330,9 @@ Generic swipeable container to scroll through content
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number` | Min index |
-| [max] | `number` | Max index |
-| [(index)] | `number` | Current index |
+| [min] | `number` | min index |
+| [max] | `number` | max index |
+| [(index)] | `number` | current index |
 | *tuiItem=&#039;let index&#039; | `TemplateRef&lt;TuiContext&lt;number&gt;&gt;` | is index of item in scroller. |
 
 ### Usage Examples
@@ -9639,8 +9615,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiCell] | `&#039;l&#039; | &#039;m&#039; | &#039;s&#039;` | Layout size |
-| [tuiCellHeight] | `&#039;normal&#039; | &#039;compact&#039; | &#039;spacious&#039;` | Height mode |
+| [tuiCell] | `&#039;l&#039; | &#039;m&#039; | &#039;s&#039;` | layout size |
+| [tuiCellHeight] | `&#039;normal&#039; | &#039;compact&#039; | &#039;spacious&#039;` | height mode |
 
 ### Usage Examples
 
@@ -9685,6 +9661,73 @@ export default class Example {
 
 [tuiCell] {
     max-inline-size: 25rem;
+}
+```
+
+#### Stretch
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Open Sheet Dialog &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;nav&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;primary&quot; tuiAvatar=&quot;@tui.home&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Home &lt;div tuiSubtitle&gt;Main page&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;accent&quot; tuiAvatar=&quot;@tui.user&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Profile &lt;div tuiSubtitle&gt;Account settings&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;positive&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Favorites &lt;div tuiSubtitle&gt;Saved items&lt;/div&gt;
+&lt;/div&gt;
+&lt;tui-badge-notification&gt;3&lt;/tui-badge-notification&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;warning&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Premium &lt;div tuiSubtitle&gt;Upgrade your plan&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;/nav&gt;
+&lt;footer&gt;
+&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Close &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiCell, TuiCellStretch, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiBadgeNotification,
+        TuiButton,
+        TuiCell,
+        TuiCellStretch,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        label: &#039;Navigation&#039;,
+        closable: true,
+    };
 }
 ```
 
@@ -9789,7 +9832,7 @@ export default class Example {
 &lt;/div&gt;
 &lt;div tuiCell&gt;
 &lt;input tuiCheckbox type=&quot;checkbox&quot; [(ngModel)]=&quot;value&quot; /&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;mastercard&quot; size=&quot;s&quot; &gt; 1234 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mastercard&quot; size=&quot;s&quot; tuiThumbnailCard &gt; 1234 &lt;/span&gt;
 &lt;div tuiTitle&gt; Primary Card &lt;div tuiSubtitle&gt;**** **** **** 1234&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10395,6 +10438,7 @@ export default class Example {
         &#039;Combinations&#039;,
         &#039;Connected&#039;,
         &#039;Disabled state&#039;,
+        &#039;Stretch&#039;,
     ];
 }
 ```
@@ -10633,7 +10677,7 @@ Chip component is used to display array data and can also be interactive dependi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | Size of the chip |
+| [size] | `TuiSizeXS | TuiSizeL` | — |
 
 ### Usage Examples
 
@@ -11548,7 +11592,7 @@ export default class Example {
 &lt;/tui-textfield&gt;
 &lt;ng-template #content let-card &gt;
 &lt;div class=&quot;card&quot;&gt;
-&lt;tui-thumbnail-card [paymentSystem]=&quot;card.paymentSystem&quot;&gt; {{ card.number.slice(-4) }} &lt;/tui-thumbnail-card&gt; {{ card.name }} &lt;/div&gt;
+&lt;span tuiThumbnailCard [paymentSystem]=&quot;card.paymentSystem&quot; &gt; {{ card.number.slice(-4) }} &lt;/span&gt; {{ card.name }} &lt;/div&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
@@ -11905,7 +11949,7 @@ export default class PageComponent extends Array {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;` | Direction of the comment mark |
+| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | &#039;&#039;` | direction of the comment mark |
 
 ### Usage Examples
 
@@ -12015,8 +12059,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [degrees] | `number` | Pointer direction in degrees |
-| [style.color] | `string` | Custom color |
+| [degrees] | `number` | pointer direction in degrees |
+| [style.color] | `string` | custom color |
 
 ### Usage Examples
 
@@ -12079,10 +12123,11 @@ export default class Example {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCompass} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiCompass, TuiDemo],
+    imports: [TuiCompass, TuiDemo, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -12117,8 +12162,8 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 
 | Property | Type | Description |
 |----------|-----|----------|
-| content | `PolymorpheusContent` | Content of the confirm |
-| [appearance] | `string` | Appearance of the confirming button |
+| content | `PolymorpheusContent` | content of the confirm |
+| [appearance] | `string` | appearance of the confirming button |
 | [no] | `string` | button |
 | [yes] | `string` | button |
 
@@ -12459,12 +12504,12 @@ export default class Example {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [appearance] | `string` | Appearance |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
-| [step] | `number` | Step |
-| [min] | `number` | Minimum value |
-| [max] | `number` | Maximum value |
-| ng-content | `string` | Text inside counter |
+| [appearance] | `string` | appearance of the counter itself |
+| [size] | `TuiSizeS | TuiSizeL` | — |
+| [step] | `number` | — |
+| [min] | `number` | minimum value |
+| [max] | `number` | maximum value |
+| ng-content | `string` | text inside counter |
 
 ### Usage Examples
 
@@ -12689,8 +12734,8 @@ DataList allows to make lists or menus
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
-| [size] | `TuiSizeS | TuiSizeL` | Size of items |
+| [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
+| [size] | `TuiSizeS | TuiSizeL` | size of items |
 
 ### Usage Examples
 
@@ -13235,18 +13280,18 @@ DataListWrapper is an abstraction over DataList to simplify usage in common case
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [items] | `readonly T[] | ReadonlyArray&lt;readonly T[]&gt; | null` | Items to select |
-| [itemContent] | `PolymorpheusContent&lt;TuiContext&lt;T&gt;&gt;` | Content of an item |
-| [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
+| [items] | `readonly T[] | ReadonlyArray&lt;readonly T[]&gt; | null` | items to select |
+| [itemContent] | `PolymorpheusContent&lt;TuiContext&lt;T&gt;&gt;` | content of an item |
+| [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
 | [disabledItemHandler] | `TuiBooleanHandler&lt;T&gt;` |  |
-| [size] | `TuiSizeL | TuiSizeXS` | Size of items |
-| [labels] | `readonly string[]` | Group label |
+| [size] | `TuiSizeL | TuiSizeXS` | size of items |
+| [labels] | `readonly string[]` | group labels |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (itemClick) | `T` | Emits on click on item from datalist |
+| (itemClick) | `T` | emits on click on item from datalist |
 
 ### Usage Examples
 
@@ -13505,13 +13550,13 @@ Customizable modal dialogs
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [appearance] | `string` | Appearance of dialog |
+| [appearance] | `string` | appearance of the dialog |
 | [closable] | `boolean` |  |
 | [dismissible] | `boolean` | if you want prevent closing, for example, with a confirmation prompt. |
 | [data] | `string` |  |
-| [label] | `string` | Heading of dialog |
+| [label] | `string` | heading of dialog |
 | [required] | `boolean` | (you can catch it with &quot;catch&quot; operator or onError handler) |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [size] | `TuiSizeS | TuiSizeL` | — |
 
 ### Usage Examples
 
@@ -14058,8 +14103,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [direction] | `TuiHorizontalDirection` | . |
-| [overlay] | `boolean` | Show overlay under the drawer. |
+| [direction] | `TuiHorizontalDirection` | drawer opening direction |
+| [overlay] | `boolean` | show overlay underneath the drawer |
 | header | `string` | tag inside the drawer. |
 | footer | `string` | tag inside the drawer. |
 
@@ -14510,7 +14555,7 @@ Component for showing arbitrary messages styled as errors, with height and fade 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [error] | `TuiValidationError | string | null` | Error value (string or TuiValidationError) |
+| [error] | `TuiValidationError | string | null` | error value |
 
 ### Usage Examples
 
@@ -14610,6 +14655,10 @@ export default class Example {
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
 &lt;tui-error formControlName=&quot;value&quot; /&gt;
+&lt;div tuiNotification&gt;
+&lt;span tuiTitle&gt; This is just a tech demo! &lt;span tuiSubtitle&gt; Avoid dynamic error messages as it will overwhelm assistive technologies like screen readers &lt;/span&gt;
+&lt;/span&gt;
+&lt;/div&gt;
 &lt;label tuiLabel&gt; Minimum number &lt;tui-textfield&gt;
 &lt;input formControlName=&quot;number&quot; placeholder=&quot;Value&quot; tuiInputNumber [step]=&quot;1&quot; /&gt;
 &lt;/tui-textfield&gt;
@@ -14625,13 +14674,27 @@ import {toSignal} from &#039;@angular/core/rxjs-interop&#039;;
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TUI_VALIDATION_ERRORS, TuiError, TuiInput} from &#039;@taiga-ui/core&#039;;
+import {
+    TUI_VALIDATION_ERRORS,
+    TuiError,
+    TuiInput,
+    TuiNotification,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TuiInputNumber} from &#039;@taiga-ui/kit&#039;;
 import {TuiForm} from &#039;@taiga-ui/layout&#039;;
 import {map, timer} from &#039;rxjs&#039;;
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInput, TuiInputNumber],
+    imports: [
+        ReactiveFormsModule,
+        TuiError,
+        TuiForm,
+        TuiInput,
+        TuiInputNumber,
+        TuiNotification,
+        TuiTitle,
+    ],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -15733,17 +15796,17 @@ Components shows separated items that can be used to filter content on the page.
 | Property | Type | Description |
 |----------|-----|----------|
 | [badgeHandler] | `TuiHandler&lt;T&gt;` | to get a number to show by default |
-| [content] | `PolymorpheusContent` | Template for custom content in filter |
+| [content] | `PolymorpheusContent` | template for custom content in filter |
 | [disabledItemHandler] | `TuiBooleanHandler` |  |
 | [identityMatcher] | `TuiIdentityMatcher` |  |
 | [items] | `T[]` | for view |
-| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [size] | `TuiSizeS | TuiSizeL` | size of items |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (toggledItem) | `T` | Toggled event of item |
+| (toggledItem) | `T` | toggled event for an item |
 
 ### Usage Examples
 
@@ -16164,7 +16227,7 @@ FloatingContainer is a special container for creating different animated sticky 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiFloatingContainer] | `string` | Background |
+| [tuiFloatingContainer] | `string` | background color |
 
 ### Usage Examples
 
@@ -17273,9 +17336,9 @@ A directive for grouping other components. For example, Input or Button .
 | Property | Type | Description |
 |----------|-----|----------|
 | [collapsed] | `boolean` | by default) |
-| [rounded] | `boolean` | The first and the last items are rounded |
-| [orientation] | `TuiOrientation` | Horizontal or vertical direction of group |
-| [size] | `TuiSizeL` | Size of rounding |
+| [rounded] | `boolean` | the first and the last items are rounded |
+| [orientation] | `TuiOrientation` | horizontal or vertical orientation of group |
+| [size] | `TuiSizeL` | size of rounding |
 
 ### Usage Examples
 
@@ -17673,9 +17736,8 @@ export default class Example {}
 ```html
 &lt;header tuiHeader=&quot;h4&quot;&gt;
 &lt;hgroup tuiTitle&gt;
-&lt;h5 class=&quot;interactive-title&quot;&gt; Title &lt;tui-icon icon=&quot;@tui.chevron-right&quot; /&gt;
-&lt;/h5&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
+&lt;a appearance=&quot;&quot; href=&quot;https://maskito.dev&quot; iconEnd=&quot;@tui.chevron-right&quot; tuiLink [textContent]=&quot;&#039;Maskito&#039;&quot; &gt;&lt;/a&gt;
+&lt;p tuiSubtitle&gt;Best masking library for the web&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;/header&gt;
 ```
@@ -17684,11 +17746,11 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
-    imports: [TuiHeader, TuiIcon, TuiTitle],
+    imports: [TuiHeader, TuiLink, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -17700,22 +17762,65 @@ export default class Example {}
 ```less
 @import &#039;@taiga-ui/styles/utils&#039;;
 
-.interactive-title {
-    .transition(color);
+[tuiLink] {
+    text-decoration: none;
 
-    cursor: pointer;
+    --tui-icon-size: 1.5rem;
 
-    &amp; &gt; tui-icon {
-        .transition(transform);
+    &amp;::after {
+        .transition(margin-inline-start);
     }
 
     &amp;:hover {
         color: var(--tui-text-action);
 
-        &amp; &gt; tui-icon {
-            transform: translate(0.25rem);
+        &amp;::after {
+            margin-inline-start: 0.5rem;
         }
     }
+}
+```
+
+#### Wrapping
+
+**Template:**
+```html
+@for (item of variants | keyvalue; track $index) { &lt;header tuiHeader=&quot;h4&quot;&gt;
+&lt;h2 tuiTitle&gt;{{ item.key }}&lt;/h2&gt;
+&lt;aside tuiAccessories&gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; {{ item.value }} &lt;/button&gt;
+&lt;/aside&gt;
+&lt;/header&gt;
+&lt;p tuiDescription&gt;Some description text&lt;/p&gt; }
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [KeyValuePipe, TuiButton, TuiHeader, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly variants = {
+        &#039;A rather long title&#039;: &#039;Long action text&#039;,
+        &#039;Long title text&#039;: &#039;OK&#039;,
+        Title: &#039;Even Longer action text&#039;,
+    };
+}
+```
+**LESS:**
+```less
+[tuiHeader] {
+    flex-wrap: wrap;
 }
 ```
 
@@ -17735,7 +17840,7 @@ import {tuiDocExampleOptionsProvider} from &#039;@taiga-ui/addon-doc&#039;;
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
-    protected readonly examples = [&#039;Sizes&#039;, &#039;Accessories&#039;, &#039;Interactive&#039;];
+    protected readonly examples = [&#039;Sizes&#039;, &#039;Accessories&#039;, &#039;Interactive&#039;, &#039;Wrapping&#039;];
 }
 ```
 
@@ -17755,9 +17860,9 @@ A component to show icons and color them with CSS. Taiga UI ships with Lucide ic
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [icon] | `string` | Icon name |
-| [background] | `string` | Icon used as a mask to produce 2-color icons |
-| [badge] | `string` | Second icon used as a smaller badge in bottom right corner |
+| [icon] | `string` | icon name |
+| [background] | `string` | icon used as a mask to produce 2-color icons |
+| [badge] | `string` | second icon used as a smaller badge in bottom right corner |
 
 ### Usage Examples
 
@@ -18199,8 +18304,8 @@ Input is a basic string textfield. All other input components are built on its b
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(ngModel)] | `string` | Value (or reactive control directives) |
-| [filler] | `string` | Filler |
+| [(ngModel)] | `string` | text value (alternatively use reactive forms) |
+| [filler] | `string` | grayed out guiding text |
 
 ### Usage Examples
 
@@ -18610,7 +18715,7 @@ InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCrea
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(ngModel)] | `string` | Card number (also works with a reactive control) |
+| [(ngModel)] | `string` | card number (also works with a reactive control) |
 
 ### API - Outputs
 
@@ -18703,7 +18808,7 @@ section {
 ```html
 &lt;tui-textfield&gt;
 &lt;label tuiLabel&gt;Card number&lt;/label&gt;
-&lt;input tuiInputCard [(ngModel)]=&quot;card&quot; /&gt; @if (card === &#039;1234123412341234&#039;) { &lt;tui-thumbnail-card iconStart=&quot;@tui.dollar-sign&quot; paymentSystem=&quot;mastercard&quot; size=&quot;s&quot; [style.background]=&quot;&#039;#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)&#039;&quot; /&gt; } &lt;/tui-textfield&gt;
+&lt;input tuiInputCard [(ngModel)]=&quot;card&quot; /&gt; @if (card === &#039;1234123412341234&#039;) { &lt;span iconStart=&quot;@tui.dollar-sign&quot; paymentSystem=&quot;mastercard&quot; size=&quot;s&quot; tuiThumbnailCard [style.background]=&quot;&#039;#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)&#039;&quot; &gt;&lt;/span&gt; } &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
@@ -18776,13 +18881,13 @@ InputCardGroup is used to input a card as a separated control
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [cardValidator] | `TuiBooleanHandler&lt;string&gt;` | Custom card validator for moving focus to the next field |
-| [codeLength] | `3 | 4` | Code length |
-| [compact] | `boolean` | Manually set compact mode (forced on mobile resolution) |
-| [icon] | `PolymorpheusContent` | Custom card icon |
+| [cardValidator] | `TuiBooleanHandler&lt;string&gt;` | custom card validator for moving focus to the next field |
+| [codeLength] | `3 | 4` | code length |
+| [compact] | `boolean` | manually set compact mode (forced on mobile resolution) |
+| [icon] | `PolymorpheusContent` | custom card icon |
 | [id] | `string` | accordingly). Auto-generated when not provided. |
-| [inputs] | `TuiCardInputs` | Toggle availability of inputs |
-| [placeholder] | `string` | Placeholder |
+| [inputs] | `TuiCardInputs` | toggle availability of inputs |
+| [placeholder] | `string` | — |
 
 ### API - Outputs
 
@@ -18863,7 +18968,7 @@ export default class Example {
 &lt;tui-icon icon=&quot;@tui.plus&quot; class=&quot;new&quot; /&gt;
 &lt;span class=&quot;label&quot;&gt;New card&lt;/span&gt;
 &lt;/button&gt; @for (item of items; track item) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;item&quot; &gt;
-&lt;tui-thumbnail-card size=&quot;s&quot; class=&quot;card&quot; &gt; {{ item.card.slice(-4) }} &lt;/tui-thumbnail-card&gt;
+&lt;span size=&quot;s&quot; tuiThumbnailCard class=&quot;card&quot; &gt; {{ item.card.slice(-4) }} &lt;/span&gt;
 &lt;span tuiTitle class=&quot;label&quot; &gt; {{ item.bank }} &lt;span tuiSubtitle&gt;{{ item.name }}&lt;/span&gt;
 &lt;/span&gt;
 &lt;span&gt;{{ item.card.slice(-5) }}&lt;/span&gt;
@@ -19225,8 +19330,8 @@ InputChip uses specifically modified Input to represent array of selectable item
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [unique] | `boolean` | Ability to enter unique or non-unique tags |
-| [separator] | `string` | String or RegExp to separate tags |
+| [unique] | `boolean` | ability to enter unique or non-unique tags |
+| [separator] | `string` | string or RegExp to separate tags |
 
 ### Usage Examples
 
@@ -19973,8 +20078,8 @@ InputColor = Textfield + type=&quot;color&quot; + Maskito + ❤️
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [align] | `TuiHorizontalDirection` | Alignment of the color picker |
-| [format] | `&#039;hex&#039; | &#039;hexa&#039;` | Color format |
+| [align] | `TuiHorizontalDirection` | alignment of the color picker |
+| [format] | `&#039;hex&#039; | &#039;hexa&#039;` | color format |
 
 ### Usage Examples
 
@@ -20111,8 +20216,8 @@ InputDate = Textfield + Calendar + ❤️
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiDay` | Min date |
-| [max] | `TuiDay` | Max date |
+| [min] | `TuiDay` | min date |
+| [max] | `TuiDay` | max date |
 
 ### Usage Examples
 
@@ -20600,8 +20705,8 @@ InputDateMulti uses specifically modified InputChip to represent array of dates.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiDay` | Min date |
-| [max] | `TuiDay` | Max date |
+| [min] | `TuiDay` | min date |
+| [max] | `TuiDay` | max date |
 
 ### Usage Examples
 
@@ -20933,12 +21038,12 @@ InputDateRange = Textfield + CalendarRange + ❤️
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiDay` | Min date |
-| [max] | `TuiDay` | Max date |
-| [minLength] | `TuiDayLike | null` | Min length of the range |
-| [maxLength] | `TuiDayLike | null` | Max length of the range |
-| [items] | `TuiDayRangePeriod[]` | Period list items |
-| [listSize] | `TuiSizeL` | Period list size |
+| [min] | `TuiDay` | min date |
+| [max] | `TuiDay` | max date |
+| [minLength] | `TuiDayLike | null` | min length of the range |
+| [maxLength] | `TuiDayLike | null` | max length of the range |
+| [items] | `TuiDayRangePeriod[]` | period list items |
+| [listSize] | `TuiSizeL` | period list size |
 
 ### Usage Examples
 
@@ -21317,9 +21422,9 @@ InputDateTime = Textfield + Calendar + ❤️
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [timeMode] | `MaskitoTimeMode` | Time format mode for SS and MS support |
-| [min] | `TuiDay | [TuiDay, TuiTime] | null` | Min date |
-| [max] | `TuiDay | [TuiDay, TuiTime] | null` | Max date |
+| [timeMode] | `MaskitoTimeMode` | time format mode for SS and MS support |
+| [min] | `TuiDay | [TuiDay, TuiTime] | null` | min date |
+| [max] | `TuiDay | [TuiDay, TuiTime] | null` | max date |
 
 ### Usage Examples
 
@@ -21870,16 +21975,16 @@ An input for uploading one or several files using native input file capabilities
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [accept] | `string` | Allowed formats |
-| [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
-| [multiple] | `boolean` | Allows to upload several files |
-| [tuiInputFiles] | `TuiSizeL` | Drop zone size |
+| [accept] | `string` | allowed formats |
+| [maxFileSize] | `number` | max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
+| [multiple] | `boolean` | allows to upload several files |
+| [tuiInputFiles] | `TuiSizeL` | drop zone size |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (reject) | `TuiFileLike[]` | Emits files that were rejected. |
+| (reject) | `TuiFileLike[]` | emits files that were rejected. |
 
 ### Usage Examples
 
@@ -22744,10 +22849,10 @@ InputMonth = Textfield + CalendarMonth + ❤️
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiMonth | null` | The lowest value in the range of permitted dates |
-| [max] | `TuiMonth | null` | The greatest value in the range of permitted dates |
+| [min] | `TuiMonth | null` | the lowest value in the range of permitted dates |
+| [max] | `TuiMonth | null` | the greatest value in the range of permitted dates |
 | [disabledItemHandler] | `TuiBooleanHandler&lt;TuiMonth&gt;` |  |
-| [(year)] | `TuiYear` | Current year |
+| [(year)] | `TuiYear` | current year |
 
 ### Usage Examples
 
@@ -23119,7 +23224,7 @@ InputNumber is a form field to provide numerical input. example of [ &#039;Numbe
 |----------|-----|----------|
 | [min] | `number | bigint | null` | value in the range of permitted values |
 | [max] | `number | bigint | null` | value in the range of permitted values |
-| [step] | `number | bigint` | Step to increase/decrease value with keyboard and buttons on the side |
+| [step] | `number | bigint` | step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
 | [quantum] | `number | bigint` |  |
@@ -23611,7 +23716,7 @@ InputPhone allows to input a phone number
 | Property | Type | Description |
 |----------|-----|----------|
 | [mask] | `string` | Text mask. You can use # , - , brackets and spaces as a template symbol |
-| [filler] | `string` | Filler |
+| [filler] | `string` | grayed out guiding text |
 
 ### Usage Examples
 
@@ -23945,8 +24050,8 @@ Allows to input phone number in international format InputPhoneInternational is 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [countries] | `ReadonlyArray&lt;TuiCountryIsoCode&gt;` | Array of ISO-codes of countries to choose |
-| [countrySearch] | `boolean` | Enable filter input for countries |
+| [countries] | `ReadonlyArray&lt;TuiCountryIsoCode&gt;` | array of ISO-codes of countries to choose |
+| [countrySearch] | `boolean` | enable filter input for countries |
 | [(countryIsoCode)] | `boolean` | ISO-code of selected country |
 
 ### Usage Examples
@@ -24329,7 +24434,7 @@ export default class PageComponent {
 **Template:**
 ```html
 &lt;tui-textfield&gt;
-&lt;input maxlength=&quot;4&quot; placeholder=&quot;••••&quot; tuiInputPin [formControl]=&quot;control&quot; /&gt;
+&lt;input placeholder=&quot;••••&quot; tuiInputPin [formControl]=&quot;control&quot; /&gt;
 &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
@@ -24445,12 +24550,12 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 | [max] | `number` | value in the range of permitted values |
 | [prefix] | `readonly [string, string] | null` | number |
 | [postfix] | `readonly [string, string] | null` | number |
-| [content] | `[PolymorpheusContent, PolymorpheusContent]` | A template for custom view of the selected value. |
+| [content] | `[PolymorpheusContent, PolymorpheusContent]` | a template for custom view of the selected value. |
 | [quantum] | `number` |  |
 | [segments] | `number` | for no ticks) |
 | [step] | `number` |  |
-| [keySteps] | `TuiKeySteps` | Anchor points of non-uniform format between value and position |
-| [style.--tui-thumb-size.px] | `number` | Size of thumb |
+| [keySteps] | `TuiKeySteps` | anchor points of non-uniform format between value and position |
+| [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
 
@@ -24869,9 +24974,9 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 | [postfix] | `string` | number |
 | [quantum] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` | for no ticks) |
-| [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
-| [style.--tui-thumb-size.px] | `number` | Size of thumb |
+| [segments] | `number[] | number` |  |
+| [keySteps] | `TuiKeySteps | null` | anchor points of non-uniform format between value and position |
+| [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
 
@@ -25179,7 +25284,7 @@ InputTime allows users to enter and edit time values using a keyboard, dropdown 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [mode] | `MaskitoTimeMode` | Time format mode |
+| [mode] | `MaskitoTimeMode` | time format mode |
 | [prefix] | `string` | time |
 | [postfix] | `string` | time |
 | [accept] | `ReadonlyArray&lt;TuiTime&gt;` | values to choose |
@@ -25697,8 +25802,8 @@ Component to input a single year
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number` | Minimum year |
-| [max] | `number` | Maximum year |
+| [min] | `number` | minimum year |
+| [max] | `number` | maximum year |
 
 ### Usage Examples
 
@@ -25871,8 +25976,8 @@ export default class PageComponent {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| horizontal | `boolean` | Horizontal layout (for mobile devices) |
-| autoscroll | `boolean` | Enable scrolling to selected chip (for interactive chips in horizontal layout) |
+| horizontal | `boolean` | horizontal layout (for mobile devices) |
+| autoscroll | `boolean` | enable scrolling to selected chip (for interactive chips in horizontal layout) |
 
 ### Usage Examples
 
@@ -26150,10 +26255,10 @@ Component to hide overflown items behind custom content. Resize the screen to se
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [itemsLimit] | `number` | Artificial limit on visible items |
-| [linesLimit] | `number` | Limit on visible lines |
-| [required] | `number` | Index of an item that must remain visible |
-| [side] | `number` | Side of the &quot;See more&quot; content (for one-line mode only) |
+| [itemsLimit] | `number` | artificial limit on visible items |
+| [linesLimit] | `number` | limit on visible lines |
+| [required] | `number` | index of an item that must remain visible |
+| [side] | `number` | side of the &quot;See more&quot; content (for one-line mode only) |
 
 ### Usage Examples
 
@@ -26711,11 +26816,11 @@ A button for a legend of ring or pie charts
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [active] | `boolean` | Active state from outside |
-| [color] | `TuiColor | string | null` | Indicator color |
-| [disabled] | `boolean` | Disabled item (i.e. hidden from the related chart) |
-| [size] | `TuiSizeS` | Size |
-| [value] | `string` | Text inside |
+| [active] | `boolean` | active state from outside |
+| [color] | `TuiColor | string | null` | indicator color |
+| [disabled] | `boolean` | disabled item (i.e. hidden from the related chart) |
+| [size] | `TuiSizeS` | — |
+| [value] | `string` | text inside |
 
 ### Usage Examples
 
@@ -27172,16 +27277,16 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [dots] | `boolean` | Show dots on chart |
-| [filled] | `boolean` | Filled with gradient |
-| [height] | `number` | Axis Y range, pixel scale is 1:1 |
-| [y] | `number` | Start of Y axis |
-| [width] | `number` | Axis X range, pixel scale is 1:1 |
-| [x] | `number` | Start of X axis |
-| [smoothingFactor] | `number` | Smoothing factor from 0 to 99 |
-| [value] | `TuiPoint[]` | Array of data |
-| [xStringify] | `TuiStringHandler&lt;number&gt; | null` | Function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler&lt;number&gt; | null` | Function to stringify a value number to a string in axis Y hint |
+| [dots] | `boolean` | show dots on chart |
+| [filled] | `boolean` | filled with gradient |
+| [height] | `number` | axis Y range, pixel scale is 1:1 |
+| [y] | `number` | start of Y axis |
+| [width] | `number` | axis X range, pixel scale is 1:1 |
+| [x] | `number` | start of X axis |
+| [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
+| [value] | `TuiPoint[]` | array of data |
+| [xStringify] | `TuiStringHandler&lt;number&gt; | null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler&lt;number&gt; | null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 
@@ -27570,10 +27675,10 @@ Component cuts overflown text with &quot;...&quot; and shows it by hover
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [content] | `PolymorpheusContent` | Content |
-| [lineHeight] | `number` | Height of single line. It used to limit component&#039;s height. |
-| [linesLimit] | `number` | Number of visible lines |
-| [style.max-width.px] | `number` | Value of max-width |
+| [content] | `PolymorpheusContent` | full content inside |
+| [lineHeight] | `number` | height of single line, used to limit component&#039;s height. |
+| [linesLimit] | `number` | number of visible lines |
+| [style.max-width.px] | `number` | value of max-width |
 
 ### API - Outputs
 
@@ -28289,14 +28394,14 @@ Line chart but for days
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [dots] | `boolean` | Show dots on chart |
+| [dots] | `boolean` | show dots on chart |
 | [hintContent] | `PolymorpheusContent` |  |
-| [height] | `number` | Axis Y range, pixel scale is 1:1 |
-| [y] | `number` | Start of Y axis |
-| [smoothingFactor] | `number` | Smoothing factor from 0 to 99 |
-| [value] | `[TuiDay, number][]` | Array of data |
-| [xStringify] | `TuiStringHandler&lt;TuiDay&gt; | null` | Function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler&lt;number&gt; | null` | Function to stringify a value number to a string in axis Y hint |
+| [height] | `number` | axis Y range, pixel scale is 1:1 |
+| [y] | `number` | start of Y axis |
+| [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
+| [value] | `[TuiDay, number][]` | array of data |
+| [xStringify] | `TuiStringHandler&lt;TuiDay&gt; | null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler&lt;number&gt; | null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 
@@ -29179,11 +29284,11 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [loading] | `boolean` | Show/hide loader |
-| [inheritColor] | `boolean` | Inherit parent color |
-| [overlay] | `boolean` | Content overlay when loader is showed |
-| [size] | `TuiSizeXS | TuiSizeXL` | Size |
-| [textContent] | `PolymorpheusContent` | Custom content under loader |
+| [loading] | `boolean` | show/hide loader |
+| [inheritColor] | `boolean` | inherit parent color |
+| [overlay] | `boolean` | content overlay when loader is showed |
+| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [textContent] | `PolymorpheusContent` | custom content under loader |
 
 ### Usage Examples
 
@@ -29724,19 +29829,19 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | Value |
+| [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | — |
 | [disabledItemHandler] | `TuiBooleanHandler&lt;TuiDay&gt;` |  |
-| [max] | `TuiDay` | Max date |
-| [min] | `TuiDay` | Min date |
-| [multi] | `boolean` | Array of single dates |
+| [max] | `TuiDay` | max date |
+| [min] | `TuiDay` | min date |
+| [multi] | `boolean` | array of single dates |
 | [single] | `boolean` |  |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (cancel) | `void` | Output when user clicks Cancel |
-| (confirm) | `TuiDayRange | TuiDay` | Output when user clicks Confirm (range or single day) |
+| (cancel) | `void` | output when user clicks Cancel |
+| (confirm) | `TuiDayRange | TuiDay` | output when user clicks Confirm (range or single day) |
 
 ### Usage Examples
 
@@ -31009,14 +31114,14 @@ A notification message that can be displayed inline or as an alert
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | Notification size |
-| [icon] | `TuiStringHandler&lt;string&gt; | string` | Icon |
-| [label] | `string` | Heading |
-| [data] | `I` | Arbitrary input data for the notification |
-| [autoClose] | `TuiNumberHandler&lt;string&gt; | number` | Auto close timeout, 0 for no auto close |
-| [closable] | `boolean` | Has close button |
-| [block] | `&#039;start&#039; | &#039;end&#039;` | Block position |
-| [inline] | `&#039;start&#039; | &#039;center&#039; | &#039;end&#039;` | Inline position |
+| [size] | `TuiSizeS | TuiSizeL` | — |
+| [icon] | `TuiStringHandler&lt;string&gt; | string` | icon name or a function to match appearance to the icon |
+| [label] | `string` | heading |
+| [data] | `I` | arbitrary input data for the notification |
+| [autoClose] | `TuiNumberHandler&lt;string&gt; | number` | auto close timeout, 0 for no auto close |
+| [closable] | `boolean` | display close button |
+| [block] | `&#039;start&#039; | &#039;end&#039;` | block position |
+| [inline] | `&#039;start&#039; | &#039;center&#039; | &#039;end&#039;` | inline position |
 
 ### Usage Examples
 
@@ -31324,7 +31429,7 @@ A modal component to indicate an ongoing blocking action
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [closable] | `boolean` | Whether the notification can be closed by the user taping outside or pressing Escape |
+| [closable] | `boolean` | whether the notification can be closed by the user tapping outside or pressing Escape |
 
 ### Usage Examples
 
@@ -31517,11 +31622,11 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS` | Layout size |
-| [index] | `number` | Current active dot |
-| [max] | `number` | Max visible dots |
-| [count] | `number` | Count of dots |
-| [valueContent] | `TemplateRef` | A template for custom view |
+| [size] | `TuiSizeS` | — |
+| [index] | `number` | current active dot |
+| [max] | `number` | max visible dots |
+| [count] | `number` | count of dots |
+| [valueContent] | `TemplateRef` | a template for custom view |
 
 ### Usage Examples
 
@@ -31724,12 +31829,12 @@ Pagination component enables the user to select a specific page from a range of 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [focusable] | `boolean` | Accepts focus with keyboard |
-| [(index)] | `number` | Active page index |
-| [length] | `number` | Total pages count |
-| [size] | `TuiSizeL` | Size |
-| [activePadding] | `number` | Amount of visible pages around active page |
-| [sidePadding] | `number` | Amount of visible pages at the edges |
+| [focusable] | `boolean` | accepts focus with keyboard |
+| [(index)] | `number` | active page index |
+| [length] | `number` | total pages count |
+| [size] | `TuiSizeL` | — |
+| [activePadding] | `number` | amount of visible pages around active page |
+| [sidePadding] | `number` | amount of visible pages at the edges |
 
 ### Usage Examples
 
@@ -32109,9 +32214,9 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(activeItemIndex)] | `number` | Active fragment |
-| [size] | `TuiSizeS | TuiSizeXL` | Size |
-| [value] | `readonly number[]` | Value |
+| [(activeItemIndex)] | `number` | selected fragment index |
+| [size] | `TuiSizeS | TuiSizeXL` | — |
+| [value] | `readonly number[]` | — |
 
 ### Usage Examples
 
@@ -32549,14 +32654,14 @@ export default class Page {
 |----------|-----|----------|
 | type | `string` | masks each digit as a filled dot |
 | [invalid] | `boolean | null` | — shake and auto-clear |
-| maxLength | `number` | Number of cells. Pending animation triggers once value reaches this length |
+| maxLength | `number` | number of cells, pending animation triggers once value reaches this length |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (confirmed) | `void` | Fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition |
-| (finished) | `void` | Fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear |
+| (confirmed) | `void` | fires after the success wave, before dots collapse. Use to reveal a loader for the next-step transition |
+| (finished) | `void` | fires at the end of the verification cycle — after success collapse or after invalid shake + auto-clear |
 
 ### Usage Examples
 
@@ -32779,7 +32884,7 @@ tui-loader {
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open dialog &lt;/button&gt;
 &lt;ng-template let-observer [tuiDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiDialog)]=&quot;open&quot; &gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mir&quot; size=&quot;m&quot; tuiThumbnailCard &gt; 2206 &lt;/span&gt;
 &lt;header tuiHeader=&quot;h5&quot; class=&quot;heading&quot; &gt;
 &lt;h2 tuiTitle&gt;Enter PIN&lt;/h2&gt;
 &lt;/header&gt;
@@ -32881,7 +32986,7 @@ export default class Example {
 &lt;/tui-app-bar&gt;
 &lt;/header&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; size=&quot;m&quot; &gt; 2206 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mir&quot; size=&quot;m&quot; tuiThumbnailCard &gt; 2206 &lt;/span&gt;
 &lt;header tuiHeader=&quot;h5&quot;&gt;
 &lt;h2 tuiTitle&gt;Create a PIN&lt;/h2&gt;
 &lt;/header&gt;
@@ -32905,9 +33010,9 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiThumbnailCard} from &#039;@taiga-ui/addon-commerce&#039;;
 import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiButton, TuiIcon, TuiLink} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiIcon, TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiPincode} from &#039;@taiga-ui/kit&#039;;
-import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+import {TuiAppBar, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 const CORRECT = &#039;1234&#039;;
 
@@ -32920,11 +33025,13 @@ async function fakeApiInvalidate(pin: string): Promise&lt;boolean&gt; {
         FormsModule,
         TuiAppBar,
         TuiButton,
+        TuiHeader,
         TuiIcon,
         TuiLink,
         TuiPincode,
         TuiSheetDialog,
         TuiThumbnailCard,
+        TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -33660,7 +33767,7 @@ tuiProgressBar – attribute component for native html tag &#039;&quot;&gt; . Us
 |----------|-----|----------|
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | Size of the progress element |
+| [size] | `TuiSizeXS | TuiSizeXXL` | — |
 | [color] | `string` |  |
 
 ### Usage Examples
@@ -34030,11 +34137,11 @@ dd {
 | Property | Type | Description |
 |----------|-----|----------|
 | [value] | `number` | is omitted. |
-| [max] | `number` |  |
-| [size] | `TuiSizeXXL | TuiSizeXXS` | Size of the circle. |
+| [max] | `number` | maximum value of the progress |
+| [size] | `TuiSizeXXL | TuiSizeXXS` | — |
 | [color] | `string` |  |
-| [arc] | `boolean` | Use arc shape with small bottom open arc sector (instead of default circle). |
-| [style.--tui-thickness.px] | `number` | Width of the circle&#039;s stroke |
+| [arc] | `boolean` | use arc shape with small bottom open arc sector (instead of default circle). |
+| [style.--tui-thickness.px] | `number` | width of the circle&#039;s stroke |
 
 ### Usage Examples
 
@@ -34883,16 +34990,21 @@ Notifications in style of native browser push
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [heading] | `string` | Heading of the push |
-| [type] | `string` | Small text near icon, typically, category of the message |
-| [lines] | `number` | A number of visible lines |
+| [heading] | `string` | heading of the push |
+| [type] | `string` | small text near icon, typically, category of the message |
+| [lines] | `number` | a number of visible lines |
 | [timestamp] | `number | string` | if the number is passed. |
+| img | `Image` | image at the top (360×170px) |
+| tui-icon | `Icon` | icon in the corner |
+| tuiLink | `Link/Button` | single button |
+| tuiButton | `Link/Button` | additional button when it requires two |
+| ng-content | `Arbitrary` | the rest of the content is that push body. |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (close) | `void` | Output for close button clicks. If you do not listen to this output, close button is hidden. |
+| (close) | `void` | output for close button clicks. If you do not listen to this output, close button is hidden. |
 
 ### Usage Examples
 
@@ -35048,11 +35160,11 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiButton, TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiPush} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiButton, TuiDemo, TuiIcon, TuiPush],
+    imports: [TuiButton, TuiDemo, TuiIcon, TuiPush, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
@@ -35317,7 +35429,7 @@ A two-thumb slider for selecting a range of values
 | [keySteps] | `TuiKeySteps | null` |  |
 | [limit] | `number` |  |
 | [margin] | `number` |  |
-| [style.--tui-thumb-size.px] | `number` | Size of thumb |
+| [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
 
@@ -35775,9 +35887,9 @@ export default class Page {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(activeItemIndex)] | `number` | Active fragment |
-| [size] | `TuiSizeXS | TuiSizeXL` | Size |
-| [value] | `readonly number[]` | Value |
+| [(activeItemIndex)] | `number` | selected fragment index |
+| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [value] | `readonly number[]` | — |
 
 ### Usage Examples
 
@@ -37146,7 +37258,7 @@ export default class Example {
 &lt;/tui-textfield&gt;
 &lt;ng-template #content let-card &gt;
 &lt;div class=&quot;card&quot;&gt;
-&lt;tui-thumbnail-card [paymentSystem]=&quot;card.paymentSystem&quot;&gt; {{ card.number.slice(-4) }} &lt;/tui-thumbnail-card&gt; {{ card.name }} &lt;/div&gt;
+&lt;span tuiThumbnailCard [paymentSystem]=&quot;card.paymentSystem&quot; &gt; {{ card.number.slice(-4) }} &lt;/span&gt; {{ card.name }} &lt;/div&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
@@ -37659,12 +37771,12 @@ A mobile draggable sheet dialog
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [appearance] | `string` | Custom data-appearance attribute value |
-| [closable] | `boolean` | Whether or not a sheet can be closed by user. |
-| [bar] | `boolean` | Show bar |
-| [data] | `I` | Optional data to be passed to the sheet. |
-| [label] | `string` | Sheet label. |
-| [stops] | `string[]` | An array of stop points in any units for the sheet. |
+| [appearance] | `string` | custom data-appearance attribute value |
+| [closable] | `boolean` | whether or not a sheet can be closed by user. |
+| [bar] | `boolean` | show top bar |
+| [data] | `I` | optional data to be passed to the sheet. |
+| [label] | `string` | sheet heading. |
+| [stops] | `string[]` | an array of stop points in any units for the sheet. |
 | [initial] | `number` | means to stop on top of the sheet&#039;s content. |
 | [offset] | `number` | ) |
 | [required] | `boolean` | (you can catch it with &quot;catch&quot; operator or onError handler) |
@@ -38313,7 +38425,7 @@ A tight shrink wrapping implementation in modern browsers using progressive enha
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiShrinkWrap] | `string` | Max size of the container, 100% by default |
+| [tuiShrinkWrap] | `string` | max size of the container, 100% by default |
 
 ### Usage Examples
 
@@ -38499,8 +38611,8 @@ Taiga UI styling of native html tag &#039;&quot;&gt; to choose a value from a li
 | [max] | `number` |  |
 | [min] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` | for no ticks) |
-| [style.--tui-thumb-size.px] | `number` | Size of thumb |
+| [segments] | `number[] | number` |  |
+| [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
 
@@ -38908,7 +39020,7 @@ A component for displaying dynamic content animated between states. Use negative
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiSlides] | `number` | Transition direction |
+| [tuiSlides] | `number` | transition direction |
 
 ### Usage Examples
 
@@ -39383,8 +39495,8 @@ export default class Page {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [orientation] | `TuiOrientation` | Steps direction |
-| [(activeItemIndex)] | `number` | Active step index |
+| [orientation] | `TuiOrientation` | — |
+| [(activeItemIndex)] | `number` | — |
 
 ### Usage Examples
 
@@ -39946,8 +40058,8 @@ export default class Example {}
 &lt;/hgroup&gt;
 &lt;/header&gt;
 &lt;footer class=&quot;footer&quot;&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;mastercard&quot; [style.background]=&quot;&#039;#337&#039;&quot; &gt; 1234 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;visa&quot; [style.background]=&quot;&#039;#e33&#039;&quot; &gt; 5678 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mastercard&quot; tuiThumbnailCard [style.background]=&quot;&#039;#337&#039;&quot; &gt; 1234 &lt;/span&gt;
+&lt;span paymentSystem=&quot;visa&quot; tuiThumbnailCard [style.background]=&quot;&#039;#e33&#039;&quot; &gt; 5678 &lt;/span&gt;
 &lt;button appearance=&quot;secondary&quot; iconStart=&quot;@tui.plus&quot; size=&quot;s&quot; tuiIconButton type=&quot;button&quot; class=&quot;add&quot; &gt; Add card &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/div&gt;
@@ -41110,10 +41222,10 @@ This module allows you to create various tables, both static and editable.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [columns] | `readonly string[]` | An array of keys to set up columns order |
-| [size] | `TuiSizeS | TuiSizeL` | Cells size |
-| [(sorter)] | `TuiComparator&lt;T&gt;` | Sort function (basic JavaScript array sort API) |
-| [(direction)] | `-1 | 1` | Direction for sorting |
+| [columns] | `readonly string[]` | an array of keys to set up columns order |
+| [size] | `TuiSizeS | TuiSizeL` | cells size |
+| [(sorter)] | `TuiComparator&lt;T&gt;` | sort function (basic JavaScript array sort API) |
+| [(direction)] | `-1 | 1` | direction for sorting |
 
 ### Usage Examples
 
@@ -41186,7 +41298,8 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; dev &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }} &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tui-table-expand #expand [expanded]=&quot;true&quot; &gt; @for (item of basicData; track item) { &lt;tr tuiTr&gt;
+&lt;/tbody&gt;
+&lt;tbody #expand tuiTableExpand [expanded]=&quot;true&quot; &gt; @for (item of basicData; track item) { &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt;
 &lt;div&gt;
@@ -41196,8 +41309,7 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber }} &lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
+&lt;/tr&gt; } &lt;/tbody&gt;
 &lt;tbody tuiTbody&gt;
 &lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;manualToggle()&quot; &gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
@@ -41208,14 +41320,14 @@ export default class Example {
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; design &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }} &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tui-table-expand [expanded]=&quot;manualOpen&quot;&gt; @for (item of manualOpenData; track item) { &lt;tr tuiTr&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTableExpand [expanded]=&quot;manualOpen&quot; &gt; @for (item of manualOpenData; track item) { &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt; {{ item.firstName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
 &lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber }} &lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
+&lt;/tr&gt; } &lt;/tbody&gt;
 &lt;tbody tuiTbody&gt;
 &lt;tr tuiTr&gt;
 &lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
@@ -41241,7 +41353,7 @@ export default class Example {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiTable, TuiTableExpand} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiTable} from &#039;@taiga-ui/addon-table&#039;;
 import {TuiMapperPipe} from &#039;@taiga-ui/cdk&#039;;
 import {TuiButton, TuiExpand, TuiFormatNumberPipe, TuiHint} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron, TuiChip} from &#039;@taiga-ui/kit&#039;;
@@ -41263,7 +41375,6 @@ interface Item {
         TuiHint,
         TuiMapperPipe,
         TuiTable,
-        TuiTableExpand,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -42628,21 +42739,22 @@ export default class Example {
 &lt;th tuiTh&gt;Name&lt;/th&gt;
 &lt;th tuiTh&gt;Date of Birth&lt;/th&gt;
 &lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody tuiTbody&gt; @for (item of data; track $index; let i = $index) { &lt;tr&gt;
+&lt;/thead&gt; @for (item of data; track $index; let i = $index) { &lt;tbody tuiTbody&gt;
+&lt;tr&gt;
 &lt;td tuiTd&gt;
 &lt;button appearance=&quot;flat-grayscale&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [attr.title]=&quot;item.children.length ? null : &#039;No children&#039;&quot; [disabled]=&quot;!item.children.length&quot; [style.border-radius.%]=&quot;100&quot; [tuiChevron]=&quot;state[i] ?? false&quot; (click)=&quot;state[i] = !state[i]&quot; &gt; Toggle &lt;/button&gt;
 &lt;/td&gt;
 &lt;td tuiTd&gt;{{ i + 1 }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ item.name }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ item.dob }}&lt;/td&gt;
-&lt;/tr&gt; @if (item.children.length) { &lt;tui-table-expand [expanded]=&quot;state[i] ?? false&quot;&gt; @for (child of item.children; track $index; let j = $index) { &lt;tr&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTableExpand [expanded]=&quot;state[i] ?? false&quot; &gt; @if (item.children.length) { @for (child of item.children; track $index; let j = $index) { &lt;tr&gt;
 &lt;td tuiTd&gt;&lt;/td&gt;
 &lt;td tuiTd&gt;{{ i + 1 }}.{{ j + 1 }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ child.name }}&lt;/td&gt;
 &lt;td tuiTd&gt;{{ child.dob }}&lt;/td&gt;
-&lt;/tr&gt; } &lt;/tui-table-expand&gt; } } &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/tr&gt; } } &lt;/tbody&gt; } &lt;/table&gt;
 ```
 **TypeScript:**
 ```ts
@@ -43030,10 +43142,10 @@ Component to show pagination in table footer
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [total] | `number` | Total amount of items/lines in the table. |
+| [total] | `number` | total amount of items/lines in the table. |
 | [size] | `number` |  |
-| [page] | `number` |  |
-| [items] | `readonly number[]` | Options to select amount of lines per page. |
+| [page] | `number` | current page, indexing starts at zero. |
+| [items] | `readonly number[]` | options to select amount of lines per page. |
 
 ### API - Outputs
 
@@ -43208,8 +43320,8 @@ Component for creating tabs. If you use routerLink you must also add routerLinkA
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(activeItemIndex)] | `number` | Active index item |
-| [size] | `TuiSizeM | TuiSizeL` | Size |
+| [(activeItemIndex)] | `number` | — |
+| [size] | `TuiSizeM | TuiSizeL` | — |
 | [itemsLimit] | `number` |  |
 | [moreContent] | `PolymorpheusContent` |  |
 | [dropdownContent] | `PolymorpheusContent` |  |
@@ -43795,8 +43907,8 @@ Textarea uses Textfield to create a multi-line string input.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number` | Minimum number of rows in height |
-| [max] | `number` | Maximum number of rows before scroll appears |
+| [min] | `number` | minimum number of rows in height |
+| [max] | `number` | maximum number of rows before scroll appears |
 
 ### Usage Examples
 
@@ -44013,15 +44125,16 @@ Customizable credit card thumbnail
 ### Example
 
 ```html
-&lt;tui-thumbnail-card [iconEnd]=&quot;controlIcons.iconEnd&quot; [iconStart]=&quot;controlIcons.iconStart&quot; [paymentSystem]=&quot;paymentSystem&quot; [size]=&quot;size&quot; [style.background]=&quot;background&quot; &gt; {{ contentProjection }} &lt;/tui-thumbnail-card&gt;
+&lt;span tuiThumbnailCard [iconEnd]=&quot;controlIcons.iconEnd&quot; [iconStart]=&quot;controlIcons.iconStart&quot; [paymentSystem]=&quot;paymentSystem&quot; [size]=&quot;size&quot; [style.background]=&quot;background&quot; &gt; {{ contentProjection }} &lt;/span&gt;
 ```
 
 ### API - Inputs
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [paymentSystem] | `TuiPaymentSystem | null` | Payment system |
-| [size] | `TuiSizeXS | TuiSizeL` | Size |
+| [paymentSystem] | `TuiPaymentSystem | null` | — |
+| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [style.background] | `string` | — |
 
 ### Usage Examples
 
@@ -44029,7 +44142,7 @@ Customizable credit card thumbnail
 
 **Template:**
 ```html
-@for (size of sizes; track size) { &lt;tui-thumbnail-card iconEnd=&quot;@tui.cloud&quot; iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mastercard&quot; [size]=&quot;size&quot; &gt; 4572 &lt;/tui-thumbnail-card&gt; }
+@for (size of sizes; track size) { &lt;span iconEnd=&quot;@tui.cloud&quot; iconStart=&quot;@tui.lock&quot; paymentSystem=&quot;mastercard&quot; tuiThumbnailCard [size]=&quot;size&quot; &gt; 4572 &lt;/span&gt; }
 ```
 **TypeScript:**
 ```ts
@@ -44061,7 +44174,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;tui-thumbnail-card paymentSystem=&quot;mir&quot; class=&quot;logo&quot; &gt; 7777 &lt;/tui-thumbnail-card&gt;
+&lt;span paymentSystem=&quot;mir&quot; tuiThumbnailCard class=&quot;logo&quot; &gt; 7777 &lt;/span&gt;
 ```
 **TypeScript:**
 ```ts
@@ -44134,10 +44247,10 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;tui-thumbnail-card iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;visa&quot; size=&quot;l&quot; class=&quot;star&quot; &gt; 1234 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;mastercard&quot; size=&quot;l&quot; class=&quot;gradient&quot; &gt; 5678 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;maestro&quot; size=&quot;l&quot; class=&quot;retrowave&quot; &gt; 9000 &lt;/tui-thumbnail-card&gt;
-&lt;tui-thumbnail-card paymentSystem=&quot;unionpay&quot; size=&quot;l&quot; class=&quot;radial&quot; &gt; 7777 &lt;/tui-thumbnail-card&gt;
+&lt;span iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;visa&quot; size=&quot;l&quot; tuiThumbnailCard class=&quot;star&quot; &gt; 1234 &lt;/span&gt;
+&lt;span iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;mastercard&quot; size=&quot;l&quot; tuiThumbnailCard class=&quot;gradient&quot; &gt; 5678 &lt;/span&gt;
+&lt;span paymentSystem=&quot;maestro&quot; size=&quot;l&quot; tuiThumbnailCard class=&quot;retrowave&quot; &gt; 9000 &lt;/span&gt;
+&lt;span paymentSystem=&quot;unionpay&quot; size=&quot;l&quot; tuiThumbnailCard class=&quot;radial&quot; &gt; 7777 &lt;/span&gt;
 ```
 **TypeScript:**
 ```ts
@@ -44203,8 +44316,8 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;tui-thumbnail-card iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;visa&quot; &gt;
-&lt;img alt=&quot;external&quot; src=&quot;https://github.com/waterplea.png?size=200&quot; /&gt; 1234 &lt;/tui-thumbnail-card&gt;
+&lt;button iconEnd=&quot;@tui.user&quot; paymentSystem=&quot;visa&quot; tuiThumbnailCard type=&quot;button&quot; &gt;
+&lt;img alt=&quot;external&quot; src=&quot;https://github.com/waterplea.png?size=200&quot; /&gt; 1234 &lt;/button&gt;
 ```
 **TypeScript:**
 ```ts
@@ -44237,7 +44350,7 @@ export default class Example {}
 &lt;tui-segmented&gt; @for (state of statuses; track state) { &lt;button type=&quot;button&quot; (click)=&quot;status = state&quot; &gt; {{ state }} &lt;/button&gt; } &lt;/tui-segmented&gt;
 &lt;tui-textfield&gt;
 &lt;label tuiLabel&gt;Card number&lt;/label&gt;
-&lt;input icon=&quot;&quot; tuiInputCard [disabled]=&quot;status === &#039;disabled&#039;&quot; [invalid]=&quot;status === &#039;invalid&#039;&quot; [readOnly]=&quot;status === &#039;readOnly&#039;&quot; [(ngModel)]=&quot;card&quot; /&gt; @if (card.startsWith(&#039;1234&#039;)) { &lt;tui-thumbnail-card iconStart=&quot;@tui.dollar-sign&quot; paymentSystem=&quot;visa&quot; size=&quot;s&quot; [style.background]=&quot;background&quot; /&gt; } &lt;/tui-textfield&gt;
+&lt;input icon=&quot;&quot; tuiInputCard [disabled]=&quot;status === &#039;disabled&#039;&quot; [invalid]=&quot;status === &#039;invalid&#039;&quot; [readOnly]=&quot;status === &#039;readOnly&#039;&quot; [(ngModel)]=&quot;card&quot; /&gt; @if (card.startsWith(&#039;1234&#039;)) { &lt;span iconStart=&quot;@tui.dollar-sign&quot; paymentSystem=&quot;visa&quot; size=&quot;s&quot; tuiThumbnailCard [style.background]=&quot;background&quot; &gt;&lt;/span&gt; } &lt;/tui-textfield&gt;
 ```
 **TypeScript:**
 ```ts
@@ -44286,10 +44399,10 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from &#039;@taiga-ui/addon-commerce&#039;;
-import {type TuiSizeL, type TuiSizeXS} from &#039;@taiga-ui/core&#039;;
+import {type TuiSizeL, type TuiSizeXS, TuiTitle} from &#039;@taiga-ui/core&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
+    imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -44340,17 +44453,17 @@ Tiles is a light-weight touch-friendly tiles grid drag and drop component with n
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [debounce] | `number` | Debounce for the tile order change output. |
-| [(order)] | `Map&lt;number, number&gt;` | The order of the tiles. |
-| [width] | `number` | Width of the tile. |
-| [height] | `number` | Height of the tile. |
-| [tuiTileHandle] | `Directive` | Directive to determine the handle of the tui-tile. |
+| [debounce] | `number` | debounce for the tile order change output. |
+| [(order)] | `Map&lt;number, number&gt;` | the order of the tiles. |
+| [width] | `number` | width of the tile. |
+| [height] | `number` | height of the tile. |
+| [tuiTileHandle] | `Directive` | directive to determine the handle of the tui-tile. |
 
 ### API - Outputs
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (orderChange) | `Map&lt;number, number&gt;` | Output for tile order change. |
+| (orderChange) | `Map&lt;number, number&gt;` | output for tile order change. |
 
 ### Usage Examples
 
@@ -44687,12 +44800,12 @@ An interactive timeline component for arranging events on a linear axis with no 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [orientation] | `TuiOrientation` | Vertical/horizontal orientation |
-| [template] | `TemplateRef&lt;TuiContext&lt;number&gt;&gt;` | Template for gaps between items |
-| [max] | `number` | Upper limit of the timeline |
-| [draggable] | `boolean` | Allow moving this item around |
-| [resizable] | `boolean` | Allow resizing this item by dragging edges |
-| [(value)] | `[number, number]` | Beginning and end of the item |
+| [orientation] | `TuiOrientation` | — |
+| [template] | `TemplateRef&lt;TuiContext&lt;number&gt;&gt;` | template for gaps between items |
+| [max] | `number` | upper limit of the timeline |
+| [draggable] | `boolean` | allow moving this item around |
+| [resizable] | `boolean` | allow resizing this item by dragging edges |
+| [(value)] | `[number, number]` | beginning and end of the item |
 
 ### Usage Examples
 
@@ -45048,9 +45161,9 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [appearance] | `string` | Appearance of a toast |
-| [autoClose] | `number` | Automatic close timeout, 0 for a permanent toast |
-| [closable] | `boolean` | Show close button on desktop and close on swipe on mobile |
+| [appearance] | `string` | appearance of a toast |
+| [autoClose] | `number` | automatic close timeout, 0 for a permanent toast |
+| [closable] | `boolean` | show close button on desktop and close on swipe on mobile |
 | [data] | `I` |  |
 
 ### Usage Examples
@@ -47723,8 +47836,8 @@ A directive for visual presets of interactive components
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiAppearance] | `string` | when host component already exposes it via hostDirectives) |
-| [tuiAppearanceFocus] | `boolean | null` | Manual override of focused state |
-| [tuiAppearanceState] | `TuiInteractiveState | null` | Manual override of interactive state |
+| [tuiAppearanceFocus] | `boolean | null` | manual override of focused state |
+| [tuiAppearanceState] | `TuiInteractiveState | null` | manual override of interactive state |
 
 ### Usage Examples
 
@@ -48195,8 +48308,8 @@ tuiDropdown shows a dropdown with custom template. Use ActiveZone directive to h
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiDropdownManual] | `boolean` | Show dropdown (basic manual implementation, see related pages for other options) |
-| [tuiDropdown] | `PolymorpheusContent` | Content |
+| [tuiDropdownManual] | `boolean` | show dropdown (basic manual implementation, see related pages for other options) |
+| [tuiDropdown] | `PolymorpheusContent` | content of the dropdown |
 
 ### Usage Examples
 
@@ -48651,7 +48764,7 @@ DropdownContext allows to show custom right click context dropdown. To close dro
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiDropdown] | `PolymorpheusContent` | Content |
+| [tuiDropdown] | `PolymorpheusContent` | content of the dropdown |
 
 ### Usage Examples
 
@@ -48882,9 +48995,9 @@ DropdownHover shows dropdown with custom template upon hover
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiDropdown] | `PolymorpheusContent` | Content |
-| [tuiDropdownShowDelay] | `number` | Show delay for dropdown appearance after hover |
-| [tuiDropdownHideDelay] | `number` | Show delay for dropdown appearance after hover |
+| [tuiDropdown] | `PolymorpheusContent` | content of the dropdown |
+| [tuiDropdownShowDelay] | `number` | show delay for dropdown appearance after hover |
+| [tuiDropdownHideDelay] | `number` | hide delay for dropdown appearance after hover |
 
 ### Usage Examples
 
@@ -49139,8 +49252,8 @@ DropdownOpen is a composite dropdown directive, similar to manual dropdown, but 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiDropdown] | `PolymorpheusContent` | Content inside a dropdown |
-| [(tuiDropdownOpen)] | `boolean` | Content inside a dropdown |
+| [tuiDropdown] | `PolymorpheusContent` | content of the dropdown |
+| [(tuiDropdownOpen)] | `boolean` | open state |
 
 ### Usage Examples
 
@@ -49555,7 +49668,7 @@ DropdownSelection shows dropdown with custom template on selected text
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiDropdownSelection] | `TuiBooleanHandler&lt;Range&gt;` | and returns show/close dropdown |
-| [tuiDropdownSelectionPosition] | `&#039;selection&#039; | &#039;word&#039; | &#039;tag&#039;` | Position of dropdown near text selection |
+| [tuiDropdownSelectionPosition] | `&#039;selection&#039; | &#039;word&#039; | &#039;tag&#039;` | position of dropdown near text selection |
 
 ### Usage Examples
 
@@ -50072,10 +50185,10 @@ Directive that uses masking to fade out overflown content
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiFade] | `TuiOrientation` | Orientation of the fade |
-| [tuiFadeHeight] | `string` | Line height (required for multiline text fade) |
-| [tuiFadeOffset] | `string` | Offset from the edge for the fade to start |
-| [tuiFadeSize] | `string` | Size of the fade |
+| [tuiFade] | `TuiOrientation` | orientation of the fade |
+| [tuiFadeHeight] | `string` | line height (required for multiline text fade) |
+| [tuiFadeOffset] | `string` | offset from the edge for the fade to start |
+| [tuiFadeSize] | `string` | size of the fade |
 
 ### Usage Examples
 
@@ -50578,9 +50691,9 @@ Directive to show a hint by hover of an element
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiHint] | `PolymorpheusContent` | Content |
-| [tuiHintShowDelay] | `number` | Show delay (ms) |
-| [tuiHintHideDelay] | `number` | Hide delay (ms) |
+| [tuiHint] | `PolymorpheusContent` | content of the hint |
+| [tuiHintShowDelay] | `number` | show delay in milliseconds |
+| [tuiHintHideDelay] | `number` | hide delay in milliseconds |
 
 ### Usage Examples
 
@@ -50847,8 +50960,8 @@ Directive to show a hint in accessible way upon keyboard focus
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiHint] | `PolymorpheusContent` | Content |
-| [tuiHintDescribe] | `string` | Id of the element |
+| [tuiHint] | `PolymorpheusContent` | content of the hint |
+| [tuiHintDescribe] | `string` | ID of the related element |
 
 ### Usage Examples
 
@@ -50923,8 +51036,8 @@ Directive to show a hint manually
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiHint] | `PolymorpheusContent` | Content |
-| [tuiHintManual] | `boolean` | Show/hide hint |
+| [tuiHint] | `PolymorpheusContent` | content of the hint |
+| [tuiHintManual] | `boolean` | show/hide the hint |
 
 ### Usage Examples
 
@@ -51004,9 +51117,9 @@ A directive to show a hint above the cursor
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiHint] | `PolymorpheusContent` | Hint content |
-| [tuiHintShowDelay] | `number` | Show delay (ms) |
-| [tuiHintHideDelay] | `number` | Hide delay (ms) |
+| [tuiHint] | `PolymorpheusContent` | content of the hint |
+| [tuiHintShowDelay] | `number` | show delay in milliseconds |
+| [tuiHintHideDelay] | `number` | hide delay in milliseconds |
 
 ### Usage Examples
 
@@ -51141,10 +51254,10 @@ Directive for declarative work with HTML5 video and audio
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(currentTime)] | `number` | Current time (seconds) |
-| [(paused)] | `boolean` | Paused state |
-| [playbackRate] | `number` | Playback speed |
-| [(volume)] | `number` | Volume |
+| [(currentTime)] | `number` | current time (seconds) |
+| [(paused)] | `boolean` | paused state |
+| [playbackRate] | `number` | playback speed |
+| [(volume)] | `number` | volume of the media |
 
 ### Usage Examples
 
@@ -51634,7 +51747,7 @@ ProgressSegmented is a component to visually represent the completion of a proce
 | [segments] | `number` |  |
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | Height of the progress |
+| [size] | `TuiSizeXS | TuiSizeXXL` | height of the progress |
 | [tuiProgressColorSegments] | `string[]` |  |
 
 ### Usage Examples
@@ -52210,7 +52323,7 @@ A directive that allows you to hide sensitive data under a pixel mask. This can 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiSensitive] | `boolean` | Sensitive mode |
+| [tuiSensitive] | `boolean` | enabling sensitive mode |
 
 ### Usage Examples
 
@@ -52364,7 +52477,7 @@ tuiShimmer directive visually implements the &quot;Shimmer&quot; UI pattern — 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiShimmer] | `boolean` | Shimmer state |
+| [tuiShimmer] | `boolean` | enabling shimmer state |
 
 ### Usage Examples
 
@@ -53147,8 +53260,11 @@ Truncates text with an ellipsis in the middle. Useful when both start and end of
 
 | Property | Type | Description |
 |----------|-----|----------|
-| &lt;ng-content /&gt; | `string` | Content |
-| [tuiTruncate] | `number` | Visible lines |
+| &lt;ng-content /&gt; | `string` | content |
+| [tuiTruncate] | `number` | visible lines |
+| [style.padding.px] | `number` | — |
+| [style.font-size.px] | `number` | — |
+| [style.word-break] | `string` | — |
 
 ### Usage Examples
 
@@ -53276,9 +53392,10 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TuiTruncate} from &#039;@taiga-ui/cdk&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiTruncate],
+    imports: [TuiDemo, TuiTitle, TuiTruncate],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
@@ -54627,7 +54744,7 @@ Pipe for transforming number into money. It is usually used with InputNumber
 
 | Property | Type | Description |
 |----------|-----|----------|
-| currency | `TuiCurrencyVariants` | Currency symbol |
+| currency | `TuiCurrencyVariants` | currency symbol |
 
 ### Usage Examples
 
@@ -55157,7 +55274,7 @@ Pipe for getting source path to image with flag
 
 | Property | Type | Description |
 |----------|-----|----------|
-| Country code | `TuiCountryIsoCode` |  |
+| Country code | `TuiCountryIsoCode` | ISO code of the country |
 
 ### Usage Examples
 
@@ -55206,10 +55323,6 @@ import {getCountries} from &#039;libphonenumber-js&#039;;
 export default class Page {
     protected countryIsoCodeVariants = getCountries();
     protected countryIsoCode: TuiCountryIsoCode = &#039;FR&#039;;
-
-    protected get apiCodeDemo(): string {
-        return `&lt;img [src]=&quot;&#039;${this.countryIsoCode}&#039; | tuiFlag&quot; /&gt;`;
-    }
 }
 ```
 

@@ -1,0 +1,49 @@
+import"./chunk-HU6DUUP4.js";var i=`<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <label tuiLabel>
+        Enter an email
+        <tui-textfield>
+            <input
+                formControlName="email"
+                placeholder="Required"
+                tuiInput
+            />
+        </tui-textfield>
+    </label>
+    <tui-error formControlName="email" />
+
+    <label tuiLabel>
+        Minimum and maximum length
+        <tui-textfield>
+            <input
+                formControlName="value"
+                placeholder="4 letters word..."
+                tuiInput
+            />
+        </tui-textfield>
+    </label>
+    <tui-error formControlName="value" />
+    <div tuiNotification>
+        <span tuiTitle>
+            This is just a tech demo!
+            <span tuiSubtitle>
+                Avoid dynamic error messages as it will overwhelm assistive technologies like screen readers
+            </span>
+        </span>
+    </div>
+    <label tuiLabel>
+        Minimum number
+        <tui-textfield>
+            <input
+                formControlName="number"
+                placeholder="Value"
+                tuiInputNumber
+                [step]="1"
+            />
+        </tui-textfield>
+    </label>
+    <tui-error formControlName="number" />
+</form>
+`;export{i as default};
