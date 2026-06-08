@@ -126,7 +126,8 @@ export abstract class TuiInputDateBase<
 
         if (changed || reset) {
             super.writeValue(value);
-            this.input.value.set(this.stringify(this.value()));
+
+            untracked(() => this.input.value.set(this.stringify(this.value())));
         }
     }
 
