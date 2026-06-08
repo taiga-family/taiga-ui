@@ -316,7 +316,7 @@
 ### input-date
 
 ```text
-  TuiInputDate, TuiInputDateComponent, TuiInputDateDirective, TuiInputDateOptions
+  TuiInputDate, TuiInputDateComponent, TuiInputDateContent, TuiInputDateDirective, TuiInputDateOptions
 ```
 ### input-date-multi
 
@@ -341,7 +341,7 @@
 ### input-month
 
 ```text
-  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthDirective, TuiInputMonthOptions
+  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthContent, TuiInputMonthDirective, TuiInputMonthOptions
 ```
 ### input-month-range
 
@@ -17658,9 +17658,8 @@ export default class Example {}
 ```html
 <header tuiHeader="h4">
 <hgroup tuiTitle>
-<h5 class="interactive-title"> Title <tui-icon icon="@tui.chevron-right" />
-</h5>
-<p tuiSubtitle>Subtitle</p>
+<a appearance="" href="https://maskito.dev" iconEnd="@tui.chevron-right" tuiLink [textContent]="'Maskito'" ></a>
+<p tuiSubtitle>Best masking library for the web</p>
 </hgroup>
 </header>
 ```
@@ -17669,11 +17668,11 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiHeader, TuiIcon, TuiTitle],
+    imports: [TuiHeader, TuiLink, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -17685,22 +17684,65 @@ export default class Example {}
 ```less
 @import '@taiga-ui/styles/utils';
 
-.interactive-title {
-    .transition(color);
+[tuiLink] {
+    text-decoration: none;
 
-    cursor: pointer;
+    --tui-icon-size: 1.5rem;
 
-    & > tui-icon {
-        .transition(transform);
+    &::after {
+        .transition(margin-inline-start);
     }
 
     &:hover {
         color: var(--tui-text-action);
 
-        & > tui-icon {
-            transform: translate(0.25rem);
+        &::after {
+            margin-inline-start: 0.5rem;
         }
     }
+}
+```
+
+#### Wrapping
+
+**Template:**
+```html
+@for (item of variants | keyvalue; track $index) { <header tuiHeader="h4">
+<h2 tuiTitle>{{ item.key }}</h2>
+<aside tuiAccessories>
+<button tuiButton type="button" > {{ item.value }} </button>
+</aside>
+</header>
+<p tuiDescription>Some description text</p> }
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [KeyValuePipe, TuiButton, TuiHeader, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly variants = {
+        'A rather long title': 'Long action text',
+        'Long title text': 'OK',
+        Title: 'Even Longer action text',
+    };
+}
+```
+**LESS:**
+```less
+[tuiHeader] {
+    flex-wrap: wrap;
 }
 ```
 
@@ -17720,7 +17762,7 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Accessories', 'Interactive'];
+    protected readonly examples = ['Sizes', 'Accessories', 'Interactive', 'Wrapping'];
 }
 ```
 
