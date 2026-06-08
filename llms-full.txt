@@ -1028,7 +1028,7 @@
 ### cell
 
 ```text
-  TuiCell, TuiCellOptions
+  TuiCell, TuiCellOptions, TuiCellStretch
 ```
 ### dynamic-header
 
@@ -11827,6 +11827,70 @@ export default class Example {
 }
 ```
 
+#### Stretch
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="open = true" > Open Sheet Dialog </button>
+<ng-template let-observer [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
+<nav>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div tuiTitle> Home <div tuiSubtitle>Main page</div>
+</div>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div tuiTitle> Profile <div tuiSubtitle>Account settings</div>
+</div>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div tuiTitle> Favorites <div tuiSubtitle>Saved items</div>
+</div>
+<tui-badge-notification>3</tui-badge-notification>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div tuiTitle> Premium <div tuiSubtitle>Upgrade your plan</div>
+</div>
+</button>
+</nav>
+<footer>
+<button size="m" tuiButton type="button" (click)="observer.complete()" > Close </button>
+</footer>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiBadgeNotification} from '@taiga-ui/kit';
+import {TuiCell, TuiCellStretch} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiBadgeNotification,
+        TuiButton,
+        TuiCell,
+        TuiCellStretch,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
+        label: 'Navigation',
+        closeable: true,
+    };
+}
+```
+
 #### Label
 
 **Template:**
@@ -12579,6 +12643,7 @@ export default class Example {
         'Combinations',
         'Connected',
         'Disabled state',
+        'Stretch',
     ];
 }
 ```
