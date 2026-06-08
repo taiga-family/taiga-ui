@@ -33,6 +33,7 @@ import {TuiInputDateDirective} from './input-date.directive';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputDateContent {
     protected readonly component = inject(TuiInputDateComponent);
