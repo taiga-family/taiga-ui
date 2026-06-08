@@ -51,6 +51,7 @@ import {type TuiInputPhoneInternationalComponent} from './input-phone-internatio
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputPhoneInternationalContent {
     protected readonly component = inject(
