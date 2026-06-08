@@ -78,7 +78,7 @@
         }
     }
 
-    &:has(> :is(button, a):only-child) {
+    &:has(:is(button, a):only-child) {
         border-radius: 1rem;
     }
 
@@ -92,7 +92,7 @@
         padding-block: 0;
     }
 
-    &._stack:not(:has(> :is(button, a):only-child)) {
+    &._stack:not(:has(:is(button, a):only-child)) {
         flex-direction: column;
         padding: 0.5rem 0;
 
