@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.10.0](https://github.com/taiga-family/taiga-ui/compare/v5.9.0...v5.10.0) (2026-06-08)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCard` hydration ([#14220](https://github.com/taiga-family/taiga-ui/issues/14220))
+  ([48be7dd](https://github.com/taiga-family/taiga-ui/commit/48be7dde21240467d28051df76997933e5b4f5a0))
+- **addon-table:** `TuiTableExpand` throws error during hydration
+  ([#14235](https://github.com/taiga-family/taiga-ui/issues/14235))
+  ([2248a8a](https://github.com/taiga-family/taiga-ui/commit/2248a8ae27533a508644c2f08c1571f92880d7a5))
+- **core:** `Button` fix font scaling ([#14238](https://github.com/taiga-family/taiga-ui/issues/14238))
+  ([ce83afa](https://github.com/taiga-family/taiga-ui/commit/ce83afa7f336dd70e47957fea6b9eb2e1cc5684a))
+- **core:** `Hint` fix positioning and focusing issue on mobile
+  ([#14227](https://github.com/taiga-family/taiga-ui/issues/14227))
+  ([d198bed](https://github.com/taiga-family/taiga-ui/commit/d198bedd7e1285fe95388f9dc5901e4a1c829e26))
+- **core:** `Hint` prevent global options mutation in nested providers
+  ([#14240](https://github.com/taiga-family/taiga-ui/issues/14240))
+  ([c9c9c38](https://github.com/taiga-family/taiga-ui/commit/c9c9c38a1950e516f5d96e5896e08c7d37bb3852))
+- **core:** `Icons` fix scaling in older browsers ([#14187](https://github.com/taiga-family/taiga-ui/issues/14187))
+  ([627bd3c](https://github.com/taiga-family/taiga-ui/commit/627bd3c14760ea7ebfc62b23a6c9ea9ffa1d7f17))
+- **core:** `Label` fix font scaling ([#14205](https://github.com/taiga-family/taiga-ui/issues/14205))
+  ([fb3a3e0](https://github.com/taiga-family/taiga-ui/commit/fb3a3e01996c85151ca88ededa3a14b6ec1639b5))
+- **core:** `Notification` fix font scaling ([#14223](https://github.com/taiga-family/taiga-ui/issues/14223))
+  ([b7d253e](https://github.com/taiga-family/taiga-ui/commit/b7d253e31103407dd591f3ac37d18fb82e178f79))
+- **kit:** `(tuiPresent)` looses initial emission after hydration
+  ([#14237](https://github.com/taiga-family/taiga-ui/issues/14237))
+  ([2420e4a](https://github.com/taiga-family/taiga-ui/commit/2420e4af92573a937c9a3d042d3d83a7c87a0f57))
+- **kit:** `Block` fix alignment for custom line height
+  ([#14218](https://github.com/taiga-family/taiga-ui/issues/14218))
+  ([dbe21b8](https://github.com/taiga-family/taiga-ui/commit/dbe21b83184fd7d28497d895e2a5be346fe7ccc7))
+- **kit:** `InputDate` hydration ([#14204](https://github.com/taiga-family/taiga-ui/issues/14204))
+  ([d934f9b](https://github.com/taiga-family/taiga-ui/commit/d934f9b0255486060a4ffc3867b732dc2544fe80))
+- **kit:** `InputDateTime` hydration ([#14206](https://github.com/taiga-family/taiga-ui/issues/14206))
+  ([628b9b5](https://github.com/taiga-family/taiga-ui/commit/628b9b582d7675b81b4b9a65d3e53cf28241a601))
+- **kit:** `InputMonth` hydration ([#14209](https://github.com/taiga-family/taiga-ui/issues/14209))
+  ([1afdc7a](https://github.com/taiga-family/taiga-ui/commit/1afdc7afd0c8ab708e2f6a8fe7177912d2c99b9e))
+- **kit:** `InputNumber` with `decimalMode=always` should not trim trailing zeroes on blur
+  ([#14189](https://github.com/taiga-family/taiga-ui/issues/14189))
+  ([c314d2c](https://github.com/taiga-family/taiga-ui/commit/c314d2cc0e6b27cd221df9e946917e2f462fbc34))
+- **kit:** `InputPin` hydration ([#14193](https://github.com/taiga-family/taiga-ui/issues/14193))
+  ([b490433](https://github.com/taiga-family/taiga-ui/commit/b490433d60dabfc6c7ceebe2271ebd4637ecf514))
+- **kit:** `InputRange` throws
+  `NG01350: ngModel cannot be used to register form controls with a parent formGroup directive`
+  ([#14244](https://github.com/taiga-family/taiga-ui/issues/14244))
+  ([2442313](https://github.com/taiga-family/taiga-ui/commit/24423131282f44cbcee6a49c5bde16815065fa5c))
+- **kit:** `InputTime` hydration ([#14201](https://github.com/taiga-family/taiga-ui/issues/14201))
+  ([e552305](https://github.com/taiga-family/taiga-ui/commit/e5523054355e6590e55de61701a8e3cf242707e7))
+- **kit:** use CSS variable --tui-status-negative for tui-badge-notification background
+  ([#14198](https://github.com/taiga-family/taiga-ui/issues/14198))
+  ([1a3ee6a](https://github.com/taiga-family/taiga-ui/commit/1a3ee6a2704797664f1a88cc86dd2328c0750160))
+
+### 🚀 Features
+
+- **addon-commerce:** `ThumbnailCard` add font scaling ([#14203](https://github.com/taiga-family/taiga-ui/issues/14203))
+  ([d8c8825](https://github.com/taiga-family/taiga-ui/commit/d8c8825e7308cdc22785fe6a4d7a2e8f5f107742))
+- **addon-doc:** make API description visible on desktop
+  ([#14243](https://github.com/taiga-family/taiga-ui/issues/14243))
+  ([d3c9c5e](https://github.com/taiga-family/taiga-ui/commit/d3c9c5e82a4b37fbf9b9838e0abaefe91cfecfcd))
+- **core:** `Cell` add stretch directive ([#14230](https://github.com/taiga-family/taiga-ui/issues/14230))
+  ([e49051c](https://github.com/taiga-family/taiga-ui/commit/e49051c88b929ca72897fccf2f044df73005a921))
+- **core:** `Error` improve a11y ([#14215](https://github.com/taiga-family/taiga-ui/issues/14215))
+  ([6c00aef](https://github.com/taiga-family/taiga-ui/commit/6c00aef2178ad85882c9e8651bfcac844d5ec909))
+- **kit:** `Chip` improve font scaling ([#14245](https://github.com/taiga-family/taiga-ui/issues/14245))
+  ([90b2236](https://github.com/taiga-family/taiga-ui/commit/90b223632f6220091d094c74cf83f4868b51d3a6))
+- **layout:** `CardMedium` add font scaling ([#14202](https://github.com/taiga-family/taiga-ui/issues/14202))
+  ([c0c4a5d](https://github.com/taiga-family/taiga-ui/commit/c0c4a5d5bf9ebfeb5bd109da9b41e9ab9b8d9eac))
+- **layout:** `Header` add wrapping mode ([#14229](https://github.com/taiga-family/taiga-ui/issues/14229))
+  ([723db41](https://github.com/taiga-family/taiga-ui/commit/723db41ccff73a22177584264d324294f6471a88))
+
 ## [5.9.0](https://github.com/taiga-family/taiga-ui/compare/v5.8.0...v5.9.0) (2026-06-01)
 
 ### 🚀 Features
