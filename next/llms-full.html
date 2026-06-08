@@ -31,7 +31,7 @@
 ### cell
 
 ```text
-  TuiCell, TuiCellOptions
+  TuiCell, TuiCellOptions, TuiCellStretch
 ```
 ### checkbox
 
@@ -9664,6 +9664,73 @@ export default class Example {
 }
 ```
 
+#### Stretch
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Open Sheet Dialog &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;nav&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;primary&quot; tuiAvatar=&quot;@tui.home&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Home &lt;div tuiSubtitle&gt;Main page&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;accent&quot; tuiAvatar=&quot;@tui.user&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Profile &lt;div tuiSubtitle&gt;Account settings&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;positive&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Favorites &lt;div tuiSubtitle&gt;Saved items&lt;/div&gt;
+&lt;/div&gt;
+&lt;tui-badge-notification&gt;3&lt;/tui-badge-notification&gt;
+&lt;/button&gt;
+&lt;button tuiCell=&quot;l&quot; tuiCellStretch type=&quot;button&quot; &gt;
+&lt;div appearance=&quot;warning&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Premium &lt;div tuiSubtitle&gt;Upgrade your plan&lt;/div&gt;
+&lt;/div&gt;
+&lt;/button&gt;
+&lt;/nav&gt;
+&lt;footer&gt;
+&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Close &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiCell, TuiCellStretch, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiBadgeNotification,
+        TuiButton,
+        TuiCell,
+        TuiCellStretch,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        label: &#039;Navigation&#039;,
+        closable: true,
+    };
+}
+```
+
 #### Label
 
 **Template:**
@@ -10371,6 +10438,7 @@ export default class Example {
         &#039;Combinations&#039;,
         &#039;Connected&#039;,
         &#039;Disabled state&#039;,
+        &#039;Stretch&#039;,
     ];
 }
 ```
