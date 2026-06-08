@@ -1,5 +1,5 @@
 import {Directive, inject, type OnInit} from '@angular/core';
-import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
@@ -29,11 +29,6 @@ import {TuiInputCardContent} from './input-card-content.component';
 export class TuiInputCardComponent implements OnInit {
     private readonly control = inject(NgControl);
 
-    private readonly value = toSignal(
-        timer(0).pipe(switchMap(() => tuiControlValue<string>(this.control))),
-        {initialValue: ''},
-    );
-
     private readonly accessor = inject(DefaultValueAccessor, {
         self: true,
         optional: true,
@@ -42,7 +37,8 @@ export class TuiInputCardComponent implements OnInit {
     protected readonly mask = tuiMaskito(TUI_MASK_CARD);
 
     public readonly binChange = outputFromObservable(
-        toObservable(this.value).pipe(
+        timer(0).pipe(
+            switchMap(() => tuiControlValue<string>(this.control)),
             map((v) => (v.length < 6 ? null : v.replace(' ', '').slice(0, 6))),
             startWith(null),
             distinctUntilChanged(),
