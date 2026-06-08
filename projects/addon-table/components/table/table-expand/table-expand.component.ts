@@ -14,7 +14,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiPresent} from '@taiga-ui/kit/directives/present';
-import {BehaviorSubject, map, of, switchMap, timer} from 'rxjs';
+import {map, of, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTbodyDirective} from '../tbody/tbody.component';
@@ -49,7 +49,7 @@ export class TuiTableExpand {
         this.update(this.content()),
     );
 
-    protected readonly visible$ = new BehaviorSubject<boolean>(this.el.isConnected);
+    protected readonly visible$ = new Subject<boolean>();
 
     protected readonly sub = this.visible$
         .pipe(
