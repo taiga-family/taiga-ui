@@ -14,7 +14,13 @@ tui-textfield[multi][multi]:where(*&) {
         position: sticky;
         inset-block-start: 0;
         inset-inline-start: 0;
-        block-size: var(--t-height);
+        block-size: 10rem;
+        // Compensating zoomed icons at high font-scaling
+        min-block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
+        max-block-size: calc(
+            (var(--t-item-height, calc(var(--t-height) - 2 * var(--t-vertical))) + 2 * var(--t-vertical)) *
+                (1 - 0.2 * var(--t-zoom))
+        );
     }
 
     > .t-scrollbar {
@@ -123,6 +129,8 @@ tui-textfield[multi][multi]:where(*&) {
 
     > .t-content {
         position: sticky;
+        min-block-size: var(--t-height);
+        block-size: calc(var(--t-item-height) + 2 * var(--t-vertical));
         inset-block-start: 0;
         inset-inline-start: calc(100% - var(--t-side) - var(--t-end));
     }

@@ -1099,7 +1099,7 @@ export const pages: DocRoutePages = [
         title: 'Header',
         keywords: 'header, заголовок, item, tuiAccessories, accessories',
         route: DemoRoute.Header,
-        meta: {},
+        meta: {figmaVersion: '1.2.0'},
     },
     {
         section: 'Components',

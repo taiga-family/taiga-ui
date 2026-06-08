@@ -64,7 +64,8 @@ tui-segmented:where(*&) {
         display: flex;
         align-items: center;
         justify-content: center;
-        block-size: var(--t-height);
+        min-block-size: var(--t-height);
+        block-size: 100%;
         white-space: nowrap;
         gap: var(--t-gap);
         margin: 0;
@@ -136,6 +137,7 @@ tui-segmented:where(*&) {
         inset: anchor(start);
         position-anchor: var(--t-anchor);
         block-size: var(--t-height);
+        block-size: anchor-size(block);
         inline-size: var(--t-width);
         inline-size: anchor-size(inline);
         border-radius: inherit;

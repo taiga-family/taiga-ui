@@ -1,0 +1,15 @@
+@for (_ of '-'.repeat(pin.el.maxLength); track $index) {
+    <label
+        class="t-item"
+        [tuiAppearance]="appearance()"
+        [tuiAppearanceFocus]="pin.isFocused($index)"
+        [tuiAppearanceMode]="control.invalid && control.touched ? 'invalid' : null"
+        (pointerdown.prevent)="pin.onClick($index)"
+    >
+        <span
+            class="t-value"
+            [class.t-value_filled]="pin.value()[$index]"
+            [textContent]="pin.value()[$index] || pin.el.placeholder[$index]"
+        ></span>
+    </label>
+}
