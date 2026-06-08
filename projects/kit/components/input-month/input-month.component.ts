@@ -15,7 +15,7 @@ import {TuiInputMonthContent} from './input-month-content.component';
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })
-// TODO(v6): rename to TuiInputMonthDirective
+// TODO(v6): rename, drop Component postfix
 export class TuiInputMonthComponent {
     public readonly min = input<TuiMonth | null>(null);
     public readonly max = input<TuiMonth | null>(null);
