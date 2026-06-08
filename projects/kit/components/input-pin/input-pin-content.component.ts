@@ -1,0 +1,31 @@
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
+import {NgControl} from '@angular/forms';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+
+import {TuiInputPinComponent} from './input-pin.component';
+
+@Component({
+    selector: 'tui-input-pin-content',
+    imports: [TuiAppearance],
+    templateUrl: './input-pin-content.template.html',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './input-pin.style.less';
+        }
+    `,
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'aria-hidden': 'true', 'data-tui-version': TUI_VERSION},
+})
+export class TuiInputPinContent {
+    protected readonly pin = inject(TuiInputPinComponent);
+    protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
+    protected readonly control = inject(NgControl);
+}

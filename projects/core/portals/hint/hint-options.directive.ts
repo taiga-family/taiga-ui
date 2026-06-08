@@ -1,6 +1,5 @@
-import {type FactoryProvider, InjectionToken, Optional, SkipSelf} from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import {tuiOverrideOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 export type TuiHintDirection =
     | 'bottom-end'
@@ -51,14 +50,6 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 /**
  * Default parameters for hint directive
  */
-export const TUI_HINT_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_HINT_OPTIONS' : '', {
-    factory: () => TUI_HINT_DEFAULT_OPTIONS,
-});
-
-export const tuiHintOptionsProvider: (
-    options: Partial<TuiHintOptions>,
-) => FactoryProvider = (override: Partial<TuiHintOptions>) => ({
-    provide: TUI_HINT_OPTIONS,
-    deps: [[new Optional(), new SkipSelf(), TUI_HINT_OPTIONS]],
-    useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),
-});
+export const [TUI_HINT_OPTIONS, tuiHintOptionsProvider] = tuiCreateOptions(
+    TUI_HINT_DEFAULT_OPTIONS,
+);
