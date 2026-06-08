@@ -40,17 +40,13 @@
                 type="TuiOrientation"
                 [items]="orientationVariants"
                 [(value)]="orientation"
-            >
-                Steps direction
-            </tr>
+            ></tr>
             <tr
                 name="[(activeItemIndex)]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="activeItemIndex"
-            >
-                Active step index
-            </tr>
+            ></tr>
         </table>
 
         <h3>Step</h3>
@@ -61,18 +57,14 @@
                 type="'normal' | 'pass' | 'error'"
                 [items]="stateVariants"
                 [(value)]="state"
-            >
-                Step state
-            </tr>
+            ></tr>
             <tr
                 name="[icon]"
                 tuiDocAPIItem
                 type="string"
                 [items]="iconVariants"
                 [(value)]="icon"
-            >
-                Step custom icon
-            </tr>
+            ></tr>
         </table>
     </ng-template>
 </tui-doc-page>

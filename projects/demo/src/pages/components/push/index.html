@@ -47,15 +47,21 @@
             </tui-push>
         </tui-doc-demo>
 
-        <h3>Inputs/Outputs</h3>
         <table tuiDocAPI>
+            <tr>
+                <td colspan="3">
+                    <span tuiTitle>
+                        <strong>Inputs/Outputs</strong>
+                    </span>
+                </td>
+            </tr>
             <tr
                 name="[heading]"
                 tuiDocAPIItem
                 type="string"
                 [(value)]="heading"
             >
-                Heading of the push
+                heading of the push
             </tr>
             <tr
                 name="[type]"
@@ -63,7 +69,7 @@
                 type="string"
                 [(value)]="type"
             >
-                Small text near icon, typically, category of the message
+                small text near icon, typically, category of the message
             </tr>
             <tr
                 name="[lines]"
@@ -71,7 +77,7 @@
                 type="number"
                 [(value)]="lines"
             >
-                A number of visible lines
+                a number of visible lines
             </tr>
             <tr
                 name="[timestamp]"
@@ -80,7 +86,7 @@
                 [items]="timestampVars"
                 [(value)]="timestamp"
             >
-                Timestamp of the arrival. Formatted with
+                timestamp of the arrival, formatted with
                 <a
                     href="https://angular.dev/api/common/DatePipe"
                     tuiLink
@@ -95,46 +101,49 @@
                 tuiDocAPIItem
                 type="void"
             >
-                Output for close button clicks. If you do not listen to this output, close button is hidden.
+                output for close button clicks. If you do not listen to this output, close button is hidden.
             </tr>
-        </table>
-
-        <h3>Content slots</h3>
-        <table tuiDocAPI>
+            <tr>
+                <td colspan="3">
+                    <span tuiTitle>
+                        <strong>Content slots</strong>
+                    </span>
+                </td>
+            </tr>
             <tr
                 name="img"
                 tuiDocAPIItem
                 type="Image"
             >
-                Image at the top (360×170px)
+                image at the top (360×170px)
             </tr>
             <tr
                 name="tui-icon"
                 tuiDocAPIItem
                 type="Icon"
             >
-                Icon in the corner
+                icon in the corner
             </tr>
             <tr
                 name="tuiLink"
                 tuiDocAPIItem
                 type="Link/Button"
             >
-                Single button
+                single button
             </tr>
             <tr
                 name="tuiButton"
                 tuiDocAPIItem
                 type="Link/Button"
             >
-                Additional button when it requires two
+                additional button when it requires two
             </tr>
             <tr
                 name="ng-content"
                 tuiDocAPIItem
                 type="Arbitrary"
             >
-                The rest of the content is that push body.
+                the rest of the content is that push body.
             </tr>
         </table>
     </ng-template>

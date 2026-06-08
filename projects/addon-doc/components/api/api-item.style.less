@@ -23,7 +23,7 @@
 }
 
 .t-name {
-    display: flex !important;
+    display: inline-flex !important;
     min-block-size: 1.5rem;
     inline-size: fit-content;
     -webkit-text-fill-color: var(--tui-background-accent-2-pressed);
@@ -68,7 +68,12 @@
 }
 
 .t-description {
-    display: none;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
+
+    &:not(:empty)::before {
+        content: ' – ';
+    }
 }
 
 @media @tui-mobile {
@@ -87,14 +92,5 @@
 
     .t-input {
         margin: 0;
-    }
-
-    .t-name {
-        pointer-events: none;
-    }
-
-    .t-description {
-        display: block;
-        margin-block-start: 1rem;
     }
 }

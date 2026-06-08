@@ -72,8 +72,7 @@
                 [items]="disabledItemHandlerVariants"
                 [(value)]="disabledItemHandler"
             >
-                <div>A handler that gets a date and returns true if it is disabled.</div>
-
+                a handler that gets a date and returns true if it is disabled.
                 <strong>Must be a pure function</strong>
             </tr>
             <tr
@@ -82,7 +81,7 @@
                 type="boolean"
                 [(value)]="showAdjacent"
             >
-                Show adjacent months days
+                show adjacent months days
             </tr>
             <tr
                 name="[(hoveredItem)]"
@@ -90,7 +89,7 @@
                 type="TuiDay | null"
                 [(value)]="hoveredItem"
             >
-                Hovered date
+                hovered date
             </tr>
             <tr
                 name="[markerHandler]"
@@ -99,7 +98,7 @@
                 [items]="markerHandlerVariants"
                 [(value)]="markerHandler"
             >
-                A handler that gets date and returns null or a tuple with circled marker colors
+                a handler that gets date and returns null or a tuple with circled marker colors
             </tr>
             <tr
                 name="[max]"
@@ -108,7 +107,7 @@
                 [items]="maxVariants"
                 [(value)]="max"
             >
-                Maximal date to choose
+                maximal date to choose
             </tr>
             <tr
                 name="[maxViewedMonth]"
@@ -117,7 +116,7 @@
                 [items]="maxVariants"
                 [(value)]="max"
             >
-                Maximal month to access
+                maximal month to access
             </tr>
             <tr
                 name="[min]"
@@ -126,7 +125,7 @@
                 [items]="minVariants"
                 [(value)]="min"
             >
-                Minimum date to choose
+                minimum date to choose
             </tr>
             <tr
                 name="[minViewedMonth]"
@@ -135,7 +134,7 @@
                 [items]="minVariants"
                 [(value)]="min"
             >
-                Minimum month to access
+                minimum month to access
             </tr>
             <tr
                 name="[(month)]"
@@ -143,7 +142,7 @@
                 type="TuiMonth"
                 [(value)]="month"
             >
-                Current month
+                current month
             </tr>
             <tr
                 name="[value]"
@@ -152,7 +151,7 @@
                 [items]="valueVariants"
                 [(value)]="value"
             >
-                Selected day or range
+                selected day or range
             </tr>
             <tr
                 #documentationPropertyDayClick
@@ -160,7 +159,7 @@
                 tuiDocAPIItem
                 type="TuiDay"
             >
-                Date click
+                date click
             </tr>
         </table>
     </ng-template>

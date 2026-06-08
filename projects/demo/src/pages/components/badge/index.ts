@@ -4,27 +4,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
+import {TuiDocAppearance} from '@demo/components/appearance';
 
 @Component({
-    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
+    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList, TuiDocAppearance],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    protected readonly appearanceVariants = [
-        '',
-        'accent',
-        'primary',
-        'custom',
-        'positive',
-        'negative',
-        'warning',
-        'info',
-        'neutral',
-    ];
-
-    protected appearance = this.appearanceVariants[0]!;
-
     protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
         's',
         'm',

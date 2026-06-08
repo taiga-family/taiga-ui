@@ -35,7 +35,7 @@
                 [items]="appearanceVariants"
                 [(value)]="appearance"
             >
-                Appearance
+                appearance of the counter itself
             </tr>
             <tr
                 name="[size]"
@@ -43,17 +43,13 @@
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[step]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="step"
-            >
-                Step
-            </tr>
+            ></tr>
             <tr
                 name="[min]"
                 tuiDocAPIItem
@@ -61,7 +57,7 @@
                 [items]="minVariants"
                 [(value)]="min"
             >
-                Minimum value
+                minimum value
             </tr>
             <tr
                 name="[max]"
@@ -70,7 +66,7 @@
                 [items]="maxVariants"
                 [(value)]="max"
             >
-                Maximum value
+                maximum value
             </tr>
             <tr
                 name="ng-content"
@@ -78,7 +74,7 @@
                 type="string"
                 [(value)]="content"
             >
-                Text inside counter
+                text inside counter
             </tr>
         </table>
     </ng-template>

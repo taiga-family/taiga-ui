@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiPush} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiDemo, TuiIcon, TuiPush],
+    imports: [TuiButton, TuiDemo, TuiIcon, TuiPush, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

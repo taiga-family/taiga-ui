@@ -15,12 +15,10 @@
         [items]="stringifyVariants"
         [(value)]="stringify"
     >
-        A function that transforms datalist's items into a string.
+        a function that transforms items into a string.
         <code>String(value)</code>
         by default.
-        <p>
-            <strong>Must be a pure function!</strong>
-        </p>
+        <strong>Must be a pure function!</strong>
     </tr>
 }
 
@@ -32,12 +30,10 @@
         [items]="identityMatcherVariants"
         [(value)]="identityMatcher"
     >
-        Function that matches form control value and datalist's items, e.g. if objects are copied. Uses
+        function that matches form control value and items, e.g. if objects are copies. Uses
         <code>===</code>
         by default.
-        <p>
-            <strong>Must be a pure function!</strong>
-        </p>
+        <strong>Must be a pure function!</strong>
     </tr>
 }
 
@@ -49,10 +45,8 @@
         [items]="[falseHandler, providedDisabledItemHandler()]"
         [(value)]="disabledItemHandler"
     >
-        <div>A handler that gets a datalist's items and returns true if it is disabled.</div>
-        <p>
-            <strong>Must be a pure function!</strong>
-        </p>
+        a handler that gets an item and returns true if it is disabled.
+        <strong>Must be a pure function!</strong>
     </tr>
 }
 

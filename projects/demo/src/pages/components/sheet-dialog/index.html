@@ -75,7 +75,7 @@
                 [items]="appearanceVariants"
                 [(value)]="appearance"
             >
-                Custom data-appearance attribute value
+                custom data-appearance attribute value
             </tr>
             <tr
                 name="[closable]"
@@ -83,7 +83,7 @@
                 type="boolean"
                 [(value)]="closable"
             >
-                Whether or not a sheet can be closed by user.
+                whether or not a sheet can be closed by user.
             </tr>
             <tr
                 name="[bar]"
@@ -91,14 +91,14 @@
                 type="boolean"
                 [(value)]="bar"
             >
-                Show bar
+                show top bar
             </tr>
             <tr
                 name="[data]"
                 tuiDocAPIItem
                 type="I"
             >
-                Optional data to be passed to the sheet.
+                optional data to be passed to the sheet.
             </tr>
             <tr
                 name="[label]"
@@ -106,7 +106,7 @@
                 type="string"
                 [(value)]="label"
             >
-                Sheet label.
+                sheet heading.
             </tr>
             <tr
                 name="[stops]"
@@ -115,7 +115,7 @@
                 [items]="stopsVariants"
                 [(value)]="stops"
             >
-                An array of stop points in any units for the sheet.
+                an array of stop points in any units for the sheet.
             </tr>
             <tr
                 name="[initial]"
@@ -123,7 +123,7 @@
                 type="number"
                 [(value)]="initial"
             >
-                Initial stop index to open on. Index exceeding
+                initial stop index to open on. Index exceeding
                 <code>stops</code>
                 means to stop on top of the sheet's content.
             </tr>
@@ -133,7 +133,7 @@
                 type="number"
                 [(value)]="offset"
             >
-                Top offset px (
+                top offset in pixels (maps to
                 <code>--tui-offset</code>
                 )
             </tr>
@@ -143,7 +143,7 @@
                 type="boolean"
                 [(value)]="required"
             >
-                Dismissing dialog emits an error into
+                dismissing dialog emits an error into
                 <code>Observable</code>
                 (you can catch it with "catch" operator or onError handler)
             </tr>
