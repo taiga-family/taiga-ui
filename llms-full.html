@@ -325,7 +325,7 @@
 ### input-date
 
 ```text
-  TuiInputDate, TuiInputDateComponent, TuiInputDateDirective, TuiInputDateOptions
+  TuiInputDate, TuiInputDateComponent, TuiInputDateContent, TuiInputDateDirective, TuiInputDateOptions
 ```
 ### input-date-multi
 
@@ -350,7 +350,7 @@
 ### input-month
 
 ```text
-  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthDirective, TuiInputMonthOptions
+  TuiInputMonth, TuiInputMonthComponent, TuiInputMonthContent, TuiInputMonthDirective, TuiInputMonthOptions
 ```
 ### input-month-range
 
@@ -17667,9 +17667,8 @@ export default class Example {}
 ```html
 &lt;header tuiHeader=&quot;h4&quot;&gt;
 &lt;hgroup tuiTitle&gt;
-&lt;h5 class=&quot;interactive-title&quot;&gt; Title &lt;tui-icon icon=&quot;@tui.chevron-right&quot; /&gt;
-&lt;/h5&gt;
-&lt;p tuiSubtitle&gt;Subtitle&lt;/p&gt;
+&lt;a appearance=&quot;&quot; href=&quot;https://maskito.dev&quot; iconEnd=&quot;@tui.chevron-right&quot; tuiLink [textContent]=&quot;&#039;Maskito&#039;&quot; &gt;&lt;/a&gt;
+&lt;p tuiSubtitle&gt;Best masking library for the web&lt;/p&gt;
 &lt;/hgroup&gt;
 &lt;/header&gt;
 ```
@@ -17678,11 +17677,11 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiLink, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
-    imports: [TuiHeader, TuiIcon, TuiTitle],
+    imports: [TuiHeader, TuiLink, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -17694,22 +17693,65 @@ export default class Example {}
 ```less
 @import &#039;@taiga-ui/styles/utils&#039;;
 
-.interactive-title {
-    .transition(color);
+[tuiLink] {
+    text-decoration: none;
 
-    cursor: pointer;
+    --tui-icon-size: 1.5rem;
 
-    &amp; &gt; tui-icon {
-        .transition(transform);
+    &amp;::after {
+        .transition(margin-inline-start);
     }
 
     &amp;:hover {
         color: var(--tui-text-action);
 
-        &amp; &gt; tui-icon {
-            transform: translate(0.25rem);
+        &amp;::after {
+            margin-inline-start: 0.5rem;
         }
     }
+}
+```
+
+#### Wrapping
+
+**Template:**
+```html
+@for (item of variants | keyvalue; track $index) { &lt;header tuiHeader=&quot;h4&quot;&gt;
+&lt;h2 tuiTitle&gt;{{ item.key }}&lt;/h2&gt;
+&lt;aside tuiAccessories&gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; {{ item.value }} &lt;/button&gt;
+&lt;/aside&gt;
+&lt;/header&gt;
+&lt;p tuiDescription&gt;Some description text&lt;/p&gt; }
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [KeyValuePipe, TuiButton, TuiHeader, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly variants = {
+        &#039;A rather long title&#039;: &#039;Long action text&#039;,
+        &#039;Long title text&#039;: &#039;OK&#039;,
+        Title: &#039;Even Longer action text&#039;,
+    };
+}
+```
+**LESS:**
+```less
+[tuiHeader] {
+    flex-wrap: wrap;
 }
 ```
 
@@ -17729,7 +17771,7 @@ import {tuiDocExampleOptionsProvider} from &#039;@taiga-ui/addon-doc&#039;;
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
-    protected readonly examples = [&#039;Sizes&#039;, &#039;Accessories&#039;, &#039;Interactive&#039;];
+    protected readonly examples = [&#039;Sizes&#039;, &#039;Accessories&#039;, &#039;Interactive&#039;, &#039;Wrapping&#039;];
 }
 ```
 
