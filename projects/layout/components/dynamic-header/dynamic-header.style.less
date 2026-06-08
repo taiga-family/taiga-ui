@@ -1,43 +1,53 @@
-:host {
+[tuiDynamicHeader]:where(*&) {
     display: flex;
     block-size: 100%;
     align-items: center;
     justify-content: center;
 
-    :host-context([data-platform='android']) & {
+    [data-platform='android'] & {
         justify-content: start;
     }
-}
 
-.tui-enter {
-    animation-name: tuiFade, tuiSlide;
-
-    --tui-from: translateY(calc(-200% * var(--t-dir)));
-}
-
-.tui-leave {
-    animation-name: tuiFade, tuiSlide;
-
-    --tui-from: translateY(calc(200% * var(--t-dir)));
-}
-
-:host-context([data-platform='ios']._liquid-glass) {
     .tui-enter {
-        animation-name: tuiFade, tuiSlide, tuiBlur;
+        animation-name: tuiFade, tuiSlide;
 
-        --tui-duration: 500ms;
-        --tui-from: translateY(calc(-50% * var(--t-dir)));
+        --tui-from: translateY(calc(-200% * var(--t-dir)));
     }
 
     .tui-leave {
-        animation-name: tuiFade, tuiSlide, tuiBlur;
+        animation-name: tuiFade, tuiSlide;
 
-        --tui-duration: 500ms;
-        --tui-from: translateY(calc(50% * var(--t-dir)));
+        --tui-from: translateY(calc(200% * var(--t-dir)));
+    }
+
+    .tui-enter:not(:first-of-type),
+    .tui-leave:not(:first-of-type) {
+        position: absolute;
+    }
+
+    [data-platform='ios'].tui-liquid-glass & {
+        .tui-enter {
+            animation-name: tuiFade, tuiSlide, tuiBlur;
+
+            --tui-duration: 500ms;
+            --tui-from: translateY(calc(-50% * var(--t-dir)));
+        }
+
+        .tui-leave {
+            animation-name: tuiFade, tuiSlide, tuiBlur;
+
+            --tui-duration: 500ms;
+            --tui-from: translateY(calc(50% * var(--t-dir)));
+        }
     }
 }
 
-.tui-enter:not(:first-of-type),
-.tui-leave:not(:first-of-type) {
-    position: absolute;
+[data-platform='ios'].tui-liquid-glass {
+    [tuiHeader] {
+        transition: opacity 300ms linear;
+    }
+
+    [tuiHeader].t-header_hidden {
+        opacity: 0;
+    }
 }
