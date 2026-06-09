@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
-import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -25,7 +24,7 @@ import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {getCountryCallingCode} from 'libphonenumber-js/core';
 
-import {type TuiInputPhoneInternationalComponent} from './input-phone-international.component';
+import {TuiInputPhoneInternationalComponent} from './input-phone-international.component';
 
 @Component({
     selector: 'tui-input-phone-international-content',
@@ -54,7 +53,7 @@ import {type TuiInputPhoneInternationalComponent} from './input-phone-internatio
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputPhoneInternationalContent {
-    protected readonly host = inject(TuiControl) as TuiInputPhoneInternationalComponent;
+    protected readonly host = inject(TuiInputPhoneInternationalComponent);
     protected readonly list = viewChildren(TuiOption, {read: ElementRef});
     protected readonly ios = inject(WA_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);

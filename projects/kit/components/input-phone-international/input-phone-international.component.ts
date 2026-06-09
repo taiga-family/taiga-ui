@@ -17,7 +17,7 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
-    tuiAsTextfieldContent,
+    TUI_TEXTFIELD_CONTENT,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
@@ -42,7 +42,10 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
-        tuiAsTextfieldContent(TuiInputPhoneInternationalContent),
+        {
+            provide: TUI_TEXTFIELD_CONTENT,
+            useFactory: () => TuiInputPhoneInternationalContent,
+        },
     ],
     hostDirectives: [
         MaskitoDirective,
