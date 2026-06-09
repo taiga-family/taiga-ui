@@ -15,7 +15,7 @@ import {TuiInputPinContent} from './input-pin-content.component';
 
 @Directive({
     selector: 'input[tuiInputPin]',
-    providers: [tuiAsTextfieldContent(TuiInputPinContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputPinContent)],
     hostDirectives: [MaskitoDirective, TuiTextfieldContent],
     host: {
         'data-tui-version': TUI_VERSION,

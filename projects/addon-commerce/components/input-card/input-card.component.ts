@@ -17,7 +17,7 @@ import {TuiInputCardContent} from './input-card-content.component';
 
 @Directive({
     selector: 'input[tuiInputCard]',
-    providers: [tuiAsTextfieldContent(TuiInputCardContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputCardContent)],
     hostDirectives: [MaskitoDirective, TuiWithInput, TuiTextfieldContent],
     host: {
         autocomplete: 'cc-number',
