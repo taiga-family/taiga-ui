@@ -16,10 +16,11 @@
 <div
     #container
     tuiDynamicHeaderContainer
+    tuiPlatform="ios"
     waIntersectionRootMargin="-120px 0px 1000000% 0px"
     class="container tui-liquid-glass"
-    [class._liquid-glass_blur]="container.scrollTop > 0"
-    [tuiPlatform]="'ios'"
+    [class.tui-liquid-glass_blur]="container.scrollTop > 0"
+    (scroll)="(0)"
 >
     <ng-container *polymorpheusOutlet="content" />
 </div>

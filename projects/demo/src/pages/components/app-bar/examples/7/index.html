@@ -4,10 +4,11 @@
     tuiPlatform="ios"
     waIntersectionRootMargin="-120px 0px 1000000% 0px"
     class="container tui-liquid-glass"
+    (scroll)="(0)"
 >
     <tui-app-bar
         [attr.tuiTheme]="color() || mode() ? 'dark' : 'light'"
-        [class._liquid-glass_blur]="container.scrollTop > 0"
+        [class.tui-liquid-glass_blur]="container.scrollTop > 0"
         [style.--tui-appbar-background]="color()"
     >
         <button

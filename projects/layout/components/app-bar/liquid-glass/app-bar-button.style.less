@@ -7,12 +7,19 @@
     background: var(--t-appbar-button-bg);
     color: var(--tui-text-primary);
     transition:
-        all var(--tui-duration-fast) ease,
-        transform var(--tui-duration) var(--tui-curve-expressive-entrance);
+        transform var(--tui-duration) var(--tui-curve-expressive-entrance),
+        background-color var(--tui-duration-fast) ease,
+        color var(--tui-duration-fast) ease,
+        box-shadow var(--tui-duration-fast) ease,
+        backdrop-filter var(--tui-duration-fast) ease;
 
     --t-appbar-button-bg: rgba(255, 255, 255, 0.7);
     --t-appbar-glow: var(--tui-background-base);
     --t-appbar-bevel: linear-gradient(319deg, #fff 4%, #fff 19%, rgba(255, 255, 255, 0.12) 40%, rgba(255, 255, 255, 0.02) 45%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.12) 60%, #fff 80%, #fff 96%);
+
+    @supports not (backdrop-filter: blur(1px)) {
+        background: var(--tui-background-elevation-1);
+    }
 
     &::before {
         content: '';
@@ -54,8 +61,8 @@
     }
 }
 
-[data-platform='ios'].tui-liquid-glass [tuiTheme='dark'] [tuiAppBarButton]:where(*&),
-[tuiTheme='dark'] [data-platform='ios'].tui-liquid-glass [tuiAppBarButton]:where(*&),
+.tui-liquid-glass [tuiTheme='dark'] [tuiAppBarButton]:where(*&),
+[tuiTheme='dark'] [tuiAppBarButton]:where(*&),
 [tuiTheme='dark'].tui-liquid-glass [tuiAppBarButton]:where(*&) {
     --t-appbar-button-bg: rgba(88, 88, 88, 0.31);
     --t-appbar-glow: var(--tui-appbar-background, rgba(31, 31, 31, 0.8));

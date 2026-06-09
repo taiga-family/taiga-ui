@@ -6,7 +6,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {WA_IS_IOS, WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
@@ -22,6 +22,7 @@ import {
     TUI_BREAKPOINT,
     TUI_REDUCED_MOTION,
 } from '@taiga-ui/core/tokens';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
 import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
@@ -44,7 +45,7 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',
-        '[class.tui-liquid-glass]': 'liquidGlass',
+        '[class.tui-liquid-glass]': 'liquidGlass()',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -62,17 +63,13 @@ export class TuiRoot {
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly options = inject(TUI_OPTIONS);
+    protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
 
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
         !this.child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
         this.options.scrollbars !== 'native';
-
-    protected readonly liquidGlass =
-        inject(WA_IS_IOS) &&
-        this.options.apis !== 'stable' &&
-        (this.options.apis.all || !!this.options.apis.liquidGlass?.());
 
     protected get parent(): boolean {
         return this.doc.fullscreenElement
