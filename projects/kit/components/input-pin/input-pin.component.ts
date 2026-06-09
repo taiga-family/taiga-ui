@@ -50,8 +50,12 @@ export class TuiInputPinComponent {
     }
 
     public onSelection(): void {
-        if (this.el.selectionStart === this.el.maxLength) {
-            this.el.setSelectionRange(this.el.maxLength - 1, this.el.maxLength - 1);
+        const {selectionStart, selectionEnd, maxLength, value} = this.el;
+
+        if (selectionStart === maxLength) {
+            this.el.setSelectionRange(maxLength - 1, maxLength - 1);
+        } else if (!selectionStart && !selectionEnd && value) {
+            this.el.setSelectionRange(0, 1);
         }
 
         this.selectionStart.set(this.el.selectionStart);
