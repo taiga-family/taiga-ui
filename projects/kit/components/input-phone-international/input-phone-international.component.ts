@@ -17,7 +17,7 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
-    TUI_TEXTFIELD_CONTENT,
+    tuiAsTextfieldContent,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
@@ -42,10 +42,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
-        {
-            provide: TUI_TEXTFIELD_CONTENT,
-            useFactory: () => TuiInputPhoneInternationalContent,
-        },
+        tuiAsTextfieldContent(() => TuiInputPhoneInternationalContent),
     ],
     hostDirectives: [
         MaskitoDirective,
@@ -113,6 +110,19 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         );
     }
 
+    public onItemClick(code: TuiCountryIsoCode): void {
+        this.el.focus();
+        this.open.set(false);
+        this.countryIsoCode.set(code);
+        this.search.set('');
+        this.masked.set(
+            maskitoTransform(
+                this.value() || getCallingCode(code, this.metadata()),
+                this.mask() || MASKITO_DEFAULT_OPTIONS,
+            ),
+        );
+    }
+
     protected onPaste(event: Event): void {
         const data = tuiIsInputEvent(event) && event.data;
 
@@ -128,19 +138,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         if (code) {
             this.countryIsoCode.set(code);
         }
-    }
-
-    public onItemClick(code: TuiCountryIsoCode): void {
-        this.el.focus();
-        this.open.set(false);
-        this.countryIsoCode.set(code);
-        this.search.set('');
-        this.masked.set(
-            maskitoTransform(
-                this.value() || getCallingCode(code, this.metadata()),
-                this.mask() || MASKITO_DEFAULT_OPTIONS,
-            ),
-        );
     }
 
     private computeMask(

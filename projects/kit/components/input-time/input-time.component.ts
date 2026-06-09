@@ -40,7 +40,7 @@ export abstract class TuiNativeTimePicker {
 
 @Directive({
     selector: 'input[tuiInputTime][type="time"]',
-    providers: [tuiAsTextfieldContent(TuiInputTimeContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputTimeContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })
