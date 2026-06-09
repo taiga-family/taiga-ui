@@ -1,5 +1,5 @@
 import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
@@ -54,6 +54,23 @@ test.describe('Demo', () => {
                 await expect.soft(example).toHaveScreenshot(makeName('desktop-rtl'));
                 await example.evaluate((node) => node.setAttribute('dir', 'auto'));
 
+                const probe = example.locator('button, input, [class], p, span').first();
+
+                await waitForFontMetricsChange(probe, async () =>
+                    page.evaluate(() =>
+                        document.documentElement.style.setProperty(
+                            '--t-font-offset',
+                            '11',
+                        ),
+                    ),
+                );
+                await expect.soft(example).toHaveScreenshot(makeName('desktop-scaled'));
+                await waitForFontMetricsChange(probe, async () =>
+                    page.evaluate(() =>
+                        document.documentElement.style.removeProperty('--t-font-offset'),
+                    ),
+                );
+
                 const nestingPlatform = await example.locator('[data-platform]').all();
 
                 // eslint-disable-next-line playwright/no-conditional-in-test
@@ -84,3 +101,38 @@ test.describe('Demo', () => {
         });
     });
 });
+
+async function waitForFontMetricsChange(
+    locator: Locator,
+    action: () => Promise<string | void>,
+): Promise<void> {
+    const before = await locator.evaluate((element) => {
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+
+        return {
+            fontSize: style.fontSize,
+            lineHeight: style.lineHeight,
+            width: rect.width,
+            height: rect.height,
+        };
+    });
+
+    await action();
+
+    await expect
+        .poll(async () =>
+            locator.evaluate((element) => {
+                const style = getComputedStyle(element);
+                const rect = element.getBoundingClientRect();
+
+                return {
+                    fontSize: style.fontSize,
+                    lineHeight: style.lineHeight,
+                    width: rect.width,
+                    height: rect.height,
+                };
+            }),
+        )
+        .not.toEqual(before);
+}
