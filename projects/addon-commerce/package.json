@@ -25,7 +25,7 @@
         "@taiga-ui/core": "4.86.0",
         "@taiga-ui/i18n": "4.86.0",
         "@taiga-ui/kit": "4.86.0",
-        "@taiga-ui/polymorpheus": "^4.9.0",
+        "@taiga-ui/polymorpheus": "^4.10.0",
         "rxjs": ">=7.0.0",
         "tslib": ">=2.8.1"
     }

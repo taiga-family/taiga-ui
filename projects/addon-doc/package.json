@@ -25,7 +25,7 @@
         "@taiga-ui/core": "4.86.0",
         "@taiga-ui/kit": "4.86.0",
         "@taiga-ui/legacy": "4.86.0",
-        "@taiga-ui/polymorpheus": "^4.9.0",
+        "@taiga-ui/polymorpheus": "^4.10.0",
         "@types/markdown-it": "^14.1.2",
         "markdown-it": "^14.1.0",
         "ngx-highlightjs": "^10.0.0",
