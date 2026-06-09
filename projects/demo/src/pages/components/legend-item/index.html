@@ -38,7 +38,7 @@
                 type="boolean"
                 [(value)]="active"
             >
-                Active state from outside
+                active state from outside
             </tr>
             <tr
                 name="[color]"
@@ -47,7 +47,7 @@
                 [items]="colorVariants"
                 [(value)]="color"
             >
-                Indicator color
+                indicator color
             </tr>
             <tr
                 name="[disabled]"
@@ -55,7 +55,7 @@
                 type="boolean"
                 [(value)]="disabled"
             >
-                Disabled item (i.e. hidden from the related chart)
+                disabled item (i.e. hidden from the related chart)
             </tr>
             <tr
                 name="[size]"
@@ -63,16 +63,14 @@
                 type="TuiSizeS"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[value]"
                 tuiDocAPIItem
                 type="string"
                 [(value)]="text"
             >
-                Text inside
+                text inside
             </tr>
         </table>
     </ng-template>

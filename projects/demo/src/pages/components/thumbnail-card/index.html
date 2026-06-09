@@ -17,7 +17,8 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-thumbnail-card
+            <span
+                tuiThumbnailCard
                 [iconEnd]="controlIcons.iconEnd"
                 [iconStart]="controlIcons.iconStart"
                 [paymentSystem]="paymentSystem"
@@ -25,7 +26,7 @@
                 [style.background]="background"
             >
                 {{ contentProjection }}
-            </tui-thumbnail-card>
+            </span>
         </tui-doc-demo>
         <table tuiDocAPI>
             <tbody
@@ -38,30 +39,27 @@
                 type="TuiPaymentSystem | null"
                 [items]="paymentSystemVariants"
                 [(value)]="paymentSystem"
-            >
-                Payment system
-            </tr>
+            ></tr>
             <tr
                 name="[size]"
                 tuiDocAPIItem
                 type="TuiSizeXS | TuiSizeL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
+            ></tr>
+            <tr>
+                <td colspan="3">
+                    <span tuiTitle>
+                        <strong>CSS customization</strong>
+                    </span>
+                </td>
             </tr>
-        </table>
-
-        <h3>CSS customization</h3>
-        <table tuiDocAPI>
             <tr
                 name="[style.background]"
                 tuiDocAPIItem
                 type="string"
                 [(value)]="background"
-            >
-                Background style
-            </tr>
+            ></tr>
         </table>
 
         <h3>Content projection</h3>
@@ -72,9 +70,9 @@
                 type="string"
                 [(value)]="contentProjection"
             >
-                Content projection
+                content inside
             </tr>
         </table>
-        <tui-doc-code [code]="'<tui-thumbnail-card>{{ contentProjection }}</tui-thumbnail-card>'" />
+        <tui-doc-code [code]="'<span tuiThumbnailCard>{{ contentProjection }}</span>'" />
     </ng-template>
 </tui-doc-page>

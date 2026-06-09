@@ -6,10 +6,8 @@ import {
     type MaskitoDateTimeParams,
     maskitoParseTime,
     maskitoSelectionChangeHandler,
-    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {
     DATE_FILLER_LENGTH,
     MILLISECONDS_IN_DAY,
@@ -98,6 +96,9 @@ export class TuiInputDateTimeDirective
                 max: this.toNativeDate([this.max(), this.maxTime()]),
                 dateSeparator: this.format().separator,
                 dateTimeSeparator: this.options.dateTimeSeparator,
+                timeStep: 0,
+                dayPeriod: ['', ''],
+                locale: '', // TODO: add to public API
             }),
         ),
     );
@@ -238,16 +239,14 @@ export class TuiInputDateTimeDirective
         ];
     }
 
-    private computeMask(
-        params: Omit<Required<MaskitoDateTimeParams>, 'timeStep'>,
-    ): MaskitoOptions {
+    private computeMask(params: Required<MaskitoDateTimeParams>): MaskitoOptions {
         const options = maskitoDateTimeOptionsGenerator(params);
-        const {timeMode, dateMode, dateTimeSeparator} = params;
+        const {timeMode, dateMode, dateTimeSeparator, dayPeriod} = params;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >=
-                dateMode.length + dateTimeSeparator.length + timeMode.indexOf(' AA')
+                dateMode!.length + dateTimeSeparator.length + timeMode.indexOf(' AA')
                     ? 'text'
                     : 'numeric';
         });
@@ -255,7 +254,9 @@ export class TuiInputDateTimeDirective
         return {
             ...options,
             plugins: options.plugins.concat(
-                timeMode.includes('AA') ? inputModeSwitchPlugin : [],
+                timeMode.includes('AA') || dayPeriod.some(Boolean)
+                    ? inputModeSwitchPlugin
+                    : [],
             ),
         };
     }
@@ -270,27 +271,6 @@ export class TuiInputDateTimeDirective
     private parseTime(time: string): TuiTime {
         const mode = this.timeMode();
 
-        return TuiTime.fromAbsoluteMilliseconds(
-            maskitoParseTime(padTimeSegments(time, mode), {mode}),
-        );
+        return TuiTime.fromAbsoluteMilliseconds(maskitoParseTime(time, {mode}));
     }
-}
-
-/**
- * TODO: remove me when this fix https://github.com/taiga-family/maskito/issues/2725 is released
- * and `maskitoParseTime` will do it internally
- */
-function padTimeSegments(time: string, mode: MaskitoTimeMode): string {
-    if (time.length === mode.length) {
-        return time;
-    }
-
-    const split = (x: string): readonly string[] =>
-        x.split(/([^a-z0-9])/i).filter(Boolean);
-
-    const template = split(mode.replace(`${CHAR_NO_BREAK_SPACE}AA`, ''));
-
-    return split(time)
-        .map((segment, i) => segment.padStart(template[i]!.length, '0'))
-        .join('');
 }

@@ -7,10 +7,10 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
-import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
+import {type TuiSizeL, type TuiSizeXS, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
+    imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })

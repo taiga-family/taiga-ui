@@ -44,7 +44,7 @@
                 type="number"
                 [(value)]="total"
             >
-                Total amount of items/lines in the table.
+                total amount of items/lines in the table.
             </tr>
             <tr
                 name="[size]"
@@ -52,7 +52,7 @@
                 type="number"
                 [(value)]="size"
             >
-                Items/Lines per page.
+                items/lines per page.
                 <p>
                     Uses the first element inside
                     <code>items</code>
@@ -65,8 +65,7 @@
                 type="number"
                 [(value)]="page"
             >
-                Current page.
-                <p>Indexing starts at zero.</p>
+                current page, indexing starts at zero.
             </tr>
             <tr
                 name="[items]"
@@ -75,7 +74,7 @@
                 [items]="itemsVariants"
                 [(value)]="items"
             >
-                Options to select amount of lines per page.
+                options to select amount of lines per page.
             </tr>
             <tr
                 #paginationChange
@@ -83,7 +82,7 @@
                 tuiDocAPIItem
                 type="TuiTablePagination"
             >
-                Emits when
+                emits when
                 <code>page</code>
                 or
                 <code>size</code>

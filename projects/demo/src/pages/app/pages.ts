@@ -295,7 +295,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {figmaVersion: '1.8.0'},
+        meta: {figmaVersion: '1.8.1'},
     },
     {
         section: 'Components',
@@ -1040,7 +1040,7 @@ export const pages: DocRoutePages = [
         keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
-            {name: 'tui-cell', figmaVersion: '1.3.1'},
+            {name: 'tui-cell', figmaVersion: '1.4.0'},
             {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
             {name: 'tui-button-cell', figmaVersion: '1.0.1'},
             {name: 'list-item', scheme: 'beaver'},
@@ -1099,7 +1099,7 @@ export const pages: DocRoutePages = [
         title: 'Header',
         keywords: 'header, заголовок, item, tuiAccessories, accessories',
         route: DemoRoute.Header,
-        meta: {},
+        meta: {figmaVersion: '1.2.0'},
     },
     {
         section: 'Components',

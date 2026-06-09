@@ -30,7 +30,7 @@
                 [items]="activeItemIndexVariants"
                 [(value)]="activeItemIndex"
             >
-                Active fragment
+                selected fragment index
             </tr>
             <tr
                 name="[size]"
@@ -38,18 +38,14 @@
                 type="TuiSizeXS | TuiSizeXL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[value]"
                 tuiDocAPIItem
                 type="readonly number[]"
                 [items]="valueVariants"
                 [(value)]="value"
-            >
-                Value
-            </tr>
+            ></tr>
         </table>
     </ng-template>
 </tui-doc-page>

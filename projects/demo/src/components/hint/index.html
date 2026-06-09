@@ -14,7 +14,7 @@
         [items]="appearances"
         [(value)]="appearance"
     >
-        Appearance of the hint bubble
+        appearance of the hint bubble
     </tr>
 }
 @if (!hiddenOptions().includes('direction')) {
@@ -25,7 +25,7 @@
         [items]="directions"
         [(value)]="direction"
     >
-        Preferred direction of the bubble or an array to define preferred priority
+        preferred direction of the bubble or an array to define preferred priority
     </tr>
 }
 <tr
@@ -33,12 +33,12 @@
     tuiDocAPIItem
     type="TuiHintDirection"
 >
-    Event notifying of direction change due to limited space
+    event notifying of direction change due to limited space
 </tr>
 <tr
     name="(tuiHintVisible)"
     tuiDocAPIItem
     type="boolean"
 >
-    Event notifying of bubble being shown or hidden
+    event notifying of bubble being shown or hidden
 </tr>

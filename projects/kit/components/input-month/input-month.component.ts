@@ -1,57 +1,22 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    effect,
-    inject,
-    input,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taiga-ui/cdk/date-time';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {
+    tuiAsTextfieldContent,
     TuiTextfieldContent,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
-import {TuiInputMonthDirective} from './input-month.directive';
+import {TuiInputMonthContent} from './input-month-content.component';
 
-@Component({
+@Directive({
     selector: 'input[tuiInputMonth][type="month"]',
-    imports: [TuiTextfieldContent],
-    templateUrl: './input-month.template.html',
-    styles: `
-        [data-tui-version='${TUI_VERSION}'] {
-            @import './input-month.style.less';
-        }
-    `,
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithNativePicker],
-    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
+    providers: [tuiAsTextfieldContent(TuiInputMonthContent)],
+    hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
+    host: {'data-tui-version': TUI_VERSION},
 })
+// TODO(v6): rename to TuiInputMonthNative
 export class TuiInputMonthComponent {
-    protected readonly host = inject(TuiInputMonthDirective);
-
-    protected readonly calendarSync = effect(() => {
-        const calendar = this.host.calendar();
-
-        if (calendar) {
-            tuiSetSignal(calendar.min, this.min() ?? TUI_FIRST_DAY);
-            tuiSetSignal(calendar.max, this.max() ?? TUI_LAST_DAY);
-        }
-    });
-
-    protected readonly min = input<TuiMonth | null>(null);
-    protected readonly max = input<TuiMonth | null>(null);
-
-    protected onInput(value: string): void {
-        if (!value) {
-            return this.host.onChange(null);
-        }
-
-        const [year = 0, month = 0] = value.split('-').map(Number);
-
-        this.host.onChange(new TuiMonth(year, month - 1));
-    }
+    public readonly min = input<TuiMonth | null>(null);
+    public readonly max = input<TuiMonth | null>(null);
 }

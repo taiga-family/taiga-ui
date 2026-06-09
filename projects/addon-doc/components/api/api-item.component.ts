@@ -1,4 +1,4 @@
-import {Location, NgTemplateOutlet} from '@angular/common';
+import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,6 @@ import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInput} from '@taiga-ui/core/components/input';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
-import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -32,10 +31,8 @@ const SERIALIZED_SUFFIX = '$';
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
-        NgTemplateOutlet,
         TuiChevron,
         TuiDataListWrapper,
-        TuiHint,
         TuiInput,
         TuiInputNumber,
         TuiInspectPipe,

@@ -99,7 +99,7 @@
                 [items]="acceptVariants"
                 [(value)]="accept"
             >
-                Allowed formats
+                allowed formats
             </tr>
             <tr
                 name="[maxFileSize]"
@@ -108,7 +108,7 @@
                 [items]="maxFileSizeVariants"
                 [(value)]="maxFileSize"
             >
-                Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
+                max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </tr>
             <tr
                 name="[multiple]"
@@ -117,7 +117,7 @@
                 [(value)]="multiple"
                 (valueChange)="multipleChange($event ?? false)"
             >
-                Allows to upload several files
+                allows to upload several files
             </tr>
             <tr
                 name="[tuiInputFiles]"
@@ -126,7 +126,7 @@
                 [items]="sizeVariants"
                 [(value)]="size"
             >
-                Drop zone size
+                drop zone size
             </tr>
             <tr
                 #reject
@@ -134,7 +134,7 @@
                 tuiDocAPIItem
                 type="TuiFileLike[]"
             >
-                Emits files that were rejected.
+                emits files that were rejected.
             </tr>
             <tbody
                 #controlDoc
@@ -151,7 +151,7 @@
                 type="number"
                 [(value)]="maxFilesCount"
             >
-                Maximum number of displayed files
+                maximum number of displayed files
             </tr>
             <tr
                 name="[(expanded)]"
@@ -159,7 +159,7 @@
                 type="boolean"
                 [(value)]="expanded"
             >
-                Expanded/collapsed state for multiple files that are limited by the max property
+                expanded/collapsed state for multiple files that are limited by the max property
             </tr>
         </table>
 
@@ -172,21 +172,19 @@
                 [items]="showDeleteVariants"
                 [(value)]="showDelete"
             >
-                Allow to delete file after attach it
+                allow to delete file after attach it
             </tr>
             <tr
                 name="[file]"
                 tuiDocAPIItem
                 type="TuiFileLike"
-            >
-                File
-            </tr>
+            ></tr>
             <tr
                 name="[state]"
                 tuiDocAPIItem
                 type="TuiFileState"
             >
-                State of the file
+                state of the file
             </tr>
             <tr
                 name="[showSize]"
@@ -194,7 +192,7 @@
                 type="boolean"
                 [(value)]="showSize"
             >
-                Show file size
+                show file size
             </tr>
             <tr
                 name="[size]"
@@ -202,16 +200,14 @@
                 type="TuiSizeL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Component size
-            </tr>
+            ></tr>
             <tr
                 #remove
                 name="(remove)"
                 tuiDocAPIItem
                 type="void"
             >
-                Emits on click on close button. When subscribed to, close button appears.
+                emits on click on close button. When subscribed to, close button appears.
             </tr>
         </table>
     </ng-template>

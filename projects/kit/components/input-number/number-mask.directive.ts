@@ -8,6 +8,7 @@ import {
     maskitoStringifyNumber,
 } from '@maskito/kit';
 import {tuiIsSafeToRound, tuiRoundWith} from '@taiga-ui/cdk/utils/math';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -72,6 +73,7 @@ export class TuiNumberMask {
     public stringify(value: bigint | number | null | undefined): string {
         const params = this.params();
         const precision = params.maximumFractionDigits;
+        const {decimalMode} = this.numberFormat();
 
         const rounded =
             typeof value === 'number' &&
@@ -84,13 +86,15 @@ export class TuiNumberMask {
                   })
                 : value;
 
+        const zeroPadding =
+            (tuiIsNumber(rounded) &&
+                !Number.isInteger(rounded) &&
+                decimalMode === 'pad') ||
+            decimalMode === 'always';
+
         return maskitoStringifyNumber(rounded ?? null, {
             ...params,
-            minimumFractionDigits:
-                String(rounded).includes(params.decimalSeparator) &&
-                this.numberFormat().decimalMode !== 'not-zero'
-                    ? params.maximumFractionDigits
-                    : 0,
+            minimumFractionDigits: zeroPadding ? params.maximumFractionDigits : 0,
         });
     }
 

@@ -6,7 +6,8 @@ import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
 @Component({
-    selector: 'tui-thumbnail-card',
+    // TODO: Drop tag selector in v6
+    selector: 'tui-thumbnail-card,[tuiThumbnailCard]',
     imports: [TuiIcon],
     templateUrl: './thumbnail-card.template.html',
     styleUrl: './thumbnail-card.style.less',
