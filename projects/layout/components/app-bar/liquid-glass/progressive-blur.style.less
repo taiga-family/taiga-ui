@@ -1,12 +1,11 @@
 :host {
     position: absolute;
     inset: 0;
-    display: none;
     pointer-events: none;
     opacity: 0;
     transition: opacity var(--tui-duration) linear;
 
-    :host-context(._liquid-glass_blur) & {
+    :host-context(.tui-liquid-glass_blur) & {
         display: block;
         opacity: 1;
     }
@@ -15,7 +14,6 @@
         content: '';
         position: absolute;
         inset: 0;
-        z-index: -1;
         transition: background-color var(--tui-duration) linear;
         background: var(--tui-appbar-background, var(--tui-background-base));
         mask-image: linear-gradient(

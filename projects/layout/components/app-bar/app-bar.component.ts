@@ -21,6 +21,8 @@ import {map, merge} from 'rxjs';
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 
 @Component({
     selector: 'tui-app-bar',
@@ -39,6 +41,8 @@ import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
     private readonly el = tuiInjectElement();
+
+    protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
 
     protected readonly width$ = merge(
         inject(WaResizeObserverService, {self: true}),

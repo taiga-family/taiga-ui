@@ -1,8 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TUI_OPTIONS, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiProgressBar} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
@@ -12,11 +12,6 @@ import {TuiAppBar} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],
 })
-export default class Example {
-    protected readonly apis = inject(TUI_OPTIONS).apis;
-
-    constructor() {
-        this.apis !== 'stable' && this.apis.liquidGlass?.set(true);
-    }
-}
+export default class Example {}
