@@ -5,19 +5,19 @@
     tuiChevron
     type="button"
     class="t-ipi-select"
-    [attr.data-mode]="component.mode()"
-    [class.t-ipi-select_readonly]="component.readOnly()"
-    [disabled]="component.disabled()"
+    [attr.data-mode]="host.mode()"
+    [class.t-ipi-select_readonly]="host.readOnly()"
+    [disabled]="host.disabled()"
     [size]="size()"
-    [tuiAppearanceFocus]="component.open()"
-    (click.prevent)="component.interactive() && component.open.set(!component.open())"
+    [tuiAppearanceFocus]="host.open()"
+    (click.prevent)="host.interactive() && host.open.set(!host.open())"
     (pointerdown.stop)="(0)"
 >
     <img
         class="t-ipi-flag"
-        [alt]="names()[component.countryIsoCode()]"
+        [alt]="names()[host.countryIsoCode()]"
         [class.t-ipi-flag_small]="size() === 's'"
-        [src]="component.countryIsoCode() | tuiFlag"
+        [src]="host.countryIsoCode() | tuiFlag"
     />
 </button>
 <ng-template #filter>
@@ -30,18 +30,18 @@
                 autocomplete="off"
                 tuiInput
                 type="text"
-                [ngModel]="component.search()"
+                [ngModel]="host.search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
                 [tuiAutoFocus]="!ios"
                 (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
-                (ngModelChange)="component.search.set($event)"
+                (ngModelChange)="host.search.set($event)"
             />
         </tui-textfield>
     </div>
 </ng-template>
 <ng-container *tuiDropdown>
-    @if (component.countrySearch()) {
+    @if (host.countrySearch()) {
         <ng-container *ngTemplateOutlet="filter" />
     }
     <tui-data-list class="t-ipi-options">
@@ -49,7 +49,7 @@
             <button
                 tuiOption
                 type="button"
-                (click)="component.onItemClick(item.iso)"
+                (click)="host.onItemClick(item.iso)"
             >
                 <img
                     alt=""

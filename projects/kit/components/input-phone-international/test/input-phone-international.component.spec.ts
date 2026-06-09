@@ -107,7 +107,7 @@ describe('InputPhoneInternational', () => {
                 data,
             });
 
-            component.onPaste(event);
+            component['onPaste'](event);
             fixture.detectChanges();
 
             inputPO.sendText(data);

@@ -110,7 +110,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         );
     }
 
-    public onPaste(event: Event): void {
+    protected onPaste(event: Event): void {
         const data = tuiIsInputEvent(event) && event.data;
 
         if (

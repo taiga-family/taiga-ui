@@ -54,10 +54,7 @@ import {type TuiInputPhoneInternationalComponent} from './input-phone-internatio
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputPhoneInternationalContent {
-    protected readonly component = inject(
-        TuiControl,
-    ) as TuiInputPhoneInternationalComponent;
-
+    protected readonly host = inject(TuiControl) as TuiInputPhoneInternationalComponent;
     protected readonly list = viewChildren(TuiOption, {read: ElementRef});
     protected readonly ios = inject(WA_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -66,9 +63,9 @@ export class TuiInputPhoneInternationalContent {
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
 
     protected readonly filtered = computed(() => {
-        const metadata = this.component.metadata();
+        const metadata = this.host.metadata();
 
-        return this.component
+        return this.host
             .countries()
             .map((iso) => ({
                 iso,
@@ -76,7 +73,7 @@ export class TuiInputPhoneInternationalContent {
                 code: metadata ? `+${getCountryCallingCode(iso, metadata)}` : '',
             }))
             .filter(({name, code}) =>
-                TUI_DEFAULT_MATCHER(`${name}${code}`, this.component.search()),
+                TUI_DEFAULT_MATCHER(`${name}${code}`, this.host.search()),
             );
     });
 }
