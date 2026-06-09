@@ -14,8 +14,8 @@ import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
 import {type TuiSizeL} from '@taiga-ui/core/types';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
 
