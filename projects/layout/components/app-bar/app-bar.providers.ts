@@ -5,7 +5,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
     WaResizeObserverService,

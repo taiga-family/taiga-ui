@@ -22,8 +22,11 @@ import {
     TUI_BREAKPOINT,
     TUI_REDUCED_MOTION,
 } from '@taiga-ui/core/tokens';
-import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
-import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+import {
+    TUI_LIQUID_GLASS,
+    TUI_OPTIONS,
+    tuiGetDuration,
+} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     selector: 'tui-root',
@@ -62,14 +65,13 @@ export class TuiRoot {
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
-    protected readonly options = inject(TUI_OPTIONS);
     protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
 
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
         !this.child &&
         inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
-        this.options.scrollbars !== 'native';
+        inject(TUI_OPTIONS).scrollbars !== 'native';
 
     protected get parent(): boolean {
         return this.doc.fullscreenElement
