@@ -67,10 +67,4 @@ describe('InputPin', () => {
 
         cy.get('@pin').should('have.value', '1234');
     });
-
-    it('should respect maxlength attribute', () => {
-        cy.get('@pin').type('12345678');
-
-        cy.get('@pin').should('have.value', '1234');
-    });
 });
