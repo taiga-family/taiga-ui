@@ -61,5 +61,4 @@ describe('InputPin', () => {
         cy.get('@pin').should('have.prop', 'selectionStart', 1);
         cy.get('@pin').should('have.prop', 'selectionEnd', 1);
     });
-
 });
