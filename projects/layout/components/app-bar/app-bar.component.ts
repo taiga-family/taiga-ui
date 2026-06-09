@@ -14,6 +14,7 @@ import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
@@ -21,8 +22,6 @@ import {map, merge} from 'rxjs';
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
-import {TUI_LIQUID_GLASS} from '@taiga-ui/core/tokens/liquid-glass';
-import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 
 @Component({
     selector: 'tui-app-bar',
