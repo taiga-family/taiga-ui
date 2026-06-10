@@ -3,7 +3,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
     maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
+    maskitoNumber,
     type MaskitoNumberParams,
     maskitoStringifyNumber,
 } from '@maskito/kit';
@@ -61,7 +61,7 @@ export class TuiNumberMask {
     protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
 
     protected readonly maskInitialCalibration = effect(() => {
-        const options = maskitoNumberOptionsGenerator({
+        const options = maskitoNumber({
             ...this.params(),
             min: -Infinity,
             max: Infinity,
@@ -100,7 +100,7 @@ export class TuiNumberMask {
 
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {
         const {prefix = '', postfix = '', negativePattern, minusSign} = params;
-        const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
+        const {plugins, ...options} = maskitoNumber(params);
 
         return {
             ...options,

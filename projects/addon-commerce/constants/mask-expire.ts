@@ -1,6 +1,6 @@
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDate} from '@maskito/kit';
 
-export const TUI_MASK_EXPIRE = maskitoDateOptionsGenerator({
+export const TUI_MASK_EXPIRE = maskitoDate({
     mode: 'mm/yy',
     separator: '/',
 });

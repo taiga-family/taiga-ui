@@ -1,6 +1,6 @@
 import {computed, Directive, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
+import {maskitoDateRange} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_RANGE_FILLER_LENGTH,
@@ -52,7 +52,7 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoDateRangeOptionsGenerator({
+            maskitoDateRange({
                 dateSeparator: this.format().separator,
                 mode: this.format().mode,
                 min: this.min().toLocalNativeDate(),
