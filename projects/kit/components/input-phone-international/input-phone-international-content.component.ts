@@ -9,6 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
@@ -19,12 +20,16 @@ import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/tex
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {getCountryCallingCode} from 'libphonenumber-js/core';
 
-import {TuiInputPhoneInternationalComponent} from './input-phone-international.component';
+import {
+    tuiGetCallingCode,
+    TuiInputPhoneInternationalComponent,
+} from './input-phone-international.component';
 
 @Component({
     selector: 'tui-input-phone-international-content',
@@ -75,4 +80,17 @@ export class TuiInputPhoneInternationalContent {
                 TUI_DEFAULT_MATCHER(`${name}${code}`, this.host.search()),
             );
     });
+
+    protected onItemClick(code: TuiCountryIsoCode): void {
+        this.host.el.focus();
+        this.host.open.set(false);
+        this.host.countryIsoCode.set(code);
+        this.host.search.set('');
+        this.host.masked.set(
+            maskitoTransform(
+                this.host.value() || tuiGetCallingCode(code, this.host.metadata()),
+                this.host.mask() || MASKITO_DEFAULT_OPTIONS,
+            ),
+        );
+    }
 }

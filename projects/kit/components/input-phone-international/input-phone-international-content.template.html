@@ -45,11 +45,11 @@
         <ng-container *ngTemplateOutlet="filter" />
     }
     <tui-data-list class="t-ipi-options">
-        @for (item of filtered(); track $index) {
+        @for (item of filtered(); track item.iso) {
             <button
                 tuiOption
                 type="button"
-                (click)="host.onItemClick(item.iso)"
+                (click)="onItemClick(item.iso)"
             >
                 <img
                     alt=""

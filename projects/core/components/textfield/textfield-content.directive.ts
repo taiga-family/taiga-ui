@@ -2,11 +2,11 @@ import {
     computed,
     Directive,
     type DoCheck,
-    type FactoryProvider,
     inject,
     InjectionToken,
     INJECTOR,
     type OnDestroy,
+    type Provider,
     TemplateRef,
     type Type,
 } from '@angular/core';
@@ -17,7 +17,7 @@ export const TUI_TEXTFIELD_CONTENT = new InjectionToken<Type<unknown>>(
     ngDevMode ? 'TUI_TEXTFIELD_CONTENT' : '',
 );
 
-export function tuiAsTextfieldContent(content: () => Type<unknown>): FactoryProvider {
+export function tuiAsTextfieldContent(content: () => Type<unknown>): Provider {
     return {provide: TUI_TEXTFIELD_CONTENT, useFactory: content};
 }
 

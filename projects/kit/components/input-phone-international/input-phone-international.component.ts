@@ -61,14 +61,16 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 })
 // TODO(v6): rename to TuiInputPhoneInternationalDirective
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
+
+    public readonly el = tuiInjectElement<HTMLInputElement>();
 
     protected readonly ios = inject(WA_IS_IOS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly masked = tuiValue(this.el);
 
-    protected readonly mask = tuiMaskito(
+    public readonly masked = tuiValue(this.el);
+
+    public readonly mask = tuiMaskito(
         computed(() => this.computeMask(this.countryIsoCode(), this.metadata())),
     );
 
@@ -80,7 +82,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             takeUntilDestroyed(),
         )
         .subscribe((active) => {
-            const prefix = `${getCallingCode(this.countryIsoCode(), this.metadata())} `;
+            const prefix = `${tuiGetCallingCode(this.countryIsoCode(), this.metadata())} `;
 
             this.search.set('');
             this.masked.update((value) => {
@@ -107,19 +109,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         super.writeValue(unmasked);
         this.masked.set(
             maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
-        );
-    }
-
-    public onItemClick(code: TuiCountryIsoCode): void {
-        this.el.focus();
-        this.open.set(false);
-        this.countryIsoCode.set(code);
-        this.search.set('');
-        this.masked.set(
-            maskitoTransform(
-                this.value() || getCallingCode(code, this.metadata()),
-                this.mask() || MASKITO_DEFAULT_OPTIONS,
-            ),
         );
     }
 
@@ -162,7 +151,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
 
     private unmask(maskedValue: string): string {
         const value = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
-        const code = getCallingCode(this.countryIsoCode(), this.metadata());
+        const code = tuiGetCallingCode(this.countryIsoCode(), this.metadata());
 
         return value === code ? '' : value;
     }
@@ -177,6 +166,9 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     }
 }
 
-function getCallingCode(iso: TuiCountryIsoCode, metadata?: MetadataJson | null): string {
+export function tuiGetCallingCode(
+    iso: TuiCountryIsoCode,
+    metadata?: MetadataJson | null,
+): string {
     return metadata ? CHAR_PLUS + getCountryCallingCode(iso, metadata) : '';
 }
