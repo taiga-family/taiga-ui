@@ -32596,7 +32596,7 @@ button[tuiPin] {
 </button>
 <button type="button" class="link" [tuiPin]="d" (click)="d = !d" >
 <span tuiPin>4.5</span>
-<span tuiTitle> Title <span tuiSubtitle>
+<span tuiTitle> Title <span tuiFade tuiSubtitle >
 <tui-icon icon="@tui.heart" /> Subtitle with an icon </span>
 </span>
 </button>
