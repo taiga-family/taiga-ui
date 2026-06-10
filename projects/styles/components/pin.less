@@ -14,10 +14,11 @@
  * Compass
  */
 [tuiPin]:where(*&) {
-    --t-size: 2rem;
+    --t-scale: calc(1 + (var(--tui-font-scale) - 1) / 2);
+    --t-size: calc(2rem * var(--t-scale));
 
-    @bubble-width: 1.875rem;
-    @bubble-shift: translate(calc(var(--tui-inline) * -@bubble-width), -@bubble-width);
+    @bubble-width: calc(1.875rem * var(--t-scale));
+    @bubble-shift: translate(calc(var(--tui-inline) * -1 * @bubble-width), calc(-1 * @bubble-width));
     @ground-shift: translate(calc(var(--tui-inline) * -50%), -50%);
 
     .transition(~'min-inline-size, grid-template-columns, block-size, border, margin, font', @tui-duration-fast);
@@ -30,7 +31,7 @@
     grid-template-rows: 100%;
     grid-template-columns: var(--t-size) 1fr;
     min-inline-size: var(--t-size);
-    max-inline-size: 11.25rem;
+    max-inline-size: calc(11.25rem * var(--t-scale));
     block-size: var(--t-size);
     text-align: center;
     border-radius: 100rem;
@@ -39,7 +40,7 @@
     box-sizing: border-box;
     color: var(--tui-text-primary-on-accent-2);
     background: var(--tui-background-accent-2);
-    box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-1);
+    box-shadow: 0 0 0 calc(0.125rem * var(--t-scale)) var(--tui-background-elevation-1);
     border: 0 solid var(--tui-background-accent-2);
     transform: @ground-shift;
 
@@ -48,7 +49,7 @@
     });
 
     &:empty {
-        --t-size: 0.75rem;
+        --t-size: calc(0.75rem * var(--t-scale));
 
         &::before {
             display: none;
@@ -127,22 +128,23 @@
 
             content: '';
             position: absolute;
-            inset: 0;
+            inset: -1px 0;
             z-index: -1;
             inset-inline-end: -1px;
             background: var(--tui-background-elevation-1);
             border-radius: 100rem;
             mask-image: radial-gradient(
-                circle closest-corner at left center,
-                transparent calc(100% - 0.5px),
-                black calc(100%)
+                circle closest-corner at var(--tui-inline-start) center,
+                transparent calc(100% - 1px),
+                black calc(100% - 0.5px)
             );
-            mask-position: calc(var(--t-size) / 2);
+            mask-position: calc(var(--tui-inline) * var(--t-size) / 2);
             mask-repeat: no-repeat;
         }
 
         [tuiSubtitle] {
             display: flex;
+            align-items: center;
             gap: 0.125rem;
             font: var(--tui-typography-ui-2xs);
             color: var(--tui-text-secondary);
@@ -154,7 +156,7 @@
     }
 
     &:has(:checked) {
-        --t-size: 3.5rem;
+        --t-size: calc(3.5rem * var(--t-scale));
 
         font: var(--tui-typography-body-l);
         font-weight: bold;
@@ -190,14 +192,14 @@
         }
 
         &::after {
-            inset-block-start: 4.5rem;
+            inset-block-start: calc(4.5rem * var(--t-scale));
             opacity: 1;
         }
     }
 
     // TODO: Fallback until Safari 15.4
     &._open {
-        --t-size: 3.5rem;
+        --t-size: calc(3.5rem * var(--t-scale));
 
         font: var(--tui-typography-body-l);
         font-weight: bold;
@@ -233,7 +235,7 @@
         }
 
         &::after {
-            inset-block-start: 4.5rem;
+            inset-block-start: calc(4.5rem * var(--t-scale));
             opacity: 1;
         }
     }
@@ -244,10 +246,10 @@
         content: '';
         position: absolute;
         z-index: -1;
-        inset-block: 50% -0.625rem;
-        inset-inline: 50% -0.25rem;
+        inset-block: 50% calc(-0.625rem * var(--t-scale));
+        inset-inline: 50% calc(-0.25rem * var(--t-scale));
         box-sizing: border-box;
-        border-width: 2.2rem @bubble-width;
+        border-width: calc(2.2rem * var(--t-scale)) @bubble-width;
         border-style: solid;
         border-color: inherit;
         opacity: 0;
@@ -256,6 +258,7 @@
         pointer-events: none;
         mask-image: url('data:image/svg+xml,<svg width="60" height="66" viewBox="0 0 60 66" xmlns="http://www.w3.org/2000/svg"><path d="M0 30.0917C0 13.4726 13.4313 0 30.0002 0C46.5687 0 60 13.4726 60 30.0917C60 44.2105 50.4927 56.0529 37.4162 59.2986C32.5552 60.5551 31.0408 65.275 31.0408 65.275C30.8892 65.697 30.4909 66 30.0183 66C29.5453 66 29.147 65.697 28.9938 65.275C28.9938 65.275 27.481 60.5551 22.6199 59.2986C9.46433 56.0206 0 43.5901 0 30.0917ZM30 57.75C45.3259 57.75 57.75 45.3259 57.75 30C57.75 14.6741 45.3259 2.25 30 2.25C14.6741 2.25 2.25 14.6741 2.25 30C2.25 45.3259 14.6741 57.75 30 57.75Z" /></svg>');
         mask-repeat: no-repeat;
+        mask-size: 100%;
     }
 
     &::after {

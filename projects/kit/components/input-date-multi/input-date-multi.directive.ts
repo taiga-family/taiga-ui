@@ -1,6 +1,6 @@
 import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDate} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
@@ -63,7 +63,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoDateOptionsGenerator({
+            maskitoDate({
                 separator: this.format().separator,
                 mode: this.format().mode,
                 min: (this.min() ?? this.dateMultiOptions.min).toLocalNativeDate(),

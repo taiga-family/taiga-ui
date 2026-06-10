@@ -1,6 +1,6 @@
 import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoNumberOptionsGenerator} from '@maskito/kit';
+import {maskitoNumber} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
@@ -57,7 +57,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoNumberOptionsGenerator({
+            maskitoNumber({
                 min: this.min(),
                 max: this.max(),
                 thousandSeparator: '',

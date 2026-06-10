@@ -7,8 +7,8 @@ import {
     maskitoParseTime,
     maskitoRemoveOnBlurPlugin,
     maskitoSelectionChangeHandler,
+    maskitoTime,
     type MaskitoTimeMode,
-    maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
 } from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -168,7 +168,7 @@ export class TuiInputTimeDirective
     }
 
     private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
-        const options = maskitoTimeOptionsGenerator(params);
+        const options = maskitoTime(params);
         const {mode, prefix, postfix, dayPeriod} = params;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {

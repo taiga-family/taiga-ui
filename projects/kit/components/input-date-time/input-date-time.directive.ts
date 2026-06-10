@@ -2,7 +2,7 @@ import {computed, Directive, effect, inject, input, untracked} from '@angular/co
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
-    maskitoDateTimeOptionsGenerator,
+    maskitoDateTime,
     type MaskitoDateTimeParams,
     maskitoParseTime,
     maskitoSelectionChangeHandler,
@@ -240,7 +240,7 @@ export class TuiInputDateTimeDirective
     }
 
     private computeMask(params: Required<MaskitoDateTimeParams>): MaskitoOptions {
-        const options = maskitoDateTimeOptionsGenerator(params);
+        const options = maskitoDateTime(params);
         const {timeMode, dateMode, dateTimeSeparator, dayPeriod} = params;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
