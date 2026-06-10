@@ -1,5 +1,5 @@
 import {DOCUMENT, type ViewportScroller} from '@angular/common';
-import {inject} from '@angular/core';
+import {DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
@@ -9,6 +9,7 @@ export class TuiViewportScroller implements ViewportScroller {
     private readonly doc = inject(DOCUMENT);
     private readonly win = inject(WA_WINDOW);
     private readonly scroll$ = new ReplaySubject<Element>(1);
+    private readonly destroyRef = inject(DestroyRef);
 
     public setOffset = noop;
 
@@ -17,7 +18,7 @@ export class TuiViewportScroller implements ViewportScroller {
             .pipe(
                 filter(Boolean),
                 switchMap(() => this.scroll$),
-                takeUntilDestroyed(),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe((element) => element.scrollIntoView());
     }
