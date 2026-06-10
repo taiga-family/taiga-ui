@@ -1,38 +1,105 @@
-<p>
-    <input
-        tuiSlider
-        type="range"
-        [max]="11"
-        [min]="0"
-        [(ngModel)]="value"
-        (ngModelChange)="onValueChange($event)"
-    />
-</p>
-@for (size of sizes; track $index) {
-    <section tuiPlatform="ios">
-        <span
-            tuiBadge
-            [size]="size"
-        >
-            Text
-        </span>
-        <span
-            iconStart="@tui.heart-filled"
-            tuiBadge
-            [size]="size"
-        >
-            Text + icon
-        </span>
-        <tui-icon
-            iconStart="@tui.heart-filled"
-            tuiBadge
-            [size]="size"
-        />
-        <img
-            alt="User"
-            src="assets/images/avatar.jpg"
-            tuiBadge
-            [size]="size"
-        />
-    </section>
+<div tuiBadge>Default</div>
+<div
+    appearance="primary"
+    tuiBadge
+>
+    Primary
+</div>
+<div
+    appearance="accent"
+    tuiBadge
+>
+    Accent
+</div>
+<div
+    appearance="positive"
+    tuiBadge
+    tuiStatus
+>
+    Success
+</div>
+<div
+    appearance="negative"
+    tuiBadge
+    tuiStatus
+>
+    Error
+</div>
+<div
+    appearance="warning"
+    tuiBadge
+    tuiStatus
+>
+    Warning
+</div>
+<div
+    appearance="warning"
+    tuiBadge
+>
+    Warning
+</div>
+<div
+    appearance="neutral"
+    tuiBadge
+>
+    Neutral
+</div>
+<div
+    appearance="info"
+    tuiBadge
+>
+    Info
+</div>
+
+<p>Custom status</p>
+<div
+    tuiBadge
+    tuiStatus="var(--tui-chart-categorical-09)"
+    [style.background]="'var(--tui-chart-categorical-01)'"
+>
+    Custom
+</div>
+
+<p>Use CSS for support colors</p>
+@for (_ of '-'.repeat(20); track $index) {
+    <div
+        tuiBadge
+        [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
+    >
+        Taiga
+    </div>
 }
+
+<p>Sizes</p>
+<div
+    appearance="positive"
+    size="xl"
+    tuiBadge
+    tuiStatus
+>
+    Success
+</div>
+<div
+    appearance="positive"
+    size="l"
+    tuiBadge
+    tuiStatus
+>
+    Success
+</div>
+<div
+    appearance="positive"
+    size="m"
+    tuiBadge
+    tuiStatus
+>
+    Success
+</div>
+<div
+    appearance="positive"
+    size="s"
+    tuiBadge
+    tuiStatus
+>
+    Success
+</div>
