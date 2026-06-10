@@ -3465,7 +3465,7 @@ Component for displaying text, pictures and icons.
 ```html
 &lt;p&gt; @if (contentType === &#039;with icon&#039;) { &lt;span iconStart=&quot;@tui.check&quot; tuiBadge [appearance]=&quot;appearance&quot; [size]=&quot;size&quot; &gt;
 &lt;div tuiFade&gt;Taiga UI&lt;/div&gt;
-&lt;/span&gt; } @if (contentType === &#039;text&#039;) { &lt;span tuiBadge [appearance]=&quot;appearance&quot; [size]=&quot;size&quot; &gt; Taiga UI &lt;/span&gt; } @if (contentType === &#039;image&#039;) { &lt;img alt=&quot;market&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge [appearance]=&quot;appearance&quot; [size]=&quot;size&quot; /&gt; } &lt;/p&gt;
+&lt;/span&gt; } @if (contentType === &#039;text&#039;) { &lt;span tuiBadge [appearance]=&quot;appearance&quot; [size]=&quot;size&quot; &gt; Taiga UI &lt;/span&gt; } @if (contentType === &#039;image&#039;) { &lt;img alt=&quot;User&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge [appearance]=&quot;appearance&quot; [size]=&quot;size&quot; /&gt; } &lt;/p&gt;
 ```
 
 ### API - Inputs
@@ -3526,9 +3526,9 @@ export default class Example {}
 **Template:**
 ```html
 &lt;div appearance=&quot;primary&quot; size=&quot;xl&quot; tuiBadge &gt; x-large &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; size=&quot;l&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; large &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; size=&quot;m&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; medium &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; size=&quot;s&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; small &lt;/div&gt;
+&lt;div appearance=&quot;primary&quot; size=&quot;l&quot; tuiBadge &gt; large &lt;/div&gt;
+&lt;div appearance=&quot;primary&quot; size=&quot;m&quot; tuiBadge &gt; medium &lt;/div&gt;
+&lt;div appearance=&quot;primary&quot; size=&quot;s&quot; tuiBadge &gt; small &lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -3540,37 +3540,46 @@ import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
 @Component({
     imports: [TuiBadge],
     templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+```
 
-#### Content type (mobile platform)
+#### Content type
 
 **Template:**
 ```html
-&lt;div tuiPlatform=&quot;ios&quot;&gt;
-&lt;h4 class=&quot;tui-space_vertical-1&quot;&gt;Value with icon&lt;/h4&gt;
+&lt;section tuiPlatform=&quot;ios&quot;&gt;
+&lt;h4&gt;Value with icon&lt;/h4&gt;
 &lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;xl&quot; tuiBadge &gt; x-large &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; large &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;m&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; medium &lt;/div&gt;
-&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;s&quot; tuiBadge class=&quot;tui-space_left-1&quot; &gt; small &lt;/div&gt;
-&lt;/div&gt;
-&lt;div tuiPlatform=&quot;ios&quot;&gt;
-&lt;h4 class=&quot;tui-space_top-3 tui-space_bottom-1&quot;&gt;Icon only&lt;/h4&gt;
+&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge &gt; large &lt;/div&gt;
+&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;m&quot; tuiBadge &gt; medium &lt;/div&gt;
+&lt;div appearance=&quot;primary&quot; iconStart=&quot;@tui.box&quot; size=&quot;s&quot; tuiBadge &gt; small &lt;/div&gt;
+&lt;/section&gt;
+&lt;section tuiPlatform=&quot;ios&quot;&gt;
+&lt;h4&gt;Icon only&lt;/h4&gt;
 &lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;xl&quot; tuiBadge /&gt;
-&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;m&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;s&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;/div&gt;
-&lt;div tuiPlatform=&quot;ios&quot;&gt;
-&lt;h4 class=&quot;tui-space_top-3 tui-space_bottom-1&quot;&gt;Image&lt;/h4&gt;
-&lt;img alt=&quot;market&quot; size=&quot;xl&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge /&gt;
-&lt;img alt=&quot;market&quot; size=&quot;l&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;img alt=&quot;market&quot; size=&quot;m&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;img alt=&quot;market&quot; size=&quot;s&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge class=&quot;tui-space_left-1&quot; /&gt;
-&lt;/div&gt;
+&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge /&gt;
+&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;m&quot; tuiBadge /&gt;
+&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;s&quot; tuiBadge /&gt;
+&lt;/section&gt;
+&lt;section tuiPlatform=&quot;ios&quot;&gt;
+&lt;h4&gt;Image&lt;/h4&gt;
+&lt;img alt=&quot;User&quot; size=&quot;xl&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge /&gt;
+&lt;img alt=&quot;User&quot; size=&quot;l&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge /&gt;
+&lt;img alt=&quot;User&quot; size=&quot;m&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge /&gt;
+&lt;img alt=&quot;User&quot; size=&quot;s&quot; src=&quot;assets/images/avatar.jpg&quot; tuiBadge /&gt;
+&lt;/section&gt;
 ```
 **TypeScript:**
 ```ts
@@ -3595,17 +3604,30 @@ export default class Example {}
     display: block;
     min-inline-size: 18rem;
 }
+
+section {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-block-end: 1rem;
+}
+
+h4 {
+    flex-basis: 100%;
+    margin: 0;
+}
 ```
 
 #### Long value
 
 **Template:**
 ```html
-&lt;div appearance=&quot;primary&quot; size=&quot;xl&quot; tuiBadge class=&quot;badge&quot; &gt;
+&lt;div appearance=&quot;primary&quot; size=&quot;xl&quot; tuiBadge &gt;
 &lt;div tuiFade&gt;Very long value in badge&lt;/div&gt;
 &lt;/div&gt;
-&lt;div appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge class=&quot;badge tui-space_top-3&quot; &gt;
-&lt;div class=&quot;t-ellipsis&quot;&gt;Very long value in badge&lt;/div&gt;
+&lt;div appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge &gt;
+&lt;div class=&quot;ellipsis&quot;&gt;Very long value in badge&lt;/div&gt;
 &lt;/div&gt;
 ```
 **TypeScript:**
@@ -3626,11 +3648,16 @@ export default class Example {}
 ```
 **LESS:**
 ```less
-.badge {
+:host {
+    display: grid;
+    gap: 1rem;
+}
+
+[tuiBadge] {
     max-inline-size: 10rem;
 }
 
-.t-ellipsis {
+.ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -3641,7 +3668,7 @@ export default class Example {}
 **Template:**
 ```html
 &lt;div appearance=&quot;custom&quot; iconStart=&quot;@tui.lock&quot; size=&quot;xl&quot; tuiBadge class=&quot;custom-1&quot; &gt; 10 000 000 $ &lt;/div&gt;
-&lt;div appearance=&quot;custom&quot; size=&quot;xl&quot; tuiBadge class=&quot;custom-2 tui-space_left-3&quot; &gt; Taiga &lt;/div&gt;
+&lt;div appearance=&quot;custom&quot; size=&quot;xl&quot; tuiBadge class=&quot;custom-2&quot; &gt; Taiga &lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -3662,6 +3689,11 @@ export default class Example {}
 **LESS:**
 ```less
 @import &#039;@taiga-ui/styles/utils.less&#039;;
+
+:host {
+    display: flex;
+    gap: 0.75rem;
+}
 
 .custom-1 {
     .gradient(#0094cf, #24c0ff);
@@ -3705,11 +3737,11 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {type TuiSizeS, type TuiSizeXL} from &#039;@taiga-ui/core&#039;;
+import {type TuiSizeS, type TuiSizeXL, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiBadge, TuiFade, TuiRadioList} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
+    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -3742,7 +3774,7 @@ export default class Page {
     protected readonly examples = [
         &#039;Basic&#039;,
         &#039;Sizes&#039;,
-        &#039;Content type (mobile platform)&#039;,
+        &#039;Content type&#039;,
         &#039;Long value&#039;,
         &#039;Customization&#039;,
         &#039;Options with DI&#039;,
