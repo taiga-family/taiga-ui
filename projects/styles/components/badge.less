@@ -35,12 +35,6 @@
     font: var(--tui-typography-ui-s);
     zoom: 1;
 
-    &[tuiStatus]::before {
-        inline-size: 0.375rem;
-        block-size: 0.375rem;
-        margin: 0;
-    }
-
     > tui-icon,
     &[tuiIcons]::before,
     &[tuiIcons]::after {
@@ -114,6 +108,12 @@
     &[tuiAppearance][data-appearance='info'],
     &[tuiAppearance][data-appearance='neutral'] {
         color: var(--tui-text-primary);
+    }
+
+    &[tuiStatus]::before {
+        inline-size: 0.375rem;
+        block-size: 0.375rem;
+        margin: 0;
     }
 }
 
