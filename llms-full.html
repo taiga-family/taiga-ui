@@ -18557,14 +18557,14 @@ import {type MaskitoOptions} from &#039;@maskito/core&#039;;
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
+    maskitoNumber,
     maskitoRemoveOnBlurPlugin,
 } from &#039;@maskito/kit&#039;;
 import {TuiButtonX, TuiInput} from &#039;@taiga-ui/core&#039;;
 
 const postfix = &#039; rad&#039;;
 
-const numberOptions = maskitoNumberOptionsGenerator({
+const numberOptions = maskitoNumber({
     postfix,
     decimalSeparator: &#039;,&#039;,
     maximumFractionDigits: 8,
