@@ -213,6 +213,80 @@ test.describe('InputChip', () => {
                 .soft(example)
                 .toHaveScreenshot('input-chip-textfield-cleaner.png');
         });
+
+        test.describe('updateOn=submit', () => {
+            let api!: TuiDocumentationApiPagePO;
+            let inputChip!: TuiInputChipPO;
+            let submit!: Locator;
+
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputChip}/API?sandboxExpanded=true&updateOn=submit`,
+                );
+
+                api = new TuiDocumentationApiPagePO(page);
+                inputChip = new TuiInputChipPO(api.demo);
+                submit = api.submitFormControlButton;
+            });
+
+            test('shows typed chips immediately, but updates control value only on submit', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                await expect(api.value).not.toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('removes submitted chip via remove button', async () => {
+                await inputChip.input.fill('123,456,789');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(inputChip.chips).toHaveCount(3);
+
+                await inputChip.chips
+                    .first()
+                    .locator('button', {hasText: 'Remove'})
+                    .click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('clears all submitted chips via textfield cleaner', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+
+                await inputChip.cleaner.click();
+
+                await expect(inputChip.chips).toHaveCount(0);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(inputChip.chips).toHaveCount(0);
+            });
+        });
     });
 
     test.describe('Multiselect', () => {
