@@ -20,9 +20,8 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_VERSION,EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
