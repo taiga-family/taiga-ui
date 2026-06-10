@@ -41,7 +41,7 @@
 
                 @if (contentType === 'image') {
                     <img
-                        alt="market"
+                        alt="User"
                         src="assets/images/avatar.jpg"
                         tuiBadge
                         [appearance]="appearance"
@@ -50,12 +50,11 @@
                 }
             </p>
         </tui-doc-demo>
-        <div>
+        <div tuiTitle>
             Content type
             <tui-radio-list
                 name="content-type"
                 size="s"
-                class="tui-space_vertical-2"
                 [items]="contentTypeVariants"
                 [style.flex-direction]="'row'"
                 [(ngModel)]="contentType"
