@@ -20,6 +20,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
@@ -250,6 +251,7 @@ export class TuiTextfieldBaseComponent<T>
         TuiWithTextfieldDropdown,
     ],
     host: {
+        tuiTextfieldV: TUI_VERSION,
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',

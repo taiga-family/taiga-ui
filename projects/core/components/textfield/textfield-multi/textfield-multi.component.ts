@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -84,6 +85,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
     ],
     host: {
         class: 'tui-interactive',
+        tuiTextfieldV: TUI_VERSION,
         '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
