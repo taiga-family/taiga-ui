@@ -30,10 +30,10 @@
     justify-content: center;
     background: #959595;
     color: var(--tui-background-base);
-    padding: var(--t-space) calc(var(--t-padding) * var(--t-scale));
+    padding: var(--t-space) calc(var(--t-padding) * var(--tui-font-scale));
     block-size: var(--t-size);
     min-block-size: calc(var(--tui-lh) + 2 * var(--t-space));
-    min-inline-size: calc(var(--tui-lh) + 2 * var(--t-space));
+    min-inline-size: ~'max(calc(var(--tui-lh) + 2 * var(--t-space)), var(--t-size))';
     inline-size: fit-content;
     font: var(--tui-typography-ui-s);
     zoom: 1;
