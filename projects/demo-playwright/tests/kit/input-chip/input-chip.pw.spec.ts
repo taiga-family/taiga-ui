@@ -397,6 +397,36 @@ test.describe('InputChip', () => {
                     .soft(block.locator('tui-textfield'))
                     .toHaveScreenshot('multiselect-select-objects-block.png');
             });
+
+            test('group toggle selects / unselects all its options (with [(ngModel)] binding)', async () => {
+                const block = example
+                    .locator('label[tuiLabel]')
+                    .filter({hasText: 'Working with objects'});
+
+                const multiselect = new TuiMultiSelectPO(block);
+
+                const checked = multiselect.dropdown.locator(
+                    'input[type="checkbox"]:checked',
+                );
+
+                await block.locator('tui-textfield').click();
+                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select all'})
+                    .first()
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(6);
+                await expect(checked).toHaveCount(6);
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select none'})
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(0);
+                await expect(checked).toHaveCount(0);
+            });
         });
     });
 });
