@@ -1,0 +1,82 @@
+import"./chunk-HU6DUUP4.js";var t=`<tui-doc-page
+    header="Badge"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component for displaying text, pictures and icons.</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p>
+                @if (contentType === 'with icon') {
+                    <span
+                        iconStart="@tui.check"
+                        tuiBadge
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        <div tuiFade>Taiga UI</div>
+                    </span>
+                }
+
+                @if (contentType === 'text') {
+                    <span
+                        tuiBadge
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        Taiga UI
+                    </span>
+                }
+
+                @if (contentType === 'image') {
+                    <img
+                        alt="User"
+                        src="assets/images/avatar.jpg"
+                        tuiBadge
+                        [appearance]="appearance"
+                        [size]="size"
+                    />
+                }
+            </p>
+        </tui-doc-demo>
+        <div tuiTitle>
+            Content type
+            <tui-radio-list
+                name="content-type"
+                size="s"
+                [items]="contentTypeVariants"
+                [style.flex-direction]="'row'"
+                [(ngModel)]="contentType"
+            />
+        </div>
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            ></tr>
+
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            ></tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};
