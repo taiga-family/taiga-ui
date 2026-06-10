@@ -8,7 +8,7 @@ import {
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDate} from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
@@ -197,7 +197,7 @@ export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoDateOptionsGenerator({
+            maskitoDate({
                 separator: this.format().separator,
                 mode: this.format().mode,
                 min: this.min().toLocalNativeDate(),
