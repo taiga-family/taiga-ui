@@ -21,19 +21,37 @@ class TestInputColor {
     public format: 'hex' | 'hexa' = 'hexa';
 }
 
+@Component({
+    imports: [FormsModule, TuiInputColor, TuiTextfield],
+    template: `
+        <tui-textfield>
+            <input
+                tuiInputColor
+                [(ngModel)]="value"
+                [format]="format"
+            />
+        </tui-textfield>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class TestTransparentInputColor {
+    public value = '#ffffff00';
+    public format: 'hex' | 'hexa' = 'hexa';
+}
+
 describe('InputColor', () => {
     describe('hexa mode', () => {
-        beforeEach(() => {
-            cy.mount(TestInputColor);
-        });
-
         it('shows color preview when 7-char hex is entered without alpha', () => {
+            cy.mount(TestInputColor);
+
             cy.get('input[type="color"]').should(($input) => {
                 expect($input.get(0).style.getPropertyValue('--t-opacity')).to.equal('1');
             });
         });
 
         it('preserves base color when opacity slider changes before alpha is typed', () => {
+            cy.mount(TestInputColor);
+
             cy.get('input[type="range"]').then(($input) => {
                 const input = $input.get(0) as HTMLInputElement;
 
@@ -42,6 +60,16 @@ describe('InputColor', () => {
             });
 
             cy.get('input[tuiInputColor]').should('have.value', '#ffffff80');
+        });
+
+        it('keeps zero opacity for fully transparent hexa value', () => {
+            cy.mount(TestTransparentInputColor);
+
+            cy.get('input[type="color"]').should(($input) => {
+                expect($input.get(0).style.getPropertyValue('--t-opacity')).to.equal('0');
+            });
+
+            cy.get('input[type="range"]').should('have.value', '0');
         });
     });
 });
