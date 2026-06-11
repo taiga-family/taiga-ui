@@ -10,13 +10,13 @@ describe('ng-update migrate TuiIsoToCountryCodePipe', () => {
     it(
         'adds TODO comment for TuiIsoToCountryCodePipe (no automatic rename)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
                     imports: [TuiIsoToCountryCodePipe],
-                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                    template: '{{ isoCode | tuiIsoToCountryCode }}',
                 })
                 export class TestComponent {}
             `,
@@ -26,7 +26,7 @@ describe('ng-update migrate TuiIsoToCountryCodePipe', () => {
     it(
         'adds TODO comment when TuiIsoToCountryCodePipe used in NgModule',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiIsoToCountryCodePipe} from '@taiga-ui/legacy';
 
                 @NgModule({

@@ -12,7 +12,7 @@ describe('ng-update layout components from kit to layout', () => {
     it(
         'migrates TuiSlides import from @taiga-ui/kit to @taiga-ui/layout',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiSlides} from '@taiga-ui/kit';
 
                 @Component({})
@@ -26,7 +26,7 @@ describe('ng-update layout components from kit to layout', () => {
     it(
         'migrates TuiElasticContainer import from @taiga-ui/kit to @taiga-ui/layout',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiElasticContainer} from '@taiga-ui/kit';
 
                 @Component({})
@@ -40,7 +40,7 @@ describe('ng-update layout components from kit to layout', () => {
     it(
         'migrates TuiFloatingContainer import from @taiga-ui/kit to @taiga-ui/layout',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFloatingContainer} from '@taiga-ui/kit';
 
                 @Component({})

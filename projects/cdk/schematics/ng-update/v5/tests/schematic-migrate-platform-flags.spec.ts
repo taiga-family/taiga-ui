@@ -12,7 +12,7 @@ describe('ng-update migrate platform browser flags', () => {
     it(
         'migrates browser flags from @taiga-ui/cdk to @ng-web-apis/platform',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
                 export const flags = [tuiIsEdge, tuiIsFirefox, tuiIsSafari];

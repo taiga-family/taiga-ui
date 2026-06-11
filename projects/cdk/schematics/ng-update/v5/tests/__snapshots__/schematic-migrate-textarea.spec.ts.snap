@@ -24,9 +24,9 @@ exports[`ng-update legacy textarea converts [tuiTextfieldCustomContent] binding 
                 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiTextareaModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextareaModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -35,9 +35,9 @@ import { TuiIcon } from "@taiga-ui/core";
 import { TuiTextarea } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiTextarea, TuiIcon, PolymorpheusOutlet],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextarea, TuiIcon, PolymorpheusOutlet],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -108,18 +108,18 @@ exports[`ng-update legacy textarea migrates TuiTextareaModule import and simple 
                 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiTextareaModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextareaModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiTextarea } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiTextarea],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextarea],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",

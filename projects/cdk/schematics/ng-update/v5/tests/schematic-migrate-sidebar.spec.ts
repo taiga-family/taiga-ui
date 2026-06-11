@@ -6,7 +6,7 @@ import {createMigration} from '../../../utils/run-migration';
 
 const migrate = createMigration({
     collection: join(__dirname, '../../../migration.json'),
-    component: `
+    component: /* TypeScript */ `
         import {Component} from '@angular/core';
         import {TuiSidebar} from '@taiga-ui/addon-mobile';
 
@@ -25,7 +25,7 @@ describe('ng-update sidebar to drawer', () => {
     it(
         'replaces TuiSidebar import with TuiDrawer and TuiPopup',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiSidebar} from '@taiga-ui/addon-mobile';
 

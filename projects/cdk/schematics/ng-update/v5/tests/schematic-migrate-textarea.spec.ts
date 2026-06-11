@@ -10,13 +10,13 @@ describe('ng-update legacy textarea', () => {
     it(
         'migrates TuiTextareaModule import and simple tui-textarea template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiTextareaModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextareaModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -149,13 +149,13 @@ describe('ng-update legacy textarea', () => {
     it(
         'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiTextareaModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiTextareaModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,

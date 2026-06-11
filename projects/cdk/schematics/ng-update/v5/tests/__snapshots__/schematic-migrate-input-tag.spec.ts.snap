@@ -117,18 +117,18 @@ exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.ts 1`] = `
                 import {TuiInputTagModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputTagModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputTagModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputChip } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputChip],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputChip],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",

@@ -87,18 +87,18 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.ts 1`] = `
                 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDateModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDateModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDate],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDate],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",

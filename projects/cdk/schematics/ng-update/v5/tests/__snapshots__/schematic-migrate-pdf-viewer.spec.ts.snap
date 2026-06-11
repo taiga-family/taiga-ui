@@ -13,7 +13,7 @@ exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewer import fro
                         // some usage
                     }
                 }
-        ",
+            ",
   "1. After": "import { TuiPdfViewer } from "@taiga-ui/legacy";
 
                                 @Component({})
@@ -24,7 +24,7 @@ exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewer import fro
                         // some usage
                     }
                 }
-        ",
+            ",
 }
 `;
 

@@ -12,13 +12,13 @@ describe('ng-update legacy select', () => {
     it(
         'migrates TuiSelectModule import and tui-select template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiSelectModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiSelectModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelectModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -53,14 +53,17 @@ describe('ng-update legacy select', () => {
     it(
         'renames valueContent to content, removes labelOutside and drops TuiTextfieldControllerModule',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+                import {
+                    TuiSelectModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiSelectModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelectModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,

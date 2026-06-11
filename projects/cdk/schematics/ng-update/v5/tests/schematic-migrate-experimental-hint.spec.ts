@@ -12,7 +12,7 @@ describe('ng-update experimental hint provider', () => {
     it(
         'removes tuiProvideExperimentalHint() from providers array and import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ApplicationConfig} from '@angular/core';
                 import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
 
@@ -26,7 +26,7 @@ describe('ng-update experimental hint provider', () => {
     it(
         'removes TUI_SLIDER_OPTIONS from providers array and import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ApplicationConfig} from '@angular/core';
                 import {TUI_SLIDER_OPTIONS} from '@taiga-ui/kit';
 
@@ -40,7 +40,7 @@ describe('ng-update experimental hint provider', () => {
     it(
         'removes tuiSliderOptionsProvider from providers array and import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ApplicationConfig} from '@angular/core';
                 import {tuiSliderOptionsProvider} from '@taiga-ui/kit';
 
