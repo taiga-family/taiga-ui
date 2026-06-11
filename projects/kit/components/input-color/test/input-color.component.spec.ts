@@ -61,5 +61,12 @@ describe('TuiInputColorComponent', () => {
             expect(testComponent.control.value).not.toContain('#000000');
             expect(testComponent.control.value).toBe('#ab1234ff');
         });
+
+        it('reads opacity as 0 (not 255) when alpha byte is 00', () => {
+            testComponent.control.setValue('#ffffff00');
+            fixture.detectChanges();
+
+            expect(testComponent.component()['opacity']()).toBe(0);
+        });
     });
 });
