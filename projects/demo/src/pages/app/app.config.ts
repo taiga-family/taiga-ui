@@ -35,6 +35,7 @@ import {
     tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
+    TuiViewportScroller,
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
@@ -60,7 +61,6 @@ import {pages} from './pages';
 import {SEARCH_CONFIG} from './search/env';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
-import {TuiViewportScroller} from './utils/viewport-scroller.service';
 
 export const config: ApplicationConfig = {
     providers: [

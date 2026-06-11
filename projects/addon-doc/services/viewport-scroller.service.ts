@@ -2,7 +2,7 @@ import {DOCUMENT, type ViewportScroller} from '@angular/common';
 import {inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import {filter, noop, ReplaySubject, switchMap} from 'rxjs';
 
 export class TuiViewportScroller implements ViewportScroller {
