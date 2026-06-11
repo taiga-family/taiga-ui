@@ -11,11 +11,7 @@
     </div>
     @if (context.closable && !isMobile) {
         <button
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            type="button"
-            [iconStart]="icons.close"
+            tuiButtonX
             (click.stop.prevent)="context.$implicit.complete()"
         >
             Close

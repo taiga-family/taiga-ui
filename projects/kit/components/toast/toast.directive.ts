@@ -12,6 +12,7 @@ import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
@@ -43,6 +44,7 @@ class Styles {}
             appearance:
                 inject(TUI_PLATFORM) === 'web' ? 'secondary-grayscale' : 'secondary',
         })),
+        tuiButtonXOptionsProvider({size: 'xs', appearance: 'icon'}),
         {
             provide: TUI_ICON_END,
             useFactory: () =>
