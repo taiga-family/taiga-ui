@@ -29,10 +29,14 @@
         cursor: pointer;
     });
 
-    > *:not(tui-shrink-wrap),
+    > *:not(tui-shrink-wrap) {
+        max-inline-size: 50%;
+        margin: 0 -0.25rem;
+    }
+
     &::after,
     &::before {
-        max-inline-size: 50%;
+        min-inline-size: 1em;
         margin: 0 -0.25rem;
     }
 
