@@ -24,7 +24,6 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiFlagPipe} from '@taiga-ui/kit/pipes/flag';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
-import {getCountryCallingCode} from 'libphonenumber-js/core';
 
 import {
     tuiGetCallingCode,
@@ -74,7 +73,7 @@ export class TuiInputPhoneInternationalContent {
             .map((iso) => ({
                 iso,
                 name: this.names()[iso] || '',
-                code: metadata ? `+${getCountryCallingCode(iso, metadata)}` : '',
+                code: tuiGetCallingCode(iso, metadata),
             }))
             .filter(({name, code}) =>
                 TUI_DEFAULT_MATCHER(`${name}${code}`, this.host.search()),
