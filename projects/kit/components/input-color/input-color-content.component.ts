@@ -6,7 +6,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiSlider} from '@taiga-ui/core/components/slider';
 
@@ -26,8 +25,7 @@ import {TuiInputColorComponent} from './input-color.component';
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputColorContent {
-    protected readonly host = inject(TuiControl) as TuiInputColorComponent;
-
+    protected readonly host = inject(TuiInputColorComponent);
     protected readonly hasRgb = computed(() => this.host.value().length >= 7);
 
     protected readonly opacity = computed(() => {
