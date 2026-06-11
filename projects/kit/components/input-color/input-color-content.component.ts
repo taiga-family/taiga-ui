@@ -6,11 +6,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiSlider} from '@taiga-ui/core/components/slider';
 
-import {type TuiInputColorComponent} from './input-color.component';
+import {TuiInputColorComponent} from './input-color.component';
 
 @Component({
     selector: 'tui-input-color-content',
@@ -26,30 +25,30 @@ import {type TuiInputColorComponent} from './input-color.component';
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputColorContent {
-    protected readonly color = inject(TuiControl) as TuiInputColorComponent;
+    protected readonly host = inject(TuiInputColorComponent);
 
     protected readonly filled = computed(() =>
-        this.color.format() === 'hex'
-            ? this.color.value().length === 7
-            : this.color.value().length === 9,
+        this.host.format() === 'hex'
+            ? this.host.value().length === 7
+            : this.host.value().length === 9,
     );
 
     protected readonly opacity = computed(() =>
-        this.filled() && this.color.format() === 'hexa'
-            ? Number.parseInt(this.color.value().slice(-2), 16)
+        this.filled() && this.host.format() === 'hexa'
+            ? Number.parseInt(this.host.value().slice(-2), 16)
             : 255,
     );
 
     protected onInput(value: string): void {
-        this.color.onChange(
-            this.color.format() === 'hex' ? value : `${value}${toHex(this.opacity())}`,
+        this.host.onChange(
+            this.host.format() === 'hex' ? value : `${value}${toHex(this.opacity())}`,
         );
     }
 
     protected onOpacity(opacity: number): void {
-        const value = this.filled() ? this.color.value().slice(0, 7) : '#000000';
+        const value = this.filled() ? this.host.value().slice(0, 7) : '#000000';
 
-        this.color.onChange(`${value}${toHex(opacity)}`);
+        this.host.onChange(`${value}${toHex(opacity)}`);
     }
 }
 
