@@ -49124,23 +49124,23 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button tuiButton tuiDropdownHover type=&quot;button&quot; [tuiDropdown]=&quot;dropdown&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Dropdown hover &lt;ng-template #dropdown&gt;
+&lt;button tuiButton tuiDropdownHover type=&quot;button&quot; [tuiDropdown]=&quot;dropdown&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Dropdown hover &lt;/button&gt;
+&lt;ng-template #dropdown&gt;
 &lt;div [style.padding]=&quot;&#039;0 1rem&#039;&quot;&gt;
 &lt;tui-textfield tuiChevron class=&quot;margin&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
 &lt;label tuiLabel&gt;Nested select&lt;/label&gt;
 &lt;input tuiSelect [formControl]=&quot;selected&quot; /&gt;
 &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;selectItems&quot; /&gt;
 &lt;/tui-textfield&gt;
-&lt;p&gt;
+&lt;div&gt;
 &lt;button size=&quot;s&quot; tuiButton tuiDropdownAuto tuiDropdownHover type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; &gt; Nested dropdown hover &lt;/button&gt;
-&lt;ng-template #content&gt;
-&lt;p class=&quot;tui-space_horizontal-2&quot;&gt;Nested content!&lt;/p&gt;
-&lt;/ng-template&gt;
-&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;tui-data-list&gt; @for (item of items; track item) { &lt;button tuiOption type=&quot;button&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-data-list&gt;
 &lt;/ng-template&gt;
-&lt;/button&gt;
+&lt;ng-template #content&gt;
+&lt;p class=&quot;tui-space_horizontal-2&quot;&gt;Nested content!&lt;/p&gt;
+&lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
