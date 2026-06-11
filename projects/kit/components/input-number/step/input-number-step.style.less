@@ -63,17 +63,6 @@ TODO: if :has() is supported by all browsers
     }
 }
 
-[tuiInputNumberV='@{tui-version}']._with-buttons {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-
-    [dir='rtl'] & {
-        border-radius: inherit;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-}
-
 /*
 TODO: if :has() is supported by all browsers
  - use tui-textfield:has([tuiInputNumber]) {...}
@@ -94,14 +83,25 @@ tui-textfield {
     &[data-size='s'] {
         --t-input-number-offset-end: calc(2 * var(--tui-height-s) + 0.25rem);
     }
-}
 
-[tuiInputNumberV='@{tui-version}']._with-buttons,
-[tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-template {
-    inline-size: calc(100% - var(--t-input-number-offset-end));
-    margin-inline-end: var(--t-input-number-offset-end);
-}
+    [tuiInputNumberV='@{tui-version}']._with-buttons {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
 
-[tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-content {
-    margin-inline-end: var(--t-input-number-offset-end);
+        [dir='rtl'] & {
+            border-radius: inherit;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    [tuiInputNumberV='@{tui-version}']._with-buttons,
+    [tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-template {
+        inline-size: calc(100% - var(--t-input-number-offset-end));
+        margin-inline-end: var(--t-input-number-offset-end);
+    }
+
+    [tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-content {
+        margin-inline-end: var(--t-input-number-offset-end);
+    }
 }
