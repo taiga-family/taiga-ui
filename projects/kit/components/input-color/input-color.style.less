@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .tui-input-color_picker {
-    && {
+    [tuiTextfieldV='@{tui-version}'] && {
         position: relative;
         font-size: 1rem;
         inline-size: calc(var(--t-height) / 2);
@@ -27,7 +27,7 @@
         margin-inline-end: -0.25rem;
     }
 
-    &.tui-input-color_left {
+    [tuiTextfieldV='@{tui-version}'] &.tui-input-color_left {
         position: absolute;
         top: 50%;
         left: calc(var(--t-height) / 4);
