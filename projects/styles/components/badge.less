@@ -65,14 +65,10 @@
         --t-padding: 0 0.25rem;
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
-        --t-margin: -0.125rem;
+        --t-margin: -0.0625rem;
 
         font: var(--tui-typography-ui-2xs);
-
-        &::before,
-        &::after {
-            margin: -0.0625rem;
-        }
+        gap: 0.1875rem;
 
         &[tuiStatus]::before {
             inline-size: 0.25rem;
@@ -124,6 +120,6 @@ tui-icon[tuiBadge]:where(*&) {
     &::before {
         .fullsize();
 
-        margin: 0 !important;
+        --t-margin: 0;
     }
 }
