@@ -3,7 +3,8 @@
 [tuiToast]:where(*&) {
     .transition(transform);
 
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     grid-row: 1 / span 2;
     box-sizing: border-box;
     gap: 0.75rem;
@@ -42,5 +43,10 @@
 
     [tuiAvatar] {
         margin-inline-end: 0;
+    }
+
+    tui-loader,
+    [tuiButton] {
+        min-inline-size: fit-content;
     }
 }
