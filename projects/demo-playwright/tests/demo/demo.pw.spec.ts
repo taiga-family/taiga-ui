@@ -1,5 +1,6 @@
+/* eslint-disable playwright/no-conditional-expect,playwright/no-conditional-in-test */
 import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
@@ -32,7 +33,6 @@ test.describe('Demo', () => {
             const examples = await page.getByTestId('tui-doc-example').all();
 
             for (const [i, example] of examples.entries()) {
-                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (tuiIsFlakyExample(path, i, browserName)) {
                     continue;
                 }
@@ -56,22 +56,32 @@ test.describe('Demo', () => {
 
                 const nestingPlatform = await example.locator('[data-platform]').all();
 
-                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (nestingPlatform.length > 0) {
-                    continue;
+                    await example.evaluate((node) =>
+                        node.setAttribute('data-platform', 'ios'),
+                    );
+
+                    await expect.soft(example).toHaveScreenshot(makeName('ios'));
+
+                    await example.evaluate((node) =>
+                        node.setAttribute('data-platform', 'android'),
+                    );
+
+                    await expect.soft(example).toHaveScreenshot(makeName('android'));
                 }
 
-                await example.evaluate((node) =>
-                    node.setAttribute('data-platform', 'ios'),
+                const probe = example.locator('button, input, [class], p, span').first();
+
+                await waitForFontMetricsChange(probe, async () =>
+                    page.evaluate(() =>
+                        document.documentElement.style.setProperty(
+                            '--t-font-offset',
+                            '11',
+                        ),
+                    ),
                 );
 
-                await expect.soft(example).toHaveScreenshot(makeName('ios'));
-
-                await example.evaluate((node) =>
-                    node.setAttribute('data-platform', 'android'),
-                );
-
-                await expect.soft(example).toHaveScreenshot(makeName('android'));
+                await expect.soft(example).toHaveScreenshot(makeName('desktop-scaled'));
             }
 
             await checkA11y(
@@ -84,3 +94,38 @@ test.describe('Demo', () => {
         });
     });
 });
+
+async function waitForFontMetricsChange(
+    locator: Locator,
+    action: () => Promise<string | void>,
+): Promise<void> {
+    const before = await locator.evaluate((element) => {
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+
+        return {
+            fontSize: style.fontSize,
+            lineHeight: style.lineHeight,
+            width: rect.width,
+            height: rect.height,
+        };
+    });
+
+    await action();
+
+    await expect
+        .poll(async () =>
+            locator.evaluate((element) => {
+                const style = getComputedStyle(element);
+                const rect = element.getBoundingClientRect();
+
+                return {
+                    fontSize: style.fontSize,
+                    lineHeight: style.lineHeight,
+                    width: rect.width,
+                    height: rect.height,
+                };
+            }),
+        )
+        .not.toEqual(before);
+}
