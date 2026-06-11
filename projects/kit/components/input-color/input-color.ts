@@ -6,9 +6,11 @@ import {
 import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiInputColorComponent} from './input-color.component';
+import {TuiInputColorContent} from './input-color-content.component';
 
 export const TuiInputColor = [
     TuiInputColorComponent,
+    TuiInputColorContent,
     TuiLabel,
     TuiTextfieldComponent,
     TuiTextfieldOptionsDirective,

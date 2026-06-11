@@ -1,0 +1,23 @@
+<input
+    #colorPicker
+    tabindex="-1"
+    type="color"
+    class="tui-input-color_picker"
+    [attr.list]="host.list"
+    [class.tui-input-color_start]="host.align() === 'start'"
+    [disabled]="!host.interactive()"
+    [style.--t-opacity]="filled() ? opacity() / 255 : 0"
+    [value]="host.value().length > 6 ? host.value().slice(0, 7) : ''"
+    (input)="onInput(colorPicker.value)"
+/>
+@if (host.format() === 'hexa' && host.interactive()) {
+    <input
+        max="255"
+        tuiSlider
+        type="range"
+        [ngModel]="opacity()"
+        [ngModelOptions]="{standalone: true}"
+        (ngModelChange)="onOpacity($event)"
+        (pointerdown.stop)="host.el.focus()"
+    />
+}
