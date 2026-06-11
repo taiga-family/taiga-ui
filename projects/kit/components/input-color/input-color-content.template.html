@@ -6,7 +6,7 @@
     [attr.list]="host.list"
     [class.tui-input-color_start]="host.align() === 'start'"
     [disabled]="!host.interactive()"
-    [style.--t-opacity]="filled() ? opacity() / 255 : 0"
+    [style.--t-opacity]="hasRgb() ? opacity() / 255 : 0"
     [value]="host.value().length > 6 ? host.value().slice(0, 7) : ''"
     (input)="onInput(colorPicker.value)"
 />

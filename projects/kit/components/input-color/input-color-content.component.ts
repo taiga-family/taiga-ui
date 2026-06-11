@@ -6,6 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiSlider} from '@taiga-ui/core/components/slider';
 
@@ -25,19 +26,19 @@ import {TuiInputColorComponent} from './input-color.component';
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputColorContent {
-    protected readonly host = inject(TuiInputColorComponent);
+    protected readonly host = inject(TuiControl) as TuiInputColorComponent;
 
-    protected readonly filled = computed(() =>
-        this.host.format() === 'hex'
-            ? this.host.value().length === 7
-            : this.host.value().length === 9,
-    );
+    protected readonly hasRgb = computed(() => this.host.value().length >= 7);
 
-    protected readonly opacity = computed(() =>
-        this.filled() && this.host.format() === 'hexa'
-            ? Number.parseInt(this.host.value().slice(-2), 16)
-            : 255,
-    );
+    protected readonly opacity = computed(() => {
+        if (this.host.format() !== 'hexa' || this.host.value().length !== 9) {
+            return 255;
+        }
+
+        const parsed = Number.parseInt(this.host.value().slice(-2), 16);
+
+        return Number.isNaN(parsed) ? 255 : parsed;
+    });
 
     protected onInput(value: string): void {
         this.host.onChange(
@@ -46,7 +47,7 @@ export class TuiInputColorContent {
     }
 
     protected onOpacity(opacity: number): void {
-        const value = this.filled() ? this.host.value().slice(0, 7) : '#000000';
+        const value = this.hasRgb() ? this.host.value().slice(0, 7) : '#000000';
 
         this.host.onChange(`${value}${toHex(opacity)}`);
     }
