@@ -11,20 +11,17 @@
             [formControl]="control"
             [items]="items"
         ></select>
-    }
 
-    @else {
+    } @else {
         <input
             placeholder="Choose your side"
             tuiSelect
             [formControl]="control"
         />
-    
+
         <tui-data-list-wrapper
             *tuiDropdown
             [items]="items"
         />
     }
-
-    
 </tui-textfield>
