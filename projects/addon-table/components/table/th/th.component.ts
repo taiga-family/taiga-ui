@@ -60,7 +60,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter() === this.table.sorter();
+        return !!this.sorter() && !!this.table && this.sorter() === this.table.sorter();
     }
 
     protected get icon(): string {
