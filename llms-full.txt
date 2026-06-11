@@ -311,7 +311,7 @@
 ### input-color
 
 ```text
-  TuiInputColor, TuiInputColorComponent, TuiInputColorOptions
+  TuiInputColor, TuiInputColorComponent, TuiInputColorContent, TuiInputColorOptions
 ```
 ### input-date
 
