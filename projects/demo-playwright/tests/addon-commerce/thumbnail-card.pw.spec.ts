@@ -7,6 +7,18 @@ const {describe, beforeEach} = test;
 describe('ThumbnailCard', () => {
     let documentationPage: TuiDocumentationPagePO;
 
+    test('keep icons visible in disabled content', async ({page}) => {
+        await tuiGoto(page, DemoRoute.ThumbnailCard);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#textfield');
+
+        await example.getByRole('button', {name: 'disabled'}).click();
+
+        await expect(
+            example.locator('[tuiThumbnailCard] tui-icon').first(),
+        ).toBeVisible();
+    });
+
     describe('Different width digits for different card sizes', () => {
         test.use({viewport: {width: 150, height: 300}});
 
