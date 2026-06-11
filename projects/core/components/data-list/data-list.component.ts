@@ -17,7 +17,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     tuiQueryListChanges,
     tuiTakeUntilDestroyed,
@@ -73,6 +73,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     ],
     host: {
         role: 'listbox',
+        tuiDataListV: TUI_VERSION,
         '[attr.role]': 'role',
         '[attr.data-size]': 'size',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',

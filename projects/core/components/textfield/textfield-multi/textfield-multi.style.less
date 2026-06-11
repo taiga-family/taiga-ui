@@ -2,7 +2,7 @@
 @import '@taiga-ui/core/styles/components/textfield.less';
 
 // TODO: Remove all the @supports in v5
-tui-textfield[multi][multi] {
+tui-textfield[tuiTextfieldV='@{tui-version}'][multi] {
     flex-wrap: nowrap;
     overflow: scroll;
     align-items: stretch;
@@ -269,6 +269,10 @@ tui-textfield[multi][multi] {
 
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
+    }
+
+    input {
+        color: var(--tui-text-primary);
     }
 
     input::placeholder {

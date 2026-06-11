@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiInputPhoneInternational][tuiInputPhoneInternational] {
+[tuiTextfieldV='@{tui-version}'] [tuiInputPhoneInternational][tuiInputPhoneInternational] {
     left: var(--t-offset);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -14,8 +14,7 @@
         padding-inline-start: var(--t-offset);
     }
 }
-
-tui-textfield[data-size='s'] {
+[tuiTextfieldV='@{tui-version}'][data-size='s'] {
     --t-offset: 4.125rem;
 
     .t-ipi-flag {
@@ -23,7 +22,7 @@ tui-textfield[data-size='s'] {
     }
 }
 
-tui-textfield[data-size='m'] {
+[tuiTextfieldV='@{tui-version}'][data-size='m'] {
     --t-offset: 4.875rem;
 
     .t-ipi-flag {
@@ -31,7 +30,7 @@ tui-textfield[data-size='m'] {
     }
 }
 
-tui-textfield[data-size='l'] {
+[tuiTextfieldV='@{tui-version}'][data-size='l'] {
     --t-offset: 5.25rem;
 
     .t-ipi-flag {
@@ -39,7 +38,7 @@ tui-textfield[data-size='l'] {
     }
 }
 
-tui-textfield .t-ipi-select {
+[tuiTextfieldV='@{tui-version}'] .t-ipi-select {
     position: absolute;
     left: 0;
     border-radius: inherit;

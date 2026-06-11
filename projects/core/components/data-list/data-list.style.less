@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-data-list {
+[tuiDataListV='@{tui-version}'] {
     --tui-data-list-padding: 0.25rem;
     --tui-data-list-margin: 0.0625rem;
 
@@ -157,7 +157,7 @@ tui-opt-group {
     flex-direction: column;
     line-height: 1rem;
 
-    tui-data-list[data-size='l'] & {
+    [tuiDataListV='@{tui-version}'][data-size='l'] & {
         font: var(--tui-font-text-l);
         font-weight: bold;
 
@@ -167,7 +167,7 @@ tui-opt-group {
         }
     }
 
-    tui-data-list[data-size='m'] & {
+    [tuiDataListV='@{tui-version}'][data-size='m'] & {
         font: var(--tui-font-text-m);
         font-weight: bold;
 

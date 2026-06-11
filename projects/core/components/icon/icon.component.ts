@@ -8,6 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     TUI_ICON_END,
     TUI_ICON_START,
@@ -23,6 +24,7 @@ import {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiIconV: TUI_VERSION,
         '[style.--t-icon]': 'resource() || "url()"',
         '[style.--t-icon-bg]': 'bgResource()',
         '[attr.data-icon]': 'mode()',
