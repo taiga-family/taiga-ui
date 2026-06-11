@@ -10,26 +10,26 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputPasswordModule to TuiPassword',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputPasswordModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputPasswordModule,
+                    ],
                     // ...
-                    TuiInputPasswordModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputPasswordModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputPasswordModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             `,

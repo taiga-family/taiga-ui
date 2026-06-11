@@ -93,44 +93,44 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 
                 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputDateModule,
+                    ],
                     // ...
-                    TuiInputDateModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputDateModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputDateModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
 
                                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputDate,
+                    ],
                     // ...
-                    TuiInputDate,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputDate,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputDate,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             ",

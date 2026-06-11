@@ -10,13 +10,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputTagModule to TuiInputChip',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputTagModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputTagModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputTagModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,

@@ -8,7 +8,7 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment for TuiIsoT
                 @Component({
                     standalone: true,
                     imports: [TuiIsoToCountryCodePipe],
-                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                    template: '{{ isoCode | tuiIsoToCountryCode }}',
                 })
                 export class TestComponent {}
             ",
@@ -19,7 +19,7 @@ exports[`ng-update migrate TuiIsoToCountryCodePipe adds TODO comment for TuiIsoT
                 @Component({
                     standalone: true,
                     imports: [TuiIsoToCountryCodePipe],
-                    template: '{{ isoCode | tuiIsoToCountryCode }}'
+                    template: '{{ isoCode | tuiIsoToCountryCode }}',
                 })
                 export class TestComponent {}
             ",

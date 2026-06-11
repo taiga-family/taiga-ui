@@ -10,13 +10,13 @@ describe('ng-update migrate TuiToCountryCodePipe', () => {
     it(
         'adds TODO comment for TuiToCountryCodePipe (no automatic rename)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiToCountryCodePipe} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
                     imports: [TuiToCountryCodePipe],
-                    template: '{{ phone | tuiToCountryCode }}'
+                    template: '{{ phone | tuiToCountryCode }}',
                 })
                 export class TestComponent {}
             `,

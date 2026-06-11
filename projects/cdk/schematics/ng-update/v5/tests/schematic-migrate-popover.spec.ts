@@ -15,7 +15,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames TuiPopover type to TuiPortalContext',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Component} from '@angular/core';
                     import {type TuiPopover} from '@taiga-ui/cdk';
                     import {injectContext} from '@taiga-ui/polymorpheus';
@@ -26,7 +26,8 @@ describe('ng-update TuiPopover migration', () => {
 
                     @Component({template: ''})
                     export class PromptComponent {
-                        protected readonly context = injectContext<TuiPopover<PromptOptions, boolean>>();
+                        protected readonly context =
+                            injectContext<TuiPopover<PromptOptions, boolean>>();
                     }
                 `,
             }),
@@ -35,10 +36,12 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames TuiPopover used as type annotation',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {type TuiPopover} from '@taiga-ui/cdk';
 
-                    export function openDialog(context: TuiPopover<{label: string}, string>): void {}
+                    export function openDialog(
+                        context: TuiPopover<{label: string}, string>,
+                    ): void {}
                 `,
             }),
         );
@@ -46,7 +49,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'does not rename TuiPopover from unrelated packages',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {type TuiPopover} from '@some-other/library';
 
                     export class SomeClass {
@@ -61,14 +64,15 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'adds TODO comment for TuiPopoverContext (generic params changed)',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Component} from '@angular/core';
                     import {type TuiPopoverContext} from '@taiga-ui/cdk';
                     import {injectContext} from '@taiga-ui/polymorpheus';
 
                     @Component({template: ''})
                     export class DialogComponent {
-                        protected readonly context = injectContext<TuiPopoverContext<boolean>>();
+                        protected readonly context =
+                            injectContext<TuiPopoverContext<boolean>>();
                     }
                 `,
             }),
@@ -79,7 +83,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames TuiPopoverService to TuiPortal and adds TODO comment',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {inject, Injectable} from '@angular/core';
                     import {TuiPopoverService} from '@taiga-ui/cdk';
                     import {TUI_DIALOGS} from '@taiga-ui/core';
@@ -90,9 +94,14 @@ describe('ng-update TuiPopover migration', () => {
                     @Injectable({
                         providedIn: 'root',
                         useFactory: () =>
-                            new PromptService(TUI_DIALOGS, PromptComponent, {heading: 'Are you sure?'}),
+                            new PromptService(TUI_DIALOGS, PromptComponent, {
+                                heading: 'Are you sure?',
+                            }),
                     })
-                    export class PromptService extends TuiPopoverService<PromptOptions, boolean> {}
+                    export class PromptService extends TuiPopoverService<
+                        PromptOptions,
+                        boolean
+                    > {}
                 `,
             }),
         );
@@ -100,7 +109,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames TuiPopoverService in inject() call',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {inject} from '@angular/core';
                     import {TuiPopoverService} from '@taiga-ui/cdk';
 
@@ -114,7 +123,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames TuiPopoverDirective to TuiPortalDirective and adds TODO comment',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Directive} from '@angular/core';
                     import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
 
@@ -122,13 +131,21 @@ describe('ng-update TuiPopover migration', () => {
 
                     @Directive({
                         selector: 'ng-template[tuiCustomDialog]',
-                        inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
+                        inputs: [
+                            'open: tuiCustomDialog',
+                            'options: tuiCustomDialogOptions',
+                        ],
                         outputs: ['openChange: tuiCustomDialogChange'],
                         providers: [
-                            {provide: TuiPopoverService, useExisting: CustomDialogService},
+                            {
+                                provide: TuiPopoverService,
+                                useExisting: CustomDialogService,
+                            },
                         ],
                     })
-                    export class CustomDialogDirective<T> extends TuiPopoverDirective<T> {}
+                    export class CustomDialogDirective<
+                        T,
+                    > extends TuiPopoverDirective<T> {}
                 `,
             }),
         );
@@ -138,7 +155,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'renames tuiAsPopover to tuiAsPortal',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Directive} from '@angular/core';
                     import {tuiAsPopover} from '@taiga-ui/cdk';
 
@@ -156,7 +173,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'does not rename tuiAsPopover from unrelated packages',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {tuiAsPopover} from '@some-other/library';
 
                     export const providers = [tuiAsPopover(SomeService)];
@@ -169,7 +186,7 @@ describe('ng-update TuiPopover migration', () => {
         it(
             'migrates all popover identifiers in one file',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {inject, Injectable} from '@angular/core';
                     import {
                         type TuiPopover,

@@ -36,7 +36,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for TuiDialogService open options (class field inject)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import type {TuiDialogContext} from '@taiga-ui/core';
                 import {TuiDialogService} from '@taiga-ui/core';
@@ -52,7 +52,9 @@ describe('ng-update closeable', () => {
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closeable: this.loading$.pipe(map((loading) => !loading)),
                             })
                             .subscribe();
@@ -65,7 +67,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for direct inject(TuiDialogService).open(...) call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -86,7 +88,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable when service stored in local variable',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject, afterViewInit} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -110,7 +112,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces string literal key "closeable" with "closable"',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -120,7 +122,7 @@ describe('ng-update closeable', () => {
 
                     open(): void {
                         this.dialog.open('content', {
-                            "closeable": true,
+                            closeable: true,
                         });
                     }
                 }
@@ -131,7 +133,7 @@ describe('ng-update closeable', () => {
     it(
         'does not change if there is no second argument',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -150,7 +152,7 @@ describe('ng-update closeable', () => {
     it(
         'does not change if second argument is not an object literal',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -173,7 +175,7 @@ describe('ng-update closeable', () => {
     it(
         'does not change closeable for non TuiDialogService receiver with open()',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
 
                 class NotDialogService {
@@ -197,7 +199,7 @@ describe('ng-update closeable', () => {
     it(
         'does not change object properties named closeable outside dialog.open options',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -220,7 +222,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for TuiAlertService.open call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiAlertService} from '@taiga-ui/core';
 
@@ -239,7 +241,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for TuiNotificationService.open call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiNotificationService} from '@taiga-ui/core';
 
@@ -258,7 +260,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for TuiSheetDialogService.open call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 
@@ -277,7 +279,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for tuiDialog call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {tuiDialog} from '@taiga-ui/core';
 
@@ -300,7 +302,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for tuiDialogOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiDialogOptionsProvider} from '@taiga-ui/core';
 
                 const closeable = false;
@@ -314,7 +316,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for tuiSheetDialogOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiSheetDialogOptionsProvider} from '@taiga-ui/addon-mobile';
 
                 const closeable = false;
@@ -328,7 +330,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for tuiAlertOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiAlertOptionsProvider} from '@taiga-ui/core';
 
                 const closeable = false;
@@ -342,7 +344,7 @@ describe('ng-update closeable', () => {
     it(
         'replaces closeable with closable for tuiNotificationOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
                 const closeable = false;

@@ -7,10 +7,10 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update tuiFieldError', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
-            import { TuiError } from "@taiga-ui/core";
+        component: /* TypeScript */ `
+            import {TuiError} from '@taiga-ui/core';
 
-            import { Component } from "@angular/core";
+            import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
@@ -24,9 +24,9 @@ describe('ng-update tuiFieldError', () => {
     it(
         'removes TuiFieldErrorPipe and TuiFieldErrorContentPipe from imports and replaces with TuiError',
         migrate({
-            component: `
-                import { Component } from "@angular/core";
-                import { TuiFieldErrorPipe, TuiFieldErrorContentPipe } from "@taiga-ui/kit";
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiFieldErrorPipe, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
 
                 @Component({
                     standalone: true,
@@ -41,11 +41,11 @@ describe('ng-update tuiFieldError', () => {
     it(
         'removes TuiFieldErrorPipe from imports and remains single TuiError',
         migrate({
-            component: `
-                import { TuiError } from "@taiga-ui/core";
+            component: /* TypeScript */ `
+                import {TuiError} from '@taiga-ui/core';
 
-                import { Component } from "@angular/core";
-                import { TuiFieldErrorPipe } from "@taiga-ui/kit";
+                import {Component} from '@angular/core';
+                import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
                 @Component({
                     standalone: true,
@@ -132,7 +132,7 @@ describe('ng-update tuiFieldError', () => {
     it(
         'migrates inline template in component',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import { Component } from '@angular/core'
                 import {
                   TuiError,

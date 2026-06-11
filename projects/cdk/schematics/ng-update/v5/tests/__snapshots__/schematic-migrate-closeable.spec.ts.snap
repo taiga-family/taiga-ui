@@ -88,7 +88,9 @@ exports[`ng-update closeable replaces closeable with closable for TuiDialogServi
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closeable: this.loading$.pipe(map((loading) => !loading)),
                             })
                             .subscribe();
@@ -111,7 +113,9 @@ exports[`ng-update closeable replaces closeable with closable for TuiDialogServi
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closable: this.loading$.pipe(map((loading) => !loading)),
                             })
                             .subscribe();
@@ -393,7 +397,7 @@ exports[`ng-update closeable replaces string literal key "closeable" with "closa
 
                     open(): void {
                         this.dialog.open('content', {
-                            "closeable": true,
+                            closeable: true,
                         });
                     }
                 }
@@ -408,7 +412,7 @@ exports[`ng-update closeable replaces string literal key "closeable" with "closa
 
                     open(): void {
                         this.dialog.open('content', {
-                            "closable": true,
+                            closable: true,
                         });
                     }
                 }

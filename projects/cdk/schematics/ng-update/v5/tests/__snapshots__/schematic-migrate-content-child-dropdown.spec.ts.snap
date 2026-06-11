@@ -190,7 +190,14 @@ exports[`ng-update migrate contentChildren with TuiTextfieldDropdownDirective to
 exports[`ng-update migrate multiple contentChild, contentChildren and @ContentChild, @ContentChildren usages in same file: test.ts 1`] = `
 {
   "0. Before": "
-                import {ContentChild, ContentChildren, contentChild, contentChildren, TemplateRef, QueryList} from '@angular/core';
+                import {
+                    ContentChild,
+                    ContentChildren,
+                    contentChild,
+                    contentChildren,
+                    TemplateRef,
+                    QueryList,
+                } from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
                 export class MyComponent {
@@ -218,7 +225,14 @@ exports[`ng-update migrate multiple contentChild, contentChildren and @ContentCh
             ",
   "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
 
-                import {ContentChild, ContentChildren, contentChild, contentChildren, TemplateRef, QueryList} from '@angular/core';
+                import {
+                    ContentChild,
+                    ContentChildren,
+                    contentChild,
+                    contentChildren,
+                    TemplateRef,
+                    QueryList,
+                } from '@angular/core';
 
                 export class MyComponent {
                     @ContentChild(TuiDropdownContent, {

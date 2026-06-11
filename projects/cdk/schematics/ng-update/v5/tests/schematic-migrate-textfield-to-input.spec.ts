@@ -25,7 +25,7 @@ describe('ng-update TuiTextfield to TuiInput', () => {
         it(
             'should rename TuiTextfield to TuiInput in imports and usages',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {TuiTextfield} from '@taiga-ui/core';
 
                     @Component({
