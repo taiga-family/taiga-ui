@@ -15,7 +15,7 @@ import {TuiInputNumberStepButtons} from './input-number-step.component';
 
 @Directive({
     selector: 'input[tuiInputNumber][step]',
-    providers: [tuiAsTextfieldContent(TuiInputNumberStepButtons)],
+    providers: [tuiAsTextfieldContent(() => TuiInputNumberStepButtons)],
     hostDirectives: [TuiAppearanceProxy, TuiTextfieldContent],
     host: {
         'data-tui-version': TUI_VERSION,

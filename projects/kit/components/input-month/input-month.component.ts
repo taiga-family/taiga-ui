@@ -11,7 +11,7 @@ import {TuiInputMonthContent} from './input-month-content.component';
 
 @Directive({
     selector: 'input[tuiInputMonth][type="month"]',
-    providers: [tuiAsTextfieldContent(TuiInputMonthContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputMonthContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })

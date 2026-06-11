@@ -22,7 +22,10 @@ const ANIMATION = {
 
 @Directive({
     selector: 'input[tuiPincode]',
-    providers: [tuiAsTextfieldContent(TuiPincodeContent), tuiFallbackValueProvider('')],
+    providers: [
+        tuiAsTextfieldContent(() => TuiPincodeContent),
+        tuiFallbackValueProvider(''),
+    ],
     hostDirectives: [MaskitoDirective, TuiTextfieldContent],
     host: {
         autocomplete: 'one-time-code',
