@@ -72,7 +72,7 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        provideTaiga(),
+        provideTaiga({apis: {liquidGlass: signal(false)}}),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(withFetch()),
         {

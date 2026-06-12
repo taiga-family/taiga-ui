@@ -1,0 +1,15 @@
+.tui-liquid-glass,
+&.tui-liquid-glass {
+    tui-app-bar {
+        --t-padding: 1rem;
+
+        background: transparent;
+        backdrop-filter: none;
+        block-size: calc(3.375rem + var(--t-padding));
+        padding-block: var(--t-padding) 0.625rem;
+
+        > :last-child [tuiIconButton] {
+            margin: 0;
+        }
+    }
+}

@@ -1,10 +1,11 @@
-import {type Provider} from '@angular/core';
+import {inject, type Provider} from '@angular/core';
 import {
     WA_MUTATION_OBSERVER_INIT,
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
     WaResizeObserverService,
@@ -17,5 +18,12 @@ export const TUI_APP_BAR_PROVIDERS: Provider[] = [
             subtree: true,
         },
     },
-    tuiButtonOptionsProvider({appearance: 'action'}),
+    tuiButtonOptionsProvider(() => {
+        const liquidGlass = inject(TUI_LIQUID_GLASS);
+
+        return {
+            appearance: liquidGlass() ? '' : 'action',
+            size: liquidGlass() ? 'm' : 'l',
+        };
+    }),
 ];

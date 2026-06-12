@@ -5,18 +5,25 @@
     overscroll-behavior: none;
 }
 
-tui-app-bar {
-    position: sticky;
-    z-index: 1;
-    inset-block-start: -1px;
-    background: var(--tui-background-base);
-}
-
 tui-segmented {
     inline-size: 6rem;
     margin-block-end: 1rem;
 }
 
-.content > [tuiHeader] {
-    padding: 0 1rem;
+.default {
+    display: block;
+}
+
+.tui-liquid-glass {
+    display: none;
+}
+
+:host-context([data-platform='ios'].tui-liquid-glass) {
+    .default {
+        display: none;
+    }
+
+    .tui-liquid-glass {
+        display: block;
+    }
 }
