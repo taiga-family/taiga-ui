@@ -45213,7 +45213,7 @@ export default class Page {
 &lt;section [tuiPlatform]=&quot;platform&quot;&gt;
 &lt;div iconStart=&quot;@tui.info&quot; tuiToast &gt; With icon &lt;/div&gt;
 &lt;div tuiToast&gt;
-&lt;tui-icon appearance=&quot;accent&quot; icon=&quot;@tui.box&quot; tuiBadge /&gt; With badge &lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.x&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
+&lt;tui-icon appearance=&quot;accent&quot; iconStart=&quot;@tui.box&quot; tuiBadge /&gt; With badge &lt;button tuiButtonX&gt;Close&lt;/button&gt;
 &lt;/div&gt;
 &lt;/section&gt;
 &lt;section [tuiPlatform]=&quot;platform&quot;&gt;
@@ -45224,7 +45224,7 @@ export default class Page {
 &lt;div tuiToast&gt;
 &lt;div tuiAvatar=&quot;@tui.user&quot;&gt;
 &lt;img alt=&quot;&quot; src=&quot;https://github.com/marsibarsi.png&quot; /&gt;
-&lt;/div&gt; Everything &lt;button tuiButton type=&quot;button&quot; &gt; Action &lt;/button&gt; @if (platform === &#039;web&#039;) { &lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.x&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt; } &lt;/div&gt;
+&lt;/div&gt; Everything &lt;button tuiButton type=&quot;button&quot; &gt; Action &lt;/button&gt; @if (platform === &#039;web&#039;) { &lt;button tuiButtonX&gt;Close&lt;/button&gt; } &lt;/div&gt;
 &lt;/section&gt;
 &lt;section [tuiPlatform]=&quot;platform&quot;&gt;
 &lt;div iconStart=&quot;@tui.alarm-clock&quot; tuiShrinkWrap=&quot;min(25rem, 100%)&quot; tuiToast &gt;
@@ -45239,11 +45239,19 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiButtonX} from &#039;@taiga-ui/core&#039;;
 import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiButtonX,
+        TuiPlatform,
+        TuiShrinkWrap,
+        TuiToast,
+    ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -45338,6 +45346,7 @@ export default class Example {
 section {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 ```
 
