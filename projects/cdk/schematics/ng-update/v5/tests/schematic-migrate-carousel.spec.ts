@@ -12,7 +12,7 @@ describe('ng-update TuiCarousel', () => {
     it(
         'moves TuiCarousel import from @taiga-ui/kit to @taiga-ui/legacy and adds TODO',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCarousel} from '@taiga-ui/kit';
 

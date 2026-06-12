@@ -64,7 +64,7 @@ exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatP
                 @Component({
                     standalone: true,
                     imports: [TuiFormatPhonePipe],
-                    template: '{{ phone | tuiFormatPhone }}'
+                    template: '{{ phone | tuiFormatPhone }}',
                 })
                 export class TestComponent {}
             ",
@@ -73,7 +73,7 @@ exports[`ng-update migrate TuiFormatPhonePipe to MaskitoPipe replaces TuiFormatP
                                 @Component({
                     standalone: true,
                     imports: [MaskitoPipe],
-                    template: '<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was replaced by \`maskito\` pipe. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international#phone-format-helpers --> {{ phone | maskito }}'
+                    template: '<!-- TODO: (Taiga UI migration) \`tuiFormatPhone\` pipe was replaced by \`maskito\` pipe. Add \`maskitoPhoneOptionsGenerator({countryIsoCode, metadata})\` from '@maskito/phone' as argument. See: https://taiga-ui.dev/components/input-phone-international#phone-format-helpers --> {{ phone | maskito }}',
                 })
                 export class TestComponent {}
             ",

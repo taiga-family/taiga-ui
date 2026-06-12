@@ -12,7 +12,7 @@ describe('ng-update tuiProvideMobileCalendar warning', () => {
     it(
         'adds TODO for tuiProvideMobileCalendar usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 

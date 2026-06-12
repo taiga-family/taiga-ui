@@ -49,18 +49,18 @@ exports[`ng-update legacy select migrates TuiSelectModule import and tui-select 
                 import {TuiSelectModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiSelectModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelectModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiSelect } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiSelect],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelect],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -170,12 +170,15 @@ exports[`ng-update legacy select renames valueContent to content, removes labelO
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+                import {
+                    TuiSelectModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiSelectModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelectModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -184,9 +187,9 @@ exports[`ng-update legacy select renames valueContent to content, removes labelO
                 import {Component} from '@angular/core';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiSelect],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiSelect],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",

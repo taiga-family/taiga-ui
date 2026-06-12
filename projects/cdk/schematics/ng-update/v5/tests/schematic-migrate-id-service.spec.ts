@@ -12,7 +12,7 @@ describe('ng-update TuiIdService', () => {
     it(
         'adds TODO comment for TuiIdService constructor injection usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiIdService} from '@taiga-ui/cdk';
 
@@ -20,9 +20,7 @@ describe('ng-update TuiIdService', () => {
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    constructor(
-                        private readonly idService: TuiIdService,
-                    ) {}
+                    constructor(private readonly idService: TuiIdService) {}
 
                     ngOnInit() {
                         const id = this.idService.generateId();
@@ -35,7 +33,7 @@ describe('ng-update TuiIdService', () => {
     it(
         'adds TODO comment for inject(TuiIdService) usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiIdService} from '@taiga-ui/cdk';
 
@@ -56,7 +54,7 @@ describe('ng-update TuiIdService', () => {
     it(
         'adds TODO comment for TuiIdService in constructor with multiple dependencies',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiIdService} from '@taiga-ui/cdk';
                 import {OtherService} from './other.service';

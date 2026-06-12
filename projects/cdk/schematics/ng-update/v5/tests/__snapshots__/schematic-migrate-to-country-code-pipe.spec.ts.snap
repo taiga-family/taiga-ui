@@ -8,7 +8,7 @@ exports[`ng-update migrate TuiToCountryCodePipe adds TODO comment for TuiToCount
                 @Component({
                     standalone: true,
                     imports: [TuiToCountryCodePipe],
-                    template: '{{ phone | tuiToCountryCode }}'
+                    template: '{{ phone | tuiToCountryCode }}',
                 })
                 export class TestComponent {}
             ",
@@ -19,7 +19,7 @@ exports[`ng-update migrate TuiToCountryCodePipe adds TODO comment for TuiToCount
                 @Component({
                     standalone: true,
                     imports: [TuiToCountryCodePipe],
-                    template: '{{ phone | tuiToCountryCode }}'
+                    template: '{{ phone | tuiToCountryCode }}',
                 })
                 export class TestComponent {}
             ",

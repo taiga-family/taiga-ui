@@ -24,21 +24,21 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'keeps TuiFilterByInputPipe usage in components array after migration',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
                 @Component({
                     imports: [TuiFilterByInputPipe],
                 })
                 export class TestComponent {}
-        `,
+            `,
         }),
     );
 
     it(
         'migrates matcher (2nd argument of tuiFilterByInput) to new API',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiStringMatcher} from '@taiga-ui/core';
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
@@ -75,7 +75,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'migrates matcher (2nd argument of tuiFilterByInput) to new API — external template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiStringMatcher} from '@taiga-ui/core';
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
@@ -95,8 +95,8 @@ describe('ng-update FilterByInput migration', () => {
                         );
                     };
 
-                    matcherByName =
-                        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
+                    matcherByName = (item: string, query: string) =>
+                        item.toLowerCase().includes(query.toLowerCase());
                 }
             `,
             template: /* HTML */ `
@@ -113,7 +113,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'does not add filterWith wrapper when tuiFilterByInput has no second argument',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
                 @Component({
@@ -129,7 +129,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'does not duplicate filterWith wrapper when migration runs again (idempotent)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import { TuiFilterByInputPipe, TuiFilterByInputOptions } from '@taiga-ui/core';
 
                 @Component({
@@ -149,7 +149,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'wraps a plain function reference (e.g. TUI_DEFAULT_MATCHER) used as second argument',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
@@ -168,7 +168,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'matcher is a signal',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiStringMatcher} from '@taiga-ui/core';
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 
@@ -202,7 +202,7 @@ describe('ng-update FilterByInput migration', () => {
     it(
         'matcher is a callable function',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiStringMatcher} from '@taiga-ui/core';
                 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 

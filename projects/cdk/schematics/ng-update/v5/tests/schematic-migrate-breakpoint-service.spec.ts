@@ -12,10 +12,14 @@ describe('ng-update breakpoint service', () => {
     it(
         'migrates TuiBreakpointService inject usage to TUI_BREAKPOINT observable wrapper',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {AsyncPipe, NgIf} from '@angular/common';
                 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-                import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+                import {
+                    TuiBreakpointService,
+                    TuiButton,
+                    type TuiSizeL,
+                } from '@taiga-ui/core';
                 import {TuiBlockStatus} from '@taiga-ui/layout';
                 import {map, type Observable} from 'rxjs';
 
@@ -40,7 +44,7 @@ describe('ng-update breakpoint service', () => {
     it(
         'migrates inline inject(TuiBreakpointService).pipe(...) usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiBreakpointService} from '@taiga-ui/core';
                 import {map} from 'rxjs';
@@ -60,7 +64,7 @@ describe('ng-update breakpoint service', () => {
     it(
         'adds TODO comment for unsupported constructor injection usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiBreakpointService} from '@taiga-ui/core';
 

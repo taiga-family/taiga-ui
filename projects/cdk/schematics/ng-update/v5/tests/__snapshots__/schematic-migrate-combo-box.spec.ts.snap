@@ -204,18 +204,18 @@ exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-comb
                 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBox],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBox],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -429,21 +429,24 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
 exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO: test.ts 1`] = `
 {
   "0. Before": "
-                import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+                import {
+                    TuiComboBoxModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBox],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBox],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",

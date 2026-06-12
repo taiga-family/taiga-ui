@@ -34,9 +34,9 @@ exports[`ng-update legacy input converts [tuiTextfieldCustomContent] binding to 
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -44,9 +44,9 @@ exports[`ng-update legacy input converts [tuiTextfieldCustomContent] binding to 
 import { TuiInput, TuiIcon } from "@taiga-ui/core";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInput, TuiIcon, PolymorpheusOutlet],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInput, TuiIcon, PolymorpheusOutlet],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -71,18 +71,18 @@ exports[`ng-update legacy input converts static tuiTextfieldCustomContent string
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiInput, TuiIcon } from "@taiga-ui/core";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInput, TuiIcon],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInput, TuiIcon],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -158,9 +158,9 @@ exports[`ng-update legacy input keeps tuiTextfieldCustomContent migration workin
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -169,9 +169,9 @@ import { TuiTooltip } from "@taiga-ui/kit";
 import { TuiInput, TuiIcon } from "@taiga-ui/core";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInput, TuiIcon, TuiTooltip, PolymorpheusOutlet],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInput, TuiIcon, TuiTooltip, PolymorpheusOutlet],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -194,18 +194,18 @@ exports[`ng-update legacy input migrates TuiInputModule import and simple tui-in
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiInput } from "@taiga-ui/core";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInput],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInput],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",

@@ -12,26 +12,26 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputYearModule to TuiInputYear',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputYearModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             `,

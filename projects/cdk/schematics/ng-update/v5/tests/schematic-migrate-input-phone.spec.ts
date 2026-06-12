@@ -12,26 +12,26 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputPhoneModule to TuiInputPhone',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputPhoneModule,
+                    ],
                     // ...
-                    TuiInputPhoneModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputPhoneModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputPhoneModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             `,
