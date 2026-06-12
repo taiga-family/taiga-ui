@@ -39,13 +39,13 @@
         grid-row: 1;
     }
 
-    [tuiButtonX],
-    [tuiIconButton],
+    > [tuiButtonX],
+    > [tuiIconButton],
     > :first-child:not(tui-shrink-wrap, [tuiButton]) {
         grid-row: span 2;
     }
 
-    > tui-icon,
+    > tui-icon:not([tuiBadge]),
     &::after,
     &::before {
         min-inline-size: 1em;
@@ -58,17 +58,17 @@
         color: var(--tui-text-tertiary);
     }
 
-    [tuiAvatar] {
+    > [tuiAvatar] {
         margin-inline-end: 0;
     }
 
-    tui-loader,
-    [tuiButton] {
+    > tui-loader,
+    > [tuiButton] {
         inline-size: fit-content;
         min-inline-size: fit-content;
     }
 
-    &._rearranged [tuiButton] {
+    &._rearranged > [tuiButton] {
         grid-row: 2;
         margin: 0.75rem 0 0 !important;
     }
