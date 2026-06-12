@@ -45204,7 +45204,7 @@ export default class Page {
 <section [tuiPlatform]="platform">
 <div iconStart="@tui.info" tuiToast > With icon </div>
 <div tuiToast>
-<tui-icon appearance="accent" icon="@tui.box" tuiBadge /> With badge <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button>
+<tui-icon appearance="accent" iconStart="@tui.box" tuiBadge /> With badge <button tuiButtonX>Close</button>
 </div>
 </section>
 <section [tuiPlatform]="platform">
@@ -45215,7 +45215,7 @@ export default class Page {
 <div tuiToast>
 <div tuiAvatar="@tui.user">
 <img alt="" src="https://github.com/marsibarsi.png" />
-</div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button> } </div>
+</div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button tuiButtonX>Close</button> } </div>
 </section>
 <section [tuiPlatform]="platform">
 <div iconStart="@tui.alarm-clock" tuiShrinkWrap="min(25rem, 100%)" tuiToast >
@@ -45230,11 +45230,19 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiButtonX} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiButtonX,
+        TuiPlatform,
+        TuiShrinkWrap,
+        TuiToast,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -45329,6 +45337,7 @@ export default class Example {
 section {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 ```
 
