@@ -26,17 +26,21 @@ import {TuiInputColorComponent} from './input-color.component';
 })
 export class TuiInputColorContent {
     protected readonly host = inject(TuiInputColorComponent);
+    protected readonly maxAlpha = 255;
+    protected readonly hasRgb = computed(() => this.host.value().length >= 7);
 
-    protected readonly filled = computed(() =>
-        this.host.format() === 'hex'
-            ? this.host.value().length === 7
-            : this.host.value().length === 9,
-    );
+    protected readonly opacity = computed(() => {
+        if (this.host.format() !== 'hexa' || this.host.value().length !== 9) {
+            return this.maxAlpha;
+        }
 
-    protected readonly opacity = computed(() =>
-        this.filled() && this.host.format() === 'hexa'
-            ? Number.parseInt(this.host.value().slice(-2), 16)
-            : 255,
+        const parsed = Number.parseInt(this.host.value().slice(-2), 16);
+
+        return Number.isNaN(parsed) ? this.maxAlpha : parsed;
+    });
+
+    protected readonly opacityRatio = computed(() =>
+        this.hasRgb() ? this.opacity() / this.maxAlpha : 0,
     );
 
     protected onInput(value: string): void {
@@ -46,7 +50,7 @@ export class TuiInputColorContent {
     }
 
     protected onOpacity(opacity: number): void {
-        const value = this.filled() ? this.host.value().slice(0, 7) : '#000000';
+        const value = this.hasRgb() ? this.host.value().slice(0, 7) : '#000000';
 
         this.host.onChange(`${value}${toHex(opacity)}`);
     }
