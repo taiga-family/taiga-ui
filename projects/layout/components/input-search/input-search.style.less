@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-tui-input-search-content:where(*&) {
+:host {
     display: contents;
 }
 
@@ -15,7 +15,7 @@ tui-input-search-content:where(*&) {
     background: var(--tui-service-backdrop);
     box-shadow: 0 0 0 5rem var(--tui-service-backdrop);
 
-    > tui-textfield {
+    ::ng-deep > tui-textfield {
         backdrop-filter: blur(1rem) brightness(0.8);
     }
 }
