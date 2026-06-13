@@ -1,56 +1,48 @@
 import {
-    type AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
+    afterNextRender,
+    Directive,
     ElementRef,
     inject,
+    INJECTOR,
     input,
-    TemplateRef,
-    viewChild,
+    signal,
     ViewContainerRef,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 
 import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
+import {TuiTextareaContent} from './textarea-content.component';
 
-@Component({
+@Directive({
     selector: 'textarea[tuiTextarea]',
-    imports: [PolymorpheusOutlet, TuiScrollControls],
-    templateUrl: './textarea.template.html',
-    styleUrl: './textarea.style.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiWithInput],
     host: {
-        ngSkipHydration: 'true',
         '[class._mobile]': 'isMobile',
-        // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
     },
 })
-export class TuiTextareaComponent implements AfterViewInit {
-    private readonly template = viewChild.required(TemplateRef);
-    private readonly options = inject(TUI_TEXTAREA_OPTIONS);
+export class TuiTextareaComponent {
     private readonly vcr = inject(ViewContainerRef);
-    private readonly text = viewChild('text', {read: ElementRef});
+    private readonly injector = inject(INJECTOR);
+    private readonly options = inject(TUI_TEXTAREA_OPTIONS);
 
-    protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
-    protected readonly textfield = inject(TuiTextfieldComponent<string>);
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-
+    public readonly el = tuiInjectElement<HTMLTextAreaElement>();
+    public readonly isMobile = inject(WA_IS_MOBILE);
+    public readonly text = signal<ElementRef<HTMLSpanElement> | undefined>(undefined);
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);
 
-    public ngAfterViewInit(): void {
-        this.vcr.createEmbeddedView(this.template());
+    constructor() {
+        afterNextRender(() => {
+            this.vcr.createComponent(TuiTextareaContent, {injector: this.injector});
+        });
     }
 
     protected onScroll(): void {
