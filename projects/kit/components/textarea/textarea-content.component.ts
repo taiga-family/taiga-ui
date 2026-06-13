@@ -4,8 +4,8 @@ import {
     effect,
     type ElementRef,
     inject,
-    ViewEncapsulation,
     viewChild,
+    ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
