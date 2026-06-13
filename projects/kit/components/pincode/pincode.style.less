@@ -53,7 +53,8 @@ input[tuiPincode] {
         }
 
         tui-pincode-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(var(--t-length), 1.375rem);
             align-items: center;
             justify-content: center;
             gap: 1.25rem;
@@ -70,8 +71,6 @@ input[tuiPincode] {
             --t-collapse-delay: calc(var(--t-collapse-start) + var(--t-duration) * 14 / 3);
 
             position: relative;
-            flex: none;
-            inline-size: 1.375rem;
             block-size: 2.5rem;
             cursor: text;
         }
@@ -211,8 +210,11 @@ input[tuiPincode] {
     input[tuiPincode] + .t-content {
         --t-pitch: 2.5rem;
 
+        tui-pincode-content {
+            grid-template-columns: repeat(var(--t-length), 1.25rem);
+        }
+
         .t-item {
-            inline-size: 1.25rem;
             block-size: 2.25rem;
         }
 
