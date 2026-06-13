@@ -21,6 +21,7 @@
                 [content]="content || defaultExampleContent"
                 [lineHeight]="lineHeight"
                 [linesLimit]="linesLimit"
+                [showHint]="showHint"
                 [style.maxWidth.px]="maxWidth"
                 (overflownChange)="overflownChange.emitEvent($event)"
             />
@@ -59,6 +60,14 @@
                 [(value)]="linesLimit"
             >
                 number of visible lines
+            </tr>
+            <tr
+                name="[showHint]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="showHint"
+            >
+                show hint on hover when content is overflown
             </tr>
             <tr
                 name="[style.max-width.px]"
