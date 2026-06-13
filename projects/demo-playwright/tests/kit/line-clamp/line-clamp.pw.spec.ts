@@ -127,7 +127,6 @@ test.describe('LineClamp', () => {
 
     test('does not show hint when disabled', async ({page}) => {
         const basicText = 'Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici';
-
         const pagePO = new TuiDocumentationPagePO(page);
 
         await tuiGoto(
@@ -137,6 +136,7 @@ test.describe('LineClamp', () => {
         await pagePO.prepareBeforeScreenshot();
 
         await pagePO.demo.locator('tui-line-clamp').hover();
+        await page.waitForTimeout(600);
 
         await expect(page.locator('tui-popups .hint')).toHaveCount(0);
     });
