@@ -58,7 +58,7 @@
 .t-aside {
     position: relative;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: minmax(0, 1fr) auto;
     block-size: 100%;
     border-radius: inherit;
     overflow: hidden;
@@ -85,6 +85,7 @@
 }
 
 .t-scrollbar {
+    min-block-size: 0;
     overscroll-behavior: contain;
 
     ::ng-deep > .t-content > header {
