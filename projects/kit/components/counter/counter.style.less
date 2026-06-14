@@ -1,12 +1,12 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     min-inline-size: min(10.5rem, 100%);
     max-inline-size: 100%;
     align-items: center;
     inline-size: fit-content;
-    justify-content: flex-end;
     border-radius: 1rem;
     gap: 0.25rem;
 
@@ -39,9 +39,8 @@
 }
 
 .t-content {
-    display: flex;
-    flex: 1;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     white-space: nowrap;
     font-weight: bold;
     font-variant-numeric: tabular-nums;
