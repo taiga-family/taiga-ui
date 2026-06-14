@@ -10,20 +10,18 @@ tui-input-pin-content:where(*&) {
     .fullsize();
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     gap: inherit;
     border-radius: inherit;
 
     .t-item {
         display: grid;
         place-items: center;
+        min-inline-size: 0;
         border-radius: inherit;
         pointer-events: auto;
         cursor: text;
-
-        &:first-child {
-            pointer-events: none;
-        }
 
         &[data-focus='true'] .t-value {
             &_filled {
