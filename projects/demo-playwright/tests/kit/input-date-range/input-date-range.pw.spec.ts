@@ -224,7 +224,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await calendarSheet.clickOnDay(15);
-                await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(20).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
@@ -239,15 +239,14 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
                 await expect(inputDateRange.calendar).toBeAttached();
-                await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(22).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
                     .toHaveScreenshot('12-2-no-hover-effect.png');
 
                 await calendarSheet.clickOnDay(22);
-
-                await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(25).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
@@ -264,12 +263,14 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.textfield.click();
             await calendarSheet.clickOnDay(1);
+            await page.mouse.move(0, 0);
 
             await expect(
                 page.locator('tui-dropdown tui-calendar-range'),
             ).toHaveScreenshot('input-date-range-min-length-15-1.png');
 
             await calendarSheet.clickOnDay(18);
+            await page.mouse.move(0, 0);
 
             await expect
                 .soft(inputDateRange.textfield)
