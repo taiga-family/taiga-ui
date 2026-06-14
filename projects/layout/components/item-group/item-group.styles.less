@@ -1,17 +1,24 @@
 @import '@taiga-ui/styles/utils';
 
 [tuiItemGroup]:where(*&) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(0, auto));
-    gap: var(--tui-item-margin, 0.25rem);
+    display: flex;
+    flex-wrap: wrap;
+
+    --tui-item-margin: 0.25rem;
+
+    & > *:not(tui-items-with-more) {
+        margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
+    }
 
     &._horizontal {
         .scrollbar-hidden();
 
-        display: flex;
         flex-wrap: nowrap;
         overflow: scroll;
-        gap: 0;
+
+        & > *:not(tui-items-with-more) {
+            margin-block-end: 0;
+        }
     }
 
     &._initialized {
