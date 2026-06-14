@@ -22,6 +22,12 @@ tui-input-pin-content:where(*&) {
         border-radius: inherit;
         pointer-events: auto;
         cursor: text;
+        margin-inline-start: 0.25rem;
+
+        &:first-child {
+            pointer-events: none;
+            margin: 0;
+        }
 
         &[data-focus='true'] .t-value {
             &_filled {
