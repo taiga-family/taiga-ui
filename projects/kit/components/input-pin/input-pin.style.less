@@ -9,23 +9,20 @@
 tui-input-pin-content:where(*&) {
     .fullsize();
 
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
     gap: inherit;
     border-radius: inherit;
 
     .t-item {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        place-items: center;
         border-radius: inherit;
         pointer-events: auto;
         cursor: text;
-        margin-inline-start: 0.25rem;
 
         &:first-child {
             pointer-events: none;
-            margin: 0;
         }
 
         &[data-focus='true'] .t-value {
