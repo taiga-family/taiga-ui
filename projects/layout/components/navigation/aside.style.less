@@ -6,7 +6,7 @@ aside[tuiNavigationAside]:where(*&) {
     position: sticky;
     z-index: 1;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     inset-block-start: 3rem;
     inset-inline-start: 0;
     inline-size: 3rem;
@@ -41,6 +41,7 @@ aside[tuiNavigationAside]:where(*&) {
 
     .t-nav-scrollbar {
         margin: 0 -0.25rem;
+        min-block-size: 0;
     }
 
     .t-nav-content {
@@ -77,7 +78,12 @@ aside[tuiNavigationAside]:where(*&) {
             min-block-size: 1.75rem;
             margin: 0 -0.5rem;
             flex: 1;
-            mask-image: linear-gradient(transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
+            mask-image: linear-gradient(
+                transparent 0,
+                black 3rem,
+                black calc(100% - 3rem),
+                transparent 100%
+            );
         }
     }
 
