@@ -1,0 +1,112 @@
+name: 🤖 Cleanup stale branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only print branches without deleting them'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+  schedule:
+    - cron: '37 2 * * *' # 02:37 UTC every day
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  cleanup:
+    name: Delete branches without open PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup branches
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+
+          default_branch="$(gh api "repos/$REPO" --jq '.default_branch')"
+
+          echo "Repository: $REPO"
+          echo "Default branch: $default_branch"
+          echo "Dry run: $DRY_RUN"
+          echo
+
+          open_pr_branches_file="$RUNNER_TEMP/open-pr-branches.txt"
+          branches_file="$RUNNER_TEMP/branches.tsv"
+
+          gh api --paginate --slurp "repos/$REPO/pulls?state=open&per_page=100" \
+            | jq -r --arg repo "$REPO" '.[][] | select(.head.repo.full_name == $repo) | .head.ref' \
+            | sort -u > "$open_pr_branches_file"
+
+          gh api --paginate --slurp "repos/$REPO/branches?per_page=100" \
+            | jq -r '.[][] | [.name, (.protected | tostring)] | @tsv' \
+            | sort -u > "$branches_file"
+
+          is_excluded_branch() {
+            local branch="$1"
+
+            [[ "$branch" == "$default_branch" ]] && return 0
+            [[ "$branch" == "gh-pages" ]] && return 0
+            [[ "$branch" == snapshots/* ]] && return 0
+            [[ "$branch" =~ ^v[0-9]+\.x$ ]] && return 0
+
+            return 1
+          }
+
+          has_open_pr() {
+            local branch="$1"
+
+            grep -Fxq -- "$branch" "$open_pr_branches_file"
+          }
+
+          deleted_count=0
+          skipped_count=0
+
+          while IFS=$'\t' read -r branch protected; do
+            if is_excluded_branch "$branch"; then
+              echo "Skip excluded branch: $branch"
+              ((skipped_count+=1))
+              continue
+            fi
+
+            if [[ "$protected" == "true" ]]; then
+              echo "Skip protected branch: $branch"
+              ((skipped_count+=1))
+              continue
+            fi
+
+            if has_open_pr "$branch"; then
+              echo "Skip branch with open PR: $branch"
+              ((skipped_count+=1))
+              continue
+            fi
+
+            if [[ "$DRY_RUN" == "true" ]]; then
+              echo "[dry-run] Would delete branch: $branch"
+            else
+              echo "Delete branch: $branch"
+              gh api \
+                --method DELETE \
+                --silent \
+                "repos/$REPO/git/refs/heads/$branch"
+            fi
+
+            ((deleted_count+=1))
+          done < "$branches_file"
+
+          echo
+          echo "Done."
+          echo "Branches selected for deletion: $deleted_count"
+          echo "Branches skipped: $skipped_count"
+
+concurrency:
+  group: cleanup-stale-branches
+  cancel-in-progress: false
