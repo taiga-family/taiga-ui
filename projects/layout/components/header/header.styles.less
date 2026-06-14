@@ -2,8 +2,7 @@
 
 [tuiHeader]:where(*&) {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: flex-start;
     box-sizing: content-box;
     color: var(--tui-text-primary);
@@ -11,17 +10,6 @@
     gap: 0.5rem 1rem;
     text-align: start;
     overflow-wrap: break-word;
-
-    > :not([tuiAccessories]) {
-        grid-column: 1;
-        min-inline-size: 0;
-    }
-
-    > [tuiAccessories] {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
-    }
 
     p {
         margin: 0.25rem 0 0;
@@ -34,7 +22,9 @@
 
     [tuiTitle] {
         max-inline-size: fit-content;
+        flex: 1 0 60%;
         margin: 0;
+        margin-inline-end: auto;
         font: inherit;
 
         &:empty {
