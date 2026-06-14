@@ -2,7 +2,8 @@
 
 :host {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    justify-content: end;
     min-inline-size: min(10.5rem, 100%);
     max-inline-size: 100%;
     align-items: center;
