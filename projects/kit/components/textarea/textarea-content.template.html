@@ -11,7 +11,7 @@
     [style.max-height.em]="1.25 * host.max()"
     [style.min-height.em]="1.25 * host.min()"
 >
-    <ng-container *polymorpheusOutlet="host.content() as text; context: {$implicit: host.el.value}">
+    <ng-container *polymorpheusOutlet="host.content() as text; context: {$implicit: textfield.value()}">
         {{ text }}
     </ng-container>
 </span>

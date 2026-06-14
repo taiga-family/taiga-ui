@@ -32,7 +32,8 @@ export class TuiTextareaComponent {
     private readonly injector = inject(INJECTOR);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
 
-    public readonly el = tuiInjectElement<HTMLTextAreaElement>();
+    protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
+
     public readonly isMobile = inject(WA_IS_MOBILE);
     public readonly text = signal<ElementRef<HTMLSpanElement> | undefined>(undefined);
     public readonly min = input(this.options.min);

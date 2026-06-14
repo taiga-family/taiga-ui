@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTextareaComponent} from './textarea.component';
@@ -30,5 +31,6 @@ export class TuiTextareaContent {
     private readonly textRef = viewChild<ElementRef<HTMLSpanElement>>('text');
 
     protected readonly host = inject(TuiTextareaComponent);
+    protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly ef = effect(() => this.host.text.set(this.textRef()));
 }
