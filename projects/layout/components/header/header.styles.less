@@ -12,6 +12,17 @@
     text-align: start;
     overflow-wrap: break-word;
 
+    > :not([tuiAccessories]) {
+        grid-column: 1;
+        min-inline-size: 0;
+    }
+
+    > [tuiAccessories] {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+
     p {
         margin: 0.25rem 0 0;
         font: var(--tui-typography-body-m);
@@ -42,7 +53,7 @@
         }
 
         &::before {
-            content: '​';
+            content: '';
             visibility: hidden;
             margin-inline-end: -0.75rem;
         }
