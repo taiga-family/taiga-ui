@@ -5,12 +5,12 @@ aside[tuiNavigationAside]:where(*&) {
 
     position: sticky;
     z-index: 1;
-    display: flex;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     inset-block-start: 3rem;
     inset-inline-start: 0;
     inline-size: 3rem;
     min-block-size: 0;
-    flex-direction: column;
     padding: 0.5rem 0.5rem 0.25rem;
     box-sizing: border-box;
     background: var(--tui-theme-color, #000);
@@ -71,7 +71,6 @@ aside[tuiNavigationAside]:where(*&) {
     footer {
         display: flex;
         flex-direction: column;
-        flex: 1;
 
         &::before {
             content: '';
