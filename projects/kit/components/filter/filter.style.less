@@ -1,9 +1,11 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(max-content, 11rem));
-    gap: var(--t-gap, 0.25rem);
+    --t-gap: 0.25rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--t-gap);
 
     &[data-size='l'] {
         --t-gap: 0.5rem;
