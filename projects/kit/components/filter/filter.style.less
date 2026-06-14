@@ -1,10 +1,9 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    display: block;
-    margin-block-end: calc(-1 * var(--t-gap));
-
-    --t-gap: 0.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max-content, 11rem));
+    gap: var(--t-gap, 0.25rem);
 
     &[data-size='l'] {
         --t-gap: 0.5rem;
@@ -13,11 +12,6 @@
 
 .t-item {
     max-inline-size: 11rem;
-    margin: 0 var(--t-gap) var(--t-gap) 0;
-
-    &:last-child {
-        margin-inline-end: 0;
-    }
 }
 
 .t-text {
