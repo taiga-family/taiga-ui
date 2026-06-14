@@ -3,8 +3,9 @@
 :host {
     --t-gap: 0.25rem;
 
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, max-content));
+    justify-content: start;
     gap: var(--t-gap);
 
     &[data-size='l'] {
@@ -14,6 +15,8 @@
 
 .t-item {
     max-inline-size: 11rem;
+    min-inline-size: 0;
+    justify-self: start;
 }
 
 .t-text {
