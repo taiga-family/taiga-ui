@@ -149,7 +149,8 @@
 }
 
 .t-week {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     align-items: center;
     block-size: 1.875rem;
     inline-size: 20.75rem;
@@ -166,7 +167,6 @@
 }
 
 .t-day {
-    flex: 1;
     text-align: center;
 }
 
