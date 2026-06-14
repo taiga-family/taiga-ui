@@ -1,10 +1,10 @@
 import {
-    afterNextRender,
     Directive,
     ElementRef,
     inject,
     INJECTOR,
     input,
+    type OnInit,
     signal,
     ViewContainerRef,
 } from '@angular/core';
@@ -27,7 +27,7 @@ import {TuiTextareaContent} from './textarea-content.component';
         '(scroll.zoneless)': 'onScroll()',
     },
 })
-export class TuiTextareaComponent {
+export class TuiTextareaComponent implements OnInit {
     private readonly vcr = inject(ViewContainerRef);
     private readonly injector = inject(INJECTOR);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
@@ -40,10 +40,8 @@ export class TuiTextareaComponent {
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);
 
-    constructor() {
-        afterNextRender(() => {
-            this.vcr.createComponent(TuiTextareaContent, {injector: this.injector});
-        });
+    public ngOnInit(): void {
+        this.vcr.createComponent(TuiTextareaContent, {injector: this.injector});
     }
 
     protected onScroll(): void {
