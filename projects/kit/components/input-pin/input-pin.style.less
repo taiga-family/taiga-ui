@@ -9,16 +9,15 @@
 tui-input-pin-content:where(*&) {
     .fullsize();
 
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
+    display: flex;
     gap: inherit;
     border-radius: inherit;
 
     .t-item {
-        display: grid;
-        place-items: center;
-        min-inline-size: 0;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
         border-radius: inherit;
         pointer-events: auto;
         cursor: text;
