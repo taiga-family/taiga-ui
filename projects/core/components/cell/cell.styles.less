@@ -240,6 +240,34 @@
         inline-size: 100%;
         margin-inline: -1rem;
     }
+
+    &[tuiCellResponsive] {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: fit-content(100%);
+        grid-template-columns: auto 1fr;
+
+        &:has(> [tuiTitle]:first-child) {
+            grid-template-columns: 1fr;
+        }
+
+        > * {
+            grid-row: 1;
+        }
+
+        &._rearranged {
+            [tuiAccessories] {
+                grid-row: 2;
+            }
+
+            [tuiTitle] {
+                [tuiTitle],
+                [tuiSubtitle] {
+                    display: grid;
+                }
+            }
+        }
+    }
 }
 
 @media @tui-mouse {
