@@ -9,6 +9,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -22,6 +23,7 @@ import {TuiTextareaContent} from './textarea-content.component';
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiWithInput],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'isMobile',
         '(scroll.once)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
