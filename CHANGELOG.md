@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.87.0](https://github.com/taiga-family/taiga-ui/compare/v4.86.0...v4.87.0) (2026-06-15)
+
+### 🐞 Bug Fixes
+
+- **core:** add missing styles encapsulation ([#14276](https://github.com/taiga-family/taiga-ui/issues/14276))
+  ([bd09fdc](https://github.com/taiga-family/taiga-ui/commit/bd09fdcdcf9175fa8b6adcd40e2706ed9a951baf))
+- **kit:** broken `Copy` directive in textfield on ios ([#14330](https://github.com/taiga-family/taiga-ui/issues/14330))
+  ([92c94de](https://github.com/taiga-family/taiga-ui/commit/92c94de31d39465c6ce6ef4d4cddd98b323e433b))
+- **kit:** broken `Tooltip` in textfield on ios ([#14329](https://github.com/taiga-family/taiga-ui/issues/14329))
+  ([bc35444](https://github.com/taiga-family/taiga-ui/commit/bc35444d7967c9fee8714e06b905a34f58e5b394))
+
 ## [4.86.0](https://github.com/taiga-family/taiga-ui/compare/v4.85.0...v4.86.0) (2026-06-08)
 
 ### 🐞 Bug Fixes
