@@ -25,6 +25,7 @@ import {TuiTextareaContent} from './textarea-content.component';
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'isMobile',
+        // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
     },
