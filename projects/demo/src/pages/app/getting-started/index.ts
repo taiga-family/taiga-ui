@@ -35,6 +35,7 @@ export default class Page {
         'Add icons',
         'Root component',
         'Provide config',
+        'Server Side Rendering',
     ];
 
     protected readonly content: ReadonlyArray<Record<string, TuiRawLoaderContent>> = [
@@ -55,6 +56,7 @@ export default class Page {
             'app.component.html': import('./examples/app-template.md'),
         },
         {'main.ts': import('./examples/main-standalone.md')},
+        {'main.server.ts': import('./examples/main.server.md')},
     ];
 
     protected toggle(section: string): void {
