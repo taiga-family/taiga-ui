@@ -10038,9 +10038,15 @@ export default class Example {
 &lt;/div&gt;
 &lt;div tuiCell [style.white-space]=&quot;&#039;nowrap&#039;&quot; &gt;
 &lt;div tuiAvatar=&quot;@tui.smile&quot; [round]=&quot;false&quot; &gt;&lt;/div&gt;
-&lt;div tuiFade tuiTitle &gt; Works with fade on both sides &lt;div tuiSubtitle&gt;You can control proportions&lt;/div&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiTitle&gt;
+&lt;span tuiFade&gt;Works with fade on both sides&lt;/span&gt;
+&lt;span tuiFade&gt;Proportions are controlled with flex&lt;/span&gt;
 &lt;/div&gt;
-&lt;div tuiFade tuiTitle &gt; Proportions are controlled with flex &lt;div tuiSubtitle&gt;Flex shrink is set to 70-30 by default&lt;/div&gt;
+&lt;div tuiSubtitle&gt;
+&lt;span tuiFade&gt;You can control proportions&lt;/span&gt;
+&lt;span tuiFade&gt;Flex shrink is set to 70-30 by default&lt;/span&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;tui-badge-notification size=&quot;xs&quot; /&gt;
 &lt;/div&gt;
@@ -10059,11 +10065,15 @@ export default class Example {
 &lt;div tuiCell&gt;
 &lt;div tuiAccessories tuiAvatar=&quot;@tui.home&quot; &gt;&lt;/div&gt;
 &lt;div tuiTitle&gt;
-&lt;strong&gt;Main account&lt;/strong&gt;
-&lt;div tuiSubtitle&gt;USD&lt;/div&gt;
-&lt;div appearance=&quot;neutral&quot; tuiBadge &gt; By default unless arrested &lt;/div&gt;
+&lt;div tuiTitle&gt;
+&lt;b tuiFade&gt;Main account balance&lt;/b&gt;
+&lt;span tuiFade&gt;$123 456&lt;/span&gt;
 &lt;/div&gt;
-&lt;div tuiAccessories tuiTitle [style.overflow]=&quot;&#039;visible&#039;&quot; [style.white-space]=&quot;&#039;nowrap&#039;&quot; [style.width]=&quot;0&quot; &gt; $123 456 &lt;div tuiSubtitle&gt;Careful, content may overlap&lt;/div&gt;
+&lt;div tuiSubtitle&gt;
+&lt;span tuiFade&gt;USD&lt;/span&gt;
+&lt;span tuiFade&gt;This subtitle has a lot of words in it&lt;/span&gt;
+&lt;/div&gt;
+&lt;div appearance=&quot;neutral&quot; tuiBadge &gt; By default unless arrested &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 ```
@@ -10123,7 +10133,7 @@ export default class Example {}
 &lt;/ng-template&gt;
 &lt;/div&gt;
 &lt;div tuiCell type=&quot;button&quot; &gt;
-&lt;div tuiTitle&gt; Multiple actions &lt;div tuiSubtitle&gt;When there&#039;s content on the right&lt;/div&gt;
+&lt;div tuiTitle&gt; Multiple actions &lt;div tuiSubtitle&gt;With content on the right&lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiCellActions tuiGroup tuiTheme=&quot;dark&quot; [collapsed]=&quot;true&quot; &gt; @for (item of items; track item) { &lt;button appearance=&quot;primary-grayscale&quot; tuiIconButton type=&quot;button&quot; [iconStart]=&quot;item.icon&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/div&gt;
 &lt;div tuiTitle&gt; Hover over &lt;div tuiSubtitle&gt;Put it before the right side&lt;/div&gt;
