@@ -54,10 +54,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     protected readonly stringify = tuiDirectiveBinding(
         TuiItemsHandlersDirective,
         'stringify',
-        (item) =>
-            this.dateMultiOptions.valueTransformer
-                .fromControlValue([item])[0]
-                ?.toString(this.format().mode, this.format().separator) ?? '',
+        (item) => item?.toString(this.format().mode, this.format().separator) ?? '',
         {},
     );
 

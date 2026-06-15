@@ -11,6 +11,14 @@ export class TuiDocumentationApiPagePO {
     public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
     public readonly value = this.page.locator('tui-doc-demo > tui-expand pre');
 
+    public readonly submitFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__submit-state"]',
+    );
+
+    public readonly resetFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__reset-state"]',
+    );
+
     constructor(protected readonly page: Page) {}
 
     public async waitStableState(): Promise<void> {

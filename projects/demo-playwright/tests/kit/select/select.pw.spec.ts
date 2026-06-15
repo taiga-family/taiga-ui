@@ -160,4 +160,33 @@ describe('Select', () => {
             });
         });
     });
+
+    describe('updateOn=submit', () => {
+        test('displays picked option immediately, but updates control value only on submit', async ({
+            page,
+        }) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.Select}/API?sandboxExpanded=true&updateOn=submit`,
+            );
+
+            documentationPage = new TuiDocumentationPagePO(page);
+            const select = new TuiSelectPO(
+                documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+            );
+
+            await expect(select.textfield).toHaveValue('USA');
+
+            await select.textfield.click();
+            await select.dropdown.locator('[tuiOption]', {hasText: 'Austria'}).click();
+
+            await expect(select.textfield).toHaveValue('Austria');
+            // Control value should stay intact until the form is submitted
+            await expect(documentationPage.value).toContainText('"name": "USA"');
+
+            await documentationPage.submitFormControlButton.click();
+
+            await expect(documentationPage.value).toContainText('"name": "Austria"');
+        });
+    });
 });
