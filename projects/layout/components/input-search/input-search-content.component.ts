@@ -1,9 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    effect,
+    type ElementRef,
     inject,
-    TemplateRef,
     viewChild,
 } from '@angular/core';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -18,8 +17,7 @@ import {TuiInputSearch} from './input-search.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputSearchContent {
-    private readonly tpl = viewChild.required(TemplateRef);
-
     protected readonly host = inject(TuiInputSearch);
-    protected readonly ef = effect(() => this.host.template.set(this.tpl()));
+
+    public readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
 }
