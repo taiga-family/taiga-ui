@@ -63,8 +63,10 @@ export default class Example {
     protected selected: readonly User[] = [];
     protected sum = null;
     protected user: User | null = null;
+    protected input = '';
 
     protected readonly open = signal(false);
+    protected readonly dropdownOpen = signal(false);
 
     protected readonly countries$ = inject(TUI_COUNTRIES).pipe(map(Object.values));
 

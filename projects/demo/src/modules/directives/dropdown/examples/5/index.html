@@ -1,3 +1,46 @@
+<button
+    tuiButton
+    tuiDropdownLimitWidth="fixed"
+    tuiDropdownMobile="Input inside dropdown"
+    type="button"
+    class="tui-space_vertical-4"
+    [style.width.%]="100"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownOpen]="dropdownOpen()"
+    (tuiDropdownOpenChange)="dropdownOpen.set($event)"
+>
+    Open dropdown with input
+
+    <ng-template
+        #dropdown
+        let-close
+    >
+        <div [style.padding.rem]="1">
+            <tui-textfield>
+                <label tuiLabel>Input</label>
+                <input
+                    placeholder="Type something and tap Done"
+                    tuiTextfield
+                    [(ngModel)]="input"
+                />
+            </tui-textfield>
+
+            <p class="tui-text_body-s tui-space_top-3">
+                On iOS, tapping Done on the virtual keyboard should not close this dropdown.
+            </p>
+
+            <button
+                tuiButton
+                tuiDropdownButton
+                type="button"
+                (click)="close()"
+            >
+                Close
+            </button>
+        </div>
+    </ng-template>
+</button>
+
 <tui-combo-box
     tuiDropdownMobile
     [tuiTextfieldCleaner]="true"
