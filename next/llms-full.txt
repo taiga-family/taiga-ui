@@ -10716,7 +10716,7 @@ Chip component is used to display array data and can also be interactive dependi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXXS` | — |
 
 ### Usage Examples
 
