@@ -11,7 +11,7 @@ describe('ng-update tuiPresentChange attribute', () => {
     it(
         'should replace tuiPresentChange attribute to tuiPresent in ts files',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import { Component } from "@angular/core";
 
                 @Component({

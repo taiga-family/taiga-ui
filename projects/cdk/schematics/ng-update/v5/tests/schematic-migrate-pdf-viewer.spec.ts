@@ -12,7 +12,7 @@ describe('ng-update TuiPdfViewer migration', () => {
     it(
         'should migrate TuiPdfViewer import from @taiga-ui/kit to @taiga-ui/legacy',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiPdfViewer} from '@taiga-ui/kit';
 
                 @Component({})
@@ -23,14 +23,14 @@ describe('ng-update TuiPdfViewer migration', () => {
                         // some usage
                     }
                 }
-        `,
+            `,
         }),
     );
 
     it(
         'should migrate TuiPdfViewerComponent import from @taiga-ui/experimental to TuiPdfViewer in @taiga-ui/layout',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiPdfViewerComponent} from '@taiga-ui/experimental';
 
                 @Component({})
@@ -48,7 +48,7 @@ describe('ng-update TuiPdfViewer migration', () => {
     it(
         'should migrate TuiPdfViewerService import from @taiga-ui/kit to @taiga-ui/legacy',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {inject} from '@angular/core';
                 import {TuiPdfViewerService} from '@taiga-ui/kit';
 

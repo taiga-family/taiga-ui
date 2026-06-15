@@ -12,15 +12,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_SOURCE_CODE_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             `,
@@ -30,15 +28,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_MENU_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_MENU_TEXT, useValue: 'Navigation'},
-                    ],
+                    providers: [{provide: TUI_DOC_MENU_TEXT, useValue: 'Navigation'}],
                 })
                 export class TestComponent {}
             `,
@@ -48,15 +44,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_SEARCH_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_SEARCH_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEARCH_TEXT, useValue: 'Find...'},
-                    ],
+                    providers: [{provide: TUI_DOC_SEARCH_TEXT, useValue: 'Find...'}],
                 })
                 export class TestComponent {}
             `,
@@ -66,15 +60,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_SEE_ALSO_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEE_ALSO_TEXT, useValue: 'Related'},
-                    ],
+                    providers: [{provide: TUI_DOC_SEE_ALSO_TEXT, useValue: 'Related'}],
                 })
                 export class TestComponent {}
             `,
@@ -84,15 +76,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_TOC_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_TOC_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_TOC_TEXT, useValue: 'Contents'},
-                    ],
+                    providers: [{provide: TUI_DOC_TOC_TEXT, useValue: 'Contents'}],
                 })
                 export class TestComponent {}
             `,
@@ -102,7 +92,7 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps array useValue with signal() for TUI_DOC_DEMO_TEXTS',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_DEMO_TEXTS} from '@taiga-ui/addon-doc';
 
@@ -120,15 +110,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'wraps plain string useValue with signal() for TUI_DOC_PREVIEW_TEXT',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_PREVIEW_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'},
-                    ],
+                    providers: [{provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'}],
                 })
                 export class TestComponent {}
             `,
@@ -138,15 +126,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'adds signal import from @angular/core when not present',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             `,
@@ -156,15 +142,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'does not add duplicate signal import when signal is already imported',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, signal} from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             `,
@@ -174,7 +158,7 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'does not re-wrap useValue already wrapped in signal()',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, signal} from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
@@ -192,7 +176,7 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'does not touch useFactory providers for doc tokens',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc';
 
@@ -210,15 +194,13 @@ describe('ng-update migrateDocI18nTokens', () => {
     it(
         'does not touch non-doc tokens',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_SOMETHING_ELSE} from '@taiga-ui/addon-doc';
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_SOMETHING_ELSE, useValue: 'value'},
-                    ],
+                    providers: [{provide: TUI_SOMETHING_ELSE, useValue: 'value'}],
                 })
                 export class TestComponent {}
             `,

@@ -10,13 +10,13 @@ describe('ng-update ComboBox', () => {
     it(
         'migrates TuiComboBoxModule import and basic tui-combo-box template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -220,13 +220,16 @@ describe('ng-update ComboBox', () => {
     it(
         'removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO',
         migrate({
-            component: `
-                import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+            component: /* TypeScript */ `
+                import {
+                    TuiComboBoxModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,

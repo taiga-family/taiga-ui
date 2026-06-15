@@ -12,7 +12,7 @@ describe('ng-update tag to chip', () => {
     it(
         'migrates TuiTagModule and tuiTagOptionsProvider and updates template selectors',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
 

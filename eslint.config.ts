@@ -36,6 +36,9 @@ export default [
         files: ['**/*.html'],
         rules: {
             '@taiga-ui/experience-next/no-nested-interactive': 'off', // TODO: fix later
+            '@angular-eslint/template/no-empty-control-flow': 'off', // TODO: fix later
+            '@angular-eslint/template/no-non-null-assertion': 'off', // TODO: fix later
+            '@angular-eslint/template/no-nested-tags': 'off', // TODO: fix later
         },
     },
 ];

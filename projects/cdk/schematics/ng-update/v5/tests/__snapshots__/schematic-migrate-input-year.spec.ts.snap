@@ -122,22 +122,22 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.ts 1`] = `
                 import {TuiInputYearModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             ",
@@ -145,22 +145,22 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.ts 1`] = `
 import { TuiInputYear } from "@taiga-ui/kit";
 
                                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputYear, TuiInput,
+                    ],
                     // ...
-                    TuiInputYear, TuiInput,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputYear, TuiInput,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputYear, TuiInput,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             ",

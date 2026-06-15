@@ -12,7 +12,7 @@ describe('ng-update Angular animations warning', () => {
     it(
         'adds TODO for tuiFadeIn usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {tuiFadeIn} from '@taiga-ui/core';
 
@@ -28,7 +28,7 @@ describe('ng-update Angular animations warning', () => {
     it(
         'adds TODO for tuiSlideInTop usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {tuiSlideInTop} from '@taiga-ui/core';
 
@@ -44,7 +44,7 @@ describe('ng-update Angular animations warning', () => {
     it(
         'adds TODO for multiple animations in one import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {tuiFadeIn, tuiHeightCollapse, tuiScaleIn} from '@taiga-ui/core';
 
@@ -60,7 +60,7 @@ describe('ng-update Angular animations warning', () => {
     it(
         'adds TODO for TuiDurationOptions type usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {type TuiDurationOptions} from '@taiga-ui/core';
 
@@ -68,7 +68,10 @@ describe('ng-update Angular animations warning', () => {
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    readonly options: TuiDurationOptions = {value: '', params: {duration: 300}};
+                    readonly options: TuiDurationOptions = {
+                        value: '',
+                        params: {duration: 300},
+                    };
                 }
             `,
         }),

@@ -3,7 +3,7 @@
 exports[`ng-update migrate tuiBlurNativeFocused to tuiBlurFocused: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiBlurNativeFocused } from "@taiga-ui/cdk";
+                import {tuiBlurNativeFocused} from '@taiga-ui/cdk';
 
                 tuiBlurNativeFocused(document);
             ",
@@ -17,7 +17,7 @@ exports[`ng-update migrate tuiBlurNativeFocused to tuiBlurFocused: test.ts 1`] =
 exports[`ng-update migrate tuiGetNativeFocused to tuiGetFocused: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiGetNativeFocused } from "@taiga-ui/cdk";
+                import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -41,7 +41,7 @@ exports[`ng-update migrate tuiGetNativeFocused to tuiGetFocused: test.ts 1`] = `
 exports[`ng-update migrate tuiIsApple from @taiga-ui/cdk to isApple: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiIsApple } from "@taiga-ui/cdk";
+                import {tuiIsApple} from '@taiga-ui/cdk';
 
                 tuiIsApple(navigator);
             ",
@@ -55,7 +55,7 @@ exports[`ng-update migrate tuiIsApple from @taiga-ui/cdk to isApple: test.ts 1`]
 exports[`ng-update migrate tuiIsApple from @taiga-ui/legacy to isApple: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiIsApple } from "@taiga-ui/legacy";
+                import {tuiIsApple} from '@taiga-ui/legacy';
 
                 tuiIsApple(navigator);
             ",
@@ -69,7 +69,7 @@ exports[`ng-update migrate tuiIsApple from @taiga-ui/legacy to isApple: test.ts 
 exports[`ng-update migrate tuiIsIos from @taiga-ui/cdk to isIos: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiIsIos } from "@taiga-ui/cdk";
+                import {tuiIsIos} from '@taiga-ui/cdk';
 
                 tuiIsIos(navigator);
             ",
@@ -83,7 +83,7 @@ exports[`ng-update migrate tuiIsIos from @taiga-ui/cdk to isIos: test.ts 1`] = `
 exports[`ng-update migrate tuiIsNativeFocused to tuiIsFocused: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiIsNativeFocused } from "@taiga-ui/cdk";
+                import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -111,7 +111,7 @@ exports[`ng-update migrate tuiIsNativeFocused to tuiIsFocused: test.ts 1`] = `
 exports[`ng-update migrate tuiIsNativeFocusedIn to tuiIsFocusedIn: test.ts 1`] = `
 {
   "0. Before": "
-                import { tuiIsNativeFocusedIn } from "@taiga-ui/cdk";
+                import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -139,13 +139,13 @@ exports[`ng-update migrate tuiIsNativeFocusedIn to tuiIsFocusedIn: test.ts 1`] =
 exports[`ng-update migrate tuiIsNativeKeyboardFocusable to tuiIsFocusable: test.ts 1`] = `
 {
   "0. Before": "
-            import { tuiIsNativeKeyboardFocusable } from "@taiga-ui/cdk";
+                import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
 
-            tuiIsNativeKeyboardFocusable(document.createElement('div'));
+                tuiIsNativeKeyboardFocusable(document.createElement('div'));
             ",
   "1. After": "import { tuiIsFocusable } from "@taiga-ui/cdk";
 
-                        tuiIsFocusable(document.createElement('div'));
+                                tuiIsFocusable(document.createElement('div'));
             ",
 }
 `;

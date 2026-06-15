@@ -11,7 +11,7 @@ import {TuiInputDateTimeContent} from './input-date-time-content.component';
 
 @Directive({
     selector: 'input[tuiInputDateTime][type="datetime-local"]',
-    providers: [tuiAsTextfieldContent(TuiInputDateTimeContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputDateTimeContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {'data-tui-version': TUI_VERSION},
 })

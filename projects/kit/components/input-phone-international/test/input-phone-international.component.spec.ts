@@ -14,6 +14,7 @@ import {
 import {
     TuiInputPhoneInternational,
     TuiInputPhoneInternationalComponent,
+    TuiInputPhoneInternationalContent,
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
@@ -89,7 +90,11 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component['onItemClick']('UA');
+            const content = fixture.debugElement.query(
+                By.directive(TuiInputPhoneInternationalContent),
+            ).componentInstance as TuiInputPhoneInternationalContent;
+
+            content['onItemClick']('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();

@@ -10,7 +10,7 @@ import {TuiInputDateContent} from './input-date-content.component';
 
 @Directive({
     selector: 'input[tuiInputDate][type="date"]',
-    providers: [tuiAsTextfieldContent(TuiInputDateContent)],
+    providers: [tuiAsTextfieldContent(() => TuiInputDateContent)],
     hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {
         'data-tui-version': TUI_VERSION,

@@ -12,7 +12,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes [single]="false" and adds tuiCalendarSheetOptionsProvider({rangeMode: true}) to providers',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCalendarSheet} from '@taiga-ui/core';
 
@@ -30,7 +30,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes [single]="true" without adding provider (default behavior)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCalendarSheet} from '@taiga-ui/core';
 
@@ -48,7 +48,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes plain single attribute without adding provider',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCalendarSheet} from '@taiga-ui/core';
 
@@ -66,9 +66,12 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes [single]="false" and adds rangeMode: true to existing tuiCalendarSheetOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,
@@ -85,9 +88,12 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes [single]="false" and updates rangeMode in existing tuiCalendarSheetOptionsProvider call',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,
@@ -104,7 +110,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'adds TODO comment and removes dynamic [single]="expr" binding',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCalendarSheet} from '@taiga-ui/core';
 
@@ -124,7 +130,7 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'handles multiple tui-calendar-sheet elements in one template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiCalendarSheet} from '@taiga-ui/core';
 
@@ -145,9 +151,12 @@ describe('ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider'
     it(
         'removes [single]="true" without touching existing tuiCalendarSheetOptionsProvider({rangeMode: true})',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,

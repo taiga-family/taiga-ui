@@ -12,8 +12,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsNativeFocused to tuiIsFocused',
         migrate({
-            component: `
-                import { tuiIsNativeFocused } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -30,8 +30,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsNativeFocusedIn to tuiIsFocusedIn',
         migrate({
-            component: `
-                import { tuiIsNativeFocusedIn } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -48,8 +48,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiGetNativeFocused to tuiGetFocused',
         migrate({
-            component: `
-                import { tuiGetNativeFocused } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class Test {
@@ -64,10 +64,10 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsNativeKeyboardFocusable to tuiIsFocusable',
         migrate({
-            component: `
-            import { tuiIsNativeKeyboardFocusable } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
 
-            tuiIsNativeKeyboardFocusable(document.createElement('div'));
+                tuiIsNativeKeyboardFocusable(document.createElement('div'));
             `,
         }),
     );
@@ -75,8 +75,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiBlurNativeFocused to tuiBlurFocused',
         migrate({
-            component: `
-                import { tuiBlurNativeFocused } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiBlurNativeFocused} from '@taiga-ui/cdk';
 
                 tuiBlurNativeFocused(document);
             `,
@@ -86,8 +86,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsApple from @taiga-ui/legacy to isApple',
         migrate({
-            component: `
-                import { tuiIsApple } from "@taiga-ui/legacy";
+            component: /* TypeScript */ `
+                import {tuiIsApple} from '@taiga-ui/legacy';
 
                 tuiIsApple(navigator);
             `,
@@ -97,8 +97,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsApple from @taiga-ui/cdk to isApple',
         migrate({
-            component: `
-                import { tuiIsApple } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiIsApple} from '@taiga-ui/cdk';
 
                 tuiIsApple(navigator);
             `,
@@ -108,8 +108,8 @@ describe('ng-update', () => {
     it(
         'migrate tuiIsIos from @taiga-ui/cdk to isIos',
         migrate({
-            component: `
-                import { tuiIsIos } from "@taiga-ui/cdk";
+            component: /* TypeScript */ `
+                import {tuiIsIos} from '@taiga-ui/cdk';
 
                 tuiIsIos(navigator);
             `,

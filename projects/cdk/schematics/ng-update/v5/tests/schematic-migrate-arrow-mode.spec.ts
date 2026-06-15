@@ -12,7 +12,7 @@ describe('ng-update arrow mode', () => {
     it(
         'adds TODO above TUI_ARROW_MODE usage in providers',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_ARROW, TUI_ARROW_MODE} from '@taiga-ui/legacy';
 
@@ -33,7 +33,7 @@ describe('ng-update arrow mode', () => {
     it(
         'adds TODO above TUI_ARROW_MODE inject usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {inject} from '@angular/core';
                 import {TUI_ARROW_MODE} from '@taiga-ui/legacy';
 
@@ -47,7 +47,7 @@ describe('ng-update arrow mode', () => {
     it(
         'adds TODO above tuiArrowModeProvider usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_ARROW, tuiArrowModeProvider} from '@taiga-ui/legacy';
 
@@ -65,7 +65,7 @@ describe('ng-update arrow mode', () => {
     it(
         'adds TODO above TuiArrowMode type usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Inject} from '@angular/core';
                 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/legacy';
 

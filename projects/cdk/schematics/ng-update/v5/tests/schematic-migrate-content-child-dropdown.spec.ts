@@ -10,7 +10,7 @@ describe('ng-update', () => {
     it(
         'migrate contentChild with TuiTextfieldDropdownDirective to TuiDropdownContent',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {contentChild, TemplateRef} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -29,7 +29,7 @@ describe('ng-update', () => {
     it(
         'migrate contentChild with TuiTextfieldDropdownDirective without options to TuiDropdownContent',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {contentChild} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -45,7 +45,7 @@ describe('ng-update', () => {
     it(
         'migrate contentChildren with TuiTextfieldDropdownDirective to TuiDropdownContent',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {contentChildren, TemplateRef} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -64,7 +64,7 @@ describe('ng-update', () => {
     it(
         'migrate @ContentChild decorator with TuiTextfieldDropdownDirective to TuiDropdownContent',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ContentChild, TemplateRef} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -81,7 +81,7 @@ describe('ng-update', () => {
     it(
         'migrate @ContentChild decorator with TuiTextfieldDropdownDirective without options',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ContentChild} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -96,7 +96,7 @@ describe('ng-update', () => {
     it(
         'migrate @ContentChildren decorator with TuiTextfieldDropdownDirective to TuiDropdownContent',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ContentChildren, QueryList, TemplateRef} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -113,7 +113,7 @@ describe('ng-update', () => {
     it(
         'migrate @ContentChildren decorator with TuiTextfieldDropdownDirective without options',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ContentChildren, QueryList} from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
@@ -128,8 +128,15 @@ describe('ng-update', () => {
     it(
         'migrate multiple contentChild, contentChildren and @ContentChild, @ContentChildren usages in same file',
         migrate({
-            component: `
-                import {ContentChild, ContentChildren, contentChild, contentChildren, TemplateRef, QueryList} from '@angular/core';
+            component: /* TypeScript */ `
+                import {
+                    ContentChild,
+                    ContentChildren,
+                    contentChild,
+                    contentChildren,
+                    TemplateRef,
+                    QueryList,
+                } from '@angular/core';
                 import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
 
                 export class MyComponent {
@@ -161,7 +168,7 @@ describe('ng-update', () => {
     it(
         'does not modify contentChild with other directives',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {contentChild, TemplateRef} from '@angular/core';
                 import {TuiSomeOtherDirective} from '@taiga-ui/core';
 
