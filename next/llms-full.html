@@ -1452,6 +1452,22 @@ npm i @taiga-ui/{cdk,core,kit,icons}
 ```
 
 ---
+## main.server.md
+
+```ts
+import {bootstrapApplication, type BootstrapContext} from &#039;@angular/platform-browser&#039;;
+import {mergeApplicationConfig, type ApplicationRef} from &#039;@angular/core&#039;;
+import {provideServerRendering} from &#039;@angular/platform-server&#039;;
+import {provideUniversal} from &#039;@ng-web-apis/universal&#039;;
+import {appConfig} from &#039;./app.config&#039;;
+const serverConfig = mergeApplicationConfig(appConfig, {
+  providers: [provideServerRendering(), provideUniversal()],
+});
+export default async (context: BootstrapContext): Promise&lt;ApplicationRef&gt; =&gt;
+  bootstrapApplication(App, serverConfig, context);
+```
+
+---
 ## nx-add.md
 
 ```bash
