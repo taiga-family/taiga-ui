@@ -69,8 +69,9 @@ class TuiTooltipStyles {}
         tuiTooltip: '',
         tuiTooltipV: TUI_VERSION,
         '[attr.data-size]': 'size',
+        '(mousedown.prevent)': '0',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(pointerdown)': 'onPointerDown($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
@@ -99,12 +100,11 @@ export class TuiTooltip implements DoCheck {
         }
     }
 
-    protected onClick(event: MouseEvent): void {
+    protected onPointerDown(event: MouseEvent): void {
         if (this.isMobile) {
-            event.preventDefault();
             event.stopPropagation();
-        } else {
-            this.driver.toggle();
         }
+
+        this.driver.toggle();
     }
 }
