@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChild,
     ElementRef,
     inject,
@@ -73,7 +74,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     ],
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',
-        '[class._empty]': '!items.length',
+        '[class._empty]': '!items().length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',
         '(click.prevent)': 'onClick($event.target)',
@@ -85,6 +86,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
+    protected readonly items = computed<readonly T[]>(() => this.cva()?.value() ?? []);
 
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
@@ -100,17 +102,9 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     public readonly item = contentChild(TuiItem, {read: TemplateRef, descendants: true});
     public readonly rows = input(100);
 
-    public get items(): readonly T[] {
-        return (
-            this.cva()?.value() ?? // preferred for updateOn: 'blur' | 'submit'
-            this.control()?.value ??
-            []
-        );
-    }
-
     public override handleOption(option: T): void {
         this.accessor()?.setValue(
-            tuiArrayToggle(this.items, option, this.handlers.identityMatcher()),
+            tuiArrayToggle(this.items(), option, this.handlers.identityMatcher()),
         );
     }
 
