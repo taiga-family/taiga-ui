@@ -39,7 +39,7 @@
         "@ng-web-apis/screen-orientation": "^4.14.0",
         "@taiga-ui/event-plugins": "^4.7.0",
         "@taiga-ui/font-watcher": "~0.3.0",
-        "@taiga-ui/polymorpheus": "^4.9.0",
+        "@taiga-ui/polymorpheus": "^4.10.0",
         "rxjs": ">=7.0.0"
     },
     "optionalDependencies": {
