@@ -85,7 +85,7 @@
     }
 
     [tuiTitle] {
-        flex: 1 7 auto;
+        flex: 3 7 30%;
         align-items: normal;
         text-align: start;
         gap: 0.25rem 0.5rem;
@@ -96,13 +96,13 @@
 
             ~ [tuiSubtitle] > [tuiFade]:first-child,
             > [tuiFade]:first-child {
-                flex-shrink: 7;
+                flex: 3 7 30%;
                 white-space: nowrap;
             }
 
             ~ [tuiSubtitle] > [tuiFade]:last-child,
             > [tuiFade]:last-child {
-                flex-shrink: 3;
+                flex: 7 3 70%;
                 white-space: nowrap;
             }
 
@@ -112,7 +112,7 @@
         }
 
         ~ [tuiTitle] {
-            flex-shrink: 3;
+            flex: 7 3 70%;
             margin-inline-start: auto;
             text-align: end;
             align-items: flex-end;
