@@ -95,15 +95,17 @@
             justify-content: space-between;
 
             ~ [tuiSubtitle] > [tuiFade]:first-child,
-            > [tuiFade]:first-child {
+            > [tuiFade]:first-child,
+            ~ [tuiSubtitle] > [tuiFade]:last-child,
+            > [tuiFade]:last-child {
                 flex: 3 7 30%;
+                max-inline-size: max-content;
                 white-space: nowrap;
             }
 
             ~ [tuiSubtitle] > [tuiFade]:last-child,
             > [tuiFade]:last-child {
                 flex: 7 3 70%;
-                white-space: nowrap;
             }
 
             ~ [tuiSubtitle] {
@@ -113,6 +115,7 @@
 
         ~ [tuiTitle] {
             flex: 7 3 70%;
+            max-inline-size: max-content;
             margin-inline-start: auto;
             text-align: end;
             align-items: flex-end;
