@@ -16,7 +16,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TuiAbstractCalendar,
+    AbstractTuiCalendar,
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
     type TuiMarkerHandler,
@@ -48,7 +48,7 @@ import {type TuiDayRangePeriod} from './day-range-period';
     },
 })
 export class TuiCalendarRange
-    extends TuiAbstractCalendar<TuiDayRange>
+    extends AbstractTuiCalendar<TuiDayRange>
     implements OnInit, OnChanges
 {
     /**

@@ -6,7 +6,7 @@ import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAbstractCalendar} from '@taiga-ui/core/components/calendar';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
@@ -69,8 +69,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         ),
     );
 
-    protected readonly calendar = tuiInjectAuxiliary<TuiAbstractCalendar>(
-        (x) => x instanceof TuiAbstractCalendar,
+    protected readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+        (x) => x instanceof AbstractTuiCalendar,
     );
 
     protected readonly calendarIn = effect(() => {
@@ -92,7 +92,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     public readonly min = input<TuiDay | null>(this.dateMultiOptions.min);
     public readonly max = input<TuiDay | null>(this.dateMultiOptions.max);
 
-    protected processCalendar(calendar: TuiAbstractCalendar): void {
+    protected processCalendar(calendar: AbstractTuiCalendar): void {
         tuiSetSignal(calendar.value, this.value());
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());

@@ -10,7 +10,7 @@ import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 
 @Directive()
-export abstract class TuiAbstractCalendar<
+export abstract class AbstractTuiCalendar<
     T extends TuiDay | TuiDayRange | readonly TuiDay[] =
         | TuiDay
         | TuiDayRange

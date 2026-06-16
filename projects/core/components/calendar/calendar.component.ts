@@ -22,7 +22,7 @@ import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
-import {TuiAbstractCalendar} from './calendar';
+import {AbstractTuiCalendar} from './calendar';
 import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 import {TuiCalendarSpin} from './calendar-spin.component';
@@ -43,7 +43,7 @@ import {TuiCalendarYear} from './calendar-year.component';
     providers: [tuiAsAuxiliary(TuiCalendar)],
     host: {'(pointerdown.prevent.zoneless)': '0'},
 })
-export class TuiCalendar extends TuiAbstractCalendar {
+export class TuiCalendar extends AbstractTuiCalendar {
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
 
     public readonly minViewedMonth = input<TuiMonth | null>(TUI_FIRST_DAY);
