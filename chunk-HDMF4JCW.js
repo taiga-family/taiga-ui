@@ -1,0 +1,26 @@
+import"./chunk-HU6DUUP4.js";var i=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
+import {TuiButton, TuiButtonX} from '@taiga-ui/core';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiButtonX,
+        TuiPlatform,
+        TuiShrinkWrap,
+        TuiToast,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly platforms = ['web', 'ios'] as const;
+}
+`;export{i as default};

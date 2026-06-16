@@ -22,7 +22,7 @@
 ### cell
 
 ```text
-  TuiCell, TuiCellOptions, TuiCellStretch
+  TuiCell, TuiCellOptions, TuiCellResponsive, TuiCellStretch
 ```
 ### checkbox
 
@@ -311,7 +311,7 @@
 ### input-color
 
 ```text
-  TuiInputColor, TuiInputColorComponent, TuiInputColorOptions
+  TuiInputColor, TuiInputColorComponent, TuiInputColorContent, TuiInputColorOptions
 ```
 ### input-date
 
@@ -362,7 +362,7 @@
 ### input-phone-international
 
 ```text
-  TuiInputPhoneInternational, TuiInputPhoneInternationalComponent, TuiInputPhoneInternationalOptions
+  TuiInputPhoneInternational, TuiInputPhoneInternationalComponent, TuiInputPhoneInternationalContent, TuiInputPhoneInternationalOptions
 ```
 ### input-pin
 
@@ -1440,6 +1440,22 @@ bootstrapApplication(App, {
 
 ```bash
 npm i @taiga-ui/{cdk,core,kit,icons}
+```
+
+---
+## main.server.md
+
+```ts
+import {bootstrapApplication, type BootstrapContext} from '@angular/platform-browser';
+import {mergeApplicationConfig, type ApplicationRef} from '@angular/core';
+import {provideServerRendering} from '@angular/platform-server';
+import {provideUniversal} from '@ng-web-apis/universal';
+import {appConfig} from './app.config';
+const serverConfig = mergeApplicationConfig(appConfig, {
+  providers: [provideServerRendering(), provideUniversal()],
+});
+export default async (context: BootstrapContext): Promise<ApplicationRef> =>
+  bootstrapApplication(App, serverConfig, context);
 ```
 
 ---
@@ -3456,7 +3472,7 @@ Component for displaying text, pictures and icons.
 ```html
 <p> @if (contentType === 'with icon') { <span iconStart="@tui.check" tuiBadge [appearance]="appearance" [size]="size" >
 <div tuiFade>Taiga UI</div>
-</span> } @if (contentType === 'text') { <span tuiBadge [appearance]="appearance" [size]="size" > Taiga UI </span> } @if (contentType === 'image') { <img alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
+</span> } @if (contentType === 'text') { <span tuiBadge [appearance]="appearance" [size]="size" > Taiga UI </span> } @if (contentType === 'image') { <img alt="User" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
 ```
 
 ### API - Inputs
@@ -3517,9 +3533,9 @@ export default class Example {}
 **Template:**
 ```html
 <div appearance="primary" size="xl" tuiBadge > x-large </div>
-<div appearance="primary" size="l" tuiBadge class="tui-space_left-1" > large </div>
-<div appearance="primary" size="m" tuiBadge class="tui-space_left-1" > medium </div>
-<div appearance="primary" size="s" tuiBadge class="tui-space_left-1" > small </div>
+<div appearance="primary" size="l" tuiBadge > large </div>
+<div appearance="primary" size="m" tuiBadge > medium </div>
+<div appearance="primary" size="s" tuiBadge > small </div>
 ```
 **TypeScript:**
 ```ts
@@ -3531,37 +3547,46 @@ import {TuiBadge} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+```
 
-#### Content type (mobile platform)
+#### Content type
 
 **Template:**
 ```html
-<div tuiPlatform="ios">
-<h4 class="tui-space_vertical-1">Value with icon</h4>
+<section tuiPlatform="ios">
+<h4>Value with icon</h4>
 <div appearance="primary" iconStart="@tui.box" size="xl" tuiBadge > x-large </div>
-<div appearance="primary" iconStart="@tui.box" size="l" tuiBadge class="tui-space_left-1" > large </div>
-<div appearance="primary" iconStart="@tui.box" size="m" tuiBadge class="tui-space_left-1" > medium </div>
-<div appearance="primary" iconStart="@tui.box" size="s" tuiBadge class="tui-space_left-1" > small </div>
-</div>
-<div tuiPlatform="ios">
-<h4 class="tui-space_top-3 tui-space_bottom-1">Icon only</h4>
+<div appearance="primary" iconStart="@tui.box" size="l" tuiBadge > large </div>
+<div appearance="primary" iconStart="@tui.box" size="m" tuiBadge > medium </div>
+<div appearance="primary" iconStart="@tui.box" size="s" tuiBadge > small </div>
+</section>
+<section tuiPlatform="ios">
+<h4>Icon only</h4>
 <tui-icon appearance="accent" iconStart="@tui.box" size="xl" tuiBadge />
-<tui-icon appearance="accent" iconStart="@tui.box" size="l" tuiBadge class="tui-space_left-1" />
-<tui-icon appearance="accent" iconStart="@tui.box" size="m" tuiBadge class="tui-space_left-1" />
-<tui-icon appearance="accent" iconStart="@tui.box" size="s" tuiBadge class="tui-space_left-1" />
-</div>
-<div tuiPlatform="ios">
-<h4 class="tui-space_top-3 tui-space_bottom-1">Image</h4>
-<img alt="market" size="xl" src="assets/images/avatar.jpg" tuiBadge />
-<img alt="market" size="l" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
-<img alt="market" size="m" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
-<img alt="market" size="s" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
-</div>
+<tui-icon appearance="accent" iconStart="@tui.box" size="l" tuiBadge />
+<tui-icon appearance="accent" iconStart="@tui.box" size="m" tuiBadge />
+<tui-icon appearance="accent" iconStart="@tui.box" size="s" tuiBadge />
+</section>
+<section tuiPlatform="ios">
+<h4>Image</h4>
+<img alt="User" size="xl" src="assets/images/avatar.jpg" tuiBadge />
+<img alt="User" size="l" src="assets/images/avatar.jpg" tuiBadge />
+<img alt="User" size="m" src="assets/images/avatar.jpg" tuiBadge />
+<img alt="User" size="s" src="assets/images/avatar.jpg" tuiBadge />
+</section>
 ```
 **TypeScript:**
 ```ts
@@ -3586,17 +3611,30 @@ export default class Example {}
     display: block;
     min-inline-size: 18rem;
 }
+
+section {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-block-end: 1rem;
+}
+
+h4 {
+    flex-basis: 100%;
+    margin: 0;
+}
 ```
 
 #### Long value
 
 **Template:**
 ```html
-<div appearance="primary" size="xl" tuiBadge class="badge" >
+<div appearance="primary" size="xl" tuiBadge >
 <div tuiFade>Very long value in badge</div>
 </div>
-<div appearance="accent" iconStart="@tui.box" size="l" tuiBadge class="badge tui-space_top-3" >
-<div class="t-ellipsis">Very long value in badge</div>
+<div appearance="accent" iconStart="@tui.box" size="l" tuiBadge >
+<div class="ellipsis">Very long value in badge</div>
 </div>
 ```
 **TypeScript:**
@@ -3617,11 +3655,16 @@ export default class Example {}
 ```
 **LESS:**
 ```less
-.badge {
+:host {
+    display: grid;
+    gap: 1rem;
+}
+
+[tuiBadge] {
     max-inline-size: 10rem;
 }
 
-.t-ellipsis {
+.ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -3632,7 +3675,7 @@ export default class Example {}
 **Template:**
 ```html
 <div appearance="custom" iconStart="@tui.lock" size="xl" tuiBadge class="custom-1" > 10 000 000 $ </div>
-<div appearance="custom" size="xl" tuiBadge class="custom-2 tui-space_left-3" > Taiga </div>
+<div appearance="custom" size="xl" tuiBadge class="custom-2" > Taiga </div>
 ```
 **TypeScript:**
 ```ts
@@ -3653,6 +3696,11 @@ export default class Example {}
 **LESS:**
 ```less
 @import '@taiga-ui/styles/utils.less';
+
+:host {
+    display: flex;
+    gap: 0.75rem;
+}
 
 .custom-1 {
     .gradient(#0094cf, #24c0ff);
@@ -3696,11 +3744,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
+import {type TuiSizeS, type TuiSizeXL, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
+    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -3733,7 +3781,7 @@ export default class Page {
     protected readonly examples = [
         'Basic',
         'Sizes',
-        'Content type (mobile platform)',
+        'Content type',
         'Long value',
         'Customization',
         'Options with DI',
@@ -9722,6 +9770,93 @@ export default class Example {
 }
 ```
 
+#### Responsive
+
+**Template:**
+```html
+<div tuiCell tuiCellResponsive >
+<div tuiAvatar="@tui.star"></div>
+<div tuiTitle>
+<div tuiTitle>
+<span tuiFade>Works with fade on both sides</span>
+<span tuiFade>Proportions are controlled with flex</span>
+</div>
+<div tuiSubtitle>
+<span tuiFade>You can control proportions</span>
+<span tuiFade>Flex is set to 70-30 by default</span>
+</div>
+</div>
+</div>
+<div tuiCell tuiCellResponsive >
+<div tuiAvatar="@tui.star"></div>
+<div tuiTitle> Long title that's hard to read with long button <div tuiSubtitle>Button wraps to the next line</div>
+</div>
+<div tuiAccessories>
+<button tuiButton type="button" > Long button </button>
+</div>
+</div>
+<div tuiCell tuiCellResponsive >
+<div tuiTitle> A cell without avatar <div tuiSubtitle>Button wraps to the next line</div>
+</div>
+<div tuiAccessories>
+<button tuiButton type="button" > Long button </button>
+</div>
+</div>
+<label tuiCell tuiCellResponsive >
+<span tuiAvatar="@tui.star"></span>
+<span tuiTitle> For small accessories <span tuiSubtitle>Use grid-row: 1</span>
+</span>
+<span tuiAccessories>
+<input tuiSwitch type="checkbox" [(ngModel)]="value" />
+</span>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiCell, TuiCellResponsive, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFade, TuiSwitch} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiCellResponsive,
+        TuiFade,
+        TuiSwitch,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+
+    &:last-child [tuiAccessories] {
+        grid-row: 1;
+    }
+}
+```
+
 #### Label
 
 **Template:**
@@ -9981,9 +10116,15 @@ export default class Example {
 </div>
 <div tuiCell [style.white-space]="'nowrap'" >
 <div tuiAvatar="@tui.smile" [round]="false" ></div>
-<div tuiFade tuiTitle > Works with fade on both sides <div tuiSubtitle>You can control proportions</div>
+<div tuiTitle>
+<div tuiTitle>
+<span tuiFade>Works with fade on both sides</span>
+<span tuiFade>Proportions are controlled with flex</span>
 </div>
-<div tuiFade tuiTitle > Proportions are controlled with flex <div tuiSubtitle>Flex shrink is set to 70-30 by default</div>
+<div tuiSubtitle>
+<span tuiFade>You can control proportions</span>
+<span tuiFade>Flex is set to 70-30 by default</span>
+</div>
 </div>
 <tui-badge-notification size="xs" />
 </div>
@@ -10002,11 +10143,15 @@ export default class Example {
 <div tuiCell>
 <div tuiAccessories tuiAvatar="@tui.home" ></div>
 <div tuiTitle>
-<strong>Main account</strong>
-<div tuiSubtitle>USD</div>
-<div appearance="neutral" tuiBadge > By default unless arrested </div>
+<div tuiTitle>
+<b tuiFade>Main account balance</b>
+<span tuiFade>$123 456</span>
 </div>
-<div tuiAccessories tuiTitle [style.overflow]="'visible'" [style.white-space]="'nowrap'" [style.width]="0" > $123 456 <div tuiSubtitle>Careful, content may overlap</div>
+<div tuiSubtitle>
+<span tuiFade>USD</span>
+<span tuiFade>This subtitle has a lot of words in it</span>
+</div>
+<div appearance="neutral" tuiBadge > By default unless arrested </div>
 </div>
 </div>
 ```
@@ -10066,7 +10211,7 @@ export default class Example {}
 </ng-template>
 </div>
 <div tuiCell type="button" >
-<div tuiTitle> Multiple actions <div tuiSubtitle>When there's content on the right</div>
+<div tuiTitle> Multiple actions <div tuiSubtitle>With content on the right</div>
 </div>
 <div tuiCellActions tuiGroup tuiTheme="dark" [collapsed]="true" > @for (item of items; track item) { <button appearance="primary-grayscale" tuiIconButton type="button" [iconStart]="item.icon" > {{ item }} </button> } </div>
 <div tuiTitle> Hover over <div tuiSubtitle>Put it before the right side</div>
@@ -10430,6 +10575,7 @@ export default class Example {
         'Connected',
         'Disabled state',
         'Stretch',
+        'Responsive',
     ];
 }
 ```
@@ -10668,7 +10814,7 @@ Chip component is used to display array data and can also be interactive dependi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXXS` | — |
 
 ### Usage Examples
 
@@ -18548,14 +18694,14 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
+    maskitoNumber,
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
 import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
 
-const numberOptions = maskitoNumberOptionsGenerator({
+const numberOptions = maskitoNumber({
     postfix,
     decimalSeparator: ',',
     maximumFractionDigits: 8,
@@ -32564,7 +32710,7 @@ button[tuiPin] {
 </button>
 <button type="button" class="link" [tuiPin]="d" (click)="d = !d" >
 <span tuiPin>4.5</span>
-<span tuiTitle> Title <span tuiSubtitle>
+<span tuiTitle> Title <span tuiFade tuiSubtitle >
 <tui-icon icon="@tui.heart" /> Subtitle with an icon </span>
 </span>
 </button>
@@ -45172,7 +45318,7 @@ export default class Page {
 <section [tuiPlatform]="platform">
 <div iconStart="@tui.info" tuiToast > With icon </div>
 <div tuiToast>
-<tui-icon appearance="accent" icon="@tui.box" tuiBadge /> With badge <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button>
+<tui-icon appearance="accent" iconStart="@tui.box" tuiBadge /> With badge <button tuiButtonX>Close</button>
 </div>
 </section>
 <section [tuiPlatform]="platform">
@@ -45183,7 +45329,7 @@ export default class Page {
 <div tuiToast>
 <div tuiAvatar="@tui.user">
 <img alt="" src="https://github.com/marsibarsi.png" />
-</div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" > Close </button> } </div>
+</div> Everything <button tuiButton type="button" > Action </button> @if (platform === 'web') { <button tuiButtonX>Close</button> } </div>
 </section>
 <section [tuiPlatform]="platform">
 <div iconStart="@tui.alarm-clock" tuiShrinkWrap="min(25rem, 100%)" tuiToast >
@@ -45198,11 +45344,19 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiButtonX} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiShrinkWrap, TuiToast],
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiButtonX,
+        TuiPlatform,
+        TuiShrinkWrap,
+        TuiToast,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -45297,6 +45451,7 @@ export default class Example {
 section {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 ```
 
@@ -49083,23 +49238,23 @@ export default class Example {
 
 **Template:**
 ```html
-<button tuiButton tuiDropdownHover type="button" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" > Dropdown hover <ng-template #dropdown>
+<button tuiButton tuiDropdownHover type="button" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" > Dropdown hover </button>
+<ng-template #dropdown>
 <div [style.padding]="'0 1rem'">
 <tui-textfield tuiChevron class="margin" [tuiTextfieldCleaner]="false" >
 <label tuiLabel>Nested select</label>
 <input tuiSelect [formControl]="selected" />
 <tui-data-list-wrapper *tuiDropdown [items]="selectItems" />
 </tui-textfield>
-<p>
+<div>
 <button size="s" tuiButton tuiDropdownAuto tuiDropdownHover type="button" [tuiDropdown]="content" > Nested dropdown hover </button>
-<ng-template #content>
-<p class="tui-space_horizontal-2">Nested content!</p>
-</ng-template>
-</p>
+</div>
 </div>
 <tui-data-list> @for (item of items; track item) { <button tuiOption type="button" > {{ item }} </button> } </tui-data-list>
 </ng-template>
-</button>
+<ng-template #content>
+<p class="tui-space_horizontal-2">Nested content!</p>
+</ng-template>
 ```
 **TypeScript:**
 ```ts
