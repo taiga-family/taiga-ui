@@ -7,24 +7,16 @@ import {
     model,
     type OnChanges,
     type OnInit,
-    signal,
     type SimpleChanges,
     untracked,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    TuiDay,
-    type TuiDayLike,
-    TuiDayRange,
-    TuiMonth,
-} from '@taiga-ui/cdk/date-time';
+import {TuiDay, type TuiDayLike, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
+    TuiAbstractCalendar,
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
     type TuiMarkerHandler,
@@ -55,7 +47,10 @@ import {type TuiDayRangePeriod} from './day-range-period';
         '(document:keydown.capture)': 'onEsc($event)',
     },
 })
-export class TuiCalendarRange implements OnInit, OnChanges {
+export class TuiCalendarRange
+    extends TuiAbstractCalendar<TuiDayRange>
+    implements OnInit, OnChanges
+{
     /**
      * @deprecated use `item`
      */
@@ -63,15 +58,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
-    protected readonly month = signal(TuiMonth.currentLocal());
     protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
-    public readonly min = input<TuiDay | null>(TUI_FIRST_DAY);
-    public readonly max = input<TuiDay | null>(TUI_LAST_DAY);
     public readonly minLength = input<TuiDayLike | null>(null);
     public readonly maxLength = input<TuiDayLike | null>(null);
     public readonly items = input<readonly TuiDayRangePeriod[]>([]);
@@ -79,10 +71,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     public readonly defaultViewedMonth = input(TuiMonth.currentLocal());
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
 
-    public readonly disabledItemHandler =
-        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
-
-    public readonly value = model<TuiDayRange | null>(null);
+    // @ts-ignore
+    public override readonly value = model<TuiDayRange | null>(null);
     public readonly item = model<TuiDayRangePeriod | null>(null);
 
     protected readonly currentValue = linkedSignal<
