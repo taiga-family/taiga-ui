@@ -29,11 +29,11 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-type DatePicker<T> = T extends 'single'
-    ? TuiDay
-    : T extends 'multi'
-      ? readonly TuiDay[]
-      : TuiDayRange;
+type DatePicker<T extends 'multi' | 'range' | 'single' = 'single'> = {
+    single: TuiDay;
+    multi: readonly TuiDay[];
+    range: TuiDayRange;
+}[T];
 
 /**
  * @deprecated: work in progress, do not use!
@@ -126,7 +126,7 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
     );
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
-    public readonly value = model<DatePicker<T> | null>(null);
+    public readonly value = model<NoInfer<DatePicker<T>> | null>(null);
     public readonly current = model(TuiMonth.currentLocal());
     public readonly mode = input<T>();
 
