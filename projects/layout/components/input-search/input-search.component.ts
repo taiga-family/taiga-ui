@@ -78,9 +78,16 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public close(): void {
+        if (!this.ref || this.ref.hostView.destroyed) {
+            this.searchOpen.set(false);
+
+            return;
+        }
+
         this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
-        this.ref?.destroy();
+        this.ref.destroy();
+        this.ref = undefined;
         this.searchOpen.set(false);
     }
 
