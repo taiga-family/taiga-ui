@@ -1,0 +1,69 @@
+import"./chunk-HU6DUUP4.js";var e=`<div
+    tuiCell
+    tuiCellResponsive
+>
+    <div tuiAvatar="@tui.star"></div>
+    <div tuiTitle>
+        <div tuiTitle>
+            <span tuiFade>Works with fade on both sides</span>
+            <span tuiFade>Proportions are controlled with flex</span>
+        </div>
+        <div tuiSubtitle>
+            <span tuiFade>You can control proportions</span>
+            <span tuiFade>Flex is set to 70-30 by default</span>
+        </div>
+    </div>
+</div>
+<div
+    tuiCell
+    tuiCellResponsive
+>
+    <div tuiAvatar="@tui.star"></div>
+    <div tuiTitle>
+        Long title that's hard to read with long button
+        <div tuiSubtitle>Button wraps to the next line</div>
+    </div>
+    <div tuiAccessories>
+        <button
+            tuiButton
+            type="button"
+        >
+            Long button
+        </button>
+    </div>
+</div>
+<div
+    tuiCell
+    tuiCellResponsive
+>
+    <div tuiTitle>
+        A cell without avatar
+        <div tuiSubtitle>Button wraps to the next line</div>
+    </div>
+    <div tuiAccessories>
+        <button
+            tuiButton
+            type="button"
+        >
+            Long button
+        </button>
+    </div>
+</div>
+<label
+    tuiCell
+    tuiCellResponsive
+>
+    <span tuiAvatar="@tui.star"></span>
+    <span tuiTitle>
+        For small accessories
+        <span tuiSubtitle>Use grid-row: 1</span>
+    </span>
+    <span tuiAccessories>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="value"
+        />
+    </span>
+</label>
+`;export{e as default};

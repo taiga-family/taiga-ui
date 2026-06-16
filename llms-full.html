@@ -31,7 +31,7 @@
 ### cell
 
 ```text
-  TuiCell, TuiCellOptions, TuiCellStretch
+  TuiCell, TuiCellOptions, TuiCellResponsive, TuiCellStretch
 ```
 ### checkbox
 
@@ -9779,6 +9779,93 @@ export default class Example {
 }
 ```
 
+#### Responsive
+
+**Template:**
+```html
+&lt;div tuiCell tuiCellResponsive &gt;
+&lt;div tuiAvatar=&quot;@tui.star&quot;&gt;&lt;/div&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiTitle&gt;
+&lt;span tuiFade&gt;Works with fade on both sides&lt;/span&gt;
+&lt;span tuiFade&gt;Proportions are controlled with flex&lt;/span&gt;
+&lt;/div&gt;
+&lt;div tuiSubtitle&gt;
+&lt;span tuiFade&gt;You can control proportions&lt;/span&gt;
+&lt;span tuiFade&gt;Flex is set to 70-30 by default&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCell tuiCellResponsive &gt;
+&lt;div tuiAvatar=&quot;@tui.star&quot;&gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Long title that&#039;s hard to read with long button &lt;div tuiSubtitle&gt;Button wraps to the next line&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiAccessories&gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; Long button &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCell tuiCellResponsive &gt;
+&lt;div tuiTitle&gt; A cell without avatar &lt;div tuiSubtitle&gt;Button wraps to the next line&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiAccessories&gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; Long button &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;label tuiCell tuiCellResponsive &gt;
+&lt;span tuiAvatar=&quot;@tui.star&quot;&gt;&lt;/span&gt;
+&lt;span tuiTitle&gt; For small accessories &lt;span tuiSubtitle&gt;Use grid-row: 1&lt;/span&gt;
+&lt;/span&gt;
+&lt;span tuiAccessories&gt;
+&lt;input tuiSwitch type=&quot;checkbox&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;/span&gt;
+&lt;/label&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiCell, TuiCellResponsive, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiFade, TuiSwitch} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiCellResponsive,
+        TuiFade,
+        TuiSwitch,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+
+    &amp;:last-child [tuiAccessories] {
+        grid-row: 1;
+    }
+}
+```
+
 #### Label
 
 **Template:**
@@ -10045,7 +10132,7 @@ export default class Example {
 &lt;/div&gt;
 &lt;div tuiSubtitle&gt;
 &lt;span tuiFade&gt;You can control proportions&lt;/span&gt;
-&lt;span tuiFade&gt;Flex shrink is set to 70-30 by default&lt;/span&gt;
+&lt;span tuiFade&gt;Flex is set to 70-30 by default&lt;/span&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;tui-badge-notification size=&quot;xs&quot; /&gt;
@@ -10497,6 +10584,7 @@ export default class Example {
         &#039;Connected&#039;,
         &#039;Disabled state&#039;,
         &#039;Stretch&#039;,
+        &#039;Responsive&#039;,
     ];
 }
 ```
