@@ -70,9 +70,6 @@ export class TuiCalendarRange
     public readonly listSize = input<TuiSizeL | TuiSizeS>(this.options.size());
     public readonly defaultViewedMonth = input(TuiMonth.currentLocal());
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
-
-    // @ts-ignore
-    public override readonly value = model<TuiDayRange | null>(null);
     public readonly item = model<TuiDayRangePeriod | null>(null);
 
     protected readonly currentValue = linkedSignal<
