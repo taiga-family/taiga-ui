@@ -1,21 +1,14 @@
-import {computed, inject, InjectionToken, type Signal} from '@angular/core';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {inject, InjectionToken} from '@angular/core';
 
 import {TUI_OPTIONS} from './provide-taiga';
 
-export const TUI_LIQUID_GLASS = new InjectionToken<Signal<boolean>>(
+export const TUI_LIQUID_GLASS = new InjectionToken<boolean>(
     ngDevMode ? 'TUI_LIQUID_GLASS' : '',
     {
         factory: () => {
-            const options = inject(TUI_OPTIONS);
-            const isIOS = inject(WA_IS_IOS);
+            const {apis} = inject(TUI_OPTIONS);
 
-            return computed(
-                () =>
-                    options.apis !== 'stable' &&
-                    isIOS &&
-                    (options.apis.all || !!options.apis.liquidGlass?.()),
-            );
+            return apis !== 'stable' && (apis.all || !!apis.liquidGlass);
         },
     },
 );

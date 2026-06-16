@@ -6,7 +6,6 @@ import {
     InjectionToken,
     provideAppInitializer,
     type Provider,
-    type WritableSignal,
 } from '@angular/core';
 import {Meta, REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -17,7 +16,7 @@ import {tuiEnableFontScaling} from './font-scaling';
 
 interface ExperimentalAPIs {
     readonly all: boolean;
-    readonly liquidGlass: WritableSignal<boolean>;
+    readonly liquidGlass: boolean;
 }
 
 export interface TuiOptions {

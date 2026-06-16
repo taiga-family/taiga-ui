@@ -4,6 +4,7 @@ import {
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
@@ -18,12 +19,10 @@ export const TUI_APP_BAR_PROVIDERS: Provider[] = [
             subtree: true,
         },
     },
-    tuiButtonOptionsProvider(() => {
-        const liquidGlass = inject(TUI_LIQUID_GLASS);
-
-        return {
-            appearance: liquidGlass() ? '' : 'action',
-            size: liquidGlass() ? 'm' : 'l',
-        };
-    }),
+    tuiButtonOptionsProvider(
+        (liquidGlass = inject(TUI_LIQUID_GLASS), platform = inject(TUI_PLATFORM)) => ({
+            appearance: liquidGlass && platform === 'ios' ? '' : 'action',
+            size: liquidGlass && platform === 'ios' ? 'm' : 'l',
+        }),
+    ),
 ];

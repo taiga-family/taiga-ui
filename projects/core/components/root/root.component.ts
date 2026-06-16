@@ -48,7 +48,7 @@ import {
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',
-        '[class.tui-liquid-glass]': 'liquidGlass()',
+        '[class.tui-liquid-glass]': 'liquidGlass',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '(document:fullscreenchange)': 'top.set(parent)',

@@ -15,11 +15,7 @@ export default class Page extends Array {
         'Dialog',
         'Dynamic header',
         'iOS Liquid glass',
+        'Dynamic header (iOS)',
         'Color background',
     ];
-
-    protected readonly [4] = {
-        'component.ts': import('./examples/5/component.ts?raw', {with: {loader: 'text'}}),
-        'component.less': import('./examples/5/component.less'),
-    };
 }

@@ -5,15 +5,21 @@
     overscroll-behavior: none;
 }
 
-tui-segmented {
-    inline-size: fit-content;
-    margin-block-end: 1rem;
-}
-
 tui-app-bar {
     position: sticky;
     z-index: 1;
     inset-block-start: -0.03125rem;
     margin-block-end: 0.75rem;
-    background: var(--tui-background-base);
+}
+
+.content {
+    padding: 0;
+
+    > [tuiHeader] {
+        padding: 1rem;
+    }
+}
+
+.block {
+    block-size: 20rem;
 }

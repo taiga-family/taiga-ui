@@ -30,9 +30,9 @@ export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy
             this.visible.set(!isIntersecting);
 
             if (isIntersecting) {
-                target.classList.remove('t-header_hidden');
+                target.style.removeProperty('opacity');
             } else {
-                target.classList.add('t-header_hidden');
+                target.style.setProperty('opacity', '0');
             }
 
             this.container.update();

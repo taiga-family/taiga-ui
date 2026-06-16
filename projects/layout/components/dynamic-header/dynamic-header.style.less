@@ -26,17 +26,19 @@
     }
 
     [data-platform='ios'].tui-liquid-glass & {
+        --t-duration: calc(var(--tui-duration) * 5 / 3);
+
         .tui-enter {
             animation-name: tuiFade, tuiSlide, tuiBlur;
 
-            --tui-duration: 500ms;
+            --tui-duration: var(--t-duration);
             --tui-from: translateY(calc(-50% * var(--t-dir)));
         }
 
         .tui-leave {
             animation-name: tuiFade, tuiSlide, tuiBlur;
 
-            --tui-duration: 500ms;
+            --tui-duration: var(--t-duration);
             --tui-from: translateY(calc(50% * var(--t-dir)));
         }
     }
@@ -44,10 +46,6 @@
 
 [data-platform='ios'].tui-liquid-glass {
     [tuiHeader] {
-        transition: opacity 300ms linear;
-    }
-
-    [tuiHeader].t-header_hidden {
-        opacity: 0;
+        transition: opacity var(--tui-duration) linear;
     }
 }

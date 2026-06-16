@@ -4,6 +4,7 @@
     backdrop-filter: blur(0.25rem) saturate(6) brightness(1.05);
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.09);
     overflow: hidden;
+    box-sizing: border-box;
     background: var(--t-appbar-button-bg);
     color: var(--tui-text-primary);
     transition:
@@ -61,9 +62,9 @@
     }
 }
 
-.tui-liquid-glass [tuiTheme='dark'] [tuiAppBarButton]:where(*&),
-[tuiTheme='dark'] [tuiAppBarButton]:where(*&),
-[tuiTheme='dark'].tui-liquid-glass [tuiAppBarButton]:where(*&) {
+[data-platform='ios'].tui-liquid-glass [tuiTheme='dark'] [tuiAppBarButton]:where(*&),
+[tuiTheme='dark'] [data-platform='ios'].tui-liquid-glass [tuiAppBarButton]:where(*&),
+[data-platform='ios'][tuiTheme='dark'].tui-liquid-glass [tuiAppBarButton]:where(*&) {
     --t-appbar-button-bg: rgba(88, 88, 88, 0.31);
     --t-appbar-glow: var(--tui-appbar-background, rgba(31, 31, 31, 0.8));
     --t-appbar-bevel: linear-gradient(319deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12) 19%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.02) 45%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.04) 60%, rgba(255, 255, 255, 0.12) 80%, rgba(255, 255, 255, 0.2) 96%);

@@ -13,6 +13,7 @@ import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
@@ -41,7 +42,8 @@ export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
     private readonly el = tuiInjectElement();
 
-    protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
+    protected readonly liquidGlass =
+        inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios';
 
     protected readonly width$ = merge(
         inject(WaResizeObserverService, {self: true}),

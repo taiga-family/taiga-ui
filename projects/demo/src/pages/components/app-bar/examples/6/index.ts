@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
@@ -12,6 +12,6 @@ import {TuiAppBar} from '@taiga-ui/layout';
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
 })
 export default class Example {}
