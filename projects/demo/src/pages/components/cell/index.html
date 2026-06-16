@@ -8,8 +8,17 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [heading]="example"
             />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (10) {
+                        Open this example on the phone with OS font size increased by 150% to see cell rearrange for
+                        better readability.
+                    }
+                }
+            </ng-template>
         }
     </ng-template>
 
