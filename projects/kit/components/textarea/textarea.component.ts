@@ -30,6 +30,7 @@ import {TuiTextareaContent} from './textarea-content.component';
         '(scroll.zoneless)': 'onScroll()',
     },
 })
+// TODO(v6): rename to TuiTextareaNative
 export class TuiTextareaComponent implements OnInit {
     private readonly vcr = inject(ViewContainerRef);
     private readonly injector = inject(INJECTOR);
