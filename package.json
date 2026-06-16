@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "5.10.0",
+    "version": "5.11.0",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -118,12 +118,12 @@
         "rxjs": "$rxjs"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "19.2.26",
-        "@angular-devkit/core": "19.2.26",
-        "@angular-devkit/schematics": "19.2.26",
-        "@angular/build": "19.2.26",
+        "@angular-devkit/build-angular": "19.2.27",
+        "@angular-devkit/core": "19.2.27",
+        "@angular-devkit/schematics": "19.2.27",
+        "@angular/build": "19.2.27",
         "@angular/cdk": "19.2.19",
-        "@angular/cli": "19.2.26",
+        "@angular/cli": "19.2.27",
         "@angular/common": "19.2.24",
         "@angular/compiler": "19.2.24",
         "@angular/compiler-cli": "19.2.24",
@@ -134,7 +134,7 @@
         "@angular/platform-browser-dynamic": "19.2.24",
         "@angular/platform-server": "19.2.24",
         "@angular/router": "19.2.24",
-        "@angular/ssr": "19.2.26",
+        "@angular/ssr": "19.2.27",
         "@docsearch/css": "4.6.3",
         "@docsearch/js": "4.6.3",
         "@ng-web-apis/experimental": "5.3.0",
@@ -142,7 +142,7 @@
         "@nx/angular": "22.1.1",
         "@nx/jest": "22.1.1",
         "@nx/workspace": "22.1.1",
-        "@schematics/angular": "19.2.26",
+        "@schematics/angular": "19.2.27",
         "@stackblitz/sdk": "1.11.0",
         "@taiga-ui/configs": "0.540.0",
         "@types/express": "4.17.25",

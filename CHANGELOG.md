@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.11.0](https://github.com/taiga-family/taiga-ui/compare/v5.10.0...v5.11.0) (2026-06-16)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** keep thumbnails icons visible in disabled content
+  ([#14296](https://github.com/taiga-family/taiga-ui/issues/14296))
+  ([9984aef](https://github.com/taiga-family/taiga-ui/commit/9984aef6554b5d19e7ea2a4a8f8debf5bc9fe2fd))
+- **addon-table:** signals are must be called to retrieve their value
+  ([#14280](https://github.com/taiga-family/taiga-ui/issues/14280))
+  ([edc5e83](https://github.com/taiga-family/taiga-ui/commit/edc5e83d7ff803d0f2f08f82fa54e6c4a3e84a1d))
+- **core:** loader content overflow ([#14273](https://github.com/taiga-family/taiga-ui/issues/14273))
+  ([39e31f5](https://github.com/taiga-family/taiga-ui/commit/39e31f51751b47b0d28efcc3870715ae8b735493))
+- **kit:** `Badge` fix padding for size S according to specs
+  ([#14274](https://github.com/taiga-family/taiga-ui/issues/14274))
+  ([25dc9a4](https://github.com/taiga-family/taiga-ui/commit/25dc9a4dd699ae17a637d9c58c1f6e04a03e818d))
+- **kit:** `Chip` fix XXS font size according to specs ([#14293](https://github.com/taiga-family/taiga-ui/issues/14293))
+  ([2dc9b46](https://github.com/taiga-family/taiga-ui/commit/2dc9b4619fc692e94e65390d000737b83c783e55))
+- **kit:** `InputColor` hydration ([#14213](https://github.com/taiga-family/taiga-ui/issues/14213))
+  ([0cc6990](https://github.com/taiga-family/taiga-ui/commit/0cc699075492be611689d29c14e94e630b5f46d4))
+- **kit:** `InputPhoneInternational` hydration ([#14217](https://github.com/taiga-family/taiga-ui/issues/14217))
+  ([db58c54](https://github.com/taiga-family/taiga-ui/commit/db58c547e1f6daa3c78c54e78cd303e91ce5e4fe))
+- **kit:** `InputPin` remove latest typed symbol ([#14219](https://github.com/taiga-family/taiga-ui/issues/14219))
+  ([4c75250](https://github.com/taiga-family/taiga-ui/commit/4c7525010529e2caa0cf7cd14614fc0fc8eb4e7f))
+- **kit:** `Textfield[multi]` cannot update viewed items when `updateOn: submit`
+  ([#14275](https://github.com/taiga-family/taiga-ui/issues/14275))
+  ([b6d98e6](https://github.com/taiga-family/taiga-ui/commit/b6d98e6f6d74f47cbc96c0e76f3ddf7089b73b25))
+- **kit:** `Toast` fix line height on mobile ([#14295](https://github.com/taiga-family/taiga-ui/issues/14295))
+  ([b311bc0](https://github.com/taiga-family/taiga-ui/commit/b311bc0e1dae1571a2d0b2b4cba5962964e51175))
+- **kit:** prevent input date range from retriggering parent effects
+  ([#14250](https://github.com/taiga-family/taiga-ui/issues/14250))
+  ([ae2d96d](https://github.com/taiga-family/taiga-ui/commit/ae2d96d2416c2e46944fd2354a6762beef0f6674))
+- **kit:** unsubscribe segmented controls on destroy ([#14294](https://github.com/taiga-family/taiga-ui/issues/14294))
+  ([6c2bd8f](https://github.com/taiga-family/taiga-ui/commit/6c2bd8fedfdd819ec580bb61c00b4cdcec80c61d))
+- **schematics:** exclude nested ignored dirs from schematics globs
+  ([#14272](https://github.com/taiga-family/taiga-ui/issues/14272))
+  ([b4fb16b](https://github.com/taiga-family/taiga-ui/commit/b4fb16b638df0c285f1dc92d4f8c128dd42428a4))
+
+### 🚀 Features
+
+- **addon-doc:** expose `TuiViewportScroller` ([#14292](https://github.com/taiga-family/taiga-ui/issues/14292))
+  ([eed02d1](https://github.com/taiga-family/taiga-ui/commit/eed02d1a33de7776cef4ba00c13f6d2e0b8d6ec8))
+- **core:** `Cell` allow nested `Title` ([#14334](https://github.com/taiga-family/taiga-ui/issues/14334))
+  ([8f04272](https://github.com/taiga-family/taiga-ui/commit/8f042728aa66e03f2747966895db066a31a5b881))
+- **core:** `CellResponsive` add directive ([#14336](https://github.com/taiga-family/taiga-ui/issues/14336))
+  ([e347cb1](https://github.com/taiga-family/taiga-ui/commit/e347cb10194fdab70f21e7c0a8613ed1fe1794e7))
+- **kit:** `Badge` add font scaling ([#14269](https://github.com/taiga-family/taiga-ui/issues/14269))
+  ([f79b110](https://github.com/taiga-family/taiga-ui/commit/f79b11085eb2923c9bfec663ccb6e65f84b0a494))
+- **kit:** `BadgeNotification` add font scaling ([#14263](https://github.com/taiga-family/taiga-ui/issues/14263))
+  ([7fe9bba](https://github.com/taiga-family/taiga-ui/commit/7fe9bbad8782015816f633832b060ca041e8181c))
+- **kit:** `Pin` add font scaling ([#14260](https://github.com/taiga-family/taiga-ui/issues/14260))
+  ([d71a325](https://github.com/taiga-family/taiga-ui/commit/d71a325b7a2862899891ac9fc07310334206a4a3))
+- **kit:** `Toast` add font scaling ([#14299](https://github.com/taiga-family/taiga-ui/issues/14299))
+  ([e90ee5a](https://github.com/taiga-family/taiga-ui/commit/e90ee5a6c79a23a817ba469b1291f2ac9efd729f))
+
 ## [5.10.0](https://github.com/taiga-family/taiga-ui/compare/v5.9.0...v5.10.0) (2026-06-08)
 
 ### 🐞 Bug Fixes
