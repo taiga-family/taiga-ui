@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    effect,
     type ElementRef,
     inject,
     viewChild,
@@ -32,5 +31,10 @@ export class TuiTextareaContent {
 
     protected readonly host = inject(TuiTextareaComponent);
     protected readonly textfield = inject(TuiTextfieldComponent);
-    protected readonly ef = effect(() => this.host.text.set(this.textRef()));
+
+    public scrollTo(top: number): void {
+        requestAnimationFrame(() => {
+            this.textRef()?.nativeElement.scrollTo({top});
+        });
+    }
 }

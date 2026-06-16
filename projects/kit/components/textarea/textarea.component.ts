@@ -5,7 +5,6 @@ import {
     INJECTOR,
     input,
     type OnInit,
-    signal,
     ViewContainerRef,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -35,22 +34,22 @@ export class TuiTextareaComponent implements OnInit {
     private readonly vcr = inject(ViewContainerRef);
     private readonly injector = inject(INJECTOR);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
+    private ref?: TuiTextareaContent;
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
 
     public readonly isMobile = inject(WA_IS_MOBILE);
-    public readonly text = signal<ElementRef<HTMLSpanElement> | undefined>(undefined);
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);
 
     public ngOnInit(): void {
-        this.vcr.createComponent(TuiTextareaContent, {injector: this.injector});
+        this.ref = this.vcr.createComponent(TuiTextareaContent, {
+            injector: this.injector,
+        }).instance;
     }
 
     protected onScroll(): void {
-        requestAnimationFrame(() => {
-            this.text()?.nativeElement.scrollTo({top: this.el.scrollTop});
-        });
+        this.ref?.scrollTo(this.el.scrollTop);
     }
 }
