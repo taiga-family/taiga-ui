@@ -4,7 +4,7 @@
     tuiPlatform="ios"
     waIntersectionRootMargin="-120px 0px 1000000% 0px"
     class="container tui-liquid-glass"
-    [class.tui-liquid-glass_blur]="container.scrollTop > 0"
+    [class.tui-liquid-glass_blur]="blur()"
 >
     <tui-app-bar>
         <button
@@ -20,7 +20,10 @@
             *tuiDynamicHeaderAnchor
             tuiHeader="h6"
         >
-            <h6 tuiTitle>
+            <h6
+                tuiTitle
+                (waIntersectionObservee)="blur.set(!$event[0]?.isIntersecting)"
+            >
                 Title 1
                 <div tuiSubtitle>Subtitle</div>
             </h6>

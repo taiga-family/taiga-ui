@@ -44,8 +44,9 @@
     }
 }
 
-[data-platform='ios'].tui-liquid-glass {
-    [tuiHeader] {
+[data-platform='ios'].tui-liquid-glass [tuiDynamicHeader] {
+    [tuiHeader],
+    [tuiHeader] [tuiTitle] {
         transition: opacity var(--tui-duration) linear;
     }
 }

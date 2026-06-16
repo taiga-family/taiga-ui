@@ -25,6 +25,7 @@ export default class Example {
     protected readonly mode = inject(TUI_DARK_MODE);
     protected readonly colors = ['#2f3f5b', '#3a3f66', '#5a2f3f', '#3f4e37', '#5a3851'];
     protected readonly color = signal('');
+    protected readonly blur = signal(false);
     protected onIntersection(isIntersecting: boolean, color: string): void {
         if (isIntersecting) {
             this.color.set(color);

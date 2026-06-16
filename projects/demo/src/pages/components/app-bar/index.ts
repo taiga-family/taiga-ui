@@ -7,7 +7,7 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page extends Array {
+export default class Page {
     protected readonly examples = [
         'Mobile — medium size',
         'Desktop — large size',
@@ -15,7 +15,7 @@ export default class Page extends Array {
         'Dialog',
         'Dynamic header',
         'iOS Liquid glass',
-        'Dynamic header (iOS)',
+        'Dynamic header (Liquid glass)',
         'Color background',
     ];
 }
