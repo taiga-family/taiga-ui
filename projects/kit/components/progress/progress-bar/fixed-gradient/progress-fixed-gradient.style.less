@@ -1,6 +1,6 @@
-.fixed-gradient() {
+.fixed-gradient(@start: 0, @end: calc(100% - var(--tui-progress-percent))) {
     inline-size: 100% !important;
-    clip-path: inset(0 calc(100% - var(--tui-progress-percent)) 0 0 round var(--tui-radius-m));
+    clip-path: inset(0 @end 0 @start round var(--tui-radius-m));
     transition: clip-path var(--tui-duration) linear;
 }
 
@@ -13,5 +13,18 @@
 
     &::-webkit-progress-value {
         .fixed-gradient();
+    }
+
+    [dir='rtl'] & {
+        &::-moz-progress-bar {
+            .fixed-gradient(calc(100% - var(--tui-progress-percent)), 0);
+
+            margin-inline-start: calc(-100% + var(--tui-progress-percent));
+            margin-inline-end: 0;
+        }
+
+        &::-webkit-progress-value {
+            .fixed-gradient(calc(100% - var(--tui-progress-percent)), 0);
+        }
     }
 }
