@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiAbstractCalendar} from '@taiga-ui/core/components';
+import {type TuiAbstractCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
