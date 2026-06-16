@@ -9,13 +9,10 @@ import {
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 
+type Value = TuiDay | TuiDayRange | readonly TuiDay[];
+
 @Directive()
-export abstract class AbstractTuiCalendar<
-    T extends TuiDay | TuiDayRange | readonly TuiDay[] =
-        | TuiDay
-        | TuiDayRange
-        | readonly TuiDay[],
-> {
+export abstract class AbstractTuiCalendar<T extends Value = Value> {
     public readonly month = model(TuiMonth.currentLocal());
     public readonly value = model<T | null>(null);
 
