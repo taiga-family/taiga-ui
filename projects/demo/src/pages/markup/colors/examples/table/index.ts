@@ -1,10 +1,15 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {Component, inject, input} from '@angular/core';
+import {Component, computed, inject, input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiDocCopy} from '@taiga-ui/addon-doc';
 import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
+
+interface ColorRow {
+    readonly color: string;
+    readonly value: string;
+}
 
 @Component({
     selector: 'table[colors]',
@@ -22,7 +27,18 @@ export class TableColors {
 
     public readonly colors = input<readonly string[]>([]);
 
-    protected getValue(variable: string, _p: string, _d: boolean): string {
-        return this.styles.getPropertyValue(variable);
-    }
+    protected readonly rows = computed<readonly ColorRow[]>(
+        (
+            // These reads are intentional:
+            // color values depend on platform and theme.
+            _platform = this.platform.tuiPlatform(),
+            _dark = this.darkMode(),
+        ) =>
+            this.colors()
+                .map((color) => ({
+                    color,
+                    value: this.styles.getPropertyValue(color),
+                }))
+                .filter(({value}) => value),
+    );
 }
