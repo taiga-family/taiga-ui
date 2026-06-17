@@ -39,6 +39,7 @@ export default [
             '@angular-eslint/template/no-empty-control-flow': 'off', // TODO: fix later
             '@angular-eslint/template/no-non-null-assertion': 'off', // TODO: fix later
             '@angular-eslint/template/no-nested-tags': 'off', // TODO: fix later
+            '@angular-eslint/template/prefer-at-else': 'off', // TODO: fix later
         },
     },
 ];
