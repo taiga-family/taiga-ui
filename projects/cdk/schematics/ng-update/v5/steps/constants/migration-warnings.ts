@@ -153,4 +153,40 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
     },
+    {
+        name: 'tuiInputCardOptionsProvider',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'tuiInputCardOptionsProvider has been removed. Use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group',
+    },
+    {
+        name: 'TUI_INPUT_CARD_OPTIONS',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TUI_INPUT_CARD_OPTIONS has been removed. Use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group',
+    },
+    {
+        name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.',
+    },
+    {
+        name: 'TUI_ALERT_POSITION',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
+    },
+    {
+        name: 'tuiHexToRgb',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
+    },
+    {
+        name: 'TUI_TEXTFIELD_APPEARANCE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_TEXTFIELD_APPEARANCE has been removed. Set the appearance via the tuiTextfieldAppearance attribute on the textfield (e.g. <tui-textfield tuiTextfieldAppearance="..."> or <input tuiTextfieldAppearance="..." />) instead of providing this token.',
+    },
 ];

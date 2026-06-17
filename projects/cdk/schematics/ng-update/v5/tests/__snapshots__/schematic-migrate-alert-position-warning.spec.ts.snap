@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TUI_ALERT_POSITION warning adds TODO comment for TUI_ALERT_POSITION import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_ALERT_POSITION} from '@taiga-ui/core';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly position = inject(TUI_ALERT_POSITION);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.
+                import {TUI_ALERT_POSITION} from '@taiga-ui/core';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly position = inject(TUI_ALERT_POSITION);
+                }
+            ",
+}
+`;
