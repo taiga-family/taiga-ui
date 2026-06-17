@@ -8,6 +8,8 @@
 
         @for (example of examples; track example) {
             <tui-doc-example
+                [attr.data-platform]="$index > 4 ? 'ios' : null"
+                [class.tui-liquid-glass]="$index > 4"
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample: 'html,ts,less'"
                 [description]="description"

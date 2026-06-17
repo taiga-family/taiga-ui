@@ -15,7 +15,7 @@ export default class Page {
         'Dialog',
         'Dynamic header',
         'iOS Liquid glass',
-        'Dynamic header (Liquid glass)',
+        'Liquid glass dynamic header',
         'Color background',
     ];
 }

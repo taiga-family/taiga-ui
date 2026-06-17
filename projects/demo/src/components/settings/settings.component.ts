@@ -55,7 +55,7 @@ import {TuiForm} from '@taiga-ui/layout';
     providers: [
         tuiSegmentedOptionsProvider({size: 's'}),
         tuiButtonOptionsProvider({appearance: '', size: 's'}),
-        tuiDropdownOptionsProvider({align: 'end', maxHeight: 500}),
+        tuiDropdownOptionsProvider({align: 'end'}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
