@@ -35,10 +35,10 @@
     @switch (view()) {
         @case ('day') {
             <tui-carousel
-                [index]="current().year * 12 + current().month"
+                [index]="month().year * 12 + month().month"
                 [max]="max().year * 12 + max().month"
                 [min]="min().year * 12 + min().month"
-                (indexChange)="current.set(getMonth($event))"
+                (indexChange)="month.set(getMonth($event))"
             >
                 <tui-calendar
                     *tuiItem="let index"
@@ -52,7 +52,7 @@
 
         @case ('month') {
             <tui-data-grid
-                [content]="month()"
+                [content]="content()"
                 [disabledItemHandler]="disabledMonth()"
                 [items]="0 | tuiMapper: getItems"
                 [value]="months()"
@@ -68,7 +68,7 @@
                 <tui-data-grid
                     *tuiItem="let offset"
                     [disabledItemHandler]="disabledYear()"
-                    [items]="current().year + offset * 12 - 6 | tuiMapper: getItems"
+                    [items]="month().year + offset * 12 - 6 | tuiMapper: getItems"
                     [value]="years()"
                     (pick)="onYear($event)"
                 />
