@@ -165,29 +165,7 @@
         >
             Delete
         </button>
-    }
-
-    @if (isMobile()) {
-        <button
-            iconStart="@tui.send"
-            tuiIconButton
-            type="button"
-        >
-            Send
-        </button>
-    }
-    @if (isMobile()) {
-        <button
-            iconStart="@tui.ellipsis"
-            tuiIconButton
-            type="button"
-            (click)="expanded = !expanded"
-        >
-            More
-        </button>
-    }
-
-    @if (!isMobile()) {
+    
         <button
             appearance="icon"
             iconStart="@tui.x"
@@ -198,4 +176,24 @@
             Close
         </button>
     }
+
+    @else {
+        <button
+            iconStart="@tui.send"
+            tuiIconButton
+            type="button"
+        >
+            Send
+        </button>
+    
+        <button
+            iconStart="@tui.ellipsis"
+            tuiIconButton
+            type="button"
+            (click)="expanded = !expanded"
+        >
+            More
+        </button>
+    }
+    
 </tui-action-bar>

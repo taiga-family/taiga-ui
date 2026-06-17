@@ -13,18 +13,18 @@
         ></select>
     }
 
-    @if (!isMobile) {
+    @else {
         <input
             placeholder="Choose your side"
             tuiSelect
             [formControl]="control"
         />
-    }
-
-    @if (!isMobile) {
+    
         <tui-data-list-wrapper
             *tuiDropdown
             [items]="items"
         />
     }
+
+    
 </tui-textfield>

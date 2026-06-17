@@ -62,20 +62,20 @@
                         ></select>
                     }
 
-                    @if (!isMobile) {
+                    @else {
                         <input
                             placeholder="Select"
                             tuiSelect
                             [(ngModel)]="select"
                         />
-                    }
-
-                    @if (!isMobile) {
+                    
                         <tui-data-list-wrapper
                             *tuiDropdown
                             [items]="items"
                         />
                     }
+
+                    
                 </tui-textfield>
             </td>
         </tr>
