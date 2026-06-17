@@ -27450,7 +27450,7 @@ A like component based on native checkbox with icons and custom color for icon w
 **Template:**
 ```html
 <input tuiLike="var(--tui-status-negative)" type="checkbox" />
-<input size="s" tuiLike type="checkbox" [checkedIcon]="'@tui.star-filled'" [uncheckedIcon]="'@tui.star'" />
+<input checkedIcon="@tui.star-filled" size="s" tuiLike type="checkbox" uncheckedIcon="@tui.star" />
 ```
 **TypeScript:**
 ```ts
@@ -50974,7 +50974,7 @@ Directive is used to highlight text in element. You can configure the directive 
 <th>Fate</th>
 </tr>
 </thead>
-<tbody> @for (row of rows; track row) { <tr> @for (cell of row; track cell) { <td [tuiHighlight]="search" [tuiHighlightColor]="'#228B22'" > {{ cell }} </td> } </tr> } </tbody>
+<tbody> @for (row of rows; track row) { <tr> @for (cell of row; track cell) { <td tuiHighlightColor="#228B22" [tuiHighlight]="search" > {{ cell }} </td> } </tr> } </tbody>
 </table>
 ```
 **TypeScript:**
@@ -51055,7 +51055,7 @@ Directive to show a hint by hover of an element
 <code>HintDescribe</code>
 </a>
 </ng-template>
-<span [tuiHint]="template" [tuiHintAppearance]="hint.appearance" [tuiHintDescribe]="'qwerty'" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover it! </span>
+<span tuiHintDescribe="qwerty" [tuiHint]="template" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover it! </span>
 <input id="qwerty" />
 ```
 
