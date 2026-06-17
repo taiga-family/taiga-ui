@@ -1,0 +1,56 @@
+<div
+    tuiDynamicHeaderContainer
+    tuiPlatform="ios"
+    waIntersectionRootMargin="-120px 0px 1000000% 0px"
+    class="container"
+>
+    <tui-app-bar
+        [attr.tuiTheme]="color() || mode() ? 'dark' : 'light'"
+        [class.tui-liquid-glass_blur]="blur()"
+        [style.--tui-appbar-background]="color()"
+    >
+        <button
+            title="Back"
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
+        ></button>
+        <div
+            tuiDynamicHeader
+            tuiHeader="h6"
+        ></div>
+    </tui-app-bar>
+    <div class="content">
+        <div
+            tuiHeader="h4"
+            (waIntersectionObservee)="blur.set(!$event[0]?.isIntersecting)"
+        >
+            <h6
+                *tuiDynamicHeaderAnchor
+                tuiTitle="l"
+            >
+                Backgrounds
+            </h6>
+        </div>
+        <div
+            waIntersectionObserver
+            waIntersectionRootMargin="0px 0px -100% 0px"
+            waIntersectionThreshold="0"
+        >
+            @for (item of colors; track item) {
+                <div
+                    class="block"
+                    [style.background-color]="item"
+                    (waIntersectionObservee)="onIntersection(!!$event[0]?.isIntersecting, item)"
+                >
+                    <h3
+                        tuiHeader="h5"
+                        tuiTheme="dark"
+                    >
+                        {{ item }}
+                    </h3>
+                </div>
+            }
+        </div>
+    </div>
+</div>
