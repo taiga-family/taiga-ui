@@ -60,22 +60,19 @@
                             [items]="items"
                             [(ngModel)]="select"
                         ></select>
-                    }
 
-                    @else {
+                    } @else {
                         <input
                             placeholder="Select"
                             tuiSelect
                             [(ngModel)]="select"
                         />
-                    
+
                         <tui-data-list-wrapper
                             *tuiDropdown
                             [items]="items"
                         />
                     }
-
-                    
                 </tui-textfield>
             </td>
         </tr>
