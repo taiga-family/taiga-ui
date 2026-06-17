@@ -16968,7 +16968,7 @@ footer {
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
 </p>
 <p>
-<tui-textfield [iconStart]="'@tui.paintbrush'">
+<tui-textfield iconStart="@tui.paintbrush">
 <label tuiLabel>Background color</label>
 <input placeholder="#00000000" tuiInputColor [(ngModel)]="color" />
 </tui-textfield>
