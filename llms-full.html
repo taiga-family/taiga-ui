@@ -27459,7 +27459,7 @@ A like component based on native checkbox with icons and custom color for icon w
 **Template:**
 ```html
 &lt;input tuiLike=&quot;var(--tui-status-negative)&quot; type=&quot;checkbox&quot; /&gt;
-&lt;input size=&quot;s&quot; tuiLike type=&quot;checkbox&quot; [checkedIcon]=&quot;&#039;@tui.star-filled&#039;&quot; [uncheckedIcon]=&quot;&#039;@tui.star&#039;&quot; /&gt;
+&lt;input checkedIcon=&quot;@tui.star-filled&quot; size=&quot;s&quot; tuiLike type=&quot;checkbox&quot; uncheckedIcon=&quot;@tui.star&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -50983,7 +50983,7 @@ Directive is used to highlight text in element. You can configure the directive 
 &lt;th&gt;Fate&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
-&lt;tbody&gt; @for (row of rows; track row) { &lt;tr&gt; @for (cell of row; track cell) { &lt;td [tuiHighlight]=&quot;search&quot; [tuiHighlightColor]=&quot;&#039;#228B22&#039;&quot; &gt; {{ cell }} &lt;/td&gt; } &lt;/tr&gt; } &lt;/tbody&gt;
+&lt;tbody&gt; @for (row of rows; track row) { &lt;tr&gt; @for (cell of row; track cell) { &lt;td tuiHighlightColor=&quot;#228B22&quot; [tuiHighlight]=&quot;search&quot; &gt; {{ cell }} &lt;/td&gt; } &lt;/tr&gt; } &lt;/tbody&gt;
 &lt;/table&gt;
 ```
 **TypeScript:**
@@ -51064,7 +51064,7 @@ Directive to show a hint by hover of an element
 &lt;code&gt;HintDescribe&lt;/code&gt;
 &lt;/a&gt;
 &lt;/ng-template&gt;
-&lt;span [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDescribe]=&quot;&#039;qwerty&#039;&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
+&lt;span tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
 &lt;input id=&quot;qwerty&quot; /&gt;
 ```
 
