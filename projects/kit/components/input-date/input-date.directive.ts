@@ -23,7 +23,7 @@ import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
@@ -42,7 +42,6 @@ import {
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -63,8 +62,8 @@ export abstract class TuiInputDateBase<
     public abstract readonly max: Signal<TuiDay>;
     public abstract readonly min: Signal<TuiDay>;
 
-    private readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
-        (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
+    private readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+        (x) => x instanceof AbstractTuiCalendar,
     );
 
     protected readonly options =
@@ -140,7 +139,7 @@ export abstract class TuiInputDateBase<
         }
     }
 
-    protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
+    protected processCalendar(calendar: AbstractTuiCalendar): void {
         tuiSetSignal(calendar.value, this.toCalendarValue(this.value()));
         tuiSetSignal(
             calendar.disabledItemHandler,

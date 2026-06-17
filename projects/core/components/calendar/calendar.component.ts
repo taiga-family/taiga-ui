@@ -14,23 +14,22 @@ import {
     TUI_LAST_DAY,
     TUI_LAST_DISPLAYED_DAY,
     TuiDay,
-    type TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
+import {AbstractTuiCalendar} from './calendar';
 import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
-    selector: 'tui-calendar',
+    selector: 'tui-calendar:not([new])',
     imports: [
         TuiCalendarSheet,
         TuiCalendarSpin,
@@ -44,29 +43,15 @@ import {TuiCalendarYear} from './calendar-year.component';
     providers: [tuiAsAuxiliary(TuiCalendar)],
     host: {'(pointerdown.prevent.zoneless)': '0'},
 })
-export class TuiCalendar {
+export class TuiCalendar extends AbstractTuiCalendar {
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
-
-    public readonly disabledItemHandler = input<TuiBooleanHandler<TuiDay>>(
-        inject(TUI_ITEMS_HANDLERS).disabledItemHandler(),
-    );
-
-    public readonly min = input(TUI_FIRST_DAY, {
-        transform: (x: TuiDay | null) => x ?? TUI_FIRST_DAY,
-    });
-
-    public readonly max = input(TUI_LAST_DAY, {
-        transform: (x: TuiDay | null) => x ?? TUI_LAST_DAY,
-    });
 
     public readonly minViewedMonth = input<TuiMonth | null>(TUI_FIRST_DAY);
     public readonly maxViewedMonth = input<TuiMonth | null>(TUI_LAST_DAY);
     public readonly showAdjacent = input(true);
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly initialView = input<'month' | 'year'>('month');
-    public readonly month = model(TuiMonth.currentLocal());
     public readonly hoveredItem = model<TuiDay | null>(null);
-    public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
     public readonly dayClick = output<TuiDay>();
 
     protected readonly computedMinViewedMonth = computed(() => {
