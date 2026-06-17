@@ -345,6 +345,36 @@ test.describe('InputDateRange', () => {
             .toHaveScreenshot('16-data-range-custom-period-today-unfocused.png');
     });
 
+    test('allows to select new range after same-day range with maxLength', async ({
+        page,
+    }) => {
+        await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=1`);
+
+        await inputDateRange.textfield.click();
+
+        const calendarSheet = new TuiCalendarSheetPO(
+            inputDateRange.calendar.locator('tui-calendar-sheet'),
+        );
+
+        await calendarSheet.clickOnDay(15);
+        await calendarSheet.clickOnDay(15);
+
+        await expect(inputDateRange.textfield).toHaveValue(
+            `15.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}15.09.2020`,
+        );
+
+        await expect(inputDateRange.calendar).not.toBeAttached();
+
+        await inputDateRange.textfield.click();
+
+        await calendarSheet.clickOnDay(22);
+        await calendarSheet.clickOnDay(25);
+
+        await expect(inputDateRange.textfield).toHaveValue(
+            `22.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
+        );
+    });
+
     describe('items', () => {
         test('Select from [items] => select date range from calendar', async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDateRange);
