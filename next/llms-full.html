@@ -878,7 +878,7 @@
 ### app-bar
 
 ```text
-  TuiAppBar, TuiAppBarBack, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective
+  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective, TuiProgressiveBlur
 ```
 ### block-details
 
@@ -2562,11 +2562,234 @@ tui-app-bar {
 
 tui-segmented {
     inline-size: 6rem;
+    inline-size: fit-content;
     margin-block-end: 1rem;
 }
 
 .content &gt; [tuiHeader] {
     padding: 0 1rem;
+}
+```
+
+#### iOS Liquid glass
+
+**Template:**
+```html
+&lt;section tuiPlatform=&quot;ios&quot;&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt; Taiga UI &lt;button tuiButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; Action &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt; Taiga UI — Components library &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;label tuiTitle&gt; Taiga UI &lt;span tuiSubtitle&gt;Components library&lt;/span&gt;
+&lt;/label&gt;
+&lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
+&lt;div&gt;
+&lt;progress size=&quot;s&quot; tuiProgressBar [max]=&quot;100&quot; [value]=&quot;35&quot; &gt;&lt;/progress&gt;
+&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;/section&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiProgressBar} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {}
+```
+**LESS:**
+```less
+tui-app-bar {
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+}
+
+section {
+    padding: 1rem;
+    margin: -1rem;
+    overflow: hidden;
+}
+```
+
+#### Liquid glass dynamic header
+
+**Template:**
+```html
+&lt;div #container tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; &gt;
+&lt;tui-app-bar&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;div tuiDynamicHeader&gt;&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle (waIntersectionObservee)=&quot;blur.set(!$event[0]?.isIntersecting)&quot; &gt; Title 1 &lt;div tuiSubtitle&gt;Subtitle&lt;/div&gt;
+&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(7); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;primary&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle&gt;Title 2&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(15); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle&gt;Title 3 Long title&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(15); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WaIntersectionObserver} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiCell, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar, TuiDynamicHeader, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        TuiAppBar,
+        TuiAvatar,
+        TuiCell,
+        TuiDynamicHeader,
+        TuiHeader,
+        TuiPlatform,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {
+    protected readonly blur = signal(false);
+}
+```
+**LESS:**
+```less
+.container {
+    max-block-size: 30rem;
+    inline-size: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+}
+
+tui-app-bar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    margin-block-end: 0.75rem;
+}
+```
+
+#### Color background
+
+**Template:**
+```html
+&lt;div tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; &gt;
+&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-appbar-background]=&quot;color()&quot; &gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;div tuiDynamicHeader tuiHeader=&quot;h6&quot; &gt;&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;div tuiHeader=&quot;h4&quot; (waIntersectionObservee)=&quot;blur.set(!$event[0]?.isIntersecting)&quot; &gt;
+&lt;h6 *tuiDynamicHeaderAnchor tuiTitle=&quot;l&quot; &gt; Backgrounds &lt;/h6&gt;
+&lt;/div&gt;
+&lt;div waIntersectionObserver waIntersectionRootMargin=&quot;0px 0px -100% 0px&quot; waIntersectionThreshold=&quot;0&quot; &gt; @for (item of colors; track item) { &lt;div class=&quot;block&quot; [style.background-color]=&quot;item&quot; (waIntersectionObservee)=&quot;onIntersection(!!$event[0]?.isIntersecting, item)&quot; &gt;
+&lt;h3 tuiHeader=&quot;h5&quot; tuiTheme=&quot;dark&quot; &gt; {{ item }} &lt;/h3&gt;
+&lt;/div&gt; } &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WaIntersectionObserver} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TUI_DARK_MODE, TUI_LIQUID_GLASS, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppBar, TuiDynamicHeader, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiAppBar, TuiDynamicHeader, TuiHeader, TuiTitle, WaIntersectionObserver],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],
+})
+export default class Example {
+    protected readonly mode = inject(TUI_DARK_MODE);
+    protected readonly colors = [&#039;#2f3f5b&#039;, &#039;#3a3f66&#039;, &#039;#5a2f3f&#039;, &#039;#3f4e37&#039;, &#039;#5a3851&#039;];
+    protected readonly color = signal(&#039;&#039;);
+    protected readonly blur = signal(false);
+    protected onIntersection(isIntersecting: boolean, color: string): void {
+        if (isIntersecting) {
+            this.color.set(color);
+        } else if (this.color() === color) {
+            this.color.set(&#039;&#039;);
+        }
+    }
+}
+```
+**LESS:**
+```less
+.container {
+    max-block-size: 30rem;
+    inline-size: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+}
+
+tui-app-bar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    margin-block-end: 0.75rem;
+}
+
+.content {
+    padding: 0;
+
+    &gt; [tuiHeader] {
+        padding: 1rem;
+    }
+}
+
+.block {
+    block-size: 20rem;
 }
 ```
 
@@ -2590,6 +2813,9 @@ export default class Page {
         &#039;Variants&#039;,
         &#039;Dialog&#039;,
         &#039;Dynamic header&#039;,
+        &#039;iOS Liquid glass&#039;,
+        &#039;Liquid glass dynamic header&#039;,
+        &#039;Color background&#039;,
     ];
 }
 ```

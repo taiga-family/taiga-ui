@@ -1,0 +1,83 @@
+import"./chunk-HU6DUUP4.js";var e=`<div
+    #container
+    tuiDynamicHeaderContainer
+    tuiPlatform="ios"
+    waIntersectionRootMargin="-120px 0px 1000000% 0px"
+    class="container"
+    [class.tui-liquid-glass_blur]="blur()"
+>
+    <tui-app-bar>
+        <button
+            title="Back"
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
+        ></button>
+        <div tuiDynamicHeader></div>
+    </tui-app-bar>
+    <div class="content">
+        <div
+            *tuiDynamicHeaderAnchor
+            tuiHeader="h6"
+        >
+            <h6
+                tuiTitle
+                (waIntersectionObservee)="blur.set(!$event[0]?.isIntersecting)"
+            >
+                Title 1
+                <div tuiSubtitle>Subtitle</div>
+            </h6>
+        </div>
+        @for (_ of '-'.repeat(7); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="primary"
+                    tuiAvatar="@tui.star"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
+            </div>
+        }
+
+        <div
+            *tuiDynamicHeaderAnchor
+            tuiHeader="h6"
+        >
+            <h6 tuiTitle>Title 2</h6>
+        </div>
+        @for (_ of '-'.repeat(15); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="secondary"
+                    tuiAvatar="@tui.heart"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
+            </div>
+        }
+
+        <div
+            *tuiDynamicHeaderAnchor
+            tuiHeader="h6"
+        >
+            <h6 tuiTitle>Title 3 Long title</h6>
+        </div>
+        @for (_ of '-'.repeat(15); track $index) {
+            <div tuiCell>
+                <div
+                    appearance="secondary"
+                    tuiAvatar="@tui.heart"
+                ></div>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+`;export{e as default};
