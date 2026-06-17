@@ -191,7 +191,7 @@ export class TuiCalendarRange
         this.selectedActivePeriod = null;
 
         if (value instanceof TuiDay) {
-            const range = TuiDayRange.sort(value, day);
+            const range = TuiDayRange.sort(value, day.append({}));
 
             this.currentValue.set(range);
             this.item.set(this.findItemByDayRange(range));
