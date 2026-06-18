@@ -2755,6 +2755,7 @@ export default class Example {
     protected readonly colors = [&#039;#2f3f5b&#039;, &#039;#3a3f66&#039;, &#039;#5a2f3f&#039;, &#039;#3f4e37&#039;, &#039;#5a3851&#039;];
     protected readonly color = signal(&#039;&#039;);
     protected readonly blur = signal(false);
+
     protected onIntersection(isIntersecting: boolean, color: string): void {
         if (isIntersecting) {
             this.color.set(color);
