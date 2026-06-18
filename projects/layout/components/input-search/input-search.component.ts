@@ -91,6 +91,19 @@ export class TuiInputSearch implements OnChanges {
         this.searchOpen.set(false);
     }
 
+    public onArrow(): void {
+        if (this.ref?.hostView.destroyed !== false) {
+            return;
+        }
+
+        const root: HTMLElement = this.ref.location.nativeElement;
+
+        tuiGetClosestFocusable({
+            root,
+            initial: this.textfield.el.nextElementSibling ?? root,
+        })?.focus();
+    }
+
     public onFocus({target}: Event): void {
         if (this.ref?.hostView.destroyed !== false) {
             return;
@@ -105,18 +118,5 @@ export class TuiInputSearch implements OnChanges {
         ) {
             this.close();
         }
-    }
-
-    protected onArrow(): void {
-        if (this.ref?.hostView.destroyed !== false) {
-            return;
-        }
-
-        const root: HTMLElement = this.ref.location.nativeElement;
-
-        tuiGetClosestFocusable({
-            root,
-            initial: this.textfield.el.nextElementSibling ?? root,
-        })?.focus();
     }
 }
