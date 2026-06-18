@@ -7,12 +7,12 @@ import {
     model,
     type OnChanges,
 } from '@angular/core';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils';
 import {
     tuiContainsOrAfter,
     tuiInjectElement,
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -92,11 +92,7 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public onArrow(): void {
-        if (this.ref?.hostView.destroyed !== false) {
-            return;
-        }
-
-        const root: HTMLElement = this.ref.location.nativeElement;
+        const root: HTMLElement = this.ref?.location.nativeElement;
 
         tuiGetClosestFocusable({
             root,
@@ -105,16 +101,10 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public onFocus({target}: Event): void {
-        if (this.ref?.hostView.destroyed !== false) {
-            return;
-        }
-
-        const root: HTMLElement = this.ref.location.nativeElement;
-
         if (
             target !== this.el &&
             tuiIsElement(target) &&
-            !tuiContainsOrAfter(root, target)
+            !tuiContainsOrAfter(this.ref?.location.nativeElement as HTMLElement, target)
         ) {
             this.close();
         }
