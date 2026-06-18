@@ -18,6 +18,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
@@ -40,7 +41,10 @@ import {TuiCalendarYear} from './calendar-year.component';
     templateUrl: './calendar.template.html',
     styleUrl: './calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsAuxiliary(TuiCalendar)],
+    providers: [
+        tuiAsAuxiliary(TuiCalendar),
+        tuiProvide(AbstractTuiCalendar, TuiCalendar),
+    ],
     host: {'(pointerdown.prevent.zoneless)': '0'},
 })
 export class TuiCalendar extends AbstractTuiCalendar {

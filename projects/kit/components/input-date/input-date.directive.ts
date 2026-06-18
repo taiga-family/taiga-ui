@@ -16,7 +16,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
-    type TuiDayRange,
+    TuiDayRange,
     type TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
@@ -108,8 +108,9 @@ export abstract class TuiInputDateBase<
     protected readonly calendarOut = effect(() => {
         const value = this.calendar()?.value();
         const changed = untracked(() => value !== this.toCalendarValue(this.value()));
+        const same = value instanceof TuiDayRange && value.from === value.to;
 
-        if (value && changed) {
+        if (value && changed && !same) {
             this.setDate(value);
         }
     });

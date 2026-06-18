@@ -1,0 +1,10 @@
+<button
+    iconEnd="@tui.calendar"
+    tuiButton
+    tuiButtonSelect
+    type="button"
+    [(ngModel)]="value"
+>
+    {{ value || 'Select date' }}
+    <tui-calendar *tuiDropdown />
+</button>
