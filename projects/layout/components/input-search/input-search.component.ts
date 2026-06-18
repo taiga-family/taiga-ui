@@ -69,16 +69,17 @@ export class TuiInputSearch implements OnChanges {
         this.ref = this.service.add(
             new PolymorpheusComponent(TuiInputSearchContent, this.injector),
         );
-        this.ref.instance
-            .container()
-            .nativeElement.insertAdjacentElement('afterbegin', this.textfield.el);
+        this.ref.location.nativeElement.insertAdjacentElement(
+            'afterbegin',
+            this.textfield.el,
+        );
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
         this.searchOpen.set(true);
     }
 
     public close(): void {
-        if (!this.ref || this.ref.hostView.destroyed) {
+        if (this.ref?.hostView.destroyed !== false) {
             this.searchOpen.set(false);
 
             return;
@@ -87,7 +88,6 @@ export class TuiInputSearch implements OnChanges {
         this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
         this.ref.destroy();
-        this.ref = undefined;
         this.searchOpen.set(false);
     }
 
@@ -96,7 +96,7 @@ export class TuiInputSearch implements OnChanges {
             return;
         }
 
-        const root = this.ref.instance.container().nativeElement;
+        const root: HTMLElement = this.ref.location.nativeElement;
 
         if (
             target !== this.el &&
@@ -112,9 +112,11 @@ export class TuiInputSearch implements OnChanges {
             return;
         }
 
-        const root = this.ref.instance.container().nativeElement;
-        const initial = this.textfield.el.nextElementSibling ?? root;
+        const root: HTMLElement = this.ref.location.nativeElement;
 
-        tuiGetClosestFocusable({initial, root})?.focus();
+        tuiGetClosestFocusable({
+            root,
+            initial: this.textfield.el.nextElementSibling ?? root,
+        })?.focus();
     }
 }
