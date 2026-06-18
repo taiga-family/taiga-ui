@@ -7,12 +7,12 @@ import {
     model,
     type OnChanges,
 } from '@angular/core';
-import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils';
 import {
     tuiContainsOrAfter,
     tuiInjectElement,
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
