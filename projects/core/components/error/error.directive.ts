@@ -92,8 +92,11 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
     }
 
     public registerOnChange(): void {}
+
     public registerOnTouched(): void {}
+
     public writeValue(): void {}
+
     public validate(control: AbstractControl): ValidationErrors | null {
         this.control.next(control);
 
