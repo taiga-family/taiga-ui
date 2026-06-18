@@ -33,8 +33,6 @@ export class TuiTextareaContent {
     protected readonly textfield = inject(TuiTextfieldComponent);
 
     public scrollTo(top: number): void {
-        requestAnimationFrame(() => {
-            this.textRef()?.nativeElement.scrollTo({top});
-        });
+        this.textRef()?.nativeElement.scrollTo({top});
     }
 }

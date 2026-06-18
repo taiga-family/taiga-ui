@@ -29,7 +29,7 @@ import {TuiTextareaContent} from './textarea-content.component';
         '(scroll.zoneless)': 'onScroll()',
     },
 })
-// TODO(v6): rename to TuiTextareaNative
+// TODO(v6): rename to TuiTextareaDirective
 export class TuiTextareaComponent implements OnInit {
     private readonly vcr = inject(ViewContainerRef);
     private readonly injector = inject(INJECTOR);
@@ -50,6 +50,6 @@ export class TuiTextareaComponent implements OnInit {
     }
 
     protected onScroll(): void {
-        this.ref?.scrollTo(this.el.scrollTop);
+        requestAnimationFrame(() => this.ref?.scrollTo(this.el.scrollTop));
     }
 }
