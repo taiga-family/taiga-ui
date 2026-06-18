@@ -41,7 +41,7 @@ import {type TuiDayRangePeriod} from './day-range-period';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiCalendarRange),
-        tuiProvide(AbstractTuiCalendar, TuiCalendarRange),
+        tuiProvide(AbstractTuiCalendar<TuiDayRange>, TuiCalendarRange),
         tuiCalendarSheetOptionsProvider({rangeMode: true}),
     ],
     host: {
