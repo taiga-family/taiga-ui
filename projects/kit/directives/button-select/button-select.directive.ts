@@ -41,7 +41,7 @@ export class TuiButtonSelect<T>
         const same = value instanceof TuiDayRange && value.from === value.to;
 
         if (value && changed && !same) {
-            this.handleOption(value as any);
+            this.handleOption(value as unknown as T);
         }
     });
 
