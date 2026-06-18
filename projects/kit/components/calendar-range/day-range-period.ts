@@ -45,7 +45,7 @@ export function tuiCreateDefaultDayRangePeriods(
 
     return [
         new TuiDayRangePeriod(new TuiDayRange(TUI_FIRST_DAY, today), periodTitles[0]),
-        new TuiDayRangePeriod(new TuiDayRange(today, today), periodTitles[1]),
+        new TuiDayRangePeriod(new TuiDayRange(today, today.append({})), periodTitles[1]),
         new TuiDayRangePeriod(new TuiDayRange(yesterday, yesterday), periodTitles[2]),
         new TuiDayRangePeriod(new TuiDayRange(startOfWeek, endOfWeek), periodTitles[3]),
         new TuiDayRangePeriod(new TuiDayRange(startOfMonth, endOfMonth), periodTitles[4]),

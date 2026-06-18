@@ -26,6 +26,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiDropdownOptionsProvider({align: 'end'}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiNativeValidator, TuiWithDropdownOpen],
+    host: {type: 'button'},
 })
 export class TuiButtonSelect<T>
     extends TuiControl<T | T[]>
