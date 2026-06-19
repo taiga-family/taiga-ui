@@ -22,6 +22,7 @@ import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'r
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
+const SNAP_THRESHOLD = 8;
 
 @Component({
     selector: 'tui-sheet-dialog',
@@ -46,6 +47,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
+    private startScrollTop = Number.NaN;
     private lastScrollTop = Number.NaN;
     private pointers = 0;
 
@@ -83,15 +85,22 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected onTouch(delta: -1 | 1): void {
         this.lastScrollTop = Number.NaN;
+
+        if (delta > 0 && !this.pointers) {
+            this.startScrollTop = this.el.scrollTop;
+        }
+
         this.pointers = Math.max(this.pointers + delta, 0);
     }
 
     protected onTouchEnd(): void {
         this.pointers = Math.max(this.pointers - 1, 0);
 
+        const draggedDown = this.startScrollTop > this.el.scrollTop;
+
         if (!this.pointers && this.el.scrollTop <= 0) {
             this.close$.next();
-        } else if (!this.pointers && this.el.scrollTop < this.initial) {
+        } else if (!this.pointers && draggedDown && this.el.scrollTop < this.initial) {
             this.lastScrollTop = this.el.scrollTop;
         }
     }
@@ -101,11 +110,16 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             return;
         }
 
-        if (this.el.scrollTop <= (this.lastScrollTop || 0)) {
+        const hasReachedCloseThreshold =
+            this.lastScrollTop - this.el.scrollTop >= SNAP_THRESHOLD;
+
+        if (this.el.scrollTop <= 0 || hasReachedCloseThreshold) {
             this.close$.next();
         }
 
-        this.lastScrollTop = Number.NaN;
+        if (this.el.scrollTop >= this.lastScrollTop) {
+            this.lastScrollTop = Number.NaN;
+        }
     }
 
     private get initial(): number {
