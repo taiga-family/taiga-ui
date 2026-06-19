@@ -8,6 +8,7 @@
                 >
                     <input
                         tuiInputDateMulti
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
                         [max]="max()"
                         [min]="min()"
                         [(ngModel)]="value"
@@ -18,6 +19,7 @@
                 <tui-textfield class="t-textfield">
                     <input
                         tuiInputDateRange
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
                         [max]="max()"
                         [min]="min()"
                         [(ngModel)]="value"
@@ -28,7 +30,7 @@
                 <tui-textfield class="t-textfield">
                     <input
                         tuiInputDate
-                        [attr.aria-labelledby]="dropdown.nativeElement.id || null"
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
                         [max]="max()"
                         [min]="min()"
                         [(ngModel)]="value"
