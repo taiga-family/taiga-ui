@@ -199,10 +199,14 @@ export function migrateInputMonthRange({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[(ngModel)]'.toLowerCase():
             return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[formControlName]'.toLowerCase():
+            return '[formControlName]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case 'formControl'.toLowerCase():
