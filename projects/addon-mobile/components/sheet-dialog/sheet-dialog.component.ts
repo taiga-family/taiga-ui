@@ -46,7 +46,6 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
-    private startScrollTop = Number.NaN;
     private lastScrollTop = Number.NaN;
     private pointers = 0;
 
@@ -84,22 +83,15 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected onTouch(delta: -1 | 1): void {
         this.lastScrollTop = Number.NaN;
-
-        if (delta > 0 && !this.pointers) {
-            this.startScrollTop = this.el.scrollTop;
-        }
-
         this.pointers = Math.max(this.pointers + delta, 0);
     }
 
     protected onTouchEnd(): void {
         this.pointers = Math.max(this.pointers - 1, 0);
 
-        const draggedDown = this.startScrollTop > this.el.scrollTop;
-
         if (!this.pointers && this.el.scrollTop <= 0) {
             this.close$.next();
-        } else if (!this.pointers && draggedDown && this.el.scrollTop < this.initial) {
+        } else if (!this.pointers && this.el.scrollTop < this.initial) {
             this.lastScrollTop = this.el.scrollTop;
         }
     }
@@ -109,16 +101,11 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             return;
         }
 
-        const isSnappingDown = this.el.scrollTop < this.lastScrollTop;
-        const hasReturnedToInitial = this.el.scrollTop >= this.initial;
-
-        if (this.el.scrollTop <= 0 || isSnappingDown) {
+        if (this.el.scrollTop <= (this.lastScrollTop || 0)) {
             this.close$.next();
         }
 
-        if (isSnappingDown || hasReturnedToInitial) {
-            this.lastScrollTop = Number.NaN;
-        }
+        this.lastScrollTop = Number.NaN;
     }
 
     private get initial(): number {
