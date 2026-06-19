@@ -13851,62 +13851,73 @@ This is a work in progress, do not use!
 
 **Template:**
 ```html
-<div tuiGroup>
-<tui-textfield tuiChevron tuiTextfieldSize="s" [tuiTextfieldCleaner]="false" >
-<input tuiSelect [(ngModel)]="mode" />
-<tui-data-list-wrapper *tuiDropdown [items]="modes" />
+<form tuiForm [formGroup]="form" >
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
+<label tuiLabel>Single date</label>
+<input formControlName="single" tuiInputDate [max]="max" [min]="min" />
+<tui-date-picker *tuiDropdown />
 </tui-textfield>
-<button size="s" tuiButton type="button" (click)="value.set(null)" > Clear </button>
+<tui-textfield multi [disabledItemHandler]="disabledItemHandler" >
+<label tuiLabel>Multiple dates</label>
+<input formControlName="multi" tuiInputDateMulti [max]="max" [min]="min" />
+<tui-date-picker *tuiDropdown />
+</tui-textfield>
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
+<label tuiLabel>Date range</label>
+<input formControlName="range" tuiInputDateRange [max]="max" [min]="min" />
+<tui-date-picker *tuiDropdown mode="range" />
+</tui-textfield>
+<button formControlName="button" iconEnd="@tui.calendar" tuiButton tuiButtonSelect > {{ form.controls.button.value || 'Select date' }} <div *tuiDropdown="let close">
+<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" />
+<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="form.controls.button.setValue(null); close()" > Clear </button>
 </div>
-<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [mode]="mode()" [(value)]="value" />
-<p>{{ value() | json }}</p>
+</button>
+</form>
 ```
 **TypeScript:**
 ```ts
-import {JsonPipe} from '@angular/common';
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiButton, TuiGroup} from '@taiga-ui/core';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiDatePicker} from '@taiga-ui/experimental';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {
+    TuiButtonSelect,
+    TuiInputDate,
+    TuiInputDateMulti,
+    TuiInputDateRange,
+} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        FormsModule,
-        JsonPipe,
+        ReactiveFormsModule,
         TuiButton,
-        TuiChevron,
-        TuiDataListWrapper,
+        TuiButtonSelect,
         TuiDatePicker,
-        TuiGroup,
-        TuiSelect,
+        TuiForm,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly modes = ['single', 'multi', 'range'] as const;
-    protected readonly mode = signal(this.modes[2]);
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
     protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
 
-    protected readonly value = signal<any>(
-        new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({day: 7})),
-    );
+    protected readonly form = new FormGroup({
+        single: new FormControl(),
+        multi: new FormControl(),
+        range: new FormControl(),
+        button: new FormControl(),
+    });
 
     protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
-}
-```
-**LESS:**
-```less
-:host {
-    display: block;
-    overflow: hidden;
 }
 ```
 
