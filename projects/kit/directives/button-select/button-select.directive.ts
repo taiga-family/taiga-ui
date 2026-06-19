@@ -1,7 +1,9 @@
-import {Directive, inject} from '@angular/core';
+import {contentChild, Directive, effect, inject, untracked} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsDataListHost,
     tuiAsOptionContent,
@@ -24,6 +26,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiDropdownOptionsProvider({align: 'end'}),
     ],
     hostDirectives: [TuiDropdownDirective, TuiNativeValidator, TuiWithDropdownOpen],
+    host: {type: 'button'},
 })
 export class TuiButtonSelect<T>
     extends TuiControl<T | T[]>
@@ -31,6 +34,25 @@ export class TuiButtonSelect<T>
 {
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    private readonly calendar = contentChild(AbstractTuiCalendar, {descendants: true});
+
+    protected readonly calendarIn = effect(() => {
+        const calendar = this.calendar();
+
+        if (calendar) {
+            tuiSetSignal<unknown>(calendar.value, this.value());
+        }
+    });
+
+    protected readonly calendarOut = effect(() => {
+        const value = this.calendar()?.value();
+        const changed = untracked(() => value !== this.value());
+        const same = value instanceof TuiDayRange && value.from === value.to;
+
+        if (value && changed && !same) {
+            this.handleOption(value as unknown as T);
+        }
+    });
 
     public readonly size = 's';
 

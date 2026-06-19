@@ -14,6 +14,7 @@ import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiDay, type TuiDayLike, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     AbstractTuiCalendar,
@@ -40,6 +41,7 @@ import {type TuiDayRangePeriod} from './day-range-period';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiCalendarRange),
+        tuiProvide(AbstractTuiCalendar<TuiDayRange>, TuiCalendarRange),
         tuiCalendarSheetOptionsProvider({rangeMode: true}),
     ],
     host: {
