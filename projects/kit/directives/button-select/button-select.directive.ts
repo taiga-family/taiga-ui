@@ -1,6 +1,7 @@
 import {contentChild, Directive, effect, inject, untracked} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
@@ -25,7 +26,12 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiAsDataListHost(TuiButtonSelect),
         tuiDropdownOptionsProvider({align: 'end'}),
     ],
-    hostDirectives: [TuiDropdownDirective, TuiNativeValidator, TuiWithDropdownOpen],
+    hostDirectives: [
+        TuiDropdownDirective,
+        TuiNativeValidator,
+        TuiWithDropdownOpen,
+        TuiId,
+    ],
     host: {type: 'button'},
 })
 export class TuiButtonSelect<T>
