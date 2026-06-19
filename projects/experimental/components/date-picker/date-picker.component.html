@@ -28,7 +28,7 @@
                 <tui-textfield class="t-textfield">
                     <input
                         tuiInputDate
-                        [attr.aria-labelledby]="dropdown?.nativeElement?.id"
+                        [attr.aria-labelledby]="dropdown.nativeElement.id || null"
                         [max]="max()"
                         [min]="min()"
                         [(ngModel)]="value"
