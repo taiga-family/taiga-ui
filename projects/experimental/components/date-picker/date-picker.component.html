@@ -2,15 +2,18 @@
     @if (view() !== 'year') {
         <button
             appearance=""
-            tuiChevron
+            tabindex="-1"
             tuiLink
             type="button"
             class="t-button"
             [textContent]="button()"
+            [tuiChevron]="false"
             (click)="view.set(view() === 'day' ? 'month' : 'year')"
         ></button>
     }
+    <span>​</span>
     <button
+        tabindex="-1"
         tuiIconButton
         type="button"
         class="t-chevron"
@@ -21,6 +24,7 @@
         {{ texts()[0] }}
     </button>
     <button
+        tabindex="-1"
         tuiIconButton
         type="button"
         class="t-chevron"
@@ -42,6 +46,7 @@
             >
                 <tui-calendar
                     *tuiItem="let index"
+                    new
                     [disabledItemHandler]="disabledDay()"
                     [month]="index | tuiMapper: getMonth"
                     [value]="value()"
