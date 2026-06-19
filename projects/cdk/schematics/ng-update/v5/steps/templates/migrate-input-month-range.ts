@@ -1,0 +1,197 @@
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type DefaultTreeAdapterTypes} from 'parse5';
+
+import {findElementsByTagName} from '../../../../utils/templates/elements';
+import {
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from '../../../../utils/templates/template-resource';
+import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getControlStateAttrs,
+    removeControlStateAttrs,
+    stringifyControlStateAttrs,
+} from '../../../utils/templates/control-state-attrs';
+import {removeAttr} from '../../../utils/templates/remove-attr';
+import {replaceTag} from '../../../utils/templates/replace-tag';
+
+type TextNode = DefaultTreeAdapterTypes.TextNode;
+type ChildNode = DefaultTreeAdapterTypes.ChildNode;
+type Element = DefaultTreeAdapterTypes.Element;
+
+// All domain attrs go directly to <tui-calendar-month> — the directive has no own inputs for them.
+const CALENDAR_ATTR_RENAMES = new Map([
+    ['[min]', '[min]'],
+    ['min', 'min'],
+    ['[max]', '[max]'],
+    ['max', 'max'],
+    ['[minLength]'.toLowerCase(), '[minLength]'],
+    ['minLength'.toLowerCase(), 'minLength'],
+    ['[maxLength]'.toLowerCase(), '[maxLength]'],
+    ['maxLength'.toLowerCase(), 'maxLength'],
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['disabledItemHandler'.toLowerCase(), 'disabledItemHandler'],
+    ['[defaultActiveYear]'.toLowerCase(), '[year]'],
+    ['defaultActiveYear'.toLowerCase(), 'year'],
+]);
+
+export function migrateInputMonthRange({
+    resource,
+    recorder,
+    fileSystem,
+}: {
+    fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+    const elements = findElementsByTagName(template, 'tui-input-month-range');
+
+    elements.forEach((element: Element) => {
+        const sourceCodeLocation = element.sourceCodeLocation;
+
+        replaceTag(
+            recorder,
+            sourceCodeLocation,
+            'tui-input-month-range',
+            'tui-textfield',
+            template,
+            templateOffset,
+        );
+
+        const {value: labelOutside, isBinding: labelOutsideIsBinding} = removeAttr(
+            element,
+            'tuiTextfieldLabelOutside',
+            recorder,
+            templateOffset,
+        );
+
+        const isLabelOutsideTrue =
+            labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
+        const isDynamic =
+            labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
+
+        const controlAttrs = [...element.attrs].filter((attr) =>
+            /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
+        );
+
+        const calendarAttrs = [...element.attrs].filter((attr) =>
+            CALENDAR_ATTR_RENAMES.has(attr.name.toLowerCase()),
+        );
+
+        const controlStateAttrs = getControlStateAttrs(element);
+
+        for (const attr of [...controlAttrs, ...calendarAttrs]) {
+            const {startOffset = 0, endOffset = 0} =
+                element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+
+            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+        }
+
+        removeControlStateAttrs(
+            recorder,
+            templateOffset,
+            element,
+            template,
+            controlStateAttrs,
+        );
+
+        const labelIndex = element.childNodes.findIndex(
+            (node: ChildNode) =>
+                node.nodeName === '#text' && (node as TextNode)?.value.trim(),
+        );
+
+        let placeholderAttr = '';
+
+        if (labelIndex !== -1) {
+            const labelNode = element.childNodes[labelIndex];
+            const labelText = (labelNode as TextNode).value.trim();
+            const labelTextStart =
+                (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+            const labelTextEnd =
+                (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
+
+            if (isLabelOutsideTrue) {
+                recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
+                placeholderAttr = ` placeholder="${labelText}"`;
+            } else if (!isDynamic) {
+                recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
+                recorder.insertRight(labelTextEnd, '</label>\n');
+            }
+        }
+
+        const insertOffset =
+            (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
+
+        const inputs = element.childNodes.filter(
+            (node: ChildNode): node is Element => node.nodeName === 'input',
+        );
+
+        const controlAttrStr = [...controlAttrs].reduce((result, attr) => {
+            const name = normalizeAttrName(attr.name);
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
+
+        const migrationAttrs = `${controlAttrStr}${stringifyControlStateAttrs(controlStateAttrs)}`;
+
+        const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
+            const name = CALENDAR_ATTR_RENAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
+
+        if (inputs.length) {
+            recorder.insertRight(
+                insertOffset,
+                `\n<tui-calendar-month *tuiDropdown${calendarAttrStr} />\n`,
+            );
+        } else {
+            recorder.insertRight(
+                insertOffset,
+                `\n<input tuiInputMonthRange${migrationAttrs}${placeholderAttr} />\n<tui-calendar-month *tuiDropdown${calendarAttrStr} />\n`,
+            );
+        }
+
+        for (const input of inputs) {
+            input.attrs.forEach((attr) => {
+                if (/^tuiTextfield$|^tuiTextfieldLegacy$/i.exec(attr.name)) {
+                    const {startOffset = 0, endOffset = 0} =
+                        input.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+
+                    recorder.remove(
+                        templateOffset + startOffset,
+                        endOffset - startOffset,
+                    );
+
+                    recorder.insertRight(
+                        templateOffset + startOffset,
+                        `tuiInputMonthRange${migrationAttrs}${placeholderAttr}`,
+                    );
+                }
+            });
+        }
+    });
+}
+
+function normalizeAttrName(name: string): string {
+    switch (name.toLowerCase()) {
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
+        case '[(ngModel)]'.toLowerCase():
+            return '[(ngModel)]';
+        case 'formControl'.toLowerCase():
+            return 'formControl';
+        case 'formControlName'.toLowerCase():
+            return 'formControlName';
+        case 'ngModel'.toLowerCase():
+            return 'ngModel';
+        default:
+            return name;
+    }
+}
