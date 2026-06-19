@@ -18,41 +18,42 @@ import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
+
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
+
 type Element = DefaultTreeAdapterTypes.Element;
 
 // Attrs that move to <input tuiInputSlider>
 const INPUT_ATTRS = new Set([
-    '[min]',
-    '[max]',
-    'min',
-    'max',
     '[quantum]'.toLowerCase(),
+    '[max]',
+    '[min]',
+    'max',
+    'min',
     'quantum',
 ]);
 
 // Attrs that move to <input tuiSlider type="range">
 const SLIDER_ATTRS = new Set([
-    '[segments]'.toLowerCase(),
-    'segments',
     '[keySteps]'.toLowerCase(),
+    '[segments]'.toLowerCase(),
     'keySteps'.toLowerCase(),
+    'segments',
 ]);
 
 // Attrs with no direct equivalent — leave a TODO comment
 const TODO_ATTRS = new Set([
-    '[steps]',
-    'steps',
     '[valueContent]'.toLowerCase(),
     'valueContent'.toLowerCase(),
+    '[steps]',
+    'steps',
 ]);
 
 const TODO_STEPS_MESSAGE =
-    '[steps] has been removed. Use [step] on <input tuiSlider type="range"> instead, ' +
-    'where step = (max - min) / steps. See https://taiga-ui.dev/components/input-slider';
+    '[steps] has been removed. Use [step] on <input tuiSlider type="range"> instead, where step = (max - min) / steps. See https://taiga-ui.dev/components/input-slider';
+
 const TODO_VALUE_CONTENT_MESSAGE =
-    '[valueContent] has been removed. PolymorpheusContent is no longer supported for this input. ' +
-    'See https://taiga-ui.dev/components/input-slider for alternatives.';
+    '[valueContent] has been removed. PolymorpheusContent is no longer supported for this input. See https://taiga-ui.dev/components/input-slider for alternatives.';
 
 export function migrateInputSlider({
     resource,
@@ -133,15 +134,14 @@ export function migrateInputSlider({
         // Insert TODO comments for attrs with no direct equivalent
         if (todoAttrs.length > 0) {
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const messages = todoAttrs
                 .map((attr) => {
                     const name = attr.name.toLowerCase();
 
-                    if (name === '[steps]' || name === 'steps') {
-                        return `<!-- ${TODO_MARK} ${TODO_STEPS_MESSAGE} -->`;
-                    }
-
-                    return `<!-- ${TODO_MARK} ${TODO_VALUE_CONTENT_MESSAGE} -->`;
+                    return name === '[steps]' || name === 'steps'
+                        ? `<!-- ${TODO_MARK} ${TODO_STEPS_MESSAGE} -->`
+                        : `<!-- ${TODO_MARK} ${TODO_VALUE_CONTENT_MESSAGE} -->`;
                 })
                 .join('\n');
 
@@ -158,8 +158,10 @@ export function migrateInputSlider({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -228,26 +230,26 @@ export function migrateInputSlider({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '[(ngModel)]'.toLowerCase():
+            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
-        case '[(ngModel)]'.toLowerCase():
-            return '[(ngModel)]';
+        case '[quantum]'.toLowerCase():
+            return '[quantum]';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case '[quantum]'.toLowerCase():
-            return '[quantum]';
-        case 'quantum':
-            return 'quantum';
-        case '[min]':
-            return '[min]';
         case '[max]':
             return '[max]';
+        case '[min]':
+            return '[min]';
+        case 'quantum':
+            return 'quantum';
         default:
             return name;
     }
@@ -255,14 +257,14 @@ function normalizeAttrName(name: string): string {
 
 function normalizeSliderAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[segments]'.toLowerCase():
-            return '[segments]';
-        case 'segments':
-            return 'segments';
         case '[keySteps]'.toLowerCase():
             return '[keySteps]';
+        case '[segments]'.toLowerCase():
+            return '[segments]';
         case 'keySteps'.toLowerCase():
             return 'keySteps';
+        case 'segments':
+            return 'segments';
         default:
             return name;
     }
