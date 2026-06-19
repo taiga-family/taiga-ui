@@ -237,4 +237,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_TEXTFIELD_APPEARANCE has been removed. Set the appearance via the tuiTextfieldAppearance attribute on the textfield (e.g. <tui-textfield tuiTextfieldAppearance="..."> or <input tuiTextfieldAppearance="..." />) instead of providing this token.',
     },
+    {
+        name: 'TuiWrapperDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiWrapperDirective ([tuiWrapper]) has been removed with no direct replacement. The directive applied visual state classes (disabled, readOnly, hover, active, focus, invalid, appearance) to host elements — reproduce this behavior manually using host bindings or CSS.',
+    },
+    {
+        name: 'TuiStaticRequestService',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
+    },
+    {
+        name: 'TUI_MONTH_FORMATTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.',
+    },
 ];

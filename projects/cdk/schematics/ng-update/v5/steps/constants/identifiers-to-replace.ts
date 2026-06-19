@@ -33,6 +33,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputDateTimeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDateTime',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputYearModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },

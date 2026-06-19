@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime keeps [disabledItemHandler] on tui-textfield: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time
+                    [disabledItemHandler]="handler"
+                    [formControl]="ctrl"
+                >
+                    Label
+                    <input tuiTextfieldLegacy />
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    [disabledItemHandler]="handler"
+                    
+                >
+<label tuiLabel>
+                    Label
+                    </label>
+<input tuiInputDateTime [formControl]="ctrl" />
+                
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime migrates [min]/[max]/[timeMode] onto input and [defaultActiveYearMonth] onto calendar: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time
+                    [min]="min"
+                    [max]="max"
+                    [timeMode]="mode"
+                    [defaultActiveYearMonth]="activeMonth"
+                    [(ngModel)]="value"
+                >
+                    Choose a date
+                    <input tuiTextfieldLegacy />
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a date
+                    </label>
+<input tuiInputDateTime [(ngModel)]="value" [min]="min" [max]="max" [timeMode]="mode" />
+                
+<tui-calendar *tuiDropdown [month]="activeMonth" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime migrates import and basic template with label: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiInputDateTimeModule],
+                    template: \`
+                        <tui-input-date-time [(ngModel)]="value">
+                            Choose a date
+                            <input tuiTextfieldLegacy />
+                        </tui-input-date-time>
+                    \`,
+                })
+                export class TestComponent {
+                    protected value = null;
+                }
+            ",
+  "1. After": "import { TuiInputDateTime } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [TuiInputDateTime],
+                    template: \`
+                        <tui-textfield >
+<label tuiLabel>
+                            Choose a date
+                            </label>
+<input tuiInputDateTime [(ngModel)]="value" />
+                        
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+                    \`,
+                })
+                export class TestComponent {
+                    protected value = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime migrates when there is no explicit <input> child: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time [formControl]="ctrl">
+                    Choose a date
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield >
+<label tuiLabel>
+                    Choose a date
+                </label>
+
+<input tuiInputDateTime [formControl]="ctrl" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
