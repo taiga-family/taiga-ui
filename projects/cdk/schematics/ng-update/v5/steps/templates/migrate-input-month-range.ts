@@ -17,23 +17,25 @@ import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
+
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
+
 type Element = DefaultTreeAdapterTypes.Element;
 
 // All domain attrs go directly to <tui-calendar-month> — the directive has no own inputs for them.
 const CALENDAR_ATTR_RENAMES = new Map([
-    ['[min]', '[min]'],
-    ['min', 'min'],
-    ['[max]', '[max]'],
-    ['max', 'max'],
-    ['[minLength]'.toLowerCase(), '[minLength]'],
-    ['minLength'.toLowerCase(), 'minLength'],
-    ['[maxLength]'.toLowerCase(), '[maxLength]'],
-    ['maxLength'.toLowerCase(), 'maxLength'],
-    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
-    ['disabledItemHandler'.toLowerCase(), 'disabledItemHandler'],
     ['[defaultActiveYear]'.toLowerCase(), '[year]'],
+    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
+    ['[max]', '[max]'],
+    ['[maxLength]'.toLowerCase(), '[maxLength]'],
+    ['[min]', '[min]'],
+    ['[minLength]'.toLowerCase(), '[minLength]'],
     ['defaultActiveYear'.toLowerCase(), 'year'],
+    ['disabledItemHandler'.toLowerCase(), 'disabledItemHandler'],
+    ['max', 'max'],
+    ['maxLength'.toLowerCase(), 'maxLength'],
+    ['min', 'min'],
+    ['minLength'.toLowerCase(), 'minLength'],
 ]);
 
 export function migrateInputMonthRange({
@@ -109,8 +111,10 @@ export function migrateInputMonthRange({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -179,12 +183,12 @@ export function migrateInputMonthRange({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '[(ngModel)]'.toLowerCase():
+            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
-        case '[(ngModel)]'.toLowerCase():
-            return '[(ngModel)]';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
