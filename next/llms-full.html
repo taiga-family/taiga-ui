@@ -6993,7 +6993,7 @@ ButtonSelect is a form control for selecting one or multiple values, similar to 
 
 **Template:**
 ```html
-&lt;button appearance=&quot;outline-grayscale&quot; iconStart=&quot;@tui.star&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;items&quot; /&gt;
+&lt;button appearance=&quot;outline-grayscale&quot; iconStart=&quot;@tui.star&quot; size=&quot;m&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;items&quot; /&gt;
 &lt;/button&gt;
 ```
 **TypeScript:**
@@ -7021,7 +7021,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.user&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} &lt;tui-data-list *tuiDropdown&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.user&quot; size=&quot;m&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} &lt;tui-data-list *tuiDropdown&gt;
 &lt;tui-opt-group label=&quot;Users&quot; tuiMultiSelectGroup &gt; @for (name of items; track name.id) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;name&quot; &gt; {{ name.name }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
 &lt;/tui-data-list&gt;
 &lt;/button&gt;
@@ -7067,6 +7067,34 @@ export default class Example {
 }
 ```
 
+#### Date
+
+**Template:**
+```html
+&lt;button iconEnd=&quot;@tui.calendar&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value || &#039;Select date&#039; }} &lt;tui-calendar *tuiDropdown /&gt;
+&lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {type TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiCalendar, TuiDropdown} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonSelect} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiButtonSelect, TuiCalendar, TuiDropdown],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TuiDay | null = null;
+}
+```
+
 
 ### TypeScript
 
@@ -7081,7 +7109,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Multiselect&#039;];
+    protected readonly examples = [&#039;Basic&#039;, &#039;Multiselect&#039;, &#039;Date&#039;];
 }
 ```
 
@@ -13255,7 +13283,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;h3&gt;Multi select control&lt;/h3&gt;
-&lt;button appearance=&quot;flat&quot; tuiButtonSelect tuiChevron tuiIconButton type=&quot;button&quot; [tuiAppearanceState]=&quot;open ? &#039;hover&#039; : null&quot; [(ngModel)]=&quot;value&quot; [(open)]=&quot;open&quot; &gt; Open &lt;tui-data-list *tuiDropdown size=&quot;l&quot; [style.width.rem]=&quot;12&quot; &gt;
+&lt;button appearance=&quot;flat&quot; tuiButtonSelect tuiChevron tuiIconButton [tuiAppearanceState]=&quot;open ? &#039;hover&#039; : null&quot; [(ngModel)]=&quot;value&quot; [(open)]=&quot;open&quot; &gt; Open &lt;tui-data-list *tuiDropdown size=&quot;l&quot; [style.width.rem]=&quot;12&quot; &gt;
 &lt;tui-opt-group tuiMultiSelectGroup&gt;
 &lt;tui-opt-group label=&quot;Main dishes menu with long label&quot;&gt; @for (burger of burgers; track burger) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;burger&quot; &gt; {{ burger }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
 &lt;tui-opt-group label=&quot;Drinks&quot;&gt; @for (drink of drinks; track drink) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;drink&quot; &gt; {{ drink }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
@@ -42970,7 +42998,7 @@ export default class Example {
 &lt;table tuiTable [style.width.rem]=&quot;36&quot; &gt;
 &lt;caption tuiCaption&gt;
 &lt;span&gt;999 rows&lt;/span&gt;
-&lt;button appearance=&quot;flat&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;size&quot; &gt; {{ index * size + 1 }}-{{ (index + 1) * size }} rows &lt;tui-data-list-wrapper *tuiDropdown [itemContent]=&quot;content&quot; [items]=&quot;items&quot; /&gt;
+&lt;button appearance=&quot;flat&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;size&quot; &gt; {{ index * size + 1 }}-{{ (index + 1) * size }} rows &lt;tui-data-list-wrapper *tuiDropdown [itemContent]=&quot;content&quot; [items]=&quot;items&quot; /&gt;
 &lt;/button&gt;
 &lt;tui-pagination [length]=&quot;length&quot; [style.float]=&quot;&#039;right&#039;&quot; [(index)]=&quot;index&quot; /&gt;
 &lt;/caption&gt;
@@ -49834,7 +49862,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;form [formGroup]=&quot;form&quot;&gt;
-&lt;button appearance=&quot;outline-grayscale&quot; formControlName=&quot;control&quot; tuiButton tuiButtonSelect tuiChevron type=&quot;button&quot; [tuiAppearanceMode]=&quot;length ? &#039;checked&#039; : null&quot; [(open)]=&quot;open&quot; (keydown.delete)=&quot;form.reset()&quot; &gt; {{ text }} @if (length) { &lt;tui-icon aria-label=&quot;reset&quot; icon=&quot;@tui.x&quot; role=&quot;button&quot; tabindex=&quot;-1&quot; [style.color]=&quot;&#039;var(--tui-text-tertiary)&#039;&quot; [style.font-size.rem]=&quot;1&quot; (click.stop)=&quot;form.reset()&quot; /&gt; } &lt;tui-data-list *tuiDropdown tuiMultiSelectGroup &gt; @for (item of items; track item) { &lt;button tuiOption [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-data-list&gt;
+&lt;button appearance=&quot;outline-grayscale&quot; formControlName=&quot;control&quot; tuiButton tuiButtonSelect tuiChevron [tuiAppearanceMode]=&quot;length ? &#039;checked&#039; : null&quot; [(open)]=&quot;open&quot; (keydown.delete)=&quot;form.reset()&quot; &gt; {{ text }} @if (length) { &lt;tui-icon aria-label=&quot;reset&quot; icon=&quot;@tui.x&quot; role=&quot;button&quot; tabindex=&quot;-1&quot; [style.color]=&quot;&#039;var(--tui-text-tertiary)&#039;&quot; [style.font-size.rem]=&quot;1&quot; (click.stop)=&quot;form.reset()&quot; /&gt; } &lt;tui-data-list *tuiDropdown tuiMultiSelectGroup &gt; @for (item of items; track item) { &lt;button tuiOption [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-data-list&gt;
 &lt;/button&gt;
 &lt;/form&gt;
 ```
@@ -54386,7 +54414,7 @@ export default class Page {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton tuiButtonSelect tuiChevron type=&quot;button&quot; [(ngModel)]=&quot;language&quot; (ngModelChange)=&quot;switcher.setLanguage($event)&quot; &gt; {{ language }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;languages&quot; /&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton tuiButtonSelect tuiChevron [(ngModel)]=&quot;language&quot; (ngModelChange)=&quot;switcher.setLanguage($event)&quot; &gt; {{ language }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;languages&quot; /&gt;
 &lt;/button&gt;
 ```
 **TypeScript:**

@@ -6984,7 +6984,7 @@ ButtonSelect is a form control for selecting one or multiple values, similar to 
 
 **Template:**
 ```html
-<button appearance="outline-grayscale" iconStart="@tui.star" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value }} <tui-data-list-wrapper *tuiDropdown [items]="items" />
+<button appearance="outline-grayscale" iconStart="@tui.star" size="m" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value }} <tui-data-list-wrapper *tuiDropdown [items]="items" />
 </button>
 ```
 **TypeScript:**
@@ -7012,7 +7012,7 @@ export default class Example {
 
 **Template:**
 ```html
-<button appearance="secondary-grayscale" iconStart="@tui.user" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} <tui-data-list *tuiDropdown>
+<button appearance="secondary-grayscale" iconStart="@tui.user" size="m" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} <tui-data-list *tuiDropdown>
 <tui-opt-group label="Users" tuiMultiSelectGroup > @for (name of items; track name.id) { <button tuiOption type="button" [value]="name" > {{ name.name }} </button> } </tui-opt-group>
 </tui-data-list>
 </button>
@@ -7058,6 +7058,34 @@ export default class Example {
 }
 ```
 
+#### Date
+
+**Template:**
+```html
+<button iconEnd="@tui.calendar" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value || 'Select date' }} <tui-calendar *tuiDropdown />
+</button>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiDay} from '@taiga-ui/cdk';
+import {TuiButton, TuiCalendar, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiButtonSelect, TuiCalendar, TuiDropdown],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TuiDay | null = null;
+}
+```
+
 
 ### TypeScript
 
@@ -7072,7 +7100,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Multiselect'];
+    protected readonly examples = ['Basic', 'Multiselect', 'Date'];
 }
 ```
 
@@ -13246,7 +13274,7 @@ export default class Example {
 **Template:**
 ```html
 <h3>Multi select control</h3>
-<button appearance="flat" tuiButtonSelect tuiChevron tuiIconButton type="button" [tuiAppearanceState]="open ? 'hover' : null" [(ngModel)]="value" [(open)]="open" > Open <tui-data-list *tuiDropdown size="l" [style.width.rem]="12" >
+<button appearance="flat" tuiButtonSelect tuiChevron tuiIconButton [tuiAppearanceState]="open ? 'hover' : null" [(ngModel)]="value" [(open)]="open" > Open <tui-data-list *tuiDropdown size="l" [style.width.rem]="12" >
 <tui-opt-group tuiMultiSelectGroup>
 <tui-opt-group label="Main dishes menu with long label"> @for (burger of burgers; track burger) { <button tuiOption type="button" [value]="burger" > {{ burger }} </button> } </tui-opt-group>
 <tui-opt-group label="Drinks"> @for (drink of drinks; track drink) { <button tuiOption type="button" [value]="drink" > {{ drink }} </button> } </tui-opt-group>
@@ -42961,7 +42989,7 @@ export default class Example {
 <table tuiTable [style.width.rem]="36" >
 <caption tuiCaption>
 <span>999 rows</span>
-<button appearance="flat" tuiButton tuiButtonSelect type="button" [(ngModel)]="size" > {{ index * size + 1 }}-{{ (index + 1) * size }} rows <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
+<button appearance="flat" tuiButton tuiButtonSelect [(ngModel)]="size" > {{ index * size + 1 }}-{{ (index + 1) * size }} rows <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 </button>
 <tui-pagination [length]="length" [style.float]="'right'" [(index)]="index" />
 </caption>
@@ -49825,7 +49853,7 @@ export default class Example {
 **Template:**
 ```html
 <form [formGroup]="form">
-<button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect tuiChevron type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} @if (length) { <tui-icon aria-label="reset" icon="@tui.x" role="button" tabindex="-1" [style.color]="'var(--tui-text-tertiary)'" [style.font-size.rem]="1" (click.stop)="form.reset()" /> } <tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track item) { <button tuiOption [value]="item" > {{ item }} </button> } </tui-data-list>
+<button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect tuiChevron [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} @if (length) { <tui-icon aria-label="reset" icon="@tui.x" role="button" tabindex="-1" [style.color]="'var(--tui-text-tertiary)'" [style.font-size.rem]="1" (click.stop)="form.reset()" /> } <tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track item) { <button tuiOption [value]="item" > {{ item }} </button> } </tui-data-list>
 </button>
 </form>
 ```
@@ -54377,7 +54405,7 @@ export default class Page {
 
 **Template:**
 ```html
-<button appearance="secondary-grayscale" size="s" tuiButton tuiButtonSelect tuiChevron type="button" [(ngModel)]="language" (ngModelChange)="switcher.setLanguage($event)" > {{ language }} <tui-data-list-wrapper *tuiDropdown [items]="languages" />
+<button appearance="secondary-grayscale" size="s" tuiButton tuiButtonSelect tuiChevron [(ngModel)]="language" (ngModelChange)="switcher.setLanguage($event)" > {{ language }} <tui-data-list-wrapper *tuiDropdown [items]="languages" />
 </button>
 ```
 **TypeScript:**
