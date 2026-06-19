@@ -18,17 +18,19 @@ import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
+
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
+
 type Element = DefaultTreeAdapterTypes.Element;
 
 // Attrs that move to <input tuiInputDateTime>
 const INPUT_ATTRS = new Set([
+    '[timeMode]'.toLowerCase(),
+    'timeMode'.toLowerCase(),
     '[max]',
     '[min]',
     'max',
     'min',
-    '[timeMode]'.toLowerCase(),
-    'timeMode'.toLowerCase(),
 ]);
 
 // Attrs that move to <tui-calendar> with optional rename.
@@ -36,8 +38,8 @@ const INPUT_ATTRS = new Set([
 // and is automatically inherited by the calendar in v5.
 const CALENDAR_ATTR_RENAMES = new Map([
     ['[defaultActiveYearMonth]'.toLowerCase(), '[month]'],
-    ['defaultActiveYearMonth'.toLowerCase(), 'month'],
     ['[markerHandler]'.toLowerCase(), '[markerHandler]'],
+    ['defaultActiveYearMonth'.toLowerCase(), 'month'],
     ['markerHandler'.toLowerCase(), 'markerHandler'],
 ]);
 
@@ -118,8 +120,10 @@ export function migrateInputDateTime({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -197,16 +201,12 @@ export function migrateInputDateTime({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[max]':
-            return '[max]';
-        case '[min]':
-            return '[min]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
         case '[(ngModel)]'.toLowerCase():
             return '[(ngModel)]';
+        case '[formControl]'.toLowerCase():
+            return '[formControl]';
+        case '[ngModel]'.toLowerCase():
+            return '[ngModel]';
         case '[timeMode]'.toLowerCase():
             return '[timeMode]';
         case 'formControl'.toLowerCase():
@@ -217,6 +217,10 @@ function normalizeAttrName(name: string): string {
             return 'ngModel';
         case 'timeMode'.toLowerCase():
             return 'timeMode';
+        case '[max]':
+            return '[max]';
+        case '[min]':
+            return '[min]';
         default:
             return name;
     }
