@@ -94,8 +94,8 @@ export class TuiTooltip implements DoCheck {
     public readonly size = input<TuiSizeS>('m');
 
     public ngDoCheck(): void {
-        if (this.textfield?.id) {
-            tuiSetSignal(this.describe.id, this.textfield.id);
+        if (this.textfield) {
+            tuiSetSignal(this.describe.id, this.textfield.input()?.nativeElement.id);
         }
     }
 

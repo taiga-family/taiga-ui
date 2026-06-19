@@ -17,10 +17,11 @@ import {
     type Validator,
 } from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {type TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiGenerateId, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {
     PolymorpheusComponent,
@@ -45,15 +46,14 @@ import {TuiErrorComponent} from './error.component';
         tuiProvide(NG_VALUE_ACCESSOR, TuiErrorDirective, true),
         tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),
     ],
+    hostDirectives: [TuiId],
     host: {
         'aria-live': 'polite',
-        '[id]': 'id',
         '(document:tui-validator.zoneless)': 'onValidator($event.detail)',
     },
 })
 export class TuiErrorDirective implements ControlValueAccessor, Validator {
     private readonly el = tuiInjectElement();
-    private readonly autoId = tuiGenerateId();
     private readonly content = inject(TUI_VALIDATION_ERRORS);
     private readonly control = new BehaviorSubject<AbstractControl | null>(null);
 
@@ -87,10 +87,6 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
         {self: true, optional: true},
     );
 
-    public get id(): string {
-        return this.el.id || this.autoId;
-    }
-
     public registerOnChange(): void {}
 
     public registerOnTouched(): void {}
@@ -105,7 +101,7 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
 
     protected onValidator(validator: TuiNativeValidator): void {
         if (this.control.value && validator.control === this.control.value) {
-            validator.id = this.id;
+            validator.id = this.el.id;
         }
     }
 
