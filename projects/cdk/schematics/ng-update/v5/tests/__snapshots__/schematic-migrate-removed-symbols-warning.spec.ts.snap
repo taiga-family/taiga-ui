@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed symbols warnings adds TODO comment for TUI_MONTH_FORMATTER import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit';
+                import {TuiMonth} from '@taiga-ui/cdk';
+                import {of} from 'rxjs';
+
+                @Component({
+                    providers: [
+                        {
+                            provide: TUI_MONTH_FORMATTER,
+                            useValue: (month: TuiMonth) => of(\`\${month.formattedYear}/\${month.month + 1}\`),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.
+                import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit';
+                import {TuiMonth} from '@taiga-ui/cdk';
+                import {of} from 'rxjs';
+
+                @Component({
+                    providers: [
+                        {
+                            provide: TUI_MONTH_FORMATTER,
+                            useValue: (month: TuiMonth) => of(\`\${month.formattedYear}/\${month.month + 1}\`),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiStaticRequestService import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiStaticRequestService} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    private readonly staticRequest = inject(TuiStaticRequestService);
+
+                    protected load(url: string) {
+                        return this.staticRequest.request(url);
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+// TODO: (Taiga UI migration) TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.
+                import {TuiStaticRequestService} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    private readonly staticRequest = inject(TuiStaticRequestService);
+
+                    protected load(url: string) {
+                        return this.staticRequest.request(url);
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiWrapperDirective import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiWrapperDirective} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiWrapperDirective],
+                    template: '<div tuiWrapper [disabled]="true"></div>',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiWrapperDirective ([tuiWrapper]) has been removed with no direct replacement. The directive applied visual state classes (disabled, readOnly, hover, active, focus, invalid, appearance) to host elements — reproduce this behavior manually using host bindings or CSS.
+                import {TuiWrapperDirective} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiWrapperDirective],
+                    template: '<div tuiWrapper [disabled]="true"></div>',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
