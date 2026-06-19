@@ -117,7 +117,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             this.close$.next();
         }
 
-        if (this.el.scrollTop >= this.lastScrollTop) {
+        if (this.el.scrollTop > this.lastScrollTop) {
             this.lastScrollTop = Number.NaN;
         }
     }
