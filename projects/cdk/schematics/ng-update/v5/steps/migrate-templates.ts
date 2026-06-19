@@ -44,6 +44,7 @@ import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
 import {migrateInputMonth} from './templates/migrate-input-month';
 import {migrateInputPassword} from './templates/migrate-input-password';
+import {migrateInputSlider} from './templates/migrate-input-slider';
 import {migrateInputPhone} from './templates/migrate-input-phone';
 import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
 import {migrateInputTag} from './templates/migrate-input-tag';
@@ -101,6 +102,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputPassword,
         migrateInputMonth,
         migrateInputDate,
+        migrateInputSlider,
         migrateInputTime,
         migrateInputPhoneInternational,
         migrateInputDateMulti,
