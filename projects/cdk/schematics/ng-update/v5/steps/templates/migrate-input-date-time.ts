@@ -96,10 +96,14 @@ export function migrateInputDateTime({
         const controlStateAttrs = getControlStateAttrs(element);
 
         for (const attr of [...controlAttrs, ...inputAttrs, ...calendarAttrs]) {
-            const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+            const attributeLocation = element.sourceCodeLocation?.attrs?.[attr.name];
 
-            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+            if (attributeLocation) {
+                recorder.remove(
+                    templateOffset + attributeLocation.startOffset,
+                    attributeLocation.endOffset - attributeLocation.startOffset,
+                );
+            }
         }
 
         removeControlStateAttrs(
@@ -119,20 +123,23 @@ export function migrateInputDateTime({
 
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
-            const labelText = (labelNode as TextNode).value.trim();
 
-            const labelTextStart =
-                (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+            if (labelNode?.sourceCodeLocation) {
+                const labelText = (labelNode as TextNode).value.trim();
 
-            const labelTextEnd =
-                (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
+                const labelTextStart =
+                    labelNode.sourceCodeLocation.startOffset + templateOffset;
 
-            if (isLabelOutsideTrue) {
-                recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
-                placeholderAttr = ` placeholder="${labelText}"`;
-            } else if (!isDynamic) {
-                recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
-                recorder.insertRight(labelTextEnd, '</label>\n');
+                const labelTextEnd =
+                    labelNode.sourceCodeLocation.endOffset + templateOffset;
+
+                if (isLabelOutsideTrue) {
+                    recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
+                    placeholderAttr = ` placeholder="${labelText}"`;
+                } else if (!isDynamic) {
+                    recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
+                    recorder.insertRight(labelTextEnd, '</label>\n');
+                }
             }
         }
 
@@ -145,8 +152,13 @@ export function migrateInputDateTime({
             );
         }
 
-        const insertOffset =
-            (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
+        const endTagStartOffset = sourceCodeLocation?.endTag?.startOffset;
+
+        if (endTagStartOffset === undefined) {
+            return;
+        }
+
+        const insertOffset = endTagStartOffset + templateOffset;
 
         const inputs = element.childNodes.filter(
             (node: ChildNode): node is Element => node.nodeName === 'input',
@@ -181,18 +193,22 @@ export function migrateInputDateTime({
         for (const input of inputs) {
             input.attrs.forEach((attr) => {
                 if (/^tuiTextfield$|^tuiTextfieldLegacy$/i.exec(attr.name)) {
-                    const {startOffset = 0, endOffset = 0} =
-                        input.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+                    const attributeLocation =
+                        input.sourceCodeLocation?.attrs?.[attr.name];
 
-                    recorder.remove(
-                        templateOffset + startOffset,
-                        endOffset - startOffset,
-                    );
+                    if (attributeLocation) {
+                        const {startOffset, endOffset} = attributeLocation;
 
-                    recorder.insertRight(
-                        templateOffset + startOffset,
-                        `tuiInputDateTime${migrationAttrs}${placeholderAttr}`,
-                    );
+                        recorder.remove(
+                            templateOffset + startOffset,
+                            endOffset - startOffset,
+                        );
+
+                        recorder.insertRight(
+                            templateOffset + startOffset,
+                            `tuiInputDateTime${migrationAttrs}${placeholderAttr}`,
+                        );
+                    }
                 }
             });
         }
@@ -201,10 +217,14 @@ export function migrateInputDateTime({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[(ngModel)]'.toLowerCase():
             return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[formControlName]'.toLowerCase():
+            return '[formControlName]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
         case '[timeMode]'.toLowerCase():
