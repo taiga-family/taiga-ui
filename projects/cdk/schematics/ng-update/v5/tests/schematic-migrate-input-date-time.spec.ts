@@ -76,5 +76,19 @@ describe('ng-update TuiInputDateTimeModule to TuiInputDateTime', () => {
         }),
     );
 
+    it(
+        'preserves camelCase for (ngModelChange) and [formControlName] bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date-time>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
