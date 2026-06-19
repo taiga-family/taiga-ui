@@ -56,6 +56,20 @@
         background: var(--tui-background-accent-2);
     }
 
+    &_start {
+        border-start-start-radius: var(--tui-radius-s);
+        border-end-start-radius: var(--tui-radius-s);
+    }
+
+    &_end {
+        border-start-end-radius: var(--tui-radius-s);
+        border-end-end-radius: var(--tui-radius-s);
+    }
+
+    &[data-type~='weekend'] {
+        color: var(--tui-text-negative);
+    }
+
     &[data-range='single'],
     &[data-range='start'],
     &[data-range='end'] {

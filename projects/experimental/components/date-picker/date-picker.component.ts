@@ -6,8 +6,10 @@ import {
     inject,
     input,
     model,
+    signal,
     viewChild,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -17,6 +19,8 @@ import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/but
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
 import {TuiLink} from '@taiga-ui/core/components/link';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
+import {TUI_DROPDOWN_HOST} from '@taiga-ui/core/portals/dropdown';
 import {
     TUI_COMMON_ICONS,
     TUI_MONTHS,
@@ -25,6 +29,9 @@ import {
 } from '@taiga-ui/core/tokens';
 import {TuiCalendar} from '@taiga-ui/experimental/components/calendar';
 import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
+import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
+import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -41,11 +48,15 @@ type DatePicker<T> = T extends 'single'
 @Component({
     selector: 'tui-date-picker',
     imports: [
+        FormsModule,
         TuiButton,
         TuiCalendar,
         TuiCarousel,
         TuiChevron,
         TuiDataGrid,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
         TuiLink,
         TuiMapperPipe,
         TuiSlides,
@@ -57,6 +68,7 @@ type DatePicker<T> = T extends 'single'
         tuiAsAuxiliary(TuiDatePicker),
         tuiProvide(AbstractTuiCalendar, TuiDatePicker),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
+        tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
     ],
 })
 export class TuiDatePicker<
@@ -66,6 +78,7 @@ export class TuiDatePicker<
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly i18n = inject(TUI_MONTHS);
+    protected readonly dropdown = inject(TUI_DROPDOWN_HOST, {optional: true});
 
     protected readonly content = computed<PolymorpheusContent<TuiContext<number>>>(
         () => (c) => this.i18n()[c.$implicit],

@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     TUI_CALENDAR_OPTIONS,
@@ -21,8 +22,8 @@ import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
  * @deprecated: work in progress, do not use!
  */
 @Component({
-    selector: 'tui-calendar',
-    imports: [TuiCalendarSheetPipe],
+    selector: 'tui-calendar[new]',
+    imports: [TuiCalendarSheetPipe, TuiMapperPipe],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,6 +35,7 @@ export class TuiCalendar {
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);
+    protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
 
     protected readonly week = computed((week = convert(this.days())) => [
         ...week.slice(this.options.weekStart()),

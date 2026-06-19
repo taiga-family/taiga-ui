@@ -27,6 +27,26 @@
     font: var(--tui-typography-ui-l);
 }
 
+.t-textfield {
+    position: absolute;
+    inset: 0.125rem;
+    opacity: 0;
+    pointer-events: none;
+
+    &::after {
+        display: none;
+    }
+
+    &:focus-within {
+        opacity: 1;
+        pointer-events: auto;
+
+        ~ * {
+            visibility: hidden;
+        }
+    }
+}
+
 .t-button {
     .transition(opacity);
 
