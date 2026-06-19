@@ -3,14 +3,24 @@
 exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for [steps] (cannot compute step value statically): test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-slider [(ngModel)]="value" [min]="0" [max]="100" [steps]="5">
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [min]="0"
+                    [max]="100"
+                    [steps]="5"
+                >
                     Volume
                     <input tuiTextfieldLegacy />
                 </tui-input-slider>
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) [steps] has been removed. Use [step] on <input tuiSlider type="range"> instead, where step = (max - min) / steps. See https://taiga-ui.dev/components/input-slider -->
-<tui-textfield    >
+<tui-textfield
+                    
+                    
+                    
+                    
+                >
 <label tuiLabel>
                     Volume
                     </label>
@@ -96,12 +106,20 @@ exports[`ng-update TuiInputSliderModule to TuiInputSlider migrates import and ba
 exports[`ng-update TuiInputSliderModule to TuiInputSlider migrates when there is no explicit <input> child: test.html 1`] = `
 {
   "0. Before": "
-                <tui-input-slider formControlName="volume" [min]="0" [max]="10">
+                <tui-input-slider
+                    formControlName="volume"
+                    [min]="0"
+                    [max]="10"
+                >
                     Volume
                 </tui-input-slider>
             ",
   "1. After": "
-                <tui-textfield   >
+                <tui-textfield
+                    
+                    
+                    
+                >
 <label tuiLabel>
                     Volume
                 </label>

@@ -117,10 +117,14 @@ export function migrateInputSlider({
             ...sliderAttrs,
             ...todoAttrs,
         ]) {
-            const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+            const attributeLocation = element.sourceCodeLocation?.attrs?.[attr.name];
 
-            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+            if (attributeLocation) {
+                recorder.remove(
+                    templateOffset + attributeLocation.startOffset,
+                    attributeLocation.endOffset - attributeLocation.startOffset,
+                );
+            }
         }
 
         removeControlStateAttrs(
@@ -157,25 +161,31 @@ export function migrateInputSlider({
 
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
-            const labelText = (labelNode as TextNode).value.trim();
 
-            const labelTextStart =
-                (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+            if (labelNode?.sourceCodeLocation) {
+                const labelText = (labelNode as TextNode).value.trim();
+                const labelTextStart =
+                    labelNode.sourceCodeLocation.startOffset + templateOffset;
+                const labelTextEnd =
+                    labelNode.sourceCodeLocation.endOffset + templateOffset;
 
-            const labelTextEnd =
-                (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
-
-            if (isLabelOutsideTrue) {
-                recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
-                placeholderAttr = ` placeholder="${labelText}"`;
-            } else if (!isDynamic) {
-                recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
-                recorder.insertRight(labelTextEnd, '</label>\n');
+                if (isLabelOutsideTrue) {
+                    recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
+                    placeholderAttr = ` placeholder="${labelText}"`;
+                } else if (!isDynamic) {
+                    recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
+                    recorder.insertRight(labelTextEnd, '</label>\n');
+                }
             }
         }
 
-        const insertOffset =
-            (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
+        const endTagStartOffset = sourceCodeLocation?.endTag?.startOffset;
+
+        if (endTagStartOffset === undefined) {
+            return;
+        }
+
+        const insertOffset = endTagStartOffset + templateOffset;
 
         const inputs = element.childNodes.filter(
             (node: ChildNode): node is Element => node.nodeName === 'input',
@@ -210,18 +220,22 @@ export function migrateInputSlider({
         for (const input of inputs) {
             input.attrs.forEach((attr) => {
                 if (/^tuiTextfield$|^tuiTextfieldLegacy$/i.exec(attr.name)) {
-                    const {startOffset = 0, endOffset = 0} =
-                        input.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+                    const attributeLocation =
+                        input.sourceCodeLocation?.attrs?.[attr.name];
 
-                    recorder.remove(
-                        templateOffset + startOffset,
-                        endOffset - startOffset,
-                    );
+                    if (attributeLocation) {
+                        const {startOffset, endOffset} = attributeLocation;
 
-                    recorder.insertRight(
-                        templateOffset + startOffset,
-                        `tuiInputSlider${migrationAttrs}${placeholderAttr}`,
-                    );
+                        recorder.remove(
+                            templateOffset + startOffset,
+                            endOffset - startOffset,
+                        );
+
+                        recorder.insertRight(
+                            templateOffset + startOffset,
+                            `tuiInputSlider${migrationAttrs}${placeholderAttr}`,
+                        );
+                    }
                 }
             });
         }
@@ -234,8 +248,12 @@ function normalizeAttrName(name: string): string {
             return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[formControlName]'.toLowerCase():
+            return '[formControlName]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[quantum]'.toLowerCase():
             return '[quantum]';
         case 'formControl'.toLowerCase():
