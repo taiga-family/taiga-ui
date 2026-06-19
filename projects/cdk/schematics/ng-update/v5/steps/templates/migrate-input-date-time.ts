@@ -21,8 +21,6 @@ type TextNode = DefaultTreeAdapterTypes.TextNode;
 type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type Element = DefaultTreeAdapterTypes.Element;
 
-const DOCS_LINK = 'https://taiga-ui.dev/components/input-date-time';
-
 // Attrs that move to <input tuiInputDateTime>
 const INPUT_ATTRS = new Set([
     '[max]',
