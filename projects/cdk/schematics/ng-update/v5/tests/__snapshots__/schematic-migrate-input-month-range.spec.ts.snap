@@ -120,3 +120,29 @@ exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange moves [min]/[m
             ",
 }
 `;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange preserves camelCase for (ngModelChange) and [formControlName] bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a range
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a range
+                </label>
+
+<input tuiInputMonthRange [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;

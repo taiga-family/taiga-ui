@@ -75,5 +75,19 @@ describe('ng-update TuiInputMonthRangeModule to TuiInputMonthRange', () => {
         }),
     );
 
+    it(
+        'preserves camelCase for (ngModelChange) and [formControlName] bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-month-range
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a range
+                </tui-input-month-range>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
