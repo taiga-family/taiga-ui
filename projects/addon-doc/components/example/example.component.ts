@@ -134,7 +134,7 @@ export class TuiDocExample implements OnChanges {
             ? [
                   {
                       code: '',
-                      key: 'tui-doc-example-preview',
+                      key: this.previewTab,
                       title: this.defaultTab(),
                   },
               ]
