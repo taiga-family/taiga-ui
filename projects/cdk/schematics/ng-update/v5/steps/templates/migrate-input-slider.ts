@@ -164,8 +164,10 @@ export function migrateInputSlider({
 
             if (labelNode?.sourceCodeLocation) {
                 const labelText = (labelNode as TextNode).value.trim();
+
                 const labelTextStart =
                     labelNode.sourceCodeLocation.startOffset + templateOffset;
+
                 const labelTextEnd =
                     labelNode.sourceCodeLocation.endOffset + templateOffset;
 
@@ -244,6 +246,8 @@ export function migrateInputSlider({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[(ngModel)]'.toLowerCase():
             return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
@@ -252,8 +256,6 @@ function normalizeAttrName(name: string): string {
             return '[formControlName]';
         case '[ngModel]'.toLowerCase():
             return '[ngModel]';
-        case '(ngModelChange)'.toLowerCase():
-            return '(ngModelChange)';
         case '[quantum]'.toLowerCase():
             return '[quantum]';
         case 'formControl'.toLowerCase():
