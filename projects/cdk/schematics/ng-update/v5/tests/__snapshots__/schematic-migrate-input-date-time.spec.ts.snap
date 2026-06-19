@@ -122,3 +122,29 @@ exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime migrates when ther
             ",
 }
 `;
+
+exports[`ng-update TuiInputDateTimeModule to TuiInputDateTime preserves camelCase for (ngModelChange) and [formControlName] bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a date
+                </label>
+
+<input tuiInputDateTime [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
