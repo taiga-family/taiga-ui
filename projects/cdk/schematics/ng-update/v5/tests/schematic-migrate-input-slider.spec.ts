@@ -98,5 +98,19 @@ describe('ng-update TuiInputSliderModule to TuiInputSlider', () => {
         }),
     );
 
+    it(
+        'preserves camelCase for (ngModelChange) and [formControlName] bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-slider
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Volume
+                </tui-input-slider>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
