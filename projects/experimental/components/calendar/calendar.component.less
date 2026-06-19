@@ -4,7 +4,7 @@
     display: grid;
     inline-size: 100%;
     color: var(--tui-text-secondary);
-    font: var(--tui-typography-ui-s);
+    font: var(--tui-typography-body-m);
     grid-template: 2rem / repeat(7, 1fr);
     gap: 0.25rem 0;
     place-items: center;
@@ -14,11 +14,11 @@
 .t-day {
     position: relative;
     inline-size: 100%;
-    block-size: 2rem;
+    min-block-size: 2rem;
     padding: 0;
     border: 0;
     background: transparent;
-    font: var(--tui-typography-ui-m);
+    font: inherit;
     color: var(--tui-text-primary);
     cursor: pointer;
     overflow: hidden;
@@ -28,8 +28,9 @@
         position: absolute;
         inset: 50%;
         z-index: -1;
-        block-size: 2rem;
-        inline-size: 2rem;
+        block-size: 100%;
+        min-inline-size: 2rem;
+        aspect-ratio: 1;
         border-radius: 100%;
         transform: translate(calc(var(--tui-inline) * -50%), -50%);
     }

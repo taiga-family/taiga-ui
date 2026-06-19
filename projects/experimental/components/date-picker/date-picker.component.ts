@@ -11,6 +11,7 @@ import {
 import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
@@ -54,6 +55,7 @@ type DatePicker<T> = T extends 'single'
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiDatePicker),
+        tuiProvide(AbstractTuiCalendar, TuiDatePicker),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
     ],
 })
