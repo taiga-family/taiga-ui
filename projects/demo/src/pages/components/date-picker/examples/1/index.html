@@ -47,7 +47,7 @@
         tuiButton
         tuiButtonSelect
     >
-        {{ form.get('button')?.value || 'Select date' }}
+        {{ form.controls.button.value || 'Select date' }}
         <div *tuiDropdown="let close">
             <tui-date-picker
                 [disabledItemHandler]="disabledItemHandler"
@@ -60,7 +60,7 @@
                 tuiButton
                 type="button"
                 [style.inline-size.%]="100"
-                (click)="form.get('button')?.setValue(null); close()"
+                (click)="form.controls.button.setValue(null); close()"
             >
                 Clear
             </button>
