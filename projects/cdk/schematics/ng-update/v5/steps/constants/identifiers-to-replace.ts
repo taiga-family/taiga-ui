@@ -1024,4 +1024,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {
+            name: 'TuiDropdownService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiPopupService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];
