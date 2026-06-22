@@ -213,39 +213,6 @@ version of Figma library is in progress for the latest version of Taiga UI.
             </div>
         </td> 
         <td align="center">
-            <a href="https://github.com/splincode"
-                ><img
-                    src="https://github.com/splincode.png?size=200"
-                    width="100"
-                    style="margin-bottom: -4px; border-radius: 8px;"
-                    alt="Maksim Ivanov"
-                /><br /><b>Maksim&nbsp;Ivanov</b></a
-            >
-            <div style="margin-top: 4px">
-                <a
-                    href="https://twitter.com/splincodewd"
-                    title="Twitter"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
-                /></a>
-                <a
-                    href="https://github.com/splincode"
-                    title="GitHub"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
-                /></a>
-                <a
-                    href="https://t.me/splincode"
-                    title="Telegram"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
-                /></a>
-            </div>
-        </td>
-        <td align="center">
             <a href="https://github.com/mdlufy"
                 ><img
                     src="https://github.com/mdlufy.png?size=200"
