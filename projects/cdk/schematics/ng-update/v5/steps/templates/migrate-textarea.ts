@@ -36,6 +36,7 @@ const CONTROL_ATTR_NAMES = [
     '[(ngModel)]',
     '[ngModel]',
     'ngModel',
+    '(ngModelChange)',
 ] as const;
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
@@ -528,6 +529,8 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
+        case '(ngmodelchange)':
+            return '(ngModelChange)';
         case '[(ngmodel)]':
             return '[(ngModel)]';
         default:
