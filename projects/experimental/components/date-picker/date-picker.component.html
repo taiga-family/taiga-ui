@@ -1,4 +1,45 @@
 <header class="t-header">
+    @if (dropdown?.nativeElement?.matches(':not(input)')) {
+        @switch (mode()) {
+            @case ('multi') {
+                <tui-textfield
+                    multi
+                    class="t-textfield"
+                >
+                    <input
+                        tuiInputDateMulti
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+            @case ('range') {
+                <tui-textfield class="t-textfield">
+                    <input
+                        tuiInputDateRange
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+            @default {
+                <tui-textfield class="t-textfield">
+                    <input
+                        tuiInputDate
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+        }
+    }
+
     @if (view() !== 'year') {
         <button
             appearance=""
