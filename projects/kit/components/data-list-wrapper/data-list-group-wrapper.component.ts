@@ -1,3 +1,4 @@
+import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
@@ -19,7 +20,13 @@ interface TuiDataListOptionGroup<T> {
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
-    imports: [PolymorpheusOutlet, TuiDataList, TuiLoader, TuiMultiSelect],
+    imports: [
+        NgTemplateOutlet,
+        PolymorpheusOutlet,
+        TuiDataList,
+        TuiLoader,
+        TuiMultiSelect,
+    ],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

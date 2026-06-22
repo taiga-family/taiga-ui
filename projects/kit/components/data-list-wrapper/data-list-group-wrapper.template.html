@@ -4,7 +4,7 @@
         [size]="size()"
     >
         @for (group of groups; track group.items) {
-            @if (group.hasHiddenGroupLabel && group.items.length) {
+            @if (group.hasHiddenGroupLabel && group.items.length && !$first) {
                 <hr />
             }
             @if (multi && group.hasGroupBoundary && group.items.length) {
@@ -12,56 +12,36 @@
                     tuiMultiSelectGroup
                     [label]="group.label"
                 >
-                    @for (item of group.items; track $index) {
-                        <button
-                            tuiOption
-                            type="button"
-                            [disabled]="handlers.disabledItemHandler()(item)"
-                            [value]="item"
-                            (click.capture)="itemClick.emit(item)"
-                        >
-                            <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
-                                {{ text }}
-                            </ng-container>
-                        </button>
-                    }
+                    <ng-container *ngTemplateOutlet="groupTemplate; context: {items: group.items}" />
                 </tui-opt-group>
             } @else if (group.hasGroupBoundary && group.items.length) {
                 <tui-opt-group [label]="group.label">
-                    @for (item of group.items; track item) {
-                        <button
-                            tuiOption
-                            type="button"
-                            [disabled]="handlers.disabledItemHandler()(item)"
-                            [value]="item"
-                            (click.capture)="itemClick.emit(item)"
-                        >
-                            <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
-                                {{ text }}
-                            </ng-container>
-                        </button>
-                    }
+                    <ng-container *ngTemplateOutlet="groupTemplate; context: {items: group.items}" />
                 </tui-opt-group>
             } @else if (group.items.length) {
-                @for (item of group.items; track item) {
-                    <button
-                        tuiOption
-                        type="button"
-                        [disabled]="handlers.disabledItemHandler()(item)"
-                        [value]="item"
-                        (click.capture)="itemClick.emit(item)"
-                    >
-                        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
-                            {{ text }}
-                        </ng-container>
-                    </button>
-                }
-            }
-            @if (group.hasHiddenGroupLabel && group.items.length) {
-                <hr />
+                <ng-container *ngTemplateOutlet="groupTemplate; context: {items: group.items}" />
             }
         }
     </tui-data-list>
 } @else {
     <tui-loader class="t-loader" />
 }
+
+<ng-template
+    #groupTemplate
+    let-items="items"
+>
+    @for (item of items; track item) {
+        <button
+            tuiOption
+            type="button"
+            [disabled]="handlers.disabledItemHandler()(item)"
+            [value]="item"
+            (click.capture)="itemClick.emit(item)"
+        >
+            <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
+                {{ text }}
+            </ng-container>
+        </button>
+    }
+</ng-template>
