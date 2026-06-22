@@ -147,6 +147,22 @@ describe('ng-update legacy textarea', () => {
     );
 
     it(
+        'places (ngModelChange) on the inner <textarea tuiTextarea>, not the wrapper',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    class="tui-space_top-5"
+                    [ngModel]="markdown"
+                    [style.min-height.rem]="30"
+                    (ngModelChange)="markdown$.next($event)"
+                >
+                    Markdown
+                </tui-textarea>
+            `,
+        }),
+    );
+
+    it(
         'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>',
         migrate({
             component: /* TypeScript */ `

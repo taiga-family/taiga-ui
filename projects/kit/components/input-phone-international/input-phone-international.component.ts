@@ -170,5 +170,5 @@ export function tuiGetCallingCode(
     iso: TuiCountryIsoCode,
     metadata?: MetadataJson | null,
 ): string {
-    return metadata ? CHAR_PLUS + getCountryCallingCode(iso, metadata) : '';
+    return metadata ? `${CHAR_PLUS}${getCountryCallingCode(iso, metadata)}` : '';
 }

@@ -1,3 +1,4 @@
+export * from './calendar';
 export * from './calendar.component';
 export * from './calendar.options';
 export * from './calendar-sheet.component';

@@ -6,25 +6,32 @@ import {
     inject,
     input,
     model,
+    signal,
     viewChild,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    type TuiDay,
-    TuiDayRange,
-    TuiMonth,
-} from '@taiga-ui/cdk/date-time';
+import {FormsModule} from '@angular/forms';
+import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TUI_COMMON_ICONS, TUI_MONTHS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
+import {TUI_DROPDOWN_HOST} from '@taiga-ui/core/portals/dropdown';
+import {
+    TUI_COMMON_ICONS,
+    TUI_MONTHS,
+    TUI_SPIN_TEXTS,
+    tuiAsAuxiliary,
+} from '@taiga-ui/core/tokens';
 import {TuiCalendar} from '@taiga-ui/experimental/components/calendar';
 import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
+import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
+import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -41,11 +48,15 @@ type DatePicker<T> = T extends 'single'
 @Component({
     selector: 'tui-date-picker',
     imports: [
+        FormsModule,
         TuiButton,
         TuiCalendar,
         TuiCarousel,
         TuiChevron,
         TuiDataGrid,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
         TuiLink,
         TuiMapperPipe,
         TuiSlides,
@@ -53,15 +64,23 @@ type DatePicker<T> = T extends 'single'
     templateUrl: './date-picker.component.html',
     styleUrl: './date-picker.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'})],
+    providers: [
+        tuiAsAuxiliary(TuiDatePicker),
+        tuiProvide(AbstractTuiCalendar, TuiDatePicker),
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
+        tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
+    ],
 })
-export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
+export class TuiDatePicker<
+    T extends 'multi' | 'range' | 'single' = 'single',
+> extends AbstractTuiCalendar<DatePicker<T>> {
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly i18n = inject(TUI_MONTHS);
+    protected readonly dropdown = inject(TUI_DROPDOWN_HOST, {optional: true});
 
-    protected readonly month = computed<PolymorpheusContent<TuiContext<number>>>(
+    protected readonly content = computed<PolymorpheusContent<TuiContext<number>>>(
         () => (c) => this.i18n()[c.$implicit],
     );
 
@@ -77,25 +96,25 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
     protected readonly months = computed((value = this.value()) =>
         Array.from({length: 12}, (_, index) => index).filter((index) =>
             value instanceof TuiDayRange
-                ? value.monthInRange(new TuiMonth(this.current().year, index))
+                ? value.monthInRange(new TuiMonth(this.month().year, index))
                 : coerceArray<TuiDay>(value ?? []).some(
-                      ({month, year}) => this.current().year === year && index === month,
+                      ({month, year}) => this.month().year === year && index === month,
                   ),
         ),
     );
 
     protected readonly button = computed(() =>
         this.view() === 'day'
-            ? `${this.i18n()[this.current().month]} ${this.current().formattedYear}`
-            : this.current().formattedYear,
+            ? `${this.i18n()[this.month().month]} ${this.month().formattedYear}`
+            : this.month().formattedYear,
     );
 
     protected readonly yearMin = computed(() =>
-        Math.ceil((this.min().year - this.current().year - 5) / 12),
+        Math.ceil((this.min().year - this.month().year - 5) / 12),
     );
 
     protected readonly yearMax = computed(() =>
-        Math.floor((this.max().year - this.current().year + 6) / 12),
+        Math.floor((this.max().year - this.month().year + 6) / 12),
     );
 
     protected readonly disabledDay = computed(
@@ -105,8 +124,8 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
 
     protected readonly disabledMonth = computed(
         () => (month: number) =>
-            this.current().year * 12 + month < this.min().year * 12 + this.min().month ||
-            this.current().year * 12 + month > this.max().year * 12 + this.max().month,
+            this.month().year * 12 + month < this.min().year * 12 + this.min().month ||
+            this.month().year * 12 + month > this.max().year * 12 + this.max().month,
     );
 
     protected readonly disabledYear = computed(
@@ -115,31 +134,18 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
 
     protected readonly start = computed((carousel = this.carousel()) =>
         this.view() === 'month'
-            ? this.current().year === this.min().year
+            ? this.month().year === this.min().year
             : carousel?.index() === carousel?.min(),
     );
 
     protected readonly end = computed((carousel = this.carousel()) =>
         this.view() === 'month'
-            ? this.current().year === this.max().year
+            ? this.month().year === this.max().year
             : carousel?.index() === carousel?.max(),
     );
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
-    public readonly value = model<DatePicker<T> | null>(null);
-    public readonly current = model(TuiMonth.currentLocal());
     public readonly mode = input<T>();
-
-    public readonly disabledItemHandler =
-        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
-
-    public readonly min = input(TUI_FIRST_DAY, {
-        transform: (min?: TuiDay | null) => min ?? TUI_FIRST_DAY,
-    });
-
-    public readonly max = input(TUI_LAST_DAY, {
-        transform: (max?: TuiDay | null) => max ?? TUI_LAST_DAY,
-    });
 
     protected getMonth(index: number): TuiMonth {
         return new TuiMonth(Math.floor(index / 12), index % 12);
@@ -153,24 +159,24 @@ export class TuiDatePicker<T extends 'multi' | 'range' | 'single' = 'single'> {
         this.carousel()?.[step > 0 ? 'next' : 'prev']();
 
         if (this.view() === 'month') {
-            this.current.update((current) => current.append({year: step}));
+            this.month.update((month) => month.append({year: step}));
         }
     }
 
     protected onYear(year: number): void {
-        this.current.update(({month}) => new TuiMonth(year, month));
+        this.month.update(({month}) => new TuiMonth(year, month));
         this.view.set('month');
     }
 
     protected onMonth(index: number): void {
-        this.current.update(({year}) => new TuiMonth(year, index));
+        this.month.update(({year}) => new TuiMonth(year, index));
         this.view.set('day');
     }
 
     protected onDay(day: TuiDay): void {
-        if (day.monthAfter(this.current())) {
+        if (day.monthAfter(this.month())) {
             this.carousel()?.next();
-        } else if (day.monthBefore(this.current())) {
+        } else if (day.monthBefore(this.month())) {
             this.carousel()?.prev();
         }
 

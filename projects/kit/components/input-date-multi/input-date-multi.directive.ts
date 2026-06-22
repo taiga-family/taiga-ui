@@ -2,11 +2,11 @@ import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDate} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
@@ -69,8 +69,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         ),
     );
 
-    protected readonly calendar = tuiInjectAuxiliary<TuiCalendar>(
-        (x) => x instanceof TuiCalendar,
+    protected readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+        (x) => x instanceof AbstractTuiCalendar,
     );
 
     protected readonly calendarIn = effect(() => {
@@ -81,24 +81,22 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         }
     });
 
-    protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.dayClick.subscribe((day) => {
-            this.updateValue(day);
-        });
+    protected readonly calendarOut = effect(() => {
+        const value = this.calendar()?.value();
 
-        onCleanup(() => subscription?.unsubscribe());
+        if (value instanceof TuiDay) {
+            this.updateValue(value);
+        }
     });
 
     public readonly min = input<TuiDay | null>(this.dateMultiOptions.min);
     public readonly max = input<TuiDay | null>(this.dateMultiOptions.max);
 
-    protected processCalendar(calendar: TuiCalendar): void {
+    protected processCalendar(calendar: AbstractTuiCalendar): void {
         tuiSetSignal(calendar.value, this.value());
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());
-        calendar.month.set(
-            this.value()?.[this.value().length - 1] ?? TuiMonth.currentLocal(),
-        );
+        calendar.month.update((m) => this.value()?.[this.value().length - 1] ?? m);
     }
 
     protected onClick(): void {

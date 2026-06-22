@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - name: Drop e2e report site
-        uses: w9jds/firebase-action@47ca9cd931889c1fb7bc67f51597278159cb7c9e # v15.20.0
+        uses: w9jds/firebase-action@19d0a485d5819ca458411f9eb3562b1e2882c7ea # v15.22.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-preview-demo-e2e -f
@@ -43,7 +43,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           PROJECT_ID: taiga-preview-demo
       - name: Drop preview demo site
-        uses: w9jds/firebase-action@47ca9cd931889c1fb7bc67f51597278159cb7c9e # v15.20.0
+        uses: w9jds/firebase-action@19d0a485d5819ca458411f9eb3562b1e2882c7ea # v15.22.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-preview-demo -f

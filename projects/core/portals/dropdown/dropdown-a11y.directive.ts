@@ -1,4 +1,4 @@
-import {Directive, effect, inject, input, untracked} from '@angular/core';
+import {Directive, effect, inject, input} from '@angular/core';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -19,7 +19,7 @@ export class TuiDropdownA11y {
 
         host.setAttribute('aria-expanded', String(!!dropdown));
         host.setAttribute('aria-controls', this.id);
-        host.setAttribute('aria-haspopup', untracked(this.tuiDropdownRole));
+        host.setAttribute('aria-haspopup', this.tuiDropdownRole());
         dropdown?.location.nativeElement.setAttribute('id', this.id);
         dropdown?.location.nativeElement.setAttribute('role', this.tuiDropdownRole());
 

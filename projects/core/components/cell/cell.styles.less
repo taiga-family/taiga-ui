@@ -85,7 +85,7 @@
     }
 
     [tuiTitle] {
-        flex: 1 7 auto;
+        flex: 3 7 30%;
         align-items: normal;
         text-align: start;
         gap: 0.25rem 0.5rem;
@@ -95,15 +95,17 @@
             justify-content: space-between;
 
             ~ [tuiSubtitle] > [tuiFade]:first-child,
-            > [tuiFade]:first-child {
-                flex-shrink: 7;
+            > [tuiFade]:first-child,
+            ~ [tuiSubtitle] > [tuiFade]:last-child,
+            > [tuiFade]:last-child {
+                flex: 3 7 30%;
+                max-inline-size: max-content;
                 white-space: nowrap;
             }
 
             ~ [tuiSubtitle] > [tuiFade]:last-child,
             > [tuiFade]:last-child {
-                flex-shrink: 3;
-                white-space: nowrap;
+                flex: 7 3 70%;
             }
 
             ~ [tuiSubtitle] {
@@ -112,7 +114,8 @@
         }
 
         ~ [tuiTitle] {
-            flex-shrink: 3;
+            flex: 7 3 70%;
+            max-inline-size: max-content;
             margin-inline-start: auto;
             text-align: end;
             align-items: flex-end;
@@ -239,6 +242,34 @@
     &[tuiCellStretch] {
         inline-size: 100%;
         margin-inline: -1rem;
+    }
+
+    &[tuiCellResponsive] {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: fit-content(100%);
+        grid-template-columns: auto 1fr;
+
+        &:has(> [tuiTitle]:first-child) {
+            grid-template-columns: 1fr;
+        }
+
+        > * {
+            grid-row: 1;
+        }
+
+        &._rearranged {
+            [tuiAccessories] {
+                grid-row: 2;
+            }
+
+            [tuiTitle] {
+                [tuiTitle],
+                [tuiSubtitle] {
+                    display: grid;
+                }
+            }
+        }
     }
 }
 

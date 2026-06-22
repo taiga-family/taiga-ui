@@ -14,12 +14,13 @@ import {
 import {
     TuiInputPhoneInternational,
     TuiInputPhoneInternationalComponent,
-    TuiInputPhoneInternationalContent,
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import metadata from 'libphonenumber-js/max/metadata';
 import {of} from 'rxjs';
+
+import {TuiInputPhoneInternationalContent} from '../input-phone-international-content.component';
 
 describe('InputPhoneInternational', () => {
     @Component({

@@ -6,13 +6,11 @@ import {
 import {TuiDropdownContent} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiInputCardComponent} from './input-card.component';
-import {TuiInputCardContent} from './input-card-content.component';
 import {TuiInputCVCDirective} from './input-cvc.directive';
 import {TuiInputExpireDirective} from './input-expire.directive';
 
 export const TuiInputCard = [
     TuiInputCardComponent,
-    TuiInputCardContent,
     TuiInputCVCDirective,
     TuiInputExpireDirective,
     TuiLabel,

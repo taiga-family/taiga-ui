@@ -224,7 +224,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await calendarSheet.clickOnDay(15);
-                await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(20).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
@@ -239,15 +239,14 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
                 await expect(inputDateRange.calendar).toBeAttached();
-                await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(22).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
                     .toHaveScreenshot('12-2-no-hover-effect.png');
 
                 await calendarSheet.clickOnDay(22);
-
-                await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(25).hover();
 
                 await expect
                     .soft(inputDateRange.calendar)
@@ -264,16 +263,48 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.textfield.click();
             await calendarSheet.clickOnDay(1);
+            await page.mouse.move(0, 0);
 
             await expect(
                 page.locator('tui-dropdown tui-calendar-range'),
             ).toHaveScreenshot('input-date-range-min-length-15-1.png');
 
             await calendarSheet.clickOnDay(18);
+            await page.mouse.move(0, 0);
 
             await expect
                 .soft(inputDateRange.textfield)
                 .toHaveScreenshot('input-date-range-min-length-15-2.png');
+        });
+
+        test('allows to select new range after same-day range with maxLength', async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=1`);
+
+            await inputDateRange.textfield.click();
+
+            const calendarSheet = new TuiCalendarSheetPO(
+                inputDateRange.calendar.locator('tui-calendar-sheet'),
+            );
+
+            await calendarSheet.clickOnDay(15);
+            await calendarSheet.clickOnDay(15);
+
+            await expect(inputDateRange.textfield).toHaveValue(
+                `15.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}15.09.2020`,
+            );
+
+            await expect(inputDateRange.calendar).not.toBeAttached();
+
+            await inputDateRange.textfield.click();
+
+            await calendarSheet.clickOnDay(22);
+            await calendarSheet.clickOnDay(25);
+
+            await expect(inputDateRange.textfield).toHaveValue(
+                `22.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
+            );
         });
     });
 
