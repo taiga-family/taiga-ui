@@ -1,0 +1,41 @@
+import"./chunk-HU6DUUP4.js";var i=`<tui-doc-page
+    header="AppBar"
+    package="LAYOUT"
+    type="components"
+>
+    <ng-template pageTab>
+        <div>Component for the main app header</div>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [attr.data-platform]="$index > 4 ? 'ios' : null"
+                [class.tui-liquid-glass]="$index > 4"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample: 'html,ts,less'"
+                [description]="description"
+                [heading]="example"
+            >
+                <ng-template #description>
+                    @switch ($index + 1) {
+                        @case (6) {
+                            To enable the liquid-glass mode on iOS devices, specify the option in
+                            <code>provideTaiga(&#123;apis: &#123;liquidGlass: true&#125;&#125;)</code>
+                        }
+                        @case (8) {
+                            On iOS, a progressive blur effect should be enabled when the container is scrolled. To
+                            activate it, apply the
+                            <code>tui-liquid-glass_blur</code>
+                            class to the
+                            <code>tui-app-bar</code>
+                            component. Additionally, if the background is colored, you must provide it via the
+                            <code>--tui-appbar-background</code>
+                            CSS variable to ensure correct fading and a proper "liquid glass" effect simulation.
+                        }
+                        @default {}
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{i as default};

@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-VMD3CXPQ.js";import{c as o}from"./chunk-FS3V32L7.js";function r(m,a){var e=Array.prototype.slice.call(a);return e.push(t),m.apply(this,e)}function p(){return r(o,arguments)}export{p as a};
