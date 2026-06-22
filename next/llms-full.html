@@ -28082,7 +28082,7 @@ Component cuts overflown text with &quot;...&quot; and shows it by hover
 ### Example
 
 ```html
-&lt;tui-line-clamp [content]=&quot;content || defaultExampleContent&quot; [lineHeight]=&quot;lineHeight&quot; [linesLimit]=&quot;linesLimit&quot; [style.maxWidth.px]=&quot;maxWidth&quot; (overflownChange)=&quot;overflownChange.emitEvent($event)&quot; /&gt;
+&lt;tui-line-clamp [content]=&quot;content || defaultExampleContent&quot; [lineHeight]=&quot;lineHeight&quot; [linesLimit]=&quot;linesLimit&quot; [showHint]=&quot;showHint&quot; [style.maxWidth.px]=&quot;maxWidth&quot; (overflownChange)=&quot;overflownChange.emitEvent($event)&quot; /&gt;
 &lt;ng-template #defaultExampleContent&gt; Lorem ipsum &lt;br /&gt; Gaudeamus igitur &lt;br /&gt;
 &lt;strong&gt;Carpe diem&lt;/strong&gt;
 &lt;br /&gt; Veni, vidi, vici &lt;/ng-template&gt;
@@ -28095,6 +28095,7 @@ Component cuts overflown text with &quot;...&quot; and shows it by hover
 | [content] | `PolymorpheusContent` | full content inside |
 | [lineHeight] | `number` | height of single line, used to limit component&#039;s height. |
 | [linesLimit] | `number` | number of visible lines |
+| [showHint] | `boolean` | show hint on hover when content is overflown |
 | [style.max-width.px] | `number` | value of max-width |
 
 ### API - Outputs
@@ -28772,6 +28773,7 @@ export default class Page {
     protected lineHeight = 24;
     protected maxWidth = 100;
     protected content = &#039;&#039;;
+    protected showHint = true;
 
     protected readonly examples = [
         &#039;Styles change&#039;,
