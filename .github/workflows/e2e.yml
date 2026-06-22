@@ -18,7 +18,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 10
       - uses: taiga-family/actions/setup-variables@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
@@ -51,14 +51,14 @@ jobs:
     env:
       CYPRESS_RESULTS_FOLDER: 'projects/demo-cypress/tests-results'
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: taiga-family/actions/setup-variables@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
       - uses: taiga-family/actions/setup-node@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
       - uses: taiga-family/actions/setup-cypress@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ github.base_ref }}
           clean: false
@@ -71,7 +71,7 @@ jobs:
         run: npx nx component-test demo-cypress
         continue-on-error: true
 
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           clean: false
       - uses: taiga-family/actions/cypress-screenshot-diff@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
@@ -120,7 +120,7 @@ jobs:
     name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
     runs-on: ${{ matrix.shard.os }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: taiga-family/actions/setup-variables@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
 
       - name: Mac OS X building all dependencies
@@ -215,7 +215,7 @@ jobs:
     needs: [playwright, cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: taiga-family/actions/setup-variables@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
       - uses: taiga-family/actions/setup-node@2446a1d329acc075f7264292facddf0b0c992b53 # v2.1.0
 
