@@ -13881,7 +13881,7 @@ This is a work in progress, do not use!
 &lt;input formControlName=&quot;range&quot; tuiInputDateRange [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
 &lt;tui-date-picker *tuiDropdown mode=&quot;range&quot; /&gt;
 &lt;/tui-textfield&gt;
-&lt;button formControlName=&quot;button&quot; iconEnd=&quot;@tui.calendar&quot; tuiButton tuiButtonSelect &gt; {{ form.controls.button.value || &#039;Select date&#039; }} &lt;div *tuiDropdown=&quot;let close&quot;&gt;
+&lt;button aria-label=&quot;Select date&quot; formControlName=&quot;button&quot; iconEnd=&quot;@tui.calendar&quot; tuiButton tuiButtonSelect &gt; {{ form.controls.button.value || &#039;Select date&#039; }} &lt;div *tuiDropdown=&quot;let close&quot;&gt;
 &lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
 &lt;button appearance=&quot;action&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; [style.inline-size.%]=&quot;100&quot; (click)=&quot;form.controls.button.setValue(null); close()&quot; &gt; Clear &lt;/button&gt;
 &lt;/div&gt;
