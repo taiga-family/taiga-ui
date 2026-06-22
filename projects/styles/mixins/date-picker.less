@@ -77,13 +77,13 @@
             }
 
             &:not(:first-child)::before {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
+                border-start-start-radius: 0;
+                border-end-start-radius: 0;
             }
 
             &:not(:last-child)::before {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
+                border-start-end-radius: 0;
+                border-end-end-radius: 0;
             }
         }
 
@@ -101,6 +101,7 @@
 
             &::after {
                 background: var(--tui-background-accent-1);
+                transform: scaleX(var(--tui-inline));
             }
         }
 
@@ -118,7 +119,7 @@
 
             &::after {
                 background: var(--tui-background-accent-1);
-                transform: scale(-1, 1);
+                transform: scaleX(calc(var(--tui-inline) * -1));
             }
         }
 
