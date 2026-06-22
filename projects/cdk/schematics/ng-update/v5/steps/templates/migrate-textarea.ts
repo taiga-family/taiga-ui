@@ -529,7 +529,7 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case '(ngmodelchange)':
+        case '(ngModelChange)'.toLowerCase():
             return '(ngModelChange)';
         case '[(ngmodel)]':
             return '[(ngModel)]';
