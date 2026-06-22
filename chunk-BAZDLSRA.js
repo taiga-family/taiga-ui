@@ -1,0 +1,13 @@
+import"./chunk-HU6DUUP4.js";var i=`<input
+    tuiLike="var(--tui-status-negative)"
+    type="checkbox"
+/>
+
+<input
+    checkedIcon="@tui.star-filled"
+    size="s"
+    tuiLike
+    type="checkbox"
+    uncheckedIcon="@tui.star"
+/>
+`;export{i as default};

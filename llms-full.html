@@ -724,6 +724,11 @@
 ```text
   TuiHovered, TuiHoveredService
 ```
+### id
+
+```text
+  TuiId
+```
 ### item
 
 ```text
@@ -878,7 +883,7 @@
 ### app-bar
 
 ```text
-  TuiAppBar, TuiAppBarBack, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective
+  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective, TuiProgressiveBlur
 ```
 ### block-details
 
@@ -2562,11 +2567,235 @@ tui-app-bar {
 
 tui-segmented {
     inline-size: 6rem;
+    inline-size: fit-content;
     margin-block-end: 1rem;
 }
 
 .content &gt; [tuiHeader] {
     padding: 0 1rem;
+}
+```
+
+#### iOS Liquid glass
+
+**Template:**
+```html
+&lt;section tuiPlatform=&quot;ios&quot;&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt; Taiga UI &lt;button tuiButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; Action &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt; Taiga UI — Components library &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;label tuiTitle&gt; Taiga UI &lt;span tuiSubtitle&gt;Components library&lt;/span&gt;
+&lt;/label&gt;
+&lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
+&lt;div&gt;
+&lt;progress size=&quot;s&quot; tuiProgressBar [max]=&quot;100&quot; [value]=&quot;35&quot; &gt;&lt;/progress&gt;
+&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;/section&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiProgressBar} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {}
+```
+**LESS:**
+```less
+tui-app-bar {
+    inline-size: 20rem;
+    margin-block-end: 1rem;
+}
+
+section {
+    padding: 1rem;
+    margin: -1rem;
+    overflow: hidden;
+}
+```
+
+#### Liquid glass dynamic header
+
+**Template:**
+```html
+&lt;div #container tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; &gt;
+&lt;tui-app-bar&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;div tuiDynamicHeader&gt;&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle (waIntersectionObservee)=&quot;blur.set(!$event[0]?.isIntersecting)&quot; &gt; Title 1 &lt;div tuiSubtitle&gt;Subtitle&lt;/div&gt;
+&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(7); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;primary&quot; tuiAvatar=&quot;@tui.star&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle&gt;Title 2&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(15); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;div *tuiDynamicHeaderAnchor tuiHeader=&quot;h6&quot; &gt;
+&lt;h6 tuiTitle&gt;Title 3 Long title&lt;/h6&gt;
+&lt;/div&gt; @for (_ of &#039;-&#039;.repeat(15); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WaIntersectionObserver} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiCell, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar, TuiDynamicHeader, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        TuiAppBar,
+        TuiAvatar,
+        TuiCell,
+        TuiDynamicHeader,
+        TuiHeader,
+        TuiPlatform,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {
+    protected readonly blur = signal(false);
+}
+```
+**LESS:**
+```less
+.container {
+    max-block-size: 30rem;
+    inline-size: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+}
+
+tui-app-bar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    margin-block-end: 0.75rem;
+}
+```
+
+#### Color background
+
+**Template:**
+```html
+&lt;div tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; &gt;
+&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-appbar-background]=&quot;color()&quot; &gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;div tuiDynamicHeader tuiHeader=&quot;h6&quot; &gt;&lt;/div&gt;
+&lt;/tui-app-bar&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;div tuiHeader=&quot;h4&quot; (waIntersectionObservee)=&quot;blur.set(!$event[0]?.isIntersecting)&quot; &gt;
+&lt;h6 *tuiDynamicHeaderAnchor tuiTitle=&quot;l&quot; &gt; Backgrounds &lt;/h6&gt;
+&lt;/div&gt;
+&lt;div waIntersectionObserver waIntersectionRootMargin=&quot;0px 0px -100% 0px&quot; waIntersectionThreshold=&quot;0&quot; &gt; @for (item of colors; track item) { &lt;div class=&quot;block&quot; [style.background-color]=&quot;item&quot; (waIntersectionObservee)=&quot;onIntersection(!!$event[0]?.isIntersecting, item)&quot; &gt;
+&lt;h3 tuiHeader=&quot;h5&quot; tuiTheme=&quot;dark&quot; &gt; {{ item }} &lt;/h3&gt;
+&lt;/div&gt; } &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WaIntersectionObserver} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TUI_DARK_MODE, TUI_LIQUID_GLASS, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppBar, TuiDynamicHeader, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiAppBar, TuiDynamicHeader, TuiHeader, TuiTitle, WaIntersectionObserver],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],
+})
+export default class Example {
+    protected readonly mode = inject(TUI_DARK_MODE);
+    protected readonly colors = [&#039;#2f3f5b&#039;, &#039;#3a3f66&#039;, &#039;#5a2f3f&#039;, &#039;#3f4e37&#039;, &#039;#5a3851&#039;];
+    protected readonly color = signal(&#039;&#039;);
+    protected readonly blur = signal(false);
+
+    protected onIntersection(isIntersecting: boolean, color: string): void {
+        if (isIntersecting) {
+            this.color.set(color);
+        } else if (this.color() === color) {
+            this.color.set(&#039;&#039;);
+        }
+    }
+}
+```
+**LESS:**
+```less
+.container {
+    max-block-size: 30rem;
+    inline-size: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+}
+
+tui-app-bar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    margin-block-end: 0.75rem;
+}
+
+.content {
+    padding: 0;
+
+    &gt; [tuiHeader] {
+        padding: 1rem;
+    }
+}
+
+.block {
+    block-size: 20rem;
 }
 ```
 
@@ -2590,6 +2819,9 @@ export default class Page {
         &#039;Variants&#039;,
         &#039;Dialog&#039;,
         &#039;Dynamic header&#039;,
+        &#039;iOS Liquid glass&#039;,
+        &#039;Liquid glass dynamic header&#039;,
+        &#039;Color background&#039;,
     ];
 }
 ```
@@ -6766,7 +6998,7 @@ ButtonSelect is a form control for selecting one or multiple values, similar to 
 
 **Template:**
 ```html
-&lt;button appearance=&quot;outline-grayscale&quot; iconStart=&quot;@tui.star&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;items&quot; /&gt;
+&lt;button appearance=&quot;outline-grayscale&quot; iconStart=&quot;@tui.star&quot; size=&quot;m&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;items&quot; /&gt;
 &lt;/button&gt;
 ```
 **TypeScript:**
@@ -6794,7 +7026,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.user&quot; size=&quot;m&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;value&quot; &gt; {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} &lt;tui-data-list *tuiDropdown&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.user&quot; size=&quot;m&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} &lt;tui-data-list *tuiDropdown&gt;
 &lt;tui-opt-group label=&quot;Users&quot; tuiMultiSelectGroup &gt; @for (name of items; track name.id) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;name&quot; &gt; {{ name.name }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
 &lt;/tui-data-list&gt;
 &lt;/button&gt;
@@ -6840,6 +7072,34 @@ export default class Example {
 }
 ```
 
+#### Date
+
+**Template:**
+```html
+&lt;button iconEnd=&quot;@tui.calendar&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;value&quot; &gt; {{ value || &#039;Select date&#039; }} &lt;tui-calendar *tuiDropdown /&gt;
+&lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {type TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiCalendar, TuiDropdown} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonSelect} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiButtonSelect, TuiCalendar, TuiDropdown],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TuiDay | null = null;
+}
+```
+
 
 ### TypeScript
 
@@ -6854,7 +7114,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Multiselect&#039;];
+    protected readonly examples = [&#039;Basic&#039;, &#039;Multiselect&#039;, &#039;Date&#039;];
 }
 ```
 
@@ -13028,7 +13288,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;h3&gt;Multi select control&lt;/h3&gt;
-&lt;button appearance=&quot;flat&quot; tuiButtonSelect tuiChevron tuiIconButton type=&quot;button&quot; [tuiAppearanceState]=&quot;open ? &#039;hover&#039; : null&quot; [(ngModel)]=&quot;value&quot; [(open)]=&quot;open&quot; &gt; Open &lt;tui-data-list *tuiDropdown size=&quot;l&quot; [style.width.rem]=&quot;12&quot; &gt;
+&lt;button appearance=&quot;flat&quot; tuiButtonSelect tuiChevron tuiIconButton [tuiAppearanceState]=&quot;open ? &#039;hover&#039; : null&quot; [(ngModel)]=&quot;value&quot; [(open)]=&quot;open&quot; &gt; Open &lt;tui-data-list *tuiDropdown size=&quot;l&quot; [style.width.rem]=&quot;12&quot; &gt;
 &lt;tui-opt-group tuiMultiSelectGroup&gt;
 &lt;tui-opt-group label=&quot;Main dishes menu with long label&quot;&gt; @for (burger of burgers; track burger) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;burger&quot; &gt; {{ burger }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
 &lt;tui-opt-group label=&quot;Drinks&quot;&gt; @for (drink of drinks; track drink) { &lt;button tuiOption type=&quot;button&quot; [value]=&quot;drink&quot; &gt; {{ drink }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
@@ -13605,62 +13865,73 @@ This is a work in progress, do not use!
 
 **Template:**
 ```html
-&lt;div tuiGroup&gt;
-&lt;tui-textfield tuiChevron tuiTextfieldSize=&quot;s&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
-&lt;input tuiSelect [(ngModel)]=&quot;mode&quot; /&gt;
-&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;modes&quot; /&gt;
+&lt;form tuiForm [formGroup]=&quot;form&quot; &gt;
+&lt;tui-textfield [disabledItemHandler]=&quot;disabledItemHandler&quot;&gt;
+&lt;label tuiLabel&gt;Single date&lt;/label&gt;
+&lt;input formControlName=&quot;single&quot; tuiInputDate [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
+&lt;tui-date-picker *tuiDropdown /&gt;
 &lt;/tui-textfield&gt;
-&lt;button size=&quot;s&quot; tuiButton type=&quot;button&quot; (click)=&quot;value.set(null)&quot; &gt; Clear &lt;/button&gt;
+&lt;tui-textfield multi [disabledItemHandler]=&quot;disabledItemHandler&quot; &gt;
+&lt;label tuiLabel&gt;Multiple dates&lt;/label&gt;
+&lt;input formControlName=&quot;multi&quot; tuiInputDateMulti [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
+&lt;tui-date-picker *tuiDropdown /&gt;
+&lt;/tui-textfield&gt;
+&lt;tui-textfield [disabledItemHandler]=&quot;disabledItemHandler&quot;&gt;
+&lt;label tuiLabel&gt;Date range&lt;/label&gt;
+&lt;input formControlName=&quot;range&quot; tuiInputDateRange [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
+&lt;tui-date-picker *tuiDropdown mode=&quot;range&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;button aria-label=&quot;Select date&quot; formControlName=&quot;button&quot; iconEnd=&quot;@tui.calendar&quot; tuiButton tuiButtonSelect &gt; {{ form.controls.button.value || &#039;Select date&#039; }} &lt;div *tuiDropdown=&quot;let close&quot;&gt;
+&lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; /&gt;
+&lt;button appearance=&quot;action&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; [style.inline-size.%]=&quot;100&quot; (click)=&quot;form.controls.button.setValue(null); close()&quot; &gt; Clear &lt;/button&gt;
 &lt;/div&gt;
-&lt;tui-date-picker [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [mode]=&quot;mode()&quot; [(value)]=&quot;value&quot; /&gt;
-&lt;p&gt;{{ value() | json }}&lt;/p&gt;
+&lt;/button&gt;
+&lt;/form&gt;
 ```
 **TypeScript:**
 ```ts
-import {JsonPipe} from &#039;@angular/common&#039;;
-import {Component, signal} from &#039;@angular/core&#039;;
-import {FormsModule} from &#039;@angular/forms&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormControl, FormGroup, ReactiveFormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDay, TuiDayRange} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton, TuiGroup} from &#039;@taiga-ui/core&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
 import {TuiDatePicker} from &#039;@taiga-ui/experimental&#039;;
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from &#039;@taiga-ui/kit&#039;;
+import {
+    TuiButtonSelect,
+    TuiInputDate,
+    TuiInputDateMulti,
+    TuiInputDateRange,
+} from &#039;@taiga-ui/kit&#039;;
+import {TuiForm} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     imports: [
-        FormsModule,
-        JsonPipe,
+        ReactiveFormsModule,
         TuiButton,
-        TuiChevron,
-        TuiDataListWrapper,
+        TuiButtonSelect,
         TuiDatePicker,
-        TuiGroup,
-        TuiSelect,
+        TuiForm,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
     ],
     templateUrl: &#039;./index.html&#039;,
-    styleUrl: &#039;./index.less&#039;,
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly modes = [&#039;single&#039;, &#039;multi&#039;, &#039;range&#039;] as const;
-    protected readonly mode = signal(this.modes[2]);
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
     protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
 
-    protected readonly value = signal&lt;any&gt;(
-        new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({day: 7})),
-    );
+    protected readonly form = new FormGroup({
+        single: new FormControl(),
+        multi: new FormControl(),
+        range: new FormControl(),
+        button: new FormControl(),
+    });
 
     protected readonly disabledItemHandler = (item: TuiDay): boolean =&gt; item.day === 13;
-}
-```
-**LESS:**
-```less
-:host {
-    display: block;
-    overflow: hidden;
 }
 ```
 
@@ -16751,7 +17022,7 @@ footer {
 &lt;input tuiSwitch type=&quot;checkbox&quot; [(ngModel)]=&quot;secondAction&quot; /&gt; Second action visibility &lt;/label&gt;
 &lt;/p&gt;
 &lt;p&gt;
-&lt;tui-textfield [iconStart]=&quot;&#039;@tui.paintbrush&#039;&quot;&gt;
+&lt;tui-textfield iconStart=&quot;@tui.paintbrush&quot;&gt;
 &lt;label tuiLabel&gt;Background color&lt;/label&gt;
 &lt;input placeholder=&quot;#00000000&quot; tuiInputColor [(ngModel)]=&quot;color&quot; /&gt;
 &lt;/tui-textfield&gt;
@@ -27233,7 +27504,7 @@ A like component based on native checkbox with icons and custom color for icon w
 **Template:**
 ```html
 &lt;input tuiLike=&quot;var(--tui-status-negative)&quot; type=&quot;checkbox&quot; /&gt;
-&lt;input size=&quot;s&quot; tuiLike type=&quot;checkbox&quot; [checkedIcon]=&quot;&#039;@tui.star-filled&#039;&quot; [uncheckedIcon]=&quot;&#039;@tui.star&#039;&quot; /&gt;
+&lt;input checkedIcon=&quot;@tui.star-filled&quot; size=&quot;s&quot; tuiLike type=&quot;checkbox&quot; uncheckedIcon=&quot;@tui.star&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -42743,7 +43014,7 @@ export default class Example {
 &lt;table tuiTable [style.width.rem]=&quot;36&quot; &gt;
 &lt;caption tuiCaption&gt;
 &lt;span&gt;999 rows&lt;/span&gt;
-&lt;button appearance=&quot;flat&quot; tuiButton tuiButtonSelect type=&quot;button&quot; [(ngModel)]=&quot;size&quot; &gt; {{ index * size + 1 }}-{{ (index + 1) * size }} rows &lt;tui-data-list-wrapper *tuiDropdown [itemContent]=&quot;content&quot; [items]=&quot;items&quot; /&gt;
+&lt;button appearance=&quot;flat&quot; tuiButton tuiButtonSelect [(ngModel)]=&quot;size&quot; &gt; {{ index * size + 1 }}-{{ (index + 1) * size }} rows &lt;tui-data-list-wrapper *tuiDropdown [itemContent]=&quot;content&quot; [items]=&quot;items&quot; /&gt;
 &lt;/button&gt;
 &lt;tui-pagination [length]=&quot;length&quot; [style.float]=&quot;&#039;right&#039;&quot; [(index)]=&quot;index&quot; /&gt;
 &lt;/caption&gt;
@@ -49607,7 +49878,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;form [formGroup]=&quot;form&quot;&gt;
-&lt;button appearance=&quot;outline-grayscale&quot; formControlName=&quot;control&quot; tuiButton tuiButtonSelect tuiChevron type=&quot;button&quot; [tuiAppearanceMode]=&quot;length ? &#039;checked&#039; : null&quot; [(open)]=&quot;open&quot; (keydown.delete)=&quot;form.reset()&quot; &gt; {{ text }} @if (length) { &lt;tui-icon aria-label=&quot;reset&quot; icon=&quot;@tui.x&quot; role=&quot;button&quot; tabindex=&quot;-1&quot; [style.color]=&quot;&#039;var(--tui-text-tertiary)&#039;&quot; [style.font-size.rem]=&quot;1&quot; (click.stop)=&quot;form.reset()&quot; /&gt; } &lt;tui-data-list *tuiDropdown tuiMultiSelectGroup &gt; @for (item of items; track item) { &lt;button tuiOption [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-data-list&gt;
+&lt;button appearance=&quot;outline-grayscale&quot; formControlName=&quot;control&quot; tuiButton tuiButtonSelect tuiChevron [tuiAppearanceMode]=&quot;length ? &#039;checked&#039; : null&quot; [(open)]=&quot;open&quot; (keydown.delete)=&quot;form.reset()&quot; &gt; {{ text }} @if (length) { &lt;tui-icon aria-label=&quot;reset&quot; icon=&quot;@tui.x&quot; role=&quot;button&quot; tabindex=&quot;-1&quot; [style.color]=&quot;&#039;var(--tui-text-tertiary)&#039;&quot; [style.font-size.rem]=&quot;1&quot; (click.stop)=&quot;form.reset()&quot; /&gt; } &lt;tui-data-list *tuiDropdown tuiMultiSelectGroup &gt; @for (item of items; track item) { &lt;button tuiOption [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-data-list&gt;
 &lt;/button&gt;
 &lt;/form&gt;
 ```
@@ -50757,7 +51028,7 @@ Directive is used to highlight text in element. You can configure the directive 
 &lt;th&gt;Fate&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
-&lt;tbody&gt; @for (row of rows; track row) { &lt;tr&gt; @for (cell of row; track cell) { &lt;td [tuiHighlight]=&quot;search&quot; [tuiHighlightColor]=&quot;&#039;#228B22&#039;&quot; &gt; {{ cell }} &lt;/td&gt; } &lt;/tr&gt; } &lt;/tbody&gt;
+&lt;tbody&gt; @for (row of rows; track row) { &lt;tr&gt; @for (cell of row; track cell) { &lt;td tuiHighlightColor=&quot;#228B22&quot; [tuiHighlight]=&quot;search&quot; &gt; {{ cell }} &lt;/td&gt; } &lt;/tr&gt; } &lt;/tbody&gt;
 &lt;/table&gt;
 ```
 **TypeScript:**
@@ -50838,7 +51109,7 @@ Directive to show a hint by hover of an element
 &lt;code&gt;HintDescribe&lt;/code&gt;
 &lt;/a&gt;
 &lt;/ng-template&gt;
-&lt;span [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDescribe]=&quot;&#039;qwerty&#039;&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
+&lt;span tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
 &lt;input id=&quot;qwerty&quot; /&gt;
 ```
 
@@ -54159,7 +54430,7 @@ export default class Page {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton tuiButtonSelect tuiChevron type=&quot;button&quot; [(ngModel)]=&quot;language&quot; (ngModelChange)=&quot;switcher.setLanguage($event)&quot; &gt; {{ language }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;languages&quot; /&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton tuiButtonSelect tuiChevron [(ngModel)]=&quot;language&quot; (ngModelChange)=&quot;switcher.setLanguage($event)&quot; &gt; {{ language }} &lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;languages&quot; /&gt;
 &lt;/button&gt;
 ```
 **TypeScript:**
