@@ -25,6 +25,5 @@ import {
 })
 export default class Example {
     protected readonly control = new FormControl<readonly string[]>([]);
-
     protected readonly items = ['Caesar', 'Greek', 'Apple and Chicken'] as const;
 }
