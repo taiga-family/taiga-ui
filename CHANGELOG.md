@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.88.0](https://github.com/taiga-family/taiga-ui/compare/v4.87.0...v4.88.0) (2026-06-22)
+
+### 🐞 Bug Fixes
+
+- **core:** `Button` change button S border radius ([#14356](https://github.com/taiga-family/taiga-ui/issues/14356))
+  ([31a0f43](https://github.com/taiga-family/taiga-ui/commit/31a0f430bc888255f65e4be7f7ad0d883d2c86d1))
+
 ## [4.87.0](https://github.com/taiga-family/taiga-ui/compare/v4.86.0...v4.87.0) (2026-06-15)
 
 ### 🐞 Bug Fixes
