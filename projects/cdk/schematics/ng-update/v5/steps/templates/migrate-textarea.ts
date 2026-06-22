@@ -519,6 +519,8 @@ function getPlaceholderText(element: Element): string {
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():
@@ -529,8 +531,6 @@ function normalizeAttrName(name: string): string {
             return 'formControlName';
         case 'ngModel'.toLowerCase():
             return 'ngModel';
-        case '(ngModelChange)'.toLowerCase():
-            return '(ngModelChange)';
         case '[(ngmodel)]':
             return '[(ngModel)]';
         default:
