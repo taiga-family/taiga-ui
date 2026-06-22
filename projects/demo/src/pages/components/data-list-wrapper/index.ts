@@ -12,5 +12,6 @@ export default class Page {
         'Disables items that start with T',
         'Custom item content',
         'Group by labels',
+        'Single unlabeled multi-select group',
     ];
 }
