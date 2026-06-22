@@ -10,7 +10,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetZoom, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -100,7 +100,7 @@ export class TuiDropdownComponent implements AfterViewInit {
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
-        const zoom = this.directive.el.currentCSSZoom || 1;
+        const zoom = tuiGetZoom(this.directive.el);
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;

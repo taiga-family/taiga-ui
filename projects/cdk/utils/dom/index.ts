@@ -7,6 +7,7 @@ export * from './get-document-or-shadow-root';
 export * from './get-element-obscurers';
 export * from './get-element-offset';
 export * from './get-selected-text';
+export * from './get-zoom';
 export * from './inject-element';
 export * from './is-element-editable';
 export * from './point-to-client-rect';

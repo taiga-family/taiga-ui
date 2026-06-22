@@ -11,7 +11,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetZoom, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -157,9 +157,11 @@ export class TuiHintComponent {
             rect.top + rect.height / 2 - top,
         ]);
 
+        const zoom = tuiGetZoom(this.hint.el);
+
         this.apply(
-            tuiPx(Math.round(top)),
-            tuiPx(Math.round(safeLeft)),
+            tuiPx(Math.round(top / zoom)),
+            tuiPx(Math.round(safeLeft / zoom)),
             Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
             Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
         );
