@@ -1,68 +1,53 @@
 import {Node, SyntaxKind} from 'ng-morph';
 
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {getObjectLiteralCallArguments} from '../../utils/get-object-literal-call-arrguments';
 import {type ReplacementFunctionParameter} from '../interfaces/replacement-function-parameter';
 
 export function replaceFunctionParameters(
     items: readonly ReplacementFunctionParameter[],
 ): void {
-    items.forEach((item) => replaceFunctionParameter(item));
-}
+    items.forEach((item) => {
+        const args = getObjectLiteralCallArguments({
+            names: item.names,
+            moduleSpecifier: item.moduleSpecifier,
+        });
 
-function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
-    const references = item.names.flatMap((name) =>
-        getNamedImportReferences(name, item.moduleSpecifier),
-    );
+        args.forEach((argument) => {
+            item.parameters.forEach(({name, renameTo}) => {
+                const property = argument.getProperty(name);
 
-    references.forEach((ref) => {
-        if (ref.wasForgotten()) {
-            return;
-        }
-
-        const parent = ref.getParent();
-
-        if (!Node.isCallExpression(parent)) {
-            return;
-        }
-
-        const [value] = parent.getArguments();
-
-        if (!Node.isObjectLiteralExpression(value)) {
-            return;
-        }
-
-        item.parameters.forEach(({name, renameTo}) => {
-            const property = value.getProperty(name);
-
-            if (!property) {
-                return;
-            }
-
-            if (item.valueReplacer) {
-                const replacement = property.getLastChildIfKind(SyntaxKind.StringLiteral);
-
-                if (!replacement) {
+                if (!property) {
                     return;
                 }
 
-                item.valueReplacer.forEach(({from, to}) => {
-                    if (replacement.getLiteralValue() === from) {
-                        replacement.setLiteralValue(to);
+                if (item.valueReplacer) {
+                    const replacement = property.getLastChildIfKind(
+                        SyntaxKind.StringLiteral,
+                    );
+
+                    if (!replacement) {
+                        return;
                     }
-                });
-            }
 
-            if (!renameTo) {
-                return;
-            }
+                    item.valueReplacer.forEach(({from, to}) => {
+                        if (replacement.getLiteralValue() === from) {
+                            replacement.setLiteralValue(to);
+                        }
+                    });
+                }
 
-            if (Node.isPropertyAssignment(property)) {
-                property.rename(renameTo);
-            }
+                if (!renameTo) {
+                    return;
+                }
 
-            if (Node.isShorthandPropertyAssignment(property)) {
-                property.replaceWithText(`${renameTo}: ${name}`);
-            }
+                if (Node.isPropertyAssignment(property)) {
+                    property.rename(renameTo);
+                }
+
+                if (Node.isShorthandPropertyAssignment(property)) {
+                    property.replaceWithText(`${renameTo}: ${name}`);
+                }
+            });
         });
     });
 }

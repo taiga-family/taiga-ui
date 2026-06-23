@@ -1,32 +1,14 @@
-import {Node, saveActiveProject} from 'ng-morph';
+import {saveActiveProject} from 'ng-morph';
 
-import {getNamedImportReferences} from '../../../utils/get-named-import-references';
+import {getObjectLiteralCallArguments} from '../../../utils/get-object-literal-call-arrguments';
 
 export function migrateGetClosestFocusable(): void {
-    const references = getNamedImportReferences(
-        'tuiGetClosestFocusable',
-        '@taiga-ui/cdk',
-    );
-
-    references.forEach((ref) => {
-        if (ref.wasForgotten()) {
-            return;
-        }
-
-        const parent = ref.getParent();
-
-        if (!Node.isCallExpression(parent)) {
-            return;
-        }
-
-        const [arg] = parent.getArguments();
-
-        if (!Node.isObjectLiteralExpression(arg)) {
-            return;
-        }
-
-        arg.getProperty('keyboard')?.remove();
+    const args = getObjectLiteralCallArguments({
+        names: ['tuiGetClosestFocusable'],
+        moduleSpecifier: '@taiga-ui/cdk',
     });
+
+    args.forEach((arg) => arg.getProperty('keyboard')?.remove());
 
     saveActiveProject();
 }

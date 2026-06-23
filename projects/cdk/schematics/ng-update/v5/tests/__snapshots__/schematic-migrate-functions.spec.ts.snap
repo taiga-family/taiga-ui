@@ -14,7 +14,7 @@ exports[`ng-update migrate tuiBlurNativeFocused to tuiBlurFocused: test.ts 1`] =
 }
 `;
 
-exports[`ng-update migrate tuiGetClosestFocusable and drop removed keyboard option: test.ts 1`] = `
+exports[`ng-update migrate tuiGetClosestFocusable with drop removed keyboard option: test.ts 1`] = `
 {
   "0. Before": "
                 import {
