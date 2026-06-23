@@ -11,6 +11,8 @@ import {type TemplateResource} from '../../../interfaces';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+const NGFOR_ATTR = '*ngfor';
+const NGFOR_SEARCH_ATTR = '*ngFor';
 const TUI_REPEAT_TIMES_DIRECTIVE_ATTR = '*tuirepeattimes';
 const TUI_REPEAT_TIMES_DIRECTIVE_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S.*)$/;
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
@@ -30,7 +32,7 @@ export function migrateRepeatTimes({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    for (const element of findElementsWithAttribute(template, '*ngFor')) {
+    for (const element of findElementsWithAttribute(template, NGFOR_SEARCH_ATTR)) {
         migrateNgForRepeatTimesPipe(element, template, recorder, templateOffset);
     }
 
@@ -51,7 +53,7 @@ function migrateNgForRepeatTimesPipe(
     offset: number,
 ): void {
     const attr = element.attrs.find(
-        (a) => a.name === '*ngfor' && a.value.includes('tuiRepeatTimes'),
+        (a) => a.name === NGFOR_ATTR && a.value.includes('tuiRepeatTimes'),
     );
 
     if (!attr) {
@@ -66,13 +68,13 @@ function migrateNgForRepeatTimesPipe(
 
     const [, variable = '', expression = ''] = parsed;
 
-    const wrapped = wrapElementWithForBlock({
+    const wrapped = replaceStructuralDirectiveWithForBlock({
         element,
         template,
         recorder,
         offset,
-        attrName: '*ngfor',
-        header: buildRepeatTimesForHeader(expression),
+        attrName: NGFOR_ATTR,
+        header: buildRepeatTimesForHeader({expression}),
     });
 
     if (wrapped && variable && variable !== '_' && variable !== '$index') {
@@ -100,24 +102,33 @@ function migrateTuiRepeatTimesDirective(
 
     const [, variable = '', expression = ''] = parsed;
 
-    wrapElementWithForBlock({
+    // Preserve the declared variable with `let variable = $index` to avoid rewriting the body.
+    replaceStructuralDirectiveWithForBlock({
         element,
         template,
         recorder,
         offset,
         attrName: TUI_REPEAT_TIMES_DIRECTIVE_ATTR,
-        header: buildRepeatTimesForHeader(expression, variable),
+        header: buildRepeatTimesForHeader({expression, indexAliasName: variable}),
     });
 }
 
-function buildRepeatTimesForHeader(expression: string, aliasVariable = ''): string {
+function buildRepeatTimesForHeader({
+    expression,
+    indexAliasName = '',
+}: {
+    expression: string;
+    indexAliasName?: string;
+}): string {
     const alias =
-        aliasVariable && aliasVariable !== '_' ? `; let ${aliasVariable} = $index` : '';
+        indexAliasName && indexAliasName !== '_' && indexAliasName !== '$index'
+            ? `; let ${indexAliasName} = $index`
+            : '';
 
-    return `@for (_ of '-'.repeat(${expression}); track $index${alias})`;
+    return `@for (_ of '-'.repeat(${expression.trim()}); track $index${alias})`;
 }
 
-function wrapElementWithForBlock({
+function replaceStructuralDirectiveWithForBlock({
     element,
     template,
     recorder,
@@ -190,7 +201,7 @@ function replaceVariableInElement(
         return;
     }
 
-    const ngForLoc = loc.attrs?.['*ngfor'];
+    const ngForLoc = loc.attrs?.[NGFOR_ATTR];
     const searchStart = loc.startOffset;
     const searchEnd = loc.endOffset;
     const content = template.slice(searchStart, searchEnd);
