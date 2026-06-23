@@ -26,6 +26,7 @@ import {TuiInspectPipe} from './inspect.pipe';
 import {TuiTypeReferencePipe} from './type-reference.pipe';
 
 const SERIALIZED_SUFFIX = '$';
+const SERIALIZED_NULL = 'null';
 
 @Component({
     selector: 'tr[tuiDocAPIItem]',
@@ -66,10 +67,9 @@ export class TuiDocAPIItem<T> implements OnInit {
     public readonly items = input([], {transform: (v?: readonly T[]) => v || []});
 
     protected readonly hasCleaner = computed(
-        () =>
-            (this.type().includes('null') ||
-                this.type().includes('PolymorpheusContent')) &&
-            (this.value() ?? 'null') !== 'null',
+        (type = this.type(), value = this.value()) =>
+            (type.includes(SERIALIZED_NULL) || type.includes('PolymorpheusContent')) &&
+            (value ?? SERIALIZED_NULL) !== SERIALIZED_NULL,
     );
 
     public ngOnInit(): void {
