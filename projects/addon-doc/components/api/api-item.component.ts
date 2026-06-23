@@ -66,7 +66,10 @@ export class TuiDocAPIItem<T> implements OnInit {
     public readonly items = input([], {transform: (v?: readonly T[]) => v || []});
 
     protected readonly hasCleaner = computed(
-        () => this.type().includes('null') || this.type().includes('PolymorpheusContent'),
+        () =>
+            (this.type().includes('null') ||
+                this.type().includes('PolymorpheusContent')) &&
+            (this.value() ?? 'null') !== 'null',
     );
 
     public ngOnInit(): void {
