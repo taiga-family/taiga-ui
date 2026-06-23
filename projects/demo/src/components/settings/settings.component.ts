@@ -32,8 +32,7 @@ import {
 } from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {startWith} from 'rxjs';
-
-export const TUI_PLATFORM_KEY = 'tuiPlatform';
+import {TUI_PLATFORM_KEY} from './platform-key';
 
 @Component({
     selector: '[appSettings]',

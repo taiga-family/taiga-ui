@@ -53,7 +53,7 @@ import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {provideHighlightOptions} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
 
-import {TUI_PLATFORM_KEY} from '../../components/settings/settings.component';
+import {TUI_PLATFORM_KEY} from '../../components/settings/platform-key';
 import {AuthService} from '../components/dialog/examples/5/service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
