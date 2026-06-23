@@ -1,4 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
+import {UpperCasePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,24 +19,28 @@ import {
 } from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 
+import {TuiWeekPipe} from './week.pipe';
+
 /**
  * @deprecated: work in progress, do not use!
  */
 @Component({
     selector: 'tui-calendar[new]',
-    imports: [TuiCalendarSheetPipe, TuiMapperPipe],
+    imports: [TuiCalendarSheetPipe, TuiMapperPipe, TuiWeekPipe, UpperCasePipe],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'(mouseleave)': 'hovered.set(null)'},
+    host: {
+        '[class._ww]': 'options.weekThreshold',
+        '(mouseleave)': 'hovered.set(null)',
+    },
 })
 export class TuiCalendar {
-    private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private readonly days = inject(TUI_SHORT_WEEK_DAYS);
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);
-    protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
+    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     protected readonly week = computed((week = convert(this.days())) => [
         ...week.slice(this.options.weekStart()),
@@ -76,6 +81,10 @@ export class TuiCalendar {
         }
 
         return range.dayInRange(day) ? 'middle' : null;
+    }
+
+    protected getType(day: string): string {
+        return day === this.days()[5] || day === this.days()[6] ? 'weekend' : '';
     }
 }
 

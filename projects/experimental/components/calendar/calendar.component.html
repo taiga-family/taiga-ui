@@ -1,24 +1,40 @@
+@if (options.weekThreshold) {
+    <span>#</span>
+}
 @for (day of week(); track $index) {
-    <span>{{ day }}</span>
+    <span [attr.data-type]="getType(day)">{{ day.slice(0, 2) | uppercase }}</span>
 }
 @for (week of month() | tuiCalendarSheet: true; track week) {
-    @for (day of week; track day) {
+    @if (options.weekThreshold && week[6] && week[0] && (week[0].month <= month().month || options.showAdjacent)) {
         <button
+            disabled
             tabindex="-1"
             type="button"
             class="t-day"
-            [attr.data-range]="getRange(day)"
-            [attr.data-type]="day | tuiMapper: dayType"
-            [class.t-day_adjacent]="day.month !== month().month"
-            [class.t-day_end]="$last"
-            [class.t-day_start]="$first"
-            [class.t-day_today]="day.daySame(today)"
-            [disabled]="disabledItemHandler()(day)"
-            (click)="pick.emit(day)"
-            (mouseenter)="hovered.set(day)"
-            (pointerdown.prevent.zoneless)="(0)"
         >
-            {{ day.day }}
+            {{ week[6] | tuiWeek: options.weekStart() : options.weekThreshold() }}
         </button>
+    }
+    @for (day of week; track day) {
+        @if (day.month <= month().month || options.showAdjacent) {
+            <button
+                tabindex="-1"
+                type="button"
+                class="t-day"
+                [attr.data-range]="getRange(day)"
+                [attr.data-type]="day | tuiMapper: options.dayType"
+                [class.t-day_adjacent]="day.month !== month().month"
+                [class.t-day_end]="$last"
+                [class.t-day_hidden]="day.month < month().month && !options.showAdjacent"
+                [class.t-day_start]="$first"
+                [class.t-day_today]="day.daySame(today)"
+                [disabled]="disabledItemHandler()(day)"
+                (click)="pick.emit(day)"
+                (mouseenter)="hovered.set(day)"
+                (pointerdown.prevent.zoneless)="(0)"
+            >
+                {{ day.day }}
+            </button>
+        }
     }
 }

@@ -34,6 +34,7 @@ import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
 import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
 import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiElasticContainer} from '@taiga-ui/layout/components/elastic-container';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -61,6 +62,7 @@ type DatePicker<T> = T extends 'single'
         TuiLink,
         TuiMapperPipe,
         TuiSlides,
+        TuiElasticContainer,
     ],
     templateUrl: './date-picker.component.html',
     styleUrl: './date-picker.component.less',
@@ -149,9 +151,11 @@ export class TuiDatePicker<
         const value = this.value();
         const [day] = value instanceof TuiDayRange ? [value.from] : coerceArray(value);
 
-        this.month.update(({month, year}) =>
-            (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
-        );
+        if (!day || day.year < 9000) {
+            this.month.update(({month, year}) =>
+                (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
+            );
+        }
     });
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
