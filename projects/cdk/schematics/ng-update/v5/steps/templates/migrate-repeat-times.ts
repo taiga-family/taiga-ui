@@ -14,6 +14,8 @@ type Element = DefaultTreeAdapterTypes.Element;
 const NGFOR_REPEAT_TIMES_PATTERN =
     /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
 
+const DIRECTIVE_REPEAT_TIMES_ATTR = '*tuirepeattimes';
+const DIRECTIVE_REPEAT_TIMES_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S.*)$/;
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 
 export function migrateRepeatTimes({
@@ -33,7 +35,78 @@ export function migrateRepeatTimes({
         migrateNgForRepeatTimes(element, template, recorder, templateOffset);
     }
 
+    for (const element of findElementsWithAttribute(
+        template,
+        DIRECTIVE_REPEAT_TIMES_ATTR,
+    )) {
+        migrateDirectiveRepeatTimes(element, template, recorder, templateOffset);
+    }
+
     migrateAtForRepeatTimes(template, recorder, templateOffset);
+}
+
+/**
+ * Migrates the structural directive form `*tuiRepeatTimes="let x of count"` to `@for`.
+ *
+ * Unlike the pipe form, the loop variable is preserved via the `let x = $index` alias
+ * instead of being rewritten to `$index`, so nested loops keep distinct variables.
+ */
+function migrateDirectiveRepeatTimes(
+    element: Element,
+    template: string,
+    recorder: UpdateRecorder,
+    offset: number,
+): void {
+    const attr = element.attrs.find((a) => a.name === DIRECTIVE_REPEAT_TIMES_ATTR);
+    const loc = element.sourceCodeLocation;
+    const attrLoc = loc?.attrs?.[DIRECTIVE_REPEAT_TIMES_ATTR];
+
+    if (!attr || !loc || !attrLoc) {
+        return;
+    }
+
+    const parsed = DIRECTIVE_REPEAT_TIMES_PATTERN.exec(attr.value.trim());
+
+    if (!parsed) {
+        return;
+    }
+
+    const [, variable = '', expression = ''] = parsed;
+    const indentStr = ' '.repeat(computeIndent(template, loc.startOffset));
+    const alias = variable && variable !== '_' ? `; let ${variable} = $index` : '';
+    const header = `@for (_ of '-'.repeat(${expression.trim()}); track $index${alias})`;
+
+    const isPureNgContainer =
+        element.tagName === 'ng-container' && element.attrs.length === 1;
+
+    if (isPureNgContainer) {
+        const startTag = loc.startTag;
+        const endTag = loc.endTag;
+
+        if (!startTag) {
+            return;
+        }
+
+        recorder.remove(offset + loc.startOffset, startTag.endOffset - loc.startOffset);
+        recorder.insertRight(offset + loc.startOffset, `${header} {`);
+
+        if (endTag) {
+            recorder.remove(
+                offset + endTag.startOffset,
+                endTag.endOffset - endTag.startOffset,
+            );
+            recorder.insertRight(offset + endTag.startOffset, `${indentStr}}`);
+        }
+
+        return;
+    }
+
+    recorder.remove(
+        offset + attrLoc.startOffset - 1,
+        attrLoc.endOffset - attrLoc.startOffset + 1,
+    );
+    recorder.insertLeft(offset + loc.startOffset, `${header} {\n${indentStr}`);
+    recorder.insertRight(offset + loc.endOffset, `\n${indentStr}}`);
 }
 
 function migrateNgForRepeatTimes(

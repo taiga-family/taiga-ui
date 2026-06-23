@@ -127,5 +127,71 @@ describe('ng-update tuiRepeatTimes', () => {
         }),
     );
 
+    it(
+        'migrates *tuiRepeatTimes directive to @for with index alias',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            `,
+            template: '<div *tuiRepeatTimes="let x of count">{{ x }}</div>',
+        }),
+    );
+
+    it(
+        'migrates nested *tuiRepeatTimes preserving both variables',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            `,
+            template: /* HTML */ `
+                <div
+                    *tuiRepeatTimes="let x of columnsNumber"
+                    class="t-column"
+                >
+                    <div
+                        *tuiRepeatTimes="let y of rowsNumber"
+                        class="t-cell"
+                        [class.t-cell_hovered]="hovered(y, x)"
+                    ></div>
+                </div>
+            `,
+        }),
+    );
+
+    it(
+        'migrates *tuiRepeatTimes on ng-container by unwrapping',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            `,
+            template:
+                '<ng-container *tuiRepeatTimes="let i of 3"><span>{{ i }}</span></ng-container>',
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
