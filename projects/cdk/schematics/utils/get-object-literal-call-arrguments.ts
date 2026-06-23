@@ -8,7 +8,7 @@ export function getObjectLiteralCallArguments({
     argumentIndex = 0,
 }: {
     readonly names: readonly string[];
-    readonly moduleSpecifier: string;
+    readonly moduleSpecifier?: string[] | string;
     readonly argumentIndex?: number;
 }): ObjectLiteralExpression[] {
     const references = names.flatMap((name) =>
