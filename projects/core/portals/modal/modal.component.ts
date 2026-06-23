@@ -12,6 +12,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {
@@ -49,6 +50,7 @@ import {
 })
 export class TuiModalComponent<T> implements OnDestroy, OnInit {
     private readonly current = inject(TuiActiveZone);
+    private readonly el = tuiInjectElement();
 
     private readonly parent = findActive(
         inject(TuiActiveZone, {skipSelf: true}),
@@ -60,10 +62,12 @@ export class TuiModalComponent<T> implements OnDestroy, OnInit {
 
     public ngOnInit(): void {
         this.current.tuiActiveZoneParentSetter = this.parent;
+        this.el.closest('tui-root')?.firstElementChild?.setAttribute('inert', '');
     }
 
     public ngOnDestroy(): void {
         this.current.tuiActiveZoneParentSetter = null;
+        this.el.closest('tui-root')?.firstElementChild?.removeAttribute('inert');
     }
 }
 

@@ -6,7 +6,6 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
@@ -31,24 +30,14 @@ import {
 
 @Component({
     selector: 'tui-root',
-    imports: [TuiPopups, TuiScrollControls, WaMutationObserver],
+    imports: [TuiPopups, TuiScrollControls],
     template: `
-        <div
-            class="t-root-content"
-            [attr.inert]="inert()"
-        >
-            <ng-content />
-        </div>
+        <div class="t-root-content"><ng-content /></div>
         @if (top()) {
             @if (scrollbars) {
                 <tui-scroll-controls class="t-root-scrollbar" />
             }
-            <tui-popups
-                childList
-                (waMutationObserver)="onPopups($event[0]?.target?.childNodes)"
-            >
-                <ng-content select="tuiOverContent" />
-            </tui-popups>
+            <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
         }
     `,
     styleUrls: ['./animations.less', './root.style.less'],
@@ -77,7 +66,6 @@ export class TuiRoot {
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
-    protected readonly inert = signal<true | null>(null);
 
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&
@@ -89,9 +77,5 @@ export class TuiRoot {
         return this.doc.fullscreenElement
             ? this.doc.fullscreenElement === this.el
             : !this.child;
-    }
-
-    protected onPopups(nodes: Node[] | NodeListOf<Node> = []): void {
-        this.inert.set(Array.from(nodes).some((n) => n.nodeName === 'TUI-MODAL') || null);
     }
 }
