@@ -14,9 +14,10 @@ exports[`ng-update tuiDropdownOpen to tuiDropdownAuto keeps chained calls like t
                 }
             ",
   "1. After": "import { inject } from "@angular/core";
-import { TuiDropdownOpen } from "@taiga-ui/core";
 
-                                export class Test {
+                import { TuiDropdownOpen } from '@taiga-ui/core';
+
+                export class Test {
                     protected readonly open = inject(TuiDropdownOpen).open;
 
                     public toggle(): void {
@@ -37,9 +38,10 @@ exports[`ng-update tuiDropdownOpen to tuiDropdownAuto replaces tuiDropdownOpen()
                 }
             ",
   "1. After": "import { inject } from "@angular/core";
-import { TuiDropdownOpen } from "@taiga-ui/core";
 
-                                export class Test {
+                import { TuiDropdownOpen } from '@taiga-ui/core';
+
+                export class Test {
                     protected readonly open = inject(TuiDropdownOpen).open;
                 }
             ",
