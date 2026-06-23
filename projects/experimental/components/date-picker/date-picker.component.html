@@ -51,8 +51,10 @@
             [tuiChevron]="false"
             (click)="view.set(view() === 'day' ? 'month' : 'year')"
         ></button>
+    } @else {
+        @let years = month().year + (carousel()?.index() || 0) * 12 - 6 | tuiMapper: getItems;
+        <b>{{ years[0] }}-{{ years[years.length - 1] }}</b>
     }
-    <span>&ZeroWidthSpace;</span>
     <button
         tabindex="-1"
         tuiIconButton

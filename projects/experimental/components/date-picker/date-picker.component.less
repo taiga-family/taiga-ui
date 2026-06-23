@@ -25,6 +25,10 @@
     justify-content: flex-end;
     padding: 0.5rem 0.75rem 1rem;
     font: var(--tui-typography-ui-l);
+
+    :first-child {
+        margin-inline-end: auto;
+    }
 }
 
 .t-textfield {
@@ -53,11 +57,14 @@
     font: inherit;
     font-weight: bold;
     text-decoration: none;
-    margin-inline-end: auto;
 
     @media @tui-mouse {
         &:hover {
             opacity: var(--tui-disabled-opacity);
         }
     }
+}
+
+.t-chevron {
+    transform: scaleX(var(--tui-inline));
 }

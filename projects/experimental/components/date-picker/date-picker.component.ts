@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
     input,
     model,
@@ -10,7 +11,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -143,6 +144,15 @@ export class TuiDatePicker<
             ? this.month().year === this.max().year
             : carousel?.index() === carousel?.max(),
     );
+
+    protected readonly sync = effect(() => {
+        const value = this.value();
+        const [day] = value instanceof TuiDayRange ? [value.from] : coerceArray(value);
+
+        this.month.update(({month, year}) =>
+            (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
+        );
+    });
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly mode = input<T>();
