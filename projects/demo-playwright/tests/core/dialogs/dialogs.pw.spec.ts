@@ -99,7 +99,7 @@ test.describe('Dialog', () => {
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#directive');
-        const root = page.locator('tui-root > .t-root-content');
+        const root = page.locator('tui-root > .t-root-content').first();
 
         await expect(root).not.toHaveAttribute('inert');
         await example.locator('button').first().click();
