@@ -7,18 +7,13 @@ import {infoLog} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';
 
-const TAIGA_CORE = '@taiga-ui/core';
-const ANGULAR_CORE = '@angular/core';
-const LEGACY_FN = 'tuiDropdownOpen';
-const DIRECTIVE = 'TuiDropdownOpen';
-
-export function migrateDropdownOpen(_tree: Tree, options: TuiSchema): void {
+export function migrateDropdownOpen(_: Tree, options: TuiSchema): void {
     if (!options['skip-logs']) {
         infoLog('Migrating tuiDropdownOpen() to inject(TuiDropdownOpen).open...');
     }
 
     const migratedFiles = new Set<string>();
-    const refs = getNamedImportReferences(LEGACY_FN, TAIGA_CORE);
+    const refs = getNamedImportReferences('tuiDropdownOpen', '@taiga-ui/core');
 
     for (const ref of refs) {
         if (ref.wasForgotten()) {
@@ -40,11 +35,11 @@ export function migrateDropdownOpen(_tree: Tree, options: TuiSchema): void {
             continue;
         }
 
-        parent.replaceWithText(`inject(${DIRECTIVE}).open`);
+        parent.replaceWithText('inject(TuiDropdownOpen).open');
         migratedFiles.add(ref.getSourceFile().getFilePath());
     }
 
-    for (const ref of getNamedImportReferences(LEGACY_FN, TAIGA_CORE)) {
+    for (const ref of getNamedImportReferences('tuiDropdownOpen', '@taiga-ui/core')) {
         if (ref.wasForgotten()) {
             continue;
         }
@@ -58,8 +53,8 @@ export function migrateDropdownOpen(_tree: Tree, options: TuiSchema): void {
     }
 
     for (const filePath of migratedFiles) {
-        addUniqueImport(filePath, DIRECTIVE, TAIGA_CORE);
-        addUniqueImport(filePath, 'inject', ANGULAR_CORE);
+        addUniqueImport(filePath, 'TuiDropdownOpen', '@taiga-ui/core');
+        addUniqueImport(filePath, 'inject', '@angular/core');
     }
 
     saveActiveProject();
