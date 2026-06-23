@@ -11,12 +11,12 @@ import {type TemplateResource} from '../../../interfaces';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-const NGFOR_REPEAT_TIMES_PATTERN =
-    /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
-
-const DIRECTIVE_REPEAT_TIMES_ATTR = '*tuirepeattimes';
-const DIRECTIVE_REPEAT_TIMES_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S.*)$/;
+const TUI_REPEAT_TIMES_DIRECTIVE_ATTR = '*tuirepeattimes';
+const TUI_REPEAT_TIMES_DIRECTIVE_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S.*)$/;
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
+
+const NGFOR_REPEAT_TIMES_PIPE_PATTERN =
+    /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
 
 export function migrateRepeatTimes({
     resource,
@@ -29,87 +29,22 @@ export function migrateRepeatTimes({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
-    const elements = findElementsWithAttribute(template, '*ngFor');
 
-    for (const element of elements) {
-        migrateNgForRepeatTimes(element, template, recorder, templateOffset);
+    for (const element of findElementsWithAttribute(template, '*ngFor')) {
+        migrateNgForRepeatTimesPipe(element, template, recorder, templateOffset);
     }
 
     for (const element of findElementsWithAttribute(
         template,
-        DIRECTIVE_REPEAT_TIMES_ATTR,
+        TUI_REPEAT_TIMES_DIRECTIVE_ATTR,
     )) {
-        migrateDirectiveRepeatTimes(element, template, recorder, templateOffset);
+        migrateTuiRepeatTimesDirective(element, template, recorder, templateOffset);
     }
 
     migrateAtForRepeatTimes(template, recorder, templateOffset);
 }
 
-/**
- * Migrates the structural directive form `*tuiRepeatTimes="let x of count"` to `@for`.
- *
- * Unlike the pipe form, the loop variable is preserved via the `let x = $index` alias
- * instead of being rewritten to `$index`, so nested loops keep distinct variables.
- */
-function migrateDirectiveRepeatTimes(
-    element: Element,
-    template: string,
-    recorder: UpdateRecorder,
-    offset: number,
-): void {
-    const attr = element.attrs.find((a) => a.name === DIRECTIVE_REPEAT_TIMES_ATTR);
-    const loc = element.sourceCodeLocation;
-    const attrLoc = loc?.attrs?.[DIRECTIVE_REPEAT_TIMES_ATTR];
-
-    if (!attr || !loc || !attrLoc) {
-        return;
-    }
-
-    const parsed = DIRECTIVE_REPEAT_TIMES_PATTERN.exec(attr.value.trim());
-
-    if (!parsed) {
-        return;
-    }
-
-    const [, variable = '', expression = ''] = parsed;
-    const indentStr = ' '.repeat(computeIndent(template, loc.startOffset));
-    const alias = variable && variable !== '_' ? `; let ${variable} = $index` : '';
-    const header = `@for (_ of '-'.repeat(${expression.trim()}); track $index${alias})`;
-
-    const isPureNgContainer =
-        element.tagName === 'ng-container' && element.attrs.length === 1;
-
-    if (isPureNgContainer) {
-        const startTag = loc.startTag;
-        const endTag = loc.endTag;
-
-        if (!startTag) {
-            return;
-        }
-
-        recorder.remove(offset + loc.startOffset, startTag.endOffset - loc.startOffset);
-        recorder.insertRight(offset + loc.startOffset, `${header} {`);
-
-        if (endTag) {
-            recorder.remove(
-                offset + endTag.startOffset,
-                endTag.endOffset - endTag.startOffset,
-            );
-            recorder.insertRight(offset + endTag.startOffset, `${indentStr}}`);
-        }
-
-        return;
-    }
-
-    recorder.remove(
-        offset + attrLoc.startOffset - 1,
-        attrLoc.endOffset - attrLoc.startOffset + 1,
-    );
-    recorder.insertLeft(offset + loc.startOffset, `${header} {\n${indentStr}`);
-    recorder.insertRight(offset + loc.endOffset, `\n${indentStr}}`);
-}
-
-function migrateNgForRepeatTimes(
+function migrateNgForRepeatTimesPipe(
     element: Element,
     template: string,
     recorder: UpdateRecorder,
@@ -123,34 +58,103 @@ function migrateNgForRepeatTimes(
         return;
     }
 
-    const parsed = NGFOR_REPEAT_TIMES_PATTERN.exec(attr.value);
+    const parsed = NGFOR_REPEAT_TIMES_PIPE_PATTERN.exec(attr.value);
 
     if (!parsed) {
         return;
     }
 
     const [, variable = '', expression = ''] = parsed;
-    const loc = element.sourceCodeLocation!;
-    const indent = computeIndent(template, loc.startOffset);
-    const indentStr = ' '.repeat(indent);
-    const attrLoc = loc.attrs?.['*ngfor'];
 
-    if (!attrLoc) {
+    const wrapped = wrapElementWithForBlock({
+        element,
+        template,
+        recorder,
+        offset,
+        attrName: '*ngfor',
+        header: buildRepeatTimesForHeader(expression),
+    });
+
+    if (wrapped && variable && variable !== '_' && variable !== '$index') {
+        replaceVariableInElement(element, template, recorder, offset, variable);
+    }
+}
+
+function migrateTuiRepeatTimesDirective(
+    element: Element,
+    template: string,
+    recorder: UpdateRecorder,
+    offset: number,
+): void {
+    const attr = element.attrs.find((a) => a.name === TUI_REPEAT_TIMES_DIRECTIVE_ATTR);
+
+    if (!attr) {
         return;
     }
+
+    const parsed = TUI_REPEAT_TIMES_DIRECTIVE_PATTERN.exec(attr.value.trim());
+
+    if (!parsed) {
+        return;
+    }
+
+    const [, variable = '', expression = ''] = parsed;
+
+    wrapElementWithForBlock({
+        element,
+        template,
+        recorder,
+        offset,
+        attrName: TUI_REPEAT_TIMES_DIRECTIVE_ATTR,
+        header: buildRepeatTimesForHeader(expression, variable),
+    });
+}
+
+function buildRepeatTimesForHeader(expression: string, aliasVariable = ''): string {
+    const alias =
+        aliasVariable && aliasVariable !== '_' ? `; let ${aliasVariable} = $index` : '';
+
+    return `@for (_ of '-'.repeat(${expression}); track $index${alias})`;
+}
+
+function wrapElementWithForBlock({
+    element,
+    template,
+    recorder,
+    offset,
+    attrName,
+    header,
+}: {
+    attrName: string;
+    element: Element;
+    header: string;
+    offset: number;
+    recorder: UpdateRecorder;
+    template: string;
+}): boolean {
+    const loc = element.sourceCodeLocation;
+    const attrLoc = loc?.attrs?.[attrName];
+
+    if (!loc || !attrLoc) {
+        return false;
+    }
+
+    const indentStr = ' '.repeat(computeIndent(template, loc.startOffset));
 
     const isPureNgContainer =
         element.tagName === 'ng-container' && element.attrs.length === 1;
 
     if (isPureNgContainer) {
-        const startTag = loc.startTag!;
+        const startTag = loc.startTag;
+
+        if (!startTag) {
+            return false;
+        }
+
         const endTag = loc.endTag;
 
         recorder.remove(offset + loc.startOffset, startTag.endOffset - loc.startOffset);
-        recorder.insertRight(
-            offset + loc.startOffset,
-            `@for (_ of '-'.repeat(${expression}); track $index) {`,
-        );
+        recorder.insertRight(offset + loc.startOffset, `${header} {`);
 
         if (endTag) {
             recorder.remove(
@@ -159,23 +163,18 @@ function migrateNgForRepeatTimes(
             );
             recorder.insertRight(offset + endTag.startOffset, `${indentStr}}`);
         }
-    } else {
-        recorder.remove(
-            offset + attrLoc.startOffset - 1,
-            attrLoc.endOffset - attrLoc.startOffset + 1,
-        );
 
-        recorder.insertLeft(
-            offset + loc.startOffset,
-            `@for (_ of '-'.repeat(${expression}); track $index) {\n${indentStr}`,
-        );
-
-        recorder.insertRight(offset + loc.endOffset, `\n${indentStr}}`);
+        return true;
     }
 
-    if (variable && variable !== '_' && variable !== '$index') {
-        replaceVariableInElement(element, template, recorder, offset, variable);
-    }
+    recorder.remove(
+        offset + attrLoc.startOffset - 1,
+        attrLoc.endOffset - attrLoc.startOffset + 1,
+    );
+    recorder.insertLeft(offset + loc.startOffset, `${header} {\n${indentStr}`);
+    recorder.insertRight(offset + loc.endOffset, `\n${indentStr}}`);
+
+    return true;
 }
 
 function replaceVariableInElement(
@@ -185,7 +184,12 @@ function replaceVariableInElement(
     offset: number,
     variable: string,
 ): void {
-    const loc = element.sourceCodeLocation!;
+    const loc = element.sourceCodeLocation;
+
+    if (!loc) {
+        return;
+    }
+
     const ngForLoc = loc.attrs?.['*ngfor'];
     const searchStart = loc.startOffset;
     const searchEnd = loc.endOffset;
