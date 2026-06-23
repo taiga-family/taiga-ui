@@ -4,9 +4,17 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TUI_DARK_MODE, TUI_LIQUID_GLASS, TuiTitle} from '@taiga-ui/core';
 import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
+import {TuiPlatform} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [TuiAppBar, TuiDynamicHeader, TuiHeader, TuiTitle, WaIntersectionObserver],
+    imports: [
+        TuiAppBar,
+        TuiDynamicHeader,
+        TuiHeader,
+        TuiPlatform,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
