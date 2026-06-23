@@ -102,7 +102,6 @@ function migrateTuiRepeatTimesDirective(
 
     const [, variable = '', expression = ''] = parsed;
 
-    // Preserve the declared variable with `let variable = $index` to avoid rewriting the body.
     replaceStructuralDirectiveWithForBlock({
         element,
         template,
