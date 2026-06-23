@@ -14,7 +14,7 @@ type Element = DefaultTreeAdapterTypes.Element;
 const NGFOR_ATTR = '*ngfor';
 const NGFOR_SEARCH_ATTR = '*ngFor';
 const TUI_REPEAT_TIMES_DIRECTIVE_ATTR = '*tuirepeattimes';
-const TUI_REPEAT_TIMES_DIRECTIVE_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S.*)$/;
+const TUI_REPEAT_TIMES_DIRECTIVE_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S[\s\S]*)$/;
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 
 const NGFOR_REPEAT_TIMES_PIPE_PATTERN =
@@ -124,7 +124,7 @@ function buildRepeatTimesForHeader({
             ? `; let ${indexAliasName} = $index`
             : '';
 
-    return `@for (_ of '-'.repeat(${expression.trim()}); track $index${alias})`;
+    return `@for (_ of '-'.repeat(${expression.trim().replace(/;+$/, '')}); track $index${alias})`;
 }
 
 function replaceStructuralDirectiveWithForBlock({
