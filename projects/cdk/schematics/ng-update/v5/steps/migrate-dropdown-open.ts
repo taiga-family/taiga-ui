@@ -17,23 +17,31 @@ export function migrateDropdownOpen(_tree: Tree, options: TuiSchema): void {
         infoLog('Migrating tuiDropdownOpen() to inject(TuiDropdownOpen).open...');
     }
 
-    for (const ref of getNamedImportReferences(LEGACY_FN, TAIGA_CORE)) {
+    const migratedFiles = new Set<string>();
+    const refs = getNamedImportReferences(LEGACY_FN, TAIGA_CORE);
+
+    for (const ref of refs) {
         if (ref.wasForgotten()) {
             continue;
         }
 
-        const callExpression = getCallExpression(ref);
+        const parent = ref.getParent();
+
+        if (!parent || Node.isImportSpecifier(parent)) {
+            continue;
+        }
+
+        const callExpression =
+            Node.isCallExpression(parent) &&
+            parent.getExpression() === ref &&
+            parent.getArguments().length === 0;
 
         if (!callExpression) {
             continue;
         }
 
-        const filePath = ref.getSourceFile().getFilePath();
-
-        callExpression.replaceWithText(`inject(${DIRECTIVE}).open`);
-
-        addUniqueImport(filePath, DIRECTIVE, TAIGA_CORE);
-        addUniqueImport(filePath, 'inject', ANGULAR_CORE);
+        parent.replaceWithText(`inject(${DIRECTIVE}).open`);
+        migratedFiles.add(ref.getSourceFile().getFilePath());
     }
 
     for (const ref of getNamedImportReferences(LEGACY_FN, TAIGA_CORE)) {
@@ -42,22 +50,17 @@ export function migrateDropdownOpen(_tree: Tree, options: TuiSchema): void {
         }
 
         const parent = ref.getParent();
+        const filePath = ref.getSourceFile().getFilePath();
 
-        if (Node.isImportSpecifier(parent)) {
+        if (Node.isImportSpecifier(parent) && migratedFiles.has(filePath)) {
             removeImport(parent);
         }
     }
 
+    for (const filePath of migratedFiles) {
+        addUniqueImport(filePath, DIRECTIVE, TAIGA_CORE);
+        addUniqueImport(filePath, 'inject', ANGULAR_CORE);
+    }
+
     saveActiveProject();
-}
-
-function getCallExpression(ref: Node): Node | null {
-    const parent = ref.getParent();
-
-    return !parent ||
-        !Node.isCallExpression(parent) ||
-        parent.getExpression() !== ref ||
-        parent.getArguments().length !== 0
-        ? null
-        : parent;
 }
