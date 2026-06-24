@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
@@ -97,7 +98,13 @@ export function migrateInputTag({
         const sourceCodeLocation = element.sourceCodeLocation;
 
         if (sourceCodeLocation?.startTag && !sourceCodeLocation.endTag) {
-            migrateSelfClosingInputTag({element, template, recorder, templateOffset});
+            migrateSelfClosingInputTag({
+                element,
+                template,
+                recorder,
+                templateOffset,
+                resource,
+            });
 
             return;
         }
@@ -266,11 +273,13 @@ function migrateSelfClosingInputTag({
     template,
     recorder,
     templateOffset,
+    resource,
 }: {
     element: Element;
     recorder: UpdateRecorder;
     template: string;
     templateOffset: number;
+    resource: TemplateResource;
 }): void {
     const loc = element.sourceCodeLocation;
 
@@ -362,6 +371,12 @@ function migrateSelfClosingInputTag({
 
     const inputStr = inputAttrParts.length > 0 ? ` ${inputAttrParts.join(' ')}` : '';
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
+    if (hasHintContent) {
+        addImportToClosestModule(resource.componentPath, 'TuiIcon', '@taiga-ui/core');
+        addImportToClosestModule(resource.componentPath, 'TuiTooltip', '@taiga-ui/kit');
+    }
+
     const iconStr = hasHintContent ? buildTuiIconStr(element, template) : '';
     const iconLine = iconStr ? `${indent}${iconStr}\n` : '';
     const todoComment = buildSelfClosingTodo(todoAttrs, labelOutsideIsDynamic, indent);
