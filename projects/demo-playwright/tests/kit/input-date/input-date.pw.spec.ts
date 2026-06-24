@@ -42,7 +42,7 @@ test.describe('InputDate', () => {
             const example = documentationPage.getExample('#validation');
 
             const input = new TuiInputDatePO(
-                example.locator('tui-textfield:has(input[formcontrolname="optional"])'),
+                example.locator('tui-textfield:has(input[formControlName="optional"])'),
             );
 
             await example.scrollIntoViewIfNeeded();
