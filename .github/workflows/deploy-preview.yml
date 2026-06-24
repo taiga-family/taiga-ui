@@ -24,6 +24,7 @@ jobs:
         if: env.IS_OWNER_MODE == 'true'
         with:
           node-version: 24.x # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
+          validate-peer-deps: false
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
         if: env.IS_OWNER_MODE == 'true'
