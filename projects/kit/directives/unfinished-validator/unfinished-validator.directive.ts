@@ -30,12 +30,12 @@ export class TuiUnfinishedValidator implements Validator {
         ? toSignal(this.error)
         : this.fallback;
 
-    public readonly tuiUnfinishedValidator = input('');
-
-    public readonly validator = tuiCreateUnfinishedValidator(
+    private readonly validator = tuiCreateUnfinishedValidator(
         this.element,
         () => this.tuiUnfinishedValidator() || this.message(),
     );
+
+    public readonly tuiUnfinishedValidator = input('');
 
     public validate(control: AbstractControl): ValidationErrors | null {
         this.control = control;
