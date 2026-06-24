@@ -24,7 +24,6 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import {AbstractTuiCalendar} from './calendar';
-import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 import {TuiCalendarSpin} from './calendar-spin.component';
@@ -53,7 +52,7 @@ export class TuiCalendar extends AbstractTuiCalendar {
 
     public readonly minViewedMonth = input<TuiMonth | null>(TUI_FIRST_DAY);
     public readonly maxViewedMonth = input<TuiMonth | null>(TUI_LAST_DAY);
-    public readonly showAdjacent = input(!!inject(TUI_CALENDAR_OPTIONS).showAdjacent);
+    public readonly showAdjacent = input(true);
     public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly initialView = input<'month' | 'year'>('month');
     public readonly hoveredItem = model<TuiDay | null>(null);

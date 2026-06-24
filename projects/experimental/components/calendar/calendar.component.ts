@@ -13,12 +13,10 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {
-    TUI_CALENDAR_OPTIONS,
-    TuiCalendarSheetPipe,
-} from '@taiga-ui/core/components/calendar';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 
+import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 import {TuiWeekPipe} from './week.pipe';
 
 /**
@@ -31,7 +29,7 @@ import {TuiWeekPipe} from './week.pipe';
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._ww]': 'options.weekThreshold',
+        '[class._ww]': 'options.showWeek',
         '(mouseleave)': 'hovered.set(null)',
     },
 })

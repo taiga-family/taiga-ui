@@ -1,18 +1,18 @@
-@if (options.weekThreshold) {
+@if (options.showWeek) {
     <span>#</span>
 }
 @for (day of week(); track $index) {
     <span [attr.data-type]="getType(day)">{{ day.slice(0, 2) | uppercase }}</span>
 }
 @for (week of month() | tuiCalendarSheet: true; track week) {
-    @if (options.weekThreshold && week[6] && week[0] && (week[0].month <= month().month || options.showAdjacent)) {
+    @if (options.showWeek && week[6] && week[0] && (week[0].month <= month().month || options.showAdjacent)) {
         <button
             disabled
             tabindex="-1"
             type="button"
             class="t-day"
         >
-            {{ week[6] | tuiWeek: options.weekStart() : options.weekThreshold() }}
+            {{ week[6] | tuiWeek }}
         </button>
     }
     @for (day of week; track day) {

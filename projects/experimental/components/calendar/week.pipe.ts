@@ -1,20 +1,25 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 import {TuiDay} from '@taiga-ui/cdk/date-time';
 
+const ISO_MIN = 4;
+
 @Pipe({name: 'tuiWeek'})
 export class TuiWeekPipe implements PipeTransform {
-    public transform(day: TuiDay, start: number, threshold = 1): number {
-        const beginning = new TuiDay(day.year, 0, 1);
-        const dayOfWeek = beginning.toUtcNativeDate().getDay();
-        const normalized = dayOfWeek - 1 < 0 ? 6 : dayOfWeek - 1;
-        const delta = normalized - start;
-        const adjusted = delta < 0 ? 7 - delta : delta;
-        const first = threshold > 7 - adjusted ? 0 : 1;
-        const offset = Math.floor((TuiDay.lengthBetween(beginning, day) - adjusted) / 7);
+    public transform(day: TuiDay): number {
+        const today = this.getWeek(day);
+        const prev = this.getWeek(day.append({day: -7}));
+        const next = this.getWeek(day.append({day: 7}));
 
-        return (
-            first + offset ||
-            this.transform(beginning.append({day: -adjusted}), start, threshold) + 1
-        );
+        return next === 2 ? 1 : today || prev;
+    }
+
+    private getWeek(day: TuiDay): number {
+        const beginning = new TuiDay(day.year, 0, 1);
+        const delta = beginning.dayOfWeek();
+        const first = ISO_MIN > 7 - delta ? 0 : 1;
+        const sunday = day.append({day: 6 - day.dayOfWeek()});
+        const offset = Math.floor(TuiDay.lengthBetween(beginning, sunday) / 7);
+
+        return first + offset;
     }
 }

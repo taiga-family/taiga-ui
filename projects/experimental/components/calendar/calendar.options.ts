@@ -6,11 +6,15 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 export interface TuiCalendarOptions {
     readonly dayType: TuiHandler<TuiDay, string>;
     readonly weekStart: Signal<0 | 1 | 2 | 3 | 4 | 5 | 6>;
+    readonly showAdjacent: boolean;
+    readonly showWeek: boolean;
 }
 
 export const TUI_CALENDAR_DEFAULT_OPTIONS: TuiCalendarOptions = {
     dayType: (day) => (day.isWeekend ? 'weekend' : 'weekday'),
     weekStart: signal(TuiDayOfWeek.Monday),
+    showAdjacent: true,
+    showWeek: false,
 };
 
 export const [TUI_CALENDAR_OPTIONS, tuiCalendarOptionsProvider] = tuiCreateOptions(
