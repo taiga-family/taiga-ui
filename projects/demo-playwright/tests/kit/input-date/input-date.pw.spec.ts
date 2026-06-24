@@ -35,6 +35,27 @@ test.describe('InputDate', () => {
                 .soft(inputDate.calendar)
                 .toHaveScreenshot('05-calendar-actual-min-max.png');
         });
+
+        test('does not show tuiUnfinished error after optional field is cleared', async ({
+            page,
+        }) => {
+            const example = documentationPage.getExample('#validation');
+
+            const input = new TuiInputDatePO(
+                example.locator('tui-textfield:has(input[formcontrolname="optional"])'),
+            );
+
+            await example.scrollIntoViewIfNeeded();
+            await input.textfield.click();
+            await page.keyboard.type('01.');
+            await input.textfield.blur();
+            await expect.soft(example).toHaveScreenshot('06-input-with-error.png');
+
+            await input.textfield.click();
+            await input.textfield.clear();
+            await input.textfield.blur();
+            await expect.soft(example).toHaveScreenshot('06-input-without-error.png');
+        });
     });
 
     test.describe('API', () => {
