@@ -11,7 +11,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: taiga-family/actions/auto-label-community-contribution@cae818be1384ee5c94f69548d70ab1f50a8e7f01 # v2.2.0
+      - uses: taiga-family/actions/auto-label-community-contribution@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ github.event.pull_request.number }}
