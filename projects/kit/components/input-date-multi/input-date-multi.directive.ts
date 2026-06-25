@@ -95,13 +95,11 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     });
 
     public readonly min = input(this.dateMultiOptions.min ?? TUI_FIRST_DAY, {
-        transform: (min: TuiDay | null): TuiDay =>
-            min instanceof TuiDay ? min : TUI_FIRST_DAY,
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
     });
 
     public readonly max = input(this.dateMultiOptions.max ?? TUI_LAST_DAY, {
-        transform: (max: TuiDay | null): TuiDay =>
-            max instanceof TuiDay ? max : TUI_LAST_DAY,
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
     });
 
     protected processCalendar(calendar: AbstractTuiCalendar): void {

@@ -7,7 +7,7 @@ import {
     RANGE_SEPARATOR_CHAR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiDay,
+    type TuiDay,
     type TuiDayLike,
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
@@ -38,13 +38,11 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     public override readonly max = input(this.options.max ?? TUI_LAST_DAY, {
-        transform: (max: TuiDay | null): TuiDay =>
-            max instanceof TuiDay ? max : TUI_LAST_DAY,
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
     });
 
     public override readonly min = input(this.options.min ?? TUI_FIRST_DAY, {
-        transform: (min: TuiDay | null): TuiDay =>
-            min instanceof TuiDay ? min : TUI_FIRST_DAY,
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
     });
 
     protected override readonly filler = tuiWithDateFiller(
