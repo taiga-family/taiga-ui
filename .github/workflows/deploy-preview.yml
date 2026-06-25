@@ -8,17 +8,26 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+  issues: write
+
+env:
+  FIREBASE_TOOLS_VERSION: 15.22.2
 
 jobs:
   build_and_preview:
     if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
       - uses: taiga-family/actions/setup-variables@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+
       - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+
       - run: npx nx build demo
+
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
 
@@ -39,16 +48,23 @@ jobs:
 
           echo "id=$CHANNEL_ID" >> "$GITHUB_OUTPUT"
           echo "FIREBASE_CHANNEL_ID=$CHANNEL_ID" >> "$GITHUB_ENV"
+
           echo "Firebase channel: $CHANNEL_ID"
 
-      - name: Setup Node for Firebase URL lookup
+      - name: Setup Node for Firebase CLI
         if: env.IS_OWNER_MODE == 'true'
         uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
         with:
           node-version: 24.x
           validate-peer-deps: false
 
-      - name: Prepare Firebase credentials for URL lookup
+      - name: Install Firebase CLI
+        if: env.IS_OWNER_MODE == 'true'
+        run: |
+          npm i -g firebase-tools@${FIREBASE_TOOLS_VERSION}
+          firebase --version
+
+      - name: Prepare Firebase credentials
         if: env.IS_OWNER_MODE == 'true'
         shell: bash
         run: |
@@ -56,21 +72,13 @@ jobs:
           ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           EOF
 
+          test -s "$RUNNER_TEMP/firebase-sa.json"
+          chmod 600 "$RUNNER_TEMP/firebase-sa.json"
+
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-sa.json" >> "$GITHUB_ENV"
 
       - name: Deploy preview
         id: deploy
-        if: env.IS_OWNER_MODE == 'true'
-        uses: w9jds/firebase-action@v15.22.2
-        with:
-          args:
-            hosting:channel:deploy ${{ env.FIREBASE_CHANNEL_ID }} --project taiga-preview-demo --only taiga-preview-demo
-            --expires 1d --non-interactive
-        env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-
-      - name: Resolve preview URL
-        id: preview-url
         if: env.IS_OWNER_MODE == 'true'
         shell: bash
         env:
@@ -78,16 +86,17 @@ jobs:
         run: |
           set -euo pipefail
 
-          npx -y firebase-tools@15.22.2 hosting:channel:open "$FIREBASE_CHANNEL_ID" \
+          firebase hosting:channel:deploy "$FIREBASE_CHANNEL_ID" \
             --project taiga-preview-demo \
             --only taiga-preview-demo \
-            --non-interactive 2>&1 | tee "$RUNNER_TEMP/firebase-channel-open.log"
+            --expires 1d \
+            --non-interactive 2>&1 | tee "$RUNNER_TEMP/firebase-deploy.log"
 
-          PREVIEW_URL="$(grep -Eo 'https://[^[:space:]]+\.(web\.app|firebaseapp\.com)' "$RUNNER_TEMP/firebase-channel-open.log" | head -n 1 || true)"
+          PREVIEW_URL="$(grep -Eo 'https://[^[:space:]]+\.(web\.app|firebaseapp\.com)' "$RUNNER_TEMP/firebase-deploy.log" | head -n 1 || true)"
 
           if [ -z "$PREVIEW_URL" ]; then
             echo "Preview URL was not found"
-            cat "$RUNNER_TEMP/firebase-channel-open.log"
+            cat "$RUNNER_TEMP/firebase-deploy.log"
             exit 1
           fi
 
@@ -102,15 +111,15 @@ jobs:
 
       - name: Comment on PR
         if: env.IS_OWNER_MODE == 'true' && github.event_name == 'pull_request'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: firebase-preview-demo
           message: |
-            Visit the preview URL for this PR (updated for commit `${{ steps.preview-url.outputs.short_sha }}`):
+            Visit the preview URL for this PR (updated for commit `${{ steps.deploy.outputs.short_sha }}`):
 
-            ${{ steps.preview-url.outputs.preview_url }}
+            ${{ steps.deploy.outputs.preview_url }}
 
-            (expires ${{ steps.preview-url.outputs.expires_at }})
+            (expires ${{ steps.deploy.outputs.expires_at }})
 
             🔥 via Firebase Hosting GitHub Action 🌎
 
