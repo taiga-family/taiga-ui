@@ -13,10 +13,16 @@ export function replaceFunctionParameters(
         });
 
         args.forEach((argument) => {
-            item.parameters.forEach(({name, renameTo}) => {
+            item.parameters.forEach(({name, renameTo, remove}) => {
                 const property = argument.getProperty(name);
 
                 if (!property) {
+                    return;
+                }
+
+                if (remove) {
+                    property.remove();
+
                     return;
                 }
 

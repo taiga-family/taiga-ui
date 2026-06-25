@@ -4,6 +4,7 @@ export interface ReplacementFunctionParameter {
     readonly parameters: Array<{
         readonly name: string;
         readonly renameTo?: string;
+        readonly remove?: boolean;
     }>;
     readonly valueReplacer?: Array<{
         readonly from: string;
