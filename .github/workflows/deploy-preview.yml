@@ -17,22 +17,43 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: taiga-family/actions/setup-variables@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
       - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
-        with:
-          node-version: 24.x # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
-          validate-peer-deps: false
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
-      - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
+
+      - name: Authenticate to Google Cloud
         if: env.IS_OWNER_MODE == 'true'
+        id: google-auth
+        uses: google-github-actions/auth@v3
         with:
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
-          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-preview-demo
-          target: taiga-preview-demo
-          expires: 1d
+          credentials_json: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          create_credentials_file: true
+          export_environment_variables: true
+
+      - name: Prepare Firebase channel id
+        if: env.IS_OWNER_MODE == 'true'
+        id: firebase-channel
+        shell: bash
+        run: |
+          RAW_CHANNEL_ID="pr${{ github.event.number }}-${{ github.head_ref }}-demo"
+          CHANNEL_ID="$(echo "$RAW_CHANNEL_ID" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9-]+/-/g' \
+            | sed -E 's/^-+|-+$//g' \
+            | cut -c1-63)"
+
+          echo "channel_id=$CHANNEL_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy preview
+        if: env.IS_OWNER_MODE == 'true'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.google-auth.outputs.credentials_file_path }}
+        run: |
+          npx --yes firebase-tools@15.20.0 hosting:channel:deploy \
+            "${{ steps.firebase-channel.outputs.channel_id }}" \
+            --project taiga-preview-demo \
+            --only taiga-preview-demo \
+            --expires 1d
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
