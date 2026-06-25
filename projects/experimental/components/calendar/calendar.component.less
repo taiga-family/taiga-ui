@@ -9,6 +9,10 @@
     gap: 0.25rem 0;
     place-items: center;
     isolation: isolate;
+
+    &._ww {
+        grid-template: 2rem / repeat(8, 1fr);
+    }
 }
 
 .t-day {
@@ -44,6 +48,10 @@
         opacity: var(--tui-disabled-opacity);
     }
 
+    &_hidden {
+        visibility: hidden;
+    }
+
     &_today::after {
         content: '';
         position: absolute;
@@ -53,7 +61,7 @@
         inline-size: 0.25rem;
         block-size: 0.25rem;
         border-radius: 100%;
-        background: var(--tui-background-accent-2);
+        background: var(--tui-background-accent-1);
     }
 
     &_start {
@@ -66,17 +74,13 @@
         border-end-end-radius: var(--tui-radius-s);
     }
 
-    &[data-type~='weekend'] {
-        color: var(--tui-text-negative);
-    }
-
     &[data-range='single'],
     &[data-range='start'],
     &[data-range='end'] {
-        color: var(--tui-text-primary-on-accent-2);
+        color: var(--tui-text-primary-on-accent-1);
 
         &::before {
-            background: var(--tui-background-accent-2);
+            background: var(--tui-background-accent-1);
         }
 
         &::after {
@@ -106,7 +110,11 @@
         &[data-range='single']:hover::before,
         &[data-range='start']:hover::before,
         &[data-range='end']:hover::before {
-            background: var(--tui-background-accent-2-hover);
+            background: var(--tui-background-accent-1-hover);
         }
     }
+}
+
+[data-type~='weekend'] {
+    color: var(--tui-text-action);
 }

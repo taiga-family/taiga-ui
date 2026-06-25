@@ -180,5 +180,32 @@ describe('ng-update legacy textarea', () => {
         }),
     );
 
+    it(
+        'migrates self-closing <tui-textarea ... /> and removes [expandable]',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    [expandable]="true"
+                    [ngModel]="control.value"
+                    [ngModelOptions]="{updateOn: 'change'}"
+                    (ngModelChange)="control.setValue($event)"
+                />
+            `,
+        }),
+    );
+
+    it(
+        'migrates self-closing <tui-textarea /> without absorbing following siblings',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    formControlName="value"
+                    [expandable]="false"
+                />
+                <button tuiButton>Save</button>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
