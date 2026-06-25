@@ -269,6 +269,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiEditorOptionsProvider',
+            moduleSpecifier: '@taiga-ui/editor',
+        },
+        to: {
+            name: 'provideTuiEditorOptions',
+            moduleSpecifier: '@taiga-ui/editor',
+        },
+    },
+    {
+        from: {
             name: 'TUI_IS_ANDROID',
             moduleSpecifier: '@taiga-ui/cdk',
         },

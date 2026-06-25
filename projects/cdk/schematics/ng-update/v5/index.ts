@@ -39,6 +39,7 @@ import {migrateCssVariables} from './steps/migrate-css-variables';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
+import {migrateEditorProviders} from './steps/migrate-editor-providers';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
@@ -128,6 +129,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'migrateEditorProviders',
+                    step: () => migrateEditorProviders(tree, options),
                 },
                 {
                     name: 'updatePackages',

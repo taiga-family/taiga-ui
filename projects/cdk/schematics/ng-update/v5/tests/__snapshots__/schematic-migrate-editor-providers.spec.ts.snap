@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update editor providers migration renames tuiEditorOptionsProvider to provideTuiEditorOptions: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiEditorOptionsProvider} from '@taiga-ui/editor';
+                import {TUI_PROPRIETARY_EDITOR_ICONS} from '@taiga-ui/proprietary';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        tuiEditorOptionsProvider({
+                            icons: TUI_PROPRIETARY_EDITOR_ICONS,
+                        }),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { provideTuiEditorOptions } from "@taiga-ui/editor";
+
+                import {Component} from '@angular/core';
+                import {TUI_PROPRIETARY_EDITOR_ICONS} from '@taiga-ui/proprietary';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        provideTuiEditorOptions({
+                            icons: TUI_PROPRIETARY_EDITOR_ICONS,
+                        }),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update editor providers migration replaces TUI_EDITOR_EXTENSIONS useFactory provider with provideTuiEditor with plugins: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, Injector} from '@angular/core';
+                import {
+                    TUI_EDITOR_DEFAULT_EXTENSIONS,
+                    TUI_EDITOR_EXTENSIONS,
+                } from '@taiga-ui/editor';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            deps: [Injector],
+                            useFactory: (injector: Injector) => [
+                                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+                                import('@taiga-ui/editor').then(({setup}) =>
+                                    setup({injector}),
+                                ),
+                            ],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { provideTuiEditor } from "@taiga-ui/editor";
+
+                import {Component, Injector} from '@angular/core';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        provideTuiEditor({
+                            // You can disable these plugins
+                            // if you don't need them
+                            image: true,
+                            iframe: true,
+                            video: true,
+                            source: true,
+                            audio: true,
+                            details: true,
+                            detailsSummary: true,
+                            detailsContent: true,
+                        }),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update editor providers migration replaces TUI_EDITOR_EXTENSIONS useValue provider with empty provideTuiEditor: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TUI_EDITOR_DEFAULT_EXTENSIONS,
+                    TUI_EDITOR_EXTENSIONS,
+                } from '@taiga-ui/editor';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { provideTuiEditor } from "@taiga-ui/editor";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        provideTuiEditor(),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
