@@ -11,9 +11,9 @@ import {type TemplateResource} from '../../../interfaces';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
-const NGFOR_ATTR = '*ngfor';
 const NGFOR_SEARCH_ATTR = '*ngFor';
-const TUI_REPEAT_TIMES_DIRECTIVE_ATTR = '*tuirepeattimes';
+const NGFOR_ATTR = '*ngFor'.toLowerCase();
+const TUI_REPEAT_TIMES_DIRECTIVE_ATTR = '*tuiRepeatTimes'.toLowerCase();
 const TUI_REPEAT_TIMES_DIRECTIVE_PATTERN = /^(?:let\s+(\w+)\s+)?of\s+(\S[\s\S]*)$/;
 const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 
