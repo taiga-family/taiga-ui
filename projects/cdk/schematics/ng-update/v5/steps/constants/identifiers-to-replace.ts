@@ -586,6 +586,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiIsNativeMouseFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
             name: 'tuiBlurNativeFocused',
             moduleSpecifier: '@taiga-ui/cdk',
         },
