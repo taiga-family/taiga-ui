@@ -1,6 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({host: {'(blur)': 'updateValueAndValidity()', '(input)': 'onInput()'}})
 export class TuiUnfinishedValidatorRefresh {
