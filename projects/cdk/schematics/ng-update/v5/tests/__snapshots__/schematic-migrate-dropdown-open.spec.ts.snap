@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto keeps chained calls like tuiDropdownOpen().set(true): test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDropdownOpen} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly open = tuiDropdownOpen();
+
+                    public toggle(): void {
+                        this.open.set(true);
+                    }
+                }
+            ",
+  "1. After": "import { inject } from "@angular/core";
+import { TuiDropdownOpen } from "@taiga-ui/core";
+
+                                export class Test {
+                    protected readonly open = inject(TuiDropdownOpen).open;
+
+                    public toggle(): void {
+                        this.open.set(true);
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto replaces tuiDropdownOpen(): test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDropdownOpen} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly open = tuiDropdownOpen();
+                }
+            ",
+  "1. After": "import { inject } from "@angular/core";
+import { TuiDropdownOpen } from "@taiga-ui/core";
+
+                                export class Test {
+                    protected readonly open = inject(TuiDropdownOpen).open;
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto reuses an existing inject import without duplicating it: test.ts 1`] = `
+{
+  "0. Before": "
+                import {inject} from '@angular/core';
+                import {TuiDropdownDirective, tuiDropdownOpen} from '@taiga-ui/core';
+
+                export class Test {
+                    private readonly directive = inject(TuiDropdownDirective);
+                    protected readonly open = tuiDropdownOpen();
+                }
+            ",
+  "1. After": "
+                import {inject} from '@angular/core';
+                import { TuiDropdownDirective, TuiDropdownOpen } from '@taiga-ui/core';
+
+                export class Test {
+                    private readonly directive = inject(TuiDropdownDirective);
+                    protected readonly open = inject(TuiDropdownOpen).open;
+                }
+            ",
+}
+`;
+
 exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename *tuiDataList to *tuiDropdown: test.html 1`] = `
 {
   "0. Before": "<tui-data-list-wrapper *tuiDataList [items]="items" />",
