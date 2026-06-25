@@ -11,6 +11,8 @@ import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
     MILLISECONDS_IN_DAY,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
@@ -104,11 +106,11 @@ export class TuiInputDateTimeDirective
     );
 
     public override readonly min = computed<TuiDay>((min = this.minInput()) =>
-        Array.isArray(min) ? min[0] : (min ?? this.options.min),
+        Array.isArray(min) ? min[0] : (min ?? this.options.min ?? TUI_FIRST_DAY),
     );
 
     public override readonly max = computed<TuiDay>((max = this.maxInput()) =>
-        Array.isArray(max) ? max[0] : (max ?? this.options.max),
+        Array.isArray(max) ? max[0] : (max ?? this.options.max ?? TUI_LAST_DAY),
     );
 
     public readonly minTime = computed((min = this.minInput()) =>
