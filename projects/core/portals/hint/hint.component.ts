@@ -3,6 +3,7 @@ import {
     Component,
     forwardRef,
     inject,
+    type Provider,
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -33,15 +34,18 @@ import {TuiHintPointer} from './hint-pointer.directive';
 import {TuiHintPosition} from './hint-position.directive';
 import {TuiHintUnstyledComponent} from './hint-unstyled.component';
 
-export const TUI_HINT_PROVIDERS = [
-    TuiPositionService,
-    TuiHoveredService,
-    tuiPositionAccessorFor('hint', TuiHintPosition),
-    tuiRectAccessorFor(
-        'hint',
-        forwardRef(() => TuiHintDirective),
-    ),
-];
+/** @internal */
+export function tuiGetHintProviders(): Provider[] {
+    return [
+        TuiPositionService,
+        TuiHoveredService,
+        tuiPositionAccessorFor('hint', TuiHintPosition),
+        tuiRectAccessorFor(
+            'hint',
+            forwardRef(() => TuiHintDirective),
+        ),
+    ];
+}
 
 const GAP = 8;
 
@@ -57,7 +61,7 @@ const GAP = 8;
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
+    providers: [tuiGetHintProviders(), tuiButtonOptionsProvider({size: 's'})],
     hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
     host: {
         role: 'tooltip',
