@@ -23,11 +23,12 @@ jobs:
         run: tree dist/demo/browser -P '*.html'
 
       - name: Prepare Firebase channel id
+        id: channel
         if: env.IS_OWNER_MODE == 'true'
         shell: bash
         env:
-          PR_NUMBER: ${{ github.event.number }}
-          HEAD_REF: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.run_number }}
+          HEAD_REF: ${{ github.head_ref || github.ref_name }}
         run: |
           RAW="pr${PR_NUMBER}-${HEAD_REF}-demo"
 
@@ -36,18 +37,84 @@ jobs:
             | sed -E 's/[^a-z0-9-]+/-/g; s/^-+|-+$//g; s/-+/-/g' \
             | cut -c1-63)"
 
+          echo "id=$CHANNEL_ID" >> "$GITHUB_OUTPUT"
           echo "FIREBASE_CHANNEL_ID=$CHANNEL_ID" >> "$GITHUB_ENV"
           echo "Firebase channel: $CHANNEL_ID"
 
+      - name: Setup Node for Firebase URL lookup
+        if: env.IS_OWNER_MODE == 'true'
+        uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+        with:
+          node-version: 24.x
+          validate-peer-deps: false
+
+      - name: Prepare Firebase credentials for URL lookup
+        if: env.IS_OWNER_MODE == 'true'
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/firebase-sa.json" <<'EOF'
+          ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          EOF
+
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-sa.json" >> "$GITHUB_ENV"
+
       - name: Deploy preview
+        id: deploy
         if: env.IS_OWNER_MODE == 'true'
         uses: w9jds/firebase-action@v15.22.2
         with:
           args:
-            hosting:channel:deploy "$FIREBASE_CHANNEL_ID" --project taiga-preview-demo --only taiga-preview-demo
+            hosting:channel:deploy ${{ env.FIREBASE_CHANNEL_ID }} --project taiga-preview-demo --only taiga-preview-demo
             --expires 1d --non-interactive
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+
+      - name: Resolve preview URL
+        id: preview-url
+        if: env.IS_OWNER_MODE == 'true'
+        shell: bash
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+
+          npx -y firebase-tools@15.22.2 hosting:channel:open "$FIREBASE_CHANNEL_ID" \
+            --project taiga-preview-demo \
+            --only taiga-preview-demo \
+            --non-interactive 2>&1 | tee "$RUNNER_TEMP/firebase-channel-open.log"
+
+          PREVIEW_URL="$(grep -Eo 'https://[^[:space:]]+\.(web\.app|firebaseapp\.com)' "$RUNNER_TEMP/firebase-channel-open.log" | head -n 1 || true)"
+
+          if [ -z "$PREVIEW_URL" ]; then
+            echo "Preview URL was not found"
+            cat "$RUNNER_TEMP/firebase-channel-open.log"
+            exit 1
+          fi
+
+          SHORT_SHA="${PR_HEAD_SHA:0:7}"
+          EXPIRES_AT="$(date -u -d '+1 day' '+%a, %d %b %Y %H:%M:%S GMT')"
+
+          echo "preview_url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
+          echo "short_sha=$SHORT_SHA" >> "$GITHUB_OUTPUT"
+          echo "expires_at=$EXPIRES_AT" >> "$GITHUB_OUTPUT"
+
+          echo "Preview URL: $PREVIEW_URL"
+
+      - name: Comment on PR
+        if: env.IS_OWNER_MODE == 'true' && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: firebase-preview-demo
+          message: |
+            Visit the preview URL for this PR (updated for commit `${{ steps.preview-url.outputs.short_sha }}`):
+
+            ${{ steps.preview-url.outputs.preview_url }}
+
+            (expires ${{ steps.preview-url.outputs.expires_at }})
+
+            🔥 via Firebase Hosting GitHub Action 🌎
+
+            Sign: ${{ github.event.pull_request.head.sha }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

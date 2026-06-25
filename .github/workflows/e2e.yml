@@ -249,19 +249,69 @@ jobs:
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 
+      - name: Prepare Firebase e2e channel id
+        id: e2e-channel
+        if: env.IS_OWNER_MODE == 'true'
+        shell: bash
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          RAW="pr${PR_NUMBER}-${HEAD_REF}-e2e"
+
+          CHANNEL_ID="$(echo "$RAW" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9-]+/-/g; s/^-+|-+$//g; s/-+/-/g' \
+            | cut -c1-63)"
+
+          echo "id=$CHANNEL_ID" >> "$GITHUB_OUTPUT"
+          echo "FIREBASE_E2E_CHANNEL_ID=$CHANNEL_ID" >> "$GITHUB_ENV"
+          echo "Firebase e2e channel: $CHANNEL_ID"
+
+      - name: Prepare Firebase credentials for URL lookup
+        if: env.IS_OWNER_MODE == 'true'
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/firebase-sa.json" <<'EOF'
+          ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          EOF
+
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-sa.json" >> "$GITHUB_ENV"
+
       - name: Deploy e2e report
         id: e2e-report
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
         if: env.IS_OWNER_MODE == 'true'
+        uses: w9jds/firebase-action@v15.22.2
         continue-on-error: true
         with:
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-e2e
-          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-preview-demo
-          expires: 1d
-          target: taiga-preview-demo-e2e
-          disableComment: 'true'
+          args:
+            hosting:channel:deploy ${{ env.FIREBASE_E2E_CHANNEL_ID }} --project taiga-preview-demo --only
+            taiga-preview-demo-e2e --expires 1d --non-interactive
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+
+      - name: Resolve e2e report URL
+        id: e2e-url
+        if: env.IS_OWNER_MODE == 'true' && steps.e2e-report.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          npx -y firebase-tools@15.22.2 hosting:channel:open "$FIREBASE_E2E_CHANNEL_ID" \
+            --project taiga-preview-demo \
+            --only taiga-preview-demo-e2e \
+            --non-interactive 2>&1 | tee "$RUNNER_TEMP/firebase-e2e-channel-open.log"
+
+          PREVIEW_URL="$(grep -Eo 'https://[^[:space:]]+\.(web\.app|firebaseapp\.com)' "$RUNNER_TEMP/firebase-e2e-channel-open.log" | head -n 1 || true)"
+
+          if [ -z "$PREVIEW_URL" ]; then
+            echo "E2E report URL was not found"
+            cat "$RUNNER_TEMP/firebase-e2e-channel-open.log"
+            exit 1
+          fi
+
+          echo "preview_url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
+          echo "E2E report URL: $PREVIEW_URL"
 
       - name: Create report comment
         id: report-summary
@@ -270,7 +320,7 @@ jobs:
         with:
           comment-title: 'Playwright test results'
           report-file: ./all-blob-reports/results.json
-          report-url: ${{ steps.e2e-report.outputs.details_url }}
+          report-url: ${{ steps.e2e-url.outputs.preview_url }}
 
       - uses: taiga-family/actions/playwright-diff-check@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
         with:
