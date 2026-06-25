@@ -1,4 +1,5 @@
 name: 🚀 Deploy / preview
+
 on:
   pull_request:
   workflow_dispatch:
@@ -17,12 +18,25 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: taiga-family/actions/setup-variables@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
       - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
-        with:
-          node-version: 24.x # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
-          validate-peer-deps: false
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
+
+      - name: Use Node.js 24 for Firebase deploy
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        if: env.IS_OWNER_MODE == 'true'
+        with:
+          node-version: 24.x
+          package-manager-cache: false
+
+      - name: Debug Node before Firebase deploy
+        if: env.IS_OWNER_MODE == 'true'
+        run: |
+          which node
+          node -v
+          which npx
+          npx -v
+
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
         if: env.IS_OWNER_MODE == 'true'
