@@ -41,8 +41,8 @@ export class TuiCalendar {
     protected readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     protected readonly week = computed((week = convert(this.days())) => [
-        ...week.slice(this.options.weekStart()),
-        ...week.slice(0, this.options.weekStart()),
+        ...week.slice(this.options.weekFirstDay()),
+        ...week.slice(0, this.options.weekFirstDay()),
     ]);
 
     public readonly pick = output<TuiDay>();
