@@ -10,7 +10,6 @@
 
 .t-item {
     .transition(background);
-    .text-overflow();
 
     display: block;
     block-size: 2.5rem;
@@ -20,6 +19,17 @@
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-primary);
     font: var(--tui-typography-ui-s);
+    white-space: nowrap;
+
+    ::ng-deep [tuiTitle] {
+        gap: 0.125rem;
+        text-align: center;
+
+        [tuiSubtitle] {
+            color: var(--tui-text-secondary);
+            font: var(--tui-typography-ui-xs);
+        }
+    }
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -29,6 +39,10 @@
     &_active {
         background: var(--tui-background-accent-2);
         color: var(--tui-text-primary-on-accent-2);
+
+        ::ng-deep [tuiTitle] [tuiSubtitle] {
+            color: inherit;
+        }
     }
 
     @media @tui-mouse {

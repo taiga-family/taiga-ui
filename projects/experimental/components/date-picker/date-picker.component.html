@@ -91,6 +91,7 @@
                     <tui-calendar
                         *tuiItem="let index"
                         new
+                        [content]="contentDay()"
                         [disabledItemHandler]="disabledDay()"
                         [month]="index | tuiMapper: getMonth"
                         [value]="value()"
@@ -102,9 +103,9 @@
             @case ('month') {
                 <tui-data-grid
                     class="t-grid"
-                    [content]="content()"
+                    [content]="contentMonth() ?? content()"
                     [disabledItemHandler]="disabledMonth()"
-                    [items]="0 | tuiMapper: getItems"
+                    [items]="year()"
                     [value]="months()"
                     (pick)="onMonth($event)"
                 />
@@ -118,6 +119,7 @@
                     <tui-data-grid
                         *tuiItem="let offset"
                         class="t-grid"
+                        [content]="contentYear()"
                         [disabledItemHandler]="disabledYear()"
                         [items]="month().year + offset * 12 - 6 | tuiMapper: getItems"
                         [value]="years()"

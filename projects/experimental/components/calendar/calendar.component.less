@@ -18,7 +18,7 @@
 .t-day {
     position: relative;
     inline-size: 100%;
-    min-block-size: 2rem;
+    min-block-size: var(--tui-height-s);
     padding: 0;
     border: 0;
     background: transparent;
@@ -27,13 +27,40 @@
     cursor: pointer;
     overflow: hidden;
 
+    &:has([tuiTitle]) {
+        min-block-size: var(--tui-height-m);
+
+        &::before {
+            min-inline-size: var(--tui-height-m);
+            border-radius: var(--tui-radius-m);
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    ::ng-deep [tuiTitle] {
+        gap: 0.125rem;
+        text-align: center;
+
+        [tuiSubtitle] {
+            color: var(--tui-text-secondary);
+            font: var(--tui-typography-ui-xs);
+
+            &::before {
+                content: '​';
+            }
+        }
+    }
+
     &::before {
         content: '';
         position: absolute;
         inset: 50%;
         z-index: -1;
         block-size: 100%;
-        min-inline-size: 2rem;
+        min-inline-size: var(--tui-height-s);
         aspect-ratio: 1;
         border-radius: 100%;
         transform: translate(calc(var(--tui-inline) * -50%), -50%);
@@ -78,6 +105,10 @@
     &[data-range='start'],
     &[data-range='end'] {
         color: var(--tui-text-primary-on-accent-1);
+
+        ::ng-deep [tuiSubtitle] {
+            color: inherit;
+        }
 
         &::before {
             background: var(--tui-background-accent-1);
