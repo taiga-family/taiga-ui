@@ -585,7 +585,8 @@ exports[`ng-update hint on legacy controls hint with additional directives moves
                     />
                 ",
   "1. After": "
-                    <tui-input><tui-icon [tuiTooltip]="hint" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" /></tui-input>",
+                    <tui-input><tui-icon [tuiTooltip]="hint" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" /></tui-input>
+                ",
 }
 `;
 
@@ -626,7 +627,8 @@ exports[`ng-update hint on legacy controls hint with additional directives moves
                     />
                 ",
   "1. After": "
-                    <tui-input><tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" /></tui-input>",
+                    <tui-input><tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" /></tui-input>
+                ",
 }
 `;
 
