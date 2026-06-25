@@ -269,6 +269,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
             name: 'TUI_IS_ANDROID',
             moduleSpecifier: '@taiga-ui/cdk',
         },

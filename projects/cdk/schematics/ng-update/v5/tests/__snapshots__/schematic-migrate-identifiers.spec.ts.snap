@@ -160,6 +160,24 @@ exports[`ng-update identifiers migration migrates sheet identifiers from legacy 
 }
 `;
 
+exports[`ng-update identifiers migration moves TUI_CALENDAR_DATE_STREAM from @taiga-ui/kit to @taiga-ui/addon-mobile: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly stream = TUI_CALENDAR_DATE_STREAM;
+                }
+            ",
+  "1. After": "import { TUI_CALENDAR_DATE_STREAM } from "@taiga-ui/addon-mobile";
+
+                                export class TestComponent {
+                    protected readonly stream = TUI_CALENDAR_DATE_STREAM;
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: test.ts 1`] = `
 {
   "0. Before": "
