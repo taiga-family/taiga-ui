@@ -34,6 +34,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-preview-demo
           target: taiga-preview-demo
+          force: true
           expires: 1d
 
 concurrency:
