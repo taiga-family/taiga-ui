@@ -281,6 +281,10 @@ export function migrateHintOnLegacyControls({
             return;
         }
 
+        if (isSelfClosing && tagName === 'tui-input-tag') {
+            return;
+        }
+
         if (isSelfClosing) {
             const nonHintAttrs = element.attrs
                 .filter(
@@ -304,10 +308,11 @@ export function migrateHintOnLegacyControls({
 
             const attrsStr = nonHintAttrs.length > 0 ? ` ${nonHintAttrs.join(' ')}` : '';
             const replacement = `<${tagName}${attrsStr}>${tuiIconStr}</${tagName}>`;
+            const selfClosingEnd = loc.startTag?.endOffset ?? loc.endOffset;
 
             recorder.remove(
                 templateOffset + loc.startOffset,
-                loc.endOffset - loc.startOffset,
+                selfClosingEnd - loc.startOffset,
             );
             recorder.insertRight(templateOffset + loc.startOffset, replacement);
         } else {
