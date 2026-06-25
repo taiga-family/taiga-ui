@@ -1,3 +1,4 @@
+import {DatePipe} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,10 +7,9 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
 import {TuiInputDate} from '@taiga-ui/kit';
-import {DatePipe} from '@angular/common';
 
 @Component({
-    imports: [FormsModule, TuiDatePicker, TuiInputDate, TuiTitle, DatePipe],
+    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
