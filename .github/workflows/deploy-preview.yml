@@ -1,4 +1,5 @@
 name: 🚀 Deploy / preview
+
 on:
   pull_request:
   workflow_dispatch:
@@ -20,21 +21,33 @@ jobs:
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
-      - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+
+      - name: Prepare Firebase channel id
         if: env.IS_OWNER_MODE == 'true'
-        with:
-          node-version: 24.x # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
-          validate-peer-deps: false
+        shell: bash
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          RAW="pr${PR_NUMBER}-${HEAD_REF}-demo"
+
+          CHANNEL_ID="$(echo "$RAW" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9-]+/-/g; s/^-+|-+$//g; s/-+/-/g' \
+            | cut -c1-63)"
+
+          echo "FIREBASE_CHANNEL_ID=$CHANNEL_ID" >> "$GITHUB_ENV"
+          echo "Firebase channel: $CHANNEL_ID"
+
       - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
         if: env.IS_OWNER_MODE == 'true'
+        uses: w9jds/firebase-action@v15.22.2
         with:
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
-          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-preview-demo
-          target: taiga-preview-demo
-          expires: 1d
+          args:
+            hosting:channel:deploy "$FIREBASE_CHANNEL_ID" --project taiga-preview-demo --only taiga-preview-demo
+            --expires 1d --non-interactive
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
