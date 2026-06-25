@@ -249,6 +249,11 @@ jobs:
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 
+      - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+        with:
+          node-version: 24.x # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
+          validate-peer-deps: false
+
       - name: Deploy e2e report
         id: e2e-report
         uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
