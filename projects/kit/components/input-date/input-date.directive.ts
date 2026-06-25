@@ -185,12 +185,12 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
-    public override readonly max = input(this.options.max, {
+    public override readonly max = input(this.options.max ?? TUI_LAST_DAY, {
         transform: (max: TuiDay | null): TuiDay =>
             max instanceof TuiDay ? max : TUI_LAST_DAY,
     });
 
-    public override readonly min = input(this.options.min, {
+    public override readonly min = input(this.options.min ?? TUI_FIRST_DAY, {
         transform: (min: TuiDay | null): TuiDay =>
             min instanceof TuiDay ? min : TUI_FIRST_DAY,
     });
