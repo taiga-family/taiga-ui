@@ -1,13 +1,18 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {Node, saveActiveProject} from 'ng-morph';
+import {Node, type ObjectLiteralExpression, saveActiveProject} from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {infoLog} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';
+import {TODO_MARK} from '../../../utils/insert-todo';
 
 const EDITOR = '@taiga-ui/editor';
+const DEFAULT_EXTENSIONS = 'TUI_EDITOR_DEFAULT_EXTENSIONS';
+
+const CUSTOM_EXTENSIONS_MESSAGE =
+    'custom editor extensions detected; they were replaced by provideTuiEditor() and must be migrated manually.';
 
 const PROVIDE_TUI_EDITOR_WITH_PLUGINS = `provideTuiEditor({
     // You can disable these plugins
@@ -49,10 +54,16 @@ export function migrateEditorProviders(_: Tree, options: TuiSchema): void {
             continue;
         }
 
-        const hasExtraPlugins = !!provider.getProperty('useFactory');
+        const hasExtraPlugins = provider.getProperty('useFactory') !== undefined;
+
+        const replacement = hasExtraPlugins
+            ? PROVIDE_TUI_EDITOR_WITH_PLUGINS
+            : 'provideTuiEditor()';
 
         provider.replaceWithText(
-            hasExtraPlugins ? PROVIDE_TUI_EDITOR_WITH_PLUGINS : 'provideTuiEditor()',
+            hasCustomExtensions(provider)
+                ? `// ${TODO_MARK} ${CUSTOM_EXTENSIONS_MESSAGE}\n${replacement}`
+                : replacement,
         );
         migratedFiles.add(ref.getSourceFile().getFilePath());
     }
@@ -67,12 +78,28 @@ export function migrateEditorProviders(_: Tree, options: TuiSchema): void {
     saveActiveProject();
 }
 
+function hasCustomExtensions(provider: ObjectLiteralExpression): boolean {
+    const useValue = provider.getProperty('useValue');
+
+    if (Node.isPropertyAssignment(useValue)) {
+        return useValue.getInitializer()?.getText() !== DEFAULT_EXTENSIONS;
+    }
+
+    const useFactory = provider.getProperty('useFactory');
+
+    return Node.isPropertyAssignment(useFactory)
+        ? !(useFactory.getInitializer()?.getText() ?? '').includes(DEFAULT_EXTENSIONS)
+        : false;
+}
+
 function removeUnusedImport(name: string, files: ReadonlySet<string>): void {
-    const refs = getNamedImportReferences(name, EDITOR).filter(
-        (ref) => !ref.wasForgotten(),
-    );
+    const refs = getNamedImportReferences(name, EDITOR);
 
     for (const ref of refs) {
+        if (ref.wasForgotten()) {
+            continue;
+        }
+
         const specifier = ref.getParent();
         const filePath = ref.getSourceFile().getFilePath();
 
@@ -82,6 +109,7 @@ function removeUnusedImport(name: string, files: ReadonlySet<string>): void {
 
         const stillUsed = refs.some(
             (other) =>
+                !other.wasForgotten() &&
                 other.getSourceFile().getFilePath() === filePath &&
                 !Node.isImportSpecifier(other.getParent()),
         );

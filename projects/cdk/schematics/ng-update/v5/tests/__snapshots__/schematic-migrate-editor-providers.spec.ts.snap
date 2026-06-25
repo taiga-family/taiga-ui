@@ -1,5 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update editor providers migration adds TODO when custom useFactory without default extensions is detected: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, Injector} from '@angular/core';
+                import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            deps: [Injector],
+                            useFactory: (injector: Injector) => [
+                                import('@taiga-ui/editor').then(({setup}) =>
+                                    setup({injector}),
+                                ),
+                            ],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { provideTuiEditor } from "@taiga-ui/editor";
+
+                import {Component, Injector} from '@angular/core';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        // TODO: (Taiga UI migration) custom editor extensions detected; they were replaced by provideTuiEditor() and must be migrated manually.
+                        provideTuiEditor({
+                            // You can disable these plugins
+                            // if you don't need them
+                            image: true,
+                            iframe: true,
+                            video: true,
+                            source: true,
+                            audio: true,
+                            details: true,
+                            detailsSummary: true,
+                            detailsContent: true,
+                        }),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update editor providers migration adds TODO when custom useValue extensions are detected: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
+                import {MY_EDITOR_EXTENSIONS} from './my-extensions';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            useValue: MY_EDITOR_EXTENSIONS,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { provideTuiEditor } from "@taiga-ui/editor";
+
+                import {Component} from '@angular/core';
+                import {MY_EDITOR_EXTENSIONS} from './my-extensions';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        // TODO: (Taiga UI migration) custom editor extensions detected; they were replaced by provideTuiEditor() and must be migrated manually.
+                        provideTuiEditor(),
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update editor providers migration renames tuiEditorOptionsProvider to provideTuiEditorOptions: test.ts 1`] = `
 {
   "0. Before": "

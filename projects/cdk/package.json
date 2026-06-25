@@ -83,7 +83,8 @@
             "@taiga-ui/layout",
             "@taiga-ui/experimental",
             "@taiga-ui/proprietary",
-            "@taiga-ui/legacy"
+            "@taiga-ui/legacy",
+            "@taiga-ui/editor"
         ]
     },
     "schematics": "./schematics/collection.json"

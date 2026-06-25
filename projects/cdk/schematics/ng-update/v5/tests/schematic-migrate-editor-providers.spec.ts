@@ -84,5 +84,53 @@ describe('ng-update editor providers migration', () => {
         }),
     );
 
+    it(
+        'adds TODO when custom useValue extensions are detected',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
+                import {MY_EDITOR_EXTENSIONS} from './my-extensions';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            useValue: MY_EDITOR_EXTENSIONS,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO when custom useFactory without default extensions is detected',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, Injector} from '@angular/core';
+                import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
+
+                @Component({
+                    template: '',
+                    providers: [
+                        {
+                            provide: TUI_EDITOR_EXTENSIONS,
+                            deps: [Injector],
+                            useFactory: (injector: Injector) => [
+                                import('@taiga-ui/editor').then(({setup}) =>
+                                    setup({injector}),
+                                ),
+                            ],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
