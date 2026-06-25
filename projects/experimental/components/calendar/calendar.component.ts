@@ -1,4 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
+import {UpperCasePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,34 +13,36 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {
-    TUI_CALENDAR_OPTIONS,
-    TuiCalendarSheetPipe,
-} from '@taiga-ui/core/components/calendar';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+
+import {TUI_CALENDAR_OPTIONS} from './calendar.options';
+import {TuiWeekPipe} from './week.pipe';
 
 /**
  * @deprecated: work in progress, do not use!
  */
 @Component({
     selector: 'tui-calendar[new]',
-    imports: [TuiCalendarSheetPipe, TuiMapperPipe],
+    imports: [TuiCalendarSheetPipe, TuiMapperPipe, TuiWeekPipe, UpperCasePipe],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'(mouseleave)': 'hovered.set(null)'},
+    host: {
+        '[class._ww]': 'options.showWeek',
+        '(mouseleave)': 'hovered.set(null)',
+    },
 })
 export class TuiCalendar {
-    private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private readonly days = inject(TUI_SHORT_WEEK_DAYS);
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);
-    protected readonly dayType = inject(TUI_CALENDAR_OPTIONS).dayType;
+    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     protected readonly week = computed((week = convert(this.days())) => [
-        ...week.slice(this.options.weekStart()),
-        ...week.slice(0, this.options.weekStart()),
+        ...week.slice(this.options.weekFirstDay()),
+        ...week.slice(0, this.options.weekFirstDay()),
     ]);
 
     public readonly pick = output<TuiDay>();
@@ -76,6 +79,10 @@ export class TuiCalendar {
         }
 
         return range.dayInRange(day) ? 'middle' : null;
+    }
+
+    protected getType(day: string): string {
+        return day === this.days()[5] || day === this.days()[6] ? 'weekend' : '';
     }
 }
 
