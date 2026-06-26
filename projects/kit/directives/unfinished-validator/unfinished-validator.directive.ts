@@ -7,10 +7,12 @@ import {TUI_DEFAULT_ERROR_MESSAGE, TUI_VALIDATION_ERRORS} from '@taiga-ui/core/t
 import {isObservable} from 'rxjs';
 
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
+import {TuiUnfinishedValidatorRefresh} from './unfinished-validator-refresh.directive';
 
 @Directive({
     selector: 'input[tuiUnfinishedValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidator, true)],
+    hostDirectives: [TuiUnfinishedValidatorRefresh],
 })
 export class TuiUnfinishedValidator implements Validator {
     private readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);
