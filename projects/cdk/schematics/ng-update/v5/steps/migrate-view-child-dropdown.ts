@@ -32,7 +32,7 @@ export function migrateViewChildDropdown(_tree: Tree, _options: TuiSchema): void
     getSourceFiles(ALL_TS_FILES).forEach((sourceFile) => {
         sourceFile
             .getClasses()
-            .flatMap((clazz) => clazz.getSetAccessors())
+            .flatMap((classDeclaration) => classDeclaration.getSetAccessors())
             .forEach((setter) => migrateSetter(setter, sourceFile));
     });
 }
