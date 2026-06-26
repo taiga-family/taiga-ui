@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/portals/hint';
+import {tuiGetHintProviders, TuiHintComponent} from '@taiga-ui/core/portals/hint';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiLineClamp} from './line-clamp.component';
@@ -11,7 +11,7 @@ import {TuiLineClamp} from './line-clamp.component';
         '<ng-container *polymorpheusOutlet="content() as text">{{ text }}</ng-container>',
     styleUrl: './line-clamp-box.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_HINT_PROVIDERS,
+    providers: tuiGetHintProviders(),
     host: {'[style.line-height.px]': 'host.line()', '[style.min-width.px]': 'width'},
 })
 export class TuiLineClampBox extends TuiHintComponent {
