@@ -39,17 +39,33 @@ function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
             }
 
             if (item.valueReplacer) {
-                const replacement = property.getLastChildIfKind(SyntaxKind.StringLiteral);
+                const stringLiteral = property.getLastChildIfKind(
+                    SyntaxKind.StringLiteral,
+                );
 
-                if (!replacement) {
-                    return;
+                if (stringLiteral) {
+                    item.valueReplacer.forEach(({from, to}) => {
+                        if (stringLiteral.getLiteralValue() === from) {
+                            stringLiteral.setLiteralValue(to);
+                        }
+                    });
+                } else {
+                    const arrayLiteral = property.getLastChildIfKind(
+                        SyntaxKind.ArrayLiteralExpression,
+                    );
+
+                    arrayLiteral?.getElements().forEach((element) => {
+                        if (!Node.isStringLiteral(element)) {
+                            return;
+                        }
+
+                        item.valueReplacer!.forEach(({from, to}) => {
+                            if (element.getLiteralValue() === from) {
+                                element.setLiteralValue(to);
+                            }
+                        });
+                    });
                 }
-
-                item.valueReplacer.forEach(({from, to}) => {
-                    if (replacement.getLiteralValue() === from) {
-                        replacement.setLiteralValue(to);
-                    }
-                });
             }
 
             if (!renameTo) {
