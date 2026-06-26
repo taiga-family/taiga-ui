@@ -31,7 +31,7 @@ jobs:
         run: npx nx build demo
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -131,7 +131,7 @@ jobs:
       - uses: taiga-family/actions/setup-playwright@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
