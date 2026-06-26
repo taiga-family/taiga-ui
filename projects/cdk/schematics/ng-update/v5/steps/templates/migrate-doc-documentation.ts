@@ -176,9 +176,9 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
     }
 
     const valueChangeTodo =
-        valueChange !== undefined
-            ? `<!-- ${TODO_MARK} $any($event) used because model<T>() emits T | undefined; consider using [(value)] two-way binding or replace $any($event) with $event ?? <default> -->\n`
-            : '';
+        valueChange === undefined
+            ? ''
+            : `<!-- ${TODO_MARK} $any($event) used because model<T>() emits T | undefined; consider using [(value)] two-way binding or replace $any($event) with $event ?? <default> -->\n`;
 
     if (valueChange !== undefined) {
         orderedAttrs.push(
