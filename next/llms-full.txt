@@ -614,7 +614,7 @@
 ### unfinished-validator
 
 ```text
-  TuiUnfinishedValidator
+  TuiUnfinishedValidator, TuiUnfinishedValidatorRefresh
 ```
 ### unmask-handler
 
