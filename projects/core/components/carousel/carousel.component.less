@@ -2,6 +2,7 @@
 
 :host {
     .scrollbar-hidden();
+    .transition(max-block-size);
 
     display: flex;
     max-inline-size: 100%;
@@ -32,14 +33,16 @@
     }
 
     &:last-child .t-bumper {
-        inset-inline-end: 0.5px;
+        inset-inline-end: 0;
+        transform: translate3d(calc(-0.01875rem * var(--tui-inline)), 0, 0);
     }
 }
 
-.t-bumper {
+.t-bumper,
+.t-observer {
     position: absolute;
-    inset-block-start: 50%;
-    block-size: 25%;
+    inset-block-start: 0.125rem;
+    block-size: 0.125rem;
     inline-size: 25%;
     pointer-events: none;
 }

@@ -8,6 +8,7 @@ import {
     inject,
     input,
     model,
+    signal,
     TemplateRef,
 } from '@angular/core';
 import {
@@ -24,13 +25,16 @@ import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-carousel',
-    imports: [NgTemplateOutlet, WaIntersectionObserver],
+    imports: [NgTemplateOutlet, WaIntersectionObserver, WaIntersectionObserverDirective],
     templateUrl: './carousel.component.html',
     styleUrl: './carousel.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
     hostDirectives: [WaIntersectionObserverDirective],
-    host: {waIntersectionThreshold: '1'},
+    host: {
+        waIntersectionThreshold: '0.5',
+        '[style.max-block-size.px]': 'height()',
+    },
 })
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -39,6 +43,7 @@ export class TuiCarouselComponent implements AfterViewInit {
 
     protected readonly math = Math;
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
+    protected readonly height = signal(Number.NaN);
 
     public readonly index = model(0);
     public readonly min = input(-Infinity);
@@ -69,11 +74,20 @@ export class TuiCarouselComponent implements AfterViewInit {
             this.index.set(index);
             requestAnimationFrame(() => {
                 this.el.style.overflow = '';
-
-                if (this.index() > this.min() && this.index() < this.max()) {
-                    this.el.scrollLeft = this.d * this.el.clientWidth;
-                }
+                this.onEnd();
             });
+        }
+    }
+
+    protected onEnd(): void {
+        if (this.index() > this.min() && this.index() < this.max()) {
+            this.el.scrollLeft = this.d * this.el.clientWidth;
+        }
+    }
+
+    protected onSlide(entry?: IntersectionObserverEntry): void {
+        if (entry?.isIntersecting) {
+            this.height.set(entry.target.parentElement?.clientHeight ?? Number.NaN);
         }
     }
 
