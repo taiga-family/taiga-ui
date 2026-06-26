@@ -10535,7 +10535,7 @@ export default class Example {
 </button> } </div>
 <div tuiNotification>
 <code>Cell</code> is used inside <code>DataList</code> options and <code>Textfield</code> template by default. </div>
-<tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
+<label tuiLabel> Inside a textfield <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
@@ -10544,6 +10544,7 @@ export default class Example {
 </span>
 </ng-template>
 </tui-textfield>
+</label>
 ```
 **TypeScript:**
 ```ts
