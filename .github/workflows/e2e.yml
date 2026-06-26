@@ -255,7 +255,7 @@ jobs:
 
       - name: Deploy e2e report
         id: e2e-report
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
+        uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0.11.0
         if: env.IS_OWNER_MODE == 'true'
         continue-on-error: true
         with:
