@@ -20,7 +20,7 @@ jobs:
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
-      - uses: actions/setup-node@v6 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
         if: env.IS_OWNER_MODE == 'true'
         with:
           node-version: 24.18 # https://github.com/firebase/firebase-tools/issues/10726
