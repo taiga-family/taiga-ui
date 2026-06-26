@@ -137,8 +137,10 @@ function extractThisSignalSetFieldName(node: Node): string | null {
         : receiver.getName();
 }
 
-function getIndent(text: string): string {
-    const match = /^(\s*)/.exec(text);
+function getIndent(node: Node): string {
+    const sourceFile = node.getSourceFile();
+    const startLinePos = node.getStartLinePos();
+    const lineText = sourceFile.getFullText().substring(startLinePos, node.getStart());
 
-    return match?.[1] ?? '    ';
+    return /^\s*/.exec(lineText)?.[0] ?? '    ';
 }
