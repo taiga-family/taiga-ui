@@ -169,7 +169,7 @@
     },
     "engines": {
         "node": ">= 26",
-        "npm": ">= 11.17",
+        "npm": ">= 11",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
     "engineStrict": true,
