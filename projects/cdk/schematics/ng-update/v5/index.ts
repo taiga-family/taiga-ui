@@ -46,6 +46,7 @@ import {migratePortals} from './steps/migrate-portals';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
+import {migrateViewChildDropdown} from './steps/migrate-view-child-dropdown';
 import {migrateStyles} from './steps/styles';
 import {updatePackages} from './steps/update-packages';
 
@@ -92,6 +93,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDropdownOpen',
                     step: () => migrateDropdownOpen(tree, options),
+                },
+                {
+                    name: 'migrateViewChildDropdown',
+                    step: () => migrateViewChildDropdown(tree, options),
                 },
                 {
                     name: 'migrateFilterByInput',

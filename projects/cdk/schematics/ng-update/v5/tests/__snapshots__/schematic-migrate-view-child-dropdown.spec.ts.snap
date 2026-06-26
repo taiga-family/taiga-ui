@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update @ViewChild setter with TuiTextfieldDropdownDirective converts @ViewChild setter to viewChild() + effect when body calls this.X.set(): test.ts 1`] = `
+{
+  "0. Before": "
+                import {forwardRef, TemplateRef, ViewChild} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+                import {tuiDropdown} from '@taiga-ui/core';
+                import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+                export class MyComponent {
+                    protected readonly dropdown = tuiDropdown(null);
+
+                    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {
+                        read: TemplateRef,
+                    })
+                    protected set template(template: PolymorpheusContent) {
+                        this.dropdown.set(template);
+                    }
+                }
+            ",
+  "1. After": "
+                import { forwardRef, TemplateRef, ViewChild, viewChild, effect } from '@angular/core';
+                import { tuiDropdown, TuiDropdownContent } from '@taiga-ui/core';
+                import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+                export class MyComponent {
+                    protected readonly dropdown = tuiDropdown(null);
+
+                    protected readonly template = viewChild(forwardRef(() => TuiDropdownContent), {
+                                            read: TemplateRef,
+                                        });
+                    protected readonly templateEf = effect(() => this.dropdown.set(this.template()));
+                }
+            ",
+}
+`;
+
+exports[`ng-update @ViewChild setter with TuiTextfieldDropdownDirective converts @ViewChild setter without forwardRef: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TemplateRef, ViewChild} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+                import {tuiDropdown} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    protected readonly content = tuiDropdown(null);
+
+                    @ViewChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
+                    protected set dropdown(value: any) {
+                        this.content.set(value);
+                    }
+                }
+            ",
+  "1. After": "
+                import { TemplateRef, ViewChild, viewChild, effect } from '@angular/core';
+                import { tuiDropdown, TuiDropdownContent } from '@taiga-ui/core';
+
+                export class MyComponent {
+                    protected readonly content = tuiDropdown(null);
+
+                    protected readonly dropdown = viewChild(TuiDropdownContent, {read: TemplateRef});
+                    protected readonly dropdownEf = effect(() => this.content.set(this.dropdown()));
+                }
+            ",
+}
+`;
+
+exports[`ng-update @ViewChild setter with TuiTextfieldDropdownDirective does not touch @ViewChild setter with multi-statement body: test.ts 1`] = `
+{
+  "0. Before": "
+                import {forwardRef, TemplateRef, ViewChild} from '@angular/core';
+                import {TuiTextfieldDropdownDirective} from '@taiga-ui/core';
+
+                export class MyComponent {
+                    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {
+                        read: TemplateRef,
+                    })
+                    protected set template(value: any) {
+                        this.dropdown.set(value);
+                        this.other = value;
+                    }
+                }
+            ",
+  "1. After": "import { TuiDropdownContent } from "@taiga-ui/core";
+
+                import {forwardRef, TemplateRef, ViewChild} from '@angular/core';
+
+                export class MyComponent {
+// TODO: (Taiga UI migration) Replace @ViewChild setter with viewChild() + effect(() => this.<signal>.set(this.<name>())). See https://taiga-ui.dev/components/textfield
+                    @ViewChild(forwardRef(() => TuiDropdownContent), {
+                        read: TemplateRef,
+                    })
+                    protected set template(value: any) {
+                        this.dropdown.set(value);
+                        this.other = value;
+                    }
+                }
+            ",
+}
+`;
