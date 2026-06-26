@@ -175,7 +175,9 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
     }
 
     if (valueChange !== undefined) {
-        orderedAttrs.push(`(valueChange)="${valueChange}"`);
+        orderedAttrs.push(
+            `(valueChange)="${valueChange.replaceAll('$event', '$any($event)')}"`,
+        );
     }
 
     const isMultiline = startTagStr.includes('\n');

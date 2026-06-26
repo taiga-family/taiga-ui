@@ -167,13 +167,6 @@ exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames [documentat
 }
 `;
 
-exports[`ng-update tui-doc-documentation to table[tuiDocAPI] replaces tui-doc-documentation tag with table and adds tuiDocAPI attribute: test.html 1`] = `
-{
-  "0. Before": "<tui-doc-documentation></tui-doc-documentation>",
-  "1. After": "<table tuiDocAPI></table>",
-}
-`;
-
 exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames one-way [documentationPropertyValue] + (documentationPropertyValueChange) to [value] + (valueChange): test.html 1`] = `
 {
   "0. Before": "
@@ -196,9 +189,47 @@ exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames one-way [do
                         tuiDocAPIItem
                         type="boolean"
                         [value]="multiple"
-                        (valueChange)="multipleChange($event)"
+                        (valueChange)="multipleChange($any($event))"
                     >
                         Allows to upload several files
+                    </tr>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] replaces tui-doc-documentation tag with table and adds tuiDocAPI attribute: test.html 1`] = `
+{
+  "0. Before": "<tui-doc-documentation></tui-doc-documentation>",
+  "1. After": "<table tuiDocAPI></table>",
+}
+`;
+
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] wraps $event with $any() in (valueChange) to handle model<T>() emitting T | undefined: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="ngModel"
+                        documentationPropertyType="string"
+                        [documentationPropertyValue]="control.value"
+                        (documentationPropertyValueChange)="control.setValue($event)"
+                    >
+                        Example pass HTML code
+                    </ng-template>
+                </tui-doc-documentation>
+            ",
+  "1. After": "
+                <table tuiDocAPI>
+                    <tr
+                        name="[ngModel]"
+                        tuiDocAPIItem
+                        type="string"
+                        [value]="control.value"
+                        (valueChange)="control.setValue($any($event))"
+                    >
+                        Example pass HTML code
                     </tr>
                 </table>
             ",
