@@ -103,15 +103,17 @@ function applyViewChildReplacement(
     sourceFile: SourceFile,
 ): void {
     const setterName = setter.getName();
-    const scopeStr = SCOPE_TEXT[setter.getScope() ?? Scope.Protected];
+    const scope = setter.getScope();
+    const scopeStr = scope ? `${SCOPE_TEXT[scope]} ` : '';
     const decoratorArgs = options ? `${token}, ${options.getText()}` : token;
-    const indent = getIndent(setter.getText());
+    const indent = getIndent(setter);
 
     setter.replaceWithText(
         [
-            `${scopeStr} readonly ${setterName} = viewChild(${decoratorArgs});`,
-            `${indent}${scopeStr} readonly ${setterName}Ef = effect(() => this.${signalFieldName}.set(this.${setterName}()));`,
+            `${scopeStr}readonly ${setterName} = viewChild(${decoratorArgs});`,
+            `${indent}${scopeStr}readonly ${setterName}Ef = effect(() => this.${signalFieldName}.set(this.${setterName}()));`,
         ].join('\n'),
+    );
     );
 
     addUniqueImport(sourceFile.getFilePath(), 'viewChild', '@angular/core');
