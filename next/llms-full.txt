@@ -13889,7 +13889,7 @@ export default class Page {
 # components/DatePicker
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
-This is a work in progress, do not use!
+This is a work in progress The APIs might change in the future, use with caution
 
 ### Usage Examples
 
@@ -13968,6 +13968,70 @@ export default class Example {
 }
 ```
 
+#### Example 2
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Select date</label>
+<input tuiInputDate [(ngModel)]="value" />
+<tui-date-picker *tuiDropdown [contentDay]="day" [contentMonth]="month" />
+<ng-template #day let-date >
+<span tuiTitle> {{ date.day }} <span tuiSubtitle>{{ getLabel(date) }}</span>
+</span>
+</ng-template>
+<ng-template #month let-date >
+<span tuiTitle> {{ date.toUtcNativeDate() | date: 'MMM' }} <span tuiSubtitle>{{ date.year }}</span>
+</span>
+</ng-template>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {DatePipe} from '@angular/common';
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiInputDate} from '@taiga-ui/kit';
+
+@Component({
+    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [tuiCalendarOptionsProvider({showWeek: false})],
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
+
+    protected getLabel({day}: TuiDay): string {
+        switch (day) {
+            case 17:
+            case 18:
+            case 19:
+                return 'Sick';
+            case 20:
+                return '••';
+            case 25:
+                return '•••';
+            case 3:
+                return '••';
+            case 30:
+                return 'Q2';
+            case 4:
+            case 5:
+                return '•';
+            default:
+                return '';
+        }
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -13975,9 +14039,10 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -49278,10 +49343,25 @@ export default class Example {}
 <p>Right-click any table row.</p>
 <table tuiTable>
 <thead>
-<tr> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
+<tr> @for (column of tableColumns; track column) { <th tuiTh [class.actions]="column === 'actions'" > {{ column }} </th> } </tr>
 </thead>
-<tbody tuiTbody> @for (rowInfo of tableData; track rowInfo) { <tr #dropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" > @for (value of getObjectValues(rowInfo); track value) { <td tuiTd> {{ value }} </td> } <ng-template #contextMenu>
-<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
+<tbody tuiTbody> @for (rowInfo of tableData; track rowInfo.character) { <tr #contextDropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" (contextmenu)="closeActionMenu()" >
+<td tuiTd> {{ rowInfo.character }} </td>
+<td tuiTd> {{ rowInfo.actor }} </td>
+<td tuiTd class="actions" >
+<button appearance="flat" iconEnd="@tui.chevron-right" size="s" tuiButton tuiDropdownAlign="end" tuiDropdownSided type="button" [tuiAppearanceState]="isActionMenuOpen(rowInfo.character) ? 'active' : null" [tuiDropdown]="actionMenu" [tuiDropdownOpen]="isActionMenuOpen(rowInfo.character)" (tuiDropdownOpenChange)=" onActionMenuOpenChange($event, rowInfo.character); $event && contextDropdown.toggle(false) " > More </button>
+<ng-template #actionMenu let-close >
+<tui-data-list>
+<tui-opt-group> @for (item of actionItems; track item) { <button tuiOption type="button" (click)="printToConsole(item, rowInfo); close()" > {{ item }} </button> } </tui-opt-group>
+<hr />
+<tui-opt-group>
+<button tuiOption type="button" (click)="close()" > Nevermind </button>
+</tui-opt-group>
+</tui-data-list>
+</ng-template>
+</td>
+<ng-template #contextMenu let-close >
+<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item.title) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); close()" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
 </tui-data-list>
 <ng-template #nestedMenu>
 <tui-data-list> @for (option of moreOptions; track option) { <button tuiOption type="button" > {{ option }} </button> } </tui-data-list>
@@ -49296,11 +49376,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
+    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -49308,6 +49388,9 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
+    protected openActionMenu: string | null = null;
+    protected readonly actionItems = ['Edit', 'Download', 'Rename', 'Delete'];
 
     protected readonly menuItems = [
         {title: 'View', iconName: '@tui.eye'},
@@ -49325,11 +49408,20 @@ export default class Example {
         {character: 'Rachel Green', actor: 'Jennifer Aniston'},
     ] as const;
 
-    protected readonly tableColumns = Object.keys(this.tableData[0]);
+    protected readonly tableColumns = ['character', 'actor', 'actions'];
     protected readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
 
-    protected getObjectValues = (obj: Record<string, unknown>): unknown[] =>
-        Object.values(obj);
+    protected isActionMenuOpen(rowId: string): boolean {
+        return this.openActionMenu === rowId;
+    }
+
+    protected onActionMenuOpenChange(open: boolean, rowId: string): void {
+        this.openActionMenu = open ? rowId : null;
+    }
+
+    protected closeActionMenu(): void {
+        this.openActionMenu = null;
+    }
 
     protected printToConsole(action: string, contextInfo: unknown): void {
         this.dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
@@ -49360,6 +49452,12 @@ export default class Example {
 
 [tuiTd] {
     font: var(--tui-typography-body-m) !important;
+}
+
+.actions {
+    inline-size: 1%;
+    text-align: end;
+    white-space: nowrap;
 }
 ```
 
