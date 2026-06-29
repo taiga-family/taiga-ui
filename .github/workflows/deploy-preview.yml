@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
       - uses: taiga-family/ci/actions/setup/node@v1.152.0
+        with:
+          node-version: 24.18 # https://github.com/firebase/firebase-tools/issues/10726
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
