@@ -193,7 +193,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiWrapperDirective',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiWrapperDirective ([tuiWrapper]) has been removed. Use the tuiAppearance directive from @taiga-ui/core to set the visual appearance; interactive states (hover, active, focus, disabled, invalid) are now resolved automatically from the host element. See https://taiga-ui.dev/appearances',
+            'TuiWrapperDirective ([tuiWrapper]) has been removed. Use the tuiAppearance directive from @taiga-ui/core to set the visual appearance; interactive states now resolve automatically from the host element. See https://taiga-ui.dev/appearances',
     },
     {
         name: 'TuiStaticRequestService',
