@@ -106,7 +106,7 @@ export class TuiCarouselComponent implements AfterViewInit {
 
     private get fallback(): boolean {
         return (
-            !((this.win.devicePixelRatio * 100) % 1) &&
+            !!((this.win.devicePixelRatio * 100) % 1) &&
             this.el.scrollWidth - this.el.clientWidth - Math.abs(this.el.scrollLeft) < 1
         );
     }
