@@ -205,13 +205,13 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'tuiInputCardOptionsProvider',
         moduleSpecifier: '@taiga-ui/addon-commerce',
         message:
-            'tuiInputCardOptionsProvider has been removed. Use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group',
+            'tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
         name: 'TUI_INPUT_CARD_OPTIONS',
         moduleSpecifier: '@taiga-ui/addon-commerce',
         message:
-            'TUI_INPUT_CARD_OPTIONS has been removed. Use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group',
+            'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
         name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
@@ -241,7 +241,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiWrapperDirective',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiWrapperDirective ([tuiWrapper]) has been removed with no direct replacement. The directive applied visual state classes (disabled, readOnly, hover, active, focus, invalid, appearance) to host elements — reproduce this behavior manually using host bindings or CSS.',
+            'TuiWrapperDirective ([tuiWrapper]) has been removed. Use the tuiAppearance directive from @taiga-ui/core to set the visual appearance; interactive states (hover, active, focus, disabled, invalid) are now resolved automatically from the host element. See https://taiga-ui.dev/appearances',
     },
     {
         name: 'TuiStaticRequestService',
