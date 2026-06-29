@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.89.0](https://github.com/taiga-family/taiga-ui/compare/v4.88.0...v4.89.0) (2026-06-29)
+
+### 🐞 Bug Fixes
+
+- **core:** `Cell` fix margin inside Label ([#14453](https://github.com/taiga-family/taiga-ui/issues/14453))
+  ([65a5f99](https://github.com/taiga-family/taiga-ui/commit/65a5f99b51706036fe40b49964036a83b788f39e))
+
 ## [4.88.0](https://github.com/taiga-family/taiga-ui/compare/v4.87.0...v4.88.0) (2026-06-22)
 
 ### 🐞 Bug Fixes
