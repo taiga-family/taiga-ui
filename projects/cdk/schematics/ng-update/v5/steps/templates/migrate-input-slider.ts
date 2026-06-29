@@ -181,6 +181,15 @@ export function migrateInputSlider({
             }
         }
 
+        if (isDynamic) {
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(
+                insertAt,
+                `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.\n-->\n`,
+            );
+        }
+
         const endTagStartOffset = sourceCodeLocation?.endTag?.startOffset;
 
         if (endTagStartOffset === undefined) {

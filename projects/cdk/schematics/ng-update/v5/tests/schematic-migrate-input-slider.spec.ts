@@ -112,5 +112,19 @@ describe('ng-update TuiInputSliderModule to TuiInputSlider', () => {
         }),
     );
 
+    it(
+        'adds TODO comment for dynamic [tuiTextfieldLabelOutside]',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Volume
+                </tui-input-slider>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

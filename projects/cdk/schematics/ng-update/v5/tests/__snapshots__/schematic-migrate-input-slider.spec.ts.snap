@@ -64,6 +64,32 @@ exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for 
 }
 `;
 
+exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for dynamic [tuiTextfieldLabelOutside]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Volume
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.
+-->
+<tui-textfield
+                    
+                    
+                >
+                    Volume
+                
+<input tuiInputSlider [(ngModel)]="value" />
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update TuiInputSliderModule to TuiInputSlider migrates import and basic template with label and explicit input: test.ts 1`] = `
 {
   "0. Before": "
