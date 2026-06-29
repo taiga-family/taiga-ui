@@ -13898,7 +13898,7 @@ export default class Page {
 # components/DatePicker
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
-This is a work in progress, do not use!
+This is a work in progress The APIs might change in the future, use with caution
 
 ### Usage Examples
 
@@ -13977,6 +13977,70 @@ export default class Example {
 }
 ```
 
+#### Example 2
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Select date&lt;/label&gt;
+&lt;input tuiInputDate [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-date-picker *tuiDropdown [contentDay]=&quot;day&quot; [contentMonth]=&quot;month&quot; /&gt;
+&lt;ng-template #day let-date &gt;
+&lt;span tuiTitle&gt; {{ date.day }} &lt;span tuiSubtitle&gt;{{ getLabel(date) }}&lt;/span&gt;
+&lt;/span&gt;
+&lt;/ng-template&gt;
+&lt;ng-template #month let-date &gt;
+&lt;span tuiTitle&gt; {{ date.toUtcNativeDate() | date: &#039;MMM&#039; }} &lt;span tuiSubtitle&gt;{{ date.year }}&lt;/span&gt;
+&lt;/span&gt;
+&lt;/ng-template&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {DatePipe} from &#039;@angular/common&#039;;
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {tuiCalendarOptionsProvider, TuiDatePicker} from &#039;@taiga-ui/experimental&#039;;
+import {TuiInputDate} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [tuiCalendarOptionsProvider({showWeek: false})],
+})
+export default class Example {
+    protected readonly value = signal&lt;TuiDay | null&gt;(new TuiDay(2026, 5, 25));
+
+    protected getLabel({day}: TuiDay): string {
+        switch (day) {
+            case 17:
+            case 18:
+            case 19:
+                return &#039;Sick&#039;;
+            case 20:
+                return &#039;••&#039;;
+            case 25:
+                return &#039;•••&#039;;
+            case 3:
+                return &#039;••&#039;;
+            case 30:
+                return &#039;Q2&#039;;
+            case 4:
+            case 5:
+                return &#039;•&#039;;
+            default:
+                return &#039;&#039;;
+        }
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -13984,9 +14048,10 @@ export default class Example {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
