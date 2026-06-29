@@ -11,17 +11,18 @@ import {
     signal,
     TemplateRef,
 } from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     WA_INTERSECTION_ROOT,
     WaIntersectionObserver,
     WaIntersectionObserverDirective,
 } from '@ng-web-apis/intersection-observer';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
+import {debounceTime, filter, fromEvent} from 'rxjs';
 
 @Component({
     selector: 'tui-carousel',
@@ -38,7 +39,7 @@ import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 })
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
-    private readonly ios = inject(WA_IS_IOS);
+    private readonly win = inject(WA_WINDOW);
     private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
 
     protected readonly math = Math;
@@ -48,6 +49,17 @@ export class TuiCarouselComponent implements AfterViewInit {
     public readonly index = model(0);
     public readonly min = input(-Infinity);
     public readonly max = input(Infinity);
+
+    constructor() {
+        fromEvent(this.el, 'scroll')
+            .pipe(
+                debounceTime(100),
+                filter(() => this.fallback),
+            )
+            .subscribe(() => {
+                this.onIntersection(true, 1);
+            });
+    }
 
     public ngAfterViewInit(): void {
         if (this.index() > this.min()) {
@@ -67,21 +79,18 @@ export class TuiCarouselComponent implements AfterViewInit {
         const index = tuiClamp(this.index() + step, this.min(), this.max());
 
         if (isIntersecting) {
-            if (this.ios && index !== this.index()) {
+            if (index !== this.index()) {
                 this.el.style.overflow = 'hidden';
             }
 
             this.index.set(index);
             requestAnimationFrame(() => {
                 this.el.style.overflow = '';
-                this.onEnd();
-            });
-        }
-    }
 
-    protected onEnd(): void {
-        if (this.index() > this.min() && this.index() < this.max()) {
-            this.el.scrollLeft = this.d * this.el.clientWidth;
+                if (this.index() > this.min() && this.index() < this.max()) {
+                    this.el.scrollLeft = this.d * this.el.clientWidth;
+                }
+            });
         }
     }
 
@@ -93,5 +102,12 @@ export class TuiCarouselComponent implements AfterViewInit {
 
     private get d(): number {
         return this.el.matches('[dir="rtl"] :scope') ? -1 : 1;
+    }
+
+    private get fallback(): boolean {
+        return (
+            !((this.win.devicePixelRatio * 100) % 1) &&
+            this.el.scrollWidth - this.el.clientWidth - Math.abs(this.el.scrollLeft) < 1
+        );
     }
 }
