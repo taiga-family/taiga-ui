@@ -7,7 +7,7 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
