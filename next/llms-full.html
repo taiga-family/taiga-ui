@@ -9814,6 +9814,40 @@ export default class Example {
 }
 ```
 
+#### Dynamic height
+
+**Template:**
+```html
+&lt;tui-carousel [max]=&quot;4&quot; [min]=&quot;0&quot; [style.inline-size.rem]=&quot;17&quot; &gt;
+&lt;section *tuiItem=&quot;let index&quot; appearance=&quot;neutral&quot; tuiCardLarge=&quot;compact&quot; [style.inline-size.%]=&quot;90&quot; &gt;
+&lt;header tuiHeader&gt;Slide {{ index + 1 }}&lt;/header&gt; {{ texts[index] }} &lt;/section&gt;
+&lt;/tui-carousel&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiCarousel} from &#039;@taiga-ui/core&#039;;
+import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiCardLarge, TuiCarousel, TuiHeader],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly texts = [
+        &#039;Lorem ipsum dolor sit amet&#039;,
+        &#039;Lorem Ipsum is simply dummy text of the printing and typesetting industry&#039;,
+        &#039;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout&#039;,
+        &#039;Contrary to popular belief, Lorem Ipsum is not simply random text&#039;,
+        &quot;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don&#039;t look even slightly believable&quot;,
+    ];
+}
+```
+
 #### Multiple
 
 **Template:**
@@ -9894,7 +9928,13 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Looped&#039;, &#039;Automatic&#039;, &#039;Multiple&#039;];
+    protected readonly examples = [
+        &#039;Basic&#039;,
+        &#039;Looped&#039;,
+        &#039;Automatic&#039;,
+        &#039;Dynamic height&#039;,
+        &#039;Multiple&#039;,
+    ];
 }
 ```
 
