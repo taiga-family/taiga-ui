@@ -12,13 +12,14 @@ import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 export const TUI_ENTER = 'tui-enter';
 export const TUI_LEAVE = 'tui-leave';
+export const TUI_ANIMATED = 'tui-animated';
 
 const TUI_LEAVE_KEY = `${TUI_LEAVE}_${TUI_VERSION.split('.')[0]}`;
 
 @Directive({
     selector: '[tuiAnimated]',
     host: {
-        class: TUI_ENTER,
+        class: `${TUI_ENTER} ${TUI_ANIMATED}`,
         '(animationcancel.self)': 'remove()',
         '(animationend.self)': 'remove()',
     },
@@ -54,7 +55,7 @@ function wrap(renderer: Renderer2): void {
     renderer.data[TUI_LEAVE_KEY] = true;
 
     renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
-        if (!tuiIsElement(el)) {
+        if (!tuiIsElement(el) || !el.classList.contains(TUI_ANIMATED)) {
             removeChild.call(renderer, parent, el, host);
 
             return;

@@ -16,7 +16,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
-    type TuiDayRange,
+    TuiDayRange,
     type TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
@@ -108,8 +108,9 @@ export abstract class TuiInputDateBase<
     protected readonly calendarOut = effect(() => {
         const value = this.calendar()?.value();
         const changed = untracked(() => value !== this.toCalendarValue(this.value()));
+        const same = value instanceof TuiDayRange && value.from === value.to;
 
-        if (value && changed) {
+        if (value && changed && !same) {
             this.setDate(value);
         }
     });
@@ -184,14 +185,12 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
-    public override readonly max = input(this.options.max, {
-        transform: (max: TuiDay | null): TuiDay =>
-            max instanceof TuiDay ? max : TUI_LAST_DAY,
+    public override readonly max = input(this.options.max ?? TUI_LAST_DAY, {
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
     });
 
-    public override readonly min = input(this.options.min, {
-        transform: (min: TuiDay | null): TuiDay =>
-            min instanceof TuiDay ? min : TUI_FIRST_DAY,
+    public override readonly min = input(this.options.min ?? TUI_FIRST_DAY, {
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
     });
 
     protected readonly mask = tuiMaskito(

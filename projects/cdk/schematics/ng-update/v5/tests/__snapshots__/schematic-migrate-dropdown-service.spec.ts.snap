@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiDropdownService to TuiPopupService renames imported service and its usages: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiDropdownService} from '@taiga-ui/core';
+
+                @Component({})
+                export class Test {
+                    constructor(private readonly dropdowns: TuiDropdownService) {}
+                }
+            ",
+  "1. After": "import { TuiPopupService } from "@taiga-ui/core";
+
+                                @Component({})
+                export class Test {
+                    constructor(private readonly dropdowns: TuiPopupService) {}
+                }
+            ",
+}
+`;

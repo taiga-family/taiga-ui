@@ -3,19 +3,25 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
     input,
     model,
+    signal,
     viewChild,
 } from '@angular/core';
-import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {FormsModule} from '@angular/forms';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
 import {TuiLink} from '@taiga-ui/core/components/link';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
+import {TUI_DROPDOWN_HOST} from '@taiga-ui/core/portals/dropdown';
 import {
     TUI_COMMON_ICONS,
     TUI_MONTHS,
@@ -24,7 +30,11 @@ import {
 } from '@taiga-ui/core/tokens';
 import {TuiCalendar} from '@taiga-ui/experimental/components/calendar';
 import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
+import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
+import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiElasticContainer} from '@taiga-ui/layout/components/elastic-container';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -40,11 +50,16 @@ type DatePicker<T> = T extends 'single'
 @Component({
     selector: 'tui-date-picker',
     imports: [
+        FormsModule,
         TuiButton,
         TuiCalendar,
         TuiCarousel,
         TuiChevron,
         TuiDataGrid,
+        TuiElasticContainer,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
         TuiLink,
         TuiMapperPipe,
         TuiSlides,
@@ -54,7 +69,9 @@ type DatePicker<T> = T extends 'single'
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiDatePicker),
+        tuiProvide(AbstractTuiCalendar, TuiDatePicker),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
+        tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
     ],
 })
 export class TuiDatePicker<
@@ -64,6 +81,7 @@ export class TuiDatePicker<
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
     protected readonly i18n = inject(TUI_MONTHS);
+    protected readonly dropdown = inject(TUI_DROPDOWN_HOST, {optional: true});
 
     protected readonly content = computed<PolymorpheusContent<TuiContext<number>>>(
         () => (c) => this.i18n()[c.$implicit],
@@ -128,6 +146,17 @@ export class TuiDatePicker<
             ? this.month().year === this.max().year
             : carousel?.index() === carousel?.max(),
     );
+
+    protected readonly sync = effect(() => {
+        const value = this.value();
+        const [day] = value instanceof TuiDayRange ? [value.from] : coerceArray(value);
+
+        if (!day || day.year < 9000) {
+            this.month.update(({month, year}) =>
+                (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
+            );
+        }
+    });
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly mode = input<T>();

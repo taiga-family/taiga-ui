@@ -36,6 +36,7 @@ const CONTROL_ATTR_NAMES = [
     '[(ngModel)]',
     '[ngModel]',
     'ngModel',
+    '(ngModelChange)',
 ] as const;
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
@@ -140,10 +141,12 @@ function buildReplacement(
 ): {startOffset: number; endOffset: number; replacement: string} | null {
     const loc = element.sourceCodeLocation;
 
-    if (!loc?.startTag || !loc.endTag) {
+    if (!loc?.startTag) {
         return null;
     }
 
+    const isSelfClosing = !loc.endTag;
+    const endOffset = isSelfClosing ? loc.startTag.endOffset : loc.endOffset;
     const textfieldAttrs: string[] = [];
     const textareaAttrs = ['tuiTextarea'];
     const controlStateAttrs = getControlStateAttrs(element);
@@ -266,7 +269,7 @@ function buildReplacement(
 
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
-    ctx.placeholder = getPlaceholderText(element);
+    ctx.placeholder = isSelfClosing ? '' : getPlaceholderText(element);
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
     const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
@@ -283,6 +286,7 @@ function buildReplacement(
         indent,
         hintIconStr,
         customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
+        isSelfClosing,
     });
 
     const todoComment = buildTodoComment(ctx);
@@ -290,7 +294,7 @@ function buildReplacement(
 
     return {
         startOffset: loc.startOffset,
-        endOffset: loc.endOffset,
+        endOffset,
         replacement,
     };
 }
@@ -365,6 +369,7 @@ function buildInnerContent({
     indent,
     hintIconStr = '',
     customContentIconStr = '',
+    isSelfClosing = false,
 }: {
     controlStateStr: string;
     ctx: MigrationContext;
@@ -372,15 +377,18 @@ function buildInnerContent({
     element: Element;
     hintIconStr?: string;
     indent: string;
+    isSelfClosing?: boolean;
     template: string;
     textareaAttrs: string[];
 }): string {
     const {placeholder, labelOutside} = ctx;
 
-    const childElements = element.childNodes.filter(
-        (node: ChildNode): node is Element =>
-            node.nodeName !== '#text' && node.nodeName !== '#comment',
-    );
+    const childElements = isSelfClosing
+        ? []
+        : element.childNodes.filter(
+              (node: ChildNode): node is Element =>
+                  node.nodeName !== '#text' && node.nodeName !== '#comment',
+          );
 
     // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
     // and labelOutside is false/absent (dynamic: left as-is with only TODO comment)
@@ -518,6 +526,8 @@ function getPlaceholderText(element: Element): string {
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[ngModel]'.toLowerCase():

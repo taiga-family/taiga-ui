@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.12.0](https://github.com/taiga-family/taiga-ui/compare/v5.11.0...v5.12.0) (2026-06-22)
+
+### 🚀 Features
+
+- **cdk:** `Id` add auto-id directive ([#14379](https://github.com/taiga-family/taiga-ui/issues/14379))
+  ([cefd9fb](https://github.com/taiga-family/taiga-ui/commit/cefd9fb25184a2bb48aaab4948ae3c325d7ab6e3))
+- **kit:** `ButtonSelect` allow date picking ([#14364](https://github.com/taiga-family/taiga-ui/issues/14364))
+  ([7dc4899](https://github.com/taiga-family/taiga-ui/commit/7dc4899e1b688c8974a1316f42e6840ad7884392))
+- **layout:** `AppBar` support liquid glass ([#14210](https://github.com/taiga-family/taiga-ui/issues/14210))
+  ([4009f35](https://github.com/taiga-family/taiga-ui/commit/4009f35f3c0ca2f07c691a07f95ea0a5e589f99f))
+
+### 🐞 Bug Fixes
+
+- **core:** `Button` change button S border radius ([#14355](https://github.com/taiga-family/taiga-ui/issues/14355))
+  ([5b0e6a2](https://github.com/taiga-family/taiga-ui/commit/5b0e6a2eb3ae046490d4addd05e773f6925a6c9d))
+- **kit:** `CalendarRange` consider same day ranges unfinished only if from === to
+  ([#14354](https://github.com/taiga-family/taiga-ui/issues/14354))
+  ([d28aa4f](https://github.com/taiga-family/taiga-ui/commit/d28aa4ff357f12e64a4e5a71e55793ace7a313ba))
+- **kit:** mirror fixed progress gradient in RTL ([#14348](https://github.com/taiga-family/taiga-ui/issues/14348))
+  ([d0872b9](https://github.com/taiga-family/taiga-ui/commit/d0872b93676cd12cb11e7ea0ea69e6310c5832a7))
+- **styles:** support RTL in date-picker ([#14378](https://github.com/taiga-family/taiga-ui/issues/14378))
+  ([e0c87ef](https://github.com/taiga-family/taiga-ui/commit/e0c87ef5bf90fc1d1e1c5c27eb5eb78538e11bb3))
+
 ## [5.11.0](https://github.com/taiga-family/taiga-ui/compare/v5.10.0...v5.11.0) (2026-06-16)
 
 ### 🐞 Bug Fixes
