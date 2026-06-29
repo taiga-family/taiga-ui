@@ -13,7 +13,7 @@ export const TUI_DAY_CAPS_MAPPER: TuiMapper<
 > = (current, value, maxLength, backwards) => {
     if (
         // TODO(v5): replace with `if (!(value instanceof TuiDay) || !maxLength)` (backward compatibility)
-        (value instanceof TuiDayRange && !value.isSingleDay) ||
+        (value instanceof TuiDayRange && value.from !== value.to) ||
         !value ||
         !maxLength
     ) {

@@ -16,6 +16,7 @@ import {tuiEnableFontScaling} from './font-scaling';
 
 interface ExperimentalAPIs {
     readonly all: boolean;
+    readonly liquidGlass: boolean;
 }
 
 export interface TuiOptions {

@@ -2,28 +2,72 @@
 
 :host {
     display: block;
-    min-inline-size: 17.5rem;
+    inline-size: calc(18rem * var(--tui-font-scale));
+    // stylelint-disable-next-line -- graceful degradation
+    min-block-size: fit-content;
+    box-sizing: content-box;
+}
+
+:host-context(tui-dropdown) {
+    padding: 0.5rem;
+
+    &:not(:only-child) {
+        box-shadow: 0 0 0 1px var(--tui-border-normal);
+    }
 }
 
 .t-header {
+    position: relative;
     display: flex;
     gap: 0.25rem;
     align-items: center;
     justify-content: flex-end;
     padding: 0.5rem 0.75rem 1rem;
+    font: var(--tui-typography-ui-l);
+
+    :first-child {
+        margin-inline-end: auto;
+    }
+}
+
+.t-textfield {
+    position: absolute;
+    inset: 0.125rem;
+    opacity: 0;
+    pointer-events: none;
+
+    &::after {
+        display: none;
+    }
+
+    &:focus-within {
+        opacity: 1;
+        pointer-events: auto;
+
+        ~ * {
+            visibility: hidden;
+        }
+    }
 }
 
 .t-button {
     .transition(opacity);
 
-    font: var(--tui-typography-ui-l);
+    font: inherit;
     font-weight: bold;
     text-decoration: none;
-    margin-inline-end: auto;
 
     @media @tui-mouse {
         &:hover {
             opacity: var(--tui-disabled-opacity);
         }
     }
+}
+
+.t-chevron {
+    transform: scaleX(var(--tui-inline));
+}
+
+.t-grid {
+    padding-block-end: 0.5rem;
 }

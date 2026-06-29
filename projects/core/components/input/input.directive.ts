@@ -1,5 +1,6 @@
 import {computed, Directive, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -24,12 +25,11 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
 @Directive({
     selector: 'input[tuiInput]',
     providers: [tuiAsTextfieldAccessor(TuiInputDirective)],
-    hostDirectives: [TuiNativeValidator],
+    hostDirectives: [TuiNativeValidator, TuiId],
     host: {
         tuiInput: '',
         '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[class._empty]': 'value() === ""',
-        '[id]': 'textfield.id',
         '[readOnly]': 'readOnly()',
         '(focusin)': '0',
         '(focusout)': '0',

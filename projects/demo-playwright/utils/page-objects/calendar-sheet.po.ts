@@ -1,31 +1,27 @@
-import {type Locator} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 export class TuiCalendarSheetPO {
     constructor(private readonly host: Locator) {}
 
-    public async getDays(): Promise<Locator[]> {
-        return this.host
-            .locator(
-                '[automation-id="tui-calendar-sheet__cell"], [automation-id="tui-primitive-calendar-mobile__cell"]',
-            )
-            .all();
-    }
-
-    public async getCalendarDay(day: number): Promise<Locator | null> {
-        const cells = await this.getDays();
-
-        for (const cell of cells) {
-            if ((await cell.textContent())?.trim() === day.toString()) {
-                return cell;
-            }
-        }
-
-        return null;
+    public getCalendarDay(day: number): Locator {
+        return this.cells
+            .filter({hasText: new RegExp(String.raw`^\s*${day}\s*$`)})
+            .first();
     }
 
     public async clickOnDay(day: number): Promise<void> {
-        const element = await this.getCalendarDay(day);
+        const cell = this.getCalendarDay(day);
 
-        return element!.click({force: true});
+        await expect(cell).toBeVisible();
+        await cell.click({force: true});
+    }
+
+    private get cells(): Locator {
+        return this.host.locator(
+            [
+                '[automation-id="tui-calendar-sheet__cell"]',
+                '[automation-id="tui-primitive-calendar-mobile__cell"]',
+            ].join(', '),
+        );
     }
 }

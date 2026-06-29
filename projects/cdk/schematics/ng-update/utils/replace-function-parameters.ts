@@ -31,10 +31,16 @@ function replaceFunctionParameter(item: ReplacementFunctionParameter): void {
             return;
         }
 
-        item.parameters.forEach(({name, renameTo}) => {
+        item.parameters.forEach(({name, renameTo, remove}) => {
             const property = value.getProperty(name);
 
             if (!property) {
+                return;
+            }
+
+            if (remove) {
+                property.remove();
+
                 return;
             }
 

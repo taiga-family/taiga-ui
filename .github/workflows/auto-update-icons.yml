@@ -11,11 +11,11 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
-      - uses: taiga-family/ci/actions/setup/node@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
+      - uses: taiga-family/actions/setup-variables@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+      - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
       - run: |
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix || echo "no file matching"
@@ -24,7 +24,7 @@ jobs:
           npx prettier ./projects/demo/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/demo-playwright/used-icons.ts --write || echo "no file matching"
           npx prettier ./projects/cdk/constants/used-icons.ts --write || echo "no file matching"
-      - uses: taiga-family/ci/actions/auto/push@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
+      - uses: taiga-family/actions/auto-push@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
         if: env.SUPPORT_AUTO_PUSH
         with:
           message: icons have changed
