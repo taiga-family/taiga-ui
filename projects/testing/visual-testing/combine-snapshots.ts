@@ -1,11 +1,11 @@
-import sharp, {type Metadata} from 'sharp';
+import sharp from 'sharp';
 
 // noinspection JSUnusedGlobalSymbols
 export async function tuiCombineSnapshots(
     inputs: string[],
     output: string,
 ): Promise<void> {
-    const data: readonly Metadata[] = await Promise.all(
+    const data: readonly sharp.Metadata[] = await Promise.all(
         inputs.map(async (img) => sharp(img).metadata()),
     );
 
