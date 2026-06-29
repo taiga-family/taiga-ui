@@ -89,5 +89,19 @@ describe('ng-update TuiInputMonthRangeModule to TuiInputMonthRange', () => {
         }),
     );
 
+    it(
+        'adds TODO comment for dynamic [tuiTextfieldLabelOutside]',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-month-range
+                    [(ngModel)]="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Choose a range
+                </tui-input-month-range>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -132,6 +133,15 @@ export function migrateInputMonthRange({
                     recorder.insertRight(labelTextEnd, '</label>\n');
                 }
             }
+        }
+
+        if (isDynamic) {
+            const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
+            recorder.insertLeft(
+                insertAt,
+                `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.\n-->\n`,
+            );
         }
 
         const endTagStartOffset = sourceCodeLocation?.endTag?.startOffset;
