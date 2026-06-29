@@ -23,7 +23,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     public readonly type = 'dropdown';
 
     public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-        inject<any>(TuiRectAccessor, {optional: true}),
+        inject<any>(TuiRectAccessor, {self: true, optional: true}),
         {getClientRect: () => this.el.getBoundingClientRect()},
     );
 
