@@ -12336,7 +12336,7 @@ export default class Example {
 &lt;/span&gt;
 &lt;/button&gt;
 &lt;/div&gt;
-&lt;label&gt; Inside a dropdown &lt;tui-textfield tuiChevron [content]=&quot;content&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
+&lt;label tuiLabel&gt; Inside a dropdown &lt;tui-textfield tuiChevron [content]=&quot;content&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
 &lt;input tuiSelect [(ngModel)]=&quot;value&quot; /&gt;
 &lt;tui-data-list-wrapper *tuiTextfieldDropdown new [itemContent]=&quot;content&quot; [items]=&quot;items&quot; /&gt;
 &lt;ng-template #content let-item &gt;
@@ -12344,6 +12344,18 @@ export default class Example {
 &lt;tui-avatar appearance=&quot;primary&quot; [src]=&quot;item.icon&quot; /&gt;
 &lt;span tuiTitle&gt; {{ item.title }} &lt;span tuiSubtitle&gt;{{ item.subtitle }}&lt;/span&gt;
 &lt;/span&gt;
+&lt;/span&gt;
+&lt;/ng-template&gt;
+&lt;/tui-textfield&gt;
+&lt;/label&gt;
+&lt;label tuiLabel&gt; Inverted title and subtitle &lt;tui-textfield tuiChevron [content]=&quot;title&quot; [tuiTextfieldCleaner]=&quot;false&quot; &gt;
+&lt;input tuiSelect [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-data-list-wrapper *tuiTextfieldDropdown new [itemContent]=&quot;title&quot; [items]=&quot;items&quot; /&gt;
+&lt;ng-template #title let-item &gt;
+&lt;span tuiCell&gt;
+&lt;tui-avatar appearance=&quot;primary&quot; [src]=&quot;item.icon&quot; /&gt;
+&lt;span tuiTitle&gt;
+&lt;span tuiSubtitle&gt;{{ item.subtitle }}&lt;/span&gt; {{ item.title }} &lt;/span&gt;
 &lt;/span&gt;
 &lt;/ng-template&gt;
 &lt;/tui-textfield&gt;
