@@ -9805,6 +9805,40 @@ export default class Example {
 }
 ```
 
+#### Dynamic height
+
+**Template:**
+```html
+<tui-carousel [max]="4" [min]="0" [style.inline-size.rem]="17" >
+<section *tuiItem="let index" appearance="neutral" tuiCardLarge="compact" [style.inline-size.%]="90" >
+<header tuiHeader>Slide {{ index + 1 }}</header> {{ texts[index] }} </section>
+</tui-carousel>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCarousel} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiCardLarge, TuiCarousel, TuiHeader],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly texts = [
+        'Lorem ipsum dolor sit amet',
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+        'Contrary to popular belief, Lorem Ipsum is not simply random text',
+        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable",
+    ];
+}
+```
+
 #### Multiple
 
 **Template:**
@@ -9885,7 +9919,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Looped', 'Automatic', 'Multiple'];
+    protected readonly examples = [
+        'Basic',
+        'Looped',
+        'Automatic',
+        'Dynamic height',
+        'Multiple',
+    ];
 }
 ```
 
