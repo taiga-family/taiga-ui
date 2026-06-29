@@ -1,0 +1,136 @@
+import"./chunk-HU6DUUP4.js";var n=`<p>Right-click any table row.</p>
+
+<table tuiTable>
+    <thead>
+        <tr>
+            @for (column of tableColumns; track column) {
+                <th
+                    tuiTh
+                    [class.actions]="column === 'actions'"
+                >
+                    {{ column }}
+                </th>
+            }
+        </tr>
+    </thead>
+
+    <tbody tuiTbody>
+        @for (rowInfo of tableData; track rowInfo.character) {
+            <tr
+                #contextDropdown="tuiDropdown"
+                tuiDropdownContext
+                [tuiDropdown]="contextMenu"
+                (contextmenu)="closeActionMenu()"
+            >
+                <td tuiTd>
+                    {{ rowInfo.character }}
+                </td>
+
+                <td tuiTd>
+                    {{ rowInfo.actor }}
+                </td>
+
+                <td
+                    tuiTd
+                    class="actions"
+                >
+                    <button
+                        appearance="flat"
+                        iconEnd="@tui.chevron-right"
+                        size="s"
+                        tuiButton
+                        tuiDropdownAlign="end"
+                        tuiDropdownSided
+                        type="button"
+                        [tuiAppearanceState]="isActionMenuOpen(rowInfo.character) ? 'active' : null"
+                        [tuiDropdown]="actionMenu"
+                        [tuiDropdownOpen]="isActionMenuOpen(rowInfo.character)"
+                        (tuiDropdownOpenChange)="
+                            onActionMenuOpenChange($event, rowInfo.character); $event && contextDropdown.toggle(false)
+                        "
+                    >
+                        More
+                    </button>
+
+                    <ng-template
+                        #actionMenu
+                        let-close
+                    >
+                        <tui-data-list>
+                            <tui-opt-group>
+                                @for (item of actionItems; track item) {
+                                    <button
+                                        tuiOption
+                                        type="button"
+                                        (click)="printToConsole(item, rowInfo); close()"
+                                    >
+                                        {{ item }}
+                                    </button>
+                                }
+                            </tui-opt-group>
+
+                            <hr />
+
+                            <tui-opt-group>
+                                <button
+                                    tuiOption
+                                    type="button"
+                                    (click)="close()"
+                                >
+                                    Nevermind
+                                </button>
+                            </tui-opt-group>
+                        </tui-data-list>
+                    </ng-template>
+                </td>
+
+                <ng-template
+                    #contextMenu
+                    let-close
+                >
+                    <tui-data-list
+                        role="menu"
+                        tuiDataListDropdownManager
+                        class="context-menu"
+                    >
+                        @for (item of menuItems; track item.title) {
+                            <button
+                                tuiOption
+                                type="button"
+                                [iconEnd]="item.iconName"
+                                (click)="printToConsole(item.title, rowInfo); close()"
+                            >
+                                {{ item.title }}
+                            </button>
+                        }
+
+                        <button
+                            iconEnd="@tui.chevron-right"
+                            tuiDropdownAlign="end"
+                            tuiDropdownSided
+                            tuiOption
+                            type="button"
+                            [tuiDropdown]="nestedMenu"
+                        >
+                            More
+                        </button>
+                    </tui-data-list>
+
+                    <ng-template #nestedMenu>
+                        <tui-data-list>
+                            @for (option of moreOptions; track option) {
+                                <button
+                                    tuiOption
+                                    type="button"
+                                >
+                                    {{ option }}
+                                </button>
+                            }
+                        </tui-data-list>
+                    </ng-template>
+                </ng-template>
+            </tr>
+        }
+    </tbody>
+</table>
+`;export{n as default};

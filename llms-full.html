@@ -49287,10 +49287,25 @@ export default class Example {}
 &lt;p&gt;Right-click any table row.&lt;/p&gt;
 &lt;table tuiTable&gt;
 &lt;thead&gt;
-&lt;tr&gt; @for (column of tableColumns; track column) { &lt;th tuiTh&gt; {{ column }} &lt;/th&gt; } &lt;/tr&gt;
+&lt;tr&gt; @for (column of tableColumns; track column) { &lt;th tuiTh [class.actions]=&quot;column === &#039;actions&#039;&quot; &gt; {{ column }} &lt;/th&gt; } &lt;/tr&gt;
 &lt;/thead&gt;
-&lt;tbody tuiTbody&gt; @for (rowInfo of tableData; track rowInfo) { &lt;tr #dropdown=&quot;tuiDropdown&quot; tuiDropdownContext [tuiDropdown]=&quot;contextMenu&quot; &gt; @for (value of getObjectValues(rowInfo); track value) { &lt;td tuiTd&gt; {{ value }} &lt;/td&gt; } &lt;ng-template #contextMenu&gt;
-&lt;tui-data-list role=&quot;menu&quot; tuiDataListDropdownManager class=&quot;context-menu&quot; &gt; @for (item of menuItems; track item) { &lt;button tuiOption type=&quot;button&quot; [iconEnd]=&quot;item.iconName&quot; (click)=&quot;printToConsole(item.title, rowInfo); dropdown.toggle(false)&quot; &gt; {{ item.title }} &lt;/button&gt; } &lt;button iconEnd=&quot;@tui.chevron-right&quot; tuiDropdownAlign=&quot;end&quot; tuiDropdownSided tuiOption type=&quot;button&quot; [tuiDropdown]=&quot;nestedMenu&quot; &gt; More &lt;/button&gt;
+&lt;tbody tuiTbody&gt; @for (rowInfo of tableData; track rowInfo.character) { &lt;tr #contextDropdown=&quot;tuiDropdown&quot; tuiDropdownContext [tuiDropdown]=&quot;contextMenu&quot; (contextmenu)=&quot;closeActionMenu()&quot; &gt;
+&lt;td tuiTd&gt; {{ rowInfo.character }} &lt;/td&gt;
+&lt;td tuiTd&gt; {{ rowInfo.actor }} &lt;/td&gt;
+&lt;td tuiTd class=&quot;actions&quot; &gt;
+&lt;button appearance=&quot;flat&quot; iconEnd=&quot;@tui.chevron-right&quot; size=&quot;s&quot; tuiButton tuiDropdownAlign=&quot;end&quot; tuiDropdownSided type=&quot;button&quot; [tuiAppearanceState]=&quot;isActionMenuOpen(rowInfo.character) ? &#039;active&#039; : null&quot; [tuiDropdown]=&quot;actionMenu&quot; [tuiDropdownOpen]=&quot;isActionMenuOpen(rowInfo.character)&quot; (tuiDropdownOpenChange)=&quot; onActionMenuOpenChange($event, rowInfo.character); $event &amp;&amp; contextDropdown.toggle(false) &quot; &gt; More &lt;/button&gt;
+&lt;ng-template #actionMenu let-close &gt;
+&lt;tui-data-list&gt;
+&lt;tui-opt-group&gt; @for (item of actionItems; track item) { &lt;button tuiOption type=&quot;button&quot; (click)=&quot;printToConsole(item, rowInfo); close()&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-opt-group&gt;
+&lt;hr /&gt;
+&lt;tui-opt-group&gt;
+&lt;button tuiOption type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Nevermind &lt;/button&gt;
+&lt;/tui-opt-group&gt;
+&lt;/tui-data-list&gt;
+&lt;/ng-template&gt;
+&lt;/td&gt;
+&lt;ng-template #contextMenu let-close &gt;
+&lt;tui-data-list role=&quot;menu&quot; tuiDataListDropdownManager class=&quot;context-menu&quot; &gt; @for (item of menuItems; track item.title) { &lt;button tuiOption type=&quot;button&quot; [iconEnd]=&quot;item.iconName&quot; (click)=&quot;printToConsole(item.title, rowInfo); close()&quot; &gt; {{ item.title }} &lt;/button&gt; } &lt;button iconEnd=&quot;@tui.chevron-right&quot; tuiDropdownAlign=&quot;end&quot; tuiDropdownSided tuiOption type=&quot;button&quot; [tuiDropdown]=&quot;nestedMenu&quot; &gt; More &lt;/button&gt;
 &lt;/tui-data-list&gt;
 &lt;ng-template #nestedMenu&gt;
 &lt;tui-data-list&gt; @for (option of moreOptions; track option) { &lt;button tuiOption type=&quot;button&quot; &gt; {{ option }} &lt;/button&gt; } &lt;/tui-data-list&gt;
@@ -49305,11 +49320,11 @@ import {Component, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiTable} from &#039;@taiga-ui/addon-table&#039;;
-import {TuiDataList, TuiDialogService, TuiDropdown} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 import {TuiDataListDropdownManager} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
+    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -49317,6 +49332,9 @@ import {TuiDataListDropdownManager} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
+    protected openActionMenu: string | null = null;
+    protected readonly actionItems = [&#039;Edit&#039;, &#039;Download&#039;, &#039;Rename&#039;, &#039;Delete&#039;];
 
     protected readonly menuItems = [
         {title: &#039;View&#039;, iconName: &#039;@tui.eye&#039;},
@@ -49334,11 +49352,20 @@ export default class Example {
         {character: &#039;Rachel Green&#039;, actor: &#039;Jennifer Aniston&#039;},
     ] as const;
 
-    protected readonly tableColumns = Object.keys(this.tableData[0]);
+    protected readonly tableColumns = [&#039;character&#039;, &#039;actor&#039;, &#039;actions&#039;];
     protected readonly moreOptions = [&#039;Option 1&#039;, &#039;Option 2&#039;, &#039;Option 3&#039;];
 
-    protected getObjectValues = (obj: Record&lt;string, unknown&gt;): unknown[] =&gt;
-        Object.values(obj);
+    protected isActionMenuOpen(rowId: string): boolean {
+        return this.openActionMenu === rowId;
+    }
+
+    protected onActionMenuOpenChange(open: boolean, rowId: string): void {
+        this.openActionMenu = open ? rowId : null;
+    }
+
+    protected closeActionMenu(): void {
+        this.openActionMenu = null;
+    }
 
     protected printToConsole(action: string, contextInfo: unknown): void {
         this.dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
@@ -49369,6 +49396,12 @@ export default class Example {
 
 [tuiTd] {
     font: var(--tui-typography-body-m) !important;
+}
+
+.actions {
+    inline-size: 1%;
+    text-align: end;
+    white-space: nowrap;
 }
 ```
 
