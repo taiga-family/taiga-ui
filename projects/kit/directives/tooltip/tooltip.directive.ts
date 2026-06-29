@@ -100,10 +100,11 @@ export class TuiTooltip implements DoCheck {
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.isMobile) {
-            event.stopPropagation();
+        if (!this.isMobile) {
+            return;
         }
 
+        event.stopPropagation();
         this.driver.toggle();
     }
 }

@@ -596,6 +596,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'tuiIsNativeMouseFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
             name: 'tuiBlurNativeFocused',
             moduleSpecifier: '@taiga-ui/cdk',
         },
@@ -1031,6 +1041,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiDropdownContent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiPopupService',
             moduleSpecifier: '@taiga-ui/core',
         },
     },

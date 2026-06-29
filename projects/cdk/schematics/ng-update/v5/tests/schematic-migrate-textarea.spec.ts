@@ -147,6 +147,22 @@ describe('ng-update legacy textarea', () => {
     );
 
     it(
+        'places (ngModelChange) on the inner <textarea tuiTextarea>, not the wrapper',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    class="tui-space_top-5"
+                    [ngModel]="markdown"
+                    [style.min-height.rem]="30"
+                    (ngModelChange)="markdown$.next($event)"
+                >
+                    Markdown
+                </tui-textarea>
+            `,
+        }),
+    );
+
+    it(
         'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet>',
         migrate({
             component: /* TypeScript */ `
@@ -161,6 +177,33 @@ describe('ng-update legacy textarea', () => {
             `,
             template:
                 '<tui-textarea formControlName="value" [tuiTextfieldCustomContent]="myTpl">Bio</tui-textarea>',
+        }),
+    );
+
+    it(
+        'migrates self-closing <tui-textarea ... /> and removes [expandable]',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    [expandable]="true"
+                    [ngModel]="control.value"
+                    [ngModelOptions]="{updateOn: 'change'}"
+                    (ngModelChange)="control.setValue($event)"
+                />
+            `,
+        }),
+    );
+
+    it(
+        'migrates self-closing <tui-textarea /> without absorbing following siblings',
+        migrate({
+            template: /* HTML */ `
+                <tui-textarea
+                    formControlName="value"
+                    [expandable]="false"
+                />
+                <button tuiButton>Save</button>
+            `,
         }),
     );
 

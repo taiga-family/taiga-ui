@@ -14,6 +14,49 @@ exports[`ng-update migrate tuiBlurNativeFocused to tuiBlurFocused: test.ts 1`] =
 }
 `;
 
+exports[`ng-update migrate tuiGetClosestFocusable with drop removed keyboard option: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    tuiGetClosestFocusable,
+                    tuiIsNativeMouseFocusable,
+                } from '@taiga-ui/cdk';
+
+                @Component({})
+                export class Test {
+                    private findNextTool(
+                        wrapper?: HTMLElement | null,
+                    ): HTMLElement | null {
+                        return !wrapper || tuiIsNativeMouseFocusable(wrapper)
+                            ? (wrapper ?? null)
+                            : tuiGetClosestFocusable({
+                                  initial: wrapper,
+                                  root: this.el,
+                                  keyboard: false,
+                              });
+                    }
+                }
+            ",
+  "1. After": "
+                import { tuiGetClosestFocusable, tuiIsFocusable } from '@taiga-ui/cdk';
+
+                @Component({})
+                export class Test {
+                    private findNextTool(
+                        wrapper?: HTMLElement | null,
+                    ): HTMLElement | null {
+                        return !wrapper || tuiIsFocusable(wrapper)
+                            ? (wrapper ?? null)
+                            : tuiGetClosestFocusable({
+                                  initial: wrapper,
+                                  root: this.el
+                              });
+                    }
+                }
+            ",
+}
+`;
+
 exports[`ng-update migrate tuiGetNativeFocused to tuiGetFocused: test.ts 1`] = `
 {
   "0. Before": "
@@ -142,6 +185,20 @@ exports[`ng-update migrate tuiIsNativeKeyboardFocusable to tuiIsFocusable: test.
                 import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
 
                 tuiIsNativeKeyboardFocusable(document.createElement('div'));
+            ",
+  "1. After": "import { tuiIsFocusable } from "@taiga-ui/cdk";
+
+                                tuiIsFocusable(document.createElement('div'));
+            ",
+}
+`;
+
+exports[`ng-update migrate tuiIsNativeMouseFocusable to tuiIsFocusable: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
+
+                tuiIsNativeMouseFocusable(document.createElement('div'));
             ",
   "1. After": "import { tuiIsFocusable } from "@taiga-ui/cdk";
 

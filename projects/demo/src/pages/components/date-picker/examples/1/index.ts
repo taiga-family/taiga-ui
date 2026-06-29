@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
+import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
 import {
     TuiButtonSelect,
     TuiInputDate,
@@ -27,6 +27,7 @@ import {TuiForm} from '@taiga-ui/layout';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    providers: [tuiCalendarOptionsProvider({showWeek: true})],
 })
 export default class Example {
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});

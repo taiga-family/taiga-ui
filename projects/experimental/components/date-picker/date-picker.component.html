@@ -1,4 +1,45 @@
 <header class="t-header">
+    @if (dropdown?.nativeElement?.matches(':not(input)')) {
+        @switch (mode()) {
+            @case ('multi') {
+                <tui-textfield
+                    multi
+                    class="t-textfield"
+                >
+                    <input
+                        tuiInputDateMulti
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+            @case ('range') {
+                <tui-textfield class="t-textfield">
+                    <input
+                        tuiInputDateRange
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+            @default {
+                <tui-textfield class="t-textfield">
+                    <input
+                        tuiInputDate
+                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
+                        [max]="max()"
+                        [min]="min()"
+                        [(ngModel)]="value"
+                    />
+                </tui-textfield>
+            }
+        }
+    }
+
     @if (view() !== 'year') {
         <button
             appearance=""
@@ -10,8 +51,10 @@
             [tuiChevron]="false"
             (click)="view.set(view() === 'day' ? 'month' : 'year')"
         ></button>
+    } @else {
+        @let years = month().year + (carousel()?.index() || 0) * 12 - 6 | tuiMapper: getItems;
+        <b>{{ years[0] }}-{{ years[years.length - 1] }}</b>
     }
-    <span>&ZeroWidthSpace;</span>
     <button
         tabindex="-1"
         tuiIconButton
@@ -35,49 +78,55 @@
         {{ texts()[1] }}
     </button>
 </header>
-<section tuiSlides>
-    @switch (view()) {
-        @case ('day') {
-            <tui-carousel
-                [index]="month().year * 12 + month().month"
-                [max]="max().year * 12 + max().month"
-                [min]="min().year * 12 + min().month"
-                (indexChange)="month.set(getMonth($event))"
-            >
-                <tui-calendar
-                    *tuiItem="let index"
-                    new
-                    [disabledItemHandler]="disabledDay()"
-                    [month]="index | tuiMapper: getMonth"
-                    [value]="value()"
-                    (pick)="onDay($event)"
-                />
-            </tui-carousel>
-        }
+<tui-elastic-container>
+    <section tuiSlides>
+        @switch (view()) {
+            @case ('day') {
+                <tui-carousel
+                    [index]="month().year * 12 + month().month"
+                    [max]="max().year * 12 + max().month"
+                    [min]="min().year * 12 + min().month"
+                    (indexChange)="month.set(getMonth($event))"
+                >
+                    <tui-calendar
+                        *tuiItem="let index"
+                        new
+                        [content]="contentDay()"
+                        [disabledItemHandler]="disabledDay()"
+                        [month]="index | tuiMapper: getMonth"
+                        [value]="value()"
+                        (pick)="onDay($event)"
+                    />
+                </tui-carousel>
+            }
 
-        @case ('month') {
-            <tui-data-grid
-                [content]="content()"
-                [disabledItemHandler]="disabledMonth()"
-                [items]="0 | tuiMapper: getItems"
-                [value]="months()"
-                (pick)="onMonth($event)"
-            />
-        }
-
-        @case ('year') {
-            <tui-carousel
-                [max]="yearMax()"
-                [min]="yearMin()"
-            >
+            @case ('month') {
                 <tui-data-grid
-                    *tuiItem="let offset"
-                    [disabledItemHandler]="disabledYear()"
-                    [items]="month().year + offset * 12 - 6 | tuiMapper: getItems"
-                    [value]="years()"
-                    (pick)="onYear($event)"
+                    class="t-grid"
+                    [content]="contentMonth() ?? content()"
+                    [disabledItemHandler]="disabledMonth()"
+                    [items]="year()"
+                    [value]="months()"
+                    (pick)="onMonth($event)"
                 />
-            </tui-carousel>
+            }
+
+            @case ('year') {
+                <tui-carousel
+                    [max]="yearMax()"
+                    [min]="yearMin()"
+                >
+                    <tui-data-grid
+                        *tuiItem="let offset"
+                        class="t-grid"
+                        [content]="contentYear()"
+                        [disabledItemHandler]="disabledYear()"
+                        [items]="month().year + offset * 12 - 6 | tuiMapper: getItems"
+                        [value]="years()"
+                        (pick)="onYear($event)"
+                    />
+                </tui-carousel>
+            }
         }
-    }
-</section>
+    </section>
+</tui-elastic-container>

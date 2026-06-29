@@ -73,6 +73,44 @@ describe('ng-update', () => {
     );
 
     it(
+        'migrate tuiIsNativeMouseFocusable to tuiIsFocusable',
+        migrate({
+            component: /* TypeScript */ `
+                import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
+
+                tuiIsNativeMouseFocusable(document.createElement('div'));
+            `,
+        }),
+    );
+
+    it(
+        'migrate tuiGetClosestFocusable with drop removed keyboard option',
+        migrate({
+            component: /* TypeScript */ `
+                import {
+                    tuiGetClosestFocusable,
+                    tuiIsNativeMouseFocusable,
+                } from '@taiga-ui/cdk';
+
+                @Component({})
+                export class Test {
+                    private findNextTool(
+                        wrapper?: HTMLElement | null,
+                    ): HTMLElement | null {
+                        return !wrapper || tuiIsNativeMouseFocusable(wrapper)
+                            ? (wrapper ?? null)
+                            : tuiGetClosestFocusable({
+                                  initial: wrapper,
+                                  root: this.el,
+                                  keyboard: false,
+                              });
+                    }
+                }
+            `,
+        }),
+    );
+
+    it(
         'migrate tuiBlurNativeFocused to tuiBlurFocused',
         migrate({
             component: /* TypeScript */ `
