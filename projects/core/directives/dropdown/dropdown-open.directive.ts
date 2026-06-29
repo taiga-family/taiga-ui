@@ -38,7 +38,10 @@ import {filter, fromEvent, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
-import {TUI_DROPDOWN_HOST} from './dropdown.providers';
+import {
+    TUI_DROPDOWN_HOST,
+    TUI_DROPDOWN_ACTIVE_ZONE_CLOSE_GUARD,
+} from './dropdown.providers';
 
 @Directive({
     standalone: true,
@@ -70,6 +73,7 @@ export class TuiDropdownOpen implements OnChanges, ElementRef<Element> {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
+    private readonly activeZoneCloseGuards = inject(TUI_DROPDOWN_ACTIVE_ZONE_CLOSE_GUARD);
     private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
@@ -97,7 +101,12 @@ export class TuiDropdownOpen implements OnChanges, ElementRef<Element> {
                 merge(
                     tuiCloseWatcher(),
                     this.obscured.tuiObscured.pipe(filter(Boolean)),
-                    this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
+                    this.activeZone.tuiActiveZoneChange.pipe(
+                        filter((active) => !active),
+                        filter(() =>
+                            this.activeZoneCloseGuards.every(({canClose}) => canClose()),
+                        ),
+                    ),
                     fromEvent(this.el, 'focusin').pipe(
                         filter(
                             (event) =>
