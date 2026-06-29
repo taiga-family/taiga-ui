@@ -12,9 +12,10 @@ import {
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_CALENDAR_OPTIONS} from './calendar.options';
 import {TuiWeekPipe} from './week.pipe';
@@ -24,7 +25,13 @@ import {TuiWeekPipe} from './week.pipe';
  */
 @Component({
     selector: 'tui-calendar[new]',
-    imports: [TuiCalendarSheetPipe, TuiMapperPipe, TuiWeekPipe, UpperCasePipe],
+    imports: [
+        PolymorpheusOutlet,
+        TuiCalendarSheetPipe,
+        TuiMapperPipe,
+        TuiWeekPipe,
+        UpperCasePipe,
+    ],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,6 +55,7 @@ export class TuiCalendar {
     public readonly pick = output<TuiDay>();
     public readonly month = input(TuiMonth.currentLocal());
     public readonly value = input<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
+    public readonly content = input<PolymorpheusContent<TuiContext<TuiDay>>>();
 
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
