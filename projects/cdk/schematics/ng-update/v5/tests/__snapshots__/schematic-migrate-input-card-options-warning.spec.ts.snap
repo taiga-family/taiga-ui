@@ -19,9 +19,9 @@ exports[`ng-update tuiInputCardOptionsProvider warning adds TODO comment for tui
   "1. After": "
                 import {Component, inject} from '@angular/core';
                 import {
-// TODO: (Taiga UI migration) TUI_INPUT_CARD_OPTIONS has been removed. Use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group
+// TODO: (Taiga UI migration) TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
                     TUI_INPUT_CARD_OPTIONS,
-// TODO: (Taiga UI migration) tuiInputCardOptionsProvider has been removed. Use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce instead. The options shape changed: icon, paymentSystemHandler and autocomplete are gone; the new options are cardValidator, placeholder, cvcPlaceholder, cvcHidden and inputs. See https://taiga-ui.dev/components/input-card-group
+// TODO: (Taiga UI migration) tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
                     tuiInputCardOptionsProvider,
                 } from '@taiga-ui/addon-commerce';
 
