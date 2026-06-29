@@ -13,7 +13,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -127,8 +127,8 @@ export class TuiDatePicker<
             day < this.min() || day > this.max() || this.disabledItemHandler()(day),
     );
 
-    protected readonly disabledMonth = computed(
-        () => (month: TuiMonth) => month < this.min() || month > this.max(),
+    protected readonly disabledMonth = computed<TuiBooleanHandler<TuiMonth>>(
+        () => (month) => month.monthBefore(this.min()) || month.monthAfter(this.max()),
     );
 
     protected readonly disabledYear = computed(
