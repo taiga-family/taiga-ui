@@ -24,7 +24,8 @@ exports[`ng-update migrate packages update packages from v4: package.json 1`] = 
                     "@taiga-ui/addon-table": "5.0.1",
                     "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "4.0.0",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/editor": "4.0.0"
                  }
              }
             ",
@@ -46,11 +47,12 @@ exports[`ng-update migrate packages update packages from v4: package.json 1`] = 
                     "@taiga-ui/icons": "5.0.1",
                     "@taiga-ui/i18n": "5.0.1",
                     "@taiga-ui/dompurify": "^5.0.0",
-                    "@taiga-ui/event-plugins": "^5.0.0",
+                    "@taiga-ui/editor": "^5.4.0",
                     "@taiga-ui/addon-table": "5.0.1",
+                    "@taiga-ui/event-plugins": "^5.0.0",
                     "@taiga-ui/addon-mobile": "5.0.1",
-                    "@taiga-ui/polymorpheus": "^5.0.0",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/polymorpheus": "^5.0.0"
                  }
              }
             ",
@@ -79,7 +81,8 @@ exports[`ng-update migrate packages update packages from v5 to v5: package.json 
                     "@taiga-ui/addon-table": "5.0.1",
                     "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "^5.0.0",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/editor": "5.0.0"
                  }
              }
             ",
@@ -99,11 +102,12 @@ exports[`ng-update migrate packages update packages from v5 to v5: package.json 
                     "@taiga-ui/icons": "5.0.1",
                     "@taiga-ui/i18n": "5.0.1",
                     "@taiga-ui/dompurify": "^5.0.0",
-                    "@taiga-ui/event-plugins": "^5.0.0",
+                    "@taiga-ui/editor": "^5.4.0",
                     "@taiga-ui/addon-table": "5.0.1",
+                    "@taiga-ui/event-plugins": "^5.0.0",
                     "@taiga-ui/addon-mobile": "5.0.1",
-                    "@taiga-ui/polymorpheus": "^5.0.0",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/polymorpheus": "^5.0.0"
                  }
              }
             ",
