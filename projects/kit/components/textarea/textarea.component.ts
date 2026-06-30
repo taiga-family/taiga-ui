@@ -37,8 +37,8 @@ export class TuiTextareaComponent implements OnInit {
     private ref?: TuiTextareaContent;
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
-    public readonly isMobile = inject(WA_IS_MOBILE);
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);

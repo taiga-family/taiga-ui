@@ -6,6 +6,7 @@ import {
     viewChild,
     ViewEncapsulation,
 } from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -31,6 +32,7 @@ export class TuiTextareaContent {
 
     protected readonly host = inject(TuiTextareaComponent);
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     public scrollTo(top: number): void {
         this.textRef()?.nativeElement.scrollTo({top});
