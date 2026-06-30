@@ -1,1 +1,0 @@
-import{J as o,qa as n}from"./chunk-5NTBH5AZ.js";import{Wb as e,zc as r}from"./chunk-NUYCOIDP.js";var t=class t{constructor(){this.el=n();this.autoId=o()}get id(){return this.el.id||this.autoId}};t.\u0275fac=function(i){return new(i||t)},t.\u0275dir=e({type:t,selectors:[["","tuiId",""]],hostVars:1,hostBindings:function(i,d){i&2&&r("id",d.id)}});var s=t;export{s as a};

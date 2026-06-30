@@ -1,0 +1,16 @@
+import"./chunk-HU6DUUP4.js";var t=`<tui-carousel
+    [max]="4"
+    [min]="0"
+    [style.inline-size.rem]="17"
+>
+    <section
+        *tuiItem="let index"
+        appearance="neutral"
+        tuiCardLarge="compact"
+        [style.inline-size.%]="90"
+    >
+        <header tuiHeader>Slide {{ index + 1 }}</header>
+        {{ texts[index] }}
+    </section>
+</tui-carousel>
+`;export{t as default};

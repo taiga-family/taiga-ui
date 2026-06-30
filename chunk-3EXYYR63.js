@@ -1,0 +1,23 @@
+import"./chunk-HU6DUUP4.js";var l=`<button
+    aria-label="Select date"
+    iconEnd="@tui.calendar"
+    tuiButton
+    tuiButtonSelect
+    [(ngModel)]="value"
+>
+    {{ value() || 'Select date' }}
+    <div *tuiDropdown="let close">
+        <tui-date-picker />
+        <button
+            appearance="action"
+            size="m"
+            tuiButton
+            type="button"
+            [style.inline-size.%]="100"
+            (click)="value.set(null); close()"
+        >
+            Clear
+        </button>
+    </div>
+</button>
+`;export{l as default};
