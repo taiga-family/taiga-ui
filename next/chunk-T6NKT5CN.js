@@ -1,0 +1,47 @@
+import"./chunk-HU6DUUP4.js";var i=`<tui-textfield multi>
+    <label tuiLabel>Pick days off</label>
+    <input
+        tuiInputDateMulti
+        [ngModel]="value()"
+        (ngModelChange)="onValueChange($event)"
+    />
+    <div
+        *tuiDropdown
+        [style.display]="'flex'"
+    >
+        <tui-date-picker
+            [contentDay]="content"
+            [dayType]="dayType()"
+            [showAdjacent]="true"
+            [showWeek]="true"
+        />
+        <tui-data-list>
+            @for (user of users; track $index) {
+                <button
+                    tuiOption
+                    (click)="current.set($index)"
+                >
+                    <span [tuiAvatar]="user | tuiInitials"></span>
+                    {{ user }}
+                    @if (current() === $index) {
+                        <tui-icon icon="@tui.check" />
+                    }
+                </button>
+            }
+        </tui-data-list>
+        <ng-template
+            #content
+            let-day
+        >
+            {{ day.day }}
+            @if (getHint(day); as hint) {
+                <span
+                    tuiHintDirection="top"
+                    class="hint"
+                    [tuiHint]="hint"
+                ></span>
+            }
+        </ng-template>
+    </div>
+</tui-textfield>
+`;export{i as default};
