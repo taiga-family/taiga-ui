@@ -13899,6 +13899,30 @@ export default class Page {
 - **Type**: components
 This is a work in progress The APIs might change in the future, use with caution
 
+### Example
+
+```html
+<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [(month)]="month" [(view)]="view" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [(month)] | `TuiMonth` | current month |
+| [(view)] | `'day' | 'month' | 'year'` | current view |
+| [(value)] | `T | null` | a single day, array or a range |
+| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
+| [max] | `TuiDay | null` | maximal date to choose |
+| [min] | `TuiDay | null` | minimum date to choose |
+| [showAdjacent] | `boolean` | display dates from adjacent months |
+| [showWeek] | `boolean` | display week number on each row |
+| [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
+| [dayType] | `TuiStringHandler<TuiDay>` |  |
+| [contentDay] | `PolymorpheusContent<TuiContext<TuiDay>>` | custom template for day cell |
+| [contentMonth] | `PolymorpheusContent<TuiContext<TuiMonth>>` | custom template for month cell |
+| [contentYear] | `PolymorpheusContent<TuiContext<number>>` | custom template for year cell |
+
 ### Usage Examples
 
 #### Example 1
@@ -13921,11 +13945,6 @@ This is a work in progress The APIs might change in the future, use with caution
 <input formControlName="range" tuiInputDateRange [max]="max" [min]="min" />
 <tui-date-picker *tuiDropdown mode="range" />
 </tui-textfield>
-<button aria-label="Select date" formControlName="button" iconEnd="@tui.calendar" tuiButton tuiButtonSelect > {{ form.controls.button.value || 'Select date' }} <div *tuiDropdown="let close">
-<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" />
-<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="form.controls.button.setValue(null); close()" > Clear </button>
-</div>
-</button>
 </form>
 ```
 **TypeScript:**
@@ -13935,21 +13954,13 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
-import {
-    TuiButtonSelect,
-    TuiInputDate,
-    TuiInputDateMulti,
-    TuiInputDateRange,
-} from '@taiga-ui/kit';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiInputDate, TuiInputDateMulti, TuiInputDateRange} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiButton,
-        TuiButtonSelect,
         TuiDatePicker,
         TuiForm,
         TuiInputDate,
@@ -13959,7 +13970,6 @@ import {TuiForm} from '@taiga-ui/layout';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiCalendarOptionsProvider({showWeek: true})],
 })
 export default class Example {
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
@@ -13969,7 +13979,6 @@ export default class Example {
         single: new FormControl(),
         multi: new FormControl(),
         range: new FormControl(),
-        button: new FormControl(),
     });
 
     protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
@@ -14003,7 +14012,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiDatePicker} from '@taiga-ui/experimental';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
@@ -14011,7 +14020,6 @@ import {TuiInputDate} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiCalendarOptionsProvider({showWeek: false})],
 })
 export default class Example {
     protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
@@ -14040,21 +14048,204 @@ export default class Example {
 }
 ```
 
+#### Example 3
+
+**Template:**
+```html
+<button aria-label="Select date" iconEnd="@tui.calendar" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value() || 'Select date' }} <div *tuiDropdown="let close">
+<tui-date-picker />
+<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="value.set(null); close()" > Clear </button>
+</div>
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiDay} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {
+    TuiButtonSelect,
+    TuiInputDate,
+    TuiInputDateMulti,
+    TuiInputDateRange,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiDatePicker,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(null);
+}
+```
+
+#### Example 4
+
+**Template:**
+```html
+<tui-textfield multi>
+<label tuiLabel>Pick days off</label>
+<input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
+<div *tuiDropdown [style.display]="'flex'" >
+<tui-date-picker [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
+<tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
+<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} @if (current() === $index) { <tui-icon icon="@tui.check" /> } </button> } </tui-data-list>
+<ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
+</div>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {type TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiDataList, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiDataList,
+        TuiDatePicker,
+        TuiHint,
+        TuiIcon,
+        TuiInitialsPipe,
+        TuiInputDateMulti,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Example {
+    protected readonly users = ['Alex Inkin', 'Roman Sedov'];
+    protected readonly value = computed(() => this.groups().flat());
+    protected readonly current = signal(0);
+
+    protected readonly groups = signal<TuiDay[][]>(
+        Array.from({length: this.users.length}, () => []),
+    );
+
+    protected readonly dayType = computed<TuiStringHandler<TuiDay>>(
+        (groups = this.groups(), current = this.current()) =>
+            (day) =>
+                [
+                    day.isWeekend ? 'weekend' : 'weekday',
+                    groups[current]?.find((item) => item.daySame(day))
+                        ? 'current'
+                        : 'other',
+                ].join(' '),
+    );
+
+    protected onValueChange(value: TuiDay[]): void {
+        const added = value.filter((item) => !this.value().includes(item));
+        const removed = this.value().filter((item) => !value.includes(item));
+
+        this.groups.update((groups) =>
+            groups
+                .map((group) => group.filter((item) => !removed.includes(item)))
+                .map((group, i) => (i === this.current() ? group.concat(added) : group)),
+        );
+    }
+
+    protected getHint(day: TuiDay): string | undefined {
+        return this.users[
+            this.groups().findIndex((group) => group.find((item) => day.daySame(item)))
+        ];
+    }
+}
+```
+**LESS:**
+```less
+tui-date-picker [data-type~='other']::before {
+    opacity: var(--tui-disabled-opacity);
+}
+
+tui-date-picker .hint {
+    position: absolute;
+    inset: 0;
+}
+```
+
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    type TuiBooleanHandler,
+    TuiDay,
+    TuiMonth,
+} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
+import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 
 @Component({
-    imports: [TuiDemo, TuiTitle],
+    imports: [TuiDatePicker, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly routes = DemoRoute;
+    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
+
+    protected readonly months = [
+        new TuiMonth(2021, 1),
+        TuiMonth.currentLocal(),
+        TuiMonth.currentLocal().append({month: -5}),
+    ] as const;
+
+    protected month = this.months[0];
+    protected readonly views = ['day', 'month', 'year'] as const;
+    protected view = this.views[0];
+    protected showAdjacent = this.options.showAdjacent;
+    protected showWeek = this.options.showWeek;
+
+    protected readonly minVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2017, 2, 5),
+        new TuiDay(1900, 0, 1),
+    ];
+
+    protected min = this.minVariants[0]!;
+
+    protected readonly maxVariants = [
+        TUI_LAST_DAY,
+        new TuiDay(2020, 3, 30),
+        new TuiDay(2300, 0, 1),
+    ];
+
+    protected max = this.maxVariants[0]!;
+
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
+
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
+}
 ```
 
 ---
