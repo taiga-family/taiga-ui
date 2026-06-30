@@ -2744,11 +2744,19 @@ import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {WaIntersectionObserver} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
 import {TUI_DARK_MODE, TUI_LIQUID_GLASS, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiAppBar, TuiDynamicHeader, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
-    imports: [TuiAppBar, TuiDynamicHeader, TuiHeader, TuiTitle, WaIntersectionObserver],
+    imports: [
+        TuiAppBar,
+        TuiDynamicHeader,
+        TuiHeader,
+        TuiPlatform,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
