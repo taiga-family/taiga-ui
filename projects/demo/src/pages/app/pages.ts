@@ -287,6 +287,13 @@ export const pages: DocRoutePages = [
                     'поле, инпут, форма, ввод, input, month, месяц, год, дата, day, week, month, year',
                 route: DemoRoute.CalendarMonth,
             },
+            {
+                section: 'Components',
+                title: 'DatePicker',
+                keywords:
+                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker, date, day, week, month, year',
+                route: DemoRoute.DatePicker,
+            },
         ],
     },
     {

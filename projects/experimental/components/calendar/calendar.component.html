@@ -1,4 +1,4 @@
-@if (options.showWeek) {
+@if (showWeek()) {
     <span>#</span>
 }
 @for (day of week(); track $index) {
@@ -6,8 +6,8 @@
 }
 @for (week of month() | tuiCalendarSheet: true; track week) {
     @for (day of week; track day) {
-        @if (day.month <= month().month || options.showAdjacent) {
-            @if (options.showWeek && $first) {
+        @if (day.monthSameOrBefore(month()) || showAdjacent()) {
+            @if (showWeek() && $first) {
                 <button
                     disabled
                     tabindex="-1"
@@ -22,10 +22,10 @@
                 type="button"
                 class="t-day"
                 [attr.data-range]="getRange(day)"
-                [attr.data-type]="day | tuiMapper: options.dayType"
+                [attr.data-type]="day | tuiMapper: dayType()"
                 [class.t-day_adjacent]="day.month !== month().month"
                 [class.t-day_end]="$last"
-                [class.t-day_hidden]="day.month < month().month && !options.showAdjacent"
+                [class.t-day_hidden]="day.monthBefore(month()) && !showAdjacent()"
                 [class.t-day_start]="$first"
                 [class.t-day_today]="day.daySame(today)"
                 [disabled]="disabledItemHandler()(day)"

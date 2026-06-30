@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {tuiCalendarOptionsProvider, TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiDatePicker} from '@taiga-ui/experimental';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
@@ -13,7 +13,6 @@ import {TuiInputDate} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiCalendarOptionsProvider({showWeek: false})],
 })
 export default class Example {
     protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
