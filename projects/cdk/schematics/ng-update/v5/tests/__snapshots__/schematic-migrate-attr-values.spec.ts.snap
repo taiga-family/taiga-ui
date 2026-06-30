@@ -360,6 +360,39 @@ exports[`ng-update start/end instead of left/right replaces for currencyAlign on
 }
 `;
 
+exports[`ng-update start/end instead of left/right replaces for direction array on tuiHintOptionsProvider: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']});
+                tuiHintOptionsProvider({
+                    direction: [
+                        'bottom-left',
+                        'bottom',
+                        'bottom-right',
+                        'left',
+                        'right-top',
+                    ],
+                });
+            ",
+  "1. After": "
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: ['top-start', 'top', 'end']});
+                tuiHintOptionsProvider({
+                    direction: [
+                        'bottom-start',
+                        'bottom',
+                        'bottom-end',
+                        'start',
+                        'end-top',
+                    ],
+                });
+            ",
+}
+`;
+
 exports[`ng-update start/end instead of left/right replaces for direction on tui-avatar-stack: test.html 1`] = `
 {
   "0. Before": "
