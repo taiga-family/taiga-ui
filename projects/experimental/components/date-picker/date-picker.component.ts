@@ -198,12 +198,6 @@ export class TuiDatePicker<
     }
 
     protected onDay(day: TuiDay): void {
-        if (day.monthAfter(this.month())) {
-            this.carousel()?.next();
-        } else if (day.monthBefore(this.month())) {
-            this.carousel()?.prev();
-        }
-
         if (this.mode() === 'range') {
             this.value.update((value): any =>
                 value instanceof TuiDayRange && value.from === value.to
