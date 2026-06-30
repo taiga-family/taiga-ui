@@ -512,7 +512,7 @@
 ### textarea
 
 ```text
-  TuiTextarea, TuiTextareaComponent, TuiTextareaDirective, TuiTextareaOptions
+  TuiTextarea, TuiTextareaComponent, TuiTextareaContent, TuiTextareaDirective, TuiTextareaOptions
 ```
 ### tiles
 
