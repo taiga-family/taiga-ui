@@ -10,9 +10,8 @@ tui-data-list:where(*&) {
     }
 
     &[data-size='s'] [tuiOption] {
-        min-block-size: 0;
         font: var(--tui-typography-ui-s);
-        padding: 0.375rem;
+        padding-inline: 0.375rem;
 
         &::before,
         &::after {
@@ -21,9 +20,8 @@ tui-data-list:where(*&) {
     }
 
     &[data-size='m'] [tuiOption] {
-        min-block-size: 2.25rem;
         font: var(--tui-typography-ui-s);
-        padding: 0.5rem 0.375rem;
+        padding-inline: 0.375rem;
     }
 
     &[data-size='l'] {
@@ -44,7 +42,6 @@ tui-data-list:where(*&) {
     [tuiOption] {
         .transition(background);
 
-        box-sizing: border-box;
         border-radius: var(--tui-radius-s);
         outline: none !important;
         cursor: pointer;

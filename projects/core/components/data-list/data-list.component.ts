@@ -48,7 +48,10 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiCellOptionsProvider(() => ({size: inject(TuiDataListComponent).size()})),
+        tuiCellOptionsProvider(() => ({
+            size: inject(TuiDataListComponent).size(),
+            height: 'compact',
+        })),
         tuiAsAuxiliary(TuiDataListComponent),
         {
             provide: TUI_OPTION_CONTENT,
