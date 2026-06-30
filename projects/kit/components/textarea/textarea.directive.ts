@@ -77,6 +77,7 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
     ],
     host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
+// TODO(v6): rename to TuiTextareaLimit
 export class TuiTextareaDirective implements Validator, DoCheck {
     private readonly value = inject(TUI_TEXTFIELD_VALUE);
     private readonly ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
