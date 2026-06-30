@@ -17,9 +17,9 @@ jobs:
     name: Publish canary
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
-      - uses: taiga-family/actions/setup-node@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
-      - uses: taiga-family/actions/setup-npm@6b70ab6d36d96e388bdaf4158e6dd841430abe23 # v2.3.0
+      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/setup-node@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/setup-npm@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npx ts-node ./scripts/publish-canary.ts

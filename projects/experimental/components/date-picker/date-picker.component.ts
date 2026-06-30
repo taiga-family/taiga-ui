@@ -13,7 +13,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -83,8 +83,8 @@ export class TuiDatePicker<
     protected readonly i18n = inject(TUI_MONTHS);
     protected readonly dropdown = inject(TUI_DROPDOWN_HOST, {optional: true});
 
-    protected readonly content = computed<PolymorpheusContent<TuiContext<number>>>(
-        () => (c) => this.i18n()[c.$implicit],
+    protected readonly content = computed<PolymorpheusContent<TuiContext<TuiMonth>>>(
+        () => (c) => this.i18n()[c.$implicit.month],
     );
 
     protected readonly years = computed((value = this.value()) =>
@@ -96,13 +96,15 @@ export class TuiDatePicker<
             : Array.from(new Set(coerceArray<TuiDay>(value ?? []).map(({year}) => year))),
     );
 
+    protected readonly year = computed(() =>
+        Array.from({length: 12}, (_, index) => new TuiMonth(this.month().year, index)),
+    );
+
     protected readonly months = computed((value = this.value()) =>
-        Array.from({length: 12}, (_, index) => index).filter((index) =>
+        this.year().filter((month) =>
             value instanceof TuiDayRange
-                ? value.monthInRange(new TuiMonth(this.month().year, index))
-                : coerceArray<TuiDay>(value ?? []).some(
-                      ({month, year}) => this.month().year === year && index === month,
-                  ),
+                ? value.monthInRange(month)
+                : coerceArray<TuiDay>(value ?? []).some((day) => day.monthSame(month)),
         ),
     );
 
@@ -125,10 +127,8 @@ export class TuiDatePicker<
             day < this.min() || day > this.max() || this.disabledItemHandler()(day),
     );
 
-    protected readonly disabledMonth = computed(
-        () => (month: number) =>
-            this.month().year * 12 + month < this.min().year * 12 + this.min().month ||
-            this.month().year * 12 + month > this.max().year * 12 + this.max().month,
+    protected readonly disabledMonth = computed<TuiBooleanHandler<TuiMonth>>(
+        () => (month) => month.monthBefore(this.min()) || month.monthAfter(this.max()),
     );
 
     protected readonly disabledYear = computed(
@@ -160,6 +160,9 @@ export class TuiDatePicker<
 
     public readonly view = model<'day' | 'month' | 'year'>('day');
     public readonly mode = input<T>();
+    public readonly contentDay = input<PolymorpheusContent<TuiContext<TuiDay>>>();
+    public readonly contentMonth = input<PolymorpheusContent<TuiContext<TuiMonth>>>();
+    public readonly contentYear = input<PolymorpheusContent<TuiContext<number>>>();
 
     protected getMonth(index: number): TuiMonth {
         return new TuiMonth(Math.floor(index / 12), index % 12);
@@ -182,8 +185,8 @@ export class TuiDatePicker<
         this.view.set('month');
     }
 
-    protected onMonth(index: number): void {
-        this.month.update(({year}) => new TuiMonth(year, index));
+    protected onMonth(month: TuiMonth): void {
+        this.month.set(month);
         this.view.set('day');
     }
 

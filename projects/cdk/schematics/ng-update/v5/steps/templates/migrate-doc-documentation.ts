@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -174,8 +175,15 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
         orderedAttrs.push(`[value]="${oneWayValue}"`);
     }
 
+    const valueChangeTodo =
+        valueChange === undefined
+            ? ''
+            : `<!-- ${TODO_MARK} $any($event) used because model<T>() emits T | undefined; consider using [(value)] two-way binding or replace $any($event) with $event ?? <default> -->\n`;
+
     if (valueChange !== undefined) {
-        orderedAttrs.push(`(valueChange)="${valueChange}"`);
+        orderedAttrs.push(
+            `(valueChange)="${valueChange.replaceAll('$event', '$any($event)')}"`,
+        );
     }
 
     const isMultiline = startTagStr.includes('\n');
@@ -188,11 +196,11 @@ function buildInnerReplacement(template: string, element: Element): Replacement[
 
         orderedAttrs.forEach((attr) => lines.push(`${attrIndent}${attr}`));
         lines.push(isSelfClosing ? `${elementIndent}/>` : `${elementIndent}>`);
-        newStartTag = lines.join('\n');
+        newStartTag = `${valueChangeTodo}${lines.join('\n')}`;
     } else {
         const close = isSelfClosing ? ' />' : '>';
 
-        newStartTag = `<tr ${orderedAttrs.join(' ')}${close}`;
+        newStartTag = `${valueChangeTodo}<tr ${orderedAttrs.join(' ')}${close}`;
     }
 
     replacements.push({

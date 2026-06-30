@@ -33,7 +33,9 @@
                 (mouseenter)="hovered.set(day)"
                 (pointerdown.prevent.zoneless)="(0)"
             >
-                {{ day.day }}
+                <ng-container *polymorpheusOutlet="content() || `${day.day}` as text; context: {$implicit: day}">
+                    {{ text }}
+                </ng-container>
             </button>
         }
     }

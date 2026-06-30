@@ -610,12 +610,12 @@ exports[`ng-update full page template migrates a realistic page with legacy cont
                     FormsModule,
                     ReactiveFormsModule,
                 } from '@angular/forms';
-                import {TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
+                import { TuiMobileCalendarDropdown, TUI_CALENDAR_DATE_STREAM } from '@taiga-ui/addon-mobile';
                 import {tuiControlValue, type TuiDay, TuiPlatform} from '@taiga-ui/cdk';
                 import { TuiButton, TuiCalendar, TuiDialogService, TuiDropdown, TuiHint, TuiIcon, TuiLabel, TuiLink, TuiSlider, TuiCheckbox, TUI_BREAKPOINT } from '@taiga-ui/core';
                 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
                 import {TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
-                import { TUI_CALENDAR_DATE_STREAM, TuiAccordion, TuiPush, TuiSwitch, TuiInputDate, TuiInputChip, TuiTooltip } from '@taiga-ui/kit';
+                import { TuiAccordion, TuiPush, TuiSwitch, TuiInputDate, TuiInputChip, TuiTooltip } from '@taiga-ui/kit';
                 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
                 import {type Observable} from 'rxjs';
 
