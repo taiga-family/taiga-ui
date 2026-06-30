@@ -16,6 +16,7 @@ import {
     withInMemoryScrolling,
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
+import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -52,6 +53,7 @@ import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {provideHighlightOptions} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
 
+import {TUI_PLATFORM_KEY} from '../../components/settings/platform-key';
 import {AuthService} from '../components/dialog/examples/5/service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
@@ -81,7 +83,11 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_PLATFORM,
-            useValue: 'web',
+            useFactory: () => {
+                const stored = inject(WA_LOCAL_STORAGE)?.getItem(TUI_PLATFORM_KEY);
+
+                return stored === 'ios' || stored === 'android' ? stored : 'web';
+            },
         },
         provideHighlightOptions({
             coreLibraryLoader: async () => import('highlight.js/lib/core'),
