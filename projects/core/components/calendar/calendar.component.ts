@@ -45,7 +45,7 @@ import {TuiCalendarYear} from './calendar-year.component';
         tuiAsAuxiliary(TuiCalendar),
         tuiProvide(AbstractTuiCalendar, TuiCalendar),
     ],
-    host: {'(pointerdown.prevent.zoneless)': '0'},
+    host: {'(mousedown.prevent.zoneless)': '0'},
 })
 export class TuiCalendar extends AbstractTuiCalendar {
     protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
