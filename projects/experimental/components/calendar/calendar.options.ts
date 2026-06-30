@@ -13,7 +13,7 @@ export interface TuiCalendarOptions {
 export const TUI_CALENDAR_DEFAULT_OPTIONS: TuiCalendarOptions = {
     dayType: (day) => (day.isWeekend ? 'weekend' : 'weekday'),
     weekFirstDay: signal(TuiDayOfWeek.Monday),
-    showAdjacent: true,
+    showAdjacent: false,
     showWeek: false,
 };
 

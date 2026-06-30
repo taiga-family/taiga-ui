@@ -36,16 +36,16 @@ import {TuiWeekPipe} from './week.pipe';
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._ww]': 'options.showWeek',
+        '[class._ww]': 'showWeek()',
         '(mouseleave)': 'hovered.set(null)',
     },
 })
 export class TuiCalendar {
     private readonly days = inject(TUI_SHORT_WEEK_DAYS);
+    private readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);
-    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
 
     protected readonly week = computed((week = convert(this.days())) => [
         ...week.slice(this.options.weekFirstDay()),
@@ -56,6 +56,9 @@ export class TuiCalendar {
     public readonly month = input(TuiMonth.currentLocal());
     public readonly value = input<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
     public readonly content = input<PolymorpheusContent<TuiContext<TuiDay>>>();
+    public readonly dayType = input(this.options.dayType);
+    public readonly showAdjacent = input(this.options.showAdjacent);
+    public readonly showWeek = input(this.options.showWeek);
 
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);

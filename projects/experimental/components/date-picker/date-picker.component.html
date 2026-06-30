@@ -1,4 +1,42 @@
 <header class="t-header">
+    @if (view() !== 'year') {
+        <button
+            appearance=""
+            tabindex="-1"
+            tuiLink
+            type="button"
+            class="t-button"
+            [textContent]="button()"
+            [tuiChevron]="false"
+            (click)="view.set(view() === 'day' ? 'month' : 'year')"
+        ></button>
+    } @else {
+        @let years = month().year + (carousel()?.index() || 0) * 12 - 6 | tuiMapper: getItems;
+        <b>{{ years[0] }}-{{ years[years.length - 1] }}</b>
+    }
+    <button
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        class="t-chevron"
+        [disabled]="start()"
+        [iconStart]="icons.decrement"
+        (click)="onSpin(-1)"
+    >
+        {{ texts()[0] }}
+    </button>
+    <button
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        class="t-chevron"
+        [disabled]="end()"
+        [iconStart]="icons.increment"
+        (click)="onSpin(1)"
+    >
+        {{ texts()[1] }}
+    </button>
+
     @if (dropdown?.nativeElement?.matches(':not(input)')) {
         @switch (mode()) {
             @case ('multi') {
@@ -39,44 +77,6 @@
             }
         }
     }
-
-    @if (view() !== 'year') {
-        <button
-            appearance=""
-            tabindex="-1"
-            tuiLink
-            type="button"
-            class="t-button"
-            [textContent]="button()"
-            [tuiChevron]="false"
-            (click)="view.set(view() === 'day' ? 'month' : 'year')"
-        ></button>
-    } @else {
-        @let years = month().year + (carousel()?.index() || 0) * 12 - 6 | tuiMapper: getItems;
-        <b>{{ years[0] }}-{{ years[years.length - 1] }}</b>
-    }
-    <button
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-chevron"
-        [disabled]="start()"
-        [iconStart]="icons.decrement"
-        (click)="onSpin(-1)"
-    >
-        {{ texts()[0] }}
-    </button>
-    <button
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-chevron"
-        [disabled]="end()"
-        [iconStart]="icons.increment"
-        (click)="onSpin(1)"
-    >
-        {{ texts()[1] }}
-    </button>
 </header>
 <tui-elastic-container>
     <section tuiSlides>
@@ -92,8 +92,11 @@
                         *tuiItem="let index"
                         new
                         [content]="contentDay()"
+                        [dayType]="dayType()"
                         [disabledItemHandler]="disabledDay()"
                         [month]="index | tuiMapper: getMonth"
+                        [showAdjacent]="showAdjacent()"
+                        [showWeek]="showWeek()"
                         [value]="value()"
                         (pick)="onDay($event)"
                     />

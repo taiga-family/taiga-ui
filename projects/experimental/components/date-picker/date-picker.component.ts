@@ -28,7 +28,10 @@ import {
     TUI_SPIN_TEXTS,
     tuiAsAuxiliary,
 } from '@taiga-ui/core/tokens';
-import {TuiCalendar} from '@taiga-ui/experimental/components/calendar';
+import {
+    TUI_CALENDAR_OPTIONS,
+    TuiCalendar,
+} from '@taiga-ui/experimental/components/calendar';
 import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
 import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
 import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
@@ -77,6 +80,7 @@ type DatePicker<T> = T extends 'single'
 export class TuiDatePicker<
     T extends 'multi' | 'range' | 'single' = 'single',
 > extends AbstractTuiCalendar<DatePicker<T>> {
+    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
@@ -163,6 +167,9 @@ export class TuiDatePicker<
     public readonly contentDay = input<PolymorpheusContent<TuiContext<TuiDay>>>();
     public readonly contentMonth = input<PolymorpheusContent<TuiContext<TuiMonth>>>();
     public readonly contentYear = input<PolymorpheusContent<TuiContext<number>>>();
+    public readonly dayType = input(this.options.dayType);
+    public readonly showAdjacent = input(this.options.showAdjacent);
+    public readonly showWeek = input(this.options.showWeek);
 
     protected getMonth(index: number): TuiMonth {
         return new TuiMonth(Math.floor(index / 12), index % 12);
