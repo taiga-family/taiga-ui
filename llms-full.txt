@@ -512,7 +512,7 @@
 ### textarea
 
 ```text
-  TuiTextarea, TuiTextareaComponent, TuiTextareaDirective, TuiTextareaOptions
+  TuiTextarea, TuiTextareaComponent, TuiTextareaContent, TuiTextareaDirective, TuiTextareaOptions
 ```
 ### tiles
 
@@ -614,7 +614,7 @@
 ### unfinished-validator
 
 ```text
-  TuiUnfinishedValidator
+  TuiUnfinishedValidator, TuiUnfinishedValidatorRefresh
 ```
 ### unmask-handler
 
@@ -841,7 +841,7 @@
 ### calendar
 
 ```text
-  TuiCalendar
+  TuiCalendar, TuiCalendarOptions, TuiWeekPipe
 ```
 ### data-grid
 
@@ -919,7 +919,7 @@
 ### input-search
 
 ```text
-  TuiInputSearch
+  TuiInputSearch, TuiInputSearchContent
 ```
 ### item-group
 
@@ -2735,11 +2735,19 @@ import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TUI_DARK_MODE, TUI_LIQUID_GLASS, TuiTitle} from '@taiga-ui/core';
 import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAppBar, TuiDynamicHeader, TuiHeader, TuiTitle, WaIntersectionObserver],
+    imports: [
+        TuiAppBar,
+        TuiDynamicHeader,
+        TuiHeader,
+        TuiPlatform,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -9805,6 +9813,40 @@ export default class Example {
 }
 ```
 
+#### Dynamic height
+
+**Template:**
+```html
+<tui-carousel [max]="4" [min]="0" [style.inline-size.rem]="17" >
+<section *tuiItem="let index" appearance="neutral" tuiCardLarge="compact" [style.inline-size.%]="90" >
+<header tuiHeader>Slide {{ index + 1 }}</header> {{ texts[index] }} </section>
+</tui-carousel>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCarousel} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiCardLarge, TuiCarousel, TuiHeader],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly texts = [
+        'Lorem ipsum dolor sit amet',
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+        'Contrary to popular belief, Lorem Ipsum is not simply random text',
+        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable",
+    ];
+}
+```
+
 #### Multiple
 
 **Template:**
@@ -9885,7 +9927,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Looped', 'Automatic', 'Multiple'];
+    protected readonly examples = [
+        'Basic',
+        'Looped',
+        'Automatic',
+        'Dynamic height',
+        'Multiple',
+    ];
 }
 ```
 
@@ -10535,7 +10583,7 @@ export default class Example {
 </button> } </div>
 <div tuiNotification>
 <code>Cell</code> is used inside <code>DataList</code> options and <code>Textfield</code> template by default. </div>
-<tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
+<label tuiLabel> Inside a textfield <tui-textfield tuiChevron [content]="content" [tuiTextfieldCleaner]="false" >
 <input tuiSelect [(ngModel)]="value" />
 <tui-data-list-wrapper *tuiDropdown [itemContent]="content" [items]="items" />
 <ng-template #content let-item >
@@ -10544,6 +10592,7 @@ export default class Example {
 </span>
 </ng-template>
 </tui-textfield>
+</label>
 ```
 **TypeScript:**
 ```ts
@@ -13848,7 +13897,31 @@ export default class Page {
 # components/DatePicker
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
-This is a work in progress, do not use!
+This is a work in progress The APIs might change in the future, use with caution
+
+### Example
+
+```html
+<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [(month)]="month" [(view)]="view" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [(month)] | `TuiMonth` | current month |
+| [(view)] | `'day' | 'month' | 'year'` | current view |
+| [(value)] | `T | null` | a single day, array or a range |
+| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
+| [max] | `TuiDay | null` | maximal date to choose |
+| [min] | `TuiDay | null` | minimum date to choose |
+| [showAdjacent] | `boolean` | display dates from adjacent months |
+| [showWeek] | `boolean` | display week number on each row |
+| [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
+| [dayType] | `TuiStringHandler<TuiDay>` |  |
+| [contentDay] | `PolymorpheusContent<TuiContext<TuiDay>>` | custom template for day cell |
+| [contentMonth] | `PolymorpheusContent<TuiContext<TuiMonth>>` | custom template for month cell |
+| [contentYear] | `PolymorpheusContent<TuiContext<number>>` | custom template for year cell |
 
 ### Usage Examples
 
@@ -13872,11 +13945,6 @@ This is a work in progress, do not use!
 <input formControlName="range" tuiInputDateRange [max]="max" [min]="min" />
 <tui-date-picker *tuiDropdown mode="range" />
 </tui-textfield>
-<button aria-label="Select date" formControlName="button" iconEnd="@tui.calendar" tuiButton tuiButtonSelect > {{ form.controls.button.value || 'Select date' }} <div *tuiDropdown="let close">
-<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" />
-<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="form.controls.button.setValue(null); close()" > Clear </button>
-</div>
-</button>
 </form>
 ```
 **TypeScript:**
@@ -13886,21 +13954,13 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
 import {TuiDatePicker} from '@taiga-ui/experimental';
-import {
-    TuiButtonSelect,
-    TuiInputDate,
-    TuiInputDateMulti,
-    TuiInputDateRange,
-} from '@taiga-ui/kit';
+import {TuiInputDate, TuiInputDateMulti, TuiInputDateRange} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiButton,
-        TuiButtonSelect,
         TuiDatePicker,
         TuiForm,
         TuiInputDate,
@@ -13919,10 +13979,208 @@ export default class Example {
         single: new FormControl(),
         multi: new FormControl(),
         range: new FormControl(),
-        button: new FormControl(),
     });
 
     protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
+}
+```
+
+#### Example 2
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Select date</label>
+<input tuiInputDate [(ngModel)]="value" />
+<tui-date-picker *tuiDropdown [contentDay]="day" [contentMonth]="month" />
+<ng-template #day let-date >
+<span tuiTitle> {{ date.day }} <span tuiSubtitle>{{ getLabel(date) }}</span>
+</span>
+</ng-template>
+<ng-template #month let-date >
+<span tuiTitle> {{ date.toUtcNativeDate() | date: 'MMM' }} <span tuiSubtitle>{{ date.year }}</span>
+</span>
+</ng-template>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {DatePipe} from '@angular/common';
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiInputDate} from '@taiga-ui/kit';
+
+@Component({
+    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
+
+    protected getLabel({day}: TuiDay): string {
+        switch (day) {
+            case 17:
+            case 18:
+            case 19:
+                return 'Sick';
+            case 20:
+                return '••';
+            case 25:
+                return '•••';
+            case 3:
+                return '••';
+            case 30:
+                return 'Q2';
+            case 4:
+            case 5:
+                return '•';
+            default:
+                return '';
+        }
+    }
+}
+```
+
+#### Example 3
+
+**Template:**
+```html
+<button aria-label="Select date" iconEnd="@tui.calendar" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value() || 'Select date' }} <div *tuiDropdown="let close">
+<tui-date-picker />
+<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="value.set(null); close()" > Clear </button>
+</div>
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiDay} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {
+    TuiButtonSelect,
+    TuiInputDate,
+    TuiInputDateMulti,
+    TuiInputDateRange,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiDatePicker,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(null);
+}
+```
+
+#### Example 4
+
+**Template:**
+```html
+<tui-textfield multi>
+<label tuiLabel>Pick days off</label>
+<input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
+<div *tuiDropdown [style.display]="'flex'" >
+<tui-date-picker [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
+<tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
+<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} @if (current() === $index) { <tui-icon icon="@tui.check" /> } </button> } </tui-data-list>
+<ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
+</div>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {type TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiDataList, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiDataList,
+        TuiDatePicker,
+        TuiHint,
+        TuiIcon,
+        TuiInitialsPipe,
+        TuiInputDateMulti,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Example {
+    protected readonly users = ['Alex Inkin', 'Roman Sedov'];
+    protected readonly value = computed(() => this.groups().flat());
+    protected readonly current = signal(0);
+
+    protected readonly groups = signal<TuiDay[][]>(
+        Array.from({length: this.users.length}, () => []),
+    );
+
+    protected readonly dayType = computed<TuiStringHandler<TuiDay>>(
+        (groups = this.groups(), current = this.current()) =>
+            (day) =>
+                [
+                    day.isWeekend ? 'weekend' : 'weekday',
+                    groups[current]?.find((item) => item.daySame(day))
+                        ? 'current'
+                        : 'other',
+                ].join(' '),
+    );
+
+    protected onValueChange(value: TuiDay[]): void {
+        const added = value.filter((item) => !this.value().includes(item));
+        const removed = this.value().filter((item) => !value.includes(item));
+
+        this.groups.update((groups) =>
+            groups
+                .map((group) => group.filter((item) => !removed.includes(item)))
+                .map((group, i) => (i === this.current() ? group.concat(added) : group)),
+        );
+    }
+
+    protected getHint(day: TuiDay): string | undefined {
+        return this.users[
+            this.groups().findIndex((group) => group.find((item) => day.daySame(item)))
+        ];
+    }
+}
+```
+**LESS:**
+```less
+tui-date-picker [data-type~='other']::before {
+    opacity: var(--tui-disabled-opacity);
+}
+
+tui-date-picker .hint {
+    position: absolute;
+    inset: 0;
 }
 ```
 
@@ -13930,16 +14188,64 @@ export default class Example {
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    type TuiBooleanHandler,
+    TuiDay,
+    TuiMonth,
+} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDatePicker, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly routes = DemoRoute;
+    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
+
+    protected readonly months = [
+        new TuiMonth(2021, 1),
+        TuiMonth.currentLocal(),
+        TuiMonth.currentLocal().append({month: -5}),
+    ] as const;
+
+    protected month = this.months[0];
+    protected readonly views = ['day', 'month', 'year'] as const;
+    protected view = this.views[0];
+    protected showAdjacent = this.options.showAdjacent;
+    protected showWeek = this.options.showWeek;
+
+    protected readonly minVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2017, 2, 5),
+        new TuiDay(1900, 0, 1),
+    ];
+
+    protected min = this.minVariants[0]!;
+
+    protected readonly maxVariants = [
+        TUI_LAST_DAY,
+        new TuiDay(2020, 3, 30),
+        new TuiDay(2300, 0, 1),
+    ];
+
+    protected max = this.maxVariants[0]!;
+
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
+
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
+}
 ```
 
 ---
@@ -17072,7 +17378,7 @@ export default class Example {
     protected floating = true;
     protected secondAction = false;
     protected background = true;
-    protected color = 'rgba(255, 221, 45, 0.8)';
+    protected color = '#ffdd2dcc';
 }
 ```
 **LESS:**
@@ -28073,7 +28379,7 @@ Component cuts overflown text with "..." and shows it by hover
 ### Example
 
 ```html
-<tui-line-clamp [content]="content || defaultExampleContent" [lineHeight]="lineHeight" [linesLimit]="linesLimit" [style.maxWidth.px]="maxWidth" (overflownChange)="overflownChange.emitEvent($event)" />
+<tui-line-clamp [content]="content || defaultExampleContent" [lineHeight]="lineHeight" [linesLimit]="linesLimit" [showHint]="showHint" [style.maxWidth.px]="maxWidth" (overflownChange)="overflownChange.emitEvent($event)" />
 <ng-template #defaultExampleContent> Lorem ipsum <br /> Gaudeamus igitur <br />
 <strong>Carpe diem</strong>
 <br /> Veni, vidi, vici </ng-template>
@@ -28086,6 +28392,7 @@ Component cuts overflown text with "..." and shows it by hover
 | [content] | `PolymorpheusContent` | full content inside |
 | [lineHeight] | `number` | height of single line, used to limit component's height. |
 | [linesLimit] | `number` | number of visible lines |
+| [showHint] | `boolean` | show hint on hover when content is overflown |
 | [style.max-width.px] | `number` | value of max-width |
 
 ### API - Outputs
@@ -28763,6 +29070,7 @@ export default class Page {
     protected lineHeight = 24;
     protected maxWidth = 100;
     protected content = '';
+    protected showHint = true;
 
     protected readonly examples = [
         'Styles change',
@@ -29303,6 +29611,7 @@ export default class Example {
 <p>
 <button iconStart="@tui.settings" tuiLink type="button" [textContent]="'Link with icon left'" ></button>
 </p>
+<button iconEnd="@font.home" tuiLink type="button" [style.--tui-font-icon]="'Material Symbols Outlined'" [textContent]="'Link with font icon'" ></button>
 ```
 **TypeScript:**
 ```ts
@@ -49233,10 +49542,25 @@ export default class Example {}
 <p>Right-click any table row.</p>
 <table tuiTable>
 <thead>
-<tr> @for (column of tableColumns; track column) { <th tuiTh> {{ column }} </th> } </tr>
+<tr> @for (column of tableColumns; track column) { <th tuiTh [class.actions]="column === 'actions'" > {{ column }} </th> } </tr>
 </thead>
-<tbody tuiTbody> @for (rowInfo of tableData; track rowInfo) { <tr #dropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" > @for (value of getObjectValues(rowInfo); track value) { <td tuiTd> {{ value }} </td> } <ng-template #contextMenu>
-<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
+<tbody tuiTbody> @for (rowInfo of tableData; track rowInfo.character) { <tr #contextDropdown="tuiDropdown" tuiDropdownContext [tuiDropdown]="contextMenu" (contextmenu)="closeActionMenu()" >
+<td tuiTd> {{ rowInfo.character }} </td>
+<td tuiTd> {{ rowInfo.actor }} </td>
+<td tuiTd class="actions" >
+<button appearance="flat" iconEnd="@tui.chevron-right" size="s" tuiButton tuiDropdownAlign="end" tuiDropdownSided type="button" [tuiAppearanceState]="isActionMenuOpen(rowInfo.character) ? 'active' : null" [tuiDropdown]="actionMenu" [tuiDropdownOpen]="isActionMenuOpen(rowInfo.character)" (tuiDropdownOpenChange)=" onActionMenuOpenChange($event, rowInfo.character); $event && contextDropdown.toggle(false) " > More </button>
+<ng-template #actionMenu let-close >
+<tui-data-list>
+<tui-opt-group> @for (item of actionItems; track item) { <button tuiOption type="button" (click)="printToConsole(item, rowInfo); close()" > {{ item }} </button> } </tui-opt-group>
+<hr />
+<tui-opt-group>
+<button tuiOption type="button" (click)="close()" > Nevermind </button>
+</tui-opt-group>
+</tui-data-list>
+</ng-template>
+</td>
+<ng-template #contextMenu let-close >
+<tui-data-list role="menu" tuiDataListDropdownManager class="context-menu" > @for (item of menuItems; track item.title) { <button tuiOption type="button" [iconEnd]="item.iconName" (click)="printToConsole(item.title, rowInfo); close()" > {{ item.title }} </button> } <button iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownSided tuiOption type="button" [tuiDropdown]="nestedMenu" > More </button>
 </tui-data-list>
 <ng-template #nestedMenu>
 <tui-data-list> @for (option of moreOptions; track option) { <button tuiOption type="button" > {{ option }} </button> } </tui-data-list>
@@ -49251,11 +49575,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
+    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -49263,6 +49587,9 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+
+    protected openActionMenu: string | null = null;
+    protected readonly actionItems = ['Edit', 'Download', 'Rename', 'Delete'];
 
     protected readonly menuItems = [
         {title: 'View', iconName: '@tui.eye'},
@@ -49280,11 +49607,20 @@ export default class Example {
         {character: 'Rachel Green', actor: 'Jennifer Aniston'},
     ] as const;
 
-    protected readonly tableColumns = Object.keys(this.tableData[0]);
+    protected readonly tableColumns = ['character', 'actor', 'actions'];
     protected readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
 
-    protected getObjectValues = (obj: Record<string, unknown>): unknown[] =>
-        Object.values(obj);
+    protected isActionMenuOpen(rowId: string): boolean {
+        return this.openActionMenu === rowId;
+    }
+
+    protected onActionMenuOpenChange(open: boolean, rowId: string): void {
+        this.openActionMenu = open ? rowId : null;
+    }
+
+    protected closeActionMenu(): void {
+        this.openActionMenu = null;
+    }
 
     protected printToConsole(action: string, contextInfo: unknown): void {
         this.dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
@@ -49315,6 +49651,12 @@ export default class Example {
 
 [tuiTd] {
     font: var(--tui-typography-body-m) !important;
+}
+
+.actions {
+    inline-size: 1%;
+    text-align: end;
+    white-space: nowrap;
 }
 ```
 
