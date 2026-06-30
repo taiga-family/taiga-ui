@@ -1,5 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import {WA_IS_ANDROID} from '@ng-web-apis/platform';
+import {WA_IS_ANDROID, WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -13,7 +13,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         tuiSelectLike: '',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)':
-            'options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
+            'isMobile || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
         '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
         '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
@@ -25,6 +25,7 @@ export class TuiSelectLike {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly isAndroid = inject(WA_IS_ANDROID);
 
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected clear(): void {
