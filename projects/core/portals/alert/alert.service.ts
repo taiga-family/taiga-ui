@@ -9,8 +9,8 @@ export abstract class TuiAlertService<T, K = void> extends TuiPortal<T, K> {
     private readonly current = new Map<unknown, ComponentRef<unknown>>();
     private readonly queue = new Set<PolymorpheusComponent<unknown>>();
 
-    constructor(concurrency: number) {
-        super(inject(TuiPopupService));
+    constructor(concurrency: number, service = inject(TuiPopupService)) {
+        super(service);
         this.concurrency = Math.min(concurrency, 5);
     }
 
