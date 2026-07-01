@@ -29,6 +29,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputNumberModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiInputNumber',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiTextfield',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {
             name: 'TuiButtonClose',
             moduleSpecifier: '@taiga-ui/kit',
         },

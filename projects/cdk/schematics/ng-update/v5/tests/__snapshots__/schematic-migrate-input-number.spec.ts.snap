@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update adds TODO comment for dynamic [tuiTextfieldLabelOutside]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-number
+                    formControlName="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Amount
+                </tui-input-number>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.
+-->
+<tui-textfield
+                    
+                    
+                >
+                    Amount
+                
+<input tuiInputNumber formControlName="value" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update adds TODO comment for dynamic [tuiTextfieldLabelOutside]: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputNumberModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputNumberModule],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+import { TuiInputNumber } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiInputNumber, TuiInput],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputNumberModule to TuiInputNumber: test.html 1`] = `
+{
+  "0. Before": "
+                <form [formGroup]="form">
+                    <tui-input-number formControlName="value">
+                        Enter a number
+                    </tui-input-number>
+                </form>
+
+                <tui-input-number
+                    class="b-form"
+                    [max]="100"
+                    [min]="0"
+                    [step]="1"
+                    [formControl]="control"
+                >
+                    Percentage
+                </tui-input-number>
+
+                <tui-input-number
+                    formControlName="value"
+                    tuiTextfieldPrefix="$"
+                    tuiTextfieldPostfix=" per day"
+                    tuiTextfieldSize="s"
+                >
+                    Balance
+                </tui-input-number>
+
+                <tui-input-number
+                    formControlName="value"
+                    [tuiTextfieldLabelOutside]="true"
+                >
+                    Amount
+                </tui-input-number>
+
+                <tui-input-number [formControl]="control">
+                    Enter a number
+                    <input
+                        placeholder="Enter a number"
+                        tuiTextfield
+                    />
+                </tui-input-number>
+            ",
+  "1. After": "
+                <form [formGroup]="form">
+                    <tui-textfield >
+<label tuiLabel>
+                        Enter a number
+                    </label>
+
+<input tuiInputNumber formControlName="value" />
+</tui-textfield>
+                </form>
+
+                <tui-textfield
+                    class="b-form"
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Percentage
+                </label>
+
+<input tuiInputNumber [formControl]="control" [max]="100" [min]="0" [step]="1" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                    
+                    tuiTextfieldSize="s"
+                >
+<label tuiLabel>
+                    Balance
+                </label>
+
+<input tuiInputNumber formControlName="value" prefix="$" postfix=" per day" />
+</tui-textfield>
+
+                <tui-textfield
+                    
+                    
+                >
+<input tuiInputNumber formControlName="value" placeholder="Amount" />
+</tui-textfield>
+
+                <tui-textfield >
+<label tuiLabel>
+                    Enter a number
+                    </label>
+<input
+                        placeholder="Enter a number"
+                        tuiInputNumber [formControl]="control"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiInputNumberModule to TuiInputNumber: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputNumberModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                    imports: [
+                        // ...
+                        TuiInputNumberModule,
+                    ],
+                    // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputNumberModule,
+                    ],
+                    templateUrl: './test.html',
+                    // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+import { TuiInputNumber } from "@taiga-ui/kit";
+
+                                @NgModule({
+                    imports: [
+                        // ...
+                        TuiInputNumber, TuiInput,
+                    ],
+                    // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputNumber, TuiInput,
+                    ],
+                    templateUrl: './test.html',
+                    // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;
