@@ -40,6 +40,7 @@ import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
 import {migrateInputDate} from './templates/migrate-input-date';
+import {migrateInputDateTime} from './templates/migrate-input-date-time';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
 import {migrateInputMonth} from './templates/migrate-input-month';
@@ -100,6 +101,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputPassword,
         migrateInputMonth,
+        migrateInputDateTime,
         migrateInputDate,
         migrateInputTime,
         migrateInputPhoneInternational,
