@@ -22,12 +22,14 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
-import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
 import {
-    TUI_DOC_DEMO_TEXTS,
-    TUI_DOC_ICONS,
-    TUI_DOC_URL_STATE_HANDLER,
-} from '@taiga-ui/addon-doc/tokens';
+    ActivatedRoute,
+    type Params,
+    Router,
+    UrlSerializer,
+    type UrlTree,
+} from '@angular/router';
+import {TUI_DOC_DEMO_TEXTS, TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -98,7 +100,8 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    private readonly activatedRoute = inject(ActivatedRoute);
+    private readonly router = inject(Router);
     private readonly darkMode = inject(TUI_DARK_MODE);
 
     protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
@@ -200,7 +203,10 @@ export class TuiDocDemo implements AfterViewInit {
             ...tuiCleanObject({...params}),
         };
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        void this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: tree.queryParams,
+        });
     }
 
     private createForm(): void {

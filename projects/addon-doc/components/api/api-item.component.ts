@@ -9,8 +9,7 @@ import {
     type OnInit,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
-import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {ActivatedRoute, type Params, Router, UrlSerializer} from '@angular/router';
 import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInput} from '@taiga-ui/core/components/input';
@@ -48,7 +47,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
-    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    private readonly router = inject(Router);
     private readonly alerts = inject(TuiNotificationService);
 
     protected readonly numberItem = inject(TuiDocAPINumberItem, {
@@ -134,6 +133,9 @@ export class TuiDocAPIItem<T> implements OnInit {
             [propName]: computedValue,
         };
 
-        this.locationRef.go(this.urlStateHandler(tree));
+        void this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: tree.queryParams,
+        });
     }
 }
