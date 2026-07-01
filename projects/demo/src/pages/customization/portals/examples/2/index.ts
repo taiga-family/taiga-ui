@@ -15,13 +15,7 @@ import {CustomPortalService} from './service';
     imports: [CustomHost, TuiButton, TuiNotification, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        {
-            provide: TuiNotificationService,
-            useClass: TuiNotificationService,
-            deps: [CustomPortalService],
-        },
-    ],
+    providers: [{provide: TuiNotificationService, deps: [CustomPortalService]}],
 })
 export default class Example {
     protected readonly show = signal(false);
