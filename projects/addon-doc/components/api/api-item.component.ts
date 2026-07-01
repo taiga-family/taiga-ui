@@ -128,6 +128,7 @@ export class TuiDocAPIItem<T> implements OnInit {
             relativeTo: this.activatedRoute,
             queryParams: {[propName]: computedValue},
             queryParamsHandling: 'merge',
+            preserveFragment: true,
         });
     }
 }

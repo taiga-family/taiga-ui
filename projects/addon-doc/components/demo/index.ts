@@ -195,6 +195,7 @@ export class TuiDocDemo implements AfterViewInit {
         void this.router.navigate([], {
             relativeTo: this.activatedRoute,
             queryParams,
+            preserveFragment: true,
         });
     }
 
