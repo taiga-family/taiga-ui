@@ -18,13 +18,13 @@ type Element = DefaultTreeAdapterTypes.Element;
  * that `<tui-tooltip>` used to forward internally.
  */
 const ATTR_RENAMES = new Map<string, string>([
-    ['content', 'tuiTooltip'],
-    ['direction', 'tuiHintDirection'],
     ['appearance', 'tuiHintAppearance'],
-    ['showDelay', 'tuiHintShowDelay'],
-    ['hideDelay', 'tuiHintHideDelay'],
-    ['describeId', 'tuiTooltipDescribe'],
+    ['content', 'tuiTooltip'],
     ['context', 'tuiHintContext'],
+    ['describeId', 'tuiTooltipDescribe'],
+    ['direction', 'tuiHintDirection'],
+    ['hideDelay', 'tuiHintHideDelay'],
+    ['showDelay', 'tuiHintShowDelay'],
 ]);
 
 const RENAME_BY_LOWER = new Map(
