@@ -2,17 +2,16 @@
     appearance="flat"
     tuiButton
     tuiChevron
+    tuiDropdownLimitWidth="min"
     type="button"
     [tuiDropdown]="content"
-    [tuiDropdownLimitWidth]="isMobile ? 'fixed' : 'min'"
-    [tuiDropdownMaxHeight]="700"
     [(tuiDropdownOpen)]="open"
 >
     Why Taiga UI?
 </button>
 
 <ng-template #content>
-    <tui-data-list>
+    <tui-data-list [style.max-inline-size.rem]="35">
         @for (group of groups; track group) {
             <tui-opt-group [label]="group.label">
                 @for (item of group.items; track item) {
