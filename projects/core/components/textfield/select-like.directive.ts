@@ -13,7 +13,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         tuiSelectLike: '',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)':
-            '(isMobile && $event.inputType.includes("insert")) || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
+            '(isMobile && !$event.inputType.includes("deleteBy")) || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
         '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
         '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
