@@ -33,10 +33,10 @@ const INPUT_ATTRS = new Set(
  * equivalents are `prefix`/`postfix` inputs on `<input tuiInputNumber>`.
  */
 const AFFIX_RENAMES = new Map<string, string>([
-    ['tuiTextfieldPrefix'.toLowerCase(), 'prefix'],
+    ['[tuiTextfieldPostfix]'.toLowerCase(), '[postfix]'],
     ['[tuiTextfieldPrefix]'.toLowerCase(), '[prefix]'],
     ['tuiTextfieldPostfix'.toLowerCase(), 'postfix'],
-    ['[tuiTextfieldPostfix]'.toLowerCase(), '[postfix]'],
+    ['tuiTextfieldPrefix'.toLowerCase(), 'prefix'],
 ]);
 
 export function migrateInputNumber({
