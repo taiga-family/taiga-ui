@@ -1,4 +1,3 @@
-import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,7 +8,7 @@ import {
     type OnInit,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, type Params, Router, UrlSerializer} from '@angular/router';
+import {ActivatedRoute, type Params, Router} from '@angular/router';
 import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInput} from '@taiga-ui/core/components/input';
@@ -44,9 +43,7 @@ const SERIALIZED_SUFFIX = '$';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAPIItem<T> implements OnInit {
-    private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
-    private readonly urlSerializer = inject(UrlSerializer);
     private readonly router = inject(Router);
     private readonly alerts = inject(TuiNotificationService);
 
@@ -118,7 +115,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     }
 
     private setQueryParam(value: T | boolean | number | string | null): void {
-        const tree = this.urlSerializer.parse(this.locationRef.path());
         const isValueAvailableByKey = value instanceof Object;
         const items = this.items();
 
@@ -128,14 +124,10 @@ export class TuiDocAPIItem<T> implements OnInit {
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
         const propName = `${this.clearBrackets(this.name())}${suffix}`;
 
-        tree.queryParams = {
-            ...tree.queryParams,
-            [propName]: computedValue,
-        };
-
         void this.router.navigate([], {
             relativeTo: this.activatedRoute,
-            queryParams: tree.queryParams,
+            queryParams: {[propName]: computedValue},
+            queryParamsHandling: 'merge',
         });
     }
 }

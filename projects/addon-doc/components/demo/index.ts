@@ -1,4 +1,4 @@
-import {Location, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -22,13 +22,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
-import {
-    ActivatedRoute,
-    type Params,
-    Router,
-    UrlSerializer,
-    type UrlTree,
-} from '@angular/router';
+import {ActivatedRoute, type Params, Router} from '@angular/router';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
@@ -98,8 +92,6 @@ export class TuiDocDemo implements AfterViewInit {
 
     private readonly content = viewChild.required<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
-    private readonly locationRef = inject(Location);
-    private readonly urlSerializer = inject(UrlSerializer);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly darkMode = inject(TUI_DARK_MODE);
@@ -189,23 +181,20 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     private get params(): Params | TuiDemoParams {
-        return this.getUrlTree().queryParams;
+        return this.activatedRoute.snapshot.queryParams;
     }
 
     private updateUrl(params: TuiDemoParams): void {
-        const tree = this.getUrlTree();
-        const {queryParams} = tree;
-
-        delete queryParams.sandboxWidth;
-
-        tree.queryParams = {
-            ...queryParams,
+        const queryParams = {
+            ...this.activatedRoute.snapshot.queryParams,
             ...tuiCleanObject({...params}),
         };
 
+        delete queryParams.sandboxWidth;
+
         void this.router.navigate([], {
             relativeTo: this.activatedRoute,
-            queryParams: tree.queryParams,
+            queryParams,
         });
     }
 
@@ -215,9 +204,5 @@ export class TuiDocDemo implements AfterViewInit {
         if (control) {
             this.form = new FormGroup({value: control}, {updateOn: this.updateOn});
         }
-    }
-
-    private getUrlTree(): UrlTree {
-        return this.urlSerializer.parse(this.locationRef.path());
     }
 }
