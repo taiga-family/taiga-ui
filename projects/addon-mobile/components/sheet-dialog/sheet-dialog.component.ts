@@ -22,6 +22,7 @@ import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'r
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
+const SNAP_THRESHOLD = 8;
 
 @Component({
     selector: 'tui-sheet-dialog',
@@ -37,15 +38,17 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '[class._closeable]': 'context.closable',
         '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '(document:touchcancel.zoneless)': 'onTouch(-1)',
+        '(document:touchend.zoneless)': 'onTouchEnd()',
+        '(document:touchstart.passive.zoneless)': 'onTouch(1)',
+        '(scroll.zoneless)': 'onScroll()',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
+    private startScrollTop = Number.NaN;
+    private lastScrollTop = Number.NaN;
     private pointers = 0;
 
     protected readonly context =
@@ -62,7 +65,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             tuiZonefull(),
             exhaustMap(() => {
                 if (isObservable(this.context.closable)) {
-                    if (this.el.scrollTop <= 0) {
+                    if (this.el.scrollTop < this.initial) {
                         this.el.scrollTo({top: this.initial, behavior: 'smooth'});
                     }
 
@@ -77,22 +80,53 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial || 0;
+        this.el.scrollTop = this.initial;
     }
 
-    protected onPointerChange(delta: number): void {
+    protected onTouch(delta: -1 | 1): void {
+        this.lastScrollTop = Number.NaN;
+
+        if (delta > 0 && !this.pointers) {
+            this.startScrollTop = this.el.scrollTop;
+        }
+
         this.pointers = Math.max(this.pointers + delta, 0);
+    }
+
+    protected onTouchEnd(): void {
+        this.pointers = Math.max(this.pointers - 1, 0);
+
+        const draggedDown = this.startScrollTop > this.el.scrollTop;
 
         if (!this.pointers && this.el.scrollTop <= 0) {
             this.close$.next();
+        } else if (!this.pointers && draggedDown && this.el.scrollTop < this.initial) {
+            this.lastScrollTop = this.el.scrollTop;
         }
     }
 
-    private get initial(): number | undefined {
+    protected onScroll(): void {
+        if (this.pointers) {
+            return;
+        }
+
+        const hasReachedCloseThreshold =
+            this.lastScrollTop - this.el.scrollTop >= SNAP_THRESHOLD;
+
+        if (this.el.scrollTop <= 0 || hasReachedCloseThreshold) {
+            this.close$.next();
+        }
+
+        if (this.el.scrollTop > this.lastScrollTop) {
+            this.lastScrollTop = Number.NaN;
+        }
+    }
+
+    private get initial(): number {
         return this.context.closable
             ? this.stops()
                   .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
             : 0;
     }
 
