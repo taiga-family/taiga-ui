@@ -1,5 +1,6 @@
 import {Directive, inject, input} from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {tuiDataListOptionsProvider} from '@taiga-ui/core/components/data-list';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/portals/dropdown';
 
 import {TuiDropdownSheetComponent} from './dropdown-sheet.component';
@@ -14,6 +15,7 @@ import {TuiDropdownSheetComponent} from './dropdown-sheet.component';
                     ? TuiDropdownSheetComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
+        tuiDataListOptionsProvider(() => ({size: inject(WA_IS_MOBILE) ? 'l' : ''})),
     ],
 })
 export class TuiDropdownSheet {
