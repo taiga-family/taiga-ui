@@ -10,16 +10,19 @@ type Element = DefaultTreeAdapterTypes.Element;
  * from `attr.name` loses camelCase (`[formControlName]` → `[formcontrolname]`). Slicing
  * the original source by its recorded offsets avoids that whole class of bug.
  *
- * `attrNameLower` must be the lowercased name — that is how parse5 keys `attrs`.
+ * When source location info is unavailable, falls back to reconstructing the attribute
+ * from `attr.name`/`attr.value` so the value is never dropped (only the casing is lost).
  */
 export function getOriginalAttrText(
     template: string,
     element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLocation = element.sourceCodeLocation?.attrs?.[attrNameLower];
+    attr: {name: string; value: string},
+): string {
+    const attrLocation = element.sourceCodeLocation?.attrs?.[attr.name.toLowerCase()];
 
-    return attrLocation
-        ? template.slice(attrLocation.startOffset, attrLocation.endOffset)
-        : null;
+    if (attrLocation) {
+        return template.slice(attrLocation.startOffset, attrLocation.endOffset);
+    }
+
+    return attr.value ? `${attr.name}="${attr.value}"` : attr.name;
 }

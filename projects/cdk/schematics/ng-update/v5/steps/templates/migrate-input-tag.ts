@@ -254,9 +254,7 @@ export function migrateInputTag({
                     : `${result} ${renamed}`;
             }
 
-            const original =
-                getOriginalAttrText(template, element, nameLower) ??
-                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
             return `${result} ${original}`;
         }, '');
@@ -334,9 +332,7 @@ function migrateSelfClosingInputTag({
         }
 
         if (/formcontrol|ngmodel/.exec(nameLower)) {
-            const original =
-                getOriginalAttrText(template, element, nameLower) ??
-                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
             inputAttrParts.push(original);
             continue;
@@ -360,11 +356,7 @@ function migrateSelfClosingInputTag({
             continue;
         }
 
-        const original = getOriginalAttrText(template, element, nameLower);
-
-        wrapperAttrParts.push(
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-        );
+        wrapperAttrParts.push(getOriginalAttrText(template, element, attr));
     }
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;

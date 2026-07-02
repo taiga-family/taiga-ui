@@ -138,9 +138,7 @@ export function migrateInputMonth({
         );
 
         const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const original =
-                getOriginalAttrText(template, element, attr.name.toLowerCase()) ??
-                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
             return `${result} ${original}`;
         }, '');
