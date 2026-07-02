@@ -1,4 +1,4 @@
-import {type AfterViewInit, Directive, inject} from '@angular/core';
+import {type AfterViewInit, Directive, forwardRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -23,7 +23,10 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
     providers: [
         TuiPositionService,
         tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
-        tuiRectAccessorFor('dropdown', TuiDropdownDirective),
+        tuiRectAccessorFor(
+            'dropdown',
+            forwardRef(() => TuiDropdownDirective),
+        ),
     ],
 })
 export class TuiDropdownAnchor implements AfterViewInit {
