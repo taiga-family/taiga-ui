@@ -167,6 +167,32 @@ import { TuiInputYear } from "@taiga-ui/kit";
 }
 `;
 
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-year
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a year
+                </tui-input-year>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a year
+                </label>
+
+<input tuiInputYear [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar-year *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-year: test.html 1`] = `
 {
   "0. Before": "

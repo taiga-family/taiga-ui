@@ -15,6 +15,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 import {buildTuiIconStr} from './migrate-hint-on-legacy-controls';
@@ -244,9 +245,18 @@ export function migrateInputTag({
             (sourceCodeLocation?.endTag?.startOffset ?? 0) + templateOffset;
 
         const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const nameLower = attr.name.toLowerCase();
+            const renamed = INPUT_ATTR_RENAMES.get(nameLower);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            if (renamed !== undefined) {
+                return attr.value
+                    ? `${result} ${renamed}="${attr.value}"`
+                    : `${result} ${renamed}`;
+            }
+
+            const original = getOriginalAttrText(template, element, attr);
+
+            return `${result} ${original}`;
         }, '');
 
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
@@ -256,16 +266,6 @@ export function migrateInputTag({
             `\n<input tuiInputChip${migrationAttrs}${placeholderAttr} />\n`,
         );
     });
-}
-
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 function migrateSelfClosingInputTag({
@@ -332,9 +332,9 @@ function migrateSelfClosingInputTag({
         }
 
         if (/formcontrol|ngmodel/.exec(nameLower)) {
-            const name = normalizeAttrName(attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
-            inputAttrParts.push(attr.value ? `${name}="${attr.value}"` : name);
+            inputAttrParts.push(original);
             continue;
         }
 
@@ -356,11 +356,7 @@ function migrateSelfClosingInputTag({
             continue;
         }
 
-        const original = getOriginalAttrText(template, element, nameLower);
-
-        wrapperAttrParts.push(
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-        );
+        wrapperAttrParts.push(getOriginalAttrText(template, element, attr));
     }
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
@@ -445,33 +441,4 @@ function getHint(attrName: string): string {
     return '[autoColor]'.toLowerCase() === lower || 'autoColor'.toLowerCase() === lower
         ? 'use tuiChip with auto-color appearance instead. See https://taiga-ui.dev/components/chip#auto-color'
         : `no direct equivalent in v5. See ${DOCS_LINK}.`;
-}
-
-function normalizeAttrName(name: string): string {
-    const renamed = INPUT_ATTR_RENAMES.get(name.toLowerCase());
-
-    if (renamed) {
-        return renamed;
-    }
-
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[maxLength]'.toLowerCase():
-            return '[maxlength]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'maxLength'.toLowerCase():
-            return 'maxlength';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }
