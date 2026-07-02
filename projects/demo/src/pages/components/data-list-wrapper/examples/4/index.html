@@ -1,0 +1,18 @@
+<tui-textfield
+    multi
+    tuiChevron
+    [tuiTextfieldCleaner]="false"
+>
+    <input
+        placeholder="Salads"
+        tuiInputChip
+        [formControl]="control"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        tuiMultiSelectGroup
+        [items]="groups"
+        [labels]="labels"
+    />
+</tui-textfield>

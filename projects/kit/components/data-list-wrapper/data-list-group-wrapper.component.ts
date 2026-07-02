@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
@@ -9,6 +9,13 @@ import {
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
+
+interface TuiDataListOptionGroup<T> {
+    readonly items: readonly T[];
+    readonly label: string;
+    readonly hasGroupBoundary: boolean;
+    readonly hasHiddenGroupLabel: boolean;
+}
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
@@ -23,6 +30,32 @@ export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperCompo
     readonly T[]
 > {
     protected readonly multi = inject(TuiMultiSelectGroupDirective, {optional: true});
+
+    protected readonly optionGroups = computed<ReadonlyArray<
+        TuiDataListOptionGroup<T>
+    > | null>(() => {
+        const groups = this.items();
+
+        if (!groups) {
+            return null;
+        }
+
+        const labels = this.labels();
+        const hasMultipleGroups = groups.length > 1;
+
+        return groups.map((items, index) => {
+            const label = labels[index] || '';
+            const hasVisibleLabel = label.length > 0;
+            const hasGroupBoundary = hasMultipleGroups || hasVisibleLabel;
+
+            return {
+                items,
+                label,
+                hasGroupBoundary,
+                hasHiddenGroupLabel: hasMultipleGroups && !hasVisibleLabel,
+            };
+        });
+    });
 
     public readonly labels = input<readonly string[]>([]);
 }

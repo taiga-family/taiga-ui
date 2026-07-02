@@ -1,18 +1,18 @@
-@if (items()) {
+@if (optionGroups(); as groups) {
     <tui-data-list
         [emptyContent]="emptyContent()"
         [size]="size()"
     >
-        @for (group of items(); track group) {
-            @if (!labels()[$index] && group.length) {
+        @for (group of groups; track group.items) {
+            @if (group.hasHiddenGroupLabel && group.items.length && !$first) {
                 <hr />
             }
-            @if (multi && group.length) {
+            @if (multi && group.hasGroupBoundary && group.items.length) {
                 <tui-opt-group
                     tuiMultiSelectGroup
-                    [label]="labels()[$index] || ''"
+                    [label]="group.label"
                 >
-                    @for (item of group; track $index) {
+                    @for (item of group.items; track $index) {
                         <button
                             tuiOption
                             type="button"
@@ -26,9 +26,9 @@
                         </button>
                     }
                 </tui-opt-group>
-            } @else if (group.length) {
-                <tui-opt-group [label]="labels()[$index]">
-                    @for (item of group; track item) {
+            } @else if (group.hasGroupBoundary && group.items.length) {
+                <tui-opt-group [label]="group.label">
+                    @for (item of group.items; track item) {
                         <button
                             tuiOption
                             type="button"
@@ -42,9 +42,20 @@
                         </button>
                     }
                 </tui-opt-group>
-            }
-            @if (!labels()[$index] && group.length) {
-                <hr />
+            } @else if (group.items.length) {
+                @for (item of group.items; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [disabled]="handlers.disabledItemHandler()(item)"
+                        [value]="item"
+                        (click.capture)="itemClick.emit(item)"
+                    >
+                        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: item}">
+                            {{ text }}
+                        </ng-container>
+                    </button>
+                }
             }
         }
     </tui-data-list>
