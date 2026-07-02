@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiInputCardOptionsProvider warning adds TODO comment for tuiInputCardOptionsProvider and TUI_INPUT_CARD_OPTIONS imports: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_INPUT_CARD_OPTIONS,
+                    tuiInputCardOptionsProvider,
+                } from '@taiga-ui/addon-commerce';
+
+                @Component({
+                    providers: [tuiInputCardOptionsProvider({autocomplete: true})],
+                })
+                export class TestComponent {
+                    protected readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
+                    TUI_INPUT_CARD_OPTIONS,
+// TODO: (Taiga UI migration) tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
+                    tuiInputCardOptionsProvider,
+                } from '@taiga-ui/addon-commerce';
+
+                @Component({
+                    providers: [tuiInputCardOptionsProvider({autocomplete: true})],
+                })
+                export class TestComponent {
+                    protected readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+                }
+            ",
+}
+`;
