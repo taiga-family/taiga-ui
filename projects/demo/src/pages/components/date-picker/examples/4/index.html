@@ -8,6 +8,7 @@
     <div
         *tuiDropdown
         [style.display]="'flex'"
+        [style.flex-wrap]="'wrap'"
     >
         <tui-date-picker
             [contentDay]="content"
@@ -23,9 +24,10 @@
                 >
                     <span [tuiAvatar]="user | tuiInitials"></span>
                     {{ user }}
-                    @if (current() === $index) {
-                        <tui-icon icon="@tui.check" />
-                    }
+                    <tui-icon
+                        icon="@tui.check"
+                        [style.visibility]="current() !== $index ? 'hidden' : ''"
+                    />
                 </button>
             }
         </tui-data-list>
