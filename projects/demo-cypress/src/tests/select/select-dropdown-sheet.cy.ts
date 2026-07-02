@@ -21,10 +21,9 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
                 tuiDropdownSheet="Select platform"
                 [tuiTextfieldSize]="textfieldSize()"
             >
-                <label tuiLabel>Platform</label>
-
                 <input
                     tuiSelect
+                    placeholder="Platform"
                     [(ngModel)]="value"
                 />
 
