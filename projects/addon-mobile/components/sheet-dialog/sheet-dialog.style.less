@@ -16,6 +16,7 @@
     scroll-snap-type: y mandatory;
     margin: ~'max(var(--tui-offset), env(safe-area-inset-top))' auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
+    box-shadow: 0 5rem var(--tui-background-elevation-1);
 
     .ios-only({
         overscroll-behavior: contain;
@@ -26,6 +27,12 @@
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiSlide;
+        animation-timing-function: var(--tui-curve-expressive-exit);
+    }
+
+    &.tui-enter {
+        animation-duration: @tui-duration-slow;
+        animation-timing-function: var(--tui-curve-expressive-entrance);
     }
 
     &::before {
