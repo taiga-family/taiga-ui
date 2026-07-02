@@ -57,7 +57,7 @@ describe('ng-update', () => {
     );
 
     it(
-        'moves [disabledItemHandler] and renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>',
+        'renames [defaultActiveYearMonth] to [month] on <tui-calendar> and keeps [disabledItemHandler] on <tui-textfield>',
         migrate({
             template: /* HTML */ `
                 <tui-input-date-time

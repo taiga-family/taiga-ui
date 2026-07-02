@@ -106,34 +106,6 @@ exports[`ng-update migrate TuiInputDateTimeModule to TuiInputDateTime: test.ts 1
 }
 `;
 
-exports[`ng-update moves [disabledItemHandler] and renames [defaultActiveYearMonth] to [month] on <tui-calendar *tuiDropdown>: test.html 1`] = `
-{
-  "0. Before": "
-                <tui-input-date-time
-                    formControlName="date"
-                    [defaultActiveYearMonth]="initialMonth"
-                    [disabledItemHandler]="disabledHandler"
-                >
-                    Date
-                </tui-input-date-time>
-            ",
-  "1. After": "
-                <tui-textfield
-                    
-                    
-                    
-                >
-<label tuiLabel>
-                    Date
-                </label>
-
-<input tuiInputDateTime formControlName="date" />
-<tui-calendar *tuiDropdown [month]="initialMonth" [disabledItemHandler]="disabledHandler" />
-</tui-textfield>
-            ",
-}
-`;
-
 exports[`ng-update moves [min], [max] and [timeMode] to <input tuiInputDateTime>: test.html 1`] = `
 {
   "0. Before": "
@@ -159,6 +131,34 @@ exports[`ng-update moves [min], [max] and [timeMode] to <input tuiInputDateTime>
 
 <input tuiInputDateTime formControlName="date" timeMode="HH:MM:SS" [max]="maxDate" [min]="minDate" />
 <tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update renames [defaultActiveYearMonth] to [month] on <tui-calendar> and keeps [disabledItemHandler] on <tui-textfield>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time
+                    formControlName="date"
+                    [defaultActiveYearMonth]="initialMonth"
+                    [disabledItemHandler]="disabledHandler"
+                >
+                    Date
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    [disabledItemHandler]="disabledHandler"
+                >
+<label tuiLabel>
+                    Date
+                </label>
+
+<input tuiInputDateTime formControlName="date" />
+<tui-calendar *tuiDropdown [month]="initialMonth" />
 </tui-textfield>
             ",
 }

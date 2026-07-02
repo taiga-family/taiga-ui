@@ -31,10 +31,15 @@ const INPUT_ATTRS = new Set(
     ]),
 );
 
-/** Attributes that move onto the `<tui-calendar>` dropdown in v5. */
+/**
+ * Attributes that move onto the `<tui-calendar>` dropdown in v5.
+ *
+ * `disabledItemHandler` is intentionally NOT here: in v5 it stays on `<tui-textfield>`
+ * (the `tuiInputDateTime` directive forwards it to the calendar internally), matching
+ * the official demo: https://taiga-ui.dev/components/input-date-time
+ */
 const CALENDAR_ATTR_RENAMES = new Map([
     ['[defaultActiveYearMonth]'.toLowerCase(), '[month]'],
-    ['[disabledItemHandler]'.toLowerCase(), '[disabledItemHandler]'],
     ['defaultActiveYearMonth'.toLowerCase(), 'month'],
 ]);
 
