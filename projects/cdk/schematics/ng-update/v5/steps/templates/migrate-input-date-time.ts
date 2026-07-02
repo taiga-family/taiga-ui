@@ -201,6 +201,8 @@ export function migrateInputDateTime({
 
 function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[formControlName]'.toLowerCase():
@@ -213,8 +215,6 @@ function normalizeAttrName(name: string): string {
             return '[ngModel]';
         case '[timeMode]'.toLowerCase():
             return '[timeMode]';
-        case '(ngModelChange)'.toLowerCase():
-            return '(ngModelChange)';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():
