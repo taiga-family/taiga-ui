@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -137,9 +138,11 @@ export function migrateInputMonth({
         );
 
         const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original =
+                getOriginalAttrText(template, element, attr.name.toLowerCase()) ??
+                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
@@ -179,23 +182,4 @@ export function migrateInputMonth({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -123,9 +124,11 @@ export function migrateInputPhoneInternational({
         );
 
         const migrationAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original =
+                getOriginalAttrText(template, element, attr.name.toLowerCase()) ??
+                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
 
         if (!inputs.length) {
@@ -154,31 +157,4 @@ export function migrateInputPhoneInternational({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '(countryIsoCodeChange)'.toLowerCase():
-            return '(countryIsoCodeChange)';
-        case '[(countryIsoCode)]'.toLowerCase():
-            return '[(countryIsoCode)]';
-        case '[countryIsoCode]'.toLowerCase():
-            return '[countryIsoCode]';
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'countryIsoCode'.toLowerCase():
-            return 'countryIsoCode';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

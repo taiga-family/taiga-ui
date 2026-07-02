@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -249,9 +250,11 @@ export function migrateInputDateMulti({
             ...inputAttrs,
             ...placeholderAttrs,
         ].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original =
+                getOriginalAttrText(template, element, attr.name.toLowerCase()) ??
+                (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
@@ -303,23 +306,4 @@ function getHint(attrName: string): string {
     return lower.includes('search')
         ? 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.'
         : 'no direct equivalent in v5. Update component logic manually.';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }
