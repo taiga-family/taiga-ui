@@ -229,6 +229,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiTooltipModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiTooltip',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {
             name: 'TuiSelectModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
