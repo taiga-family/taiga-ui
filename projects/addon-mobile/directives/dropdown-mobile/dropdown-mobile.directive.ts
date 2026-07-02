@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDataListOptionsProvider} from '@taiga-ui/core/components/data-list';
+import {TUI_DATA_LIST_SIZE} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DROPDOWN_COMPONENT,
     TuiDropdownDirective,
@@ -19,7 +19,10 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
                     ? TuiDropdownMobileComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
-        tuiDataListOptionsProvider(() => ({size: inject(WA_IS_MOBILE) ? 'l' : ''})),
+        {
+            provide: TUI_DATA_LIST_SIZE,
+            useFactory: () => (inject(WA_IS_MOBILE) ? 'l' : ''),
+        },
     ],
     host: {
         '[style.visibility]': 'dropdown.ref() ? "visible" : ""',
