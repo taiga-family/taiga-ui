@@ -1,6 +1,7 @@
-@for (item of segments(); track item.index) {
+@for (item of segments(); track $index) {
     <div
         automation-id="tui-bar__bar"
+        [class.t-negative]="item.value < 0"
         [style.background]="`var(--tui-chart-categorical-${item.paddedIndex})`"
         [style.height.%]="item.height"
     ></div>

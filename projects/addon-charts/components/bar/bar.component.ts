@@ -10,17 +10,14 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBar {
-    private readonly absoluteSum = computed(() => tuiSum(...this.value().map(Math.abs)));
-
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeL | TuiSizeS>('m');
 
     protected readonly segments = computed(() => {
-        const sum = this.absoluteSum();
+        const sum = tuiSum(...this.value().map(Math.abs));
 
         const items = this.value().map((value, index) => ({
             value,
-            index,
             paddedIndex: index.toString().padStart(2, '0'),
             height: sum ? Math.abs((100 * value) / sum) : 0,
         }));
