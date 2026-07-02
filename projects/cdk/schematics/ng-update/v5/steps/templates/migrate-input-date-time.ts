@@ -203,6 +203,8 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '[formControl]'.toLowerCase():
             return '[formControl]';
+        case '[formControlName]'.toLowerCase():
+            return '[formControlName]';
         case '[max]'.toLowerCase():
             return '[max]';
         case '[min]'.toLowerCase():
@@ -211,6 +213,8 @@ function normalizeAttrName(name: string): string {
             return '[ngModel]';
         case '[timeMode]'.toLowerCase():
             return '[timeMode]';
+        case '(ngModelChange)'.toLowerCase():
+            return '(ngModelChange)';
         case 'formControl'.toLowerCase():
             return 'formControl';
         case 'formControlName'.toLowerCase():

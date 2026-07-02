@@ -136,6 +136,32 @@ exports[`ng-update moves [min], [max] and [timeMode] to <input tuiInputDateTime>
 }
 `;
 
+exports[`ng-update preserves camelCase for (ngModelChange) and [formControlName] bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a date
+                </label>
+
+<input tuiInputDateTime [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update renames [defaultActiveYearMonth] to [month] on <tui-calendar> and keeps [disabledItemHandler] on <tui-textfield>: test.html 1`] = `
 {
   "0. Before": "
@@ -159,6 +185,27 @@ exports[`ng-update renames [defaultActiveYearMonth] to [month] on <tui-calendar>
 
 <input tuiInputDateTime formControlName="date" />
 <tui-calendar *tuiDropdown [month]="initialMonth" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update reuses an existing legacy <input> child instead of creating a new one: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time [(ngModel)]="value">
+                    Choose a date
+                    <input tuiTextfieldLegacy />
+                </tui-input-date-time>
+            ",
+  "1. After": "
+                <tui-textfield >
+<label tuiLabel>
+                    Choose a date
+                    </label>
+<input tuiInputDateTime [(ngModel)]="value" />
+                
+<tui-calendar *tuiDropdown />
 </tui-textfield>
             ",
 }

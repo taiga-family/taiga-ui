@@ -99,5 +99,31 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'reuses an existing legacy <input> child instead of creating a new one',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date-time [(ngModel)]="value">
+                    Choose a date
+                    <input tuiTextfieldLegacy />
+                </tui-input-date-time>
+            `,
+        }),
+    );
+
+    it(
+        'preserves camelCase for (ngModelChange) and [formControlName] bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date-time>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
