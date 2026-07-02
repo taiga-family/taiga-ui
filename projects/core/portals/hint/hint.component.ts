@@ -96,13 +96,17 @@ export class TuiHintComponent {
     constructor() {
         inject(TuiPositionService)
             .pipe(
-                takeWhile(() => this.hint.el.isConnected),
+                takeWhile(
+                    () =>
+                        this.hint.el.isConnected &&
+                        !!this.hint.el.getBoundingClientRect().height,
+                ),
                 map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe({
                 next: (point) => this.update(...point),
-                complete: () => this.hover.close(),
+                complete: () => this.hint.toggle(false),
             });
 
         inject(TuiHoveredService)
