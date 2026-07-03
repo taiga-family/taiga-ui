@@ -7,7 +7,6 @@ import {
     input,
 } from '@angular/core';
 import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {TuiZoom, type TuiZoomEvent} from '@taiga-ui/cdk/directives/zoom';
@@ -38,7 +37,6 @@ const ROTATION_ANGLE = 90;
         TuiPreviewZoom,
         TuiZoom,
         WaMutationObserver,
-        WaResizeObserver,
     ],
     templateUrl: './preview.template.html',
     styleUrl: './preview.style.less',
@@ -113,11 +111,9 @@ export class TuiPreviewComponent {
         }
     }
 
-    protected onResize([entry]: readonly ResizeObserverEntry[]): void {
-        if (entry?.contentRect) {
-            this.refresh(entry.contentRect.width, entry.contentRect.height);
-            this.cdr.detectChanges();
-        }
+    protected onResize({offsetWidth, offsetHeight}: HTMLElement): void {
+        this.refresh(offsetWidth, offsetHeight);
+        this.cdr.detectChanges();
     }
 
     protected reset(): void {
