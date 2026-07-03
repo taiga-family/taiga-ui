@@ -1,11 +1,6 @@
 import {AsyncPipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    inject,
-    input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
@@ -26,6 +21,7 @@ import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
+// TODO: Refactor to signals
 @Component({
     selector: 'tui-preview',
     imports: [
@@ -50,7 +46,6 @@ export class TuiPreviewComponent {
     protected height = 0;
     protected readonly texts = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject(this.minZoom);
     protected readonly rotation$ = new BehaviorSubject(0);
 
@@ -71,14 +66,16 @@ export class TuiPreviewComponent {
         startWith('initial'),
     );
 
-    protected readonly wrapperTransform$ = combineLatest([
-        this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
-        this.zoom$,
-        this.rotation$,
-    ]).pipe(
-        map(
-            ([translate, zoom, rotation]) =>
-                `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
+    protected readonly transform = toSignal(
+        combineLatest([
+            this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
+            this.zoom$,
+            this.rotation$,
+        ]).pipe(
+            map(
+                ([translate, zoom, rotation]) =>
+                    `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
+            ),
         ),
     );
 
@@ -99,21 +96,14 @@ export class TuiPreviewComponent {
         );
     }
 
-    protected onMutation(contentWrapper: HTMLElement): void {
-        const {clientWidth, clientHeight} = contentWrapper;
-
-        this.refresh(clientWidth, clientHeight);
-    }
-
     protected onZoom({clientX, clientY, delta}: TuiZoomEvent): void {
         if (this.zoomable()) {
             this.processZoom(clientX, clientY, delta);
         }
     }
 
-    protected onResize({offsetWidth, offsetHeight}: HTMLElement): void {
-        this.refresh(offsetWidth, offsetHeight);
-        this.cdr.detectChanges();
+    protected onResize({clientWidth, clientHeight}: HTMLElement): void {
+        this.refresh(clientWidth, clientHeight);
     }
 
     protected reset(): void {

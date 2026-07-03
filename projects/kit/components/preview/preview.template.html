@@ -8,11 +8,11 @@
     [class.t-not-interactive-content]="zoomable()"
     [class.t-transitive]="transitioned$ | async"
     [style.cursor]="cursor$ | async"
-    [style.transform]="wrapperTransform$ | async"
+    [style.transform]="transform()"
     (resize)="onResize(contentWrapper)"
     (tuiPan)="onPan($event)"
     (tuiZoom)="onZoom($event)"
-    (waMutationObserver)="onMutation(contentWrapper)"
+    (waMutationObserver)="onResize(contentWrapper)"
 >
     <ng-content />
 </section>

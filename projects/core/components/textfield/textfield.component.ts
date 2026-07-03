@@ -160,8 +160,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({offsetWidth}: HTMLElement): void {
-        this.el.style.setProperty('--t-side', tuiPx(offsetWidth));
+    protected onResize({clientWidth}: HTMLElement): void {
+        this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
