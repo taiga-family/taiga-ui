@@ -96,11 +96,7 @@ export class TuiHintComponent {
     constructor() {
         inject(TuiPositionService)
             .pipe(
-                takeWhile(
-                    () =>
-                        this.hint.el.isConnected &&
-                        !!this.hint.el.getBoundingClientRect().height,
-                ),
+                takeWhile(() => this.hint.el.isConnected && !!this.hint.el.offsetHeight),
                 map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )

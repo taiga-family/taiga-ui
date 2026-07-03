@@ -111,17 +111,6 @@ test.describe('TuiHint', () => {
         });
     });
 
-    test('disappears when host disappears', async ({page}) => {
-        await tuiGoto(page, DemoRoute.HintManual);
-
-        const example = new TuiDocumentationPagePO(page).getExample('#basic');
-
-        await example.locator('button').click();
-        await expect(page.locator('tui-hint')).toBeAttached();
-        await page.locator('#basic tui-segmented button').last().click();
-        await expect(page.locator('tui-hint')).not.toBeAttached();
-    });
-
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
@@ -175,10 +164,6 @@ test.describe('TuiHint', () => {
         test('Increment inside hint', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
-            await page.addInitScript(() =>
-                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
-            );
-
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
             await example.locator('[tuiAvatar]').click();
@@ -194,5 +179,19 @@ test.describe('TuiHint', () => {
             await example.click();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
+    });
+
+    test('disappears when host disappears', async ({page}) => {
+        await tuiGoto(page, DemoRoute.HintManual);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.locator('button').click();
+
+        await expect.soft(example).toHaveScreenshot('11-hint-shown.png');
+
+        await page.locator('#basic tui-segmented button').last().click();
+
+        await expect.soft(example).toHaveScreenshot('11-hint-hidden.png');
     });
 });
