@@ -2,7 +2,7 @@
 
 tui-textfield:where(*&) {
     .scrollbar-hidden();
-    .transition(color);
+    .transition(color, @tui-duration-fast);
 
     --t-height: calc(var(--tui-height-l) + 2.5 * var(--t-label) * var(--tui-font-offset));
     --t-padding: var(--tui-padding-l);

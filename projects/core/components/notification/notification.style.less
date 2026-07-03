@@ -5,7 +5,6 @@
     margin: 1.625rem 3rem;
     word-break: break-word;
     transform: translate3d(0, 0, 0);
-    filter: drop-shadow(0 0.375rem 1rem rgba(0, 0, 0, 0.12));
 
     :host-context(tui-root._mobile) {
         margin: 0.625rem 1rem;
@@ -14,7 +13,8 @@
 
 .t-wrapper {
     background: var(--tui-background-base);
-    clip-path: inset(0.375rem 0 round var(--tui-radius-m));
+    box-shadow: var(--tui-shadow-medium);
+    border-radius: var(--tui-radius-m);
 }
 
 .t-closable[data-size] {

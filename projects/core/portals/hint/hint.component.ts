@@ -7,7 +7,6 @@ import {
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -66,7 +65,6 @@ const GAP = 8;
     host: {
         role: 'tooltip',
         '[attr.tuiTheme]': 'theme',
-        '[class._mobile]': 'isMobile',
         '[class._untouchable]': 'pointer',
         '(document:click)': 'onClick($event.target)',
     },
@@ -80,7 +78,6 @@ export class TuiHintComponent {
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
-    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     protected readonly content =
         this.hint.component.component === TuiHintUnstyledComponent
@@ -132,7 +129,6 @@ export class TuiHintComponent {
 
     private update(left: number, top: number): void {
         if (
-            this.isMobile &&
             this.el.getAnimations?.().length &&
             this.el
                 .getAnimations?.()
