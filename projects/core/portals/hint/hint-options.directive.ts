@@ -30,6 +30,7 @@ export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
     'end-bottom',
 ];
 
+/** TODO: remove optionality in v6 */
 export interface TuiHintOptions extends TuiAppearanceOptions {
     readonly direction: TuiHintDirection | TuiHintDirection[];
     readonly centered?: boolean;
