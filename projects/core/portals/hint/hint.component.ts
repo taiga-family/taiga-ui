@@ -157,8 +157,8 @@ export class TuiHintComponent {
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
-        const startX = safeLeft === rect.left;
-        const startY = top === rect.top;
+        const startX = Math.round(safeLeft) === Math.round(rect.left);
+        const startY = Math.round(top) === Math.round(rect.top);
         const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
         const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
 

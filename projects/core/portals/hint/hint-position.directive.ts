@@ -26,6 +26,7 @@ const LEFT = 0;
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly directionChange = new Subject<TuiHintDirection>();
 
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
@@ -39,13 +40,15 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
-    public readonly direction = input(inject(TUI_HINT_OPTIONS).direction, {
+    public readonly direction = input(this.options.direction, {
         alias: 'tuiHintDirection',
     });
 
     public readonly offset = input(inject(WA_IS_MOBILE) ? 16 : 8, {
         alias: 'tuiHintOffset',
     });
+
+    public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
 
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
@@ -59,8 +62,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const leftCenter = rect.left + rect.width / 2;
         const topCenter = rect.top + rect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
-        const narrow = rect.width < ARROW_OFFSET * 2;
-        const short = rect.height < ARROW_OFFSET * 2;
+        const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
+        const short = rect.height < ARROW_OFFSET * 2 || this.centered();
         const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
         const end = narrow ? leftCenter - width + ARROW_OFFSET : rect.right - width;
         const top = short ? topCenter - ARROW_OFFSET : rect.top;
