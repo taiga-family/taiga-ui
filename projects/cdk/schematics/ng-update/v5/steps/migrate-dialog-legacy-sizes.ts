@@ -4,15 +4,20 @@ import {getSourceFiles, Node, type SourceFile, SyntaxKind} from 'ng-morph';
 import {ALL_TS_FILES} from '../../../constants';
 import {type TuiSchema} from '../../../ng-add/schema';
 import {insertTodo} from '../../../utils/insert-todo';
-import {isServiceMethodCall} from '../../../utils/is-service-method-call';
+import {
+    getDialogOptions,
+    TUI_DIALOG_FACTORY,
+    TUI_DIALOG_OPTIONS_PROVIDER,
+    TUI_DIALOG_SERVICE,
+} from './utils/get-dialog-options';
 
 const TAIGA_CORE = '@taiga-ui/core';
 const TAIGA_LEGACY = '@taiga-ui/legacy';
-const FACTORY_NAME = 'tuiDialog';
-const SERVICE_NAME = 'TuiDialogService';
-const METHOD_NAME = 'open';
-const PROVIDER_NAME = 'tuiDialogOptionsProvider';
-const MIGRATE_TOKENS = [FACTORY_NAME, SERVICE_NAME, PROVIDER_NAME];
+const MIGRATE_TOKENS = [
+    TUI_DIALOG_FACTORY,
+    TUI_DIALOG_SERVICE,
+    TUI_DIALOG_OPTIONS_PROVIDER,
+];
 const LEGACY_SIZE_FULLSCREEN = 'fullscreen';
 const LEGACY_SIZES = ['auto', LEGACY_SIZE_FULLSCREEN, 'page'];
 const TODO_MESSAGE = `legacy dialog size detected (deprecated size: ${LEGACY_SIZES.map((size) => `'${size}'`).join(', ')}); migration only moved imports. Review this call.`;
@@ -32,17 +37,9 @@ function migrateSourceFile(sourceFile: SourceFile): void {
             return;
         }
 
-        const isFactory = call.getExpression().getText() === FACTORY_NAME;
-        const isProvider = call.getExpression().getText() === PROVIDER_NAME;
-        const isMethod = isServiceMethodCall(call, SERVICE_NAME, METHOD_NAME);
+        const options = getDialogOptions(call);
 
-        if (!isFactory && !isProvider && !isMethod) {
-            return;
-        }
-
-        const options = isProvider ? call.getArguments()[0] : call.getArguments()[1];
-
-        if (!options || !Node.isObjectLiteralExpression(options)) {
+        if (!options) {
             return;
         }
 
