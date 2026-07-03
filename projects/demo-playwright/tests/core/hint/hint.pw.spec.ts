@@ -175,6 +175,10 @@ test.describe('TuiHint', () => {
         test('Increment inside hint', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
+            await page.addInitScript(() =>
+                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
+            );
+
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
             await example.locator('[tuiAvatar]').click();
