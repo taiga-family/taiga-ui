@@ -18,7 +18,7 @@ export class TuiBar {
 
         const items = this.value().map((value, index) => ({
             value,
-            paddedIndex: index.toString().padStart(2, '0'),
+            background: `var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`,
             height: sum ? Math.abs((100 * value) / sum) : 0,
         }));
 
