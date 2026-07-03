@@ -35,11 +35,15 @@ export class TuiDropdownAnchor implements AfterViewInit {
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
-    private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly position = this.dropdown.position;
+    private readonly directive = inject(TuiDropdownDirective);
+    private readonly position = this.directive.position;
 
     private readonly styles$ = inject(TuiPositionService).pipe(
-        takeWhile(() => this.dropdown.el.isConnected && !!this.dropdown.el.offsetHeight),
+        takeWhile(
+            () =>
+                this.directive.el.isConnected &&
+                !!this.directive.el.getBoundingClientRect().height,
+        ),
         map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
         map((point) => this.getStyles(...point)),
         takeUntilDestroyed(),
@@ -48,7 +52,7 @@ export class TuiDropdownAnchor implements AfterViewInit {
     public ngAfterViewInit(): void {
         this.styles$.subscribe({
             next: (styles) => Object.assign(this.el.style, styles),
-            complete: () => this.dropdown.toggle(false),
+            complete: () => this.directive.toggle(false),
         });
     }
 
@@ -58,7 +62,7 @@ export class TuiDropdownAnchor implements AfterViewInit {
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
-        const zoom = this.dropdown.el.currentCSSZoom || 1;
+        const zoom = this.directive.el.currentCSSZoom || 1;
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;

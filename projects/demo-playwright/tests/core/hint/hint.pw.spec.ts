@@ -187,11 +187,8 @@ test.describe('TuiHint', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.locator('button').click();
-
-        await expect.soft(example).toHaveScreenshot('11-hint-shown.png');
-
+        await expect(page.locator('tui-hint')).toBeAttached();
         await page.locator('#basic tui-segmented button').last().click();
-
-        await expect.soft(example).toHaveScreenshot('11-hint-hidden.png');
+        await expect(page.locator('tui-hint')).not.toBeAttached();
     });
 });
