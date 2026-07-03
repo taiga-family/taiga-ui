@@ -28,6 +28,16 @@
         preferred direction of the bubble or an array to define preferred priority
     </tr>
 }
+@if (!hiddenOptions().includes('centered')) {
+    <tr
+        name="[tuiHintCentered]"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="centered"
+    >
+        whether sided bubble should point to the center with an arrow
+    </tr>
+}
 <tr
     name="(tuiHintDirectionChange)"
     tuiDocAPIItem
