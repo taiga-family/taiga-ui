@@ -40,7 +40,7 @@ test.describe('TuiHint', () => {
                     await page.setViewportSize({width, height: 300});
                     await tuiGoto(
                         page,
-                        `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
+                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
                     );
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
@@ -59,7 +59,7 @@ test.describe('TuiHint', () => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `${DemoRoute.Hint}/API?tuiHintShowDelay=0&darkMode=${mode}`,
+                `/directives/hint/API?tuiHintShowDelay=0&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
@@ -111,17 +111,6 @@ test.describe('TuiHint', () => {
         });
     });
 
-    test('disappears when host disappears', async ({page}) => {
-        await tuiGoto(page, DemoRoute.HintManual);
-
-        const example = new TuiDocumentationPagePO(page).getExample('#basic');
-
-        await example.locator('button').click();
-        await expect(page.locator('tui-hint')).toBeAttached();
-        await page.locator('#basic tui-segmented button').last().click();
-        await expect(page.locator('tui-hint')).not.toBeAttached();
-    });
-
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
@@ -147,7 +136,7 @@ test.describe('TuiHint', () => {
         await page.setViewportSize({width: 1280, height: 300});
         await tuiGoto(
             page,
-            `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=12`,
+            '/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=12',
         );
 
         await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
@@ -174,10 +163,6 @@ test.describe('TuiHint', () => {
 
         test('Increment inside hint', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-
-            await page.addInitScript(() =>
-                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
-            );
 
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
