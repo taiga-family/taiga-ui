@@ -6,7 +6,7 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiDocHint, TuiHint, TuiButton],
+    imports: [TuiButton, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
 })
