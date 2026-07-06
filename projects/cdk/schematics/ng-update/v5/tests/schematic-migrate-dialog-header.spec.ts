@@ -95,5 +95,22 @@ describe('ng-update tuiDialog header option', () => {
         expect(result).not.toContain('TODO: (Taiga UI migration)');
     });
 
+    it('adds a TODO for every dialog call with `header` in the same file', async () => {
+        const result = await migrateComponent(`
+            import {Component} from '@angular/core';
+            import {tuiDialog} from '@taiga-ui/core';
+
+            @Component({standalone: true})
+            export class TestComponent {
+                private readonly dialog1 = tuiDialog('content', {header: 'Title 1'});
+                private readonly dialog2 = tuiDialog('content', {header: 'Title 2'});
+            }
+        `);
+
+        const occurrences = result.split('TODO: (Taiga UI migration)').length - 1;
+
+        expect(occurrences).toBe(2);
+    });
+
     afterEach(() => resetActiveProject());
 });

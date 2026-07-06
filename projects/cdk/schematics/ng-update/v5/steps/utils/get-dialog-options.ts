@@ -2,10 +2,13 @@ import {type CallExpression, Node, type ObjectLiteralExpression} from 'ng-morph'
 
 import {isServiceMethodCall} from '../../../../utils/is-service-method-call';
 
+// Exported: reused by migrate-dialog-legacy-sizes to move these imports to legacy.
 export const TUI_DIALOG_FACTORY = 'tuiDialog';
 export const TUI_DIALOG_SERVICE = 'TuiDialogService';
-export const TUI_DIALOG_OPEN_METHOD = 'open';
 export const TUI_DIALOG_OPTIONS_PROVIDER = 'tuiDialogOptionsProvider';
+
+// Internal — only the method name checked on TuiDialogService.
+const TUI_DIALOG_OPEN_METHOD = 'open';
 
 /**
  * Returns the dialog options object literal for a call, or `undefined` when the call is
