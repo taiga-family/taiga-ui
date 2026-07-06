@@ -118,5 +118,15 @@ describe('ng-update avatar', () => {
         expect(template).not.toContain('SafeResourceUrl');
     });
 
+    it('does not add a SafeResourceUrl TODO for a bound string literal', async () => {
+        const {template} = await runMigration({
+            collection: COLLECTION,
+            template: '<tui-avatar [src]="\'assets/avatar.png\'"></tui-avatar>',
+        });
+
+        expect(template).toContain('[tuiAvatar]="\'assets/avatar.png\'"');
+        expect(template).not.toContain('SafeResourceUrl');
+    });
+
     afterEach(() => resetActiveProject());
 });

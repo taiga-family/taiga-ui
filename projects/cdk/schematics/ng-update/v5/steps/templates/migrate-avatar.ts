@@ -163,8 +163,9 @@ function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
 /**
  * A raw dynamic `[src]`/`[(src)]` becomes `[tuiAvatar]="..."`, which only accepts a
  * string. A `SafeResourceUrl` (or any non-string image) would break at build time, and
- * the bound type cannot be inferred from the template — so flag it with a TODO. Icon and
- * fallback bindings (`| tuiIcon`, `| tuiFallbackSrc`) are known-string flows and skipped.
+ * the bound type cannot be inferred from the template — so flag it with a TODO. Provably
+ * string values are skipped: quoted/backtick literals (`[src]="'a.png'"`) and known
+ * string flows (`| tuiIcon`, `| tuiFallbackSrc`).
  */
 function maybeInsertSafeResourceUrlTodo(
     recorder: UpdateRecorder,
@@ -185,7 +186,26 @@ function maybeInsertSafeResourceUrlTodo(
 function isRawDynamicSrc(attr: Attribute): boolean {
     const isBinding = attr.name === '[src]' || attr.name === '[(src)]';
 
-    return isBinding && !/\|\s*(?:tuiIcon|tuiFallbackSrc)\b/.test(attr.value);
+    if (!isBinding) {
+        return false;
+    }
+
+    const value = attr.value.trim();
+
+    return !isStringLiteral(value) && !/\|\s*(?:tuiIcon|tuiFallbackSrc)\b/.test(value);
+}
+
+/**
+ * A quoted or backtick-delimited value is provably a `string`, so it can never be a
+ * `SafeResourceUrl` and does not need a TODO.
+ */
+function isStringLiteral(value: string): boolean {
+    return (
+        value.length >= 2 &&
+        ((value.startsWith("'") && value.endsWith("'")) ||
+            (value.startsWith('"') && value.endsWith('"')) ||
+            (value.startsWith('`') && value.endsWith('`')))
+    );
 }
 
 function getSrcAttr(attrs: Attribute[]): Attribute | undefined {
