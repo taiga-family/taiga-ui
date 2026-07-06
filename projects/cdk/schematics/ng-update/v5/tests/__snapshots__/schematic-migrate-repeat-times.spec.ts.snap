@@ -87,14 +87,14 @@ exports[`ng-update tuiRepeatTimes full before/after comparison with nested conte
 }
 `;
 
-exports[`ng-update tuiRepeatTimes keeps @for tail params while replacing tuiRepeatTimes expression: test.html 1`] = `
+exports[`ng-update tuiRepeatTimes keeps @for loop value numeric with tail params intact (issue #13823): test.html 1`] = `
 {
   "0. Before": "@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }",
   "1. After": "@for (_ of '-'.repeat(config.count); track $index; let n = $index; let isOdd = $odd) { {{n}} }",
 }
 `;
 
-exports[`ng-update tuiRepeatTimes keeps @for tail params while replacing tuiRepeatTimes expression: test.ts 1`] = `
+exports[`ng-update tuiRepeatTimes keeps @for loop value numeric with tail params intact (issue #13823): test.ts 1`] = `
 {
   "0. Before": "
             import {Component} from '@angular/core';
