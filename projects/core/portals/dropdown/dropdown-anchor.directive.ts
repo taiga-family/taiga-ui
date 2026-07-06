@@ -4,11 +4,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    tuiPositionAccessorFor,
-    TuiRectAccessor,
-    tuiRectAccessorFor,
-} from '@taiga-ui/core/classes';
+import {tuiPositionAccessorFor, tuiRectAccessorFor} from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
