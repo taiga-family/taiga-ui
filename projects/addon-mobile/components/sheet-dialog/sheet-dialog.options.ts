@@ -11,6 +11,13 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly stops: readonly string[];
     readonly bar: boolean;
     readonly required: boolean;
+    /**
+     * Address-bar (`<meta name="theme-color">`) color applied while the sheet is
+     * open, matching the dimmed backdrop. Pass `null` to leave the address bar
+     * untouched (e.g. apps that manage `theme-color` themselves, or need a value
+     * that tracks dark mode).
+     */
+    readonly themeColor: string | null;
 }
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
@@ -23,6 +30,7 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     data: undefined,
     bar: true,
     required: false,
+    themeColor: '#404040',
 };
 
 /**

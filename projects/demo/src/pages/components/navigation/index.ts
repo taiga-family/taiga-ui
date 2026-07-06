@@ -23,10 +23,10 @@ export default class Page implements OnDestroy {
     ];
 
     constructor() {
-        this.theme.color = 'black';
+        this.theme.navColor = 'black';
     }
 
     public ngOnDestroy(): void {
-        this.theme.color = '#ff7043';
+        this.theme.navColor = '#ff7043';
     }
 }

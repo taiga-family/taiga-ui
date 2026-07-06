@@ -9,12 +9,10 @@ import {
     type TuiSheetDialogOptions,
 } from './sheet-dialog.options';
 
-const THEME = '#404040';
-
 @Injectable({providedIn: 'root'})
 export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
     private readonly theme = inject(TuiThemeColorService);
-    private readonly initial = this.theme.color;
+    private initial = '';
     private count = 0;
 
     protected readonly options = inject(TUI_SHEET_DIALOG_OPTIONS);
@@ -23,16 +21,29 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
     protected override add(
         component: PolymorpheusComponent<TuiModalComponent<TuiSheetDialogOptions>>,
     ): () => void {
-        this.count++;
-        this.theme.color = THEME;
+        const {themeColor} = this.options;
+
+        if (themeColor !== null) {
+            if (!this.count) {
+                // Capture the live theme color at the moment the first sheet
+                // opens, not once at construction — otherwise a theme change made
+                // after the service was created (e.g. an app-level dark-mode
+                // effect) is lost on revert. Capturing at the 0 -> 1 transition
+                // also avoids the nested case reverting onto themeColor instead
+                // of the original color.
+                this.initial = this.theme.color;
+            }
+
+            this.count++;
+            this.theme.color = themeColor;
+        }
 
         const cleanup = super.add(component);
 
         return () => {
             cleanup();
-            this.count--;
 
-            if (!this.count) {
+            if (themeColor !== null && !--this.count) {
                 this.theme.color = this.initial;
             }
         };
