@@ -7,6 +7,7 @@ import {TODO_MARK} from '../../../utils/insert-todo';
 import {getDialogOptions} from './utils/get-dialog-options';
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/dialog';
+
 const TODO_MESSAGE = [
     'dialog `header` (content shown above the title) was removed from `TuiDialogOptions` in v5.',
     '// - If it was rich content above the title: place `tuiHeader` in the dialog template (clear `label` if you had one).',
