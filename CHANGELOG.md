@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.90.0](https://github.com/taiga-family/taiga-ui/compare/v4.89.0...v4.90.0) (2026-07-06)
+
+### 🐞 Bug Fixes
+
+- **core:** `Notification` should not show `cursor: pointer` for non-interactive `tui-notification` selector
+  ([#14503](https://github.com/taiga-family/taiga-ui/issues/14503))
+  ([f020f8d](https://github.com/taiga-family/taiga-ui/commit/f020f8d7760a2705d59df35fdab2a487af145d9c))
+
 ## [4.89.0](https://github.com/taiga-family/taiga-ui/compare/v4.88.0...v4.89.0) (2026-06-29)
 
 ### 🐞 Bug Fixes
