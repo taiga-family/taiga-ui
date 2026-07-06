@@ -225,5 +225,18 @@ describe('ng-update tuiRepeatTimes', () => {
         expect(template).toContain('let isOdd = $odd');
     });
 
+    it('leaves a @for block with an empty tuiRepeatTimes expression untouched', async () => {
+        const template = '@for (n of   | tuiRepeatTimes; track n) { {{n}} }';
+        const {template: result} = await runMigration({
+            collection: COLLECTION,
+            component: REPEAT_TIMES_COMPONENT,
+            template,
+        });
+
+        // no expression → nothing to repeat, must not emit `'-'.repeat( )`
+        expect(result).not.toContain("'-'.repeat");
+        expect(result).toContain(template);
+    });
+
     afterEach(() => resetActiveProject());
 });

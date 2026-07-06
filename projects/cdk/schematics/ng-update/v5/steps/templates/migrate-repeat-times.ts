@@ -287,7 +287,8 @@ function replaceRepeatTimesInForHeader(header: string): string | null {
         return null;
     }
 
-    const [, variable = '', expression = ''] = iterationMatch;
+    const [, variable = '', rawExpression = ''] = iterationMatch;
+    const expression = rawExpression.trim();
 
     if (!expression) {
         return null;
