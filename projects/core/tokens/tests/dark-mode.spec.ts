@@ -5,7 +5,7 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_DEFAULT_KEY, type TuiDarkMode} from '@taiga
 const KEY = TUI_DARK_MODE_DEFAULT_KEY;
 
 describe('TUI_DARK_MODE', () => {
-    let store: Record<string, string>;
+    let store: Map<string, string>;
     let matches: boolean;
     let listeners: Array<() => void>;
 
@@ -16,14 +16,12 @@ describe('TUI_DARK_MODE', () => {
 
     function setup(): TuiDarkMode {
         const storage = {
-            getItem: (key: string) => store[key] ?? null,
+            getItem: (key: string) => store.get(key) ?? null,
             setItem: (key: string, value: string) => {
-                store[key] = value;
+                store.set(key, value);
             },
             removeItem: (key: string) => {
-                store = Object.fromEntries(
-                    Object.entries(store).filter(([stored]) => stored !== key),
-                );
+                store.delete(key);
             },
         } as unknown as Storage;
 
@@ -52,7 +50,7 @@ describe('TUI_DARK_MODE', () => {
     }
 
     beforeEach(() => {
-        store = {};
+        store = new Map();
         matches = false;
         listeners = [];
     });
@@ -69,11 +67,11 @@ describe('TUI_DARK_MODE', () => {
 
             setup();
 
-            expect(store[KEY]).toBeUndefined();
+            expect(store.get(KEY)).toBeUndefined();
         });
 
         it('starts from the stored value when present', () => {
-            store[KEY] = 'true';
+            store.set(KEY, 'true');
             matches = false;
 
             expect(setup()()).toBe(true);
@@ -86,7 +84,7 @@ describe('TUI_DARK_MODE', () => {
 
             mode.set(true);
 
-            expect(store[KEY]).toBe('true');
+            expect(store.get(KEY)).toBe('true');
             expect(mode()).toBe(true);
         });
 
@@ -95,7 +93,7 @@ describe('TUI_DARK_MODE', () => {
 
             mode.update((value) => !value);
 
-            expect(store[KEY]).toBe('true');
+            expect(store.get(KEY)).toBe('true');
             expect(mode()).toBe(true);
         });
 
@@ -106,7 +104,7 @@ describe('TUI_DARK_MODE', () => {
 
             mode.set(true); // explicitly picking dark must still pin
 
-            expect(store[KEY]).toBe('true');
+            expect(store.get(KEY)).toBe('true');
         });
 
         it('stops following the system once set', () => {
@@ -140,7 +138,7 @@ describe('TUI_DARK_MODE', () => {
 
             changeSystem(true);
 
-            expect(store[KEY]).toBeUndefined();
+            expect(store.get(KEY)).toBeUndefined();
         });
     });
 
@@ -149,11 +147,11 @@ describe('TUI_DARK_MODE', () => {
             const mode = setup();
 
             mode.set(true);
-            expect(store[KEY]).toBe('true');
+            expect(store.get(KEY)).toBe('true');
 
             mode.reset();
 
-            expect(store[KEY]).toBeUndefined();
+            expect(store.get(KEY)).toBeUndefined();
         });
 
         it('returns to the current system value', () => {
@@ -176,7 +174,7 @@ describe('TUI_DARK_MODE', () => {
             changeSystem(true);
 
             expect(mode()).toBe(true);
-            expect(store[KEY]).toBeUndefined();
+            expect(store.get(KEY)).toBeUndefined();
         });
     });
 });
