@@ -3,6 +3,16 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TuiInputSliderModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputSlider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputMonthRangeModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
