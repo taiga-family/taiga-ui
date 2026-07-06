@@ -7,7 +7,6 @@ import {TODO_MARK} from '../../../utils/insert-todo';
 import {getDialogOptions} from './utils/get-dialog-options';
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/dialog';
-
 const TODO_MESSAGE = `dialog \`header\` option (content shown above the title) was removed from \`TuiDialogOptions\` in v5. Place that content in the dialog template with \`tuiHeader\` instead. See: ${DOCS_LINK}`;
 
 export function migrateDialogHeader(_tree: Tree, _options: TuiSchema): void {
