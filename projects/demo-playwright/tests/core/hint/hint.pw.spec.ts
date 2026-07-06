@@ -40,7 +40,7 @@ test.describe('TuiHint', () => {
                     await page.setViewportSize({width, height: 300});
                     await tuiGoto(
                         page,
-                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
+                        `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
                     );
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
@@ -59,7 +59,7 @@ test.describe('TuiHint', () => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=0&darkMode=${mode}`,
+                `${DemoRoute.Hint}/API?tuiHintShowDelay=0&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
@@ -136,7 +136,7 @@ test.describe('TuiHint', () => {
         await page.setViewportSize({width: 1280, height: 300});
         await tuiGoto(
             page,
-            '/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=12',
+            `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=12`,
         );
 
         await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
@@ -183,5 +183,16 @@ test.describe('TuiHint', () => {
             await example.click();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
+    });
+
+    test('disappears when host disappears', async ({page}) => {
+        await tuiGoto(page, DemoRoute.HintManual);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.locator('button').click();
+        await expect(page.locator('tui-hint')).toBeAttached();
+        await page.locator('#basic tui-segmented button').last().click();
+        await expect(page.locator('tui-hint')).not.toBeAttached();
     });
 });
