@@ -58,6 +58,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
+    private readonly injector = inject(INJECTOR);
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
@@ -83,11 +84,6 @@ export class TuiDropdownDirective
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
 
-    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-        inject<any>(TuiRectAccessor, {self: true, optional: true}),
-        this,
-    );
-
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
         inject(INJECTOR),
@@ -102,6 +98,14 @@ export class TuiDropdownDirective
                 ? new PolymorpheusTemplate(content, this.cdr)
                 : content,
     });
+
+    public get accessor(): TuiRectAccessor {
+        const accessors = this.injector.get(TuiRectAccessor, null, {
+            self: true,
+        }) as readonly TuiRectAccessor[] | null;
+
+        return tuiFallbackAccessor<TuiRectAccessor>('dropdown')(accessors, this);
+    }
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
