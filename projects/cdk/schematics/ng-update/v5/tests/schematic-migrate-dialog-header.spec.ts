@@ -6,7 +6,8 @@ import {runMigration} from '../../../utils/run-migration';
 
 const collection = join(__dirname, '../../../migration.json');
 
-const TODO = `// TODO: (Taiga UI migration) dialog \`header\` option (content shown above the title) was removed from \`TuiDialogOptions\` in v5. To keep content above the title, pass an empty \`label\` and place \`tuiHeader\` in the dialog template where you need it. For a plain string title, use \`label\` instead. See: https://taiga-ui.dev/components/dialog`;
+const TODO =
+    '// TODO: (Taiga UI migration) dialog `header` option (content shown above the title) was removed from `TuiDialogOptions` in v5. To keep content above the title, pass an empty `label` and place `tuiHeader` in the dialog template where you need it. For a plain string title, use `label` instead. See: https://taiga-ui.dev/components/dialog';
 
 describe('ng-update tuiDialog header option', () => {
     const migrateComponent = async (component: string): Promise<string> => {

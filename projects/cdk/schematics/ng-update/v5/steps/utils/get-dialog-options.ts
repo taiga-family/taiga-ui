@@ -17,6 +17,7 @@ export function getDialogOptions(
 ): ObjectLiteralExpression | undefined {
     const isFactory = call.getExpression().getText() === TUI_DIALOG_FACTORY;
     const isProvider = call.getExpression().getText() === TUI_DIALOG_OPTIONS_PROVIDER;
+
     const isMethod = isServiceMethodCall(
         call,
         TUI_DIALOG_SERVICE,
