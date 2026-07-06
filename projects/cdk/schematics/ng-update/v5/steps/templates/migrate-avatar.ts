@@ -2,11 +2,11 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes, type Token} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {
     findElementsByTagName,
     findElementsWithAttribute,
 } from '../../../../utils/templates/elements';
-import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
