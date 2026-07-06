@@ -14089,10 +14089,11 @@ export default class Example {
 <tui-textfield multi>
 <label tuiLabel>Pick days off</label>
 <input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
-<div *tuiDropdown [style.display]="'flex'" >
+<div *tuiDropdown [style.display]="'flex'" [style.flex-wrap]="'wrap'" >
 <tui-date-picker [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
 <tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
-<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} @if (current() === $index) { <tui-icon icon="@tui.check" /> } </button> } </tui-data-list>
+<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} <tui-icon icon="@tui.check" [style.visibility]="current() !== $index ? 'hidden' : ''" />
+</button> } </tui-data-list>
 <ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
 </div>
 </tui-textfield>
@@ -25022,7 +25023,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoPipe} from '@maskito/angular';
 import {maskitoTransform} from '@maskito/core';
-import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
+import {maskitoPhone} from '@maskito/phone';
 import metadata from 'libphonenumber-js/max/metadata';
 
 @Component({
@@ -25035,7 +25036,7 @@ import metadata from 'libphonenumber-js/max/metadata';
 export default class Example {
     protected rawValue = '12125552368';
 
-    protected readonly mask = maskitoPhoneOptionsGenerator({
+    protected readonly mask = maskitoPhone({
         metadata,
         countryIsoCode: 'US',
     });
@@ -54929,6 +54930,43 @@ export default class Example {
 }
 ```
 
+#### Custom alerts host
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="show.set(true)" > Show </button>
+<custom-host />
+<ng-template [(tuiNotification)]="show">
+<div tuiTitle> Notification <div tuiSubtitle>I am in a custom portal</div>
+</div>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {
+    TuiButton,
+    TuiNotification,
+    TuiNotificationService,
+    TuiTitle,
+} from '@taiga-ui/core';
+
+import {CustomHost} from './portal';
+import {CustomPortalService} from './service';
+
+@Component({
+    selector: 'tui-portals-example-2',
+    imports: [CustomHost, TuiButton, TuiNotification, TuiTitle],
+    templateUrl: './index.html',
+    changeDetection,
+    providers: [{provide: TuiNotificationService, deps: [CustomPortalService]}],
+})
+export default class Example {
+    protected readonly show = signal(false);
+}
+```
+
 
 ### TypeScript
 
@@ -54937,10 +54975,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
-import Example from './examples/1';
+import Example1 from './examples/1';
+import Example2 from './examples/2';
 
 @Component({
-    imports: [Example, TuiDemo],
+    imports: [Example1, Example2, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -54955,6 +54994,13 @@ export default class Page {
         LESS: import('./examples/1/index.less'),
         'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
         'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly example2 = {
+        TypeScript: import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/2/index.html'),
+        'portal.ts': import('./examples/2/portal.ts?raw', {with: {loader: 'text'}}),
+        'service.ts': import('./examples/2/service.ts?raw', {with: {loader: 'text'}}),
     };
 }
 ```
