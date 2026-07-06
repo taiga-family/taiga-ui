@@ -41,7 +41,7 @@ export class TuiCalendarYear {
     private readonly hoveredItem = signal<number | null>(null);
 
     private readonly clampedInitial = computed(() =>
-        tuiClamp(this.initialItem(), this.min() ?? MIN_YEAR, this.max() ?? MAX_YEAR),
+        tuiClamp(this.initialItem(), this.min(), this.max()),
     );
 
     private readonly calculatedMin = computed(() => {
