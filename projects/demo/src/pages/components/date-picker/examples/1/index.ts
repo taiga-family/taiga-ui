@@ -3,21 +3,13 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
 import {TuiDatePicker} from '@taiga-ui/experimental';
-import {
-    TuiButtonSelect,
-    TuiInputDate,
-    TuiInputDateMulti,
-    TuiInputDateRange,
-} from '@taiga-ui/kit';
+import {TuiInputDate, TuiInputDateMulti, TuiInputDateRange} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiButton,
-        TuiButtonSelect,
         TuiDatePicker,
         TuiForm,
         TuiInputDate,
@@ -36,7 +28,6 @@ export default class Example {
         single: new FormControl(),
         multi: new FormControl(),
         range: new FormControl(),
-        button: new FormControl(),
     });
 
     protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;

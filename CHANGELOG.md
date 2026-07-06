@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.13.0](https://github.com/taiga-family/taiga-ui/compare/v5.12.0...v5.13.0) (2026-06-30)
+
+### 🚀 Features
+
+- **core:** `Carousel` add dynamic height ([#14444](https://github.com/taiga-family/taiga-ui/issues/14444))
+  ([267f6d9](https://github.com/taiga-family/taiga-ui/commit/267f6d96eb9afef029ff50967bff84687540d162))
+- **core:** `Root` apply inert to content under modals ([#14401](https://github.com/taiga-family/taiga-ui/issues/14401))
+  ([2c5d878](https://github.com/taiga-family/taiga-ui/commit/2c5d8782a3af6126ea4319cf5ee149e2b077c267))
+- **experimental:** `DatePicker` add new component ([#14464](https://github.com/taiga-family/taiga-ui/issues/14464))
+  ([e3eeb63](https://github.com/taiga-family/taiga-ui/commit/e3eeb639cb68b7a6213e43ae07ad3e4118ec0a4c))
+- **kit:** input for programmatically show/hide `line-clamp` hint
+  ([#14304](https://github.com/taiga-family/taiga-ui/issues/14304))
+  ([ff9dbca](https://github.com/taiga-family/taiga-ui/commit/ff9dbcac2087b0e9ac5c26ca73395eb66c37cd83))
+
+### 🐞 Bug Fixes
+
+- **core:** `Cell` fix margin inside `Label` ([#14433](https://github.com/taiga-family/taiga-ui/issues/14433))
+  ([753d57d](https://github.com/taiga-family/taiga-ui/commit/753d57d8b757f69de51862b14593051b8117ef25))
+- **core:** `Link` fix font icons ([#14399](https://github.com/taiga-family/taiga-ui/issues/14399))
+  ([dfe010d](https://github.com/taiga-family/taiga-ui/commit/dfe010d7c0738f1961ea3e6fed5165c0b1f7be56))
+- **core:** fix date-pickers on ios safari ([#14466](https://github.com/taiga-family/taiga-ui/issues/14466))
+  ([238d6ba](https://github.com/taiga-family/taiga-ui/commit/238d6ba2aad72fc21f7c17aa1c8411a66320b62f))
+- **core:** improve tree shaking of `Hint` entrypoint ([#14436](https://github.com/taiga-family/taiga-ui/issues/14436))
+  ([4584b00](https://github.com/taiga-family/taiga-ui/commit/4584b006b086c8a90406b622c4c82eb41b795b36))
+- **core:** prevent dropdown context position from leaking into nested dropdowns
+  ([#14451](https://github.com/taiga-family/taiga-ui/issues/14451))
+  ([d347031](https://github.com/taiga-family/taiga-ui/commit/d3470315cc80e46169b9a6f68427df2e586287c2))
+- improve tree shaking of `TuiDay` class for unused `InputDate*` components
+  ([#14432](https://github.com/taiga-family/taiga-ui/issues/14432))
+  ([ba34a16](https://github.com/taiga-family/taiga-ui/commit/ba34a16361c34e3059051bb5005b39e6ce4486d2))
+- **kit:** `InputColor` base color reset when using opacity slider in hexa
+  ([#14287](https://github.com/taiga-family/taiga-ui/issues/14287))
+  ([691b382](https://github.com/taiga-family/taiga-ui/commit/691b382c1700769307a7116b8c81d8feccec53cf))
+- **kit:** `Textarea` hydration ([#14306](https://github.com/taiga-family/taiga-ui/issues/14306))
+  ([dbf9a86](https://github.com/taiga-family/taiga-ui/commit/dbf9a86167d2f0da54d6eba04c84144505b4ba40))
+- **kit:** `Tooltip` don't close on click with mouse ([#14400](https://github.com/taiga-family/taiga-ui/issues/14400))
+  ([534010c](https://github.com/taiga-family/taiga-ui/commit/534010c23b6337add6b358c9ac9b17079b54ac6c))
+- **kit:** flip chevron on native select interaction ([#14408](https://github.com/taiga-family/taiga-ui/issues/14408))
+  ([79f7c65](https://github.com/taiga-family/taiga-ui/commit/79f7c65ca0443049df55adf7bce3f79c065b714e))
+- **kit:** update unfinished validator on input changes
+  ([#14420](https://github.com/taiga-family/taiga-ui/issues/14420))
+  ([4a1024d](https://github.com/taiga-family/taiga-ui/commit/4a1024d3734dd4be8eb812dc55f58b244b297758))
+- **layout:** `AppBar` fix back button appearance ([#14416](https://github.com/taiga-family/taiga-ui/issues/14416))
+  ([5bf593f](https://github.com/taiga-family/taiga-ui/commit/5bf593f613f58939cf59c9e16a74d41397a7a6eb))
+- **layout:** `InputSearch` hydration ([#14303](https://github.com/taiga-family/taiga-ui/issues/14303))
+  ([fb94e9f](https://github.com/taiga-family/taiga-ui/commit/fb94e9f4485463ad16b2f23b7b43e04024166e7c))
+- **schematics:** `tui-input-tag` self-closing migration preserves the rest of the template
+  ([#14412](https://github.com/taiga-family/taiga-ui/issues/14412))
+  ([24b3f04](https://github.com/taiga-family/taiga-ui/commit/24b3f0419b96fd5a3b23a94cd4a94b4275c2886c))
+
+## [5.12.0](https://github.com/taiga-family/taiga-ui/compare/v5.11.0...v5.12.0) (2026-06-22)
+
+### 🚀 Features
+
+- **cdk:** `Id` add auto-id directive ([#14379](https://github.com/taiga-family/taiga-ui/issues/14379))
+  ([cefd9fb](https://github.com/taiga-family/taiga-ui/commit/cefd9fb25184a2bb48aaab4948ae3c325d7ab6e3))
+- **kit:** `ButtonSelect` allow date picking ([#14364](https://github.com/taiga-family/taiga-ui/issues/14364))
+  ([7dc4899](https://github.com/taiga-family/taiga-ui/commit/7dc4899e1b688c8974a1316f42e6840ad7884392))
+- **layout:** `AppBar` support liquid glass ([#14210](https://github.com/taiga-family/taiga-ui/issues/14210))
+  ([4009f35](https://github.com/taiga-family/taiga-ui/commit/4009f35f3c0ca2f07c691a07f95ea0a5e589f99f))
+
+### 🐞 Bug Fixes
+
+- **core:** `Button` change button S border radius ([#14355](https://github.com/taiga-family/taiga-ui/issues/14355))
+  ([5b0e6a2](https://github.com/taiga-family/taiga-ui/commit/5b0e6a2eb3ae046490d4addd05e773f6925a6c9d))
+- **kit:** `CalendarRange` consider same day ranges unfinished only if from === to
+  ([#14354](https://github.com/taiga-family/taiga-ui/issues/14354))
+  ([d28aa4f](https://github.com/taiga-family/taiga-ui/commit/d28aa4ff357f12e64a4e5a71e55793ace7a313ba))
+- **kit:** mirror fixed progress gradient in RTL ([#14348](https://github.com/taiga-family/taiga-ui/issues/14348))
+  ([d0872b9](https://github.com/taiga-family/taiga-ui/commit/d0872b93676cd12cb11e7ea0ea69e6310c5832a7))
+- **styles:** support RTL in date-picker ([#14378](https://github.com/taiga-family/taiga-ui/issues/14378))
+  ([e0c87ef](https://github.com/taiga-family/taiga-ui/commit/e0c87ef5bf90fc1d1e1c5c27eb5eb78538e11bb3))
+
 ## [5.11.0](https://github.com/taiga-family/taiga-ui/compare/v5.10.0...v5.11.0) (2026-06-16)
 
 ### 🐞 Bug Fixes

@@ -15,7 +15,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -52,7 +51,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell],
     templateUrl: './textfield.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -161,8 +160,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({contentRect}: ResizeObserverEntry): void {
-        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    protected onResize({clientWidth}: HTMLElement): void {
+        this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])

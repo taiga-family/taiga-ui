@@ -149,6 +149,19 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
+        'moves TUI_CALENDAR_DATE_STREAM from @taiga-ui/kit to @taiga-ui/addon-mobile',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly stream = TUI_CALENDAR_DATE_STREAM;
+                }
+            `,
+        }),
+    );
+
+    it(
         'migrates TuiOptionNew to TuiOption',
         migrate({
             component: /* TypeScript */ `

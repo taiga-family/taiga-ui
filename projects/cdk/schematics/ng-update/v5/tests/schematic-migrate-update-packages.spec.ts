@@ -39,7 +39,8 @@ describe('ng-update migrate packages', () => {
                     "@taiga-ui/addon-table": "5.0.1",
                     "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "4.0.0",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/editor": "4.0.0"
                  }
              }
             `,
@@ -69,7 +70,8 @@ describe('ng-update migrate packages', () => {
                     "@taiga-ui/addon-table": "5.0.1",
                     "@taiga-ui/addon-mobile": "5.0.1",
                     "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}",
-                    "@taiga-ui/proprietary": "5.0.1"
+                    "@taiga-ui/proprietary": "5.0.1",
+                    "@taiga-ui/editor": "5.0.0"
                  }
              }
             `,

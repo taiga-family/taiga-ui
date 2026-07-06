@@ -5,6 +5,7 @@ import {replacePackageName} from '../../steps';
 export const TUI_POLYMORPHEUS_VERSION = '^5.0.0';
 export const TUI_DOMPURIFY_VERSION = '^5.0.0';
 export const TUI_EVENT_PLUGINS_VERSION = '^5.0.0';
+export const TUI_EDITOR_VERSION = '^5.4.0';
 export const NG_WEB_APIS = '^5.0.0';
 export const MASKITO_VERSION = '^5.0.0';
 
@@ -26,6 +27,7 @@ export function updatePackages({tree}: DevkitFileSystem): void {
                 ],
             ],
             [TUI_DOMPURIFY_VERSION, ['@taiga-ui/dompurify']],
+            [TUI_EDITOR_VERSION, ['@taiga-ui/editor']],
         ] satisfies ReadonlyArray<readonly [string, readonly string[]]>
     ).flatMap(([version, names]) => names.map((name) => ({name, version})));
 

@@ -33,4 +33,9 @@ tui-textfield[tuiChevron][tuiIcons]:where(*&) {
     &._chevron-rotated::after {
         transform: rotate(180deg) scale(calc(2 / 3));
     }
+
+    // stylelint-disable-next-line -- graceful degradation
+    &:has(select[tuiSelect]:open)::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
+    }
 }

@@ -2,7 +2,12 @@ import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDate} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
+import {
+    DATE_FILLER_LENGTH,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -89,8 +94,13 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         }
     });
 
-    public readonly min = input<TuiDay | null>(this.dateMultiOptions.min);
-    public readonly max = input<TuiDay | null>(this.dateMultiOptions.max);
+    public readonly min = input(this.dateMultiOptions.min ?? TUI_FIRST_DAY, {
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
+    });
+
+    public readonly max = input(this.dateMultiOptions.max ?? TUI_LAST_DAY, {
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
+    });
 
     protected processCalendar(calendar: AbstractTuiCalendar): void {
         tuiSetSignal(calendar.value, this.value());

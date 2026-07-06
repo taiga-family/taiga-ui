@@ -31,6 +31,11 @@ tui-modal:where(*&) {
         interactivity: inert;
     }
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiDummy;
+    }
+
     // Safari < 15.4 and Chromium < 111
     @supports not (selector(:has(*))) or not (selector(:nth-child(1 of *))) {
         &:last-of-type {

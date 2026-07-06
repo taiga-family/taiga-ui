@@ -1,3 +1,4 @@
+import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
     type AfterViewChecked,
     ChangeDetectionStrategy,
@@ -60,6 +61,10 @@ export class TuiLineClamp implements AfterViewChecked {
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
 
+    public readonly showHint = input<boolean, BooleanInput>(this.options.showHint, {
+        transform: coerceBooleanProperty,
+    });
+
     public readonly overflownChange = outputFromObservable(
         this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
     );
@@ -93,7 +98,7 @@ export class TuiLineClamp implements AfterViewChecked {
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content() : '';
+        return this.showHint() && this.overflown ? this.content() : '';
     }
 
     protected update(): void {

@@ -15,10 +15,10 @@
         }
     },
     "portsAttributes": {
-        "3333": {
+        "3000": {
             "label": "Demo",
             "onAutoForward": "notify"
         }
     },
-    "forwardPorts": [3333]
+    "forwardPorts": [3000]
 }

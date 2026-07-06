@@ -135,6 +135,43 @@ exports[`ng-update migrate TuiInputTagModule to TuiInputChip: test.ts 1`] = `
 }
 `;
 
+exports[`ng-update migrates self-closing <tui-input-tag ... /> with hint to tui-textfield: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    class="input-tag"
+                    [tuiHintContent]="hint"
+                    [tuiTextfieldLabelOutside]="true"
+                    [(ngModel)]="tags"
+                />
+            ",
+  "1. After": "
+                <tui-textfield multi class="input-tag">
+                <input tuiInputChip [(ngModel)]="tags" />
+                <tui-icon [tuiTooltip]="hint" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update migrates self-closing <tui-input-tag /> without absorbing following siblings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    formControlName="tags"
+                    [separator]="regex"
+                />
+                <button tuiButton>Save</button>
+            ",
+  "1. After": "
+                <tui-textfield multi>
+                <input tuiInputChip formControlName="tags" [separator]="regex" />
+                </tui-textfield>
+                <button tuiButton>Save</button>
+            ",
+}
+`;
+
 exports[`ng-update moves [disabledItemHandler] to <tui-textfield multi>: test.html 1`] = `
 {
   "0. Before": "

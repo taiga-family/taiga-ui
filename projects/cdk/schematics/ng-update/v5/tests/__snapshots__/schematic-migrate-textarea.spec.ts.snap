@@ -164,6 +164,49 @@ exports[`ng-update legacy textarea migrates rows without expandable and adds TOD
 }
 `;
 
+exports[`ng-update legacy textarea migrates self-closing <tui-textarea ... /> and removes [expandable]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    [expandable]="true"
+                    [ngModel]="control.value"
+                    [ngModelOptions]="{updateOn: 'change'}"
+                    (ngModelChange)="control.setValue($event)"
+                />
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - [expandable] was removed. New component always auto-resizes between [min] (default: 1) and [max] (default: 3) rows.
+     - Unrecognized attribute "[ngModelOptions]="{updateOn: 'change'}"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+-->
+                <tui-textfield [ngModelOptions]="{updateOn: 'change'}">
+                <textarea tuiTextarea [ngModel]="control.value" (ngModelChange)="control.setValue($event)"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea migrates self-closing <tui-textarea /> without absorbing following siblings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    formControlName="value"
+                    [expandable]="false"
+                />
+                <button tuiButton>Save</button>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - expandable="false" was removed. New component always auto-resizes. To restore fixed height, set [min] and [max] to the same value on <textarea tuiTextarea> (legacy default was 20 rows).
+-->
+                <tui-textfield>
+                <textarea tuiTextarea formControlName="value"></textarea>
+                </tui-textfield>
+                <button tuiButton>Save</button>
+            ",
+}
+`;
+
 exports[`ng-update legacy textarea migrates tui-textarea attributes: wrapper attrs, [maxLength], labelOutside=true adds TODO: test.html 1`] = `
 {
   "0. Before": "
@@ -204,6 +247,32 @@ exports[`ng-update legacy textarea migrates tui-textarea with labelOutside=false
                 <tui-textfield>
                 <label tuiLabel>Label</label>
                 <textarea tuiTextarea formControlName="testValue"></textarea>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy textarea places (ngModelChange) on the inner <textarea tuiTextarea>, not the wrapper: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-textarea
+                    class="tui-space_top-5"
+                    [ngModel]="markdown"
+                    [style.min-height.rem]="30"
+                    (ngModelChange)="markdown$.next($event)"
+                >
+                    Markdown
+                </tui-textarea>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+     - Unrecognized attribute "class="tui-space_top-5"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+     - Unrecognized attribute "[style.min-height.rem]="30"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+-->
+                <tui-textfield class="tui-space_top-5" [style.min-height.rem]="30">
+                <label tuiLabel>Markdown</label>
+                <textarea tuiTextarea [ngModel]="markdown" (ngModelChange)="markdown$.next($event)"></textarea>
                 </tui-textfield>
             ",
 }

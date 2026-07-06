@@ -42,4 +42,8 @@ export const FUNCTION_PARAMETERS_TO_REPLACE: ReplacementFunctionParameter[] = [
         ],
         parameters: [{name: 'closeable', renameTo: 'closable'}],
     },
+    {
+        names: ['tuiGetClosestFocusable'],
+        parameters: [{name: 'keyboard', remove: true}],
+    },
 ];

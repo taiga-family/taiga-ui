@@ -155,6 +155,74 @@ exports[`ng-update tuiRepeatTimes migrates *ngFor with tuiRepeatTimes to @for: t
 }
 `;
 
+exports[`ng-update tuiRepeatTimes migrates *tuiRepeatTimes directive to @for with index alias: test.html 1`] = `
+{
+  "0. Before": "<div *tuiRepeatTimes="let x of count">{{ x }}</div>",
+  "1. After": "@for (_ of '-'.repeat(count); track $index; let x = $index) {
+<div>{{ x }}</div>
+}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates *tuiRepeatTimes directive to @for with index alias: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [],
+                })
+                export class Test {}
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates *tuiRepeatTimes on ng-container by unwrapping: test.html 1`] = `
+{
+  "0. Before": "<ng-container *tuiRepeatTimes="let i of 3"><span>{{ i }}</span></ng-container>",
+  "1. After": "@for (_ of '-'.repeat(3); track $index; let i = $index) {<span>{{ i }}</span>}",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates *tuiRepeatTimes on ng-container by unwrapping: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [],
+                })
+                export class Test {}
+            ",
+}
+`;
+
 exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes pipe: test.html 1`] = `
 {
   "0. Before": "
@@ -240,6 +308,65 @@ exports[`ng-update tuiRepeatTimes migrates multiple tuiRepeatTimes in same templ
             })
             export class Test {}
         ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates nested *tuiRepeatTimes preserving both variables: test.html 1`] = `
+{
+  "0. Before": "
+                <div
+                    *tuiRepeatTimes="let x of columnsNumber"
+                    class="t-column"
+                >
+                    <div
+                        *tuiRepeatTimes="let y of rowsNumber"
+                        class="t-cell"
+                        [class.t-cell_hovered]="hovered(y, x)"
+                    ></div>
+                </div>
+            ",
+  "1. After": "
+                @for (_ of '-'.repeat(columnsNumber); track $index; let x = $index) {
+                <div
+                   
+                    class="t-column"
+                >
+                    @for (_ of '-'.repeat(rowsNumber); track $index; let y = $index) {
+                    <div
+                       
+                        class="t-cell"
+                        [class.t-cell_hovered]="hovered(y, x)"
+                    ></div>
+                    }
+                </div>
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiRepeatTimes migrates nested *tuiRepeatTimes preserving both variables: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiRepeatTimes} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [TuiRepeatTimes],
+                })
+                export class Test {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [],
+                })
+                export class Test {}
+            ",
 }
 `;
 
