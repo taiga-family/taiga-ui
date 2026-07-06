@@ -70,6 +70,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment: 'use tui-pager instead',
     },
     {
+        tag: 'tui-accordion',
+        withAttrs: ['rounded'],
+        comment:
+            'rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom',
+    },
+    {
         tag: 'timeline-steps',
         withAttrs: [],
         comment:

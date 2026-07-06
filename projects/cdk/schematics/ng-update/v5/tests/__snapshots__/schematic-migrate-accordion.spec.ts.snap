@@ -151,12 +151,14 @@ exports[`ng-update accordion item removes deprecated [rounded] attribute from tu
             ",
   "1. After": "
                 <!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
+<!-- TODO: (Taiga UI migration) rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom -->
 <tui-accordion >
                     <button [tuiAccordion]="true">Output</button>
                     <tui-expand><pre><code>{{ group.value | json }}</code></pre></tui-expand>
                 </tui-accordion>
 
                 <!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
+<!-- TODO: (Taiga UI migration) rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom -->
 <tui-accordion >
                     <button tuiAccordion>Item</button>
                     <tui-expand>Content</tui-expand>
