@@ -273,29 +273,41 @@ function migrateAtForRepeatTimes(
 }
 
 function replaceRepeatTimesInForHeader(header: string): string | null {
-    const pipeMatch = /\|\s*tuiRepeatTimes\b/.exec(header);
-
-    if (pipeMatch?.index === undefined) {
+    if (!/\|\s*tuiRepeatTimes\b/.test(header)) {
         return null;
     }
 
-    const beforePipe = header.slice(0, pipeMatch.index);
-    const ofIndex = beforePipe.lastIndexOf(' of ');
+    const [iteration = '', ...tail] = header.split(';');
 
-    if (ofIndex === -1) {
+    const iterationMatch = /^\s*(\S+)\s+of\s+([\s\S]+?)\s*\|\s*tuiRepeatTimes\s*$/.exec(
+        iteration,
+    );
+
+    if (!iterationMatch) {
         return null;
     }
 
-    const expression = beforePipe.slice(ofIndex + ' of '.length).trim();
+    const [, variable = '', expression = ''] = iterationMatch;
 
     if (!expression) {
         return null;
     }
 
-    const beforeExpression = beforePipe.slice(0, ofIndex + ' of '.length);
-    const afterPipe = header.slice(pipeMatch.index + pipeMatch[0].length);
+    // `'-'.repeat(N)` only provides the iteration count, so the loop variable would
+    // otherwise bind to the '-' string char. Alias it back to the numeric $index to
+    // match what `N | tuiRepeatTimes` produced (and what the *tuiRepeatTimes path does).
+    const needsAlias = variable !== '_' && variable !== '$index';
+    const alias = needsAlias ? [`let ${variable} = $index`] : [];
+    const tailWithoutTrack = tail
+        .map((segment) => segment.trim())
+        .filter((segment) => segment && !/^track\b/.test(segment));
 
-    return `${beforeExpression}'-'.repeat(${expression})${afterPipe}`;
+    return [
+        `_ of '-'.repeat(${expression})`,
+        'track $index',
+        ...alias,
+        ...tailWithoutTrack,
+    ].join('; ');
 }
 
 function findMatchingParen(template: string, openParen: number): number {

@@ -2,7 +2,21 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {createMigration} from '../../../utils/run-migration';
+import {createMigration, runMigration} from '../../../utils/run-migration';
+
+const COLLECTION = join(__dirname, '../../../migration.json');
+
+const REPEAT_TIMES_COMPONENT = /* TypeScript */ `
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+`;
 
 describe('ng-update tuiRepeatTimes', () => {
     const migrate = createMigration({
@@ -192,6 +206,24 @@ describe('ng-update tuiRepeatTimes', () => {
                 '<ng-container *tuiRepeatTimes="let i of 3"><span>{{ i }}</span></ng-container>',
         }),
     );
+
+    it('keeps the loop value numeric in @for blocks (issue #13823)', async () => {
+        const {template} = await runMigration({
+            collection: COLLECTION,
+            component: REPEAT_TIMES_COMPONENT,
+            template:
+                '@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }',
+        });
+
+        // `'-'.repeat(N)` only provides the iteration count
+        expect(template).toContain("'-'.repeat(config.count)");
+        // the loop value must stay numeric — it is $index, not the '-' string char
+        expect(template).toContain('track $index');
+        expect(template).toContain('let n = $index');
+        expect(template).not.toMatch(/track\s+n\b/);
+        // unrelated tail params are preserved
+        expect(template).toContain('let isOdd = $odd');
+    });
 
     afterEach(() => resetActiveProject());
 });

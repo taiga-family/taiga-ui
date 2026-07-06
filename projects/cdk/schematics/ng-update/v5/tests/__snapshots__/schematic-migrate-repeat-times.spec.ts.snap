@@ -90,7 +90,7 @@ exports[`ng-update tuiRepeatTimes full before/after comparison with nested conte
 exports[`ng-update tuiRepeatTimes keeps @for tail params while replacing tuiRepeatTimes expression: test.html 1`] = `
 {
   "0. Before": "@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }",
-  "1. After": "@for (n of '-'.repeat(config.count); track n; let isOdd = $odd) { {{n}} }",
+  "1. After": "@for (_ of '-'.repeat(config.count); track $index; let n = $index; let isOdd = $odd) { {{n}} }",
 }
 `;
 
@@ -234,7 +234,7 @@ exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes
             ",
   "1. After": "
                 <section class="list">
-                    @for (n of '-'.repeat(3); track n) {
+                    @for (_ of '-'.repeat(3); track $index; let n = $index) {
                     <item />
                     }
                 </section>
