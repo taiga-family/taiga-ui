@@ -8,12 +8,7 @@ import {getDialogOptions} from './utils/get-dialog-options';
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/dialog';
 
-const TODO_MESSAGE = [
-    'dialog `header` (content shown above the title) was removed from `TuiDialogOptions` in v5.',
-    '// - If it was rich content above the title: place `tuiHeader` in the dialog template (clear `label` if you had one).',
-    '// - If it was just a string title: move that string into `label`.',
-    `// See: ${DOCS_LINK}`,
-].join('\n');
+const TODO_MESSAGE = `dialog \`header\` option (content shown above the title) was removed from \`TuiDialogOptions\` in v5. To keep content above the title, pass an empty \`label\` and place \`tuiHeader\` in the dialog template where you need it. See: ${DOCS_LINK}`;
 
 export function migrateDialogHeader(_tree: Tree, _options: TuiSchema): void {
     getSourceFiles(ALL_TS_FILES).forEach((sourceFile) => {
