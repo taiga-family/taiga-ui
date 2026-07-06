@@ -20,7 +20,8 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsVehicle,
-    type TuiRectAccessor,
+    tuiFallbackAccessor,
+    TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
@@ -81,6 +82,11 @@ export class TuiDropdownDirective
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
+
+    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
+        inject<any>(TuiRectAccessor, {self: true, optional: true}),
+        this,
+    );
 
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
