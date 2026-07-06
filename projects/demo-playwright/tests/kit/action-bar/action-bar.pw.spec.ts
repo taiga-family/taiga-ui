@@ -36,4 +36,24 @@ test.describe('ActionBar', () => {
 
         await expect.soft(actionBarExample).toHaveScreenshot('02-actions-bar.png');
     });
+
+    test('open and closes without signals', async ({page}) => {
+        await tuiGoto(page, DemoRoute.ActionBar);
+
+        const api = new TuiDocumentationApiPagePO(page);
+        const example = page.locator('#size--s');
+        const showActionBarButton = example.locator('button').first();
+
+        await showActionBarButton.click();
+        const actionBarExample = page.locator('tui-action-bar');
+
+        await api.hideContent();
+        await api.prepareBeforeScreenshot();
+
+        await expect.soft(actionBarExample).toHaveScreenshot('03-actions-bar.png');
+
+        await actionBarExample.locator('button').first().click();
+
+        await expect(actionBarExample).toBeHidden();
+    });
 });
