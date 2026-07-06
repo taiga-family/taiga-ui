@@ -20,6 +20,12 @@ const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 const NGFOR_REPEAT_TIMES_PIPE_PATTERN =
     /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
 
+// Split into two anchored patterns (no overlapping whitespace quantifiers) to avoid
+// super-linear regex backtracking: strip the `| tuiRepeatTimes` suffix, then parse
+// `<var> of <expression>` where the expression must start with a non-space char.
+const AT_FOR_REPEAT_TIMES_PIPE_SUFFIX = /\s*\|\s*tuiRepeatTimes\s*$/;
+const AT_FOR_ITERATION_PATTERN = /^\s*(\S+)\s+of\s+(\S[\s\S]*)$/;
+
 export function migrateRepeatTimes({
     resource,
     recorder,
@@ -278,10 +284,15 @@ function replaceRepeatTimesInForHeader(header: string): string | null {
     }
 
     const [iteration = '', ...tail] = header.split(';');
+    const beforePipe = iteration.replace(AT_FOR_REPEAT_TIMES_PIPE_SUFFIX, '');
 
-    const iterationMatch = /^\s*(\S+)\s+of\s+([\s\S]+?)\s*\|\s*tuiRepeatTimes\s*$/.exec(
-        iteration,
-    );
+    if (beforePipe === iteration) {
+        // `| tuiRepeatTimes` is not the tail of the iteration clause (e.g. it is nested
+        // inside the iterable expression) — leave the block untouched.
+        return null;
+    }
+
+    const iterationMatch = AT_FOR_ITERATION_PATTERN.exec(beforePipe);
 
     if (!iterationMatch) {
         return null;
@@ -299,6 +310,7 @@ function replaceRepeatTimesInForHeader(header: string): string | null {
     // match what `N | tuiRepeatTimes` produced (and what the *tuiRepeatTimes path does).
     const needsAlias = variable !== '_' && variable !== '$index';
     const alias = needsAlias ? [`let ${variable} = $index`] : [];
+
     const tailWithoutTrack = tail
         .map((segment) => segment.trim())
         .filter((segment) => segment && !/^track\b/.test(segment));

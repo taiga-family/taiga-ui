@@ -227,6 +227,7 @@ describe('ng-update tuiRepeatTimes', () => {
 
     it('leaves a @for block with an empty tuiRepeatTimes expression untouched', async () => {
         const template = '@for (n of   | tuiRepeatTimes; track n) { {{n}} }';
+
         const {template: result} = await runMigration({
             collection: COLLECTION,
             component: REPEAT_TIMES_COMPONENT,
