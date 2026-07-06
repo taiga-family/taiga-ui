@@ -58,6 +58,7 @@ import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 import {migrateTextarea} from './templates/migrate-textarea';
+import {migrateTooltip} from './templates/migrate-tooltip';
 
 export function getAction<T>({
     action,
@@ -115,6 +116,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
+        migrateTooltip,
         migrateTuiNotification,
         migrateRepeatTimes,
         migrateFieldError,
