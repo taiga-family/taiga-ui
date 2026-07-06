@@ -17,45 +17,64 @@ export const TUI_DARK_MODE_KEY = new InjectionToken(
     {factory: () => TUI_DARK_MODE_DEFAULT_KEY},
 );
 
-export const TUI_DARK_MODE = new InjectionToken<
-    WritableSignal<boolean> & {reset(): void}
->(ngDevMode ? 'TUI_DARK_MODE' : '', {
-    factory: () => {
-        let automatic = true;
-        const storage = inject(WA_LOCAL_STORAGE);
-        const key = inject(TUI_DARK_MODE_KEY);
-        const saved = storage?.getItem(key);
-        const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
-        const result = signal(Boolean((saved && JSON.parse(saved)) ?? media.matches));
+export type TuiDarkMode = WritableSignal<boolean> & {reset(): void};
 
-        fromEvent(media, 'change')
-            .pipe(
-                filter(() => !storage?.getItem(key)),
-                takeUntilDestroyed(),
-            )
-            .subscribe(() => {
-                automatic = true;
-                result.set(media.matches);
-            });
+export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
+    ngDevMode ? 'TUI_DARK_MODE' : '',
+    {
+        factory: () => {
+            const storage = inject(WA_LOCAL_STORAGE);
+            const key = inject(TUI_DARK_MODE_KEY);
+            const saved = storage?.getItem(key);
+            const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
+            const result = signal(Boolean((saved && JSON.parse(saved)) ?? media.matches));
 
-        untracked(() => {
-            effect(() => {
-                const value = String(result());
+            // Tracks the last value the effect has seen so its initial run (the value
+            // loaded from storage/media) is not written back. Seeding it synchronously
+            // avoids relying on the effect flushing before the first user change — that
+            // race dropped the first `set()` when storage was empty.
+            let previous = String(result());
+            // A machine-driven change (system theme / reset) that should not persist.
+            let automatic = false;
 
-                if (automatic) {
-                    automatic = false;
-                } else {
-                    storage?.setItem(key, value);
+            const auto = (value: boolean): void => {
+                if (result() !== value) {
+                    automatic = true;
+                    result.set(value);
                 }
-            });
-        });
+            };
 
-        return Object.assign(result, {
-            reset: () => {
-                storage?.removeItem(key);
-                automatic = true;
-                result.set(media.matches);
-            },
-        });
+            fromEvent(media, 'change')
+                .pipe(
+                    filter(() => !storage?.getItem(key)),
+                    takeUntilDestroyed(),
+                )
+                .subscribe(() => auto(media.matches));
+
+            untracked(() => {
+                effect(() => {
+                    const value = String(result());
+
+                    if (value === previous) {
+                        return;
+                    }
+
+                    previous = value;
+
+                    if (automatic) {
+                        automatic = false;
+                    } else {
+                        storage?.setItem(key, value);
+                    }
+                });
+            });
+
+            return Object.assign(result, {
+                reset: () => {
+                    storage?.removeItem(key);
+                    auto(media.matches);
+                },
+            });
+        },
     },
-});
+);
