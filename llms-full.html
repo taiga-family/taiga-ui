@@ -4829,7 +4829,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;tui-bar-set class=&quot;bars&quot; [value]=&quot;value&quot; /&gt;
+&lt;tui-bar-set class=&quot;bars&quot; [collapsed]=&quot;true&quot; [value]=&quot;value&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -4854,8 +4854,7 @@ export default class Example {
 .bars {
     block-size: 6.25rem;
     inline-size: 3.75rem;
-    margin-block-end: 3.125rem;
-    box-shadow: 0 1px var(--tui-border-normal);
+    background: linear-gradient(var(--tui-border-normal) 0 0) 0 66.6667% / 100% 1px no-repeat;
 
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: var(--tui-background-accent-1);
@@ -13626,29 +13625,22 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;flat&quot; tuiButton tuiChevron type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; [tuiDropdownLimitWidth]=&quot;isMobile ? &#039;fixed&#039; : &#039;min&#039;&quot; [tuiDropdownMaxHeight]=&quot;700&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Why Taiga UI? &lt;/button&gt;
+&lt;button appearance=&quot;flat&quot; tuiButton tuiChevron tuiDropdownLimitWidth=&quot;min&quot; type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Why Taiga UI? &lt;/button&gt;
 &lt;ng-template #content&gt;
-&lt;tui-data-list&gt; @for (group of groups; track group) { &lt;tui-opt-group [label]=&quot;group.label&quot;&gt; @for (item of group.items; track item) { &lt;button tuiOption type=&quot;button&quot; class=&quot;option&quot; (click)=&quot;open = false&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-opt-group&gt; } &lt;/tui-data-list&gt;
+&lt;tui-data-list [style.max-inline-size.rem]=&quot;35&quot;&gt; @for (group of groups; track group) { &lt;tui-opt-group [label]=&quot;group.label&quot;&gt; @for (item of group.items; track item) { &lt;button tuiOption type=&quot;button&quot; (click)=&quot;open = false&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-opt-group&gt; } &lt;/tui-data-list&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from &#039;@angular/core&#039;;
-import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {WA_IS_MOBILE} from &#039;@ng-web-apis/platform&#039;;
 import {TuiButton, TuiDataList, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
+    imports: [TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: &#039;./index.html&#039;,
-    styles: `
-        .option {
-            white-space: normal;
-        }
-    `,
     encapsulation,
     changeDetection,
 })
@@ -13672,10 +13664,6 @@ export default class Example {
             items: [&#039;Calendar&#039;, &#039;Dialog&#039;, &#039;ComboBox&#039;, &#039;Select&#039;],
         },
     ];
-
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-
-    public control = new FormControl(&#039;&#039;);
 }
 ```
 
@@ -14109,10 +14097,11 @@ export default class Example {
 &lt;tui-textfield multi&gt;
 &lt;label tuiLabel&gt;Pick days off&lt;/label&gt;
 &lt;input tuiInputDateMulti [ngModel]=&quot;value()&quot; (ngModelChange)=&quot;onValueChange($event)&quot; /&gt;
-&lt;div *tuiDropdown [style.display]=&quot;&#039;flex&#039;&quot; &gt;
+&lt;div *tuiDropdown [style.display]=&quot;&#039;flex&#039;&quot; [style.flex-wrap]=&quot;&#039;wrap&#039;&quot; &gt;
 &lt;tui-date-picker [contentDay]=&quot;content&quot; [dayType]=&quot;dayType()&quot; [showAdjacent]=&quot;true&quot; [showWeek]=&quot;true&quot; /&gt;
 &lt;tui-data-list&gt; @for (user of users; track $index) { &lt;button tuiOption (click)=&quot;current.set($index)&quot; &gt;
-&lt;span [tuiAvatar]=&quot;user | tuiInitials&quot;&gt;&lt;/span&gt; {{ user }} @if (current() === $index) { &lt;tui-icon icon=&quot;@tui.check&quot; /&gt; } &lt;/button&gt; } &lt;/tui-data-list&gt;
+&lt;span [tuiAvatar]=&quot;user | tuiInitials&quot;&gt;&lt;/span&gt; {{ user }} &lt;tui-icon icon=&quot;@tui.check&quot; [style.visibility]=&quot;current() !== $index ? &#039;hidden&#039; : &#039;&#039;&quot; /&gt;
+&lt;/button&gt; } &lt;/tui-data-list&gt;
 &lt;ng-template #content let-day &gt; {{ day.day }} @if (getHint(day); as hint) { &lt;span tuiHintDirection=&quot;top&quot; class=&quot;hint&quot; [tuiHint]=&quot;hint&quot; &gt;&lt;/span&gt; } &lt;/ng-template&gt;
 &lt;/div&gt;
 &lt;/tui-textfield&gt;
@@ -25042,7 +25031,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {MaskitoPipe} from &#039;@maskito/angular&#039;;
 import {maskitoTransform} from &#039;@maskito/core&#039;;
-import {maskitoPhoneOptionsGenerator} from &#039;@maskito/phone&#039;;
+import {maskitoPhone} from &#039;@maskito/phone&#039;;
 import metadata from &#039;libphonenumber-js/max/metadata&#039;;
 
 @Component({
@@ -25055,7 +25044,7 @@ import metadata from &#039;libphonenumber-js/max/metadata&#039;;
 export default class Example {
     protected rawValue = &#039;12125552368&#039;;
 
-    protected readonly mask = maskitoPhoneOptionsGenerator({
+    protected readonly mask = maskitoPhone({
         metadata,
         countryIsoCode: &#039;US&#039;,
     });
@@ -28578,7 +28567,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;div class=&quot;example&quot;&gt;
-&lt;div #parent class=&quot;line-clamp-box&quot; (waResizeObserver)=&quot;onResize(parent)&quot; &gt;
+&lt;div #parent class=&quot;line-clamp-box&quot; (resize)=&quot;onResize(parent)&quot; &gt;
 &lt;tui-line-clamp [content]=&quot;content&quot; [lineHeight]=&quot;lineHeight || getDynamicLineHeight(parent)&quot; [linesLimit]=&quot;lineLimit || getDynamicLineLimit(parent)&quot; /&gt;
 &lt;ng-template #content&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. &lt;/ng-template&gt;
 &lt;/div&gt;
@@ -28590,11 +28579,10 @@ import {ChangeDetectorRef, Component, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {WA_WINDOW} from &#039;@ng-web-apis/common&#039;;
-import {WaResizeObserver} from &#039;@ng-web-apis/resize-observer&#039;;
 import {TuiLineClamp} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiLineClamp, WaResizeObserver],
+    imports: [TuiLineClamp],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     encapsulation,
@@ -38697,6 +38685,12 @@ export default class Example {
 .floating {
     margin-block-start: -1rem;
     padding-block-start: 1rem;
+}
+
+hr {
+    block-size: 1px;
+    border: none;
+    background: var(--tui-border-normal);
 }
 ```
 
@@ -54944,6 +54938,43 @@ export default class Example {
 }
 ```
 
+#### Custom alerts host
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;show.set(true)&quot; &gt; Show &lt;/button&gt;
+&lt;custom-host /&gt;
+&lt;ng-template [(tuiNotification)]=&quot;show&quot;&gt;
+&lt;div tuiTitle&gt; Notification &lt;div tuiSubtitle&gt;I am in a custom portal&lt;/div&gt;
+&lt;/div&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {
+    TuiButton,
+    TuiNotification,
+    TuiNotificationService,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
+
+import {CustomHost} from &#039;./portal&#039;;
+import {CustomPortalService} from &#039;./service&#039;;
+
+@Component({
+    selector: &#039;tui-portals-example-2&#039;,
+    imports: [CustomHost, TuiButton, TuiNotification, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+    providers: [{provide: TuiNotificationService, deps: [CustomPortalService]}],
+})
+export default class Example {
+    protected readonly show = signal(false);
+}
+```
+
 
 ### TypeScript
 
@@ -54952,10 +54983,11 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 
-import Example from &#039;./examples/1&#039;;
+import Example1 from &#039;./examples/1&#039;;
+import Example2 from &#039;./examples/2&#039;;
 
 @Component({
-    imports: [Example, TuiDemo],
+    imports: [Example1, Example2, TuiDemo],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -54970,6 +55002,13 @@ export default class Page {
         LESS: import(&#039;./examples/1/index.less&#039;),
         &#039;portal.ts&#039;: import(&#039;./examples/1/portal.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
         &#039;service.ts&#039;: import(&#039;./examples/1/service.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+    };
+
+    protected readonly example2 = {
+        TypeScript: import(&#039;./examples/2/index.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+        HTML: import(&#039;./examples/2/index.html&#039;),
+        &#039;portal.ts&#039;: import(&#039;./examples/2/portal.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+        &#039;service.ts&#039;: import(&#039;./examples/2/service.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
 }
 ```

@@ -4820,7 +4820,7 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-bar-set class="bars" [value]="value" />
+<tui-bar-set class="bars" [collapsed]="true" [value]="value" />
 ```
 **TypeScript:**
 ```ts
@@ -4845,8 +4845,7 @@ export default class Example {
 .bars {
     block-size: 6.25rem;
     inline-size: 3.75rem;
-    margin-block-end: 3.125rem;
-    box-shadow: 0 1px var(--tui-border-normal);
+    background: linear-gradient(var(--tui-border-normal) 0 0) 0 66.6667% / 100% 1px no-repeat;
 
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: var(--tui-background-accent-1);
@@ -13617,29 +13616,22 @@ export default class Example {
 
 **Template:**
 ```html
-<button appearance="flat" tuiButton tuiChevron type="button" [tuiDropdown]="content" [tuiDropdownLimitWidth]="isMobile ? 'fixed' : 'min'" [tuiDropdownMaxHeight]="700" [(tuiDropdownOpen)]="open" > Why Taiga UI? </button>
+<button appearance="flat" tuiButton tuiChevron tuiDropdownLimitWidth="min" type="button" [tuiDropdown]="content" [(tuiDropdownOpen)]="open" > Why Taiga UI? </button>
 <ng-template #content>
-<tui-data-list> @for (group of groups; track group) { <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <button tuiOption type="button" class="option" (click)="open = false" > {{ item }} </button> } </tui-opt-group> } </tui-data-list>
+<tui-data-list [style.max-inline-size.rem]="35"> @for (group of groups; track group) { <tui-opt-group [label]="group.label"> @for (item of group.items; track item) { <button tuiOption type="button" (click)="open = false" > {{ item }} </button> } </tui-opt-group> } </tui-data-list>
 </ng-template>
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
+    imports: [TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
-    styles: `
-        .option {
-            white-space: normal;
-        }
-    `,
     encapsulation,
     changeDetection,
 })
@@ -13663,10 +13655,6 @@ export default class Example {
             items: ['Calendar', 'Dialog', 'ComboBox', 'Select'],
         },
     ];
-
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-
-    public control = new FormControl('');
 }
 ```
 
@@ -14100,10 +14088,11 @@ export default class Example {
 <tui-textfield multi>
 <label tuiLabel>Pick days off</label>
 <input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
-<div *tuiDropdown [style.display]="'flex'" >
+<div *tuiDropdown [style.display]="'flex'" [style.flex-wrap]="'wrap'" >
 <tui-date-picker [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
 <tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
-<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} @if (current() === $index) { <tui-icon icon="@tui.check" /> } </button> } </tui-data-list>
+<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} <tui-icon icon="@tui.check" [style.visibility]="current() !== $index ? 'hidden' : ''" />
+</button> } </tui-data-list>
 <ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
 </div>
 </tui-textfield>
@@ -25033,7 +25022,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoPipe} from '@maskito/angular';
 import {maskitoTransform} from '@maskito/core';
-import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
+import {maskitoPhone} from '@maskito/phone';
 import metadata from 'libphonenumber-js/max/metadata';
 
 @Component({
@@ -25046,7 +25035,7 @@ import metadata from 'libphonenumber-js/max/metadata';
 export default class Example {
     protected rawValue = '12125552368';
 
-    protected readonly mask = maskitoPhoneOptionsGenerator({
+    protected readonly mask = maskitoPhone({
         metadata,
         countryIsoCode: 'US',
     });
@@ -28569,7 +28558,7 @@ export default class Example {
 **Template:**
 ```html
 <div class="example">
-<div #parent class="line-clamp-box" (waResizeObserver)="onResize(parent)" >
+<div #parent class="line-clamp-box" (resize)="onResize(parent)" >
 <tui-line-clamp [content]="content" [lineHeight]="lineHeight || getDynamicLineHeight(parent)" [linesLimit]="lineLimit || getDynamicLineLimit(parent)" />
 <ng-template #content> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </ng-template>
 </div>
@@ -28581,11 +28570,10 @@ import {ChangeDetectorRef, Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiLineClamp, WaResizeObserver],
+    imports: [TuiLineClamp],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -38688,6 +38676,12 @@ export default class Example {
 .floating {
     margin-block-start: -1rem;
     padding-block-start: 1rem;
+}
+
+hr {
+    block-size: 1px;
+    border: none;
+    background: var(--tui-border-normal);
 }
 ```
 
@@ -54935,6 +54929,43 @@ export default class Example {
 }
 ```
 
+#### Custom alerts host
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="show.set(true)" > Show </button>
+<custom-host />
+<ng-template [(tuiNotification)]="show">
+<div tuiTitle> Notification <div tuiSubtitle>I am in a custom portal</div>
+</div>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {
+    TuiButton,
+    TuiNotification,
+    TuiNotificationService,
+    TuiTitle,
+} from '@taiga-ui/core';
+
+import {CustomHost} from './portal';
+import {CustomPortalService} from './service';
+
+@Component({
+    selector: 'tui-portals-example-2',
+    imports: [CustomHost, TuiButton, TuiNotification, TuiTitle],
+    templateUrl: './index.html',
+    changeDetection,
+    providers: [{provide: TuiNotificationService, deps: [CustomPortalService]}],
+})
+export default class Example {
+    protected readonly show = signal(false);
+}
+```
+
 
 ### TypeScript
 
@@ -54943,10 +54974,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
-import Example from './examples/1';
+import Example1 from './examples/1';
+import Example2 from './examples/2';
 
 @Component({
-    imports: [Example, TuiDemo],
+    imports: [Example1, Example2, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -54961,6 +54993,13 @@ export default class Page {
         LESS: import('./examples/1/index.less'),
         'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
         'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly example2 = {
+        TypeScript: import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/2/index.html'),
+        'portal.ts': import('./examples/2/portal.ts?raw', {with: {loader: 'text'}}),
+        'service.ts': import('./examples/2/service.ts?raw', {with: {loader: 'text'}}),
     };
 }
 ```
