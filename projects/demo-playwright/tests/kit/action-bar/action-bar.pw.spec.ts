@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('ActionBar', () => {
@@ -8,8 +8,8 @@ test.describe('ActionBar', () => {
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
 
-        const api = new TuiDocumentationApiPagePO(page);
-        const example = page.locator('#size--m');
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#size--m');
         const showActionBarButton = example.locator('label').first();
 
         await showActionBarButton.click();
@@ -24,9 +24,9 @@ test.describe('ActionBar', () => {
     test('should show on top', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
 
-        const api = new TuiDocumentationApiPagePO(page);
-        const example = page.locator('#top-position');
-        const showActionBarButton = example.getByTestId('open-table-bar-on-top').first();
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#top-position');
+        const showActionBarButton = example.locator('button').first();
 
         await showActionBarButton.click();
         const actionBarExample = page.locator('tui-action-bar');
@@ -37,11 +37,11 @@ test.describe('ActionBar', () => {
         await expect.soft(actionBarExample).toHaveScreenshot('02-actions-bar.png');
     });
 
-    test('open and closes without signals', async ({page}) => {
+    test('opens and closes without', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
 
-        const api = new TuiDocumentationApiPagePO(page);
-        const example = page.locator('#size--s');
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#size--s');
         const showActionBarButton = example.locator('button').first();
 
         await showActionBarButton.click();

@@ -11,7 +11,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TuiPopupService} from './popup.service';
 
-export const TUI_CDR = '_tuiCdr';
+export const TUI_CDR = '_tuiCdr' as const;
 
 @Component({
     selector: 'tui-popups',
@@ -27,13 +27,13 @@ export class TuiPopups extends TuiPortals implements AfterViewChecked {
         for (let i = 0; i < this.anchor().vcr.length; i++) {
             const ref = this.anchor().vcr.get(i);
 
-            if (isEmbeddedViewRef<Record<string, any>>(ref)) {
-                ref.context[TUI_CDR]?.markForCheck();
+            if (isEmbeddedViewRef(ref)) {
+                ref.context?.[TUI_CDR]?.markForCheck();
             }
         }
     }
 }
 
-function isEmbeddedViewRef<C>(ref?: ViewRef | null): ref is EmbeddedViewRef<C> {
+function isEmbeddedViewRef(ref?: ViewRef | null): ref is EmbeddedViewRef<any> {
     return !!ref && 'context' in ref;
 }

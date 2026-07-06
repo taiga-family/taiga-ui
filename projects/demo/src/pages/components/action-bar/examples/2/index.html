@@ -4,14 +4,14 @@
     type="button"
     (click)="open = true"
 >
-    Show TableBar
+    Show ActionBar
 </button>
 
 <tui-action-bar
     *tuiPopup="open"
     size="s"
 >
-    <span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
+    <span [style.width.%]="isMobile() ? 100 : null">Action bar opened</span>
 
     <button
         appearance="secondary-grayscale"
