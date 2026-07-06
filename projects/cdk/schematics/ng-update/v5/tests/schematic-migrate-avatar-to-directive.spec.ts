@@ -2,12 +2,12 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {createMigration} from '../../../utils/run-migration';
+import {createMigration, runMigration} from '../../../utils/run-migration';
+
+const COLLECTION = join(__dirname, '../../../migration.json');
 
 describe('ng-update avatar', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+    const migrate = createMigration({collection: COLLECTION});
 
     it(
         'replaces src attribute with tuiAvatar',
@@ -88,6 +88,35 @@ describe('ng-update avatar', () => {
             `,
         }),
     );
+
+    it('adds a SafeResourceUrl TODO for a raw dynamic [src] binding (issue #13823)', async () => {
+        const {template} = await runMigration({
+            collection: COLLECTION,
+            template: '<tui-avatar [src]="safeUrl"></tui-avatar>',
+        });
+
+        expect(template).toContain('[tuiAvatar]="safeUrl"');
+        expect(template).toContain('TODO: (Taiga UI migration)');
+        expect(template).toContain('SafeResourceUrl');
+    });
+
+    it('does not add a SafeResourceUrl TODO for an icon binding', async () => {
+        const {template} = await runMigration({
+            collection: COLLECTION,
+            template: '<tui-avatar [src]="\'@tui.mastercard\' | tuiIcon" />',
+        });
+
+        expect(template).not.toContain('SafeResourceUrl');
+    });
+
+    it('does not add a SafeResourceUrl TODO for a static string src', async () => {
+        const {template} = await runMigration({
+            collection: COLLECTION,
+            template: '<tui-avatar src="@tui.user"></tui-avatar>',
+        });
+
+        expect(template).not.toContain('SafeResourceUrl');
+    });
 
     afterEach(() => resetActiveProject());
 });

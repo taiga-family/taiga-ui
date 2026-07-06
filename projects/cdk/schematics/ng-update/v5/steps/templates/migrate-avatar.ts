@@ -6,6 +6,7 @@ import {
     findElementsByTagName,
     findElementsWithAttribute,
 } from '../../../../utils/templates/elements';
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
@@ -20,6 +21,9 @@ type Attribute = Token.Attribute;
 type Element = DefaultTreeAdapterTypes.Element;
 
 type ElementLocation = Token.ElementLocation;
+
+const SAFE_RESOURCE_URL_TODO =
+    'tuiAvatar accepts only a string (icon name or URL). If this value is a SafeResourceUrl or another non-string image source, render it via an inner <img> instead: <span tuiAvatar><img [src]="..." alt="" /></span>.';
 
 export function migrateAvatarToDirective({
     resource,
@@ -85,6 +89,8 @@ export function migrateAvatarToDirective({
             return;
         }
 
+        maybeInsertSafeResourceUrlTodo(recorder, loc, templateOffset, srcAttr);
+
         replaceAttribute(
             recorder,
             tuiAvatarAttr?.name ?? 'tuiAvatar',
@@ -106,6 +112,10 @@ export function migrateAvatarToDirective({
         const srcAttr = getSrcAttr(element.attrs);
         const hasAvatarAttr = hasTuiAvatarAttr(element.attrs);
         const attrToAdd = hasAvatarAttr ? null : getAvatarAttr(srcAttr);
+
+        if (!hasAvatarAttr) {
+            maybeInsertSafeResourceUrlTodo(recorder, loc, templateOffset, srcAttr);
+        }
 
         replaceTag(
             recorder,
@@ -148,6 +158,34 @@ function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
             .map((attr) => attr.toLowerCase())
             .includes(name),
     );
+}
+
+/**
+ * A raw dynamic `[src]`/`[(src)]` becomes `[tuiAvatar]="..."`, which only accepts a
+ * string. A `SafeResourceUrl` (or any non-string image) would break at build time, and
+ * the bound type cannot be inferred from the template — so flag it with a TODO. Icon and
+ * fallback bindings (`| tuiIcon`, `| tuiFallbackSrc`) are known-string flows and skipped.
+ */
+function maybeInsertSafeResourceUrlTodo(
+    recorder: UpdateRecorder,
+    loc: ElementLocation,
+    templateOffset: number,
+    srcAttr?: Attribute,
+): void {
+    if (!srcAttr || !isRawDynamicSrc(srcAttr)) {
+        return;
+    }
+
+    recorder.insertLeft(
+        templateOffset + loc.startOffset,
+        `<!-- ${TODO_MARK} ${SAFE_RESOURCE_URL_TODO} -->\n`,
+    );
+}
+
+function isRawDynamicSrc(attr: Attribute): boolean {
+    const isBinding = attr.name === '[src]' || attr.name === '[(src)]';
+
+    return isBinding && !/\|\s*(?:tuiIcon|tuiFallbackSrc)\b/.test(attr.value);
 }
 
 function getSrcAttr(attrs: Attribute[]): Attribute | undefined {
