@@ -29,11 +29,9 @@ export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
             const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
             const result = signal(Boolean((saved && JSON.parse(saved)) ?? media.matches));
 
-            // Tracks the last value the effect has seen so its initial run (the value
-            // loaded from storage/media) is not written back. Seeding it synchronously
-            // avoids relying on the effect flushing before the first user change — that
-            // race dropped the first `set()` when storage was empty.
-            let previous = String(result());
+            // Seeded synchronously so the effect's initial run is skipped without
+            // racing the first user `set()` (which dropped it on empty storage).
+            let previous = result();
             // A machine-driven change (system theme / reset) that should not persist.
             let automatic = false;
 
@@ -53,7 +51,7 @@ export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
 
             untracked(() => {
                 effect(() => {
-                    const value = String(result());
+                    const value = result();
 
                     if (value === previous) {
                         return;
@@ -64,7 +62,7 @@ export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
                     if (automatic) {
                         automatic = false;
                     } else {
-                        storage?.setItem(key, value);
+                        storage?.setItem(key, String(value));
                     }
                 });
             });
