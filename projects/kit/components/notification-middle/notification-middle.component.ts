@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, isSignal, type Signal} from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -22,15 +21,12 @@ export interface TuiNotificationMiddleOptions {
     styleUrl: './notification-middle.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLoaderOptionsProvider({size: 'l'})],
-    hostDirectives: [
-        TuiAnimated,
-        {directive: WaResizeObserver, outputs: ['waResizeObserver']},
-    ],
+    hostDirectives: [TuiAnimated],
     host: {
         class: 'tui-backdrop-hidden',
         '(document:click.capture)': 'onClick($event.target)',
         '(document:keydown.esc)': 'onClick($event.currentTarget)',
-        '(waResizeObserver)': 'el.style.setProperty("--t-width", el.clientWidth + "px")',
+        '(resize)': 'el.style.setProperty("--t-width", el.clientWidth + "px")',
     },
 })
 export class TuiNotificationMiddleComponent {
