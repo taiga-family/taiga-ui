@@ -13626,29 +13626,22 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button appearance=&quot;flat&quot; tuiButton tuiChevron type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; [tuiDropdownLimitWidth]=&quot;isMobile ? &#039;fixed&#039; : &#039;min&#039;&quot; [tuiDropdownMaxHeight]=&quot;700&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Why Taiga UI? &lt;/button&gt;
+&lt;button appearance=&quot;flat&quot; tuiButton tuiChevron tuiDropdownLimitWidth=&quot;min&quot; type=&quot;button&quot; [tuiDropdown]=&quot;content&quot; [(tuiDropdownOpen)]=&quot;open&quot; &gt; Why Taiga UI? &lt;/button&gt;
 &lt;ng-template #content&gt;
-&lt;tui-data-list&gt; @for (group of groups; track group) { &lt;tui-opt-group [label]=&quot;group.label&quot;&gt; @for (item of group.items; track item) { &lt;button tuiOption type=&quot;button&quot; class=&quot;option&quot; (click)=&quot;open = false&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-opt-group&gt; } &lt;/tui-data-list&gt;
+&lt;tui-data-list [style.max-inline-size.rem]=&quot;35&quot;&gt; @for (group of groups; track group) { &lt;tui-opt-group [label]=&quot;group.label&quot;&gt; @for (item of group.items; track item) { &lt;button tuiOption type=&quot;button&quot; (click)=&quot;open = false&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/tui-opt-group&gt; } &lt;/tui-data-list&gt;
 &lt;/ng-template&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from &#039;@angular/core&#039;;
-import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {WA_IS_MOBILE} from &#039;@ng-web-apis/platform&#039;;
 import {TuiButton, TuiDataList, TuiDropdown} from &#039;@taiga-ui/core&#039;;
 import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
+    imports: [TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: &#039;./index.html&#039;,
-    styles: `
-        .option {
-            white-space: normal;
-        }
-    `,
     encapsulation,
     changeDetection,
 })
@@ -13672,10 +13665,6 @@ export default class Example {
             items: [&#039;Calendar&#039;, &#039;Dialog&#039;, &#039;ComboBox&#039;, &#039;Select&#039;],
         },
     ];
-
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-
-    public control = new FormControl(&#039;&#039;);
 }
 ```
 
