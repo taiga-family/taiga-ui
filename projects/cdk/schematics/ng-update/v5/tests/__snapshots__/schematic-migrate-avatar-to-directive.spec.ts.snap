@@ -30,6 +30,13 @@ exports[`ng-update avatar complex templates: test.html 1`] = `
 }
 `;
 
+exports[`ng-update avatar keeps a bound string literal [src] without a SafeResourceUrl TODO: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar [src]="'assets/avatar.png'"></tui-avatar>",
+  "1. After": "<span [tuiAvatar]="'assets/avatar.png'"></span>",
+}
+`;
+
 exports[`ng-update avatar moves src value to tuiAvatar attribute on host element: test.html 1`] = `
 {
   "0. Before": "<a tuiAvatar src="avatar.png"></a>",

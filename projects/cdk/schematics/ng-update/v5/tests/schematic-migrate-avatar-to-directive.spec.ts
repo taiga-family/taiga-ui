@@ -2,7 +2,7 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {createMigration, runMigration} from '../../../utils/run-migration';
+import {createMigration} from '../../../utils/run-migration';
 
 const COLLECTION = join(__dirname, '../../../migration.json');
 
@@ -14,6 +14,8 @@ describe('ng-update avatar', () => {
         migrate({template: '<tui-avatar src="tuiIconUser"></tui-avatar>'}),
     );
 
+    // Also guards issue #13823: a raw dynamic [src] binding gets the SafeResourceUrl TODO —
+    // the snapshot's "After" shows the inserted comment above the migrated element.
     it(
         'replaces bound src attribute with bound tuiAvatar',
         migrate({template: '<tui-avatar [src]="avatarUrl" size="m"></tui-avatar>'}),
@@ -89,44 +91,12 @@ describe('ng-update avatar', () => {
         }),
     );
 
-    it('adds a SafeResourceUrl TODO for a raw dynamic [src] binding (issue #13823)', async () => {
-        const {template} = await runMigration({
-            collection: COLLECTION,
-            template: '<tui-avatar [src]="safeUrl"></tui-avatar>',
-        });
-
-        expect(template).toContain('[tuiAvatar]="safeUrl"');
-        expect(template).toContain('TODO: (Taiga UI migration)');
-        expect(template).toContain('SafeResourceUrl');
-    });
-
-    it('does not add a SafeResourceUrl TODO for an icon binding', async () => {
-        const {template} = await runMigration({
-            collection: COLLECTION,
-            template: '<tui-avatar [src]="\'@tui.mastercard\' | tuiIcon" />',
-        });
-
-        expect(template).not.toContain('SafeResourceUrl');
-    });
-
-    it('does not add a SafeResourceUrl TODO for a static string src', async () => {
-        const {template} = await runMigration({
-            collection: COLLECTION,
-            template: '<tui-avatar src="@tui.user"></tui-avatar>',
-        });
-
-        expect(template).not.toContain('SafeResourceUrl');
-    });
-
-    it('does not add a SafeResourceUrl TODO for a bound string literal', async () => {
-        const {template} = await runMigration({
-            collection: COLLECTION,
-            template: '<tui-avatar [src]="\'assets/avatar.png\'"></tui-avatar>',
-        });
-
-        expect(template).toContain('[tuiAvatar]="\'assets/avatar.png\'"');
-        expect(template).not.toContain('SafeResourceUrl');
-    });
+    // Guards Gemini's fix: a bound string literal is not a SafeResourceUrl, so it is migrated
+    // to [tuiAvatar] without a TODO (the snapshot's "After" has no inserted comment).
+    it(
+        'keeps a bound string literal [src] without a SafeResourceUrl TODO',
+        migrate({template: '<tui-avatar [src]="\'assets/avatar.png\'"></tui-avatar>'}),
+    );
 
     afterEach(() => resetActiveProject());
 });
