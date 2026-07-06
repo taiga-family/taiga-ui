@@ -4829,7 +4829,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;tui-bar-set class=&quot;bars&quot; [value]=&quot;value&quot; /&gt;
+&lt;tui-bar-set class=&quot;bars&quot; [collapsed]=&quot;true&quot; [value]=&quot;value&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -4854,8 +4854,7 @@ export default class Example {
 .bars {
     block-size: 6.25rem;
     inline-size: 3.75rem;
-    margin-block-end: 3.125rem;
-    box-shadow: 0 1px var(--tui-border-normal);
+    background: linear-gradient(var(--tui-border-normal) 0 0) 0 66.6667% / 100% 1px no-repeat;
 
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: var(--tui-background-accent-1);
