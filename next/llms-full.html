@@ -14098,10 +14098,11 @@ export default class Example {
 &lt;tui-textfield multi&gt;
 &lt;label tuiLabel&gt;Pick days off&lt;/label&gt;
 &lt;input tuiInputDateMulti [ngModel]=&quot;value()&quot; (ngModelChange)=&quot;onValueChange($event)&quot; /&gt;
-&lt;div *tuiDropdown [style.display]=&quot;&#039;flex&#039;&quot; &gt;
+&lt;div *tuiDropdown [style.display]=&quot;&#039;flex&#039;&quot; [style.flex-wrap]=&quot;&#039;wrap&#039;&quot; &gt;
 &lt;tui-date-picker [contentDay]=&quot;content&quot; [dayType]=&quot;dayType()&quot; [showAdjacent]=&quot;true&quot; [showWeek]=&quot;true&quot; /&gt;
 &lt;tui-data-list&gt; @for (user of users; track $index) { &lt;button tuiOption (click)=&quot;current.set($index)&quot; &gt;
-&lt;span [tuiAvatar]=&quot;user | tuiInitials&quot;&gt;&lt;/span&gt; {{ user }} @if (current() === $index) { &lt;tui-icon icon=&quot;@tui.check&quot; /&gt; } &lt;/button&gt; } &lt;/tui-data-list&gt;
+&lt;span [tuiAvatar]=&quot;user | tuiInitials&quot;&gt;&lt;/span&gt; {{ user }} &lt;tui-icon icon=&quot;@tui.check&quot; [style.visibility]=&quot;current() !== $index ? &#039;hidden&#039; : &#039;&#039;&quot; /&gt;
+&lt;/button&gt; } &lt;/tui-data-list&gt;
 &lt;ng-template #content let-day &gt; {{ day.day }} @if (getHint(day); as hint) { &lt;span tuiHintDirection=&quot;top&quot; class=&quot;hint&quot; [tuiHint]=&quot;hint&quot; &gt;&lt;/span&gt; } &lt;/ng-template&gt;
 &lt;/div&gt;
 &lt;/tui-textfield&gt;
@@ -25031,7 +25032,7 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {MaskitoPipe} from &#039;@maskito/angular&#039;;
 import {maskitoTransform} from &#039;@maskito/core&#039;;
-import {maskitoPhoneOptionsGenerator} from &#039;@maskito/phone&#039;;
+import {maskitoPhone} from &#039;@maskito/phone&#039;;
 import metadata from &#039;libphonenumber-js/max/metadata&#039;;
 
 @Component({
@@ -25044,7 +25045,7 @@ import metadata from &#039;libphonenumber-js/max/metadata&#039;;
 export default class Example {
     protected rawValue = &#039;12125552368&#039;;
 
-    protected readonly mask = maskitoPhoneOptionsGenerator({
+    protected readonly mask = maskitoPhone({
         metadata,
         countryIsoCode: &#039;US&#039;,
     });
@@ -54938,6 +54939,43 @@ export default class Example {
 }
 ```
 
+#### Custom alerts host
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;show.set(true)&quot; &gt; Show &lt;/button&gt;
+&lt;custom-host /&gt;
+&lt;ng-template [(tuiNotification)]=&quot;show&quot;&gt;
+&lt;div tuiTitle&gt; Notification &lt;div tuiSubtitle&gt;I am in a custom portal&lt;/div&gt;
+&lt;/div&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {
+    TuiButton,
+    TuiNotification,
+    TuiNotificationService,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
+
+import {CustomHost} from &#039;./portal&#039;;
+import {CustomPortalService} from &#039;./service&#039;;
+
+@Component({
+    selector: &#039;tui-portals-example-2&#039;,
+    imports: [CustomHost, TuiButton, TuiNotification, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+    providers: [{provide: TuiNotificationService, deps: [CustomPortalService]}],
+})
+export default class Example {
+    protected readonly show = signal(false);
+}
+```
+
 
 ### TypeScript
 
@@ -54946,10 +54984,11 @@ import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 
-import Example from &#039;./examples/1&#039;;
+import Example1 from &#039;./examples/1&#039;;
+import Example2 from &#039;./examples/2&#039;;
 
 @Component({
-    imports: [Example, TuiDemo],
+    imports: [Example1, Example2, TuiDemo],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -54964,6 +55003,13 @@ export default class Page {
         LESS: import(&#039;./examples/1/index.less&#039;),
         &#039;portal.ts&#039;: import(&#039;./examples/1/portal.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
         &#039;service.ts&#039;: import(&#039;./examples/1/service.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+    };
+
+    protected readonly example2 = {
+        TypeScript: import(&#039;./examples/2/index.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+        HTML: import(&#039;./examples/2/index.html&#039;),
+        &#039;portal.ts&#039;: import(&#039;./examples/2/portal.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+        &#039;service.ts&#039;: import(&#039;./examples/2/service.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
 }
 ```
