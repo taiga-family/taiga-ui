@@ -20,9 +20,16 @@ export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
             const key = inject(TUI_DARK_MODE_KEY);
             const saved = storage?.getItem(key);
             const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
-            const result = signal(Boolean((saved && JSON.parse(saved)) ?? media.matches));
+            const result = signal(saved ? saved === 'true' : media.matches);
             // Raw setter that does not persist — used for machine-driven changes.
             const set = result.set.bind(result);
+
+            // Persist an explicit choice and pin it, even when the value is
+            // unchanged (e.g. picking dark while the system is already dark).
+            const pin = (value: boolean): void => {
+                storage?.setItem(key, String(value));
+                set(value);
+            };
 
             // Follow the system theme while it has not been pinned (storage empty).
             fromEvent(media, 'change')
@@ -33,12 +40,8 @@ export const TUI_DARK_MODE = new InjectionToken<TuiDarkMode>(
                 .subscribe(() => set(media.matches));
 
             return Object.assign(result, {
-                // Explicit choice: always pin, even when the value is unchanged
-                // (e.g. picking dark while the system is already dark).
-                set: (value: boolean) => {
-                    storage?.setItem(key, String(value));
-                    set(value);
-                },
+                set: pin,
+                update: (updater: (value: boolean) => boolean) => pin(updater(result())),
                 reset: () => {
                     storage?.removeItem(key);
                     set(media.matches);

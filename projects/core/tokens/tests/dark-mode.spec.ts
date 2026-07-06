@@ -90,6 +90,15 @@ describe('TUI_DARK_MODE', () => {
             expect(mode()).toBe(true);
         });
 
+        it('persists the change to storage via update', () => {
+            const mode = setup();
+
+            mode.update((value) => !value);
+
+            expect(store[KEY]).toBe('true');
+            expect(mode()).toBe(true);
+        });
+
         it('persists even when the value equals the current system value', () => {
             matches = true; // system is dark, auto resolves to dark
 
