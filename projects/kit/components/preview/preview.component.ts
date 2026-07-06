@@ -103,7 +103,17 @@ export class TuiPreviewComponent {
     }
 
     protected onResize({clientWidth, clientHeight}: HTMLElement): void {
-        this.refresh(clientWidth, clientHeight);
+        this.width = clientWidth;
+        this.height = clientHeight;
+        this.minZoom = this.calculateMinZoom(
+            clientHeight,
+            clientWidth,
+            this.el.clientHeight,
+            this.el.clientWidth,
+        );
+        this.zoom$.next(this.minZoom);
+        this.coordinates$.next(EMPTY_COORDINATES);
+        this.rotation$.next(0);
     }
 
     protected reset(): void {
@@ -146,20 +156,6 @@ export class TuiPreviewComponent {
                   2,
               )
             : 1;
-    }
-
-    private refresh(width: number, height: number): void {
-        this.width = width;
-        this.height = height;
-        this.minZoom = this.calculateMinZoom(
-            height,
-            width,
-            this.el.clientHeight,
-            this.el.clientWidth,
-        );
-        this.zoom$.next(this.minZoom);
-        this.coordinates$.next(EMPTY_COORDINATES);
-        this.rotation$.next(0);
     }
 
     private processZoom(clientX: number, clientY: number, delta: number): void {
