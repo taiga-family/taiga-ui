@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiDialog header option adds a TODO for every dialog call with \`header\` in the same file: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog1 = tuiDialog('content', {header: 'Title 1'});
+                    private readonly dialog2 = tuiDialog('content', {header: 'Title 2'});
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+// TODO: (Taiga UI migration) dialog \`header\` (content shown above the title) was removed from \`TuiDialogOptions\` in v5.
+// - If it was rich content above the title: place \`tuiHeader\` in the dialog template (clear \`label\` if you had one).
+// - If it was just a string title: move that string into \`label\`.
+// See: https://taiga-ui.dev/components/dialog
+                    private readonly dialog1 = tuiDialog('content', {header: 'Title 1'});
+// TODO: (Taiga UI migration) dialog \`header\` (content shown above the title) was removed from \`TuiDialogOptions\` in v5.
+// - If it was rich content above the title: place \`tuiHeader\` in the dialog template (clear \`label\` if you had one).
+// - If it was just a string title: move that string into \`label\`.
+// See: https://taiga-ui.dev/components/dialog
+                    private readonly dialog2 = tuiDialog('content', {header: 'Title 2'});
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDialog header option adds a TODO near \`header\` in a TuiDialogService.open call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+                        inject(TuiDialogService).open('content', {header: someTemplate});
+                    }
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {TuiDialogService} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    constructor() {
+// TODO: (Taiga UI migration) dialog \`header\` (content shown above the title) was removed from \`TuiDialogOptions\` in v5.
+// - If it was rich content above the title: place \`tuiHeader\` in the dialog template (clear \`label\` if you had one).
+// - If it was just a string title: move that string into \`label\`.
+// See: https://taiga-ui.dev/components/dialog
+                        inject(TuiDialogService).open('content', {header: someTemplate});
+                    }
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDialog header option adds a TODO near \`header\` in a tuiDialog factory call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = tuiDialog('content', {
+                        header: 'Title',
+                        size: 'm',
+                    });
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {tuiDialog} from '@taiga-ui/core';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    private readonly dialog = tuiDialog('content', {
+// TODO: (Taiga UI migration) dialog \`header\` (content shown above the title) was removed from \`TuiDialogOptions\` in v5.
+// - If it was rich content above the title: place \`tuiHeader\` in the dialog template (clear \`label\` if you had one).
+// - If it was just a string title: move that string into \`label\`.
+// See: https://taiga-ui.dev/components/dialog
+                        header: 'Title',
+                        size: 'm',
+                    });
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDialog header option adds a TODO near \`header\` in a tuiDialogOptionsProvider call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiDialogOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    providers: [tuiDialogOptionsProvider({header: 'Title'})],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {tuiDialogOptionsProvider} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+// TODO: (Taiga UI migration) dialog \`header\` (content shown above the title) was removed from \`TuiDialogOptions\` in v5.
+// - If it was rich content above the title: place \`tuiHeader\` in the dialog template (clear \`label\` if you had one).
+// - If it was just a string title: move that string into \`label\`.
+// See: https://taiga-ui.dev/components/dialog
+                    providers: [tuiDialogOptionsProvider({header: 'Title'})],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
