@@ -15,7 +15,6 @@ exports[`ng-update adds TODO comment for dynamic [tuiTextfieldLabelOutside]: tes
 -->
 <tui-textfield
                     
-                    
                 >
                     Choose a date
                 
@@ -52,7 +51,6 @@ exports[`ng-update migrate TuiInputDateTimeModule to TuiInputDateTime: test.html
 </tui-textfield>
 
                 <tui-textfield
-                    
                     [tuiTextfieldCleaner]="true"
                 >
 <label tuiLabel>
@@ -63,7 +61,7 @@ exports[`ng-update migrate TuiInputDateTimeModule to TuiInputDateTime: test.html
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield >
+                <tui-textfield>
 <label tuiLabel>
                     Pick date
                 </label>
@@ -72,7 +70,7 @@ exports[`ng-update migrate TuiInputDateTimeModule to TuiInputDateTime: test.html
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 
-                <tui-textfield >
+                <tui-textfield>
 <label tuiLabel>Date</label>
 
 <input tuiInputDateTime [(ngModel)]="value" />
@@ -120,10 +118,6 @@ exports[`ng-update moves [min], [max] and [timeMode] to <input tuiInputDateTime>
             ",
   "1. After": "
                 <tui-textfield
-                    
-                    
-                    
-                    
                 >
 <label tuiLabel>
                     Date
@@ -148,8 +142,6 @@ exports[`ng-update preserves camelCase for (ngModelChange) and [formControlName]
             ",
   "1. After": "
                 <tui-textfield
-                    
-                    
                 >
 <label tuiLabel>
                     Choose a date
@@ -175,8 +167,6 @@ exports[`ng-update renames [defaultActiveYearMonth] to [month] on <tui-calendar>
             ",
   "1. After": "
                 <tui-textfield
-                    
-                    
                     [disabledItemHandler]="disabledHandler"
                 >
 <label tuiLabel>
@@ -199,7 +189,7 @@ exports[`ng-update reuses an existing legacy <input> child instead of creating a
                 </tui-input-date-time>
             ",
   "1. After": "
-                <tui-textfield >
+                <tui-textfield>
 <label tuiLabel>
                     Choose a date
                     </label>
@@ -223,7 +213,6 @@ exports[`ng-update uses placeholder when [tuiTextfieldLabelOutside] is true: tes
             ",
   "1. After": "
                 <tui-textfield
-                    
                     
                 >
 <input tuiInputDateTime [formControl]="control" placeholder="Choose a date" />

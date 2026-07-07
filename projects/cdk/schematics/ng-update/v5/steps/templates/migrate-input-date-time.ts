@@ -82,7 +82,7 @@ export function migrateInputDateTime({
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
         const controlAttrs = [...element.attrs].filter((attr) =>
-            /formcontrol|ngmodel/.exec(attr.name.toLocaleLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const inputAttrs = [...element.attrs].filter((attr) =>
@@ -95,20 +95,12 @@ export function migrateInputDateTime({
 
         const controlStateAttrs = getControlStateAttrs(element);
 
-        for (const attr of [...controlAttrs, ...inputAttrs, ...calendarAttrs]) {
-            const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
-
-            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
-        }
-
-        removeControlStateAttrs(
-            recorder,
-            templateOffset,
-            element,
-            template,
-            controlStateAttrs,
-        );
+        removeControlStateAttrs(recorder, templateOffset, element, template, [
+            ...controlAttrs,
+            ...inputAttrs,
+            ...calendarAttrs,
+            ...controlStateAttrs,
+        ]);
 
         const labelIndex = element.childNodes.findIndex(
             (node: ChildNode) =>
@@ -129,7 +121,7 @@ export function migrateInputDateTime({
 
             if (isLabelOutsideTrue) {
                 recorder.remove(labelTextStart, labelTextEnd - labelTextStart);
-                placeholderAttr = ` placeholder="${labelText}"`;
+                placeholderAttr = ` placeholder="${labelText.replaceAll('"', '&quot;')}"`;
             } else if (!isDynamic) {
                 recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
                 recorder.insertRight(labelTextEnd, '</label>\n');
@@ -203,6 +195,8 @@ function normalizeAttrName(name: string): string {
     switch (name.toLowerCase()) {
         case '(ngModelChange)'.toLowerCase():
             return '(ngModelChange)';
+        case '[(ngModel)]'.toLowerCase():
+            return '[(ngModel)]';
         case '[formControl]'.toLowerCase():
             return '[formControl]';
         case '[formControlName]'.toLowerCase():
@@ -223,8 +217,6 @@ function normalizeAttrName(name: string): string {
             return 'ngModel';
         case 'timeMode'.toLowerCase():
             return 'timeMode';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
         default:
             return name;
     }
