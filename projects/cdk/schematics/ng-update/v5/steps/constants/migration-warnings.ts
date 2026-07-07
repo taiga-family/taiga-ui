@@ -153,4 +153,40 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
     },
+    {
+        name: 'TUI_TEXTFIELD_HOST',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_TEXTFIELD_HOST has been removed. Use TuiTextfieldHost or create a custom implementation for textfield host element references.',
+    },
+    {
+        name: 'TUI_MONTH_FORMATTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MONTH_FORMATTER has been removed. Use tuiFormatDate pipe or implement custom month formatting with Intl.DateTimeFormat.',
+    },
+    {
+        name: 'TUI_FONTS_READY',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_FONTS_READY has been removed. Use the FontFace API directly or implement custom font loading detection.',
+    },
+    {
+        name: 'TUI_TOUCH_SUPPORTED',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_TOUCH_SUPPORTED has been removed. Use WA_TOUCH_SUPPORTED from @ng-web-apis/platform package instead.',
+    },
+    {
+        name: 'TUI_IS_CHROMIUM',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.',
+    },
+    {
+        name: 'TUI_IS_STACKBLITZ',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.',
+    },
 ];

@@ -44,9 +44,11 @@ import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
 import {migrateInputDateTime} from './templates/migrate-input-date-time';
 import {migrateInputMonth} from './templates/migrate-input-month';
+import {migrateInputMonthRange} from './templates/migrate-input-month-range';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputPhone} from './templates/migrate-input-phone';
 import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
+import {migrateInputSlider} from './templates/migrate-input-slider';
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
@@ -58,6 +60,7 @@ import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 import {migrateTextarea} from './templates/migrate-textarea';
+import {migrateTooltip} from './templates/migrate-tooltip';
 
 export function getAction<T>({
     action,
@@ -101,8 +104,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputPassword,
         migrateInputMonth,
+        migrateInputMonthRange,
         migrateInputDateTime,
         migrateInputDate,
+        migrateInputSlider,
         migrateInputTime,
         migrateInputPhoneInternational,
         migrateInputDateMulti,
@@ -115,6 +120,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
+        migrateTooltip,
         migrateTuiNotification,
         migrateRepeatTimes,
         migrateFieldError,

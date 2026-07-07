@@ -1,7 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    .transition(grid-template-rows);
+    .transition(grid-template-rows, @tui-duration-fast);
 
     display: grid;
     font: var(--tui-typography-body-s);
@@ -11,17 +11,21 @@
 
     &._error {
         grid-template-rows: 1fr;
+        transition-duration: var(--tui-duration);
     }
 }
 
 .t-message-text {
     white-space: pre-line;
     grid-area: 1 / 1 / span 2;
-    overflow: hidden;
 
-    &.tui-enter,
+    &.tui-enter {
+        animation-name: tuiFade;
+    }
+
     &.tui-leave {
         animation-name: tuiFade;
+        animation-duration: @tui-duration-fast;
     }
 
     &::before {

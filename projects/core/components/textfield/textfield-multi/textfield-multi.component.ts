@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -40,14 +39,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
 
 @Component({
     selector: 'tui-textfield[multi]',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        TuiButtonX,
-        TuiCell,
-        TuiScrollControls,
-        WaResizeObserver,
-    ],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, TuiScrollControls],
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -117,7 +109,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
         return this.focused() ? longer : '';
     }
 
-    protected onItems({target}: ResizeObserverEntry): void {
+    protected onItems(target: HTMLElement): void {
         this.height.update(
             (h) => target.querySelector('tui-textfield-item')?.clientHeight || h,
         );

@@ -43,8 +43,8 @@
         >
             <input
                 tuiSelect
-                [ngModel]="value() ?? null"
-                (ngModelChange)="onValueChange($event)"
+                [ngModel]="value() ?? 'null'"
+                (ngModelChange)="onValueChange($event === 'null' ? null : $event)"
             />
             <tui-data-list-wrapper
                 *tuiDropdown
@@ -94,6 +94,6 @@
         #content
         let-data
     >
-        <code [style.margin]="0">{{ data | tuiInspect }}</code>
+        <code [style.margin]="0">{{ data === 'null' ? 'null' : (data | tuiInspect) }}</code>
     </ng-template>
 </td>

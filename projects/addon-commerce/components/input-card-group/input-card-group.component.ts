@@ -16,7 +16,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {WA_IS_MOBILE, WA_IS_WEBKIT} from '@ng-web-apis/platform';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {
     TUI_MASK_CARD,
     TUI_MASK_CVC,
@@ -84,7 +83,6 @@ export interface TuiCard {
         TuiIconPipe,
         TuiMapperPipe,
         TuiTransitioned,
-        WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
     styleUrl: './input-card-group.style.less',
