@@ -14,8 +14,6 @@ describe('ng-update avatar', () => {
         migrate({template: '<tui-avatar src="tuiIconUser"></tui-avatar>'}),
     );
 
-    // Also guards issue #13823: a raw dynamic [src] binding gets the SafeResourceUrl TODO —
-    // the snapshot's "After" shows the inserted comment above the migrated element.
     it(
         'replaces bound src attribute with bound tuiAvatar',
         migrate({template: '<tui-avatar [src]="avatarUrl" size="m"></tui-avatar>'}),
@@ -91,8 +89,6 @@ describe('ng-update avatar', () => {
         }),
     );
 
-    // Guards Gemini's fix: a bound string literal is not a SafeResourceUrl, so it is migrated
-    // to [tuiAvatar] without a TODO (the snapshot's "After" has no inserted comment).
     it(
         'keeps a bound string literal [src] without a SafeResourceUrl TODO',
         migrate({template: '<tui-avatar [src]="\'assets/avatar.png\'"></tui-avatar>'}),
