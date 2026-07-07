@@ -35,23 +35,29 @@
             <ng-template #template>
                 To be accessible, hint should be set to a focusable element. See
                 <a
+                    appearance=""
                     tuiLink
                     [routerLink]="routes.HintDescribe"
                 >
-                    <code>HintDescribe</code>
+                    HintDescribe
                 </a>
             </ng-template>
             <span
+                tuiBadge
                 tuiHintDescribe="qwerty"
                 [tuiHint]="template"
                 [tuiHintAppearance]="hint.appearance"
+                [tuiHintCentered]="hint.centered"
                 [tuiHintDirection]="hint.direction"
                 [tuiHintHideDelay]="hideDelay"
                 [tuiHintShowDelay]="showDelay"
             >
-                Hover it!
+                Hover me
             </span>
-            <input id="qwerty" />
+            <input
+                id="qwerty"
+                placeholder="Focus me with keyboard"
+            />
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
