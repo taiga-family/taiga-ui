@@ -7,7 +7,6 @@ import {
     model,
 } from '@angular/core';
 import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
-import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -35,7 +34,7 @@ const TRANSFORM = {
 
 @Component({
     selector: 'tui-pie-chart',
-    imports: [TuiHint, TuiHovered, TuiPieChartDirective],
+    imports: [TuiHint, TuiPieChartDirective],
     templateUrl: './pie-chart.template.html',
     styleUrl: './pie-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,7 +54,7 @@ const TRANSFORM = {
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
-
+    console = console;
     protected readonly getSum = computed(() => tuiSum(...this.value()));
 
     protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>
@@ -99,10 +98,6 @@ export class TuiPieChart {
             : `scale(${TRANSFORM.xs})`;
 
         return index === this.activeItemIndex() ? transform : null;
-    }
-
-    protected onHovered(hovered: boolean, index: number): void {
-        this.activeItemIndex.set(hovered ? index : Number.NaN);
     }
 
     private getDeg(value: number): number {

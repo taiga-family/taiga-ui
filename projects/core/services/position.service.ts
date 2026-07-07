@@ -11,6 +11,7 @@ import {finalize, map, Observable, startWith} from 'rxjs';
 export class TuiPositionService extends Observable<TuiPoint> {
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiPositionAccessor);
+    private rect?: DOMRect;
 
     constructor() {
         const animationFrame$ = inject(WA_ANIMATION_FRAME);
@@ -20,7 +21,21 @@ export class TuiPositionService extends Observable<TuiPoint> {
             animationFrame$
                 .pipe(
                     startWith(null),
-                    map(() => this.accessor.getPosition(this.el.getBoundingClientRect())),
+                    map(() => {
+                        const rect = this.el.getBoundingClientRect();
+                        const animations = this.el.getAnimations?.() || [];
+
+                        const animated =
+                            animations.length &&
+                            animations.every(
+                                ({effect}) =>
+                                    effect?.getComputedTiming().progress !== null,
+                            );
+
+                        this.rect = (animated && this.rect) || rect;
+
+                        return this.accessor.getPosition(this.rect);
+                    }),
                     tuiZonefree(zone),
                     finalize(() => this.accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )
