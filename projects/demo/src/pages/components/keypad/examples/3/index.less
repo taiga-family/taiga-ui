@@ -59,11 +59,20 @@
     }
 }
 
-tui-keypad {
-    block-size: 16.25rem;
+.pad {
+    display: grid;
+    grid-area: auto / 1;
 
     &.tui-enter,
     &.tui-leave {
-        animation-name: tuiFade;
+        animation-name: tuiFade, tuiCollapse;
     }
+}
+
+.pad-inner {
+    overflow: hidden;
+}
+
+tui-keypad {
+    block-size: 16.25rem;
 }

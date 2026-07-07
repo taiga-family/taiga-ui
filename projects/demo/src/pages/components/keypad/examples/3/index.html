@@ -64,10 +64,14 @@
             <div class="clamp">Commission-free</div>
 
             @if (input.focused()) {
-                <tui-keypad
+                <div
                     tuiAnimated
-                    [(value)]="value"
-                />
+                    class="pad"
+                >
+                    <div class="pad-inner">
+                        <tui-keypad [(value)]="value" />
+                    </div>
+                </div>
             }
         </footer>
     </div>
