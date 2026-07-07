@@ -62,7 +62,7 @@ export default defineConfig({
     use: {
         baseURL:
             process.env['PW_BASE_URL'] ??
-            `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
+            `http://localhost:${process.env.NG_SERVER_PORT || 3000}`,
         trace: 'on-first-retry',
         testIdAttribute: 'automation-id',
         actionTimeout: 10_000,

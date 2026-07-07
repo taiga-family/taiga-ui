@@ -3,6 +3,26 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TuiInputSliderModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputSlider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputMonthRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputMonthRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputYearModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -242,6 +262,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiComboBox',
             moduleSpecifier: '@taiga-ui/kit',
         },
+    },
+    {
+        from: {
+            name: 'TuiTooltipModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiTooltip',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
     },
     {
         from: {

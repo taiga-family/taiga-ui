@@ -129,6 +129,66 @@ exports[`ng-update accordion item migrates standalone tui-expand content templat
 }
 `;
 
+exports[`ng-update accordion item removes deprecated [rounded] attribute from tui-accordion: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-accordion [rounded]="false">
+                    <tui-accordion-item [open]="true">
+                        Output
+
+                        <ng-template tuiAccordionItemContent>
+                            <pre><code>{{ group.value | json }}</code></pre>
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+
+                <tui-accordion rounded="false">
+                    <tui-accordion-item>
+                        Item
+                        <ng-template tuiAccordionItemContent>Content</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
+<!-- TODO: (Taiga UI migration) rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom -->
+<tui-accordion >
+                    <button [tuiAccordion]="true">Output</button>
+                    <tui-expand><pre><code>{{ group.value | json }}</code></pre></tui-expand>
+                </tui-accordion>
+
+                <!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
+<!-- TODO: (Taiga UI migration) rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom -->
+<tui-accordion >
+                    <button tuiAccordion>Item</button>
+                    <tui-expand>Content</tui-expand>
+                </tui-accordion>
+            ",
+}
+`;
+
+exports[`ng-update accordion item removes deprecated [rounded] attribute from tui-accordion: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiAccordion} from '@taiga-ui/experimental';
+
+            @Component({
+                templateUrl: './test.html',
+                imports: [TuiAccordion],
+            })
+            export class TestComponent {}
+        ",
+  "1. After": "import { TuiAccordion } from "@taiga-ui/kit";
+
+                        @Component({
+                templateUrl: './test.html',
+                imports: [TuiAccordion],
+            })
+            export class TestComponent {}
+        ",
+}
+`;
+
 exports[`ng-update accordion item replaces standalone accordion item with new structure: test.html 1`] = `
 {
   "0. Before": "

@@ -1,3 +1,5 @@
+@import '@taiga-ui/styles/utils';
+
 [data-platform='ios'].tui-liquid-glass [tuiAppBarButton]:where(*&) {
     border-radius: 2.75rem;
     margin-inline: 1rem;
@@ -9,10 +11,10 @@
     color: var(--tui-text-primary);
     transition:
         transform var(--tui-duration) var(--tui-curve-expressive-entrance),
-        background-color var(--tui-duration-fast) ease,
-        color var(--tui-duration-fast) ease,
-        box-shadow var(--tui-duration-fast) ease,
-        backdrop-filter var(--tui-duration-fast) ease;
+        background-color @tui-duration-fast ease,
+        color @tui-duration-fast ease,
+        box-shadow @tui-duration-fast ease,
+        backdrop-filter @tui-duration-fast ease;
 
     --t-appbar-button-bg: rgba(255, 255, 255, 0.7);
     --t-appbar-glow: var(--tui-background-base);

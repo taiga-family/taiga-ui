@@ -372,6 +372,26 @@ describe('ng-update start/end instead of left/right', () => {
     );
 
     it(
+        'replaces for direction array on tuiHintOptionsProvider',
+        migrate({
+            component: /* TypeScript */ `
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']});
+                tuiHintOptionsProvider({
+                    direction: [
+                        'bottom-left',
+                        'bottom',
+                        'bottom-right',
+                        'left',
+                        'right-top',
+                    ],
+                });
+            `,
+        }),
+    );
+
+    it(
         'replaces for direction on tuiHintOptionsProvider',
         migrate({
             component: /* TypeScript */ `

@@ -20,20 +20,12 @@ import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCell, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
-import {TUI_DATA_LIST_HOST, type TuiDataListAccessor} from './data-list.tokens';
+import {type TuiDataListAccessor, tuiInjectDataListSize} from './data-list.tokens';
 import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option-content.directive';
 import {TuiOptionWithValue} from './option-with-value.directive';
-
-export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
-    const sizes = ['s', 'm', 'l'] as const;
-    const size = inject(TUI_DATA_LIST_HOST, {optional: true})?.size;
-
-    return size && sizes.includes(size) ? size : 'l';
-}
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({

@@ -188,7 +188,7 @@
             ],
             "executor": "@nx/angular:dev-server",
             "options": {
-                "port": 3333,
+                "port": 3000,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
             }

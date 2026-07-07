@@ -90,5 +90,29 @@ describe('ng-update accordion item', () => {
         }),
     );
 
+    it(
+        'removes deprecated [rounded] attribute from tui-accordion',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion [rounded]="false">
+                    <tui-accordion-item [open]="true">
+                        Output
+
+                        <ng-template tuiAccordionItemContent>
+                            <pre><code>{{ group.value | json }}</code></pre>
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+
+                <tui-accordion rounded="false">
+                    <tui-accordion-item>
+                        Item
+                        <ng-template tuiAccordionItemContent>Content</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

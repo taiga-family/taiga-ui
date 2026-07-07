@@ -50,6 +50,10 @@ tui-dropdown-mobile:where(*&) {
         inset-inline-end: 1rem;
         inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
     }
+
+    tui-data-list [tuiOption] {
+        box-sizing: content-box;
+    }
 }
 
 .t-dropdown-mobile:where(*&) {
