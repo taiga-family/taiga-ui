@@ -36,6 +36,7 @@ import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migrateDialogHeader} from './steps/migrate-dialog-header';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
@@ -94,6 +95,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDialogLegacySizes',
                     step: () => migrateDialogLegacySizes(tree, options),
+                },
+                {
+                    name: 'migrateDialogHeader',
+                    step: () => migrateDialogHeader(tree, options),
                 },
                 {
                     name: 'migrateDropdownOpen',
