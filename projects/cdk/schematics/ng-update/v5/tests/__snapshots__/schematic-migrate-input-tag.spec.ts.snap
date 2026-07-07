@@ -148,6 +148,7 @@ exports[`ng-update migrates self-closing <tui-input-tag ... /> with hint to tui-
   "1. After": "
                 <tui-textfield multi class="input-tag">
                 <input tuiInputChip [(ngModel)]="tags" />
+                <tui-input-chip *tuiItem />
                 <tui-icon [tuiTooltip]="hint" />
                 </tui-textfield>
             ",
@@ -284,6 +285,7 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-tag: test.h
                     
                  multi>
 <input tuiInputChip [formControl]="control" placeholder="Enter tags" />
+<tui-input-chip *tuiItem />
 </tui-textfield>
             ",
 }
