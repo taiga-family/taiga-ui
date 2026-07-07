@@ -28,6 +28,19 @@
         preferred direction of the bubble or an array to define preferred priority
     </tr>
 }
+@if (!hiddenOptions().includes('centered')) {
+    <tr
+        name="[tuiHintCentered]"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="centered"
+    >
+        whether a bubble arrow should point to the host's center (
+        <code>false</code>
+        switches to the new rules where direction is the alignment side for the bubble, rather than the direction
+        towards which it unravels)
+    </tr>
+}
 <tr
     name="(tuiHintDirectionChange)"
     tuiDocAPIItem

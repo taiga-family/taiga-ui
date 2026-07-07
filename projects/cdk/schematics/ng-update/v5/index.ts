@@ -36,6 +36,7 @@ import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migrateDialogHeader} from './steps/migrate-dialog-header';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
 import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
@@ -44,6 +45,7 @@ import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
+import {migrateRangeToken} from './steps/migrate-range-token';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
@@ -79,6 +81,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => migrateBreakpointService(tree, options),
                 },
                 {
+                    name: 'migrateRangeToken',
+                    step: () => migrateRangeToken(tree, options),
+                },
+                {
                     name: 'migratePortalService',
                     step: () => migratePortals(tree, options),
                 },
@@ -89,6 +95,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDialogLegacySizes',
                     step: () => migrateDialogLegacySizes(tree, options),
+                },
+                {
+                    name: 'migrateDialogHeader',
+                    step: () => migrateDialogHeader(tree, options),
                 },
                 {
                     name: 'migrateDropdownOpen',

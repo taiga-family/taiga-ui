@@ -117,6 +117,31 @@ test.describe('InputChip', () => {
             await expect.soft(example).toHaveScreenshot('input-chip-separator.png');
         });
 
+        test('custom separator splits edited chip', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
+            const example = new TuiDocumentationApiPagePO(page).demo;
+            const inputChip = new TuiInputChipPO(example);
+
+            await inputChip.input.fill('111-222-333');
+            await inputChip.input.blur();
+            await expect(inputChip.chips).toHaveCount(3);
+
+            const chip = inputChip.chips.nth(1);
+            const input = chip.locator('input');
+
+            await chip.locator('.t-text').dblclick();
+            await expect(input).toBeEnabled();
+            await input.fill('444-555');
+            await input.press('Enter');
+
+            await expect(inputChip.chips.locator('.t-text')).toHaveText([
+                '111',
+                '444',
+                '555',
+                '333',
+            ]);
+        });
+
         test('unique false', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=false`);
             const example = new TuiDocumentationApiPagePO(page).demo;

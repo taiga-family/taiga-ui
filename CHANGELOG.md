@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.14.0](https://github.com/taiga-family/taiga-ui/compare/v5.13.0...v5.14.0) (2026-07-06)
+
+### 🚀 Features
+
+- **core:** `Alerts` allow custom portal placement ([#14474](https://github.com/taiga-family/taiga-ui/issues/14474))
+  ([2d04454](https://github.com/taiga-family/taiga-ui/commit/2d044548000341ab5739ec2e533b5e9de6849ed8))
+- **core:** update animations according to specs ([#14476](https://github.com/taiga-family/taiga-ui/issues/14476))
+  ([1222c6e](https://github.com/taiga-family/taiga-ui/commit/1222c6eb91a2267873fb31bcfdfc7174d0866b29))
+- **kit:** implement handling of negative values and update template for segments
+  ([#14481](https://github.com/taiga-family/taiga-ui/issues/14481))
+  ([fb81834](https://github.com/taiga-family/taiga-ui/commit/fb81834ce92a50d4adecb9fde45f42c0f8cef60c))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** show explicit null option in API table selects
+  ([#14392](https://github.com/taiga-family/taiga-ui/issues/14392))
+  ([86b300e](https://github.com/taiga-family/taiga-ui/commit/86b300e8bc77db518e2d918c7d24268999b0ea90))
+- **addon-mobile:** `DropdownMobile` / `DropdownSheet` should enforce `l`-size for `DataList` regardless of textfield
+  size ([#14484](https://github.com/taiga-family/taiga-ui/issues/14484))
+  ([0595c77](https://github.com/taiga-family/taiga-ui/commit/0595c772c8d902910404c63453c3e31a69e58271))
+- **core:** `Hint` close when host disappears ([#14486](https://github.com/taiga-family/taiga-ui/issues/14486))
+  ([618213a](https://github.com/taiga-family/taiga-ui/commit/618213afb7fe51fe420e4d3456148d95d0755adf))
+- **core:** `Textfield` fix items displaying over border
+  ([#14496](https://github.com/taiga-family/taiga-ui/issues/14496))
+  ([2cc8c38](https://github.com/taiga-family/taiga-ui/commit/2cc8c38698ca50c64a3fde047b39d44e199ba079))
+- **core:** `TUI_DARK_MODE` persist first theme change on empty storage
+  ([#14501](https://github.com/taiga-family/taiga-ui/issues/14501))
+  ([23fdec8](https://github.com/taiga-family/taiga-ui/commit/23fdec82cd2cd95811cf5b7de4f9f55bba3c6cf9))
+- **core:** fix `tuiSelectLike` on ios safari ([#14469](https://github.com/taiga-family/taiga-ui/issues/14469))
+  ([e5613dc](https://github.com/taiga-family/taiga-ui/commit/e5613dc88ba64a12cd26421f7d62ab45b390af84))
+- **kit:** `Pincode` ios animation ([#14477](https://github.com/taiga-family/taiga-ui/issues/14477))
+  ([35565f7](https://github.com/taiga-family/taiga-ui/commit/35565f75ee290fd51f413fd8c5e1382bcac809d5))
+- **layout:** `CardCollapsed` fix transition on Safari and Firefox
+  ([#14495](https://github.com/taiga-family/taiga-ui/issues/14495))
+  ([7da7420](https://github.com/taiga-family/taiga-ui/commit/7da742034445182faa6336dbfed2afa12e3cefce))
+
 ## [5.13.0](https://github.com/taiga-family/taiga-ui/compare/v5.12.0...v5.13.0) (2026-06-30)
 
 ### 🚀 Features
