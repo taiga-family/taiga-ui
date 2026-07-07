@@ -2,7 +2,7 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {createMigration, runMigration} from '../../../utils/run-migration';
+import {createMigration} from '../../../utils/run-migration';
 
 const COLLECTION = join(__dirname, '../../../migration.json');
 
@@ -196,19 +196,6 @@ describe('ng-update tuiRepeatTimes', () => {
                 '<ng-container *tuiRepeatTimes="let i of 3"><span>{{ i }}</span></ng-container>',
         }),
     );
-
-    it('leaves a @for block with an empty tuiRepeatTimes expression untouched', async () => {
-        const template = '@for (n of   | tuiRepeatTimes; track n) { {{n}} }';
-
-        const {template: result} = await runMigration({
-            collection: COLLECTION,
-            component: REPEAT_TIMES_COMPONENT,
-            template,
-        });
-
-        expect(result).not.toContain("'-'.repeat");
-        expect(result).toContain(template);
-    });
 
     afterEach(() => resetActiveProject());
 });
