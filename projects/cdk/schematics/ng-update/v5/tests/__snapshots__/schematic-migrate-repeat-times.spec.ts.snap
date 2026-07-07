@@ -3,26 +3,26 @@
 exports[`ng-update tuiRepeatTimes does not touch *ngFor without tuiRepeatTimes: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -64,26 +64,26 @@ exports[`ng-update tuiRepeatTimes full before/after comparison with nested conte
 exports[`ng-update tuiRepeatTimes full before/after comparison with nested content: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -97,26 +97,26 @@ exports[`ng-update tuiRepeatTimes keeps @for loop value numeric with tail params
 exports[`ng-update tuiRepeatTimes keeps @for loop value numeric with tail params intact (issue #13823): test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -132,26 +132,26 @@ exports[`ng-update tuiRepeatTimes migrates *ngFor with tuiRepeatTimes to @for: t
 exports[`ng-update tuiRepeatTimes migrates *ngFor with tuiRepeatTimes to @for: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -245,26 +245,26 @@ exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes
 exports[`ng-update tuiRepeatTimes migrates @for block syntax with tuiRepeatTimes pipe: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -288,26 +288,26 @@ exports[`ng-update tuiRepeatTimes migrates multiple tuiRepeatTimes in same templ
 exports[`ng-update tuiRepeatTimes migrates multiple tuiRepeatTimes in same template: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -390,26 +390,26 @@ exports[`ng-update tuiRepeatTimes migrates nested inside other elements: test.ht
 exports[`ng-update tuiRepeatTimes migrates nested inside other elements: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -423,26 +423,26 @@ exports[`ng-update tuiRepeatTimes migrates ng-container by unwrapping: test.html
 exports[`ng-update tuiRepeatTimes migrates ng-container by unwrapping: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -458,26 +458,26 @@ exports[`ng-update tuiRepeatTimes migrates with member expression: test.html 1`]
 exports[`ng-update tuiRepeatTimes migrates with member expression: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -493,26 +493,26 @@ exports[`ng-update tuiRepeatTimes migrates with variable expression: test.html 1
 exports[`ng-update tuiRepeatTimes migrates with variable expression: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
@@ -528,51 +528,51 @@ exports[`ng-update tuiRepeatTimes preserves other attributes on the element: tes
 exports[`ng-update tuiRepeatTimes preserves other attributes on the element: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;
 
 exports[`ng-update tuiRepeatTimes removes TuiRepeatTimesPipe import and usage: test.ts 1`] = `
 {
   "0. Before": "
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+",
   "1. After": "
-            import {Component} from '@angular/core';
+    import {Component} from '@angular/core';
 
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [],
-            })
-            export class Test {}
-        ",
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [],
+    })
+    export class Test {}
+",
 }
 `;

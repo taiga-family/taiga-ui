@@ -20,18 +20,8 @@ const REPEAT_TIMES_COMPONENT = /* TypeScript */ `
 
 describe('ng-update tuiRepeatTimes', () => {
     const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-        component: /* TypeScript */ `
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        `,
+        collection: COLLECTION,
+        component: REPEAT_TIMES_COMPONENT,
     });
 
     it(
