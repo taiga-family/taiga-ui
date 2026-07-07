@@ -63,8 +63,12 @@ export class TuiBarChart {
     public readonly size = input<TuiSizeL | TuiSizeS | null>('m');
     public readonly collapsed = input(false);
     public readonly tapColumn = output<number>();
-    public readonly computedMax = computed(() => this.max() || this.getMax());
-    public readonly computedMin = computed(() => this.min() || this.getMin());
+    public readonly computedMax = computed(() =>
+        Number.isNaN(this.max()) ? this.getMax() : this.max(),
+    );
+    public readonly computedMin = computed(() =>
+        Number.isNaN(this.min()) ? this.getMin() : this.min(),
+    );
 
     public readonly computedRange = computed(
         () => this.computedMax() - this.computedMin() || 1,
