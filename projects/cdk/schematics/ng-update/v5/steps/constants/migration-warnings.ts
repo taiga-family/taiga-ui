@@ -119,7 +119,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
     ].map((name) => ({
         name,
         moduleSpecifier: '@taiga-ui/legacy',
-        message: `${name} has been removed. Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links`,
+        message: `${name} has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links`,
     })),
     ...[
         'tuiParentAnimation',
