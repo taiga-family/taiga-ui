@@ -2,7 +2,7 @@
     <div
         #parent
         class="line-clamp-box"
-        (waResizeObserver)="onResize(parent)"
+        (resize)="onResize(parent)"
     >
         <tui-line-clamp
             [content]="content"

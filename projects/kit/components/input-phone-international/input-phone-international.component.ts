@@ -7,7 +7,7 @@ import {
     type MaskitoOptions,
     maskitoTransform,
 } from '@maskito/core';
-import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
+import {maskitoGetCountryFromNumber, maskitoPhone} from '@maskito/phone';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
@@ -137,7 +137,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             return MASKITO_DEFAULT_OPTIONS;
         }
 
-        const {plugins, ...options} = maskitoPhoneOptionsGenerator({
+        const {plugins, ...options} = maskitoPhone({
             countryIsoCode,
             metadata,
             separator: this.options.separator,

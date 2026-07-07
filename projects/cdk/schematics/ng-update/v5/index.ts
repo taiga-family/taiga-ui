@@ -44,6 +44,7 @@ import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
+import {migrateRangeToken} from './steps/migrate-range-token';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
@@ -77,6 +78,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateBreakpointService',
                     step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migrateRangeToken',
+                    step: () => migrateRangeToken(tree, options),
                 },
                 {
                     name: 'migratePortalService',

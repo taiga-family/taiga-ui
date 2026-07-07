@@ -26,6 +26,7 @@
         box-shadow: var(--tui-shadow-popup);
         border-radius: inherit;
         contain: strict;
+        transition-timing-function: var(--tui-curve-expressive-standard);
     }
 
     --tui-scale: 0.5;
@@ -33,11 +34,16 @@
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiScale;
+        animation-timing-function: var(--tui-curve-expressive-entrance);
 
         ::ng-deep > .tui-enter {
             animation-duration: 0s;
             animation-delay: 0s;
         }
+    }
+
+    &.tui-leave {
+        animation-timing-function: var(--tui-curve-expressive-exit);
     }
 
     .t-loader:not(:last-child) {
