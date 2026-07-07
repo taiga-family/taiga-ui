@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy tuiDropdownOpen removes [tuiDropdownOpen] from an element without tuiDropdown: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-calendar
+                    [tuiDropdownOpen]="false"
+                    [value]="date"
+                />
+            ",
+  "1. After": "
+                <tui-calendar
+                    
+                    [value]="date"
+                />
+            ",
+}
+`;
+
+exports[`ng-update legacy tuiDropdownOpen removes static tuiDropdownOpen and [tuiDropdownOpenChange]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-calendar
+                    tuiDropdownOpen
+                    [tuiDropdownOpenChange]="onChange"
+                />
+            ",
+  "1. After": "
+                <tui-calendar
+                    
+                    
+                />
+            ",
+}
+`;

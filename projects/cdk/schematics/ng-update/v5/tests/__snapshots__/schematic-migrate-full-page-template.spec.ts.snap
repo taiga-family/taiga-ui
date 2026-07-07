@@ -262,7 +262,7 @@ exports[`ng-update full page template migrates a realistic page with legacy cont
 </tui-textfield>
                         <tui-calendar
                             class="calendar"
-                            [tuiDropdownOpen]="false"
+                            
                             [value]="date"
                             (dayClick)="onDay($event)"
                             (event.prevent.silent)="(0)"

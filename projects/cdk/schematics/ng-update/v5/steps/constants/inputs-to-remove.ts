@@ -1,10 +1,24 @@
+import {type DefaultTreeAdapterTypes} from 'parse5';
+
 import {
     hasElementAttribute,
     hasElementAttributeWithValue,
 } from '../../../../utils/templates/elements';
 import {type RemovableInput} from '../../../interfaces';
 
+type Element = DefaultTreeAdapterTypes.Element;
+
 export const INPUTS_TO_REMOVE: RemovableInput[] = [
+    {
+        inputName: 'tuiDropdownOpen',
+        tags: ['*'],
+        filterFn: (el) => !hasTuiDropdown(el),
+    },
+    {
+        inputName: 'tuiDropdownOpenChange',
+        tags: ['*'],
+        filterFn: (el) => !hasTuiDropdown(el),
+    },
     {
         inputName: 'pseudo',
         tags: ['a', 'button'],
@@ -26,3 +40,12 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         tags: ['tui-accordion'],
     },
 ];
+
+function hasTuiDropdown(element: Element): boolean {
+    const attribute = 'tuiDropdown';
+
+    return (
+        hasElementAttribute(element, attribute) ||
+        element.attrs.some((attr) => attr.name === `*${attribute.toLocaleLowerCase()}`)
+    );
+}

@@ -15,8 +15,11 @@ describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
     );
 
     it(
-        'should not rename [tuiDropdownOpen] binding',
-        migrate({template: '<button [tuiDropdownOpen]="open">Open</button>'}),
+        'should not rename [tuiDropdownOpen] binding paired with tuiDropdown',
+        migrate({
+            template:
+                '<button [tuiDropdown]="content" [tuiDropdownOpen]="open">Open</button>',
+        }),
     );
 
     it(

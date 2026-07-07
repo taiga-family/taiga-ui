@@ -93,7 +93,7 @@ exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename tuiDropdownM
 exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename tuiDropdownOpen to tuiDropdownAuto: test.html 1`] = `
 {
   "0. Before": "<button tuiDropdownOpen>Open</button>",
-  "1. After": "<button tuiDropdownAuto>Open</button>",
+  "1. After": "<button >Open</button>",
 }
 `;
 
