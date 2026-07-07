@@ -123,8 +123,6 @@ describe('ng-update tuiRepeatTimes', () => {
         }),
     );
 
-    // Guards issue #13823: the @for loop value must stay numeric. The snapshot must show
-    // `track $index; let n = $index` (never `track n`, which would bind `n` to the '-' char).
     it(
         'keeps @for loop value numeric with tail params intact (issue #13823)',
         migrate({
@@ -208,7 +206,6 @@ describe('ng-update tuiRepeatTimes', () => {
             template,
         });
 
-        // no expression → nothing to repeat, must not emit `'-'.repeat( )`
         expect(result).not.toContain("'-'.repeat");
         expect(result).toContain(template);
     });
