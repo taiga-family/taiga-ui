@@ -59,6 +59,12 @@ export function migrateInputDateTime({
     elements.forEach((element: Element) => {
         const sourceCodeLocation = element.sourceCodeLocation;
 
+        // Self-closing/unclosed elements have no end tag, so there is no inside to place
+        // the migrated `<input>`/`<tui-calendar>` — skip to avoid inserting at offset 0.
+        if (!sourceCodeLocation?.endTag) {
+            return;
+        }
+
         replaceTag(
             recorder,
             sourceCodeLocation,

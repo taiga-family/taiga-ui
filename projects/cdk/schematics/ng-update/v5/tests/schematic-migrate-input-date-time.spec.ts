@@ -125,5 +125,17 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'leaves a self-closing tui-input-date-time untouched (no end tag to migrate into)',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date-time formControlName="date">
+                    Pick date
+                </tui-input-date-time>
+                <tui-input-date-time formControlName="other" />
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

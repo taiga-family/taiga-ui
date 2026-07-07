@@ -25,6 +25,28 @@ exports[`ng-update adds TODO comment for dynamic [tuiTextfieldLabelOutside]: tes
 }
 `;
 
+exports[`ng-update leaves a self-closing tui-input-date-time untouched (no end tag to migrate into): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date-time formControlName="date">
+                    Pick date
+                </tui-input-date-time>
+                <tui-input-date-time formControlName="other" />
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Pick date
+                </label>
+
+<input tuiInputDateTime formControlName="date" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+                <tui-input-date-time formControlName="other" />
+            ",
+}
+`;
+
 exports[`ng-update migrate TuiInputDateTimeModule to TuiInputDateTime: test.html 1`] = `
 {
   "0. Before": "
