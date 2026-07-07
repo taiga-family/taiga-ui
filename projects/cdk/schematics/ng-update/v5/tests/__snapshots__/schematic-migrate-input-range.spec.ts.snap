@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range (with spaces): test.html 1`] = `
+exports[`ng-update input-range preserves interpolated label content when removing label[tuiLabel]: test.html 1`] = `
 {
   "0. Before": "
                 <tui-input-range
@@ -9,7 +9,7 @@ exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range (w
                     [tuiNumberFormat]="numberFormat"
                     [(ngModel)]="value"
                 >
-                    <label tuiLabel>Type number like a German</label>
+                    <label tuiLabel>{{ rangeLabel }}</label>
                 </tui-input-range>
             ",
   "1. After": "
@@ -19,7 +19,7 @@ exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range (w
                     [tuiNumberFormat]="numberFormat"
                     [(ngModel)]="value"
                 >
-                    Type number like a German
+                    {{ rangeLabel }}
                 </tui-input-range>
             ",
 }

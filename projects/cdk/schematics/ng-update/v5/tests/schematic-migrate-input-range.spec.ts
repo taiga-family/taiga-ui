@@ -35,7 +35,7 @@ describe('ng-update input-range', () => {
     );
 
     it(
-        'removes label[tuiLabel] inside tui-input-range (with spaces)',
+        'preserves interpolated label content when removing label[tuiLabel]',
         migrate({
             template: /* HTML */ `
                 <tui-input-range
@@ -44,7 +44,7 @@ describe('ng-update input-range', () => {
                     [tuiNumberFormat]="numberFormat"
                     [(ngModel)]="value"
                 >
-                    <label tuiLabel>Type number like a German</label>
+                    <label tuiLabel>{{ rangeLabel }}</label>
                 </tui-input-range>
             `,
         }),
