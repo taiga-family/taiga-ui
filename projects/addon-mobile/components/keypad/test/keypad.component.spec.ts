@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiKeypad, type TuiKeypadCell, TuiKeypadComponent} from '@taiga-ui/addon-mobile';
+import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 describe('Keypad', () => {
     describe('TuiKeypadComponent', () => {
@@ -86,6 +87,67 @@ describe('Keypad', () => {
 
             expect(component.value()).toBe('5');
             expect(emitted).toEqual(['enter']);
+        });
+    });
+
+    describe('mobile mode', () => {
+        @Component({
+            imports: [TuiKeypad],
+            template: `
+                <tui-keypad [keys]="keys" />
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {
+            public readonly component = viewChild.required(TuiKeypadComponent);
+
+            protected readonly keys: ReadonlyArray<readonly TuiKeypadCell[]> = [
+                ['1', '2', '3'],
+                [',', '0', 'backspace'],
+            ];
+        }
+
+        let fixture: ComponentFixture<Test>;
+        let component: TuiKeypadComponent;
+
+        const key = (name: string): HTMLButtonElement =>
+            fixture.nativeElement.querySelector(`[data-key="${name}"]`);
+
+        beforeEach(async () => {
+            // EVENT_MANAGER_PLUGINS must be provided at the root injector, not the component
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [provideEventPlugins()],
+            });
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(Test);
+            component = fixture.componentInstance.component();
+            fixture.detectChanges();
+        });
+
+        it('prevents default on pointerdown so a tap does not blur the focused field', () => {
+            const event = new Event('pointerdown', {bubbles: true, cancelable: true});
+
+            key('1').dispatchEvent(event);
+
+            expect(event.defaultPrevented).toBe(true);
+        });
+
+        it('still appends on tap (click follows touch)', () => {
+            key('1').click();
+            key('2').click();
+
+            expect(component.value()).toBe('12');
+        });
+
+        it('clears the whole value on long press of backspace', () => {
+            component.value.set('123');
+            fixture.detectChanges();
+            key('backspace').dispatchEvent(
+                new CustomEvent('longtap', {detail: {clientX: 0, clientY: 0}}),
+            );
+
+            expect(component.value()).toBe('');
         });
     });
 
