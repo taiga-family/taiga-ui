@@ -51432,12 +51432,10 @@ Directive to show a hint by hover of an element
 ### Example
 
 ```html
-<ng-template #template> To be accessible, hint should be set to a focusable element. See <a tuiLink [routerLink]="routes.HintDescribe" >
-<code>HintDescribe</code>
-</a>
+<ng-template #template> To be accessible, hint should be set to a focusable element. See <a appearance="" tuiLink [routerLink]="routes.HintDescribe" > HintDescribe </a>
 </ng-template>
-<span tuiHintDescribe="qwerty" [tuiHint]="template" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover it! </span>
-<input id="qwerty" />
+<span tuiBadge tuiHintDescribe="qwerty" [tuiHint]="template" [tuiHintAppearance]="hint.appearance" [tuiHintCentered]="hint.centered" [tuiHintDirection]="hint.direction" [tuiHintHideDelay]="hideDelay" [tuiHintShowDelay]="showDelay" > Hover me </span>
+<input id="qwerty" placeholder="Focus me with keyboard" />
 ```
 
 ### API - Inputs
@@ -51683,9 +51681,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiHint} from '@taiga-ui/core';
+import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo, TuiDocHint, TuiHint],
+    imports: [TuiBadge, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -51706,7 +51705,7 @@ Directive to show a hint in accessible way upon keyboard focus
 ### Example
 
 ```html
-<input placeholder="My id is 'qwerty'" tuiHint="I will be visible upon keyboard focus" tuiHintDescribe="qwerty" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" />
+<input placeholder="My id is 'qwerty'" tuiHint="I will be visible upon keyboard focus" tuiHintDescribe="qwerty" [tuiHintAppearance]="hint.appearance" [tuiHintCentered]="hint.centered" [tuiHintDirection]="hint.direction" />
 ```
 
 ### API - Inputs
@@ -51782,7 +51781,7 @@ Directive to show a hint manually
 ### Example
 
 ```html
-<button tuiButton tuiHint="It says 'Hi all!' into console" type="button" [tuiHintAppearance]="hint.appearance" [tuiHintDirection]="hint.direction" [tuiHintManual]="show" (click)="sayHi()" > A strange button </button>
+<button tuiButton tuiHint="It says 'Hi all!' into console" type="button" [tuiHintAppearance]="hint.appearance" [tuiHintCentered]="hint.centered" [tuiHintDirection]="hint.direction" [tuiHintManual]="show" (click)="sayHi()" > A strange button </button>
 ```
 
 ### API - Inputs

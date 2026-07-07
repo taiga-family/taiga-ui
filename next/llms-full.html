@@ -51441,12 +51441,10 @@ Directive to show a hint by hover of an element
 ### Example
 
 ```html
-&lt;ng-template #template&gt; To be accessible, hint should be set to a focusable element. See &lt;a tuiLink [routerLink]=&quot;routes.HintDescribe&quot; &gt;
-&lt;code&gt;HintDescribe&lt;/code&gt;
-&lt;/a&gt;
+&lt;ng-template #template&gt; To be accessible, hint should be set to a focusable element. See &lt;a appearance=&quot;&quot; tuiLink [routerLink]=&quot;routes.HintDescribe&quot; &gt; HintDescribe &lt;/a&gt;
 &lt;/ng-template&gt;
-&lt;span tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
-&lt;input id=&quot;qwerty&quot; /&gt;
+&lt;span tuiBadge tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover me &lt;/span&gt;
+&lt;input id=&quot;qwerty&quot; placeholder=&quot;Focus me with keyboard&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -51692,9 +51690,10 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TuiHint} from &#039;@taiga-ui/core&#039;;
+import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiDocHint, TuiHint],
+    imports: [TuiBadge, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -51715,7 +51714,7 @@ Directive to show a hint in accessible way upon keyboard focus
 ### Example
 
 ```html
-&lt;input placeholder=&quot;My id is &#039;qwerty&#039;&quot; tuiHint=&quot;I will be visible upon keyboard focus&quot; tuiHintDescribe=&quot;qwerty&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; /&gt;
+&lt;input placeholder=&quot;My id is &#039;qwerty&#039;&quot; tuiHint=&quot;I will be visible upon keyboard focus&quot; tuiHintDescribe=&quot;qwerty&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -51791,7 +51790,7 @@ Directive to show a hint manually
 ### Example
 
 ```html
-&lt;button tuiButton tuiHint=&quot;It says &#039;Hi all!&#039; into console&quot; type=&quot;button&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintManual]=&quot;show&quot; (click)=&quot;sayHi()&quot; &gt; A strange button &lt;/button&gt;
+&lt;button tuiButton tuiHint=&quot;It says &#039;Hi all!&#039; into console&quot; type=&quot;button&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintManual]=&quot;show&quot; (click)=&quot;sayHi()&quot; &gt; A strange button &lt;/button&gt;
 ```
 
 ### API - Inputs
