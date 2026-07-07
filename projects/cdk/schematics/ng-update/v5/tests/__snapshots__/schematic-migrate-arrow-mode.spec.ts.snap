@@ -42,6 +42,7 @@ exports[`ng-update arrow mode adds TODO above TUI_ARROW_MODE usage in providers:
   "1. After": "
                 import {Component} from '@angular/core';
 // TODO: (Taiga UI migration) TUI_ARROW_MODE has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+// TODO: (Taiga UI migration) TUI_ARROW has been removed. Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links
                 import {TUI_ARROW, TUI_ARROW_MODE} from '@taiga-ui/legacy';
 
                 @Component({
@@ -102,6 +103,7 @@ exports[`ng-update arrow mode adds TODO above tuiArrowModeProvider usage: test.t
   "1. After": "
                 import {Component} from '@angular/core';
 // TODO: (Taiga UI migration) tuiArrowModeProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead
+// TODO: (Taiga UI migration) TUI_ARROW has been removed. Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links
                 import {TUI_ARROW, tuiArrowModeProvider} from '@taiga-ui/legacy';
 
                 @Component({

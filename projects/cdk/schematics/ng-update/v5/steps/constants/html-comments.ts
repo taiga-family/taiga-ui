@@ -97,4 +97,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         withAttrs: ['tuiTag'],
         comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',
     },
+    {
+        tag: 'tui-arrow',
+        withAttrs: [],
+        comment:
+            'tui-arrow has been removed. Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links',
+    },
 ];

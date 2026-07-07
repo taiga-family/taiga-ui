@@ -110,6 +110,18 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiArrowModeProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
     },
     ...[
+        'TuiArrowComponent',
+        'TUI_ARROW',
+        'TuiArrowOptions',
+        'TUI_ARROW_OPTIONS',
+        'TUI_ARROW_DEFAULT_OPTIONS',
+        'tuiArrowOptionsProvider',
+    ].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/legacy',
+        message: `${name} has been removed. Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links`,
+    })),
+    ...[
         'tuiParentAnimation',
         'tuiParentStop',
         'tuiHost',
