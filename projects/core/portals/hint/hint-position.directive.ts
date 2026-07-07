@@ -70,11 +70,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const bottom = short ? topCenter - height + ARROW_OFFSET : rect.bottom - height;
 
         this.points['top-start'][TOP] = rect.top - height - this.offset();
-        this.points['top-start'][LEFT] = start;
+        this.points['top-start'][LEFT] = this.centered() ? end : start;
         this.points.top[TOP] = this.points['top-start'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
         this.points['top-end'][TOP] = this.points['top-start'][TOP];
-        this.points['top-end'][LEFT] = end;
+        this.points['top-end'][LEFT] = this.centered() ? start : end;
 
         this.points['bottom-start'][TOP] = rect.bottom + this.offset();
         this.points['bottom-start'][LEFT] = this.points['top-start'][LEFT];
@@ -83,11 +83,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['bottom-end'][TOP] = this.points['bottom-start'][TOP];
         this.points['bottom-end'][LEFT] = this.points['top-end'][LEFT];
 
-        this.points['start-top'][TOP] = top;
+        this.points['start-top'][TOP] = this.centered() ? bottom : top;
         this.points['start-top'][LEFT] = rect.left - width - this.offset();
         this.points.start[TOP] = topCenter - height / 2;
         this.points.start[LEFT] = this.points['start-top'][LEFT];
-        this.points['start-bottom'][TOP] = bottom;
+        this.points['start-bottom'][TOP] = this.centered() ? bottom : top;
         this.points['start-bottom'][LEFT] = this.points['start-top'][LEFT];
 
         this.points['end-top'][TOP] = this.points['start-top'][TOP];
