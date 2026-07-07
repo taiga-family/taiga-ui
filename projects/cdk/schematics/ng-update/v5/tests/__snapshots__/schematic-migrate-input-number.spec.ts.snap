@@ -50,6 +50,23 @@ import { TuiInputNumber } from "@taiga-ui/kit";
 }
 `;
 
+exports[`ng-update leaves a self-closing tui-input-number untouched (no end tag to migrate into): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-number formControlName="value">Amount</tui-input-number>
+                <tui-input-number formControlName="other" />
+            ",
+  "1. After": "
+                <tui-textfield >
+<label tuiLabel>Amount</label>
+
+<input tuiInputNumber formControlName="value" />
+</tui-textfield>
+                <tui-input-number formControlName="other" />
+            ",
+}
+`;
+
 exports[`ng-update migrate TuiInputNumberModule to TuiInputNumber: test.html 1`] = `
 {
   "0. Before": "

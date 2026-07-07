@@ -103,5 +103,15 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'leaves a self-closing tui-input-number untouched (no end tag to migrate into)',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-number formControlName="value">Amount</tui-input-number>
+                <tui-input-number formControlName="other" />
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
