@@ -25,7 +25,7 @@ describe('ng-update comment for --tui-thickness', () => {
     it(
         'should add comment for --tui-thickness in ts files',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import { Component } from "@angular/core";
 
                 @Component({
@@ -57,7 +57,7 @@ describe('ng-update comment for --tui-thickness', () => {
     it(
         'should add comment for --tui-thickness in html files',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputRange} from '@taiga-ui/kit';
                 import {TuiRange} from '@taiga-ui/kit/components/range';
                 import {TuiSlider} from '@taiga-ui/kit/components/slider';

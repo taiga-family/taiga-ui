@@ -1,12 +1,13 @@
-@if (control()?.control?.valueChanges | async) {}
+@if (child()?.value() ?? (control()?.control?.valueChanges | async)) {}
 <ng-content select="input" />
 <ng-content select="select" />
 <ng-content select="textarea" />
 <ng-content select="label" />
 <span
+    #side
     class="t-content"
     (pointerdown)="input()?.nativeElement?.focus()"
-    (waResizeObserver)="$event[0] && onResize($event[0])"
+    (resize)="onResize(side)"
 >
     <ng-content />
     <ng-container #vcr />

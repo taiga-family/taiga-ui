@@ -31,11 +31,13 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
         '[style.border]':
             'textfield.options.size() === "s" ? "0.25rem solid transparent" : null',
         '(click)': 'toggle()',
+        '(mousedown.prevent)': '0',
     },
 })
 export class TuiPassword {
     private readonly options = inject(TUI_PASSWORD_OPTIONS);
     private readonly texts = inject(TUI_PASSWORD_TEXTS);
+
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
 

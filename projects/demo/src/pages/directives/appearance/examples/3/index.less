@@ -11,11 +11,16 @@
 
         content: '';
         background: currentColor;
-        mask: url('/assets/taiga-ui/icons/heart.svg') no-repeat center / 3em 1.5em;
+        mask-image: url('/assets/taiga-ui/icons/heart.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 3em 1.5em;
     }
 
     &:checked::before {
         color: var(--tui-text-negative);
-        mask: url('/assets/taiga-ui/icons/heart-filled.svg') no-repeat center;
+        mask-image: url('/assets/taiga-ui/icons/heart-filled.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
     }
 }

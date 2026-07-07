@@ -21,7 +21,7 @@
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index]"
+                [content]="$index + 1 | tuiExample: 'html,ts,less' : this[$index + 1]"
                 [description]="description"
                 [heading]="example"
             />
@@ -189,6 +189,16 @@
                             &#64;angular/cdk/scrolling
                         </a>
                         .
+
+                        <p>
+                            Virtual scroll renders only a small subset of options in the DOM at a time — the rest don't
+                            exist until scrolled into view. The custom
+                            <code>WithVirtualScroll</code>
+                            directive gives
+                            <code>ComboBox</code>
+                            access to the full list so it can match values typed manually into the textfield, even when
+                            the matching option is off-screen.
+                        </p>
                     }
                     @case (10) {
                         @if (!isMobile) {
@@ -305,7 +315,7 @@
                 type="boolean"
                 [(value)]="strict"
             >
-                Value must only be an item of suggestions&nbsp;
+                value must only be an item of suggestions&nbsp;
                 <code>&lt;T&gt;</code>
 
                 <p>
@@ -328,7 +338,7 @@
                 [items]="matcherVariants"
                 [(value)]="matcher"
             >
-                A
+                a
                 <strong>pure</strong>
                 function that compares search text and datalist's items to define a match between them. Lowercase string
                 comparison function by default.

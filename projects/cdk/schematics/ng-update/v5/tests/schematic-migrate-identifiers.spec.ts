@@ -29,7 +29,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates identifiers to new packages',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiAutoColorPipe, TuiSurface} from '@taiga-ui/core';
                 import {tuiPure} from '@taiga-ui/cdk';
                 import {TuiCell} from '@taiga-ui/layout';
@@ -47,7 +47,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves TuiFlagPipe from core to kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFlagPipe} from '@taiga-ui/core';
 
                 export class TestComponent {
@@ -60,7 +60,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'renames ResizeObserverService to WaResizeObserverService',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 
                 export class TestComponent {
@@ -73,7 +73,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves tuiCellOptionsProvider from layout to core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiCellOptionsProvider} from '@taiga-ui/layout';
 
                 export const providers = [tuiCellOptionsProvider({size: 'm'})];
@@ -84,7 +84,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {type TuiTimeMode} from '@taiga-ui/cdk';
 
                 export type Mode = TuiTimeMode;
@@ -95,7 +95,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates sheet identifiers from legacy to addon-mobile',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {
                     TuiSheetModule,
                     TuiSheetDialogOptions,
@@ -114,7 +114,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'adds TODO for TuiStatus type (cannot be auto-migrated to string literal)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {type TuiStatus} from '@taiga-ui/legacy';
 
                 @Component({
@@ -136,7 +136,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiIsFlat} from '@taiga-ui/kit';
 
                 export class TestComponent {
@@ -149,9 +149,22 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
+        'moves TUI_CALENDAR_DATE_STREAM from @taiga-ui/kit to @taiga-ui/addon-mobile',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly stream = TUI_CALENDAR_DATE_STREAM;
+                }
+            `,
+        }),
+    );
+
+    it(
         'migrates TuiOptionNew to TuiOption',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiOptionNew} from '@taiga-ui/core';
 
                 export class TestComponent {
@@ -164,7 +177,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates provideEventPlugins to provideTaiga',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
                 export const appConfig: ApplicationConfig = {
@@ -177,7 +190,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates NG_EVENT_PLUGINS to provideTaiga',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
                 export const appConfig: ApplicationConfig = {

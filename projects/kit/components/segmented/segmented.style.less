@@ -64,7 +64,8 @@ tui-segmented:where(*&) {
         display: flex;
         align-items: center;
         justify-content: center;
-        block-size: var(--t-height);
+        min-block-size: var(--t-height);
+        block-size: 100%;
         white-space: nowrap;
         gap: var(--t-gap);
         margin: 0;
@@ -117,6 +118,10 @@ tui-segmented:where(*&) {
         }
     }
 
+    & > .tui-segmented_active {
+        anchor-name: var(--t-anchor);
+    }
+
     & > label > input:not([tuiRadio]) {
         position: absolute;
         inset: -0.125rem;
@@ -124,13 +129,17 @@ tui-segmented:where(*&) {
     }
 
     &::before {
-        .transition(~'inset, width');
+        .transition(~'inset, inline-size');
 
         content: '';
         position: absolute;
         inset: var(--t-top) auto auto var(--t-left);
+        inset: anchor(start);
+        position-anchor: var(--t-anchor);
         block-size: var(--t-height);
+        block-size: anchor-size(block);
         inline-size: var(--t-width);
+        inline-size: anchor-size(inline);
         border-radius: inherit;
         background: currentColor;
         background-clip: padding-box;
@@ -139,8 +148,10 @@ tui-segmented:where(*&) {
         filter: drop-shadow(0 0.25rem 1.25rem rgba(0, 0, 0, 0.1));
     }
 
-    [dir='rtl'] &::before {
-        inset-inline: auto var(--t-left);
+    @supports not (anchor-name: --t-anchor) {
+        [dir='rtl'] &::before {
+            inset-inline: auto var(--t-left);
+        }
     }
 }
 

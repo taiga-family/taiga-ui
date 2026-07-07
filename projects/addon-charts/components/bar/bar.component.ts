@@ -10,11 +10,21 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBar {
-    private readonly sum = computed(() => tuiSum(...this.value()));
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeL | TuiSizeS>('m');
 
-    protected getHeight(value: number): number {
-        return (100 * value) / this.sum();
-    }
+    protected readonly segments = computed(() => {
+        const sum = tuiSum(...this.value().map(Math.abs));
+
+        const items = this.value().map((value, index) => ({
+            value,
+            background: `var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`,
+            height: sum ? Math.abs((100 * value) / sum) : 0,
+        }));
+
+        return [
+            ...items.filter(({value}) => value < 0),
+            ...items.filter(({value}) => value >= 0),
+        ];
+    });
 }

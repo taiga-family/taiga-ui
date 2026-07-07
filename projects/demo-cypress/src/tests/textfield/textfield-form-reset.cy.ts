@@ -124,6 +124,7 @@ import {
 })
 export class Sandbox {
     protected readonly year = new TuiYear(2020);
+
     public readonly formGroup = input.required<FormGroup>();
 }
 

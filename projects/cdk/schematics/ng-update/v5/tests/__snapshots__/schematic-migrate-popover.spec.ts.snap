@@ -13,7 +13,8 @@ exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames 
 
                     @Component({template: ''})
                     export class PromptComponent {
-                        protected readonly context = injectContext<TuiPopover<PromptOptions, boolean>>();
+                        protected readonly context =
+                            injectContext<TuiPopover<PromptOptions, boolean>>();
                     }
                 ",
   "1. After": "// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
@@ -30,7 +31,8 @@ import { TuiPortalContext } from "@taiga-ui/cdk";
 
                     @Component({template: ''})
                     export class PromptComponent {
-                        protected readonly context = injectContext<TuiPortalContext<PromptOptions, boolean>>();
+                        protected readonly context =
+                            injectContext<TuiPortalContext<PromptOptions, boolean>>();
                     }
                 ",
 }
@@ -41,14 +43,18 @@ exports[`ng-update TuiPopover migration TuiPopover → TuiPortalContext renames 
   "0. Before": "
                     import {type TuiPopover} from '@taiga-ui/cdk';
 
-                    export function openDialog(context: TuiPopover<{label: string}, string>): void {}
+                    export function openDialog(
+                        context: TuiPopover<{label: string}, string>,
+                    ): void {}
                 ",
   "1. After": "// TODO: (Taiga UI migration) TuiPopoverContext<O> is removed. Use TuiPortalContext<T, O> where T=options shape, O=output type.
 // Before: injectContext<TuiPopoverContext<boolean>>()
 // After:  injectContext<TuiPortalContext<MyOptions, boolean>>()
 import { TuiPortalContext } from "@taiga-ui/cdk";
 
-                                        export function openDialog(context: TuiPortalContext<{label: string}, string>): void {}
+                                        export function openDialog(
+                        context: TuiPortalContext<{label: string}, string>,
+                    ): void {}
                 ",
 }
 `;
@@ -63,13 +69,21 @@ exports[`ng-update TuiPopover migration TuiPopoverDirective → TuiPortalDirecti
 
                     @Directive({
                         selector: 'ng-template[tuiCustomDialog]',
-                        inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
+                        inputs: [
+                            'open: tuiCustomDialog',
+                            'options: tuiCustomDialogOptions',
+                        ],
                         outputs: ['openChange: tuiCustomDialogChange'],
                         providers: [
-                            {provide: TuiPopoverService, useExisting: CustomDialogService},
+                            {
+                                provide: TuiPopoverService,
+                                useExisting: CustomDialogService,
+                            },
                         ],
                     })
-                    export class CustomDialogDirective<T> extends TuiPopoverDirective<T> {}
+                    export class CustomDialogDirective<
+                        T,
+                    > extends TuiPopoverDirective<T> {}
                 ",
   "1. After": "
                     import {Directive} from '@angular/core';
@@ -87,13 +101,21 @@ exports[`ng-update TuiPopover migration TuiPopoverDirective → TuiPortalDirecti
 
                     @Directive({
                         selector: 'ng-template[tuiCustomDialog]',
-                        inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
+                        inputs: [
+                            'open: tuiCustomDialog',
+                            'options: tuiCustomDialogOptions',
+                        ],
                         outputs: ['openChange: tuiCustomDialogChange'],
                         providers: [
-                            {provide: TuiPortal, useExisting: CustomDialogService},
+                            {
+                                provide: TuiPortal,
+                                useExisting: CustomDialogService,
+                            },
                         ],
                     })
-                    export class CustomDialogDirective<T> extends TuiPortalDirective<T> {}
+                    export class CustomDialogDirective<
+                        T,
+                    > extends TuiPortalDirective<T> {}
                 ",
 }
 `;
@@ -131,9 +153,14 @@ exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warnin
                     @Injectable({
                         providedIn: 'root',
                         useFactory: () =>
-                            new PromptService(TUI_DIALOGS, PromptComponent, {heading: 'Are you sure?'}),
+                            new PromptService(TUI_DIALOGS, PromptComponent, {
+                                heading: 'Are you sure?',
+                            }),
                     })
-                    export class PromptService extends TuiPopoverService<PromptOptions, boolean> {}
+                    export class PromptService extends TuiPopoverService<
+                        PromptOptions,
+                        boolean
+                    > {}
                 ",
   "1. After": "// TODO: (Taiga UI migration) TuiPopoverService → TuiPortal: constructor args (token, component, defaultOptions) are now abstract class properties; call super(inject(TuiPopupService)).
 // Before: @Injectable({useFactory: () => new MyService(TUI_DIALOGS, MyComponent, defaultOpts)}) class MyService extends TuiPopoverService<T, K> {}
@@ -150,9 +177,14 @@ import { TuiPortal } from "@taiga-ui/cdk";
                     @Injectable({
                         providedIn: 'root',
                         useFactory: () =>
-                            new PromptService(TUI_DIALOGS, PromptComponent, {heading: 'Are you sure?'}),
+                            new PromptService(TUI_DIALOGS, PromptComponent, {
+                                heading: 'Are you sure?',
+                            }),
                     })
-                    export class PromptService extends TuiPortal<PromptOptions, boolean> {}
+                    export class PromptService extends TuiPortal<
+                        PromptOptions,
+                        boolean
+                    > {}
                 ",
 }
 `;

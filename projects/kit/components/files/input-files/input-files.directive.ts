@@ -1,5 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {Directive, forwardRef, inject} from '@angular/core';
+import {Directive} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -14,7 +14,6 @@ import {filter, map, switchMap, timer} from 'rxjs';
 
 import {type TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
-import {TuiInputFiles} from './input-files.component';
 import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 import {TuiInputFilesValidator} from './input-files-validator.directive';
 
@@ -43,8 +42,8 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
 export class TuiInputFilesDirective extends TuiControl<
     TuiFileLike | readonly TuiFileLike[]
 > {
-    protected readonly host = inject(forwardRef(() => TuiInputFiles));
     protected readonly m = tuiAppearanceMode(this.mode);
+
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public readonly reject = outputFromObservable(

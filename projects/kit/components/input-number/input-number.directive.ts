@@ -27,6 +27,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     private readonly mask = inject(TuiNumberMask);
     private readonly input = inject(TuiInputDirective);
     private readonly isIOS = inject(WA_IS_IOS);
+
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
     protected readonly inputMode = computed(() => {

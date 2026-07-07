@@ -18,7 +18,7 @@ import {
 } from './hint-options.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 24;
+const ARROW_OFFSET = 22;
 const TOP = 1;
 const LEFT = 0;
 
@@ -26,6 +26,7 @@ const LEFT = 0;
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly directionChange = new Subject<TuiHintDirection>();
 
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
@@ -39,13 +40,15 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
-    public readonly direction = input(inject(TUI_HINT_OPTIONS).direction, {
+    public readonly direction = input(this.options.direction, {
         alias: 'tuiHintDirection',
     });
 
     public readonly offset = input(inject(WA_IS_MOBILE) ? 16 : 8, {
         alias: 'tuiHintOffset',
     });
+
+    public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
 
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
@@ -55,34 +58,40 @@ export class TuiHintPosition extends TuiPositionAccessor {
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
-        const hostRect = this.accessor.getClientRect();
-        const leftCenter = hostRect.left + hostRect.width / 2;
-        const topCenter = hostRect.top + hostRect.height / 2;
+        const rect = this.accessor.getClientRect();
+        const leftCenter = rect.left + rect.width / 2;
+        const topCenter = rect.top + rect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
+        const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
+        const short = rect.height < ARROW_OFFSET * 2 || this.centered();
+        const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
+        const end = narrow ? leftCenter - width + ARROW_OFFSET : rect.right - width;
+        const top = short ? topCenter - ARROW_OFFSET : rect.top;
+        const bottom = short ? topCenter - height + ARROW_OFFSET : rect.bottom - height;
 
-        this.points['top-start'][TOP] = hostRect.top - height - this.offset();
-        this.points['top-start'][LEFT] = leftCenter - width + ARROW_OFFSET;
+        this.points['top-start'][TOP] = rect.top - height - this.offset();
+        this.points['top-start'][LEFT] = this.centered() ? end : start;
         this.points.top[TOP] = this.points['top-start'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
         this.points['top-end'][TOP] = this.points['top-start'][TOP];
-        this.points['top-end'][LEFT] = leftCenter - ARROW_OFFSET;
+        this.points['top-end'][LEFT] = this.centered() ? start : end;
 
-        this.points['bottom-start'][TOP] = hostRect.bottom + this.offset();
+        this.points['bottom-start'][TOP] = rect.bottom + this.offset();
         this.points['bottom-start'][LEFT] = this.points['top-start'][LEFT];
         this.points.bottom[TOP] = this.points['bottom-start'][TOP];
         this.points.bottom[LEFT] = this.points.top[LEFT];
         this.points['bottom-end'][TOP] = this.points['bottom-start'][TOP];
         this.points['bottom-end'][LEFT] = this.points['top-end'][LEFT];
 
-        this.points['start-top'][TOP] = topCenter - height + ARROW_OFFSET;
-        this.points['start-top'][LEFT] = hostRect.left - width - this.offset();
+        this.points['start-top'][TOP] = this.centered() ? bottom : top;
+        this.points['start-top'][LEFT] = rect.left - width - this.offset();
         this.points.start[TOP] = topCenter - height / 2;
         this.points.start[LEFT] = this.points['start-top'][LEFT];
-        this.points['start-bottom'][TOP] = topCenter - ARROW_OFFSET;
+        this.points['start-bottom'][TOP] = this.centered() ? bottom : top;
         this.points['start-bottom'][LEFT] = this.points['start-top'][LEFT];
 
         this.points['end-top'][TOP] = this.points['start-top'][TOP];
-        this.points['end-top'][LEFT] = hostRect.right + this.offset();
+        this.points['end-top'][LEFT] = rect.right + this.offset();
         this.points.end[TOP] = this.points.start[TOP];
         this.points.end[LEFT] = this.points['end-top'][LEFT];
         this.points['end-bottom'][TOP] = this.points['start-bottom'][TOP];

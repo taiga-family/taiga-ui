@@ -50,6 +50,7 @@ import {Subject} from 'rxjs';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
 
     protected onPull(): void {

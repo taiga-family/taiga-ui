@@ -1,12 +1,17 @@
 import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDate} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {
+    DATE_FILLER_LENGTH,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiArrayToggle, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
@@ -46,6 +51,7 @@ import {
 })
 export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     private readonly dateMultiOptions = inject(TUI_INPUT_DATE_MULTI_OPTIONS);
+
     protected readonly icon = tuiIconEnd(this.dateMultiOptions.icon);
     protected readonly filler = tuiWithDateFiller();
     protected readonly format = inject(TUI_DATE_FORMAT);
@@ -53,16 +59,13 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     protected readonly stringify = tuiDirectiveBinding(
         TuiItemsHandlersDirective,
         'stringify',
-        (item) =>
-            this.dateMultiOptions.valueTransformer
-                .fromControlValue([item])[0]
-                ?.toString(this.format().mode, this.format().separator) ?? '',
+        (item) => item?.toString(this.format().mode, this.format().separator) ?? '',
         {},
     );
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoDateOptionsGenerator({
+            maskitoDate({
                 separator: this.format().separator,
                 mode: this.format().mode,
                 min: (this.min() ?? this.dateMultiOptions.min).toLocalNativeDate(),
@@ -71,8 +74,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         ),
     );
 
-    protected readonly calendar = tuiInjectAuxiliary<TuiCalendar>(
-        (x) => x instanceof TuiCalendar,
+    protected readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+        (x) => x instanceof AbstractTuiCalendar,
     );
 
     protected readonly calendarIn = effect(() => {
@@ -83,24 +86,27 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         }
     });
 
-    protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.dayClick.subscribe((day) => {
-            this.updateValue(day);
-        });
+    protected readonly calendarOut = effect(() => {
+        const value = this.calendar()?.value();
 
-        onCleanup(() => subscription?.unsubscribe());
+        if (value instanceof TuiDay) {
+            this.updateValue(value);
+        }
     });
 
-    public readonly min = input<TuiDay | null>(this.dateMultiOptions.min);
-    public readonly max = input<TuiDay | null>(this.dateMultiOptions.max);
+    public readonly min = input(this.dateMultiOptions.min ?? TUI_FIRST_DAY, {
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
+    });
 
-    protected processCalendar(calendar: TuiCalendar): void {
+    public readonly max = input(this.dateMultiOptions.max ?? TUI_LAST_DAY, {
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
+    });
+
+    protected processCalendar(calendar: AbstractTuiCalendar): void {
         tuiSetSignal(calendar.value, this.value());
         tuiSetSignal(calendar.min, this.min());
         tuiSetSignal(calendar.max, this.max());
-        calendar.month.set(
-            this.value()?.[this.value().length - 1] ?? TuiMonth.currentLocal(),
-        );
+        calendar.month.update((m) => this.value()?.[this.value().length - 1] ?? m);
     }
 
     protected onClick(): void {

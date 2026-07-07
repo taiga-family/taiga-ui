@@ -15,6 +15,7 @@ import {TuiHintDirective} from './hint.directive';
 })
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
+
     public readonly content = input<string | null>('', {alias: 'tuiHintOverflow'});
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {

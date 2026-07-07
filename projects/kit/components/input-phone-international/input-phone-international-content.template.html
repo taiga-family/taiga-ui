@@ -1,0 +1,65 @@
+<button
+    appearance="textfield"
+    tabindex="-1"
+    tuiButton
+    tuiChevron
+    type="button"
+    class="t-ipi-select"
+    [attr.data-mode]="host.mode()"
+    [class.t-ipi-select_readonly]="host.readOnly()"
+    [disabled]="host.disabled()"
+    [size]="size()"
+    [tuiAppearanceFocus]="host.open()"
+    (click.prevent)="host.interactive() && host.open.set(!host.open())"
+    (pointerdown.stop)="(0)"
+>
+    <img
+        class="t-ipi-flag"
+        [alt]="names()[host.countryIsoCode()]"
+        [class.t-ipi-flag_small]="size() === 's'"
+        [src]="host.countryIsoCode() | tuiFlag"
+    />
+</button>
+<ng-template #filter>
+    <div class="t-ipi-search">
+        <tui-textfield
+            [iconStart]="icons.search"
+            [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
+        >
+            <input
+                autocomplete="off"
+                tuiInput
+                type="text"
+                [ngModel]="host.search()"
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!ios"
+                (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
+                (ngModelChange)="host.search.set($event)"
+            />
+        </tui-textfield>
+    </div>
+</ng-template>
+<ng-container *tuiDropdown>
+    @if (host.countrySearch()) {
+        <ng-container *ngTemplateOutlet="filter" />
+    }
+    <tui-data-list class="t-ipi-options">
+        @for (item of filtered(); track item.iso) {
+            <button
+                tuiOption
+                type="button"
+                (click)="onItemClick(item.iso)"
+            >
+                <img
+                    alt=""
+                    class="t-ipi-flag"
+                    [class.t-ipi-flag_small]="size() === 's'"
+                    [src]="item.iso | tuiFlag"
+                />
+                <span tuiTitle>{{ item.name }}</span>
+                <span class="t-ipi-code">{{ item.code }}</span>
+            </button>
+        }
+    </tui-data-list>
+</ng-container>

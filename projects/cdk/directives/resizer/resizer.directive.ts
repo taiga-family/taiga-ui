@@ -15,10 +15,12 @@ import {TuiResizable} from './resizable.directive';
 })
 export class TuiResizer {
     private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
+
     protected x = Number.NaN;
     protected y = Number.NaN;
     protected width = 0;
     protected height = 0;
+
     public readonly tuiResizer = input<readonly [x: number, y: number]>([0, 0]);
     public readonly tuiSizeChange = output<readonly [x: number, y: number]>();
 

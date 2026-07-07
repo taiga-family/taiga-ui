@@ -36,16 +36,21 @@ import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migrateDialogHeader} from './steps/migrate-dialog-header';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
+import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
+import {migrateEditorProviders} from './steps/migrate-editor-providers';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
+import {migrateRangeToken} from './steps/migrate-range-token';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 import {migrateStyles} from './steps/styles';
+import {updatePackages} from './steps/update-packages';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -76,6 +81,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => migrateBreakpointService(tree, options),
                 },
                 {
+                    name: 'migrateRangeToken',
+                    step: () => migrateRangeToken(tree, options),
+                },
+                {
                     name: 'migratePortalService',
                     step: () => migratePortals(tree, options),
                 },
@@ -86,6 +95,14 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateDialogLegacySizes',
                     step: () => migrateDialogLegacySizes(tree, options),
+                },
+                {
+                    name: 'migrateDialogHeader',
+                    step: () => migrateDialogHeader(tree, options),
+                },
+                {
+                    name: 'migrateDropdownOpen',
+                    step: () => migrateDropdownOpen(tree, options),
                 },
                 {
                     name: 'migrateFilterByInput',
@@ -122,6 +139,14 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'migrateEditorProviders',
+                    step: () => migrateEditorProviders(tree, options),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
                 },
                 {
                     name: 'showWarnings',

@@ -10,9 +10,7 @@ exports[`ng-update TuiIdService adds TODO comment for TuiIdService constructor i
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    constructor(
-                        private readonly idService: TuiIdService,
-                    ) {}
+                    constructor(private readonly idService: TuiIdService) {}
 
                     ngOnInit() {
                         const id = this.idService.generateId();
@@ -30,9 +28,7 @@ exports[`ng-update TuiIdService adds TODO comment for TuiIdService constructor i
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    constructor(
-                        private readonly idService: TuiIdService,
-                    ) {}
+                    constructor(private readonly idService: TuiIdService) {}
 
                     ngOnInit() {
                         const id = this.idService.generateId();

@@ -341,6 +341,8 @@ describe('InputSlider', () => {
             for (let i = 1; i <= 10; i++) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press('ArrowUp');
+                await expect(inputSlider.textfield).toHaveValue(String(i));
+
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));
@@ -355,6 +357,8 @@ describe('InputSlider', () => {
             for (let i = 9; i >= 0; i--) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press('ArrowDown');
+                await expect(inputSlider.textfield).toHaveValue(String(i));
+
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));

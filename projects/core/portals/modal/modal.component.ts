@@ -35,7 +35,8 @@ import {
         }
     `,
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
     hostDirectives: [TuiActiveZone, TuiFocusTrap],
     host: {
         'aria-modal': 'true',

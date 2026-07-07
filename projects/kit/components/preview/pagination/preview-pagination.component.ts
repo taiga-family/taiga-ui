@@ -20,6 +20,7 @@ import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 export class TuiPreviewPagination {
     protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
+
     public readonly length = input(1);
     public readonly index = model(0);
 

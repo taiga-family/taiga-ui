@@ -168,7 +168,7 @@ async function main(): Promise<void> {
     const parsed = await buildParsedMarkdown();
 
     await fs.mkdir(outDir, {recursive: true});
-    await fs.writeFile(outFile, parsed, 'utf-8');
+    await fs.writeFile(outFile, parsed);
 
     console.info(`Wrote parsed migration guide to ${outFile}`);
 }

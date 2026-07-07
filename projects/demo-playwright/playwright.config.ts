@@ -60,7 +60,9 @@ export default defineConfig({
         '{testDir}/snapshots/{platform}-{projectName}/{testFilePath}/{arg}{ext}',
     timeout: 5 * 60 * 1000,
     use: {
-        baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
+        baseURL:
+            process.env['PW_BASE_URL'] ??
+            `http://localhost:${process.env.NG_SERVER_PORT || 3000}`,
         trace: 'on-first-retry',
         testIdAttribute: 'automation-id',
         actionTimeout: 10_000,

@@ -16,7 +16,12 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
         countries: [],
         countrySearch: false,
         countryIsoCode: 'RU',
-        metadata: of({countries: {}, country_calling_codes: {}}),
+        metadata: of({
+            version: 4,
+            countries: {},
+            country_calling_codes: {},
+            nonGeographic: {},
+        }),
         separator: '-',
     };
 

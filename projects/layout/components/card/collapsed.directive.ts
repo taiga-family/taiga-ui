@@ -32,5 +32,6 @@ class Styles {}
 })
 export class TuiCardCollapsed {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly collapsed = input(false, {alias: 'tuiCardCollapsed'});
 }

@@ -6,9 +6,18 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
+
     public readonly examples = this.page.locator('tui-doc-example');
     public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
     public readonly value = this.page.locator('tui-doc-demo > tui-expand pre');
+
+    public readonly submitFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__submit-state"]',
+    );
+
+    public readonly resetFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__reset-state"]',
+    );
 
     constructor(protected readonly page: Page) {}
 
@@ -93,7 +102,8 @@ export class TuiDocumentationApiPagePO {
 
     public async getSelect(row: Locator): Promise<Locator | null> {
         return (
-            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.[0] ?? null
+            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.at(0) ??
+            null
         );
     }
 
@@ -111,14 +121,16 @@ export class TuiDocumentationApiPagePO {
 
     public async getCleaner(select: Locator): Promise<Locator | null> {
         return (
-            ((await select
-                .locator('[automation-id="tui-primitive-textfield__cleaner"]')
-                .all()) ?? [])?.[0] ?? null
+            (
+                (await select
+                    .locator('[automation-id="tui-primitive-textfield__cleaner"]')
+                    .all()) ?? []
+            )?.at(0) ?? null
         );
     }
 
     public async getToggle(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.[0] ?? null;
+        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.at(0) ?? null;
     }
 
     public async waitTuiIcons(): Promise<void> {

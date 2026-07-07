@@ -1,14 +1,11 @@
 import {
-    ChangeDetectionStrategy,
-    Component,
-    type ElementRef,
-    type EmbeddedViewRef,
+    type ComponentRef,
+    Directive,
     inject,
+    INJECTOR,
     input,
     model,
     type OnChanges,
-    TemplateRef,
-    viewChild,
 } from '@angular/core';
 import {
     tuiContainsOrAfter,
@@ -23,35 +20,33 @@ import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-@Component({
+import {TuiInputSearchContent} from './input-search-content.component';
+
+@Directive({
     selector: 'input[tuiInputSearch]',
-    imports: [PolymorpheusOutlet],
-    templateUrl: './input-search.component.html',
-    styleUrl: './input-search.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiCellOptionsProvider({size: 'm'})],
     hostDirectives: [TuiWithInput],
     host: {
-        ngSkipHydration: 'true',
         '(focus)': 'open()',
         '(keydown.arrowDown.prevent)': 'onArrow()',
         '(keydown.tab.prevent)': '0',
     },
 })
 export class TuiInputSearch implements OnChanges {
-    private readonly template = viewChild.required(TemplateRef);
-    private readonly container = viewChild<ElementRef<HTMLElement>>('container');
-    private readonly el = tuiInjectElement<HTMLInputElement>();
+    private readonly injector = inject(INJECTOR);
     private readonly service = inject(TuiPopupService);
     private readonly textfield = inject(TuiTextfieldComponent);
     private readonly i18n = inject(TUI_INPUT_SEARCH);
     private parent = this.textfield.el.parentElement;
     private neighbor = this.textfield.el.nextSibling;
     private placeholder = '';
-    private ref?: EmbeddedViewRef<unknown>;
+    private ref?: ComponentRef<TuiInputSearchContent>;
+
     protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
+
+    public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly tuiInputSearch = input<PolymorpheusContent>();
     public readonly searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
 
@@ -64,42 +59,52 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public open(): void {
-        if (this.ref?.destroyed === false) {
+        if (this.ref?.hostView.destroyed === false) {
             return;
         }
 
         this.placeholder = this.el.placeholder;
         this.parent = this.textfield.el.parentElement;
         this.neighbor = this.textfield.el.nextSibling;
-        this.ref = this.service.add(this.template());
-        this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
+        this.ref = this.service.add(
+            new PolymorpheusComponent(TuiInputSearchContent, this.injector),
+        );
+        this.ref.location.nativeElement.insertAdjacentElement(
+            'afterbegin',
+            this.textfield.el,
+        );
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
         this.searchOpen.set(true);
     }
 
     public close(): void {
+        if (this.ref?.hostView.destroyed !== false) {
+            this.searchOpen.set(false);
+
+            return;
+        }
+
         this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
-        this.ref?.destroy();
+        this.ref.destroy();
         this.searchOpen.set(false);
     }
 
-    protected onArrow(): void {
+    public onArrow(): void {
+        const root: HTMLElement = this.ref?.location.nativeElement;
+
         tuiGetClosestFocusable({
-            initial: this.container()?.nativeElement || this.el,
-            root: this.container()?.nativeElement || this.el,
+            root,
+            initial: this.textfield.el.nextElementSibling ?? root,
         })?.focus();
     }
 
-    protected onFocus({target}: Event): void {
-        const container = this.container();
-
+    public onFocus({target}: Event): void {
         if (
-            container &&
             target !== this.el &&
             tuiIsElement(target) &&
-            !tuiContainsOrAfter(container.nativeElement, target)
+            !tuiContainsOrAfter(this.ref?.location.nativeElement as HTMLElement, target)
         ) {
             this.close();
         }

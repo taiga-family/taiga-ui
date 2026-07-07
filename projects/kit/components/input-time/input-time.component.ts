@@ -1,28 +1,20 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    Directive,
-    HostAttributeToken,
-    inject,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Directive, HostAttributeToken, inject} from '@angular/core';
 import {type MaskitoTimeMode} from '@maskito/kit';
-import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {type TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
+import {type TuiDay, type TuiTime} from '@taiga-ui/cdk/date-time';
 import {
+    tuiAsTextfieldContent,
     TuiTextfieldContent,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
-import {TuiInputTimeDirective} from './input-time.directive';
+import {TuiInputTimeContent} from './input-time-content.component';
 
 @Directive({host: {'[attr.list]': 'null'}})
 export abstract class TuiNativeTimePicker {
-    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
+    public readonly list = inject(new HostAttributeToken('list'), {optional: true});
 
-    protected getStep(timeMode: MaskitoTimeMode): number {
+    public getStep(timeMode: MaskitoTimeMode): number {
         switch (timeMode) {
             case 'HH:MM:SS':
             case 'HH:MM:SS AA':
@@ -35,7 +27,7 @@ export abstract class TuiNativeTimePicker {
         }
     }
 
-    protected toISOString(
+    public toISOString(
         value: TuiTime | readonly [TuiDay, TuiTime | null] | null,
     ): string {
         const [day, time] = Array.isArray(value) ? value : [null, value];
@@ -46,27 +38,11 @@ export abstract class TuiNativeTimePicker {
     }
 }
 
-@Component({
+@Directive({
     selector: 'input[tuiInputTime][type="time"]',
-    imports: [TuiTextfieldContent],
-    templateUrl: './input-time.template.html',
-    styles: `
-        [data-tui-version='${TUI_VERSION}'] {
-            @import './input-time.style.less';
-        }
-    `,
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithNativePicker],
-    host: {'data-tui-version': TUI_VERSION, ngSkipHydration: 'true'},
+    providers: [tuiAsTextfieldContent(() => TuiInputTimeContent)],
+    hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
+    host: {'data-tui-version': TUI_VERSION},
 })
-export class TuiInputTimeComponent extends TuiNativeTimePicker {
-    private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);
-    protected readonly host = inject(TuiInputTimeDirective);
-    protected readonly value = computed(() => this.toISOString(this.control.value()));
-    protected readonly step = computed(() => this.getStep(this.host.timeMode()));
-
-    protected setValue(value: string): void {
-        this.host.setValue(TuiTime.fromString(value));
-    }
-}
+// TODO(v6): rename to TuiInputTimeDirective
+export class TuiInputTimeComponent extends TuiNativeTimePicker {}

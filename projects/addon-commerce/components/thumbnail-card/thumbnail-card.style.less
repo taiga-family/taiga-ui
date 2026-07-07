@@ -1,6 +1,8 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
+    .transition(transform);
+
     position: relative;
     display: inline-block;
     flex-shrink: 0;
@@ -9,6 +11,16 @@
     transform-style: preserve-3d;
     overflow: hidden;
     box-shadow: inset 0 0 0 1px var(--tui-background-neutral-1);
+    border: none;
+    zoom: var(--tui-font-scale);
+
+    .interactive({
+        cursor: pointer;
+    });
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+    }
 
     --t-logo-height: 0.8125rem;
 
@@ -130,6 +142,7 @@
     inset-block-end: 0;
     block-size: var(--t-logo-height);
     transform-origin: var(--tui-inline-end);
+    zoom: 1;
 
     :host[data-size='xs'] & {
         inset-inline-end: 0.125rem;
@@ -167,4 +180,5 @@
     inline-size: 1em;
     block-size: 1em;
     font-size: 1rem;
+    zoom: 1;
 }

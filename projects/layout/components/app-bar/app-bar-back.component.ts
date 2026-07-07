@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
     type TuiAppearanceOptions,
@@ -6,6 +7,7 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
@@ -18,5 +20,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    public readonly appearance = 'link';
+
+    public readonly appearance =
+        inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios' ? '' : 'action';
 }

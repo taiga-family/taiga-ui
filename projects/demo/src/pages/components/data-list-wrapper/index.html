@@ -29,28 +29,28 @@
                 tuiDocAPIItem
                 type="readonly T[] | ReadonlyArray<readonly T[]> | null"
             >
-                Items to select
+                items to select
             </tr>
             <tr
                 name="[itemContent]"
                 tuiDocAPIItem
                 type="PolymorpheusContent<TuiContext<T>>"
             >
-                Content of an item
+                content of an item
             </tr>
             <tr
                 name="[emptyContent]"
                 tuiDocAPIItem
                 type="PolymorpheusContent"
             >
-                Content to display when there are no options inside
+                content to display when there are no options inside
             </tr>
             <tr
                 name="[disabledItemHandler]"
                 tuiDocAPIItem
                 type="TuiBooleanHandler<T>"
             >
-                <div>A handler that gets an item and returns true if it is disabled.</div>
+                a handler that gets an item and returns true if it is disabled.
                 <strong>Must be a pure function</strong>
             </tr>
             <tr
@@ -58,21 +58,21 @@
                 tuiDocAPIItem
                 type="TuiSizeL | TuiSizeXS"
             >
-                Size of items
+                size of items
             </tr>
             <tr
                 name="[labels]"
                 tuiDocAPIItem
                 type="readonly string[]"
             >
-                Group label
+                group labels
             </tr>
             <tr
                 name="(itemClick)"
                 tuiDocAPIItem
                 type="T"
             >
-                Emits on click on item from datalist
+                emits on click on item from datalist
             </tr>
         </table>
     </ng-template>

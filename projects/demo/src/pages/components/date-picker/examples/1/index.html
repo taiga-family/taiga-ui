@@ -1,32 +1,43 @@
-<div tuiGroup>
-    <tui-textfield
-        tuiChevron
-        tuiTextfieldSize="s"
-        [tuiTextfieldCleaner]="false"
-    >
+<form
+    tuiForm
+    [formGroup]="form"
+>
+    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+        <label tuiLabel>Single date</label>
         <input
-            tuiSelect
-            [(ngModel)]="mode"
+            formControlName="single"
+            tuiInputDate
+            [max]="max"
+            [min]="min"
         />
-        <tui-data-list-wrapper
+        <tui-date-picker *tuiDropdown />
+    </tui-textfield>
+
+    <tui-textfield
+        multi
+        [disabledItemHandler]="disabledItemHandler"
+    >
+        <label tuiLabel>Multiple dates</label>
+        <input
+            formControlName="multi"
+            tuiInputDateMulti
+            [max]="max"
+            [min]="min"
+        />
+        <tui-date-picker *tuiDropdown />
+    </tui-textfield>
+
+    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+        <label tuiLabel>Date range</label>
+        <input
+            formControlName="range"
+            tuiInputDateRange
+            [max]="max"
+            [min]="min"
+        />
+        <tui-date-picker
             *tuiDropdown
-            [items]="modes"
+            mode="range"
         />
     </tui-textfield>
-    <button
-        size="s"
-        tuiButton
-        type="button"
-        (click)="value.set(null)"
-    >
-        Clear
-    </button>
-</div>
-<tui-date-picker
-    [disabledItemHandler]="disabledItemHandler"
-    [max]="max"
-    [min]="min"
-    [mode]="mode()"
-    [(value)]="value"
-/>
-<p>{{ value() | json }}</p>
+</form>

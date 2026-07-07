@@ -42,6 +42,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
     private readonly refresh$ = new Subject<void>();
     private readonly internal = signal(this.fallback);
+
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
 
@@ -50,7 +51,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = input(false);
-    public readonly pseudoInvalid = input<boolean | null>(null, {alias: 'invalid'});
+    public readonly pseudoInvalid = input<boolean | null>(undefined, {alias: 'invalid'});
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
@@ -59,7 +60,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     public readonly invalid = computed(() => {
         const pseudoInvalid = this.pseudoInvalid();
 
-        return pseudoInvalid === null
+        return pseudoInvalid == null
             ? this.interactive() && this.touched() && this.status() === 'INVALID'
             : pseudoInvalid && this.interactive();
     });

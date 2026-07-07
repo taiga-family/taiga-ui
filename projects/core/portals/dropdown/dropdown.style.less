@@ -22,6 +22,8 @@
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiSlide;
+        animation-duration: @tui-duration-fast;
+        pointer-events: none;
     }
 
     &:not([style*='top']) {

@@ -1,6 +1,11 @@
 import {Directive, inject, Injectable, input} from '@angular/core';
-import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
+import {
+    tuiAsPortal,
+    TuiPortalDirective,
+    type TuiPortalService,
+} from '@taiga-ui/cdk/portals';
 import {TuiAlertService} from '@taiga-ui/core/portals/alert';
+import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 
 import {TuiNotificationComponent} from './notification.component';
 import {
@@ -9,13 +14,18 @@ import {
     type TuiNotificationOptions,
 } from './notification.options';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+    providedIn: 'root',
+    deps: [TuiPopupService],
+    useClass: TuiNotificationService,
+})
 export class TuiNotificationService extends TuiAlertService<TuiNotificationOptions<any>> {
     protected override readonly options = inject(TUI_NOTIFICATION_OPTIONS);
     protected override readonly component = TuiNotificationComponent;
 
-    constructor() {
-        super(inject(TUI_NOTIFICATION_CONCURRENCY));
+    // eslint-disable-next-line @angular-eslint/prefer-inject
+    constructor(service: TuiPortalService) {
+        super(inject(TUI_NOTIFICATION_CONCURRENCY), service);
     }
 }
 

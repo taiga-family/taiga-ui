@@ -49,6 +49,8 @@ export default class PageComponent {
         'HH:MM:SS.MSS',
         'HH:MM:SS.MSS AA',
         'MM:SS',
+        'MM:SS.MSS',
+        'SS.MSS',
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected readonly acceptVariants = [

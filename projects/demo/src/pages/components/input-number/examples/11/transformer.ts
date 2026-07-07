@@ -17,7 +17,7 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
         const {decimalSeparator} = params;
 
         const significand = maskitoParseNumber(
-            textfieldValue?.replace(decimalSeparator, '') ?? '',
+            textfieldValue?.replaceAll(decimalSeparator, '') ?? '',
             {
                 ...params,
                 bigint: true,
@@ -47,10 +47,12 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
 
         const integer = maskitoStringifyNumber(
             BigInt(String(significand).slice(0, exp || Infinity)),
-            {...params, postfix: ''},
+            {...params, postfix: '', maximumFractionDigits: 0},
         );
 
-        const decimal = exp ? String(significand).slice(exp) : '';
+        const decimal = exp
+            ? String(significand).padStart(Math.abs(exp), '0').slice(exp)
+            : '';
 
         return `${integer}${decimal && params.decimalSeparator + decimal}${params.postfix}`;
     }

@@ -10,6 +10,7 @@ describe('ComboBox', () => {
     describe('API', () => {
         let example!: Locator;
         let value!: Locator;
+        let submit!: Locator;
         let comboBox!: TuiComboBoxPO;
 
         beforeEach(({page}) => {
@@ -17,6 +18,7 @@ describe('ComboBox', () => {
 
             example = documentationPage.demo;
             value = documentationPage.value;
+            submit = documentationPage.submitFormControlButton;
             comboBox = new TuiComboBoxPO(
                 example.locator('tui-textfield:has([tuiComboBox])'),
             );
@@ -156,6 +158,30 @@ describe('ComboBox', () => {
             await comboBox.textfield.press('Backspace');
             await expect(comboBox.textfield).toHaveValue('Austri');
             await expect(value).toContainText('"value": null');
+        });
+
+        describe('updateOn=submit', () => {
+            test('displays selected option immediately, but updates control value only on submit', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.ComboBox}/API?sandboxExpanded=true&updateOn=submit`,
+                );
+
+                await comboBox.textfield.fill('austri');
+                await comboBox.dropdown
+                    .locator('[tuiOption]', {hasText: 'Austria'})
+                    .click();
+
+                await expect(comboBox.textfield).toHaveValue('Austria');
+                await expect(value).toContainText('"value": null');
+
+                await submit.click();
+
+                await expect(value).toContainText('"id": "AT"');
+                await expect(value).toContainText('"name": "Austria"');
+            });
         });
     });
 
@@ -379,6 +405,22 @@ describe('ComboBox', () => {
                 await comboBox.textfield.blur();
 
                 await expect(comboBox.textfield).toHaveValue('Afghanistan');
+            });
+
+            test('paste of exact value', async ({page}) => {
+                // Fill with value that is not in first 20 options
+                await comboBox.textfield.fill('Russia');
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
+
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: 'Russia'}),
+                ).not.toBeAttached();
+
+                await comboBox.textfield.blur();
+                await page.waitForTimeout(100);
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
             });
         });
     });

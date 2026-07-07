@@ -1,46 +1,73 @@
-/// <reference lib="es2021" />
 import fs from 'node:fs';
 import path from 'node:path';
 
 import {prepareSvg} from '../../../scripts/prepare-svg';
 
 const verbose = !process.env.CI;
-const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');
-const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 'src');
+const workspaceRoot = process.cwd();
+const projectRoot = path.resolve(__dirname, '..');
+const lucideSrc = path.join(workspaceRoot, 'node_modules', 'lucide-static', 'icons');
 
-fs.readdirSync(src).forEach((filename: string) => {
-    const filledFilename = renameToFilled(filename);
+const flagsSrc = path.join(
+    workspaceRoot,
+    'node_modules',
+    '@taiga-ui',
+    'design-tokens',
+    'icons',
+    'flags',
+);
 
-    const content = prepareSvg(
-        fs.readFileSync(path.join(src, filename), 'utf-8'),
-    ).replace('stroke-width="2"', 'stroke-width="calc((100vw - 100vh) / 10)"');
+const assetsSrc = path.join(projectRoot, 'assets');
 
-    const filled = content.replaceAll('fill="none"', 'fill="currentColor"');
-    const filePath = path.join(dest, filename);
-    const fileFilledPath = path.join(dest, filledFilename);
+const dest = process.argv[2]
+    ? path.resolve(process.argv[2])
+    : path.join(projectRoot, 'src');
 
-    fs.writeFileSync(filePath, content);
-    verbose && console.info('copied:', filePath);
+prepareDest(dest);
+copyLucideIcons({src: lucideSrc, dest});
+copyDirectory({src: assetsSrc, dest});
+copyDirectory({src: flagsSrc, dest: path.join(dest, 'flags')});
 
-    fs.writeFileSync(fileFilledPath, filled);
-    verbose && console.info('copied:', fileFilledPath);
-});
+function prepareDest(dest: string): void {
+    fs.rmSync(dest, {recursive: true, force: true});
+    fs.mkdirSync(dest, {recursive: true});
+}
 
-// 2. copy flags from design tokens
-// noinspection DuplicatedCode
-const flagsDir = path.resolve('node_modules/@taiga-ui/design-tokens/icons/flags');
+function copyLucideIcons(options: {src: string; dest: string}): void {
+    fs.readdirSync(options.src).forEach((filename) => {
+        const content = prepareSvg(
+            fs.readFileSync(path.join(options.src, filename), 'utf-8'),
+        ).replaceAll('stroke-width="2"', 'stroke-width="calc((100vw - 100vh) / 10)"');
 
-fs.readdirSync(flagsDir).forEach((filename: string) => {
-    const content = fs.readFileSync(path.join(flagsDir, filename), 'utf-8');
-    const filePath = path.join(dest, 'flags', filename);
+        writeFile(path.join(options.dest, filename), content);
+        writeFile(
+            path.join(options.dest, renameToFilled(filename)),
+            getFilledIcon(content),
+        );
+    });
+}
 
+function copyDirectory(options: {src: string; dest: string}): void {
+    if (!fs.existsSync(options.src)) {
+        return;
+    }
+
+    fs.cpSync(options.src, options.dest, {recursive: true});
+
+    verbose && console.info('copied:', options.src);
+}
+
+function writeFile(filePath: string, content: string): void {
     fs.mkdirSync(path.dirname(filePath), {recursive: true});
     fs.writeFileSync(filePath, content);
+
     verbose && console.info('copied:', filePath);
-});
+}
+
+function getFilledIcon(content: string): string {
+    return content.replaceAll('fill="none"', 'fill="currentColor"');
+}
 
 function renameToFilled(filename: string): string {
-    const [name, extension] = filename.split('.');
-
-    return `${name}-filled.${extension}`;
+    return filename.replace(/\.svg$/, '-filled.svg');
 }

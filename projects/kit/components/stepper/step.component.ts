@@ -29,6 +29,7 @@ import {TuiStepperComponent} from './stepper.component';
 })
 export class TuiStep {
     private readonly el = tuiInjectElement();
+
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected readonly appearance = tuiAppearance(

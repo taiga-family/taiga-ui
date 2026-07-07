@@ -13,7 +13,7 @@
         type="boolean"
         [(value)]="cleaner"
     >
-        Shows a cross to reset a value
+        shows a cross to reset a value
     </tr>
 }
 @if (!hiddenOptions().includes('size')) {
@@ -24,16 +24,14 @@
         [items]="sizeVariants"
         [(value)]="size"
     >
-        Size
+        size of the textfield.
         <p>
             <strong>
                 Don't use
                 <code>label[tuiLabel]</code>
                 inside
                 <code>s</code>
-                - size
-                <code>&lt;tui-textfield /&gt;</code>
-                !
+                - size textfield.
             </strong>
             <br />
             Use outside label or
@@ -50,7 +48,7 @@
         type="number"
         [(value)]="rows"
     >
-        Maximum number of rows
+        maximum number of rows
     </tr>
 }
 
@@ -62,7 +60,7 @@
         [items]="contentVariants()"
         [(value)]="content"
     >
-        A template for custom view of textfield value.
+        a template for custom view of textfield value.
 
         <p>
             We strongly recommend to unset this property on focus – otherwise, it breaks UX on attempt to edit field by

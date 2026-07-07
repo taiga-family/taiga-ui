@@ -729,7 +729,7 @@ async function main(): Promise<void> {
 
     logProcessingSummary(allFolders.length, stats);
 
-    await fs.writeFile(cliOptions.output, output.join('\n'), 'utf-8');
+    await fs.writeFile(cliOptions.output, output.join('\n'));
     await fs.writeFile(
         cliOptions.outputHtml!,
         `<!doctype html>
@@ -745,7 +745,6 @@ async function main(): Promise<void> {
   </main>
 </body>
 </html>`,
-        'utf-8',
     );
 
     console.info(`Successfully saved: ${cliOptions.output}`);

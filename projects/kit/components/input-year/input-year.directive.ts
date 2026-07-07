@@ -1,7 +1,8 @@
 import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoNumberOptionsGenerator} from '@maskito/kit';
+import {maskitoNumber} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
@@ -57,7 +58,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoNumberOptionsGenerator({
+            maskitoNumber({
                 min: this.min(),
                 max: this.max(),
                 thousandSeparator: '',
@@ -85,8 +86,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = input(this.options.min.year);
-    public readonly max = input(this.options.max.year);
+    public readonly min = input((this.options.min ?? TUI_FIRST_DAY).year);
+    public readonly max = input((this.options.max ?? TUI_LAST_DAY).year);
 
     protected toggle(): void {
         if (this.interactive()) {

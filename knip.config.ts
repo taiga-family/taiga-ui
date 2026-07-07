@@ -7,7 +7,6 @@ const config: KnipConfig = {
         '@taiga-ui/.+',
         '@ng-web-apis/.+',
         '@maskito/.+',
-        'libphonenumber-js',
         'ts-morph',
         'jest',
     ],
@@ -43,7 +42,6 @@ const config: KnipConfig = {
         '**/app/getting-started/index.ts',
         '**/testing/visual-testing/**/*.ts',
         '**/projects/cdk/date-time/test/helpers.ts',
-        '**/demo/src/pages/components/icons-group/*.ts',
         '**/demo/src/pages/components/data-list/examples/4/custom-list/index.ts',
     ],
     workspaces: {

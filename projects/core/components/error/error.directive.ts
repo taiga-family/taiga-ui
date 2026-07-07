@@ -17,7 +17,10 @@ import {
     type Validator,
 } from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
+import {type TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {
@@ -25,7 +28,14 @@ import {
     type PolymorpheusContent,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, startWith, Subject, switchMap} from 'rxjs';
+import {
+    BehaviorSubject,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
 import {TuiErrorComponent} from './error.component';
 
@@ -36,13 +46,20 @@ import {TuiErrorComponent} from './error.component';
         tuiProvide(NG_VALUE_ACCESSOR, TuiErrorDirective, true),
         tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),
     ],
+    hostDirectives: [TuiId],
+    host: {
+        'aria-live': 'polite',
+        '(document:tui-validator.zoneless)': 'onValidator($event.detail)',
+    },
 })
 export class TuiErrorDirective implements ControlValueAccessor, Validator {
+    private readonly el = tuiInjectElement();
     private readonly content = inject(TUI_VALIDATION_ERRORS);
-    private readonly control = new Subject<AbstractControl>();
+    private readonly control = new BehaviorSubject<AbstractControl | null>(null);
 
     private readonly errors = toSignal(
         this.control.pipe(
+            filter(Boolean),
             distinctUntilChanged(),
             switchMap((control) =>
                 control.events.pipe(
@@ -71,12 +88,21 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
     );
 
     public registerOnChange(): void {}
+
     public registerOnTouched(): void {}
+
     public writeValue(): void {}
+
     public validate(control: AbstractControl): ValidationErrors | null {
         this.control.next(control);
 
         return null;
+    }
+
+    protected onValidator(validator: TuiNativeValidator): void {
+        if (this.control.value && validator.control === this.control.value) {
+            validator.id = this.el.id;
+        }
     }
 
     private getError(

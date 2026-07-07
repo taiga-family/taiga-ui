@@ -17,9 +17,9 @@ jobs:
     name: Add dist-tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/node@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
-      - uses: taiga-family/ci/actions/setup/config/npm@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: taiga-family/actions/setup-node@a12b79beab3aea8bd840e48e902a2084d282e1a6 # v2.5.0
+      - uses: taiga-family/actions/setup-npm@a12b79beab3aea8bd840e48e902a2084d282e1a6 # v2.5.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 

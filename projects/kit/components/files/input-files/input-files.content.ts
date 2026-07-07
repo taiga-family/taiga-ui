@@ -20,6 +20,7 @@ import {TuiInputFiles} from './input-files.component';
 export class TuiInputFilesContent {
     private readonly texts = inject(TUI_INPUT_FILE_TEXTS);
     private readonly component = inject(TuiInputFiles);
+
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly context = injectContext<TuiContext<boolean>>();
 

@@ -16,6 +16,7 @@ import {
     withInMemoryScrolling,
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
+import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -35,6 +36,7 @@ import {
     tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
+    TuiViewportScroller,
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
@@ -46,10 +48,12 @@ import {
     TUI_HINT_OPTIONS,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
+import {TUI_POPOUT_CONFIG} from '@taiga-ui/experimental';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {provideHighlightOptions} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
 
+import {TUI_PLATFORM_KEY} from '../../components/settings/platform-key';
 import {AuthService} from '../components/dialog/examples/5/service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
@@ -59,7 +63,6 @@ import {pages} from './pages';
 import {SEARCH_CONFIG} from './search/env';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
-import {TuiViewportScroller} from './utils/viewport-scroller.service';
 
 export const config: ApplicationConfig = {
     providers: [
@@ -80,7 +83,11 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_PLATFORM,
-            useValue: 'web',
+            useFactory: () => {
+                const stored = inject(WA_LOCAL_STORAGE)?.getItem(TUI_PLATFORM_KEY);
+
+                return stored === 'ios' || stored === 'android' ? stored : 'web';
+            },
         },
         provideHighlightOptions({
             coreLibraryLoader: async () => import('highlight.js/lib/core'),
@@ -271,6 +278,10 @@ export const config: ApplicationConfig = {
             }
         }),
         provideExperimentalZonelessChangeDetection(),
+        {
+            provide: TUI_POPOUT_CONFIG,
+            useValue: {providers: [provideExperimentalZonelessChangeDetection()]},
+        },
         {
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () =>

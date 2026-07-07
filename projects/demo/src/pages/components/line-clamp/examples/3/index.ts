@@ -2,11 +2,10 @@ import {ChangeDetectorRef, Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiLineClamp, WaResizeObserver],
+    imports: [TuiLineClamp],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -15,6 +14,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 export default class Example {
     private readonly win = inject(WA_WINDOW);
     private readonly cdr = inject(ChangeDetectorRef);
+
     protected lineHeight = Number.NaN;
     protected lineLimit = Number.NaN;
 

@@ -96,6 +96,8 @@ export const DemoRoute = {
     InputPhoneInternational: '/components/input-phone-international',
     InputPin: '/components/input-pin',
     InputYear: '/components/input-year',
+    File: '/components/file',
+    Pincode: '/components/pincode',
     ItemsWithMore: '/components/items-with-more',
     Label: '/components/label',
     LineClamp: '/components/line-clamp',

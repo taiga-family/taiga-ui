@@ -287,6 +287,13 @@ export const pages: DocRoutePages = [
                     'поле, инпут, форма, ввод, input, month, месяц, год, дата, day, week, month, year',
                 route: DemoRoute.CalendarMonth,
             },
+            {
+                section: 'Components',
+                title: 'DatePicker',
+                keywords:
+                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker, date, day, week, month, year',
+                route: DemoRoute.DatePicker,
+            },
         ],
     },
     {
@@ -295,7 +302,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {figmaVersion: '1.8.0'},
+        meta: {figmaVersion: '1.8.1'},
     },
     {
         section: 'Components',
@@ -467,6 +474,12 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.HintPointer,
             },
         ],
+    },
+    {
+        section: 'Components',
+        title: 'File',
+        keywords: 'File, uploader',
+        route: DemoRoute.File,
     },
     {
         section: 'Components',
@@ -868,6 +881,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Form',
+                title: 'Pincode',
+                keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
+                route: DemoRoute.Pincode,
+            },
+            {
+                section: 'Form',
                 title: 'InputTime',
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
@@ -1028,7 +1047,7 @@ export const pages: DocRoutePages = [
         keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
-            {name: 'tui-cell', figmaVersion: '1.3.1'},
+            {name: 'tui-cell', figmaVersion: '1.4.0'},
             {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
             {name: 'tui-button-cell', figmaVersion: '1.0.1'},
             {name: 'list-item', scheme: 'beaver'},
@@ -1087,7 +1106,7 @@ export const pages: DocRoutePages = [
         title: 'Header',
         keywords: 'header, заголовок, item, tuiAccessories, accessories',
         route: DemoRoute.Header,
-        meta: {},
+        meta: {figmaVersion: '1.2.0'},
     },
     {
         section: 'Components',
@@ -1132,7 +1151,7 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {name: 'tui-card-medium'},
+                meta: {name: 'tui-card-medium', figmaVersion: '1.0.2'},
             },
             {
                 section: 'Layout',

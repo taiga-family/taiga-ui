@@ -13,8 +13,10 @@
 }
 
 [data-platform='ios'] {
+    @import 'ios/app-bar.less';
     @import 'ios/checkbox.less';
     @import 'ios/switch.less';
+    @import 'ios/thumbnail-card.less';
 
     tui-segmented > *:not(tui-segmented_active):active {
         background-color: var(--tui-background-neutral-1);
@@ -42,8 +44,10 @@
     @import 'common/title.less';
     @import 'common/card-large.less';
     @import 'common/chip.less';
+    @import 'common/file.less';
     @import 'common/segmented.less';
     @import 'common/header.less';
+    @import 'common/hint.less';
     @import 'common/message.less';
     @import 'common/notification.less';
     @import 'common/notification-middle.less';

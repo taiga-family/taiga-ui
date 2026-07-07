@@ -4,6 +4,12 @@ import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
 
 import {CustomPortalService} from './service';
 
+/**
+ * Put me inside TuiRoot:
+ * <tui-root>
+ *     <custom-host ngProjectAs="tuiOverContent" />
+ * </tui-root>
+ */
 @Component({
     selector: 'custom-host',
     imports: [TuiVCR],

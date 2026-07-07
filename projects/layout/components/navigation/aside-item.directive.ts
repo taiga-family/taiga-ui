@@ -54,6 +54,7 @@ export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
     protected readonly icons = inject(TuiIcons);
     protected readonly link = inject(RouterLink, {self: true, optional: true});
     protected readonly active = toSignal(inject(RouterLinkActive).isActiveChange);
+
     public readonly size = 's';
 }
 

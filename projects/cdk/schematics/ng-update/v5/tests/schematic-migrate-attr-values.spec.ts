@@ -343,7 +343,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for currencyAlign on tuiAmountOptionsProvider',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiAmountOptionsProvider} from '@taiga-ui/addon-commerce';
 
                 tuiAmountOptionsProvider({currencyAlign: 'left'});
@@ -359,7 +359,7 @@ describe('ng-update start/end instead of left/right', () => {
     it(
         'replaces for align on tuiDropdownOptionsProvider',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 
                 tuiDropdownOptionsProvider({align: 'left'});
@@ -372,9 +372,29 @@ describe('ng-update start/end instead of left/right', () => {
     );
 
     it(
+        'replaces for direction array on tuiHintOptionsProvider',
+        migrate({
+            component: /* TypeScript */ `
+                import {tuiHintOptionsProvider} from '@taiga-ui/core';
+
+                tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']});
+                tuiHintOptionsProvider({
+                    direction: [
+                        'bottom-left',
+                        'bottom',
+                        'bottom-right',
+                        'left',
+                        'right-top',
+                    ],
+                });
+            `,
+        }),
+    );
+
+    it(
         'replaces for direction on tuiHintOptionsProvider',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiHintOptionsProvider} from '@taiga-ui/core';
 
                 tuiHintOptionsProvider({direction: 'bottom-left'});

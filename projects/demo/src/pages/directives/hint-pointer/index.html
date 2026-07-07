@@ -33,7 +33,7 @@
                 tuiDocAPIItem
                 type="PolymorpheusContent"
             >
-                Hint content
+                content of the hint
             </tr>
             <tr
                 name="[tuiHintShowDelay]"
@@ -41,7 +41,7 @@
                 type="number"
                 [(value)]="showDelay"
             >
-                Show delay (ms)
+                show delay in milliseconds
             </tr>
             <tr
                 name="[tuiHintHideDelay]"
@@ -49,11 +49,12 @@
                 type="number"
                 [(value)]="hideDelay"
             >
-                Hide delay (ms)
+                hide delay in milliseconds
             </tr>
             <tbody
                 #hint
                 tuiDocHint
+                [hiddenOptions]="['centered']"
             ></tbody>
         </table>
     </ng-template>

@@ -21,4 +21,8 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         inputName: 'tuiDirectionOrder',
         tags: ['table'],
     },
+    {
+        inputName: 'rounded',
+        tags: ['tui-accordion'],
+    },
 ];

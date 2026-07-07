@@ -7,14 +7,14 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
+    maskitoNumber,
     maskitoRemoveOnBlurPlugin,
 } from '@maskito/kit';
 import {TuiButtonX, TuiInput} from '@taiga-ui/core';
 
 const postfix = ' rad';
 
-const numberOptions = maskitoNumberOptionsGenerator({
+const numberOptions = maskitoNumber({
     postfix,
     decimalSeparator: ',',
     maximumFractionDigits: 8,

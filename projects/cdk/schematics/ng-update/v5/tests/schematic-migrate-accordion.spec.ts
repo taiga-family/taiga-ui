@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update accordion item', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {TuiAccordion} from '@taiga-ui/experimental';
 
             @Component({
@@ -86,6 +86,30 @@ describe('ng-update accordion item', () => {
                         <p>NOBODY expects the Spanish Inquisition!</p>
                     </ng-template>
                 </tui-expand>
+            `,
+        }),
+    );
+
+    it(
+        'removes deprecated [rounded] attribute from tui-accordion',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion [rounded]="false">
+                    <tui-accordion-item [open]="true">
+                        Output
+
+                        <ng-template tuiAccordionItemContent>
+                            <pre><code>{{ group.value | json }}</code></pre>
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+
+                <tui-accordion rounded="false">
+                    <tui-accordion-item>
+                        Item
+                        <ng-template tuiAccordionItemContent>Content</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
             `,
         }),
     );

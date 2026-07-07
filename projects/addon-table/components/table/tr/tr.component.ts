@@ -10,7 +10,7 @@ import {
 
 import {TuiTableCell} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TuiTableTbody} from '../tbody/tbody.component';
+import {TuiTableTbodyDirective} from '../tbody/tbody.component';
 import {TuiTableTd} from '../td/td.component';
 
 @Component({
@@ -24,7 +24,9 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>> {
         forwardRef(() => TuiTableCell),
     );
 
-    private readonly body = inject<TuiTableTbody<T>>(forwardRef(() => TuiTableTbody));
+    private readonly body = inject<TuiTableTbodyDirective<T>>(
+        forwardRef(() => TuiTableTbodyDirective),
+    );
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),

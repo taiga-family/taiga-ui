@@ -21,6 +21,7 @@ export default class Page {
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
+
     protected readonly exampleComponent = import('./examples/import/component.md');
 
     protected readonly examples = [

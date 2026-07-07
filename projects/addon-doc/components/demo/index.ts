@@ -100,6 +100,7 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly darkMode = inject(TUI_DARK_MODE);
+
     protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
     protected readonly rendered = signal(false);
     protected readonly theme = computed(() => (this.dark() ? 'dark' : 'light'));
@@ -123,6 +124,7 @@ export class TuiDocDemo implements AfterViewInit {
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = Number.parseInt(this.params.sandboxWidth, 10);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+
     public readonly control = input<AbstractControl | null>(null);
     public readonly sticky = input(true);
 

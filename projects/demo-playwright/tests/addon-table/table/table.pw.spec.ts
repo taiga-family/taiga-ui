@@ -94,32 +94,32 @@ test.describe('Table', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#custom');
         const checkboxes = await example.locator('input[type="checkbox"]').all();
 
-        checkboxes[1]?.click();
+        checkboxes.at(1)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-1.png');
 
-        checkboxes[2]?.click();
+        checkboxes.at(2)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-2.png');
 
-        checkboxes[3]?.click();
+        checkboxes.at(3)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-3.png');
 
-        checkboxes[3]?.click();
+        checkboxes.at(3)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-4.png');
 
-        checkboxes[0]?.click();
+        checkboxes.at(0)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-5.png');
 
-        checkboxes[0]?.click();
+        checkboxes.at(0)?.click();
 
         await page.waitForTimeout(100);
         await expect.soft(example).toHaveScreenshot('02-checkboxes-6.png');

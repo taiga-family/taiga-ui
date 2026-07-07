@@ -15,6 +15,7 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly alerts = inject(TuiNotificationService);
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';

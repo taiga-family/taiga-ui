@@ -28,8 +28,6 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
                 class="t-check"
                 [size]="datalist.size() === 'l' ? 'm' : 's'"
             />
-        } @else {
-            <span class="t-dummy"></span>
         }
     `,
     styleUrl: './select-option.style.less',
@@ -44,6 +42,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 export class TuiSelectOption<T> {
     private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly value = tuiInjectValue<T>();
+
     protected readonly datalist = inject(TuiDataListComponent);
     protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
 

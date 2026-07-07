@@ -22,12 +22,24 @@ import {
     TUI_BREAKPOINT,
     TUI_REDUCED_MOTION,
 } from '@taiga-ui/core/tokens';
-import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+import {
+    TUI_LIQUID_GLASS,
+    TUI_OPTIONS,
+    tuiGetDuration,
+} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     selector: 'tui-root',
     imports: [TuiPopups, TuiScrollControls],
-    templateUrl: './root.template.html',
+    template: `
+        <div class="t-root-content"><ng-content /></div>
+        @if (top()) {
+            @if (scrollbars) {
+                <tui-scroll-controls class="t-root-scrollbar" />
+            }
+            <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
+        }
+    `,
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -36,6 +48,7 @@ import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',
+        '[class.tui-liquid-glass]': 'liquidGlass',
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -47,10 +60,12 @@ export class TuiRoot {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly child = !!inject(TuiRoot, {optional: true, skipSelf: true});
+
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
+    protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
 
     protected readonly scrollbars =
         !inject(WA_IS_MOBILE) &&

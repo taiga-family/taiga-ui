@@ -24,6 +24,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
     private readonly months = inject(TUI_MONTHS);
+
     protected readonly maxLength: TuiDayLike = {month: 12};
 
     protected readonly range = signal(

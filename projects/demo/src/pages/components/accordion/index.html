@@ -67,7 +67,7 @@
                 type="boolean"
                 [(value)]="closeOthers"
             >
-                Other sections are closed when user opens one
+                close other sections when user opens one
             </tr>
             <tr
                 name="[size]"
@@ -75,16 +75,14 @@
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[(tuiAccordion)]"
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="open"
             >
-                Individual item open state
+                individual item open state
             </tr>
         </table>
     </ng-template>

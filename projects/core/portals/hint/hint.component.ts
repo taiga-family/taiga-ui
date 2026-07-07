@@ -3,10 +3,10 @@ import {
     Component,
     forwardRef,
     inject,
+    type Provider,
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -33,17 +33,21 @@ import {TuiHintPointer} from './hint-pointer.directive';
 import {TuiHintPosition} from './hint-position.directive';
 import {TuiHintUnstyledComponent} from './hint-unstyled.component';
 
-export const TUI_HINT_PROVIDERS = [
-    TuiPositionService,
-    TuiHoveredService,
-    tuiPositionAccessorFor('hint', TuiHintPosition),
-    tuiRectAccessorFor(
-        'hint',
-        forwardRef(() => TuiHintDirective),
-    ),
-];
+/** @internal */
+export function tuiGetHintProviders(): Provider[] {
+    return [
+        TuiPositionService,
+        TuiHoveredService,
+        tuiPositionAccessorFor('hint', TuiHintPosition),
+        tuiRectAccessorFor(
+            'hint',
+            forwardRef(() => TuiHintDirective),
+        ),
+    ];
+}
 
 const GAP = 8;
+const ARROW_OFFSET = 22;
 
 @Component({
     selector: 'tui-hint',
@@ -57,12 +61,11 @@ const GAP = 8;
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
+    providers: [tuiGetHintProviders(), tuiButtonOptionsProvider({size: 's'})],
     hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
     host: {
         role: 'tooltip',
         '[attr.tuiTheme]': 'theme',
-        '[class._mobile]': 'isMobile',
         '[class._untouchable]': 'pointer',
         '(document:click)': 'onClick($event.target)',
     },
@@ -72,10 +75,10 @@ export class TuiHintComponent {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
+
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
-    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     protected readonly content =
         this.hint.component.component === TuiHintUnstyledComponent
@@ -91,13 +94,17 @@ export class TuiHintComponent {
     constructor() {
         inject(TuiPositionService)
             .pipe(
-                takeWhile(() => this.hint.el.isConnected),
+                takeWhile(
+                    () =>
+                        this.hint.el.isConnected &&
+                        !!this.hint.el.getBoundingClientRect().height,
+                ),
                 map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe({
                 next: (point) => this.update(...point),
-                complete: () => this.hover.close(),
+                complete: () => this.hint.toggle(false),
             });
 
         inject(TuiHoveredService)
@@ -126,6 +133,15 @@ export class TuiHintComponent {
     }
 
     private update(left: number, top: number): void {
+        if (
+            this.el.getAnimations?.().length &&
+            this.el
+                .getAnimations?.()
+                .every(({effect}) => effect?.getComputedTiming().progress !== null)
+        ) {
+            return;
+        }
+
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
 
@@ -141,16 +157,25 @@ export class TuiHintComponent {
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
-        const [beakTop, beakLeft] = this.vvs.correct([
-            rect.top + rect.height / 2 - top,
+        const startX = Math.round(safeLeft) === Math.round(rect.left);
+        const startY = Math.round(top) === Math.round(rect.top);
+        const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
+        const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
+
+        const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
+            rect.top + rect.height / 2 - top,
         ]);
+
+        /* eslint-disable no-nested-ternary */
+        const x = startX ? ARROW_OFFSET : endX ? clientWidth - ARROW_OFFSET : beakLeft;
+        const y = startY ? ARROW_OFFSET : endY ? clientHeight - ARROW_OFFSET : beakTop;
 
         this.apply(
             tuiPx(Math.round(top)),
             tuiPx(Math.round(safeLeft)),
-            Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
-            Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
+            Math.round((tuiClamp(y, 0, clientHeight) / clientHeight) * 100),
+            Math.round((tuiClamp(x, 0, clientWidth) / clientWidth) * 100),
         );
     }
 }

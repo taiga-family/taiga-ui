@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
+import {type TuiSizeS, type TuiSizeXL, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
+    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -39,7 +39,7 @@ export default class Page {
     protected readonly examples = [
         'Basic',
         'Sizes',
-        'Content type (mobile platform)',
+        'Content type',
         'Long value',
         'Customization',
         'Options with DI',

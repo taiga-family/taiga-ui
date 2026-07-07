@@ -112,7 +112,15 @@ export class TuiTime implements TuiTimeLike {
     }
 
     /**
-     * Parses string into TuiTime object
+     * @deprecated Use `TuiTime.fromAbsoluteMilliseconds` + `maskitoParseTime` instead
+     * ```ts
+     * const params: MaskitoTimeParams = {mode: '...'};
+     *
+     * TuiTime.fromAbsoluteMilliseconds(
+     *     maskitoParseTime(x, params)
+     * ) // TuiTime
+     * ```
+     * TODO(v6): delete
      */
     public static fromString(time: string): TuiTime {
         const hours = this.parseHours(time);

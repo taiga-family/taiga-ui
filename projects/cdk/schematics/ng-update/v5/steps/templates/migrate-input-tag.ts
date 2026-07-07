@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
@@ -16,6 +17,7 @@ import {
 } from '../../../utils/templates/control-state-attrs';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
+import {buildTuiIconStr} from './migrate-hint-on-legacy-controls';
 
 type TextNode = DefaultTreeAdapterTypes.TextNode;
 
@@ -23,7 +25,25 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+type Attribute = Element['attrs'][number];
+
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-chip';
+
+const HINT_ATTRS = new Set(
+    [
+        '[tuiHintAppearance]',
+        '[tuiHintContent]',
+        '[tuiHintDirection]',
+        'tuiHintAppearance',
+        'tuiHintContent',
+        'tuiHintDirection',
+    ].map((name) => name.toLowerCase()),
+);
+
+const LABEL_OUTSIDE_ATTRS = new Set([
+    '[tuiTextfieldLabelOutside]'.toLowerCase(),
+    'tuiTextfieldLabelOutside'.toLowerCase(),
+]);
 
 const INPUT_ATTR_RENAMES = new Map<string, string>([
     ['[maxLength]'.toLowerCase(), '[maxlength]'],
@@ -76,6 +96,18 @@ export function migrateInputTag({
 
     elements.forEach((element: Element) => {
         const sourceCodeLocation = element.sourceCodeLocation;
+
+        if (sourceCodeLocation?.startTag && !sourceCodeLocation.endTag) {
+            migrateSelfClosingInputTag({
+                element,
+                template,
+                recorder,
+                templateOffset,
+                resource,
+            });
+
+            return;
+        }
 
         replaceTag(
             recorder,
@@ -218,12 +250,184 @@ export function migrateInputTag({
         }, '');
 
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
+        const itemChip = isLabelOutsideTrue ? '<tui-input-chip *tuiItem />\n' : '';
 
         recorder.insertRight(
             insertOffset,
-            `\n<input tuiInputChip${migrationAttrs}${placeholderAttr} />\n`,
+            `\n<input tuiInputChip${migrationAttrs}${placeholderAttr} />\n${itemChip}`,
         );
     });
+}
+
+function getOriginalAttrText(
+    template: string,
+    element: Element,
+    attrNameLower: string,
+): string | null {
+    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
+
+    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
+}
+
+function migrateSelfClosingInputTag({
+    element,
+    template,
+    recorder,
+    templateOffset,
+    resource,
+}: {
+    element: Element;
+    recorder: UpdateRecorder;
+    template: string;
+    templateOffset: number;
+    resource: TemplateResource;
+}): void {
+    const loc = element.sourceCodeLocation;
+
+    if (!loc?.startTag) {
+        return;
+    }
+
+    const controlStateAttrs = getControlStateAttrs(element);
+
+    const controlStateLower = new Set(
+        controlStateAttrs.map((attr) => attr.name.toLowerCase()),
+    );
+
+    const inputAttrParts: string[] = [];
+    const wrapperAttrParts: string[] = [];
+    const todoAttrs: Attribute[] = [];
+    let hasHintContent = false;
+    let labelOutsideIsDynamic = false;
+    let labelOutsideIsTrue = false;
+
+    for (const attr of element.attrs) {
+        const nameLower = attr.name.toLowerCase();
+
+        if (controlStateLower.has(nameLower)) {
+            continue;
+        }
+
+        if (HINT_ATTRS.has(nameLower)) {
+            hasHintContent ||=
+                nameLower === '[tuihintcontent]' || nameLower === 'tuihintcontent';
+            continue;
+        }
+
+        if (LABEL_OUTSIDE_ATTRS.has(nameLower)) {
+            const value = attr.value.trim();
+            const isBinding = nameLower.startsWith('[');
+            const isLabelOutsideTrue = value === 'true' || (!isBinding && value === '');
+
+            labelOutsideIsTrue = isLabelOutsideTrue;
+            labelOutsideIsDynamic =
+                !isLabelOutsideTrue && value !== 'false' && value !== '';
+            continue;
+        }
+
+        if (DROPPED_ATTRS.has(nameLower)) {
+            continue;
+        }
+
+        if (TODO_ATTRS.has(nameLower)) {
+            todoAttrs.push(attr);
+            continue;
+        }
+
+        if (/formcontrol|ngmodel/.exec(nameLower)) {
+            const name = normalizeAttrName(attr.name);
+
+            inputAttrParts.push(attr.value ? `${name}="${attr.value}"` : name);
+            continue;
+        }
+
+        const inputRename = INPUT_ATTR_RENAMES.get(nameLower);
+
+        if (inputRename) {
+            inputAttrParts.push(
+                attr.value ? `${inputRename}="${attr.value}"` : inputRename,
+            );
+            continue;
+        }
+
+        const textfieldRename = TEXTFIELD_ATTR_RENAMES.get(nameLower);
+
+        if (textfieldRename) {
+            wrapperAttrParts.push(
+                attr.value ? `${textfieldRename}="${attr.value}"` : textfieldRename,
+            );
+            continue;
+        }
+
+        const original = getOriginalAttrText(template, element, nameLower);
+
+        wrapperAttrParts.push(
+            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
+        );
+    }
+
+    const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
+    const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
+
+    const wrapperStr =
+        wrapperAttrParts.length > 0 ? ` ${wrapperAttrParts.join(' ')}` : '';
+
+    const inputStr = inputAttrParts.length > 0 ? ` ${inputAttrParts.join(' ')}` : '';
+    const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
+
+    if (hasHintContent) {
+        addImportToClosestModule(resource.componentPath, 'TuiIcon', '@taiga-ui/core');
+        addImportToClosestModule(resource.componentPath, 'TuiTooltip', '@taiga-ui/kit');
+    }
+
+    const iconStr = hasHintContent ? buildTuiIconStr(element, template) : '';
+    const iconLine = iconStr ? `${indent}${iconStr}\n` : '';
+    const todoComment = buildSelfClosingTodo(todoAttrs, labelOutsideIsDynamic, indent);
+
+    const itemChipLine = labelOutsideIsTrue
+        ? `${indent}<tui-input-chip *tuiItem />\n`
+        : '';
+
+    const replacement =
+        `${todoComment}<tui-textfield multi${wrapperStr}>\n` +
+        `${indent}<input tuiInputChip${inputStr}${controlStateStr} />\n` +
+        `${itemChipLine}${iconLine}${indent}</tui-textfield>`;
+
+    recorder.remove(
+        templateOffset + loc.startOffset,
+        loc.startTag.endOffset - loc.startOffset,
+    );
+    recorder.insertRight(templateOffset + loc.startOffset, replacement);
+}
+
+function buildSelfClosingTodo(
+    todoAttrs: Attribute[],
+    labelOutsideIsDynamic: boolean,
+    indent: string,
+): string {
+    const notes: string[] = [];
+
+    if (labelOutsideIsDynamic) {
+        notes.push(
+            '[tuiTextfieldLabelOutside] was dynamic and cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for the label-outside pattern.',
+        );
+    }
+
+    for (const attr of todoAttrs) {
+        notes.push(`${attr.name}: ${getHint(attr.name)}`);
+    }
+
+    if (notes.length === 0) {
+        return '';
+    }
+
+    const lines = [
+        `<!-- ${TODO_MARK} tui-input-tag migration (see ${DOCS_LINK}):`,
+        ...notes.map((note) => `     - ${note}`),
+        '-->',
+    ];
+
+    return `${lines.join('\n')}\n${indent}`;
 }
 
 function getHint(attrName: string): string {

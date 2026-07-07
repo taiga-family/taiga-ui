@@ -3,11 +3,12 @@ import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
     maskitoCaretGuard,
-    maskitoNumberOptionsGenerator,
+    maskitoNumber,
     type MaskitoNumberParams,
     maskitoStringifyNumber,
 } from '@maskito/kit';
 import {tuiIsSafeToRound, tuiRoundWith} from '@taiga-ui/cdk/utils/math';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective} from '@taiga-ui/core/components/input';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -22,6 +23,7 @@ export class TuiNumberMask {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
     private readonly input = inject(TuiInputDirective);
+
     public readonly prefix = input(this.options.prefix);
     public readonly postfix = input(this.options.postfix);
 
@@ -59,7 +61,7 @@ export class TuiNumberMask {
     protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
 
     protected readonly maskInitialCalibration = effect(() => {
-        const options = maskitoNumberOptionsGenerator({
+        const options = maskitoNumber({
             ...this.params(),
             min: -Infinity,
             max: Infinity,
@@ -71,6 +73,7 @@ export class TuiNumberMask {
     public stringify(value: bigint | number | null | undefined): string {
         const params = this.params();
         const precision = params.maximumFractionDigits;
+        const {decimalMode} = this.numberFormat();
 
         const rounded =
             typeof value === 'number' &&
@@ -83,19 +86,21 @@ export class TuiNumberMask {
                   })
                 : value;
 
+        const zeroPadding =
+            (tuiIsNumber(rounded) &&
+                !Number.isInteger(rounded) &&
+                decimalMode === 'pad') ||
+            decimalMode === 'always';
+
         return maskitoStringifyNumber(rounded ?? null, {
             ...params,
-            minimumFractionDigits:
-                String(rounded).includes(params.decimalSeparator) &&
-                this.numberFormat().decimalMode !== 'not-zero'
-                    ? params.maximumFractionDigits
-                    : 0,
+            minimumFractionDigits: zeroPadding ? params.maximumFractionDigits : 0,
         });
     }
 
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {
         const {prefix = '', postfix = '', negativePattern, minusSign} = params;
-        const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
+        const {plugins, ...options} = maskitoNumber(params);
 
         return {
             ...options,

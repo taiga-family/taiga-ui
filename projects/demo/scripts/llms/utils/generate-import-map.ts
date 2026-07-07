@@ -659,5 +659,5 @@ export async function saveImportMap(
             'projects/demo/src/llms-header-sections/import-map.md',
         );
 
-    await fs.writeFile(filePath, importMap, 'utf-8');
+    await fs.writeFile(filePath, importMap);
 }

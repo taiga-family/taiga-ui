@@ -5,7 +5,6 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiAsTextfieldAccessor,
@@ -24,6 +23,7 @@ import {
 import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
+import {tuiParseInputChipValue} from './input-chip.utils';
 
 // TODO: Consider making input[tuiTextfieldMulti] to reuse here and in InputDateMulti
 @Directive({
@@ -52,6 +52,7 @@ export class TuiInputChipDirective<T>
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(WA_IS_MOBILE);
     private readonly dropdown = inject(TuiDropdownDirective);
+
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -79,19 +80,9 @@ export class TuiInputChipDirective<T>
     }
 
     protected onEnter(rawValue = this.textfield.value()): void {
-        const value = rawValue.trim();
-        const items = this.separator() ? value.split(this.separator()) : [value];
+        const valid = tuiParseInputChipValue(rawValue, this.separator(), this.handlers);
 
-        const valid = items
-            .map((item) => tuiSanitizeText(item) as T)
-            .filter(
-                (item) =>
-                    item &&
-                    !this.handlers.disabledItemHandler()(item) &&
-                    this.handlers.stringify()(item),
-            );
-
-        if (!value || !valid.length) {
+        if (!valid.length) {
             return;
         }
 

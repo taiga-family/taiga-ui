@@ -8,12 +8,13 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_CSS} from '@ng-web-apis/common';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 import {TuiSegmentedDirective} from './segmented.directive';
@@ -41,10 +42,14 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
         'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
         '[attr.inert]': 'disabled() ? "" : null',
+        '[style.--t-anchor]': 'anchorId',
     },
 })
 export class TuiSegmented implements OnChanges {
+    private readonly legacy = !inject(WA_CSS).supports('anchor-name', '--t-anchor');
     private readonly el = tuiInjectElement();
+
+    protected readonly anchorId = `--${tuiGenerateId()}`;
 
     protected readonly sub = inject(WaResizeObserverService, {self: true})
         .pipe(tuiZonefree(), takeUntilDestroyed())
@@ -79,6 +84,10 @@ export class TuiSegmented implements OnChanges {
         );
 
         el.classList.add('tui-segmented_active');
+
+        if (!this.legacy) {
+            return;
+        }
 
         const {offsetWidth, offsetLeft, offsetTop} = el;
 

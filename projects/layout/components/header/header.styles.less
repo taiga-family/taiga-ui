@@ -7,6 +7,7 @@
     box-sizing: content-box;
     color: var(--tui-text-primary);
     margin: 0;
+    gap: 0.5rem 1rem;
     text-align: start;
     overflow-wrap: break-word;
 
@@ -20,8 +21,10 @@
     }
 
     [tuiTitle] {
-        flex-grow: 2;
+        max-inline-size: fit-content;
+        flex: 1 0 60%;
         margin: 0;
+        margin-inline-end: auto;
         font: inherit;
 
         &:empty {
@@ -42,6 +45,7 @@
         &::before {
             content: '​';
             visibility: hidden;
+            margin-inline-end: -0.75rem;
         }
     }
 
@@ -114,7 +118,7 @@
     &[data-size='body-m'],
     &[data-size='body-s'] {
         [tuiSubtitle],
-        [tuiLink] {
+        [tuiAccessories] [tuiLink] {
             font: var(--tui-typography-body-s);
         }
     }
@@ -123,7 +127,7 @@
     &[data-size='h2'],
     &[data-size='h3'] {
         [tuiSubtitle],
-        [tuiLink],
+        [tuiAccessories] [tuiLink],
         + [tuiDescription] {
             font: var(--tui-typography-body-l);
         }
@@ -134,7 +138,7 @@
     &[data-size='h6'],
     &[data-size='body-l'] {
         [tuiSubtitle],
-        [tuiLink] {
+        [tuiAccessories] [tuiLink] {
             font: var(--tui-typography-body-m);
         }
     }

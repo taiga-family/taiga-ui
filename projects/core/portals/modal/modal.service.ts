@@ -21,6 +21,7 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
         const ref = this.service.add(component);
         const el: HTMLElement = ref.location.nativeElement;
 
+        el.closest('tui-root')?.firstElementChild?.setAttribute('inert', '');
         ref.instance.component.set(new PolymorpheusComponent(this.content));
 
         return () => {
@@ -34,6 +35,7 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
                     // Under zoneless + provideAnimations Angular's animation engine queues
                     // the modal removal but engine.flush never runs from a microtask, so
                     // the element stays in DOM with `tui-leave` class. Detach it manually.
+                    el.closest('tui-root')?.firstElementChild?.removeAttribute('inert');
                     ref.destroy();
                     el.remove();
                 });

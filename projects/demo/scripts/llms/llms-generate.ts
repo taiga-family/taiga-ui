@@ -113,7 +113,7 @@ async function main(): Promise<void> {
         output.push('');
     }
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
     console.info(`Successfully saved: ${OUTPUT_FILE}`);
 }
 

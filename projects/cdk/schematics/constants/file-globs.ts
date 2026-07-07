@@ -1,6 +1,6 @@
 import {type Pattern} from 'ng-morph';
 
-const EXCLUDE_DIRECTORIES = [
+export const EXCLUDE_DIRECTORIES = [
     'e2e',
     // compiled
     'scripts',
@@ -22,33 +22,47 @@ const EXCLUDE_DIRECTORIES = [
     '.angular',
     '.tmp',
     '.nx',
-].join('|');
+] as const;
 
-const EXCLUDE_FILE_PATTERNS = [
+export const EXCLUDE_FILE_PATTERNS = [
     '*__name@dasherize__*',
     '*__name@camelize__*', // schematics templates
     '*__name@underscore__*',
-    '*.d', // typings
-].join('|');
+    '*.d',
+] as const;
+
+const STYLE_EXTENSIONS = '{less,sass,scss,css}';
+const ALL_EXTENSIONS = '{html,ts,less,sass,scss,css,json}';
+
+const EXCLUDE_DIRECTORY_PATTERNS = EXCLUDE_DIRECTORIES.map(
+    (directory) => `!**/${directory}/**`,
+);
+
+const excludeFilePatterns = (extensions: string): string[] =>
+    EXCLUDE_FILE_PATTERNS.map((filePattern) => `!**/${filePattern}.${extensions}`);
 
 export const ALL_STYLE_FILES: Pattern = [
-    `!(${EXCLUDE_FILE_PATTERNS}).{less,sass,scss,css}`,
-    `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{less,sass,scss,css}`,
+    `**/*.${STYLE_EXTENSIONS}`,
+    ...EXCLUDE_DIRECTORY_PATTERNS,
+    ...excludeFilePatterns(STYLE_EXTENSIONS),
 ];
 
 export const ALL_TS_FILES: Pattern = [
-    `!(${EXCLUDE_FILE_PATTERNS}).ts`,
-    `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).ts`,
+    '**/*.ts',
+    ...EXCLUDE_DIRECTORY_PATTERNS,
+    ...excludeFilePatterns('ts'),
 ];
 
 export const ALL_FILES: Pattern = [
-    `!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
-    `!(${EXCLUDE_DIRECTORIES})/**/!(${EXCLUDE_FILE_PATTERNS}).{html,ts,less,sass,scss,css,json}`,
+    `**/*.${ALL_EXTENSIONS}`,
+    ...EXCLUDE_DIRECTORY_PATTERNS,
+    ...excludeFilePatterns(ALL_EXTENSIONS),
 ];
 
 export const PROJECT_JSON_FILES: Pattern = [
     'project.json',
     'angular.json',
-    `!(${EXCLUDE_DIRECTORIES})/**/project.json`,
-    `!(${EXCLUDE_DIRECTORIES})/**/angular.json`,
+    '**/project.json',
+    '**/angular.json',
+    ...EXCLUDE_DIRECTORY_PATTERNS,
 ];

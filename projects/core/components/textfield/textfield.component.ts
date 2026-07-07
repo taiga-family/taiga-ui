@@ -15,12 +15,12 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_BUTTON_OPTIONS,
     tuiButtonOptionsProvider,
@@ -51,7 +51,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell],
     templateUrl: './textfield.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -94,8 +94,8 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
@@ -125,13 +125,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             (!!this.value() || !this.input()?.nativeElement.placeholder),
     );
 
-    protected readonly accessor = contentChild<TuiTextfieldAccessor<T>>(
-        TUI_TEXTFIELD_ACCESSOR,
-        {descendants: true},
-    );
+    protected readonly accessor =
+        contentChild<TuiTextfieldAccessor<T>>(TUI_TEXTFIELD_ACCESSOR);
 
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
+    public readonly child = contentChild(TuiControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
@@ -143,10 +142,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
     public readonly value = tuiValue(this.input);
-
-    public get id(): string {
-        return this.input()?.nativeElement.id || this.autoId;
-    }
 
     public get disabled(): boolean {
         return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
@@ -165,8 +160,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({contentRect}: ResizeObserverEntry): void {
-        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    protected onResize({clientWidth}: HTMLElement): void {
+        this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])

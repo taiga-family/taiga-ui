@@ -30,6 +30,7 @@
     display: inline-flex;
     flex-shrink: 0;
     inline-size: var(--t-size);
+    min-inline-size: var(--t-size);
     block-size: var(--t-size);
     align-items: center;
     justify-content: center;
@@ -43,6 +44,7 @@
     padding: 0.25rem;
     font: var(--tui-typography-body-l);
     font-weight: bold;
+    aspect-ratio: 1;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
     .interactive({
@@ -133,7 +135,7 @@
     }
 
     &:not([data-shape='square']) {
-        --t-radius: calc(var(--t-size) / 2);
+        --t-radius: calc(var(--t-size) / 2) !important;
     }
 
     &._initials {
@@ -167,6 +169,7 @@
             border-radius: 100%;
             background: var(--t-badge);
             transform: translate3d(calc(var(--tui-inline) * -50%), -50%, 0);
+            zoom: 1;
         }
     }
 

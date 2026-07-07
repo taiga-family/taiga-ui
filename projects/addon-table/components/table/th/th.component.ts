@@ -32,6 +32,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
+
     protected readonly width = signal<number | null>(null);
 
     protected readonly table = inject<TuiTableDirective<T>>(
@@ -59,7 +60,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter() === this.table.sorter();
+        return !!this.sorter() && !!this.table && this.sorter() === this.table.sorter();
     }
 
     protected get icon(): string {

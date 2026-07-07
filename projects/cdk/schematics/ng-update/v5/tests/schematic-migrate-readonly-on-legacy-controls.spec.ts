@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update readOnly on legacy controls', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {Component} from '@angular/core';
             import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -222,7 +222,7 @@ describe('ng-update readOnly on legacy controls', () => {
         it(
             'moves [readOnly] inside an inline template',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {FormsModule} from '@angular/forms';
                     import {TuiInputModule} from '@taiga-ui/legacy';

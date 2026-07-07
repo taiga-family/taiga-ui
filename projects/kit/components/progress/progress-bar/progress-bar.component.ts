@@ -28,6 +28,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 })
 export class TuiProgressBar {
     private readonly options = inject(TUI_PROGRESS_OPTIONS);
+
     public readonly color = input(this.options.color);
     public readonly size = input<TuiSizeXXL | TuiSizeXXS>(this.options.size);
 }

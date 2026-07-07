@@ -69,7 +69,8 @@ class Styles {}
         tuiTooltip: '',
         '[attr.data-size]': 'size()',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(mousedown.prevent)': '0',
+        '(pointerdown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
@@ -77,6 +78,7 @@ export class TuiTooltip implements DoCheck {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHover);
+
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly state: Signal<unknown> = tuiAppearanceState(
@@ -92,17 +94,17 @@ export class TuiTooltip implements DoCheck {
     public readonly size = input<TuiSizeS>('m');
 
     public ngDoCheck(): void {
-        if (this.textfield?.id) {
-            tuiSetSignal(this.describe.id, this.textfield.id);
+        if (this.textfield) {
+            tuiSetSignal(this.describe.id, this.textfield.input()?.nativeElement.id);
         }
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.isMobile) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            this.driver.toggle();
+        if (!this.isMobile) {
+            return;
         }
+
+        event.stopPropagation();
+        this.driver.toggle();
     }
 }

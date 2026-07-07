@@ -74,8 +74,8 @@ exports[`ng-update tuiFieldError migrates inline template in component: test.ts 
 exports[`ng-update tuiFieldError removes TuiFieldErrorPipe and TuiFieldErrorContentPipe from imports and replaces with TuiError: test.ts 1`] = `
 {
   "0. Before": "
-                import { Component } from "@angular/core";
-                import { TuiFieldErrorPipe, TuiFieldErrorContentPipe } from "@taiga-ui/kit";
+                import {Component} from '@angular/core';
+                import {TuiFieldErrorPipe, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
 
                 @Component({
                     standalone: true,
@@ -86,7 +86,7 @@ exports[`ng-update tuiFieldError removes TuiFieldErrorPipe and TuiFieldErrorCont
             ",
   "1. After": "import { TuiError } from "@taiga-ui/core";
 
-                import { Component } from "@angular/core";
+                import {Component} from '@angular/core';
 
                 @Component({
                     standalone: true,
@@ -101,10 +101,10 @@ exports[`ng-update tuiFieldError removes TuiFieldErrorPipe and TuiFieldErrorCont
 exports[`ng-update tuiFieldError removes TuiFieldErrorPipe from imports and remains single TuiError: test.ts 1`] = `
 {
   "0. Before": "
-                import { TuiError } from "@taiga-ui/core";
+                import {TuiError} from '@taiga-ui/core';
 
-                import { Component } from "@angular/core";
-                import { TuiFieldErrorPipe } from "@taiga-ui/kit";
+                import {Component} from '@angular/core';
+                import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
                 @Component({
                     standalone: true,
@@ -114,9 +114,9 @@ exports[`ng-update tuiFieldError removes TuiFieldErrorPipe from imports and rema
                 export class TestComponent {}
             ",
   "1. After": "
-                import { TuiError } from "@taiga-ui/core";
+                import {TuiError} from '@taiga-ui/core';
 
-                import { Component } from "@angular/core";
+                import {Component} from '@angular/core';
 
                 @Component({
                     standalone: true,

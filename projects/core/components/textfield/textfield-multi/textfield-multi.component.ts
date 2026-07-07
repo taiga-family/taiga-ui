@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChild,
     ElementRef,
     inject,
@@ -12,7 +13,6 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -39,14 +39,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
 
 @Component({
     selector: 'tui-textfield[multi]',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        TuiButtonX,
-        TuiCell,
-        TuiScrollControls,
-        WaResizeObserver,
-    ],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, TuiScrollControls],
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -73,7 +66,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     ],
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',
-        '[class._empty]': '!control()?.value?.length',
+        '[class._empty]': '!items().length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',
         '(click.prevent)': 'onClick($event.target)',
@@ -85,6 +78,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
+    protected readonly items = computed<readonly T[]>(() => this.cva()?.value() ?? []);
 
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
@@ -102,11 +96,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
 
     public override handleOption(option: T): void {
         this.accessor()?.setValue(
-            tuiArrayToggle(
-                this.control()?.value ?? [],
-                option,
-                this.handlers.identityMatcher(),
-            ),
+            tuiArrayToggle(this.items(), option, this.handlers.identityMatcher()),
         );
     }
 
@@ -119,15 +109,10 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
         return this.focused() ? longer : '';
     }
 
-    protected onItems({target}: ResizeObserverEntry): void {
-        const height =
-            this.rows() > 1 && this.control()?.value?.length
-                ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
-                : null;
-
-        if (height !== 0) {
-            this.height.set(height);
-        }
+    protected onItems(target: HTMLElement): void {
+        this.height.update(
+            (h) => target.querySelector('tui-textfield-item')?.clientHeight || h,
+        );
     }
 
     protected onLeft(event: any): void {

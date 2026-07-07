@@ -36,9 +36,7 @@
                 type="TuiSizeS"
                 [items]="sizes"
                 [(value)]="size"
-            >
-                Layout size
-            </tr>
+            ></tr>
             <tr
                 name="[index]"
                 tuiDocAPIItem
@@ -47,7 +45,7 @@
                 [min]="0"
                 [(value)]="index"
             >
-                Current active dot
+                current active dot
             </tr>
             <tr
                 name="[max]"
@@ -57,7 +55,7 @@
                 [min]="1"
                 [(value)]="max"
             >
-                Max visible dots
+                max visible dots
             </tr>
             <tr
                 name="[count]"
@@ -66,7 +64,7 @@
                 [items]="countVariants"
                 [(value)]="count"
             >
-                Count of dots
+                count of dots
             </tr>
             <tr
                 name="[valueContent]"
@@ -75,7 +73,7 @@
                 [items]="templateVariants"
                 [(value)]="selectedTemplate"
             >
-                A template for custom view
+                a template for custom view
             </tr>
         </table>
     </ng-template>

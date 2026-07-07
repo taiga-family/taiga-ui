@@ -468,6 +468,11 @@ export const ROUTES: Routes = [
         title: 'InputPin',
     }),
     route({
+        path: DemoRoute.Pincode,
+        loadComponent: async () => import('../components/pincode'),
+        title: 'Pincode',
+    }),
+    route({
         path: DemoRoute.InputRange,
         loadComponent: async () => import('../components/input-range'),
         title: 'InputRange',
@@ -496,6 +501,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputYear,
         loadComponent: async () => import('../components/input-year'),
         title: 'InputYear',
+    }),
+    route({
+        path: DemoRoute.File,
+        loadComponent: async () => import('../components/file'),
+        title: 'File',
     }),
     route({
         path: DemoRoute.ItemsWithMore,

@@ -86,20 +86,16 @@
     }
 }
 
-// TODO remove @speed in 5.0
-// transition
 .transition(@param: all, @speed: var(--tui-duration, 300ms)) {
     transition-property: @param;
     transition-duration: @speed;
-    transition-timing-function: ease-in-out;
+    transition-timing-function: var(--tui-curve-productive-standard);
 }
 
-// gradient
 .gradient(@start-color, @end-color, @angle: 45deg) {
     background-image: linear-gradient(@angle, @start-color 0%, @end-color 100%);
 }
 
-// typical properties for text overflow with ellipsis
 .text-overflow(@type: nowrap) {
     white-space: @type;
     overflow: hidden;
@@ -116,7 +112,9 @@
     }
 }
 
-// hide an element visually without hiding it from screen readers
+/**
+ * @deprecated remove in v6
+ */
 .sr-only() {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
@@ -165,5 +163,5 @@
 }
 
 .tui-mask(@x, @y, @r) {
-    mask-image: radial-gradient(circle at @x @y, transparent @r, black @r);
+    mask-image: radial-gradient(circle at @x @y, transparent calc(@r - 0.5px), black @r);
 }

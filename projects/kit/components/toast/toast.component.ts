@@ -13,8 +13,8 @@ import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiShrinkWrap} from '@taiga-ui/kit/components/shrink-wrap';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
@@ -24,10 +24,11 @@ import {type TuiToastOptions} from './toast.options';
 
 @Component({
     selector: 'tui-toast',
-    imports: [PolymorpheusOutlet, TuiButton, TuiShrinkWrap, TuiSwipe, TuiToastDirective],
+    imports: [PolymorpheusOutlet, TuiButtonX, TuiShrinkWrap, TuiSwipe, TuiToastDirective],
     templateUrl: './toast.template.html',
     styleUrl: './toast.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiButtonXOptionsProvider({size: 'xs', appearance: 'icon'})],
     hostDirectives: [TuiAnimated, TuiAlertDirective],
     host: {
         role: 'status',
@@ -38,9 +39,9 @@ import {type TuiToastOptions} from './toast.options';
 export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly close = viewChild(TuiButton, {read: ElementRef});
     private readonly el = tuiInjectElement();
+
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
-    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected readonly $ = of(this.context.autoClose)
         .pipe(

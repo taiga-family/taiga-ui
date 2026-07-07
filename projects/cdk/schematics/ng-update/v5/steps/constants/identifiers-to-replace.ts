@@ -3,6 +3,26 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TuiInputSliderModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputSlider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputMonthRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputMonthRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputYearModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -229,6 +249,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiTooltipModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiTooltip',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {
             name: 'TuiSelectModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -265,6 +301,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiSheetDialogService',
             moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_CALENDAR_DATE_STREAM',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'tuiEditorOptionsProvider',
+            moduleSpecifier: '@taiga-ui/editor',
+        },
+        to: {
+            name: 'provideTuiEditorOptions',
+            moduleSpecifier: '@taiga-ui/editor',
         },
     },
     {
@@ -577,6 +633,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
             name: 'tuiIsNativeKeyboardFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsNativeMouseFocusable',
             moduleSpecifier: '@taiga-ui/cdk',
         },
         to: {
@@ -1021,6 +1087,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiDropdownContent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownService',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiPopupService',
             moduleSpecifier: '@taiga-ui/core',
         },
     },

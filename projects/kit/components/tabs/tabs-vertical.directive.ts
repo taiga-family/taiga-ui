@@ -20,6 +20,7 @@ import {TuiTabsDirective} from './tabs.directive';
 })
 export class TuiTabsVertical {
     private readonly tabs = inject(TuiTabsDirective);
+
     public readonly vertical = input<TuiHorizontalDirection>('start');
 
     protected onKeyDownArrow(current: HTMLElement, step: number): void {

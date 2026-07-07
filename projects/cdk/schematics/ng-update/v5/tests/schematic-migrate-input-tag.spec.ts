@@ -10,13 +10,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputTagModule to TuiInputChip',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputTagModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputTagModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputTagModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,
@@ -148,6 +148,33 @@ describe('ng-update', () => {
                 >
                     Enter tags
                 </tui-input-tag>
+            `,
+        }),
+    );
+
+    it(
+        'migrates self-closing <tui-input-tag ... /> with hint to tui-textfield',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-tag
+                    class="input-tag"
+                    [tuiHintContent]="hint"
+                    [tuiTextfieldLabelOutside]="true"
+                    [(ngModel)]="tags"
+                />
+            `,
+        }),
+    );
+
+    it(
+        'migrates self-closing <tui-input-tag /> without absorbing following siblings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-tag
+                    formControlName="tags"
+                    [separator]="regex"
+                />
+                <button tuiButton>Save</button>
             `,
         }),
     );

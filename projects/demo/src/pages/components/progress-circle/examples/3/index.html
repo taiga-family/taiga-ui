@@ -1,7 +1,11 @@
 @if (value$ | async; as value) {
     <label tuiProgressLabel>
-        <span class="text">COMPLETED</span>
-        <span class="percent">{{ value }}%</span>
+        <span tuiHeader="h6">
+            <span tuiTitle>
+                <span tuiSubtitle>Done</span>
+                <b>{{ value }}%</b>
+            </span>
+        </span>
         <tui-progress-circle
             size="xl"
             [max]="max"

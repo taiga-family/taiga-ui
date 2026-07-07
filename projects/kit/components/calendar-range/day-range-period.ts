@@ -36,7 +36,7 @@ export function tuiCreateDefaultDayRangePeriods(
     periodTitles: TuiLanguageKit['dayRangePeriods'] = getDefaultPeriodTitles(),
 ): readonly TuiDayRangePeriod[] {
     const today = TuiDay.currentLocal();
-    const yesterday = today.append({day: -1});
+    const yesterday = new TuiDayRange(today.append({day: -1}), today.append({day: -1}));
     const startOfWeek = today.append({day: -today.dayOfWeek()});
     const endOfWeek = startOfWeek.append({day: 6});
     const startOfMonth = today.append({day: 1 - today.day});
@@ -45,8 +45,8 @@ export function tuiCreateDefaultDayRangePeriods(
 
     return [
         new TuiDayRangePeriod(new TuiDayRange(TUI_FIRST_DAY, today), periodTitles[0]),
-        new TuiDayRangePeriod(new TuiDayRange(today, today), periodTitles[1]),
-        new TuiDayRangePeriod(new TuiDayRange(yesterday, yesterday), periodTitles[2]),
+        new TuiDayRangePeriod(new TuiDayRange(today, today.append({})), periodTitles[1]),
+        new TuiDayRangePeriod(yesterday, periodTitles[2]),
         new TuiDayRangePeriod(new TuiDayRange(startOfWeek, endOfWeek), periodTitles[3]),
         new TuiDayRangePeriod(new TuiDayRange(startOfMonth, endOfMonth), periodTitles[4]),
         new TuiDayRangePeriod(

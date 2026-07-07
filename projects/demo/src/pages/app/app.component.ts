@@ -65,6 +65,7 @@ export class App extends AbstractDemo implements OnInit {
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
+
     protected readonly router = inject(Router);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;

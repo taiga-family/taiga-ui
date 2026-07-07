@@ -13,7 +13,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'replaces #viewContainer template variable with tuiVCR directive',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {TuiPortals} from '@taiga-ui/cdk';
                     import {CustomPortalService} from './service';
@@ -32,7 +32,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'adds TuiVCR to imports array when #viewContainer is migrated',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {TuiPortals} from '@taiga-ui/cdk';
 
@@ -51,7 +51,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'does not change #viewContainer in component not extending TuiPortals',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
 
                     @Component({
@@ -68,7 +68,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'replaces #viewContainer with tuiVCR in external template of TuiPortals subclass',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {TuiPortals} from '@taiga-ui/cdk';
                     import {CustomPortalService} from './service';
@@ -88,7 +88,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'adds TuiVCR to imports array when #viewContainer is migrated in external template',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {TuiPortals} from '@taiga-ui/cdk';
 
@@ -108,7 +108,7 @@ describe('ng-update TuiPortalService', () => {
         it(
             'does not change #viewContainer in external template of non-TuiPortals component',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
 
                     @Component({

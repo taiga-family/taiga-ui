@@ -1,13 +1,7 @@
 import {AsyncPipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    inject,
-    input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {TuiZoom, type TuiZoomEvent} from '@taiga-ui/cdk/directives/zoom';
@@ -27,6 +21,7 @@ import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
+// TODO: Refactor to signals
 @Component({
     selector: 'tui-preview',
     imports: [
@@ -38,7 +33,6 @@ const ROTATION_ANGLE = 90;
         TuiPreviewZoom,
         TuiZoom,
         WaMutationObserver,
-        WaResizeObserver,
     ],
     templateUrl: './preview.template.html',
     styleUrl: './preview.style.less',
@@ -46,12 +40,12 @@ const ROTATION_ANGLE = 90;
 })
 export class TuiPreviewComponent {
     private readonly el = tuiInjectElement();
+
     protected minZoom = 1;
     protected width = 0;
     protected height = 0;
     protected readonly texts = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject(this.minZoom);
     protected readonly rotation$ = new BehaviorSubject(0);
 
@@ -72,14 +66,16 @@ export class TuiPreviewComponent {
         startWith('initial'),
     );
 
-    protected readonly wrapperTransform$ = combineLatest([
-        this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
-        this.zoom$,
-        this.rotation$,
-    ]).pipe(
-        map(
-            ([translate, zoom, rotation]) =>
-                `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
+    protected readonly transform = toSignal(
+        combineLatest([
+            this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
+            this.zoom$,
+            this.rotation$,
+        ]).pipe(
+            map(
+                ([translate, zoom, rotation]) =>
+                    `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
+            ),
         ),
     );
 
@@ -100,23 +96,24 @@ export class TuiPreviewComponent {
         );
     }
 
-    protected onMutation(contentWrapper: HTMLElement): void {
-        const {clientWidth, clientHeight} = contentWrapper;
-
-        this.refresh(clientWidth, clientHeight);
-    }
-
     protected onZoom({clientX, clientY, delta}: TuiZoomEvent): void {
         if (this.zoomable()) {
             this.processZoom(clientX, clientY, delta);
         }
     }
 
-    protected onResize([entry]: readonly ResizeObserverEntry[]): void {
-        if (entry?.contentRect) {
-            this.refresh(entry.contentRect.width, entry.contentRect.height);
-            this.cdr.detectChanges();
-        }
+    protected onResize({clientWidth, clientHeight}: HTMLElement): void {
+        this.width = clientWidth;
+        this.height = clientHeight;
+        this.minZoom = this.calculateMinZoom(
+            clientHeight,
+            clientWidth,
+            this.el.clientHeight,
+            this.el.clientWidth,
+        );
+        this.zoom$.next(this.minZoom);
+        this.coordinates$.next(EMPTY_COORDINATES);
+        this.rotation$.next(0);
     }
 
     protected reset(): void {
@@ -159,20 +156,6 @@ export class TuiPreviewComponent {
                   2,
               )
             : 1;
-    }
-
-    private refresh(width: number, height: number): void {
-        this.width = width;
-        this.height = height;
-        this.minZoom = this.calculateMinZoom(
-            height,
-            width,
-            this.el.clientHeight,
-            this.el.clientWidth,
-        );
-        this.zoom$.next(this.minZoom);
-        this.coordinates$.next(EMPTY_COORDINATES);
-        this.rotation$.next(0);
     }
 
     private processZoom(clientX: number, clientY: number, delta: number): void {

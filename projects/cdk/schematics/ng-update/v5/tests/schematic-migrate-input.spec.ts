@@ -10,13 +10,13 @@ describe('ng-update legacy input', () => {
     it(
         'migrates TuiInputModule import and simple tui-input template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -110,13 +110,13 @@ describe('ng-update legacy input', () => {
     it(
         'converts [tuiTextfieldCustomContent] binding to <tui-icon *polymorpheusOutlet> and renames tuiTextfieldFiller to filler',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -128,13 +128,13 @@ describe('ng-update legacy input', () => {
     it(
         'converts static tuiTextfieldCustomContent string to <tui-icon icon="...">',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -146,13 +146,13 @@ describe('ng-update legacy input', () => {
     it(
         'keeps tuiTextfieldCustomContent migration working alongside hint content',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,

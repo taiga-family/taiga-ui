@@ -18,6 +18,8 @@
         "officedocument",
         "wordprocessingml",
         "longname",
-        "initialises"
+        "longtapped",
+        "initialises",
+        "tuihintcontent"
     ]
 }

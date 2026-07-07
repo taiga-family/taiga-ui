@@ -4,10 +4,11 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
+    maskitoParseTime,
     maskitoRemoveOnBlurPlugin,
     maskitoSelectionChangeHandler,
+    maskitoTime,
     type MaskitoTimeMode,
-    maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
 } from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -60,6 +61,18 @@ export class TuiInputTimeDirective
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
+
+    private readonly params = computed<Required<MaskitoTimeParams>>(() => ({
+        ...this.options,
+        mode: this.timeMode(),
+        step: this.interactive() && !this.dropdown.content() ? 1 : 0,
+        prefix: this.prefix(),
+        postfix: this.postfix(),
+        separators: [],
+        dayPeriod: ['', ''],
+        locale: '', // TODO: add to public API
+    }));
+
     protected readonly icon = tuiIconEnd(this.options.icon);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -75,17 +88,7 @@ export class TuiInputTimeDirective
         {},
     );
 
-    protected readonly mask = tuiMaskito(
-        computed(() =>
-            this.computeMask({
-                ...this.options,
-                mode: this.timeMode(),
-                step: this.interactive() && !this.dropdown.content() ? 1 : 0,
-                prefix: this.prefix(),
-                postfix: this.postfix(),
-            }),
-        ),
-    );
+    protected readonly mask = tuiMaskito(computed(() => this.computeMask(this.params())));
 
     public readonly accept = input<readonly TuiTime[]>([]);
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
@@ -124,8 +127,7 @@ export class TuiInputTimeDirective
             .replace(this.prefix(), '')
             .replace(this.postfix(), '');
 
-        const time =
-            value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
+        const time = value.length === this.timeMode().length ? this.parse(value) : null;
 
         const newValue =
             this.accept().length && time
@@ -150,7 +152,7 @@ export class TuiInputTimeDirective
             .replace(this.postfix(), '');
 
         if (value && !this.value()) {
-            const time = TuiTime.fromString(value);
+            const time = this.parse(value);
 
             const newValue = this.accept().length
                 ? this.findNearestTime(time, this.accept())
@@ -166,8 +168,8 @@ export class TuiInputTimeDirective
     }
 
     private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
-        const options = maskitoTimeOptionsGenerator(params);
-        const {mode, prefix, postfix} = params;
+        const options = maskitoTime(params);
+        const {mode, prefix, postfix, dayPeriod} = params;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
@@ -185,7 +187,9 @@ export class TuiInputTimeDirective
                 caretGuardPlugin,
                 maskitoAddOnFocusPlugin(`${prefix}${postfix}`),
                 maskitoRemoveOnBlurPlugin(`${prefix}${postfix}`),
-                mode.includes('AA') ? inputModeSwitchPlugin : [],
+                mode.includes('AA') || dayPeriod.some(Boolean)
+                    ? inputModeSwitchPlugin
+                    : [],
             ),
         };
     }
@@ -198,6 +202,10 @@ export class TuiInputTimeDirective
                 ? current
                 : previous,
         );
+    }
+
+    private parse(value: string): TuiTime {
+        return TuiTime.fromAbsoluteMilliseconds(maskitoParseTime(value, this.params()));
     }
 
     private stringify(time: TuiTime | null): string {

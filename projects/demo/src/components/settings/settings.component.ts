@@ -31,6 +31,9 @@ import {
     tuiSegmentedOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
+import {startWith} from 'rxjs';
+
+import {TUI_PLATFORM_KEY} from './platform-key';
 
 @Component({
     selector: '[appSettings]',
@@ -63,10 +66,8 @@ export class SettingsComponent {
     private readonly doc = inject(DOCUMENT);
     private readonly switcher = inject(TuiLanguageSwitcherService);
     private readonly theme = inject(TUI_DARK_MODE);
-
-    private readonly stored = inject(WA_LOCAL_STORAGE)?.getItem(
-        inject(TUI_DARK_MODE_KEY),
-    );
+    private readonly storage = inject(WA_LOCAL_STORAGE);
+    private readonly stored = this.storage?.getItem(inject(TUI_DARK_MODE_KEY));
 
     protected readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['arabic', 'SA'],
@@ -98,17 +99,18 @@ export class SettingsComponent {
         theme: tuiIsString(this.stored) ? this.theme() : null,
         direction: 'ltr',
         language: this.switcher.language,
-        platform: 'web',
+        platform: this.storage?.getItem(TUI_PLATFORM_KEY) ?? 'web',
     });
 
     protected readonly sync = this.form.valueChanges
-        .pipe(takeUntilDestroyed())
+        .pipe(startWith(null), takeUntilDestroyed())
         .subscribe(() => {
             const {theme, direction, language, platform} = this.form.getRawValue();
 
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
             this.doc.documentElement.setAttribute('data-platform', platform);
+            this.storage?.setItem(TUI_PLATFORM_KEY, platform);
 
             if (theme === null) {
                 this.theme.reset();

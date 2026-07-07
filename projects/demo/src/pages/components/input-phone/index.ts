@@ -31,6 +31,7 @@ export default class PageComponent {
 
     protected filler = '';
     protected phoneMask = this.phoneMasks[0]!;
+
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 
     public readonly examples = [

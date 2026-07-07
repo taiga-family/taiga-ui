@@ -32,6 +32,7 @@ export default class Page implements OnInit {
     private readonly blocks = viewChildren('block', {read: ElementRef});
     private readonly router = inject(Router);
     private readonly activatedRoute = inject(ActivatedRoute);
+
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
     protected current = 0;

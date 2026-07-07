@@ -32,6 +32,7 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;

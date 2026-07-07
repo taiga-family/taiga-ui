@@ -33,6 +33,7 @@ export class TuiDocToc implements OnInit {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
     private examples: readonly string[] = [];
     private active = '';
+
     protected readonly toc = signal<readonly string[]>([]);
     protected readonly route = inject(ActivatedRoute);
     protected readonly seeAlso = getSeeAlso();

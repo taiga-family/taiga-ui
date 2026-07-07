@@ -32,12 +32,12 @@ jobs:
         run: |
           echo "mode=${{ inputs.mode }}"
           echo "dry_run=${{ inputs.dry_run }}"
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
-      - uses: taiga-family/ci/actions/setup/config/git@16a91c73cbbbf991bf840bcf53e0cb902c164d80 # v1.213.0
+      - uses: taiga-family/actions/setup-node@a12b79beab3aea8bd840e48e902a2084d282e1a6 # v2.5.0
+      - uses: taiga-family/actions/setup-git@a12b79beab3aea8bd840e48e902a2084d282e1a6 # v2.5.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

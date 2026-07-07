@@ -48,7 +48,8 @@ export default class Example {
         query,
     ) => {
         const filtered = items.filter((item) => {
-            const romanNumeral = item.split(' ').at(-1)!;
+            const itemList = item.split(' ');
+            const romanNumeral = itemList[itemList.length - 1]!;
 
             return (
                 query === ROMAN_TO_LATIN[romanNumeral] || TUI_DEFAULT_MATCHER(item, query)

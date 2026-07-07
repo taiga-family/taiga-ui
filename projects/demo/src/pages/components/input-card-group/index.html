@@ -44,13 +44,14 @@
         </div>
 
         <ng-template #template>
-            <tui-thumbnail-card
+            <span
                 paymentSystem="maestro"
                 size="s"
+                tuiThumbnailCard
                 class="card"
             >
                 1234
-            </tui-thumbnail-card>
+            </span>
         </ng-template>
 
         <table tuiDocAPI>
@@ -59,7 +60,7 @@
                 tuiDocAPIItem
                 type="TuiBooleanHandler<string>"
             >
-                Custom card validator for moving focus to the next field
+                custom card validator for moving focus to the next field
             </tr>
             <tr
                 name="[codeLength]"
@@ -68,7 +69,7 @@
                 [items]="codeLengthVariants"
                 [(value)]="codeLength"
             >
-                Code length
+                code length
             </tr>
             <tr
                 name="[compact]"
@@ -76,7 +77,7 @@
                 type="boolean"
                 [(value)]="compact"
             >
-                Manually set compact mode (forced on mobile resolution)
+                manually set compact mode (forced on mobile resolution)
             </tr>
             <tr
                 name="[icon]"
@@ -85,7 +86,7 @@
                 [items]="getContentVariants(template)"
                 [(value)]="iconSelected"
             >
-                Custom card icon
+                custom card icon
             </tr>
             <tr
                 name="[id]"
@@ -109,16 +110,14 @@
                 [items]="inputsVariants"
                 [(value)]="inputs"
             >
-                Toggle availability of inputs
+                toggle availability of inputs
             </tr>
             <tr
                 name="[placeholder]"
                 tuiDocAPIItem
                 type="string"
                 [(value)]="placeholder"
-            >
-                Placeholder
-            </tr>
+            ></tr>
             <tr
                 name="(binChange)"
                 tuiDocAPIItem

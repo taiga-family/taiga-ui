@@ -212,7 +212,7 @@
                     type="number"
                     [(value)]="min"
                 >
-                    The
+                    the
                     <strong>lowest</strong>
                     value in the range of permitted values
                 </tr>
@@ -223,7 +223,7 @@
                     type="number"
                     [(value)]="max"
                 >
-                    The
+                    the
                     <strong>greatest</strong>
                     value in the range of permitted values
                 </tr>
@@ -234,7 +234,7 @@
                     type="string"
                     [(value)]="prefix"
                 >
-                    Uneditable text
+                    uneditable text
                     <strong>before</strong>
                     number
                 </tr>
@@ -245,7 +245,7 @@
                     type="string"
                     [(value)]="postfix"
                 >
-                    Uneditable text
+                    uneditable text
                     <strong>after</strong>
                     number
                 </tr>
@@ -256,7 +256,7 @@
                     type="number"
                     [(value)]="quantum"
                 >
-                    Minimum indivisible value
+                    minimum indivisible value
 
                     <p>
                         Use
@@ -293,7 +293,7 @@
                     type="number"
                     [(value)]="step"
                 >
-                    Granularity of each discrete slider step and value of increase/decrease on keyboard arrows
+                    granularity of each discrete slider step and value of increase/decrease on keyboard arrows
 
                     <p>
                         For non-linear slider (
@@ -311,13 +311,13 @@
                     [items]="segmentsVariants"
                     [(value)]="segments"
                 >
+                    a number of visual segments or an array, in which every number - is ratio of slider's track length
+                    in range (0; 1) where to put tick
                     <p>
-                        A number of visual segments or an array, in which every number - is ratio of slider's track
-                        length in range (0; 1) where to put tick
+                        (use
+                        <code>1</code>
+                        for no ticks)
                     </p>
-                    (use
-                    <code>1</code>
-                    for no ticks)
                 </tr>
 
                 <tr
@@ -327,7 +327,7 @@
                     [items]="keyStepsVariants()"
                     [(value)]="keySteps"
                 >
-                    Anchor points of non-uniform format between value and position
+                    anchor points of non-uniform format between value and position
                 </tr>
             </tbody>
 
@@ -368,7 +368,7 @@
                     type="number"
                     [(value)]="thumbSize"
                 >
-                    Size of thumb
+                    size of thumb
                 </tr>
             </tbody>
         </table>
