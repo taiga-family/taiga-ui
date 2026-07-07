@@ -32,6 +32,7 @@ export const TUI_USED_ICONS = [
     '@tui.clock',
     '@tui.code',
     '@tui.copy',
+    '@tui.delete',
     '@tui.electron',
     '@tui.ellipsis',
     '@tui.equal',

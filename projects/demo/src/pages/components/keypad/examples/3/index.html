@@ -11,12 +11,10 @@
     [tuiSheetDialogOptions]="options"
     [(tuiSheetDialog)]="open"
 >
-    <div
-        tuiKeypadHost
-        class="sheet"
-    >
+    <div class="sheet">
         <div class="top">
             <input
+                #input="tuiKeypadInput"
                 tuiKeypadInput
                 class="amount"
                 [(ngModel)]="value"
@@ -65,7 +63,12 @@
 
             <div class="clamp">Commission-free</div>
 
-            <tui-keypad [(value)]="value" />
+            @if (input.focused()) {
+                <tui-keypad
+                    tuiAnimated
+                    [(value)]="value"
+                />
+            }
         </footer>
     </div>
 </ng-template>

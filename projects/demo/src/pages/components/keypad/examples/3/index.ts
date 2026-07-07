@@ -7,6 +7,7 @@ import {
     TuiSheetDialog,
     type TuiSheetDialogOptions,
 } from '@taiga-ui/addon-mobile';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
 import {TuiFloatingContainer} from '@taiga-ui/layout';
@@ -14,6 +15,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
 @Component({
     imports: [
         FormsModule,
+        TuiAnimated,
         TuiAvatar,
         TuiButton,
         TuiCell,

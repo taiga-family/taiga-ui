@@ -30,6 +30,7 @@ const OPERATORS = new Set(['-', '+', '÷', '×']);
 })
 export default class Example {
     private readonly input = viewChild<ElementRef<HTMLInputElement>>('input');
+
     protected readonly expression = signal('0');
     protected readonly displayValue = computed(() => this.expression());
     protected readonly open = signal(false);
@@ -91,9 +92,13 @@ export default class Example {
     }
 
     private appendDot(expr: string): string {
-        const lastNumber = /[\d.]*$/.exec(expr)?.[0] ?? '';
+        const lastNumber = expr.split(/[-+*/×÷()\s]/).pop() ?? '';
 
-        return lastNumber.includes('.') ? expr : `${expr}.`;
+        if (lastNumber.includes('.')) {
+            return expr;
+        }
+
+        return lastNumber ? `${expr}.` : `${expr}0.`;
     }
 
     private tryCalculate(expr: string): string {
@@ -105,22 +110,108 @@ export default class Example {
     }
 
     private calculate(expr: string): string {
-        const sanitized = expr.replaceAll('×', '*').replaceAll('÷', '/');
+        const tokens = expr
+            .replaceAll('×', '*')
+            .replaceAll('÷', '/')
+            .match(/\d+(?:\.\d+)?|[+\-*/()]/g);
 
-        if (!/^[\d+\-*/().\s]+$/.test(sanitized)) {
-            throw new Error('Invalid characters');
+        if (!tokens) {
+            throw new Error('Empty expression');
         }
 
-        const open = (sanitized.match(/\(/g) ?? []).length;
-        const close = (sanitized.match(/\)/g) ?? []).length;
+        const result = this.evaluate(tokens);
 
-        if (open !== close) {
-            throw new Error('Unbalanced parentheses');
+        if (!Number.isFinite(result)) {
+            throw new Error('Not a finite number');
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-implied-eval
-        const result = new Function(`"use strict"; return (${sanitized});`)();
+        return String(Math.round(result * 1e10) / 1e10);
+    }
 
-        return Number.isFinite(result) ? String(result) : 'Error';
+    /**
+     * Safe evaluation of a flat arithmetic expression via the shunting-yard
+     * algorithm — no `eval`/`new Function`, only the four operators and parentheses.
+     */
+    private evaluate(tokens: readonly string[]): number {
+        const values: number[] = [];
+        const operators: string[] = [];
+
+        const fold = (): void => {
+            const operator = operators.pop();
+            const right = values.pop();
+            const left = values.pop();
+
+            if (operator === undefined || left === undefined || right === undefined) {
+                throw new Error('Malformed expression');
+            }
+
+            values.push(this.operate(left, right, operator));
+        };
+
+        for (const token of tokens) {
+            if (/\d/.test(token)) {
+                values.push(Number(token));
+            } else if (token === '(') {
+                operators.push(token);
+            } else if (token === ')') {
+                while (operators.length && operators[operators.length - 1] !== '(') {
+                    fold();
+                }
+
+                if (operators.pop() !== '(') {
+                    throw new Error('Unbalanced parentheses');
+                }
+            } else {
+                while (
+                    operators.length &&
+                    this.precedence(operators[operators.length - 1]) >=
+                        this.precedence(token)
+                ) {
+                    fold();
+                }
+
+                operators.push(token);
+            }
+        }
+
+        while (operators.length) {
+            if (operators[operators.length - 1] === '(') {
+                throw new Error('Unbalanced parentheses');
+            }
+
+            fold();
+        }
+
+        const [result, ...rest] = values;
+
+        if (result === undefined || rest.length) {
+            throw new Error('Malformed expression');
+        }
+
+        return result;
+    }
+
+    private precedence(operator: string | undefined): number {
+        if (operator === '+' || operator === '-') {
+            return 1;
+        }
+
+        return operator === '*' || operator === '/' ? 2 : 0;
+    }
+
+    private operate(left: number, right: number, operator: string): number {
+        if (operator === '-') {
+            return left - right;
+        }
+
+        if (operator === '+') {
+            return left + right;
+        }
+
+        if (operator === '*') {
+            return left * right;
+        }
+
+        return right === 0 ? Number.NaN : left / right;
     }
 }

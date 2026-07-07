@@ -26,15 +26,6 @@ export default class Page {
         'Phone Dialer',
     ];
 
-    protected size: 'fluid' | 'l' | 'm' | 's' = 'm';
-
-    protected readonly sizes: ReadonlyArray<'fluid' | 'l' | 'm' | 's'> = [
-        'fluid',
-        'l',
-        'm',
-        's',
-    ];
-
     protected disabled = false;
     protected readonly disabledVariants = [false, true];
     protected readonly value = signal('');

@@ -27,6 +27,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly input = viewChild<ElementRef<HTMLInputElement>>('input');
+
     protected readonly phoneNumber = signal('');
     protected readonly open = signal(false);
     protected readonly isCalling = signal(false);

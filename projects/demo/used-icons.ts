@@ -55,6 +55,7 @@ export const TUI_USED_ICONS = [
     '@tui.edit',
     '@tui.ellipsis',
     '@tui.ellipsis-vertical',
+    '@tui.equal',
     '@tui.euro',
     '@tui.external-link',
     '@tui.eye',

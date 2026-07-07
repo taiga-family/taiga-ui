@@ -5,39 +5,15 @@ import {
     Component,
     computed,
     contentChildren,
-    Directive,
     inject,
     input,
     model,
     output,
-    TemplateRef,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {filter, fromEvent, race, switchMap, take, timer} from 'rxjs';
 
-import {TuiKeypadHostDirective} from './keypad-host.directive';
-
-export type TuiKeypadAction = 'backspace' | 'clear' | 'enter';
-
-// eslint-disable-next-line
-export type TuiKeypadKey = TuiKeypadAction | (string & {});
-
-export type TuiKeypadCell = TuiKeypadKey | null;
-
-export const TUI_DEFAULT_KEYPAD: ReadonlyArray<readonly TuiKeypadCell[]> = [
-    ['1', '2', '3'],
-    ['4', '5', '6'],
-    ['7', '8', '9'],
-    [',', '0', 'backspace'],
-] as const;
-
-@Directive({selector: 'ng-template[tuiKeypadKey]'})
-export class TuiKeypadKeyDirective {
-    public readonly tuiKeypadKey = input.required<TuiKeypadKey>();
-    public readonly template = inject<TemplateRef<unknown>>(TemplateRef);
-}
+import {TUI_KEYPAD_OPTIONS, type TuiKeypadKey} from './keypad.options';
+import {TuiKeypadKeyDirective} from './keypad-key.directive';
 
 @Component({
     selector: 'tui-keypad',
@@ -46,26 +22,21 @@ export class TuiKeypadKeyDirective {
     styleUrl: './keypad.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.data-open]': 'open()',
-        '[attr.data-size]': 'size()',
         '[attr.disabled]': 'disabled() ? "" : null',
-        '[style.--tui-pad-columns]': 'columns()',
-        '[style.--tui-pad-rows]': 'rows()',
+        '[style.--t-columns]': 'columns()',
+        '[style.--t-rows]': 'rows()',
     },
 })
 export class TuiKeypadComponent {
-    private readonly host = inject(TuiKeypadHostDirective, {optional: true});
-    public readonly size = input<'fluid' | 'l' | 'm' | 's'>('m');
+    protected readonly options = inject(TUI_KEYPAD_OPTIONS);
 
-    public readonly keys =
-        input<ReadonlyArray<readonly TuiKeypadCell[]>>(TUI_DEFAULT_KEYPAD);
-
+    public readonly keys = input(this.options.keys);
     public readonly disabled = input(false, {transform: booleanAttribute});
     public readonly disabledKeys = input<readonly TuiKeypadKey[]>([]);
     public readonly activeKey = input<TuiKeypadKey | null>(null);
     public readonly value = model('');
     public readonly key = output<TuiKeypadKey>();
-    public readonly open = computed(() => this.host?.focused() ?? true);
+
     protected readonly keyTemplates = contentChildren(TuiKeypadKeyDirective);
 
     protected readonly columns = computed(() =>
@@ -78,31 +49,14 @@ export class TuiKeypadComponent {
         () => new Map(this.keyTemplates().map((d) => [d.tuiKeypadKey(), d.template])),
     );
 
-    constructor() {
-        const el = tuiInjectElement();
-
-        fromEvent<PointerEvent>(el, 'pointerdown')
-            .pipe(
-                filter(
-                    ({target}) =>
-                        (target as Element)?.closest('[data-key="backspace"]') !== null,
-                ),
-                switchMap(() =>
-                    race(
-                        timer(500),
-                        fromEvent(el, 'pointerup').pipe(
-                            take(1),
-                            filter(() => false),
-                        ),
-                    ),
-                ),
-                takeUntilDestroyed(),
-            )
-            .subscribe(() => this.value.set(''));
-    }
-
     protected isKeyDisabled(key: TuiKeypadKey): boolean {
         return this.disabled() || this.disabledKeys().includes(key);
+    }
+
+    protected content(key: TuiKeypadKey): string {
+        const icons = this.options.icons as Record<string, string | undefined>;
+
+        return icons[key] ?? key;
     }
 
     protected onKeyClick(key: TuiKeypadKey): void {
@@ -111,13 +65,19 @@ export class TuiKeypadComponent {
         }
 
         if (key === 'backspace') {
-            this.value.update((v) => v.slice(0, -1));
+            this.value.update((value) => value.slice(0, -1));
         } else if (key === 'clear') {
             this.value.set('');
         } else if (key !== 'enter') {
-            this.value.update((v) => v + key);
+            this.value.update((value) => value + key);
         }
 
         this.key.emit(key);
+    }
+
+    protected onLongTap(key: TuiKeypadKey): void {
+        if (key === 'backspace' && !this.isKeyDisabled(key)) {
+            this.value.set('');
+        }
     }
 }

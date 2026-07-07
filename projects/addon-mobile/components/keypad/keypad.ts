@@ -1,10 +1,9 @@
-import {TuiKeypadComponent, TuiKeypadKeyDirective} from './keypad.component';
-import {TuiKeypadHostDirective} from './keypad-host.directive';
+import {TuiKeypadComponent} from './keypad.component';
 import {TuiKeypadInputDirective} from './keypad-input.directive';
+import {TuiKeypadKeyDirective} from './keypad-key.directive';
 
 export const TuiKeypad = [
     TuiKeypadComponent,
     TuiKeypadKeyDirective,
     TuiKeypadInputDirective,
-    TuiKeypadHostDirective,
 ] as const;

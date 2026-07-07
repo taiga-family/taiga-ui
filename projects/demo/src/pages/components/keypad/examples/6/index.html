@@ -27,6 +27,7 @@
             <section>
                 <button
                     appearance="warning"
+                    aria-label="Headset"
                     size="l"
                     title="Headset"
                     tuiAvatar="@tui.headset"
@@ -34,6 +35,7 @@
                 ></button>
                 <button
                     appearance="negative"
+                    aria-label="Hang up"
                     size="l"
                     title="Hang up"
                     tuiAvatar="@tui.phone-off"
@@ -54,7 +56,6 @@
             />
 
             <tui-keypad
-                size="fluid"
                 [keys]="keys"
                 [(value)]="phoneNumber"
                 (key)="refocus()"
