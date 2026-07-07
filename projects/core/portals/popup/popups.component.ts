@@ -13,5 +13,6 @@ import {TuiPopupService} from './popup.service';
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [tuiProvide(TuiPortalService, TuiPopupService)],
+    host: {'aria-live': 'polite'},
 })
 export class TuiPopups extends TuiPortals {}
