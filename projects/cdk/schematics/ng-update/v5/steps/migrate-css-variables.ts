@@ -13,8 +13,8 @@ import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';
 
 const FONT_VARIABLES_REPLACEMENTS = [
-    {from: String.raw`--tui-font-family-text`, to: '--tui-typography-family-text'},
-    {from: String.raw`--tui-font-family-display`, to: '--tui-typography-family-display'},
+    {from: '--tui-font-family-text', to: '--tui-typography-family-text'},
+    {from: '--tui-font-family-display', to: '--tui-typography-family-display'},
     {from: '--tui-font-heading-([1-6])', to: '--tui-typography-heading-h$1'},
     {from: '--tui-font-heading-h([1-6])', to: '--tui-typography-heading-h$1'},
     {from: String.raw`--tui-font-text\)`, to: '--tui-typography-family-text)'},
