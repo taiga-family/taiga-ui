@@ -135,7 +135,7 @@ export abstract class TuiInputDateBase<
         this.onChange(value as T);
         this.open.set(false);
 
-        if (!this.el.closest('tui-dropdown')) {
+        if (this.mobile && !this.el.closest('tui-dropdown')) {
             this.el.blur();
         }
     }
