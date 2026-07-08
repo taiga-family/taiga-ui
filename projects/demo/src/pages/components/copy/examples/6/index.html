@@ -1,0 +1,25 @@
+<div
+    [tuiDropdown]="dropdown"
+    [tuiDropdownOpen]="open"
+    (tuiDropdownOpenChange)="open = $event"
+>
+    <button
+        tuiButton
+        type="button"
+    >
+        Open dropdown
+    </button>
+</div>
+
+<ng-template #dropdown>
+    <tui-textfield [style.width.px]="400">
+        <label tuiLabel>Copy link</label>
+
+        <input
+            tuiInput
+            [(ngModel)]="link"
+        />
+
+        <tui-icon tuiCopy />
+    </tui-textfield>
+</ng-template>

@@ -1,4 +1,3 @@
-import {Clipboard} from '@angular/cdk/clipboard';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
@@ -14,6 +13,7 @@ import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_COPY_OPTIONS} from './copy.options';
+import {TuiClipboard} from './copy-clipboard';
 
 @Directive({
     selector: 'tui-icon[tuiCopy]',
@@ -40,7 +40,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
-    private readonly clipboard = inject(Clipboard);
+    private readonly clipboard = inject(TuiClipboard);
     private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
@@ -75,16 +75,21 @@ export class TuiCopyDirective {
     }
 
     protected copy(): void {
-        if (this.multi) {
-            this.clipboard.copy(
-                this.textfield.control()?.value.map(this.stringify()).join(', '),
-            );
-        } else {
+        if (!this.multi) {
             this.textfield.input()?.nativeElement.select();
-            this.clipboard.copy(this.textfield.value());
         }
 
-        this.copied$.next();
+        void this.clipboard.copy(this.value).then((copied) => {
+            if (copied) {
+                this.copied$.next();
+            }
+        });
+    }
+
+    private get value(): string {
+        return this.multi
+            ? this.textfield.control()?.value.map(this.stringify()).join(', ')
+            : this.textfield.value();
     }
 
     private get multi(): boolean {
