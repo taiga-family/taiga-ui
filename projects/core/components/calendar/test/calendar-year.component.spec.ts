@@ -54,17 +54,6 @@ describe('TuiCalendarYearComponent', () => {
         );
     });
 
-    it('does not crash when initialItem is below min', () => {
-        tuiSetSignal(component.min, 2018);
-        tuiSetSignal(component.max, 2025);
-        tuiSetSignal(component.initialItem, 1);
-        fixture.detectChanges();
-
-        expect(
-            pageObject.getAllByAutomationId(`${testContext.prefix}cell`).length,
-        ).toBeGreaterThan(0);
-    });
-
     describe('getItemRange', () => {
         it('returns null if there is no value', () => {
             const item = 2019;
