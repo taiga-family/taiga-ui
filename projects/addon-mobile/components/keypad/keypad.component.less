@@ -19,14 +19,12 @@
 }
 
 .t-key {
-    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list, plugin/no-unsupported-browser-features -- container query units are required for fluid sizing */
-    --t-size: calc(0.86 * min(100cqi / var(--t-columns, 3), 100cqb / var(--t-rows, 4)));
-
     display: flex;
     align-items: center;
     justify-content: center;
-    inline-size: var(--t-size);
-    block-size: var(--t-size);
+    block-size: 86%;
+    aspect-ratio: 96 / 84; // oval highlight (~1.14), matches the spec proportions
+    max-inline-size: 92%;
     border: none;
     border-radius: 50%;
     background: transparent;
