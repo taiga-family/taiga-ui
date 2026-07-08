@@ -13,6 +13,7 @@
                     [disabled]="isKeyDisabled(key)"
                     (click)="onKeyClick(key)"
                     (longtap)="onLongTap(key)"
+                    (mousedown.zoneless.prevent)="(0)"
                     (pointerdown.zoneless.prevent)="(0)"
                 >
                     @if (templateMap().get(key); as tpl) {
