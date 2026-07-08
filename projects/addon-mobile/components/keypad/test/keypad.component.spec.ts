@@ -40,6 +40,17 @@ describe('Keypad', () => {
             expect(component).toBeTruthy();
         });
 
+        it('gives every key button an accessible name', () => {
+            const buttons: HTMLButtonElement[] = Array.from(
+                fixture.nativeElement.querySelectorAll('button.t-key'),
+            );
+
+            expect(buttons.length).toBeGreaterThan(0);
+            expect(buttons.every((button) => !!button.getAttribute('aria-label'))).toBe(
+                true,
+            );
+        });
+
         it('appends a clicked key to the value and emits it', () => {
             const emitted: string[] = [];
 

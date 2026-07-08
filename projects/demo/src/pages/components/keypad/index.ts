@@ -12,6 +12,7 @@ import {TuiNotificationService} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiKeypad],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

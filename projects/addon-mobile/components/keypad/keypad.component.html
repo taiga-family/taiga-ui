@@ -7,6 +7,7 @@
                 <button
                     type="button"
                     class="t-key"
+                    [attr.aria-label]="key"
                     [attr.data-key]="key"
                     [class.t-key_active]="activeKey() === key"
                     [disabled]="isKeyDisabled(key)"
