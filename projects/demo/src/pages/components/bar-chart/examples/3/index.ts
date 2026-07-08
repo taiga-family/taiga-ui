@@ -12,10 +12,10 @@ import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
 })
 export default class Example {
     protected readonly value = [
-        [5000, -5000, 8000, -3000, 6000],
-        [-4000, 7000, -6000, 4000, -2000],
+        [5400, -4200, 6800, -3100, 7200, -5600, 4900, -3800],
+        [-3600, 6100, -4800, 5900, -2400, 6700, -5200, 4300],
     ];
 
-    protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', 'Apr', 'May', ''];
+    protected readonly labelsX = ['Jan 2021', 'Apr', 'Jul', 'Oct', ''];
     protected readonly labelsY = ['-10 000', '0', '10 000'];
 }
