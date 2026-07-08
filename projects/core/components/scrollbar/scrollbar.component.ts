@@ -3,7 +3,7 @@ import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiScrollControls} from './scroll-controls.component';
-import {TUI_SCROLL_REF} from './scroll-ref.directive';
+import {TUI_SCROLL_REF, TuiScrollRef} from './scroll-ref.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 
 /**
@@ -29,6 +29,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
             useFactory: () => inject(TuiScrollbar).browserScrollRef,
         },
     ],
+    hostDirectives: [TuiScrollRef],
     host: {
         '[class._native-hidden]':
             'options.mode !== "native" && (!isIOS || options.mode === "hidden")',

@@ -1,9 +1,10 @@
 import {Directive, type OnInit} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
+import {TuiScrollRef} from './scroll-ref.directive';
 import {TUI_SCROLLABLE} from './scrollbar.component';
 
-@Directive({selector: '[tuiScrollable]'})
+@Directive({selector: '[tuiScrollable]', hostDirectives: [TuiScrollRef]})
 export class TuiScrollable implements OnInit {
     private readonly el = tuiInjectElement();
 

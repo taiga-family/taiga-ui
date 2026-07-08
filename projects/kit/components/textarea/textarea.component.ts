@@ -1,6 +1,5 @@
 import {
     Directive,
-    ElementRef,
     inject,
     INJECTOR,
     input,
@@ -9,18 +8,16 @@ import {
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 
 import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 import {TuiTextareaContent} from './textarea-content.component';
 
 @Directive({
     selector: 'textarea[tuiTextarea]',
-    providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
-    hostDirectives: [TuiWithInput],
+    hostDirectives: [TuiWithInput, TuiScrollRef],
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'isMobile',
