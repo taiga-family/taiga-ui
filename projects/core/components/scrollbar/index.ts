@@ -1,4 +1,5 @@
 export * from './scroll-controls.component';
+export * from './scroll-controls.service';
 export * from './scroll-into-view.directive';
 export * from './scroll-ref.directive';
 export * from './scrollable.directive';
