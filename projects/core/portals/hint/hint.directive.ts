@@ -62,10 +62,7 @@ export class TuiHintDirective<C>
     });
 
     public readonly visible = outputFromObservable(
-        toObservable(this.ref).pipe(
-            map(() => !!this.ref()),
-            skip(1),
-        ),
+        toObservable(this.ref).pipe(map(Boolean), skip(1)),
         {alias: 'tuiHintVisible'},
     );
 
@@ -90,7 +87,7 @@ export class TuiHintDirective<C>
     public toggle(show: boolean): void {
         if (show && this.content() && !this.ref()) {
             this.ref.set(this.service.add(this.component));
-        } else {
+        } else if (!show) {
             this.ref()?.destroy();
             this.ref.set(null);
         }
