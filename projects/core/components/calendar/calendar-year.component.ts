@@ -18,7 +18,6 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
@@ -40,19 +39,15 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
 export class TuiCalendarYear {
     private readonly hoveredItem = signal<number | null>(null);
 
-    private readonly clampedInitial = computed(() =>
-        tuiClamp(this.initialItem(), this.min(), this.max()),
-    );
-
     private readonly calculatedMin = computed(() => {
-        const initial = this.clampedInitial() - LIMIT;
+        const initial = this.initialItem() - LIMIT;
         const min = this.min() ?? MIN_YEAR;
 
         return min > initial ? min : initial;
     });
 
     private readonly calculatedMax = computed(() => {
-        const initial = this.clampedInitial() + LIMIT;
+        const initial = this.initialItem() + LIMIT;
         const max = this.max() ?? MAX_YEAR;
 
         return max < initial ? max + 1 : initial;
