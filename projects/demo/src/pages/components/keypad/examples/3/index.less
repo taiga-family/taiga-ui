@@ -63,14 +63,16 @@
     display: grid;
     grid-area: auto / 1;
 
+    // clip only while collapsing/expanding, so pressed keys aren't cut off at rest
+    &.tui-enter .pad-inner,
+    &.tui-leave .pad-inner {
+        overflow: hidden;
+    }
+
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiCollapse;
     }
-}
-
-.pad-inner {
-    overflow: hidden;
 }
 
 tui-keypad {
