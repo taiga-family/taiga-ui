@@ -7,3 +7,4 @@ export * from './scrollbar.component';
 export * from './scrollbar.directive';
 export * from './scrollbar.options';
 export * from './scrollbar.service';
+export * from './scrollbar-position.directive';
