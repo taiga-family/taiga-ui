@@ -2106,16 +2106,16 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show TableBar &lt;/button&gt;
-&lt;tui-action-bar *tuiPopup=&quot;open()&quot; size=&quot;s&quot; &gt;
-&lt;span [style.width.%]=&quot;isMobile() ? 100 : null&quot;&gt;Table bar opened&lt;/span&gt;
-&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.trash&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Remove &lt;/button&gt;
-&lt;button iconStart=&quot;@tui.x&quot; tuiIconButton type=&quot;button&quot; [appearance]=&quot;isMobile() ? &#039;secondary-grayscale&#039; : &#039;icon&#039;&quot; (click)=&quot;open.set(false)&quot; &gt; Close &lt;/button&gt;
+&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show ActionBar &lt;/button&gt;
+&lt;tui-action-bar *tuiPopup=&quot;open&quot; size=&quot;s&quot; &gt;
+&lt;span [style.width.%]=&quot;isMobile() ? 100 : null&quot;&gt;Action bar opened&lt;/span&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.trash&quot; tuiButton type=&quot;button&quot; (click)=&quot;open = false&quot; &gt; Remove &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.x&quot; tuiIconButton type=&quot;button&quot; [appearance]=&quot;isMobile() ? &#039;secondary-grayscale&#039; : &#039;icon&#039;&quot; (click)=&quot;open = false&quot; &gt; Close &lt;/button&gt;
 &lt;/tui-action-bar&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, signal} from &#039;@angular/core&#039;;
+import {Component, computed, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TUI_BREAKPOINT, TuiButton, TuiPopup} from &#039;@taiga-ui/core&#039;;
@@ -2130,7 +2130,7 @@ import {TuiActionBar} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected readonly open = signal(false);
+    protected open = false;
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 }
 ```
@@ -2139,9 +2139,9 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button automation-id=&quot;open-table-bar-on-top&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show TableBar on top &lt;/button&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show ActionBar on top &lt;/button&gt;
 &lt;tui-action-bar *tuiPopup=&quot;open()&quot;&gt;
-&lt;span&gt;Table bar on top opened&lt;/span&gt;
+&lt;span&gt;Action bar on top opened&lt;/span&gt;
 &lt;button iconStart=&quot;@tui.trash&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Close &lt;/button&gt;
 &lt;/tui-action-bar&gt;
 ```
