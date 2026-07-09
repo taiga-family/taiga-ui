@@ -1,0 +1,14 @@
+<tui-textfield multi>
+    <label tuiLabel>Choose dates</label>
+
+    <input
+        tuiInputDateMulti
+        [(ngModel)]="value"
+    />
+
+    <tui-calendar *tuiDropdown />
+
+    <tui-input-chip *tuiItem />
+</tui-textfield>
+
+<p>{{ value | json }}</p>
