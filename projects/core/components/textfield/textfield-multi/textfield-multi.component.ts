@@ -91,8 +91,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
         '(click.prevent)': 'onClick($event.target)',
-        '(tuiActiveZoneChange)':
-            '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
+        '(tuiActiveZoneChange)': 'onActiveZone($event)',
         // TODO: Remove in v5
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
@@ -170,6 +169,13 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
 
         if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
             this.interactiveInput?.nativeElement.focus();
+        }
+    }
+
+    protected onActiveZone(active: boolean): void {
+        if (!active) {
+            this.el.scrollTo({left: 0});
+            this.cva?.onTouched();
         }
     }
 
