@@ -87,7 +87,7 @@
 ### scrollbar
 
 ```text
-  TuiScrollControls, TuiScrollIntoView, TuiScrollRef, TuiScrollable, TuiScrollbar, TuiScrollbarDirective, TuiScrollbarOptions, TuiScrollbarService
+  TuiScrollControls, TuiScrollControlsService, TuiScrollIntoView, TuiScrollRef, TuiScrollable, TuiScrollbar, TuiScrollbarDirective, TuiScrollbarOptions, TuiScrollbarPosition, TuiScrollbarService
 ```
 ### slider
 
