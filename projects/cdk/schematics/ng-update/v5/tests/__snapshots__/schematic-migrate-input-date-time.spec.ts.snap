@@ -11,7 +11,7 @@ exports[`ng-update adds TODO comment for dynamic [tuiTextfieldLabelOutside]: tes
                 </tui-input-date-time>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.
+                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for floating label or input[placeholder] for outside label.
 -->
 <tui-textfield
                     

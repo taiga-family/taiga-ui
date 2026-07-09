@@ -2,7 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
-import {TODO_MARK} from '../../../../utils/insert-todo';
+import {LABEL_OUTSIDE_TODO_MESSAGE, TODO_MARK} from '../../../../utils/insert-todo';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
@@ -139,7 +139,7 @@ export function migrateInputDateTime({
 
             recorder.insertLeft(
                 insertAt,
-                `<!-- ${TODO_MARK} [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.\n-->\n`,
+                `<!-- ${TODO_MARK} ${LABEL_OUTSIDE_TODO_MESSAGE}\n-->\n`,
             );
         }
 
