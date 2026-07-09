@@ -14,6 +14,5 @@ export default class Example {
         'InputCopy',
         'With CopyProcessor',
         'ButtonCopy',
-        'Inside dropdown',
     ];
 }
