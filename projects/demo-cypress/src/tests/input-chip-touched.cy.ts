@@ -44,9 +44,7 @@ describe('InputChip | touched state', () => {
         cy.mount(TestInputChip);
 
         cy.window().then((win) => {
-            cy.stub(win.Element.prototype, 'scrollTo').returns(
-                Promise.resolve(true) as never,
-            );
+            cy.stub(win.Element.prototype, 'scrollTo').returns(Promise.resolve(true));
         });
 
         cy.get('[data-testid="state"]').should('contain.text', 'TOUCHED: FALSE');
