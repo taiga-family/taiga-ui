@@ -98,14 +98,12 @@ export class TuiCopyDirective {
         let copied = false;
 
         const listener = (event: ClipboardEvent): void => {
-            if (!event.clipboardData) {
-                return;
+            if (event.clipboardData) {
+                event.clipboardData.setData('text/plain', text);
+                event.preventDefault();
+
+                copied = true;
             }
-
-            event.clipboardData.setData('text/plain', text);
-            event.preventDefault();
-
-            copied = true;
         };
 
         this.doc.addEventListener('copy', listener);
