@@ -181,12 +181,7 @@ describe('TuiInputDateMultiDirective', () => {
 
     @Component({
         standalone: true,
-        imports: [
-            FormsModule,
-            TuiInputDateMulti,
-            TuiRoot,
-            TuiTextfield,
-        ],
+        imports: [FormsModule, TuiInputDateMulti, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
                 <tui-textfield multi>
@@ -212,10 +207,7 @@ describe('TuiInputDateMultiDirective', () => {
         ],
     })
     class CustomChipProviderTest {
-        public value: Date[] = [
-            new Date(2026, 2, 11),
-            new Date(2026, 2, 12),
-        ];
+        public value: Date[] = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
     }
 
     describe('custom provider with tui-input-chip', () => {
@@ -234,11 +226,14 @@ describe('TuiInputDateMultiDirective', () => {
         });
 
         it('removes chip with valueTransformer', async () => {
-            const chips = fixture.debugElement.queryAll(By.directive(TuiInputChipComponent));
+            const chips = fixture.debugElement.queryAll(
+                By.directive(TuiInputChipComponent),
+            );
 
             expect(chips).toHaveLength(2);
 
-            const component = chips[0]!.componentInstance as TuiInputChipComponent<TuiDay> & {
+            const component = chips[0]!
+                .componentInstance as TuiInputChipComponent<TuiDay> & {
                 delete(): void;
             };
 
