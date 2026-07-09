@@ -1,4 +1,5 @@
 import {
+    type ComponentRef,
     Directive,
     inject,
     INJECTOR,
@@ -10,14 +11,13 @@ import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 
 import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 import {TuiTextareaContent} from './textarea-content.component';
 
 @Directive({
     selector: 'textarea[tuiTextarea]',
-    hostDirectives: [TuiWithInput, TuiScrollRef],
+    hostDirectives: [TuiWithInput],
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'isMobile',
@@ -31,22 +31,24 @@ export class TuiTextareaComponent implements OnInit {
     private readonly vcr = inject(ViewContainerRef);
     private readonly injector = inject(INJECTOR);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    private ref?: TuiTextareaContent;
+    private ref?: ComponentRef<TuiTextareaContent>;
 
-    protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
     public readonly min = input(this.options.min);
     public readonly max = input(this.options.max);
     public readonly content = input(this.options.content);
+    public readonly el = tuiInjectElement<HTMLTextAreaElement>();
 
     public ngOnInit(): void {
         this.ref = this.vcr.createComponent(TuiTextareaContent, {
             injector: this.injector,
-        }).instance;
+        });
     }
 
     protected onScroll(): void {
-        requestAnimationFrame(() => this.ref?.scrollTo(this.el.scrollTop));
+        requestAnimationFrame(() =>
+            this.ref?.location.nativeElement.scrollTo({top: this.el.scrollTop}),
+        );
     }
 }
