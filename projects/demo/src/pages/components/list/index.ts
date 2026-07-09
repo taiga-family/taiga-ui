@@ -8,5 +8,11 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Bulleted', 'Numbered', 'Nested', 'Long text'];
+    protected readonly examples = [
+        'Bulleted',
+        'Numbered',
+        'Nested',
+        'Long text',
+        'Custom color',
+    ];
 }
