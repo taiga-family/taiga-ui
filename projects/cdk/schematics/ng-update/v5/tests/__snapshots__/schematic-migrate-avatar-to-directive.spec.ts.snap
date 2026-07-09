@@ -30,6 +30,13 @@ exports[`ng-update avatar complex templates: test.html 1`] = `
 }
 `;
 
+exports[`ng-update avatar keeps a bound string literal [src] without a SafeResourceUrl TODO: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar [src]="'assets/avatar.png'"></tui-avatar>",
+  "1. After": "<span [tuiAvatar]="'assets/avatar.png'"></span>",
+}
+`;
+
 exports[`ng-update avatar moves src value to tuiAvatar attribute on host element: test.html 1`] = `
 {
   "0. Before": "<a tuiAvatar src="avatar.png"></a>",
@@ -73,7 +80,8 @@ exports[`ng-update avatar picture inside tui-avatar: test.html 1`] = `
 exports[`ng-update avatar replaces bound src attribute with bound tuiAvatar: test.html 1`] = `
 {
   "0. Before": "<tui-avatar [src]="avatarUrl" size="m"></tui-avatar>",
-  "1. After": "<span [tuiAvatar]="avatarUrl" size="m"></span>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tuiAvatar accepts only a string (icon name or URL). If this value is a SafeResourceUrl or another non-string image source, render it via an inner <img> instead: <span tuiAvatar><img [src]="..." alt="" /></span>. -->
+<span [tuiAvatar]="avatarUrl" size="m"></span>",
 }
 `;
 
