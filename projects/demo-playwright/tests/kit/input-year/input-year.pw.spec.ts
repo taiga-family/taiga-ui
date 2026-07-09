@@ -116,8 +116,6 @@ test.describe('InputYear', () => {
     });
 
     test.describe('Min year is set to 2020 and max is set to 2025', () => {
-        let demo: Locator;
-
         test.beforeEach(async ({page}) => {
             await tuiGoto(
                 page,
@@ -126,7 +124,6 @@ test.describe('InputYear', () => {
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.demo.locator('input');
-            demo = page.locator('tui-doc-demo');
 
             await documentationPO.prepareBeforeScreenshot();
             await input.click();
@@ -135,18 +132,22 @@ test.describe('InputYear', () => {
 
         test('should not allow years below 2020', async () => {
             await input.pressSequentially('2019');
-            await expect.soft(demo).toHaveScreenshot('13-input-year.png');
+            await expect(input).toHaveValue('2019');
+            await expect(documentationPO.value).toContainText('"value": null');
 
             await input.blur();
-            await expect.soft(demo).toHaveScreenshot('14-input-year.png');
+            await expect(input).toHaveValue('2020');
+            await expect(documentationPO.value).toContainText('"value": 2020');
         });
 
         test('should not allow years greater than 2025', async () => {
             await input.pressSequentially('2030');
-            await expect.soft(demo).toHaveScreenshot('15-input-year.png');
+            await expect(input).toHaveValue('2025');
+            await expect(documentationPO.value).toContainText('"value": 2025');
 
             await input.blur();
-            await expect.soft(demo).toHaveScreenshot('16-input-year.png');
+            await expect(input).toHaveValue('2025');
+            await expect(documentationPO.value).toContainText('"value": 2025');
         });
     });
 });
