@@ -29945,6 +29945,38 @@ export default class Example {}
 }
 ```
 
+#### Custom color
+
+**Template:**
+```html
+<ul style="--tui-list-marker: var(--tui-status-negative)" tuiList >
+<li>All bullets in this list share the same custom color</li>
+<!-- prettier-ignore -->
+<li>Set the<code>--tui-list-marker</code>variable on the list itself</li>
+<li>No need to override the bullet background manually</li>
+</ul>
+<ul tuiList>
+<li>Bullets can also be recolored individually</li>
+<li style="--tui-list-marker: var(--tui-status-warning)">This one is a warning</li>
+<li style="--tui-list-marker: var(--tui-status-positive)">This one is positive</li>
+</ul>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiList],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
 
 ### TypeScript
 
@@ -29959,7 +29991,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Bulleted', 'Numbered', 'Nested', 'Long text'];
+    protected readonly examples = [
+        'Bulleted',
+        'Numbered',
+        'Nested',
+        'Long text',
+        'Custom color',
+    ];
 }
 ```
 
