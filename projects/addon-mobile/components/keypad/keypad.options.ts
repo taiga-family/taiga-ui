@@ -21,10 +21,6 @@ export const TUI_DEFAULT_KEYPAD: ReadonlyArray<readonly TuiKeypadCell[]> = [
 
 export interface TuiKeypadOptions {
     readonly keys: ReadonlyArray<readonly TuiKeypadCell[]>;
-    /**
-     * Content for action keys. An `@tui.*` value is rendered as an icon,
-     * any other string is rendered as plain text (e.g. `AC` for `clear`).
-     */
     readonly icons: Record<TuiKeypadAction, string>;
 }
 

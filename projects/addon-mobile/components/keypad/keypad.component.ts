@@ -34,6 +34,7 @@ export class TuiKeypadComponent {
     public readonly disabled = input(false, {transform: booleanAttribute});
     public readonly disabledKeys = input<readonly TuiKeypadKey[]>([]);
     public readonly activeKey = input<TuiKeypadKey | null>(null);
+    public readonly ariaLabels = input<Record<string, string>>({});
     public readonly value = model('');
     public readonly key = output<TuiKeypadKey>();
 
@@ -57,6 +58,13 @@ export class TuiKeypadComponent {
         const icons = this.options.icons as Record<string, string | undefined>;
 
         return icons[key] ?? key;
+    }
+
+    protected ariaLabel(key: TuiKeypadKey): string | null {
+        const isPlainText =
+            !this.templateMap().has(key) && !this.content(key).startsWith('@tui.');
+
+        return this.ariaLabels()[key] || (isPlainText ? null : key);
     }
 
     protected onKeyClick(key: TuiKeypadKey): void {
