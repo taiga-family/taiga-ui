@@ -253,4 +253,39 @@ describe('Keypad', () => {
             expect(keydown('v', {metaKey: true}).defaultPrevented).toBe(false);
         });
     });
+
+    describe('custom template', () => {
+        @Component({
+            imports: [TuiKeypad],
+            template: `
+                <tui-keypad [keys]="keys">
+                    <ng-template tuiKeypadKey="backspace">x</ng-template>
+                </tui-keypad>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {
+            protected readonly keys: ReadonlyArray<readonly TuiKeypadCell[]> = [
+                ['backspace'],
+            ];
+        }
+
+        let fixture: ComponentFixture<Test>;
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({imports: [Test]});
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(Test);
+            fixture.detectChanges();
+        });
+
+        it('defers to a custom template instead of forcing an aria-label', () => {
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector(
+                '[data-key="backspace"]',
+            );
+
+            expect(button.getAttribute('aria-label')).toBeNull();
+            expect(button.textContent?.trim()).toBe('x');
+        });
+    });
 });

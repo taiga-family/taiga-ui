@@ -61,10 +61,11 @@ export class TuiKeypadComponent {
     }
 
     protected ariaLabel(key: TuiKeypadKey): string | null {
-        const isPlainText =
-            !this.templateMap().has(key) && !this.content(key).startsWith('@tui.');
+        // only icon keys without a template need a fallback name; text/templates name themselves
+        const needsFallback =
+            !this.templateMap().has(key) && this.content(key).startsWith('@tui.');
 
-        return this.ariaLabels()[key] || (isPlainText ? null : key);
+        return this.ariaLabels()[key] || (needsFallback ? key : null);
     }
 
     protected onKeyClick(key: TuiKeypadKey): void {

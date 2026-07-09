@@ -16,6 +16,11 @@
 
 .t-row {
     display: contents;
+
+    // display:contents drops the row box; keep each row on its own grid line
+    & > :first-child {
+        grid-column-start: 1;
+    }
 }
 
 .t-key {

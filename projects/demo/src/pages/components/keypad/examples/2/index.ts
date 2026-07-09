@@ -21,4 +21,5 @@ const CUSTOM_PAD = [
 export default class Example {
     protected readonly value = signal('');
     protected readonly keys = CUSTOM_PAD;
+    protected readonly ariaLabels: Record<string, string> = {backspace: 'Backspace'};
 }
