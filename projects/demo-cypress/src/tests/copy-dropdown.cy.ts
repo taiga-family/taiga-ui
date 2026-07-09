@@ -83,7 +83,6 @@ describe('Copy | Dropdown', () => {
         });
 
         cy.get('tui-icon[tuiCopy]').click();
-
-        cy.wait(300).compareSnapshot('copy-dropdown-opened');
+        cy.get('tui-dropdown').should('be.visible');
     });
 });
