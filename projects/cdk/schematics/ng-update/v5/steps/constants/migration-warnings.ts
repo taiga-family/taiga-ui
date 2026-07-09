@@ -175,7 +175,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TUI_MONTH_FORMATTER',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TUI_MONTH_FORMATTER has been removed. Use tuiFormatDate pipe or implement custom month formatting with Intl.DateTimeFormat.',
+            'TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.',
     },
     {
         name: 'TUI_FONTS_READY',
@@ -248,11 +248,5 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
-    },
-    {
-        name: 'TUI_MONTH_FORMATTER',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.',
     },
 ];
