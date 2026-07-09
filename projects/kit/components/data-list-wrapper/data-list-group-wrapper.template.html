@@ -7,7 +7,7 @@
             @if (group.hasHiddenGroupLabel && group.items.length && !$first) {
                 <hr />
             }
-            @if (multi && group.hasGroupBoundary && group.items.length) {
+            @if (multi && group.items.length) {
                 <tui-opt-group
                     tuiMultiSelectGroup
                     [label]="group.label"
