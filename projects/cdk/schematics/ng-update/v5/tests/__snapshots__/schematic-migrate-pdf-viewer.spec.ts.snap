@@ -1,28 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewer import from @taiga-ui/kit to @taiga-ui/legacy: test.ts 1`] = `
+exports[`ng-update TuiPdfViewer migration should migrate TUI_PDF_VIEWER_OPTIONS token import from @taiga-ui/kit to @taiga-ui/legacy: test.ts 1`] = `
 {
   "0. Before": "
-                import {TuiPdfViewer} from '@taiga-ui/kit';
+                import {inject} from '@angular/core';
+                import {TUI_PDF_VIEWER_OPTIONS} from '@taiga-ui/kit';
 
                 @Component({})
                 export class Test {
-                    constructor(private readonly pdfViewer: TuiPdfViewer) {}
-
-                    public show(): void {
-                        // some usage
-                    }
+                    protected readonly options = inject(TUI_PDF_VIEWER_OPTIONS);
                 }
             ",
-  "1. After": "import { TuiPdfViewer } from "@taiga-ui/legacy";
+  "1. After": "import { TUI_PDF_VIEWER_OPTIONS } from "@taiga-ui/legacy";
 
-                                @Component({})
+                import {inject} from '@angular/core';
+
+                @Component({})
                 export class Test {
-                    constructor(private readonly pdfViewer: TuiPdfViewer) {}
-
-                    public show(): void {
-                        // some usage
-                    }
+                    protected readonly options = inject(TUI_PDF_VIEWER_OPTIONS);
                 }
             ",
 }
@@ -52,6 +47,46 @@ exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewerComponent i
                         // some usage
                     }
                 }
+            ",
+}
+`;
+
+exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewerComponent import from @taiga-ui/kit to @taiga-ui/legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPdfViewerComponent} from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiPdfViewerComponent],
+                })
+                export class Test {}
+            ",
+  "1. After": "import { TuiPdfViewerComponent } from "@taiga-ui/legacy";
+
+                                @Component({
+                    imports: [TuiPdfViewerComponent],
+                })
+                export class Test {}
+            ",
+}
+`;
+
+exports[`ng-update TuiPdfViewer migration should migrate TuiPdfViewerDirective import from @taiga-ui/kit to @taiga-ui/legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPdfViewerDirective} from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiPdfViewerDirective],
+                })
+                export class Test {}
+            ",
+  "1. After": "import { TuiPdfViewerDirective } from "@taiga-ui/legacy";
+
+                                @Component({
+                    imports: [TuiPdfViewerDirective],
+                })
+                export class Test {}
             ",
 }
 `;

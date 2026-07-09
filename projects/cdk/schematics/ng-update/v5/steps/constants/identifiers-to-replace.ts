@@ -189,11 +189,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiPdfViewer',
+            name: 'TuiPdfViewerComponent',
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiPdfViewer',
+            name: 'TuiPdfViewerComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewerDirective',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },
@@ -204,6 +214,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiPdfViewerService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_PDF_VIEWER_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_PDF_VIEWER_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_PDF_VIEWER_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_PDF_VIEWER_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewerOptions',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },
