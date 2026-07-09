@@ -126,4 +126,12 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         from: {attrName: '[(directionOrder)]', withTagNames: ['table']},
         to: {attrName: '[(direction)]'},
     },
+    {
+        from: {attrName: 'src', withTagNames: ['tui-svg']},
+        to: {attrName: 'icon'},
+    },
+    {
+        from: {attrName: '[src]', withTagNames: ['tui-svg']},
+        to: {attrName: '[icon]'},
+    },
 ];

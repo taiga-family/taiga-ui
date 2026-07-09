@@ -47,6 +47,7 @@ export function tuiGetHintProviders(): Provider[] {
 }
 
 const GAP = 8;
+const ARROW_OFFSET = 22;
 
 @Component({
     selector: 'tui-hint',
@@ -132,15 +133,6 @@ export class TuiHintComponent {
     }
 
     private update(left: number, top: number): void {
-        if (
-            this.el.getAnimations?.().length &&
-            this.el
-                .getAnimations?.()
-                .every(({effect}) => effect?.getComputedTiming().progress !== null)
-        ) {
-            return;
-        }
-
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
 
@@ -156,16 +148,25 @@ export class TuiHintComponent {
             Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
         );
 
+        const startX = Math.round(safeLeft) === Math.round(rect.left);
+        const startY = Math.round(top) === Math.round(rect.top);
+        const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
+        const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
+
         const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
             rect.top + rect.height / 2 - top,
         ]);
 
+        /* eslint-disable no-nested-ternary */
+        const x = startX ? ARROW_OFFSET : endX ? clientWidth - ARROW_OFFSET : beakLeft;
+        const y = startY ? ARROW_OFFSET : endY ? clientHeight - ARROW_OFFSET : beakTop;
+
         this.apply(
             tuiPx(Math.round(top)),
             tuiPx(Math.round(safeLeft)),
-            Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
-            Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
+            Math.round((tuiClamp(y, 0, clientHeight) / clientHeight) * 100),
+            Math.round((tuiClamp(x, 0, clientWidth) / clientWidth) * 100),
         );
     }
 }

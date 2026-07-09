@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiDirectiveBinding hint property names renames TuiHintDirective binding from tuiHint to content: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDirectiveBinding} from '@taiga-ui/cdk';
+                import {TuiHintDirective} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly hint = tuiDirectiveBinding(
+                        TuiHintDirective,
+                        'tuiHint',
+                        this.texts,
+                    );
+                }
+            ",
+  "1. After": "
+                import {tuiDirectiveBinding} from '@taiga-ui/cdk';
+                import {TuiHintDirective} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly hint = tuiDirectiveBinding(
+                        TuiHintDirective,
+                        'content',
+                        this.texts,
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update tuiDirectiveBinding hint property names renames TuiHintManual binding from tuiHintManual to visible: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiDirectiveBinding} from '@taiga-ui/cdk';
+                import {TuiHintManual} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly manual = tuiDirectiveBinding(
+                        TuiHintManual,
+                        'tuiHintManual',
+                        null,
+                    );
+                }
+            ",
+  "1. After": "
+                import {tuiDirectiveBinding} from '@taiga-ui/cdk';
+                import {TuiHintManual} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly manual = tuiDirectiveBinding(
+                        TuiHintManual,
+                        'visible',
+                        null,
+                    );
+                }
+            ",
+}
+`;

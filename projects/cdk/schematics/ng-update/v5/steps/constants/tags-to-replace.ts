@@ -23,6 +23,10 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         addAttributes: ['tuiCardLarge'],
     },
     {
+        from: 'tui-svg',
+        to: 'tui-icon',
+    },
+    {
         from: 'nav',
         to: 'tui-stepper',
         filterFn: (element) => hasElementAttribute(element, 'tuiStepper'),

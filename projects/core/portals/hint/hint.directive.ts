@@ -6,8 +6,9 @@ import {
     input,
     type OnChanges,
     type OnDestroy,
-    output,
+    signal,
 } from '@angular/core';
+import {outputFromObservable, toObservable} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsVehicle,
@@ -16,6 +17,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {map, skip} from 'rxjs';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintDriver} from './hint-driver.directive';
@@ -41,7 +43,7 @@ import {TuiHintPosition} from './hint-position.directive';
         },
         {
             directive: TuiHintPosition,
-            inputs: ['tuiHintDirection', 'tuiHintOffset'],
+            inputs: ['tuiHintDirection', 'tuiHintCentered', 'tuiHintOffset'],
             outputs: ['tuiHintDirectionChange'],
         },
     ],
@@ -50,7 +52,7 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiPopupService);
-    private ref?: ComponentRef<unknown>;
+    private readonly ref = signal<ComponentRef<unknown> | null>(null);
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
@@ -59,7 +61,11 @@ export class TuiHintDirective<C>
         alias: 'tuiHintAppearance',
     });
 
-    public readonly visible = output<boolean>({alias: 'tuiHintVisible'});
+    public readonly visible = outputFromObservable(
+        toObservable(this.ref).pipe(map(Boolean), skip(1)),
+        {alias: 'tuiHintVisible'},
+    );
+
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly type = 'hint';
@@ -79,13 +85,11 @@ export class TuiHintDirective<C>
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content() && !this.ref) {
-            this.ref = this.service.add(this.component);
-            this.visible.emit(true);
-        } else if (this.ref) {
-            this.ref.destroy();
-            this.ref = undefined;
-            this.visible.emit(false);
+        if (show && this.content() && !this.ref()) {
+            this.ref.set(this.service.add(this.component));
+        } else if (!show) {
+            this.ref()?.destroy();
+            this.ref.set(null);
         }
     }
 }

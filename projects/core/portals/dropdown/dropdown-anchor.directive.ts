@@ -4,11 +4,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    tuiPositionAccessorFor,
-    TuiRectAccessor,
-    tuiRectAccessorFor,
-} from '@taiga-ui/core/classes';
+import {tuiPositionAccessorFor, tuiRectAccessorFor} from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
@@ -31,11 +27,11 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
 })
 export class TuiDropdownAnchor implements AfterViewInit {
     private readonly el = tuiInjectElement();
-    private readonly accessor = inject(TuiRectAccessor);
+    private readonly directive = inject(TuiDropdownDirective);
+    private readonly accessor = this.directive.accessor;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
-    private readonly directive = inject(TuiDropdownDirective);
     private readonly position = this.directive.position;
 
     private readonly styles$ = inject(TuiPositionService).pipe(

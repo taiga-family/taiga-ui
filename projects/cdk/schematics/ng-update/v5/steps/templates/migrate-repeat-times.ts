@@ -20,6 +20,12 @@ const FOR_BLOCK_PATTERN = /@for\s*\(/g;
 const NGFOR_REPEAT_TIMES_PIPE_PATTERN =
     /let\s+(\w+)\s+of\s+([^\s|]+)\s*\|\s*tuiRepeatTimes\s*/;
 
+// Split into two anchored patterns (no overlapping whitespace quantifiers) to avoid
+// super-linear regex backtracking: strip the `| tuiRepeatTimes` suffix, then parse
+// `<var> of <expression>` where the expression must start with a non-space char.
+const AT_FOR_REPEAT_TIMES_PIPE_SUFFIX = /\s*\|\s*tuiRepeatTimes\s*$/;
+const AT_FOR_ITERATION_PATTERN = /^\s*(\S+)\s+of\s+(\S[\s\S]*)$/;
+
 export function migrateRepeatTimes({
     resource,
     recorder,
@@ -273,29 +279,48 @@ function migrateAtForRepeatTimes(
 }
 
 function replaceRepeatTimesInForHeader(header: string): string | null {
-    const pipeMatch = /\|\s*tuiRepeatTimes\b/.exec(header);
-
-    if (pipeMatch?.index === undefined) {
+    if (!/\|\s*tuiRepeatTimes\b/.test(header)) {
         return null;
     }
 
-    const beforePipe = header.slice(0, pipeMatch.index);
-    const ofIndex = beforePipe.lastIndexOf(' of ');
+    const [iteration = '', ...tail] = header.split(';');
+    const beforePipe = iteration.replace(AT_FOR_REPEAT_TIMES_PIPE_SUFFIX, '');
 
-    if (ofIndex === -1) {
+    if (beforePipe === iteration) {
+        // `| tuiRepeatTimes` is not the tail of the iteration clause (e.g. it is nested
+        // inside the iterable expression) — leave the block untouched.
         return null;
     }
 
-    const expression = beforePipe.slice(ofIndex + ' of '.length).trim();
+    const iterationMatch = AT_FOR_ITERATION_PATTERN.exec(beforePipe);
+
+    if (!iterationMatch) {
+        return null;
+    }
+
+    const [, variable = '', rawExpression = ''] = iterationMatch;
+    const expression = rawExpression.trim();
 
     if (!expression) {
         return null;
     }
 
-    const beforeExpression = beforePipe.slice(0, ofIndex + ' of '.length);
-    const afterPipe = header.slice(pipeMatch.index + pipeMatch[0].length);
+    // `'-'.repeat(N)` only provides the iteration count, so the loop variable would
+    // otherwise bind to the '-' string char. Alias it back to the numeric $index to
+    // match what `N | tuiRepeatTimes` produced (and what the *tuiRepeatTimes path does).
+    const needsAlias = variable !== '_' && variable !== '$index';
+    const alias = needsAlias ? [`let ${variable} = $index`] : [];
 
-    return `${beforeExpression}'-'.repeat(${expression})${afterPipe}`;
+    const tailWithoutTrack = tail
+        .map((segment) => segment.trim())
+        .filter((segment) => segment && !/^track\b/.test(segment));
+
+    return [
+        `_ of '-'.repeat(${expression})`,
+        'track $index',
+        ...alias,
+        ...tailWithoutTrack,
+    ].join('; ');
 }
 
 function findMatchingParen(template: string, openParen: number): number {

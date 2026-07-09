@@ -130,7 +130,7 @@ exports[`ng-update migrateRemovedTokens migrates TUI_MONTH_FORMATTER usage: test
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TUI_MONTH_FORMATTER has been removed. Use tuiFormatDate pipe or implement custom month formatting with Intl.DateTimeFormat.
+// TODO: (Taiga UI migration) TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.
                 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit';
 
                 @Component({

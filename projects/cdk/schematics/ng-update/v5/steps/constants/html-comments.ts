@@ -97,4 +97,32 @@ export const HTML_COMMENTS: HtmlComment[] = [
         withAttrs: ['tuiTag'],
         comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',
     },
+    {
+        tag: 'tui-arrow',
+        withAttrs: [],
+        comment:
+            'tui-arrow has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links',
+    },
+    {
+        tag: 'tui-svg',
+        withAttrs: ['src'],
+        filterFn: (element) => {
+            const attr = findAttr(element.attrs, 'src');
+
+            if (!attr) {
+                return false;
+            }
+
+            // Dynamic binding: the runtime value cannot be verified statically
+            if (attr.name === '[src]') {
+                return true;
+            }
+
+            // Static value: icon names (@tui.x) and URLs/paths still resolve;
+            // only raw inline SVG/SafeHtml no longer works with the icon input
+            return attr.value.trim().startsWith('<');
+        },
+        comment:
+            'tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL',
+    },
 ];

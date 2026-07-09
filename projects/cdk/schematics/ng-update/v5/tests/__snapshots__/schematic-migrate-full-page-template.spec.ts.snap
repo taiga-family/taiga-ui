@@ -218,6 +218,7 @@ exports[`ng-update full page template migrates a realistic page with legacy cont
                 </h2>
                 <tui-textfield multi class="input-tag tui-space_vertical-10">
                 <input tuiInputChip [(ngModel)]="tags" />
+                <tui-input-chip *tuiItem />
                 <tui-icon [tuiTooltip]="hint" />
                 </tui-textfield>
 
