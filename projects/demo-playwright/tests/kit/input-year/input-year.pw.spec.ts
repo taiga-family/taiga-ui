@@ -125,7 +125,6 @@ test.describe('InputYear', () => {
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.demo.locator('input');
 
-            await documentationPO.prepareBeforeScreenshot();
             await input.click();
             await page.keyboard.press('Escape'); // close dropdown
         });
