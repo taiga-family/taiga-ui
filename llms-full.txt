@@ -2097,16 +2097,16 @@ export default class Example {
 
 **Template:**
 ```html
-<button size="m" tuiButton type="button" (click)="open.set(true)" > Show TableBar </button>
-<tui-action-bar *tuiPopup="open()" size="s" >
-<span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
-<button appearance="secondary-grayscale" iconStart="@tui.trash" tuiButton type="button" (click)="open.set(false)" > Remove </button>
-<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'secondary-grayscale' : 'icon'" (click)="open.set(false)" > Close </button>
+<button size="m" tuiButton type="button" (click)="open = true" > Show ActionBar </button>
+<tui-action-bar *tuiPopup="open" size="s" >
+<span [style.width.%]="isMobile() ? 100 : null">Action bar opened</span>
+<button appearance="secondary-grayscale" iconStart="@tui.trash" tuiButton type="button" (click)="open = false" > Remove </button>
+<button iconStart="@tui.x" tuiIconButton type="button" [appearance]="isMobile() ? 'secondary-grayscale' : 'icon'" (click)="open = false" > Close </button>
 </tui-action-bar>
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_BREAKPOINT, TuiButton, TuiPopup} from '@taiga-ui/core';
@@ -2121,7 +2121,7 @@ import {TuiActionBar} from '@taiga-ui/kit';
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected readonly open = signal(false);
+    protected open = false;
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }
 ```
@@ -2130,9 +2130,9 @@ export default class Example {
 
 **Template:**
 ```html
-<button automation-id="open-table-bar-on-top" tuiButton type="button" (click)="open.set(true)" > Show TableBar on top </button>
+<button tuiButton type="button" (click)="open.set(true)" > Show ActionBar on top </button>
 <tui-action-bar *tuiPopup="open()">
-<span>Table bar on top opened</span>
+<span>Action bar on top opened</span>
 <button iconStart="@tui.trash" tuiIconButton type="button" (click)="open.set(false)" > Close </button>
 </tui-action-bar>
 ```
