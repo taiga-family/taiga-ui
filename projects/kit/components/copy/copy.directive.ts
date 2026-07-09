@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
@@ -13,7 +14,6 @@ import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_COPY_OPTIONS} from './copy.options';
-import {TuiClipboard} from './copy-clipboard';
 
 @Directive({
     selector: 'tui-icon[tuiCopy]',
@@ -40,7 +40,7 @@ import {TuiClipboard} from './copy-clipboard';
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
-    private readonly clipboard = inject(TuiClipboard);
+    private readonly doc = inject(DOCUMENT);
     private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
@@ -79,11 +79,13 @@ export class TuiCopyDirective {
             this.textfield.input()?.nativeElement.select();
         }
 
-        void this.clipboard.copy(this.value).then((copied) => {
-            if (copied) {
-                this.copied$.next();
-            }
-        });
+        if (this.execCommandCopy(this.value)) {
+            this.copied$.next();
+        }
+    }
+
+    private get multi(): boolean {
+        return Array.isArray(this.textfield.control()?.value);
     }
 
     private get value(): string {
@@ -92,7 +94,28 @@ export class TuiCopyDirective {
             : this.textfield.value();
     }
 
-    private get multi(): boolean {
-        return Array.isArray(this.textfield.control()?.value);
+    private execCommandCopy(text: string): boolean {
+        let copied = false;
+
+        const listener = (event: ClipboardEvent): void => {
+            if (!event.clipboardData) {
+                return;
+            }
+
+            event.clipboardData.setData('text/plain', text);
+            event.preventDefault();
+
+            copied = true;
+        };
+
+        this.doc.addEventListener('copy', listener);
+
+        try {
+            return this.doc.execCommand('copy') && copied;
+        } catch {
+            return false;
+        } finally {
+            this.doc.removeEventListener('copy', listener);
+        }
     }
 }
