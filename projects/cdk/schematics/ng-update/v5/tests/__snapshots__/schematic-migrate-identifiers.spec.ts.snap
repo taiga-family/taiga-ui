@@ -68,6 +68,33 @@ exports[`ng-update identifiers migration migrates NG_EVENT_PLUGINS to provideTai
 }
 `;
 
+exports[`ng-update identifiers migration migrates TUI_SANITIZER from legacy to TUI_EDITOR_SANITIZER in editor: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_SANITIZER} from '@taiga-ui/legacy';
+                import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+
+                export const providers = [
+                    {
+                        provide: TUI_SANITIZER,
+                        useClass: NgDompurifySanitizer,
+                    },
+                ];
+            ",
+  "1. After": "import { TUI_EDITOR_SANITIZER } from "@taiga-ui/editor";
+
+                                import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+
+                export const providers = [
+                    {
+                        provide: TUI_EDITOR_SANITIZER,
+                        useClass: NgDompurifySanitizer,
+                    },
+                ];
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration migrates TuiOptionNew to TuiOption: test.ts 1`] = `
 {
   "0. Before": "
