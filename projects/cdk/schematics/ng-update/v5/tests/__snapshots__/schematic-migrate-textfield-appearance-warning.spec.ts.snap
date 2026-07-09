@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TUI_TEXTFIELD_APPEARANCE warning adds TODO comment for TUI_TEXTFIELD_APPEARANCE import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/legacy';
+
+                @Component({
+                    providers: [{provide: TUI_TEXTFIELD_APPEARANCE, useValue: 'table'}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_TEXTFIELD_APPEARANCE has been removed. Set the appearance via the tuiTextfieldAppearance attribute on the textfield (e.g. <tui-textfield tuiTextfieldAppearance="..."> or <input tuiTextfieldAppearance="..." />) instead of providing this token.
+                import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/legacy';
+
+                @Component({
+                    providers: [{provide: TUI_TEXTFIELD_APPEARANCE, useValue: 'table'}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
