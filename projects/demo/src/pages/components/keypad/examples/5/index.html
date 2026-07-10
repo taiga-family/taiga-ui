@@ -26,6 +26,19 @@
         <tui-keypad
             [keys]="keys"
             (key)="onKey($event)"
-        />
+        >
+            <ng-template tuiKeypadKey="÷">
+                <tui-icon icon="@tui.divide" />
+            </ng-template>
+            <ng-template tuiKeypadKey="×">
+                <tui-icon icon="@tui.x" />
+            </ng-template>
+            <ng-template tuiKeypadKey="-">
+                <tui-icon icon="@tui.minus" />
+            </ng-template>
+            <ng-template tuiKeypadKey="+">
+                <tui-icon icon="@tui.plus" />
+            </ng-template>
+        </tui-keypad>
     </main>
 </ng-template>

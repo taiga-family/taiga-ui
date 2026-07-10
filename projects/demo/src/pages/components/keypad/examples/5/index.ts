@@ -1,9 +1,16 @@
-import {Component, computed, type ElementRef, signal, viewChild} from '@angular/core';
+import {
+    Component,
+    computed,
+    effect,
+    type ElementRef,
+    signal,
+    viewChild,
+} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeypad, type TuiKeypadKey} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiPopout} from '@taiga-ui/experimental';
 
 const KEYBOARD_MAP: Record<string, TuiKeypadKey> = {
@@ -22,7 +29,7 @@ const KEYBOARD_MAP: Record<string, TuiKeypadKey> = {
 const OPERATORS = new Set(['-', '+', '÷', '×']);
 
 @Component({
-    imports: [TuiAutoFocus, TuiButton, TuiKeypad, TuiPopout],
+    imports: [TuiAutoFocus, TuiButton, TuiIcon, TuiKeypad, TuiPopout],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -43,6 +50,19 @@ export default class Example {
         ['0', '.', 'backspace', 'enter'],
     ];
 
+    constructor() {
+        // a readonly, programmatically-set field never scrolls itself — keep the tail in view
+        effect(() => {
+            this.displayValue();
+
+            const el = this.input()?.nativeElement;
+
+            if (el) {
+                el.scrollLeft = el.scrollWidth;
+            }
+        });
+    }
+
     protected onKey(key: TuiKeypadKey): void {
         this.input()?.nativeElement.focus();
         this.expression.update((expr) => this.reduce(expr, key));
@@ -58,7 +78,9 @@ export default class Example {
         }
     }
 
-    private reduce(expr: string, key: TuiKeypadKey): string {
+    private reduce(current: string, key: TuiKeypadKey): string {
+        const expr = current === 'Error' ? '0' : current;
+
         switch (key) {
             case '.':
                 return this.appendDot(expr);
