@@ -22,6 +22,8 @@
     &:not(._timeline) {
         --t-x-opacity: 1;
         --t-y-opacity: 1;
+        --t-x-events: auto;
+        --t-y-events: auto;
     }
 }
 
@@ -32,7 +34,6 @@
 .t-bar {
     position: absolute;
     inset-inline-end: 0;
-    pointer-events: auto;
 
     &.tui-enter,
     &.tui-leave {
@@ -42,12 +43,14 @@
     &_vertical {
         inset-block: 0.25rem;
         inline-size: @scroll-width-large;
+        pointer-events: var(--t-y-events);
     }
 
     &_horizontal {
         inset-block-end: 0;
         inset-inline-start: 0;
         block-size: @scroll-width-large;
+        pointer-events: var(--t-x-events);
     }
 
     &_has-horizontal {
@@ -66,7 +69,6 @@
     border-radius: 6.25rem;
     border: 0.25rem solid transparent;
     cursor: pointer;
-    pointer-events: auto;
     user-select: none;
     background: currentColor;
     background-clip: content-box;
