@@ -219,6 +219,22 @@ describe('Keypad', () => {
             return event;
         };
 
+        const beforeInput = (
+            inputType: string,
+            data: string | null = null,
+        ): InputEvent => {
+            const event = new InputEvent('beforeinput', {
+                inputType,
+                data,
+                bubbles: true,
+                cancelable: true,
+            });
+
+            input.dispatchEvent(event);
+
+            return event;
+        };
+
         beforeEach(async () => {
             // provideEventPlugins is required for the `.zoneless` host binding
             TestBed.configureTestingModule({
@@ -237,20 +253,23 @@ describe('Keypad', () => {
             expect(input.getAttribute('inputmode')).toBe('none');
         });
 
-        it('blocks hardware typing so the keypad stays the single source of truth', () => {
-            expect(keydown('5').defaultPrevented).toBe(true);
-            expect(keydown('Backspace').defaultPrevented).toBe(true);
+        it('blocks value mutation (typing, paste, IME, delete) so the keypad is the only source', () => {
+            expect(beforeInput('insertText', '5').defaultPrevented).toBe(true);
+            expect(beforeInput('insertFromPaste', 'abc').defaultPrevented).toBe(true);
+            expect(beforeInput('insertCompositionText', 'あ').defaultPrevented).toBe(
+                true,
+            );
+            expect(beforeInput('deleteContentBackward').defaultPrevented).toBe(true);
         });
 
-        it('does not trap focus: lets Tab and other navigation keys through (WCAG 2.1.2)', () => {
+        it('does not trap focus: navigation keys are left alone (WCAG 2.1.2)', () => {
             expect(keydown('Tab').defaultPrevented).toBe(false);
             expect(keydown('ArrowLeft').defaultPrevented).toBe(false);
             expect(keydown('Escape').defaultPrevented).toBe(false);
         });
 
-        it('lets copy/paste and other shortcuts through', () => {
+        it('leaves the copy shortcut untouched', () => {
             expect(keydown('c', {ctrlKey: true}).defaultPrevented).toBe(false);
-            expect(keydown('v', {metaKey: true}).defaultPrevented).toBe(false);
         });
     });
 

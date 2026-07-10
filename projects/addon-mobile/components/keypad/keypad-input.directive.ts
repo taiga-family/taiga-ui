@@ -6,25 +6,13 @@ import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
     selector: 'input[tuiKeypadInput]',
     exportAs: 'tuiKeypadInput',
     host: {
-        // Suppress the native mobile keyboard: the input is driven by the on-screen keypad only
+        // Suppress the native mobile keyboard: the on-screen keypad is the only value source
         inputmode: 'none',
-        '(keydown.zoneless)': 'onKeydown($event)',
+        // Block every value mutation (typing, paste, IME, drop); beforeinput never fires for
+        // navigation/copy, so focus isn't trapped and shortcuts keep working
+        '(beforeinput.zoneless.prevent)': '(0)',
     },
 })
 export class TuiKeypadInputDirective {
     public readonly focused = tuiFocusedIn(tuiInjectElement());
-
-    protected onKeydown(event: KeyboardEvent): void {
-        const mutatesValue =
-            !event.ctrlKey &&
-            !event.metaKey &&
-            !event.altKey &&
-            (event.key.length === 1 ||
-                event.key === 'Backspace' ||
-                event.key === 'Delete');
-
-        if (mutatesValue) {
-            event.preventDefault();
-        }
-    }
 }

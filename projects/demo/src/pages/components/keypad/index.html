@@ -58,6 +58,14 @@
                 emits event without modifying value, any other key is appended.
             </tr>
             <tr
+                name="[ariaLabels]"
+                tuiDocAPIItem
+                type="Record<string, string>"
+            >
+                Accessible names for keys, useful to localize icon-only actions. Keys with visible text are named by
+                their content; only icon-only keys fall back to the raw key name.
+            </tr>
+            <tr
                 name="(key)"
                 tuiDocAPIItem
                 type="TuiKeypadKey"
@@ -65,5 +73,21 @@
                 Event emitted when a key is clicked
             </tr>
         </table>
+
+        <p>
+            The default
+            <code>keys</code>
+            layout and the content of the
+            <code>backspace</code>
+            ,
+            <code>clear</code>
+            and
+            <code>enter</code>
+            action keys come from the
+            <code>TUI_KEYPAD_OPTIONS</code>
+            token — override them app-wide with
+            <code>tuiKeypadOptionsProvider</code>
+            .
+        </p>
     </ng-template>
 </tui-doc-page>
