@@ -1,0 +1,34 @@
+@import '@taiga-ui/styles/utils';
+
+[tuiScrollRef]:where(*&) {
+    timeline-scope: --t-scrollbar-y, --t-scrollbar-x;
+    animation-name:
+        tuiScrollbarTop, tuiScrollbarBottom, tuiScrollbarStart, tuiScrollbarEnd, tuiScrollbarY, tuiScrollbarX;
+    animation-timing-function: linear;
+    animation-timeline:
+        --t-scrollbar-y, --t-scrollbar-y, --t-scrollbar-x, --t-scrollbar-x, scroll(y self), scroll(x self);
+    animation-range:
+        contain exit,
+        entry contain,
+        contain exit,
+        entry contain;
+    animation-fill-mode: both;
+
+    --t-x-opacity: 0;
+    --t-y-opacity: 0;
+
+    &:not(._native) {
+        .scrollbar-hidden();
+    }
+
+    &:where(cdk-virtual-scroll-viewport) {
+        display: flex;
+
+        // stylelint-disable-next-line -- Angular CDK class
+        .cdk-virtual-scroll-spacer {
+            view-timeline:
+                --t-scrollbar-x x,
+                --t-scrollbar-y y;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 @if (!isIOS && options.mode !== 'native' && options.mode !== 'hidden') {
     <tui-scroll-controls
+        tuiDelegateGuard
         class="t-bars"
         [class.t-hover-mode]="options.mode === 'hover'"
     />

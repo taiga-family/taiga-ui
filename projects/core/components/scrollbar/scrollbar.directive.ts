@@ -1,6 +1,7 @@
 import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TUI_SCROLL_REF} from './scroll-ref.directive';
 import {TuiScrollbarService} from './scrollbar.service';
@@ -29,9 +30,13 @@ export class TuiScrollbarDirective {
             this.scrollRef.nativeElement.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = inject(TuiScrollbarPosition)
-        .pipe(takeUntilDestroyed())
-        .subscribe((position) => Object.assign(this.style, position));
-
     public readonly tuiScrollbar = input<'horizontal' | 'vertical'>('vertical');
+
+    constructor() {
+        if (!inject(TUI_TIMELINE_SUPPORT)) {
+            inject(TuiScrollbarPosition)
+                .pipe(takeUntilDestroyed())
+                .subscribe((position) => Object.assign(this.style, position));
+        }
+    }
 }
