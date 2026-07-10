@@ -49,6 +49,7 @@ export const TUI_USED_ICONS = [
     '@tui.copy',
     '@tui.credit-card',
     '@tui.delete',
+    '@tui.divide',
     '@tui.dollar-sign',
     '@tui.download',
     '@tui.droplet',
