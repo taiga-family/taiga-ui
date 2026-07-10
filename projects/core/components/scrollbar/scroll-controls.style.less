@@ -18,6 +18,11 @@
     pointer-events: none;
     overflow: hidden;
     color: var(--tui-text-primary);
+
+    &:not(._timeline) {
+        --t-x-opacity: 1;
+        --t-y-opacity: 1;
+    }
 }
 
 ::ng-deep [tuiScrollable] {
@@ -67,20 +72,24 @@
     background-clip: content-box;
     box-sizing: border-box;
     transition-property: width, height, opacity;
-    opacity: 0.2;
+
+    --t-opacity: 0.2;
 
     &:hover {
-        opacity: 0.24;
+        --t-opacity: 0.24;
     }
 
     &:active {
-        opacity: 0.48;
+        --t-opacity: 0.48;
     }
 
     .t-bar_vertical & {
         inset-inline-end: 0;
         inline-size: @scroll-width;
         min-block-size: @scroll-min-size;
+        opacity: calc(var(--t-y-opacity) * var(--t-opacity));
+        inset-block-start: min(calc(100% - var(--t-y-start) * 100%), calc(100% - @scroll-min-size));
+        inset-block-end: calc(100% - var(--t-y-end) * 100%);
     }
 
     .t-bar_vertical:hover &,
@@ -92,6 +101,9 @@
         inset-block-end: 0;
         block-size: @scroll-width;
         min-inline-size: @scroll-min-size;
+        opacity: calc(var(--t-x-opacity) * var(--t-opacity));
+        inset-inline-start: min(calc(100% - var(--t-x-start) * 100%), calc(100% - @scroll-min-size));
+        inset-inline-end: calc(100% - var(--t-x-end) * 100%);
     }
 
     .t-bar_horizontal:hover &,
