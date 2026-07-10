@@ -1,12 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {
+    TuiInputChipComponent,
     TuiInputDateMulti,
     tuiInputDateMultiOptionsProvider,
-} from '@taiga-ui/kit/components/input-date-multi';
+} from '@taiga-ui/kit';
 import {tuiInputDateOptionsProviderNew} from '@taiga-ui/kit/components/input-date';
 
 describe('TuiInputDateMultiDirective', () => {
@@ -176,4 +178,73 @@ describe('TuiInputDateMultiDirective', () => {
             fixture.nativeElement.querySelectorAll('tui-textfield-item'),
         ).map((item) => (item as Element).textContent?.trim() ?? '');
     }
+
+    @Component({
+        standalone: true,
+        imports: [FormsModule, TuiInputDateMulti, TuiRoot, TuiTextfield],
+        template: `
+            <tui-root>
+                <tui-textfield multi>
+                    <input
+                        tuiInputDateMulti
+                        [(ngModel)]="value"
+                    />
+                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-input-chip *tuiItem />
+                </tui-textfield>
+            </tui-root>
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+        providers: [
+            tuiInputDateMultiOptionsProvider({
+                valueTransformer: {
+                    fromControlValue: (value: Date[] | null): TuiDay[] =>
+                        value?.map((date) => TuiDay.fromLocalNativeDate(date)) ?? [],
+                    toControlValue: (value: TuiDay[]): Date[] =>
+                        value.map((day) => day.toLocalNativeDate()),
+                },
+            }),
+        ],
+    })
+    class CustomChipProviderTest {
+        public value: Date[] = [new Date(2026, 2, 11), new Date(2026, 2, 12)];
+    }
+
+    describe('custom provider with tui-input-chip', () => {
+        let fixture: ComponentFixture<CustomChipProviderTest>;
+
+        beforeEach(async () => {
+            TestBed.resetTestingModule();
+            TestBed.configureTestingModule({imports: [CustomChipProviderTest]});
+
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(CustomChipProviderTest);
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+            fixture.detectChanges();
+        });
+
+        it('removes chip with valueTransformer', async () => {
+            const chips = fixture.debugElement.queryAll(
+                By.directive(TuiInputChipComponent),
+            );
+
+            expect(chips).toHaveLength(2);
+
+            const component = chips[0]!
+                .componentInstance as TuiInputChipComponent<TuiDay> & {
+                delete(): void;
+            };
+
+            // Test the value transformation path directly without relying on DOM click handling.
+            component.delete();
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.value).toEqual([new Date(2026, 2, 12)]);
+        });
+    });
 });

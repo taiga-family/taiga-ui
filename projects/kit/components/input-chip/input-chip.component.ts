@@ -99,7 +99,7 @@ export class TuiInputChipComponent<T> {
     }
 
     protected delete(): void {
-        if (this.textfield.cva?.interactive) {
+        if (this.textfield.cva?.interactive()) {
             this.textfield.cva?.onChange(this.value().filter((_, i) => i !== this.index));
         }
 
