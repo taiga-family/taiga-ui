@@ -11,9 +11,10 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
@@ -28,7 +29,8 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated, TuiScrollRef],
+    providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
+    hostDirectives: [TuiAnimated],
     host: {
         '[attr.data-appearance]': 'context.appearance',
         '[class._bar]': 'context.bar',
