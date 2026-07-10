@@ -1,11 +1,4 @@
-import {
-    Component,
-    computed,
-    effect,
-    type ElementRef,
-    signal,
-    viewChild,
-} from '@angular/core';
+import {Component, computed, type ElementRef, signal, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeypad, type TuiKeypadKey} from '@taiga-ui/addon-mobile';
@@ -50,22 +43,19 @@ export default class Example {
         ['0', '.', 'backspace', 'enter'],
     ];
 
-    constructor() {
-        // a readonly, programmatically-set field never scrolls itself — keep the tail in view
-        effect(() => {
-            this.displayValue();
+    protected onKey(key: TuiKeypadKey): void {
+        const el = this.input()?.nativeElement;
 
-            const el = this.input()?.nativeElement;
+        el?.focus();
+        this.expression.update((expr) => this.reduce(expr, key));
 
+        // a readonly, programmatically-set field won't scroll itself — after layout, keep
+        // the latest input (the tail) in view
+        requestAnimationFrame(() => {
             if (el) {
                 el.scrollLeft = el.scrollWidth;
             }
         });
-    }
-
-    protected onKey(key: TuiKeypadKey): void {
-        this.input()?.nativeElement.focus();
-        this.expression.update((expr) => this.reduce(expr, key));
     }
 
     protected onKeydown(event: KeyboardEvent): void {
