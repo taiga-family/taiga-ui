@@ -37086,11 +37086,10 @@ p {
 **Template:**
 ```html
 &lt;button type=&quot;button&quot; (click)=&quot;add()&quot; &gt; Add &lt;/button&gt;
-&lt;tui-scrollbar&gt;
-&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollable class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;cdk-virtual-scroll-viewport itemSize=&quot;50&quot; tuiScrollRef class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;tui-scroll-controls /&gt;
 &lt;div *cdkVirtualFor=&quot;let item of items&quot; class=&quot;example-item&quot; &gt; {{ item }} &lt;/div&gt;
 &lt;/cdk-virtual-scroll-viewport&gt;
-&lt;/tui-scrollbar&gt;
 ```
 **TypeScript:**
 ```ts
@@ -37102,15 +37101,15 @@ import {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiScrollable, TuiScrollbar} from &#039;@taiga-ui/core&#039;;
+import {TuiScrollControls, TuiScrollRef} from &#039;@taiga-ui/core&#039;;
 
 @Component({
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -37128,6 +37127,7 @@ export default class Example {
 **LESS:**
 ```less
 .example-viewport {
+    display: flex;
     block-size: 12.5rem;
     border: 1px solid;
 }
@@ -38195,7 +38195,8 @@ export default class Example {
 ```html
 &lt;tui-textfield tuiChevron&gt;
 &lt;input placeholder=&quot;Country&quot; tuiSelect [(ngModel)]=&quot;value&quot; /&gt;
-&lt;cdk-virtual-scroll-viewport *tuiDropdown tuiScrollable class=&quot;scroll&quot; [itemSize]=&quot;44&quot; &gt;
+&lt;cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class=&quot;scroll&quot; [itemSize]=&quot;42&quot; &gt;
+&lt;tui-scroll-controls /&gt;
 &lt;tui-data-list&gt;
 &lt;button *cdkVirtualFor=&quot;let item of countries&quot; tuiOption type=&quot;button&quot; [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt;
 &lt;/tui-data-list&gt;
@@ -38209,7 +38210,7 @@ import {Component, inject} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDataList, TuiScrollable} from &#039;@taiga-ui/core&#039;;
+import {TuiDataList, TuiScrollControls, TuiScrollRef} from &#039;@taiga-ui/core&#039;;
 import {TUI_COUNTRIES, TuiChevron, TuiSelect} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
@@ -38218,7 +38219,8 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from &#039;@taiga-ui/kit&#039;;
         ScrollingModule,
         TuiChevron,
         TuiDataList,
-        TuiScrollable,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiSelect,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -38238,6 +38240,7 @@ export default class Example {
 .scroll {
     .scrollbar-hidden();
 
+    display: flex;
     block-size: 12.5rem;
 }
 ```
