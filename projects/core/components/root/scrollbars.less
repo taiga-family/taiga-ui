@@ -1,0 +1,91 @@
+@property --t-y-start {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-y-end {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-x-start {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-x-end {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-y-opacity {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-x-opacity {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes tuiScrollbarTop {
+    from {
+        --t-y-start: 1;
+    }
+
+    to {
+        --t-y-start: 0;
+    }
+}
+
+@keyframes tuiScrollbarBottom {
+    from {
+        --t-y-end: 0;
+    }
+
+    to {
+        --t-y-end: 1;
+    }
+}
+
+@keyframes tuiScrollbarStart {
+    from {
+        --t-x-start: 1;
+    }
+
+    to {
+        --t-x-start: 0;
+    }
+}
+
+@keyframes tuiScrollbarEnd {
+    from {
+        --t-x-end: 0;
+    }
+
+    to {
+        --t-x-end: 1;
+    }
+}
+
+@keyframes tuiScrollbarX {
+    from,
+    to {
+        --t-x-opacity: 1;
+        --t-x-events: auto;
+    }
+}
+
+@keyframes tuiScrollbarY {
+    from,
+    to {
+        --t-y-opacity: 1;
+        --t-y-events: auto;
+    }
+}
