@@ -30,6 +30,11 @@ export class TuiPositionService extends Observable<TuiPoint> {
                             animations.every(
                                 ({effect}) =>
                                     effect?.getComputedTiming().progress !== null,
+                            ) &&
+                            animations.some(
+                                (a) =>
+                                    'animationName' in a &&
+                                    a.animationName === 'tuiScale',
                             );
 
                         this.rect = (animated && this.rect) || rect;
