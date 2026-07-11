@@ -47,8 +47,6 @@
     } @else {
         <div class="phone-dialer">
             <input
-                #input
-                tuiAutoFocus
                 tuiKeypadInput
                 class="input"
                 [ngModel]="phoneNumber()"
@@ -58,7 +56,6 @@
             <tui-keypad
                 [keys]="keys"
                 [(value)]="phoneNumber"
-                (key)="refocus()"
             />
 
             <div class="actions">
