@@ -27,9 +27,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    block-size: 86%;
-    aspect-ratio: 96 / 84; // oval highlight (~1.14), matches the spec proportions
-    max-inline-size: 92%;
+    // largest oval that keeps its ratio inside the cell
+    aspect-ratio: 90 / 84;
+    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- container query units size the oval to the cell */
+    inline-size: min(calc(90cqi / var(--t-columns, 3)), calc(96cqb / var(--t-rows, 4)));
+    block-size: auto;
     border: none;
     border-radius: 50%;
     background: transparent;

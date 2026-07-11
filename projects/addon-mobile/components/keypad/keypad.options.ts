@@ -2,11 +2,7 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export type TuiKeypadAction = 'backspace' | 'clear' | 'enter';
 
-/**
- * Keypad key. Either a predefined action or any custom string to render/append.
- * The `(string & {})` intersection keeps autocomplete for the actions while still
- * accepting arbitrary strings (a well-known TypeScript trick to widen a literal union).
- */
+/** A predefined action or any custom string; `(string & {})` widens the union but keeps action autocomplete. */
 // eslint-disable-next-line
 export type TuiKeypadKey = TuiKeypadAction | (string & {});
 

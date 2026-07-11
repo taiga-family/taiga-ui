@@ -6,10 +6,8 @@ import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
     selector: 'input[tuiKeypadInput]',
     exportAs: 'tuiKeypadInput',
     host: {
-        // Suppress the native mobile keyboard: the on-screen keypad is the only value source
+        // on-screen keypad is the only value source: hide the native keyboard and block edits
         inputmode: 'none',
-        // Block every value mutation (typing, paste, IME, drop); beforeinput never fires for
-        // navigation/copy, so focus isn't trapped and shortcuts keep working
         '(beforeinput.zoneless.prevent)': '(0)',
     },
 })
