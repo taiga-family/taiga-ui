@@ -29,7 +29,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
                 <tui-data-list-wrapper
                     *tuiDropdown
-                    [items]="platforms"
+                    [items]="items"
                 />
             </tui-textfield>
         </tui-root>
@@ -37,8 +37,8 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sandbox {
-    protected readonly platforms = ['web', 'ios', 'android'] as const;
-    protected value: 'android' | 'ios' | 'web' | null = 'ios';
+    protected readonly items = Array.from({length: 20}, (_, i) => `Item ${i}`);
+    protected value: string | null = null;
 
     public readonly options = input<Partial<TuiSheetDialogOptions>>({});
 }
@@ -73,10 +73,11 @@ describe('DropdownSheet with sheet dialog options', () => {
             .should('not.have.class', '_closeable');
 
         cy.get('tui-sheet-dialog').trigger('touchstart');
-        cy.get('tui-sheet-dialog').scrollTo('top', {ensureScrollable: false});
+        cy.get('tui-sheet-dialog').scrollTo('bottom');
+        cy.get('tui-sheet-dialog').scrollTo('top');
         cy.get('tui-sheet-dialog').trigger('touchend');
 
         cy.get('tui-sheet-dialog').should('be.visible');
-        cy.get('[tuiOption]').should('have.length', 3);
+        cy.get('[tuiOption]').should('have.length', 20);
     });
 });
