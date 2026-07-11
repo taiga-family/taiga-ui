@@ -55,8 +55,17 @@
                 (ngModelChange)="phoneNumber.set($event)"
             />
 
+            <!--
+                Sized inline, not via .less: the pad renders in a separate popout window/app
+                where scoped styles are unreliable. The pad is aspect-ratio 3/4 — letting it
+                stretch tall makes each key wider than its column and clips one, so bound it by
+                width and center it.
+            -->
             <tui-keypad
                 [keys]="keys"
+                [style.block-size]="'auto'"
+                [style.margin]="'auto'"
+                [style.max-inline-size.rem]="20"
                 [(value)]="phoneNumber"
                 (key)="refocus()"
             />
