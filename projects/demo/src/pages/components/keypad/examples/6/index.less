@@ -15,8 +15,12 @@
 }
 
 tui-keypad {
-    flex: 1;
-    min-block-size: 0;
+    // the pad is aspect-ratio 3/4; stretching it to fill a tall column makes the keys
+    // grow wider than their track and clip a column — keep it width-driven and centered
+    inline-size: 100%;
+    max-inline-size: 20rem;
+    block-size: auto;
+    margin: auto;
 }
 
 .input {
