@@ -17,24 +17,18 @@ tui-root {
     flex: 1;
     border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 0 100vh 0;
     -webkit-tap-highlight-color: transparent;
-    animation-name:
-        tuiScrollbarTop, tuiScrollbarBottom, tuiScrollbarStart, tuiScrollbarEnd, tuiScrollbarY, tuiScrollbarX;
-    animation-timing-function: linear;
-    animation-timeline:
-        --t-scrollbar-y, --t-scrollbar-y, --t-scrollbar-x, --t-scrollbar-x, scroll(y root), scroll(x root);
-    animation-range:
-        contain exit,
-        entry contain,
-        contain exit,
-        entry contain;
-    animation-fill-mode: both;
-    view-timeline:
-        --t-scrollbar-x x,
-        --t-scrollbar-y y;
 
     &:has(> tui-popups tui-modal) > .t-root-content {
         // stylelint-disable-next-line -- graceful degradation
         interactivity: inert;
+    }
+
+    &[tuiScrollRef] {
+        animation-timeline:
+            --t-scrollbar-y, --t-scrollbar-y, --t-scrollbar-x, --t-scrollbar-x, scroll(y root), scroll(x root);
+        view-timeline:
+            --t-scrollbar-x x,
+            --t-scrollbar-y y;
     }
 }
 
