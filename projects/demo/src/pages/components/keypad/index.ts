@@ -25,6 +25,7 @@ export default class Page {
         'Fluid',
         'Calculator',
         'Phone Dialer',
+        'Options provider',
     ];
 
     protected disabled = false;
