@@ -8,7 +8,16 @@
             <code>TuiKeypad</code>
             is an on-screen numeric pad for touch input — a configurable grid of keys bound to a value. Pair it with the
             <code>tuiKeypadInput</code>
-            directive to drive a field without the native mobile keyboard.
+            directive to drive a field without the native mobile keyboard, or set app-wide defaults via
+            <a
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+                [href]="optionsProviderLink"
+            >
+                <code>tuiKeypadOptionsProvider</code>
+            </a>
+            .
         </p>
 
         @for (example of examples; track example) {
@@ -32,10 +41,10 @@
                         @case (2) {
                             Override the default layout and action icons app-wide with
                             <a
-                                href="https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-mobile/components/keypad/keypad.options.ts"
                                 rel="noreferrer"
                                 target="_blank"
                                 tuiLink
+                                [href]="optionsProviderLink"
                             >
                                 <code>tuiKeypadOptionsProvider</code>
                             </a>
@@ -131,7 +140,14 @@
             action keys come from the
             <code>TUI_KEYPAD_OPTIONS</code>
             token — override them app-wide with
-            <code>tuiKeypadOptionsProvider</code>
+            <a
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+                [href]="optionsProviderLink"
+            >
+                <code>tuiKeypadOptionsProvider</code>
+            </a>
             .
         </p>
     </ng-template>

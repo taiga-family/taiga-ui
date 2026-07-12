@@ -18,6 +18,9 @@ import {TuiLink, TuiNotificationService} from '@taiga-ui/core';
 export default class Page {
     private readonly alerts = inject(TuiNotificationService);
 
+    protected readonly optionsProviderLink =
+        'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-mobile/components/keypad/keypad.options.ts';
+
     protected readonly examples = [
         'Basic keypad',
         'Custom keys',
