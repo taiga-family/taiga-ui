@@ -8,9 +8,40 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [fullsize]="$index === 3"
                 [heading]="example"
-            />
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            A ready-to-use keypad bound to a value.
+                        }
+                        @case (1) {
+                            A per-instance layout via
+                            <code>[keys]</code>
+                            (with an empty cell) and a custom backspace icon.
+                        }
+                        @case (2) {
+                            Override the default layout and action icons app-wide with
+                            <code>tuiKeypadOptionsProvider</code>
+                            .
+                        }
+                        @case (3) {
+                            The keypad expands while the amount field is focused, inside a sheet.
+                        }
+                        @case (4) {
+                            Drag the corner — the keypad scales to fit its container.
+                        }
+                        @case (5) {
+                            A calculator in a picture-in-picture window.
+                        }
+                        @case (6) {
+                            A phone dialer in a picture-in-picture window.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
         }
     </ng-template>
 
