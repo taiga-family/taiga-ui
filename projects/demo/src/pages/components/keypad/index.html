@@ -4,6 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
+        <p>
+            <code>TuiKeypad</code>
+            is an on-screen numeric pad for touch input — a configurable grid of keys bound to a value. Pair it with the
+            <code>tuiKeypadInput</code>
+            directive to drive a field without the native mobile keyboard.
+        </p>
+
         @for (example of examples; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
