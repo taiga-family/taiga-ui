@@ -1,7 +1,7 @@
+<p>Value: {{ value() || '—' }}</p>
+
 <tui-keypad
     class="keypad"
     [(value)]="value"
     (key)="onKey($event)"
 />
-
-<p>Value: {{ value() || '—' }}</p>

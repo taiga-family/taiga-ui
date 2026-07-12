@@ -38,6 +38,8 @@ export default class Example {
     protected onKey(key: TuiKeypadKey): void {
         if (key === 'enter') {
             this.alerts.open(`Entered: ${this.value() || '—'}`).subscribe();
+        } else if (key === 'clear') {
+            this.alerts.open('Cleared').subscribe();
         }
     }
 }
