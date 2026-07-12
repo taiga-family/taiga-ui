@@ -6,7 +6,6 @@ import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
     selector: 'input[tuiKeypadInput]',
     exportAs: 'tuiKeypadInput',
     host: {
-        // on-screen keypad is the only value source: hide the native keyboard and block edits
         inputmode: 'none',
         '(beforeinput.zoneless.prevent)': '(0)',
     },

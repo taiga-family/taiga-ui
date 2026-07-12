@@ -2,7 +2,6 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export type TuiKeypadAction = 'backspace' | 'clear' | 'enter';
 
-/** A predefined action or any custom string; `(string & {})` widens the union but keeps action autocomplete. */
 // eslint-disable-next-line
 export type TuiKeypadKey = TuiKeypadAction | (string & {});
 
@@ -20,7 +19,6 @@ export interface TuiKeypadOptions {
     readonly icons: Record<TuiKeypadAction, string>;
 }
 
-/** Default `keys` layout and action-key content; override app-wide with `tuiKeypadOptionsProvider`. */
 export const [TUI_KEYPAD_OPTIONS, tuiKeypadOptionsProvider] =
     tuiCreateOptions<TuiKeypadOptions>({
         keys: TUI_DEFAULT_KEYPAD,

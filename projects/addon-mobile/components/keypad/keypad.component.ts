@@ -61,7 +61,6 @@ export class TuiKeypadComponent {
     }
 
     protected ariaLabel(key: TuiKeypadKey): string | null {
-        // only icon keys without a template need a fallback name; text/templates name themselves
         const needsFallback =
             !this.templateMap().has(key) && this.content(key).startsWith('@tui.');
 

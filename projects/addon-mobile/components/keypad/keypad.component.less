@@ -7,7 +7,7 @@
     place-items: center;
     inline-size: 100%;
     block-size: 100%;
-    max-inline-size: 37.5rem; // fluid width, capped for tablets
+    max-inline-size: 37.5rem;
     margin-inline: auto;
     aspect-ratio: var(--t-columns, 3) / var(--t-rows, 4);
     /* stylelint-disable-next-line plugin/use-baseline -- container queries are used for fluid sizing */
@@ -17,7 +17,6 @@
 .t-row {
     display: contents;
 
-    // display:contents drops the row box; keep each row on its own grid line
     & > :first-child {
         grid-column-start: 1;
     }
@@ -27,7 +26,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // largest oval that keeps its ratio inside the cell
     aspect-ratio: 90 / 84;
     /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- container query units size the oval to the cell */
     inline-size: min(calc(90cqi / var(--t-columns, 3)), calc(96cqb / var(--t-rows, 4)));
