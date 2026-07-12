@@ -20,6 +20,7 @@ export interface TuiKeypadOptions {
     readonly icons: Record<TuiKeypadAction, string>;
 }
 
+/** Default `keys` layout and action-key content; override app-wide with `tuiKeypadOptionsProvider`. */
 export const [TUI_KEYPAD_OPTIONS, tuiKeypadOptionsProvider] =
     tuiCreateOptions<TuiKeypadOptions>({
         keys: TUI_DEFAULT_KEYPAD,
