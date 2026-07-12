@@ -1,5 +1,6 @@
 export * from '@taiga-ui/core/directives/appearance';
 export * from '@taiga-ui/core/directives/button-x';
+export * from '@taiga-ui/core/directives/close';
 export * from '@taiga-ui/core/directives/date-format';
 export * from '@taiga-ui/core/directives/group';
 export * from '@taiga-ui/core/directives/icons';
