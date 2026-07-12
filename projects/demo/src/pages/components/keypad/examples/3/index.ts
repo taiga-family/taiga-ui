@@ -1,42 +1,43 @@
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiKeypad,
-    TuiSheetDialog,
-    type TuiSheetDialogOptions,
+    type TuiKeypadKey,
+    tuiKeypadOptionsProvider,
 } from '@taiga-ui/addon-mobile';
-import {TuiAnimated} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
-import {TuiFloatingContainer} from '@taiga-ui/layout';
+import {TuiNotificationService} from '@taiga-ui/core';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiAnimated,
-        TuiAvatar,
-        TuiButton,
-        TuiCell,
-        TuiChip,
-        TuiFloatingContainer,
-        TuiKeypad,
-        TuiSheetDialog,
-        TuiTitle,
-    ],
+    imports: [TuiKeypad],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
+    providers: [
+        tuiKeypadOptionsProvider({
+            keys: [
+                ['1', '2', '3'],
+                ['4', '5', '6'],
+                ['7', '8', '9'],
+                ['clear', '0', 'enter'],
+            ],
+            icons: {
+                backspace: '@tui.delete',
+                clear: '@tui.trash',
+                enter: '@tui.check',
+            },
+        }),
+    ],
 })
 export default class Example {
-    protected readonly value = signal('143');
-    protected readonly open = signal(false);
+    private readonly alerts = inject(TuiNotificationService);
 
-    protected readonly options: Partial<TuiSheetDialogOptions> = {
-        closable: true,
-        bar: false,
-        appearance: 'fullscreen',
-    };
+    protected readonly value = signal('');
+
+    protected onKey(key: TuiKeypadKey): void {
+        if (key === 'enter') {
+            this.alerts.open(`Entered: ${this.value() || '—'}`).subscribe();
+        }
+    }
 }

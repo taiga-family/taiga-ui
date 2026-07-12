@@ -1,44 +1,11 @@
-<button
-    iconStart="@tui.calculator"
-    tuiButton
-    type="button"
-    (click)="open.set(true)"
+<div
+    tuiResizable
+    class="container"
 >
-    Open Calculator
-</button>
+    <tui-keypad />
 
-<ng-template
-    [tuiPopout]="open()"
-    [tuiPopoutOptions]="{pip: true, features: {width: 300, height: 450}}"
-    (tuiPopoutChange)="open.set($event)"
->
-    <main class="calculator">
-        <input
-            #input
-            inputmode="none"
-            readonly
-            tuiAutoFocus
-            class="input"
-            [value]="displayValue()"
-            (keydown)="onKeydown($event)"
-        />
-
-        <tui-keypad
-            [keys]="keys"
-            (key)="onKey($event)"
-        >
-            <ng-template tuiKeypadKey="÷">
-                <tui-icon icon="@tui.divide" />
-            </ng-template>
-            <ng-template tuiKeypadKey="×">
-                <tui-icon icon="@tui.x" />
-            </ng-template>
-            <ng-template tuiKeypadKey="-">
-                <tui-icon icon="@tui.minus" />
-            </ng-template>
-            <ng-template tuiKeypadKey="+">
-                <tui-icon icon="@tui.plus" />
-            </ng-template>
-        </tui-keypad>
-    </main>
-</ng-template>
+    <div
+        class="handle"
+        [tuiResizer]="[1, 1]"
+    ></div>
+</div>

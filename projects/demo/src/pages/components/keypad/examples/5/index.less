@@ -1,38 +1,27 @@
+@import '@taiga-ui/styles/utils';
+
 :host {
+    position: relative;
     display: block;
-    block-size: 100%;
+    block-size: 26.25rem;
 }
 
-.calculator {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    block-size: 100vh;
-    box-sizing: border-box;
-}
-
-tui-keypad {
-    flex: 1;
-    min-block-size: 0;
-}
-
-.input {
-    flex: none;
+.container {
+    position: absolute;
     inline-size: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align: end;
-    border: none;
-    outline: none;
-    background: var(--tui-background-neutral-2);
-    border-radius: 0.5rem;
-    color: var(--tui-text-primary);
-    box-sizing: border-box;
+    block-size: 100%;
+    min-inline-size: 15rem;
+}
 
-    &::placeholder {
-        color: var(--tui-text-secondary);
+.handle {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inline-size: 1rem;
+    block-size: 1rem;
+    background: linear-gradient(135deg, transparent 50%, var(--tui-text-secondary) 50%);
+
+    &:hover {
+        background: linear-gradient(135deg, transparent 50%, var(--tui-text-primary) 50%);
     }
 }

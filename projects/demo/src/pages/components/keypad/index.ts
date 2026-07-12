@@ -21,11 +21,11 @@ export default class Page {
     protected readonly examples = [
         'Basic keypad',
         'Customize',
+        'Options provider',
         'Collapsible',
         'Fluid',
         'Calculator',
         'Phone Dialer',
-        'Options provider',
     ];
 
     protected disabled = false;

@@ -1,11 +1,78 @@
-<div
-    tuiResizable
-    class="container"
+<button
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
 >
-    <tui-keypad />
+    Open form
+</button>
 
-    <div
-        class="handle"
-        [tuiResizer]="[1, 1]"
-    ></div>
-</div>
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="options"
+    [(tuiSheetDialog)]="open"
+>
+    <div class="sheet">
+        <div class="top">
+            <input
+                #input="tuiKeypadInput"
+                tuiKeypadInput
+                class="amount"
+                [(ngModel)]="value"
+            />
+
+            <div class="chips">
+                <span tuiChip>23 876 $</span>
+                <span tuiChip>10 000 $</span>
+                <span tuiChip>Auto-completion</span>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="card">
+                <div tuiCell>
+                    <tui-avatar
+                        appearance="primary"
+                        tuiAvatar="@tui.circle-user"
+                    />
+                    <div tuiTitle>
+                        23 876 $
+                        <div tuiSubtitle>from Card 1</div>
+                    </div>
+                </div>
+                <div tuiCell>
+                    <tui-avatar
+                        appearance="secondary"
+                        tuiAvatar="@tui.circle-dollar-sign"
+                    />
+                    <div tuiTitle>
+                        1 450 $
+                        <div tuiSubtitle>from Card 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="observer.complete()"
+            >
+                Send
+            </button>
+
+            <div class="clamp">Commission-free</div>
+
+            @if (input.focused()) {
+                <div
+                    tuiAnimated
+                    class="pad"
+                >
+                    <div class="pad-inner">
+                        <tui-keypad [(value)]="value" />
+                    </div>
+                </div>
+            }
+        </footer>
+    </div>
+</ng-template>
