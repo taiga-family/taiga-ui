@@ -12,7 +12,7 @@ test.describe('Keypad', () => {
     });
 
     test('the on-screen keypad drives the field value', async ({page}) => {
-        // The "Customize" example renders a `tuiKeypadInput` display next to the keypad
+        // The "Custom keys" example renders a `tuiKeypadInput` display next to the keypad
         const input = page.locator('input.display');
         const keypad = page.locator('tui-keypad.custom');
 

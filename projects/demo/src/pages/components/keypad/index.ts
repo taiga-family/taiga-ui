@@ -20,7 +20,7 @@ export default class Page {
 
     protected readonly examples = [
         'Basic keypad',
-        'Customize',
+        'Custom keys',
         'Options provider',
         'Collapsible',
         'Fluid',
