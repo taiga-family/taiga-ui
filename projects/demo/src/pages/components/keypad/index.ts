@@ -7,10 +7,10 @@ import {
     type TuiKeypadCell,
     type TuiKeypadKey,
 } from '@taiga-ui/addon-mobile';
-import {TuiNotificationService} from '@taiga-ui/core';
+import {TuiLink, TuiNotificationService} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiKeypad],
+    imports: [TuiDemo, TuiKeypad, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
