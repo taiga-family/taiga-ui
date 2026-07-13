@@ -78,7 +78,7 @@ describe('TuiDocExample', () => {
         });
     });
 
-    it('keep preview place when changing language', async () => {
+    it('keep preview place when changing language', () => {
         const preview = fixture.nativeElement.querySelector(
             '[automation-id="tui-doc-example"]',
         );

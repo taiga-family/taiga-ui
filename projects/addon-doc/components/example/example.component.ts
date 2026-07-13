@@ -43,8 +43,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import {TuiDocCode} from '../code';
-import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
+import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
 @Component({
     selector: 'tui-doc-example',
