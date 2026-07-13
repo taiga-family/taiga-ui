@@ -7,10 +7,12 @@
 
     <cdk-virtual-scroll-viewport
         *tuiDropdown
-        tuiScrollable
+        appendOnly
+        tuiScrollRef
         class="scroll"
-        [itemSize]="44"
+        [itemSize]="42"
     >
+        <tui-scroll-controls />
         <tui-data-list>
             <button
                 *cdkVirtualFor="let item of countries"

@@ -200,5 +200,22 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'migrates TUI_SANITIZER from legacy to TUI_EDITOR_SANITIZER in editor',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_SANITIZER} from '@taiga-ui/legacy';
+                import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+
+                export const providers = [
+                    {
+                        provide: TUI_SANITIZER,
+                        useClass: NgDompurifySanitizer,
+                    },
+                ];
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

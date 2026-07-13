@@ -20,7 +20,8 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsVehicle,
-    type TuiRectAccessor,
+    tuiFallbackAccessor,
+    TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
@@ -57,6 +58,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
+    private readonly injector = inject(INJECTOR);
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
@@ -96,6 +98,14 @@ export class TuiDropdownDirective
                 ? new PolymorpheusTemplate(content, this.cdr)
                 : content,
     });
+
+    public get accessor(): TuiRectAccessor {
+        const accessors = this.injector.get(TuiRectAccessor, null, {
+            self: true,
+        }) as readonly TuiRectAccessor[] | null;
+
+        return tuiFallbackAccessor<TuiRectAccessor>('dropdown')(accessors, this);
+    }
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';

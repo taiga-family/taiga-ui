@@ -98,6 +98,14 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     protected onInput(raw: string): void {
         const value = Number(raw);
 
-        this.onChange(!raw || Number.isNaN(value) ? null : value);
+        if (!raw || Number.isNaN(value)) {
+            this.onChange(null);
+
+            return;
+        }
+
+        if (value >= this.min() && value <= this.max()) {
+            this.onChange(value);
+        }
     }
 }

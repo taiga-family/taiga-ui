@@ -4,20 +4,24 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
+const COLLECTION = join(__dirname, '../../../migration.json');
+
+const REPEAT_TIMES_COMPONENT = /* TypeScript */ `
+    import {Component} from '@angular/core';
+    import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+
+    @Component({
+        standalone: true,
+        templateUrl: './test.html',
+        imports: [TuiRepeatTimesPipe],
+    })
+    export class Test {}
+`;
+
 describe('ng-update tuiRepeatTimes', () => {
     const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-        component: /* TypeScript */ `
-            import {Component} from '@angular/core';
-            import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-
-            @Component({
-                standalone: true,
-                templateUrl: './test.html',
-                imports: [TuiRepeatTimesPipe],
-            })
-            export class Test {}
-        `,
+        collection: COLLECTION,
+        component: REPEAT_TIMES_COMPONENT,
     });
 
     it(
@@ -120,7 +124,7 @@ describe('ng-update tuiRepeatTimes', () => {
     );
 
     it(
-        'keeps @for tail params while replacing tuiRepeatTimes expression',
+        'keeps @for loop value numeric with tail params intact (issue #13823)',
         migrate({
             template:
                 '@for (n of config.count | tuiRepeatTimes; track n; let isOdd = $odd) { {{n}} }',

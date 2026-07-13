@@ -23,7 +23,11 @@
 
     &:is(ul) > li::before {
         color: transparent;
-        background: radial-gradient(circle 0.1875rem, var(--tui-status-info) 100%, transparent 101%);
+        background: radial-gradient(
+            circle 0.1875rem,
+            var(--tui-list-marker, var(--tui-status-info)) 100%,
+            transparent 101%
+        );
         inline-size: 0.75rem;
         margin-inline-end: 0.75rem;
     }

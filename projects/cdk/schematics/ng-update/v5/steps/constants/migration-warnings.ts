@@ -110,6 +110,18 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiArrowModeProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead',
     },
     ...[
+        'TuiArrowComponent',
+        'TUI_ARROW',
+        'TuiArrowOptions',
+        'TUI_ARROW_OPTIONS',
+        'TUI_ARROW_DEFAULT_OPTIONS',
+        'tuiArrowOptionsProvider',
+    ].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/legacy',
+        message: `${name} has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links`,
+    })),
+    ...[
         'tuiParentAnimation',
         'tuiParentStop',
         'tuiHost',
@@ -163,7 +175,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TUI_MONTH_FORMATTER',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TUI_MONTH_FORMATTER has been removed. Use tuiFormatDate pipe or implement custom month formatting with Intl.DateTimeFormat.',
+            'TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.',
     },
     {
         name: 'TUI_FONTS_READY',
@@ -188,5 +200,53 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.',
+    },
+    {
+        name: 'tuiInputCardOptionsProvider',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
+    },
+    {
+        name: 'TUI_INPUT_CARD_OPTIONS',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
+    },
+    {
+        name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.',
+    },
+    {
+        name: 'TUI_ALERT_POSITION',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
+    },
+    {
+        name: 'tuiHexToRgb',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
+    },
+    {
+        name: 'TUI_TEXTFIELD_APPEARANCE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_TEXTFIELD_APPEARANCE has been removed. Set the appearance via the tuiTextfieldAppearance attribute on the textfield (e.g. <tui-textfield tuiTextfieldAppearance="..."> or <input tuiTextfieldAppearance="..." />) instead of providing this token.',
+    },
+    {
+        name: 'TuiWrapperDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiWrapperDirective ([tuiWrapper]) has been removed. Use the tuiAppearance directive from @taiga-ui/core to set the visual appearance; interactive states now resolve automatically from the host element. See https://taiga-ui.dev/appearances',
+    },
+    {
+        name: 'TuiStaticRequestService',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
 ];

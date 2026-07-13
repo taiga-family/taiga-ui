@@ -40,12 +40,15 @@ tui-textfield[multi][multi]:where(*&) {
         display: flex;
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
+        min-block-size: var(--t-height);
+        block-size: fit-content;
         flex: 1;
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
         transition-duration: inherit;
         box-sizing: border-box;
+        view-timeline: --t-scrollbar-y y;
 
         &::after {
             content: '';

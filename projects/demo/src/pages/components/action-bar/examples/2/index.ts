@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_BREAKPOINT, TuiButton, TuiPopup} from '@taiga-ui/core';
@@ -13,6 +13,6 @@ import {TuiActionBar} from '@taiga-ui/kit';
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected readonly open = signal(false);
+    protected open = false;
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
 }
