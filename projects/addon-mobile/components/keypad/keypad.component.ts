@@ -64,7 +64,7 @@ export class TuiKeypadComponent {
         const needsFallback =
             !this.templateMap().has(key) && this.content(key).startsWith('@tui.');
 
-        return this.ariaLabels()?.[key] || (needsFallback ? key : null);
+        return this.ariaLabels()[key] || (needsFallback ? key : null);
     }
 
     protected onKeyClick(key: TuiKeypadKey): void {
@@ -73,11 +73,11 @@ export class TuiKeypadComponent {
         }
 
         if (key === 'backspace') {
-            this.value.update((value) => (value || '').slice(0, -1));
+            this.value.update((value) => value.slice(0, -1));
         } else if (key === 'clear') {
             this.value.set('');
         } else if (key !== 'enter') {
-            this.value.update((value) => (value || '') + key);
+            this.value.update((value) => value + key);
         }
 
         this.key.emit(key);
