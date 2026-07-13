@@ -6,7 +6,10 @@
     <ng-template pageTab>
         <p>
             <code>TuiKeypad</code>
-            is an on-screen numeric pad for touch input — a configurable grid of keys bound to a value. Pair it with the
+            is an on-screen numeric pad for touch input — a configurable grid of keys bound to a value.
+        </p>
+        <p>
+            Pair it with the
             <code>tuiKeypadInput</code>
             directive to drive a field without the native mobile keyboard, or set app-wide defaults via
             <a
@@ -57,10 +60,14 @@
                             Drag the corner — the keypad scales to fit its container.
                         }
                         @case (5) {
-                            A calculator in a picture-in-picture window.
+                            A calculator in a picture-in-picture window — custom key icons via
+                            <code>tuiKeypadKey</code>
+                            and hardware-keyboard mapping.
                         }
                         @case (6) {
-                            A phone dialer in a picture-in-picture window.
+                            A phone dialer in a picture-in-picture window — a field driven by
+                            <code>tuiKeypadInput</code>
+                            .
                         }
                     }
                 </ng-template>
@@ -129,15 +136,7 @@
         </table>
 
         <p>
-            The default
-            <code>keys</code>
-            layout and the content of the
-            <code>backspace</code>
-            ,
-            <code>clear</code>
-            and
-            <code>enter</code>
-            action keys come from the
+            Defaults (layout and action-key content) come from the
             <code>TUI_KEYPAD_OPTIONS</code>
             token — override them app-wide with
             <a
