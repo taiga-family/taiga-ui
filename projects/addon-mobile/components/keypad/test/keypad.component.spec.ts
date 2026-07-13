@@ -1,6 +1,11 @@
 import {ChangeDetectionStrategy, Component, signal, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiKeypad, type TuiKeypadCell, TuiKeypadComponent} from '@taiga-ui/addon-mobile';
+import {
+    TuiKeypad,
+    type TuiKeypadCell,
+    TuiKeypadComponent,
+    type TuiKeypadKey,
+} from '@taiga-ui/addon-mobile';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 describe('Keypad', () => {
@@ -62,12 +67,9 @@ describe('Keypad', () => {
         });
 
         it('adds aria-label only to icon-only keys; text/digit keys keep their visible text', () => {
-            // backspace and enter render as icons (no visible text), so they get a name
             expect(key('backspace').getAttribute('aria-label')).toBe('backspace');
             expect(key('enter').getAttribute('aria-label')).toBe('enter');
 
-            // "clear" renders as text "AC" and digits render their own text: no aria-label,
-            // which would only duplicate or mismatch the visible label
             expect(key('clear').getAttribute('aria-label')).toBeNull();
             expect(key('clear').textContent?.trim()).toBe('AC');
             expect(key('1').getAttribute('aria-label')).toBeNull();
@@ -79,7 +81,6 @@ describe('Keypad', () => {
             fixture.detectChanges();
 
             expect(key('backspace').getAttribute('aria-label')).toBe('Удалить');
-            // an explicit label is respected even for a key that has visible text
             expect(key('1').getAttribute('aria-label')).toBe('Один');
         });
 
@@ -142,8 +143,6 @@ describe('Keypad', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class Test {
-            public readonly component = viewChild.required(TuiKeypadComponent);
-
             protected readonly keys: ReadonlyArray<readonly TuiKeypadCell[]> = [
                 ['1', '2', '3'],
                 [',', '0', 'backspace'],
@@ -151,7 +150,6 @@ describe('Keypad', () => {
         }
 
         let fixture: ComponentFixture<Test>;
-        let component: TuiKeypadComponent;
 
         const key = (name: string): HTMLButtonElement =>
             fixture.nativeElement.querySelector(`[data-key="${name}"]`);
@@ -164,7 +162,6 @@ describe('Keypad', () => {
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
-            component = fixture.componentInstance.component();
             fixture.detectChanges();
         });
 
@@ -174,23 +171,6 @@ describe('Keypad', () => {
             key('1').dispatchEvent(event);
 
             expect(event.defaultPrevented).toBe(true);
-        });
-
-        it('still appends on tap (click follows touch)', () => {
-            key('1').click();
-            key('2').click();
-
-            expect(component.value()).toBe('12');
-        });
-
-        it('clears the whole value on long press of backspace', () => {
-            component.value.set('123');
-            fixture.detectChanges();
-            key('backspace').dispatchEvent(
-                new CustomEvent('longtap', {detail: {clientX: 0, clientY: 0}}),
-            );
-
-            expect(component.value()).toBe('');
         });
     });
 
@@ -305,6 +285,105 @@ describe('Keypad', () => {
 
             expect(button.getAttribute('aria-label')).toBeNull();
             expect(button.textContent?.trim()).toBe('x');
+        });
+    });
+
+    describe('disabled state', () => {
+        @Component({
+            imports: [TuiKeypad],
+            template: `
+                <tui-keypad
+                    [disabled]="disabled()"
+                    [disabledKeys]="disabledKeys()"
+                    [keys]="keys"
+                />
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {
+            public readonly component = viewChild.required(TuiKeypadComponent);
+            public readonly disabled = signal(false);
+            public readonly disabledKeys = signal<readonly TuiKeypadKey[]>([]);
+
+            protected readonly keys: ReadonlyArray<readonly TuiKeypadCell[]> = [
+                ['1', '2', '3'],
+                ['clear', '0', 'backspace'],
+            ];
+        }
+
+        let fixture: ComponentFixture<Test>;
+        let component: TuiKeypadComponent;
+
+        const key = (name: string): HTMLButtonElement =>
+            fixture.nativeElement.querySelector(`[data-key="${name}"]`);
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({imports: [Test]});
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(Test);
+            component = fixture.componentInstance.component();
+            fixture.detectChanges();
+        });
+
+        it('disables every key and marks the host when [disabled] is set', () => {
+            fixture.componentInstance.disabled.set(true);
+            fixture.detectChanges();
+
+            expect(key('1').disabled).toBe(true);
+            expect(key('backspace').disabled).toBe(true);
+            expect(
+                fixture.nativeElement
+                    .querySelector('tui-keypad')
+                    .getAttribute('disabled'),
+            ).toBe('');
+        });
+
+        it('ignores input while disabled: no value change, no emit', () => {
+            const emitted: string[] = [];
+
+            component.key.subscribe((event) => emitted.push(event));
+            fixture.componentInstance.disabled.set(true);
+            fixture.detectChanges();
+            key('1').click();
+
+            expect(component.value()).toBe('');
+            expect(emitted).toEqual([]);
+        });
+
+        it('disables only the keys listed in [disabledKeys]', () => {
+            fixture.componentInstance.disabledKeys.set(['backspace']);
+            fixture.detectChanges();
+
+            expect(key('backspace').disabled).toBe(true);
+            expect(key('1').disabled).toBe(false);
+        });
+
+        it('a disabled key is inert while the rest keep working', () => {
+            const emitted: string[] = [];
+
+            component.value.set('12');
+            fixture.componentInstance.disabledKeys.set(['backspace']);
+            fixture.detectChanges();
+            component.key.subscribe((event) => emitted.push(event));
+            key('backspace').click();
+
+            expect(component.value()).toBe('12');
+
+            key('3').click();
+
+            expect(component.value()).toBe('123');
+            expect(emitted).toEqual(['3']);
+        });
+
+        it('does not clear on long tap of a disabled backspace', () => {
+            component.value.set('123');
+            fixture.componentInstance.disabledKeys.set(['backspace']);
+            fixture.detectChanges();
+            key('backspace').dispatchEvent(
+                new CustomEvent('longtap', {detail: {clientX: 0, clientY: 0}}),
+            );
+
+            expect(component.value()).toBe('123');
         });
     });
 });

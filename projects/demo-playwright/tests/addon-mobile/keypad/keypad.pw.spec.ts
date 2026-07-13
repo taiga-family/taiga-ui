@@ -45,13 +45,11 @@ test.describe('Keypad', () => {
     }) => {
         const keypad = page.locator('tui-keypad.custom');
 
-        // icon-only key (backspace) has an aria-label
         await expect(keypad.locator('[data-key="backspace"]')).toHaveAttribute(
             'aria-label',
             /.+/,
         );
 
-        // digit key is named by its visible text, with no redundant aria-label
         await expect(keypad.locator('[data-key="1"]')).toHaveText('1');
         await expect(keypad.locator('[data-key="1"]')).not.toHaveAttribute(
             'aria-label',
