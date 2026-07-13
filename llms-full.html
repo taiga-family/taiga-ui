@@ -96,7 +96,7 @@
 ### scrollbar
 
 ```text
-  TuiScrollControls, TuiScrollIntoView, TuiScrollRef, TuiScrollable, TuiScrollbar, TuiScrollbarDirective, TuiScrollbarOptions, TuiScrollbarService
+  TuiScrollControls, TuiScrollControlsService, TuiScrollIntoView, TuiScrollRef, TuiScrollable, TuiScrollbar, TuiScrollbarDirective, TuiScrollbarOptions, TuiScrollbarPosition, TuiScrollbarService
 ```
 ### slider
 
@@ -2106,16 +2106,16 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show TableBar &lt;/button&gt;
-&lt;tui-action-bar *tuiPopup=&quot;open()&quot; size=&quot;s&quot; &gt;
-&lt;span [style.width.%]=&quot;isMobile() ? 100 : null&quot;&gt;Table bar opened&lt;/span&gt;
-&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.trash&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Remove &lt;/button&gt;
-&lt;button iconStart=&quot;@tui.x&quot; tuiIconButton type=&quot;button&quot; [appearance]=&quot;isMobile() ? &#039;secondary-grayscale&#039; : &#039;icon&#039;&quot; (click)=&quot;open.set(false)&quot; &gt; Close &lt;/button&gt;
+&lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show ActionBar &lt;/button&gt;
+&lt;tui-action-bar *tuiPopup=&quot;open&quot; size=&quot;s&quot; &gt;
+&lt;span [style.width.%]=&quot;isMobile() ? 100 : null&quot;&gt;Action bar opened&lt;/span&gt;
+&lt;button appearance=&quot;secondary-grayscale&quot; iconStart=&quot;@tui.trash&quot; tuiButton type=&quot;button&quot; (click)=&quot;open = false&quot; &gt; Remove &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.x&quot; tuiIconButton type=&quot;button&quot; [appearance]=&quot;isMobile() ? &#039;secondary-grayscale&#039; : &#039;icon&#039;&quot; (click)=&quot;open = false&quot; &gt; Close &lt;/button&gt;
 &lt;/tui-action-bar&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, computed, inject, signal} from &#039;@angular/core&#039;;
+import {Component, computed, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TUI_BREAKPOINT, TuiButton, TuiPopup} from &#039;@taiga-ui/core&#039;;
@@ -2130,7 +2130,7 @@ import {TuiActionBar} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
 
-    protected readonly open = signal(false);
+    protected open = false;
     protected readonly isMobile = computed(() =&gt; this.breakpoint() === &#039;mobile&#039;);
 }
 ```
@@ -2139,9 +2139,9 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;button automation-id=&quot;open-table-bar-on-top&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show TableBar on top &lt;/button&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Show ActionBar on top &lt;/button&gt;
 &lt;tui-action-bar *tuiPopup=&quot;open()&quot;&gt;
-&lt;span&gt;Table bar on top opened&lt;/span&gt;
+&lt;span&gt;Action bar on top opened&lt;/span&gt;
 &lt;button iconStart=&quot;@tui.trash&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Close &lt;/button&gt;
 &lt;/tui-action-bar&gt;
 ```
@@ -29954,6 +29954,38 @@ export default class Example {}
 }
 ```
 
+#### Custom color
+
+**Template:**
+```html
+&lt;ul style=&quot;--tui-list-marker: var(--tui-status-negative)&quot; tuiList &gt;
+&lt;li&gt;All bullets in this list share the same custom color&lt;/li&gt;
+&lt;!-- prettier-ignore --&gt;
+&lt;li&gt;Set the&lt;code&gt;--tui-list-marker&lt;/code&gt;variable on the list itself&lt;/li&gt;
+&lt;li&gt;No need to override the bullet background manually&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul tuiList&gt;
+&lt;li&gt;Bullets can also be recolored individually&lt;/li&gt;
+&lt;li style=&quot;--tui-list-marker: var(--tui-status-warning)&quot;&gt;This one is a warning&lt;/li&gt;
+&lt;li style=&quot;--tui-list-marker: var(--tui-status-positive)&quot;&gt;This one is positive&lt;/li&gt;
+&lt;/ul&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiList],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
 
 ### TypeScript
 
@@ -29968,7 +30000,13 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Bulleted&#039;, &#039;Numbered&#039;, &#039;Nested&#039;, &#039;Long text&#039;];
+    protected readonly examples = [
+        &#039;Bulleted&#039;,
+        &#039;Numbered&#039;,
+        &#039;Nested&#039;,
+        &#039;Long text&#039;,
+        &#039;Custom color&#039;,
+    ];
 }
 ```
 
@@ -37048,11 +37086,10 @@ p {
 **Template:**
 ```html
 &lt;button type=&quot;button&quot; (click)=&quot;add()&quot; &gt; Add &lt;/button&gt;
-&lt;tui-scrollbar&gt;
-&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollable class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;cdk-virtual-scroll-viewport itemSize=&quot;50&quot; tuiScrollRef class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;tui-scroll-controls /&gt;
 &lt;div *cdkVirtualFor=&quot;let item of items&quot; class=&quot;example-item&quot; &gt; {{ item }} &lt;/div&gt;
 &lt;/cdk-virtual-scroll-viewport&gt;
-&lt;/tui-scrollbar&gt;
 ```
 **TypeScript:**
 ```ts
@@ -37064,15 +37101,15 @@ import {
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiScrollable, TuiScrollbar} from &#039;@taiga-ui/core&#039;;
+import {TuiScrollControls, TuiScrollRef} from &#039;@taiga-ui/core&#039;;
 
 @Component({
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -37090,6 +37127,7 @@ export default class Example {
 **LESS:**
 ```less
 .example-viewport {
+    display: flex;
     block-size: 12.5rem;
     border: 1px solid;
 }
@@ -38157,7 +38195,8 @@ export default class Example {
 ```html
 &lt;tui-textfield tuiChevron&gt;
 &lt;input placeholder=&quot;Country&quot; tuiSelect [(ngModel)]=&quot;value&quot; /&gt;
-&lt;cdk-virtual-scroll-viewport *tuiDropdown tuiScrollable class=&quot;scroll&quot; [itemSize]=&quot;44&quot; &gt;
+&lt;cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class=&quot;scroll&quot; [itemSize]=&quot;42&quot; &gt;
+&lt;tui-scroll-controls /&gt;
 &lt;tui-data-list&gt;
 &lt;button *cdkVirtualFor=&quot;let item of countries&quot; tuiOption type=&quot;button&quot; [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt;
 &lt;/tui-data-list&gt;
@@ -38171,7 +38210,7 @@ import {Component, inject} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiDataList, TuiScrollable} from &#039;@taiga-ui/core&#039;;
+import {TuiDataList, TuiScrollControls, TuiScrollRef} from &#039;@taiga-ui/core&#039;;
 import {TUI_COUNTRIES, TuiChevron, TuiSelect} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
@@ -38180,7 +38219,8 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from &#039;@taiga-ui/kit&#039;;
         ScrollingModule,
         TuiChevron,
         TuiDataList,
-        TuiScrollable,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiSelect,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -38200,6 +38240,7 @@ export default class Example {
 .scroll {
     .scrollbar-hidden();
 
+    display: flex;
     block-size: 12.5rem;
 }
 ```
@@ -51441,12 +51482,10 @@ Directive to show a hint by hover of an element
 ### Example
 
 ```html
-&lt;ng-template #template&gt; To be accessible, hint should be set to a focusable element. See &lt;a tuiLink [routerLink]=&quot;routes.HintDescribe&quot; &gt;
-&lt;code&gt;HintDescribe&lt;/code&gt;
-&lt;/a&gt;
+&lt;ng-template #template&gt; To be accessible, hint should be set to a focusable element. See &lt;a appearance=&quot;&quot; tuiLink [routerLink]=&quot;routes.HintDescribe&quot; &gt; HintDescribe &lt;/a&gt;
 &lt;/ng-template&gt;
-&lt;span tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover it! &lt;/span&gt;
-&lt;input id=&quot;qwerty&quot; /&gt;
+&lt;span tuiBadge tuiHintDescribe=&quot;qwerty&quot; [tuiHint]=&quot;template&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintHideDelay]=&quot;hideDelay&quot; [tuiHintShowDelay]=&quot;showDelay&quot; &gt; Hover me &lt;/span&gt;
+&lt;input id=&quot;qwerty&quot; placeholder=&quot;Focus me with keyboard&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -51692,9 +51731,10 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {TuiHint} from &#039;@taiga-ui/core&#039;;
+import {TuiBadge} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiDocHint, TuiHint],
+    imports: [TuiBadge, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
@@ -51715,7 +51755,7 @@ Directive to show a hint in accessible way upon keyboard focus
 ### Example
 
 ```html
-&lt;input placeholder=&quot;My id is &#039;qwerty&#039;&quot; tuiHint=&quot;I will be visible upon keyboard focus&quot; tuiHintDescribe=&quot;qwerty&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; /&gt;
+&lt;input placeholder=&quot;My id is &#039;qwerty&#039;&quot; tuiHint=&quot;I will be visible upon keyboard focus&quot; tuiHintDescribe=&quot;qwerty&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -51791,7 +51831,7 @@ Directive to show a hint manually
 ### Example
 
 ```html
-&lt;button tuiButton tuiHint=&quot;It says &#039;Hi all!&#039; into console&quot; type=&quot;button&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintManual]=&quot;show&quot; (click)=&quot;sayHi()&quot; &gt; A strange button &lt;/button&gt;
+&lt;button tuiButton tuiHint=&quot;It says &#039;Hi all!&#039; into console&quot; type=&quot;button&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintCentered]=&quot;hint.centered&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiHintManual]=&quot;show&quot; (click)=&quot;sayHi()&quot; &gt; A strange button &lt;/button&gt;
 ```
 
 ### API - Inputs

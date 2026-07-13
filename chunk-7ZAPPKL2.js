@@ -1,0 +1,29 @@
+import"./chunk-HU6DUUP4.js";var o=`<tui-doc-page
+    header="Scrollbar"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        <div>
+            <code>Scrollbar</code>
+            implements a custom scrollbar in Taiga UI style.
+        </div>
+
+        <p>Native scrollbar is hidden to keep native platform scroll experience</p>
+
+        <div tuiNotification>
+            Use
+            <code>TUI_SCROLL_REF</code>
+            token to get a scrollable container. For example, when working with virtual scroll.
+        </div>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};
