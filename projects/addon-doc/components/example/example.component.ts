@@ -43,13 +43,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import {TuiDocCode} from '../code';
+import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
-
-interface TuiDocExampleTab {
-    readonly code: string;
-    readonly key: string;
-    readonly title: PolymorpheusContent;
-}
 
 @Component({
     selector: 'tui-doc-example',
@@ -60,6 +55,7 @@ interface TuiDocExampleTab {
         RouterLink,
         TuiButton,
         TuiDocCode,
+        TuiDocExampleGetTabsPipe,
         TuiFullscreen,
         TuiHeader,
         TuiLink,
@@ -111,7 +107,6 @@ export class TuiDocExample implements OnChanges {
         );
 
     protected readonly route = inject(ActivatedRoute);
-    protected readonly previewTab = 'tui-doc-example-preview';
     protected activeItemIndex = 0;
     protected fullscreen = false;
     protected readonly copy = computed(() => this.copyTexts()[0]);
@@ -128,25 +123,6 @@ export class TuiDocExample implements OnChanges {
         ),
         {initialValue: {}},
     );
-
-    protected readonly tabs = computed<readonly TuiDocExampleTab[]>(() => [
-        ...(this.preview()
-            ? [
-                  {
-                      code: '',
-                      key: this.previewTab,
-                      title: this.defaultTab(),
-                  },
-              ]
-            : []),
-        ...Object.entries(this.processor())
-            .filter(([, code]) => code)
-            .map(([key, code]) => ({
-                code,
-                key,
-                title: this.getTabTitle(key),
-            })),
-    ]);
 
     protected readonly lazyComponent = resource({
         request: async () => this.component(),

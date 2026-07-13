@@ -31,16 +31,17 @@
     class="t-example"
     [(tuiFullscreen)]="fullscreen"
 >
-    @if (tabs(); as tabs) {
+    @if (processor() | tuiDocExampleGetTabs: defaultTab(); as all) {
+        @let tabs = preview() ? all : all.slice(1);
         @if (tabs.length) {
             <div class="t-header">
                 <tui-segmented
                     class="t-tabs"
                     [(activeItemIndex)]="activeItemIndex"
                 >
-                    @for (tab of tabs; track tab.key) {
+                    @for (tab of tabs; track $index) {
                         <button type="button">
-                            <ng-container *polymorpheusOutlet="tab.title as text">
+                            <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
                                 {{ text }}
                             </ng-container>
                         </button>
@@ -84,9 +85,9 @@
                 }
             </div>
         }
-        @for (tab of tabs; track tab.key) {
+        @for (tab of tabs; track $index) {
             <div class="t-content">
-                @if (tab.key === previewTab) {
+                @if (!$index && preview()) {
                     <section
                         automation-id="tui-doc-example"
                         class="t-demo"
@@ -96,12 +97,13 @@
                         <ng-container *ngComponentOutlet="lazyComponent.value() ?? null" />
                     </section>
                 }
+                @let code = processor()[tab] || '';
                 <tui-doc-code
-                    [code]="tab.code"
-                    [style.display]="activeItemIndex === $index && tab.key !== previewTab ? 'block' : 'none'"
+                    [code]="code"
+                    [style.display]="activeItemIndex === $index && ($index || !preview()) ? 'block' : 'none'"
                 >
                     @for (action of codeActions; track action) {
-                        <ng-container *polymorpheusOutlet="action as text; context: {$implicit: tab.code}">
+                        <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
                             {{ text }}
                         </ng-container>
                     }
