@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.15.0](https://github.com/taiga-family/taiga-ui/compare/v5.14.0...v5.15.0) (2026-07-13)
+
+### 🚀 Features
+
+- **core:** `Hint` allow positioning non-centered hints
+  ([#14491](https://github.com/taiga-family/taiga-ui/issues/14491))
+  ([6493b98](https://github.com/taiga-family/taiga-ui/commit/6493b9851c31b2735983a317463283a6b9cd8376))
+- **core:** `ScrollControls` automate use with virtual scroll, deprecate `Scrollable`
+  ([#14546](https://github.com/taiga-family/taiga-ui/issues/14546))
+  ([bef8127](https://github.com/taiga-family/taiga-ui/commit/bef8127f2771af70d1cb02449e406f963af1d2da))
+- **core:** `Tooltip` improve a11y ([#14521](https://github.com/taiga-family/taiga-ui/issues/14521))
+  ([3423e38](https://github.com/taiga-family/taiga-ui/commit/3423e38370367b16ba7d43bf7f255ab9e6ad2480))
+- **layout:** add custom color for tuiList markers ([#14536](https://github.com/taiga-family/taiga-ui/issues/14536))
+  ([05aa1ac](https://github.com/taiga-family/taiga-ui/commit/05aa1ac4e43d0df2b60d37350cd8c968a4ee21ab))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** correct tab order in `Example` after language switch
+  ([#14376](https://github.com/taiga-family/taiga-ui/issues/14376))
+  ([b4a8b99](https://github.com/taiga-family/taiga-ui/commit/b4a8b9908e23498c576236f168c5c918256b9407))
+- **cdk:** `TuiPdfViewer` correct migration ([#14472](https://github.com/taiga-family/taiga-ui/issues/14472))
+  ([8505820](https://github.com/taiga-family/taiga-ui/commit/850582049bba2f69a850d49034a9ddea1f29916a))
+- **cdk:** flag removed dialog `header` option during v5 migration
+  ([#14497](https://github.com/taiga-family/taiga-ui/issues/14497))
+  ([bba1773](https://github.com/taiga-family/taiga-ui/commit/bba1773407b7df30911cfb43f93d00c0592e9582))
+- **cdk:** flag SafeResourceUrl avatar `src` during v5 migration
+  ([#14498](https://github.com/taiga-family/taiga-ui/issues/14498))
+  ([cf0168f](https://github.com/taiga-family/taiga-ui/commit/cf0168f76dc9085002837774ef34b7d913b3a2e9))
+- **cdk:** keep `tuiRepeatTimes` loop value numeric in [@for](https://github.com/for) blocks
+  ([#14499](https://github.com/taiga-family/taiga-ui/issues/14499))
+  ([63aaf7c](https://github.com/taiga-family/taiga-ui/commit/63aaf7cc886e2a6f4c3a42040b34f63911d6d18d))
+- **core:** `Carousel` no longer duplicates slides during hydration
+  ([#14539](https://github.com/taiga-family/taiga-ui/issues/14539))
+  ([41d4be7](https://github.com/taiga-family/taiga-ui/commit/41d4be71322257e5ed13fb4d76b00f77093d425c))
+- **core:** `HintPointer` fix initial position lag ([#14522](https://github.com/taiga-family/taiga-ui/issues/14522))
+  ([579f5e4](https://github.com/taiga-family/taiga-ui/commit/579f5e42a5d40734a5839766607eaceaaa7810c1))
+- **core:** `Popup` sync change detection ([#14502](https://github.com/taiga-family/taiga-ui/issues/14502))
+  ([83a5e78](https://github.com/taiga-family/taiga-ui/commit/83a5e78be82bdbbf268533430a4f9ab9227997d2))
+- **core:** loader fix content height overflow inside grid layout
+  ([#14510](https://github.com/taiga-family/taiga-ui/issues/14510))
+  ([d4e74c4](https://github.com/taiga-family/taiga-ui/commit/d4e74c4a35002341ca2fbf1a5e7f10a33d0e8209))
+- **core:** prevent context rect from leaking into nested dropdowns
+  ([#14505](https://github.com/taiga-family/taiga-ui/issues/14505))
+  ([5c63027](https://github.com/taiga-family/taiga-ui/commit/5c630275935aa0e8a1d03ba2391c43be8db10317))
+- **kit:** `Textarea` bump style specificity ([#14555](https://github.com/taiga-family/taiga-ui/issues/14555))
+  ([03deea4](https://github.com/taiga-family/taiga-ui/commit/03deea49abcebf96d401638a5c6c7f12a8396563))
+- **kit:** add fallback for dropdown calendar inside tui-drawer
+  ([#14531](https://github.com/taiga-family/taiga-ui/issues/14531))
+  ([b27b5b0](https://github.com/taiga-family/taiga-ui/commit/b27b5b0b7ba8a8b3b9016dccb3e958c24206c72f))
+- **kit:** avoid off-zone textarea in `tuiCopy` ([#14529](https://github.com/taiga-family/taiga-ui/issues/14529))
+  ([88324ea](https://github.com/taiga-family/taiga-ui/commit/88324eada255116f1bac5480b294f62d2dc8eabd))
+- **kit:** prevent `InputYear` crash on out-of-range control value
+  ([#14509](https://github.com/taiga-family/taiga-ui/issues/14509))
+  ([cb196b9](https://github.com/taiga-family/taiga-ui/commit/cb196b9183d7011f4fa2770e06778a1de2f02489))
+- **kit:** split edited input chip by separator ([#14347](https://github.com/taiga-family/taiga-ui/issues/14347))
+  ([ff0829d](https://github.com/taiga-family/taiga-ui/commit/ff0829d86f36e1088d44760b88357e816204d342))
+
 ## [5.14.0](https://github.com/taiga-family/taiga-ui/compare/v5.13.0...v5.14.0) (2026-07-06)
 
 ### 🚀 Features
