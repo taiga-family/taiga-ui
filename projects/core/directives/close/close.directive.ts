@@ -6,7 +6,7 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiDialogCloseService} from '@taiga-ui/core/portals/dialog';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
-import {filter, merge, switchMap, take, tap} from 'rxjs';
+import {filter, merge, switchMap, take} from 'rxjs';
 
 /**
  * Emits on Esc/CloseWatcher and on clicks outside the host, tracked as
@@ -24,17 +24,6 @@ export class TuiClose {
     private readonly el = tuiInjectElement();
 
     private readonly overlay$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
-        // TODO: remove debug
-        tap((event) => {
-            console.log('[TuiClose] mousedown', {
-                target: event.target,
-                clientX: event.clientX,
-                clientY: event.clientY,
-                scrollbarArea: tuiGetViewportWidth(this.win) - event.clientX <= 17,
-                onOverlay: this.isOnOverlay(event),
-                hostRect: this.el.getBoundingClientRect(),
-            });
-        }),
         filter(
             (event) =>
                 tuiGetViewportWidth(this.win) - event.clientX > 17 &&
@@ -43,33 +32,14 @@ export class TuiClose {
         switchMap(() =>
             tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
-                // TODO: remove debug
-                tap((event) => {
-                    console.log(
-                        '[TuiClose] mouseup after overlay press — onOverlay:',
-                        this.isOnOverlay(event),
-                    );
-                }),
+
                 filter((event) => this.isOnOverlay(event)),
             ),
         ),
-        // TODO: remove debug
-        tap(() => console.log('[TuiClose] EMIT ← overlay click', 'color: red')),
     );
 
     public readonly tuiClose = outputFromObservable(
-        merge(
-            inject(TuiDialogCloseService).pipe(
-                // TODO: remove debug
-                tap(() =>
-                    console.log(
-                        '[TuiClose] EMIT ← TuiDialogCloseService (Esc/CloseWatcher/outside click)',
-                        'color: red',
-                    ),
-                ),
-            ),
-            this.overlay$,
-        ),
+        merge(inject(TuiDialogCloseService).pipe(), this.overlay$),
     );
 
     private isOnOverlay(event: MouseEvent): boolean {

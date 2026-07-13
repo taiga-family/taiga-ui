@@ -10,7 +10,7 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
-import {filter, map, merge, Observable, switchMap, take, tap} from 'rxjs';
+import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_DIALOGS_CLOSE' : '',
@@ -38,8 +38,6 @@ export class TuiDialogCloseService extends Observable<unknown> {
                 (this.el.contains(target) || this.isOutside(target))
             );
         }),
-        // TODO: remove debug
-        tap(() => console.log('[TuiDialogCloseService] EMIT ← Esc keydown', this.el)),
     );
 
     private readonly mousedown$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
@@ -49,32 +47,12 @@ export class TuiDialogCloseService extends Observable<unknown> {
                 tuiGetViewportWidth(this.win) - event.clientX > 17 &&
                 this.isOutside(tuiGetActualTarget(event)),
         ),
-        // TODO: remove debug
-        tap(() =>
-            console.log(
-                '[TuiDialogCloseService] mousedown outside — waiting mouseup',
-                this.el,
-            ),
-        ),
+
         switchMap(() =>
             tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
                 map(tuiGetActualTarget),
-                // TODO: remove debug
-                tap((target) =>
-                    console.log(
-                        '[TuiDialogCloseService] mouseup — outside:',
-                        this.isOutside(target),
-                    ),
-                ),
                 filter((target) => this.isOutside(target)),
-            ),
-        ),
-        // TODO: remove debug
-        tap(() =>
-            console.log(
-                '[TuiDialogCloseService] EMIT ← outside mousedown/mouseup pair',
-                this.el,
             ),
         ),
     );
@@ -82,13 +60,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
     // `tuiZonefull()` → `inject(NgZone)` → requires injection context.
     // Field initializer runs inside it, subscription might not
     // (e.g. `outputFromObservable`) → NG0203 if called there
-    private readonly watcher$ = tuiCloseWatcher().pipe(
-        // TODO: remove debug
-        tap(() =>
-            console.log('[TuiDialogCloseService] EMIT ← CloseWatcher cancel', this.el),
-        ),
-        tuiZonefull(),
-    );
+    private readonly watcher$ = tuiCloseWatcher().pipe(tuiZonefull());
 
     constructor() {
         super((subscriber) =>
