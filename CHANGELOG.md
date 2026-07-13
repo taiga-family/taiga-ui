@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.91.0](https://github.com/taiga-family/taiga-ui/compare/v4.90.0...v4.91.0) (2026-07-13)
+
+### 🐞 Bug Fixes
+
+- **core:** handle scrollTo promise in multi textfield ([#14544](https://github.com/taiga-family/taiga-ui/issues/14544))
+  ([d45f217](https://github.com/taiga-family/taiga-ui/commit/d45f217ae6bd2199df6b939c002ba189bf2b57eb))
+- **core:** persist first `TUI_DARK_MODE` change and pin explicit choice
+  ([#14508](https://github.com/taiga-family/taiga-ui/issues/14508))
+  ([22c9953](https://github.com/taiga-family/taiga-ui/commit/22c9953800f084784993af82ebf2c580a978910e))
+- **kit:** `tuiInjectValue` prefer internal CVA value for nested chips
+  ([#14535](https://github.com/taiga-family/taiga-ui/issues/14535))
+  ([3e7aa7a](https://github.com/taiga-family/taiga-ui/commit/3e7aa7ae02486ae1fa8b94c5c243a08dd1a1b1a4))
+
+### 🚀 Features
+
+- **addon-mobile:** show top bar in sheet dialog despite appearance
+  ([#14549](https://github.com/taiga-family/taiga-ui/issues/14549))
+  ([5c3f415](https://github.com/taiga-family/taiga-ui/commit/5c3f415896af1bd708889cce89cc43ad7f593f2f))
+
 ## [4.90.0](https://github.com/taiga-family/taiga-ui/compare/v4.89.0...v4.90.0) (2026-07-06)
 
 ### 🐞 Bug Fixes
