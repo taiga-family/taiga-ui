@@ -1,0 +1,20 @@
+import"./chunk-HU6DUUP4.js";var i=`<button
+    type="button"
+    (click)="add()"
+>
+    Add
+</button>
+<cdk-virtual-scroll-viewport
+    itemSize="50"
+    tuiScrollRef
+    class="example-viewport tui-zero-scrollbar"
+>
+    <tui-scroll-controls />
+    <div
+        *cdkVirtualFor="let item of items"
+        class="example-item"
+    >
+        {{ item }}
+    </div>
+</cdk-virtual-scroll-viewport>
+`;export{i as default};
