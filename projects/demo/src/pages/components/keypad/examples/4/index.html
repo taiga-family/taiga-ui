@@ -17,7 +17,8 @@
                 #input="tuiKeypadInput"
                 tuiKeypadInput
                 class="amount"
-                [(ngModel)]="value"
+                [ngModel]="value()"
+                (ngModelChange)="value.set($event)"
             />
 
             <div class="chips">
