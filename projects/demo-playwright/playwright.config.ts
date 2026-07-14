@@ -90,6 +90,7 @@ export default defineConfig({
         : [chromium],
     expect: {
         toHaveScreenshot: {
+            animations: 'allow',
             caret: 'hide',
             scale: 'device',
             ...options,
