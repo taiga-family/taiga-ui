@@ -11,7 +11,7 @@
     (pointerdown.self.zoneless.prevent)="(0)"
     (resize)="onItems(wrapper)"
 >
-    <ng-content select="label" />
+    <ng-content select="label[tuiLabel]" />
     @for (item of items(); track item) {
         <ng-template
             [polymorpheusOutlet]="component"
