@@ -32,7 +32,6 @@ export class TuiClose {
         switchMap(() =>
             tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
-
                 filter((event) => this.isOnOverlay(event)),
             ),
         ),
@@ -41,7 +40,6 @@ export class TuiClose {
     public readonly tuiClose = outputFromObservable(
         merge(inject(TuiDialogCloseService).pipe(), this.overlay$),
     );
-
     private isOnOverlay(event: MouseEvent): boolean {
         const {clientX, clientY} = event;
         const rect = this.el.getBoundingClientRect();
