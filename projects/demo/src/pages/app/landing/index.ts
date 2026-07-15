@@ -13,6 +13,7 @@ import {
     WA_INTERSECTION_ROOT,
     WaIntersectionObserver,
 } from '@ng-web-apis/intersection-observer';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAnimated, TuiAutoFocus, tuiProvide} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
@@ -25,6 +26,7 @@ import {TuiButton} from '@taiga-ui/core';
     host: {
         tuiTheme: 'light',
         '[class._hide]': 'hidden',
+        '[class._e2e]': 'e2e',
         '[style.background]': 'background',
     },
 })
@@ -34,6 +36,7 @@ export default class Page implements OnInit {
     private readonly activatedRoute = inject(ActivatedRoute);
 
     protected readonly storage = inject(WA_LOCAL_STORAGE);
+    protected readonly e2e = inject(WA_IS_E2E);
     protected readonly routes = DemoRoute;
     protected current = 0;
     protected intersected = false;
