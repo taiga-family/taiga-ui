@@ -7,8 +7,7 @@ import {
     TuiButton,
     TuiCell,
     TuiLink,
-    TuiScrollbar,
-    tuiScrollbarOptionsProvider,
+    TuiScrollRef,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
@@ -25,7 +24,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
         TuiCell,
         TuiHeader,
         TuiLink,
-        TuiScrollbar,
+        TuiScrollRef,
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
@@ -34,7 +33,6 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly reviews = [
