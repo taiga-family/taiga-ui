@@ -28,17 +28,6 @@ const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
 
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
-
 export function migrateSelect({
     resource,
     recorder,
@@ -56,7 +45,7 @@ export function migrateSelect({
         const startOffset = element.sourceCodeLocation?.startOffset;
 
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const controlStateAttrs = getControlStateAttrs(element);

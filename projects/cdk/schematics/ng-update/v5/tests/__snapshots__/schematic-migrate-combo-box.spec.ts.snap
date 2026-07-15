@@ -326,6 +326,37 @@ exports[`ng-update ComboBox moves [(ngModel)] to generated input when input is a
 }
 `;
 
+exports[`ng-update ComboBox moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                    </label>
+
+<input tuiComboBox [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update ComboBox moves formControlName to generated input: test.html 1`] = `
 {
   "0. Before": "

@@ -349,6 +349,32 @@ exports[`ng-update legacy multi-select migrates tui-multi-select with [formContr
 }
 `;
 
+exports[`ng-update legacy multi-select moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-multi-select
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-multi-select>
+            ",
+  "1. After": "
+                <tui-textfield multi tuiChevron
+                >
+                    <input tuiInputChip [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update legacy multi-select moves [placeholder] binding to generated <input>: test.html 1`] = `
 {
   "0. Before": "

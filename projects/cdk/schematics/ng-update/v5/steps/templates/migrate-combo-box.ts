@@ -24,17 +24,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type TextNode = DefaultTreeAdapterTypes.TextNode;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/combo-box';
-
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 const INPUT_ATTRS = new Set(['[strictMatcher]'.toLowerCase(), '[strict]']);
 
 const REMOVE_ATTRS = new Set([
@@ -59,7 +48,7 @@ export function migrateComboBox({
         const sourceCodeLocation = element.sourceCodeLocation;
 
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const inputAttrs = element.attrs.filter((attr) =>

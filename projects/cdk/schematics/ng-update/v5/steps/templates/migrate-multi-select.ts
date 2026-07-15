@@ -36,17 +36,6 @@ const SEARCH_CHANGE_OUTPUT = '(searchChange)';
 // [search] has no template-level v5 equivalent (requires viewChild + signal)
 const MANUAL_SEARCH_BINDING_ATTRS = new Set(['[(search)]', '[search]', 'search']);
 
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
-
 export function migrateMultiSelect({
     resource,
     recorder,
@@ -64,7 +53,7 @@ export function migrateMultiSelect({
         const startOffset = element.sourceCodeLocation?.startOffset;
 
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const controlStateAttrs = getControlStateAttrs(element);
