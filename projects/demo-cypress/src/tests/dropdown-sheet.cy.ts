@@ -18,8 +18,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         <tui-root>
             <tui-textfield
                 tuiChevron
-                tuiDropdownSheet="Select platform"
-                [tuiDropdownSheetOptions]="options()"
+                [tuiDropdownSheet]="options()"
             >
                 <input
                     tuiSelect
@@ -40,11 +39,27 @@ export class Sandbox {
     protected readonly items = Array.from({length: 20}, (_, i) => `Item ${i}`);
     protected value: string | null = null;
 
-    public readonly options = input<Partial<TuiSheetDialogOptions>>({});
+    public readonly options = input<Partial<TuiSheetDialogOptions> | string>(
+        'Select platform',
+    );
 }
 
-describe('DropdownSheet with sheet dialog options', () => {
+describe('DropdownSheet', () => {
     beforeEach(() => cy.viewport(300, 350));
+
+    describe('accepts either a string shorthand or an options object as label', () => {
+        (['Select platform', {label: 'Select platform'}] as const).forEach((options) => {
+            it(JSON.stringify(options), () => {
+                cy.mount(Sandbox, {
+                    componentProperties: {options},
+                    providers: [{provide: WA_IS_MOBILE, useValue: true}],
+                });
+
+                cy.get('input').click();
+                cy.get('tui-sheet-dialog header').should('have.text', 'Select platform');
+            });
+        });
+    });
 
     it('closes sheet when swipe ends at the top by default', () => {
         cy.mount(Sandbox, {providers: [{provide: WA_IS_MOBILE, useValue: true}]});
@@ -63,7 +78,7 @@ describe('DropdownSheet with sheet dialog options', () => {
 
     it('keeps sheet open when closable is false', () => {
         cy.mount(Sandbox, {
-            componentProperties: {options: {closable: false}},
+            componentProperties: {options: {label: 'Select platform', closable: false}},
             providers: [{provide: WA_IS_MOBILE, useValue: true}],
         });
 
