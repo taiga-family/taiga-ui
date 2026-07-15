@@ -206,8 +206,6 @@ export function migrateInputTime({
                     : `${result} ${renamed}`;
             }
 
-            // Not renamed (control attrs): slice the original source to preserve
-            // camelCase names like [formControlName] / (ngModelChange).
             const original = getOriginalAttrText(template, element, attr);
 
             return `${result} ${original}`;
