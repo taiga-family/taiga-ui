@@ -89,5 +89,10 @@ describe('ng-update avatar', () => {
         }),
     );
 
+    it(
+        'keeps a bound string literal [src] without a SafeResourceUrl TODO',
+        migrate({template: '<tui-avatar [src]="\'assets/avatar.png\'"></tui-avatar>'}),
+    );
+
     afterEach(() => resetActiveProject());
 });

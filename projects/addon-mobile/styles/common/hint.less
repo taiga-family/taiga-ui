@@ -1,0 +1,17 @@
+tui-hint {
+    font: var(--tui-typography-body-m);
+
+    &.tui-enter {
+        animation-timing-function: var(--tui-curve-expressive-entrance);
+    }
+
+    &.tui-leave {
+        animation-timing-function: var(--tui-curve-expressive-exit);
+    }
+
+    &::before {
+        inline-size: 1.5rem;
+        block-size: 1.125rem;
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18"><path d="M7.22854 3.81615L4.89971 6.6711C3.69732 8.14514 1.8988 9 0 9C1.8988 9 3.69732 9.85486 4.89971 11.3289L7.22854 14.1839L7.22854 14.1839C9.12123 16.5041 10.0676 17.6643 11.2665 17.922C11.75 18.026 12.25 18.026 12.7335 17.922C13.9324 17.6643 14.8788 16.5041 16.7715 14.1839L19.1003 11.3289C20.3027 9.85486 22.1012 9 24 9C22.1012 9 20.3027 8.14514 19.1003 6.6711L16.7715 3.81614C14.8788 1.49586 13.9324 0.335716 12.7335 0.0779663C12.25 -0.0259888 11.75 -0.0259888 11.2665 0.0779663C10.0676 0.335716 9.12123 1.49586 7.22854 3.81614L7.22854 3.81615Z" /></svg>');
+    }
+}

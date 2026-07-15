@@ -3,19 +3,43 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TuiInputSliderModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputSlider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputMonthRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputMonthRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSvgComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiIcon',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputYearModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
-        to: [
-            {
-                name: 'TuiInputYear',
-                moduleSpecifier: '@taiga-ui/kit',
-            },
-            {
-                name: 'TuiTextfield',
-                moduleSpecifier: '@taiga-ui/core',
-            },
-        ],
+        to: {
+            name: 'TuiInputYear',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
     },
     {
         from: {
@@ -24,6 +48,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiInputPhone',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputNumberModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputNumber',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
@@ -169,11 +203,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiPdfViewer',
+            name: 'TuiPdfViewerComponent',
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiPdfViewer',
+            name: 'TuiPdfViewerComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewerDirective',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },
@@ -184,6 +228,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiPdfViewerService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_PDF_VIEWER_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_PDF_VIEWER_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_PDF_VIEWER_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_PDF_VIEWER_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPdfViewerOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiPdfViewerOptions',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },
@@ -226,6 +300,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiComboBox',
             moduleSpecifier: '@taiga-ui/kit',
         },
+    },
+    {
+        from: {
+            name: 'TuiTooltipModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiTooltip',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
     },
     {
         from: {
@@ -816,6 +906,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputDateTimeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDateTime',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputTimeModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -1062,6 +1162,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiPopupService',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_SANITIZER',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TUI_EDITOR_SANITIZER',
+            moduleSpecifier: '@taiga-ui/editor',
         },
     },
 ];

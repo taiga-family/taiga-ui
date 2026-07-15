@@ -1,4 +1,5 @@
 import {
+    ChangeDetectorRef,
     Directive,
     type EmbeddedViewRef,
     inject,
@@ -9,9 +10,11 @@ import {
 } from '@angular/core';
 
 import {TuiPopupService} from './popup.service';
+import {TUI_CDR} from './popups.component';
 
 @Directive({selector: 'ng-template[tuiPopup]'})
 export class TuiPopup implements OnChanges, OnDestroy {
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly template = inject(TemplateRef);
     private readonly service = inject(TuiPopupService);
     private ref?: EmbeddedViewRef<unknown>;
@@ -22,7 +25,7 @@ export class TuiPopup implements OnChanges, OnDestroy {
         this.ref?.destroy();
 
         if (this.show()) {
-            this.ref = this.service.add(this.template);
+            this.ref = this.service.add(this.template, {[TUI_CDR]: this.cdr});
         }
     }
 

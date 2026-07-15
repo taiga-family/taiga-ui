@@ -114,4 +114,39 @@ test.describe('InputYear', () => {
             await expect.soft(page).toHaveScreenshot('12-input-year.png');
         });
     });
+
+    test.describe('Min year is set to 2020 and max is set to 2025', () => {
+        test.beforeEach(async ({page}) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputYear}/API?min=2020&max=2025&sandboxExpanded=true`,
+            );
+
+            documentationPO = new TuiDocumentationPagePO(page);
+            input = documentationPO.demo.locator('input');
+
+            await input.click();
+            await page.keyboard.press('Escape'); // close dropdown
+        });
+
+        test('should not allow years below 2020', async () => {
+            await input.pressSequentially('2019');
+            await expect(input).toHaveValue('2019');
+            await expect(documentationPO.value).toContainText('"value": null');
+
+            await input.blur();
+            await expect(input).toHaveValue('2020');
+            await expect(documentationPO.value).toContainText('"value": 2020');
+        });
+
+        test('should not allow years greater than 2025', async () => {
+            await input.pressSequentially('2030');
+            await expect(input).toHaveValue('2025');
+            await expect(documentationPO.value).toContainText('"value": 2025');
+
+            await input.blur();
+            await expect(input).toHaveValue('2025');
+            await expect(documentationPO.value).toContainText('"value": 2025');
+        });
+    });
 });

@@ -22,17 +22,7 @@
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
                 [heading]="example"
-            >
-                @if ($index + 1 === 6) {
-                    <p>
-                        Use
-                        <code>tuiScrollable</code>
-                        directive as an element for scroll. In this sample, we use virtual scroll from
-                        <code>&#64;angular/cdk</code>
-                        .
-                    </p>
-                }
-            </tui-doc-example>
+            />
         }
     </ng-template>
 </tui-doc-page>

@@ -4,7 +4,36 @@
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
 
 tui-textarea-content:where(*&) {
-    display: contents;
+    .scrollbar-hidden();
+
+    order: 1;
+    inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side));
+    padding-inline-start: var(--t-start);
+    padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-space));
+    overflow: auto;
+    pointer-events: none;
+
+    tui-textfield._with-label[data-size='m'] & {
+        margin-block-start: calc(-1.25 * var(--tui-font-offset) - 1.375rem);
+        margin-block-end: 0.3125rem;
+    }
+
+    tui-textfield._with-label[data-size='l'] & {
+        margin-block-start: calc(-1.25 * var(--tui-font-offset) - 1.75rem);
+        margin-block-end: 0.5rem;
+    }
+
+    tui-textfield[data-size='s'] & {
+        margin-block: -1.625rem 0.5rem;
+    }
+
+    tui-textfield[data-size='m'] & {
+        margin-block: -2rem 0.875rem;
+    }
+
+    tui-textfield[data-size='l'] & {
+        margin-block: -2.5rem 1rem;
+    }
 
     .t-scroll {
         position: absolute;
@@ -23,45 +52,18 @@ tui-textarea-content:where(*&) {
     .t-ghost {
         position: relative;
         z-index: 1;
-        order: 1;
-        inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side));
+        display: block;
         white-space: pre-wrap;
         word-break: break-word;
         overflow-wrap: break-word;
-        padding-inline-start: var(--t-start);
-        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-space));
         pointer-events: none;
         box-sizing: content-box;
         overflow: hidden;
         color: transparent;
+        view-timeline: --t-scrollbar-y y;
 
         &::after {
             content: ' ';
-        }
-
-        tui-textfield._with-label[data-size='m'] & {
-            margin-block-start: calc(-1.25 * var(--tui-font-offset) - 1.375rem);
-            padding-block-end: 0.3125rem;
-        }
-
-        tui-textfield._with-label[data-size='l'] & {
-            margin-block-start: calc(-1.25 * var(--tui-font-offset) - 1.75rem);
-            padding-block-end: 0.5rem;
-        }
-
-        tui-textfield[data-size='s'] & {
-            margin-block-start: -1.625rem;
-            padding-block-end: 0.5rem;
-        }
-
-        tui-textfield[data-size='m'] & {
-            margin-block-start: -2rem;
-            padding-block-end: 0.875rem;
-        }
-
-        tui-textfield[data-size='l'] & {
-            margin-block-start: -2.5rem;
-            padding-block-end: 1rem;
         }
     }
 }
@@ -92,7 +94,7 @@ tui-textfield:has(.t-ghost > * > span) textarea[tuiTextarea]:where(*&) {
     overscroll-behavior: none;
 }
 
-textarea[tuiTextarea]:where(*&) {
+textarea[tuiTextarea][tuiTextarea]:where(*&) {
     block-size: 100%;
     white-space: pre-wrap;
     overflow: auto;

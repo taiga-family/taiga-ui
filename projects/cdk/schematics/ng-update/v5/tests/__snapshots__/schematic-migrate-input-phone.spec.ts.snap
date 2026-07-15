@@ -7,7 +7,7 @@ exports[`ng-update adds TODO for countryCode and removes it from wrapper: test.h
      - countrycode have no direct v5 equivalent.
        In v5 both are replaced by a single [mask] input of type MaskitoOptions.
        Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
-       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+       phoneOptions = maskitoPhone({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
 <tui-textfield  >
 <label tuiLabel>Phone</label>
 
@@ -23,7 +23,7 @@ exports[`ng-update adds TODO for phoneMaskAfterCountryCode and removes it from w
      - phonemaskaftercountrycode have no direct v5 equivalent.
        In v5 both are replaced by a single [mask] input of type MaskitoOptions.
        Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
-       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+       phoneOptions = maskitoPhone({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
 <tui-textfield  >
 <label tuiLabel>Phone</label>
 
@@ -48,7 +48,7 @@ exports[`ng-update adds single TODO when both countryCode and phoneMaskAfterCoun
      - countrycode, phonemaskaftercountrycode have no direct v5 equivalent.
        In v5 both are replaced by a single [mask] input of type MaskitoOptions.
        Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where
-       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
+       phoneOptions = maskitoPhone({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->
 <tui-textfield
                     
                     

@@ -20,8 +20,8 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-node@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         with:
           audit: true
 
@@ -40,7 +40,7 @@ jobs:
               npm run prettier -- --check
               npm run lint
           fi
-      - uses: taiga-family/actions/auto-push@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/auto-push@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

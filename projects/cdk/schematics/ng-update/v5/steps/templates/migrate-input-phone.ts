@@ -157,7 +157,7 @@ export function migrateInputPhone({
                 `     - ${names} have no direct v5 equivalent.`,
                 '       In v5 both are replaced by a single [mask] input of type MaskitoOptions.',
                 '       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where',
-                "       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
+                "       phoneOptions = maskitoPhone({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
             ].join('\n');
 
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;

@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrateRemovedTokens handles multiple removed tokens in one file: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_TEXTFIELD_HOST, TUI_FONTS_READY} from '@taiga-ui/core';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_TEXTFIELD_HOST, useValue: 'host'},
+                        {provide: TUI_FONTS_READY, useValue: 'fonts'},
+                        {provide: TUI_IS_CHROMIUM, useValue: false},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_TEXTFIELD_HOST has been removed. Use TuiTextfieldHost or create a custom implementation for textfield host element references.
+// TODO: (Taiga UI migration) TUI_FONTS_READY has been removed. Use the FontFace API directly or implement custom font loading detection.
+                import {TUI_TEXTFIELD_HOST, TUI_FONTS_READY} from '@taiga-ui/core';
+// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_TEXTFIELD_HOST, useValue: 'host'},
+                        {provide: TUI_FONTS_READY, useValue: 'fonts'},
+                        {provide: TUI_IS_CHROMIUM, useValue: false},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_FONTS_READY usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_FONTS_READY} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_FONTS_READY, useValue: 'fonts'}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_FONTS_READY has been removed. Use the FontFace API directly or implement custom font loading detection.
+                import {TUI_FONTS_READY} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_FONTS_READY, useValue: 'fonts'}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_IS_CHROMIUM usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_CHROMIUM, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_CHROMIUM, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_IS_STACKBLITZ usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_STACKBLITZ, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.
+                import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_STACKBLITZ, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_MONTH_FORMATTER usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_MONTH_FORMATTER, useValue: 'formatter'}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_MONTH_FORMATTER has been removed. Month display now uses TUI_MONTHS from @taiga-ui/core — an array of 12 month-name strings. Provide it via tuiLanguageSwitcher or override TUI_MONTHS directly instead of providing a formatter function.
+                import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_MONTH_FORMATTER, useValue: 'formatter'}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_TEXTFIELD_HOST usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_TEXTFIELD_HOST, useValue: 'host'}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_TEXTFIELD_HOST has been removed. Use TuiTextfieldHost or create a custom implementation for textfield host element references.
+                import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_TEXTFIELD_HOST, useValue: 'host'}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateRemovedTokens migrates TUI_TOUCH_SUPPORTED usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_TOUCH_SUPPORTED, useValue: true}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_TOUCH_SUPPORTED has been removed. Use WA_TOUCH_SUPPORTED from @ng-web-apis/platform package instead.
+                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_TOUCH_SUPPORTED, useValue: true}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;

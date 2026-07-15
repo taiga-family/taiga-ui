@@ -1,14 +1,17 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
+    ElementRef,
     inject,
-    viewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {
+    TUI_SCROLL_REF,
+    TuiScrollControls,
+    TuiScrollRef,
+} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -25,16 +28,21 @@ import {TuiTextareaComponent} from './textarea.component';
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'data-tui-version': TUI_VERSION},
+    viewProviders: [
+        {
+            provide: TUI_SCROLL_REF,
+            useFactory: () => new ElementRef(inject(TuiTextareaComponent).el),
+        },
+    ],
+    hostDirectives: [TuiScrollRef],
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[style.max-height.em]': '1.25 * host.max()',
+        '[style.min-height.em]': '1.25 * host.min()',
+    },
 })
 export class TuiTextareaContent {
-    private readonly textRef = viewChild<ElementRef<HTMLSpanElement>>('text');
-
     protected readonly host = inject(TuiTextareaComponent);
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly isMobile = inject(WA_IS_MOBILE);
-
-    public scrollTo(top: number): void {
-        this.textRef()?.nativeElement.scrollTo({top});
-    }
 }

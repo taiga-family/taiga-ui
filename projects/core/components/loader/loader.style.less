@@ -54,6 +54,7 @@
     border: none;
     isolation: inherit;
     min-inline-size: 0;
+    min-block-size: 0;
 }
 
 .t-loader {
@@ -136,5 +137,6 @@
     stroke: inherit;
     // Use native CSS max function instead LESS one
     stroke-width: ~'max(var(--tui-thickness), 1.5px)';
+    stroke-linecap: round;
     animation: tuiLoaderDashOffset 4s linear infinite;
 }

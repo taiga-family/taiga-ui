@@ -1,4 +1,4 @@
-import {Clipboard} from '@angular/cdk/clipboard';
+import {DOCUMENT} from '@angular/common';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
@@ -40,7 +40,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
-    private readonly clipboard = inject(Clipboard);
+    private readonly doc = inject(DOCUMENT);
     private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
@@ -75,19 +75,45 @@ export class TuiCopyDirective {
     }
 
     protected copy(): void {
-        if (this.multi) {
-            this.clipboard.copy(
-                this.textfield.control()?.value.map(this.stringify()).join(', '),
-            );
-        } else {
+        if (!this.multi) {
             this.textfield.input()?.nativeElement.select();
-            this.clipboard.copy(this.textfield.value());
         }
 
-        this.copied$.next();
+        if (this.execCommandCopy(this.value)) {
+            this.copied$.next();
+        }
     }
 
     private get multi(): boolean {
         return Array.isArray(this.textfield.control()?.value);
+    }
+
+    private get value(): string {
+        return this.multi
+            ? this.textfield.control()?.value.map(this.stringify()).join(', ')
+            : this.textfield.value();
+    }
+
+    private execCommandCopy(text: string): boolean {
+        let copied = false;
+
+        const listener = (event: ClipboardEvent): void => {
+            if (event.clipboardData) {
+                event.clipboardData.setData('text/plain', text);
+                event.preventDefault();
+
+                copied = true;
+            }
+        };
+
+        this.doc.addEventListener('copy', listener);
+
+        try {
+            return this.doc.execCommand('copy') && copied;
+        } catch {
+            return false;
+        } finally {
+            this.doc.removeEventListener('copy', listener);
+        }
     }
 }

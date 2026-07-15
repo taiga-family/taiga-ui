@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-node@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
         if: env.IS_OWNER_MODE == 'true'
         with:
           node-version: 24.18 # https://github.com/firebase/firebase-tools/issues/10726

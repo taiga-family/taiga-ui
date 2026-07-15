@@ -141,13 +141,12 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.ts 1`] = `
                 })
                 export class MyComponent {}
             ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
-import { TuiInputYear } from "@taiga-ui/kit";
+  "1. After": "import { TuiInputYear } from "@taiga-ui/kit";
 
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputYear, TuiInput,
+                        TuiInputYear,
                     ],
                     // ...
                 })
@@ -157,7 +156,7 @@ import { TuiInputYear } from "@taiga-ui/kit";
                     standalone: true,
                     imports: [
                         // ...
-                        TuiInputYear, TuiInput,
+                        TuiInputYear,
                     ],
                     templateUrl: './test.html',
                     // ...

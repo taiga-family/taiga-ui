@@ -260,10 +260,11 @@ export function migrateInputTag({
         }, '');
 
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
+        const itemChip = isLabelOutsideTrue ? '<tui-input-chip *tuiItem />\n' : '';
 
         recorder.insertRight(
             insertOffset,
-            `\n<input tuiInputChip${migrationAttrs}${placeholderAttr} />\n`,
+            `\n<input tuiInputChip${migrationAttrs}${placeholderAttr} />\n${itemChip}`,
         );
     });
 }
@@ -298,6 +299,7 @@ function migrateSelfClosingInputTag({
     const todoAttrs: Attribute[] = [];
     let hasHintContent = false;
     let labelOutsideIsDynamic = false;
+    let labelOutsideIsTrue = false;
 
     for (const attr of element.attrs) {
         const nameLower = attr.name.toLowerCase();
@@ -317,6 +319,7 @@ function migrateSelfClosingInputTag({
             const isBinding = nameLower.startsWith('[');
             const isLabelOutsideTrue = value === 'true' || (!isBinding && value === '');
 
+            labelOutsideIsTrue = isLabelOutsideTrue;
             labelOutsideIsDynamic =
                 !isLabelOutsideTrue && value !== 'false' && value !== '';
             continue;
@@ -377,10 +380,14 @@ function migrateSelfClosingInputTag({
     const iconLine = iconStr ? `${indent}${iconStr}\n` : '';
     const todoComment = buildSelfClosingTodo(todoAttrs, labelOutsideIsDynamic, indent);
 
+    const itemChipLine = labelOutsideIsTrue
+        ? `${indent}<tui-input-chip *tuiItem />\n`
+        : '';
+
     const replacement =
         `${todoComment}<tui-textfield multi${wrapperStr}>\n` +
         `${indent}<input tuiInputChip${inputStr}${controlStateStr} />\n` +
-        `${iconLine}${indent}</tui-textfield>`;
+        `${itemChipLine}${iconLine}${indent}</tui-textfield>`;
 
     recorder.remove(
         templateOffset + loc.startOffset,

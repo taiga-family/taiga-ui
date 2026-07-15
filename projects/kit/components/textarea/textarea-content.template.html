@@ -8,8 +8,6 @@
     #text
     aria-hidden="true"
     class="t-ghost"
-    [style.max-height.em]="1.25 * host.max()"
-    [style.min-height.em]="1.25 * host.min()"
 >
     <ng-container *polymorpheusOutlet="host.content() as text; context: {$implicit: textfield.value()}">
         {{ text }}

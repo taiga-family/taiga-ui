@@ -4,7 +4,6 @@ import {
     Component,
     computed,
     contentChild,
-    ElementRef,
     inject,
     input,
     signal,
@@ -13,7 +12,6 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
@@ -27,7 +25,7 @@ import {
 } from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_SCROLL_REF, TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiFilterByInputOptionsProvider} from '@taiga-ui/core/pipes/filter-by-input';
@@ -40,14 +38,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
 
 @Component({
     selector: 'tui-textfield[multi]',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        TuiButtonX,
-        TuiCell,
-        TuiScrollControls,
-        WaResizeObserver,
-    ],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, TuiScrollControls],
     templateUrl: './textfield-multi.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -62,7 +53,6 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
         tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
-        tuiProvide(TUI_SCROLL_REF, ElementRef),
         {
             provide: TUI_TEXTFIELD_VALUE,
             useFactory: () => inject(TuiTextfieldComponent).value,
@@ -72,6 +62,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
                 items.filter((x) => TUI_DEFAULT_MATCHER(x, search, stringify)),
         }),
     ],
+    hostDirectives: [TuiScrollRef],
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!items().length',
@@ -117,7 +108,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
         return this.focused() ? longer : '';
     }
 
-    protected onItems({target}: ResizeObserverEntry): void {
+    protected onItems(target: HTMLElement): void {
         this.height.update(
             (h) => target.querySelector('tui-textfield-item')?.clientHeight || h,
         );
