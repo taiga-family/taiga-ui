@@ -25,8 +25,8 @@ import {TuiButton} from '@taiga-ui/core';
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
     host: {
         tuiTheme: 'light',
-        '[class._hide]': 'hidden',
         '[class._e2e]': 'e2e',
+        '[class._hide]': 'hidden',
         '[style.background]': 'background',
     },
 })
