@@ -10,7 +10,10 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
-import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
+import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
 import {buildTuiInputReplacement} from './migrate-input';
 import {registerCustomContentImports} from './migrate-legacy-custom-content';
 import {buildTuiTextareaReplacement} from './migrate-textarea';
@@ -104,7 +107,7 @@ export function buildTuiIconStr(element: Element, template: string): string {
         extraAttrs.push(
             directionAttr.value === migratedValue
                 ? original
-                : original.replace(`="${directionAttr.value}"`, `="${migratedValue}"`),
+                : replaceAttrValue(original, migratedValue),
         );
     }
 

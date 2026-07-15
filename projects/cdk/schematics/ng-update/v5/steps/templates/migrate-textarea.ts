@@ -14,7 +14,10 @@ import {
     getControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
-import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
+import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
 import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
@@ -201,9 +204,7 @@ function buildReplacement(
             const original = getOriginalAttrText(template, element, attr);
             const migratedValue = migrateAttrValue(nameLower, attr.value);
 
-            textfieldAttrs.push(
-                original.replace(`="${attr.value}"`, `="${migratedValue}"`),
-            );
+            textfieldAttrs.push(replaceAttrValue(original, migratedValue));
             continue;
         }
 

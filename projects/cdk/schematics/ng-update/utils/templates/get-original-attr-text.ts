@@ -26,3 +26,18 @@ export function getOriginalAttrText(
 
     return attr.value ? `${attr.name}="${attr.value}"` : attr.name;
 }
+
+/**
+ * Replaces the value inside an attribute string (as produced by `getOriginalAttrText`),
+ * e.g. `[foo]="old"` → `[foo]="new"`, independent of the quote style (single/double) and
+ * any spacing around `=`. A value-less attribute (e.g. `tuiTextfield`) is returned as-is.
+ *
+ * Prefer this over `attrText.replace(`="${old}"`, …)`, which silently no-ops when the
+ * source used single quotes or spaced the `=`.
+ */
+export function replaceAttrValue(attrText: string, value: string): string {
+    return attrText.replace(
+        /(=\s*)(['"])[\s\S]*\2$/,
+        (_match, eq: string, quote: string) => `${eq}${quote}${value}${quote}`,
+    );
+}
