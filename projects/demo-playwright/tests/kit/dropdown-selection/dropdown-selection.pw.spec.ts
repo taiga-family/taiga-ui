@@ -54,7 +54,8 @@ test.describe('DropdownSelection', () => {
 
         await example.locator('textarea').focus();
 
-        await example.locator('textarea').fill('\n@');
+        await example.locator('textarea').fill('\n');
+        await example.locator('textarea').fill('@');
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
     });
