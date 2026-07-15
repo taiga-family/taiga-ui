@@ -4,6 +4,7 @@ import {type ViewportSize} from 'playwright-core';
 
 import {pages as PUBLIC_PAGES} from '../demo/src/pages/app/pages';
 import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
+import path from 'node:path';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 const THRESHOLD = Number.parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
@@ -93,6 +94,7 @@ export default defineConfig({
             animations: 'allow',
             caret: 'hide',
             scale: 'device',
+            stylePath: [path.join(__dirname, 'animations.css')],
             ...options,
         },
         toMatchSnapshot: {...options},

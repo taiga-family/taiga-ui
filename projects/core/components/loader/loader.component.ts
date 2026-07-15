@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
-import {isSafari, WA_IS_E2E, WA_IS_IOS} from '@ng-web-apis/platform';
+import {isSafari, WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -11,17 +11,12 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     templateUrl: './loader.template.html',
     styleUrl: './loader.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size()',
-        '[class._e2e]': 'e2e',
-        '[class._loading]': 'loading()',
-    },
+    host: {'[attr.data-size]': 'size()', '[class._loading]': 'loading()'},
 })
 export class TuiLoader {
     private readonly options = inject(TUI_LOADER_OPTIONS);
 
     protected readonly isApple = isSafari(tuiInjectElement()) || inject(WA_IS_IOS);
-    protected readonly e2e = inject(WA_IS_E2E);
 
     public readonly size = input(this.options.size);
     public readonly inheritColor = input(this.options.inheritColor);
