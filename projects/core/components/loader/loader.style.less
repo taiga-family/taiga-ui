@@ -45,6 +45,13 @@
     &[data-size='xxl'] {
         --t-diameter: @circle-diameter[xxl];
     }
+
+    &._e2e {
+        .t-icon,
+        .t-circle {
+            animation: none;
+        }
+    }
 }
 
 .t-content {
@@ -137,5 +144,6 @@
     stroke: inherit;
     // Use native CSS max function instead LESS one
     stroke-width: ~'max(var(--tui-thickness), 1.5px)';
+    stroke-linecap: round;
     animation: tuiLoaderDashOffset 4s linear infinite;
 }
