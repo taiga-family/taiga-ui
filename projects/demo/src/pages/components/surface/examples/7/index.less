@@ -59,6 +59,7 @@
     grid-row: span 3;
 
     .scrollbar {
+        overflow: auto;
         margin: 0.75rem -1.5rem 1.25rem;
         scroll-snap-type: x mandatory;
         overscroll-behavior-x: contain;
@@ -71,14 +72,14 @@
 
         &::after {
             content: '';
-            min-inline-size: 0.625rem;
+            min-inline-size: 0.875rem;
         }
     }
 
     .review {
         display: flex;
         flex-direction: column;
-        min-inline-size: calc(100% - 0.75rem);
+        min-inline-size: 100%;
         padding: 0.75rem 1rem 1rem;
         border-radius: 1rem;
         scroll-snap-align: start;

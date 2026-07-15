@@ -30,7 +30,7 @@ export class TuiPullToRefresh {
     private readonly isIOS = inject(WA_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
     private readonly service = inject(TuiPullToRefreshService);
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly el = inject(TUI_SCROLL_REF);
 
     protected readonly pulling = toSignal(this.service, {initialValue: 0});
 
@@ -57,12 +57,12 @@ export class TuiPullToRefresh {
 
     constructor() {
         if (this.component) {
-            tuiScrollFrom(this.el)
+            tuiScrollFrom(this.el.nativeElement)
                 .pipe(startWith(null), tuiZonefree(), takeUntilDestroyed())
                 .subscribe(() => {
-                    this.el.style.setProperty(
+                    this.el.nativeElement.style.setProperty(
                         'touch-action',
-                        this.el.scrollTop ? '' : 'pan-down',
+                        this.el.nativeElement.scrollTop ? '' : 'pan-down',
                     );
                 });
         }

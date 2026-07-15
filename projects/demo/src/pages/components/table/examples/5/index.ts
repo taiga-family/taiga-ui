@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 
 interface User {
     readonly dob: TuiDay;
@@ -64,8 +64,8 @@ function getAge({dob}: User): number {
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiTable,
     ],
     templateUrl: './index.html',
