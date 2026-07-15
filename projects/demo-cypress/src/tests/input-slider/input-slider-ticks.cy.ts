@@ -41,7 +41,7 @@ describe('InputSlider | With segments + tick labels', () => {
     }
 
     beforeEach(() => {
-        cy.viewport(300, 110);
+        cy.viewport(300, 115);
     });
 
     (['s', 'm', 'l'] as const).forEach((size) => {
