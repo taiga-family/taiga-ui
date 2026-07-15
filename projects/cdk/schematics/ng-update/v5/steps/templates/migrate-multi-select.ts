@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -205,7 +206,7 @@ export function migrateMultiSelect({
                     );
                 }
 
-                const formAttrs = formatControlAttrs(controlAttrs);
+                const formAttrs = formatControlAttrs(controlAttrs, template, element);
                 const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
                 const extras = `${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr}`;
 
@@ -225,7 +226,7 @@ export function migrateMultiSelect({
         }
 
         // Insert new <input tuiInputChip /> before first element child
-        const formAttrs = formatControlAttrs(controlAttrs);
+        const formAttrs = formatControlAttrs(controlAttrs, template, element);
         const placeholderAttr = formatPlaceholderAttr(placeholder);
         const selectLikeAttr = selectLike === true ? ' tuiSelectLike' : '';
         // selectLike is a string when [editable]="someExpr" was dynamic
@@ -400,27 +401,10 @@ function removeAttr(
     );
 }
 
-function formatControlAttrs(attrs: Array<{name: string; value: string}>): string {
-    return attrs
-        .map(({name, value}) => `${normalizeAttrName(name)}="${value}"`)
-        .join(' ');
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        case 'ngmodel':
-            return 'ngModel';
-        default:
-            return name;
-    }
+function formatControlAttrs(
+    attrs: Array<{name: string; value: string}>,
+    template: string,
+    element: Element,
+): string {
+    return attrs.map((attr) => getOriginalAttrText(template, element, attr)).join(' ');
 }
