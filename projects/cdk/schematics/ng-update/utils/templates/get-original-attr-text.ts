@@ -29,15 +29,27 @@ export function getOriginalAttrText(
 
 /**
  * Replaces the value inside an attribute string (as produced by `getOriginalAttrText`),
- * e.g. `[foo]="old"` → `[foo]="new"`, independent of the quote style (single/double) and
- * any spacing around `=`. A value-less attribute (e.g. `tuiTextfield`) is returned as-is.
+ * e.g. `[foo]="old"` → `[foo]="new"`. Handles single, double and missing quotes, spacing
+ * around `=`, and trailing whitespace. Unquoted values are re-emitted with double quotes;
+ * a value-less attribute (e.g. `tuiTextfield`) is returned as-is.
  *
  * Prefer this over `attrText.replace(`="${old}"`, …)`, which silently no-ops when the
- * source used single quotes or spaced the `=`.
+ * source used single quotes, an unquoted value or spacing around `=`.
  */
 export function replaceAttrValue(attrText: string, value: string): string {
-    return attrText.replace(
-        /(=\s*)(['"])[\s\S]*\2$/,
-        (_match, eq: string, quote: string) => `${eq}${quote}${value}${quote}`,
-    );
+    const eqIndex = attrText.indexOf('=');
+
+    if (eqIndex === -1) {
+        return attrText;
+    }
+
+    const afterEq = attrText.slice(eqIndex + 1);
+    const leadingWs = /^\s*/.exec(afterEq)?.[0] ?? '';
+    const rest = afterEq.slice(leadingWs.length);
+    const trailingWs = /\s*$/.exec(rest)?.[0] ?? '';
+    const core = rest.slice(0, rest.length - trailingWs.length);
+    const firstChar = core.charAt(0);
+    const quote = firstChar === '"' || firstChar === "'" ? firstChar : '"';
+
+    return `${attrText.slice(0, eqIndex)}=${leadingWs}${quote}${value}${quote}${trailingWs}`;
 }

@@ -29,6 +29,14 @@ describe('replaceAttrValue', () => {
         );
     });
 
+    it('re-emits an unquoted value with double quotes', () => {
+        expect(replaceAttrValue('foo=bar', 'baz')).toBe('foo="baz"');
+    });
+
+    it('preserves trailing whitespace', () => {
+        expect(replaceAttrValue('foo="old" ', 'new')).toBe('foo="new" ');
+    });
+
     it('leaves a value-less attribute unchanged', () => {
         expect(replaceAttrValue('tuiTextfield', 'x')).toBe('tuiTextfield');
     });
