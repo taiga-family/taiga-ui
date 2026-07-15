@@ -40,15 +40,16 @@ aside[tuiNavigationAside]:where(*&) {
     }
 
     .t-nav-scrollbar {
-        margin: 0 -0.25rem;
+        .scrollbar-hidden();
+
+        display: flex;
+        block-size: 100%;
+        overflow: auto;
     }
 
     .t-nav-content {
-        .scrollbar-hidden();
-
-        block-size: 100%;
-        padding: 0 0.25rem;
-        overflow: auto;
+        inline-size: 100%;
+        block-size: fit-content;
     }
 
     tui-expand [tuiAsideItem] {

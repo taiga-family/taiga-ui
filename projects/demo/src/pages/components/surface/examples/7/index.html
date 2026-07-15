@@ -125,7 +125,10 @@
             </button>
         </aside>
     </header>
-    <tui-scrollbar class="scrollbar">
+    <div
+        tuiScrollRef
+        class="scrollbar"
+    >
         <div class="wrapper">
             @for (review of reviews; track review) {
                 <div
@@ -152,7 +155,7 @@
                 </div>
             }
         </div>
-    </tui-scrollbar>
+    </div>
     <button
         appearance="secondary"
         size="m"
