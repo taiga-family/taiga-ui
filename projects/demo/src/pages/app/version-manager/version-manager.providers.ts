@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken, type Provider} from '@angular/core';
 
-import {TUI_VERSIONS_META_MAP, type TuiVersionMeta} from './versions.constants';
+import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constants';
 
 export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
     ngDevMode ? 'TUI_SELECTED_VERSION_META' : '',
@@ -14,10 +14,14 @@ export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
             const document = inject(DOCUMENT);
             const baseHref = document.querySelector('base')?.href ?? '';
             const base = baseHref.replace(document.location.origin, '');
+            const versions = inject(TUI_VERSIONS_META_OPTIONS);
 
-            return (
-                TUI_VERSIONS_META_MAP.get(base) ?? TUI_VERSIONS_META_MAP.get('/') ?? null
+            const versionMap = versions.reduce(
+                (map, item) => map.set(item.baseHref, item),
+                new Map<string, TuiVersionMeta>(),
             );
+
+            return versionMap.get(base) ?? versionMap.get('/') ?? null;
         },
     },
 ];
