@@ -39,6 +39,7 @@ import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
+import {migrateInputColor} from './templates/migrate-input-color';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -49,6 +50,7 @@ import {migrateInputNumber} from './templates/migrate-input-number';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputPhone} from './templates/migrate-input-phone';
 import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
+import {migrateInputRange} from './templates/migrate-input-range';
 import {migrateInputSlider} from './templates/migrate-input-slider';
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
@@ -117,6 +119,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputPhone,
         migrateInputNumber,
         migrateInputDateRange,
+        migrateInputColor,
+        migrateInputRange,
         migrateMultiSelect,
         migrateSelect,
         migrateComboBox,
