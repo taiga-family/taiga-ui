@@ -78,7 +78,7 @@
         }
     }
 </header>
-<tui-elastic-container>
+<tui-elastic-container class="t-slides">
     <section tuiSlides>
         @switch (view()) {
             @case ('day') {
@@ -91,6 +91,7 @@
                     <tui-calendar
                         *tuiItem="let index"
                         new
+                        class="t-calendar"
                         [content]="contentDay()"
                         [dayType]="dayType()"
                         [disabledItemHandler]="disabledDay()"
