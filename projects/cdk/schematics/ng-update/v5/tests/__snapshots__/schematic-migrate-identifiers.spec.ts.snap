@@ -223,6 +223,29 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 }
 `;
 
+exports[`ng-update identifiers migration moves TuiThemeColorService and TUI_THEME_COLOR from cdk to addon-mobile (#13869): test.ts 1`] = `
+{
+  "0. Before": "
+                import {inject} from '@angular/core';
+                import {TUI_THEME_COLOR, TuiThemeColorService} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly token = TUI_THEME_COLOR;
+                    protected readonly theme = inject(TuiThemeColorService);
+                }
+            ",
+  "1. After": "import { TuiThemeColorService, TUI_THEME_COLOR } from "@taiga-ui/addon-mobile";
+
+                import {inject} from '@angular/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_THEME_COLOR;
+                    protected readonly theme = inject(TuiThemeColorService);
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit: test.ts 1`] = `
 {
   "0. Before": "
@@ -280,6 +303,25 @@ exports[`ng-update identifiers migration renames ResizeObserverService to WaResi
                                 export class TestComponent {
                     protected readonly observer = WaResizeObserverService;
                 }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869): test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerce';
+
+                @Component({imports: [TuiInputCVC, TuiInputExpire]})
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import { TuiInputCVCDirective, TuiInputExpireDirective } from '@taiga-ui/addon-commerce';
+
+                @Component({imports: [TuiInputCVCDirective, TuiInputExpireDirective]})
+                export class TestComponent {}
             ",
 }
 `;

@@ -217,5 +217,33 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves TuiThemeColorService and TUI_THEME_COLOR from cdk to addon-mobile (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {inject} from '@angular/core';
+                import {TUI_THEME_COLOR, TuiThemeColorService} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly token = TUI_THEME_COLOR;
+                    protected readonly theme = inject(TuiThemeColorService);
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerce';
+
+                @Component({imports: [TuiInputCVC, TuiInputExpire]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

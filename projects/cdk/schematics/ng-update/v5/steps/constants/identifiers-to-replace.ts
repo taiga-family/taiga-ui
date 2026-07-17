@@ -1174,4 +1174,44 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/editor',
         },
     },
+    {
+        from: {
+            name: 'TuiThemeColorService',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiThemeColorService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_THEME_COLOR',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TUI_THEME_COLOR',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputCVC',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputCVCDirective',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputExpire',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputExpireDirective',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+    },
 ];
