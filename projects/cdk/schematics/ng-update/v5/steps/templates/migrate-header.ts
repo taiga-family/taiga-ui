@@ -14,13 +14,16 @@ type Element = DefaultTreeAdapterTypes.Element;
 
 const HEADER_ATTR = '[tuiHeader]'.toLowerCase();
 
-// A value that is exactly one recognized size/typography literal is handled by the
-// static value replacer (ATTR_WITH_VALUES_TO_REPLACE) or is already a v5 token.
+// A value that is exactly one recognized single-quoted literal is auto-migrated by the
+// value replacer (ATTR_WITH_VALUES_TO_REPLACE handles single quotes only) or is already
+// a v5 token — skip it. A lone double-quoted literal is not auto-migrated, so it falls
+// through to the old-token check below and gets a TODO instead.
 const SINGLE_LITERAL =
     /^'(?:xxl|xl|[lms]|xs|xxs|h1|h2|h3|h4|h5|h6|body-l|body-m|body-s)'$/;
 
-// A v4 size token used as a quoted literal somewhere inside a larger expression.
-const OLD_TOKEN_LITERAL = /'(?:xxl|xl|[lms]|xs|xxs)'/;
+// A v4 size token used as a quoted literal (single or double quotes) inside a larger
+// expression, e.g. `cond ? 'l' : 'm'` or `cond ? "l" : "m"`.
+const OLD_TOKEN_LITERAL = /(['"])(?:xxl|xl|[lms]|xs|xxs)\1/;
 
 const DYNAMIC_HEADER_TODO =
     '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header';

@@ -26,6 +26,13 @@ describe('ng-update dynamic tuiHeader (#13869)', () => {
     );
 
     it(
+        'adds a TODO for a dynamic [tuiHeader] using double-quoted legacy tokens',
+        migrate({
+            template: /* HTML */ '<h1 [tuiHeader]=\'isMobile() ? "l" : "m"\'>Title</h1>',
+        }),
+    );
+
+    it(
         'migrates a single bound literal without adding a TODO',
         migrate({
             template: /* HTML */ `
