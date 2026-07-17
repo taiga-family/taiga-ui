@@ -27,6 +27,6 @@ export class TuiKeypadComponent {
     public readonly columns = input(3);
 
     protected readonly rows = computed(() =>
-        Math.max(1, Math.ceil(this.buttons().length / this.columns())),
+        Math.max(1, Math.ceil(this.buttons().length / Math.max(1, this.columns()))),
     );
 }

@@ -36,6 +36,9 @@ export default class Example {
     }
 
     private shuffle(): string[] {
-        return [...DIGITS].sort(() => Math.random() - 0.5);
+        // uniform shuffle: independent random key per digit, then sort by it
+        return DIGITS.map((digit) => [Math.random(), digit] as const)
+            .sort(([a], [b]) => a - b)
+            .map(([, digit]) => digit);
     }
 }
