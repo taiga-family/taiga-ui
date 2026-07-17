@@ -37,6 +37,7 @@ import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateDynamicHeader} from './templates/migrate-header';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
 import {migrateInputColor} from './templates/migrate-input-color';
@@ -140,6 +141,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateDocDocumentation,
         migrateSidebar,
         migrateFormatPhonePipe,
+        migrateDynamicHeader,
         migrateHintOnLegacyControls,
         migrateLegacyCustomContent,
         migrateInput,

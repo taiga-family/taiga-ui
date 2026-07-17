@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update dynamic tuiHeader (#13869) adds a TODO for a dynamic [tuiHeader] carrying old size tokens: test.html 1`] = `
+{
+  "0. Before": "<h1 [tuiHeader]="isMobile() ? 'l' : 'm'">Title</h1>",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tuiHeader\` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header -->
+<h1 [tuiHeader]="isMobile() ? 'l' : 'm'">Title</h1>",
+}
+`;
+
+exports[`ng-update dynamic tuiHeader (#13869) migrates a single bound literal without adding a TODO: test.html 1`] = `
+{
+  "0. Before": "
+                <h1 [tuiHeader]="'l'">Title</h1>
+            ",
+  "1. After": "
+                <h1 [tuiHeader]="'h3'">Title</h1>
+            ",
+}
+`;
