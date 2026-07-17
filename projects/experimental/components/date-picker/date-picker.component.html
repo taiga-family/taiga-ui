@@ -55,12 +55,12 @@
                     (indexChange)="month.set(getMonth($event))"
                 >
                     <tui-month
-                        *tuiItem="let index"
+                        *tuiItem="let current"
                         class="t-calendar"
                         [content]="contentDay()"
                         [dayType]="dayType()"
                         [disabledItemHandler]="disabledDay()"
-                        [month]="index | tuiMapper: getMonth"
+                        [month]="current | tuiMapper: getMonth"
                         [showAdjacent]="showAdjacent()"
                         [showWeek]="showWeek()"
                         [value]="value()"
