@@ -40,7 +40,7 @@
         {{ texts()[1] }}
     </button>
 
-    @if (dropdown?.nativeElement?.matches(':not(input)')) {
+    @if (!dropdown?.nativeElement?.matches('input')) {
         <tui-calendar-header [mode]="mode()" />
     }
 </header>
