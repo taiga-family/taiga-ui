@@ -9,6 +9,7 @@
             [textContent]="button()"
             [tuiChevron]="false"
             (click)="view.set(view() === 'day' ? 'month' : 'year')"
+            (pointerdown.zoneless.prevent)="(0)"
         ></button>
     } @else {
         @let years = month().year + (carousel()?.index() || 0) * 12 - 6 | tuiMapper: getItems;
@@ -22,6 +23,7 @@
         [disabled]="start()"
         [iconStart]="icons.decrement"
         (click)="onSpin(-1)"
+        (pointerdown.zoneless.prevent)="(0)"
     >
         {{ texts()[0] }}
     </button>
@@ -33,49 +35,13 @@
         [disabled]="end()"
         [iconStart]="icons.increment"
         (click)="onSpin(1)"
+        (pointerdown.zoneless.prevent)="(0)"
     >
         {{ texts()[1] }}
     </button>
 
     @if (dropdown?.nativeElement?.matches(':not(input)')) {
-        @switch (mode()) {
-            @case ('multi') {
-                <tui-textfield
-                    multi
-                    class="t-textfield"
-                >
-                    <input
-                        tuiInputDateMulti
-                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
-                        [max]="max()"
-                        [min]="min()"
-                        [(ngModel)]="value"
-                    />
-                </tui-textfield>
-            }
-            @case ('range') {
-                <tui-textfield class="t-textfield">
-                    <input
-                        tuiInputDateRange
-                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
-                        [max]="max()"
-                        [min]="min()"
-                        [(ngModel)]="value"
-                    />
-                </tui-textfield>
-            }
-            @default {
-                <tui-textfield class="t-textfield">
-                    <input
-                        tuiInputDate
-                        [attr.aria-labelledby]="dropdown?.nativeElement?.id || null"
-                        [max]="max()"
-                        [min]="min()"
-                        [(ngModel)]="value"
-                    />
-                </tui-textfield>
-            }
-        }
+        <tui-date-picker-header [mode]="mode()" />
     }
 </header>
 <tui-elastic-container class="t-slides">
@@ -83,19 +49,18 @@
         @switch (view()) {
             @case ('day') {
                 <tui-carousel
-                    [index]="month().year * 12 + month().month"
+                    [index]="index()"
                     [max]="max().year * 12 + max().month"
                     [min]="min().year * 12 + min().month"
                     (indexChange)="month.set(getMonth($event))"
                 >
-                    <tui-calendar
-                        *tuiItem="let index"
-                        new
+                    <tui-month
+                        *tuiItem="let current"
                         class="t-calendar"
                         [content]="contentDay()"
                         [dayType]="dayType()"
                         [disabledItemHandler]="disabledDay()"
-                        [month]="index | tuiMapper: getMonth"
+                        [month]="current | tuiMapper: getMonth"
                         [showAdjacent]="showAdjacent()"
                         [showWeek]="showWeek()"
                         [value]="value()"
