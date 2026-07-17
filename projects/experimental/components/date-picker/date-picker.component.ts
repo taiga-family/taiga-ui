@@ -28,18 +28,17 @@ import {
     TUI_SPIN_TEXTS,
     tuiAsAuxiliary,
 } from '@taiga-ui/core/tokens';
-import {
-    TUI_CALENDAR_OPTIONS,
-    TuiCalendar,
-} from '@taiga-ui/experimental/components/calendar';
 import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
-import {TuiInputDate} from '@taiga-ui/kit/components/input-date';
-import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
-import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
+import {
+    TUI_MONTH_OPTIONS,
+    TuiMonthComponent,
+} from '@taiga-ui/experimental/components/month';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiElasticContainer} from '@taiga-ui/layout/components/elastic-container';
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+import {TuiDatePickerHeader} from './date-picker-header.component';
 
 type DatePicker<T> = T extends 'single'
     ? TuiDay
@@ -55,16 +54,15 @@ type DatePicker<T> = T extends 'single'
     imports: [
         FormsModule,
         TuiButton,
-        TuiCalendar,
         TuiCarousel,
         TuiChevron,
         TuiDataGrid,
+        TuiDatePickerHeader,
         TuiElasticContainer,
-        TuiInputDate,
-        TuiInputDateMulti,
-        TuiInputDateRange,
         TuiLink,
         TuiMapperPipe,
+        // eslint-disable-next-line @taiga-ui/experience-next/short-tui-imports
+        TuiMonthComponent,
         TuiSlides,
     ],
     templateUrl: './date-picker.component.html',
@@ -80,7 +78,7 @@ type DatePicker<T> = T extends 'single'
 export class TuiDatePicker<
     T extends 'multi' | 'range' | 'single' = 'single',
 > extends AbstractTuiCalendar<DatePicker<T>> {
-    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
+    protected readonly options = inject(TUI_MONTH_OPTIONS);
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = inject(TUI_SPIN_TEXTS);
