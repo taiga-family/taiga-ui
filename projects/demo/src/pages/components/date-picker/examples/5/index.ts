@@ -13,6 +13,6 @@ import {TuiCalendars} from '@taiga-ui/experimental';
 export default class Example {
     protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
     protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
-    protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
     protected value = TuiDay.currentLocal();
+    protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
 }
