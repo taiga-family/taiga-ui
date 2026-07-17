@@ -1,1 +1,39 @@
-<tui-keypad class="keypad" />
+<tui-keypad class="keypad">
+    @for (digit of digits; track digit) {
+        <button
+            tuiKeypadButton
+            type="button"
+            (click)="append(digit)"
+        >
+            {{ digit }}
+        </button>
+    }
+
+    <button
+        tuiKeypadButton
+        type="button"
+        (click)="clear()"
+    >
+        C
+    </button>
+
+    <button
+        tuiKeypadButton
+        type="button"
+        (click)="append('0')"
+    >
+        0
+    </button>
+
+    <button
+        aria-label="Backspace"
+        tuiKeypadButton
+        type="button"
+        (click)="backspace()"
+        (longtap)="clear()"
+    >
+        <tui-icon icon="@tui.delete" />
+    </button>
+</tui-keypad>
+
+<p>Value: {{ value() || '—' }}</p>

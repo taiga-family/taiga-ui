@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 :host {
     display: grid;
     grid-template-columns: repeat(var(--t-columns, 3), 1fr);
@@ -10,62 +8,6 @@
     max-inline-size: 37.5rem;
     margin-inline: auto;
     aspect-ratio: var(--t-columns, 3) / var(--t-rows, 4);
-    /* stylelint-disable-next-line plugin/use-baseline -- container queries are used for fluid sizing */
-    container-type: size;
-}
-
-.t-row {
-    display: contents;
-
-    & > :first-child {
-        grid-column-start: 1;
-    }
-}
-
-.t-key {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 90 / 84;
-    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- container query units size the oval to the cell */
-    inline-size: min(calc(90cqi / var(--t-columns, 3)), calc(96cqb / var(--t-rows, 4)));
-    block-size: auto;
-    border: none;
-    border-radius: 50%;
-    background: transparent;
-    font: var(--tui-keypad-font, 600 2rem/1 var(--tui-typography-family-display));
-    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list, plugin/no-unsupported-browser-features -- container query units are required for fluid sizing */
-    font-size: clamp(1.5rem, min(7cqi, 7cqb), 3rem);
-    letter-spacing: var(--tui-keypad-letter-spacing, 0.0225rem);
+    font: 600 1.75rem/1 var(--tui-typography-family-display);
     color: var(--tui-text-primary);
-    cursor: pointer;
-    transition:
-        background var(--tui-duration) ease-out,
-        transform var(--tui-duration) var(--tui-curve-expressive-entrance);
-
-    @media @tui-mouse {
-        &:hover:not(:disabled) {
-            background: var(--tui-background-neutral-1-hover);
-        }
-    }
-
-    &:active:not(:disabled) {
-        background: var(--tui-background-neutral-1-pressed);
-        transform: scale(1.14);
-    }
-
-    &:focus-visible {
-        outline: 0.125rem solid var(--tui-border-focus);
-        outline-offset: 0.125rem;
-    }
-
-    &:disabled {
-        opacity: 0.4;
-        cursor: default;
-    }
-}
-
-.t-key_active {
-    background: var(--tui-background-neutral-1);
-    transform: scale(1.14);
 }

@@ -16,9 +16,9 @@ test.describe('Keypad', () => {
         const input = page.locator('input.display');
         const keypad = page.locator('tui-keypad.custom');
 
-        await keypad.locator('[data-key="1"]').click();
-        await keypad.locator('[data-key="4"]').click();
-        await keypad.locator('[data-key="3"]').click();
+        await keypad.getByRole('button', {name: '1', exact: true}).click();
+        await keypad.getByRole('button', {name: '4', exact: true}).click();
+        await keypad.getByRole('button', {name: '3', exact: true}).click();
 
         await expect(input).toHaveValue('143');
     });
@@ -40,20 +40,40 @@ test.describe('Keypad', () => {
         await expect(input).not.toBeFocused();
     });
 
+    test('long-press backspace clears the whole value (consumer-wired longtap)', async ({
+        page,
+    }) => {
+        const input = page.locator('input.display');
+        const keypad = page.locator('tui-keypad.custom');
+
+        await keypad.getByRole('button', {name: '1', exact: true}).click();
+        await keypad.getByRole('button', {name: '4', exact: true}).click();
+        await expect(input).toHaveValue('14');
+
+        // longtap is a touch-timer gesture owned by @taiga-ui/event-plugins; here we assert
+        // the example wires it (the regression was a missing (longtap) binding), not the plugin
+        await keypad
+            .locator('[aria-label="Backspace"]')
+            .dispatchEvent('longtap', {detail: {clientX: 0, clientY: 0}});
+
+        await expect(input).toHaveValue('');
+    });
+
     test('keypad buttons expose accessible names (icons labelled, digits use text)', async ({
         page,
     }) => {
         const keypad = page.locator('tui-keypad.custom');
 
-        await expect(keypad.locator('[data-key="backspace"]')).toHaveAttribute(
+        await expect(keypad.locator('[aria-label="Backspace"]')).toHaveAttribute(
             'aria-label',
             /.+/,
         );
 
-        await expect(keypad.locator('[data-key="1"]')).toHaveText('1');
-        await expect(keypad.locator('[data-key="1"]')).not.toHaveAttribute(
-            'aria-label',
-            /.+/,
+        await expect(keypad.getByRole('button', {name: '1', exact: true})).toHaveText(
+            '1',
         );
+        await expect(
+            keypad.getByRole('button', {name: '1', exact: true}),
+        ).not.toHaveAttribute('aria-label', /.+/);
     });
 });

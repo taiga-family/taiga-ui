@@ -62,13 +62,20 @@
                 width and center it.
             -->
             <tui-keypad
-                [keys]="keys"
                 [style.block-size]="'auto'"
                 [style.margin]="'auto'"
                 [style.max-inline-size.rem]="20"
-                [(value)]="phoneNumber"
-                (key)="refocus()"
-            />
+            >
+                @for (key of keys; track key) {
+                    <button
+                        tuiKeypadButton
+                        type="button"
+                        (click)="onKey(key)"
+                    >
+                        {{ key }}
+                    </button>
+                }
+            </tui-keypad>
 
             <div class="actions">
                 <button

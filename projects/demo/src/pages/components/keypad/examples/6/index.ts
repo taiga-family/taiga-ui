@@ -1,12 +1,12 @@
 import {Component, computed, type ElementRef, signal, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiKeypad, type TuiKeypadKey} from '@taiga-ui/addon-mobile';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiPopout} from '@taiga-ui/experimental';
 
-const KEYBOARD_MAP: Record<string, TuiKeypadKey> = {
+const KEYBOARD_MAP: Record<string, string> = {
     '+': '+',
     '-': '-',
     '*': '×',
@@ -35,15 +35,7 @@ export default class Example {
     protected readonly displayValue = computed(() => this.expression());
     protected readonly open = signal(false);
 
-    protected readonly keys: readonly TuiKeypadKey[][] = [
-        ['clear', '(', ')', '÷'],
-        ['7', '8', '9', '×'],
-        ['4', '5', '6', '-'],
-        ['1', '2', '3', '+'],
-        ['0', '.', 'backspace', 'enter'],
-    ];
-
-    protected onKey(key: TuiKeypadKey): void {
+    protected onKey(key: string): void {
         const el = this.input()?.nativeElement;
 
         el?.focus();
@@ -68,7 +60,7 @@ export default class Example {
         }
     }
 
-    private reduce(current: string, key: TuiKeypadKey): string {
+    private reduce(current: string, key: string): string {
         const expr = current === 'Error' ? '0' : current;
 
         switch (key) {

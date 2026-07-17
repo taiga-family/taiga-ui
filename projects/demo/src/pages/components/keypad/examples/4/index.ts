@@ -8,7 +8,7 @@ import {
     type TuiSheetDialogOptions,
 } from '@taiga-ui/addon-mobile';
 import {TuiAnimated} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
 import {TuiFloatingContainer} from '@taiga-ui/layout';
 
@@ -21,6 +21,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
         TuiCell,
         TuiChip,
         TuiFloatingContainer,
+        TuiIcon,
         TuiKeypad,
         TuiSheetDialog,
         TuiTitle,
@@ -31,6 +32,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     protected readonly value = signal('143');
     protected readonly open = signal(false);
 
@@ -39,4 +41,16 @@ export default class Example {
         bar: false,
         appearance: 'fullscreen',
     };
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
 }

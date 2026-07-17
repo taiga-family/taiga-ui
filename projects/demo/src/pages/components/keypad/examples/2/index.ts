@@ -4,13 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeypad} from '@taiga-ui/addon-mobile';
 import {TuiIcon} from '@taiga-ui/core';
 
-const CUSTOM_PAD = [
-    ['1', '2', '3'],
-    ['4', '5', '6'],
-    ['7', '8', '9'],
-    [null, '0', 'backspace'],
-] as const;
-
 @Component({
     imports: [TuiIcon, TuiKeypad],
     templateUrl: './index.html',
@@ -19,7 +12,18 @@ const CUSTOM_PAD = [
     changeDetection,
 })
 export default class Example {
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     protected readonly value = signal('');
-    protected readonly keys = CUSTOM_PAD;
-    protected readonly ariaLabels: Record<string, string> = {backspace: 'Backspace'};
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
 }
