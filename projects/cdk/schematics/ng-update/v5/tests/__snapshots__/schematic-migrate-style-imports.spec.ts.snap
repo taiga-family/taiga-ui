@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update migrate style imports keeps already migrated @taiga-ui/styles theme/fonts in project.json (#13823): project.json 1`] = `
+{
+  "0. Before": "{"name":"test-project","targets":{"build":{"options":{"styles":["@taiga-ui/styles/taiga-ui-theme.less","@taiga-ui/styles/taiga-ui-fonts.less","@taiga-ui/styles/taiga-ui-global.less"]}}}}",
+  "1. After": "// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/taiga-ui-global.less
+{"name":"test-project","targets":{"build":{"options":{"styles":["@taiga-ui/styles/taiga-ui-theme.less","@taiga-ui/styles/taiga-ui-fonts.less","@taiga-ui/legacy/styles/taiga-ui-global.less"]}}}}",
+}
+`;
+
+exports[`ng-update migrate style imports keeps v5 @taiga-ui/styles theme/fonts/utils in place while still moving legacy markup (#13823): test.less 1`] = `
+{
+  "0. Before": "
+                @import '@taiga-ui/styles/taiga-ui-theme.less';
+                @import '@taiga-ui/styles/taiga-ui-fonts.less';
+                @import '@taiga-ui/styles/utils';
+                @import '@taiga-ui/styles/mixins/button.less';
+                @import '@taiga-ui/styles/markup/tui-space.less';
+            ",
+  "1. After": "
+                @import '@taiga-ui/styles/taiga-ui-theme.less';
+                @import '@taiga-ui/styles/taiga-ui-fonts.less';
+                @import '@taiga-ui/styles/utils';
+                @import '@taiga-ui/styles/mixins/button.less';
+// TODO: (Taiga UI migration) Global styles will be removed in next major release. Include their source code in your project if you still require them: https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles/markup/tui-space.less
+                @import '@taiga-ui/legacy/styles/markup/tui-space.less';
+            ",
+}
+`;
+
 exports[`ng-update migrate style imports should handle multiple replacements in the same file: test.less 1`] = `
 {
   "0. Before": "
