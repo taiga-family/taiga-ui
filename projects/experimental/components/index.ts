@@ -1,3 +1,4 @@
+export * from '@taiga-ui/experimental/components/calendars';
 export * from '@taiga-ui/experimental/components/data-grid';
 export * from '@taiga-ui/experimental/components/date-picker';
 export * from '@taiga-ui/experimental/components/file';
