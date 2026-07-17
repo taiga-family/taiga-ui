@@ -149,6 +149,10 @@ export class TuiDatePicker<
             : carousel?.index() === carousel?.max(),
     );
 
+    protected readonly index = computed(
+        () => this.month().year * 12 + this.month().month,
+    );
+
     protected readonly sync = effect(() => {
         const value = this.value();
         const [day] = value instanceof TuiDayRange ? [value.from] : coerceArray(value);

@@ -49,7 +49,7 @@
         @switch (view()) {
             @case ('day') {
                 <tui-carousel
-                    [index]="month().year * 12 + month().month"
+                    [index]="index()"
                     [max]="max().year * 12 + max().month"
                     [min]="min().year * 12 + min().month"
                     (indexChange)="month.set(getMonth($event))"
