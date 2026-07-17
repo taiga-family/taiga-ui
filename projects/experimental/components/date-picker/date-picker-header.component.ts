@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {AbstractTuiCalendar} from '@taiga-ui/core/components';
-import {TUI_DROPDOWN_HOST} from '@taiga-ui/core/portals';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
+import {TUI_DROPDOWN_HOST} from '@taiga-ui/core/portals/dropdown';
 import {
     TuiInputDate,
-    TuiInputDateMulti,
     tuiInputDateOptionsProvider,
-    TuiInputDateRange,
-} from '@taiga-ui/kit/components';
+} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
+import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 
 @Component({
     selector: 'tui-date-picker-header',
