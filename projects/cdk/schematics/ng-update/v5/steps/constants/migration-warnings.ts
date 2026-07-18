@@ -249,4 +249,52 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
+    {
+        name: 'AbstractTuiControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead. The API changed from getters/@Input to signals: read the value with this.value(), set it with this.value.set(v), and use this.onChange(v)/this.onTouched(). Port your custom control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'AbstractTuiNullableControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiNullableControl has been removed. Extend the signal-based TuiControl<T | null> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'TuiPrimitiveTextfieldComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead.',
+    },
+    {
+        name: 'TuiColorSelectorComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiColorSelectorComponent has been removed. Use input[tuiInputColor] (TuiInputColor from @taiga-ui/kit) instead. See https://taiga-ui.dev/components/input-color',
+    },
+    {
+        name: 'TuiInputCopyComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiInputCopyComponent has been removed. Use the tuiCopy directive (TuiCopy from @taiga-ui/kit) on a textfield or button instead. See https://taiga-ui.dev/components/copy',
+    },
+    {
+        name: 'TuiValueAccessorModule',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiValueAccessorModule has been removed together with TuiValueAccessorDirective. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.',
+    },
+    {
+        name: 'TuiTableBarComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.',
+    },
+    {
+        name: 'TuiLegacyDropdownOpenMonitor',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiLegacyDropdownOpenMonitor has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the monitor and use those instead.',
+    },
 ];

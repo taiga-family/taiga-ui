@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy removals warnings adds TODO for AbstractTuiControl: test.ts 1`] = `
+{
+  "0. Before": "
+            import {AbstractTuiControl} from '@taiga-ui/legacy';
+
+            export const ref = AbstractTuiControl;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) AbstractTuiControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead. The API changed from getters/@Input to signals: read the value with this.value(), set it with this.value.set(v), and use this.onChange(v)/this.onTouched(). Port your custom control manually — this cannot be migrated automatically.
+            import {AbstractTuiControl} from '@taiga-ui/legacy';
+
+            export const ref = AbstractTuiControl;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for AbstractTuiNullableControl: test.ts 1`] = `
+{
+  "0. Before": "
+            import {AbstractTuiNullableControl} from '@taiga-ui/legacy';
+
+            export const ref = AbstractTuiNullableControl;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) AbstractTuiNullableControl has been removed. Extend the signal-based TuiControl<T | null> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom control manually — this cannot be migrated automatically.
+            import {AbstractTuiNullableControl} from '@taiga-ui/legacy';
+
+            export const ref = AbstractTuiNullableControl;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiColorSelectorComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiColorSelectorComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiColorSelectorComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiColorSelectorComponent has been removed. Use input[tuiInputColor] (TuiInputColor from @taiga-ui/kit) instead. See https://taiga-ui.dev/components/input-color
+            import {TuiColorSelectorComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiColorSelectorComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiInputCopyComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiInputCopyComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiInputCopyComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiInputCopyComponent has been removed. Use the tuiCopy directive (TuiCopy from @taiga-ui/kit) on a textfield or button instead. See https://taiga-ui.dev/components/copy
+            import {TuiInputCopyComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiInputCopyComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiLegacyDropdownOpenMonitor: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiLegacyDropdownOpenMonitor} from '@taiga-ui/legacy';
+
+            export const ref = TuiLegacyDropdownOpenMonitor;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiLegacyDropdownOpenMonitor has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the monitor and use those instead.
+            import {TuiLegacyDropdownOpenMonitor} from '@taiga-ui/legacy';
+
+            export const ref = TuiLegacyDropdownOpenMonitor;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiPrimitiveTextfieldComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiPrimitiveTextfieldComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead.
+            import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiPrimitiveTextfieldComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiTableBarComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiTableBarComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTableBarComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.
+            import {TuiTableBarComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTableBarComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiValueAccessorModule: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiValueAccessorModule} from '@taiga-ui/legacy';
+
+            export const ref = TuiValueAccessorModule;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiValueAccessorModule has been removed together with TuiValueAccessorDirective. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.
+            import {TuiValueAccessorModule} from '@taiga-ui/legacy';
+
+            export const ref = TuiValueAccessorModule;
+        ",
+}
+`;
