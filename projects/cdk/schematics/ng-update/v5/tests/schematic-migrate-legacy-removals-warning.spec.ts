@@ -52,10 +52,5 @@ describe('ng-update legacy removals warnings', () => {
         migrate({component: importFrom('TuiTableBarComponent')}),
     );
 
-    it(
-        'adds TODO for TuiLegacyDropdownOpenMonitorDirective',
-        migrate({component: importFrom('TuiLegacyDropdownOpenMonitorDirective')}),
-    );
-
     afterEach(() => resetActiveProject());
 });

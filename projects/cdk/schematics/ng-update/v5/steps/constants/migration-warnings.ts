@@ -291,10 +291,4 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.',
     },
-    {
-        name: 'TuiLegacyDropdownOpenMonitorDirective',
-        moduleSpecifier: '@taiga-ui/legacy',
-        message:
-            'TuiLegacyDropdownOpenMonitorDirective has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the [tuiDropdownOpenMonitor] attribute and use those instead.',
-    },
 ];

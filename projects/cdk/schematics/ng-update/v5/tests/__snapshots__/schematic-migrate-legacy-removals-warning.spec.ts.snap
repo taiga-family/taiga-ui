@@ -64,22 +64,6 @@ exports[`ng-update legacy removals warnings adds TODO for TuiInputCopyComponent:
 }
 `;
 
-exports[`ng-update legacy removals warnings adds TODO for TuiLegacyDropdownOpenMonitorDirective: test.ts 1`] = `
-{
-  "0. Before": "
-            import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy';
-
-            export const ref = TuiLegacyDropdownOpenMonitorDirective;
-        ",
-  "1. After": "
-// TODO: (Taiga UI migration) TuiLegacyDropdownOpenMonitorDirective has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the [tuiDropdownOpenMonitor] attribute and use those instead.
-            import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy';
-
-            export const ref = TuiLegacyDropdownOpenMonitorDirective;
-        ",
-}
-`;
-
 exports[`ng-update legacy removals warnings adds TODO for TuiPrimitiveTextfieldComponent: test.ts 1`] = `
 {
   "0. Before": "
