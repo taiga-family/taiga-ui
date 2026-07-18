@@ -88,10 +88,26 @@ exports[`ng-update legacy removals warnings adds TODO for TuiTableBarComponent: 
             export const ref = TuiTableBarComponent;
         ",
   "1. After": "
-// TODO: (Taiga UI migration) TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.
+// TODO: (Taiga UI migration) TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead.
             import {TuiTableBarComponent} from '@taiga-ui/legacy';
 
             export const ref = TuiTableBarComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiValueAccessorDirective: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiValueAccessorDirective} from '@taiga-ui/legacy';
+
+            export const ref = TuiValueAccessorDirective;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiValueAccessorDirective ([tuiValueAccessor]) has been removed. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.
+            import {TuiValueAccessorDirective} from '@taiga-ui/legacy';
+
+            export const ref = TuiValueAccessorDirective;
         ",
 }
 `;

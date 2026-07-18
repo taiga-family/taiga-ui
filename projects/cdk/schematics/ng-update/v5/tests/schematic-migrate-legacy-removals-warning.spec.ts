@@ -48,6 +48,11 @@ describe('ng-update legacy removals warnings', () => {
     );
 
     it(
+        'adds TODO for TuiValueAccessorDirective',
+        migrate({component: importFrom('TuiValueAccessorDirective')}),
+    );
+
+    it(
         'adds TODO for TuiTableBarComponent',
         migrate({component: importFrom('TuiTableBarComponent')}),
     );

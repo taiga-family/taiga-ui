@@ -286,9 +286,15 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiValueAccessorModule has been removed together with TuiValueAccessorDirective. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.',
     },
     {
+        name: 'TuiValueAccessorDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiValueAccessorDirective ([tuiValueAccessor]) has been removed. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.',
+    },
+    {
         name: 'TuiTableBarComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.',
+            'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead.',
     },
 ];
