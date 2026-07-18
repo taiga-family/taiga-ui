@@ -53,8 +53,8 @@ describe('ng-update legacy removals warnings', () => {
     );
 
     it(
-        'adds TODO for TuiLegacyDropdownOpenMonitor',
-        migrate({component: importFrom('TuiLegacyDropdownOpenMonitor')}),
+        'adds TODO for TuiLegacyDropdownOpenMonitorDirective',
+        migrate({component: importFrom('TuiLegacyDropdownOpenMonitorDirective')}),
     );
 
     afterEach(() => resetActiveProject());

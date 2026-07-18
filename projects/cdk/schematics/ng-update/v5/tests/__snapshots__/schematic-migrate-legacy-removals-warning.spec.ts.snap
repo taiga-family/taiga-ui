@@ -56,7 +56,7 @@ exports[`ng-update legacy removals warnings adds TODO for TuiInputCopyComponent:
             export const ref = TuiInputCopyComponent;
         ",
   "1. After": "
-// TODO: (Taiga UI migration) TuiInputCopyComponent has been removed. Use the tuiCopy directive (TuiCopy from @taiga-ui/kit) on a textfield or button instead. See https://taiga-ui.dev/components/copy
+// TODO: (Taiga UI migration) TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy
             import {TuiInputCopyComponent} from '@taiga-ui/legacy';
 
             export const ref = TuiInputCopyComponent;
@@ -64,18 +64,18 @@ exports[`ng-update legacy removals warnings adds TODO for TuiInputCopyComponent:
 }
 `;
 
-exports[`ng-update legacy removals warnings adds TODO for TuiLegacyDropdownOpenMonitor: test.ts 1`] = `
+exports[`ng-update legacy removals warnings adds TODO for TuiLegacyDropdownOpenMonitorDirective: test.ts 1`] = `
 {
   "0. Before": "
-            import {TuiLegacyDropdownOpenMonitor} from '@taiga-ui/legacy';
+            import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy';
 
-            export const ref = TuiLegacyDropdownOpenMonitor;
+            export const ref = TuiLegacyDropdownOpenMonitorDirective;
         ",
   "1. After": "
-// TODO: (Taiga UI migration) TuiLegacyDropdownOpenMonitor has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the monitor and use those instead.
-            import {TuiLegacyDropdownOpenMonitor} from '@taiga-ui/legacy';
+// TODO: (Taiga UI migration) TuiLegacyDropdownOpenMonitorDirective has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the [tuiDropdownOpenMonitor] attribute and use those instead.
+            import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy';
 
-            export const ref = TuiLegacyDropdownOpenMonitor;
+            export const ref = TuiLegacyDropdownOpenMonitorDirective;
         ",
 }
 `;

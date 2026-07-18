@@ -277,7 +277,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiInputCopyComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiInputCopyComponent has been removed. Use the tuiCopy directive (TuiCopy from @taiga-ui/kit) on a textfield or button instead. See https://taiga-ui.dev/components/copy',
+            'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
         name: 'TuiValueAccessorModule',
@@ -292,9 +292,9 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiTableBarComponent (<tui-table-bar>) has been removed with no direct replacement. Compose a table toolbar/footer from current components (e.g. tui-pagination) instead.',
     },
     {
-        name: 'TuiLegacyDropdownOpenMonitor',
+        name: 'TuiLegacyDropdownOpenMonitorDirective',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiLegacyDropdownOpenMonitor has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the monitor and use those instead.',
+            'TuiLegacyDropdownOpenMonitorDirective has been removed. It was a compatibility shim for the legacy dropdown; v5 dropdowns track open state natively via [tuiDropdownOpen] / (tuiDropdownOpenChange) and tuiDropdownAuto. Remove the [tuiDropdownOpenMonitor] attribute and use those instead.',
     },
 ];
