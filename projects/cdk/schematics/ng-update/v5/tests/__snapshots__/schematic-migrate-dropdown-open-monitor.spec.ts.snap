@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiLegacyDropdownOpenMonitor removal removes the import and its imports-array entry: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy';
+
+                @Component({
+                    template: '',
+                    imports: [TuiLegacyDropdownOpenMonitorDirective],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    template: '',
+                    imports: [],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiLegacyDropdownOpenMonitor removal removes the tuiDropdownOpenMonitor attribute (tuiDropdownOpen becomes tuiDropdownAuto): test.html 1`] = `
+{
+  "0. Before": "
+                <button
+                    tuiDropdown
+                    tuiDropdownOpen
+                    tuiDropdownOpenMonitor
+                >
+                    Menu
+                </button>
+            ",
+  "1. After": "
+                <button
+                    tuiDropdown
+                    tuiDropdownAuto
+                   
+                >
+                    Menu
+                </button>
+            ",
+}
+`;
