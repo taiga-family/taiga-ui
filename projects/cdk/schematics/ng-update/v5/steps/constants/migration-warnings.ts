@@ -253,7 +253,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'AbstractTuiControl',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'AbstractTuiControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead. The API changed from getters/@Input to signals: read the value with this.value(), set it with this.value.set(v), and use this.onChange(v)/this.onTouched(). Port your custom control manually — this cannot be migrated automatically.',
+            'AbstractTuiControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead. The API is now signal-based: read the value with this.value(), emit changes with this.onChange(v), and mark touched with this.onTouched(). Port your custom control manually — this cannot be migrated automatically.',
     },
     {
         name: 'AbstractTuiNullableControl',
