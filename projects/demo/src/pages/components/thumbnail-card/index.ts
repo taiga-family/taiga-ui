@@ -21,6 +21,7 @@ export default class Example {
         'Backgrounds',
         'External colored icon',
         'Textfield',
+        'Options',
     ];
 
     protected readonly paymentSystemVariants = Object.keys(
