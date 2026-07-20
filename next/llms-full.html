@@ -14898,7 +14898,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open &lt;/button&gt;
-&lt;tui-drawer *tuiPopup=&quot;open()&quot; direction=&quot;start&quot; class=&quot;drawer&quot; [overlay]=&quot;true&quot; (click.self)=&quot;onClose()&quot; &gt;
+&lt;tui-drawer *tuiPopup=&quot;open()&quot; direction=&quot;start&quot; class=&quot;drawer&quot; [overlay]=&quot;true&quot; (tuiClose)=&quot;onClose()&quot; &gt;
 &lt;header class=&quot;header&quot;&gt;
 &lt;h2 tuiHeader&gt;
 &lt;div tuiTitle&gt;Sticky header&lt;/div&gt;
@@ -14918,7 +14918,14 @@ import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiButton, TuiDialogService, TuiInput, TuiPopup, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {
+    TuiButton,
+    TuiClose,
+    TuiDialogService,
+    TuiInput,
+    TuiPopup,
+    TuiTitle,
+} from &#039;@taiga-ui/core&#039;;
 import {TUI_CONFIRM, TuiDrawer} from &#039;@taiga-ui/kit&#039;;
 import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
 import {filter} from &#039;rxjs&#039;;
@@ -14927,6 +14934,7 @@ import {filter} from &#039;rxjs&#039;;
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiClose,
         TuiDrawer,
         TuiHeader,
         TuiInput,
