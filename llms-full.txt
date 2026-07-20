@@ -838,11 +838,6 @@
 ---
 ## @taiga-ui/experimental
 **Components:**
-### calendar
-
-```text
-  TuiCalendar, TuiCalendarOptions, TuiWeekPipe
-```
 ### data-grid
 
 ```text
@@ -851,12 +846,17 @@
 ### date-picker
 
 ```text
-  TuiDatePicker
+  TuiDatePicker, TuiDatePickerHeader
 ```
 ### file
 
 ```text
   TuiFile, TuiFileOptions, TuiFilePipe
+```
+### month
+
+```text
+  TuiMonthComponent, TuiMonthOptions, TuiWeekPipe
 ```
 ### popout
 
@@ -11589,9 +11589,8 @@ export default class Example {
 <tui-textfield tuiChevron>
 <input placeholder="Country" tuiComboBox [(ngModel)]="value" />
 <ng-container *tuiDropdown>
-<!-- 44 = option height -->
-<!-- 4 = margin between options -->
-<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="44" [maxBufferPx]="44 * 10" [minBufferPx]="44 * 5" [style.height.px]="(items?.length || 1) * (44 + 4) + 8" >
+<!-- 42 = option height -->
+<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="42" [maxBufferPx]="42 * 10" [minBufferPx]="42 * 5" [style.height.px]="(items?.length || 1) * 42 + 8" >
 <tui-data-list withVirtualScroll>
 <button *cdkVirtualFor="let item of items" tuiOption type="button" [value]="item" > {{ item }} </button>
 </tui-data-list>
@@ -14190,7 +14189,7 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
+import {TUI_MONTH_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 
 @Component({
     imports: [TuiDatePicker, TuiDemo, TuiTitle],
@@ -14199,7 +14198,7 @@ import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
-    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
+    protected readonly options = inject(TUI_MONTH_OPTIONS);
 
     protected readonly months = [
         new TuiMonth(2021, 1),
@@ -14890,7 +14889,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open.set(true)" > Open </button>
-<tui-drawer *tuiPopup="open()" direction="start" class="drawer" [overlay]="true" (click.self)="onClose()" >
+<tui-drawer *tuiPopup="open()" direction="start" class="drawer" [overlay]="true" (tuiClose)="onClose()" >
 <header class="header">
 <h2 tuiHeader>
 <div tuiTitle>Sticky header</div>
@@ -14910,7 +14909,14 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDialogService, TuiInput, TuiPopup, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiClose,
+    TuiDialogService,
+    TuiInput,
+    TuiPopup,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TUI_CONFIRM, TuiDrawer} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 import {filter} from 'rxjs';
@@ -14919,6 +14925,7 @@ import {filter} from 'rxjs';
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiClose,
         TuiDrawer,
         TuiHeader,
         TuiInput,
@@ -20093,7 +20100,8 @@ export default class Example {
 <tui-textfield #filter tuiTextfieldSize="m" [style.margin.rem]="0.25" >
 <input placeholder="Type to filter" tuiInput />
 </tui-textfield>
-<cdk-virtual-scroll-viewport tuiScrollable [itemSize]="48" [style.height.px]="filtered().length * 48 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
+<cdk-virtual-scroll-viewport tuiScrollRef class="tui-zero-scrollbar" [itemSize]="42" [style.height.px]="filtered().length * 42 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
+<tui-scroll-controls />
 <tui-data-list tuiMultiSelectGroup>
 <button *cdkVirtualFor="let item of filtered()" tuiOption [value]="item" > {{ item }} </button>
 </tui-data-list>
@@ -20120,7 +20128,8 @@ import {
     TuiButton,
     TuiDataList,
     TuiInput,
-    TuiScrollable,
+    TuiScrollControls,
+    TuiScrollRef,
     TuiSelectLike,
     type TuiTextfieldComponent,
 } from '@taiga-ui/core';
@@ -20139,11 +20148,11 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
         TuiInput,
         TuiInputChip,
         TuiMultiSelect,
-        TuiScrollable,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiSelectLike,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -20171,14 +20180,6 @@ export default class Example {
     protected onClick(): void {
         this.value = this.items.filter((_, i) => i < 2000);
     }
-}
-```
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
-[tuiScrollable] {
-    .scrollbar-hidden();
 }
 ```
 
@@ -28750,8 +28751,8 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar>
-<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollable class="tui-zero-scrollbar" >
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef class="tui-zero-scrollbar" >
+<tui-scroll-controls />
 <div *cdkVirtualFor="let user of users; templateCacheSize: 0">
 <tui-line-clamp [content]="info" [lineHeight]="24" [linesLimit]="1" />
 <ng-template #info>
@@ -28764,7 +28765,6 @@ export default class Example {
 </ng-template>
 </div>
 </cdk-virtual-scroll-viewport>
-</tui-scrollbar>
 ```
 **TypeScript:**
 ```ts
@@ -28776,7 +28776,7 @@ import {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
@@ -28785,8 +28785,8 @@ import {TuiLineClamp} from '@taiga-ui/kit';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         TuiLineClamp,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -31544,7 +31544,7 @@ export default class Example {
 </button>
 </header>
 <button iconStart="@tui.search" tuiAsideItem type="button" > Search </button>
-<a iconStart="@tui.users" tuiAsideItem > Groups </a>
+<button iconStart="@tui.users" tuiAsideItem type="button" > Groups </button>
 <tui-aside-group [(open)]="open">
 <button iconStart="@tui.settings" tuiAsideItem tuiChevron type="button" > Settings <ng-template>
 <button tuiAsideItem type="button" (click)="open = false" > Account </button>
@@ -31557,7 +31557,7 @@ export default class Example {
 <span tuiFade>By default ellipsis is used but you can use fade too</span>
 </button>
 <hr />
-<button appearance="accent" iconStart="@tui.plus" tuiAsideItem type="button" > Add </button>
+<button appearance="primary" iconStart="@tui.plus" tuiAsideItem type="button" > Add </button>
 <footer>
 <button iconStart="@tui.star" tuiAsideItem type="button" > Favorites </button>
 </footer>
@@ -38186,7 +38186,7 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Country" tuiSelect [(ngModel)]="value" />
-<cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class="scroll" [itemSize]="42" >
+<cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class="tui-zero-scrollbar" [itemSize]="42" [style.block-size.rem]="12.5" >
 <tui-scroll-controls />
 <tui-data-list>
 <button *cdkVirtualFor="let item of countries" tuiOption type="button" [value]="item" > {{ item }} </button>
@@ -38215,24 +38215,12 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
         TuiSelect,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value = null;
-}
-```
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
-.scroll {
-    .scrollbar-hidden();
-
-    display: flex;
-    block-size: 12.5rem;
 }
 ```
 
@@ -40789,7 +40777,7 @@ export default class Example {}
 <button tuiLink type="button" class="link" > Hide </button>
 </aside>
 </header>
-<tui-scrollbar class="scrollbar">
+<div tuiScrollRef class="scrollbar" >
 <div class="wrapper"> @for (review of reviews; track review) { <div tuiAppearance="neutral" tuiSurface class="review" > {{ review.body }} <footer tuiCell>
 <div size="m" tuiAvatar="@tui.user" >
 <img alt="" src="assets/images/avatar.jpg" />
@@ -40798,7 +40786,7 @@ export default class Example {}
 </label>
 </footer>
 </div> } </div>
-</tui-scrollbar>
+</div>
 <button appearance="secondary" size="m" tuiButton type="button" > See all </button>
 </section>
 <div tuiSurface tuiTheme="dark" class="mask" >
@@ -40827,8 +40815,7 @@ import {
     TuiButton,
     TuiCell,
     TuiLink,
-    TuiScrollbar,
-    tuiScrollbarOptionsProvider,
+    TuiScrollRef,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
@@ -40845,7 +40832,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
         TuiCell,
         TuiHeader,
         TuiLink,
-        TuiScrollbar,
+        TuiScrollRef,
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
@@ -40854,7 +40841,6 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
 })
 export default class Example {
     protected readonly reviews = [
@@ -40939,6 +40925,7 @@ export default class Example {
     grid-row: span 3;
 
     .scrollbar {
+        overflow: auto;
         margin: 0.75rem -1.5rem 1.25rem;
         scroll-snap-type: x mandatory;
         overscroll-behavior-x: contain;
@@ -40951,14 +40938,14 @@ export default class Example {
 
         &::after {
             content: '';
-            min-inline-size: 0.625rem;
+            min-inline-size: 0.875rem;
         }
     }
 
     .review {
         display: flex;
         flex-direction: column;
-        min-inline-size: calc(100% - 0.75rem);
+        min-inline-size: 100%;
         padding: 0.75rem 1rem 1rem;
         border-radius: 1rem;
         scroll-snap-align: start;
@@ -43151,8 +43138,8 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar>
-<cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollable class="viewport tui-zero-scrollbar" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
+<cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class="viewport tui-zero-scrollbar" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
+<tui-scroll-controls />
 <table tuiTable>
 <thead>
 <tr [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)">
@@ -43170,7 +43157,6 @@ export default class Example {
 </tbody>
 </table>
 </cdk-virtual-scroll-viewport>
-</tui-scrollbar>
 ```
 **TypeScript:**
 ```ts
@@ -43184,7 +43170,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 
 interface User {
     readonly dob: TuiDay;
@@ -43240,8 +43226,8 @@ function getAge({dob}: User): number {
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiTable,
     ],
     templateUrl: './index.html',
@@ -44991,7 +44977,7 @@ export default class Example {}
     background-color: #7c48c3;
     background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
     overflow: visible;
-    animation: spinCard 5s infinite;
+    animation: spinCard calc(var(--tui-duration) * 20) infinite;
 }
 ```
 
@@ -50990,20 +50976,17 @@ Directive that uses masking to fade out overflown content
 
 **Template:**
 ```html
-<tui-scrollbar class="scrollbar">
-<div tuiFade tuiScrollable class="fade" > I am a very long text that overflows with a single line fade </div>
-</tui-scrollbar>
+<div tuiFade class="fade" > I am a very long text that overflows with a single line fade </div>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiFade, TuiScrollable, TuiScrollbar],
+    imports: [TuiFade],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -51015,14 +50998,10 @@ export default class Example {}
 ```less
 @import '@taiga-ui/styles/utils';
 
-.scrollbar {
-    inline-size: 20rem;
-}
-
 .fade {
     .scrollbar-hidden();
 
-    inline-size: 100%;
+    inline-size: 20rem;
     block-size: 2rem;
     font: var(--tui-typography-heading-h6);
     white-space: nowrap;
@@ -51099,20 +51078,21 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar>
-<div tuiFade="vertical" tuiScrollable class="fade" > Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. </div>
-</tui-scrollbar>
+<div tuiFade="vertical" tuiScrollRef class="fade" >
+<tui-scroll-controls />
+<div class="wrapper"> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. </div>
+</div>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiFade, TuiScrollable, TuiScrollbar],
+    imports: [TuiFade, TuiScrollControls, TuiScrollRef],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -51127,6 +51107,7 @@ export default class Example {}
 .fade {
     .scrollbar-hidden();
 
+    display: flex;
     inline-size: 17rem;
     block-size: 10rem;
     font: var(--tui-typography-body-l);

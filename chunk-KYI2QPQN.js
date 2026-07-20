@@ -1,0 +1,29 @@
+import"./chunk-HU6DUUP4.js";var l=`<tui-textfield tuiChevron>
+    <input
+        placeholder="Country"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <cdk-virtual-scroll-viewport
+        *tuiDropdown
+        appendOnly
+        tuiScrollRef
+        class="tui-zero-scrollbar"
+        [itemSize]="42"
+        [style.block-size.rem]="12.5"
+    >
+        <tui-scroll-controls />
+        <tui-data-list>
+            <button
+                *cdkVirtualFor="let item of countries"
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-data-list>
+    </cdk-virtual-scroll-viewport>
+</tui-textfield>
+`;export{l as default};
