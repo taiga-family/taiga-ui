@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.16.0](https://github.com/taiga-family/taiga-ui/compare/v5.15.0...v5.16.0) (2026-07-20)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `SwipeActionsOnboarding` add missing version attribute
+  ([#14590](https://github.com/taiga-family/taiga-ui/issues/14590))
+  ([333e4ed](https://github.com/taiga-family/taiga-ui/commit/333e4ed920c19d7b28031b5c7ef359fa6d3ec540))
+- **cdk:** expose "./schematics" subpath in package "exports"
+  ([#14585](https://github.com/taiga-family/taiga-ui/issues/14585))
+  ([618080f](https://github.com/taiga-family/taiga-ui/commit/618080f32178bf7a5867f1c3f439c51d3a95b194))
+- **cdk:** InputColor and InputRange template migrations
+  ([#14473](https://github.com/taiga-family/taiga-ui/issues/14473))
+  ([e2199ba](https://github.com/taiga-family/taiga-ui/commit/e2199baa62a94ed924756dcdaf92e0462d1e9a36))
+- **kit:** `Textarea` fix scroll on ios ([#14569](https://github.com/taiga-family/taiga-ui/issues/14569))
+  ([d4b9da5](https://github.com/taiga-family/taiga-ui/commit/d4b9da5ad9d3eb02fb231e1b310fc23b4fa3b1fd))
+- **styles:** `Skeleton` has visual black flicker artifact during deactivation
+  ([#14581](https://github.com/taiga-family/taiga-ui/issues/14581))
+  ([d3a3cfc](https://github.com/taiga-family/taiga-ui/commit/d3a3cfcd38fd3d9baddd50073c7839f619bc65cc))
+
+### 🚀 Features
+
+- **addon-mobile:** `DropdownSheet` add `tuiDropdownSheetOptions` input to customize sheet dialog
+  ([#14558](https://github.com/taiga-family/taiga-ui/issues/14558))
+  ([454321b](https://github.com/taiga-family/taiga-ui/commit/454321b2f6cd93eb5e07f3d6c8f8232ca40d892b))
+- **core:** new `Close` directive ([#14560](https://github.com/taiga-family/taiga-ui/issues/14560))
+  ([5d3230e](https://github.com/taiga-family/taiga-ui/commit/5d3230eeadd183aac03e022ae203ea0c6fb38470))
+
 ## [5.15.0](https://github.com/taiga-family/taiga-ui/compare/v5.14.0...v5.15.0) (2026-07-13)
 
 ### 🚀 Features
