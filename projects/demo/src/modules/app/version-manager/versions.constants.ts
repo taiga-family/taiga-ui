@@ -32,11 +32,6 @@ export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     },
 ];
 
-export const TUI_VERSIONS_META_MAP = TUI_VERSIONS_META.reduce(
-    (map, item) => map.set(item.baseHref, item),
-    new Map<string, TuiVersionMeta>(),
-);
-
 export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
     ngDevMode ? 'TUI_VERSIONS_META_OPTIONS' : '',
     {
