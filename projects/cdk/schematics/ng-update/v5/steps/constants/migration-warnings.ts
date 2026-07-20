@@ -265,7 +265,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiPrimitiveTextfieldComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead.',
+            'TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead. See https://taiga-ui.dev/components/textfield',
     },
     {
         name: 'TuiColorSelectorComponent',
@@ -295,6 +295,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiTableBarComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead.',
+            'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/action-bar',
     },
 ];
