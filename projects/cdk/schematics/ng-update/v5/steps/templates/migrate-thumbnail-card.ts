@@ -19,7 +19,7 @@ const MONO_HANDLER_ATTRS = ['monoHandler', '[monoHandler]'].map((name) =>
 );
 
 const MONO_HANDLER_TODO =
-    '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now always renders from the configured icon set — control mono vs colored icons through TUI_PAYMENT_SYSTEM_ICONS (the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS) instead. See https://taiga-ui.dev/components/thumbnail-card';
+    '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card';
 
 export function migrateThumbnailCardMonoHandler({
     resource,
