@@ -9,9 +9,9 @@ exports[`ng-update thumbnail-card monoHandler (#13869) removes bound [monoHandle
                 />
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) \`monoHandler\` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the \`icons\` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card -->
+                <!-- TODO: (Taiga UI migration) \`monoHandler\` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the \`icons\` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options -->
 <tui-thumbnail-card
-                   
+                    
                     [paymentSystem]="system"
                 />
             ",
@@ -27,9 +27,9 @@ exports[`ng-update thumbnail-card monoHandler (#13869) removes static monoHandle
                 />
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) \`monoHandler\` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the \`icons\` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card -->
+                <!-- TODO: (Taiga UI migration) \`monoHandler\` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the \`icons\` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options -->
 <tui-thumbnail-card
-                   
+                    
                     [paymentSystem]="system"
                 />
             ",

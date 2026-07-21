@@ -63,7 +63,6 @@ import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 import {migrateTextarea} from './templates/migrate-textarea';
-import {migrateThumbnailCardMonoHandler} from './templates/migrate-thumbnail-card';
 import {migrateTooltip} from './templates/migrate-tooltip';
 
 export function getAction<T>({
@@ -134,7 +133,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateAmountCurrencyAlign,
         migrateAsyncPipes,
         migrateTagToChip,
-        migrateThumbnailCardMonoHandler,
         migrateAxes,
         migrateChartHint,
         migrateCalendarSheetSingle,
