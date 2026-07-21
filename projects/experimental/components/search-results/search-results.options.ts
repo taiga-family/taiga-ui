@@ -1,5 +1,5 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {tuiStorageKeyFactory} from '@taiga-ui/core';
+import {tuiStorageKeyFactory} from '@taiga-ui/core/utils/miscellaneous';
 
 export const [TUI_SEARCH_RESULTS_OPTIONS, tuiSearchResultsOptionsProvider] =
     tuiCreateOptions({
