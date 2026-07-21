@@ -63,7 +63,6 @@ describe('TuiPreview content mutations', () => {
                 .componentInstance as {onResize(): void};
 
             cy.get('#page').should('exist');
-            cy.wait(300);
             cy.then(() => cy.spy(preview, 'onResize').as('onResize'));
         });
     });

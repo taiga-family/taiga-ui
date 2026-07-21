@@ -3,10 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPreview} from '@taiga-ui/kit';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [PolymorpheusOutlet, TuiButton, TuiPreview],
+    imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

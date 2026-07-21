@@ -2,6 +2,7 @@
     #contentWrapper
     attributeFilter="src"
     childList
+    subtree
     class="t-wrapper"
     [class.t-not-interactive-content]="zoomable()"
     [class.t-transitive]="transitioned$ | async"
@@ -10,7 +11,7 @@
     (resize)="onResize(contentWrapper)"
     (tuiPan)="onPan($event)"
     (tuiZoom)="onZoom($event)"
-    (waMutationObserver)="onResize(contentWrapper)"
+    (waMutationObserver)="onMutation(contentWrapper, $event)"
 >
     <ng-content />
 </section>
