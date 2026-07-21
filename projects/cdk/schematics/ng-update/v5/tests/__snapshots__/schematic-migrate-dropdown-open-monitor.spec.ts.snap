@@ -39,7 +39,7 @@ exports[`ng-update TuiLegacyDropdownOpenMonitor removal removes the tuiDropdownO
                 <button
                     tuiDropdown
                     tuiDropdownAuto
-                   
+                    
                 >
                     Menu
                 </button>
