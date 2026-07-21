@@ -45133,6 +45133,62 @@ export default class Example {
 }
 ```
 
+#### Options
+
+**Template:**
+```html
+&lt;span paymentSystem=&quot;visa&quot; tuiThumbnailCard class=&quot;star&quot; &gt; 1234 &lt;/span&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    TUI_PAYMENT_SYSTEM_ICONS,
+    TUI_THUMBNAIL_CARD_OPTIONS,
+    TuiThumbnailCard,
+    type TuiThumbnailCardOptions,
+} from &#039;@taiga-ui/addon-commerce&#039;;
+
+@Component({
+    imports: [TuiThumbnailCard],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        {
+            provide: TUI_THUMBNAIL_CARD_OPTIONS,
+            useFactory: (): TuiThumbnailCardOptions =&gt; ({
+                size: &#039;l&#039;,
+                // Swap the default monochrome `@tui.visa` for the colored `@img.visa`
+                icons: {...inject(TUI_PAYMENT_SYSTEM_ICONS), visa: &#039;@img.visa&#039;},
+            }),
+        },
+    ],
+})
+export default class Example {}
+```
+**LESS:**
+```less
+.star {
+    color: #000;
+    background:
+        linear-gradient(45deg, rgba(255, 170, 0, 0.82), #fa0), url(&#039;/assets/taiga-ui/icons/star.svg&#039;),
+        url(&#039;/assets/taiga-ui/icons/star.svg&#039;);
+    background-size:
+        100%,
+        3rem 1.5rem,
+        3rem 1.5rem;
+    background-position:
+        0 0,
+        -0.75rem 0,
+        0.75rem;
+    background-color: #fff;
+}
+```
+
 
 ### TypeScript
 
@@ -45160,6 +45216,7 @@ export default class Example {
         &#039;Backgrounds&#039;,
         &#039;External colored icon&#039;,
         &#039;Textfield&#039;,
+        &#039;Options&#039;,
     ];
 
     protected readonly paymentSystemVariants = Object.keys(
