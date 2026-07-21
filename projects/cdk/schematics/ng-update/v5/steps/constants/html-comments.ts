@@ -84,6 +84,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom',
     },
     {
+        tag: 'tui-thumbnail-card',
+        withAttrs: ['monoHandler'],
+        comment:
+            '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options',
+    },
+    {
         tag: 'timeline-steps',
         withAttrs: [],
         comment:

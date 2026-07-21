@@ -25,4 +25,8 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         inputName: 'rounded',
         tags: ['tui-accordion'],
     },
+    {
+        inputName: 'monoHandler',
+        tags: ['tui-thumbnail-card'],
+    },
 ];
