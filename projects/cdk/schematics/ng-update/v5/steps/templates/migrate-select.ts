@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -26,17 +27,6 @@ const SELECT_MIGRATION_TODO = `<!-- ${TODO_MARK} tui-select was partially migrat
 const VALUE_CONTENT_ATTR = 'valueContent';
 const CONTENT_ATTR = 'content';
 const TEXTFIELD_LABEL_OUTSIDE_ATTR = 'tuiTextfieldLabelOutside';
-
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
 export function migrateSelect({
     resource,
@@ -55,7 +45,7 @@ export function migrateSelect({
         const startOffset = element.sourceCodeLocation?.startOffset;
 
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const controlStateAttrs = getControlStateAttrs(element);
@@ -158,7 +148,7 @@ export function migrateSelect({
                     recorder.insertRight(templateOffset + startOffset, 'tuiSelect');
                 });
 
-                const formAttrs = formatControlAttrs(controlAttrs);
+                const formAttrs = formatControlAttrs(controlAttrs, template, element);
                 const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
                 const placeholderAttr =
@@ -178,7 +168,7 @@ export function migrateSelect({
                 }
             });
         } else {
-            const formAttrs = formatControlAttrs(controlAttrs);
+            const formAttrs = formatControlAttrs(controlAttrs, template, element);
             const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
             const firstElementChildOffset = element.childNodes.find(
@@ -295,29 +285,12 @@ function removeTextContent(
     });
 }
 
-function formatControlAttrs(attrs: Array<{name: string; value: string}>): string {
-    return attrs
-        .map(({name, value}) => `${normalizeAttrName(name)}="${value}"`)
-        .join(' ');
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[(ngModel)]'.toLowerCase():
-            return '[(ngModel)]';
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        default:
-            return name;
-    }
+function formatControlAttrs(
+    attrs: Array<{name: string; value: string}>,
+    template: string,
+    element: Element,
+): string {
+    return attrs.map((attr) => getOriginalAttrText(template, element, attr)).join(' ');
 }
 
 function wrapTextInLabel(

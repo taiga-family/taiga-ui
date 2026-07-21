@@ -294,5 +294,23 @@ describe('ng-update ComboBox', () => {
         }),
     );
 
+    it(
+        'moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
