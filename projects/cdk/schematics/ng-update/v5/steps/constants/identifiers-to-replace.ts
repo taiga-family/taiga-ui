@@ -1214,4 +1214,158 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
+    {
+        from: [
+            {
+                name: 'TuiInputPasswordOptions',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInputPasswordOptions',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TuiPasswordOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'TUI_INPUT_PASSWORD_OPTIONS',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TUI_INPUT_PASSWORD_OPTIONS',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TUI_PASSWORD_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'tuiInputPasswordOptionsProvider',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'tuiInputPasswordOptionsProvider',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'tuiPasswordOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputDateOptionsNew',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiInputDateOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_INPUT_DATE_OPTIONS_NEW',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_INPUT_DATE_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_INPUT_DATE_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_TOASTS_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_TOAST_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiWithQuantumValueTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiQuantumValueTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAlertOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiNotificationOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ALERT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_NOTIFICATION_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiButtonCopyComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiButtonCopy',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'TuiInputRangeComponent',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInputRangeComponent',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TuiInputRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiActionBarComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

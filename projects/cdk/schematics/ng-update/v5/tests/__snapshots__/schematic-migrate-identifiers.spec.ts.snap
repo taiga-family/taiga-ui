@@ -28,6 +28,68 @@ exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be
 }
 `;
 
+exports[`ng-update identifiers migration drops the Component suffix from kit copy/input-range/action-bar: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiActionBarComponent,
+                    TuiButtonCopyComponent,
+                    TuiInputRangeComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiActionBarComponent,
+                        TuiButtonCopyComponent,
+                        TuiInputRangeComponent,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import { TuiButtonCopy, TuiInputRange, TuiActionBar } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiActionBar,
+                        TuiButtonCopy,
+                        TuiInputRange,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration drops the New suffix from input-date options identifiers: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+                    TUI_INPUT_DATE_OPTIONS_NEW,
+                    type TuiInputDateOptionsNew,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly defaults = TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW;
+                    protected readonly token = TUI_INPUT_DATE_OPTIONS_NEW;
+                    protected readonly options: TuiInputDateOptionsNew | null = null;
+                }
+            ",
+  "1. After": "
+                import { TuiInputDateOptions, TUI_INPUT_DATE_OPTIONS, TUI_INPUT_DATE_DEFAULT_OPTIONS } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly defaults = TUI_INPUT_DATE_DEFAULT_OPTIONS;
+                    protected readonly token = TUI_INPUT_DATE_OPTIONS;
+                    protected readonly options: TuiInputDateOptions | null = null;
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit: test.ts 1`] = `
 {
   "0. Before": "
@@ -260,6 +322,25 @@ exports[`ng-update identifiers migration moves TuiTimeMode type from cdk to Mask
 }
 `;
 
+exports[`ng-update identifiers migration moves legacy TuiInputRangeComponent to kit TuiInputRange: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputRangeComponent} from '@taiga-ui/legacy';
+
+                @Component({imports: [TuiInputRangeComponent]})
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputRange } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({imports: [TuiInputRange]})
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves tuiCellOptionsProvider from layout to core: test.ts 1`] = `
 {
   "0. Before": "
@@ -307,6 +388,30 @@ exports[`ng-update identifiers migration renames ResizeObserverService to WaResi
 }
 `;
 
+exports[`ng-update identifiers migration renames TUI_TOASTS_CONCURRENCY and TuiWithQuantumValueTransformer: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TUI_TOASTS_CONCURRENCY,
+                    TuiWithQuantumValueTransformer,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly concurrency = TUI_TOASTS_CONCURRENCY;
+                    protected readonly transformer = TuiWithQuantumValueTransformer;
+                }
+            ",
+  "1. After": "
+                import { TUI_TOAST_CONCURRENCY, TuiQuantumValueTransformer } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly concurrency = TUI_TOAST_CONCURRENCY;
+                    protected readonly transformer = TuiQuantumValueTransformer;
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869): test.ts 1`] = `
 {
   "0. Before": "
@@ -322,6 +427,85 @@ exports[`ng-update identifiers migration renames TuiInputCVC/TuiInputExpire to t
 
                 @Component({imports: [TuiInputCVCDirective, TuiInputExpireDirective]})
                 export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration renames alert options to notification options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_ALERT_OPTIONS, type TuiAlertOptions} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_ALERT_OPTIONS;
+                    protected readonly options: TuiAlertOptions | null = null;
+                }
+            ",
+  "1. After": "
+                import { TuiNotificationOptions, TUI_NOTIFICATION_OPTIONS } from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_NOTIFICATION_OPTIONS;
+                    protected readonly options: TuiNotificationOptions | null = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration renames kit input-password options to password options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import { TuiPasswordOptions, TUI_PASSWORD_OPTIONS, tuiPasswordOptionsProvider } from '@taiga-ui/kit';
+
+                @Component({providers: [tuiPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_PASSWORD_OPTIONS;
+                    protected readonly options: TuiPasswordOptions | null = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration renames legacy input-password options to kit password options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/legacy';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            ",
+  "1. After": "import { TuiPasswordOptions, TUI_PASSWORD_OPTIONS, tuiPasswordOptionsProvider } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({providers: [tuiPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_PASSWORD_OPTIONS;
+                    protected readonly options: TuiPasswordOptions | null = null;
+                }
             ",
 }
 `;
