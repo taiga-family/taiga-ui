@@ -27,9 +27,8 @@
         </button>
 
         <img
-            *polymorpheusOutlet="content[index] as src"
             alt="preview"
-            [src]="src"
+            [src]="content[index]"
         />
     </tui-preview>
 </ng-template>
