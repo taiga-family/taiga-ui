@@ -34270,7 +34270,7 @@ export default class Example {
 <tui-preview-title>{{ titles[index] }}</tui-preview-title>
 <tui-preview-pagination [length]="length" [(index)]="index" />
 <button iconStart="@tui.x" tuiIconButton tuiPreviewAction type="button" (click)="open = false" > Close </button>
-<img *polymorpheusOutlet="content[index] as src" alt="preview" [src]="src" />
+<img alt="preview" [src]="content[index]" />
 </tui-preview>
 </ng-template>
 ```
@@ -34281,10 +34281,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPreview} from '@taiga-ui/kit';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [PolymorpheusOutlet, TuiButton, TuiPreview],
+    imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
