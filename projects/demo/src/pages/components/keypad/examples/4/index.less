@@ -76,11 +76,18 @@
 }
 
 tui-keypad {
-    // fill the sheet width (capped so the keys don't spread too far apart on wide screens), and let
-    // the height follow the keys: overriding the component's default aspect-ratio is what keeps the
-    // pad short — otherwise height = width * rows/cols makes the full-width pad tall enough to push
-    // the floating Send button up over the card list.
+    // fill the sheet width and let the height follow the keys: overriding the component's default
+    // aspect-ratio is what keeps the pad short — otherwise height = width * rows/cols makes the
+    // full-width pad tall enough to push the floating Send button up over the card list.
     max-inline-size: 24rem;
     aspect-ratio: auto;
     block-size: auto;
+}
+
+[tuiKeypadButton] {
+    // cap the key size independently of the pad width: keys size from the column width, so at full
+    // width the columns are wide and the keys (and their round hover) would balloon and make the pad
+    // too tall. Capping keeps the keys compact and the pad short, while the pad still fills the width.
+    max-inline-size: 4.5rem;
+    max-block-size: 4.5rem;
 }
