@@ -249,4 +249,34 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
+    {
+        name: 'TuiKeysPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiKeysPipe (| tuiKeys) has been removed. It returned Object.keys(value); use the built-in Angular keyvalue pipe, or expose Object.keys(value) from the component.',
+    },
+    {
+        name: 'TuiReplacePipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiReplacePipe (| tuiReplace) has been removed. It was a thin wrapper over String.prototype.replace; call value.replace(search, replaceValue) in the component (or a computed) instead.',
+    },
+    {
+        name: 'TuiToArrayPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiToArrayPipe (| tuiToArray) has been removed. It returned Array.from(value) for a Map/Set/QueryList; call Array.from(value) (or spread [...value]) in the component instead.',
+    },
+    {
+        name: 'TuiIsPresentPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiIsPresentPipe (| tuiIsPresent) has been removed, but the tuiIsPresent() utility it wrapped still exists in @taiga-ui/cdk. Call tuiIsPresent(value) in the component, or use a native null check (value != null) / @if in the template.',
+    },
+    {
+        name: 'TuiAnimationPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimationPipe (| tuiAnimation) has been removed. It scaled Angular animation params by the global animation speed. Build the params in the component instead: inject TUI_ANIMATIONS_SPEED and multiply your duration by tuiGetDuration(speed) (both still in @taiga-ui/core).',
+    },
 ];
