@@ -29,3 +29,16 @@
         background: linear-gradient(135deg, transparent 50%, var(--tui-text-primary) 50%);
     }
 }
+
+tui-keypad {
+    // this demo is about resizing: override the fixed-height default so the pad scales with the
+    // draggable container, and size keys from the column width again so they grow with it
+    block-size: 100%;
+    grid-auto-rows: 1fr;
+}
+
+[tuiKeypadButton] {
+    inline-size: 88%;
+    block-size: auto;
+    max-block-size: 88%;
+}

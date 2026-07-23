@@ -1,13 +1,14 @@
 :host {
     display: grid;
     grid-template-columns: repeat(var(--t-columns, 3), 1fr);
-    grid-auto-rows: 1fr;
+    // fixed row height + fluid columns: the pad fills its container's width (capped below) while the
+    // height stays constant (rows * 4rem), so keys never balloon on a wide container. Consumers that
+    // want the pad to scale with a resizable box override grid-auto-rows/block-size (see Fluid demo).
+    grid-auto-rows: 4rem;
     place-items: center;
     inline-size: 100%;
-    block-size: 100%;
     max-inline-size: 37.5rem;
     margin-inline: auto;
-    aspect-ratio: var(--t-columns, 3) / var(--t-rows, 4);
     font: 600 1.75rem/1 var(--tui-typography-family-display);
     color: var(--tui-text-primary);
 }
