@@ -17,8 +17,8 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@5b954545ec33833478961976b2ce4fd3c6b89149 # v2.7.0
       - id: matrix
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         run: |
@@ -36,7 +36,7 @@ jobs:
       matrix:
         value: ${{ fromJSON(needs.setup.outputs.matrix || '[]') }}
     steps:
-      - uses: taiga-family/actions/wait-job@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/wait-job@5b954545ec33833478961976b2ce4fd3c6b89149 # v2.7.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           job: ${{ matrix.value }}
@@ -45,14 +45,14 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
-      - uses: taiga-family/actions/auto-approve-double@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@5b954545ec33833478961976b2ce4fd3c6b89149 # v2.7.0
+      - uses: taiga-family/actions/auto-approve-double@5b954545ec33833478961976b2ce4fd3c6b89149 # v2.7.0
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true' && github.event.pull_request.commits == 1
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-      - uses: taiga-family/actions/auto-merge@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/auto-merge@5b954545ec33833478961976b2ce4fd3c6b89149 # v2.7.0
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true' && github.event.pull_request.commits == 1
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
