@@ -1,15 +1,27 @@
-import {InputSignal, InputSignalWithTransform, ModelSignal, OutputRef} from "@angular/core";
+import {
+    type InputSignal,
+    type InputSignalWithTransform,
+    type ModelSignal,
+    type OutputRef,
+} from '@angular/core';
 
-interface ValidationError {
+/**
+ * @deprecated use import {ValidationError} from '@angular/forms/signals'
+ * Just temporary copy-pasted types until Taiga UI supports Angular <22
+ * https://github.com/angular/angular/blob/main/packages/forms/signals/src/api/rules/validation/validation_errors.ts#L368
+ * TODO: replace all usages `TuiSignalValidationError` by built-in Angular alternative
+ */
+export interface TuiSignalValidationError {
     readonly kind: string;
     readonly message?: string;
 }
 
+// TODO: delete
 interface FormUiControl {
     readonly errors?:
-        | InputSignal<readonly ValidationError[]>
-        | InputSignalWithTransform<readonly ValidationError[], unknown>;
-    
+        | InputSignal<readonly TuiSignalValidationError[]>
+        | InputSignalWithTransform<readonly TuiSignalValidationError[], unknown>;
+
     readonly disabled?: InputSignal<boolean> | InputSignalWithTransform<boolean, unknown>;
     readonly readonly?: InputSignal<boolean> | InputSignalWithTransform<boolean, unknown>;
     readonly invalid?: InputSignal<boolean> | InputSignalWithTransform<boolean, unknown>;
