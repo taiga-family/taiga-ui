@@ -22,11 +22,11 @@ import {TuiKeypadButton} from './keypad-button.component';
     },
 })
 export class TuiKeypadComponent {
-    protected readonly buttons = contentChildren(TuiKeypadButton);
-
-    public readonly columns = input(3);
+    private readonly buttons = contentChildren(TuiKeypadButton);
 
     protected readonly rows = computed(() =>
         Math.max(1, Math.ceil(this.buttons().length / Math.max(1, this.columns()))),
     );
+
+    public readonly columns = input(3);
 }

@@ -54,27 +54,15 @@
                 <tui-icon icon="@tui.divide" />
             </button>
 
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('7')"
-            >
-                7
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('8')"
-            >
-                8
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('9')"
-            >
-                9
-            </button>
+            @for (digit of ['7', '8', '9']; track digit) {
+                <button
+                    tuiKeypadButton
+                    type="button"
+                    (click)="onKey(digit)"
+                >
+                    {{ digit }}
+                </button>
+            }
             <button
                 aria-label="Multiply"
                 tuiKeypadButton
@@ -84,27 +72,15 @@
                 <tui-icon icon="@tui.x" />
             </button>
 
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('4')"
-            >
-                4
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('5')"
-            >
-                5
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('6')"
-            >
-                6
-            </button>
+            @for (digit of ['4', '5', '6']; track digit) {
+                <button
+                    tuiKeypadButton
+                    type="button"
+                    (click)="onKey(digit)"
+                >
+                    {{ digit }}
+                </button>
+            }
             <button
                 aria-label="Subtract"
                 tuiKeypadButton
@@ -114,27 +90,15 @@
                 <tui-icon icon="@tui.minus" />
             </button>
 
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('1')"
-            >
-                1
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('2')"
-            >
-                2
-            </button>
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="onKey('3')"
-            >
-                3
-            </button>
+            @for (digit of ['1', '2', '3']; track digit) {
+                <button
+                    tuiKeypadButton
+                    type="button"
+                    (click)="onKey(digit)"
+                >
+                    {{ digit }}
+                </button>
+            }
             <button
                 aria-label="Add"
                 tuiKeypadButton

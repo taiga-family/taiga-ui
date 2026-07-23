@@ -7,7 +7,11 @@
     justify-content: center;
     place-self: center;
     aspect-ratio: 1;
-    block-size: 88%;
+    // size from the column width, not the row height: if a consumer pins a height that
+    // makes cells taller than wide, a height-driven key would grow past its column and
+    // clip a neighbour. max-block-size keeps it inside short cells too.
+    inline-size: 88%;
+    max-block-size: 88%;
     border: none;
     border-radius: 50%;
     background: transparent;

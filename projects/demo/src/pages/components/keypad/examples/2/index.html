@@ -1,42 +1,40 @@
-<div class="container">
-    <input
-        placeholder="—"
-        tuiKeypadInput
-        class="display"
-        [value]="value()"
-    />
+<input
+    placeholder="—"
+    tuiKeypadInput
+    class="display"
+    [value]="value()"
+/>
 
-    <tui-keypad class="custom">
-        @for (digit of digits; track digit) {
-            <button
-                tuiKeypadButton
-                type="button"
-                (click)="append(digit)"
-            >
-                {{ digit }}
-            </button>
+<tui-keypad class="custom">
+    @for (digit of digits; track digit) {
+        <button
+            tuiKeypadButton
+            type="button"
+            (click)="append(digit)"
+        >
+            {{ digit }}
+        </button>
+    }
+
+    <div></div>
+
+    <button
+        tuiKeypadButton
+        type="button"
+        (click)="append('0')"
+    >
+        0
+    </button>
+
+    <button
+        aria-label="Backspace"
+        tuiKeypadButton
+        type="button"
+        (click)="backspace()"
+        (longtap)="clear()"
+    >
+        @if (value()) {
+            <tui-icon icon="@tui.delete" />
         }
-
-        <div></div>
-
-        <button
-            tuiKeypadButton
-            type="button"
-            (click)="append('0')"
-        >
-            0
-        </button>
-
-        <button
-            aria-label="Backspace"
-            tuiKeypadButton
-            type="button"
-            (click)="backspace()"
-            (longtap)="clear()"
-        >
-            @if (value()) {
-                <tui-icon icon="@tui.delete" />
-            }
-        </button>
-    </tui-keypad>
-</div>
+    </button>
+</tui-keypad>

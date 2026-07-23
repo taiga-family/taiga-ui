@@ -11,6 +11,10 @@
     inline-size: 100%;
     block-size: 100%;
     min-inline-size: 15rem;
+    // bound the resizer to the host: without a cap you can drag the corner past the demo's
+    // edges and the right/bottom of the pad gets clipped off-screen
+    max-inline-size: 100%;
+    max-block-size: 100%;
 }
 
 .handle {

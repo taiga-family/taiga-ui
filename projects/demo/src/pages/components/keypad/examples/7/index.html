@@ -57,9 +57,8 @@
 
             <!--
                 Sized inline, not via .less: the pad renders in a separate popout window/app
-                where scoped styles are unreliable. The pad is aspect-ratio 3/4 — letting it
-                stretch tall makes each key wider than its column and clips one, so bound it by
-                width and center it.
+                where scoped styles are unreliable. Bound by width and centered so it sits
+                nicely in the tall dialer column.
             -->
             <tui-keypad
                 [style.block-size]="'auto'"
