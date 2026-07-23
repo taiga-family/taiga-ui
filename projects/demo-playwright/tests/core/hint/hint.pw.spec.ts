@@ -165,7 +165,7 @@ test.describe('TuiHint', () => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
             await page.addInitScript(() =>
-                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
+                globalThis.localStorage.setItem('@tui[platform]', 'ios'),
             );
 
             await tuiGoto(page, DemoRoute.Hint);

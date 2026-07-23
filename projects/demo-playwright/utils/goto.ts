@@ -39,13 +39,13 @@ export async function tuiGoto(
 
     if (enableNightMode) {
         await page.addInitScript(() =>
-            globalThis.localStorage.setItem('tuiDark', 'true'),
+            globalThis.localStorage.setItem('@tui[is-dark]', 'true'),
         );
     }
 
     if (language) {
         await page.addInitScript(
-            (lang) => globalThis.localStorage.setItem('tuiLanguage', lang),
+            (lang) => globalThis.localStorage.setItem('@tui[language]', lang),
             language,
         );
     }
