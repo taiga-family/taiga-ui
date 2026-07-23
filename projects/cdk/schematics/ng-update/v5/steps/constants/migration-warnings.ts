@@ -249,4 +249,34 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
+    {
+        name: 'TUI_DATE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date options instead: tuiInputDateOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_RANGE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_RANGE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-range options instead: tuiInputDateRangeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-time options instead: tuiInputDateTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-time options instead: tuiInputTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_ADAPTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.',
+    },
 ];
