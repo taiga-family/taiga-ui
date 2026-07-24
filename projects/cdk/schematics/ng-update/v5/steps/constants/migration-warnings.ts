@@ -249,4 +249,28 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
+    {
+        name: 'TuiImgLazyLoading',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiImgLazyLoading has been removed. Native lazy loading is enough: keep loading="lazy" on the <img> and drop the import. If you used the tuiLoading="lazy" attribute, replace it with loading="lazy".',
+    },
+    {
+        name: 'TuiLazyLoadingService',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiLazyLoadingService has been removed. Lazy loading now relies on the native <img loading="lazy"> attribute, so no service is required.',
+    },
+    {
+        name: 'TuiClickOutside',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiClickOutside has been removed. Use the TuiActiveZone directive from @taiga-ui/cdk: bind (tuiActiveZoneChange) on the element — it emits `false` when focus/pointer leaves the zone (a boolean, not a click event), so trigger your outside-click logic on the false value.',
+    },
+    {
+        name: 'TuiFor',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
+    },
 ];

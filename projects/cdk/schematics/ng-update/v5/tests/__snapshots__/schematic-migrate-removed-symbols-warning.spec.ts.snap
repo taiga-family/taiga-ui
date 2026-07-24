@@ -38,6 +38,118 @@ exports[`ng-update removed symbols warnings adds TODO comment for TUI_MONTH_FORM
 }
 `;
 
+exports[`ng-update removed symbols warnings adds TODO comment for TuiClickOutside import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiClickOutside} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiClickOutside],
+                    template: '<div (tuiClickOutside)="onClickOutside()"></div>',
+                })
+                export class TestComponent {
+                    protected onClickOutside(): void {}
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiClickOutside has been removed. Use the TuiActiveZone directive from @taiga-ui/cdk: bind (tuiActiveZoneChange) on the element — it emits \`false\` when focus/pointer leaves the zone (a boolean, not a click event), so trigger your outside-click logic on the false value.
+                import {TuiClickOutside} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiClickOutside],
+                    template: '<div (tuiClickOutside)="onClickOutside()"></div>',
+                })
+                export class TestComponent {
+                    protected onClickOutside(): void {}
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiFor import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiFor} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiFor],
+                    template:
+                        '<span *ngFor="let item of items; empty: empty">{{item}}</span><ng-template #empty>No items</ng-template>',
+                })
+                export class TestComponent {
+                    protected readonly items: string[] = [];
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.
+                import {TuiFor} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiFor],
+                    template:
+                        '<span *ngFor="let item of items; empty: empty">{{item}}</span><ng-template #empty>No items</ng-template>',
+                })
+                export class TestComponent {
+                    protected readonly items: string[] = [];
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiImgLazyLoading import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiImgLazyLoading} from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiImgLazyLoading],
+                    template: '<img loading="lazy" src="picture.webp" alt="" />',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiImgLazyLoading has been removed. Native lazy loading is enough: keep loading="lazy" on the <img> and drop the import. If you used the tuiLoading="lazy" attribute, replace it with loading="lazy".
+                import {TuiImgLazyLoading} from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiImgLazyLoading],
+                    template: '<img loading="lazy" src="picture.webp" alt="" />',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiLazyLoadingService import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiLazyLoadingService} from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly src = inject(TuiLazyLoadingService);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+// TODO: (Taiga UI migration) TuiLazyLoadingService has been removed. Lazy loading now relies on the native <img loading="lazy"> attribute, so no service is required.
+                import {TuiLazyLoadingService} from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly src = inject(TuiLazyLoadingService);
+                }
+            ",
+}
+`;
+
 exports[`ng-update removed symbols warnings adds TODO comment for TuiStaticRequestService import: test.ts 1`] = `
 {
   "0. Before": "

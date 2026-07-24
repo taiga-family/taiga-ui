@@ -66,5 +66,73 @@ describe('ng-update removed symbols warnings', () => {
         }),
     );
 
+    it(
+        'adds TODO comment for TuiImgLazyLoading import',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiImgLazyLoading} from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiImgLazyLoading],
+                    template: '<img loading="lazy" src="picture.webp" alt="" />',
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO comment for TuiLazyLoadingService import',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {TuiLazyLoadingService} from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly src = inject(TuiLazyLoadingService);
+                }
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO comment for TuiClickOutside import',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiClickOutside} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiClickOutside],
+                    template: '<div (tuiClickOutside)="onClickOutside()"></div>',
+                })
+                export class TestComponent {
+                    protected onClickOutside(): void {}
+                }
+            `,
+        }),
+    );
+
+    it(
+        'adds TODO comment for TuiFor import',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiFor} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiFor],
+                    template:
+                        '<span *ngFor="let item of items; empty: empty">{{item}}</span><ng-template #empty>No items</ng-template>',
+                })
+                export class TestComponent {
+                    protected readonly items: string[] = [];
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
