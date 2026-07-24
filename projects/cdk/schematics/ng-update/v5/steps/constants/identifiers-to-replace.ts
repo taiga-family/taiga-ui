@@ -858,6 +858,41 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiInputCopyModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+            {
+                name: 'TuiCopy',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInput',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {name: 'TuiInputCopyOptions', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TuiCopyOptions', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TUI_INPUT_COPY_OPTIONS', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TUI_COPY_OPTIONS', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {
+            name: 'tuiInputCopyOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {name: 'tuiCopyOptionsProvider', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {
             name: 'TuiInputMonthModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },

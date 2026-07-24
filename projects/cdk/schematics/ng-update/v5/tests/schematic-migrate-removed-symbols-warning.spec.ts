@@ -45,6 +45,21 @@ describe('ng-update removed symbols warnings', () => {
     );
 
     it(
+        'adds TODO comment for TuiInputCopyComponent import',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputCopyComponent} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly ref = TuiInputCopyComponent;
+                }
+            `,
+        }),
+    );
+
+    it(
         'adds TODO comment for TUI_MONTH_FORMATTER import',
         migrate({
             component: /* TypeScript */ `
