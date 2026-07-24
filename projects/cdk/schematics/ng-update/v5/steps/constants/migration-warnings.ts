@@ -231,6 +231,26 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
     },
+    ...[
+        'tuiGetGradientData',
+        'tuiHexToRGBA',
+        'tuiHsvToRgb',
+        'tuiIsValidHex',
+        'tuiIsValidRgba',
+        'tuiParseColor',
+        'tuiParseGradient',
+        'tuiParseHex',
+        'tuiRgbaToHex',
+        'tuiRgbToHex',
+        'tuiRgbToHsv',
+        'tuiToGradient',
+        'TuiGradientDirection',
+        'TuiParsedGradient',
+    ].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: `${name} has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.`,
+    })),
     {
         name: 'TUI_TEXTFIELD_APPEARANCE',
         moduleSpecifier: '@taiga-ui/legacy',
