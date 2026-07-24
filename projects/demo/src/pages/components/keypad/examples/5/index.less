@@ -1,0 +1,44 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    position: relative;
+    display: block;
+    block-size: 26.25rem;
+}
+
+.container {
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    min-inline-size: 15rem;
+    // bound the resizer to the host: without a cap you can drag the corner past the demo's
+    // edges and the right/bottom of the pad gets clipped off-screen
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+.handle {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inline-size: 1rem;
+    block-size: 1rem;
+    background: linear-gradient(135deg, transparent 50%, var(--tui-text-secondary) 50%);
+
+    &:hover {
+        background: linear-gradient(135deg, transparent 50%, var(--tui-text-primary) 50%);
+    }
+}
+
+tui-keypad {
+    // this demo is about resizing: override the fixed-height default so the pad scales with the
+    // draggable container, and size keys from the column width again so they grow with it
+    block-size: 100%;
+    grid-auto-rows: 1fr;
+}
+
+[tuiKeypadButton] {
+    inline-size: 88%;
+    block-size: auto;
+    max-block-size: 88%;
+}

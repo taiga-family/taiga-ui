@@ -1,0 +1,103 @@
+<button
+    iconStart="@tui.phone"
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Open Phone Dialer
+</button>
+
+<ng-template
+    let-observer
+    [tuiPopoutOptions]="{pip: true, features: {width: 310, height: 540}}"
+    [(tuiPopout)]="open"
+>
+    @if (isCalling()) {
+        <main>
+            <div
+                size="xl"
+                tuiAvatar="@tui.user"
+            ></div>
+            <header tuiHeader="body-l">
+                <hgroup tuiTitle>
+                    <h1>{{ phoneNumber() }}</h1>
+                    <p tuiSubtitle>Calling...</p>
+                </hgroup>
+            </header>
+            <section>
+                <button
+                    appearance="warning"
+                    aria-label="Headset"
+                    size="l"
+                    title="Headset"
+                    tuiAvatar="@tui.headset"
+                    type="button"
+                ></button>
+                <button
+                    appearance="negative"
+                    aria-label="Hang up"
+                    size="l"
+                    title="Hang up"
+                    tuiAvatar="@tui.phone-off"
+                    type="button"
+                    (click)="closeCall()"
+                ></button>
+            </section>
+        </main>
+    } @else {
+        <div class="phone-dialer">
+            <input
+                #input
+                tuiAutoFocus
+                tuiKeypadInput
+                class="input"
+                [ngModel]="phoneNumber()"
+                (ngModelChange)="phoneNumber.set($event)"
+            />
+
+            <!--
+                Sized inline, not via .less: the pad renders in a separate popout window/app
+                where scoped styles are unreliable. Bound by width and centered so it sits
+                nicely in the tall dialer column.
+            -->
+            <tui-keypad
+                [style.block-size]="'auto'"
+                [style.margin]="'auto'"
+                [style.max-inline-size.rem]="20"
+            >
+                @for (key of keys; track key) {
+                    <button
+                        tuiKeypadButton
+                        type="button"
+                        (click)="onKey(key)"
+                    >
+                        {{ key }}
+                    </button>
+                }
+            </tui-keypad>
+
+            <div class="actions">
+                <button
+                    appearance="flat"
+                    size="m"
+                    tuiButton
+                    type="button"
+                    (click)="clear()"
+                >
+                    Clear
+                </button>
+
+                <button
+                    appearance="positive"
+                    iconStart="@tui.phone"
+                    size="m"
+                    tuiButton
+                    type="button"
+                    (click)="call()"
+                >
+                    Call
+                </button>
+            </div>
+        </div>
+    }
+</ng-template>

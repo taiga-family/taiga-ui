@@ -1,0 +1,47 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    place-self: center;
+    aspect-ratio: 1;
+    // size from the row height, not the column width: the pad has fixed rows and fluid columns, so a
+    // width-driven key would balloon as the container widens. Sizing from the row keeps the key a
+    // constant circle; max-inline-size clamps it inside unusually narrow columns.
+    block-size: 88%;
+    max-inline-size: 100%;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background var(--tui-duration) ease-out,
+        transform var(--tui-duration) var(--tui-curve-expressive-entrance);
+
+    @media @tui-mouse {
+        &:hover:not(:disabled):not([aria-disabled='true']) {
+            background: var(--tui-background-neutral-1-hover);
+        }
+    }
+
+    &:active:not(:disabled):not([aria-disabled='true']) {
+        background: var(--tui-background-neutral-1-pressed);
+        transform: scale(1.14);
+    }
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: 0.125rem;
+    }
+
+    &:disabled,
+    &[aria-disabled='true'] {
+        opacity: var(--tui-disabled-opacity);
+        cursor: default;
+    }
+}

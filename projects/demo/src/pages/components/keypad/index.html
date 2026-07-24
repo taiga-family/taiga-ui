@@ -1,0 +1,145 @@
+<tui-doc-page
+    header="Keypad"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>TuiKeypad</code>
+            is an on-screen grid primitive for touch input. It only lays out and styles the keys — you populate it with
+            your own
+            <code>tuiKeypadButton</code>
+            elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a
+            shuffled PIN terminal, a calculator or a custom chooser.
+        </p>
+        <p>
+            Put
+            <code>tuiKeypadButton</code>
+            on a native
+            <code>&lt;button&gt;</code>
+            or
+            <code>&lt;a&gt;</code>
+            — it stays a real element, so
+            <code>(click)</code>
+            ,
+            <code>aria-label</code>
+            ,
+            <code>disabled</code>
+            and
+            <code>href</code>
+            all work as usual. Pair it with the
+            <code>tuiKeypadInput</code>
+            directive to drive a field without the native mobile keyboard.
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [fullsize]="$index === 3"
+                [heading]="example"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            A numeric pad — digits, clear and backspace wired via
+                            <code>(click)</code>
+                            .
+                        }
+                        @case (1) {
+                            A pad driving a field through
+                            <code>tuiKeypadInput</code>
+                            , with a custom font and a conditional backspace icon.
+                        }
+                        @case (2) {
+                            Digit positions are randomized at runtime — the arbitrary, dynamic content a PIN terminal
+                            needs.
+                        }
+                        @case (3) {
+                            The keypad expands while the amount field is focused, inside a sheet.
+                        }
+                        @case (4) {
+                            Drag the corner — the keypad scales to fit its container.
+                        }
+                        @case (5) {
+                            A calculator in a picture-in-picture window — icon keys and hardware-keyboard mapping.
+                        }
+                        @case (6) {
+                            A phone dialer in a picture-in-picture window — a field driven by
+                            <code>tuiKeypadInput</code>
+                            .
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [sticky]="false">
+            <tui-keypad [columns]="columns">
+                @for (digit of digits; track digit) {
+                    <button
+                        tuiKeypadButton
+                        type="button"
+                        (click)="append(digit)"
+                    >
+                        {{ digit }}
+                    </button>
+                }
+
+                <button
+                    tuiKeypadButton
+                    type="button"
+                    (click)="clear()"
+                >
+                    C
+                </button>
+
+                <button
+                    tuiKeypadButton
+                    type="button"
+                    (click)="append('0')"
+                >
+                    0
+                </button>
+
+                <button
+                    aria-label="Backspace"
+                    tuiKeypadButton
+                    type="button"
+                    (click)="backspace()"
+                    (longtap)="clear()"
+                >
+                    <tui-icon icon="@tui.delete" />
+                </button>
+            </tui-keypad>
+
+            <p>Value: {{ value() || '—' }}</p>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[columns]"
+                tuiDocAPIItem
+                type="number"
+                [items]="columnsVariants"
+                [(value)]="columns"
+            >
+                Number of grid columns
+            </tr>
+        </table>
+
+        <p>
+            Populate the pad by projecting
+            <code>tuiKeypadButton</code>
+            elements. Each is a native
+            <code>&lt;button&gt;</code>
+            or
+            <code>&lt;a&gt;</code>
+            that carries its own content, click handler,
+            <code>aria-label</code>
+            and disabled state — there are no key-behavior or icon inputs on the component itself.
+        </p>
+    </ng-template>
+</tui-doc-page>
