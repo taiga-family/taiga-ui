@@ -38,11 +38,6 @@ describe('ng-update legacy removals warnings', () => {
     );
 
     it(
-        'adds TODO for TuiInputCopyComponent',
-        migrate({component: importFrom('TuiInputCopyComponent')}),
-    );
-
-    it(
         'adds TODO for TuiValueAccessorModule',
         migrate({component: importFrom('TuiValueAccessorModule')}),
     );
