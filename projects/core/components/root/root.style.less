@@ -22,6 +22,11 @@ tui-root {
         // stylelint-disable-next-line -- graceful degradation
         interactivity: inert;
     }
+
+    &[tuiScrollRef] {
+        animation-timeline:
+            --t-scrollbar-y, --t-scrollbar-y, --t-scrollbar-x, --t-scrollbar-x, scroll(y root), scroll(x root);
+    }
 }
 
 tui-root > .t-root-scrollbar {
@@ -35,6 +40,9 @@ tui-root > .t-root-scrollbar {
     inset-block-start: var(--t-root-top);
     block-size: 100%;
     isolation: isolate;
+    view-timeline:
+        --t-scrollbar-x x,
+        --t-scrollbar-y y;
 
     > * {
         --t-root-top: 0;

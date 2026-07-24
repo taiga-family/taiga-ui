@@ -13,8 +13,10 @@ import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
+    TUI_SCROLL_REF,
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
+    TuiScrollRef,
 } from '@taiga-ui/core/components/scrollbar';
 import {TuiPopups} from '@taiga-ui/core/portals/popup';
 import {
@@ -40,11 +42,17 @@ import {
             <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
         }
     `,
-    styleUrls: ['./animations.less', './root.style.less'],
+    styleUrls: ['./animations.less', './root.style.less', './scrollbars.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
+    providers: [
+        {
+            provide: TUI_SCROLL_REF,
+            useFactory: () => inject(TUI_SCROLL_REF, {skipSelf: true}),
+        },
+    ],
+    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize, TuiScrollRef],
     host: {
         'data-tui-version': TUI_VERSION,
         '[class._mobile]': 'breakpoint() === "mobile"',
