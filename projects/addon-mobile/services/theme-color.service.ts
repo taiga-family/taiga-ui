@@ -22,6 +22,9 @@ export class TuiThemeColorService implements TuiThemeColor {
         this.color = this.current;
     }
 
+    /**
+     * Address-bar color — the `<meta name="theme-color">` tag.
+     */
     public get color(): string {
         return this.current;
     }
@@ -29,6 +32,18 @@ export class TuiThemeColorService implements TuiThemeColor {
     public set color(content: string) {
         this.current = content;
         this.meta.updateTag({name: 'theme-color', content});
+    }
+
+    /**
+     * Navigation-chrome color — the `--tui-theme-color` CSS variable on `<html>`,
+     * consumed by `tuiNavigationHeader` / `tuiNavigationAside` / drawer.
+     *
+     * Kept separate from {@link color} so that changing only the address bar
+     * (e.g. a sheet dialog dimming it to match its backdrop) no longer repaints
+     * the navigation chrome — the inline write has higher specificity than any
+     * `:root` declaration and previously caused a one-frame flicker.
+     */
+    public set navColor(content: string) {
         this.doc.documentElement.style.setProperty('--tui-theme-color', content);
     }
 }
