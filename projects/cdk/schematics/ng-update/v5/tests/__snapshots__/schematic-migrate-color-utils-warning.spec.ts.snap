@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update color/gradient utils warning adds TODO comments for removed color/gradient utils: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    tuiGetGradientData,
+                    tuiHexToRGBA,
+                    tuiHsvToRgb,
+                    tuiIsValidHex,
+                    tuiIsValidRgba,
+                    tuiParseColor,
+                    tuiParseGradient,
+                    tuiParseHex,
+                    tuiRgbaToHex,
+                    tuiRgbToHex,
+                    tuiRgbToHsv,
+                    tuiToGradient,
+                    type TuiGradientDirection,
+                    type TuiParsedGradient,
+                } from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly gradient: TuiParsedGradient = tuiParseGradient(
+                        'linear-gradient(#fff, #000)',
+                    );
+
+                    protected readonly direction: TuiGradientDirection = 'to top';
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) tuiGetGradientData has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiGetGradientData,
+// TODO: (Taiga UI migration) tuiHexToRGBA has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiHexToRGBA,
+// TODO: (Taiga UI migration) tuiHsvToRgb has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiHsvToRgb,
+// TODO: (Taiga UI migration) tuiIsValidHex has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiIsValidHex,
+// TODO: (Taiga UI migration) tuiIsValidRgba has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiIsValidRgba,
+// TODO: (Taiga UI migration) tuiParseColor has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiParseColor,
+// TODO: (Taiga UI migration) tuiParseGradient has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiParseGradient,
+// TODO: (Taiga UI migration) tuiParseHex has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiParseHex,
+// TODO: (Taiga UI migration) tuiRgbaToHex has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiRgbaToHex,
+// TODO: (Taiga UI migration) tuiRgbToHex has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiRgbToHex,
+// TODO: (Taiga UI migration) tuiRgbToHsv has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiRgbToHsv,
+// TODO: (Taiga UI migration) tuiToGradient has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    tuiToGradient,
+// TODO: (Taiga UI migration) TuiGradientDirection has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    type TuiGradientDirection,
+// TODO: (Taiga UI migration) TuiParsedGradient has been removed without a direct replacement. Perform the color/gradient calculation manually where you used it.
+                    type TuiParsedGradient,
+                } from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly gradient: TuiParsedGradient = tuiParseGradient(
+                        'linear-gradient(#fff, #000)',
+                    );
+
+                    protected readonly direction: TuiGradientDirection = 'to top';
+                }
+            ",
+}
+`;
