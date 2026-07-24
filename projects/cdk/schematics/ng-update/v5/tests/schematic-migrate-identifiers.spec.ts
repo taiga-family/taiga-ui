@@ -362,5 +362,18 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves TuiPureException from cdk to legacy',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiPureException} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly error = TuiPureException;
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
