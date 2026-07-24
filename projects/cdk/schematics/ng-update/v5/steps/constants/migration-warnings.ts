@@ -232,6 +232,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
     },
     {
+        name: 'TuiDroppable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiDroppable has been removed without a direct replacement. Use the native HTML Drag and Drop API (dragover/drop events) instead of the [tuiDroppableDropped]/[tuiDroppableDragOverChange] outputs.',
+    },
+    {
+        name: 'TuiAnimatedParent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimatedParent has been removed. Enter/leave animations are now handled by the TuiAnimated directive ([tuiAnimated]) from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated',
+    },
+    {
+        name: 'tuiValueBinding',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiValueBinding has been removed without a direct replacement. Manage the value signal manually where you used it.',
+    },
+    {
         name: 'TUI_TEXTFIELD_APPEARANCE',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
