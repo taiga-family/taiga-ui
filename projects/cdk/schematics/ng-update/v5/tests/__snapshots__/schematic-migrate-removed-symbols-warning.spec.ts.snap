@@ -38,6 +38,126 @@ exports[`ng-update removed symbols warnings adds TODO comment for TUI_MONTH_FORM
 }
 `;
 
+exports[`ng-update removed symbols warnings adds TODO comment for TuiAnimationPipe import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiAnimationPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiAnimationPipe],
+                    template: '<div [@animation]="options | tuiAnimation"></div>',
+                })
+                export class TestComponent {
+                    protected readonly options = {value: 'active'};
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiAnimationPipe (| tuiAnimation) has been removed. It scaled Angular animation params by the global animation speed. Build the params in the component instead: inject TUI_ANIMATIONS_SPEED and multiply your duration by tuiGetDuration(speed) (both still in @taiga-ui/core).
+                import {TuiAnimationPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiAnimationPipe],
+                    template: '<div [@animation]="options | tuiAnimation"></div>',
+                })
+                export class TestComponent {
+                    protected readonly options = {value: 'active'};
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiIsPresentPipe import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiIsPresentPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiIsPresentPipe],
+                    template: '@if (value | tuiIsPresent) { {{value}} }',
+                })
+                export class TestComponent {
+                    protected readonly value: number | null = 1;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiIsPresentPipe (| tuiIsPresent) has been removed, but the tuiIsPresent() utility it wrapped still exists in @taiga-ui/cdk. Call tuiIsPresent(value) in the component, or use a native null check (value != null) / @if in the template.
+                import {TuiIsPresentPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiIsPresentPipe],
+                    template: '@if (value | tuiIsPresent) { {{value}} }',
+                })
+                export class TestComponent {
+                    protected readonly value: number | null = 1;
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiKeysPipe import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiKeysPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiKeysPipe],
+                    template: '<span>{{ (dictionary | tuiKeys).length }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly dictionary = {a: 1, b: 2};
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiKeysPipe (| tuiKeys) has been removed. It returned Object.keys(value); use the built-in Angular keyvalue pipe, or expose Object.keys(value) from the component.
+                import {TuiKeysPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiKeysPipe],
+                    template: '<span>{{ (dictionary | tuiKeys).length }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly dictionary = {a: 1, b: 2};
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiReplacePipe import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiReplacePipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiReplacePipe],
+                    template: '<span>{{ text | tuiReplace: "-" : " " }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly text = 'a-b-c';
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiReplacePipe (| tuiReplace) has been removed. It was a thin wrapper over String.prototype.replace; call value.replace(search, replaceValue) in the component (or a computed) instead.
+                import {TuiReplacePipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiReplacePipe],
+                    template: '<span>{{ text | tuiReplace: "-" : " " }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly text = 'a-b-c';
+                }
+            ",
+}
+`;
+
 exports[`ng-update removed symbols warnings adds TODO comment for TuiStaticRequestService import: test.ts 1`] = `
 {
   "0. Before": "
@@ -65,6 +185,36 @@ exports[`ng-update removed symbols warnings adds TODO comment for TuiStaticReque
                     protected load(url: string) {
                         return this.staticRequest.request(url);
                     }
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed symbols warnings adds TODO comment for TuiToArrayPipe import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiToArrayPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiToArrayPipe],
+                    template: '<span>{{ (set | tuiToArray).length }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly set = new Set([1, 2, 3]);
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiToArrayPipe (| tuiToArray) has been removed. It returned Array.from(value) for a Map/Set/QueryList; call Array.from(value) (or spread [...value]) in the component instead.
+                import {TuiToArrayPipe} from '@taiga-ui/cdk';
+
+                @Component({
+                    imports: [TuiToArrayPipe],
+                    template: '<span>{{ (set | tuiToArray).length }}</span>',
+                })
+                export class TestComponent {
+                    protected readonly set = new Set([1, 2, 3]);
                 }
             ",
 }
