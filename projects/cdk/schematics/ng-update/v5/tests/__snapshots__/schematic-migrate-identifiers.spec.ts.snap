@@ -223,6 +223,24 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 }
 `;
 
+exports[`ng-update identifiers migration moves TuiPureException from cdk to legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPureException} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly error = TuiPureException;
+                }
+            ",
+  "1. After": "import { TuiPureException } from "@taiga-ui/legacy";
+
+                                export class TestComponent {
+                    protected readonly error = TuiPureException;
+                }
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves TuiThemeColorService and TUI_THEME_COLOR from cdk to addon-mobile (#13869): test.ts 1`] = `
 {
   "0. Before": "
