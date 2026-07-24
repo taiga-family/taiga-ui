@@ -1,7 +1,3 @@
-// Only `basic`, `markup` and `taiga-ui-global` were dropped from `@taiga-ui/styles`
-// and now live in `@taiga-ui/legacy/styles`. Everything else (`taiga-ui-theme`,
-// `taiga-ui-fonts`, `utils`, `components`, `mixins`, `variables`, `theme`) stays in
-// `@taiga-ui/styles`, so redirect only the moved paths instead of the whole package.
 export function migrateImports(fileContent: string): string {
     return fileContent
         .replaceAll('@taiga-ui/styles/basic', '@taiga-ui/legacy/styles/basic')
