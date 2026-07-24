@@ -249,4 +249,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
     },
+    {
+        name: 'TuiInputCopyComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
+    },
 ];
