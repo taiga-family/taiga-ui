@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-action-bar migrates *tuiActionBar to *tuiPopup: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-action-bar *tuiActionBar="open()">
+                    <span>Action bar opened</span>
+                </tui-action-bar>
+            ",
+  "1. After": "
+                <tui-action-bar *tuiPopup="open()">
+                    <span>Action bar opened</span>
+                </tui-action-bar>
+            ",
+}
+`;
+
+exports[`ng-update tui-action-bar preserves other attributes on the element: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-action-bar
+                    *tuiActionBar="open"
+                    size="s"
+                    [expanded]="expanded"
+                >
+                    <span>Action bar opened</span>
+                </tui-action-bar>
+            ",
+  "1. After": "
+                <tui-action-bar
+                    *tuiPopup="open"
+                    size="s"
+                    [expanded]="expanded"
+                >
+                    <span>Action bar opened</span>
+                </tui-action-bar>
+            ",
+}
+`;
