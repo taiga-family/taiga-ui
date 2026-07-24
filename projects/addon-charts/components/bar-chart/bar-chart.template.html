@@ -14,7 +14,8 @@
     >
         <div
             class="t-container"
-            [style.height.%]="set | tuiMapper: percentMapper : collapsed() : computedMax()"
+            [style.height.%]="set | tuiMapper: percentMapper : collapsed() : denominator()"
+            [style.inset-block-end.%]="zeroLineDistance()"
         >
             <div
                 #hintHost
