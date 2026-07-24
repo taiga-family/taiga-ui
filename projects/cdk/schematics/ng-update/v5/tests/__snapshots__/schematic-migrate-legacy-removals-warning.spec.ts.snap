@@ -56,7 +56,7 @@ exports[`ng-update legacy removals warnings adds TODO for TuiPrimitiveTextfieldC
             export const ref = TuiPrimitiveTextfieldComponent;
         ",
   "1. After": "
-// TODO: (Taiga UI migration) TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead. See https://taiga-ui.dev/components/textfield
+// TODO: (Taiga UI migration) TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead. See https://taiga-ui.dev/components/input
             import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy';
 
             export const ref = TuiPrimitiveTextfieldComponent;
@@ -72,7 +72,7 @@ exports[`ng-update legacy removals warnings adds TODO for TuiTableBarComponent: 
             export const ref = TuiTableBarComponent;
         ",
   "1. After": "
-// TODO: (Taiga UI migration) TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/action-bar
+// TODO: (Taiga UI migration) TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/actions-bar
             import {TuiTableBarComponent} from '@taiga-ui/legacy';
 
             export const ref = TuiTableBarComponent;
