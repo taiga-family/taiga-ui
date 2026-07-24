@@ -27,7 +27,7 @@
                         </label>
                         <tui-tab-bar-example
                             *tuiPopup="fixed"
-                            class="fixed"
+                            class="t-fixed"
                         />
                     }
                     @case (1) {
@@ -41,6 +41,42 @@
                         When there are no
                         <code>TabBarItem</code>
                         children, the component shows skeleton for 4 items
+                    }
+                    @case (4) {
+                        <p>
+                            To enable the liquid-glass mode on iOS devices, specify the option in
+                            <code>provideTaiga(&#123;apis: &#123;liquidGlass: true&#125;&#125;)</code>
+                        </p>
+                        <label tuiLabel>
+                            <input
+                                tuiCheckbox
+                                type="checkbox"
+                                [(ngModel)]="fixedLiquid"
+                            />
+                            Fixed
+                        </label>
+                        <tui-tab-bar-example-liquid
+                            *tuiPopup="fixedLiquid"
+                            class="t-fixed"
+                        />
+                    }
+                    @case (5) {
+                        <p>
+                            With more than three items the tab bar stretches to the full width of the screen; with fewer
+                            it stays a compact, centered pill.
+                        </p>
+                        <label tuiLabel>
+                            <input
+                                tuiCheckbox
+                                type="checkbox"
+                                [(ngModel)]="fixedLiquidFull"
+                            />
+                            Fixed
+                        </label>
+                        <tui-tab-bar-example-liquid-full
+                            *tuiPopup="fixedLiquidFull"
+                            class="t-fixed"
+                        />
                     }
                 }
             </ng-template>
