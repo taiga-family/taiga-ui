@@ -52,4 +52,23 @@ test.describe('DropdownContext', () => {
 
         await expect.soft(example).toHaveScreenshot('05-dropdown-context.png');
     });
+
+    test('closes dropdown when clicking on host element', async ({page}) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#context-menu');
+        const tr = example.locator('tr');
+
+        await example.scrollIntoViewIfNeeded();
+        await tr.nth(1).click({button: 'right', position: {x: 1, y: 1}});
+        await expect(page.locator('tui-dropdown')).toBeAttached();
+        await api.waitStableState();
+
+        await expect.soft(example).toHaveScreenshot('06-dropdown-context.png');
+
+        await tr.nth(1).click({position: {x: 1, y: 1}});
+        await expect(page.locator('tui-dropdown')).toBeHidden();
+        await api.waitStableState();
+
+        await expect.soft(example).toHaveScreenshot('07-dropdown-context.png');
+    });
 });
