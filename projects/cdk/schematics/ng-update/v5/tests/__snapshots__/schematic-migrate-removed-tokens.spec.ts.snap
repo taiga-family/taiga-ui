@@ -5,7 +5,7 @@ exports[`ng-update migrateRemovedTokens handles multiple removed tokens in one f
   "0. Before": "
                 import {Component} from '@angular/core';
                 import {TUI_TEXTFIELD_HOST, TUI_FONTS_READY} from '@taiga-ui/core';
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -22,8 +22,8 @@ exports[`ng-update migrateRemovedTokens handles multiple removed tokens in one f
 // TODO: (Taiga UI migration) TUI_TEXTFIELD_HOST has been removed. Use TuiTextfieldHost or create a custom implementation for textfield host element references.
 // TODO: (Taiga UI migration) TUI_FONTS_READY has been removed. Use the FontFace API directly or implement custom font loading detection.
                 import {TUI_TEXTFIELD_HOST, TUI_FONTS_READY} from '@taiga-ui/core';
-// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. There is no direct replacement — detect Chromium manually, e.g. via \`"chrome" in window\`.
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -64,11 +64,37 @@ exports[`ng-update migrateRemovedTokens migrates TUI_FONTS_READY usage: test.ts 
 }
 `;
 
+exports[`ng-update migrateRemovedTokens migrates TUI_IS_APPLE usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_IS_APPLE} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_APPLE, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_IS_APPLE has been removed. Use isApple(inject(WA_NAVIGATOR)) — isApple from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.
+                import {TUI_IS_APPLE} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_APPLE, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update migrateRemovedTokens migrates TUI_IS_CHROMIUM usage: test.ts 1`] = `
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -78,8 +104,8 @@ exports[`ng-update migrateRemovedTokens migrates TUI_IS_CHROMIUM usage: test.ts 
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+// TODO: (Taiga UI migration) TUI_IS_CHROMIUM has been removed. There is no direct replacement — detect Chromium manually, e.g. via \`"chrome" in window\`.
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -90,11 +116,37 @@ exports[`ng-update migrateRemovedTokens migrates TUI_IS_CHROMIUM usage: test.ts 
 }
 `;
 
+exports[`ng-update migrateRemovedTokens migrates TUI_IS_FIREFOX usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_IS_FIREFOX} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_FIREFOX, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_IS_FIREFOX has been removed. Use isFirefox(inject(WA_NAVIGATOR).userAgent) — isFirefox from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.
+                import {TUI_IS_FIREFOX} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_FIREFOX, useValue: false}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update migrateRemovedTokens migrates TUI_IS_STACKBLITZ usage: test.ts 1`] = `
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+                import {TUI_IS_STACKBLITZ} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -105,7 +157,7 @@ exports[`ng-update migrateRemovedTokens migrates TUI_IS_STACKBLITZ usage: test.t
   "1. After": "
                 import {Component} from '@angular/core';
 // TODO: (Taiga UI migration) TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.
-                import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+                import {TUI_IS_STACKBLITZ} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -172,7 +224,7 @@ exports[`ng-update migrateRemovedTokens migrates TUI_TOUCH_SUPPORTED usage: test
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/cdk';
+                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -182,8 +234,8 @@ exports[`ng-update migrateRemovedTokens migrates TUI_TOUCH_SUPPORTED usage: test
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TUI_TOUCH_SUPPORTED has been removed. Use WA_TOUCH_SUPPORTED from @ng-web-apis/platform package instead.
-                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/cdk';
+// TODO: (Taiga UI migration) TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform package instead.
+                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,

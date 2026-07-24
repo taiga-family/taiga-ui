@@ -62,7 +62,7 @@ describe('ng-update migrateRemovedTokens', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/cdk';
+                import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -78,7 +78,7 @@ describe('ng-update migrateRemovedTokens', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
@@ -94,11 +94,43 @@ describe('ng-update migrateRemovedTokens', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+                import {TUI_IS_STACKBLITZ} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
                     providers: [{provide: TUI_IS_STACKBLITZ, useValue: false}],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'migrates TUI_IS_APPLE usage',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TUI_IS_APPLE} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_APPLE, useValue: false}],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'migrates TUI_IS_FIREFOX usage',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TUI_IS_FIREFOX} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_IS_FIREFOX, useValue: false}],
                 })
                 export class TestComponent {}
             `,
@@ -111,7 +143,7 @@ describe('ng-update migrateRemovedTokens', () => {
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TUI_TEXTFIELD_HOST, TUI_FONTS_READY} from '@taiga-ui/core';
-                import {TUI_IS_CHROMIUM} from '@taiga-ui/cdk';
+                import {TUI_IS_CHROMIUM} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
