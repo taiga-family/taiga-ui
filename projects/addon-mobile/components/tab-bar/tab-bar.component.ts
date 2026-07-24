@@ -1,19 +1,25 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChildren,
     ElementRef,
+    inject,
     input,
     model,
 } from '@angular/core';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TuiTabBarItem} from './tab-bar-item.component';
+import {TuiTabBarLiquidGlass} from './tab-bar-liquid-glass.directive';
 
 @Component({
     selector: 'nav[tuiTabBar]',
     templateUrl: './tab-bar.template.html',
     styleUrl: './tab-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiTabBarLiquidGlass],
     host: {
         '[style]': '`--tui-tab-${this.activeItemIndex() + 1}: var(--tui-active-color)`',
         '(click)': 'setActive($event.target)',
@@ -22,6 +28,10 @@ import {TuiTabBarItem} from './tab-bar-item.component';
 export class TuiTabBarComponent {
     private readonly tabs = contentChildren(TuiTabBarItem, {read: ElementRef});
 
+    protected readonly liquidGlass =
+        inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios';
+
+    public readonly count = computed(() => this.tabs().length);
     public readonly quantity = input(4);
     public readonly activeItemIndex = model(Number.NaN);
 
