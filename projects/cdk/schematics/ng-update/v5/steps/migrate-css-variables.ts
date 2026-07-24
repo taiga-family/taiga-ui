@@ -37,10 +37,28 @@ const FONT_VARIABLES_REPLACEMENTS = [
 export const TUI_THICKNESS_COMMENT =
     'use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size';
 
+const TUI_DATA_LIST_SPACING_COMMENT =
+    'The tui-data-list spacing variables (padding and margin) have been removed. tui-data-list spacing is now fixed in the component and is no longer exposed as a CSS variable; restyle [tuiOption] (or tui-data-list) directly if you need different spacing.';
+
+const TUI_TEXTAREA_HEIGHT_COMMENT =
+    'The tui-textarea height variable has been removed. The textarea moved to @taiga-ui/kit and auto-sizes to its content; control the height with the [min] and [max] row inputs (or set min-block-size on the element) instead.';
+
 const DEPRECATED_VARS_WITH_COMMENT = [
     {
         sourceText: '--tui-thickness',
         comment: `TODO: (Taiga UI migration) ${TUI_THICKNESS_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-data-list-padding',
+        comment: `TODO: (Taiga UI migration) ${TUI_DATA_LIST_SPACING_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-data-list-margin',
+        comment: `TODO: (Taiga UI migration) ${TUI_DATA_LIST_SPACING_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-textarea-height',
+        comment: `TODO: (Taiga UI migration) ${TUI_TEXTAREA_HEIGHT_COMMENT}`,
     },
 ];
 
