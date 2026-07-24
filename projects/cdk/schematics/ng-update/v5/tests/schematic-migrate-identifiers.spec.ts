@@ -305,16 +305,12 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
-        'renames TUI_TOASTS_CONCURRENCY and TuiWithQuantumValueTransformer',
+        'renames TuiWithQuantumValueTransformer',
         migrate({
             component: /* TypeScript */ `
-                import {
-                    TUI_TOASTS_CONCURRENCY,
-                    TuiWithQuantumValueTransformer,
-                } from '@taiga-ui/kit';
+                import {TuiWithQuantumValueTransformer} from '@taiga-ui/kit';
 
                 export class TestComponent {
-                    protected readonly concurrency = TUI_TOASTS_CONCURRENCY;
                     protected readonly transformer = TuiWithQuantumValueTransformer;
                 }
             `,
@@ -336,22 +332,17 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
-        'drops the Component suffix from kit copy/input-range/action-bar',
+        'drops the Component suffix from kit input-range/action-bar',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {
                     TuiActionBarComponent,
-                    TuiButtonCopyComponent,
                     TuiInputRangeComponent,
                 } from '@taiga-ui/kit';
 
                 @Component({
-                    imports: [
-                        TuiActionBarComponent,
-                        TuiButtonCopyComponent,
-                        TuiInputRangeComponent,
-                    ],
+                    imports: [TuiActionBarComponent, TuiInputRangeComponent],
                 })
                 export class TestComponent {}
             `,

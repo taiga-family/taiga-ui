@@ -1294,16 +1294,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TUI_TOASTS_CONCURRENCY',
-            moduleSpecifier: '@taiga-ui/kit',
-        },
-        to: {
-            name: 'TUI_TOAST_CONCURRENCY',
-            moduleSpecifier: '@taiga-ui/kit',
-        },
-    },
-    {
-        from: {
             name: 'TuiWithQuantumValueTransformer',
             moduleSpecifier: '@taiga-ui/kit',
         },
@@ -1330,16 +1320,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TUI_NOTIFICATION_OPTIONS',
             moduleSpecifier: '@taiga-ui/core',
-        },
-    },
-    {
-        from: {
-            name: 'TuiButtonCopyComponent',
-            moduleSpecifier: '@taiga-ui/kit',
-        },
-        to: {
-            name: 'TuiButtonCopy',
-            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {

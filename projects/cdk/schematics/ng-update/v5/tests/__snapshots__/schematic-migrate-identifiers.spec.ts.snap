@@ -28,35 +28,26 @@ exports[`ng-update identifiers migration adds TODO for TuiStatus type (cannot be
 }
 `;
 
-exports[`ng-update identifiers migration drops the Component suffix from kit copy/input-range/action-bar: test.ts 1`] = `
+exports[`ng-update identifiers migration drops the Component suffix from kit input-range/action-bar: test.ts 1`] = `
 {
   "0. Before": "
                 import {Component} from '@angular/core';
                 import {
                     TuiActionBarComponent,
-                    TuiButtonCopyComponent,
                     TuiInputRangeComponent,
                 } from '@taiga-ui/kit';
 
                 @Component({
-                    imports: [
-                        TuiActionBarComponent,
-                        TuiButtonCopyComponent,
-                        TuiInputRangeComponent,
-                    ],
+                    imports: [TuiActionBarComponent, TuiInputRangeComponent],
                 })
                 export class TestComponent {}
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-                import { TuiButtonCopy, TuiInputRange, TuiActionBar } from '@taiga-ui/kit';
+                import { TuiInputRange, TuiActionBar } from '@taiga-ui/kit';
 
                 @Component({
-                    imports: [
-                        TuiActionBar,
-                        TuiButtonCopy,
-                        TuiInputRange,
-                    ],
+                    imports: [TuiActionBar, TuiInputRange],
                 })
                 export class TestComponent {}
             ",
@@ -388,30 +379,6 @@ exports[`ng-update identifiers migration renames ResizeObserverService to WaResi
 }
 `;
 
-exports[`ng-update identifiers migration renames TUI_TOASTS_CONCURRENCY and TuiWithQuantumValueTransformer: test.ts 1`] = `
-{
-  "0. Before": "
-                import {
-                    TUI_TOASTS_CONCURRENCY,
-                    TuiWithQuantumValueTransformer,
-                } from '@taiga-ui/kit';
-
-                export class TestComponent {
-                    protected readonly concurrency = TUI_TOASTS_CONCURRENCY;
-                    protected readonly transformer = TuiWithQuantumValueTransformer;
-                }
-            ",
-  "1. After": "
-                import { TUI_TOAST_CONCURRENCY, TuiQuantumValueTransformer } from '@taiga-ui/kit';
-
-                export class TestComponent {
-                    protected readonly concurrency = TUI_TOAST_CONCURRENCY;
-                    protected readonly transformer = TuiQuantumValueTransformer;
-                }
-            ",
-}
-`;
-
 exports[`ng-update identifiers migration renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869): test.ts 1`] = `
 {
   "0. Before": "
@@ -427,6 +394,24 @@ exports[`ng-update identifiers migration renames TuiInputCVC/TuiInputExpire to t
 
                 @Component({imports: [TuiInputCVCDirective, TuiInputExpireDirective]})
                 export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update identifiers migration renames TuiWithQuantumValueTransformer: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiWithQuantumValueTransformer} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly transformer = TuiWithQuantumValueTransformer;
+                }
+            ",
+  "1. After": "import { TuiQuantumValueTransformer } from "@taiga-ui/kit";
+
+                                export class TestComponent {
+                    protected readonly transformer = TuiQuantumValueTransformer;
+                }
             ",
 }
 `;
