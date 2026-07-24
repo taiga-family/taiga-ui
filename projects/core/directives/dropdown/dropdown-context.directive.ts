@@ -5,7 +5,11 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
-import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetActualTarget,
+    tuiInjectElement,
+    tuiPointToClientRect,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {merge} from 'rxjs';
 
@@ -31,6 +35,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
 export class TuiDropdownContext extends TuiRectAccessor {
     private readonly zone = inject(NgZone);
     private readonly isTouch = inject(TUI_IS_TOUCH);
+    private readonly el = tuiInjectElement();
     private currentRect = EMPTY_CLIENT_RECT;
 
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
@@ -52,9 +57,13 @@ export class TuiDropdownContext extends TuiRectAccessor {
     }
 
     protected closeDropdown(event?: Event): void {
+        const target = event ? tuiGetActualTarget(event) : null;
+
         if (
             !event ||
-            (this.driver.value && !this.activeZone.contains(tuiGetActualTarget(event)))
+            (this.driver.value &&
+                target &&
+                (!this.activeZone.contains(target) || this.el.contains(target)))
         ) {
             this.zone.run(() => {
                 this.driver.next(false);
