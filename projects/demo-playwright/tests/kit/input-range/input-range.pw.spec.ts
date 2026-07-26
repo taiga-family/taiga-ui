@@ -25,7 +25,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=-100&max=100&step=5&sandboxExpanded=true`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -174,7 +174,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5&precision=1`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -202,6 +202,34 @@ describe('InputRange', () => {
         });
     });
 
+    describe('updateOn blur', () => {
+        test('updates form control value on blur', async ({page}) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputRange}/API?sandboxExpanded=true&updateOn=blur`,
+            );
+
+            example = new TuiDocumentationApiPagePO(page).demo;
+            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-01.png');
+
+            await inputRange.textfieldStart.fill('5');
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-02.png');
+
+            await inputRange.textfieldStart.blur();
+
+            await expect
+                .soft(example)
+                .toHaveScreenshot('input-range-update-on-blur-03.png');
+        });
+    });
+
     describe('Range interactions', () => {
         describe("click on the sliders' track", () => {
             beforeEach(async ({page}) => {
@@ -209,16 +237,19 @@ describe('InputRange', () => {
                     page,
                     `${DemoRoute.InputRange}/API?min=-100&max=100&step=10&sandboxExpanded=true`,
                 );
-                example = new TuiDocumentationApiPagePO(page).apiPageExample;
+                example = new TuiDocumentationApiPagePO(page).demo;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
             test('clicking on the END side changes only the END value (+ focuses the END textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.end.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
+                await page.mouse.click(
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
+                );
 
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('100');
@@ -231,9 +262,9 @@ describe('InputRange', () => {
             test('clicking on the START side changes only the START value (+ focuses the START textfield)', async ({
                 page,
             }) => {
-                const box = await inputRange.range.start.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.x, box.height / 2 + box.y);
+                await page.mouse.click(track.x, track.height / 2 + track.y);
 
                 await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
@@ -250,16 +281,16 @@ describe('InputRange', () => {
                     page,
                     `${DemoRoute.InputRange}/API?min=0&max=10&step=1&sandboxExpanded=true`,
                 );
-                example = new TuiDocumentationApiPagePO(page).apiPageExample;
+                example = new TuiDocumentationApiPagePO(page).demo;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
             test('click on the START thumb (with NO value changes) => focuses the START textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.start.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.x, box.height / 2 + box.y);
+                await page.mouse.click(track.x, track.height / 2 + track.y);
 
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldStart).toBeFocused();
@@ -272,9 +303,12 @@ describe('InputRange', () => {
             test('click on the END thumb (with NO value changes) => focuses the END textfield', async ({
                 page,
             }) => {
-                const box = await inputRange.range.end.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
+                await page.mouse.click(
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
+                );
 
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
                 await expect(inputRange.textfieldEnd).toBeFocused();
@@ -294,7 +328,7 @@ describe('InputRange', () => {
                 page,
                 `${DemoRoute.InputRange}/API?min=-20&max=20&step=5&sandboxExpanded=true`,
             );
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -307,9 +341,12 @@ describe('InputRange', () => {
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('10');
 
-                const box = await inputRange.range.end.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.width + box.x, box.height / 2 + box.y);
+                await page.mouse.click(
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
+                );
 
                 await expect(inputRange.textfieldStart).toHaveValue('0');
                 await expect(inputRange.textfieldEnd).toHaveValue('20');
@@ -330,9 +367,9 @@ describe('InputRange', () => {
                     .soft(example)
                     .toHaveScreenshot('22-input-range-start0-end10.png');
 
-                const box = await inputRange.range.start.boundingBox().then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(box.x, box.height / 2 + box.y);
+                await page.mouse.click(track.x, track.height / 2 + track.y);
 
                 await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}20`);
                 await expect(inputRange.textfieldStart).toBeFocused();
@@ -345,20 +382,16 @@ describe('InputRange', () => {
             test('does not focus anything if no textfield was focused before', async ({
                 page,
             }) => {
-                const leftBox = await inputRange.range.start
-                    .boundingBox()
-                    .then((x) => x!);
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
 
-                await page.mouse.click(leftBox.x, leftBox.height / 2 + leftBox.y);
+                await page.mouse.click(track.x, track.height / 2 + track.y);
 
                 await expect(inputRange.textfieldStart).not.toBeFocused();
                 await expect(inputRange.textfieldEnd).not.toBeFocused();
 
-                const rightBox = await inputRange.range.end.boundingBox().then((x) => x!);
-
                 await page.mouse.click(
-                    rightBox.width + rightBox.x,
-                    rightBox.height / 2 + rightBox.y,
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
                 );
 
                 await expect(inputRange.textfieldStart).toHaveValue(`${CHAR_MINUS}20`);
@@ -375,7 +408,7 @@ describe('InputRange', () => {
 
     describe('[content] property', () => {
         beforeEach(({page}) => {
-            example = new TuiDocumentationApiPagePO(page).apiPageExample;
+            example = new TuiDocumentationApiPagePO(page).demo;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -385,13 +418,19 @@ describe('InputRange', () => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API?content$=2&max=100`);
             await inputRange.textfieldEnd.fill('100');
 
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '26-input-range-start-no-content--end-has-content-focused.png',
+                );
+
             await inputRange.textfieldEnd.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('0');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect
-                .soft(example)
-                .toHaveScreenshot('26-input-range-start-no-content--end-has-content.png');
+            await expect(example).toHaveScreenshot(
+                '26-input-range-start-no-content--end-has-content.png',
+            );
         });
 
         test('START textfield has content + END textfield has content', async ({
@@ -401,15 +440,19 @@ describe('InputRange', () => {
             await inputRange.textfieldEnd.fill('100');
             await inputRange.textfieldStart.fill('100');
 
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '27-input-range-start-has-content--end-has-content-focused.png',
+                );
+
             await inputRange.textfieldStart.blur();
 
             await expect(inputRange.textfieldStart).toHaveValue('100');
             await expect(inputRange.textfieldEnd).toHaveValue('100');
-            await expect
-                .soft(example)
-                .toHaveScreenshot(
-                    '27-input-range-start-has-content--end-has-content.png',
-                );
+            await expect(example).toHaveScreenshot(
+                '27-input-range-start-has-content--end-has-content.png',
+            );
         });
 
         test('START textfield has content + END textfield without content', async ({
@@ -493,13 +536,36 @@ describe('InputRange', () => {
                 });
             });
         });
+
+        describe('different textfield sizes', () => {
+            ['s', 'm', 'l'].forEach((size) => {
+                test(size, async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=2&tuiTextfieldSize=${size}`,
+                    );
+                    await expect(inputRange.textfieldStart).toHaveValue('0');
+                    await expect(inputRange.textfieldEnd).toHaveValue('10');
+                    await expect(example).toHaveScreenshot(
+                        `34-input-range--size-${size}--start-has-content--end-has-content.png`,
+                    );
+
+                    await inputRange.textfieldEnd.focus();
+                    await expect(example).toHaveScreenshot(
+                        `34-input-range--size-${size}--start-has-content--end-no-content.png`,
+                    );
+                });
+            });
+        });
     });
 
     describe('Using negative values with hidden minus sign', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputRange);
 
-            example = new TuiDocumentationPagePO(page).getExample('#hidden-minus-sign');
+            example = new TuiDocumentationPagePO(page).getExample(
+                '#using-negative-values-with-hidden-minus-sign',
+            );
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
 
@@ -590,7 +656,9 @@ describe('InputRange', () => {
             }) => {
                 await inputRange.textfieldEnd.focus();
 
-                await expect(inputRange.textfieldEnd).toHaveValue('0 days ago');
+                await expect(inputRange.textfieldEnd).toHaveValue(
+                    `${CHAR_ZERO_WIDTH_SPACE}0 days ago`,
+                );
                 await page.keyboard.down('ArrowDown');
                 await expect(inputRange.textfieldEnd).toHaveValue(
                     `${CHAR_ZERO_WIDTH_SPACE}1 day ago`,

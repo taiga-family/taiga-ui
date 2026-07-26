@@ -7,14 +7,15 @@ import {
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TuiShrinkWrap} from '@taiga-ui/kit/components/shrink-wrap';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 
@@ -23,25 +24,25 @@ import {type TuiToastOptions} from './toast.options';
 
 @Component({
     selector: 'tui-toast',
-    imports: [PolymorpheusOutlet, TuiButton, TuiSwipe, TuiToastDirective],
+    imports: [PolymorpheusOutlet, TuiButtonX, TuiShrinkWrap, TuiSwipe, TuiToastDirective],
     templateUrl: './toast.template.html',
     styleUrl: './toast.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiButtonXOptionsProvider({size: 'xs', appearance: 'icon'})],
     hostDirectives: [TuiAnimated, TuiAlertDirective],
     host: {
         role: 'status',
-        '[class._mobile]': 'isMobile',
         '[attr.data-appearance]': 'context.appearance',
+        '[class._mobile]': 'isMobile',
     },
 })
 export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly close = viewChild(TuiButton, {read: ElementRef});
-
     private readonly el = tuiInjectElement();
 
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
-    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly $ = of(this.context.autoClose)
         .pipe(
             switchMap((autoClose) => (autoClose ? timer(autoClose) : EMPTY)),
@@ -52,8 +53,10 @@ export class TuiToastComponent<O, I> implements AfterViewInit {
         .subscribe(() => this.context.$implicit.complete());
 
     public ngAfterViewInit(): void {
-        if (this.close()) {
-            this.el.querySelector('[tuiToast]')?.appendChild(this.close()?.nativeElement);
+        const close = this.close();
+
+        if (close) {
+            this.el.querySelector('[tuiToast]')?.appendChild(close.nativeElement);
         }
     }
 

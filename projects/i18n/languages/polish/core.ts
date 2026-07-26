@@ -18,6 +18,7 @@ export const TUI_POLISH_LANGUAGE_CORE: TuiLanguageCore = {
         'grudzień',
     ],
     close: 'Zamknij',
+    back: 'Wstecz',
     clear: 'Wyczyść pole',
     nothingFoundMessage: 'Nic nie znaleziono',
     defaultErrorMessage: 'Nieprawidłowa wartość',

@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import {clearLine, cursorTo} from 'node:readline';
 
-import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from 'ng-morph';
+import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';
 
 export function setupProgressLogger({
     total,
@@ -20,6 +20,7 @@ export function setupProgressLogger({
         }
 
         const isLast = i === total;
+
         const progressLog = `(${i} / ${total}) ${prefix} ${
             isLast ? SUCCESS_SYMBOL : message
         }`;
@@ -28,7 +29,7 @@ export function setupProgressLogger({
 
         clearLine(process.stdout, 0);
         cursorTo(process.stdout, 0);
-        process.stdout.write(SMALL_TAB_SYMBOL.repeat(tabs) + progressLog);
+        process.stdout.write(`${SMALL_TAB_SYMBOL.repeat(tabs)}${progressLog}`);
 
         if (isLast && incrementIndex) {
             process.stdout.write('\n');

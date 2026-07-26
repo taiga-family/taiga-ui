@@ -39,14 +39,16 @@ export interface TuiNumberFormatSettings {
      * Decimal part display mode. ('pad' by default)
      */
     readonly decimalMode: TuiDecimalMode;
+    readonly negativePattern: 'minusFirst' | 'prefixFirst';
 }
 
 export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
-    precision: NaN,
+    precision: Number.NaN,
     decimalSeparator: '.',
     thousandSeparator: CHAR_NO_BREAK_SPACE,
     rounding: 'truncate',
     decimalMode: 'pad',
+    negativePattern: 'prefixFirst',
 };
 
 /**
@@ -54,9 +56,7 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
  */
 export const TUI_NUMBER_FORMAT = new InjectionToken<Signal<TuiNumberFormatSettings>>(
     ngDevMode ? 'TUI_NUMBER_FORMAT' : '',
-    {
-        factory: () => signal(TUI_DEFAULT_NUMBER_FORMAT),
-    },
+    {factory: () => signal(TUI_DEFAULT_NUMBER_FORMAT)},
 );
 
 export function tuiNumberFormatProvider(

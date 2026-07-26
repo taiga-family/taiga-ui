@@ -25,13 +25,12 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Rodyti slaptažodį', 'Slėpti slaptažodį'],
@@ -74,9 +73,7 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Taip',
         no: 'Ne',
     },
-    previewTexts: {
-        rotate: 'Pasukti',
-    },
+    previewTexts: {rotate: 'Pasukti'},
     zoomTexts: {
         zoomOut: 'Mažinti',
         zoomIn: 'Didinti',

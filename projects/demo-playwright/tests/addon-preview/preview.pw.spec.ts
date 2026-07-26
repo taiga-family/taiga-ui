@@ -4,9 +4,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Preview', () => {
     test.describe('Examples', () => {
-        test.use({
-            viewport: {width: 500, height: 500},
-        });
+        test.use({viewport: {width: 500, height: 500}});
 
         let documentationPage!: TuiDocumentationPagePO;
 
@@ -26,7 +24,8 @@ test.describe('Preview', () => {
             await preview.click(); // requires for mouse wheel
             await page.mouse.wheel(0, -50);
 
-            await page.waitForLoadState('networkidle'); // wait load image in dialog
+            // wait load image in dialog. timeout is required to wait when slider thumb hint will be hidden
+            await page.waitForLoadState('networkidle', {timeout: 2000});
 
             await expect.soft(preview).toHaveScreenshot('01-preview-zoom-by-wheel.png');
         });

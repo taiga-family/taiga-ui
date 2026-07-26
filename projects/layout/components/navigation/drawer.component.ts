@@ -41,6 +41,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 })
 class TuiDrawerComponent {
     protected readonly directive = inject(TuiDropdownDirective);
+
     protected readonly top =
         tuiIsHTMLElement(this.directive.el.offsetParent) &&
         tuiIsHTMLElement(this.directive.el.offsetParent.offsetParent)

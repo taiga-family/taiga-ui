@@ -7,7 +7,5 @@ import {TuiHintComponent} from './hint.component';
  */
 export const TUI_HINT_COMPONENT = new InjectionToken<Type<unknown>>(
     ngDevMode ? 'TUI_HINT_COMPONENT' : '',
-    {
-        factory: () => TuiHintComponent,
-    },
+    {factory: () => TuiHintComponent},
 );

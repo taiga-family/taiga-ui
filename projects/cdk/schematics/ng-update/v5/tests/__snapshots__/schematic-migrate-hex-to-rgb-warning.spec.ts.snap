@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiHexToRgb warning adds TODO comment for tuiHexToRgb import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiHexToRgb} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly rgb = tuiHexToRgb('#fff');
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.
+                import {tuiHexToRgb} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly rgb = tuiHexToRgb('#fff');
+                }
+            ",
+}
+`;

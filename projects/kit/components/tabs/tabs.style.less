@@ -1,6 +1,6 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-[tuiTab] {
+[tuiTab]:where(*&) {
     .transition(~'color, box-shadow, opacity, background');
     .button-clear();
 
@@ -9,14 +9,12 @@
     flex-shrink: 0;
     box-sizing: border-box;
     justify-content: space-between;
-    line-height: 1.5rem;
     align-items: center;
     white-space: nowrap;
     cursor: pointer;
     outline: none;
     color: inherit;
-    /* stylelint-disable-next-line */
-    margin-inline-start: var(--tui-tab-margin, 24px);
+    margin-inline-start: var(--tui-tab-margin, 1.5rem);
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -26,6 +24,7 @@
     &._active {
         color: var(--tui-text-primary);
         box-shadow: none;
+        anchor-name: --tui-tab-active;
     }
 
     &:focus-visible {
@@ -33,20 +32,17 @@
         outline-offset: -0.125rem;
     }
 
-    tui-tabs._underline &:hover:not(._active),
-    [tuiTabs]._underline &:hover:not(._active) {
+    tui-tabs._underline &:hover:not(._active) {
         box-shadow: inset 0 -0.125rem var(--tui-border-normal);
     }
 
     tui-tabs > &:first-child,
-    [tuiTabs] > &:first-child,
     tui-tabs > :not(.t-overflown) > &:first-child {
         margin-inline-start: 0;
     }
 
     tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
-        /* stylelint-disable-next-line */
-        margin-inline-start: var(--tui-tab-margin, 24px);
+        margin-inline-start: var(--tui-tab-margin, 1.5rem);
     }
 
     &[tuiIcons]::before {
@@ -71,22 +67,23 @@
     }
 }
 
-[tuiTabs],
-tui-tabs {
+tui-tabs:where(*&) {
     .scrollbar-hidden();
 
     position: relative;
     display: flex;
-    font: var(--tui-font-body-m);
+    flex-shrink: 0;
+    font: var(--tui-typography-body-m);
     color: var(--tui-text-secondary);
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: auto;
     isolation: isolate;
+    anchor-scope: --tui-tab-active;
 
     &[data-size='m'] {
-        font: var(--tui-font-body-s);
-        /* stylelint-disable-next-line */
-        --tui-tab-margin: 16px;
+        font: var(--tui-typography-body-s);
+
+        --tui-tab-margin: 1rem;
     }
 
     &[data-size='l']:not([data-vertical]) {
@@ -98,15 +95,22 @@ tui-tabs {
     }
 
     &::before {
-        .transition(~'width, left');
+        .transition(~'inline-size, inset-inline-start');
 
         position: absolute;
-        left: var(--t-left);
-        bottom: 0;
+        inset-block-end: 0;
+        inset-inline-start: var(--t-left);
         block-size: 0.125rem;
         inline-size: var(--t-width);
         background: var(--t-color);
         animation: tuiPresent 1ms;
+        contain: strict;
+
+        @supports (anchor-name: --tui-tab-active) {
+            inset-inline-start: anchor(start);
+            inline-size: anchor-size(inline);
+            position-anchor: --tui-tab-active;
+        }
     }
 
     &._underline::before {
@@ -114,10 +118,9 @@ tui-tabs {
     }
 }
 
-tui-tabs[data-vertical],
-[tuiTabs][data-vertical] {
+tui-tabs[data-vertical]:where(*&) {
     flex-direction: column;
-    box-shadow: inset -1px 0 var(--tui-border-normal);
+    box-shadow: inset calc(-1px * var(--tui-inline)) 0 var(--tui-border-normal);
 
     [tuiTab] {
         min-block-size: 2.75rem;
@@ -125,16 +128,16 @@ tui-tabs[data-vertical],
         white-space: normal;
         margin: 0;
         text-align: start;
-        padding: 0.25rem 1.25rem 0.25rem 0;
+        padding: 0.25rem 1.25rem;
 
         &::after {
             .transition(transform);
 
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
             display: block;
+            inset-block-start: 0;
+            inset-inline-end: 0;
             block-size: 100%;
             inline-size: 0.125rem;
             background: var(--tui-background-accent-1);
@@ -144,7 +147,7 @@ tui-tabs[data-vertical],
         }
 
         &:hover {
-            box-shadow: inset -0.125rem 0 var(--tui-border-normal);
+            box-shadow: inset calc(-0.125rem * var(--tui-inline)) 0 var(--tui-border-normal);
         }
 
         &._active::after {
@@ -154,24 +157,22 @@ tui-tabs[data-vertical],
 
     &[data-size='m'] [tuiTab] {
         min-block-size: 2.25rem;
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
     }
 
-    &[data-vertical='right'] {
-        box-shadow: inset 1px 0 var(--tui-border-normal);
+    &[data-vertical='end'] {
+        box-shadow: inset calc(1px * var(--tui-inline)) 0 var(--tui-border-normal);
 
         [tuiTab] {
             text-align: end;
-            padding: 0.25rem 0 0.25rem 1.25rem;
 
             &::after {
-                right: auto;
-                left: 0;
+                inset-inline: 0 auto;
                 transform-origin: left;
             }
 
             &:hover {
-                box-shadow: inset 0.125rem 0 var(--tui-border-normal);
+                box-shadow: inset calc(0.125rem * var(--tui-inline)) 0 var(--tui-border-normal);
             }
         }
     }

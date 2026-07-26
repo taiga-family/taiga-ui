@@ -1,0 +1,34 @@
+<button
+    tuiIconButton
+    type="button"
+    class="t-button"
+    [appearance]="appearance()"
+    [disabled]="value() - step() < min()"
+    [iconStart]="options.icons.decrease"
+    [size]="size()"
+    (click)="onStep(-step())"
+    (pointerdown.prevent)="hold.next(-step())"
+>
+    -
+</button>
+<div
+    tuiFade
+    class="t-content"
+    [tuiFluidTypography]="[0.625, limit()]"
+>
+    {{ value() }}
+    <ng-content />
+</div>
+<button
+    tuiIconButton
+    type="button"
+    class="t-button"
+    [appearance]="appearance()"
+    [disabled]="value() + step() > max()"
+    [iconStart]="options.icons.increase"
+    [size]="size()"
+    (click)="onStep(step())"
+    (pointerdown.prevent)="hold.next(step())"
+>
+    +
+</button>

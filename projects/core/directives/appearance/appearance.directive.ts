@@ -7,6 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
@@ -15,10 +16,14 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/appearance.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/appearance.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-appearance'},
+    exportAs: `tui-appearance-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -26,15 +31,17 @@ class Styles {}
     selector: '[tuiAppearance]',
     hostDirectives: [TuiTransitioned],
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiAppearance: '',
         '[attr.data-appearance]': 'tuiAppearance()',
-        '[attr.data-state]': 'tuiAppearanceState()',
         '[attr.data-focus]': 'tuiAppearanceFocus()',
         '[attr.data-mode]': 'modes()',
+        '[attr.data-state]': 'tuiAppearanceState()',
     },
 })
 export class TuiAppearance {
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly modes = computed((mode = this.tuiAppearanceMode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );

@@ -28,13 +28,7 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 })
 class Dialog {}
 
-const DEFAULT_ACTIVATED_ROUTE_MOCK = {
-    snapshot: {
-        data: {
-            dialog: Dialog,
-        },
-    },
-};
+const DEFAULT_ACTIVATED_ROUTE_MOCK = {snapshot: {data: {dialog: Dialog}}};
 
 describe('TuiRoutableDialog', () => {
     let fixture: ComponentFixture<TuiRoutableDialog>;
@@ -85,9 +79,7 @@ describe('TuiRoutableDialog', () => {
 
     it('dialog options are passed to the dialog open method', async () => {
         // arrange
-        const dialogOptions = {
-            dismissible: true,
-        };
+        const dialogOptions = {dismissible: true};
 
         await createComponent({
             snapshot: {
@@ -114,15 +106,9 @@ describe('TuiRoutableDialog', () => {
             parent: {
                 snapshot: {
                     url: [
-                        {
-                            path: 'path',
-                        } as unknown as UrlSegment,
-                        {
-                            path: 'to',
-                        } as unknown as UrlSegment,
-                        {
-                            path: 'dialog',
-                        } as unknown as UrlSegment,
+                        {path: 'path'} as unknown as UrlSegment,
+                        {path: 'to'} as unknown as UrlSegment,
+                        {path: 'dialog'} as unknown as UrlSegment,
                     ],
                 } as unknown as ActivatedRouteSnapshot,
             } as unknown as ActivatedRoute,

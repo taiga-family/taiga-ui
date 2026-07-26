@@ -1,16 +1,17 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: relative;
     display: flex;
-    font: var(--tui-font-body-m);
+    flex-shrink: 0;
+    font: var(--tui-typography-body-m);
     box-sizing: border-box;
     color: var(--tui-text-secondary);
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: hidden;
 
     &[data-size='m'] {
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
     }
 }
 
@@ -48,19 +49,18 @@
 .t-dropdown {
     padding: 0.25rem 0;
 
-    /* stylelint-disable */
     ::ng-deep *[tuiTab] {
         inline-size: calc(100% - 0.75rem);
         block-size: 2.75rem;
         justify-content: flex-start;
         margin: 0.125rem 0.375rem;
         padding: 0 0.625rem;
-        line-height: 1.5rem;
         border-radius: var(--tui-radius-s);
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
+        line-height: 1.5rem;
         color: var(--tui-text-primary);
 
-        &:before {
+        &::before {
             display: none;
         }
 
@@ -75,9 +75,8 @@
 
     &[data-size='m'] ::ng-deep *[tuiTab] {
         block-size: 2.25rem;
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
     }
-    /* stylelint-enable */
 }
 
 .t-dropdown-item {

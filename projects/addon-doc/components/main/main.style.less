@@ -1,32 +1,9 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-@keyframes tuiShaking {
-    from,
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+@sidebar-width: 16.5rem;
 
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-        transform: translate3d(-0.3125rem, 0, 0);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-        transform: translate3d(0.3125rem, 0, 0);
-    }
-}
-
-@sidebar-width: 16.25rem;
-
-html,
-body {
-    background: var(--tui-background-base);
+html:has(body[tuiTheme='dark']) {
+    background: #222;
 }
 
 tui-doc-main {
@@ -36,7 +13,6 @@ tui-doc-main {
 // prevent override styles
 // inside editor code block
 code:not(pre code) {
-    /* stylelint-disable-next-line */
     &:not(.hljs):not([class*='language-']) {
         .transition(background);
 
@@ -50,13 +26,16 @@ code:not(pre code) {
         outline: 1px solid var(--tui-border-hover);
         font-size: 0.75rem;
         padding: 0 0.3125rem;
-        margin: 0.125rem 0.1875rem;
-        //noinspection CssInvalidPropertyValue
+        margin: 0 0.1875rem;
         text-wrap: wrap;
 
         a & {
             color: var(--tui-text-action);
         }
+    }
+
+    tui-textfield & {
+        line-height: 1.25rem;
     }
 }
 
@@ -67,15 +46,36 @@ a:focus code {
 
 .tui-doc-page {
     isolation: isolate;
-    padding-block-start: 4rem;
+    padding-block-start: 4.125rem;
 }
 
 tui-doc-navigation.tui-doc-navigation {
     position: fixed;
-    top: 4rem;
-    bottom: 0;
+    inset-block-end: 0;
+    inset-block-start: 4.125rem;
     inline-size: @sidebar-width;
-    border-inline-end: 1px solid var(--tui-border-normal);
+    box-sizing: border-box;
+    background: var(--tui-background-base);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: -0.25rem 0 0.25rem;
+        pointer-events: none;
+        border-radius: var(--tui-radius-m);
+        border: 0.25rem solid var(--tui-background-base-alt);
+
+        [tuiTheme='dark'] & {
+            border-color: var(--tui-background-elevation-2);
+        }
+    }
+
+    &::after {
+        inset-inline-start: 100%;
+        inline-size: 200vw;
+        margin-inline-start: -0.25rem;
+    }
 
     @media @tui-mobile {
         display: none;
@@ -86,17 +86,12 @@ tui-doc-navigation.tui-doc-navigation {
     margin-inline-start: @sidebar-width;
 
     @media @tui-mobile {
-        margin-inline-start: 0;
+        margin-inline: 0;
     }
 }
 
 .tui-doc-outlet + * {
     display: block;
-}
-
-.tui-doc-switch-direction,
-.tui-doc-dark-mode-switch {
-    margin-inline-start: 1rem;
 }
 
 // highlightjs custom theme
@@ -111,11 +106,6 @@ tui-doc-code {
         overflow-x: auto;
         padding: 0.5em;
         color: var(--tui-text-primary);
-        background-color: var(--tui-background-neutral-1);
-
-        &.hljs-line-numbers {
-            background: transparent;
-        }
     }
 
     .hljs-subst,
@@ -225,4 +215,10 @@ tui-doc-code[tuiTheme='dark'] {
     .hljs-template-variable {
         color: var(--tui-status-warning);
     }
+}
+
+tui-root > tui-scroll-controls .t-bar.t-bar_vertical {
+    inset-block: 4.5rem 1rem;
+    transform: translateX(-0.75rem);
+    opacity: 0.5;
 }

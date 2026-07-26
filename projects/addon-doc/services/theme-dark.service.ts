@@ -24,9 +24,7 @@ export const TUI_DARK_THEME = new InjectionToken(ngDevMode ? 'TUI_DARK_THEME' : 
 /**
  * @deprecated use {@link TUI_DARK_THEME} instead
  */
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly key = inject(TUI_DARK_THEME_KEY);

@@ -31,6 +31,7 @@ import {
 } from './pull-to-refresh.providers';
 
 export const MICRO_OFFSET = 10 ** -6;
+
 const EXCLUSION_SELECTORS =
     'tui-dialog, tui-sheet-dialog, tui-dropdown, tui-dropdown-mobile';
 

@@ -48,6 +48,7 @@ describe('TuiDropdownDirective', () => {
     let fixture: ComponentFixture<Test>;
     let pageObject: TuiPageObject<Test>;
     let testComponent: Test;
+
     const testContext = {
         get prefix() {
             return 'tui-dropdown-directive__';

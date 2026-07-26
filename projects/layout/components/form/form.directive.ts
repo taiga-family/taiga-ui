@@ -8,28 +8,33 @@ import {
     type Provider,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/core/components/checkbox';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
+import {TUI_RADIO_OPTIONS} from '@taiga-ui/core/components/radio';
 import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_BLOCK_OPTIONS} from '@taiga-ui/kit/components/block';
-import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
-import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 
-const HEADER_SIZE = {s: 'body-m', m: 'h6', l: 'h5'} as const;
+const HEADER_SIZE = {s: 'body-l', m: 'h6', l: 'h5'} as const;
 
 @Component({
     template: '',
-    styleUrl: './form.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './form.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-form'},
+    exportAs: `tui-form-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -56,6 +61,7 @@ class Styles {}
         },
     ],
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiForm: '',
         '[attr.data-size]': 'size() || options.size || "l"',
     },

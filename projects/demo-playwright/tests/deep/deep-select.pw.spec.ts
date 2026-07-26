@@ -11,7 +11,7 @@ test.describe('Deep / Select', () => {
     );
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page}) => {
+        test(path, async ({page}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -63,9 +63,16 @@ test.describe('Deep / Select', () => {
                     // e2e flaky: wait more time for charts graphics
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
-                    const example = api.apiPageExample;
+                    const example = api.demo;
+
+                    const query = decodeURIComponent(
+                        String(new URL(page.url()).searchParams),
+                    );
+
                     const makeName = (dir: string): string =>
-                        `deep-${path}-${name}-row-${rowIndex}-select-option-${index}.${dir}.png`;
+                        `deep-${path}-${name}-row-${rowIndex}-select-option-${index}-${dir}-----${query}`
+                            .slice(0, 250)
+                            .concat('.png');
 
                     await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                     await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
@@ -85,7 +92,7 @@ test.describe('Deep / Select', () => {
                 if (cleaner) {
                     await cleaner.click();
                 } else {
-                    await options[0]?.focus();
+                    await options.at(0)?.focus();
                     await page.keyboard.down('Enter');
                 }
 

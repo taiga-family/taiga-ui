@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 import {tuiIsHTMLElement} from './element-checks';
 
 /**

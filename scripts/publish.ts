@@ -1,7 +1,10 @@
 import {resolve} from 'node:path';
 
-import {errorLog, infoLog, successLog} from 'ng-morph';
-
+import {
+    errorLog,
+    infoLog,
+    successLog,
+} from '../projects/cdk/schematics/utils/colored-log';
 import {getValueByFlag} from './shared/argv.utils';
 import {execute} from './shared/execute';
 import {getAllTags} from './shared/get-all-tags';
@@ -10,17 +13,18 @@ import {parseVersion} from './shared/parse-version';
 
 const isDryRun =
     getValueByFlag<'false' | 'true' | 'undefined'>('--dry-run', 'false') === 'true';
-const path = getValueByFlag<string>('--path', '');
+
+const path = getValueByFlag('--path', '');
 
 (async function main(): Promise<void> {
     const packageJson = await import(resolve(path, 'package.json'));
-    const version = getValueByFlag<string>('--customVersion', packageJson.version);
-    const versions: string[] = getAllVersions(packageJson.name);
+    const version = getValueByFlag('--customVersion', packageJson.version);
+    const versions = getAllVersions(packageJson.name);
 
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);
 
-        process.exit(1);
+        process.exit(0);
     }
 
     infoLog(`name: ${packageJson.name}`);
@@ -39,7 +43,7 @@ const path = getValueByFlag<string>('--path', '');
 })();
 
 function makeTag(version: string): string {
-    const customTag = getValueByFlag<string>('--customTag', '');
+    const customTag = getValueByFlag('--customTag', '');
 
     if (customTag !== '') {
         return `--tag ${customTag}`;

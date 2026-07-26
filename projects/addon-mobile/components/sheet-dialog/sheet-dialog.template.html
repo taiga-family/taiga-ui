@@ -16,9 +16,19 @@
                 [innerHTML]="context.label"
             ></header>
         }
-        <div
-            *polymorpheusOutlet="context.content as text; context: context"
-            [innerHTML]="text"
-        ></div>
+        <ng-container *polymorpheusOutlet="context.content as text; context: context">
+            <div [innerHTML]="text"></div>
+            @if (context.closable) {
+                <footer>
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="context.$implicit.complete()"
+                    >
+                        {{ context.data || 'OK' }}
+                    </button>
+                </footer>
+            }
+        </ng-container>
     </div>
 </div>

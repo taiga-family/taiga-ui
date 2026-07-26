@@ -1,8 +1,8 @@
-@for (set of transposed; track set) {
+@for (set of transposed(); track $index) {
     <div
         class="t-wrapper"
         [class.t-wrapper_hoverable]="!!hintContent"
-        [class.t-wrapper_hovered]="drivers.get($index) | async"
+        [class.t-wrapper_hovered]="drivers()[$index] | async"
         [tuiHint]="hintContent"
         [tuiHintAppearance]="hintAppearance"
         [tuiHintContext]="{$implicit: $index}"
@@ -14,7 +14,7 @@
     >
         <div
             class="t-container"
-            [style.height.%]="set | tuiMapper: percentMapper : collapsed : computedMax"
+            [style.height.%]="set | tuiMapper: percentMapper : collapsed() : computedMax()"
         >
             <div
                 #hintHost
@@ -22,9 +22,9 @@
             ></div>
             <tui-bar-set
                 class="t-set"
-                [collapsed]="collapsed"
+                [collapsed]="collapsed()"
                 [id]="getHintId($index)"
-                [size]="size"
+                [size]="size()"
                 [tabIndex]="hintContent ? 0 : -1"
                 [value]="set"
             />

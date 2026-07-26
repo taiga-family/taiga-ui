@@ -8,7 +8,7 @@
     background: var(--tui-background-base);
     box-shadow: none;
 
-    --tui-width: 45rem;
+    --tui-width: min(45rem, calc(100vw - 2rem));
     --tui-from: translateY(2rem);
 
     &.tui-enter,
@@ -16,15 +16,15 @@
         animation-name: tuiFade, tuiSlide;
     }
 
-    > .t-close {
+    > [tuiButtonX] {
         position: sticky;
-        top: env(safe-area-inset-top);
+        inset-block-start: env(safe-area-inset-top);
         block-size: 4rem;
         inline-size: auto;
         align-self: flex-end;
         margin-block-end: 2rem;
         border-radius: 0 !important;
-        font: var(--tui-font-body-m) !important;
+        font: var(--tui-typography-body-l) !important;
         border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
 
         &::before {
@@ -33,8 +33,8 @@
     }
 
     // Replace with :has when it's supported
-    //&:has(tui-app-bar) .t-close {
-    &.tui-app-bar .t-close {
+    //&:has(tui-app-bar) [tuiButtonX] {
+    &.tui-app-bar > [tuiButtonX] {
         display: none;
     }
 
@@ -46,8 +46,8 @@
     > tui-app-bar,
     > ng-component > tui-app-bar {
         position: sticky;
-        top: 0;
         z-index: 1;
+        inset-block-start: 0;
         order: -1;
         border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
         border-inline-start: calc(50vw - var(--tui-width) / 2) solid transparent;
@@ -58,7 +58,7 @@
     > [tuiSlides] > * > header,
     > ng-component > header,
     > ng-component > [tuiSlides] > * > header {
-        font: var(--tui-font-heading-h3);
+        font: var(--tui-typography-heading-h3);
         margin-block-end: 2rem;
     }
 
@@ -70,8 +70,8 @@
         margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
 
         &::before {
-            left: 0;
-            right: 0;
+            inset-inline-start: 0;
+            inset-inline-end: 0;
         }
     }
 
@@ -98,7 +98,7 @@
 
         --tui-from: translateY(4rem);
 
-        .t-close {
+        > [tuiButtonX] {
             align-self: flex-start;
             block-size: 3.5rem;
             margin-block-end: 1rem;
@@ -123,5 +123,9 @@
             padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
         }
+    }
+
+    [data-platform='ios'] & > [tuiButtonX][tuiButtonX] {
+        block-size: 2.75rem;
     }
 }

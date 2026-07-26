@@ -1,5 +1,5 @@
-[tuiSlides] {
-    display: grid;
+[tuiSlides]:where(*&) {
+    display: grid !important;
     isolation: isolate;
 
     &[data-direction='-1'] > * {
@@ -25,6 +25,7 @@
         animation-name: tuiFade, tuiSlide;
         animation-duration: var(--tui-duration);
         animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
 
         --tui-from: translateY(0);
 

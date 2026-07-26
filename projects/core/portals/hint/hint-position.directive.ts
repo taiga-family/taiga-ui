@@ -1,7 +1,7 @@
-import {Directive, inject, input, output} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {Directive, inject, input} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     TUI_HINT_DIRECTIONS,
@@ -17,7 +18,7 @@ import {
 } from './hint-options.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 24;
+const ARROW_OFFSET = 22;
 const TOP = 1;
 const LEFT = 0;
 
@@ -25,6 +26,9 @@ const LEFT = 0;
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly options = inject(TUI_HINT_OPTIONS);
+    private readonly directionChange = new Subject<TuiHintDirection>();
+
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor, {optional: true}),
         {getClientRect: () => this.el.getBoundingClientRect()},
@@ -36,69 +40,73 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
-    public readonly direction = input(inject(TUI_HINT_OPTIONS).direction, {
+    public readonly direction = input(this.options.direction, {
         alias: 'tuiHintDirection',
     });
 
-    public readonly offset = input(inject(TUI_IS_MOBILE) ? 16 : 8, {
+    public readonly offset = input(inject(WA_IS_MOBILE) ? 16 : 8, {
         alias: 'tuiHintOffset',
     });
 
-    public readonly directionChange = output<TuiHintDirection>({
-        alias: 'tuiHintDirectionChange',
-    });
+    public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
+
+    public readonly tuiHintDirectionChange = outputFromObservable(
+        this.directionChange.pipe(distinctUntilChanged()),
+    );
 
     public readonly type = 'hint';
 
-    @tuiPure
-    public emitDirection(direction: TuiHintDirection): void {
-        this.directionChange.emit(direction);
-    }
-
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
-        const hostRect = this.accessor.getClientRect();
-        const leftCenter = hostRect.left + hostRect.width / 2;
-        const topCenter = hostRect.top + hostRect.height / 2;
+        const rect = this.accessor.getClientRect();
+        const leftCenter = rect.left + rect.width / 2;
+        const topCenter = rect.top + rect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
+        const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
+        const short = rect.height < ARROW_OFFSET * 2 || this.centered();
+        const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
+        const end = narrow ? leftCenter - width + ARROW_OFFSET : rect.right - width;
+        const top = short ? topCenter - ARROW_OFFSET : rect.top;
+        const bottom = short ? topCenter - height + ARROW_OFFSET : rect.bottom - height;
 
-        this.points['top-left'][TOP] = hostRect.top - height - this.offset();
-        this.points['top-left'][LEFT] = leftCenter - width + ARROW_OFFSET;
-        this.points.top[TOP] = this.points['top-left'][TOP];
+        this.points['top-start'][TOP] = rect.top - height - this.offset();
+        this.points['top-start'][LEFT] = this.centered() ? end : start;
+        this.points.top[TOP] = this.points['top-start'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
-        this.points['top-right'][TOP] = this.points['top-left'][TOP];
-        this.points['top-right'][LEFT] = leftCenter - ARROW_OFFSET;
+        this.points['top-end'][TOP] = this.points['top-start'][TOP];
+        this.points['top-end'][LEFT] = this.centered() ? start : end;
 
-        this.points['bottom-left'][TOP] = hostRect.bottom + this.offset();
-        this.points['bottom-left'][LEFT] = this.points['top-left'][LEFT];
-        this.points.bottom[TOP] = this.points['bottom-left'][TOP];
+        this.points['bottom-start'][TOP] = rect.bottom + this.offset();
+        this.points['bottom-start'][LEFT] = this.points['top-start'][LEFT];
+        this.points.bottom[TOP] = this.points['bottom-start'][TOP];
         this.points.bottom[LEFT] = this.points.top[LEFT];
-        this.points['bottom-right'][TOP] = this.points['bottom-left'][TOP];
-        this.points['bottom-right'][LEFT] = this.points['top-right'][LEFT];
+        this.points['bottom-end'][TOP] = this.points['bottom-start'][TOP];
+        this.points['bottom-end'][LEFT] = this.points['top-end'][LEFT];
 
-        this.points['left-top'][TOP] = topCenter - height + ARROW_OFFSET;
-        this.points['left-top'][LEFT] = hostRect.left - width - this.offset();
-        this.points.left[TOP] = topCenter - height / 2;
-        this.points.left[LEFT] = this.points['left-top'][LEFT];
-        this.points['left-bottom'][TOP] = topCenter - ARROW_OFFSET;
-        this.points['left-bottom'][LEFT] = this.points['left-top'][LEFT];
+        this.points['start-top'][TOP] = this.centered() ? bottom : top;
+        this.points['start-top'][LEFT] = rect.left - width - this.offset();
+        this.points.start[TOP] = topCenter - height / 2;
+        this.points.start[LEFT] = this.points['start-top'][LEFT];
+        this.points['start-bottom'][TOP] = this.centered() ? bottom : top;
+        this.points['start-bottom'][LEFT] = this.points['start-top'][LEFT];
 
-        this.points['right-top'][TOP] = this.points['left-top'][TOP];
-        this.points['right-top'][LEFT] = hostRect.right + this.offset();
-        this.points.right[TOP] = this.points.left[TOP];
-        this.points.right[LEFT] = this.points['right-top'][LEFT];
-        this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
-        this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
+        this.points['end-top'][TOP] = this.points['start-top'][TOP];
+        this.points['end-top'][LEFT] = rect.right + this.offset();
+        this.points.end[TOP] = this.points.start[TOP];
+        this.points.end[LEFT] = this.points['end-top'][LEFT];
+        this.points['end-bottom'][TOP] = this.points['start-bottom'][TOP];
+        this.points['end-bottom'][LEFT] = this.points['end-top'][LEFT];
 
         const array = Array.isArray(direction) ? direction : [direction];
         const priority = array.map((direction) => adjust(direction, rtl));
+
         const updated =
             priority
                 .concat(TUI_HINT_DIRECTIONS)
                 .find((dir) => this.checkPosition(this.points[dir], width, height)) ||
             this.fallback;
 
-        this.emitDirection(adjust(updated, rtl));
+        this.directionChange.next(adjust(updated, rtl));
 
         return this.points[updated];
     }
@@ -127,9 +135,7 @@ function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
         return direction.replace('left', 'right') as TuiHintDirection;
     }
 
-    if (rtl && direction.includes('right')) {
-        return direction.replace('right', 'left') as TuiHintDirection;
-    }
-
-    return direction;
+    return rtl && direction.includes('right')
+        ? (direction.replace('right', 'left') as TuiHintDirection)
+        : direction;
 }

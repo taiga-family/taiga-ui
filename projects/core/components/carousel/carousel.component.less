@@ -1,0 +1,47 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    .scrollbar-hidden();
+    .transition(max-block-size);
+
+    display: flex;
+    max-inline-size: 100%;
+    overscroll-behavior-x: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+    &:active .t-item {
+        padding-block-start: 1px;
+        margin-block-start: -1px;
+    }
+}
+
+.t-item {
+    position: relative;
+    display: flex;
+    min-inline-size: 100%;
+    block-size: 100%;
+    box-sizing: content-box;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    &:first-child .t-bumper {
+        inset-inline-start: 0;
+    }
+
+    &:last-child .t-bumper {
+        inset-inline-end: 0;
+    }
+}
+
+.t-bumper,
+.t-observer {
+    position: absolute;
+    inset-block-start: 0.125rem;
+    block-size: 0.125rem;
+    inline-size: 25%;
+    pointer-events: none;
+}

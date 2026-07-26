@@ -1,5 +1,6 @@
 import {computed, Directive, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -18,20 +19,21 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
+import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 @Directive({
     selector: 'input[tuiInput]',
     providers: [tuiAsTextfieldAccessor(TuiInputDirective)],
-    hostDirectives: [TuiNativeValidator],
+    hostDirectives: [TuiNativeValidator, TuiId],
     host: {
         tuiInput: '',
-        '[id]': 'textfield.id',
-        '[readOnly]': 'readOnly()',
+        '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[class._empty]': 'value() === ""',
-        '(input)': '0',
+        '[readOnly]': 'readOnly()',
         '(focusin)': '0',
         '(focusout)': '0',
+        '(input)': '0',
     },
 })
 export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
@@ -39,9 +41,11 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(computed(() => this.state()));
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
+
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() ?? this.textfield.focused()),
     );
@@ -50,8 +54,8 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly invalid = input<boolean | null>(null);
     public readonly focused = input<boolean | null>(null);
     public readonly state = input<TuiInteractiveState | null>(null);
-
     public readonly value = tuiValue(this.el);
+
     public readonly mode = computed<string | null>(() => {
         if (this.readOnly()) {
             return 'readonly';
@@ -61,11 +65,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
             return 'valid';
         }
 
-        if (this.invalid()) {
-            return 'invalid';
-        }
-
-        return null;
+        return this.invalid() ? 'invalid' : null;
     });
 
     public setValue(value: T | null): void {

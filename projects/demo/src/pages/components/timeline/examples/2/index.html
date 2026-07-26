@@ -1,0 +1,66 @@
+<tui-timeline
+    #timeline
+    orientation="vertical"
+    [max]="max"
+    [template]="gap"
+>
+    @for (_ of items(); track $index) {
+        <label
+            #item
+            tuiHintAppearance="floating"
+            tuiHintDirection="end"
+            tuiTimelineItem
+            [resizable]="false"
+            [tuiHint]="hint"
+            [(value)]="items()[$index]!"
+        >
+            <span>Event #{{ $index + 1 }}</span>
+        </label>
+        <ng-template #hint>
+            <form tuiForm="s">
+                <tui-range
+                    name="range"
+                    [margin]="max / 5"
+                    [max]="item.max()"
+                    [min]="item.min()"
+                    [ngModelOptions]="{updateOn: 'submit'}"
+                    [(ngModel)]="items()[$index]"
+                />
+                <footer>
+                    <button
+                        tuiButton
+                        type="submit"
+                    >
+                        Save
+                    </button>
+                    <button
+                        appearance="secondary-destructive"
+                        tuiButton
+                        type="button"
+                        (click)="remove($index)"
+                    >
+                        Remove
+                    </button>
+                </footer>
+            </form>
+        </ng-template>
+    }
+    <ng-template
+        #gap
+        let-index
+    >
+        @let gap = timeline.gaps()[index] ?? [0, 0];
+        @if (gap[1] - gap[0] > max / 5) {
+            <button
+                appearance="secondary"
+                iconStart="@tui.plus"
+                size="xs"
+                tuiIconButton
+                type="button"
+                (click)="add(index)"
+            >
+                Add
+            </button>
+        }
+    </ng-template>
+</tui-timeline>

@@ -25,6 +25,7 @@ export const TUI_INPUT_CARD_GROUP_TEXTS_PROVIDER = {
             skipSelf: true,
             optional: true,
         });
+
         const breakpoint = inject(TUI_BREAKPOINT);
         const directive = inject(TuiInputCardGroupDirective);
         const compact = computed(() => directive.compact() || breakpoint() === 'mobile');

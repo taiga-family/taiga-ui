@@ -13,8 +13,8 @@ import {FormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiSlider} from '@taiga-ui/core/components/slider';
 import {TuiHint} from '@taiga-ui/core/portals/hint';
-import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, skip, startWith, switchMap, timer} from 'rxjs';
 
@@ -31,6 +31,7 @@ import {TUI_PREVIEW_ICONS, type TuiPreviewIcons} from '../preview.options';
 export class TuiPreviewZoom {
     protected readonly icons: TuiPreviewIcons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts = inject(TUI_PREVIEW_ZOOM_TEXTS);
+
     protected readonly sliderLabel = computed(
         () => `${this.texts().zoomOut} / ${this.texts().zoomIn}`,
     );

@@ -2,22 +2,20 @@ import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
     type TuiValueTransformer,
 } from '@taiga-ui/cdk/classes';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, type TuiDay} from '@taiga-ui/cdk/date-time';
-import {type TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiDay} from '@taiga-ui/cdk/date-time';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputDateOptions {
-    readonly icon: TuiHandler<TuiSizeL | TuiSizeS, string>;
-    readonly max: TuiDay;
-    readonly min: TuiDay;
+    readonly icon: string;
+    readonly max: TuiDay | null;
+    readonly min: TuiDay | null;
     readonly valueTransformer: TuiValueTransformer<TuiDay | null, any>;
 }
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS = {
-    icon: () => '@tui.calendar',
-    min: TUI_FIRST_DAY,
-    max: TUI_LAST_DAY,
+    icon: '@tui.calendar',
+    min: null,
+    max: null,
     valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
 } as const;
 

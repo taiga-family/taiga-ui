@@ -1,14 +1,12 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.less';
-@import '@taiga-ui/core/styles/components/textfield.less';
+@import '@taiga-ui/styles/utils.less';
 
-tui-textfield[multi][multi] {
+tui-textfield[multi][multi]:where(*&) {
     flex-wrap: nowrap;
     overflow: scroll;
     align-items: stretch;
     cursor: text;
-    gap: 0;
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
-    overscroll-behavior: none;
+    overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
 
     &::before,
@@ -16,12 +14,13 @@ tui-textfield[multi][multi] {
         position: sticky;
         inset-block-start: 0;
         inset-inline-start: 0;
-        block-size: var(--t-height);
-    }
-
-    &[tuiChevron]::after {
-        inset-block-start: 0.375rem;
-        block-size: calc(var(--t-height) - 0.75rem);
+        block-size: 10rem;
+        // Compensating zoomed icons at high font-scaling
+        min-block-size: calc(var(--t-height) * (1 - 0.2 * var(--t-zoom)));
+        max-block-size: calc(
+            (var(--t-item-height, calc(var(--t-height) - 2 * var(--t-vertical))) + 2 * var(--t-vertical)) *
+                (1 - 0.2 * var(--t-zoom))
+        );
     }
 
     > .t-scrollbar {
@@ -37,17 +36,19 @@ tui-textfield[multi][multi] {
 
     > .t-items {
         position: sticky;
+        z-index: -1;
         display: flex;
         inset-inline-start: var(--t-start);
         min-inline-size: 0;
-        max-block-size: var(--t-height);
-        min-block-size: fit-content;
+        min-block-size: var(--t-height);
+        block-size: fit-content;
         flex: 1;
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
         transition-duration: inherit;
         box-sizing: border-box;
+        view-timeline: --t-scrollbar-y y;
 
         &::after {
             content: '';
@@ -56,26 +57,16 @@ tui-textfield[multi][multi] {
         }
 
         &_horizontal {
-            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem));
+            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
             flex-wrap: nowrap;
 
             [dir='rtl'] & {
-                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem) 0 0);
+                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
             }
 
             > .t-input {
-                padding-inline-end: calc(var(--t-side, ~'0rem') + var(--t-end) + var(--t-padding));
+                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
             }
-        }
-
-        &:not(&_horizontal) {
-            --t-scroll: 0;
-        }
-
-        > label[tuiLabel] {
-            position: absolute;
-            inset-block-start: 0;
-            inline-size: 100%;
         }
 
         > .t-input {
@@ -83,15 +74,16 @@ tui-textfield[multi][multi] {
             display: flex;
             align-items: center;
             flex: 1;
-            block-size: 1.25em;
-            max-block-size: 1.25rem;
+            block-size: var(--t-item-height, 1.25em);
+            max-block-size: calc(var(--t-height) - 2 * var(--t-vertical));
             max-inline-size: 100%;
             pointer-events: none;
             transform: translateX(var(--t-scroll));
 
             .t-filler,
             [tuiInput] {
-                block-size: 100%;
+                inset-block-start: -5%;
+                block-size: 110%;
                 padding: 0;
                 pointer-events: auto;
             }
@@ -101,7 +93,7 @@ tui-textfield[multi][multi] {
                 white-space: pre;
                 text-overflow: clip;
                 padding-inline-end: 0.125rem;
-                min-block-size: var(--t-item-height, 1em);
+                block-size: 100%;
             }
 
             .t-filler_hidden {
@@ -110,12 +102,41 @@ tui-textfield[multi][multi] {
         }
     }
 
+    &._with-label {
+        &[data-size='l'] {
+            --t-vertical: 0.5625rem;
+
+            tui-textfield-item:first-of-type {
+                margin-block-start: 1.125rem;
+            }
+        }
+
+        &[data-size='m'] {
+            --t-vertical: 0.4375rem;
+
+            tui-textfield-item:first-of-type {
+                margin-block-start: 0.875rem;
+            }
+        }
+
+        > .t-items {
+            align-items: flex-end;
+
+            > label[tuiLabel] {
+                min-inline-size: 100%;
+                margin: calc(var(--t-height) / 2 - var(--t-vertical) - 0.625em) 0;
+                margin-inline-end: -100%;
+                padding: 0;
+            }
+        }
+    }
+
     > .t-content {
         position: sticky;
+        min-block-size: var(--t-height);
+        block-size: calc(var(--t-item-height) + 2 * var(--t-vertical));
         inset-block-start: 0;
-        inset-inline-start: calc(100% - var(--t-side, ~'0rem') - var(--t-end) + var(--t-padding) - var(--t-offset));
-        margin: 0;
-        gap: 0.25rem;
+        inset-inline-start: calc(100% - var(--t-side) - var(--t-end));
     }
 
     > .t-items input:not(:focus),
@@ -144,76 +165,33 @@ tui-textfield[multi][multi] {
 
     &[data-size='l'] {
         --t-vertical: 0.625rem;
-        --t-offset: calc(1rem - var(--t-end) / 4.5);
-
-        &::before {
-            margin-inline-end: 0.75rem;
-        }
 
         &::after {
-            // tuiChevron changes icon size to 1rem
-            inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
-            margin-inline-start: -0.75rem;
-            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
-        }
-
-        &._with-label {
-            --t-vertical: 1.125rem;
-
-            > .t-items {
-                padding: 1.75rem 0 0.5rem;
-            }
+            inset-inline-start: calc(100% - var(--t-end) - var(--t-padding) + 0.25rem);
         }
     }
 
     &[data-size='m'] {
         --t-vertical: 0.5rem;
-        --t-offset: calc(0.75rem + var(--t-end) / 14);
 
         &::before {
             inset-inline-start: -0.125rem;
-            margin-inline-end: 0.375rem;
         }
 
         &::after {
             inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
-            border-width: 0.625rem;
-            // tuiChevron changes icon size to 1rem
-            margin-inline-start: -0.125rem;
-            margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
-        }
-
-        &._with-label {
-            --t-vertical: 0.875rem;
-
-            > .t-items {
-                padding: 1.375rem 0 0.375rem;
-            }
-        }
-
-        > .t-content {
-            transform: translateX(0.125rem);
         }
     }
 
     &[data-size='s'] {
         --t-vertical: 0.125rem;
-        --t-offset: calc(0.625rem + var(--t-end) / 10);
 
         &::before {
-            inset-inline-start: -0.125rem;
-            margin-inline-end: 0.375rem;
+            inset-inline-start: -0.25rem;
         }
 
         &::after {
-            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
-            border-width: 0.5rem;
-            margin-inline-end: calc(-1 * var(--t-padding));
-        }
-
-        > .t-content {
-            gap: 0;
-            transform: translateX(calc(0.375rem - var(--t-end) / 10));
+            inset-inline-start: calc(100% - var(--t-end));
         }
     }
 

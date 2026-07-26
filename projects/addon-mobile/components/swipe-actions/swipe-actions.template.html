@@ -1,0 +1,11 @@
+<div class="t-content">
+    <ng-content />
+</div>
+
+<div
+    #actions
+    class="t-actions"
+    (resize)="actionsWidth.set(actions.clientWidth)"
+>
+    <ng-content select="[tuiSwipeAction]" />
+</div>

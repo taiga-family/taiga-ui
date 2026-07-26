@@ -10,7 +10,7 @@ export function makeAngularJsonWithAssets(assets: string): string {
             "options": {
               "main": "test/main.ts",
               "styles": [
-                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+                "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
                 "node_modules/@taiga-ui/styles/taiga-ui-global.less",
                 "some.style"
               ],

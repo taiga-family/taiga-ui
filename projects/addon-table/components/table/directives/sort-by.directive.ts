@@ -13,11 +13,10 @@ import {type TuiSortChange} from '../table.options';
 import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
-@Directive({
-    selector: 'table[tuiTable][tuiSortBy]',
-})
+@Directive({selector: 'table[tuiTable][tuiSortBy]'})
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     private readonly table = inject(TuiTableDirective<T>);
+
     private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
         descendants: true,
     });

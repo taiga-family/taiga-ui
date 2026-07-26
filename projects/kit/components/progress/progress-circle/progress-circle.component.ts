@@ -10,9 +10,9 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size()',
-        '[style.--tui-progress-color]': 'color()',
-        '[style.--t-progress-ratio]': 'ratio()',
         '[class._arc]': 'arc()',
+        '[style.--t-progress-ratio]': 'ratio()',
+        '[style.--tui-progress-color]': 'color()',
     },
 })
 export class TuiProgressCircle {
@@ -24,7 +24,7 @@ export class TuiProgressCircle {
 
     public readonly value = input(0);
     public readonly max = input(1);
-    public readonly color = input<string | null>(this.options.color);
+    public readonly color = input(this.options.color);
     public readonly size = input(this.options.size);
     public readonly arc = input(false, {transform: coerceBooleanProperty});
 }

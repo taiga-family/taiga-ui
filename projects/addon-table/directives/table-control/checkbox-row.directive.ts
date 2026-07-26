@@ -21,6 +21,7 @@ import {TuiTableControlDirective} from './table-control.directive';
 })
 export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
     private readonly control = inject(NgControl);
+
     private readonly parent: TuiTableControlDirective<T> = inject(
         TuiTableControlDirective,
     );

@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -11,11 +12,16 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             {{ text }}
         </ng-container>
     `,
-    styleUrl: './preview-dialog.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './preview-dialog.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {
+        'data-tui-version': TUI_VERSION,
         '(document:keydown.esc.prevent)': 'context.$implicit.complete()',
     },
 })

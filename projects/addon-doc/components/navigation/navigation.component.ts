@@ -15,6 +15,7 @@ import {Router, RouterLink, RouterLinkActive, Scroll} from '@angular/router';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
+    TUI_DOC_PAGES_ICONS,
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
@@ -22,7 +23,6 @@ import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/t
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -91,27 +91,40 @@ export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
-    protected open = signal(false);
+    protected readonly open = signal(false);
     protected menuOpen = false;
-
     protected readonly drawer = inject(TuiDrawer, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
     protected readonly searchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
+    protected readonly pagesIcons = inject(TUI_DOC_PAGES_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
+    protected readonly flat = this.items.reduce<
+        ReadonlyArray<readonly TuiDocRoutePage[]>
+    >(
+        (array, item) => [
+            ...array,
+            item.reduce<readonly TuiDocRoutePage[]>(
+                (pages, page) =>
+                    'subPages' in page ? [...pages, ...page.subPages] : [...pages, page],
+                [],
+            ),
+        ],
+        [],
+    );
 
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
     protected active = '';
-
     protected readonly search = new FormControl('');
 
     protected readonly filtered = toSignal(
         tuiControlValue<string>(this.search).pipe(
             filter((search) => search.trim().length > 2),
-            map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
+            map((search) => this.filterItems(this.flat, search)),
         ),
         {initialValue: []},
     );
@@ -158,7 +171,7 @@ export class TuiDocNavigation {
     }
 
     protected $pages<T extends TuiDocRoutePage[]>(pages: T): readonly TuiDocRoutePage[] {
-        return pages as TuiDocRoutePage[];
+        return pages;
     }
 
     protected isActive(route: string): boolean {
@@ -190,7 +203,6 @@ export class TuiDocNavigation {
         }
     }
 
-    @tuiPure
     private filterItems(
         items: ReadonlyArray<readonly TuiDocRoutePage[]>,
         search: string,
@@ -215,25 +227,6 @@ export class TuiDocNavigation {
                 }),
                 'title',
             ),
-        );
-    }
-
-    @tuiPure
-    private flattenSubPages(
-        items: readonly TuiDocRoutePages[],
-    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
-        return items.reduce<ReadonlyArray<readonly TuiDocRoutePage[]>>(
-            (array, item) => [
-                ...array,
-                item.reduce<readonly TuiDocRoutePage[]>(
-                    (pages, page) =>
-                        'subPages' in page
-                            ? [...pages, ...page.subPages]
-                            : [...pages, page],
-                    [],
-                ),
-            ],
-            [],
         );
     }
 

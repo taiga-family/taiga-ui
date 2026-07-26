@@ -1,9 +1,9 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-nav[tuiNavigationNav] {
-    top: 3rem;
+nav[tuiNavigationNav]:where(*&) {
     z-index: 1;
     display: flex;
+    inset-block-start: 3rem;
     min-block-size: 3rem;
     align-items: center;
     gap: 0.5rem;
@@ -11,13 +11,12 @@ nav[tuiNavigationNav] {
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
-    font: var(--tui-font-body-s);
-    line-height: 1rem;
+    font: var(--tui-typography-body-s);
     color: var(--tui-text-secondary);
     border-image: linear-gradient(0deg, var(--tui-border-normal) 1px, var(--tui-background-base) 0) fill 0/0/0 100vw;
 
     [tuiNavigationLogo] {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
         font-weight: bold;
         color: var(--tui-text-primary);
     }

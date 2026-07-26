@@ -13,14 +13,14 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
     countryCode: string,
     phoneMaskAfterCountryCode: string,
 ): MaskitoPreprocessor {
-    const completePhoneLength = (countryCode + phoneMaskAfterCountryCode).replaceAll(
+    const completePhoneLength = `${countryCode}${phoneMaskAfterCountryCode}`.replaceAll(
         /[^#\d]+/g,
         '',
     ).length;
 
     const trimCountryPrefix = (value: string): string =>
         countryCode === '+7'
-            ? value.replace(/^(\+?\s*7?\s?8?)\s?/, '')
+            ? value.replace(/^\+?\s*7?\s?8?\s?/, '')
             : value.replace(
                   new RegExp(String.raw`^(\+?\s*${countryCode.replace('+', '')}?)\s?`),
                   '',

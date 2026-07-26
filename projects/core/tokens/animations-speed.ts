@@ -7,7 +7,5 @@ import {TUI_REDUCED_MOTION} from './reduced-motion';
  */
 export const TUI_ANIMATIONS_SPEED = new InjectionToken<number>(
     ngDevMode ? 'TUI_ANIMATIONS_SPEED' : '',
-    {
-        factory: () => (inject(TUI_REDUCED_MOTION) ? 0 : 1),
-    },
+    {factory: () => (inject(TUI_REDUCED_MOTION) ? 0 : 1)},
 );

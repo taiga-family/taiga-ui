@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -9,7 +8,6 @@ import {
     model,
     signal,
 } from '@angular/core';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
@@ -25,18 +23,15 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[class._sticky]': 'sticky()',
+        '[style.max-width.px]': 'width() || maxWidth()',
         '[style.min-width.px]': 'width() || minWidth()',
         '[style.width.px]': 'width() || minWidth()',
-        '[style.max-width.px]': 'width() || maxWidth()',
-        '[class._sticky]': 'sticky()',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
-
-    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
-        optional: true,
-    });
+    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {optional: true});
 
     protected readonly width = signal<number | null>(null);
 
@@ -46,17 +41,14 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     );
 
     public readonly minWidth = input(-Infinity);
-
     public readonly maxWidth = input(Infinity);
 
-    public sorter = model<TuiComparator<T> | null>(
-        this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
+    public readonly sorter = model(
+        this.head ? (a: T, b: T) => tuiDefaultSort(a[this.key], b[this.key]) : null,
     );
 
     public readonly resizable = input(this.options.resizable);
-
     public readonly sticky = input(this.options.sticky);
-
     public readonly requiredSort = input(this.options.requiredSort);
 
     public get key(): keyof T {
@@ -68,7 +60,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter() === this.table.sorter();
+        return !!this.sorter() && !!this.table && this.sorter() === this.table.sorter();
     }
 
     protected get icon(): string {

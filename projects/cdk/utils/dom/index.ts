@@ -11,3 +11,4 @@ export * from './inject-element';
 export * from './is-element-editable';
 export * from './point-to-client-rect';
 export * from './value';
+export * from './window-size';

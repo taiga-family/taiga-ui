@@ -3,9 +3,9 @@ import {
     type AfterViewChecked,
     ChangeDetectorRef,
     type ComponentRef,
-    computed,
     Directive,
     effect,
+    ElementRef,
     inject,
     INJECTOR,
     input,
@@ -16,10 +16,12 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsVehicle,
-    type TuiRectAccessor,
+    tuiFallbackAccessor,
+    TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
@@ -32,30 +34,35 @@ import {
 import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TUI_DROPDOWN_COMPONENT, TUI_DROPDOWN_HOST} from './dropdown.providers';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-    providers: [tuiAsVehicle(TuiDropdownDirective)],
+    providers: [
+        tuiAsVehicle(TuiDropdownDirective),
+        tuiProvide(TUI_DROPDOWN_HOST, ElementRef),
+    ],
     exportAs: 'tuiDropdown',
     hostDirectives: [
         TuiDropdownDriverDirective,
+        {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
         {
             directive: TuiDropdownPosition,
             outputs: ['tuiDropdownDirectionChange'],
         },
     ],
-    host: {
-        '[class.tui-dropdown-open]': 'ref()',
-    },
+    host: {'[class.tui-dropdown-open]': 'ref()'},
 })
 export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
+    private readonly injector = inject(INJECTOR);
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
+
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -76,26 +83,38 @@ export class TuiDropdownDirective
     public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
+
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
         inject(INJECTOR),
     );
 
-    public readonly tuiDropdown = input<PolymorpheusContent<TuiContext<() => void>>>();
-    public readonly content = computed<PolymorpheusContent<TuiContext<() => void>>>(
-        (content = this.tuiDropdown()) => {
-            return content instanceof TemplateRef
+    public readonly content = input(null, {
+        alias: 'tuiDropdown',
+        transform: (
+            content: PolymorpheusContent<TuiContext<() => void>>,
+        ): PolymorpheusContent<TuiContext<() => void>> =>
+            content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
-                : content;
-        },
-    );
+                : content,
+    });
+
+    public get accessor(): TuiRectAccessor {
+        const accessors = this.injector.get(TuiRectAccessor, null, {
+            self: true,
+        }) as readonly TuiRectAccessor[] | null;
+
+        return tuiFallbackAccessor<TuiRectAccessor>('dropdown')(accessors, this);
+    }
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }
 
     public ngAfterViewChecked(): void {
-        this.refresh$.next();
+        if (this.ref()) {
+            this.refresh$.next();
+        }
     }
 
     public ngOnDestroy(): void {
@@ -116,8 +135,6 @@ export class TuiDropdownDirective
             ref.destroy();
         }
 
-        // TODO: Remove in v5, only needed in Angular 16
-        this.cdr.markForCheck();
         this.drivers.forEach((driver) => driver?.next(show));
     }
 }

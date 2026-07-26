@@ -7,7 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
@@ -21,10 +21,14 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/notification.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/notification.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-notification'},
+    exportAs: `tui-notification-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -42,6 +46,7 @@ export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly icons = tuiIconStart(
         computed((icon = this.icon()) =>
             tuiIsString(icon) ? icon : icon(this.appearance()),
@@ -50,5 +55,5 @@ export class TuiNotificationDirective {
 
     public readonly appearance = input(this.options.appearance);
     public readonly size = input(this.options.size);
-    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
+    public readonly icon = input(this.options.icon);
 }

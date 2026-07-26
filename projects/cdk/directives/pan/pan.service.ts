@@ -27,9 +27,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
                 .pipe(
                     switchMap(() =>
                         merge(
-                            tuiTypedFromEvent(doc, 'touchmove', {
-                                passive: true,
-                            }).pipe(
+                            tuiTypedFromEvent(doc, 'touchmove', {passive: true}).pipe(
                                 filter(({touches}) => touches.length < 2),
                                 map(({touches}) => touches[0]),
                             ),

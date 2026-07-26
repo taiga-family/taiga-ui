@@ -21,9 +21,7 @@ describe('TuiNgControl', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        public readonly form = new FormGroup({
-            control: new FormControl('value'),
-        });
+        public readonly form = new FormGroup({control: new FormControl('value')});
     }
 
     let fixture: ComponentFixture<Test>;

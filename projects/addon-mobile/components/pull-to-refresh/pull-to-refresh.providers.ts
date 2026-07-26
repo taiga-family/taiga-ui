@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {EMPTY, type Observable} from 'rxjs';
@@ -12,9 +12,7 @@ import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
  */
 export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_PULL_TO_REFRESH_LOADED' : '',
-    {
-        factory: () => EMPTY,
-    },
+    {factory: () => EMPTY},
 );
 
 /**
@@ -22,9 +20,7 @@ export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>
  */
 export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken(
     ngDevMode ? 'TUI_PULL_TO_REFRESH_THRESHOLD' : '',
-    {
-        factory: () => 50,
-    },
+    {factory: () => 50},
 );
 
 /**
@@ -33,5 +29,5 @@ export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken(
 export const TUI_PULL_TO_REFRESH_COMPONENT = new InjectionToken<
     PolymorpheusContent<TuiContext<number>>
 >(ngDevMode ? 'TUI_PULL_TO_REFRESH_COMPONENT' : '', {
-    factory: () => (inject(TUI_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER),
+    factory: () => (inject(WA_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER),
 });

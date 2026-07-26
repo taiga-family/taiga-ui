@@ -1,13 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    HostAttributeToken,
-    inject,
-    input,
-    ViewEncapsulation,
-} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {computed, Directive, HostAttributeToken, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     maskitoAddOnFocusPlugin,
@@ -18,45 +9,46 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
-import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
+import {
+    tuiAsTextfieldContent,
+    TuiTextfieldContent,
+} from '@taiga-ui/core/components/textfield';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
-import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
+import {TuiInputColorContent} from './input-color-content.component';
 
-const REGEX = /[0-9a-fA-F]/;
+const REGEX = /[0-9a-f]/i;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
 
-@Component({
+@Directive({
     selector: 'input[tuiInputColor]',
-    imports: [FormsModule, TuiSlider, TuiTextfieldContent],
-    templateUrl: './input-color.template.html',
-    styleUrl: './input-color.style.less',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputColorComponent),
         tuiFallbackValueProvider(''),
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
+        tuiAsTextfieldContent(() => TuiInputColorContent),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithInput],
+    hostDirectives: [MaskitoDirective, TuiWithInput, TuiTextfieldContent],
     host: {
-        ngSkipHydration: 'true',
         spellcheck: 'false',
+        '[attr.list]': 'null',
         '[disabled]': 'disabled()',
         '[value]': 'value()',
-        '[attr.list]': 'null',
         '(input)': 'onChange($event.target.value)',
     },
 })
+// TODO(v6): rename to TuiInputColorDirective
 export class TuiInputColorComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
-    protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly list = inject(new HostAttributeToken('list'), {optional: true});
-    protected readonly left = inject(TuiIcons).iconStart() || '';
+
+    public readonly el = tuiInjectElement<HTMLInputElement>();
+    public readonly list = inject(new HostAttributeToken('list'), {optional: true});
+
+    protected readonly start = inject(TuiIcons).iconStart() || '';
+
     protected readonly icon = tuiIconStart(
-        computed(() => (this.align() === 'left' ? EMPTY : this.left)),
+        computed(() => (this.align() === 'start' ? EMPTY : this.start)),
         {},
     );
 
@@ -69,32 +61,6 @@ export class TuiInputColorComponent extends TuiControl<string> {
         })),
     );
 
-    protected readonly filled = computed(() =>
-        this.format() === 'hex' ? this.value().length === 7 : this.value().length === 9,
-    );
-
-    protected readonly opacity = computed(() =>
-        this.filled() && this.format() === 'hexa'
-            ? Number.parseInt(this.value().slice(-2), 16)
-            : 255,
-    );
-
     public readonly format = input(this.options.format);
     public readonly align = input(this.options.align);
-
-    protected onInput(value: string): void {
-        this.onChange(
-            this.format() === 'hex' ? value : `${value}${toHex(this.opacity())}`,
-        );
-    }
-
-    protected onOpacity(opacity: number): void {
-        const value = this.filled() ? this.value().slice(0, 7) : '#000000';
-
-        this.onChange(`${value}${toHex(opacity)}`);
-    }
-}
-
-function toHex(value: number): string {
-    return value.toString(16).padStart(2, '0');
 }

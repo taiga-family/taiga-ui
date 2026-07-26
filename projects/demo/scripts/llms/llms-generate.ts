@@ -12,7 +12,7 @@ import {
 
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.txt');
 const TEMPLATE_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.template.txt');
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 
 function prettifyTitle(name: string): string {
     return name.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase());
@@ -69,11 +69,7 @@ async function main(): Promise<void> {
             return -1;
         }
 
-        if (b === 'documentation') {
-            return 1;
-        }
-
-        return a.localeCompare(b);
+        return b === 'documentation' ? 1 : a.localeCompare(b);
     });
 
     const output: string[] = [];
@@ -89,8 +85,7 @@ async function main(): Promise<void> {
             continue;
         }
 
-        output.push(`### ${prettifyTitle(group)}`);
-        output.push('');
+        output.push(`### ${prettifyTitle(group)}`, '');
         // Sort links alphabetically by title
         const sortedLinks = bySegment[group]!.sort((a, b) =>
             prettifyTitle(a.name).localeCompare(prettifyTitle(b.name)),
@@ -99,7 +94,7 @@ async function main(): Promise<void> {
         for (const c of sortedLinks) {
             const url = `https://taiga-ui.dev${c.route}`;
             // Try to extract a per-entity description from its index.html
-            const folderPath = path.join(MODULES_PATH, c.route.replace(/^\//, ''));
+            const folderPath = path.join(PAGES_PATH, c.route.replace(/^\//, ''));
             let brief = '';
 
             try {
@@ -118,7 +113,7 @@ async function main(): Promise<void> {
         output.push('');
     }
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
     console.info(`Successfully saved: ${OUTPUT_FILE}`);
 }
 

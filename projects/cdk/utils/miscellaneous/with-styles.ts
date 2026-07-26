@@ -27,5 +27,5 @@ export function tuiWithStyles(component: Type<unknown>): undefined {
         map.set(component, createComponent(component, {environmentInjector}));
     }
 
-    return undefined;
+    return;
 }

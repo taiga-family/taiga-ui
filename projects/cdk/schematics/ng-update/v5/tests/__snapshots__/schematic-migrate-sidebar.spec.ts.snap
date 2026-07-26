@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with autoWidth and adds TODO comment: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open; autoWidth: true">Content</div>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->
+<tui-drawer *tuiPopup="open">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with autoWidth and adds TODO comment: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'left' without extra comments: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open; direction: 'left'">Content</div>",
+  "1. After": "<tui-drawer *tuiPopup="open" direction="start">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'left' without extra comments: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'right' and autoWidth: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open; direction: 'right'; autoWidth: true">Content</div>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->
+<tui-drawer *tuiPopup="open" direction="end">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'right' and autoWidth: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'right' without extra comments: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open; direction: 'right'">Content</div>",
+  "1. After": "<tui-drawer *tuiPopup="open" direction="end">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with direction: 'right' without extra comments: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with dynamic direction expression and adds TODO comment: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open; direction: myDir">Content</div>",
+  "1. After": "<!-- TODO: (Taiga UI migration) Update direction variable values: left->start, right->end -->
+<tui-drawer *tuiPopup="open" [direction]="myDir">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates *tuiSidebar with dynamic direction expression and adds TODO comment: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates multiline content inside *tuiSidebar: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open">
+    <header>Header</header>
+    <p>Content</p>
+</div>",
+  "1. After": "<tui-drawer *tuiPopup="open">
+    <header>Header</header>
+    <p>Content</p>
+</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates multiline content inside *tuiSidebar: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates ng-template with *tuiSidebar: test.html 1`] = `
+{
+  "0. Before": "<ng-template *tuiSidebar="open; direction: 'right'"><span>Content</span></ng-template>",
+  "1. After": "<tui-drawer *tuiPopup="open" direction="end"><span>Content</span></tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates ng-template with *tuiSidebar: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates simple *tuiSidebar directive without extra comments: test.html 1`] = `
+{
+  "0. Before": "<div *tuiSidebar="open">Content</div>",
+  "1. After": "<tui-drawer *tuiPopup="open">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates simple *tuiSidebar directive without extra comments: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer preserves other attributes on the element: test.html 1`] = `
+{
+  "0. Before": "<div class="my-class" *tuiSidebar="open" (click)="close()">Content</div>",
+  "1. After": "<tui-drawer *tuiPopup="open" class="my-class" (click)="close()">Content</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer preserves other attributes on the element: test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
+exports[`ng-update sidebar to drawer replaces TuiSidebar import with TuiDrawer and TuiPopup: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiSidebar],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected open = false;
+                }
+            ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiDrawer, TuiPopup],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected open = false;
+                }
+            ",
+}
+`;

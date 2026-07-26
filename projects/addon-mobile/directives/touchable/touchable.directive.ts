@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
@@ -22,11 +22,9 @@ function findIndex(touches: TouchList, id = 0): number {
     return -1;
 }
 
-@Directive({
-    selector: '[tuiTouchable]',
-})
+@Directive({selector: '[tuiTouchable]'})
 export class TuiTouchable {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
 
@@ -70,10 +68,10 @@ export class TuiTouchable {
     }
 
     private onTouchStart(): void {
-        if (this.style() !== 'transform') {
-            this.el.style.removeProperty('transition');
-        } else {
+        if (this.style() === 'transform') {
             this.el.style.setProperty('transition', 'transform 0.2s');
+        } else {
+            this.el.style.removeProperty('transition');
         }
 
         this.el.style.setProperty(this.style(), STYLE[this.style()]);

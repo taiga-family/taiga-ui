@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
@@ -97,6 +95,7 @@ export class TuiDay extends TuiMonth {
     public static normalizeOf(year: number, month: number, day: number): TuiDay {
         const normalizedYear = TuiYear.normalizeYearPart(year);
         const normalizedMonth = TuiMonth.normalizeMonthPart(month);
+
         const normalizedDay = TuiDay.normalizeDayPart(
             day,
             normalizedMonth,
@@ -126,24 +125,24 @@ export class TuiDay extends TuiMonth {
         switch (dateMode) {
             case 'mm/dd/yyyy':
                 return {
-                    day: parseInt(date.slice(3, 5), 10),
-                    month: parseInt(date.slice(0, 2), 10) - 1,
-                    year: parseInt(date.slice(6, 10), 10),
+                    day: Number.parseInt(date.slice(3, 5), 10),
+                    month: Number.parseInt(date.slice(0, 2), 10) - 1,
+                    year: Number.parseInt(date.slice(6, 10), 10),
                 };
 
             case 'yyyy/mm/dd':
                 return {
-                    day: parseInt(date.slice(8, 10), 10),
-                    month: parseInt(date.slice(5, 7), 10) - 1,
-                    year: parseInt(date.slice(0, 4), 10),
+                    day: Number.parseInt(date.slice(8, 10), 10),
+                    month: Number.parseInt(date.slice(5, 7), 10) - 1,
+                    year: Number.parseInt(date.slice(0, 4), 10),
                 };
 
             case 'dd/mm/yyyy':
             default:
                 return {
-                    day: parseInt(date.slice(0, 2), 10),
-                    month: parseInt(date.slice(3, 5), 10) - 1,
-                    year: parseInt(date.slice(6, 10), 10),
+                    day: Number.parseInt(date.slice(0, 2), 10),
+                    month: Number.parseInt(date.slice(3, 5), 10) - 1,
+                    year: Number.parseInt(date.slice(6, 10), 10),
                 };
         }
     }
@@ -283,11 +282,7 @@ export class TuiDay extends TuiMonth {
             return min;
         }
 
-        if (max !== null && this.dayAfter(max)) {
-            return max;
-        }
-
-        return this;
+        return max !== null && this.dayAfter(max) ? max : this;
     }
 
     /**
@@ -309,10 +304,12 @@ export class TuiDay extends TuiMonth {
             months,
             TuiYear.isLeapYear(years),
         );
+
         const currentMonthDaysCount = TuiMonth.getMonthDaysCount(
             this.month,
             TuiYear.isLeapYear(years),
         );
+
         let days = day;
 
         if (this.day >= monthDaysCount) {

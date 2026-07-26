@@ -38,9 +38,7 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
         tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
         tuiHintOptionsProvider({direction: 'bottom'}),
     ],
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBreadcrumbs {
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});

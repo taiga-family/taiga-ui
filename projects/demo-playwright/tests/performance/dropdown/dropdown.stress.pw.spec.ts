@@ -93,6 +93,7 @@ test.describe('Dropdown Performance', () => {
             example,
             WARM_RUNS,
         );
+
         const warmMedian = median(warmSamples);
 
         await PerformanceCollector.stopTestCollection(
@@ -133,7 +134,7 @@ test.describe('Dropdown Performance', () => {
     test('dropdown-nested-stress', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         po = new TuiDocumentationPagePO(page);
-        const example = po.getExample('#complex');
+        const example = po.getExample('#complex-example');
 
         await example.scrollIntoViewIfNeeded().catch(() => {});
         const ctx = createDropdownCtx(example);

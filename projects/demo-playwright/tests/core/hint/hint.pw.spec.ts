@@ -17,19 +17,19 @@ test.describe('TuiHint', () => {
 
     test.describe('Manual hint works', () => {
         const directions: Array<TuiHintOptions['direction']> = [
-            'bottom-left',
-            'bottom-right',
+            'bottom-start',
+            'bottom-end',
             'bottom',
-            'left-bottom',
-            'left-top',
-            'left',
-            'right-bottom',
-            'right-top',
-            'right',
-            'top-left',
-            'top-right',
+            'start-bottom',
+            'start-top',
+            'start',
+            'end-bottom',
+            'end-top',
+            'end',
+            'top-start',
+            'top-end',
             'top',
-            ['bottom', 'left'],
+            ['bottom', 'start'],
         ];
 
         directions.forEach((direction, directionIndex) => {
@@ -40,7 +40,7 @@ test.describe('TuiHint', () => {
                     await page.setViewportSize({width, height: 300});
                     await tuiGoto(
                         page,
-                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
+                        `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
                     );
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
@@ -59,12 +59,12 @@ test.describe('TuiHint', () => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=0&darkMode=${mode}`,
+                `${DemoRoute.Hint}/API?tuiHintShowDelay=0&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
             await example.prepareBeforeScreenshot();
-            await example.apiPageExample.locator('span').hover();
+            await example.demo.locator('span').hover();
             await page.waitForTimeout(0);
 
             await expect
@@ -84,7 +84,7 @@ test.describe('TuiHint', () => {
             await example.prepareBeforeScreenshot();
 
             await page.clock.install();
-            await example.apiPageExample.locator('span').hover();
+            await example.demo.locator('span').hover();
             await page.clock.runFor(0);
 
             await expect
@@ -113,7 +113,7 @@ test.describe('TuiHint', () => {
 
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
-        const example = new TuiDocumentationPagePO(page).getExample('#example-base');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.locator('[tuiTooltip]').nth(0).hover();
 
@@ -136,7 +136,7 @@ test.describe('TuiHint', () => {
         await page.setViewportSize({width: 1280, height: 300});
         await tuiGoto(
             page,
-            '/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=12',
+            `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=12`,
         );
 
         await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
@@ -164,6 +164,10 @@ test.describe('TuiHint', () => {
         test('Increment inside hint', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
+            await page.addInitScript(() =>
+                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
+            );
+
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
             await example.locator('[tuiAvatar]').click();
@@ -179,5 +183,16 @@ test.describe('TuiHint', () => {
             await example.click();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
+    });
+
+    test('disappears when host disappears', async ({page}) => {
+        await tuiGoto(page, DemoRoute.HintManual);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.locator('button').click();
+        await expect(page.locator('tui-hint')).toBeAttached();
+        await page.locator('#basic tui-segmented button').last().click();
+        await expect(page.locator('tui-hint')).not.toBeAttached();
     });
 });

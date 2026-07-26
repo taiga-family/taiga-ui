@@ -26,13 +26,13 @@ describe('InputInline', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiInputInline);
-
         public control = new FormControl('');
     }
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
     let pageObject: TuiPageObject<Test>;
+
     const testContext = {
         get prefix() {
             return 'tui-input-inline__';

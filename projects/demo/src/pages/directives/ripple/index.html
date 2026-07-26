@@ -1,0 +1,17 @@
+<tui-doc-page
+    header="Ripple"
+    package="ADDON-MOBILE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive for «ripple» effect on mobile devices</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+</tui-doc-page>

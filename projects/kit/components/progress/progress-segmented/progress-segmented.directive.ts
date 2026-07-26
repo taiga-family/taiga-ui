@@ -5,14 +5,19 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './progress-segmented.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './progress-segmented.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-progress-segmented'},
+    exportAs: `tui-progress-segmented-${TUI_VERSION}`,
 })
 class Styles {}
 

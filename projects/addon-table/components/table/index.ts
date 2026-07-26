@@ -7,6 +7,7 @@ export * from './directives/sortable.directive';
 export * from './directives/stuck.directive';
 export * from './directives/table.directive';
 export * from './directives/thead.directive';
+export * from './pipes/sorter.pipe';
 export * from './pipes/table-sort.pipe';
 export * from './table';
 export * from './table.options';

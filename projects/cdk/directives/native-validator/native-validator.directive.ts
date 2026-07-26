@@ -1,4 +1,5 @@
-import {Directive, input} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {Directive, inject, input} from '@angular/core';
 import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -8,12 +9,11 @@ import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 @Directive({
     selector: '[tuiNativeValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
-    host: {
-        '(focusout)': 'handleValidation()',
-    },
+    host: {'(focusout)': 'handleValidation()'},
 })
 export class TuiNativeValidator implements Validator {
     private readonly el = tuiInjectElement<HTMLInputElement>();
+    private readonly doc = inject(DOCUMENT);
     private readonly control$ = new BehaviorSubject<AbstractControl | null>(null);
 
     protected readonly sub = this.control$
@@ -26,6 +26,11 @@ export class TuiNativeValidator implements Validator {
         .subscribe(() => this.handleValidation());
 
     public readonly tuiNativeValidator = input('Invalid');
+    public id = '';
+
+    public get control(): AbstractControl | null {
+        return this.control$.value;
+    }
 
     public validate(control: AbstractControl): null {
         this.control$.next(control);
@@ -34,10 +39,16 @@ export class TuiNativeValidator implements Validator {
     }
 
     protected handleValidation(): void {
-        const invalid = !!this.control$.value?.touched && this.control$.value?.invalid;
+        const invalid = !!this.control?.touched && this.control?.invalid;
 
         // TODO: Replace with :has(:invalid) when supported
         this.el.closest('tui-textfield')?.classList.toggle('tui-invalid', invalid);
         this.el.setCustomValidity?.(invalid ? this.tuiNativeValidator() : '');
+        this.el.setAttribute('aria-invalid', String(invalid));
+
+        if (!this.id && invalid) {
+            this.doc.dispatchEvent(new CustomEvent('tui-validator', {detail: this}));
+            this.el.setAttribute('aria-describedby', this.id);
+        }
     }
 }

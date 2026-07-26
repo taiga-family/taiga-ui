@@ -1,8 +1,7 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {Directive, forwardRef, inject} from '@angular/core';
+import {Directive} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -15,7 +14,6 @@ import {filter, map, switchMap, timer} from 'rxjs';
 
 import {type TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
-import {TuiInputFiles} from './input-files.component';
 import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 import {TuiInputFilesValidator} from './input-files-validator.directive';
 
@@ -37,17 +35,17 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         title: '',
         type: 'file',
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
+        '(blur)': 'onBlur()',
         '(click)': 'onClick($event)',
     },
 })
 export class TuiInputFilesDirective extends TuiControl<
     TuiFileLike | readonly TuiFileLike[]
 > {
-    protected readonly host = inject(forwardRef(() => TuiInputFiles));
     protected readonly m = tuiAppearanceMode(this.mode);
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
+
     public readonly reject = outputFromObservable(
         timer(0, tuiZonefreeScheduler()).pipe(
             switchMap(() => tuiControlValue(this.control.control)),
@@ -71,10 +69,16 @@ export class TuiInputFilesDirective extends TuiControl<
             event.preventDefault();
         }
     }
+
+    protected onBlur(): void {
+        if (this.el !== this.el.ownerDocument.activeElement) {
+            this.onTouched();
+        }
+    }
 }
 
 function toArray(
     value: TuiFileLike | readonly TuiFileLike[] | null,
 ): readonly TuiFileLike[] {
-    return value ? coerceArray(value) : EMPTY_ARRAY;
+    return value ? coerceArray(value) : [];
 }

@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {type TuiSizeS} from '@taiga-ui/core/types';
@@ -28,7 +28,7 @@ import {delay, map} from 'rxjs';
     styleUrl: './pager.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        MutationObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
@@ -51,8 +51,9 @@ export class TuiPager implements OnChanges, AfterViewInit {
     protected readonly end = signal(0);
     protected readonly left = signal(0);
     protected readonly gap = computed(() => (this.size() === 'm' ? 9 : 7));
+
     protected readonly maxWidth = toSignal(
-        inject(MutationObserverService, {self: true}).pipe(
+        inject(WaMutationObserverService, {self: true}).pipe(
             delay(0),
             map(() => this.visibleWidth),
             tuiWatch(),
@@ -77,6 +78,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleRange(): [start: number, end: number] {
         const max = this.max() > this.count() ? this.count() : this.max();
+
         const start = Math.min(
             Math.max(this.index() - Math.floor(max / 2), 0),
             this.count() - max,

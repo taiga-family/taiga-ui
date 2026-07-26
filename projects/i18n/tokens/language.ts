@@ -7,9 +7,7 @@ import {type TuiLanguage} from '@taiga-ui/i18n/types';
  */
 export const TUI_DEFAULT_LANGUAGE = new InjectionToken<TuiLanguage>(
     ngDevMode ? 'TUI_DEFAULT_LANGUAGE' : '',
-    {
-        factory: () => TUI_ENGLISH_LANGUAGE,
-    },
+    {factory: () => TUI_ENGLISH_LANGUAGE},
 );
 
 /**
@@ -17,7 +15,5 @@ export const TUI_DEFAULT_LANGUAGE = new InjectionToken<TuiLanguage>(
  */
 export const TUI_LANGUAGE = new InjectionToken<Signal<TuiLanguage>>(
     ngDevMode ? 'TUI_LANGUAGE' : '',
-    {
-        factory: () => signal(inject(TUI_DEFAULT_LANGUAGE)),
-    },
+    {factory: () => signal(inject(TUI_DEFAULT_LANGUAGE))},
 );

@@ -10,6 +10,7 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsOptionContent,
     type TuiDataListAccessor,
@@ -51,12 +52,14 @@ export class TuiComboBoxDirective<T>
     extends TuiControl<T | string | null>
     implements TuiTextfieldAccessor<T>
 {
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
     private readonly input: TuiInputDirective<T> = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
+
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => 'options' in x && isSignal(x.options),
     );
@@ -87,10 +90,12 @@ export class TuiComboBoxDirective<T>
         }
 
         const textfieldValue = this.input.value();
+
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
-        const value = untracked(() => this.value());
+
+        const value = untracked(this.value);
         const unchanged = this.stringify(value) === textfieldValue;
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 
@@ -113,10 +118,14 @@ export class TuiComboBoxDirective<T>
     });
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => this.strict() && this.value() === null);
+        const incomplete = untracked(
+            () => this.strict() && this.input.value() && this.value() === null,
+        );
 
         if (!this.host.focused() && incomplete) {
-            this.input.value.set('');
+            this.el.value = '';
+            this.el.dispatchEvent(new Event('input', {bubbles: true}));
+            this.toggleDropdown(false);
         }
     });
 
@@ -164,6 +173,6 @@ export class TuiComboBoxDirective<T>
     }
 
     private stringify(value?: T | string | null): string {
-        return value != null ? this.handlers.stringify()(value) : '';
+        return value == null ? '' : this.handlers.stringify()(value);
     }
 }

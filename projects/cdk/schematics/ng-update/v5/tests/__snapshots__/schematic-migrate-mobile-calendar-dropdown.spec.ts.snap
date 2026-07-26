@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update MobileCalendarDropdownNew renames TuiMobileCalendarDropdownNew to TuiMobileCalendarDropdown: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiMobileCalendarDropdownNew],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiMobileCalendarDropdown } from "@taiga-ui/addon-mobile";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiMobileCalendarDropdown],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;

@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
@@ -21,18 +22,22 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
 @Component({
     selector: 'tui-tiles',
     template: '<ng-content />',
-    styleUrl: './tiles.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tiles.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {childList: true},
         },
     ],
-    host: {'(pointerleave.zoneless)': 'rearrange()'},
+    host: {'data-tui-version': TUI_VERSION, '(pointerleave.zoneless)': 'rearrange()'},
 })
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
@@ -49,7 +54,6 @@ export class TuiTilesComponent {
 
     public readonly debounce = input(0);
     public readonly order = model(new Map<number, number>());
-
     public readonly element = signal<Element | null>(null);
     public readonly el = tuiInjectElement();
 
@@ -65,6 +69,7 @@ export class TuiTilesComponent {
         const elements = Array.from(this.el.children);
         const currentIndex = elements.indexOf(this.element() || element);
         const newIndex = elements.indexOf(element);
+
         const order = this.order().size
             ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));

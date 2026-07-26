@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update amount migrates amount direction: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-loader
+                    [overlay]="true"
+                    [showLoader]="loading"
+                >
+                    <div class="wrapper">
+                        <tui-ring-chart
+                            [value]="value"
+                            [(activeItemIndex)]="activeItemIndex"
+                        >
+                            <span>{{ sum | tuiAmount : "RUB": 'right' }}</span>
+                            <div>{{ label }}</div>
+                        </tui-ring-chart>
+
+                        <div class="legend">
+                            <tui-legend-item
+                                *ngFor="let label of labelsExpenses; let index = index"
+                                size="s"
+                                class="item"
+                                [color]="getColor(index)"
+                                [text]="label"
+                                [active]="isItemActive(index)"
+                                (tuiHoveredChange)="onHover(index, $event)"
+                            >
+                                <span>
+                                    {{ value[index] | tuiAmount : "RUB" : 'right' }}
+                                </span>
+                            </tui-legend-item>
+                        </div>
+                    </div>
+                </tui-loader>
+            ",
+  "1. After": "
+                <tui-loader
+                    [overlay]="true"
+                    [loading]="loading"
+                >
+                    <div class="wrapper">
+                        <tui-ring-chart
+                            [value]="value"
+                            [(activeItemIndex)]="activeItemIndex"
+                        >
+                            <span>{{ sum | tuiAmount : "RUB": 'end' }}</span>
+                            <div>{{ label }}</div>
+                        </tui-ring-chart>
+
+                        <div class="legend">
+                            <tui-legend-item
+                                *ngFor="let label of labelsExpenses; let index = index"
+                                size="s"
+                                class="item"
+                                [color]="getColor(index)"
+                                [text]="label"
+                                [active]="isItemActive(index)"
+                                (tuiHoveredChange)="onHover(index, $event)"
+                            >
+                                <span>
+                                    {{ value[index] | tuiAmount : "RUB" : 'end' }}
+                                </span>
+                            </tui-legend-item>
+                        </div>
+                    </div>
+                </tui-loader>
+            ",
+}
+`;

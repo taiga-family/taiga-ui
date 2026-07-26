@@ -7,9 +7,7 @@ import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
     template: '<ng-content />',
     styleUrl: './td.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._editable]': 'control() || textfield()',
-    },
+    host: {'[class._editable]': 'control() || textfield()'},
 })
 export class TuiTableTd {
     protected readonly control = contentChild(TuiControl<unknown>);

@@ -32,9 +32,7 @@ export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
     ];
 }
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLanguage>> {
     private readonly fallback = inject(TUI_DEFAULT_LANGUAGE);
     private readonly key = inject(TUI_LANGUAGE_STORAGE_KEY);
@@ -44,7 +42,8 @@ export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLa
     constructor() {
         super(
             tuiAsyncLoadLanguage(
-                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
+                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)) ||
+                    null,
                 inject(TUI_LANGUAGE_LOADER, {optional: true}),
                 inject(TUI_DEFAULT_LANGUAGE),
             ),

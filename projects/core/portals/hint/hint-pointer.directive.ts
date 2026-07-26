@@ -12,9 +12,7 @@ import {TuiHintHover} from './hint-hover.directive';
 @Directive({
     selector: '[tuiHint][tuiHintPointer]',
     providers: [tuiAsRectAccessor(TuiHintPointer), tuiAsDriver(TuiHintPointer)],
-    host: {
-        '(mousemove.zoneless)': 'onMove($event)',
-    },
+    host: {'(mousemove.zoneless)': 'onMove($event)'},
 })
 export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {
     private currentRect = EMPTY_CLIENT_RECT;

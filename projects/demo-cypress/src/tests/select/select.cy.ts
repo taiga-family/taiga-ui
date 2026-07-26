@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {createOutputSpy} from 'cypress/angular';
@@ -50,7 +50,6 @@ interface User {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
     protected readonly options: User[] = Array.from({length: 5}, (_, i) => ({

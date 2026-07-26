@@ -1,7 +1,7 @@
 import 'cypress-plugin-tab';
 import './commands';
 
-import {provideTaiga} from '@taiga-ui/core';
+import {provideTaiga, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
 import {mount} from 'cypress/angular';
 import addCompareSnapshotCommand from 'cypress-image-diff-js/command';
 
@@ -16,10 +16,14 @@ declare global {
     }
 }
 
-export const stableMount: typeof mount = (component, config) => {
-    return mount(component, {
+export const stableMount: typeof mount = (component, config) =>
+    mount(component, {
         ...config,
-        providers: [...(config?.providers || []), provideTaiga()],
+        providers: [
+            ...(config?.providers || []),
+            provideTaiga(),
+            {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
+        ],
     }).then((mountResponse) =>
         cy
             .then(
@@ -37,6 +41,5 @@ export const stableMount: typeof mount = (component, config) => {
                 return mountResponse.fixture.whenStable().then(() => mountResponse);
             }),
     );
-};
 
 Cypress.Commands.add('mount', stableMount);

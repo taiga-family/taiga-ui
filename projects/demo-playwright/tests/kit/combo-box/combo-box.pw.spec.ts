@@ -9,12 +9,16 @@ describe('ComboBox', () => {
 
     describe('API', () => {
         let example!: Locator;
+        let value!: Locator;
+        let submit!: Locator;
         let comboBox!: TuiComboBoxPO;
 
         beforeEach(({page}) => {
             const documentationPage = new TuiDocumentationPagePO(page);
 
-            example = documentationPage.apiPageExample;
+            example = documentationPage.demo;
+            value = documentationPage.value;
+            submit = documentationPage.submitFormControlButton;
             comboBox = new TuiComboBoxPO(
                 example.locator('tui-textfield:has([tuiComboBox])'),
             );
@@ -30,15 +34,13 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
-                hasText: 'Austria',
-            });
+            const option = comboBox.dropdown.locator('[tuiOption]', {hasText: 'Austria'});
 
             await expect
                 .soft(option)
                 .toHaveScreenshot('01-combobox-option-no-checkmark.png');
 
-            await expect(example).toContainText('"testValue": null');
+            await expect(value).toContainText('"value": null');
         });
 
         test('Automatically selects not disabled option by typing its name', async ({
@@ -48,16 +50,14 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
-                hasText: 'Austria',
-            });
+            const option = comboBox.dropdown.locator('[tuiOption]', {hasText: 'Austria'});
 
             await expect
                 .soft(option)
                 .toHaveScreenshot('02-combobox-option-has-checkmark.png');
 
-            await expect(example).toContainText('"id": "AT"');
-            await expect(example).toContainText('"name": "Austria"');
+            await expect(value).toContainText('"id": "AT"');
+            await expect(value).toContainText('"name": "Austria"');
         });
 
         test('corrects textfield value on exact matching from datalist', async ({
@@ -68,14 +68,14 @@ describe('ComboBox', () => {
             await comboBox.textfield.fill('aUsTri');
 
             await expect(comboBox.textfield).toHaveValue('aUsTri');
-            await expect(example).toContainText('"testValue": null');
+            await expect(value).toContainText('"value": null');
 
             await comboBox.textfield.pressSequentially('a');
 
             await expect(comboBox.textfield).toHaveValue('Austria');
 
-            await expect(example).toContainText('"id": "AT"');
-            await expect(example).toContainText('"name": "Austria"');
+            await expect(value).toContainText('"id": "AT"');
+            await expect(value).toContainText('"name": "Austria"');
         });
 
         test('selects option on Enter (if it is a single datalist item)', async ({
@@ -83,14 +83,21 @@ describe('ComboBox', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.ComboBox}/API?sandboxExpanded=true`);
 
-            await comboBox.textfield.fill('austr');
+            await comboBox.textfield.fill(
+                // cspell:disable-next-line
+                'austr',
+            );
 
             await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
 
             await page.keyboard.press('Enter');
 
-            await expect(comboBox.textfield).toHaveValue('austr');
-            await expect(example).toContainText('"testValue": null');
+            await expect(comboBox.textfield).toHaveValue(
+                // cspell:disable-next-line
+                'austr',
+            );
+
+            await expect(value).toContainText('"value": null');
 
             await comboBox.textfield.pressSequentially('i');
 
@@ -100,8 +107,8 @@ describe('ComboBox', () => {
 
             await expect(comboBox.textfield).toHaveValue('Austria');
 
-            await expect(example).toContainText('"id": "AT"');
-            await expect(example).toContainText('"name": "Austria"');
+            await expect(value).toContainText('"id": "AT"');
+            await expect(value).toContainText('"name": "Austria"');
         });
 
         test('clear incomplete textfield value (not matched by any option) on blur for [strict]=true', async ({
@@ -117,7 +124,7 @@ describe('ComboBox', () => {
             await comboBox.textfield.blur();
 
             await expect(comboBox.textfield).toHaveValue('');
-            await expect(example).toContainText('"testValue": null');
+            await expect(value).toContainText('"value": null');
         });
 
         test('does not clear incomplete textfield value (not matched by any option) on blur for [strict]=false', async ({
@@ -133,7 +140,7 @@ describe('ComboBox', () => {
             await comboBox.textfield.blur();
 
             await expect(comboBox.textfield).toHaveValue('Austri');
-            await expect(example).toContainText('"testValue": "Austri"');
+            await expect(value).toContainText('"value": "Austri"');
         });
 
         test('set `null` on Backspace for matched value', async ({page}) => {
@@ -145,12 +152,36 @@ describe('ComboBox', () => {
             await comboBox.textfield.focus();
             await comboBox.textfield.fill('aUsTrIa');
             await expect(comboBox.textfield).toHaveValue('Austria');
-            await expect(example).toContainText('"id": "AT"');
-            await expect(example).toContainText('"name": "Austria"');
+            await expect(value).toContainText('"id": "AT"');
+            await expect(value).toContainText('"name": "Austria"');
 
             await comboBox.textfield.press('Backspace');
             await expect(comboBox.textfield).toHaveValue('Austri');
-            await expect(example).toContainText('"testValue": null');
+            await expect(value).toContainText('"value": null');
+        });
+
+        describe('updateOn=submit', () => {
+            test('displays selected option immediately, but updates control value only on submit', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.ComboBox}/API?sandboxExpanded=true&updateOn=submit`,
+                );
+
+                await comboBox.textfield.fill('austri');
+                await comboBox.dropdown
+                    .locator('[tuiOption]', {hasText: 'Austria'})
+                    .click();
+
+                await expect(comboBox.textfield).toHaveValue('Austria');
+                await expect(value).toContainText('"value": null');
+
+                await submit.click();
+
+                await expect(value).toContainText('"id": "AT"');
+                await expect(value).toContainText('"name": "Austria"');
+            });
         });
     });
 
@@ -158,12 +189,72 @@ describe('ComboBox', () => {
         let example!: Locator;
         let comboBox!: TuiComboBoxPO;
 
+        describe('Client-side filtering', () => {
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.ComboBox);
+
+                example = new TuiDocumentationPagePO(page).getExample(
+                    '#client-side-filtering',
+                );
+                comboBox = new TuiComboBoxPO(
+                    example.locator('tui-textfield:has([tuiComboBox])'),
+                );
+            });
+
+            test('all items are visible for empty textfield', async () => {
+                await comboBox.textfield.click();
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(8);
+            });
+
+            test('filter works', async () => {
+                await comboBox.textfield.fill('george');
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(4);
+                await expect(comboBox.dropdown).toContainText('George VI');
+                await expect(comboBox.dropdown).toContainText('George V');
+                await expect(comboBox.dropdown).toContainText('George IV');
+                await expect(comboBox.dropdown).toContainText('George III');
+            });
+
+            test('custom matcher converts roman numeral to arabic digit', async () => {
+                await comboBox.textfield.fill('3');
+
+                await expect(comboBox.dropdown).toBeVisible();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
+                await expect(comboBox.dropdown).toContainText('Charles III');
+                await expect(comboBox.dropdown).toContainText('George III');
+            });
+
+            test('continue filtering on exact match if there are partially matched options', async () => {
+                await comboBox.textfield.fill('George V');
+
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: /George V\b/}),
+                ).toBeVisible();
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: 'George VI'}),
+                ).toBeVisible();
+                await expect(comboBox.dropdown).toHaveScreenshot(
+                    'george-5-checked-two-options-only.png',
+                );
+
+                await comboBox.textfield.pressSequentially('I');
+
+                await expect(comboBox.textfield).toHaveValue('George VI');
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(8);
+            });
+        });
+
         describe('Choose form control output', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.ComboBox);
                 const documentationPage = new TuiDocumentationPagePO(page);
 
-                example = documentationPage.getExample('#form-control-output');
+                example = documentationPage.getExample('#choose-form-control-output');
                 comboBox = new TuiComboBoxPO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );
@@ -186,9 +277,7 @@ describe('ComboBox', () => {
             test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.textfield.click();
                 await comboBox.dropdown
-                    .locator('[tuiOption]', {
-                        hasText: 'Eric Idle',
-                    })
+                    .locator('[tuiOption]', {hasText: 'Eric Idle'})
                     .click();
 
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
@@ -316,6 +405,22 @@ describe('ComboBox', () => {
                 await comboBox.textfield.blur();
 
                 await expect(comboBox.textfield).toHaveValue('Afghanistan');
+            });
+
+            test('paste of exact value', async ({page}) => {
+                // Fill with value that is not in first 20 options
+                await comboBox.textfield.fill('Russia');
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
+
+                await expect(
+                    comboBox.dropdown.locator('[tuiOption]', {hasText: 'Russia'}),
+                ).not.toBeAttached();
+
+                await comboBox.textfield.blur();
+                await page.waitForTimeout(100);
+
+                await expect(comboBox.textfield).toHaveValue('Russia');
             });
         });
     });

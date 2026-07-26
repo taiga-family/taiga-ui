@@ -5,19 +5,19 @@ const DEFAULT_MOCKS = [
         patterns: [
             /.*avatar.jpg/,
             /.*avatars.githubusercontent.com.*/,
-            /https:\/\/github.com\/.*.png.*/,
+            /https:\/\/github.com\/.+png.*/,
             /https:\/\/yandex.ru\/map-widget.*/,
-            /https:\/\/m.media-amazon.com\/.*.jpg.*/,
+            /https:\/\/m.media-amazon.com\/.+jpg.*/,
             /.*bf2e94ae58ee713717faf397958a8e3d.jpg/, // filename - MD5 hash value of file content (waterplea avatar)
         ],
         mockImage: `${__dirname}/../stubs/github-avatar.jpeg`,
     },
     {
         patterns: [
-            /.*ng-web-apis.github.io.*.svg$/,
+            /.*ng-web-apis.github.io.+svg$/,
             /.*youtube.com.*/,
             /.*flaticon.com.*/,
-            /.*.mp4/,
+            /.+mp4/,
         ],
         mockImage: `${__dirname}/../stubs/web-api.svg`,
     },

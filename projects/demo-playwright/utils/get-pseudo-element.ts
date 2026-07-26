@@ -15,7 +15,7 @@ export async function tuiGetPseudoElement(page: Page, selector: string): Promise
 
         const rect = element.getBoundingClientRect();
         const styles = window.getComputedStyle(element, '::after');
-        const pseudoWidth = styles.width !== 'auto' ? parseInt(styles.width) : 16;
+        const pseudoWidth = styles.width === 'auto' ? 16 : Number.parseInt(styles.width);
 
         return {
             clickX: rect.right - pseudoWidth / 2,

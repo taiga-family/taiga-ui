@@ -17,6 +17,7 @@ export const TUI_UKRAINIAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Грудень',
     ],
     close: 'Закрити',
+    back: 'Назад',
     clear: 'Очистити',
     nothingFoundMessage: 'Нічого не знайдено',
     defaultErrorMessage: 'Поле заповнено невірно',

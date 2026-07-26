@@ -7,17 +7,21 @@ import {
     type Renderer2,
     ViewContainerRef,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 export const TUI_ENTER = 'tui-enter';
 export const TUI_LEAVE = 'tui-leave';
+export const TUI_ANIMATED = 'tui-animated';
+
+const TUI_LEAVE_KEY = `${TUI_LEAVE}_${TUI_VERSION.split('.')[0]}`;
 
 @Directive({
     selector: '[tuiAnimated]',
     host: {
-        class: TUI_ENTER,
-        '(animationend.self)': 'remove()',
+        class: `${TUI_ENTER} ${TUI_ANIMATED}`,
         '(animationcancel.self)': 'remove()',
+        '(animationend.self)': 'remove()',
     },
 })
 export class TuiAnimated {
@@ -42,16 +46,16 @@ export class TuiAnimated {
 }
 
 function wrap(renderer: Renderer2): void {
-    if (renderer.data[TUI_LEAVE]) {
+    if (renderer.data[TUI_LEAVE_KEY]) {
         return;
     }
 
     const {removeChild} = renderer;
 
-    renderer.data[TUI_LEAVE] = true;
+    renderer.data[TUI_LEAVE_KEY] = true;
 
     renderer.removeChild = (parent: Node, el: Node, host?: boolean): void => {
-        if (!tuiIsElement(el)) {
+        if (!tuiIsElement(el) || !el.classList.contains(TUI_ANIMATED)) {
             removeChild.call(renderer, parent, el, host);
 
             return;
@@ -65,6 +69,7 @@ function wrap(renderer: Renderer2): void {
 
         const animations = el.getAnimations?.() ?? [];
         const last = animations[animations.length - 1];
+
         const finish = (): void => {
             if (!parent || parent.contains(el)) {
                 removeChild.call(renderer, parent, el, host);

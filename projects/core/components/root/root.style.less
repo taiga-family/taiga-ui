@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .tui-zero-scrollbar {
     .scrollbar-hidden();
@@ -12,34 +12,27 @@ input {
 tui-root {
     position: relative;
     display: block;
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     color: var(--tui-text-primary);
     flex: 1;
     border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 0 100vh 0;
     -webkit-tap-highlight-color: transparent;
-}
 
-:root {
-    --tui-inline-start: left;
-    --tui-inline-end: right;
-    --tui-inline: 1;
-}
-
-[dir='rtl'] {
-    --tui-inline-start: right;
-    --tui-inline-end: left;
-    --tui-inline: -1;
+    &:has(> tui-popups tui-modal) > .t-root-content {
+        // stylelint-disable-next-line -- graceful degradation
+        interactivity: inert;
+    }
 }
 
 tui-root > .t-root-scrollbar {
     position: fixed;
-    z-index: 0;
     inset: 0;
+    z-index: 0;
 }
 
 .t-root-content {
     position: relative;
-    top: var(--t-root-top);
+    inset-block-start: var(--t-root-top);
     block-size: 100%;
     isolation: isolate;
 

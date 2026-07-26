@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 /**
  * Adds 'px' to the number and turns it into a string
  */

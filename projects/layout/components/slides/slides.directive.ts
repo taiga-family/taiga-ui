@@ -6,16 +6,21 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_ANIMATED, TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './slides.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './slides.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-slides'},
+    exportAs: `tui-slides-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -23,6 +28,7 @@ class Styles {}
     selector: '[tuiSlides]',
     hostDirectives: [TuiAnimated],
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiSlides: '',
         '[attr.data-direction]': 'sign()',
         '(animationend)': 'onAnimation($event.target)',
@@ -38,6 +44,6 @@ export class TuiSlides {
     protected onAnimation(target: Element): void {
         Array.from(this.el.children)
             .find((element) => element === target)
-            ?.classList.add('tui-slide');
+            ?.classList.add('tui-slide', TUI_ANIMATED);
     }
 }

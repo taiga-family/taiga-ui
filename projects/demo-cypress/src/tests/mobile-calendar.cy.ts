@@ -3,7 +3,7 @@ import {
     Component,
     input,
     output,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
@@ -50,22 +50,14 @@ describe('Mobile calendar', () => {
         protected max = TUI_LAST_DAY;
         protected disabledItemHandler = TUI_FALSE_HANDLER;
 
-        @ViewChild(TuiMobileCalendar, {static: true})
-        public calendar!: TuiMobileCalendar;
-
+        public readonly calendar = viewChild.required(TuiMobileCalendar);
         public readonly single = input(true);
-
         public readonly cancel = output<boolean>();
-
         public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
     }
 
     it('the back button emits a cancel event', () => {
-        cy.mount(Test, {
-            componentProperties: {
-                cancel: createOutputSpy('onCancelSpy'),
-            },
-        });
+        cy.mount(Test, {componentProperties: {cancel: createOutputSpy('onCancelSpy')}});
 
         cy.get('[automation-id="tui-mobile-calendar__cancel"]').click();
         cy.get('@onCancelSpy').should('be.calledWith', true);
@@ -81,11 +73,7 @@ describe('Mobile calendar', () => {
     });
 
     it('single === false', () => {
-        cy.mount(Test, {
-            componentProperties: {
-                single: false,
-            },
-        });
+        cy.mount(Test, {componentProperties: {single: false}});
 
         cy.get('[automation-id="tui-mobile-calendar__label"]').should(
             'contain.text',
@@ -96,9 +84,7 @@ describe('Mobile calendar', () => {
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
             cy.mount(Test, {
-                componentProperties: {
-                    confirm: createOutputSpy('onConfirmSpy'),
-                },
+                componentProperties: {confirm: createOutputSpy('onConfirmSpy')},
             });
 
             cy.get(
@@ -129,14 +115,12 @@ describe('Mobile calendar', () => {
         // TODO: why failed after https://github.com/taiga-family/taiga-ui/pull/8961
         xit('year selection scrolls through months', () => {
             cy.mount(Test, {
-                componentProperties: {
-                    confirm: createOutputSpy('onConfirmSpy'),
-                },
+                componentProperties: {confirm: createOutputSpy('onConfirmSpy')},
             })
                 .then((wrapper) => wrapper.component)
                 .then((component) => {
                     cy.wait(500).then(() => {
-                        component.calendar.setYear(1950);
+                        component.calendar().setYear(1950);
 
                         cy.get(
                             '[automation-id="tui-primitive-calendar-mobile__cell"]:visible',

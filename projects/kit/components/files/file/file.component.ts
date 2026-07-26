@@ -42,6 +42,7 @@ export class TuiFile {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts = inject(TUI_FILE_TEXTS);
+
     protected readonly content = computed<PolymorpheusContent>(() =>
         this.state() === 'error' && !this.file().content
             ? this.fileTexts().loadingError

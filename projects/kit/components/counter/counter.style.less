@@ -1,0 +1,55 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: flex;
+    min-inline-size: min(10.5rem, 100%);
+    max-inline-size: 100%;
+    align-items: center;
+    inline-size: fit-content;
+    justify-content: flex-end;
+    border-radius: 1rem;
+    gap: 0.25rem;
+
+    &[data-size='m'] {
+        min-inline-size: min(8.125rem, 100%);
+        border-radius: 0.75rem;
+    }
+
+    &[data-size='s'] {
+        min-inline-size: min(6rem, 100%);
+        border-radius: 2rem;
+
+        .t-button:first-child::after {
+            inset-inline-end: 0;
+        }
+
+        .t-button:last-child::after {
+            inset-inline-start: 0;
+        }
+    }
+
+    &[data-appearance='primary'] {
+        background: var(--tui-background-accent-1);
+        color: var(--tui-text-primary-on-accent-1);
+    }
+
+    &[data-appearance='flat'] {
+        background: var(--tui-background-neutral-1);
+    }
+}
+
+.t-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    white-space: nowrap;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    transition: none;
+}
+
+.t-button {
+    .tui-hitbox(2.75rem);
+
+    border-radius: inherit;
+}

@@ -1,0 +1,76 @@
+<div
+    tuiCardMedium
+    class="poster"
+>
+    <h2 tuiTitle>
+        Poster
+
+        @let text =
+            `Look deep into nature, and then you will understand everything better: cinema, concerts, theaters and sports up to 25%`;
+
+        <span
+            tuiSubtitle
+            tuiTruncate="2"
+            [attr.title]="text"
+            [textContent]="text"
+        ></span>
+    </h2>
+
+    <div
+        tuiBadge
+        class="badge"
+    >
+        <tui-icon icon="@tui.rss" />
+        10%
+    </div>
+</div>
+
+<div
+    tuiCardMedium
+    class="fly"
+>
+    <div
+        tuiBadge
+        class="badge"
+    >
+        <tui-icon icon="@tui.timer" />
+        50 min
+    </div>
+
+    <h2 tuiTitle>
+        Order #31
+
+        <span
+            tuiSubtitle
+            tuiTruncate
+        >
+            8375 Brook Avenue Brooklyn, NY 11206
+        </span>
+    </h2>
+</div>
+
+<div
+    tuiCardLarge="compact"
+    class="one-line"
+>
+    <div tuiCell>
+        <tui-icon icon="@tui.file" />
+        <div tuiTruncate>filename_long_long_long_long_long_long_long_long_long_longname.doc</div>
+    </div>
+</div>
+
+@let filename = `filename_long_long_long_long_long_long_long_long_long_longname.doc`;
+
+<div
+    tuiCardLarge="compact"
+    tuiHintDirection="top-end"
+    class="two-line"
+    [tuiHint]="filename"
+>
+    <div tuiCell>
+        <tui-icon icon="@tui.file" />
+        <div tuiTruncate="2">
+            {{ filename }}
+        </div>
+    </div>
+</div>

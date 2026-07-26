@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiBarSet} from '@taiga-ui/addon-charts';
@@ -16,9 +16,7 @@ describe('BarSet', () => {
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild(TuiBarSet)
-        public readonly component!: TuiBarSet;
-
+        public readonly component = viewChild(TuiBarSet);
         public readonly value = [10, 20, 30, 40];
         public collapsed = false;
     }

@@ -55,6 +55,7 @@ export class TuiDialogComponent<O, I> {
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected readonly from = computed(() =>
         this.size === 'fullscreen' || this.size === 'page' || this.isMobile()
             ? 'translateY(100vh)'

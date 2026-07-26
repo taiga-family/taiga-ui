@@ -14,6 +14,7 @@ export class TuiDocAppearance {
     protected readonly routes = DemoRoute;
     protected selected = '';
     protected readonly modes = ['invalid', 'checked', ['invalid', 'checked']];
+
     protected readonly appearances = [
         'primary',
         'primary-destructive',
@@ -38,7 +39,6 @@ export class TuiDocAppearance {
         'icon',
         'floating',
         'textfield',
-        'glass',
         'accent',
     ] as const;
 

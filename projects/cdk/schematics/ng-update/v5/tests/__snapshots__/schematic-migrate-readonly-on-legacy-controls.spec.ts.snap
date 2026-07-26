@@ -1,0 +1,851 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves [readOnly]="true" from tui-input to <input tuiInput>: test.html 1`] = `
+{
+  "0. Before": "<tui-input [readOnly]="true">Label</tui-input>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Label</label>
+<input tuiInput [readOnly]="true" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves [readOnly]="true" from tui-input to <input tuiInput>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves bound [readOnly] from tui-input to <input tuiInput>: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        [readOnly]="!show"
+                        [(ngModel)]="value"
+                    >
+                        Name on the card
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Name on the card</label>
+                    <input tuiInput [(ngModel)]="value" [readOnly]="!show" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves bound [readOnly] from tui-input to <input tuiInput>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves static readOnly attribute from tui-input to <input tuiInput>: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        readOnly
+                        [(ngModel)]="value"
+                    >
+                        Label
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Label</label>
+                    <input tuiInput [(ngModel)]="value" readOnly />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls basic [readOnly] migration moves static readOnly attribute from tui-input to <input tuiInput>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] alongside [(ngModel)] without leaving TODO comment: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        [readOnly]="!show"
+                        [(ngModel)]="value"
+                    >
+                        Name on the card
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Name on the card</label>
+                    <input tuiInput [(ngModel)]="value" [readOnly]="!show" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] alongside [(ngModel)] without leaving TODO comment: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] alongside wrapper attrs and recognized hint: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        formControlName="value"
+                        tuiHintContent="Hint"
+                        tuiTextfieldSize="s"
+                        [readOnly]="!show"
+                    >
+                        Label
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield tuiTextfieldSize="s">
+                    <label tuiLabel>Label</label>
+                    <input tuiInput formControlName="value" [readOnly]="!show" />
+<tui-icon tuiTooltip="Hint" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] alongside wrapper attrs and recognized hint: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
+import { TuiInput, TuiIcon } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput, TuiIcon, TuiTooltip],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] together with formControlName: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input
+                        formControlName="value"
+                        [readOnly]="!show"
+                    >
+                        Label
+                    </tui-input>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>Label</label>
+                    <input tuiInput formControlName="value" [readOnly]="!show" />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls combined with other attributes moves [readOnly] together with formControlName: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-combo-box to <input tuiComboBox>: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-combo-box
+                        [readOnly]="!show"
+                        [(ngModel)]="value"
+                    >
+                        Label
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        />
+                    </tui-combo-box>
+                ",
+  "1. After": "
+                    <tui-textfield
+                    >
+<label tuiLabel>
+                        Label
+                        </label>
+
+<input tuiComboBox [(ngModel)]="value" [readOnly]="!show" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items"
+                        />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-combo-box to <input tuiComboBox>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-date to <input tuiInputDate>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date [readOnly]="!show">Date</tui-input-date>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Date</label>
+
+<input tuiInputDate [readOnly]="!show" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-date to <input tuiInputDate>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-date-range to <input tuiInputDateRange>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-date-range [readOnly]="!show">Range</tui-input-date-range>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Range</label>
+
+<input tuiInputDateRange [readOnly]="!show" />
+<tui-calendar-range *tuiDropdown />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-date-range to <input tuiInputDateRange>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-phone to <input tuiInputPhone>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-phone [readOnly]="!show">Phone</tui-input-phone>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Phone</label>
+
+<input tuiInputPhone [readOnly]="!show" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-phone to <input tuiInputPhone>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-tag to <input tuiInputChip>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-tag [readOnly]="!show">Tags</tui-input-tag>",
+  "1. After": "<tui-textfield multi>
+<label tuiLabel>Tags</label>
+
+<input tuiInputChip [readOnly]="!show" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-tag to <input tuiInputChip>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-time to <input tuiInputTime>: test.html 1`] = `
+{
+  "0. Before": "<tui-input-time [readOnly]="!show">Time</tui-input-time>",
+  "1. After": "<tui-textfield>
+<label tuiLabel>Time</label>
+
+<input tuiInputTime [readOnly]="!show" />
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-input-time to <input tuiInputTime>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-multi-select to <input tuiInputChip>: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-multi-select
+                        [readOnly]="!show"
+                        [formControl]="control"
+                    >
+                        Persons
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        />
+                    </tui-multi-select>
+                ",
+  "1. After": "
+                    <tui-textfield multi tuiChevron
+                    >
+                        Persons
+                        <input tuiInputChip [formControl]="control" [readOnly]="!show" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items"
+                        />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-multi-select to <input tuiInputChip>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-select to <input tuiSelect>: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-select
+                        [readOnly]="!show"
+                        [(ngModel)]="value"
+                    >
+                        Select user
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        />
+                    </tui-select>
+                ",
+  "1. After": "
+                    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    >
+<label tuiLabel>
+                        Select user
+                        </label>
+
+<input tuiSelect [(ngModel)]="value" [readOnly]="!show" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items"
+                        />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-select to <input tuiSelect>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-textarea to <textarea tuiTextarea>: test.html 1`] = `
+{
+  "0. Before": "<tui-textarea [readOnly]="!show">Label</tui-textarea>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+<tui-textfield>
+<label tuiLabel>Label</label>
+<textarea tuiTextarea [readOnly]="!show"></textarea>
+</tui-textfield>",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls different legacy controls moves [readOnly] on tui-textarea to <textarea tuiTextarea>: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls inline template moves [readOnly] inside an inline template: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+                    import {TuiInputModule} from '@taiga-ui/legacy';
+
+                    @Component({
+                        selector: 'inline-example',
+                        imports: [FormsModule, TuiInputModule],
+                        template: \`
+                            <tui-input
+                                [readOnly]="!show"
+                                [(ngModel)]="value"
+                            >
+                                Name on the card
+                            </tui-input>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class InlineExample {
+                        show = true;
+                        value = '';
+                    }
+                ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+                    import {ChangeDetectionStrategy, Component} from '@angular/core';
+                    import {FormsModule} from '@angular/forms';
+
+                    @Component({
+                        selector: 'inline-example',
+                        imports: [FormsModule, TuiInput],
+                        template: \`
+                            <tui-textfield>
+                            <label tuiLabel>Name on the card</label>
+                            <input tuiInput [(ngModel)]="value" [readOnly]="!show" />
+                            </tui-textfield>
+                        \`,
+                        changeDetection: ChangeDetectionStrategy.OnPush,
+                    })
+                    export class InlineExample {
+                        show = true;
+                        value = '';
+                    }
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls multiple occurrences migrates [readOnly] on multiple legacy controls in one template: test.html 1`] = `
+{
+  "0. Before": "
+                    <tui-input [readOnly]="!show">First</tui-input>
+                    <tui-textarea [readOnly]="!show">Second</tui-textarea>
+                    <tui-select
+                        [readOnly]="!show"
+                        [(ngModel)]="value"
+                    >
+                        Third
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        />
+                    </tui-select>
+                ",
+  "1. After": "
+                    <tui-textfield>
+                    <label tuiLabel>First</label>
+                    <input tuiInput [readOnly]="!show" />
+                    </tui-textfield>
+                    <!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+-->
+                    <tui-textfield>
+                    <label tuiLabel>Second</label>
+                    <textarea tuiTextarea [readOnly]="!show"></textarea>
+                    </tui-textfield>
+                    <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    >
+<label tuiLabel>
+                        Third
+                        </label>
+
+<input tuiSelect [(ngModel)]="value" [readOnly]="!show" />
+<tui-data-list-wrapper
+                            *tuiDropdown
+                            [items]="items"
+                        />
+                    </tui-textfield>
+                ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls multiple occurrences migrates [readOnly] on multiple legacy controls in one template: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls should not change does not touch already-migrated <input tuiInput> with [readOnly]: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;
+
+exports[`ng-update readOnly on legacy controls should not change does not touch legacy control without [readOnly]: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiInputModule} from '@taiga-ui/legacy';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInputModule],
+            })
+            export class Test {}
+        ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiInput],
+            })
+            export class Test {}
+        ",
+}
+`;

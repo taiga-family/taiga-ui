@@ -50,7 +50,6 @@ describe('ng-add', () => {
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -76,7 +75,6 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -102,7 +100,6 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -113,7 +110,7 @@ describe('ng-add', () => {
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -128,8 +125,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
               "styles": [
-                "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+                "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+                "node_modules/@taiga-ui/styles/taiga-ui-fonts.less"
               ],
               "assets": [
                 {
@@ -152,7 +149,7 @@ describe('ng-add', () => {
 
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -167,8 +164,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -207,8 +204,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -229,7 +226,7 @@ describe('ng-add', () => {
     it('should wrap main template with tui-root', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -241,23 +238,48 @@ describe('ng-add', () => {
     it('should add root and provider to main module', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
         expect(tree.readContent('test/app/app.module.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
-import { TuiRoot } from "@taiga-ui/core";
+            .toBe(`import { TuiRoot, provideTaiga } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
 import {App} from './app.component';
 
 @NgModule({declarations: [App],
     imports: [BrowserAnimationsModule, TuiRoot],
-    providers: [provideEventPlugins()]
+    providers: [provideTaiga()]
 })
 export class AppModule {}
 `);
+    });
+
+    it('should add styles package if pnpm is used', async () => {
+        createSourceFile('pnpm-lock.yaml', '');
+        saveActiveProject();
+
+        const options: TuiSchema = {
+            addons: [],
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
+        };
+
+        const tree = await runner.runSchematic('ng-add', options, host);
+
+        expect(tree.readContent('package.json')).toBe(
+            `{
+  "dependencies": {
+    "@angular/core": "~13.0.0",
+    "@taiga-ui/cdk": "${TAIGA_VERSION}",
+    "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/icons": "${TAIGA_VERSION}",
+    "@taiga-ui/kit": "${TAIGA_VERSION}",
+    "@taiga-ui/styles": "${TAIGA_VERSION}"
+  }
+}`,
+        );
     });
 
     afterEach(() => {

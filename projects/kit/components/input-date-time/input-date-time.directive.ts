@@ -2,19 +2,23 @@ import {computed, Directive, effect, inject, input, untracked} from '@angular/co
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
-    maskitoDateTimeOptionsGenerator,
+    maskitoDateTime,
     type MaskitoDateTimeParams,
+    maskitoParseTime,
     maskitoSelectionChangeHandler,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
     MILLISECONDS_IN_DAY,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
@@ -52,6 +56,7 @@ const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
         TuiItemsHandlersValidator,
         TuiWithInput,
     ],
+    host: {'(blur)': 'onBlur($event.target.value)'},
 })
 export class TuiInputDateTimeDirective
     extends TuiInputDateBase<readonly [TuiDay, TuiTime | null]>
@@ -60,12 +65,14 @@ export class TuiInputDateTimeDirective
     private readonly timeFillers = inject(TUI_TIME_TEXTS);
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
+
     protected override readonly filler = tuiWithDateFiller(
         (date) =>
             `${date}${this.options.dateTimeSeparator}${this.timeFillers()?.[this.timeMode()] ?? ''}`,
     );
 
     protected override readonly valueEffect = effect(noop);
+
     protected override readonly identity = tuiDirectiveBinding(
         TuiItemsHandlersDirective,
         'identityMatcher',
@@ -91,16 +98,19 @@ export class TuiInputDateTimeDirective
                 max: this.toNativeDate([this.max(), this.maxTime()]),
                 dateSeparator: this.format().separator,
                 dateTimeSeparator: this.options.dateTimeSeparator,
+                timeStep: 0,
+                dayPeriod: ['', ''],
+                locale: '', // TODO: add to public API
             }),
         ),
     );
 
     public override readonly min = computed<TuiDay>((min = this.minInput()) =>
-        Array.isArray(min) ? min[0] : (min ?? this.options.min),
+        Array.isArray(min) ? min[0] : (min ?? this.options.min ?? TUI_FIRST_DAY),
     );
 
     public override readonly max = computed<TuiDay>((max = this.maxInput()) =>
-        Array.isArray(max) ? max[0] : (max ?? this.options.max),
+        Array.isArray(max) ? max[0] : (max ?? this.options.max ?? TUI_LAST_DAY),
     );
 
     public readonly minTime = computed((min = this.minInput()) =>
@@ -151,8 +161,9 @@ export class TuiInputDateTimeDirective
 
     protected override processCalendar(calendar: TuiCalendar): void {
         super.processCalendar(calendar);
-        calendar.disabledItemHandler = (day: TuiDay) =>
-            this.handlers.disabledItemHandler()([day, null]);
+        tuiSetSignal(calendar.disabledItemHandler, (day: TuiDay) =>
+            this.handlers.disabledItemHandler()([day, null]),
+        );
     }
 
     protected override onValueChange(value: string): void {
@@ -160,12 +171,14 @@ export class TuiInputDateTimeDirective
         this.control?.control?.updateValueAndValidity({emitEvent: false});
 
         const [date = '', time = ''] = value.split(this.options.dateTimeSeparator);
+
         const parsedDate =
             date.length >= DATE_FILLER_LENGTH
                 ? TuiDay.normalizeParse(date, this.format().mode)
                 : null;
+
         const parsedTime =
-            time.length === this.timeMode().length ? TuiTime.fromString(time) : null;
+            time.length === this.timeMode().length ? this.parseTime(time) : null;
 
         if (!parsedDate || (time && !parsedTime)) {
             return this.onChange(null);
@@ -185,6 +198,7 @@ export class TuiInputDateTimeDirective
 
         const dateString =
             date?.toString(this.format().mode, this.format().separator) ?? '';
+
         const timeString = time?.toString(this.timeMode());
 
         return timeString
@@ -192,10 +206,28 @@ export class TuiInputDateTimeDirective
             : dateString;
     }
 
+    protected onBlur(value: string): void {
+        const [date = '', timeValue = ''] = value.split(this.options.dateTimeSeparator);
+
+        if (timeValue && !this.value()) {
+            const time = this.parseTime(timeValue);
+
+            const newValue = [
+                TuiDay.normalizeParse(date, this.format().mode),
+                time,
+            ] as const;
+
+            this.control?.control?.updateValueAndValidity({emitEvent: false});
+            this.onChange(newValue);
+            this.input.value.set(this.stringify(newValue));
+        }
+    }
+
     private clampTime([date, time]: [TuiDay, TuiTime | null]): [TuiDay, TuiTime | null] {
         const min = date.daySame(this.min())
             ? this.minTime().toAbsoluteMilliseconds()
             : -Infinity;
+
         const max = date.daySame(this.max())
             ? this.maxTime().toAbsoluteMilliseconds()
             : Infinity;
@@ -209,15 +241,14 @@ export class TuiInputDateTimeDirective
         ];
     }
 
-    private computeMask(
-        params: Omit<Required<MaskitoDateTimeParams>, 'timeStep'>,
-    ): MaskitoOptions {
-        const options = maskitoDateTimeOptionsGenerator(params);
-        const {timeMode, dateMode, dateTimeSeparator} = params;
+    private computeMask(params: Required<MaskitoDateTimeParams>): MaskitoOptions {
+        const options = maskitoDateTime(params);
+        const {timeMode, dateMode, dateTimeSeparator, dayPeriod} = params;
+
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >=
-                dateMode.length + dateTimeSeparator.length + timeMode.indexOf(' AA')
+                dateMode!.length + dateTimeSeparator.length + timeMode.indexOf(' AA')
                     ? 'text'
                     : 'numeric';
         });
@@ -225,7 +256,9 @@ export class TuiInputDateTimeDirective
         return {
             ...options,
             plugins: options.plugins.concat(
-                timeMode.includes('AA') ? inputModeSwitchPlugin : [],
+                timeMode.includes('AA') || dayPeriod.some(Boolean)
+                    ? inputModeSwitchPlugin
+                    : [],
             ),
         };
     }
@@ -235,5 +268,11 @@ export class TuiInputDateTimeDirective
         TuiTime,
     ]): Date {
         return new Date(year, month, day, hours, minutes, seconds, ms);
+    }
+
+    private parseTime(time: string): TuiTime {
+        const mode = this.timeMode();
+
+        return TuiTime.fromAbsoluteMilliseconds(maskitoParseTime(time, {mode}));
     }
 }

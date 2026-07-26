@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, viewChild} from '@angular/core';
 import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/core';
+import {TuiRange} from '@taiga-ui/kit';
 
 describe('TuiRange', () => {
     let component: Test;
@@ -24,12 +25,9 @@ describe('TuiRange', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiRange, {static: true})
-        protected component!: TuiRange;
+        protected readonly component = viewChild.required(TuiRange);
 
-        @ViewChild(TuiRange, {static: true, read: ElementRef})
-        public el!: ElementRef<HTMLElement>;
-
+        public readonly el = viewChild.required(TuiRange, {read: ElementRef});
         public control = new FormControl([3, 5]);
         public max = 11;
         public min = 1;
@@ -339,7 +337,7 @@ describe('TuiRange', () => {
         ] as const;
 
         testsContexts.forEach(({value, leftOffset, rightOffset}) => {
-            it(`${JSON.stringify(value)}`, () => {
+            it(JSON.stringify(value), () => {
                 component.control.setValue(value as unknown as number[]);
                 fixture.detectChanges();
 
@@ -353,7 +351,7 @@ describe('TuiRange', () => {
         left: string;
         right: string;
     } {
-        const computedStyles = component.el.nativeElement;
+        const computedStyles = component.el().nativeElement;
 
         return {
             left: getComputedStyle(computedStyles).getPropertyValue('--t-start'),

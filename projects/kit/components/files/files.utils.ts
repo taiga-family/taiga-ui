@@ -36,9 +36,7 @@ export function tuiFormatSize(
         return `${size} ${units[0]}`;
     }
 
-    if (size < BYTES_PER_MIB) {
-        return `${(size / BYTES_PER_KIB).toFixed(0)} ${units[1]}`;
-    }
-
-    return `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString(locale)} ${units[2]}`;
+    return size < BYTES_PER_MIB
+        ? `${(size / BYTES_PER_KIB).toFixed(0)} ${units[1]}`
+        : `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString(locale)} ${units[2]}`;
 }

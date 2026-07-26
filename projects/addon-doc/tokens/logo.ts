@@ -6,7 +6,5 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
  */
 export const TUI_DOC_LOGO = new InjectionToken<PolymorpheusContent>(
     ngDevMode ? 'TUI_DOC_LOGO' : '',
-    {
-        factory: () => '',
-    },
+    {factory: () => ''},
 );

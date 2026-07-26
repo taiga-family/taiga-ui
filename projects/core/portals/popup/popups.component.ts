@@ -1,14 +1,39 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {
+    type AfterViewChecked,
+    ChangeDetectionStrategy,
+    Component,
+    type EmbeddedViewRef,
+    type ViewRef,
+} from '@angular/core';
+import {TuiVCR} from '@taiga-ui/cdk/directives/vcr';
 import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk/portals';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TuiPopupService} from './popup.service';
 
+export const TUI_CDR = '_tuiCdr' as const;
+
 @Component({
     selector: 'tui-popups',
-    template: '<ng-content/><ng-container #vcr />',
+    imports: [TuiVCR],
+    template: '<ng-content/><ng-container tuiVCR />',
     styleUrl: './popups.style.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [tuiProvide(TuiPortalService, TuiPopupService)],
 })
-export class TuiPopups extends TuiPortals {}
+export class TuiPopups extends TuiPortals implements AfterViewChecked {
+    public ngAfterViewChecked(): void {
+        for (let i = 0; i < this.anchor().vcr.length; i++) {
+            const ref = this.anchor().vcr.get(i);
+
+            if (isEmbeddedViewRef(ref)) {
+                ref.context?.[TUI_CDR]?.markForCheck();
+            }
+        }
+    }
+}
+
+function isEmbeddedViewRef(ref?: ViewRef | null): ref is EmbeddedViewRef<any> {
+    return !!ref && 'context' in ref;
+}

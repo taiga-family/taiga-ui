@@ -1,0 +1,9 @@
+@for (chip of chips; track chip) {
+    <span
+        appearance="custom"
+        tuiChip
+        [style.background-color]="chip | tuiAutoColor"
+    >
+        {{ chip }}
+    </span>
+}

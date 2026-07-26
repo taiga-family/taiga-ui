@@ -21,13 +21,12 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'ГГ АА',
         HH: 'ГГ',
         'MM:SS.MSS': 'ХХ:СС.МСС',
-        'MM.SS.MSS': 'ХХ.СС.МСС',
         'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['Б', 'КБ', 'МБ'],
     passwordTexts: ['Показати пароль', 'Приховати пароль'],
@@ -70,9 +69,7 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Так',
         no: 'Немає',
     },
-    previewTexts: {
-        rotate: 'Обертати',
-    },
+    previewTexts: {rotate: 'Обертати'},
     zoomTexts: {
         zoomOut: 'Зменшення',
         zoomIn: 'Збільшувати',

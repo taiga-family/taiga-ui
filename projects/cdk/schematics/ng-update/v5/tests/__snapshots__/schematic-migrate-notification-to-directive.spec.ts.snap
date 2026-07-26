@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update notification directive does not duplicate directive attribute: test.html 1`] = `
+{
+  "0. Before": "<tui-notification tuiNotification></tui-notification>",
+  "1. After": "<div tuiNotification></div>",
+}
+`;
+
+exports[`ng-update notification directive handles nested content inside notification: test.html 1`] = `
+{
+  "0. Before": "<tui-notification size="s"><span>Hello</span></tui-notification>",
+  "1. After": "<div tuiNotification size="s"><span>Hello</span></div>",
+}
+`;
+
+exports[`ng-update notification directive handles self-closing notifications: test.html 1`] = `
+{
+  "0. Before": "<tui-notification size="s" />",
+  "1. After": "<div tuiNotification size="s"></div>",
+}
+`;
+
+exports[`ng-update notification directive replaces component tag with div and directive: test.html 1`] = `
+{
+  "0. Before": "<tui-notification appearance="positive"></tui-notification>",
+  "1. After": "<div tuiNotification appearance="positive"></div>",
+}
+`;

@@ -6,23 +6,19 @@ import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
 @Component({
-    selector: 'tui-thumbnail-card',
+    // TODO: Drop tag selector in v6
+    selector: 'tui-thumbnail-card,[tuiThumbnailCard]',
     imports: [TuiIcon],
     templateUrl: './thumbnail-card.template.html',
     styleUrl: './thumbnail-card.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiThumbnailCard {
     protected readonly options = inject(TUI_THUMBNAIL_CARD_OPTIONS);
 
     public readonly size = input<TuiSizeL | TuiSizeXS>(this.options.size);
-
     public readonly paymentSystem = input<TuiPaymentSystem | null>(null);
-
-    public readonly iconStart = input<string>('');
-
-    public readonly iconEnd = input<string>('');
+    public readonly iconStart = input('');
+    public readonly iconEnd = input('');
 }

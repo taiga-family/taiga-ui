@@ -41,12 +41,12 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         },
     ],
     host: {
+        tuiAsideItem: '',
         tuiButton: '',
         tuiOption: '',
-        tuiAsideItem: '',
-        '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd()',
+        '[class._link]': 'link',
     },
 })
 export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
@@ -67,6 +67,7 @@ function provideIcon(): FactoryProvider {
             }
 
             const {check, more} = inject(TUI_COMMON_ICONS);
+
             const active =
                 inject(TuiDataListComponent, {optional: true}) &&
                 inject(RouterLink, {self: true, optional: true})

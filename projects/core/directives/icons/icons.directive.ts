@@ -7,7 +7,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_ICON_END,
@@ -20,24 +20,29 @@ const OPT = {self: true, optional: true} as const;
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/icons.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/icons.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-icons'},
+    exportAs: `tui-icons-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiIcons: '',
-        '[style.--t-icon-start]': 'start()',
-        '[style.--t-icon-end]': 'end()',
-        '[attr.data-icon-start]': 'startMode()',
         '[attr.data-icon-end]': 'endMode()',
+        '[attr.data-icon-start]': 'startMode()',
+        '[style.--t-icon-end]': 'end()',
+        '[style.--t-icon-start]': 'start()',
     },
 })
 export class TuiIcons {
-    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    private readonly resolver = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));

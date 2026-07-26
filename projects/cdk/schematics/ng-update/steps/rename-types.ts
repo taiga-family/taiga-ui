@@ -1,17 +1,15 @@
-import {
-    getImports,
-    type ImportSpecifier,
-    infoLog,
-    Node,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    SUCCESS_SYMBOL,
-    successLog,
-} from 'ng-morph';
+import {getImports, type ImportSpecifier, Node} from 'ng-morph';
 import {type TypeNode} from 'ts-morph';
 
 import {type TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
 import {type ReplacementType} from '../interfaces/replacement-type';
@@ -58,6 +56,7 @@ function processImport(
     remove?: boolean,
 ): void {
     const filePath = node.getSourceFile().getFilePath();
+
     const targetImportAlreadyExists = Boolean(
         getImports(filePath, {namedImports: to}).length,
     );
@@ -70,14 +69,14 @@ function processImport(
 }
 
 function removeGeneric(type: string): string {
-    return type.replaceAll(/<.*>$/gi, '');
+    return type.replaceAll(/<.*>$/g, '');
 }
 
 function addGeneric(typeName: string, generics: TypeNode[]): string {
     const typeArgs = generics.map((t) => t.getType().getText());
     const genericType = typeArgs.length ? `<${typeArgs.join(', ')}>` : '';
 
-    return typeName + genericType;
+    return `${typeName}${genericType}`;
 }
 
 export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {

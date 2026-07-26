@@ -1,9 +1,7 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 import {type TuiMatcher} from '@taiga-ui/cdk/types';
 
-@Pipe({
-    name: 'tuiFilter',
-})
+@Pipe({name: 'tuiFilter'})
 export class TuiFilterPipe implements PipeTransform {
     /**
      * Filters an array through a matcher function using additional arguments

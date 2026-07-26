@@ -4,15 +4,20 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrl: './progress-fixed-gradient.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './progress-fixed-gradient.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fixed-gradient'},
+    exportAs: `tui-fixed-gradient-${TUI_VERSION}`,
 })
 class Styles {}
 

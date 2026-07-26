@@ -1,26 +1,69 @@
+import {type DevkitFileSystem, type UpdateRecorder} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../../constants';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
-    type DevkitFileSystem,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-    type UpdateRecorder,
-} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../../constants';
-import {type TuiSchema} from '../../../ng-add/schema';
-import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
+} from '../../../utils/colored-log';
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../interfaces/template-resource';
-import {addHTMLCommentTags, replaceAttrs} from '../../utils/templates';
+import {
+    addHTMLCommentTags,
+    removeInputs,
+    replaceAttrs,
+    replaceAttrValues,
+    replaceTags,
+} from '../../utils/templates';
+import {ATTR_WITH_VALUES_TO_REPLACE} from './constants/attr-with-values-to-replace';
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
+import {INPUTS_TO_REMOVE} from './constants/inputs-to-remove';
+import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
+import {migrateAccordionItem} from './templates/migrate-accordion';
+import {migrateAmountCurrencyAlign} from './templates/migrate-amount-currency-align';
+import {migrateAsyncPipes} from './templates/migrate-async-pipes';
 import {migrateAvatarToDirective} from './templates/migrate-avatar';
+import {migrateAxes} from './templates/migrate-axes';
+import {migrateCalendarSheetSingle} from './templates/migrate-calendar-sheet-single';
+import {migrateChartHint} from './templates/migrate-chart-hint';
+import {migrateCloseable} from './templates/migrate-closeable';
+import {migrateComboBox} from './templates/migrate-combo-box';
+import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
+import {migrateFieldError} from './templates/migrate-field-error';
+import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
+import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
+import {migrateInput} from './templates/migrate-input';
+import {migrateInputColor} from './templates/migrate-input-color';
+import {migrateInputDate} from './templates/migrate-input-date';
+import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
+import {migrateInputDateRange} from './templates/migrate-input-date-range';
+import {migrateInputDateTime} from './templates/migrate-input-date-time';
+import {migrateInputMonth} from './templates/migrate-input-month';
+import {migrateInputMonthRange} from './templates/migrate-input-month-range';
+import {migrateInputNumber} from './templates/migrate-input-number';
+import {migrateInputPassword} from './templates/migrate-input-password';
+import {migrateInputPhone} from './templates/migrate-input-phone';
+import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
+import {migrateInputRange} from './templates/migrate-input-range';
+import {migrateInputSlider} from './templates/migrate-input-slider';
+import {migrateInputTag} from './templates/migrate-input-tag';
+import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
+import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-content';
+import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
+import {migrateRepeatTimes} from './templates/migrate-repeat-times';
+import {migrateSelect} from './templates/migrate-select';
+import {migrateSidebar} from './templates/migrate-sidebar';
+import {migrateTagToChip} from './templates/migrate-tag';
+import {migrateTextarea} from './templates/migrate-textarea';
+import {migrateTooltip} from './templates/migrate-tooltip';
 
 export function getAction<T>({
     action,
@@ -58,15 +101,52 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
+        getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
+        getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
+        getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
+        migrateInputPassword,
+        migrateInputMonth,
+        migrateInputMonthRange,
+        migrateInputDateTime,
+        migrateInputDate,
+        migrateInputSlider,
+        migrateInputTime,
+        migrateInputPhoneInternational,
+        migrateInputDateMulti,
+        migrateInputTag,
         migrateInputYear,
+        migrateInputPhone,
+        migrateInputNumber,
+        migrateInputDateRange,
+        migrateInputColor,
+        migrateInputRange,
+        migrateMultiSelect,
+        migrateSelect,
+        migrateComboBox,
+        migrateAccordionItem,
         migrateAvatarToDirective,
+        migrateTooltip,
         migrateTuiNotification,
+        migrateRepeatTimes,
+        migrateFieldError,
+        migrateAmountCurrencyAlign,
+        migrateAsyncPipes,
+        migrateTagToChip,
+        migrateAxes,
+        migrateChartHint,
+        migrateCalendarSheetSingle,
+        migrateCloseable,
+        migrateDocDocumentation,
+        migrateSidebar,
+        migrateFormatPhonePipe,
+        migrateHintOnLegacyControls,
+        migrateLegacyCustomContent,
+        migrateInput,
+        migrateTextarea,
     ] as const;
 
-    const progressLog = setupProgressLogger({
-        total: componentWithTemplatesPaths.length,
-    });
+    const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
 
     componentWithTemplatesPaths.forEach((resource) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
@@ -81,8 +161,6 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
     });
 
     fileSystem.commitEdits();
-
-    saveAddedImports(options);
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);

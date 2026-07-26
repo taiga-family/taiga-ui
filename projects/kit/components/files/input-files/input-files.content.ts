@@ -23,6 +23,7 @@ export class TuiInputFilesContent {
 
     protected readonly breakpoint = inject(TUI_BREAKPOINT);
     protected readonly context = injectContext<TuiContext<boolean>>();
+
     protected readonly link = computed(() =>
         this.component.input()?.el.multiple
             ? this.texts().defaultLinkMultiple

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiTextfield to TuiInput identifier migration should rename TuiTextfield to TuiInput in imports and usages: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {TuiTextfield} from '@taiga-ui/core';
+
+                    @Component({
+                        standalone: true,
+                        imports: [TuiTextfield],
+                    })
+                    export class TestComponent {}
+                ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+                                        @Component({
+                        standalone: true,
+                        imports: [TuiInput],
+                    })
+                    export class TestComponent {}
+                ",
+}
+`;
+
+exports[`ng-update TuiTextfield to TuiInput template migration should rename tuiTextfield inside tui-textfield tag: test.html 1`] = `
+{
+  "0. Before": "<tui-textfield><input tuiTextfield /></tui-textfield>",
+  "1. After": "<tui-textfield><input tuiInput /></tui-textfield>",
+}
+`;
+
+exports[`ng-update TuiTextfield to TuiInput template migration should rename tuiTextfield to tuiInput: test.html 1`] = `
+{
+  "0. Before": "<input tuiTextfield />",
+  "1. After": "<input tuiInput />",
+}
+`;

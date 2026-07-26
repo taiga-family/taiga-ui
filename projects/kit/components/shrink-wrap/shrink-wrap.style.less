@@ -1,0 +1,51 @@
+@property --t-shrink-wrap-host {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-shrink-wrap-item {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes tuiShrinkWrapHost {
+    to {
+        --t-shrink-wrap-host: 1;
+    }
+}
+
+@keyframes tuiShrinkWrapItem {
+    to {
+        --t-shrink-wrap-item: 1;
+    }
+}
+
+[tuiShrinkWrap]:where(*&) {
+    timeline-scope: --t-shrink-wrap-host, --t-shrink-wrap-item;
+    animation: tuiShrinkWrapHost, tuiShrinkWrapItem;
+    animation-timing-function: linear;
+    animation-timeline: --t-shrink-wrap-host, --t-shrink-wrap-item;
+    animation-range: entry 100% exit 100%;
+
+    --t-shrink-wrap: calc(-1px / (1 - var(--t-shrink-wrap-host)) * var(--t-shrink-wrap-item));
+}
+
+tui-shrink-wrap:where(*&) {
+    display: block;
+    overflow: hidden;
+    text-wrap: balance;
+    margin-inline-end: var(--t-shrink-wrap);
+
+    & > * {
+        view-timeline: --t-shrink-wrap-item inline;
+    }
+
+    &::before {
+        content: '';
+        padding-inline-start: 1px;
+        margin-inline-end: -1px;
+        view-timeline: --t-shrink-wrap-host inline;
+    }
+}

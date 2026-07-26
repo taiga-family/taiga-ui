@@ -7,16 +7,21 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/label.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/label.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-label'},
+    exportAs: `tui-label-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -24,14 +29,16 @@ class Styles {}
 @Directive({
     selector: 'label[tuiLabel]',
     host: {
-        '[attr.for]': 'el.htmlFor || parent?.id',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-orientation]': 'textfield() ? "vertical" : "horizontal"',
+        '[attr.for]': 'el.htmlFor || parent?.id',
     },
 })
 export class TuiLabel {
     protected readonly textfield = contentChild(forwardRef(() => TUI_DATA_LIST_HOST));
     protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly parent = inject(
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},

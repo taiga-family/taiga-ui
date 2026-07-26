@@ -11,9 +11,7 @@ import {
 
 const THEME = '#404040';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
     private readonly theme = inject(TuiThemeColorService);
     private readonly initial = this.theme.color;

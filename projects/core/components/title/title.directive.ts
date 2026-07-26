@@ -5,21 +5,27 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/title.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/title.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-title'},
+    exportAs: `tui-title-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     selector: '[tuiTitle]',
     host: {
+        'data-tui-version': TUI_VERSION,
         tuiTitle: '',
         '[attr.data-size]': 'tuiTitle() || null',
     },

@@ -8,28 +8,29 @@ import {
     untracked,
 } from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {maskitoDate} from '@maskito/kit';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
     DATE_FILLER_LENGTH,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
-    type TuiDayRange,
+    TuiDayRange,
     type TuiTime,
 } from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
-    tuiTextfieldIcon,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     type TuiItemsHandlers,
     TuiItemsHandlersDirective,
@@ -41,7 +42,6 @@ import {
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -52,8 +52,8 @@ import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from './input-date.opt
     host: {
         '[attr.inputmode]': 'mobile && open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
-        '(input)': 'onValueChange($event.target.value)',
         '(click.capture.stop)': 'onClick()',
+        '(input)': 'onValueChange($event.target.value)',
     },
 })
 export abstract class TuiInputDateBase<
@@ -62,18 +62,22 @@ export abstract class TuiInputDateBase<
     public abstract readonly max: Signal<TuiDay>;
     public abstract readonly min: Signal<TuiDay>;
 
-    private readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
-        (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
+    private readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+        (x) => x instanceof AbstractTuiCalendar,
     );
+
+    protected readonly options =
+        inject<Omit<TuiInputDateOptions, 'valueTransformer'>>(TUI_INPUT_DATE_OPTIONS);
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly input = inject(TuiInputDirective);
     protected readonly filler = tuiWithDateFiller();
-    protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly mobile = inject(WA_IS_MOBILE);
     protected readonly open = inject(TuiDropdownOpen).open;
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS);
+    protected readonly icon = tuiIconEnd(this.options.icon);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
     protected readonly format = inject(TUI_DATE_FORMAT);
+
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
@@ -85,9 +89,6 @@ export abstract class TuiInputDateBase<
         {},
     );
 
-    protected readonly options: Omit<TuiInputDateOptions, 'valueTransformer'> =
-        inject(TUI_INPUT_DATE_OPTIONS);
-
     protected readonly valueEffect = effect(() => {
         const value =
             this.stringify(this.value()) ||
@@ -97,17 +98,21 @@ export abstract class TuiInputDateBase<
     });
 
     protected readonly calendarIn = effect(() => {
-        if (this.calendar()) {
-            this.processCalendar(this.calendar()!);
+        const calendar = this.calendar();
+
+        if (calendar) {
+            this.processCalendar(calendar);
         }
     });
 
-    protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.valueChange.subscribe((value) =>
-            this.setDate(value),
-        );
+    protected readonly calendarOut = effect(() => {
+        const value = this.calendar()?.value();
+        const changed = untracked(() => value !== this.toCalendarValue(this.value()));
+        const same = value instanceof TuiDayRange && value.from === value.to;
 
-        onCleanup(() => subscription?.unsubscribe());
+        if (value && changed && !same) {
+            this.setDate(value);
+        }
     });
 
     public readonly native =
@@ -121,7 +126,8 @@ export abstract class TuiInputDateBase<
 
         if (changed || reset) {
             super.writeValue(value);
-            this.input.value.set(this.stringify(this.value()));
+
+            untracked(() => this.input.value.set(this.stringify(this.value())));
         }
     }
 
@@ -129,21 +135,21 @@ export abstract class TuiInputDateBase<
         this.onChange(value as T);
         this.open.set(false);
 
-        if (!this.el.closest('tui-dropdown')) {
+        if (!this.el.closest('tui-dropdown,tui-drawer')) {
             this.el.blur();
         }
     }
 
-    protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
-        const value = this.value();
-
-        calendar.value = Array.isArray(value) ? value[0] : value;
-        calendar.disabledItemHandler =
+    protected processCalendar(calendar: AbstractTuiCalendar): void {
+        tuiSetSignal(calendar.value, this.toCalendarValue(this.value()));
+        tuiSetSignal(
+            calendar.disabledItemHandler,
             this.handlers.disabledItemHandler() as TuiBooleanHandler<
                 TuiDay | TuiDayRange
-            >;
-        calendar.min = this.min();
-        calendar.max = this.max();
+            >,
+        );
+        tuiSetSignal(calendar.min, this.min());
+        tuiSetSignal(calendar.max, this.max());
     }
 
     protected onClick(): void {
@@ -154,6 +160,13 @@ export abstract class TuiInputDateBase<
 
     protected stringify(value: T | null): string {
         return value?.toString(this.format().mode, this.format().separator) ?? '';
+    }
+
+    private toCalendarValue(value: T | null): TuiDay | TuiDayRange | null {
+        return Array.isArray(value)
+            ? value[0]
+            : // https://github.com/microsoft/TypeScript/issues/17002
+              (value as TuiDay | TuiDayRange | null);
     }
 }
 
@@ -172,19 +185,17 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
-    public override readonly max = input(this.options.max, {
-        transform: (max: TuiDay | null): TuiDay =>
-            max instanceof TuiDay ? max : TUI_LAST_DAY,
+    public override readonly max = input(this.options.max ?? TUI_LAST_DAY, {
+        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
     });
 
-    public override readonly min = input(this.options.min, {
-        transform: (min: TuiDay | null): TuiDay =>
-            min instanceof TuiDay ? min : TUI_FIRST_DAY,
+    public override readonly min = input(this.options.min ?? TUI_FIRST_DAY, {
+        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
     });
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoDateOptionsGenerator({
+            maskitoDate({
                 separator: this.format().separator,
                 mode: this.format().mode,
                 min: this.min().toLocalNativeDate(),

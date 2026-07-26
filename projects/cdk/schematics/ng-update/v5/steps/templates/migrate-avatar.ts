@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes, type Token} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {
     findElementsByTagName,
     findElementsWithAttribute,
@@ -12,14 +13,17 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces';
+import {removeAttrs} from '../../../utils/remove-attrs';
 import {replaceTag} from '../../../utils/templates/replace-tag';
-import {removeAttrs} from '../../../v4/steps/utils/remove-attrs';
 
 type Attribute = Token.Attribute;
 
 type Element = DefaultTreeAdapterTypes.Element;
 
 type ElementLocation = Token.ElementLocation;
+
+const SAFE_RESOURCE_URL_TODO =
+    'tuiAvatar accepts only a string (icon name or URL). If this value is a SafeResourceUrl or another non-string image source, render it via an inner <img> instead: <span tuiAvatar><img [src]="..." alt="" /></span>.';
 
 export function migrateAvatarToDirective({
     resource,
@@ -34,6 +38,7 @@ export function migrateAvatarToDirective({
     const templateOffset = getTemplateOffset(resource);
     const avatarElements = findElementsByTagName(template, 'tui-avatar');
     const elementsWithAvatarAttribute = findElementsWithAttribute(template, 'tuiAvatar');
+
     const elementsWithBoundAvatarAttribute = findElementsWithAttribute(
         template,
         '[tuiAvatar]',
@@ -46,7 +51,10 @@ export function migrateAvatarToDirective({
             return;
         }
 
-        const tuiAvatarAttr = element.attrs.find((a) => a.name === '[tuiavatar]');
+        const tuiAvatarAttr = element.attrs.find(
+            (a) => a.name === '[tuiAvatar]'.toLowerCase(),
+        );
+
         const fallbackBinding = getFallbackBinding(tuiAvatarAttr?.value);
 
         if (!tuiAvatarAttr || !fallbackBinding) {
@@ -81,6 +89,8 @@ export function migrateAvatarToDirective({
             return;
         }
 
+        maybeInsertSafeResourceUrlTodo(recorder, loc, templateOffset, srcAttr);
+
         replaceAttribute(
             recorder,
             tuiAvatarAttr?.name ?? 'tuiAvatar',
@@ -102,16 +112,9 @@ export function migrateAvatarToDirective({
         const srcAttr = getSrcAttr(element.attrs);
         const hasAvatarAttr = hasTuiAvatarAttr(element.attrs);
         const attrToAdd = hasAvatarAttr ? null : getAvatarAttr(srcAttr);
-        const raw = template.slice(loc.startTag.startOffset, loc.startTag.endOffset);
-        const isSelfClosing = raw.trimEnd().endsWith('/>');
 
-        if (isSelfClosing) {
-            const start = loc.startTag;
-            const startTagEnd = templateOffset + start.endOffset;
-
-            recorder.remove(startTagEnd - 2, 2);
-            recorder.insertRight(startTagEnd - 2, '>');
-            recorder.insertRight(startTagEnd - 1, '</span>');
+        if (!hasAvatarAttr) {
+            maybeInsertSafeResourceUrlTodo(recorder, loc, templateOffset, srcAttr);
         }
 
         replaceTag(
@@ -119,6 +122,7 @@ export function migrateAvatarToDirective({
             loc,
             'tui-avatar',
             'span',
+            template,
             templateOffset,
             attrToAdd ? [attrToAdd] : [],
         );
@@ -150,7 +154,60 @@ function replaceAttribute(
 
 function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
     return attrs.some(({name}) =>
-        ['[(tuiavatar)]', '[tuiavatar]', 'tuiavatar'].includes(name),
+        ['[(tuiAvatar)]', '[tuiAvatar]', 'tuiAvatar']
+            .map((attr) => attr.toLowerCase())
+            .includes(name),
+    );
+}
+
+/**
+ * A raw dynamic `[src]`/`[(src)]` becomes `[tuiAvatar]="..."`, which only accepts a
+ * string. A `SafeResourceUrl` (or any non-string image) would break at build time, and
+ * the bound type cannot be inferred from the template — so flag it with a TODO. Provably
+ * string values are skipped: quoted/backtick literals (`[src]="'a.png'"`) and known
+ * string flows (`| tuiIcon`, `| tuiFallbackSrc`, `| tuiInitials`).
+ */
+function maybeInsertSafeResourceUrlTodo(
+    recorder: UpdateRecorder,
+    loc: ElementLocation,
+    templateOffset: number,
+    srcAttr?: Attribute,
+): void {
+    if (!srcAttr || !isRawDynamicSrc(srcAttr)) {
+        return;
+    }
+
+    recorder.insertLeft(
+        templateOffset + loc.startOffset,
+        `<!-- ${TODO_MARK} ${SAFE_RESOURCE_URL_TODO} -->\n`,
+    );
+}
+
+function isRawDynamicSrc(attr: Attribute): boolean {
+    const isBinding = attr.name === '[src]' || attr.name === '[(src)]';
+
+    if (!isBinding) {
+        return false;
+    }
+
+    const value = attr.value.trim();
+
+    return (
+        !isStringLiteral(value) &&
+        !/\|\s*(?:tuiIcon|tuiFallbackSrc|tuiInitials)\b/.test(value)
+    );
+}
+
+/**
+ * A quoted or backtick-delimited value is provably a `string`, so it can never be a
+ * `SafeResourceUrl` and does not need a TODO.
+ */
+function isStringLiteral(value: string): boolean {
+    return (
+        value.length >= 2 &&
+        ((value.startsWith("'") && value.endsWith("'")) ||
+            (value.startsWith('"') && value.endsWith('"')) ||
+            (value.startsWith('`') && value.endsWith('`')))
     );
 }
 
@@ -184,7 +241,7 @@ function getFallbackBinding(value?: string): {source: string; fallback: string} 
     }
 
     const fallbackRegExp =
-        /^([^|]+?)\s*\|\s*tuiFallbackSrc\s*:\s*(['"])([^'"]+)\2(?:\s*\|\s*async)?\s*$/;
+        /^([^|]*\S)\s*\|\s*tuiFallbackSrc\s*:\s*(['"])([^'"]+)\2(?:\s*\|\s*async)?\s*$/;
 
     const match = fallbackRegExp.exec(value);
 

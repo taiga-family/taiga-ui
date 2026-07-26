@@ -5,50 +5,188 @@ import {
     TuiSelectPO,
     waitIcons,
 } from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('Select', () => {
+const {describe, beforeEach} = test;
+
+describe('Select', () => {
     let documentationPage: TuiDocumentationPagePO;
 
-    test.beforeEach(async ({page}) => {
-        await tuiGoto(page, DemoRoute.Select);
-        documentationPage = new TuiDocumentationPagePO(page);
-    });
-
-    test('checkmark size', async ({page}) => {
-        const example = documentationPage.getExample('#content-customization');
-        const host = example.locator('tui-textfield').first();
-        const select = new TuiSelectPO(host);
-
-        await host.scrollIntoViewIfNeeded();
-
-        await select.textfield.click();
-
-        await expect(select.dropdown).toBeVisible();
-
-        await waitIcons({
-            page,
-            icons: await example.locator('tui-icon >> visible=true').all(),
+    describe('Examples', () => {
+        beforeEach(async ({page}) => {
+            await tuiGoto(page, DemoRoute.Select);
+            documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        await expect.soft(example).toHaveScreenshot('01-checkmark-size.png');
-    });
+        test('dropdown works after exiting fullscreen', async ({page}) => {
+            const exampleContainer = page.locator('#textfield-customization');
+            const example = documentationPage.getExample('#textfield-customization');
+            const host = example.locator('tui-textfield').first();
+            const select = new TuiSelectPO(host);
 
-    test('opens dropdown by click on icon', async ({page}) => {
-        const example = documentationPage.getExample('#items-handlers');
-        const host = example.locator('tui-textfield').first();
-        const select = new TuiSelectPO(host);
+            await host.scrollIntoViewIfNeeded();
 
-        await host.scrollIntoViewIfNeeded();
-        await select.textfield.click({position: {x: 200, y: 30}});
+            const fullscreenButton = exampleContainer.locator('button[tuiIconButton]', {
+                hasText: 'Fullscreen',
+            });
 
-        await expect(select.dropdown).toBeVisible();
+            await fullscreenButton.click();
+            await page.waitForFunction(() => !!document.fullscreenElement);
 
-        await waitIcons({
-            page,
-            icons: await example.locator('tui-icon >> visible=true').all(),
+            await fullscreenButton.click();
+            await page.waitForFunction(() => !document.fullscreenElement);
+
+            await select.textfield.click();
+            await expect(select.dropdown).toBeVisible();
         });
 
-        await expect.soft(select.dropdown).toHaveScreenshot('01-click-arrow.png');
+        test('checkmark size', async ({page}) => {
+            const example = documentationPage.getExample('#customize-content');
+            const host = example.locator('tui-textfield').first();
+            const select = new TuiSelectPO(host);
+
+            await host.scrollIntoViewIfNeeded();
+
+            await select.textfield.click();
+
+            await expect(select.dropdown).toBeVisible();
+
+            await waitIcons({
+                page,
+                icons: await example.locator('tui-icon >> visible=true').all(),
+            });
+
+            await expect.soft(example).toHaveScreenshot('01-checkmark-size.png');
+        });
+
+        test('opens dropdown by click on icon', async ({page}) => {
+            const example = documentationPage.getExample('#items-handlers');
+            const host = example.locator('tui-textfield').first();
+            const select = new TuiSelectPO(host);
+
+            await host.scrollIntoViewIfNeeded();
+            await select.textfield.click({position: {x: 200, y: 30}});
+
+            await expect(select.dropdown).toBeVisible();
+
+            await waitIcons({
+                page,
+                icons: await example.locator('tui-icon >> visible=true').all(),
+            });
+
+            await expect.soft(select.dropdown).toHaveScreenshot('01-click-arrow.png');
+        });
+    });
+
+    describe('Keyboard clearing', () => {
+        [true, false].forEach((cleanerEnabled) => {
+            describe(`tuiTextfieldCleaner=${cleanerEnabled}`, () => {
+                let example!: Locator;
+                let select!: TuiSelectPO;
+
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.Select}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
+                    );
+                    example = new TuiDocumentationPagePO(page).demo;
+                    select = new TuiSelectPO(
+                        example.locator('tui-textfield:has([tuiSelect])'),
+                    );
+
+                    await select.textfield.click();
+                    await select.selectOptions([1]);
+                    await select.textfield.click();
+
+                    await expect(select.dropdown).toBeVisible();
+                    await expect(select.textfield).toHaveValue('United Arab Emirates');
+                });
+
+                test('Backspace', async ({page}) => {
+                    await page.keyboard.press('Backspace');
+                    await expect(select.textfield).toHaveValue(
+                        cleanerEnabled ? '' : 'United Arab Emirates',
+                    );
+                });
+
+                test('Delete', async ({page}) => {
+                    await page.keyboard.press('ControlOrMeta+A');
+                    await page.keyboard.press('Delete');
+                    await expect(select.textfield).toHaveValue(
+                        cleanerEnabled ? '' : 'United Arab Emirates',
+                    );
+                });
+            });
+        });
+
+        describe('[tuiTextfieldCleaner=true]', () => {
+            let example!: Locator;
+            let select!: TuiSelectPO;
+
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
+                example = new TuiDocumentationPagePO(page).demo;
+                select = new TuiSelectPO(
+                    example.locator('tui-textfield:has([tuiSelect])'),
+                );
+            });
+
+            test('click on label + Backspace => Empty textfield', async ({page}) => {
+                await expect(select.textfield).toHaveValue('USA');
+
+                // eslint-disable-next-line playwright/no-force-option
+                await select.host.locator('[tuiLabel]').click({force: true});
+
+                await expect(select.textfield).toBeFocused();
+                await expect(select.dropdown).toBeVisible();
+
+                await page.keyboard.press('Backspace');
+
+                await expect(select.textfield).toHaveValue('');
+            });
+
+            test('click on label + Delete => Empty textfield', async ({page}) => {
+                await expect(select.textfield).toHaveValue('USA');
+
+                // eslint-disable-next-line playwright/no-force-option
+                await select.host.locator('[tuiLabel]').click({force: true});
+
+                await expect(select.textfield).toBeFocused();
+                await expect(select.dropdown).toBeVisible();
+
+                await page.keyboard.press('Delete');
+
+                await expect(select.textfield).toHaveValue('');
+            });
+        });
+    });
+
+    describe('updateOn=submit', () => {
+        test('displays picked option immediately, but updates control value only on submit', async ({
+            page,
+        }) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.Select}/API?sandboxExpanded=true&updateOn=submit`,
+            );
+
+            documentationPage = new TuiDocumentationPagePO(page);
+            const select = new TuiSelectPO(
+                documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+            );
+
+            await expect(select.textfield).toHaveValue('USA');
+
+            await select.textfield.click();
+            await select.dropdown.locator('[tuiOption]', {hasText: 'Austria'}).click();
+
+            await expect(select.textfield).toHaveValue('Austria');
+            // Control value should stay intact until the form is submitted
+            await expect(documentationPage.value).toContainText('"name": "USA"');
+
+            await documentationPage.submitFormControlButton.click();
+
+            await expect(documentationPage.value).toContainText('"name": "Austria"');
+        });
     });
 });

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
@@ -14,7 +14,7 @@ describe('CalendarMonth', () => {
                 [disabledItemHandler]="disabledItemHandler"
                 [max]="max"
                 [min]="min"
-                [value]="value"
+                [value]="value()"
                 [(year)]="year"
             />
         `,
@@ -22,10 +22,10 @@ describe('CalendarMonth', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendarMonth);
-        public year = new TuiYear(TODAY.year);
+        public year: TuiYear | undefined = new TuiYear(TODAY.year);
         public min = TODAY.append({year: -2});
         public max = TODAY.append({year: 2});
-        public value = TODAY;
+        public readonly value = signal<TuiMonth | TuiMonthRange | null>(TODAY);
         public month = TuiMonth.currentLocal();
         public disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
     }
@@ -50,7 +50,7 @@ describe('CalendarMonth', () => {
         it('returns null if no value', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value.set(null);
+            testComponent.value.set(null);
 
             expect(component.getItemRange(month)).toBeNull();
         });
@@ -58,7 +58,8 @@ describe('CalendarMonth', () => {
         it('returns active if value is single month choice', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value.set(month);
+            testComponent.value.set(month);
+            fixture.detectChanges();
 
             expect(component.getItemRange(month)).toBe('active');
         });
@@ -66,7 +67,8 @@ describe('CalendarMonth', () => {
         it('returns start if item is start of range', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value.set(new TuiMonthRange(month, month.append({month: 2})));
+            testComponent.value.set(new TuiMonthRange(month, month.append({month: 2})));
+            fixture.detectChanges();
 
             expect(component.getItemRange(month)).toBe('start');
         });
@@ -74,7 +76,8 @@ describe('CalendarMonth', () => {
         it('returns end if item is start of range', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value.set(new TuiMonthRange(month.append({month: -2}), month));
+            testComponent.value.set(new TuiMonthRange(month.append({month: -2}), month));
+            fixture.detectChanges();
 
             expect(component.getItemRange(month)).toBe('end');
         });
@@ -82,8 +85,10 @@ describe('CalendarMonth', () => {
         it('returns end if hovered item before item', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value.set(new TuiMonthRange(month, month));
-            component.hoveredItem = new TuiMonth(TODAY.year, 4);
+            testComponent.value.set(new TuiMonthRange(month, month));
+            component['hoveredItem'] = new TuiMonth(TODAY.year, 4);
+
+            fixture.detectChanges();
 
             expect(component.getItemRange(month)).toBe('end');
         });
@@ -93,23 +98,32 @@ describe('CalendarMonth', () => {
         it('append year by onNextYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            testComponent.year = year;
 
             component.onNextYear();
 
-            expect(component.year.year).toBe(year.year + 1);
             expect(testComponent.year.year).toBe(year.year + 1);
         });
 
         it('reduce year by onPreviousYear', () => {
             const year = new TuiYear(TODAY.year);
 
-            component.year = year;
+            testComponent.year = year;
 
             component.onPreviousYear();
 
-            expect(component.year.year).toBe(year.year - 1);
             expect(testComponent.year.year).toBe(year.year - 1);
+        });
+
+        it('use year from value', () => {
+            const year = new TuiYear(TODAY.year);
+
+            testComponent.year = undefined;
+            testComponent.value.set(new TuiMonth(year.year, 1));
+
+            component.onPreviousYear();
+
+            expect(testComponent.year).toEqual(year.append({year: -1}));
         });
     });
 });

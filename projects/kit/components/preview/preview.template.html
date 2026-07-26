@@ -1,18 +1,17 @@
 <section
     #contentWrapper
     attributeFilter="src"
-    characterData
     childList
     subtree
     class="t-wrapper"
     [class.t-not-interactive-content]="zoomable()"
     [class.t-transitive]="transitioned$ | async"
     [style.cursor]="cursor$ | async"
-    [style.transform]="wrapperTransform$ | async"
+    [style.transform]="transform()"
+    (resize)="onResize(contentWrapper)"
     (tuiPan)="onPan($event)"
     (tuiZoom)="onZoom($event)"
-    (waMutationObserver)="onMutation(contentWrapper)"
-    (waResizeObserver)="onResize($event)"
+    (waMutationObserver)="onMutation(contentWrapper, $event)"
 >
     <ng-content />
 </section>
@@ -30,7 +29,7 @@
         <button
             tuiHintAppearance="floating"
             tuiHintDescribe
-            tuiHintDirection="top-right"
+            tuiHintDirection="top-end"
             tuiIconButton
             tuiPreviewAction
             type="button"

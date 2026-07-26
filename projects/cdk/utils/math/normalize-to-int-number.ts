@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 /**
  * Normalizes any number to an integer within inclusive range
  *
@@ -17,9 +15,5 @@ export function tuiNormalizeToIntNumber(value: number, min: number, max: number)
         return min;
     }
 
-    if (value >= max) {
-        return max;
-    }
-
-    return Math.round(value);
+    return value >= max ? max : Math.round(value);
 }

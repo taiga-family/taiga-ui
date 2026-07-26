@@ -1,0 +1,86 @@
+<div [style.marginBottom.rem]="1.5">
+    <button
+        appearance="secondary-grayscale"
+        iconEnd="@tui.play"
+        size="m"
+        tuiButton
+        type="button"
+        [disabled]="onboarding()"
+        (click)="onboarding.set(true)"
+    >
+        Play
+    </button>
+</div>
+
+<tui-swipe-actions [(onboarding)]="onboarding">
+    <div
+        appearance="floating"
+        tuiCardLarge
+        tuiCell
+    >
+        <div
+            appearance="primary"
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    <button
+        iconStart="@tui.eye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Show
+    </button>
+    <button
+        iconStart="@tui.pencil-line"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Edit
+    </button>
+    <button
+        appearance="secondary"
+        iconStart="@tui.share"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Share
+    </button>
+</tui-swipe-actions>
+
+<tui-swipe-actions [(onboarding)]="onboarding">
+    <div
+        appearance="floating"
+        tuiCardLarge
+        tuiCell
+    >
+        <div
+            appearance="primary"
+            tuiAvatar="@tui.gift"
+        ></div>
+        <div tuiTitle>
+            <strong>{{ 23000 | tuiAmount: 'EUR' }}</strong>
+            <div tuiSubtitle>Goal</div>
+        </div>
+    </div>
+
+    <button
+        iconStart="@tui.eye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        type="button"
+    >
+        Show
+    </button>
+</tui-swipe-actions>

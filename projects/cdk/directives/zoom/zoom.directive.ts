@@ -6,9 +6,7 @@ import {TuiZoomService} from './zoom.service';
     selector: '[tuiZoom]',
     outputs: ['tuiZoom'],
     providers: [TuiZoomService],
-    host: {
-        '[style.touch-action]': '"none"',
-    },
+    host: {'[style.touch-action]': '"none"'},
 })
 export class TuiZoom {
     protected readonly tuiZoom = inject(TuiZoomService);

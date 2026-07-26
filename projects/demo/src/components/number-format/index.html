@@ -9,8 +9,6 @@
                 <strong>TuiNumberFormat</strong>
             </a>
             <div tuiSubtitle>
-                Usage example:
-                <br />
                 <code>[tuiNumberFormat]="&#123;thousandSeparator, decimalSeparator, ..., rounding&#125;"</code>
             </div>
         </span>
@@ -24,7 +22,7 @@
         type="string"
         [(value)]="thousandSeparator"
     >
-        Symbol for separating thousands
+        symbol for separating thousands
     </tr>
 }
 
@@ -35,7 +33,7 @@
         type="string"
         [(value)]="decimalSeparator"
     >
-        Symbol for separating fraction
+        symbol for separating fractions
     </tr>
 }
 
@@ -46,7 +44,7 @@
         type="number"
         [(value)]="precision"
     >
-        A number of digits after
+        a number of digits after
         <code>[decimalSeparator]</code>
         (
         <code>Infinity</code>
@@ -132,5 +130,17 @@
                 by just removing extra fractional digits
             </dd>
         </dl>
+    </tr>
+}
+
+@if (!hiddenOptions().includes('negativePattern')) {
+    <tr
+        name="[negativePattern]"
+        tuiDocAPIItem
+        type="'minusFirst' | 'prefixFirst'"
+        [items]="['minusFirst', 'prefixFirst']"
+        [(value)]="negativePattern"
+    >
+        order of prefix and minus sign
     </tr>
 }

@@ -1,7 +1,5 @@
 @if (history.length) {
-    <label class="t-sr-label">
-        {{ i18n().history }}
-    </label>
+    <label class="t-sr-label">{{ i18n().history }}</label>
 }
 @for (item of history; track item) {
     <button
@@ -27,12 +25,10 @@
         </button>
     </button>
 }
-@if (popular.length) {
-    <label class="t-sr-label">
-        {{ i18n().popular }}
-    </label>
+@if (popular().length) {
+    <label class="t-sr-label">{{ i18n().popular }}</label>
 }
-@for (item of popular; track item) {
+@for (item of popular(); track item) {
     <button
         tuiCell
         type="button"

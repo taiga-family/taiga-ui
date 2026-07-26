@@ -10,9 +10,7 @@ import {
     type TuiMobileDialogOptions,
 } from './mobile-dialog.options';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiMobileDialogService extends TuiModalService<
     TuiMobileDialogOptions<any>,
     number

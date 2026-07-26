@@ -14,7 +14,6 @@ import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -33,6 +32,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 export class TuiPagination {
     private readonly els = viewChildren('element', {read: ElementRef});
     private readonly el = tuiInjectElement();
+
     private readonly maxHalfLength = computed(
         () => this.sidePadding() + ELLIPSIS_ITEM_LENGTH + this.activePadding(),
     );
@@ -44,6 +44,7 @@ export class TuiPagination {
     private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
     private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
     private readonly lastIndex = computed(() => this.length() - 1);
+
     private readonly reverseIndex = computed(
         (): number => this.lastIndex() - this.index(),
     );
@@ -52,6 +53,7 @@ export class TuiPagination {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_PAGINATION_OPTIONS);
     protected readonly buttonSize = computed(() => (this.size() === 'm' ? 'xs' : 's'));
+
     protected readonly elementsLength = computed(() =>
         this.itemsFit() ? this.length() : this.maxElementsLength(),
     );
@@ -66,6 +68,7 @@ export class TuiPagination {
     public readonly index = model(0);
     public readonly arrowIsDisabledRight = computed(() => this.reverseIndex() === 0);
     public readonly arrowIsDisabledLeft = computed(() => this.index() === 0);
+
     public readonly nativeFocusableElement = computed((): HTMLElement | null => {
         if (this.disabled()) {
             return null;
@@ -115,13 +118,11 @@ export class TuiPagination {
             return this.lastIndex() - reverseElementIndex;
         }
 
-        if (elementIndex === this.sidePadding() && this.hasCollapsedItems(this.index())) {
-            return null;
-        }
-
         if (
-            reverseElementIndex === this.sidePadding() &&
-            this.hasCollapsedItems(this.reverseIndex())
+            (elementIndex === this.sidePadding() &&
+                this.hasCollapsedItems(this.index())) ||
+            (reverseElementIndex === this.sidePadding() &&
+                this.hasCollapsedItems(this.reverseIndex()))
         ) {
             return null;
         }
@@ -167,8 +168,8 @@ export class TuiPagination {
         next?.nativeElement.focus();
     }
 
-    protected onArrowClick(direction: TuiHorizontalDirection): void {
-        this.tryChangeTo(direction);
+    protected onArrowClick(step: -1 | 1): void {
+        this.tryChangeTo(step);
         this.nativeFocusableElement()?.focus();
     }
 
@@ -181,14 +182,8 @@ export class TuiPagination {
         return !this.itemsFit() && index > this.maxHalfLength();
     }
 
-    private tryChangeTo(direction: TuiHorizontalDirection): void {
-        this.updateIndex(
-            tuiClamp(
-                this.index() + (direction === 'right' ? 1 : -1),
-                0,
-                this.lastIndex(),
-            ),
-        );
+    private tryChangeTo(step: -1 | 1): void {
+        this.updateIndex(tuiClamp(this.index() + step, 0, this.lastIndex()));
     }
 
     private updateIndex(index: number): void {

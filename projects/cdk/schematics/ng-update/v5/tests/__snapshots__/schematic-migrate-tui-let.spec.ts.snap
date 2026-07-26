@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tuiLet migrates nested case with additional attributes: test.html 1`] = `
+{
+  "0. Before": "
+                <div>
+                    <test
+                        *tuiLet="value as val2"
+                        foo
+                    >
+                        {{ val2 }}
+                    </test>
+                </div>
+            ",
+  "1. After": "
+                <div>
+                    @let val2 = value;
+                    <test
+                       
+                        foo
+                    >
+                        {{ val2 }}
+                    </test>
+                </div>
+            ",
+}
+`;
+
+exports[`ng-update tuiLet migrates nested case with additional attributes: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;
+
+exports[`ng-update tuiLet migrates nested ng-container with tuiLet: test.html 1`] = `
+{
+  "0. Before": "
+                <ng-container
+                    *tuiLet="showRequisitesButton$ | async as showRequisitesButton"
+                >
+                    <ng-container
+                        *tuiLet="companyRequisites$ | async as companyRequisites"
+                    >
+                        <tui-panel [titleContent]="companyContent">
+                            <ng-template #companyContent>
+                                <label>Label</label>
+                            </ng-template>
+                        </tui-panel>
+
+                        <div>Hello world</div>
+                    </ng-container>
+                </ng-container>
+            ",
+  "1. After": "
+                @let showRequisitesButton = showRequisitesButton$ | async;
+                
+                    @let companyRequisites = companyRequisites$ | async;
+                    
+                        <tui-panel [titleContent]="companyContent">
+                            <ng-template #companyContent>
+                                <label>Label</label>
+                            </ng-template>
+                        </tui-panel>
+
+                        <div>Hello world</div>
+                    
+                
+            ",
+}
+`;
+
+exports[`ng-update tuiLet migrates nested ng-container with tuiLet: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;
+
+exports[`ng-update tuiLet migrates ng-container with tuiLet: test.html 1`] = `
+{
+  "0. Before": "
+                <ng-container *tuiLet="value as val"></ng-container>
+                <div>
+                    <ng-container *tuiLet="value as val2"></ng-container>
+                </div>
+                <ng-container *tuiLet="value as val3">{{ val3 }}</ng-container>
+            ",
+  "1. After": "
+                @let val = value;
+                
+                <div>
+                    @let val2 = value;
+                    
+                </div>
+                @let val3 = value;
+                {{ val3 }}
+            ",
+}
+`;
+
+exports[`ng-update tuiLet migrates ng-container with tuiLet: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;
+
+exports[`ng-update tuiLet migrates simple structural directive: test.html 1`] = `
+{
+  "0. Before": "
+                <test *tuiLet="value as val">{{ val }}</test>
+            ",
+  "1. After": "
+                @let val = value;
+                <test>{{ val }}</test>
+            ",
+}
+`;
+
+exports[`ng-update tuiLet migrates simple structural directive: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;

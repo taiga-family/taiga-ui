@@ -1,15 +1,15 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-aside[tuiNavigationAside] {
+aside[tuiNavigationAside]:where(*&) {
     .transition(width);
 
     position: sticky;
-    top: 3rem;
-    left: 0;
     z-index: 1;
     display: flex;
+    inset-block-start: 3rem;
     inset-inline-start: 0;
     inline-size: 3rem;
+    min-block-size: 0;
     flex-direction: column;
     padding: 0.5rem 0.5rem 0.25rem;
     box-sizing: border-box;
@@ -19,9 +19,8 @@ aside[tuiNavigationAside] {
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 100%;
         z-index: -1;
+        inset-block-start: 0;
         inset-inline-start: 100%;
         block-size: 3rem;
         inline-size: 3rem;
@@ -29,18 +28,7 @@ aside[tuiNavigationAside] {
         border-top-left-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
         transform: scaleX(var(--tui-inline));
-    }
-
-    &::after {
-        content: '';
-        position: fixed;
-        top: inherit;
-        left: 0;
-        bottom: -3rem;
-        z-index: -1;
-        inset-inline-start: 0;
-        inline-size: 3rem;
-        background: inherit;
+        clip-path: inset(0);
     }
 
     &._expanded {
@@ -52,15 +40,16 @@ aside[tuiNavigationAside] {
     }
 
     .t-nav-scrollbar {
-        margin: 0 -0.25rem;
+        .scrollbar-hidden();
+
+        display: flex;
+        block-size: 100%;
+        overflow: auto;
     }
 
     .t-nav-content {
-        .scrollbar-hidden();
-
-        block-size: 100%;
-        padding: 0 0.25rem;
-        overflow: auto;
+        inline-size: 100%;
+        block-size: fit-content;
     }
 
     tui-expand [tuiAsideItem] {
@@ -90,7 +79,7 @@ aside[tuiNavigationAside] {
             min-block-size: 1.75rem;
             margin: 0 -0.5rem;
             flex: 1;
-            mask: linear-gradient(transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
+            mask-image: linear-gradient(transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
         }
     }
 
@@ -99,7 +88,7 @@ aside[tuiNavigationAside] {
     }
 }
 
-[tuiAsideItem][tuiAsideItem] {
+[tuiAsideItem][tuiAsideItem]:where(*&) {
     inline-size: 100%;
     justify-content: flex-start;
     gap: 0.625rem;

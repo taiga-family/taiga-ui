@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TUI_RANGE token remove inject(TUI_RANGE) and adds the isPlatformBrowser with PLATFORM_ID: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_RANGE} from '@taiga-ui/cdk';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected range = inject(TUI_RANGE);
+                }
+            ",
+  "1. After": "import { isPlatformBrowser } from "@angular/common";
+
+                import { Component, inject, PLATFORM_ID } from '@angular/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected range = isPlatformBrowser(inject(PLATFORM_ID))
+                        ? new Range()
+                        : ({} as unknown as Range);
+                }
+            ",
+}
+`;

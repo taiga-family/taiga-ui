@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
@@ -17,10 +18,14 @@ import {TUI_BUTTON_OPTIONS} from './button.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/core/styles/components/button.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/button.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-button'},
+    exportAs: `tui-button-${TUI_VERSION}`,
 })
 class Styles {}
 

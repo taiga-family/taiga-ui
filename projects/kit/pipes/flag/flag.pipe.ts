@@ -1,13 +1,10 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {TUI_ASSETS_PATH} from '@taiga-ui/core/tokens';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
-type IsoCode = TuiLooseUnion<TuiCountryIsoCode>;
+type IsoCode = TuiCountryIsoCode | string;
 
-@Pipe({
-    name: 'tuiFlag',
-})
+@Pipe({name: 'tuiFlag'})
 export class TuiFlagPipe implements PipeTransform {
     private readonly staticPath = inject(TUI_ASSETS_PATH);
 
@@ -15,10 +12,8 @@ export class TuiFlagPipe implements PipeTransform {
     public transform(countryIsoCode: IsoCode | undefined): string | null;
     public transform(countryIsoCode?: IsoCode | null): string | null;
     public transform(countryIsoCode?: IsoCode | null): string | null {
-        if (!countryIsoCode) {
-            return null;
-        }
-
-        return `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
+        return countryIsoCode
+            ? `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`
+            : null;
     }
 }

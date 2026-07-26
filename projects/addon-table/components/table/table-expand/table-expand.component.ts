@@ -1,4 +1,4 @@
-import {isPlatformServer} from '@angular/common';
+import {isPlatformServer, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,9 +17,12 @@ import {TuiPresent} from '@taiga-ui/kit/directives/present';
 import {map, of, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
+import {TuiTableTbodyDirective} from '../tbody/tbody.component';
 
 @Component({
-    selector: 'tui-table-expand',
+    // TODO(v6): delete `<tui-table-expand />` selector
+    selector: 'tui-table-expand, tbody[tuiTableExpand]',
+    imports: [NgTemplateOutlet],
     templateUrl: './table-expand.template.html',
     styleUrl: './table-expand.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,24 +31,26 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
             directive: TuiPresent,
             outputs: ['tuiPresent'],
         },
+        {
+            directive: TuiTableTbodyDirective,
+            inputs: ['data'],
+        },
     ],
-    host: {
-        ngSkipHydration: 'true',
-        '(tuiPresent)': 'visible$.next($event)',
-    },
+    host: {'(tuiPresent)': 'visible$.next($event)'},
 })
 export class TuiTableExpand {
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
-
     private readonly el = tuiInjectElement();
-    private readonly server = isPlatformServer(inject(PLATFORM_ID));
 
+    protected readonly server = isPlatformServer(inject(PLATFORM_ID));
     protected readonly transitioning = signal(false);
+
     protected readonly contentHeight = computed((_ = this.expanded()) =>
         this.update(this.content()),
     );
 
     protected readonly visible$ = new Subject<boolean>();
+
     protected readonly sub = this.visible$
         .pipe(
             switchMap((v) => (v ? timer(500).pipe(map(() => v)) : of(v))),
@@ -54,6 +59,7 @@ export class TuiTableExpand {
         .subscribe((visible) => this.el.classList.toggle('_visible', visible));
 
     public readonly expanded = model(inject(TUI_TABLE_OPTIONS).open);
+
     protected readonly transitioningEffect = effect((_, __ = this.expanded()) =>
         this.transitioning.set(true),
     );

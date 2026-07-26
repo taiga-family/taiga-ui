@@ -11,9 +11,7 @@ function convertToSundayFirstWeekFormat(
     return [weekDaysNames[sundayIndex] || '', ...weekDaysNames.slice(0, sundayIndex)];
 }
 
-@Pipe({
-    name: 'tuiOrderWeekDays',
-})
+@Pipe({name: 'tuiOrderWeekDays'})
 export class TuiOrderWeekDaysPipe implements PipeTransform {
     private readonly options = inject(TUI_CALENDAR_OPTIONS);
 

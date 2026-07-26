@@ -13,16 +13,11 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     providers: [tuiButtonOptionsProvider({appearance: 'secondary', size: 's'})],
     hostDirectives: [TuiAnimated],
     host: {
+        '[attr.data-direction]': 'direction()',
         '[class._overlay]': 'overlay()',
-        '[style.border-top-left-radius]': 'direction() === "left" ? 0 : null',
-        '[style.border-top-right-radius]': 'direction() === "right" ? 0 : null',
-        '[style.left]': 'direction() === "left" ? 0 : null',
-        '[style.right]': 'direction() === "right" ? 0 : null',
-        '[style.--tui-from]':
-            'direction() === "right" ? "translateX(100%)" : "translateX(-100%)"',
     },
 })
 export class TuiDrawer {
-    public readonly direction = input<TuiHorizontalDirection>('right');
+    public readonly direction = input<TuiHorizontalDirection>('end');
     public readonly overlay = input(false);
 }

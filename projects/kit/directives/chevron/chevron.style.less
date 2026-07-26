@@ -1,42 +1,41 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-[tuiChevron][tuiIcons]::after,
-tui-icon[tuiChevron]::before {
+[tuiChevron][tuiIcons]:where(*&)::after,
+tui-icon[tuiChevron]:where(*&)::before {
     .transition(~'transform, color');
 
     cursor: pointer;
     font-size: 1rem;
 }
 
-[tuiChevron][tuiIcons]::after {
+[tuiChevron][tuiIcons]:where(*&)::after {
     [tuiButton][data-size='m']& {
         margin-inline-end: -0.125rem;
     }
-
-    tui-textfield[data-size='s']& {
-        margin-inline-end: calc(-0.125rem - var(--t-padding));
-    }
-
-    tui-textfield[data-size='m']& {
-        margin-inline-end: calc(0.125rem - var(--t-padding));
-    }
-
-    tui-textfield[data-size='l']& {
-        margin-inline-end: calc(0.25rem - var(--t-padding));
-    }
 }
 
-[tuiChevron][tuiIcons]._chevron-rotated::after,
-tui-icon[tuiChevron]._chevron-rotated::before {
+[tuiChevron][tuiIcons]:where(*&)._chevron-rotated::after,
+tui-icon[tuiChevron]:where(*&)._chevron-rotated::before {
     transform: rotate(180deg);
 }
 
-tui-textfield[tuiChevron][data-icon-end] {
-    &[data-size='l'] {
-        --t-end: 1.875rem;
+tui-textfield[tuiChevron][tuiIcons]:where(*&) {
+    --t-stroke: var(--tui-stroke-width);
+
+    &::after {
+        /* scaling to avoid scrollbars and compensating mask size */
+        transform: rotate(0deg) scale(calc(2 / 3));
+        font-size: 1.5rem;
+
+        --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
     }
 
-    &[data-size='m'] {
-        --t-end: 1.5rem;
+    &._chevron-rotated::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
+    }
+
+    // stylelint-disable-next-line -- graceful degradation
+    &:has(select[tuiSelect]:open)::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
     }
 }

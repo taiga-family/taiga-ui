@@ -30,7 +30,6 @@ class Test {
     protected value: number | null = null;
 
     public readonly maxLength = model<number | null>(null);
-
     public readonly max = model<number | null>(null);
 }
 

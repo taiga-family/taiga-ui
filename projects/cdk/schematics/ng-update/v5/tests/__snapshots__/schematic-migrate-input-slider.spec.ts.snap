@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for [steps] (cannot compute step value statically): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [min]="0"
+                    [max]="100"
+                    [steps]="5"
+                >
+                    Volume
+                    <input tuiTextfieldLegacy />
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [steps] has been removed. Use [step] on <input tuiSlider type="range"> instead, where step = (max - min) / steps. See https://taiga-ui.dev/components/input-slider -->
+<tui-textfield
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Volume
+                    </label>
+<input tuiInputSlider [(ngModel)]="value" [min]="0" [max]="100" />
+                
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for [valueContent]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [min]="0"
+                    [max]="100"
+                    [valueContent]="content"
+                >
+                    Volume
+                    <input tuiTextfieldLegacy />
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [valueContent] has been removed. PolymorpheusContent is no longer supported for this input. See https://taiga-ui.dev/components/input-slider for alternatives. -->
+<tui-textfield
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Volume
+                    </label>
+<input tuiInputSlider [(ngModel)]="value" [min]="0" [max]="100" />
+                
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider adds TODO comment for dynamic [tuiTextfieldLabelOutside]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Volume
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.
+-->
+<tui-textfield
+                    
+                    
+                >
+                    Volume
+                
+<input tuiInputSlider [(ngModel)]="value" />
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider migrates import and basic template with label and explicit input: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputSliderModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiInputSliderModule],
+                    template: \`
+                        <tui-input-slider [formControl]="ctrl" [min]="0" [max]="100">
+                            Volume
+                            <input tuiTextfieldLegacy />
+                        </tui-input-slider>
+                    \`,
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputSlider } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [TuiInputSlider],
+                    template: \`
+                        <tui-textfield   >
+<label tuiLabel>
+                            Volume
+                            </label>
+<input tuiInputSlider [formControl]="ctrl" [min]="0" [max]="100" />
+                        
+<input tuiSlider type="range" />
+</tui-textfield>
+                    \`,
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider migrates when there is no explicit <input> child: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    formControlName="volume"
+                    [min]="0"
+                    [max]="10"
+                >
+                    Volume
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Volume
+                </label>
+
+<input tuiInputSlider formControlName="volume" [min]="0" [max]="10" />
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider moves [min]/[max]/[quantum] to input and [segments]/[keySteps] to slider: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [(ngModel)]="value"
+                    [min]="0"
+                    [max]="100"
+                    [quantum]="0.1"
+                    [segments]="5"
+                    [keySteps]="keySteps"
+                >
+                    Volume
+                    <input tuiTextfieldLegacy />
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Volume
+                    </label>
+<input tuiInputSlider [(ngModel)]="value" [min]="0" [max]="100" [quantum]="0.1" />
+                
+<input tuiSlider type="range" [segments]="5" [keySteps]="keySteps" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputSliderModule to TuiInputSlider preserves camelCase for (ngModelChange) and [formControlName] bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-slider
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Volume
+                </tui-input-slider>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Volume
+                </label>
+
+<input tuiInputSlider [formControlName]="control" (ngModelChange)="onChange($event)" />
+<input tuiSlider type="range" />
+</tui-textfield>
+            ",
+}
+`;

@@ -9,8 +9,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
@@ -32,10 +33,14 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 @Component({
     template: '',
-    styleUrl: './tooltip.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tooltip.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tooltip'},
+    exportAs: `tui-tooltip-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -63,17 +68,20 @@ class Styles {}
     host: {
         tuiTooltip: '',
         '[attr.data-size]': 'size()',
+        '[attr.tabindex]': 'describe.id() ? null : 0',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(mousedown.prevent)': '0',
+        '(pointerdown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly describe = inject(TuiHintDescribe);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly driver = inject(TuiHintHover);
 
+    protected readonly describe = inject(TuiHintDescribe);
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
@@ -87,17 +95,17 @@ export class TuiTooltip implements DoCheck {
     public readonly size = input<TuiSizeS>('m');
 
     public ngDoCheck(): void {
-        if (this.textfield?.id) {
-            tuiSetSignal(this.describe.id, this.textfield.id);
+        if (this.textfield) {
+            tuiSetSignal(this.describe.id, this.textfield.input()?.nativeElement.id);
         }
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.isMobile) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            this.driver.toggle();
+        if (!this.isMobile) {
+            return;
         }
+
+        event.stopPropagation();
+        this.driver.toggle();
     }
 }

@@ -3,6 +3,7 @@ import {type TuiLanguageName} from './language-names';
 
 export interface TuiLanguageCore {
     close: string;
+    back: string;
     clear: string;
     countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;
@@ -108,7 +109,6 @@ export interface TuiLanguageKit {
         'HH AA': string;
         HH: string;
         'MM:SS.MSS': string;
-        'MM.SS.MSS': string; // TODO(v5): delete (exists only for Maskito@3 compatibility)
         'SS.MSS': string;
     };
     previewTexts: {
@@ -217,6 +217,16 @@ export interface TuiLanguageEditor {
     };
 }
 
+export interface TuiLanguageDoc {
+    demoTexts: [darkMode: string, background: string, value: string];
+    preview: string;
+    menuText: string;
+    searchText: string;
+    seeAlsoText: string;
+    tocText: string;
+    sourceCodeText: string;
+}
+
 export interface TuiLanguageMeta {
     name: TuiLanguageName;
 }
@@ -229,4 +239,5 @@ export interface TuiLanguage
         TuiLanguageCommerce,
         TuiLanguageTable,
         TuiLanguageEditor,
+        TuiLanguageDoc,
         TuiLanguageMeta {}

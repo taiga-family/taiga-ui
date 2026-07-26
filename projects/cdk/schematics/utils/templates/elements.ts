@@ -160,6 +160,23 @@ export function hasElementAttribute(element: Element, attributeName: string): bo
     );
 }
 
+export function hasElementAttributeWithValue(
+    element: Element,
+    attributeName: string,
+    attributeValue: string,
+): boolean {
+    const lowercasedAttrName = attributeName.toLowerCase();
+    const lowercasedValue = attributeValue.toLowerCase();
+
+    return element.attrs?.some(
+        (attr) =>
+            (attr.name === lowercasedAttrName && attr.value === lowercasedValue) ||
+            (attr.name === `[${lowercasedAttrName}]` &&
+                (attr.value === `'${attributeValue}'` ||
+                    attr.value === `"${attributeValue}"`)),
+    );
+}
+
 /** Gets the start offset of the given attribute from a Parse5 element. */
 export function getStartOffsetOfAttribute(
     element: Element,

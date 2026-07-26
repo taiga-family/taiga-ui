@@ -5,9 +5,7 @@ import {TuiDialogComponent} from './dialog.component';
 import {type TuiDialogOptions} from './dialog.interfaces';
 import {TUI_DIALOG_OPTIONS} from './dialog.tokens';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiDialogService extends TuiModalService<TuiDialogOptions<any>> {
     protected readonly options = inject(TUI_DIALOG_OPTIONS);
     protected readonly content = TuiDialogComponent;

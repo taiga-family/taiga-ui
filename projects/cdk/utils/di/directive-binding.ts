@@ -37,7 +37,7 @@ export function tuiDirectiveBinding<
     let previous: any;
 
     effect(() => {
-        const value: any = result();
+        const value = result();
 
         if (previous === value) {
             return;

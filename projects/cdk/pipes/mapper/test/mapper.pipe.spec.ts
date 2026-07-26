@@ -4,8 +4,9 @@ describe('TuiMapper pipe', () => {
     let pipe: TuiMapperPipe;
     const data = 'test';
     const args = ['three', 'eleven'];
+
     const mapper: TuiMapper<[string, ...string[]], string> = (item, ...rest) =>
-        item.toUpperCase() + rest.join(' ');
+        `${item.toUpperCase()}${rest.join(' ')}`;
 
     beforeEach(() => {
         pipe = new TuiMapperPipe();

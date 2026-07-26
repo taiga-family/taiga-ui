@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrate TuiTooltipModule to TuiTooltip and <tui-tooltip> to <tui-icon [tuiTooltip]>: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-tooltip [content]="tooltip" />
+
+                <tui-tooltip
+                    direction="top-left"
+                    [content]="tooltip"
+                    [describeId]="id"
+                />
+
+                <tui-tooltip
+                    appearance="error"
+                    content="Static text"
+                    [context]="ctx"
+                    [hideDelay]="200"
+                    [showDelay]="100"
+                />
+
+                <tui-tooltip [content]="tooltip"></tui-tooltip>
+            ",
+  "1. After": "
+                <tui-icon [tuiTooltip]="tooltip" />
+
+                <tui-icon
+                    tuiHintDirection="top-left"
+                    [tuiTooltip]="tooltip"
+                    [tuiTooltipDescribe]="id"
+                />
+
+                <tui-icon
+                    tuiHintAppearance="error"
+                    tuiTooltip="Static text"
+                    [tuiHintContext]="ctx"
+                    [tuiHintHideDelay]="200"
+                    [tuiHintShowDelay]="100"
+                />
+
+                <tui-icon [tuiTooltip]="tooltip"></tui-icon>
+            ",
+}
+`;
+
+exports[`ng-update migrate TuiTooltipModule to TuiTooltip and <tui-tooltip> to <tui-icon [tuiTooltip]>: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiTooltipModule} from '@taiga-ui/legacy';
+
+                @NgModule({
+                    imports: [
+                        // ...
+                        TuiTooltipModule,
+                    ],
+                    // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiTooltipModule,
+                    ],
+                    templateUrl: './test.html',
+                    // ...
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiIcon } from "@taiga-ui/core";
+import { TuiTooltip } from "@taiga-ui/kit";
+
+                                @NgModule({
+                    imports: [
+                        // ...
+                        TuiTooltip, TuiIcon,
+                    ],
+                    // ...
+                })
+                export class MyModule {}
+
+                @Component({
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiTooltip, TuiIcon,
+                    ],
+                    templateUrl: './test.html',
+                    // ...
+                })
+                export class MyComponent {}
+            ",
+}
+`;

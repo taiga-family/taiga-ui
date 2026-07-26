@@ -30,15 +30,14 @@ describe('InputRange | With segments + tick labels', () => {
     })
     class SandBox {
         public readonly value = model<[number, number]>();
-
         public readonly size = input.required<'l' | 'm' | 's'>();
     }
 
     beforeEach(() => {
-        cy.viewport(300, 110);
+        cy.viewport(300, 115);
     });
 
-    const cases: Array<[number, number]> = [
+    const cases: ReadonlyArray<[number, number]> = [
         [0, 0],
         [0, 25],
         [0, 50],

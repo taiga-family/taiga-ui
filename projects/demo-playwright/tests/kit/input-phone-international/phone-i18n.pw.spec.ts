@@ -51,15 +51,16 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             const options = await inputPhoneInternational.getOptions();
 
             expect(options).toHaveLength(2);
-            await expect(options[0]!).toContainText('Australia');
-            await expect(options[1]!).toContainText('Austria');
+            await expect(options.at(0)!).toContainText('Australia');
+            await expect(options.at(1)!).toContainText('Austria');
         });
     });
 
     test.describe('API', () => {
         test('basic', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API`);
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
+
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(
                 example.locator('tui-textfield'),
             );
@@ -74,7 +75,8 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
 
         test('readonly', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readOnly=true`);
-            const example = new TuiDocumentationPagePO(page).apiPageExample;
+            const example = new TuiDocumentationPagePO(page).demo;
+
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(
                 example.locator('input[tuiInputPhoneInternational]'),
             );

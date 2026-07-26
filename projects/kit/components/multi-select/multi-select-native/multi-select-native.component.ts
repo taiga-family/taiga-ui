@@ -1,10 +1,10 @@
 import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {WA_IS_ANDROID, WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsFlat, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TuiSelectLike,
@@ -16,7 +16,6 @@ import {
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
-import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 import {TuiMultiSelectGroupComponent} from '../multi-select-group/multi-select-group.component';
 import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
@@ -30,6 +29,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     hostDirectives: [TuiInputChipDirective, TuiSelectLike],
     host: {
         multiple: '',
+        '[size]': 'mobile ? 1 : 2',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',
     },
@@ -41,8 +41,9 @@ export class TuiMultiSelectNative<T> {
     protected readonly isFlat = tuiIsFlat;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly el = tuiInjectElement<HTMLSelectElement>();
+
     protected readonly mobile =
-        inject(TUI_IS_IOS) || (inject(TUI_IS_ANDROID) && 'showPicker' in this.el);
+        inject(WA_IS_IOS) || (inject(WA_IS_ANDROID) && 'showPicker' in this.el);
 
     protected readonly isSelected = computed(
         (value = this.control.value()) =>

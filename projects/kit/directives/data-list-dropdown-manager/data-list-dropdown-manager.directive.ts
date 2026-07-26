@@ -22,11 +22,10 @@ import {
     tap,
 } from 'rxjs';
 
-@Directive({
-    selector: 'tui-data-list[tuiDataListDropdownManager]',
-})
+@Directive({selector: 'tui-data-list[tuiDataListDropdownManager]'})
 export class TuiDataListDropdownManager implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
+
     private readonly dropdowns = contentChildren(TuiDropdownDirective, {
         descendants: true,
     });
@@ -76,7 +75,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                         filter(({relatedTarget}) =>
                             this.notInDropdown(relatedTarget, index),
                         ),
-                        map(({type}) => (type === 'focus' ? index : NaN)),
+                        map(({type}) => (type === 'focus' ? index : Number.NaN)),
                     ),
                 ),
             ),
@@ -105,10 +104,12 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                     }
 
                     const {nativeElement} = ref.location;
+
                     const mouseEnter$ = tuiTypedFromEvent(
                         nativeElement,
                         'mouseenter',
                     ).pipe(take(1));
+
                     const esc$ = merge(
                         tuiTypedFromEvent(element.nativeElement, 'keydown'),
                         tuiTypedFromEvent(nativeElement, 'keydown'),
@@ -143,6 +144,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
         // First item is focus trap
         const focusTrap = tuiGetClosestFocusable({initial: content, root: content});
+
         const item = tuiGetClosestFocusable({
             initial: focusTrap || content,
             root: content,

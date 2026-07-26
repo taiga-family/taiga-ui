@@ -1,11 +1,11 @@
 import {type ExistingProvider, InjectionToken, type ProviderToken} from '@angular/core';
-import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 /**
  * Bundled appearances for autocomplete purposes, not exported on purpose
  */
-type Appearance = TuiLooseUnion<
+type Appearance =
+    | string
     | 'accent'
     | 'action-destructive'
     | 'action-grayscale'
@@ -14,7 +14,6 @@ type Appearance = TuiLooseUnion<
     | 'flat-grayscale'
     | 'flat'
     | 'floating'
-    | 'glass'
     | 'icon'
     | 'info'
     | 'negative'
@@ -30,22 +29,17 @@ type Appearance = TuiLooseUnion<
     | 'secondary-grayscale'
     | 'secondary'
     | 'textfield'
-    | 'warning'
->;
+    | 'warning';
 
 export interface TuiAppearanceOptions {
     readonly appearance: Appearance | '';
 }
 
-export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
-    appearance: '',
-};
+export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {appearance: ''};
 
 export const TUI_APPEARANCE_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_APPEARANCE_OPTIONS' : '',
-    {
-        factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS,
-    },
+    {factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS},
 );
 
 export function tuiAppearanceOptionsProvider(

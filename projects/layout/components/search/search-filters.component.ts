@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -32,7 +32,7 @@ const WIDTH = 12;
     styleUrl: './search-filters.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        ResizeObserverService,
+        WaResizeObserverService,
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
     ],
     hostDirectives: [
@@ -44,9 +44,7 @@ const WIDTH = 12;
 })
 export class TuiSearchFiltersComponent {
     private readonly rem = viewChild<ElementRef<HTMLDivElement>>('rem');
-
     private readonly button = viewChild(TuiButton, {read: ElementRef});
-
     private readonly controls = contentChildren(NgControl, {descendants: true});
 
     protected readonly templates = contentChildren(TuiItem, {
@@ -55,7 +53,7 @@ export class TuiSearchFiltersComponent {
     });
 
     protected readonly overflown = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
+        inject(WaResizeObserverService, {self: true}).pipe(
             map((entry) => {
                 const width = entry[0]?.contentRect.width ?? 0;
 

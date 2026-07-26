@@ -7,9 +7,7 @@ import {
     tuiDropdownOptionsProvider,
 } from './dropdown-options.directive';
 
-@Directive({
-    providers: [tuiDropdownOptionsProvider({})],
-})
+@Directive({providers: [tuiDropdownOptionsProvider({})]})
 export class TuiDropdownFixed {
     constructor() {
         const override = tuiOverrideOptions(

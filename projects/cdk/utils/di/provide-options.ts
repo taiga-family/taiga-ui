@@ -9,7 +9,7 @@ export function tuiProvideOptions<T>(
         provide,
         useFactory: (): T => ({
             ...(inject(provide, {optional: true, skipSelf: true}) || fallback),
-            ...(inject(options as any, {optional: true}) ||
+            ...(inject(options as unknown as InjectionToken<T>, {optional: true}) ||
                 (typeof options === 'function' ? options() : options)),
         }),
     };

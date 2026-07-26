@@ -17,16 +17,14 @@ import {
 } from '@angular/forms';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
-    template: '{{ length() }} / {{ limit() }}',
+    template: '@if (limit()) { {{ length() }} / {{ limit() }} } ',
     styles: `
         :host {
             z-index: 1;
@@ -35,7 +33,7 @@ import {tuiTextareaOptionsProvider} from './textarea.options';
             text-align: end;
             pointer-events: none;
             padding-block-end: 0.75rem;
-            font: var(--tui-font-ui-xs);
+            font: var(--tui-typography-ui-2xs);
             color: var(--tui-text-secondary);
         }
     `,
@@ -48,8 +46,10 @@ class TuiTextareaCounter {
 
 @Component({
     template: `
-        <span [textContent]="context.$implicit.slice(0, limit())"></span>
-        <span [textContent]="context.$implicit.slice(limit())"></span>
+        <ng-container>{{ context.$implicit.slice(0, limit()) }}</ng-container>
+        @if (limit() <= context.$implicit.length) {
+            <span [textContent]="context.$implicit.slice(limit())"></span>
+        }
     `,
     styles: `
         span:last-child {
@@ -75,19 +75,18 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimit);
         tuiProvide(NG_VALIDATORS, TuiTextareaDirective, true),
         tuiTextareaOptionsProvider({content: COMPONENT}),
     ],
-    host: {
-        '[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75',
-    },
+    host: {'[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75'},
 })
+// TODO(v6): rename to TuiTextareaLimit
 export class TuiTextareaDirective implements Validator, DoCheck {
-    private readonly textfield = inject(TuiTextfieldComponent);
+    private readonly value = inject(TUI_TEXTFIELD_VALUE);
     private readonly ref = inject(ViewContainerRef).createComponent(TuiTextareaCounter);
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     public readonly limit = input(0);
 
     public ngDoCheck(): void {
-        this.ref.instance.length.set(this.textfield.value().length);
+        this.ref.instance.length.set(this.value().length);
         this.ref.instance.limit.set(this.limit());
     }
 

@@ -13,33 +13,30 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCell, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
-import {TUI_DATA_LIST_HOST, type TuiDataListAccessor} from './data-list.tokens';
+import {type TuiDataListAccessor, tuiInjectDataListSize} from './data-list.tokens';
 import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option-content.directive';
 import {TuiOptionWithValue} from './option-with-value.directive';
-
-export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
-    const sizes = ['s', 'm', 'l'] as const;
-    const size = inject(TUI_DATA_LIST_HOST, {optional: true})?.size;
-
-    return size && sizes.includes(size) ? size : 'l';
-}
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
     selector: 'tui-data-list',
     imports: [PolymorpheusOutlet, TuiCell],
     templateUrl: './data-list.template.html',
-    styleUrl: './data-list.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './data-list.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -53,16 +50,18 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         },
     ],
     host: {
+        'data-tui-version': TUI_VERSION,
         role: 'listbox',
         '[attr.data-size]': 'size()',
+        '[attr.role]': 'role',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
-        '(mousedown.prevent)': '(0)',
-        '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
-        '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
-        '(keydown.tab)': 'handleFocusLossIfNecessary()',
-        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
         '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
+        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
+        '(keydown.tab)': 'handleFocusLossIfNecessary()',
+        '(mousedown.prevent)': '(0)',
+        '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
+        '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
     },
 })
 export class TuiDataListComponent<T>
@@ -73,6 +72,7 @@ export class TuiDataListComponent<T>
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
+
     private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
         forwardRef(() => TuiOptionWithValue),
         {descendants: true},
@@ -102,14 +102,20 @@ export class TuiDataListComponent<T>
         }
     }
 
-    // TODO: Refactor to :has after Safari support bumped to 15
     public ngAfterContentChecked(): void {
+        // TODO: Refactor to :has after Safari support bumped to 15
         timer(0)
             .pipe(tuiZonefree(this.ngZone), tuiTakeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 this.empty.set(!this.elements.length);
                 this.cdr.detectChanges();
             });
+    }
+
+    protected get role(): string | null {
+        return this.el.parentElement?.closest('[role="menu"],[role="listbox"]')
+            ? null
+            : this.el.role;
     }
 
     protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {

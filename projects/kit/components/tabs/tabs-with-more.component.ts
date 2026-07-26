@@ -19,7 +19,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
+import {tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
@@ -33,7 +33,7 @@ import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
 import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 
 @Component({
-    selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
+    selector: 'tui-tabs-with-more',
     imports: [
         NgTemplateOutlet,
         PolymorpheusOutlet,
@@ -59,17 +59,20 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
-    protected open = false;
+
     protected readonly sync = effect(() => {
         this.activeItemIndex();
         this.maxIndex = this.getMaxIndex();
+        this.open = false;
     });
 
+    public open = false;
     public readonly activeItemIndex = model(0);
     public readonly size = input(this.options.size);
     public readonly underline = input(this.options.underline);
     public readonly itemsLimit = input(this.options.itemsLimit);
     public readonly moreContent = input<PolymorpheusContent>();
+
     public readonly dropdownContent =
         input<PolymorpheusContent<TuiContext<TuiActiveZone>>>();
 
@@ -84,6 +87,14 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
                 : 2;
 
         return Math.min(this.itemsLimit() - offset, this.maxIndex);
+    }
+
+    public isOverflown(index: number): boolean {
+        return index !== this.activeItemIndex() || !this.options.exposeActive;
+    }
+
+    public shouldShow(index: number): boolean {
+        return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 
     public ngAfterViewInit(): void {
@@ -109,12 +120,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get activeElement(): HTMLElement | null {
-        const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex() || 0, 0, tabs.length - 2);
-
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton()?.nativeElement || null;
+        return this.tabs.find((tab) => tab.classList.contains('_active')) ?? null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -168,7 +174,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         wrapper: HTMLElement,
         previous: boolean,
     ): void {
-        const button: HTMLButtonElement = event.target as HTMLButtonElement;
+        const button = event.target as HTMLButtonElement;
         const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
 
         if (target) {
@@ -176,16 +182,6 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         }
     }
 
-    protected isOverflown(index: number): boolean {
-        return index !== this.activeItemIndex() || !this.options.exposeActive;
-    }
-
-    protected shouldShow(index: number): boolean {
-        return index > this.lastVisibleIndex && this.isOverflown(index);
-    }
-
-    // TODO drop comment after fix issue: https://github.com/typescript-eslint/typescript-eslint/issues/11771
-    // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private get margin(): number {
         return this.size() === 'l' ? 24 : 16;
     }
@@ -207,6 +203,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         const activeWidth = active?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth ?? 0, minMoreWidth);
         let maxIndex = tabs.length - 2;
+
         let total =
             tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
             maxIndex * margin -
@@ -234,7 +231,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         return -1;
     }
 
+    // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     private refresh(): void {
+        if ('anchorName' in this.el.style) {
+            return;
+        }
+
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
         this.dir()?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));

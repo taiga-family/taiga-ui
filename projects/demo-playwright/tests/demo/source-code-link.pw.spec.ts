@@ -15,9 +15,9 @@ interface GitHubEvent {
 function getRepositoryInfo(): {repositoryUrl: string; targetBranch: string} {
     const currentBranch =
         process.env['GITHUB_HEAD_REF'] || process.env['GITHUB_REF_NAME'] || 'main';
+
     let repositoryUrl = 'https://github.com/taiga-family/taiga-ui';
     let targetBranch = currentBranch;
-
     const eventPath = process.env['GITHUB_EVENT_PATH'];
 
     if (eventPath) {
@@ -42,12 +42,11 @@ function getRepositoryInfo(): {repositoryUrl: string; targetBranch: string} {
 
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
-
     const proprietary = process.env['PROPRIETARY'] === 'true';
     const {repositoryUrl, targetBranch} = getRepositoryInfo();
 
     (proprietary ? [] : demoPaths).forEach((path) => {
-        test(`${path}`, async ({page, request}) => {
+        test(path, async ({page, request}) => {
             const sourceCodeLink = new TuiDocumentationPagePO(page).sourceCodeLink;
 
             await tuiGoto(page, path);

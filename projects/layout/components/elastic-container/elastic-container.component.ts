@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {shouldCall} from '@taiga-ui/event-plugins';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 
@@ -9,14 +9,19 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     templateUrl: './elastic-container.component.html',
     styleUrl: './elastic-container.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[style.block-size]': 'transitions ? "auto" : height'},
+    host: {'[style.block-size]': 'transitions() ? "auto" : height()'},
 })
 export class TuiElasticContainer {
-    protected height = '';
-    protected transitions = 0;
+    protected readonly height = signal('');
+    protected readonly transitions = signal(0);
 
-    @shouldCall((name) => name === 'height')
-    protected onAnimation(_name: string, count: number): void {
-        this.transitions += count;
+    protected onAnimation(name: string, count: number): void {
+        if (['grid-template-rows', 'height'].includes(name)) {
+            this.transitions.update((value) => value + count);
+        }
+    }
+
+    protected updateHeight(height: number): void {
+        this.height.set(tuiPx(height));
     }
 }

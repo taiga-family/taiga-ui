@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
@@ -8,23 +7,24 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
     templateUrl: './bar.template.html',
     styleUrl: './bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBar {
-    @Input()
-    public value: readonly number[] = [];
+    public readonly value = input<readonly number[]>([]);
+    public readonly size = input<TuiSizeL | TuiSizeS>('m');
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS = 'm';
+    protected readonly segments = computed(() => {
+        const sum = tuiSum(...this.value().map(Math.abs));
 
-    protected getHeight(value: number): number {
-        return (100 * value) / this.getSum(this.value);
-    }
+        const items = this.value().map((value, index) => ({
+            value,
+            background: `var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`,
+            height: sum ? Math.abs((100 * value) / sum) : 0,
+        }));
 
-    @tuiPure
-    private getSum(value: readonly number[]): number {
-        return tuiSum(...value);
-    }
+        return [
+            ...items.filter(({value}) => value < 0),
+            ...items.filter(({value}) => value >= 0),
+        ];
+    });
 }

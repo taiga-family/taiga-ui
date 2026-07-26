@@ -44,11 +44,13 @@ export class TuiTreeItem implements DoCheck {
     private readonly nested = contentChildren(TUI_TREE_NODE);
     private readonly el = tuiInjectElement();
     private readonly change$ = new Subject<void>();
+
     private readonly controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),
     );
 
     protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
+
     protected readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
         forwardRef(() => TUI_TREE_CONTENT),
     );

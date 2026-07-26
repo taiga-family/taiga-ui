@@ -26,7 +26,8 @@
             automation-id="tui-mobile-calendar__label"
             class="t-label"
         >
-            {{ single() ? texts[0] : multi() ? texts[2] : texts[1] }}
+            @let text = multi() ? texts[2] : texts[1];
+            {{ single() ? texts[0] : text }}
         </h2>
         <button
             automation-id="tui-mobile-calendar__confirm"
@@ -82,7 +83,6 @@
             class="t-calendar"
             [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : min() : max()"
             [month]="month"
-            [single]="single()"
             [value]="value()"
             (dayClick)="onDayClick($event)"
         />

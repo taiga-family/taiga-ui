@@ -4,12 +4,10 @@ import {
     Component,
     inject,
 } from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
     selector: 'tui-badged-content',
-    imports: [WaResizeObserver],
     templateUrl: './badged-content.template.html',
     styleUrl: './badged-content.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

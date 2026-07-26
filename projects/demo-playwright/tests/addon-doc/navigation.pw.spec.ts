@@ -18,11 +18,10 @@ test.describe('Navigation', () => {
         });
         const sideNavigation = page.locator('tui-doc-navigation');
 
-        await sideNavigation.isVisible();
-
-        await expect
-            .soft(sideNavigation)
-            .toHaveScreenshot('01-tui-doc-navigation-light-mode.png');
+        await expect(sideNavigation).toBeVisible();
+        await expect(sideNavigation).toHaveScreenshot(
+            '01-tui-doc-navigation-light-mode.png',
+        );
     });
 
     test('getting started / [dark mode]', async ({page, browserName}) => {
@@ -39,11 +38,11 @@ test.describe('Navigation', () => {
         });
         const sideNavigation = page.locator('tui-doc-navigation');
 
-        await sideNavigation.isVisible();
+        await expect(sideNavigation).toBeVisible();
 
-        await expect
-            .soft(sideNavigation)
-            .toHaveScreenshot('02-tui-doc-navigation-dark-mode.png');
+        await expect(sideNavigation).toHaveScreenshot(
+            '02-tui-doc-navigation-dark-mode.png',
+        );
     });
 
     test.describe('anchor links navigation works', () => {
@@ -61,30 +60,26 @@ test.describe('Navigation', () => {
             await expect(page.locator('#table')).toBeInViewport();
         });
 
-        test('scroll to "tui-doc-code"', async ({page, browserName}) => {
-            test.skip(
-                browserName !== 'chromium',
-                // TODO: why does this test keep failing in safari
-                'This feature is only relevant in Chrome',
-            );
-
-            await tuiGoto(page, `${DemoRoute.GettingStarted}#icons`);
-
-            await expect(page.locator('#icons')).toBeVisible();
-            await expect(page.locator('#icons')).toBeInViewport();
-        });
-
         test('scroll after click on link with anchor', async ({page, browserName}) => {
+            await page.setViewportSize({width: 1300, height: 500});
+
             test.skip(
                 browserName !== 'chromium',
                 // TODO: why does this test keep failing in safari
                 'This feature is only relevant in Chrome',
             );
 
-            await tuiGoto(page, DemoRoute.GettingStarted);
-            await page.locator('a[fragment="root"]').click();
+            const isProprietary = process.env['PROPRIETARY'] === 'true';
+            // eslint-disable-next-line playwright/no-conditional-in-test
+            const anchor = `a[href$="${isProprietary ? encodeURIComponent('Основной-компонент') : 'root-component'}"]`;
 
-            await expect(page.locator('#root')).toBeInViewport();
+            await tuiGoto(
+                page,
+                `${DemoRoute.GettingStarted}/${isProprietary ? 'Ручное' : 'Manual'}`,
+            );
+
+            await page.locator(`tui-doc-toc ${anchor}`).click();
+            await expect(page.locator(`tui-doc-example ${anchor}`)).toBeInViewport();
         });
     });
 });

@@ -5,7 +5,7 @@ describe('TuiYear', () => {
         describe('isValidYear returns', () => {
             describe('false if passed year is invalid', () => {
                 it('NaN', () => {
-                    expect(TuiYear.isValidYear(NaN)).toBe(false);
+                    expect(TuiYear.isValidYear(Number.NaN)).toBe(false);
                 });
 
                 it('-200', () => {

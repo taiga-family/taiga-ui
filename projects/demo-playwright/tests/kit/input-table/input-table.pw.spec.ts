@@ -14,7 +14,7 @@ test.describe('Input in table', () => {
             await example
                 .locator('tbody tr td')
                 .nth(index)
-                .locator('tui-primitive-textfield,tui-textfield')
+                .locator('tui-textfield')
                 .locator('input,select')
                 .first()
                 .focus();
@@ -36,7 +36,7 @@ test.describe('Input in table', () => {
                 await example
                     .locator('tbody tr td')
                     .nth(index)
-                    .locator('tui-primitive-textfield,tui-textfield')
+                    .locator('tui-textfield')
                     .locator('input,select')
                     .first()
                     .focus();

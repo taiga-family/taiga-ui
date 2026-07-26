@@ -3,23 +3,33 @@ import {
     Component,
     Directive,
     inject,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
+import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
+import {TuiShrinkWrapDirective} from '@taiga-ui/kit/components/shrink-wrap';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/toast.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/toast.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-toast'},
+    exportAs: `tui-toast-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -35,6 +45,7 @@ class Styles {}
             appearance:
                 inject(TUI_PLATFORM) === 'web' ? 'secondary-grayscale' : 'secondary',
         })),
+        tuiButtonXOptionsProvider({size: 'xs', appearance: 'icon'}),
         {
             provide: TUI_ICON_END,
             useFactory: () =>
@@ -43,8 +54,18 @@ class Styles {}
                     : '',
         },
     ],
-    hostDirectives: [TuiWithIcons],
+    hostDirectives: [TuiWithIcons, TuiShrinkWrapDirective],
+    host: {'[class._rearranged]': 'offset() > 10'},
 })
 export class TuiToastDirective {
+    public readonly tuiShrinkWrap = input('min(calc(100vw - 4rem), 25rem)');
+
     protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly offset = inject(TUI_FONT_OFFSET);
+
+    protected readonly width = tuiDirectiveBinding(
+        TuiShrinkWrapDirective,
+        'tuiShrinkWrap',
+        this.tuiShrinkWrap,
+    );
 }

@@ -1,6 +1,6 @@
 {
     "name": "taiga ui dev container",
-    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:24",
     "hostRequirements": {
         "memory": "8gb",
         "cpus": 4
@@ -15,10 +15,10 @@
         }
     },
     "portsAttributes": {
-        "3333": {
+        "3000": {
             "label": "Demo",
             "onAutoForward": "notify"
         }
     },
-    "forwardPorts": [3333]
+    "forwardPorts": [3000]
 }

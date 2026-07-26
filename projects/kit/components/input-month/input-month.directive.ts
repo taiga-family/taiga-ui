@@ -1,14 +1,15 @@
 import {computed, Directive, effect, inject} from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
-    tuiTextfieldIcon,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -36,13 +37,15 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_OPTIONS);
+    protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_OPTIONS).icon);
+
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
 
     protected readonly valueEffect = effect(() => {
         const value = this.value();
+
         const formatted = value
             ? `${this.months()[value.month] ?? ''} ${value.formattedYear}`
             : '';
@@ -51,7 +54,9 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     });
 
     protected readonly calendarIn = effect(() => {
-        this.calendar()?.value.set(this.value());
+        const calendar = this.calendar();
+
+        calendar && tuiSetSignal(calendar.value, this.value());
     });
 
     protected readonly calendarOut = effect((onCleanup) => {
@@ -68,7 +73,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     public readonly native =
-        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(WA_IS_MOBILE);
 
     protected clear(): void {
         this.onChange(null);

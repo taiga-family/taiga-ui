@@ -1,6 +1,6 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-tui-files {
+tui-files:where(*&) {
     inline-size: 100%;
     overflow: hidden;
     border-radius: var(--tui-radius-m);
@@ -28,7 +28,7 @@ tui-files {
         z-index: 3;
         inline-size: 100%;
         background: var(--tui-background-base);
-        mask: none !important;
+        mask-image: none !important;
 
         &_collapsed {
             box-shadow: var(--tui-shadow-popup);

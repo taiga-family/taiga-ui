@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     .transition(max-height);
@@ -9,12 +9,11 @@
 
     &._overflown .t-wrapper {
         /* autoprefixer: ignore next */
-        -webkit-box-orient: block-axis;
+        -webkit-box-orient: vertical;
     }
 }
 
 .t-wrapper {
-    /* stylelint-disable-next-line */
     display: -webkit-box;
     overflow: hidden;
     overflow-wrap: anywhere;

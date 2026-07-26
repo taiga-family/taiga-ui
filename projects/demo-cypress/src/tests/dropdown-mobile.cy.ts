@@ -1,16 +1,15 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiDropdownMobile,
     TuiDropdownSheet,
     TuiResponsiveDialog,
 } from '@taiga-ui/addon-mobile';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_SPEED,
     TuiButton,
-    TuiCell,
+    TuiFilterByInputPipe,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -19,7 +18,6 @@ import {
     TuiAvatar,
     TuiChevron,
     TuiDataListWrapper,
-    TuiFilterByInputPipe,
     TuiInitialsPipe,
     TuiInputChip,
     TuiMultiSelect,
@@ -43,7 +41,6 @@ interface User {
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
-        TuiCell,
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownMobile,
@@ -119,20 +116,18 @@ interface User {
                 #template
                 let-user
             >
-                <span tuiCell>
-                    <div [tuiAvatar]="user.name | tuiInitials">
-                        @if (user.url) {
-                            <img
-                                alt=""
-                                [src]="user.url"
-                            />
-                        }
-                    </div>
-                    <span tuiTitle>
-                        {{ user.name }}
-                        <span tuiSubtitle>
-                            {{ user.balance | tuiAmount: '$' : 'left' }}
-                        </span>
+                <div [tuiAvatar]="user.name | tuiInitials">
+                    @if (user.url) {
+                        <img
+                            alt=""
+                            [src]="user.url"
+                        />
+                    }
+                </div>
+                <span tuiTitle>
+                    {{ user.name }}
+                    <span tuiSubtitle>
+                        {{ user.balance | tuiAmount: '$' : 'start' }}
                     </span>
                 </span>
             </ng-template>
@@ -144,6 +139,7 @@ export class TestDropdownMobile {
     protected selected: readonly User[] = [];
     protected user: User | null = null;
     protected readonly open = signal(false);
+
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
         {name: 'Roman Sedov', balance: 523242},
@@ -161,10 +157,7 @@ describe('DropdownMobile', () => {
     beforeEach(() => {
         cy.viewport(375, 660);
         cy.mount(TestDropdownMobile, {
-            providers: [
-                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
-                {provide: TUI_IS_MOBILE, useValue: true},
-            ],
+            providers: [{provide: WA_IS_MOBILE, useValue: true}],
         }).then(({fixture, component}) => {
             fixture.detectChanges();
             component.dialog.set(true);

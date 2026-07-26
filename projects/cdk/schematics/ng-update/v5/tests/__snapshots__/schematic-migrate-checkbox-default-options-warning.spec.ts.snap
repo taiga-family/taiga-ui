@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TUI_CHECKBOX_DEFAULT_OPTIONS warning adds TODO comment for TUI_CHECKBOX_DEFAULT_OPTIONS import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_CHECKBOX_DEFAULT_OPTIONS} from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly defaults = TUI_CHECKBOX_DEFAULT_OPTIONS;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.
+                import {TUI_CHECKBOX_DEFAULT_OPTIONS} from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly defaults = TUI_CHECKBOX_DEFAULT_OPTIONS;
+                }
+            ",
+}
+`;

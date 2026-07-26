@@ -37,7 +37,7 @@ describe('TuiDayRange', () => {
 
         describe('normalizeParse returns', () => {
             it('corresponding range in normal case', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `12.03.4567${RANGE_SEPARATOR_CHAR}07.06.9321`,
                 );
 
@@ -50,9 +50,7 @@ describe('TuiDayRange', () => {
             });
 
             it('corresponding range ignoring wrong delimiters', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
-                    '12#03#4567#!#07#06#9321',
-                );
+                const result = TuiDayRange.normalizeParse('12#03#4567#!#07#06#9321');
 
                 expect(result.from.day).toBe(12);
                 expect(result.from.month).toBe(2);
@@ -63,7 +61,7 @@ describe('TuiDayRange', () => {
             });
 
             it('properly normalized range', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `00.00.0000${RANGE_SEPARATOR_CHAR}99.99.9999`,
                 );
 
@@ -76,7 +74,7 @@ describe('TuiDayRange', () => {
             });
 
             it('sorted range if the order is wrong', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4567`,
                 );
 
@@ -89,7 +87,7 @@ describe('TuiDayRange', () => {
             });
 
             it('one day range if rangeString is not long enough', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4`,
                 );
 
@@ -102,7 +100,7 @@ describe('TuiDayRange', () => {
             });
 
             it('correctly works with dateMode="YMD" + separator = "-"', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `2021-12-14${RANGE_SEPARATOR_CHAR}2022-06-19`,
                     'yyyy/mm/dd',
                 );
@@ -116,7 +114,7 @@ describe('TuiDayRange', () => {
             });
 
             it('correctly works with dateMode="MDY" + separator = "/"', () => {
-                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                const result = TuiDayRange.normalizeParse(
                     `12/14/2021${RANGE_SEPARATOR_CHAR}06/19/2022`,
                     'mm/dd/yyyy',
                 );
@@ -206,7 +204,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2001m0d1 = new TuiDay(2001, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(y2001m0d1, null);
 
@@ -217,7 +214,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2999m0d1 = new TuiDay(2999, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(null, y2999m0d1);
 
@@ -251,6 +247,34 @@ describe('TuiDayRange', () => {
                     new TuiDay(3000, 9, 18),
                 ).getFormattedDayRange('yyyy/mm/dd', '-'),
             ).toBe(`2000-12-20${RANGE_SEPARATOR_CHAR}3000-10-18`);
+        });
+    });
+
+    describe('dayInRange', () => {
+        const range = new TuiDayRange(new TuiDay(2000, 2, 1), new TuiDay(2000, 4, 1));
+
+        it('returns true for value within range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 3, 15))).toBe(true);
+        });
+
+        it('returns true for value at the start of the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 2, 1))).toBe(true);
+        });
+
+        it('returns true for value at the end of the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 4, 1))).toBe(true);
+        });
+
+        it('returns false for value before the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 1, 1))).toBe(false);
+        });
+
+        it('returns false for value after the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 5, 1))).toBe(false);
+        });
+
+        it('returns false for different year', () => {
+            expect(range.dayInRange(new TuiDay(2001, 3, 1))).toBe(false);
         });
     });
 });

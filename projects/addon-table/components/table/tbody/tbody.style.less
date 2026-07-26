@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     border-color: var(--tui-border-normal);
@@ -35,11 +35,11 @@
     }
 
     &::before {
-        left: 0;
+        inset-inline-start: 0;
     }
 
     &::after {
-        right: 0;
+        inset-inline-end: 0;
     }
 }
 
@@ -47,7 +47,7 @@
     .transition(background);
 
     block-size: var(--tui-height-m);
-    font: var(--tui-font-body-s);
+    font: var(--tui-typography-body-s);
     padding: 0;
     background: var(--tui-background-neutral-1);
     border-block-end: 1px solid var(--tui-border-normal);
@@ -58,23 +58,23 @@
     }
 
     :host-context(table[data-size='l']) & {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
         block-size: var(--tui-height-l);
     }
 }
 
 .t-name {
     position: sticky;
-    left: 0.75rem;
     display: inline-block;
+    inset-inline-start: 0.75rem;
 
     :host-context(table[data-size='l']) & {
-        left: 1rem;
+        inset-inline-start: 1rem;
     }
 }
 
 .t-chevron {
     position: sticky;
-    right: 0.75rem;
+    inset-inline-end: 0.75rem;
     margin: 0 0.6875rem 0 auto;
 }

@@ -1,43 +1,23 @@
+import {Directive, input} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    input,
-    ViewEncapsulation,
-} from '@angular/core';
-import {TuiDay} from '@taiga-ui/cdk/date-time';
-import {
+    tuiAsTextfieldContent,
     TuiTextfieldContent,
     TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
-import {TuiInputDateDirective} from './input-date.directive';
+import {TuiInputDateContent} from './input-date-content.component';
 
-@Component({
+@Directive({
     selector: 'input[tuiInputDate][type="date"]',
-    imports: [TuiTextfieldContent],
-    templateUrl: './input-date.template.html',
-    styleUrl: './input-date.style.less',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithNativePicker],
+    providers: [tuiAsTextfieldContent(() => TuiInputDateContent)],
+    hostDirectives: [TuiWithNativePicker, TuiTextfieldContent],
     host: {
-        ngSkipHydration: 'true',
+        'data-tui-version': TUI_VERSION,
         '[attr.list]': 'null',
     },
 })
+// TODO(v6): rename to TuiInputDateNative
 export class TuiInputDateComponent {
-    protected readonly host = inject(TuiInputDateDirective);
-
     public readonly list = input<string>();
-
-    protected onInput(value: string): void {
-        if (!value) {
-            return this.host.onChange(null);
-        }
-
-        const [year = 0, month = 0, day = 0] = value.split('-').map(Number);
-
-        this.host.onChange(new TuiDay(year, month - 1, day));
-    }
 }

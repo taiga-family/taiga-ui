@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
+    WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -23,29 +24,34 @@ const BUFFER = 1; // buffer for rounding issues
 
 @Component({
     template: '',
-    styleUrl: './fade.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './fade.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-fade'},
+    exportAs: `tui-fade-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     selector: '[tuiFade]',
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
         },
     ],
     host: {
-        '[style.line-height]': 'lineHeight()',
-        '[style.--t-line-height]': 'lineHeight()',
-        '[style.--t-fade-size]': 'size()',
-        '[style.--t-fade-offset]': 'offset()',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-orientation]': 'orientation()',
+        '[style.--t-fade-offset]': 'offset()',
+        '[style.--t-fade-size]': 'size()',
+        '[style.--t-line-height]': 'lineHeight()',
+        '[style.line-height]': 'lineHeight()',
         '[style.transition]': '"none"',
     },
 })
@@ -56,6 +62,7 @@ export class TuiFade {
     public readonly lineHeight = input<string | null>(null, {alias: 'tuiFadeHeight'});
     public readonly size = input('1.5em', {alias: 'tuiFadeSize'});
     public readonly offset = input('0em', {alias: 'tuiFadeOffset'});
+
     public readonly orientation = input<TuiOrientation | ''>('horizontal', {
         alias: 'tuiFade',
     });
@@ -68,8 +75,8 @@ export class TuiFade {
         afterNextRender(() => el.style.setProperty('transition', ''));
 
         merge(
-            inject(ResizeObserverService, {self: true}),
-            inject(MutationObserverService, {self: true}),
+            inject(WaResizeObserverService, {self: true}),
+            inject(WaMutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
             .pipe(

@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -36,10 +37,14 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
     template: '',
-    styleUrl: './table.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './table.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-table'},
+    exportAs: `tui-table-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -57,16 +62,15 @@ class Styles {}
         tuiProgressOptionsProvider({size: 's', color: 'var(--tui-text-action)'}),
     ],
     hostDirectives: [TuiStuck],
-    host: {
-        tuiTable: '',
-        '[attr.data-size]': 'size()',
-    },
+    host: {'data-tui-version': TUI_VERSION, tuiTable: '', '[attr.data-size]': 'size()'},
 })
 export class TuiTableDirective<
     T extends Partial<Record<keyof T, unknown>>,
 > implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TABLE_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly computedSortChange = computed<TuiTableSortChange<T>>(() => ({
         sortComparator: this.sorter(),
         sortDirection: this.direction(),
@@ -81,7 +85,6 @@ export class TuiTableDirective<
     public readonly direction = model(this.options.direction);
     public readonly sorter = model<TuiComparator<T>>(EMPTY_COMPARATOR);
     public readonly sortChange = output<TuiTableSortChange<T>>();
-
     public readonly appearance = signal('table');
     public readonly cleaner = signal(false);
 

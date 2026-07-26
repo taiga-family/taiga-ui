@@ -6,11 +6,10 @@
 
 <tui-pie-chart
     class="t-chart"
-    [activeItemIndex]="activeItemIndex"
     [masked]="true"
-    [size]="size"
-    [value]="value"
-    (activeItemIndexChange)="onActiveItemIndexChange($event)"
+    [size]="size()"
+    [value]="value()"
+    [(activeItemIndex)]="activeItemIndex"
 />
 
 <div class="t-shield"></div>

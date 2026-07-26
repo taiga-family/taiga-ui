@@ -14,14 +14,14 @@ import {AbstractTuiTableFilter} from './abstract-table-filter';
 import {type TuiTableFilter} from './table-filter';
 import {TuiTableFiltersDirective} from './table-filters.directive';
 
-@Directive({
-    selector: '[tuiTableFilter]',
-})
+@Directive({selector: '[tuiTableFilter]'})
 export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {
     private readonly head = inject(TuiTableHead<T>, {optional: true});
     private readonly delegate = inject(AbstractTuiTableFilter<T[keyof T], unknown>);
     private readonly control = inject(NgControl);
+
     protected readonly filters = inject(TuiTableFiltersDirective<T>);
+
     protected readonly key = computed<string | keyof T | undefined>(
         () => this.tuiTableFilter() || this.head?.tuiHead(),
     );

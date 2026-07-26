@@ -1,6 +1,6 @@
 @keyframes tuiPresent {
     to {
-        opacity: 0.99999; // https://bugs.webkit.org/show_bug.cgi?id=302153
+        content: '';
     }
 }
 
@@ -32,13 +32,20 @@
     }
 }
 
+@keyframes tuiBlur {
+    from {
+        filter: blur(var(--tui-blur, 0.25rem));
+    }
+}
+
 .tui-enter,
 .tui-leave {
     animation-duration: var(--tui-duration);
-    animation-timing-function: ease-in-out;
+    animation-timing-function: var(--tui-curve-productive-entrance);
     pointer-events: none;
 }
 
 .tui-leave {
     animation-direction: reverse;
+    animation-timing-function: var(--tui-curve-productive-exit);
 }

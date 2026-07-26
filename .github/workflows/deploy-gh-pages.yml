@@ -11,17 +11,21 @@ on:
         required: false
         description: --dry-run
 
+permissions:
+  contents: read
+
 jobs:
   deploy-gh-pages:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.176.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
-          git clone --depth 1 --branch snapshots/demo/v4.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v5.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v4.x ${{ env.REPO }} ${{ env.DIST }}/v4
           git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}/v3
           git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2
           git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
@@ -30,7 +34,7 @@ jobs:
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
       - name: Replace baseHref for next
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/next/">'
@@ -38,7 +42,7 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v2
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v2/">'
@@ -46,18 +50,26 @@ jobs:
           regex: false
 
       - name: Replace baseHref for v3
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
         with:
           find: '<base href="/">'
           replace: '<base href="/v3/">'
           include: '${{ env.DIST }}/v3/**/index.html'
           regex: false
 
+      - name: Replace baseHref for v4
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/v4/">'
+          include: '${{ env.DIST }}/v4/**/index.html'
+          regex: false
+
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Deploy to taiga-ui.dev
-        uses: peaceiris/actions-gh-pages@v4.0.0
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

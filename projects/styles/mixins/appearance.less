@@ -1,0 +1,56 @@
+@import 'miscellaneous.less';
+
+.appearance-hover(@content) {
+    .interactive({
+        @media @tui-mouse {
+            &:hover:not([data-state]) {
+                @content();
+            }
+        }
+    });
+
+    &[data-state='hover'] {
+        @content();
+    }
+}
+
+.appearance-active(@content) {
+    .interactive({
+        &:active:not([data-state]) {
+            @content();
+        }
+    });
+
+    &[data-state='active'] {
+        @content();
+    }
+}
+
+.appearance-disabled(@content) {
+    &:disabled:not([data-state]),
+    &[data-state='disabled'] {
+        @content();
+    }
+}
+
+.appearance-focus(@content) {
+    &:focus-visible:not([data-focus='false']) {
+        @content();
+    }
+
+    &[data-focus='true'] {
+        @content();
+    }
+}
+
+.appearance-invalid(@content) {
+    &:is([data-mode~='invalid'], .tui-invalid, :invalid):not(
+            [data-mode~='readonly'],
+            [data-mode~='valid'],
+            [data-state='disabled'],
+            :disabled,
+            ._disabled
+        ) {
+        @content();
+    }
+}

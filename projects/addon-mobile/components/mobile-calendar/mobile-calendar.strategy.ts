@@ -3,10 +3,9 @@ import {
     type VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
 import {inject} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {distinctUntilChanged, type Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     ANDROID_CYCLE,
@@ -47,15 +46,12 @@ function reduceCycle(
  * work for {@link TuiMobileCalendar} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
     private viewport: CdkVirtualScrollViewport | null = null;
 
-    @tuiPure
-    public get scrolledIndexChange(): Observable<number> {
-        return this.index$.pipe(distinctUntilChanged());
-    }
+    public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {
         const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
@@ -80,7 +76,9 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
     /** These do not matter for this case */
     public onDataLengthChanged(): void {}
+
     public onContentRendered(): void {}
+
     public onRenderedOffsetChanged(): void {}
 
     public scrollToIndex(index: number, behavior: ScrollBehavior): void {
@@ -99,7 +97,6 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const cycleHeight = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
         const remainder = offset % cycleHeight;
         const years = ((offset - remainder) / cycleHeight) * YEARLY_CYCLE;
-
         let accumulator = 0;
 
         for (let year = 0; year < cycle.length; year++) {
@@ -120,6 +117,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const remainder = year % YEARLY_CYCLE;
         const remainderHeight = reduceCycle(cycle, remainder, month);
         const fullCycles = (year - remainder) / YEARLY_CYCLE;
+
         const fullCyclesHeight = this.isIOS
             ? fullCycles * IOS_CYCLE_HEIGHT
             : fullCycles * ANDROID_CYCLE_HEIGHT;

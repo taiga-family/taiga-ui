@@ -15,12 +15,17 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TUI_BUTTON_OPTIONS,
+    tuiButtonOptionsProvider,
+} from '@taiga-ui/core/components/button';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {
     tuiAsDataListHost,
     type TuiDataListHost,
@@ -28,6 +33,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
@@ -36,7 +42,7 @@ import {
     TuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
-import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -45,14 +51,23 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell],
     templateUrl: './textfield.template.html',
-    styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/textfield.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldComponent),
+        {
+            provide: TUI_TEXTFIELD_VALUE,
+            useFactory: () => inject(TuiTextfieldComponent).value,
+        },
     ],
     hostDirectives: [
         TuiAppearance,
@@ -66,11 +81,11 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     host: {
         class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
+        '[class._disabled]': 'disabled', // TODO :has([tuiInput]:disabled)
         '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
-        '[class._disabled]': 'input()?.nativeElement?.disabled', // TODO :has([tuiInput]:disabled)
-        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
+        '(animationstart)': '0', // TODO :has([tuiInput]:disabled)
         '(click.self.prevent)': '0',
         // TODO preventing breaks resize: both, but not preventing breaks focus, fix
         '(pointerdown.self.prevent)': 'onIconClick()',
@@ -79,23 +94,28 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = inject(TUI_CLEAR_WORD);
+
     protected readonly label = contentChild(
         forwardRef(() => TuiLabel),
         {read: ElementRef},
     );
 
     protected readonly computedFiller = computed((value = this.value()) => {
-        const filler = value + this.filler().slice(value.length);
+        const filler = this.filler();
 
-        return filler.length > value.length ? filler : '';
+        if (filler.length <= value.length) {
+            return '';
+        }
+
+        return this.input()?.nativeElement.matches('[dir="rtl"] :scope')
+            ? `${filler.slice(0, filler.length - value.length)}${value}`
+            : `${value}${filler.slice(value.length)}`;
     });
 
     protected readonly showFiller = computed<boolean>(
@@ -105,17 +125,17 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             (!!this.value() || !this.input()?.nativeElement.placeholder),
     );
 
-    protected readonly accessor = contentChild<TuiTextfieldAccessor<T>>(
-        TUI_TEXTFIELD_ACCESSOR,
-        {descendants: true},
-    );
+    protected readonly accessor =
+        contentChild<TuiTextfieldAccessor<T>>(TUI_TEXTFIELD_ACCESSOR);
 
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
+    public readonly child = contentChild(TuiControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
+
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
         contentChild(TUI_TEXTFIELD_ACCESSOR, {read: ElementRef});
 
@@ -123,8 +143,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly filler = input('');
     public readonly value = tuiValue(this.input);
 
-    public get id(): string {
-        return this.input()?.nativeElement.id || this.autoId;
+    public get disabled(): boolean {
+        return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
     }
 
     public get size(): TuiSizeL | TuiSizeS {
@@ -140,8 +160,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({contentRect}: ResizeObserverEntry): void {
-        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    protected onResize({clientWidth}: HTMLElement): void {
+        this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
@@ -165,10 +185,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     protected onScroll(element: HTMLElement): void {
-        if (this.input()?.nativeElement === element) {
-            this.ghost()?.nativeElement.scrollTo({
-                left: this.input()?.nativeElement.scrollLeft,
-            });
+        const input = this.input();
+
+        if (input?.nativeElement === element) {
+            this.ghost()?.nativeElement.scrollTo({left: input?.nativeElement.scrollLeft});
         }
     }
 }

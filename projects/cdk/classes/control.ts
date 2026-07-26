@@ -22,7 +22,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     delay,
     distinctUntilChanged,
-    EMPTY,
     filter,
     map,
     merge,
@@ -46,21 +45,25 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
+
     protected transformer =
         inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = input(false);
-    public readonly pseudoInvalid = input<boolean | null>(null, {alias: 'invalid'});
+    public readonly pseudoInvalid = input<boolean | null>(undefined, {alias: 'invalid'});
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
     public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
-    public readonly invalid = computed(() =>
-        this.pseudoInvalid() !== null
-            ? !!this.pseudoInvalid() && this.interactive()
-            : this.interactive() && this.touched() && this.status() === 'INVALID',
-    );
+
+    public readonly invalid = computed(() => {
+        const pseudoInvalid = this.pseudoInvalid();
+
+        return pseudoInvalid == null
+            ? this.interactive() && this.touched() && this.status() === 'INVALID'
+            : pseudoInvalid && this.interactive();
+    });
 
     public readonly mode = computed(() =>
         // eslint-disable-next-line no-nested-ternary
@@ -80,11 +83,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 filter(Boolean),
                 distinctUntilChanged(),
                 switchMap((c) =>
-                    merge(
-                        c.valueChanges,
-                        c.statusChanges,
-                        (c as any).events || EMPTY,
-                    ).pipe(startWith(null)),
+                    merge(c.valueChanges, c.statusChanges, c.events).pipe(
+                        startWith(null),
+                    ),
                 ),
                 takeUntilDestroyed(),
             )
@@ -95,7 +96,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         this.refresh$.next();
 
         this.onChange = (value: T) => {
-            const internal = untracked(() => this.internal());
+            const internal = untracked(this.internal);
 
             if (value === internal) {
                 return;

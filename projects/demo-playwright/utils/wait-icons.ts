@@ -17,11 +17,12 @@ export async function waitIcons(options: Options): Promise<void> {
 
             return window
                 .decodeURI(
-                    baseUrl +
-                        (window
+                    `${baseUrl}${
+                        window
                             .getComputedStyle(element)
                             .getPropertyValue('--t-icon')
-                            ?.replaceAll(/url\(|\)/g, '') ?? ''),
+                            ?.replaceAll(/url\(|\)/g, '') ?? ''
+                    }`,
                 )
                 .replaceAll('\\', '');
         });

@@ -2,14 +2,13 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, inject} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
-import {
-    TuiTextfieldComponent,
-    tuiTextfieldIcon,
-} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -33,19 +32,21 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     ],
     host: {
         style: 'cursor: pointer',
-        '(click)': 'copy()',
-        '[style.pointer-events]': 'textfield.value() ? null : "none"',
-        '[style.opacity]': 'textfield.value() ? null : "var(--tui-disabled-opacity)"',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
+        '[style.opacity]': 'hasValue ? null : "var(--tui-disabled-opacity)"',
+        '[style.pointer-events]': 'hasValue ? null : "none"',
+        '(click)': 'copy()',
     },
 })
 export class TuiCopyDirective {
     private readonly copied$ = new Subject<void>();
     private readonly doc = inject(DOCUMENT);
+    private readonly stringify = inject(TUI_ITEMS_HANDLERS).stringify;
 
     protected readonly textfield = inject(TuiTextfieldComponent);
-    protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
+    protected readonly icons = tuiIconEnd(inject(TUI_COPY_OPTIONS).icon);
     protected readonly copyTexts = inject(TUI_COPY_TEXTS);
+
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
@@ -67,9 +68,52 @@ export class TuiCopyDirective {
         ),
     );
 
+    protected get hasValue(): boolean {
+        return this.multi
+            ? !!this.textfield.control()?.value.length
+            : !!this.textfield.value();
+    }
+
     protected copy(): void {
-        this.textfield.input()?.nativeElement.select();
-        this.doc.execCommand('copy');
-        this.copied$.next();
+        if (!this.multi) {
+            this.textfield.input()?.nativeElement.select();
+        }
+
+        if (this.execCommandCopy(this.value)) {
+            this.copied$.next();
+        }
+    }
+
+    private get multi(): boolean {
+        return Array.isArray(this.textfield.control()?.value);
+    }
+
+    private get value(): string {
+        return this.multi
+            ? this.textfield.control()?.value.map(this.stringify()).join(', ')
+            : this.textfield.value();
+    }
+
+    private execCommandCopy(text: string): boolean {
+        let copied = false;
+
+        const listener = (event: ClipboardEvent): void => {
+            if (event.clipboardData) {
+                event.clipboardData.setData('text/plain', text);
+                event.preventDefault();
+
+                copied = true;
+            }
+        };
+
+        this.doc.addEventListener('copy', listener);
+
+        try {
+            return this.doc.execCommand('copy') && copied;
+        } catch {
+            return false;
+        } finally {
+            this.doc.removeEventListener('copy', listener);
+        }
     }
 }

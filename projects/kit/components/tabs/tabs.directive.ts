@@ -10,6 +10,7 @@ import {
     model,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -19,15 +20,20 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Component({
     template: '',
-    styleUrl: './tabs.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './tabs.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-tabs'},
+    exportAs: `tui-tabs-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     host: {
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
         [`(${TUI_TAB_ACTIVATE}.stop)`]: 'onActivate($event.target)',
     },

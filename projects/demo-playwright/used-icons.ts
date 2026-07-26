@@ -5,8 +5,8 @@
  * Array of icons used in ./projects/demo-playwright
  */
 export const TUI_USED_ICONS = [
-    '@tui.snowflake',
-    '@tui.lock',
-    '@tui.eye-off',
     '@tui.calendar',
+    '@tui.eye-off',
+    '@tui.lock',
+    '@tui.snowflake',
 ] as const;

@@ -1,3 +1,5 @@
+@import '@taiga-ui/styles/utils';
+
 :host {
     position: relative;
     display: block;
@@ -28,12 +30,17 @@
 
 tui-range {
     position: absolute;
-    z-index: 1;
     inset: 100% var(--t-padding) auto;
-    margin: calc(-1 * var(--tui-thickness)) 0 0;
+    z-index: 1;
+    margin: calc(-1 * @track-thickness) 0 0;
     pointer-events: auto;
+    background-color: transparent;
 }
 
-tui-textfield::ng-deep .t-clear {
+tui-textfield::ng-deep [tuiButtonX] {
     display: none !important;
+}
+
+tui-textfield::ng-deep .t-content {
+    margin-inline-end: 0;
 }

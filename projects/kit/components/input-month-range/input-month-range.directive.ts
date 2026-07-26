@@ -5,12 +5,10 @@ import {
     type TuiMonth,
     TuiMonthRange,
 } from '@taiga-ui/cdk/date-time';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {
-    tuiInjectAuxiliary,
-    TuiSelectLike,
-    tuiTextfieldIcon,
-} from '@taiga-ui/core/components/textfield';
+import {tuiInjectAuxiliary, TuiSelectLike} from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -38,20 +36,25 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     private readonly months = inject(TUI_MONTHS);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly intermediateValue = signal<TuiMonth | null>(null);
+
     private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
         (x) => x instanceof TuiCalendarMonth,
     );
 
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_RANGE_OPTIONS);
+    protected readonly icon = tuiIconEnd(inject(TUI_INPUT_MONTH_RANGE_OPTIONS).icon);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+
     protected readonly valueEffect = effect(() => {
         const value = this.value();
         const months = this.months();
+
         const format = ({month, formattedYear}: TuiMonth): string =>
             `${months[month] ?? ''} ${formattedYear}`;
 
         this.input.value.set(
-            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
+            value
+                ? `${format(value.from)}${RANGE_SEPARATOR_CHAR}${format(value.to)}`
+                : '',
         );
     });
 
@@ -64,7 +67,10 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
     });
 
     protected readonly calendarSync = effect(() => {
-        this.calendar()?.value.set(this.intermediateValue() ?? this.value());
+        const calendar = this.calendar();
+
+        calendar &&
+            tuiSetSignal(calendar.value, this.intermediateValue() ?? this.value());
     });
 
     // TODO: use linked signal (Angular 19+)
@@ -76,11 +82,11 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
             const intermediateValue = this.intermediateValue();
 
-            if (!intermediateValue) {
-                this.intermediateValue.set(month);
-            } else {
+            if (intermediateValue) {
                 this.onChange(TuiMonthRange.sort(intermediateValue, month));
                 this.open.set(false);
+            } else {
+                this.intermediateValue.set(month);
             }
         });
 

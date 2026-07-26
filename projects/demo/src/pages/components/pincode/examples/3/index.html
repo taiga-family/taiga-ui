@@ -1,0 +1,12 @@
+@if (done()) {
+    <div class="done">PIN verified ✓</div>
+} @else {
+    <tui-textfield>
+        <input
+            tuiPincode
+            [invalid]="verification.value()"
+            [(ngModel)]="pin"
+            (confirmed)="done.set(true)"
+        />
+    </tui-textfield>
+}

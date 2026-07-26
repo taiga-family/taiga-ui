@@ -6,18 +6,26 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
-    public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator(
-        'tui-doc-demo > .t-wrapper',
+
+    public readonly examples = this.page.locator('tui-doc-example');
+    public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
+    public readonly value = this.page.locator('tui-doc-demo > tui-expand pre');
+
+    public readonly submitFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__submit-state"]',
+    );
+
+    public readonly resetFormControlButton = this.page.locator(
+        'tui-doc-demo [automation-id="tui-demo-button__reset-state"]',
     );
 
     constructor(protected readonly page: Page) {}
 
     public async waitStableState(): Promise<void> {
-        if ((await this.apiPageExample.all()).length) {
-            await waitStableState(this.apiPageExample);
-        } else if ((await this.pageExamples.all()).length) {
-            for (const example of await this.pageExamples.all()) {
+        if ((await this.demo.all()).length) {
+            await waitStableState(this.demo);
+        } else if ((await this.examples.all()).length) {
+            for (const example of await this.examples.all()) {
                 await waitStableState(example);
             }
         }
@@ -76,9 +84,9 @@ export class TuiDocumentationApiPagePO {
         await this.hideNotifications();
         await this.hideScrollbars();
 
-        if ((await this.apiPageExample.all()).length) {
-            await this.apiPageExample.evaluate((el) => el.scrollIntoView());
-            await expect(this.apiPageExample).toBeInViewport();
+        if ((await this.demo.all()).length) {
+            await this.demo.evaluate((el) => el.scrollIntoView());
+            await expect(this.demo).toBeInViewport();
         }
     }
 
@@ -94,7 +102,8 @@ export class TuiDocumentationApiPagePO {
 
     public async getSelect(row: Locator): Promise<Locator | null> {
         return (
-            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.[0] ?? null
+            ((await row.locator('[tuiSelect], [tuiSelectLike]').all()) ?? [])?.at(0) ??
+            null
         );
     }
 
@@ -112,14 +121,16 @@ export class TuiDocumentationApiPagePO {
 
     public async getCleaner(select: Locator): Promise<Locator | null> {
         return (
-            ((await select
-                .locator('[automation-id="tui-primitive-textfield__cleaner"]')
-                .all()) ?? [])?.[0] ?? null
+            (
+                (await select
+                    .locator('[automation-id="tui-primitive-textfield__cleaner"]')
+                    .all()) ?? []
+            )?.at(0) ?? null
         );
     }
 
     public async getToggle(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.[0] ?? null;
+        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.at(0) ?? null;
     }
 
     public async waitTuiIcons(): Promise<void> {

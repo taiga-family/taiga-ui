@@ -13,8 +13,6 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiComponentPipe} from './component.pipe';
 import {TuiDisabledDirective} from './disabled.directive';
 import {TuiExamplePipe} from './example.pipe';
-import {TuiKebabPipe} from './kebab.pipe';
-import {TuiDocSetup} from './setup.component';
 
 export const TuiDemo = [
     ...TuiAddonDoc,
@@ -31,7 +29,5 @@ export const TuiDemo = [
     NgIf,
     TuiComponentPipe,
     TuiExamplePipe,
-    TuiKebabPipe,
-    TuiDocSetup,
     TuiDisabledDirective,
 ] as const;

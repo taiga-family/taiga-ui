@@ -25,15 +25,13 @@ export interface TuiTextfieldItem<T> {
     template:
         '<ng-container *polymorpheusOutlet="content() as text; context: context">{{ text }}</ng-container>',
     styleUrl: './textfield-item.style.less',
-    // TODO: Set to OnPush in v5 when textfield.item becomes a signal
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._string]': '!textfield.item()',
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
-        '(pointerdown.self.prevent)': '0',
+        '[class._string]': '!textfield.item()',
         '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
         '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
+        '(pointerdown.self)': 'prevent($event)',
     },
 })
 export class TuiTextfieldItemComponent<T> {
@@ -41,11 +39,16 @@ export class TuiTextfieldItemComponent<T> {
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
+
     protected readonly content = computed(
         () =>
             this.textfield.item() ??
             this.handlers.stringify()(this.context.$implicit.item),
     );
+
+    protected prevent(e: Event): void {
+        this.textfield.focused() && e.preventDefault();
+    }
 }
 
 export const TUI_TEXTFIELD_ITEM: PolymorpheusContent<TuiContext<TuiTextfieldItem<any>>> =

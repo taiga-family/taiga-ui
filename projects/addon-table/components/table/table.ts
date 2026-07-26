@@ -6,6 +6,7 @@ import {TuiTableSortBy} from './directives/sort-by.directive';
 import {TuiTableSortable} from './directives/sortable.directive';
 import {TuiTableDirective} from './directives/table.directive';
 import {TuiTableThead} from './directives/thead.directive';
+import {TuiSorterPipe} from './pipes/sorter.pipe';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
 import {TuiTableExpand} from './table-expand/table-expand.component';
 import {TuiTableTbody} from './tbody/tbody.component';
@@ -28,6 +29,7 @@ export const TuiTable = [
     TuiTableSortable,
     TuiTableThead,
     TuiTableResized,
+    TuiSorterPipe,
     TuiTableSortPipe,
     TuiTableExpand,
 ] as const;

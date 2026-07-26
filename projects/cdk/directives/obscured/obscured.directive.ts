@@ -15,6 +15,7 @@ import {TuiObscuredService} from './obscured.service';
 })
 export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
+
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
         map((by) => !!by?.every((el) => !this.activeZone?.contains(el))),
     );

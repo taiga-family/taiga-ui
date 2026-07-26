@@ -27,9 +27,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     templateUrl: './tree-item-content.template.html',
     styleUrl: './tree-item-content.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._expandable]': 'isExpandable',
-    },
+    host: {'[class._expandable]': 'isExpandable'},
 })
 export class TuiTreeItemContent {
     private readonly controller = inject<TuiTreeController>(
@@ -59,6 +57,4 @@ export const TUI_TREE_ITEM_CONTENT = new PolymorpheusComponent(TuiTreeItemConten
  */
 export const TUI_TREE_CONTENT = new InjectionToken<
     PolymorpheusContent<TuiTreeItemContext>
->(ngDevMode ? 'TUI_TREE_CONTENT' : '', {
-    factory: () => TUI_TREE_ITEM_CONTENT,
-});
+>(ngDevMode ? 'TUI_TREE_CONTENT' : '', {factory: () => TUI_TREE_ITEM_CONTENT});

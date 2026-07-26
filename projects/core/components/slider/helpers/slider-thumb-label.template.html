@@ -1,0 +1,11 @@
+@if (control()?.valueChanges | async) {}
+
+<div
+    class="t-ghost"
+    [style.--tui-slider-thumb-ratio]="ratio"
+    [style.inset-inline-start.px]="ghostStart"
+>
+    <ng-content />
+</div>
+
+<ng-content select="input[type=range]" />

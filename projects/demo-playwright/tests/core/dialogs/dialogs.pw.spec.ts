@@ -2,6 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
 test.describe('Dialog', () => {
     test('String', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dialog);
@@ -76,5 +78,33 @@ test.describe('Dialog', () => {
         await page.locator('tui-dialog button').last().click();
         await example.locator('button').last().click();
         await expect.soft(page).toHaveScreenshot('06-dialog-2.png');
+    });
+
+    test.describe('Mobile', () => {
+        test.use(TUI_PLAYWRIGHT_MOBILE);
+
+        test('Confirm', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Confirm);
+
+            const documentationPagePO = new TuiDocumentationPagePO(page);
+            const example = documentationPagePO.getExample('#basic');
+
+            await example.locator('button').first().click();
+            await expect.soft(page).toHaveScreenshot('07-dialog-1.png');
+        });
+    });
+
+    test('Inert', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dialog);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#directive');
+        const root = page.locator('tui-root > .t-root-content').first();
+
+        await expect(root).not.toHaveAttribute('inert');
+        await example.locator('button').first().click();
+        await expect(root).toHaveAttribute('inert');
+        await page.locator('tui-dialog button').last().click();
+        await expect(root).not.toHaveAttribute('inert');
     });
 });

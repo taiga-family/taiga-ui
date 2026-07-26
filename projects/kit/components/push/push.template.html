@@ -3,13 +3,9 @@
 </div>
 @if (close['listeners']?.length) {
     <button
-        appearance=""
         size="xs"
-        tuiIconButton
-        type="button"
+        tuiButtonX
         class="t-close"
-        [iconStart]="icons.close"
-        [style.border-radius.%]="100"
         (click)="close.emit()"
     >
         {{ closeWord() }}

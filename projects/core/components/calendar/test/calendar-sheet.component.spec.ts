@@ -14,6 +14,7 @@ import {
     TuiDayOfWeek,
     TuiDayRange,
     TuiMonth,
+    tuiSetSignal,
 } from '@taiga-ui/cdk';
 import {
     tuiCalendarOptionsProvider,
@@ -40,11 +41,8 @@ describe('CalendarSheet', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendarSheet);
-
         public month = new TuiMonth(2018, 1);
-
         public value: TuiDayRange | null = null;
-
         public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
         public onDayClick(_: TuiDay): void {}
@@ -126,7 +124,7 @@ describe('CalendarSheet', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
 
-                component.value = new TuiDayRange(day1, day2);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day2));
 
                 expect(component.getItemRange(day1)).toBe('start');
             });
@@ -135,7 +133,7 @@ describe('CalendarSheet', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
 
-                component.value = new TuiDayRange(day1, day2);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day2));
 
                 expect(component.getItemRange(day2)).toBe('end');
             });
@@ -143,60 +141,20 @@ describe('CalendarSheet', () => {
             it('returns single if value is single day and item equals this', () => {
                 const day1 = new TuiDay(2019, 4, 24);
 
-                component.value = new TuiDayRange(day1, day1);
+                tuiSetSignal(component.value, new TuiDayRange(day1, day1));
 
                 expect(component.getItemRange(day1)).toBe('active');
             });
         });
 
-        describe('itemIsInterval', () => {
-            it('returns false if there is single day range value but no hoveredItem', () => {
-                const day = new TuiDay(2019, 4, 16);
-
-                component.value = new TuiDayRange(day, day);
-                component.hoveredItem = null;
-
-                expect(component.itemIsInterval(day)).toBe(false);
-            });
-
-            it('returns true if item is between single day range value and hoveredItem', () => {
-                const singleDayRangeValue = new TuiDayRange(
-                    new TuiDay(2019, 4, 14),
-                    new TuiDay(2019, 4, 14),
-                );
-                const day = new TuiDay(2019, 4, 16);
-                const hoveredDay = new TuiDay(2019, 4, 18);
-
-                component.value = singleDayRangeValue;
-                component.onItemHovered(hoveredDay);
-
-                expect(component.itemIsInterval(day)).toBe(true);
-            });
-
-            it('returns true if item is between day range value', () => {
-                const dayRangeValue = new TuiDayRange(
-                    new TuiDay(2019, 4, 14),
-                    new TuiDay(2019, 4, 24),
-                );
-                const day = new TuiDay(2019, 4, 16);
-
-                component.value = dayRangeValue;
-
-                expect(component.itemIsInterval(day)).toBe(true);
-            });
-        });
-
         it('emits hovered item', () => {
-            let result: unknown;
             const day = new TuiDay(2019, 4, 16);
 
-            component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
-                result = hoveredDay;
-            });
+            expect(component.hoveredItem()).toBe(null);
 
             component.onItemHovered(day);
 
-            expect(result).toBe(day);
+            expect(component.hoveredItem()).toBe(day);
         });
 
         it('does not recalculate month and sheet if it has already been set with the same month', () => {

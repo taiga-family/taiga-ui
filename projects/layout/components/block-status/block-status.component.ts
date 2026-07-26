@@ -4,21 +4,26 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-block-status',
     templateUrl: './block-status.template.html',
-    styleUrl: './block-status.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './block-status.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._card]': 'card()',
+        'data-tui-version': TUI_VERSION,
         '[attr.data-size]': 'size()',
+        '[class._card]': 'card()',
     },
 })
 export class TuiBlockStatusComponent {
     public readonly card = input(false);
-
     public readonly size = input<TuiSizeL>('l');
 }

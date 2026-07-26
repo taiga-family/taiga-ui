@@ -1,6 +1,5 @@
-import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
-
-export type TuiLanguageName = TuiLooseUnion<
+export type TuiLanguageName =
+    | string
     | 'arabic'
     | 'belarusian'
     | 'chinese'
@@ -10,7 +9,7 @@ export type TuiLanguageName = TuiLooseUnion<
     | 'german'
     | 'hebrew'
     | 'italian'
-    | 'japan'
+    | 'japanese'
     | 'kazakh'
     | 'korean'
     | 'lithuanian'
@@ -21,5 +20,4 @@ export type TuiLanguageName = TuiLooseUnion<
     | 'spanish'
     | 'turkish'
     | 'ukrainian'
-    | 'vietnamese'
->;
+    | 'vietnamese';

@@ -13,7 +13,7 @@ export const TUI_DAY_CAPS_MAPPER: TuiMapper<
 > = (current, value, maxLength, backwards) => {
     if (
         // TODO(v5): replace with `if (!(value instanceof TuiDay) || !maxLength)` (backward compatibility)
-        (value instanceof TuiDayRange && !value.isSingleDay) ||
+        (value instanceof TuiDayRange && value.from !== value.to) ||
         !value ||
         !maxLength
     ) {
@@ -26,9 +26,10 @@ export const TUI_DAY_CAPS_MAPPER: TuiMapper<
 
     // TODO(v5): `value instanceof TuiDay` always `true`
     const from = value instanceof TuiDay ? value : value.from;
+
     const dateShift = from
         .append(backwards ? negativeMaxLength : maxLength)
-        .append({day: !backwards ? -1 : 1});
+        .append({day: backwards ? 1 : -1});
 
     if (backwards) {
         return dateShift.dayBefore(current || TUI_FIRST_DAY)

@@ -1,12 +1,10 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .date-picker();
 
 :host {
     display: block;
     inline-size: 20.75rem;
-    // TODO: investigate problem in mobile calendar
-    /* stylelint-disable-next-line */
     max-inline-size: 100vw;
 
     &._ios {
@@ -48,7 +46,7 @@
     block-size: 2.5rem;
     border-radius: 100%;
     overflow: hidden;
-    mask: none;
+    mask-image: none;
     border: none;
     text-decoration: none;
 
@@ -79,6 +77,6 @@
     }
 
     &::after {
-        mask: none;
+        mask-image: none;
     }
 }

@@ -7,6 +7,7 @@ import {
     inject,
     input,
     model,
+    untracked,
     viewChild,
 } from '@angular/core';
 import {TuiRoot} from '@taiga-ui/core/components/root';
@@ -23,7 +24,8 @@ export class TuiFullscreen {
     private readonly root = viewChild(TuiRoot, {read: ElementRef});
     private readonly doc = inject(DOCUMENT);
 
-    public readonly tuiFullscreen = model<boolean>(false);
+    public readonly tuiFullscreen = model(false);
+
     public readonly options = input<FullscreenOptions>(
         {navigationUI: 'auto'},
         {alias: 'tuiFullscreenOptions'},
@@ -31,7 +33,7 @@ export class TuiFullscreen {
 
     protected readonly handleState = effect(async () => {
         if (this.tuiFullscreen()) {
-            await this.root()?.nativeElement.requestFullscreen(this.options());
+            await this.root()?.nativeElement.requestFullscreen(untracked(this.options));
         } else if (this.doc.fullscreenElement === this.root()?.nativeElement) {
             try {
                 await this.doc.exitFullscreen();

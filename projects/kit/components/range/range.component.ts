@@ -2,8 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
-    inject,
     input,
     viewChildren,
 } from '@angular/core';
@@ -12,15 +10,13 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
-import {type TuiSizeS} from '@taiga-ui/core/types';
 import {
-    TUI_SLIDER_OPTIONS,
     type TuiKeySteps,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
     TuiSlider,
     TuiSliderComponent,
-} from '@taiga-ui/kit/components/slider';
+} from '@taiga-ui/core/components/slider';
 
 import {TuiRangeChange} from './range-change.directive';
 
@@ -38,47 +34,44 @@ import {TuiRangeChange} from './range-change.directive';
         },
     ],
     host: {
-        '[attr.data-size]': 'size()',
-        '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
-        '[style.--t-start.%]': 'start()',
-        '[style.--t-end.%]': 'end()',
-        '[style.background]': 'options.trackColor',
+        '[attr.tabindex]': '-1',
         '[class._disabled]': 'disabled()',
+        '[style.--t-end.%]': 'end()',
+        '[style.--t-start.%]': 'start()',
         '(focusout)': 'onTouched()',
-        '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
         '(keydown.arrowDown.prevent)': 'changeByStep(-1, $event.target)',
-        '(keydown.arrowRight.prevent)': 'changeByStep(rtl ? -1 : 1, $event.target)',
         '(keydown.arrowLeft.prevent)': 'changeByStep(rtl ? 1 : -1, $event.target)',
+        '(keydown.arrowRight.prevent)': 'changeByStep(rtl ? -1 : 1, $event.target)',
+        '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
     },
 })
 export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
+    private readonly sliders = viewChildren(TuiSliderComponent);
 
-    protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
     public readonly min = input(0);
     public readonly max = input(100);
     public readonly step = input(1);
-    public readonly size = input<TuiSizeS>(this.options.size);
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly focusable = input(true);
     public readonly margin = input(0);
     public readonly limit = input(Infinity);
-
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
-    public readonly sliders = viewChildren<
-        TuiSliderComponent,
-        ElementRef<HTMLInputElement>
-    >(TuiSliderComponent, {read: ElementRef});
+
+    public readonly thumbs = computed(
+        ([start, end] = this.sliders()) => [start!.el, end!.el] as const,
+    );
 
     protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
-    protected readonly fractionStep = computed<number>((step = this.step()) => {
-        return this.keySteps() ? step / 100 : step / (this.max() - this.min());
-    });
+
+    protected readonly fractionStep = computed<number>((step = this.step()) =>
+        this.keySteps() ? step / 100 : step / (this.max() - this.min()),
+    );
 
     protected readonly computedKeySteps = computed<TuiKeySteps>(
         () =>
@@ -119,9 +112,11 @@ export class TuiRange extends TuiControl<[number, number]> {
     }
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
-        const [startThumb, endThumb] = this.sliders().map((x) => x?.nativeElement);
+        const [startThumb, endThumb] = this.thumbs();
+
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
+
         const activeThumbElement = isEndThumb ? endThumb : startThumb;
         const newValue = this.takeStep(isEndThumb ? [0, coefficient] : [coefficient, 0]);
 

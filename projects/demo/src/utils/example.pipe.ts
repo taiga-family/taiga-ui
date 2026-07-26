@@ -1,13 +1,9 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {TuiDocPage, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-
-import {toKebab} from './kebab.pipe';
+import {TuiDocPage, type TuiRawLoaderContent, tuiToKebab} from '@taiga-ui/addon-doc';
 
 const EMPTY = {default: ''};
 
-@Pipe({
-    name: 'tuiExample',
-})
+@Pipe({name: 'tuiExample'})
 export class TuiExamplePipe implements PipeTransform {
     private readonly page = inject(TuiDocPage);
 
@@ -21,8 +17,8 @@ export class TuiExamplePipe implements PipeTransform {
             | 'ts' = 'html,ts,less',
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
-        const directory = `${this.page.type()}/${toKebab(this.page.header())}/examples/${index}`;
-        const ts = import(`../modules/${directory}/index.ts`, {
+        const directory = `${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}`;
+        const ts = import(`../pages/${directory}/index.ts`, {
             with: {loader: 'text'},
         }).catch(() => EMPTY);
 
@@ -48,7 +44,7 @@ export class TuiExamplePipe implements PipeTransform {
 
 async function load(path: string): Promise<{default: string}> {
     try {
-        return await import(/* @vite-ignore */ `../modules/${path}`);
+        return await import(/* @vite-ignore */ `../pages/${path}`);
     } catch {
         return EMPTY;
     }

@@ -35,7 +35,7 @@ describe('Range | With segments + tick labels', () => {
         cy.viewport(300, 75);
     });
 
-    const cases: Array<[number, number]> = [
+    const cases: ReadonlyArray<[number, number]> = [
         [0, 0],
         [0, 25],
         [0, 50],
@@ -48,11 +48,7 @@ describe('Range | With segments + tick labels', () => {
         const stringified = JSON.stringify(value);
 
         it(`value = ${stringified}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
-            });
+            cy.mount(SandBox, {componentProperties: {value}});
 
             cy.compareSnapshot(`range-ticks-${stringified}`);
         });

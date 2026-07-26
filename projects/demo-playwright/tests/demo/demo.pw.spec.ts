@@ -6,11 +6,10 @@ import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
-
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {
-        test(`${path}`, async ({page, browserName}) => {
+        test(path, async ({page, browserName}) => {
             const documentation = new TuiDocumentationPagePO(page);
 
             await tuiMockImages(page);
@@ -41,8 +40,9 @@ test.describe('Demo', () => {
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
 
-                // e2e flaky: wait more time for charts graphics
-                await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
+                const preventFlaky = path.includes('charts');
+
+                await page.waitForTimeout(preventFlaky ? 1000 : 150);
 
                 const makeName = (mode: string): string[] => [
                     path.replace('/', '').replaceAll('/', '-'),

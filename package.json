@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.52.0",
+    "version": "5.16.0",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -51,8 +51,8 @@
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
         "start:shadow": "nx serve demo -c shadow",
         "start:ssl": "nx serve-ssl demo",
-        "start:ssr": "nx serve-ssr demo",
-        "stylelint": "stylelint '**/*.{less,css}' --config package.json",
+        "start:ssr": "nx serve demo -c production",
+        "stylelint": "stylelint '**/*.{less,css,scss}' --config package.json",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",
         "test:e2e": "nx e2e-ui demo-playwright",
@@ -80,15 +80,6 @@
         "extends": [
             "@taiga-ui/stylelint-config"
         ],
-        "rules": {
-            "property-disallowed-list": null,
-            "selector-class-pattern": [
-                "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
-                {
-                    "resolveNestedSelectors": true
-                }
-            ]
-        },
         "overrides": [
             {
                 "files": [
@@ -97,54 +88,87 @@
                 "rules": {
                     "selector-class-pattern": null
                 }
+            },
+            {
+                "files": [
+                    "**/*.scss"
+                ],
+                "rules": {
+                    "at-rule-allowed-list": null,
+                    "at-rule-no-unknown": null,
+                    "function-no-unknown": null
+                }
             }
-        ]
+        ],
+        "rules": {
+            "property-disallowed-list": null,
+            "selector-class-pattern": [
+                "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
+                {
+                    "resolveNestedSelectors": true
+                }
+            ]
+        }
     },
     "jest": {
-        "preset": "@taiga-ui/jest-config"
+        "preset": "@taiga-ui/jest-config",
+        "workerIdleMemoryLimit": "256MB"
+    },
+    "overrides": {
+        "rxjs": "$rxjs"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "19.2.19",
-        "@angular-devkit/core": "19.2.19",
-        "@angular-devkit/schematics": "19.2.19",
+        "@angular-devkit/build-angular": "19.2.27",
+        "@angular-devkit/core": "19.2.27",
+        "@angular-devkit/schematics": "19.2.27",
+        "@angular/build": "19.2.27",
         "@angular/cdk": "19.2.19",
-        "@angular/cli": "19.2.19",
-        "@angular/common": "19.2.17",
-        "@angular/compiler": "19.2.17",
-        "@angular/compiler-cli": "19.2.17",
-        "@angular/core": "19.2.17",
-        "@angular/forms": "19.2.17",
-        "@angular/platform-browser": "19.2.17",
-        "@angular/platform-browser-dynamic": "19.2.17",
-        "@angular/router": "19.2.17",
+        "@angular/cli": "19.2.27",
+        "@angular/common": "19.2.25",
+        "@angular/compiler": "19.2.25",
+        "@angular/compiler-cli": "19.2.25",
+        "@angular/core": "19.2.25",
+        "@angular/forms": "19.2.25",
+        "@angular/localize": "19.2.25",
+        "@angular/platform-browser": "19.2.25",
+        "@angular/platform-browser-dynamic": "19.2.25",
+        "@angular/platform-server": "19.2.25",
+        "@angular/router": "19.2.25",
+        "@angular/ssr": "19.2.27",
+        "@docsearch/css": "4.6.3",
+        "@docsearch/js": "4.6.3",
+        "@ng-web-apis/experimental": "5.3.0",
+        "@ng-web-apis/universal": "5.3.0",
         "@nx/angular": "22.1.1",
         "@nx/jest": "22.1.1",
         "@nx/workspace": "22.1.1",
-        "@schematics/angular": "19.2.19",
-        "@taiga-ui/configs": "0.373.0",
+        "@schematics/angular": "19.2.27",
+        "@stackblitz/sdk": "1.11.1",
+        "@taiga-ui/configs": "0.552.0",
+        "@taiga-ui/event-plugins": "5.0.0",
+        "@types/express": "4.17.25",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "24.10.3",
-        "@typescript/native-preview": "7.0.0-dev.20251213.1",
-        "browser-sync": "3.0.4",
+        "@types/node": "25.9.5",
         "cpy-cli": "5.0.0",
+        "date-fns": "4.4.0",
+        "express": "4.22.2",
         "glob": "11.1.0",
         "husky": "9.1.7",
-        "knip": "5.73.4",
-        "lint-staged": "15.5.2",
-        "ng-morph": "4.8.4",
+        "knip": "5.88.1",
+        "libphonenumber-js": "1.13.8",
+        "ng-morph": "5.0.1",
         "ng-packagr": "19.2.2",
-        "ngx-highlightjs": "10.0.0",
+        "ngx-highlightjs": "14.0.1",
         "nx": "22.1.1",
         "rxjs": "7.8.2",
-        "source-map": "0.7.6",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.8.3"
     },
     "engines": {
-        "node": ">= 24",
+        "node": ">= 26",
         "npm": ">= 11",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
@@ -155,21 +179,21 @@
     ],
     "standard-version": {
         "scripts": {
-            "postchangelog": "ts-node ./scripts/postchangelog.ts",
-            "postbump": "ts-node ./scripts/postbump.ts"
+            "postbump": "ts-node ./scripts/postbump.ts",
+            "postchangelog": "ts-node ./scripts/postchangelog.ts"
         },
         "types": [
             {
-                "type": "feat",
-                "section": "🚀 Features"
+                "section": "🚀 Features",
+                "type": "feat"
             },
             {
-                "type": "fix",
-                "section": "🐞 Bug Fixes"
+                "section": "🐞 Bug Fixes",
+                "type": "fix"
             },
             {
-                "type": "deprecate",
-                "section": "⚠️ Deprecations"
+                "section": "⚠️ Deprecations",
+                "type": "deprecate"
             }
         ]
     }

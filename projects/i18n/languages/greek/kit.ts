@@ -21,13 +21,12 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'ΩΩ π.μ./μ.μ.',
         HH: 'ΩΩ',
         'MM:SS.MSS': 'ΛΛ:ΔΔ.ΜΜΜ',
-        'MM.SS.MSS': 'ΛΛ.ΔΔ.ΜΜΜ',
         'SS.MSS': 'ΔΔ.ΜΜΜ',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'ηη.μμ.εεεε',
-        'mm/dd/yyyy': 'μμ.ηη.εεεε',
-        'yyyy/mm/dd': 'εεεε.μμ.ηη',
+        'dd/mm/yyyy': 'ΗΗ.ΜΜ.ΕΕΕΕ',
+        'mm/dd/yyyy': 'ΜΜ.ΗΗ.ΕΕΕΕ',
+        'yyyy/mm/dd': 'ΕΕΕΕ.ΜΜ.ΗΗ',
     },
     digitalInformationUnits: ['Β', 'ΚιΒ', 'ΜιΒ'],
     passwordTexts: ['Εμφάνιση κωδικού', 'Απόκρυψη κωδικού'],
@@ -70,9 +69,7 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ναι',
         no: 'Όχι',
     },
-    previewTexts: {
-        rotate: 'Περιστροφή',
-    },
+    previewTexts: {rotate: 'Περιστροφή'},
     zoomTexts: {
         zoomOut: 'Μέγεθος μικρότερο',
         zoomIn: 'Μεγέθυνση',

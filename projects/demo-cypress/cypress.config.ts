@@ -1,6 +1,5 @@
 import {nxComponentTestingPreset} from '@nx/angular/plugins/component-testing';
 import {defineConfig} from 'cypress';
-import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
 const preset = {
     ...nxPreset(),
@@ -19,6 +18,12 @@ export default defineConfig({
         ...preset,
         devServer: {
             ...preset.devServer,
+            webpackConfig: {
+                optimization: {
+                    runtimeChunk: false,
+                    splitChunks: false,
+                },
+            },
             options: {
                 ...preset.devServer?.options,
                 projectConfig: {
@@ -27,7 +32,7 @@ export default defineConfig({
                     sourceRoot: preset.devServer?.options?.projectConfig.sourceRoot ?? '',
                     buildOptions: {
                         ...preset.devServer?.options?.projectConfig?.buildOptions,
-                        buildLibsFromSource: false,
+                        buildLibsFromSource: true,
                         progress: false,
                         optimization: false,
                         verbose: false,
@@ -50,7 +55,51 @@ export default defineConfig({
                             },
                         ],
                         baseHref: '/',
-                        styles: ['projects/demo/src/styles/styles.less'],
+                        styles: [
+                            'projects/demo/src/styles/styles.less',
+                            // TODO: Only necessary because Cypress uses webpack and lib sources,
+                            // not esbuild or compiled lib code, remove when we switch to esbuild:
+                            'projects/styles/components/appearance.less',
+                            'projects/styles/components/button.less',
+                            'projects/styles/components/group.less',
+                            'projects/styles/components/icon.less',
+                            'projects/styles/components/icons.less',
+                            'projects/styles/components/label.less',
+                            'projects/styles/components/link.less',
+                            'projects/styles/components/notification.less',
+                            'projects/styles/components/textfield.less',
+                            'projects/core/components/textfield/textfield-multi/textfield-multi.style.less',
+                            'projects/styles/components/title.less',
+                            'projects/styles/components/avatar.less',
+                            'projects/styles/components/badge.less',
+                            'projects/styles/components/block.less',
+                            'projects/styles/components/checkbox.less',
+                            'projects/styles/components/chip.less',
+                            'projects/styles/components/comment.less',
+                            'projects/styles/components/compass.less',
+                            'projects/styles/components/like.less',
+                            'projects/layout/components/card/large.style.less',
+                            'projects/styles/components/message.less',
+                            'projects/styles/components/pin.less',
+                            'projects/styles/components/progress-bar.less',
+                            'projects/styles/components/radio.less',
+                            'projects/styles/components/status.less',
+                            'projects/styles/components/switch.less',
+                            'projects/styles/components/toast.less',
+                            'projects/kit/components/accordion/accordion.style.less',
+                            'projects/kit/components/input-date/input-date.style.less',
+                            'projects/kit/components/input-number/step/input-number-step.style.less',
+                            'projects/kit/components/input-phone-international/input-phone-international.style.less',
+                            'projects/kit/components/preview/dialog/preview-dialog.style.less',
+                            'projects/kit/components/tabs/tabs.style.less',
+                            'projects/addon-mobile/directives/dropdown-mobile/dropdown-mobile.style.less',
+                            'projects/core/portals/modal/modal.style.less',
+                            'projects/core/components/cell/cell.styles.less',
+                            'projects/core/components/data-list/data-list.style.less',
+                            'projects/core/portals/dialog/dialog.style.less',
+                            'projects/kit/directives/chevron/chevron.style.less',
+                            'projects/kit/components/input-slider/input-slider.styles.less',
+                        ],
                     },
                 },
             },
@@ -61,6 +110,16 @@ export default defineConfig({
         experimentalSingleTabRunMode: true,
         justInTimeCompile: false,
         setupNodeEvents(on, config) {
+            // NOTE: new nx version sets process.cwd() to workspace root, but the plugin reads
+            // cypress-image-diff.config.js relative to cwd at module load time.
+            // Changing cwd before require() ensures the project-level config is found:
+            process.chdir(__dirname);
+
+            const getCompareSnapshotsPlugin: (
+                on: Cypress.PluginEvents,
+                config: Cypress.PluginConfigOptions,
+            ) => Cypress.PluginConfigOptions = require('cypress-image-diff-js/plugin');
+
             getCompareSnapshotsPlugin(on, config);
 
             on('before:browser:launch', (browser, launchOptions) => {

@@ -38,6 +38,7 @@ export class TuiSelectDirective<T>
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+
     protected readonly valueEffect = effect(() => {
         const value = this.value();
         const string = tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '';

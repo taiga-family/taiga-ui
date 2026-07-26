@@ -2,9 +2,7 @@ import {inject, Pipe, type PipeTransform} from '@angular/core';
 
 import {TUI_OBFUSCATE_OPTIONS} from './obfuscate.options';
 
-@Pipe({
-    name: 'tuiObfuscate',
-})
+@Pipe({name: 'tuiObfuscate'})
 export class TuiObfuscatePipe implements PipeTransform {
     private readonly option = inject(TUI_OBFUSCATE_OPTIONS);
 

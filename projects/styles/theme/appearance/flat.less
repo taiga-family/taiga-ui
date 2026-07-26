@@ -1,0 +1,23 @@
+@import '../../utils.less';
+
+[tuiAppearance][data-appearance='flat'],
+[tuiAppearance][data-appearance='flat-destructive'],
+[tuiAppearance][data-appearance='flat-grayscale'] {
+    color: var(--tui-text-action);
+
+    .appearance-hover({
+        background: var(--tui-background-neutral-1-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-neutral-1-pressed);
+    });
+}
+
+[tuiAppearance][data-appearance='flat-destructive'] {
+    color: var(--tui-text-negative);
+}
+
+[tuiAppearance][data-appearance='flat-grayscale'] {
+    color: var(--tui-text-primary);
+}

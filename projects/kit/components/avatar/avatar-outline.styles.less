@@ -1,6 +1,6 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-[tuiAvatarOutline] {
+[tuiAvatarOutline]:where(*&) {
     --t-outline: 0.1875rem;
     --t-gap: 0.125rem;
 
@@ -12,7 +12,7 @@
     }
 
     &._outline {
-        mask: radial-gradient(
+        mask-image: radial-gradient(
             closest-side,
             #000,
             #000 calc(100% - var(--t-gap) - var(--t-outline) - 0.5px),
@@ -26,7 +26,7 @@
             .fullsize();
 
             background: var(--t-fill);
-            mask: radial-gradient(
+            mask-image: radial-gradient(
                 closest-side,
                 transparent,
                 transparent calc(100% - var(--t-outline) - 0.5px),

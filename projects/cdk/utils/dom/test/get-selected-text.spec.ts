@@ -6,12 +6,8 @@ describe('tuiGetSelectedText', () => {
     describe('default behavior', () => {
         beforeEach(() => {
             mockWindow = {
-                document: {
-                    activeElement: null,
-                },
-                getSelection: jest.fn(() => ({
-                    toString: jest.fn(() => ''),
-                })),
+                document: {activeElement: null},
+                getSelection: jest.fn(() => ({toString: jest.fn(() => '')})),
             };
         });
 
@@ -29,12 +25,8 @@ describe('tuiGetSelectedText', () => {
     describe('when text was selected before', () => {
         beforeEach(() => {
             mockWindow = {
-                document: {
-                    activeElement: null,
-                },
-                getSelection: jest.fn(() => ({
-                    toString: jest.fn(() => 'selected text'),
-                })),
+                document: {activeElement: null},
+                getSelection: jest.fn(() => ({toString: jest.fn(() => 'selected text')})),
             };
         });
 

@@ -72,19 +72,11 @@ export function tuiGetPaymentSystem(
 }
 
 export function tuiIsMaestro(three: number, two: number, one: number): boolean {
-    if (one === 6) {
+    if (one === 6 || two === 50 || (two > 55 && two < 59)) {
         return true;
     }
 
-    if (two === 50 || (two > 55 && two < 59)) {
-        return true;
-    }
-
-    if (three < 500) {
-        return false;
-    }
-
-    return three < 510;
+    return three < 500 ? false : three < 510;
 }
 
 export function tuiIsMastercard(four: number, two: number, one: number): boolean {
@@ -100,11 +92,7 @@ export function tuiIsMastercard(four: number, two: number, one: number): boolean
         return true;
     }
 
-    if (four < 1000) {
-        return false;
-    }
-
-    return four > 2220 && four < 2721;
+    return four < 1000 ? false : four > 2220 && four < 2721;
 }
 
 export function tuiIsMir(four: number): boolean {

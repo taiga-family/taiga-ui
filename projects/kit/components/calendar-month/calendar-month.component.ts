@@ -2,11 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
-    Input,
-    Output,
-    signal,
+    input,
+    linkedSignal,
+    model,
+    output,
+    untracked,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
@@ -19,7 +20,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
@@ -38,70 +39,74 @@ const TODAY = TuiDay.currentLocal();
     styleUrl: './calendar-month.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarMonth)],
-    host: {
-        '[class._picking]': 'isRangePicking()',
-    },
+    host: {'[class._picking]': 'isRangePicking()'},
 })
 export class TuiCalendarMonth {
+    private hoveredItem: TuiMonth | null = null;
+
     protected isYearPickerShown = false;
     protected readonly months = inject(TUI_CALENDAR_MONTHS);
+
     protected readonly isRangePicking = computed(
         (x = this.value()) =>
             (!this.options.rangeMode && x instanceof TuiMonthRange && x.isSingleMonth) || // TODO(v5): remove this condition
             (this.options.rangeMode && x instanceof TuiMonth),
     );
 
-    @Input()
-    public year: TuiYear = TODAY;
+    protected readonly handler = computed(() =>
+        this.calculateDisabledItemHandlerWithMinMax(
+            this.disabledItemHandler(),
+            this.value(),
+            this.isRangePicking(),
+            this.min(),
+            this.max(),
+            this.minLength(),
+            this.maxLength(),
+        ),
+    );
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
+    protected readonly activeYear = linkedSignal<TuiYear>(() => {
+        const year = this.year();
 
-    @Input()
-    public minLength: number | null = null;
+        if (year) {
+            return year;
+        }
 
-    @Input()
-    public maxLength: number | null = null;
+        const value = untracked(this.value);
 
-    @Output()
-    public readonly monthClick = new EventEmitter<TuiMonth>();
+        if (value instanceof TuiMonth) {
+            return value;
+        }
 
-    @Output()
-    public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
+        return value instanceof TuiMonthRange ? value.from : TODAY;
+    });
 
-    @Output()
-    public readonly yearChange = new EventEmitter<TuiYear>();
+    public readonly value = input<TuiMonth | TuiMonthRange | null>(null);
+    public readonly minLength = input<number | null>(null);
+    public readonly maxLength = input<number | null>(null);
 
-    public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
-    public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
-    public readonly max = signal<TuiMonth>(TUI_LAST_DAY);
-    public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
-    public hoveredItem: TuiMonth | null = null;
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiMonth>>(TUI_FALSE_HANDLER);
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'min', transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY})
-    public set minSetter(x: TuiMonth) {
-        this.min.set(x);
-    }
+    public readonly min = input(TUI_FIRST_DAY, {
+        transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY,
+    });
 
-    // TODO(v5): use signal inputs
-    @Input({alias: 'max', transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY})
-    public set maxSetter(x: TuiMonth) {
-        this.max.set(x);
-    }
+    public readonly max = input(TUI_LAST_DAY, {
+        transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY,
+    });
 
-    // TODO(v5): use signal inputs
-    @Input('value')
-    public set valueSetter(x: TuiMonth | TuiMonthRange | null) {
-        this.value.set(x);
-    }
+    public readonly year = model<TuiYear>();
+    public readonly monthClick = output<TuiMonth>();
+    public readonly hoveredItemChange = output<TuiMonth | null>();
+    public readonly options = inject(TUI_CALENDAR_MONTH_OPTIONS);
 
     public onNextYear(): void {
-        this.updateActiveYear(this.year.append({year: 1}));
+        this.updateActiveYear(this.activeYear().append({year: 1}));
     }
 
     public onPreviousYear(): void {
-        this.updateActiveYear(this.year.append({year: -1}));
+        this.updateActiveYear(this.activeYear().append({year: -1}));
     }
 
     public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
@@ -118,6 +123,7 @@ export class TuiCalendarMonth {
 
         const selectedRange =
             value instanceof TuiMonth ? new TuiMonthRange(value, value) : value;
+
         const months = item.month + item.year * 12;
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
         const from = selectedRange.from.month + selectedRange.from.year * 12;
@@ -141,18 +147,6 @@ export class TuiCalendarMonth {
         return min < months && months < max ? 'middle' : null;
     }
 
-    protected get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
-        return this.calculateDisabledItemHandlerWithMinMax(
-            this.disabledItemHandler,
-            this.value(),
-            this.isRangePicking(),
-            this.min(),
-            this.max(),
-            this.minLength,
-            this.maxLength,
-        );
-    }
-
     protected getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
         return new TuiMonth(yearNumber, monthNumber);
     }
@@ -164,13 +158,13 @@ export class TuiCalendarMonth {
     protected onPickerYearClick(year: number): void {
         this.isYearPickerShown = false;
 
-        if (this.year.year !== year) {
+        if (this.activeYear().year !== year) {
             this.updateActiveYear(new TuiYear(year));
         }
     }
 
     protected onItemClick(month: TuiMonth): void {
-        if (!this.disabledItemHandlerWithMinMax(month)) {
+        if (!this.handler()(month)) {
             this.monthClick.emit(month);
         }
     }
@@ -184,7 +178,6 @@ export class TuiCalendarMonth {
     }
 
     // eslint-disable-next-line @typescript-eslint/max-params,max-params
-    @tuiPure
     private calculateDisabledItemHandlerWithMinMax(
         disabledItemHandler: TuiBooleanHandler<TuiMonth>,
         value: TuiMonth | TuiMonthRange | null,
@@ -196,6 +189,7 @@ export class TuiCalendarMonth {
     ): TuiBooleanHandler<TuiMonth> {
         return (item) => {
             const selectedMonth = value instanceof TuiMonthRange ? value.from : value;
+
             const delta =
                 isRangePicking && selectedMonth
                     ? Math.abs(
@@ -229,7 +223,7 @@ export class TuiCalendarMonth {
     }
 
     private updateActiveYear(year: TuiYear): void {
-        this.year = year;
-        this.yearChange.emit(year);
+        this.activeYear.set(year);
+        this.year.set(year);
     }
 }

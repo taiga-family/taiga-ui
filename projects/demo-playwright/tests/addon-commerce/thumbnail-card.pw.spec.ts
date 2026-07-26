@@ -7,15 +7,27 @@ const {describe, beforeEach} = test;
 describe('ThumbnailCard', () => {
     let documentationPage: TuiDocumentationPagePO;
 
+    test('keep icons visible in disabled content', async ({page}) => {
+        await tuiGoto(page, DemoRoute.ThumbnailCard);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#textfield');
+
+        await example.getByRole('button', {name: 'disabled'}).click();
+
+        await expect(
+            example.locator('[tuiThumbnailCard] tui-icon').first(),
+        ).toBeVisible();
+    });
+
     describe('Different width digits for different card sizes', () => {
-        test.use({viewport: {width: 100, height: 300}});
+        test.use({viewport: {width: 150, height: 300}});
 
         beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
         ['mastercard', 'visa', 'mir'].forEach((paymentSystem) => {
-            describe(`${paymentSystem}`, () => {
+            describe(paymentSystem, () => {
                 ['m', 'l'].forEach((size) => {
                     describe(`size = ${size}`, () => {
                         [
@@ -30,7 +42,7 @@ describe('ThumbnailCard', () => {
                             '8888',
                             '9999',
                         ].forEach((cardNumber) => {
-                            test(`${cardNumber}`, async ({page}) => {
+                            test(cardNumber, async ({page}) => {
                                 await tuiGoto(
                                     page,
                                     `${DemoRoute.ThumbnailCard}/API?paymentSystem=${paymentSystem}&size=${size}&iconStart=@tui.snowflake&iconEnd=@tui.lock`,
@@ -41,9 +53,9 @@ describe('ThumbnailCard', () => {
                                     .getByRole('textbox')
                                     .fill(cardNumber);
 
-                                await expect(
-                                    documentationPage.apiPageExample,
-                                ).toHaveScreenshot(
+                                await documentationPage.prepareBeforeScreenshot();
+
+                                await expect(documentationPage.demo).toHaveScreenshot(
                                     `ps-${paymentSystem}-size-${size}-${cardNumber}.png`,
                                 );
                             });
@@ -58,8 +70,10 @@ describe('ThumbnailCard', () => {
                             `${DemoRoute.ThumbnailCard}/API?paymentSystem=${paymentSystem}&size=${size}&iconStart=@tui.snowflake&iconEnd=@tui.lock&ng-content=8888`,
                         );
 
+                        await documentationPage.prepareBeforeScreenshot();
+
                         await expect
-                            .soft(documentationPage.apiPageExample)
+                            .soft(documentationPage.demo)
                             .toHaveScreenshot(
                                 `ps-${paymentSystem}-size-${size}-8888.png`,
                             );

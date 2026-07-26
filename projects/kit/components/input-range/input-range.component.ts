@@ -9,12 +9,14 @@ import {
     viewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {type TuiKeySteps} from '@taiga-ui/core/components/slider';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TUI_INPUT_NUMBER_OPTIONS,
@@ -23,10 +25,6 @@ import {
     TuiQuantumValueTransformerBase,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiRange} from '@taiga-ui/kit/components/range';
-import {
-    type TuiKeySteps,
-    tuiSliderOptionsProvider,
-} from '@taiga-ui/kit/components/slider';
 import {
     type PolymorpheusContent,
     PolymorpheusOutlet,
@@ -42,11 +40,7 @@ const transform = (x?: readonly [string, string] | null): readonly [string, stri
     templateUrl: './input-range.template.html',
     styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsControl(TuiInputRange),
-        tuiSliderOptionsProvider({trackColor: 'transparent'}),
-        tuiFallbackValueProvider([0, 0]),
-    ],
+    providers: [tuiAsControl(TuiInputRange), tuiFallbackValueProvider([0, 0])],
     host: {
         '[attr.data-size]': 'size()',
         // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
@@ -57,7 +51,8 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     private readonly inputs = viewChildren(TuiInputNumberDirective, {read: ElementRef});
     private readonly range = viewChild(TuiRange);
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isMobile = inject(WA_IS_MOBILE);
+
     private readonly quantumTransformer = computed(
         () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
@@ -66,6 +61,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     protected start = this.value()[0];
     protected end = this.value()[1];
     protected side: 'end' | 'start' = 'start';
+
     protected readonly contentStart = computed(() => {
         const [start, end] = this.content().map((x, i) => {
             const value = this.value()[i]!;
@@ -73,11 +69,9 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
             return typeof x === 'function' ? x({$implicit: value}) : x || value;
         });
 
-        if (this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)) {
-            return this.content()[0];
-        }
-
-        return `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
+        return this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)
+            ? this.content()[0]
+            : `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
     });
 
     protected readonly contentEnd = computed(() =>
@@ -90,6 +84,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
     public readonly quantum = input(0);
+
     public readonly prefix = input([this.options.prefix, this.options.prefix], {
         transform,
     });
@@ -98,7 +93,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         transform,
     });
 
-    public content = input<
+    public readonly content = input<
         readonly [
             PolymorpheusContent<TuiContext<number>>,
             PolymorpheusContent<TuiContext<number>>,
@@ -159,6 +154,11 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         }
     }
 
+    protected onBlur(): void {
+        this.onTouched();
+        this.setTextfieldValues(this.value());
+    }
+
     protected setTextfieldValues([start, end]: readonly [number, number]): void {
         this.start = start;
         this.end = end;
@@ -182,6 +182,7 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
 
     private valueGuard(value: readonly [number, number]): readonly [number, number] {
         const [prevStart, prevEnd] = this.value();
+
         const [start, end] = value.map(
             (x) => this.quantumTransformer().toControlValue(x) ?? x,
         ) as unknown as readonly [number, number];

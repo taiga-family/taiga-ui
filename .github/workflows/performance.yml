@@ -2,6 +2,10 @@ name: 📈 Performance Stress Testing
 on:
   workflow_call:
 
+permissions:
+  actions: read
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERF_BASELINE_FALLBACK_BRANCH: main
@@ -29,6 +33,7 @@ env:
   PERF_COMPONENT_ABS_MS_FLOOR: 12
   PERF_COMPONENT_METRIC_ABS_MS_FLOOR: 3
   PERF_NET_VISIBILITY_ABS_MS_FLOOR: 12
+  GITHUB_COMMENT_ENABLED: false
 
 jobs:
   performance-stress:
@@ -37,21 +42,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout feature branch
-        uses: actions/checkout@v4.3.1
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.176.0
-      - uses: taiga-family/ci/actions/setup/node@v1.176.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.176.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-playwright@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
       - name: Restore dist cache from parent workflow build
-        uses: actions/cache/restore@v4.3.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
       - name: Attempt download of demo dist artifact (fallback)
         if: ${{ !cancelled() }}
         continue-on-error: true
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: demo-dist-${{ github.sha }}
           path: dist/demo
@@ -92,7 +97,7 @@ jobs:
         run: echo 'Skipping performance stress due to missing dist'
       - name: Serve feature build
         if: steps.dist-check.outputs.skip == 'false'
-        uses: taiga-family/ci/actions/run/serve@v1.176.0
+        uses: taiga-family/actions/http-serve@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -129,13 +134,13 @@ jobs:
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/clone@v1.176.0
+        uses: taiga-family/actions/git-clone@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/serve@v1.176.0
+        uses: taiga-family/actions/http-serve@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -196,7 +201,7 @@ jobs:
             echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
           fi
       - name: Upload performance stress artifacts
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           path: ./performance-stress/**
           name: performance-stress-artifacts_${{ github.sha }}
@@ -204,7 +209,7 @@ jobs:
           compression-level: 0
           retention-days: 3
       - name: Post performance stress comment
-        if: env.IS_OWNER_MODE == 'true'
+        if: env.IS_OWNER_MODE == 'true' && env.GITHUB_COMMENT_ENABLED == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

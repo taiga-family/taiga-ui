@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 @keyframes blink {
     50% {
@@ -6,7 +6,56 @@
     }
 }
 
-:host {
+tui-input-pin-content:where(*&) {
+    .fullsize();
+
+    display: flex;
+    gap: inherit;
+    border-radius: inherit;
+
+    .t-item {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        pointer-events: auto;
+        cursor: text;
+        margin-inline-start: 0.25rem;
+
+        &:first-child {
+            pointer-events: none;
+            margin: 0;
+        }
+
+        &[data-focus='true'] .t-value {
+            &_filled {
+                background: var(--tui-service-selection-background);
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            &::before {
+                content: '';
+                block-size: 1em;
+                border-inline-start: 1px solid var(--tui-text-primary);
+                animation: blink 1s steps(1) infinite;
+            }
+        }
+    }
+
+    .t-value {
+        color: var(--tui-text-secondary);
+
+        &_filled {
+            color: var(--tui-text-primary);
+        }
+    }
+}
+
+input[tuiInputPin]:where(*&) {
     position: absolute;
     inset: 0;
     color: transparent;
@@ -16,10 +65,6 @@
 
     // Hack for IOS Safari
     --t-caret-color: rgba(255, 255, 255, 0.01);
-
-    :host-context([tuiTheme='dark']) {
-        --t-caret-color: rgba(50, 50, 50, 0.01);
-    }
 
     caret-color: var(--t-caret-color);
 
@@ -31,54 +76,15 @@
         color: transparent !important;
     }
 
-    ::ng-deep + .t-content .t-clear {
-        display: none !important;
-    }
-}
+    + .t-content {
+        gap: inherit !important;
 
-.t-wrapper {
-    .fullsize();
-
-    display: flex;
-    gap: inherit;
-    border-radius: inherit;
-}
-
-.t-item {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    border-radius: inherit;
-    pointer-events: auto;
-    cursor: text;
-
-    &:first-child {
-        pointer-events: none;
-    }
-
-    &[data-focus='true'] .t-value {
-        &_filled {
-            background: var(--tui-service-selection-background);
-
-            &::before {
-                display: none;
-            }
-        }
-
-        &::before {
-            content: '';
-            block-size: 1em;
-            border-inline-start: 1px solid var(--tui-text-primary);
-            animation: blink 1s steps(1) infinite;
+        [tuiButtonX] {
+            display: none !important;
         }
     }
 }
 
-.t-value {
-    color: var(--tui-text-tertiary);
-
-    &_filled {
-        color: var(--tui-text-primary);
-    }
+[tuiTheme='dark'] input[tuiInputPin]:where(*&) {
+    --t-caret-color: rgba(50, 50, 50, 0.01);
 }

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update should migrate tui-icon badge icon input to iconStart: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-icon
+                    icon="@tui.box"
+                    tuiBadge
+                />
+                <tui-icon
+                    tuiBadge
+                    [icon]="icon"
+                />
+                <tui-icon icon="@tui.box"></tui-icon>
+            ",
+  "1. After": "
+                <tui-icon
+                    iconStart="@tui.box"
+                    tuiBadge
+                />
+                <tui-icon
+                    tuiBadge
+                    [iconStart]="icon"
+                />
+                <tui-icon icon="@tui.box"></tui-icon>
+            ",
+}
+`;

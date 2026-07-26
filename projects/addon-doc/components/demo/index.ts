@@ -1,4 +1,4 @@
-import {JsonPipe, Location, NgTemplateOutlet} from '@angular/common';
+import {Location, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -8,6 +8,8 @@ import {
     ElementRef,
     inject,
     input,
+    Pipe,
+    type PipeTransform,
     type Signal,
     signal,
     TemplateRef,
@@ -21,18 +23,22 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms';
 import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
-import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_DEMO_TEXTS,
+    TUI_DOC_ICONS,
+    TUI_DOC_URL_STATE_HANDLER,
+} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -42,19 +48,30 @@ import {skip} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
+@Pipe({name: 'json'})
+export class TuiJsonPipe implements PipeTransform {
+    public transform(value: unknown): string {
+        return JSON.stringify(
+            value,
+            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
+            2,
+        );
+    }
+}
+
 @Component({
     selector: 'tui-doc-demo',
     imports: [
         FormsModule,
-        JsonPipe,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,
         TuiExpand,
-        TuiGroup,
+        TuiIcon,
         TuiItem,
+        TuiJsonPipe,
         TuiResizable,
         TuiResizer,
         TuiSelect,
@@ -65,9 +82,10 @@ const MIN_WIDTH = 160;
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[attr.tuiTheme]': 'theme()',
         '[class._sticky]': 'sticky()',
-        '(window:resize)': 'onResize()',
         '(document:mouseup.zoneless)': 'onMouseUp()',
+        '(window:resize)': 'onResize()',
     },
 })
 export class TuiDocDemo implements AfterViewInit {
@@ -76,12 +94,7 @@ export class TuiDocDemo implements AfterViewInit {
         {read: ElementRef},
     );
 
-    private readonly content: Signal<ElementRef<HTMLElement>> =
-        viewChild.required<ElementRef<HTMLElement>>('content');
-
-    private readonly resizer: Signal<ElementRef<HTMLElement>> =
-        viewChild.required<ElementRef<HTMLElement>>('resizer');
-
+    private readonly content = viewChild.required<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -89,12 +102,11 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly darkMode = inject(TUI_DARK_MODE);
 
     protected readonly template = contentChild(TemplateRef<Record<string, unknown>>);
-
     protected readonly rendered = signal(false);
+    protected readonly theme = computed(() => (this.dark() ? 'dark' : 'light'));
+    protected readonly icons = inject(TUI_DOC_ICONS);
 
-    protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
-
-    protected dark = signal(
+    protected readonly dark = signal(
         tuiCoerceValueIsTrue(this.params.darkMode ?? this.darkMode()),
     );
 
@@ -102,8 +114,7 @@ export class TuiDocDemo implements AfterViewInit {
         .pipe(skip(1), takeUntilDestroyed())
         .subscribe((mode) => this.onModeChange(mode));
 
-    protected testForm?: FormGroup;
-
+    protected form?: FormGroup;
     protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
     protected updateOn: 'blur' | 'change' | 'submit' =
@@ -111,11 +122,10 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    protected sandboxWidth = parseInt(this.params.sandboxWidth, 10);
+    protected sandboxWidth = Number.parseInt(this.params.sandboxWidth, 10);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public readonly control = input<AbstractControl | null>(null);
-
     public readonly sticky = input(true);
 
     public ngAfterViewInit(): void {
@@ -154,17 +164,16 @@ export class TuiDocDemo implements AfterViewInit {
         this.createForm();
     }
 
-    protected updateWidth(width = NaN): void {
-        if (!this.resizer() || !this.resizable() || !this.content()) {
+    protected updateWidth(width = Number.NaN): void {
+        if (!this.resizable() || !this.content()) {
             return;
         }
 
         const safe = width || this.resizable().nativeElement.clientWidth;
         const total = this.el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
-        const validated = safe < total ? clamped : NaN;
+        const validated = safe < total ? clamped : Number.NaN;
 
-        this.resizer().nativeElement.textContent = String(clamped || '-');
         this.resizable().nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
@@ -180,7 +189,6 @@ export class TuiDocDemo implements AfterViewInit {
         return this.getUrlTree().queryParams;
     }
 
-    @tuiPure
     private updateUrl(params: TuiDemoParams): void {
         const tree = this.getUrlTree();
         const {queryParams} = tree;
@@ -199,10 +207,7 @@ export class TuiDocDemo implements AfterViewInit {
         const control = this.control();
 
         if (control) {
-            this.testForm = new FormGroup(
-                {testValue: control},
-                {updateOn: this.updateOn},
-            );
+            this.form = new FormGroup({value: control}, {updateOn: this.updateOn});
         }
     }
 

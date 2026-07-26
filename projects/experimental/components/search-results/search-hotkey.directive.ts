@@ -7,8 +7,8 @@ import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
     selector: 'input[tuiSearchHotkey]',
     host: {
         '[placeholder]': 'placeholder()',
-        '(document:keydown.meta.k.stop)': 'search.open()',
         '(document:keydown.alt.k.stop)': 'search.open()',
+        '(document:keydown.meta.k.stop)': 'search.open()',
     },
 })
 export class TuiSearchHotkey {

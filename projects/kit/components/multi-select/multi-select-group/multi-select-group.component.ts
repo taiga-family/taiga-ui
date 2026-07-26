@@ -24,20 +24,19 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     templateUrl: './multi-select-group.template.html',
     styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._label]': 'label',
-    },
 })
 export class TuiMultiSelectGroupComponent<T> {
     private readonly options = contentChildren(TuiOptionWithValue<T>);
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
+
     private readonly control =
-        inject(TuiTextfieldComponent, {optional: true})?.control() ||
-        inject(NgControl, {optional: true});
+        this.textfield?.control() || inject(NgControl, {optional: true});
 
     protected readonly values = computed(() => this.options().map(({value}) => value()));
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
+
     protected readonly checked = computed(() =>
         this.values().every((item) =>
             this.value()?.some(
@@ -53,7 +52,13 @@ export class TuiMultiSelectGroupComponent<T> {
         const matcher = this.handlers.identityMatcher();
         const value = this.value() || [];
         const others = value.filter((a) => values.every((b) => !matcher(a, b)));
+        const next = this.checked() ? others : others.concat(values);
+        const cva = this.textfield?.child();
 
-        this.control?.control?.setValue(this.checked() ? others : others.concat(values));
+        if (cva) {
+            cva.onChange(next);
+        } else {
+            this.control?.control?.setValue(next);
+        }
     }
 }

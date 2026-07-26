@@ -21,13 +21,12 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Құпия сөзді көрсету', 'Құпия сөзді жасыру'],
@@ -70,9 +69,7 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Иә',
         no: 'Жоқ',
     },
-    previewTexts: {
-        rotate: 'Айналдыру',
-    },
+    previewTexts: {rotate: 'Айналдыру'},
     zoomTexts: {
         zoomOut: 'Кішірейту',
         zoomIn: 'Үлкейту',

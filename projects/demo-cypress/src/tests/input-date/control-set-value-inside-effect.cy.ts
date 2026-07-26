@@ -61,9 +61,7 @@ describe('InputDate | control.setValue is used inside effect', () => {
     }
 
     beforeEach(() => {
-        cy.mount(SandBox, {
-            componentProperties: {count: createOutputSpy('count')},
-        });
+        cy.mount(SandBox, {componentProperties: {count: createOutputSpy('count')}});
         cy.get('[tuiInputDate]').as('textfield');
         cy.get('@textfield').should('have.value', '02.01.2000');
         cy.get('@count').should('have.been.calledOnce');

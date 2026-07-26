@@ -1,23 +1,15 @@
 import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_TOUCH} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
+import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
-import {shouldCall} from '@taiga-ui/event-plugins';
-import {merge} from 'rxjs';
+import {filter, merge} from 'rxjs';
 
 import {TuiDropdownDriver} from './dropdown.driver';
-
-function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
-    return (
-        !event ||
-        (this.driver.value && !this.activeZone.contains(tuiGetActualTarget(event)))
-    );
-}
 
 @Directive({
     selector: '[tuiDropdownContext]',
@@ -28,15 +20,14 @@ function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
         tuiAsRectAccessor(TuiDropdownContext),
     ],
     host: {
-        '[style.user-select]': 'userSelect()',
-        '[style.-webkit-user-select]': 'userSelect()',
         '[style.-webkit-touch-callout]': 'userSelect()',
-        '(document:keydown.esc)': 'closeDropdown()',
+        '[style.-webkit-user-select]': 'userSelect()',
+        '[style.user-select]': 'userSelect()',
         '(longtap)': 'onContextMenu($event.detail.clientX, $event.detail.clientY)',
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
-    private readonly isTouch = inject(TUI_IS_TOUCH);
+    private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
 
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
@@ -46,21 +37,27 @@ export class TuiDropdownContext extends TuiRectAccessor {
 
     protected readonly sub = merge(
         tuiTypedFromEvent(this.doc, 'pointerdown'),
+        tuiTypedFromEvent(this.doc, 'keydown').pipe(filter(({key}) => key === 'Escape')),
         tuiTypedFromEvent(this.doc, 'contextmenu', {capture: true}),
     )
-        .pipe(tuiZonefree(), takeUntilDestroyed())
-        .subscribe((event: Event) => this.closeDropdown(event));
+        .pipe(
+            filter(
+                (event) =>
+                    this.driver.value &&
+                    !this.activeZone.contains(tuiGetActualTarget(event)),
+            ),
+            tuiZoneOptimized(),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => {
+            this.driver.next(false);
+            this.currentRect = EMPTY_CLIENT_RECT;
+        });
 
     public readonly type = 'dropdown';
 
     public getClientRect(): DOMRect {
         return this.currentRect;
-    }
-
-    @shouldCall(activeZoneFilter)
-    protected closeDropdown(_event?: Event): void {
-        this.driver.next(false);
-        this.currentRect = EMPTY_CLIENT_RECT;
     }
 
     protected onContextMenu(x: number, y: number): void {

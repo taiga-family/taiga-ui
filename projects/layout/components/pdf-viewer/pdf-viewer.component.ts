@@ -6,8 +6,9 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
@@ -19,25 +20,32 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     selector: 'tui-pdf-viewer',
     imports: [NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
-    styleUrl: './pdf-viewer.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './pdf-viewer.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider(() => ({
-            appearance: inject(TUI_IS_MOBILE) ? 'action' : 'glass',
-            size: 's',
+        tuiButtonOptionsProvider((mobile = inject(WA_IS_MOBILE)) => ({
+            appearance: mobile ? 'action' : '',
+            size: mobile ? 'l' : 's',
         })),
     ],
     host: {
+        'data-tui-version': TUI_VERSION,
         '[attr.tuiTheme]': 'isMobile() ? "" : "dark"',
     },
 })
 export class TuiPdfViewer<O, I> {
     private readonly breakpoint = inject(TUI_BREAKPOINT);
+
     protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
     protected readonly el = tuiInjectElement();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected readonly context =
         injectContext<TuiPortalContext<TuiDialogOptions<I>, O>>();
 }

@@ -5,14 +5,13 @@ import {EMPTY} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 
-@Directive({
-    selector: '[tuiTabBarItem][routerLinkActive]',
-})
+@Directive({selector: '[tuiTabBarItem][routerLinkActive]'})
 export class TuiTabBarItemDirective {
     constructor() {
         const tabs = inject(TuiTabBarComponent);
         const el = tuiInjectElement();
         const link = inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
+
         const sub = link.subscribe((value) => {
             if (value) {
                 tabs.setActive(el);

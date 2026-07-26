@@ -3,7 +3,7 @@ import {type Locator} from '@playwright/test';
 import {TuiCalendarSheetPO} from './calendar-sheet.po';
 
 export class TuiCalendarPO {
-    public readonly itemButton: Locator = this.host
+    public readonly itemButton = this.host
         .page()
         .locator('tui-dropdown tui-calendar ~ * button');
 

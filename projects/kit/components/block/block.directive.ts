@@ -8,6 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -21,10 +22,14 @@ import {TUI_BLOCK_OPTIONS} from './block.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/block.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/block.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-block'},
+    exportAs: `tui-block-${TUI_VERSION}`,
 })
 class Styles {}
 

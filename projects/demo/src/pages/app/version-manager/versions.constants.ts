@@ -1,0 +1,40 @@
+import {InjectionToken} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
+
+export interface TuiVersionMeta {
+    baseHref: string;
+    label: string;
+    title: string;
+}
+
+export const TUI_CURRENT_MAJOR_VERSION = Number.parseInt(TUI_VERSION, 10);
+
+export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
+    {
+        label: 'next',
+        baseHref: '/next/',
+        title: `v${TUI_CURRENT_MAJOR_VERSION}.next`,
+    },
+    {
+        label: `v${TUI_VERSION}`,
+        baseHref: '/',
+        title: `v${TUI_CURRENT_MAJOR_VERSION}`,
+    },
+    ...range(2, TUI_CURRENT_MAJOR_VERSION - 1)
+        .reverse()
+        .map((i) => `v${i}`)
+        .map((version) => ({
+            label: version,
+            baseHref: `/${version}/`,
+            title: version,
+        })),
+];
+
+export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
+    ngDevMode ? 'TUI_VERSIONS_META_OPTIONS' : '',
+    {factory: () => TUI_VERSIONS_META},
+);
+
+function range(from: number, to: number): number[] {
+    return Array.from({length: to - from + 1}).map((_, i) => from + i);
+}

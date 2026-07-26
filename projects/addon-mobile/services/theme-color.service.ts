@@ -4,9 +4,7 @@ import {Meta} from '@angular/platform-browser';
 
 export const TUI_THEME_COLOR = new InjectionToken<string>(
     ngDevMode ? 'TUI_THEME_COLOR' : '',
-    {
-        factory: () => inject(Meta).getTag('name="theme-color"')?.content ?? '',
-    },
+    {factory: () => inject(Meta).getTag('name="theme-color"')?.content ?? ''},
 );
 
 interface TuiThemeColor {
@@ -14,9 +12,7 @@ interface TuiThemeColor {
     set color(value: string);
 }
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class TuiThemeColorService implements TuiThemeColor {
     private current = inject(TUI_THEME_COLOR);
     private readonly doc = inject(DOCUMENT);

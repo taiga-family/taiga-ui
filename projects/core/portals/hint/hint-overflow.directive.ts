@@ -11,9 +11,7 @@ import {TuiHintDirective} from './hint.directive';
             inputs: ['tuiHintAppearance'],
         },
     ],
-    host: {
-        '(mouseenter)': 'onMouseEnter($event.currentTarget)',
-    },
+    host: {'(mouseenter)': 'onMouseEnter($event.currentTarget)'},
 })
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
@@ -21,11 +19,11 @@ export class TuiHintOverflow {
     public readonly content = input<string | null>('', {alias: 'tuiHintOverflow'});
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
+        const content = this.content();
+
         tuiSetSignal(
             this.hint.content,
-            scrollWidth > clientWidth && this.content() !== null
-                ? this.content() || textContent
-                : '',
+            scrollWidth > clientWidth && content !== null ? content || textContent : '',
         );
     }
 }

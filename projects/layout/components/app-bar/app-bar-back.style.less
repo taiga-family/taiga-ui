@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     .button-clear();
@@ -33,6 +33,19 @@
 
         .t-web {
             display: none;
+        }
+
+        :host-context([data-platform='ios'].tui-liquid-glass) & {
+            display: flex;
+            font-size: 0;
+            block-size: 2.75rem;
+            inline-size: 2.75rem;
+            padding: 0;
+            justify-content: center;
+
+            .t-ios {
+                margin-inline-start: 0;
+            }
         }
     }
 }

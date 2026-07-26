@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const PAGES_PATH = path.resolve(process.cwd(), 'projects/demo/src/pages');
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');
 
-// child folders of the main `modules` folder from which the content will be taken
+// child folders of the main `pages` folder from which the content will be taken
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 interface ComponentHeader {
@@ -27,30 +27,23 @@ async function fileExists(filePath: string): Promise<boolean> {
 async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
-    if (!(await fileExists(indexPath))) {
-        return '';
-    }
-
-    return fs.readFile(indexPath, 'utf-8');
+    return (await fileExists(indexPath)) ? fs.readFile(indexPath, 'utf-8') : '';
 }
 
 // parse metadata from tui-doc-page
 function getComponentHeader(content: string): ComponentHeader {
-    const tagMatch = /<tui-doc-page\s+([^>]*)>/i.exec(content);
+    const tagMatch = /<tui-doc-page\b([^>]*)>/i.exec(content);
 
     if (!tagMatch?.[1]) {
         return {header: null, package: null, type: null, deprecated: false};
     }
 
     const tagContent = tagMatch[1];
-    const deprecated = /(^|\s)deprecated(\s|$)/i.test(tagContent);
-
+    const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
-
     const packageMatch = /package="([^"]*)"/i.exec(tagContent);
     const packageValue = packageMatch?.[1]?.trim() || null;
-
     const typeMatch = /type="([^"]*)"/i.exec(tagContent);
     const type = typeMatch?.[1]?.trim() || null;
 
@@ -71,7 +64,7 @@ function getComponentDescription(content: string): string | undefined {
     const cleanContent = templateContent
         ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
+        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
         .trim();
 
@@ -114,7 +107,7 @@ function getComponentExample(content: string): string {
     }
 
     const html = match[1]
-        ?.replaceAll(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
+        ?.replaceAll(/<(\/?(?:tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
         .trim();
 
     return `\n### Example\n\n\`\`\`html\n${html}\n\`\`\``;
@@ -129,7 +122,7 @@ function getComponentApiFromTable(content: string): string {
     }
 
     const tableContent = tableMatch[1];
-    const apiRows = tableContent?.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
+    const apiRows = tableContent?.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
 
     if (!apiRows) {
         return '';
@@ -140,7 +133,7 @@ function getComponentApiFromTable(content: string): string {
     for (const row of apiRows) {
         const nameMatch = /name="([^"]+)"/i.exec(row);
         const typeMatch = /type="([^"]+)"/i.exec(row);
-        const descriptionMatch = />([^<>]+?)<\/tr>/i.exec(row);
+        const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
 
         if (nameMatch && typeMatch) {
             const name = nameMatch[1]?.trim();
@@ -151,11 +144,9 @@ function getComponentApiFromTable(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse API properties from tui-doc-documentation
@@ -168,8 +159,9 @@ function getComponentApiFromTemplates(content: string): string {
     }
 
     const templatesContent = templateMatch[1];
+
     const templateRows = templatesContent?.match(
-        /<ng-template[^>]+documentationPropertyName="([^"]+)"[^>]+documentationPropertyType="([^"]+)"[^>]*>([\s\S]*?)<\/ng-template>/gi,
+        /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
 
     if (!templateRows) {
@@ -197,11 +189,9 @@ function getComponentApiFromTemplates(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse example index.ts and index.less files
@@ -215,7 +205,6 @@ async function getComponentSourceFiles(
 
     const tsPath = path.join(folderPath, 'index.ts');
     const lessPath = path.join(folderPath, 'index.less');
-
     let result = '';
 
     if (await fileExists(tsPath)) {
@@ -235,6 +224,7 @@ async function getComponentSourceFiles(
 
 async function getAllFolders(): Promise<string[]> {
     const folders: string[] = [];
+
     const SKIP_FOLDERS = [
         'examples',
         'assets',
@@ -282,12 +272,12 @@ async function getAllFolders(): Promise<string[]> {
     }
 
     for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
+        const dirPath = path.join(PAGES_PATH, subFolder);
 
         if (await fileExists(dirPath)) {
             await scanDir(dirPath, 0);
         } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+            console.warn(`Folder ${subFolder} not found in ${PAGES_PATH}`);
         }
     }
 
@@ -323,15 +313,14 @@ async function getMarkdownFiles(startPath: string): Promise<string[]> {
 // parse markdown files content
 async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
-
-    const relativePath = path.relative(MODULES_PATH, filePath);
+    const relativePath = path.relative(PAGES_PATH, filePath);
     const title = `# ${relativePath}`;
 
     return `${title}\n\n${content.trim()}\n`;
 }
 
 async function main(): Promise<void> {
-    const EXAMPLES_MD_PATH = path.join(MODULES_PATH, 'app', 'home', 'examples');
+    const EXAMPLES_MD_PATH = path.join(PAGES_PATH, 'app', 'home', 'examples');
 
     console.info(`Search .md files in: ${EXAMPLES_MD_PATH}`);
 
@@ -345,11 +334,11 @@ async function main(): Promise<void> {
         output.push(await processMarkdownFile(mdFile));
     }
 
-    console.info(`Scanning component folders in: ${MODULES_PATH}`);
+    console.info(`Scanning component folders in: ${PAGES_PATH}`);
     const allFolders = await getAllFolders();
 
     if (allFolders.length === 0) {
-        console.warn(`Folders with content not found in ${MODULES_PATH}`);
+        console.warn(`Folders with content not found in ${PAGES_PATH}`);
 
         return;
     }
@@ -406,9 +395,11 @@ async function main(): Promise<void> {
             );
         }
 
-        output.push(`- **Package**: \`${headerData.package}\``);
-        output.push(`- **Type**: ${headerData.type}`);
-        output.push('');
+        output.push(
+            `- **Package**: \`${headerData.package}\``,
+            `- **Type**: ${headerData.type}`,
+            '',
+        );
 
         const description = getComponentDescription(content);
 
@@ -456,7 +447,7 @@ async function main(): Promise<void> {
     console.info(`- Skipped (legacy): ${skippedLegacy}`);
     console.info('========================================');
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
 
     console.info(`Successfully file saved: ${OUTPUT_FILE}`);
     console.info(`Total components in output: ${includedCount}`);

@@ -1,4 +1,6 @@
-import {type Element} from 'parse5/dist/tree-adapters/default';
+import {type DefaultTreeAdapterTypes} from 'parse5';
+
+type Element = DefaultTreeAdapterTypes.Element;
 
 export interface RemovableInput {
     readonly inputName: string;

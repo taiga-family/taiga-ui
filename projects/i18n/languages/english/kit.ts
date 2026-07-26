@@ -21,14 +21,12 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
-    // TODO(v5): transform to uppercase for ALL languages
     dateTexts: {
-        'dd/mm/yyyy': 'dd/mm/yyyy',
-        'mm/dd/yyyy': 'mm/dd/yyyy',
-        'yyyy/mm/dd': 'yyyy/mm/dd',
+        'dd/mm/yyyy': 'DD/MM/YYYY',
+        'mm/dd/yyyy': 'MM/DD/YYYY',
+        'yyyy/mm/dd': 'YYYY/MM/DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Show password', 'Hide password'],
@@ -71,9 +69,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Yes',
         no: 'No',
     },
-    previewTexts: {
-        rotate: 'Rotate',
-    },
+    previewTexts: {rotate: 'Rotate'},
     zoomTexts: {
         zoomOut: 'Zoom out',
         zoomIn: 'Zoom in',

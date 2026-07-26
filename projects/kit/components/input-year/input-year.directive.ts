@@ -1,10 +1,13 @@
 import {computed, Directive, effect, inject, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoNumberOptionsGenerator} from '@maskito/kit';
+import {maskitoNumber} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
-import {tuiInjectAuxiliary, tuiTextfieldIcon} from '@taiga-ui/core/components/textfield';
+import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {
     TuiDropdownAuto,
     tuiDropdownEnabled,
@@ -22,8 +25,8 @@ import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
     ],
     hostDirectives: [TuiWithInput, MaskitoDirective, TuiDropdownAuto],
     host: {
-        maxlength: '4',
         inputmode: 'numeric',
+        maxlength: '4',
         '[disabled]': 'disabled()',
         '(click)': 'toggle()',
         '(input)': 'onInput($event.target.value)',
@@ -33,12 +36,14 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_YEAR_OPTIONS);
     private readonly input = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
+
     private readonly initialItem = computed(
         () => this.value() ?? this.calendar()?.initialItem() ?? null,
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
+    protected readonly icon = tuiIconEnd(this.options.icon);
+
     protected readonly calendar = tuiInjectAuxiliary<TuiCalendarYear>(
         (x) => x instanceof TuiCalendarYear,
     );
@@ -53,7 +58,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
 
     protected readonly mask = tuiMaskito(
         computed(() =>
-            maskitoNumberOptionsGenerator({
+            maskitoNumber({
                 min: this.min(),
                 max: this.max(),
                 thousandSeparator: '',
@@ -65,10 +70,10 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         const calendar = this.calendar();
 
         if (calendar) {
-            calendar.initialItemSetter = this.initialItem();
-            calendar.value.set(this.value());
-            calendar.min.set(this.min());
-            calendar.max.set(this.max());
+            tuiSetSignal(calendar.initialItem, this.initialItem());
+            tuiSetSignal(calendar.value, this.value());
+            tuiSetSignal(calendar.min, this.min());
+            tuiSetSignal(calendar.max, this.max());
         }
     });
 
@@ -81,8 +86,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = input(this.options.min.year);
-    public readonly max = input(this.options.max.year);
+    public readonly min = input((this.options.min ?? TUI_FIRST_DAY).year);
+    public readonly max = input((this.options.max ?? TUI_LAST_DAY).year);
 
     protected toggle(): void {
         if (this.interactive()) {
@@ -93,6 +98,14 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     protected onInput(raw: string): void {
         const value = Number(raw);
 
-        this.onChange(!raw || Number.isNaN(value) ? null : value);
+        if (!raw || Number.isNaN(value)) {
+            this.onChange(null);
+
+            return;
+        }
+
+        if (value >= this.min() && value <= this.max()) {
+            this.onChange(value);
+        }
     }
 }

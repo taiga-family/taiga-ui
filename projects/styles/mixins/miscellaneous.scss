@@ -1,0 +1,166 @@
+@import 'browsers.scss';
+
+@mixin interactive {
+    &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
+        @content;
+    }
+}
+
+// TODO: rename to center-horizontal
+// centering with translate
+@mixin center-left() {
+    position: absolute;
+    // stylelint-disable-next-line -- TODO: fix later
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+// TODO: rename to center-vertical
+@mixin center-top() {
+    position: absolute;
+    // stylelint-disable-next-line -- TODO: fix later
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+@mixin center-all() {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+}
+
+//.fullsize
+@mixin fullsize($position: absolute, $mode: height) {
+    position: $position;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+
+    @if ($mode == height) {
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    @if ($mode == inset) {
+        inset-block-end: 0;
+        inset-inline-end: 0;
+    }
+}
+
+@mixin button-clear() {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+@mixin button-base() {
+    @include button-clear();
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    max-inline-size: 100%;
+    gap: calc(var(--t-gap) - 2 * var(--t-margin));
+
+    > img,
+    > tui-icon,
+    > [tuiAvatar],
+    > tui-badge,
+    > [tuiBadge],
+    > [tuiRadio],
+    > [tuiSwitch],
+    > [tuiCheckbox],
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
+        margin: var(--t-margin);
+    }
+}
+
+// transition
+@mixin transition($param: all, $speed: var(--tui-duration, 300ms)) {
+    transition-property: $param;
+    transition-duration: $speed;
+    transition-timing-function: ease-in-out;
+}
+
+// gradient
+@mixin gradient($start-color, $end-color, $angle: 45deg) {
+    background-image: linear-gradient($angle, $start-color 0%, $end-color 100%);
+}
+
+// typical properties for text overflow with ellipsis
+@mixin text-overflow($type: nowrap) {
+    white-space: $type;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin scrollbar-hidden() {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}
+
+/**
+ * @deprecated remove in v6
+ */
+@mixin sr-only() {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    block-size: 1px;
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+}
+
+// prevent scrolling to focused element on IOS
+@mixin tui-prevent-ios-scroll() {
+    &:focus {
+        animation: tuiPreventIOSScroll 0.001s;
+    }
+
+    @keyframes tuiPreventIOSScroll {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin text-truncate() {
+    @include text-overflow();
+
+    flex: 1;
+    min-inline-size: 0;
+    max-inline-size: max-content;
+}
+
+@mixin tui-line-clamp($count: 3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $count;
+    line-clamp: $count;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin tui-mask($x, $y, $r) {
+    mask-image: radial-gradient(circle at $x $y, transparent $r, black $r);
+}

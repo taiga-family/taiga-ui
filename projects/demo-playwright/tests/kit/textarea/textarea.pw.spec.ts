@@ -9,8 +9,8 @@ test.describe('Textarea', () => {
         test.skip(browserName !== 'chromium', 'Font flaky');
 
         await tuiGoto(page, `${DemoRoute.Textarea}/API`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
-        const textarea = apiPageExample.locator('textarea[tuiTextarea]');
+        const {demo} = new TuiDocumentationPagePO(page);
+        const textarea = demo.locator('textarea[tuiTextarea]');
 
         await textarea.fill('1\n2\n3\n4');
 
@@ -21,14 +21,60 @@ test.describe('Textarea', () => {
         await expect.soft(textarea).toHaveScreenshot('textarea-line-break-disabled.png');
     });
 
+    test('required textarea is not invalid before touched', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const example = new TuiDocumentationPagePO(page).getExample('#icons');
+        const textarea = example.locator('[tuiTextarea]');
+
+        await expect.soft(example).toHaveScreenshot('required-textarea-untouched.png');
+        await textarea.click({button: 'middle'});
+        await textarea.fill('123');
+        await textarea.clear();
+        await textarea.blur();
+        await expect.soft(example).toHaveScreenshot('required-textarea-touched.png');
+    });
+
     ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
-            const {apiPageExample} = new TuiDocumentationPagePO(page);
+            const {demo} = new TuiDocumentationPagePO(page);
 
             await expect
-                .soft(apiPageExample)
+                .soft(demo)
                 .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
         });
+    });
+
+    ['m', 'l'].forEach((size) => {
+        test(`stays intact with a global border-box reset (size ${size})`, async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
+
+            await page.addStyleTag({content: '* { box-sizing: border-box; }'});
+
+            const {demo} = new TuiDocumentationPagePO(page);
+            const textarea = demo.locator('textarea[tuiTextarea]');
+
+            await textarea.fill('1\n2\n3\n4');
+
+            await expect.soft(demo).toHaveScreenshot(`textarea-border-box-${size}.png`);
+        });
+    });
+
+    test('overscroll-behavior', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+
+        const basicTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('textarea[tuiTextarea]')
+            .first();
+
+        const limitTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#limit')
+            .locator('textarea[tuiTextarea]');
+
+        await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
+        await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
     });
 });

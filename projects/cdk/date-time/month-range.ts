@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {type TuiMonth} from './month';
 
@@ -26,6 +24,10 @@ export class TuiMonthRange {
 
     public monthSame(another: TuiMonthRange): boolean {
         return this.from.monthSame(another.from) && this.to.monthSame(another.to);
+    }
+
+    public monthInRange(month: TuiMonth): boolean {
+        return this.from.monthSameOrBefore(month) && this.to.monthSameOrAfter(month);
     }
 
     public toString(): string {

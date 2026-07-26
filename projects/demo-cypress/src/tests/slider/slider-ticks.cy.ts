@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiRoot, TuiSlider} from '@taiga-ui/core';
 
 describe('Slider | With segments + tick labels', () => {
     @Component({
@@ -39,11 +38,7 @@ describe('Slider | With segments + tick labels', () => {
 
     [0, 25, 50, 75, 100].forEach((value) => {
         it(`value = ${value}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
-            });
+            cy.mount(SandBox, {componentProperties: {value}});
 
             cy.compareSnapshot(`slider-ticks-${value}`);
         });

@@ -1,33 +1,69 @@
 [tuiHeader] {
-    &[data-size='xxl'],
-    &[data-size='xl'],
-    &[data-size='l'],
     &[data-size='h1'],
     &[data-size='h2'],
     &[data-size='h3'] {
         [tuiTitle] {
             gap: 1rem;
         }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-m);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 1rem;
+            font: var(--tui-typography-ui-l);
+        }
     }
 
-    &[data-size='m'],
-    &[data-size='h4'] {
+    &[data-size='h4'],
+    &[data-size='h5'] {
         [tuiTitle] {
             gap: 0.5rem;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-m);
+        }
+
+        + [tuiDescription] {
+            font: var(--tui-typography-ui-l);
+        }
+    }
+
+    &[data-size='h6'],
+    &[data-size='body-l'],
+    &[data-size='body-m'],
+    &[data-size='body-s'] {
+        font: var(--tui-typography-heading-h6);
+
+        [tuiTitle],
+        [tuiAccessories] {
+            font: inherit;
+        }
+
+        [tuiTitle] {
+            gap: 0.25rem;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-typography-ui-s);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 0.5rem;
         }
     }
 
     [tuiAccessories] {
         gap: 1rem;
-    }
 
-    &[data-size='xxs'],
-    &[data-size='h6'],
-    &[data-size='body-l'],
-    &[data-size='body-m'] {
-        [tuiTitle],
-        [tuiAccessories] {
-            font: var(--tui-font-heading-h6);
+        [tuiLink][tuiLink] {
+            font: var(--tui-typography-ui-l);
+        }
+
+        &::before {
+            margin-inline-end: -1rem;
         }
     }
 }

@@ -15,7 +15,7 @@ describe('tuiGetElementObscures', () => {
                 width: 500,
                 x: 0,
                 y: 0,
-            })) as unknown as () => DOMRect;
+            }));
         });
 
         it('should return null if element does not have getBoundingClientRect method', () => {
@@ -82,6 +82,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null instead of an array', () => {
             const {ownerDocument} = element;
+
             const others = [
                 ownerDocument.createElement('div'),
                 ownerDocument.createElement('span'),
@@ -109,7 +110,7 @@ describe('tuiGetElementObscures', () => {
                 width: 0,
                 x: 0,
                 y: 0,
-            })) as unknown as () => DOMRect;
+            }));
         });
 
         it('should return null', () => {

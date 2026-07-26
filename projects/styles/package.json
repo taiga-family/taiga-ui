@@ -1,11 +1,30 @@
 {
     "name": "@taiga-ui/styles",
-    "version": "4.52.0",
-    "description": "Global Styles for Taiga UI",
+    "version": "5.16.0",
+    "description": "Framework-agnostic package with styles for Taiga UI",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui"
+    },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "email": "alexander@inkin.ru",
+            "name": "Alex Inkin"
+        },
+        {
+            "email": "vladimir.potekh@gmail.com",
+            "name": "Vladimir Potekhin"
+        },
+        {
+            "email": "nikita.s.barsukov@gmail.com",
+            "name": "Nikita Barsukov"
+        }
+    ],
+    "exports": {
+        "./*": "./*"
+    },
     "peerDependencies": {
-        "@taiga-ui/cdk": "^4.52.0",
-        "@taiga-ui/core": "^4.52.0",
-        "tslib": ">=2.8.1"
+        "@taiga-ui/design-tokens": "~0.310.0"
     }
 }

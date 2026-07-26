@@ -14,6 +14,7 @@ export class TuiCheckboxTableDirective {
     private readonly control = inject(NgControl);
 
     protected readonly parent = inject(TuiTableControlDirective);
+
     protected readonly update = effect(() => {
         const indeterminate = this.parent.indeterminate();
         const checked = this.parent.checked();

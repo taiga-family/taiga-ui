@@ -50,7 +50,6 @@ describe('ng-add [Standalone]', () => {
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -76,7 +75,6 @@ describe('ng-add [Standalone]', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -87,7 +85,7 @@ describe('ng-add [Standalone]', () => {
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -102,8 +100,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
               "styles": [
-                "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+                "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+                "node_modules/@taiga-ui/styles/taiga-ui-fonts.less"
               ],
               "assets": [
                 {
@@ -126,7 +124,7 @@ describe('ng-add [Standalone]', () => {
 
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -141,8 +139,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -181,8 +179,8 @@ describe('ng-add [Standalone]', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "some.style"
             ],
             "assets": [
@@ -230,7 +228,7 @@ export class App {
     it('should wrap main template with tui-root', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
@@ -242,12 +240,12 @@ export class App {
     it('[Standalone] Should add main providers to bootstrap fn', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -258,7 +256,7 @@ import { appRoutes } from './app/app.routes';
 import { App } from './app/app.component';
 
 bootstrapApplication(App, {
-  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), provideEventPlugins()],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), provideTaiga()],
 }).catch((err) => console.error(err));
 `);
     });
@@ -269,12 +267,12 @@ bootstrapApplication(App, {
 
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
         expect(tree.readContent('test/app/app.config.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 
 import { ApplicationConfig } from '@angular/core';
 import {
@@ -285,7 +283,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), provideEventPlugins()],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), provideTaiga()],
 };`);
     });
 
@@ -295,12 +293,12 @@ export const appConfig: ApplicationConfig = {
 
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
-            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            {'skip-logs': process.env['TUI_CI'] === 'true'},
             host,
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { provideEventPlugins } from "@taiga-ui/event-plugins";
+            .toBe(`import { provideTaiga } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -310,7 +308,7 @@ import { appRoutes } from './app/app.routes';
 import { App } from './app/app.component';
 
 bootstrapApplication(App, {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideEventPlugins()],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideTaiga()],
 }).catch((err) => console.error(err));
 `);
     });

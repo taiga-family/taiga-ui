@@ -7,34 +7,161 @@ import {
     type Tree,
 } from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
-import {FINISH_SYMBOL, saveActiveProject, START_SYMBOL, titleLog} from 'ng-morph';
+import {saveActiveProject} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
+import {saveAddedImports} from '../../utils/add-import-to-closest-module';
+import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
+import {
+    formatMigrationStats,
+    type MigrationStepTiming,
+} from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {replaceIdentifiers} from '../steps/replace-identifier';
+import {runSteps} from '../../utils/run-steps';
+import {
+    removeDuplicates,
+    removeModules,
+    replaceIdentifiers,
+    showWarnings,
+} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
-import {replaceFunctions} from '../utils/replace-functions';
-import {REPLACE_FUNCTIONS} from './steps/constants/functions';
+import {replaceAttrsInHost} from '../utils/replace-attrs-in-host';
+import {replaceFunctionParameters} from '../utils/replace-function-parameters';
+import {ATTRS_IN_HOST_TO_REPLACE} from './steps/constants/attrs-in-host-to-replace';
+import {FUNCTION_PARAMETERS_TO_REPLACE} from './steps/constants/function-parameters-to-replace';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
+import {MIGRATION_WARNINGS} from './steps/constants/migration-warnings';
+import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
+import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
+import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migrateDialogHeader} from './steps/migrate-dialog-header';
+import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
+import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
+import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
+import {migrateEditorProviders} from './steps/migrate-editor-providers';
+import {migrateFilterByInput} from './steps/migrate-filter-by-input';
+import {migrateHintDirectiveBinding} from './steps/migrate-hint-directive-binding';
+import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
+import {migratePackages} from './steps/migrate-packages';
+import {migratePortals} from './steps/migrate-portals';
+import {migrateRangeToken} from './steps/migrate-range-token';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
-import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 import {tuiLetMigration} from './steps/migrate-tui-let';
+import {migrateStyles} from './steps/styles';
+import {updatePackages} from './steps/update-packages';
 
-function main(options: TuiSchema): Rule {
+function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
-        tuiLetMigration(tree, options);
-        migrateTokens(tree, options);
-        updateTsConfig(tree, options);
-        migrateCssVariables(tree, options);
-        replaceFunctions(REPLACE_FUNCTIONS);
-        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
-        migrateTemplates(fileSystem, options);
+        runSteps(
+            [
+                {name: 'tuiLetMigration', step: () => tuiLetMigration(tree, options)},
+                {name: 'migrateTokens', step: () => migrateTokens(tree, options)},
+                {
+                    name: 'migrateCssVariables',
+                    step: () => migrateCssVariables(tree, options),
+                },
+                {
+                    name: 'replaceFunctionParameters',
+                    step: () => replaceFunctionParameters(FUNCTION_PARAMETERS_TO_REPLACE),
+                },
+                {
+                    name: 'removeModules',
+                    step: () => removeModules(options, MODULES_TO_REMOVE),
+                },
+                {
+                    name: 'replaceIdentifiers',
+                    step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
+                },
+                {
+                    name: 'migrateBreakpointService',
+                    step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migrateRangeToken',
+                    step: () => migrateRangeToken(tree, options),
+                },
+                {
+                    name: 'migratePortalService',
+                    step: () => migratePortals(tree, options),
+                },
+                {
+                    name: 'migrateCloseable',
+                    step: () => migrateCloseable(tree, options),
+                },
+                {
+                    name: 'migrateDialogLegacySizes',
+                    step: () => migrateDialogLegacySizes(tree, options),
+                },
+                {
+                    name: 'migrateDialogHeader',
+                    step: () => migrateDialogHeader(tree, options),
+                },
+                {
+                    name: 'migrateDropdownOpen',
+                    step: () => migrateDropdownOpen(tree, options),
+                },
+                {
+                    name: 'migrateFilterByInput',
+                    step: () => migrateFilterByInput(tree, options),
+                },
+                {
+                    name: 'migrateHintDirectiveBinding',
+                    step: () => migrateHintDirectiveBinding(tree, options),
+                },
+                {
+                    name: 'migratePackages',
+                    step: migratePackages,
+                },
+                {
+                    name: 'removeDuplicates',
+                    step: () => removeDuplicates(options),
+                },
+                {
+                    name: 'saveProjectBeforeTemplateMigrations',
+                    step: () => saveActiveProject(),
+                },
+                {
+                    name: 'replaceAttrsInHost',
+                    step: () => replaceAttrsInHost(fileSystem, ATTRS_IN_HOST_TO_REPLACE),
+                },
+                {
+                    name: 'migrateTemplates',
+                    step: () => migrateTemplates(fileSystem, options),
+                },
+                {
+                    name: 'migrateStyles',
+                    step: migrateStyles,
+                },
+                {
+                    name: 'migrateDocI18nTokens',
+                    step: () => migrateDocI18nTokens(tree, options),
+                },
+                {
+                    name: 'migrateI18nLanguageSignal',
+                    step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'migrateEditorProviders',
+                    step: () => migrateEditorProviders(tree, options),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
+                },
+                {
+                    name: 'showWarnings',
+                    step: () => showWarnings(context, MIGRATION_WARNINGS),
+                },
+            ],
+            timings,
+        );
 
+        saveAddedImports(options);
         fileSystem.commitEdits();
         saveActiveProject();
 
@@ -44,6 +171,7 @@ function main(options: TuiSchema): Rule {
 
 export function updateToV5(options: TuiSchema): Rule {
     const t0 = performance.now();
+    const timings: MigrationStepTiming[] = [];
 
     !options['skip-logs'] &&
         titleLog(
@@ -51,14 +179,19 @@ export function updateToV5(options: TuiSchema): Rule {
         );
 
     return chain([
-        main(options),
+        main(options, timings),
         () => {
-            const executionTime = getExecutionTime(t0, performance.now());
+            const finishedAt = performance.now();
+            const executionTime = getExecutionTime(t0, finishedAt);
 
-            !options['skip-logs'] &&
-                titleLog(
-                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-                );
+            if (options['skip-logs']) {
+                return;
+            }
+
+            titleLog(
+                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+            );
+            titleLog(`${formatMigrationStats(timings, finishedAt - t0)}\n`);
         },
     ]);
 }

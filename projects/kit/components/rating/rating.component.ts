@@ -23,13 +23,13 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider(0)],
     host: {
+        '[class._active]': 'active()',
         '[class._disabled]': 'disabled()',
         '[class._readonly]': 'readOnly()',
-        '[class._active]': 'active()',
-        '(keydown.capture)': 'onKeyDown($event)',
-        '(pointerdown)': 'onPointer(1)',
-        '(pointercancel)': 'onPointer(-1)',
         '(document:pointerup)': 'onPointer(-1)',
+        '(keydown.capture)': 'onKeyDown($event)',
+        '(pointercancel)': 'onPointer(-1)',
+        '(pointerdown)': 'onPointer(1)',
     },
 })
 export class TuiRating extends TuiControl<number> {

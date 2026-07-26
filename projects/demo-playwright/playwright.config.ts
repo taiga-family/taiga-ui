@@ -1,15 +1,17 @@
+import path from 'node:path';
+
 import {defineConfig, devices} from '@playwright/test';
+import {type configureAxe} from 'axe-playwright';
 import {type ViewportSize} from 'playwright-core';
 
-import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
+import {pages as PUBLIC_PAGES} from '../demo/src/pages/app/pages';
 import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
-const THRESHOLD = parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
-const MAX_DIFF_PIXEL_RATIO = parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '');
+const THRESHOLD = Number.parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
+const MAX_DIFF_PIXEL_RATIO = Number.parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '');
 
-process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
-process.env['AXE_CONFIG'] = JSON.stringify({
+export const AXE_CONFIG: NonNullable<Parameters<typeof configureAxe>[1]> = {
     reporter: 'v2',
     rules: [
         {id: 'scrollable-region-focusable', enabled: false},
@@ -17,10 +19,14 @@ process.env['AXE_CONFIG'] = JSON.stringify({
         {id: 'label', enabled: false},
         {id: 'landmark-unique', enabled: false},
         {id: 'landmark-no-duplicate-main', enabled: false},
+        {id: 'landmark-no-duplicate-banner', enabled: false},
         {id: 'nested-interactive', enabled: false},
         {id: 'empty-table-header', enabled: false},
     ],
-});
+};
+
+process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
+process.env['AXE_CONFIG'] = JSON.stringify(AXE_CONFIG);
 
 const chromium = {
     name: 'chromium',
@@ -38,6 +44,7 @@ const options = Object.fromEntries(
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+    globalSetup: require.resolve('./global-setup'),
     testDir: __dirname,
     testMatch: '**/*.pw.spec.ts',
     outputDir: 'tests-results',
@@ -55,7 +62,9 @@ export default defineConfig({
         '{testDir}/snapshots/{platform}-{projectName}/{testFilePath}/{arg}{ext}',
     timeout: 5 * 60 * 1000,
     use: {
-        baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
+        baseURL:
+            process.env['PW_BASE_URL'] ??
+            `http://localhost:${process.env.NG_SERVER_PORT || 3000}`,
         trace: 'on-first-retry',
         testIdAttribute: 'automation-id',
         actionTimeout: 10_000,
@@ -83,13 +92,12 @@ export default defineConfig({
         : [chromium],
     expect: {
         toHaveScreenshot: {
-            animations: 'disabled',
+            animations: 'allow',
+            stylePath: [path.resolve(__dirname, 'animations.css')],
             caret: 'hide',
             scale: 'device',
             ...options,
         },
-        toMatchSnapshot: {
-            ...options,
-        },
+        toMatchSnapshot: {...options},
     },
 });

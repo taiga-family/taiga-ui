@@ -55,6 +55,7 @@ export class Sandbox implements OnInit {
     }
 
     protected readonly stringify: TuiStringHandler<Item> = (item) => item.name;
+
     protected readonly disabledItemHandler: TuiBooleanHandler<Item> = (item) =>
         item.name === 'DisabledItem';
 }
@@ -65,9 +66,7 @@ describe('NativeSelect', () => {
     describe('without placeholder', () => {
         beforeEach(() => {
             cy.mount(Sandbox, {
-                componentProperties: {
-                    valueChanges: createOutputSpy('valueChanges'),
-                },
+                componentProperties: {valueChanges: createOutputSpy('valueChanges')},
             });
         });
 
@@ -105,9 +104,7 @@ describe('NativeSelect', () => {
 
     it('with initial control value', () => {
         cy.mount(Sandbox, {
-            componentProperties: {
-                control: new FormControl<Item | null>(ITEMS[1]),
-            },
+            componentProperties: {control: new FormControl<Item | null>(ITEMS[1])},
         });
 
         cy.get('select').should('have.value', ITEMS[1].name);

@@ -16,6 +16,7 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 export class TuiSortCountriesPipe implements PipeTransform {
     private readonly names = inject(TUI_COUNTRIES);
     private readonly countries = signal<readonly TuiCountryIsoCode[]>([]);
+
     private readonly result = computed((names = this.names()) =>
         [...this.countries()].sort((a, b) => names[a].localeCompare(names[b])),
     );

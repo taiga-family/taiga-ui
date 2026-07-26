@@ -15,7 +15,6 @@ test.describe('InputChip', () => {
         test('errors / overflow visual state (basic)', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip('Very looooooooooooooooooooooooong Text');
@@ -31,84 +30,201 @@ test.describe('InputChip', () => {
         test('forbid leading/trailing spaces normalization', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip(' taiga ui library ');
 
             await expect.soft(basic).toHaveScreenshot('05-input-chip-trimmed.png');
         });
+
+        test('regex separator works when copying values from spreadsheet (tab)', async ({
+            page,
+        }) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const basic = doc.getExample('#basic');
+            const chip = new TuiInputChipPO(basic);
+
+            await chip.cleaner.click();
+            await chip.addChip('repo\ttest\tseparator');
+
+            await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator.png');
+        });
+
+        test('regex separator works when copying values with newline', async ({page}) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const basic = doc.getExample('#basic');
+            const chip = new TuiInputChipPO(basic);
+
+            await chip.cleaner.click();
+            await chip.addChip('repo\ntest\nseparator');
+
+            await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator-2.png');
+        });
+
+        test('editing disabled chip', async ({page}) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#disabled-items');
+            const chip = new TuiInputChipPO(example);
+
+            await chip.chips.first().dblclick();
+
+            await expect.soft(example).toHaveScreenshot('input-chip-disabled-2.png');
+        });
+
+        test('multiselect with *ngIf input keeps dropdown behavior after toggling mode', async ({
+            page,
+        }) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#multi-select');
+
+            const block = example.locator('[tuiLabel]', {
+                hasText: 'Conditional input in textfield',
+            });
+
+            const input = block.locator('tui-textfield input[tuiInputChip]');
+            const toggle = example.locator('input[type="checkbox"]');
+            const dropdown = page.locator('tui-dropdown');
+
+            await block.scrollIntoViewIfNeeded();
+
+            const checkDropdown = async (): Promise<void> => {
+                for (let i = 0; i < 5; i++) {
+                    await input.click();
+                    await expect(dropdown).toBeAttached();
+                    await input.blur();
+                    await expect(dropdown).toBeHidden();
+                }
+            };
+
+            await checkDropdown();
+            await toggle.click();
+            await checkDropdown();
+        });
     });
 
     test.describe('API', () => {
         test('custom separator', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-
+            const example = new TuiDocumentationApiPagePO(page).demo;
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123-456-789');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chipCount = inputChip.chips;
 
-            expect(chipCount).toEqual(3);
+            await expect(chipCount).toHaveCount(3);
 
             await expect.soft(example).toHaveScreenshot('input-chip-separator.png');
         });
 
+        test('custom separator splits edited chip', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
+            const example = new TuiDocumentationApiPagePO(page).demo;
+            const inputChip = new TuiInputChipPO(example);
+
+            await inputChip.input.fill('111-222-333');
+            await inputChip.input.blur();
+            await expect(inputChip.chips).toHaveCount(3);
+
+            const chip = inputChip.chips.nth(1);
+            const input = chip.locator('input');
+
+            await chip.locator('.t-text').dblclick();
+            await expect(input).toBeEnabled();
+            await input.fill('444-555');
+            await input.press('Enter');
+
+            await expect(inputChip.chips.locator('.t-text')).toHaveText([
+                '111',
+                '444',
+                '555',
+                '333',
+            ]);
+        });
+
         test('unique false', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=false`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-
+            const example = new TuiDocumentationApiPagePO(page).demo;
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chips = inputChip.chips;
 
-            expect(chipCount).toEqual(3);
+            await expect(chips).toHaveCount(3);
 
             await expect.soft(example).toHaveScreenshot('input-chip-not-unique.png');
         });
 
         test('unique true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=true`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-
+            const example = new TuiDocumentationApiPagePO(page).demo;
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
             await inputChip.input.blur();
-            const chipCount = await inputChip.chips.count();
+            const chips = inputChip.chips;
 
-            expect(chipCount).toEqual(1);
+            await expect(chips).toHaveCount(1);
 
             await expect.soft(example).toHaveScreenshot('input-chip-unique.png');
         });
 
+        test('disable control', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API`);
+
+            const api = new TuiDocumentationApiPagePO(page);
+            const inputChip = new TuiInputChipPO(api.demo);
+            const toggle = await api.getToggle(api.getRow('disabled'));
+
+            await inputChip.input.fill('1,2,3');
+            await inputChip.input.blur();
+            await expect(inputChip.cleaner).toHaveCount(1);
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-writable.png');
+            await toggle?.click();
+            await expect(inputChip.cleaner).toHaveCount(0);
+            await expect.soft(api.demo).toHaveScreenshot('input-chip-disabled.png');
+        });
+
+        test('readonly true', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API`);
+            const apiPage = new TuiDocumentationApiPagePO(page);
+            const example = apiPage.demo;
+            const inputChip = new TuiInputChipPO(example);
+
+            await inputChip.input.fill('123');
+            await inputChip.input.blur();
+
+            const toggle = await apiPage.getToggle(apiPage.getRow('readOnly'));
+
+            await toggle?.click();
+
+            await inputChip.chips.first().hover();
+
+            await expect.soft(example).toHaveScreenshot('input-chip-readonly-hover.png');
+        });
+
         test('chip cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-
+            const example = new TuiDocumentationApiPagePO(page).demo;
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
             await inputChip.input.blur();
             const chips = inputChip.chips;
 
-            expect(await chips.count()).toEqual(3);
+            await expect(chips).toHaveCount(3);
 
             await chips.first().locator('button', {hasText: 'Remove'}).click();
 
-            expect(await chips.count()).toEqual(2);
+            await expect(chips).toHaveCount(2);
 
             await expect.soft(example).toHaveScreenshot('input-chip-cleaner.png');
         });
 
         test('textfield cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
-            const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-
+            const example = new TuiDocumentationApiPagePO(page).demo;
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
@@ -116,11 +232,85 @@ test.describe('InputChip', () => {
 
             await inputChip.cleaner.click();
 
-            expect(await inputChip.chips.count()).toEqual(0);
+            await expect(inputChip.chips).toHaveCount(0);
 
             await expect
                 .soft(example)
                 .toHaveScreenshot('input-chip-textfield-cleaner.png');
+        });
+
+        test.describe('updateOn=submit', () => {
+            let api!: TuiDocumentationApiPagePO;
+            let inputChip!: TuiInputChipPO;
+            let submit!: Locator;
+
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputChip}/API?sandboxExpanded=true&updateOn=submit`,
+                );
+
+                api = new TuiDocumentationApiPagePO(page);
+                inputChip = new TuiInputChipPO(api.demo);
+                submit = api.submitFormControlButton;
+            });
+
+            test('shows typed chips immediately, but updates control value only on submit', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                await expect(api.value).not.toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('removes submitted chip via remove button', async () => {
+                await inputChip.input.fill('123,456,789');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(inputChip.chips).toHaveCount(3);
+
+                await inputChip.chips
+                    .first()
+                    .locator('button', {hasText: 'Remove'})
+                    .click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('clears all submitted chips via textfield cleaner', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+
+                await inputChip.cleaner.click();
+
+                await expect(inputChip.chips).toHaveCount(0);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(inputChip.chips).toHaveCount(0);
+            });
         });
     });
 
@@ -144,13 +334,16 @@ test.describe('InputChip', () => {
                 await expect.soft(example).toHaveScreenshot('multiselect-any-value.png');
                 await multiselect.input.blur();
 
-                expect(await multiselect.chips.count()).toEqual(1);
+                await expect(multiselect.chips).toHaveCount(1);
             });
 
             test('value from list only', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(1),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Only allowing items from the list and hiding values when not focused behind a custom content',
+                });
+
+                const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -159,13 +352,16 @@ test.describe('InputChip', () => {
                     .toHaveScreenshot('multiselect-value-from-list.png');
                 await multiselect.input.blur();
 
-                expect(await multiselect.chips.count()).toEqual(0);
+                await expect(multiselect.chips).toHaveCount(0);
             });
 
             test('select value from list', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(1),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Only allowing items from the list and hiding values when not focused behind a custom content',
+                });
+
+                const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -179,11 +375,14 @@ test.describe('InputChip', () => {
             });
 
             test('checkboxes', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(2),
-                );
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Using checkboxes in the dropdown and making the textfield non-writable',
+                });
 
-                await example.locator('tui-textfield').nth(2).click();
+                const multiselect = new TuiMultiSelectPO(block);
+
+                await block.locator('tui-textfield').click();
                 await expect(multiselect.dropdown).toBeAttached();
                 const options = multiselect.dropdown.locator('[tuiOption]');
 
@@ -194,23 +393,64 @@ test.describe('InputChip', () => {
                     .toHaveScreenshot('multiselect-select-checkboxes.png');
             });
 
-            test('working with objects', async () => {
-                const multiselect = new TuiMultiSelectPO(
-                    example.locator('label[tuiLabel]').nth(3),
-                );
+            test('working with objects', async ({page}) => {
+                const block = example
+                    .locator('label[tuiLabel]')
+                    .filter({hasText: 'Working with objects'});
 
-                await example.locator('tui-textfield').nth(3).click();
-                await expect(multiselect.dropdown).toBeAttached();
+                const multiselect = new TuiMultiSelectPO(block);
+
+                await example.scrollIntoViewIfNeeded();
+                await block.locator('tui-textfield').click();
+
+                await multiselect.dropdown.scrollIntoViewIfNeeded();
+
                 await multiselect.dropdown
-                    .getByRole('button', {
-                        name: 'Select all',
-                    })
+                    .getByRole('button', {name: 'Select all'})
                     .first()
                     .click();
 
+                await expect(multiselect.dropdown).toBeAttached();
+
                 await expect
-                    .soft(example)
-                    .toHaveScreenshot('multiselect-select-objects.png');
+                    .soft(multiselect.dropdown)
+                    .toHaveScreenshot('multiselect-select-objects-dropdown.png');
+
+                await page.mouse.click(0, 0);
+
+                await expect
+                    .soft(block.locator('tui-textfield'))
+                    .toHaveScreenshot('multiselect-select-objects-block.png');
+            });
+
+            test('group toggle selects / unselects all its options (with [(ngModel)] binding)', async () => {
+                const block = example
+                    .locator('label[tuiLabel]')
+                    .filter({hasText: 'Working with objects'});
+
+                const multiselect = new TuiMultiSelectPO(block);
+
+                const checked = multiselect.dropdown.locator(
+                    'input[type="checkbox"]:checked',
+                );
+
+                await block.locator('tui-textfield').click();
+                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select all'})
+                    .first()
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(6);
+                await expect(checked).toHaveCount(6);
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select none'})
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(0);
+                await expect(checked).toHaveCount(0);
             });
         });
     });

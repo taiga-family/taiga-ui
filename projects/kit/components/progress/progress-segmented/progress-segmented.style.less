@@ -17,7 +17,7 @@
     transparent calc(100% - @radius - var(--tui-segment-gap))
 );
 
-[tuiProgressBar]._segmented {
+[tuiProgressBar]:where(*&)._segmented {
     --tui-segment-gap: 0.5rem;
 
     mask-image: @left-circle, @right-circle, @rectangle;

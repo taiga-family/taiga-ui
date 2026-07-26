@@ -5,9 +5,7 @@ import {InjectionToken, type Provider} from '@angular/core';
  */
 export const TUI_DOC_EXCLUDED_PROPERTIES = new InjectionToken<Set<string>>(
     ngDevMode ? 'TUI_DOC_EXCLUDED_PROPERTIES' : '',
-    {
-        factory: () => new Set([]),
-    },
+    {factory: () => new Set([])},
 );
 
 export function tuiDocExcludeProperties(properties: readonly string[]): Provider {

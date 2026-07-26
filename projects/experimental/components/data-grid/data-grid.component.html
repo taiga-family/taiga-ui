@@ -1,0 +1,13 @@
+@for (item of items(); track item) {
+    <button
+        type="button"
+        class="t-item"
+        [class.t-item_active]="value().includes(item)"
+        [disabled]="disabledItemHandler()(item)"
+        (click)="pick.emit(item)"
+    >
+        <ng-container *polymorpheusOutlet="content() || `${item}` as text; context: {$implicit: item}">
+            {{ text }}
+        </ng-container>
+    </button>
+}

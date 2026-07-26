@@ -3,17 +3,19 @@ import {
     addImportToNgModule,
     findNgModule,
     getNgComponents,
-    infoLog,
     isStandaloneComponent,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    SUCCESS_SYMBOL,
-    successLog,
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../constants/file-globs';
 import {type TuiSchema} from '../ng-add/schema';
 import {addUniqueImport} from './add-unique-import';
+import {
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from './colored-log';
 
 const importsToAdd = new Map<
     string,
@@ -68,9 +70,7 @@ export function saveAddedImports(options: TuiSchema): void {
         const ngModule = findNgModule(ngComponent, ALL_TS_FILES);
 
         if (ngModule) {
-            addImportToNgModule(ngModule, moduleName, {
-                unique: true,
-            });
+            addImportToNgModule(ngModule, moduleName, {unique: true});
             addUniqueImport(
                 ngModule.getSourceFile().getFilePath(),
                 moduleName,
@@ -83,4 +83,6 @@ export function saveAddedImports(options: TuiSchema): void {
                 );
         }
     });
+
+    importsToAdd.clear();
 }

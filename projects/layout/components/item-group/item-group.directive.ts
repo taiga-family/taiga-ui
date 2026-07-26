@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -13,18 +14,23 @@ const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as cons
 
 @Component({
     template: '',
-    styleUrl: './item-group.styles.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './item-group.styles.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-item-group'},
+    exportAs: `tui-item-group-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
     selector: '[tuiItemGroup]',
     host: {
-        '(click)': 'onClick($event.target)',
+        'data-tui-version': TUI_VERSION,
         '[class._horizontal]': 'horizontal()',
+        '(click)': 'onClick($event.target)',
     },
 })
 export class TuiItemGroup implements AfterViewInit {

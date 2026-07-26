@@ -6,7 +6,7 @@ test.describe('Deep / Toggle', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page, browserName}) => {
+        test(path, async ({page, browserName}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -39,9 +39,16 @@ test.describe('Deep / Toggle', () => {
                     await page.waitForTimeout(300);
                 }
 
-                const example = api.apiPageExample;
+                const example = api.demo;
+
+                const query = decodeURIComponent(
+                    String(new URL(page.url()).searchParams),
+                );
+
                 const makeName = (dir: string): string =>
-                    `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
+                    `deep-${path}-${name}-row-${rowIndex}-toggled-${dir}-----${query}`
+                        .slice(0, 250)
+                        .concat('.png');
 
                 await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));

@@ -4,9 +4,7 @@ export interface TuiLineClampOptions {
     readonly showHint: boolean;
 }
 
-export const TUI_LINE_CLAMP_DEFAULT_OPTIONS: TuiLineClampOptions = {
-    showHint: true,
-};
+export const TUI_LINE_CLAMP_DEFAULT_OPTIONS: TuiLineClampOptions = {showHint: true};
 
 /**
  * Default parameters for LineClamp component

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiSvg to TuiIcon comments only the breaking cases (raw SVG, dynamic binding), not icon names or URLs: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-svg src="@tui.house"></tui-svg>
+                <tui-svg src="assets/icons/custom.svg"></tui-svg>
+                <tui-svg src="<svg><path /></svg>"></tui-svg>
+                <tui-svg [src]="icon"></tui-svg>
+            ",
+  "1. After": "
+                <tui-icon icon="@tui.house"></tui-icon>
+                <tui-icon icon="assets/icons/custom.svg"></tui-icon>
+                <!-- TODO: (Taiga UI migration) tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL -->
+<tui-icon icon="<svg><path /></svg>"></tui-icon>
+                <!-- TODO: (Taiga UI migration) tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL -->
+<tui-icon [icon]="icon"></tui-icon>
+            ",
+}
+`;
+
+exports[`ng-update TuiSvg to TuiIcon replaces tag, src/[src] attrs and the TuiSvgComponent import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiSvgComponent} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiSvgComponent],
+                    template: \`
+                        <tui-svg src="@tui.house"></tui-svg>
+                        <tui-svg [src]="icon"></tui-svg>
+                    \`,
+                })
+                export class TestComponent {
+                    protected readonly icon = '@tui.user';
+                }
+            ",
+  "1. After": "import { TuiIcon } from "@taiga-ui/core";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [TuiIcon],
+                    template: \`
+                        <tui-icon icon="@tui.house"></tui-icon>
+                        <!-- TODO: (Taiga UI migration) tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL -->
+<tui-icon [icon]="icon"></tui-icon>
+                    \`,
+                })
+                export class TestComponent {
+                    protected readonly icon = '@tui.user';
+                }
+            ",
+}
+`;

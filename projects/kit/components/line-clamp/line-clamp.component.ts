@@ -1,8 +1,9 @@
+import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
+    type AfterViewChecked,
     ChangeDetectionStrategy,
     Component,
     computed,
-    type DoCheck,
     ElementRef,
     inject,
     input,
@@ -13,6 +14,7 @@ import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
+import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     debounceTime,
@@ -40,21 +42,29 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
     hostDirectives: [TuiTransitioned],
     host: {
-        '(transitionend)': 'update()',
+        '[style.line-height.px]': 'line()',
         '(mouseenter)': 'update()',
         '(resize)': 'update()',
+        '(transitionend)': 'update()',
     },
 })
-export class TuiLineClamp implements DoCheck {
+export class TuiLineClamp implements AfterViewChecked {
+    private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly isOverflown$ = new Subject<boolean>();
-    private readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
+    private readonly maxHeight = computed(() => this.line() * this.linesLimit());
 
+    public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
+
+    public readonly showHint = input<boolean, BooleanInput>(this.options.showHint, {
+        transform: coerceBooleanProperty,
+    });
+
     public readonly overflownChange = outputFromObservable(
         this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
     );
@@ -75,7 +85,7 @@ export class TuiLineClamp implements DoCheck {
         {initialValue: 0},
     );
 
-    public ngDoCheck(): void {
+    public ngAfterViewChecked(): void {
         this.update();
         this.isOverflown$.next(this.overflown);
     }
@@ -88,7 +98,7 @@ export class TuiLineClamp implements DoCheck {
     }
 
     protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content() : '';
+        return this.showHint() && this.overflown ? this.content() : '';
     }
 
     protected update(): void {

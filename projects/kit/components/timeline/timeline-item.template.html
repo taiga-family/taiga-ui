@@ -1,0 +1,34 @@
+@if (draggable()) {
+    <input
+        #drag
+        type="range"
+        class="t-input t-input_drag"
+        [max]="timeline.max() - value()[1] + value()[0]"
+        [style.--drag.%]="timeline.d() * (value()[1] - value()[0])"
+        [(ngModel)]="offset"
+        (ngModelChange)="update(drag)"
+    />
+}
+@if (resizable()) {
+    <input
+        type="range"
+        class="t-input"
+        [max]="value()[1] - 1"
+        [min]="min()"
+        [style.inset-inline-end.%]="timeline.d() * (timeline.max() - value()[1])"
+        [style.inset-inline-start.%]="timeline.d() * min()"
+        [(ngModel)]="value()[0]"
+        (ngModelChange)="value.set([value()[0], value()[1]])"
+    />
+    <input
+        type="range"
+        class="t-input"
+        [max]="max()"
+        [min]="value()[0] + 1"
+        [style.inset-inline-end.%]="timeline.d() * (timeline.max() - max())"
+        [style.inset-inline-start.%]="timeline.d() * value()[0]"
+        [(ngModel)]="value()[1]"
+        (ngModelChange)="value.set([value()[0], value()[1]])"
+    />
+}
+<ng-content />

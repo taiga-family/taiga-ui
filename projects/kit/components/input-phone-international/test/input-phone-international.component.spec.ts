@@ -20,6 +20,8 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 import metadata from 'libphonenumber-js/max/metadata';
 import {of} from 'rxjs';
 
+import {TuiInputPhoneInternationalContent} from '../input-phone-international-content.component';
+
 describe('InputPhoneInternational', () => {
     @Component({
         imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
@@ -39,14 +41,13 @@ describe('InputPhoneInternational', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        public component = viewChild.required(TuiInputPhoneInternationalComponent);
+        public readonly component = viewChild.required(
+            TuiInputPhoneInternationalComponent,
+        );
 
         public control = new FormControl('+79110330102');
-
         public countries: TuiCountryIsoCode[] = ['RU', 'KZ', 'UA', 'BY', 'TW', 'BD'];
-
         public countryIsoCode: TuiCountryIsoCode = 'RU';
-
         public readOnly = false;
     }
 
@@ -90,7 +91,11 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component['onItemClick']('UA');
+            const content = fixture.debugElement.query(
+                By.directive(TuiInputPhoneInternationalContent),
+            ).componentInstance as TuiInputPhoneInternationalContent;
+
+            content['onItemClick']('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();
@@ -129,7 +134,7 @@ describe('InputPhoneInternational', () => {
 
         describe('should set KZ country code on paste event', () => {
             ['+7 777 777-7777', '+7 7272 588300'].forEach((phone) => {
-                it(`${phone}`, async () => {
+                it(phone, async () => {
                     await paste(phone);
 
                     expect(testComponent.countryIsoCode).toBe('KZ');

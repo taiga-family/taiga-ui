@@ -24,8 +24,8 @@ const OPTIONS = {
     host: {
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
-        '(scroll.zoneless)': 'onScroll()',
         '(resize)': 'onScroll()',
+        '(scroll.zoneless)': 'onScroll()',
     },
 })
 export class TuiBottomSheet {

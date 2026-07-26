@@ -23,7 +23,6 @@ export class TuiDocHeader {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly logo = inject(TUI_DOC_LOGO);
     protected readonly menu = inject(TUI_DOC_MENU_TEXT);
-
     protected readonly open = signal(false);
 
     constructor() {

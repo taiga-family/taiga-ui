@@ -11,6 +11,7 @@ import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rx
 @Injectable()
 export class TuiObscuredService extends Observable<readonly Element[] | null> {
     private readonly el = tuiInjectElement();
+
     private readonly obscured$ = inject(WA_ANIMATION_FRAME).pipe(
         throttleTime(100, tuiZonefreeScheduler()),
         map(() => tuiGetElementObscures(this.el)),

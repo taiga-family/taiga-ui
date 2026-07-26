@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     // fix for Safari to prevent tabs underline above sidebar
@@ -6,7 +6,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: var(--tui-background-base);
+    padding: 0 0.25rem;
+
+    --tui-stroke-width: 0.09375rem;
 }
 
 .t-input {
@@ -20,6 +22,7 @@
 
 .t-navigation {
     display: flex;
+    flex-wrap: wrap;
     max-block-size: 100%;
     min-block-size: 0;
     flex: 1 1 0;
@@ -32,6 +35,7 @@
 
 :host-context(tui-drawer) {
     margin: -1.25rem -1.5rem;
+    padding-inline-start: 0;
 
     // tui-drawer already have tui-scrollbar, need pass navigation scrollbar content to outer layer
     .t-scrollbar {
@@ -39,8 +43,9 @@
     }
 }
 
-.t-accordion-standalone {
-    margin-block-start: 1rem;
+.t-accordion {
+    inline-size: auto;
+    margin: 0.5rem 0.375rem 1.5rem;
 }
 
 .t-scrollbar {
@@ -48,14 +53,9 @@
     inline-size: 100%;
 }
 
-.t-items-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0 1rem;
-}
-
 .t-label {
-    margin-inline-start: 0.5rem;
+    margin-inline-start: 1.1875rem;
+    font-weight: bold;
 }
 
 .t-expand {
@@ -68,9 +68,9 @@
     flex-direction: column;
     align-items: flex-start;
 
-    &_bordered {
-        margin: 0.5rem 0;
-        border-inline-start: 1px solid var(--tui-border-normal);
+    &_nested {
+        margin: 0 0.75rem;
+        clip-path: inset(0.5rem 0);
     }
 }
 
@@ -79,43 +79,109 @@
 }
 
 .t-subsection {
-    margin-inline-start: 0.5rem;
+    margin-inline-start: 0.625rem;
 }
 
 .t-sublink {
-    font: var(--tui-font-body-m);
-    margin-inline-start: 0.5rem;
-    padding: 0.5rem 0;
+    display: inline-flex;
+    align-items: center;
+    font: var(--tui-typography-body-s);
+    padding-block: 0.5rem;
+    padding-inline-start: 0.4375rem;
     text-decoration: none;
+
+    .t-accordion > & {
+        block-size: 2.5rem;
+        font: var(--tui-typography-body-s);
+        font-weight: bold;
+        color: var(--tui-text-primary);
+        align-items: center;
+        padding: 0 1rem;
+        margin-inline-start: 1px;
+
+        &::before {
+            margin-inline-end: calc(0.875rem * (1 - 0.25 * var(--t-zoom)));
+        }
+
+        &::after {
+            opacity: 0;
+        }
+    }
 
     &_small {
         margin-inline-start: 1rem;
-        line-height: 1.5rem;
-        padding-block-start: 0.5rem;
+        padding-inline: 0;
     }
 
     &_subsection {
-        margin-inline-start: 0;
-        line-height: 1.6rem;
+        margin-inline-start: 0 !important;
+        padding-inline-start: 1.6875rem;
+
+        .t-chevron {
+            position: absolute;
+            inset-inline-start: 0.4375rem;
+        }
+
+        &::before {
+            opacity: 0;
+        }
     }
 
     &&&_active {
         // @note: (&&&_) it's increasing css cascade priority
         color: var(--tui-text-primary);
-    }
-}
+        font-weight: bold;
 
-.t-icon {
-    margin-inline-start: 0.5rem;
+        &::after {
+            position: absolute;
+            display: block;
+            inset-block: 0.5rem;
+            inset-inline-start: -1rem;
+            block-size: auto;
+            inline-size: 0.1875rem;
+            padding: 0;
+            margin-inline-start: -1px;
+            border-radius: 1rem;
+            background: var(--tui-text-primary);
+            zoom: 1;
+        }
+    }
+
+    &:not([data-icon-start]) {
+        margin-inline-start: 1.875rem;
+
+        &::before {
+            position: absolute;
+            display: block;
+            inset-block-start: 0;
+            inset-block-end: 0;
+            inset-inline-start: -1rem;
+            block-size: auto;
+            inline-size: 1px;
+            padding: 0;
+            background: var(--tui-border-normal);
+            zoom: 1;
+        }
+    }
 }
 
 .t-chevron {
     .transition(transform);
 
     font-size: 1rem;
-    margin: -0.25rem 0.25rem 0 -0.1875rem;
+    margin-inline: -0.625rem 0.875rem;
 
     &_active {
         transform: rotate(90deg);
+    }
+}
+
+.t-accordion-item {
+    block-size: 2.5rem;
+
+    &::before {
+        position: relative;
+        inset-inline-start: 0.5625rem;
+        font-size: 1rem;
     }
 }

@@ -27,6 +27,7 @@ export class TuiNotificationComponent<O, I> {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly close = inject(TUI_CLOSE_WORD);
+
     protected readonly item =
         injectContext<TuiPortalContext<TuiNotificationOptions<I>, O>>();
 

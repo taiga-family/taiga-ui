@@ -1,18 +1,19 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-[tuiHeader] {
+[tuiHeader]:where(*&) {
     position: relative;
     display: flex;
     align-items: flex-start;
     box-sizing: content-box;
     color: var(--tui-text-primary);
     margin: 0;
+    gap: 0.5rem 1rem;
     text-align: start;
     overflow-wrap: break-word;
 
     p {
         margin: 0.25rem 0 0;
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-body-m);
 
         &:empty {
             display: none;
@@ -20,8 +21,10 @@
     }
 
     [tuiTitle] {
-        flex-grow: 2;
+        max-inline-size: fit-content;
+        flex: 1 0 60%;
         margin: 0;
+        margin-inline-end: auto;
         font: inherit;
 
         &:empty {
@@ -40,76 +43,83 @@
         }
 
         &::before {
-            /* stylelint-disable-next-line */
             content: '​';
             visibility: hidden;
+            margin-inline-end: -0.75rem;
         }
     }
 
     [tuiSubtitle] {
-        font: var(--tui-font-body-m);
         color: var(--tui-text-secondary);
-        margin: 0;
-    }
-
-    [tuiLink] {
-        font: var(--tui-font-body-m);
     }
 
     [tuiCaption] {
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
         color: var(--tui-text-secondary);
         font-weight: 500;
         text-transform: uppercase;
         margin: 0;
     }
 
+    + [tuiDescription] {
+        margin-block-start: 0.5rem;
+        color: var(--tui-text-primary);
+        font: var(--tui-typography-body-m);
+    }
+
     &[data-size='h1'] {
-        font: var(--tui-font-heading-h1);
-    }
+        font: var(--tui-typography-heading-h1);
 
-    &[data-size='h2'] {
-        font: var(--tui-font-heading-h2);
-    }
-
-    &[data-size='h3'] {
-        font: var(--tui-font-heading-h3);
-    }
-
-    &[data-size='h4'] {
-        font: var(--tui-font-heading-h4);
-    }
-
-    &[data-size='h5'] {
-        font: var(--tui-font-heading-h5);
-    }
-
-    &[data-size='h6'] {
-        font: var(--tui-font-heading-h6);
-    }
-
-    &[data-size='body-l'] {
-        font: var(--tui-font-body-l);
-
-        [tuiTitle] {
-            font-weight: bold;
+        + [tuiDescription] {
+            margin-block-start: 0.75rem;
         }
     }
 
+    &[data-size='h2'] {
+        font: var(--tui-typography-heading-h2);
+    }
+
+    &[data-size='h3'] {
+        font: var(--tui-typography-heading-h3);
+    }
+
+    &[data-size='h4'] {
+        font: var(--tui-typography-heading-h4);
+    }
+
+    &[data-size='h5'] {
+        font: var(--tui-typography-heading-h5);
+    }
+
+    &[data-size='h6'] {
+        font: var(--tui-typography-heading-h6);
+    }
+
+    &[data-size='body-l'] {
+        font: var(--tui-typography-body-l);
+    }
+
     &[data-size='body-m'] {
-        font: var(--tui-font-body-m);
+        font: var(--tui-typography-ui-l);
+    }
+
+    &[data-size='body-s'] {
+        font: var(--tui-typography-ui-m);
 
         [tuiTitle] {
             gap: 0.125rem;
-            font-weight: bold;
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 0.125rem;
         }
     }
 
     &[data-size='body-m'],
-    &[data-size='body-l'] {
+    &[data-size='body-s'] {
         [tuiSubtitle],
-        [tuiLink] {
-            font: var(--tui-font-body-s);
+        [tuiAccessories] [tuiLink] {
+            font: var(--tui-typography-body-s);
         }
     }
 
@@ -117,8 +127,23 @@
     &[data-size='h2'],
     &[data-size='h3'] {
         [tuiSubtitle],
-        [tuiLink] {
-            font: var(--tui-font-body-l);
+        [tuiAccessories] [tuiLink],
+        + [tuiDescription] {
+            font: var(--tui-typography-body-l);
         }
+    }
+
+    &[data-size='h4'],
+    &[data-size='h5'],
+    &[data-size='h6'],
+    &[data-size='body-l'] {
+        [tuiSubtitle],
+        [tuiAccessories] [tuiLink] {
+            font: var(--tui-typography-body-m);
+        }
+    }
+
+    &[data-size] [tuiTitle] {
+        font-weight: bold;
     }
 }

@@ -5,10 +5,10 @@ import {provideServerRouting, RenderMode, type ServerRoute} from '@angular/ssr';
 import {DemoRoute} from '@demo/routes';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
-import {App} from './modules/app/app.component';
-import {config} from './modules/app/app.config';
-import {ROUTES} from './modules/app/app.routes';
-import {ServerErrorHandler} from './modules/app/server-error-handler';
+import {App} from './pages/app/app.component';
+import {config} from './pages/app/app.config';
+import {ROUTES} from './pages/app/app.routes';
+import {ServerErrorHandler} from './pages/app/server-error-handler';
 
 /* eslint-disable @typescript-eslint/require-await */
 
@@ -21,7 +21,6 @@ const serverConfig = mergeApplicationConfig(config, {
 
                 switch (path) {
                     case DemoRoute.Breakpoints:
-                    case DemoRoute.DialogLazyRoutable:
                     case DemoRoute.Portals:
                     case DemoRoute.Viewport:
                         return withTabs(path, ['Setup']);
@@ -33,16 +32,20 @@ const serverConfig = mergeApplicationConfig(config, {
                             'Setup',
                         ]);
                     case DemoRoute.DialogRoutable:
-                        return withTabs(path, ['NamedOutlet', 'Setup']);
+                        return withTabs(path, [
+                            'path/to/lazy',
+                            'path/to/eager',
+                            'path/to/named-outlet',
+                        ]);
                     case DemoRoute.I18N:
                         return withTabs(path, ['Dynamic_loader']);
                     case DemoRoute.Surface:
                         return withTabs(path, ['Layers']);
                     default:
-                        return /^\/(components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
+                        return /^(?:components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
                             path,
                         )
-                            ? withTabs(path, ['API', 'Setup'])
+                            ? withTabs(path, ['API'])
                             : {
                                   path,
                                   renderMode: RenderMode.Prerender,

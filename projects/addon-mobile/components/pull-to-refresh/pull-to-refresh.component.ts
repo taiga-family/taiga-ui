@@ -4,8 +4,8 @@ import {
     takeUntilDestroyed,
     toSignal,
 } from '@angular/core/rxjs-interop';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
@@ -27,17 +27,19 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     providers: [TuiPullToRefreshService],
 })
 export class TuiPullToRefresh {
-    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isIOS = inject(WA_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
     private readonly service = inject(TuiPullToRefreshService);
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly el = inject(TUI_SCROLL_REF);
 
     protected readonly pulling = toSignal(this.service, {initialValue: 0});
+
     protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
         TUI_PULL_TO_REFRESH_COMPONENT,
     );
 
     protected readonly style = computed(() => this.styleHandler()(this.pulling()));
+
     protected readonly dropped = toSignal(
         this.service.pipe(
             map((distance) => distance <= MICRO_OFFSET || distance === this.threshold),
@@ -55,12 +57,12 @@ export class TuiPullToRefresh {
 
     constructor() {
         if (this.component) {
-            tuiScrollFrom(this.el)
+            tuiScrollFrom(this.el.nativeElement)
                 .pipe(startWith(null), tuiZonefree(), takeUntilDestroyed())
                 .subscribe(() => {
-                    this.el.style.setProperty(
+                    this.el.nativeElement.style.setProperty(
                         'touch-action',
-                        this.el.scrollTop ? '' : 'pan-down',
+                        this.el.nativeElement.scrollTop ? '' : 'pan-down',
                     );
                 });
         }

@@ -32,7 +32,17 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils/dom';
-import {combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
+import {
+    combineLatest,
+    distinctUntilChanged,
+    filter,
+    fromEvent,
+    map,
+    merge,
+    startWith,
+    tap,
+    throttleTime,
+} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
@@ -53,6 +63,7 @@ export class TuiDropdownSelection
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
+
     protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
         tuiIsString(visible) ? TUI_TRUE_HANDLER : visible,
     );
@@ -69,16 +80,28 @@ export class TuiDropdownSelection
                     x.commonAncestorContainer === y.commonAncestorContainer,
             ),
         ),
+        merge(fromEvent(this.el, 'scroll', {passive: true, capture: true})).pipe(
+            throttleTime(16, undefined, {leading: false, trailing: true}),
+            startWith(0),
+        ),
     ]).pipe(
-        map(([handler, range]) => {
-            const contained = this.el.contains(range.commonAncestorContainer);
-
+        tap(([, range]) => {
             this.range =
-                contained && tuiIsTextNode(range.commonAncestorContainer)
+                this.el.contains(range.commonAncestorContainer) &&
+                tuiIsTextNode(range.commonAncestorContainer)
                     ? range
                     : this.range;
+        }),
+        map(([handler, range]) => {
+            const contained = this.el.contains(range.commonAncestorContainer);
+            const valid = contained && handler(this.range);
+            const visible = valid || this.inDropdown(range);
+            const active = tuiGetFocused(this.doc);
 
-            return (contained && handler(this.range)) || this.inDropdown(range);
+            const textfield =
+                active && tuiIsTextfield(active) && this.el.contains(active);
+
+            return visible && textfield ? this.isCaretVisible(this.range) : visible;
         }),
     );
 
@@ -88,6 +111,7 @@ export class TuiDropdownSelection
 
     public readonly type = 'dropdown';
     public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
+
     public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
         'selection',
     );
@@ -100,6 +124,7 @@ export class TuiDropdownSelection
         switch (this.tuiDropdownSelectionPosition()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
+
                 const element = tuiIsElement(commonAncestorContainer)
                     ? commonAncestorContainer
                     : commonAncestorContainer.parentNode;
@@ -128,6 +153,7 @@ export class TuiDropdownSelection
     private getRange(): Range {
         const active = tuiGetFocused(this.doc);
         const selection = this.doc.getSelection();
+
         const range =
             active && tuiIsTextfield(active) && this.el.contains(active)
                 ? this.veryVerySadInputFix(active)
@@ -142,8 +168,10 @@ export class TuiDropdownSelection
     private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
+
         const hostToDropdown =
             this.boxContains(endContainer) && this.el.contains(startContainer);
+
         const dropdownToHost =
             this.boxContains(startContainer) && this.el.contains(endContainer);
 
@@ -179,7 +207,7 @@ export class TuiDropdownSelection
         ghost.style.left = tuiPx(left - hostRect.left);
         ghost.style.width = tuiPx(width);
         ghost.style.height = tuiPx(height);
-        ghost.textContent = CHAR_ZERO_WIDTH_SPACE + value + CHAR_NO_BREAK_SPACE;
+        ghost.textContent = `${CHAR_ZERO_WIDTH_SPACE}${value}${CHAR_NO_BREAK_SPACE}`;
 
         range.setStart(ghost.firstChild as Node, selectionStart || 0);
         range.setEnd(ghost.firstChild as Node, selectionEnd || 0);
@@ -194,6 +222,7 @@ export class TuiDropdownSelection
         element: HTMLElement | HTMLInputElement | HTMLTextAreaElement,
     ): HTMLElement {
         const ghost = this.doc.createElement('div');
+
         const {font, letterSpacing, textTransform, padding, borderTop} =
             getComputedStyle(element);
 
@@ -212,5 +241,19 @@ export class TuiDropdownSelection
         this.ghost = ghost;
 
         return ghost;
+    }
+
+    private isCaretVisible(range: Range): boolean {
+        const caret = range.getBoundingClientRect();
+        const host = this.ghostHost.getBoundingClientRect();
+        const styles = getComputedStyle(this.ghostHost);
+        const fontSize = Number.parseFloat(styles.fontSize) || 16;
+        const lineHeight = Number.parseFloat(styles.lineHeight) || fontSize * 1.2;
+        const visibleTop = Math.max(caret.top, host.top);
+        const visibleBottom = Math.min(caret.bottom, host.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const threshold = lineHeight * 0.5;
+
+        return visibleHeight >= threshold;
     }
 }

@@ -1,6 +1,5 @@
 export * from '@taiga-ui/kit/pipes/auto-color';
 export * from '@taiga-ui/kit/pipes/emails';
-export * from '@taiga-ui/kit/pipes/filter-by-input';
 export * from '@taiga-ui/kit/pipes/flag';
 export * from '@taiga-ui/kit/pipes/hide-selected';
 export * from '@taiga-ui/kit/pipes/initials';

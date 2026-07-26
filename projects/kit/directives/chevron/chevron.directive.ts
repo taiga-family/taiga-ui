@@ -8,6 +8,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -20,10 +21,14 @@ export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {
 
 @Component({
     template: '',
-    styleUrl: './chevron.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './chevron.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-chevron'},
+    exportAs: `tui-chevron-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -37,6 +42,7 @@ export class TuiChevron {
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
     protected readonly nothing = tuiWithStyles(Styles);
+
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',

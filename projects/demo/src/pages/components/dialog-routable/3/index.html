@@ -1,0 +1,15 @@
+<button
+    tuiButton
+    type="button"
+    [routerLink]="[
+        {
+            outlets: {
+                myOutlet: 'path/to/named-outlet',
+            },
+        },
+    ]"
+>
+    Open dialog
+</button>
+
+<router-outlet name="myOutlet" />

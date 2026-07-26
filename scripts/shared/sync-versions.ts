@@ -1,8 +1,8 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 
 import {glob} from 'glob';
-import {processLog, successLog} from 'ng-morph';
 
+import {processLog, successLog} from '../../projects/cdk/schematics/utils/colored-log';
 import {updatePackageJsonStructure} from './update-package-json-structure';
 
 const INDENTATION = 4;
@@ -29,6 +29,7 @@ export function syncVersions(
             null,
             INDENTATION,
         );
+
         const packageJson = JSON.parse(originalJSON);
         const prevVersion = packageJson.version;
 
@@ -46,11 +47,11 @@ export function syncVersions(
 
         const updatedJSON = JSON.stringify(packageJson, null, INDENTATION);
 
-        if (originalJSON !== updatedJSON) {
+        if (originalJSON === updatedJSON) {
+            processLog(`[no changes]: ${file}`);
+        } else {
             writeFileSync(file, `${updatedJSON}\n`);
             successLog(`[synchronized]: ${file}`);
-        } else {
-            processLog(`[no changes]: ${file}`);
         }
     }
 }

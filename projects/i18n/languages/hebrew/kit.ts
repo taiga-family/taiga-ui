@@ -21,13 +21,12 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd/mm/yyyy',
-        'mm/dd/yyyy': 'mm/dd/yyyy',
-        'yyyy/mm/dd': 'yyyy/mm/dd',
+        'dd/mm/yyyy': 'DD/MM/YYYY',
+        'mm/dd/yyyy': 'MM/DD/YYYY',
+        'yyyy/mm/dd': 'YYYY/MM/DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['הראה סיסמה', 'הסתר סיסמא'],
@@ -70,9 +69,7 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'כן',
         no: 'לא',
     },
-    previewTexts: {
-        rotate: 'להתחלף',
-    },
+    previewTexts: {rotate: 'להתחלף'},
     zoomTexts: {
         zoomOut: 'להקטין את התצוגה',
         zoomIn: 'לְהִתְמַקֵד',

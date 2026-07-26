@@ -17,6 +17,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: taiga-family/argus@main
+      - uses: taiga-family/argus@f28f0914e28530403f61aab7080d3de1fd0c9284 # main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

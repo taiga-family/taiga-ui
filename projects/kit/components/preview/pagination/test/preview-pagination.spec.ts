@@ -20,15 +20,12 @@ describe('PreviewPagination', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiPreviewPagination);
-
         public index = 0;
         public length = 11;
     }
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [Test],
-        });
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;

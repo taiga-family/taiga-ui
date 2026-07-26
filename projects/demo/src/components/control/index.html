@@ -14,7 +14,7 @@
         type="boolean"
         [(value)]="readonly"
     >
-        Readonly state
+        readonly state
     </tr>
 }
 @if (!hiddenOptions().includes('disabled')) {
@@ -24,7 +24,7 @@
         type="boolean"
         [(value)]="disabled"
     >
-        Disabled state (use
+        disabled state (use
         <code>formControl.disable()/.enable()</code>
         for reactive forms)
     </tr>
@@ -37,6 +37,6 @@
         [items]="[true, false]"
         [(value)]="invalid"
     >
-        Invalid state
+        manual invalid state
     </tr>
 }

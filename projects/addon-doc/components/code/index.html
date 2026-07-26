@@ -5,12 +5,16 @@
 }
 @for (content of processor(); track content) {
     <pre class="t-code">
-    <code [lineNumbers]="true" [highlight]="content"></code>
+    @if (lineNumbers()) {
+      <code [highlightAuto]="content" lineNumbers>{{isServer ? content : ''}}</code>
+    } @else {
+      <code [highlightAuto]="content">{{isServer ? content : ''}}</code>
+    }
     <div class="t-code-actions">
       <button
         tuiIconButton
         type="button"
-        appearance="outline-grayscale"
+        appearance=""
         size="s"
         class="t-copy-button"
         [iconStart]="icon()"

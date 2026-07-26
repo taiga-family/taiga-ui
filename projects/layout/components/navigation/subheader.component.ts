@@ -4,6 +4,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
@@ -17,7 +18,7 @@ const PROVIDERS = [
     tuiBreadcrumbsOptionsProvider({icon: '/'}),
     tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
     tuiTabsOptionsProvider({size: 'm'}),
-    tuiDropdownOptionsProvider({align: 'right'}),
+    tuiDropdownOptionsProvider({align: 'end'}),
     tuiBadgeOptionsProvider({size: 'm'}),
 ];
 
@@ -30,13 +31,18 @@ const PROVIDERS = [
         <ng-content />
         <ng-content select="tui-tabs,[tuiTabs]" />
     `,
-    styleUrl: './subheader.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './subheader.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         PROVIDERS,
         tuiButtonOptionsProvider({appearance: 'secondary', size: 'xs'}),
     ],
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiSubheaderComponent {}
 
@@ -45,15 +51,18 @@ export class TuiSubheaderComponent {}
     template: `
         <div class="t-nav-subheader">
             <ng-content />
-            <ng-content
-                select="tui-tabs,tui-tabs-with-more,[tuiTabsWithMore],[tuiTabs]"
-            />
+            <ng-content select="tui-tabs,tui-tabs-with-more" />
             <ng-content select="[tuiButton],[tuiIconButton]" />
         </div>
     `,
-    styleUrl: './subheader.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './subheader.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
+    host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiSubheaderCompactComponent {}

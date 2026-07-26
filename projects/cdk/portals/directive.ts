@@ -12,6 +12,7 @@ export class TuiPortalDirective<T> extends PolymorpheusTemplate<TuiPortalContext
 
     public readonly options = input<Partial<T>>({});
     public readonly open = input(false);
+
     public readonly openChange = outputFromObservable(
         toObservable(this.open).pipe(
             tuiIfMap(() =>

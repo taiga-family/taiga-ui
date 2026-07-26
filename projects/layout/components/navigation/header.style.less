@@ -1,11 +1,10 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-header[tuiNavigationHeader][tuiNavigationHeader] {
+header[tuiNavigationHeader][tuiNavigationHeader]:where(*&) {
     position: sticky;
-    top: 0;
-    left: 0;
     z-index: 2;
     display: flex;
+    inset-block-start: 0;
     inset-inline-start: 0;
     block-size: 3rem;
     inline-size: 100vw;
@@ -13,8 +12,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     gap: 0.25rem;
     padding: 0.5rem;
     box-sizing: border-box;
-    font: var(--tui-font-body-s);
-    line-height: 1rem;
+    font: var(--tui-typography-body-s);
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
     box-shadow: 0 -100rem 0 100rem var(--tui-theme-color, #000);
@@ -22,14 +20,14 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     &::before {
         content: '';
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
         z-index: -1;
+        inset-block-start: 100%;
+        inset-inline: 0;
         block-size: 3rem;
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
         border-radius: 1.25rem 1.25rem 0 0;
+        clip-path: inset(0);
     }
 
     [tuiNavigationLogo] {
@@ -59,8 +57,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     [tuiButton],
     [tuiBadge],
     [tuiChip],
-    tui-badge,
-    tui-chip {
+    tui-badge {
         max-inline-size: 12.5rem;
     }
 
@@ -72,7 +69,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
         border: none;
         flex-shrink: 0;
         background: transparent;
-        mask: linear-gradient(to right, transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
 
         ~ [tuiButton] {
             margin-inline-end: 0.5rem;
@@ -85,7 +82,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     }
 }
 
-tui-dropdown[data-appearance='dropdown-navigation'] {
+tui-dropdown[data-appearance='dropdown-navigation']:where(*&) {
     border: none;
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-3);

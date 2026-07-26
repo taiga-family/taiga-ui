@@ -1,13 +1,13 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
-tui-app-bar {
+tui-app-bar:where(*&) {
     position: relative;
     display: flex;
     block-size: 2.75rem;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    font: var(--tui-font-body-m);
+    font: var(--tui-typography-body-m);
     font-weight: bold;
     text-align: center;
     color: var(--tui-text-primary);
@@ -49,7 +49,7 @@ tui-app-bar {
     }
 
     [tuiButton][data-size='l'] {
-        font: var(--tui-font-body-l);
+        font: var(--tui-typography-body-l);
         margin: 0 -0.25rem;
     }
 
@@ -78,7 +78,7 @@ tui-app-bar {
         }
 
         [tuiAppBarBack] {
-            font: var(--tui-font-body-l);
+            font: var(--tui-typography-body-l);
         }
     }
 
@@ -87,15 +87,15 @@ tui-app-bar {
     }
 }
 
-tui-dialog tui-app-bar[data-size='l'] {
+tui-dialog tui-app-bar[data-size='l']:where(*&) {
     margin: -3rem 0 2rem;
 }
 
-tui-dialog tui-app-bar[data-size='m'] {
+tui-dialog tui-app-bar[data-size='m']:where(*&) {
     margin: -1rem -1rem 0.75rem;
 }
 
-tui-sheet-dialog tui-app-bar {
+tui-sheet-dialog tui-app-bar:where(*&) {
     margin: -0.75rem -1rem;
     block-size: 3.5rem;
     background: none;

@@ -2,7 +2,7 @@ import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc';
 
 // Knip problem
 // noinspection ES6PreferShortImport
-import {DemoRoute} from '../../demo/src/modules/app/demo-routes';
+import {DemoRoute} from '../../demo/src/pages/app/demo-routes';
 
 function flatPages(pages: TuiDocRoutePages): readonly TuiDocRoutePage[] {
     return pages.reduce(
@@ -23,12 +23,11 @@ export const EXCLUDED_SECTIONS = [
 ];
 
 export const EXCLUDED_ROUTES = [
+    DemoRoute.GettingStarted,
     DemoRoute.I18N,
     DemoRoute.Preview, // no need take screenshot of buttons
     DemoRoute.Dialog, // just buttons
-    DemoRoute.DialogLegacy, // just buttons
     DemoRoute.DialogRoutable, // just buttons
-    DemoRoute.DialogLazyRoutable, // just buttons
     DemoRoute.SheetDialog, // just buttons
     DemoRoute.Error,
     DemoRoute.MobileCalendar, // TODO: flaky test, need investigate

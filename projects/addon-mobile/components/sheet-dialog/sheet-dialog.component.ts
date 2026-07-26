@@ -13,6 +13,7 @@ import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -24,7 +25,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 
 @Component({
     selector: 'tui-sheet-dialog',
-    imports: [PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,14 +33,14 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     hostDirectives: [TuiAnimated],
     host: {
         '[attr.data-appearance]': 'context.appearance',
-        '[style.--tui-offset.px]': 'context.offset',
         '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
+        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
+        '(document:touchend.zoneless)': 'onPointerChange(-1)',
+        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
+        '(scroll.zoneless)': 'onPointerChange(0)',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
@@ -51,6 +52,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
+
     protected readonly $ = merge(
         this.close$,
         tuiCloseWatcher(),

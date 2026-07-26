@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange adds TODO comment for dynamic [tuiTextfieldLabelOutside]: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range
+                    [(ngModel)]="value"
+                    [tuiTextfieldLabelOutside]="isLabelOutside"
+                >
+                    Choose a range
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) [tuiTextfieldLabelOutside] is dynamic — cannot be migrated automatically. Use <label tuiLabel> inside <tui-textfield> for label-outside pattern.
+-->
+<tui-textfield
+                    
+                    
+                >
+                    Choose a range
+                
+<input tuiInputMonthRange [(ngModel)]="value" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange migrates import and basic template with label and explicit input: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiInputMonthRangeModule],
+                    template: \`
+                        <tui-input-month-range [formControl]="ctrl">
+                            Choose a range
+                            <input tuiTextfieldLegacy />
+                        </tui-input-month-range>
+                    \`,
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputMonthRange } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [TuiInputMonthRange],
+                    template: \`
+                        <tui-textfield >
+<label tuiLabel>
+                            Choose a range
+                            </label>
+<input tuiInputMonthRange [formControl]="ctrl" />
+                        
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+                    \`,
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange migrates when there is no explicit <input> child: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range formControlName="range">
+                    Choose a range
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <tui-textfield >
+<label tuiLabel>
+                    Choose a range
+                </label>
+
+<input tuiInputMonthRange formControlName="range" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange moves [disabledItemHandler] and [defaultActiveYear] to tui-calendar-month: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range
+                    [(ngModel)]="value"
+                    [disabledItemHandler]="handler"
+                    [defaultActiveYear]="activeYear"
+                >
+                    Choose a range
+                    <input tuiTextfieldLegacy />
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a range
+                    </label>
+<input tuiInputMonthRange [(ngModel)]="value" />
+                
+<tui-calendar-month *tuiDropdown [disabledItemHandler]="handler" [year]="activeYear" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange moves [min]/[max]/[minLength]/[maxLength] to tui-calendar-month: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range
+                    [formControl]="ctrl"
+                    [min]="min"
+                    [max]="max"
+                    [minLength]="3"
+                    [maxLength]="6"
+                >
+                    Choose a range
+                    <input tuiTextfieldLegacy />
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                    
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a range
+                    </label>
+<input tuiInputMonthRange [formControl]="ctrl" />
+                
+<tui-calendar-month *tuiDropdown [min]="min" [max]="max" [minLength]="3" [maxLength]="6" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update TuiInputMonthRangeModule to TuiInputMonthRange preserves camelCase for (ngModelChange) and [formControlName] bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-month-range
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a range
+                </tui-input-month-range>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a range
+                </label>
+
+<input tuiInputMonthRange [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar-month *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;

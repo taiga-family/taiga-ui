@@ -48,7 +48,7 @@ describe('tuiIsExpireValid', () => {
 
     for (const expire in specs) {
         if (specs.hasOwnProperty(expire)) {
-            describe(`${expire}`, () => {
+            describe(expire, () => {
                 specs[expire as keyof typeof specs].forEach(({today, valid}) =>
                     it(`It's ${valid ? 'valid' : 'invalid'} when today is ${today}`, () =>
                         expect(tuiIsExpireValid(expire, new Date(today))).toBe(valid)),

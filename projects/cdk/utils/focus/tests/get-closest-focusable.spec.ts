@@ -2,7 +2,7 @@ import {tuiGetClosestFocusable} from '@taiga-ui/cdk';
 
 describe('tuiGetClosestFocusable', () => {
     it('returns null if root has no document', () => {
-        const root: Node = {} as unknown as Node;
+        const root = {} as unknown as Node;
         const divElement = document.createElement('div');
 
         expect(tuiGetClosestFocusable({initial: divElement, root})).toBeNull();

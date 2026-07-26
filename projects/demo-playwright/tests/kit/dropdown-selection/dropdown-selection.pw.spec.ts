@@ -30,7 +30,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('02-dropdown-selection.png');
 
-        await example.locator('textarea').fill('');
+        await example.locator('textarea').clear();
         await example.locator('textarea').fill('@');
         await api.waitStableState();
 
@@ -54,7 +54,8 @@ test.describe('DropdownSelection', () => {
 
         await example.locator('textarea').focus();
 
-        await example.locator('textarea').fill('\n@');
+        await example.locator('textarea').fill('\n');
+        await example.locator('textarea').fill('@');
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
     });
@@ -64,20 +65,16 @@ test.describe('DropdownSelection', () => {
     }) => {
         const api = new TuiDocumentationPagePO(page);
         const example = api.getExample('#textarea');
+        const content = 'hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @';
 
         await example.scrollIntoViewIfNeeded();
         await api.waitStableState();
 
-        await page.waitForTimeout(500); // flaky in Safari
-
         await example.locator('textarea').focus();
-
-        await example
-            .locator('textarea')
-            .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
-
+        await example.locator('textarea').clear();
+        await example.locator('textarea').fill(content);
         await expect(page.locator('tui-dropdown')).toBeVisible();
-        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
+        await expect.soft(page).toHaveScreenshot('05-dropdown-selection.png');
     });
 
     test('keyArrowDown / keyArrowUp must be handled correctly', async ({page}) => {
@@ -100,5 +97,38 @@ test.describe('DropdownSelection', () => {
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
         await expect.soft(page).toHaveScreenshot('06-dropdown-selection-keydown.png');
+    });
+
+    test('textarea with many line breaks and scroll', async ({page}) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
+        const textarea = example.locator('textarea');
+
+        await example.scrollIntoViewIfNeeded();
+        await textarea.focus();
+        await textarea.clear();
+
+        for (let i = 0; i < 20; i++) {
+            await page.keyboard.press('Enter');
+        }
+
+        await page.keyboard.type('@');
+        await page.waitForTimeout(200);
+        await api.waitStableState();
+
+        await expect
+            .soft(page)
+            .toHaveScreenshot('07-dropdown-selection-scrolled-bottom.png');
+
+        await textarea.evaluate((el) => {
+            el.scrollTop = 220;
+        });
+
+        await page.waitForTimeout(200);
+        await api.waitStableState();
+
+        await expect
+            .soft(page)
+            .toHaveScreenshot('08-dropdown-selection-scrolled-top.png');
     });
 });

@@ -9,9 +9,7 @@ import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
             useFactory: () => inject(TuiPlatform).tuiPlatform(),
         },
     ],
-    host: {
-        '[attr.data-platform]': 'tuiPlatform()',
-    },
+    host: {'[attr.data-platform]': 'tuiPlatform()'},
 })
 export class TuiPlatform {
     public readonly tuiPlatform = input(inject(TUI_PLATFORM, {skipSelf: true}));

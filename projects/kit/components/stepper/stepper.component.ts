@@ -10,7 +10,7 @@ import {
     type OnChanges,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
@@ -18,29 +18,30 @@ import {type TuiOrientation} from '@taiga-ui/core/types';
 import {TuiStep} from './step.component';
 
 @Component({
-    selector: 'tui-stepper, nav[tuiStepper]',
+    selector: 'tui-stepper',
     template: `
         <ng-content />
     `,
     styleUrl: './stepper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     host: {
         '[attr.data-orientation]': 'orientation()',
-        '(keydown.arrowRight)': 'onHorizontal($event, 1)',
-        '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
         '(keydown.arrowDown)': 'onVertical($event, 1)',
+        '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
+        '(keydown.arrowRight)': 'onHorizontal($event, 1)',
         '(keydown.arrowUp)': 'onVertical($event, -1)',
     },
 })
 export class TuiStepperComponent implements OnChanges {
     private readonly el = tuiInjectElement();
+
     private readonly steps = contentChildren(
         forwardRef(() => TuiStep),
         {read: ElementRef},
     );
 
-    protected readonly $ = inject(ResizeObserverService, {self: true})
+    protected readonly $ = inject(WaResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex()));
 
@@ -54,7 +55,7 @@ export class TuiStepperComponent implements OnChanges {
     public indexOf(step: HTMLElement): number {
         const index = this.steps().findIndex(({nativeElement}) => nativeElement === step);
 
-        return index < 0 ? NaN : index;
+        return index < 0 ? Number.NaN : index;
     }
 
     public isActive(index: number): boolean {
@@ -107,12 +108,14 @@ export class TuiStepperComponent implements OnChanges {
         }
 
         const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
+
         const {
             offsetHeight,
             offsetWidth,
             offsetTop: stepOffsetTop,
             offsetLeft: stepOffsetLeft,
         } = step;
+
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
 

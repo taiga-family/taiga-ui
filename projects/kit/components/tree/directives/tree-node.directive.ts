@@ -7,6 +7,7 @@ import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 @Directive({selector: 'tui-tree-item[tuiTreeNode]'})
 export class TuiTreeNode<T> implements OnChanges, OnDestroy {
     private readonly component = inject(TuiTreeItem);
+
     private readonly directive = inject<TuiTreeAccessor<T>>(TUI_TREE_ACCESSOR, {
         optional: true,
     });

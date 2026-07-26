@@ -9,5 +9,5 @@ export interface TuiInputColorOptions {
 export const [TUI_INPUT_COLOR_OPTIONS, tuiInputColorOptionsProvider] =
     tuiCreateOptions<TuiInputColorOptions>({
         format: 'hex',
-        align: 'left',
+        align: 'start',
     });

@@ -3,7 +3,7 @@ import {type TuiCard, tuiCardExpireValidator} from '@taiga-ui/addon-commerce';
 
 describe('tuiCardExpireValidator', () => {
     let control: FormControl | null = null;
-    const nextYear: string = (new Date().getFullYear() + 1).toString().slice(-2);
+    const nextYear = (new Date().getFullYear() + 1).toString().slice(-2);
 
     beforeEach(() => {
         const stub: TuiCard = {card: '', expire: '', cvc: ''};

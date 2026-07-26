@@ -1,21 +1,23 @@
 <button
-    appearance="icon"
+    appearance="flat-grayscale"
     tuiIconButton
     type="button"
     class="t-menu"
     [iconStart]="icons.menu"
-    [title]="menu"
+    [title]="menu()"
     (click)="open.set(true)"
 ></button>
 
 <tui-drawer
     *tuiPopup="open()"
-    direction="left"
+    direction="start"
     class="t-drawer"
     [overlay]="true"
     (click.self)="open.set(false)"
 >
-    <tui-doc-navigation />
+    <tui-doc-navigation>
+        <ng-content select="tuiDocMobileNavigation" />
+    </tui-doc-navigation>
 </tui-drawer>
 
 <div class="t-logo">

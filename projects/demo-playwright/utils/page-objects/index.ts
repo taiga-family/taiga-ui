@@ -18,7 +18,6 @@ export * from './input-phone.po';
 export * from './input-phone-international.po';
 export * from './input-range.po';
 export * from './input-slider.po';
-export * from './input-tag.po';
 export * from './input-time.po';
 export * from './mobile-calendar.po';
 export * from './multi-select.po';

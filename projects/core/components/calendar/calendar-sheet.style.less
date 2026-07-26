@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 .date-picker();
 
@@ -22,7 +22,7 @@
     }
 
     &_weekday {
-        font: var(--tui-font-body-s);
+        font: var(--tui-typography-body-s);
         color: var(--tui-text-secondary);
         pointer-events: none;
     }
@@ -34,8 +34,8 @@
 
 .t-dots {
     position: absolute;
-    bottom: 0;
     display: flex;
+    inset-block-end: 0;
     justify-content: center;
     margin-block-start: -0.5rem;
     padding-block-end: 0.25rem;

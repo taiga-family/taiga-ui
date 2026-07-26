@@ -9,36 +9,45 @@ import {
     viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
+import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
+import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
 
 @Component({
     selector: 'tui-app-bar',
-    imports: [AsyncPipe, TuiFade],
+    imports: [AsyncPipe, TuiAppBarButton, TuiFade, TuiProgressiveBlur],
     templateUrl: './app-bar.template.html',
-    styleUrl: './app-bar.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './app-bar.style.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,
-    host: {
-        '[attr.data-size]': 'size()',
-    },
+    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size()'},
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
-
     private readonly el = tuiInjectElement();
 
+    protected readonly liquidGlass =
+        inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios';
+
     protected readonly width$ = merge(
-        inject(ResizeObserverService, {self: true}),
-        inject(MutationObserverService, {self: true}),
+        inject(WaResizeObserverService, {self: true}),
+        inject(WaMutationObserverService, {self: true}),
     ).pipe(
         tuiZonefull(),
         map(

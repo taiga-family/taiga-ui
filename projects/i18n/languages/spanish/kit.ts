@@ -21,13 +21,12 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Mostrar contraseña', 'Ocultar contraseña'],
@@ -70,9 +69,7 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Sí',
         no: 'No',
     },
-    previewTexts: {
-        rotate: 'Girar',
-    },
+    previewTexts: {rotate: 'Girar'},
     zoomTexts: {
         zoomOut: 'Disminuir el zoom',
         zoomIn: 'Acercarse',

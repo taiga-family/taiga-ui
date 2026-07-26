@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TuiTextareaLimit removes TuiTextareaLimit import when TuiTextarea is already present: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiTextarea, TuiTextareaLimit} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTextarea, TuiTextareaLimit],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiTextarea} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTextarea],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update TuiTextareaLimit removes standalone TuiTextareaLimit import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiTextareaLimit} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTextareaLimit],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;

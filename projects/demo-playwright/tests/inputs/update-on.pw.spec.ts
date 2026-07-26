@@ -1,7 +1,7 @@
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {type DocRoutePageGroup, pages} from '../../../demo/src/modules/app/pages';
+import {type DocRoutePageGroup, pages} from '../../../demo/src/pages/app/pages';
 
 const inputs =
     (pages as DocRoutePageGroup[]).find((page) => page.title === 'Inputs')?.subPages ??
@@ -11,18 +11,17 @@ test.describe('Inputs - updateOn', () => {
     for (const docPage of inputs) {
         const {title, route} = docPage;
         const placeholder = '01011970';
-
         let demo: Locator;
         let input: Locator;
         let select: Locator;
         let option: Locator;
         let submit: Locator;
 
-        test.describe(`${title}`, () => {
+        test.describe(title, () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, `${route}/API`);
 
-                demo = new TuiDocumentationApiPagePO(page).apiPageExample;
+                demo = new TuiDocumentationApiPagePO(page).demo;
 
                 const details = demo.getByTestId('tui-demo-button__toggle-details');
 

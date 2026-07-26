@@ -10,10 +10,9 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
-import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiInput} from '@taiga-ui/core/components/input';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
@@ -27,6 +26,7 @@ import {TuiInspectPipe} from './inspect.pipe';
 import {TuiTypeReferencePipe} from './type-reference.pipe';
 
 const SERIALIZED_SUFFIX = '$';
+const SERIALIZED_NULL = 'null';
 
 @Component({
     selector: 'tr[tuiDocAPIItem]',
@@ -34,7 +34,6 @@ const SERIALIZED_SUFFIX = '$';
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
-        TuiIcon,
         TuiInput,
         TuiInputNumber,
         TuiInspectPipe,
@@ -53,8 +52,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly alerts = inject(TuiNotificationService);
 
-    protected readonly icons = inject(TUI_DOC_ICONS);
-
     protected readonly numberItem = inject(TuiDocAPINumberItem, {
         self: true,
         optional: true,
@@ -67,10 +64,12 @@ export class TuiDocAPIItem<T> implements OnInit {
     public readonly name = input('');
     public readonly type = input('');
     public readonly value = model<T>();
-    public readonly items = input<readonly T[]>([]);
+    public readonly items = input([], {transform: (v?: readonly T[]) => v || []});
 
     protected readonly hasCleaner = computed(
-        () => this.type().includes('null') || this.type().includes('PolymorpheusContent'),
+        (type = this.type(), value = this.value()) =>
+            (type.includes(SERIALIZED_NULL) || type.includes('PolymorpheusContent')) &&
+            (value ?? SERIALIZED_NULL) !== SERIALIZED_NULL,
     );
 
     public ngOnInit(): void {
@@ -100,6 +99,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private parseParams(params: Params): void {
         const name = this.clearBrackets(this.name());
         const propertyValue: string | undefined = params[name];
+
         const propertyValueWithSuffix: number | string | undefined =
             params[`${name}${SERIALIZED_SUFFIX}`];
 
@@ -108,6 +108,7 @@ export class TuiDocAPIItem<T> implements OnInit {
         }
 
         const items = this.items();
+
         let value =
             !!propertyValueWithSuffix && items
                 ? items[propertyValueWithSuffix as number]
@@ -122,14 +123,14 @@ export class TuiDocAPIItem<T> implements OnInit {
 
     private setQueryParam(value: T | boolean | number | string | null): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
-
         const isValueAvailableByKey = value instanceof Object;
         const items = this.items();
+
         const computedValue =
             isValueAvailableByKey && items ? items.indexOf(value as T) : value;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
-        const propName = this.clearBrackets(this.name()) + suffix;
+        const propName = `${this.clearBrackets(this.name())}${suffix}`;
 
         tree.queryParams = {
             ...tree.queryParams,

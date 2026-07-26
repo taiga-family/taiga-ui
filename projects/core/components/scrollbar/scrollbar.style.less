@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     position: relative;
@@ -17,7 +17,7 @@
         opacity: 0;
     }
 
-    &:hover .t-hover-mode {
+    &:hover > .t-hover-mode {
         .transition(opacity);
 
         opacity: 1;

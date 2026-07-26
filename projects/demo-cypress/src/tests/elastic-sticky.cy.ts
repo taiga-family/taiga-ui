@@ -35,9 +35,7 @@ describe('ElasticSticky', () => {
 
     beforeEach(() =>
         cy.mount(Test, {
-            componentProperties: {
-                change: createOutputSpy<number>('changeSpy'),
-            },
+            componentProperties: {change: createOutputSpy<number>('changeSpy')},
         }),
     );
 

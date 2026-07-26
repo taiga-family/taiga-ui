@@ -53,9 +53,7 @@ describe('markControlAsTouchedAndValidate', () => {
             control2: new FormControl(),
             control3: new FormArray([
                 new FormControl(),
-                new FormGroup({
-                    control4: new FormControl(),
-                }),
+                new FormGroup({control4: new FormControl()}),
                 new FormArray([new FormControl()]),
             ]),
         });

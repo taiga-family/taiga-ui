@@ -9,7 +9,6 @@ interface Options {
 
 export async function grepByPattern(options: Options): Promise<string> {
     const {path, includePattern, excludePattern} = options;
-
     const exec = util.promisify(child_process.exec);
     let grep = `grep -niR --color=always '${includePattern}' ${path}`;
 

@@ -1,13 +1,13 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 @Directive({
     selector: '[tuiDisabled]',
+    inputs: ['tuiDisabled'],
 })
 export class TuiDisabledDirective {
     private readonly control = inject(NgControl);
 
-    @Input()
     public set tuiDisabled(disabled: boolean) {
         if (disabled) {
             this.control.control?.disable();

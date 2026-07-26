@@ -9,6 +9,9 @@ on:
         required: false
         description: update main snapshots
 
+permissions:
+  contents: read
+
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
@@ -18,14 +21,14 @@ jobs:
     if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.176.0
-      - uses: taiga-family/ci/actions/setup/node@v1.176.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
 
-      - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: s0/git-publish-subdir-action@v2.6.0
+      - uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e # v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
@@ -37,15 +40,15 @@ jobs:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.176.0
-      - uses: taiga-family/ci/actions/setup/node@v1.176.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
         id: nodejs-workspace
 
-      - run: npx nx prerender demo
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: s0/git-publish-subdir-action@v2.6.0
+      - uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e # v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}

@@ -19,7 +19,7 @@ import {tuiCreatePhoneMaskExpression} from './utils/create-phone-mask-expression
 const MASK_SYMBOLS = /[ \-_()]/g;
 
 function isText(value: string): boolean {
-    return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
+    return Number.isNaN(Number.parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
 @Directive({
@@ -31,8 +31,8 @@ function isText(value: string): boolean {
     hostDirectives: [TuiWithInput, MaskitoDirective],
     host: {
         type: 'tel',
-        '[inputMode]': 'inputMode()',
         '[disabled]': 'disabled()',
+        '[inputMode]': 'inputMode()',
         '(input)': 'onInput($event.target.value)',
     },
 })
@@ -43,10 +43,16 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly nonRemovablePrefix = computed(() => `${this.countryCode()} `);
-    protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
+
+    protected readonly inputMode = computed(() =>
+        this.allowText() ? 'text' : 'numeric',
+    );
+
     protected readonly valueEffect = effect(() => {
-        if (this.value()) {
-            this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
+        const value = this.value();
+
+        if (value) {
+            this.input.value.set(maskitoTransform(value ?? '', this.maskito()));
         }
     });
 
@@ -57,12 +63,13 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         if (!this.host.focused() && incomplete) {
             this.input.value.set('');
         } else if (this.host.focused() && prefix) {
-            this.input.value.set(this.nonRemovablePrefix());
+            this.input.value.set(untracked(this.nonRemovablePrefix));
         }
     });
 
     protected readonly countryCode = computed(() => extractCode(this.mask()));
     protected readonly phoneMask = computed(() => extractMask(this.mask()));
+
     protected readonly maskito = tuiMaskito(
         computed(() =>
             this.calculateMask(
@@ -102,6 +109,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         allowText: boolean,
     ): MaskitoOptions {
         const mask = tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode);
+
         const preprocessors = [
             tuiCreateCompletePhoneInsertionPreprocessor(
                 countryCode,
@@ -140,7 +148,7 @@ function extractCode(mask: string): string {
 }
 
 function extractMask(mask: string): string {
-    const match = /^\+\d+(.*)$/.exec(mask);
+    const match = /^\+\d+(\D.*)?$/.exec(mask);
 
     return match?.[1]?.trim() || '';
 }

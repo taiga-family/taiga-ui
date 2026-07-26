@@ -1,10 +1,6 @@
-[tuiCardLarge] [tuiButton] {
+[tuiCardLarge] > [tuiButton],
+[tuiCardLarge] > footer > [tuiButton] {
     inline-size: 100%;
-}
-
-// TODO: Add > above and remove this rule in v5
-[tuiAccessories] [tuiButton] {
-    inline-size: auto;
 }
 
 [tuiButton],
@@ -24,7 +20,7 @@
     }
 
     &[data-size='l'] {
-        font: var(--tui-font-body-l);
+        font: var(--tui-typography-body-l);
         font-weight: bold;
     }
 

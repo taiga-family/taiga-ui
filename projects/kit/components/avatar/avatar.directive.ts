@@ -7,6 +7,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
@@ -18,10 +19,14 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     template: '',
-    styles: '@import "@taiga-ui/kit/styles/components/avatar.less";',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import '@taiga-ui/styles/components/avatar.less';
+        }
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-avatar'},
+    exportAs: `tui-avatar-${TUI_VERSION}`,
 })
 class Styles {}
 
@@ -37,11 +42,11 @@ class Styles {}
     ],
     host: {
         tuiAvatar: '',
-        '[attr.data-size]': 'size()',
         '[attr.data-shape]': 'round() ? "round" : "square"',
-        '[class._initials]': 'icons.iconStart()?.length < 3',
-        '[class._fallback]': 'fallback()',
+        '[attr.data-size]': 'size()',
         '[class._badge]': 'badge()',
+        '[class._fallback]': 'fallback()',
+        '[class._initials]': 'icons.iconStart()?.length < 3',
         '[style.--t-badge]': 'badge()',
         '(error.capture)': 'fallback.set(true)',
         '(load.capture)': 'fallback.set(false)',

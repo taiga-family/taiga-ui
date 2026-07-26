@@ -9,6 +9,7 @@ import {TUI_SCROLL_REF} from './scroll-ref.directive';
 export class TuiScrollbarService extends Observable<[number, number]> {
     private readonly el = tuiInjectElement();
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
+
     private readonly scroll$ = merge(
         tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
             filter(({target}) => target !== this.el),
@@ -40,15 +41,19 @@ export class TuiScrollbarService extends Observable<[number, number]> {
         offsetX: number,
     ): [number, number] {
         const {offsetHeight, offsetWidth} = this.el;
+
         const {top, left, right, width, height} =
             this.el.parentElement!.getBoundingClientRect();
+
         const rtl = this.el.matches('[dir="rtl"] :scope');
         const inline = rtl ? right : left;
         const multiplier = rtl ? -1 : 1;
         const maxTop = this.element.scrollHeight - height;
         const maxLeft = this.element.scrollWidth - width;
+
         const scrolledTop =
             (clientY - top - offsetHeight * offsetY) / (height - offsetHeight);
+
         const scrolledLeft =
             (clientX - inline - offsetWidth * offsetX * multiplier) /
             (width - offsetWidth);

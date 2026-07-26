@@ -36,16 +36,12 @@ describe('Calendar', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiCalendar);
-
         public value = TuiDay.currentLocal();
         public month = new TuiMonth(2019, 2);
-
         public min = new TuiDay(2019, 2, 1);
         public minViewedMonth = new TuiDay(2019, 1, 1);
-
         public max = new TuiDay(2019, 2, 1);
         public maxViewedMonth = new TuiDay(2019, 3, 1);
-
         public dayClick: any = jest.fn();
         public hoveredItemChange: any = jest.fn();
     }
@@ -133,11 +129,11 @@ describe('Calendar', () => {
         const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
         const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
 
-        component.month = savedMonth;
+        component.month.set(savedMonth);
 
         component.onPaginationValueChange(sameMonth);
 
-        expect(component.month).toBe(savedMonth);
+        expect(component.month()).toBe(savedMonth);
     });
 
     it('click on day calls emitter', async () => {
@@ -199,6 +195,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#min-case'}),
         );
+
         const res = await calendar.isPaginationLeftDisabled();
 
         expect(res).toBe(true);
@@ -208,6 +205,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#max-case'}),
         );
+
         const res = await calendar.isPaginationRightDisabled();
 
         expect(res).toBe(true);

@@ -3,27 +3,36 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.176.0
-      - uses: taiga-family/ci/actions/setup/node@v1.176.0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: taiga-family/actions/setup-variables@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
+      - uses: taiga-family/actions/setup-node@916a39693b6360c08dcdd5e91d1d8fef9d40fb64 # v2.6.0
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
+        if: env.IS_OWNER_MODE == 'true'
+        with:
+          node-version: 24.18 # https://github.com/firebase/firebase-tools/issues/10726
       - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0.11.0
         if: env.IS_OWNER_MODE == 'true'
         with:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-previews
-          target: taiga-previews-demo
+          projectId: taiga-preview-demo
+          target: taiga-preview-demo
           expires: 1d
 
 concurrency:

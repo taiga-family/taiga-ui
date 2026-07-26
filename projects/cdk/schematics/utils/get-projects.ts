@@ -12,6 +12,7 @@ export function getProjects(
 
     const nameFromContext =
         options.project || workspace.extensions.defaultProject?.toString() || '';
+
     const projectFromContext = workspace.projects.get(nameFromContext);
 
     return projectFromContext ? [projectFromContext] : projects;

@@ -1,4 +1,5 @@
 export * from './card';
+export * from './card.options';
 export * from './collapsed.directive';
 export * from './large.directive';
 export * from './medium.directive';

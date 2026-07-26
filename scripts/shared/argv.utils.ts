@@ -1,6 +1,6 @@
 import process from 'node:process';
 
-import {processLog} from 'ng-morph';
+import {processLog} from '../../projects/cdk/schematics/utils/colored-log';
 
 export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     const index = findIndexFlag(flag);
@@ -10,6 +10,7 @@ export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     }
 
     const [parsedFlag, parsedValue] = process.argv[index]?.split('=') ?? [];
+
     const value =
         stringifier(parsedValue) ??
         (process.argv[index + 1]?.startsWith('-')

@@ -1,8 +1,8 @@
 import {isPlatformBrowser} from '@angular/common';
 import {inject, Injectable, type OnDestroy, PLATFORM_ID} from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -25,11 +25,16 @@ export class TuiTileService implements OnDestroy {
     private readonly el = tuiInjectElement();
     private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
-    private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
+
+    private readonly offset$ = new BehaviorSubject<readonly [number, number]>([
+        Number.NaN,
+        Number.NaN,
+    ]);
+
     private readonly position$: Observable<readonly [number, number]> = combineLatest([
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
-        inject(ResizeObserverService).pipe(startWith(null)),
-        inject(MutationObserverService).pipe(startWith(null)),
+        inject(WaResizeObserverService).pipe(startWith(null)),
+        inject(WaMutationObserverService).pipe(startWith(null)),
         toObservable(this.tiles.order).pipe(debounceTime(0, tuiZonefreeScheduler())),
     ]).pipe(map(([offset]) => offset));
 
@@ -63,8 +68,8 @@ export class TuiTileService implements OnDestroy {
             left: elLeft,
             width: this.el.clientWidth,
             height: this.el.clientHeight,
-            right: NaN,
-            bottom: NaN,
+            right: Number.NaN,
+            bottom: Number.NaN,
             y: elTop,
             x: elLeft,
         };

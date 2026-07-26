@@ -4,14 +4,12 @@ import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
-@Directive({
-    selector: 'ng-template[tuiDropdown]',
-})
+@Directive({selector: 'ng-template[tuiDropdown]'})
 export class TuiDropdownContent implements OnDestroy {
     private readonly directive = inject(TuiDropdownDirective);
 
     constructor() {
-        tuiSetSignal(this.directive.tuiDropdown, inject(TemplateRef));
+        tuiSetSignal(this.directive.content, inject(TemplateRef));
 
         if (
             isPlatformBrowser(inject(PLATFORM_ID)) &&
@@ -22,6 +20,6 @@ export class TuiDropdownContent implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        tuiSetSignal(this.directive.tuiDropdown, null);
+        tuiSetSignal(this.directive.content, null);
     }
 }

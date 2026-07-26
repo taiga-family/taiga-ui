@@ -5,7 +5,5 @@ import {InjectionToken} from '@angular/core';
  */
 export const TUI_LANGUAGE_STORAGE_KEY = new InjectionToken<string>(
     ngDevMode ? 'TUI_LANGUAGE_STORAGE_KEY' : '',
-    {
-        factory: () => 'tuiLanguage',
-    },
+    {factory: () => 'tuiLanguage'},
 );

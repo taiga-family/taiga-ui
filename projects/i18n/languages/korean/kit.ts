@@ -21,13 +21,12 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['비밀번호 표시', '비밀번호 숨기기'],
@@ -70,9 +69,7 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: '예',
         no: '아니요',
     },
-    previewTexts: {
-        rotate: '회전하다',
-    },
+    previewTexts: {rotate: '회전하다'},
     zoomTexts: {
         zoomOut: '축소',
         zoomIn: '확대하다',

@@ -21,13 +21,12 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         'HH AA': 'HH AA',
         HH: 'HH',
         'MM:SS.MSS': 'MM:SS.MSS',
-        'MM.SS.MSS': 'MM.SS.MSS',
         'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
-        'dd/mm/yyyy': 'dd.mm.yyyy',
-        'mm/dd/yyyy': 'mm.dd.yyyy',
-        'yyyy/mm/dd': 'yyyy.mm.dd',
+        'dd/mm/yyyy': 'DD.MM.YYYY',
+        'mm/dd/yyyy': 'MM.DD.YYYY',
+        'yyyy/mm/dd': 'YYYY.MM.DD',
     },
     digitalInformationUnits: ['B', 'KiB', 'MiB'],
     passwordTexts: ['Tunjukkan kata laluan', 'Sembunyikan kata laluan'],
@@ -70,9 +69,7 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ya',
         no: 'tidak',
     },
-    previewTexts: {
-        rotate: 'Putar',
-    },
+    previewTexts: {rotate: 'Putar'},
     zoomTexts: {
         zoomOut: 'Zum keluar',
         zoomIn: 'Zum masuk',

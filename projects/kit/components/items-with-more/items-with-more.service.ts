@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -15,8 +15,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
 
     protected readonly stream$ = merge(
         this.directive.change$,
-        inject(MutationObserverService, {self: true}),
-        inject(ResizeObserverService, {self: true}),
+        inject(WaMutationObserverService, {self: true}),
+        inject(WaResizeObserverService, {self: true}),
     ).pipe(
         debounceTime(0, tuiZonefreeScheduler()),
         map(() =>

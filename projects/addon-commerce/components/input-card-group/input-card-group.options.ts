@@ -9,16 +9,16 @@ export interface TuiCardInputs {
 
 export interface TuiInputCardGroupOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
-    readonly exampleText: string;
-    readonly exampleTextCVC: string;
+    readonly placeholder: string;
+    readonly cvcPlaceholder: string;
     readonly cvcHidden: boolean;
     readonly inputs: TuiCardInputs;
 }
 
 export const TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
     cardValidator: tuiDefaultCardValidator,
-    exampleText: '0000 0000 0000 0000',
-    exampleTextCVC: '000',
+    placeholder: '0000 0000 0000 0000',
+    cvcPlaceholder: '000',
     cvcHidden: true,
     inputs: {cvc: true, expire: true},
 };

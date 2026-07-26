@@ -8,21 +8,20 @@ import {TuiResizable} from './resizable.directive';
     host: {
         '[style.cursor]': 'cursor',
         '[style.touchAction]': '"none"',
-        '(pointerdown.zoneless.prevent)': 'onPointerDown($event.x, $event.y)',
         '(document:pointermove.zoneless)': 'onPointerMove($event)',
         '(document:pointerup.zoneless)': 'onPointerUp()',
+        '(pointerdown.zoneless.prevent)': 'onPointerDown($event.x, $event.y)',
     },
 })
 export class TuiResizer {
     private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
 
-    protected x = NaN;
-    protected y = NaN;
+    protected x = Number.NaN;
+    protected y = Number.NaN;
     protected width = 0;
     protected height = 0;
 
     public readonly tuiResizer = input<readonly [x: number, y: number]>([0, 0]);
-
     public readonly tuiSizeChange = output<readonly [x: number, y: number]>();
 
     protected get cursor(): string {
@@ -36,11 +35,7 @@ export class TuiResizer {
             return 'ew-resize';
         }
 
-        if (tuiResizer[0] * tuiResizer[1] > 0) {
-            return 'nwse-resize';
-        }
-
-        return 'nesw-resize';
+        return tuiResizer[0] * tuiResizer[1] > 0 ? 'nwse-resize' : 'nesw-resize';
     }
 
     protected onPointerDown(x: number, y: number): void {
@@ -51,15 +46,15 @@ export class TuiResizer {
     }
 
     protected onPointerMove({x, y, buttons}: PointerEvent): void {
-        if (!buttons) {
-            this.onPointerUp();
-        } else {
+        if (buttons) {
             this.onMove(x, y);
+        } else {
+            this.onPointerUp();
         }
     }
 
     protected onPointerUp(): void {
-        this.x = NaN;
+        this.x = Number.NaN;
     }
 
     protected onMove(x: number, y: number): void {
@@ -70,6 +65,7 @@ export class TuiResizer {
         }
 
         const {style} = this.resizable.nativeElement;
+
         const size = [
             this.width + tuiResizer[0] * (x - this.x),
             this.height + tuiResizer[1] * (y - this.y),

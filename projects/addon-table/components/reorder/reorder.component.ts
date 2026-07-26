@@ -8,11 +8,10 @@ import {
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_TILES_REORDER, TuiTiles, tuiTilesShift} from '@taiga-ui/kit/components/tiles';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
@@ -29,28 +28,25 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
         },
     ],
     host: {
+        '(document:pointerup.zoneless)': 'onDrop()',
         '(focusout.stop)': '(0)',
         '(pointerdown.zoneless)': 'onDrag()',
-        '(document:pointerup.zoneless)': 'onDrop()',
     },
 })
 export class TuiReorder<T> {
     private dragging = false;
 
     protected order = new Map<number, number>();
+
     protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
         source: () => this.items(),
         computation: (items, previous) => {
             const previousUnsortedItems = previous?.value ?? [];
 
-            if (
-                items.length !== previousUnsortedItems.length ||
+            return items.length !== previousUnsortedItems.length ||
                 !items.every((item) => previousUnsortedItems.includes(item))
-            ) {
-                return items;
-            }
-
-            return previousUnsortedItems;
+                ? items
+                : previousUnsortedItems;
         },
     });
 
@@ -58,11 +54,8 @@ export class TuiReorder<T> {
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
     public readonly enabled = model<readonly T[]>([]);
-
     public readonly items = model<readonly T[]>([]);
-
-    public readonly content =
-        input<PolymorpheusContent<TuiContext<T> & {index: number}>>(TUI_STRINGIFY);
+    public readonly content = input(TUI_STRINGIFY);
 
     protected onDrag(): void {
         this.dragging = true;
@@ -106,6 +99,7 @@ export class TuiReorder<T> {
         }
 
         const newIndex = oldIndex + direction;
+
         const oldItem = Array.from(this.order.values()).findIndex(
             (item) => item === newIndex,
         );

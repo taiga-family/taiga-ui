@@ -10,7 +10,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -29,8 +29,12 @@ import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/portals/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
+
+import {TuiInputChipDirective} from './input-chip.directive';
+import {tuiParseInputChipValue} from './input-chip.utils';
 
 @Component({
     selector: 'tui-input-chip',
@@ -49,35 +53,39 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     host: {
         tuiChip: '',
         class: 'tui-interactive',
-        '[class._edit]': 'editing()',
         '[attr.tabIndex]': 'disabled() ? null : -1',
+        '[class._edit]': 'editing()',
         '(click)': 'editing() && $event.stopPropagation()',
+        '(dblclick)': 'edit()',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.enter.prevent)': 'edit()',
-        '(dblclick)': 'edit()',
     },
 })
 export class TuiInputChipComponent<T> {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = tuiInjectValue<readonly T[]>();
+
     private readonly input: Signal<ElementRef<HTMLInputElement> | undefined> = viewChild(
         TuiChip,
         {read: ElementRef},
     );
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly mobile = inject(WA_IS_MOBILE);
+    protected readonly texts = inject(TUI_FILE_TEXTS);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
+
     protected readonly disabled = tuiDirectiveBinding(
         TuiAppearance,
         'tuiAppearanceState',
         computed(() =>
-            this.handlers.disabledItemHandler()(this.context.$implicit.item)
+            this.handlers.disabledItemHandler()(this.context.$implicit.item) ||
+            this.textfield.cva()?.disabled()
                 ? 'disabled'
                 : null,
         ),
@@ -96,7 +104,11 @@ export class TuiInputChipComponent<T> {
     }
 
     protected delete(): void {
-        this.textfield.cva()?.onChange(this.value().filter((_, i) => i !== this.index));
+        if (this.textfield.cva()?.interactive()) {
+            this.textfield
+                .cva()
+                ?.onChange(this.value().filter((_, i) => i !== this.index));
+        }
 
         if (!this.mobile) {
             this.textfield.input()?.nativeElement.focus({preventScroll: true});
@@ -104,17 +116,38 @@ export class TuiInputChipComponent<T> {
     }
 
     protected save(): void {
-        if (!this.internal()) {
+        const item = this.internal();
+        const cva = this.textfield.cva();
+
+        if (!item) {
             this.delete();
-        } else if (this.handlers.disabledItemHandler()(this.internal())) {
+
             return;
         }
 
-        const value = this.value().map((item, index) =>
-            index === this.index ? this.internal() : item,
+        const isItemDisabled = this.handlers.disabledItemHandler()(item);
+        const isChipTextfield = cva instanceof TuiInputChipDirective;
+
+        if (isItemDisabled || !isChipTextfield) {
+            return;
+        }
+
+        const items = tuiParseInputChipValue(
+            String(item),
+            cva.separator(),
+            this.handlers,
         );
 
-        this.textfield.cva()?.onChange(value);
+        if (!items.length) {
+            return;
+        }
+
+        cva.setValue(
+            this.value().flatMap((valueItem, index) =>
+                index === this.index ? items : [valueItem],
+            ),
+        );
+
         this.editing.set(false);
         this.textfield.input()?.nativeElement.focus({preventScroll: true});
     }
@@ -128,7 +161,8 @@ export class TuiInputChipComponent<T> {
         if (
             !this.editable() ||
             !this.textfield.cva()?.interactive() ||
-            !tuiIsString(this.internal())
+            !tuiIsString(this.internal()) ||
+            this.disabled()
         ) {
             return;
         }

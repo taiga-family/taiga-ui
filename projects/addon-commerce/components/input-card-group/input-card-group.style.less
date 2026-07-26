@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 @keyframes outside {
     0% {
@@ -34,7 +34,7 @@
     min-inline-size: 24rem;
     border-radius: var(--tui-radius-l);
     overflow: hidden;
-    font: var(--tui-font-ui-m);
+    font: var(--tui-typography-ui-m);
     isolation: isolate;
 
     &[data-size='m'] {
@@ -44,7 +44,7 @@
         --t-collapsed-offset: 1.125rem;
 
         border-radius: var(--tui-radius-m);
-        font: var(--tui-font-ui-s);
+        font: var(--tui-typography-ui-s);
 
         .t-card {
             inline-size: 1.5rem;
@@ -114,6 +114,15 @@
     block-size: 2rem;
 }
 
+.t-input,
+.t-collapsed {
+    :host:has(.t-label[data-label='']:empty) &,
+    :host:has(.t-label:not([data-label]):empty) & {
+        padding-block-start: 0;
+        line-height: var(--t-height);
+    }
+}
+
 .t-collapsed {
     .fullsize();
 
@@ -171,12 +180,12 @@
 
     position: absolute;
     display: block;
-    inset: auto 100% 0 auto;
+    inset-block: auto 0;
+    inset-inline: auto 100%;
     clip-path: inset(0);
     transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
 
     :host-context([dir='rtl']) & {
-        inset: auto unset auto 100%;
         transform: translate3d(calc(100% * var(--tui-inline)), 0, 0) !important;
     }
 }
@@ -200,7 +209,7 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-tertiary);
+        color: var(--tui-text-secondary);
     }
 
     &_prefilled::placeholder {
@@ -231,11 +240,11 @@
             // hide: -webkit-strong-password-auto-fill-button
             // because safari forcing set display as block
             position: absolute;
+            inset: -60rem 0 0 -60rem;
             z-index: -999;
 
             // hide: -webkit-contacts-auto-fill-button
             display: none !important;
-            inset: -60rem 0 0 -60rem;
             background: transparent !important;
             pointer-events: none !important;
         }
@@ -280,12 +289,17 @@
     .text-overflow();
 
     position: relative;
+    max-inline-size: 6.5rem;
     margin: 0 var(--t-padding);
     line-height: var(--t-height);
     color: var(--tui-text-secondary);
 
     &:empty::before {
         content: attr(data-label);
+    }
+
+    &:not([data-label]):empty {
+        display: none;
     }
 
     input[chrome-autofilled] ~ &,

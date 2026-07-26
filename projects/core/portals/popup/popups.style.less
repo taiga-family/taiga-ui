@@ -1,10 +1,10 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     .fullsize(fixed);
 
     display: grid;
-    grid-template-rows: repeat(9, min-content) 1fr;
+    grid-template-rows: repeat(14, min-content) 1fr;
     pointer-events: none;
     overflow: hidden;
     overflow-wrap: break-word;
@@ -17,6 +17,6 @@
 
     &::after {
         content: '';
-        grid-row: 10;
+        grid-row: 15;
     }
 }

@@ -13,9 +13,7 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
     inputs: ['accept', 'maxFileSize'],
     providers: [tuiProvide(NG_VALIDATORS, TuiInputFilesValidator, true)],
     exportAs: 'tuiInputFilesValidator',
-    host: {
-        '[accept]': 'accept',
-    },
+    host: {'[accept]': 'accept'},
 })
 export class TuiInputFilesValidator extends TuiValidator implements OnInit, OnChanges {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);

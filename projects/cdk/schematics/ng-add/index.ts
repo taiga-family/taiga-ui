@@ -7,12 +7,17 @@ import {
     removePackageJsonDependency,
 } from 'ng-morph';
 
+import {detectPackageManager} from '../utils/detect-package-manager';
 import {MAIN_PACKAGES} from './constants/packages';
 import {TAIGA_VERSION} from './constants/versions';
 import {type TuiSchema} from './schema';
 
 function addDependencies(tree: Tree, options: TuiSchema): void {
-    const packages = [...MAIN_PACKAGES, ...options.addons];
+    const packages = [
+        ...MAIN_PACKAGES,
+        ...options.addons,
+        ...(detectPackageManager(tree) === 'pnpm' ? ['styles'] : []),
+    ];
 
     packages.forEach((pack) => {
         addPackageJsonDependency(tree, {
@@ -20,11 +25,6 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
             version: TAIGA_VERSION,
             type: NodeDependencyType.Default,
         });
-    });
-
-    addPackageJsonDependency(tree, {
-        name: '@taiga-ui/event-plugins',
-        version: '^4.0.2',
     });
 
     removeTaigaSchematicsPackage(tree);
