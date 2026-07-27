@@ -14,7 +14,10 @@ describe('ng-update missing identifier renames and package remaps', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
-                import {TUI_TOASTS_CONCURRENCY, TuiButtonCopyComponent} from '@taiga-ui/kit';
+                import {
+                    TUI_TOASTS_CONCURRENCY,
+                    TuiButtonCopyComponent,
+                } from '@taiga-ui/kit';
                 import {TuiCellOptions, TuiCellStretch} from '@taiga-ui/layout';
                 import {type TuiDialogSize} from '@taiga-ui/core';
 
