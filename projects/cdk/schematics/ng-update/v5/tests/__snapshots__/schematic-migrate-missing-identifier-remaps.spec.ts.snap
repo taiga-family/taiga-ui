@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update missing identifier renames and package remaps renames leftover v5 identifiers and remaps their packages: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_TOASTS_CONCURRENCY, TuiButtonCopyComponent} from '@taiga-ui/kit';
+                import {TuiCellOptions, TuiCellStretch} from '@taiga-ui/layout';
+                import {type TuiDialogSize} from '@taiga-ui/core';
+
+                @Component({
+                    imports: [TuiButtonCopyComponent, TuiCellStretch],
+                })
+                export class TestComponent {
+                    protected readonly concurrency = inject(TUI_TOASTS_CONCURRENCY);
+                    protected readonly options: TuiCellOptions | null = null;
+                    protected readonly size: TuiDialogSize = 'm';
+                }
+            ",
+  "1. After": "import { TuiCellStretch, TuiCellOptions } from "@taiga-ui/core";
+import { TuiDialogSize } from "@taiga-ui/legacy";
+
+                import {Component, inject} from '@angular/core';
+                import { TuiButtonCopy, TUI_TOAST_CONCURRENCY } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiButtonCopy, TuiCellStretch],
+                })
+                export class TestComponent {
+                    protected readonly concurrency = inject(TUI_TOAST_CONCURRENCY);
+                    protected readonly options: TuiCellOptions | null = null;
+                    protected readonly size: TuiDialogSize = 'm';
+                }
+            ",
+}
+`;
