@@ -297,4 +297,88 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TUI_RADIO_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_RADIO_DEFAULT_OPTIONS has been removed. Radio moved to @taiga-ui/core — configure it via TUI_RADIO_OPTIONS / tuiRadioOptionsProvider from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TUI_TOAST_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_TOAST_DEFAULT_OPTIONS has been removed. Use TUI_TOAST_OPTIONS / tuiToastOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_AVATAR_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_AVATAR_DEFAULT_OPTIONS has been removed. Use TUI_AVATAR_OPTIONS / tuiAvatarOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_SWITCH_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_SWITCH_DEFAULT_OPTIONS has been removed. Use TUI_SWITCH_OPTIONS / tuiSwitchOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_PUSH_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_PUSH_DEFAULT_OPTIONS has been removed. Use TUI_PUSH_OPTIONS / tuiPushOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_INPUT_MONTH_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_INPUT_MONTH_DEFAULT_OPTIONS has been removed. Use TUI_INPUT_MONTH_OPTIONS / tuiInputMonthOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_INPUT_PASSWORD_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_INPUT_PASSWORD_DEFAULT_OPTIONS has been removed. Use TUI_PASSWORD_OPTIONS / tuiPasswordOptionsProvider from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TUI_LINK_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_LINK_DEFAULT_OPTIONS has been removed. Configure links via tuiLinkOptionsProvider (TUI_LINK_OPTIONS) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TUI_SLIDER_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_SLIDER_DEFAULT_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'TuiExpandContent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.',
+    },
+    {
+        name: 'TuiMonthPipe',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.',
+    },
+    {
+        name: 'AbstractTuiMultipleControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiMultipleControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom multi-value control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR_PROVIDER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
 ];
