@@ -297,4 +297,52 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TUI_ICON_STARTS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ICON_STARTS has been removed (it was a deprecated alias of TUI_ICON_REGISTRY). Use TUI_ICON_REGISTRY from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TUI_ICON_START_RESOLVER',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ICON_START_RESOLVER has been removed (it was a deprecated alias of TUI_ICON_RESOLVER). Use TUI_ICON_RESOLVER from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiIsKeyboardFocusable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsKeyboardFocusable has been removed. Use tuiIsFocusable from @taiga-ui/cdk instead.',
+    },
+    {
+        name: 'tuiIsMouseFocusable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsMouseFocusable has been removed. Use tuiIsFocusable from @taiga-ui/cdk instead.',
+    },
+    {
+        name: 'TUI_IS_TOUCH',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_IS_TOUCH has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead.',
+    },
+    {
+        name: 'TUI_SPIN_ICONS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_SPIN_ICONS has been removed. Spinner increment/decrement icons were merged into the common icons — configure them via tuiCommonIconsProvider (TUI_COMMON_ICONS) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiDarkThemeService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDarkThemeService has been removed. Use the TUI_DARK_MODE token (a signal) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiToggleDay',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiToggleDay has been removed with no public replacement. Inline the day-toggle logic in your component instead.',
+    },
 ];
