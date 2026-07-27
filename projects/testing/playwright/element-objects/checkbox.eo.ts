@@ -1,49 +1,55 @@
-import { BaseElementObject } from './base.eo';
-import { withClickable } from '../mixins';
+import {BaseElementObject} from './base.eo';
+import {withClickable} from '../mixins';
 
 /**
- * ElementObject для компонента TuiCheckbox.
+ * Element Object for the TuiCheckbox component.
  *
- * Обёртка над <input type="checkbox" tuiCheckbox>, инкапсулирующая взаимодействие
- * с чекбоксом: установка, снятие, проверка состояний.
+ * A wrapper around `<input type="checkbox" tuiCheckbox>` that encapsulates interactions
+ * with the checkbox: checking, unchecking, and state validation.
  *
- * Поддерживает стандартные состояния:
+ * Supports standard states:
  * - checked
  * - indeterminate
  * - disabled
  *
- * Пример использования:
- * const agreeCheckbox = new CheckboxEO(page, '#agree-checkbox');
+ * The component is typically used with a label, which may contain additional content.
+ *
+ * @example
+ * const agreeCheckbox = new TuiCheckboxEO(page, '[automation-id="price"]');
  * await agreeCheckbox.setChecked(true);
  * await expect(agreeCheckbox.host).toBeChecked();
  */
 export class CheckboxElementObject extends withClickable(BaseElementObject) {
-  /**
-   * Устанавливает чекбокс в указанное состояние.
-   *
-   * Если состояние уже соответствует — клик не выполняется.
-   *
-   * @param checked `true` — включить, `false` — выключить
-   *
-   * @example
-   * await checkbox.setChecked(true); // установить
-   * await checkbox.setChecked(false); // снять
-   */
-  async setChecked(checked: boolean): Promise<void> {
-    const isChecked = await this.host.isChecked();
-    if (isChecked !== checked) {
-      await this.click();
+    /**
+     * Sets the checkbox to the specified state.
+     *
+     * Does nothing if the checkbox is already in the target state.
+     *
+     * @param checked `true` to check, `false` to uncheck
+     *
+     * @example
+     * await checkbox.setChecked(true); // checks the checkbox
+     * await checkbox.setChecked(false); // unchecks the checkbox
+     */
+    async setChecked(checked: boolean): Promise<void> {
+        await this.host.setChecked(checked);
     }
-  }
 
-  /**
-   * Возвращает текст лейбла, связанного с чекбоксом (если есть).
-   *
-   * Ищет <label>, содержащий этот чекбокс.
-   */
-  async getLabel(): Promise<string | null> {
-    const label = this.page.locator('label', { has: this.host });
-    const text = await label.textContent();
-    return text?.trim() || null;
-  }
+    /**
+     * Returns the text of the associated label, if present.
+     *
+     * Searches for a `<label>` element that contains this checkbox (via DOM nesting or `for` attribute).
+     *
+     * @returns The label text, or `null` if no label is found
+     *
+     * @example
+     * const text = await checkbox.getLabel(); // e.g. "I agree to the terms and conditions"
+     */
+    async getLabel(): Promise<string | null> {
+        const label = this.page.locator('label', {has: this.host});
+        const text = await label.textContent();
+        return text?.trim() || null;
+    }
 }
+
+export const TuiCheckboxEO = CheckboxElementObject;

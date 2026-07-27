@@ -1,107 +1,133 @@
-import { BaseElementObject } from './base.eo';
-import { withClickable } from '../mixins';
+import {BaseElementObject} from './base.eo';
+import {withClickable} from '../mixins';
+import {TUI_DROPDOWN_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 
 /**
- * ElementObject для компонента TuiSelect (режим: input[tuiSelect]).
+ * Element Object for the TuiSelect component in input directive mode (`input[tuiSelect]`).
  *
- * Инкапсулирует взаимодействие с селектом: открытие, выбор значения по тексту или индексу,
- * получение текущего значения и списка опций.
+ * Encapsulates interaction with the select: opening the dropdown, selecting options by text or index,
+ * retrieving the current value, and listing available options.
  *
- * Поддерживает только синтаксис с использованием директивы tuiSelect:
- * ```html
- * <input tuiSelect placeholder="Выберите значение" [formControl]="control" />
- * ```
- *
- * Синтаксис из `@taiga-ui/legacy` (<tui-select>) не поддерживаются.
+ * The component opens a `tui-dropdown` with interactive options. Selection updates the input value.
  *
  * @example
- * const citySelect = new SelectElementObject(page, 'input[tuiSelect][placeholder="Город"]');
- * await citySelect.selectByText('Москва');
- * await expect(citySelect.host).resolves.toHaveValue('Москва');
+ * const citySelect = new TuiSelectEO(page, 'input[tuiSelect][placeholder="City"]');
+ * await citySelect.selectByText('Moscow');
+ * await expect(citySelect.host).toHaveValue('Moscow');
  */
 export class SelectElementObject extends withClickable(BaseElementObject) {
-  private readonly DROPDOWN_SELECTOR = 'tui-dropdown';
-  private readonly OPTION_SELECTOR = 'button[tuiSelectOption]';
-
-  /**
-   * Возвращает текущее значение селекта (значение `input.value`).
-   */
-  async getValue(): Promise<string> {
-    return this.host.inputValue();
-  }
-
-  /**
-   * Открывает выпадающее меню.
-   *
-   * Если меню уже открыто — ничего не делает.
-   */
-  async open(): Promise<void> {
-    if (!(await this.page.locator(this.DROPDOWN_SELECTOR).isVisible())) {
-      await this.click();
-      await this.page.locator(this.DROPDOWN_SELECTOR).waitFor({ state: 'visible' });
+    /**
+     * Returns the current value of the select (the `input.value`).
+     *
+     * @returns The displayed or selected value as a string
+     *
+     * @example
+     * const value = await select.getValue(); // "Moscow"
+     */
+    async getValue(): Promise<string> {
+        return this.host.inputValue();
     }
-  }
 
-  /**
-   * Выбирает опцию по точному совпадению текста.
-   *
-   * @param text Текст опции (полностью, с учётом регистра)
-   *
-   * @example
-   * await select.selectByText('Санкт-Петербург');
-   */
-  async selectByText(text: string): Promise<void> {
-    await this.open();
-    const option = this.page.locator(this.OPTION_SELECTOR).getByText(text, { exact: true });
-    await option.waitFor({ state: 'visible' });
-    await option.click();
-    // Ожидаем скрытия дропдауна (может не сработать, если уже скрыт — игнорируем ошибку)
-    await this.page.locator(this.DROPDOWN_SELECTOR).waitFor({ state: 'hidden' }).catch(() => {});
-  }
+    /**
+     * Opens the dropdown menu.
+     *
+     * Does nothing if the dropdown is already visible.
+     *
+     * @example
+     * await select.open();
+     */
+    async open(): Promise<void> {
+        if (!(await this.page.locator(TUI_DROPDOWN_LOCATORS.DROPDOWN).isVisible())) {
+            await this.click();
+            await this.page
+                .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
+                .waitFor({state: 'visible'});
+        }
+    }
 
-  /**
-   * Выбирает опцию по порядковому номеру.
-   *
-   * Предпочтительнее использовать selectByText().
-   *
-   * @param index Индекс опции (0 — первая, -1 — последняя)
-   *
-   * @example
-   * await select.selectByIndex(0); // первая опция
-   * await select.selectByIndex(-1); // последняя опция
-   */
-  async selectByIndex(index: number): Promise<void> {
-    await this.open();
-    const option = this.page.locator(this.OPTION_SELECTOR).nth(index);
-    await option.waitFor({ state: 'visible' });
-    await option.click();
-    await this.page.locator(this.DROPDOWN_SELECTOR).waitFor({ state: 'hidden' }).catch(() => {});
-  }
+    /**
+     * Selects an option by exact text match.
+     *
+     * The text must match completely and is case-sensitive.
+     *
+     * @param text The exact text of the option
+     *
+     * @example
+     * await select.selectByText('Saint Petersburg');
+     */
+    async selectByText(text: string): Promise<void> {
+        await this.open();
+        const option = this.page
+            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
+            .getByText(text, {exact: true});
+        await option.waitFor({state: 'visible'});
+        await option.click();
+        // Wait for dropdown to hide (ignore error if already hidden)
+        await this.page
+            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
+            .waitFor({state: 'hidden'})
+            .catch(() => {});
+    }
 
-  /**
-   * Возвращает список текстов всех доступных опций.
-   *
-   * @example
-   * const options = await select.getOptions();
-   * expect(options).toContain('Москва');
-   */
-  async getOptions(): Promise<string[]> {
-    await this.open();
-    const texts = await this.page.locator(this.OPTION_SELECTOR).allInnerTexts();
+    /**
+     * Selects an option by its index.
+     *
+     * Prefer `selectByText()` for better readability and stability.
+     *
+     * @param index Option index (0 = first, -1 = last)
+     *
+     * @example
+     * await select.selectByIndex(0);  // first option
+     * await select.selectByIndex(-1); // last option
+     */
+    async selectByIndex(index: number): Promise<void> {
+        await this.open();
+        const option = this.page
+            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
+            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
+            .nth(index);
+        await option.waitFor({state: 'visible'});
+        await option.click();
+        // Wait for dropdown to hide (ignore error if already hidden)
+        await this.page
+            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
+            .waitFor({state: 'hidden'})
+            .catch(() => {});
+    }
 
-    return texts.map(t => t.trim()).filter(t => t);
-  }
+    /**
+     * Returns a list of all available option texts.
+     *
+     * Opens the dropdown to ensure options are rendered.
+     *
+     * @returns Array of option labels
+     *
+     * @example
+     * const options = await select.getOptions();
+     * expect(options).toContain('Moscow');
+     */
+    async getOptions(): Promise<string[]> {
+        await this.open();
+        const texts = await this.page
+            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
+            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
+            .allInnerTexts();
+        return texts.map((t) => t.trim()).filter((t) => t);
+    }
 
-  /**
-   * Возвращает текст опции по порядковому номеру.
-   *
-   * @example
-   * const options = await select.getOptions();
-   * expect(options).toContain('Москва');
-   */
-  async getOptionByIndex(index: number = 0): Promise<string> {
-	await this.open();
-
-    return this.page.locator(this.OPTION_SELECTOR).nth(index).innerText();
-  }
+    /**
+     * Returns the text of the option at the given index.
+     *
+     * @param index Index of the option (0 = first, -1 = last). Default: 0
+     * @returns The text content of the option
+     *
+     * @example
+     * const firstOption = await select.getOptionByIndex(0); // "Moscow"
+     */
+    async getOptionByIndex(index: number = 0): Promise<string> {
+        await this.open();
+        return this.page.locator(TUI_DROPDOWN_LOCATORS.OPTION).nth(index).innerText();
+    }
 }
+
+export const TuiSelectEO = SelectElementObject;

@@ -1,51 +1,39 @@
-import { BaseElementObject } from './base.eo';
-import { withClickable } from '../mixins';
+import {BaseElementObject} from './base.eo';
+import {withClickable} from '../mixins';
 
 /**
- * ElementObject для компонента TuiSwitch.
+ * Element Object for the TuiSwitch component.
  *
- * Обёртка над <input type="checkbox" tuiSwitch>, инкапсулирующая взаимодействие
- * со свитчем: включение, выключение, проверка состояния.
+ * A wrapper around `<input type="checkbox" tuiSwitch>` that encapsulates interaction
+ * with a toggle switch: turning it on/off and checking its state.
  *
- * Поддерживает:
- * - role="switch" (для доступности)
- * - опциональные иконки
- * - состояния checked / unchecked
+ * Supports:
+ * - Optional icons in on/off states
+ * - Visual feedback for checked/unchecked states
  *
- * Пример использования:
- * const switch = new SwitchEO(page, '[tuiSwitch][automation-id="test-switch"]');
- * await switch.setChecked(true);
- * await expect(switch.host).toBeChecked();
+ * The component behaves like a checkbox but with a modern toggle appearance.
+ * Use `setChecked()` to control its state programmatically.
+ *
+ * @example
+ * const toggle = new TuiSwitchEO(page, '[tuiSwitch][automation-id="test-switch"]');
+ * await toggle.setChecked(true);
+ * await expect(toggle.host).toBeChecked();
  */
 export class SwitchElementObject extends withClickable(BaseElementObject) {
-  /**
-   * Устанавливает свитч в указанное состояние.
-   *
-   * Если состояние уже соответствует — клик не выполняется.
-   *
-   * @param checked `true` — включить, `false` — выключить
-   *
-   * @example
-   * await switch.setChecked(true); // включить
-   * await switch.setChecked(false); // выключить
-   */
-  async setChecked(checked: boolean): Promise<void> {
-    const isChecked = await this.host.isChecked();
-
-    if (isChecked !== checked) {
-      await this.click();
+    /**
+     * Sets the switch to the specified state.
+     *
+     * Does nothing if the switch is already in the target state.
+     *
+     * @param checked `true` to turn on, `false` to turn off
+     *
+     * @example
+     * await toggle.setChecked(true);  // turn on
+     * await toggle.setChecked(false); // turn off
+     */
+    async setChecked(checked: boolean): Promise<void> {
+        await this.host.setChecked(checked);
     }
-  }
-
-  /**
-   * Проверяет, что элемент имеет корректную ARIA-роль.
-   *
-   * Ожидается `role="switch"`.
-   */
-
-  async hasCorrectRole(): Promise<boolean> {
-    const role = await this.host.getAttribute('role');
-
-    return role === 'switch';
-  }
 }
+
+export const TuiSwitchEO = SwitchElementObject;
