@@ -34270,7 +34270,7 @@ export default class Example {
 <tui-preview-title>{{ titles[index] }}</tui-preview-title>
 <tui-preview-pagination [length]="length" [(index)]="index" />
 <button iconStart="@tui.x" tuiIconButton tuiPreviewAction type="button" (click)="open = false" > Close </button>
-<img *polymorpheusOutlet="content[index] as src" alt="preview" [src]="src" />
+<img alt="preview" [src]="content[index]" />
 </tui-preview>
 </ng-template>
 ```
@@ -34281,10 +34281,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPreview} from '@taiga-ui/kit';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [PolymorpheusOutlet, TuiButton, TuiPreview],
+    imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -45124,6 +45123,62 @@ export default class Example {
 }
 ```
 
+#### Options
+
+**Template:**
+```html
+<span paymentSystem="visa" tuiThumbnailCard class="star" > 1234 </span>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TUI_PAYMENT_SYSTEM_ICONS,
+    TUI_THUMBNAIL_CARD_OPTIONS,
+    TuiThumbnailCard,
+    type TuiThumbnailCardOptions,
+} from '@taiga-ui/addon-commerce';
+
+@Component({
+    imports: [TuiThumbnailCard],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        {
+            provide: TUI_THUMBNAIL_CARD_OPTIONS,
+            useFactory: (): TuiThumbnailCardOptions => ({
+                size: 'l',
+                // Swap the default monochrome `@tui.visa` for the colored `@img.visa`
+                icons: {...inject(TUI_PAYMENT_SYSTEM_ICONS), visa: '@img.visa'},
+            }),
+        },
+    ],
+})
+export default class Example {}
+```
+**LESS:**
+```less
+.star {
+    color: #000;
+    background:
+        linear-gradient(45deg, rgba(255, 170, 0, 0.82), #fa0), url('/assets/taiga-ui/icons/star.svg'),
+        url('/assets/taiga-ui/icons/star.svg');
+    background-size:
+        100%,
+        3rem 1.5rem,
+        3rem 1.5rem;
+    background-position:
+        0 0,
+        -0.75rem 0,
+        0.75rem;
+    background-color: #fff;
+}
+```
+
 
 ### TypeScript
 
@@ -45151,6 +45206,7 @@ export default class Example {
         'Backgrounds',
         'External colored icon',
         'Textfield',
+        'Options',
     ];
 
     protected readonly paymentSystemVariants = Object.keys(
