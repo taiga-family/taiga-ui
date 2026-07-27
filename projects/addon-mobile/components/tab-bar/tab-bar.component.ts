@@ -36,10 +36,10 @@ export class TuiTabBarComponent {
     public readonly activeItemIndex = model(Number.NaN);
 
     public setActive(tab: Element): void {
-        this.updateIndex(this.tabs().findIndex((el) => el.nativeElement === tab));
-    }
+        const index = this.tabs().findIndex((el) => el.nativeElement === tab);
 
-    private updateIndex(index: number): void {
-        this.activeItemIndex.set(index);
+        if (index > -1) {
+            this.activeItemIndex.set(index);
+        }
     }
 }
