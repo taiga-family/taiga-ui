@@ -297,4 +297,28 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'EMPTY_ARRAY',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'EMPTY_ARRAY has been removed. Use an inline empty array literal [] instead.',
+    },
+    {
+        name: 'EMPTY_QUERY',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'EMPTY_QUERY has been removed. Use new QueryList() instead, or migrate to the signal-based queries viewChildren()/contentChildren().',
+    },
+    {
+        name: 'tuiIsFalsy',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsFalsy has been removed. Replace it with a plain negation predicate: (value) => !value.',
+    },
+    {
+        name: 'tuiFlatLength',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiFlatLength has been removed. Inline the calculation instead: array.reduce((count, section) => count + section.length, 0).',
+    },
 ];
