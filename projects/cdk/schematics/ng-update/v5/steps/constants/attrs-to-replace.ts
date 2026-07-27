@@ -95,6 +95,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: ''},
     },
     {
+        from: {attrName: 'tuiTabsWithMore', withTagNames: ['nav']},
+        to: {attrName: ''},
+    },
+    {
         from: {attrName: 'tuiExpandContent', withTagNames: ['ng-template']},
         to: {attrName: 'tuiItem'},
     },
