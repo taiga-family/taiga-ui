@@ -20,7 +20,11 @@ describe('ng-update misc removed tokens and helpers warning', () => {
                     TUI_SPIN_ICONS,
                     TuiDarkThemeService,
                 } from '@taiga-ui/core';
-                import {TUI_IS_TOUCH, tuiIsKeyboardFocusable, tuiIsMouseFocusable} from '@taiga-ui/cdk';
+                import {
+                    TUI_IS_TOUCH,
+                    tuiIsKeyboardFocusable,
+                    tuiIsMouseFocusable,
+                } from '@taiga-ui/cdk';
                 import {tuiToggleDay} from '@taiga-ui/kit';
 
                 @Component({})
