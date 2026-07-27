@@ -29,7 +29,11 @@ describe('ng-update more identifier remaps and renames', () => {
                 } from '@taiga-ui/core';
 
                 @Component({
-                    imports: [TuiFullscreen, TuiElasticContainerDirective, TuiExpandComponent],
+                    imports: [
+                        TuiFullscreen,
+                        TuiElasticContainerDirective,
+                        TuiExpandComponent,
+                    ],
                 })
                 export class TestComponent {
                     protected readonly checkbox: TuiCheckboxOptions | null = null;
