@@ -51,6 +51,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '*tuiDropdown'},
     },
     {
+        from: {attrName: '*tuiActionBar', withTagNames: ['*']},
+        to: {attrName: '*tuiPopup'},
+    },
+    {
         from: {attrName: 'tuiTextfield', withTagNames: ['*']},
         to: {attrName: 'tuiInput'},
     },
