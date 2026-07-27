@@ -245,5 +245,122 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'renames kit input-password options to password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames legacy input-password options to kit password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/legacy';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the New suffix from input-date options identifiers',
+        migrate({
+            component: /* TypeScript */ `
+                import {
+                    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+                    TUI_INPUT_DATE_OPTIONS_NEW,
+                    type TuiInputDateOptionsNew,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly defaults = TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW;
+                    protected readonly token = TUI_INPUT_DATE_OPTIONS_NEW;
+                    protected readonly options: TuiInputDateOptionsNew | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiWithQuantumValueTransformer',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiWithQuantumValueTransformer} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly transformer = TuiWithQuantumValueTransformer;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames alert options to notification options',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_ALERT_OPTIONS, type TuiAlertOptions} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_ALERT_OPTIONS;
+                    protected readonly options: TuiAlertOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the Component suffix from kit input-range/action-bar',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TuiActionBarComponent,
+                    TuiInputRangeComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiActionBarComponent, TuiInputRangeComponent],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'moves legacy TuiInputRangeComponent to kit TuiInputRange',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputRangeComponent} from '@taiga-ui/legacy';
+
+                @Component({imports: [TuiInputRangeComponent]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
