@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update more identifier remaps and renames remaps sibling-leftover identifiers and renames alert/expand symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TuiCheckboxOptions,
+                    TuiElasticContainerDirective,
+                    TuiRadioOptions,
+                    tuiCreateKeyStepsTransformer,
+                    tuiDateStreamWithTransformer,
+                    tuiKeyStepValueToPercentage,
+                    tuiPercentageToKeyStepValue,
+                } from '@taiga-ui/kit';
+                import {
+                    TUI_ALERT_DEFAULT_OPTIONS,
+                    TuiExpandComponent,
+                    TuiFullscreen,
+                } from '@taiga-ui/core';
+
+                @Component({
+                    imports: [TuiFullscreen, TuiElasticContainerDirective, TuiExpandComponent],
+                })
+                export class TestComponent {
+                    protected readonly checkbox: TuiCheckboxOptions | null = null;
+                    protected readonly radio: TuiRadioOptions | null = null;
+                    protected readonly defaults = TUI_ALERT_DEFAULT_OPTIONS;
+                    protected readonly transformer = tuiCreateKeyStepsTransformer;
+                    protected readonly toPercentage = tuiKeyStepValueToPercentage;
+                    protected readonly toValue = tuiPercentageToKeyStepValue;
+                    protected readonly stream = tuiDateStreamWithTransformer;
+                }
+            ",
+  "1. After": "import { tuiDateStreamWithTransformer } from "@taiga-ui/addon-mobile";
+import { TuiElasticContainerDirective } from "@taiga-ui/layout";
+
+                import { TuiFullscreen } from '@taiga-ui/kit';
+                import { TuiCheckboxOptions, TuiRadioOptions, tuiCreateKeyStepsTransformer, tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue, TUI_NOTIFICATION_DEFAULT_OPTIONS, TuiExpand } from '@taiga-ui/core';
+
+                @Component({
+                    imports: [TuiFullscreen, TuiElasticContainerDirective, TuiExpand],
+                })
+                export class TestComponent {
+                    protected readonly checkbox: TuiCheckboxOptions | null = null;
+                    protected readonly radio: TuiRadioOptions | null = null;
+                    protected readonly defaults = TUI_NOTIFICATION_DEFAULT_OPTIONS;
+                    protected readonly transformer = tuiCreateKeyStepsTransformer;
+                    protected readonly toPercentage = tuiKeyStepValueToPercentage;
+                    protected readonly toValue = tuiPercentageToKeyStepValue;
+                    protected readonly stream = tuiDateStreamWithTransformer;
+                }
+            ",
+}
+`;
