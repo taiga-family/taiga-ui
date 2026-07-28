@@ -1393,4 +1393,24 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiAlert',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiAlertDirective',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiInspectAny',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'tuiInspect',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];
