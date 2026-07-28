@@ -19,6 +19,7 @@ interface Item {
     encapsulation,
     changeDetection,
     providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
         {provide: TUI_LIQUID_GLASS, useValue: true},
         {provide: TUI_PLATFORM, useValue: 'ios'},
     ],
