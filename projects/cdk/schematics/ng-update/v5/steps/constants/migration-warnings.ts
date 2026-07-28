@@ -297,4 +297,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TuiAccordionItem',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItem (<tui-accordion-item>) has been removed. The accordion was restructured: use TuiAccordion with a tui-expand-based item template from @taiga-ui/kit. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemContent ([tuiAccordionItemContent]) has been removed. Lazy accordion content is now projected differently in the restructured TuiAccordion. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemEagerContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. See the restructured TuiAccordion. https://taiga-ui.dev/components/accordion',
+    },
 ];

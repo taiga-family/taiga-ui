@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update remaining v5 leftovers (#11917) adds TODO comments for removed accordion-item symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiAccordionItem,
+                    TuiAccordionItemContent,
+                    TuiAccordionItemEagerContent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiAccordionItem,
+                        TuiAccordionItemContent,
+                        TuiAccordionItemEagerContent,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TuiAccordionItem (<tui-accordion-item>) has been removed. The accordion was restructured: use TuiAccordion with a tui-expand-based item template from @taiga-ui/kit. See https://taiga-ui.dev/components/accordion
+                    TuiAccordionItem,
+// TODO: (Taiga UI migration) TuiAccordionItemContent ([tuiAccordionItemContent]) has been removed. Lazy accordion content is now projected differently in the restructured TuiAccordion. See https://taiga-ui.dev/components/accordion
+                    TuiAccordionItemContent,
+// TODO: (Taiga UI migration) TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. See the restructured TuiAccordion. https://taiga-ui.dev/components/accordion
+                    TuiAccordionItemEagerContent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiAccordionItem,
+                        TuiAccordionItemContent,
+                        TuiAccordionItemEagerContent,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update remaining v5 leftovers (#11917) migrates leftover CSS variables and warns on removed ones: test.less 1`] = `
+{
+  "0. Before": "
+                .foo {
+                    font: var(--tui-font-heading-1);
+                    font-family: var(--tui-font-heading);
+                    background: var(--tui-backdrop);
+                    transition-duration: var(--tui-animation-duration-moderate);
+                    animation-duration: var(--tui-animation-duration-slow);
+                    animation-timing-function: var(--tui-animation-curve-expressive-entrance);
+                    color: var(--tui-slider-track-color);
+                }
+            ",
+  "1. After": "
+                .foo {
+                    font: var(--tui-typography-heading-h1);
+                    font-family: var(--tui-typography-family-display);
+                    background: var(--tui-service-backdrop);
+                    transition-duration: var(--tui-duration);
+                    animation-duration: var(--tui-duration-slow);
+                    animation-timing-function: var(--tui-curve-expressive-entrance);
+// TODO: (Taiga UI migration) --tui-slider-track-color has been removed. The slider track color is no longer configurable through a CSS variable in v5.
+                    color: var(--tui-slider-track-color);
+                }
+            ",
+}
+`;
+
+exports[`ng-update remaining v5 leftovers (#11917) renames leftover core/kit/testing identifiers: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiDropdownPortal,
+                    TuiWithTextfield,
+                    tuiStringHashToHsl,
+                } from '@taiga-ui/core';
+                import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
+
+                @Component({
+                    hostDirectives: [TuiWithTextfield],
+                })
+                export class TestComponent {
+                    protected readonly portal = TuiDropdownPortal;
+                    protected readonly color = tuiStringHashToHsl('value');
+
+                    constructor() {
+                        tuiSwitchNgDevMode(true);
+                    }
+                }
+            ",
+  "1. After": "import { tuiSwitchNgDevMode } from "@taiga-ui/jest-config";
+import { tuiAutoColor } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+                import { TuiDropdownContent, TuiWithInput } from '@taiga-ui/core';
+
+                @Component({
+                    hostDirectives: [TuiWithInput],
+                })
+                export class TestComponent {
+                    protected readonly portal = TuiDropdownContent;
+                    protected readonly color = tuiAutoColor('value');
+
+                    constructor() {
+                        tuiSwitchNgDevMode(true);
+                    }
+                }
+            ",
+}
+`;
