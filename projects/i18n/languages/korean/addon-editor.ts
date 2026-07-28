@@ -22,6 +22,7 @@ export const TUI_KOREAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: '내어쓰기',
         unorderedList: '순서 없는 목록',
         orderedList: '정렬된 목록',
+        taskList: '작업 목록',
         quote: '인용하다',
         foreColor: '색상',
         backColor: '배경색',
