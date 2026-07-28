@@ -19,7 +19,11 @@ exports[`ng-update more identifier remaps and renames remaps sibling-leftover id
                 } from '@taiga-ui/core';
 
                 @Component({
-                    imports: [TuiFullscreen, TuiElasticContainerDirective, TuiExpandComponent],
+                    imports: [
+                        TuiFullscreen,
+                        TuiElasticContainerDirective,
+                        TuiExpandComponent,
+                    ],
                 })
                 export class TestComponent {
                     protected readonly checkbox: TuiCheckboxOptions | null = null;
@@ -38,7 +42,11 @@ import { TuiElasticContainerDirective } from "@taiga-ui/layout";
                 import { TuiCheckboxOptions, TuiRadioOptions, tuiCreateKeyStepsTransformer, tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue, TUI_NOTIFICATION_DEFAULT_OPTIONS, TuiExpand } from '@taiga-ui/core';
 
                 @Component({
-                    imports: [TuiFullscreen, TuiElasticContainerDirective, TuiExpand],
+                    imports: [
+                        TuiFullscreen,
+                        TuiElasticContainerDirective,
+                        TuiExpand,
+                    ],
                 })
                 export class TestComponent {
                     protected readonly checkbox: TuiCheckboxOptions | null = null;
