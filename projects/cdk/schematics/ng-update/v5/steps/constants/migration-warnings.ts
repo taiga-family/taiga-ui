@@ -297,4 +297,130 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TUI_THEME',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_THEME has been removed. The active theme is now controlled via the tuiTheme HTML attribute (managed by TuiRoot), not an injection token.',
+    },
+    {
+        name: 'TuiLinkOptions',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiLinkOptions has been removed. TuiLink is now configured through CSS variables and attributes. See https://taiga-ui.dev/components/link',
+    },
+    {
+        name: 'TUI_DATA_LIST_ACCESSOR',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DATA_LIST_ACCESSOR has been removed. Use TUI_DATA_LIST_HOST together with tuiAsDataListHost from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiAsDataList',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'tuiAsDataList has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiAsDataListAccessor',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'tuiAsDataListAccessor has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiDataListDirective',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDataListDirective has been removed. Use TuiDataList from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TUI_HINT_PROVIDERS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiInputPassword',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input-password',
+    },
+    {
+        name: 'TuiSliderOptions',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiSliderOptions has been removed. TuiSlider is now configured through CSS variables. See https://taiga-ui.dev/components/slider',
+    },
+    {
+        name: 'TuiActionBarDirective',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.',
+    },
+    {
+        name: 'TuiSidebarComponent',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'TuiSidebarComponent has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiSidebarDirective',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'TuiSidebarDirective has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiFindTouchIndex',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.',
+    },
+    {
+        name: 'TUI_INPUT_CARD_DEFAULT_OPTIONS',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TUI_INPUT_CARD_DEFAULT_OPTIONS has been removed. TuiInputCard is now configured via component inputs; there is no options token in v5.',
+    },
+    {
+        name: 'TuiInputCardOptions',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options interface in v5.',
+    },
+    {
+        name: 'TUI_TABLE_PROVIDER',
+        moduleSpecifier: '@taiga-ui/addon-table',
+        message:
+            'TUI_TABLE_PROVIDER has been removed. Table configuration providers are no longer required. See https://taiga-ui.dev/components/table',
+    },
+    {
+        name: 'TuiIslandHarness',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiIslandHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
+    },
+    {
+        name: 'TuiSvgHarness',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiSvgHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
+    },
+    {
+        name: 'TuiThumbnailCardHarness',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiThumbnailCardHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
+    },
+    {
+        name: 'TuiPrimitiveTextfieldHarness',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiPrimitiveTextfieldHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
+    },
+    {
+        name: 'TuiMockEvent',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiMockEvent has been removed. Construct native Event/MouseEvent objects directly in your tests.',
+    },
 ];
