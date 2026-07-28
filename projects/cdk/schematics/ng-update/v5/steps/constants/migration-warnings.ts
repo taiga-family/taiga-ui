@@ -297,4 +297,158 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TUI_ALLOW_SIGNAL_WRITES',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_ALLOW_SIGNAL_WRITES has been removed. Effects allow signal writes by default now, so this option is no longer needed.',
+    },
+    {
+        name: 'TUI_BASE_HREF',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_BASE_HREF has been removed. Use APP_BASE_HREF from @angular/common instead.',
+    },
+    {
+        name: 'TUI_IS_CYPRESS',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            "TUI_IS_CYPRESS has been removed. Detect the Cypress environment yourself (e.g. 'cypress' in window) if you still need it.",
+    },
+    {
+        name: 'TUI_IS_PLAYWRIGHT',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_IS_PLAYWRIGHT has been removed. Detect the Playwright environment yourself if you still need it.',
+    },
+    {
+        name: 'TUI_MOBILE_REGEXP',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_MOBILE_REGEXP has been removed. Provide your own mobile user-agent RegExp if you still need it.',
+    },
+    {
+        name: 'TuiLetContext',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            "TuiLetContext has been removed together with TuiLet. Use Angular's built-in @let syntax.",
+    },
+    {
+        name: 'TuiLooseUnion',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiLooseUnion has been removed. Inline the type where you used it, e.g. `T | (string & {})`.',
+    },
+    {
+        name: 'TuiRepeatTimesContext',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiRepeatTimesContext has been removed. Use the context of a native @for loop instead.',
+    },
+    {
+        name: 'TuiSafeHtml',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiSafeHtml has been removed. Use SafeHtml from @angular/platform-browser (or a plain string) instead.',
+    },
+    {
+        name: 'TuiValuePresentException',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiValuePresentException has been removed together with tuiMustBePresent. Handle empty values yourself.',
+    },
+    {
+        name: 'TuiValuesOf',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: 'TuiValuesOf has been removed. Inline `T[keyof T]` where you used it.',
+    },
+    {
+        name: 'changeDateSeparator',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            "changeDateSeparator has been removed. Replace the separator inline, e.g. value.replaceAll('.', '/').",
+    },
+    {
+        name: 'tuiDirectiveListener',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiDirectiveListener has been removed. Use Renderer2.listen() or a host listener instead.',
+    },
+    {
+        name: 'tuiGetElementPoint',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiGetElementPoint has been removed. Read coordinates from Element.getBoundingClientRect() instead.',
+    },
+    {
+        name: 'tuiGetOriginalArrayFromQueryList',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiGetOriginalArrayFromQueryList has been removed. Use QueryList.toArray() instead.',
+    },
+    {
+        name: 'tuiInjectId',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiInjectId has been removed. Use tuiGenerateId() from @taiga-ui/cdk instead.',
+    },
+    {
+        name: 'tuiIsCurrentTarget',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsCurrentTarget has been removed. Compare event.target === event.currentTarget inline.',
+    },
+    {
+        name: 'tuiIsInsideIframe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsInsideIframe has been removed. Check window.self !== window.top inline.',
+    },
+    {
+        name: 'tuiIsNodeIn',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: 'tuiIsNodeIn has been removed. Use Node.contains() inline.',
+    },
+    {
+        name: 'tuiIsValidUrl',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsValidUrl has been removed. Validate the URL yourself, e.g. via `new URL(value)` in a try/catch.',
+    },
+    {
+        name: 'tuiMustBePresent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiMustBePresent has been removed. Assert non-empty values yourself (e.g. filter(Boolean) or a custom operator).',
+    },
+    {
+        name: 'tuiQueryListChanges',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiQueryListChanges has been removed. Use QueryList.changes directly (with startWith() if needed).',
+    },
+    {
+        name: 'tuiRetargetedBoundaryCrossing',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiRetargetedBoundaryCrossing has been removed with no direct replacement; inline the boundary-crossing logic if you relied on it.',
+    },
+    {
+        name: 'tuiToInteger',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiToInteger has been removed. Use Math.trunc(), parseInt() or Number() where you used it.',
+    },
+    {
+        name: 'tuiToRadians',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiToRadians has been removed. Compute radians inline: value * Math.PI / 180.',
+    },
+    {
+        name: 'tuiUniqBy',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiUniqBy has been removed. Deduplicate by key yourself, e.g. via a Map keyed on the property.',
+    },
 ];
