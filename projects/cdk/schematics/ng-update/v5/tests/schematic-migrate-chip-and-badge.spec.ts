@@ -30,6 +30,11 @@ describe('ng-update chip and badge selectors', () => {
     );
 
     it(
+        'replaces nav[tuiTabsWithMore] with tui-tabs-with-more',
+        migrate({template: '<nav tuiTabsWithMore></nav>'}),
+    );
+
+    it(
         'preserves attributes and content on tui-badge',
         migrate({
             template:

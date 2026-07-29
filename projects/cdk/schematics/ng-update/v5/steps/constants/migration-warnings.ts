@@ -279,4 +279,52 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.',
     },
+    {
+        name: 'AbstractTuiControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead. The API is now signal-based: read the value with this.value(), emit changes with this.onChange(v), and mark touched with this.onTouched(). Port your custom control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'AbstractTuiNullableControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiNullableControl has been removed. Extend the signal-based TuiControl<T | null> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'TuiPrimitiveTextfieldComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiPrimitiveTextfieldComponent has been removed. Use the new <tui-textfield> (TuiTextfield from @taiga-ui/core) that wraps a native input/textarea instead. See https://taiga-ui.dev/components/input',
+    },
+    {
+        name: 'TuiColorSelectorComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiColorSelectorComponent has been removed. Use input[tuiInputColor] (TuiInputColor from @taiga-ui/kit) instead. See https://taiga-ui.dev/components/input-color',
+    },
+    {
+        name: 'TuiValueAccessorModule',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiValueAccessorModule has been removed together with TuiValueAccessorDirective. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.',
+    },
+    {
+        name: 'TuiValueAccessorDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiValueAccessorDirective ([tuiValueAccessor]) has been removed. Provide your custom ControlValueAccessor via the Angular NG_VALUE_ACCESSOR token directly instead.',
+    },
+    {
+        name: 'TuiTableBarComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/actions-bar',
+    },
+    {
+        name: 'TuiInputCopyComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
+    },
 ];

@@ -29,4 +29,10 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         inputName: 'monoHandler',
         tags: ['tui-thumbnail-card'],
     },
+    // `[tuiDropdownOpenMonitor]` was a selector-only shim; v5 dropdowns are native
+    // (the schematic maps `tuiDropdownOpen` -> `tuiDropdownAuto`), so drop the marker.
+    {
+        inputName: 'tuiDropdownOpenMonitor',
+        tags: ['*'],
+    },
 ];

@@ -51,6 +51,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '*tuiDropdown'},
     },
     {
+        from: {attrName: '*tuiActionBar', withTagNames: ['*']},
+        to: {attrName: '*tuiPopup'},
+    },
+    {
         from: {attrName: 'tuiTextfield', withTagNames: ['*']},
         to: {attrName: 'tuiInput'},
     },
@@ -79,11 +83,23 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[loading]'},
     },
     {
+        from: {attrName: 'exampleText', withTagNames: ['tui-input-card-group']},
+        to: {attrName: 'placeholder'},
+    },
+    {
+        from: {attrName: '[exampleText]', withTagNames: ['tui-input-card-group']},
+        to: {attrName: '[placeholder]'},
+    },
+    {
         from: {attrName: 'tuiStepper', withTagNames: ['nav']},
         to: {attrName: ''},
     },
     {
         from: {attrName: 'tuiTabs', withTagNames: ['nav']},
+        to: {attrName: ''},
+    },
+    {
+        from: {attrName: 'tuiTabsWithMore', withTagNames: ['nav']},
         to: {attrName: ''},
     },
     {

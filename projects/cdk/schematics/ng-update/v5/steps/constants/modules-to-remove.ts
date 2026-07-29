@@ -29,4 +29,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiTextareaLimit',
         moduleSpecifier: '@taiga-ui/kit',
     },
+    {
+        name: 'TuiLegacyDropdownOpenMonitorDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
+    },
 ];
