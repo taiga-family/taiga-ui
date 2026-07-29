@@ -40,6 +40,39 @@ describe('ng-update migrate style imports', () => {
     );
 
     it(
+        'keeps v5 @taiga-ui/styles theme/fonts/utils in place while still moving legacy markup (#13823)',
+        migrate({
+            styles: `
+                @import '@taiga-ui/styles/taiga-ui-theme.less';
+                @import '@taiga-ui/styles/taiga-ui-fonts.less';
+                @import '@taiga-ui/styles/utils';
+                @import '@taiga-ui/styles/mixins/button.less';
+                @import '@taiga-ui/styles/markup/tui-space.less';
+            `,
+        }),
+    );
+
+    it(
+        'keeps already migrated @taiga-ui/styles theme/fonts in project.json (#13823)',
+        migrate({
+            projectJson: JSON.stringify({
+                name: 'test-project',
+                targets: {
+                    build: {
+                        options: {
+                            styles: [
+                                '@taiga-ui/styles/taiga-ui-theme.less',
+                                '@taiga-ui/styles/taiga-ui-fonts.less',
+                                '@taiga-ui/styles/taiga-ui-global.less',
+                            ],
+                        },
+                    },
+                },
+            }),
+        }),
+    );
+
+    it(
         'should migrate style imports in project.json',
         migrate({
             projectJson: JSON.stringify({
