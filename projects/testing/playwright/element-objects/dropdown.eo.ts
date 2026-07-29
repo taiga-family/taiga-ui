@@ -1,5 +1,5 @@
 import {expect, Locator, Page} from '@playwright/test';
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 /**
@@ -28,7 +28,7 @@ import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
  * await dropdown.clickItem('Settings');
  * await dropdown.waitForClose();
  */
-class TuiDropdownElementObject extends BaseElementObject {
+class TuiDropdownElementObject extends TuiBaseEO {
     constructor(page: Page, orderNumber: number = 0) {
         super(page, TUI_DROPDOWN_LOCATORS.DROPDOWN, orderNumber);
     }

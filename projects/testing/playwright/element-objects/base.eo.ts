@@ -13,7 +13,7 @@ import {Page, Locator} from '@playwright/test';
  * @example
  * class ButtonEO extends withClickable(BaseElementObject) {}
  */
-export class BaseElementObject {
+export class TuiBaseElementObject {
     constructor(
         /**
          * Playwright Page instance
@@ -43,3 +43,5 @@ export class BaseElementObject {
         return this.page.locator(this.selector).nth(this.orderNumber);
     }
 }
+
+export const TuiBaseEO = TuiBaseElementObject;

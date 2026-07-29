@@ -1,6 +1,6 @@
 import {expect, Locator} from '@playwright/test';
 import {withClickable, withFocusable} from '../mixins';
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 /**
@@ -23,7 +23,7 @@ import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
  * await priceRange.setValue([100, 500]);
  * expect(await priceRange.getValue()).toEqual([100, 500]);
  */
-class InputRangeElementObject extends withFocusable(withClickable(BaseElementObject)) {
+class InputRangeElementObject extends withFocusable(withClickable(TuiBaseEO)) {
     /**
      * Sets the range values.
      *

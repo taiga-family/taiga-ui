@@ -1,4 +1,4 @@
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
 
 /**
@@ -15,7 +15,7 @@ import {withClickable} from '../mixins';
  * await radio.select();
  * await expect(radio.host).toBeChecked();
  */
-export class RadioElementObject extends withClickable(BaseElementObject) {
+export class RadioElementObject extends withClickable(TuiBaseEO) {
     /**
      * Selects the radio button if it is not already checked.
      *

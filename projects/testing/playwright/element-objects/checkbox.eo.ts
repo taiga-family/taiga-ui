@@ -1,4 +1,4 @@
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
 
 /**
@@ -19,7 +19,7 @@ import {withClickable} from '../mixins';
  * await agreeCheckbox.setChecked(true);
  * await expect(agreeCheckbox.host).toBeChecked();
  */
-export class CheckboxElementObject extends withClickable(BaseElementObject) {
+export class CheckboxElementObject extends withClickable(TuiBaseEO) {
     /**
      * Sets the checkbox to the specified state.
      *

@@ -1,22 +1,28 @@
-import { BaseElementObject } from '../element-objects/base.eo';
-import { MixinConstructor } from '../types';
+import {TuiBaseElementObject} from '../element-objects/base.eo';
+import {MixinConstructor} from '../types';
 
 /**
- * Миксин, добавляющий базовую кликабельность.
+ * A mixin that adds basic click behavior to an ElementObject.
  *
- * Позволяет:
- * - Выполнить клик по host-элементу
+ * Provides:
+ * - A `click()` method to interact with the host element
  *
- * Использование:
- * - Для компонентов, которые реагируют на клик: кнопки, чекбоксы, радио, иконки и т.д.
- * - Может быть унаследован и переопределён при необходимости.
+ * Suitable for components that respond to user clicks:
+ * - Buttons
+ * - Checkboxes
+ * - Radio buttons
+ * - Icons
+ * - Toggle switches
+ * - Any interactive element
+ *
+ * Can be inherited and extended or overridden in specific ElementObjects when custom click behavior is needed.
  *
  * @example
  * class ButtonEO extends withClickable(BaseElementObject) {
- *   // Теперь имеет .click()
+ *   // Now has .click()
  * }
  *
- * // Использование в тесте
+ * // Usage in tests
  * await button.click();
  * await expect(someState).toBeVisible();
  *
@@ -27,22 +33,31 @@ import { MixinConstructor } from '../types';
  *       await this.click();
  *     }
  *   }
- * }
  *
+ *   async uncheck() {
+ *     if (await this.isChecked()) {
+ *       await this.click();
+ *     }
+ *   }
+ * }
  */
-export function withClickable<T extends MixinConstructor<BaseElementObject>>(Base: T) {
-  return class extends Base {
-    /**
-     * Выполняет клик по host-элементу.
-     *
-     * Использует стандартный .click() из Playwright,
-     * который включает прокрутку, ожидание видимости и активности.
-     *
-     * Для кликов по вложенным элементам (например, иконке внутри кнопки)
-     * рекомендуется создавать отдельный метод в конкретном EO.
-     */
-    async click(): Promise<void> {
-      await this.host.click();
-    }
-  };
+export function withClickable<T extends MixinConstructor<TuiBaseElementObject>>(Base: T) {
+    return class extends Base {
+        /**
+         * Clicks the host element.
+         *
+         * Uses Playwright's built-in `.click()` which automatically:
+         * - Scrolls the element into view
+         * - Waits for visibility and actionability (not disabled, stable, etc.)
+         *
+         * For clicking nested elements (e.g. an icon inside a button),
+         * create a dedicated method in the specific Element Object instead.
+         *
+         * @example
+         * await this.click(); // clicks the host
+         */
+        async click(): Promise<void> {
+            await this.host.click();
+        }
+    };
 }

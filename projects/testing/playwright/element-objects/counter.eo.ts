@@ -1,4 +1,4 @@
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
 import {TUI_COUNTER_LOCATORS} from '@taiga-ui/testing/locators';
 
@@ -16,7 +16,7 @@ import {TUI_COUNTER_LOCATORS} from '@taiga-ui/testing/locators';
  * await quantityCounter.increment();
  * expect(await quantityCounter.getValue()).toBe('6');
  */
-export class CounterElementObject extends withClickable(BaseElementObject) {
+export class CounterElementObject extends withClickable(TuiBaseEO) {
     /**
      * Returns the currently displayed counter value as a string.
      *

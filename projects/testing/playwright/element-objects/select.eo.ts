@@ -1,6 +1,5 @@
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
-import {TUI_DROPDOWN_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 import {TuiDropdownEO} from './dropdown.eo';
 
 /**
@@ -16,7 +15,7 @@ import {TuiDropdownEO} from './dropdown.eo';
  * await citySelect.selectByText('Moscow');
  * await expect(citySelect.host).toHaveValue('Moscow');
  */
-export class SelectElementObject extends withClickable(BaseElementObject) {
+export class SelectElementObject extends withClickable(TuiBaseEO) {
     readonly dropdown = new TuiDropdownEO(this.page);
     /**
      * Returns the current value of the select (the `input.value`).

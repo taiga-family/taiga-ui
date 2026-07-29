@@ -1,4 +1,4 @@
-import {BaseElementObject} from './base.eo';
+import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
 
 /**
@@ -19,7 +19,7 @@ import {withClickable} from '../mixins';
  * await toggle.setChecked(true);
  * await expect(toggle.host).toBeChecked();
  */
-export class SwitchElementObject extends withClickable(BaseElementObject) {
+export class SwitchElementObject extends withClickable(TuiBaseEO) {
     /**
      * Sets the switch to the specified state.
      *
