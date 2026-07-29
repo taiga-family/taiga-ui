@@ -154,4 +154,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header',
     },
+    {
+        tag: 'table',
+        withAttrs: ['(tuiSortByChange)'],
+        comment:
+            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortBy, orderBy, sortKey, sortDirection}), not the sort key string.',
+    },
 ];

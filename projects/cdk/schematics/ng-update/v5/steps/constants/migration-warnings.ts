@@ -297,4 +297,58 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
+    {
+        name: 'TuiAlertComponent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertComponent has been removed. Alerts are rendered by TuiAlertService/TuiNotificationService; there is no standalone <tui-alert> component in v5.',
+    },
+    {
+        name: 'TuiAlerts',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlerts has been removed. The alert host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
+    },
+    {
+        name: 'TuiDialogs',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDialogs has been removed. The dialog host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
+    },
+    {
+        name: 'TuiDropdowns',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDropdowns has been removed. The dropdown host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
+    },
+    {
+        name: 'TuiHints',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHints has been removed. The hint host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
+    },
+    {
+        name: 'TuiHintService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintService has been removed. Hints are shown via the tuiHint directive; the global hint stack is managed internally through the portal API.',
+    },
+    {
+        name: 'TuiHintOptionsDirective',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintOptionsDirective ([tuiHintContent]) has been removed. Configure hints via the tuiHint directive together with TUI_HINT_OPTIONS / tuiHintOptionsProvider.',
+    },
+    {
+        name: 'TuiTextareaCounterComponent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiTextareaCounterComponent has been removed. The character counter is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).',
+    },
+    {
+        name: 'TuiTextareaLimitComponent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiTextareaLimitComponent has been removed. The character limit overflow is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).',
+    },
 ];

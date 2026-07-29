@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed public API warnings (#11917) adds TODO comment for removed table (tuiSortByChange) output: test.html 1`] = `
+{
+  "0. Before": "
+                <table
+                    tuiTable
+                    [tuiSortBy]="key"
+                    (tuiSortByChange)="onSort($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortBy, orderBy, sortKey, sortDirection}), not the sort key string. -->
+<table
+                    tuiTable
+                    [tuiSortBy]="key"
+                    (tuiSortByChange)="onSort($event)"
+                >
+                    <tbody></tbody>
+                </table>
+            ",
+}
+`;
+
+exports[`ng-update removed public API warnings (#11917) adds TODO comments for removed @taiga-ui/core portal hosts and hint APIs: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TuiAlertComponent,
+                    TuiAlerts,
+                    TuiDialogs,
+                    TuiDropdowns,
+                    TuiHintOptionsDirective,
+                    TuiHints,
+                    TuiHintService,
+                } from '@taiga-ui/core';
+
+                @Component({
+                    imports: [
+                        TuiAlertComponent,
+                        TuiAlerts,
+                        TuiDialogs,
+                        TuiDropdowns,
+                        TuiHints,
+                        TuiHintOptionsDirective,
+                    ],
+                })
+                export class TestComponent {
+                    protected readonly hint = inject(TuiHintService);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TuiAlertComponent has been removed. Alerts are rendered by TuiAlertService/TuiNotificationService; there is no standalone <tui-alert> component in v5.
+                    TuiAlertComponent,
+// TODO: (Taiga UI migration) TuiAlerts has been removed. The alert host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.
+                    TuiAlerts,
+// TODO: (Taiga UI migration) TuiDialogs has been removed. The dialog host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.
+                    TuiDialogs,
+// TODO: (Taiga UI migration) TuiDropdowns has been removed. The dropdown host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.
+                    TuiDropdowns,
+// TODO: (Taiga UI migration) TuiHintOptionsDirective ([tuiHintContent]) has been removed. Configure hints via the tuiHint directive together with TUI_HINT_OPTIONS / tuiHintOptionsProvider.
+                    TuiHintOptionsDirective,
+// TODO: (Taiga UI migration) TuiHints has been removed. The hint host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.
+                    TuiHints,
+// TODO: (Taiga UI migration) TuiHintService has been removed. Hints are shown via the tuiHint directive; the global hint stack is managed internally through the portal API.
+                    TuiHintService,
+                } from '@taiga-ui/core';
+
+                @Component({
+                    imports: [
+                        TuiAlertComponent,
+                        TuiAlerts,
+                        TuiDialogs,
+                        TuiDropdowns,
+                        TuiHints,
+                        TuiHintOptionsDirective,
+                    ],
+                })
+                export class TestComponent {
+                    protected readonly hint = inject(TuiHintService);
+                }
+            ",
+}
+`;
+
+exports[`ng-update removed public API warnings (#11917) adds TODO comments for removed @taiga-ui/kit textarea counter/limit components: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiTextareaCounterComponent,
+                    TuiTextareaLimitComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiTextareaCounterComponent, TuiTextareaLimitComponent],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TuiTextareaCounterComponent has been removed. The character counter is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).
+                    TuiTextareaCounterComponent,
+// TODO: (Taiga UI migration) TuiTextareaLimitComponent has been removed. The character limit overflow is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).
+                    TuiTextareaLimitComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiTextareaCounterComponent, TuiTextareaLimitComponent],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
