@@ -24,6 +24,18 @@ exports[`ng-update removed public API warnings (#11917) adds TODO comment for re
 }
 `;
 
+exports[`ng-update removed public API warnings (#11917) adds TODO comment for removed tui-scrollbar [hidden] input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-scrollbar [hidden]="isHidden">Content</tui-scrollbar>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element. -->
+<tui-scrollbar [hidden]="isHidden">Content</tui-scrollbar>
+            ",
+}
+`;
+
 exports[`ng-update removed public API warnings (#11917) adds TODO comments for removed @taiga-ui/core portal hosts and hint APIs: test.ts 1`] = `
 {
   "0. Before": "

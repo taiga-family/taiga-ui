@@ -74,5 +74,14 @@ describe('ng-update removed public API warnings (#11917)', () => {
         }),
     );
 
+    it(
+        'adds TODO comment for removed tui-scrollbar [hidden] input',
+        migrate({
+            template: /* HTML */ `
+                <tui-scrollbar [hidden]="isHidden">Content</tui-scrollbar>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

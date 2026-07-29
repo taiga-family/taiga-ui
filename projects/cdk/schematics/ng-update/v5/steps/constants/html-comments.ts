@@ -160,4 +160,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortBy, orderBy, sortKey, sortDirection}), not the sort key string.',
     },
+    {
+        tag: 'tui-scrollbar',
+        withAttrs: ['hidden'],
+        comment:
+            'The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element.',
+    },
 ];
