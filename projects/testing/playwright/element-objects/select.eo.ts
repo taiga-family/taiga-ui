@@ -1,6 +1,7 @@
 import {BaseElementObject} from './base.eo';
 import {withClickable} from '../mixins';
 import {TUI_DROPDOWN_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
+import {TuiDropdownEO} from './dropdown.eo';
 
 /**
  * Element Object for the TuiSelect component in input directive mode (`input[tuiSelect]`).
@@ -16,6 +17,7 @@ import {TUI_DROPDOWN_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/loca
  * await expect(citySelect.host).toHaveValue('Moscow');
  */
 export class SelectElementObject extends withClickable(BaseElementObject) {
+    readonly dropdown = new TuiDropdownEO(this.page);
     /**
      * Returns the current value of the select (the `input.value`).
      *
@@ -37,11 +39,9 @@ export class SelectElementObject extends withClickable(BaseElementObject) {
      * await select.open();
      */
     async open(): Promise<void> {
-        if (!(await this.page.locator(TUI_DROPDOWN_LOCATORS.DROPDOWN).isVisible())) {
+        if (!(await this.dropdown.host.isVisible())) {
             await this.click();
-            await this.page
-                .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
-                .waitFor({state: 'visible'});
+            await this.dropdown.host.waitFor({state: 'visible'});
         }
     }
 
@@ -57,16 +57,7 @@ export class SelectElementObject extends withClickable(BaseElementObject) {
      */
     async selectByText(text: string): Promise<void> {
         await this.open();
-        const option = this.page
-            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
-            .getByText(text, {exact: true});
-        await option.waitFor({state: 'visible'});
-        await option.click();
-        // Wait for dropdown to hide (ignore error if already hidden)
-        await this.page
-            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
-            .waitFor({state: 'hidden'})
-            .catch(() => {});
+        await this.dropdown.clickItem(text);
     }
 
     /**
@@ -82,17 +73,7 @@ export class SelectElementObject extends withClickable(BaseElementObject) {
      */
     async selectByIndex(index: number): Promise<void> {
         await this.open();
-        const option = this.page
-            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
-            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
-            .nth(index);
-        await option.waitFor({state: 'visible'});
-        await option.click();
-        // Wait for dropdown to hide (ignore error if already hidden)
-        await this.page
-            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
-            .waitFor({state: 'hidden'})
-            .catch(() => {});
+        await this.dropdown.clickItemByIndex(index);
     }
 
     /**
@@ -108,10 +89,8 @@ export class SelectElementObject extends withClickable(BaseElementObject) {
      */
     async getOptions(): Promise<string[]> {
         await this.open();
-        const texts = await this.page
-            .locator(TUI_DROPDOWN_LOCATORS.DROPDOWN)
-            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
-            .allInnerTexts();
+        const texts = await this.dropdown.getItems();
+
         return texts.map((t) => t.trim()).filter((t) => t);
     }
 
@@ -124,9 +103,11 @@ export class SelectElementObject extends withClickable(BaseElementObject) {
      * @example
      * const firstOption = await select.getOptionByIndex(0); // "Moscow"
      */
-    async getOptionByIndex(index: number = 0): Promise<string> {
+    async getOptionByIndex(index: number = 0): Promise<string | undefined> {
         await this.open();
-        return this.page.locator(TUI_DROPDOWN_LOCATORS.OPTION).nth(index).innerText();
+        const options = await this.dropdown.getItems();
+
+        return options[index];
     }
 }
 

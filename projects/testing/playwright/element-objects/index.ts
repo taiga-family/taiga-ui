@@ -4,3 +4,4 @@ export * from './input-range.eo';
 export * from './radio.eo';
 export * from './select.eo';
 export * from './switch.eo';
+export * from './dropdown.eo';
