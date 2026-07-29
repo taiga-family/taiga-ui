@@ -38,6 +38,30 @@ exports[`ng-update removed symbols warnings adds TODO comment for TUI_MONTH_FORM
 }
 `;
 
+exports[`ng-update removed symbols warnings adds TODO comment for TuiInputCopyComponent import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiInputCopyComponent} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly ref = TuiInputCopyComponent;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy
+                import {TuiInputCopyComponent} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly ref = TuiInputCopyComponent;
+                }
+            ",
+}
+`;
+
 exports[`ng-update removed symbols warnings adds TODO comment for TuiStaticRequestService import: test.ts 1`] = `
 {
   "0. Before": "

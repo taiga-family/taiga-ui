@@ -285,4 +285,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/actions-bar',
     },
+    {
+        name: 'TuiInputCopyComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
+    },
 ];
