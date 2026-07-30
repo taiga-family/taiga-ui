@@ -1259,6 +1259,27 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
+    // Color/gradient utils moved from @taiga-ui/cdk to @taiga-ui/editor in v5.
+    ...[
+        'tuiGetGradientData',
+        'tuiHexToRgb',
+        'tuiHexToRGBA',
+        'tuiHsvToRgb',
+        'tuiIsValidHex',
+        'tuiIsValidRgba',
+        'tuiParseColor',
+        'tuiParseGradient',
+        'tuiParseHex',
+        'tuiRgbaToHex',
+        'tuiRgbToHex',
+        'tuiRgbToHsv',
+        'tuiToGradient',
+        'TuiGradientDirection',
+        'TuiParsedGradient',
+    ].map((name) => ({
+        from: {name, moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name, moduleSpecifier: '@taiga-ui/editor'},
+    })),
     {
         from: [
             {
