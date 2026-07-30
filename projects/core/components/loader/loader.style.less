@@ -22,28 +22,30 @@
         overflow: hidden;
     }
 
+    // `--t-diameter` stays directly overridable only for backward compatibility
+    // TODO: drop direct `--t-diameter` overrides support in v6, keep only `--tui-diameter`
     &[data-size='xs'] {
-        --t-diameter: @circle-diameter[xs];
+        --t-diameter: var(--tui-diameter, @circle-diameter[xs]);
     }
 
     &[data-size='s'] {
-        --t-diameter: @circle-diameter[s];
+        --t-diameter: var(--tui-diameter, @circle-diameter[s]);
     }
 
     &[data-size='m'] {
-        --t-diameter: @circle-diameter[m];
+        --t-diameter: var(--tui-diameter, @circle-diameter[m]);
     }
 
     &[data-size='l'] {
-        --t-diameter: @circle-diameter[l];
+        --t-diameter: var(--tui-diameter, @circle-diameter[l]);
     }
 
     &[data-size='xl'] {
-        --t-diameter: @circle-diameter[xl];
+        --t-diameter: var(--tui-diameter, @circle-diameter[xl]);
     }
 
     &[data-size='xxl'] {
-        --t-diameter: @circle-diameter[xxl];
+        --t-diameter: var(--tui-diameter, @circle-diameter[xxl]);
     }
 }
 
