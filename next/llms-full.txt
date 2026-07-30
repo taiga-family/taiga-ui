@@ -30191,6 +30191,39 @@ tui-loader {
 }
 ```
 
+#### Custom size
+
+**Template:**
+```html
+<tui-loader [style.--tui-diameter.rem]="1.75" />
+<tui-loader [style.--tui-diameter.rem]="3" />
+<tui-loader [style.--tui-diameter.rem]="4.5" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLoader} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiLoader],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+```
+
 
 ### TypeScript
 
@@ -30217,6 +30250,7 @@ export default class Page {
         'With content overlay',
         'Options',
         'Custom stroke width',
+        'Custom size',
     ];
 
     protected loading = true;
