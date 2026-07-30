@@ -322,30 +322,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
-        name: 'TUI_ICON_STARTS',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TUI_ICON_STARTS has been removed (it was a deprecated alias of TUI_ICON_REGISTRY). Use TUI_ICON_REGISTRY from @taiga-ui/core instead.',
-    },
-    {
-        name: 'TUI_ICON_START_RESOLVER',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TUI_ICON_START_RESOLVER has been removed (it was a deprecated alias of TUI_ICON_RESOLVER). Use TUI_ICON_RESOLVER from @taiga-ui/core instead.',
-    },
-    {
-        name: 'tuiIsKeyboardFocusable',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            'tuiIsKeyboardFocusable has been removed. Use tuiIsFocusable from @taiga-ui/cdk instead.',
-    },
-    {
-        name: 'tuiIsMouseFocusable',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            'tuiIsMouseFocusable has been removed. Use tuiIsFocusable from @taiga-ui/cdk instead.',
-    },
-    {
         name: 'TUI_IS_TOUCH',
         moduleSpecifier: '@taiga-ui/cdk',
         message:

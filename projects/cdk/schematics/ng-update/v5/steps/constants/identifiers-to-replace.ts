@@ -3,6 +3,46 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TUI_ICON_STARTS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_REGISTRY',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ICON_START_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsKeyboardFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'tuiIsMouseFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'tuiIsFocusable',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputSliderModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },

@@ -10,7 +10,7 @@ describe('ng-update misc removed tokens and helpers warning', () => {
     });
 
     it(
-        'adds TODO comments for miscellaneous removed tokens, services and helpers',
+        'renames deprecated-alias tokens/helpers and adds TODO comments for the rest',
         migrate({
             component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
