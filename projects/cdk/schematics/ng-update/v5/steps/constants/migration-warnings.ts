@@ -299,6 +299,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             "TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme=\"dark\" in a template); components resolve the nearest [tuiTheme] ancestor.",
     },
     {
+        name: 'TuiLinkOptions',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'The TuiLinkOptions interface has been removed. The TUI_LINK_OPTIONS token and tuiLinkOptionsProvider still exist in @taiga-ui/core for configuration — type your options via the tuiLinkOptionsProvider() argument instead of the standalone interface.',
+    },
+    {
         name: 'TUI_DATA_LIST_ACCESSOR',
         moduleSpecifier: '@taiga-ui/core',
         message:
