@@ -234,7 +234,7 @@ exports[`ng-update migrateRemovedTokens migrates TUI_TOUCH_SUPPORTED usage: test
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform package instead.
+// TODO: (Taiga UI migration) TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().
                 import {TUI_TOUCH_SUPPORTED} from '@taiga-ui/legacy';
 
                 @Component({

@@ -187,7 +187,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TUI_TOUCH_SUPPORTED',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform package instead.',
+            'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
     },
     {
         name: 'TUI_IS_CHROMIUM',
