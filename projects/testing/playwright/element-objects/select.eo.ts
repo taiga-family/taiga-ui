@@ -15,7 +15,7 @@ import {TuiDropdownEO} from './dropdown.eo';
  * await citySelect.selectByText('Moscow');
  * await expect(citySelect.host).toHaveValue('Moscow');
  */
-export class SelectElementObject extends withClickable(TuiBaseEO) {
+export class TuiSelectEO extends withClickable(TuiBaseEO) {
     readonly dropdown = new TuiDropdownEO(this.page);
     /**
      * Returns the current value of the select (the `input.value`).
@@ -109,5 +109,3 @@ export class SelectElementObject extends withClickable(TuiBaseEO) {
         return options[index];
     }
 }
-
-export const TuiSelectEO = SelectElementObject;

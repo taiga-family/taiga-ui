@@ -19,7 +19,7 @@ import {withClickable} from '../mixins';
  * await agreeCheckbox.setChecked(true);
  * await expect(agreeCheckbox.host).toBeChecked();
  */
-export class CheckboxElementObject extends withClickable(TuiBaseEO) {
+export class TuiCheckboxEO extends withClickable(TuiBaseEO) {
     /**
      * Sets the checkbox to the specified state.
      *
@@ -51,5 +51,3 @@ export class CheckboxElementObject extends withClickable(TuiBaseEO) {
         return text?.trim() || null;
     }
 }
-
-export const TuiCheckboxEO = CheckboxElementObject;

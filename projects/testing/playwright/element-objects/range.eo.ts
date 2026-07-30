@@ -17,7 +17,7 @@ import {withFocusable} from '../mixins';
  * The component consists of two `<input type="range">` elements styled as thumbs.
  *
  * @example
- * const range = new RangeElementObject(page, 'tui-range');
+ * const range = new TuiRangeEO(page, 'tui-range');
  * await range.setValue([20, 80]);
  * expect(await range.getValue()).toEqual([20, 80]);
  *
@@ -26,7 +26,7 @@ import {withFocusable} from '../mixins';
  * await range.pressArrowRight();
  * await range.pressArrowRight();
  */
-class TuiRangeElementObject extends withFocusable(TuiBaseEO) {
+export class TuiRangeEO extends withFocusable(TuiBaseEO) {
     private readonly RANGE_START = TUI_RANGE_LOCATORS.RANGE_START;
     private readonly RANGE_END = TUI_RANGE_LOCATORS.RANGE_END;
 
@@ -34,10 +34,28 @@ class TuiRangeElementObject extends withFocusable(TuiBaseEO) {
      * Returns the current value of the range as [start, end].
      */
     async getValue(): Promise<[number, number]> {
+        const startValue = await this.getStartValue();
+        const endValue = await this.getEndValue();
+
+        return [startValue, endValue];
+    }
+
+    /**
+     * Returns the current value of the range start.
+     */
+    async getStartValue(): Promise<number> {
         const startValue = await this.host.locator(this.RANGE_START).inputValue();
+
+        return parseFloat(startValue);
+    }
+
+    /**
+     * Returns the current value of the range end.
+     */
+    async getEndValue(): Promise<number> {
         const endValue = await this.host.locator(this.RANGE_END).inputValue();
 
-        return [parseInt(startValue, 10), parseInt(endValue, 10)];
+        return parseFloat(endValue);
     }
 
     /**
@@ -75,16 +93,30 @@ class TuiRangeElementObject extends withFocusable(TuiBaseEO) {
     }
 
     /**
-     * Increases value of the focused thumb by one step.
+     * Increases value of the focused thumb through pressing arrowRight.
      */
     async stepUp(): Promise<void> {
+        await this.page.keyboard.press('ArrowUp');
+    }
+
+    /**
+     * Decreases value of the focused thumb through pressing arrowLeft.
+     */
+    async stepDown(): Promise<void> {
+        await this.page.keyboard.press('ArrowDown');
+    }
+
+    /**
+     * Increases value of the focused thumb through pressing arrowRight.
+     */
+    async stepRight(): Promise<void> {
         await this.page.keyboard.press('ArrowRight');
     }
 
     /**
-     * Decreases value of the focused thumb by one step.
+     * Decreases value of the focused thumb through pressing arrowLeft.
      */
-    async stepDown(): Promise<void> {
+    async stepLeft(): Promise<void> {
         await this.page.keyboard.press('ArrowLeft');
     }
 
@@ -117,5 +149,3 @@ class TuiRangeElementObject extends withFocusable(TuiBaseEO) {
         );
     }
 }
-
-export const TuiRangeEO = TuiRangeElementObject;

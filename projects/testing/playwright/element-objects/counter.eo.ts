@@ -16,7 +16,7 @@ import {TUI_COUNTER_LOCATORS} from '@taiga-ui/testing/locators';
  * await quantityCounter.increment();
  * expect(await quantityCounter.getValue()).toBe('6');
  */
-export class CounterElementObject extends withClickable(TuiBaseEO) {
+export class TuiCounterEO extends withClickable(TuiBaseEO) {
     /**
      * Returns the currently displayed counter value as a string.
      *
@@ -144,5 +144,3 @@ export class CounterElementObject extends withClickable(TuiBaseEO) {
         return this.host.getAttribute('data-appearance');
     }
 }
-
-export const TuiCounterEO = CounterElementObject;

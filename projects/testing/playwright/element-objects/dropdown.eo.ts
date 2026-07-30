@@ -23,12 +23,12 @@ import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
  * await page.locator('button').click();
  *
  * // Interact with dropdown content
- * const dropdown = new DropdownContentEO(page);
+ * const dropdown = new TuiDropdownEO(page);
  * await dropdown.waitForOpen();
  * await dropdown.clickItem('Settings');
  * await dropdown.waitForClose();
  */
-class TuiDropdownElementObject extends TuiBaseEO {
+export class TuiDropdownEO extends TuiBaseEO {
     constructor(page: Page, orderNumber: number = 0) {
         super(page, TUI_DROPDOWN_LOCATORS.DROPDOWN, orderNumber);
     }
@@ -116,5 +116,3 @@ class TuiDropdownElementObject extends TuiBaseEO {
         await this.waitForClose();
     }
 }
-
-export const TuiDropdownEO = TuiDropdownElementObject;

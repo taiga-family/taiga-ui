@@ -1,4 +1,4 @@
-import {TuiBaseElementObject} from '../element-objects/base.eo';
+import {TuiBaseEO} from '../element-objects/base.eo';
 import {TuiMixinConstructor} from '../types';
 
 /**
@@ -41,9 +41,7 @@ import {TuiMixinConstructor} from '../types';
  *   }
  * }
  */
-export function withClickable<T extends TuiMixinConstructor<TuiBaseElementObject>>(
-    Base: T,
-) {
+export function withClickable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
     return class extends Base {
         /**
          * Clicks the host element.

@@ -10,7 +10,7 @@ import {TuiRangeEO} from './range.eo';
  * Encapsulates interaction with a dual input range control: setting values,
  * retrieving the current range, and managing focus.
  *
- * Delegates slider interaction to `RangeElementObject`.
+ * Delegates slider interaction to `TuiInputRangeEO`.
  *
  * Supports:
  * - Setting values as a tuple [start, end]
@@ -19,11 +19,11 @@ import {TuiRangeEO} from './range.eo';
  * - Checking presence of the interactive slider
  *
  * @example
- * const priceRange = new InputRangeElementObject(page, 'tui-input-range[automation-id="price"]');
+ * const priceRange = new TuiInputRangeEO(page, 'tui-input-range[automation-id="price"]');
  * await priceRange.setValue([100, 500]);
  * expect(await priceRange.getValue()).toEqual([100, 500]);
  */
-class InputRangeElementObject extends withFocusable(withClickable(TuiBaseEO)) {
+export class TuiInputRangeEO extends withFocusable(withClickable(TuiBaseEO)) {
     private readonly rangeEO = new TuiRangeEO(this.page, TUI_RANGE_LOCATORS.HOST);
 
     /**
@@ -112,5 +112,3 @@ class InputRangeElementObject extends withFocusable(withClickable(TuiBaseEO)) {
         return locator.inputValue();
     }
 }
-
-export const TuiInputRangeEO = InputRangeElementObject;

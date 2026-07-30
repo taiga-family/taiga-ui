@@ -19,7 +19,7 @@ import {withClickable} from '../mixins';
  * await toggle.setChecked(true);
  * await expect(toggle.host).toBeChecked();
  */
-class SwitchElementObject extends withClickable(TuiBaseEO) {
+export class TuiSwitchEO extends withClickable(TuiBaseEO) {
     /**
      * Sets the switch to the specified state.
      *
@@ -35,5 +35,3 @@ class SwitchElementObject extends withClickable(TuiBaseEO) {
         await this.host.setChecked(checked);
     }
 }
-
-export const TuiSwitchEO = SwitchElementObject;

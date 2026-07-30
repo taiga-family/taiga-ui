@@ -15,7 +15,7 @@ import {withClickable} from '../mixins';
  * await radio.select();
  * await expect(radio.host).toBeChecked();
  */
-export class RadioElementObject extends withClickable(TuiBaseEO) {
+export class TuiRadioEO extends withClickable(TuiBaseEO) {
     /**
      * Selects the radio button if it is not already checked.
      *
@@ -46,5 +46,3 @@ export class RadioElementObject extends withClickable(TuiBaseEO) {
         return text?.trim() || null;
     }
 }
-
-export const TuiRadioEO = RadioElementObject;
