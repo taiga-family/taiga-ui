@@ -22,6 +22,7 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Zmniejsz wcięcie',
         unorderedList: 'Lista punktowana',
         orderedList: 'Lista numerowana',
+        taskList: 'Lista zadań',
         quote: 'Cytat',
         foreColor: 'Kolor tekstu',
         backColor: 'Kolor tła',

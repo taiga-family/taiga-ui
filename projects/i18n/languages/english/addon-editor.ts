@@ -22,6 +22,7 @@ export const TUI_ENGLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Outdent',
         unorderedList: 'Unordered list',
         orderedList: 'Ordered list',
+        taskList: 'Task list',
         quote: 'Quote',
         foreColor: 'Color',
         backColor: 'Background color',

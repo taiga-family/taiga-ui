@@ -226,12 +226,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
     },
     {
-        name: 'tuiHexToRgb',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
-    },
-    {
         name: 'TUI_TEXTFIELD_APPEARANCE',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -272,6 +266,36 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
+    },
+    {
+        name: 'TUI_DATE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date options instead: tuiInputDateOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_RANGE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_RANGE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-range options instead: tuiInputDateRangeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-time options instead: tuiInputDateTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-time options instead: tuiInputTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_ADAPTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.',
     },
     {
         name: 'AbstractTuiControl',
