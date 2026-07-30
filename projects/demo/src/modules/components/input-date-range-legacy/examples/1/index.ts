@@ -13,12 +13,10 @@ import {TuiInputDateRangeModule, TuiUnfinishedValidator} from '@taiga-ui/legacy'
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl(
-            new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
-        ),
-    });
-
     protected readonly min = new TuiDay(2018, 2, 25);
     protected readonly max = new TuiDay(2040, 2, 20);
+
+    protected readonly testForm = new FormGroup({
+        testValue: new FormControl(new TuiDayRange(this.min, this.min.append({day: 5}))),
+    });
 }
