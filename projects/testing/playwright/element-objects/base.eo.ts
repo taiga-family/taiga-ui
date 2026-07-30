@@ -18,16 +18,16 @@ export class TuiBaseElementObject {
         /**
          * Playwright Page instance
          */
-        protected readonly page: Page,
+        readonly page: Page,
         /**
          * Component selector (e.g. '[tuiSelect]', 'input[type="radio"][tuiRadio]')
          */
-        protected readonly selector: string,
+        readonly selector: string,
         /**
          * Zero-based index of the element if the selector matches multiple elements
          * (useful for components like tuiRadio that are often used in groups)
          */
-        protected readonly orderNumber: number = 0,
+        readonly orderNumber: number = 0,
     ) {}
 
     /**

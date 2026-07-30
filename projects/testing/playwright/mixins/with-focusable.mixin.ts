@@ -1,5 +1,5 @@
 import type {Locator} from '@playwright/test';
-import {MixinConstructor} from '../types';
+import {TuiMixinConstructor} from '../types';
 import {TuiBaseElementObject} from '../element-objects/base.eo';
 
 /**
@@ -29,7 +29,9 @@ import {TuiBaseElementObject} from '../element-objects/base.eo';
  *   }
  * }
  */
-export function withFocusable<T extends MixinConstructor<TuiBaseElementObject>>(Base: T) {
+export function withFocusable<T extends TuiMixinConstructor<TuiBaseElementObject>>(
+    Base: T,
+) {
     return class extends Base {
         /**
          * Focuses the specified element.

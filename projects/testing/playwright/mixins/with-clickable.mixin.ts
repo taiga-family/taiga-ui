@@ -1,5 +1,5 @@
 import {TuiBaseElementObject} from '../element-objects/base.eo';
-import {MixinConstructor} from '../types';
+import {TuiMixinConstructor} from '../types';
 
 /**
  * A mixin that adds basic click behavior to an ElementObject.
@@ -41,7 +41,9 @@ import {MixinConstructor} from '../types';
  *   }
  * }
  */
-export function withClickable<T extends MixinConstructor<TuiBaseElementObject>>(Base: T) {
+export function withClickable<T extends TuiMixinConstructor<TuiBaseElementObject>>(
+    Base: T,
+) {
     return class extends Base {
         /**
          * Clicks the host element.

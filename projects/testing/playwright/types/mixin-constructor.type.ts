@@ -1,1 +1,1 @@
-export type MixinConstructor<T = {}> = new (...args: any[]) => T;
+export type TuiMixinConstructor<T = {}> = new (...args: any[]) => T;
