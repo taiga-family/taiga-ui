@@ -22,6 +22,7 @@ export const TUI_GREEK_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Αφαίρεση εσοχής',
         unorderedList: 'Μη ταξινομημένη λίστα',
         orderedList: 'Ταξινομημένη λίστα',
+        taskList: 'Λίστα εργασιών',
         quote: 'Παράθεση',
         foreColor: 'Χρώμα',
         backColor: 'Χρώμα φόντου',

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.17.0](https://github.com/taiga-family/taiga-ui/compare/v5.16.0...v5.17.0) (2026-07-27)
+
+### 🐞 Bug Fixes
+
+- **kit:** `Textarea` should be resilient to global box-sizing overrides
+  ([#14604](https://github.com/taiga-family/taiga-ui/issues/14604))
+  ([1636ba5](https://github.com/taiga-family/taiga-ui/commit/1636ba5c1d77aad71aee94f4f5dd4523b37272e1))
+- **kit:** preview does not reset zoom/rotation on nested content changes
+  ([#14605](https://github.com/taiga-family/taiga-ui/issues/14605))
+  ([0b9ac5b](https://github.com/taiga-family/taiga-ui/commit/0b9ac5b7434c15fca0978c32e9c73ade41d7980c))
+
 ## [5.16.0](https://github.com/taiga-family/taiga-ui/compare/v5.15.0...v5.16.0) (2026-07-20)
 
 ### 🐞 Bug Fixes
