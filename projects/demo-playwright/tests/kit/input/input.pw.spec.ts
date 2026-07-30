@@ -17,7 +17,7 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
         const example = document.demo;
-        const input = example.locator('input[tuiInput]');
+        const input = example.locator(TUI_INPUT_LOCATORS.INPUT);
 
         await input.fill('123');
         await input.blur();
@@ -46,13 +46,16 @@ test.describe('Input', () => {
 
         await expect.soft(example).toHaveScreenshot('2-horizontally-scrolled.png');
 
-        await page.evaluate(() => {
-            const input = window.document.querySelector(TUI_INPUT_LOCATORS.INPUT);
+        await page.evaluate(
+            ({inputSelector}) => {
+                const input = window.document.querySelector(inputSelector);
 
-            if (input) {
-                input.scrollLeft = input.clientWidth / 2;
-            }
-        });
+                if (input) {
+                    input.scrollLeft = input.clientWidth / 2;
+                }
+            },
+            {inputSelector: TUI_INPUT_LOCATORS.INPUT},
+        );
 
         await expect.soft(example).toHaveScreenshot('3-horizontally-scrolled.png');
     });
@@ -161,7 +164,7 @@ test.describe('Input', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator(TUI_INPUT_LOCATORS.TOOLTIP).first().hover();
 
-        await expect(page.locator('tui-hint')).toBeAttached();
+        await expect(page.locator(TUI_INPUT_LOCATORS.HINT)).toBeAttached();
         await expect.soft(example).toHaveScreenshot('input-hint.png');
     });
 
@@ -172,13 +175,13 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const tooltip = example.locator('tui-icon[tuiTooltip]').first();
-            const input = example.locator('input[tuiInput]').first();
+            const tooltip = example.locator(TUI_INPUT_LOCATORS.TOOLTIP).first();
+            const input = example.locator(TUI_INPUT_LOCATORS.INPUT).first();
 
             await tooltip.scrollIntoViewIfNeeded();
             await tooltip.click();
 
-            await expect(page.locator('tui-hint')).toBeAttached();
+            await expect(page.locator(TUI_INPUT_LOCATORS.HINT)).toBeAttached();
             await expect(input).not.toBeFocused();
         });
     });

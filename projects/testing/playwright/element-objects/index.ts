@@ -5,3 +5,4 @@ export * from './radio.eo';
 export * from './select.eo';
 export * from './switch.eo';
 export * from './dropdown.eo';
+export * from './range.eo';
