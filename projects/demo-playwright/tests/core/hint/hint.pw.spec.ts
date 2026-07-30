@@ -203,6 +203,10 @@ test.describe('TuiHint', () => {
         await expect(page.locator('tui-hint')).toBeVisible();
 
         await page.getByRole('button', {name: 'Next'}).click();
-        await expect(page.getByText('You can have images!')).toBeVisible();
+        await expect(
+            page.locator('tui-hint').getByRole('heading', {
+                name: 'You can have images! Or any content really',
+            }),
+        ).toBeVisible();
     });
 });
