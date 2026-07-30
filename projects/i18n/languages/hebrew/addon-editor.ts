@@ -22,6 +22,7 @@ export const TUI_HEBREW_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'שקע החוצה',
         unorderedList: 'רשימה לא מסודרת',
         orderedList: 'רשימה מסודרת',
+        taskList: 'רשימת משימות',
         quote: 'ציטוט',
         foreColor: 'צֶבַע',
         backColor: 'צבע רקע',
