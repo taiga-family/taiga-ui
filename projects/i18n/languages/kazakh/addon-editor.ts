@@ -22,6 +22,7 @@ export const TUI_KAZAKH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Ашық',
         unorderedList: 'Реттелмеген тізім',
         orderedList: 'Реттелген тізім',
+        taskList: 'Тапсырмалар тізімі',
         quote: 'Дәйексөз',
         foreColor: 'Түс',
         backColor: 'Фон түсі',

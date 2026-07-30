@@ -22,6 +22,13 @@ exports[`ng-update TuiTextfield to TuiInput identifier migration should rename T
 }
 `;
 
+exports[`ng-update TuiTextfield to TuiInput template migration should rename native select tuiTextfield to tuiSelect (not tuiInput): test.html 1`] = `
+{
+  "0. Before": "<select tuiTextfield></select>",
+  "1. After": "<select tuiSelect></select>",
+}
+`;
+
 exports[`ng-update TuiTextfield to TuiInput template migration should rename tuiTextfield inside tui-textfield tag: test.html 1`] = `
 {
   "0. Before": "<tui-textfield><input tuiTextfield /></tui-textfield>",

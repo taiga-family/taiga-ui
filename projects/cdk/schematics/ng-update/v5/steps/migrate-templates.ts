@@ -40,6 +40,7 @@ import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
 import {migrateInputColor} from './templates/migrate-input-color';
+import {migrateInputCopy} from './templates/migrate-input-copy';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
@@ -120,6 +121,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateInputNumber,
         migrateInputDateRange,
         migrateInputColor,
+        migrateInputCopy,
         migrateInputRange,
         migrateMultiSelect,
         migrateSelect,
