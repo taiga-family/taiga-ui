@@ -15,7 +15,6 @@ describe('ng-update removed cdk utilities warning', () => {
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {
-                    EMPTY_ARRAY,
                     EMPTY_QUERY,
                     tuiFlatLength,
                     tuiIsFalsy,
@@ -23,7 +22,6 @@ describe('ng-update removed cdk utilities warning', () => {
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly items = EMPTY_ARRAY;
                     protected readonly query = EMPTY_QUERY;
                     protected readonly falsy = tuiIsFalsy(0);
                     protected readonly length = tuiFlatLength([[1], [2, 3]]);

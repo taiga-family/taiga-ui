@@ -5,7 +5,6 @@ exports[`ng-update removed cdk utilities warning adds TODO comments for the remo
   "0. Before": "
                 import {Component} from '@angular/core';
                 import {
-                    EMPTY_ARRAY,
                     EMPTY_QUERY,
                     tuiFlatLength,
                     tuiIsFalsy,
@@ -13,7 +12,6 @@ exports[`ng-update removed cdk utilities warning adds TODO comments for the remo
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly items = EMPTY_ARRAY;
                     protected readonly query = EMPTY_QUERY;
                     protected readonly falsy = tuiIsFalsy(0);
                     protected readonly length = tuiFlatLength([[1], [2, 3]]);
@@ -22,11 +20,9 @@ exports[`ng-update removed cdk utilities warning adds TODO comments for the remo
   "1. After": "
                 import {Component} from '@angular/core';
                 import {
-// TODO: (Taiga UI migration) EMPTY_ARRAY has been removed. Use an inline empty array literal [] instead.
-                    EMPTY_ARRAY,
 // TODO: (Taiga UI migration) EMPTY_QUERY has been removed. Use new QueryList() instead, or migrate to the signal-based queries viewChildren()/contentChildren().
                     EMPTY_QUERY,
-// TODO: (Taiga UI migration) tuiFlatLength has been removed. Inline the calculation instead: array.reduce((count, section) => count + section.length, 0).
+// TODO: (Taiga UI migration) tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.
                     tuiFlatLength,
 // TODO: (Taiga UI migration) tuiIsFalsy has been removed. Replace it with a plain negation predicate: (value) => !value.
                     tuiIsFalsy,
@@ -34,7 +30,6 @@ exports[`ng-update removed cdk utilities warning adds TODO comments for the remo
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly items = EMPTY_ARRAY;
                     protected readonly query = EMPTY_QUERY;
                     protected readonly falsy = tuiIsFalsy(0);
                     protected readonly length = tuiFlatLength([[1], [2, 3]]);
