@@ -42,9 +42,9 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
   "1. After": "
                 import {Component, inject} from '@angular/core';
                 import {
-// TODO: (Taiga UI migration) TUI_INPUT_CARD_DEFAULT_OPTIONS has been removed. TuiInputCard is now configured via component inputs; there is no options token in v5.
+// TODO: (Taiga UI migration) TUI_INPUT_CARD_DEFAULT_OPTIONS has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.
                     TUI_INPUT_CARD_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options interface in v5.
+// TODO: (Taiga UI migration) TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.
                     type TuiInputCardOptions,
                 } from '@taiga-ui/addon-commerce';
 
@@ -102,58 +102,48 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {
                     TUI_DATA_LIST_ACCESSOR,
                     TUI_HINT_PROVIDERS,
-                    TUI_THEME,
                     TuiDataListDirective,
                     tuiAsDataList,
                     tuiAsDataListAccessor,
-                    type TuiLinkOptions,
                 } from '@taiga-ui/core';
 
                 @Component({
                     providers: [TUI_HINT_PROVIDERS],
                 })
                 export class TestComponent {
-                    protected readonly theme = inject(TUI_THEME);
                     protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
                     protected readonly as = [
                         tuiAsDataList,
                         tuiAsDataListAccessor,
                         TuiDataListDirective,
                     ];
-                    protected readonly options: TuiLinkOptions | null = null;
                 }
             ",
   "1. After": "
                 import {Component, inject} from '@angular/core';
                 import {
-// TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. Use TUI_DATA_LIST_HOST together with tuiAsDataListHost from @taiga-ui/core instead.
+// TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. It exposed the option list; TUI_DATA_LIST_HOST is a different entity (it receives the selected value), so it is NOT a drop-in replacement. Obtain the accessor from the <tui-data-list> component, which implements TuiDataListAccessor.
                     TUI_DATA_LIST_ACCESSOR,
 // TODO: (Taiga UI migration) TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.
                     TUI_HINT_PROVIDERS,
-// TODO: (Taiga UI migration) TUI_THEME has been removed. The active theme is now controlled via the tuiTheme HTML attribute (managed by TuiRoot), not an injection token.
-                    TUI_THEME,
 // TODO: (Taiga UI migration) TuiDataListDirective has been removed. Use TuiDataList from @taiga-ui/core instead.
                     TuiDataListDirective,
-// TODO: (Taiga UI migration) tuiAsDataList has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.
+// TODO: (Taiga UI migration) tuiAsDataList has been removed. tuiAsDataListHost is a different concept (it registers a value host, not an option-list accessor), so it is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.
                     tuiAsDataList,
-// TODO: (Taiga UI migration) tuiAsDataListAccessor has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.
+// TODO: (Taiga UI migration) tuiAsDataListAccessor has been removed. tuiAsDataListHost is a different concept (value host, not option-list accessor) and is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.
                     tuiAsDataListAccessor,
-// TODO: (Taiga UI migration) TuiLinkOptions has been removed. TuiLink is now configured through CSS variables and attributes. See https://taiga-ui.dev/components/link
-                    type TuiLinkOptions,
                 } from '@taiga-ui/core';
 
                 @Component({
                     providers: [TUI_HINT_PROVIDERS],
                 })
                 export class TestComponent {
-                    protected readonly theme = inject(TUI_THEME);
                     protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
                     protected readonly as = [
                         tuiAsDataList,
                         tuiAsDataListAccessor,
                         TuiDataListDirective,
                     ];
-                    protected readonly options: TuiLinkOptions | null = null;
                 }
             ",
 }
@@ -181,9 +171,9 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {
 // TODO: (Taiga UI migration) TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.
                     TuiActionBarDirective,
-// TODO: (Taiga UI migration) TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input-password
+// TODO: (Taiga UI migration) TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input
                     TuiInputPassword,
-// TODO: (Taiga UI migration) TuiSliderOptions has been removed. TuiSlider is now configured through CSS variables. See https://taiga-ui.dev/components/slider
+// TODO: (Taiga UI migration) TuiSliderOptions has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
                     type TuiSliderOptions,
                 } from '@taiga-ui/kit';
 

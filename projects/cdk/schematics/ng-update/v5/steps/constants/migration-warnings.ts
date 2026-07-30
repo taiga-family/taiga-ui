@@ -31,18 +31,13 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiFormatDatePipe has been removed. Use Angular built-in Date pipe instead. See https://angular.dev/api/common/DatePipe',
     },
-    {
-        name: 'TUI_SLIDER_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
-    },
-    {
-        name: 'tuiSliderOptionsProvider',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
-    },
+    ...['TUI_SLIDER_OPTIONS', 'tuiSliderOptionsProvider', 'TuiSliderOptions'].map(
+        (name) => ({
+            name,
+            moduleSpecifier: '@taiga-ui/kit',
+            message: `${name} has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider`,
+        }),
+    ),
     {
         name: 'TuiToCountryCodePipe',
         moduleSpecifier: '@taiga-ui/legacy',
@@ -298,34 +293,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
-        name: 'TUI_THEME',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TUI_THEME has been removed. The active theme is now controlled via the tuiTheme HTML attribute (managed by TuiRoot), not an injection token.',
-    },
-    {
-        name: 'TuiLinkOptions',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiLinkOptions has been removed. TuiLink is now configured through CSS variables and attributes. See https://taiga-ui.dev/components/link',
-    },
-    {
         name: 'TUI_DATA_LIST_ACCESSOR',
         moduleSpecifier: '@taiga-ui/core',
         message:
-            'TUI_DATA_LIST_ACCESSOR has been removed. Use TUI_DATA_LIST_HOST together with tuiAsDataListHost from @taiga-ui/core instead.',
+            'TUI_DATA_LIST_ACCESSOR has been removed. It exposed the option list; TUI_DATA_LIST_HOST is a different entity (it receives the selected value), so it is NOT a drop-in replacement. Obtain the accessor from the <tui-data-list> component, which implements TuiDataListAccessor.',
     },
     {
         name: 'tuiAsDataList',
         moduleSpecifier: '@taiga-ui/core',
         message:
-            'tuiAsDataList has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.',
+            'tuiAsDataList has been removed. tuiAsDataListHost is a different concept (it registers a value host, not an option-list accessor), so it is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.',
     },
     {
         name: 'tuiAsDataListAccessor',
         moduleSpecifier: '@taiga-ui/core',
         message:
-            'tuiAsDataListAccessor has been removed. Use tuiAsDataListHost from @taiga-ui/core instead.',
+            'tuiAsDataListAccessor has been removed. tuiAsDataListHost is a different concept (value host, not option-list accessor) and is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.',
     },
     {
         name: 'TuiDataListDirective',
@@ -343,13 +326,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiInputPassword',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input-password',
-    },
-    {
-        name: 'TuiSliderOptions',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TuiSliderOptions has been removed. TuiSlider is now configured through CSS variables. See https://taiga-ui.dev/components/slider',
+            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input',
     },
     {
         name: 'TuiActionBarDirective',
@@ -375,18 +352,11 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.',
     },
-    {
-        name: 'TUI_INPUT_CARD_DEFAULT_OPTIONS',
+    ...['TUI_INPUT_CARD_DEFAULT_OPTIONS', 'TuiInputCardOptions'].map((name) => ({
+        name,
         moduleSpecifier: '@taiga-ui/addon-commerce',
-        message:
-            'TUI_INPUT_CARD_DEFAULT_OPTIONS has been removed. TuiInputCard is now configured via component inputs; there is no options token in v5.',
-    },
-    {
-        name: 'TuiInputCardOptions',
-        moduleSpecifier: '@taiga-ui/addon-commerce',
-        message:
-            'TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options interface in v5.',
-    },
+        message: `${name} has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.`,
+    })),
     {
         name: 'TUI_TABLE_PROVIDER',
         moduleSpecifier: '@taiga-ui/addon-table',
