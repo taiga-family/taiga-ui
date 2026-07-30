@@ -226,6 +226,30 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
     },
     {
+        name: 'tuiHexToRgb',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
+    },
+    {
+        name: 'TuiDroppable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiDroppable has been removed without a direct replacement. Use the native HTML Drag and Drop API (dragover/drop events) instead of the [tuiDroppableDropped]/[tuiDroppableDragOverChange] outputs.',
+    },
+    {
+        name: 'TuiAnimatedParent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimatedParent has been removed. Enter/leave animations are now handled by the TuiAnimated directive ([tuiAnimated]) from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated',
+    },
+    {
+        name: 'tuiValueBinding',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiValueBinding has been removed without a direct replacement. Manage the value signal manually where you used it.',
+    },
+    {
         name: 'TUI_TEXTFIELD_APPEARANCE',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -272,6 +296,30 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'TuiAnimationPipe (| tuiAnimation) has been removed. It scaled Angular animation params by the global animation speed. Build the params in the component instead: inject TUI_ANIMATIONS_SPEED and multiply your duration by tuiGetDuration(speed) (both still in @taiga-ui/core).',
+    },
+    {
+        name: 'TuiImgLazyLoading',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiImgLazyLoading has been removed. Native lazy loading is enough: keep loading="lazy" on the <img> and drop the import. If you used the tuiLoading="lazy" attribute, replace it with loading="lazy".',
+    },
+    {
+        name: 'TuiLazyLoadingService',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiLazyLoadingService has been removed. Lazy loading now relies on the native <img loading="lazy"> attribute, so no service is required.',
+    },
+    {
+        name: 'TuiClickOutside',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiClickOutside has been removed. Use the TuiActiveZone directive from @taiga-ui/cdk: bind (tuiActiveZoneChange) on the element — it emits `false` when focus/pointer leaves the zone (a boolean, not a click event), so trigger your outside-click logic on the false value.',
+    },
+    {
+        name: 'TuiFor',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
     },
     {
         name: 'TUI_DATE_VALUE_TRANSFORMER',
