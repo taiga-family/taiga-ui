@@ -176,7 +176,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {
 // TODO: (Taiga UI migration) TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.
                     TuiActionBarDirective,
-// TODO: (Taiga UI migration) TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input
+// TODO: (Taiga UI migration) TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input#input-password
                     TuiInputPassword,
 // TODO: (Taiga UI migration) TuiSliderOptions has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
                     type TuiSliderOptions,

@@ -332,7 +332,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiInputPassword',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input',
+            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input#input-password',
     },
     {
         name: 'TuiActionBarDirective',
