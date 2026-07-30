@@ -301,18 +301,18 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiAccordionItem',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItem (<tui-accordion-item>) has been removed. The accordion was restructured: use TuiAccordion with a tui-expand-based item template from @taiga-ui/kit. See https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItem (<tui-accordion-item>) has been removed. Inside <tui-accordion>, declare each item as a `<button [tuiAccordion]="open">header</button>` followed by a `<tui-expand>content</tui-expand>`; iterate items with the `*tuiItem` structural directive. See https://taiga-ui.dev/components/accordion',
     },
     {
         name: 'TuiAccordionItemContent',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItemContent ([tuiAccordionItemContent]) has been removed. Lazy accordion content is now projected differently in the restructured TuiAccordion. See https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItemContent ([tuiAccordionItemContent]) has been removed. Put the (lazy) content inside the `<tui-expand>` that follows the `<button [tuiAccordion]>` toggle. See https://taiga-ui.dev/components/accordion',
     },
     {
         name: 'TuiAccordionItemEagerContent',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. See the restructured TuiAccordion. https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. Eager content now lives directly inside the `<tui-expand>` that follows the `<button [tuiAccordion]>` toggle. See https://taiga-ui.dev/components/accordion',
     },
 ];
