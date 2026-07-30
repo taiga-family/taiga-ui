@@ -22,6 +22,7 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Sin sangría',
         unorderedList: 'Lista desordenada',
         orderedList: 'Lista ordenada',
+        taskList: 'Lista de tareas',
         quote: 'Cita',
         foreColor: 'Color',
         backColor: 'Color de fondo',
