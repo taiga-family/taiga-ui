@@ -14,11 +14,7 @@ describe('ng-update removed cdk utilities warning', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {
-                    EMPTY_QUERY,
-                    tuiFlatLength,
-                    tuiIsFalsy,
-                } from '@taiga-ui/cdk';
+                import {EMPTY_QUERY, tuiFlatLength, tuiIsFalsy} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class TestComponent {
