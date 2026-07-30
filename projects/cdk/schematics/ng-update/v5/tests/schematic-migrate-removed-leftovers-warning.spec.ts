@@ -17,6 +17,7 @@ describe('ng-update leftover removed symbols warnings (#11917)', () => {
                 import {
                     TUI_DATA_LIST_ACCESSOR,
                     TUI_HINT_PROVIDERS,
+                    TUI_THEME,
                     TuiDataListDirective,
                     tuiAsDataList,
                     tuiAsDataListAccessor,
@@ -26,6 +27,7 @@ describe('ng-update leftover removed symbols warnings (#11917)', () => {
                     providers: [TUI_HINT_PROVIDERS],
                 })
                 export class TestComponent {
+                    protected readonly theme = inject(TUI_THEME);
                     protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
                     protected readonly as = [
                         tuiAsDataList,

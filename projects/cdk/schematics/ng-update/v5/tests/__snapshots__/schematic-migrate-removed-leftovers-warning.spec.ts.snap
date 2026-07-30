@@ -102,6 +102,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {
                     TUI_DATA_LIST_ACCESSOR,
                     TUI_HINT_PROVIDERS,
+                    TUI_THEME,
                     TuiDataListDirective,
                     tuiAsDataList,
                     tuiAsDataListAccessor,
@@ -111,6 +112,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                     providers: [TUI_HINT_PROVIDERS],
                 })
                 export class TestComponent {
+                    protected readonly theme = inject(TUI_THEME);
                     protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
                     protected readonly as = [
                         tuiAsDataList,
@@ -126,6 +128,8 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                     TUI_DATA_LIST_ACCESSOR,
 // TODO: (Taiga UI migration) TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.
                     TUI_HINT_PROVIDERS,
+// TODO: (Taiga UI migration) TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme="dark" in a template); components resolve the nearest [tuiTheme] ancestor.
+                    TUI_THEME,
 // TODO: (Taiga UI migration) TuiDataListDirective has been removed. Use TuiDataList from @taiga-ui/core instead.
                     TuiDataListDirective,
 // TODO: (Taiga UI migration) tuiAsDataList has been removed. tuiAsDataListHost is a different concept (it registers a value host, not an option-list accessor), so it is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.
@@ -138,6 +142,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                     providers: [TUI_HINT_PROVIDERS],
                 })
                 export class TestComponent {
+                    protected readonly theme = inject(TUI_THEME);
                     protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
                     protected readonly as = [
                         tuiAsDataList,

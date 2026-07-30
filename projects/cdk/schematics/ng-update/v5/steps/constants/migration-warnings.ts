@@ -293,6 +293,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
+        name: 'TUI_THEME',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            "TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme=\"dark\" in a template); components resolve the nearest [tuiTheme] ancestor.",
+    },
+    {
         name: 'TUI_DATA_LIST_ACCESSOR',
         moduleSpecifier: '@taiga-ui/core',
         message:
