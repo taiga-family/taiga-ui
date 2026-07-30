@@ -210,6 +210,7 @@ export interface TuiLanguageEditor {
         strikeThrough: string;
         subscript: string;
         superscript: string;
+        taskList: string;
         tex: string;
         underline: string;
         undo: string;

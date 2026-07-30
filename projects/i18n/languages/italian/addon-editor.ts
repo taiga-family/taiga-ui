@@ -22,6 +22,7 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Elimina rientro',
         unorderedList: 'Lista non ordinata',
         orderedList: 'Lista ordinata',
+        taskList: 'Lista di attività',
         quote: 'Virgolette',
         foreColor: 'Colore',
         backColor: 'Colore sfondo',
