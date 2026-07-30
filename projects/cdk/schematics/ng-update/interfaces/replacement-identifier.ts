@@ -12,7 +12,17 @@ export interface ReplacementIdentifier {
     };
 }
 
+interface ReplacementIdentifierMultiTarget
+    extends Omit<ReplacementIdentifier['to'], 'moduleSpecifier'> {
+    /**
+     * Module to import the replacement from. Omit for a literal replacement
+     * (e.g. `[]`) — usages are rewritten and the old import is dropped without
+     * adding a new one.
+     */
+    readonly moduleSpecifier?: string;
+}
+
 export interface ReplacementIdentifierMulti {
     readonly from: Array<ReplacementIdentifier['from']> | ReplacementIdentifier['from'];
-    readonly to: Array<ReplacementIdentifier['to']> | ReplacementIdentifier['to'];
+    readonly to: ReplacementIdentifierMultiTarget[] | ReplacementIdentifierMultiTarget;
 }
