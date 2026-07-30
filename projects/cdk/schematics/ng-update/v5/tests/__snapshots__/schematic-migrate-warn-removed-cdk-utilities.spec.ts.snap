@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) replaces removed e2e-detection tokens with WA_IS_E2E: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_IS_CYPRESS, TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly cypress = TUI_IS_CYPRESS;
+                    protected readonly playwright = TUI_IS_PLAYWRIGHT;
+                }
+            ",
+  "1. After": "import { WA_IS_E2E } from "@ng-web-apis/platform";
+
+                export class TestComponent {
+                    protected readonly cypress = WA_IS_E2E;
+                    protected readonly playwright = WA_IS_E2E;
+                }
+            ",
+}
+`;
+
 exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on removed cdk DOM utilities: test.ts 1`] = `
 {
   "0. Before": "
@@ -55,16 +75,12 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
                 import {
                     TUI_ALLOW_SIGNAL_WRITES,
                     TUI_BASE_HREF,
-                    TUI_IS_CYPRESS,
-                    TUI_IS_PLAYWRIGHT,
                     TUI_MOBILE_REGEXP,
                 } from '@taiga-ui/cdk';
 
                 export class TestComponent {
                     protected readonly a = TUI_ALLOW_SIGNAL_WRITES;
                     protected readonly b = TUI_BASE_HREF;
-                    protected readonly c = TUI_IS_CYPRESS;
-                    protected readonly d = TUI_IS_PLAYWRIGHT;
                     protected readonly e = TUI_MOBILE_REGEXP;
                 }
             ",
@@ -74,10 +90,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
                     TUI_ALLOW_SIGNAL_WRITES,
 // TODO: (Taiga UI migration) TUI_BASE_HREF has been removed. Use APP_BASE_HREF from @angular/common instead.
                     TUI_BASE_HREF,
-// TODO: (Taiga UI migration) TUI_IS_CYPRESS has been removed. Detect the Cypress environment yourself (e.g. 'cypress' in window) if you still need it.
-                    TUI_IS_CYPRESS,
-// TODO: (Taiga UI migration) TUI_IS_PLAYWRIGHT has been removed. Detect the Playwright environment yourself if you still need it.
-                    TUI_IS_PLAYWRIGHT,
 // TODO: (Taiga UI migration) TUI_MOBILE_REGEXP has been removed. Provide your own mobile user-agent RegExp if you still need it.
                     TUI_MOBILE_REGEXP,
                 } from '@taiga-ui/cdk';
@@ -85,8 +97,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
                 export class TestComponent {
                     protected readonly a = TUI_ALLOW_SIGNAL_WRITES;
                     protected readonly b = TUI_BASE_HREF;
-                    protected readonly c = TUI_IS_CYPRESS;
-                    protected readonly d = TUI_IS_PLAYWRIGHT;
                     protected readonly e = TUI_MOBILE_REGEXP;
                 }
             ",
@@ -97,7 +107,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
 {
   "0. Before": "
                 import {
-                    changeDateSeparator,
                     tuiGetOriginalArrayFromQueryList,
                     tuiInjectId,
                     tuiIsValidUrl,
@@ -109,7 +118,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
                 } from '@taiga-ui/cdk';
 
                 export class TestComponent {
-                    protected readonly sep = changeDateSeparator;
                     protected readonly arr = tuiGetOriginalArrayFromQueryList;
                     protected readonly id = tuiInjectId;
                     protected readonly url = tuiIsValidUrl;
@@ -122,8 +130,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
             ",
   "1. After": "
                 import {
-// TODO: (Taiga UI migration) changeDateSeparator has been removed. Replace the separator inline, e.g. value.replaceAll('.', '/').
-                    changeDateSeparator,
 // TODO: (Taiga UI migration) tuiGetOriginalArrayFromQueryList has been removed. Use QueryList.toArray() instead.
                     tuiGetOriginalArrayFromQueryList,
 // TODO: (Taiga UI migration) tuiInjectId has been removed. Use tuiGenerateId() from @taiga-ui/cdk instead.
@@ -143,7 +149,6 @@ exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on 
                 } from '@taiga-ui/cdk';
 
                 export class TestComponent {
-                    protected readonly sep = changeDateSeparator;
                     protected readonly arr = tuiGetOriginalArrayFromQueryList;
                     protected readonly id = tuiInjectId;
                     protected readonly url = tuiIsValidUrl;

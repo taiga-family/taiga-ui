@@ -16,16 +16,12 @@ describe('ng-update warn on removed cdk utilities/tokens/types (#11917)', () => 
                 import {
                     TUI_ALLOW_SIGNAL_WRITES,
                     TUI_BASE_HREF,
-                    TUI_IS_CYPRESS,
-                    TUI_IS_PLAYWRIGHT,
                     TUI_MOBILE_REGEXP,
                 } from '@taiga-ui/cdk';
 
                 export class TestComponent {
                     protected readonly a = TUI_ALLOW_SIGNAL_WRITES;
                     protected readonly b = TUI_BASE_HREF;
-                    protected readonly c = TUI_IS_CYPRESS;
-                    protected readonly d = TUI_IS_PLAYWRIGHT;
                     protected readonly e = TUI_MOBILE_REGEXP;
                 }
             `,
@@ -89,7 +85,6 @@ describe('ng-update warn on removed cdk utilities/tokens/types (#11917)', () => 
         migrate({
             component: /* TypeScript */ `
                 import {
-                    changeDateSeparator,
                     tuiGetOriginalArrayFromQueryList,
                     tuiInjectId,
                     tuiIsValidUrl,
@@ -101,7 +96,6 @@ describe('ng-update warn on removed cdk utilities/tokens/types (#11917)', () => 
                 } from '@taiga-ui/cdk';
 
                 export class TestComponent {
-                    protected readonly sep = changeDateSeparator;
                     protected readonly arr = tuiGetOriginalArrayFromQueryList;
                     protected readonly id = tuiInjectId;
                     protected readonly url = tuiIsValidUrl;
@@ -110,6 +104,20 @@ describe('ng-update warn on removed cdk utilities/tokens/types (#11917)', () => 
                     protected readonly int = tuiToInteger;
                     protected readonly rad = tuiToRadians;
                     protected readonly uniq = tuiUniqBy;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'replaces removed e2e-detection tokens with WA_IS_E2E',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_IS_CYPRESS, TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly cypress = TUI_IS_CYPRESS;
+                    protected readonly playwright = TUI_IS_PLAYWRIGHT;
                 }
             `,
         }),

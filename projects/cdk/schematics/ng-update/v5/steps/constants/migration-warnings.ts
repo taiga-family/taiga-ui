@@ -334,18 +334,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_BASE_HREF has been removed. Use APP_BASE_HREF from @angular/common instead.',
     },
     {
-        name: 'TUI_IS_CYPRESS',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            "TUI_IS_CYPRESS has been removed. Detect the Cypress environment yourself (e.g. 'cypress' in window) if you still need it.",
-    },
-    {
-        name: 'TUI_IS_PLAYWRIGHT',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            'TUI_IS_PLAYWRIGHT has been removed. Detect the Playwright environment yourself if you still need it.',
-    },
-    {
         name: 'TUI_MOBILE_REGEXP',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
@@ -385,12 +373,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiValuesOf',
         moduleSpecifier: '@taiga-ui/cdk',
         message: 'TuiValuesOf has been removed. Inline `T[keyof T]` where you used it.',
-    },
-    {
-        name: 'changeDateSeparator',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            "changeDateSeparator has been removed. Replace the separator inline, e.g. value.replaceAll('.', '/').",
     },
     {
         name: 'tuiDirectiveListener',

@@ -3,6 +3,26 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'TUI_IS_CYPRESS',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_E2E',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_PLAYWRIGHT',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_E2E',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputSliderModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
