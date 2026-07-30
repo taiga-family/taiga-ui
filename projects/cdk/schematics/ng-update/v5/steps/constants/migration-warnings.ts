@@ -232,6 +232,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
     },
     {
+        name: 'TuiDroppable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiDroppable has been removed without a direct replacement. Use the native HTML Drag and Drop API (dragover/drop events) instead of the [tuiDroppableDropped]/[tuiDroppableDragOverChange] outputs.',
+    },
+    {
+        name: 'TuiAnimatedParent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimatedParent has been removed. Enter/leave animations are now handled by the TuiAnimated directive ([tuiAnimated]) from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated',
+    },
+    {
+        name: 'tuiValueBinding',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiValueBinding has been removed without a direct replacement. Manage the value signal manually where you used it.',
+    },
+    {
         name: 'TUI_TEXTFIELD_APPEARANCE',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -248,6 +266,90 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
+    },
+    {
+        name: 'TuiKeysPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiKeysPipe (| tuiKeys) has been removed. It returned Object.keys(value); use the built-in Angular keyvalue pipe, or expose Object.keys(value) from the component.',
+    },
+    {
+        name: 'TuiReplacePipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiReplacePipe (| tuiReplace) has been removed. It was a thin wrapper over String.prototype.replace; call value.replace(search, replaceValue) in the component (or a computed) instead.',
+    },
+    {
+        name: 'TuiToArrayPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiToArrayPipe (| tuiToArray) has been removed. It returned Array.from(value) for a Map/Set/QueryList; call Array.from(value) (or spread [...value]) in the component instead.',
+    },
+    {
+        name: 'TuiIsPresentPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiIsPresentPipe (| tuiIsPresent) has been removed, but the tuiIsPresent() utility it wrapped still exists in @taiga-ui/cdk. Call tuiIsPresent(value) in the component, or use a native null check (value != null) / @if in the template.',
+    },
+    {
+        name: 'TuiAnimationPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimationPipe (| tuiAnimation) has been removed. It scaled Angular animation params by the global animation speed. Build the params in the component instead: inject TUI_ANIMATIONS_SPEED and multiply your duration by tuiGetDuration(speed) (both still in @taiga-ui/core).',
+    },
+    {
+        name: 'TuiImgLazyLoading',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiImgLazyLoading has been removed. Native lazy loading is enough: keep loading="lazy" on the <img> and drop the import. If you used the tuiLoading="lazy" attribute, replace it with loading="lazy".',
+    },
+    {
+        name: 'TuiLazyLoadingService',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiLazyLoadingService has been removed. Lazy loading now relies on the native <img loading="lazy"> attribute, so no service is required.',
+    },
+    {
+        name: 'TuiClickOutside',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiClickOutside has been removed. Use the TuiActiveZone directive from @taiga-ui/cdk: bind (tuiActiveZoneChange) on the element — it emits `false` when focus/pointer leaves the zone (a boolean, not a click event), so trigger your outside-click logic on the false value.',
+    },
+    {
+        name: 'TuiFor',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
+    },
+    {
+        name: 'TUI_DATE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date options instead: tuiInputDateOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_RANGE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_RANGE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-range options instead: tuiInputDateRangeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-time options instead: tuiInputDateTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-time options instead: tuiInputTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_ADAPTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.',
     },
     {
         name: 'AbstractTuiControl',
