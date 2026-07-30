@@ -1259,6 +1259,27 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
+    // Color/gradient utils moved from @taiga-ui/cdk to @taiga-ui/editor in v5.
+    ...[
+        'tuiGetGradientData',
+        'tuiHexToRgb',
+        'tuiHexToRGBA',
+        'tuiHsvToRgb',
+        'tuiIsValidHex',
+        'tuiIsValidRgba',
+        'tuiParseColor',
+        'tuiParseGradient',
+        'tuiParseHex',
+        'tuiRgbaToHex',
+        'tuiRgbToHex',
+        'tuiRgbToHsv',
+        'tuiToGradient',
+        'TuiGradientDirection',
+        'TuiParsedGradient',
+    ].map((name) => ({
+        from: {name, moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name, moduleSpecifier: '@taiga-ui/editor'},
+    })),
     {
         from: [
             {
@@ -1391,6 +1412,56 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiActionBar',
             moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiButtonCopyComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiButtonCopy',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_TOASTS_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_TOAST_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogSize',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDialogSize',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCellStretch',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiCellStretch',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCellOptions',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiCellOptions',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {

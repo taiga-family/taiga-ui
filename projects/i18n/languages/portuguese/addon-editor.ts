@@ -22,6 +22,7 @@ export const TUI_PORTUGUESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Recuo externo',
         unorderedList: 'Lista desordenada',
         orderedList: 'Lista ordenada',
+        taskList: 'Lista de tarefas',
         quote: 'Frase',
         foreColor: 'Cor',
         backColor: 'Cor de fundo',
