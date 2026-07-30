@@ -19,6 +19,11 @@ describe('ng-update TuiTextfield to TuiInput', () => {
             'should rename tuiTextfield inside tui-textfield tag',
             migrate({template: '<tui-textfield><input tuiTextfield /></tui-textfield>'}),
         );
+
+        it(
+            'should rename native select tuiTextfield to tuiSelect (not tuiInput)',
+            migrate({template: '<select tuiTextfield></select>'}),
+        );
     });
 
     describe('identifier migration', () => {
