@@ -1,13 +1,14 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test('remove chips by backspace', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API`);
 
         const example = new TuiDocumentationApiPagePO(page).demo;
-        const input = example.locator('[tuiInputChip]');
+        const input = example.locator(TUI_TEXTFIELD_LOCATORS.CHIP);
 
         await input.focus();
         await input.fill('1');

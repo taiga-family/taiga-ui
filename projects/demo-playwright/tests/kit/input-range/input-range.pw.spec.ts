@@ -7,6 +7,7 @@ import {
     TuiInputRangePO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';
@@ -26,7 +27,9 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-100&max=100&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         test('pressing Arrow Down decreases START value when START textfield is focused', async ({
@@ -175,7 +178,9 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5&precision=1`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         const testsConditions = [
@@ -210,7 +215,9 @@ describe('InputRange', () => {
             );
 
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
 
             await expect
                 .soft(example)
@@ -238,7 +245,9 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=-100&max=100&step=10&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+                inputRange = new TuiInputRangePO(
+                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                );
             });
 
             test('clicking on the END side changes only the END value (+ focuses the END textfield)', async ({
@@ -282,7 +291,9 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=0&max=10&step=1&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+                inputRange = new TuiInputRangePO(
+                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                );
             });
 
             test('click on the START thumb (with NO value changes) => focuses the START textfield', async ({
@@ -329,7 +340,9 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-20&max=20&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         describe('After Range interactions', () => {
@@ -409,7 +422,9 @@ describe('InputRange', () => {
     describe('[content] property', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         test('START textfield without content + END textfield has content', async ({
@@ -485,9 +500,9 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=1&${nonInteractiveProp}=true`,
                     );
-                    await expect(example.locator('tui-input-range')).toContainText(
-                        'START – END',
-                    );
+                    await expect(
+                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                    ).toContainText('START – END');
                     await expect(example).toHaveScreenshot(
                         `30-input-range-${nonInteractiveProp}-start-has-content--end-has-content.png`,
                     );
@@ -500,9 +515,9 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=2&${nonInteractiveProp}=true&max=10`,
                     );
-                    await expect(example.locator('tui-input-range')).toContainText(
-                        '0 – MAX',
-                    );
+                    await expect(
+                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                    ).toContainText('0 – MAX');
                     await expect(example).toHaveScreenshot(
                         `31-input-range-${nonInteractiveProp}-start-no-content--end-has-content.png`,
                     );
@@ -515,9 +530,9 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=3&${nonInteractiveProp}=true`,
                     );
-                    await expect(example.locator('tui-input-range')).toContainText(
-                        'MIN – 10',
-                    );
+                    await expect(
+                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                    ).toContainText('MIN – 10');
                     await expect(example).toHaveScreenshot(
                         `32-input-range-${nonInteractiveProp}-start-has-content--end-no-content.png`,
                     );
@@ -566,7 +581,9 @@ describe('InputRange', () => {
             example = new TuiDocumentationPagePO(page).getExample(
                 '#using-negative-values-with-hidden-minus-sign',
             );
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         function control([start, end]: [number, number]): RegExp {

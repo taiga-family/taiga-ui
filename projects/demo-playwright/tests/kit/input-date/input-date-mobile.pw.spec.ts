@@ -3,6 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/
 import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
+import {TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
@@ -28,7 +29,7 @@ test.describe('InputDate and mobile user agent', () => {
         // eslint-disable-next-line playwright/no-force-option
         await inputDate.textfield.first().click({position: {x: 300, y: 20}, force: true});
 
-        await page.waitForSelector('tui-sheet-dialog', {state: 'visible'});
+        await page.waitForSelector(TUI_SHEET_DIALOG_LOCATORS.HOST, {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
         await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
