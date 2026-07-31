@@ -126,19 +126,19 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
   "1. After": "
                 import {Component, inject} from '@angular/core';
                 import {
-// TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. It exposed the option list; TUI_DATA_LIST_HOST is a different entity (it receives the selected value), so it is NOT a drop-in replacement. Obtain the accessor from the <tui-data-list> component, which implements TuiDataListAccessor.
+// TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. Read a custom option-list source through the auxiliary API instead of injecting the token: tuiInjectAuxiliary<TuiDataListAccessor>((x) => 'options' in x && isSignal(x.options)) (from @taiga-ui/core; isSignal from @angular/core). The interface changed too — getOptions() is gone, options are now a Signal<readonly T[]>.
                     TUI_DATA_LIST_ACCESSOR,
 // TODO: (Taiga UI migration) TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.
                     TUI_HINT_PROVIDERS,
 // TODO: (Taiga UI migration) TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme="dark" in a template); components resolve the nearest [tuiTheme] ancestor.
                     TUI_THEME,
-// TODO: (Taiga UI migration) TuiDataListDirective has been removed. Use TuiDataList from @taiga-ui/core instead.
+// TODO: (Taiga UI migration) TuiDataListDirective (ng-template[tuiDataList]) has been removed. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select
                     TuiDataListDirective,
 // TODO: (Taiga UI migration) The TuiLinkOptions interface has been removed. The TUI_LINK_OPTIONS token and tuiLinkOptionsProvider still exist in @taiga-ui/core for configuration — type your options via the tuiLinkOptionsProvider() argument instead of the standalone interface.
                     type TuiLinkOptions,
-// TODO: (Taiga UI migration) tuiAsDataList has been removed. tuiAsDataListHost is a different concept (it registers a value host, not an option-list accessor), so it is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.
+// TODO: (Taiga UI migration) tuiAsDataList has been removed together with the ng-template[tuiDataList] lazy-list mechanism. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select
                     tuiAsDataList,
-// TODO: (Taiga UI migration) tuiAsDataListAccessor has been removed. tuiAsDataListHost is a different concept (value host, not option-list accessor) and is NOT a drop-in replacement. The <tui-data-list> component now provides the accessor itself.
+// TODO: (Taiga UI migration) tuiAsDataListAccessor has been removed. Provide a custom option-list source with tuiAsAuxiliary(component) from @taiga-ui/core; the component must implement TuiDataListAccessor exposing readonly options: Signal<readonly T[]> (the old getOptions() is gone).
                     tuiAsDataListAccessor,
                 } from '@taiga-ui/core';
 
