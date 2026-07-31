@@ -185,21 +185,33 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
     },
     {
         name: 'TUI_TOUCH_SUPPORTED',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TUI_TOUCH_SUPPORTED has been removed. Use WA_TOUCH_SUPPORTED from @ng-web-apis/platform package instead.',
+            'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
     },
     {
         name: 'TUI_IS_CHROMIUM',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.',
+            'TUI_IS_CHROMIUM has been removed. There is no direct replacement — detect Chromium manually, e.g. via `"chrome" in window`.',
     },
     {
         name: 'TUI_IS_STACKBLITZ',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.',
+    },
+    {
+        name: 'TUI_IS_APPLE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_IS_APPLE has been removed. Use isApple(inject(WA_NAVIGATOR)) — isApple from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
+    },
+    {
+        name: 'TUI_IS_FIREFOX',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_IS_FIREFOX has been removed. Use isFirefox(inject(WA_NAVIGATOR).userAgent) — isFirefox from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
     },
     {
         name: 'tuiInputCardOptionsProvider',
@@ -398,5 +410,23 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
+    },
+    {
+        name: 'EMPTY_QUERY',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'EMPTY_QUERY has been removed. Use new QueryList() instead, or migrate to the signal-based queries viewChildren()/contentChildren().',
+    },
+    {
+        name: 'tuiIsFalsy',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsFalsy has been removed. Replace it with a plain negation predicate: (value) => !value.',
+    },
+    {
+        name: 'tuiFlatLength',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.',
     },
 ];
