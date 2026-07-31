@@ -1423,6 +1423,66 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiMobileDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialog',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMobileDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialogService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMobileDialogOptions',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialogOptions',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_MOBILE_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TUI_MOBILE_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_MOBILE_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TUI_MOBILE_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'tuiMobileDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'tuiMobileDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
             name: 'TuiButtonCopyComponent',
             moduleSpecifier: '@taiga-ui/kit',
         },
