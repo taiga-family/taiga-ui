@@ -20,7 +20,7 @@ export class TuiHoveredService extends Observable<boolean> {
     private readonly zone = inject(NgZone);
 
     private readonly stream$ = merge(
-        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'pointerenter').pipe(map(TUI_TRUE_HANDLER)),
         tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(TUI_FALSE_HANDLER)),
         // Hello, Safari
         tuiTypedFromEvent(this.el, 'mouseout').pipe(
