@@ -22,6 +22,7 @@ export const TUI_MALAY_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Outden',
         unorderedList: 'Senarai tidak teratur',
         orderedList: 'Senarai teratur',
+        taskList: 'Senarai tugasan',
         quote: 'petikan',
         foreColor: 'Warna',
         backColor: 'Warna latar belakang',

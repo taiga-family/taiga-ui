@@ -22,6 +22,7 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Thụt ra',
         unorderedList: 'Danh sách không đánh số',
         orderedList: 'Danh sách được đánh số',
+        taskList: 'Danh sách công việc',
         quote: 'Trích dẫn',
         foreColor: 'Màu',
         backColor: 'Màu nền',

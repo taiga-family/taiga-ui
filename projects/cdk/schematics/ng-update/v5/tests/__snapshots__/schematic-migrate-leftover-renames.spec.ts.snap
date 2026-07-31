@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update leftover renames (#11917) renames TuiAlert to TuiNotification in core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiAlert} from '@taiga-ui/core';
+
+                @Component({imports: [TuiAlert]})
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiNotification } from "@taiga-ui/core";
+
+                import {Component} from '@angular/core';
+
+                @Component({imports: [TuiNotification]})
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update leftover renames (#11917) renames tuiInspectAny to tuiInspect in addon-doc: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiInspectAny} from '@taiga-ui/addon-doc';
+
+                export const label = tuiInspectAny({}, 1);
+            ",
+  "1. After": "import { tuiInspect } from "@taiga-ui/addon-doc";
+
+                                export const label = tuiInspect({}, 1);
+            ",
+}
+`;

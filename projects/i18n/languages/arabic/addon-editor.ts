@@ -22,6 +22,7 @@ export const TUI_ARABIC_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'تقليل المسافة البادئة',
         unorderedList: 'قائمة غير مرتبة',
         orderedList: 'قائمة مرتبة',
+        taskList: 'قائمة المهام',
         quote: 'اقتباس',
         foreColor: 'اللون',
         backColor: 'لون الخلفية',
