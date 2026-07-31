@@ -22,6 +22,7 @@ export const TUI_CHINESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: '减小缩进',
         unorderedList: '无序列表',
         orderedList: '有序列表',
+        taskList: '任务列表',
         quote: '引用',
         foreColor: '颜色',
         backColor: '背景颜色',

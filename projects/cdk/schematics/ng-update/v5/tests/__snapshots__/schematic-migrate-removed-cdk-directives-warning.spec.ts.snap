@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed cdk directives/utils warning adds TODO comment for TuiAnimatedParent import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiAnimatedParent} from '@taiga-ui/cdk';
+
+                @Component({imports: [TuiAnimatedParent]})
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiAnimatedParent has been removed. Enter/leave animations are now handled by the TuiAnimated directive ([tuiAnimated]) from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated
+                import {TuiAnimatedParent} from '@taiga-ui/cdk';
+
+                @Component({imports: [TuiAnimatedParent]})
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update removed cdk directives/utils warning adds TODO comment for TuiDroppable import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiDroppable} from '@taiga-ui/cdk';
+
+                @Component({imports: [TuiDroppable]})
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiDroppable has been removed without a direct replacement. Use the native HTML Drag and Drop API (dragover/drop events) instead of the [tuiDroppableDropped]/[tuiDroppableDragOverChange] outputs.
+                import {TuiDroppable} from '@taiga-ui/cdk';
+
+                @Component({imports: [TuiDroppable]})
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update removed cdk directives/utils warning adds TODO comment for tuiValueBinding import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {tuiValueBinding} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly value = tuiValueBinding();
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) tuiValueBinding has been removed without a direct replacement. Manage the value signal manually where you used it.
+                import {tuiValueBinding} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly value = tuiValueBinding();
+                }
+            ",
+}
+`;
