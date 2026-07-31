@@ -160,6 +160,18 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
     },
     {
+        name: 'TuiValueContentContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiValueContentContext has been removed. Type custom value content with TuiContext<T> from @taiga-ui/cdk instead — the `active` flag is no longer part of the content context.',
+    },
+    {
+        name: 'TuiAlertContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertContext has been removed. Type the injected alert content context with TuiPortalContext<TuiNotificationOptions, O> from @taiga-ui/cdk (TuiPopoverContext -> TuiPortalContext, TuiAlertOptions -> TuiNotificationOptions).',
+    },
+    {
         name: 'TuiCarousel',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -412,17 +424,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
-        name: 'TuiValueContentContext',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiValueContentContext has been removed. Type custom value content with TuiContext<T> from @taiga-ui/cdk instead — the `active` flag is no longer part of the content context.',
-    },
-    {
-        name: 'TuiAlertContext',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiAlertContext has been removed. Type the injected alert content context with TuiPortalContext<TuiNotificationOptions, O> from @taiga-ui/cdk (TuiPopoverContext -> TuiPortalContext, TuiAlertOptions -> TuiNotificationOptions).',
-    },
         name: 'TUI_FIRST_DAY_OF_WEEK',
         moduleSpecifier: '@taiga-ui/core',
         message:
