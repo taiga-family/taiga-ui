@@ -412,6 +412,36 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
+        name: 'TUI_FIRST_DAY_OF_WEEK',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_FIRST_DAY_OF_WEEK has been removed. Configure the first day of week through the calendar options instead: tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Monday)}) from @taiga-ui/core.',
+    },
+    {
+        name: 'TUI_DAY_TYPE_HANDLER',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DAY_TYPE_HANDLER has been removed. Configure the day type through the calendar options instead: tuiCalendarOptionsProvider({dayType: (day) => ...}) from @taiga-ui/core.',
+    },
+    {
+        name: 'TUI_EXPAND_LOADED',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_EXPAND_LOADED has been removed together with the asynchronous "loaded" event API of TuiExpand. Expanded content is now measured internally — remove the (tui-expand-loaded) host listener and the manual CustomEvent dispatch.',
+    },
+    {
+        name: 'TuiFormatDateService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiFormatDateService has been removed. Use the Angular built-in Date pipe (or Intl.DateTimeFormat) instead. See https://angular.dev/api/common/DatePipe',
+    },
+    {
+        name: 'TUI_NUMBER_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_NUMBER_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-number options instead: tuiInputNumberOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
         name: 'EMPTY_QUERY',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
