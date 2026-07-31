@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update leftover renames (#11917) renames TuiAlert to TuiAlertDirective in core: test.ts 1`] = `
+exports[`ng-update leftover renames (#11917) renames TuiAlert to TuiNotification in core: test.ts 1`] = `
 {
   "0. Before": "
                 import {Component} from '@angular/core';
@@ -9,11 +9,11 @@ exports[`ng-update leftover renames (#11917) renames TuiAlert to TuiAlertDirecti
                 @Component({imports: [TuiAlert]})
                 export class TestComponent {}
             ",
-  "1. After": "import { TuiAlertDirective } from "@taiga-ui/core";
+  "1. After": "import { TuiNotification } from "@taiga-ui/core";
 
                 import {Component} from '@angular/core';
 
-                @Component({imports: [TuiAlertDirective]})
+                @Component({imports: [TuiNotification]})
                 export class TestComponent {}
             ",
 }

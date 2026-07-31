@@ -10,7 +10,7 @@ describe('ng-update leftover renames (#11917)', () => {
     });
 
     it(
-        'renames TuiAlert to TuiAlertDirective in core',
+        'renames TuiAlert to TuiNotification in core',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';

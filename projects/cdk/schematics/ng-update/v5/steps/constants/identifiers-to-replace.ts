@@ -1470,7 +1470,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
         to: {
-            name: 'TuiAlertDirective',
+            name: 'TuiNotification',
             moduleSpecifier: '@taiga-ui/core',
         },
     },
