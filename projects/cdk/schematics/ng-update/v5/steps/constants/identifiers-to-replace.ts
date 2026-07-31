@@ -1633,12 +1633,32 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiAlert',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiNotification',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'TuiRadioComponent',
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
             name: 'TuiRadioComponent',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiInspectAny',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'tuiInspect',
+            moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
     {
