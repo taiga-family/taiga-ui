@@ -73,13 +73,7 @@ export class TuiInputChipDirective<T>
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
-        const removed = this.removedChipInputs(value);
-
         this.erase();
-        removed.forEach((input) => {
-            input.value = '';
-            input.dispatchEvent(new Event('input', {bubbles: true}));
-        });
         this.onChange(
             this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
         );
@@ -125,7 +119,7 @@ export class TuiInputChipDirective<T>
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (key === 'Backspace' && !this.textfield.value() && this.interactive()) {
             if (this.mobile || !this.textfield.item()) {
-                this.setValue(this.value().slice(0, -1));
+                this.onChange(this.value().slice(0, -1));
             } else {
                 this.el.dispatchEvent(
                     new KeyboardEvent('keydown', {
@@ -153,31 +147,6 @@ export class TuiInputChipDirective<T>
         if (this.el.value) {
             this.el.value = '';
             this.el.dispatchEvent(new Event('input', {bubbles: true}));
-            this.textfield.value.set('');
         }
-    }
-
-    // Inputs of chips dropped by the upcoming value update (queried while still in the DOM
-    // so their `input` events can bubble); item replacement on chip edit is not a removal
-    private removedChipInputs(next: readonly T[]): readonly HTMLInputElement[] {
-        const matcher = this.handlers.identityMatcher();
-
-        const inputs =
-            this.textfield.el.querySelectorAll<HTMLInputElement>('tui-input-chip input');
-
-        const removed: HTMLInputElement[] = [];
-        let pointer = 0;
-
-        this.value().forEach((item, index) => {
-            const candidate = next[pointer];
-
-            if (candidate !== undefined && matcher(item, candidate)) {
-                pointer++;
-            } else if (inputs[index]) {
-                removed.push(inputs[index]);
-            }
-        });
-
-        return pointer === next.length ? removed : [];
     }
 }
