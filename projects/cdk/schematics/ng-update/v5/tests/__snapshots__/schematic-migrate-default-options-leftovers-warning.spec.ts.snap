@@ -4,22 +4,11 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
 {
   "0. Before": "
                 import {
-                    TUI_AVATAR_DEFAULT_OPTIONS,
-                    TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-                    TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                     TUI_MOBILE_CALENDAR,
                     TUI_MOBILE_CALENDAR_PROVIDER,
-                    TUI_PUSH_DEFAULT_OPTIONS,
-                    TUI_RADIO_DEFAULT_OPTIONS,
                     TUI_SLIDER_DEFAULT_OPTIONS,
-                    TUI_SWITCH_DEFAULT_OPTIONS,
-                    TUI_TOAST_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
-                import {
-                    TUI_LINK_DEFAULT_OPTIONS,
-                    TuiExpandContent,
-                    TuiMonthPipe,
-                } from '@taiga-ui/core';
+                import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
                 import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
 
                 @Component({
@@ -27,15 +16,7 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_RADIO_DEFAULT_OPTIONS,
-                        TUI_TOAST_DEFAULT_OPTIONS,
-                        TUI_AVATAR_DEFAULT_OPTIONS,
-                        TUI_SWITCH_DEFAULT_OPTIONS,
-                        TUI_PUSH_DEFAULT_OPTIONS,
-                        TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-                        TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                         TUI_SLIDER_DEFAULT_OPTIONS,
-                        TUI_LINK_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];
@@ -43,35 +24,16 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
             ",
   "1. After": "
                 import {
-// TODO: (Taiga UI migration) TUI_AVATAR_DEFAULT_OPTIONS has been removed. Use TUI_AVATAR_OPTIONS / tuiAvatarOptionsProvider from @taiga-ui/kit instead.
-                    TUI_AVATAR_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TUI_INPUT_MONTH_DEFAULT_OPTIONS has been removed. Use TUI_INPUT_MONTH_OPTIONS / tuiInputMonthOptionsProvider from @taiga-ui/kit instead.
-                    TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TUI_INPUT_PASSWORD_DEFAULT_OPTIONS has been removed. Use TUI_PASSWORD_OPTIONS / tuiPasswordOptionsProvider from @taiga-ui/kit instead.
-                    TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
 // TODO: (Taiga UI migration) TUI_MOBILE_CALENDAR has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
                     TUI_MOBILE_CALENDAR,
 // TODO: (Taiga UI migration) TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
                     TUI_MOBILE_CALENDAR_PROVIDER,
-// TODO: (Taiga UI migration) TUI_PUSH_DEFAULT_OPTIONS has been removed. Use TUI_PUSH_OPTIONS / tuiPushOptionsProvider from @taiga-ui/kit instead.
-                    TUI_PUSH_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TUI_RADIO_DEFAULT_OPTIONS has been removed. Radio moved to @taiga-ui/core — configure it via TUI_RADIO_OPTIONS / tuiRadioOptionsProvider from @taiga-ui/core instead.
-                    TUI_RADIO_DEFAULT_OPTIONS,
 // TODO: (Taiga UI migration) TUI_SLIDER_DEFAULT_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
                     TUI_SLIDER_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TUI_SWITCH_DEFAULT_OPTIONS has been removed. Use TUI_SWITCH_OPTIONS / tuiSwitchOptionsProvider from @taiga-ui/kit instead.
-                    TUI_SWITCH_DEFAULT_OPTIONS,
-// TODO: (Taiga UI migration) TUI_TOAST_DEFAULT_OPTIONS has been removed. Use TUI_TOAST_OPTIONS / tuiToastOptionsProvider from @taiga-ui/kit instead.
-                    TUI_TOAST_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
-                import {
-// TODO: (Taiga UI migration) TUI_LINK_DEFAULT_OPTIONS has been removed. Configure links via tuiLinkOptionsProvider (TUI_LINK_OPTIONS) from @taiga-ui/core instead.
-                    TUI_LINK_DEFAULT_OPTIONS,
 // TODO: (Taiga UI migration) TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.
-                    TuiExpandContent,
 // TODO: (Taiga UI migration) TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.
-                    TuiMonthPipe,
-                } from '@taiga-ui/core';
+                import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
 // TODO: (Taiga UI migration) AbstractTuiMultipleControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom multi-value control manually — this cannot be migrated automatically.
                 import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
 
@@ -80,15 +42,7 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_RADIO_DEFAULT_OPTIONS,
-                        TUI_TOAST_DEFAULT_OPTIONS,
-                        TUI_AVATAR_DEFAULT_OPTIONS,
-                        TUI_SWITCH_DEFAULT_OPTIONS,
-                        TUI_PUSH_DEFAULT_OPTIONS,
-                        TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-                        TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                         TUI_SLIDER_DEFAULT_OPTIONS,
-                        TUI_LINK_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];

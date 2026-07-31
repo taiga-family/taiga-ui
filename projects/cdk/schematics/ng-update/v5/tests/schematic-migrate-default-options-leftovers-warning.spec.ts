@@ -14,22 +14,11 @@ describe('ng-update removed default-options and leftover symbols warning', () =>
         migrate({
             component: /* TypeScript */ `
                 import {
-                    TUI_AVATAR_DEFAULT_OPTIONS,
-                    TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-                    TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                     TUI_MOBILE_CALENDAR,
                     TUI_MOBILE_CALENDAR_PROVIDER,
-                    TUI_PUSH_DEFAULT_OPTIONS,
-                    TUI_RADIO_DEFAULT_OPTIONS,
                     TUI_SLIDER_DEFAULT_OPTIONS,
-                    TUI_SWITCH_DEFAULT_OPTIONS,
-                    TUI_TOAST_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
-                import {
-                    TUI_LINK_DEFAULT_OPTIONS,
-                    TuiExpandContent,
-                    TuiMonthPipe,
-                } from '@taiga-ui/core';
+                import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
                 import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
 
                 @Component({
@@ -37,15 +26,7 @@ describe('ng-update removed default-options and leftover symbols warning', () =>
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_RADIO_DEFAULT_OPTIONS,
-                        TUI_TOAST_DEFAULT_OPTIONS,
-                        TUI_AVATAR_DEFAULT_OPTIONS,
-                        TUI_SWITCH_DEFAULT_OPTIONS,
-                        TUI_PUSH_DEFAULT_OPTIONS,
-                        TUI_INPUT_MONTH_DEFAULT_OPTIONS,
-                        TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                         TUI_SLIDER_DEFAULT_OPTIONS,
-                        TUI_LINK_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];

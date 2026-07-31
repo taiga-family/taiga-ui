@@ -214,12 +214,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
-        name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.',
-    },
-    {
         name: 'TUI_ALERT_POSITION',
         moduleSpecifier: '@taiga-ui/core',
         message:
@@ -296,54 +290,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
-    },
-    {
-        name: 'TUI_RADIO_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_RADIO_DEFAULT_OPTIONS has been removed. Radio moved to @taiga-ui/core — configure it via TUI_RADIO_OPTIONS / tuiRadioOptionsProvider from @taiga-ui/core instead.',
-    },
-    {
-        name: 'TUI_TOAST_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_TOAST_DEFAULT_OPTIONS has been removed. Use TUI_TOAST_OPTIONS / tuiToastOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_AVATAR_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_AVATAR_DEFAULT_OPTIONS has been removed. Use TUI_AVATAR_OPTIONS / tuiAvatarOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_SWITCH_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_SWITCH_DEFAULT_OPTIONS has been removed. Use TUI_SWITCH_OPTIONS / tuiSwitchOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_PUSH_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_PUSH_DEFAULT_OPTIONS has been removed. Use TUI_PUSH_OPTIONS / tuiPushOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_INPUT_MONTH_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_INPUT_MONTH_DEFAULT_OPTIONS has been removed. Use TUI_INPUT_MONTH_OPTIONS / tuiInputMonthOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_INPUT_PASSWORD_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_INPUT_PASSWORD_DEFAULT_OPTIONS has been removed. Use TUI_PASSWORD_OPTIONS / tuiPasswordOptionsProvider from @taiga-ui/kit instead.',
-    },
-    {
-        name: 'TUI_LINK_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TUI_LINK_DEFAULT_OPTIONS has been removed. Configure links via tuiLinkOptionsProvider (TUI_LINK_OPTIONS) from @taiga-ui/core instead.',
     },
     {
         name: 'TUI_SLIDER_DEFAULT_OPTIONS',
