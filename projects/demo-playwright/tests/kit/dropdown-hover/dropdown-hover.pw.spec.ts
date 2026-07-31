@@ -3,6 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+import {TUI_DROPDOWN_LOCATORS, TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DropdownHover', () => {
     test.describe('Examples', () => {
@@ -64,8 +65,8 @@ test.describe('DropdownHover', () => {
                 page,
             }) => {
                 await example.locator('button').click();
-                await expect(page.locator('tui-dropdown')).not.toBeAttached();
-                await expect(page.locator('tui-sheet-dialog')).toBeVisible();
+                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
+                await expect(page.locator(TUI_SHEET_DIALOG_LOCATORS.HOST)).toBeVisible();
                 await po.hideContent();
                 await expect
                     .soft(page)
@@ -74,19 +75,25 @@ test.describe('DropdownHover', () => {
 
             test('Closes dropdown on click on overlay', async ({page}) => {
                 await example.locator('button').click();
-                await expect(page.locator('tui-sheet-dialog')).toBeVisible();
-                await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
+                await expect(page.locator(TUI_SHEET_DIALOG_LOCATORS.HOST)).toBeVisible();
+                await page
+                    .locator(TUI_SHEET_DIALOG_LOCATORS.HOST)
+                    .click({position: {x: 32, y: 32}});
                 await po.hideContent();
-                await expect(page.locator('tui-sheet-dialog')).not.toBeAttached();
+                await expect(
+                    page.locator(TUI_SHEET_DIALOG_LOCATORS.HOST),
+                ).not.toBeAttached();
             });
 
             test('Opens mobile version of dropdown on the 2nd time click', async ({
                 page,
             }) => {
                 await example.locator('button').click();
-                await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
+                await page
+                    .locator(TUI_SHEET_DIALOG_LOCATORS.HOST)
+                    .click({position: {x: 32, y: 32}});
                 await example.locator('button').click();
-                await expect(page.locator('tui-sheet-dialog')).toBeVisible();
+                await expect(page.locator(TUI_SHEET_DIALOG_LOCATORS.HOST)).toBeVisible();
                 await po.hideContent();
                 await expect
                     .soft(page)

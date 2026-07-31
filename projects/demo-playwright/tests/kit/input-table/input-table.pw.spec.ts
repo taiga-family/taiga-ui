@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Input in table', () => {
     test('editing fields inside a table', async ({page}) => {
@@ -14,7 +15,7 @@ test.describe('Input in table', () => {
             await example
                 .locator('tbody tr td')
                 .nth(index)
-                .locator('tui-textfield')
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
                 .locator('input,select')
                 .first()
                 .focus();
@@ -36,7 +37,7 @@ test.describe('Input in table', () => {
                 await example
                     .locator('tbody tr td')
                     .nth(index)
-                    .locator('tui-textfield')
+                    .locator(TUI_TEXTFIELD_LOCATORS.HOST)
                     .locator('input,select')
                     .first()
                     .focus();
