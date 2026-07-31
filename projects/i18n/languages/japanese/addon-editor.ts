@@ -22,6 +22,7 @@ export const TUI_JAPANESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'アウトデント',
         unorderedList: '順序なしリスト',
         orderedList: '順序付きリスト',
+        taskList: 'タスクリスト',
         quote: '引用',
         foreColor: '色',
         backColor: '背景色',
