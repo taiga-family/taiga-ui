@@ -177,7 +177,61 @@ test.describe('TuiHint', () => {
             await expect.soft(page).toHaveScreenshot('09-hint-on-mobile.png');
 
             await example.click();
+            await expect(page.locator('tui-hint')).not.toBeAttached();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
+        });
+
+        test('Hides on scroll start (pointerdown is not followed by click)', async ({
+            page,
+        }) => {
+            await tuiGoto(page, DemoRoute.Hint);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('tui-avatar').click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+
+            await expect(hint).not.toBeAttached();
+        });
+
+        test('Shows again after being hidden without hover out', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Hint);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const avatar = example.locator('tui-avatar');
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await avatar.click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+            await expect(hint).not.toBeAttached();
+
+            await avatar.click();
+            await expect(hint).toBeAttached();
+        });
+
+        test('Tooltip opens on tap and hides on tap outside', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Tooltip);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const tooltip = example.locator('[tuiTooltip]').first();
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await tooltip.click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+            await expect(hint).not.toBeAttached();
+
+            await tooltip.click();
+            await expect(hint).toBeAttached();
         });
     });
 });

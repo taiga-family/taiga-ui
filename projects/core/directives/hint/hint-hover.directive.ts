@@ -19,6 +19,8 @@ import {
 
 import {TUI_HINT_OPTIONS, type TuiHintOptions} from './hint-options.directive';
 
+const MOBILE_HIDE_DELAY_MS = 100;
+
 @Directive({
     standalone: true,
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
@@ -35,7 +37,7 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.pipe(
             switchMap((visible) =>
                 this.isMobile
-                    ? of(visible).pipe(delay(0))
+                    ? of(visible).pipe(delay(visible ? 0 : MOBILE_HIDE_DELAY_MS))
                     : of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
             ),
             takeUntil(this.hovered$),
