@@ -29,13 +29,13 @@ exports[`ng-update misc removed tokens and helpers warning renames deprecated-al
                     protected readonly toggle = tuiToggleDay;
                 }
             ",
-  "1. After": "
+  "1. After": "import { WA_IS_TOUCH } from "@ng-web-apis/platform";
+
                 import {Component, inject} from '@angular/core';
 // TODO: (Taiga UI migration) TUI_SPIN_ICONS has been removed. Spinner increment/decrement icons were merged into the common icons — configure them via tuiCommonIconsProvider (TUI_COMMON_ICONS) from @taiga-ui/core instead.
 // TODO: (Taiga UI migration) TuiDarkThemeService has been removed. Use the TUI_DARK_MODE token (a signal) from @taiga-ui/core instead.
                 import { TUI_SPIN_ICONS, TuiDarkThemeService, TUI_ICON_REGISTRY, TUI_ICON_RESOLVER } from '@taiga-ui/core';
-// TODO: (Taiga UI migration) TUI_IS_TOUCH has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead.
-                import { TUI_IS_TOUCH, tuiIsFocusable } from '@taiga-ui/cdk';
+                import { tuiIsFocusable } from '@taiga-ui/cdk';
 // TODO: (Taiga UI migration) tuiToggleDay has been removed with no public replacement. Inline the day-toggle logic in your component instead.
                 import {tuiToggleDay} from '@taiga-ui/kit';
 
@@ -45,7 +45,7 @@ exports[`ng-update misc removed tokens and helpers warning renames deprecated-al
                     protected readonly resolver = inject(TUI_ICON_RESOLVER);
                     protected readonly spinIcons = inject(TUI_SPIN_ICONS);
                     protected readonly darkTheme = inject(TuiDarkThemeService);
-                    protected readonly touch = inject(TUI_IS_TOUCH);
+                    protected readonly touch = inject(WA_IS_TOUCH);
                     protected readonly keyboard = tuiIsFocusable;
                     protected readonly mouse = tuiIsFocusable;
                     protected readonly toggle = tuiToggleDay;

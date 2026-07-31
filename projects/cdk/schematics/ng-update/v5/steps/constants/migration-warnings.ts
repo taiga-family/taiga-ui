@@ -322,12 +322,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
     },
     {
-        name: 'TUI_IS_TOUCH',
-        moduleSpecifier: '@taiga-ui/cdk',
-        message:
-            'TUI_IS_TOUCH has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead.',
-    },
-    {
         name: 'TUI_SPIN_ICONS',
         moduleSpecifier: '@taiga-ui/core',
         message:
