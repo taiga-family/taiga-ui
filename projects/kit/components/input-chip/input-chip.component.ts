@@ -66,7 +66,7 @@ export class TuiInputChipComponent<T> {
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = tuiInjectValue<readonly T[]>();
 
-    private readonly input: Signal<ElementRef<HTMLInputElement> | undefined> = viewChild(
+    private readonly input: Signal<ElementRef<HTMLInputElement>> = viewChild.required(
         TuiChip,
         {read: ElementRef},
     );
@@ -105,6 +105,11 @@ export class TuiInputChipComponent<T> {
 
     protected delete(): void {
         if (this.textfield.cva()?.interactive()) {
+            const input = this.input().nativeElement;
+
+            input.value = '';
+            input.dispatchEvent(new Event('input', {bubbles: true}));
+
             this.textfield
                 .cva()
                 ?.onChange(this.value().filter((_, i) => i !== this.index));
