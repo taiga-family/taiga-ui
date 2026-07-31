@@ -1,7 +1,6 @@
 export const TUI_DROPDOWN_LOCATORS = {
-    DROPDOWN: 'tui-dropdown',
-    DROPDOWN_MOBILE: 'tui-dropdown-mobile',
-    SHEET_DIALOG: 'tui-sheet-dialog',
+    HOST: 'tui-dropdown',
     OPTION: '[tuiOption]',
     SCROLLBAR: 'tui-scrollbar',
+    DATA_LIST: 'tui-data-list',
 };

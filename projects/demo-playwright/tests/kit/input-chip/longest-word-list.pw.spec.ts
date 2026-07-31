@@ -1,13 +1,14 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test('the longest long words list', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API?sandboxWidth=100`);
 
         const api = new TuiDocumentationApiPagePO(page);
-        const input = api.demo.locator('[tuiInputChip]').first();
+        const input = api.demo.locator(TUI_TEXTFIELD_LOCATORS.CHIP).first();
 
         await input.focus();
         await input.fill('Incomprehensibilities');
@@ -22,7 +23,7 @@ test.describe('InputChip', () => {
         await page.keyboard.press('Enter');
         await api.waitStableState();
 
-        const textfield = api.demo.locator('tui-textfield[multi]').first();
+        const textfield = api.demo.locator(TUI_TEXTFIELD_LOCATORS.MULTI).first();
 
         await expect(textfield).toHaveScreenshot('input-chip-with-longest-words.png');
     });

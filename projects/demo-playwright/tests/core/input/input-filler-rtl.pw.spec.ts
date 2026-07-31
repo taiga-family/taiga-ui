@@ -1,13 +1,14 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Input filler in RTL mode', () => {
     test('renders filler correctly in LTR and RTL', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Input}/API?filler=HH:MM`);
 
         const example = new TuiDocumentationApiPagePO(page).demo;
-        const input = example.locator('[tuiInput]');
+        const input = example.locator(TUI_TEXTFIELD_LOCATORS.INPUT);
 
         await input.focus();
         await input.pressSequentially('12:3');
