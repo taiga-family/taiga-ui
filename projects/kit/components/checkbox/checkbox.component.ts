@@ -15,6 +15,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import {type TuiSizeS} from '@taiga-ui/core/types';
@@ -37,6 +38,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
         TuiNativeValidator,
     ],
     host: {
+        tuiCheckboxV: TUI_VERSION,
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',

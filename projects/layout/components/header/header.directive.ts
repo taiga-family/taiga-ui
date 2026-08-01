@@ -6,6 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -52,6 +53,7 @@ class TuiHeaderStyles {}
     ],
     host: {
         tuiHeader: '',
+        tuiHeaderV: TUI_VERSION,
         '[attr.data-size]': 'size || options.size',
     },
 })

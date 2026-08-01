@@ -78,7 +78,8 @@ export class TuiInputChipComponent<T> {
         TuiAppearance,
         'tuiAppearanceState',
         computed(() =>
-            this.handlers.disabledItemHandler()(this.context.$implicit.item)
+            this.handlers.disabledItemHandler()(this.context.$implicit.item) ||
+            this.textfield.cva?.disabled()
                 ? 'disabled'
                 : null,
         ),
@@ -98,7 +99,9 @@ export class TuiInputChipComponent<T> {
     }
 
     protected delete(): void {
-        this.textfield.cva?.onChange(this.value().filter((_, i) => i !== this.index));
+        if (this.textfield.cva?.interactive()) {
+            this.textfield.cva?.onChange(this.value().filter((_, i) => i !== this.index));
+        }
 
         if (!this.mobile) {
             this.textfield.input?.nativeElement.focus({preventScroll: true});
@@ -130,7 +133,8 @@ export class TuiInputChipComponent<T> {
         if (
             !this.editable ||
             !this.textfield.cva?.interactive() ||
-            !tuiIsString(this.internal())
+            !tuiIsString(this.internal()) ||
+            this.disabled()
         ) {
             return;
         }

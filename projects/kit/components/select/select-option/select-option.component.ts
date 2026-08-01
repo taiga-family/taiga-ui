@@ -17,6 +17,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     imports: [TuiCheckbox],
     template: `
         <input
+            aria-hidden="true"
             tuiCheckbox
             type="checkbox"
             class="t-check"
@@ -32,6 +33,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
         tuiSelectOption: '',
         '[class._value]': 'option',
         '[class._selected]': 'selected()',
+        '[attr.aria-selected]': 'selected()',
     },
 })
 export class TuiSelectOption<T> {

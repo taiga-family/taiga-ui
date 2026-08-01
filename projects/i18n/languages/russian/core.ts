@@ -18,6 +18,7 @@ export const TUI_RUSSIAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Декабрь',
     ],
     close: 'Закрыть',
+    back: 'Назад',
     clear: 'Очистить',
     nothingFoundMessage: 'Ничего не найдено',
     defaultErrorMessage: 'Поле заполнено неверно',

@@ -1,0 +1,8 @@
+tests-results/
+tests-report/
+snapshots/
+playwright/.cache/
+stubs/fonts.css
+stubs/*.woff2
+stubs/*.ttf
+stubs/blank.ttf

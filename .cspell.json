@@ -38,6 +38,7 @@
         "Tureborg",
         "enterkeyhint",
         "llms",
+        "valuetext",
         "шиммер",
         "фейд",
         "Lebowski",
@@ -50,7 +51,10 @@
         "UTDL",
         "Vercetti",
         "Niko",
-        "Bellic"
+        "Bellic",
+        "haspopup",
+        "multiselectable",
+        "longname"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
@@ -75,6 +79,11 @@
             "languageId": "ts",
             "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
             "ignoreWords": ["Maxxxxx"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/files/test/files.validators.spec.ts"],
+            "ignoreWords": ["msdownload", "msword", "openxmlformats", "officedocument", "wordprocessingml"]
         }
     ]
 }

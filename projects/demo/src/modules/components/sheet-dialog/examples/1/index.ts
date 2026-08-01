@@ -16,7 +16,10 @@ export default class Example {
 
     protected onClick(): void {
         this.service
-            .open('Supports <b>basic</b> HTML', {label: 'Simple sheet'})
+            .open('Supports <b>basic</b> HTML', {
+                label: 'Simple sheet',
+                data: {button: 'OK'},
+            })
             .subscribe();
     }
 }

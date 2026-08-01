@@ -8,7 +8,7 @@
 </div>
 <div class="t-sheet">
     <div
-        *ngIf="context.bar && !context.appearance.includes('fullscreen')"
+        *ngIf="context.bar"
         class="t-top"
     ></div>
     <h2
@@ -21,9 +21,17 @@
         </ng-container>
     </h2>
     <div class="t-content">
-        <div
-            *polymorpheusOutlet="context.content as text; context: context"
-            [innerHTML]="text"
-        ></div>
+        <ng-container *polymorpheusOutlet="context.content as text; context: context">
+            <div [innerHTML]="text"></div>
+            <button
+                *ngIf="context.closeable && context.data"
+                tuiButton
+                type="button"
+                class="t-button"
+                (click)="context.$implicit.complete()"
+            >
+                {{ $any(context.data).button }}
+            </button>
+        </ng-container>
     </div>
 </div>

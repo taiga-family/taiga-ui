@@ -35,7 +35,7 @@ import {map} from 'rxjs';
         '[attr.tuiTheme]': 'isMobileRes() ? "" : "dark"',
     },
 })
-export class TuiPdfViewerComponent<O, I> {
+export class TuiPdfViewer<O, I> {
     protected readonly isMobileRes = toSignal(
         inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
         {initialValue: false},
@@ -46,3 +46,10 @@ export class TuiPdfViewerComponent<O, I> {
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
     protected readonly icons = inject(TUI_COMMON_ICONS);
 }
+
+export {
+    /**
+     * @deprecated use {@link TuiPdfViewer}
+     */
+    TuiPdfViewer as TuiPdfViewerComponent,
+};

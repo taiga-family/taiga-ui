@@ -1,13 +1,13 @@
 {
   "projects": {},
   "targets": {
-    "taiga-previews": {
+    "taiga-preview-demo": {
       "hosting": {
-        "taiga-previews-demo": [
-          "taiga-previews-demo"
+        "taiga-preview-demo": [
+          "taiga-preview-demo"
         ],
-        "taiga-previews-demo-e2e-report": [
-          "taiga-previews-demo-e2e-report"
+        "taiga-preview-demo-e2e": [
+          "taiga-preview-demo-e2e"
         ]
       }
     }

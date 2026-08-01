@@ -84,13 +84,11 @@ export default class PageComponent {
 
     protected strict = true;
 
-    protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw'
-    );
+    protected readonly databaseExample: TuiRawLoaderContent =
+        import('./examples/5/database.ts?raw');
 
-    protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw'
-    );
+    protected readonly selectOptionExample: TuiRawLoaderContent =
+        import('./examples/12/option.ts?raw');
 
     protected readonly handler = (item: Country): boolean =>
         item.id.charCodeAt(1) % 3 === 0;

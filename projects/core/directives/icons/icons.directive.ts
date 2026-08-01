@@ -11,6 +11,7 @@ import {
 import {type SafeResourceUrl} from '@angular/platform-browser';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     TUI_ICON_END,
     TUI_ICON_START,
@@ -29,9 +30,7 @@ type Icon = SafeResourceUrl | string | null | undefined;
     styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-icons',
-    },
+    exportAs: `tui-icons-${TUI_VERSION}`,
 })
 class TuiIconsStyles {}
 
@@ -39,6 +38,7 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
+        tuiIconsV: TUI_VERSION,
         '[style.--t-icon-start]': 'startResource()',
         '[style.--t-icon-end]': 'endResource()',
         '[attr.data-icon-start]': 'startMode()',

@@ -1,7 +1,7 @@
 import {isPlatformBrowser} from '@angular/common';
 import {inject, Injectable, type OnDestroy, PLATFORM_ID} from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -27,8 +27,8 @@ export class TuiTileService implements OnDestroy {
     private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
     private readonly position$: Observable<readonly [number, number]> = combineLatest([
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
-        inject(ResizeObserverService).pipe(startWith(null)),
-        inject(MutationObserverService).pipe(startWith(null)),
+        inject(WaResizeObserverService).pipe(startWith(null)),
+        inject(WaMutationObserverService).pipe(startWith(null)),
         this.tiles.order$.pipe(debounceTime(0, tuiZonefreeScheduler())),
     ]).pipe(map(([offset]) => offset));
 

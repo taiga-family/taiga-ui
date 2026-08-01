@@ -4,6 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -21,6 +22,10 @@ class TuiCardRowStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiCardRow]',
+    host: {
+        tuiCardRow: '',
+        tuiCardRowV: TUI_VERSION,
+    },
 })
 export class TuiCardRow {
     protected readonly nothing = tuiWithStyles(TuiCardRowStyles);

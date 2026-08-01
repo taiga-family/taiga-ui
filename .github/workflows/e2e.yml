@@ -243,6 +243,9 @@ jobs:
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 
+      - uses: taiga-family/ci/actions/setup/node@v1.152.0
+        with:
+          node-version: 24.18
       - name: Deploy e2e report
         id: e2e-report
         uses: FirebaseExtended/action-hosting-deploy@v0.10.0
@@ -252,9 +255,9 @@ jobs:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-e2e
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-previews
+          projectId: taiga-preview-demo
           expires: 1d
-          target: taiga-previews-demo-e2e-report
+          target: taiga-preview-demo-e2e
           disableComment: 'true'
 
       - name: Create report comment

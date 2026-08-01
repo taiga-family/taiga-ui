@@ -20,8 +20,8 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
@@ -79,7 +79,10 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
 
     // TODO: Added just to avoid breaking anything until we refactor to signal queries
-    @ContentChild(forwardRef(() => TuiTextfieldBase), {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {
+        read: ElementRef,
+        descendants: true,
+    })
     // eslint-disable-next-line @typescript-eslint/naming-convention
     protected readonly _input?: ElementRef<HTMLInputElement>;
 
@@ -91,9 +94,18 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
     protected readonly computedFiller = computed((value = this.value()) => {
-        const filler = value + this.filler().slice(value.length);
+        const filler = this.filler();
 
-        return filler.length > value.length ? filler : '';
+        if (filler.length <= value.length) {
+            return '';
+        }
+
+        const input =
+            this.inputQuery()?.nativeElement ?? this.input?.nativeElement ?? this.el;
+
+        return input.matches('[dir="rtl"] :scope')
+            ? filler.slice(0, filler.length - value.length) + value
+            : value + filler.slice(value.length);
     });
 
     protected readonly showFiller = computed<boolean>(
@@ -109,10 +121,10 @@ export class TuiTextfieldBaseComponent<T>
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
-    @ContentChild(NgControl)
+    @ContentChild(NgControl, {descendants: true})
     public readonly control?: NgControl;
 
-    @ContentChild(TuiControl)
+    @ContentChild(TuiControl, {descendants: true})
     public readonly cva?: TuiControl<unknown>;
 
     // TODO: Replace with signal query when Angular is updated v5
@@ -153,6 +165,15 @@ export class TuiTextfieldBaseComponent<T>
         return this.options.size();
     }
 
+    public get disabled(): boolean {
+        return (
+            this.cva?.disabled() ??
+            this.control?.disabled ??
+            this.input?.nativeElement?.disabled ??
+            false
+        );
+    }
+
     public ngAfterContentChecked(): void {
         this.contentReady$.next(true);
         this.inputQuery.set(this._input);
@@ -161,6 +182,10 @@ export class TuiTextfieldBaseComponent<T>
     public handleOption(option: T): void {
         this.accessor?.setValue(option);
         this.open.set(false);
+    }
+
+    protected get interactiveInput(): ElementRef<HTMLInputElement> | undefined {
+        return this._input ?? this.input;
     }
 
     protected get hasLabel(): boolean {
@@ -173,11 +198,13 @@ export class TuiTextfieldBaseComponent<T>
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
-        this.input?.nativeElement.focus();
+        this.interactiveInput?.nativeElement.focus();
 
         if (
             !this.dropdownOpen.tuiDropdownEnabled ||
-            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
+            this.interactiveInput?.nativeElement.matches(
+                'input:read-only,textarea:read-only',
+            )
         ) {
             return;
         }
@@ -185,7 +212,7 @@ export class TuiTextfieldBaseComponent<T>
         this.open.update((open) => !open);
 
         try {
-            this.input?.nativeElement.showPicker?.();
+            this.interactiveInput?.nativeElement.showPicker?.();
         } catch {
             // Empty catch block - silently ignore showPicker errors
         }
@@ -223,10 +250,11 @@ export class TuiTextfieldBaseComponent<T>
         TuiWithTextfieldDropdown,
     ],
     host: {
+        tuiTextfieldV: TUI_VERSION,
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[class._disabled]': 'disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',

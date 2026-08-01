@@ -12,6 +12,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
     delay,
     distinctUntilChanged,
+    EMPTY,
     filter,
     fromEvent,
     map,
@@ -69,7 +70,12 @@ export class TuiDropdownHover extends TuiDriver {
     ).pipe(
         map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
-        switchMap((v) => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
+        switchMap((visible) =>
+            of(visible).pipe(
+                delay(visible ? this.showDelay : this.hideDelay),
+                takeUntil(this.open ? fromEvent(this.el, 'pointerdown') : EMPTY),
+            ),
+        ),
         tuiZoneOptimized(),
         tap((hovered) => {
             this.hovered = hovered;

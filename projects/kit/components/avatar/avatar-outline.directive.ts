@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -23,6 +24,7 @@ class TuiAvatarOutlineStyles {}
     standalone: true,
     selector: '[tuiAvatarOutline]',
     host: {
+        tuiAvatarOutlineV: TUI_VERSION,
         '[style.--t-fill]': 'value',
         '[class._outline]': 'value',
     },

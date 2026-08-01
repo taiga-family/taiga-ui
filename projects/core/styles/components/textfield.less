@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-tui-textfield {
+[tuiTextfieldV='@{tui-version}'] {
     .scrollbar-hidden();
     .transition(color);
 
@@ -82,10 +82,14 @@ tui-textfield {
         outline: none;
         padding-block-start: 1.125rem;
         padding-block-end: 1.125rem;
-        color: var(--tui-text-primary);
 
         &[inputmode='none'] {
             caret-color: transparent;
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
         }
     }
 
@@ -99,22 +103,21 @@ tui-textfield {
         line-height: 1rem;
 
         &[style*='--t-icon-start:'] {
-            --t-start: 1.25rem;
+            --t-start: 1.375rem;
         }
 
         &[style*='--t-icon-end:'] {
-            --t-end: 1.25rem;
+            --t-end: 1.375rem;
         }
 
         &::before {
-            margin-inline-end: 0.5rem;
-            margin-inline-start: -0.125rem;
+            margin-inline-end: 0.625rem;
             font-size: 1rem;
         }
 
         &::after {
-            margin-inline-end: calc(-0.125rem - var(--t-padding));
-            margin-inline-start: calc(0.625rem - var(--t-padding));
+            margin-inline-end: calc(-1 * var(--t-padding));
+            margin-inline-start: calc(0.5rem - var(--t-padding));
             font-size: 1rem;
         }
 
@@ -126,7 +129,7 @@ tui-textfield {
         }
 
         & > .t-content {
-            margin-inline-end: -0.375rem;
+            margin-inline-end: -0.25rem;
         }
     }
 
@@ -264,9 +267,7 @@ tui-textfield {
 
         appearance: none;
         box-sizing: border-box;
-        border-radius: inherit;
         border-width: 0;
-        overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
         padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
         padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side) + var(--t-padding));
@@ -275,6 +276,7 @@ tui-textfield {
     & > .t-template {
         display: flex;
         align-items: center;
+        border-radius: inherit;
         color: var(--tui-text-primary);
     }
 
@@ -284,11 +286,17 @@ tui-textfield {
         color: transparent !important;
     }
 
+    input,
+    select,
+    textarea {
+        background: none;
+        border-radius: inherit;
+    }
+
     input:not([type='range']),
     select:defined,
     textarea:defined {
         pointer-events: auto;
-        background: none;
 
         // TODO: Remove :not when we drop old select tuiTextfield in v5
         &:not(select):read-only ~ .t-filler {
@@ -328,7 +336,7 @@ tui-textfield {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    color: var(--tui-text-tertiary);
+                    color: var(--tui-text-secondary);
                 }
 
                 & ~ label {
@@ -360,6 +368,7 @@ tui-textfield {
         align-self: flex-start;
         font-size: inherit;
         line-height: var(--t-height);
+        letter-spacing: calc((max(1em, 0.75rem) - 1em) * 0.4);
         transition-duration: inherit;
     }
 

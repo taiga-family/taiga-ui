@@ -3,6 +3,7 @@ import {type TuiLanguageName} from './language-names';
 
 export interface TuiLanguageCore {
     close: string;
+    back?: string;
     clear: string;
     countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;
@@ -214,7 +215,8 @@ export interface TuiLanguageMeta {
 }
 
 export interface TuiLanguage
-    extends TuiLanguageCore,
+    extends
+        TuiLanguageCore,
         TuiLanguageKit,
         TuiLanguageLayout,
         TuiLanguageCommerce,

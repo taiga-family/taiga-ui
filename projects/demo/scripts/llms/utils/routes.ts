@@ -1,5 +1,7 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import {getPagesPath} from './paths';
 
 export interface ComponentInfo {
     name: string;
@@ -10,17 +12,15 @@ export interface ComponentInfo {
     legacy: boolean;
 }
 
-const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
-
 export async function extractComponentsFromRoutes(): Promise<ComponentInfo[]> {
     const components: ComponentInfo[] = [];
 
     // Read the demo-routes.ts file
-    const demoRoutesPath = path.join(MODULES_PATH, 'app', 'demo-routes.ts');
+    const demoRoutesPath = path.join(getPagesPath(), 'app', 'demo-routes.ts');
     const demoRoutesContent = await fs.readFile(demoRoutesPath, 'utf-8');
 
     // Extract route definitions using a more robust regex
-    const routeMatches = demoRoutesContent.match(/(\w+):\s*'([^']+)'/g);
+    const routeMatches = demoRoutesContent.match(/\w+:\s*'[^']+'/g);
 
     if (!routeMatches) {
         console.warn('No route matches found');

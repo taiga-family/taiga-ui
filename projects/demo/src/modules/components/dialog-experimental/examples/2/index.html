@@ -7,11 +7,9 @@
 </button>
 <ng-template
     let-observer
+    [tuiDialogOptions]="{label: 'Let us know'}"
     [(tuiDialog)]="open"
 >
-    <header tuiHeader>
-        <h2 tuiTitle>Let us know</h2>
-    </header>
     <form
         tuiForm
         (submit.prevent)="observer.complete()"

@@ -31,5 +31,6 @@ export default class Example {
         'Combinations',
         'Connected',
         'Disabled state',
+        'Stretch',
     ];
 }

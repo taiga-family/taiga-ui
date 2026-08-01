@@ -2,13 +2,14 @@
     tuiButton
     tuiChevron
     tuiDropdownOpen
+    tuiDropdownRole="menu"
     type="button"
     [tuiDropdown]="content"
 >
     Menu
 </button>
 <ng-template #content>
-    <tui-data-list role="menu">
+    <tui-data-list>
         <tui-opt-group
             *ngFor="let group of groups"
             [label]="group.label"

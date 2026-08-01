@@ -26,6 +26,7 @@ import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
 import {combineLatest, debounceTime, map, type Observable, Subject} from 'rxjs';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     TUI_TABLE_OPTIONS,
     TuiSortDirection,
@@ -63,6 +64,7 @@ class TuiTableStyles {}
     ],
     hostDirectives: [TuiStuck],
     host: {
+        tuiTableV: TUI_VERSION,
         '[attr.data-size]': 'size()',
     },
 })

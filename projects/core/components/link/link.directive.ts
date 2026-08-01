@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_LINK_OPTIONS} from './link.options';
 
 @Component({
@@ -21,9 +22,7 @@ import {TUI_LINK_OPTIONS} from './link.options';
     styles: ['@import "@taiga-ui/core/styles/components/link.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-link',
-    },
+    exportAs: `tui-link-${TUI_VERSION}`,
 })
 class TuiLinkStyles {}
 
@@ -34,6 +33,7 @@ class TuiLinkStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
+        tuiLinkV: TUI_VERSION,
         '[style.text-decoration-line]': 'pseudo ? "underline" : null',
     },
 })

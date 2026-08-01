@@ -14,13 +14,11 @@ import {TuiAccordion, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export class Home {
-    protected readonly angularJsonStyles = import(
-        './examples/angular-json-styles.md?raw'
-    );
+    protected readonly angularJsonStyles =
+        import('./examples/angular-json-styles.md?raw');
 
-    protected readonly projectJsonStyles = import(
-        './examples/project-json-styles.md?raw'
-    );
+    protected readonly projectJsonStyles =
+        import('./examples/project-json-styles.md?raw');
 
     protected readonly appTemplate = import('./examples/app-template.md?raw');
     protected readonly assets = import('./examples/assets.md?raw');

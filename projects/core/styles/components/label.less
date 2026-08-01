@@ -14,7 +14,7 @@
  * @see-also
  * Checkbox, Radio, Title
  */
-[tuiLabel] {
+[tuiLabelV='@{tui-version}'] {
     display: flex;
     gap: 0.25rem;
     flex-direction: column;
@@ -52,6 +52,10 @@
 
     [tuiTitle] {
         margin-block-start: 0.125rem;
+    }
+
+    [tuiCell] [tuiTitle] {
+        margin-block-start: 0;
     }
 
     [tuiSubtitle] {

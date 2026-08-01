@@ -4,12 +4,16 @@ import {
     ContentChild,
     TemplateRef,
     ViewEncapsulation,
+    inject,
+    Input,
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type TuiSizeL} from '@taiga-ui/core/types';
 
 import {TuiInputFilesContent} from './input-files.content';
 import {TuiInputFilesDirective} from './input-files.directive';
+import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Component({
     standalone: true,
@@ -30,11 +34,13 @@ import {TuiInputFilesDirective} from './input-files.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiInputFiles: '',
         '(dragover.prevent.zoneless)': '0',
         '(drop.prevent)': 'onDropped($event)',
         '(dragenter)': 'onDrag($event.dataTransfer)',
         '(dragleave)': 'onDrag(null)',
         '[class._dragged]': 'fileDragged',
+        '[attr.data-size]': 'size || "l"',
         '(change)': 'onFilesSelected($event.target)',
     },
 })
@@ -44,9 +50,13 @@ export class TuiInputFiles {
 
     protected files?: FileList | null;
     protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
+    protected readonly options = inject(TUI_INPUT_FILES_OPTIONS);
 
     @ContentChild(TuiInputFilesDirective)
     public readonly input?: TuiInputFilesDirective;
+
+    @Input('tuiInputFiles')
+    public size: TuiSizeL | '' = '';
 
     protected get fileDragged(): boolean {
         return !!this.files && !this.input?.disabled();

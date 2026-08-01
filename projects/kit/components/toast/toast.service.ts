@@ -1,20 +1,18 @@
-import {Directive, inject, Injectable} from '@angular/core';
+import {Directive, inject, Injectable, type Type} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
 import {tuiAsPopover, type TuiPopover, TuiPopoverService} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {
-    tuiCreateToken,
-    tuiCreateTokenFromFactory,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ALERTS} from '@taiga-ui/core/components/alert';
 import {BehaviorSubject, pairwise} from 'rxjs';
 
 import {TuiToastComponent} from './toast.component';
 import {TUI_TOAST_OPTIONS, type TuiToastOptions} from './toast.options';
 
-const TOASTS = tuiCreateToken(
-    new BehaviorSubject<ReadonlyArray<TuiPopover<TuiToastOptions<unknown>, any>>>([]),
+const TOASTS = tuiCreateTokenFromFactory(
+    () =>
+        new BehaviorSubject<ReadonlyArray<TuiPopover<TuiToastOptions<unknown>, any>>>([]),
 );
 
 export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
@@ -24,11 +22,11 @@ export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
 @Injectable({
     providedIn: 'root',
     useFactory: () =>
-        new TuiToastService(TOASTS, TuiToastComponent, inject(TUI_TOAST_OPTIONS)),
+        new TuiToastService(TUI_ALERTS, TuiToastComponent, inject(TUI_TOAST_OPTIONS)),
 })
 export class TuiToastService extends TuiPopoverService<TuiToastOptions<any>> {
     private readonly concurrency = inject(TUI_TOASTS_CONCURRENCY);
-    private readonly alerts = inject(TUI_ALERTS);
+    private readonly alerts;
 
     protected readonly sub = this.items$
         .pipe(pairwise(), takeUntilDestroyed())
@@ -39,6 +37,16 @@ export class TuiToastService extends TuiPopoverService<TuiToastOptions<any>> {
 
             this.alerts.next(Array.from(toasts));
         });
+
+    constructor(
+        items: ConstructorParameters<typeof TuiPopoverService<TuiToastOptions<any>>>[0],
+        component: Type<any>,
+        options: TuiToastOptions<any>,
+    ) {
+        super(TOASTS, component, options);
+
+        this.alerts = inject(items);
+    }
 }
 
 @Directive({

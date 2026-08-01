@@ -38,17 +38,14 @@ export default class Page {
 
     protected readonly method = import('./examples/import/method.md?raw');
 
-    protected readonly exampleServiceUsage = import(
-        './examples/import/service-usage.md?raw'
-    );
+    protected readonly exampleServiceUsage =
+        import('./examples/import/service-usage.md?raw');
 
-    protected readonly exampleServiceUsageComponent = import(
-        './examples/import/service-usage-component.md?raw'
-    );
+    protected readonly exampleServiceUsageComponent =
+        import('./examples/import/service-usage-component.md?raw');
 
-    protected readonly exampleCustomAlert = import(
-        './examples/import/custom-alert.md?raw'
-    );
+    protected readonly exampleCustomAlert =
+        import('./examples/import/custom-alert.md?raw');
 
     protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
     protected readonly exampleOptions = import('./examples/import/define-options.md?raw');

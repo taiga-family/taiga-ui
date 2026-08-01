@@ -244,10 +244,24 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Layout',
+        title: 'List',
+        keywords:
+            'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
+        route: DemoRoute.List,
+    },
+    {
+        section: 'Layout',
         title: 'BlockStatus',
         keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
         route: DemoRoute.BlockStatus,
         meta: {},
+    },
+    {
+        section: 'Components',
+        title: 'Counter',
+        keywords: 'кнопка, button, counter, счетчик',
+        route: DemoRoute.Counter,
+        meta: {name: 'tui-counter'},
     },
     {
         section: 'Components',
@@ -1692,6 +1706,12 @@ export const pages: DocRoutePages = [
                 meta: {
                     figmaVersion: '1.2.0',
                 },
+            },
+            {
+                section: 'Tools',
+                title: 'Truncate',
+                keywords: 'truncate, middle, ellipsis, обрезка, по середине',
+                route: DemoRoute.Truncate,
             },
         ],
     },

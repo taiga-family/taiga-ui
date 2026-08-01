@@ -1,4 +1,6 @@
-[tuiSubheader][compact] {
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiSubheaderV='@{tui-version}'][compact] {
     top: 3rem;
     z-index: 1;
     block-size: var(--tui-height-m);
@@ -43,7 +45,7 @@
     }
 }
 
-[tuiSubheader]:not([compact]) {
+[tuiSubheaderV='@{tui-version}']:not([compact]) {
     margin-block-start: 0.875rem;
 
     [tuiHeader] {

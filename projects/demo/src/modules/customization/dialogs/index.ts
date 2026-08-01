@@ -18,29 +18,23 @@ export default class Page {
         LESS: import('./examples/1/index.less?raw'),
         'prompt/prompt.service.ts': import('./examples/1/prompt/prompt.service.ts?raw'),
         'prompt/prompt-options.ts': import('./examples/1/prompt/prompt-options.ts?raw'),
-        'prompt/prompt.component.ts': import(
-            './examples/1/prompt/prompt.component.ts?raw'
-        ),
-        'prompt/prompt.template.html': import(
-            './examples/1/prompt/prompt.template.html?raw'
-        ),
+        'prompt/prompt.component.ts':
+            import('./examples/1/prompt/prompt.component.ts?raw'),
+        'prompt/prompt.template.html':
+            import('./examples/1/prompt/prompt.template.html?raw'),
         'prompt/prompt.style.less': import('./examples/1/prompt/prompt.style.less?raw'),
     };
 
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'custom-dialog/custom-dialog.service.ts': import(
-            './examples/2/custom-dialog/custom-dialog.service.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.directive.ts': import(
-            './examples/2/custom-dialog/custom-dialog.directive.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.component.ts': import(
-            './examples/2/custom-dialog/custom-dialog.component.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.style.less': import(
-            './examples/2/custom-dialog/custom-dialog.style.less?raw'
-        ),
+        'custom-dialog/custom-dialog.service.ts':
+            import('./examples/2/custom-dialog/custom-dialog.service.ts?raw'),
+        'custom-dialog/custom-dialog.directive.ts':
+            import('./examples/2/custom-dialog/custom-dialog.directive.ts?raw'),
+        'custom-dialog/custom-dialog.component.ts':
+            import('./examples/2/custom-dialog/custom-dialog.component.ts?raw'),
+        'custom-dialog/custom-dialog.style.less':
+            import('./examples/2/custom-dialog/custom-dialog.style.less?raw'),
     };
 }

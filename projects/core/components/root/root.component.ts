@@ -53,6 +53,7 @@ import {map} from 'rxjs';
     hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize, TuiActiveZone],
     host: {
         'data-tui-version': TUI_VERSION,
+        tuiRootV: TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '[class._mobile]': 'isMobileRes()',

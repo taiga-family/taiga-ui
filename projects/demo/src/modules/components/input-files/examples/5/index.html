@@ -1,13 +1,10 @@
-<label tuiInputFiles>
+<label tuiInputFiles="l">
     <input
         tuiInputFiles
         [formControl]="control"
     />
     <ng-template let-dragged>
-        <div
-            *ngIf="dragged; else base"
-            class="content"
-        >
+        <ng-container *ngIf="dragged; else base">
             <tui-avatar
                 appearance="secondary"
                 src="@tui.droplet"
@@ -17,18 +14,18 @@
                 <br />
                 <br />
             </div>
-        </div>
+        </ng-container>
+
         <ng-template #base>
-            <div class="content">
-                <tui-avatar
-                    appearance="secondary"
-                    src="@tui.cloud-upload"
-                />
-                <div>
-                    Drag and drop file here or
-                    <a tuiLink>click to upload</a>
-                </div>
+            <tui-avatar
+                appearance="secondary"
+                src="@tui.cloud-upload"
+            />
+            <div>
+                Drag and drop file here or
+                <a tuiLink>click to upload</a>
             </div>
+            <div class="types">PNG, JPG, JPEG, PNG, etc</div>
         </ng-template>
     </ng-template>
 </label>

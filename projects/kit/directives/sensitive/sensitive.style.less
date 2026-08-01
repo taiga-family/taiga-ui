@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-.tui-sensitive {
+[tuiSensitiveV='@{tui-version}'].tui-sensitive {
     position: relative;
     line-height: 1em;
     clip-path: inset(0 round 0.25rem);
@@ -22,7 +22,7 @@
     }
 }
 
-span.tui-sensitive,
-a.tui-sensitive {
+span[tuiSensitiveV='@{tui-version}'].tui-sensitive,
+a[tuiSensitiveV='@{tui-version}'].tui-sensitive {
     display: inline-block;
 }

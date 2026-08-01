@@ -15,9 +15,8 @@ import {TableColors} from './examples/table';
 export default class Page {
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
-    protected readonly basicImportsLess = import(
-        './examples/import/basic-imports-less.md?raw'
-    );
+    protected readonly basicImportsLess =
+        import('./examples/import/basic-imports-less.md?raw');
 
     protected readonly backgrounds = BACKGROUNDS;
     protected readonly text = TEXT;

@@ -58,8 +58,11 @@ import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode} from '@taiga-ui/kit/utils';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {validatePhoneNumberLength} from 'libphonenumber-js';
-import {getCountryCallingCode, type MetadataJson} from 'libphonenumber-js/core';
+import {
+    getCountryCallingCode,
+    validatePhoneNumberLength,
+    type MetadataJson,
+} from 'libphonenumber-js/core';
 import {from, skip} from 'rxjs';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
@@ -183,7 +186,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             ? newValue
             : CHAR_PLUS + newValue;
 
-        if (validatePhoneNumberLength(prefixedValue) === 'TOO_SHORT') {
+        if (validatePhoneNumberLength(prefixedValue, phonesMetadata) === 'TOO_SHORT') {
             return;
         }
 

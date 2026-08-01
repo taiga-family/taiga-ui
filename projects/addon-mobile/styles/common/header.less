@@ -8,26 +8,63 @@
         [tuiTitle] {
             gap: 1rem;
         }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-ui-m);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 1rem;
+            font: var(--tui-font-text-ui-l);
+        }
     }
 
     &[data-size='m'],
-    &[data-size='h4'] {
+    &[data-size='h4'],
+    &[data-size='h5'] {
         [tuiTitle] {
             gap: 0.5rem;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-ui-m);
+        }
+
+        + [tuiDescription] {
+            font: var(--tui-font-text-ui-l);
         }
     }
 
     [tuiAccessories] {
         gap: 1rem;
+
+        [tuiLink] {
+            font: var(--tui-font-text-ui-l);
+        }
     }
 
     &[data-size='xxs'],
     &[data-size='h6'],
     &[data-size='body-l'],
-    &[data-size='body-m'] {
+    &[data-size='body-m'],
+    &[data-size='body-s'] {
+        font: var(--tui-font-heading-6);
+
         [tuiTitle],
         [tuiAccessories] {
-            font: var(--tui-font-heading-6);
+            font: inherit;
+        }
+
+        [tuiTitle] {
+            gap: 0.25rem;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-ui-s);
+        }
+
+        + [tuiDescription] {
+            margin-block-start: 0.5rem;
         }
     }
 }

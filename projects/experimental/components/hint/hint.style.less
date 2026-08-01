@@ -74,8 +74,13 @@
         }
 
         [tuiIconButton][data-appearance='icon'][data-size='xs'] {
-            float: inline-end;
+            float: right;
             margin-inline-end: -0.25rem;
+
+            // Safari 15+
+            @supports (float: inline-end) {
+                float: inline-end;
+            }
         }
 
         img {

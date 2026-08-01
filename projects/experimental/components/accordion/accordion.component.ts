@@ -74,23 +74,23 @@ export class TuiAccordionComponent implements AfterViewInit {
     }
 
     private expand(accordion: TuiAccordionDirective): void {
-        if (this.closeOthers && accordion.open()) {
-            this.expands.forEach((expand) => {
-                expand.expanded = false;
-            });
-
-            this.directives.forEach((dir) => {
-                if (dir === accordion) {
-                    return;
-                }
-
-                dir.open.set(false);
-                dir.tuiAccordion = false;
-                dir.tuiAccordionChange.emit(false);
-            });
-        }
-
         const expand = this.expands.get(this.directives.toArray().indexOf(accordion));
+
+        if (this.closeOthers && accordion.open()) {
+            this.expands
+                .filter((x) => x !== expand)
+                .forEach((item) => {
+                    item.expanded = false;
+                });
+
+            this.directives
+                .filter((x) => x !== accordion)
+                .forEach((dir) => {
+                    dir.open.set(false);
+                    dir.tuiAccordion = false;
+                    dir.tuiAccordionChange.emit(false);
+                });
+        }
 
         if (expand) {
             expand.expanded = accordion.open();

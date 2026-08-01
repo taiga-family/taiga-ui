@@ -213,6 +213,11 @@ export const ROUTES: Routes = [
         title: 'Cell',
     }),
     route({
+        path: DemoRoute.List,
+        loadComponent: async () => import('../directives/list'),
+        title: 'List',
+    }),
+    route({
         path: DemoRoute.Comment,
         loadComponent: async () => import('../directives/comment'),
         title: 'Comment',
@@ -286,6 +291,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.ButtonGroup,
         title: 'ButtonGroup',
         loadComponent: async () => import('../components/button-group'),
+    }),
+    route({
+        path: DemoRoute.Counter,
+        title: 'Counter',
+        loadComponent: async () => import('../components/counter'),
     }),
     route({
         path: DemoRoute.ButtonSelect,
@@ -1061,6 +1071,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Touchable,
         loadComponent: async () => import('../directives/touchable'),
         title: 'Touchable',
+    }),
+    route({
+        path: DemoRoute.Truncate,
+        loadComponent: async () => import('../directives/truncate'),
+        title: 'Truncate',
     }),
     route({
         path: DemoRoute.Validator,

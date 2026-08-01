@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     standalone: true,
@@ -27,6 +28,7 @@ class TuiIconBadgeStyles {}
     selector: 'tui-icon[badge]',
     host: {
         tuiIconBadge: '',
+        tuiIconBadgeV: TUI_VERSION,
         '[style.--t-icon-badge]': 'badgeSrc()',
     },
 })

@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -23,6 +24,7 @@ class TuiPinStyles {}
     standalone: true,
     selector: 'tui-pin,[tuiPin]',
     host: {
+        tuiPinV: TUI_VERSION,
         '[class._open]': 'open',
     },
 })

@@ -26,36 +26,29 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly method = import('./method.md?raw');
 
-    protected readonly dialogsCloseToken = import(
-        './examples/import/dialogs-close-token.md?raw'
-    );
+    protected readonly dialogsCloseToken =
+        import('./examples/import/dialogs-close-token.md?raw');
 
     protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'dialog-example/dialog-example.component.ts': import(
-            './examples/2/dialog-example/dialog-example.component.ts?raw'
-        ),
-        'dialog-example/dialog-example.style.less': import(
-            './examples/2/dialog-example/dialog-example.style.less?raw'
-        ),
-        'dialog-example/dialog-example.template.html': import(
-            './examples/2/dialog-example/dialog-example.template.html?raw'
-        ),
+        'dialog-example/dialog-example.component.ts':
+            import('./examples/2/dialog-example/dialog-example.component.ts?raw'),
+        'dialog-example/dialog-example.style.less':
+            import('./examples/2/dialog-example/dialog-example.style.less?raw'),
+        'dialog-example/dialog-example.template.html':
+            import('./examples/2/dialog-example/dialog-example.template.html?raw'),
     };
 
     protected readonly example7 = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
-        'search-example/search-dialog-example.component.ts': import(
-            './examples/7/search-example/search-dialog-example.component.ts?raw'
-        ),
-        'search-example/search-dialog-example.template.html': import(
-            './examples/7/search-example/search-dialog-example.template.html?raw'
-        ),
-        'search-example/search-dialog-example.component.less': import(
-            './examples/7/search-example/search-dialog-example.component.less?raw'
-        ),
+        'search-example/search-dialog-example.component.ts':
+            import('./examples/7/search-example/search-dialog-example.component.ts?raw'),
+        'search-example/search-dialog-example.template.html':
+            import('./examples/7/search-example/search-dialog-example.template.html?raw'),
+        'search-example/search-dialog-example.component.less':
+            import('./examples/7/search-example/search-dialog-example.component.less?raw'),
     };
 
     protected readonly example9 = {
@@ -66,24 +59,19 @@ export default class Page {
         'helpers/models.ts': import('./examples/9/helpers/models.ts?raw'),
         'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw'),
         'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw'),
-        'pay-modal/pay-modal.component.ts': import(
-            './examples/9/pay-modal/pay-modal.component.ts?raw'
-        ),
-        'pay-modal/pay-modal.component.less': import(
-            './examples/9/pay-modal/pay-modal.component.less?raw'
-        ),
-        'pay-modal/pay-modal.component.html': import(
-            './examples/9/pay-modal/pay-modal.component.html?raw'
-        ),
+        'pay-modal/pay-modal.component.ts':
+            import('./examples/9/pay-modal/pay-modal.component.ts?raw'),
+        'pay-modal/pay-modal.component.less':
+            import('./examples/9/pay-modal/pay-modal.component.less?raw'),
+        'pay-modal/pay-modal.component.html':
+            import('./examples/9/pay-modal/pay-modal.component.html?raw'),
     };
 
-    protected readonly exampleServiceUsage = import(
-        './examples/import/service-usage.md?raw'
-    );
+    protected readonly exampleServiceUsage =
+        import('./examples/import/service-usage.md?raw');
 
-    protected readonly exampleCustomDialog = import(
-        './examples/import/custom-dialog.md?raw'
-    );
+    protected readonly exampleCustomDialog =
+        import('./examples/import/custom-dialog.md?raw');
 
     protected readonly exampleLazyDialog = import('./examples/import/lazy-dialog.md?raw');
 

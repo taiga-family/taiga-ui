@@ -1,7 +1,7 @@
 import {Directive, inject, type OnInit} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {type Router} from '@angular/router';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {tuiInjectElement, tuiPure, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, type Observable, shareReplay, startWith} from 'rxjs';
@@ -11,7 +11,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
     useFactory(): Observable<boolean> {
         const host = tuiInjectElement();
 
-        return inject(ResizeObserverService).pipe(
+        return inject(WaResizeObserverService).pipe(
             map(([entry]) => entry?.contentRect.height ?? 0),
             distinctUntilChanged(),
             startWith(0),

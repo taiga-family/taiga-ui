@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {computed, Directive, inject} from '@angular/core';
+import {computed, Directive, inject, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -7,17 +7,9 @@ import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
 import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
-import {shouldCall} from '@taiga-ui/event-plugins';
 import {merge} from 'rxjs';
 
 import {TuiDropdownDriver} from './dropdown.driver';
-
-function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
-    return (
-        !event ||
-        (this.driver.value && !this.activeZone.contains(tuiGetActualTarget(event)))
-    );
-}
 
 @Directive({
     standalone: true,
@@ -37,6 +29,7 @@ function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
+    private readonly zone = inject(NgZone);
     private readonly isTouch = inject(TUI_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
 
@@ -58,10 +51,16 @@ export class TuiDropdownContext extends TuiRectAccessor {
         return this.currentRect;
     }
 
-    @shouldCall(activeZoneFilter)
-    protected closeDropdown(_event?: Event): void {
-        this.driver.next(false);
-        this.currentRect = EMPTY_CLIENT_RECT;
+    protected closeDropdown(event?: Event): void {
+        if (
+            !event ||
+            (this.driver.value && !this.activeZone.contains(tuiGetActualTarget(event)))
+        ) {
+            this.zone.run(() => {
+                this.driver.next(false);
+                this.currentRect = EMPTY_CLIENT_RECT;
+            });
+        }
     }
 
     protected onContextMenu(x: number, y: number): void {

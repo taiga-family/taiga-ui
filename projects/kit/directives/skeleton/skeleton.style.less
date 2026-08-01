@@ -10,7 +10,7 @@
     }
 }
 
-[tuiSkeleton] {
+[tuiSkeletonV='@{tui-version}'] {
     &._skeleton {
         color: transparent;
         background: var(--tui-background-base) !important;
@@ -35,7 +35,7 @@
     }
 }
 
-[tuiTheme='dark'] [tuiSkeleton]._skeleton,
-[tuiTheme='dark'][tuiSkeleton]._skeleton {
+[tuiTheme='dark'] [tuiSkeletonV='@{tui-version}']._skeleton,
+[tuiTheme='dark'][tuiSkeletonV='@{tui-version}']._skeleton {
     filter: contrast(0) brightness(0) invert(1);
 }

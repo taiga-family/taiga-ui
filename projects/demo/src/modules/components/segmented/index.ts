@@ -9,5 +9,11 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Sizes', 'Width', 'Customization', 'Content'];
+    protected readonly examples = [
+        'Sizes',
+        'Width',
+        'Customization',
+        'Content',
+        'Disabled',
+    ];
 }

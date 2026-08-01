@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/firebase/firebase-tools/master/schema/firebase-config.json",
     "hosting": [
         {
-            "target": "taiga-previews-demo",
+            "target": "taiga-preview-demo",
             "public": "dist/demo/browser",
             "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
             "rewrites": [
@@ -13,7 +13,7 @@
             ]
         },
         {
-            "target": "taiga-previews-demo-e2e-report",
+            "target": "taiga-preview-demo-e2e",
             "public": "playwright-report",
             "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
             "rewrites": [

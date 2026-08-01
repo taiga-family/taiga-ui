@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
@@ -26,6 +27,9 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     styleUrls: ['./avatar-labeled.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiAvatarLabeledV: TUI_VERSION,
+    },
 })
 export class TuiAvatarLabeled {
     @Input()

@@ -22,6 +22,19 @@ test.describe('Textarea', () => {
             .toHaveScreenshot('01-character-with-descenders-inside-placeholder.png');
     });
 
+    test('required textarea is not invalid before touched', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const example = new TuiDocumentationPagePO(page).getExample('#icons');
+        const textarea = example.locator('[tuiTextarea]');
+
+        await expect.soft(example).toHaveScreenshot('required-textarea-untouched.png');
+        await textarea.click({button: 'middle'});
+        await textarea.fill('123');
+        await textarea.clear();
+        await textarea.blur();
+        await expect.soft(example).toHaveScreenshot('required-textarea-touched.png');
+    });
+
     ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(
@@ -53,5 +66,21 @@ test.describe('Textarea', () => {
         await expect
             .soft(textAreaComponent)
             .toHaveScreenshot('textarea-line-break-disabled.png');
+    });
+
+    test('overscroll-behavior', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+
+        const basicTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('textarea[tuiTextarea]')
+            .first();
+
+        const limitTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#limit')
+            .locator('textarea[tuiTextarea]');
+
+        await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
+        await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
     });
 });

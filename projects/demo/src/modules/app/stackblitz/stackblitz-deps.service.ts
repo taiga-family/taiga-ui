@@ -28,7 +28,7 @@ export class StackblitzDepsService {
             '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
-            '@angular/router': ngVersion,
+            '@angular/router': '20.3.17', // @angular/router@20.3.18 throws `The file '/turbo_modules/@angular/router@20.3.18/fesm2022/router.mjs' does not exist`
             typescript: '5.8.x', // compatible with angular 20
         };
     }
@@ -69,6 +69,7 @@ export class StackblitzDepsService {
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
+            '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],
             '@ng-web-apis/intersection-observer':
                 kitDeps['@ng-web-apis/intersection-observer'],
             '@ng-web-apis/platform': cdkDeps['@ng-web-apis/platform'],

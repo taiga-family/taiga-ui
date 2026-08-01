@@ -9,6 +9,24 @@
             allows adding animation to DOM elements.
         </p>
 
+        <div
+            appearance="warning"
+            tuiNotification
+        >
+            <p>
+                In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this,
+                disabling animations under its control, and
+                <code>TuiAnimated</code>
+                will not play animations.
+            </p>
+            <p>
+                To override this behavior, use
+                <code>TUI_REDUCED_MOTION</code>
+                injection token. However, this is not the recommended approach, as the user's system preferences would
+                be ignored.
+            </p>
+        </div>
+
         <tui-doc-example
             id="usage"
             heading="Usage"

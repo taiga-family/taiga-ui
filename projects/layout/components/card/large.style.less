@@ -1,9 +1,11 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 // Don't increase specificity. Otherwise, not compatible with [tuiHeader]
-[tuiCardLarge] {
+[tuiCardLargeV='@{tui-version}'] {
     font: var(--tui-font-text-m);
 }
 
-[tuiCardLarge][data-space] {
+[tuiCardLargeV='@{tui-version}'][data-space] {
     --t-space: 0.75rem;
     --t-radius: var(--tui-radius-l);
     --t-comp: -0.25rem;
@@ -36,24 +38,32 @@
         }
     }
 
-    &[tuiHeader] {
-        padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
+    &[tuiHeaderV='@{tui-version}'] {
+        padding: var(--t-dim) var(--t-padding);
 
-        [tuiLink]:last-child {
-            margin-inline-end: calc(-1 * var(--t-comp));
+        [tuiButton]:last-child,
+        [tuiSwitch]:last-child,
+        [tuiAvatar]:last-child,
+        tui-avatar:last-child,
+        tui-segmented:last-child {
+            margin-inline-end: var(--t-comp);
         }
     }
 
-    > [tuiHeader] {
-        margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
+    > [tuiHeaderV='@{tui-version}'] {
+        margin: var(--t-comp) 0 calc(2 * var(--t-comp));
 
-        [tuiLink]:last-child {
-            margin-inline-end: calc(-1 * var(--t-comp));
+        [tuiButton]:last-child,
+        [tuiSwitch]:last-child,
+        [tuiAvatar]:last-child,
+        tui-avatar:last-child,
+        tui-segmented:last-child {
+            margin-inline-end: var(--t-comp);
         }
     }
 
     [tuiCell] {
-        inline-size: stretch;
+        inline-size: 100%;
         padding: 0.5rem;
         margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
@@ -61,6 +71,14 @@
         &:last-of-type {
             margin-block-end: -0.5rem;
         }
+    }
+
+    [tuiHeader] + [tuiDescription] {
+        margin-block: -0.5rem -0.25rem;
+    }
+
+    [tuiHeader] + [tuiCell] {
+        margin-block-start: var(--t-comp);
     }
 
     > [tuiLink]:last-child {
@@ -71,5 +89,7 @@
 
     [tuiAccessories] > [tuiButtonClose] {
         align-self: flex-start;
+
+        --t-size: 1.5rem;
     }
 }
