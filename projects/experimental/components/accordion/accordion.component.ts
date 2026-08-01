@@ -44,7 +44,12 @@ export class TuiAccordionComponent implements AfterViewInit {
     @ContentChildren(TuiExpand)
     public readonly expands: QueryList<TuiExpand> = EMPTY_QUERY;
 
-    @ContentChildren(TuiAccordionDirective)
+    // Descendants search is required so a trigger wrapped in an arbitrary
+    // element (e.g. alongside a custom action button) is still found — but
+    // that also picks up triggers belonging to an accordion nested inside
+    // this one's tui-expand, so `ownDirectives` filters those back out to
+    // keep index-based pairing intact.
+    @ContentChildren(TuiAccordionDirective, {descendants: true})
     public readonly directives: QueryList<TuiAccordionDirective> = EMPTY_QUERY;
 
     @Input()
@@ -73,8 +78,13 @@ export class TuiAccordionComponent implements AfterViewInit {
         this.toggle$.next(directive);
     }
 
+    private get ownDirectives(): TuiAccordionDirective[] {
+        return this.directives.filter((dir) => dir.accordion === this);
+    }
+
     private expand(accordion: TuiAccordionDirective): void {
-        const expand = this.expands.get(this.directives.toArray().indexOf(accordion));
+        const ownDirectives = this.ownDirectives;
+        const expand = this.expands.get(ownDirectives.indexOf(accordion));
 
         if (this.closeOthers && accordion.open()) {
             this.expands
@@ -83,7 +93,7 @@ export class TuiAccordionComponent implements AfterViewInit {
                     item.expanded = false;
                 });
 
-            this.directives
+            ownDirectives
                 .filter((x) => x !== accordion)
                 .forEach((dir) => {
                     dir.open.set(false);
