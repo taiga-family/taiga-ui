@@ -59,4 +59,75 @@ describe('Accordion', () => {
 
         expect(getExpands()[1]?.nativeElement.classList).toContain('_expanded');
     });
+
+    describe('nested inside another accordion', () => {
+        @Component({
+            imports: [TuiAccordion],
+            template: `
+                <tui-accordion>
+                    <button tuiAccordion>Outer trigger 1</button>
+                    <tui-expand>
+                        <tui-accordion>
+                            <button tuiAccordion>Inner trigger</button>
+                            <tui-expand>Inner content</tui-expand>
+                        </tui-accordion>
+                    </tui-expand>
+
+                    <button tuiAccordion>Outer trigger 2</button>
+                    <tui-expand>Outer content 2</tui-expand>
+                </tui-accordion>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class NestedTest {}
+
+        let nestedFixture: ComponentFixture<NestedTest>;
+
+        beforeEach(async () => {
+            TestBed.resetTestingModule();
+            TestBed.configureTestingModule({
+                imports: [NestedTest],
+                providers: [provideTaiga()],
+            });
+            await TestBed.compileComponents();
+
+            nestedFixture = TestBed.createComponent(NestedTest);
+            nestedFixture.detectChanges();
+        });
+
+        function getTrigger(text: string): HTMLButtonElement {
+            return nestedFixture.debugElement
+                .queryAll(By.css('[tuiAccordion]'))
+                .find((trigger) => trigger.nativeElement.textContent === text)!
+                .nativeElement as HTMLButtonElement;
+        }
+
+        function getExpand(text: string): DebugElement {
+            return nestedFixture.debugElement
+                .queryAll(By.css('tui-expand'))
+                .find((expand) => expand.nativeElement.textContent.trim() === text)!;
+        }
+
+        it('closing a sibling in the outer accordion does not collapse an unrelated nested accordion', () => {
+            getTrigger('Outer trigger 1').click();
+            nestedFixture.detectChanges();
+
+            getTrigger('Inner trigger').click();
+            nestedFixture.detectChanges();
+
+            expect(getExpand('Inner content').nativeElement.classList).toContain(
+                '_expanded',
+            );
+
+            getTrigger('Outer trigger 2').click();
+            nestedFixture.detectChanges();
+
+            expect(getExpand('Outer content 2').nativeElement.classList).toContain(
+                '_expanded',
+            );
+            expect(getExpand('Inner content').nativeElement.classList).toContain(
+                '_expanded',
+            );
+        });
+    });
 });
