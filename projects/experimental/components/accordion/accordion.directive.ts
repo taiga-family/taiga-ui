@@ -31,9 +31,13 @@ import {TuiAccordionComponent} from './accordion.component';
     },
 })
 export class TuiAccordionDirective implements OnChanges {
-    private readonly accordion = inject(TuiAccordionComponent);
+    private readonly accordionRef = inject(TuiAccordionComponent);
 
-    protected readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
+    protected readonly size = tuiDirectiveBinding(
+        TuiButton,
+        'size',
+        this.accordionRef.size,
+    );
 
     @Input()
     public tuiAccordion: boolean | string = '';
@@ -42,16 +46,17 @@ export class TuiAccordionDirective implements OnChanges {
     public readonly tuiAccordionChange = new EventEmitter<boolean>();
 
     public readonly open = tuiDirectiveBinding(TuiChevron, 'tuiChevron', signal(false));
+    public readonly accordion = inject(TuiAccordionComponent);
 
     public ngOnChanges(): void {
         this.open.set(!!this.tuiAccordion);
-        this.accordion.toggle(this);
+        this.accordionRef.toggle(this);
     }
 
     public toggle(): void {
         this.open.set(!this.open());
         this.tuiAccordion = this.open();
         this.tuiAccordionChange.emit(this.open());
-        this.accordion.toggle(this);
+        this.accordionRef.toggle(this);
     }
 }
