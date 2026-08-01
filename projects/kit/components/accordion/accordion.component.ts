@@ -34,7 +34,10 @@ import {TuiAccordionDirective} from './accordion.directive';
 })
 export class TuiAccordionComponent {
     protected readonly expands = contentChildren(TuiExpand);
-    protected readonly directives = contentChildren(TuiAccordionDirective);
+    protected readonly directives = contentChildren(TuiAccordionDirective, {
+        descendants: true,
+    });
+
     protected readonly elements = contentChildren(TuiExpand, {read: ElementRef});
 
     protected readonly sync = effect(() =>
