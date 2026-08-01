@@ -1,0 +1,24 @@
+<tui-accordion>
+    <ng-container *ngFor="let item of items">
+        <div class="t-header">
+            <button
+                appearance="icon"
+                tuiAccordion
+            >
+                {{ item.title }}
+            </button>
+            <button
+                appearance="icon"
+                iconStart="@tui.info"
+                tuiIconButton
+                type="button"
+                (click)="showDetails(item)"
+            >
+                Show details about {{ item.title }}
+            </button>
+        </div>
+        <tui-expand>
+            {{ item.content }}
+        </tui-expand>
+    </ng-container>
+</tui-accordion>
