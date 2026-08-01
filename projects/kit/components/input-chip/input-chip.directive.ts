@@ -81,12 +81,18 @@ export class TuiInputChipBaseDirective<T>
         );
     }
 
-    protected onEnter(): void {
-        const value = this.textfield.value().trim();
-        const items: any[] = this.separator ? value.split(this.separator) : [value];
-        const valid = items.filter(
-            (item) => item && !this.handlers.disabledItemHandler()(item),
-        );
+    protected onEnter(rawValue = this.textfield.value()): void {
+        const value = rawValue.trim();
+        const items = this.separator ? value.split(this.separator) : [value];
+
+        const valid = items
+            .map((item) => tuiSanitizeText(item) as T)
+            .filter(
+                (item) =>
+                    item &&
+                    !this.handlers.disabledItemHandler()(item) &&
+                    this.handlers.stringify()(item),
+            );
 
         if (!value || !valid.length) {
             return;
@@ -112,8 +118,11 @@ export class TuiInputChipBaseDirective<T>
                 ? event.dataTransfer?.getData('text/plain') || ''
                 : tuiGetClipboardDataText(event);
 
-        this.textfield.value.set(tuiSanitizeText(value));
-        this.onEnter();
+        if (this.textfield.input?.nativeElement) {
+            this.textfield.input.nativeElement.value = value;
+        }
+
+        this.onEnter(value);
     }
 
     protected onBackspace(key: string): void {
@@ -141,7 +150,7 @@ export class TuiInputChipBaseDirective<T>
                 left: sign * Number.MAX_SAFE_INTEGER,
                 top: Number.MAX_SAFE_INTEGER,
             });
-        });
+        }, 100);
     }
 }
 

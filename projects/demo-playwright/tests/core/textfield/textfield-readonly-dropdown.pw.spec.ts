@@ -17,6 +17,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
             input = example.locator('tui-textfield input, tui-primitive-textfield input');
             dropdown = page.locator('tui-dropdown');
         });
+
         [
             DemoRoute.ComboBox,
             DemoRoute.ComboBoxLegacy,

@@ -1,10 +1,12 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 .fixed-gradient() {
     inline-size: 100% !important;
     clip-path: inset(0 calc(100% - var(--tui-progress-percent)) 0 0 round var(--tui-radius-m));
     transition: clip-path var(--tui-duration) linear;
 }
 
-[tuiProgressFixedGradient] {
+[tuiProgressFixedGradientV='@{tui-version}'] {
     &::-moz-progress-bar {
         .fixed-gradient();
 

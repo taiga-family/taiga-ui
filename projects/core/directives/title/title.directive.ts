@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
@@ -25,6 +26,7 @@ class TuiTitleStyles {}
     selector: '[tuiTitle]',
     host: {
         tuiTitle: '',
+        tuiTitleV: TUI_VERSION,
         '[attr.data-size]': 'size || null',
     },
 })

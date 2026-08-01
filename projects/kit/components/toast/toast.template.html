@@ -7,7 +7,7 @@
         tuiToast
         [iconStart]="context.data?.toString() || ''"
     >
-        {{ text }}
+        <tui-shrink-wrap><span [innerHTML]="text"></span></tui-shrink-wrap>
     </div>
     <button
         *ngIf="context.closable && !isMobile"

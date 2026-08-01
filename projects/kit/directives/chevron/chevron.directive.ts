@@ -9,6 +9,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -32,7 +33,10 @@ class TuiChevronStyles {}
     standalone: true,
     selector: '[tuiChevron]',
     providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
-    host: {tuiChevron: ''},
+    host: {
+        tuiChevron: '',
+        tuiChevronV: TUI_VERSION,
+    },
 })
 export class TuiChevron {
     private readonly el = tuiInjectElement();

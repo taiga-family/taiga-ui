@@ -33,10 +33,6 @@ RELEASE_BODY.md
 .nx
 .history
 /projects/demo-cypress/tests-results/
-/projects/demo-playwright/tests-results/
-/projects/demo-playwright/tests-report/
-/projects/demo-playwright/snapshots/
-/projects/demo-playwright/playwright/.cache/
 projects/demo/routes.txt
 projects/demo/src/llms.txt
 projects/demo/src/llms-full.txt

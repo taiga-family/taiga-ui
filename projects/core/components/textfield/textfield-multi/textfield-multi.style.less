@@ -2,14 +2,14 @@
 @import '@taiga-ui/core/styles/components/textfield.less';
 
 // TODO: Remove all the @supports in v5
-tui-textfield[multi][multi] {
+tui-textfield[tuiTextfieldV='@{tui-version}'][multi] {
     flex-wrap: nowrap;
     overflow: scroll;
     align-items: stretch;
     cursor: text;
     gap: 0;
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
-    overscroll-behavior: none;
+    overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
 
     &::before,
@@ -235,7 +235,7 @@ tui-textfield[multi][multi] {
         }
 
         > .t-content {
-            transform: translateX(0.125rem);
+            transform: translateX(calc(0.125rem * var(--tui-inline)));
         }
     }
 
@@ -244,33 +244,35 @@ tui-textfield[multi][multi] {
         --t-offset: calc(0.625rem + var(--t-end) / 10);
 
         &::before {
-            left: -0.125rem;
-            inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
         &::after {
-            left: calc(100% - var(--t-end) - 0.125rem);
-            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
-            border-width: 0.5rem;
+            left: calc(100% - var(--t-end) - 0.25rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
+            border-width: 0.625rem;
             margin-inline-end: calc(-1 * var(--t-padding));
         }
 
         > .t-content {
             gap: 0;
-            transform: translateX(calc(0.375rem - var(--t-end) / 10));
+            transform: translateX(calc(0.25rem * var(--tui-inline)));
         }
     }
 
     .appearance-focus({
         input::placeholder,
         input._empty {
-            color: var(--tui-text-tertiary);
+            color: var(--tui-text-secondary);
         }
     });
 
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
+    }
+
+    input {
+        color: var(--tui-text-primary);
     }
 
     input::placeholder {

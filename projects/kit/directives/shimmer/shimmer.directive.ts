@@ -9,6 +9,7 @@ import {
     PLATFORM_ID,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -29,6 +30,7 @@ class TuiShimmerStyles {}
     selector: '[tuiShimmer]',
     host: {
         tuiShimmer: '',
+        tuiShimmerV: TUI_VERSION,
         '[class._shimmer]': 'shimmer',
         '[class._disabled]': 'shimmer && disabled',
         '[attr.inert]': 'shimmer || null',

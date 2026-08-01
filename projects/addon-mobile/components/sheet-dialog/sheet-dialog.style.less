@@ -17,7 +17,7 @@
 
     &.tui-enter,
     &.tui-leave {
-        animation-name: tuiFade, tuiSlide;
+        animation-name: tuiSlide;
     }
 
     &::before {
@@ -158,4 +158,9 @@
         scroll-snap-align: end;
         border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/0/0 100vh 100vh;
     }
+}
+
+.t-button {
+    inline-size: 100%;
+    margin-block-start: 1rem;
 }

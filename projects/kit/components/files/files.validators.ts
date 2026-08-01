@@ -2,6 +2,8 @@ import {coerceArray} from '@angular/cdk/coercion';
 import {type ValidatorFn} from '@angular/forms';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 
+import {type TuiFileLike} from './files.types';
+
 export const TUI_SIZE_ERROR = 'tuiSize';
 export const TUI_FORMAT_ERROR = 'tuiFormat';
 
@@ -32,21 +34,22 @@ export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
     };
 }
 
-function checkFormat({name, type}: File, formats: readonly string[]): boolean {
+function checkFormat({name, type}: TuiFileLike, formats: readonly string[]): boolean {
     const extension = `.${(name.split('.').pop() || '').toLowerCase()}`;
+    const normalizedType = type?.toLowerCase() || '';
 
     return formats.some(
         (format) =>
             format === extension ||
-            format === type ||
+            format === normalizedType ||
             (format.split('/')[1] === '*' &&
-                type?.split('/')[0] === format.split('/')[0]),
+                normalizedType.split('/')[0] === format.split('/')[0]),
     );
 }
 
 function toArray(accept: string): readonly string[] {
     return accept
-        .toLowerCase()
         .split(',')
-        .map((format) => format.trim().toLowerCase());
+        .map((format) => format.trim().toLowerCase())
+        .filter(Boolean);
 }

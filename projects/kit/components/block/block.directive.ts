@@ -18,6 +18,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_BLOCK_OPTIONS} from './block.options';
 
 @Component({
@@ -42,7 +43,8 @@ class TuiBlockStyles {}
     hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
     host: {
         tuiBlock: '',
-        '[attr.data-size]': 'size || "l"',
+        tuiBlockV: TUI_VERSION,
+        '[attr.data-size]': 'size || options.size || "l"',
         '[class._disabled]': '!!this.control?.disabled',
     },
 })
@@ -51,7 +53,8 @@ export class TuiBlock {
     protected readonly control?: NgControl;
 
     protected readonly nothing = tuiWithStyles(TuiBlockStyles);
+    protected readonly options = inject(TUI_BLOCK_OPTIONS);
 
     @Input('tuiBlock')
-    public size: TuiSizeL | TuiSizeS | '' = inject(TUI_BLOCK_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeS | '' = this.options.size;
 }

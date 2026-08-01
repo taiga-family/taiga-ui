@@ -13,6 +13,20 @@ exports[`migrateTuiLet should migrate template 1`] = `
         {{ val }}
     </test>
 </div>
+
+@let showRequisitesButton = showRequisitesButton$ | async;
+
+    @let companyRequisites = companyRequisites$ | async;
+    
+        <tui-panel [titleContent]="companyContent">
+             <ng-template #companyContent>
+                <label>Label</label>
+            </ng-template>
+        </tui-panel>
+
+        <div>Hello world</div>
+    
+
 "
 `;
 

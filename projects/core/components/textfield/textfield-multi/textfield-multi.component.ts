@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -48,6 +49,7 @@ import {
     type TuiTextfieldItem,
     TuiTextfieldItemComponent,
 } from './textfield-item.component';
+import {WA_WINDOW} from '@ng-web-apis/common';
 
 @Component({
     standalone: true,
@@ -83,24 +85,25 @@ import {
     ],
     host: {
         class: 'tui-interactive',
-        '[attr.data-state]': 'control?.disabled ? "disabled" : null',
+        tuiTextfieldV: TUI_VERSION,
+        '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
         '(click.prevent)': 'onClick($event.target)',
-        '(tuiActiveZoneChange)':
-            '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
+        '(tuiActiveZoneChange)': 'onActiveZone($event)',
         // TODO: Remove in v5
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '[class._disabled]': 'disabled',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
 })
 export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> {
     protected readonly height = signal<number | null>(null);
+    protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
         new PolymorpheusComponent(TuiTextfieldItemComponent);
@@ -132,8 +135,8 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
     }
 
     protected get placeholder(): string {
-        const placeholder = this.input?.nativeElement.matches('input')
-            ? this.input.nativeElement.placeholder
+        const placeholder = this.interactiveInput?.nativeElement.matches('input')
+            ? this.interactiveInput.nativeElement.placeholder
             : this.computedFiller();
         const value = this.computedFiller() || this.value();
         const longer = value.length > placeholder.length ? value : placeholder;
@@ -161,6 +164,21 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
     }
 
+    protected focusInput(): void {
+        const selection = this.win.getSelection();
+
+        if (!selection?.rangeCount || selection.getRangeAt(0)?.collapsed) {
+            this.interactiveInput?.nativeElement.focus();
+        }
+    }
+
+    protected onActiveZone(active: boolean): void {
+        if (!active) {
+            this.el.scrollTo({left: 0});
+            this.cva?.onTouched();
+        }
+    }
+
     protected onClick(target: HTMLElement): void {
         if (
             target === this.el ||
@@ -175,7 +193,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
         this.open.update((open) => !open);
 
         try {
-            this.input?.nativeElement.showPicker?.();
+            this.interactiveInput?.nativeElement.showPicker?.();
         } catch {
             // Empty catch block - silently ignore showPicker errors
         }

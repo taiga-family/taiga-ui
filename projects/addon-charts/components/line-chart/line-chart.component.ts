@@ -12,7 +12,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -41,7 +41,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService],
+    providers: [WaResizeObserverService],
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
     host: {
         '(mouseleave)': 'onMouseLeave()',
@@ -53,7 +53,7 @@ export class TuiLineChart implements OnChanges {
     private readonly hover$ = new Subject<number>();
     private readonly autoId = tuiInjectId();
     private readonly resize = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
+        inject(WaResizeObserverService, {self: true}).pipe(
             map(([e]) => e?.contentRect.height || NaN),
             filter((height) => !Number.isNaN(height)),
         ),

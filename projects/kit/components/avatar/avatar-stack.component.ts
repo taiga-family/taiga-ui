@@ -4,6 +4,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 @Component({
@@ -14,6 +15,7 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiAvatarStackV: TUI_VERSION,
         '[attr.data-direction]': 'direction',
     },
 })

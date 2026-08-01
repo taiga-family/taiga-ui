@@ -37,6 +37,18 @@ const TEMPLATE = `
         {{ val }}
     </test>
 </div>
+
+<ng-container *tuiLet="showRequisitesButton$ | async as showRequisitesButton">
+    <ng-container *tuiLet="companyRequisites$ | async as companyRequisites">
+        <tui-panel [titleContent]="companyContent">
+             <ng-template #companyContent>
+                <label>Label</label>
+            </ng-template>
+        </tui-panel>
+
+        <div>Hello world</div>
+    </ng-container>
+</ng-container>
 `;
 
 describe('migrateTuiLet', () => {

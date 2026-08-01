@@ -6,6 +6,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 import {
     TuiTextfieldContent,
@@ -24,7 +25,10 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {ngSkipHydration: 'true'},
+    host: {
+        tuiInputDateTimeV: TUI_VERSION,
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
     protected readonly host = inject(TuiInputDateTimeDirective);

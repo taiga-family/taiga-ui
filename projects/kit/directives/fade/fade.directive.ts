@@ -4,15 +4,16 @@ import {
     Directive,
     inject,
     Input,
+    NgZone,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MutationObserverService,
+    WaMutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -37,20 +38,21 @@ class TuiFadeStyles {}
     standalone: true,
     selector: '[tuiFade]',
     providers: [
-        ResizeObserverService,
-        MutationObserverService,
+        WaResizeObserverService,
+        WaMutationObserverService,
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
         },
     ],
-    hostDirectives: [TuiTransitioned],
     host: {
+        tuiFadeV: TUI_VERSION,
         '[style.line-height]': 'lineHeight',
         '[style.--t-line-height]': 'lineHeight',
         '[style.--t-fade-size]': 'size',
         '[style.--t-fade-offset]': 'offset',
         '[attr.data-orientation]': 'orientation',
+        '[style.transition]': '"none"',
     },
 })
 export class TuiFade {
@@ -70,10 +72,18 @@ export class TuiFade {
     constructor() {
         const el = tuiInjectElement();
 
+        // TODO: Replace with TuiTransitioned when fixed:
+        // https://github.com/angular/angular/issues/57846
+        inject(NgZone).runOutsideAngular(() => {
+            setTimeout(() => {
+                el.style.transition = '';
+            });
+        });
+
         tuiWithStyles(TuiFadeStyles);
         merge(
-            inject(ResizeObserverService, {self: true}),
-            inject(MutationObserverService, {self: true}),
+            inject(WaResizeObserverService, {self: true}),
+            inject(WaMutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
             .pipe(

@@ -2,6 +2,8 @@ import {Directive, inject} from '@angular/core';
 import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
+import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+
 @Directive({
     standalone: true,
     selector: '[tuiSelectLike]',
@@ -11,8 +13,11 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
         spellcheck: 'false',
         autocomplete: 'off',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
-        '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
+        '(beforeinput)':
+            'options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
+        '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
+        '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
         // Hide Android text select handle (bubble marker below transparent caret)
         '(mousedown)': 'prevent($event)',
     },
@@ -20,6 +25,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 export class TuiSelectLike {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected clear(): void {
         this.el.value = '';

@@ -11,6 +11,7 @@ import {
     Output,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -34,6 +35,7 @@ class TuiTabsStyles {}
 @Directive({
     standalone: true,
     host: {
+        tuiTabsV: TUI_VERSION,
         '[attr.data-size]': 'size',
         [`(${TUI_TAB_ACTIVATE})`]: 'onActivate($event, $event.target)',
     },

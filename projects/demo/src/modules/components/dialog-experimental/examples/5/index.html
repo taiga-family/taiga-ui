@@ -6,13 +6,14 @@
     Show dialog
 </button>
 <ng-template
+    let-id="id"
     [tuiDialogOptions]="{size: 's'}"
     [(tuiDialog)]="open"
 >
     <header tuiHeader>
         <hgroup tuiTitle>
-            <h2>Hello!</h2>
-            <p>Welcome to the website</p>
+            <h2 [id]="id">Hello!</h2>
+            <p>Don't forget to set ID for accessible label</p>
         </hgroup>
     </header>
     <footer>

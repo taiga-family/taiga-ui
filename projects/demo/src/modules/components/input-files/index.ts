@@ -22,6 +22,7 @@ export default class PageComponent {
         'Custom content',
         'Camera capture',
         'Model',
+        'Accept',
     ];
 
     protected multiple = true;

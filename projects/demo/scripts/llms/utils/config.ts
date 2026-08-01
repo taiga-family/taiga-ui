@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 interface ConfigValue {
     value: boolean;
@@ -21,6 +21,16 @@ export interface LlmsConfig {
         includeMarkdownFiles: ConfigValue;
         includeUsageExamples: ConfigValue;
         includeAllExamples: ConfigValue;
+    };
+    constants?: {
+        description: string;
+        defaultModulesPath: string;
+        defaultOutputFile: string;
+        defaultOutputFileHtml: string;
+        headerSectionsPath: string;
+        headerFiles: string[];
+        skipFolders: string[];
+        childFolders: string[];
     };
 }
 

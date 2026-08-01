@@ -19,6 +19,7 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 export class TuiFilterByInputPipe implements PipeTransform {
     // TODO: Remove optional after legacy controls are dropped
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
+    private readonly multi = this.textfield?.el.matches('[multi]');
     private readonly host = inject(TUI_DATA_LIST_HOST);
     private readonly itemsHandlers: TuiItemsHandlers<unknown> =
         inject(TUI_ITEMS_HANDLERS);
@@ -101,7 +102,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         query: string,
     ): T | undefined {
         // TODO: Refactor when tui-textfield[multi] is ready
-        if ((this.host as any).tagValidator) {
+        if ((this.host as any).tagValidator || this.multi) {
             return undefined;
         }
 

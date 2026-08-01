@@ -22,15 +22,15 @@
  * Icons, Appearance
  */
 tui-notification,
-[tuiNotification] {
+[tuiNotificationV='@{tui-version}'] {
     .button-clear();
 
     position: relative;
     display: block;
     max-block-size: 100%;
     color: var(--tui-text-primary);
-    padding: 1rem;
     font: var(--tui-font-text-m);
+    padding: var(--t-offset) var(--tui-padding-l);
     line-height: 1.5rem;
     border-radius: var(--tui-radius-l);
     box-sizing: border-box;
@@ -39,6 +39,8 @@ tui-notification,
     border-inline-start: var(--t-start) solid transparent;
     border-inline-end: var(--t-end) solid transparent;
 
+    --t-offset: calc((var(--t-height) - var(--tui-lh)) / 2);
+    --t-height: var(--tui-height-l);
     --t-start: 0;
     --t-end: 0;
 
@@ -52,8 +54,10 @@ tui-notification,
 
     &::before {
         position: absolute;
+        top: calc(var(--t-offset) + var(--tui-lh));
         left: -1rem;
         inset-inline-start: -1rem;
+        transform: translateY(-100%);
     }
 
     &::after {
@@ -73,18 +77,19 @@ tui-notification,
     }
 
     &[data-size='s'] {
-        padding: 0.375rem 0.625rem;
+        padding: var(--t-offset) 0.5rem;
         font: var(--tui-font-text-s);
         line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
+
+        --t-height: var(--tui-height-s);
 
         &[style*='--t-icon-start:'] {
             --t-start: 1.5rem;
         }
 
         &::before {
-            top: 0.5rem;
-            left: -0.875rem;
+            left: -1rem;
             inset-inline-start: -0.875rem;
             font-size: 1rem;
         }
@@ -128,10 +133,12 @@ tui-notification,
     }
 
     &[data-size='m'] {
-        padding: 0.75rem;
+        padding: var(--t-offset) var(--tui-padding-m);
         font: var(--tui-font-text-s);
         line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
+
+        --t-height: var(--tui-height-m);
 
         &[style*='--t-icon-start:'] {
             --t-start: 1.625rem;
@@ -211,8 +218,8 @@ tui-notification,
             inset-inline-end: 0.75rem;
         }
     }
-}
 
-[tuiNotification] {
-    cursor: pointer;
+    .interactive({
+        cursor: pointer;
+    });
 }

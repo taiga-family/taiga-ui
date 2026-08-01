@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TUI_BADGE_OPTIONS} from './badge.options';
 
 @Component({
@@ -33,6 +34,7 @@ class TuiBadgeStyles {}
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
+        tuiBadgeV: TUI_VERSION,
         '[attr.data-size]': 'size',
     },
 })

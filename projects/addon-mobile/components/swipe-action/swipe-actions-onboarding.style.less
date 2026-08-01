@@ -1,0 +1,44 @@
+tui-swipe-actions._onboarding {
+    scroll-snap-type: none;
+
+    & > * {
+        animation:
+            tuiOnboardingEnter var(--tui-animation-duration-slow, 500ms)
+                var(--tui-animation-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
+            tuiOnboardingShow var(--tui-animation-duration-moderate, 300ms) linear
+                var(--tui-animation-duration-slow, 500ms),
+            tuiOnboardingExit var(--tui-animation-duration-slow, 500ms)
+                var(--tui-animation-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1))
+                calc(var(--tui-animation-duration-slow, 500ms) + var(--tui-animation-duration-moderate, 300ms));
+
+        @keyframes tuiOnboardingEnter {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+        }
+
+        @keyframes tuiOnboardingShow {
+            0% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+
+            100% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+        }
+
+        @keyframes tuiOnboardingExit {
+            0% {
+                transform: translateX(calc(-1px * var(--t-actions-width)));
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    }
+}

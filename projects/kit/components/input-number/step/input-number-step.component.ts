@@ -8,15 +8,14 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
-import {expand, fromEvent, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
 import {
@@ -24,9 +23,7 @@ import {
     type TuiInputNumberOptions,
 } from '../input-number.options';
 
-const INITIAL_DELAY = 300;
-const DELAY_DECREMENT = 15;
-const MIN_DELAY = 100;
+import {TuiInputNumberStepService} from './input-number-step.service';
 
 @Component({
     standalone: true,
@@ -36,7 +33,9 @@ const MIN_DELAY = 100;
     styleUrls: ['./input-number-step.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiInputNumberStepService],
     host: {
+        tuiInputNumberV: TUI_VERSION,
         ngSkipHydration: 'true',
         '(keydown.arrowDown.prevent)': 'onStep(-step())',
         '(keydown.arrowUp.prevent)': 'onStep(step())',
@@ -45,32 +44,14 @@ const MIN_DELAY = 100;
 })
 export class TuiInputNumberStep {
     protected readonly el = tuiInjectElement<HTMLInputElement>();
+    protected readonly hold = inject(TuiInputNumberStepService);
+    protected readonly $ = this.hold.steps$.subscribe((value) => this.onStep(value));
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly input = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
     protected readonly value = computed(() => this.input.value() ?? NaN);
-    protected readonly step$ = new Subject<number>();
     protected readonly doc = inject(DOCUMENT);
-
-    protected readonly stop$ = merge(
-        fromEvent(this.doc, 'pointerup'),
-        fromEvent(this.doc, 'pointerleave'),
-        fromEvent(this.doc, 'pointercancel'),
-    );
-
-    protected readonly stepping = this.step$
-        .pipe(
-            switchMap((value) =>
-                timer(INITIAL_DELAY).pipe(
-                    expand((_, index) => timer(getDelay(index))),
-                    map(() => value),
-                    takeUntil(this.stop$),
-                ),
-            ),
-            takeUntilDestroyed(),
-        )
-        .subscribe((value) => this.onStep(value));
 
     // TODO(v5): replace with signal input
     @Input('step')
@@ -80,12 +61,9 @@ export class TuiInputNumberStep {
 
     protected onStep(step: number): void {
         const current = this.input.value() ?? 0;
+        const value = tuiSum(current, step);
 
-        this.input.setValue(tuiClamp(current + step, this.input.min(), this.input.max()));
+        this.input.setValue(tuiClamp(value, this.input.min(), this.input.max()));
         this.el.setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
     }
-}
-
-function getDelay(index: number): number {
-    return Math.max(INITIAL_DELAY - index * DELAY_DECREMENT, MIN_DELAY);
 }

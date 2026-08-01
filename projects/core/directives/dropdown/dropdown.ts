@@ -11,6 +11,7 @@ import {TuiDropdownPortal} from './dropdown-portal.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 import {TuiDropdownPositionSided} from './dropdown-position-sided.directive';
 import {TuiDropdownSelection} from './dropdown-selection.directive';
+import {TuiDropdownA11y} from './dropdown-a11y.directive';
 
 export const TuiDropdown = [
     TuiDropdownOptionsDirective,
@@ -26,4 +27,5 @@ export const TuiDropdown = [
     TuiDropdownPosition,
     TuiDropdownPositionSided,
     TuiDropdownSelection,
+    TuiDropdownA11y,
 ] as const;

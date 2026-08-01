@@ -10,7 +10,6 @@ export * from './directive-listener';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';
 export * from './flat-length';
-export * from './font-size-watcher';
 export * from './get-original-array-from-query-list';
 export * from './is-control-empty';
 export * from './is-falsy';

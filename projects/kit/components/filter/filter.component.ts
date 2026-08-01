@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     type TuiBooleanHandler,
     type TuiHandler,
@@ -62,7 +63,8 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public content: PolymorpheusContent = ({$implicit}) => String($implicit);
 
     @Input()
-    public badgeHandler: TuiHandler<T, number> = (item) => Number(item);
+    public badgeHandler: TuiHandler<T, number | null> = (item) =>
+        tuiIsString(item) || tuiIsNumber(item) ? null : Number(item);
 
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);

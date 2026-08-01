@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -18,6 +18,7 @@ import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
         TuiFallbackSrcPipe,
         TuiIcon,
         TuiPlatform,
+        TuiShrinkWrap,
         TuiToast,
     ],
     templateUrl: './index.html',

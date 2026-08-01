@@ -16,8 +16,7 @@
  * @see-also
  * Icons, Appearance, Chip, Block
  */
-tui-badge,
-[tuiBadge] {
+[tuiBadgeV='@{tui-version}'] {
     --t-icon-size: 1rem;
     --t-padding: 0 0.5rem;
     --t-size: var(--tui-height-xs);
@@ -116,12 +115,12 @@ tui-badge,
     }
 }
 
-img[tuiBadge] {
+img[tuiBadgeV='@{tui-version}'] {
     padding: 0;
     inline-size: var(--t-size);
 }
 
-tui-icon[tuiBadge] {
+tui-icon[tuiBadgeV='@{tui-version}'] {
     --t-margin: 0 !important;
 
     mask: none;

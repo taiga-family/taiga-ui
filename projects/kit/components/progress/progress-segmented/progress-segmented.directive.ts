@@ -5,6 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -21,6 +22,7 @@ class TuiProgressSegmentedStyles {}
     standalone: true,
     selector: '[tuiProgressBar][segments]',
     host: {
+        tuiProgressSegmentedV: TUI_VERSION,
         class: '_segmented',
         '[style.--t-segment-width]': '1 / segments',
     },

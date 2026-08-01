@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -60,7 +61,10 @@ export abstract class TuiNativeTimePicker {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],
-    host: {ngSkipHydration: 'true'},
+    host: {
+        tuiInputTimeV: TUI_VERSION,
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
     private readonly control: TuiControl<TuiTime | null> = inject(TuiControl);

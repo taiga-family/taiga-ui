@@ -1,3 +1,4 @@
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,6 +15,8 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiBlockStatus: '',
+        tuiBlockStatusV: TUI_VERSION,
         '[class._card]': 'card',
         '[attr.data-size]': 'size',
     },

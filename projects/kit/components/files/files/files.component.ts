@@ -11,7 +11,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
@@ -38,6 +38,9 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
         tuiGroupOptionsProvider({size: 'm', collapsed: true, orientation: 'vertical'}),
     ],
     hostDirectives: [TuiGroup],
+    host: {
+        tuiFilesV: TUI_VERSION,
+    },
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItem, {read: TemplateRef})

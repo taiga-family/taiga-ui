@@ -1,4 +1,5 @@
 import {expect, type Page} from '@playwright/test';
+import {existsSync} from 'node:fs';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
@@ -52,9 +53,21 @@ export async function tuiGoto(
         await tuiMockDate(page, date);
     }
 
-    await page.route('https://fonts.gstatic.com/**', async (route) =>
-        route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
+    await page.route(
+        /fonts\.googleapis\.com|cdn\..*\/design-tokens\/.*\/fonts\.css/,
+        async (route) =>
+            route.fulfill({
+                path: `${__dirname}/../stubs/fonts.css`,
+                contentType: 'text/css',
+            }),
     );
+
+    await page.route(/\.(woff2?|ttf)$/, async (route) => {
+        const filename = new URL(route.request().url()).pathname.split('/').pop() ?? '';
+        const filePath = `${__dirname}/../stubs/${filename}`;
+
+        return existsSync(filePath) ? route.fulfill({path: filePath}) : route.continue();
+    });
 
     await page.route('blank.ttf', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/blank.ttf`}),

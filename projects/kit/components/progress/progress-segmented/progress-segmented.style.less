@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 @radius: calc(var(--t-height) / 2);
 @mask-color: #999;
 
@@ -17,7 +19,7 @@
     transparent calc(100% - @radius - var(--tui-segment-gap))
 );
 
-[tuiProgressBar]._segmented {
+[tuiProgressSegmentedV='@{tui-version}']._segmented {
     --tui-segment-gap: 0.5rem;
 
     mask-image: @left-circle, @right-circle, @rectangle;

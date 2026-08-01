@@ -33,6 +33,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     host: {
         style: 'cursor: pointer',
         '(click)': 'copy()',
+        '(pointerdown.stop)': '0',
         '[style.pointer-events]': 'disabled ? "none" : null',
         '[style.opacity]': 'disabled ? "var(--tui-disabled-opacity)" : null',
         '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',

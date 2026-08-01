@@ -208,6 +208,11 @@ export class TuiInputRangeComponent
         }
     }
 
+    protected onBlur(): void {
+        this.onTouched();
+        this.setTextfieldValues(this.value());
+    }
+
     protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
         // TODO(v5): remove backward compatibility
         this.lastActiveSide = activeThumb === 'left' ? 'start' : 'end';

@@ -65,8 +65,12 @@
     }
 
     /* @deprecated TODO remove in v5 */
-    &[tuiWrapper]:not(._focused):has(:focus-visible),
-    &[tuiWrapper]._focused {
+    &[tuiWrapper]:not(._focused):has(:focus-visible) {
+        @content;
+    }
+
+    /* @deprecated TODO remove in v5 */
+    &[tuiWrapper]._focused._focused {
         @content;
     }
 }

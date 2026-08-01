@@ -7,7 +7,7 @@
 <div
     class="t-items"
     [class.t-items_horizontal]="rows === 1"
-    (click)="input?.nativeElement?.focus()"
+    (click)="focusInput()"
     (pointerdown.self.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
@@ -23,7 +23,12 @@
     >
         <ng-content select="input" />
         <ng-content select="select" />
-        <span class="t-ghost">{{ placeholder }}</span>
+        <span
+            *ngIf="placeholder"
+            class="t-ghost"
+        >
+            {{ placeholder }}
+        </span>
         <input
             aria-hidden="true"
             disabled
@@ -36,7 +41,7 @@
 
 <span
     class="t-content"
-    (click.stop)="input?.nativeElement?.focus()"
+    (click)="interactiveInput?.nativeElement?.focus()"
     (pointerdown.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >

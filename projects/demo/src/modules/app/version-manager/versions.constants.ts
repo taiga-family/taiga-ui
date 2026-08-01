@@ -11,13 +11,13 @@ export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
 
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: 'next',
-        baseHref: '/next/',
-        title: `v${TUI_CURRENT_MAJOR_VERSION}.next`,
+        label: 'v5',
+        baseHref: '/',
+        title: 'v5',
     },
     {
         label: `v${TUI_VERSION}`,
-        baseHref: '/',
+        baseHref: '/v4/',
         title: `v${TUI_CURRENT_MAJOR_VERSION}`,
     },
     {
@@ -31,11 +31,6 @@ export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
         title: 'v2',
     },
 ];
-
-export const TUI_VERSIONS_META_MAP = TUI_VERSIONS_META.reduce(
-    (map, item) => map.set(item.baseHref, item),
-    new Map<string, TuiVersionMeta>(),
-);
 
 export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
     ngDevMode ? 'TUI_VERSIONS_META_OPTIONS' : '',

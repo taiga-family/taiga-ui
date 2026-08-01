@@ -9,6 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -66,9 +67,11 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
+        tuiTooltipV: TUI_VERSION,
         '[attr.data-size]': 'size',
+        '(mousedown.prevent)': '0',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(pointerdown)': 'onPointerDown($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
@@ -97,12 +100,11 @@ export class TuiTooltip implements DoCheck {
         }
     }
 
-    protected onClick(event: MouseEvent): void {
+    protected onPointerDown(event: MouseEvent): void {
         if (this.isMobile) {
-            event.preventDefault();
             event.stopPropagation();
-        } else {
-            this.driver.toggle();
         }
+
+        this.driver.toggle();
     }
 }
