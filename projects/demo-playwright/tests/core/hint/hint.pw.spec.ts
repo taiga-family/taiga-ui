@@ -195,4 +195,18 @@ test.describe('TuiHint', () => {
         await page.locator('#basic tui-segmented button').last().click();
         await expect(page.locator('tui-hint')).not.toBeAttached();
     });
+
+    test('works with a zero-sized host', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Pulse);
+
+        await page.getByRole('button', {name: 'Start tutorial'}).click();
+        await expect(page.locator('tui-hint')).toBeVisible();
+
+        await page.getByRole('button', {name: 'Next'}).click();
+        await expect(
+            page.locator('tui-hint').getByRole('heading', {
+                name: 'You can have images! Or any content really',
+            }),
+        ).toBeVisible();
+    });
 });
