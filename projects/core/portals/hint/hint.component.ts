@@ -97,7 +97,7 @@ export class TuiHintComponent {
                 takeWhile(
                     () =>
                         this.hint.el.isConnected &&
-                        !!this.hint.el.getBoundingClientRect().height,
+                        this.hint.el.getClientRects().length > 0,
                 ),
                 map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
