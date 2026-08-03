@@ -1,4 +1,13 @@
 <div class="content">
+    <tui-textfield class="field">
+        <label tuiLabel>Name</label>
+        <input
+            placeholder="Tap to open the keyboard"
+            tuiInput
+            [(ngModel)]="value"
+        />
+    </tui-textfield>
+
     @for (_ of '-'.repeat(30); track $index) {
         <div tuiCell>
             <div
@@ -12,14 +21,12 @@
         </div>
     }
 
-    <footer
-        tuiFloatingContainer="transparent"
-        class="bar"
-    >
+    <footer tuiFloatingContainer="transparent">
         <button
             size="m"
             tuiButton
             type="button"
+            class="action"
         >
             Next
         </button>
