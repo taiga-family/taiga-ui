@@ -87,15 +87,11 @@ describe('ng-update leftover removed symbols warnings (#11917)', () => {
         'adds TODO comments for removed @taiga-ui/addon-commerce input-card options',
         migrate({
             component: /* TypeScript */ `
-                import {Component, inject} from '@angular/core';
-                import {
-                    TUI_INPUT_CARD_DEFAULT_OPTIONS,
-                    type TuiInputCardOptions,
-                } from '@taiga-ui/addon-commerce';
+                import {Component} from '@angular/core';
+                import {type TuiInputCardOptions} from '@taiga-ui/addon-commerce';
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly defaults = inject(TUI_INPUT_CARD_DEFAULT_OPTIONS);
                     protected readonly options: TuiInputCardOptions | null = null;
                 }
             `,

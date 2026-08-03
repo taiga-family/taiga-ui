@@ -127,11 +127,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.',
     },
-    ...['TUI_INPUT_CARD_DEFAULT_OPTIONS', 'TuiInputCardOptions'].map((name) => ({
-        name,
+    {
+        name: 'TuiInputCardOptions',
         moduleSpecifier: '@taiga-ui/addon-commerce',
-        message: `${name} has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.`,
-    })),
+        message:
+            'TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.',
+    },
     {
         name: 'TUI_TABLE_PROVIDER',
         moduleSpecifier: '@taiga-ui/addon-table',
