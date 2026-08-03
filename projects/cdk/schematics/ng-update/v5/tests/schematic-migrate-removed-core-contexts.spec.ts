@@ -4,21 +4,25 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update TUI_CHECKBOX_DEFAULT_OPTIONS warning', () => {
+describe('ng-update removed @taiga-ui/core context types (#11917)', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
     });
 
     it(
-        'adds TODO comment for TUI_CHECKBOX_DEFAULT_OPTIONS import',
+        'adds TODO comments for removed TuiValueContentContext and TuiAlertContext',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TUI_CHECKBOX_DEFAULT_OPTIONS} from '@taiga-ui/kit';
+                import {TuiAlertContext, TuiValueContentContext} from '@taiga-ui/core';
+                import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly defaults = TUI_CHECKBOX_DEFAULT_OPTIONS;
+                    protected content: PolymorpheusContent<
+                        TuiValueContentContext<string>
+                    >;
+                    protected alert: TuiAlertContext<boolean>;
                 }
             `,
         }),

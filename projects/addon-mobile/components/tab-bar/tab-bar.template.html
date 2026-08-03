@@ -1,6 +1,12 @@
 <ng-content />
+
 <div class="t-skeletons">
     @for (_ of '-'.repeat(quantity()); track $index) {
         <div class="t-skeleton"></div>
     }
 </div>
+
+@if (liquidGlass) {
+    <div class="t-liquid-glass-overlay"></div>
+    <div class="t-liquid-glass-indicator"></div>
+}

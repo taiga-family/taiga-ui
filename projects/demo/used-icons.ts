@@ -69,6 +69,7 @@ export const TUI_USED_ICONS = [
     '@tui.heart',
     '@tui.heart-filled',
     '@tui.home',
+    '@tui.house',
     '@tui.image',
     '@tui.image-upscale',
     '@tui.info',
