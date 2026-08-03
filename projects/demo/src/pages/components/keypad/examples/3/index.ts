@@ -15,10 +15,7 @@ const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     changeDetection,
 })
 export default class Example {
-    // Reshuffled on every clear — like PIN terminals that reorder the pad. Seeded (not
-    // Math.random) so the rendered order is reproducible and demo snapshots stay stable.
-    private seed = 1;
-
+    // Positions are randomized on every clear — like PIN terminals that reshuffle the pad
     protected readonly digits = signal(this.shuffle());
     protected readonly pin = signal('');
     protected readonly masked = computed(() => '•'.repeat(this.pin().length));
@@ -35,21 +32,12 @@ export default class Example {
 
     protected clear(): void {
         this.pin.set('');
-        this.seed += 1;
         this.digits.set(this.shuffle());
     }
 
     private shuffle(): string[] {
-        // LCG-derived key per digit, then sort by it — a deterministic Fisher-Yates stand-in
-        let state = this.seed;
-
-        const next = (): number => {
-            state = (state * 1103515245 + 12345) % 2147483648;
-
-            return state;
-        };
-
-        return DIGITS.map((digit) => [next(), digit] as const)
+        // uniform shuffle: independent random key per digit, then sort by it
+        return DIGITS.map((digit) => [Math.random(), digit] as const)
             .sort(([a], [b]) => a - b)
             .map(([, digit]) => digit);
     }
