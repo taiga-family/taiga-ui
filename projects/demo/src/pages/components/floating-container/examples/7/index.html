@@ -1,0 +1,27 @@
+<div class="content">
+    @for (_ of '-'.repeat(30); track $index) {
+        <div tuiCell>
+            <div
+                appearance="primary"
+                tuiAvatar="@tui.star"
+            ></div>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
+        </div>
+    }
+
+    <footer
+        tuiFloatingContainer="transparent"
+        class="bar"
+    >
+        <button
+            size="m"
+            tuiButton
+            type="button"
+        >
+            Next
+        </button>
+    </footer>
+</div>
