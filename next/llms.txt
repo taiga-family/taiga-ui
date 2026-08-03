@@ -46,7 +46,7 @@
 
 ### Components
 
-- [Accordion](https://taiga-ui.dev/components/accordion)
+- [Accordion](https://taiga-ui.dev/components/accordion) — example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected', 'With Action Button']; track example ) {
 - [Actions Bar](https://taiga-ui.dev/components/actions-bar)
 - [Avatar](https://taiga-ui.dev/components/avatar)
 - [Badge](https://taiga-ui.dev/components/badge) — Component for displaying text, pictures and icons.
