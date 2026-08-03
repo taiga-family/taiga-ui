@@ -158,7 +158,7 @@ export const HTML_COMMENTS: HtmlComment[] = [
         tag: 'table',
         withAttrs: ['(tuiSortByChange)'],
         comment:
-            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortBy, orderBy, sortKey, sortDirection}), not the sort key string.',
+            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortKey, sortDirection}), not the sort key string.',
     },
     {
         tag: 'tui-scrollbar',

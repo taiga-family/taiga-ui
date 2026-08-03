@@ -411,30 +411,16 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiAlertComponent has been removed. Alerts are rendered by TuiAlertService/TuiNotificationService; there is no standalone <tui-alert> component in v5.',
     },
-    {
-        name: 'TuiAlerts',
+    ...[
+        {name: 'TuiAlerts', host: 'alert'},
+        {name: 'TuiDialogs', host: 'dialog'},
+        {name: 'TuiDropdowns', host: 'dropdown'},
+        {name: 'TuiHints', host: 'hint'},
+    ].map(({name, host}) => ({
+        name,
         moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiAlerts has been removed. The alert host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
-    },
-    {
-        name: 'TuiDialogs',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiDialogs has been removed. The dialog host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
-    },
-    {
-        name: 'TuiDropdowns',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiDropdowns has been removed. The dropdown host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
-    },
-    {
-        name: 'TuiHints',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TuiHints has been removed. The hint host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.',
-    },
+        message: `${name} has been removed. The ${host} host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.`,
+    })),
     {
         name: 'TuiHintService',
         moduleSpecifier: '@taiga-ui/core',
@@ -447,18 +433,14 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiHintOptionsDirective ([tuiHintContent]) has been removed. Configure hints via the tuiHint directive together with TUI_HINT_OPTIONS / tuiHintOptionsProvider.',
     },
-    {
-        name: 'TuiTextareaCounterComponent',
+    ...[
+        {name: 'TuiTextareaCounterComponent', feature: 'character counter'},
+        {name: 'TuiTextareaLimitComponent', feature: 'character limit overflow'},
+    ].map(({name, feature}) => ({
+        name,
         moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TuiTextareaCounterComponent has been removed. The character counter is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).',
-    },
-    {
-        name: 'TuiTextareaLimitComponent',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TuiTextareaLimitComponent has been removed. The character limit overflow is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).',
-    },
+        message: `${name} has been removed. The ${feature} is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).`,
+    })),
     {
         name: 'TuiInputCopyComponent',
         moduleSpecifier: '@taiga-ui/legacy',

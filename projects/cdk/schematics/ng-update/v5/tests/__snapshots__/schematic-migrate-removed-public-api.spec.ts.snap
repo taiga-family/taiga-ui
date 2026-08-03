@@ -12,7 +12,7 @@ exports[`ng-update removed public API warnings (#11917) adds TODO comment for re
                 </table>
             ",
   "1. After": "
-                <!-- TODO: (Taiga UI migration) tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortBy, orderBy, sortKey, sortDirection}), not the sort key string. -->
+                <!-- TODO: (Taiga UI migration) tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortKey, sortDirection}), not the sort key string. -->
 <table
                     tuiTable
                     [tuiSortBy]="key"
