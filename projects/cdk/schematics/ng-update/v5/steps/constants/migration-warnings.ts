@@ -337,19 +337,19 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiAccordionItem',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItem (<tui-accordion-item>) has been removed. Inside <tui-accordion>, declare each item as a `<button [tuiAccordion]="open">header</button>` followed by a `<tui-expand>content</tui-expand>`; iterate items with the `*tuiItem` structural directive. See https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItem (<tui-accordion-item>) has been removed. Inside <tui-accordion>, declare each item as a `<button tuiAccordion>header</button>` followed by a `<tui-expand>content</tui-expand>` (bind the open state with `[tuiAccordion]="expr"`); render a dynamic list of items with a native `@for` block. See https://taiga-ui.dev/components/accordion',
     },
     {
         name: 'TuiAccordionItemContent',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItemContent ([tuiAccordionItemContent]) has been removed. Put the (lazy) content inside the `<tui-expand>` that follows the `<button [tuiAccordion]>` toggle. See https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItemContent ([tuiAccordionItemContent]) provided lazy content and has been removed. Wrap the lazy content in `<ng-container *tuiItem>` inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle, e.g. `<tui-expand><ng-container *tuiItem>...</ng-container></tui-expand>`. See https://taiga-ui.dev/components/accordion',
     },
     {
         name: 'TuiAccordionItemEagerContent',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. Eager content now lives directly inside the `<tui-expand>` that follows the `<button [tuiAccordion]>` toggle. See https://taiga-ui.dev/components/accordion',
+            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. Eager content now lives directly inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle. See https://taiga-ui.dev/components/accordion',
     },
     {
         name: 'TUI_DATE_VALUE_TRANSFORMER',
