@@ -4,7 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        @for (example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected']; track example) {
+        @for (
+            example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected', 'With Action Button'];
+            track example
+        ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -36,6 +39,9 @@
                         Using
                         <code>Connected</code>
                         directive to implement stepper-like UI.
+                    }
+                    @case (6) {
+                        Adding action buttons to accordion header.
                     }
                 }
             </ng-template>
