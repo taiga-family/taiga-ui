@@ -2079,6 +2079,99 @@ export default class Example {
 }
 ```
 
+#### With Action Button
+
+**Template:**
+```html
+&lt;tui-accordion&gt;
+&lt;ng-container *ngFor=&quot;let item of items&quot;&gt;
+&lt;div class=&quot;t-header&quot;&gt;
+&lt;button appearance=&quot;icon&quot; tuiAccordion &gt; {{ item.title }} &lt;/button&gt;
+&lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.info&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;showDetails(item)&quot; &gt; Show details about {{ item.title }} &lt;/button&gt;
+&lt;/div&gt;
+&lt;tui-expand&gt; {{ item.content }} &lt;/tui-expand&gt;
+&lt;/ng-container&gt;
+&lt;/tui-accordion&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton, TuiDialogService} from &#039;@taiga-ui/core&#039;;
+import {TuiAccordion} from &#039;@taiga-ui/experimental&#039;;
+
+interface Item {
+    readonly title: string;
+    readonly content: string;
+    readonly details: string;
+}
+
+@Component({
+    standalone: true,
+    imports: [NgForOf, TuiAccordion, TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    private readonly dialogs = inject(TuiDialogService);
+
+    protected readonly items: readonly Item[] = [
+        {
+            title: &#039;Taiga UI cdk&#039;,
+            content:
+                &#039;Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities&#039;,
+            details:
+                &#039;Framework-agnostic utilities: directives, pipes, observables and DI tokens shared across all Taiga UI packages.&#039;,
+        },
+        {
+            title: &#039;Taiga UI core&#039;,
+            content:
+                &#039;Basic elements needed to develop components, directives and more using Taiga UI design system&#039;,
+            details:
+                &#039;Design tokens, theming and the foundational building blocks every other Taiga UI package relies on.&#039;,
+        },
+        {
+            title: &#039;Taiga UI kit&#039;,
+            content:
+                &#039;The main set of components used to build Taiga UI based Angular applications&#039;,
+            details:
+                &#039;Ready-to-use high level components: accordion, calendar, input masks and much more.&#039;,
+        },
+    ];
+
+    protected showDetails(item: Item): void {
+        this.dialogs.open(item.details, {label: item.title, size: &#039;s&#039;}).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+tui-accordion {
+    .t-header {
+        display: flex;
+        align-items: stretch;
+
+        &gt; [tuiAccordion] {
+            flex: 1;
+            justify-content: flex-start;
+            text-align: start;
+
+            &amp;::after {
+                margin-inline-start: auto;
+            }
+        }
+    }
+
+    tui-expand {
+        box-shadow: none;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -2103,6 +2196,7 @@ export default class Page {
         &#039;Eager and Lazy&#039;,
         &#039;Nested&#039;,
         &#039;Connected&#039;,
+        &#039;With Action Button&#039;,
     ];
 
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
