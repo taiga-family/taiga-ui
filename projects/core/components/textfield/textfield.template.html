@@ -19,7 +19,7 @@
         type="button"
         class="t-clear"
         [iconStart]="icons.close"
-        (click)="accessor?.setValue(null)"
+        (click.stop)="accessor?.setValue(null); interactiveInput?.nativeElement?.focus()"
     >
         {{ clear() }}
     </button>

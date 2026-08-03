@@ -55,7 +55,7 @@
         type="button"
         class="t-clear"
         [iconStart]="icons.close"
-        (click)="accessor?.setValue([])"
+        (click.stop)="accessor?.setValue([]); interactiveInput?.nativeElement?.focus()"
     >
         {{ clear() }}
     </button>
