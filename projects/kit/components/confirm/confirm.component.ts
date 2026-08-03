@@ -16,7 +16,7 @@ export interface TuiConfirmData {
     readonly no?: string;
     readonly yes?: string;
     readonly appearance?: string;
-    readonly noAppearance?: (isMobile: boolean) => string;
+    noAppearance?(isMobile: boolean): string;
 }
 
 @Component({
