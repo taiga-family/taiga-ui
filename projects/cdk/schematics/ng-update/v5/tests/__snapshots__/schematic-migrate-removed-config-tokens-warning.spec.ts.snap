@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed config tokens and services warning adds TODO comments for removed config tokens and services: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_DAY_TYPE_HANDLER,
+                    TUI_EXPAND_LOADED,
+                    TUI_FIRST_DAY_OF_WEEK,
+                    TuiFormatDateService,
+                } from '@taiga-ui/core';
+                import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly firstDay = inject(TUI_FIRST_DAY_OF_WEEK);
+                    protected readonly dayType = inject(TUI_DAY_TYPE_HANDLER);
+                    protected readonly loaded = TUI_EXPAND_LOADED;
+                    protected readonly formatDate = inject(TuiFormatDateService);
+                    protected readonly transformer = inject(TUI_NUMBER_VALUE_TRANSFORMER);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TUI_DAY_TYPE_HANDLER has been removed. Configure the day type through the calendar options instead: tuiCalendarOptionsProvider({dayType: (day) => ...}) from @taiga-ui/core.
+                    TUI_DAY_TYPE_HANDLER,
+// TODO: (Taiga UI migration) TUI_EXPAND_LOADED has been removed together with the asynchronous "loaded" event API of TuiExpand. Expanded content is now measured internally — remove the (tui-expand-loaded) host listener and the manual CustomEvent dispatch.
+                    TUI_EXPAND_LOADED,
+// TODO: (Taiga UI migration) TUI_FIRST_DAY_OF_WEEK has been removed. Configure the first day of week through the calendar options instead: tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Monday)}) from @taiga-ui/core.
+                    TUI_FIRST_DAY_OF_WEEK,
+// TODO: (Taiga UI migration) TuiFormatDateService has been removed. Use the Angular built-in Date pipe (or Intl.DateTimeFormat) instead. See https://angular.dev/api/common/DatePipe
+                    TuiFormatDateService,
+                } from '@taiga-ui/core';
+// TODO: (Taiga UI migration) TUI_NUMBER_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-number options instead: tuiInputNumberOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.
+                import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/legacy';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly firstDay = inject(TUI_FIRST_DAY_OF_WEEK);
+                    protected readonly dayType = inject(TUI_DAY_TYPE_HANDLER);
+                    protected readonly loaded = TUI_EXPAND_LOADED;
+                    protected readonly formatDate = inject(TuiFormatDateService);
+                    protected readonly transformer = inject(TUI_NUMBER_VALUE_TRANSFORMER);
+                }
+            ",
+}
+`;

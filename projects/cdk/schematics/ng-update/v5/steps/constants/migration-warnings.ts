@@ -20,6 +20,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.\n// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();',
     },
     {
+        name: 'TUI_SPIN_ICONS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_SPIN_ICONS has been removed. Spinner increment/decrement icons were merged into the common icons — configure them via tuiCommonIconsProvider (TUI_COMMON_ICONS) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiDarkThemeService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDarkThemeService has been removed. Use the TUI_DARK_MODE token (a signal) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiToggleDay',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiToggleDay has been removed with no public replacement. Inline the day-toggle logic in your component instead.',
+    },
+    {
         name: 'TuiScrollService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
@@ -160,10 +178,158 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
     },
     {
+        name: 'TuiValueContentContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiValueContentContext has been removed. Type custom value content with TuiContext<T> from @taiga-ui/cdk instead — the `active` flag is no longer part of the content context.',
+    },
+    {
+        name: 'TuiAlertContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertContext has been removed. Type the injected alert content context with TuiPortalContext<TuiNotificationOptions, O> from @taiga-ui/cdk (TuiPopoverContext -> TuiPortalContext, TuiAlertOptions -> TuiNotificationOptions).',
+    },
+    {
         name: 'TuiCarousel',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
+    },
+    {
+        name: 'TUI_ALLOW_SIGNAL_WRITES',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_ALLOW_SIGNAL_WRITES has been removed. Effects allow signal writes by default now, so this option is no longer needed.',
+    },
+    {
+        name: 'TUI_BASE_HREF',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_BASE_HREF has been removed. Use APP_BASE_HREF from @angular/common instead.',
+    },
+    {
+        name: 'TUI_MOBILE_REGEXP',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_MOBILE_REGEXP has been removed. Provide your own mobile user-agent RegExp if you still need it.',
+    },
+    {
+        name: 'TuiLetContext',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            "TuiLetContext has been removed together with TuiLet. Use Angular's built-in @let syntax.",
+    },
+    {
+        name: 'TuiLooseUnion',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiLooseUnion has been removed. Inline the type where you used it, e.g. `T | (string & {})`.',
+    },
+    {
+        name: 'TuiRepeatTimesContext',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiRepeatTimesContext has been removed. Use the context of a native @for loop instead.',
+    },
+    {
+        name: 'TuiSafeHtml',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiSafeHtml has been removed. Use SafeHtml from @angular/platform-browser (or a plain string) instead.',
+    },
+    {
+        name: 'TuiValuePresentException',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiValuePresentException has been removed together with tuiMustBePresent. Handle empty values yourself.',
+    },
+    {
+        name: 'TuiValuesOf',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: 'TuiValuesOf has been removed. Inline `T[keyof T]` where you used it.',
+    },
+    {
+        name: 'tuiDirectiveListener',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiDirectiveListener has been removed. Use Renderer2.listen() or a host listener instead.',
+    },
+    {
+        name: 'tuiGetElementPoint',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiGetElementPoint has been removed. Read coordinates from Element.getBoundingClientRect() instead.',
+    },
+    {
+        name: 'tuiGetOriginalArrayFromQueryList',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiGetOriginalArrayFromQueryList has been removed. Use QueryList.toArray() instead.',
+    },
+    {
+        name: 'tuiInjectId',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiInjectId has been removed. Use tuiGenerateId() from @taiga-ui/cdk instead.',
+    },
+    {
+        name: 'tuiIsCurrentTarget',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsCurrentTarget has been removed. Compare event.target === event.currentTarget inline.',
+    },
+    {
+        name: 'tuiIsInsideIframe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsInsideIframe has been removed. Check window.self !== window.top inline.',
+    },
+    {
+        name: 'tuiIsNodeIn',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: 'tuiIsNodeIn has been removed. Use Node.contains() inline.',
+    },
+    {
+        name: 'tuiIsValidUrl',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsValidUrl has been removed. Validate the URL yourself, e.g. via `new URL(value)` in a try/catch.',
+    },
+    {
+        name: 'tuiMustBePresent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiMustBePresent has been removed. Assert non-empty values yourself (e.g. filter(Boolean) or a custom operator).',
+    },
+    {
+        name: 'tuiQueryListChanges',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiQueryListChanges has been removed. Use QueryList.changes directly (with startWith() if needed).',
+    },
+    {
+        name: 'tuiRetargetedBoundaryCrossing',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiRetargetedBoundaryCrossing has been removed with no direct replacement; inline the boundary-crossing logic if you relied on it.',
+    },
+    {
+        name: 'tuiToInteger',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiToInteger has been removed. Use Math.trunc(), parseInt() or Number() where you used it.',
+    },
+    {
+        name: 'tuiToRadians',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiToRadians has been removed. Compute radians inline: value * Math.PI / 180.',
+    },
+    {
+        name: 'tuiUniqBy',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiUniqBy has been removed. Deduplicate by key yourself, e.g. via a Map keyed on the property.',
     },
     {
         name: 'TUI_TEXTFIELD_HOST',
@@ -185,21 +351,33 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
     },
     {
         name: 'TUI_TOUCH_SUPPORTED',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TUI_TOUCH_SUPPORTED has been removed. Use WA_TOUCH_SUPPORTED from @ng-web-apis/platform package instead.',
+            'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
     },
     {
         name: 'TUI_IS_CHROMIUM',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TUI_IS_CHROMIUM has been removed. Use WA_IS_CHROMIUM from @ng-web-apis/platform package instead.',
+            'TUI_IS_CHROMIUM has been removed. There is no direct replacement — detect Chromium manually, e.g. via `"chrome" in window`.',
     },
     {
         name: 'TUI_IS_STACKBLITZ',
-        moduleSpecifier: '@taiga-ui/cdk',
+        moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TUI_IS_STACKBLITZ has been removed. Implement custom StackBlitz detection or remove if not needed for your application.',
+    },
+    {
+        name: 'TUI_IS_APPLE',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_IS_APPLE has been removed. Use isApple(inject(WA_NAVIGATOR)) — isApple from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
+    },
+    {
+        name: 'TUI_IS_FIREFOX',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_IS_FIREFOX has been removed. Use isFirefox(inject(WA_NAVIGATOR).userAgent) — isFirefox from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
     },
     {
         name: 'tuiInputCardOptionsProvider',
@@ -214,22 +392,64 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
-        name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.',
-    },
-    {
         name: 'TUI_ALERT_POSITION',
         moduleSpecifier: '@taiga-ui/core',
         message:
             'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
     },
     {
+        name: 'TuiExpandContent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.',
+    },
+    {
+        name: 'TuiMonthPipe',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.',
+    },
+    {
+        name: 'AbstractTuiMultipleControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiMultipleControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom multi-value control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR_PROVIDER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
         name: 'tuiHexToRgb',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'tuiHexToRgb has been removed without a direct replacement. Convert a HEX color to RGB manually where you used it.',
+    },
+    {
+        name: 'TuiDroppable',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiDroppable has been removed without a direct replacement. Use the native HTML Drag and Drop API (dragover/drop events) instead of the [tuiDroppableDropped]/[tuiDroppableDragOverChange] outputs.',
+    },
+    {
+        name: 'TuiAnimatedParent',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimatedParent has been removed. Enter/leave animations are now handled by the TuiAnimated directive ([tuiAnimated]) from @taiga-ui/cdk. See https://taiga-ui.dev/directives/animated',
+    },
+    {
+        name: 'tuiValueBinding',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiValueBinding has been removed without a direct replacement. Manage the value signal manually where you used it.',
     },
     {
         name: 'TUI_TEXTFIELD_APPEARANCE',
@@ -248,6 +468,90 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiStaticRequestService has been removed. Replace usages of service.request(url) with native fetch(url).then(r => r.text()). Add your own caching layer (e.g. a Map or shareReplay) if you need it.',
+    },
+    {
+        name: 'TuiKeysPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiKeysPipe (| tuiKeys) has been removed. It returned Object.keys(value); use the built-in Angular keyvalue pipe, or expose Object.keys(value) from the component.',
+    },
+    {
+        name: 'TuiReplacePipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiReplacePipe (| tuiReplace) has been removed. It was a thin wrapper over String.prototype.replace; call value.replace(search, replaceValue) in the component (or a computed) instead.',
+    },
+    {
+        name: 'TuiToArrayPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiToArrayPipe (| tuiToArray) has been removed. It returned Array.from(value) for a Map/Set/QueryList; call Array.from(value) (or spread [...value]) in the component instead.',
+    },
+    {
+        name: 'TuiIsPresentPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiIsPresentPipe (| tuiIsPresent) has been removed, but the tuiIsPresent() utility it wrapped still exists in @taiga-ui/cdk. Call tuiIsPresent(value) in the component, or use a native null check (value != null) / @if in the template.',
+    },
+    {
+        name: 'TuiAnimationPipe',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiAnimationPipe (| tuiAnimation) has been removed. It scaled Angular animation params by the global animation speed. Build the params in the component instead: inject TUI_ANIMATIONS_SPEED and multiply your duration by tuiGetDuration(speed) (both still in @taiga-ui/core).',
+    },
+    {
+        name: 'TuiImgLazyLoading',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiImgLazyLoading has been removed. Native lazy loading is enough: keep loading="lazy" on the <img> and drop the import. If you used the tuiLoading="lazy" attribute, replace it with loading="lazy".',
+    },
+    {
+        name: 'TuiLazyLoadingService',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiLazyLoadingService has been removed. Lazy loading now relies on the native <img loading="lazy"> attribute, so no service is required.',
+    },
+    {
+        name: 'TuiClickOutside',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiClickOutside has been removed. Use the TuiActiveZone directive from @taiga-ui/cdk: bind (tuiActiveZoneChange) on the element — it emits `false` when focus/pointer leaves the zone (a boolean, not a click event), so trigger your outside-click logic on the false value.',
+    },
+    {
+        name: 'TuiFor',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
+    },
+    {
+        name: 'TUI_DATE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date options instead: tuiInputDateOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_RANGE_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_RANGE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-range options instead: tuiInputDateRangeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-time options instead: tuiInputDateTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_TIME_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-time options instead: tuiInputTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'TUI_DATE_ADAPTER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.',
     },
     {
         name: 'AbstractTuiControl',
@@ -296,5 +600,53 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiInputCopyComponent has been removed. Use TuiCopy from @taiga-ui/kit instead (the <tui-copy> component, the tui-icon[tuiCopy] directive or TuiButtonCopy). See https://taiga-ui.dev/components/copy',
+    },
+    {
+        name: 'TUI_FIRST_DAY_OF_WEEK',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_FIRST_DAY_OF_WEEK has been removed. Configure the first day of week through the calendar options instead: tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Monday)}) from @taiga-ui/core.',
+    },
+    {
+        name: 'TUI_DAY_TYPE_HANDLER',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DAY_TYPE_HANDLER has been removed. Configure the day type through the calendar options instead: tuiCalendarOptionsProvider({dayType: (day) => ...}) from @taiga-ui/core.',
+    },
+    {
+        name: 'TUI_EXPAND_LOADED',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_EXPAND_LOADED has been removed together with the asynchronous "loaded" event API of TuiExpand. Expanded content is now measured internally — remove the (tui-expand-loaded) host listener and the manual CustomEvent dispatch.',
+    },
+    {
+        name: 'TuiFormatDateService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiFormatDateService has been removed. Use the Angular built-in Date pipe (or Intl.DateTimeFormat) instead. See https://angular.dev/api/common/DatePipe',
+    },
+    {
+        name: 'TUI_NUMBER_VALUE_TRANSFORMER',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TUI_NUMBER_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-number options instead: tuiInputNumberOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.',
+    },
+    {
+        name: 'EMPTY_QUERY',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'EMPTY_QUERY has been removed. Use new QueryList() instead, or migrate to the signal-based queries viewChildren()/contentChildren().',
+    },
+    {
+        name: 'tuiIsFalsy',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiIsFalsy has been removed. Replace it with a plain negation predicate: (value) => !value.',
+    },
+    {
+        name: 'tuiFlatLength',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.',
     },
 ];

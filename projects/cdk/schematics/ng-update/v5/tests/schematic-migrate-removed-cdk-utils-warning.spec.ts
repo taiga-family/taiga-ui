@@ -4,21 +4,23 @@ import {resetActiveProject} from 'ng-morph';
 
 import {createMigration} from '../../../utils/run-migration';
 
-describe('ng-update TUI_CHECKBOX_DEFAULT_OPTIONS warning', () => {
+describe('ng-update removed cdk utilities warning', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
     });
 
     it(
-        'adds TODO comment for TUI_CHECKBOX_DEFAULT_OPTIONS import',
+        'adds TODO comments for the removed cdk utilities',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
-                import {TUI_CHECKBOX_DEFAULT_OPTIONS} from '@taiga-ui/kit';
+                import {EMPTY_QUERY, tuiFlatLength, tuiIsFalsy} from '@taiga-ui/cdk';
 
                 @Component({})
                 export class TestComponent {
-                    protected readonly defaults = TUI_CHECKBOX_DEFAULT_OPTIONS;
+                    protected readonly query = EMPTY_QUERY;
+                    protected readonly falsy = tuiIsFalsy(0);
+                    protected readonly length = tuiFlatLength([[1], [2, 3]]);
                 }
             `,
         }),

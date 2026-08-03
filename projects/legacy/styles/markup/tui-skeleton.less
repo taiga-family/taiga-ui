@@ -6,10 +6,12 @@
     user-select: none;
 
     &::after {
-        .fullsize();
+        .fullsize() !important;
 
         content: '';
-        background-color: var(--tui-background-neutral-2);
+        display: block !important;
+        margin: 0 !important;
+        background-color: var(--tui-background-neutral-2) !important;
         animation: tuiSkeletonVibe ease-in-out 1s infinite alternate;
         border-radius: var(--tui-skeleton-radius, 0);
     }
