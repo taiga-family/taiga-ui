@@ -235,7 +235,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TUI_SLIDER_DEFAULT_OPTIONS',
         moduleSpecifier: '@taiga-ui/kit',
         message:
-            'TUI_SLIDER_DEFAULT_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
+            'TUI_SLIDER_DEFAULT_OPTIONS has been removed together with the slider options object (there is no options token in v5). Style the slider directly instead: the --tui-thumb-size CSS variable sets the thumb radius and track thickness (replaces the old `size` option), and the CSS `color` property on the input[tuiSlider] element sets the filled-track/thumb color. See https://taiga-ui.dev/components/slider',
     },
     {
         name: 'TuiExpandContent',
