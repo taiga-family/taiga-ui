@@ -128,12 +128,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.',
     },
     {
-        name: 'TuiInputCardOptions',
-        moduleSpecifier: '@taiga-ui/addon-commerce',
-        message:
-            'TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.',
-    },
-    {
         name: 'TUI_TABLE_PROVIDER',
         moduleSpecifier: '@taiga-ui/addon-table',
         message:
@@ -467,17 +461,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_IS_FIREFOX has been removed. Use isFirefox(inject(WA_NAVIGATOR).userAgent) — isFirefox from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
     },
+    ...[
+        {
+            name: 'tuiInputCardOptionsProvider',
+            group: 'tuiInputCardGroupOptionsProvider',
+        },
+        {name: 'TUI_INPUT_CARD_OPTIONS', group: 'TUI_INPUT_CARD_GROUP_OPTIONS'},
+    ].map(({name, group}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message: `${name} has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use ${group} from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group`,
+    })),
     {
-        name: 'tuiInputCardOptionsProvider',
+        name: 'TuiInputCardOptions',
         moduleSpecifier: '@taiga-ui/addon-commerce',
         message:
-            'tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
-    },
-    {
-        name: 'TUI_INPUT_CARD_OPTIONS',
-        moduleSpecifier: '@taiga-ui/addon-commerce',
-        message:
-            'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
+            'TuiInputCardOptions has been removed with no direct replacement. input[tuiInputCard] has no options token/interface in v5 — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
         name: 'TUI_ALERT_POSITION',

@@ -37,7 +37,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-// TODO: (Taiga UI migration) TuiInputCardOptions has been removed. TuiInputCard is now configured via component inputs; there is no options token/interface in v5.
+// TODO: (Taiga UI migration) TuiInputCardOptions has been removed with no direct replacement. input[tuiInputCard] has no options token/interface in v5 — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
                 import {type TuiInputCardOptions} from '@taiga-ui/addon-commerce';
 
                 @Component({})
