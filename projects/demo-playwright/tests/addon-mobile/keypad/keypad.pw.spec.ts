@@ -64,6 +64,9 @@ test.describe('Keypad', () => {
     }) => {
         const keypad = page.locator('tui-keypad.custom');
 
+        // Backspace is only rendered once the field has a value
+        await keypad.getByRole('button', {name: '1', exact: true}).click();
+
         await expect(keypad.locator('[aria-label="Backspace"]')).toHaveAttribute(
             'aria-label',
             /.+/,

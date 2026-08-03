@@ -6,20 +6,16 @@
     <ng-template pageTab>
         <p>
             <code>TuiKeypad</code>
-            is an on-screen grid primitive for touch input. It only lays out and styles the keys — you populate it with
-            your own
-            <code>tuiKeypadButton</code>
+            is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own
+            native
+            <code>&lt;button&gt;</code>
+            or
+            <code>&lt;a&gt;</code>
             elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a
             shuffled PIN terminal, a calculator or a custom chooser.
         </p>
         <p>
-            Put
-            <code>tuiKeypadButton</code>
-            on a native
-            <code>&lt;button&gt;</code>
-            or
-            <code>&lt;a&gt;</code>
-            — it stays a real element, so
+            Each key stays a real element, so
             <code>(click)</code>
             ,
             <code>aria-label</code>
@@ -27,7 +23,7 @@
             <code>disabled</code>
             and
             <code>href</code>
-            all work as usual. Pair it with the
+            all work as usual. Pair the input with the
             <code>tuiKeypadInput</code>
             directive to drive a field without the native mobile keyboard.
         </p>
@@ -60,15 +56,7 @@
                             The keypad expands while the amount field is focused, inside a sheet.
                         }
                         @case (4) {
-                            Drag the corner — the keypad scales to fit its container.
-                        }
-                        @case (5) {
                             A calculator in a picture-in-picture window — icon keys and hardware-keyboard mapping.
-                        }
-                        @case (6) {
-                            A phone dialer in a picture-in-picture window — a field driven by
-                            <code>tuiKeypadInput</code>
-                            .
                         }
                     }
                 </ng-template>
@@ -81,7 +69,6 @@
             <tui-keypad [columns]="columns">
                 @for (digit of digits; track digit) {
                     <button
-                        tuiKeypadButton
                         type="button"
                         (click)="append(digit)"
                     >
@@ -90,7 +77,6 @@
                 }
 
                 <button
-                    tuiKeypadButton
                     type="button"
                     (click)="clear()"
                 >
@@ -98,7 +84,6 @@
                 </button>
 
                 <button
-                    tuiKeypadButton
                     type="button"
                     (click)="append('0')"
                 >
@@ -107,7 +92,6 @@
 
                 <button
                     aria-label="Backspace"
-                    tuiKeypadButton
                     type="button"
                     (click)="backspace()"
                     (longtap)="clear()"
@@ -131,13 +115,11 @@
         </table>
 
         <p>
-            Populate the pad by projecting
-            <code>tuiKeypadButton</code>
-            elements. Each is a native
+            Populate the pad by projecting native
             <code>&lt;button&gt;</code>
             or
             <code>&lt;a&gt;</code>
-            that carries its own content, click handler,
+            elements. Each carries its own content, click handler,
             <code>aria-label</code>
             and disabled state — there are no key-behavior or icon inputs on the component itself.
         </p>

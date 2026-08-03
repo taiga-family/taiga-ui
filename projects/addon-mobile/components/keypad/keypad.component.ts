@@ -1,11 +1,26 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    input,
+    ViewEncapsulation,
+} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     selector: 'tui-keypad',
     template: '<ng-content />',
-    styleUrl: './keypad.component.less',
+    // Encapsulation.None + a version-scoped wrapper lets the pad style its projected
+    // `<button>`/`<a>` children directly, so consumers drop native elements in without a
+    // per-key directive (same approach as `tui-segmented`).
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './keypad.style.less';
+        }
+    `,
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        'data-tui-version': TUI_VERSION,
         '[style.--t-columns]': 'columns()',
         // A tap anywhere on the pad (keys or the gaps between them) must not blur the
         // field the keypad drives — prevent it once here rather than on each key

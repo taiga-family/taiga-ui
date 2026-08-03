@@ -3,7 +3,6 @@
 <tui-keypad class="keypad">
     @for (digit of digits(); track digit) {
         <button
-            tuiKeypadButton
             type="button"
             (click)="append(digit)"
         >
@@ -12,7 +11,6 @@
     }
 
     <button
-        tuiKeypadButton
         type="button"
         (click)="clear()"
     >
@@ -21,7 +19,6 @@
 
     <button
         aria-label="Backspace"
-        tuiKeypadButton
         type="button"
         (click)="backspace()"
         (longtap)="clear()"

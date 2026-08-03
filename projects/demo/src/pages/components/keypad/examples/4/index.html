@@ -17,8 +17,7 @@
                 #input="tuiKeypadInput"
                 tuiKeypadInput
                 class="amount"
-                [ngModel]="value()"
-                (ngModelChange)="value.set($event)"
+                [(ngModel)]="value"
             />
 
             <div class="chips">
@@ -73,7 +72,6 @@
                         <tui-keypad>
                             @for (digit of digits; track digit) {
                                 <button
-                                    tuiKeypadButton
                                     type="button"
                                     (click)="append(digit)"
                                 >
@@ -84,7 +82,6 @@
                             <div></div>
 
                             <button
-                                tuiKeypadButton
                                 type="button"
                                 (click)="append('0')"
                             >
@@ -93,7 +90,6 @@
 
                             <button
                                 aria-label="Backspace"
-                                tuiKeypadButton
                                 type="button"
                                 (click)="backspace()"
                                 (longtap)="clear()"

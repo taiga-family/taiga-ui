@@ -16,9 +16,7 @@ export default class Page {
         'Custom keys',
         'Shuffled PIN',
         'Collapsible',
-        'Fluid',
         'Calculator',
-        'Phone Dialer',
     ];
 
     protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];

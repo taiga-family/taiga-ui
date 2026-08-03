@@ -11,22 +11,15 @@ describe('Keypad', () => {
                 <tui-keypad [columns]="columns()">
                     @for (digit of digits; track digit) {
                         <button
-                            tuiKeypadButton
                             type="button"
                             (click)="append(digit)"
                         >
                             {{ digit }}
                         </button>
                     }
-                    <a
-                        tuiKeypadButton
-                        (click)="append('0')"
-                    >
-                        0
-                    </a>
+                    <a (click)="append('0')">0</a>
                     <button
                         aria-label="Backspace"
-                        tuiKeypadButton
                         type="button"
                         (click)="backspace()"
                         (longtap)="clear()"
@@ -61,11 +54,13 @@ describe('Keypad', () => {
         const keypad = (): HTMLElement =>
             fixture.nativeElement.querySelector('tui-keypad');
 
-        const buttons = (): HTMLElement[] =>
-            Array.from(fixture.nativeElement.querySelectorAll('[tuiKeypadButton]'));
+        const keys = (): HTMLElement[] =>
+            Array.from(
+                fixture.nativeElement.querySelectorAll('tui-keypad button, tui-keypad a'),
+            );
 
         const key = (text: string): HTMLElement =>
-            buttons().find((button) => button.textContent?.trim() === text)!;
+            keys().find((element) => element.textContent?.trim() === text)!;
 
         const backspace = (): HTMLElement =>
             fixture.nativeElement.querySelector('[aria-label="Backspace"]');
@@ -80,8 +75,8 @@ describe('Keypad', () => {
             fixture.detectChanges();
         });
 
-        it('projects every tuiKeypadButton into the grid', () => {
-            expect(buttons().length).toBe(5);
+        it('projects every key into the grid', () => {
+            expect(keys().length).toBe(5);
         });
 
         it('reflects [columns] to the --t-columns custom property', () => {
@@ -100,7 +95,7 @@ describe('Keypad', () => {
             expect(fixture.componentInstance.value()).toBe('12');
         });
 
-        it('supports an anchor key (a[tuiKeypadButton])', () => {
+        it('supports an anchor key (<a>)', () => {
             key('0').click();
 
             expect(fixture.componentInstance.value()).toBe('0');
