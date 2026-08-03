@@ -160,6 +160,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'tuiProvideMobileCalendar has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
     },
     {
+        name: 'TuiValueContentContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiValueContentContext has been removed. Type custom value content with TuiContext<T> from @taiga-ui/cdk instead — the `active` flag is no longer part of the content context.',
+    },
+    {
+        name: 'TuiAlertContext',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertContext has been removed. Type the injected alert content context with TuiPortalContext<TuiNotificationOptions, O> from @taiga-ui/cdk (TuiPopoverContext -> TuiPortalContext, TuiAlertOptions -> TuiNotificationOptions).',
+    },
+    {
+        name: 'TuiCarousel',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
+    },
+    {
         name: 'TUI_ALLOW_SIGNAL_WRITES',
         moduleSpecifier: '@taiga-ui/cdk',
         message:
@@ -294,12 +312,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'tuiUniqBy has been removed. Deduplicate by key yourself, e.g. via a Map keyed on the property.',
-    },
-    {
-        name: 'TuiCarousel',
-        moduleSpecifier: '@taiga-ui/legacy',
-        message:
-            'TuiCarousel is deprecated. Migrate to the new variant TuiCarousel from @taiga-ui/core. See https://taiga-ui.dev/components/carousel',
     },
     {
         name: 'TUI_TEXTFIELD_HOST',
