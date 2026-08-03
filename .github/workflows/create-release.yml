@@ -36,8 +36,8 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/actions/setup-node@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
-      - uses: taiga-family/actions/setup-git@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
+      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-git@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
