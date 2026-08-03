@@ -269,6 +269,22 @@ exports[`ng-update moves placeholder to <input tuiInputChip>: test.html 1`] = `
 }
 `;
 
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                />
+            ",
+  "1. After": "
+                <tui-textfield multi>
+                <input tuiInputChip [formControlName]="control" (ngModelChange)="onChange($event)" />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-tag: test.html 1`] = `
 {
   "0. Before": "

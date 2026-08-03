@@ -5,6 +5,7 @@ import {expect, test} from '@playwright/test';
 test.describe('Carousel hydration', () => {
     // https://github.com/taiga-family/taiga-ui/issues/13787
     test('does not duplicate slides while hydration is pending', async ({page}) => {
+        test.skip(process.env['PROPRIETARY'] === 'true');
         const ANY_HTTP_REQUEST = /algolia\.net/i;
 
         /**

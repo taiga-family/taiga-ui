@@ -6,6 +6,7 @@
  */
 export const TUI_USED_ICONS = [
     '@img.mastercard',
+    '@img.visa',
     '@tui.alarm-clock',
     '@tui.align-justify',
     '@tui.apple',
@@ -131,6 +132,7 @@ export const TUI_USED_ICONS = [
     '@tui.users',
     '@tui.video',
     '@tui.view',
+    '@tui.visa',
     '@tui.volume-2',
     '@tui.volume-x',
     '@tui.wallet',

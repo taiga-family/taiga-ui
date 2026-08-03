@@ -113,6 +113,13 @@ exports[`ng-update avatar tuiIcon binding is moved to tuiAvatar attribute: test.
 }
 `;
 
+exports[`ng-update avatar tuiInitials binding is moved to tuiAvatar without a SafeResourceUrl TODO: test.html 1`] = `
+{
+  "0. Before": "<tui-avatar [src]="name | tuiInitials" />",
+  "1. After": "<span [tuiAvatar]="name | tuiInitials" ></span>",
+}
+`;
+
 exports[`ng-update avatar unwraps tuiFallbackSrc binding into tuiAvatar with image inside: test.html 1`] = `
 {
   "0. Before": "<a [tuiAvatar]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"></a>",

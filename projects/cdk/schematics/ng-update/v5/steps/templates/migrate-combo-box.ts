@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -23,17 +24,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type TextNode = DefaultTreeAdapterTypes.TextNode;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/combo-box';
-
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 const INPUT_ATTRS = new Set(['[strictMatcher]'.toLowerCase(), '[strict]']);
 
 const REMOVE_ATTRS = new Set([
@@ -58,7 +48,7 @@ export function migrateComboBox({
         const sourceCodeLocation = element.sourceCodeLocation;
 
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const inputAttrs = element.attrs.filter((attr) =>
@@ -170,6 +160,7 @@ export function migrateComboBox({
                 recorder,
                 templateOffset,
                 template,
+                element,
                 controlAttrs,
                 inputAttrs,
                 controlStateAttrs,
@@ -195,6 +186,7 @@ export function migrateComboBox({
                 element,
                 recorder,
                 templateOffset,
+                template,
                 controlAttrs,
                 inputAttrs,
                 controlStateAttrs,
@@ -211,6 +203,7 @@ function handleExistingInput({
     recorder,
     templateOffset,
     template,
+    element,
     controlAttrs,
     inputAttrs,
     controlStateAttrs,
@@ -219,6 +212,7 @@ function handleExistingInput({
 }: {
     controlAttrs: Array<{name: string; value: string}>;
     controlStateAttrs: Array<{name: string; value: string}>;
+    element: Element;
     inputAttrs: Array<{name: string; value: string}>;
     inputs: Element[];
     placeholder: string;
@@ -251,8 +245,8 @@ function handleExistingInput({
         const insertOffset =
             (input.sourceCodeLocation?.startTag?.startOffset ?? 0) + '<input'.length;
 
-        const formAttrs = formatControlAttrs(controlAttrs);
-        const inputAttrStr = formatInputAttrs(inputAttrs);
+        const formAttrs = formatControlAttrs(controlAttrs, template, element);
+        const inputAttrStr = formatInputAttrs(inputAttrs, template, element);
         const placeholderAttr = placeholder ? ` placeholder="${placeholder}"` : '';
         const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
@@ -267,6 +261,7 @@ function handleGeneratedInput({
     element,
     recorder,
     templateOffset,
+    template,
     controlAttrs,
     inputAttrs,
     controlStateAttrs,
@@ -282,10 +277,11 @@ function handleGeneratedInput({
     recorder: UpdateRecorder;
     searchHandler: string;
     sourceCodeLocation: Element['sourceCodeLocation'];
+    template: string;
     templateOffset: number;
 }): void {
-    const formAttrs = formatControlAttrs(controlAttrs);
-    const inputAttrStr = formatInputAttrs(inputAttrs);
+    const formAttrs = formatControlAttrs(controlAttrs, template, element);
+    const inputAttrStr = formatInputAttrs(inputAttrs, template, element);
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
     const labelNode = findTextNode(element);
 
@@ -408,42 +404,26 @@ function removeAttr(
     );
 }
 
-function formatControlAttrs(attrs: Array<{name: string; value: string}>): string {
+function formatControlAttrs(
+    attrs: Array<{name: string; value: string}>,
+    template: string,
+    element: Element,
+): string {
     return attrs
-        .map(({name, value}) => ` ${normalizeAttrName(name)}="${value}"`)
+        .map((attr) => ` ${getOriginalAttrText(template, element, attr)}`)
         .join('');
 }
 
-function formatInputAttrs(attrs: Array<{name: string; value: string}>): string {
+function formatInputAttrs(
+    attrs: Array<{name: string; value: string}>,
+    template: string,
+    element: Element,
+): string {
     return attrs
-        .map(({name, value}) => {
-            const attrName =
-                name.toLowerCase() === '[strictMatcher]'.toLowerCase()
-                    ? '[matcher]'
-                    : normalizeAttrName(name);
-
-            return ` ${attrName}="${value}"`;
-        })
+        .map((attr) =>
+            attr.name.toLowerCase() === '[strictMatcher]'.toLowerCase()
+                ? ` [matcher]="${attr.value}"`
+                : ` ${getOriginalAttrText(template, element, attr)}`,
+        )
         .join('');
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[(ngModel)]'.toLowerCase():
-            return '[(ngModel)]';
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[strict]':
-            return '[strict]';
-        default:
-            return name;
-    }
 }

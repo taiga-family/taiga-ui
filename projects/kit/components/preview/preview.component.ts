@@ -102,6 +102,15 @@ export class TuiPreviewComponent {
         }
     }
 
+    protected onMutation(target: HTMLElement, [event]: MutationRecord[]): void {
+        if (
+            event?.target.isSameNode(target) ||
+            (event?.target.parentNode?.isSameNode(target) && event.type === 'attributes')
+        ) {
+            this.onResize(target);
+        }
+    }
+
     protected onResize({clientWidth, clientHeight}: HTMLElement): void {
         this.width = clientWidth;
         this.height = clientHeight;

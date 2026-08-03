@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -154,17 +155,19 @@ export function migrateInputNumber({
             (node: ChildNode): node is Element => node.nodeName === 'input',
         );
 
-        const migrationAttrs = [...controlAttrs, ...inputAttrs, ...affixAttrs].reduce(
-            (result, attr) => {
-                const name = normalizeAttrName(attr.name);
+        const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
+            const original = getOriginalAttrText(template, element, attr);
 
-                return attr.value
-                    ? `${result} ${name}="${attr.value}"`
-                    : `${result} ${name}`;
-            },
-            '',
-        );
+            return `${result} ${original}`;
+        }, '');
 
+        const affixAttrStr = affixAttrs.reduce((result, attr) => {
+            const name = AFFIX_RENAMES.get(attr.name.toLowerCase()) ?? attr.name;
+
+            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+        }, '');
+
+        const migrationAttrs = `${baseAttrs}${affixAttrStr}`;
         const stateAttrs = stringifyControlStateAttrs(controlStateAttrs);
 
         recorder.insertRight(
@@ -193,25 +196,4 @@ export function migrateInputNumber({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    const lower = name.toLowerCase();
-
-    switch (lower) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return AFFIX_RENAMES.get(lower) ?? name;
-    }
 }

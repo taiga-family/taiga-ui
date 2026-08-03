@@ -22,6 +22,7 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Réduire le retrait',
         unorderedList: 'Liste à puces',
         orderedList: 'Liste numérotée',
+        taskList: 'Liste de tâches',
         quote: 'Citation',
         foreColor: 'Couleur de texte',
         backColor: 'Couleur de fond',

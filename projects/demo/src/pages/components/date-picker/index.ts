@@ -11,7 +11,7 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
+import {TUI_MONTH_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 
 @Component({
     imports: [TuiDatePicker, TuiDemo, TuiTitle],
@@ -20,7 +20,7 @@ import {TUI_CALENDAR_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
 })
 export default class Example {
     protected readonly routes = DemoRoute;
-    protected readonly options = inject(TUI_CALENDAR_OPTIONS);
+    protected readonly options = inject(TUI_MONTH_OPTIONS);
 
     protected readonly months = [
         new TuiMonth(2021, 1),

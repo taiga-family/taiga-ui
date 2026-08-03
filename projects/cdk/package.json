@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "5.15.0",
+    "version": "5.17.0",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
     "keywords": [
         "angular",
@@ -32,6 +32,7 @@
         }
     ],
     "exports": {
+        "./schematics": "./schematics/index.js",
         "./schematics/*": "./schematics/*"
     },
     "dependencies": {

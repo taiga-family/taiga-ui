@@ -38,7 +38,7 @@ export class TuiDropdownAnchor implements AfterViewInit {
         takeWhile(
             () =>
                 this.directive.el.isConnected &&
-                !!this.directive.el.getBoundingClientRect().height,
+                this.directive.el.getClientRects().length > 0,
         ),
         map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
         map((point) => this.getStyles(...point)),

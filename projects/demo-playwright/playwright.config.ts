@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import {defineConfig, devices} from '@playwright/test';
 import {type configureAxe} from 'axe-playwright';
 import {type ViewportSize} from 'playwright-core';
@@ -90,7 +92,8 @@ export default defineConfig({
         : [chromium],
     expect: {
         toHaveScreenshot: {
-            animations: 'disabled',
+            animations: 'allow',
+            stylePath: [path.resolve(__dirname, 'animations.css')],
             caret: 'hide',
             scale: 'device',
             ...options,

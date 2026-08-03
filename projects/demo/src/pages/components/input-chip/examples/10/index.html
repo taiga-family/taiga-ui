@@ -22,12 +22,14 @@
             />
         </tui-textfield>
         <cdk-virtual-scroll-viewport
-            tuiScrollable
-            [itemSize]="48"
-            [style.height.px]="filtered().length * 48 + 8"
+            tuiScrollRef
+            class="tui-zero-scrollbar"
+            [itemSize]="42"
+            [style.height.px]="filtered().length * 42 + 8"
             [style.max-height.px]="200"
             [style.min-height.px]="56"
         >
+            <tui-scroll-controls />
             <tui-data-list tuiMultiSelectGroup>
                 <button
                     *cdkVirtualFor="let item of filtered()"

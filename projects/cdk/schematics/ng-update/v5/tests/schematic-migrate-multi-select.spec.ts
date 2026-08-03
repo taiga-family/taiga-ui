@@ -319,5 +319,22 @@ describe('ng-update legacy multi-select', () => {
         }),
     );
 
+    it(
+        'moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase',
+        migrate({
+            template: /* HTML */ `
+                <tui-multi-select
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-multi-select>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

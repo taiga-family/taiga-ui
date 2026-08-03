@@ -36,4 +36,9 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         to: 'tui-tabs',
         filterFn: (element) => hasElementAttribute(element, 'tuiTabs'),
     },
+    {
+        from: 'nav',
+        to: 'tui-tabs-with-more',
+        filterFn: (element) => hasElementAttribute(element, 'tuiTabsWithMore'),
+    },
 ];

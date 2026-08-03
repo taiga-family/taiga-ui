@@ -3,6 +3,13 @@ import {type ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
+            name: 'EMPTY_ARRAY',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {name: '[]'},
+    },
+    {
+        from: {
             name: 'TuiInputSliderModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
@@ -29,6 +36,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiIcon',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_CYPRESS',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_E2E',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_PLAYWRIGHT',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_E2E',
+            moduleSpecifier: '@ng-web-apis/platform',
         },
     },
     {
@@ -148,6 +175,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'tuiPure',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPureException',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiPureException',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },
@@ -429,6 +466,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TUI_IS_TOUCH',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_TOUCH',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ICON_STARTS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_REGISTRY',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ICON_START_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'tuiIsEdge',
             moduleSpecifier: '@taiga-ui/cdk',
         },
@@ -684,26 +751,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
-    {
+    ...[
+        'tuiIsNativeKeyboardFocusable',
+        'tuiIsNativeMouseFocusable',
+        'tuiIsKeyboardFocusable',
+        'tuiIsMouseFocusable',
+    ].map((name) => ({
         from: {
-            name: 'tuiIsNativeKeyboardFocusable',
+            name,
             moduleSpecifier: '@taiga-ui/cdk',
         },
         to: {
             name: 'tuiIsFocusable',
             moduleSpecifier: '@taiga-ui/cdk',
         },
-    },
-    {
-        from: {
-            name: 'tuiIsNativeMouseFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
-        },
-        to: {
-            name: 'tuiIsFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
-        },
-    },
+    })),
     {
         from: {
             name: 'tuiBlurNativeFocused',
@@ -855,6 +917,41 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
                 moduleSpecifier: '@taiga-ui/core',
             },
         ],
+    },
+    {
+        from: {
+            name: 'TuiInputCopyModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: [
+            {
+                name: 'TuiIcon',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+            {
+                name: 'TuiCopy',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInput',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
+    },
+    {
+        from: {name: 'TuiInputCopyOptions', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TuiCopyOptions', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TUI_INPUT_COPY_OPTIONS', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TUI_COPY_OPTIONS', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {
+            name: 'tuiInputCopyOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {name: 'tuiCopyOptionsProvider', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {
@@ -1172,6 +1269,641 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TUI_EDITOR_SANITIZER',
             moduleSpecifier: '@taiga-ui/editor',
+        },
+    },
+    {
+        from: {
+            name: 'TuiThemeColorService',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiThemeColorService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_THEME_COLOR',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TUI_THEME_COLOR',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputCVC',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputCVCDirective',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputExpire',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputExpireDirective',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+    },
+    // Color/gradient utils moved from @taiga-ui/cdk to @taiga-ui/editor in v5.
+    ...[
+        'tuiGetGradientData',
+        'tuiHexToRgb',
+        'tuiHexToRGBA',
+        'tuiHsvToRgb',
+        'tuiIsValidHex',
+        'tuiIsValidRgba',
+        'tuiParseColor',
+        'tuiParseGradient',
+        'tuiParseHex',
+        'tuiRgbaToHex',
+        'tuiRgbToHex',
+        'tuiRgbToHsv',
+        'tuiToGradient',
+        'TuiGradientDirection',
+        'TuiParsedGradient',
+    ].map((name) => ({
+        from: {name, moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name, moduleSpecifier: '@taiga-ui/editor'},
+    })),
+    {
+        from: [
+            {
+                name: 'TuiInputPasswordOptions',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInputPasswordOptions',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TuiPasswordOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'TUI_INPUT_PASSWORD_OPTIONS',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TUI_INPUT_PASSWORD_OPTIONS',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TUI_PASSWORD_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'tuiInputPasswordOptionsProvider',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'tuiInputPasswordOptionsProvider',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'tuiPasswordOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputDateOptionsNew',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiInputDateOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_INPUT_DATE_OPTIONS_NEW',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_INPUT_DATE_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_INPUT_DATE_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiWithQuantumValueTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiQuantumValueTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAlertOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiNotificationOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ALERT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_NOTIFICATION_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: [
+            {
+                name: 'TuiInputRangeComponent',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+            {
+                name: 'TuiInputRangeComponent',
+                moduleSpecifier: '@taiga-ui/legacy',
+            },
+        ],
+        to: {
+            name: 'TuiInputRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiActionBarComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCheckboxOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCheckboxOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRadioOptions',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiRadioOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiCreateKeyStepsTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiCreateKeyStepsTransformer',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiKeyStepValueToPercentage',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiKeyStepValueToPercentage',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiPercentageToKeyStepValue',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiPercentageToKeyStepValue',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFullscreen',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiFullscreen',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiElasticContainerDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiElasticContainerDirective',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'tuiDateStreamWithTransformer',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiDateStreamWithTransformer',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ALERT_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_NOTIFICATION_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMobileDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialog',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMobileDialogService',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialogService',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiExpandComponent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiExpand',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMobileDialogOptions',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialogOptions',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_MOBILE_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TUI_MOBILE_DIALOG_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_MOBILE_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TUI_MOBILE_DIALOG_DEFAULT_OPTIONS',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'tuiMobileDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'tuiMobileDialogOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiButtonCopyComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiButtonCopy',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_TOASTS_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_TOAST_CONCURRENCY',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDialogSize',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDialogSize',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCellStretch',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiCellStretch',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCellOptions',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiCellOptions',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAlert',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiNotification',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRadioComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiRadioComponent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiInspectAny',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'tuiInspect',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRadioDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiRadioDirective',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiRadioOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiRadioOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSliderKeySteps',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiSliderKeySteps',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSliderKeyStepsBase',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiSliderKeyStepsBase',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSliderReadonly',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiSliderReadonly',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSliderThumbLabel',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiSliderThumbLabel',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ITEMS_HANDLERS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_ITEMS_HANDLERS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_DEFAULT_ITEMS_HANDLERS',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TUI_DEFAULT_ITEMS_HANDLERS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiItemsHandlers',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiItemsHandlers',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiItemsHandlersProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiItemsHandlersProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCarouselComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarouselComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCarouselDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarouselDirective',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCarouselAutoscroll',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarouselAutoscroll',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCarouselButtons',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarouselButtons',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCarouselScroll',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiCarouselScroll',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'tuiPdfViewerOptionsProvider',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'tuiPdfViewerOptionsProvider',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_CELL_OPTIONS',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TUI_CELL_OPTIONS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiHintComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiHintComponent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccordionComponent',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiAccordionComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAccordionDirective',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiAccordionDirective',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
 ];

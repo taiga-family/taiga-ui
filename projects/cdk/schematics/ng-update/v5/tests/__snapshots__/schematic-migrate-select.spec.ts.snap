@@ -134,6 +134,38 @@ exports[`ng-update legacy select moves [(ngModel)] to generated input when input
 }
 `;
 
+exports[`ng-update legacy select moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                >
+<label tuiLabel>
+                    Choose
+                    </label>
+
+<input tuiSelect [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update legacy select renames valueContent to content, removes labelOutside and drops TuiTextfieldControllerModule: test.html 1`] = `
 {
   "0. Before": "

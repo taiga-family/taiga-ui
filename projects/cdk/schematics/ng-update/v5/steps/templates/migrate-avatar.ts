@@ -165,7 +165,7 @@ function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
  * string. A `SafeResourceUrl` (or any non-string image) would break at build time, and
  * the bound type cannot be inferred from the template — so flag it with a TODO. Provably
  * string values are skipped: quoted/backtick literals (`[src]="'a.png'"`) and known
- * string flows (`| tuiIcon`, `| tuiFallbackSrc`).
+ * string flows (`| tuiIcon`, `| tuiFallbackSrc`, `| tuiInitials`).
  */
 function maybeInsertSafeResourceUrlTodo(
     recorder: UpdateRecorder,
@@ -192,7 +192,10 @@ function isRawDynamicSrc(attr: Attribute): boolean {
 
     const value = attr.value.trim();
 
-    return !isStringLiteral(value) && !/\|\s*(?:tuiIcon|tuiFallbackSrc)\b/.test(value);
+    return (
+        !isStringLiteral(value) &&
+        !/\|\s*(?:tuiIcon|tuiFallbackSrc|tuiInitials)\b/.test(value)
+    );
 }
 
 /**

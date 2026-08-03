@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {
     findElementsByFn,
     findElementsByTagName,
@@ -15,6 +16,9 @@ import {type TemplateResource} from '../../../interfaces';
 import {hasAncestor} from '../../../utils/templates';
 
 type Element = DefaultTreeAdapterTypes.Element;
+
+const SIZE_TODO =
+    '`size` was removed from individual accordion items; set it on the parent <tui-accordion size="..."> instead. See https://taiga-ui.dev/components/accordion';
 
 export function migrateAccordionItem({
     resource,
@@ -98,12 +102,18 @@ function buildReplacement(
     const isLazy = options.isStandalone && contentElement.tagName === 'ng-template';
     const lineIndent = options.isStandalone ? `${indent}    ` : indent;
 
+    const sizeAttr = element.attrs.find(
+        (attr) => attr.name === 'size' || attr.name === '[size]',
+    );
+
     const ATTRS_TO_REMOVE = [
         'borders',
         'disableHover',
         'showArrow',
         'async',
         'rounded',
+        'size',
+        '[size]',
         'tuiaccordionitemcontent',
     ];
 
@@ -126,11 +136,25 @@ function buildReplacement(
     const button = buildButton(header, `${buttonAttr}${otherAttrs}`, lineIndent);
     const expand = buildExpand(content, isLazy, lineIndent, forceBlock, classAttrStr);
 
+    // In v5 `size` lives on `<tui-accordion>`, not the item/button. A standalone item
+    // gets its own generated wrapper, so the value moves there losslessly; inside an
+    // existing accordion only one size can win, so drop it and flag it for review.
+    const sizeAttrStr = sizeAttr
+        ? ` ${sizeAttr.name}${sizeAttr.value ? `="${sizeAttr.value}"` : ''}`
+        : '';
+
     const replacement = options.isStandalone
-        ? [`${indent}<tui-accordion>`, button, expand, `${indent}</tui-accordion>`].join(
-              '\n',
-          )
-        : [button, expand].join('\n');
+        ? [
+              `${indent}<tui-accordion${sizeAttrStr}>`,
+              button,
+              expand,
+              `${indent}</tui-accordion>`,
+          ].join('\n')
+        : [
+              ...(sizeAttr ? [`${indent}<!-- ${TODO_MARK} ${SIZE_TODO} -->`] : []),
+              button,
+              expand,
+          ].join('\n');
 
     return {
         startOffset,

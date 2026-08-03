@@ -114,5 +114,47 @@ describe('ng-update accordion item', () => {
         }),
     );
 
+    it(
+        'moves size from a standalone item onto the generated tui-accordion (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion-item size="s">
+                    Header
+                    <ng-template tuiAccordionItemContent>Content</ng-template>
+                </tui-accordion-item>
+            `,
+        }),
+    );
+
+    it(
+        'moves bound [size] from a standalone item onto the generated tui-accordion (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion-item [size]="size">
+                    Header
+                    <ng-template tuiAccordionItemContent>Content</ng-template>
+                </tui-accordion-item>
+            `,
+        }),
+    );
+
+    it(
+        'drops size from nested items and leaves a TODO comment (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion>
+                    <tui-accordion-item size="s">
+                        First
+                        <ng-template tuiAccordionItemContent>One</ng-template>
+                    </tui-accordion-item>
+                    <tui-accordion-item [size]="size">
+                        Second
+                        <ng-template tuiAccordionItemContent>Two</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

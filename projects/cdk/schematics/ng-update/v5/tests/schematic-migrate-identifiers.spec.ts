@@ -217,5 +217,163 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves TuiThemeColorService and TUI_THEME_COLOR from cdk to addon-mobile (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {inject} from '@angular/core';
+                import {TUI_THEME_COLOR, TuiThemeColorService} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly token = TUI_THEME_COLOR;
+                    protected readonly theme = inject(TuiThemeColorService);
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerce';
+
+                @Component({imports: [TuiInputCVC, TuiInputExpire]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'renames kit input-password options to password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames legacy input-password options to kit password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/legacy';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the New suffix from input-date options identifiers',
+        migrate({
+            component: /* TypeScript */ `
+                import {
+                    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+                    TUI_INPUT_DATE_OPTIONS_NEW,
+                    type TuiInputDateOptionsNew,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly defaults = TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW;
+                    protected readonly token = TUI_INPUT_DATE_OPTIONS_NEW;
+                    protected readonly options: TuiInputDateOptionsNew | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiWithQuantumValueTransformer',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiWithQuantumValueTransformer} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly transformer = TuiWithQuantumValueTransformer;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames alert options to notification options',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_ALERT_OPTIONS, type TuiAlertOptions} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_ALERT_OPTIONS;
+                    protected readonly options: TuiAlertOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the Component suffix from kit input-range/action-bar',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TuiActionBarComponent,
+                    TuiInputRangeComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiActionBarComponent, TuiInputRangeComponent],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'moves legacy TuiInputRangeComponent to kit TuiInputRange',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputRangeComponent} from '@taiga-ui/legacy';
+
+                @Component({imports: [TuiInputRangeComponent]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'moves TuiPureException from cdk to legacy',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiPureException} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly error = TuiPureException;
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

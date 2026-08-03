@@ -45,6 +45,23 @@ test.describe('Textarea', () => {
         });
     });
 
+    ['m', 'l'].forEach((size) => {
+        test(`stays intact with a global border-box reset (size ${size})`, async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
+
+            await page.addStyleTag({content: '* { box-sizing: border-box; }'});
+
+            const {demo} = new TuiDocumentationPagePO(page);
+            const textarea = demo.locator('textarea[tuiTextarea]');
+
+            await textarea.fill('1\n2\n3\n4');
+
+            await expect.soft(demo).toHaveScreenshot(`textarea-border-box-${size}.png`);
+        });
+    });
+
     test('overscroll-behavior', async ({page}) => {
         await tuiGoto(page, DemoRoute.Textarea);
 

@@ -9,6 +9,14 @@ import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
 const STRING_LITERAL_RE = /^'[^']*'$/;
 
+// tuiHeader: a value that is exactly one single-quoted literal is auto-migrated by
+// ATTR_WITH_VALUES_TO_REPLACE (single quotes only) or is already a v5 token — skip it.
+const HEADER_SINGLE_LITERAL =
+    /^'(?:xxl|xl|[lms]|xs|xxs|h1|h2|h3|h4|h5|h6|body-l|body-m|body-s)'$/;
+// tuiHeader: a v4 size token used as a quoted literal (single or double quotes) inside a
+// larger expression, e.g. `cond ? 'l' : 'm'` or `cond ? "l" : "m"`.
+const HEADER_OLD_TOKEN_LITERAL = /(['"])(?:xxl|xl|[lms]|xs|xxs)\1/;
+
 export const HTML_COMMENTS: HtmlComment[] = [
     {
         tag: '*',
@@ -76,6 +84,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom',
     },
     {
+        tag: 'tui-thumbnail-card',
+        withAttrs: ['monoHandler'],
+        comment:
+            '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options',
+    },
+    {
         tag: 'timeline-steps',
         withAttrs: [],
         comment:
@@ -124,5 +138,20 @@ export const HTML_COMMENTS: HtmlComment[] = [
         },
         comment:
             'tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL',
+    },
+    {
+        tag: '*',
+        withAttrs: ['[tuiHeader]'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, '[tuiHeader]')?.value?.trim();
+
+            return (
+                !!value &&
+                !HEADER_SINGLE_LITERAL.test(value) &&
+                HEADER_OLD_TOKEN_LITERAL.test(value)
+            );
+        },
+        comment:
+            '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header',
     },
 ];

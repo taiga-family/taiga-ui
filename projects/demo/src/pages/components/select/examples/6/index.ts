@@ -17,7 +17,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
         TuiSelect,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

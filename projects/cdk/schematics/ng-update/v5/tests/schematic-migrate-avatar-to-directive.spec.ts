@@ -47,6 +47,11 @@ describe('ng-update avatar', () => {
     );
 
     it(
+        'tuiInitials binding is moved to tuiAvatar without a SafeResourceUrl TODO',
+        migrate({template: '<tui-avatar [src]="name | tuiInitials" />'}),
+    );
+
+    it(
         'unwraps tuiFallbackSrc binding into tuiAvatar with image inside',
         migrate({
             template:

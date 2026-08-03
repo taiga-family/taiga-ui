@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update sibling package moves (#11917) moves TUI_CELL_OPTIONS from layout to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_CELL_OPTIONS} from '@taiga-ui/layout';
+
+                export class TestComponent {
+                    protected readonly token = TUI_CELL_OPTIONS;
+                }
+            ",
+  "1. After": "import { TUI_CELL_OPTIONS } from "@taiga-ui/core";
+
+                                export class TestComponent {
+                    protected readonly token = TUI_CELL_OPTIONS;
+                }
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves TuiHintComponent from experimental to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiHintComponent} from '@taiga-ui/experimental';
+
+                export class TestComponent {
+                    protected readonly hint = TuiHintComponent;
+                }
+            ",
+  "1. After": "import { TuiHintComponent } from "@taiga-ui/core";
+
+                                export class TestComponent {
+                    protected readonly hint = TuiHintComponent;
+                }
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves accordion component/directive from experimental to kit: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiAccordionComponent,
+                    TuiAccordionDirective,
+                } from '@taiga-ui/experimental';
+
+                @Component({imports: [TuiAccordionComponent, TuiAccordionDirective]})
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiAccordionComponent, TuiAccordionDirective } from "@taiga-ui/kit";
+
+                import {Component} from '@angular/core';
+
+                @Component({imports: [TuiAccordionComponent, TuiAccordionDirective]})
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves carousel component/directives from kit to legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiCarouselAutoscroll,
+                    TuiCarouselButtons,
+                    TuiCarouselComponent,
+                    TuiCarouselDirective,
+                    TuiCarouselScroll,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiCarouselComponent,
+                        TuiCarouselDirective,
+                        TuiCarouselAutoscroll,
+                        TuiCarouselButtons,
+                        TuiCarouselScroll,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiCarouselComponent, TuiCarouselDirective, TuiCarouselAutoscroll, TuiCarouselButtons, TuiCarouselScroll } from "@taiga-ui/legacy";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [
+                        TuiCarouselComponent,
+                        TuiCarouselDirective,
+                        TuiCarouselAutoscroll,
+                        TuiCarouselButtons,
+                        TuiCarouselScroll,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves items-handlers token/provider/type from kit to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TUI_DEFAULT_ITEMS_HANDLERS,
+                    TUI_ITEMS_HANDLERS,
+                    tuiItemsHandlersProvider,
+                    type TuiItemsHandlers,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly token = TUI_ITEMS_HANDLERS;
+                    protected readonly defaults = TUI_DEFAULT_ITEMS_HANDLERS;
+                    protected readonly provider = tuiItemsHandlersProvider;
+                    protected readonly handlers: TuiItemsHandlers<unknown> | null = null;
+                }
+            ",
+  "1. After": "import { TUI_ITEMS_HANDLERS, TUI_DEFAULT_ITEMS_HANDLERS, TuiItemsHandlers, tuiItemsHandlersProvider } from "@taiga-ui/core";
+
+                export class TestComponent {
+                    protected readonly token = TUI_ITEMS_HANDLERS;
+                    protected readonly defaults = TUI_DEFAULT_ITEMS_HANDLERS;
+                    protected readonly provider = tuiItemsHandlersProvider;
+                    protected readonly handlers: TuiItemsHandlers<unknown> | null = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves radio component/directive/provider from kit to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiRadioComponent,
+                    TuiRadioDirective,
+                    tuiRadioOptionsProvider,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiRadioComponent, TuiRadioDirective],
+                    providers: [tuiRadioOptionsProvider({})],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiRadioComponent, TuiRadioDirective, tuiRadioOptionsProvider } from "@taiga-ui/core";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [TuiRadioComponent, TuiRadioDirective],
+                    providers: [tuiRadioOptionsProvider({})],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves slider helper directives from kit to core: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiSliderKeySteps,
+                    TuiSliderKeyStepsBase,
+                    TuiSliderReadonly,
+                    TuiSliderThumbLabel,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [
+                        TuiSliderKeySteps,
+                        TuiSliderKeyStepsBase,
+                        TuiSliderReadonly,
+                        TuiSliderThumbLabel,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiSliderKeySteps, TuiSliderKeyStepsBase, TuiSliderReadonly, TuiSliderThumbLabel } from "@taiga-ui/core";
+
+                import {Component} from '@angular/core';
+
+                @Component({
+                    imports: [
+                        TuiSliderKeySteps,
+                        TuiSliderKeyStepsBase,
+                        TuiSliderReadonly,
+                        TuiSliderThumbLabel,
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update sibling package moves (#11917) moves tuiPdfViewerOptionsProvider from kit to legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiPdfViewerOptionsProvider} from '@taiga-ui/kit';
+
+                export const providers = [tuiPdfViewerOptionsProvider({})];
+            ",
+  "1. After": "import { tuiPdfViewerOptionsProvider } from "@taiga-ui/legacy";
+
+                                export const providers = [tuiPdfViewerOptionsProvider({})];
+            ",
+}
+`;

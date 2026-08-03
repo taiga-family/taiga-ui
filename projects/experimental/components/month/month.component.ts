@@ -17,14 +17,14 @@ import {TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TUI_CALENDAR_OPTIONS} from './calendar.options';
+import {TUI_MONTH_OPTIONS} from './month.options';
 import {TuiWeekPipe} from './week.pipe';
 
 /**
  * @deprecated: work in progress, do not use!
  */
 @Component({
-    selector: 'tui-calendar[new]',
+    selector: 'tui-month',
     imports: [
         PolymorpheusOutlet,
         TuiCalendarSheetPipe,
@@ -32,17 +32,17 @@ import {TuiWeekPipe} from './week.pipe';
         TuiWeekPipe,
         UpperCasePipe,
     ],
-    templateUrl: './calendar.component.html',
-    styleUrl: './calendar.component.less',
+    templateUrl: './month.component.html',
+    styleUrl: './month.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._ww]': 'showWeek()',
         '(mouseleave)': 'hovered.set(null)',
     },
 })
-export class TuiCalendar {
+export class TuiMonthComponent {
     private readonly days = inject(TUI_SHORT_WEEK_DAYS);
-    private readonly options = inject(TUI_CALENDAR_OPTIONS);
+    private readonly options = inject(TUI_MONTH_OPTIONS);
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly hovered = signal<TuiDay | null>(null);

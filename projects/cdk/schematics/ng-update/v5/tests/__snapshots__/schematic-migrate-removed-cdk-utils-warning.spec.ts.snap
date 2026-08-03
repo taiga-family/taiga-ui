@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed cdk utilities warning adds TODO comments for the removed cdk utilities: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {EMPTY_QUERY, tuiFlatLength, tuiIsFalsy} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly query = EMPTY_QUERY;
+                    protected readonly falsy = tuiIsFalsy(0);
+                    protected readonly length = tuiFlatLength([[1], [2, 3]]);
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) EMPTY_QUERY has been removed. Use new QueryList() instead, or migrate to the signal-based queries viewChildren()/contentChildren().
+// TODO: (Taiga UI migration) tuiIsFalsy has been removed. Replace it with a plain negation predicate: (value) => !value.
+// TODO: (Taiga UI migration) tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.
+                import {EMPTY_QUERY, tuiFlatLength, tuiIsFalsy} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly query = EMPTY_QUERY;
+                    protected readonly falsy = tuiIsFalsy(0);
+                    protected readonly length = tuiFlatLength([[1], [2, 3]]);
+                }
+            ",
+}
+`;

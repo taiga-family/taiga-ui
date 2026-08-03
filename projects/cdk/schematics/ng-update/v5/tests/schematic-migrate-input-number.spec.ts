@@ -113,5 +113,19 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'preserves camelCase for [formControlName] and (ngModelChange) bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-number
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Enter a number
+                </tui-input-number>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
