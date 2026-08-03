@@ -219,7 +219,7 @@ test.describe('TuiHint', () => {
         test('Tooltip opens on tap and hides on tap outside', async ({page}) => {
             await tuiGoto(page, DemoRoute.Tooltip);
 
-            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const example = new TuiDocumentationPagePO(page).getExample('#example-base');
             const tooltip = example.locator('[tuiTooltip]').first();
             const hint = page.locator('tui-hint');
 
