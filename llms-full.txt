@@ -1049,7 +1049,7 @@
 ### tab-bar
 
 ```text
-  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective
+  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective, TuiTabBarLiquidGlass
 ```
 **Directives:**
 ### dropdown-mobile
@@ -1596,6 +1596,7 @@ nx migrate --run-migrations
 # components/Accordion
 - **Package**: `KIT`
 - **Type**: components
+example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected', 'With Action Button']; track example ) {
 
 ### Example
 
@@ -1949,6 +1950,93 @@ export default class Example {
 
     [tuiCell] {
         margin-inline-start: -1rem;
+    }
+}
+```
+
+#### Example 7
+
+**Template:**
+```html
+<tui-accordion> @for (item of items; track item.title) { <div class="t-header">
+<button appearance="icon" tuiAccordion > {{ item.title }} </button>
+<button appearance="icon" iconStart="@tui.info" tuiIconButton type="button" (click)="showDetails(item)" > Show details about {{ item.title }} </button>
+</div>
+<tui-expand> {{ item.content }} </tui-expand> } </tui-accordion>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiAccordion} from '@taiga-ui/kit';
+
+interface Item {
+    readonly title: string;
+    readonly content: string;
+    readonly details: string;
+}
+
+@Component({
+    imports: [TuiAccordion, TuiButton],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    private readonly dialogs = inject(TuiDialogService);
+
+    protected readonly items: readonly Item[] = [
+        {
+            title: 'Taiga UI cdk',
+            content:
+                'Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities',
+            details:
+                'Framework-agnostic utilities: directives, pipes, observables and DI tokens shared across all Taiga UI packages.',
+        },
+        {
+            title: 'Taiga UI core',
+            content:
+                'Basic elements needed to develop components, directives and more using Taiga UI design system',
+            details:
+                'Design tokens, theming and the foundational building blocks every other Taiga UI package relies on.',
+        },
+        {
+            title: 'Taiga UI kit',
+            content:
+                'The main set of components used to build Taiga UI based Angular applications',
+            details:
+                'Ready-to-use high level components: accordion, calendar, input masks and much more.',
+        },
+    ];
+
+    protected showDetails(item: Item): void {
+        this.dialogs.open(item.details, {label: item.title, size: 's'}).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+tui-accordion {
+    .t-header {
+        display: flex;
+        align-items: stretch;
+
+        > [tuiAccordion] {
+            flex: 1;
+            justify-content: flex-start;
+            text-align: start;
+
+            &::after {
+                margin-inline-start: auto;
+            }
+        }
+    }
+
+    tui-expand {
+        box-shadow: none;
     }
 }
 ```
@@ -17478,6 +17566,75 @@ footer {
 }
 ```
 
+#### Compact
+
+**Template:**
+```html
+<div class="content">
+<tui-textfield class="field">
+<label tuiLabel>Name</label>
+<input placeholder="Tap to open the keyboard" tuiInput [(ngModel)]="value" />
+</tui-textfield> @for (_ of '-'.repeat(30); track $index) { <div tuiCell>
+<div appearance="primary" tuiAvatar="@tui.star" ></div>
+<div tuiTitle> Title <div tuiSubtitle>Description</div>
+</div>
+</div> } <footer tuiFloatingContainer="transparent">
+<button size="m" tuiButton type="button" class="action" > Next </button>
+</footer>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiCell, TuiInput, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiFloatingContainer,
+        TuiInput,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = '';
+}
+```
+**LESS:**
+```less
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+.field {
+    margin: 1rem 1rem 0;
+}
+
+.action {
+    // shrink the single action to its content and pin it to the trailing edge
+    justify-self: end;
+    margin-inline: 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -17520,6 +17677,7 @@ export default class Example {
         'Content',
         'Overlay',
         'Crossfade',
+        'Compact',
     ];
 
     protected readonly colors = [
@@ -30191,6 +30349,39 @@ tui-loader {
 }
 ```
 
+#### Custom size
+
+**Template:**
+```html
+<tui-loader [style.--tui-diameter.rem]="1.75" />
+<tui-loader [style.--tui-diameter.rem]="3" />
+<tui-loader [style.--tui-diameter.rem]="4.5" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLoader} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiLoader],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+```
+
 
 ### TypeScript
 
@@ -30217,6 +30408,7 @@ export default class Page {
         'With content overlay',
         'Options',
         'Custom stroke width',
+        'Custom size',
     ];
 
     protected loading = true;
@@ -41912,38 +42104,206 @@ export default class Example {
 }
 ```
 
+#### iOS Liquid glass
+
+**Template:**
+```html
+<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button> } </nav>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiNotificationService} from '@taiga-ui/core';
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    selector: 'tui-tab-bar-example-liquid',
+    imports: [TuiTabBar],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiNotificationService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items = [
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+            badge: 3,
+        },
+        {
+            text: 'Calls',
+            icon: '@tui.phone',
+            badge: 1234,
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+
+    protected onClick(item: Item): void {
+        item.badge = 0;
+        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    inline-size: 100%;
+}
+```
+
+#### iOS Liquid glass fullwidth
+
+**Template:**
+```html
+<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [icon]="item.icon" > {{ item.text }} </button> } </nav>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core';
+
+@Component({
+    selector: 'tui-tab-bar-example-liquid-full',
+    imports: [TuiTabBar],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    protected activeItemIndex = 2;
+
+    protected readonly items = [
+        {
+            text: 'Home',
+            icon: '@tui.house',
+        },
+        {
+            text: 'Search',
+            icon: '@tui.search',
+        },
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+        },
+        {
+            text: 'Notifications',
+            icon: '@tui.bell',
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+}
+```
+**LESS:**
+```less
+:host {
+    inline-size: 100%;
+}
+```
+
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiCheckbox, TuiLabel, TuiPopup} from '@taiga-ui/core';
 
 import TuiTabBarExample from './examples/1';
+import TuiTabBarLiquidExample from './examples/5';
+import TuiTabBarLiquidFullExample from './examples/6';
 
 @Component({
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiPopup, TuiTabBarExample],
+    imports: [
+        FormsModule,
+        TuiCheckbox,
+        TuiDemo,
+        TuiLabel,
+        TuiPopup,
+        TuiTabBarExample,
+        TuiTabBarLiquidExample,
+        TuiTabBarLiquidFullExample,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    host: {class: 'tui-tab-bar-demo'},
 })
 export default class Page {
-    protected readonly examples = ['Buttons', 'Links', 'Customization', 'Skeleton'];
+    protected readonly examples = [
+        'Buttons',
+        'Links',
+        'Customization',
+        'Skeleton',
+        'iOS Liquid glass',
+        'iOS Liquid glass fullwidth',
+    ];
+
     protected fixed = false;
+    protected fixedLiquid = false;
+    protected fixedLiquidFull = false;
 }
 ```
 
 ### LESS
 
 ```less
-.bar {
-    inline-size: 25rem;
+.tui-tab-bar-demo {
+    tui-doc-example .t-demo {
+        overflow: hidden;
+    }
+
+    .bar {
+        inline-size: 25rem;
+    }
 }
 
-.fixed {
+.t-fixed {
     position: fixed;
     inset-block-end: 0;
     inline-size: 100%;
