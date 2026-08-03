@@ -2,7 +2,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/components/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
@@ -18,6 +18,7 @@ export interface TuiConfirmData {
     readonly no?: string;
     readonly yes?: string;
     readonly appearance?: string;
+    readonly noAppearance?: (isMobile: boolean) => string;
 }
 
 // TODO: Remove selector in v5
@@ -37,7 +38,18 @@ export class TuiConfirm {
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {
-        return this.isMobile ? 'secondary' : 'flat';
+        return this.getAppearance(this.isMobile);
+    }
+
+    @tuiPure
+    private getAppearance(isMobile: boolean): string {
+        const noAppearance = this.context?.data?.noAppearance;
+
+        if (noAppearance) {
+            return noAppearance(isMobile);
+        }
+
+        return isMobile ? 'secondary' : 'flat';
     }
 }
 
