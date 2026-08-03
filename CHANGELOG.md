@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.93.0](https://github.com/taiga-family/taiga-ui/compare/v4.92.0...v4.93.0) (2026-08-03)
+
+### 🚀 Features
+
+- **styles:** mixin-based theme for scoped/micro frontend usage
+  ([#14668](https://github.com/taiga-family/taiga-ui/issues/14668))
+  ([f1de703](https://github.com/taiga-family/taiga-ui/commit/f1de7031c6eac0404e68e889300afedef1135744))
+
+### 🐞 Bug Fixes
+
+- **experimental:** `Accordion` should not recreate `*tuiItem` content twice on expand
+  ([#14652](https://github.com/taiga-family/taiga-ui/issues/14652))
+  ([d9d8e33](https://github.com/taiga-family/taiga-ui/commit/d9d8e33d5528808cfb76f94b3857b46be6b1ef83))
+- **experimental:** accordion trigger descendants ([#14681](https://github.com/taiga-family/taiga-ui/issues/14681))
+  ([542e4a4](https://github.com/taiga-family/taiga-ui/commit/542e4a49f567102b11752fd42771e2bd9e9d25ea))
+- **styles:** `TuiWithIcons` is incompatible with legacy global CSS class `tui-skeleton`
+  ([#14635](https://github.com/taiga-family/taiga-ui/issues/14635))
+  ([93944af](https://github.com/taiga-family/taiga-ui/commit/93944afa313f64992c7b1d00cf5a15853b57781f))
+
 ## [4.92.0](https://github.com/taiga-family/taiga-ui/compare/v4.91.0...v4.92.0) (2026-07-20)
 
 ## [4.91.0](https://github.com/taiga-family/taiga-ui/compare/v4.90.0...v4.91.0) (2026-07-13)
