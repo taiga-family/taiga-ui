@@ -18,19 +18,19 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: taiga-family/actions/setup-variables@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
-      - uses: taiga-family/actions/setup-node@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
-      - uses: taiga-family/actions/setup-npm@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
+      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-npm@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
       - run: npx nx run-many -t publish
 
-      - uses: taiga-family/actions/read-package-json@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
+      - uses: taiga-family/actions/read-package-json@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         id: info
 
       - name: Announce to Time messenger
-        uses: taiga-family/actions/messenger-mattermost-announce@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
+        uses: taiga-family/actions/messenger-mattermost-announce@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
@@ -38,7 +38,7 @@ jobs:
           version: v${{ steps.info.outputs.version }}
 
       - name: Announce to Telegram messenger
-        uses: taiga-family/actions/messenger-telegram-announce@a4bf1550ffd2659e8cf5584ed793f489aebd4854 # v2.8.0
+        uses: taiga-family/actions/messenger-telegram-announce@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
