@@ -16,6 +16,7 @@ export interface TuiConfirmData {
     readonly no?: string;
     readonly yes?: string;
     readonly appearance?: string;
+    readonly noAppearance?: (isMobile: boolean) => string;
 }
 
 @Component({
@@ -33,7 +34,17 @@ export class TuiConfirm {
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {
-        return this.isMobile ? 'secondary' : 'flat';
+        return this.getAppearance(this.isMobile);
+    }
+
+    private getAppearance(isMobile: boolean): string {
+        const noAppearance = this.context?.data?.noAppearance;
+
+        if (noAppearance) {
+            return noAppearance(isMobile);
+        }
+
+        return isMobile ? 'secondary' : 'flat';
     }
 }
 
