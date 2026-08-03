@@ -20,6 +20,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiIdService has been removed. Use tuiGenerateId() function from @taiga-ui/cdk instead.\n// Before: constructor(private readonly idService: TuiIdService) { const id = this.idService.generateId(); }\n// After:  import {tuiGenerateId} from "@taiga-ui/cdk"; const id = tuiGenerateId();',
     },
     {
+        name: 'TUI_SPIN_ICONS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_SPIN_ICONS has been removed. Spinner increment/decrement icons were merged into the common icons — configure them via tuiCommonIconsProvider (TUI_COMMON_ICONS) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'TuiDarkThemeService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDarkThemeService has been removed. Use the TUI_DARK_MODE token (a signal) from @taiga-ui/core instead.',
+    },
+    {
+        name: 'tuiToggleDay',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'tuiToggleDay has been removed with no public replacement. Inline the day-toggle logic in your component instead.',
+    },
+    {
         name: 'TuiScrollService',
         moduleSpecifier: '@taiga-ui/cdk',
         message:

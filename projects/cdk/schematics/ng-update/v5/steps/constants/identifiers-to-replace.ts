@@ -466,6 +466,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TUI_IS_TOUCH',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'WA_IS_TOUCH',
+            moduleSpecifier: '@ng-web-apis/platform',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ICON_STARTS',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_REGISTRY',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_ICON_START_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_ICON_RESOLVER',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
             name: 'tuiIsEdge',
             moduleSpecifier: '@taiga-ui/cdk',
         },
@@ -721,26 +751,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
-    {
+    ...[
+        'tuiIsNativeKeyboardFocusable',
+        'tuiIsNativeMouseFocusable',
+        'tuiIsKeyboardFocusable',
+        'tuiIsMouseFocusable',
+    ].map((name) => ({
         from: {
-            name: 'tuiIsNativeKeyboardFocusable',
+            name,
             moduleSpecifier: '@taiga-ui/cdk',
         },
         to: {
             name: 'tuiIsFocusable',
             moduleSpecifier: '@taiga-ui/cdk',
         },
-    },
-    {
-        from: {
-            name: 'tuiIsNativeMouseFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
-        },
-        to: {
-            name: 'tuiIsFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
-        },
-    },
+    })),
     {
         from: {
             name: 'tuiBlurNativeFocused',
