@@ -77,7 +77,6 @@ class Styles {}
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly driver = inject(TuiHintHover);
 
     protected readonly describe = inject(TuiHintDescribe);
     protected readonly nothing = tuiWithStyles(Styles);
@@ -106,6 +105,5 @@ export class TuiTooltip implements DoCheck {
         }
 
         event.stopPropagation();
-        this.driver.toggle();
     }
 }

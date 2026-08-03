@@ -24,6 +24,7 @@ const MOBILE_HIDE_DELAY_MS = 100;
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
+    host: {'(click)': 'onClick()'},
 })
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(WA_IS_MOBILE);
@@ -91,5 +92,15 @@ export class TuiHintHover extends TuiDriver {
 
     public close(): void {
         this.toggle$.next(false);
+    }
+
+    /**
+     * Synthesized `mouseenter` is not fired again until another element is tapped, so showing on mobile
+     * cannot rely on it.
+     */
+    protected onClick(): void {
+        if (this.isMobile) {
+            this.toggle();
+        }
     }
 }
