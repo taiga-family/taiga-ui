@@ -10,9 +10,13 @@ import {tuiNumberToStringWithoutExp} from './number-to-string-without-exp';
  * @return the fractional part of number
  */
 export function tuiGetFractionPartPadded(
-    value: number,
+    value: bigint | number | null,
     precision?: number | null,
 ): string {
+    if (typeof value !== 'number') {
+        return '';
+    }
+
     const [, fractionPartPadded = ''] = tuiNumberToStringWithoutExp(value).split('.');
 
     return tuiIsNumber(precision)
