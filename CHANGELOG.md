@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.18.0](https://github.com/taiga-family/taiga-ui/compare/v5.17.0...v5.18.0) (2026-08-03)
+
+### 🚀 Features
+
+- **addon-mobile:** `TabBar` add liquid glass support ([#14630](https://github.com/taiga-family/taiga-ui/issues/14630))
+  ([84940d4](https://github.com/taiga-family/taiga-ui/commit/84940d4a8d3342a646357aab493d2bce4ffa4127))
+- **core:** `Loader` support custom size via `--tui-diameter`
+  ([#14645](https://github.com/taiga-family/taiga-ui/issues/14645))
+  ([3618af9](https://github.com/taiga-family/taiga-ui/commit/3618af978f58769dcc007e666ae1ce3e03d0a22f))
+- **i18n:** add taskList translation for editor toolbar tooltip
+  ([#14656](https://github.com/taiga-family/taiga-ui/issues/14656))
+  ([706c0d9](https://github.com/taiga-family/taiga-ui/commit/706c0d9a4a5689c54d922af668f22248288bfe55))
+- **styles:** mixin-based theme for scoped/micro frontend usage
+  ([#14655](https://github.com/taiga-family/taiga-ui/issues/14655))
+  ([1518b22](https://github.com/taiga-family/taiga-ui/commit/1518b22faf1100174ff9549513c124c4fe457f17))
+
+### 🐞 Bug Fixes
+
+- **core:** support zero-sized hint hosts ([#14633](https://github.com/taiga-family/taiga-ui/issues/14633))
+  ([075270d](https://github.com/taiga-family/taiga-ui/commit/075270d9c865415eaf6aeaf60942cf6fa011e108))
+- **kit:** `InputPhone` no longer drops the `8` after country code on paste of `+7 8xx ...`
+  ([#14649](https://github.com/taiga-family/taiga-ui/issues/14649))
+  ([9219a02](https://github.com/taiga-family/taiga-ui/commit/9219a02fcd100005a9b479cc38b7325e294ed811))
+- **kit:** accordion nested trigger descendants ([#14679](https://github.com/taiga-family/taiga-ui/issues/14679))
+  ([9c3cbbb](https://github.com/taiga-family/taiga-ui/commit/9c3cbbbc9efcbd202b823efdca2a20a9825f2c2a))
+- **legacy:** `TuiWithIcons` is incompatible with legacy global CSS class `tui-skeleton`
+  ([#14636](https://github.com/taiga-family/taiga-ui/issues/14636))
+  ([dc81e5b](https://github.com/taiga-family/taiga-ui/commit/dc81e5b8a596a6df3606ccd4029d2b1094173957))
+
 ## [5.17.0](https://github.com/taiga-family/taiga-ui/compare/v5.16.0...v5.17.0) (2026-07-27)
 
 ### 🐞 Bug Fixes
