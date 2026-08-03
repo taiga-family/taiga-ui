@@ -392,16 +392,40 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
-        name: 'TUI_CHECKBOX_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_CHECKBOX_DEFAULT_OPTIONS has been removed. The TUI_CHECKBOX_OPTIONS token moved to @taiga-ui/core; provide custom defaults via tuiCheckboxOptionsProvider from @taiga-ui/core instead of importing a default options constant.',
-    },
-    {
         name: 'TUI_ALERT_POSITION',
         moduleSpecifier: '@taiga-ui/core',
         message:
             'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
+    },
+    {
+        name: 'TuiExpandContent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.',
+    },
+    {
+        name: 'TuiMonthPipe',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.',
+    },
+    {
+        name: 'AbstractTuiMultipleControl',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'AbstractTuiMultipleControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom multi-value control manually — this cannot be migrated automatically.',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
+    },
+    {
+        name: 'TUI_MOBILE_CALENDAR_PROVIDER',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile',
     },
     {
         name: 'tuiHexToRgb',
