@@ -1,0 +1,86 @@
+@import 'theme/variables.less';
+@import 'theme/palette.less';
+
+// Scoped counterpart of `taiga-ui-theme.less`. Call it inside your own selector to keep
+// the theme out of `:root` / `:host`, e.g. when several micro frontends share a page:
+//
+//     [my-app] {
+//         .taiga-ui-theme();
+//     }
+.taiga-ui-theme() {
+    .tui-theme-variables();
+
+    @media screen {
+        &[tuiTheme='dark'],
+        & [tuiTheme='dark'] {
+            color-scheme: dark;
+
+            .tui-theme-dark();
+        }
+
+        &[tuiTheme='light'],
+        & [tuiTheme='light'] {
+            color-scheme: light;
+        }
+
+        &,
+        &[tuiTheme='light'],
+        & [tuiTheme='light'] {
+            .tui-theme-light();
+        }
+    }
+
+    @media print {
+        &,
+        &[tuiTheme],
+        & [tuiTheme] {
+            color-scheme: light;
+
+            .tui-theme-light();
+        }
+    }
+
+    @import '../theme/appearance.less';
+    @import '../theme/wrapper.less';
+    @import '../theme/appearance/textfield.less';
+
+    &[tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'] {
+        background-color: var(--tui-background-neutral-1);
+
+        .appearance-hover({
+            background-color: var(--tui-background-neutral-1-hover);
+        });
+
+        .appearance-focus({
+            background-color: transparent !important;
+        });
+    }
+
+    &[tuiTheme='dark'] [tuiAppearance][data-appearance='glass'] {
+        background: rgba(255, 255, 255, 0.3);
+
+        .appearance-hover({
+            background: rgba(255, 255, 255, 0.4);
+        });
+
+        .appearance-active({
+            background: rgba(255, 255, 255, 0.5);
+        });
+    }
+
+    /**
+     * TODO: Drop in v.5
+     * @deprecated use appearance instead
+     */
+    &[tuiTheme='dark'] [tuiWrapper][data-appearance='textfield'] {
+        background: var(--tui-background-neutral-1);
+
+        .wrapper-hover({
+            background: var(--tui-background-neutral-1-hover);
+        });
+
+        .wrapper-focus({
+            background: transparent;
+        });
+    }
+}
