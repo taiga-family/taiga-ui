@@ -398,12 +398,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_ALERT_POSITION has been removed. Alert position is now part of the notification options: use the block and inline properties (e.g. via tuiNotificationOptionsProvider from @taiga-ui/core) instead.',
     },
     {
-        name: 'TUI_SLIDER_DEFAULT_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_SLIDER_DEFAULT_OPTIONS has been removed together with the slider options object (there is no options token in v5). Style the slider directly instead: the --tui-thumb-size CSS variable sets the thumb radius and track thickness (replaces the old `size` option), and the CSS `color` property on the input[tuiSlider] element sets the filled-track/thumb color. See https://taiga-ui.dev/components/slider',
-    },
-    {
         name: 'TuiExpandContent',
         moduleSpecifier: '@taiga-ui/core',
         message:

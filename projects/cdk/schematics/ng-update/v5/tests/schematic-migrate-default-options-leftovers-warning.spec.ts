@@ -16,7 +16,6 @@ describe('ng-update removed default-options and leftover symbols warning', () =>
                 import {
                     TUI_MOBILE_CALENDAR,
                     TUI_MOBILE_CALENDAR_PROVIDER,
-                    TUI_SLIDER_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
                 import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
                 import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
@@ -26,7 +25,6 @@ describe('ng-update removed default-options and leftover symbols warning', () =>
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_SLIDER_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];

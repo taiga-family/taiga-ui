@@ -6,7 +6,6 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                 import {
                     TUI_MOBILE_CALENDAR,
                     TUI_MOBILE_CALENDAR_PROVIDER,
-                    TUI_SLIDER_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
                 import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
                 import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
@@ -16,7 +15,6 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_SLIDER_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];
@@ -28,8 +26,6 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                     TUI_MOBILE_CALENDAR,
 // TODO: (Taiga UI migration) TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
                     TUI_MOBILE_CALENDAR_PROVIDER,
-// TODO: (Taiga UI migration) TUI_SLIDER_DEFAULT_OPTIONS has been removed together with the slider options object (there is no options token in v5). Style the slider directly instead: the --tui-thumb-size CSS variable sets the thumb radius and track thickness (replaces the old \`size\` option), and the CSS \`color\` property on the input[tuiSlider] element sets the filled-track/thumb color. See https://taiga-ui.dev/components/slider
-                    TUI_SLIDER_DEFAULT_OPTIONS,
                 } from '@taiga-ui/kit';
 // TODO: (Taiga UI migration) TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.
 // TODO: (Taiga UI migration) TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.
@@ -42,7 +38,6 @@ exports[`ng-update removed default-options and leftover symbols warning adds TOD
                 })
                 export class TestComponent extends AbstractTuiMultipleControl<string> {
                     protected readonly options = [
-                        TUI_SLIDER_DEFAULT_OPTIONS,
                         TUI_MOBILE_CALENDAR,
                         TUI_MOBILE_CALENDAR_PROVIDER,
                     ];
