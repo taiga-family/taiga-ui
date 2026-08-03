@@ -98,18 +98,11 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.',
     },
-    {
-        name: 'TuiSidebarComponent',
+    ...['TuiSidebarComponent', 'TuiSidebarDirective'].map((name) => ({
+        name,
         moduleSpecifier: '@taiga-ui/addon-mobile',
-        message:
-            'TuiSidebarComponent has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.',
-    },
-    {
-        name: 'TuiSidebarDirective',
-        moduleSpecifier: '@taiga-ui/addon-mobile',
-        message:
-            'TuiSidebarDirective has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.',
-    },
+        message: `${name} has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.`,
+    })),
     {
         name: 'tuiFindTouchIndex',
         moduleSpecifier: '@taiga-ui/addon-mobile',
@@ -127,30 +120,16 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_TABLE_PROVIDER has been removed. Table configuration providers are no longer required. See https://taiga-ui.dev/components/table',
     },
-    {
-        name: 'TuiIslandHarness',
+    ...[
+        'TuiIslandHarness',
+        'TuiSvgHarness',
+        'TuiThumbnailCardHarness',
+        'TuiPrimitiveTextfieldHarness',
+    ].map((name) => ({
+        name,
         moduleSpecifier: '@taiga-ui/testing',
-        message:
-            'TuiIslandHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
-    },
-    {
-        name: 'TuiSvgHarness',
-        moduleSpecifier: '@taiga-ui/testing',
-        message:
-            'TuiSvgHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
-    },
-    {
-        name: 'TuiThumbnailCardHarness',
-        moduleSpecifier: '@taiga-ui/testing',
-        message:
-            'TuiThumbnailCardHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
-    },
-    {
-        name: 'TuiPrimitiveTextfieldHarness',
-        moduleSpecifier: '@taiga-ui/testing',
-        message:
-            'TuiPrimitiveTextfieldHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.',
-    },
+        message: `${name} has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.`,
+    })),
     {
         name: 'TuiMockEvent',
         moduleSpecifier: '@taiga-ui/testing',
