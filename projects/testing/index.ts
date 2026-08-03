@@ -7,3 +7,4 @@
 export * from '@taiga-ui/testing/core';
 export * from '@taiga-ui/testing/exceptions';
 export * from '@taiga-ui/testing/utils';
+export * from '@taiga-ui/testing/playwright';
