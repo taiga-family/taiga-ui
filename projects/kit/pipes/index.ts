@@ -6,3 +6,5 @@ export * from '@taiga-ui/kit/pipes/initials';
 export * from '@taiga-ui/kit/pipes/sort-countries';
 export * from '@taiga-ui/kit/pipes/stringify';
 export * from '@taiga-ui/kit/pipes/stringify-content';
+export * from '@taiga-ui/kit/pipes/stringify-values';
+export * from '@taiga-ui/kit/pipes/values';
