@@ -1,7 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import {TuiButton} from '@taiga-ui/core/components/button';
+import {
+    TUI_BUTTON_OPTIONS,
+    TuiButton,
+    tuiButtonOptionsProvider,
+} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/portals/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
 import {
@@ -15,7 +19,7 @@ export interface TuiConfirmData {
     readonly content?: PolymorpheusContent;
     readonly no?: string;
     readonly yes?: string;
-    readonly appearance?: string;
+    readonly appearance?: string | [string, string];
 }
 
 @Component({
@@ -23,17 +27,29 @@ export interface TuiConfirmData {
     templateUrl: './confirm.template.html',
     styleUrl: './confirm.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiButtonOptionsProvider(() => ({
+            size: 'm',
+            appearance: inject(WA_IS_MOBILE) ? 'secondary' : 'flat',
+        })),
+    ],
 })
 export class TuiConfirm {
-    private readonly isMobile = inject(WA_IS_MOBILE);
-
+    protected readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly words = inject(TUI_CONFIRM_WORDS);
-
-    public readonly context =
+    protected readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
-    protected get appearance(): string {
-        return this.isMobile ? 'secondary' : 'flat';
+    protected get yes(): string {
+        return Array.isArray(this.context.data?.appearance)
+            ? this.context.data?.appearance[0]
+            : this.context.data?.appearance || 'primary';
+    }
+
+    protected get no(): string {
+        return Array.isArray(this.context.data?.appearance)
+            ? this.context.data?.appearance[1]
+            : this.options.appearance;
     }
 }
 
