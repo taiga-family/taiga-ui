@@ -11,15 +11,19 @@
     [tuiSheetDialogOptions]="options"
     [(tuiSheetDialog)]="open"
 >
-    <div class="sheet">
+    <div
+        class="sheet"
+        (click)="editing.set(false)"
+    >
         <div class="top">
-            <input
-                tuiSelectLike
-                class="amount"
-                [(ngModel)]="value"
-                (blur)="focused.set(false)"
-                (focus)="focused.set(true)"
-            />
+            @for (shown of [value()]; track shown) {
+                <div
+                    class="amount"
+                    (click)="editing.set(true); $event.stopPropagation()"
+                >
+                    {{ shown }}
+                </div>
+            }
 
             <div class="chips">
                 <span tuiChip>23 876 $</span>
@@ -64,10 +68,11 @@
 
             <div class="clamp">Commission-free</div>
 
-            @if (focused()) {
+            @if (editing()) {
                 <div
                     tuiAnimated
                     class="pad"
+                    (click)="$event.stopPropagation()"
                 >
                     <div class="pad-inner">
                         <tui-keypad>

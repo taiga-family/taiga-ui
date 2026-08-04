@@ -15,16 +15,15 @@
     padding: 2rem 1rem 1rem;
 }
 
+// plain text display: a keypad-driven value renders reliably in a <div> on iOS, unlike a
+// centered <input>. Tapping it opens the pad (see template), tapping outside collapses it.
 .amount {
-    font: bold 2.5rem/1 var(--tui-typography-family-display);
+    font: bold 2.5rem/1.4 var(--tui-typography-family-display);
     text-align: center;
     color: var(--tui-text-primary);
-    caret-color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 0;
     inline-size: 100%;
+    cursor: pointer;
+    user-select: none;
 }
 
 .chips {

@@ -1,5 +1,4 @@
 import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -8,13 +7,12 @@ import {
     type TuiSheetDialogOptions,
 } from '@taiga-ui/addon-mobile';
 import {TuiAnimated} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiIcon, TuiSelectLike, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
 import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        FormsModule,
         TuiAnimated,
         TuiAvatar,
         TuiButton,
@@ -23,7 +21,6 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
         TuiFloatingContainer,
         TuiIcon,
         TuiKeypad,
-        TuiSelectLike,
         TuiSheetDialog,
         TuiTitle,
     ],
@@ -36,7 +33,7 @@ export default class Example {
     protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     protected readonly value = signal('143');
     protected readonly open = signal(false);
-    protected readonly focused = signal(false);
+    protected readonly editing = signal(false);
 
     protected readonly options: Partial<TuiSheetDialogOptions> = {
         closable: true,

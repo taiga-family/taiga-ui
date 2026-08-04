@@ -13,6 +13,8 @@ tui-keypad:where(*&) {
     margin-inline: auto;
     font: 600 1.75rem/1 var(--tui-typography-family-display);
     color: var(--tui-text-primary);
+    // keys are tap targets, not text: stop iOS long-press from selecting a key's label
+    user-select: none;
 
     > a,
     > button {

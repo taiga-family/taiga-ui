@@ -2,10 +2,10 @@ import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeypad} from '@taiga-ui/addon-mobile';
-import {TuiIcon, TuiSelectLike} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiIcon, TuiKeypad, TuiSelectLike],
+    imports: [TuiIcon, TuiKeypad],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

@@ -1,9 +1,4 @@
-<input
-    placeholder="—"
-    tuiSelectLike
-    class="display"
-    [value]="value()"
-/>
+<div class="display">{{ value() || '—' }}</div>
 
 <tui-keypad class="custom">
     @for (digit of digits; track digit) {
