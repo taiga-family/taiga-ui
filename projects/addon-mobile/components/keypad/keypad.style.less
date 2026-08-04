@@ -3,9 +3,6 @@
 tui-keypad:where(*&) {
     display: grid;
     grid-template-columns: repeat(var(--t-columns, 3), 1fr);
-    // fixed row height + fluid columns: the pad fills its container's width (capped below) while the
-    // height stays constant (rows * 4rem), so keys never balloon on a wide container. Consumers that
-    // want the pad to scale with a resizable box override grid-auto-rows/block-size.
     grid-auto-rows: 4rem;
     place-items: center;
     inline-size: 100%;
@@ -13,7 +10,6 @@ tui-keypad:where(*&) {
     margin-inline: auto;
     font: 600 1.75rem/1 var(--tui-typography-family-display);
     color: var(--tui-text-primary);
-    // no long-press text selection on keys
     user-select: none;
 
     > a,
@@ -23,11 +19,8 @@ tui-keypad:where(*&) {
         align-items: center;
         justify-content: center;
         place-self: center;
-        aspect-ratio: 1;
-        // size from the row height, not the column width: the pad has fixed rows and fluid columns, so a
-        // width-driven key would balloon as the container widens. Sizing from the row keeps the key a
-        // constant circle; max-inline-size clamps it inside unusually narrow columns.
-        block-size: 88%;
+        block-size: 3.5rem;
+        inline-size: 3.5rem;
         max-inline-size: 100%;
         border: none;
         border-radius: 50%;
