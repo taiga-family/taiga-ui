@@ -109,7 +109,12 @@
 
     &_horizontal {
         writing-mode: vertical-lr;
+        direction: ltr;
         pointer-events: var(--t-events-x);
+
+        :host-context([dir='rtl']) & {
+            writing-mode: vertical-rl;
+        }
 
         .t-thumb {
             animation-timeline: --t-scrollbar-x;
