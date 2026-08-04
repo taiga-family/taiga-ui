@@ -42,15 +42,10 @@ export class TuiScrollbarPosition extends Observable<Partial<CSSStyleDeclaration
             const thumb = `${this.getThumb(dimension) * 100}%`;
             const view = `${this.getView(dimension) * 100}%`;
 
-            return this.tuiScrollbar() === 'vertical'
-                ? {
-                      top: thumb,
-                      height: view,
-                  }
-                : {
-                      insetInlineStart: thumb,
-                      width: view,
-                  };
+            return {
+                insetBlockStart: thumb,
+                blockSize: view,
+            };
         }),
     );
 
