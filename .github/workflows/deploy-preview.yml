@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
         if: env.IS_OWNER_MODE == 'true'
         with:
-          node-version: 24.18 # https://github.com/firebase/firebase-tools/issues/10726
+          node-version: 24.19 # https://github.com/firebase/firebase-tools/issues/10726
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0.11.0
         if: env.IS_OWNER_MODE == 'true'
