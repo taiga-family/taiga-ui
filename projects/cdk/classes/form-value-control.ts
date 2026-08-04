@@ -16,7 +16,7 @@ export interface TuiSignalValidationError {
     readonly message?: string;
 }
 
-// TODO: delete
+// TODO: delete when all usages of `TuiFormValueControl` will be replaced by built-in Angular alternative
 interface FormUiControl {
     readonly errors?:
         | InputSignal<readonly TuiSignalValidationError[]>

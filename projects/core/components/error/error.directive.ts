@@ -155,12 +155,11 @@ export class TuiErrorField
     extends AbstractTuiErrorDirective
     implements TuiFormValueControl<unknown>
 {
-    // TODO: use inject(FORM_FIELD) from `@angular/forms/signals`
+    // TODO: use inject(FORM_FIELD) from `@angular/forms/signals` after update to Angular >= 21
     // @ts-expect-error
     private readonly field = inject(NgControl, {self: true}).field;
 
     public readonly errors = input<readonly TuiSignalValidationError[]>([]);
-    public readonly disabled = input(false);
     public readonly touched = input(false);
     public readonly value = model<unknown>(null);
 
