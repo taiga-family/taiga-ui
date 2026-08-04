@@ -21,7 +21,7 @@ describe('tuiFormatNumber', () => {
         });
 
         it('formats bigint zero', () => {
-            expect(tuiFormatNumber(0n)).toBe('0');
+            expect(tuiFormatNumber(BigInt(0))).toBe('0');
         });
     });
 
@@ -135,7 +135,7 @@ describe('tuiFormatNumber', () => {
             });
 
             it('groups digits of bigint values', () => {
-                expect(format(123456789012345678901234567890n)).toBe(
+                expect(format(BigInt('123456789012345678901234567890'))).toBe(
                     '123,456,789,012,345,678,901,234,567,890',
                 );
             });
@@ -209,7 +209,7 @@ describe('tuiFormatNumber', () => {
 
         it('is applied to bigint values', () => {
             expect(
-                tuiFormatNumber(-1234567n, {
+                tuiFormatNumber(BigInt(-1234567), {
                     minusSign: CHAR_HYPHEN,
                     thousandSeparator: ' ',
                 }),
@@ -315,7 +315,7 @@ describe('tuiFormatNumber', () => {
 
         it('pads bigint values', () => {
             expect(
-                tuiFormatNumber(1234n, {
+                tuiFormatNumber(BigInt(1234), {
                     minimumFractionDigits: 2,
                     thousandSeparator: ' ',
                 }),

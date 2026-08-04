@@ -2,6 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "sourceMap": true,
+        "target": "es2016",
         "types": ["jest", "node"]
     },
     "include": [
