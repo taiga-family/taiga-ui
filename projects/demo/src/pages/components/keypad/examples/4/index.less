@@ -18,12 +18,17 @@
 // plain text display: a keypad-driven value renders reliably in a <div> on iOS, unlike a
 // centered <input>. Tapping it opens the pad (see template), tapping outside collapses it.
 .amount {
-    font: bold 2.5rem/1.4 var(--tui-typography-family-display);
+    box-sizing: border-box;
+    padding: 1rem;
+    font: bold 2.5rem/1.6 var(--tui-typography-family-display);
     text-align: center;
     color: var(--tui-text-primary);
     inline-size: 100%;
     cursor: pointer;
     user-select: none;
+    // own full-width compositing layer: iOS Safari otherwise clips the paint region to the
+    // (content-sized) text, cutting the first glyph when only one digit is shown
+    transform: translateZ(0);
 }
 
 .chips {
