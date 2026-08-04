@@ -42,7 +42,7 @@ import {
             <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
         }
     `,
-    styleUrls: ['./animations.less', './root.style.less', './scrollbars.less'],
+    styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
