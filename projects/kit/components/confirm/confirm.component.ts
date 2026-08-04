@@ -19,7 +19,7 @@ export interface TuiConfirmData {
     readonly content?: PolymorpheusContent;
     readonly no?: string;
     readonly yes?: string;
-    readonly appearance?: string | [string, string];
+    readonly appearance?: string | readonly [yes: string, no: string];
 }
 
 @Component({
