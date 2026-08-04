@@ -4,7 +4,7 @@ import {
     TUI_DEFAULT_NUMBER_FORMAT,
     type TuiNumberFormatSettings,
 } from '@taiga-ui/core/tokens';
-import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils';
+import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
 
 export function tuiFormatNumber(
     value: bigint | number | null,
