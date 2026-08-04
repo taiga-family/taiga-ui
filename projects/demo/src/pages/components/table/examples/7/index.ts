@@ -4,8 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiButtonSelect,
+    TuiDataListWrapper,
+    TuiFormatNumberPipe,
+    TuiPagination,
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [

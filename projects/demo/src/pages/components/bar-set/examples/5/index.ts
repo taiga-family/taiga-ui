@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBarSet} from '@taiga-ui/addon-charts';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiBarSet, TuiFormatNumberPipe],

@@ -9,6 +9,9 @@ import {
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 
+/**
+ * @deprecated use import {TuiFormatNumberPipe} from '@taiga-ui/kit'
+ */
 @Pipe({
     name: 'tuiFormatNumber',
     pure: false,
@@ -19,7 +22,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
     private readonly settings = signal<Partial<TuiNumberFormatSettings>>({});
 
     private readonly formatted = computed(() =>
-        tuiFormatNumber(this.value(), {
+        this.formatter(this.value(), {
             ...this.format(),
             precision: Number.isNaN(this.format().precision)
                 ? Infinity
@@ -28,7 +31,10 @@ export class TuiFormatNumberPipe implements PipeTransform {
         }),
     );
 
+    protected formatter = tuiFormatNumber;
+
     /**
+     * @deprecated use import {TuiFormatNumberPipe} from '@taiga-ui/kit'
      * Formats number adding a thousand separators and correct decimal separator
      * padding decimal part with zeroes to given length
      * @param value number
