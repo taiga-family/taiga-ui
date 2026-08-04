@@ -12,7 +12,7 @@ test.describe('Keypad', () => {
     });
 
     test('the on-screen keypad drives the field value', async ({page}) => {
-        // The "Custom keys" example renders a `tuiKeypadInput` display next to the keypad
+        // The "Custom keys" example renders a `tuiSelectLike` display next to the keypad
         const input = page.locator('input.display');
         const keypad = page.locator('tui-keypad.custom');
 
@@ -23,17 +23,16 @@ test.describe('Keypad', () => {
         await expect(input).toHaveValue('143');
     });
 
-    test('does not trap keyboard focus and blocks hardware typing (WCAG 2.1.2)', async ({
+    test('suppresses the native keyboard and does not trap focus (WCAG 2.1.2)', async ({
         page,
     }) => {
         const input = page.locator('input.display');
 
+        // inputmode="none" keeps the native mobile keyboard from opening — the pad is the input
+        await expect(input).toHaveAttribute('inputmode', 'none');
+
         await input.focus();
         await expect(input).toBeFocused();
-
-        // Hardware typing is suppressed — the on-screen keypad is the single source of truth
-        await input.press('9');
-        await expect(input).toHaveValue('');
 
         // Tab must move focus away from the field: no keyboard trap
         await input.press('Tab');

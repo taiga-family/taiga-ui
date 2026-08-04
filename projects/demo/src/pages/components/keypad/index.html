@@ -23,9 +23,9 @@
             <code>disabled</code>
             and
             <code>href</code>
-            all work as usual. Pair the input with the
-            <code>tuiKeypadInput</code>
-            directive to drive a field without the native mobile keyboard.
+            all work as usual. To drive a field without the native mobile keyboard, add
+            <code>tuiSelectLike</code>
+            to the input (it suppresses the keyboard) and toggle the pad on the field's focus.
         </p>
 
         @for (example of examples; track example) {
@@ -44,8 +44,8 @@
                             .
                         }
                         @case (1) {
-                            A pad driving a field through
-                            <code>tuiKeypadInput</code>
+                            A pad driving a field via
+                            <code>tuiSelectLike</code>
                             , with a custom font and a conditional backspace icon.
                         }
                         @case (2) {

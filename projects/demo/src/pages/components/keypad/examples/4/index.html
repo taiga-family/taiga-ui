@@ -14,10 +14,11 @@
     <div class="sheet">
         <div class="top">
             <input
-                #input="tuiKeypadInput"
-                tuiKeypadInput
+                tuiSelectLike
                 class="amount"
                 [(ngModel)]="value"
+                (blur)="focused.set(false)"
+                (focus)="focused.set(true)"
             />
 
             <div class="chips">
@@ -63,7 +64,7 @@
 
             <div class="clamp">Commission-free</div>
 
-            @if (input.focused()) {
+            @if (focused()) {
                 <div
                     tuiAnimated
                     class="pad"
