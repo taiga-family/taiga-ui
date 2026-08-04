@@ -16,10 +16,7 @@
         (click)="editing.set(false)"
     >
         <div class="top">
-            <!--
-                iOS Safari does not repaint live text inside the sheet dialog's composited
-                layer; recreating the node on every change (track by value) forces a fresh paint.
-            -->
+            <!-- recreate the node per value: iOS won't repaint live text inside the sheet's layer -->
             @for (shown of [value()]; track shown) {
                 <div
                     class="amount"

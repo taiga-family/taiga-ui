@@ -22,10 +22,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--t-columns]': 'columns()',
-        // A tap anywhere on the pad (keys or the gaps between them) must not blur the field
-        // the keypad drives — prevent it once here rather than on each key. iOS Safari ignores
-        // preventDefault on pointerdown for focus, so mousedown is prevented too; together they
-        // keep the field focused across browsers.
+        // a tap on the pad must not blur the driven field (iOS needs mousedown, not pointerdown)
         '(mousedown.zoneless.prevent)': '(0)',
         '(pointerdown.zoneless.prevent)': '(0)',
     },

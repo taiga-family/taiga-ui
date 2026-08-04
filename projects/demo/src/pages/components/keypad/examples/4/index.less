@@ -15,8 +15,6 @@
     padding: 2rem 1rem 1rem;
 }
 
-// plain text display: a keypad-driven value renders reliably in a <div> on iOS, unlike a
-// centered <input>. Tapping it opens the pad (see template), tapping outside collapses it.
 .amount {
     box-sizing: border-box;
     padding: 1rem;
@@ -26,8 +24,7 @@
     inline-size: 100%;
     cursor: pointer;
     user-select: none;
-    // own full-width compositing layer: iOS Safari otherwise clips the paint region to the
-    // (content-sized) text, cutting the first glyph when only one digit is shown
+    // own full-width layer so iOS doesn't clip the paint region to the text
     transform: translateZ(0);
 }
 
