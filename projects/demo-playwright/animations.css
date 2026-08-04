@@ -1,3 +1,4 @@
+tui-pulse._playing::before,
 tui-loader > .t-loader .t-icon,
 tui-loader > .t-loader .t-circle {
     animation: none !important;
