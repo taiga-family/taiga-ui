@@ -43,7 +43,7 @@ export class TuiConfirm {
     protected get yes(): string {
         return Array.isArray(this.context.data?.appearance)
             ? this.context.data?.appearance[0]
-            : this.context.data?.appearance || 'primary';
+            : String(this.context.data?.appearance || 'primary');
     }
 
     protected get no(): string {
