@@ -58,4 +58,14 @@
             margin: 0.625rem 0;
         }
     }
+
+    & > li:has(> :where(p, div)) {
+        position: relative;
+
+        &::before {
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+        }
+    }
 }
