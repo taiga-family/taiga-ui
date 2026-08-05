@@ -20,7 +20,7 @@
             @for (shown of [value()]; track shown) {
                 <div
                     class="amount"
-                    (click)="editing.set(true); $event.stopPropagation()"
+                    (click.stop)="editing.set(true)"
                 >
                     {{ shown }}
                 </div>
@@ -73,7 +73,7 @@
                 <div
                     tuiAnimated
                     class="pad"
-                    (click)="$event.stopPropagation()"
+                    (click.stop)="(0)"
                 >
                     <div class="pad-inner">
                         <tui-keypad>
