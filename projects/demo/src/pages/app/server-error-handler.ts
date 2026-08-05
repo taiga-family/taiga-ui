@@ -37,10 +37,7 @@ export class ServerErrorHandler implements ErrorHandler {
         errorLog(this.location.path());
         console.error(errorMessage);
 
-        if (
-            // Default environment variables for GitHub CI
-            process.env.CI // https://docs.github.com/en/actions/reference/workflows-and-actions/variables#default-environment-variables
-        ) {
+        if (strict) {
             process.exit(1);
         }
     }
