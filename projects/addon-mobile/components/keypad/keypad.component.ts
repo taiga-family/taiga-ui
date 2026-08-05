@@ -19,6 +19,8 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--t-columns]': 'columns()',
+        // Keep the driven field focused on tap: iOS needs mousedown, Android longtap needs pointerdown
+        '(mousedown.zoneless.prevent)': '(0)',
         '(pointerdown.zoneless.prevent)': '(0)',
     },
 })

@@ -21,11 +21,12 @@
     font: bold 2.5rem/1.6 var(--tui-typography-family-display);
     text-align: center;
     color: var(--tui-text-primary);
-    inline-size: 100%;
+    // auto width via [size] (not a fixed 100%) so the field never scrolls its
+    // own text — iOS Safari mis-scrolls/clips a centered, overflowing <input>
+    max-inline-size: 100%;
     border: none;
     outline: none;
     background: transparent;
-    // own full-width layer so iOS doesn't clip the paint region to the text
     transform: translateZ(0);
 }
 

@@ -16,6 +16,7 @@
             <input
                 class="amount"
                 inputmode="none"
+                [size]="value().length + 1"
                 [(ngModel)]="value"
                 (blur)="focused.set(false)"
                 (focus)="focused.set(true)"
