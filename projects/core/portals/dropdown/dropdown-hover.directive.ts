@@ -55,6 +55,11 @@ export class TuiDropdownHover extends TuiDriver {
     private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
 
+    private readonly root = this.el.getRootNode() as Document | ShadowRoot;
+
+    private readonly mouseover$ = tuiTypedFromEvent<MouseEvent>(this.root, 'mouseover');
+    private readonly mouseout$ = tuiTypedFromEvent<MouseEvent>(this.root, 'mouseout');
+
     private readonly stream$ = merge(
         /**
          * Dropdown can be removed not only via click/touch –
@@ -67,12 +72,12 @@ export class TuiDropdownHover extends TuiDriver {
                     map(tuiGetActualTarget),
                     delay(this.tuiDropdownHideDelay()),
                     startWith(null),
-                    takeUntil(fromEvent(this.doc, 'mouseover')),
+                    takeUntil(this.mouseover$),
                 ),
             ),
         ),
-        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
-        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        this.mouseover$.pipe(map(tuiGetActualTarget)),
+        this.mouseout$.pipe(map((event) => event.relatedTarget)),
     ).pipe(
         map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
