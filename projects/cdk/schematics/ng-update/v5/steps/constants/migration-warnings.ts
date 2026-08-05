@@ -701,6 +701,42 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/actions-bar',
     },
     {
+        name: 'TuiAlertComponent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertComponent has been removed. Alerts are rendered by TuiAlertService/TuiNotificationService; there is no standalone <tui-alert> component in v5.',
+    },
+    ...[
+        {name: 'TuiAlerts', host: 'alert'},
+        {name: 'TuiDialogs', host: 'dialog'},
+        {name: 'TuiDropdowns', host: 'dropdown'},
+        {name: 'TuiHints', host: 'hint'},
+    ].map(({name, host}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/core',
+        message: `${name} has been removed. The ${host} host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.`,
+    })),
+    {
+        name: 'TuiHintService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintService has been removed. Hints are shown via the tuiHint directive; the global hint stack is managed internally through the portal API.',
+    },
+    {
+        name: 'TuiHintOptionsDirective',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintOptionsDirective ([tuiHintContent]) has been removed. Configure hints via the tuiHint directive together with TUI_HINT_OPTIONS / tuiHintOptionsProvider.',
+    },
+    ...[
+        {name: 'TuiTextareaCounterComponent', feature: 'character counter'},
+        {name: 'TuiTextareaLimitComponent', feature: 'character limit overflow'},
+    ].map(({name, feature}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/kit',
+        message: `${name} has been removed. The ${feature} is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).`,
+    })),
+    {
         name: 'TuiInputCopyComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:

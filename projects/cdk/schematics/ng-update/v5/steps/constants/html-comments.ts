@@ -154,4 +154,16 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header',
     },
+    {
+        tag: 'table',
+        withAttrs: ['(tuiSortByChange)'],
+        comment:
+            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortKey, sortDirection}), not the sort key string.',
+    },
+    {
+        tag: 'tui-scrollbar',
+        withAttrs: ['hidden'],
+        comment:
+            'The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element.',
+    },
 ];
