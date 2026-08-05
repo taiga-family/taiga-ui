@@ -4,7 +4,7 @@ import {TuiKeypad} from '@taiga-ui/addon-mobile';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 describe('Keypad', () => {
-    describe('TuiKeypadComponent', () => {
+    describe('TuiKeypad', () => {
         @Component({
             imports: [TuiKeypad],
             template: `

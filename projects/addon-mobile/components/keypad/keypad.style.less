@@ -34,12 +34,12 @@ tui-keypad:where(*&) {
             transform var(--tui-duration) var(--tui-curve-expressive-entrance);
 
         @media @tui-mouse {
-            &:hover:not(:disabled):not([aria-disabled='true']) {
+            &:hover:not(:disabled) {
                 background: var(--tui-background-neutral-1-hover);
             }
         }
 
-        &:active:not(:disabled):not([aria-disabled='true']) {
+        &:active:not(:disabled) {
             background: var(--tui-background-neutral-1-pressed);
             transform: scale(1.14);
         }
@@ -49,8 +49,7 @@ tui-keypad:where(*&) {
             outline-offset: 0.125rem;
         }
 
-        &:disabled,
-        &[aria-disabled='true'] {
+        &:disabled {
             opacity: var(--tui-disabled-opacity);
             cursor: default;
         }

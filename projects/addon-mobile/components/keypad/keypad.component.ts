@@ -19,10 +19,9 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--t-columns]': 'columns()',
-        '(mousedown.zoneless.prevent)': '(0)',
         '(pointerdown.zoneless.prevent)': '(0)',
     },
 })
-export class TuiKeypadComponent {
+export class TuiKeypad {
     public readonly columns = input(3);
 }
