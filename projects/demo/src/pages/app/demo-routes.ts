@@ -66,6 +66,7 @@ export const DemoRoute = {
     Expand: '/components/expand',
     ElasticContainer: '/components/elastic-container',
     Form: '/layout/form',
+    Keypad: '/components/keypad',
     InputFiles: '/components/input-files',
     InputColor: '/components/input-color',
     Group: '/components/group',
