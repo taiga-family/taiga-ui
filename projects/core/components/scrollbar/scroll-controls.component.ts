@@ -31,6 +31,11 @@ export class TuiScrollControls implements OnInit {
         : inject(TuiScrollControlsService);
 
     public ngOnInit(): void {
-        this.scrollable?.getElementRef().nativeElement.prepend(this.el);
+        this.scrollable
+            ?.getElementRef()
+            .nativeElement.insertBefore(
+                this.el,
+                this.scrollable.getElementRef().nativeElement.firstChild,
+            );
     }
 }
