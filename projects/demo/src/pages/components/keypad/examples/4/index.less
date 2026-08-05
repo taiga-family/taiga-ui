@@ -18,11 +18,10 @@
 .amount {
     box-sizing: border-box;
     padding: 1rem;
-    font: bold 2.5rem/1.6 var(--tui-typography-family-display);
+    font: bold 2.5rem var(--tui-typography-family-display);
     text-align: center;
     color: var(--tui-text-primary);
-    // auto width via [size] (not a fixed 100%) so the field never scrolls its
-    // own text — iOS Safari mis-scrolls/clips a centered, overflowing <input>
+    // auto width via [size] so a centered <input> never scrolls/clips its text on iOS Safari
     max-inline-size: 100%;
     border: none;
     outline: none;
