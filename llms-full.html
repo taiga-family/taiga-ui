@@ -1025,6 +1025,11 @@
 ```text
   TuiBottomSheet
 ```
+### keypad
+
+```text
+  TuiKeypad
+```
 ### mobile-calendar
 
 ```text
@@ -27466,6 +27471,766 @@ export default class Page {
     protected required = this.requiredVariants[0]!;
     protected itemsLimit = this.itemsLimitVariants[0]!;
     protected linesLimit = this.linesLimitVariants[0]!;
+}
+```
+
+---
+# components/Keypad
+- **Package**: `ADDON-MOBILE`
+- **Type**: components
+TuiKeypad is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own native &amp;lt;button&amp;gt; or &amp;lt;a&amp;gt; elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a shuffled PIN terminal, a calculator or a custom chooser. Each key stays a real element, so (click) , aria-label , disabled and href all work as usual. Each key updates your own state on (click) — display the running value however you like (the examples keep it in a signal shown in a &amp;lt;div&amp;gt; ).
+
+### Example
+
+```html
+&lt;tui-keypad [columns]=&quot;columns&quot;&gt; @for (digit of digits; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;append(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button type=&quot;button&quot; (click)=&quot;clear()&quot; &gt; C &lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;append(&#039;0&#039;)&quot; &gt; 0 &lt;/button&gt;
+&lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;backspace()&quot; (longtap)=&quot;clear()&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt;
+&lt;/tui-keypad&gt;
+&lt;p&gt;Value: {{ value() || &#039;—&#039; }}&lt;/p&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [columns] | `number` | Number of grid columns |
+
+### Usage Examples
+
+#### Basic keypad
+
+**Template:**
+```html
+&lt;tui-keypad class=&quot;keypad&quot;&gt; @for (digit of digits; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;append(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button type=&quot;button&quot; (click)=&quot;clear()&quot; &gt; C &lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;append(&#039;0&#039;)&quot; &gt; 0 &lt;/button&gt;
+&lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;backspace()&quot; (longtap)=&quot;clear()&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt;
+&lt;/tui-keypad&gt;
+&lt;p&gt;Value: {{ value() || &#039;—&#039; }}&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiKeypad} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = [&#039;1&#039;, &#039;2&#039;, &#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;6&#039;, &#039;7&#039;, &#039;8&#039;, &#039;9&#039;];
+    protected readonly value = signal(&#039;&#039;);
+
+    protected append(digit: string): void {
+        this.value.update((current) =&gt; `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) =&gt; current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set(&#039;&#039;);
+    }
+}
+```
+**LESS:**
+```less
+.keypad {
+    inline-size: 15rem;
+}
+```
+
+#### Custom keys
+
+**Template:**
+```html
+&lt;div class=&quot;display&quot;&gt;{{ value() || &#039;—&#039; }}&lt;/div&gt;
+&lt;tui-keypad class=&quot;custom&quot;&gt; @for (digit of digits; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;append(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;div&gt;&lt;/div&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;append(&#039;0&#039;)&quot; &gt; 0 &lt;/button&gt; @if (value()) { &lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;backspace()&quot; (longtap)=&quot;clear()&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt; } &lt;/tui-keypad&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiKeypad} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = [&#039;1&#039;, &#039;2&#039;, &#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;6&#039;, &#039;7&#039;, &#039;8&#039;, &#039;9&#039;];
+    protected readonly value = signal(&#039;&#039;);
+
+    protected append(digit: string): void {
+        this.value.update((current) =&gt; `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) =&gt; current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set(&#039;&#039;);
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.custom {
+    inline-size: 15rem;
+    font:
+        normal 2.5rem/1 &#039;SF Pro Display&#039;,
+        -apple-system,
+        system-ui;
+}
+
+.display {
+    font: bold 2.5rem/1 var(--tui-typography-family-display);
+    text-align: center;
+    color: var(--tui-text-primary);
+    inline-size: 100%;
+}
+```
+
+#### Shuffled PIN
+
+**Template:**
+```html
+&lt;p class=&quot;pin&quot;&gt;{{ masked() || &#039;—&#039; }}&lt;/p&gt;
+&lt;tui-keypad class=&quot;keypad&quot;&gt; @for (digit of digits(); track digit) { &lt;button type=&quot;button&quot; (click)=&quot;append(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button type=&quot;button&quot; (click)=&quot;clear()&quot; &gt; C &lt;/button&gt;
+&lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;backspace()&quot; (longtap)=&quot;clear()&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt;
+&lt;/tui-keypad&gt;
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiKeypad} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+
+const PIN_LENGTH = 4;
+const DIGITS = [&#039;0&#039;, &#039;1&#039;, &#039;2&#039;, &#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;6&#039;, &#039;7&#039;, &#039;8&#039;, &#039;9&#039;];
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    // Positions are randomized on every clear — like PIN terminals that reshuffle the pad
+    protected readonly digits = signal(this.shuffle());
+    protected readonly pin = signal(&#039;&#039;);
+    protected readonly masked = computed(() =&gt; &#039;•&#039;.repeat(this.pin().length));
+
+    protected append(digit: string): void {
+        if (this.pin().length &lt; PIN_LENGTH) {
+            this.pin.update((current) =&gt; `${current}${digit}`);
+        }
+    }
+
+    protected backspace(): void {
+        this.pin.update((current) =&gt; current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.pin.set(&#039;&#039;);
+        this.digits.set(this.shuffle());
+    }
+
+    private shuffle(): string[] {
+        // uniform shuffle: independent random key per digit, then sort by it
+        return DIGITS.map((digit) =&gt; [Math.random(), digit] as const)
+            .sort(([a], [b]) =&gt; a - b)
+            .map(([, digit]) =&gt; digit);
+    }
+}
+```
+**LESS:**
+```less
+.pin {
+    margin: 0;
+    font: bold 2.5rem/1.4 var(--tui-typography-family-display);
+    letter-spacing: 0.5rem;
+    text-align: center;
+    color: var(--tui-text-primary);
+}
+
+.keypad {
+    inline-size: 15rem;
+}
+```
+
+#### Collapsible
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open form &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;div class=&quot;sheet&quot;&gt;
+&lt;div class=&quot;top&quot;&gt;
+&lt;input inputmode=&quot;none&quot; class=&quot;amount&quot; [size]=&quot;value().length + 1&quot; [(ngModel)]=&quot;value&quot; (blur)=&quot;focused.set(false)&quot; (focus)=&quot;focused.set(true)&quot; /&gt;
+&lt;div class=&quot;chips&quot;&gt;
+&lt;span tuiChip&gt;23 876 $&lt;/span&gt;
+&lt;span tuiChip&gt;10 000 $&lt;/span&gt;
+&lt;span tuiChip&gt;Auto-completion&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;middle&quot;&gt;
+&lt;div class=&quot;card&quot;&gt;
+&lt;div tuiCell&gt;
+&lt;tui-avatar appearance=&quot;primary&quot; tuiAvatar=&quot;@tui.circle-user&quot; /&gt;
+&lt;div tuiTitle&gt; 23 876 $ &lt;div tuiSubtitle&gt;from Card 1&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div tuiCell&gt;
+&lt;tui-avatar appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.circle-dollar-sign&quot; /&gt;
+&lt;div tuiTitle&gt; 1 450 $ &lt;div tuiSubtitle&gt;from Card 2&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Send &lt;/button&gt;
+&lt;div class=&quot;clamp&quot;&gt;Commission-free&lt;/div&gt; @if (focused()) { &lt;div tuiAnimated class=&quot;pad&quot; &gt;
+&lt;div class=&quot;pad-inner&quot;&gt;
+&lt;tui-keypad&gt; @for (digit of digits; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;append(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;div&gt;&lt;/div&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;append(&#039;0&#039;)&quot; &gt; 0 &lt;/button&gt;
+&lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;backspace()&quot; (longtap)=&quot;clear()&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt;
+&lt;/tui-keypad&gt;
+&lt;/div&gt;
+&lt;/div&gt; } &lt;/footer&gt;
+&lt;/div&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    TuiKeypad,
+    TuiSheetDialog,
+    type TuiSheetDialogOptions,
+} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAnimated} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiCell, TuiIcon, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiChip} from &#039;@taiga-ui/kit&#039;;
+import {TuiFloatingContainer} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAnimated,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiChip,
+        TuiFloatingContainer,
+        TuiIcon,
+        TuiKeypad,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = [&#039;1&#039;, &#039;2&#039;, &#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;6&#039;, &#039;7&#039;, &#039;8&#039;, &#039;9&#039;];
+    protected readonly value = signal(&#039;143&#039;);
+    protected readonly open = signal(false);
+    protected readonly focused = signal(false);
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        closable: true,
+        bar: false,
+        appearance: &#039;fullscreen&#039;,
+    };
+
+    protected append(digit: string): void {
+        this.value.update((current) =&gt; `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) =&gt; current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set(&#039;&#039;);
+    }
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils.less&#039;;
+
+.sheet {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-block-size: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem 1rem;
+}
+
+.amount {
+    box-sizing: border-box;
+    padding: 1rem;
+    font: bold 2.5rem var(--tui-typography-family-display);
+    text-align: center;
+    color: var(--tui-text-primary);
+    // auto width via [size] so a centered &lt;input&gt; never scrolls/clips its text on iOS Safari
+    max-inline-size: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    transform: translateZ(0);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.middle {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-block-end: 1rem;
+}
+
+.card {
+    background: var(--tui-background-neutral-1);
+    border-radius: var(--tui-radius-l);
+    overflow: hidden;
+}
+
+.clamp {
+    .tui-line-clamp();
+
+    margin-block-start: 0.5rem;
+    min-block-size: 2rem;
+
+    &amp;.tui-enter,
+    &amp;.tui-leave {
+        animation-name: tuiFade;
+    }
+}
+
+.pad {
+    display: grid;
+    grid-area: auto / 1;
+
+    // clip only while collapsing/expanding, so pressed keys aren&#039;t cut off at rest
+    &amp;.tui-enter .pad-inner,
+    &amp;.tui-leave .pad-inner {
+        overflow: hidden;
+    }
+
+    &amp;.tui-enter,
+    &amp;.tui-leave {
+        animation-name: tuiFade, tuiCollapse;
+    }
+}
+```
+
+#### Calculator
+
+**Template:**
+```html
+&lt;button iconStart=&quot;@tui.calculator&quot; tuiButton type=&quot;button&quot; (click)=&quot;open.set(true)&quot; &gt; Open Calculator &lt;/button&gt;
+&lt;ng-template [tuiPopout]=&quot;open()&quot; [tuiPopoutOptions]=&quot;{pip: true, features: {width: 300, height: 450}}&quot; (tuiPopoutChange)=&quot;open.set($event)&quot; &gt;
+&lt;main class=&quot;calculator&quot;&gt;
+&lt;input #input inputmode=&quot;none&quot; readonly tuiAutoFocus class=&quot;input&quot; [value]=&quot;displayValue()&quot; (keydown)=&quot;onKeydown($event)&quot; /&gt;
+&lt;tui-keypad [columns]=&quot;4&quot;&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;onKey(&#039;clear&#039;)&quot; &gt; AC &lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;onKey(&#039;(&#039;)&quot; &gt; ( &lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;onKey(&#039;)&#039;)&quot; &gt; ) &lt;/button&gt;
+&lt;button aria-label=&quot;Divide&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;÷&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.divide&quot; /&gt;
+&lt;/button&gt; @for (digit of [&#039;7&#039;, &#039;8&#039;, &#039;9&#039;]; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;onKey(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button aria-label=&quot;Multiply&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;×&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.x&quot; /&gt;
+&lt;/button&gt; @for (digit of [&#039;4&#039;, &#039;5&#039;, &#039;6&#039;]; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;onKey(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button aria-label=&quot;Subtract&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;-&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.minus&quot; /&gt;
+&lt;/button&gt; @for (digit of [&#039;1&#039;, &#039;2&#039;, &#039;3&#039;]; track digit) { &lt;button type=&quot;button&quot; (click)=&quot;onKey(digit)&quot; &gt; {{ digit }} &lt;/button&gt; } &lt;button aria-label=&quot;Add&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;+&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.plus&quot; /&gt;
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;onKey(&#039;0&#039;)&quot; &gt; 0 &lt;/button&gt;
+&lt;button type=&quot;button&quot; (click)=&quot;onKey(&#039;.&#039;)&quot; &gt; . &lt;/button&gt;
+&lt;button aria-label=&quot;Backspace&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;backspace&#039;)&quot; (longtap)=&quot;onKey(&#039;clear&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.delete&quot; /&gt;
+&lt;/button&gt;
+&lt;button aria-label=&quot;Equals&quot; type=&quot;button&quot; (click)=&quot;onKey(&#039;enter&#039;)&quot; &gt;
+&lt;tui-icon icon=&quot;@tui.equal&quot; /&gt;
+&lt;/button&gt;
+&lt;/tui-keypad&gt;
+&lt;/main&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, computed, type ElementRef, signal, viewChild} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiKeypad} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAutoFocus} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiPopout} from &#039;@taiga-ui/experimental&#039;;
+
+const KEYBOARD_MAP: Record&lt;string, string&gt; = {
+    &#039;+&#039;: &#039;+&#039;,
+    &#039;-&#039;: &#039;-&#039;,
+    &#039;*&#039;: &#039;×&#039;,
+    &#039;/&#039;: &#039;÷&#039;,
+    &#039;(&#039;: &#039;(&#039;,
+    &#039;)&#039;: &#039;)&#039;,
+    &#039;.&#039;: &#039;.&#039;,
+    Enter: &#039;enter&#039;,
+    Backspace: &#039;backspace&#039;,
+    Escape: &#039;clear&#039;,
+};
+
+const OPERATORS = new Set([&#039;-&#039;, &#039;+&#039;, &#039;÷&#039;, &#039;×&#039;]);
+
+@Component({
+    imports: [TuiAutoFocus, TuiButton, TuiIcon, TuiKeypad, TuiPopout],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    private readonly input = viewChild&lt;ElementRef&lt;HTMLInputElement&gt;&gt;(&#039;input&#039;);
+
+    protected readonly expression = signal(&#039;0&#039;);
+    protected readonly displayValue = computed(() =&gt; this.expression());
+    protected readonly open = signal(false);
+
+    protected onKey(key: string): void {
+        const el = this.input()?.nativeElement;
+
+        el?.focus();
+        this.expression.update((expr) =&gt; this.reduce(expr, key));
+
+        // a readonly, programmatically-set field won&#039;t scroll itself — after layout, keep
+        // the latest input (the tail) in view
+        requestAnimationFrame(() =&gt; {
+            if (el) {
+                el.scrollLeft = el.scrollWidth;
+            }
+        });
+    }
+
+    protected onKeydown(event: KeyboardEvent): void {
+        const mapped =
+            KEYBOARD_MAP[event.key] ?? (/^\d$/.test(event.key) ? event.key : null);
+
+        if (mapped) {
+            event.preventDefault();
+            this.onKey(mapped);
+        }
+    }
+
+    private reduce(current: string, key: string): string {
+        const expr = current === &#039;Error&#039; ? &#039;0&#039; : current;
+
+        switch (key) {
+            case &#039;.&#039;:
+                return this.appendDot(expr);
+            case &#039;(&#039;:
+                return expr === &#039;0&#039; ? &#039;(&#039; : `${expr}(`;
+            case &#039;)&#039;:
+                return `${expr})`;
+            case &#039;backspace&#039;:
+                return expr.length &gt; 1 ? expr.replace(/\s?.$/, &#039;&#039;) || &#039;0&#039; : &#039;0&#039;;
+            case &#039;clear&#039;:
+                return &#039;0&#039;;
+            case &#039;enter&#039;:
+                return this.tryCalculate(expr);
+            default:
+                return OPERATORS.has(key)
+                    ? this.appendOperator(expr, key)
+                    : this.appendDigit(expr, key);
+        }
+    }
+
+    private appendDigit(expr: string, digit: string): string {
+        return expr.replace(/\d*(?:\.\d*)?$/, (last) =&gt;
+            last === &#039;0&#039; ? digit : `${last}${digit}`,
+        );
+    }
+
+    private appendOperator(expr: string, op: string): string {
+        return /[+\-×÷]\s*$/.test(expr)
+            ? expr.replace(/[+\-×÷]\s*$/, `${op} `)
+            : `${expr} ${op} `;
+    }
+
+    private appendDot(expr: string): string {
+        const lastNumber = expr.split(/[-+*/×÷()\s]/).pop() ?? &#039;&#039;;
+
+        if (lastNumber.includes(&#039;.&#039;)) {
+            return expr;
+        }
+
+        return lastNumber ? `${expr}.` : `${expr}0.`;
+    }
+
+    private tryCalculate(expr: string): string {
+        try {
+            return this.calculate(expr);
+        } catch {
+            return &#039;Error&#039;;
+        }
+    }
+
+    private calculate(expr: string): string {
+        const tokens = expr
+            .replaceAll(&#039;×&#039;, &#039;*&#039;)
+            .replaceAll(&#039;÷&#039;, &#039;/&#039;)
+            .match(/\d+(?:\.\d+)?|[+\-*/()]/g);
+
+        if (!tokens) {
+            throw new Error(&#039;Empty expression&#039;);
+        }
+
+        const result = this.evaluate(tokens);
+
+        if (!Number.isFinite(result)) {
+            throw new Error(&#039;Not a finite number&#039;);
+        }
+
+        return String(Math.round(result * 1e10) / 1e10);
+    }
+
+    /**
+     * Safe evaluation of a flat arithmetic expression via the shunting-yard
+     * algorithm — no `eval`/`new Function`, only the four operators and parentheses.
+     */
+    private evaluate(tokens: readonly string[]): number {
+        const values: number[] = [];
+        const operators: string[] = [];
+
+        const fold = (): void =&gt; {
+            const operator = operators.pop();
+            const right = values.pop();
+            const left = values.pop();
+
+            if (operator === undefined || left === undefined || right === undefined) {
+                throw new Error(&#039;Malformed expression&#039;);
+            }
+
+            values.push(this.operate(left, right, operator));
+        };
+
+        for (const token of tokens) {
+            if (/\d/.test(token)) {
+                values.push(Number(token));
+            } else if (token === &#039;(&#039;) {
+                operators.push(token);
+            } else if (token === &#039;)&#039;) {
+                while (operators.length &amp;&amp; operators[operators.length - 1] !== &#039;(&#039;) {
+                    fold();
+                }
+
+                if (operators.pop() !== &#039;(&#039;) {
+                    throw new Error(&#039;Unbalanced parentheses&#039;);
+                }
+            } else {
+                while (
+                    operators.length &amp;&amp;
+                    this.precedence(operators[operators.length - 1]) &gt;=
+                        this.precedence(token)
+                ) {
+                    fold();
+                }
+
+                operators.push(token);
+            }
+        }
+
+        while (operators.length) {
+            if (operators[operators.length - 1] === &#039;(&#039;) {
+                throw new Error(&#039;Unbalanced parentheses&#039;);
+            }
+
+            fold();
+        }
+
+        const [result, ...rest] = values;
+
+        if (result === undefined || rest.length) {
+            throw new Error(&#039;Malformed expression&#039;);
+        }
+
+        return result;
+    }
+
+    private precedence(operator: string | undefined): number {
+        if (operator === &#039;+&#039; || operator === &#039;-&#039;) {
+            return 1;
+        }
+
+        return operator === &#039;*&#039; || operator === &#039;/&#039; ? 2 : 0;
+    }
+
+    private operate(left: number, right: number, operator: string): number {
+        if (operator === &#039;-&#039;) {
+            return left - right;
+        }
+
+        if (operator === &#039;+&#039;) {
+            return left + right;
+        }
+
+        if (operator === &#039;*&#039;) {
+            return left * right;
+        }
+
+        return right === 0 ? Number.NaN : left / right;
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    block-size: 100%;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- dvh: vh spans behind the mobile browser UI and pushes the bottom actions offscreen */
+    block-size: 100dvh;
+    box-sizing: border-box;
+}
+
+tui-keypad {
+    flex: 1;
+    min-block-size: 0;
+    grid-auto-rows: 1fr; // fill the flex height instead of the fixed default rows
+}
+
+.input {
+    flex: none;
+    inline-size: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: end;
+    border: none;
+    outline: none;
+    background: var(--tui-background-neutral-2);
+    border-radius: 0.5rem;
+    color: var(--tui-text-primary);
+    box-sizing: border-box;
+
+    &amp;::placeholder {
+        color: var(--tui-text-secondary);
+    }
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiKeypad} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiDemo, TuiIcon, TuiKeypad],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        &#039;Basic keypad&#039;,
+        &#039;Custom keys&#039;,
+        &#039;Shuffled PIN&#039;,
+        &#039;Collapsible&#039;,
+        &#039;Calculator&#039;,
+    ];
+
+    protected readonly digits = [&#039;1&#039;, &#039;2&#039;, &#039;3&#039;, &#039;4&#039;, &#039;5&#039;, &#039;6&#039;, &#039;7&#039;, &#039;8&#039;, &#039;9&#039;];
+    protected columns = 3;
+    protected readonly columnsVariants = [3, 4];
+    protected readonly value = signal(&#039;&#039;);
+
+    protected append(digit: string): void {
+        this.value.update((current) =&gt; `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) =&gt; current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set(&#039;&#039;);
+    }
+}
+```
+
+### LESS
+
+```less
+tui-keypad {
+    inline-size: 15rem;
+    // height follows width via the pad&#039;s own aspect-ratio, so the cells stay square for
+    // any [columns] value — a fixed height would squash them at columns=4
+    block-size: auto;
 }
 ```
 
