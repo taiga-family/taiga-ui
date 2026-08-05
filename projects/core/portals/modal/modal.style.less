@@ -88,8 +88,6 @@ tui-modal:where(*&) {
     }
 
     > [tuiScrollRef] {
-        .scrollbar-hidden();
-
         position: sticky;
         inset: 0;
         display: grid;
@@ -110,6 +108,7 @@ tui-modal:where(*&) {
             }
         }
 
+        > .t-scrollbars:last-child,
         > .tui-enter + .t-scrollbars .t-bar_vertical,
         > .tui-leave + .t-scrollbars .t-bar_vertical {
             display: none;

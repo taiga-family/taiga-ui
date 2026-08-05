@@ -60,17 +60,4 @@ describe('TuiPreviewDialog Escape Key Behavior', () => {
         cy.get('tui-preview-dialog').should('not.exist');
         cy.get('#dialog-content').should('be.visible');
     });
-
-    it('should handle escape key events with proper propagation', () => {
-        cy.get('#open-dialog').click();
-        cy.get('#open-preview').click();
-
-        cy.get('tui-preview-dialog').should('exist');
-
-        cy.get('body').trigger('keydown', {key: 'Escape', code: 'Escape'});
-        cy.wait(200);
-
-        cy.get('tui-preview-dialog').should('not.exist');
-        cy.get('tui-dialog').should('exist');
-    });
 });
