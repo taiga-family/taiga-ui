@@ -101,6 +101,9 @@
                 ],
                 "baseHref": "/",
                 "browser": "{projectRoot}/src/main.ts",
+                "define": {
+                    "strict": "false"
+                },
                 "externalDependencies": ["ng-morph"],
                 "index": "{projectRoot}/src/index.html",
                 "inlineStyleLanguage": "less",
