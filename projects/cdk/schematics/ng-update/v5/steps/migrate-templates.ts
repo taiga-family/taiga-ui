@@ -59,6 +59,7 @@ import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-content';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
+import {migratePin} from './templates/migrate-pin';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -128,6 +129,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
+        migratePin,
         migrateTooltip,
         migrateTuiNotification,
         migrateRepeatTimes,
