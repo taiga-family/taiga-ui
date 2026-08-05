@@ -54,9 +54,7 @@ export class TuiDropdownHover extends TuiDriver {
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
-
     private readonly root = this.el.getRootNode() as Document | ShadowRoot;
-
     private readonly mouseover$ = tuiTypedFromEvent<MouseEvent>(this.root, 'mouseover');
     private readonly mouseout$ = tuiTypedFromEvent<MouseEvent>(this.root, 'mouseout');
 
