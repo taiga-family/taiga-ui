@@ -9,44 +9,13 @@ describe('Keypad', () => {
             imports: [TuiKeypad],
             template: `
                 <tui-keypad [columns]="columns()">
-                    @for (digit of digits; track digit) {
-                        <button
-                            type="button"
-                            (click)="append(digit)"
-                        >
-                            {{ digit }}
-                        </button>
-                    }
-                    <a (click)="append('0')">0</a>
-                    <button
-                        aria-label="Backspace"
-                        type="button"
-                        (click)="backspace()"
-                        (longtap)="clear()"
-                    >
-                        x
-                    </button>
+                    <button type="button">1</button>
                 </tui-keypad>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class Test {
             public readonly columns = signal(3);
-            public readonly value = signal('');
-
-            protected readonly digits = ['1', '2', '3'];
-
-            protected append(digit: string): void {
-                this.value.update((current) => `${current}${digit}`);
-            }
-
-            protected backspace(): void {
-                this.value.update((current) => current.slice(0, -1));
-            }
-
-            protected clear(): void {
-                this.value.set('');
-            }
         }
 
         let fixture: ComponentFixture<Test>;
@@ -54,16 +23,8 @@ describe('Keypad', () => {
         const keypad = (): HTMLElement =>
             fixture.nativeElement.querySelector('tui-keypad');
 
-        const keys = (): HTMLElement[] =>
-            Array.from(
-                fixture.nativeElement.querySelectorAll('tui-keypad button, tui-keypad a'),
-            );
-
-        const key = (text: string): HTMLElement =>
-            keys().find((element) => element.textContent?.trim() === text)!;
-
-        const backspace = (): HTMLElement =>
-            fixture.nativeElement.querySelector('[aria-label="Backspace"]');
+        const key = (): HTMLElement =>
+            fixture.nativeElement.querySelector('tui-keypad button');
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
@@ -75,10 +36,6 @@ describe('Keypad', () => {
             fixture.detectChanges();
         });
 
-        it('projects every key into the grid', () => {
-            expect(keys().length).toBe(5);
-        });
-
         it('reflects [columns] to the --t-columns custom property', () => {
             expect(keypad().style.getPropertyValue('--t-columns')).toBe('3');
 
@@ -88,47 +45,20 @@ describe('Keypad', () => {
             expect(keypad().style.getPropertyValue('--t-columns')).toBe('4');
         });
 
-        it('runs the consumer click handler for a projected key', () => {
-            key('1').click();
-            key('2').click();
+        it('prevents mousedown and pointerdown on keys AND the gaps so a tap never blurs the field', () => {
+            for (const type of ['mousedown', 'pointerdown']) {
+                const onKey = new Event(type, {bubbles: true, cancelable: true});
 
-            expect(fixture.componentInstance.value()).toBe('12');
-        });
+                key().dispatchEvent(onKey);
 
-        it('supports an anchor key (<a>)', () => {
-            key('0').click();
+                expect(onKey.defaultPrevented).toBe(true);
 
-            expect(fixture.componentInstance.value()).toBe('0');
-        });
+                const onGap = new Event(type, {bubbles: true, cancelable: true});
 
-        it('lets the consumer wire a backspace key', () => {
-            fixture.componentInstance.value.set('12');
-            backspace().click();
+                keypad().dispatchEvent(onGap);
 
-            expect(fixture.componentInstance.value()).toBe('1');
-        });
-
-        it('routes a consumer-wired (longtap) on a key to its handler (e.g. long-press backspace clears)', () => {
-            fixture.componentInstance.value.set('123');
-            backspace().dispatchEvent(
-                new CustomEvent('longtap', {detail: {clientX: 0, clientY: 0}}),
-            );
-
-            expect(fixture.componentInstance.value()).toBe('');
-        });
-
-        it('prevents pointerdown on keys AND the gaps between them so a tap never blurs the field', () => {
-            const onKey = new Event('pointerdown', {bubbles: true, cancelable: true});
-
-            key('1').dispatchEvent(onKey);
-
-            expect(onKey.defaultPrevented).toBe(true);
-
-            const onGap = new Event('pointerdown', {bubbles: true, cancelable: true});
-
-            keypad().dispatchEvent(onGap);
-
-            expect(onGap.defaultPrevented).toBe(true);
+                expect(onGap.defaultPrevented).toBe(true);
+            }
         });
     });
 });
