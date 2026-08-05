@@ -100,6 +100,46 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiDropdownPortal',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiDropdownContent',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiWithTextfield',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiWithInput',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'tuiStringHashToHsl',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'tuiAutoColor',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'tuiSwitchNgDevMode',
+            moduleSpecifier: '@taiga-ui/testing',
+        },
+        to: {
+            name: 'tuiSwitchNgDevMode',
+            moduleSpecifier: '@taiga-ui/jest-config',
+        },
+    },
+    {
+        from: {
             name: 'TuiAlertService',
             moduleSpecifier: '@taiga-ui/core',
         },

@@ -611,6 +611,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
     },
     {
+        name: 'TuiAccordionItem',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItem (<tui-accordion-item>) has been removed. Inside <tui-accordion>, declare each item as a `<button tuiAccordion>header</button>` followed by a `<tui-expand>content</tui-expand>` (bind the open state with `[tuiAccordion]="expr"`); render a dynamic list of items with a native `@for` block. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemContent ([tuiAccordionItemContent]) provided lazy content and has been removed. Wrap the lazy content in `<ng-container *tuiItem>` inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle, e.g. `<tui-expand><ng-container *tuiItem>...</ng-container></tui-expand>`. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemEagerContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. Eager content now lives directly inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle. See https://taiga-ui.dev/components/accordion',
+    },
+    {
         name: 'TUI_DATE_VALUE_TRANSFORMER',
         moduleSpecifier: '@taiga-ui/kit',
         message:
