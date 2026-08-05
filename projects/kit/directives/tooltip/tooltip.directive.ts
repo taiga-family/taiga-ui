@@ -67,6 +67,7 @@ class Styles {}
     ],
     host: {
         tuiTooltip: '',
+        class: 'tui-interactive',
         '[attr.data-size]': 'size()',
         '[attr.tabindex]': 'describe.id() ? null : 0',
         '(click.prevent)': '0',
@@ -85,7 +86,7 @@ export class TuiTooltip implements DoCheck {
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
-                map((hover) => (hover ? 'hover' : null)),
+                map((hover) => (hover && this.tuiTooltip() ? 'hover' : null)),
                 tuiWatch(),
             ),
             {initialValue: null},
@@ -93,6 +94,7 @@ export class TuiTooltip implements DoCheck {
     );
 
     public readonly size = input<TuiSizeS>('m');
+    public readonly tuiTooltip = input<unknown>();
 
     public ngDoCheck(): void {
         if (this.textfield) {
