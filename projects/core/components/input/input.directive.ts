@@ -61,21 +61,25 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
 
     /**
      * @deprecated use `<tui-textfield [readOnly]="..." />` instead
+     * TODO(v6): delete
      */
     public readonly readOnly = input(false);
 
     /**
      * @deprecated use `<tui-textfield [invalid]="..." />` instead
+     * TODO(v6): delete
      */
     public readonly invalid = input<boolean | null>(null);
 
     /**
      * @deprecated use `<tui-textfield [tuiAppearanceFocus]="..." />` instead
+     * TODO(v6): delete
      */
     public readonly focused = input<boolean | null>(null);
 
     /**
      * @deprecated use `<tui-textfield [tuiAppearanceState]="..." />` instead
+     * TODO(v6): delete
      */
     public readonly state = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.el);
