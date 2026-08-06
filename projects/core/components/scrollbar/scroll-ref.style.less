@@ -1,0 +1,20 @@
+@import '@taiga-ui/styles/utils';
+
+// stylelint-disable plugin/use-baseline -- graceful degradation
+[tuiScrollRef]:where(*&) {
+    timeline-scope: --t-scrollbar-y, --t-scrollbar-x;
+    scroll-timeline:
+        --t-scrollbar-x x,
+        --t-scrollbar-y y;
+
+    &:not(._native) {
+        .scrollbar-hidden();
+    }
+
+    &:where(cdk-virtual-scroll-viewport) {
+        display: flex;
+        scroll-timeline:
+            --t-scrollbar-x x,
+            --t-scrollbar-y y;
+    }
+}

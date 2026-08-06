@@ -4,6 +4,62 @@
 @scroll-width-large: 0.875rem;
 @scroll-min-size: 1.25rem;
 
+@property --t-scroll-start {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --t-scroll-end {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes tuiScrollbarStart {
+    from {
+        --t-scroll-start: 1;
+    }
+
+    to {
+        --t-scroll-start: 0;
+    }
+}
+
+@keyframes tuiScrollbarEnd {
+    from {
+        --t-scroll-end: 0;
+    }
+
+    to {
+        --t-scroll-end: 1;
+    }
+}
+
+@keyframes tuiScrollbar {
+    from,
+    to {
+        --t-opacity: 1;
+    }
+}
+
+@keyframes tuiScrollbarX {
+    from,
+    to {
+        --t-events-x: auto;
+    }
+}
+
+@keyframes tuiScrollbarY {
+    from,
+    to {
+        --t-events-y: auto;
+    }
+}
+
+// stylelint-disable plugin/use-baseline -- graceful degradation
+// stylelint-disable plugin/no-unsupported-browser-features -- graceful degradation
+// stylelint-disable unit-allowed-list -- graceful degradation
 :host {
     position: sticky;
     z-index: 1;
@@ -18,6 +74,21 @@
     pointer-events: none;
     overflow: hidden;
     color: var(--tui-text-primary);
+    container-type: size;
+    animation-name: tuiScrollbarX, tuiScrollbarY;
+    animation-timeline: --t-scrollbar-x, --t-scrollbar-y;
+
+    --t-events-y: none;
+    --t-events-x: none;
+
+    &:not(._timeline) {
+        --t-events-y: auto;
+        --t-events-x: auto;
+
+        .t-thumb {
+            --t-opacity: 1;
+        }
+    }
 }
 
 ::ng-deep [tuiScrollable] {
@@ -27,75 +98,71 @@
 .t-bar {
     position: absolute;
     inset-inline-end: 0;
-    pointer-events: auto;
+    inset-block: 0.25rem;
+    inline-size: @scroll-width-large;
+    pointer-events: var(--t-events-y);
 
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade;
     }
 
-    &_vertical {
-        inset-block: 0.25rem;
-        inline-size: @scroll-width-large;
-    }
-
     &_horizontal {
-        inset-block-end: 0;
-        inset-inline-start: 0;
-        block-size: @scroll-width-large;
-    }
+        writing-mode: vertical-lr;
+        direction: ltr;
+        pointer-events: var(--t-events-x);
 
-    &_has-horizontal {
-        inset-block-end: @scroll-width - 0.25rem;
-    }
+        :host-context([dir='rtl']) & {
+            writing-mode: vertical-rl;
+        }
 
-    &_has-vertical {
-        inset-inline-end: @scroll-width - 0.25rem;
+        .t-thumb {
+            animation-timeline: --t-scrollbar-x;
+            animation-range:
+                0 calc(100% + 100cqi),
+                calc(0% - 100cqi) 100%;
+        }
     }
 }
 
 .t-thumb {
-    .transition(all, 0.15s);
+    .transition(all, @tui-duration-fast);
 
     position: absolute;
     border-radius: 6.25rem;
     border: 0.25rem solid transparent;
     cursor: pointer;
-    pointer-events: auto;
     user-select: none;
     background: currentColor;
     background-clip: content-box;
     box-sizing: border-box;
     transition-property: width, height, opacity;
-    opacity: 0.2;
+    inline-size: @scroll-width;
+    min-block-size: @scroll-min-size;
+    inset-block-start: min(calc(100% - var(--t-scroll-start) * 100%), calc(100% - @scroll-min-size));
+    inset-block-end: calc(100% - var(--t-scroll-end) * 100%);
+    inset-inline-end: 0;
+    opacity: calc(0.2 * var(--t-opacity));
+    animation-name: tuiScrollbarStart, tuiScrollbarEnd, tuiScrollbar;
+    animation-timing-function: linear;
+    animation-timeline: --t-scrollbar-y;
+    animation-range:
+        0 calc(100% + 100cqb),
+        calc(0% - 100cqb) 100%;
+    animation-fill-mode: both;
+
+    --t-opacity: 0;
 
     &:hover {
-        opacity: 0.24;
+        opacity: calc(0.24 * var(--t-opacity));
     }
 
     &:active {
-        opacity: 0.48;
+        opacity: calc(0.48 * var(--t-opacity));
     }
 
-    .t-bar_vertical & {
-        inset-inline-end: 0;
-        inline-size: @scroll-width;
-        min-block-size: @scroll-min-size;
-    }
-
-    .t-bar_vertical:hover &,
-    .t-bar_vertical &:active {
+    .t-bar:hover &,
+    .t-bar &:active {
         inline-size: @scroll-width-large;
-    }
-
-    .t-bar_horizontal & {
-        inset-block-end: 0;
-        block-size: @scroll-width;
-        min-inline-size: @scroll-min-size;
-    }
-
-    .t-bar_horizontal:hover &,
-    .t-bar_horizontal &:active {
-        block-size: @scroll-width-large;
     }
 }

@@ -96,6 +96,7 @@ export default defineConfig({
                             'projects/core/portals/modal/modal.style.less',
                             'projects/core/components/cell/cell.styles.less',
                             'projects/core/components/data-list/data-list.style.less',
+                            'projects/core/components/scrollbar/scroll-ref.style.less',
                             'projects/core/portals/dialog/dialog.style.less',
                             'projects/kit/directives/chevron/chevron.style.less',
                             'projects/kit/components/input-slider/input-slider.styles.less',

@@ -7,10 +7,6 @@
     isolation: isolate;
     overflow: auto;
 
-    &._native-hidden {
-        .scrollbar-hidden();
-    }
-
     .t-hover-mode:not(:active) {
         .transition(opacity);
 
@@ -29,7 +25,11 @@
     flex: 1;
     flex-basis: auto;
     inline-size: 100%;
+    min-inline-size: fit-content;
     block-size: max-content;
+    view-timeline:
+        --t-scrollbar-x x,
+        --t-scrollbar-y y;
 
     &_delegated {
         block-size: 100%;
