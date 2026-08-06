@@ -19,9 +19,12 @@ import {
 
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
+const MOBILE_HIDE_DELAY_MS = 100;
+
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
+    host: {'(click)': 'onClick()'},
 })
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(WA_IS_MOBILE);
@@ -35,7 +38,7 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.pipe(
             switchMap((show) =>
                 this.isMobile
-                    ? of(show).pipe(delay(0))
+                    ? of(show).pipe(delay(show ? 0 : MOBILE_HIDE_DELAY_MS))
                     : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
             takeUntil(this.hovered$),
@@ -89,5 +92,15 @@ export class TuiHintHover extends TuiDriver {
 
     public close(): void {
         this.toggle$.next(false);
+    }
+
+    /**
+     * Synthesized `mouseenter` is not fired again until another element is tapped, so showing on mobile
+     * cannot rely on it.
+     */
+    protected onClick(): void {
+        if (this.isMobile) {
+            this.toggle();
+        }
     }
 }
