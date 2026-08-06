@@ -29,6 +29,75 @@ abstract class Sandbox {
     imports: [ReactiveFormsModule, TuiInput, TuiRoot],
     template: `
         <tui-root>
+            <tui-textfield
+                [invalid]="invalid()"
+                [readOnly]="readOnly()"
+                [tuiAppearanceFocus]="focused()"
+                [tuiAppearanceState]="state()"
+            >
+                <label tuiLabel>Name</label>
+                <input
+                    tuiInput
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
+            <button
+                id="reset"
+                style="margin-block-start: 1rem"
+                type="button"
+                (click)="reset()"
+            >
+                Reset manual overrides
+            </button>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InputSandbox extends Sandbox {
+    protected readonly control = new FormControl('', Validators.required);
+}
+
+@Component({
+    imports: [ReactiveFormsModule, TuiInputDate, TuiRoot],
+    template: `
+        <tui-root>
+            <tui-textfield
+                [invalid]="invalid()"
+                [readOnly]="readOnly()"
+                [tuiAppearanceFocus]="focused()"
+                [tuiAppearanceState]="state()"
+            >
+                <label tuiLabel>Date</label>
+                <input
+                    tuiInputDate
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
+            <button
+                id="reset"
+                style="margin-block-start: 1rem"
+                type="button"
+                (click)="reset()"
+            >
+                Reset manual overrides
+            </button>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InputDateSandbox extends Sandbox {
+    protected readonly control = new FormControl<TuiDay | null>(
+        null,
+        Validators.required,
+    );
+}
+
+@Component({
+    imports: [ReactiveFormsModule, TuiInput, TuiRoot],
+    template: `
+        <tui-root>
             <tui-textfield>
                 <label tuiLabel>Name</label>
                 <input
@@ -98,7 +167,7 @@ const SANDBOXES: ReadonlyArray<{
     readonly snapshotPrefix: string;
 }> = [
     {
-        component: InputLegacySandbox, // TODO: use its own InputSandbox
+        component: InputSandbox,
         title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInput',
     },
@@ -108,12 +177,12 @@ const SANDBOXES: ReadonlyArray<{
         snapshotPrefix: 'tuiInput-legacy-api',
     },
     {
-        component: InputDateLegacySandbox, // TODO: use its own InputDateSandbox
+        component: InputDateLegacySandbox,
         title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInputDate-legacy-api',
     },
     {
-        component: InputDateLegacySandbox,
+        component: InputDateSandbox,
         title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInputDate',
     },
