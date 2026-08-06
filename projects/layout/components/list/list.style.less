@@ -10,6 +10,10 @@
         margin-inline-start: 1.25rem;
     }
 
+    ol[tuiList] {
+        margin-inline-start: calc(1.25rem + 1.5ch);
+    }
+
     & > li {
         counter-increment: item;
         margin: 0.5rem 0;
@@ -18,11 +22,17 @@
     & > li::before {
         content: counters(item, '.') '.';
         display: inline-flex;
+        float: left;
         unicode-bidi: plaintext;
         font-variant-numeric: tabular-nums;
         // physical shorthand margins keep the marker on the wrong side in RTL
         margin-block: 0;
         margin-inline: -1.5rem 0.5625rem;
+    }
+
+    [dir='rtl'] & > li::before,
+    &[dir='rtl'] > li::before {
+        float: right;
     }
 
     &:is(ul) > li::before {
@@ -34,6 +44,14 @@
         );
         inline-size: 0.75rem;
         margin-inline-end: 0.75rem;
+    }
+
+    &:is(ol) > li::before {
+        position: relative;
+        inset-inline-end: 0.5625rem;
+        justify-content: flex-end;
+        inline-size: 0;
+        margin-inline: 0;
     }
 
     &[data-size='l'] {
@@ -56,16 +74,6 @@
 
         & > li {
             margin: 0.625rem 0;
-        }
-    }
-
-    & > li:has(> :where(p, div)) {
-        position: relative;
-
-        &::before {
-            position: absolute;
-            inset-block-start: 0;
-            inset-inline-start: 0;
         }
     }
 }

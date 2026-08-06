@@ -12,7 +12,10 @@ import {TuiList} from '@taiga-ui/layout';
                     tuiList
                 >
                     <li>List item</li>
-                    <li>Another list item</li>
+                    <li>
+                        This inline list item is long enough to wrap onto multiple lines
+                        without losing alignment
+                    </li>
                     <li>
                         <div>Block title</div>
                         <div>Block subtitle</div>
@@ -31,10 +34,18 @@ import {TuiList} from '@taiga-ui/layout';
                     <!-- prettier-ignore -->
                     <li>First level
                         <ol tuiList>
-                            <li>Second level</li>
+                            <li>
+                                Second level with inline text long enough to wrap onto
+                                multiple lines
+                            </li>
                             <li><span>Second level</span>
                                 <ol tuiList>
-                                    <li>Third level</li>
+                                    <li>
+                                        Third level
+                                        <ol tuiList>
+                                            <li>Fourth level</li>
+                                        </ol>
+                                    </li>
                                 </ol>
                             </li>
                         </ol>
@@ -53,12 +64,12 @@ import {TuiList} from '@taiga-ui/layout';
 class TestList {}
 
 describe('List', () => {
-    it('supports block content without changing nested list spacing', () => {
+    it('aligns inline and block content at every nesting level', () => {
         cy.mount(TestList);
 
-        cy.get('section').compareSnapshot('list-with-block-content');
+        cy.get('section').compareSnapshot('list-nested-content-alignment');
         cy.get('section')
             .invoke('attr', 'dir', 'rtl')
-            .compareSnapshot('list-with-block-content-rtl');
+            .compareSnapshot('list-nested-content-alignment-rtl');
     });
 });
