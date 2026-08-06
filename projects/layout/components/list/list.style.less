@@ -18,7 +18,9 @@
     & > li::before {
         content: counters(item, '.') '.';
         display: inline-flex;
-        margin: 0 0.5625rem 0 -1.5rem;
+        // physical shorthand margins keep the marker on the wrong side in RTL
+        margin-block: 0;
+        margin-inline: -1.5rem 0.5625rem;
     }
 
     &:is(ul) > li::before {
@@ -33,6 +35,7 @@
     }
 
     &:is(ol) > li::before {
+        content: '\2066' counters(item, '.') '.\2069';
         unicode-bidi: isolate;
         font-variant-numeric: tabular-nums;
     }
@@ -42,7 +45,9 @@
 
         &:is(ul) > li::before {
             inline-size: 0.875rem;
-            margin: 0 0.5625rem 0 -1.4375rem;
+            // physical shorthand margins keep the marker on the wrong side in RTL
+            margin-block: 0;
+            margin-inline: -1.4375rem 0.5625rem;
         }
     }
 
