@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -13,9 +13,9 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiTextarea,
     ],

@@ -277,6 +277,8 @@
                     [iconStart]="icons.iconStart"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [stringify]="itemsHandlers.stringify()"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -291,12 +293,10 @@
                     <input
                         placeholder="Search country"
                         tuiComboBox
-                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [matcher]="matcher"
                         [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
                         [strict]="strict"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -357,8 +357,9 @@
             ></tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody

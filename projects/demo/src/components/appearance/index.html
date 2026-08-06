@@ -31,7 +31,9 @@
         [items]="states"
         [(value)]="state"
     >
-        manual interactive state override
+        manual interactive state override (
+        <code>null</code>
+        for automatic)
     </tr>
 }
 @if (!hiddenOptions().includes('focus')) {
@@ -42,7 +44,9 @@
         [items]="focuses"
         [(value)]="focus"
     >
-        manual focus state override
+        manual focus state override (
+        <code>null</code>
+        for automatic)
     </tr>
 }
 @if (!hiddenOptions().includes('mode')) {

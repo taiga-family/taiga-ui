@@ -219,6 +219,8 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -226,14 +228,12 @@
                         placeholder="Pick a time"
                         tuiInputTime
                         [accept]="accept"
-                        [focused]="input.focused"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [mode]="mode"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>
@@ -291,8 +291,9 @@
             ></tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody
