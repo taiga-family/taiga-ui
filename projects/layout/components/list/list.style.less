@@ -18,6 +18,8 @@
     & > li::before {
         content: counters(item, '.') '.';
         display: inline-flex;
+        unicode-bidi: plaintext;
+        font-variant-numeric: tabular-nums;
         // physical shorthand margins keep the marker on the wrong side in RTL
         margin-block: 0;
         margin-inline: -1.5rem 0.5625rem;
@@ -32,12 +34,6 @@
         );
         inline-size: 0.75rem;
         margin-inline-end: 0.75rem;
-    }
-
-    &:is(ol) > li::before {
-        content: '\2066' counters(item, '.') '.\2069';
-        unicode-bidi: isolate;
-        font-variant-numeric: tabular-nums;
     }
 
     &[data-size='l'] {
