@@ -252,6 +252,8 @@
                     [content]="control.value && textfieldDoc.content"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [stringify]="itemsHandlers.stringify()"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
@@ -273,9 +275,7 @@
                     <input
                         tuiSelect
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [placeholder]="showPlaceholder ? 'Choose country' : ''"
-                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 

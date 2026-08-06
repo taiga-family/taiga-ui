@@ -276,6 +276,8 @@
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [iconStart]="icons.iconStart"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [stringify]="itemsHandlers.stringify()"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
@@ -294,9 +296,7 @@
                         placeholder="Search country"
                         tuiComboBox
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [matcher]="matcher"
-                        [readOnly]="controlDoc.readonly"
                         [strict]="strict"
                         [tuiDisabled]="controlDoc.disabled"
                     />

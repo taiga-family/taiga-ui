@@ -107,6 +107,8 @@
                 <tui-textfield
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
@@ -121,11 +123,9 @@
                     <input
                         tuiInputDate
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
-                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 

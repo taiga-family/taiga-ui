@@ -154,6 +154,8 @@
                     [content]="textfield.focused() ? '' : textfieldDoc.content"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -161,13 +163,11 @@
                         tuiInputSlider
                         [attr.placeholder]="`Form control value is still ${control.value}`"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max()"
                         [min]="min()"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [quantum]="quantum"
-                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
                             thousandSeparator: numberFormatDoc.thousandSeparator(),

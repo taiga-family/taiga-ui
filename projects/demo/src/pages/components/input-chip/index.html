@@ -98,6 +98,8 @@
                     multi
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [rows]="textfieldDoc.rows"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
@@ -108,8 +110,6 @@
                         placeholder="Enter"
                         tuiInputChip
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
-                        [readOnly]="controlDoc.readonly"
                         [separator]="separator"
                         [tuiDisabled]="controlDoc.disabled"
                         [unique]="unique"

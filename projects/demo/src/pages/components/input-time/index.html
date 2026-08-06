@@ -219,6 +219,8 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -229,11 +231,9 @@
                         tuiInputTime
                         [accept]="accept"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [mode]="mode"
                         [postfix]="postfix"
                         [prefix]="prefix"
-                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>

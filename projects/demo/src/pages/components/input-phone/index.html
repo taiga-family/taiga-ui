@@ -42,6 +42,8 @@
                     [filler]="filler"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -52,9 +54,7 @@
                     <input
                         tuiInputPhone
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [mask]="phoneMask"
-                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>

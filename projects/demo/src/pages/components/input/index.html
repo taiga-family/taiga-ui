@@ -103,6 +103,8 @@
                 [filler]="filler"
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
+                [invalid]="control.invalid"
+                [readOnly]="control.readonly"
                 [tuiAppearanceFocus]="appearance.focus"
                 [tuiAppearanceState]="appearance.state"
                 [tuiTextfieldCleaner]="textfield.cleaner"
@@ -115,8 +117,6 @@
                     placeholder="I am placeholder"
                     tuiInput
                     [disabled]="control.disabled"
-                    [invalid]="control.invalid"
-                    [readOnly]="control.readonly"
                     [(ngModel)]="value"
                 />
                 <tui-icon tuiTooltip="I am a hint" />
