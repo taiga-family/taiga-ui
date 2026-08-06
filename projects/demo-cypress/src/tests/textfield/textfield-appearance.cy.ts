@@ -99,22 +99,22 @@ const SANDBOXES: ReadonlyArray<{
 }> = [
     {
         component: InputLegacySandbox, // TODO: use its own InputSandbox
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInput',
     },
     {
         component: InputLegacySandbox,
-        title: '<input [invalid]="..." [focused]="..." [state]="..."  />',
+        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInput-legacy-api',
     },
     {
         component: InputDateLegacySandbox, // TODO: use its own InputDateSandbox
-        title: '<input [invalid]="..." [focused]="..." [state]="..."  />',
+        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInputDate-legacy-api',
     },
     {
         component: InputDateLegacySandbox,
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
         snapshotPrefix: 'tuiInputDate',
     },
 ];
