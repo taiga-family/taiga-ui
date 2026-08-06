@@ -17,6 +17,11 @@
     min-block-size: var(--t-height);
     border-radius: var(--t-radius);
 
+    &:is(button, label):not(:disabled) {
+        position: relative;
+        overflow: hidden;
+    }
+
     &:is(button, label):not(:disabled):active {
         background: var(--tui-background-neutral-1);
     }
