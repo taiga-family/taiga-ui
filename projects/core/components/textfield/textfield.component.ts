@@ -43,7 +43,11 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {
+    type TuiInteractiveState,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -141,6 +145,17 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
+    public readonly invalid = input<boolean | null>(null);
+    public readonly readOnly = input(false);
+    /**
+     * TODO(v6): expose inputs using host directives API
+     * ```ts
+     * hostDirectives: [{directive: TuiAppearance, inputs: ['tuiAppearanceState', 'tuiAppearanceFocus']}]
+     * ```
+     * Temporary workaround while {@link TuiInputDirective} still binds tuiAppearanceState(...) / tuiAppearanceFocus(...)
+     */
+    public readonly tuiAppearanceFocus = input<boolean | null>(null);
+    public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
 
     public get disabled(): boolean {

@@ -30,7 +30,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
         tuiInput: '',
         '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[class._empty]': 'value() === ""',
-        '[readOnly]': 'readOnly()',
+        '[readOnly]': 'readOnly() || textfield.readOnly()',
         '(focusin)': '0',
         '(focusout)': '0',
         '(input)': '0',
@@ -43,29 +43,55 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-    protected readonly s = tuiAppearanceState(computed(() => this.state()));
+
+    protected readonly s = tuiAppearanceState(
+        computed(() => this.state() ?? this.textfield.tuiAppearanceState()),
+    );
+
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
 
     protected readonly f = tuiAppearanceFocus(
-        computed(() => this.focused() ?? this.textfield.focused()),
+        computed(
+            () =>
+                this.focused() ??
+                this.textfield.tuiAppearanceFocus() ??
+                this.textfield.focused(),
+        ),
     );
 
+    /**
+     * @deprecated use `<tui-textfield [readOnly]="..." />` instead
+     */
     public readonly readOnly = input(false);
+
+    /**
+     * @deprecated use `<tui-textfield [invalid]="..." />` instead
+     */
     public readonly invalid = input<boolean | null>(null);
+
+    /**
+     * @deprecated use `<tui-textfield [tuiAppearanceFocus]="..." />` instead
+     */
     public readonly focused = input<boolean | null>(null);
+
+    /**
+     * @deprecated use `<tui-textfield [tuiAppearanceState]="..." />` instead
+     */
     public readonly state = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.el);
 
     public readonly mode = computed<string | null>(() => {
-        if (this.readOnly()) {
+        const invalid = this.invalid() ?? this.textfield.invalid();
+
+        if (this.readOnly() || this.textfield.readOnly()) {
             return 'readonly';
         }
 
-        if (this.invalid() === false) {
+        if (invalid === false) {
             return 'valid';
         }
 
-        return this.invalid() ? 'invalid' : null;
+        return invalid ? 'invalid' : null;
     });
 
     public setValue(value: T | null): void {
@@ -88,6 +114,10 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     }
 }
 
+/**
+ * @deprecated use `hostDirectives: [TuiInputDirective]`
+ * TODO(v6): delete
+ */
 @Directive({
     hostDirectives: [
         {
