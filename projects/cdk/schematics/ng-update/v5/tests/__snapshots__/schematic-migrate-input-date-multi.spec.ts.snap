@@ -305,6 +305,28 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date (multi
 }
 `;
 
+exports[`ng-update renames TuiInputDateMultiModule import to TuiInputDateMulti: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputDateMultiModule],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputDateMulti } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiInputDateMulti],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update silently removes [editable] and [inputHidden]: test.html 1`] = `
 {
   "0. Before": "
