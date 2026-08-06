@@ -3,8 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand, TuiFormatNumberPipe, TuiHint} from '@taiga-ui/core';
-import {TuiChevron, TuiChip} from '@taiga-ui/kit';
+import {TuiButton, TuiExpand, TuiHint} from '@taiga-ui/core';
+import {TuiChevron, TuiChip, TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 interface Item {
     firstName: string;

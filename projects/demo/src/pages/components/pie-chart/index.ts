@@ -5,7 +5,8 @@ import {TuiDemo} from '@demo/utils';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {type TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
-import {tuiFormatNumber, type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
