@@ -50,7 +50,15 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
+    /**
+     * @deprecated use `<tui-textfield [readOnly]="..." />` instead
+     * TODO(v6): delete
+     */
     public readonly readOnly = input(false);
+    /**
+     * @deprecated use `<tui-textfield [invalid]="..." />` instead
+     * TODO(v6): delete
+     */
     public readonly pseudoInvalid = input<boolean | null>(undefined, {alias: 'invalid'});
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);

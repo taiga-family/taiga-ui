@@ -1,8 +1,10 @@
-import {computed, Directive, inject, input} from '@angular/core';
+import {computed, Directive, effect, inject, INJECTOR, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiAsTextfieldAccessor,
@@ -97,6 +99,26 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
 
         return invalid ? 'invalid' : null;
     });
+
+    /**
+     * Temporary workaround until TuiControl has deprecated `readOnly` / `pseudoInvalid` props
+     * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
+     * TODO(v6): remove all logic inside constructor
+     */
+    constructor() {
+        const injector = inject(INJECTOR);
+        const readOnly = computed(() => this.readOnly() || this.textfield.readOnly());
+        const invalid = computed(() => this.invalid() ?? this.textfield.invalid());
+
+        effect(() => {
+            const control = injector.get(TuiControl, null, {self: true});
+
+            if (control) {
+                tuiSetSignal(control.readOnly, readOnly());
+                tuiSetSignal(control.pseudoInvalid, invalid());
+            }
+        });
+    }
 
     public setValue(value: T | null): void {
         this.el.focus();
