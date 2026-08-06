@@ -39,7 +39,7 @@ import {tuiParseInputChipValue} from './input-chip.utils';
         '[disabled]': 'disabled()',
         '(drop.prevent)': 'onPaste($event)',
         '(focus)': 'scrollTo()',
-        '(input)': 'onInput()',
+        '(input)': 'textfield.focused() && onInput()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
         '(paste.prevent)': 'onPaste($event)',
@@ -65,7 +65,7 @@ export class TuiInputChipDirective<T>
         )
         .subscribe(() => {
             this.onEnter();
-            this.textfield.value.set('');
+            this.erase();
         });
 
     public readonly separator = input(this.options.separator);
@@ -73,7 +73,7 @@ export class TuiInputChipDirective<T>
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
-        this.textfield.value.set('');
+        this.erase();
         this.onChange(
             this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
         );
@@ -141,5 +141,12 @@ export class TuiInputChipDirective<T>
                 top: Number.MAX_SAFE_INTEGER,
             });
         }, 100);
+    }
+
+    private erase(): void {
+        if (this.el.value) {
+            this.el.value = '';
+            this.el.dispatchEvent(new Event('input', {bubbles: true}));
+        }
     }
 }
