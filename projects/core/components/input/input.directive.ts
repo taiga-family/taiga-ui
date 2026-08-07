@@ -52,6 +52,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
 
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
 
+    // TODO(v6): move to {@link TuiTextfieldComponent}
     protected readonly f = tuiAppearanceFocus(
         computed(
             () =>
@@ -83,7 +84,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly value = tuiValue(this.el);
 
     public readonly mode = computed<string | null>(() => {
-        const invalid = this.invalid() ?? this.textfield.invalid();
+        const invalid = this.textfield.invalid() ?? this.invalid();
 
         if (this.readOnly()) {
             return 'readonly';
@@ -97,13 +98,13 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     });
 
     /**
-     * Temporary workaround until TuiControl has deprecated `pseudoInvalid` prop
+     * Temporary workaround until TuiControl has deprecated `invalid` prop
      * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
      * TODO(v6): remove all logic inside constructor
      */
     constructor() {
         const injector = inject(INJECTOR);
-        const invalid = computed(() => this.invalid() ?? this.textfield.invalid());
+        const invalid = computed(() => this.textfield.invalid() ?? this.invalid());
 
         effect(() => {
             const control = injector.get(TuiControl, null, {self: true});
