@@ -3,15 +3,11 @@
     padding: 0.25rem 0;
     margin-block: 0;
     counter-reset: item;
-    margin-inline-start: 1.5rem;
+    margin-inline-start: 1.625rem;
 
     [tuiList] {
         padding: 0;
-        margin-inline-start: 1.25rem;
-    }
-
-    ol[tuiList] {
-        margin-inline-start: calc(1.25rem + 1.5ch);
+        margin-inline-start: 2.5rem;
     }
 
     & > li {
@@ -48,7 +44,7 @@
 
     &:is(ol) > li::before {
         position: relative;
-        inset-inline-end: 0.5625rem;
+        inset-inline-end: 0.75rem;
         justify-content: flex-end;
         inline-size: 0;
         margin-inline: 0;
