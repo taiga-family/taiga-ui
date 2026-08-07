@@ -46,7 +46,7 @@ class Styles {}
     hostDirectives: [
         {
             directive: TuiInputNumberDirective,
-            inputs: ['invalid', 'readOnly'],
+            inputs: ['invalid', 'readOnly', 'readonly'],
         },
         {
             directive: TuiQuantumValueTransformer,
