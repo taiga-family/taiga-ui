@@ -8,11 +8,17 @@
             opacity: 1;
         }
 
-        [tuiTabBarItem] .t-icon {
-            inline-size: 1.5rem;
-            block-size: 1.5rem;
-            margin-block-start: 0.5rem;
-            border: 0;
+        [tuiTabBarItem] {
+            .t-icon {
+                inline-size: 1.5rem;
+                block-size: 1.5rem;
+                margin-block-start: 0.5rem;
+                border: 0;
+            }
+
+            .t-text {
+                font: var(--tui-typography-ui-xs);
+            }
         }
     }
 }
