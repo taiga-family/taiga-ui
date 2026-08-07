@@ -195,7 +195,7 @@ test.describe('InputChip', () => {
             await inputChip.input.fill('123');
             await inputChip.input.blur();
 
-            const toggle = await apiPage.getToggle(apiPage.getRow('readOnly'));
+            const toggle = await apiPage.getToggle(apiPage.getRow('readonly'));
 
             await toggle?.click();
 
