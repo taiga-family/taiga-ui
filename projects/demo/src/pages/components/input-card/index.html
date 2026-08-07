@@ -57,7 +57,7 @@
                     tuiInputCard
                     [disabled]="control.disabled"
                     [placeholder]="textfield.size === 's' ? 'Card number' : ''"
-                    [readOnly]="control.readonly"
+                    [readonly]="control.readonly"
                     [(ngModel)]="card"
                     (binChange)="binChange.emitEvent($event)"
                 />

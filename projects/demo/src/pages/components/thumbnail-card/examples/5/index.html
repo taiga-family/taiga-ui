@@ -15,7 +15,7 @@
         icon=""
         tuiInputCard
         [disabled]="status === 'disabled'"
-        [readOnly]="status === 'readOnly'"
+        [readonly]="status === 'readonly'"
         [(ngModel)]="card"
     />
     @if (card.startsWith('1234')) {

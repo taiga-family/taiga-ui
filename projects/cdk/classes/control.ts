@@ -1,3 +1,4 @@
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
     ChangeDetectorRef,
     computed,
@@ -60,7 +61,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
      * TODO(v6): delete
      */
     public readonly readOnly = input(false);
-    public readonly readonly = input(false);
+    public readonly readonly = input(false, {transform: coerceBooleanProperty});
     /**
      * @deprecated use `<tui-textfield [invalid]="..." />` instead
      * TODO(v6): delete
