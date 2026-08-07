@@ -43,6 +43,6 @@ export default class Example {
     protected color = false;
 
     protected onColor(color: boolean): void {
-        this.theme.color = color ? 'purple' : 'black';
+        this.theme.navColor = color ? 'purple' : 'black';
     }
 }

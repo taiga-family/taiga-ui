@@ -32,6 +32,7 @@ export default class Page {
         'Responsive',
         'AppBar',
         'Fullscreen',
+        'Address bar color',
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
