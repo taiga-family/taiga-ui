@@ -13,7 +13,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected statuses = ['normal', 'disabled', 'readOnly', 'invalid'] as const;
+    protected statuses = ['normal', 'disabled', 'readonly', 'invalid'] as const;
     protected status: string = this.statuses[0];
     protected card = '1234123412341234';
 

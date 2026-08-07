@@ -12,17 +12,82 @@ import {TuiInputDate} from '@taiga-ui/kit';
 
 @Directive()
 abstract class Sandbox {
-    public readonly readOnly = model<boolean>(false);
     public readonly invalid = model<boolean | null>(null);
     public readonly focused = model<boolean | null>(null);
     public readonly state = model<TuiInteractiveState | null>(null);
 
     public reset(): void {
-        this.readOnly.set(false);
         this.invalid.set(null);
         this.focused.set(null);
         this.state.set(null);
     }
+}
+
+@Component({
+    imports: [ReactiveFormsModule, TuiInput, TuiRoot],
+    template: `
+        <tui-root>
+            <tui-textfield
+                [invalid]="invalid()"
+                [tuiAppearanceFocus]="focused()"
+                [tuiAppearanceState]="state()"
+            >
+                <label tuiLabel>Name</label>
+                <input
+                    tuiInput
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
+            <button
+                id="reset"
+                style="margin-block-start: 1rem"
+                type="button"
+                (click)="reset()"
+            >
+                Reset manual overrides
+            </button>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InputSandbox extends Sandbox {
+    protected readonly control = new FormControl('', Validators.required);
+}
+
+@Component({
+    imports: [ReactiveFormsModule, TuiInputDate, TuiRoot],
+    template: `
+        <tui-root>
+            <tui-textfield
+                [invalid]="invalid()"
+                [tuiAppearanceFocus]="focused()"
+                [tuiAppearanceState]="state()"
+            >
+                <label tuiLabel>Date</label>
+                <input
+                    tuiInputDate
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
+            <button
+                id="reset"
+                style="margin-block-start: 1rem"
+                type="button"
+                (click)="reset()"
+            >
+                Reset manual overrides
+            </button>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class InputDateSandbox extends Sandbox {
+    protected readonly control = new FormControl<TuiDay | null>(
+        null,
+        Validators.required,
+    );
 }
 
 @Component({
@@ -36,7 +101,6 @@ abstract class Sandbox {
                     [focused]="focused()"
                     [formControl]="control"
                     [invalid]="invalid()"
-                    [readOnly]="readOnly()"
                     [state]="state()"
                 />
             </tui-textfield>
@@ -68,7 +132,6 @@ export class InputLegacySandbox extends Sandbox {
                     [focused]="focused()"
                     [formControl]="control"
                     [invalid]="invalid()"
-                    [readOnly]="readOnly()"
                     [state]="state()"
                 />
             </tui-textfield>
@@ -98,23 +161,23 @@ const SANDBOXES: ReadonlyArray<{
     readonly snapshotPrefix: string;
 }> = [
     {
-        component: InputLegacySandbox, // TODO: use its own InputSandbox
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
+        component: InputSandbox,
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
         snapshotPrefix: 'tuiInput',
     },
     {
         component: InputLegacySandbox,
-        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
+        title: '<input [invalid]="..." [focused]="..." [state]="..."  />',
         snapshotPrefix: 'tuiInput-legacy-api',
     },
     {
-        component: InputDateLegacySandbox, // TODO: use its own InputDateSandbox
-        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
+        component: InputDateLegacySandbox,
+        title: '<input [invalid]="..." [focused]="..." [state]="..."   />',
         snapshotPrefix: 'tuiInputDate-legacy-api',
     },
     {
-        component: InputDateLegacySandbox,
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
+        component: InputDateSandbox,
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
         snapshotPrefix: 'tuiInputDate',
     },
 ];
@@ -313,29 +376,6 @@ describe('Textfield appearance', () => {
 
                     cy.get('tui-textfield').should('not.have.attr', 'data-state');
                     snapshot('[state]-null-after-reset');
-                });
-            });
-
-            describe('[readOnly]', () => {
-                it('true => readonly appearance on top of the native readonly state', () => {
-                    cy.mount(component, {componentProperties: {readOnly: true}});
-
-                    cy.get('tui-textfield').should('have.attr', 'data-mode', 'readonly');
-                    cy.get('[tuiInput]').should('have.attr', 'readonly');
-
-                    snapshot('[readOnly]-true');
-                });
-
-                it('back to false => the manual override is dropped', () => {
-                    cy.mount(component, {componentProperties: {readOnly: true}});
-                    cy.get('tui-textfield').should('have.attr', 'data-mode', 'readonly');
-
-                    cy.get('#reset').click();
-
-                    cy.get('tui-textfield').should('not.have.attr', 'data-mode');
-                    cy.get('[tuiInput]').should('not.have.attr', 'readonly');
-
-                    snapshot('[readOnly]-false');
                 });
             });
         });

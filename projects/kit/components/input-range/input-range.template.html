@@ -1,4 +1,7 @@
-<tui-textfield [content]="contentStartHidden ? '' : contentStart()">
+<tui-textfield
+    [content]="contentStartHidden ? '' : contentStart()"
+    [invalid]="invalid()"
+>
     <label tuiLabel>
         <ng-content />
     </label>
@@ -6,13 +9,12 @@
     <input
         tuiInputNumber
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [max]="value()[1]"
         [min]="min()"
         [ngModelOptions]="{standalone: true}"
         [postfix]="postfix()[0]"
         [prefix]="prefix()[0]"
-        [readOnly]="readOnly()"
+        [readonly]="readOnly()"
         [(ngModel)]="start"
         (blur)="onBlur()"
         (keydown.arrowDown)="takeStep($event, [-1, 0])"
@@ -25,13 +27,12 @@
         class="t-end"
         [class._hidden]="!contentEndHidden || !this.interactive()"
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [max]="max()"
         [min]="value()[0]"
         [ngModelOptions]="{standalone: true}"
         [postfix]="postfix()[1]"
         [prefix]="prefix()[1]"
-        [readOnly]="readOnly()"
+        [readonly]="readOnly()"
         [(ngModel)]="end"
         (blur)="onBlur()"
         (keydown.arrowDown)="takeStep($event, [0, -1])"

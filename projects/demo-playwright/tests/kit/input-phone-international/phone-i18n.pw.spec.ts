@@ -74,7 +74,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         });
 
         test('readonly', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readOnly=true`);
+            await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readonly=true`);
             const example = new TuiDocumentationPagePO(page).demo;
 
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(

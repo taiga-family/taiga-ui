@@ -98,19 +98,19 @@
                     multi
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
                     [rows]="textfieldDoc.rows"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
                         placeholder="Enter"
                         tuiInputChip
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
-                        [readOnly]="controlDoc.readonly"
+                        [readonly]="controlDoc.readonly"
                         [separator]="separator"
-                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                         [unique]="unique"
                     />
@@ -145,8 +145,9 @@
             ></tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody

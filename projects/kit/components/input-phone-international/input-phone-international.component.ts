@@ -78,7 +78,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
 
     protected readonly $ = inject(TuiActiveZone)
         .tuiActiveZoneChange.pipe(
-            filter(() => !this.readOnly()),
+            filter(() => this.interactive()),
             takeUntilDestroyed(),
         )
         .subscribe((active) => {

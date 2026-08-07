@@ -43,6 +43,9 @@
             <tui-textfield
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
+                [invalid]="control.invalid"
+                [tuiAppearanceFocus]="appearance.focus"
+                [tuiAppearanceState]="appearance.state"
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
@@ -53,11 +56,8 @@
                 <input
                     tuiInputCard
                     [disabled]="control.disabled"
-                    [focused]="input.focused"
-                    [invalid]="control.invalid"
                     [placeholder]="textfield.size === 's' ? 'Card number' : ''"
-                    [readOnly]="control.readonly"
-                    [state]="input.state"
+                    [readonly]="control.readonly"
                     [(ngModel)]="card"
                     (binChange)="binChange.emitEvent($event)"
                 />
@@ -89,8 +89,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #icons
