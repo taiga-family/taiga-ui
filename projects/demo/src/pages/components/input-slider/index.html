@@ -155,7 +155,6 @@
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -168,6 +167,7 @@
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [quantum]="quantum"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
                             thousandSeparator: numberFormatDoc.thousandSeparator(),

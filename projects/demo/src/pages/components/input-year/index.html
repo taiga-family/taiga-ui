@@ -33,7 +33,6 @@
                 <tui-textfield
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
@@ -51,6 +50,7 @@
                         [formControl]="control"
                         [max]="max"
                         [min]="min"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                     <tui-calendar-year *tuiDropdown />

@@ -208,7 +208,6 @@
             <ng-template>
                 <tui-textfield
                     [invalid]="control.invalid"
-                    [readOnly]="control.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
@@ -230,6 +229,7 @@
                         [countrySearch]="countrySearch"
                         [formControl]="formControl"
                         [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''"
+                        [readOnly]="control.readonly"
                         [tuiDisabled]="control.disabled"
                         [(countryIsoCode)]="countryIsoCode"
                     />

@@ -44,7 +44,6 @@
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
                 [invalid]="control.invalid"
-                [readOnly]="control.readonly"
                 [tuiAppearanceFocus]="appearance.focus"
                 [tuiAppearanceState]="appearance.state"
                 [tuiTextfieldCleaner]="textfield.cleaner"
@@ -58,6 +57,7 @@
                     tuiInputCard
                     [disabled]="control.disabled"
                     [placeholder]="textfield.size === 's' ? 'Card number' : ''"
+                    [readOnly]="control.readonly"
                     [(ngModel)]="card"
                     (binChange)="binChange.emitEvent($event)"
                 />

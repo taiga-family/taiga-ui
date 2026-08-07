@@ -32,7 +32,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
         tuiInput: '',
         '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[class._empty]': 'value() === ""',
-        '[readOnly]': 'readOnly() || textfield.readOnly()',
+        '[readOnly]': 'readOnly()',
         '(focusin)': '0',
         '(focusout)': '0',
         '(input)': '0',
@@ -61,10 +61,6 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
         ),
     );
 
-    /**
-     * @deprecated use `<tui-textfield [readOnly]="..." />` instead
-     * TODO(v6): delete
-     */
     public readonly readOnly = input(false);
 
     /**
@@ -89,7 +85,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly mode = computed<string | null>(() => {
         const invalid = this.invalid() ?? this.textfield.invalid();
 
-        if (this.readOnly() || this.textfield.readOnly()) {
+        if (this.readOnly()) {
             return 'readonly';
         }
 
@@ -101,20 +97,18 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     });
 
     /**
-     * Temporary workaround until TuiControl has deprecated `readOnly` / `pseudoInvalid` props
+     * Temporary workaround until TuiControl has deprecated `pseudoInvalid` prop
      * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
      * TODO(v6): remove all logic inside constructor
      */
     constructor() {
         const injector = inject(INJECTOR);
-        const readOnly = computed(() => this.readOnly() || this.textfield.readOnly());
         const invalid = computed(() => this.invalid() ?? this.textfield.invalid());
 
         effect(() => {
             const control = injector.get(TuiControl, null, {self: true});
 
             if (control) {
-                tuiSetSignal(control.readOnly, readOnly());
                 tuiSetSignal(control.pseudoInvalid, invalid());
             }
         });

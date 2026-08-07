@@ -58,7 +58,6 @@
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -73,6 +72,7 @@
                         [formControl]="control"
                         [max]="max"
                         [min]="min"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     ></textarea>
                 </tui-textfield>

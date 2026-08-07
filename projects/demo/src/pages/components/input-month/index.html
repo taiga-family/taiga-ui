@@ -154,7 +154,6 @@
             <ng-template>
                 <tui-textfield
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -164,6 +163,7 @@
                         placeholder="Month"
                         tuiInputMonth
                         [formControl]="control"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 

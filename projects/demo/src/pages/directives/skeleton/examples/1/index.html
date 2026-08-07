@@ -35,14 +35,12 @@
     ></span>
 </p>
 <p>
-    <tui-textfield
-        [readOnly]="skeleton"
-        [tuiSkeleton]="skeleton"
-    >
+    <tui-textfield [tuiSkeleton]="skeleton">
         <label tuiLabel>Input</label>
         <input
             tuiInput
             value="Some value"
+            [readOnly]="skeleton"
         />
     </tui-textfield>
 </p>

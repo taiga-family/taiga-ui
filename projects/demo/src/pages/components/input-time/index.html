@@ -220,7 +220,6 @@
             <ng-template>
                 <tui-textfield
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -234,6 +233,7 @@
                         [mode]="mode"
                         [postfix]="postfix"
                         [prefix]="prefix"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>

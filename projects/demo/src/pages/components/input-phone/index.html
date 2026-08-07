@@ -43,7 +43,6 @@
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
@@ -55,6 +54,7 @@
                         tuiInputPhone
                         [formControl]="control"
                         [mask]="phoneMask"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>

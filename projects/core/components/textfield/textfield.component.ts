@@ -146,7 +146,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
     public readonly invalid = input<boolean | null>(null);
-    public readonly readOnly = input(false);
     /**
      * TODO(v6): expose inputs using host directives API
      * ```ts

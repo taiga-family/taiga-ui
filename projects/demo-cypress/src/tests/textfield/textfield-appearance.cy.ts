@@ -12,13 +12,11 @@ import {TuiInputDate} from '@taiga-ui/kit';
 
 @Directive()
 abstract class Sandbox {
-    public readonly readOnly = model<boolean>(false);
     public readonly invalid = model<boolean | null>(null);
     public readonly focused = model<boolean | null>(null);
     public readonly state = model<TuiInteractiveState | null>(null);
 
     public reset(): void {
-        this.readOnly.set(false);
         this.invalid.set(null);
         this.focused.set(null);
         this.state.set(null);
@@ -31,7 +29,6 @@ abstract class Sandbox {
         <tui-root>
             <tui-textfield
                 [invalid]="invalid()"
-                [readOnly]="readOnly()"
                 [tuiAppearanceFocus]="focused()"
                 [tuiAppearanceState]="state()"
             >
@@ -64,7 +61,6 @@ export class InputSandbox extends Sandbox {
         <tui-root>
             <tui-textfield
                 [invalid]="invalid()"
-                [readOnly]="readOnly()"
                 [tuiAppearanceFocus]="focused()"
                 [tuiAppearanceState]="state()"
             >
@@ -105,7 +101,6 @@ export class InputDateSandbox extends Sandbox {
                     [focused]="focused()"
                     [formControl]="control"
                     [invalid]="invalid()"
-                    [readOnly]="readOnly()"
                     [state]="state()"
                 />
             </tui-textfield>
@@ -137,7 +132,6 @@ export class InputLegacySandbox extends Sandbox {
                     [focused]="focused()"
                     [formControl]="control"
                     [invalid]="invalid()"
-                    [readOnly]="readOnly()"
                     [state]="state()"
                 />
             </tui-textfield>
@@ -168,22 +162,22 @@ const SANDBOXES: ReadonlyArray<{
 }> = [
     {
         component: InputSandbox,
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
         snapshotPrefix: 'tuiInput',
     },
     {
         component: InputLegacySandbox,
-        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
+        title: '<input [invalid]="..." [focused]="..." [state]="..."  />',
         snapshotPrefix: 'tuiInput-legacy-api',
     },
     {
         component: InputDateLegacySandbox,
-        title: '<input [invalid]="..." [focused]="..." [state]="..." [readOnly]="..."  />',
+        title: '<input [invalid]="..." [focused]="..." [state]="..."   />',
         snapshotPrefix: 'tuiInputDate-legacy-api',
     },
     {
         component: InputDateSandbox,
-        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..." [readOnly]="..."  />',
+        title: '<tui-textfield [invalid]="..." [tuiAppearanceFocus]="..." [tuiAppearanceState]="..."  />',
         snapshotPrefix: 'tuiInputDate',
     },
 ];
@@ -382,29 +376,6 @@ describe('Textfield appearance', () => {
 
                     cy.get('tui-textfield').should('not.have.attr', 'data-state');
                     snapshot('[state]-null-after-reset');
-                });
-            });
-
-            describe('[readOnly]', () => {
-                it('true => readonly appearance on top of the native readonly state', () => {
-                    cy.mount(component, {componentProperties: {readOnly: true}});
-
-                    cy.get('tui-textfield').should('have.attr', 'data-mode', 'readonly');
-                    cy.get('[tuiInput]').should('have.attr', 'readonly');
-
-                    snapshot('[readOnly]-true');
-                });
-
-                it('back to false => the manual override is dropped', () => {
-                    cy.mount(component, {componentProperties: {readOnly: true}});
-                    cy.get('tui-textfield').should('have.attr', 'data-mode', 'readonly');
-
-                    cy.get('#reset').click();
-
-                    cy.get('tui-textfield').should('not.have.attr', 'data-mode');
-                    cy.get('[tuiInput]').should('not.have.attr', 'readonly');
-
-                    snapshot('[readOnly]-false');
                 });
             });
         });

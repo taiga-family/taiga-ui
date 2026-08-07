@@ -253,7 +253,6 @@
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [invalid]="controlDoc.invalid"
-                    [readOnly]="controlDoc.readonly"
                     [stringify]="itemsHandlers.stringify()"
                     [tuiAppearanceFocus]="appearance.focus"
                     [tuiAppearanceState]="appearance.state"
@@ -276,6 +275,7 @@
                         tuiSelect
                         [formControl]="control"
                         [placeholder]="showPlaceholder ? 'Choose country' : ''"
+                        [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 

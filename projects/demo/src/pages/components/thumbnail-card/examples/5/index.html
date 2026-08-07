@@ -9,15 +9,13 @@
     }
 </tui-segmented>
 
-<tui-textfield
-    [invalid]="status === 'invalid'"
-    [readOnly]="status === 'readOnly'"
->
+<tui-textfield [invalid]="status === 'invalid'">
     <label tuiLabel>Card number</label>
     <input
         icon=""
         tuiInputCard
         [disabled]="status === 'disabled'"
+        [readOnly]="status === 'readOnly'"
         [(ngModel)]="card"
     />
     @if (card.startsWith('1234')) {

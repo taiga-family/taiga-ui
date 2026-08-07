@@ -7,14 +7,12 @@
     />
     <tui-icon tuiTooltip="Disabled does not show tooltip" />
 </tui-textfield>
-<tui-textfield
-    iconStart="@tui.search"
-    [readOnly]="true"
->
+<tui-textfield iconStart="@tui.search">
     <label tuiLabel>Read-only</label>
     <input
         placeholder="I am placeholder"
         tuiInput
+        [readOnly]="true"
         [(ngModel)]="value"
     />
     <tui-icon tuiTooltip="Readonly shows tooltip" />
