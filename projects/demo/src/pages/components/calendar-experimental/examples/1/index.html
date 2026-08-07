@@ -10,7 +10,10 @@
             [max]="max"
             [min]="min"
         />
-        <tui-date-picker *tuiDropdown />
+        <tui-calendar
+            *tuiDropdown
+            new
+        />
     </tui-textfield>
 
     <tui-textfield
@@ -24,7 +27,10 @@
             [max]="max"
             [min]="min"
         />
-        <tui-date-picker *tuiDropdown />
+        <tui-calendar
+            *tuiDropdown
+            new
+        />
     </tui-textfield>
 
     <tui-textfield [disabledItemHandler]="disabledItemHandler">
@@ -35,9 +41,10 @@
             [max]="max"
             [min]="min"
         />
-        <tui-date-picker
+        <tui-calendar
             *tuiDropdown
             mode="range"
+            new
         />
     </tui-textfield>
 </form>
