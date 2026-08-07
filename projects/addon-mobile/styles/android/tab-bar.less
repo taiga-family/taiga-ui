@@ -1,0 +1,24 @@
+&.tui-liquid-glass {
+    nav[tuiTabBar] {
+        backdrop-filter: none;
+
+        &::before {
+            background: var(--tui-background-base);
+            box-shadow: 0 -0.25rem 0.25rem -0.25rem rgba(0, 0, 0, 0.16);
+            opacity: 1;
+        }
+
+        [tuiTabBarItem] {
+            .t-icon {
+                inline-size: 1.5rem;
+                block-size: 1.5rem;
+                margin-block-start: 0.5rem;
+                border: 0;
+            }
+
+            .t-text {
+                font: var(--tui-typography-ui-xs);
+            }
+        }
+    }
+}

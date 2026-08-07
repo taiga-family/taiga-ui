@@ -78,6 +78,25 @@
                             class="t-fixed"
                         />
                     }
+                    @case (6) {
+                        <p>
+                            On Android devices the tab bar takes on its updated appearance once the liquid-glass option
+                            is enabled in
+                            <code>provideTaiga(&#123;apis: &#123;liquidGlass: true&#125;&#125;)</code>
+                        </p>
+                        <label tuiLabel>
+                            <input
+                                tuiCheckbox
+                                type="checkbox"
+                                [(ngModel)]="fixedLiquidAndroid"
+                            />
+                            Fixed
+                        </label>
+                        <tui-tab-bar-example-liquid-android
+                            *tuiPopup="fixedLiquidAndroid"
+                            class="t-fixed"
+                        />
+                    }
                 }
             </ng-template>
         }
