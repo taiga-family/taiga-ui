@@ -3,6 +3,7 @@ import {NgControl} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiInjectFormField} from '@taiga-ui/cdk/utils';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -39,6 +40,8 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     },
 })
 export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
+    private readonly field = tuiInjectFormField();
+
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -93,7 +96,8 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly value = tuiValue(this.el);
 
     public readonly mode = computed<string | null>(() => {
-        const invalid = this.textfield.invalid() ?? this.invalid();
+        const fallback = this.field() ? null : this.invalid();
+        const invalid = this.textfield.invalid() ?? fallback;
 
         if (this.readOnly()) {
             return 'readonly';
@@ -113,13 +117,12 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
      */
     constructor() {
         const injector = inject(INJECTOR);
-        const invalid = computed(() => this.textfield.invalid() ?? this.invalid());
 
         effect(() => {
             const control = injector.get(TuiControl, null, {self: true});
 
             if (control) {
-                tuiSetSignal(control.pseudoInvalid, invalid());
+                tuiSetSignal(control.pseudoInvalid, this.textfield.invalid());
             }
         });
     }
