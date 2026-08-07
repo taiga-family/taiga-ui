@@ -1,4 +1,7 @@
-<tui-textfield [content]="contentStartHidden ? '' : contentStart()">
+<tui-textfield
+    [content]="contentStartHidden ? '' : contentStart()"
+    [invalid]="invalid()"
+>
     <label tuiLabel>
         <ng-content />
     </label>
@@ -6,7 +9,6 @@
     <input
         tuiInputNumber
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [max]="value()[1]"
         [min]="min()"
         [ngModelOptions]="{standalone: true}"
@@ -25,7 +27,6 @@
         class="t-end"
         [class._hidden]="!contentEndHidden || !this.interactive()"
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [max]="max()"
         [min]="value()[0]"
         [ngModelOptions]="{standalone: true}"

@@ -60,6 +60,9 @@
                     multi
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
@@ -68,13 +71,10 @@
                     <input
                         placeholder="Choose date"
                         tuiInputDateMulti
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -113,8 +113,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #icons

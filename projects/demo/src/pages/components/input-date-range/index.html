@@ -59,6 +59,9 @@
                 <tui-textfield
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
@@ -70,16 +73,13 @@
 
                     <input
                         tuiInputDateRange
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [maxLength]="maxLength"
                         [min]="min"
                         [minLength]="minLength"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''"
                         [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
@@ -157,8 +157,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #icons
