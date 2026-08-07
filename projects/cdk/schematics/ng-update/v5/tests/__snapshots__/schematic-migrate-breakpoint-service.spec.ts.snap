@@ -32,6 +32,43 @@ exports[`ng-update breakpoint service adds TODO comment for unsupported construc
 }
 `;
 
+exports[`ng-update breakpoint service adds TODO comments for multiple unsupported @Inject usages in one file: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, Inject} from '@angular/core';
+                import {TuiBreakpointMediaKey, TuiBreakpointService} from '@taiga-ui/core';
+                import {type Observable} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+                        @Inject(TuiBreakpointService) private readonly breakpoint$: TuiBreakpointService,
+                        @Inject(TuiBreakpointService) private readonly media$: Observable<TuiBreakpointMediaKey>,
+                    ) {}
+                }
+            ",
+  "1. After": "
+                import {Component, Inject} from '@angular/core';
+                import {TuiBreakpointMediaKey, TuiBreakpointService} from '@taiga-ui/core';
+                import {type Observable} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
+                        @Inject(TuiBreakpointService) private readonly breakpoint$: TuiBreakpointService,
+// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
+                        @Inject(TuiBreakpointService) private readonly media$: Observable<TuiBreakpointMediaKey>,
+                    ) {}
+                }
+            ",
+}
+`;
+
 exports[`ng-update breakpoint service migrates TuiBreakpointService inject usage to TUI_BREAKPOINT observable wrapper: test.ts 1`] = `
 {
   "0. Before": "
@@ -114,6 +151,48 @@ exports[`ng-update breakpoint service migrates inline inject(TuiBreakpointServic
                 export class TestComponent {
                     protected readonly s$ = toObservable(inject(TUI_BREAKPOINT)).pipe(
                         map((breakpoint) => breakpoint === 'mobile'),
+                    );
+                }
+            ",
+}
+`;
+
+exports[`ng-update breakpoint service migrates multiple inject(TuiBreakpointService) usages in one file: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+                import {map} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly a$ = inject(TuiBreakpointService).pipe(
+                        map((breakpoint) => breakpoint === 'mobile'),
+                    );
+
+                    protected readonly b$ = inject(TuiBreakpointService).pipe(
+                        map((breakpoint) => breakpoint === 'desktop'),
+                    );
+                }
+            ",
+  "1. After": "import { toObservable } from "@angular/core/rxjs-interop";
+
+                import {Component, inject} from '@angular/core';
+                import { TUI_BREAKPOINT } from '@taiga-ui/core';
+                import {map} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly a$ = toObservable(inject(TUI_BREAKPOINT)).pipe(
+                        map((breakpoint) => breakpoint === 'mobile'),
+                    );
+
+                    protected readonly b$ = toObservable(inject(TUI_BREAKPOINT)).pipe(
+                        map((breakpoint) => breakpoint === 'desktop'),
                     );
                 }
             ",
