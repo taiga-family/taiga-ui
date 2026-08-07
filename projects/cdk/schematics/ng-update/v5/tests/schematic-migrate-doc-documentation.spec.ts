@@ -222,5 +222,20 @@ describe('ng-update tui-doc-documentation to table[tuiDocAPI]', () => {
         }),
     );
 
+    it(
+        'renames TuiDocDocumentation import to TuiDocAPI',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiDocDocumentation} from '@taiga-ui/addon-doc';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiDocDocumentation],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
