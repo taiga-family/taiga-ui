@@ -46,7 +46,7 @@ type DatePicker<T> = T extends 'single'
  * @deprecated: work in progress, do not use!
  */
 @Component({
-    selector: 'tui-calendars',
+    selector: 'tui-calendar[months]',
     imports: [
         FormsModule,
         TuiButton,
@@ -58,18 +58,18 @@ type DatePicker<T> = T extends 'single'
         TuiSlides,
         WaIntersectionObservee,
     ],
-    templateUrl: './calendars.component.html',
-    styleUrl: './calendars.component.less',
+    templateUrl: './calendar-multi.component.html',
+    styleUrl: './calendar-multi.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsAuxiliary(TuiCalendars),
-        tuiProvide(AbstractTuiCalendar, TuiCalendars),
+        tuiAsAuxiliary(TuiCalendarMulti),
+        tuiProvide(AbstractTuiCalendar, TuiCalendarMulti),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
         tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
     ],
     host: {'[style.--t-months]': 'months()'},
 })
-export class TuiCalendars<
+export class TuiCalendarMulti<
     T extends 'multi' | 'range' | 'single' = 'single',
 > extends AbstractTuiCalendar<DatePicker<T>> {
     protected readonly visible = signal<Record<string, number>>({});
