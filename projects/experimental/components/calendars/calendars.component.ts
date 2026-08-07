@@ -11,6 +11,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WaIntersectionObservee} from '@ng-web-apis/intersection-observer';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -55,6 +56,7 @@ type DatePicker<T> = T extends 'single'
         // eslint-disable-next-line @taiga-ui/experience-next/short-tui-imports
         TuiMonthComponent,
         TuiSlides,
+        WaIntersectionObservee,
     ],
     templateUrl: './calendars.component.html',
     styleUrl: './calendars.component.less',
@@ -70,6 +72,7 @@ type DatePicker<T> = T extends 'single'
 export class TuiCalendars<
     T extends 'multi' | 'range' | 'single' = 'single',
 > extends AbstractTuiCalendar<DatePicker<T>> {
+    protected readonly visible = signal<Record<string, number>>({});
     protected readonly options = inject(TUI_MONTH_OPTIONS);
     protected readonly carousel = viewChild(TuiCarouselComponent);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -79,6 +82,10 @@ export class TuiCalendars<
     protected readonly scroll = viewChild.required(TuiCarouselComponent, {
         read: ElementRef,
     });
+
+    protected readonly height = computed(() =>
+        Math.max(...Object.values(this.visible())),
+    );
 
     protected readonly disabledDay = computed(
         () => (day: TuiDay) =>
@@ -142,5 +149,13 @@ export class TuiCalendars<
         } else {
             this.value.set(day as any);
         }
+    }
+
+    protected onIntersection(visible: boolean, month: TuiMonth, height: number): void {
+        this.visible.update((current) => {
+            const {[month.toJSON()]: removed, ...rest} = current;
+
+            return visible ? {...current, [month.toJSON()]: removed || height} : rest;
+        });
     }
 }

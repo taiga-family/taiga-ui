@@ -36,12 +36,16 @@
         [index]="index()"
         [max]="max().year * 12 + max().month"
         [min]="min().year * 12 + min().month"
+        [style.max-block-size.px]="height()"
         (indexChange)="month.set(getMonth(index() + ($event - index()) * months()))"
     >
         <ng-container *tuiItem="let current">
             @for (_ of '-'.repeat(months()); track $index) {
                 @let month = index() + (current - index()) * months() + $index | tuiMapper: getMonth;
-                <div class="t-calendar">
+                <div
+                    #el
+                    class="t-calendar"
+                >
                     <div class="t-header">{{ i18n()[month.month] }} {{ month.year }}</div>
                     <tui-month
                         [content]="contentDay()"
@@ -52,6 +56,7 @@
                         [showWeek]="showWeek()"
                         [value]="value()"
                         (pick)="onDay($event)"
+                        (waIntersectionObservee)="onIntersection(!!$event[0]?.isIntersecting, month, el.offsetHeight)"
                     />
                 </div>
             }
