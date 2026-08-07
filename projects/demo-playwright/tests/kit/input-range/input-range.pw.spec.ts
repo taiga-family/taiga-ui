@@ -466,7 +466,7 @@ describe('InputRange', () => {
                 .toHaveScreenshot('28-input-range-start-has-content--end-no-content.png');
         });
 
-        ['readOnly', 'disabled'].forEach((nonInteractiveProp) => {
+        ['readonly', 'disabled'].forEach((nonInteractiveProp) => {
             describe(`${nonInteractiveProp}=true`, () => {
                 test('START & END textfields both have no content', async ({page}) => {
                     await tuiGoto(
