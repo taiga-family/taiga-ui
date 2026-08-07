@@ -98,7 +98,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     });
 
     /**
-     * Temporary workaround until TuiControl has deprecated `invalid` prop
+     * Temporary workaround until TuiControl has deprecated `pseudoInvalid` property
      * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
      * TODO(v6): remove all logic inside constructor
      */
@@ -135,10 +135,6 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     }
 }
 
-/**
- * @deprecated use `hostDirectives: [TuiInputDirective]`
- * TODO(v6): delete
- */
 @Directive({
     hostDirectives: [
         {
