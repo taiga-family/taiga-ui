@@ -41,6 +41,21 @@ describe('ng-update TuiTextfield to TuiInput', () => {
                 `,
             }),
         );
+
+        it(
+            'should rename TuiTextfieldDirective to TuiInputDirective in imports and usages',
+            migrate({
+                component: /* TypeScript */ `
+                    import {TuiTextfieldDirective} from '@taiga-ui/core';
+
+                    @Component({standalone: true})
+                    export class TestComponent {
+                        @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+                        protected readonly field!: ElementRef;
+                    }
+                `,
+            }),
+        );
     });
 
     afterEach(() => resetActiveProject());

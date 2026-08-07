@@ -178,5 +178,20 @@ describe('ng-update', () => {
         }),
     );
 
+    it(
+        'renames TuiInputDateMultiModule import to TuiInputDateMulti',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputDateMultiModule],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
