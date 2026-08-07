@@ -109,7 +109,10 @@ describe('ng-update breakpoint service', () => {
         migrate({
             component: /* TypeScript */ `
                 import {Component, Inject} from '@angular/core';
-                import {TuiBreakpointMediaKey, TuiBreakpointService} from '@taiga-ui/core';
+                import {
+                    TuiBreakpointMediaKey,
+                    TuiBreakpointService,
+                } from '@taiga-ui/core';
                 import {type Observable} from 'rxjs';
 
                 @Component({
@@ -117,8 +120,10 @@ describe('ng-update breakpoint service', () => {
                 })
                 export class TestComponent {
                     constructor(
-                        @Inject(TuiBreakpointService) private readonly breakpoint$: TuiBreakpointService,
-                        @Inject(TuiBreakpointService) private readonly media$: Observable<TuiBreakpointMediaKey>,
+                        @Inject(TuiBreakpointService)
+                        private readonly breakpoint$: TuiBreakpointService,
+                        @Inject(TuiBreakpointService)
+                        private readonly media$: Observable<TuiBreakpointMediaKey>,
                     ) {}
                 }
             `,
