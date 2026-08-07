@@ -1,16 +1,11 @@
 import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {tuiGetCurrencySymbol} from './get-currency-symbol';
+import {tuiStringifyCurrency} from './stringify-currency';
 
-function stringifyCurrency(currency: TuiCurrencyVariants): string {
-    return currency === null || tuiIsString(currency)
-        ? currency || ''
-        : String(currency).padStart(3, '0');
-}
-
+/**
+ * @deprecated Use {@link tuiGetCurrencySymbol} instead.
+ */
 export function tuiFormatCurrency(currency: TuiCurrencyVariants): string {
-    const stringifiedCurrency = stringifyCurrency(currency);
-
-    return tuiGetCurrencySymbol(stringifiedCurrency) || stringifiedCurrency;
+    return tuiGetCurrencySymbol(currency) || tuiStringifyCurrency(currency);
 }
