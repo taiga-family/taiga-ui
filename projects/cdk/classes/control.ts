@@ -44,10 +44,6 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly refresh$ = new Subject<void>();
     private readonly internal = signal(this.fallback);
 
-    private readonly computedReadonly = computed(
-        () => this.readonly() || this.readOnly(),
-    );
-
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
 
@@ -60,7 +56,11 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
      * @deprecated use `<input [readonly]="..." />` instead
      * TODO(v6): delete
      */
-    public readonly readOnly = input(false);
+    public readonly readOnlyLegacy = input(false, {alias: 'readOnly'});
+    /**
+     * TODO(v6): delete, it's only for backward compatibility
+     */
+    public readonly readOnly = computed(() => this.readonly() || this.readOnlyLegacy());
     public readonly readonly = input(false, {transform: coerceBooleanProperty});
     /**
      * @deprecated use `<tui-textfield [invalid]="..." />` instead
@@ -70,9 +70,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
-    public readonly interactive = computed(
-        () => !this.disabled() && !this.computedReadonly(),
-    );
+    public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
 
     public readonly invalid = computed(() => {
         const pseudoInvalid = this.pseudoInvalid();
@@ -84,7 +82,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     public readonly mode = computed(() =>
         // eslint-disable-next-line no-nested-ternary
-        this.computedReadonly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
+        this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
     );
 
     public onTouched = EMPTY_FUNCTION;

@@ -42,7 +42,7 @@ export class TuiRating extends TuiControl<number> {
     public readonly max = input(this.options.max);
 
     protected onKeyDown(event: KeyboardEvent): void {
-        if (this.readOnly()) {
+        if (!this.interactive()) {
             event.preventDefault();
         }
     }
