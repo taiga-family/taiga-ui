@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update WA_IS_TOUCH signal warning adds TODO comment when TUI_IS_TOUCH is renamed to the WA_IS_TOUCH signal: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_IS_TOUCH} from '@taiga-ui/cdk';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly touch = inject(TUI_IS_TOUCH);
+                }
+            ",
+  "1. After": "// TODO: (Taiga UI migration) TUI_IS_TOUCH was renamed to WA_IS_TOUCH from @ng-web-apis/platform, which is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().
+import { WA_IS_TOUCH } from "@ng-web-apis/platform";
+
+                import {Component, inject} from '@angular/core';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly touch = inject(WA_IS_TOUCH);
+                }
+            ",
+}
+`;

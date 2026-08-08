@@ -29,7 +29,8 @@ exports[`ng-update misc removed tokens and helpers warning renames deprecated-al
                     protected readonly toggle = tuiToggleDay;
                 }
             ",
-  "1. After": "import { WA_IS_TOUCH } from "@ng-web-apis/platform";
+  "1. After": "// TODO: (Taiga UI migration) TUI_IS_TOUCH was renamed to WA_IS_TOUCH from @ng-web-apis/platform, which is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().
+import { WA_IS_TOUCH } from "@ng-web-apis/platform";
 
                 import {Component, inject} from '@angular/core';
 // TODO: (Taiga UI migration) TUI_SPIN_ICONS has been removed. Spinner increment/decrement icons were merged into the common icons — configure them via tuiCommonIconsProvider (TUI_COMMON_ICONS) from @taiga-ui/core instead.
