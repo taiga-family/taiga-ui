@@ -6,7 +6,7 @@ import {ALL_TS_FILES} from '../../../constants';
 import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {removeImport} from '../../../utils/import-manipulations';
-import {insertTodo} from '../../../utils/insert-todo';
+import {TODO_MARK} from '../../../utils/insert-todo';
 
 const TAIGA_CORE = '@taiga-ui/core';
 const BREAKPOINT_SERVICE = 'TuiBreakpointService';
@@ -98,6 +98,8 @@ function cleanupBreakpointServiceImport(sourceFile: SourceFile): void {
 }
 
 function addTodoForUnsupportedUsages(sourceFile: SourceFile): void {
+    const linePositions = new Set<number>();
+
     sourceFile
         .getImportDeclarations()
         .filter((decl) => decl.getModuleSpecifierValue() === TAIGA_CORE)
@@ -106,28 +108,38 @@ function addTodoForUnsupportedUsages(sourceFile: SourceFile): void {
                 .getNamedImports()
                 .find((namedImport) => namedImport.getName() === BREAKPOINT_SERVICE);
 
-            if (!specifier) {
+            const nameNode = specifier?.getNameNode();
+
+            if (!Node.isIdentifier(nameNode)) {
                 return;
             }
 
-            const nameNode = specifier.getNameNode();
+            nameNode
+                .findReferencesAsNodes()
+                .filter(
+                    (ref) =>
+                        ref.getSourceFile().getFilePath() === sourceFile.getFilePath() &&
+                        !Node.isImportSpecifier(ref.getParent()),
+                )
+                .forEach((ref) => {
+                    // A single constructor parameter can reference the service twice
+                    // (e.g. `@Inject(X)` decorator + `: X` type annotation). When
+                    // prettier wraps it onto separate lines those references have
+                    // different line positions, so anchor to the enclosing parameter
+                    // to emit exactly one TODO per injection site.
+                    const anchor =
+                        ref.getFirstAncestorByKind(SyntaxKind.Parameter) ?? ref;
 
-            const refs = Node.isIdentifier(nameNode)
-                ? nameNode
-                      .findReferencesAsNodes()
-                      .filter(
-                          (ref) =>
-                              ref.getSourceFile().getFilePath() ===
-                              sourceFile.getFilePath(),
-                      )
-                : [];
-
-            refs.forEach((ref) => {
-                if (Node.isImportSpecifier(ref.getParent())) {
-                    return;
-                }
-
-                insertTodo(ref, BREAKPOINT_TODO_MESSAGE);
-            });
+                    linePositions.add(anchor.getStartLinePos());
+                });
         });
+
+    // Positions are collected before any insertion: sourceFile.insertText forgets
+    // every node in the file, so a held ref node would throw on the next iteration.
+    // Insert bottom-up so each insertion cannot shift the offsets still pending.
+    [...linePositions]
+        .sort((a, b) => b - a)
+        .forEach((pos) =>
+            sourceFile.insertText(pos, `// ${TODO_MARK} ${BREAKPOINT_TODO_MESSAGE}\n`),
+        );
 }
