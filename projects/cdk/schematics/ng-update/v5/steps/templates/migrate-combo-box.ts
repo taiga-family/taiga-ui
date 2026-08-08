@@ -286,9 +286,9 @@ function handleGeneratedInput({
     const labelNode = findTextNode(element);
 
     if (isLabelOutsideTrue && labelNode) {
-        const labelText = labelNode.value.trim();
         const textStart = labelNode.sourceCodeLocation?.startOffset ?? 0;
-        const textEnd = labelNode.sourceCodeLocation?.endOffset ?? 0;
+        const textEnd = getLabelTextEnd(labelNode);
+        const labelText = template.slice(textStart, textEnd).trim();
 
         recorder.remove(templateOffset + textStart, textEnd - textStart);
 
@@ -301,7 +301,7 @@ function handleGeneratedInput({
     }
 
     const insertOffset = labelNode
-        ? (labelNode.sourceCodeLocation?.endOffset ?? 0)
+        ? getLabelTextEnd(labelNode)
         : (sourceCodeLocation?.endTag?.startOffset ?? 0);
 
     recorder.insertRight(
@@ -315,6 +315,19 @@ function findTextNode(element: Element): TextNode | undefined {
         (node: ChildNode): node is TextNode =>
             node.nodeName === '#text' && !!(node as TextNode).value.trim(),
     );
+}
+
+function getLabelTextEnd(labelNode: TextNode): number {
+    const start = labelNode.sourceCodeLocation?.startOffset ?? 0;
+    const end = labelNode.sourceCodeLocation?.endOffset ?? 0;
+
+    // parse5 treats Angular control-flow (`@if (...) {`, `}`) as plain text and folds it into
+    // this text node. Stop the label before it so `</label>`/`<input>` are not emitted inside a block.
+    const controlFlow = labelNode.value.search(/@[a-z]|[{}]/i);
+
+    return controlFlow === -1
+        ? end
+        : start + labelNode.value.slice(0, controlFlow).replace(/\s+$/u, '').length;
 }
 
 function getPlaceholderText(element: Element): string {
@@ -368,7 +381,7 @@ function wrapTextInLabel(
     const labelTextStart =
         (labelNode.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
-    const labelTextEnd = (labelNode.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
+    const labelTextEnd = getLabelTextEnd(labelNode) + templateOffset;
 
     recorder.insertRight(labelTextStart, '\n<label tuiLabel>');
     recorder.insertRight(labelTextEnd, '</label>\n');
