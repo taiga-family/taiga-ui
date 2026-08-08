@@ -5,11 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiCalendar} from '@taiga-ui/experimental';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
+    imports: [DatePipe, FormsModule, TuiCalendar, TuiInputDate, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

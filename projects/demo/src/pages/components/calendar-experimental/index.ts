@@ -11,10 +11,10 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TUI_MONTH_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
+import {TUI_MONTH_OPTIONS, TuiCalendar} from '@taiga-ui/experimental';
 
 @Component({
-    imports: [TuiDatePicker, TuiDemo, TuiTitle],
+    imports: [TuiCalendar, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })

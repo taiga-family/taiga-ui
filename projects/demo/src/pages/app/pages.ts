@@ -289,10 +289,10 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'DatePicker',
+                title: 'CalendarExperimental',
                 keywords:
                     'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker, date, day, week, month, year',
-                route: DemoRoute.DatePicker,
+                route: DemoRoute.CalendarExperimental,
             },
         ],
     },

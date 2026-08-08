@@ -288,9 +288,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar'),
     }),
     route({
-        path: DemoRoute.DatePicker,
-        title: 'DatePicker',
-        loadComponent: async () => import('../components/date-picker'),
+        path: DemoRoute.CalendarExperimental,
+        title: 'CalendarExperimental',
+        loadComponent: async () => import('../components/calendar-experimental'),
     }),
     route({
         path: DemoRoute.Carousel,

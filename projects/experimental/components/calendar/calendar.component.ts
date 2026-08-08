@@ -38,7 +38,7 @@ import {TuiElasticContainer} from '@taiga-ui/layout/components/elastic-container
 import {TuiSlides} from '@taiga-ui/layout/components/slides';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiDatePickerHeader} from './date-picker-header.component';
+import {TuiCalendarHeader} from './calendar-header.component';
 
 type DatePicker<T> = T extends 'single'
     ? TuiDay
@@ -50,14 +50,14 @@ type DatePicker<T> = T extends 'single'
  * @deprecated: work in progress, do not use!
  */
 @Component({
-    selector: 'tui-date-picker',
+    selector: 'tui-calendar[new]',
     imports: [
         FormsModule,
         TuiButton,
+        TuiCalendarHeader,
         TuiCarousel,
         TuiChevron,
         TuiDataGrid,
-        TuiDatePickerHeader,
         TuiElasticContainer,
         TuiLink,
         TuiMapperPipe,
@@ -65,17 +65,17 @@ type DatePicker<T> = T extends 'single'
         TuiMonthComponent,
         TuiSlides,
     ],
-    templateUrl: './date-picker.component.html',
-    styleUrl: './date-picker.component.less',
+    templateUrl: './calendar.component.html',
+    styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsAuxiliary(TuiDatePicker),
-        tuiProvide(AbstractTuiCalendar, TuiDatePicker),
+        tuiAsAuxiliary(TuiCalendar),
+        tuiProvide(AbstractTuiCalendar, TuiCalendar),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
         tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
     ],
 })
-export class TuiDatePicker<
+export class TuiCalendar<
     T extends 'multi' | 'range' | 'single' = 'single',
 > extends AbstractTuiCalendar<DatePicker<T>> {
     protected readonly options = inject(TUI_MONTH_OPTIONS);

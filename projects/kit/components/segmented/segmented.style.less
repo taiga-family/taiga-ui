@@ -116,6 +116,12 @@ tui-segmented:where(*&) {
         &.tui-segmented_active + * {
             border-image: linear-gradient(var(--tui-border-normal), transparent) 1 / 0 0 25% 0.5 / 100 0 0 0.5;
         }
+
+        &:disabled,
+        &:has(:disabled) {
+            opacity: var(--tui-disabled-opacity);
+            pointer-events: none;
+        }
     }
 
     & > .tui-segmented_active {

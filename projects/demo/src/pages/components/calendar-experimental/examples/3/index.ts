@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiDay} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiCalendar} from '@taiga-ui/experimental';
 import {
     TuiButtonSelect,
     TuiInputDate,
@@ -17,7 +17,7 @@ import {
         FormsModule,
         TuiButton,
         TuiButtonSelect,
-        TuiDatePicker,
+        TuiCalendar,
         TuiInputDate,
         TuiInputDateMulti,
         TuiInputDateRange,
