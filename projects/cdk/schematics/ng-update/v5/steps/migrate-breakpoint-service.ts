@@ -121,7 +121,17 @@ function addTodoForUnsupportedUsages(sourceFile: SourceFile): void {
                         ref.getSourceFile().getFilePath() === sourceFile.getFilePath() &&
                         !Node.isImportSpecifier(ref.getParent()),
                 )
-                .forEach((ref) => linePositions.add(ref.getStartLinePos()));
+                .forEach((ref) => {
+                    // A single constructor parameter can reference the service twice
+                    // (e.g. `@Inject(X)` decorator + `: X` type annotation). When
+                    // prettier wraps it onto separate lines those references have
+                    // different line positions, so anchor to the enclosing parameter
+                    // to emit exactly one TODO per injection site.
+                    const anchor =
+                        ref.getFirstAncestorByKind(SyntaxKind.Parameter) ?? ref;
+
+                    linePositions.add(anchor.getStartLinePos());
+                });
         });
 
     // Positions are collected before any insertion: sourceFile.insertText forgets
