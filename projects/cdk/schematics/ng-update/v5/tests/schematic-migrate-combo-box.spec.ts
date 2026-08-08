@@ -317,22 +317,20 @@ describe('ng-update ComboBox', () => {
         migrate({
             template: /* HTML */ `
                 <tui-combo-box [formControl]="control">
-                    Attribute
-                    @if (items === null) {
-                        <tui-data-list-wrapper
-                            *tuiDataList
-                            [items]="null"
-                        />
-                    }
-                    @if (items !== null) {
-                        <tui-data-list *tuiDataList>
-                            <button
-                                tuiOption
-                                [value]="item"
-                            >
-                                {{ item }}
-                            </button>
-                        </tui-data-list>
+                    Attribute @if (items === null) {
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="null"
+                    />
+                    } @if (items !== null) {
+                    <tui-data-list *tuiDataList>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
                     }
                 </tui-combo-box>
             `,
