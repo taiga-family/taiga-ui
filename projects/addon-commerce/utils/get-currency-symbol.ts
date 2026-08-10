@@ -4,11 +4,9 @@ import {
     type TuiCurrencyVariants,
 } from '@taiga-ui/addon-commerce/types';
 
-import {tuiStringifyCurrency} from './stringify-currency';
-
 export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | null {
     if (typeof currency === 'number') {
-        return tuiGetCurrencySymbol(tuiStringifyCurrency(currency));
+        return tuiGetCurrencySymbol(String(currency).padStart(3, '0'));
     }
 
     switch (currency) {
