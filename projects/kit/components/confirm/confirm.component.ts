@@ -15,12 +15,7 @@ import {
     PolymorpheusOutlet,
 } from '@taiga-ui/polymorpheus';
 
-export interface TuiConfirmData {
-    readonly content?: PolymorpheusContent;
-    readonly no?: string;
-    readonly yes?: string;
-    readonly appearance?: string | readonly [yes: string, no: string];
-}
+import {TUI_CONFIRM_OPTIONS, type TuiConfirmData} from './confirm.options';
 
 @Component({
     imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton],
@@ -37,18 +32,23 @@ export interface TuiConfirmData {
 export class TuiConfirm {
     protected readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly words = inject(TUI_CONFIRM_WORDS);
+    protected readonly data = inject(TUI_CONFIRM_OPTIONS);
     protected readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
+    protected get appearance(): string | readonly [string, string] {
+        return this.context.data?.appearance || this.data.appearance || '';
+    }
+
     protected get yes(): string {
-        return Array.isArray(this.context.data?.appearance)
-            ? this.context.data?.appearance[0]
-            : String(this.context.data?.appearance || 'primary');
+        return Array.isArray(this.appearance)
+            ? this.appearance[0]
+            : String(this.appearance || 'primary');
     }
 
     protected get no(): string {
-        return Array.isArray(this.context.data?.appearance)
-            ? this.context.data?.appearance[1]
+        return Array.isArray(this.appearance)
+            ? this.appearance[1]
             : this.options.appearance;
     }
 }

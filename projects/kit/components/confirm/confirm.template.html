@@ -1,5 +1,5 @@
 <div
-    *polymorpheusOutlet="context.data?.content as text; context: context"
+    *polymorpheusOutlet="context.data?.content || data.content as text; context: context"
     class="t-content"
     [innerHTML]="text"
 ></div>
@@ -11,7 +11,7 @@
         [appearance]="no"
         (click)="context.completeWith(false)"
     >
-        {{ context.data?.no || words().no }}
+        {{ context.data?.no || data.no || words().no }}
     </button>
     <button
         tuiAutoFocus
@@ -21,6 +21,6 @@
         [appearance]="yes"
         (click)="context.completeWith(true)"
     >
-        {{ context.data?.yes || words().yes }}
+        {{ context.data?.yes || data.yes || words().yes }}
     </button>
 </footer>
