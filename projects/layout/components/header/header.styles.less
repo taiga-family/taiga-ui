@@ -11,7 +11,7 @@
     text-align: start;
     overflow-wrap: break-word;
 
-    p:not([tuiSubtitle]) {
+    p:where(:not([tuiSubtitle], [tuiCaption])) {
         margin: 0.25rem 0 0;
         font: var(--tui-typography-body-m);
 
