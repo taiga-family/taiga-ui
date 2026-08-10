@@ -1,8 +1,10 @@
-import {computed, Directive, inject, input} from '@angular/core';
+import {computed, Directive, effect, inject, INJECTOR, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiAsTextfieldAccessor,
@@ -43,30 +45,75 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-    protected readonly s = tuiAppearanceState(computed(() => this.state()));
+
+    protected readonly s = tuiAppearanceState(
+        computed(() => this.state() ?? this.textfield.tuiAppearanceState()),
+    );
+
     protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
 
+    // TODO(v6): move to {@link TuiTextfieldComponent}
     protected readonly f = tuiAppearanceFocus(
-        computed(() => this.focused() ?? this.textfield.focused()),
+        computed(
+            () =>
+                this.focused() ??
+                this.textfield.tuiAppearanceFocus() ??
+                this.textfield.focused(),
+        ),
     );
 
     public readonly readOnly = input(false);
+
+    /**
+     * @deprecated use `<tui-textfield [invalid]="..." />` instead
+     * TODO(v6): delete
+     */
     public readonly invalid = input<boolean | null>(null);
+
+    /**
+     * @deprecated use `<tui-textfield [tuiAppearanceFocus]="..." />` instead
+     * TODO(v6): delete
+     */
     public readonly focused = input<boolean | null>(null);
+
+    /**
+     * @deprecated use `<tui-textfield [tuiAppearanceState]="..." />` instead
+     * TODO(v6): delete
+     */
     public readonly state = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.el);
 
     public readonly mode = computed<string | null>(() => {
+        const invalid = this.textfield.invalid() ?? this.invalid();
+
         if (this.readOnly()) {
             return 'readonly';
         }
 
-        if (this.invalid() === false) {
+        if (invalid === false) {
             return 'valid';
         }
 
-        return this.invalid() ? 'invalid' : null;
+        return invalid ? 'invalid' : null;
     });
+
+    /**
+     * Temporary workaround until TuiControl has deprecated `pseudoInvalid` property
+     * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
+     * TODO(v6): remove all logic inside constructor
+     */
+    constructor() {
+        const injector = inject(INJECTOR);
+        const invalid = computed(() => this.textfield.invalid() ?? this.invalid());
+
+        effect(() => {
+            const control = injector.get(TuiControl, null, {self: true});
+
+            if (control) {
+                tuiSetSignal(control.pseudoInvalid, invalid());
+            }
+        });
+    }
 
     public setValue(value: T | null): void {
         this.el.focus();

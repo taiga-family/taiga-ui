@@ -114,6 +114,9 @@
             <ng-template>
                 <tui-textfield
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownDirection]="dropdown.direction"
                     [tuiDropdownMinHeight]="dropdown.minHeight"
@@ -127,14 +130,11 @@
 
                     <input
                         tuiInputDateTime
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
                         [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -177,8 +177,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #icons

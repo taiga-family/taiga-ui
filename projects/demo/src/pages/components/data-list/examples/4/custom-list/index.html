@@ -1,10 +1,12 @@
 <div class="t-list-search">
-    <tui-textfield iconStart="@tui.search">
+    <tui-textfield
+        iconStart="@tui.search"
+        [tuiAppearanceFocus]="true"
+    >
         <input
             placeholder="Search categories"
             tuiAutoFocus
             tuiInput
-            [focused]="true"
             [(ngModel)]="value"
         />
     </tui-textfield>
