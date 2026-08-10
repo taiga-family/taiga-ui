@@ -13056,13 +13056,13 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 | Property | Type | Description |
 |----------|-----|----------|
 | content | `PolymorpheusContent` | content of the confirm |
-| [appearance] | `string` | appearance of the confirming button |
+| [appearance] | `string | [string, string]` | appearance of the confirming button |
 | [no] | `string` | button |
 | [yes] | `string` | button |
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -13130,11 +13130,15 @@ export default class Example implements TuiConfirmData {
     private readonly alerts = inject(TuiNotificationService);
 
     protected readonly routes = DemoRoute;
-    protected readonly examples = ['Basic'];
     protected readonly exampleService = import('./examples/import/service.md');
 
-    public readonly appearances = ['primary', 'accent', 'secondary'];
-    public appearance = this.appearances[0]!;
+    public readonly appearances = [
+        'primary',
+        'primary-destructive',
+        ['primary', 'action-destructive'],
+    ] as const;
+
+    public appearance = this.appearances[0];
     public no = 'No';
     public yes = 'Yes';
 
