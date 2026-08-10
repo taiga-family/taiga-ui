@@ -62,7 +62,7 @@ describe('ng-update breakpoint service', () => {
     );
 
     it(
-        'adds TODO comment for unsupported constructor injection usage',
+        'migrates typed constructor parameter to a TUI_BREAKPOINT field',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
@@ -105,7 +105,7 @@ describe('ng-update breakpoint service', () => {
     );
 
     it(
-        'adds TODO comments for multiple unsupported @Inject usages in one file',
+        'migrates multiple @Inject(TuiBreakpointService) constructor params to fields',
         migrate({
             component: /* TypeScript */ `
                 import {Component, Inject} from '@angular/core';
@@ -125,6 +125,23 @@ describe('ng-update breakpoint service', () => {
                         @Inject(TuiBreakpointService)
                         private readonly media$: Observable<TuiBreakpointMediaKey>,
                     ) {}
+                }
+            `,
+        }),
+    );
+
+    it(
+        'adds a removed-service TODO for unsupported non-parameter type usage',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected service!: TuiBreakpointService;
                 }
             `,
         }),

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update breakpoint service adds TODO comment for unsupported constructor injection usage: test.ts 1`] = `
+exports[`ng-update breakpoint service adds a removed-service TODO for unsupported non-parameter type usage: test.ts 1`] = `
 {
   "0. Before": "
                 import {Component} from '@angular/core';
@@ -10,9 +10,7 @@ exports[`ng-update breakpoint service adds TODO comment for unsupported construc
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    constructor(
-                        private readonly breakpointService: TuiBreakpointService,
-                    ) {}
+                    protected service!: TuiBreakpointService;
                 }
             ",
   "1. After": "
@@ -23,57 +21,8 @@ exports[`ng-update breakpoint service adds TODO comment for unsupported construc
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    constructor(
-// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
-                        private readonly breakpointService: TuiBreakpointService,
-                    ) {}
-                }
-            ",
-}
-`;
-
-exports[`ng-update breakpoint service adds TODO comments for multiple unsupported @Inject usages in one file: test.ts 1`] = `
-{
-  "0. Before": "
-                import {Component, Inject} from '@angular/core';
-                import {
-                    TuiBreakpointMediaKey,
-                    TuiBreakpointService,
-                } from '@taiga-ui/core';
-                import {type Observable} from 'rxjs';
-
-                @Component({
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {
-                    constructor(
-                        @Inject(TuiBreakpointService)
-                        private readonly breakpoint$: TuiBreakpointService,
-                        @Inject(TuiBreakpointService)
-                        private readonly media$: Observable<TuiBreakpointMediaKey>,
-                    ) {}
-                }
-            ",
-  "1. After": "
-                import {Component, Inject} from '@angular/core';
-                import {
-                    TuiBreakpointMediaKey,
-                    TuiBreakpointService,
-                } from '@taiga-ui/core';
-                import {type Observable} from 'rxjs';
-
-                @Component({
-                    templateUrl: './test.html',
-                })
-                export class TestComponent {
-                    constructor(
-// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
-                        @Inject(TuiBreakpointService)
-                        private readonly breakpoint$: TuiBreakpointService,
-// TODO: (Taiga UI migration) TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed
-                        @Inject(TuiBreakpointService)
-                        private readonly media$: Observable<TuiBreakpointMediaKey>,
-                    ) {}
+// TODO: (Taiga UI migration) TuiBreakpointService has been removed. Use TUI_BREAKPOINT (signal token); wrap with toObservable(...) for Observable-based code if needed
+                    protected service!: TuiBreakpointService;
                 }
             ",
 }
@@ -167,6 +116,48 @@ exports[`ng-update breakpoint service migrates inline inject(TuiBreakpointServic
 }
 `;
 
+exports[`ng-update breakpoint service migrates multiple @Inject(TuiBreakpointService) constructor params to fields: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, Inject} from '@angular/core';
+                import {
+                    TuiBreakpointMediaKey,
+                    TuiBreakpointService,
+                } from '@taiga-ui/core';
+                import {type Observable} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+                        @Inject(TuiBreakpointService)
+                        private readonly breakpoint$: TuiBreakpointService,
+                        @Inject(TuiBreakpointService)
+                        private readonly media$: Observable<TuiBreakpointMediaKey>,
+                    ) {}
+                }
+            ",
+  "1. After": "import { toObservable } from "@angular/core/rxjs-interop";
+
+                import { Component, Inject, inject } from '@angular/core';
+                import { TuiBreakpointMediaKey, TUI_BREAKPOINT } from '@taiga-ui/core';
+                import {type Observable} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+    private readonly breakpoint$ = toObservable(inject(TUI_BREAKPOINT));
+    private readonly media$ = toObservable(inject(TUI_BREAKPOINT));
+
+                    constructor(
+) {}
+                }
+            ",
+}
+`;
+
 exports[`ng-update breakpoint service migrates multiple inject(TuiBreakpointService) usages in one file: test.ts 1`] = `
 {
   "0. Before": "
@@ -204,6 +195,39 @@ exports[`ng-update breakpoint service migrates multiple inject(TuiBreakpointServ
                     protected readonly b$ = toObservable(inject(TUI_BREAKPOINT)).pipe(
                         map((breakpoint) => breakpoint === 'desktop'),
                     );
+                }
+            ",
+}
+`;
+
+exports[`ng-update breakpoint service migrates typed constructor parameter to a TUI_BREAKPOINT field: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+                        private readonly breakpointService: TuiBreakpointService,
+                    ) {}
+                }
+            ",
+  "1. After": "import { toObservable } from "@angular/core/rxjs-interop";
+
+                import { Component, inject } from '@angular/core';
+                import { TUI_BREAKPOINT } from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+    private readonly breakpointService = toObservable(inject(TUI_BREAKPOINT));
+
+                    constructor(
+) {}
                 }
             ",
 }

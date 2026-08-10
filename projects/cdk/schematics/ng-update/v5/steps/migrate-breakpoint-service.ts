@@ -1,6 +1,6 @@
 import {type Tree} from '@angular-devkit/schematics';
 import {getSourceFiles, Node, SyntaxKind} from 'ng-morph';
-import {type SourceFile} from 'ts-morph';
+import {type ParameterDeclaration, type SourceFile} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
 import {type TuiSchema} from '../../../ng-add/schema';
@@ -9,17 +9,21 @@ import {removeImport} from '../../../utils/import-manipulations';
 import {TODO_MARK} from '../../../utils/insert-todo';
 
 const TAIGA_CORE = '@taiga-ui/core';
+const ANGULAR_CORE = '@angular/core';
 const BREAKPOINT_SERVICE = 'TuiBreakpointService';
 const BREAKPOINT_TOKEN = 'TUI_BREAKPOINT';
 const RXJS_INTEROP = '@angular/core/rxjs-interop';
 const TO_OBSERVABLE = 'toObservable';
+const INJECT = 'inject';
 
 const BREAKPOINT_TODO_MESSAGE =
-    'TuiBreakpointService is deprecated. Use TUI_BREAKPOINT (signal token), wrap with toObservable(...) for Observable-based code if needed';
+    'TuiBreakpointService has been removed. Use TUI_BREAKPOINT (signal token); wrap with toObservable(...) for Observable-based code if needed';
 
 export function migrateBreakpointService(_tree: Tree, _options: TuiSchema): void {
     getSourceFiles(ALL_TS_FILES).forEach((sourceFile) => {
-        const changed = migrateSourceFile(sourceFile);
+        const changedInjectCalls = migrateInjectCalls(sourceFile);
+        const changedConstructorInjections = migrateConstructorInjections(sourceFile);
+        const changed = changedInjectCalls || changedConstructorInjections;
 
         addTodoForUnsupportedUsages(sourceFile);
 
@@ -29,15 +33,16 @@ export function migrateBreakpointService(_tree: Tree, _options: TuiSchema): void
 
         addUniqueImport(sourceFile.getFilePath(), BREAKPOINT_TOKEN, TAIGA_CORE);
         addUniqueImport(sourceFile.getFilePath(), TO_OBSERVABLE, RXJS_INTEROP);
+        addUniqueImport(sourceFile.getFilePath(), INJECT, ANGULAR_CORE);
         cleanupBreakpointServiceImport(sourceFile);
     });
 }
 
-function migrateSourceFile(sourceFile: SourceFile): boolean {
+function migrateInjectCalls(sourceFile: SourceFile): boolean {
     let changed = false;
 
     sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression).forEach((call) => {
-        if (call.getExpression().getText() !== 'inject') {
+        if (call.getExpression().getText() !== INJECT) {
             return;
         }
 
@@ -64,6 +69,53 @@ function migrateSourceFile(sourceFile: SourceFile): boolean {
     });
 
     return changed;
+}
+
+/**
+ * Constructor injection cannot stay as a parameter: TuiBreakpointService is
+ * removed, so `@Inject(TuiBreakpointService)` / `: TuiBreakpointService` would
+ * not compile. Convert each such parameter into a class field initialized with
+ * `toObservable(inject(TUI_BREAKPOINT))`, preserving its access modifiers.
+ */
+function migrateConstructorInjections(sourceFile: SourceFile): boolean {
+    let changed = false;
+
+    sourceFile.getClasses().forEach((classDeclaration) => {
+        classDeclaration.getConstructors().forEach((constructor) => {
+            constructor
+                .getParameters()
+                .filter(isBreakpointParameter)
+                .forEach((parameter) => {
+                    const insertIndex = classDeclaration
+                        .getMembers()
+                        .indexOf(constructor);
+
+                    classDeclaration.insertProperty(insertIndex, {
+                        name: parameter.getName(),
+                        isReadonly: parameter.isReadonly(),
+                        scope: parameter.hasScopeKeyword()
+                            ? parameter.getScope()
+                            : undefined,
+                        initializer: `${TO_OBSERVABLE}(${INJECT}(${BREAKPOINT_TOKEN}))`,
+                    });
+
+                    parameter.remove();
+                    changed = true;
+                });
+        });
+    });
+
+    return changed;
+}
+
+function isBreakpointParameter(parameter: ParameterDeclaration): boolean {
+    const injectDecorator = parameter.getDecorator('Inject');
+
+    if (injectDecorator?.getArguments()[0]?.getText() === BREAKPOINT_SERVICE) {
+        return true;
+    }
+
+    return parameter.getTypeNode()?.getText() === BREAKPOINT_SERVICE;
 }
 
 function cleanupBreakpointServiceImport(sourceFile: SourceFile): void {
