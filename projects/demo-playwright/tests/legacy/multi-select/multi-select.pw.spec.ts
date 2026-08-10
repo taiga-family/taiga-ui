@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('MultiSelect', () => {
     test.describe('Examples', () => {
@@ -14,7 +15,9 @@ test.describe('MultiSelect', () => {
 
         test('does not overflow arrow icon by many tags', async () => {
             const example = documentationPage.getExample('#objects-array');
-            const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
+            const multiSelect = new TuiMultiSelectPO(
+                example.locator(TUI_SELECT_LOCATORS.MULTI),
+            );
 
             await multiSelect.textfield.click();
             await documentationPage.waitStableState();
@@ -32,7 +35,7 @@ test.describe('MultiSelect', () => {
 
         test('multi-select with data list with label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
-            const multiSelectEl = example.locator('tui-multi-select').first();
+            const multiSelectEl = example.locator(TUI_SELECT_LOCATORS.MULTI).first();
             const multiSelect = new TuiMultiSelectPO(multiSelectEl);
 
             await multiSelect.arrow.click();
@@ -48,7 +51,7 @@ test.describe('MultiSelect', () => {
 
         test('multi-select with data list without label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
-            const multiSelectEl = example.locator('tui-multi-select').nth(1);
+            const multiSelectEl = example.locator(TUI_SELECT_LOCATORS.MULTI).nth(1);
             const multiSelect = new TuiMultiSelectPO(multiSelectEl);
 
             await multiSelect.arrow.click();
@@ -75,7 +78,7 @@ test.describe('MultiSelect', () => {
                     await example.getByRole('button').nth(index).click();
 
                     const multiSelect = new TuiMultiSelectPO(
-                        page.locator('tui-dialog tui-multi-select'),
+                        page.locator('tui-dialog').locator(TUI_SELECT_LOCATORS.MULTI),
                     );
 
                     await multiSelect.arrow.click();
@@ -103,7 +106,7 @@ test.describe('MultiSelect', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             apiPageExample = documentationPage.apiPageExample;
             multiSelect = new TuiMultiSelectPO(
-                apiPageExample.locator('tui-multi-select'),
+                apiPageExample.locator(TUI_SELECT_LOCATORS.MULTI),
             );
         });
 
