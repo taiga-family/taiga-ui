@@ -13498,9 +13498,12 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;tui-counter [step]=&quot;step&quot; [style.inline-size.rem]=&quot;10&quot; [(ngModel)]=&quot;value&quot; &gt;
+&lt;fieldset tuiTitle&gt;
+&lt;legend tuiSubtitle&gt;Price&lt;/legend&gt;
+&lt;tui-counter appearance=&quot;secondary&quot; size=&quot;m&quot; [step]=&quot;step&quot; [style.inline-size.rem]=&quot;10&quot; [(ngModel)]=&quot;value&quot; &gt;
 &lt;span [style.order]=&quot;-1&quot;&gt;$&lt;/span&gt;
 &lt;/tui-counter&gt;
+&lt;/fieldset&gt;
 ```
 **TypeScript:**
 ```ts
@@ -13508,10 +13511,11 @@ import {Component} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiCounter} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [FormsModule, TuiCounter],
+    imports: [FormsModule, TuiCounter, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
