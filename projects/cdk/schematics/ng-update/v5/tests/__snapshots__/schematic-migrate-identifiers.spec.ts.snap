@@ -276,6 +276,29 @@ exports[`ng-update identifiers migration moves TuiFlagPipe from core to kit: tes
 }
 `;
 
+exports[`ng-update identifiers migration moves TuiMultiSelectModule (legacy) to TuiMultiSelect (kit): test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiMultiSelectModule],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiMultiSelect } from "@taiga-ui/kit";
+
+                                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiMultiSelect],
+                })
+                export class TestModule {}
+            ",
+}
+`;
+
 exports[`ng-update identifiers migration moves TuiPureException from cdk to legacy: test.ts 1`] = `
 {
   "0. Before": "
