@@ -32,7 +32,6 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly formatted = computed(() => {
         const format = this.format();
         const currency = this.currency();
-
         let currencySymbol = this.currencySymbolHandler(currency);
 
         if (!currencySymbol && currency !== null) {
