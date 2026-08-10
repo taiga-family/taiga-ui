@@ -111,11 +111,9 @@ function migrateConstructorInjections(sourceFile: SourceFile): boolean {
 function isBreakpointParameter(parameter: ParameterDeclaration): boolean {
     const injectDecorator = parameter.getDecorator('Inject');
 
-    if (injectDecorator?.getArguments()[0]?.getText() === BREAKPOINT_SERVICE) {
-        return true;
-    }
-
-    return parameter.getTypeNode()?.getText() === BREAKPOINT_SERVICE;
+    return injectDecorator?.getArguments()[0]?.getText() === BREAKPOINT_SERVICE
+        ? true
+        : parameter.getTypeNode()?.getText() === BREAKPOINT_SERVICE;
 }
 
 function cleanupBreakpointServiceImport(sourceFile: SourceFile): void {
