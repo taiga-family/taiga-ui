@@ -35,7 +35,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
         ].forEach((path) => {
             describe('opens dropdown for readonly=false', () => {
                 test(path, async ({page}) => {
-                    await tuiGoto(page, `${path}/API?readonly=false`);
+                    await tuiGoto(page, `${path}/API?readonly=false&readOnly=false`); // TODO: delete `readOnly` param in next PR
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();
 
@@ -45,7 +45,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
 
             describe('does not open dropdown for readonly=true', () => {
                 test(path, async ({page}) => {
-                    await tuiGoto(page, `${path}/API?readonly=true`);
+                    await tuiGoto(page, `${path}/API?readonly=true&readOnly=true`); // TODO: delete `readOnly` param in next PR
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();
 

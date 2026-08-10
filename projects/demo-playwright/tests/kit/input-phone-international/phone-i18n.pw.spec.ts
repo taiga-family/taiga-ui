@@ -74,7 +74,10 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         });
 
         test('readonly', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readonly=true`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputPhoneInternational}/API?readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
+            );
             const example = new TuiDocumentationPagePO(page).demo;
 
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(

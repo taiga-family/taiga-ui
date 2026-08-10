@@ -244,7 +244,7 @@ describe('InputSlider', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputSlider}/API?min=-10&max=10&readonly=true`,
+                `${DemoRoute.InputSlider}/API?min=-10&max=10&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
             );
 
             const example = new TuiDocumentationPagePO(page).demo;

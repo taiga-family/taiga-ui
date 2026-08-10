@@ -665,7 +665,7 @@ describe('InputNumber', () => {
                     }) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true`,
+                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
                         );
                         await inputNumber.textfield.focus();
 
