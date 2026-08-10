@@ -148,7 +148,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     hostDirectives: [
         {
             directive: TuiInputDirective,
-            inputs: ['invalid', 'focused', 'readOnly', 'state'],
+            inputs: ['invalid', 'focused', 'readOnly', 'readonly', 'state'],
         },
     ],
 })
