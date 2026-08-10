@@ -8,5 +8,10 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Platforms', 'Identity matcher', 'List'];
+    protected readonly examples = [
+        'Platforms',
+        'Identity matcher',
+        'List',
+        'Custom checked appearance',
+    ];
 }
