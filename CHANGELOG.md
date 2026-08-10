@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.19.0](https://github.com/taiga-family/taiga-ui/compare/v5.18.0...v5.19.0) (2026-08-10)
+
+### 🚀 Features
+
+- **addon-mobile:** `Keypad` add component ([#14088](https://github.com/taiga-family/taiga-ui/issues/14088))
+  ([458f676](https://github.com/taiga-family/taiga-ui/commit/458f6763d151f44595edb92284b57b55bdafb814))
+- **core:** `Error` support signal forms ([#14629](https://github.com/taiga-family/taiga-ui/issues/14629))
+  ([a596451](https://github.com/taiga-family/taiga-ui/commit/a596451196bfbf99823578976b7561413700e630))
+- **core:** `Textfield` moves appearance inputs from `<input>` to `<tui-textfield>`
+  ([#14708](https://github.com/taiga-family/taiga-ui/issues/14708))
+  ([c7f8575](https://github.com/taiga-family/taiga-ui/commit/c7f8575dfa8aae0f0e9e2d90c81748f7e336b185))
+- **core:** `Title` minimize style specificity and allow using on `fieldset`
+  ([#14720](https://github.com/taiga-family/taiga-ui/issues/14720))
+  ([0c11b77](https://github.com/taiga-family/taiga-ui/commit/0c11b77188a07abe068c8e5650981d2da73b7f9c))
+- **experimental:** `DatePicker` rename to `Calendar` ([#14717](https://github.com/taiga-family/taiga-ui/issues/14717))
+  ([cf1d1fc](https://github.com/taiga-family/taiga-ui/commit/cf1d1fc88474ef8aa0709216cb271dced3e62136))
+- **kit:** `Confirm` allow "No" button appearance customization
+  ([#14691](https://github.com/taiga-family/taiga-ui/issues/14691))
+  ([1c5bb80](https://github.com/taiga-family/taiga-ui/commit/1c5bb807f0858b42dce9227b083e531d82592bc0))
+
+### 🐞 Bug Fixes
+
+- **core:** `Dropdown` fix background color in dark mode according to specs
+  ([#14694](https://github.com/taiga-family/taiga-ui/issues/14694))
+  ([7a81bfd](https://github.com/taiga-family/taiga-ui/commit/7a81bfda561171097fcae91d04369f434eaaec2a))
+- **kit:** `Hint` should close on mobile when scrolling begins
+  ([#14675](https://github.com/taiga-family/taiga-ui/issues/14675))
+  ([ca38248](https://github.com/taiga-family/taiga-ui/commit/ca3824823c6ab05314b2c188cb5e9e2ce3f82def))
+- **kit:** respect animation duration in Pulse ([#14693](https://github.com/taiga-family/taiga-ui/issues/14693))
+  ([c9f65a9](https://github.com/taiga-family/taiga-ui/commit/c9f65a95c23de928b93f332420380b577678215b))
+- **layout:** support RTL for `tuiList` items ([#14702](https://github.com/taiga-family/taiga-ui/issues/14702))
+  ([cb837bd](https://github.com/taiga-family/taiga-ui/commit/cb837bdb463dd26f57406737c843985428371636))
+- **schematics:** avoid forgotten-node crash in v5 TuiBreakpointService migration
+  ([#14713](https://github.com/taiga-family/taiga-ui/issues/14713))
+  ([0fe8500](https://github.com/taiga-family/taiga-ui/commit/0fe8500059cce3316c0257cc5e349144d60790c1))
+- **schematics:** keep valid label nesting in combo-box migration with [@if](https://github.com/if)
+  ([#14722](https://github.com/taiga-family/taiga-ui/issues/14722))
+  ([3df91a9](https://github.com/taiga-family/taiga-ui/commit/3df91a9db8624557ac5688eaeb13cbdde596ad6b))
+- **schematics:** migrate TuiBreakpointService constructor injection to TUI_BREAKPOINT
+  ([#14726](https://github.com/taiga-family/taiga-ui/issues/14726))
+  ([90f799d](https://github.com/taiga-family/taiga-ui/commit/90f799dc68b1851a906497970c318561f64cedad))
+- **schematics:** rename closeable->closable in type-annotated dialog option objects
+  ([#14723](https://github.com/taiga-family/taiga-ui/issues/14723))
+  ([762a6a4](https://github.com/taiga-family/taiga-ui/commit/762a6a440edf15ff2f9bdea41c85b280e07d6f15))
+- **schematics:** warn WA_IS_TOUCH is a signal after TUI_IS_TOUCH rename (v5)
+  ([#14721](https://github.com/taiga-family/taiga-ui/issues/14721))
+  ([20e3b81](https://github.com/taiga-family/taiga-ui/commit/20e3b817ef74f911c72a6125d8d01a71a323a6e3))
+
 ## [5.18.0](https://github.com/taiga-family/taiga-ui/compare/v5.17.0...v5.18.0) (2026-08-03)
 
 ### 🚀 Features
