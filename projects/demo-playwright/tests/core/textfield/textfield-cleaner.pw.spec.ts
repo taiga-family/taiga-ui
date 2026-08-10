@@ -6,6 +6,10 @@ import {
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {beforeEach, describe} = test;
 
@@ -17,8 +21,12 @@ describe('Textfield cleaner', () => {
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
-            input = example.locator('tui-textfield input,textarea').first();
-            cleaner = example.locator('tui-textfield button.t-clear');
+            input = example
+                .locator(`${TUI_TEXTFIELD_LOCATORS.HOST} input,textarea`)
+                .first();
+            cleaner = example
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .locator(TUI_TEXTFIELD_LOCATORS.CLEANER);
         });
 
         test('ComboBox', async ({page}) => {
@@ -55,10 +63,10 @@ describe('Textfield cleaner', () => {
             await input.pressSequentially('two');
             await page.keyboard.press('Enter');
 
-            await expect(example.locator('tui-input-chip')).toHaveCount(2);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(2);
 
             await cleaner.click();
-            await expect(example.locator('tui-input-chip')).toHaveCount(0);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(0);
         });
 
         test('InputColor', async ({page}) => {
@@ -94,7 +102,9 @@ describe('Textfield cleaner', () => {
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthPO(example.locator('tui-textfield'));
+            const inputMonth = new TuiInputMonthPO(
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
+            );
             const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
 
             await inputMonth.textfield.click();
@@ -168,9 +178,9 @@ describe('Textfield cleaner', () => {
             await tuiGoto(page, `${DemoRoute.Textarea}#limit`);
 
             const example = new TuiDocumentationPagePO(page).getExample('#limit');
-            const textfield = example.locator('tui-textfield');
+            const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST);
             const textarea = textfield.locator('textarea');
-            const clearButton = textfield.locator('button.t-clear');
+            const clearButton = textfield.locator(TUI_TEXTFIELD_LOCATORS.CLEANER);
 
             await expect(textarea).not.toHaveValue('');
 
