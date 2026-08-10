@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiHeader]:where(*&) {
+*:where([tuiHeader]&) {
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -11,7 +11,7 @@
     text-align: start;
     overflow-wrap: break-word;
 
-    p {
+    p:not([tuiSubtitle]) {
         margin: 0.25rem 0 0;
         font: var(--tui-typography-body-m);
 
@@ -26,6 +26,7 @@
         margin: 0;
         margin-inline-end: auto;
         font: inherit;
+        font-weight: bold;
 
         &:empty {
             display: none;
@@ -67,7 +68,7 @@
         font: var(--tui-typography-body-m);
     }
 
-    &[data-size='h1'] {
+    &:where([data-size='h1']) {
         font: var(--tui-typography-heading-h1);
 
         + [tuiDescription] {
@@ -75,35 +76,35 @@
         }
     }
 
-    &[data-size='h2'] {
+    &:where([data-size='h2']) {
         font: var(--tui-typography-heading-h2);
     }
 
-    &[data-size='h3'] {
+    &:where([data-size='h3']) {
         font: var(--tui-typography-heading-h3);
     }
 
-    &[data-size='h4'] {
+    &:where([data-size='h4']) {
         font: var(--tui-typography-heading-h4);
     }
 
-    &[data-size='h5'] {
+    &:where([data-size='h5']) {
         font: var(--tui-typography-heading-h5);
     }
 
-    &[data-size='h6'] {
+    &:where([data-size='h6']) {
         font: var(--tui-typography-heading-h6);
     }
 
-    &[data-size='body-l'] {
+    &:where([data-size='body-l']) {
         font: var(--tui-typography-body-l);
     }
 
-    &[data-size='body-m'] {
+    &:where([data-size='body-m']) {
         font: var(--tui-typography-ui-l);
     }
 
-    &[data-size='body-s'] {
+    &:where([data-size='body-s']) {
         font: var(--tui-typography-ui-m);
 
         [tuiTitle] {
@@ -115,17 +116,17 @@
         }
     }
 
-    &[data-size='body-m'],
-    &[data-size='body-s'] {
+    &:where([data-size='body-m']),
+    &:where([data-size='body-s']) {
         [tuiSubtitle],
         [tuiAccessories] [tuiLink] {
             font: var(--tui-typography-body-s);
         }
     }
 
-    &[data-size='h1'],
-    &[data-size='h2'],
-    &[data-size='h3'] {
+    &:where([data-size='h1']),
+    &:where([data-size='h2']),
+    &:where([data-size='h3']) {
         [tuiSubtitle],
         [tuiAccessories] [tuiLink],
         + [tuiDescription] {
@@ -133,17 +134,13 @@
         }
     }
 
-    &[data-size='h4'],
-    &[data-size='h5'],
-    &[data-size='h6'],
-    &[data-size='body-l'] {
+    &:where([data-size='h4']),
+    &:where([data-size='h5']),
+    &:where([data-size='h6']),
+    &:where([data-size='body-l']) {
         [tuiSubtitle],
         [tuiAccessories] [tuiLink] {
             font: var(--tui-typography-body-m);
         }
-    }
-
-    &[data-size] [tuiTitle] {
-        font-weight: bold;
     }
 }

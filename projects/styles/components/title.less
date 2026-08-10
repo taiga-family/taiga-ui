@@ -30,6 +30,16 @@
     border: 0;
     font: var(--tui-typography-ui-m);
 
+    :where([tuiSubtitle]) {
+        font: var(--tui-typography-ui-s);
+        margin: 0;
+        padding: 0;
+
+        &:is(legend) {
+            margin-block-end: 0.25rem;
+        }
+    }
+
     &:where([data-size='s']) {
         gap: 0.125rem;
         font: var(--tui-typography-body-s);
@@ -77,16 +87,6 @@
     h6 {
         margin: 0;
         font: inherit;
-    }
-
-    [tuiSubtitle] {
-        font: var(--tui-typography-ui-s);
-        margin: 0;
-        padding: 0;
-
-        &:is(legend) {
-            margin-block-end: 0.25rem;
-        }
     }
 }
 
