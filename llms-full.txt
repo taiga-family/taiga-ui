@@ -37,7 +37,7 @@
 ### error
 
 ```text
-  TuiError, TuiErrorComponent, TuiErrorDirective, TuiErrorPipe
+  TuiError, TuiErrorComponent, TuiErrorDirective, TuiErrorField, TuiErrorPipe
 ```
 ### expand
 
@@ -833,20 +833,20 @@
 ### root
 
 ```text
-  TuiNonNullableValueTransformer, TuiValidationError
+  TuiFormValueControl, TuiNonNullableValueTransformer, TuiSignalValidationError, TuiValidationError
 ```
 ---
 ## @taiga-ui/experimental
 **Components:**
+### calendar
+
+```text
+  TuiCalendar, TuiCalendarHeader
+```
 ### data-grid
 
 ```text
   TuiDataGrid
-```
-### date-picker
-
-```text
-  TuiDatePicker, TuiDatePickerHeader
 ```
 ### file
 
@@ -1015,6 +1015,11 @@
 
 ```text
   TuiBottomSheet
+```
+### keypad
+
+```text
+  TuiKeypad
 ```
 ### mobile-calendar
 
@@ -7696,6 +7701,362 @@ export default class Example {
 ```
 
 ---
+# components/CalendarExperimental
+- **Package**: `EXPERIMENTAL`
+- **Type**: components
+This is a work in progress The APIs might change in the future, use with caution
+
+### Example
+
+```html
+<tui-calendar new [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [(month)]="month" [(view)]="view" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [(month)] | `TuiMonth` | current month |
+| [(view)] | `'day' | 'month' | 'year'` | current view |
+| [(value)] | `T | null` | a single day, array or a range |
+| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
+| [max] | `TuiDay | null` | maximal date to choose |
+| [min] | `TuiDay | null` | minimum date to choose |
+| [showAdjacent] | `boolean` | display dates from adjacent months |
+| [showWeek] | `boolean` | display week number on each row |
+| [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
+| [dayType] | `TuiStringHandler<TuiDay>` |  |
+| [contentDay] | `PolymorpheusContent<TuiContext<TuiDay>>` | custom template for day cell |
+| [contentMonth] | `PolymorpheusContent<TuiContext<TuiMonth>>` | custom template for month cell |
+| [contentYear] | `PolymorpheusContent<TuiContext<number>>` | custom template for year cell |
+
+### Usage Examples
+
+#### Example 1
+
+**Template:**
+```html
+<form tuiForm [formGroup]="form" >
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
+<label tuiLabel>Single date</label>
+<input formControlName="single" tuiInputDate [max]="max" [min]="min" />
+<tui-calendar *tuiDropdown new />
+</tui-textfield>
+<tui-textfield multi [disabledItemHandler]="disabledItemHandler" >
+<label tuiLabel>Multiple dates</label>
+<input formControlName="multi" tuiInputDateMulti [max]="max" [min]="min" />
+<tui-calendar *tuiDropdown new />
+</tui-textfield>
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
+<label tuiLabel>Date range</label>
+<input formControlName="range" tuiInputDateRange [max]="max" [min]="min" />
+<tui-calendar *tuiDropdown mode="range" new />
+</tui-textfield>
+</form>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiCalendar} from '@taiga-ui/experimental';
+import {TuiInputDate, TuiInputDateMulti, TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        ReactiveFormsModule,
+        TuiCalendar,
+        TuiForm,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
+    protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+
+    protected readonly form = new FormGroup({
+        single: new FormControl(),
+        multi: new FormControl(),
+        range: new FormControl(),
+    });
+
+    protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
+}
+```
+
+#### Example 2
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Select date</label>
+<input tuiInputDate [(ngModel)]="value" />
+<tui-calendar *tuiDropdown new [contentDay]="day" [contentMonth]="month" />
+<ng-template #day let-date >
+<span tuiTitle> {{ date.day }} <span tuiSubtitle>{{ getLabel(date) }}</span>
+</span>
+</ng-template>
+<ng-template #month let-date >
+<span tuiTitle> {{ date.toUtcNativeDate() | date: 'MMM' }} <span tuiSubtitle>{{ date.year }}</span>
+</span>
+</ng-template>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {DatePipe} from '@angular/common';
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/experimental';
+import {TuiInputDate} from '@taiga-ui/kit';
+
+@Component({
+    imports: [DatePipe, FormsModule, TuiCalendar, TuiInputDate, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
+
+    protected getLabel({day}: TuiDay): string {
+        switch (day) {
+            case 17:
+            case 18:
+            case 19:
+                return 'Sick';
+            case 20:
+                return '••';
+            case 25:
+                return '•••';
+            case 3:
+                return '••';
+            case 30:
+                return 'Q2';
+            case 4:
+            case 5:
+                return '•';
+            default:
+                return '';
+        }
+    }
+}
+```
+
+#### Example 3
+
+**Template:**
+```html
+<button aria-label="Select date" iconEnd="@tui.calendar" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value() || 'Select date' }} <div *tuiDropdown="let close">
+<tui-calendar new />
+<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="value.set(null); close()" > Clear </button>
+</div>
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiDay} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/experimental';
+import {
+    TuiButtonSelect,
+    TuiInputDate,
+    TuiInputDateMulti,
+    TuiInputDateRange,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiCalendar,
+        TuiInputDate,
+        TuiInputDateMulti,
+        TuiInputDateRange,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal<TuiDay | null>(null);
+}
+```
+
+#### Example 4
+
+**Template:**
+```html
+<tui-textfield multi>
+<label tuiLabel>Pick days off</label>
+<input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
+<div *tuiDropdown [style.display]="'flex'" [style.flex-wrap]="'wrap'" >
+<tui-calendar new [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
+<tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
+<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} <tui-icon icon="@tui.check" [style.visibility]="current() !== $index ? 'hidden' : ''" />
+</button> } </tui-data-list>
+<ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
+</div>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {type TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiDataList, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/experimental';
+import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiCalendar,
+        TuiDataList,
+        TuiHint,
+        TuiIcon,
+        TuiInitialsPipe,
+        TuiInputDateMulti,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Example {
+    protected readonly users = ['Alex Inkin', 'Roman Sedov'];
+    protected readonly value = computed(() => this.groups().flat());
+    protected readonly current = signal(0);
+
+    protected readonly groups = signal<TuiDay[][]>(
+        Array.from({length: this.users.length}, () => []),
+    );
+
+    protected readonly dayType = computed<TuiStringHandler<TuiDay>>(
+        (groups = this.groups(), current = this.current()) =>
+            (day) =>
+                [
+                    day.isWeekend ? 'weekend' : 'weekday',
+                    groups[current]?.find((item) => item.daySame(day))
+                        ? 'current'
+                        : 'other',
+                ].join(' '),
+    );
+
+    protected onValueChange(value: TuiDay[]): void {
+        const added = value.filter((item) => !this.value().includes(item));
+        const removed = this.value().filter((item) => !value.includes(item));
+
+        this.groups.update((groups) =>
+            groups
+                .map((group) => group.filter((item) => !removed.includes(item)))
+                .map((group, i) => (i === this.current() ? group.concat(added) : group)),
+        );
+    }
+
+    protected getHint(day: TuiDay): string | undefined {
+        return this.users[
+            this.groups().findIndex((group) => group.find((item) => day.daySame(item)))
+        ];
+    }
+}
+```
+**LESS:**
+```less
+tui-date-picker [data-type~='other']::before {
+    opacity: var(--tui-disabled-opacity);
+}
+
+tui-date-picker .hint {
+    position: absolute;
+    inset: 0;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    type TuiBooleanHandler,
+    TuiDay,
+    TuiMonth,
+} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TUI_MONTH_OPTIONS, TuiCalendar} from '@taiga-ui/experimental';
+
+@Component({
+    imports: [TuiCalendar, TuiDemo, TuiTitle],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    protected readonly routes = DemoRoute;
+    protected readonly options = inject(TUI_MONTH_OPTIONS);
+
+    protected readonly months = [
+        new TuiMonth(2021, 1),
+        TuiMonth.currentLocal(),
+        TuiMonth.currentLocal().append({month: -5}),
+    ] as const;
+
+    protected month = this.months[0];
+    protected readonly views = ['day', 'month', 'year'] as const;
+    protected view = this.views[0];
+    protected showAdjacent = this.options.showAdjacent;
+    protected showWeek = this.options.showWeek;
+
+    protected readonly minVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2017, 2, 5),
+        new TuiDay(1900, 0, 1),
+    ];
+
+    protected min = this.minVariants[0]!;
+
+    protected readonly maxVariants = [
+        TUI_LAST_DAY,
+        new TuiDay(2020, 3, 30),
+        new TuiDay(2300, 0, 1),
+    ];
+
+    protected max = this.maxVariants[0]!;
+
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
+
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
+}
+```
+
+---
 # components/CalendarMonth
 - **Package**: `KIT`
 - **Type**: components
@@ -11609,8 +11970,8 @@ ComboBox is a form control for selecting a single value from a set of options. I
 
 ```html
 <ng-template>
-<tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldDoc.content : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<input placeholder="Search country" tuiComboBox [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [matcher]="matcher" [readOnly]="controlDoc.readonly" [state]="input.state" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldDoc.content : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [invalid]="controlDoc.invalid" [stringify]="itemsHandlers.stringify()" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
+<input placeholder="Search country" tuiComboBox [formControl]="control" [matcher]="matcher" [readOnly]="controlDoc.readonly" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiDropdown [items]="countries() | tuiFilterByInput" />
 </tui-textfield>
 </ng-template>
@@ -12282,7 +12643,7 @@ export default class Example {
     padding: 0.5rem;
     margin-block-end: 1rem;
     border-block-end: 1px solid var(--tui-border-normal);
-    background: var(--tui-background-elevation-3);
+    background: var(--tui-background-elevation-1);
 }
 ```
 
@@ -12361,10 +12722,10 @@ export default class Example {
 ```ts
 import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12387,10 +12748,10 @@ interface Country {
         TuiComboBox,
         TuiDataListWrapper,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -12695,13 +13056,13 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 | Property | Type | Description |
 |----------|-----|----------|
 | content | `PolymorpheusContent` | content of the confirm |
-| [appearance] | `string` | appearance of the confirming button |
+| [appearance] | `string | [string, string]` | appearance of the confirming button |
 | [no] | `string` | button |
 | [yes] | `string` | button |
 
 ### Usage Examples
 
-#### Basic
+#### Example 1
 
 **Template:**
 ```html
@@ -12769,11 +13130,15 @@ export default class Example implements TuiConfirmData {
     private readonly alerts = inject(TuiNotificationService);
 
     protected readonly routes = DemoRoute;
-    protected readonly examples = ['Basic'];
     protected readonly exampleService = import('./examples/import/service.md');
 
-    public readonly appearances = ['primary', 'accent', 'secondary'];
-    public appearance = this.appearances[0]!;
+    public readonly appearances = [
+        'primary',
+        'primary-destructive',
+        ['primary', 'action-destructive'],
+    ] as const;
+
+    public appearance = this.appearances[0];
     public no = 'No';
     public yes = 'Yes';
 
@@ -13128,9 +13493,12 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-counter [step]="step" [style.inline-size.rem]="10" [(ngModel)]="value" >
+<fieldset tuiTitle>
+<legend tuiSubtitle>Price</legend>
+<tui-counter appearance="secondary" size="m" [step]="step" [style.inline-size.rem]="10" [(ngModel)]="value" >
 <span [style.order]="-1">$</span>
 </tui-counter>
+</fieldset>
 ```
 **TypeScript:**
 ```ts
@@ -13138,10 +13506,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiCounter} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiCounter],
+    imports: [FormsModule, TuiCounter, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -13965,362 +14334,6 @@ export default class Page {
         'Custom item content',
         'Group by labels',
     ];
-}
-```
-
----
-# components/DatePicker
-- **Package**: `EXPERIMENTAL`
-- **Type**: components
-This is a work in progress The APIs might change in the future, use with caution
-
-### Example
-
-```html
-<tui-date-picker [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [(month)]="month" [(view)]="view" />
-```
-
-### API - Inputs
-
-| Property | Type | Description |
-|----------|-----|----------|
-| [(month)] | `TuiMonth` | current month |
-| [(view)] | `'day' | 'month' | 'year'` | current view |
-| [(value)] | `T | null` | a single day, array or a range |
-| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
-| [max] | `TuiDay | null` | maximal date to choose |
-| [min] | `TuiDay | null` | minimum date to choose |
-| [showAdjacent] | `boolean` | display dates from adjacent months |
-| [showWeek] | `boolean` | display week number on each row |
-| [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
-| [dayType] | `TuiStringHandler<TuiDay>` |  |
-| [contentDay] | `PolymorpheusContent<TuiContext<TuiDay>>` | custom template for day cell |
-| [contentMonth] | `PolymorpheusContent<TuiContext<TuiMonth>>` | custom template for month cell |
-| [contentYear] | `PolymorpheusContent<TuiContext<number>>` | custom template for year cell |
-
-### Usage Examples
-
-#### Example 1
-
-**Template:**
-```html
-<form tuiForm [formGroup]="form" >
-<tui-textfield [disabledItemHandler]="disabledItemHandler">
-<label tuiLabel>Single date</label>
-<input formControlName="single" tuiInputDate [max]="max" [min]="min" />
-<tui-date-picker *tuiDropdown />
-</tui-textfield>
-<tui-textfield multi [disabledItemHandler]="disabledItemHandler" >
-<label tuiLabel>Multiple dates</label>
-<input formControlName="multi" tuiInputDateMulti [max]="max" [min]="min" />
-<tui-date-picker *tuiDropdown />
-</tui-textfield>
-<tui-textfield [disabledItemHandler]="disabledItemHandler">
-<label tuiLabel>Date range</label>
-<input formControlName="range" tuiInputDateRange [max]="max" [min]="min" />
-<tui-date-picker *tuiDropdown mode="range" />
-</tui-textfield>
-</form>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay} from '@taiga-ui/cdk';
-import {TuiDatePicker} from '@taiga-ui/experimental';
-import {TuiInputDate, TuiInputDateMulti, TuiInputDateRange} from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
-
-@Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiDatePicker,
-        TuiForm,
-        TuiInputDate,
-        TuiInputDateMulti,
-        TuiInputDateRange,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
-    protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
-
-    protected readonly form = new FormGroup({
-        single: new FormControl(),
-        multi: new FormControl(),
-        range: new FormControl(),
-    });
-
-    protected readonly disabledItemHandler = (item: TuiDay): boolean => item.day === 13;
-}
-```
-
-#### Example 2
-
-**Template:**
-```html
-<tui-textfield>
-<label tuiLabel>Select date</label>
-<input tuiInputDate [(ngModel)]="value" />
-<tui-date-picker *tuiDropdown [contentDay]="day" [contentMonth]="month" />
-<ng-template #day let-date >
-<span tuiTitle> {{ date.day }} <span tuiSubtitle>{{ getLabel(date) }}</span>
-</span>
-</ng-template>
-<ng-template #month let-date >
-<span tuiTitle> {{ date.toUtcNativeDate() | date: 'MMM' }} <span tuiSubtitle>{{ date.year }}</span>
-</span>
-</ng-template>
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {DatePipe} from '@angular/common';
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay} from '@taiga-ui/cdk';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
-import {TuiInputDate} from '@taiga-ui/kit';
-
-@Component({
-    imports: [DatePipe, FormsModule, TuiDatePicker, TuiInputDate, TuiTitle],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly value = signal<TuiDay | null>(new TuiDay(2026, 5, 25));
-
-    protected getLabel({day}: TuiDay): string {
-        switch (day) {
-            case 17:
-            case 18:
-            case 19:
-                return 'Sick';
-            case 20:
-                return '••';
-            case 25:
-                return '•••';
-            case 3:
-                return '••';
-            case 30:
-                return 'Q2';
-            case 4:
-            case 5:
-                return '•';
-            default:
-                return '';
-        }
-    }
-}
-```
-
-#### Example 3
-
-**Template:**
-```html
-<button aria-label="Select date" iconEnd="@tui.calendar" tuiButton tuiButtonSelect [(ngModel)]="value" > {{ value() || 'Select date' }} <div *tuiDropdown="let close">
-<tui-date-picker />
-<button appearance="action" size="m" tuiButton type="button" [style.inline-size.%]="100" (click)="value.set(null); close()" > Clear </button>
-</div>
-</button>
-```
-**TypeScript:**
-```ts
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDay} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
-import {
-    TuiButtonSelect,
-    TuiInputDate,
-    TuiInputDateMulti,
-    TuiInputDateRange,
-} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiButton,
-        TuiButtonSelect,
-        TuiDatePicker,
-        TuiInputDate,
-        TuiInputDateMulti,
-        TuiInputDateRange,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly value = signal<TuiDay | null>(null);
-}
-```
-
-#### Example 4
-
-**Template:**
-```html
-<tui-textfield multi>
-<label tuiLabel>Pick days off</label>
-<input tuiInputDateMulti [ngModel]="value()" (ngModelChange)="onValueChange($event)" />
-<div *tuiDropdown [style.display]="'flex'" [style.flex-wrap]="'wrap'" >
-<tui-date-picker [contentDay]="content" [dayType]="dayType()" [showAdjacent]="true" [showWeek]="true" />
-<tui-data-list> @for (user of users; track $index) { <button tuiOption (click)="current.set($index)" >
-<span [tuiAvatar]="user | tuiInitials"></span> {{ user }} <tui-icon icon="@tui.check" [style.visibility]="current() !== $index ? 'hidden' : ''" />
-</button> } </tui-data-list>
-<ng-template #content let-day > {{ day.day }} @if (getHint(day); as hint) { <span tuiHintDirection="top" class="hint" [tuiHint]="hint" ></span> } </ng-template>
-</div>
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component, computed, signal, ViewEncapsulation} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiDataList, TuiHint, TuiIcon} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
-import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiAvatar,
-        TuiDataList,
-        TuiDatePicker,
-        TuiHint,
-        TuiIcon,
-        TuiInitialsPipe,
-        TuiInputDateMulti,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection,
-})
-export default class Example {
-    protected readonly users = ['Alex Inkin', 'Roman Sedov'];
-    protected readonly value = computed(() => this.groups().flat());
-    protected readonly current = signal(0);
-
-    protected readonly groups = signal<TuiDay[][]>(
-        Array.from({length: this.users.length}, () => []),
-    );
-
-    protected readonly dayType = computed<TuiStringHandler<TuiDay>>(
-        (groups = this.groups(), current = this.current()) =>
-            (day) =>
-                [
-                    day.isWeekend ? 'weekend' : 'weekday',
-                    groups[current]?.find((item) => item.daySame(day))
-                        ? 'current'
-                        : 'other',
-                ].join(' '),
-    );
-
-    protected onValueChange(value: TuiDay[]): void {
-        const added = value.filter((item) => !this.value().includes(item));
-        const removed = this.value().filter((item) => !value.includes(item));
-
-        this.groups.update((groups) =>
-            groups
-                .map((group) => group.filter((item) => !removed.includes(item)))
-                .map((group, i) => (i === this.current() ? group.concat(added) : group)),
-        );
-    }
-
-    protected getHint(day: TuiDay): string | undefined {
-        return this.users[
-            this.groups().findIndex((group) => group.find((item) => day.daySame(item)))
-        ];
-    }
-}
-```
-**LESS:**
-```less
-tui-date-picker [data-type~='other']::before {
-    opacity: var(--tui-disabled-opacity);
-}
-
-tui-date-picker .hint {
-    position: absolute;
-    inset: 0;
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
-import {TuiDemo} from '@demo/utils';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    type TuiBooleanHandler,
-    TuiDay,
-    TuiMonth,
-} from '@taiga-ui/cdk';
-import {TuiTitle} from '@taiga-ui/core';
-import {TUI_MONTH_OPTIONS, TuiDatePicker} from '@taiga-ui/experimental';
-
-@Component({
-    imports: [TuiDatePicker, TuiDemo, TuiTitle],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Example {
-    protected readonly routes = DemoRoute;
-    protected readonly options = inject(TUI_MONTH_OPTIONS);
-
-    protected readonly months = [
-        new TuiMonth(2021, 1),
-        TuiMonth.currentLocal(),
-        TuiMonth.currentLocal().append({month: -5}),
-    ] as const;
-
-    protected month = this.months[0];
-    protected readonly views = ['day', 'month', 'year'] as const;
-    protected view = this.views[0];
-    protected showAdjacent = this.options.showAdjacent;
-    protected showWeek = this.options.showWeek;
-
-    protected readonly minVariants = [
-        TUI_FIRST_DAY,
-        new TuiDay(2017, 2, 5),
-        new TuiDay(1900, 0, 1),
-    ];
-
-    protected min = this.minVariants[0]!;
-
-    protected readonly maxVariants = [
-        TUI_LAST_DAY,
-        new TuiDay(2020, 3, 30),
-        new TuiDay(2300, 0, 1),
-    ];
-
-    protected max = this.maxVariants[0]!;
-
-    protected readonly disabledItemHandlerVariants: ReadonlyArray<
-        TuiBooleanHandler<TuiDay>
-    > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
-
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 }
 ```
 
@@ -19163,7 +19176,7 @@ Input is a basic string textfield. All other input components are built on its b
 ### Example
 
 ```html
-<tui-textfield #textfieldEl [content]="!textfieldEl.focused() && value ? textfield.content : ''" [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [focused]="input.focused" [invalid]="control.invalid" [readOnly]="control.readonly" [state]="input.state" [(ngModel)]="value" />
+<tui-textfield #textfieldEl [content]="!textfieldEl.focused() && value ? textfield.content : ''" [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="control.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiInput [disabled]="control.disabled" [readOnly]="control.readonly" [(ngModel)]="value" />
 <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
 ```
@@ -19242,9 +19255,9 @@ export default class Example {
 <input placeholder="I am placeholder" tuiInput [readOnly]="true" [(ngModel)]="value" />
 <tui-icon tuiTooltip="Readonly shows tooltip" />
 </tui-textfield>
-<tui-textfield iconStart="@tui.search">
+<tui-textfield iconStart="@tui.search" [invalid]="true" >
 <label tuiLabel>Invalid</label>
-<input placeholder="I am placeholder" tuiInput [invalid]="true" [(ngModel)]="value" />
+<input placeholder="I am placeholder" tuiInput [(ngModel)]="value" />
 <tui-icon tuiTooltip="Can also follow Angular validation" />
 </tui-textfield>
 ```
@@ -19523,9 +19536,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -19537,9 +19550,9 @@ import {TuiTooltip} from '@taiga-ui/kit';
     imports: [
         FormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiIcon,
         TuiInput,
@@ -19575,7 +19588,7 @@ InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCrea
 ### Example
 
 ```html
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Card number</label> } <input tuiInputCard [disabled]="control.disabled" [focused]="input.focused" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [state]="input.state" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="control.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Card number</label> } <input tuiInputCard [disabled]="control.disabled" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
 </tui-textfield>
 ```
 
@@ -19703,9 +19716,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -19716,9 +19729,9 @@ import {TuiInputCard} from '@taiga-ui/addon-commerce';
         FormsModule,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInputCard,
     ],
@@ -20187,8 +20200,8 @@ InputChip uses specifically modified Input to represent array of selectable item
 
 ```html
 <ng-template>
-<tui-textfield multi [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [rows]="textfieldDoc.rows" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Enter" tuiInputChip [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [readOnly]="controlDoc.readonly" [separator]="separator" [state]="input.state" [tuiDisabled]="controlDoc.disabled" [unique]="unique" />
+<tui-textfield multi [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [rows]="textfieldDoc.rows" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<input placeholder="Enter" tuiInputChip [formControl]="control" [readOnly]="controlDoc.readonly" [separator]="separator" [tuiDisabled]="controlDoc.disabled" [unique]="unique" />
 <tui-input-chip *tuiItem />
 </tui-textfield>
 </ng-template>
@@ -20869,9 +20882,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -20883,9 +20896,9 @@ import {TuiInputChip} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInputChip,
     ],
@@ -20925,7 +20938,7 @@ InputColor = Textfield + type="color" + Maskito + ❤️
 
 ```html
 <ng-template>
-<tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose color</label> } <input list="colors" tuiInputColor [align]="align" [focused]="input.focused" [format]="format" [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose color</label> } <input list="colors" tuiInputColor [align]="align" [format]="format" [formControl]="control" [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <datalist id="colors">
 <option value="#800000"></option>
 <option value="#8B0000"></option>
@@ -21028,8 +21041,8 @@ export default class Example {
 ```ts
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -21039,8 +21052,8 @@ import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInputColor,
     ],
@@ -21068,7 +21081,7 @@ InputDate = Textfield + Calendar + ❤️
 
 ```html
 <ng-template>
-<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDate [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDate [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
@@ -21486,10 +21499,10 @@ tui-data-list {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -21503,10 +21516,10 @@ import {TuiInputDate} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -21555,8 +21568,8 @@ InputDateMulti uses specifically modified InputChip to represent array of dates.
 
 ```html
 <ng-template>
-<tui-textfield multi [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<input placeholder="Choose date" tuiInputDateMulti [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield multi [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
+<input placeholder="Choose date" tuiInputDateMulti [formControl]="control" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-input-chip *tuiItem />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
@@ -21822,10 +21835,10 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -21839,10 +21852,10 @@ import {TuiInputChip, TuiInputDate, TuiInputDateMulti} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -21890,7 +21903,7 @@ InputDateRange = Textfield + CalendarRange + ❤️
 
 ```html
 <ng-template>
-<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose range</label> } <input tuiInputDateRange [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose range</label> } <input tuiInputDateRange [formControl]="control" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar-range *tuiDropdown [items]="selectedPeriodList ?? []" [listSize]="listSize" />
 </tui-textfield>
 </ng-template>
@@ -22196,10 +22209,10 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -22216,10 +22229,10 @@ import {
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -22274,7 +22287,7 @@ InputDateTime = Textfield + Calendar + ❤️
 
 ```html
 <ng-template>
-<tui-textfield [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
@@ -22748,10 +22761,10 @@ tui-data-list {
 ```ts
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -22766,10 +22779,10 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiDropdown,
         TuiInputDateTime,
@@ -23700,8 +23713,8 @@ InputMonth = Textfield + CalendarMonth + ❤️
 
 ```html
 <ng-template>
-<tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Month" tuiInputMonth [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<input placeholder="Month" tuiInputMonth [formControl]="control" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar-month *tuiDropdown [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [(year)]="year" />
 </tui-textfield>
 </ng-template>
@@ -23985,8 +23998,8 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -24010,8 +24023,8 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInputMonth,
         TuiTitle,
@@ -24075,7 +24088,7 @@ InputNumber is a form field to provide numerical input. example of [ 'Number as 
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [state]="input.state" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 </tui-textfield>
 </ng-template>
 ```
@@ -24495,9 +24508,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -24511,9 +24524,9 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiInputNumber,
@@ -24566,9 +24579,9 @@ InputPhone allows to input a phone number
 
 ```html
 <ng-template>
-<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <label tuiLabel>Type a phone number</label>
-<input tuiInputPhone [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [mask]="phoneMask" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<input tuiInputPhone [formControl]="control" [mask]="phoneMask" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 </tui-textfield>
 </ng-template>
 ```
@@ -24822,9 +24835,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -24834,9 +24847,9 @@ import {TuiInputPhone} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInputPhone,
     ],
@@ -24903,7 +24916,7 @@ Allows to input phone number in international format InputPhoneInternational is 
 
 ```html
 <ng-template>
-<tui-textfield [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Type a phone number</label> } <input tuiInputPhoneInternational [countries]="countries" [countrySearch]="countrySearch" [focused]="input.focused" [formControl]="formControl" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''" [readOnly]="control.readonly" [state]="input.state" [tuiDisabled]="control.disabled" [(countryIsoCode)]="countryIsoCode" />
+<tui-textfield [invalid]="control.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Type a phone number</label> } <input tuiInputPhoneInternational [countries]="countries" [countrySearch]="countrySearch" [formControl]="formControl" [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''" [readOnly]="control.readonly" [tuiDisabled]="control.disabled" [(countryIsoCode)]="countryIsoCode" />
 </tui-textfield>
 </ng-template>
 ```
@@ -25211,9 +25224,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -25231,9 +25244,9 @@ import {getCountries} from 'libphonenumber-js';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
-        TuiDocInput,
         TuiDocTextfield,
         TuiDropdown,
         TuiIcon,
@@ -25819,8 +25832,8 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 
 ```html
 <ng-template>
-<tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
+<tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 <input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" />
 </tui-textfield>
 </ng-template>
@@ -26136,8 +26149,8 @@ InputTime allows users to enter and edit time values using a keyboard, dropdown 
 
 ```html
 <ng-template>
-<tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Pick a time" tuiInputTime [accept]="accept" [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<input placeholder="Pick a time" tuiInputTime [accept]="accept" [formControl]="control" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 </tui-textfield>
 </ng-template>
 ```
@@ -26578,8 +26591,8 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -26593,8 +26606,8 @@ import {TuiInputTime} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
-        TuiDocInput,
         TuiDocTextfield,
         TuiInput,
         TuiInputTime,
@@ -26653,8 +26666,8 @@ Component to input a single year
 
 ```html
 <ng-template>
-<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Put your birthday" tuiInputYear [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
+<input placeholder="Put your birthday" tuiInputYear [formControl]="control" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 </ng-template>
@@ -26779,9 +26792,9 @@ export default class Example {
 ```ts
 import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -26796,9 +26809,9 @@ import {TuiInputYear} from '@taiga-ui/kit';
         FormsModule,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -27457,6 +27470,766 @@ export default class Page {
     protected required = this.requiredVariants[0]!;
     protected itemsLimit = this.itemsLimitVariants[0]!;
     protected linesLimit = this.linesLimitVariants[0]!;
+}
+```
+
+---
+# components/Keypad
+- **Package**: `ADDON-MOBILE`
+- **Type**: components
+TuiKeypad is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own native &lt;button&gt; or &lt;a&gt; elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a shuffled PIN terminal, a calculator or a custom chooser. Each key stays a real element, so (click) , aria-label , disabled and href all work as usual. Each key updates your own state on (click) — display the running value however you like (the examples keep it in a signal shown in a &lt;div&gt; ).
+
+### Example
+
+```html
+<tui-keypad [columns]="columns"> @for (digit of digits; track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <button type="button" (click)="clear()" > C </button>
+<button type="button" (click)="append('0')" > 0 </button>
+<button aria-label="Backspace" type="button" (click)="backspace()" (longtap)="clear()" >
+<tui-icon icon="@tui.delete" />
+</button>
+</tui-keypad>
+<p>Value: {{ value() || '—' }}</p>
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [columns] | `number` | Number of grid columns |
+
+### Usage Examples
+
+#### Basic keypad
+
+**Template:**
+```html
+<tui-keypad class="keypad"> @for (digit of digits; track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <button type="button" (click)="clear()" > C </button>
+<button type="button" (click)="append('0')" > 0 </button>
+<button aria-label="Backspace" type="button" (click)="backspace()" (longtap)="clear()" >
+<tui-icon icon="@tui.delete" />
+</button>
+</tui-keypad>
+<p>Value: {{ value() || '—' }}</p>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
+import {TuiIcon} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    protected readonly value = signal('');
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
+}
+```
+**LESS:**
+```less
+.keypad {
+    inline-size: 15rem;
+}
+```
+
+#### Custom keys
+
+**Template:**
+```html
+<div class="display">{{ value() || '—' }}</div>
+<tui-keypad class="custom"> @for (digit of digits; track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <div></div>
+<button type="button" (click)="append('0')" > 0 </button> @if (value()) { <button aria-label="Backspace" type="button" (click)="backspace()" (longtap)="clear()" >
+<tui-icon icon="@tui.delete" />
+</button> } </tui-keypad>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
+import {TuiIcon} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    protected readonly value = signal('');
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.custom {
+    inline-size: 15rem;
+    font:
+        normal 2.5rem/1 'SF Pro Display',
+        -apple-system,
+        system-ui;
+}
+
+.display {
+    font: bold 2.5rem/1 var(--tui-typography-family-display);
+    text-align: center;
+    color: var(--tui-text-primary);
+    inline-size: 100%;
+}
+```
+
+#### Shuffled PIN
+
+**Template:**
+```html
+<p class="pin">{{ masked() || '—' }}</p>
+<tui-keypad class="keypad"> @for (digit of digits(); track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <button type="button" (click)="clear()" > C </button>
+<button aria-label="Backspace" type="button" (click)="backspace()" (longtap)="clear()" >
+<tui-icon icon="@tui.delete" />
+</button>
+</tui-keypad>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
+import {TuiIcon} from '@taiga-ui/core';
+
+const PIN_LENGTH = 4;
+const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+@Component({
+    imports: [TuiIcon, TuiKeypad],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    // Positions are randomized on every clear — like PIN terminals that reshuffle the pad
+    protected readonly digits = signal(this.shuffle());
+    protected readonly pin = signal('');
+    protected readonly masked = computed(() => '•'.repeat(this.pin().length));
+
+    protected append(digit: string): void {
+        if (this.pin().length < PIN_LENGTH) {
+            this.pin.update((current) => `${current}${digit}`);
+        }
+    }
+
+    protected backspace(): void {
+        this.pin.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.pin.set('');
+        this.digits.set(this.shuffle());
+    }
+
+    private shuffle(): string[] {
+        // uniform shuffle: independent random key per digit, then sort by it
+        return DIGITS.map((digit) => [Math.random(), digit] as const)
+            .sort(([a], [b]) => a - b)
+            .map(([, digit]) => digit);
+    }
+}
+```
+**LESS:**
+```less
+.pin {
+    margin: 0;
+    font: bold 2.5rem/1.4 var(--tui-typography-family-display);
+    letter-spacing: 0.5rem;
+    text-align: center;
+    color: var(--tui-text-primary);
+}
+
+.keypad {
+    inline-size: 15rem;
+}
+```
+
+#### Collapsible
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="open.set(true)" > Open form </button>
+<ng-template let-observer [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
+<div class="sheet">
+<div class="top">
+<input inputmode="none" class="amount" [size]="value().length + 1" [(ngModel)]="value" (blur)="focused.set(false)" (focus)="focused.set(true)" />
+<div class="chips">
+<span tuiChip>23 876 $</span>
+<span tuiChip>10 000 $</span>
+<span tuiChip>Auto-completion</span>
+</div>
+</div>
+<div class="middle">
+<div class="card">
+<div tuiCell>
+<tui-avatar appearance="primary" tuiAvatar="@tui.circle-user" />
+<div tuiTitle> 23 876 $ <div tuiSubtitle>from Card 1</div>
+</div>
+</div>
+<div tuiCell>
+<tui-avatar appearance="secondary" tuiAvatar="@tui.circle-dollar-sign" />
+<div tuiTitle> 1 450 $ <div tuiSubtitle>from Card 2</div>
+</div>
+</div>
+</div>
+</div>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="observer.complete()" > Send </button>
+<div class="clamp">Commission-free</div> @if (focused()) { <div tuiAnimated class="pad" >
+<div class="pad-inner">
+<tui-keypad> @for (digit of digits; track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <div></div>
+<button type="button" (click)="append('0')" > 0 </button>
+<button aria-label="Backspace" type="button" (click)="backspace()" (longtap)="clear()" >
+<tui-icon icon="@tui.delete" />
+</button>
+</tui-keypad>
+</div>
+</div> } </footer>
+</div>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiKeypad,
+    TuiSheetDialog,
+    type TuiSheetDialogOptions,
+} from '@taiga-ui/addon-mobile';
+import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiButton, TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAnimated,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiChip,
+        TuiFloatingContainer,
+        TuiIcon,
+        TuiKeypad,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    protected readonly value = signal('143');
+    protected readonly open = signal(false);
+    protected readonly focused = signal(false);
+
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
+        closable: true,
+        bar: false,
+        appearance: 'fullscreen',
+    };
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.sheet {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-block-size: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem 1rem;
+}
+
+.amount {
+    box-sizing: border-box;
+    padding: 1rem;
+    font: bold 2.5rem var(--tui-typography-family-display);
+    text-align: center;
+    color: var(--tui-text-primary);
+    // auto width via [size] so a centered <input> never scrolls/clips its text on iOS Safari
+    max-inline-size: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    transform: translateZ(0);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.middle {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-block-end: 1rem;
+}
+
+.card {
+    background: var(--tui-background-neutral-1);
+    border-radius: var(--tui-radius-l);
+    overflow: hidden;
+}
+
+.clamp {
+    .tui-line-clamp();
+
+    margin-block-start: 0.5rem;
+    min-block-size: 2rem;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
+}
+
+.pad {
+    display: grid;
+    grid-area: auto / 1;
+
+    // clip only while collapsing/expanding, so pressed keys aren't cut off at rest
+    &.tui-enter .pad-inner,
+    &.tui-leave .pad-inner {
+        overflow: hidden;
+    }
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiCollapse;
+    }
+}
+```
+
+#### Calculator
+
+**Template:**
+```html
+<button iconStart="@tui.calculator" tuiButton type="button" (click)="open.set(true)" > Open Calculator </button>
+<ng-template [tuiPopout]="open()" [tuiPopoutOptions]="{pip: true, features: {width: 300, height: 450}}" (tuiPopoutChange)="open.set($event)" >
+<main class="calculator">
+<input #input inputmode="none" readonly tuiAutoFocus class="input" [value]="displayValue()" (keydown)="onKeydown($event)" />
+<tui-keypad [columns]="4">
+<button type="button" (click)="onKey('clear')" > AC </button>
+<button type="button" (click)="onKey('(')" > ( </button>
+<button type="button" (click)="onKey(')')" > ) </button>
+<button aria-label="Divide" type="button" (click)="onKey('÷')" >
+<tui-icon icon="@tui.divide" />
+</button> @for (digit of ['7', '8', '9']; track digit) { <button type="button" (click)="onKey(digit)" > {{ digit }} </button> } <button aria-label="Multiply" type="button" (click)="onKey('×')" >
+<tui-icon icon="@tui.x" />
+</button> @for (digit of ['4', '5', '6']; track digit) { <button type="button" (click)="onKey(digit)" > {{ digit }} </button> } <button aria-label="Subtract" type="button" (click)="onKey('-')" >
+<tui-icon icon="@tui.minus" />
+</button> @for (digit of ['1', '2', '3']; track digit) { <button type="button" (click)="onKey(digit)" > {{ digit }} </button> } <button aria-label="Add" type="button" (click)="onKey('+')" >
+<tui-icon icon="@tui.plus" />
+</button>
+<button type="button" (click)="onKey('0')" > 0 </button>
+<button type="button" (click)="onKey('.')" > . </button>
+<button aria-label="Backspace" type="button" (click)="onKey('backspace')" (longtap)="onKey('clear')" >
+<tui-icon icon="@tui.delete" />
+</button>
+<button aria-label="Equals" type="button" (click)="onKey('enter')" >
+<tui-icon icon="@tui.equal" />
+</button>
+</tui-keypad>
+</main>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, computed, type ElementRef, signal, viewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiPopout} from '@taiga-ui/experimental';
+
+const KEYBOARD_MAP: Record<string, string> = {
+    '+': '+',
+    '-': '-',
+    '*': '×',
+    '/': '÷',
+    '(': '(',
+    ')': ')',
+    '.': '.',
+    Enter: 'enter',
+    Backspace: 'backspace',
+    Escape: 'clear',
+};
+
+const OPERATORS = new Set(['-', '+', '÷', '×']);
+
+@Component({
+    imports: [TuiAutoFocus, TuiButton, TuiIcon, TuiKeypad, TuiPopout],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    private readonly input = viewChild<ElementRef<HTMLInputElement>>('input');
+
+    protected readonly expression = signal('0');
+    protected readonly displayValue = computed(() => this.expression());
+    protected readonly open = signal(false);
+
+    protected onKey(key: string): void {
+        const el = this.input()?.nativeElement;
+
+        el?.focus();
+        this.expression.update((expr) => this.reduce(expr, key));
+
+        // a readonly, programmatically-set field won't scroll itself — after layout, keep
+        // the latest input (the tail) in view
+        requestAnimationFrame(() => {
+            if (el) {
+                el.scrollLeft = el.scrollWidth;
+            }
+        });
+    }
+
+    protected onKeydown(event: KeyboardEvent): void {
+        const mapped =
+            KEYBOARD_MAP[event.key] ?? (/^\d$/.test(event.key) ? event.key : null);
+
+        if (mapped) {
+            event.preventDefault();
+            this.onKey(mapped);
+        }
+    }
+
+    private reduce(current: string, key: string): string {
+        const expr = current === 'Error' ? '0' : current;
+
+        switch (key) {
+            case '.':
+                return this.appendDot(expr);
+            case '(':
+                return expr === '0' ? '(' : `${expr}(`;
+            case ')':
+                return `${expr})`;
+            case 'backspace':
+                return expr.length > 1 ? expr.replace(/\s?.$/, '') || '0' : '0';
+            case 'clear':
+                return '0';
+            case 'enter':
+                return this.tryCalculate(expr);
+            default:
+                return OPERATORS.has(key)
+                    ? this.appendOperator(expr, key)
+                    : this.appendDigit(expr, key);
+        }
+    }
+
+    private appendDigit(expr: string, digit: string): string {
+        return expr.replace(/\d*(?:\.\d*)?$/, (last) =>
+            last === '0' ? digit : `${last}${digit}`,
+        );
+    }
+
+    private appendOperator(expr: string, op: string): string {
+        return /[+\-×÷]\s*$/.test(expr)
+            ? expr.replace(/[+\-×÷]\s*$/, `${op} `)
+            : `${expr} ${op} `;
+    }
+
+    private appendDot(expr: string): string {
+        const lastNumber = expr.split(/[-+*/×÷()\s]/).pop() ?? '';
+
+        if (lastNumber.includes('.')) {
+            return expr;
+        }
+
+        return lastNumber ? `${expr}.` : `${expr}0.`;
+    }
+
+    private tryCalculate(expr: string): string {
+        try {
+            return this.calculate(expr);
+        } catch {
+            return 'Error';
+        }
+    }
+
+    private calculate(expr: string): string {
+        const tokens = expr
+            .replaceAll('×', '*')
+            .replaceAll('÷', '/')
+            .match(/\d+(?:\.\d+)?|[+\-*/()]/g);
+
+        if (!tokens) {
+            throw new Error('Empty expression');
+        }
+
+        const result = this.evaluate(tokens);
+
+        if (!Number.isFinite(result)) {
+            throw new Error('Not a finite number');
+        }
+
+        return String(Math.round(result * 1e10) / 1e10);
+    }
+
+    /**
+     * Safe evaluation of a flat arithmetic expression via the shunting-yard
+     * algorithm — no `eval`/`new Function`, only the four operators and parentheses.
+     */
+    private evaluate(tokens: readonly string[]): number {
+        const values: number[] = [];
+        const operators: string[] = [];
+
+        const fold = (): void => {
+            const operator = operators.pop();
+            const right = values.pop();
+            const left = values.pop();
+
+            if (operator === undefined || left === undefined || right === undefined) {
+                throw new Error('Malformed expression');
+            }
+
+            values.push(this.operate(left, right, operator));
+        };
+
+        for (const token of tokens) {
+            if (/\d/.test(token)) {
+                values.push(Number(token));
+            } else if (token === '(') {
+                operators.push(token);
+            } else if (token === ')') {
+                while (operators.length && operators[operators.length - 1] !== '(') {
+                    fold();
+                }
+
+                if (operators.pop() !== '(') {
+                    throw new Error('Unbalanced parentheses');
+                }
+            } else {
+                while (
+                    operators.length &&
+                    this.precedence(operators[operators.length - 1]) >=
+                        this.precedence(token)
+                ) {
+                    fold();
+                }
+
+                operators.push(token);
+            }
+        }
+
+        while (operators.length) {
+            if (operators[operators.length - 1] === '(') {
+                throw new Error('Unbalanced parentheses');
+            }
+
+            fold();
+        }
+
+        const [result, ...rest] = values;
+
+        if (result === undefined || rest.length) {
+            throw new Error('Malformed expression');
+        }
+
+        return result;
+    }
+
+    private precedence(operator: string | undefined): number {
+        if (operator === '+' || operator === '-') {
+            return 1;
+        }
+
+        return operator === '*' || operator === '/' ? 2 : 0;
+    }
+
+    private operate(left: number, right: number, operator: string): number {
+        if (operator === '-') {
+            return left - right;
+        }
+
+        if (operator === '+') {
+            return left + right;
+        }
+
+        if (operator === '*') {
+            return left * right;
+        }
+
+        return right === 0 ? Number.NaN : left / right;
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    block-size: 100%;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- dvh: vh spans behind the mobile browser UI and pushes the bottom actions offscreen */
+    block-size: 100dvh;
+    box-sizing: border-box;
+}
+
+tui-keypad {
+    flex: 1;
+    min-block-size: 0;
+    grid-auto-rows: 1fr; // fill the flex height instead of the fixed default rows
+}
+
+.input {
+    flex: none;
+    inline-size: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: end;
+    border: none;
+    outline: none;
+    background: var(--tui-background-neutral-2);
+    border-radius: 0.5rem;
+    color: var(--tui-text-primary);
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--tui-text-secondary);
+    }
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiKeypad} from '@taiga-ui/addon-mobile';
+import {TuiIcon} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiDemo, TuiIcon, TuiKeypad],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        'Basic keypad',
+        'Custom keys',
+        'Shuffled PIN',
+        'Collapsible',
+        'Calculator',
+    ];
+
+    protected readonly digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    protected columns = 3;
+    protected readonly columnsVariants = [3, 4];
+    protected readonly value = signal('');
+
+    protected append(digit: string): void {
+        this.value.update((current) => `${current}${digit}`);
+    }
+
+    protected backspace(): void {
+        this.value.update((current) => current.slice(0, -1));
+    }
+
+    protected clear(): void {
+        this.value.set('');
+    }
+}
+```
+
+### LESS
+
+```less
+tui-keypad {
+    inline-size: 15rem;
+    // height follows width via the pad's own aspect-ratio, so the cells stay square for
+    // any [columns] value — a fixed height would squash them at columns=4
+    block-size: auto;
 }
 ```
 
@@ -37968,7 +38741,7 @@ hr {
 <button type="button">Label</button>
 </tui-segmented>
 <tui-segmented>
-<button type="button" [disabled]="true" > Label </button>
+<button type="button">Label</button>
 <button type="button">Label</button>
 <button type="button" [disabled]="true" > Label </button>
 <button type="button">Label</button>
@@ -38025,7 +38798,7 @@ Select is a form control for selecting a single value from a set of options, sim
 ### Example
 
 ```html
-<ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldDoc.content" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" />
+<ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldDoc.content" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [invalid]="controlDoc.invalid" [stringify]="itemsHandlers.stringify()" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiDropdown [items]="countries()" />
 </tui-textfield>
 </ng-template>
@@ -38543,9 +39316,9 @@ export default class Example {
 ```ts
 import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -38568,9 +39341,9 @@ interface Country {
         TuiChevron,
         TuiDataListWrapper,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -44995,7 +45768,7 @@ Textarea uses Textfield to create a multi-line string input.
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Label</label> } <textarea placeholder="Placeholder" tuiTextarea [focused]="input.focused" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [state]="input.state" [tuiDisabled]="controlDoc.disabled" ></textarea>
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Label</label> } <textarea placeholder="Placeholder" tuiTextarea [formControl]="control" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" ></textarea>
 </tui-textfield>
 </ng-template>
 ```
@@ -45181,9 +45954,9 @@ export default class Example {
 ```ts
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -45194,9 +45967,9 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocTextfield,
         TuiTextarea,
     ],
@@ -45445,9 +46218,9 @@ export default class Example {}
 **Template:**
 ```html
 <tui-segmented> @for (state of statuses; track state) { <button type="button" (click)="status = state" > {{ state }} </button> } </tui-segmented>
-<tui-textfield>
+<tui-textfield [invalid]="status === 'invalid'">
 <label tuiLabel>Card number</label>
-<input icon="" tuiInputCard [disabled]="status === 'disabled'" [invalid]="status === 'invalid'" [readOnly]="status === 'readOnly'" [(ngModel)]="card" /> @if (card.startsWith('1234')) { <span iconStart="@tui.dollar-sign" paymentSystem="visa" size="s" tuiThumbnailCard [style.background]="background" ></span> } </tui-textfield>
+<input icon="" tuiInputCard [disabled]="status === 'disabled'" [readOnly]="status === 'readOnly'" [(ngModel)]="card" /> @if (card.startsWith('1234')) { <span iconStart="@tui.dollar-sign" paymentSystem="visa" size="s" tuiThumbnailCard [style.background]="background" ></span> } </tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -50894,9 +51667,9 @@ export default class Example {}
 
 **Template:**
 ```html
-<tui-textfield tuiDropdownLimitWidth="auto" tuiDropdownSelectionPosition="word" [tuiDropdownSelection]="predicate" >
+<tui-textfield tuiDropdownLimitWidth="auto" tuiDropdownSelectionPosition="word" [tuiAppearanceFocus]="(driver() | async) || null" [tuiDropdownSelection]="predicate" >
 <label tuiLabel>Type a message</label>
-<textarea tuiTextarea [focused]="(driver() | async) || null" [max]="4" [min]="4" [(ngModel)]="value" (keydown.stop.arrowDown)="onArrow($event, 0)" (keydown.stop.arrowUp)="onArrow($event, options().length - 1)" ></textarea>
+<textarea tuiTextarea [max]="4" [min]="4" [(ngModel)]="value" (keydown.stop.arrowDown)="onArrow($event, 0)" (keydown.stop.arrowUp)="onArrow($event, options().length - 1)" ></textarea>
 <tui-data-list *tuiDropdown size="m" > @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) { <button tuiOption type="button" (click)="onClick(item.login)" >
 <div size="s" tuiAvatar > {{ item.name | tuiInitials }} <img alt="" [src]="item.avatar" />
 </div> {{ item.name }} </button> } </tui-data-list>
