@@ -3,15 +3,15 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {type TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDataList, TuiHint, TuiIcon} from '@taiga-ui/core';
-import {TuiDatePicker} from '@taiga-ui/experimental';
+import {TuiCalendar} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         FormsModule,
         TuiAvatar,
+        TuiCalendar,
         TuiDataList,
-        TuiDatePicker,
         TuiHint,
         TuiIcon,
         TuiInitialsPipe,

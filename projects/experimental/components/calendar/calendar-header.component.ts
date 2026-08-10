@@ -10,7 +10,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit/components/input-date-multi';
 import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
 
 @Component({
-    selector: 'tui-date-picker-header',
+    selector: 'tui-calendar-header',
     imports: [FormsModule, TuiInputDate, TuiInputDateMulti, TuiInputDateRange],
     template: `
         @switch (mode()) {
@@ -66,7 +66,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiInputDateOptionsProvider({icon: ''})],
 })
-export class TuiDatePickerHeader {
+export class TuiCalendarHeader {
     protected readonly picker = inject(AbstractTuiCalendar);
     protected readonly dropdown = inject(TUI_DROPDOWN_HOST, {optional: true});
 
