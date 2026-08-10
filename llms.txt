@@ -59,6 +59,7 @@
 - [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
 - [Button X](https://taiga-ui.dev/components/button-x) — A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
+- [Calendar Experimental](https://taiga-ui.dev/components/calendar-experimental) — This is a work in progress The APIs might change in the future, use with caution
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
 - [Carousel](https://taiga-ui.dev/components/carousel) — Generic swipeable container to scroll through content
@@ -73,7 +74,6 @@
 - [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
-- [Date Picker](https://taiga-ui.dev/components/date-picker) — This is a work in progress The APIs might change in the future, use with caution
 - [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
 - [Drawer](https://taiga-ui.dev/components/drawer)
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
@@ -106,6 +106,7 @@
 - [Input Year](https://taiga-ui.dev/components/input-year) — Component to input a single year
 - [Item Group](https://taiga-ui.dev/components/item-group)
 - [Items With More](https://taiga-ui.dev/components/items-with-more) — Component to hide overflown items behind custom content. Resize the screen to see extra items disappear
+- [Keypad](https://taiga-ui.dev/components/keypad) — TuiKeypad is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own native &lt;button&gt; or &lt;a&gt; elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a shuffled PIN terminal, a calculator or a custom chooser. Each key stays a real element, so (click) , aria-label , disabled and href all work as usual. Each key updates your own state on (click) — display the running value however you like (the examples keep it in a signal shown in a &lt;div&gt; ).
 - [Label](https://taiga-ui.dev/components/label) — Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 - [Like](https://taiga-ui.dev/components/like) — A like component based on native checkbox with icons and custom color for icon when :checked state.
 - [Line Clamp](https://taiga-ui.dev/components/line-clamp) — Component cuts overflown text with "..." and shows it by hover
