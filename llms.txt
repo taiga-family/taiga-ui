@@ -59,6 +59,7 @@
 - [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
 - [Button X](https://taiga-ui.dev/components/button-x) — A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
+- [Calendar Experimental](https://taiga-ui.dev/components/calendar-experimental) — This is a work in progress The APIs might change in the future, use with caution
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
 - [Carousel](https://taiga-ui.dev/components/carousel) — Generic swipeable container to scroll through content
@@ -73,7 +74,6 @@
 - [Counter](https://taiga-ui.dev/components/counter)
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary.
-- [Date Picker](https://taiga-ui.dev/components/date-picker) — This is a work in progress The APIs might change in the future, use with caution
 - [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs
 - [Drawer](https://taiga-ui.dev/components/drawer)
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
