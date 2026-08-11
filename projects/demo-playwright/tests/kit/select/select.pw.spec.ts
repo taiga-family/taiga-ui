@@ -7,7 +7,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
-    TUI_DROPDOWN_LOCATORS,
+    TUI_DATA_LIST_LOCATORS,
+    TUI_LABEL_LOCATORS,
     TUI_SELECT_LOCATORS,
     TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
@@ -96,7 +97,9 @@ describe('Select', () => {
                     );
                     example = new TuiDocumentationPagePO(page).demo;
                     select = new TuiSelectPO(
-                        example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
+                        example.locator(
+                            `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                        ),
                     );
 
                     await select.textfield.click();
@@ -132,7 +135,9 @@ describe('Select', () => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
                 example = new TuiDocumentationPagePO(page).demo;
                 select = new TuiSelectPO(
-                    example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
+                    example.locator(
+                        `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                    ),
                 );
             });
 
@@ -140,7 +145,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
+                await select.host.locator(TUI_LABEL_LOCATORS.HOST).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -154,7 +159,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
+                await select.host.locator(TUI_LABEL_LOCATORS.HOST).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -177,14 +182,16 @@ describe('Select', () => {
 
             documentationPage = new TuiDocumentationPagePO(page);
             const select = new TuiSelectPO(
-                documentationPage.demo.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
+                documentationPage.demo.locator(
+                    `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                ),
             );
 
             await expect(select.textfield).toHaveValue('USA');
 
             await select.textfield.click();
             await select.dropdown
-                .locator(TUI_DROPDOWN_LOCATORS.OPTION, {hasText: 'Austria'})
+                .locator(TUI_DATA_LIST_LOCATORS.OPTION, {hasText: 'Austria'})
                 .click();
 
             await expect(select.textfield).toHaveValue('Austria');

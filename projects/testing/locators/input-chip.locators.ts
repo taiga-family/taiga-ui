@@ -1,4 +1,7 @@
+import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
+
 export const TUI_INPUT_CHIP_LOCATORS = {
-    HOST: 'tui-input-chip',
-    LABEL: '[tuiLabel]',
-};
+    ...TUI_TEXTFIELD_LOCATORS,
+    INPUT: 'input[tuiInputChip]',
+    CHIPS: '.t-items tui-textfield-item ',
+} as const;

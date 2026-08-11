@@ -492,6 +492,7 @@ describe('InputNumber', () => {
 
                 describe('Keeps caret position on step', () => {
                     beforeEach(async () => {
+                        await inputNumber.textfield.focus();
                         await inputNumber.textfield.fill('42');
 
                         await expect(inputNumber.textfield).toHaveValue('42kg');
@@ -516,6 +517,8 @@ describe('InputNumber', () => {
 
                     test('via button', async () => {
                         await inputNumber.stepUp.click();
+                        await expect(inputNumber.stepUp).toBeVisible();
+                        await expect(inputNumber.stepUp).toContainText('+');
                         await expect(inputNumber.textfield).toHaveValue('43kg');
                         // Caret should be at the end of value but before postfix ("kg")
                         await expect(inputNumber.textfield).toHaveJSProperty(

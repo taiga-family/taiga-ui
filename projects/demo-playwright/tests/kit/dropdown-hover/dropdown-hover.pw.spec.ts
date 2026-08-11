@@ -1,9 +1,12 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_DROPDOWN_LOCATORS,
+    TUI_SHEET_DIALOG_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
-import {TUI_DROPDOWN_LOCATORS, TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DropdownHover', () => {
     test.describe('Examples', () => {

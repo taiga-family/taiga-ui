@@ -1,13 +1,13 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {
     TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_SELECT_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
+
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 const {describe} = test;
 
@@ -20,7 +20,7 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator(TUI_SELECT_LOCATORS.HOST).click();
+        await example.locator(TUI_SELECT_LOCATORS.INPUT).click();
         await page
             .locator(TUI_SHEET_DIALOG_LOCATORS.HOST)
             .locator(TUI_SHEET_DIALOG_LOCATORS.OPTION)

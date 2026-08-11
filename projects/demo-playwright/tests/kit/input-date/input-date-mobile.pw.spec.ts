@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
-import {TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
