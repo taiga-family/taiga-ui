@@ -26,13 +26,15 @@ input {
     }
 }
 
-:root {
+:root,
+ :host {
     --tui-inline-start: left;
     --tui-inline-end: right;
     --tui-inline: 1;
 }
 
-[dir='rtl'] {
+[dir='rtl'],
+ :host([dir='rtl']) {
     --tui-inline-start: right;
     --tui-inline-end: left;
     --tui-inline: -1;
