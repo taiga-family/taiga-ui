@@ -1,0 +1,11 @@
+import"./chunk-LQ6M4NCU.js";var c=`.container {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.card {
+    background-color: var(--tui-background-base-alt);
+    block-size: auto;
+}
+`;export{c as default};
