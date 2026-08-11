@@ -11,7 +11,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiControl} from '@taiga-ui/cdk';
 import {TuiIcon, TuiRoot} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
@@ -314,21 +314,19 @@ describe('InputPhoneInternational', () => {
 
                 cy.get('@input').focus().blur();
 
-                cy.get('tui-textfield')
-                    .should('have.attr', 'data-mode', 'invalid');
+                cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
 
                 cy.get('@input').should('have.attr', 'aria-invalid', 'false');
-                cy.get<HTMLInputElement>('@input')
-                    .should(($input) => {
-                        expect($input[0]!.validationMessage).to.equal('');
+                cy.get<HTMLInputElement>('@input').should(($input) => {
+                    expect($input[0]!.validationMessage).to.equal('');
 
-                        const tuiControl = fixture.debugElement
-                                .query(By.css('input[tuiInputPhoneInternational]'))
-                                .injector.get(TuiControl);
+                    const tuiControl = fixture.debugElement
+                        .query(By.css('input[tuiInputPhoneInternational]'))
+                        .injector.get(TuiControl);
 
-                        expect(tuiControl.invalid()).to.equal(true);
-                        expect(ngControl.status).to.equal('VALID');
-                    });
+                    expect(tuiControl.invalid()).to.equal(true);
+                    expect(ngControl.status).to.equal('VALID');
+                });
 
                 cy.get('tui-textfield').compareSnapshot({
                     name: 'phone-manual-invalid',

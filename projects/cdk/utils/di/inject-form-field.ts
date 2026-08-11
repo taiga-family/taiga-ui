@@ -1,4 +1,4 @@
-import {computed, inject, InjectOptions, type Signal} from '@angular/core';
+import {computed, inject, type InjectOptions, type Signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 /**

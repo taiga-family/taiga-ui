@@ -230,8 +230,7 @@ describe('tuiInput + signal forms', () => {
             cy.get('@input')
                 .should('match', ':invalid')
                 .should('have.attr', 'aria-invalid', 'true');
-            cy.get('tui-textfield')
-                .should('have.class', 'tui-invalid');
+            cy.get('tui-textfield').should('have.class', 'tui-invalid');
             snapshot('touched-invalid');
         });
 
@@ -249,8 +248,7 @@ describe('tuiInput + signal forms', () => {
             cy.get('@input')
                 .should('not.match', ':invalid')
                 .should('have.attr', 'aria-invalid', 'false');
-            cy.get('tui-textfield')
-                .should('not.have.class', 'tui-invalid');
+            cy.get('tui-textfield').should('not.have.class', 'tui-invalid');
             snapshot('touched-valid');
         });
 
@@ -336,8 +334,7 @@ describe('tuiInput + signal forms', () => {
 
             cy.get('#force-invalid').click();
 
-            cy.get('tui-textfield')
-                .should('have.attr', 'data-mode', 'invalid');
+            cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
             // the override is appearance-only — native validity is not affected
             cy.get('@input').should('not.match', ':invalid');
             snapshot('[invalid]-true-over-valid-field');
@@ -349,8 +346,7 @@ describe('tuiInput + signal forms', () => {
 
             cy.get('#force-valid').click();
 
-            cy.get('tui-textfield')
-                .should('have.attr', 'data-mode', 'valid');
+            cy.get('tui-textfield').should('have.attr', 'data-mode', 'valid');
             snapshot('[invalid]-false-over-invalid-field');
         });
 
