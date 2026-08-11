@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.94.0](https://github.com/taiga-family/taiga-ui/compare/v4.93.0...v4.94.0) (2026-08-10)
+
+### 🐞 Bug Fixes
+
+- **core:** `Dropdown` fix background color in dark mode according to specs
+  ([#14705](https://github.com/taiga-family/taiga-ui/issues/14705))
+  ([c25fc3a](https://github.com/taiga-family/taiga-ui/commit/c25fc3a474f40aa29d105ae0ea356f05aeee2e00))
+- **core:** `DropdownContext` fix click on host element
+  ([#14624](https://github.com/taiga-family/taiga-ui/issues/14624))
+  ([d1d9041](https://github.com/taiga-family/taiga-ui/commit/d1d9041a3cd2d390d4035cfe3b5923e6ec7ece5c))
+- **kit:** `Hint` should close on mobile when scrolling begins
+  ([#14676](https://github.com/taiga-family/taiga-ui/issues/14676))
+  ([8c3280e](https://github.com/taiga-family/taiga-ui/commit/8c3280e14bbc45c88ff4615a5f8e72593106fc47))
+
 ## [4.93.0](https://github.com/taiga-family/taiga-ui/compare/v4.92.0...v4.93.0) (2026-08-03)
 
 ### 🚀 Features
