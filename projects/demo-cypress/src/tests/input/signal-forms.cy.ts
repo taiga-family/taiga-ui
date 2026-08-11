@@ -23,7 +23,7 @@ import {TuiInput, TuiRoot} from '@taiga-ui/core';
     template: `
         <tui-root>
             <tui-textfield
-                style="margin-block-end: 1rem"
+                style="margin-block-end: 1rem; margin-inline-end: 1rem"
                 [invalid]="manualInvalid()"
             >
                 <label tuiLabel>Name</label>
