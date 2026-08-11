@@ -122,3 +122,23 @@
         }
     }
 }
+
+// TODO: Move this to proprietary mobile theme
+[data-platform='ios'] [tuiForm][data-size],
+[data-platform='android'] [tuiForm][data-size] {
+    gap: 0.75rem;
+
+    tui-error,
+    tui-elastic-container {
+        margin-block-start: -0.75rem;
+    }
+
+    tui-error .t-content {
+        margin: 0 0.75rem;
+
+        &::before,
+        &::after {
+            line-height: 1.875rem;
+        }
+    }
+}
