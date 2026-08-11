@@ -115,7 +115,7 @@ function containsDuplicateLet(template: string, key: string): boolean {
 }
 
 function escapeRegExp(value: string): string {
-    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return value.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
 }
 
 // `$` is a valid identifier character, so it must count as part of the word.
