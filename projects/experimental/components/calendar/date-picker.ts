@@ -1,5 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {computed, Directive, effect, inject, input} from '@angular/core';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -33,10 +33,11 @@ export abstract class TuiDatePicker<
         const value = this.value();
         const [day] = value instanceof TuiDayRange ? [value.from] : coerceArray(value);
 
+        this.min();
+        this.max();
+
         if (!day || day.year < 9000) {
-            this.month.update(({month, year}) =>
-                (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
-            );
+            untracked(() => this.updateMonth(day));
         }
     });
 
@@ -44,6 +45,12 @@ export abstract class TuiDatePicker<
     public readonly contentDay = input<PolymorpheusContent<TuiContext<TuiDay>>>();
     public readonly dayType = input(this.options.dayType);
     public readonly showWeek = input(this.options.showWeek);
+
+    protected updateMonth(day?: TuiDay | null): void {
+        this.month.update(({month, year}) =>
+            (day || new TuiDay(year, month, 1)).dayLimit(this.min(), this.max()),
+        );
+    }
 
     protected onDay(day: TuiDay): void {
         if (this.mode() === 'range') {

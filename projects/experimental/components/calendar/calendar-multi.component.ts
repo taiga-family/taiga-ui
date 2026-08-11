@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WaIntersectionObservee} from '@ng-web-apis/intersection-observer';
-import {TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -76,6 +76,17 @@ export class TuiCalendarMultiComponent<
     );
 
     public readonly months = input<1 | 2 | 3>(2);
+
+    protected override updateMonth(day?: TuiDay | null): void {
+        this.month.update(({year, month}) => {
+            const updated = new TuiDay(day?.year || year, day?.month || month, 1);
+            const limited = updated.dayLimit(this.min(), this.max());
+
+            return Object.keys(this.visible()).includes(limited.toJSON().slice(0, -3))
+                ? new TuiMonth(year, month)
+                : limited;
+        });
+    }
 
     protected getMonth(index: number): TuiMonth {
         return new TuiMonth(Math.floor(index / 12), index % 12);
