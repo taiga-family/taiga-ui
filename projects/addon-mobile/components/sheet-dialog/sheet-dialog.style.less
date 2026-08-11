@@ -1,8 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    .scrollbar-hidden();
-
     position: sticky;
     display: flex;
     inset-inline-start: 0;
@@ -32,7 +30,7 @@
 
     &.tui-enter {
         animation-duration: @tui-duration-slow;
-        animation-timing-function: var(--tui-curve-expressive-entrance);
+        animation-timing-function: var(--tui-curve-expressive-standard);
     }
 
     &::before {

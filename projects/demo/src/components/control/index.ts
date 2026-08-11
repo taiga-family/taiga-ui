@@ -10,7 +10,7 @@ import {TuiTitle} from '@taiga-ui/core';
 })
 export class TuiDocControl {
     public readonly hiddenOptions = input<
-        ReadonlyArray<'disabled' | 'invalid' | 'readOnly'>
+        ReadonlyArray<'disabled' | 'invalid' | 'readonly'>
     >([]);
 
     public readonly = false;

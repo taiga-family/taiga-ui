@@ -375,5 +375,20 @@ describe('ng-update identifiers migration', () => {
         }),
     );
 
+    it(
+        'moves TuiMultiSelectModule (legacy) to TuiMultiSelect (kit)',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiMultiSelectModule],
+                })
+                export class TestModule {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

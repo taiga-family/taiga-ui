@@ -190,7 +190,7 @@ export class TuiInputCardGroup
     );
 
     protected readonly labelRaised = computed(
-        () => (this.focus() && !this.readOnly()) || !!this.card(),
+        () => (this.focus() && this.interactive()) || !!this.card(),
     );
 
     protected readonly hasCleaner = computed(
