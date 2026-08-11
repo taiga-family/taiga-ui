@@ -20271,7 +20271,7 @@ export default class Example {
 <tui-textfield #filter tuiTextfieldSize="m" [style.margin.rem]="0.25" >
 <input placeholder="Type to filter" tuiInput />
 </tui-textfield>
-<cdk-virtual-scroll-viewport tuiScrollRef class="tui-zero-scrollbar" [itemSize]="42" [style.height.px]="filtered().length * 42 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
+<cdk-virtual-scroll-viewport tuiScrollRef [itemSize]="42" [style.height.px]="filtered().length * 42 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
 <tui-scroll-controls />
 <tui-data-list tuiMultiSelectGroup>
 <button *cdkVirtualFor="let item of filtered()" tuiOption [value]="item" > {{ item }} </button>
@@ -29682,7 +29682,7 @@ export default class Example {
 
 **Template:**
 ```html
-<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef class="tui-zero-scrollbar" >
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef >
 <tui-scroll-controls />
 <div *cdkVirtualFor="let user of users; templateCacheSize: 0">
 <tui-line-clamp [content]="info" [lineHeight]="24" [linesLimit]="1" />
@@ -38041,7 +38041,7 @@ p {
 **Template:**
 ```html
 <button type="button" (click)="add()" > Add </button>
-<cdk-virtual-scroll-viewport itemSize="50" tuiScrollRef class="example-viewport tui-zero-scrollbar" >
+<cdk-virtual-scroll-viewport itemSize="50" tuiScrollRef class="example-viewport" >
 <tui-scroll-controls />
 <div *cdkVirtualFor="let item of items" class="example-item" > {{ item }} </div>
 </cdk-virtual-scroll-viewport>
@@ -38082,7 +38082,6 @@ export default class Example {
 **LESS:**
 ```less
 .example-viewport {
-    display: flex;
     block-size: 12.5rem;
     border: 1px solid;
 }
@@ -39150,7 +39149,7 @@ export default class Example {
 ```html
 <tui-textfield tuiChevron>
 <input placeholder="Country" tuiSelect [(ngModel)]="value" />
-<cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class="tui-zero-scrollbar" [itemSize]="42" [style.block-size.rem]="12.5" >
+<cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef [itemSize]="42" [style.block-size.rem]="12.5" >
 <tui-scroll-controls />
 <tui-data-list>
 <button *cdkVirtualFor="let item of countries" tuiOption type="button" [value]="item" > {{ item }} </button>
@@ -44270,7 +44269,7 @@ export default class Example {
 
 **Template:**
 ```html
-<cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class="viewport tui-zero-scrollbar" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
+<cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class="viewport" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
 <tui-scroll-controls />
 <table tuiTable>
 <thead>
@@ -52268,9 +52267,7 @@ export default class Example {
 **Template:**
 ```html
 <div tuiFade="vertical" tuiScrollRef class="fade" >
-<tui-scroll-controls />
-<div class="wrapper"> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. </div>
-</div>
+<tui-scroll-controls /> Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. </div>
 ```
 **TypeScript:**
 ```ts
@@ -52294,8 +52291,6 @@ export default class Example {}
 @import '@taiga-ui/styles/utils';
 
 .fade {
-    .scrollbar-hidden();
-
     display: flex;
     inline-size: 17rem;
     block-size: 10rem;
