@@ -51,7 +51,7 @@ test.describe('Input', () => {
         await expect.soft(example).toHaveScreenshot('2-horizontally-scrolled.png');
 
         await page.evaluate(() => {
-            const input = window.document.querySelector(TUI_INPUT_LOCATORS.HOST);
+            const input = window.document.querySelector('input[tuiInput]');
 
             if (input) {
                 input.scrollLeft = input.clientWidth / 2;
@@ -65,6 +65,7 @@ test.describe('Input', () => {
         await tuiGoto(page, DemoRoute.Input);
 
         const example = new TuiDocumentationPagePO(page).getExample('#mask');
+
         const inputs = example
             .locator(TUI_TEXTFIELD_LOCATORS.HOST)
             .locator(TUI_INPUT_LOCATORS.HOST);

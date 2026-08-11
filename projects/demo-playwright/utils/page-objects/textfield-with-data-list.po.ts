@@ -1,11 +1,11 @@
 import {expect, type Locator} from '@playwright/test';
-
-import {TuiTextfieldPO} from './textfield.po';
 import {
     TUI_DROPDOWN_LOCATORS,
     TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
+
+import {TuiTextfieldPO} from './textfield.po';
 
 export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public readonly dropdown = this.host

@@ -90,6 +90,7 @@ test.describe('InputChip', () => {
             const input = block
                 .locator(TUI_TEXTFIELD_LOCATORS.HOST)
                 .locator(`input${TUI_TEXTFIELD_LOCATORS.CHIP}`);
+
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
 

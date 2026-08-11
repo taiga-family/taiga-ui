@@ -1,13 +1,13 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {
     TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_SELECT_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
+
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 const {describe} = test;
 

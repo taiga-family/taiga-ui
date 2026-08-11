@@ -6,7 +6,10 @@ import {
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_INPUT_CHIP_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {beforeEach, describe} = test;
 
@@ -102,6 +105,7 @@ describe('Textfield cleaner', () => {
             const inputMonth = new TuiInputMonthPO(
                 example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
+
             const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
 
             await inputMonth.textfield.click();
