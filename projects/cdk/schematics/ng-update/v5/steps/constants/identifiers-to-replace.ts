@@ -1707,6 +1707,28 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiExpand',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiExpand',
+            moduleSpecifier: '@taiga-ui/core',
+            removeSpread: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+            removeSpread: true,
+        },
+    },
+    {
+        from: {
             name: 'TuiMobileDialogOptions',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
