@@ -8,7 +8,7 @@ test.describe('FluidTypography', () => {
         await tuiGoto(page, DemoRoute.FluidTypography);
 
         const example = new TuiDocumentationPagePO(page).getExample('#textfield');
-        const input = example.locator(TUI_INPUT_LOCATORS.HOST);
+        const input = example.locator(TUI_INPUT_LOCATORS.INPUT);
 
         await example.scrollIntoViewIfNeeded();
         await input.fill('1234567891011121314151617181920212223');

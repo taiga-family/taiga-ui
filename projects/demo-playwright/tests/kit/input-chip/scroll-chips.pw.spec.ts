@@ -1,14 +1,17 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test('scroll to second chip in narrow container', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API?rows=1&sandboxWidth=190`);
 
         const api = new TuiDocumentationApiPagePO(page);
-        const input = api.demo.locator(TUI_TEXTFIELD_LOCATORS.CHIP).first();
+        const input = api.demo.locator(TUI_INPUT_CHIP_LOCATORS.INPUT).first();
 
         await input.focus();
         await input.fill('VeryLongFirstWord');

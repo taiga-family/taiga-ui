@@ -6,7 +6,10 @@ import {
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_INPUT_CHIP_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {beforeEach, describe} = test;
 
@@ -60,10 +63,14 @@ describe('Textfield cleaner', () => {
             await input.pressSequentially('two');
             await page.keyboard.press('Enter');
 
-            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(2);
+            await expect(
+                example.locator(TUI_INPUT_CHIP_LOCATORS.INPUT_LEGACY),
+            ).toHaveCount(2);
 
             await cleaner.click();
-            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(0);
+            await expect(
+                example.locator(TUI_INPUT_CHIP_LOCATORS.INPUT_LEGACY),
+            ).toHaveCount(0);
         });
 
         test('InputColor', async ({page}) => {
@@ -102,6 +109,7 @@ describe('Textfield cleaner', () => {
             const inputMonth = new TuiInputMonthPO(
                 example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
+
             const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
 
             await inputMonth.textfield.click();
