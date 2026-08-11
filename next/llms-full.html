@@ -20280,7 +20280,7 @@ export default class Example {
 &lt;tui-textfield #filter tuiTextfieldSize=&quot;m&quot; [style.margin.rem]=&quot;0.25&quot; &gt;
 &lt;input placeholder=&quot;Type to filter&quot; tuiInput /&gt;
 &lt;/tui-textfield&gt;
-&lt;cdk-virtual-scroll-viewport tuiScrollRef class=&quot;tui-zero-scrollbar&quot; [itemSize]=&quot;42&quot; [style.height.px]=&quot;filtered().length * 42 + 8&quot; [style.max-height.px]=&quot;200&quot; [style.min-height.px]=&quot;56&quot; &gt;
+&lt;cdk-virtual-scroll-viewport tuiScrollRef [itemSize]=&quot;42&quot; [style.height.px]=&quot;filtered().length * 42 + 8&quot; [style.max-height.px]=&quot;200&quot; [style.min-height.px]=&quot;56&quot; &gt;
 &lt;tui-scroll-controls /&gt;
 &lt;tui-data-list tuiMultiSelectGroup&gt;
 &lt;button *cdkVirtualFor=&quot;let item of filtered()&quot; tuiOption [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt;
@@ -29691,7 +29691,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollRef class=&quot;tui-zero-scrollbar&quot; &gt;
+&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollRef &gt;
 &lt;tui-scroll-controls /&gt;
 &lt;div *cdkVirtualFor=&quot;let user of users; templateCacheSize: 0&quot;&gt;
 &lt;tui-line-clamp [content]=&quot;info&quot; [lineHeight]=&quot;24&quot; [linesLimit]=&quot;1&quot; /&gt;
@@ -38050,7 +38050,7 @@ p {
 **Template:**
 ```html
 &lt;button type=&quot;button&quot; (click)=&quot;add()&quot; &gt; Add &lt;/button&gt;
-&lt;cdk-virtual-scroll-viewport itemSize=&quot;50&quot; tuiScrollRef class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;cdk-virtual-scroll-viewport itemSize=&quot;50&quot; tuiScrollRef class=&quot;example-viewport&quot; &gt;
 &lt;tui-scroll-controls /&gt;
 &lt;div *cdkVirtualFor=&quot;let item of items&quot; class=&quot;example-item&quot; &gt; {{ item }} &lt;/div&gt;
 &lt;/cdk-virtual-scroll-viewport&gt;
@@ -38091,7 +38091,6 @@ export default class Example {
 **LESS:**
 ```less
 .example-viewport {
-    display: flex;
     block-size: 12.5rem;
     border: 1px solid;
 }
@@ -39159,7 +39158,7 @@ export default class Example {
 ```html
 &lt;tui-textfield tuiChevron&gt;
 &lt;input placeholder=&quot;Country&quot; tuiSelect [(ngModel)]=&quot;value&quot; /&gt;
-&lt;cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef class=&quot;tui-zero-scrollbar&quot; [itemSize]=&quot;42&quot; [style.block-size.rem]=&quot;12.5&quot; &gt;
+&lt;cdk-virtual-scroll-viewport *tuiDropdown appendOnly tuiScrollRef [itemSize]=&quot;42&quot; [style.block-size.rem]=&quot;12.5&quot; &gt;
 &lt;tui-scroll-controls /&gt;
 &lt;tui-data-list&gt;
 &lt;button *cdkVirtualFor=&quot;let item of countries&quot; tuiOption type=&quot;button&quot; [value]=&quot;item&quot; &gt; {{ item }} &lt;/button&gt;
@@ -44279,7 +44278,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class=&quot;viewport tui-zero-scrollbar&quot; [itemSize]=&quot;45&quot; [maxBufferPx]=&quot;500&quot; [minBufferPx]=&quot;400&quot; &gt;
+&lt;cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class=&quot;viewport&quot; [itemSize]=&quot;45&quot; [maxBufferPx]=&quot;500&quot; [minBufferPx]=&quot;400&quot; &gt;
 &lt;tui-scroll-controls /&gt;
 &lt;table tuiTable&gt;
 &lt;thead&gt;
@@ -52277,9 +52276,7 @@ export default class Example {
 **Template:**
 ```html
 &lt;div tuiFade=&quot;vertical&quot; tuiScrollRef class=&quot;fade&quot; &gt;
-&lt;tui-scroll-controls /&gt;
-&lt;div class=&quot;wrapper&quot;&gt; Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. &lt;/div&gt;
-&lt;/div&gt;
+&lt;tui-scroll-controls /&gt; Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven Kingdoms, Breaker of Chains and Mother of Dragons. &lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
@@ -52303,8 +52300,6 @@ export default class Example {}
 @import &#039;@taiga-ui/styles/utils&#039;;
 
 .fade {
-    .scrollbar-hidden();
-
     display: flex;
     inline-size: 17rem;
     block-size: 10rem;
