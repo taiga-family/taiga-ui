@@ -53,6 +53,7 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
         if (Node.isImportSpecifier(parent)) {
             const targets = toArray(to);
             const [target] = targets;
+
             const alreadyImported =
                 targets.length === 1 &&
                 !!target &&
