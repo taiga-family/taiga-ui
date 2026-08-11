@@ -319,7 +319,9 @@ describe('InputPhoneInternational', () => {
                 cy.get('@input').should('have.attr', 'aria-invalid', 'false');
 
                 cy.get('@input').should(($input) => {
-                    expect(($input[0] as HTMLInputElement).validationMessage).to.equal('')
+                    expect(($input[0] as HTMLInputElement).validationMessage).to.equal(
+                        '',
+                    );
 
                     const tuiControl = fixture.debugElement
                         .query(By.css('input[tuiInputPhoneInternational]'))

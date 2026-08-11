@@ -3,7 +3,7 @@ import {NgControl} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiInjectFormField} from '@taiga-ui/cdk/utils';
+import {tuiInjectFormField} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
