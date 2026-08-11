@@ -112,7 +112,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     }
 
     protected onFocus(): void {
-        if (!this.input.value() && !this.readOnly()) {
+        if (!this.input.value() && this.interactive()) {
             this.input.value.set(`${this.mask.prefix()}${this.mask.postfix()}`);
         }
     }

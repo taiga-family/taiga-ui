@@ -62,7 +62,16 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
         ),
     );
 
-    public readonly readOnly = input(false);
+    /**
+     * @deprecated use `<input [readonly]="..." />` instead
+     * TODO(v6): delete
+     */
+    public readonly readOnlyLegacy = input(false, {alias: 'readOnly'});
+    /**
+     * TODO(v6): delete, it's only for backward compatibility
+     */
+    public readonly readOnly = computed(() => this.readonly() || this.readOnlyLegacy());
+    public readonly readonly = input(false);
 
     /**
      * @deprecated use `<tui-textfield [invalid]="..." />` instead
@@ -139,7 +148,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     hostDirectives: [
         {
             directive: TuiInputDirective,
-            inputs: ['invalid', 'focused', 'readOnly', 'state'],
+            inputs: ['invalid', 'focused', 'readOnly', 'readonly', 'state'],
         },
     ],
 })
