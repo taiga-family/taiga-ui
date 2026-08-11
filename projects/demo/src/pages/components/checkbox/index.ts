@@ -8,10 +8,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    public readonly examples = [
-        'Platforms',
-        'Decorative',
-        'Form',
-        'Custom checked appearance',
-    ];
+    public readonly examples = ['Platforms', 'Decorative', 'Form', 'Customization'];
 }

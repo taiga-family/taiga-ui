@@ -12,6 +12,6 @@ export default class Page {
         'Platforms',
         'Identity matcher',
         'List',
-        'Custom checked appearance',
+        'Customization',
     ];
 }
