@@ -31,7 +31,6 @@
     "scripts": {
         "build:demo": "nx build demo",
         "build:demo:next": "nx build demo -c next",
-        "build:ssr": "nx build demo && nx run demo:server:production",
         "cspell": "cspell --no-progress --relative --dot --gitignore .",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
         "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",

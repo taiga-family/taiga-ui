@@ -24,11 +24,6 @@ export class TuiScrollControls implements OnInit {
     protected readonly refresh$ = inject(TuiScrollControlsService);
 
     public ngOnInit(): void {
-        this.scrollable
-            ?.getElementRef()
-            .nativeElement.insertBefore(
-                this.el,
-                this.scrollable.getElementRef().nativeElement.firstChild,
-            );
+        this.scrollable?.getElementRef().nativeElement.prepend?.(this.el);
     }
 }
