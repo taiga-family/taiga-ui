@@ -40,7 +40,10 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     },
 })
 export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
-    private readonly field = tuiInjectFormField();
+    private readonly field = tuiInjectFormField({self: true, optional: true});
+    private readonly computedInvalid = computed(
+        () => this.textfield.invalid() ?? (this.field() ? null : this.invalid()),
+    );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly control = inject(NgControl, {optional: true});
@@ -96,8 +99,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     public readonly value = tuiValue(this.el);
 
     public readonly mode = computed<string | null>(() => {
-        const fallback = this.field() ? null : this.invalid();
-        const invalid = this.textfield.invalid() ?? fallback;
+        const invalid = this.computedInvalid();
 
         if (this.readOnly()) {
             return 'readonly';
@@ -122,7 +124,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
             const control = injector.get(TuiControl, null, {self: true});
 
             if (control) {
-                tuiSetSignal(control.pseudoInvalid, this.textfield.invalid());
+                tuiSetSignal(control.pseudoInvalid, this.computedInvalid());
             }
         });
     }

@@ -1,4 +1,4 @@
-import {computed, inject, type InjectOptions, type Signal} from '@angular/core';
+import {computed, inject, InjectOptions, type Signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 /**
@@ -8,5 +8,5 @@ export function tuiInjectFormField(options: InjectOptions = {}): Signal<unknown>
     const control = inject(NgControl, options);
 
     // @ts-expect-error
-    return computed(() => control.field?.());
+    return computed(() => control?.field?.());
 }

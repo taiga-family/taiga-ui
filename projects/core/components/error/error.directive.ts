@@ -158,7 +158,7 @@ export class TuiErrorField
     extends AbstractTuiErrorDirective
     implements TuiFormValueControl<unknown>
 {
-    private readonly field = tuiInjectFormField();
+    private readonly field = tuiInjectFormField({self: true});
 
     public readonly errors = input<readonly TuiSignalValidationError[]>([]);
     public readonly touched = input(false);
