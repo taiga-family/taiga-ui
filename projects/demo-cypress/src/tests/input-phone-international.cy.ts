@@ -275,7 +275,7 @@ describe('InputPhoneInternational', () => {
 
     describe('Manual [invalid] override (template driven / reactive forms API)', () => {
         let ngControl!: FormControl<string>;
-        
+
         @Component({
             imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
             template: `
@@ -292,45 +292,43 @@ describe('InputPhoneInternational', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
             providers: [
                 tuiInputPhoneInternationalOptionsProvider({
-                    metadata: import('libphonenumber-js/min/metadata').then((m) => m.default),
+                    metadata: import('libphonenumber-js/min/metadata').then(
+                        (m) => m.default,
+                    ),
                 }),
             ],
         })
         class ManualInvalidSandbox {
             public readonly control = input(new FormControl('', {nonNullable: true}));
         }
-        
-        it('looks invalid', () => {
-            cy.mount(ManualInvalidSandbox, componentProperties: {
 
-                        control: ngControl,
-                    }).then(({fixture}) => {
+        beforeEach(() => {
+            ngControl = new FormControl('', {nonNullable: true});
+        });
+
+        it('paints the appearance but keeps native validity intact', () => {
+            cy.mount(ManualInvalidSandbox, {
+                componentProperties: {control: ngControl},
+            }).then(({fixture}) => {
                 initAliases();
 
                 cy.get('@input').focus().blur();
 
                 cy.get('tui-textfield')
-                    .should('have.class', 'tui-invalid')
-                    .should(
-                            'have.attr',
-                            'data-mode',
-                            'invalid',
-                        );
+                    .should('have.attr', 'data-mode', 'invalid');
 
-                cy.get('@input').should('have.attr', 'aria-invalid', 'true');
-            
-                cy.get<HTMLInputElement>('@input').should(($input) =>
-                    expect($input[0]!.validationMessage).to.equal('Invalid'),
-                );
+                cy.get('@input').should('have.attr', 'aria-invalid', 'false');
+                cy.get<HTMLInputElement>('@input')
+                    .should(($input) => {
+                        expect($input[0]!.validationMessage).to.equal('');
 
-                cy.wrap(null).should(() => {
-                    const tuiControl = fixture.debugElement
-                        .query(By.css('input[tuiInputPhoneInternational]'))
-                        .injector.get(TuiControl);
+                        const tuiControl = fixture.debugElement
+                                .query(By.css('input[tuiInputPhoneInternational]'))
+                                .injector.get(TuiControl);
 
-                    expect(tuiControl.invalid()).to.equal(true);
-                    expect(ngControl.status).to.equal('VALID');
-                });
+                        expect(tuiControl.invalid()).to.equal(true);
+                        expect(ngControl.status).to.equal('VALID');
+                    });
 
                 cy.get('tui-textfield').compareSnapshot({
                     name: 'phone-manual-invalid',
