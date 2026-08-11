@@ -62,9 +62,27 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
                 decorator?.getFirstChildIfKind(ts.SyntaxKind.Identifier)?.getText() ===
                 'NgModule';
 
-            ref.replaceWithText(getReplacementText(to, inModule));
+            replaceReference(ref, getReplacements(to, inModule));
         }
     });
+}
+
+function replaceReference(ref: Node, replacements: readonly string[]): void {
+    const spread = replacements.some((text) => text.startsWith('...'));
+
+    if (spread && Node.isSpreadElement(ref.getParent())) {
+        // Reference already spread by a previous migration run (`...TuiTextfield`).
+        // Replace only the inner identifier and keep the existing `...`, so the
+        // node kind is preserved and we don't produce a doubled `......` spread
+        // (which corrupts ts-morph's tree diff and aborts the whole migration).
+        ref.replaceWithText(
+            replacements.map((text) => text.replace(/^\.\.\./, '')).join(', '),
+        );
+
+        return;
+    }
+
+    ref.replaceWithText(replacements.join(', '));
 }
 
 function addImports(
@@ -78,19 +96,17 @@ function addImports(
     });
 }
 
-function getReplacementText(
+function getReplacements(
     to: ReplacementIdentifierMulti['to'],
     inModule: boolean,
-): string {
-    return toArray(to)
-        .map(({name, spreadInModule, callExpression}) => {
-            if (spreadInModule && inModule) {
-                return `...${name}`;
-            }
+): string[] {
+    return toArray(to).map(({name, spreadInModule, callExpression}) => {
+        if (spreadInModule && inModule) {
+            return `...${name}`;
+        }
 
-            return callExpression ? `${name}()` : name;
-        })
-        .join(', ');
+        return callExpression ? `${name}()` : name;
+    });
 }
 
 function toArray<T>(x: T | T[]): T[] {

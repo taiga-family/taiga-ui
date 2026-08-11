@@ -117,7 +117,7 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputDate,
+                        ...TuiInputDate,
                     ],
                     // ...
                 })

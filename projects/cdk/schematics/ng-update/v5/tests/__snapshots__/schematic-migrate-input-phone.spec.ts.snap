@@ -195,7 +195,7 @@ exports[`ng-update migrate TuiInputPhoneModule to TuiInputPhone: test.ts 1`] = `
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputPhone,
+                        ...TuiInputPhone,
                     ],
                     // ...
                 })
