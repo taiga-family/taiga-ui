@@ -850,7 +850,7 @@
 ### calendar
 
 ```text
-  TuiCalendar, TuiCalendarHeader
+  TuiCalendar, TuiCalendarComponent, TuiCalendarHeader, TuiCalendarMultiComponent
 ```
 ### data-grid
 
@@ -7998,6 +7998,34 @@ tui-date-picker [data-type~=&#039;other&#039;]::before {
 tui-date-picker .hint {
     position: absolute;
     inset: 0;
+}
+```
+
+#### Example 5
+
+**Template:**
+```html
+&lt;tui-calendar [disabledItemHandler]=&quot;disabledItemHandler&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [months]=&quot;2&quot; [(value)]=&quot;value&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiDay} from &#039;@taiga-ui/cdk&#039;;
+import {TuiCalendar} from &#039;@taiga-ui/experimental&#039;;
+
+@Component({
+    imports: [TuiCalendar],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly min = TuiDay.currentLocal().append({month: -2, year: -10});
+    protected readonly max = TuiDay.currentLocal().append({month: 2, year: 10});
+    protected value = TuiDay.currentLocal();
+    protected readonly disabledItemHandler = (item: TuiDay): boolean =&gt; item.day === 13;
 }
 ```
 
