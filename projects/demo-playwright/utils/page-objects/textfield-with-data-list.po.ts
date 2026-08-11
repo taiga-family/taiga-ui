@@ -1,23 +1,22 @@
 import {expect, type Locator} from '@playwright/test';
-
-import {TuiTextfieldPO} from './textfield.po';
 import {
+    TUI_DATA_LIST_LOCATORS,
     TUI_DROPDOWN_LOCATORS,
-    TUI_DROPDOWN_MOBILE_LOCATORS,
+    TUI_SCROLLBAR_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
+
+import {TuiTextfieldPO} from './textfield.po';
 
 export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public readonly dropdown = this.host
         .page()
-        .locator(
-            `${TUI_DROPDOWN_LOCATORS.HOST},${TUI_DROPDOWN_MOBILE_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`,
-        );
+        .locator(`${TUI_DROPDOWN_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`);
 
     public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();
 
-        return this.dropdown.locator(TUI_DROPDOWN_LOCATORS.OPTION).all();
+        return this.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION).all();
     }
 
     public async selectOptions(indexes: number[]): Promise<void> {
@@ -32,7 +31,7 @@ export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public async scrollDropdown(options?: ScrollToOptions): Promise<void>;
     public async scrollDropdown(...args: any[]): Promise<void> {
         await this.dropdown
-            .locator(TUI_DROPDOWN_LOCATORS.SCROLLBAR)
+            .locator(TUI_SCROLLBAR_LOCATORS.HOST)
             .evaluate((el, args) => el.scrollTo(...args), args);
 
         return this.host.page().waitForTimeout(100); // flaky free

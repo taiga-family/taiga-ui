@@ -1,7 +1,11 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_DATA_LIST_LOCATORS,
+    TUI_DROPDOWN_LOCATORS,
+    TUI_SCROLLBAR_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 test.describe('Dropdown', () => {
     test.use({viewport: {width: 720, height: 720}});
@@ -110,8 +114,8 @@ test.describe('Dropdown', () => {
 
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator(TUI_DROPDOWN_LOCATORS.SCROLLBAR)
-            .locator('.t-bar_vertical .t-thumb')
+            .locator(TUI_SCROLLBAR_LOCATORS.VERTICAL_BAR)
+            .locator(TUI_SCROLLBAR_LOCATORS.THUMB)
             .click();
 
         await expect.soft(page).toHaveScreenshot('11-dropdown.png');
@@ -159,12 +163,14 @@ test.describe('Dropdown', () => {
 
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator('tui-data-list button')
+            .locator(TUI_DATA_LIST_LOCATORS.HOST)
+            .locator('button')
             .nth(0)
             .click();
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator('tui-data-list button')
+            .locator(TUI_DATA_LIST_LOCATORS.HOST)
+            .locator('button')
             .nth(1)
             .click();
 
@@ -178,7 +184,8 @@ test.describe('Dropdown', () => {
 
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator('tui-data-list button')
+            .locator(TUI_DATA_LIST_LOCATORS.HOST)
+            .locator('button')
             .nth(2)
             .click();
 
@@ -208,7 +215,7 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('18-dropdown-open.png');
 
-        await page.locator(TUI_DROPDOWN_LOCATORS.OPTION).last().click();
+        await page.locator(TUI_DATA_LIST_LOCATORS.OPTION).last().click();
 
         await expect.soft(page).toHaveScreenshot('18-dropdown-closed.png');
 

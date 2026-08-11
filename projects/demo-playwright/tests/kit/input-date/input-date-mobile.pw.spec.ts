@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-
 import {TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_ANDROID_USER_AGENT} from '../../../playwright.options';

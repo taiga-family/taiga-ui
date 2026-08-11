@@ -1,7 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputChipPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {beforeEach, describe} = test;
 
@@ -21,7 +21,7 @@ describe('InputChip with Datalist (a.k.a MultiSelect) + FilterByInput pipe', () 
 
         await expect(inputChip.dropdown).toBeVisible();
         await expect(
-            inputChip.dropdown.locator(TUI_DROPDOWN_LOCATORS.OPTION),
+            inputChip.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
         ).toHaveCount(6);
     });
 
@@ -31,7 +31,7 @@ describe('InputChip with Datalist (a.k.a MultiSelect) + FilterByInput pipe', () 
 
         await expect(inputChip.dropdown).toBeVisible();
         await expect(
-            inputChip.dropdown.locator(TUI_DROPDOWN_LOCATORS.OPTION),
+            inputChip.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
         ).toHaveCount(2);
         await expect(inputChip.dropdown).toContainText('Leia Organa Solo');
         await expect(inputChip.dropdown).toContainText('Han Solo');
@@ -43,7 +43,7 @@ describe('InputChip with Datalist (a.k.a MultiSelect) + FilterByInput pipe', () 
 
         await expect(inputChip.dropdown).toBeVisible();
         await expect(
-            inputChip.dropdown.locator(TUI_DROPDOWN_LOCATORS.OPTION),
+            inputChip.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
         ).toHaveCount(1);
         await expect(inputChip.dropdown).toHaveText('Yoda');
     });

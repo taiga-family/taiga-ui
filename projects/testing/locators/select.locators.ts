@@ -1,5 +1,6 @@
+import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
+
 export const TUI_SELECT_LOCATORS = {
-    HOST: '[tuiSelect]',
-    LABEL: '[tuiLabel]',
-    TEXTFIELD_PARENT: 'tui-textfield:has([tuiSelect])',
-};
+    ...TUI_TEXTFIELD_LOCATORS,
+    INPUT: '[tuiSelect]',
+} as const;

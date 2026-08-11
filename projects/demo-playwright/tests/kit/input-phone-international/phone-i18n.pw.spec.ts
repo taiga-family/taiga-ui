@@ -47,7 +47,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await expect(
                 inputPhoneInternational.dropdown
                     .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                    .locator('input'),
+                    .locator(TUI_TEXTFIELD_LOCATORS.INPUT),
             ).not.toBeFocused();
         });
 
@@ -55,7 +55,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await inputPhoneInternational.select.click();
             await inputPhoneInternational.dropdown
                 .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                .locator('input')
+                .locator(TUI_TEXTFIELD_LOCATORS.INPUT)
                 .fill('aust');
 
             const options = await inputPhoneInternational.getOptions();

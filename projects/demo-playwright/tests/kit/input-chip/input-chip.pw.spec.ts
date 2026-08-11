@@ -8,6 +8,7 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
+    TUI_DATA_LIST_LOCATORS,
     TUI_DROPDOWN_LOCATORS,
     TUI_INPUT_CHIP_LOCATORS,
     TUI_LABEL_LOCATORS,
@@ -83,13 +84,14 @@ test.describe('InputChip', () => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
 
-            const block = example.locator(TUI_INPUT_CHIP_LOCATORS.LABEL, {
+            const block = example.locator(TUI_LABEL_LOCATORS.HOST, {
                 hasText: 'Conditional input in textfield',
             });
 
             const input = block
-                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                .locator(`input${TUI_TEXTFIELD_LOCATORS.CHIP}`);
+                .locator(TUI_INPUT_CHIP_LOCATORS.HOST)
+                .locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
+
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
 
@@ -374,7 +376,7 @@ test.describe('InputChip', () => {
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
                 const options = multiselect.dropdown.locator(
-                    TUI_DROPDOWN_LOCATORS.OPTION,
+                    TUI_DATA_LIST_LOCATORS.OPTION,
                 );
 
                 await options.nth(0).click();
@@ -395,7 +397,7 @@ test.describe('InputChip', () => {
                 await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
                 await expect(multiselect.dropdown).toBeAttached();
                 const options = multiselect.dropdown.locator(
-                    TUI_DROPDOWN_LOCATORS.OPTION,
+                    TUI_DATA_LIST_LOCATORS.OPTION,
                 );
 
                 await options.nth(0).click();
