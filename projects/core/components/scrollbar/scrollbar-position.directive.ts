@@ -29,29 +29,18 @@ export class TuiScrollbarPosition extends Observable<Partial<CSSStyleDeclaration
         tuiScrollFrom(this.el),
     ).pipe(
         tuiZonefree(),
-        map(() => {
-            const dimension: ComputedDimension = {
-                scrollTop: this.el.scrollTop,
-                scrollHeight: this.el.scrollHeight,
-                clientHeight: this.el.clientHeight,
-                scrollLeft: this.el.scrollLeft,
-                scrollWidth: this.el.scrollWidth,
-                clientWidth: this.el.clientWidth,
-            };
-
-            const thumb = `${this.getThumb(dimension) * 100}%`;
-            const view = `${this.getView(dimension) * 100}%`;
-
-            return this.tuiScrollbar() === 'vertical'
-                ? {
-                      top: thumb,
-                      height: view,
-                  }
-                : {
-                      insetInlineStart: thumb,
-                      width: view,
-                  };
-        }),
+        map(() => ({
+            scrollTop: this.el.scrollTop,
+            scrollHeight: this.el.scrollHeight,
+            clientHeight: this.el.clientHeight,
+            scrollLeft: this.el.scrollLeft,
+            scrollWidth: this.el.scrollWidth,
+            clientWidth: this.el.clientWidth,
+        })),
+        map((dimensions) => ({
+            insetBlockStart: `${this.getThumb(dimensions) * 100}%`,
+            blockSize: `${this.getView(dimensions) * 100}%`,
+        })),
     );
 
     public readonly tuiScrollbar = input<'horizontal' | 'vertical'>('vertical');
