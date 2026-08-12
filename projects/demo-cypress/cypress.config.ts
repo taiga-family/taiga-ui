@@ -50,7 +50,10 @@ export default defineConfig({
                             },
                         ],
                         baseHref: '/',
-                        styles: ['projects/demo/src/styles/styles.less'],
+                        styles: [
+                            'projects/demo/src/styles/styles.less',
+                            'projects/layout/components/list/list.style.less',
+                        ],
                     },
                 },
             },
