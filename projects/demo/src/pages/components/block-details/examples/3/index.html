@@ -1,0 +1,42 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show dialog
+</button>
+
+<ng-template
+    let-id="id"
+    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="open"
+>
+    <div tuiBlockDetails>
+        <div
+            appearance="positive"
+            tuiAvatar="@tui.check"
+            [size]="isMobile ? 'xl' : 'xxl'"
+        ></div>
+        <h2
+            tuiTitle
+            [id]="id"
+        >
+            Payment successful
+            <div tuiSubtitle>Transfer to John W</div>
+        </h2>
+
+        <span>{{ -1050 | tuiAmount: 'USD' }}</span>
+        <span tuiSubtitle>Today, 12:30</span>
+    </div>
+
+    <footer>
+        <button
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Done
+        </button>
+    </footer>
+</ng-template>
