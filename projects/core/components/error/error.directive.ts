@@ -14,7 +14,6 @@ import {
     type ControlValueAccessor,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
-    NgControl,
     type ValidationErrors,
     type Validator,
 } from '@angular/forms';
@@ -25,7 +24,11 @@ import {
 } from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {type TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {
+    tuiDirectiveBinding,
+    tuiInjectFormField,
+    tuiProvide,
+} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
@@ -155,9 +158,7 @@ export class TuiErrorField
     extends AbstractTuiErrorDirective
     implements TuiFormValueControl<unknown>
 {
-    // TODO: use inject(FORM_FIELD) from `@angular/forms/signals` after update to Angular >= 21
-    // @ts-expect-error
-    private readonly field = inject(NgControl, {self: true}).field;
+    private readonly field = tuiInjectFormField({self: true});
 
     public readonly errors = input<readonly TuiSignalValidationError[]>([]);
     public readonly touched = input(false);
@@ -195,7 +196,7 @@ export class TuiErrorField
          */
         // @ts-ignore
         const validatorField = validator.control.field?.();
-        const field = this.field?.();
+        const field = this.field();
 
         if (field && validatorField === field) {
             validator.id = this.el.id;
