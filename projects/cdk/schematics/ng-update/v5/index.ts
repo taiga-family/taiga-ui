@@ -18,6 +18,7 @@ import {
     type MigrationStepTiming,
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {saveRemovedImports} from '../../utils/remove-import-from-closest-module';
 import {runSteps} from '../../utils/run-steps';
 import {
     removeDuplicates,
@@ -167,6 +168,7 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
         );
 
         saveAddedImports(options);
+        saveRemovedImports(options);
         fileSystem.commitEdits();
         saveActiveProject();
 
