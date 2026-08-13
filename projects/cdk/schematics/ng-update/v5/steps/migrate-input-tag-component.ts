@@ -1,5 +1,5 @@
 import {type Tree} from '@angular-devkit/schematics';
-import {type Node, Node as NgMorphNode, saveActiveProject, SyntaxKind} from 'ng-morph';
+import {Node as NgMorphNode, type Node, saveActiveProject, SyntaxKind} from 'ng-morph';
 
 import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
@@ -11,12 +11,12 @@ const MESSAGE =
     'TuiInputTagComponent has been removed with no drop-in class replacement. <tui-input-tag> now migrates to <tui-textfield multi> with <input tuiInputChip>, which is a directive on <input> — there is no component to @ViewChild/inject. Add a template ref to the migrated <input tuiInputChip>, query it with @ViewChild(ref, {read: ElementRef}) and replace `.nativeFocusableElement` with `.nativeElement`. See https://taiga-ui.dev/components/input-chip';
 
 const ANCHOR_KINDS = new Set<SyntaxKind>([
-    SyntaxKind.PropertyDeclaration,
+    SyntaxKind.ExpressionStatement,
     SyntaxKind.GetAccessor,
     SyntaxKind.MethodDeclaration,
-    SyntaxKind.VariableStatement,
-    SyntaxKind.ExpressionStatement,
     SyntaxKind.PropertyAssignment,
+    SyntaxKind.PropertyDeclaration,
+    SyntaxKind.VariableStatement,
 ]);
 
 type SourceFile = ReturnType<Node['getSourceFile']>;
@@ -35,6 +35,7 @@ export function migrateInputTagComponent(_tree: Tree, _options: TuiSchema): void
 
         const anchor =
             ref.getFirstAncestor((node: Node) => ANCHOR_KINDS.has(node.getKind())) ?? ref;
+
         const sourceFile = anchor.getSourceFile();
         const pos = anchor.getStartLinePos();
 
