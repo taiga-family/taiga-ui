@@ -1,0 +1,26 @@
+<tui-doc-page
+    header="Searchbar"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>TuiSearchbar</code>
+            is a mobile search field.
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [sticky]="false">
+            <tui-searchbar />
+        </tui-doc-demo>
+    </ng-template>
+</tui-doc-page>
