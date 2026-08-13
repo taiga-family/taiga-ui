@@ -44,6 +44,7 @@ import {migrateEditorProviders} from './steps/migrate-editor-providers';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateHintDirectiveBinding} from './steps/migrate-hint-directive-binding';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
+import {migrateInputTagComponent} from './steps/migrate-input-tag-component';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
 import {migrateRangeToken} from './steps/migrate-range-token';
@@ -76,6 +77,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'replaceIdentifiers',
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
+                },
+                {
+                    name: 'migrateInputTagComponent',
+                    step: () => migrateInputTagComponent(tree, options),
                 },
                 {
                     name: 'migrateBreakpointService',

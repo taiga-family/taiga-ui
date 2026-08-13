@@ -796,10 +796,4 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.',
     },
-    {
-        name: 'TuiInputTagComponent',
-        moduleSpecifier: '@taiga-ui/legacy',
-        message:
-            'TuiInputTagComponent has been removed with no drop-in class replacement. <tui-input-tag> migrates to <tui-textfield multi> with <input tuiInputChip>, so a @ViewChild(TuiInputTagComponent)/inject() reference has no direct equivalent — query the native <input> via ElementRef or rework the logic. See https://taiga-ui.dev/components/input-chip',
-    },
 ];
