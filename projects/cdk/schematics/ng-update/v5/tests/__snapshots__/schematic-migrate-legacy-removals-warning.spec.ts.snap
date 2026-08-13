@@ -48,6 +48,22 @@ exports[`ng-update legacy removals warnings adds TODO for TuiColorSelectorCompon
 }
 `;
 
+exports[`ng-update legacy removals warnings adds TODO for TuiInputTagComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiInputTagComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiInputTagComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiInputTagComponent has been removed with no drop-in class replacement. <tui-input-tag> migrates to <tui-textfield multi> with <input tuiInputChip>, so a @ViewChild(TuiInputTagComponent)/inject() reference has no direct equivalent — query the native <input> via ElementRef or rework the logic. See https://taiga-ui.dev/components/input-chip
+            import {TuiInputTagComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiInputTagComponent;
+        ",
+}
+`;
+
 exports[`ng-update legacy removals warnings adds TODO for TuiPrimitiveTextfieldComponent: test.ts 1`] = `
 {
   "0. Before": "
