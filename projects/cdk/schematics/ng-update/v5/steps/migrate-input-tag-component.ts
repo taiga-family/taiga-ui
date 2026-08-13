@@ -3,7 +3,7 @@ import {type Node, Node as NgMorphNode, saveActiveProject, SyntaxKind} from 'ng-
 
 import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
-import {insertTodo} from '../../../utils/insert-todo';
+import {TODO_MARK} from '../../../utils/insert-todo';
 
 const LEGACY = '@taiga-ui/legacy';
 
@@ -19,8 +19,14 @@ const ANCHOR_KINDS = new Set<SyntaxKind>([
     SyntaxKind.PropertyAssignment,
 ]);
 
+type SourceFile = ReturnType<Node['getSourceFile']>;
+
 export function migrateInputTagComponent(_tree: Tree, _options: TuiSchema): void {
-    const seen = new Set<string>();
+    // Collect unique anchor positions before editing: inserting a TODO re-parses the
+    // source and shifts offsets, so duplicates must be collapsed up front. A single
+    // member can reference the type twice (`@ViewChild(TuiInputTagComponent)` + typed
+    // field); both resolve to the same anchor line and must yield one comment.
+    const targets = new Map<string, {sourceFile: SourceFile; pos: number}>();
 
     for (const ref of getNamedImportReferences('TuiInputTagComponent', LEGACY)) {
         if (ref.wasForgotten() || NgMorphNode.isImportSpecifier(ref.getParent())) {
@@ -29,15 +35,17 @@ export function migrateInputTagComponent(_tree: Tree, _options: TuiSchema): void
 
         const anchor =
             ref.getFirstAncestor((node: Node) => ANCHOR_KINDS.has(node.getKind())) ?? ref;
+        const sourceFile = anchor.getSourceFile();
+        const pos = anchor.getStartLinePos();
 
-        const key = `${anchor.getSourceFile().getFilePath()}:${anchor.getStartLinePos()}`;
+        targets.set(`${sourceFile.getFilePath()}:${pos}`, {sourceFile, pos});
+    }
 
-        if (seen.has(key)) {
-            continue;
-        }
+    // Insert bottom-up so an earlier edit never shifts the position of a pending one.
+    const ordered = [...targets.values()].sort((a, b) => b.pos - a.pos);
 
-        seen.add(key);
-        insertTodo(anchor, MESSAGE);
+    for (const {sourceFile, pos} of ordered) {
+        sourceFile.insertText(pos, `// ${TODO_MARK} ${MESSAGE}\n`);
     }
 
     saveActiveProject();

@@ -57,3 +57,34 @@ exports[`ng-update TuiInputTagComponent usage TODO inserts a TODO above an injec
             ",
 }
 `;
+
+exports[`ng-update TuiInputTagComponent usage TODO inserts one TODO per member: dedups the two refs of the queried field and keeps the inject one: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, ViewChild, inject} from '@angular/core';
+                import {TuiInputTagComponent} from '@taiga-ui/legacy';
+
+                @Component({template: ''})
+                export class Test {
+                    @ViewChild(TuiInputTagComponent, {static: true})
+                    public inputTag!: TuiInputTagComponent;
+
+                    private readonly other = inject(TuiInputTagComponent);
+                }
+            ",
+  "1. After": "
+                import {Component, ViewChild, inject} from '@angular/core';
+                import {TuiInputTagComponent} from '@taiga-ui/legacy';
+
+                @Component({template: ''})
+                export class Test {
+// TODO: (Taiga UI migration) TuiInputTagComponent has been removed with no drop-in class replacement. <tui-input-tag> now migrates to <tui-textfield multi> with <input tuiInputChip>, which is a directive on <input> — there is no component to @ViewChild/inject. Add a template ref to the migrated <input tuiInputChip>, query it with @ViewChild(ref, {read: ElementRef}) and replace \`.nativeFocusableElement\` with \`.nativeElement\`. See https://taiga-ui.dev/components/input-chip
+                    @ViewChild(TuiInputTagComponent, {static: true})
+                    public inputTag!: TuiInputTagComponent;
+
+// TODO: (Taiga UI migration) TuiInputTagComponent has been removed with no drop-in class replacement. <tui-input-tag> now migrates to <tui-textfield multi> with <input tuiInputChip>, which is a directive on <input> — there is no component to @ViewChild/inject. Add a template ref to the migrated <input tuiInputChip>, query it with @ViewChild(ref, {read: ElementRef}) and replace \`.nativeFocusableElement\` with \`.nativeElement\`. See https://taiga-ui.dev/components/input-chip
+                    private readonly other = inject(TuiInputTagComponent);
+                }
+            ",
+}
+`;

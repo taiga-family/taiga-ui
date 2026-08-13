@@ -44,5 +44,23 @@ describe('ng-update TuiInputTagComponent usage TODO', () => {
         }),
     );
 
+    it(
+        'inserts one TODO per member: dedups the two refs of the queried field and keeps the inject one',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, ViewChild, inject} from '@angular/core';
+                import {TuiInputTagComponent} from '@taiga-ui/legacy';
+
+                @Component({template: ''})
+                export class Test {
+                    @ViewChild(TuiInputTagComponent, {static: true})
+                    public inputTag!: TuiInputTagComponent;
+
+                    private readonly other = inject(TuiInputTagComponent);
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
