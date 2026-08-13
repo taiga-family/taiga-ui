@@ -82,44 +82,6 @@ const DROPPED_ATTRS = new Set([
     'removable'.toLowerCase(),
 ]);
 
-/**
- * In v4 the dropdown directives reached the component through
- * `TuiInputTagModule`; after the migration that module becomes `TuiInputChip`,
- * which does not re-export them. The migrated `<tui-textfield>` still carries
- * `[(tuiDropdownOpen)]` / `[tuiDropdown]` and the datalist child turns into
- * `*tuiDropdown`, so the `TuiDropdown` bundle has to be imported explicitly to
- * avoid a compile-time NG8002.
- */
-function isDropdownAttrName(name: string): boolean {
-    const stripped = name.toLowerCase().replaceAll(/[[\]()*]/g, '');
-
-    return (
-        stripped.startsWith('TuiDropdown'.toLowerCase()) ||
-        stripped === 'TuiDataList'.toLowerCase()
-    );
-}
-
-function usesDropdown(element: Element): boolean {
-    const stack: ChildNode[] = [element];
-
-    while (stack.length > 0) {
-        const node = stack.pop();
-        const attrs = (node as Element | undefined)?.attrs;
-
-        if (attrs?.some((attr) => isDropdownAttrName(attr.name))) {
-            return true;
-        }
-
-        const childNodes = (node as Element | undefined)?.childNodes;
-
-        if (childNodes) {
-            stack.push(...childNodes);
-        }
-    }
-
-    return false;
-}
-
 export function migrateInputTag({
     resource,
     recorder,
@@ -134,14 +96,6 @@ export function migrateInputTag({
     const elements = findElementsByTagName(template, 'tui-input-tag');
 
     elements.forEach((element: Element) => {
-        if (resource.componentPath && usesDropdown(element)) {
-            addImportToClosestModule(
-                resource.componentPath,
-                'TuiDropdown',
-                '@taiga-ui/core',
-            );
-        }
-
         const sourceCodeLocation = element.sourceCodeLocation;
 
         if (sourceCodeLocation?.startTag && !sourceCodeLocation.endTag) {

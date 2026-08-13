@@ -191,34 +191,5 @@ describe('ng-update', () => {
         }),
     );
 
-    it(
-        'imports TuiDropdown when the migrated textfield keeps a dropdown',
-        migrate({
-            component: /* TypeScript */ `
-                import {TuiInputTagModule} from '@taiga-ui/legacy';
-
-                @Component({
-                    standalone: true,
-                    imports: [TuiInputTagModule],
-                    templateUrl: './test.html',
-                })
-                export class MyComponent {}
-            `,
-            template: /* HTML */ `
-                <tui-input-tag
-                    [(tuiDropdownOpen)]="open"
-                    [(ngModel)]="tags"
-                >
-                    <tui-data-list
-                        *tuiDataList
-                        size="m"
-                    >
-                        <button tuiOption>A</button>
-                    </tui-data-list>
-                </tui-input-tag>
-            `,
-        }),
-    );
-
     afterEach(() => resetActiveProject());
 });
