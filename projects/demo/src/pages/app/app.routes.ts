@@ -343,6 +343,11 @@ export const ROUTES: Routes = [
         title: 'Expand',
     }),
     route({
+        path: DemoRoute.InfiniteScroll,
+        loadComponent: async () => import('../components/infinite-scroll'),
+        title: 'InfiniteScroll',
+    }),
+    route({
         path: DemoRoute.ElasticContainer,
         loadComponent: async () => import('../components/elastic-container'),
         title: 'ElasticContainer',

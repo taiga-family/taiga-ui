@@ -1,0 +1,58 @@
+<tui-doc-page
+    header="InfiniteScroll"
+    package="EXPERIMENTAL"
+    type="components"
+>
+    <ng-template pageTab>
+        <div
+            appearance="negative"
+            tuiNotification
+        >
+            <div tuiTitle>
+                Work in progress, do not use!
+                <div tuiSubtitle>There are known issues in Safari, as always</div>
+            </div>
+        </div>
+        <p>
+            A component for spinning wheels or other infinitely scrollable containers, not to be confused with virtual
+            scrolling which typically has ends.
+        </p>
+        @for (example of ['Basic', 'Scroll snapping']; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Each item can have arbitrary height
+                    }
+
+                    @case (1) {
+                        Use bigger buffer for smaller items to avoid flickering at high speeds
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+    <ng-template pageTab>
+        <table tuiDocAPI>
+            <tr
+                name="[buffer]"
+                tuiDocAPIItem
+                type="number"
+            >
+                Number of items rendered around current item (10 by default)
+            </tr>
+            <tr
+                name="[(index)]"
+                tuiDocAPIItem
+                type="number"
+            >
+                Topmost visible item index
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
