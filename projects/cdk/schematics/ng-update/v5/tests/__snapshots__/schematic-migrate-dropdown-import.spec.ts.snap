@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update import TuiDropdown for migrated dropdown hosts imports TuiDropdown when a migrated tui-input keeps a dropdown: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input [(ngModel)]="value">
+                    Label
+                    <tui-data-list *tuiDataList>
+                        <button tuiOption>A</button>
+                    </tui-data-list>
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <label tuiLabel>Label</label>
+                <input tuiInput [(ngModel)]="value" />
+<tui-data-list *tuiDropdown>
+                        <button tuiOption>A</button>
+                    </tui-data-list>                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update import TuiDropdown for migrated dropdown hosts imports TuiDropdown when a migrated tui-input keeps a dropdown: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputModule],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiInput, TuiDropdown } from "@taiga-ui/core";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiInput, TuiDropdown],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update import TuiDropdown for migrated dropdown hosts imports TuiDropdown when a migrated tui-select keeps a dropdown: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    [(open)]="open"
+                >
+                    
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update import TuiDropdown for migrated dropdown hosts imports TuiDropdown when a migrated tui-select keeps a dropdown: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiSelectModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiSelectModule],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+  "1. After": "import { TuiDropdown } from "@taiga-ui/core";
+import { TuiSelect } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiSelect, TuiDropdown],
+                    templateUrl: './test.html',
+                })
+                export class MyComponent {}
+            ",
+}
+`;

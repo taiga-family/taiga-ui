@@ -86,9 +86,6 @@ const LEGACY_INPUT_ATTRS = new Set([
     'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
-// `<tui-textfield>` exposes the dropdown open state as `open` (its
-// `TuiWithDropdownOpen` host directive re-aliases the `tuiDropdownOpen` model to
-// `open`), so the manual open binding is renamed rather than passed through.
 const DROPDOWN_OPEN_RENAMES = new Map<string, string>([
     ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
     ['[(tuiDropdownOpen)]'.toLowerCase(), '[(open)]'],
@@ -375,9 +372,6 @@ function buildTodoComment(ctx: MigrationContext): string {
     return `${lines.join('\n')}\n`;
 }
 
-// tui-input rebuilds its element from the original source, which re-emits child
-// nodes verbatim and so loses the generic `*tuiDataList`/`*tuiTextfieldDropdown`
-// -> `*tuiDropdown` rename queued for the removed span. Re-apply it here.
 function renameDropdownContentDirective(html: string): string {
     return html
         .replaceAll(/\*tuiDataList\b/g, '*tuiDropdown')
