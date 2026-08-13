@@ -2,14 +2,18 @@
 
 :host {
     display: block;
-    inline-size: calc(20rem * var(--tui-font-scale));
     min-inline-size: calc(20rem * var(--tui-font-scale));
     flex: 1;
     box-sizing: content-box;
 }
 
 :host-context(tui-dropdown) {
-    padding: 0.5rem;
+    inline-size: calc(20rem * var(--tui-font-scale));
+    padding-inline: 0.5rem;
+
+    &:has([tuiTitle]) .t-calendar {
+        padding-block-end: 0.5rem;
+    }
 
     &:not(:only-child) {
         box-shadow: 0 0 0 1px var(--tui-border-normal);
@@ -22,7 +26,8 @@
     gap: 0.25rem;
     align-items: center;
     justify-content: flex-end;
-    padding: 0.5rem 0.75rem 1rem;
+    min-block-size: var(--tui-height-l);
+    padding: 0 0.75rem;
     font: var(--tui-typography-ui-l);
 
     &:focus-within {
@@ -52,14 +57,11 @@
     transform: scaleX(var(--tui-inline));
 }
 
-.t-grid {
-    padding: 0 0.5rem 0.5rem;
+.t-grid,
+.t-calendar {
+    padding: 0 0.5rem 1rem;
 }
 
 .t-slides {
     margin: 0 -0.5rem;
-}
-
-.t-calendar {
-    padding: 0 0.5rem;
 }

@@ -84,6 +84,7 @@ export class TuiCarouselComponent implements AfterViewInit {
 
     protected onIntersection(isIntersecting: boolean, step: number): void {
         const index = tuiClamp(this.index() + step, this.min(), this.max());
+        const scroll = (): void => this.el.scrollTo({left: this.d * this.el.clientWidth});
 
         if (isIntersecting) {
             if (index !== this.index()) {
@@ -95,7 +96,8 @@ export class TuiCarouselComponent implements AfterViewInit {
                 this.el.style.overflow = '';
 
                 if (this.index() > this.min() && this.index() < this.max()) {
-                    this.el.scrollLeft = this.d * this.el.clientWidth;
+                    this.el.addEventListener('scroll', scroll, {once: true});
+                    scroll();
                 }
             });
         }
