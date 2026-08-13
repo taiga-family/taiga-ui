@@ -1110,6 +1110,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Searchbar',
+        keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
+        route: DemoRoute.Searchbar,
+        meta: {name: 'tui-searchbar'},
+    },
+    {
+        section: 'Components',
         title: 'Keypad',
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
