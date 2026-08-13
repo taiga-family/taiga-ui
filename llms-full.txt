@@ -7709,7 +7709,7 @@ This is a work in progress The APIs might change in the future, use with caution
 ### Example
 
 ```html
-<tui-calendar new [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [(month)]="month" [(view)]="view" />
+<tui-calendar new [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [showAdjacent]="showAdjacent" [showWeek]="showWeek" [style.inline-size.rem]="20" [(month)]="month" [(view)]="view" />
 ```
 
 ### API - Inputs
