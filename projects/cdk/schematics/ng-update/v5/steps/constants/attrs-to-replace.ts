@@ -68,6 +68,48 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         from: {attrName: 'tuiDropdownOpen', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownAuto'},
     },
+    // These legacy inputs become `<tui-textfield>`, which exposes the dropdown open
+    // state as `open` (its `TuiWithDropdownOpen` host directive re-aliases the model
+    // `tuiDropdownOpen` → `open`). So the manual open binding has to be renamed;
+    // writing `tuiDropdown`/`tuiDropdownOpen` on the textfield would double-register
+    // the dropdown directive. `tui-input` rebuilds its element wholesale, so its rename
+    // lives in `migrate-input.ts` instead.
+    {
+        from: {
+            attrName: '[(tuiDropdownOpen)]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[(open)]'},
+    },
+    {
+        from: {
+            attrName: '[tuiDropdownOpen]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[open]'},
+    },
+    {
+        from: {
+            attrName: '(tuiDropdownOpenChange)',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '(openChange)'},
+    },
     {
         from: {attrName: 'tuiDropdownMobile', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownSheet'},
