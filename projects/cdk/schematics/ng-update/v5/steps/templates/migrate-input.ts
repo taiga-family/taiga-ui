@@ -90,9 +90,9 @@ const LEGACY_INPUT_ATTRS = new Set([
 // `TuiWithDropdownOpen` host directive re-aliases the `tuiDropdownOpen` model to
 // `open`), so the manual open binding is renamed rather than passed through.
 const DROPDOWN_OPEN_RENAMES = new Map<string, string>([
+    ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
     ['[(tuiDropdownOpen)]'.toLowerCase(), '[(open)]'],
     ['[tuiDropdownOpen]'.toLowerCase(), '[open]'],
-    ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
 ]);
 
 function isDropdownAttr(nameLower: string): boolean {
