@@ -132,7 +132,6 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
          * Signal forms provide a fake `NgControl` which is not an `AbstractControl` and has no
          * observables — its state is exposed as signals, so reading it here subscribes to them.
          * For an `AbstractControl` nothing is tracked and this only makes the initial update.
-         * @see https://github.com/taiga-family/taiga-ui/issues/14341
          */
         effect(() => this.update());
         this.refresh$
