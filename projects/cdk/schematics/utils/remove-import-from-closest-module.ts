@@ -10,14 +10,8 @@ const importsToRemove = new Map<
     }
 >();
 
-/**
- * Queue removal of `moduleName` from a standalone component's `imports: [...]`
- * array. Applied later via {@link saveRemovedImports}, mirroring the deferral
- * used by `addImportToClosestModule` so template-phase steps do not fight the
- * recorder. Only the decorator entry is dropped — a now-unused import statement
- * is left for the IDE's organize-imports (a harmless TS6133, unlike the
- * build-breaking NG8113 raised by an unused entry in `imports`).
- */
+// Drops only the imports[] entry (unused there = NG8113); the now-unused import
+// statement is left for organize-imports (harmless TS6133).
 export function removeImportFromClosestModule(
     componentPath: string,
     moduleName: string,

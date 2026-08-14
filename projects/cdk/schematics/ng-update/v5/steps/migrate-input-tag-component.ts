@@ -22,10 +22,7 @@ const ANCHOR_KINDS = new Set<SyntaxKind>([
 type SourceFile = ReturnType<Node['getSourceFile']>;
 
 export function migrateInputTagComponent(_tree: Tree, _options: TuiSchema): void {
-    // Collect unique anchor positions before editing: inserting a TODO re-parses the
-    // source and shifts offsets, so duplicates must be collapsed up front. A single
-    // member can reference the type twice (`@ViewChild(TuiInputTagComponent)` + typed
-    // field); both resolve to the same anchor line and must yield one comment.
+    // Dedupe anchors, then insert bottom-up: each insertText shifts later offsets.
     const targets = new Map<string, {sourceFile: SourceFile; pos: number}>();
 
     for (const ref of getNamedImportReferences('TuiInputTagComponent', LEGACY)) {
@@ -42,7 +39,6 @@ export function migrateInputTagComponent(_tree: Tree, _options: TuiSchema): void
         targets.set(`${sourceFile.getFilePath()}:${pos}`, {sourceFile, pos});
     }
 
-    // Insert bottom-up so an earlier edit never shifts the position of a pending one.
     const ordered = [...targets.values()].sort((a, b) => b.pos - a.pos);
 
     for (const {sourceFile, pos} of ordered) {
