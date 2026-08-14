@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     computed,
     Directive,
+    effect,
     inject,
     input,
     type Provider,
@@ -12,6 +13,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
+    AbstractControl,
     type ControlValueAccessor,
     type FormControlStatus,
     NgControl,
@@ -37,6 +39,42 @@ const FLAGS = {self: true, optional: true};
 
 /**
  * Basic ControlValueAccessor class to build form components upon
+ *
+ * TODO(v6): implement `FormValueControl` from `@angular/forms/signals` once Angular 22 is the
+ * minimal supported version. Most of the existed logic below goes away.
+ * 
+ * [According to documentation](https://angular.dev/guide/forms/signals/migration#custom-controls):
+ * > Any custom Signal Form Control can be used with Reactive (and Template-Driven) Forms as-is
+ *
+ * ```ts
+ * export abstract class TuiControl<T> implements FormValueControl<T> {
+ *     private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
+ *
+ *     protected transformer =
+ *         inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
+ *
+ *     public readonly disabled = input(false);
+ *     public readonly invalid = input(false);
+ *     public readonly touched = input(false);
+ *     public readonly readonly = input(false);
+ *     public readonly touch = output<void>();
+ * 
+ *     public readonly value = model(this.fallback);
+ *
+ *     // https://angular.dev/guide/forms/signals/custom-controls#value-transformation
+ *     // https://angular.dev/api/forms/signals/transformedValue
+ *     protected readonly rawValue = transformedValue(this.value, {
+ *         parse: (raw: T) => ({value: this.transformer.toControlValue(raw)}),
+ *         format: (value) => this.transformer.fromControlValue(value),
+ *     });
+ * 
+ *     reset() {
+ *         // [...]
+ *     }
+ * 
+ *     // [...]
+ * }
+ * ```
  */
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
@@ -90,12 +128,19 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     constructor() {
         this.control.valueAccessor = this;
+        /**
+         * Signal forms provide a fake `NgControl` which is not an `AbstractControl` and has no
+         * observables — its state is exposed as signals, so reading it here subscribes to them.
+         * For an `AbstractControl` nothing is tracked and this only makes the initial update.
+         * @see https://github.com/taiga-family/taiga-ui/issues/14341
+         */
+        effect(() => this.update());
         this.refresh$
             .pipe(
                 delay(0),
                 startWith(null),
                 map(() => this.control.control),
-                filter(Boolean),
+                filter((c) => c instanceof AbstractControl),
                 distinctUntilChanged(),
                 switchMap((c) =>
                     merge(c.valueChanges, c.statusChanges, c.events).pipe(
