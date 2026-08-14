@@ -36,6 +36,23 @@ const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
 }
 
 {
+    // component with protected context
+    class TestComponent {
+        protected readonly context!: TuiDialogContext<string, number>;
+    }
+
+    const dialog = tuiDialogMock<string, number>(TestComponent);
+
+    dialog(123).subscribe((_value: string) => {});
+    // @ts-expect-error TS2554: Expected 1 arguments, but got 0
+    dialog();
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog('');
+    // @ts-expect-error TS2769: Type `string` is not assignable to type `number`
+    dialog(123).subscribe((_value: number) => {});
+}
+
+{
     // component with context and some other property
     class TestComponent {
         public readonly someContextProp!: TuiDialogContext<string, number>;

@@ -1,4 +1,10 @@
-import {assertInInjectionContext, inject, INJECTOR, type Injector} from '@angular/core';
+import {
+    assertInInjectionContext,
+    inject,
+    INJECTOR,
+    type Injector,
+    type Type,
+} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
@@ -14,6 +20,11 @@ type SingleUnionOrNever<T, U = T> = [T] extends [never]
       : never;
 
 type ReplaceAny<T> = 0 extends T & 1 ? void : T;
+
+// Keeps the explicit overload out of inference-only calls.
+interface Unspecified {
+    readonly value: unique symbol;
+}
 
 type ContextKeys<T> = {
     [K in keyof T]: ReplaceAny<T[K]> extends TuiDialogContext<any, any> | null
@@ -52,6 +63,18 @@ export function tuiDialog<
     R extends ExtractDialogResult<T, K>,
 >(
     component: AssertNotMultipleContexts<T, K>,
+    options?: Partial<Options<D>>,
+): (data: D) => Observable<R>;
+export function tuiDialog<R = Unspecified, D = Unspecified>(
+    component: [R] extends [Unspecified]
+        ? never
+        : [D] extends [Unspecified]
+          ? never
+          : Type<unknown>,
+    options?: Partial<Options<D>>,
+): (data: D) => Observable<R>;
+export function tuiDialog<T, D, R>(
+    component: Type<T>,
     {injector, ...options}: Partial<Options<D>> = {},
 ): (data: D) => Observable<R> {
     if (!injector) {
