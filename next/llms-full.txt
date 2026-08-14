@@ -39506,6 +39506,7 @@ A mobile draggable sheet dialog
 | [initial] | `number` | means to stop on top of the sheet's content. |
 | [offset] | `number` | ) |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
+| [themeColor] | `string` | , an empty string opts out. |
 
 ### Usage Examples
 
@@ -40062,6 +40063,52 @@ export default class Example {
 }
 ```
 
+#### Address bar color
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="onClick()" > Show </button>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    tuiSheetDialogOptionsProvider,
+    TuiSheetDialogService,
+} from '@taiga-ui/addon-mobile';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    // `themeColor` sets the `<meta name="theme-color">` (mobile address bar)
+    // while the sheet is open, then reverts on close. Scope the service so the
+    // option applies only to sheets opened from here; provide it once at the
+    // application root to make it the default everywhere. Pass an empty string
+    // to opt out.
+    providers: [
+        TuiSheetDialogService,
+        tuiSheetDialogOptionsProvider({themeColor: '#ff1493'}),
+    ],
+})
+export default class Example {
+    private readonly service = inject(TuiSheetDialogService);
+
+    protected onClick(): void {
+        this.service
+            .open(
+                'On mobile, the browser address bar turns <b>pink</b> while this sheet is open.',
+                {label: 'Address bar color'},
+            )
+            .subscribe();
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -40100,6 +40147,7 @@ export default class Page {
         'Responsive',
         'AppBar',
         'Fullscreen',
+        'Address bar color',
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
@@ -43044,6 +43092,74 @@ export default class Example {
 }
 ```
 
+#### Android
+
+**Template:**
+```html
+<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button> } </nav>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TuiNotificationService} from '@taiga-ui/core';
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    selector: 'tui-tab-bar-example-liquid-android',
+    imports: [TuiTabBar],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    host: {
+        '[attr.data-platform]': '"android"',
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiNotificationService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items = [
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+            badge: 3,
+        },
+        {
+            text: 'Calls',
+            icon: '@tui.phone',
+            badge: 1234,
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+
+    protected onClick(item: Item): void {
+        item.badge = 0;
+        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    inline-size: 100%;
+}
+```
+
 
 ### TypeScript
 
@@ -43057,6 +43173,7 @@ import {TuiCheckbox, TuiLabel, TuiPopup} from '@taiga-ui/core';
 import TuiTabBarExample from './examples/1';
 import TuiTabBarLiquidExample from './examples/5';
 import TuiTabBarLiquidFullExample from './examples/6';
+import TuiTabBarLiquidAndroidExample from './examples/7';
 
 @Component({
     imports: [
@@ -43066,6 +43183,7 @@ import TuiTabBarLiquidFullExample from './examples/6';
         TuiLabel,
         TuiPopup,
         TuiTabBarExample,
+        TuiTabBarLiquidAndroidExample,
         TuiTabBarLiquidExample,
         TuiTabBarLiquidFullExample,
     ],
@@ -43083,11 +43201,13 @@ export default class Page {
         'Skeleton',
         'iOS Liquid glass',
         'iOS Liquid glass fullwidth',
+        'Android',
     ];
 
     protected fixed = false;
     protected fixedLiquid = false;
     protected fixedLiquidFull = false;
+    protected fixedLiquidAndroid = false;
 }
 ```
 
