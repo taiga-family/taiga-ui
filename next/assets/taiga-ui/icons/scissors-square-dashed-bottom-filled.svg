@@ -11,18 +11,12 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <line vector-effect="non-scaling-stroke" x1="5" y1="3" x2="19" y2="3" />
-  <line vector-effect="non-scaling-stroke" x1="3" y1="5" x2="3" y2="19" />
-  <line vector-effect="non-scaling-stroke" x1="21" y1="5" x2="21" y2="19" />
-  <line vector-effect="non-scaling-stroke" x1="9" y1="21" x2="10" y2="21" />
-  <line vector-effect="non-scaling-stroke" x1="14" y1="21" x2="15" y2="21" />
-  <path vector-effect="non-scaling-stroke" d="M 3 5 A2 2 0 0 1 5 3" />
-  <path vector-effect="non-scaling-stroke" d="M 19 3 A2 2 0 0 1 21 5" />
-  <path vector-effect="non-scaling-stroke" d="M 5 21 A2 2 0 0 1 3 19" />
-  <path vector-effect="non-scaling-stroke" d="M 21 19 A2 2 0 0 1 19 21" />
-  <circle vector-effect="non-scaling-stroke" cx="8.5" cy="8.5" r="1.5" />
-  <line vector-effect="non-scaling-stroke" x1="9.56066" y1="9.56066" x2="12" y2="12" />
-  <line vector-effect="non-scaling-stroke" x1="17" y1="17" x2="14.82" y2="14.82" />
+  <path vector-effect="non-scaling-stroke" d="M14 21h1" />
+  <path vector-effect="non-scaling-stroke" d="m17 17-2.18-2.18" />
+  <path vector-effect="non-scaling-stroke" d="M5 21a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2" />
+  <path vector-effect="non-scaling-stroke" d="M9 21h1" />
+  <path vector-effect="non-scaling-stroke" d="M9.56 14.44 17 7" />
+  <path vector-effect="non-scaling-stroke" d="M9.56 9.56 12 12" />
   <circle vector-effect="non-scaling-stroke" cx="8.5" cy="15.5" r="1.5" />
-  <line vector-effect="non-scaling-stroke" x1="9.56066" y1="14.43934" x2="17" y2="7" />
+  <circle vector-effect="non-scaling-stroke" cx="8.5" cy="8.5" r="1.5" />
 </svg>
