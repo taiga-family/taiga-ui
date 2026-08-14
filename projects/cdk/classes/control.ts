@@ -42,7 +42,7 @@ const FLAGS = {self: true, optional: true};
  *
  * TODO(v6): implement `FormValueControl` from `@angular/forms/signals` once Angular 22 is the
  * minimal supported version. Most of the existed logic below goes away.
- * 
+ *
  * [According to documentation](https://angular.dev/guide/forms/signals/migration#custom-controls):
  * > Any custom Signal Form Control can be used with Reactive (and Template-Driven) Forms as-is
  *
@@ -58,7 +58,7 @@ const FLAGS = {self: true, optional: true};
  *     public readonly touched = input(false);
  *     public readonly readonly = input(false);
  *     public readonly touch = output<void>();
- * 
+ *
  *     public readonly value = model(this.fallback);
  *
  *     // https://angular.dev/guide/forms/signals/custom-controls#value-transformation
@@ -67,11 +67,11 @@ const FLAGS = {self: true, optional: true};
  *         parse: (raw: T) => ({value: this.transformer.toControlValue(raw)}),
  *         format: (value) => this.transformer.fromControlValue(value),
  *     });
- * 
+ *
  *     reset() {
  *         // [...]
  *     }
- * 
+ *
  *     // [...]
  * }
  * ```
