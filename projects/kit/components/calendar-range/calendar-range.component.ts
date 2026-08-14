@@ -109,6 +109,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     @Output()
     public readonly itemChange = new EventEmitter<TuiDayRangePeriod | null>();
 
+    @Output()
+    public readonly monthChange = new EventEmitter<TuiMonth>();
+
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
             ?.pipe(tuiWatch(), takeUntilDestroyed())
@@ -235,6 +238,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     protected onMonthChange(month: TuiMonth): void {
         this.month = month;
+        this.monthChange.emit(month);
     }
 
     protected onDayClick(day: TuiDay): void {
