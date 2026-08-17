@@ -292,7 +292,7 @@ exports[`ng-update identifiers migration moves TuiMultiSelectModule (legacy) to 
                                 import {NgModule} from '@angular/core';
 
                 @NgModule({
-                    imports: [TuiMultiSelect],
+                    imports: [...TuiMultiSelect],
                 })
                 export class TestModule {}
             ",
