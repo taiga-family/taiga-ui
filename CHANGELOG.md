@@ -66,7 +66,7 @@ All notable changes to this project will be documented in this file. See
 - **schematics:** finish tui-input-tag v5 migration and drop unused AsyncPipe
   ([#14752](https://github.com/taiga-family/taiga-ui/issues/14752))
   ([e8e83da](https://github.com/taiga-family/taiga-ui/commit/e8e83da25bbc113e2d29dafc4ed86f2a524017b2))
-- **schematics:** migrate [(tuiDropdownOpen)] to [(open)] on textfield inputs in v5
+- **schematics:** migrate `tuiDropdownOpen` to `open` on textfield inputs in v5
   ([#14754](https://github.com/taiga-family/taiga-ui/issues/14754))
   ([aa72a8b](https://github.com/taiga-family/taiga-ui/commit/aa72a8bbeb6ecd5f6bb70e4344e662d01b319bb4))
 - **schematics:** migrate legacy TuiPrimitiveTextfield to TuiTextfield in v5
