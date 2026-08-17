@@ -38,8 +38,14 @@
         clip-path: polygon(-100vw -1rem, 100vw -1rem, 100vw calc(100% + 0.625rem), -100vw calc(100% + 0.625rem));
     }
 
-    &:not(._bar)::before {
-        display: none;
+    &:not(._bar) {
+        &::before {
+            display: none;
+        }
+
+        .t-content {
+            padding-block-start: 1.5rem;
+        }
     }
 
     &::after {
