@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.95.0](https://github.com/taiga-family/taiga-ui/compare/v4.94.0...v4.95.0) (2026-08-17)
+
+### 🚀 Features
+
+- **kit:** add public monthChange event to tui-calendar-range
+  ([#14756](https://github.com/taiga-family/taiga-ui/issues/14756))
+  ([d01fd45](https://github.com/taiga-family/taiga-ui/commit/d01fd45845923888d9023a64f5eb7e8ae5047aef))
+
+### 🐞 Bug Fixes
+
+- **core:** fix tui-root variables for shadow dom ([#14735](https://github.com/taiga-family/taiga-ui/issues/14735))
+  ([cb8f2ff](https://github.com/taiga-family/taiga-ui/commit/cb8f2ff9294a58c1f851591b6a34b2c1cf5aad92))
+- **core:** fix TuiDropdownHover inside ShadowDom ([#14699](https://github.com/taiga-family/taiga-ui/issues/14699))
+  ([#14700](https://github.com/taiga-family/taiga-ui/issues/14700))
+  ([76adb9b](https://github.com/taiga-family/taiga-ui/commit/76adb9bb3bd889083b3665fee5885eb968d8315e))
+- **experimental:** v4 safari expand visibility problem
+  ([#14742](https://github.com/taiga-family/taiga-ui/issues/14742))
+  ([1281f75](https://github.com/taiga-family/taiga-ui/commit/1281f7579f9c9b7aa9690fb48c8c8a4ec7a19f2c))
+- **layout:** support block content in `tuiList` items ([#14738](https://github.com/taiga-family/taiga-ui/issues/14738))
+  ([f750a21](https://github.com/taiga-family/taiga-ui/commit/f750a21a3206b9e4459cc79523d7ffce4cd3bbb3))
+
 ## [4.94.0](https://github.com/taiga-family/taiga-ui/compare/v4.93.0...v4.94.0) (2026-08-10)
 
 ### 🐞 Bug Fixes
