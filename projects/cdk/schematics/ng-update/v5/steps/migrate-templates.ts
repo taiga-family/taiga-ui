@@ -61,6 +61,7 @@ import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-cont
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migratePin} from './templates/migrate-pin';
+import {migratePrimitiveTextfield} from './templates/migrate-primitive-textfield';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -149,6 +150,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
+        migratePrimitiveTextfield,
         migrateDropdownImport,
     ] as const;
 

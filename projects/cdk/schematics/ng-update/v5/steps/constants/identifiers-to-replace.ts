@@ -1241,6 +1241,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiPrimitiveTextfieldModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiTextfield',
+            moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
             name: 'TuiCarousel',
             moduleSpecifier: '@taiga-ui/kit',
         },
