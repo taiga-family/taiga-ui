@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test('the longest long words list', async ({page}) => {
@@ -9,7 +10,7 @@ test.describe('InputChip', () => {
         const apiPage = new TuiDocumentationApiPagePO(page);
         const example = apiPage.apiPageExample;
         const input = example.locator('[tuiTextfield]').first();
-        const textfield = example.locator('tui-textfield[multi]').first();
+        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.MULTI).first();
 
         await input.focus();
         await input.fill('Incomprehensibilities');

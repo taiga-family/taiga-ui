@@ -115,4 +115,8 @@ export default process.env.HTML_ESLINT
                   '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
               },
           },
+          {
+              rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
+              files: ['**/*.pw.spec.ts'],
+          },
       ];
