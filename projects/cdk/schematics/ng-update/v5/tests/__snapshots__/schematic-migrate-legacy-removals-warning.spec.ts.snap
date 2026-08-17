@@ -48,6 +48,22 @@ exports[`ng-update legacy removals warnings adds TODO for TuiColorSelectorCompon
 }
 `;
 
+exports[`ng-update legacy removals warnings adds TODO for TuiNativeFocusableElement: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiNativeFocusableElement} from '@taiga-ui/legacy';
+
+            export const ref = TuiNativeFocusableElement;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiNativeFocusableElement has been removed. It was a type alias for the native focusable element; replace it with the concrete element type (HTMLInputElement / HTMLTextAreaElement) or HTMLElement.
+            import {TuiNativeFocusableElement} from '@taiga-ui/legacy';
+
+            export const ref = TuiNativeFocusableElement;
+        ",
+}
+`;
+
 exports[`ng-update legacy removals warnings adds TODO for TuiPrimitiveTextfieldComponent: test.ts 1`] = `
 {
   "0. Before": "
@@ -76,6 +92,38 @@ exports[`ng-update legacy removals warnings adds TODO for TuiTableBarComponent: 
             import {TuiTableBarComponent} from '@taiga-ui/legacy';
 
             export const ref = TuiTableBarComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiTableBarsHostComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiTableBarsHostComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTableBarsHostComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed with no public replacement. Recreate the bars-host container in your own code.
+            import {TuiTableBarsHostComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTableBarsHostComponent;
+        ",
+}
+`;
+
+exports[`ng-update legacy removals warnings adds TODO for TuiTextareaComponent: test.ts 1`] = `
+{
+  "0. Before": "
+            import {TuiTextareaComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTextareaComponent;
+        ",
+  "1. After": "
+// TODO: (Taiga UI migration) TuiTextareaComponent has been removed with no drop-in class replacement. <tui-textarea> now migrates to <tui-textfield> with <textarea tuiTextfield>, so there is no component to @ViewChild/inject. Add a template ref to the migrated <textarea tuiTextfield>, query it with @ViewChild(ref, {read: ElementRef}) and replace .nativeFocusableElement with .nativeElement. See https://taiga-ui.dev/components/textarea
+            import {TuiTextareaComponent} from '@taiga-ui/legacy';
+
+            export const ref = TuiTextareaComponent;
         ",
 }
 `;
