@@ -13469,7 +13469,7 @@ export default class Example {
 | Property | Type | Description |
 |----------|-----|----------|
 | [appearance] | `string` | appearance of the counter itself |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeXS | TuiSizeL` | — |
 | [step] | `number` | — |
 | [min] | `number` | minimum value |
 | [max] | `number` | maximum value |
@@ -13484,6 +13484,7 @@ export default class Example {
 &lt;tui-counter size=&quot;l&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;tui-counter size=&quot;m&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;tui-counter size=&quot;s&quot; [(ngModel)]=&quot;value&quot; /&gt;
+&lt;tui-counter size=&quot;xs&quot; [(ngModel)]=&quot;value&quot; /&gt;
 ```
 **TypeScript:**
 ```ts
@@ -13675,7 +13676,7 @@ export default class Page {
     protected readonly value = 0;
     protected readonly step = 1;
     protected readonly content = &#039;&#039;;
-    protected readonly sizeVariants = [&#039;l&#039;, &#039;m&#039;, &#039;s&#039;] as const;
+    protected readonly sizeVariants = [&#039;l&#039;, &#039;m&#039;, &#039;s&#039;, &#039;xs&#039;] as const;
     protected readonly size = this.sizeVariants[0];
     protected readonly appearanceVariants = [&#039;primary&#039;, &#039;flat&#039;, &#039;secondary&#039;] as const;
     protected readonly appearance = this.appearanceVariants[0];
