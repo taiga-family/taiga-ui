@@ -11574,6 +11574,36 @@ label {
 }
 ```
 
+#### Example 4
+
+**Template:**
+```html
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [(ngModel)]=&quot;checked&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiCheckbox, tuiCheckboxOptionsProvider} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [FormsModule, TuiCheckbox],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiCheckboxOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;primary-grayscale&#039; : &#039;outline-grayscale&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected checked = true;
+}
+```
+
 
 ### TypeScript
 
@@ -11588,7 +11618,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    public readonly examples = [&#039;Platforms&#039;, &#039;Decorative&#039;, &#039;Form&#039;];
+    public readonly examples = [&#039;Platforms&#039;, &#039;Decorative&#039;, &#039;Form&#039;, &#039;Customization&#039;];
 }
 ```
 
@@ -37130,6 +37160,47 @@ export default class Example {
 }
 ```
 
+#### Customization
+
+**Template:**
+```html
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;1&quot; [(ngModel)]=&quot;value&quot; /&gt; example 1 &lt;/label&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;2&quot; [(ngModel)]=&quot;value&quot; /&gt; example 2 &lt;/label&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;3&quot; [(ngModel)]=&quot;value&quot; /&gt; example 3 &lt;/label&gt;
+&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiLabel, TuiRadio, tuiRadioOptionsProvider} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [FormsModule, TuiLabel, TuiRadio],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiRadioOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;primary-grayscale&#039; : &#039;outline-grayscale&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected value = &#039;1&#039;;
+}
+```
+
 
 ### TypeScript
 
@@ -37144,7 +37215,12 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Platforms&#039;, &#039;Identity matcher&#039;, &#039;List&#039;];
+    protected readonly examples = [
+        &#039;Platforms&#039;,
+        &#039;Identity matcher&#039;,
+        &#039;List&#039;,
+        &#039;Customization&#039;,
+    ];
 }
 ```
 
@@ -42701,29 +42777,37 @@ export default class Example {
 **LESS:**
 ```less
 :host {
-    display: flex;
-
     --tui-background-accent-2: var(--tui-status-info);
 }
+```
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    flex: 1;
-    gap: 1rem;
-    padding: 1rem;
+#### Customization
 
-    &amp;_web {
-        border: 1px solid var(--tui-border-normal);
-        border-inline-start-width: 0;
+**Template:**
+```html
+&lt;input tuiSwitch type=&quot;checkbox&quot; [(ngModel)]=&quot;value&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSwitch, tuiSwitchOptionsProvider} from &#039;@taiga-ui/kit&#039;;
 
-        &amp;:first-child {
-            border-inline-end-width: 0;
-            border-inline-start-width: 1px;
-        }
-    }
+@Component({
+    imports: [FormsModule, TuiSwitch],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiSwitchOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;accent&#039; : &#039;secondary&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected value = true;
 }
 ```
 
@@ -42741,7 +42825,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Platforms&#039;, &#039;Same color&#039;];
+    protected readonly examples = [&#039;Platforms&#039;, &#039;Same color&#039;, &#039;Customization&#039;];
 }
 ```
 

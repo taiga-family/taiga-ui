@@ -11565,6 +11565,36 @@ label {
 }
 ```
 
+#### Example 4
+
+**Template:**
+```html
+<input tuiCheckbox type="checkbox" [(ngModel)]="checked" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/core';
+
+@Component({
+    imports: [FormsModule, TuiCheckbox],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiCheckboxOptionsProvider({
+            appearance: (el) => (el.checked ? 'primary-grayscale' : 'outline-grayscale'),
+        }),
+    ],
+})
+export default class Example {
+    protected checked = true;
+}
+```
+
 
 ### TypeScript
 
@@ -11579,7 +11609,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    public readonly examples = ['Platforms', 'Decorative', 'Form'];
+    public readonly examples = ['Platforms', 'Decorative', 'Form', 'Customization'];
 }
 ```
 
@@ -37121,6 +37151,47 @@ export default class Example {
 }
 ```
 
+#### Customization
+
+**Template:**
+```html
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="1" [(ngModel)]="value" /> example 1 </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="2" [(ngModel)]="value" /> example 2 </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="3" [(ngModel)]="value" /> example 3 </label>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLabel, TuiRadio, tuiRadioOptionsProvider} from '@taiga-ui/core';
+
+@Component({
+    imports: [FormsModule, TuiLabel, TuiRadio],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiRadioOptionsProvider({
+            appearance: (el) => (el.checked ? 'primary-grayscale' : 'outline-grayscale'),
+        }),
+    ],
+})
+export default class Example {
+    protected value = '1';
+}
+```
+
 
 ### TypeScript
 
@@ -37135,7 +37206,12 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Platforms', 'Identity matcher', 'List'];
+    protected readonly examples = [
+        'Platforms',
+        'Identity matcher',
+        'List',
+        'Customization',
+    ];
 }
 ```
 
@@ -42692,29 +42768,37 @@ export default class Example {
 **LESS:**
 ```less
 :host {
-    display: flex;
-
     --tui-background-accent-2: var(--tui-status-info);
 }
+```
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    flex: 1;
-    gap: 1rem;
-    padding: 1rem;
+#### Customization
 
-    &_web {
-        border: 1px solid var(--tui-border-normal);
-        border-inline-start-width: 0;
+**Template:**
+```html
+<input tuiSwitch type="checkbox" [(ngModel)]="value" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 
-        &:first-child {
-            border-inline-end-width: 0;
-            border-inline-start-width: 1px;
-        }
-    }
+@Component({
+    imports: [FormsModule, TuiSwitch],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiSwitchOptionsProvider({
+            appearance: (el) => (el.checked ? 'accent' : 'secondary'),
+        }),
+    ],
+})
+export default class Example {
+    protected value = true;
 }
 ```
 
@@ -42732,7 +42816,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Platforms', 'Same color'];
+    protected readonly examples = ['Platforms', 'Same color', 'Customization'];
 }
 ```
 
