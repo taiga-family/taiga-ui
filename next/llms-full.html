@@ -36361,7 +36361,7 @@ dd {
 # components/PullToRefresh
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
-Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. Use overscroll-behavior: none; CSS on your scrolling container to stop elastic scrolling on iOS
+Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. While the scroll container is scrolled to the top, the component automatically applies overscroll-behavior: none; to it so elastic scrolling on iOS does not interfere with pulling. Once scrolled away from the top, the property is removed and the native bounce works as usual
 
 ### Usage Examples
 
@@ -36496,13 +36496,12 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;tui-scrollbar&gt;
+&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollRef class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
+&lt;tui-scroll-controls /&gt;
 &lt;tui-pull-to-refresh (pulled)=&quot;onPull()&quot;&gt;
-&lt;cdk-virtual-scroll-viewport appendOnly itemSize=&quot;50&quot; tuiScrollable class=&quot;example-viewport tui-zero-scrollbar&quot; &gt;
 &lt;div *cdkVirtualFor=&quot;let item of items&quot; class=&quot;example-item&quot; &gt; {{ item }} &lt;/div&gt;
-&lt;/cdk-virtual-scroll-viewport&gt;
 &lt;/tui-pull-to-refresh&gt;
-&lt;/tui-scrollbar&gt;
+&lt;/cdk-virtual-scroll-viewport&gt;
 ```
 **TypeScript:**
 ```ts
@@ -36521,7 +36520,7 @@ import {
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiNotificationService, TuiScrollable, TuiScrollbar} from &#039;@taiga-ui/core&#039;;
+import {TuiNotificationService, TuiScrollControls, TuiScrollRef} from &#039;@taiga-ui/core&#039;;
 import {Subject} from &#039;rxjs&#039;;
 
 @Component({
@@ -36530,8 +36529,8 @@ import {Subject} from &#039;rxjs&#039;;
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         TuiPullToRefresh,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
@@ -36571,7 +36570,6 @@ export default class Example {
 .example-viewport {
     block-size: 12.5rem;
     border: 1px solid;
-    overscroll-behavior: none;
 }
 
 .example-item {
@@ -36611,7 +36609,6 @@ export default class Page {
 ```less
 .scrollbar {
     max-block-size: 20rem;
-    overscroll-behavior: none;
 }
 ```
 
