@@ -11,10 +11,10 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <rect vector-effect="non-scaling-stroke" width="18" height="18" x="3" y="3" rx="2" />
-  <circle vector-effect="non-scaling-stroke" cx="8.5" cy="8.5" r="1.5" />
-  <line vector-effect="non-scaling-stroke" x1="9.56066" y1="9.56066" x2="12" y2="12" />
-  <line vector-effect="non-scaling-stroke" x1="17" y1="17" x2="14.82" y2="14.82" />
+  <path vector-effect="non-scaling-stroke" d="m17 17-2.18-2.18" />
+  <path vector-effect="non-scaling-stroke" d="M9.56 14.44 17 7" />
+  <path vector-effect="non-scaling-stroke" d="M9.56 9.56 12 12" />
   <circle vector-effect="non-scaling-stroke" cx="8.5" cy="15.5" r="1.5" />
-  <line vector-effect="non-scaling-stroke" x1="9.56066" y1="14.43934" x2="17" y2="7" />
+  <circle vector-effect="non-scaling-stroke" cx="8.5" cy="8.5" r="1.5" />
+  <rect vector-effect="non-scaling-stroke" x="3" y="3" width="18" height="18" rx="2" />
 </svg>
