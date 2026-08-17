@@ -9220,7 +9220,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-calendar-range [defaultViewedMonth]="defaultViewedMonth" [disabledItemHandler]="disabledItemHandler" [items]="items" [markerHandler]="markerHandler" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" (valueChange)="documentationPropertyRangeChange.emitEvent($event)" />
+<tui-calendar-range [defaultViewedMonth]="defaultViewedMonth" [disabledItemHandler]="disabledItemHandler" [items]="items" [markerHandler]="markerHandler" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" (monthChange)="documentationPropertyMonthChange.emitEvent($event)" (valueChange)="documentationPropertyRangeChange.emitEvent($event)" />
 ```
 
 ### API - Inputs
@@ -9241,6 +9241,7 @@ export class Example {}
 | Event | Type | Description |
 |-------|------|-------------|
 | (rangeChange) | `TuiDayRange` | Selected date range |
+| (monthChange) | `TuiMonth` | Month changed (also emitted when a year is picked) |
 
 ### Usage Examples
 
