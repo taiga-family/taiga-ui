@@ -24,6 +24,7 @@ const OPTIONS = {
     host: {
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
+        '[class._bar]': 'bar()',
         '(resize)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
     },
@@ -34,6 +35,7 @@ export class TuiBottomSheet {
     private readonly el = tuiInjectElement();
 
     public readonly stops = input<readonly string[]>(['1.5rem']);
+    public readonly bar = input(true);
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;

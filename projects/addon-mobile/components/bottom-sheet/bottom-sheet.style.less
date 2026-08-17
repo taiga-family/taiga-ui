@@ -38,6 +38,10 @@
         clip-path: polygon(-100vw -1rem, 100vw -1rem, 100vw calc(100% + 0.625rem), -100vw calc(100% + 0.625rem));
     }
 
+    &:not(._bar)::before {
+        display: none;
+    }
+
     &::after {
         content: '';
         position: absolute;
