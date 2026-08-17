@@ -4,17 +4,18 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {TuiInputNumberStepService} from '@taiga-ui/kit/components/input-number';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {TuiFluidTypography} from '@taiga-ui/kit/directives/fluid-typography';
 
 import {TUI_COUNTER_OPTIONS} from './counter.options';
 
-const LIMIT: Record<TuiSizeL | TuiSizeS, number> = {
+const LIMIT: Record<TuiSizeL | TuiSizeXS, number> = {
     l: 1.25,
     m: 1,
     s: 13 / 16,
+    xs: 0.75,
 };
 
 @Component({

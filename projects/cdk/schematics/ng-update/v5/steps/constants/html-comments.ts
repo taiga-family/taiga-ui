@@ -166,4 +166,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element.',
     },
+    {
+        tag: '*',
+        withAttrs: ['(focusedChange)', '[(focused)]'],
+        comment:
+            'focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly `focused` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield',
+    },
 ];

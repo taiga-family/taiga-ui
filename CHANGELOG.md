@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.20.0](https://github.com/taiga-family/taiga-ui/compare/v5.19.0...v5.20.0) (2026-08-17)
+
+### 🚀 Features
+
+- **addon-mobile:** `PullToRefresh` apply overscroll-behavior only on top
+  ([#14758](https://github.com/taiga-family/taiga-ui/issues/14758))
+  ([745fb17](https://github.com/taiga-family/taiga-ui/commit/745fb17153e208477ab8692f708db80fcd8d70d4))
+- **addon-mobile:** `TabBar` add updated styles on android
+  ([#14709](https://github.com/taiga-family/taiga-ui/issues/14709))
+  ([bb92ead](https://github.com/taiga-family/taiga-ui/commit/bb92ead313fa31b400ff5c3a91ceb6b5c68d3689))
+- **core:** `Scrollbar` rely on scroll-driven animations when possible
+  ([#14554](https://github.com/taiga-family/taiga-ui/issues/14554))
+  ([7845e41](https://github.com/taiga-family/taiga-ui/commit/7845e4190c6eef50ecad8ae334c08f57d899d517))
+- **core:** deprecate `readOnly` input-property in favor of `readonly` (signal forms compatible)
+  ([#14716](https://github.com/taiga-family/taiga-ui/issues/14716))
+  ([87ff4d1](https://github.com/taiga-family/taiga-ui/commit/87ff4d1e1a5815ca27c9e1a95c737d4d16cabea4))
+- **experimental:** `Calendar` add multi-month mode ([#14593](https://github.com/taiga-family/taiga-ui/issues/14593))
+  ([b454a40](https://github.com/taiga-family/taiga-ui/commit/b454a40d2126055df849685dc666eaf6b8002eeb))
+- **kit:** `Counter` add desktop styles ([#14743](https://github.com/taiga-family/taiga-ui/issues/14743))
+  ([fb7f41a](https://github.com/taiga-family/taiga-ui/commit/fb7f41a8de21afa11fc038a1a97f1497655417a3))
+- **kit:** `InputChip` dispatches `(input)` event when its value is updated programmatically due to user interaction
+  ([#14678](https://github.com/taiga-family/taiga-ui/issues/14678))
+  ([8dd0c79](https://github.com/taiga-family/taiga-ui/commit/8dd0c7944fa036ab3b6c1c2ee31d5b5d6a621e87))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `SheetDialog` restore `theme-color` on close and make it configurable
+  ([#14515](https://github.com/taiga-family/taiga-ui/issues/14515))
+  ([3a10024](https://github.com/taiga-family/taiga-ui/commit/3a10024ae2c59b0aaf74a1f93f03a2fa6cf66831))
+- **addon-table:** enable text overflow ([#14550](https://github.com/taiga-family/taiga-ui/issues/14550))
+  ([be709ac](https://github.com/taiga-family/taiga-ui/commit/be709acd091088b60ca6e3b09e97dcd4064b8f4d))
+- **cdk:** `TuiControl` is compatible with `[formField]` (signal forms directive)
+  ([#14760](https://github.com/taiga-family/taiga-ui/issues/14760))
+  ([2008393](https://github.com/taiga-family/taiga-ui/commit/20083937407af7bc84f683b6c13c803fa03bf1a8))
+- **core:** `Error` fix spacings ([#14739](https://github.com/taiga-family/taiga-ui/issues/14739))
+  ([758e647](https://github.com/taiga-family/taiga-ui/commit/758e6470a691eeaba187c9914f05e6ace08dcecf))
+- **core:** `Input` should prevent premature invalid appearance for untouched state with signal forms
+  ([#14737](https://github.com/taiga-family/taiga-ui/issues/14737))
+  ([64a9887](https://github.com/taiga-family/taiga-ui/commit/64a98875abf1ad9120bb0eb6f642c354e7083a7a))
+- **core:** `Scrollbar` improve drag performance ([#14733](https://github.com/taiga-family/taiga-ui/issues/14733))
+  ([3c84e86](https://github.com/taiga-family/taiga-ui/commit/3c84e86f0e842e8ba7ed1132f419891cf4c5aae5))
+- **core:** fix TuiDropdownHover inside ShadowDom ([#14699](https://github.com/taiga-family/taiga-ui/issues/14699))
+  ([#14701](https://github.com/taiga-family/taiga-ui/issues/14701))
+  ([f040176](https://github.com/taiga-family/taiga-ui/commit/f040176c1a3bd66f8d806e006b0102154521116d))
+- **core:** prevent fullscreen dialog overflow ([#14768](https://github.com/taiga-family/taiga-ui/issues/14768))
+  ([ec79328](https://github.com/taiga-family/taiga-ui/commit/ec7932806c158c3580a61e9cf8fdcf23720233fe))
+- **kit:** `Chevron` increase style specificity to prevent font size from resetting
+  ([#14763](https://github.com/taiga-family/taiga-ui/issues/14763))
+  ([531f899](https://github.com/taiga-family/taiga-ui/commit/531f8998c094ff0a3299888e306670214e8aef05))
+- **layout:** support block content in `tuiList` items ([#14698](https://github.com/taiga-family/taiga-ui/issues/14698))
+  ([5c18c08](https://github.com/taiga-family/taiga-ui/commit/5c18c08b5f9cfd69c4d1ad60d26156519904e917))
+- **schematics:** add missing TuiMultiSelectModule -> TuiMultiSelect v5 rename
+  ([#14727](https://github.com/taiga-family/taiga-ui/issues/14727))
+  ([f4d7f43](https://github.com/taiga-family/taiga-ui/commit/f4d7f43b539bdcde7d5ab5bc9189721dd52a4e8a))
+- **schematics:** add TODO for removed focusedChange output on migrated v5 controls
+  ([#14755](https://github.com/taiga-family/taiga-ui/issues/14755))
+  ([852582c](https://github.com/taiga-family/taiga-ui/commit/852582c9a66a9ac47267ae281d231bacdce80c88))
+- **schematics:** avoid self-referential [@let](https://github.com/let) when migrating \*tuiLet (v5)
+  ([#14736](https://github.com/taiga-family/taiga-ui/issues/14736))
+  ([c0c5a76](https://github.com/taiga-family/taiga-ui/commit/c0c5a76a2a0528753bedd2ab46782148470653d0))
+- **schematics:** finish tui-input-tag v5 migration and drop unused AsyncPipe
+  ([#14752](https://github.com/taiga-family/taiga-ui/issues/14752))
+  ([e8e83da](https://github.com/taiga-family/taiga-ui/commit/e8e83da25bbc113e2d29dafc4ed86f2a524017b2))
+- **schematics:** migrate [(tuiDropdownOpen)] to [(open)] on textfield inputs in v5
+  ([#14754](https://github.com/taiga-family/taiga-ui/issues/14754))
+  ([aa72a8b](https://github.com/taiga-family/taiga-ui/commit/aa72a8bbeb6ecd5f6bb70e4344e662d01b319bb4))
+- **schematics:** migrate legacy TuiPrimitiveTextfield to TuiTextfield in v5
+  ([#14762](https://github.com/taiga-family/taiga-ui/issues/14762))
+  ([606964c](https://github.com/taiga-family/taiga-ui/commit/606964ce9d05670a47efe51d89bd52f4659f1a1a))
+- **schematics:** spread barrel arrays in NgModule imports (v5)
+  ([#14734](https://github.com/taiga-family/taiga-ui/issues/14734))
+  ([d2658ef](https://github.com/taiga-family/taiga-ui/commit/d2658efe2505201128b5b0b8c132f1540a27aeda))
+
 ## [5.19.0](https://github.com/taiga-family/taiga-ui/compare/v5.18.0...v5.19.0) (2026-08-10)
 
 ### 🚀 Features

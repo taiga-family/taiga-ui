@@ -35,6 +35,7 @@ import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
+import {migrateDropdownImport} from './templates/migrate-dropdown-import';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
@@ -60,6 +61,7 @@ import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-cont
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
 import {migratePin} from './templates/migrate-pin';
+import {migratePrimitiveTextfield} from './templates/migrate-primitive-textfield';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -148,6 +150,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
+        migratePrimitiveTextfield,
+        migrateDropdownImport,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
