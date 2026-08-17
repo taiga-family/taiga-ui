@@ -284,11 +284,12 @@ exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-comb
                 })
                 export class TestComponent {}
             ",
-  "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
+  "1. After": "import { TuiDropdown } from "@taiga-ui/core";
+import { TuiComboBox } from "@taiga-ui/kit";
 
                                 @Component({
                     standalone: true,
-                    imports: [TuiComboBox],
+                    imports: [TuiComboBox, TuiDropdown],
                     templateUrl: './test.html',
                 })
                 export class TestComponent {}

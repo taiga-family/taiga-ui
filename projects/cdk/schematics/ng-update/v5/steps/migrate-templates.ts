@@ -35,6 +35,7 @@ import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
+import {migrateDropdownImport} from './templates/migrate-dropdown-import';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
@@ -148,6 +149,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
+        migrateDropdownImport,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

@@ -214,13 +214,14 @@ exports[`ng-update legacy select renames valueContent to content, removes labelO
                 })
                 export class TestComponent {}
             ",
-  "1. After": "import { TuiSelect } from "@taiga-ui/kit";
+  "1. After": "import { TuiDropdown } from "@taiga-ui/core";
+import { TuiSelect } from "@taiga-ui/kit";
 
                 import {Component} from '@angular/core';
 
                 @Component({
                     standalone: true,
-                    imports: [TuiSelect],
+                    imports: [TuiSelect, TuiDropdown],
                     templateUrl: './test.html',
                 })
                 export class TestComponent {}
