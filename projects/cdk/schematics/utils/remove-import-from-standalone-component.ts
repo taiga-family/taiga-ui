@@ -10,9 +10,12 @@ const importsToRemove = new Map<
     }
 >();
 
-// Drops only the imports[] entry (unused there = NG8113); the now-unused import
-// statement is left for organize-imports (harmless TS6133).
-export function removeImportFromClosestModule(
+// Standalone-only by design: drops the entry from the component's own `imports: [...]`.
+// A non-standalone component has no such array, so this is a no-op there — we deliberately
+// never touch a shared @NgModule, where removing a pipe a sibling still uses would be unsafe.
+// Only the imports[] entry is dropped (unused there = NG8113); the now-unused import statement
+// is left for organize-imports (harmless TS6133).
+export function removeImportFromStandaloneComponent(
     componentPath: string,
     moduleName: string,
 ): void {

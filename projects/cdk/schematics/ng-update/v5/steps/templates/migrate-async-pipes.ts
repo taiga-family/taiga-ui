@@ -1,7 +1,7 @@
 import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 
-import {removeImportFromClosestModule} from '../../../../utils/remove-import-from-closest-module';
+import {removeImportFromStandaloneComponent} from '../../../../utils/remove-import-from-standalone-component';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -58,6 +58,6 @@ export function migrateAsyncPipes({
     const remaining = (template.match(/\|\s*async\b/gi) ?? []).length - removed;
 
     if (removed > 0 && remaining === 0 && resource.componentPath) {
-        removeImportFromClosestModule(resource.componentPath, 'AsyncPipe');
+        removeImportFromStandaloneComponent(resource.componentPath, 'AsyncPipe');
     }
 }

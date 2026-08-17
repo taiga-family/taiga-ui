@@ -18,7 +18,7 @@ import {
     type MigrationStepTiming,
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {saveRemovedImports} from '../../utils/remove-import-from-closest-module';
+import {saveRemovedImports} from '../../utils/remove-import-from-standalone-component';
 import {runSteps} from '../../utils/run-steps';
 import {
     removeDuplicates,
