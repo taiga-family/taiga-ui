@@ -9229,7 +9229,7 @@ export class Example {}
 ### Example
 
 ```html
-&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
+&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; (monthChange)=&quot;documentationPropertyMonthChange.emitEvent($event)&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -9250,6 +9250,7 @@ export class Example {}
 | Event | Type | Description |
 |-------|------|-------------|
 | (rangeChange) | `TuiDayRange` | Selected date range |
+| (monthChange) | `TuiMonth` | Month changed (also emitted when a year is picked) |
 
 ### Usage Examples
 
@@ -58527,8 +58528,9 @@ export default class Example {}
 &lt;ul tuiList&gt;
 &lt;li&gt;If a list item is long, the bullet stays aligned to the top.&lt;/li&gt;
 &lt;li&gt;There are no restrictions on the text length at all. You can write as much text as you want.&lt;/li&gt;
-&lt;!-- prettier-ignore --&gt;
-&lt;li&gt;This item uses &lt;strong&gt;nested tags&lt;/strong&gt; inside which should not break&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt; This item uses &lt;strong&gt;nested tags&lt;/strong&gt; inside which should not break &lt;/div&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol tuiList&gt;
 &lt;li&gt;If a list item is long, the bullet stays aligned to the top.&lt;/li&gt;
