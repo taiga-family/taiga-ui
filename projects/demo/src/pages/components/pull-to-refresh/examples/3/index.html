@@ -1,17 +1,16 @@
-<tui-scrollbar>
+<cdk-virtual-scroll-viewport
+    appendOnly
+    itemSize="50"
+    tuiScrollRef
+    class="example-viewport tui-zero-scrollbar"
+>
+    <tui-scroll-controls />
     <tui-pull-to-refresh (pulled)="onPull()">
-        <cdk-virtual-scroll-viewport
-            appendOnly
-            itemSize="50"
-            tuiScrollable
-            class="example-viewport tui-zero-scrollbar"
+        <div
+            *cdkVirtualFor="let item of items"
+            class="example-item"
         >
-            <div
-                *cdkVirtualFor="let item of items"
-                class="example-item"
-            >
-                {{ item }}
-            </div>
-        </cdk-virtual-scroll-viewport>
+            {{ item }}
+        </div>
     </tui-pull-to-refresh>
-</tui-scrollbar>
+</cdk-virtual-scroll-viewport>
