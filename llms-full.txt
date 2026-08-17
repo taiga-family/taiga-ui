@@ -52798,6 +52798,7 @@ Directive to show a hint by hover of an element
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiHint] | `PolymorpheusContent` | content of the hint |
+| [tuiHintContext] | `C` | context for the hint content |
 | [tuiHintShowDelay] | `number` | show delay in milliseconds |
 | [tuiHintHideDelay] | `number` | hide delay in milliseconds |
 
