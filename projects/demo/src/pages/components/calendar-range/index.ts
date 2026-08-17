@@ -92,6 +92,7 @@ export default class Example {
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0]!;
+    protected month = this.defaultViewedMonthVariants[0]!;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
     protected readonly routes = DemoRoute;
