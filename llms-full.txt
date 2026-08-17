@@ -36352,7 +36352,7 @@ dd {
 # components/PullToRefresh
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
-Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. Use overscroll-behavior: none; CSS on your scrolling container to stop elastic scrolling on iOS
+Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits (pulled) event when the pull threshold is reached. You can set that threshold in pixels by TUI_PULL_TO_REFRESH_THRESHOLD DI token. You can finish loading with TUI_PULL_TO_REFRESH_LOADED stream token that can be provided in DI. While the scroll container is scrolled to the top, the component automatically applies overscroll-behavior: none; to it so elastic scrolling on iOS does not interfere with pulling. Once scrolled away from the top, the property is removed and the native bounce works as usual
 
 ### Usage Examples
 
@@ -36487,13 +36487,12 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-scrollbar>
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef class="example-viewport tui-zero-scrollbar" >
+<tui-scroll-controls />
 <tui-pull-to-refresh (pulled)="onPull()">
-<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollable class="example-viewport tui-zero-scrollbar" >
 <div *cdkVirtualFor="let item of items" class="example-item" > {{ item }} </div>
-</cdk-virtual-scroll-viewport>
 </tui-pull-to-refresh>
-</tui-scrollbar>
+</cdk-virtual-scroll-viewport>
 ```
 **TypeScript:**
 ```ts
@@ -36512,7 +36511,7 @@ import {
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TuiNotificationService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiNotificationService, TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -36521,8 +36520,8 @@ import {Subject} from 'rxjs';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         TuiPullToRefresh,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -36562,7 +36561,6 @@ export default class Example {
 .example-viewport {
     block-size: 12.5rem;
     border: 1px solid;
-    overscroll-behavior: none;
 }
 
 .example-item {
@@ -36602,7 +36600,6 @@ export default class Page {
 ```less
 .scrollbar {
     max-block-size: 20rem;
-    overscroll-behavior: none;
 }
 ```
 
