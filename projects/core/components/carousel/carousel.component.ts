@@ -10,7 +10,6 @@ import {
     model,
     signal,
     TemplateRef,
-    VERSION,
 } from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {
@@ -33,11 +32,7 @@ import {debounceTime, filter, fromEvent} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
     hostDirectives: [WaIntersectionObserverDirective],
-    host: {
-        waIntersectionThreshold: '0.5',
-        '[attr.ngSkipHydration]': 'skipHydration',
-        '[style.max-block-size.px]': 'height()',
-    },
+    host: {waIntersectionThreshold: '0.5', '[style.max-block-size.px]': 'height()'},
 })
 export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -47,11 +42,6 @@ export class TuiCarouselComponent implements AfterViewInit {
     protected readonly math = Math;
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
     protected readonly height = signal(Number.NaN);
-
-    // https://github.com/angular/angular/issues/50543
-    // TODO(v6): delete
-    protected readonly skipHydration =
-        Number.parseInt(VERSION.major, 10) < 20 ? '' : null;
 
     public readonly index = model(0);
     public readonly min = input(-Infinity);
