@@ -8,6 +8,8 @@ import {
 import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 
 /**
+ * @deprecated Use `import {tuiFormatNumber} from '@taiga-ui/kit'`
+ * TODO(v6): delete
  * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
@@ -19,7 +21,14 @@ export function tuiFormatNumber(
     value: number,
     settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
-    const {precision, decimalSeparator, thousandSeparator, decimalMode, rounding} = {
+    const {
+        precision,
+        decimalSeparator,
+        thousandSeparator,
+        decimalMode,
+        rounding,
+        minusSign = CHAR_HYPHEN,
+    } = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
         decimalMode: 'always',
         precision: Infinity,
@@ -46,7 +55,7 @@ export function tuiFormatNumber(
     }
 
     const remainder = integerPartString.length % 3;
-    const sign = value < 0 ? CHAR_HYPHEN : '';
+    const sign = value < 0 ? minusSign : '';
     let result = `${sign}${integerPartString.charAt(0)}`;
 
     for (let i = 1; i < integerPartString.length; i++) {

@@ -6,7 +6,6 @@ import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort, TuiValidator} from '@taiga-ui/cdk';
 import {
-    TuiFormatNumberPipe,
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
@@ -15,6 +14,7 @@ import {
 import {
     TuiChevron,
     TuiDataListWrapper,
+    TuiFormatNumberPipe,
     TuiInputDate,
     TuiInputNumber,
     TuiSelect,
