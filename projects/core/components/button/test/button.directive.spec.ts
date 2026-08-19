@@ -75,6 +75,7 @@ describe('ButtonDirective', () => {
             const harness = await loader.getHarness(
                 TuiButtonHarness.with({selector: '#size-unspecified'}),
             );
+
             const size = await harness.getSize();
 
             expect(size).toBe('l');
@@ -84,6 +85,7 @@ describe('ButtonDirective', () => {
             const harness = await loader.getHarness(
                 TuiButtonHarness.with({selector: '#size-l'}),
             );
+
             const size = await harness.getSize();
 
             expect(size).toBe('l');
@@ -93,6 +95,7 @@ describe('ButtonDirective', () => {
             const harness = await loader.getHarness(
                 TuiButtonHarness.with({selector: '#size-m'}),
             );
+
             const size = await harness.getSize();
 
             expect(size).toBe('m');
@@ -102,6 +105,7 @@ describe('ButtonDirective', () => {
             const harness = await loader.getHarness(
                 TuiButtonHarness.with({selector: '#size-s'}),
             );
+
             const size = await harness.getSize();
 
             expect(size).toBe('s');
@@ -111,6 +115,7 @@ describe('ButtonDirective', () => {
             const harness = await loader.getHarness(
                 TuiButtonHarness.with({selector: '#size-xs'}),
             );
+
             const size = await harness.getSize();
 
             expect(size).toBe('xs');

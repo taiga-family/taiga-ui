@@ -88,7 +88,9 @@ exports[`ng-update closeable replaces closeable with closable for TuiDialogServi
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closeable: this.loading$.pipe(map((loading) => !loading)),
                             })
                             .subscribe();
@@ -111,7 +113,9 @@ exports[`ng-update closeable replaces closeable with closable for TuiDialogServi
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closable: this.loading$.pipe(map((loading) => !loading)),
                             })
                             .subscribe();
@@ -381,6 +385,45 @@ exports[`ng-update closeable replaces closeable with closable for tuiSheetDialog
 }
 `;
 
+exports[`ng-update closeable replaces closeable with closable in an options object typed apart from the open() call: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiDialogOptions} from '@taiga-ui/core';
+                import {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    protected readonly sheetOptions: Partial<TuiSheetDialogOptions> = {
+                        closeable: true,
+                    };
+
+                    protected readonly dialogOptions: TuiDialogOptions = {
+                        closeable: false,
+                        label: 'Test',
+                    };
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiDialogOptions} from '@taiga-ui/core';
+                import {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    protected readonly sheetOptions: Partial<TuiSheetDialogOptions> = {
+                        closable: true,
+                    };
+
+                    protected readonly dialogOptions: TuiDialogOptions = {
+                        closable: false,
+                        label: 'Test',
+                    };
+                }
+            ",
+}
+`;
+
 exports[`ng-update closeable replaces string literal key "closeable" with "closable": test.ts 1`] = `
 {
   "0. Before": "
@@ -393,7 +436,7 @@ exports[`ng-update closeable replaces string literal key "closeable" with "closa
 
                     open(): void {
                         this.dialog.open('content', {
-                            "closeable": true,
+                            closeable: true,
                         });
                     }
                 }
@@ -408,7 +451,7 @@ exports[`ng-update closeable replaces string literal key "closeable" with "closa
 
                     open(): void {
                         this.dialog.open('content', {
-                            "closable": true,
+                            closable: true,
                         });
                     }
                 }

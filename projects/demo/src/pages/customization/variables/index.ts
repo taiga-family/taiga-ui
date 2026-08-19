@@ -6,10 +6,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
-import {TuiVariablesExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [ClipboardModule, KeyValuePipe, TuiDemo, TuiLink, TuiVariablesExample1],
+    imports: [ClipboardModule, Example, KeyValuePipe, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

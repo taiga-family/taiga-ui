@@ -11,7 +11,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         'one',
         'two',

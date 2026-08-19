@@ -43,7 +43,7 @@
                 type="boolean"
                 [(value)]="dots"
             >
-                Show dots on chart
+                show dots on chart
             </tr>
             <tr
                 name="[hintContent]"
@@ -52,7 +52,7 @@
                 [items]="hintContentVariants()"
                 [(value)]="hintContent"
             >
-                Content of hint for hover. It has
+                content of hint for hover. It has
                 <code>$implicit</code>
                 in context with a tuple
                 <code>[TuiDay, number]</code>
@@ -63,7 +63,7 @@
                 type="number"
                 [(value)]="height"
             >
-                Axis Y range, pixel scale is 1:1
+                axis Y range, pixel scale is 1:1
             </tr>
             <tr
                 name="[y]"
@@ -71,7 +71,7 @@
                 type="number"
                 [(value)]="y"
             >
-                Start of Y axis
+                start of Y axis
             </tr>
             <tr
                 name="[smoothingFactor]"
@@ -79,7 +79,7 @@
                 type="number"
                 [(value)]="smoothingFactor"
             >
-                Smoothing factor from 0 to 99
+                smoothing factor from 0 to 99
             </tr>
             <tr
                 name="[value]"
@@ -88,7 +88,7 @@
                 [items]="valueVariants"
                 [(value)]="value"
             >
-                Array of data
+                array of data
             </tr>
             <tr
                 name="[xStringify]"
@@ -97,7 +97,7 @@
                 [items]="xStringifyVariants()"
                 [(value)]="xStringify"
             >
-                Function to stringify a value number to a string in axis X hint
+                function to stringify a value number to a string in axis X hint
             </tr>
             <tr
                 name="[yStringify]"
@@ -106,7 +106,7 @@
                 [items]="yStringifyVariants"
                 [(value)]="yStringify"
             >
-                Function to stringify a value number to a string in axis Y hint
+                function to stringify a value number to a string in axis Y hint
             </tr>
         </table>
     </ng-template>

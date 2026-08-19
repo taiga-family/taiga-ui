@@ -29,6 +29,7 @@ export function replaceAttrsInHost(
             const initializer = host
                 .getInitializer()
                 ?.asKind(SyntaxKind.ObjectLiteralExpression);
+
             const path = normalize(component.getSourceFile().getFilePath());
             const recorder = fileSystem.edit(path);
 

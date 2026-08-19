@@ -48,7 +48,7 @@
                 [items]="defaultViewedMonthVariants"
                 [(value)]="defaultViewedMonth"
             >
-                Default month to show
+                default month to show
             </tr>
             <tr
                 name="[disabledItemHandler]"
@@ -57,8 +57,7 @@
                 [items]="disabledItemHandlerVariants"
                 [(value)]="disabledItemHandler"
             >
-                <div>A handler that gets a date and returns true if it is disabled.</div>
-
+                a handler that gets a date and returns true if it is disabled.
                 <strong>Must be a pure function</strong>
             </tr>
             <tr
@@ -68,7 +67,7 @@
                 [items]="itemsVariants"
                 [(value)]="items"
             >
-                Fixed intervals (shows 2 calendars with empty array)
+                fixed intervals (shows 2 calendars with empty array)
             </tr>
             <tr
                 name="[markerHandler]"
@@ -77,7 +76,7 @@
                 [items]="markerHandlerVariants"
                 [(value)]="markerHandler"
             >
-                A handler that gets date and returns null or a tuple with circled marker colors
+                a handler that gets date and returns null or a tuple with circled marker colors
             </tr>
             <tr
                 name="[min]"
@@ -86,7 +85,7 @@
                 [items]="minVariants"
                 [(value)]="min"
             >
-                Min date
+                min date
             </tr>
             <tr
                 name="[max]"
@@ -95,7 +94,7 @@
                 [items]="maxVariants"
                 [(value)]="max"
             >
-                Max date
+                max date
             </tr>
             <tr
                 name="[minLength]"
@@ -104,7 +103,7 @@
                 [items]="minLengthVariants"
                 [(value)]="minLength"
             >
-                Minimal length of range
+                minimal length of range
             </tr>
             <tr
                 name="[maxLength]"
@@ -113,7 +112,7 @@
                 [items]="maxLengthVariants"
                 [(value)]="maxLength"
             >
-                Maximal length of range
+                maximal length of range
             </tr>
             <tr
                 #documentationPropertyRangeChange
@@ -121,7 +120,7 @@
                 tuiDocAPIItem
                 type="TuiDayRange"
             >
-                Selected date range
+                selected date range
             </tr>
         </table>
     </ng-template>

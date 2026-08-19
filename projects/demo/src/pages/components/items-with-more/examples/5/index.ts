@@ -28,7 +28,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected readonly items = [
         {
             name: 'Very very long account name',

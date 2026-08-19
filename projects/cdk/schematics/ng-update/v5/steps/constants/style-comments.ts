@@ -1,5 +1,6 @@
 const GLOBAL_STYLES_COMMENT =
     'Global styles will be removed in next major release. Include their source code in your project if you still require them';
+
 const GLOBAL_STYLES_PATH =
     'https://github.com/taiga-family/taiga-ui/blob/main/projects/legacy/styles';
 

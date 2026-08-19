@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update tui-input-card-group placeholder does not touch exampleText on other elements: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-card-group exampleText="Card number"></tui-input-card-group>
+                <div exampleText="unrelated"></div>
+            ",
+  "1. After": "
+                <tui-input-card-group placeholder="Card number"></tui-input-card-group>
+                <div exampleText="unrelated"></div>
+            ",
+}
+`;
+
+exports[`ng-update tui-input-card-group placeholder preserves other attributes while renaming exampleText: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-card-group
+                    autocomplete="cc-number"
+                    exampleText="Card number"
+                    [cardValidator]="validator"
+                ></tui-input-card-group>
+            ",
+  "1. After": "
+                <tui-input-card-group
+                    autocomplete="cc-number"
+                    placeholder="Card number"
+                    [cardValidator]="validator"
+                ></tui-input-card-group>
+            ",
+}
+`;
+
+exports[`ng-update tui-input-card-group placeholder renames the deprecated exampleText input to placeholder: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-card-group exampleText="Card number"></tui-input-card-group>
+                <tui-input-card-group [exampleText]="text"></tui-input-card-group>
+            ",
+  "1. After": "
+                <tui-input-card-group placeholder="Card number"></tui-input-card-group>
+                <tui-input-card-group [placeholder]="text"></tui-input-card-group>
+            ",
+}
+`;

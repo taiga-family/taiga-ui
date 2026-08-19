@@ -32,6 +32,9 @@
             <ng-template>
                 <tui-textfield
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -44,13 +47,10 @@
                     <input
                         placeholder="Put your birthday"
                         tuiInputYear
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                     <tui-calendar-year *tuiDropdown />
@@ -66,7 +66,7 @@
                 [items]="minVariants"
                 [(value)]="min"
             >
-                Minimum year
+                minimum year
             </tr>
             <tr
                 name="[max]"
@@ -75,7 +75,7 @@
                 [items]="maxVariants"
                 [(value)]="max"
             >
-                Maximum year
+                maximum year
             </tr>
             <tbody
                 #itemsHandlers
@@ -88,8 +88,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #dropdown

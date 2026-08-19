@@ -33,23 +33,18 @@ export class TuiSwipeService extends Observable<TuiSwipeEvent> {
                         const startY = start.touches[0]?.clientY ?? 0;
                         const endX = end.changedTouches[0]?.clientX ?? 0;
                         const endY = end.changedTouches[0]?.clientY ?? 0;
-
                         const distanceX = startX - endX;
                         const distanceY = startY - endY;
                         const duration = end.timeStamp - start.timeStamp;
 
-                        if (
-                            (Math.abs(distanceX) > threshold ||
-                                Math.abs(distanceY) > threshold) &&
+                        return (Math.abs(distanceX) > threshold ||
+                            Math.abs(distanceY) > threshold) &&
                             duration < timeout
-                        ) {
-                            return {
-                                direction: tuiGetSwipeDirection(distanceX, distanceY),
-                                events: [start, end] as [TouchEvent, TouchEvent],
-                            };
-                        }
-
-                        return null;
+                            ? {
+                                  direction: tuiGetSwipeDirection(distanceX, distanceY),
+                                  events: [start, end] as [TouchEvent, TouchEvent],
+                              }
+                            : null;
                     }),
                     filter(tuiIsPresent),
                 )

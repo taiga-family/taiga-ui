@@ -21,4 +21,25 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         inputName: 'tuiDirectionOrder',
         tags: ['table'],
     },
+    {
+        inputName: 'rounded',
+        tags: ['tui-accordion'],
+    },
+    {
+        inputName: 'monoHandler',
+        tags: ['tui-thumbnail-card'],
+    },
+    // `input[tuiInputCard]` dropped its `icon` override; the card icon is now
+    // auto-detected from the payment system, so the input no longer exists.
+    {
+        inputName: 'icon',
+        tags: ['input'],
+        filterFn: (el) => hasElementAttribute(el, 'tuiInputCard'),
+    },
+    // `[tuiDropdownOpenMonitor]` was a selector-only shim; v5 dropdowns are native
+    // (the schematic maps `tuiDropdownOpen` -> `tuiDropdownAuto`), so drop the marker.
+    {
+        inputName: 'tuiDropdownOpenMonitor',
+        tags: ['*'],
+    },
 ];

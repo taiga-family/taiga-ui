@@ -33,6 +33,9 @@ import {TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
+import {TuiInputChipDirective} from './input-chip.directive';
+import {tuiParseInputChipValue} from './input-chip.utils';
+
 @Component({
     selector: 'tui-input-chip',
     imports: [
@@ -113,17 +116,38 @@ export class TuiInputChipComponent<T> {
     }
 
     protected save(): void {
-        if (!this.internal()) {
+        const item = this.internal();
+        const cva = this.textfield.cva();
+
+        if (!item) {
             this.delete();
-        } else if (this.handlers.disabledItemHandler()(this.internal())) {
+
             return;
         }
 
-        const value = this.value().map((item, index) =>
-            index === this.index ? this.internal() : item,
+        const isItemDisabled = this.handlers.disabledItemHandler()(item);
+        const isChipTextfield = cva instanceof TuiInputChipDirective;
+
+        if (isItemDisabled || !isChipTextfield) {
+            return;
+        }
+
+        const items = tuiParseInputChipValue(
+            String(item),
+            cva.separator(),
+            this.handlers,
         );
 
-        this.textfield.cva()?.onChange(value);
+        if (!items.length) {
+            return;
+        }
+
+        cva.setValue(
+            this.value().flatMap((valueItem, index) =>
+                index === this.index ? items : [valueItem],
+            ),
+        );
+
         this.editing.set(false);
         this.textfield.input()?.nativeElement.focus({preventScroll: true});
     }

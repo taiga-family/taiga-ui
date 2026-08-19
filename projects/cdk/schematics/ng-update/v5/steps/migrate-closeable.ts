@@ -12,13 +12,22 @@ import {type TuiSchema} from '../../../ng-add/schema';
 import {isServiceMethodCall} from '../../../utils/is-service-method-call';
 
 const FACTORY_NAME = 'tuiDialog';
+
 const SERVICE_NAMES = [
     'TuiDialogService',
     'TuiAlertService',
     'TuiNotificationService',
     'TuiSheetDialogService',
 ];
+
 const METHOD_NAME = 'open';
+
+const OPTION_TYPE_NAMES = [
+    'TuiDialogOptions',
+    'TuiSheetDialogOptions',
+    'TuiAlertOptions',
+    'TuiNotificationOptions',
+];
 
 export function migrateCloseable(_tree: Tree, _options: TuiSchema): void {
     getSourceFiles(ALL_TS_FILES).forEach((sourceFile) => {
@@ -27,6 +36,11 @@ export function migrateCloseable(_tree: Tree, _options: TuiSchema): void {
 }
 
 function migrateSourceFile(sourceFile: SourceFile): void {
+    migrateOpenOptions(sourceFile);
+    migrateTypedDeclarations(sourceFile);
+}
+
+function migrateOpenOptions(sourceFile: SourceFile): void {
     const calls = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
 
     calls.forEach((call) => {
@@ -47,6 +61,38 @@ function migrateSourceFile(sourceFile: SourceFile): void {
             renameCloseableKey(options);
         });
     });
+}
+
+// An options object may be declared apart from the open()/provider call and passed by reference.
+// Rename it only when the declaration is explicitly typed as one of the dialog option types,
+// so plain objects that merely have a `closeable` key are left untouched.
+function migrateTypedDeclarations(sourceFile: SourceFile): void {
+    const declarations = [
+        ...sourceFile.getDescendantsOfKind(SyntaxKind.PropertyDeclaration),
+        ...sourceFile.getDescendantsOfKind(SyntaxKind.VariableDeclaration),
+    ];
+
+    declarations.forEach((declaration) => {
+        const typeNode = declaration.getTypeNode();
+        const initializer = declaration.getInitializer();
+
+        if (
+            !typeNode ||
+            !initializer ||
+            !Node.isObjectLiteralExpression(initializer) ||
+            !referencesOptionType(typeNode.getText())
+        ) {
+            return;
+        }
+
+        renameCloseableKey(initializer);
+    });
+}
+
+function referencesOptionType(typeText: string): boolean {
+    return OPTION_TYPE_NAMES.some((name) =>
+        new RegExp(String.raw`\b${name}\b`).test(typeText),
+    );
 }
 
 function renameCloseableKey(obj: ObjectLiteralExpression): void {

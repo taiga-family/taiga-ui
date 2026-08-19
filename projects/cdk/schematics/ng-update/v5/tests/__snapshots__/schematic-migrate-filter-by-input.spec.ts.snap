@@ -76,14 +76,14 @@ exports[`ng-update FilterByInput migration keeps TuiFilterByInputPipe usage in c
                     imports: [TuiFilterByInputPipe],
                 })
                 export class TestComponent {}
-        ",
+            ",
   "1. After": "import { TuiFilterByInputPipe } from "@taiga-ui/core";
 
                                 @Component({
                     imports: [TuiFilterByInputPipe],
                 })
                 export class TestComponent {}
-        ",
+            ",
 }
 `;
 
@@ -242,8 +242,8 @@ exports[`ng-update FilterByInput migration migrates matcher (2nd argument of tui
                         );
                     };
 
-                    matcherByName =
-                        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
+                    matcherByName = (item: string, query: string) =>
+                        item.toLowerCase().includes(query.toLowerCase());
                 }
             ",
   "1. After": "
@@ -265,8 +265,8 @@ exports[`ng-update FilterByInput migration migrates matcher (2nd argument of tui
                         );
                     };
 
-                    matcherByName =
-                        (item: string, query: string) => item.toLowerCase().includes(query.toLowerCase());
+                    matcherByName = (item: string, query: string) =>
+                        item.toLowerCase().includes(query.toLowerCase());
                 
     filterWithMatcherByDigit: TuiFilterByInputOptions<string>['filter'] = (items, query, stringify) => items.filter((item) => this.matcherByDigit(item, query, stringify));
     filterWithMatcherByName: TuiFilterByInputOptions['filter'] = (items, query, stringify) => items.filter((item) => this.matcherByName(item, query, stringify));

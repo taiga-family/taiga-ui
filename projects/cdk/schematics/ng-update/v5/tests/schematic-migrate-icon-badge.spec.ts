@@ -12,12 +12,12 @@ describe('ng-update', () => {
     it(
         'should migrate tui-icon badge icon input to iconStart',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
 
                 @Component({
-                  standalone: true,
-                  templateUrl: './test.html',
+                    standalone: true,
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,

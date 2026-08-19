@@ -51,6 +51,7 @@ class Styles {}
 export class TuiHeader {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_HEADER_OPTIONS);
+
     public readonly tuiHeader = input(this.options.size);
 }
 

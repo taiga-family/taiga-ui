@@ -117,14 +117,14 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
             export class Test {}
         ",
   "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
-import { TuiInput, TuiIcon } from "@taiga-ui/core";
+import { TuiInput, TuiIcon, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput, TuiIcon, TuiTooltip],
+                imports: [TuiInput, TuiIcon, TuiTooltip, TuiDropdown],
             })
             export class Test {}
         ",
@@ -416,14 +416,14 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
             export class Test {}
         ",
   "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
-import { TuiInput, TuiIcon } from "@taiga-ui/core";
+import { TuiInput, TuiIcon, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput, TuiIcon, TuiTooltip],
+                imports: [TuiInput, TuiIcon, TuiTooltip, TuiDropdown],
             })
             export class Test {}
         ",
@@ -477,14 +477,14 @@ exports[`ng-update hint on legacy controls different legacy controls migrates tu
             export class Test {}
         ",
   "1. After": "import { TuiTooltip } from "@taiga-ui/kit";
-import { TuiInput, TuiIcon } from "@taiga-ui/core";
+import { TuiInput, TuiIcon, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput, TuiIcon, TuiTooltip],
+                imports: [TuiInput, TuiIcon, TuiTooltip, TuiDropdown],
             })
             export class Test {}
         ",
@@ -585,7 +585,8 @@ exports[`ng-update hint on legacy controls hint with additional directives moves
                     />
                 ",
   "1. After": "
-                    <tui-input><tui-icon [tuiTooltip]="hint" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" /></tui-input>",
+                    <tui-input><tui-icon [tuiTooltip]="hint" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" /></tui-input>
+                ",
 }
 `;
 
@@ -626,7 +627,8 @@ exports[`ng-update hint on legacy controls hint with additional directives moves
                     />
                 ",
   "1. After": "
-                    <tui-input><tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" /></tui-input>",
+                    <tui-input><tui-icon [tuiTooltip]="hint" tuiHintAppearance="dark" /></tui-input>
+                ",
 }
 `;
 

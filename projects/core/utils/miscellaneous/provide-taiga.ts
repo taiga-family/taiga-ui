@@ -16,6 +16,7 @@ import {tuiEnableFontScaling} from './font-scaling';
 
 interface ExperimentalAPIs {
     readonly all: boolean;
+    readonly liquidGlass: boolean;
 }
 
 export interface TuiOptions {
@@ -37,6 +38,7 @@ export function provideTaiga(
     config: Partial<TuiOptions> = {},
 ): Array<EnvironmentProviders | Provider> {
     const options = {...DEFAULT, ...config};
+
     const providers: Array<EnvironmentProviders | Provider> = [
         {
             provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,

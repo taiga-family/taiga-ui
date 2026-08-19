@@ -10,26 +10,26 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputMonthModule to TuiInputMonth',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputMonthModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputMonthModule,
+                    ],
                     // ...
-                    TuiInputMonthModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputMonthModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputMonthModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             `,

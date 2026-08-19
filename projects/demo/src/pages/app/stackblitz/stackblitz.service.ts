@@ -19,6 +19,7 @@ const APP_COMP_META = {
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
     private readonly deps = inject(StackblitzDepsService);
+
     public readonly name = 'Stackblitz';
     public readonly content = new PolymorpheusComponent(StackblitzEditButton);
 
@@ -31,16 +32,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const appCompTs = new TsFileComponentParser(content.TypeScript);
-        const supportFilesTuples = getSupportFiles(content);
-        const modifiedSupportFiles = prepareSupportFiles(supportFilesTuples);
-
-        appCompTs.selector = APP_COMP_META.SELECTOR;
-        appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
-        appCompTs.styleUrl = APP_COMP_META.STYLE_URL;
-        appCompTs.className = APP_COMP_META.CLASS_NAME;
-        appCompTs.defaultExport = false;
-
         stackblitz.openProject(
             {
                 ...(await this.getStackblitzProjectConfig()),
@@ -48,8 +39,8 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 description: `Taiga UI example of the component ${component}`,
                 files: {
                     ...(await this.getBaseAngularProjectFiles()),
-                    ...modifiedSupportFiles,
-                    [appPrefix`app.ts`]: appCompTs.toString(),
+                    ...prepareSupportFiles(getSupportFiles(content)),
+                    [appPrefix`app.ts`]: this.prepareAppComponent(content.TypeScript),
                     [appPrefix`app.html`]: content.HTML,
                     [appPrefix`app.less`]: prepareLess(content.LESS || ''),
                 },
@@ -97,5 +88,21 @@ export class TuiStackblitzService implements TuiCodeEditor {
             dependencies: await this.deps.get(),
             tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
+    }
+
+    private prepareAppComponent(file: string): string {
+        const parts = file.split(/(@Component)/i);
+        const i = parts.findIndex((x) => x.includes('export default class'));
+        const component = i > 0 ? parts.slice(i - 1).join('') : file;
+        const beginning = i > 0 ? parts.slice(0, i - 1).join('') : '';
+        const appCompTs = new TsFileComponentParser(component);
+
+        appCompTs.selector = APP_COMP_META.SELECTOR;
+        appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
+        appCompTs.styleUrl = APP_COMP_META.STYLE_URL;
+        appCompTs.className = APP_COMP_META.CLASS_NAME;
+        appCompTs.defaultExport = false;
+
+        return `${beginning}${appCompTs.toString()}`;
     }
 }

@@ -1,19 +1,19 @@
 @import '@taiga-ui/styles/utils';
 
-.interactive-title {
-    .transition(color);
+[tuiLink] {
+    text-decoration: none;
 
-    cursor: pointer;
+    --tui-icon-size: 1.5rem;
 
-    & > tui-icon {
-        .transition(transform);
+    &::after {
+        .transition(margin-inline-start);
     }
 
     &:hover {
         color: var(--tui-text-action);
 
-        & > tui-icon {
-            transform: translate(0.25rem);
+        &::after {
+            margin-inline-start: 0.5rem;
         }
     }
 }

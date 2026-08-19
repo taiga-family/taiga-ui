@@ -35,28 +35,39 @@ import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
+import {migrateDropdownImport} from './templates/migrate-dropdown-import';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
 import {migrateInput} from './templates/migrate-input';
+import {migrateInputColor} from './templates/migrate-input-color';
+import {migrateInputCopy} from './templates/migrate-input-copy';
 import {migrateInputDate} from './templates/migrate-input-date';
 import {migrateInputDateMulti} from './templates/migrate-input-date-multi';
 import {migrateInputDateRange} from './templates/migrate-input-date-range';
+import {migrateInputDateTime} from './templates/migrate-input-date-time';
 import {migrateInputMonth} from './templates/migrate-input-month';
+import {migrateInputMonthRange} from './templates/migrate-input-month-range';
+import {migrateInputNumber} from './templates/migrate-input-number';
 import {migrateInputPassword} from './templates/migrate-input-password';
 import {migrateInputPhone} from './templates/migrate-input-phone';
 import {migrateInputPhoneInternational} from './templates/migrate-input-phone-international';
+import {migrateInputRange} from './templates/migrate-input-range';
+import {migrateInputSlider} from './templates/migrate-input-slider';
 import {migrateInputTag} from './templates/migrate-input-tag';
 import {migrateInputTime} from './templates/migrate-input-time';
 import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-content';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
+import {migratePin} from './templates/migrate-pin';
+import {migratePrimitiveTextfield} from './templates/migrate-primitive-textfield';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
 import {migrateTagToChip} from './templates/migrate-tag';
 import {migrateTextarea} from './templates/migrate-textarea';
+import {migrateTooltip} from './templates/migrate-tooltip';
 
 export function getAction<T>({
     action,
@@ -100,19 +111,28 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateInputPassword,
         migrateInputMonth,
+        migrateInputMonthRange,
+        migrateInputDateTime,
         migrateInputDate,
+        migrateInputSlider,
         migrateInputTime,
         migrateInputPhoneInternational,
         migrateInputDateMulti,
         migrateInputTag,
         migrateInputYear,
         migrateInputPhone,
+        migrateInputNumber,
         migrateInputDateRange,
+        migrateInputColor,
+        migrateInputCopy,
+        migrateInputRange,
         migrateMultiSelect,
         migrateSelect,
         migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
+        migratePin,
+        migrateTooltip,
         migrateTuiNotification,
         migrateRepeatTimes,
         migrateFieldError,
@@ -130,6 +150,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
+        migratePrimitiveTextfield,
+        migrateDropdownImport,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});

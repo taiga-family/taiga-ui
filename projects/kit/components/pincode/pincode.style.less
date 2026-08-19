@@ -1,0 +1,396 @@
+@import '@taiga-ui/styles/utils';
+
+@pending-wave-anim:
+    tuiPincodeWave var(--t-animation-cycle) linear infinite,
+    tuiPincodeWavePos var(--t-animation-cycle) linear infinite;
+
+@success-wave-anim:
+    tuiPincodeWave var(--t-animation-cycle) linear 1 calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay)),
+    tuiPincodeWavePos var(--t-animation-cycle) linear 1 calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
+
+// max(delay, 0.1ms) ensures animationend/animationstart fire even when --tui-duration is 0
+@success-dot-collapse-anim:
+    tuiPincodeDotIn calc(var(--tui-duration) * 2) var(--tui-curve-productive-exit) max(var(--t-collapse-start), 0.1ms)
+        forwards,
+    tuiPincodeDotCollapsePos calc(var(--tui-duration) * 2) var(--tui-curve-expressive-exit)
+        max(var(--t-collapse-delay), 0.1ms) forwards,
+    tuiPincodeDotCollapseScale calc(var(--tui-duration) * 2) var(--tui-curve-productive-exit)
+        max(var(--t-collapse-delay), 0.1ms) forwards,
+    tuiFade calc(var(--tui-duration) / 3) linear calc(var(--t-collapse-delay) + var(--tui-duration) * 5 / 3) reverse
+        forwards;
+
+tui-textfield:has(input[tuiPincode]) {
+    inline-size: max-content;
+}
+
+input[tuiPincode] {
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    background: transparent;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    cursor: text;
+
+    &::selection {
+        background: transparent;
+    }
+
+    &::placeholder {
+        color: transparent !important;
+    }
+
+    & + .t-content {
+        --t-pitch: 2.625rem;
+
+        gap: 0;
+        margin-inline: auto;
+        cursor: text;
+
+        [tuiButtonX] {
+            display: none;
+        }
+
+        tui-pincode-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            block-size: 100%;
+        }
+
+        .t-item {
+            --t-stagger: calc(var(--tui-duration) * 2 / 3);
+            --t-animation-delay: calc(var(--t-index) * var(--t-stagger));
+            --t-animation-cycle: calc(var(--tui-duration) * 14 / 3 + (var(--t-length) - 1) * var(--t-stagger));
+            --t-offset: calc(var(--t-index) - (var(--t-length) - 1) / 2);
+            --t-collapse-start: calc(var(--t-animation-cycle) + var(--tui-duration) * 4 / 3);
+            --t-collapse-delay: calc(var(--t-collapse-start) + var(--tui-duration) * 14 / 3);
+
+            position: relative;
+            flex: none;
+            inline-size: 1.375rem;
+            block-size: 2.5rem;
+            cursor: text;
+        }
+
+        .t-value,
+        .t-dot {
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: 50%;
+            translate: -50% -50%;
+            scale: 0;
+            transition:
+                color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard);
+        }
+
+        .t-value {
+            color: var(--tui-text-primary);
+            font-size: 2.25rem;
+            font-weight: 500;
+            line-height: 2.5rem;
+            letter-spacing: 0;
+        }
+
+        .t-dot {
+            inline-size: 1rem;
+            block-size: 1rem;
+            background: var(--tui-background-neutral-2);
+            border-radius: 50%;
+        }
+
+        .t-item:not(.t-item_filled) .t-dot_placeholder {
+            scale: 1;
+        }
+
+        .t-item_focus:not(.t-item_filled) {
+            &::before {
+                content: '';
+                position: absolute;
+                inset-block-start: 50%;
+                inset-inline-start: 50%;
+                inline-size: 0.125rem;
+                block-size: 2.25rem;
+                border-radius: 0.0625rem;
+                background: var(--tui-text-primary);
+                translate: -50% -50%;
+                animation: tuiFade 1s steps(2, jump-none) infinite reverse;
+            }
+
+            .t-dot_placeholder,
+            .t-dot_value {
+                scale: 0;
+            }
+        }
+    }
+
+    &:not([type='password']) + .t-content .t-item_filled .t-value {
+        scale: 1;
+    }
+
+    &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        scale: 1;
+        background: var(--tui-text-action);
+    }
+
+    &[data-state='pending'] {
+        &:not([type='password']) + .t-content .t-item_filled .t-value,
+        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+            animation: @pending-wave-anim;
+            animation-delay: calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
+        }
+    }
+
+    &[data-state='invalid'] {
+        & + .t-content {
+            .t-value {
+                color: var(--tui-text-negative);
+            }
+
+            .t-item_filled .t-dot_value {
+                background: var(--tui-text-negative);
+            }
+
+            .t-item {
+                animation: tuiPincodeShake calc(var(--tui-duration) * 10 / 3) var(--tui-curve-productive-standard);
+            }
+
+            // max(delay, 1000ms) keeps digits red for ~normal-mode duration when --tui-duration is 0
+            .t-item_filled .t-dot_placeholder {
+                scale: 1;
+                animation: tuiPincodeScale var(--tui-duration) var(--tui-curve-expressive-standard)
+                    max(calc(var(--t-animation-cycle) + var(--tui-duration)), 1000ms) both;
+            }
+        }
+
+        &:not([type='password']) + .t-content .t-item_filled .t-value,
+        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+            animation: tuiScale calc(var(--tui-duration) * 4 / 3) var(--tui-curve-expressive-exit)
+                max(var(--t-animation-cycle), 1000ms) reverse forwards;
+        }
+    }
+
+    &[data-state='success'] {
+        & + .t-content {
+            .t-value {
+                color: var(--tui-text-action);
+            }
+
+            .t-item_filled {
+                animation: tuiPincodeItemSpread calc(var(--tui-duration) * 14 / 3) var(--tui-curve-productive-entrance)
+                    var(--t-collapse-start) forwards;
+            }
+
+            .t-item_filled .t-dot_value {
+                background: var(--tui-text-action);
+            }
+        }
+
+        &:not([type='password']) + .t-content .t-item_filled .t-value {
+            animation:
+                @success-wave-anim,
+                tuiScale calc(var(--tui-duration) * 4 / 3) var(--tui-curve-expressive-exit) var(--t-collapse-start)
+                    reverse forwards;
+        }
+
+        &:not([type='password']) + .t-content .t-item_filled .t-dot_value {
+            animation: @success-dot-collapse-anim;
+        }
+
+        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+            animation: @success-wave-anim, @success-dot-collapse-anim;
+        }
+    }
+}
+
+[data-platform]:not([data-platform='web']) {
+    input[tuiPincode] + .t-content {
+        --t-pitch: 2.5rem;
+
+        .t-item {
+            inline-size: 1.25rem;
+            block-size: 2.25rem;
+        }
+
+        .t-value,
+        .t-dot {
+            transition:
+                translate calc(var(--tui-duration) * 2) var(--tui-curve-expressive-entrance),
+                color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard);
+        }
+
+        .t-value,
+        .t-dot_value {
+            transition:
+                scale calc(var(--tui-duration) * 2) var(--tui-curve-expressive-exit),
+                color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard);
+        }
+
+        .t-item_filled .t-value,
+        .t-item_filled .t-dot_value {
+            transition:
+                color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard),
+                background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-productive-standard);
+        }
+
+        .t-value {
+            font-size: 1.75rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .t-dot_placeholder {
+            transition: scale calc(var(--tui-duration) * 2) var(--tui-curve-expressive-exit);
+        }
+
+        .t-item:not(.t-item_filled) .t-dot_placeholder {
+            transition: scale var(--tui-duration) var(--tui-curve-expressive-standard) var(--tui-duration);
+        }
+
+        .t-item_focus:not(.t-item_filled)::before {
+            display: none;
+        }
+
+        .t-item_focus:not(.t-item_filled) .t-dot_placeholder {
+            scale: 1;
+        }
+    }
+
+    input[tuiPincode]:not([data-state]) {
+        &:not([type='password']):not(._paste) + .t-content .t-item_filled .t-value,
+        &[type='password']:not(._paste) + .t-content .t-item_filled .t-dot_value {
+            animation: tuiPincodeInput calc(var(--tui-duration) * 2) cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+            transition: background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-expressive-standard);
+        }
+    }
+
+    input[tuiPincode][data-state='pending'] {
+        &:not(._paste):not([type='password']) + .t-content .t-item_filled:last-of-type .t-value,
+        &:not(._paste)[type='password'] + .t-content .t-item_filled:last-of-type .t-dot_value {
+            animation:
+                tuiPincodeInput calc(var(--tui-duration) * 2) cubic-bezier(0.34, 1.56, 0.64, 1),
+                @pending-wave-anim;
+            animation-delay:
+                0ms, calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay)),
+                calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
+        }
+
+        &._paste:not([type='password']) + .t-content .t-item_filled .t-value,
+        &._paste[type='password'] + .t-content .t-item_filled .t-dot_value {
+            animation:
+                tuiPincodeInput calc(var(--tui-duration) * 2) cubic-bezier(0.34, 1.56, 0.64, 1),
+                @pending-wave-anim;
+            animation-delay:
+                0ms, calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay)),
+                calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
+        }
+    }
+
+    input[tuiPincode][type='password'] + .t-content .t-item:not(.t-item_filled) .t-dot_value {
+        transition: none;
+    }
+}
+
+@keyframes tuiPincodeItemSpread {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: calc(var(--t-offset) * var(--t-pitch) / 3) 0;
+    }
+}
+
+@keyframes tuiPincodeDotCollapsePos {
+    to {
+        translate: calc(-50% - var(--t-offset) * var(--t-pitch)) -50%;
+    }
+}
+
+@keyframes tuiPincodeDotCollapseScale {
+    from {
+        scale: 1.1;
+    }
+
+    to {
+        scale: 0;
+    }
+}
+
+@keyframes tuiPincodeDotIn {
+    to {
+        scale: 1.1;
+    }
+}
+
+@keyframes tuiPincodeInput {
+    from {
+        scale: 0;
+    }
+}
+
+@keyframes tuiPincodeShake {
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    20% {
+        translate: -0.125rem 0;
+    }
+
+    40% {
+        translate: 0.125rem 0;
+    }
+
+    60% {
+        translate: -0.125rem 0;
+    }
+
+    80% {
+        translate: 0.125rem 0;
+    }
+}
+
+@keyframes tuiPincodeWave {
+    0% {
+        animation-timing-function: var(--tui-curve-expressive-standard);
+        scale: 1;
+    }
+
+    20% {
+        animation-timing-function: var(--tui-curve-productive-entrance);
+        scale: 1.2;
+    }
+
+    50%,
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes tuiPincodeWavePos {
+    0%,
+    50%,
+    100% {
+        translate: -50% -50%;
+    }
+
+    20% {
+        translate: -50% calc(-50% - 0.25rem);
+    }
+}
+
+@keyframes tuiPincodeScale {
+    from {
+        transform: scale(0);
+    }
+}

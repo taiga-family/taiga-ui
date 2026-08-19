@@ -24,11 +24,13 @@ class Styles {}
 @Directive({
     selector: 'tui-swipe-actions[onboarding]',
     host: {
+        'data-tui-version': TUI_VERSION,
         '[class._onboarding]': 'onboarding()',
         '(animationend)': 'onboarding.set($event.animationName !== "tuiOnboardingExit")',
     },
 })
 export class TuiSwipeActionsOnboarding {
     public readonly onboarding = model(true);
+
     protected readonly nothing = tuiWithStyles(Styles);
 }

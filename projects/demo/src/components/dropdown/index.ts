@@ -21,6 +21,7 @@ import {
 })
 export class TuiDocDropdown {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
+
     protected readonly routes = DemoRoute;
     protected readonly aligns: readonly TuiDropdownAlign[] = ['start', 'end', 'center'];
     protected readonly directions: TuiVerticalDirection[] = ['bottom', 'top'];

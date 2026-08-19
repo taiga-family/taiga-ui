@@ -82,6 +82,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null instead of an array', () => {
             const {ownerDocument} = element;
+
             const others = [
                 ownerDocument.createElement('div'),
                 ownerDocument.createElement('span'),

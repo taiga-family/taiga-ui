@@ -20,6 +20,8 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 import metadata from 'libphonenumber-js/max/metadata';
 import {of} from 'rxjs';
 
+import {TuiInputPhoneInternationalContent} from '../input-phone-international-content.component';
+
 describe('InputPhoneInternational', () => {
     @Component({
         imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
@@ -30,7 +32,7 @@ describe('InputPhoneInternational', () => {
                         tuiInputPhoneInternational
                         [countries]="countries"
                         [formControl]="control"
-                        [readOnly]="readOnly"
+                        [readonly]="readOnly"
                         [(countryIsoCode)]="countryIsoCode"
                     />
                 </tui-textfield>
@@ -89,7 +91,11 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component['onItemClick']('UA');
+            const content = fixture.debugElement.query(
+                By.directive(TuiInputPhoneInternationalContent),
+            ).componentInstance as TuiInputPhoneInternationalContent;
+
+            content['onItemClick']('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();

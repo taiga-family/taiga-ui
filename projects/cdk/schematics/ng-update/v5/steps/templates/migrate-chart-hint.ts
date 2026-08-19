@@ -18,6 +18,7 @@ export function migrateChartHint({
     resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
+
     const elements = findElementsWithAttributeOnTag(
         template,
         HINT_ATTRIBUTES,

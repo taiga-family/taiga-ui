@@ -15,6 +15,10 @@ import {
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
 import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -36,6 +40,7 @@ const CONTROL_ATTR_NAMES = [
     '[(ngModel)]',
     '[ngModel]',
     'ngModel',
+    '(ngModelChange)',
 ] as const;
 
 const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
@@ -111,20 +116,6 @@ export function migrateTextarea({
     });
 }
 
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    if (!attrLoc) {
-        return null;
-    }
-
-    return template.slice(attrLoc.startOffset, attrLoc.endOffset);
-}
-
 interface MigrationContext {
     expandableValue: string | null; // original value of expandable attr, null if absent
     rowsMigratedTo: string | null; // '[max]="N"' or 'max="N"' if rows was present
@@ -144,18 +135,23 @@ function buildReplacement(
 ): {startOffset: number; endOffset: number; replacement: string} | null {
     const loc = element.sourceCodeLocation;
 
-    if (!loc?.startTag || !loc.endTag) {
+    if (!loc?.startTag) {
         return null;
     }
 
+    const isSelfClosing = !loc.endTag;
+    const endOffset = isSelfClosing ? loc.startTag.endOffset : loc.endOffset;
     const textfieldAttrs: string[] = [];
     const textareaAttrs = ['tuiTextarea'];
     const controlStateAttrs = getControlStateAttrs(element);
+
     const controlStateAttrsLower = new Set(
         controlStateAttrs.map((a) => a.name.toLowerCase()),
     );
+
     let maxLengthAttrText: string | null = null;
     let maxLengthIsBinding = false;
+
     const ctx: MigrationContext = {
         expandableValue: null,
         rowsMigratedTo: null,
@@ -205,31 +201,15 @@ function buildReplacement(
         }
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
+            const original = getOriginalAttrText(template, element, attr);
             const migratedValue = migrateAttrValue(nameLower, attr.value);
-            let attrText: string;
 
-            if (original) {
-                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
-            } else if (attr.value) {
-                attrText = `${attr.name}="${migratedValue}"`;
-            } else {
-                attrText = attr.name;
-            }
-
-            textfieldAttrs.push(attrText);
+            textfieldAttrs.push(replaceAttrValue(original, migratedValue));
             continue;
         }
 
         if (CONTROL_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            textareaAttrs.push(
-                original ??
-                    (attr.value
-                        ? `${normalizeAttrName(attr.name)}="${attr.value}"`
-                        : attr.name),
-            );
+            textareaAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
@@ -249,9 +229,7 @@ function buildReplacement(
             continue;
         }
 
-        const original = getOriginalAttrText(template, element, nameLower);
-        const attrText =
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+        const attrText = getOriginalAttrText(template, element, attr);
 
         // Unknown attrs go on <tui-textfield> (direct host replacement) with a TODO
         textfieldAttrs.push(attrText);
@@ -266,13 +244,14 @@ function buildReplacement(
 
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
 
-    ctx.placeholder = getPlaceholderText(element);
+    ctx.placeholder = isSelfClosing ? '' : getPlaceholderText(element);
 
     const lineStart = template.lastIndexOf('\n', loc.startOffset) + 1;
     const indent = /^[ \t]*/.exec(template.slice(lineStart, loc.startOffset))?.[0] ?? '';
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
+
     const innerContent = buildInnerContent({
         element,
         template,
@@ -282,14 +261,15 @@ function buildReplacement(
         indent,
         hintIconStr,
         customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
+        isSelfClosing,
     });
-    const todoComment = buildTodoComment(ctx);
 
+    const todoComment = buildTodoComment(ctx);
     const replacement = `${todoComment}${indent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
 
     return {
         startOffset: loc.startOffset,
-        endOffset: loc.endOffset,
+        endOffset,
         replacement,
     };
 }
@@ -364,6 +344,7 @@ function buildInnerContent({
     indent,
     hintIconStr = '',
     customContentIconStr = '',
+    isSelfClosing = false,
 }: {
     controlStateStr: string;
     ctx: MigrationContext;
@@ -371,14 +352,18 @@ function buildInnerContent({
     element: Element;
     hintIconStr?: string;
     indent: string;
+    isSelfClosing?: boolean;
     template: string;
     textareaAttrs: string[];
 }): string {
     const {placeholder, labelOutside} = ctx;
-    const childElements = element.childNodes.filter(
-        (node: ChildNode): node is Element =>
-            node.nodeName !== '#text' && node.nodeName !== '#comment',
-    );
+
+    const childElements = isSelfClosing
+        ? []
+        : element.childNodes.filter(
+              (node: ChildNode): node is Element =>
+                  node.nodeName !== '#text' && node.nodeName !== '#comment',
+          );
 
     // Auto-add <label tuiLabel> inside <tui-textfield> when text content is present
     // and labelOutside is false/absent (dynamic: left as-is with only TODO comment)
@@ -462,6 +447,7 @@ function migrateInnerTextarea({
     const legacyAttr = inner.attrs.find((a) =>
         LEGACY_TEXTAREA_ATTRS.has(a.name.toLowerCase()),
     );
+
     const legacyAttrLoc = legacyAttr
         ? innerLoc.attrs?.[legacyAttr.name.toLowerCase()]
         : undefined;
@@ -506,32 +492,9 @@ function migrateInnerTextarea({
 }
 
 function getPlaceholderText(element: Element): string {
-    const textNode = element.childNodes.find((node: ChildNode): node is TextNode => {
-        if (node.nodeName !== '#text') {
-            return false;
-        }
-
-        return !!(node as TextNode).value.trim();
-    });
+    const textNode = element.childNodes.find((node: ChildNode): node is TextNode =>
+        node.nodeName === '#text' ? !!(node as TextNode).value.trim() : false,
+    );
 
     return textNode?.value.trim() ?? '';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

@@ -1,5 +1,6 @@
 export * from './control-state-attrs';
 export * from './dom-traversal';
+export * from './get-original-attr-text';
 export * from './remove-inputs';
 export * from './replace-attr-values';
 export * from './replace-attrs';

@@ -1,3 +1,4 @@
+import {execSync} from 'node:child_process';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
@@ -268,11 +269,7 @@ function classifySkipReason(headerData: ComponentHeader): 'deprecated' | 'legacy
         return 'deprecated';
     }
 
-    if ((headerData.package ?? '').toUpperCase() === 'LEGACY') {
-        return 'legacy';
-    }
-
-    return null;
+    return (headerData.package ?? '').toUpperCase() === 'LEGACY' ? 'legacy' : null;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -345,6 +342,7 @@ async function collectComponentFolders(
     const skipFolders = new Set<string>(
         (config.constants.skipFolders ?? []).map((f) => f.toLowerCase()),
     );
+
     const childFolders = config.constants.childFolders ?? [];
     const folders: string[] = [];
 
@@ -361,10 +359,12 @@ async function collectComponentFolders(
 
 async function collectHeaderSections(config: AppConfig): Promise<string[]> {
     const output: string[] = [];
+
     const headerSectionsPath = path.resolve(
         process.cwd(),
         config.constants.headerSectionsPath,
     );
+
     const headerFiles = config.constants.headerFiles ?? [];
 
     console.info('Adding header sections...');
@@ -385,10 +385,48 @@ async function collectHeaderSections(config: AppConfig): Promise<string[]> {
     return output;
 }
 
+function generateMigrationGuideFiles(): void {
+    try {
+        console.info('Generating migration guide files...');
+        execSync('npx ts-node ./projects/demo/scripts/migration-guide-parser.ts', {
+            stdio: 'inherit',
+        });
+        execSync('npx ts-node ./projects/demo/scripts/llms/parse-migration-guide.ts', {
+            stdio: 'inherit',
+        });
+        console.info('  ✓ Migration guide files generated');
+    } catch (error) {
+        console.warn(`  ⚠ Could not generate migration guide files: ${error}`);
+    }
+}
+
+async function collectMigrationGuide(config: AppConfig): Promise<string | null> {
+    const headerSectionsPath = path.resolve(
+        process.cwd(),
+        config.constants.headerSectionsPath,
+    );
+
+    const migrationGuidePath = path.join(
+        headerSectionsPath,
+        'migration-guide-generated.md',
+    );
+
+    try {
+        const content = await fs.readFile(migrationGuidePath, 'utf-8');
+
+        console.info('  ✓ Added migration guide at end of file');
+
+        return content;
+    } catch (error) {
+        console.warn(`  ⚠ Could not load migration guide: ${error}`);
+
+        return null;
+    }
+}
+
 async function collectMarkdownSections(cliOptions: CliOptions): Promise<string[]> {
     const output: string[] = [];
     let hasMarkdownContent = false;
-
     const entries = Array.from(cliOptions.roots.entries());
 
     for (const [idx, rootCandidate] of entries) {
@@ -587,6 +625,14 @@ async function main(): Promise<void> {
         output.push(...(await collectMarkdownSections(cliOptions)));
     }
 
+    generateMigrationGuideFiles();
+
+    const migrationGuide = await collectMigrationGuide(config);
+
+    if (migrationGuide !== null) {
+        output.push(migrationGuide);
+    }
+
     const collectedFolders: string[] = [];
 
     for (const rootPath of cliOptions.roots) {
@@ -683,7 +729,7 @@ async function main(): Promise<void> {
 
     logProcessingSummary(allFolders.length, stats);
 
-    await fs.writeFile(cliOptions.output, output.join('\n'), 'utf-8');
+    await fs.writeFile(cliOptions.output, output.join('\n'));
     await fs.writeFile(
         cliOptions.outputHtml!,
         `<!doctype html>
@@ -699,7 +745,6 @@ async function main(): Promise<void> {
   </main>
 </body>
 </html>`,
-        'utf-8',
     );
 
     console.info(`Successfully saved: ${cliOptions.output}`);

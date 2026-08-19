@@ -35,6 +35,9 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -46,13 +49,10 @@
                         list="colors"
                         tuiInputColor
                         [align]="align"
-                        [focused]="input.focused"
                         [format]="format"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                     <datalist id="colors">
@@ -72,7 +72,7 @@
                 [items]="aligns"
                 [(value)]="align"
             >
-                Alignment of the color picker
+                alignment of the color picker
             </tr>
             <tr
                 name="[format]"
@@ -81,15 +81,16 @@
                 [items]="formats"
                 [(value)]="format"
             >
-                Color format
+                color format
             </tr>
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #controlDoc

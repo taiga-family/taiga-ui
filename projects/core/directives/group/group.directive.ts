@@ -42,6 +42,7 @@ class Styles {}
 export class TuiGroup {
     protected readonly options = inject(TUI_GROUP_OPTIONS);
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly orientation = input<TuiOrientation>(this.options.orientation);
     public readonly collapsed = input(this.options.collapsed);
     public readonly rounded = input(this.options.rounded);

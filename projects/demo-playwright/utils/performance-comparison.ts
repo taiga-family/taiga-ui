@@ -145,21 +145,25 @@ export class PerformanceComparison {
                 }
 
                 if (rs.length === 1) {
-                    metrics.set(testName, rs[0]!);
+                    metrics.set(testName, rs.at(0)!);
                     continue;
                 }
 
                 const warmupSkip = Number(process.env.PERFORMANCE_WARMUP_SKIP || '1');
+
                 const sortedByStart = rs
                     .slice()
                     .sort((a, b) => (a.testStartTime || 0) - (b.testStartTime || 0));
+
                 const usable = sortedByStart.slice(
                     Math.min(warmupSkip, sortedByStart.length - 1),
                 );
+
                 const agg = this.aggregateRuns(usable.map((r) => r.metrics));
                 const last = usable[usable.length - 1]!;
                 // Aggregate custom extras (currently only mobileOpen latency) across usable runs
                 let aggregatedExtras: Record<string, any> | undefined;
+
                 const mobileRuns = usable
                     .map((r) => r.customExtras?.mobileOpen)
                     .filter(
@@ -175,6 +179,7 @@ export class PerformanceComparison {
 
                 if (mobileRuns.length) {
                     const samples = mobileRuns.flatMap((m) => m.samples || []);
+
                     const runsCount = mobileRuns.reduce(
                         (a, m) =>
                             a +
@@ -183,6 +188,7 @@ export class PerformanceComparison {
                                 : m.samples?.length || 0),
                         0,
                     );
+
                     const avgFirstOption = samples.length
                         ? samples.reduce((a, b) => a + b, 0) / samples.length
                         : mobileRuns.reduce(
@@ -193,20 +199,19 @@ export class PerformanceComparison {
                                       : 0),
                               0,
                           ) / mobileRuns.length;
+
                     const medianFirstOption = (() => {
                         const arr = samples.slice().sort((a, b) => a - b);
 
                         if (!arr.length) {
-                            return mobileRuns[0]?.medianFirstOption;
+                            return mobileRuns.at(0)?.medianFirstOption;
                         }
 
                         const mid = Math.floor(arr.length / 2);
 
-                        if (arr.length % 2 === 0) {
-                            return (arr[mid - 1]! + arr[mid]!) / 2;
-                        }
-
-                        return arr[mid]!;
+                        return arr.length % 2 === 0
+                            ? (arr[mid - 1]! + arr[mid]!) / 2
+                            : arr[mid]!;
                     })();
 
                     aggregatedExtras = {
@@ -225,7 +230,7 @@ export class PerformanceComparison {
                     testDuration: last.testDuration,
                     url: last.url,
                     testName: last.testName,
-                    source: usable[0]!.source,
+                    source: usable.at(0)!.source,
                     metrics: agg,
                     customExtras: aggregatedExtras,
                 });
@@ -271,6 +276,7 @@ export class PerformanceComparison {
 
         for (const [testName, currentData] of current) {
             const baselineData = baseline.get(testName);
+
             const comparison = this.createMetricsComparison(
                 testName,
                 currentData,
@@ -328,6 +334,7 @@ export class PerformanceComparison {
         }
 
         const testsWithBaseline = details.filter((d) => d.baseline).length;
+
         const testsWithSignificantChanges = details.filter((d) =>
             this.isRegressionCandidate(d, 0),
         ).length;
@@ -382,6 +389,7 @@ export class PerformanceComparison {
         const {summary, details} = report;
         const netPctThreshold = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
         const overallNetRegressed = summary.overallNetDurationChange >= netPctThreshold;
+
         const filteredDetails = this.filterDetailsByThreshold(
             details,
             changeThreshold,
@@ -389,7 +397,6 @@ export class PerformanceComparison {
         );
 
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
-
         const statusLine = this.generateStatusLine(summary);
 
         if (statusLine) {
@@ -540,10 +547,13 @@ export class PerformanceComparison {
         // If PERF_HARD_FAIL_DEFER === 'true', do not throw immediately: append offenders to report file and
         // write a sentinel file so a later CI step can still mark the job red after posting the PR comment.
         const HARD_FAIL_PCT = Number(process.env.PERF_HARD_FAIL_PERCENT || '50');
+
         const DEFER_FAIL =
             (process.env.PERF_HARD_FAIL_DEFER || 'false').toLowerCase() === 'true';
+
         const SENTINEL_PATH =
             process.env.PERF_HARD_FAIL_SENTINEL || `${outputDir}/hard-fail.txt`;
+
         const offenders = report.details.filter((d) => {
             if (!d.baseline) {
                 return false;
@@ -575,6 +585,7 @@ export class PerformanceComparison {
                 const curRecalc = o.current.recalcStyleDuration || 0;
                 const netBase = baseLayout + baseRecalc;
                 const netCur = curLayout + curRecalc;
+
                 const pct = (cur: number, base: number): string =>
                     base > 0 ? (((cur - base) / base) * 100).toFixed(1) : 'n/a';
                 // Keep detailed lines only in console (do not duplicate in markdown)
@@ -634,6 +645,7 @@ export class PerformanceComparison {
         const LAT_PCT_THRESHOLD = Number(
             process.env.PERF_LATENCY_PERCENT_THRESHOLD || '15',
         );
+
         const rows: string[] = [];
 
         for (const d of details) {
@@ -665,18 +677,23 @@ export class PerformanceComparison {
 
             const deltaMs =
                 baselineMedian === undefined ? undefined : currentMedian - baselineMedian;
+
             const deltaPct =
                 baselineMedian && baselineMedian !== 0
                     ? (deltaMs! / baselineMedian) * 100
                     : undefined;
+
             let badge = '';
             let curStr = currentMedian.toFixed(2);
+
             const baseStr =
                 baselineMedian === undefined ? '—' : baselineMedian.toFixed(2);
+
             let deltaMsStr =
                 deltaMs === undefined
                     ? 'new'
                     : `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`;
+
             let deltaPctStr =
                 deltaPct === undefined
                     ? 'new'
@@ -723,16 +740,17 @@ export class PerformanceComparison {
         rows.sort((a, b) => {
             const extract = (line: string): number => {
                 const parts = line.split('|').map((p) => p.trim());
-                const curCol = parts[3];
+                const curCol = parts.at(3);
                 const match = /\d+(?:\.\d+)?/.exec(curCol || '');
 
-                return match ? Number.parseFloat(match[0]) : Number.POSITIVE_INFINITY;
+                return match ? Number.parseFloat(match.at(0)!) : Number.POSITIVE_INFINITY;
             };
 
             return extract(a) - extract(b);
         });
 
         const header = '### ⚡ Interaction to Next Point (INP)';
+
         const tableHead =
             '| Test | Median (baseline, Δ ms, Δ %) | Runs |\n|------|--------------------------------|-----:|';
 
@@ -743,18 +761,14 @@ export class PerformanceComparison {
      * Filters files to include only performance JSON files
      */
     private static filterPerformanceFiles(files: string[]): string[] {
-        return files.filter((file) => {
-            if (!file.endsWith('.json')) {
-                return false;
-            }
-
-            return (
-                file.startsWith('test-') ||
-                file.startsWith('trace-') ||
-                file.startsWith('performance-test-') ||
-                file.startsWith('performance-trace-')
-            );
-        });
+        return files.filter((file) =>
+            file.endsWith('.json')
+                ? file.startsWith('test-') ||
+                  file.startsWith('trace-') ||
+                  file.startsWith('performance-test-') ||
+                  file.startsWith('performance-trace-')
+                : false,
+        );
     }
 
     /**
@@ -769,15 +783,15 @@ export class PerformanceComparison {
         // Extract from test file path: "tests/core/scrollbar/file.spec.ts" → "scrollbar"
         const testFolderMatch = /\/([^/]+)\/[^/]*\.spec\.ts$/.exec(source);
 
-        if (testFolderMatch?.[1]) {
-            return testFolderMatch[1];
+        if (testFolderMatch?.at(1)) {
+            return testFolderMatch.at(1)!;
         }
 
         // Extract from component path: ".../components/mobile-dialog/..." → "mobile-dialog"
         const componentMatch = /components\/(.+?)\//.exec(source);
 
-        if (componentMatch?.[1]) {
-            return componentMatch[1];
+        if (componentMatch?.at(1)) {
+            return componentMatch.at(1)!;
         }
 
         // Fallback: use filename without extension
@@ -832,18 +846,14 @@ export class PerformanceComparison {
                 ].includes(word),
         );
 
-        return meaningfulWords[0] || 'unknown';
+        return meaningfulWords.at(0) || 'unknown';
     }
 
     /**
      * Calculates percentage change between two values
      */
     private static calculatePercentageChange(baseline: number, current: number): number {
-        if (baseline === 0) {
-            return 0;
-        }
-
-        return ((current - baseline) / baseline) * 100;
+        return baseline === 0 ? 0 : ((current - baseline) / baseline) * 100;
     }
 
     /**
@@ -860,20 +870,24 @@ export class PerformanceComparison {
         // Prefer collector-provided per-op metrics; fall back to on-the-fly division
         const derivePerOp = (tot: number, count: number): number =>
             count > 0 ? tot / count : 0;
+
         const currentLayoutAvg =
             currentMetrics.layoutAvgPerOp ??
             derivePerOp(currentMetrics.layoutDuration, currentMetrics.layoutCount);
+
         const currentRecalcAvg =
             currentMetrics.recalcAvgPerOp ??
             derivePerOp(
                 currentMetrics.recalcStyleDuration,
                 currentMetrics.recalcStyleCount,
             );
+
         const baselineLayoutAvg =
             baselineMetrics?.layoutAvgPerOp ??
             (baselineMetrics
                 ? derivePerOp(baselineMetrics.layoutDuration, baselineMetrics.layoutCount)
                 : 0);
+
         const baselineRecalcAvg =
             baselineMetrics?.recalcAvgPerOp ??
             (baselineMetrics
@@ -882,10 +896,13 @@ export class PerformanceComparison {
                       baselineMetrics.recalcStyleCount,
                   )
                 : 0);
+
         const currentLayoutMedian = currentMetrics.layoutMedianPerOp ?? currentLayoutAvg;
         const currentRecalcMedian = currentMetrics.recalcMedianPerOp ?? currentRecalcAvg;
+
         const baselineLayoutMedian =
             baselineMetrics?.layoutMedianPerOp ?? baselineLayoutAvg;
+
         const baselineRecalcMedian =
             baselineMetrics?.recalcMedianPerOp ?? baselineRecalcAvg;
 
@@ -988,6 +1005,7 @@ export class PerformanceComparison {
         }
 
         const absMsFloor = Number(process.env.PERF_VISIBILITY_ABS_MS_FLOOR || '3');
+
         const hardNetAbsMsFloor = Number(
             process.env.PERF_NET_VISIBILITY_ABS_MS_FLOOR || '0',
         );
@@ -1003,12 +1021,15 @@ export class PerformanceComparison {
         const layoutMedianPct = Math.abs(detail.changes.layoutMedianPerOp || 0);
         const recalcMedianPct = Math.abs(detail.changes.recalcMedianPerOp || 0);
         const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+
         const baselineNet =
             (detail.baseline.layoutDuration || 0) +
             (detail.baseline.recalcStyleDuration || 0);
+
         const netPct = baselineNet > 0 ? (netMs / baselineNet) * 100 : 0;
         const netPctAbs = Math.abs(netPct);
         const netMsAbs = Math.abs(netMs);
+
         const NET_ABS_MS_THRESHOLD = Number(
             process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
         );
@@ -1019,6 +1040,7 @@ export class PerformanceComparison {
                 process.env.PERF_IMPROVEMENT_VISIBILITY_PCT ||
                     String(changeThreshold + 4),
             );
+
             const improvementAbsMsFloor = Number(
                 process.env.PERF_IMPROVEMENT_ABS_MS_FLOOR || '10',
             );
@@ -1038,12 +1060,15 @@ export class PerformanceComparison {
         const componentAbsMsFloor = Number(
             process.env.PERF_COMPONENT_ABS_MS_FLOOR || absMsFloor.toString(),
         );
+
         const componentMinNetPct = Number(
             process.env.PERF_COMPONENT_MIN_NET_PCT || String(changeThreshold / 2),
         );
+
         const componentMetricAbsMsFloor = Number(
             process.env.PERF_COMPONENT_METRIC_ABS_MS_FLOOR || '0',
         );
+
         const ultraShortBaselineNet = 40; // ms
 
         if (
@@ -1073,15 +1098,11 @@ export class PerformanceComparison {
 
             // Otherwise require a minimum (lower) net percent plus absolute net ms guard
             if (netMs > 0) {
-                if (
+                return (
                     netPct >= componentMinNetPct &&
                     netMsAbs >= NET_ABS_MS_THRESHOLD &&
                     netMsAbs >= absMsFloor
-                ) {
-                    return true;
-                }
-
-                return false; // suppress partial component-only increase with weak net effect
+                ); // suppress partial component-only increase with weak net effect
             }
             // Net non-positive handled earlier (improvements path) so treat as noise
 
@@ -1094,16 +1115,12 @@ export class PerformanceComparison {
             netMsAbs >= absMsFloor;
 
         if (perOpTriggered) {
-            if (
+            return (
                 netPctAbs >= changeThreshold ||
                 (netMs > 0 &&
                     netPct >= componentMinNetPct &&
                     netMsAbs >= NET_ABS_MS_THRESHOLD)
-            ) {
-                return true;
-            }
-
-            return false;
+            );
         }
 
         // Pure net change path (no individual component signals)
@@ -1147,10 +1164,12 @@ export class PerformanceComparison {
         // If env vars absent or invalid, fall back to explicit tuned defaults (not the legacy unified one).
         const countEnv = Number(process.env.PERF_COUNT_PERCENT_THRESHOLD || '');
         const perOpEnv = Number(process.env.PERF_PER_OP_PERCENT_THRESHOLD || '');
+
         const countPct =
             !Number.isNaN(countEnv) && countEnv > 0
                 ? countEnv
                 : PerformanceComparison.defaultCountPercentThreshold;
+
         const perOpPct =
             !Number.isNaN(perOpEnv) && perOpEnv > 0
                 ? perOpEnv
@@ -1169,15 +1188,19 @@ export class PerformanceComparison {
         const layoutAbsDelta = Math.abs(diff.layoutDuration);
         const recalcAbsDelta = Math.abs(diff.recalcStyleDuration);
         const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
         const MIN_BASELINE_DURATION = Number(
             process.env.PERF_MIN_BASELINE_DURATION_MS || '10',
         );
+
         const MIN_BASELINE_LAYOUT_COUNT = Number(
             process.env.PERF_MIN_BASELINE_LAYOUT_COUNT || '10',
         );
+
         const MIN_ABSOLUTE_COUNT_DELTA = Number(
             process.env.PERF_MIN_ABSOLUTE_COUNT_DELTA || '4',
         );
+
         const NET_COST_FLOOR = Number(
             process.env.PERF_MIN_NET_DURATION_DELTA_MS ||
                 process.env.PERF_ABS_DELTA_FLOOR_MS ||
@@ -1187,12 +1210,15 @@ export class PerformanceComparison {
         const ignoreLayoutTiny =
             baseline.layoutDuration < MIN_BASELINE_DURATION &&
             baseline.layoutCount < MIN_BASELINE_LAYOUT_COUNT;
+
         const isThemeSwitchTest = detail.testName === 'scrollbar-theme-switching-stress';
 
         const layoutCountIncrease =
             lc > countPct && absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
+
         const recalcCountIncrease =
             rc > countPct && absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
+
         const layoutPerOpNotImproved = lp >= -perOpPct || lpm >= -perOpPct;
         const recalcPerOpNotImproved = rp >= -perOpPct || rpm >= -perOpPct;
         const countsStable = Math.abs(lc) < countPct && Math.abs(rc) < countPct;
@@ -1202,16 +1228,20 @@ export class PerformanceComparison {
         const baselineLayoutMedian = baseline.layoutMedianPerOp;
         const currentRecalcMedian = detail.current?.recalcMedianPerOp;
         const baselineRecalcMedian = baseline.recalcStyleDurationPerOp;
+
         const layoutMedianAbsDelta =
             baselineLayoutMedian !== undefined && currentLayoutMedian !== undefined
                 ? Math.abs(currentLayoutMedian - baselineLayoutMedian)
                 : 0;
+
         const recalcMedianAbsDelta =
             baselineRecalcMedian !== undefined && currentRecalcMedian !== undefined
                 ? Math.abs(currentRecalcMedian - baselineRecalcMedian)
                 : 0;
+
         const perOpIncreaseLayout =
             (lp > perOpPct || lpm > perOpPct) && layoutMedianAbsDelta >= perOpAbsFloor;
+
         const perOpIncreaseRecalc =
             (rp > perOpPct || rpm > perOpPct) && recalcMedianAbsDelta >= perOpAbsFloor;
 
@@ -1223,14 +1253,17 @@ export class PerformanceComparison {
             !ignoreLayoutTiny &&
             baseline.layoutDuration >= MIN_BASELINE_DURATION &&
             layoutAbsDelta >= ABS_DELTA_FLOOR;
+
         const recalcEligible =
             baseline.recalcStyleDuration >= MIN_BASELINE_DURATION &&
             recalcAbsDelta >= ABS_DELTA_FLOOR;
 
         const layoutCountDriven =
             layoutEligible && layoutCountIncrease && layoutPerOpNotImproved;
+
         const recalcCountDriven =
             recalcEligible && recalcCountIncrease && recalcPerOpNotImproved;
+
         const perOpOnlyLayout = layoutEligible && countsStable && perOpIncreaseLayout;
         const perOpOnlyRecalc = recalcEligible && countsStable && perOpIncreaseRecalc;
         const netCost = diff.layoutDuration + diff.recalcStyleDuration; // ms delta (approx)
@@ -1239,6 +1272,7 @@ export class PerformanceComparison {
 
         // Unified net gating thresholds
         const NET_PCT_THRESHOLD = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
+
         const NET_ABS_MS_THRESHOLD = Number(
             process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
         );
@@ -1248,10 +1282,12 @@ export class PerformanceComparison {
         if ((process.env.PERF_ENABLE_DYNAMIC_NET || 'false').toLowerCase() === 'true') {
             const covMultiplier = Number(process.env.PERF_NET_COV_MULTIPLIER || '2');
             const covMargin = Number(process.env.PERF_NET_COV_MARGIN_PCT || '2');
+
             const baselineDurationCov = Math.max(
                 baseline.layoutDurationCoV ?? 0,
                 baseline.recalcStyleDurationCoV ?? 0,
             );
+
             const dynamicPct = baselineDurationCov * covMultiplier * 100 + covMargin;
 
             if (dynamicPct > effectiveNetPctThreshold) {
@@ -1294,6 +1330,7 @@ export class PerformanceComparison {
 
     private static generateSummarySection(summary: ComparisonReport['summary']): string {
         const lines: string[] = [];
+
         const formatAvg = (label: string, value: number): string => {
             const v = Number(value.toFixed(1));
             const sign = v > 0 ? '+' : '';
@@ -1359,11 +1396,9 @@ export class PerformanceComparison {
             return `⚠️ Aggregate net rendering cost increased ${net > 0 ? '+' : ''}${net.toFixed(1)}% (distributed across many tests)`;
         }
 
-        if (net > 0) {
-            return `ℹ️ Small net rendering cost increase: +${net.toFixed(1)}% (below gating thresholds)`;
-        }
-
-        return '✅ No significant performance regressions detected!';
+        return net > 0
+            ? `ℹ️ Small net rendering cost increase: +${net.toFixed(1)}% (below gating thresholds)`
+            : '✅ No significant performance regressions detected!';
     }
 
     private static generateHeadlineOverallDelta(
@@ -1377,7 +1412,6 @@ export class PerformanceComparison {
         const neutralBand = Number(process.env.PERF_HEADLINE_NEUTRAL_PCT || '15');
         const sign = delta > 0 ? '+' : '';
         const abs = Math.abs(delta);
-
         let verdict: string;
 
         if (abs <= neutralBand) {
@@ -1454,30 +1488,27 @@ export class PerformanceComparison {
         _overallNetRegressed: boolean,
     ): string {
         const {testName, baseline, current} = detail;
-
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
 
-        const fmt = (v: number, decimals = 1): string => {
-            if (Number.isInteger(v)) {
-                return String(v);
-            }
-
-            return trim(v.toFixed(decimals));
-        };
+        const fmt = (v: number, decimals = 1): string =>
+            Number.isInteger(v) ? String(v) : trim(v.toFixed(decimals));
 
         const currentLayoutAvg =
             current.layoutAvgPerOp ??
             (current.layoutCount > 0 ? current.layoutDuration / current.layoutCount : 0);
+
         const baselineLayoutAvg =
             baseline?.layoutAvgPerOp ??
             (baseline?.layoutCount
                 ? baseline.layoutDuration / baseline.layoutCount
                 : undefined);
+
         const currentRecalcAvg =
             current.recalcAvgPerOp ??
             (current.recalcStyleCount > 0
                 ? current.recalcStyleDuration / current.recalcStyleCount
                 : 0);
+
         const baselineRecalcAvg =
             baseline?.recalcAvgPerOp ??
             (baseline?.recalcStyleCount
@@ -1516,19 +1547,19 @@ export class PerformanceComparison {
 
             const core = `${fmt(cur)}${unit} (${diffStr}${unit}, ${pctStr})`;
 
-            if (severe) {
-                return `**${core}**${emoji ? ` ${emoji}` : ''}`;
-            }
-
-            return `${core}${emoji ? ` ${emoji}` : ''}`;
+            return severe
+                ? `**${core}**${emoji ? ` ${emoji}` : ''}`
+                : `${core}${emoji ? ` ${emoji}` : ''}`;
         };
 
         const netMs =
             current.layoutDuration +
             current.recalcStyleDuration -
             ((baseline?.layoutDuration || 0) + (baseline?.recalcStyleDuration || 0));
+
         const baseNet =
             (baseline?.layoutDuration || 0) + (baseline?.recalcStyleDuration || 0);
+
         const netPct = baseNet > 0 ? (netMs / baseNet) * 100 : 0;
         let netEmoji = '';
 
@@ -1545,6 +1576,7 @@ export class PerformanceComparison {
         }
 
         const netCell = baseline ? `${netMs > 0 ? '+' : ''}${netMs.toFixed(2)}ms` : 'new';
+
         const netPctCell = baseline
             ? `${netPct > 0 ? '+' : ''}${netPct.toFixed(1)}%${
                   netEmoji ? ` ${netEmoji}` : ''
@@ -1560,6 +1592,7 @@ export class PerformanceComparison {
             runs
                 .map((r) => r[k]!)
                 .filter((v) => typeof v === 'number' && !Number.isNaN(v));
+
         const median = (arr: number[]): number => {
             if (arr.length === 0) {
                 return 0;
@@ -1577,11 +1610,13 @@ export class PerformanceComparison {
 
             return (a + b) / 2;
         };
+
         const mad = (arr: number[], med: number): number => {
             const deviations = arr.map((v) => Math.abs(v - med));
 
             return median(deviations);
         };
+
         const filterOutliers = (arr: number[]): number[] => {
             if (arr.length < 4) {
                 return arr;
@@ -1600,17 +1635,21 @@ export class PerformanceComparison {
                 (v) => v >= lowerIQR && v <= upperIQR && Math.abs(v - med) <= 3 * m,
             );
         };
+
         const aggValue = (arr: number[]): number => {
             const filtered = filterOutliers(arr);
 
             return median(filtered);
         };
+
         const layoutCount = Math.round(aggValue(values('layoutCount')));
         const recalcStyleCount = Math.round(aggValue(values('recalcStyleCount')));
         const layoutDuration = Number(aggValue(values('layoutDuration')).toFixed(3));
+
         const recalcStyleDuration = Number(
             aggValue(values('recalcStyleDuration')).toFixed(3),
         );
+
         const result: PerformanceMetrics = {
             layoutCount,
             recalcStyleCount,
@@ -1631,13 +1670,9 @@ export class PerformanceComparison {
         }
 
         // Compute CoV for variance gating
-        const mean = (arr: number[]): number => {
-            if (!arr.length) {
-                return 0;
-            }
+        const mean = (arr: number[]): number =>
+            arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 
-            return arr.reduce((a, b) => a + b, 0) / arr.length;
-        };
         const sdev = (arr: number[]): number => {
             if (arr.length < 2) {
                 return 0;
@@ -1654,6 +1689,7 @@ export class PerformanceComparison {
 
             return Math.sqrt(variance);
         };
+
         const coeffVar = (arr: number[]): number => {
             if (!arr.length) {
                 return 0;
@@ -1661,11 +1697,7 @@ export class PerformanceComparison {
 
             const m = mean(arr);
 
-            if (m === 0) {
-                return 0;
-            }
-
-            return sdev(arr) / m;
+            return m === 0 ? 0 : sdev(arr) / m;
         };
 
         result.layoutCountCoV = coeffVar(values('layoutCount'));
@@ -1696,11 +1728,7 @@ export class PerformanceComparison {
      * Generates the footer section of the markdown report
      */
     private static generateFooter(totalTests: number): string {
-        if (totalTests === 0) {
-            return '_No performance metrics collected in this run._';
-        }
-
-        return '';
+        return totalTests === 0 ? '_No performance metrics collected in this run._' : '';
     }
 }
 
@@ -1717,7 +1745,6 @@ export class PerformanceReportAggregator {
     ): Promise<void> {
         const threshold = Number(process.env.PERF_AGGREGATE_VISIBILITY_THRESHOLD || '30');
         const githubOutputPath = process.env.GITHUB_OUTPUT;
-
         let mdFiles: string[];
 
         try {
@@ -1902,7 +1929,7 @@ export class PerformanceReportAggregator {
     private static getComponentFromRow(row: string): string {
         const parts = row.split('|');
 
-        return parts[1]?.trim() || '';
+        return parts.at(1)?.trim() || '';
     }
 
     /**
@@ -1913,11 +1940,9 @@ export class PerformanceReportAggregator {
             const componentA = this.getComponentFromRow(a).toLowerCase();
             const componentB = this.getComponentFromRow(b).toLowerCase();
 
-            if (componentA !== componentB) {
-                return componentA.localeCompare(componentB);
-            }
-
-            return a.localeCompare(b);
+            return componentA === componentB
+                ? a.localeCompare(b)
+                : componentA.localeCompare(componentB);
         });
 
         // Insert spacer rows between different components
@@ -2117,6 +2142,7 @@ async function main(): Promise<void> {
         }
 
         const envVis = Number(process.env.PERF_VISIBILITY_THRESHOLD || '');
+
         const changeThreshold =
             !Number.isNaN(envVis) && envVis > 0
                 ? envVis

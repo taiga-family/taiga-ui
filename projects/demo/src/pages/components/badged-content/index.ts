@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
+    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })

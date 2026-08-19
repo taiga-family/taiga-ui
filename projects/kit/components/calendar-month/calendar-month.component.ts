@@ -43,6 +43,7 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonth {
     private hoveredItem: TuiMonth | null = null;
+
     protected isYearPickerShown = false;
     protected readonly months = inject(TUI_CALENDAR_MONTHS);
 
@@ -77,11 +78,7 @@ export class TuiCalendarMonth {
             return value;
         }
 
-        if (value instanceof TuiMonthRange) {
-            return value.from;
-        }
-
-        return TODAY;
+        return value instanceof TuiMonthRange ? value.from : TODAY;
     });
 
     public readonly value = input<TuiMonth | TuiMonthRange | null>(null);
@@ -126,6 +123,7 @@ export class TuiCalendarMonth {
 
         const selectedRange =
             value instanceof TuiMonth ? new TuiMonthRange(value, value) : value;
+
         const months = item.month + item.year * 12;
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
         const from = selectedRange.from.month + selectedRange.from.year * 12;
@@ -191,6 +189,7 @@ export class TuiCalendarMonth {
     ): TuiBooleanHandler<TuiMonth> {
         return (item) => {
             const selectedMonth = value instanceof TuiMonthRange ? value.from : value;
+
             const delta =
                 isRangePicking && selectedMonth
                     ? Math.abs(

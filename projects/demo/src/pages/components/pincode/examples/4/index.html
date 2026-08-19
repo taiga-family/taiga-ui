@@ -1,0 +1,22 @@
+@if (done()) {
+    <div class="done">PIN verified ✓</div>
+} @else {
+    <div
+        class="field"
+        [class.field_success]="verification.value() === false"
+    >
+        <tui-loader
+            class="loader"
+            [inheritColor]="true"
+            [loading]="verification.value() === false"
+        />
+        <tui-textfield>
+            <input
+                tuiPincode
+                [invalid]="verification.value()"
+                [(ngModel)]="pin"
+                (finished)="onFinished()"
+            />
+        </tui-textfield>
+    </div>
+}

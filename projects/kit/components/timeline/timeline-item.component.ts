@@ -25,6 +25,7 @@ import {TuiTimelineComponent} from './timeline.component';
 export class TuiTimelineItem {
     protected readonly timeline = inject(TuiTimelineComponent);
     protected readonly offset = linkedSignal(() => this.value()[0]);
+
     public readonly draggable = input(true);
     public readonly resizable = input(true);
     public readonly value = model<readonly [number, number]>([0, 0]);
@@ -45,6 +46,7 @@ export class TuiTimelineItem {
 
     protected update(input: HTMLInputElement): void {
         const length = this.value()[1] - this.value()[0];
+
         const [start, end] = this.timeline
             .gaps()
             .map(([start, end]): [number, number] => [

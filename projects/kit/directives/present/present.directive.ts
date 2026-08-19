@@ -1,14 +1,17 @@
-import {Directive, type OnDestroy, output} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {Directive, inject, type OnDestroy, output, PLATFORM_ID} from '@angular/core';
 
 @Directive({
     selector: '[tuiPresent]',
     host: {
-        '[style.animation]': '"tuiPresent 1s infinite"',
+        '[style.animation]': 'isServer ? "" : "tuiPresent 1s infinite"',
         '(animationcancel.self)': 'tuiPresent.emit(false)',
         '(animationstart.self)': 'tuiPresent.emit(true)',
     },
 })
 export class TuiPresent implements OnDestroy {
+    protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
+
     public readonly tuiPresent = output<boolean>();
 
     public ngOnDestroy(): void {

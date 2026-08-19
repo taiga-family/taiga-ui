@@ -14,8 +14,8 @@ import {TuiPortalService} from './service';
 
 @Directive()
 export abstract class TuiPortals {
-    private readonly injector = inject(INJECTOR);
-    private readonly anchor = viewChild.required(TuiVCR);
+    protected readonly injector = inject(INJECTOR);
+    protected readonly anchor = viewChild.required(TuiVCR);
 
     constructor() {
         inject(TuiPortalService).attach(this);

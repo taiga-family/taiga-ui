@@ -15,13 +15,16 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TUI_BUTTON_OPTIONS,
+    tuiButtonOptionsProvider,
+} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {
     tuiAsDataListHost,
@@ -30,7 +33,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
+import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
@@ -40,7 +43,11 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {
+    type TuiInteractiveState,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -48,7 +55,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 
 @Component({
     selector: 'tui-textfield:not([multi])',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell, WaResizeObserver],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButtonX, TuiCell],
     templateUrl: './textfield.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -59,6 +66,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldComponent),
         {
             provide: TUI_TEXTFIELD_VALUE,
@@ -90,8 +98,8 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
@@ -121,13 +129,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             (!!this.value() || !this.input()?.nativeElement.placeholder),
     );
 
-    protected readonly accessor = contentChild<TuiTextfieldAccessor<T>>(
-        TUI_TEXTFIELD_ACCESSOR,
-        {descendants: true},
-    );
+    protected readonly accessor =
+        contentChild<TuiTextfieldAccessor<T>>(TUI_TEXTFIELD_ACCESSOR);
 
     public readonly vcr = viewChild('vcr', {read: ViewContainerRef});
     public readonly control = contentChild(NgControl);
+    public readonly child = contentChild(TuiControl);
     public readonly auxiliaries = contentChildren(TUI_AUXILIARY, {descendants: true});
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
@@ -138,11 +145,17 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
+    public readonly invalid = input<boolean | null>(null);
+    public readonly tuiAppearanceFocus = input<boolean | null>(null);
+    /**
+     * TODO(v6): expose tuiAppearanceState input using host directives API
+     * ```ts
+     * hostDirectives: [{directive: TuiAppearance, inputs: ['tuiAppearanceState']}]
+     * ```
+     * Temporary workaround while {@link TuiInputDirective} still binds tuiAppearanceState(...)
+     */
+    public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
-
-    public get id(): string {
-        return this.input()?.nativeElement.id || this.autoId;
-    }
 
     public get disabled(): boolean {
         return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
@@ -161,8 +174,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({contentRect}: ResizeObserverEntry): void {
-        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    protected onResize({clientWidth}: HTMLElement): void {
+        this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
@@ -186,10 +199,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     protected onScroll(element: HTMLElement): void {
-        if (this.input()?.nativeElement === element) {
-            this.ghost()?.nativeElement.scrollTo({
-                left: this.input()?.nativeElement.scrollLeft,
-            });
+        const input = this.input();
+
+        if (input?.nativeElement === element) {
+            this.ghost()?.nativeElement.scrollTo({left: input?.nativeElement.scrollLeft});
         }
     }
 }

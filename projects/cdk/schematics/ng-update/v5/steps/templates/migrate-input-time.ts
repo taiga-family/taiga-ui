@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -76,8 +77,10 @@ export function migrateInputTime({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -129,8 +132,10 @@ export function migrateInputTime({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -155,6 +160,7 @@ export function migrateInputTime({
         // Build TODO notes for attrs that need manual follow-up
         const todoNotes: string[] = [];
         const hasItems = inputAttrs.some((attr) => attr.name.toLowerCase() === '[items]');
+
         const itemsAttr = inputAttrs.find(
             (attr) => attr.name.toLowerCase() === '[items]',
         );
@@ -177,6 +183,7 @@ export function migrateInputTime({
                 ...todoNotes.map((n) => `     - ${n}`),
                 '-->',
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);
@@ -190,12 +197,20 @@ export function migrateInputTime({
         );
 
         const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name =
-                INPUT_ATTR_RENAMES.get(attr.name.toLowerCase()) ??
-                normalizeAttrName(attr.name);
+            const nameLower = attr.name.toLowerCase();
+            const renamed = INPUT_ATTR_RENAMES.get(nameLower);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            if (renamed !== undefined) {
+                return attr.value
+                    ? `${result} ${renamed}="${attr.value}"`
+                    : `${result} ${renamed}`;
+            }
+
+            const original = getOriginalAttrText(template, element, attr);
+
+            return `${result} ${original}`;
         }, '');
+
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         if (!inputs.length) {
@@ -224,23 +239,4 @@ export function migrateInputTime({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

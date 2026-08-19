@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiChevron][tuiIcons]:where(*&)::after,
+[tuiChevron][tuiChevron][tuiIcons]:where(*&)::after,
 tui-icon[tuiChevron]:where(*&)::before {
     .transition(~'transform, color');
 
@@ -19,7 +19,7 @@ tui-icon[tuiChevron]:where(*&)._chevron-rotated::before {
     transform: rotate(180deg);
 }
 
-tui-textfield[tuiChevron][tuiIcons]:where(*&) {
+tui-textfield[tuiChevron][tuiChevron][tuiIcons]:where(*&) {
     --t-stroke: var(--tui-stroke-width);
 
     &::after {
@@ -31,6 +31,11 @@ tui-textfield[tuiChevron][tuiIcons]:where(*&) {
     }
 
     &._chevron-rotated::after {
+        transform: rotate(180deg) scale(calc(2 / 3));
+    }
+
+    // stylelint-disable-next-line -- graceful degradation
+    &:has(select[tuiSelect]:open)::after {
         transform: rotate(180deg) scale(calc(2 / 3));
     }
 }

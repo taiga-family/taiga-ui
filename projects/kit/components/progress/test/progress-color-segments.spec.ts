@@ -9,7 +9,6 @@ import {TuiProgress} from '../progress';
 describe('TuiProgressColorSegments', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-
     let observerServiceMock: ResizeObserverServiceMock;
 
     @Component({

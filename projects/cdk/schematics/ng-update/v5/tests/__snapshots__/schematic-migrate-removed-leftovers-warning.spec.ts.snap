@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comment for removed @taiga-ui/addon-table TUI_TABLE_PROVIDER: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_TABLE_PROVIDER} from '@taiga-ui/addon-table';
+
+                @Component({
+                    providers: [TUI_TABLE_PROVIDER],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_TABLE_PROVIDER has been removed. Table configuration providers are no longer required. See https://taiga-ui.dev/components/table
+                import {TUI_TABLE_PROVIDER} from '@taiga-ui/addon-table';
+
+                @Component({
+                    providers: [TUI_TABLE_PROVIDER],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments for removed @taiga-ui/addon-commerce input-card options: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {type TuiInputCardOptions} from '@taiga-ui/addon-commerce';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly options: TuiInputCardOptions | null = null;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiInputCardOptions has been removed with no direct replacement. input[tuiInputCard] has no options token/interface in v5 — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group
+                import {type TuiInputCardOptions} from '@taiga-ui/addon-commerce';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly options: TuiInputCardOptions | null = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments for removed @taiga-ui/addon-mobile symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiSidebarComponent,
+                    TuiSidebarDirective,
+                    tuiFindTouchIndex,
+                } from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    imports: [TuiSidebarComponent, TuiSidebarDirective],
+                })
+                export class TestComponent {
+                    protected readonly find = tuiFindTouchIndex;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TuiSidebarComponent has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.
+                    TuiSidebarComponent,
+// TODO: (Taiga UI migration) TuiSidebarDirective has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.
+                    TuiSidebarDirective,
+// TODO: (Taiga UI migration) tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.
+                    tuiFindTouchIndex,
+                } from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    imports: [TuiSidebarComponent, TuiSidebarDirective],
+                })
+                export class TestComponent {
+                    protected readonly find = tuiFindTouchIndex;
+                }
+            ",
+}
+`;
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments for removed @taiga-ui/core symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_DATA_LIST_ACCESSOR,
+                    TUI_HINT_PROVIDERS,
+                    TUI_THEME,
+                    TuiDataListDirective,
+                    type TuiLinkOptions,
+                    tuiAsDataList,
+                    tuiAsDataListAccessor,
+                } from '@taiga-ui/core';
+
+                @Component({
+                    providers: [TUI_HINT_PROVIDERS],
+                })
+                export class TestComponent {
+                    protected readonly theme = inject(TUI_THEME);
+                    protected readonly link: TuiLinkOptions | null = null;
+                    protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
+                    protected readonly as = [
+                        tuiAsDataList,
+                        tuiAsDataListAccessor,
+                        TuiDataListDirective,
+                    ];
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. Read a custom option-list source through the auxiliary API instead of injecting the token: tuiInjectAuxiliary<TuiDataListAccessor>((x) => 'options' in x && isSignal(x.options)) (from @taiga-ui/core; isSignal from @angular/core). The interface changed too — getOptions() is gone, options are now a Signal<readonly T[]>.
+                    TUI_DATA_LIST_ACCESSOR,
+// TODO: (Taiga UI migration) TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.
+                    TUI_HINT_PROVIDERS,
+// TODO: (Taiga UI migration) TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme="dark" in a template); components resolve the nearest [tuiTheme] ancestor.
+                    TUI_THEME,
+// TODO: (Taiga UI migration) TuiDataListDirective (ng-template[tuiDataList]) has been removed. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select
+                    TuiDataListDirective,
+// TODO: (Taiga UI migration) The TuiLinkOptions interface has been removed. The TUI_LINK_OPTIONS token and tuiLinkOptionsProvider still exist in @taiga-ui/core for configuration — type your options via the tuiLinkOptionsProvider() argument instead of the standalone interface.
+                    type TuiLinkOptions,
+// TODO: (Taiga UI migration) tuiAsDataList has been removed together with the ng-template[tuiDataList] lazy-list mechanism. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select
+                    tuiAsDataList,
+// TODO: (Taiga UI migration) tuiAsDataListAccessor has been removed. Provide a custom option-list source with tuiAsAuxiliary(component) from @taiga-ui/core; the component must implement TuiDataListAccessor exposing readonly options: Signal<readonly T[]> (the old getOptions() is gone).
+                    tuiAsDataListAccessor,
+                } from '@taiga-ui/core';
+
+                @Component({
+                    providers: [TUI_HINT_PROVIDERS],
+                })
+                export class TestComponent {
+                    protected readonly theme = inject(TUI_THEME);
+                    protected readonly link: TuiLinkOptions | null = null;
+                    protected readonly accessor = inject(TUI_DATA_LIST_ACCESSOR);
+                    protected readonly as = [
+                        tuiAsDataList,
+                        tuiAsDataListAccessor,
+                        TuiDataListDirective,
+                    ];
+                }
+            ",
+}
+`;
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments for removed @taiga-ui/kit symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {
+                    TuiActionBarDirective,
+                    TuiInputPassword,
+                    type TuiSliderOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiInputPassword, TuiActionBarDirective],
+                })
+                export class TestComponent {
+                    protected readonly options: TuiSliderOptions | null = null;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.
+                    TuiActionBarDirective,
+// TODO: (Taiga UI migration) TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input#input-password
+                    TuiInputPassword,
+// TODO: (Taiga UI migration) TuiSliderOptions has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider
+                    type TuiSliderOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiInputPassword, TuiActionBarDirective],
+                })
+                export class TestComponent {
+                    protected readonly options: TuiSliderOptions | null = null;
+                }
+            ",
+}
+`;
+
+exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments for removed @taiga-ui/testing harnesses and mocks: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TuiIslandHarness,
+                    TuiMockEvent,
+                    TuiPrimitiveTextfieldHarness,
+                    TuiSvgHarness,
+                    TuiThumbnailCardHarness,
+                } from '@taiga-ui/testing';
+
+                export class TestHarnessSuite {
+                    protected readonly harnesses = [
+                        TuiIslandHarness,
+                        TuiSvgHarness,
+                        TuiThumbnailCardHarness,
+                        TuiPrimitiveTextfieldHarness,
+                    ];
+
+                    protected readonly event = TuiMockEvent;
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) TuiIslandHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.
+                    TuiIslandHarness,
+// TODO: (Taiga UI migration) TuiMockEvent has been removed. Construct native Event/MouseEvent objects directly in your tests.
+                    TuiMockEvent,
+// TODO: (Taiga UI migration) TuiPrimitiveTextfieldHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.
+                    TuiPrimitiveTextfieldHarness,
+// TODO: (Taiga UI migration) TuiSvgHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.
+                    TuiSvgHarness,
+// TODO: (Taiga UI migration) TuiThumbnailCardHarness has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.
+                    TuiThumbnailCardHarness,
+                } from '@taiga-ui/testing';
+
+                export class TestHarnessSuite {
+                    protected readonly harnesses = [
+                        TuiIslandHarness,
+                        TuiSvgHarness,
+                        TuiThumbnailCardHarness,
+                        TuiPrimitiveTextfieldHarness,
+                    ];
+
+                    protected readonly event = TuiMockEvent;
+                }
+            ",
+}
+`;

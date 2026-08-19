@@ -13,8 +13,4 @@ import {getCountries} from 'libphonenumber-js';
 export default class Page {
     protected countryIsoCodeVariants = getCountries();
     protected countryIsoCode: TuiCountryIsoCode = 'FR';
-
-    protected get apiCodeDemo(): string {
-        return `<img [src]="'${this.countryIsoCode}' | tuiFlag" />`;
-    }
 }

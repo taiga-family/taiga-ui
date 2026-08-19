@@ -51,6 +51,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly scrollTop = this.doc.documentElement.scrollTop;
     private readonly observer = new ResizeObserver(() => this.refresh());
+
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly ctx = {$implicit: (): void => this.dropdown.toggle(false)};
 

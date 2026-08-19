@@ -192,6 +192,7 @@ export class PerformanceCollector {
 
             const rawEventsCount = collection.events.length;
             const totalOps = metrics.layoutCount + metrics.recalcStyleCount;
+
             const opsPerKEvents =
                 rawEventsCount > 0 ? (totalOps / rawEventsCount) * 1000 : 0;
 
@@ -329,6 +330,7 @@ export class PerformanceCollector {
 
         const sorted = [...arr].sort((a, b) => a - b);
         const mid = Math.floor(len / 2);
+
         const value =
             len % 2 === 0 ? (sorted[mid - 1]! + sorted[mid]!) / 2 : sorted[mid]!;
 
@@ -348,6 +350,7 @@ export class PerformanceCollector {
     }): Promise<void> {
         const {metrics, testName, url, startTime, testFile, extras} = params;
         const {rawEvents = 0, opsPerKEvents = 0, ...customExtras} = extras || {};
+
         const performanceData = {
             timestamp: Date.now(),
             testStartTime: startTime,
@@ -460,7 +463,6 @@ export class PerformanceCollector {
         // Focus on layout and style events that are relevant to our measurements
         const name = event.name;
         const cat = event.cat || '';
-
         const timeline = cat.includes('devtools.timeline');
         const blink = cat.includes('blink');
 

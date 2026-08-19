@@ -40,9 +40,11 @@ export default class Page {
     constructor() {
         const scroller = inject(ViewportScroller);
         const router = inject(Router);
+
         const route = router.config.find(
             ({path}) => path === this.routes.Slides.replace('/', ''),
         );
+
         const length = route?.children?.length ?? 0;
 
         router.events

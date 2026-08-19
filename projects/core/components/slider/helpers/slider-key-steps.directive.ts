@@ -36,6 +36,7 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 export class TuiSliderKeyStepsBase implements OnInit {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
+
     protected readonly min = signal<number | undefined>(undefined);
     protected readonly max = signal<number | undefined>(undefined);
 

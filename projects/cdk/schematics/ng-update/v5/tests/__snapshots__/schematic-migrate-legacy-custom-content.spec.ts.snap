@@ -142,9 +142,9 @@ exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are 
                     import {TuiSelectModule} from '@taiga-ui/legacy';
 
                     @Component({
-                      standalone: true,
-                      imports: [TuiSelectModule],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelectModule],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 ",
@@ -153,9 +153,9 @@ import { TuiIcon } from "@taiga-ui/core";
 import { TuiSelect } from "@taiga-ui/kit";
 
                                         @Component({
-                      standalone: true,
-                      imports: [TuiSelect, TuiIcon, PolymorpheusOutlet],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelect, TuiIcon, PolymorpheusOutlet],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 ",
@@ -181,9 +181,9 @@ exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are 
                     import {TuiSelectModule} from '@taiga-ui/legacy';
 
                     @Component({
-                      standalone: true,
-                      imports: [TuiSelectModule],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelectModule],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 ",
@@ -191,9 +191,9 @@ exports[`ng-update legacy tuiTextfieldCustomContent across controls imports are 
 import { TuiSelect } from "@taiga-ui/kit";
 
                                         @Component({
-                      standalone: true,
-                      imports: [TuiSelect, TuiIcon],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelect, TuiIcon],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 ",

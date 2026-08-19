@@ -13,11 +13,12 @@ import {getFileSystem} from '../../utils/get-file-system';
 import {replaceText} from '../../utils/replace-text';
 
 const FONT_VARIABLES_REPLACEMENTS = [
-    {from: String.raw`--tui-font-family-text`, to: '--tui-typography-family-text'},
-    {from: String.raw`--tui-font-family-display`, to: '--tui-typography-family-display'},
+    {from: '--tui-font-family-text', to: '--tui-typography-family-text'},
+    {from: '--tui-font-family-display', to: '--tui-typography-family-display'},
     {from: '--tui-font-heading-([1-6])', to: '--tui-typography-heading-h$1'},
     {from: '--tui-font-heading-h([1-6])', to: '--tui-typography-heading-h$1'},
     {from: String.raw`--tui-font-text\)`, to: '--tui-typography-family-text)'},
+    {from: String.raw`--tui-font-heading\)`, to: '--tui-typography-family-display)'},
     {from: '--tui-font-text-xl', to: '--tui-typography-legacy-body-xl'},
     {from: '--tui-font-text-l', to: '--tui-typography-body-l'},
     {from: '--tui-font-text-m', to: '--tui-typography-body-m'},
@@ -34,13 +35,46 @@ const FONT_VARIABLES_REPLACEMENTS = [
     {from: '--tui-font-ui-2xs', to: '--tui-typography-ui-2xs'},
 ];
 
+const MISC_VARIABLES_REPLACEMENTS = [
+    {from: '--tui-backdrop', to: '--tui-service-backdrop'},
+    {from: '--tui-animation-duration-moderate', to: '--tui-duration'},
+    {from: '--tui-animation-duration-slow', to: '--tui-duration-slow'},
+    {
+        from: '--tui-animation-curve-expressive-entrance',
+        to: '--tui-curve-expressive-entrance',
+    },
+];
+
 export const TUI_THICKNESS_COMMENT =
     'use --tui-thumb-size. Learn more: https://taiga-ui.dev/components/slider#size';
+
+const TUI_DATA_LIST_SPACING_COMMENT =
+    'The tui-data-list spacing variables (padding and margin) have been removed. tui-data-list spacing is now fixed in the component and is no longer exposed as a CSS variable; restyle [tuiOption] (or tui-data-list) directly if you need different spacing.';
+
+const TUI_TEXTAREA_HEIGHT_COMMENT =
+    'The tui-textarea height variable has been removed. The textarea moved to @taiga-ui/kit and auto-sizes to its content; control the height with the [min] and [max] row inputs (or set min-block-size on the element) instead.';
 
 const DEPRECATED_VARS_WITH_COMMENT = [
     {
         sourceText: '--tui-thickness',
         comment: `TODO: (Taiga UI migration) ${TUI_THICKNESS_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-slider-track-color',
+        comment:
+            'TODO: (Taiga UI migration) --tui-slider-track-color has been removed. The slider track color is no longer configurable through a CSS variable in v5.',
+    },
+    {
+        sourceText: '--tui-data-list-padding',
+        comment: `TODO: (Taiga UI migration) ${TUI_DATA_LIST_SPACING_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-data-list-margin',
+        comment: `TODO: (Taiga UI migration) ${TUI_DATA_LIST_SPACING_COMMENT}`,
+    },
+    {
+        sourceText: '--tui-textarea-height',
+        comment: `TODO: (Taiga UI migration) ${TUI_TEXTAREA_HEIGHT_COMMENT}`,
     },
 ];
 
@@ -52,6 +86,7 @@ export function migrateCssVariables(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
 
     replaceText(FONT_VARIABLES_REPLACEMENTS);
+    replaceText(MISC_VARIABLES_REPLACEMENTS);
     addCommentForStylesFiles(DEPRECATED_VARS_WITH_COMMENT);
 
     fileSystem.commitEdits();

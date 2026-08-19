@@ -224,6 +224,7 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
             const example = new TuiDocumentationPagePO(page).demo;
+
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -243,10 +244,11 @@ describe('InputSlider', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputSlider}/API?min=-10&max=10&readOnly=true`,
+                `${DemoRoute.InputSlider}/API?min=-10&max=10&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
+
             const inputSlider = new TuiInputSliderPO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
@@ -274,6 +276,7 @@ describe('InputSlider', () => {
                 );
 
                 const {demo} = new TuiDocumentationPagePO(page);
+
                 const inputSlider = new TuiInputSliderPO(
                     demo.locator('tui-textfield:has([tuiInputSlider])'),
                 );
@@ -338,6 +341,8 @@ describe('InputSlider', () => {
             for (let i = 1; i <= 10; i++) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press('ArrowUp');
+                await expect(inputSlider.textfield).toHaveValue(String(i));
+
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));
@@ -352,6 +357,8 @@ describe('InputSlider', () => {
             for (let i = 9; i >= 0; i--) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press('ArrowDown');
+                await expect(inputSlider.textfield).toHaveValue(String(i));
+
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));

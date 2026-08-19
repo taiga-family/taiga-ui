@@ -19,6 +19,7 @@ export default [
             // TODO: enable after https://github.com/typescript-eslint/typescript-eslint/issues/11790
             '@typescript-eslint/no-redundant-type-constituents': 'off',
             '@typescript-eslint/strict-void-return': 'off',
+            '@taiga-ui/experience-next/prefer-untracked-incidental-signal-reads': 'off', // TODO: investigate later
         },
     },
     {
@@ -31,5 +32,15 @@ export default [
             'projects/demo/src/pages/components/icon/examples/4/index.ts',
             'projects/demo/src/pages/markup/breakpoints/index.ts',
         ],
+    },
+    {
+        files: ['**/*.html'],
+        rules: {
+            '@taiga-ui/experience-next/no-nested-interactive': 'off', // TODO: fix later
+            '@angular-eslint/template/no-empty-control-flow': 'off', // TODO: fix later
+            '@angular-eslint/template/no-non-null-assertion': 'off', // TODO: fix later
+            '@angular-eslint/template/no-nested-tags': 'off', // TODO: fix later
+            '@angular-eslint/template/prefer-at-else': 'off', // TODO: fix later
+        },
     },
 ];

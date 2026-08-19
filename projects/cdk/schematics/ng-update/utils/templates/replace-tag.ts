@@ -5,7 +5,6 @@ type ElementLocation = Token.ElementLocation;
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
-
 const NON_SELF_CLOSING_NATIVE_TAGS = new Set(['a', 'button', 'div', 'span']);
 
 // eslint-disable-next-line @typescript-eslint/max-params,max-params

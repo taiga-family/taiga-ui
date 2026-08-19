@@ -10,13 +10,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputDateModule to TuiInputDate',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDateModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDateModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,
@@ -103,6 +103,20 @@ describe('ng-update', () => {
                 <tui-input-date
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a date
+                </tui-input-date>
+            `,
+        }),
+    );
+
+    it(
+        'preserves camelCase for [formControlName] and (ngModelChange) bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-date
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
                 >
                     Choose a date
                 </tui-input-date>

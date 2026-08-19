@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update tuiLet keeps the alias when only an observable (foo$) shares its stem: test.html 1`] = `
+{
+  "0. Before": "
+                <test *tuiLet="isOrderCompleted$ | async as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                </test>
+            ",
+  "1. After": "
+                @let isOrderCompleted = isOrderCompleted$ | async;
+                <test>
+                    {{ isOrderCompleted }}
+                </test>
+            ",
+}
+`;
+
+exports[`ng-update tuiLet keeps the alias when only an observable (foo$) shares its stem: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;
+
 exports[`ng-update tuiLet migrates nested case with additional attributes: test.html 1`] = `
 {
   "0. Before": "
@@ -188,6 +234,54 @@ exports[`ng-update tuiLet migrates simple structural directive: test.html 1`] = 
 `;
 
 exports[`ng-update tuiLet migrates simple structural directive: test.ts 1`] = `
+{
+  "0. Before": "
+            import {Component} from '@angular/core';
+            import {TuiLet} from '@taiga-ui/cdk';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [TuiLet],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+  "1. After": "
+            import {Component} from '@angular/core';
+
+            @Component({
+                standalone: true,
+                templateUrl: './test.html',
+                imports: [],
+            })
+            export class Test {
+                readonly value = 'foo';
+            }
+        ",
+}
+`;
+
+exports[`ng-update tuiLet renames the @let when the alias repeats an identifier in the expression: test.html 1`] = `
+{
+  "0. Before": "
+                <test *tuiLet="isOrderCompleted() as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                    <span [class.done]="isOrderCompleted">done</span>
+                </test>
+            ",
+  "1. After": "
+                @let isOrderCompletedValue = isOrderCompleted();
+                <test>
+                    {{ isOrderCompletedValue }}
+                    <span [class.done]="isOrderCompletedValue">done</span>
+                </test>
+            ",
+}
+`;
+
+exports[`ng-update tuiLet renames the @let when the alias repeats an identifier in the expression: test.ts 1`] = `
 {
   "0. Before": "
             import {Component} from '@angular/core';

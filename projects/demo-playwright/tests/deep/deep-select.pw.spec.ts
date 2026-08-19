@@ -64,6 +64,7 @@ test.describe('Deep / Select', () => {
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
                     const example = api.demo;
+
                     const query = decodeURIComponent(
                         String(new URL(page.url()).searchParams),
                     );
@@ -91,7 +92,7 @@ test.describe('Deep / Select', () => {
                 if (cleaner) {
                     await cleaner.click();
                 } else {
-                    await options[0]?.focus();
+                    await options.at(0)?.focus();
                     await page.keyboard.down('Enter');
                 }
 

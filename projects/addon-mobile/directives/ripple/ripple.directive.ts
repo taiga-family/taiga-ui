@@ -43,7 +43,9 @@ export class TuiRipple {
     private readonly doc = inject(DOCUMENT);
     private readonly destroyRef = inject(DestroyRef);
     private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiRipple = input('');
 
     protected start(x: number, y: number, target: HTMLElement, el: HTMLElement): void {
@@ -54,6 +56,7 @@ export class TuiRipple {
         }
 
         const ripple = this.createRipple(x, y, element.getBoundingClientRect());
+
         const touchEnd$ = merge(
             fromEvent(element, 'pointerup'),
             fromEvent(element, 'pointercancel'),

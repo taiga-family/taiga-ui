@@ -1,19 +1,12 @@
-import {Component, inject} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
+    imports: [TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
-    styles: `
-        .option {
-            white-space: normal;
-        }
-    `,
     encapsulation,
     changeDetection,
 })
@@ -37,7 +30,4 @@ export default class Example {
             items: ['Calendar', 'Dialog', 'ComboBox', 'Select'],
         },
     ];
-
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-    public control = new FormControl('');
 }

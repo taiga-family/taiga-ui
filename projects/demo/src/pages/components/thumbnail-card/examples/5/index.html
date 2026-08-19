@@ -9,22 +9,22 @@
     }
 </tui-segmented>
 
-<tui-textfield>
+<tui-textfield [invalid]="status === 'invalid'">
     <label tuiLabel>Card number</label>
     <input
         icon=""
         tuiInputCard
         [disabled]="status === 'disabled'"
-        [invalid]="status === 'invalid'"
-        [readOnly]="status === 'readOnly'"
+        [readonly]="status === 'readonly'"
         [(ngModel)]="card"
     />
     @if (card.startsWith('1234')) {
-        <tui-thumbnail-card
+        <span
             iconStart="@tui.dollar-sign"
             paymentSystem="visa"
             size="s"
+            tuiThumbnailCard
             [style.background]="background"
-        />
+        ></span>
     }
 </tui-textfield>

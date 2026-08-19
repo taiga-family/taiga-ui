@@ -29,8 +29,8 @@ export function tuiFormatNumber(
     const rounded = Number.isFinite(precision)
         ? tuiRoundWith({value, precision, method: rounding})
         : value;
-    const integerPartString = String(Math.floor(Math.abs(rounded)));
 
+    const integerPartString = String(Math.floor(Math.abs(rounded)));
     let fractionPartPadded = tuiGetFractionPartPadded(rounded, precision);
     const hasFraction = Number(fractionPartPadded) > 0;
 

@@ -19,11 +19,13 @@ function getCycle(options: {
 
 function weekCount(options: {year: number; month: number; startingYear: number}): number {
     const firstOfMonth = new Date(options.year + options.startingYear, options.month, 1);
+
     const lastOfMonth = new Date(
         options.year + options.startingYear,
         options.month + 1,
         0,
     );
+
     const days = lastOfMonth.getDate() + (firstOfMonth.getDay() || 7) - 1;
 
     return Math.ceil(days / 7);

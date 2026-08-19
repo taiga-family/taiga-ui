@@ -65,11 +65,13 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
             const blur$ = tuiTypedFromEvent(win, 'blur');
             const mousedown$ = tuiTypedFromEvent(win, 'mousedown');
             const mouseup$ = tuiTypedFromEvent(win, 'mouseup');
+            const pointerdown$ = tuiTypedFromEvent(win, 'pointerdown');
+            const pointercancel$ = tuiTypedFromEvent(win, 'pointercancel');
 
             return merge(
                 focusout$.pipe(
-                    takeUntil(mousedown$),
-                    repeat({delay: () => mouseup$}),
+                    takeUntil(pointerdown$.pipe(filter((e) => !e.defaultPrevented))),
+                    repeat({delay: () => merge(mouseup$, pointercancel$)}),
                     withLatestFrom(removedElement$),
                     filter(([event, removedElement]) =>
                         isValidFocusout(tuiGetActualTarget(event), removedElement),
@@ -93,23 +95,16 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     }),
                 ),
                 mousedown$.pipe(
-                    switchMap((event) => {
-                        const actualTargetInCurrentTime = tuiGetActualTarget(event);
-
-                        return !doc.activeElement || doc.activeElement === doc.body
-                            ? of(actualTargetInCurrentTime)
+                    map(tuiGetActualTarget),
+                    switchMap((target) =>
+                        !doc.activeElement || doc.activeElement === doc.body
+                            ? of(target)
                             : focusout$.pipe(
                                   take(1),
-                                  map(
-                                      /**
-                                       * Do not use `map(() => tuiGetActualTarget(event))`
-                                       * because we have different result in runtime
-                                       */
-                                      () => actualTargetInCurrentTime,
-                                  ),
+                                  map(() => target),
                                   takeUntil(timer(0, tuiZonefreeScheduler(zone))),
-                              );
-                    }),
+                              ),
+                    ),
                 ),
             ).pipe(distinctUntilChanged(), share());
         },

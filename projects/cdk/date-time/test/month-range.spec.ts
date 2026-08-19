@@ -87,4 +87,32 @@ describe('TuiMonthRange', () => {
             expect(range.toString()).toBe(`01.2000${RANGE_SEPARATOR_CHAR}01.3000`);
         });
     });
+
+    describe('monthInRange', () => {
+        const range = new TuiMonthRange(new TuiMonth(2000, 2), new TuiMonth(2000, 4));
+
+        it('returns true for value within range', () => {
+            expect(range.monthInRange(new TuiMonth(2000, 3))).toBe(true);
+        });
+
+        it('returns true for value at the start of the range', () => {
+            expect(range.monthInRange(new TuiMonth(2000, 2))).toBe(true);
+        });
+
+        it('returns true for value at the end of the range', () => {
+            expect(range.monthInRange(new TuiMonth(2000, 4))).toBe(true);
+        });
+
+        it('returns false for value before the range', () => {
+            expect(range.monthInRange(new TuiMonth(2000, 1))).toBe(false);
+        });
+
+        it('returns false for value after the range', () => {
+            expect(range.monthInRange(new TuiMonth(2000, 5))).toBe(false);
+        });
+
+        it('returns false for different year', () => {
+            expect(range.monthInRange(new TuiMonth(2001, 3))).toBe(false);
+        });
+    });
 });

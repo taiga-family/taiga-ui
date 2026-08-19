@@ -378,7 +378,6 @@ describe('TuiDay', () => {
                 const year = 1970;
                 const month = 0;
                 const day = 1;
-
                 const result = TuiDay.fromLocalNativeDate(new Date(year, month, day));
 
                 expect(result.year).toBe(year);

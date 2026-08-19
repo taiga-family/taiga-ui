@@ -12,7 +12,7 @@ describe('ng-update TuiTableDirectionOrder', () => {
     it(
         'adds TODO for TuiTableDirectionOrder import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiTableDirectionOrder} from '@taiga-ui/addon-table';
 

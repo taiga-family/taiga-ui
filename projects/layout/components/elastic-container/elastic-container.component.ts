@@ -16,7 +16,7 @@ export class TuiElasticContainer {
     protected readonly transitions = signal(0);
 
     protected onAnimation(name: string, count: number): void {
-        if (name === 'height') {
+        if (['grid-template-rows', 'height'].includes(name)) {
             this.transitions.update((value) => value + count);
         }
     }

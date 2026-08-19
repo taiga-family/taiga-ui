@@ -56,6 +56,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
+
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
 
@@ -202,6 +203,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         const activeWidth = active?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth ?? 0, minMoreWidth);
         let maxIndex = tabs.length - 2;
+
         let total =
             tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
             maxIndex * margin -

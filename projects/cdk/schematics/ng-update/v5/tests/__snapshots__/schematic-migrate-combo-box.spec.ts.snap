@@ -136,6 +136,80 @@ exports[`ng-update ComboBox keeps [strict] on input: test.html 1`] = `
 }
 `;
 
+exports[`ng-update ComboBox keeps an interpolated label inside label[tuiLabel] (not truncated at \`{\`): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="control">
+                    {{ label }}
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    {{ label }}
+                    </label>
+
+<input tuiComboBox [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox keeps valid nesting when the label is followed by @if control flow: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box [formControl]="control">
+                    Attribute @if (items === null) {
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="null"
+                    />
+                    } @if (items !== null) {
+                    <tui-data-list *tuiDataList>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                    }
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield>
+<label tuiLabel>
+                    Attribute</label>
+
+<input tuiComboBox [formControl]="control" />
+ @if (items === null) {
+                    <tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="null"
+                    />
+                    } @if (items !== null) {
+                    <tui-data-list *tuiDropdown>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                    }
+                </tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update ComboBox migrates *tuiDataList to *tuiDropdown: test.html 1`] = `
 {
   "0. Before": "
@@ -204,18 +278,19 @@ exports[`ng-update ComboBox migrates TuiComboBoxModule import and basic tui-comb
                 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
-  "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
+  "1. After": "import { TuiDropdown } from "@taiga-ui/core";
+import { TuiComboBox } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBox],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBox, TuiDropdown],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
@@ -317,6 +392,37 @@ exports[`ng-update ComboBox moves [(ngModel)] to generated input when input is a
                     </label>
 
 <input tuiComboBox [(ngModel)]="value" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update ComboBox moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                >
+<label tuiLabel>
+                    Label
+                    </label>
+
+<input tuiComboBox [formControlName]="control" (ngModelChange)="onChange($event)" />
 <tui-data-list-wrapper
                         *tuiDropdown
                         [items]="items"
@@ -429,21 +535,24 @@ exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiT
 exports[`ng-update ComboBox removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO: test.ts 1`] = `
 {
   "0. Before": "
-                import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+                import {
+                    TuiComboBoxModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",
   "1. After": "import { TuiComboBox } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBox],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBox],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             ",

@@ -49,6 +49,7 @@ export class TuiDocAppearance {
     ];
 
     protected readonly focuses = [true, false];
+
     public readonly tuiDocAppearance = input<readonly string[] | ''>('');
 
     public readonly hiddenOptions = input<

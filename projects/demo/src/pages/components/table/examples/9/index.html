@@ -7,8 +7,8 @@
             <th tuiTh>Date of Birth</th>
         </tr>
     </thead>
-    <tbody tuiTbody>
-        @for (item of data; track $index; let i = $index) {
+    @for (item of data; track $index; let i = $index) {
+        <tbody tuiTbody>
             <tr>
                 <td tuiTd>
                     <button
@@ -29,19 +29,22 @@
                 <td tuiTd>{{ item.name }}</td>
                 <td tuiTd>{{ item.dob }}</td>
             </tr>
+        </tbody>
 
+        <tbody
+            tuiTableExpand
+            [expanded]="state[i] ?? false"
+        >
             @if (item.children.length) {
-                <tui-table-expand [expanded]="state[i] ?? false">
-                    @for (child of item.children; track $index; let j = $index) {
-                        <tr>
-                            <td tuiTd></td>
-                            <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
-                            <td tuiTd>{{ child.name }}</td>
-                            <td tuiTd>{{ child.dob }}</td>
-                        </tr>
-                    }
-                </tui-table-expand>
+                @for (child of item.children; track $index; let j = $index) {
+                    <tr>
+                        <td tuiTd></td>
+                        <td tuiTd>{{ i + 1 }}.{{ j + 1 }}</td>
+                        <td tuiTd>{{ child.name }}</td>
+                        <td tuiTd>{{ child.dob }}</td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
+        </tbody>
+    }
 </table>

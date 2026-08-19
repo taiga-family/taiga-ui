@@ -53,15 +53,13 @@ export default class Example {
         tuiControlValue<readonly TuiDay[]>(this.control),
         this.months$,
     ]).pipe(
-        map(([value, months]) => {
-            if (!value?.length) {
-                return 'Choose dates';
-            }
-
-            return value
-                .map((day) => `${months[day.month]} ${day.day}, ${day.year}`)
-                .join('; ');
-        }),
+        map(([value, months]) =>
+            value?.length
+                ? value
+                      .map((day) => `${months[day.month]} ${day.day}, ${day.year}`)
+                      .join('; ')
+                : 'Choose dates',
+        ),
     );
 
     protected get empty(): boolean {

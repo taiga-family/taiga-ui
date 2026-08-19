@@ -1,5 +1,5 @@
 import {resolve} from 'node:path';
-import * as process from 'node:process';
+import {exit} from 'node:process';
 
 import {getValueByFlag, hasFlag} from './shared/argv.utils';
 import {checkImportWithSrc} from './shared/check-import-with-src';
@@ -25,6 +25,6 @@ import {checkRequireWithSrc} from './shared/check-require-with-src';
         ]);
     } catch (error) {
         console.error(error);
-        process.exit(1);
+        exit(1);
     }
 })();

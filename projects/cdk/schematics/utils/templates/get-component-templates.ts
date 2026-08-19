@@ -19,6 +19,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
     const templateUrl = metadata?.getProperty('templateUrl') as
         | PropertyAssignment
         | undefined;
+
     const template = metadata?.getProperty('template') as PropertyAssignment | undefined;
     const componentPath = decorator.getSourceFile().getFilePath();
 
@@ -33,15 +34,13 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
         };
     }
 
-    if (template) {
-        return {
-            componentPath,
-            template: template.getInitializer()?.getText() || '',
-            offset: template.getInitializer()?.getStart() || 0,
-        };
-    }
-
-    return null;
+    return template
+        ? {
+              componentPath,
+              template: template.getInitializer()?.getText() || '',
+              offset: template.getInitializer()?.getStart() || 0,
+          }
+        : null;
 }
 
 function getFullTemplatePath(

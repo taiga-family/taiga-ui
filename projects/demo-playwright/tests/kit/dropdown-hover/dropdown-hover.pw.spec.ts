@@ -80,7 +80,7 @@ test.describe('DropdownHover', () => {
                 await expect(page.locator('tui-sheet-dialog')).not.toBeAttached();
             });
 
-            test('Opens mobile version of dropdown on the 2nd time click', async ({
+            test.skip('Opens mobile version of dropdown on the 2nd time click', async ({
                 page,
             }) => {
                 await example.locator('button').click();

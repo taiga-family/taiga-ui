@@ -48,7 +48,9 @@ export class CustomListComponent<T> {
     });
 
     private readonly control = inject(TuiTextfieldComponent).control;
+
     public readonly items = input<ReadonlyArray<Items<T>>>([]);
+
     protected value = '';
     protected readonly all = [];
     protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;

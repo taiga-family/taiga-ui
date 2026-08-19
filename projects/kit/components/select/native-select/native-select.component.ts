@@ -39,6 +39,7 @@ export class TuiNativeSelect<T>
 {
     private readonly input = inject(TuiInputDirective);
     private readonly options = viewChildren<HTMLOptionElement>('option');
+
     protected readonly isFlat = tuiIsFlat;
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 

@@ -93,4 +93,18 @@ test.describe('Dialog', () => {
             await expect.soft(page).toHaveScreenshot('07-dialog-1.png');
         });
     });
+
+    test('Inert', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dialog);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#directive');
+        const root = page.locator('tui-root > .t-root-content').first();
+
+        await expect(root).not.toHaveAttribute('inert');
+        await example.locator('button').first().click();
+        await expect(root).toHaveAttribute('inert');
+        await page.locator('tui-dialog button').last().click();
+        await expect(root).not.toHaveAttribute('inert');
+    });
 });

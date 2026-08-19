@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update tui-island to tuiCardLarge', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {Component} from '@angular/core';
             import {TuiIslandDirective} from '@taiga-ui/legacy';
 

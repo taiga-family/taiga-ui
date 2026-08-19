@@ -38,5 +38,6 @@ class Styles {}
 })
 export class TuiBadge {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly size = input(inject(TUI_BADGE_OPTIONS).size);
 }

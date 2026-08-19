@@ -6,7 +6,6 @@ import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
-
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {

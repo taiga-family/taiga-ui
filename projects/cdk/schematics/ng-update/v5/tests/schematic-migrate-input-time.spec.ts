@@ -10,22 +10,18 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputTimeModule to TuiInputTime',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
-                    TuiInputTimeModule,
-                  ],
+                    imports: [TuiInputTimeModule],
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
-                    TuiInputTimeModule,
-                  ],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputTimeModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,
@@ -100,6 +96,20 @@ describe('ng-update', () => {
                 <tui-input-time
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose time
+                </tui-input-time>
+            `,
+        }),
+    );
+
+    it(
+        'preserves camelCase for [formControlName] and (ngModelChange) bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
                 >
                     Choose time
                 </tui-input-time>

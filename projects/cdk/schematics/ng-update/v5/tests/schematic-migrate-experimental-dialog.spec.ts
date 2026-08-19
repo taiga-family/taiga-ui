@@ -12,9 +12,12 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental TuiDialogService, TuiDialogOptions and TuiDialogContext import to @taiga-ui/core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
-                import type {TuiDialogContext, TuiDialogOptions} from '@taiga-ui/experimental';
+                import type {
+                    TuiDialogContext,
+                    TuiDialogOptions,
+                } from '@taiga-ui/experimental';
                 import {TuiDialogService} from '@taiga-ui/experimental';
                 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
                 import {BehaviorSubject} from 'rxjs';
@@ -28,7 +31,9 @@ describe('ng-update experimental dialog', () => {
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closable: this.loading$.pipe(map((loading) => !loading)),
                             } as TuiDialogOptions<any>)
                             .subscribe();
@@ -41,7 +46,7 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental tuiDialogOptionsProvider import to @taiga-ui/core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiDialogOptionsProvider} from '@taiga-ui/experimental';
 
                 const closable = false;
@@ -55,7 +60,7 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental TUI_DIALOG_DEFAULT_OPTIONS import to @taiga-ui/core and replace to TUI_DIALOG_OPTIONS',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TUI_DIALOG_DEFAULT_OPTIONS} from '@taiga-ui/experimental';
             `,
         }),
@@ -64,7 +69,7 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental TUI_DIALOG_OPTIONS import to @taiga-ui/core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TUI_DIALOG_OPTIONS} from '@taiga-ui/experimental';
             `,
         }),
@@ -73,7 +78,7 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental TuiDialog import to @taiga-ui/core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiDialog} from '@taiga-ui/experimental';
             `,
         }),
@@ -82,7 +87,7 @@ describe('ng-update experimental dialog', () => {
     it(
         'replaces experimental TuiDialogComponent import to @taiga-ui/core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiDialogComponent} from '@taiga-ui/experimental';
             `,
         }),

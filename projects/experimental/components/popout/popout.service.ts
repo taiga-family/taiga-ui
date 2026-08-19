@@ -1,12 +1,13 @@
 import {DOCUMENT} from '@angular/common';
 import {
+    type ApplicationConfig,
     ChangeDetectionStrategy,
     Component,
     inject,
     Injectable,
+    InjectionToken,
     type OnDestroy,
     type OnInit,
-    provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import {createApplication} from '@angular/platform-browser';
 import {WA_DOCUMENT_PIP} from '@ng-web-apis/experimental';
@@ -17,6 +18,17 @@ import {injectContext, provideContext} from '@taiga-ui/polymorpheus';
 
 import {TuiPopoutComponent, type TuiPopoutOptions} from './popout.component';
 
+/**
+ * Token for configuring the popout application.
+ * Use it to provide custom providers (e.g., change detection strategy) to the popout window.
+ *
+ * @default Empty providers array (zone-based change detection)
+ */
+export const TUI_POPOUT_CONFIG = new InjectionToken<ApplicationConfig>(
+    'TUI_POPOUT_CONFIG',
+    {factory: () => ({providers: []})},
+);
+
 @Component({
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +38,7 @@ class PopoutComponent implements OnInit, OnDestroy {
     private readonly context = injectContext<TuiPortalContext<TuiPopoutOptions>>();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_OPTIONS);
+    private readonly config = inject(TUI_POPOUT_CONFIG);
     private popout: Window | null = null;
 
     public ngOnInit(): void {
@@ -83,7 +96,7 @@ class PopoutComponent implements OnInit, OnDestroy {
             provideTaiga(this.options),
             provideContext(this.context),
             {provide: DOCUMENT, useValue: this.popout.document},
-            provideExperimentalZonelessChangeDetection(),
+            ...this.config.providers,
         ];
 
         createApplication({providers})

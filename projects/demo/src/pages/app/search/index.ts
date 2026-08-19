@@ -37,19 +37,16 @@ export class TuiAlgoliaSearch {
                 const request = async (
                     req: Req,
                     ...rest: Rest[]
-                ): ReturnType<typeof search> => {
-                    if (Array.isArray(req)) {
-                        return search(req, ...rest);
-                    }
-
-                    return search(
-                        req.requests.map((req) => ({
-                            ...req,
-                            query: transformQuery((req as {query: string}).query),
-                        })),
-                        ...rest,
-                    );
-                };
+                ): ReturnType<typeof search> =>
+                    Array.isArray(req)
+                        ? search(req, ...rest)
+                        : search(
+                              req.requests.map((req) => ({
+                                  ...req,
+                                  query: transformQuery((req as {query: string}).query),
+                              })),
+                              ...rest,
+                          );
 
                 return {
                     ...searchClient,

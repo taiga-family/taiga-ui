@@ -251,6 +251,21 @@ describe('InputNumber | BigInt', () => {
                 await expect(inputNumber.textfield).toHaveValue('$1.500 per day');
                 await expectControlValue({significand: '1500n', exp: -3});
             });
+
+            test('keeps leading decimal zeros in decimal part', async ({page}) => {
+                await inputNumber.textfield.focus();
+                await inputNumber.textfield.clear();
+                await inputNumber.textfield.pressSequentially('.050');
+
+                await expect(inputNumber.textfield).toHaveValue('$0.050 per day');
+                await expectControlValue({significand: '50n', exp: -3});
+
+                await inputNumber.textfield.blur();
+                await page.waitForTimeout(100); // // to ensure that value is not changed even in case of some async validation
+
+                await expect(inputNumber.textfield).toHaveValue('$0.050 per day');
+                await expectControlValue({significand: '50n', exp: -3});
+            });
         });
     });
 });

@@ -78,6 +78,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleRange(): [start: number, end: number] {
         const max = this.max() > this.count() ? this.count() : this.max();
+
         const start = Math.min(
             Math.max(this.index() - Math.floor(max / 2), 0),
             this.count() - max,

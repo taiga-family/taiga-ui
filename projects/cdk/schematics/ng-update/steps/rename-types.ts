@@ -56,6 +56,7 @@ function processImport(
     remove?: boolean,
 ): void {
     const filePath = node.getSourceFile().getFilePath();
+
     const targetImportAlreadyExists = Boolean(
         getImports(filePath, {namedImports: to}).length,
     );

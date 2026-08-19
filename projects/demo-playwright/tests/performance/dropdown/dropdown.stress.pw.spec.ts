@@ -93,6 +93,7 @@ test.describe('Dropdown Performance', () => {
             example,
             WARM_RUNS,
         );
+
         const warmMedian = median(warmSamples);
 
         await PerformanceCollector.stopTestCollection(

@@ -30,7 +30,7 @@ import {
         }),
     ],
 })
-export class TuiWrapperExample1 {
+export default class Example {
     protected value = '';
     protected checkbox = false;
 }

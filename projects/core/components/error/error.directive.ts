@@ -4,6 +4,7 @@ import {
     inject,
     input,
     isSignal,
+    model,
     type Signal,
     TemplateRef,
 } from '@angular/core';
@@ -16,8 +17,19 @@ import {
     type ValidationErrors,
     type Validator,
 } from '@angular/forms';
-import {TuiValidationError} from '@taiga-ui/cdk/classes';
-import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {
+    type TuiFormValueControl,
+    type TuiSignalValidationError,
+    TuiValidationError,
+} from '@taiga-ui/cdk/classes';
+import {TuiId} from '@taiga-ui/cdk/directives/id';
+import {type TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
+import {
+    tuiDirectiveBinding,
+    tuiInjectFormField,
+    tuiProvide,
+} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {
@@ -25,61 +37,36 @@ import {
     type PolymorpheusContent,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, startWith, Subject, switchMap} from 'rxjs';
+import {
+    BehaviorSubject,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
 import {TuiErrorComponent} from './error.component';
 
 @Directive({
-    selector:
-        'tui-error[ngModel], tui-error[formControlName], tui-error[formControl], tui-error[formGroup], tui-error[formGroupName], tui-error[formArrayName], tui-error[formArray]',
-    providers: [
-        tuiProvide(NG_VALUE_ACCESSOR, TuiErrorDirective, true),
-        tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),
-    ],
+    hostDirectives: [TuiId],
+    host: {'aria-live': 'polite'},
 })
-export class TuiErrorDirective implements ControlValueAccessor, Validator {
-    private readonly content = inject(TUI_VALIDATION_ERRORS);
-    private readonly control = new Subject<AbstractControl>();
-
-    private readonly errors = toSignal(
-        this.control.pipe(
-            distinctUntilChanged(),
-            switchMap((control) =>
-                control.events.pipe(
-                    startWith(null),
-                    map(() => !control.disabled && control.touched && control.errors),
-                ),
-            ),
-        ),
-    );
-
-    private readonly key = computed(
-        (errors = this.errors() || {}) =>
-            this.order().find((id) => errors[id]) || Object.keys(errors)[0] || '',
-    );
+export abstract class AbstractTuiErrorDirective {
+    protected abstract readonly error: Signal<TuiValidationError | null>;
+    protected readonly el = tuiInjectElement();
+    protected readonly content = inject(TUI_VALIDATION_ERRORS);
 
     public readonly order = input<readonly string[]>([]);
 
-    public readonly error = tuiDirectiveBinding(
+    protected readonly $ = tuiDirectiveBinding(
         TuiErrorComponent,
         'error',
-        computed(
-            (errors = this.errors() || null) =>
-                errors && this.getError(errors[this.key()], this.content[this.key()]),
-        ),
+        computed(() => this.error()),
         {self: true, optional: true},
     );
 
-    public registerOnChange(): void {}
-    public registerOnTouched(): void {}
-    public writeValue(): void {}
-    public validate(control: AbstractControl): ValidationErrors | null {
-        this.control.next(control);
-
-        return null;
-    }
-
-    private getError(
+    protected getError(
         context: unknown,
         content?: PolymorpheusContent | Signal<PolymorpheusContent>,
     ): TuiValidationError {
@@ -104,6 +91,116 @@ export class TuiErrorDirective implements ControlValueAccessor, Validator {
         }
 
         return getError(content, context);
+    }
+}
+
+@Directive({
+    selector:
+        'tui-error[ngModel], tui-error[formControlName], tui-error[formControl], tui-error[formGroup], tui-error[formGroupName], tui-error[formArrayName], tui-error[formArray]',
+    providers: [
+        tuiProvide(NG_VALUE_ACCESSOR, TuiErrorDirective, true),
+        tuiProvide(NG_VALIDATORS, TuiErrorDirective, true),
+    ],
+    host: {'(document:tui-validator.zoneless)': 'onValidator($event.detail)'},
+})
+export class TuiErrorDirective
+    extends AbstractTuiErrorDirective
+    implements ControlValueAccessor, Validator
+{
+    private readonly control = new BehaviorSubject<AbstractControl | null>(null);
+    private readonly errors = toSignal(
+        this.control.pipe(
+            filter(Boolean),
+            distinctUntilChanged(),
+            switchMap((control) =>
+                control.events.pipe(
+                    startWith(null),
+                    map(() => !control.disabled && control.touched && control.errors),
+                ),
+            ),
+        ),
+    );
+
+    private readonly key = computed(
+        (errors = this.errors() || {}) =>
+            this.order().find((id) => errors[id]) || Object.keys(errors)[0] || '',
+    );
+
+    public readonly error = computed(
+        (errors = this.errors() || null) =>
+            errors && this.getError(errors[this.key()], this.content[this.key()]),
+    );
+
+    public registerOnChange(): void {}
+
+    public registerOnTouched(): void {}
+
+    public writeValue(): void {}
+
+    public validate(control: AbstractControl): ValidationErrors | null {
+        this.control.next(control);
+
+        return null;
+    }
+
+    protected onValidator(validator: TuiNativeValidator): void {
+        if (this.control.value && validator.control === this.control.value) {
+            validator.id = this.el.id;
+        }
+    }
+}
+
+@Directive({
+    selector: 'tui-error[formField]',
+    host: {'(document:tui-validator.zoneless)': 'onValidator($event.detail)'},
+})
+export class TuiErrorField
+    extends AbstractTuiErrorDirective
+    implements TuiFormValueControl<unknown>
+{
+    private readonly field = tuiInjectFormField({self: true});
+
+    public readonly errors = input<readonly TuiSignalValidationError[]>([]);
+    public readonly touched = input(false);
+    public readonly value = model<unknown>(null);
+
+    public readonly error = computed((errors = this.errors()) => {
+        if (!this.touched()) {
+            return null;
+        }
+
+        const kind = this.order().find((id) => errors.find(({kind}) => kind === id));
+        const error = kind ? errors.find((x) => x.kind === kind) : errors[0];
+
+        return error
+            ? this.getError(error, error.message ?? this.content[error.kind])
+            : null;
+    });
+
+    protected onValidator(validator: TuiNativeValidator): void {
+        /**
+         * Signal forms have no `AbstractControl`: `inject(NgControl)` returns Angular's internal
+         * `InteropNgControl`, and every `[formField]` builds ITS OWN INSTANCE. So two bindings of the
+         * same field hold two different controls, and comparing them by identity is meaningless:
+         *
+         * ```html
+         * <input [formField]="form.name" />
+         * <tui-error [formField]="form.name" />
+         * ```
+         *
+         * What they do share is the `FieldState` behind them, but the only way to it is the
+         * undocumented `field` property — hence the index access.
+         *
+         * TODO: read the state through the public `FORM_FIELD` token once Taiga UI drops Angular < 22
+         * https://angular.dev/api/forms/signals/FORM_FIELD
+         */
+        // @ts-ignore
+        const validatorField = validator.control.field?.();
+        const field = this.field();
+
+        if (field && validatorField === field) {
+            validator.id = this.el.id;
+        }
     }
 }
 

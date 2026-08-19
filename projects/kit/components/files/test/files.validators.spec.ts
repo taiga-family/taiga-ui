@@ -9,6 +9,7 @@ describe('tuiCreateFileFormatValidator', () => {
     describe('empty accept', () => {
         it('accepts any file when accept is empty string', () => {
             const validator = tuiCreateFileFormatValidator('');
+
             const control = new FormControl([
                 makeFile('photo.exe', 'application/x-msdownload'),
             ]);
@@ -189,6 +190,22 @@ describe('tuiCreateFileFormatValidator', () => {
 
         it('should accept file when MIME type differs only by case', () => {
             const control = new FormControl([makeFile('photo.jpg', 'IMAGE/JPEG')]);
+
+            expect(validator(control)).toBeNull();
+        });
+
+        it('rejects file with missing type and non-matching extension', () => {
+            const validator = tuiCreateFileFormatValidator('.jpg');
+            const file = {name: 'photo.png'} as unknown as File;
+            const control = new FormControl([file]);
+
+            expect(validator(control)?.[TUI_FORMAT_ERROR].$implicit).toEqual([file]);
+        });
+
+        it('falls back to extension when MIME type is missing', () => {
+            const validator = tuiCreateFileFormatValidator('.jpg');
+            const file = {name: 'photo.jpg'} as unknown as File;
+            const control = new FormControl([file]);
 
             expect(validator(control)).toBeNull();
         });

@@ -15,7 +15,6 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     class Test {}
 
     const label = 'Test';
-
     let fixture: ComponentFixture<Test>;
     let tuiMobileDialogService: TuiMobileDialogService;
     let pageObject: TuiPageObject<Test>;

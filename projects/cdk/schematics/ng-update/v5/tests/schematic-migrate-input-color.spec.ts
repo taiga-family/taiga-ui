@@ -10,13 +10,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputColorModule to TuiInputColor',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputColorModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputColorModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputColorModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,
@@ -40,13 +40,13 @@ describe('ng-update', () => {
     it(
         'adds TODO for [colors] and removes it from wrapper',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputColorModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputColorModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputColorModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,

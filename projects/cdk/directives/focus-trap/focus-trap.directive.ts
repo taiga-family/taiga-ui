@@ -19,6 +19,7 @@ export class TuiFocusTrap implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private activeElement: Element | null = null;
+
     protected initialized = false;
 
     constructor() {

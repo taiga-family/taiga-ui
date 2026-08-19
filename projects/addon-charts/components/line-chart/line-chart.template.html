@@ -51,7 +51,6 @@
 }
 @if (hasHints) {
     @for (point of value(); track point) {
-        <!-- TODO: Fix hint type -->
         @if ($count > 1 || dots()) {
             <div
                 class="t-column"
@@ -59,7 +58,7 @@
                 [class.t-column_hovered]="hovered() === $index"
                 [style.inset-inline-start.%]="getLeft(getX($index))"
                 [style.width.%]="getWidth($index)"
-                [tuiHint]="$any(hintDirective?.hint() || hintContent)"
+                [tuiHint]="hint()"
                 [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
                 [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
                 [tuiHintHost]="hintHost"

@@ -45,6 +45,7 @@ export function migrateCalendarSheetSingle({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const elements = findElementsWithAttributeOnTag(
         template,
         [`[${INPUT}]`, INPUT],
@@ -145,17 +146,15 @@ function findAttr(element: Element): FoundAttr | null {
     const loc = element.sourceCodeLocation?.attrs?.[attr.name];
     const elementStart = element.sourceCodeLocation?.startTag?.startOffset;
 
-    if (!loc || elementStart === undefined) {
-        return null;
-    }
-
-    return {
-        attrName: attr.name,
-        value: attr.value,
-        startOffset: loc.startOffset,
-        endOffset: loc.endOffset,
-        elementStart,
-    };
+    return !loc || elementStart === undefined
+        ? null
+        : {
+              attrName: attr.name,
+              value: attr.value,
+              startOffset: loc.startOffset,
+              endOffset: loc.endOffset,
+              elementStart,
+          };
 }
 
 function checkIsStaticFalse(value: string): boolean {

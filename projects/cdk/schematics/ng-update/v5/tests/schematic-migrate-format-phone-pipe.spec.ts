@@ -40,13 +40,13 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     it(
         'replaces TuiFormatPhonePipe import with MaskitoPipe (single-quoted inline template)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
 
                 @Component({
                     standalone: true,
                     imports: [TuiFormatPhonePipe],
-                    template: '{{ phone | tuiFormatPhone }}'
+                    template: '{{ phone | tuiFormatPhone }}',
                 })
                 export class TestComponent {}
             `,
@@ -56,7 +56,7 @@ describe('ng-update migrate TuiFormatPhonePipe to MaskitoPipe', () => {
     it(
         'adds TODO inside backtick inline template with newline',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFormatPhonePipe} from '@taiga-ui/legacy';
 
                 @Component({

@@ -23,6 +23,7 @@ import {TuiRoot} from '@taiga-ui/core/components/root';
 export class TuiFullscreen {
     private readonly root = viewChild(TuiRoot, {read: ElementRef});
     private readonly doc = inject(DOCUMENT);
+
     public readonly tuiFullscreen = model(false);
 
     public readonly options = input<FullscreenOptions>(

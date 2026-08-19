@@ -113,7 +113,6 @@ export class TuiCalendarYear {
         const hovered = this.isRangePicking() ? hoveredItem : null;
         const from = 'from' in value ? value.from?.year : value.year;
         const to = 'from' in value ? value.to.year : value.year;
-
         const min = Math.min(from, hovered ?? to);
         const max = Math.max(from, hovered ?? to);
 

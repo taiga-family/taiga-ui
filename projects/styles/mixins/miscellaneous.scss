@@ -113,7 +113,9 @@
     }
 }
 
-// hide an element visually without hiding it from screen readers
+/**
+ * @deprecated remove in v6
+ */
 @mixin sr-only() {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
@@ -152,7 +154,7 @@
 
 @mixin tui-line-clamp($count: 3) {
     display: -webkit-box;
-    -webkit-box-orient: block-axis;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: $count;
     line-clamp: $count;
     overflow: hidden;
@@ -160,5 +162,5 @@
 }
 
 @mixin tui-mask($x, $y, $r) {
-    mask: radial-gradient(circle at $x $y, transparent $r, black $r);
+    mask-image: radial-gradient(circle at $x $y, transparent $r, black $r);
 }

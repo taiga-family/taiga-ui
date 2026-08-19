@@ -40,7 +40,7 @@ test.describe('TuiHint', () => {
                     await page.setViewportSize({width, height: 300});
                     await tuiGoto(
                         page,
-                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
+                        `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
                     );
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
@@ -59,7 +59,7 @@ test.describe('TuiHint', () => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=0&darkMode=${mode}`,
+                `${DemoRoute.Hint}/API?tuiHintShowDelay=0&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
@@ -136,7 +136,7 @@ test.describe('TuiHint', () => {
         await page.setViewportSize({width: 1280, height: 300});
         await tuiGoto(
             page,
-            '/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=12',
+            `${DemoRoute.HintManual}/API?tuiHintManual=true&tuiHintDirection$=12`,
         );
 
         await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
@@ -164,6 +164,10 @@ test.describe('TuiHint', () => {
         test('Increment inside hint', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
+            await page.addInitScript(() =>
+                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
+            );
+
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
             await example.locator('[tuiAvatar]').click();
@@ -177,7 +181,86 @@ test.describe('TuiHint', () => {
             await expect.soft(page).toHaveScreenshot('09-hint-on-mobile.png');
 
             await example.click();
+            await expect(page.locator('tui-hint')).not.toBeAttached();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
+
+        test('Hides on scroll start (pointerdown is not followed by click)', async ({
+            page,
+        }) => {
+            await tuiGoto(page, DemoRoute.Hint);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('[tuiAvatar]').click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+
+            await expect(hint).not.toBeAttached();
+        });
+
+        test('Shows again after being hidden without hover out', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Hint);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const avatar = example.locator('[tuiAvatar]');
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await avatar.click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+            await expect(hint).not.toBeAttached();
+
+            await avatar.click();
+            await expect(hint).toBeAttached();
+        });
+
+        test('Tooltip opens on tap and hides on tap outside', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Tooltip);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const tooltip = example.locator('[tuiTooltip]').first();
+            const hint = page.locator('tui-hint');
+
+            await example.scrollIntoViewIfNeeded();
+            await tooltip.click();
+            await expect(hint).toBeAttached();
+
+            await page.locator('body').dispatchEvent('pointerdown');
+            await expect(hint).not.toBeAttached();
+
+            await tooltip.click();
+            await expect(hint).toBeAttached();
+        });
+    });
+
+    test('disappears when host disappears', async ({page}) => {
+        await tuiGoto(page, DemoRoute.HintManual);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.locator('button').click();
+        await expect(page.locator('tui-hint')).toBeAttached();
+        await page.locator('#basic tui-segmented button').last().click();
+        await expect(page.locator('tui-hint')).not.toBeAttached();
+    });
+
+    test('works with a zero-sized host', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Pulse);
+
+        await page.getByRole('button', {name: 'Start tutorial'}).click();
+        await expect(page.locator('tui-hint')).toBeVisible();
+
+        await page.getByRole('button', {name: 'Next'}).click();
+        await expect(
+            page.locator('tui-hint').getByRole('heading', {
+                name: 'You can have images! Or any content really',
+            }),
+        ).toBeVisible();
     });
 });

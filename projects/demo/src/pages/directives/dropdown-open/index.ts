@@ -19,6 +19,14 @@ export default class PageComponent {
     protected readonly contentVariants = ['Template', 'Custom string'];
     protected content = this.contentVariants[0]!;
 
+    protected readonly examples = [
+        'Menu',
+        'With custom host',
+        'With link',
+        'Complex example',
+        'Custom positioning',
+    ];
+
     protected get template(): boolean {
         return this.content === 'Template';
     }

@@ -15,26 +15,25 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
     public toControlValue(textfieldValue: string | null): ControlValue {
         const params = this.mask.params();
         const {decimalSeparator} = params;
+
         const significand = maskitoParseNumber(
-            textfieldValue?.replace(decimalSeparator, '') ?? '',
+            textfieldValue?.replaceAll(decimalSeparator, '') ?? '',
             {
                 ...params,
                 bigint: true,
             },
         );
 
-        if (significand === null) {
-            return null;
-        }
-
-        return {
-            significand,
-            exp: textfieldValue?.includes(decimalSeparator)
-                ? -Array.from(textfieldValue.replace(params.postfix, ''))
-                      .reverse()
-                      .indexOf(decimalSeparator)
-                : 0,
-        };
+        return significand === null
+            ? null
+            : {
+                  significand,
+                  exp: textfieldValue?.includes(decimalSeparator)
+                      ? -Array.from(textfieldValue.replace(params.postfix, ''))
+                            .reverse()
+                            .indexOf(decimalSeparator)
+                      : 0,
+              };
     }
 
     public fromControlValue(controlValue: ControlValue): string {
@@ -45,11 +44,15 @@ export class BigIntWithDecimal extends TuiValueTransformer<string, ControlValue>
         }
 
         const params = this.mask.params();
+
         const integer = maskitoStringifyNumber(
             BigInt(String(significand).slice(0, exp || Infinity)),
-            {...params, postfix: ''},
+            {...params, postfix: '', maximumFractionDigits: 0},
         );
-        const decimal = exp ? String(significand).slice(exp) : '';
+
+        const decimal = exp
+            ? String(significand).padStart(Math.abs(exp), '0').slice(exp)
+            : '';
 
         return `${integer}${decimal && params.decimalSeparator + decimal}${params.postfix}`;
     }

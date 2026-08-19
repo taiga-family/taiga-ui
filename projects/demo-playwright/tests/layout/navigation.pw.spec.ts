@@ -85,7 +85,7 @@ test.describe('Navigation', () => {
         const input = example.locator('input').first();
 
         await input.focus();
-        await page.locator('[tuiTheme="dark"].t-container').click();
+        await page.locator('tui-input-search-content[tuiTheme="dark"]').click();
 
         await expect.soft(example).toHaveScreenshot('02-input-search.png');
     });

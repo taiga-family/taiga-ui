@@ -42,6 +42,9 @@
                     [filler]="filler"
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -49,12 +52,9 @@
 
                     <input
                         tuiInputPhone
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [mask]="phoneMask"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
                 </tui-textfield>
@@ -81,14 +81,14 @@
                     type="string"
                     [(value)]="filler"
                 >
-                    Filler
+                    grayed out guiding text
                 </tr>
-                >
             </tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody

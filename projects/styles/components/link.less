@@ -37,8 +37,8 @@
         margin-inline-start: 0.25rem;
     }
 
-    &[tuiIcons]::before,
-    &[tuiIcons]::after {
+    &[tuiIcons]:where(:not([data-icon-start='font']))::before,
+    &[tuiIcons]:where(:not([data-icon-end='font']))::after {
         content: '\2060';
         padding: calc(var(--tui-icon-size, 1rem) / 2);
         vertical-align: super;
@@ -47,6 +47,13 @@
         box-sizing: border-box;
         mask-size: calc(100% + 10 * var(--tui-stroke-width)) 100%;
         transition: none;
+    }
+
+    &[data-icon-start='font']::before,
+    &[data-icon-end='font']::after {
+        display: inline;
+        font-size: var(--tui-icon-size, 1rem);
+        vertical-align: sub;
     }
 
     &[tuiChevron]::after {

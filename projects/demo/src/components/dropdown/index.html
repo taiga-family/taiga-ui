@@ -18,7 +18,7 @@
         type="boolean"
         [(value)]="open"
     >
-        Manual control/monitor for the dropdown being visible
+        manual control/monitor for the dropdown being visible
     </tr>
 }
 @if (!hiddenOptions().includes('tuiDropdownEnabled')) {
@@ -28,7 +28,7 @@
         type="boolean"
         [(value)]="tuiDropdownEnabled"
     >
-        Enabling built-in open/close mechanics.
+        enabling built-in open/close mechanics.
     </tr>
 }
 @if (!hiddenOptions().includes('align')) {
@@ -39,9 +39,7 @@
         [items]="aligns"
         [(value)]="align"
     >
-        Align of dropdown (does not work together with
-        <code>limitWidth === 'fixed'</code>
-        )
+        align of dropdown to the side of the host
     </tr>
 }
 @if (!hiddenOptions().includes('direction')) {
@@ -52,7 +50,7 @@
         [items]="directions"
         [(value)]="direction"
     >
-        Set a vertical direction of dropdown
+        set the vertical direction of dropdown
     </tr>
 }
 @if (!hiddenOptions().includes('limitWidth')) {
@@ -63,7 +61,7 @@
         [items]="limitWidths"
         [(value)]="limitWidth"
     >
-        Limit width of dropdown
+        limit width of dropdown
     </tr>
 }
 @if (!hiddenOptions().includes('minHeight')) {
@@ -73,8 +71,7 @@
         type="number"
         [(value)]="minHeight"
     >
-        Minimum height to calculate that dropdown fits to set
-        <code>tuiDropdownDirection</code>
+        minimum height to shrink to before flipping direction
     </tr>
 }
 @if (!hiddenOptions().includes('maxHeight')) {
@@ -84,7 +81,7 @@
         type="number"
         [(value)]="maxHeight"
     >
-        Maximum height of dropdown
+        maximum height of dropdown
     </tr>
 }
 @if (!hiddenOptions().includes('offset')) {
@@ -94,7 +91,7 @@
         type="number"
         [(value)]="offset"
     >
-        Dropdown offset
+        dropdown offset from the host
     </tr>
 }
 @if (!hiddenOptions().includes('dropdownSided')) {
@@ -104,7 +101,7 @@
         type="boolean"
         [(value)]="dropdownSided"
     >
-        Enables side positioning of dropdown
+        enables side positioning of dropdown
     </tr>
 }
 @if (!hiddenOptions().includes('dropdownSidedOffset')) {
@@ -114,7 +111,7 @@
         type="number"
         [(value)]="dropdownSidedOffset"
     >
-        Determines the offset of the side positioned dropdown
+        determines the offset of the side positioned dropdown
     </tr>
 }
 @if (!hiddenOptions().includes('direction')) {
@@ -123,6 +120,6 @@
         tuiDocAPIItem
         type="TuiVerticalDirection"
     >
-        Dropdown direction change
+        dropdown direction change
     </tr>
 }

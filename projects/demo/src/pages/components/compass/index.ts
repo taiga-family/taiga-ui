@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiCompass, TuiDemo],
+    imports: [TuiCompass, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -18,5 +19,6 @@ export default class Page {
 
     protected color = this.colorVariants[0]!;
     protected degrees = 90;
+
     public readonly examples = ['Basic', 'Direction'];
 }

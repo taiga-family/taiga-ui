@@ -15,6 +15,7 @@ import {BehaviorSubject, map} from 'rxjs';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(

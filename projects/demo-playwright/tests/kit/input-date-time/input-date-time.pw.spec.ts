@@ -173,6 +173,7 @@ test.describe('InputDateTime', () => {
                 .toHaveScreenshot('03-timeMode=HH:MM.png');
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
+
             const timeModeSelect = new TuiSelectPO(
                 (await documentationPage.getSelect(timeModeRow))!,
             );
@@ -422,6 +423,7 @@ test.describe('InputDateTime', () => {
 
         test('With validator: enter incomplete date -> validator error', async () => {
             const example = documentationPage.getExample('#validation');
+
             const inputDateTime = new TuiInputDateTimePO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])').first(),
             );
@@ -440,6 +442,7 @@ test.describe('InputDateTime', () => {
 
         test('Calendar customization', async () => {
             const example = documentationPage.getExample('#calendar-customization');
+
             const inputDateTime = new TuiInputDateTimePO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])'),
             );

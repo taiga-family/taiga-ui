@@ -13,6 +13,7 @@ import {parseVersion} from './shared/parse-version';
 
 const isDryRun =
     getValueByFlag<'false' | 'true' | 'undefined'>('--dry-run', 'false') === 'true';
+
 const path = getValueByFlag('--path', '');
 
 (async function main(): Promise<void> {
@@ -23,7 +24,7 @@ const path = getValueByFlag('--path', '');
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);
 
-        process.exit(1);
+        process.exit(0);
     }
 
     infoLog(`name: ${packageJson.name}`);

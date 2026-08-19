@@ -39,7 +39,7 @@
                     class="t-tabs"
                     [(activeItemIndex)]="activeItemIndex"
                 >
-                    @for (tab of tabs; track tab) {
+                    @for (tab of tabs; track $index) {
                         <button type="button">
                             <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
                                 {{ text }}
@@ -85,7 +85,7 @@
                 }
             </div>
         }
-        @for (tab of tabs; track tab) {
+        @for (tab of tabs; track $index) {
             <div class="t-content">
                 @if (!$index && preview()) {
                     <section

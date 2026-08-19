@@ -58,7 +58,7 @@
     &::before {
         position: absolute;
         inset-inline-start: -1rem;
-        inset-block-start: calc(var(--t-offset) + var(--tui-lh));
+        inset-block-start: calc((var(--t-offset) + var(--tui-lh)) * (1 - 0.15 * var(--t-zoom)));
         transform: translateY(-100%);
     }
 
@@ -85,7 +85,8 @@
         }
 
         &::before {
-            inset-inline-start: -1rem;
+            inset-inline-start: calc(-1rem * (1 - 0.2 * var(--t-zoom)));
+            inset-block-start: calc((var(--t-offset) + var(--tui-lh)) * (1 - 0.1 * var(--t-zoom)));
             font-size: 1rem;
         }
 

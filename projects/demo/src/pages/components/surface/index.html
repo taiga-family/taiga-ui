@@ -19,25 +19,19 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [heading]="example"
-            >
-                @switch ($index + 1) {
-                    @case (1) {
-                        <div
-                            tuiNotification
-                            class="tui-space_bottom-4"
-                        >
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        <div tuiNotification>
                             You can enable hover effects only on devices with pointer:
-                            <div>
-                                <code>&#64;media (hover: hover)</code>
-                            </div>
+                            <code>&#64;media (hover: hover)</code>
                         </div>
                     }
-                    @case (2) {
-                        <div
-                            tuiNotification
-                            class="tui-space_bottom-4"
-                        >
+                    @case (1) {
+                        <div tuiNotification>
                             Note that
                             <code>padding</code>
                             and
@@ -51,11 +45,10 @@
                             component for that.
                         </div>
                     }
-                    @case (3) {
-                        <div
+                    @case (2) {
+                        <p
                             appearance="warning"
                             tuiNotification
-                            class="tui-space_bottom-4"
                         >
                             Text should have vertical compensation to look properly aligned, either with unequal
                             <code>padding</code>
@@ -66,10 +59,10 @@
                             , smaller line-height might require
                             <strong>0.125rem</strong>
                             instead.
-                        </div>
+                        </p>
                     }
                 }
-            </tui-doc-example>
+            </ng-template>
         }
     </ng-template>
 

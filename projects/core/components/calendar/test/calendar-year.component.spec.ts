@@ -31,6 +31,7 @@ describe('TuiCalendarYearComponent', () => {
     let testComponent: Test;
     let component: TuiCalendarYear;
     let pageObject: TuiPageObject<Test>;
+
     const testContext = {
         get prefix() {
             return 'tui-calendar-year__';

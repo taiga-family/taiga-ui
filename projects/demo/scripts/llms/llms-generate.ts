@@ -69,11 +69,7 @@ async function main(): Promise<void> {
             return -1;
         }
 
-        if (b === 'documentation') {
-            return 1;
-        }
-
-        return a.localeCompare(b);
+        return b === 'documentation' ? 1 : a.localeCompare(b);
     });
 
     const output: string[] = [];
@@ -117,7 +113,7 @@ async function main(): Promise<void> {
         output.push('');
     }
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
     console.info(`Successfully saved: ${OUTPUT_FILE}`);
 }
 

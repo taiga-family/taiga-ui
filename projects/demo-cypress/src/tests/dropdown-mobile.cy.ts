@@ -149,6 +149,7 @@ export class TestDropdownMobile {
     ];
 
     public readonly dialog = signal(false);
+
     protected readonly stringify = ({name}: User): string => name;
 }
 

@@ -33,5 +33,6 @@ class Styles {}
 })
 export class TuiFloatingContainer {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly background = input('', {alias: 'tuiFloatingContainer'});
 }

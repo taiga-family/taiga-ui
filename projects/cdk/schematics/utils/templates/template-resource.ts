@@ -16,11 +16,9 @@ export function getTemplateFromTemplateResource(
 }
 
 export function getPathFromTemplateResource(templateRes: TemplateResource): string {
-    if ('templatePath' in templateRes) {
-        return templateRes.templatePath;
-    }
-
-    return templateRes.componentPath;
+    return 'templatePath' in templateRes
+        ? templateRes.templatePath
+        : templateRes.componentPath;
 }
 
 export function getTemplateOffset(templateRes: TemplateResource): number {

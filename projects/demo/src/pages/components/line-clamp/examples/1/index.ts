@@ -17,6 +17,7 @@ import {map, timer} from 'rxjs';
 })
 export default class Example {
     private readonly isE2E = inject(WA_IS_E2E);
+
     protected readonly value = signal('');
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(

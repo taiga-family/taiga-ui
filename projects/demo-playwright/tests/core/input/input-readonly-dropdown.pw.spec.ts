@@ -18,24 +18,17 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
             dropdown = page.locator('tui-dropdown');
         });
 
-        // TODO: migrate
         [
             DemoRoute.ComboBox,
-            // DemoRoute.ComboBoxLegacy,
             DemoRoute.Select,
-            // DemoRoute.SelectLegacy,
             DemoRoute.InputDate,
-            // DemoRoute.InputDateLegacy,
             DemoRoute.InputDateRange,
-            // DemoRoute.InputDateRangeLegacy,
             DemoRoute.InputDateTime,
-            // DemoRoute.InputDateTimeLegacy,
             DemoRoute.InputMonth,
-            // DemoRoute.InputMonthLegacy,
         ].forEach((path) => {
-            describe('opens dropdown for readOnly=false', () => {
+            describe('opens dropdown for readonly=false', () => {
                 test(path, async ({page}) => {
-                    await tuiGoto(page, `${path}/API?readOnly=false`);
+                    await tuiGoto(page, `${path}/API?readonly=false&readOnly=false`); // TODO: delete `readOnly` param in next PR
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();
 
@@ -43,9 +36,9 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
                 });
             });
 
-            describe('does not open dropdown for readOnly=true', () => {
+            describe('does not open dropdown for readonly=true', () => {
                 test(path, async ({page}) => {
-                    await tuiGoto(page, `${path}/API?readOnly=true`);
+                    await tuiGoto(page, `${path}/API?readonly=true&readOnly=true`); // TODO: delete `readOnly` param in next PR
                     await expect(documentation.getRow('[readOnly]')).toBeAttached();
                     await input.click();
 

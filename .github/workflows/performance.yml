@@ -42,14 +42,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout feature branch
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
-      - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
-      - uses: taiga-family/ci/actions/setup/playwright@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: taiga-family/actions/setup-variables@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - uses: taiga-family/actions/setup-node@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - uses: taiga-family/actions/setup-playwright@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
       - name: Restore dist cache from parent workflow build
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -97,7 +97,7 @@ jobs:
         run: echo 'Skipping performance stress due to missing dist'
       - name: Serve feature build
         if: steps.dist-check.outputs.skip == 'false'
-        uses: taiga-family/ci/actions/run/serve@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+        uses: taiga-family/actions/http-serve@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -134,13 +134,13 @@ jobs:
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/clone@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+        uses: taiga-family/actions/git-clone@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/ci/actions/run/serve@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+        uses: taiga-family/actions/http-serve@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}

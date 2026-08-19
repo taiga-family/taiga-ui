@@ -56,7 +56,7 @@
                 type="number"
                 [(value)]="segments"
             >
-                A number of visual segments.
+                a number of visual segments.
                 <p>
                     It must be a valid
                     <strong>integer</strong>
@@ -71,7 +71,7 @@
                 type="number"
                 [(value)]="value"
             >
-                This property specifies how much of the task has been completed.
+                number of completed segments.
                 <p>
                     Must be a valid
                     <strong>integer</strong>
@@ -86,7 +86,7 @@
                 type="number"
                 [(value)]="max"
             >
-                <p>This property describes how much work the task indicated by the progress element requires.</p>
+                total amount of segments
                 <p>
                     Must be a valid
                     <strong>positive integer</strong>
@@ -102,7 +102,7 @@
                 [items]="sizeVariants"
                 [(value)]="size"
             >
-                Height of the progress
+                height of the progress
             </tr>
             <tr
                 name="[tuiProgressColorSegments]"
@@ -111,7 +111,7 @@
                 [items]="colorsVariants"
                 [(value)]="colors"
             >
-                Colors of the progress segments.
+                colors of the progress segments.
                 <p>
                     Use CSS-property
                     <code>color</code>

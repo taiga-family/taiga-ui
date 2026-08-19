@@ -4,8 +4,10 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 export const TUI_ALWAYS_DASHED: TuiLineHandler = (index) =>
     (index && 'dashed') || 'solid';
+
 export const TUI_ALWAYS_DOTTED: TuiLineHandler = (index) =>
     (index && 'dotted') || 'solid';
+
 export const TUI_ALWAYS_SOLID: TuiLineHandler = () => 'solid';
 export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 

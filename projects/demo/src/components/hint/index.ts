@@ -18,5 +18,9 @@ export class TuiDocHint {
 
     public direction = this.directions[0]!;
     public appearance = this.appearances[0]!;
-    public readonly hiddenOptions = input<Array<'appearance' | 'direction'>>([]);
+    public centered = true;
+
+    public readonly hiddenOptions = input<Array<'appearance' | 'centered' | 'direction'>>(
+        [],
+    );
 }

@@ -11,6 +11,7 @@ import {TuiHintHover} from './hint-hover.directive';
 export class TuiHintManual extends TuiDriver implements OnChanges {
     private readonly hover = inject(TuiHintHover);
     private readonly stream$ = new BehaviorSubject(false);
+
     public readonly visible = input<boolean | null>(false, {alias: 'tuiHintManual'});
     public readonly type = 'hint';
 

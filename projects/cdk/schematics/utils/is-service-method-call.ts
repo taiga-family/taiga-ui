@@ -39,15 +39,13 @@ export function isServiceMethodCall(
     }
 
     // 3) service.method(...)
-    if (Node.isIdentifier(expr)) {
-        return isIdentifierDeclaredAsInjectService(
-            expr.getSourceFile(),
-            expr.getText(),
-            serviceName,
-        );
-    }
-
-    return false;
+    return Node.isIdentifier(expr)
+        ? isIdentifierDeclaredAsInjectService(
+              expr.getSourceFile(),
+              expr.getText(),
+              serviceName,
+          )
+        : false;
 }
 
 function isInjectCallWithService(call: CallExpression, serviceName: string): boolean {
@@ -67,11 +65,7 @@ function isInjectCallWithService(call: CallExpression, serviceName: string): boo
     // inject(Service)
     const first = args[0];
 
-    if (Node.isIdentifier(first) && first.getText() === serviceName) {
-        return true;
-    }
-
-    return false;
+    return Node.isIdentifier(first) && first.getText() === serviceName;
 }
 
 function isIdentifierDeclaredAsInjectService(

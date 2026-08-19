@@ -15,6 +15,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected heading = 'Page heading';
     protected editing = false;
 

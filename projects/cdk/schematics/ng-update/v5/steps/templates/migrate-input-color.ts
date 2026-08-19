@@ -19,7 +19,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-color';
-
 const NO_EQUIVALENT_ATTRS = new Set(['[colors]'.toLowerCase(), 'colors'.toLowerCase()]);
 
 export function migrateInputColor({
@@ -61,8 +60,10 @@ export function migrateInputColor({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -83,8 +84,10 @@ export function migrateInputColor({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -112,6 +115,7 @@ export function migrateInputColor({
                 '     - [colors]: ReadonlyMap<string, string> is removed in v5. Use <datalist> with',
                 `       <option value="..."> elements instead. See example: ${DOCS_LINK} -->`,
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);

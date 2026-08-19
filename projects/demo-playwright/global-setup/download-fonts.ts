@@ -14,7 +14,7 @@ function resolveUrls(cssText: string, cssUrl: string): string[] {
     const baseUrl = cssUrl.slice(0, cssUrl.lastIndexOf('/') + 1);
 
     return [...cssText.matchAll(/url\(['"]?([^'")]+)['"]?\)/g)].map((m) => {
-        const raw = m[1]!;
+        const raw = m.at(1)!;
 
         return raw.startsWith('http') ? raw : new URL(raw, baseUrl).href;
     });
@@ -23,8 +23,8 @@ function resolveUrls(cssText: string, cssUrl: string): string[] {
 export async function downloadFonts(cssUrl: string): Promise<void> {
     const cssTexts = await Promise.all(
         USER_AGENTS.map(async (ua) =>
-            fetchWithRetry(cssUrl, {headers: {'User-Agent': ua}}).then(async (response) =>
-                response.text(),
+            fetchWithRetry({url: cssUrl, options: {headers: {'User-Agent': ua}}}).then(
+                async (response) => response.text(),
             ),
         ),
     );
@@ -34,21 +34,29 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
     await Promise.allSettled(
         fontUrls.map(async (url) => {
             const filename = new URL(url).pathname.split('/').pop() ?? '';
-            const response = await fetchWithRetry(url);
+            const response = await fetchWithRetry({url});
             const buffer = Buffer.from(await response.arrayBuffer());
 
             fs.writeFileSync(path.join(STUBS_DIR, filename), buffer);
         }),
     );
 
-    fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts[0]!);
+    fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts.at(0)!);
 }
 
-async function fetchWithRetry(
-    url: string,
-    options?: RequestInit,
+interface FetchWithRetryOptions {
+    url: string;
+    options?: RequestInit;
+    retries?: number;
+    attempt?: number;
+}
+
+async function fetchWithRetry({
+    url,
+    options,
     retries = 5,
-): Promise<Response> {
+    attempt = 0,
+}: FetchWithRetryOptions): Promise<Response> {
     const response = await fetch(url, options).catch(() => null);
 
     if (response?.ok) {
@@ -59,5 +67,10 @@ async function fetchWithRetry(
         throw new Error(`Failed to fetch ${url}`);
     }
 
-    return fetchWithRetry(url, options, retries - 1);
+    const delay = 1_000 * 2 ** attempt;
+
+    // exponential backoff: 1s, 2s, 4s, 8s, 16s (~31s total max for 5 retries)
+    await new Promise((resolve) => setTimeout(resolve, delay));
+
+    return fetchWithRetry({url, options, retries: retries - 1, attempt: attempt + 1});
 }

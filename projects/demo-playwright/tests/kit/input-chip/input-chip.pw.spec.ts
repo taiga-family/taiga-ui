@@ -15,7 +15,6 @@ test.describe('InputChip', () => {
         test('errors / overflow visual state (basic)', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip('Very looooooooooooooooooooooooong Text');
@@ -31,7 +30,6 @@ test.describe('InputChip', () => {
         test('forbid leading/trailing spaces normalization', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.addChip(' taiga ui library ');
@@ -44,7 +42,6 @@ test.describe('InputChip', () => {
         }) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.cleaner.click();
@@ -56,7 +53,6 @@ test.describe('InputChip', () => {
         test('regex separator works when copying values with newline', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
-
             const chip = new TuiInputChipPO(basic);
 
             await chip.cleaner.click();
@@ -68,7 +64,6 @@ test.describe('InputChip', () => {
         test('editing disabled chip', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#disabled-items');
-
             const chip = new TuiInputChipPO(example);
 
             await chip.chips.first().dblclick();
@@ -81,9 +76,11 @@ test.describe('InputChip', () => {
         }) => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
+
             const block = example.locator('[tuiLabel]', {
                 hasText: 'Conditional input in textfield',
             });
+
             const input = block.locator('tui-textfield input[tuiInputChip]');
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator('tui-dropdown');
@@ -109,7 +106,6 @@ test.describe('InputChip', () => {
         test('custom separator', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123-456-789');
@@ -121,10 +117,34 @@ test.describe('InputChip', () => {
             await expect.soft(example).toHaveScreenshot('input-chip-separator.png');
         });
 
+        test('custom separator splits edited chip', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
+            const example = new TuiDocumentationApiPagePO(page).demo;
+            const inputChip = new TuiInputChipPO(example);
+
+            await inputChip.input.fill('111-222-333');
+            await inputChip.input.blur();
+            await expect(inputChip.chips).toHaveCount(3);
+
+            const chip = inputChip.chips.nth(1);
+            const input = chip.locator('input');
+
+            await chip.locator('.t-text').dblclick();
+            await expect(input).toBeEnabled();
+            await input.fill('444-555');
+            await input.press('Enter');
+
+            await expect(inputChip.chips.locator('.t-text')).toHaveText([
+                '111',
+                '444',
+                '555',
+                '333',
+            ]);
+        });
+
         test('unique false', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=false`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
@@ -139,7 +159,6 @@ test.describe('InputChip', () => {
         test('unique true', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?unique=true`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,123,123');
@@ -171,13 +190,12 @@ test.describe('InputChip', () => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const apiPage = new TuiDocumentationApiPagePO(page);
             const example = apiPage.demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123');
             await inputChip.input.blur();
 
-            const toggle = await apiPage.getToggle(apiPage.getRow('readOnly'));
+            const toggle = await apiPage.getToggle(apiPage.getRow('readonly'));
 
             await toggle?.click();
 
@@ -189,7 +207,6 @@ test.describe('InputChip', () => {
         test('chip cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
@@ -208,7 +225,6 @@ test.describe('InputChip', () => {
         test('textfield cleaner', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API`);
             const example = new TuiDocumentationApiPagePO(page).demo;
-
             const inputChip = new TuiInputChipPO(example);
 
             await inputChip.input.fill('123,456,789');
@@ -221,6 +237,80 @@ test.describe('InputChip', () => {
             await expect
                 .soft(example)
                 .toHaveScreenshot('input-chip-textfield-cleaner.png');
+        });
+
+        test.describe('updateOn=submit', () => {
+            let api!: TuiDocumentationApiPagePO;
+            let inputChip!: TuiInputChipPO;
+            let submit!: Locator;
+
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputChip}/API?sandboxExpanded=true&updateOn=submit`,
+                );
+
+                api = new TuiDocumentationApiPagePO(page);
+                inputChip = new TuiInputChipPO(api.demo);
+                submit = api.submitFormControlButton;
+            });
+
+            test('shows typed chips immediately, but updates control value only on submit', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                await expect(api.value).not.toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('removes submitted chip via remove button', async () => {
+                await inputChip.input.fill('123,456,789');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(api.value).toContainText('123');
+                await expect(inputChip.chips).toHaveCount(3);
+
+                await inputChip.chips
+                    .first()
+                    .locator('button', {hasText: 'Remove'})
+                    .click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(api.value).toContainText('456');
+                await expect(inputChip.chips).toHaveCount(2);
+            });
+
+            test('clears all submitted chips via textfield cleaner', async () => {
+                await inputChip.input.fill('123,456');
+                await inputChip.input.blur();
+                await submit.click();
+
+                await expect(inputChip.chips).toHaveCount(2);
+
+                await inputChip.cleaner.click();
+
+                await expect(inputChip.chips).toHaveCount(0);
+                // Control value should stay intact until the form is submitted
+                await expect(api.value).toContainText('123');
+
+                await submit.click();
+
+                await expect(api.value).not.toContainText('123');
+                await expect(inputChip.chips).toHaveCount(0);
+            });
         });
     });
 
@@ -252,6 +342,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
@@ -269,6 +360,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await multiselect.input.fill('eric');
@@ -287,6 +379,7 @@ test.describe('InputChip', () => {
                     hasText:
                         'Using checkboxes in the dropdown and making the textfield non-writable',
                 });
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await block.locator('tui-textfield').click();
@@ -304,6 +397,7 @@ test.describe('InputChip', () => {
                 const block = example
                     .locator('label[tuiLabel]')
                     .filter({hasText: 'Working with objects'});
+
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await example.scrollIntoViewIfNeeded();
@@ -327,6 +421,36 @@ test.describe('InputChip', () => {
                 await expect
                     .soft(block.locator('tui-textfield'))
                     .toHaveScreenshot('multiselect-select-objects-block.png');
+            });
+
+            test('group toggle selects / unselects all its options (with [(ngModel)] binding)', async () => {
+                const block = example
+                    .locator('label[tuiLabel]')
+                    .filter({hasText: 'Working with objects'});
+
+                const multiselect = new TuiMultiSelectPO(block);
+
+                const checked = multiselect.dropdown.locator(
+                    'input[type="checkbox"]:checked',
+                );
+
+                await block.locator('tui-textfield').click();
+                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select all'})
+                    .first()
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(6);
+                await expect(checked).toHaveCount(6);
+
+                await multiselect.dropdown
+                    .getByRole('button', {name: 'Select none'})
+                    .click();
+
+                await expect(multiselect.chips).toHaveCount(0);
+                await expect(checked).toHaveCount(0);
             });
         });
     });

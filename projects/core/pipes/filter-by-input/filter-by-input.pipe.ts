@@ -73,6 +73,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         const groupMap = new Map(
             groups.flatMap((group, i) => group.map((item) => [item, i])),
         );
+
         const filteredGroups: T[][] = [];
 
         this.filterFlat()(groups.flat()).forEach((item) => {

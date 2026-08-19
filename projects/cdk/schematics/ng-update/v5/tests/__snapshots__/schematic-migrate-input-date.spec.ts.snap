@@ -87,18 +87,18 @@ exports[`ng-update migrate TuiInputDateModule to TuiInputDate: test.ts 1`] = `
                 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDateModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDateModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputDate } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDate],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDate],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
@@ -155,6 +155,32 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDate>: test.html 1`] 
                 </label>
 
 <input tuiInputDate formControlName="date" [max]="maxDate" [min]="minDate" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a date
+                </label>
+
+<input tuiInputDate [formControlName]="control" (ngModelChange)="onChange($event)" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
             ",

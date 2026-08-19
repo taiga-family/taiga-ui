@@ -15,7 +15,6 @@ export function addUniqueImport(
     }
 
     const existingDeclaration = getImports(filePath, {moduleSpecifier});
-
     const imports = existingDeclaration?.[0];
 
     if (imports) {

@@ -39,6 +39,7 @@ export default class Page {
         'Resolver',
         'External',
         'Background',
+        'Icon fonts',
     ];
 
     protected icon = '@tui.heart';

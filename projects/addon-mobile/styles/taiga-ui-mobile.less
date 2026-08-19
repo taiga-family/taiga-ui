@@ -6,6 +6,7 @@
     @import 'android/checkbox.less';
     @import 'android/radio.less';
     @import 'android/switch.less';
+    @import 'android/tab-bar.less';
 
     tui-badge-notification[data-size='l'] {
         --t-size: 1.375rem;
@@ -13,8 +14,11 @@
 }
 
 [data-platform='ios'] {
+    @import 'ios/app-bar.less';
     @import 'ios/checkbox.less';
     @import 'ios/switch.less';
+    @import 'ios/tab-bar.less';
+    @import 'ios/thumbnail-card.less';
 
     tui-segmented > *:not(tui-segmented_active):active {
         background-color: var(--tui-background-neutral-1);
@@ -36,13 +40,17 @@
     @import 'common/badge.less';
     @import 'common/badge-notification.less';
     @import 'common/block-status.less';
+    @import 'common/block-details.less';
     @import 'common/button.less';
     @import 'common/item-group.less';
     @import 'common/title.less';
     @import 'common/card-large.less';
     @import 'common/chip.less';
+    @import 'common/counter.less';
+    @import 'common/file.less';
     @import 'common/segmented.less';
     @import 'common/header.less';
+    @import 'common/hint.less';
     @import 'common/message.less';
     @import 'common/notification.less';
     @import 'common/notification-middle.less';

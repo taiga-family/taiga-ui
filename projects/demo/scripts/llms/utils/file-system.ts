@@ -23,11 +23,7 @@ export async function fileExists(filePath: string): Promise<boolean> {
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
-    if (!(await fileExists(indexPath))) {
-        return '';
-    }
-
-    return fs.readFile(indexPath, 'utf-8');
+    return (await fileExists(indexPath)) ? fs.readFile(indexPath, 'utf-8') : '';
 }
 
 // parse metadata from tui-doc-page
@@ -40,13 +36,10 @@ export function getComponentHeader(content: string): ComponentHeader {
 
     const tagContent = tagMatch[1];
     const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
-
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
-
     const packageMatch = /package="([^"]*)"/i.exec(tagContent);
     const packageValue = packageMatch?.[1]?.trim() || null;
-
     const typeMatch = /type="([^"]*)"/i.exec(tagContent);
     const type = typeMatch?.[1]?.trim() || null;
 
@@ -110,7 +103,6 @@ export async function getImportExamples(
 
     const importPath = await findFirstExisting(importCandidates);
     const templatePath = await findFirstExisting(templateCandidates);
-
     let result = '';
 
     if (importPath) {
@@ -217,6 +209,7 @@ export function getComponentApiFromTemplates(content: string): string {
     }
 
     const templatesContent = templateMatch[1];
+
     const templateRows = templatesContent?.match(
         /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
@@ -281,7 +274,6 @@ export async function getComponentSourceFiles(
 
     const tsPath = path.join(folderPath, 'index.ts');
     const lessPath = path.join(folderPath, 'index.less');
-
     let result = '';
 
     if (await fileExists(tsPath)) {
@@ -621,6 +613,7 @@ export function extractExampleDescriptions(
 
 export async function getAllFolders(): Promise<string[]> {
     const folders: string[] = [];
+
     const SKIP_FOLDERS = [
         'examples',
         'assets',

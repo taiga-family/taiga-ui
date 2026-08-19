@@ -1,5 +1,10 @@
 import {TuiErrorComponent} from './error.component';
-import {TuiErrorDirective} from './error.directive';
+import {TuiErrorDirective, TuiErrorField} from './error.directive';
 import {TuiErrorPipe} from './error.pipe';
 
-export const TuiError = [TuiErrorComponent, TuiErrorDirective, TuiErrorPipe] as const;
+export const TuiError = [
+    TuiErrorComponent,
+    TuiErrorDirective,
+    TuiErrorField,
+    TuiErrorPipe,
+] as const;

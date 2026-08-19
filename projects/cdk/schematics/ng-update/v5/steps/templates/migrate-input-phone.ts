@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -24,7 +25,6 @@ type ChildNode = DefaultTreeAdapterTypes.ChildNode;
 type Element = DefaultTreeAdapterTypes.Element;
 
 const DOCS_LINK = 'https://taiga-ui.dev/components/input-phone';
-
 const INPUT_ATTRS = new Set(['[allowText]'.toLowerCase(), 'allowText'.toLowerCase()]);
 
 const NO_EQUIVALENT_ATTRS = new Set([
@@ -63,8 +63,10 @@ export function migrateInputPhone({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -107,8 +109,10 @@ export function migrateInputPhone({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -138,21 +142,24 @@ export function migrateInputPhone({
         );
 
         const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
+
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         if (noEquivalentAttrs.length > 0) {
             const names = noEquivalentAttrs.map((a) => a.name).join(', ');
+
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-phone migration (see ${DOCS_LINK}):`,
                 `     - ${names} have no direct v5 equivalent.`,
                 '       In v5 both are replaced by a single [mask] input of type MaskitoOptions.',
                 '       Replace with: <input tuiInputPhone [mask]="phoneOptions" /> where',
-                "       phoneOptions = maskitoPhoneOptionsGenerator({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
+                "       phoneOptions = maskitoPhone({countryIsoCode: 'RU', metadata}) from @maskito/phone. -->",
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);
@@ -184,27 +191,4 @@ export function migrateInputPhone({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[allowText]'.toLowerCase():
-            return '[allowText]';
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'allowText'.toLowerCase():
-            return 'allowText';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

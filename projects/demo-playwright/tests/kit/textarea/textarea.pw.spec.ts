@@ -44,4 +44,37 @@ test.describe('Textarea', () => {
                 .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
         });
     });
+
+    ['m', 'l'].forEach((size) => {
+        test(`stays intact with a global border-box reset (size ${size})`, async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldSize=${size}`);
+
+            await page.addStyleTag({content: '* { box-sizing: border-box; }'});
+
+            const {demo} = new TuiDocumentationPagePO(page);
+            const textarea = demo.locator('textarea[tuiTextarea]');
+
+            await textarea.fill('1\n2\n3\n4');
+
+            await expect.soft(demo).toHaveScreenshot(`textarea-border-box-${size}.png`);
+        });
+    });
+
+    test('overscroll-behavior', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+
+        const basicTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('textarea[tuiTextarea]')
+            .first();
+
+        const limitTextarea = new TuiDocumentationPagePO(page)
+            .getExample('#limit')
+            .locator('textarea[tuiTextarea]');
+
+        await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
+        await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
+    });
 });

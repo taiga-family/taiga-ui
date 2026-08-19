@@ -10,13 +10,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputPhoneInternationalModule to TuiInputPhoneInternational',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputPhoneInternationalModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternationalModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternationalModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,
@@ -48,13 +48,13 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputPhoneInternational from experimental to TuiInputPhoneInternational',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternational],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternational],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             `,

@@ -4,7 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        @for (example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected']; track example) {
+        @for (
+            example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected', 'With Action Button'];
+            track example
+        ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -37,6 +40,9 @@
                         <code>Connected</code>
                         directive to implement stepper-like UI.
                     }
+                    @case (6) {
+                        Adding action buttons to accordion header.
+                    }
                 }
             </ng-template>
         }
@@ -67,7 +73,7 @@
                 type="boolean"
                 [(value)]="closeOthers"
             >
-                Other sections are closed when user opens one
+                close other sections when user opens one
             </tr>
             <tr
                 name="[size]"
@@ -75,16 +81,14 @@
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[(tuiAccordion)]"
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="open"
             >
-                Individual item open state
+                individual item open state
             </tr>
         </table>
     </ng-template>

@@ -12,6 +12,6 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected activePadding = 2;
 }

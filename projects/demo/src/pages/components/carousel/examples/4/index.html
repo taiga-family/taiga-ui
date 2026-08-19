@@ -1,18 +1,15 @@
-<tui-carousel>
-    <ng-template
-        let-index
-        tuiItem
+<tui-carousel
+    [max]="4"
+    [min]="0"
+    [style.inline-size.rem]="17"
+>
+    <section
+        *tuiItem="let index"
+        appearance="neutral"
+        tuiCardLarge="compact"
+        [style.inline-size.%]="90"
     >
-        @for (_ of '-'.repeat(4); track $index) {
-            @let item = items.at((index * 4 + $index) % this.items.length);
-            <tui-avatar-labeled [label]="item?.label || ''">
-                <span tuiAvatar>
-                    <img
-                        alt=""
-                        [src]="item?.avatar"
-                    />
-                </span>
-            </tui-avatar-labeled>
-        }
-    </ng-template>
+        <header tuiHeader>Slide {{ index + 1 }}</header>
+        {{ texts[index] }}
+    </section>
 </tui-carousel>

@@ -1,17 +1,13 @@
 import {Directive, inject} from '@angular/core';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TUI_COMMON_ICONS, TUI_ICON_START} from '@taiga-ui/core/tokens';
+
+import {TUI_BUTTON_X_OPTIONS} from './button-x.options';
 
 @Directive({
     selector: '[tuiButtonX]',
     providers: [
-        tuiButtonOptionsProvider(
-            (host = inject(TUI_DATA_LIST_HOST, {optional: true})) => ({
-                appearance: host ? 'icon' : 'neutral',
-                size: host ? 'xs' : 's',
-            }),
-        ),
+        tuiButtonOptionsProvider(() => inject(TUI_BUTTON_X_OPTIONS)),
         {
             provide: TUI_ICON_START,
             useFactory: () => inject(TUI_COMMON_ICONS).close,
@@ -19,7 +15,6 @@ import {TUI_COMMON_ICONS, TUI_ICON_START} from '@taiga-ui/core/tokens';
     ],
     hostDirectives: [{directive: TuiButton, inputs: ['size']}],
     host: {
-        tabindex: '-1',
         tuiIconButton: '',
         type: 'button',
         '[style.--t-radius.%]': '100',

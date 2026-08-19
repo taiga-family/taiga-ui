@@ -39,6 +39,7 @@ export class TuiFile {
     private readonly locale = inject(LOCALE_ID);
     private readonly units = inject(TUI_DIGITAL_INFORMATION_UNITS);
     private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts = inject(TUI_FILE_TEXTS);
 

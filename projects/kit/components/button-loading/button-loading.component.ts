@@ -29,6 +29,7 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 })
 export class TuiButtonLoading {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
+
     public readonly size = input(this.options.size);
     public readonly loading = input<boolean | string | null>(false);
 
@@ -36,9 +37,11 @@ export class TuiButtonLoading {
         tuiSizeBigger(this.size()) ? 'm' : 's',
     );
 
-    protected readonly label = computed(() =>
-        tuiIsString(this.loading()) ? this.loading() : '',
-    );
+    protected readonly label = computed(() => {
+        const loading = this.loading();
+
+        return tuiIsString(loading) ? loading : '';
+    });
 
     protected onClick(event: MouseEvent): void {
         if (this.loading()) {

@@ -128,6 +128,25 @@ describe('ng-update tui-doc-documentation to table[tuiDocAPI]', () => {
     );
 
     it(
+        'wraps $event with $any() in (valueChange) to handle model<T>() emitting T | undefined',
+        migrate({
+            template: /* HTML */ `
+                <tui-doc-documentation>
+                    <ng-template
+                        documentationPropertyMode="input"
+                        documentationPropertyName="ngModel"
+                        documentationPropertyType="string"
+                        [documentationPropertyValue]="control.value"
+                        (documentationPropertyValueChange)="control.setValue($event)"
+                    >
+                        Example pass HTML code
+                    </ng-template>
+                </tui-doc-documentation>
+            `,
+        }),
+    );
+
+    it(
         'renames one-way [documentationPropertyValue] + (documentationPropertyValueChange) to [value] + (valueChange)',
         migrate({
             template: /* HTML */ `
@@ -199,6 +218,21 @@ describe('ng-update tui-doc-documentation to table[tuiDocAPI]', () => {
                 >
                     {{ item }}
                 </ng-template>
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiDocDocumentation import to TuiDocAPI',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiDocDocumentation} from '@taiga-ui/addon-doc';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiDocDocumentation],
+                })
+                export class TestComponent {}
             `,
         }),
     );

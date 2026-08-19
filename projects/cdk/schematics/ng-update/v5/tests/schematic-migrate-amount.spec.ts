@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update amount', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {Component} from '@angular/core';
             import {TuiLoader} from '@taiga-ui/core';
             import {TuiRingChart} from '@taiga-ui/addon-charts';

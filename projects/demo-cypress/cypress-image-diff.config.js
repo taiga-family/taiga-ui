@@ -6,4 +6,7 @@ module.exports = {
         FILENAME: 'report-summary',
         OVERWRITE: true,
     },
+    CYPRESS_SCREENSHOT_OPTIONS: {
+        disableTimersAndAnimations: false,
+    },
 };

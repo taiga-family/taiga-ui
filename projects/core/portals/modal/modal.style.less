@@ -26,6 +26,16 @@ tui-modal:where(*&) {
     overscroll-behavior: none;
     transform: translateY(var(--t-root-top));
 
+    &:not(:last-of-type) {
+        // stylelint-disable-next-line -- graceful degradation
+        interactivity: inert;
+    }
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiDummy;
+    }
+
     // Safari < 15.4 and Chromium < 111
     @supports not (selector(:has(*))) or not (selector(:nth-child(1 of *))) {
         &:last-of-type {
@@ -78,8 +88,6 @@ tui-modal:where(*&) {
     }
 
     > [tuiScrollRef] {
-        .scrollbar-hidden();
-
         position: sticky;
         inset: 0;
         display: grid;
@@ -100,6 +108,7 @@ tui-modal:where(*&) {
             }
         }
 
+        > .t-scrollbars:first-child,
         > .tui-enter + .t-scrollbars .t-bar_vertical,
         > .tui-leave + .t-scrollbars .t-bar_vertical {
             display: none;

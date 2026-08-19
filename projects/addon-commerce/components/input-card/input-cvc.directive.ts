@@ -17,6 +17,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 })
 export class TuiInputCVCDirective {
     protected readonly mask = tuiMaskito(computed(() => TUI_MASK_CVC(this.length())));
+
     public readonly hidden = input(true);
     public readonly length = input<3 | 4>(3);
 }

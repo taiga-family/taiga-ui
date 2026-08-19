@@ -41,8 +41,8 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         const duration = this.getDurationTimeBeforeFocus();
         let fakeFocusTimeoutId = 0;
         let elementFocusTimeoutId = 0;
-
         const blurHandler = (): void => fakeInput.focus({preventScroll: true});
+
         const focusHandler = (): void => {
             clearTimeout(fakeFocusTimeoutId);
 

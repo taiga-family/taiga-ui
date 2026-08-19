@@ -1,13 +1,14 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "defaultProject": "demo",
-    "nxCloudId": "65379685bc6d4d78e25c18d9",
-    "parallel": 3,
-    "showUsageWarnings": true,
-    "tui": {
-        "enabled": false
+    "analytics": true,
+    "cli": {
+        "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
     },
+    "defaultBase": "origin/main",
+    "defaultProject": "demo",
     "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "production": ["default"],
         "sharedGlobals": [
             "{workspaceRoot}/projects/testing/**/*.ts",
             "{workspaceRoot}/nx.json",
@@ -17,36 +18,35 @@
             "{workspaceRoot}/scripts/**/*",
             "{workspaceRoot}/*.yml",
             "{workspaceRoot}/*.md"
-        ],
-        "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "production": ["default"]
+        ]
     },
+    "nxCloudId": "65379685bc6d4d78e25c18d9",
+    "parallel": 3,
+    "showUsageWarnings": true,
     "targetDefaults": {
         "build": {
-            "inputs": ["default", "^default"],
-            "cache": true
+            "cache": true,
+            "inputs": ["default", "^default"]
+        },
+        "e2e": {
+            "inputs": ["default", "^default"]
         },
         "test": {
+            "cache": true,
             "inputs": [
                 "default",
                 "production",
                 "^production",
                 "{workspaceRoot}/setup-jest.ts",
                 "{workspaceRoot}/jest.config.ts"
-            ],
-            "cache": true
-        },
-        "e2e": {
-            "inputs": ["default", "^default"]
+            ]
         }
     },
+    "tui": {
+        "enabled": false
+    },
     "workspaceLayout": {
-        "libsDir": "projects",
-        "appsDir": "projects"
-    },
-    "cli": {
-        "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
-    },
-    "defaultBase": "origin/main",
-    "analytics": true
+        "appsDir": "projects",
+        "libsDir": "projects"
+    }
 }

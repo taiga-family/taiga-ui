@@ -39,6 +39,7 @@ function isText(value: string): boolean {
 export class TuiInputPhoneDirective extends TuiControl<string | null> {
     private readonly input = inject(TuiInputDirective);
     private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
+
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly nonRemovablePrefix = computed(() => `${this.countryCode()} `);
@@ -48,8 +49,10 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
     );
 
     protected readonly valueEffect = effect(() => {
-        if (this.value()) {
-            this.input.value.set(maskitoTransform(this.value() ?? '', this.maskito()));
+        const value = this.value();
+
+        if (value) {
+            this.input.value.set(maskitoTransform(value ?? '', this.maskito()));
         }
     });
 
@@ -106,6 +109,7 @@ export class TuiInputPhoneDirective extends TuiControl<string | null> {
         allowText: boolean,
     ): MaskitoOptions {
         const mask = tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode);
+
         const preprocessors = [
             tuiCreateCompletePhoneInsertionPreprocessor(
                 countryCode,

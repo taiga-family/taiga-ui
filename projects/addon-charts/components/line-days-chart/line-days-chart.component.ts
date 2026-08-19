@@ -109,10 +109,12 @@ export class TuiLineDaysChart implements AfterViewInit {
             return Array.from({length}, (_, day) => {
                 const startMutable = mutable[0]?.[0];
                 const currentDay = start?.append({day});
+
                 const shifted =
                     startMutable && currentDay?.daySame(startMutable)
                         ? mutable.shift()
                         : null;
+
                 const currentValue = shifted ? shifted[1] : Number.NaN;
 
                 return [currentDay, currentValue] as [TuiDay, number];

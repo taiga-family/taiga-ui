@@ -219,6 +219,9 @@
                 <tui-textfield
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -228,17 +231,14 @@
 
                     <input
                         tuiInputNumber
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [quantum]="quantum"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [step]="step"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -262,7 +262,7 @@
                     [items]="minVariants"
                     [(value)]="min"
                 >
-                    The
+                    the
                     <strong>lowest</strong>
                     value in the range of permitted values
                 </tr>
@@ -274,7 +274,7 @@
                     [items]="maxVariants"
                     [(value)]="max"
                 >
-                    The
+                    the
                     <strong>greatest</strong>
                     value in the range of permitted values
                 </tr>
@@ -286,7 +286,7 @@
                     [tuiNumberFormat]="{precision: 3}"
                     [(value)]="step"
                 >
-                    Step to increase/decrease value with keyboard and buttons on the side
+                    step to increase/decrease value with keyboard and buttons on the side
                 </tr>
 
                 <tr
@@ -295,7 +295,7 @@
                     type="string"
                     [(value)]="prefix"
                 >
-                    Uneditable text
+                    uneditable text
                     <strong>before</strong>
                     number
                 </tr>
@@ -306,7 +306,7 @@
                     type="string"
                     [(value)]="postfix"
                 >
-                    Uneditable text
+                    uneditable text
                     <strong>after</strong>
                     number
                 </tr>
@@ -317,7 +317,7 @@
                     type="number | bigint"
                     [(value)]="quantum"
                 >
-                    Minimum indivisible value
+                    minimum indivisible value
 
                     <p>
                         Use
@@ -344,8 +344,9 @@
             ></tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody

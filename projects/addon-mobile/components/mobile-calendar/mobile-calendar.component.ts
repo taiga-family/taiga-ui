@@ -133,11 +133,9 @@ export class TuiMobileCalendar implements AfterViewInit {
             return value.year;
         }
 
-        if (!(value instanceof TuiDayRange)) {
-            return value?.[0]?.year ?? this.today.year;
-        }
-
-        return value.to.year;
+        return value instanceof TuiDayRange
+            ? value.to.year
+            : (value?.[0]?.year ?? this.today.year);
     });
 
     private readonly initialMonth = computed((value = this.value()) => {
@@ -149,14 +147,11 @@ export class TuiMobileCalendar implements AfterViewInit {
             return value.month + (value.year - STARTING_YEAR) * MONTHS_IN_YEAR;
         }
 
-        if (!(value instanceof TuiDayRange)) {
-            return (
-                (value?.[0]?.month ?? this.today.month) +
-                ((value?.[0]?.year ?? this.today.year) - STARTING_YEAR) * MONTHS_IN_YEAR
-            );
-        }
-
-        return value.to.month + (value.to.year - STARTING_YEAR) * MONTHS_IN_YEAR;
+        return value instanceof TuiDayRange
+            ? value.to.month + (value.to.year - STARTING_YEAR) * MONTHS_IN_YEAR
+            : (value?.[0]?.month ?? this.today.month) +
+                  ((value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
+                      MONTHS_IN_YEAR;
     });
 
     protected initialized = false;
@@ -272,11 +267,9 @@ export class TuiMobileCalendar implements AfterViewInit {
             return 'active';
         }
 
-        if (this.isYearActive(index - 1) || this.isYearActive(index + 1)) {
-            return 'adjacent';
-        }
-
-        return null;
+        return this.isYearActive(index - 1) || this.isYearActive(index + 1)
+            ? 'adjacent'
+            : null;
     }
 
     protected onMonthChange(month: number): void {
@@ -350,11 +343,13 @@ export class TuiMobileCalendar implements AfterViewInit {
             'touchstart',
             {passive: true},
         );
+
         const touchend$ = tuiTypedFromEvent(
             yearsScroll.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
+
         const click$ = tuiTypedFromEvent(yearsScroll.elementRef.nativeElement, 'click');
 
         // Refresh activeYear
@@ -415,6 +410,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             'touchstart',
             {passive: true},
         );
+
         const touchend$ = tuiTypedFromEvent(
             monthsScroll.elementRef.nativeElement,
             'touchend',

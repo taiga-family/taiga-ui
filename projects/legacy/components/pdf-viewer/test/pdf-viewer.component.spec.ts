@@ -18,7 +18,6 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     class Test {}
 
     const label = 'Test';
-
     let fixture: ComponentFixture<Test>;
     let tuiPdfViewerService: TuiPdfViewerService;
     let pageObject: TuiPageObject<Test>;

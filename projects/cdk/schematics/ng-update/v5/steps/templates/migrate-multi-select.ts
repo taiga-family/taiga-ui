@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
 type Element = DefaultTreeAdapterTypes.Element;
@@ -34,15 +35,6 @@ const TAG_VALIDATOR_BINDING_ATTR = '[tagValidator]';
 const SEARCH_CHANGE_OUTPUT = '(searchChange)';
 // [search] has no template-level v5 equivalent (requires viewChild + signal)
 const MANUAL_SEARCH_BINDING_ATTRS = new Set(['[(search)]', '[search]', 'search']);
-const CONTROL_ATTR_NAMES = [
-    'formControlName',
-    '[formControl]',
-    'formControl',
-    '[(ngModel)]',
-    '[ngModel]',
-    'ngModel',
-] as const;
-const CONTROL_ATTRS = new Set(CONTROL_ATTR_NAMES.map((name) => name.toLowerCase()));
 
 export function migrateMultiSelect({
     resource,
@@ -59,8 +51,9 @@ export function migrateMultiSelect({
 
     elements.forEach((element) => {
         const startOffset = element.sourceCodeLocation?.startOffset;
+
         const controlAttrs = element.attrs.filter((attr) =>
-            CONTROL_ATTRS.has(attr.name.toLowerCase()),
+            /formcontrol|ngmodel/.exec(attr.name.toLowerCase()),
         );
 
         const controlStateAttrs = getControlStateAttrs(element);
@@ -101,6 +94,7 @@ export function migrateMultiSelect({
 
         if (hasAutoColor && typeof startOffset === 'number') {
             const lineStart = template.lastIndexOf('\n', startOffset) + 1;
+
             const indent =
                 /^[ \t]*/.exec(template.slice(lineStart, startOffset))?.[0] ?? '';
 
@@ -201,7 +195,7 @@ export function migrateMultiSelect({
                     );
                 }
 
-                const formAttrs = formatControlAttrs(controlAttrs);
+                const formAttrs = formatControlAttrs(controlAttrs, template, element);
                 const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
                 const extras = `${formAttrs ? ` ${formAttrs}` : ''}${controlStateStr}`;
 
@@ -221,32 +215,39 @@ export function migrateMultiSelect({
         }
 
         // Insert new <input tuiInputChip /> before first element child
-        const formAttrs = formatControlAttrs(controlAttrs);
+        const formAttrs = formatControlAttrs(controlAttrs, template, element);
         const placeholderAttr = formatPlaceholderAttr(placeholder);
         const selectLikeAttr = selectLike === true ? ' tuiSelectLike' : '';
         // selectLike is a string when [editable]="someExpr" was dynamic
         const readonlyAttr =
             typeof selectLike === 'string' ? ` [readOnly]="!${selectLike}"` : '';
+
         const searchChangeAttr = searchChangeExpr
             ? ` (input)="${searchChangeExpr}(($event.target as HTMLInputElement).value)"`
             : '';
+
         const manualSearchTodo = hasManualSearchAttrs
             ? `<!-- ${TODO_MARK} [search] was removed. Use (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)"> to track changes; no direct equivalent for programmatic writes. See: ${DOCS_LINK} -->\n`
             : '';
+
         const searchChangeTodo = searchChangeExpr
             ? `<!-- ${TODO_MARK} (searchChange) was replaced by (input) on <input tuiInputChip (input)="onSearch($any($event).target.value)">. See: ${DOCS_LINK} -->\n`
             : '';
+
         const firstElementChildOffset = element.childNodes.find(
             (node): node is Element => node.nodeName !== '#text',
         )?.sourceCodeLocation?.startOffset;
+
         const insertOffset =
             firstElementChildOffset ??
             element.sourceCodeLocation?.endTag?.startOffset ??
             0;
+
         const chipItemTemplate =
             tagValidatorExpr === null
                 ? ''
                 : `<tui-input-chip *tuiItem="let ctx" [appearance]="${tagValidatorExpr}(ctx.item) ? '' : 'negative'" />\n`;
+
         const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
         const inputTemplate = `${manualSearchTodo}${searchChangeTodo}<input tuiInputChip${selectLikeAttr}${readonlyAttr}${placeholderAttr ? ` ${placeholderAttr}` : ''}${formAttrs ? ` ${formAttrs}` : ''}${searchChangeAttr}${controlStateStr} />\n${chipItemTemplate}`;
 
@@ -282,11 +283,7 @@ function extractSelectLike(element: Element): boolean | string {
         (attr) => attr.name.toLowerCase() === EDITABLE_ATTR,
     );
 
-    if (plainAttr) {
-        return plainAttr.value === 'false';
-    }
-
-    return false;
+    return plainAttr ? plainAttr.value === 'false' : false;
 }
 
 /**
@@ -339,19 +336,11 @@ function extractPlaceholder(element: Element): PlaceholderInfo | null {
         (attr) => attr.name.toLowerCase() === PLACEHOLDER_ATTR,
     );
 
-    if (plainAttr) {
-        return {attr: PLACEHOLDER_ATTR, value: plainAttr.value};
-    }
-
-    return null;
+    return plainAttr ? {attr: PLACEHOLDER_ATTR, value: plainAttr.value} : null;
 }
 
 function formatPlaceholderAttr(placeholder: PlaceholderInfo | null): string {
-    if (!placeholder) {
-        return '';
-    }
-
-    return `${placeholder.attr}="${placeholder.value}"`;
+    return placeholder ? `${placeholder.attr}="${placeholder.value}"` : '';
 }
 
 function renameAttr(
@@ -401,27 +390,10 @@ function removeAttr(
     );
 }
 
-function formatControlAttrs(attrs: Array<{name: string; value: string}>): string {
-    return attrs
-        .map(({name, value}) => `${normalizeAttrName(name)}="${value}"`)
-        .join(' ');
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        case 'ngmodel':
-            return 'ngModel';
-        default:
-            return name;
-    }
+function formatControlAttrs(
+    attrs: Array<{name: string; value: string}>,
+    template: string,
+    element: Element,
+): string {
+    return attrs.map((attr) => getOriginalAttrText(template, element, attr)).join(' ');
 }

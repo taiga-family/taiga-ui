@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update accordion item', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {TuiAccordion} from '@taiga-ui/experimental';
 
             @Component({
@@ -86,6 +86,72 @@ describe('ng-update accordion item', () => {
                         <p>NOBODY expects the Spanish Inquisition!</p>
                     </ng-template>
                 </tui-expand>
+            `,
+        }),
+    );
+
+    it(
+        'removes deprecated [rounded] attribute from tui-accordion',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion [rounded]="false">
+                    <tui-accordion-item [open]="true">
+                        Output
+
+                        <ng-template tuiAccordionItemContent>
+                            <pre><code>{{ group.value | json }}</code></pre>
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+
+                <tui-accordion rounded="false">
+                    <tui-accordion-item>
+                        Item
+                        <ng-template tuiAccordionItemContent>Content</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            `,
+        }),
+    );
+
+    it(
+        'moves size from a standalone item onto the generated tui-accordion (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion-item size="s">
+                    Header
+                    <ng-template tuiAccordionItemContent>Content</ng-template>
+                </tui-accordion-item>
+            `,
+        }),
+    );
+
+    it(
+        'moves bound [size] from a standalone item onto the generated tui-accordion (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion-item [size]="size">
+                    Header
+                    <ng-template tuiAccordionItemContent>Content</ng-template>
+                </tui-accordion-item>
+            `,
+        }),
+    );
+
+    it(
+        'drops size from nested items and leaves a TODO comment (#13823)',
+        migrate({
+            template: /* HTML */ `
+                <tui-accordion>
+                    <tui-accordion-item size="s">
+                        First
+                        <ng-template tuiAccordionItemContent>One</ng-template>
+                    </tui-accordion-item>
+                    <tui-accordion-item [size]="size">
+                        Second
+                        <ng-template tuiAccordionItemContent>Two</ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
             `,
         }),
     );

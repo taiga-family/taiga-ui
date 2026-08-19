@@ -23,6 +23,7 @@ describe('Button[loading]', () => {
     })
     class Test {
         protected readonly loading = signal(false);
+
         public count = 0;
 
         protected increase(): void {

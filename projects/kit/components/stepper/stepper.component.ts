@@ -108,12 +108,14 @@ export class TuiStepperComponent implements OnChanges {
         }
 
         const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
+
         const {
             offsetHeight,
             offsetWidth,
             offsetTop: stepOffsetTop,
             offsetLeft: stepOffsetLeft,
         } = step;
+
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
 

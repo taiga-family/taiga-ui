@@ -5,8 +5,8 @@ import {TUI_NON_DIGITS_REGEXP} from '@taiga-ui/cdk/constants';
  */
 export function tuiIsCardNumberValid(value: number | string): boolean {
     const cardNumber = String(value).replace(TUI_NON_DIGITS_REGEXP, '');
-
     const {length} = cardNumber;
+
     const arr = cardNumber.split('').map((char, index) => {
         const digit = Number.parseInt(char, 10);
 

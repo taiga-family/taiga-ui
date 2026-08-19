@@ -66,18 +66,18 @@ exports[`ng-update migrate TuiInputDateRangeModule to TuiInputDateRange: test.ts
                 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDateRangeModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDateRangeModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputDateRange } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputDateRange],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputDateRange],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",

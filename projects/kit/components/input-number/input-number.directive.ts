@@ -27,6 +27,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     private readonly mask = inject(TuiNumberMask);
     private readonly input = inject(TuiInputDirective);
     private readonly isIOS = inject(WA_IS_IOS);
+
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
     protected readonly inputMode = computed(() => {
@@ -60,6 +61,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
         const decimalPart =
             !!maximumFractionDigits && this.input.value().includes(decimalSeparator);
+
         const precision = decimalPart ? Math.min(maximumFractionDigits + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
         const affixes = prefix.length + postfix.length;
@@ -74,11 +76,14 @@ export class TuiInputNumberDirective extends TuiControl<string> {
             ({decimalSeparator, minusSign} = this.mask.params()) =>
                 new RegExp(`[^\\d\\${minusSign}\\${decimalSeparator}]`, 'g'),
         );
+
         const changed = !Object.is(
             this.input.value().replaceAll(decorations, ''),
             untracked(() => this.value()?.replaceAll(decorations, '')) ?? '',
         );
+
         const value = this.parsed();
+
         const valid =
             Number.isNaN(value) || (value >= this.mask.min() && value <= this.mask.max());
 
@@ -89,6 +94,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     public override writeValue(value: any): void {
         const reset = this.control.pristine && this.control.untouched && !value;
+
         const changed = untracked(
             () => value !== this.transformer.toControlValue(this.value()),
         );
@@ -106,7 +112,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
     }
 
     protected onFocus(): void {
-        if (!this.input.value() && !this.readOnly()) {
+        if (!this.input.value() && this.interactive()) {
             this.input.value.set(`${this.mask.prefix()}${this.mask.postfix()}`);
         }
     }
@@ -119,6 +125,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     private parse(value: string): bigint | number {
         const params = this.mask.params();
+
         const possibleTooBig =
             !Number.isFinite(this.mask.min()) || !Number.isFinite(this.mask.max());
 

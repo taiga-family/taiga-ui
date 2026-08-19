@@ -195,6 +195,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#min-case'}),
         );
+
         const res = await calendar.isPaginationLeftDisabled();
 
         expect(res).toBe(true);
@@ -204,6 +205,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#max-case'}),
         );
+
         const res = await calendar.isPaginationRightDisabled();
 
         expect(res).toBe(true);

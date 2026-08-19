@@ -16,7 +16,9 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export class TuiDocTextfield {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+
     public readonly contentVariants = input<PolymorpheusContent[]>(['', 'TOP SECRET']);
     public readonly hiddenOptions = input(['rows']);
     public cleaner = this.options.cleaner();

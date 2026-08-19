@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update tuiLet', () => {
     const migration = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {Component} from '@angular/core';
             import {TuiLet} from '@taiga-ui/cdk';
 
@@ -79,6 +79,29 @@ describe('ng-update tuiLet', () => {
                         <div>Hello world</div>
                     </ng-container>
                 </ng-container>
+            `,
+        }),
+    );
+
+    it(
+        'renames the @let when the alias repeats an identifier in the expression',
+        migration({
+            template: /* HTML */ `
+                <test *tuiLet="isOrderCompleted() as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                    <span [class.done]="isOrderCompleted">done</span>
+                </test>
+            `,
+        }),
+    );
+
+    it(
+        'keeps the alias when only an observable (foo$) shares its stem',
+        migration({
+            template: /* HTML */ `
+                <test *tuiLet="isOrderCompleted$ | async as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                </test>
             `,
         }),
     );

@@ -13,7 +13,7 @@ import {
     TUI_PULL_TO_REFRESH_LOADED,
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
-import {TuiNotificationService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiNotificationService, TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -22,8 +22,8 @@ import {Subject} from 'rxjs';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         TuiPullToRefresh,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -50,6 +50,7 @@ import {Subject} from 'rxjs';
 })
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
+
     protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
 
     protected onPull(): void {

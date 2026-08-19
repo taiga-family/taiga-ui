@@ -32,5 +32,6 @@ class Styles {}
 })
 export class TuiTitle {
     protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiTitle = input<TuiSizeL | TuiSizeS | ''>('');
 }

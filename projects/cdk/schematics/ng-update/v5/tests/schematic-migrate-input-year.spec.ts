@@ -12,26 +12,26 @@ describe('ng-update', () => {
     it(
         'migrate TuiInputYearModule to TuiInputYear',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiInputYearModule} from '@taiga-ui/legacy';
 
                 @NgModule({
-                  imports: [
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  // ...
                 })
                 export class MyModule {}
 
                 @Component({
-                  standalone: true,
-                  imports: [
+                    standalone: true,
+                    imports: [
+                        // ...
+                        TuiInputYearModule,
+                    ],
+                    templateUrl: './test.html',
                     // ...
-                    TuiInputYearModule,
-                  ],
-                  templateUrl: './test.html',
-                  // ...
                 })
                 export class MyComponent {}
             `,
@@ -90,6 +90,20 @@ describe('ng-update', () => {
                 <tui-input-year
                     [formControl]="control"
                     [tuiTextfieldLabelOutside]="true"
+                >
+                    Choose a year
+                </tui-input-year>
+            `,
+        }),
+    );
+
+    it(
+        'preserves camelCase for [formControlName] and (ngModelChange) bindings',
+        migrate({
+            template: /* HTML */ `
+                <tui-input-year
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
                 >
                     Choose a year
                 </tui-input-year>

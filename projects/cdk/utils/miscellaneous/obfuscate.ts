@@ -17,7 +17,6 @@ export function tuiObfuscate(value: string, symbol: string): string {
     }
 
     const match = /[\p{L}\p{N}]/gu;
-
     let visible = 0;
     let obfuscateIndexes = getObfuscateIndexes(value, match);
 

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update arrow component adds TODO above TuiArrowComponent usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiArrowComponent} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    imports: [TuiArrowComponent],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiArrowComponent has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links
+                import {TuiArrowComponent} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    imports: [TuiArrowComponent],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update arrow component adds TODO above arrow options provider usage: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_ARROW, tuiArrowOptionsProvider} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [tuiArrowOptionsProvider({iconLarge: TUI_ARROW})],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_ARROW has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links
+// TODO: (Taiga UI migration) tuiArrowOptionsProvider has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links
+                import {TUI_ARROW, tuiArrowOptionsProvider} from '@taiga-ui/legacy';
+
+                @Component({
+                    templateUrl: './test.html',
+                    providers: [tuiArrowOptionsProvider({iconLarge: TUI_ARROW})],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update arrow component adds comment above tui-arrow tag in template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-arrow />
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-arrow has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links -->
+<tui-arrow />
+            ",
+}
+`;

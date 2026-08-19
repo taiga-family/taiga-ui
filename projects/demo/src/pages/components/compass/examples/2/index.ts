@@ -13,11 +13,13 @@ import {TuiCompass} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly compass = viewChild(TuiCompass, {read: ElementRef<HTMLElement>});
+
     protected degrees = 0;
 
     protected calculate(event: MouseEvent): void {
         const rect =
             this.compass()?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 

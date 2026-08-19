@@ -79,8 +79,10 @@ export class TuiInputFiles {
     protected onDropped({dataTransfer}: DragEvent): void {
         this.files = null;
 
-        if (dataTransfer?.files && !this.input()?.disabled()) {
-            this.input()?.process(dataTransfer.files);
+        const input = this.input();
+
+        if (dataTransfer?.files && !input?.disabled()) {
+            input?.process(dataTransfer.files);
         }
     }
 

@@ -67,9 +67,7 @@
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizes"
                 [(value)]="size"
-            >
-                Notification size
-            </tr>
+            ></tr>
             <tr
                 name="[icon]"
                 tuiDocAPIItem
@@ -77,7 +75,7 @@
                 [items]="icons"
                 [(value)]="icon"
             >
-                Icon
+                icon name or a function to match appearance to the icon
             </tr>
             <tbody
                 #appearance
@@ -99,14 +97,14 @@
                     type="string"
                     [(value)]="label"
                 >
-                    Heading
+                    heading
                 </tr>
                 <tr
                     name="[data]"
                     tuiDocAPIItem
                     type="I"
                 >
-                    Arbitrary input data for the notification
+                    arbitrary input data for the notification
                 </tr>
                 <tr
                     name="[autoClose]"
@@ -115,7 +113,7 @@
                     [items]="autoCloseVariants"
                     [(value)]="autoClose"
                 >
-                    Auto close timeout, 0 for no auto close
+                    auto close timeout, 0 for no auto close
                 </tr>
                 <tr
                     name="[closable]"
@@ -123,7 +121,7 @@
                     type="boolean"
                     [(value)]="closable"
                 >
-                    Has close button
+                    display close button
                 </tr>
                 <tr
                     name="[block]"
@@ -132,7 +130,7 @@
                     [items]="blockVariants"
                     [(value)]="block"
                 >
-                    Block position
+                    block position
                 </tr>
                 <tr
                     name="[inline]"
@@ -141,7 +139,7 @@
                     [items]="inlineVariants"
                     [(value)]="inline"
                 >
-                    Inline position
+                    inline position
                 </tr>
             </tbody>
         </table>

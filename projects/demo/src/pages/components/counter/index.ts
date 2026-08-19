@@ -20,7 +20,7 @@ export default class Page {
     protected readonly value = 0;
     protected readonly step = 1;
     protected readonly content = '';
-    protected readonly sizeVariants = ['l', 'm', 's'] as const;
+    protected readonly sizeVariants = ['l', 'm', 's', 'xs'] as const;
     protected readonly size = this.sizeVariants[0];
     protected readonly appearanceVariants = ['primary', 'flat', 'secondary'] as const;
     protected readonly appearance = this.appearanceVariants[0];

@@ -47,6 +47,7 @@ export * from '@taiga-ui/kit/components/notification-middle';
 export * from '@taiga-ui/kit/components/pager';
 export * from '@taiga-ui/kit/components/pagination';
 export * from '@taiga-ui/kit/components/pin';
+export * from '@taiga-ui/kit/components/pincode';
 export * from '@taiga-ui/kit/components/preview';
 export * from '@taiga-ui/kit/components/progress';
 export * from '@taiga-ui/kit/components/pulse';

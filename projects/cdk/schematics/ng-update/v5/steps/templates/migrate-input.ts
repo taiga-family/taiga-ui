@@ -15,6 +15,10 @@ import {
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
 import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -80,6 +84,12 @@ const LABEL_OUTSIDE_ATTRS = new Set([
 const LEGACY_INPUT_ATTRS = new Set([
     'tuiTextfield'.toLowerCase(),
     'tuiTextfieldLegacy'.toLowerCase(),
+]);
+
+const DROPDOWN_OPEN_RENAMES = new Map<string, string>([
+    ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
+    ['[(tuiDropdownOpen)]'.toLowerCase(), '[(open)]'],
+    ['[tuiDropdownOpen]'.toLowerCase(), '[open]'],
 ]);
 
 function isDropdownAttr(nameLower: string): boolean {
@@ -150,20 +160,6 @@ export function buildTuiInputReplacement(
     return buildReplacement(template, element, hintIconStr);
 }
 
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    if (!attrLoc) {
-        return null;
-    }
-
-    return template.slice(attrLoc.startOffset, attrLoc.endOffset);
-}
-
 interface MigrationContext {
     placeholder: string;
     /** null = attr absent; string = the raw attr value (may be 'true', 'false', or expression) */
@@ -192,9 +188,11 @@ function buildReplacement(
     const textfieldAttrs: string[] = [];
     const inputAttrs = ['tuiInput'];
     const controlStateAttrs = getControlStateAttrs(element);
+
     const controlStateAttrsLower = new Set(
         controlStateAttrs.map((a) => a.name.toLowerCase()),
     );
+
     const ctx: MigrationContext = {
         placeholder: '',
         labelOutsideValue: null,
@@ -235,40 +233,32 @@ function buildReplacement(
         }
 
         if (ATTRS_WITH_NO_EQUIVALENT.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-            const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
+            const original = getOriginalAttrText(template, element, attr);
+            const originalName = /^[\w[\]()]+/.exec(original)?.[0] ?? attr.name;
 
             ctx.noEquivalentAttrs.push(originalName);
             // Still place it on the wrapper so the code at least compiles with a warning
-            textfieldAttrs.push(
-                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-            );
+            textfieldAttrs.push(original);
             continue;
         }
 
         if (isClassOrStyleAttr(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            textfieldAttrs.push(
-                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-            );
+            textfieldAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower) || isDropdownAttr(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-            const migratedValue = migrateAttrValue(nameLower, attr.value);
-            let attrText: string;
+            const original = getOriginalAttrText(template, element, attr);
+            const renamed = DROPDOWN_OPEN_RENAMES.get(nameLower);
 
-            if (original) {
-                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
-            } else if (attr.value) {
-                attrText = `${attr.name}="${migratedValue}"`;
-            } else {
-                attrText = attr.name;
+            if (renamed) {
+                textfieldAttrs.push(`${renamed}${original.slice(attr.name.length)}`);
+                continue;
             }
 
-            textfieldAttrs.push(attrText);
+            const migratedValue = migrateAttrValue(nameLower, attr.value);
+
+            textfieldAttrs.push(replaceAttrValue(original, migratedValue));
             continue;
         }
 
@@ -277,25 +267,16 @@ function buildReplacement(
         }
 
         if (CONTROL_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            inputAttrs.push(
-                original ??
-                    (attr.value
-                        ? `${normalizeAttrName(attr.name)}="${attr.value}"`
-                        : attr.name),
-            );
+            inputAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
         // Unrecognized attr — place on <tui-textfield> (the host replacement) with TODO
-        const original = getOriginalAttrText(template, element, nameLower);
-        const originalText =
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
-        const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
+        const original = getOriginalAttrText(template, element, attr);
+        const originalName = /^[\w[\]()]+/.exec(original)?.[0] ?? attr.name;
 
         ctx.unknownAttrs.push(originalName);
-        textfieldAttrs.push(originalText);
+        textfieldAttrs.push(original);
     }
 
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
@@ -308,6 +289,7 @@ function buildReplacement(
     const isLabelOutsideTrue =
         ctx.labelOutsideValue === 'true' ||
         (!ctx.labelOutsideIsBinding && ctx.labelOutsideValue === '');
+
     const isLabelOutsideDynamic =
         ctx.labelOutsideValue !== null &&
         !isLabelOutsideTrue &&
@@ -315,6 +297,7 @@ function buildReplacement(
 
     const wrapperAttrsStr =
         textfieldAttrs.length > 0 ? ` ${textfieldAttrs.join(' ')}` : '';
+
     const innerContent = buildInnerContent({
         element,
         template,
@@ -327,13 +310,13 @@ function buildReplacement(
         hintIconStr,
         customContentIconStr: buildCustomContentIconStr(ctx.customContent, indent),
     });
+
     const todoComment = buildTodoComment(ctx);
     // `indent` is added before <tui-textfield> only when there is a TODO — in that case
     // todoComment ends with `\n` so the tag would otherwise start at column 0.
     // Without a TODO the preserved whitespace before startOffset already provides the indent.
     const tagIndent = todoComment ? indent : '';
     const core = `${tagIndent}<tui-textfield${wrapperAttrsStr}>\n${innerContent}${indent}</tui-textfield>`;
-
     const replacement = `${todoComment}${core}`;
 
     return {
@@ -387,6 +370,12 @@ function buildTodoComment(ctx: MigrationContext): string {
     ];
 
     return `${lines.join('\n')}\n`;
+}
+
+function renameDropdownContentDirective(html: string): string {
+    return html
+        .replaceAll(/\*tuiDataList\b/g, '*tuiDropdown')
+        .replaceAll(/\*tuiTextfieldDropdown\b/g, '*tuiDropdown');
 }
 
 function buildInnerContent({
@@ -446,7 +435,9 @@ function buildInnerContent({
             const childLoc = child.sourceCodeLocation;
 
             return childLoc
-                ? template.slice(childLoc.startOffset, childLoc.endOffset)
+                ? renameDropdownContentDirective(
+                      template.slice(childLoc.startOffset, childLoc.endOffset),
+                  )
                 : '';
         })
         .join('');
@@ -503,6 +494,7 @@ function migrateInnerInput({
     const legacyAttr = inner.attrs.find((a) =>
         LEGACY_INPUT_ATTRS.has(a.name.toLowerCase()),
     );
+
     const legacyAttrLoc = legacyAttr
         ? innerLoc.attrs?.[legacyAttr.name.toLowerCase()]
         : undefined;
@@ -528,11 +520,13 @@ function migrateInnerInput({
     startTag = `${startTag.slice(0, closePos).trimEnd()}${insertStr}${startTag.slice(closePos)}`;
 
     const labelContent = buildLabelContent(parent, inner, template);
+
     const labelHtml = labelContent
         ? `${indent}<label tuiLabel>${labelContent}</label>\n`
         : '';
 
     const innerStart = innerLoc.startOffset;
+
     const siblingsAfter = parent.childNodes
         .filter((child): child is Element => {
             if (
@@ -560,72 +554,45 @@ function migrateInnerInput({
 function buildLabelContent(parent: Element, inner: Element, template: string): string {
     const innerStart = inner.sourceCodeLocation?.startOffset;
 
-    if (innerStart === undefined) {
-        return '';
-    }
+    return innerStart === undefined
+        ? ''
+        : parent.childNodes
+              .filter((child) => {
+                  if (child === inner || child.nodeName === '#comment') {
+                      return false;
+                  }
 
-    return parent.childNodes
-        .filter((child) => {
-            if (child === inner || child.nodeName === '#comment') {
-                return false;
-            }
+                  const loc = child.sourceCodeLocation;
 
-            const loc = child.sourceCodeLocation;
+                  return !!loc && loc.startOffset < innerStart;
+              })
+              .map((child) => {
+                  if (child.nodeName === '#text') {
+                      return (child as DefaultTreeAdapterTypes.TextNode).value;
+                  }
 
-            return !!loc && loc.startOffset < innerStart;
-        })
-        .map((child) => {
-            if (child.nodeName === '#text') {
-                return (child as DefaultTreeAdapterTypes.TextNode).value;
-            }
+                  const loc = (child as Element).sourceCodeLocation;
 
-            const loc = (child as Element).sourceCodeLocation;
-
-            return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
-        })
-        .join('')
-        .replaceAll(/\s+/g, ' ')
-        .trim();
+                  return loc ? template.slice(loc.startOffset, loc.endOffset) : '';
+              })
+              .join('')
+              .replaceAll(/\s+/g, ' ')
+              .trim();
 }
 
 /**
  * Returns the position just before the closing `>` or `/>` in a void element tag string.
  */
 function getVoidClosePos(tag: string): number {
-    if (tag.endsWith('/>')) {
-        return tag.length - 2;
-    }
-
-    return tag.lastIndexOf('>');
+    return tag.endsWith('/>') ? tag.length - 2 : tag.lastIndexOf('>');
 }
 
 function getPlaceholderText(element: Element): string {
-    const textNode = element.childNodes.find((node: ChildNode) => {
-        if (node.nodeName !== '#text') {
-            return false;
-        }
-
-        return !!(node as DefaultTreeAdapterTypes.TextNode).value.trim();
-    });
+    const textNode = element.childNodes.find((node: ChildNode) =>
+        node.nodeName === '#text'
+            ? !!(node as DefaultTreeAdapterTypes.TextNode).value.trim()
+            : false,
+    );
 
     return (textNode as DefaultTreeAdapterTypes.TextNode | undefined)?.value.trim() ?? '';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

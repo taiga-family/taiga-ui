@@ -12,10 +12,14 @@ describe('ng-update breakpoint service', () => {
     it(
         'migrates TuiBreakpointService inject usage to TUI_BREAKPOINT observable wrapper',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {AsyncPipe, NgIf} from '@angular/common';
                 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-                import {TuiBreakpointService, TuiButton, type TuiSizeL} from '@taiga-ui/core';
+                import {
+                    TuiBreakpointService,
+                    TuiButton,
+                    type TuiSizeL,
+                } from '@taiga-ui/core';
                 import {TuiBlockStatus} from '@taiga-ui/layout';
                 import {map, type Observable} from 'rxjs';
 
@@ -40,7 +44,7 @@ describe('ng-update breakpoint service', () => {
     it(
         'migrates inline inject(TuiBreakpointService).pipe(...) usage',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component, inject} from '@angular/core';
                 import {TuiBreakpointService} from '@taiga-ui/core';
                 import {map} from 'rxjs';
@@ -58,9 +62,9 @@ describe('ng-update breakpoint service', () => {
     );
 
     it(
-        'adds TODO comment for unsupported constructor injection usage',
+        'migrates typed constructor parameter to a TUI_BREAKPOINT field',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiBreakpointService} from '@taiga-ui/core';
 
@@ -71,6 +75,73 @@ describe('ng-update breakpoint service', () => {
                     constructor(
                         private readonly breakpointService: TuiBreakpointService,
                     ) {}
+                }
+            `,
+        }),
+    );
+
+    it(
+        'migrates multiple inject(TuiBreakpointService) usages in one file',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+                import {map} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly a$ = inject(TuiBreakpointService).pipe(
+                        map((breakpoint) => breakpoint === 'mobile'),
+                    );
+
+                    protected readonly b$ = inject(TuiBreakpointService).pipe(
+                        map((breakpoint) => breakpoint === 'desktop'),
+                    );
+                }
+            `,
+        }),
+    );
+
+    it(
+        'migrates multiple @Inject(TuiBreakpointService) constructor params to fields',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, Inject} from '@angular/core';
+                import {
+                    TuiBreakpointMediaKey,
+                    TuiBreakpointService,
+                } from '@taiga-ui/core';
+                import {type Observable} from 'rxjs';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    constructor(
+                        @Inject(TuiBreakpointService)
+                        private readonly breakpoint$: TuiBreakpointService,
+                        @Inject(TuiBreakpointService)
+                        private readonly media$: Observable<TuiBreakpointMediaKey>,
+                    ) {}
+                }
+            `,
+        }),
+    );
+
+    it(
+        'adds a removed-service TODO for unsupported non-parameter type usage',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiBreakpointService} from '@taiga-ui/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected service!: TuiBreakpointService;
                 }
             `,
         }),

@@ -45,6 +45,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 })
 export class TuiSearchResultsComponent<T> implements OnChanges {
     private readonly el = tuiInjectElement();
+
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly textfield = inject(TuiTextfieldComponent);

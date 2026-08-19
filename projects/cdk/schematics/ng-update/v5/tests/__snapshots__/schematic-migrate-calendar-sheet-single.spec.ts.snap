@@ -60,7 +60,10 @@ exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider r
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,
@@ -72,7 +75,10 @@ exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider r
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,
@@ -133,7 +139,10 @@ exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider r
 {
   "0. Before": "
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,
@@ -145,7 +154,10 @@ exports[`ng-update calendar-sheet [single] → tuiCalendarSheetOptionsProvider r
             ",
   "1. After": "
                 import {Component} from '@angular/core';
-                import {TuiCalendarSheet, tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
+                import {
+                    TuiCalendarSheet,
+                    tuiCalendarSheetOptionsProvider,
+                } from '@taiga-ui/core';
 
                 @Component({
                     standalone: true,

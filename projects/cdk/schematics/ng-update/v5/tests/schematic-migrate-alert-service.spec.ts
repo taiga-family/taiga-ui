@@ -12,7 +12,7 @@ describe('ng-update TuiAlertService to TuiNotificationService', () => {
     it(
         'renames imported service and its usages',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiAlertService} from '@taiga-ui/core';
 
                 @Component({})

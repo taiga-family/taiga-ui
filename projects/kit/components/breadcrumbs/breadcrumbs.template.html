@@ -39,7 +39,7 @@
             <ng-template #dropdown>
                 <tui-data-list size="s">
                     @for (item of items(); track item) {
-                        @if ($index + offset() && $index <= index && item !== items()[items().length - 1]) {
+                        @if ($index + offset() && $index <= index && item !== items()[$count - 1]) {
                             <span
                                 tuiOption
                                 class="t-option"

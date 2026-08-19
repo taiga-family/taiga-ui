@@ -10,7 +10,10 @@ exports[`ng-update Angular animations warning adds TODO for TuiDurationOptions t
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    readonly options: TuiDurationOptions = {value: '', params: {duration: 300}};
+                    readonly options: TuiDurationOptions = {
+                        value: '',
+                        params: {duration: 300},
+                    };
                 }
             ",
   "1. After": "
@@ -22,7 +25,10 @@ exports[`ng-update Angular animations warning adds TODO for TuiDurationOptions t
                     templateUrl: './test.html',
                 })
                 export class TestComponent {
-                    readonly options: TuiDurationOptions = {value: '', params: {duration: 300}};
+                    readonly options: TuiDurationOptions = {
+                        value: '',
+                        params: {duration: 300},
+                    };
                 }
             ",
 }

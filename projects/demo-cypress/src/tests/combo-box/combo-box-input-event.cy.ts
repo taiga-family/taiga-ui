@@ -48,6 +48,7 @@ export class Sandbox {
     );
 
     public readonly inputEvent = output<string>();
+
     protected readonly stringify: TuiStringHandler<Country> = (x) => x.name ?? x;
 }
 

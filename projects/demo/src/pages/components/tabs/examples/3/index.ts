@@ -30,11 +30,9 @@ export default class Example {
     protected activeElement = String(this.collaborators[0]);
 
     protected get activeItemIndex(): number {
-        if (this.collaborators.includes(this.activeElement)) {
-            return this.tabs.indexOf(this.collaborators);
-        }
-
-        return this.tabs.indexOf(this.activeElement);
+        return this.collaborators.includes(this.activeElement)
+            ? this.tabs.indexOf(this.collaborators)
+            : this.tabs.indexOf(this.activeElement);
     }
 
     protected stop(event: Event): void {

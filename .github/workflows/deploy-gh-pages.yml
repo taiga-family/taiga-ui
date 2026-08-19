@@ -19,8 +19,8 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
@@ -69,7 +69,7 @@ jobs:
         run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Deploy to taiga-ui.dev
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

@@ -25,6 +25,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 })
 class Test {
     protected value: number | null = null;
+
     public readonly numberFormat = input<Partial<TuiNumberFormatSettings>>({});
 }
 

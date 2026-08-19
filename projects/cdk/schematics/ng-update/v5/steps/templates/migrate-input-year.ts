@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -49,8 +50,10 @@ export function migrateInputYear({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -75,8 +78,10 @@ export function migrateInputYear({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -106,12 +111,9 @@ export function migrateInputYear({
         );
 
         const migrationAttrs = attrs.reduce((result, attr) => {
-            const name = attr.name
-                .replace(/ngmodel/i, 'ngModel')
-                .replace(/formcontrol/i, 'formControl')
-                .replace(/formcontrolname/i, 'formControlName');
+            const original = getOriginalAttrText(template, element, attr);
 
-            return `${result} ${name}="${attr.value}"`;
+            return `${result} ${original}`;
         }, '');
 
         recorder.insertRight(

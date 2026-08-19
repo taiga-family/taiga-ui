@@ -12,17 +12,19 @@
     <input
         placeholder="I am placeholder"
         tuiInput
-        [readOnly]="true"
+        [readonly]="true"
         [(ngModel)]="value"
     />
     <tui-icon tuiTooltip="Readonly shows tooltip" />
 </tui-textfield>
-<tui-textfield iconStart="@tui.search">
+<tui-textfield
+    iconStart="@tui.search"
+    [invalid]="true"
+>
     <label tuiLabel>Invalid</label>
     <input
         placeholder="I am placeholder"
         tuiInput
-        [invalid]="true"
         [(ngModel)]="value"
     />
     <tui-icon tuiTooltip="Can also follow Angular validation" />

@@ -103,6 +103,9 @@
                 [filler]="filler"
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
+                [invalid]="control.invalid"
+                [tuiAppearanceFocus]="appearance.focus"
+                [tuiAppearanceState]="appearance.state"
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
@@ -113,10 +116,7 @@
                     placeholder="I am placeholder"
                     tuiInput
                     [disabled]="control.disabled"
-                    [focused]="input.focused"
-                    [invalid]="control.invalid"
-                    [readOnly]="control.readonly"
-                    [state]="input.state"
+                    [readonly]="control.readonly"
                     [(ngModel)]="value"
                 />
                 <tui-icon tuiTooltip="I am a hint" />
@@ -129,7 +129,7 @@
                 type="string"
                 [(value)]="value"
             >
-                Value (or reactive control directives)
+                text value (alternatively use reactive forms)
             </tr>
             <tr
                 name="[filler]"
@@ -137,15 +137,16 @@
                 type="string"
                 [(value)]="filler"
             >
-                Filler
+                grayed out guiding text
             </tr>
             <tbody
                 #control
                 tuiDocControl
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #textfield

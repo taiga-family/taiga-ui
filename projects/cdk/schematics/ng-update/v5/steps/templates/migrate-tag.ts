@@ -20,14 +20,17 @@ const HOVERABLE_ATTRS = ['hoverable', '[hoverable]'] as const;
 const AUTO_COLOR_ATTRS = ['autoColor', '[autoColor]'] as const;
 const INTERACTIVE_ATTRS = ['editable', '[editable]', 'removable', '[removable]'] as const;
 const STATUS_ATTRS = ['status', '[status]'] as const;
+
 const REMOVABLE_ATTRS = [
     ...VALUE_ATTRS,
     ...HOVERABLE_ATTRS,
     ...AUTO_COLOR_ATTRS,
     ...INTERACTIVE_ATTRS,
 ] as const;
+
 const INTERACTIVE_CHIP_COMMENT =
     '<!-- TODO: (Taiga UI migration) Interactive chip behavior changed. See https://taiga-ui.dev/components/chip#interactive -->\n';
+
 const VALUE_ATTR_SET = new Set(VALUE_ATTRS.map((name) => name.toLowerCase()));
 const INTERACTIVE_ATTR_SET = new Set(INTERACTIVE_ATTRS.map((name) => name.toLowerCase()));
 const REMOVABLE_ATTR_SET = new Set(REMOVABLE_ATTRS.map((name) => name.toLowerCase()));
@@ -43,6 +46,7 @@ export function migrateTagToChip({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const allTargets = findTagTargets(template)
         .map((element) => buildTagMigration(template, element))
         .filter((item): item is TagMigration => Boolean(item))
@@ -75,47 +79,58 @@ function buildTagMigration(template: string, element: Element): TagMigration | n
 
     const valueAttr = getFirstAttr(element, VALUE_ATTR_SET);
     const valueContent = getValueContent(valueAttr);
+
     const contentIsEmpty = Boolean(
         loc?.endTag &&
         template.slice(loc.startTag!.endOffset, loc.endTag.startOffset).trim().length ===
             0,
     );
 
-    if (element.tagName === 'tui-tag' && !loc?.endTag) {
-        return buildSelfClosingTagReplacement(element);
-    }
+    return element.tagName === 'tui-tag' && !loc?.endTag
+        ? buildSelfClosingTagReplacement(element)
+        : {
+              startOffset: startTag.startOffset,
+              apply(recorder, templateOffset) {
+                  const hasInteractiveAttrs = hasAnyAttr(element, INTERACTIVE_ATTR_SET);
 
-    return {
-        startOffset: startTag.startOffset,
-        apply(recorder, templateOffset) {
-            const hasInteractiveAttrs = hasAnyAttr(element, INTERACTIVE_ATTR_SET);
+                  if (hasInteractiveAttrs) {
+                      recorder.insertLeft(
+                          templateOffset + startTag.startOffset,
+                          INTERACTIVE_CHIP_COMMENT,
+                      );
+                  }
 
-            if (hasInteractiveAttrs) {
-                recorder.insertLeft(
-                    templateOffset + startTag.startOffset,
-                    INTERACTIVE_CHIP_COMMENT,
-                );
-            }
+                  if (element.tagName === 'tui-tag') {
+                      replaceTag(
+                          recorder,
+                          loc,
+                          'tui-tag',
+                          'span',
+                          template,
+                          templateOffset,
+                          ['tuiChip'],
+                      );
+                  }
 
-            if (element.tagName === 'tui-tag') {
-                replaceTag(recorder, loc, 'tui-tag', 'span', template, templateOffset, [
-                    'tuiChip',
-                ]);
-            }
+                  renameAttr(recorder, templateOffset, element, 'status', 'appearance');
+                  renameAttr(
+                      recorder,
+                      templateOffset,
+                      element,
+                      '[status]',
+                      '[appearance]',
+                  );
 
-            renameAttr(recorder, templateOffset, element, 'status', 'appearance');
-            renameAttr(recorder, templateOffset, element, '[status]', '[appearance]');
+                  removeAttrs(recorder, templateOffset, element, REMOVABLE_ATTRS);
 
-            removeAttrs(recorder, templateOffset, element, REMOVABLE_ATTRS);
-
-            if (valueContent && contentIsEmpty && loc?.endTag) {
-                recorder.insertLeft(
-                    templateOffset + loc.endTag.startOffset,
-                    valueContent,
-                );
-            }
-        },
-    };
+                  if (valueContent && contentIsEmpty && loc?.endTag) {
+                      recorder.insertLeft(
+                          templateOffset + loc.endTag.startOffset,
+                          valueContent,
+                      );
+                  }
+              },
+          };
 }
 
 function buildSelfClosingTagReplacement(element: Element): TagMigration | null {
@@ -127,6 +142,7 @@ function buildSelfClosingTagReplacement(element: Element): TagMigration | null {
     }
 
     const hasInteractiveAttrs = hasAnyAttr(element, INTERACTIVE_ATTR_SET);
+
     const attrs = element.attrs
         .filter(
             (attr) =>
@@ -138,6 +154,7 @@ function buildSelfClosingTagReplacement(element: Element): TagMigration | null {
             name: renameStatusAttr(attr.name),
         }))
         .map((attr) => `${attr.name}${attr.value ? `="${attr.value}"` : ''}`);
+
     const valueContent = getValueContent(getFirstAttr(element, VALUE_ATTR_SET)) ?? '';
     const attrsText = ['tuiChip', ...attrs].join(' ').trim();
     const replacement = `<span${attrsText ? ` ${attrsText}` : ''}>${valueContent}</span>`;
@@ -173,11 +190,7 @@ function getValueContent(attr?: {name: string; value: string}): string | null {
         return null;
     }
 
-    if (attr.name === '[value]') {
-        return `{{${attr.value}}}`;
-    }
-
-    return attr.value;
+    return attr.name === '[value]' ? `{{${attr.value}}}` : attr.value;
 }
 
 function removeAttrs(
@@ -232,9 +245,5 @@ function renameStatusAttr(name: string): string {
         return 'appearance';
     }
 
-    if (name === STATUS_ATTRS[1]) {
-        return '[appearance]';
-    }
-
-    return name;
+    return name === STATUS_ATTRS[1] ? '[appearance]' : name;
 }

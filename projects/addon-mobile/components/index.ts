@@ -1,4 +1,5 @@
 export * from '@taiga-ui/addon-mobile/components/bottom-sheet';
+export * from '@taiga-ui/addon-mobile/components/keypad';
 export * from '@taiga-ui/addon-mobile/components/mobile-calendar';
 export * from '@taiga-ui/addon-mobile/components/mobile-calendar-dropdown';
 export * from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';

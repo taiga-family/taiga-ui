@@ -67,18 +67,18 @@ exports[`ng-update migrate TuiInputPhoneInternational from experimental to TuiIn
                 import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternational],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternational],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputPhoneInternational } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternational],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternational],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
@@ -152,18 +152,18 @@ exports[`ng-update migrate TuiInputPhoneInternationalModule to TuiInputPhoneInte
                 import {TuiInputPhoneInternationalModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternationalModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternationalModule],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",
   "1. After": "import { TuiInputPhoneInternational } from "@taiga-ui/kit";
 
                                 @Component({
-                  standalone: true,
-                  imports: [TuiInputPhoneInternational],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiInputPhoneInternational],
+                    templateUrl: './test.html',
                 })
                 export class MyComponent {}
             ",

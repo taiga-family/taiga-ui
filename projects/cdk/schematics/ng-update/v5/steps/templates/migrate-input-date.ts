@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -77,8 +78,10 @@ export function migrateInputDate({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -130,8 +133,10 @@ export function migrateInputDate({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -159,6 +164,7 @@ export function migrateInputDate({
                 '     - [items]: TuiNamedDay type is removed in v5. Use <datalist> + <section *tuiDropdown>',
                 `       for named dates. See example: ${DOCS_LINK}#datalist -->`,
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);
@@ -172,10 +178,11 @@ export function migrateInputDate({
         );
 
         const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
+
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
@@ -215,27 +222,4 @@ export function migrateInputDate({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[max]'.toLowerCase():
-            return '[max]';
-        case '[min]'.toLowerCase():
-            return '[min]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

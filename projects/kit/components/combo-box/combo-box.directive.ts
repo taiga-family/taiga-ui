@@ -90,9 +90,11 @@ export class TuiComboBoxDirective<T>
         }
 
         const textfieldValue = this.input.value();
+
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
+
         const value = untracked(this.value);
         const unchanged = this.stringify(value) === textfieldValue;
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;

@@ -4,9 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiHint} from '@taiga-ui/core';
+import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo, TuiDocHint, TuiHint],
+    imports: [TuiBadge, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
     changeDetection,
 })

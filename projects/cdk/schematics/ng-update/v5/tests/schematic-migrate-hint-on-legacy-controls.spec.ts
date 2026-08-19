@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update hint on legacy controls', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {Component} from '@angular/core';
             import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -222,7 +222,7 @@ describe('ng-update hint on legacy controls', () => {
         it(
             'adds TuiTooltip and TuiIcon imports when tuiHintContent is present',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Component} from '@angular/core';
                     import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -240,7 +240,7 @@ describe('ng-update hint on legacy controls', () => {
         it(
             'does not duplicate TuiIcon import if already present',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {Component} from '@angular/core';
                     import {TuiIcon} from '@taiga-ui/core';
                     import {TuiInputModule} from '@taiga-ui/legacy';
@@ -259,7 +259,7 @@ describe('ng-update hint on legacy controls', () => {
         it(
             'inline template',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {FormsModule} from '@angular/forms';
                     import {TuiHint} from '@taiga-ui/core';

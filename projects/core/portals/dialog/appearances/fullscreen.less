@@ -3,12 +3,13 @@
     flex-direction: column;
     block-size: 100%;
     inline-size: 100%;
+    max-inline-size: 100vw;
     padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)'
         ~'max(2rem, env(safe-area-inset-bottom))';
     background: var(--tui-background-base);
     box-shadow: none;
 
-    --tui-width: 45rem;
+    --tui-width: min(45rem, calc(100vw - 2rem));
     --tui-from: translateY(2rem);
 
     &.tui-enter,
@@ -24,7 +25,7 @@
         align-self: flex-end;
         margin-block-end: 2rem;
         border-radius: 0 !important;
-        font: var(--tui-typography-body-m) !important;
+        font: var(--tui-typography-body-l) !important;
         border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
 
         &::before {
@@ -123,5 +124,9 @@
             padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
         }
+    }
+
+    [data-platform='ios'] & > [tuiButtonX][tuiButtonX] {
+        block-size: 2.75rem;
     }
 }

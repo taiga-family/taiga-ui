@@ -48,7 +48,10 @@ exports[`ng-update experimental dialog replaces experimental TuiDialogService, T
 {
   "0. Before": "
                 import {Component, inject} from '@angular/core';
-                import type {TuiDialogContext, TuiDialogOptions} from '@taiga-ui/experimental';
+                import type {
+                    TuiDialogContext,
+                    TuiDialogOptions,
+                } from '@taiga-ui/experimental';
                 import {TuiDialogService} from '@taiga-ui/experimental';
                 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
                 import {BehaviorSubject} from 'rxjs';
@@ -62,7 +65,9 @@ exports[`ng-update experimental dialog replaces experimental TuiDialogService, T
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closable: this.loading$.pipe(map((loading) => !loading)),
                             } as TuiDialogOptions<any>)
                             .subscribe();
@@ -84,7 +89,9 @@ exports[`ng-update experimental dialog replaces experimental TuiDialogService, T
                         this.dialogService
                             .open(content, {
                                 label: 'Test',
-                                dismissible: this.loading$.pipe(map((loading) => !loading)),
+                                dismissible: this.loading$.pipe(
+                                    map((loading) => !loading),
+                                ),
                                 closable: this.loading$.pipe(map((loading) => !loading)),
                             } as TuiDialogOptions<any>)
                             .subscribe();

@@ -30,13 +30,14 @@ export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
     private readonly dialogs = inject(TuiSheetDialogService);
     private readonly directive = inject(TuiDropdownSheet);
+
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 
     protected readonly sub = toObservable(this.content)
         .pipe(
             tuiIfMap((content) =>
-                this.dialogs.open(content, {label: this.directive.tuiDropdownSheet()}),
+                this.dialogs.open(content, this.directive.tuiDropdownSheet()),
             ),
             takeUntilDestroyed(),
         )

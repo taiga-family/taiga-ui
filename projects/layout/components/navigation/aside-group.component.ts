@@ -47,6 +47,7 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     private readonly datalist = viewChild<PolymorpheusContent>('datalist');
     private readonly chevron = contentChild(TuiChevron);
     private readonly aside = inject(TuiAsideComponent);
+
     protected readonly template = contentChild(TemplateRef);
     protected readonly expanded = computed(() => this.aside.expanded() && this.open());
 

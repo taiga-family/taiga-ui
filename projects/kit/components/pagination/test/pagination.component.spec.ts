@@ -41,6 +41,7 @@ describe('TuiPaginationComponent', () => {
     let testComponent: Test;
     let component: TuiPagination;
     let pageObject: TuiPageObject<Test>;
+
     const testContext = {
         get prefix() {
             return 'tui-pagination__';

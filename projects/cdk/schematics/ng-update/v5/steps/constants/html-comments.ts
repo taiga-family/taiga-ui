@@ -9,6 +9,14 @@ import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
 const STRING_LITERAL_RE = /^'[^']*'$/;
 
+// tuiHeader: a value that is exactly one single-quoted literal is auto-migrated by
+// ATTR_WITH_VALUES_TO_REPLACE (single quotes only) or is already a v5 token — skip it.
+const HEADER_SINGLE_LITERAL =
+    /^'(?:xxl|xl|[lms]|xs|xxs|h1|h2|h3|h4|h5|h6|body-l|body-m|body-s)'$/;
+// tuiHeader: a v4 size token used as a quoted literal (single or double quotes) inside a
+// larger expression, e.g. `cond ? 'l' : 'm'` or `cond ? "l" : "m"`.
+const HEADER_OLD_TOKEN_LITERAL = /(['"])(?:xxl|xl|[lms]|xs|xxs)\1/;
+
 export const HTML_COMMENTS: HtmlComment[] = [
     {
         tag: '*',
@@ -70,6 +78,18 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment: 'use tui-pager instead',
     },
     {
+        tag: 'tui-accordion',
+        withAttrs: ['rounded'],
+        comment:
+            'rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom',
+    },
+    {
+        tag: 'tui-thumbnail-card',
+        withAttrs: ['monoHandler'],
+        comment:
+            '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options',
+    },
+    {
         tag: 'timeline-steps',
         withAttrs: [],
         comment:
@@ -90,5 +110,66 @@ export const HTML_COMMENTS: HtmlComment[] = [
         tag: 'button',
         withAttrs: ['tuiTag'],
         comment: 'tui-tag/tuiTag migrated to tuiChip. Check visuals and content manually',
+    },
+    {
+        tag: 'tui-arrow',
+        withAttrs: [],
+        comment:
+            'tui-arrow has been removed. Use TuiChevron directive from @taiga-ui/kit instead. See example https://taiga-ui.dev/components/data-list#links',
+    },
+    {
+        tag: 'tui-svg',
+        withAttrs: ['src'],
+        filterFn: (element) => {
+            const attr = findAttr(element.attrs, 'src');
+
+            if (!attr) {
+                return false;
+            }
+
+            // Dynamic binding: the runtime value cannot be verified statically
+            if (attr.name === '[src]') {
+                return true;
+            }
+
+            // Static value: icon names (@tui.x) and URLs/paths still resolve;
+            // only raw inline SVG/SafeHtml no longer works with the icon input
+            return attr.value.trim().startsWith('<');
+        },
+        comment:
+            'tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL',
+    },
+    {
+        tag: '*',
+        withAttrs: ['[tuiHeader]'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, '[tuiHeader]')?.value?.trim();
+
+            return (
+                !!value &&
+                !HEADER_SINGLE_LITERAL.test(value) &&
+                HEADER_OLD_TOKEN_LITERAL.test(value)
+            );
+        },
+        comment:
+            '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header',
+    },
+    {
+        tag: 'table',
+        withAttrs: ['(tuiSortByChange)'],
+        comment:
+            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortKey, sortDirection}), not the sort key string.',
+    },
+    {
+        tag: 'tui-scrollbar',
+        withAttrs: ['hidden'],
+        comment:
+            'The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element.',
+    },
+    {
+        tag: '*',
+        withAttrs: ['(focusedChange)', '[(focused)]'],
+        comment:
+            'focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly `focused` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield',
     },
 ];

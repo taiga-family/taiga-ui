@@ -27,19 +27,11 @@
         <div tuiToast>
             <tui-icon
                 appearance="accent"
-                icon="@tui.box"
+                iconStart="@tui.box"
                 tuiBadge
             />
             With badge
-            <button
-                appearance="icon"
-                iconStart="@tui.x"
-                size="xs"
-                tuiIconButton
-                type="button"
-            >
-                Close
-            </button>
+            <button tuiButtonX>Close</button>
         </div>
     </section>
     <section [tuiPlatform]="platform">
@@ -67,15 +59,7 @@
                 Action
             </button>
             @if (platform === 'web') {
-                <button
-                    appearance="icon"
-                    iconStart="@tui.x"
-                    size="xs"
-                    tuiIconButton
-                    type="button"
-                >
-                    Close
-                </button>
+                <button tuiButtonX>Close</button>
             }
         </div>
     </section>

@@ -7,7 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {TUI_ANIMATED, TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -38,11 +38,12 @@ export class TuiSlides {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly el = tuiInjectElement();
     protected readonly sign = computed(() => Math.sign(this.direction() || 0));
+
     public readonly direction = input<number | ''>('', {alias: 'tuiSlides'});
 
     protected onAnimation(target: Element): void {
         Array.from(this.el.children)
             .find((element) => element === target)
-            ?.classList.add('tui-slide');
+            ?.classList.add('tui-slide', TUI_ANIMATED);
     }
 }

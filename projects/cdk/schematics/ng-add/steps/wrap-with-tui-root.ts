@@ -122,11 +122,9 @@ function getTemplateInitializer(
 
     const property = metadata.getProperty(propertyName);
 
-    if (!Node.isPropertyAssignment(property)) {
-        return null;
-    }
-
-    return property.getInitializer() ?? null;
+    return Node.isPropertyAssignment(property)
+        ? (property.getInitializer() ?? null)
+        : null;
 }
 
 export function wrapWithTuiRoot(options: TuiSchema): Rule {

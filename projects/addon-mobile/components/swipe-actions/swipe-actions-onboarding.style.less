@@ -5,10 +5,10 @@ tui-swipe-actions._onboarding:where(*&) {
 
     & > * {
         animation:
-            tuiOnboardingEnter var(--tui-duration-slow) var(--tui-curve-expressive-entrance),
-            tuiOnboardingShow var(--tui-duration-moderate) linear var(--tui-duration-slow),
-            tuiOnboardingExit var(--tui-duration-slow) var(--tui-curve-expressive-entrance)
-                calc(var(--tui-duration-slow) + var(--tui-duration-moderate));
+            tuiOnboardingEnter @tui-duration-slow var(--tui-curve-expressive-entrance),
+            tuiOnboardingShow var(--tui-duration) linear @tui-duration-slow,
+            tuiOnboardingExit @tui-duration-slow var(--tui-curve-expressive-entrance)
+                calc(@tui-duration-slow + var(--tui-duration));
 
         @keyframes tuiOnboardingEnter {
             0% {

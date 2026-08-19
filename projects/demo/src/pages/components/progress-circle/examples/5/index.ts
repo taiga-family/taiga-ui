@@ -31,11 +31,7 @@ export default class Example {
                 return 'red';
             }
 
-            if (value < 66) {
-                return 'yellow';
-            }
-
-            return 'green';
+            return value < 66 ? 'yellow' : 'green';
         }),
     );
 }

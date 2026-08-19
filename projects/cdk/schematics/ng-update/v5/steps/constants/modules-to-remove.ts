@@ -6,6 +6,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/cdk',
     },
     {
+        name: 'TuiRepeatTimes',
+        moduleSpecifier: '@taiga-ui/cdk',
+    },
+    {
         name: 'TuiTextfieldControllerModule',
         moduleSpecifier: '@taiga-ui/legacy',
     },
@@ -24,5 +28,9 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
     {
         name: 'TuiTextareaLimit',
         moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
+        name: 'TuiLegacyDropdownOpenMonitorDirective',
+        moduleSpecifier: '@taiga-ui/legacy',
     },
 ];

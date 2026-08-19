@@ -16,7 +16,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {WA_IS_MOBILE, WA_IS_WEBKIT} from '@ng-web-apis/platform';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {
     TUI_MASK_CARD,
     TUI_MASK_CVC,
@@ -54,6 +53,7 @@ import {
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, Subject, switchMap, timer} from 'rxjs';
 
@@ -83,7 +83,6 @@ export interface TuiCard {
         TuiIconPipe,
         TuiMapperPipe,
         TuiTransitioned,
-        WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
     styleUrl: './input-card-group.style.less',
@@ -124,8 +123,14 @@ export class TuiInputCardGroup
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
     private readonly focusedIn = tuiFocusedIn(this.el);
+
     protected readonly cvcMask = computed(() => TUI_MASK_CVC(this.codeLength() ?? 3));
     protected readonly cvcHidden = this.options.cvcHidden;
+    protected readonly dateTexts = inject(TUI_DATE_TEXTS);
+
+    protected readonly expirePlaceholder = computed(
+        () => this.dateTexts()['dd/mm/yyyy']?.slice(3, 8).replaceAll('.', '/') ?? '00/00',
+    );
 
     protected readonly cvcPlaceholder = computed((length = this.codeLength()) =>
         length ? '0'.repeat(length) : this.options.cvcPlaceholder,
@@ -185,7 +190,7 @@ export class TuiInputCardGroup
     );
 
     protected readonly labelRaised = computed(
-        () => (this.focus() && !this.readOnly()) || !!this.card(),
+        () => (this.focus() && this.interactive()) || !!this.card(),
     );
 
     protected readonly hasCleaner = computed(
@@ -256,6 +261,7 @@ export class TuiInputCardGroup
     public handleOption(option: Partial<TuiCard> | null): void {
         const {card = '', expire = '', cvc = ''} = option || {};
         const bin = this.bin();
+
         const element =
             (!card && this.inputCard()?.nativeElement) ||
             (!expire && this.inputExpire()?.nativeElement) ||
@@ -339,8 +345,10 @@ export class TuiInputCardGroup
     }
 
     private updateBin(oldBin: string | null): void {
-        if (this.bin() !== oldBin && !this.cardPrefilled()) {
-            this.binChange.emit(this.bin());
+        const bin = this.bin();
+
+        if (bin !== oldBin && !this.cardPrefilled()) {
+            this.binChange.emit(bin);
         }
     }
 

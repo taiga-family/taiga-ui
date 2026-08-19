@@ -53,13 +53,11 @@ function replaceEnumWithString(
 function containTypeRef(node: ImportSpecifier): boolean {
     const nameNode = node.getNameNode();
 
-    if (!Node.isIdentifier(nameNode)) {
-        return false;
-    }
-
-    return nameNode
-        .findReferencesAsNodes()
-        .some((ref) => Node.isTypeReference(ref.getParent()));
+    return Node.isIdentifier(nameNode)
+        ? nameNode
+              .findReferencesAsNodes()
+              .some((ref) => Node.isTypeReference(ref.getParent()))
+        : false;
 }
 
 export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {

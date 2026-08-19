@@ -79,6 +79,15 @@ export class TuiLineChart {
             : this.d(),
     );
 
+    protected readonly hint = computed(
+        () =>
+            (this.hintDirective?.hint() ||
+                this.hintOptions?.content() ||
+                '') as PolymorpheusContent<
+                TuiLineChartHintContext<TuiPoint | readonly TuiPoint[]>
+            >,
+    );
+
     public readonly drivers = viewChildren(TuiHintHover);
     public readonly drivers$ = toObservable(this.drivers);
     public readonly x = input(0);
@@ -101,10 +110,6 @@ export class TuiLineChart {
         this.hovered.set(index);
     }
 
-    protected get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintOptions?.content() || '';
-    }
-
     protected get fillId(): string {
         return `tui-line-chart-${this.autoId}`;
     }
@@ -118,12 +123,7 @@ export class TuiLineChart {
     }
 
     protected get hasHints(): boolean {
-        return (
-            !!this.xStringify() ||
-            !!this.yStringify() ||
-            !!this.hintDirective?.hint() ||
-            !!this.hintContent
-        );
+        return !!this.xStringify() || !!this.yStringify() || !!this.hint();
     }
 
     protected onMouseLeave(): void {

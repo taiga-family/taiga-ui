@@ -7,7 +7,7 @@ import {createMigration} from '../../../utils/run-migration';
 describe('ng-update input-range', () => {
     const migrate = createMigration({
         collection: join(__dirname, '../../../migration.json'),
-        component: `
+        component: /* TypeScript */ `
             import {TuiInputRange} from '@taiga-ui/kit';
 
             @Component({
@@ -35,7 +35,7 @@ describe('ng-update input-range', () => {
     );
 
     it(
-        'removes label[tuiLabel] inside tui-input-range (with spaces)',
+        'preserves interpolated label content when removing label[tuiLabel]',
         migrate({
             template: /* HTML */ `
                 <tui-input-range
@@ -44,8 +44,23 @@ describe('ng-update input-range', () => {
                     [tuiNumberFormat]="numberFormat"
                     [(ngModel)]="value"
                 >
-                    <label tuiLabel>Type number like a German</label>
+                    <label tuiLabel>{{ rangeLabel }}</label>
                 </tui-input-range>
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiInputRangeModule import to TuiInputRange',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiInputRangeModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputRangeModule],
+                })
+                export class TestComponent {}
             `,
         }),
     );

@@ -1,4 +1,4 @@
-import {Location, NgTemplateOutlet} from '@angular/common';
+import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,6 @@ import {tuiCoerceValue, tuiInspect} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiInput} from '@taiga-ui/core/components/input';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
-import {TuiHint} from '@taiga-ui/core/portals/hint';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -27,15 +26,14 @@ import {TuiInspectPipe} from './inspect.pipe';
 import {TuiTypeReferencePipe} from './type-reference.pipe';
 
 const SERIALIZED_SUFFIX = '$';
+const SERIALIZED_NULL = 'null';
 
 @Component({
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
-        NgTemplateOutlet,
         TuiChevron,
         TuiDataListWrapper,
-        TuiHint,
         TuiInput,
         TuiInputNumber,
         TuiInspectPipe,
@@ -62,13 +60,16 @@ export class TuiDocAPIItem<T> implements OnInit {
     protected readonly isBananaBox = computed(() => this.name().startsWith('[('));
     protected readonly isInput = computed(() => this.name().startsWith('['));
     protected readonly isOutput = computed(() => this.name().startsWith('('));
+
     public readonly name = input('');
     public readonly type = input('');
     public readonly value = model<T>();
     public readonly items = input([], {transform: (v?: readonly T[]) => v || []});
 
     protected readonly hasCleaner = computed(
-        () => this.type().includes('null') || this.type().includes('PolymorpheusContent'),
+        (type = this.type(), value = this.value()) =>
+            (type.includes(SERIALIZED_NULL) || type.includes('PolymorpheusContent')) &&
+            (value ?? SERIALIZED_NULL) !== SERIALIZED_NULL,
     );
 
     public ngOnInit(): void {
@@ -98,6 +99,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private parseParams(params: Params): void {
         const name = this.clearBrackets(this.name());
         const propertyValue: string | undefined = params[name];
+
         const propertyValueWithSuffix: number | string | undefined =
             params[`${name}${SERIALIZED_SUFFIX}`];
 
@@ -106,6 +108,7 @@ export class TuiDocAPIItem<T> implements OnInit {
         }
 
         const items = this.items();
+
         let value =
             !!propertyValueWithSuffix && items
                 ? items[propertyValueWithSuffix as number]
@@ -120,9 +123,9 @@ export class TuiDocAPIItem<T> implements OnInit {
 
     private setQueryParam(value: T | boolean | number | string | null): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
-
         const isValueAvailableByKey = value instanceof Object;
         const items = this.items();
+
         const computedValue =
             isValueAvailableByKey && items ? items.indexOf(value as T) : value;
 

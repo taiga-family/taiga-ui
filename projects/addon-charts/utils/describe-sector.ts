@@ -23,6 +23,7 @@ export function tuiDescribeSector(startAngle = 0, endAngle = 0): string {
     const endX = Math.cos(endRad) * 100;
     const endY = Math.sin(endRad) * 100;
     const largeArcFlag = tuiToInt(endAngle - startAngle > 180);
+
     const result = [
         'M',
         startX,

@@ -665,7 +665,7 @@ describe('InputNumber', () => {
                     }) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readOnly=true`,
+                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
                         );
                         await inputNumber.textfield.focus();
 
@@ -996,6 +996,53 @@ describe('InputNumber', () => {
                 await expect(inputNumber.textfield).toHaveValue('42.00');
                 await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 2);
                 await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 2);
+            });
+
+            test('decimalMode=always | Enter 42 => Blur => 42.00', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
+                );
+
+                await inputNumber.textfield.fill('42');
+                await inputNumber.textfield.blur();
+
+                await expect(inputNumber.textfield).toHaveValue('42.00');
+            });
+
+            test('decimalMode=always | pressing Space in the middle of value does not delete a digit', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
+                );
+
+                await inputNumber.textfield.fill('123');
+                await page.keyboard.press('ArrowLeft');
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+
+                await inputNumber.textfield.blur();
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+
+                await inputNumber.textfield.focus();
+
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionStart',
+                    '12'.length,
+                );
+
+                await page.keyboard.press('Space');
+
+                await expect(inputNumber.textfield).toHaveValue('123.00');
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionStart',
+                    '12'.length,
+                );
+                await expect(inputNumber.textfield).toHaveJSProperty(
+                    'selectionEnd',
+                    '12'.length,
+                );
             });
         });
 

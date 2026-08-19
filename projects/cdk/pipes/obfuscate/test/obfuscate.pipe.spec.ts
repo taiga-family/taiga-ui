@@ -37,6 +37,7 @@ describe('tuiObfuscate', () => {
     describe('option', () => {
         describe('custom default recipe', () => {
             let pipe: TuiObfuscatePipe;
+
             const obfuscateOptions: TuiObfuscateOptions = {
                 default: (value) => 'x'.repeat(value.length),
                 recipes: {},
@@ -61,6 +62,7 @@ describe('tuiObfuscate', () => {
 
         describe('custom default recipe with symbol', () => {
             let pipe: TuiObfuscatePipe;
+
             const obfuscateOptions: TuiObfuscateOptions = {
                 default: (value, symbol?) => (symbol ?? 'x').repeat(value.length),
                 recipes: {},
@@ -85,6 +87,7 @@ describe('tuiObfuscate', () => {
 
         describe('custom recipes', () => {
             let pipe: TuiObfuscatePipe;
+
             const obfuscateOptions: TuiObfuscateOptions = {
                 default: () => '*',
                 recipes: {

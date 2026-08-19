@@ -204,7 +204,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2001m0d1 = new TuiDay(2001, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(y2001m0d1, null);
 
@@ -215,7 +214,6 @@ describe('TuiDayRange', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);
             const y2999m0d1 = new TuiDay(2999, 0, 1);
             const y3000m0d1 = new TuiDay(3000, 0, 1);
-
             const range = new TuiDayRange(y2000m0d1, y3000m0d1);
             const limitedRange = range.dayLimit(null, y2999m0d1);
 
@@ -249,6 +247,34 @@ describe('TuiDayRange', () => {
                     new TuiDay(3000, 9, 18),
                 ).getFormattedDayRange('yyyy/mm/dd', '-'),
             ).toBe(`2000-12-20${RANGE_SEPARATOR_CHAR}3000-10-18`);
+        });
+    });
+
+    describe('dayInRange', () => {
+        const range = new TuiDayRange(new TuiDay(2000, 2, 1), new TuiDay(2000, 4, 1));
+
+        it('returns true for value within range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 3, 15))).toBe(true);
+        });
+
+        it('returns true for value at the start of the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 2, 1))).toBe(true);
+        });
+
+        it('returns true for value at the end of the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 4, 1))).toBe(true);
+        });
+
+        it('returns false for value before the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 1, 1))).toBe(false);
+        });
+
+        it('returns false for value after the range', () => {
+            expect(range.dayInRange(new TuiDay(2000, 5, 1))).toBe(false);
+        });
+
+        it('returns false for different year', () => {
+            expect(range.dayInRange(new TuiDay(2001, 3, 1))).toBe(false);
         });
     });
 });

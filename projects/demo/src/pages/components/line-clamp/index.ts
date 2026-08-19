@@ -14,6 +14,7 @@ export default class Page {
     protected lineHeight = 24;
     protected maxWidth = 100;
     protected content = '';
+    protected showHint = true;
 
     protected readonly examples = [
         'Styles change',

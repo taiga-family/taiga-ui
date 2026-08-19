@@ -85,52 +85,53 @@
                 {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
+    </tbody>
 
-        <tui-table-expand
-            #expand
-            [expanded]="true"
-        >
-            @for (item of basicData; track item) {
-                <tr tuiTr>
-                    <td
-                        *tuiCell="'action'"
-                        tuiTd
-                    ></td>
-                    <td
-                        *tuiCell="'firstName'"
-                        tuiTd
-                    >
-                        <div>
-                            <span
-                                size="s"
-                                tuiChip
-                                [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                            >
-                                {{ item.firstName }}
-                            </span>
-                        </div>
-                    </td>
-                    <td
-                        *tuiCell="'lastName'"
-                        tuiTd
-                    >
-                        {{ item.lastName }}
-                    </td>
-                    <td
-                        *tuiCell="'role'"
-                        tuiTd
-                    >
-                        {{ item.role }}
-                    </td>
-                    <td
-                        *tuiCell="'balance'"
-                        tuiTd
-                    >
-                        {{ item.balance | tuiFormatNumber }}
-                    </td>
-                </tr>
-            }
-        </tui-table-expand>
+    <tbody
+        #expand
+        tuiTableExpand
+        [expanded]="true"
+    >
+        @for (item of basicData; track item) {
+            <tr tuiTr>
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    <div>
+                        <span
+                            size="s"
+                            tuiChip
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                        >
+                            {{ item.firstName }}
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber }}
+                </td>
+            </tr>
+        }
     </tbody>
 
     <tbody tuiTbody>
@@ -175,41 +176,44 @@
                 {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
+    </tbody>
 
-        <tui-table-expand [expanded]="manualOpen">
-            @for (item of manualOpenData; track item) {
-                <tr tuiTr>
-                    <td
-                        *tuiCell="'action'"
-                        tuiTd
-                    ></td>
-                    <td
-                        *tuiCell="'firstName'"
-                        tuiTd
-                    >
-                        {{ item.firstName }}
-                    </td>
-                    <td
-                        *tuiCell="'lastName'"
-                        tuiTd
-                    >
-                        {{ item.lastName }}
-                    </td>
-                    <td
-                        *tuiCell="'role'"
-                        tuiTd
-                    >
-                        {{ item.role }}
-                    </td>
-                    <td
-                        *tuiCell="'balance'"
-                        tuiTd
-                    >
-                        {{ item.balance | tuiFormatNumber }}
-                    </td>
-                </tr>
-            }
-        </tui-table-expand>
+    <tbody
+        tuiTableExpand
+        [expanded]="manualOpen"
+    >
+        @for (item of manualOpenData; track item) {
+            <tr tuiTr>
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    {{ item.firstName }}
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber }}
+                </td>
+            </tr>
+        }
     </tbody>
 
     <tbody tuiTbody>

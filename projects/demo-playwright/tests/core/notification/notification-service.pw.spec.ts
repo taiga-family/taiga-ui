@@ -16,4 +16,20 @@ test.describe('NotificationService', () => {
             .soft(page.locator('tui-notification-alert'))
             .toHaveScreenshot('01-alert.png');
     });
+
+    test('notification with long label', async ({page}) => {
+        await tuiGoto(
+            page,
+            `${DemoRoute.Notification}/API?label=long%20long%20long%20long%20long%20label`,
+        );
+
+        const demo = page.locator('tui-doc-demo');
+        const showPopoverButton = demo.locator('button:has-text("Show popover")').first();
+
+        await showPopoverButton.click();
+
+        await expect
+            .soft(page.locator('tui-notification-alert'))
+            .toHaveScreenshot('02-alert-with-long-label.png');
+    });
 });

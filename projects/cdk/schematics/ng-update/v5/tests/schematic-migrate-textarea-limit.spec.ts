@@ -12,7 +12,7 @@ describe('ng-update TuiTextareaLimit', () => {
     it(
         'removes TuiTextareaLimit import when TuiTextarea is already present',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiTextarea, TuiTextareaLimit} from '@taiga-ui/kit';
 
@@ -29,7 +29,7 @@ describe('ng-update TuiTextareaLimit', () => {
     it(
         'removes standalone TuiTextareaLimit import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiTextareaLimit} from '@taiga-ui/kit';
 

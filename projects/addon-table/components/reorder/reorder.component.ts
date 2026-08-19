@@ -35,6 +35,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
 })
 export class TuiReorder<T> {
     private dragging = false;
+
     protected order = new Map<number, number>();
 
     protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
@@ -42,19 +43,16 @@ export class TuiReorder<T> {
         computation: (items, previous) => {
             const previousUnsortedItems = previous?.value ?? [];
 
-            if (
-                items.length !== previousUnsortedItems.length ||
+            return items.length !== previousUnsortedItems.length ||
                 !items.every((item) => previousUnsortedItems.includes(item))
-            ) {
-                return items;
-            }
-
-            return previousUnsortedItems;
+                ? items
+                : previousUnsortedItems;
         },
     });
 
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+
     public readonly enabled = model<readonly T[]>([]);
     public readonly items = model<readonly T[]>([]);
     public readonly content = input(TUI_STRINGIFY);
@@ -101,6 +99,7 @@ export class TuiReorder<T> {
         }
 
         const newIndex = oldIndex + direction;
+
         const oldItem = Array.from(this.order.values()).findIndex(
             (item) => item === newIndex,
         );

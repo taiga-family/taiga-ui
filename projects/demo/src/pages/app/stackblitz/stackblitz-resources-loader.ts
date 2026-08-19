@@ -22,6 +22,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
 
         const [angularJson = '', tsconfig = ''] =
             tuiTryParseMarkdownCodeBlock(configsContent);
+
         const [mainTs = ''] = tuiTryParseMarkdownCodeBlock(mainTsContent);
         const [indexHtml = ''] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
         const [globalStyles = ''] = tuiTryParseMarkdownCodeBlock(stylesContent);

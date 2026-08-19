@@ -18,6 +18,7 @@ import {
     type MigrationStepTiming,
 } from '../../utils/format-migration-stats';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {saveRemovedImports} from '../../utils/remove-import-from-standalone-component';
 import {runSteps} from '../../utils/run-steps';
 import {
     removeDuplicates,
@@ -36,16 +37,23 @@ import {MODULES_TO_REMOVE} from './steps/constants/modules-to-remove';
 import {migrateBreakpointService} from './steps/migrate-breakpoint-service';
 import {migrateCloseable} from './steps/migrate-closeable';
 import {migrateCssVariables} from './steps/migrate-css-variables';
+import {migrateDialogHeader} from './steps/migrate-dialog-header';
 import {migrateDialogLegacySizes} from './steps/migrate-dialog-legacy-sizes';
 import {migrateDocI18nTokens} from './steps/migrate-doc-i18n-tokens';
+import {migrateDropdownOpen} from './steps/migrate-dropdown-open';
+import {migrateEditorProviders} from './steps/migrate-editor-providers';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
+import {migrateHintDirectiveBinding} from './steps/migrate-hint-directive-binding';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
+import {migrateInputTagComponent} from './steps/migrate-input-tag-component';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
+import {migrateRangeToken} from './steps/migrate-range-token';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {tuiLetMigration} from './steps/migrate-tui-let';
 import {migrateStyles} from './steps/styles';
+import {updatePackages} from './steps/update-packages';
 
 function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -72,8 +80,16 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE),
                 },
                 {
+                    name: 'migrateInputTagComponent',
+                    step: () => migrateInputTagComponent(tree, options),
+                },
+                {
                     name: 'migrateBreakpointService',
                     step: () => migrateBreakpointService(tree, options),
+                },
+                {
+                    name: 'migrateRangeToken',
+                    step: () => migrateRangeToken(tree, options),
                 },
                 {
                     name: 'migratePortalService',
@@ -88,8 +104,20 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => migrateDialogLegacySizes(tree, options),
                 },
                 {
+                    name: 'migrateDialogHeader',
+                    step: () => migrateDialogHeader(tree, options),
+                },
+                {
+                    name: 'migrateDropdownOpen',
+                    step: () => migrateDropdownOpen(tree, options),
+                },
+                {
                     name: 'migrateFilterByInput',
                     step: () => migrateFilterByInput(tree, options),
+                },
+                {
+                    name: 'migrateHintDirectiveBinding',
+                    step: () => migrateHintDirectiveBinding(tree, options),
                 },
                 {
                     name: 'migratePackages',
@@ -124,6 +152,14 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                     step: () => migrateI18nLanguageSignal(tree, options),
                 },
                 {
+                    name: 'migrateEditorProviders',
+                    step: () => migrateEditorProviders(tree, options),
+                },
+                {
+                    name: 'updatePackages',
+                    step: () => updatePackages(fileSystem),
+                },
+                {
                     name: 'showWarnings',
                     step: () => showWarnings(context, MIGRATION_WARNINGS),
                 },
@@ -132,6 +168,7 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
         );
 
         saveAddedImports(options);
+        saveRemovedImports(options);
         fileSystem.commitEdits();
         saveActiveProject();
 

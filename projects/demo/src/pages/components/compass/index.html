@@ -39,9 +39,15 @@
                 type="number"
                 [(value)]="degrees"
             >
-                Pointer direction in degrees
+                pointer direction in degrees
             </tr>
-            <h3>CSS customization</h3>
+            <tr>
+                <td colspan="3">
+                    <span tuiTitle>
+                        <strong>CSS customization</strong>
+                    </span>
+                </td>
+            </tr>
             <tr
                 name="[style.color]"
                 tuiDocAPIItem
@@ -49,7 +55,7 @@
                 [items]="colorVariants"
                 [(value)]="color"
             >
-                Custom color
+                custom color
             </tr>
         </table>
     </ng-template>

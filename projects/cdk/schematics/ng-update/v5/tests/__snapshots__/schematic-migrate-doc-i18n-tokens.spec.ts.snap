@@ -8,9 +8,7 @@ exports[`ng-update migrateDocI18nTokens adds signal import from @angular/core wh
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             ",
@@ -20,9 +18,7 @@ exports[`ng-update migrateDocI18nTokens adds signal import from @angular/core wh
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')}],
                 })
                 export class TestComponent {}
             ",
@@ -37,9 +33,7 @@ exports[`ng-update migrateDocI18nTokens does not add duplicate signal import whe
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             ",
@@ -49,9 +43,7 @@ exports[`ng-update migrateDocI18nTokens does not add duplicate signal import whe
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')}],
                 })
                 export class TestComponent {}
             ",
@@ -95,9 +87,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_MENU_TEXT, useValue: 'Navigation'},
-                    ],
+                    providers: [{provide: TUI_DOC_MENU_TEXT, useValue: 'Navigation'}],
                 })
                 export class TestComponent {}
             ",
@@ -107,9 +97,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_MENU_TEXT, useValue: signal('Navigation')},
-                    ],
+                    providers: [{provide: TUI_DOC_MENU_TEXT, useValue: signal('Navigation')}],
                 })
                 export class TestComponent {}
             ",
@@ -124,9 +112,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'},
-                    ],
+                    providers: [{provide: TUI_DOC_PREVIEW_TEXT, useValue: 'Preview'}],
                 })
                 export class TestComponent {}
             ",
@@ -136,9 +122,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_PREVIEW_TEXT, useValue: signal('Preview')},
-                    ],
+                    providers: [{provide: TUI_DOC_PREVIEW_TEXT, useValue: signal('Preview')}],
                 })
                 export class TestComponent {}
             ",
@@ -153,9 +137,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEARCH_TEXT, useValue: 'Find...'},
-                    ],
+                    providers: [{provide: TUI_DOC_SEARCH_TEXT, useValue: 'Find...'}],
                 })
                 export class TestComponent {}
             ",
@@ -165,9 +147,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEARCH_TEXT, useValue: signal('Find...')},
-                    ],
+                    providers: [{provide: TUI_DOC_SEARCH_TEXT, useValue: signal('Find...')}],
                 })
                 export class TestComponent {}
             ",
@@ -182,9 +162,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEE_ALSO_TEXT, useValue: 'Related'},
-                    ],
+                    providers: [{provide: TUI_DOC_SEE_ALSO_TEXT, useValue: 'Related'}],
                 })
                 export class TestComponent {}
             ",
@@ -194,9 +172,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SEE_ALSO_TEXT, useValue: signal('Related')},
-                    ],
+                    providers: [{provide: TUI_DOC_SEE_ALSO_TEXT, useValue: signal('Related')}],
                 })
                 export class TestComponent {}
             ",
@@ -211,9 +187,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: 'GitHub'}],
                 })
                 export class TestComponent {}
             ",
@@ -223,9 +197,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')},
-                    ],
+                    providers: [{provide: TUI_DOC_SOURCE_CODE_TEXT, useValue: signal('GitHub')}],
                 })
                 export class TestComponent {}
             ",
@@ -240,9 +212,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_TOC_TEXT, useValue: 'Contents'},
-                    ],
+                    providers: [{provide: TUI_DOC_TOC_TEXT, useValue: 'Contents'}],
                 })
                 export class TestComponent {}
             ",
@@ -252,9 +222,7 @@ exports[`ng-update migrateDocI18nTokens wraps plain string useValue with signal(
 
                 @Component({
                     standalone: true,
-                    providers: [
-                        {provide: TUI_DOC_TOC_TEXT, useValue: signal('Contents')},
-                    ],
+                    providers: [{provide: TUI_DOC_TOC_TEXT, useValue: signal('Contents')}],
                 })
                 export class TestComponent {}
             ",

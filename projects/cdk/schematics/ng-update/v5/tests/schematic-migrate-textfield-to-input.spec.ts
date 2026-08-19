@@ -19,13 +19,18 @@ describe('ng-update TuiTextfield to TuiInput', () => {
             'should rename tuiTextfield inside tui-textfield tag',
             migrate({template: '<tui-textfield><input tuiTextfield /></tui-textfield>'}),
         );
+
+        it(
+            'should rename native select tuiTextfield to tuiSelect (not tuiInput)',
+            migrate({template: '<select tuiTextfield></select>'}),
+        );
     });
 
     describe('identifier migration', () => {
         it(
             'should rename TuiTextfield to TuiInput in imports and usages',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {TuiTextfield} from '@taiga-ui/core';
 
                     @Component({
@@ -33,6 +38,21 @@ describe('ng-update TuiTextfield to TuiInput', () => {
                         imports: [TuiTextfield],
                     })
                     export class TestComponent {}
+                `,
+            }),
+        );
+
+        it(
+            'should rename TuiTextfieldDirective to TuiInputDirective in imports and usages',
+            migrate({
+                component: /* TypeScript */ `
+                    import {TuiTextfieldDirective} from '@taiga-ui/core';
+
+                    @Component({standalone: true})
+                    export class TestComponent {
+                        @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+                        protected readonly field!: ElementRef;
+                    }
                 `,
             }),
         );

@@ -1,0 +1,14 @@
+@if (!isMobile) {
+    <tui-scroll-controls
+        class="t-scroll"
+        (click.prevent)="(0)"
+    />
+}
+<span
+    #text
+    aria-hidden="true"
+    class="t-ghost"
+>
+    @let context = {$implicit: textfield.value()};
+    <ng-container *polymorpheusOutlet="host.content() as text; context: context">{{ text }}</ng-container>
+</span>

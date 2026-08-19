@@ -6,6 +6,15 @@
     border-top-right-radius: var(--tui-radius-l);
     overflow: hidden;
 
+    .t-negative {
+        opacity: var(--tui-disabled-opacity);
+
+        &:first-child {
+            border-bottom-left-radius: var(--tui-radius-l);
+            border-bottom-right-radius: var(--tui-radius-l);
+        }
+    }
+
     &[data-size='l'] {
         inline-size: 1rem;
         max-inline-size: 1rem;

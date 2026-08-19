@@ -36,6 +36,7 @@ export class TuiSelectDirective<T>
     private readonly input = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
 
     protected readonly valueEffect = effect(() => {

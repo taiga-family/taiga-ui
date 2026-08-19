@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiPin} from '@taiga-ui/kit';
+import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon, TuiPin],
+    imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

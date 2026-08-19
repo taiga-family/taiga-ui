@@ -1,0 +1,158 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: grid;
+    inline-size: 100%;
+    min-block-size: var(--tui-height-s);
+    color: var(--tui-text-secondary);
+    font: var(--tui-typography-body-m);
+    grid-template: 2rem / repeat(7, 1fr);
+    gap: 0.25rem 0;
+    place-items: center;
+    isolation: isolate;
+
+    &._ww {
+        grid-template: 2rem / repeat(8, 1fr);
+    }
+}
+
+.t-label {
+    padding: 0.5rem 0 0.375rem;
+    font: var(--tui-typography-ui-s);
+    text-transform: uppercase;
+}
+
+.t-day {
+    position: relative;
+    inline-size: 100%;
+    min-block-size: inherit;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: var(--tui-text-primary);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:has([tuiTitle]) {
+        min-block-size: var(--tui-height-m);
+
+        &::before {
+            min-inline-size: var(--tui-height-m);
+            border-radius: var(--tui-radius-m);
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    ::ng-deep [tuiTitle] {
+        gap: 0.125rem;
+        text-align: center;
+
+        [tuiSubtitle] {
+            color: var(--tui-text-secondary);
+            font: var(--tui-typography-ui-xs);
+
+            &::before {
+                content: '​';
+            }
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 50%;
+        z-index: -1;
+        block-size: 100%;
+        min-inline-size: var(--tui-height-s);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        transform: translate(calc(var(--tui-inline) * -50%), -50%);
+    }
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
+    &_adjacent {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    &_hidden {
+        visibility: hidden;
+    }
+
+    &_today::after {
+        content: '';
+        position: absolute;
+        inset-block-end: 0.25rem;
+        inset-inline-start: 50%;
+        margin-inline-start: -0.125rem;
+        inline-size: 0.25rem;
+        block-size: 0.25rem;
+        border-radius: 100%;
+        background: var(--tui-background-accent-1);
+    }
+
+    &_start {
+        border-start-start-radius: var(--tui-radius-s);
+        border-end-start-radius: var(--tui-radius-s);
+    }
+
+    &_end {
+        border-start-end-radius: var(--tui-radius-s);
+        border-end-end-radius: var(--tui-radius-s);
+    }
+
+    &[data-range='single'],
+    &[data-range='start'],
+    &[data-range='end'] {
+        color: var(--tui-text-primary-on-accent-1);
+
+        ::ng-deep [tuiSubtitle] {
+            color: inherit;
+        }
+
+        &::before {
+            background: var(--tui-background-accent-1);
+        }
+
+        &::after {
+            background: currentColor;
+        }
+    }
+
+    &[data-range='start']::before {
+        box-shadow: calc(var(--tui-inline) * 11rem) 0 0 10rem var(--tui-background-neutral-1);
+    }
+
+    &[data-range='end']::before {
+        box-shadow: calc(var(--tui-inline) * -11rem) 0 0 10rem var(--tui-background-neutral-1);
+    }
+
+    &[data-range='middle']::before {
+        box-shadow:
+            0 0 0 10rem var(--tui-background-neutral-1),
+            inset 0 0 0 10rem var(--tui-background-neutral-1);
+    }
+
+    @media @tui-mouse {
+        &:hover::before {
+            background: var(--tui-background-neutral-1-hover);
+        }
+
+        &[data-range='single']:hover::before,
+        &[data-range='start']:hover::before,
+        &[data-range='end']:hover::before {
+            background: var(--tui-background-accent-1-hover);
+        }
+    }
+}
+
+[data-type~='weekend'] {
+    color: var(--tui-text-action);
+}

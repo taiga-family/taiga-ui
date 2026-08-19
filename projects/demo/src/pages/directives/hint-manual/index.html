@@ -21,6 +21,7 @@
                 tuiHint="It says 'Hi all!' into console"
                 type="button"
                 [tuiHintAppearance]="hint.appearance"
+                [tuiHintCentered]="hint.centered"
                 [tuiHintDirection]="hint.direction"
                 [tuiHintManual]="show"
                 (click)="sayHi()"
@@ -34,7 +35,7 @@
                 tuiDocAPIItem
                 type="PolymorpheusContent"
             >
-                Content
+                content of the hint
             </tr>
             <tr
                 name="[tuiHintManual]"
@@ -42,7 +43,7 @@
                 type="boolean"
                 [(value)]="show"
             >
-                Show/hide hint
+                show/hide the hint
             </tr>
             <tbody
                 #hint

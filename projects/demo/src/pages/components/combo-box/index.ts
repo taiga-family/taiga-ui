@@ -1,9 +1,9 @@
 import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -26,10 +26,10 @@ interface Country {
         TuiComboBox,
         TuiDataListWrapper,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -40,6 +40,7 @@ interface Country {
 })
 export default class PageComponent extends Array {
     private readonly countriesI18n = inject(TUI_COUNTRIES);
+
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
@@ -58,11 +59,17 @@ export default class PageComponent extends Array {
         'Override option component',
     ];
 
-    protected readonly [4] = {
+    protected readonly [5] = {
         'database.ts': import('./examples/5/database.ts?raw', {with: {loader: 'text'}}),
     };
 
-    protected readonly [11] = {
+    protected readonly [10] = {
+        'with-virtual-scroll.ts': import('./examples/10/with-virtual-scroll.ts?raw', {
+            with: {loader: 'text'},
+        }),
+    };
+
+    protected readonly [12] = {
         'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
     };
 

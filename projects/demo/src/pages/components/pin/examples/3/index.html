@@ -27,12 +27,17 @@
     [tuiPin]="c"
     (click)="c = !c"
 >
-    <tui-icon icon="@tui.dollar-sign" />
+    <span tuiPin>
+        <tui-icon icon="@tui.dollar-sign" />
+    </span>
+    <tui-icon
+        iconStart="@tui.heart"
+        tuiBadge
+    />
 </button>
 
 <button
     type="button"
-    class="crazy"
     [style.inset-inline-start.rem]="15"
     [tuiPin]="d"
     (click)="d = !d"

@@ -18,6 +18,13 @@
                             <code>--tui-thickness</code>
                             to customize width of the circle stroke. By default, it is 1/12 of diameter.
                         }
+                        @case (4) {
+                            Use css-variable
+                            <code>--tui-diameter</code>
+                            to customize the loader size instead of one of the predefined
+                            <code>[size]</code>
+                            options.
+                        }
                     }
                 </ng-template>
             </tui-doc-example>
@@ -69,7 +76,7 @@
                 type="boolean"
                 [(value)]="loading"
             >
-                Show/hide loader
+                show/hide loader
             </tr>
             <tr
                 name="[inheritColor]"
@@ -77,7 +84,7 @@
                 type="boolean"
                 [(value)]="inheritColor"
             >
-                Inherit parent color
+                inherit parent color
             </tr>
             <tr
                 name="[overlay]"
@@ -85,7 +92,7 @@
                 type="boolean"
                 [(value)]="overlay"
             >
-                Content overlay when loader is showed
+                content overlay when loader is showed
             </tr>
             <tr
                 name="[size]"
@@ -93,9 +100,7 @@
                 type="TuiSizeXS | TuiSizeXL"
                 [items]="sizeVariants"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
             <tr
                 name="[textContent]"
                 tuiDocAPIItem
@@ -103,7 +108,7 @@
                 [items]="textVariants"
                 [(value)]="selectedTemplate"
             >
-                Custom content under loader
+                custom content under loader
             </tr>
         </table>
     </ng-template>

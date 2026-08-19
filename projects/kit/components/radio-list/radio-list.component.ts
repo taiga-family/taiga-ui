@@ -45,6 +45,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 export class TuiRadioList<T> extends TuiControl<T> {
     private readonly controls = viewChildren(NgControl);
     private readonly id = tuiGenerateId();
+
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly validator = computed(() =>

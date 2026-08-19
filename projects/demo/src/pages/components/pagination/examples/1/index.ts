@@ -12,7 +12,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Page {
+export default class Example {
     protected length = 64;
     protected index = 10;
 

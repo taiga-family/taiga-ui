@@ -29,32 +29,35 @@
     template by default.
 </div>
 
-<tui-textfield
-    tuiChevron
-    [content]="content"
-    [tuiTextfieldCleaner]="false"
->
-    <input
-        tuiSelect
-        [(ngModel)]="value"
-    />
-
-    <tui-data-list-wrapper
-        *tuiDropdown
-        [itemContent]="content"
-        [items]="items"
-    />
-    <ng-template
-        #content
-        let-item
+<label tuiLabel>
+    Inside a textfield
+    <tui-textfield
+        tuiChevron
+        [content]="content"
+        [tuiTextfieldCleaner]="false"
     >
-        <div
-            appearance="primary"
-            [tuiAvatar]="item.icon"
-        ></div>
-        <span tuiTitle>
-            {{ item.title }}
-            <span tuiSubtitle>{{ item.subtitle }}</span>
-        </span>
-    </ng-template>
-</tui-textfield>
+        <input
+            tuiSelect
+            [(ngModel)]="value"
+        />
+
+        <tui-data-list-wrapper
+            *tuiDropdown
+            [itemContent]="content"
+            [items]="items"
+        />
+        <ng-template
+            #content
+            let-item
+        >
+            <div
+                appearance="primary"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </ng-template>
+    </tui-textfield>
+</label>

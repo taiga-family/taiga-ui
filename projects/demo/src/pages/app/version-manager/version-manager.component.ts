@@ -17,6 +17,7 @@ import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constan
 export class VersionManager {
     private readonly locationRef = inject(WA_LOCATION);
     private readonly router = inject(Router);
+
     protected readonly initialVersion = inject(TUI_SELECTED_VERSION_META);
     protected readonly versions = inject(TUI_VERSIONS_META_OPTIONS);
     protected open = false;

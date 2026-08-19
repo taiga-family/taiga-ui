@@ -2,6 +2,7 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type DefaultTreeAdapterTypes} from 'parse5';
 
+import {TODO_MARK} from '../../../../utils/insert-todo';
 import {
     findElementsByFn,
     findElementsByTagName,
@@ -16,6 +17,9 @@ import {hasAncestor} from '../../../utils/templates';
 
 type Element = DefaultTreeAdapterTypes.Element;
 
+const SIZE_TODO =
+    '`size` was removed from individual accordion items; set it on the parent <tui-accordion size="..."> instead. See https://taiga-ui.dev/components/accordion';
+
 export function migrateAccordionItem({
     resource,
     recorder,
@@ -27,6 +31,7 @@ export function migrateAccordionItem({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const items = findElementsByTagName(template, 'tui-accordion-item').filter(
         (element) => !hasAncestor(element, 'tui-accordion-item'),
     );
@@ -69,6 +74,7 @@ function buildReplacement(
     const contentElements = findElementsByFn([element], (el) =>
         hasElementAttribute(el, 'tuiaccordionitemcontent'),
     );
+
     const contentElement = contentElements[contentElements.length - 1];
 
     if (!contentElement?.sourceCodeLocation?.startTag) {
@@ -79,6 +85,7 @@ function buildReplacement(
     const contentEnd = contentElement.sourceCodeLocation.endTag?.endOffset;
     const headerRaw = template.slice(startTag.endOffset, contentStart);
     const header = normalizePlainText(normalizeBlock(headerRaw));
+
     const contentRaw =
         contentEnd === undefined
             ? ''
@@ -86,14 +93,18 @@ function buildReplacement(
                   contentElement.sourceCodeLocation.startTag.endOffset,
                   contentElement.sourceCodeLocation.endTag?.startOffset ?? contentEnd,
               );
+
     const contentBlock = normalizeBlock(transformAccordionItems(contentRaw));
     const content = normalizePlainText(contentBlock);
     const forceBlock = contentBlock.includes('\n');
-
     const {indent, startOffset} = getLineIndent(template, startTag.startOffset);
     const buttonAttr = getButtonAttr(element);
     const isLazy = options.isStandalone && contentElement.tagName === 'ng-template';
     const lineIndent = options.isStandalone ? `${indent}    ` : indent;
+
+    const sizeAttr = element.attrs.find(
+        (attr) => attr.name === 'size' || attr.name === '[size]',
+    );
 
     const ATTRS_TO_REMOVE = [
         'borders',
@@ -101,6 +112,8 @@ function buildReplacement(
         'showArrow',
         'async',
         'rounded',
+        'size',
+        '[size]',
         'tuiaccordionitemcontent',
     ];
 
@@ -120,15 +133,28 @@ function buildReplacement(
 
     const otherAttrs = attributes.length ? ` ${attributes.join(' ')}` : '';
     const classAttrStr = classAttr ? ` ${classAttr}` : '';
-
     const button = buildButton(header, `${buttonAttr}${otherAttrs}`, lineIndent);
     const expand = buildExpand(content, isLazy, lineIndent, forceBlock, classAttrStr);
 
+    // In v5 `size` lives on `<tui-accordion>`, not the item/button. A standalone item
+    // gets its own generated wrapper, so the value moves there losslessly; inside an
+    // existing accordion only one size can win, so drop it and flag it for review.
+    const sizeAttrStr = sizeAttr
+        ? ` ${sizeAttr.name}${sizeAttr.value ? `="${sizeAttr.value}"` : ''}`
+        : '';
+
     const replacement = options.isStandalone
-        ? [`${indent}<tui-accordion>`, button, expand, `${indent}</tui-accordion>`].join(
-              '\n',
-          )
-        : [button, expand].join('\n');
+        ? [
+              `${indent}<tui-accordion${sizeAttrStr}>`,
+              button,
+              expand,
+              `${indent}</tui-accordion>`,
+          ].join('\n')
+        : [
+              ...(sizeAttr ? [`${indent}<!-- ${TODO_MARK} ${SIZE_TODO} -->`] : []),
+              button,
+              expand,
+          ].join('\n');
 
     return {
         startOffset,
@@ -205,11 +231,9 @@ function getLineIndent(
     const lineStart = lastLineBreak + 1;
     const indentation = template.slice(lineStart, offset);
 
-    if (indentation.trim()) {
-        return {indent: '', startOffset: offset};
-    }
-
-    return {indent: indentation, startOffset: lineStart};
+    return indentation.trim()
+        ? {indent: '', startOffset: offset}
+        : {indent: indentation, startOffset: lineStart};
 }
 
 function normalizeBlock(value: string): string {
@@ -244,23 +268,17 @@ function normalizePlainText(value: string): string {
     const trimmed = value.trim();
     const hasMarkup = /<[^>]+>/.test(trimmed) || /\{\{|\}\}/.test(trimmed);
 
-    if (hasMarkup) {
-        return value;
-    }
-
-    return trimmed.replaceAll(/\s+/g, ' ');
+    return hasMarkup ? value : trimmed.replaceAll(/\s+/g, ' ');
 }
 
 function buildButton(content: string, attr: string, indent: string): string {
-    if (!content.includes('\n')) {
-        return `${indent}<button ${attr}>${content}</button>`;
-    }
-
-    return [
-        `${indent}<button ${attr}>`,
-        ...indentLines(content, `${indent}    `),
-        `${indent}</button>`,
-    ].join('\n');
+    return content.includes('\n')
+        ? [
+              `${indent}<button ${attr}>`,
+              ...indentLines(content, `${indent}    `),
+              `${indent}</button>`,
+          ].join('\n')
+        : `${indent}<button ${attr}>${content}</button>`;
 }
 
 function buildExpand(
@@ -284,21 +302,19 @@ function buildExpand(
 
     const contentLines = indentLines(content, `${indent}    `);
 
-    if (!isLazy) {
-        return [
-            `${indent}<tui-expand${classAttr}>`,
-            ...contentLines,
-            `${indent}</tui-expand>`,
-        ].join('\n');
-    }
-
-    return [
-        `${indent}<tui-expand${classAttr}>`,
-        `${indent}    <ng-container *tuiItem>`,
-        ...indentLines(content, `${indent}        `),
-        `${indent}    </ng-container>`,
-        `${indent}</tui-expand>`,
-    ].join('\n');
+    return isLazy
+        ? [
+              `${indent}<tui-expand${classAttr}>`,
+              `${indent}    <ng-container *tuiItem>`,
+              ...indentLines(content, `${indent}        `),
+              `${indent}    </ng-container>`,
+              `${indent}</tui-expand>`,
+          ].join('\n')
+        : [
+              `${indent}<tui-expand${classAttr}>`,
+              ...contentLines,
+              `${indent}</tui-expand>`,
+          ].join('\n');
 }
 
 function indentLines(value: string, indent: string): string[] {

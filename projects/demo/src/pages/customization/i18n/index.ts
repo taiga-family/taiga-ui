@@ -5,10 +5,10 @@ import {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
-import {TuiI18nExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiI18nExample1, TuiLink, TuiTablePagination],
+    imports: [Example, TuiAccordion, TuiDemo, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
 })

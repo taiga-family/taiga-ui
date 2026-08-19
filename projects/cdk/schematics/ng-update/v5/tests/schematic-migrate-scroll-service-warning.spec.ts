@@ -12,7 +12,7 @@ describe('ng-update TuiScrollService warning', () => {
     it(
         'adds TODO comment for TuiScrollService import',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiScrollService} from '@taiga-ui/cdk';
 

@@ -32,6 +32,7 @@ export class TuiBottomSheet {
     private readonly elements = viewChildren<ElementRef<HTMLElement>>('stops');
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
+
     public readonly stops = input<readonly string[]>(['1.5rem']);
 
     protected onScroll(): void {

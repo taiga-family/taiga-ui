@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -17,9 +17,9 @@ import {TuiInputYear} from '@taiga-ui/kit';
         FormsModule,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -36,6 +36,8 @@ export default class PageComponent {
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
     protected readonly routes = DemoRoute;
+
     public control = new FormControl<number | null>(null, Validators.required);
+
     protected readonly handler = (year: number): boolean => year % 3 === 0;
 }

@@ -27,11 +27,7 @@ async function fileExists(filePath: string): Promise<boolean> {
 async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
-    if (!(await fileExists(indexPath))) {
-        return '';
-    }
-
-    return fs.readFile(indexPath, 'utf-8');
+    return (await fileExists(indexPath)) ? fs.readFile(indexPath, 'utf-8') : '';
 }
 
 // parse metadata from tui-doc-page
@@ -44,13 +40,10 @@ function getComponentHeader(content: string): ComponentHeader {
 
     const tagContent = tagMatch[1];
     const deprecated = /(?:^|\s)deprecated(?:\s|$)/i.test(tagContent);
-
     const headerMatch = /header="([^"]*)"/i.exec(tagContent);
     const header = headerMatch?.[1]?.trim() || null;
-
     const packageMatch = /package="([^"]*)"/i.exec(tagContent);
     const packageValue = packageMatch?.[1]?.trim() || null;
-
     const typeMatch = /type="([^"]*)"/i.exec(tagContent);
     const type = typeMatch?.[1]?.trim() || null;
 
@@ -151,11 +144,9 @@ function getComponentApiFromTable(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse API properties from tui-doc-documentation
@@ -168,6 +159,7 @@ function getComponentApiFromTemplates(content: string): string {
     }
 
     const templatesContent = templateMatch[1];
+
     const templateRows = templatesContent?.match(
         /<ng-template[^>]+documentationPropertyName="[^"]+"[^>]+documentationPropertyType="[^"]+"[^>]*>[\s\S]*?<\/ng-template>/gi,
     );
@@ -197,11 +189,9 @@ function getComponentApiFromTemplates(content: string): string {
         }
     }
 
-    if (rows.length === 0) {
-        return '';
-    }
-
-    return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
+    return rows.length === 0
+        ? ''
+        : `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
 // parse example index.ts and index.less files
@@ -215,7 +205,6 @@ async function getComponentSourceFiles(
 
     const tsPath = path.join(folderPath, 'index.ts');
     const lessPath = path.join(folderPath, 'index.less');
-
     let result = '';
 
     if (await fileExists(tsPath)) {
@@ -235,6 +224,7 @@ async function getComponentSourceFiles(
 
 async function getAllFolders(): Promise<string[]> {
     const folders: string[] = [];
+
     const SKIP_FOLDERS = [
         'examples',
         'assets',
@@ -323,7 +313,6 @@ async function getMarkdownFiles(startPath: string): Promise<string[]> {
 // parse markdown files content
 async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
-
     const relativePath = path.relative(PAGES_PATH, filePath);
     const title = `# ${relativePath}`;
 
@@ -458,7 +447,7 @@ async function main(): Promise<void> {
     console.info(`- Skipped (legacy): ${skippedLegacy}`);
     console.info('========================================');
 
-    await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(OUTPUT_FILE, output.join('\n'));
 
     console.info(`Successfully file saved: ${OUTPUT_FILE}`);
     console.info(`Total components in output: ${includedCount}`);

@@ -34,6 +34,7 @@ test.describe('TablePagination', () => {
             );
 
             const documentationPage = new TuiDocumentationPagePO(page);
+
             const tablePagination = new TuiTablePaginationPO(
                 documentationPage.demo.locator('tui-table-pagination'),
             );
@@ -54,6 +55,7 @@ test.describe('TablePagination', () => {
         const tablePagination = new TuiTablePaginationPO(
             example.locator('tui-table-pagination'),
         );
+
         const {linesPerPageButton, linesPerPageDropdown} = tablePagination;
 
         await linesPerPageButton.click();
@@ -71,6 +73,7 @@ test.describe('TablePagination', () => {
             );
 
             const documentationPage = new TuiDocumentationPagePO(page);
+
             const tablePagination = new TuiTablePaginationPO(
                 documentationPage.demo.locator('tui-table-pagination'),
             );
@@ -85,6 +88,7 @@ test.describe('TablePagination', () => {
             );
 
             const documentationPage = new TuiDocumentationPagePO(page);
+
             const tablePagination = new TuiTablePaginationPO(
                 documentationPage.demo.locator('tui-table-pagination'),
             );

@@ -67,22 +67,25 @@ class Styles {}
     ],
     host: {
         tuiTooltip: '',
+        class: 'tui-interactive',
         '[attr.data-size]': 'size()',
+        '[attr.tabindex]': 'describe.id() ? null : 0',
         '(click.prevent)': '0',
-        '(mousedown)': 'onClick($event)',
+        '(mousedown.prevent)': '0',
+        '(pointerdown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly describe = inject(TuiHintDescribe);
-    private readonly driver = inject(TuiHintHover);
+
+    protected readonly describe = inject(TuiHintDescribe);
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
-                map((hover) => (hover ? 'hover' : null)),
+                map((hover) => (hover && this.tuiTooltip() ? 'hover' : null)),
                 tuiWatch(),
             ),
             {initialValue: null},
@@ -90,19 +93,19 @@ export class TuiTooltip implements DoCheck {
     );
 
     public readonly size = input<TuiSizeS>('m');
+    public readonly tuiTooltip = input<unknown>();
 
     public ngDoCheck(): void {
-        if (this.textfield?.id) {
-            tuiSetSignal(this.describe.id, this.textfield.id);
+        if (this.textfield) {
+            tuiSetSignal(this.describe.id, this.textfield.input()?.nativeElement.id);
         }
     }
 
     protected onClick(event: MouseEvent): void {
-        if (this.isMobile) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            this.driver.toggle();
+        if (!this.isMobile) {
+            return;
         }
+
+        event.stopPropagation();
     }
 }

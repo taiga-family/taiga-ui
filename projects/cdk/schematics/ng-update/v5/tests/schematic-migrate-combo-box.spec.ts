@@ -10,13 +10,13 @@ describe('ng-update ComboBox', () => {
     it(
         'migrates TuiComboBoxModule import and basic tui-combo-box template',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -220,13 +220,16 @@ describe('ng-update ComboBox', () => {
     it(
         'removes TuiTextfieldControllerModule and drops [tuiTextfieldLabelOutside] with adding TODO',
         migrate({
-            component: `
-                import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+            component: /* TypeScript */ `
+                import {
+                    TuiComboBoxModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
 
                 @Component({
-                  standalone: true,
-                  imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
-                  templateUrl: './test.html',
+                    standalone: true,
+                    imports: [TuiComboBoxModule, TuiTextfieldControllerModule],
+                    templateUrl: './test.html',
                 })
                 export class TestComponent {}
             `,
@@ -286,6 +289,64 @@ describe('ng-update ComboBox', () => {
                     [formControl]="control"
                 >
                     Label
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'keeps valid nesting when the label is followed by @if control flow',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box [formControl]="control">
+                    Attribute @if (items === null) {
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="null"
+                    />
+                    } @if (items !== null) {
+                    <tui-data-list *tuiDataList>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                    }
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'keeps an interpolated label inside label[tuiLabel] (not truncated at `{`)',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box [formControl]="control">
+                    {{ label }}
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
                 </tui-combo-box>
             `,
         }),

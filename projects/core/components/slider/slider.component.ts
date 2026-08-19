@@ -102,6 +102,7 @@ export class TuiSliderComponent {
          */
         if (this.control instanceof NgModel) {
             const transformer = this.keySteps?.transformer();
+
             const value =
                 this.keySteps && transformer
                     ? this.keySteps.toSliderValue(

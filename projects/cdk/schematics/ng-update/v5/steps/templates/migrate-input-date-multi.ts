@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -105,8 +106,10 @@ export function migrateInputDateMulti({
             recorder,
             templateOffset,
         );
+
         const isLabelOutsideTrue =
             labelOutside === 'true' || (!labelOutsideIsBinding && labelOutside === '');
+
         const isDynamic =
             labelOutside !== null && !isLabelOutsideTrue && labelOutside !== 'false';
 
@@ -140,6 +143,7 @@ export function migrateInputDateMulti({
 
         // Add `multi` (and textfield-level attrs) to the new tui-textfield opening tag
         const openTagEnd = sourceCodeLocation?.startTag?.endOffset ?? 0;
+
         const textfieldAttrStr = textfieldAttrs.reduce(
             (result, attr) =>
                 attr.value
@@ -190,8 +194,10 @@ export function migrateInputDateMulti({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -221,10 +227,12 @@ export function migrateInputDateMulti({
 
                 return `     - ${name}: ${hint}${isLast ? ' -->' : ''}`;
             });
+
             const todoComment = [
                 `<!-- ${TODO_MARK} tui-input-date multiple migration (see ${DOCS_LINK}):`,
                 ...attrLines,
             ].join('\n');
+
             const insertAt = (sourceCodeLocation?.startOffset ?? 0) + templateOffset;
 
             recorder.insertLeft(insertAt, `${todoComment}\n`);
@@ -242,9 +250,9 @@ export function migrateInputDateMulti({
             ...inputAttrs,
             ...placeholderAttrs,
         ].reduce((result, attr) => {
-            const name = normalizeAttrName(attr.name);
+            const original = getOriginalAttrText(template, element, attr);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            return `${result} ${original}`;
         }, '');
 
         const calendarAttrStr = calendarAttrs.reduce((result, attr) => {
@@ -293,28 +301,7 @@ function getHint(attrName: string): string {
         return 'use <tui-input-chip *tuiItem="let ctx" [appearance]="myValidator(ctx.item) ? \'\' : \'negative\'"> inside <tui-textfield multi>. See https://taiga-ui.dev/components/input-chip#customization';
     }
 
-    if (lower.includes('search')) {
-        return 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.';
-    }
-
-    return 'no direct equivalent in v5. Update component logic manually.';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
+    return lower.includes('search')
+        ? 'use native (input) event on <input tuiInputDateMulti (input)="onSearch($any($event).target.value)"> instead.'
+        : 'no direct equivalent in v5. Update component logic manually.';
 }

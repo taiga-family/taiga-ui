@@ -69,6 +69,7 @@ export class TuiTilesComponent {
         const elements = Array.from(this.el.children);
         const currentIndex = elements.indexOf(this.element() || element);
         const newIndex = elements.indexOf(element);
+
         const order = this.order().size
             ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));

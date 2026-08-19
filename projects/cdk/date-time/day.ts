@@ -95,6 +95,7 @@ export class TuiDay extends TuiMonth {
     public static normalizeOf(year: number, month: number, day: number): TuiDay {
         const normalizedYear = TuiYear.normalizeYearPart(year);
         const normalizedMonth = TuiMonth.normalizeMonthPart(month);
+
         const normalizedDay = TuiDay.normalizeDayPart(
             day,
             normalizedMonth,
@@ -281,11 +282,7 @@ export class TuiDay extends TuiMonth {
             return min;
         }
 
-        if (max !== null && this.dayAfter(max)) {
-            return max;
-        }
-
-        return this;
+        return max !== null && this.dayAfter(max) ? max : this;
     }
 
     /**
@@ -307,10 +304,12 @@ export class TuiDay extends TuiMonth {
             months,
             TuiYear.isLeapYear(years),
         );
+
         const currentMonthDaysCount = TuiMonth.getMonthDaysCount(
             this.month,
             TuiYear.isLeapYear(years),
         );
+
         let days = day;
 
         if (this.day >= monthDaysCount) {

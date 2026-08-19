@@ -38,6 +38,7 @@ class Styles {}
 export class TuiCell {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_CELL_OPTIONS);
+
     public readonly size = input(this.options.size, {alias: 'tuiCell'});
     public readonly height = input(this.options.height, {alias: 'tuiCellHeight'});
 }

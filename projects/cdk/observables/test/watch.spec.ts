@@ -6,7 +6,6 @@ import {Subject} from 'rxjs';
 describe('tuiWatch operator function', () => {
     let $: Subject<unknown>;
     let called = 0;
-
     const chrStub = {markForCheck: () => called++} as unknown as ChangeDetectorRef;
 
     beforeEach(() => {

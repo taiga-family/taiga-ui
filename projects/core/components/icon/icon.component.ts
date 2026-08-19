@@ -31,5 +31,6 @@ import {TuiIcons} from '@taiga-ui/core/directives/icons';
 export class TuiIcon {
     protected readonly icons = inject(TuiIcons);
     protected readonly mask = computed(() => this.icons.resolve(this.background()));
+
     public readonly background = input('');
 }

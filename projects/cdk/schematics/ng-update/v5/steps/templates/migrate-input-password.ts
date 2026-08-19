@@ -91,8 +91,10 @@ export function migrateInputPassword({
         if (labelIndex !== -1) {
             const labelNode = element.childNodes[labelIndex];
             const labelText = (labelNode as TextNode).value.trim();
+
             const labelTextStart =
                 (labelNode?.sourceCodeLocation?.startOffset ?? 0) + templateOffset;
+
             const labelTextEnd =
                 (labelNode?.sourceCodeLocation?.endOffset ?? 0) + templateOffset;
 
@@ -151,6 +153,7 @@ export function migrateInputPassword({
             const hasTypePassword = input.attrs.some(
                 (attr) => attr.name === 'type' && attr.value === 'password',
             );
+
             const typeAttr = hasTypePassword ? '' : ' type="password"';
 
             input.attrs.forEach((attr) => {

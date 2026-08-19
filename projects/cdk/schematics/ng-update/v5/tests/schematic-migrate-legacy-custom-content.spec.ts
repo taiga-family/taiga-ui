@@ -95,13 +95,13 @@ describe('ng-update legacy tuiTextfieldCustomContent across controls', () => {
         it(
             'adds TuiIcon and PolymorpheusOutlet imports for tui-select binding',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {TuiSelectModule} from '@taiga-ui/legacy';
 
                     @Component({
-                      standalone: true,
-                      imports: [TuiSelectModule],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelectModule],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 `,
@@ -113,13 +113,13 @@ describe('ng-update legacy tuiTextfieldCustomContent across controls', () => {
         it(
             'adds only TuiIcon for tui-select static string',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {TuiSelectModule} from '@taiga-ui/legacy';
 
                     @Component({
-                      standalone: true,
-                      imports: [TuiSelectModule],
-                      templateUrl: './test.html',
+                        standalone: true,
+                        imports: [TuiSelectModule],
+                        templateUrl: './test.html',
                     })
                     export class TestComponent {}
                 `,
@@ -131,7 +131,7 @@ describe('ng-update legacy tuiTextfieldCustomContent across controls', () => {
         it(
             'works with inline template (static icon => TuiInput + TuiIcon)',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {FormsModule} from '@angular/forms';
                     import {MaskitoDirective} from '@maskito/angular';
@@ -174,7 +174,7 @@ describe('ng-update legacy tuiTextfieldCustomContent across controls', () => {
         it(
             'works with inline template (dynamic content => TuiInput + TuiIcon + PolymorpheusOutlet)',
             migrate({
-                component: `
+                component: /* TypeScript */ `
                     import {ChangeDetectionStrategy, Component} from '@angular/core';
                     import {FormsModule} from '@angular/forms';
                     import {MaskitoDirective} from '@maskito/angular';

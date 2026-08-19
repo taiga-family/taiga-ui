@@ -22,9 +22,12 @@
     let-card
 >
     <div class="card">
-        <tui-thumbnail-card [paymentSystem]="card.paymentSystem">
+        <span
+            tuiThumbnailCard
+            [paymentSystem]="card.paymentSystem"
+        >
             {{ card.number.slice(-4) }}
-        </tui-thumbnail-card>
+        </span>
 
         {{ card.name }}
     </div>

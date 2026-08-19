@@ -93,13 +93,16 @@ export class TuiTime implements TuiTimeLike {
             );
 
         const hours = Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
+
         const minutes = Math.floor(
             (milliseconds % MILLISECONDS_IN_HOUR) / MILLISECONDS_IN_MINUTE,
         );
+
         const seconds =
             Math.floor(
                 ((milliseconds % MILLISECONDS_IN_HOUR) % MILLISECONDS_IN_MINUTE) / 1000,
             ) || 0;
+
         const ms =
             Math.floor(
                 ((milliseconds % MILLISECONDS_IN_HOUR) % MILLISECONDS_IN_MINUTE) % 1000,
@@ -109,7 +112,15 @@ export class TuiTime implements TuiTimeLike {
     }
 
     /**
-     * Parses string into TuiTime object
+     * @deprecated Use `TuiTime.fromAbsoluteMilliseconds` + `maskitoParseTime` instead
+     * ```ts
+     * const params: MaskitoTimeParams = {mode: '...'};
+     *
+     * TuiTime.fromAbsoluteMilliseconds(
+     *     maskitoParseTime(x, params)
+     * ) // TuiTime
+     * ```
+     * TODO(v6): delete
      */
     public static fromString(time: string): TuiTime {
         const hours = this.parseHours(time);
@@ -166,6 +177,7 @@ export class TuiTime implements TuiTimeLike {
             minutes * MILLISECONDS_IN_MINUTE +
             seconds * MILLISECONDS_IN_SECOND +
             ms;
+
         const totalSeconds = Math.floor(totalMs / MILLISECONDS_IN_SECOND);
         const totalMinutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
         const totalHours = Math.floor(totalMinutes / MINUTES_IN_HOUR);
@@ -196,11 +208,14 @@ export class TuiTime implements TuiTimeLike {
             | 'SS.MSS',
     ): string {
         const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
+
         const needAddSeconds =
             needAddMs || mode?.startsWith('HH:MM:SS') || (!mode && this.seconds > 0);
+
         const {hours = this.hours, meridiem = ''} = mode?.includes('AA')
             ? this.toTwelveHour(this.hours)
             : {};
+
         const hhMm = `${this.formatTime(hours)}:${this.formatTime(this.minutes)}`;
         const ss = needAddSeconds ? `:${this.formatTime(this.seconds)}` : '';
         const mss = needAddMs ? `.${this.formatTime(this.ms, 3)}` : '';
@@ -241,11 +256,9 @@ export class TuiTime implements TuiTimeLike {
     private toTwelveHour(hours: number): {hours: number; meridiem: string} {
         const meridiem = hours >= 12 ? 'PM' : 'AM';
 
-        if (hours === 0 || hours === 12) {
-            return {meridiem, hours: 12};
-        }
-
-        return {meridiem, hours: hours % 12};
+        return hours === 0 || hours === 12
+            ? {meridiem, hours: 12}
+            : {meridiem, hours: hours % 12};
     }
 
     private normalizeToRange(value: number, modulus: number): number {

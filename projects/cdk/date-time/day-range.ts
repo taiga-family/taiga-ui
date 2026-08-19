@@ -46,17 +46,15 @@ export class TuiDayRange extends TuiMonthRange {
             dateMode,
         );
 
-        if (rangeString.length < DATE_RANGE_FILLER_LENGTH) {
-            return new TuiDayRange(leftDay, leftDay);
-        }
-
-        return TuiDayRange.sort(
-            leftDay,
-            TuiDay.normalizeParse(
-                rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
-                dateMode,
-            ),
-        );
+        return rangeString.length < DATE_RANGE_FILLER_LENGTH
+            ? new TuiDayRange(leftDay, leftDay)
+            : TuiDayRange.sort(
+                  leftDay,
+                  TuiDay.normalizeParse(
+                      rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
+                      dateMode,
+                  ),
+              );
     }
 
     public get isSingleDay(): boolean {
@@ -71,6 +69,10 @@ export class TuiDayRange extends TuiMonthRange {
      */
     public daySame(another: TuiDayRange): boolean {
         return this.from.daySame(another.from) && this.to.daySame(another.to);
+    }
+
+    public dayInRange(day: TuiDay): boolean {
+        return this.from.daySameOrBefore(day) && this.to.daySameOrAfter(day);
     }
 
     /**

@@ -201,9 +201,11 @@ function parseSymbols(raw: string): ParsedSymbol[] {
         .map((segment) => {
             const trimmed = segment.trim();
             const hasTypeModifier = TYPE_MODIFIER_RE.test(trimmed);
+
             const nameWithAlias = hasTypeModifier
                 ? trimmed.replace(TYPE_MODIFIER_RE, '')
                 : trimmed;
+
             const name = nameWithAlias.split(/\s+as\s+/)[0]?.trim() ?? '';
 
             return {name, hasTypeModifier};
@@ -236,11 +238,7 @@ function categorizeSymbol(
         return 'component';
     }
 
-    if (/^[a-z]/.test(name)) {
-        return 'utility';
-    }
-
-    return folderHint ?? 'class';
+    return /^[a-z]/.test(name) ? 'utility' : (folderHint ?? 'class');
 }
 
 function detectFolderCategory(
@@ -256,11 +254,9 @@ function detectFolderCategory(
 function buildImportRegex(escapedPkg: string, typeOnly: boolean): RegExp {
     const fromClause = String.raw`from\s*['"]${escapedPkg}(?:/[^'"]*)?['"]`;
 
-    if (typeOnly) {
-        return new RegExp(String.raw`import\s+type\s*\{([^}]+)\}\s*${fromClause}`, 'gs');
-    }
-
-    return new RegExp(String.raw`import\s+(?!type\s)\{([^}]+)\}\s*${fromClause}`, 'gs');
+    return typeOnly
+        ? new RegExp(String.raw`import\s+type\s*\{([^}]+)\}\s*${fromClause}`, 'gs')
+        : new RegExp(String.raw`import\s+(?!type\s)\{([^}]+)\}\s*${fromClause}`, 'gs');
 }
 
 function processTypeImports(
@@ -304,10 +300,8 @@ async function extractImportsFromDemoPages(
     packageName: string,
 ): Promise<EntityExports[]> {
     const tsFiles = await collectTsFiles(rootPath);
-
     const symbolMap = new Map<string, boolean>();
     const symbolFolderHint = new Map<string, SymbolCategory | undefined>();
-
     const escapedPkg = packageName.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
     const typeImportRe = buildImportRegex(escapedPkg, true);
     const valueImportRe = buildImportRegex(escapedPkg, false);
@@ -337,7 +331,6 @@ async function extractImportsFromDemoPages(
     }
 
     const byCategory = new Map<SymbolCategory, string[]>();
-
     const symbolEntries = Array.from(symbolMap.entries());
 
     for (const [name, isTypeOnly] of symbolEntries) {
@@ -392,18 +385,13 @@ function formatExportsList(exports: string[], perLine = 10): string {
 function formatEntitySection(entity: EntityExports, perLine = 10): string {
     const exportsBlock = formatExportsList(entity.exports, perLine);
 
-    if (!exportsBlock) {
-        return '';
-    }
-
-    return `### ${entity.name}\n\n${exportsBlock}\n`;
+    return exportsBlock ? `### ${entity.name}\n\n${exportsBlock}\n` : '';
 }
 
 function sortByCategory<T extends {category: string}>(items: T[]): T[] {
     return [...items].sort((a, b) => {
         const aIdx = CATEGORY_ORDER.indexOf(a.category as SymbolCategory);
         const bIdx = CATEGORY_ORDER.indexOf(b.category as SymbolCategory);
-
         const aOrder = aIdx === -1 ? Infinity : aIdx;
         const bOrder = bIdx === -1 ? Infinity : bIdx;
 
@@ -638,6 +626,7 @@ export async function generateImportMap(options?: ImportMapOptions): Promise<str
             extraRoot,
             options.extraPackageName,
         );
+
         const totalExports = entities.reduce((sum, e) => sum + e.exports.length, 0);
 
         if (totalExports > 0) {
@@ -662,6 +651,7 @@ export async function saveImportMap(
     options?: ImportMapOptions,
 ): Promise<void> {
     const importMap = await generateImportMap(options);
+
     const filePath =
         outputPath ||
         path.resolve(
@@ -669,5 +659,5 @@ export async function saveImportMap(
             'projects/demo/src/llms-header-sections/import-map.md',
         );
 
-    await fs.writeFile(filePath, importMap, 'utf-8');
+    await fs.writeFile(filePath, importMap);
 }

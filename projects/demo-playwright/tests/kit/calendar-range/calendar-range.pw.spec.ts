@@ -209,19 +209,17 @@ describe('CalendarRange', () => {
                     .then(async ([x]) => x.getCalendarSheets());
 
                 await calendarSheet.clickOnDay(15);
-                await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(20).hover();
 
                 await expect.soft(example).toHaveScreenshot('09-1-has-hover-effect.png');
 
                 await calendarSheet.clickOnDay(15);
-
-                await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(22).hover();
 
                 await expect.soft(example).toHaveScreenshot('09-2-no-hover-effect.png');
 
                 await calendarSheet.clickOnDay(22);
-
-                await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
+                await calendarSheet.getCalendarDay(25).hover();
 
                 await expect.soft(example).toHaveScreenshot('09-3-has-hover-effect.png');
             });
@@ -444,6 +442,7 @@ describe('CalendarRange', () => {
                 await expect(calendarRange.host).toContainText('February 2026');
 
                 const pagePO = new TuiDocumentationPagePO(page);
+
                 const maxProperty = new TuiSelectPO(
                     (await pagePO.getSelect(pagePO.getRow('max')))!,
                 );

@@ -23,7 +23,6 @@ const ATTRIBUTE_NAMES = [
 export function migrateCloseable({resource, recorder, fileSystem}: Input): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
-
     const re = /(^|[,{]\s*)('?)closeable\2(\s*:)/g;
 
     findElementsWithAttributeOnTag(template, ATTRIBUTE_NAMES).forEach((element) => {

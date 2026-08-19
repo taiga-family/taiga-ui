@@ -11,6 +11,7 @@ test.describe('Select mobile', () => {
         await tuiGoto(page, DemoRoute.Select);
 
         const documentationPage = new TuiDocumentationPagePO(page);
+
         const example = documentationPage.getExample(
             '#native-picker-with-disabled-option',
         );

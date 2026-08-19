@@ -68,6 +68,7 @@ export class TuiTableDirective<
     T extends Partial<Record<keyof T, unknown>>,
 > implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TABLE_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(Styles);
 
     protected readonly computedSortChange = computed<TuiTableSortChange<T>>(() => ({

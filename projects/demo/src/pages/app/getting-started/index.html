@@ -97,9 +97,20 @@
         @for (example of examples; track example) {
             <tui-doc-example
                 [content]="content[$index] || {}"
+                [description]="description"
                 [heading]="example"
                 [preview]="false"
             />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (5) {
+                        If you want to use SSR with Taiga UI you need to install
+                        <code>&#64;ng-web-apis/universal</code>
+                        package. It has advanced mocks and tools to extract user agent and location info from server
+                        side requests.
+                    }
+                }
+            </ng-template>
         }
     </ng-template>
     <ng-template pageTab="Config">

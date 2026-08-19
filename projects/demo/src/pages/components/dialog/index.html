@@ -102,7 +102,7 @@
                 [items]="appearances"
                 [(value)]="appearance"
             >
-                Appearance of dialog
+                appearance of the dialog
             </tr>
             <tr
                 name="[closable]"
@@ -110,8 +110,7 @@
                 type="boolean"
                 [(value)]="closable"
             >
-                Show a cross to close dialog.
-
+                show a cross to close dialog.
                 <p>
                     Pass
                     <code [textContent]="'Observable<boolean>'"></code>
@@ -128,7 +127,7 @@
                 type="boolean"
                 [(value)]="dismissible"
             >
-                Dialog can be canceled with Escape key or with a click outside. Pass
+                dialog can be canceled with Escape key or with a click outside. Pass
                 <code [textContent]="'Observable<boolean>'"></code>
                 if you want prevent closing, for example, with a confirmation prompt.
             </tr>
@@ -138,7 +137,7 @@
                 type="string"
                 [(value)]="data"
             >
-                Input data for dialog, arbitrary type
+                input data for dialog, arbitrary type
                 <code [textContent]="'<I>'"></code>
             </tr>
             <tr
@@ -147,7 +146,7 @@
                 type="string"
                 [(value)]="label"
             >
-                Heading of dialog
+                heading of dialog
             </tr>
             <tr
                 name="[required]"
@@ -155,7 +154,7 @@
                 type="boolean"
                 [(value)]="required"
             >
-                Cross click, overlay click or Escape click emits an error into
+                cross click, overlay click or Escape click emits an error into
                 <code>Observable</code>
                 (you can catch it with "catch" operator or onError handler)
             </tr>
@@ -165,9 +164,7 @@
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizes"
                 [(value)]="size"
-            >
-                Size
-            </tr>
+            ></tr>
         </table>
     </ng-template>
 </tui-doc-page>

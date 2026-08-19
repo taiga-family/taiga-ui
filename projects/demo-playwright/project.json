@@ -15,7 +15,7 @@
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "playwright test --config {projectRoot}/playwright.config.ts --ui --debug --update-snapshots",
+                "command": "playwright test --config {projectRoot}/playwright.config.ts --ui --debug --headed --update-snapshots",
                 "forwardAllArgs": true
             }
         },

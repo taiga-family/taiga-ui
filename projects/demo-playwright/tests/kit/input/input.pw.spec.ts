@@ -6,6 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
 test.describe('Input', () => {
     test('custom content', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Input}/API?content=TOP%20SECRET`);
@@ -96,7 +98,6 @@ test.describe('Input', () => {
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
             const textfield = example.locator('input[tuiInput]').first();
-
             const value = '123';
 
             await textfield.scrollIntoViewIfNeeded();
@@ -122,6 +123,7 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
+
             const {textfield, dropdown} = new TuiTextfieldWithDataListPO(
                 example.locator('tui-textfield').first(),
             );
@@ -157,5 +159,23 @@ test.describe('Input', () => {
 
         await expect(page.locator('tui-hint')).toBeAttached();
         await expect.soft(example).toHaveScreenshot('input-hint.png');
+    });
+
+    test.describe('Mobile', () => {
+        test.use(TUI_PLAYWRIGHT_MOBILE);
+
+        test('clicking on tooltip does not focus input', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Input);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const tooltip = example.locator('tui-icon[tuiTooltip]').first();
+            const input = example.locator('input[tuiInput]').first();
+
+            await tooltip.scrollIntoViewIfNeeded();
+            await tooltip.click();
+
+            await expect(page.locator('tui-hint')).toBeAttached();
+            await expect(input).not.toBeFocused();
+        });
     });
 });

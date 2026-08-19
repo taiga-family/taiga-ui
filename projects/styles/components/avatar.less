@@ -30,6 +30,7 @@
     display: inline-flex;
     flex-shrink: 0;
     inline-size: var(--t-size);
+    min-inline-size: var(--t-size);
     block-size: var(--t-size);
     align-items: center;
     justify-content: center;
@@ -43,6 +44,7 @@
     padding: 0.25rem;
     font: var(--tui-typography-body-l);
     font-weight: bold;
+    aspect-ratio: 1;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
     .interactive({
@@ -133,20 +135,20 @@
     }
 
     &:not([data-shape='square']) {
-        --t-radius: calc(var(--t-size) / 2);
+        --t-radius: calc(var(--t-size) / 2) !important;
     }
 
     &._initials {
         &::before {
             content: attr(data-icon-start);
-            mask: none;
+            mask-image: none;
             background: none;
             font: var(--tui-typography-heading-h6);
         }
     }
 
     &._badge {
-        mask: radial-gradient(
+        mask-image: radial-gradient(
             circle at ~'calc(max(var(--tui-inline), 0) * 100% - var(--tui-inline) * var(--t-corner-offset))'
                 calc(100% - var(--t-corner-offset)),
             black 0.23rem,
@@ -167,6 +169,7 @@
             border-radius: 100%;
             background: var(--t-badge);
             transform: translate3d(calc(var(--tui-inline) * -50%), -50%, 0);
+            zoom: 1;
         }
     }
 

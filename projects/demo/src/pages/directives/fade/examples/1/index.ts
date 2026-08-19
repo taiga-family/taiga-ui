@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiFade, TuiScrollable, TuiScrollbar],
+    imports: [TuiFade],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -20,9 +26,17 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
             </div>
         }
     `,
-    styleUrl: './dynamic-header.style.less',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './dynamic-header.style.less';
+        }
+    `,
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[style.--t-dir]': 'container.scrollDir() || -1'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[style.--t-dir]': 'container.scrollDir() || -1',
+    },
 })
 export class TuiDynamicHeaderComponent {
     protected readonly container = inject(TuiDynamicHeaderContainerDirective);

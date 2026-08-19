@@ -23,6 +23,7 @@ export function migrateFieldError(data: Input): void {
 function migrateFieldErrorContentPipe({resource, recorder, fileSystem}: Input): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const elements = findElementsInTemplateByFn(template, (el) =>
         el.attrs?.some((attr) => attr.value.includes('tuiFieldErrorContent')),
     );
@@ -53,6 +54,7 @@ function migrateFieldErrorContentPipe({resource, recorder, fileSystem}: Input): 
 function migrateFieldErrorPipe({resource, recorder, fileSystem}: Input): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
+
     const elements = findElementsInTemplateByFn(template, (el) =>
         el.attrs?.some(
             (attr) =>
@@ -82,6 +84,7 @@ function migrateFieldErrorPipe({resource, recorder, fileSystem}: Input): void {
         }
 
         const order = attr.value.split(/\s*\|\s*tuiFieldError/)[0] || '';
+
         const {startOffset, endOffset} = sourceCodeLocation?.attrs?.[attr.name] || {
             startOffset: 0,
             endOffset: 0,

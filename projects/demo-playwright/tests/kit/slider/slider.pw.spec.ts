@@ -171,7 +171,7 @@ test.describe('Slider', () => {
             });
 
             test('=> 0', async () => {
-                await tickLabels[0]?.click();
+                await tickLabels.at(0)?.click();
 
                 await expect(async () => {
                     expect(await slider.value).toBe(0);
@@ -184,7 +184,7 @@ test.describe('Slider', () => {
             });
 
             test('=> 500', async () => {
-                await tickLabels[2]?.click();
+                await tickLabels.at(2)?.click();
 
                 await expect(async () => {
                     expect(await slider.value).toBe(500);
@@ -197,7 +197,7 @@ test.describe('Slider', () => {
             });
 
             test('=> 750', async () => {
-                await tickLabels[3]?.click();
+                await tickLabels.at(3)?.click();
 
                 await expect(async () => {
                     expect(await slider.value).toBe(750);

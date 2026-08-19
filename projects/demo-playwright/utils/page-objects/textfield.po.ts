@@ -10,11 +10,13 @@ export class TuiTextfieldPO {
         options: Parameters<Locator['click']>[0] = {},
     ): Promise<void> {
         const box = (await this.host.boundingBox())!;
+
         const padding = await this.host
             .evaluate((el) =>
                 globalThis.getComputedStyle(el).getPropertyValue('padding-right'),
             )
             .then(Number.parseInt);
+
         const iconWidth = await this.host
             .evaluate((el) =>
                 globalThis.getComputedStyle(el, '::after').getPropertyValue('width'),

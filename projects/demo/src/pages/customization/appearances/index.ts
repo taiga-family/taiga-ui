@@ -5,10 +5,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
-import {TuiWrapperExample1} from './examples/1';
+import Example from './examples/1';
 
 @Component({
-    imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
+    imports: [ClipboardModule, Example, TuiDemo, TuiLink],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

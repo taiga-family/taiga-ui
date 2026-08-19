@@ -26,7 +26,7 @@
         overflow: hidden;
         border: 0.125rem solid transparent;
         box-sizing: border-box;
-        mask: linear-gradient(
+        mask-image: linear-gradient(
             transparent calc(50% - 1rem),
             #000 calc(50% - 1rem),
             #000 calc(50% + 1rem),
@@ -51,10 +51,14 @@
         }
 
         &::after {
-            mask:
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 32"><path d="M0.2856 0L0.6763 0C2.9265 0 4.9876 1.259 6.0147 3.2611L10.2442 11.5048C11.5301 14.0113 11.5683 16.9754 10.3472 19.5141L5.9766 28.6007C4.9772 30.6786 2.8754 32 0.5696 32H0.285645V0Z"></path></svg>')
-                    right/0.75rem 100% no-repeat,
-                linear-gradient(#000, #000) left/calc(100% - 0.7rem) 100% no-repeat;
+            mask-image:
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 32"><path d="M0.2856 0L0.6763 0C2.9265 0 4.9876 1.259 6.0147 3.2611L10.2442 11.5048C11.5301 14.0113 11.5683 16.9754 10.3472 19.5141L5.9766 28.6007C4.9772 30.6786 2.8754 32 0.5696 32H0.285645V0Z"></path></svg>'),
+                linear-gradient(#000, #000);
+            mask-repeat: no-repeat;
+            mask-position: right, left;
+            mask-size:
+                0.75rem 100%,
+                calc(100% - 0.7rem) 100%;
         }
 
         &[data-range]::before {
@@ -123,7 +127,7 @@
 
             &::after {
                 background: var(--tui-background-accent-1);
-                mask: none;
+                mask-image: none;
             }
         }
 

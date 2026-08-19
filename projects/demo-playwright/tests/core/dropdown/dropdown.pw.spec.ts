@@ -105,7 +105,10 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('10-dropdown.png');
 
-        await page.locator('tui-dropdown').locator('tui-scrollbar .t-thumb').click();
+        await page
+            .locator('tui-dropdown')
+            .locator('tui-scrollbar .t-bar_vertical .t-thumb')
+            .click();
 
         await expect.soft(page).toHaveScreenshot('11-dropdown.png');
     });

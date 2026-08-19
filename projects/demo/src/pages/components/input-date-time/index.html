@@ -114,6 +114,9 @@
             <ng-template>
                 <tui-textfield
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownDirection]="dropdown.direction"
                     [tuiDropdownMinHeight]="dropdown.minHeight"
@@ -127,14 +130,11 @@
 
                     <input
                         tuiInputDateTime
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -151,7 +151,7 @@
                 [items]="timeModeVariants"
                 [(value)]="timeMode"
             >
-                Time format mode for SS and MS support
+                time format mode for SS and MS support
             </tr>
 
             <tr
@@ -161,7 +161,7 @@
                 [items]="dates"
                 [(value)]="min"
             >
-                Min date
+                min date
             </tr>
             <tr
                 name="[max]"
@@ -170,15 +170,16 @@
                 [items]="dates"
                 [(value)]="max"
             >
-                Max date
+                max date
             </tr>
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #icons

@@ -35,6 +35,7 @@ export function removeControlStateAttrs(
     for (const attr of attrs) {
         const {startOffset = 0, endOffset = 0} =
             element.sourceCodeLocation?.attrs?.[attr.name] ?? {};
+
         const lineStart = template.lastIndexOf('\n', startOffset) + 1;
         const lineEnd = template.indexOf('\n', endOffset);
         const attrText = template.slice(startOffset, endOffset);

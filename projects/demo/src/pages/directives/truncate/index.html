@@ -36,7 +36,7 @@
                 type="string"
                 [(value)]="content"
             >
-                Content
+                content
             </tr>
             <tr
                 name="[tuiTruncate]"
@@ -44,36 +44,34 @@
                 type="number"
                 [(value)]="lines"
             >
-                Visible lines
+                visible lines
             </tr>
-        </table>
-        <h3>CSS customization</h3>
-        <table tuiDocAPI>
+            <tr>
+                <td colspan="3">
+                    <span tuiTitle>
+                        <strong>CSS customization</strong>
+                    </span>
+                </td>
+            </tr>
             <tr
                 name="[style.padding.px]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="padding"
-            >
-                Padding
-            </tr>
+            ></tr>
             <tr
                 name="[style.font-size.px]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="fontSize"
-            >
-                Font size
-            </tr>
+            ></tr>
             <tr
                 name="[style.word-break]"
                 tuiDocAPIItem
                 type="string"
                 [items]="wordBreakStyles"
                 [(value)]="wordBreak"
-            >
-                Word break style
-            </tr>
+            ></tr>
         </table>
     </ng-template>
 </tui-doc-page>

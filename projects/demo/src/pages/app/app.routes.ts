@@ -288,6 +288,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar'),
     }),
     route({
+        path: DemoRoute.CalendarExperimental,
+        title: 'CalendarExperimental',
+        loadComponent: async () => import('../components/calendar-experimental'),
+    }),
+    route({
         path: DemoRoute.Carousel,
         title: 'Carousel',
         loadComponent: async () => import('../components/carousel'),
@@ -356,6 +361,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Form,
         loadComponent: async () => import('../components/form'),
         title: 'Form',
+    }),
+    route({
+        path: DemoRoute.Keypad,
+        loadComponent: async () => import('../components/keypad'),
+        title: 'Keypad',
     }),
     route({
         path: DemoRoute.Group,
@@ -458,6 +468,11 @@ export const ROUTES: Routes = [
         title: 'InputPin',
     }),
     route({
+        path: DemoRoute.Pincode,
+        loadComponent: async () => import('../components/pincode'),
+        title: 'Pincode',
+    }),
+    route({
         path: DemoRoute.InputRange,
         loadComponent: async () => import('../components/input-range'),
         title: 'InputRange',
@@ -486,6 +501,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputYear,
         loadComponent: async () => import('../components/input-year'),
         title: 'InputYear',
+    }),
+    route({
+        path: DemoRoute.File,
+        loadComponent: async () => import('../components/file'),
+        title: 'File',
     }),
     route({
         path: DemoRoute.ItemsWithMore,

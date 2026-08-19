@@ -29,7 +29,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates identifiers to new packages',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiAutoColorPipe, TuiSurface} from '@taiga-ui/core';
                 import {tuiPure} from '@taiga-ui/cdk';
                 import {TuiCell} from '@taiga-ui/layout';
@@ -47,7 +47,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves TuiFlagPipe from core to kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiFlagPipe} from '@taiga-ui/core';
 
                 export class TestComponent {
@@ -60,7 +60,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'renames ResizeObserverService to WaResizeObserverService',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 
                 export class TestComponent {
@@ -73,7 +73,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves tuiCellOptionsProvider from layout to core',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiCellOptionsProvider} from '@taiga-ui/layout';
 
                 export const providers = [tuiCellOptionsProvider({size: 'm'})];
@@ -84,7 +84,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'moves TuiTimeMode type from cdk to MaskitoTimeMode in maskito kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {type TuiTimeMode} from '@taiga-ui/cdk';
 
                 export type Mode = TuiTimeMode;
@@ -95,7 +95,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates sheet identifiers from legacy to addon-mobile',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {
                     TuiSheetModule,
                     TuiSheetDialogOptions,
@@ -114,7 +114,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'adds TODO for TuiStatus type (cannot be auto-migrated to string literal)',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {type TuiStatus} from '@taiga-ui/legacy';
 
                 @Component({
@@ -136,7 +136,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'keeps tuiIsFlat usages in source code when migrating from @taiga-ui/kit',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {tuiIsFlat} from '@taiga-ui/kit';
 
                 export class TestComponent {
@@ -149,9 +149,22 @@ describe('ng-update identifiers migration', () => {
     );
 
     it(
+        'moves TUI_CALENDAR_DATE_STREAM from @taiga-ui/kit to @taiga-ui/addon-mobile',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly stream = TUI_CALENDAR_DATE_STREAM;
+                }
+            `,
+        }),
+    );
+
+    it(
         'migrates TuiOptionNew to TuiOption',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {TuiOptionNew} from '@taiga-ui/core';
 
                 export class TestComponent {
@@ -164,7 +177,7 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates provideEventPlugins to provideTaiga',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
                 export const appConfig: ApplicationConfig = {
@@ -177,12 +190,202 @@ describe('ng-update identifiers migration', () => {
     it(
         'migrates NG_EVENT_PLUGINS to provideTaiga',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
                 export const appConfig: ApplicationConfig = {
                     providers: [NG_EVENT_PLUGINS];
                 };
+            `,
+        }),
+    );
+
+    it(
+        'migrates TUI_SANITIZER from legacy to TUI_EDITOR_SANITIZER in editor',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_SANITIZER} from '@taiga-ui/legacy';
+                import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+
+                export const providers = [
+                    {
+                        provide: TUI_SANITIZER,
+                        useClass: NgDompurifySanitizer,
+                    },
+                ];
+            `,
+        }),
+    );
+
+    it(
+        'moves TuiThemeColorService and TUI_THEME_COLOR from cdk to addon-mobile (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {inject} from '@angular/core';
+                import {TUI_THEME_COLOR, TuiThemeColorService} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly token = TUI_THEME_COLOR;
+                    protected readonly theme = inject(TuiThemeColorService);
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiInputCVC/TuiInputExpire to their *Directive names (#13869)',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerce';
+
+                @Component({imports: [TuiInputCVC, TuiInputExpire]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'renames kit input-password options to password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/kit';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames legacy input-password options to kit password options',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_INPUT_PASSWORD_OPTIONS,
+                    tuiInputPasswordOptionsProvider,
+                    type TuiInputPasswordOptions,
+                } from '@taiga-ui/legacy';
+
+                @Component({providers: [tuiInputPasswordOptionsProvider({})]})
+                export class TestComponent {
+                    protected readonly token = TUI_INPUT_PASSWORD_OPTIONS;
+                    protected readonly options: TuiInputPasswordOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the New suffix from input-date options identifiers',
+        migrate({
+            component: /* TypeScript */ `
+                import {
+                    TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
+                    TUI_INPUT_DATE_OPTIONS_NEW,
+                    type TuiInputDateOptionsNew,
+                } from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly defaults = TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW;
+                    protected readonly token = TUI_INPUT_DATE_OPTIONS_NEW;
+                    protected readonly options: TuiInputDateOptionsNew | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames TuiWithQuantumValueTransformer',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiWithQuantumValueTransformer} from '@taiga-ui/kit';
+
+                export class TestComponent {
+                    protected readonly transformer = TuiWithQuantumValueTransformer;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'renames alert options to notification options',
+        migrate({
+            component: /* TypeScript */ `
+                import {TUI_ALERT_OPTIONS, type TuiAlertOptions} from '@taiga-ui/core';
+
+                export class TestComponent {
+                    protected readonly token = TUI_ALERT_OPTIONS;
+                    protected readonly options: TuiAlertOptions | null = null;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'drops the Component suffix from kit input-range/action-bar',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TuiActionBarComponent,
+                    TuiInputRangeComponent,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    imports: [TuiActionBarComponent, TuiInputRangeComponent],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'moves legacy TuiInputRangeComponent to kit TuiInputRange',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiInputRangeComponent} from '@taiga-ui/legacy';
+
+                @Component({imports: [TuiInputRangeComponent]})
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'moves TuiPureException from cdk to legacy',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiPureException} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly error = TuiPureException;
+                }
+            `,
+        }),
+    );
+
+    it(
+        'moves TuiMultiSelectModule (legacy) to TuiMultiSelect (kit)',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiMultiSelectModule],
+                })
+                export class TestModule {}
             `,
         }),
     );

@@ -12,7 +12,7 @@ describe('ng-update MobileCalendarDropdownNew', () => {
     it(
         'renames TuiMobileCalendarDropdownNew to TuiMobileCalendarDropdown',
         migrate({
-            component: `
+            component: /* TypeScript */ `
                 import {Component} from '@angular/core';
                 import {TuiMobileCalendarDropdownNew} from '@taiga-ui/addon-mobile';
 

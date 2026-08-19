@@ -18,11 +18,12 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private previous?: TuiVerticalDirection;
+
     public readonly direction = new Subject<TuiVerticalDirection>();
     public readonly type = 'dropdown';
 
     public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-        inject<any>(TuiRectAccessor, {optional: true}),
+        inject<any>(TuiRectAccessor, {self: true, optional: true}),
         {getClientRect: () => this.el.getBoundingClientRect()},
     );
 
@@ -39,20 +40,25 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         const viewportRect = this.viewport.getClientRect();
         const {minHeight, direction, offset, limitWidth} = this.options;
         const align = this.getAlign(this.options.align);
+
         const viewport = {
             top: viewportRect.top - offset,
             bottom: viewportRect.bottom + offset,
             right: viewportRect.right - offset,
             left: viewportRect.left + offset,
         } as const;
+
         const previous = this.previous || direction || 'bottom';
+
         const available = {
             top: hostRect.top - 2 * offset - viewport.top,
             bottom: viewport.bottom - hostRect.bottom - 2 * offset,
         } as const;
+
         const rectWidth = limitWidth === 'fixed' ? hostRect.width : width;
         const right = Math.max(hostRect.right - rectWidth, offset);
         const left = hostRect.left + width < viewport.right ? hostRect.left : right;
+
         const position = {
             top: hostRect.top - offset - height,
             bottom: hostRect.bottom + offset,
@@ -63,6 +69,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
                     : right,
             left: Math.max(viewport.left, left),
         } as const;
+
         const better: TuiVerticalDirection =
             available.top > available.bottom ? 'top' : 'bottom';
 

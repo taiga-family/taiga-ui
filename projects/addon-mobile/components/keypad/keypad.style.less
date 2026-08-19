@@ -1,0 +1,56 @@
+@import '@taiga-ui/styles/utils';
+
+tui-keypad:where(*&) {
+    display: grid;
+    grid-template-columns: repeat(var(--t-columns, 3), 1fr);
+    grid-auto-rows: 4rem;
+    place-items: center;
+    inline-size: 100%;
+    max-inline-size: 37.5rem;
+    margin-inline: auto;
+    font: 600 1.75rem/1 var(--tui-typography-family-display);
+    color: var(--tui-text-primary);
+    user-select: none;
+
+    > a,
+    > button {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        block-size: 3.5rem;
+        inline-size: 3.5rem;
+        max-inline-size: 100%;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        font: inherit;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+            background var(--tui-duration) ease-out,
+            transform var(--tui-duration) var(--tui-curve-expressive-entrance);
+
+        @media @tui-mouse {
+            &:hover:not(:disabled) {
+                background: var(--tui-background-neutral-1-hover);
+            }
+        }
+
+        &:active:not(:disabled) {
+            background: var(--tui-background-neutral-1-pressed);
+            transform: scale(1.14);
+        }
+
+        &:focus-visible {
+            outline: 0.125rem solid var(--tui-border-focus);
+            outline-offset: 0.125rem;
+        }
+
+        &:disabled {
+            opacity: var(--tui-disabled-opacity);
+            cursor: default;
+        }
+    }
+}

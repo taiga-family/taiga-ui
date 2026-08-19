@@ -51,6 +51,11 @@
                         </a>
                         to crossfade a button.
                     }
+                    @case (6) {
+                        Shrink a single action with
+                        <code>justify-self</code>
+                        to pin it to the trailing edge.
+                    }
                 }
             </ng-template>
         }
@@ -122,7 +127,7 @@
                 [items]="colors"
                 [(value)]="color"
             >
-                Background
+                background color
             </tr>
         </table>
     </ng-template>

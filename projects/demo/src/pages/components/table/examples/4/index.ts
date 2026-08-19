@@ -130,6 +130,7 @@ function getAge(dob: TuiDay): number {
 })
 export default class Example {
     private readonly size$ = new BehaviorSubject(10);
+
     protected readonly page$ = new BehaviorSubject(0);
 
     protected readonly direction$ = new BehaviorSubject<TuiSortDirection>(
@@ -208,6 +209,7 @@ export default class Example {
 
         const start = page * size;
         const end = start + size;
+
         const result = [...DATA]
             .sort(sortBy(key, direction))
             .filter((user) => user.age >= minAge)
