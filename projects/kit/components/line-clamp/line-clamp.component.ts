@@ -1,9 +1,8 @@
 import {
-    afterNextRender,
+    afterRenderEffect,
     ChangeDetectionStrategy,
     Component,
     computed,
-    effect,
     ElementRef,
     inject,
     input,
@@ -65,7 +64,6 @@ export class TuiLineClamp {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
-    private readonly rendered = signal(false);
     private readonly isOverflowing = signal(false);
     private readonly resize$ = inject(WaResizeObserverService);
 
@@ -101,20 +99,12 @@ export class TuiLineClamp {
     );
 
     constructor() {
-        afterNextRender({
+        afterRenderEffect({
             mixedReadWrite: () => {
-                this.rendered.set(true);
-                this.update();
+                this.content();
+                this.maxHeight();
+                untracked(() => this.update());
             },
-        });
-
-        effect(() => {
-            if (!this.rendered()) {
-                return;
-            }
-
-            this.maxHeight();
-            untracked(() => this.update());
         });
 
         merge(this.resize$, this.intersection$)
@@ -127,10 +117,6 @@ export class TuiLineClamp {
     }
 
     protected update(): void {
-        if (!this.rendered()) {
-            return;
-        }
-
         const outlet = this.outlet().nativeElement;
         const {scrollHeight, scrollWidth} = outlet;
         const {clientWidth} = this.el;
