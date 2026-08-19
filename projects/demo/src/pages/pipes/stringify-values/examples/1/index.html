@@ -1,0 +1,23 @@
+<tui-textfield
+    tuiChevron
+    [stringify]="items | tuiStringifyValues: 'email' : 'name'"
+    [tuiTextfieldCleaner]="true"
+>
+    <label tuiLabel>Newsletter Mailbox</label>
+
+    <input
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        new
+        [items]="items | tuiValues: 'email'"
+    />
+</tui-textfield>
+
+<p>
+    <strong>You have selected:</strong>
+    <code>{{ value | json }}</code>
+</p>
