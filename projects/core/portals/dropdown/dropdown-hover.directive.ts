@@ -1,11 +1,10 @@
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     contentChild,
     Directive,
     ElementRef,
     inject,
     input,
-    PLATFORM_ID,
     type Signal,
     signal,
     type WritableSignal,
@@ -27,8 +26,6 @@ import {
     fromEvent,
     map,
     merge,
-    NEVER,
-    type Observable,
     of,
     share,
     startWith,
@@ -57,9 +54,41 @@ export class TuiDropdownHover extends TuiDriver {
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
-    private readonly stream$ = isPlatformBrowser(inject(PLATFORM_ID))
-        ? this.createStream()
-        : NEVER;
+
+    private readonly stream$ = merge(
+        /**
+         * Dropdown can be removed not only via click/touch –
+         * swipe on mobile devices removes dropdown sheet without triggering new mouseover / mouseout events.
+         */
+        toObservable(inject(TuiDropdownDirective).ref).pipe(
+            filter((x) => !x && this.hovered()),
+            switchMap(() =>
+                tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
+                    map(tuiGetActualTarget),
+                    delay(this.tuiDropdownHideDelay()),
+                    startWith(null),
+                    takeUntil(fromEvent(this.doc, 'mouseover')),
+                ),
+            ),
+        ),
+        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
+        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+    ).pipe(
+        map((element) => tuiIsElement(element) && this.isHovered(element)),
+        distinctUntilChanged(),
+        switchMap((v) =>
+            of(v).pipe(
+                delay(v ? this.tuiDropdownShowDelay() : this.tuiDropdownHideDelay()),
+                takeUntil(this.open ? fromEvent(this.el, 'pointerdown') : EMPTY),
+            ),
+        ),
+        tuiZoneOptimized(),
+        tap((hovered) => {
+            (this.hovered as WritableSignal<boolean>).set(hovered);
+            this.open?.toggle(hovered);
+        }),
+        share(),
+    );
 
     public readonly hovered: Signal<boolean> = signal(false);
     public readonly tuiDropdownShowDelay = input(this.options.showDelay);
@@ -82,46 +111,5 @@ export class TuiDropdownHover extends TuiDriver {
         const child = !this.el.contains(element) && this.activeZone.contains(element);
 
         return hovered || child;
-    }
-
-    private createStream(): Observable<boolean> {
-        const root = this.el.getRootNode() as Document | ShadowRoot;
-        const mouseover$ = tuiTypedFromEvent<MouseEvent>(root, 'mouseover');
-        const mouseout$ = tuiTypedFromEvent<MouseEvent>(root, 'mouseout');
-
-        return merge(
-            /**
-             * Dropdown can be removed not only via click/touch –
-             * swipe on mobile devices removes dropdown sheet without triggering new mouseover / mouseout events.
-             */
-            toObservable(inject(TuiDropdownDirective).ref).pipe(
-                filter((x) => !x && this.hovered()),
-                switchMap(() =>
-                    tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
-                        map(tuiGetActualTarget),
-                        delay(this.tuiDropdownHideDelay()),
-                        startWith(null),
-                        takeUntil(mouseover$),
-                    ),
-                ),
-            ),
-            mouseover$.pipe(map(tuiGetActualTarget)),
-            mouseout$.pipe(map((event) => event.relatedTarget)),
-        ).pipe(
-            map((element) => tuiIsElement(element) && this.isHovered(element)),
-            distinctUntilChanged(),
-            switchMap((v) =>
-                of(v).pipe(
-                    delay(v ? this.tuiDropdownShowDelay() : this.tuiDropdownHideDelay()),
-                    takeUntil(this.open ? fromEvent(this.el, 'pointerdown') : EMPTY),
-                ),
-            ),
-            tuiZoneOptimized(),
-            tap((hovered) => {
-                (this.hovered as WritableSignal<boolean>).set(hovered);
-                this.open?.toggle(hovered);
-            }),
-            share(),
-        );
     }
 }
