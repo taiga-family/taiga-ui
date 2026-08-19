@@ -812,6 +812,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiTableBarsHostComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
-            'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed with no public replacement. Recreate the bars-host container in your own code.',
+            'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead — it has a different API and no host container is required. See https://taiga-ui.dev/components/actions-bar',
     },
 ];
