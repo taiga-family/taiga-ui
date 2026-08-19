@@ -52,5 +52,20 @@ describe('ng-update legacy removals warnings', () => {
         migrate({component: importFrom('TuiTableBarComponent')}),
     );
 
+    it(
+        'adds TODO for TuiTextareaComponent',
+        migrate({component: importFrom('TuiTextareaComponent')}),
+    );
+
+    it(
+        'adds TODO for TuiNativeFocusableElement',
+        migrate({component: importFrom('TuiNativeFocusableElement')}),
+    );
+
+    it(
+        'adds TODO for TuiTableBarsHostComponent',
+        migrate({component: importFrom('TuiTableBarsHostComponent')}),
+    );
+
     afterEach(() => resetActiveProject());
 });
