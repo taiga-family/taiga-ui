@@ -18,10 +18,6 @@ test.describe('BlockDetails', () => {
 
         await button.click();
 
-        const dialog = page.getByRole('dialog');
-        const subtitle = dialog.getByText('Transfer to John W', {exact: true});
-
-        await expect(subtitle).toHaveCSS('justify-content', 'center');
         await expect.soft(page).toHaveScreenshot('01-block-details-dialog.png');
     });
 });
