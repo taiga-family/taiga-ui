@@ -32,5 +32,6 @@ export default class Example {
         'Connected',
         'Disabled state',
         'Stretch',
+        'Ripple',
     ];
 }
