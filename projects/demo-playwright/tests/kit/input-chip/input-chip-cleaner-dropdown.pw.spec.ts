@@ -1,9 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiMultiSelectPO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('MultiSelect cleaner dropdown (#13572)', () => {
