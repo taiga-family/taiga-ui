@@ -58,9 +58,11 @@ describe('Textfield cleaner', () => {
             await page.keyboard.press('Enter');
 
             await expect(example.locator('tui-input-chip')).toHaveCount(2);
+            await expect(page.locator('tui-dropdown')).toBeVisible();
 
             await cleaner.click();
             await expect(example.locator('tui-input-chip')).toHaveCount(0);
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputColor', async ({page}) => {
