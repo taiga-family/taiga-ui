@@ -43653,6 +43653,18 @@ th {
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td tuiTd&gt;
+&lt;tui-textfield&gt;
+&lt;input placeholder=&quot;Number&quot; tuiInputNumber [(ngModel)]=&quot;number&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/td&gt;
+&lt;td tuiTd&gt;
+&lt;tui-textfield&gt;
+&lt;input placeholder=&quot;Number with step&quot; tuiInputNumber [step]=&quot;10&quot; [(ngModel)]=&quot;numberStep&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td tuiTd&gt;
 &lt;tui-textfield multi&gt;
 &lt;input placeholder=&quot;InputChip&quot; tuiInputChip [(ngModel)]=&quot;chip&quot; /&gt;
 &lt;/tui-textfield&gt;
@@ -43722,6 +43734,7 @@ import {
     TuiDataListWrapper,
     TuiInputChip,
     TuiInputDateMulti,
+    TuiInputNumber,
     TuiInputRange,
     TuiInputSlider,
     TuiMultiSelect,
@@ -43738,6 +43751,7 @@ import {
         TuiInputCardGroup,
         TuiInputChip,
         TuiInputDateMulti,
+        TuiInputNumber,
         TuiInputRange,
         TuiInputSlider,
         TuiMultiSelect,
@@ -43751,6 +43765,8 @@ import {
 })
 export default class Example {
     protected textarea = &#039;&#039;;
+    protected number = null;
+    protected numberStep = null;
     protected input = &#039;&#039;;
     protected chip = [];
     protected multiselect = [];
