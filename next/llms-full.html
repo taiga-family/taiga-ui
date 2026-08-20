@@ -39617,8 +39617,6 @@ A mobile draggable sheet dialog
 
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;showDialog(sheetTemplate)&quot; &gt; Click &lt;/button&gt;
-&lt;button tuiButton type=&quot;button&quot; class=&quot;tui-space_left-4&quot; (longtap)=&quot;showDialog(sheetTemplate)&quot; &gt; Long tap &lt;/button&gt;
-&lt;button tuiButton type=&quot;button&quot; (click)=&quot;navigate()&quot; &gt; Navigate to Examples &lt;/button&gt;
 &lt;ng-template #sheetTemplate let-completeWith=&quot;completeWith&quot; let-observer &gt;
 &lt;p [style.flex-grow]=&quot;1&quot;&gt; Karl Gambolputty de von Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von. &lt;/p&gt;
 &lt;footer tuiFloatingContainer&gt;
@@ -40249,7 +40247,6 @@ export default class Example {
 
 ```ts
 import {Component, inject, type TemplateRef} from &#039;@angular/core&#039;;
-import {ActivatedRoute, Router} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {
@@ -40267,8 +40264,6 @@ import {switchMap} from &#039;rxjs&#039;;
     changeDetection,
 })
 export default class Page {
-    private readonly router = inject(Router);
-    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
 
@@ -40313,10 +40308,6 @@ export default class Page {
             })
             .pipe(switchMap((response) =&gt; this.alerts.open(String(response))))
             .subscribe();
-    }
-
-    protected navigate(): void {
-        void this.router.navigate([&#039;./&#039;], {relativeTo: this.route});
     }
 }
 ```
