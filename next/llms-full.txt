@@ -5478,6 +5478,55 @@ export default class Example {
 }
 ```
 
+#### Example 3
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="open = true" > Show dialog </button>
+<ng-template let-id="id" let-observer [tuiResponsiveDialogOptions]="{size: 's'}" [(tuiResponsiveDialog)]="open" >
+<div tuiBlockDetails>
+<div appearance="positive" tuiAvatar="@tui.check" [size]="isMobile ? 'xl' : 'xxl'" ></div>
+<h2 tuiTitle [id]="id" > Payment successful <div tuiSubtitle>Transfer to John W</div>
+</h2>
+<span>{{ -1050 | tuiAmount: 'USD' }}</span>
+<span tuiSubtitle>Today, 12:30</span>
+</div>
+<footer>
+<button tuiButton type="button" (click)="observer.complete()" > Done </button>
+</footer>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiBlockDetails} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiBlockDetails,
+        TuiButton,
+        TuiResponsiveDialog,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected open = false;
+}
+```
+
 
 ### TypeScript
 
@@ -5492,7 +5541,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    public readonly examples = ['Full', 'Customization'];
+    public readonly examples = ['Full', 'Customization', 'Dialog'];
 }
 ```
 
