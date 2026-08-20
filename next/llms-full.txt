@@ -5952,6 +5952,7 @@ A non-modal draggable sheet
 | Property | Type | Description |
 |----------|-----|----------|
 | [stops] | `readonly string[]` | scroll snap stops |
+| [bar] | `boolean` | shows/hides drag bar at the top of the sheet |
 
 ### Usage Examples
 
