@@ -11,7 +11,13 @@ import {
     untracked,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {TuiDay, type TuiDayLike, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {
+    tuiDateClamp,
+    TuiDay,
+    type TuiDayLike,
+    TuiDayRange,
+    TuiMonth,
+} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -78,9 +84,14 @@ export class TuiCalendarRange
         TuiDayRange | null,
         TuiDay | TuiDayRange | null
     >({
-        source: this.value,
+        source: () => {
+            this.min();
+            this.max();
+
+            return this.value();
+        },
         computation: (value, current) => {
-            if (value !== current?.value) {
+            if (value !== current?.value || !value) {
                 untracked(() => this.initDefaultViewedMonth(value));
             }
 
@@ -224,17 +235,10 @@ export class TuiCalendarRange
 
     private initDefaultViewedMonth(value = this.currentValue()): void {
         const min = this.min();
-        const max = this.max();
+        const max = this.items().length ? this.max() : this.max().append({month: -1});
+        const month = value instanceof TuiDay ? value : value?.from;
 
-        if (value instanceof TuiDay) {
-            this.month.set(value);
-        } else if (value) {
-            this.month.set(this.items().length ? value.to : value.from);
-        } else if (max && this.month().monthSameOrAfter(max)) {
-            this.month.set(this.items().length ? max : max.append({month: -1}));
-        } else if (min && this.month().monthSameOrBefore(min)) {
-            this.month.set(min);
-        }
+        this.month.update((current) => tuiDateClamp(month || current, min, max));
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {
