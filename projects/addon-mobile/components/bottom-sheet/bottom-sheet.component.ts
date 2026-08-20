@@ -22,6 +22,7 @@ const OPTIONS = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {
+        '[class._bar]': 'bar()',
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
         '(resize)': 'onScroll()',
@@ -34,6 +35,7 @@ export class TuiBottomSheet {
     private readonly el = tuiInjectElement();
 
     public readonly stops = input<readonly string[]>(['1.5rem']);
+    public readonly bar = input(true);
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;
