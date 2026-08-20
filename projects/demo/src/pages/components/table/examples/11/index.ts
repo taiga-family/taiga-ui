@@ -11,6 +11,7 @@ import {
     TuiDataListWrapper,
     TuiInputChip,
     TuiInputDateMulti,
+    TuiInputNumber,
     TuiInputRange,
     TuiInputSlider,
     TuiMultiSelect,
@@ -27,6 +28,7 @@ import {
         TuiInputCardGroup,
         TuiInputChip,
         TuiInputDateMulti,
+        TuiInputNumber,
         TuiInputRange,
         TuiInputSlider,
         TuiMultiSelect,
@@ -40,6 +42,8 @@ import {
 })
 export default class Example {
     protected textarea = '';
+    protected number = null;
+    protected numberStep = null;
     protected input = '';
     protected chip = [];
     protected multiselect = [];
