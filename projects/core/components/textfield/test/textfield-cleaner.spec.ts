@@ -7,38 +7,45 @@ interface CleanerContext {
         toggle(open: boolean): void;
     };
 
-    accessor(): {setValue(value: null): void} | undefined;
+    accessor(): {setValue(value: unknown): void} | undefined;
 }
 
 const onCleanerClick = (
     TuiTextfieldComponent.prototype as unknown as {
-        onCleanerClick(this: CleanerContext): void;
+        onCleanerClick(this: CleanerContext, value: unknown): void;
     }
 ).onCleanerClick;
 
 describe('TuiTextfieldComponent cleaner', () => {
-    it('clears the value and opens an editable dropdown with content', () => {
+    it('forwards the cleaner value and opens an editable dropdown with content', () => {
         const setValue = jest.fn();
         const toggle = jest.fn();
+        const value: unknown[] = [];
 
-        onCleanerClick.call({
-            accessor: () => ({setValue}),
-            dropdown: {content: () => 'content'},
-            open: {nativeElement: document.createElement('input'), toggle},
-        });
+        onCleanerClick.call(
+            {
+                accessor: () => ({setValue}),
+                dropdown: {content: () => 'content'},
+                open: {nativeElement: document.createElement('input'), toggle},
+            },
+            value,
+        );
 
-        expect(setValue).toHaveBeenCalledWith(null);
+        expect(setValue).toHaveBeenCalledWith(value);
         expect(toggle).toHaveBeenCalledWith(true);
     });
 
     it('does not open when dropdown content is absent', () => {
         const toggle = jest.fn();
 
-        onCleanerClick.call({
-            accessor: () => ({setValue: jest.fn()}),
-            dropdown: {content: () => null},
-            open: {nativeElement: document.createElement('input'), toggle},
-        });
+        onCleanerClick.call(
+            {
+                accessor: () => ({setValue: jest.fn()}),
+                dropdown: {content: () => null},
+                open: {nativeElement: document.createElement('input'), toggle},
+            },
+            null,
+        );
 
         expect(toggle).not.toHaveBeenCalled();
     });
@@ -48,11 +55,14 @@ describe('TuiTextfieldComponent cleaner', () => {
         const toggle = jest.fn();
 
         input.readOnly = true;
-        onCleanerClick.call({
-            accessor: () => ({setValue: jest.fn()}),
-            dropdown: {content: () => 'content'},
-            open: {nativeElement: input, toggle},
-        });
+        onCleanerClick.call(
+            {
+                accessor: () => ({setValue: jest.fn()}),
+                dropdown: {content: () => 'content'},
+                open: {nativeElement: input, toggle},
+            },
+            null,
+        );
 
         expect(toggle).not.toHaveBeenCalled();
     });
