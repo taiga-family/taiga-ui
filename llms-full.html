@@ -5487,6 +5487,55 @@ export default class Example {
 }
 ```
 
+#### Example 3
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show dialog &lt;/button&gt;
+&lt;ng-template let-id=&quot;id&quot; let-observer [tuiResponsiveDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiResponsiveDialog)]=&quot;open&quot; &gt;
+&lt;div tuiBlockDetails&gt;
+&lt;div appearance=&quot;positive&quot; tuiAvatar=&quot;@tui.check&quot; [size]=&quot;isMobile ? &#039;xl&#039; : &#039;xxl&#039;&quot; &gt;&lt;/div&gt;
+&lt;h2 tuiTitle [id]=&quot;id&quot; &gt; Payment successful &lt;div tuiSubtitle&gt;Transfer to John W&lt;/div&gt;
+&lt;/h2&gt;
+&lt;span&gt;{{ -1050 | tuiAmount: &#039;USD&#039; }}&lt;/span&gt;
+&lt;span tuiSubtitle&gt;Today, 12:30&lt;/span&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WA_IS_MOBILE} from &#039;@ng-web-apis/platform&#039;;
+import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiResponsiveDialog} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiBlockDetails} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiBlockDetails,
+        TuiButton,
+        TuiResponsiveDialog,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected open = false;
+}
+```
+
 
 ### TypeScript
 
@@ -5501,7 +5550,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    public readonly examples = [&#039;Full&#039;, &#039;Customization&#039;];
+    public readonly examples = [&#039;Full&#039;, &#039;Customization&#039;, &#039;Dialog&#039;];
 }
 ```
 
