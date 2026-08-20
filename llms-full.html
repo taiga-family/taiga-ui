@@ -8330,7 +8330,7 @@ Component for choosing date range in calendar
 ### Example
 
 ```html
-&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
+&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; [(month)]=&quot;month&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -8343,6 +8343,7 @@ Component for choosing date range in calendar
 | [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
 | [min] | `TuiDay | null` | min date |
 | [max] | `TuiDay | null` | max date |
+| [(month)] | `TuiMonth` | currently viewed month, also updated when a year is picked |
 | [minLength] | `TuiDayLike | null` | minimal length of range |
 | [maxLength] | `TuiDayLike | null` | maximal length of range |
 
@@ -8643,6 +8644,7 @@ export default class Example {
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0]!;
+    protected month = this.defaultViewedMonthVariants[0]!;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
     protected readonly routes = DemoRoute;
