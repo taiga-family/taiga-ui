@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto, TuiInputChipPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('InputChip cleaner dropdown', () => {
+test.describe('InputChip cleaner dropdown (#13572)', () => {
     test('keeps the dropdown open after clearing all chips', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.InputChip}/API`);
 
