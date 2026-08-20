@@ -8321,7 +8321,7 @@ Component for choosing date range in calendar
 ### Example
 
 ```html
-<tui-calendar-range [defaultViewedMonth]="defaultViewedMonth" [disabledItemHandler]="disabledItemHandler" [items]="items" [markerHandler]="markerHandler" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" (valueChange)="documentationPropertyRangeChange.emitEvent($event)" />
+<tui-calendar-range [defaultViewedMonth]="defaultViewedMonth" [disabledItemHandler]="disabledItemHandler" [items]="items" [markerHandler]="markerHandler" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [(month)]="month" (valueChange)="documentationPropertyRangeChange.emitEvent($event)" />
 ```
 
 ### API - Inputs
@@ -8334,6 +8334,7 @@ Component for choosing date range in calendar
 | [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
 | [min] | `TuiDay | null` | min date |
 | [max] | `TuiDay | null` | max date |
+| [(month)] | `TuiMonth` | currently viewed month, also updated when a year is picked |
 | [minLength] | `TuiDayLike | null` | minimal length of range |
 | [maxLength] | `TuiDayLike | null` | maximal length of range |
 
@@ -8634,6 +8635,7 @@ export default class Example {
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0]!;
+    protected month = this.defaultViewedMonthVariants[0]!;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
     protected readonly routes = DemoRoute;
