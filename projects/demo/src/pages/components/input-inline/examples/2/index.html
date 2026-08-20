@@ -1,40 +1,48 @@
-<h2
-    class="header"
-    [class.header_empty]="!heading"
->
-    @if (editing) {
-        <tui-input-inline>
-            Type a heading
-            <input
-                tuiAutoFocus
-                [ngModelOptions]="{updateOn: 'blur'}"
-                [(ngModel)]="heading"
-                (blur)="onBlur()"
-                (keydown.enter.prevent)="toggle()"
-            />
-        </tui-input-inline>
-    } @else {
-        <span>{{ heading }}</span>
-        <button
-            appearance="icon"
-            iconStart="@tui.pencil"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="tui-space_left-1"
-            (click)="toggle()"
-        >
-            Edit heading
-        </button>
-    }
-</h2>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos dolorem
-    doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis repellendus
-    tempore voluptates!
-</p>
-<p>
-    Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia quam
-    quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem!
-</p>
+<form (ngSubmit)="save()">
+    <h4>
+        @if (editing()) {
+            <tui-input-inline>
+                <span>Type a heading</span>
+                <input
+                    name="heading"
+                    tuiAutoFocus
+                    [ngModelOptions]="{updateOn: 'submit'}"
+                    [(ngModel)]="heading"
+                    (blur)="editing.set(false)"
+                    (keydown.esc.prevent)="editing.set(false)"
+                />
+            </tui-input-inline>
+            <button
+                appearance="action"
+                iconStart="@tui.check"
+                size="xs"
+                tuiIconButton
+                type="submit"
+                (pointerdown.prevent)="(0)"
+            >
+                Save
+            </button>
+        } @else {
+            {{ heading() }}
+            <button
+                appearance="icon"
+                iconStart="@tui.pencil"
+                size="xs"
+                tuiIconButton
+                type="button"
+                (click)="editing.set(true)"
+            >
+                Edit heading
+            </button>
+        }
+    </h4>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos
+        dolorem doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis
+        repellendus tempore voluptates!
+    </p>
+    <p>
+        Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia
+        quam quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem!
+    </p>
+</form>
