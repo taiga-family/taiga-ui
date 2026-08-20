@@ -25972,7 +25972,7 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected testForm = new FormGroup({
-        testValue1: new FormControl(&#039;Hello 1&#039;),
+        testValue1: new FormControl(&#039;Hello 1&#039;, {updateOn: &#039;blur&#039;}),
         testValue2: new FormControl(&#039;Hello 2&#039;),
         testValue3: new FormControl(&#039;Hello 3&#039;),
         testValue4: new FormControl(&#039;&#039;),
