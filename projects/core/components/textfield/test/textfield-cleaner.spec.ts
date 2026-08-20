@@ -1,12 +1,13 @@
 import {TuiTextfieldComponent} from '../textfield.component';
 
 interface CleanerContext {
-    readonly accessor: () => {setValue(value: null): void} | undefined;
     readonly dropdown: {content(): unknown};
     readonly open: {
         readonly nativeElement: HTMLElement;
         toggle(open: boolean): void;
     };
+
+    accessor(): {setValue(value: null): void} | undefined;
 }
 
 const onCleanerClick = (
