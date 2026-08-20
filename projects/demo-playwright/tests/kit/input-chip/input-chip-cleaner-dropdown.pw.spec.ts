@@ -1,22 +1,31 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationApiPagePO, tuiGoto, TuiInputChipPO} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiMultiSelectPO,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('InputChip cleaner dropdown (#13572)', () => {
-    test('keeps the dropdown open after clearing all chips', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputChip}/API`);
+test.describe('MultiSelect cleaner dropdown (#13572)', () => {
+    test('keeps the dropdown open after clearing selected values', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputChip);
 
-        const example = new TuiDocumentationApiPagePO(page).demo;
-        const inputChip = new TuiInputChipPO(example);
+        const documentation = new TuiDocumentationPagePO(page);
+        const example = documentation.getExample('#multi-select');
+        const multiselect = new TuiMultiSelectPO(example);
 
-        await inputChip.input.fill('123,456,789');
-        await inputChip.input.blur();
-        await inputChip.input.click();
-        await expect(inputChip.dropdown).toBeVisible();
+        await example.scrollIntoViewIfNeeded();
+        await multiselect.input.fill('eric');
+        await expect(multiselect.dropdown).toBeAttached();
+        await multiselect.input.blur();
+        await expect(multiselect.chips).toHaveCount(1);
 
-        await inputChip.cleaner.click();
+        await multiselect.input.click();
+        await expect(multiselect.dropdown).toBeAttached();
 
-        await expect(inputChip.chips).toHaveCount(0);
-        await expect(inputChip.dropdown).toBeVisible();
+        await multiselect.cleaner.click();
+
+        await expect(multiselect.chips).toHaveCount(0);
+        await expect(multiselect.dropdown).toBeAttached();
     });
 });
