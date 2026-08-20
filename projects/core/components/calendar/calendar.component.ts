@@ -30,7 +30,7 @@ import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
-    selector: 'tui-calendar',
+    selector: 'tui-calendar:not([new]):not([months])',
     imports: [
         TuiCalendarSheet,
         TuiCalendarSpin,

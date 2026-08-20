@@ -31,6 +31,31 @@ export class TestTextfield {
 describe('Input', () => {
     beforeEach(() => cy.viewport(200, 150));
 
+    describe('without any form binding', () => {
+        @Component({
+            imports: [TuiInput, TuiRoot],
+            template: `
+                <tui-root>
+                    <tui-textfield>
+                        <label tuiLabel>Name</label>
+                        <input tuiInput />
+                    </tui-textfield>
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TextfieldWithoutFormsSandbox {}
+
+        it('renders and stays editable', () => {
+            cy.mount(TextfieldWithoutFormsSandbox);
+
+            cy.get('tui-textfield input[tuiInput]')
+                .type('abc')
+                .should('have.value', 'abc');
+            cy.get('tui-textfield').should('not.have.attr', 'data-mode');
+        });
+    });
+
     describe('[filler] property', () => {
         describe('with initial value', () => {
             ['2', '23', '23:', '23:5', '23:59'].forEach((initialValue) => {

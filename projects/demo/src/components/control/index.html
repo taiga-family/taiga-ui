@@ -2,14 +2,13 @@
     <td colspan="3">
         <span tuiTitle>
             <strong>Control</strong>
-            <span tuiSubtitle>Applied as a host directive</span>
         </span>
     </td>
 </tr>
 
-@if (!hiddenOptions().includes('readOnly')) {
+@if (!hiddenOptions().includes('readonly')) {
     <tr
-        name="[readOnly]"
+        name="[readonly]"
         tuiDocAPIItem
         type="boolean"
         [(value)]="readonly"

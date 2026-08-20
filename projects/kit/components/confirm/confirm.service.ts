@@ -2,7 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {type TuiDialogOptions, TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {defer, type Observable, of} from 'rxjs';
 
-import {TUI_CONFIRM_DIALOG, type TuiConfirmData} from './confirm.component';
+import {TUI_CONFIRM_DIALOG} from './confirm.component';
+import {type TuiConfirmData} from './confirm.options';
 
 @Injectable()
 export class TuiConfirmService {

@@ -10,12 +10,44 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiDocDocumentation',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiDocAPI',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
             name: 'TuiInputSliderModule',
             moduleSpecifier: '@taiga-ui/legacy',
         },
         to: {
             name: 'TuiInputSlider',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputRangeModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputRange',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputDateMultiModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiInputDateMulti',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -26,6 +58,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputMonthRange',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -66,6 +99,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputYear',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -76,6 +110,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputPhone',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -86,6 +121,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputNumber',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -376,6 +412,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiComboBox',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiMultiSelectModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiMultiSelect',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -402,6 +450,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiSelect',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -603,6 +652,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiAccordion',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -613,6 +663,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInput',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiTextfieldDirective',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiInputDirective',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {
@@ -623,6 +684,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiSlider',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -653,6 +715,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiRadio',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -729,6 +792,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiError',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -955,6 +1019,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {
                 name: 'TuiInput',
                 moduleSpecifier: '@taiga-ui/core',
+                spreadInModule: true,
             },
         ],
     },
@@ -971,10 +1036,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {
                 name: 'TuiCopy',
                 moduleSpecifier: '@taiga-ui/kit',
+                spreadInModule: true,
             },
             {
                 name: 'TuiInput',
                 moduleSpecifier: '@taiga-ui/core',
+                spreadInModule: true,
             },
         ],
     },
@@ -1002,6 +1069,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {
                 name: 'TuiInputMonth',
                 moduleSpecifier: '@taiga-ui/kit',
+                spreadInModule: true,
             },
         ],
     },
@@ -1013,6 +1081,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputColor',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1039,6 +1108,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputDate',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1049,6 +1119,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputDateTime',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1059,6 +1130,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputTime',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1069,6 +1141,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputPhoneInternational',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1079,6 +1152,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputPhoneInternational',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1089,6 +1163,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputDateRange',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1119,6 +1194,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInputChip',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1149,6 +1225,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiInput',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -1159,6 +1236,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiTextarea',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiPrimitiveTextfieldModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+        to: {
+            name: 'TuiTextfield',
+            moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -1169,6 +1258,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiCarousel',
             moduleSpecifier: '@taiga-ui/legacy',
+            spreadInModule: true,
         },
     },
     {
@@ -1628,6 +1718,28 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiExpand',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiExpand',
+            moduleSpecifier: '@taiga-ui/core',
+            removeSpread: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiActionBar',
+            moduleSpecifier: '@taiga-ui/kit',
+            removeSpread: true,
+        },
+    },
+    {
+        from: {
             name: 'TuiMobileDialogOptions',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
@@ -1724,6 +1836,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiNotification',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {

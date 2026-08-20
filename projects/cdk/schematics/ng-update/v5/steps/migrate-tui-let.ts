@@ -78,7 +78,27 @@ function migrateStructuralLet(
         return;
     }
 
-    insertLetDeclaration({recorder, offset, element, template, expr, key});
+    // `*tuiLet="foo() as foo"` scopes the alias to the element, so the alias name
+    // may repeat an identifier used in the expression. A plain `@let foo = foo()`
+    // is self-referential, which Angular rejects (NG8016), so rename the `@let` and
+    // update the alias references inside the element.
+    const selfReferential = referencesIdentifier(expr, key);
+    const letKey = selfReferential ? deriveSafeKey(template, key) : key;
+
+    insertLetDeclaration({recorder, offset, element, template, expr, key: letKey});
+
+    if (selfReferential) {
+        renameAliasReferences({
+            recorder,
+            offset,
+            element,
+            attr,
+            template,
+            from: key,
+            to: letKey,
+        });
+    }
+
     removeStructuralAttribute({recorder, offset, element, attr});
 }
 
@@ -92,6 +112,71 @@ function containsDuplicateLet(template: string, key: string): boolean {
     const pattern = new RegExp(String.raw`@let\s+${key}\s+=`);
 
     return pattern.test(template);
+}
+
+function escapeRegExp(value: string): string {
+    return value.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
+}
+
+// `$` is a valid identifier character, so it must count as part of the word.
+// Otherwise `foo` would falsely match inside `foo$` (the common
+// `foo$ | async as foo` pattern) and be treated as a self-reference.
+function identifierPattern(key: string, flags = ''): RegExp {
+    return new RegExp(String.raw`(?<![\w$])${escapeRegExp(key)}(?![\w$])`, flags);
+}
+
+function referencesIdentifier(expr: string, key: string): boolean {
+    return identifierPattern(key).test(expr);
+}
+
+function deriveSafeKey(template: string, key: string): string {
+    let candidate = `${key}Value`;
+    let counter = 2;
+
+    while (containsDuplicateLet(template, candidate)) {
+        candidate = `${key}Value${counter++}`;
+    }
+
+    return candidate;
+}
+
+function renameAliasReferences({
+    recorder,
+    offset,
+    element,
+    attr,
+    template,
+    from,
+    to,
+}: {
+    recorder: UpdateRecorder;
+    offset: number;
+    element: Element;
+    attr: {name: string; value: string};
+    template: string;
+    from: string;
+    to: string;
+}): void {
+    const loc = element.sourceCodeLocation!;
+    const attrLoc = loc.attrs?.[attr.name];
+    const pattern = identifierPattern(from, 'g');
+
+    for (let match = pattern.exec(template); match; match = pattern.exec(template)) {
+        const index = match.index;
+
+        if (index < loc.startOffset || index >= loc.endOffset) {
+            continue;
+        }
+
+        // The alias itself lives inside the *tuiLet attribute, which is removed
+        // separately — never rewrite anything within its range.
+        if (attrLoc && index >= attrLoc.startOffset && index < attrLoc.endOffset) {
+            continue;
+        }
+
+        recorder.remove(offset + index, from.length);
+        recorder.insertRight(offset + index, to);
+    }
 }
 
 function insertLetDeclaration({

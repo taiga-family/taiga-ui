@@ -1,5 +1,7 @@
 [tuiTitle] {
-    gap: 0.25rem;
+    &:where(:not([data-size])) {
+        gap: 0.25rem;
+    }
 
     [tuiSubtitle] {
         color: var(--tui-text-secondary);

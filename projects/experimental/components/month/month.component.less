@@ -3,6 +3,7 @@
 :host {
     display: grid;
     inline-size: 100%;
+    min-block-size: var(--tui-height-s);
     color: var(--tui-text-secondary);
     font: var(--tui-typography-body-m);
     grid-template: 2rem / repeat(7, 1fr);
@@ -15,10 +16,16 @@
     }
 }
 
+.t-label {
+    padding: 0.5rem 0 0.375rem;
+    font: var(--tui-typography-ui-s);
+    text-transform: uppercase;
+}
+
 .t-day {
     position: relative;
     inline-size: 100%;
-    min-block-size: var(--tui-height-s);
+    min-block-size: inherit;
     padding: 0;
     border: 0;
     background: transparent;

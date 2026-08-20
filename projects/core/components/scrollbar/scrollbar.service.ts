@@ -6,7 +6,9 @@ import {filter, map, merge, Observable, switchMap, takeUntil} from 'rxjs';
 import {TUI_SCROLL_REF} from './scroll-ref.directive';
 
 @Injectable()
-export class TuiScrollbarService extends Observable<[number, number]> {
+export class TuiScrollbarService extends Observable<
+    [number | undefined, number | undefined]
+> {
     private readonly el = tuiInjectElement();
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
 
@@ -39,26 +41,25 @@ export class TuiScrollbarService extends Observable<[number, number]> {
         {clientY, clientX}: MouseEvent,
         offsetY: number,
         offsetX: number,
-    ): [number, number] {
+    ): [number | undefined, number | undefined] {
+        const rect = this.el.parentElement!.getBoundingClientRect();
+        const {top, left, right, width, height} = rect;
         const {offsetHeight, offsetWidth} = this.el;
-
-        const {top, left, right, width, height} =
-            this.el.parentElement!.getBoundingClientRect();
-
         const rtl = this.el.matches('[dir="rtl"] :scope');
         const inline = rtl ? right : left;
         const multiplier = rtl ? -1 : 1;
         const maxTop = this.element.scrollHeight - height;
         const maxLeft = this.element.scrollWidth - width;
+        const y = (clientY - top - offsetHeight * offsetY) / (height - offsetHeight);
 
-        const scrolledTop =
-            (clientY - top - offsetHeight * offsetY) / (height - offsetHeight);
-
-        const scrolledLeft =
+        const x =
             (clientX - inline - offsetWidth * offsetX * multiplier) /
             (width - offsetWidth);
 
-        return [maxTop * scrolledTop, maxLeft * scrolledLeft];
+        return [
+            width > height ? undefined : maxTop * y,
+            width > height ? maxLeft * x : undefined,
+        ];
     }
 }
 

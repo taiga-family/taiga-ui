@@ -45,9 +45,9 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 10
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/setup-playwright@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - uses: taiga-family/actions/setup-node@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - uses: taiga-family/actions/setup-playwright@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
       - name: Restore dist cache from parent workflow build
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -97,7 +97,7 @@ jobs:
         run: echo 'Skipping performance stress due to missing dist'
       - name: Serve feature build
         if: steps.dist-check.outputs.skip == 'false'
-        uses: taiga-family/actions/http-serve@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+        uses: taiga-family/actions/http-serve@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -134,13 +134,13 @@ jobs:
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/actions/git-clone@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+        uses: taiga-family/actions/git-clone@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
         if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
-        uses: taiga-family/actions/http-serve@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+        uses: taiga-family/actions/http-serve@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}

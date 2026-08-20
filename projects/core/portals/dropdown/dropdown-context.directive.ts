@@ -5,7 +5,11 @@ import {WA_IS_TOUCH} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetActualTarget,
+    tuiInjectElement,
+    tuiPointToClientRect,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {filter, merge} from 'rxjs';
 
@@ -34,6 +38,7 @@ export class TuiDropdownContext extends TuiRectAccessor {
     protected readonly activeZone = inject(TuiActiveZone);
     protected readonly driver = inject(TuiDropdownDriver);
     protected readonly doc = inject(DOCUMENT);
+    protected readonly el = tuiInjectElement();
 
     protected readonly sub = merge(
         tuiTypedFromEvent(this.doc, 'pointerdown'),
@@ -41,11 +46,15 @@ export class TuiDropdownContext extends TuiRectAccessor {
         tuiTypedFromEvent(this.doc, 'contextmenu', {capture: true}),
     )
         .pipe(
-            filter(
-                (event) =>
-                    this.driver.value &&
-                    !this.activeZone.contains(tuiGetActualTarget(event)),
-            ),
+            filter((event) => {
+                const target = event ? tuiGetActualTarget(event) : null;
+
+                return (
+                    !target ||
+                    (this.driver.value &&
+                        (!this.activeZone.contains(target) || this.el.contains(target)))
+                );
+            }),
             tuiZoneOptimized(),
             takeUntilDestroyed(),
         )

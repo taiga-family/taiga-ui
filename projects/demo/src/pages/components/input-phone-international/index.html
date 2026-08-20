@@ -207,6 +207,9 @@
         <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-textfield
+                    [invalid]="control.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -224,12 +227,9 @@
                         tuiInputPhoneInternational
                         [countries]="countries"
                         [countrySearch]="countrySearch"
-                        [focused]="input.focused"
                         [formControl]="formControl"
-                        [invalid]="control.invalid"
                         [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''"
-                        [readOnly]="control.readonly"
-                        [state]="input.state"
+                        [readonly]="control.readonly"
                         [tuiDisabled]="control.disabled"
                         [(countryIsoCode)]="countryIsoCode"
                     />
@@ -268,8 +268,9 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
             <tbody
                 #control

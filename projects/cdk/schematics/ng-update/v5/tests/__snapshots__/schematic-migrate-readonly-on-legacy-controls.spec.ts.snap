@@ -315,14 +315,14 @@ exports[`ng-update readOnly on legacy controls different legacy controls moves [
             })
             export class Test {}
         ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
+  "1. After": "import { TuiInput, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput],
+                imports: [TuiInput, TuiDropdown],
             })
             export class Test {}
         ",
@@ -562,14 +562,14 @@ exports[`ng-update readOnly on legacy controls different legacy controls moves [
             })
             export class Test {}
         ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
+  "1. After": "import { TuiInput, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput],
+                imports: [TuiInput, TuiDropdown],
             })
             export class Test {}
         ",
@@ -621,14 +621,14 @@ exports[`ng-update readOnly on legacy controls different legacy controls moves [
             })
             export class Test {}
         ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
+  "1. After": "import { TuiInput, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput],
+                imports: [TuiInput, TuiDropdown],
             })
             export class Test {}
         ",
@@ -782,14 +782,14 @@ exports[`ng-update readOnly on legacy controls multiple occurrences migrates [re
             })
             export class Test {}
         ",
-  "1. After": "import { TuiInput } from "@taiga-ui/core";
+  "1. After": "import { TuiInput, TuiDropdown } from "@taiga-ui/core";
 
             import {Component} from '@angular/core';
 
             @Component({
                 standalone: true,
                 templateUrl: './test.html',
-                imports: [TuiInput],
+                imports: [TuiInput, TuiDropdown],
             })
             export class Test {}
         ",

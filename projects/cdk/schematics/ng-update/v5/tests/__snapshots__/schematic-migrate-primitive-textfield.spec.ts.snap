@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update legacy primitive-textfield converts text to <label tuiLabel> when labelOutside is absent: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-primitive-textfield [(value)]="search">
+                    Label
+                    <input tuiTextfieldLegacy />
+                </tui-primitive-textfield>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <label tuiLabel>Label</label>
+                <input tuiTextfield [(ngModel)]="search"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy primitive-textfield migrates TuiPrimitiveTextfieldModule import (standalone) and simple template: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-primitive-textfield [(value)]="search">
+                    <input
+                        tuiTextfieldLegacy
+                        [attr.maxlength]="80"
+                    />
+                </tui-primitive-textfield>
+            ",
+  "1. After": "
+                <tui-textfield>
+                <input
+                        tuiTextfield
+                        [attr.maxlength]="80" [(ngModel)]="search"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy primitive-textfield migrates TuiPrimitiveTextfieldModule import (standalone) and simple template: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiPrimitiveTextfieldModule],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiTextfield],
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update legacy primitive-textfield migrates wrapper attrs (iconLeft, cleaner), [(value)], labelOutside=true, focusedChange TODO: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-primitive-textfield
+                    [tuiTextfieldIconLeft]="icon"
+                    [tuiTextfieldCleaner]="true"
+                    [tuiTextfieldLabelOutside]="true"
+                    [(value)]="search"
+                    (focusedChange)="onFocus($event)"
+                    (tuiHoveredChange)="onHover($event)"
+                >
+                    Search anything
+                    <input
+                        tuiTextfieldLegacy
+                        [attr.maxlength]="80"
+                    />
+                </tui-primitive-textfield>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly \`focused\` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield -->
+<!-- TODO: (Taiga UI migration) tui-primitive-textfield migration (see https://taiga-ui.dev/components/input):
+     - (focusedChange)="onFocus($event)" has no direct equivalent. Read focus state from the TuiTextfieldComponent.focused signal, or bind (focusin)/(focusout) on <input tuiTextfield>.
+-->
+                <tui-textfield [iconStart]="icon" [tuiTextfieldCleaner]="true" (tuiHoveredChange)="onHover($event)">
+                <input
+                        tuiTextfield
+                        [attr.maxlength]="80" [(ngModel)]="search" placeholder="Search anything"/>
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update legacy primitive-textfield spreads TuiTextfield inside @NgModule imports: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiPrimitiveTextfieldModule],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+
+                                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [...TuiTextfield],
+                })
+                export class TestModule {}
+            ",
+}
+`;
+
+exports[`ng-update legacy primitive-textfield spreads TuiTextfield next to an existing spread in @NgModule imports: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+                import {SharedImports} from './shared';
+
+                @NgModule({
+                    imports: [...SharedImports, TuiPrimitiveTextfieldModule],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiTextfield } from "@taiga-ui/core";
+
+                                import {NgModule} from '@angular/core';
+                import {SharedImports} from './shared';
+
+                @NgModule({
+                    imports: [...SharedImports, ...TuiTextfield],
+                })
+                export class TestModule {}
+            ",
+}
+`;

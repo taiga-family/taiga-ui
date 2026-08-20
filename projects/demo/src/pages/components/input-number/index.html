@@ -219,6 +219,9 @@
                 <tui-textfield
                     [iconEnd]="icons.iconEnd"
                     [iconStart]="icons.iconStart"
+                    [invalid]="controlDoc.invalid"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -228,17 +231,14 @@
 
                     <input
                         tuiInputNumber
-                        [focused]="input.focused"
                         [formControl]="control"
-                        [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [quantum]="quantum"
-                        [readOnly]="controlDoc.readonly"
-                        [state]="input.state"
+                        [readonly]="controlDoc.readonly"
                         [step]="step"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -344,8 +344,9 @@
             ></tbody>
 
             <tbody
-                #input
-                tuiDocInput
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['appearance', 'mode']"
             ></tbody>
 
             <tbody

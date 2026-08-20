@@ -83,5 +83,28 @@ describe('ng-update tuiLet', () => {
         }),
     );
 
+    it(
+        'renames the @let when the alias repeats an identifier in the expression',
+        migration({
+            template: /* HTML */ `
+                <test *tuiLet="isOrderCompleted() as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                    <span [class.done]="isOrderCompleted">done</span>
+                </test>
+            `,
+        }),
+    );
+
+    it(
+        'keeps the alias when only an observable (foo$) shares its stem',
+        migration({
+            template: /* HTML */ `
+                <test *tuiLet="isOrderCompleted$ | async as isOrderCompleted">
+                    {{ isOrderCompleted }}
+                </test>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

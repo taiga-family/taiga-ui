@@ -438,6 +438,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
     },
     {
+        name: 'WA_IS_TOUCH',
+        moduleSpecifier: '@ng-web-apis/platform',
+        message:
+            'TUI_IS_TOUCH was renamed to WA_IS_TOUCH from @ng-web-apis/platform, which is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
+    },
+    {
         name: 'TUI_IS_CHROMIUM',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -789,5 +795,23 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.',
+    },
+    {
+        name: 'TuiTextareaComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTextareaComponent has been removed with no drop-in class replacement. <tui-textarea> now migrates to <tui-textfield> with <textarea tuiTextfield>, so there is no component to @ViewChild/inject. Add a template ref to the migrated <textarea tuiTextfield>, query it with @ViewChild(ref, {read: ElementRef}) and replace .nativeFocusableElement with .nativeElement. See https://taiga-ui.dev/components/textarea',
+    },
+    {
+        name: 'TuiNativeFocusableElement',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiNativeFocusableElement has been removed. It was a type alias for the native focusable element; replace it with the concrete element type (HTMLInputElement / HTMLTextAreaElement) or HTMLElement.',
+    },
+    {
+        name: 'TuiTableBarsHostComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead — it has a different API and no host container is required. See https://taiga-ui.dev/components/actions-bar',
     },
 ];

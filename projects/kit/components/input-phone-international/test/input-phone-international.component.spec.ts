@@ -32,7 +32,7 @@ describe('InputPhoneInternational', () => {
                         tuiInputPhoneInternational
                         [countries]="countries"
                         [formControl]="control"
-                        [readOnly]="readOnly"
+                        [readonly]="readOnly"
                         [(countryIsoCode)]="countryIsoCode"
                     />
                 </tui-textfield>

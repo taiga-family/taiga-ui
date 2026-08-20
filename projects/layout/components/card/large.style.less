@@ -1,5 +1,4 @@
-// Don't increase specificity. Otherwise, not compatible with [tuiHeader]
-[tuiCardLarge]:where(*&) {
+:where([tuiCardLarge]:not([tuiHeader])&) {
     font: var(--tui-typography-body-m);
 }
 

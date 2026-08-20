@@ -50,5 +50,20 @@ describe('ng-update input-range', () => {
         }),
     );
 
+    it(
+        'renames TuiInputRangeModule import to TuiInputRange',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiInputRangeModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputRangeModule],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

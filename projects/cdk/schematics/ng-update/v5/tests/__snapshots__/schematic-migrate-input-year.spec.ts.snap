@@ -146,7 +146,7 @@ exports[`ng-update migrate TuiInputYearModule to TuiInputYear: test.ts 1`] = `
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputYear,
+                        ...TuiInputYear,
                     ],
                     // ...
                 })

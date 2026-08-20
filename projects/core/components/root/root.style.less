@@ -28,6 +28,15 @@ tui-root > .t-root-scrollbar {
     position: fixed;
     inset: 0;
     z-index: 0;
+    animation-timeline: scroll(x root), scroll(y root);
+
+    .t-bar.t-bar_vertical .t-thumb {
+        animation-timeline: scroll(y root);
+    }
+
+    .t-bar.t-bar_horizontal .t-thumb {
+        animation-timeline: scroll(x root);
+    }
 }
 
 .t-root-content {
