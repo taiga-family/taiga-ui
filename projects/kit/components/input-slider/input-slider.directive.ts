@@ -39,9 +39,9 @@ class Styles {}
 @Directive({
     selector: 'input[tuiInputSlider]',
     providers: [
-        tuiInputNumberOptionsProvider({
+        tuiInputNumberOptionsProvider(() => ({
             valueTransformer: new TuiNonNullableValueTransformer(),
-        }),
+        })),
     ],
     hostDirectives: [
         {
