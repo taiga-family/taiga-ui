@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -43,10 +42,6 @@ export class TuiInputNumberStepButtons {
     protected readonly directive = inject(TuiInputNumberStep);
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly hold = inject(TuiInputNumberStepService<bigint | number>);
-
-    protected readonly buttonAppearance = computed(() =>
-        this.appearance() === 'table' ? 'icon' : this.appearance(),
-    );
 
     protected readonly $ = this.hold.steps$
         .pipe(takeUntilDestroyed())
