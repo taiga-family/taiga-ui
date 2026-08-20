@@ -1,11 +1,6 @@
 name: Apply Taiga #14654 v4 review changes
 
-on:
-  push:
-    branches:
-      - fix/v4.x-14654-cleaner-opens-dropdown
-    paths:
-      - .github/workflows/apply-taiga-14654-v4-review.yml
+on: push
 
 permissions:
   contents: write
