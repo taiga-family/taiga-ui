@@ -196,8 +196,8 @@ export class TuiTextfieldBaseComponent<T>
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
     }
 
-    protected onCleanerClick(): void {
-        this.accessor?.setValue(null);
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor?.setValue(value);
 
         if (
             this.dropdown._content() &&
