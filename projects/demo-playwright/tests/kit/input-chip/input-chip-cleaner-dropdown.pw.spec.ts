@@ -1,9 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiDocumentationApiPagePO,
-    tuiGoto,
-    TuiInputChipPO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationApiPagePO, tuiGoto, TuiInputChipPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('InputChip cleaner dropdown', () => {
