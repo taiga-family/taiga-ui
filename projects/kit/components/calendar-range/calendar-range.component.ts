@@ -234,11 +234,14 @@ export class TuiCalendarRange
     }
 
     private initDefaultViewedMonth(value = this.currentValue()): void {
+        const single = this.items().length || this.mobile;
         const min = this.min();
-        const max = this.items().length ? this.max() : this.max().append({month: -1});
+        const max = single ? this.max() : this.max().append({month: -1});
         const month = value instanceof TuiDay ? value : value?.from;
+        const current = this.month();
+        const visible = !single && month?.append({month: -1}).monthSame(current);
 
-        this.month.update((current) => tuiDateClamp(month || current, min, max));
+        this.month.set(tuiDateClamp(visible ? current : month || current, min, max));
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {
