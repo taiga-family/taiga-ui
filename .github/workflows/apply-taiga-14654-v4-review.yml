@@ -18,11 +18,15 @@ jobs:
         with:
           ref: fix/v4.x-14654-cleaner-opens-dropdown
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Apply requested cleaner reuse and regression coverage
+      - name: Apply maintainer-requested cleaner reuse
         shell: bash
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
 
           def replace_once(path: str, old: str, new: str) -> None:
@@ -38,13 +42,11 @@ jobs:
               "    protected onCleanerClick(): void {\n        this.accessor?.setValue(null);",
               "    protected onCleanerClick(value: T | T[] | null): void {\n        this.accessor?.setValue(value);",
           )
-
           replace_once(
               "projects/core/components/textfield/textfield.template.html",
               '(click)="onCleanerClick()"',
               '(click)="onCleanerClick(null)"',
           )
-
           replace_once(
               "projects/core/components/textfield/textfield-multi/textfield-multi.template.html",
               '(click)="accessor?.setValue([])"',
@@ -130,12 +132,24 @@ describe('TuiTextfieldBaseComponent cleaner', () => {
           )
           PY
 
+      - name: Format changed files
+        shell: bash
+        run: |
+          npm ci --ignore-scripts
+          npx prettier --write \
+            projects/core/components/textfield/textfield.component.ts \
+            projects/core/components/textfield/textfield.template.html \
+            projects/core/components/textfield/textfield-multi/textfield-multi.template.html \
+            projects/core/components/textfield/test/textfield-cleaner.spec.ts \
+            projects/demo-playwright/tests/kit/input-chip/input-chip.pw.spec.ts
+          rm .github/workflows/apply-taiga-14654-v4-review.yml
+
       - name: Commit reviewed changes
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add projects/core/components/textfield projects/demo-playwright/tests/kit/input-chip/input-chip.pw.spec.ts
+          git add projects/core/components/textfield projects/demo-playwright/tests/kit/input-chip/input-chip.pw.spec.ts .github/workflows/apply-taiga-14654-v4-review.yml
           git diff --cached --check
           git commit -m "fix(core): reuse cleaner value for multi textfields"
           git push origin HEAD:fix/v4.x-14654-cleaner-opens-dropdown
