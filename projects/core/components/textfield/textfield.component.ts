@@ -178,8 +178,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
 
-    protected onCleanerClick(): void {
-        this.accessor()?.setValue(null);
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor()?.setValue(value);
 
         if (this.dropdown.content() && tuiIsElementEditable(this.open.nativeElement)) {
             this.open.toggle(true);
