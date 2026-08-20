@@ -57,6 +57,7 @@ export default class PageComponent extends Array {
         'Virtual scroll',
         'With DropdownMobile',
         'Override option component',
+        'Override option handling',
     ];
 
     protected readonly [5] = {
@@ -71,6 +72,10 @@ export default class PageComponent extends Array {
 
     protected readonly [12] = {
         'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly [13] = {
+        'custom.ts': import('./examples/13/custom.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly control = new FormControl<Country | null>(null);

@@ -4,7 +4,7 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectFormField} from '@taiga-ui/cdk/utils/di';
-import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -51,12 +51,10 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-
+    protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
     protected readonly s = tuiAppearanceState(
         computed(() => this.state() ?? this.textfield.tuiAppearanceState()),
     );
-
-    protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
 
     // TODO(v6): move to {@link TuiTextfieldComponent}
     protected readonly f = tuiAppearanceFocus(
@@ -96,8 +94,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
      * TODO(v6): delete
      */
     public readonly state = input<TuiInteractiveState | null>(null);
-    public readonly value = tuiValue(this.el);
-
+    public readonly value = this.textfield.value;
     public readonly mode = computed<string | null>(() => {
         const invalid = this.computedInvalid();
 
