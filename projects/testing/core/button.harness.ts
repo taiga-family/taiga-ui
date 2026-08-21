@@ -4,7 +4,7 @@ import {TuiLoaderHarness} from './loader.harness';
 
 export class TuiButtonHarness extends TuiComponentHarness {
     public static hostSelector =
-        'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]';
+        'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton], label[tuiButton], label[tuiIconButton]';
 
     private readonly loader = this.locatorForOptional(TuiLoaderHarness);
 

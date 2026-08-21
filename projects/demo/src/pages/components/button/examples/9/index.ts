@@ -1,0 +1,13 @@
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}

@@ -8,8 +8,10 @@
             Button is a basic component used for both icon buttons and regular buttons with optional icons on either
             side. It can be applied to
             <code>button</code>
-            and
+            ,
             <code>a</code>
+            and
+            <code>label</code>
             tags. When used as
             <code>tuiIconButton</code>
             don't forget to still put text label within the tag for accessibility.
@@ -69,6 +71,14 @@
                         <code>&lt;a&gt;</code>
                         element preserves native link semantics — right-click, open in new tab, and URL preview all work
                         as expected.
+                    }
+                    @case (8) {
+                        Using
+                        <code>tuiButton</code>
+                        on a
+                        <code>&lt;label&gt;</code>
+                        element preserves native label semantics and can trigger associated controls, such as hidden
+                        file inputs.
                     }
                 }
             </ng-template>
