@@ -67,7 +67,6 @@ export class TuiLineClamp {
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
     private readonly isOverflowing = signal(false);
     private readonly resize$ = inject(WaResizeObserverService);
-
     private readonly intersection$ = inject(WaIntersectionObserverService).pipe(
         map(([entry]) => entry?.isIntersecting ?? true),
         distinctUntilChanged(),
