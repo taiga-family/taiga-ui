@@ -6,6 +6,11 @@ import {
     waitIcons,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_DROPDOWN_LOCATORS,
+    TUI_SELECT_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -21,7 +26,7 @@ describe('Select', () => {
         test('dropdown works after exiting fullscreen', async ({page}) => {
             const exampleContainer = page.locator('#textfield-customization');
             const example = documentationPage.getExample('#textfield-customization');
-            const host = example.locator('tui-textfield').first();
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
             const select = new TuiSelectPO(host);
 
             await host.scrollIntoViewIfNeeded();
@@ -42,7 +47,7 @@ describe('Select', () => {
 
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#customize-content');
-            const host = example.locator('tui-textfield').first();
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
             const select = new TuiSelectPO(host);
 
             await host.scrollIntoViewIfNeeded();
@@ -61,7 +66,7 @@ describe('Select', () => {
 
         test('opens dropdown by click on icon', async ({page}) => {
             const example = documentationPage.getExample('#items-handlers');
-            const host = example.locator('tui-textfield').first();
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
             const select = new TuiSelectPO(host);
 
             await host.scrollIntoViewIfNeeded();
@@ -91,7 +96,7 @@ describe('Select', () => {
                     );
                     example = new TuiDocumentationPagePO(page).demo;
                     select = new TuiSelectPO(
-                        example.locator('tui-textfield:has([tuiSelect])'),
+                        example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
                     );
 
                     await select.textfield.click();
@@ -127,7 +132,7 @@ describe('Select', () => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
                 example = new TuiDocumentationPagePO(page).demo;
                 select = new TuiSelectPO(
-                    example.locator('tui-textfield:has([tuiSelect])'),
+                    example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
                 );
             });
 
@@ -135,7 +140,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -149,7 +154,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -172,13 +177,15 @@ describe('Select', () => {
 
             documentationPage = new TuiDocumentationPagePO(page);
             const select = new TuiSelectPO(
-                documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+                documentationPage.demo.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
             );
 
             await expect(select.textfield).toHaveValue('USA');
 
             await select.textfield.click();
-            await select.dropdown.locator('[tuiOption]', {hasText: 'Austria'}).click();
+            await select.dropdown
+                .locator(TUI_DROPDOWN_LOCATORS.OPTION, {hasText: 'Austria'})
+                .click();
 
             await expect(select.textfield).toHaveValue('Austria');
             // Control value should stay intact until the form is submitted

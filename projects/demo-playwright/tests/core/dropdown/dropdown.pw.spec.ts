@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Dropdown', () => {
     test.use({viewport: {width: 720, height: 720}});
@@ -78,11 +79,13 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('06-dropdown.png');
 
         await page
-            .locator("tui-dropdown [automation-id='tui-select__textfield']")
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator("[automation-id='tui-select__textfield']")
             .click();
 
         await page
-            .locator("tui-dropdown [automation-id='tui-select__textfield'] input")
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator("[automation-id='tui-select__textfield'] input")
             .focus();
 
         await expect.soft(page).toHaveScreenshot('07-dropdown.png');
@@ -106,8 +109,9 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('10-dropdown.png');
 
         await page
-            .locator('tui-dropdown')
-            .locator('tui-scrollbar .t-bar_vertical .t-thumb')
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_LOCATORS.SCROLLBAR)
+            .locator('.t-bar_vertical .t-thumb')
             .click();
 
         await expect.soft(page).toHaveScreenshot('11-dropdown.png');
@@ -124,7 +128,7 @@ test.describe('Dropdown', () => {
         await textarea.press('@');
         await textarea.press('Backspace');
 
-        await expect(page.locator('tui-dropdown')).toBeHidden();
+        await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeHidden();
     });
 
     test('hidden-host', async ({page}) => {
@@ -135,7 +139,7 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
         await page.waitForTimeout(300);
 
-        expect(page.locator('tui-dropdown')).toBeDefined();
+        expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeDefined();
 
         await example.locator('button').evaluate((el) => {
             el.style.display = 'none';
@@ -153,8 +157,16 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('13-dropdown.png');
 
-        await page.locator('tui-dropdown tui-data-list button').nth(0).click();
-        await page.locator('tui-dropdown tui-data-list button').nth(1).click();
+        await page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator('tui-data-list button')
+            .nth(0)
+            .click();
+        await page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator('tui-data-list button')
+            .nth(1)
+            .click();
 
         await expect.soft(page).toHaveScreenshot('14-dropdown.png');
 
@@ -164,7 +176,11 @@ test.describe('Dropdown', () => {
 
         await example.locator('button[data-appearance="outline-grayscale"]').click();
 
-        await page.locator('tui-dropdown tui-data-list button').nth(2).click();
+        await page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator('tui-data-list button')
+            .nth(2)
+            .click();
 
         await expect.soft(page).toHaveScreenshot('16-dropdown.png');
     });
@@ -192,7 +208,7 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('18-dropdown-open.png');
 
-        await page.locator('[tuiOption]').last().click();
+        await page.locator(TUI_DROPDOWN_LOCATORS.OPTION).last().click();
 
         await expect.soft(page).toHaveScreenshot('18-dropdown-closed.png');
 

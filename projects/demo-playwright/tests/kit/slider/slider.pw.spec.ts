@@ -2,6 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Slider', () => {
     test.use({viewport: {width: 500, height: 500}});
@@ -113,7 +114,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(17);
                 }).toPass();
 
-                await expect(page.locator('tui-hint')).toBeAttached();
+                await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
 
                 await expect
                     .soft(example)
@@ -128,7 +129,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(50);
                 }).toPass();
 
-                await expect(page.locator('tui-hint')).toBeAttached();
+                await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
 
                 await expect
                     .soft(example)
@@ -144,7 +145,7 @@ test.describe('Slider', () => {
                     expect(await slider.fillPercentage).toBe(67);
                 }).toPass();
 
-                await expect(page.locator('tui-hint')).toBeAttached();
+                await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
 
                 await expect
                     .soft(example)

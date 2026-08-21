@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('breadcrumbs', () => {
     test('open collapsed list', async ({page}) => {
@@ -11,6 +12,8 @@ test.describe('breadcrumbs', () => {
         await example.scrollIntoViewIfNeeded();
         await more.click();
 
-        await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-breadcrumbs.png');
+        await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveScreenshot(
+            '01-breadcrumbs.png',
+        );
     });
 });

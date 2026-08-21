@@ -7,6 +7,12 @@ import {
     TuiMultiSelectPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_DROPDOWN_LOCATORS,
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_LABEL_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test.describe('Examples', () => {
@@ -77,13 +83,16 @@ test.describe('InputChip', () => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
 
-            const block = example.locator('[tuiLabel]', {
+            const block = example.locator(TUI_INPUT_CHIP_LOCATORS.LABEL, {
                 hasText: 'Conditional input in textfield',
             });
 
-            const input = block.locator('tui-textfield input[tuiInputChip]');
+            const input = block
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .locator(`input${TUI_TEXTFIELD_LOCATORS.CHIP}`);
+
             const toggle = example.locator('input[type="checkbox"]');
-            const dropdown = page.locator('tui-dropdown');
+            const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
 
             await block.scrollIntoViewIfNeeded();
 
@@ -338,7 +347,7 @@ test.describe('InputChip', () => {
             });
 
             test('value from list only', async () => {
-                const block = example.locator('label[tuiLabel]').filter({
+                const block = example.locator(TUI_LABEL_LOCATORS.HOST).filter({
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
@@ -356,7 +365,7 @@ test.describe('InputChip', () => {
             });
 
             test('select value from list', async () => {
-                const block = example.locator('label[tuiLabel]').filter({
+                const block = example.locator(TUI_LABEL_LOCATORS.HOST).filter({
                     hasText:
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
@@ -365,7 +374,9 @@ test.describe('InputChip', () => {
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
-                const options = multiselect.dropdown.locator('[tuiOption]');
+                const options = multiselect.dropdown.locator(
+                    TUI_DROPDOWN_LOCATORS.OPTION,
+                );
 
                 await options.nth(0).click();
                 await options.nth(1).click();
@@ -375,16 +386,18 @@ test.describe('InputChip', () => {
             });
 
             test('checkboxes', async () => {
-                const block = example.locator('label[tuiLabel]').filter({
+                const block = example.locator(TUI_LABEL_LOCATORS.HOST).filter({
                     hasText:
                         'Using checkboxes in the dropdown and making the textfield non-writable',
                 });
 
                 const multiselect = new TuiMultiSelectPO(block);
 
-                await block.locator('tui-textfield').click();
+                await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
                 await expect(multiselect.dropdown).toBeAttached();
-                const options = multiselect.dropdown.locator('[tuiOption]');
+                const options = multiselect.dropdown.locator(
+                    TUI_DROPDOWN_LOCATORS.OPTION,
+                );
 
                 await options.nth(0).click();
                 await options.nth(1).click();
@@ -395,13 +408,13 @@ test.describe('InputChip', () => {
 
             test('working with objects', async ({page}) => {
                 const block = example
-                    .locator('label[tuiLabel]')
+                    .locator(TUI_LABEL_LOCATORS.HOST)
                     .filter({hasText: 'Working with objects'});
 
                 const multiselect = new TuiMultiSelectPO(block);
 
                 await example.scrollIntoViewIfNeeded();
-                await block.locator('tui-textfield').click();
+                await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
 
                 await multiselect.dropdown.scrollIntoViewIfNeeded();
 
@@ -419,13 +432,13 @@ test.describe('InputChip', () => {
                 await page.mouse.click(0, 0);
 
                 await expect
-                    .soft(block.locator('tui-textfield'))
+                    .soft(block.locator(TUI_TEXTFIELD_LOCATORS.HOST))
                     .toHaveScreenshot('multiselect-select-objects-block.png');
             });
 
             test('group toggle selects / unselects all its options (with [(ngModel)] binding)', async () => {
                 const block = example
-                    .locator('label[tuiLabel]')
+                    .locator(TUI_LABEL_LOCATORS.HOST)
                     .filter({hasText: 'Working with objects'});
 
                 const multiselect = new TuiMultiSelectPO(block);
@@ -434,7 +447,7 @@ test.describe('InputChip', () => {
                     'input[type="checkbox"]:checked',
                 );
 
-                await block.locator('tui-textfield').click();
+                await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
                 await expect(multiselect.dropdown).toBeAttached();
 
                 await multiselect.dropdown
