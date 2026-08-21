@@ -424,6 +424,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'ScrollWheel',
+        keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
+        route: DemoRoute.ScrollWheel,
+    },
+    {
+        section: 'Components',
         title: 'Filter',
         keywords: 'фильтр, filters',
         route: DemoRoute.Filter,

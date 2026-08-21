@@ -118,6 +118,7 @@ export const DemoRoute = {
     Select: '/components/select',
     ShrinkWrap: '/components/shrink-wrap',
     Scrollbar: '/components/scrollbar',
+    ScrollWheel: '/components/scroll-wheel',
     SheetDialog: '/components/sheet-dialog',
     Slider: '/components/slider',
     Slides: '/components/slides',
