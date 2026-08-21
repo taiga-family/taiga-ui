@@ -41,6 +41,12 @@ import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
+interface TuiLineClampMeasures {
+    readonly scrollHeight: number;
+    readonly scrollWidth: number;
+    readonly clientWidth: number;
+}
+
 @Component({
     selector: 'tui-line-clamp',
     imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
@@ -77,7 +83,6 @@ export class TuiLineClamp {
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
     public readonly content = input<PolymorpheusContent>();
-
     public readonly showHint = input<boolean, BooleanInput>(this.options.showHint, {
         transform: coerceBooleanProperty,
     });
@@ -103,12 +108,15 @@ export class TuiLineClamp {
     );
 
     constructor() {
+        // `afterRenderEffect` is experimental in Angular 19. It is used here to separate DOM reads from writes and avoid `mixedReadWrite`.
         afterRenderEffect({
-            mixedReadWrite: () => {
+            earlyRead: () => {
                 this.content();
                 this.maxHeight();
-                untracked(() => this.update());
+
+                return untracked(() => this.measure());
             },
+            write: (measures) => this.applyMeasurements(measures()),
         });
 
         merge(this.resize$, this.intersection$)
@@ -121,9 +129,24 @@ export class TuiLineClamp {
     }
 
     protected update(): void {
+        this.applyMeasurements(this.measure());
+    }
+
+    private measure(): TuiLineClampMeasures {
         const outlet = this.outlet().nativeElement;
-        const {scrollHeight, scrollWidth} = outlet;
-        const {clientWidth} = this.el;
+
+        return {
+            scrollHeight: outlet.scrollHeight,
+            scrollWidth: outlet.scrollWidth,
+            clientWidth: this.el.clientWidth,
+        };
+    }
+
+    private applyMeasurements({
+        scrollHeight,
+        scrollWidth,
+        clientWidth,
+    }: TuiLineClampMeasures): void {
         const maxHeight = this.maxHeight();
         const overflowing = scrollHeight > maxHeight || scrollWidth > clientWidth;
 
