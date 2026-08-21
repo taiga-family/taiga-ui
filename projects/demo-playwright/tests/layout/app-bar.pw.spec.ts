@@ -21,7 +21,7 @@ test.describe('AppBar', () => {
 
         test('mobile appbar inside dialog', async ({page}) => {
             await page.addInitScript(() =>
-                globalThis.localStorage.setItem('tuiPlatform', 'ios'),
+                globalThis.localStorage.setItem('@tui[platform]', 'ios'),
             );
 
             await tuiGoto(page, DemoRoute.AppBar);
