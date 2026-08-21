@@ -243,11 +243,8 @@ tui-textfield:where(*&) {
     }
 
     & > .t-template {
-        clip-path: inset(0 var(--t-space-end) 0 0);
-
-        [dir='rtl'] & {
-            clip-path: inset(0 0 0 var(--t-space-end));
-        }
+        padding-inline-end: 0;
+        border-inline-end: var(--t-space-end) solid transparent;
     }
 
     &._with-template [tuiInput]:first-of-type {
