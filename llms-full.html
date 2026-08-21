@@ -22048,7 +22048,7 @@ InputDateRange = Textfield + CalendarRange + ❤️
 ```html
 &lt;tui-textfield [tuiTextfieldCleaner]=&quot;false&quot;&gt;
 &lt;label tuiLabel&gt;Choose range&lt;/label&gt;
-&lt;input tuiInputDateRange [(ngModel)]=&quot;value&quot; /&gt;
+&lt;input tuiInputDateRange [max]=&quot;max&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;tui-calendar-range *tuiDropdown /&gt;
 &lt;/tui-textfield&gt;
 ```
@@ -22068,6 +22068,7 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
     changeDetection,
 })
 export default class Example {
+    protected readonly max = new TuiDay(2017, 0, 30);
     protected value = new TuiDayRange(new TuiDay(2017, 0, 15), new TuiDay(2017, 0, 20));
 }
 ```
