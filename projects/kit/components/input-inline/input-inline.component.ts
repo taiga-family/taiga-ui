@@ -2,13 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     contentChild,
+    ElementRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {switchMap} from 'rxjs';
+import {tuiValue} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
     selector: 'tui-input-inline',
@@ -23,9 +22,9 @@ import {switchMap} from 'rxjs';
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputInline {
-    protected readonly control = contentChild(NgControl);
+    protected readonly input = contentChild(NgControl, {
+        read: ElementRef<HTMLInputElement>,
+    });
 
-    protected readonly value = toSignal(
-        toObservable(this.control).pipe(switchMap(tuiControlValue)),
-    );
+    protected readonly value = tuiValue(this.input);
 }
