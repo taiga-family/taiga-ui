@@ -1,0 +1,17 @@
+<tui-searchbar (tuiActiveZoneChange)="active.set($event)">
+    <input
+        #search
+        placeholder="Search"
+        tuiSearch
+    />
+    @if (active()) {
+        <button
+            iconStart="@tui.arrow-left"
+            tuiIconButton
+            type="button"
+            (click)="cancel(search)"
+        >
+            Cancel
+        </button>
+    }
+</tui-searchbar>
