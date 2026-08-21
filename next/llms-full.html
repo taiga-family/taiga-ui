@@ -23611,15 +23611,19 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;h2 class=&quot;header&quot; [class.header_empty]=&quot;!heading&quot; &gt; @if (editing) { &lt;tui-input-inline&gt; Type a heading &lt;input tuiAutoFocus [(ngModel)]=&quot;heading&quot; (blur)=&quot;onBlur()&quot; (keydown.enter.prevent)=&quot;toggle()&quot; /&gt;
-&lt;/tui-input-inline&gt; } @else { &lt;span&gt;{{ heading }}&lt;/span&gt;
-&lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.pencil&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; class=&quot;tui-space_left-1&quot; (click)=&quot;toggle()&quot; &gt; Edit heading &lt;/button&gt; } &lt;/h2&gt;
+&lt;form (ngSubmit)=&quot;save()&quot;&gt;
+&lt;h4&gt; @if (editing()) { &lt;tui-input-inline&gt;
+&lt;span&gt;Type a heading&lt;/span&gt;
+&lt;input name=&quot;heading&quot; tuiAutoFocus [ngModelOptions]=&quot;{updateOn: &#039;submit&#039;}&quot; [(ngModel)]=&quot;heading&quot; (blur)=&quot;editing.set(false)&quot; (keydown.esc.prevent)=&quot;editing.set(false)&quot; /&gt;
+&lt;/tui-input-inline&gt;
+&lt;button appearance=&quot;action&quot; iconStart=&quot;@tui.check&quot; size=&quot;xs&quot; tuiIconButton type=&quot;submit&quot; (pointerdown.prevent)=&quot;(0)&quot; &gt; Save &lt;/button&gt; } @else { {{ heading() }} &lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.pencil&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;editing.set(true)&quot; &gt; Edit heading &lt;/button&gt; } &lt;/h4&gt;
 &lt;p&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos dolorem doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis repellendus tempore voluptates! &lt;/p&gt;
 &lt;p&gt; Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia quam quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem! &lt;/p&gt;
+&lt;/form&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from &#039;@angular/core&#039;;
+import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
@@ -23637,35 +23641,30 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
 
-    protected heading = &#039;Page heading&#039;;
-    protected editing = false;
+    protected readonly heading = signal(&#039;Page heading&#039;);
+    protected readonly editing = signal(false);
 
-    protected toggle(): void {
-        this.editing = !this.editing;
-    }
-
-    protected onBlur(): void {
-        this.editing = false;
-        this.saveHeading(this.heading);
-    }
-
-    private saveHeading(newHeading: string): void {
-        this.alerts.open(newHeading, {label: &#039;New heading&#039;}).subscribe();
+    protected save(): void {
+        this.editing.set(false);
+        this.alerts.open(this.heading, {label: &#039;New heading&#039;}).subscribe();
     }
 }
 ```
 **LESS:**
 ```less
-.header {
+h4 {
     display: flex;
-    block-size: 1.5rem;
+    block-size: 2rem;
     align-items: center;
     white-space: nowrap;
-    line-height: 1.5rem;
+    font: var(--tui-typography-heading-h5);
+    line-height: 2rem;
+    gap: 0.25rem;
+    margin: 0;
+}
 
-    &amp;_empty {
-        opacity: 0.3;
-    }
+span {
+    color: var(--tui-text-tertiary);
 }
 ```
 
