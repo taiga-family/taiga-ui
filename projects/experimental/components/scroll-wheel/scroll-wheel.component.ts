@@ -16,7 +16,7 @@ import {
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 
-import {TuiInfiniteScrollItem} from './infinite-scroll-item.component';
+import {TuiScrollWheelItem} from './scroll-wheel-item.component';
 
 const OFFSET = 5_000_000;
 
@@ -24,7 +24,7 @@ const OFFSET = 5_000_000;
  * @deprecated: work in progress, do not use!
  */
 @Component({
-    selector: 'tui-infinite-scroll',
+    selector: 'tui-scroll-wheel',
     template: '<ng-container #vcr /><ng-content />',
     styles: `
         :host {
@@ -48,7 +48,7 @@ const OFFSET = 5_000_000;
         '(scrollend)': 'sync()',
     },
 })
-export class TuiInfiniteScroll implements AfterViewInit {
+export class TuiScrollWheel implements AfterViewInit {
     protected readonly el = tuiInjectElement();
     protected readonly vcr = viewChild.required('vcr', {read: ViewContainerRef});
     protected readonly wrapper = viewChild.required(TemplateRef);
@@ -67,13 +67,6 @@ export class TuiInfiniteScroll implements AfterViewInit {
 
     public onIntersection(isIntersecting: boolean, index: number): void {
         this.visible[isIntersecting ? 'add' : 'delete'](index);
-
-        // if (!this.visible.size) {
-        //     this.el.scrollTo({top: this.el.scrollTop - this.offset, behavior: 'instant'});
-        //     this.update(-this.offset);
-        // } else if (!this.offset) {
-        //     this.sync();
-        // }
 
         const current = [...this.visible].sort((a, b) => a - b)[0] ?? this.index();
 
@@ -109,7 +102,7 @@ export class TuiInfiniteScroll implements AfterViewInit {
     }
 
     private createItem(context: number, index?: number): void {
-        const ref = this.vcr().createComponent(TuiInfiniteScrollItem, {index});
+        const ref = this.vcr().createComponent(TuiScrollWheelItem, {index});
         const align = context === this.index() ? 'start' : '';
 
         ref.setInput('index', context);

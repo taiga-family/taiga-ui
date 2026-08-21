@@ -12,7 +12,7 @@ import {WaIntersectionObservee} from '@ng-web-apis/intersection-observer';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
-import {TuiInfiniteScroll} from './infinite-scroll.component';
+import {TuiScrollWheel} from './scroll-wheel.component';
 
 @Component({
     selector: 'div:not(div)',
@@ -28,9 +28,9 @@ import {TuiInfiniteScroll} from './infinite-scroll.component';
     ],
     host: {'(waIntersectionObservee)': 'onIntersection(!!$event[0]?.isIntersecting)'},
 })
-export class TuiInfiniteScrollItem implements AfterViewInit, OnDestroy {
+export class TuiScrollWheelItem implements AfterViewInit, OnDestroy {
     private readonly el = tuiInjectElement();
-    private readonly scroll = inject(TuiInfiniteScroll);
+    private readonly scroll = inject(TuiScrollWheel);
     private height = this.el.clientHeight;
 
     public readonly index = input(0);

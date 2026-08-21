@@ -424,9 +424,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'InfiniteScroll',
-        keywords: 'scroll, carousel, скролл, карусель, барабан, wheel, spin',
-        route: DemoRoute.InfiniteScroll,
+        title: 'ScrollWheel',
+        keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
+        route: DemoRoute.ScrollWheel,
     },
     {
         section: 'Components',

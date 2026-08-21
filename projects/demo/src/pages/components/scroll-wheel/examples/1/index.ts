@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiInfiniteScroll} from '@taiga-ui/experimental';
+import {TuiScrollWheel} from '@taiga-ui/experimental';
 import {TuiAutoColorPipe} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAutoColorPipe, TuiInfiniteScroll, TuiItem],
+    imports: [TuiAutoColorPipe, TuiItem, TuiScrollWheel],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

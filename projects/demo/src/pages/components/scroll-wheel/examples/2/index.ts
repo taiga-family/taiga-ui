@@ -1,10 +1,10 @@
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInfiniteScroll} from '@taiga-ui/experimental';
+import {TuiScrollWheel} from '@taiga-ui/experimental';
 
 @Component({
-    imports: [TuiInfiniteScroll],
+    imports: [TuiScrollWheel],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
