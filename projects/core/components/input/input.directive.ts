@@ -51,12 +51,10 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-
+    protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
     protected readonly s = tuiAppearanceState(
         computed(() => this.state() ?? this.textfield.tuiAppearanceState()),
     );
-
-    protected readonly m = tuiAppearanceMode(computed(() => this.mode()));
 
     // TODO(v6): move to {@link TuiTextfieldComponent}
     protected readonly f = tuiAppearanceFocus(
@@ -97,7 +95,6 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
      */
     public readonly state = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.el);
-
     public readonly mode = computed<string | null>(() => {
         const invalid = this.computedInvalid();
 

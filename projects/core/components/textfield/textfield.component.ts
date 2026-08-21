@@ -104,7 +104,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
     protected readonly clear = inject(TUI_CLEAR_WORD);
-
     protected readonly label = contentChild(
         forwardRef(() => TuiLabel),
         {read: ElementRef},
@@ -139,7 +138,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
-
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
         contentChild(TUI_TEXTFIELD_ACCESSOR, {read: ElementRef});
 
@@ -167,7 +165,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public handleOption(option: T): void {
         this.accessor()?.setValue(option);
-        this.open.open.set(false);
+        this.open.toggle(false);
     }
 
     protected get hasLabel(): boolean {

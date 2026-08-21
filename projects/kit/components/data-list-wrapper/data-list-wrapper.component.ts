@@ -33,7 +33,6 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly datalist = viewChild(TuiDataListComponent<T>);
-
     protected readonly content = computed<PolymorpheusContent<TuiContext<T>>>(
         () =>
             this.itemContent() ?? (({$implicit}) => this.handlers.stringify()($implicit)),

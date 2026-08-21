@@ -53,13 +53,12 @@ export class TuiComboBoxDirective<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    private readonly textfield: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
     private readonly input: TuiInputDirective<T> = inject(TuiInputDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
-
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => 'options' in x && isSignal(x.options),
     );
@@ -75,9 +74,9 @@ export class TuiComboBoxDirective<T>
         if (
             !this.options().length &&
             !this.strict() &&
-            this.stringify(this.value()) !== this.input.value()
+            this.stringify(this.value()) !== this.textfield.value()
         ) {
-            this.onChange(this.input.value() || null);
+            this.onChange(this.textfield.value() || null);
         }
     });
 
@@ -89,40 +88,37 @@ export class TuiComboBoxDirective<T>
             return;
         }
 
-        const textfieldValue = this.input.value();
-
-        const selectedOption = options.find((x) =>
-            matcher(x, textfieldValue, this.handlers.stringify()),
-        );
-
+        const text = this.textfield.value();
+        const option = options.find((x) => matcher(x, text, this.handlers.stringify()));
         const value = untracked(this.value);
-        const unchanged = this.stringify(value) === textfieldValue;
-        const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
+        const unchanged = this.stringify(value) === text;
+        const fallback = this.strict() || !text ? null : text;
 
-        this.onChange(
-            selectedOption ??
-                /**
-                 * Don't clear already not-null form control value on new `this.options()` array.
-                 * Otherwise, `ComboBox` becomes incompatible with virtual scroll
-                 * (which displays large lists of elements by only rendering the items that fit on-screen).
-                 * Users can still able to patch form value with `null` on new items if they wish the such behavior.
-                 */
-                (unchanged ? value : fallback),
-        );
+        if (option == null) {
+            /**
+             * Don't clear already not-null form control value on a new `this.options()` array.
+             * Otherwise, `ComboBox` becomes incompatible with virtual scroll
+             * (which displays large lists of elements by only rendering the items that fit on-screen).
+             * Users are still able to patch form value with `null` on new items if they wish such behavior.
+             */
+            this.onChange(unchanged ? value : fallback);
+        } else if (option !== value) {
+            this.textfield['accessor']()?.setValue(option);
+        }
     });
 
     protected readonly newValueEffect = effect(() => {
         const stringified = this.stringify(this.value());
 
-        this.input.value.update((x) => stringified || x);
+        this.textfield.value.update((x) => stringified || x);
     });
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(
-            () => this.strict() && this.input.value() && this.value() === null,
+            () => this.strict() && this.textfield.value() && this.value() === null,
         );
 
-        if (!this.host.focused() && incomplete) {
+        if (!this.textfield.focused() && incomplete) {
             this.el.value = '';
             this.el.dispatchEvent(new Event('input', {bubbles: true}));
             this.toggleDropdown(false);
@@ -147,7 +143,7 @@ export class TuiComboBoxDirective<T>
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.input.value.set(this.stringify(value)));
+            untracked(() => this.textfield.value.set(this.stringify(value)));
         }
     }
 
@@ -167,8 +163,7 @@ export class TuiComboBoxDirective<T>
         const options = this.options();
 
         if (options.length === 1 && options[0]) {
-            this.setValue(options[0]);
-            this.toggleDropdown(false);
+            this.textfield.handleOption(options[0]);
         }
     }
 
