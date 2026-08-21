@@ -296,7 +296,7 @@ describe('rangeCalendarComponent', () => {
             component.ngOnInit();
             fixture.detectChanges();
 
-            expect(component.month()).toEqual(maxDate);
+            expect(component.month().monthSame(maxDate)).toBe(true);
         });
 
         it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
@@ -360,7 +360,7 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
-            const newValue = TuiDay.currentLocal().append({month: 1});
+            const newValue = TuiDay.currentLocal().append({month: 2});
 
             testComponent.value = new TuiDayRange(newValue, newValue);
             fixture.detectChanges();
@@ -369,6 +369,15 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
 
             expect(component.month().toString()).toBe(newValue.toString());
+        });
+
+        it('if value selected is visible within the current view, month does not change', () => {
+            const newValue = TuiDay.currentLocal().append({month: 1});
+
+            testComponent.value = new TuiDayRange(newValue, newValue);
+            fixture.detectChanges();
+
+            expect(component.month().toString()).toBe(defaultMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
