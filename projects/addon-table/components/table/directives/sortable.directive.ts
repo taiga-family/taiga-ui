@@ -29,12 +29,6 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>> {
         this.th.sorter.set(this.sortable() ? this.sorter() : null);
     });
 
-    protected readonly setTableSorter = effect(() => {
-        if (this.match && untracked(this.table.sorter) !== this.sorter()) {
-            this.table.updateSorter(this.sorter());
-        }
-    });
-
     public readonly sorter = computed<TuiComparator<T>>(() =>
         this.sortable() && untracked(() => this.match)
             ? untracked(this.table.sorter)

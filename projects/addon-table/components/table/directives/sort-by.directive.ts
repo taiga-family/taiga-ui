@@ -6,6 +6,7 @@ import {
     inject,
     input,
     output,
+    untracked,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 
@@ -25,6 +26,15 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
         sortKey: this.sortables().length ? this.getKey(this.table.sorter()) : null,
         sortDirection: this.table.direction(),
     }));
+
+    protected readonly setTableSorter = effect(() => {
+        const key = this.tuiSortBy();
+        const sortable = this.sortables().find((item) => item.key === key);
+
+        if (sortable && untracked(this.table.sorter) !== sortable.sorter()) {
+            this.table.sorter.set(sortable.sorter());
+        }
+    });
 
     protected readonly sortOutput = effect(() => {
         if (this.sortables().length) {
