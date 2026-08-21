@@ -4,7 +4,7 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectFormField} from '@taiga-ui/cdk/utils/di';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -94,7 +94,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
      * TODO(v6): delete
      */
     public readonly state = input<TuiInteractiveState | null>(null);
-    public readonly value = this.textfield.value;
+    public readonly value = tuiValue(this.el);
     public readonly mode = computed<string | null>(() => {
         const invalid = this.computedInvalid();
 
