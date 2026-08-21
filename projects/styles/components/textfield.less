@@ -14,6 +14,7 @@ tui-textfield:where(*&) {
     --t-side: ~'0px';
     --t-max: 0.75rem;
     --t-space: ~'clamp(0px, calc(var(--t-side) + var(--t-end)), var(--t-max))';
+    --t-space-end: ~'calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space))';
 
     position: relative;
     display: flex;
@@ -218,7 +219,7 @@ tui-textfield:where(*&) {
         border-radius: inherit;
         border-width: 0;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
-        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space));
+        padding-inline-end: var(--t-space-end);
         white-space: nowrap;
         overflow: hidden;
 
@@ -238,6 +239,14 @@ tui-textfield:where(*&) {
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
             appearance: none;
+        }
+    }
+
+    & > .t-template {
+        clip-path: inset(0 var(--t-space-end) 0 0);
+
+        [dir='rtl'] & {
+            clip-path: inset(0 0 0 var(--t-space-end));
         }
     }
 
