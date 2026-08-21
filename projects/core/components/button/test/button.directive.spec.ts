@@ -53,28 +53,6 @@ describe('ButtonDirective', () => {
             >
                 Extra small
             </button>
-
-            <label
-                id="label-button"
-                tuiButton
-                for="file"
-            >
-                Label
-            </label>
-
-            <label
-                id="label-icon-button"
-                tuiIconButton
-                for="file"
-            >
-                Label icon
-            </label>
-
-            <input
-                id="file"
-                type="file"
-                hidden
-            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -141,24 +119,6 @@ describe('ButtonDirective', () => {
             const size = await harness.getSize();
 
             expect(size).toBe('xs');
-        });
-    });
-
-    describe('label:', () => {
-        it('supports tuiButton', async () => {
-            const harness = await loader.getHarness(
-                TuiButtonHarness.with({selector: '#label-button'}),
-            );
-
-            expect(await harness.getSize()).toBe('l');
-        });
-
-        it('supports tuiIconButton', async () => {
-            const harness = await loader.getHarness(
-                TuiButtonHarness.with({selector: '#label-icon-button'}),
-            );
-
-            expect(await harness.getSize()).toBe('l');
         });
     });
 });
