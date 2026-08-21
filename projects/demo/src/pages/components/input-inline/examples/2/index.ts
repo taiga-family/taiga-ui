@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -16,19 +16,11 @@ import {TuiInputInline} from '@taiga-ui/kit';
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
 
-    protected heading = 'Page heading';
-    protected editing = false;
+    protected readonly heading = signal('Page heading');
+    protected readonly editing = signal(false);
 
-    protected toggle(): void {
-        this.editing = !this.editing;
-    }
-
-    protected onBlur(): void {
-        this.editing = false;
-        this.saveHeading(this.heading);
-    }
-
-    private saveHeading(newHeading: string): void {
-        this.alerts.open(newHeading, {label: 'New heading'}).subscribe();
+    protected save(): void {
+        this.editing.set(false);
+        this.alerts.open(this.heading, {label: 'New heading'}).subscribe();
     }
 }
