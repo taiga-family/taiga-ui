@@ -28,6 +28,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('Austria');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('Select', async ({page}) => {
@@ -36,6 +37,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('USA');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputCard', async ({page}) => {
@@ -56,9 +58,11 @@ describe('Textfield cleaner', () => {
             await page.keyboard.press('Enter');
 
             await expect(example.locator('tui-input-chip')).toHaveCount(2);
+            await expect(page.locator('tui-dropdown')).toBeVisible();
 
             await cleaner.click();
             await expect(example.locator('tui-input-chip')).toHaveCount(0);
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputColor', async ({page}) => {
@@ -77,6 +81,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputDateRange', async ({page}) => {
@@ -89,6 +94,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025 – 09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputMonth', async ({page}) => {
@@ -104,6 +110,7 @@ describe('Textfield cleaner', () => {
 
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputNumber', async ({page}) => {
