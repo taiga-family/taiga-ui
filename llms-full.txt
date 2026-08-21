@@ -23602,15 +23602,19 @@ export default class Example {
 
 **Template:**
 ```html
-<h2 class="header" [class.header_empty]="!heading" > @if (editing) { <tui-input-inline> Type a heading <input tuiAutoFocus [(ngModel)]="heading" (blur)="onBlur()" (keydown.enter.prevent)="toggle()" />
-</tui-input-inline> } @else { <span>{{ heading }}</span>
-<button appearance="icon" iconStart="@tui.pencil" size="xs" tuiIconButton type="button" class="tui-space_left-1" (click)="toggle()" > Edit heading </button> } </h2>
+<form (ngSubmit)="save()">
+<h4> @if (editing()) { <tui-input-inline>
+<span>Type a heading</span>
+<input name="heading" tuiAutoFocus [ngModelOptions]="{updateOn: 'submit'}" [(ngModel)]="heading" (blur)="editing.set(false)" (keydown.esc.prevent)="editing.set(false)" />
+</tui-input-inline>
+<button appearance="action" iconStart="@tui.check" size="xs" tuiIconButton type="submit" (pointerdown.prevent)="(0)" > Save </button> } @else { {{ heading() }} <button appearance="icon" iconStart="@tui.pencil" size="xs" tuiIconButton type="button" (click)="editing.set(true)" > Edit heading </button> } </h4>
 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos dolorem doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis repellendus tempore voluptates! </p>
 <p> Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia quam quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem! </p>
+</form>
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -23628,35 +23632,30 @@ import {TuiInputInline} from '@taiga-ui/kit';
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
 
-    protected heading = 'Page heading';
-    protected editing = false;
+    protected readonly heading = signal('Page heading');
+    protected readonly editing = signal(false);
 
-    protected toggle(): void {
-        this.editing = !this.editing;
-    }
-
-    protected onBlur(): void {
-        this.editing = false;
-        this.saveHeading(this.heading);
-    }
-
-    private saveHeading(newHeading: string): void {
-        this.alerts.open(newHeading, {label: 'New heading'}).subscribe();
+    protected save(): void {
+        this.editing.set(false);
+        this.alerts.open(this.heading, {label: 'New heading'}).subscribe();
     }
 }
 ```
 **LESS:**
 ```less
-.header {
+h4 {
     display: flex;
-    block-size: 1.5rem;
+    block-size: 2rem;
     align-items: center;
     white-space: nowrap;
-    line-height: 1.5rem;
+    font: var(--tui-typography-heading-h5);
+    line-height: 2rem;
+    gap: 0.25rem;
+    margin: 0;
+}
 
-    &_empty {
-        opacity: 0.3;
-    }
+span {
+    color: var(--tui-text-tertiary);
 }
 ```
 
