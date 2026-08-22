@@ -11,7 +11,7 @@ import {type TuiSizeXL} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Stacked'];
+    protected readonly examples = ['Sizes', 'Stacked', 'Responsive'];
 
     protected readonly valueVariants = [
         [42],
@@ -27,4 +27,5 @@ export default class Page {
     protected minLabel = '0%';
     protected maxLabel = '100%';
     protected activeItemIndex = Number.NaN;
+    protected fluid = false;
 }
