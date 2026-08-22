@@ -17,6 +17,7 @@
         <tui-doc-demo>
             <tui-arc-chart
                 class="chart"
+                [fluid]="fluid"
                 [max]="max"
                 [maxLabel]="maxLabel"
                 [minLabel]="minLabel"
@@ -34,6 +35,14 @@
                 [(value)]="max"
             >
                 maximum value
+            </tr>
+            <tr
+                name="[fluid]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="fluid"
+            >
+                fills the parent container instead of using the [size] preset
             </tr>
             <tr
                 name="[maxLabel]"

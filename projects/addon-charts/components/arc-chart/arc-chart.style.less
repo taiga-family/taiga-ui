@@ -4,6 +4,26 @@
     position: relative;
     display: block;
     flex-shrink: 0;
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
+
+    &[data-size='m'] {
+        --t-size: 9rem;
+    }
+
+    &[data-size='l'] {
+        --t-size: 11rem;
+    }
+
+    &[data-size='xl'] {
+        --t-size: 16rem;
+    }
+}
+
+:host(._fluid) {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 1;
 }
 
 .t-svg {
