@@ -12,7 +12,6 @@ import {
     NavigationStart,
     provideRouter,
     Router,
-    type UrlTree,
     withInMemoryScrolling,
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
@@ -31,7 +30,6 @@ import {
     TUI_DOC_SOURCE_CODE_TEXT,
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
-    TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
@@ -189,11 +187,6 @@ export const config: ApplicationConfig = {
                 inject(WA_IS_E2E)
                     ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                     : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-        },
-        {
-            provide: TUI_DOC_URL_STATE_HANDLER,
-            useFactory: () => (tree: UrlTree) =>
-                String(tree).replace(/^\/(?:next|v\d+)\//, ''),
         },
         {
             provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
