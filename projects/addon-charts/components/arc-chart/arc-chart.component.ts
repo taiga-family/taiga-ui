@@ -18,10 +18,7 @@ const LENGTH = Math.PI * VIEWBOX * ARC;
     templateUrl: './arc-chart.template.html',
     styleUrl: './arc-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[attr.data-size]': 'size()',
-        '[class._fluid]': 'fluid()',
-    },
+    host: {'[attr.data-size]': 'size()'},
 })
 export class TuiArcChart {
     protected readonly initialized = toSignal(
@@ -37,7 +34,6 @@ export class TuiArcChart {
 
     public readonly value = input<readonly number[]>([]);
     public readonly size = input<TuiSizeXL>('m');
-    public readonly fluid = input<boolean>(false);
     public readonly max = input(100);
     public readonly minLabel = input('0%');
     public readonly maxLabel = input('100%');

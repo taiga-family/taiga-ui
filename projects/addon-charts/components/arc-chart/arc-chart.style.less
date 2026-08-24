@@ -6,6 +6,7 @@
     flex-shrink: 0;
     inline-size: var(--t-size);
     block-size: var(--t-size);
+    aspect-ratio: 1;
 
     &[data-size='m'] {
         --t-size: 9rem;
@@ -20,12 +21,6 @@
     }
 }
 
-:host(._fluid) {
-    inline-size: 100%;
-    block-size: auto;
-    aspect-ratio: 1;
-}
-
 .t-svg {
     .fullsize(absolute, inset);
 
@@ -34,7 +29,6 @@
     stroke: currentColor;
     stroke-linecap: round;
     color: var(--tui-background-neutral-1);
-    font-size: 1rem;
     pointer-events: none;
 }
 

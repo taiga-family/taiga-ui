@@ -27,5 +27,4 @@ export default class Page {
     protected minLabel = '0%';
     protected maxLabel = '100%';
     protected activeItemIndex = Number.NaN;
-    protected fluid = false;
 }
