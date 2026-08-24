@@ -7848,6 +7848,51 @@ export default class Example {}
 }
 ```
 
+#### Label
+
+**Template:**
+```html
+&lt;label tuiButton&gt; Upload file &lt;input type=&quot;file&quot; /&gt;
+&lt;/label&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+label:has(input:focus-visible) {
+    outline-color: var(--tui-border-focus);
+}
+
+input {
+    position: absolute;
+    inset: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+```
+
 
 ### TypeScript
 
@@ -7875,6 +7920,7 @@ export default class Page {
         &#039;Options with DI&#039;,
         &#039;Vertical&#039;,
         &#039;Two labels&#039;,
+        &#039;Label&#039;,
     ];
 
     protected readonly sizes: ReadonlyArray&lt;TuiSizeL | TuiSizeXS&gt; = [&#039;xs&#039;, &#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
@@ -25972,7 +26018,7 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 })
 export default class Example {
     protected testForm = new FormGroup({
-        testValue1: new FormControl(&#039;Hello 1&#039;),
+        testValue1: new FormControl(&#039;Hello 1&#039;, {updateOn: &#039;blur&#039;}),
         testValue2: new FormControl(&#039;Hello 2&#039;),
         testValue3: new FormControl(&#039;Hello 3&#039;),
         testValue4: new FormControl(&#039;&#039;),

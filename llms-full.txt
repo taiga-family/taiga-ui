@@ -7839,6 +7839,51 @@ export default class Example {}
 }
 ```
 
+#### Label
+
+**Template:**
+```html
+<label tuiButton> Upload file <input type="file" />
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+label:has(input:focus-visible) {
+    outline-color: var(--tui-border-focus);
+}
+
+input {
+    position: absolute;
+    inset: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+```
+
 
 ### TypeScript
 
@@ -7866,6 +7911,7 @@ export default class Page {
         'Options with DI',
         'Vertical',
         'Two labels',
+        'Label',
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
@@ -25963,7 +26009,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 })
 export default class Example {
     protected testForm = new FormGroup({
-        testValue1: new FormControl('Hello 1'),
+        testValue1: new FormControl('Hello 1', {updateOn: 'blur'}),
         testValue2: new FormControl('Hello 2'),
         testValue3: new FormControl('Hello 3'),
         testValue4: new FormControl(''),
