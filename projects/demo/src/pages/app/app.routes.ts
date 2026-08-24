@@ -343,6 +343,11 @@ export const ROUTES: Routes = [
         title: 'Expand',
     }),
     route({
+        path: DemoRoute.ScrollWheel,
+        loadComponent: async () => import('../components/scroll-wheel'),
+        title: 'ScrollWheel',
+    }),
+    route({
         path: DemoRoute.ElasticContainer,
         loadComponent: async () => import('../components/elastic-container'),
         title: 'ElasticContainer',
