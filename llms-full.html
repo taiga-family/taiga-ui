@@ -872,6 +872,11 @@
 ```text
   TuiPopout, TuiPopoutComponent, TuiPopoutOptions, TuiPopoutService
 ```
+### scroll-wheel
+
+```text
+  TuiScrollWheel, TuiScrollWheelItem
+```
 ### search-results
 
 ```text
@@ -5487,6 +5492,55 @@ export default class Example {
 }
 ```
 
+#### Example 3
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show dialog &lt;/button&gt;
+&lt;ng-template let-id=&quot;id&quot; let-observer [tuiResponsiveDialogOptions]=&quot;{size: &#039;s&#039;}&quot; [(tuiResponsiveDialog)]=&quot;open&quot; &gt;
+&lt;div tuiBlockDetails&gt;
+&lt;div appearance=&quot;positive&quot; tuiAvatar=&quot;@tui.check&quot; [size]=&quot;isMobile ? &#039;xl&#039; : &#039;xxl&#039;&quot; &gt;&lt;/div&gt;
+&lt;h2 tuiTitle [id]=&quot;id&quot; &gt; Payment successful &lt;div tuiSubtitle&gt;Transfer to John W&lt;/div&gt;
+&lt;/h2&gt;
+&lt;span&gt;{{ -1050 | tuiAmount: &#039;USD&#039; }}&lt;/span&gt;
+&lt;span tuiSubtitle&gt;Today, 12:30&lt;/span&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {WA_IS_MOBILE} from &#039;@ng-web-apis/platform&#039;;
+import {TuiAmountPipe} from &#039;@taiga-ui/addon-commerce&#039;;
+import {TuiResponsiveDialog} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+import {TuiBlockDetails} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiBlockDetails,
+        TuiButton,
+        TuiResponsiveDialog,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected open = false;
+}
+```
+
 
 ### TypeScript
 
@@ -5501,7 +5555,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    public readonly examples = [&#039;Full&#039;, &#039;Customization&#039;];
+    public readonly examples = [&#039;Full&#039;, &#039;Customization&#039;, &#039;Dialog&#039;];
 }
 ```
 
@@ -5912,6 +5966,7 @@ A non-modal draggable sheet
 | Property | Type | Description |
 |----------|-----|----------|
 | [stops] | `readonly string[]` | scroll snap stops |
+| [bar] | `boolean` | shows/hides drag bar at the top of the sheet |
 
 ### Usage Examples
 
@@ -6424,7 +6479,7 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
-Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button and a tags. When used as tuiIconButton don&#039;t forget to still put text label within the tag for accessibility.
+Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to button , a and label tags. When used as tuiIconButton don&#039;t forget to still put text label within the tag for accessibility.
 
 ### Example
 
@@ -6715,6 +6770,50 @@ export default class Example {}
 }
 ```
 
+#### Label
+
+**Template:**
+```html
+&lt;label tuiButton&gt; Upload file &lt;input type=&quot;file&quot; /&gt;
+&lt;/label&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+label:has(input:focus-visible) {
+    outline-color: var(--tui-border-focus);
+}
+
+input {
+    position: absolute;
+    inset: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+```
+
 
 ### TypeScript
 
@@ -6743,6 +6842,7 @@ export default class Page {
         &#039;Vertical&#039;,
         &#039;Two labels&#039;,
         &#039;Link&#039;,
+        &#039;Label&#039;,
     ];
 
     protected readonly sizes: ReadonlyArray&lt;TuiSizeL | TuiSizeXS&gt; = [&#039;xs&#039;, &#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
@@ -8281,7 +8381,7 @@ Component for choosing date range in calendar
 ### Example
 
 ```html
-&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
+&lt;tui-calendar-range [defaultViewedMonth]=&quot;defaultViewedMonth&quot; [disabledItemHandler]=&quot;disabledItemHandler&quot; [items]=&quot;items&quot; [markerHandler]=&quot;markerHandler&quot; [max]=&quot;max&quot; [maxLength]=&quot;maxLength&quot; [min]=&quot;min&quot; [minLength]=&quot;minLength&quot; [(month)]=&quot;month&quot; (valueChange)=&quot;documentationPropertyRangeChange.emitEvent($event)&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -8294,6 +8394,7 @@ Component for choosing date range in calendar
 | [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
 | [min] | `TuiDay | null` | min date |
 | [max] | `TuiDay | null` | max date |
+| [(month)] | `TuiMonth` | currently viewed month, also updated when a year is picked |
 | [minLength] | `TuiDayLike | null` | minimal length of range |
 | [maxLength] | `TuiDayLike | null` | maximal length of range |
 
@@ -8594,6 +8695,7 @@ export default class Example {
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
     protected items = this.itemsVariants[0]!;
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0]!;
+    protected month = this.defaultViewedMonthVariants[0]!;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
     protected readonly routes = DemoRoute;
@@ -12251,6 +12353,46 @@ export default class Example {
 }
 ```
 
+#### Override option handling
+
+**Template:**
+```html
+&lt;tui-textfield tuiChevron&gt;
+&lt;input customComboBox [(ngModel)]=&quot;value&quot; (pick)=&quot;alerts.open($event).subscribe()&quot; /&gt;
+&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;items | tuiFilterByInput&quot; /&gt;
+&lt;/tui-textfield&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiFilterByInputPipe, TuiNotificationService} from &#039;@taiga-ui/core&#039;;
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from &#039;@taiga-ui/kit&#039;;
+
+import {CustomComboBox} from &#039;./custom&#039;;
+
+@Component({
+    imports: [
+        CustomComboBox,
+        FormsModule,
+        TuiChevron,
+        TuiComboBox,
+        TuiDataListWrapper,
+        TuiFilterByInputPipe,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly alerts = inject(TuiNotificationService);
+    protected readonly items = inject&lt;string[]&gt;(&#039;Pythons&#039; as any);
+    protected value: string | null = null;
+}
+```
+
 #### Non-strict mode
 
 **Template:**
@@ -12846,6 +12988,7 @@ export default class PageComponent extends Array {
         &#039;Virtual scroll&#039;,
         &#039;With DropdownMobile&#039;,
         &#039;Override option component&#039;,
+        &#039;Override option handling&#039;,
     ];
 
     protected readonly [5] = {
@@ -12860,6 +13003,10 @@ export default class PageComponent extends Array {
 
     protected readonly [12] = {
         &#039;option.ts&#039;: import(&#039;./examples/12/option.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
+    };
+
+    protected readonly [13] = {
+        &#039;custom.ts&#039;: import(&#039;./examples/13/custom.ts?raw&#039;, {with: {loader: &#039;text&#039;}}),
     };
 
     protected readonly control = new FormControl&lt;Country | null&gt;(null);
@@ -21996,7 +22143,7 @@ InputDateRange = Textfield + CalendarRange + ❤️
 ```html
 &lt;tui-textfield [tuiTextfieldCleaner]=&quot;false&quot;&gt;
 &lt;label tuiLabel&gt;Choose range&lt;/label&gt;
-&lt;input tuiInputDateRange [(ngModel)]=&quot;value&quot; /&gt;
+&lt;input tuiInputDateRange [max]=&quot;max&quot; [(ngModel)]=&quot;value&quot; /&gt;
 &lt;tui-calendar-range *tuiDropdown /&gt;
 &lt;/tui-textfield&gt;
 ```
@@ -22016,6 +22163,7 @@ import {TuiInputDateRange} from &#039;@taiga-ui/kit&#039;;
     changeDetection,
 })
 export default class Example {
+    protected readonly max = new TuiDay(2017, 0, 30);
     protected value = new TuiDayRange(new TuiDay(2017, 0, 15), new TuiDay(2017, 0, 20));
 }
 ```
@@ -23559,15 +23707,19 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;h2 class=&quot;header&quot; [class.header_empty]=&quot;!heading&quot; &gt; @if (editing) { &lt;tui-input-inline&gt; Type a heading &lt;input tuiAutoFocus [(ngModel)]=&quot;heading&quot; (blur)=&quot;onBlur()&quot; (keydown.enter.prevent)=&quot;toggle()&quot; /&gt;
-&lt;/tui-input-inline&gt; } @else { &lt;span&gt;{{ heading }}&lt;/span&gt;
-&lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.pencil&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; class=&quot;tui-space_left-1&quot; (click)=&quot;toggle()&quot; &gt; Edit heading &lt;/button&gt; } &lt;/h2&gt;
+&lt;form (ngSubmit)=&quot;save()&quot;&gt;
+&lt;h4&gt; @if (editing()) { &lt;tui-input-inline&gt;
+&lt;span&gt;Type a heading&lt;/span&gt;
+&lt;input name=&quot;heading&quot; tuiAutoFocus [ngModelOptions]=&quot;{updateOn: &#039;submit&#039;}&quot; [(ngModel)]=&quot;heading&quot; (blur)=&quot;editing.set(false)&quot; (keydown.esc.prevent)=&quot;editing.set(false)&quot; /&gt;
+&lt;/tui-input-inline&gt;
+&lt;button appearance=&quot;action&quot; iconStart=&quot;@tui.check&quot; size=&quot;xs&quot; tuiIconButton type=&quot;submit&quot; (pointerdown.prevent)=&quot;(0)&quot; &gt; Save &lt;/button&gt; } @else { {{ heading() }} &lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.pencil&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;editing.set(true)&quot; &gt; Edit heading &lt;/button&gt; } &lt;/h4&gt;
 &lt;p&gt; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa exercitationem, sed? Deserunt dignissimos dolorem doloribus officiis quae repellat rerum? Accusantium fuga hic nam necessitatibus non officiis perferendis repellendus tempore voluptates! &lt;/p&gt;
 &lt;p&gt; Accusantium adipisci blanditiis esse est et eum fugit id illum, in iste itaque iusto laborum nostrum officia quam quasi quos repellat temporibus tenetur, ullam? Blanditiis fuga iusto maiores omnis quidem! &lt;/p&gt;
+&lt;/form&gt;
 ```
 **TypeScript:**
 ```ts
-import {Component, inject} from &#039;@angular/core&#039;;
+import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
@@ -23585,35 +23737,30 @@ import {TuiInputInline} from &#039;@taiga-ui/kit&#039;;
 export default class Example {
     private readonly alerts = inject(TuiNotificationService);
 
-    protected heading = &#039;Page heading&#039;;
-    protected editing = false;
+    protected readonly heading = signal(&#039;Page heading&#039;);
+    protected readonly editing = signal(false);
 
-    protected toggle(): void {
-        this.editing = !this.editing;
-    }
-
-    protected onBlur(): void {
-        this.editing = false;
-        this.saveHeading(this.heading);
-    }
-
-    private saveHeading(newHeading: string): void {
-        this.alerts.open(newHeading, {label: &#039;New heading&#039;}).subscribe();
+    protected save(): void {
+        this.editing.set(false);
+        this.alerts.open(this.heading, {label: &#039;New heading&#039;}).subscribe();
     }
 }
 ```
 **LESS:**
 ```less
-.header {
+h4 {
     display: flex;
-    block-size: 1.5rem;
+    block-size: 2rem;
     align-items: center;
     white-space: nowrap;
-    line-height: 1.5rem;
+    font: var(--tui-typography-heading-h5);
+    line-height: 2rem;
+    gap: 0.25rem;
+    margin: 0;
+}
 
-    &amp;_empty {
-        opacity: 0.3;
-    }
+span {
+    color: var(--tui-text-tertiary);
 }
 ```
 
@@ -37850,6 +37997,160 @@ export default class Page {
 ```
 
 ---
+# components/ScrollWheel
+- **Package**: `EXPERIMENTAL`
+- **Type**: components
+Work in progress, do not use! There are known issues in Safari, as always A component for spinning wheels or other infinitely scrollable containers, not to be confused with virtual scrolling which typically has ends.
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [buffer] | `number` | Number of items rendered around current item (10 by default) |
+| [(index)] | `number` | Topmost visible item index |
+
+### Usage Examples
+
+#### Example 1
+
+**Template:**
+```html
+&lt;tui-scroll-wheel [style.block-size.rem]=&quot;20&quot;&gt;
+&lt;div *tuiItem=&quot;let index&quot; [style.background]=&quot;getHeight(index).toString() | tuiAutoColor&quot; [style.block-size.px]=&quot;getHeight(index)&quot; &gt; {{ index }} &lt;/div&gt;
+&lt;/tui-scroll-wheel&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiItem} from &#039;@taiga-ui/cdk&#039;;
+import {TuiScrollWheel} from &#039;@taiga-ui/experimental&#039;;
+import {TuiAutoColorPipe} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiAutoColorPipe, TuiItem, TuiScrollWheel],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected getHeight(seed: number): number {
+        let t = seed + 0x6d2b79f5;
+
+        t = Math.imul(t ^ (t &gt;&gt;&gt; 15), t | 1);
+        t ^= t + Math.imul(t ^ (t &gt;&gt;&gt; 7), t | 61);
+
+        return Math.floor((((t ^ (t &gt;&gt;&gt; 14)) &gt;&gt;&gt; 0) / 4294967296) * 75) + 25;
+    }
+}
+```
+
+#### Example 2
+
+**Template:**
+```html
+&lt;tui-scroll-wheel waIntersectionThreshold=&quot;0.5&quot; [buffer]=&quot;50&quot; [(index)]=&quot;hours&quot; &gt;
+&lt;ng-template let-index&gt;
+&lt;div [class._current]=&quot;index - 2 === hours()&quot;&gt;{{ getHours(index) }}&lt;/div&gt;
+&lt;/ng-template&gt;
+&lt;/tui-scroll-wheel&gt; : &lt;tui-scroll-wheel waIntersectionThreshold=&quot;0.5&quot; [buffer]=&quot;50&quot; [(index)]=&quot;minutes&quot; &gt;
+&lt;ng-template let-index&gt;
+&lt;div [class._current]=&quot;index - 2 === minutes()&quot;&gt;{{ getMinutes(index) }}&lt;/div&gt;
+&lt;/ng-template&gt;
+&lt;/tui-scroll-wheel&gt;
+&lt;p&gt;
+&lt;output&gt;Selected: {{ getHours(hours() + 2) }}:{{ getMinutes(minutes() + 2) }}&lt;/output&gt;
+&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiScrollWheel} from &#039;@taiga-ui/experimental&#039;;
+
+@Component({
+    imports: [TuiScrollWheel],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly hours = signal(-2);
+    protected readonly minutes = signal(-2);
+
+    protected getHours(index: number): string {
+        return (((index % 24) + 24) % 24).toString().padStart(2, &#039;0&#039;);
+    }
+
+    protected getMinutes(index: number): string {
+        return (((index % 60) + 60) % 60).toString().padStart(2, &#039;0&#039;);
+    }
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+:host {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    font: var(--tui-typography-heading-h6);
+    place-items: center;
+}
+
+tui-scroll-wheel {
+    block-size: 15rem;
+    mask-image: linear-gradient(transparent, black 7.5rem, transparent);
+    justify-self: start;
+
+    &amp;:first-child {
+        justify-self: end;
+    }
+}
+
+div {
+    .transition(color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 3rem;
+    font: var(--tui-typography-heading-h6);
+    font-variant: tabular-nums;
+    scroll-snap-align: start;
+    color: var(--tui-text-tertiary);
+
+    &amp;._current {
+        color: var(--tui-text-primary);
+    }
+}
+
+p {
+    grid-column: 1 / -1;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiDemo, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {}
+```
+
+---
 # components/Scrollbar
 - **Package**: `CORE`
 - **Type**: components
@@ -39565,8 +39866,6 @@ A mobile draggable sheet dialog
 
 ```html
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;showDialog(sheetTemplate)&quot; &gt; Click &lt;/button&gt;
-&lt;button tuiButton type=&quot;button&quot; class=&quot;tui-space_left-4&quot; (longtap)=&quot;showDialog(sheetTemplate)&quot; &gt; Long tap &lt;/button&gt;
-&lt;button tuiButton type=&quot;button&quot; (click)=&quot;navigate()&quot; &gt; Navigate to Examples &lt;/button&gt;
 &lt;ng-template #sheetTemplate let-completeWith=&quot;completeWith&quot; let-observer &gt;
 &lt;p [style.flex-grow]=&quot;1&quot;&gt; Karl Gambolputty de von Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von. &lt;/p&gt;
 &lt;footer tuiFloatingContainer&gt;
@@ -40197,7 +40496,6 @@ export default class Example {
 
 ```ts
 import {Component, inject, type TemplateRef} from &#039;@angular/core&#039;;
-import {ActivatedRoute, Router} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {
@@ -40215,8 +40513,6 @@ import {switchMap} from &#039;rxjs&#039;;
     changeDetection,
 })
 export default class Page {
-    private readonly router = inject(Router);
-    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiNotificationService);
 
@@ -40261,10 +40557,6 @@ export default class Page {
             })
             .pipe(switchMap((response) =&gt; this.alerts.open(String(response))))
             .subscribe();
-    }
-
-    protected navigate(): void {
-        void this.router.navigate([&#039;./&#039;], {relativeTo: this.route});
     }
 }
 ```
@@ -43610,6 +43902,18 @@ th {
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td tuiTd&gt;
+&lt;tui-textfield&gt;
+&lt;input placeholder=&quot;Number&quot; tuiInputNumber [(ngModel)]=&quot;number&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/td&gt;
+&lt;td tuiTd&gt;
+&lt;tui-textfield&gt;
+&lt;input placeholder=&quot;Number with step&quot; tuiInputNumber [step]=&quot;10&quot; [(ngModel)]=&quot;numberStep&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td tuiTd&gt;
 &lt;tui-textfield multi&gt;
 &lt;input placeholder=&quot;InputChip&quot; tuiInputChip [(ngModel)]=&quot;chip&quot; /&gt;
 &lt;/tui-textfield&gt;
@@ -43679,6 +43983,7 @@ import {
     TuiDataListWrapper,
     TuiInputChip,
     TuiInputDateMulti,
+    TuiInputNumber,
     TuiInputRange,
     TuiInputSlider,
     TuiMultiSelect,
@@ -43695,6 +44000,7 @@ import {
         TuiInputCardGroup,
         TuiInputChip,
         TuiInputDateMulti,
+        TuiInputNumber,
         TuiInputRange,
         TuiInputSlider,
         TuiMultiSelect,
@@ -43708,6 +44014,8 @@ import {
 })
 export default class Example {
     protected textarea = &#039;&#039;;
+    protected number = null;
+    protected numberStep = null;
     protected input = &#039;&#039;;
     protected chip = [];
     protected multiselect = [];
@@ -46889,6 +47197,115 @@ export default class Example {
 }
 ```
 
+#### Table
+
+**Template:**
+```html
+&lt;div role=&quot;table&quot; class=&quot;table&quot; &gt;
+&lt;div role=&quot;row&quot; class=&quot;header&quot; &gt;
+&lt;span aria-label=&quot;Reorder&quot; role=&quot;columnheader&quot; &gt;&lt;/span&gt;
+&lt;span role=&quot;columnheader&quot;&gt;Name&lt;/span&gt;
+&lt;span role=&quot;columnheader&quot;&gt;Role&lt;/span&gt;
+&lt;span role=&quot;columnheader&quot;&gt;Email&lt;/span&gt;
+&lt;/div&gt;
+&lt;tui-tiles role=&quot;rowgroup&quot; class=&quot;tiles&quot; [(order)]=&quot;order&quot; &gt; @for (item of items; track item) { &lt;tui-tile [style.order]=&quot;order.get($index)&quot;&gt;
+&lt;div role=&quot;row&quot; class=&quot;row&quot; &gt;
+&lt;span role=&quot;cell&quot;&gt;
+&lt;tui-icon icon=&quot;@tui.grip-vertical&quot; tuiTileHandle class=&quot;handle&quot; /&gt;
+&lt;/span&gt;
+&lt;span role=&quot;cell&quot; class=&quot;cell&quot; &gt; {{ item.name }} &lt;/span&gt;
+&lt;span role=&quot;cell&quot; class=&quot;cell&quot; &gt; {{ item.role }} &lt;/span&gt;
+&lt;span role=&quot;cell&quot; class=&quot;cell&quot; &gt; {{ item.email }} &lt;/span&gt;
+&lt;/div&gt;
+&lt;/tui-tile&gt; } &lt;/tui-tiles&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiTiles} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [TuiIcon, TuiTiles],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items = [
+        {name: &#039;John Cleese&#039;, role: &#039;Actor&#039;, email: &#039;john.cleese@example.com&#039;},
+        {name: &#039;Eric Idle&#039;, role: &#039;Actor&#039;, email: &#039;eric.idle@example.com&#039;},
+        {name: &#039;Graham Chapman&#039;, role: &#039;Actor&#039;, email: &#039;graham.chapman@example.com&#039;},
+        {name: &#039;Michael Palin&#039;, role: &#039;Actor&#039;, email: &#039;michael.palin@example.com&#039;},
+    ];
+
+    protected order = new Map();
+}
+```
+**LESS:**
+```less
+@import &#039;@taiga-ui/styles/utils&#039;;
+
+.table {
+    inline-size: 100%;
+    min-inline-size: 35rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: var(--tui-radius-l);
+    overflow: hidden;
+}
+
+.header,
+.row {
+    display: grid;
+    grid-template-columns: 2rem minmax(8rem, 1fr) minmax(8rem, 1fr) minmax(12rem, 1.5fr);
+    min-block-size: var(--tui-height-m);
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    column-gap: 0.75rem;
+}
+
+.header {
+    color: var(--tui-text-secondary);
+    background: var(--tui-background-neutral-1);
+}
+
+.tiles {
+    grid-auto-rows: minmax(var(--tui-height-m), auto);
+}
+
+.row {
+    .transition(box-shadow);
+
+    block-size: 100%;
+    background: var(--tui-background-base);
+    border-block-start: 1px solid var(--tui-border-normal);
+}
+
+.cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.handle {
+    color: var(--tui-text-secondary);
+    cursor: grab;
+
+    tui-tile._dragged &amp; {
+        cursor: grabbing;
+    }
+}
+
+tui-tile._dragged .row {
+    box-shadow: var(--tui-shadow-small-hover);
+}
+```
+
 
 ### TypeScript
 
@@ -46917,7 +47334,7 @@ export default class Page {
         {id: 3, name: &#039;Graham Chapman&#039;},
     ];
 
-    protected readonly examples = [&#039;Basic&#039;, &#039;Vertical&#039;, &#039;Nested tiles&#039;];
+    protected readonly examples = [&#039;Basic&#039;, &#039;Vertical&#039;, &#039;Nested tiles&#039;, &#039;Table&#039;];
 }
 ```
 

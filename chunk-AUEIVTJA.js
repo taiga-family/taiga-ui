@@ -1,2 +1,0 @@
-import{o as m}from"./chunk-MDCBILB3.js";import"./chunk-7QMPYLKL.js";import{Pc as c,Ub as i,sc as a,tc as s,za as n}from"./chunk-OWBAHN7X.js";import"./chunk-LQ6M4NCU.js";var e=class e{constructor(){this.isMobile=n(m)}};e.\u0275fac=function(t){return new(t||e)},e.\u0275cmp=i({type:e,selectors:[["ng-component"]],decls:2,vars:0,template:function(t,r){t&1&&(a(0,"p"),c(1,` A token with a factory. It takes WA_USER_AGENT token and parses it with a complex Regex to detect users with mobile devices
-`),s())},encapsulation:2,changeDetection:0});var o=e;export{o as default};
