@@ -48,6 +48,12 @@
         }
     }
 
+    // grid stretches direct children only; stretch wrapped content too
+    > tui-expand > .t-wrapper > *,
+    > tui-elastic-container > .t-wrapper > * {
+        inline-size: 100%;
+    }
+
     &::before {
         .fullsize(absolute, inset);
         .transition(background);
