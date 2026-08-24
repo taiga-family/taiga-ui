@@ -29,7 +29,8 @@ class TuiButtonStyles {}
 
 @Directive({
     standalone: true,
-    selector: 'a[tuiButton],button[tuiButton],a[tuiIconButton],button[tuiIconButton]',
+    selector:
+        'a[tuiButton],button[tuiButton],label[tuiButton],a[tuiIconButton],button[tuiIconButton],label[tuiIconButton]',
     providers: [tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
