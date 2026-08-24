@@ -39,9 +39,9 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
     ],
     host: {
         'data-tui-version': TUI_VERSION,
-        '(pointerleave.zoneless)': 'rearrange()',
         '(animationcancel.self)': 'refresh()',
         '(animationstart.self)': 'refresh()',
+        '(pointerleave.zoneless)': 'rearrange()',
     },
 })
 export class TuiTilesComponent {
