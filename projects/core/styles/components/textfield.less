@@ -10,6 +10,7 @@
     --t-label-font: var(--tui-font-text-s);
     --t-end: ~'0rem';
     --t-start: ~'0rem';
+    --t-space-end: ~'calc(var(--t-end, 0rem) + var(--t-side) + var(--t-padding))';
 
     position: relative;
     display: flex;
@@ -270,7 +271,7 @@
         border-width: 0;
         // StackBlitz changes "0rem" to "0" breaking calc
         padding-inline-start: calc(var(--t-start, ~'0rem') + var(--t-padding));
-        padding-inline-end: calc(var(--t-end, ~'0rem') + var(--t-side) + var(--t-padding));
+        padding-inline-end: var(--t-space-end);
     }
 
     & > .t-template {
@@ -278,6 +279,9 @@
         align-items: center;
         border-radius: inherit;
         color: var(--tui-text-primary);
+        overflow: hidden;
+        padding-inline-end: 0;
+        border-inline-end: var(--t-space-end) solid transparent;
     }
 
     &._with-template input:first-of-type,
