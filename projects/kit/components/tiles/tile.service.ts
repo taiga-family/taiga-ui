@@ -40,6 +40,7 @@ export class TuiTileService implements OnDestroy {
 
     public init(element?: HTMLElement): void {
         if (this.isBrowser && element) {
+            this.el.style.removeProperty('position');
             this.sub.add(
                 this.position$.subscribe((offset) => {
                     this.setPosition(element, offset);

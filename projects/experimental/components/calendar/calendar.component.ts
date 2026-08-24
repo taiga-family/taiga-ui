@@ -130,10 +130,6 @@ export class TuiCalendarComponent<
     public readonly contentYear = input<PolymorpheusContent<TuiContext<number>>>();
     public readonly showAdjacent = input(this.options.showAdjacent);
 
-    protected getMonth(index: number): TuiMonth {
-        return new TuiMonth(Math.floor(index / 12), index % 12);
-    }
-
     protected getItems(initial: number): readonly number[] {
         return Array.from({length: 12}, (_, index) => initial + index);
     }

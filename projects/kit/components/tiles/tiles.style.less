@@ -21,8 +21,8 @@ tui-tiles:where(*&) {
 
 tui-tile:where(*&) {
     & > .t-wrapper {
-        // don't use ".fullsize(absolute)" because it will break transition
         position: absolute;
+        inset: 0;
         z-index: 0;
         border-radius: inherit;
     }

@@ -70,6 +70,8 @@ tui-textfield[multi][multi]:where(*&) {
         }
 
         > .t-input {
+            .transition(block-size, @tui-duration-fast);
+
             position: relative;
             display: flex;
             align-items: center;
@@ -106,7 +108,8 @@ tui-textfield[multi][multi]:where(*&) {
         &[data-size='l'] {
             --t-vertical: 0.5625rem;
 
-            tui-textfield-item:first-of-type {
+            tui-textfield-item:first-of-type,
+            label + .t-input {
                 margin-block-start: 1.125rem;
             }
         }
@@ -114,7 +117,8 @@ tui-textfield[multi][multi]:where(*&) {
         &[data-size='m'] {
             --t-vertical: 0.4375rem;
 
-            tui-textfield-item:first-of-type {
+            tui-textfield-item:first-of-type,
+            label + .t-input {
                 margin-block-start: 0.875rem;
             }
         }
@@ -197,10 +201,6 @@ tui-textfield[multi][multi]:where(*&) {
 
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
-    }
-
-    input::placeholder {
-        .transition(color);
     }
 
     select {
