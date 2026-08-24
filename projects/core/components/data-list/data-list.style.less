@@ -76,6 +76,10 @@ tui-data-list:where(*&) {
     > .t-empty {
         pointer-events: none;
         color: var(--tui-text-tertiary);
+
+        > * {
+            pointer-events: auto;
+        }
     }
 
     hr {

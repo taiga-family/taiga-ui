@@ -18,6 +18,24 @@ test.describe('DataList', () => {
             .toHaveScreenshot('01-data-list.png');
     });
 
+    test('Interactive empty content', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DataList);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#custom-list');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('[tuiSelectLike]').click();
+
+        const dropdown = page.locator('tui-dropdown');
+        const search = dropdown.getByRole('textbox', {name: 'Search categories'});
+
+        await search.fill('Unknown');
+        await dropdown.getByRole('button', {name: 'Clear search'}).click();
+
+        await expect(search).toHaveValue('');
+    });
+
     test('Links', async ({page}) => {
         await tuiGoto(page, DemoRoute.DataList);
         const documentationPagePO = new TuiDocumentationPagePO(page);
