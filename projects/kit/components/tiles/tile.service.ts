@@ -109,5 +109,6 @@ export class TuiTileService implements OnDestroy {
 
         style.top = tuiPx(rect.top - host.top + this.el.offsetTop);
         style.left = tuiPx(rect.left - host.left + this.el.offsetLeft);
+        style.right = 'auto';
     }
 }
