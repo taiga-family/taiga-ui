@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.96.0](https://github.com/taiga-family/taiga-ui/compare/v4.95.0...v4.96.0) (2026-08-24)
+
+### 🐞 Bug Fixes
+
+- **core:** `DropdownHover` rollback broken changes ([#14783](https://github.com/taiga-family/taiga-ui/issues/14783))
+  ([8fbb3a2](https://github.com/taiga-family/taiga-ui/commit/8fbb3a234cd0b3ba56421f13dbb79008f709937f))
+- **kit:** `InputInline` fix for updateOn blur/submit ([#14794](https://github.com/taiga-family/taiga-ui/issues/14794))
+  ([7e867b3](https://github.com/taiga-family/taiga-ui/commit/7e867b303aeb2ff793a99da8e23103aea8b524c4))
+- **kit:** textfield content overflow fix v4 ([#14799](https://github.com/taiga-family/taiga-ui/issues/14799))
+  ([ef1a189](https://github.com/taiga-family/taiga-ui/commit/ef1a189b2068d961a9529145f8f93b86b2fa0013))
+
+### 🚀 Features
+
+- **core:** support labels for buttons ([#14805](https://github.com/taiga-family/taiga-ui/issues/14805))
+  ([fbe88f3](https://github.com/taiga-family/taiga-ui/commit/fbe88f3c1e455182f85d44050f61489cb6b48bde))
+
 ## [4.95.0](https://github.com/taiga-family/taiga-ui/compare/v4.94.0...v4.95.0) (2026-08-17)
 
 ### 🚀 Features
