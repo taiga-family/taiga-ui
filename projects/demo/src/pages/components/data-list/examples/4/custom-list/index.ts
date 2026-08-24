@@ -9,6 +9,7 @@ import {
     TuiInputDirective,
     tuiIsEditingKey,
     tuiItemsHandlersProvider,
+    TuiLink,
     TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiMultiSelect, TuiSelectOption} from '@taiga-ui/kit';
@@ -26,6 +27,7 @@ interface Items<T> {
         TuiDataList,
         TuiFilterPipe,
         TuiInput,
+        TuiLink,
         TuiMultiSelect,
     ],
     templateUrl: './index.html',
