@@ -78,7 +78,6 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
     protected readonly items = computed<readonly T[]>(() => this.cva()?.value() ?? []);
-
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
             filter(() => this.rows() === 1),

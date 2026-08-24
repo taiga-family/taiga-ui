@@ -72,7 +72,6 @@ export class TuiDataListComponent<T>
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
-
     private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
         forwardRef(() => TuiOptionWithValue),
         {descendants: true},
@@ -83,7 +82,6 @@ export class TuiDataListComponent<T>
 
     public readonly emptyContent = input<PolymorpheusContent>();
     public readonly size = input(tuiInjectDataListSize());
-
     public readonly options = computed(() =>
         this.optionsQuery()
             .map(({value}) => value())
