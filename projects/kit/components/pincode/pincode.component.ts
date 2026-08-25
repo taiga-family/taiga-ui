@@ -41,7 +41,6 @@ const ANIMATION = {
 })
 export class TuiPincodeComponent extends TuiControl<string> {
     private readonly textfield = inject(TuiTextfieldComponent);
-
     private phase = 0;
     private bounced = false;
 
