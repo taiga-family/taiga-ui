@@ -1103,6 +1103,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Meter',
+        keywords: 'progress, bar, value',
+        route: DemoRoute.Meter,
+    },
+    {
+        section: 'Components',
         title: 'Comment',
         keywords: 'comment, tip, коммент',
         route: DemoRoute.Comment,
