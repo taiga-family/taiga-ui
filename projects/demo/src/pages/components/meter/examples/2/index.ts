@@ -6,7 +6,7 @@ import {TuiBadge, TuiMeter} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiMeter, TuiTitle, TuiHeader, TuiBadge],
+    imports: [TuiBadge, TuiHeader, TuiMeter, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
