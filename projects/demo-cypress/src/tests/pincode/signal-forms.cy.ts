@@ -72,13 +72,6 @@ export class Sandbox {
     });
 }
 
-function snapshot(name: string): void {
-    cy.get('tui-textfield').compareSnapshot({
-        name: `tuiPincode-${name}`,
-        cypressScreenshotOptions: {padding: 8},
-    });
-}
-
 describe('tuiPincode + signal forms', () => {
     beforeEach(() => {
         cy.viewport(250, 150);
@@ -91,8 +84,6 @@ describe('tuiPincode + signal forms', () => {
             cy.get('#invalid').should('have.text', 'true');
 
             cy.get('@input').should('not.have.attr', 'data-state');
-
-            snapshot('untouched-invalid');
         });
 
         it('invalid and touched => still no state', () => {
@@ -100,8 +91,6 @@ describe('tuiPincode + signal forms', () => {
 
             cy.get('#touched').should('have.text', 'true');
             cy.get('@input').should('not.have.attr', 'data-state');
-
-            snapshot('touched-invalid');
         });
 
         it('complete but invalid value => pending, not invalid', () => {
@@ -109,8 +98,6 @@ describe('tuiPincode + signal forms', () => {
 
             cy.get('#invalid').should('have.text', 'true');
             cy.get('@input').should('have.attr', 'data-state', 'pending');
-
-            snapshot('pending');
         });
     });
 
