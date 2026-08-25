@@ -11,7 +11,7 @@ import {tuiFormatCurrency} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
+import {tuiFormatNumber} from '@taiga-ui/kit/utils';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
 import {type TuiAmountSign} from './amount.types';
