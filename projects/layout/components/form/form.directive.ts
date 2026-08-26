@@ -29,7 +29,7 @@ const HEADER_SIZE = {s: 'body-l', m: 'h6', l: 'h5'} as const;
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './form.styles.less';
+            @import '@taiga-ui/styles/components/form.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
