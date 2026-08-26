@@ -30,6 +30,7 @@ export const DemoRoute = {
     Chip: '/components/chip',
     ItemGroup: '/components/item-group',
     Message: '/components/message',
+    Meter: '/components/meter',
     Title: '/components/title',
     CardMedium: '/layout/card-medium',
     CardLarge: '/layout/card-large',

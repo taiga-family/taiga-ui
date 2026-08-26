@@ -1,0 +1,67 @@
+@import '../utils.less';
+
+/**
+ * @name Meter
+ * @selector meter[tuiMeter]
+ *
+ * @description
+ * A native styled meter element. In modern browsers uses attr, otherwise
+ * you need to define same attributes as --t- prefixed CSS variables
+ *
+ * @example
+ * <meter tuiMeter value="0.5"></meter>
+ *
+ * @see-also
+ * ProgressBar
+ */
+[tuiMeter]:where(*&) {
+    --t-min: attr(min type(<number>), 0);
+    --t-max: attr(max type(<number>), 1);
+    --t-low: attr(low type(<number>), var(--t-min));
+    --t-high: attr(high type(<number>), var(--t-max));
+    --t-optimum: attr(optimum type(<number>), calc(var(--t-max) - var(--t-min) / 2));
+    --t-value: attr(value type(<number>), 0);
+    --t-a: calc((var(--t-low) - var(--t-min)) / (var(--t-max) - var(--t-min)));
+    --t-b: calc((var(--t-high) - var(--t-min)) / (var(--t-max) - var(--t-min)));
+    --t-c: calc((var(--t-optimum) - var(--t-min)) / (var(--t-max) - var(--t-min)));
+    --t-1: min(var(--t-a), var(--t-b), var(--t-c));
+    --t-2: min(max(var(--t-a), var(--t-b)), max(var(--t-b), var(--t-c)), max(var(--t-a), var(--t-c)));
+    --t-3: max(var(--t-a), var(--t-b), var(--t-c));
+    --t-dir: ~'clamp(-1, (var(--t-high) - var(--t-optimum)) * 9999, 1)';
+    --t-center: calc((var(--t-1) + var(--t-3)) / 2);
+    --t-delta: calc((var(--t-3) - var(--t-1)));
+    --t-start: calc((var(--t-center) - (var(--t-delta) * var(--t-dir) / 2)));
+    --t-end: calc((var(--t-center) + (var(--t-delta) * var(--t-dir) / 2)));
+    --t-good: calc(100% * (((var(--t-start)) - 0.5) * var(--t-dir) + 0.5));
+    --t-mid: calc(100% * (((var(--t-2)) - 0.5) * var(--t-dir) + 0.5));
+    --t-bad: calc(100% * (((var(--t-end)) - 0.5) * var(--t-dir) + 0.5));
+
+    position: relative;
+    margin: 0;
+    block-size: 1rem;
+    inline-size: 100%;
+    border-radius: 1rem;
+    background: linear-gradient(
+        calc(90deg * var(--t-dir)),
+        var(--tui-status-positive) var(--t-good),
+        var(--tui-status-warning) var(--t-mid),
+        var(--tui-status-negative) var(--t-bad)
+    );
+    transform: scaleX(var(--tui-inline));
+    mask-clip: no-clip;
+    mask-image: radial-gradient(
+        circle at calc(0.5rem + (100% - 1rem) * (var(--t-value) - var(--t-min)) / (var(--t-max) - var(--t-min))) 0.5rem,
+        black calc(0.5rem - 0.5px),
+        transparent 0.5rem,
+        transparent 0.75rem,
+        black calc(0.75rem + 0.5px)
+    );
+
+    &::-webkit-meter-inner-element {
+        display: none;
+    }
+
+    &::-moz-meter-bar {
+        background: none;
+    }
+}
