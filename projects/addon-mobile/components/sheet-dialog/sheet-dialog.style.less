@@ -90,10 +90,12 @@
 .t-sheet {
     .scrollbar-hidden();
 
+    --tui-padding-inline: 1rem;
+
     inline-size: 100%;
     box-shadow: var(--tui-shadow-small);
     border-radius: inherit;
-    padding: 0 1rem;
+    padding: 0 var(--tui-padding-inline);
     margin-block-start: auto;
     background: var(--tui-background-elevation-1);
     box-sizing: border-box;
@@ -106,7 +108,7 @@
     top: 0;
     z-index: 1;
     block-size: 1.5rem;
-    margin: 0 -1rem;
+    margin: 0 calc(-1 * var(--tui-padding-inline));
     border-radius: inherit;
     background: var(--tui-background-elevation-1);
 
@@ -127,8 +129,8 @@
     position: sticky;
     top: 1.5rem;
     z-index: 1;
-    margin: 0 -1rem;
-    padding: 0.75rem 1rem;
+    margin: 0 calc(-1 * var(--tui-padding-inline));
+    padding: 0.75rem var(--tui-padding-inline);
     font: var(--tui-font-heading-6);
     background: var(--tui-background-elevation-1);
 
