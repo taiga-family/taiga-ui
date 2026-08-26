@@ -1,12 +1,13 @@
 import {Component, signal} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSearchbar} from '@taiga-ui/addon-mobile';
 import {TUI_PLATFORM, TuiActiveZone} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButtonX} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiActiveZone, TuiButton, TuiSearchbar],
+    imports: [ReactiveFormsModule, TuiActiveZone, TuiButtonX, TuiSearchbar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -14,11 +15,11 @@ import {TuiButton} from '@taiga-ui/core';
     host: {'[attr.data-platform]': '"android"'},
 })
 export default class Example {
+    protected readonly query = new FormControl('');
     protected readonly active = signal(false);
 
-    protected cancel(input: HTMLInputElement): void {
-        input.value = '';
-        input.focus();
-        input.blur();
+    protected onCancel(): void {
+        this.query.reset();
+        this.active.set(false);
     }
 }

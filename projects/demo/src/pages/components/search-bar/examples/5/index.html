@@ -1,0 +1,48 @@
+<div
+    waIntersectionObserver
+    waIntersectionRoot
+    class="container"
+>
+    <h2
+        class="title"
+        (waIntersectionObservee)="floating.set(!$event[0]?.isIntersecting)"
+    >
+        Search
+    </h2>
+
+    <search>
+        <form
+            tuiSearchBar
+            [appearance]="floating() ? 'floating' : 'neutral'"
+            (tuiActiveZoneChange)="active.set($event)"
+        >
+            <input
+                placeholder="Search"
+                tuiSearchBar
+            />
+            @if (active() && floating()) {
+                <button
+                    tuiAnimated
+                    tuiButtonX
+                    type="reset"
+                    (click)="active.set(false)"
+                >
+                    Cancel
+                </button>
+            }
+        </form>
+    </search>
+
+    @for (_ of '-'.repeat(12); track $index) {
+        <div tuiCell>
+            <div
+                appearance="secondary"
+                tuiAvatar="@tui.heart"
+            ></div>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
+        </div>
+    }
+</div>

@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSearchbar} from '@taiga-ui/addon-mobile';
 import {TUI_PLATFORM, TuiActiveZone, TuiAnimated} from '@taiga-ui/cdk';
-import {TUI_LIQUID_GLASS, TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
@@ -13,7 +13,7 @@ import {TuiAppBar} from '@taiga-ui/layout';
         TuiAnimated,
         TuiAppBar,
         TuiAvatar,
-        TuiButton,
+        TuiButtonX,
         TuiCell,
         TuiSearchbar,
         TuiTitle,
@@ -34,10 +34,4 @@ import {TuiAppBar} from '@taiga-ui/layout';
 })
 export default class Example {
     protected readonly active = signal(false);
-
-    protected cancel(input: HTMLInputElement): void {
-        input.value = '';
-        input.focus();
-        input.blur();
-    }
 }

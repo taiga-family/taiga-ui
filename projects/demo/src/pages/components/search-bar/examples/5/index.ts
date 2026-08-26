@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiSearchbar} from '@taiga-ui/addon-mobile';
 import {TUI_PLATFORM, TuiActiveZone, TuiAnimated} from '@taiga-ui/cdk';
-import {TUI_LIQUID_GLASS, TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
         TuiActiveZone,
         TuiAnimated,
         TuiAvatar,
-        TuiButton,
+        TuiButtonX,
         TuiCell,
         TuiSearchbar,
         TuiTitle,
@@ -35,10 +35,4 @@ import {TuiAvatar} from '@taiga-ui/kit';
 export default class Example {
     protected readonly active = signal(false);
     protected readonly floating = signal(false);
-
-    protected cancel(input: HTMLInputElement): void {
-        input.value = '';
-        input.focus();
-        input.blur();
-    }
 }

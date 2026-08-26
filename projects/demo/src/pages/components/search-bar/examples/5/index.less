@@ -1,17 +1,20 @@
 .container {
     max-block-size: 20rem;
     inline-size: 20rem;
-    overflow-x: hidden;
+    overflow: auto;
     overscroll-behavior: none;
 }
 
-.header {
+.title {
+    margin: 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+search {
     position: sticky;
     z-index: 1;
     inset-block-start: 0;
-}
-
-tui-searchbar {
     padding-block: 0.75rem;
     padding-inline: 1rem;
 }

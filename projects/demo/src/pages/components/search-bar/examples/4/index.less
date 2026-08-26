@@ -1,20 +1,18 @@
-.container {
+:host {
+    display: block;
     max-block-size: 20rem;
     inline-size: 20rem;
-    overflow: auto;
+    overflow-x: hidden;
     overscroll-behavior: none;
 }
 
-.title {
-    margin: 0.5rem 0;
-    font-size: 1.75rem;
-    font-weight: bold;
-}
-
-tui-searchbar {
+.header {
     position: sticky;
     z-index: 1;
     inset-block-start: 0;
+}
+
+search {
     padding-block: 0.75rem;
     padding-inline: 1rem;
 }

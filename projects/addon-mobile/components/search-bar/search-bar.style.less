@@ -1,0 +1,90 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 1rem;
+}
+
+.t-wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+}
+
+:host ::ng-deep [tuiButtonX] {
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSearchbarCancel, tuiFade;
+    }
+}
+
+@keyframes tuiSearchbarCancel {
+    from {
+        margin-inline-end: -3.75rem;
+    }
+}
+
+:host-context([data-platform='android']) {
+    // TODO: Replace with :has([tuiButton]) when supported
+    .t-wrapper:not(:last-child) ::ng-deep [tuiSearchBar] {
+        background-image: none;
+    }
+
+    ::ng-deep [tuiButtonX] {
+        position: absolute;
+        inset-inline-start: 0.4375rem;
+
+        &.tui-enter,
+        &.tui-leave {
+            animation-duration: 0s;
+        }
+    }
+}
+
+:host-context([data-platform='ios'])[data-appearance='floating'] {
+    .liquid-glass-vars();
+
+    ::ng-deep [tuiSearchBar] {
+        .liquid-glass();
+    }
+
+    .t-wrapper::after {
+        .liquid-glass-bevel();
+
+        border-radius: 3.125rem;
+    }
+
+    ::ng-deep [tuiButtonX] {
+        .liquid-glass();
+
+        position: relative;
+        box-sizing: border-box;
+        border-radius: 100%;
+        color: var(--tui-text-primary);
+        transition: transform var(--tui-duration) var(--tui-curve-expressive-entrance);
+
+        &:active {
+            transform: scale(1.25);
+            filter: brightness(3);
+        }
+
+        // `tuiIcons` reserves ::after for an end icon; the cancel button is
+        // icon-only, so the slot is repurposed for the ring — undo its sizing
+        &::after {
+            .liquid-glass-bevel();
+
+            display: block;
+            inline-size: auto;
+            block-size: auto;
+            margin: 0;
+            mask-size: auto;
+        }
+    }
+}
+
+:host-context([tuiTheme='dark'])[data-appearance='floating'] {
+    .liquid-glass-dark();
+}

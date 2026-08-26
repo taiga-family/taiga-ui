@@ -1,17 +1,21 @@
 <tui-doc-page
-    header="Searchbar"
+    header="SearchBar"
     package="ADDON-MOBILE"
     type="components"
 >
     <ng-template pageTab>
         <p>
             <code>TuiSearchbar</code>
-            is a mobile search field. Project a native
-            <code>&lt;input tuiSearch&gt;</code>
-            on its own to get an inline field, or add a
-            <code>&lt;button tuiButton&gt;</code>
-            — the searchbar lays them out per platform: on iOS the button sits to the right of the field, on Android it
-            moves inside the field on the leading side.
+            is a mobile search field. Put
+            <code>tuiSearchBar</code>
+            on any element — semantically that is
+            <code>&lt;search&gt;</code>
+            — project a native
+            <code>&lt;input tuiSearchBar&gt;</code>
+            into it and, when the field is active, a
+            <code>&lt;button tuiButtonX&gt;</code>
+            next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field,
+            on Android it moves inside the field on the leading side and turns into a back arrow.
         </p>
 
         @for (example of examples; track example) {
@@ -23,10 +27,18 @@
             >
                 <ng-template #description>
                     @switch ($index + 1) {
+                        @case (2) {
+                            No form here, so the cancel button clears the field through a
+                            <code>FormControl</code>
+                        }
                         @case (3) {
                             An active field on iOS is
                             <code>floating</code>
-                            : liquid glass with a round cancel button.
+                            : liquid glass with a round cancel button. The bar sits on a
+                            <code>&lt;form&gt;</code>
+                            , so clearing and
+                            <code>Enter</code>
+                            work on their own
                         }
                         @case (4) {
                             Pinned along with the app bar, the field is
