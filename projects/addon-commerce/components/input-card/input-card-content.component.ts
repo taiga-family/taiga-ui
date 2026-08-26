@@ -3,6 +3,7 @@ import {
     Component,
     computed,
     inject,
+    INJECTOR,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -36,11 +37,14 @@ import {switchMap, timer} from 'rxjs';
     host: {'data-tui-version': TUI_VERSION},
 })
 export class TuiInputCardContent {
+    private readonly injector = inject(INJECTOR);
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly control = inject(NgControl);
 
     private readonly value = toSignal(
-        timer(0).pipe(switchMap(() => tuiControlValue<string>(this.control))),
+        timer(0).pipe(
+            switchMap(() => tuiControlValue<string>(this.control, this.injector)),
+        ),
         {initialValue: ''},
     );
 
