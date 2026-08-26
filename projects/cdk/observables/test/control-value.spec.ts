@@ -33,7 +33,7 @@ describe('tuiControlValue', () => {
 
     describe('control without valueChanges (InteropNgControl from signal forms)', () => {
         /**
-         * `InteropNgControl` (from `@angular/forms/signals`) 
+         * `InteropNgControl` (from `@angular/forms/signals`)
          * has no observables, only getters over the field state signals
          */
         function fakeInteropNgControl(

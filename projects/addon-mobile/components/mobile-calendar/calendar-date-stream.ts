@@ -1,7 +1,4 @@
-import {
-    inject,
-    InjectionToken, INJECTOR, type Provider
-} from '@angular/core';
+import {inject, InjectionToken, INJECTOR, type Provider} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-time';
@@ -23,10 +20,12 @@ export function tuiDateStreamWithTransformer(
 
             return control
                 ? tuiControlValue(control, inject(INJECTOR)).pipe(
-                    map((value) =>
-                        transformer ? transformer?.fromControlValue(value) : (value as T),
-                    ),
-                )
+                      map((value) =>
+                          transformer
+                              ? transformer?.fromControlValue(value)
+                              : (value as T),
+                      ),
+                  )
                 : of(null);
         },
     };
