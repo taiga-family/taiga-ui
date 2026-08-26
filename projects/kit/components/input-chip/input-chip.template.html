@@ -7,7 +7,7 @@
     [ngModel]="internal()"
     [ngModelOptions]="{standalone: true}"
     (blur)="cancel()"
-    (keydown.enter)="save()"
+    (keydown.enter.prevent)="save()"
     (keydown.esc)="cancel()"
     (keydown.stop)="(0)"
     (ngModelChange)="internal.set($event)"
