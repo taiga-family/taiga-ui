@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
-import {type TuiButtonOptions} from '@taiga-ui/core/components';
-import {tuiButtonXOptionsProvider} from '@taiga-ui/core/directives';
+import {type TuiButtonOptions} from '@taiga-ui/core/components/button';
+import {tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {type TuiCommonIcons, tuiCommonIconsProvider} from '@taiga-ui/core/tokens';
 
 @Component({
