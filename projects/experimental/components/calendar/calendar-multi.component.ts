@@ -53,8 +53,8 @@ import {TuiDatePicker} from './date-picker';
 export class TuiCalendarMultiComponent<
     T extends 'multi' | 'range' | 'single',
 > extends TuiDatePicker<T> {
-    protected readonly visible = signal<Record<string, number>>({});
     protected readonly carousel = viewChild(TuiCarouselComponent);
+    protected readonly visible = signal<Record<string, number>>({});
     protected readonly scroll = viewChild.required(TuiCarouselComponent, {
         read: ElementRef,
     });
@@ -86,10 +86,6 @@ export class TuiCalendarMultiComponent<
                 ? new TuiMonth(year, month)
                 : limited;
         });
-    }
-
-    protected getMonth(index: number): TuiMonth {
-        return new TuiMonth(Math.floor(index / 12), index % 12);
     }
 
     protected onSpin(step: number): void {
