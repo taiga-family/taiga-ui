@@ -58,7 +58,7 @@ export class TuiSliderKeyStepsBase implements OnInit {
 
     public controlValue = toSignal(
         timer(0) // https://github.com/angular/angular/issues/54418
-            .pipe(switchMap(() => tuiControlValue<number>(this.control))),
+            .pipe(switchMap(() => tuiControlValue<number>(this.control, this.injector))),
     );
 
     public readonly totalSteps = computed(() =>

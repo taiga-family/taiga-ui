@@ -1,13 +1,30 @@
+import {computed, type Injector} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {type AbstractControl, type AbstractControlDirective} from '@angular/forms';
-import {Observable, startWith} from 'rxjs';
+import {distinctUntilChanged, Observable, startWith} from 'rxjs';
 
 /**
- * Turns AbstractControl/Abstract-control-directive valueChanges into ReplaySubject(1)
+ * Turns form control value changes into ReplaySubject(1)
+ * TODO(v6): refactor it after signal forms are fully supported (Angular >= 22)
  */
 export function tuiControlValue<T>(
-    control?: AbstractControl | AbstractControlDirective | null,
+    control?: AbstractControl | AbstractControlDirective | null, // TODO: add `InteropNgControl` as possible type after update to Angular 21+
+    injector?: Injector,
 ): Observable<T> {
-    return new Observable((subscriber) =>
-        control?.valueChanges?.pipe(startWith(control.value)).subscribe(subscriber),
-    );
+    return new Observable((subscriber) => {
+        const value = control?.value as T;
+        const valueChanges$ =
+            control?.valueChanges ?? // reactive forms
+            // signal forms
+            (control &&
+                injector &&
+                toObservable(
+                    computed(() => control?.value as T),
+                    {injector},
+                ));
+
+        return valueChanges$
+            ?.pipe(startWith(value), distinctUntilChanged())
+            .subscribe(subscriber);
+    });
 }

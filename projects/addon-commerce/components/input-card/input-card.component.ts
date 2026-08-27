@@ -1,4 +1,4 @@
-import {Directive, inject, type OnInit} from '@angular/core';
+import {Directive, inject, INJECTOR, type OnInit} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
@@ -27,6 +27,7 @@ import {TuiInputCardContent} from './input-card-content.component';
 })
 // TODO(v6): rename to TuiInputCardDirective
 export class TuiInputCardComponent implements OnInit {
+    private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl);
 
     private readonly accessor = inject(DefaultValueAccessor, {
@@ -38,7 +39,7 @@ export class TuiInputCardComponent implements OnInit {
 
     public readonly binChange = outputFromObservable(
         timer(0).pipe(
-            switchMap(() => tuiControlValue<string>(this.control)),
+            switchMap(() => tuiControlValue<string>(this.control, this.injector)),
             map((v) => (v.length < 6 ? null : v.replace(' ', '').slice(0, 6))),
             startWith(null),
             distinctUntilChanged(),
