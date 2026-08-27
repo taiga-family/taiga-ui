@@ -163,6 +163,11 @@ export const ROUTES: Routes = [
         title: 'Message',
     }),
     route({
+        path: DemoRoute.Meter,
+        loadComponent: async () => import('../components/meter'),
+        title: 'Meter',
+    }),
+    route({
         path: DemoRoute.Title,
         title: 'Title',
         loadComponent: async () => import('../components/title'),

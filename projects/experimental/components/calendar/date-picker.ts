@@ -1,6 +1,6 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
@@ -45,6 +45,10 @@ export abstract class TuiDatePicker<
     public readonly contentDay = input<PolymorpheusContent<TuiContext<TuiDay>>>();
     public readonly dayType = input(this.options.dayType);
     public readonly showWeek = input(this.options.showWeek);
+
+    protected getMonth(index: number): TuiMonth {
+        return new TuiMonth(Math.floor(index / 12), index % 12);
+    }
 
     protected updateMonth(day?: TuiDay | null): void {
         this.month.update(({month, year}) =>
