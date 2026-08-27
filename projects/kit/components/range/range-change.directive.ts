@@ -2,10 +2,10 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
-import {map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
+import {identity, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';
 
@@ -44,7 +44,11 @@ export class TuiRangeChange {
                     }
                 }),
                 switchMap((event) =>
-                    tuiTypedFromEvent(this.doc, 'pointermove').pipe(startWith(event)),
+                    tuiTypedFromEvent(this.doc, 'pointermove').pipe(
+                        tuiIsElement(event.target) && tuiIsInput(event.target)
+                            ? identity
+                            : startWith(event),
+                    ),
                 ),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
                 takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
