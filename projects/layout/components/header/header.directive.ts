@@ -22,7 +22,7 @@ export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './header.styles.less';
+            @import '@taiga-ui/styles/components/header.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
