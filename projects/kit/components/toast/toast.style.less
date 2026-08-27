@@ -1,7 +1,9 @@
 @import '@taiga-ui/styles/utils';
 
+@safe-area: 0.875rem;
+
 :host:host {
-    inset: 1.625rem 0;
+    inset: @safe-area 0;
     margin: 0 auto;
     touch-action: none;
     animation-fill-mode: both;
@@ -44,7 +46,7 @@
     }
 
     &[data-block='end'] {
-        inset: -1.625rem 0;
+        inset: -@safe-area 0;
 
         &[data-inline='center'] {
             --tui-from: translateY(6rem);
@@ -52,8 +54,6 @@
     }
 
     &._mobile {
-        inset: 0;
-
         &.tui-enter {
             animation-delay: var(--tui-duration);
         }
