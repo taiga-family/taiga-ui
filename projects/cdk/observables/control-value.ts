@@ -5,6 +5,7 @@ import {distinctUntilChanged, Observable, startWith} from 'rxjs';
 
 /**
  * Turns form control value changes into ReplaySubject(1)
+ * TODO(v6): refactor it after signal forms are fully supported (Angular >= 22)
  */
 export function tuiControlValue<T>(
     control?: AbstractControl | AbstractControlDirective | null, // TODO: add `InteropNgControl` as possible type after update to Angular 21+
