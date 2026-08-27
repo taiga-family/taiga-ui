@@ -80,6 +80,17 @@ tui-app-bar:where(*&) {
         [tuiAppBarBack] {
             font: var(--tui-typography-body-l);
         }
+
+        > :first-child {
+            [tuiButton] {
+                --tui-icon-size: 1rem;
+            }
+
+            // Compensates the negative margin above so that a smaller icon stays flush with the content
+            [tuiIconButton][data-size='xs'] {
+                margin-inline-start: 0.5rem;
+            }
+        }
     }
 
     [tuiProgressBar] {
