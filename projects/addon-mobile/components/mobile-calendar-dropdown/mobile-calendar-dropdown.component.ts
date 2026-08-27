@@ -44,7 +44,12 @@ export class TuiMobileCalendarDropdownComponent {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
-    private readonly context = injectContext<Record<string, any>>({optional: true});
+    // As a dropdown, ignore the ambient context: `injectContext` would otherwise resolve
+    // to an enclosing dialog/sheet and `observer.complete()` on close would shut it too.
+    private readonly context = this.dropdown
+        ? null
+        : injectContext<Record<string, any>>({optional: true});
+
     private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
