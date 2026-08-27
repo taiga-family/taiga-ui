@@ -26,15 +26,13 @@ import {createOutputSpy} from 'cypress/angular';
 export class Sandbox {
     protected readonly control = new FormControl(['Taiga UI'], {nonNullable: true});
 
-    public readonly submitEvent = output<void>();
+    public readonly submitEvent = output();
 }
 
 describe('InputChip | form submit', () => {
     beforeEach(() => {
         cy.mount(Sandbox, {
-            componentProperties: {
-                submitEvent: createOutputSpy('submitEvent'),
-            },
+            componentProperties: {submitEvent: createOutputSpy('submitEvent')},
         });
     });
 
