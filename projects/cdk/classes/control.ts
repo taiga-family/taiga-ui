@@ -21,7 +21,7 @@ import {
 } from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TUI_FALLBACK_VALUE} from '@taiga-ui/cdk/tokens';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectFormField, tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     delay,
     distinctUntilChanged,
@@ -84,6 +84,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
+    protected readonly field = tuiInjectFormField(FLAGS);
 
     protected transformer =
         inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
@@ -105,13 +106,19 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
      * TODO(v6): delete
      */
     public readonly pseudoInvalid = input<boolean | null>(undefined, {alias: 'invalid'});
+    /**
+     * @deprecated internal purpose only
+     * TODO(v6): delete when `TuiControl[pseudoInvalid]` is deleted
+     */
+    public readonly externalInvalid = signal<boolean | null>(null);
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
     public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
 
     public readonly invalid = computed(() => {
-        const pseudoInvalid = this.pseudoInvalid();
+        const pseudoInvalid =
+            this.externalInvalid() ?? (this.field() ? null : this.pseudoInvalid());
 
         return pseudoInvalid == null
             ? this.interactive() && this.touched() && this.status() === 'INVALID'

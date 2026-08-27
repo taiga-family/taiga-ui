@@ -88,6 +88,7 @@ export default defineConfig({
                             'projects/styles/components/switch.less',
                             'projects/styles/components/toast.less',
                             'projects/kit/components/accordion/accordion.style.less',
+                            'projects/kit/components/files/input-files/input-files.style.less',
                             'projects/kit/components/input-date/input-date.style.less',
                             'projects/kit/components/input-number/step/input-number-step.style.less',
                             'projects/kit/components/input-phone-international/input-phone-international.style.less',

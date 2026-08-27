@@ -1,4 +1,4 @@
-import {computed, Directive, effect, input, output, signal} from '@angular/core';
+import {computed, Directive, effect, inject, input, output, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoCaretGuard} from '@maskito/kit';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -8,6 +8,7 @@ import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldContent,
+    TuiTextfieldComponent,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -39,8 +40,14 @@ const ANIMATION = {
     },
 })
 export class TuiPincodeComponent extends TuiControl<string> {
+    private readonly textfield = inject(TuiTextfieldComponent);
     private phase = 0;
     private bounced = false;
+
+    // TODO(v6): use only `this.textfield.invalid()`
+    private readonly manualInvalid = computed(
+        () => this.textfield.invalid() ?? (this.field() ? null : this.pseudoInvalid()),
+    );
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly paste = signal(false);
@@ -58,8 +65,8 @@ export class TuiPincodeComponent extends TuiControl<string> {
     public readonly finished = output();
 
     protected readonly state = computed<'invalid' | 'pending' | 'success' | null>(() => {
-        if (tuiIsPresent(this.pseudoInvalid())) {
-            return this.pseudoInvalid() ? 'invalid' : 'success';
+        if (tuiIsPresent(this.manualInvalid())) {
+            return this.manualInvalid() ? 'invalid' : 'success';
         }
 
         return this.value().length === this.maxLength() ? 'pending' : null;
@@ -67,7 +74,7 @@ export class TuiPincodeComponent extends TuiControl<string> {
 
     protected readonly effect = effect(() => {
         this.bounced = false;
-        this.phase = tuiIsPresent(this.pseudoInvalid()) ? this.value().length : 0;
+        this.phase = tuiIsPresent(this.manualInvalid()) ? this.value().length : 0;
     });
 
     public onAnimationStart({animationName}: AnimationEvent): void {

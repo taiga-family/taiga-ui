@@ -5,7 +5,6 @@ import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectFormField} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
-import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiAsTextfieldAccessor,
@@ -110,7 +109,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     });
 
     /**
-     * Temporary workaround until TuiControl has deprecated `pseudoInvalid` property
+     * Temporary workaround until TuiControl has deprecated `pseudoInvalid = input(..., {alias: 'invalid'})` property
      * We cannot inject `TuiTextfieldComponent` (@taiga-ui/core) inside `TuiControl` (`@taiga-ui/cdk`)
      * TODO(v6): remove all logic inside constructor
      */
@@ -120,9 +119,7 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
         effect(() => {
             const control = injector.get(TuiControl, null, {self: true});
 
-            if (control) {
-                tuiSetSignal(control.pseudoInvalid, this.computedInvalid());
-            }
+            control?.externalInvalid.set(this.textfield.invalid());
         });
     }
 
