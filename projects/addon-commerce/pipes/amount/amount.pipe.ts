@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_CURRENCY_SYMBOLS} from '@taiga-ui/addon-commerce/tokens';
 import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import {tuiFormatCurrency} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
@@ -32,14 +33,8 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly formatted = computed(() => {
         const format = this.format();
         const currency = this.currency();
-        let currencySymbol = this.currencySymbolHandler(currency);
-
-        if (!currencySymbol && currency !== null) {
-            currencySymbol =
-                typeof currency === 'number'
-                    ? String(currency).padStart(3, '0')
-                    : currency;
-        }
+        const currencySymbol =
+            this.currencySymbolHandler(currency) ?? tuiFormatCurrency(currency);
 
         const formatted = tuiFormatNumber(Math.abs(this.value()), {
             ...format,
@@ -58,8 +53,8 @@ export class TuiAmountPipe implements PipeTransform {
                 : '';
 
         return this.currencyAlign() === 'end'
-            ? `${sign}${formatted}${space}${currencySymbol || ''}`
-            : `${sign}${currencySymbol || ''}${space}${formatted}`;
+            ? `${sign}${formatted}${space}${currencySymbol}`
+            : `${sign}${currencySymbol}${space}${formatted}`;
     });
 
     public transform(
