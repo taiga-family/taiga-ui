@@ -79,7 +79,7 @@ describe('TuiMobileCalendarDropdown as a dropdown inside a dialog', () => {
 
         // Simulates pressing "Done"/"Cancel": the calendar closes itself.
         // Regression (#14561): it must not complete the dialog's observer too.
-        (dropdown.ref()?.instance as {close: () => void}).close();
+        (dropdown.ref()?.instance as {close(): void}).close();
         fixture.detectChanges();
 
         expect(fixture.componentInstance.open()).toBe(true);
