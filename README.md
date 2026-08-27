@@ -50,7 +50,7 @@ Read more about Taiga UI main features in
 | Taiga UI | Angular               | Supported                 | Latest version                                                                                     |
 | -------- | --------------------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | `5.x.y`  | `^19.0.0` - `latest`  | ✅ Current                | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/latest?label=%40taiga-ui%2Fcdk%20~%20v5) |
-| `4.x.y`  | `^16.0.0` - `latest`  | ⚠️ LTS ends in 01.01.2027 | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/v4-lts?label=%40taiga-ui%2Fcdk%20~%20v4) |
+| `4.x.y`  | `^16.0.0` - `latest`  | ⚠️ LTS ends on 01.01.2027 | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/v4-lts?label=%40taiga-ui%2Fcdk%20~%20v4) |
 | `3.x.y`  | `^12.0.0` - `^21.0.0` | 🔴 No longer supported    | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/v3-lts?label=%40taiga-ui%2Fcdk%20~%20v3) |
 | `2.x.y`  | `^9.0.0` - `^15.0.0`  | 🔴 No longer supported    | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2) |
 
