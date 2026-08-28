@@ -4,13 +4,14 @@
     block-size: 100%;
     inline-size: 100%;
     max-inline-size: 100vw;
-    padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)'
+    padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), var(--tui-padding-inline))'
         ~'max(2rem, env(safe-area-inset-bottom))';
     background: var(--tui-background-base);
     box-shadow: none;
 
-    --tui-width: min(45rem, 100vw);
+    --tui-width: min(45rem, calc(100vw - 2 * var(--tui-padding-inline)));
     --tui-from: translateY(2rem);
+    --tui-padding-inline: 1rem;
 
     &.tui-enter,
     &.tui-leave {

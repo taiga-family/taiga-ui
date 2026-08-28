@@ -2,7 +2,7 @@ import {Directive, forwardRef, inject, input, type OnDestroy} from '@angular/cor
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
-import {TuiCell} from '@taiga-ui/core/components/cell';
+import {TuiCell, TuiCellStretch} from '@taiga-ui/core/components/cell';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 
@@ -10,7 +10,7 @@ import {TuiDataListComponent} from './data-list.component';
 
 @Directive({
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
-    hostDirectives: [TuiWithIcons, TuiCell],
+    hostDirectives: [TuiWithIcons, TuiCell, TuiCellStretch],
     host: {
         role: 'option',
         type: 'button',
