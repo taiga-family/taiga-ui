@@ -6,7 +6,7 @@
     <ng-template pageTab>
         <div>Inline input field</div>
 
-        @for (example of examples; track example) {
+        @for (example of ['Basic', 'Heading', 'External update', 'Inside text', 'Masked']; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
