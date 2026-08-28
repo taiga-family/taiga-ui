@@ -4,12 +4,12 @@
     block-size: 100%;
     inline-size: 100%;
     max-inline-size: 100vw;
-    padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)'
-        ~'max(2rem, env(safe-area-inset-bottom))';
+    padding: env(safe-area-inset-top) var(--tui-padding-inline) ~'max(2rem, env(safe-area-inset-bottom))';
     background: var(--tui-background-base);
     box-shadow: none;
 
     --tui-width: min(45rem, calc(100vw - 2rem));
+    --tui-padding-inline: ~'max(calc(50vw - var(--tui-width) / 2), 1rem)';
     --tui-from: translateY(2rem);
 
     &.tui-enter,
@@ -98,6 +98,7 @@
         padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
 
         --tui-from: translateY(4rem);
+        --tui-padding-inline: 1rem;
 
         > [tuiButtonX] {
             align-self: flex-start;

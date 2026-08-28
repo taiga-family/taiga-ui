@@ -1,10 +1,7 @@
-import {Directive, inject} from '@angular/core';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {Directive} from '@angular/core';
 
 @Directive({
     selector: '[tuiCell][tuiCellStretch]',
-    host: {'[style.border-radius]': 'isMobile ? 0 : null'},
+    host: {tuiCellStretch: ''},
 })
-export class TuiCellStretch {
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-}
+export class TuiCellStretch {}

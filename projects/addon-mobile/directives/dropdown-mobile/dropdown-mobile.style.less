@@ -35,7 +35,10 @@ tui-dropdown-mobile:where(*&) {
         inset-block-start: 0;
         block-size: 100%;
         overflow: auto;
-        padding: 0 1rem;
+
+        --tui-padding-inline: 1rem;
+
+        padding: 0 var(--tui-padding-inline);
         touch-action: pan-y !important;
 
         tui-data-list {
@@ -53,6 +56,12 @@ tui-dropdown-mobile:where(*&) {
 
     tui-data-list [tuiOption] {
         box-sizing: content-box;
+
+        &[tuiCellStretch] {
+            inline-size: auto;
+            margin-inline: calc(-1 * (var(--tui-padding-inline, 0px) - 0.5rem));
+            padding-inline: ~'max(var(--tui-padding-inline, 0px), 0.5rem)';
+        }
     }
 }
 
