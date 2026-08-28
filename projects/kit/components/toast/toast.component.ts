@@ -15,6 +15,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiAlertDirective} from '@taiga-ui/core/portals/alert';
+import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiShrinkWrap} from '@taiga-ui/kit/components/shrink-wrap';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
@@ -41,6 +42,7 @@ export class TuiToastComponent<O, I> implements AfterViewInit {
     private readonly el = tuiInjectElement();
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
+    protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly context = injectContext<TuiPortalContext<TuiToastOptions<I>, O>>();
 
     protected readonly $ = of(this.context.autoClose)
