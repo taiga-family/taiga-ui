@@ -11,7 +11,7 @@
         margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
     }
 
-    :where(._horizontal) {
+    &._horizontal {
         .scrollbar-hidden();
 
         flex-wrap: nowrap;
@@ -22,7 +22,7 @@
         }
     }
 
-    :where(._initialized) {
+    &._initialized {
         tui-items-with-more {
             .t-item {
                 & > * {
