@@ -17,6 +17,16 @@
             >
                 <ng-template #description>
                     @switch ($index + 1) {
+                        @case (2) {
+                            The size can be left to the
+                            <code>tuiAppBarSize</code>
+                            directive — it picks
+                            <code>l</code>
+                            on web and
+                            <code>m</code>
+                            on mobile platforms — or set explicitly through
+                            <code>size="l"</code>
+                        }
                         @case (6) {
                             To enable the liquid-glass mode on iOS devices, specify the option in
                             <code>provideTaiga(&#123;apis: &#123;liquidGlass: true&#125;&#125;)</code>
