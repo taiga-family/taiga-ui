@@ -1,5 +1,7 @@
 import {type FactoryProvider, inject, type InjectionToken} from '@angular/core';
 
+import {tuiOverride} from '../miscellaneous/override';
+
 export function tuiProvideOptions<T>(
     provide: InjectionToken<T>,
     options: Partial<T> | (() => Partial<T>),
@@ -7,10 +9,11 @@ export function tuiProvideOptions<T>(
 ): FactoryProvider {
     return {
         provide,
-        useFactory: (): T => ({
-            ...(inject(provide, {optional: true, skipSelf: true}) || fallback),
-            ...(inject(options as unknown as InjectionToken<T>, {optional: true}) ||
-                (typeof options === 'function' ? options() : options)),
-        }),
+        useFactory: (): T =>
+            tuiOverride(
+                inject(provide, {optional: true, skipSelf: true}) || fallback,
+                inject(options as unknown as InjectionToken<T>, {optional: true}) ||
+                    (typeof options === 'function' ? options() : options),
+            ),
     };
 }
