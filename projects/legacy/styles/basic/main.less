@@ -16,8 +16,8 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-ul,
-ol {
+ul:where(:not([tuiList])),
+ol:where(:not([tuiList])) {
     list-style: none;
     padding: 0;
     margin: 0;
