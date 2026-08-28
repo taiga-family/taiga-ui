@@ -16,7 +16,7 @@ const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as cons
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/styles/components/item-group.less';
+            @import './item-group.styles.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
