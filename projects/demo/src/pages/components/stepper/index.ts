@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiOrientation} from '@taiga-ui/core';
+import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
@@ -25,6 +25,8 @@ export default class Page {
     ];
 
     protected orientation = this.orientationVariants[0]!;
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected size = this.sizeVariants[1]!;
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
     protected icon = this.iconVariants[0]!;
     protected readonly stateVariants = ['normal', 'pass', 'error'] as const;
