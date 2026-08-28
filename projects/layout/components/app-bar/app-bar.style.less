@@ -74,7 +74,7 @@ tui-app-bar:where(*&) {
 
         & > :first-child,
         & > :last-child {
-            margin: 0 -1em;
+            margin: 0 -1rem;
         }
 
         [tuiAppBarBack] {
@@ -86,7 +86,7 @@ tui-app-bar:where(*&) {
                 --tui-icon-size: 1rem;
             }
 
-            // Compensates the negative margin above so that a smaller icon stays flush with the content
+            // Partially compensates the negative margin above so that a smaller icon stays flush with the content
             [tuiIconButton][data-size='xs'] {
                 margin-inline-start: 0.5rem;
             }
