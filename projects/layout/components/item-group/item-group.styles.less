@@ -1,8 +1,9 @@
 @import '@taiga-ui/styles/utils';
 
-[tuiItemGroup]:where(*&) {
+:where([tuiItemGroup]&) {
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
 
     --tui-item-margin: 0.25rem;
 
@@ -10,7 +11,7 @@
         margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
     }
 
-    &._horizontal {
+    :where(._horizontal) {
         .scrollbar-hidden();
 
         flex-wrap: nowrap;
@@ -21,7 +22,7 @@
         }
     }
 
-    &._initialized {
+    :where(._initialized) {
         tui-items-with-more {
             .t-item {
                 & > * {
