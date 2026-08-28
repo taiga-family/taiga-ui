@@ -241,7 +241,7 @@
 
     &[tuiCellStretch] {
         inline-size: 100%;
-        margin-inline: -1rem;
+        margin-inline: calc(-1 * var(--tui-padding-inline, 0px));
     }
 
     &[tuiCellResponsive] {
@@ -289,4 +289,9 @@
             cursor: pointer;
         }
     }
+}
+
+[data-platform='ios'] [tuiCellStretch]:where(*&),
+[data-platform='android'] [tuiCellStretch]:where(*&) {
+    border-radius: 0 !important;
 }

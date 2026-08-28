@@ -7,9 +7,10 @@
     --t-radius: var(--tui-radius-l);
     --t-comp: -0.25rem;
     --t-padding: 0.75rem;
+    --tui-padding-inline: 0.75rem;
     --t-dim: calc(var(--t-padding) + var(--t-comp));
 
-    padding: var(--t-padding);
+    padding: var(--t-padding) var(--tui-padding-inline);
     border-radius: var(--t-radius);
     box-sizing: border-box;
     text-align: start;
@@ -17,12 +18,14 @@
     &[data-space='normal'] {
         --t-radius: 1.5rem;
         --t-padding: 1.5rem;
+        --tui-padding-inline: 1.5rem;
         --t-space: 1.5rem;
     }
 
     &[data-space='compact'] {
         --t-radius: 1rem;
         --t-padding: 1.25rem;
+        --tui-padding-inline: 1.25rem;
         --t-space: 1.25rem;
     }
 
@@ -37,7 +40,7 @@
     }
 
     &[tuiHeader] {
-        padding: var(--t-dim) var(--t-padding);
+        padding: var(--t-dim) var(--tui-padding-inline);
 
         [tuiButton]:last-child,
         [tuiAvatar]:last-child,
@@ -60,10 +63,18 @@
 
     [tuiCell]:not(:where(tui-textfield *, [tuiStep])) {
         inline-size: 100%;
-        margin: -0.5rem -0.5rem -0.75rem;
+        margin-block: -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
 
         --t-pad: 0.5rem;
+
+        &:not([tuiCellStretch]) {
+            margin-inline: -0.5rem;
+        }
+
+        &[tuiCellStretch] {
+            --t-pad: ~'0.5rem max(0.5rem, var(--tui-padding-inline))';
+        }
 
         &:last-of-type {
             margin-block-end: -0.5rem;
