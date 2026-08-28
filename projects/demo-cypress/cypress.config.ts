@@ -79,7 +79,7 @@ export default defineConfig({
                             'projects/styles/components/compass.less',
                             'projects/styles/components/like.less',
                             'projects/layout/components/card/large.style.less',
-                            'projects/layout/components/list/list.style.less',
+                            'projects/styles/components/list.less',
                             'projects/styles/components/message.less',
                             'projects/styles/components/pin.less',
                             'projects/styles/components/progress-bar.less',

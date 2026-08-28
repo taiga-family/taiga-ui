@@ -22,7 +22,7 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './list.style.less';
+            @import '@taiga-ui/styles/components/list.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
