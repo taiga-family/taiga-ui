@@ -1,6 +1,5 @@
 import {type FactoryProvider, inject, type InjectionToken} from '@angular/core';
-
-import {tuiOverride} from '../miscellaneous/override';
+import {tuiOverride} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export function tuiProvideOptions<T>(
     provide: InjectionToken<T>,
