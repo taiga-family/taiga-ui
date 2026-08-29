@@ -161,10 +161,12 @@
             <tr
                 name="[size]"
                 tuiDocAPIItem
-                type="TuiSizeS | TuiSizeL"
+                type="'' | TuiSizeS | TuiSizeL"
                 [items]="sizes"
                 [(value)]="size"
-            ></tr>
+            >
+                Pass an empty string to make the dialog width fit its content.
+            </tr>
         </table>
     </ng-template>
 </tui-doc-page>
