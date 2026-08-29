@@ -96,7 +96,7 @@ export default defineConfig({
                             'projects/kit/components/tabs/tabs.style.less',
                             'projects/addon-mobile/directives/dropdown-mobile/dropdown-mobile.style.less',
                             'projects/core/portals/modal/modal.style.less',
-                            'projects/core/components/cell/cell.styles.less',
+                            'projects/styles/components/cell.less',
                             'projects/core/components/data-list/data-list.style.less',
                             'projects/core/components/scrollbar/scroll-ref.style.less',
                             'projects/core/portals/dialog/dialog.style.less',
