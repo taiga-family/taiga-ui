@@ -12,7 +12,7 @@ import {type Observable} from 'rxjs';
  * dismissible - close dialog by Esc button or click on overlay (true by default)
  * label - string title for the dialog ('' by default)
  * required - dismissing or closing dialog by X button throws (false by default)
- * size - size of the dialog ('m' by default)
+ * size - size of the dialog ('m' by default, empty string for content width)
  */
 export interface TuiDialogOptions<I> {
     readonly appearance: string;
@@ -21,7 +21,7 @@ export interface TuiDialogOptions<I> {
     readonly dismissible: Observable<boolean> | boolean;
     readonly label: string;
     readonly required: boolean;
-    readonly size: TuiSizeL | TuiSizeS;
+    readonly size: '' | TuiSizeL | TuiSizeS;
 }
 
 export type TuiDialogContext<O = void, I = undefined> = TuiPortalContext<
