@@ -4,6 +4,8 @@ import {
     Component,
     ElementRef,
     inject,
+    type OnDestroy,
+    viewChild,
     viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -39,17 +41,28 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(scroll.zoneless)': 'onPointerChange(0)',
+        '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialogComponent<I> implements AfterViewInit, OnDestroy {
     private readonly stops = viewChildren('stops', {read: ElementRef});
+    private readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
     private readonly el = tuiInjectElement();
     private pointers = 0;
+    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
+    private readonly observer = new ResizeObserver(() => {
+        if (!this.interacted) {
+            this.el.scrollTop = this.initial || 0;
+        }
+    });
 
     protected readonly context =
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
+
+    // Set on the first user gesture; disables the re-pin so it never fights manual scrolling.
+    protected interacted = false;
 
     protected readonly $ = merge(
         this.close$,
@@ -76,9 +89,23 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     public ngAfterViewInit(): void {
         this.el.scrollTop = this.initial || 0;
+
+        const sheet = this.sheet()?.nativeElement;
+
+        if (sheet) {
+            this.observer.observe(sheet);
+        }
+    }
+
+    public ngOnDestroy(): void {
+        this.observer.disconnect();
     }
 
     protected onPointerChange(delta: number): void {
+        if (delta > 0) {
+            this.interacted = true;
+        }
+
         this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!this.pointers && this.el.scrollTop <= 0) {
