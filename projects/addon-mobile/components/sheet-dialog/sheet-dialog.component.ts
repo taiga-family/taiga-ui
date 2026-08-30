@@ -5,12 +5,11 @@ import {
     Component,
     ElementRef,
     inject,
-    type OnDestroy,
     type QueryList,
-    ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
@@ -30,7 +29,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 @Component({
     standalone: true,
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton],
+    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,21 +48,12 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '(click.self)': 'close$.next()',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit, OnDestroy {
+export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChildren('stops')
     private readonly stops: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @ViewChild('sheet')
-    private readonly sheet?: ElementRef<HTMLElement>;
-
     private readonly el = tuiInjectElement();
     private pointers = 0;
-    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
-    private readonly observer = new ResizeObserver(() => {
-        if (!this.interacted) {
-            this.el.scrollTop = this.initial;
-        }
-    });
 
     protected readonly context =
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
@@ -98,18 +88,17 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit, OnDestroy {
 
     public ngAfterViewInit(): void {
         this.el.scrollTop = this.initial;
+    }
 
-        if (this.sheet) {
-            this.observer.observe(this.sheet.nativeElement);
+    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
+    protected onResize(): void {
+        if (!this.interacted) {
+            this.el.scrollTop = this.initial;
         }
     }
 
-    public ngOnDestroy(): void {
-        this.observer.disconnect();
-    }
-
     protected onPointerChange(delta: number): void {
-        if (delta > 0) {
+        if (delta) {
             this.interacted = true;
         }
 

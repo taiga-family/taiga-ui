@@ -7,8 +7,8 @@
     ></div>
 </div>
 <div
-    #sheet
     class="t-sheet"
+    (waResizeObserver)="onResize()"
 >
     <div
         *ngIf="context.bar"
