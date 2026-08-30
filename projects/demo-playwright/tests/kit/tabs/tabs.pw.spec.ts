@@ -34,7 +34,7 @@ describe('Tabs', () => {
                     .click();
 
                 await expect(page.locator('tui-dropdown')).not.toBeAttached();
-                await expect(tabsPO.more).not.toBeVisible();
+                await expect(tabsPO.more).toBeHidden();
             });
         });
 
