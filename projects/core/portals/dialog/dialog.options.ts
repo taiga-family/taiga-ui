@@ -21,7 +21,7 @@ export interface TuiDialogOptions<I> {
     readonly dismissible: Observable<boolean> | boolean;
     readonly label: string;
     readonly required: boolean;
-    readonly size: null | TuiSizeL | TuiSizeS;
+    readonly size: TuiSizeL | TuiSizeS | null;
 }
 
 export type TuiDialogContext<O = void, I = undefined> = TuiPortalContext<
