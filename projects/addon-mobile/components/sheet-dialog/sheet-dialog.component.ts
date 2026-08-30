@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {
-    type AfterViewInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -48,7 +48,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '(click.self)': 'close$.next()',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialogComponent<I> {
     @ViewChildren('stops')
     private readonly stops: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -84,8 +84,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         )
         .subscribe(() => this.close());
 
-    public ngAfterViewInit(): void {
-        this.onResize();
+    constructor() {
+        afterNextRender(() => this.onResize());
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
