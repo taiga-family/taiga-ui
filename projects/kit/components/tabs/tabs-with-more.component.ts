@@ -61,7 +61,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     protected readonly moreWord = inject(TUI_MORE_WORD);
 
     protected readonly sync = effect(() => {
-        this.activeItemIndex();
+        void this.items();
+        void this.activeItemIndex();
+
         this.maxIndex = this.getMaxIndex();
         this.open = false;
     });
