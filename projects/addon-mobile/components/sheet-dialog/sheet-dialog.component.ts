@@ -59,7 +59,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
-
     protected interacted = false;
 
     protected readonly $ = merge(
@@ -86,7 +85,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial;
+        this.onResize();
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
