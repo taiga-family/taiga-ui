@@ -64,12 +64,12 @@ describe('Dialogs', () => {
 
     describe('size', () => {
         it('supports content-driven width', () => {
-            service.open('Test', {size: ''}).subscribe();
+            service.open('Test', {size: null}).subscribe();
             fixture.detectChanges();
 
             const dialog = fixture.debugElement.query(By.css('tui-dialog'));
 
-            expect(dialog.nativeElement.getAttribute('data-size')).toBe('');
+            expect(dialog.nativeElement.getAttribute('data-size')).toBeNull();
         });
     });
 

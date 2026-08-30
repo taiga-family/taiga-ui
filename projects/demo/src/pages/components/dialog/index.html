@@ -40,6 +40,11 @@
                             Customizing look and animations of dialogs by augmenting built-in appearance or completely
                             overriding it.
                         }
+                        @case (7) {
+                            Passing
+                            <code>null</code>
+                            as size lets the dialog width be determined by its content.
+                        }
                     }
                 </ng-template>
             </tui-doc-example>
@@ -161,11 +166,13 @@
             <tr
                 name="[size]"
                 tuiDocAPIItem
-                type="'' | TuiSizeS | TuiSizeL"
+                type="null | TuiSizeS | TuiSizeL"
                 [items]="sizes"
                 [(value)]="size"
             >
-                Pass an empty string to make the dialog width fit its content.
+                Pass
+                <code>null</code>
+                to make the dialog width fit its content.
             </tr>
         </table>
     </ng-template>
