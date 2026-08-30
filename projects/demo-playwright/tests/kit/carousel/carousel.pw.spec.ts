@@ -18,4 +18,26 @@ test.describe('Carousel', () => {
         await prev.click();
         await expect.soft(example).toHaveScreenshot('01-carousel-prev.png');
     });
+
+    test('snaps to the closest slide after scrolling ends', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Carousel);
+
+        const carousel = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('tui-carousel');
+
+        const offset = await carousel.evaluate((element) => {
+            element.style.scrollSnapType = 'none';
+            element.scrollLeft = element.clientWidth / 4;
+
+            return element.scrollLeft;
+        });
+
+        expect(offset).toBeGreaterThan(1);
+        await expect
+            .poll(async () =>
+                carousel.evaluate((element) => Math.abs(element.scrollLeft)),
+            )
+            .toBeLessThan(1);
+    });
 });
