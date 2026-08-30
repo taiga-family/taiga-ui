@@ -45,3 +45,25 @@
     inline-size: 25%;
     pointer-events: none;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view(inline)) {
+        .t-item {
+            animation: tui-carousel-item 1ms linear both;
+            animation-timeline: view(inline);
+        }
+    }
+}
+
+@keyframes tui-carousel-item {
+    0%,
+    100% {
+        scale: 0.96;
+        opacity: 0.85;
+    }
+
+    50% {
+        scale: 1;
+        opacity: 1;
+    }
+}
