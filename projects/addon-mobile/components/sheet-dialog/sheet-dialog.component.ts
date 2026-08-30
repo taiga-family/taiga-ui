@@ -78,7 +78,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial || 0;
+        this.onResize();
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
