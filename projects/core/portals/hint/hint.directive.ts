@@ -1,6 +1,8 @@
 import {
     type ComponentRef,
+    computed,
     Directive,
+    effect,
     inject,
     INJECTOR,
     input,
@@ -17,9 +19,10 @@ import {
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, skip} from 'rxjs';
+import {skip} from 'rxjs';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
+import {TuiHintDescribe} from './hint-describe.directive';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
@@ -52,7 +55,11 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiPopupService);
+    private readonly describe = inject(TuiHintDescribe, {optional: true, self: true});
     private readonly ref = signal<ComponentRef<unknown> | null>(null);
+    private readonly shown = computed(
+        () => Boolean(this.ref()) && !this.describe?.pending(),
+    );
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
@@ -62,13 +69,17 @@ export class TuiHintDirective<C>
     });
 
     public readonly visible = outputFromObservable(
-        toObservable(this.ref).pipe(map(Boolean), skip(1)),
+        toObservable(this.shown).pipe(skip(1)),
         {alias: 'tuiHintVisible'},
     );
 
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly type = 'hint';
+
+    constructor() {
+        effect(() => this.syncConcealment());
+    }
 
     public ngOnChanges(): void {
         if (!this.content()) {
@@ -87,9 +98,16 @@ export class TuiHintDirective<C>
     public toggle(show: boolean): void {
         if (show && this.content() && !this.ref()) {
             this.ref.set(this.service.add(this.component));
+            this.syncConcealment();
         } else if (!show) {
             this.ref()?.destroy();
             this.ref.set(null);
         }
+    }
+
+    private syncConcealment(): void {
+        const element = this.ref()?.location.nativeElement as HTMLElement | undefined;
+
+        element?.classList.toggle('_concealed', this.describe?.pending() ?? false);
     }
 }
