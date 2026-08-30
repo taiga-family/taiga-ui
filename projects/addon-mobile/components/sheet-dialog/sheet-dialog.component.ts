@@ -60,7 +60,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected readonly close$ = new Subject<void>();
 
-    // Set on the first user gesture; disables the re-pin so it never fights manual scrolling.
     protected interacted = false;
 
     protected readonly $ = merge(
