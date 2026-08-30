@@ -52,7 +52,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
-
     protected interacted = false;
 
     protected readonly $ = merge(
