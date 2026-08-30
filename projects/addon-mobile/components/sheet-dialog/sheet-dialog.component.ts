@@ -1,5 +1,5 @@
 import {
-    type AfterViewInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -43,7 +43,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialogComponent<I> {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
     private pointers = 0;
@@ -77,8 +77,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         )
         .subscribe(() => this.close());
 
-    public ngAfterViewInit(): void {
-        this.onResize();
+    constructor() {
+        afterNextRender(() => this.onResize());
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
