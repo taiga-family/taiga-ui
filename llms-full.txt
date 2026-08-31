@@ -176,7 +176,7 @@
 
 ```text
   TuiBreakpointMediaKey, TuiCommonIcons, TuiDateFormatSettings, TuiDecimalMode, TuiDecimalSymbol
-  TuiMedia, TuiNumberFormatSettings
+  TuiMedia, TuiNumberFormatSettings, TuiNumberFormatSettings
 ```
 **Utilitys:**
 ### miscellaneous
@@ -409,6 +409,11 @@
 ```text
   TuiMessage
 ```
+### meter
+
+```text
+  TuiMeter
+```
 ### multi-select
 
 ```text
@@ -636,6 +641,11 @@
 
 ```text
   TuiFlagPipe
+```
+### format-number
+
+```text
+  TuiFormatNumberPipe
 ```
 ### hide-selected
 
@@ -1045,6 +1055,11 @@
 
 ```text
   TuiMobileLoaderAndroid, TuiMobileLoaderIOS, TuiPullToRefresh, TuiPullToRefreshService
+```
+### search-bar
+
+```text
+  TuiSearchBar, TuiSearchBarComponent, TuiSearchBarInput
 ```
 ### sheet-dialog
 
@@ -2379,9 +2394,9 @@ tui-app-bar {
 
 **Template:**
 ```html
-<tui-app-bar size="l">
+<tui-app-bar tuiAppBarSize>
 <button iconStart="@tui.chevron-left" tuiButton tuiSlot="start" type="button" > Action </button> Taiga UI </tui-app-bar>
-<tui-app-bar size="l">
+<tui-app-bar tuiAppBarSize>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
 <button tuiButton tuiSlot="end" type="button" > Action </button>
@@ -2393,7 +2408,7 @@ tui-app-bar {
 <button iconStart="@tui.x" tuiIconButton tuiSlot="end" type="button" > Close </button>
 </tui-app-bar>
 <tui-app-bar size="l">
-<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="start" type="button" > Back </button>
+<button iconStart="@tui.chevron-left" size="xs" tuiIconButton tuiSlot="start" type="button" > Back </button>
 <progress size="s" tuiProgressBar [max]="100" [style.width.rem]="10" [value]="35" ></progress>
 <button tuiButton tuiSlot="end" type="button" > Action </button>
 </tui-app-bar>
@@ -4710,8 +4725,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes, TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, tuiFormatNumber, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -5010,7 +5025,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBarSet} from '@taiga-ui/addon-charts';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiBarSet, TuiFormatNumberPipe],
@@ -17843,6 +17858,11 @@ export default class Example {
     background: var(--tui-background-elevation-1);
 }
 
+footer {
+    // inset the footer so the container's bleeding background stays within the scroll area
+    margin-inline: 1rem;
+}
+
 .field {
     margin: 1rem 1rem 0;
 }
@@ -17850,7 +17870,6 @@ export default class Example {
 .action {
     // shrink the single action to its content and pin it to the trailing edge
     justify-self: end;
-    margin-inline: 1rem;
 }
 ```
 
@@ -21014,7 +21033,7 @@ export default class Example {
 <td tuiTd>
 <tui-textfield multi tuiChevron >
 <label tuiLabel>Multi Select with dropdown</label>
-<input placeholder="Pick from the list" tuiInputChip tuiSelectLike [formControl]="multiControl" [style.width.rem]="5" />
+<input placeholder="Pick from the list" tuiInputChip tuiSelectLike [formControl]="multiControl" />
 <tui-data-list-wrapper *tuiDropdown tuiMultiSelectGroup [items]="items" />
 </tui-textfield>
 </td>
@@ -27584,11 +27603,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFormatNumberPipe, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
     TuiDataListWrapper,
+    TuiFormatNumberPipe,
     TuiItemsWithMore,
     TuiSelect,
 } from '@taiga-ui/kit';
@@ -28768,11 +28788,11 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 import {
     TuiCheckbox,
-    tuiFormatNumber,
     TuiIcon,
     TuiNotification,
     TuiNotificationService,
 } from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -30848,8 +30868,9 @@ export default class Page {
 
 **Template:**
 ```html
-<h2>Body L</h2>
-<h6 style="font: var(--tui-typography-body-l)">List of Continents</h6>
+<h2 tuiHeader="h6">Body L</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ul tuiList>
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30858,8 +30879,10 @@ export default class Page {
 <li>North America</li>
 <li>South America</li>
 </ul>
-<h2>Body M</h2>
-<h6 style="font: var(--tui-typography-body-m)">List of Continents</h6>
+<br />
+<h2 tuiHeader="h6">Body M</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ul tuiList="m">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30868,8 +30891,10 @@ export default class Page {
 <li>North America</li>
 <li>South America</li>
 </ul>
-<h2>UI S</h2>
-<h6 style="font: var(--tui-typography-ui-s)">List of Continents</h6>
+<br />
+<h2 tuiHeader="h6">UI S</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ul tuiList="s">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30884,35 +30909,24 @@ export default class Page {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiList} from '@taiga-ui/layout';
+import {TuiHeader, TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiList],
+    imports: [TuiHeader, TuiList],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-h2 {
-    padding-block-start: 0.3125rem;
-    padding-block-end: 0.3125rem;
-}
-
-h6 {
-    margin: 0;
-}
 ```
 
 #### Numbered
 
 **Template:**
 ```html
-<h2>Body L</h2>
-<h6 style="font: var(--tui-typography-body-l)">List of Continents</h6>
+<h2 tuiHeader="h6">Body L</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ol tuiList>
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30921,8 +30935,10 @@ h6 {
 <li>North America</li>
 <li>South America</li>
 </ol>
-<h2>Body M</h2>
-<h6 style="font: var(--tui-typography-body-m)">List of Continents</h6>
+<br />
+<h2 tuiHeader="h6">Body M</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ol tuiList="m">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30931,8 +30947,10 @@ h6 {
 <li>North America</li>
 <li>South America</li>
 </ol>
-<h2>UI S</h2>
-<h6 style="font: var(--tui-typography-ui-s)">List of Continents</h6>
+<br />
+<h2 tuiHeader="h6">UI S</h2>
+<br />
+<h6 tuiHeader="body-l">List of Continents</h6>
 <ol tuiList="s">
 <li>Eurasia</li>
 <li>Africa</li>
@@ -30947,16 +30965,58 @@ h6 {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiList} from '@taiga-ui/layout';
+import {TuiHeader, TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiList],
+    imports: [TuiHeader, TuiList],
     templateUrl: './index.html',
-    styleUrl: '../1/index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
+```
+
+#### Definition
+
+**Template:**
+```html
+<header tuiHeader="h6">Regular</header>
+<dl tuiList> @for (item of data | keyvalue; track $index) { <dt>{{ item.key }}</dt>
+<dd>{{ item.value }}</dd> } </dl>
+<br />
+<header tuiHeader="h6">Compact</header>
+<dl compact tuiList="m" > @for (item of data | keyvalue; track $index) { <dt>{{ item.key }}</dt>
+<dd>{{ item.value }}</dd> } </dl>
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHeader, TuiList} from '@taiga-ui/layout';
+
+@Component({
+    imports: [KeyValuePipe, TuiHeader, TuiList],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data = {
+        Name: 'Taiga UI',
+        Version: '5.22.0',
+        Component: 'List',
+    };
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 ```
 
 #### Nested
@@ -30995,6 +31055,7 @@ export default class Example {}
 </li>
 <li>First level</li>
 </ol>
+<br />
 <header tuiHeader="h6">
 <hgroup tuiTitle>
 <h1>Header of second list</h1>
@@ -31026,19 +31087,10 @@ import {TuiHeader, TuiList} from '@taiga-ui/layout';
 @Component({
     imports: [TuiHeader, TuiList, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
 ```
 
 #### Long text
@@ -31067,20 +31119,10 @@ import {TuiList} from '@taiga-ui/layout';
 @Component({
     imports: [TuiList],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    max-inline-size: 20rem;
-    gap: 1rem;
-}
 ```
 
 #### Custom color
@@ -31132,6 +31174,7 @@ export default class Page {
     protected readonly examples = [
         'Bulleted',
         'Numbered',
+        'Definition',
         'Nested',
         'Long text',
         'Custom color',
@@ -31725,6 +31768,158 @@ export default class Example {
         'Chat messages',
         'Inside cells',
     ];
+}
+```
+
+---
+# components/Meter
+- **Package**: `KIT`
+- **Type**: components
+Native styled Meter tag, using the same attributes as native version.
+
+### Example
+
+```html
+<meter tuiMeter [high]="high()" [low]="low()" [max]="max()" [min]="min()" [optimum]="optimum()" [value]="value()" ></meter>
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [min] | `number` | minimal value, lower bound |
+| [max] | `number` | maximal value, upper bound |
+| [low] | `number` | first color point (yellow if optimum is at a lower end, red if it is at the higher end) |
+| [high] | `number` | second color point (red if optimum is at a lower end, yellow if it is at the higher end) |
+| [optimum] | `number` | third color point (green, representing preferred value) |
+| [value] | `number` | current value |
+
+### Usage Examples
+
+#### Example 1
+
+**Template:**
+```html
+<label tuiTitle="m"> Credit Score <div aria-hidden="true" class="ticks-labels" >
+<span>300</span>
+<span appearance="floating" tuiBadge [style.inset-inline-start.%]="(100 * (666 - 300)) / (850 - 300)" > 666 </span>
+<span>850</span>
+</div>
+<meter high="580" low="300" max="850" min="300" optimum="800" tuiMeter value="666" ></meter>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiMeter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiBadge, TuiMeter, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    position: relative;
+
+    [tuiBadge] {
+        position: absolute;
+        inset-block-end: 0.25rem;
+        font: var(--tui-typography-body-l);
+        font-weight: bold;
+        transform: translateX(calc(-50% * var(--tui-inline)));
+    }
+}
+```
+
+#### Example 2
+
+**Template:**
+```html
+<label tuiHeader>
+<div tuiTitle> Resting Heart Rate <div tuiSubtitle> The number of times your heart beats per minute when you are completely relaxed, still, and awake </div>
+<meter high="100" low="80" max="100" min="40" optimum="60" tuiMeter value="60" ></meter>
+<div aria-hidden="true" class="ticks-labels" >
+<span>40</span>
+<span appearance="floating" tuiBadge [style.inset-inline-start.%]="(100 * (60 - 40)) / (100 - 40)" > 60 </span>
+<span>100</span>
+</div>
+</div>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiBadge, TuiMeter} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiBadge, TuiHeader, TuiMeter, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils';
+
+[tuiMeter] {
+    margin-block-start: 1rem;
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    position: relative;
+
+    [tuiBadge] {
+        position: absolute;
+        font: var(--tui-typography-body-l);
+        font-weight: bold;
+        transform: translateX(calc(-50% * var(--tui-inline)));
+    }
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiMeter} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiDemo, TuiMeter],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    protected readonly min = signal('0');
+    protected readonly max = signal('1');
+    protected readonly low = signal('0');
+    protected readonly high = signal('1');
+    protected readonly optimum = signal('0.5');
+    protected readonly value = signal('0');
 }
 ```
 
@@ -34227,7 +34422,8 @@ import {TuiDemo} from '@demo/utils';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {type TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
-import {tuiFormatNumber, type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -38875,6 +39071,309 @@ export default class Page {
 ```
 
 ---
+# components/SearchBar
+- **Package**: `ADDON-MOBILE`
+- **Type**: components
+TuiSearchBar is a mobile search field. Put tuiSearchBar on any element — semantically that is &lt;search&gt; — project a native &lt;input tuiSearchBar&gt; into it and a &lt;button tuiButtonX&gt; next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field, on Android it moves inside the field on the leading side and turns into a back arrow.
+
+### Usage Examples
+
+#### Inline iOS
+
+**Template:**
+```html
+<search tuiSearchBar>
+<input placeholder="Search" tuiSearchBar />
+</search>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+
+@Component({
+    imports: [TuiSearchBar],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_PLATFORM, useValue: 'ios'}],
+    host: {'[attr.data-platform]': '"ios"'},
+})
+export default class Example {}
+```
+
+#### Android
+
+**Template:**
+```html
+<search tuiSearchBar>
+<input placeholder="Search" tuiSearchBar [formControl]="query" />
+<button tuiButtonX (click)="query.reset()" > Cancel </button>
+</search>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TuiButtonX} from '@taiga-ui/core';
+
+@Component({
+    imports: [ReactiveFormsModule, TuiButtonX, TuiSearchBar],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_PLATFORM, useValue: 'android'}],
+    host: {'[attr.data-platform]': '"android"'},
+})
+export default class Example {
+    protected readonly query = new FormControl('');
+}
+```
+
+#### iOS floating
+
+**Template:**
+```html
+<search>
+<form appearance="floating" tuiSearchBar (ngSubmit)="onSubmit()" >
+<input name="query" placeholder="Search" tuiSearchBar [(ngModel)]="query" />
+<button tuiButtonX type="reset" > Cancel </button>
+</form>
+</search>
+```
+**TypeScript:**
+```ts
+import {Component, inject, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TuiButtonX, TuiNotificationService} from '@taiga-ui/core';
+
+@Component({
+    imports: [FormsModule, TuiButtonX, TuiSearchBar],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    host: {'[attr.data-platform]': '"ios"'},
+})
+export default class Example {
+    private readonly alert = inject(TuiNotificationService);
+
+    protected readonly query = signal<string | null>('');
+
+    protected onSubmit(): void {
+        this.alert.open(`Searching for ${this.query()}`).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    box-sizing: border-box;
+    inline-size: 20rem;
+    padding: 1.5rem 1rem;
+    overflow-x: hidden;
+}
+```
+
+#### App bar
+
+**Template:**
+```html
+<header class="header"> @if (!active()) { <tui-app-bar>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI </tui-app-bar> } <search>
+<form appearance="floating" tuiSearchBar (tuiActiveZoneChange)="active.set($event)" >
+<input placeholder="Search" tuiSearchBar />
+<button tuiButtonX type="reset" > Cancel </button>
+</form>
+</search>
+</header> @for (_ of '-'.repeat(12); track $index) { <div tuiCell>
+<div appearance="secondary" tuiAvatar="@tui.heart" ></div>
+<div tuiTitle> Title <div tuiSubtitle>Description</div>
+</div>
+</div> }
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM, TuiActiveZone} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAppBar} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        TuiActiveZone,
+        TuiAppBar,
+        TuiAvatar,
+        TuiButtonX,
+        TuiCell,
+        TuiSearchBar,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    protected readonly active = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+
+.header {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    overflow: hidden;
+    margin-block-end: -2rem;
+    padding-block-end: 2rem;
+}
+
+search {
+    padding: 0.75rem 1rem;
+}
+```
+
+#### Sticky
+
+**Template:**
+```html
+<h2 class="title" (waIntersectionObservee)="floating.set(!$event[0]?.isIntersecting)" > Search </h2>
+<search>
+<form tuiSearchBar [appearance]="floating() ? 'floating' : 'neutral'" >
+<input placeholder="Search" tuiSearchBar />
+<button tuiButtonX type="reset" > Cancel </button>
+</form>
+</search> @for (_ of '-'.repeat(12); track $index) { <div tuiCell>
+<div appearance="secondary" tuiAvatar="@tui.heart" ></div>
+<div tuiTitle> Title <div tuiSubtitle>Description</div>
+</div>
+</div> }
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    WaIntersectionObserver,
+    WaIntersectionObserverDirective,
+    WaIntersectionRoot,
+} from '@ng-web-apis/intersection-observer';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiButtonX,
+        TuiCell,
+        TuiSearchBar,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    hostDirectives: [WaIntersectionObserverDirective, WaIntersectionRoot],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    protected readonly floating = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-typography-heading-h4);
+    font-weight: bold;
+}
+
+search {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    padding: 0.75rem 1rem;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        'Inline iOS',
+        'Android',
+        'iOS floating',
+        'App bar',
+        'Sticky',
+    ];
+}
+```
+
+---
 # components/Segmented
 - **Package**: `KIT`
 - **Type**: components
@@ -41629,11 +42128,11 @@ export default class Page {}
 
 ```html
 <tui-stepper [orientation]="orientation" [(activeItemIndex)]="activeItemIndex" >
-<button tuiStep>Simple step</button>
-<button tuiStep>Simple step</button>
-<button tuiStep [icon]="icon" [stepState]="state" > Simple step </button>
-<button tuiStep>Simple step</button>
-<button tuiStep>Simple step</button>
+<button tuiStep [size]="size" > Simple step </button>
+<button tuiStep [size]="size" > Simple step </button>
+<button tuiStep [icon]="icon" [size]="size" [stepState]="state" > Simple step </button>
+<button tuiStep [size]="size" > Simple step </button>
+<button tuiStep [size]="size" > Simple step </button>
 </tui-stepper>
 ```
 
@@ -41766,7 +42265,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiOrientation} from '@taiga-ui/core';
+import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
@@ -41790,6 +42289,8 @@ export default class Page {
     ];
 
     protected orientation = this.orientationVariants[0]!;
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected size = this.sizeVariants[1]!;
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
     protected icon = this.iconVariants[0]!;
     protected readonly stateVariants = ['normal', 'pass', 'error'] as const;
@@ -43645,7 +44146,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiFormatNumberPipe, TuiTable],
@@ -43748,8 +44249,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand, TuiFormatNumberPipe, TuiHint} from '@taiga-ui/core';
-import {TuiChevron, TuiChip} from '@taiga-ui/kit';
+import {TuiButton, TuiExpand, TuiHint} from '@taiga-ui/core';
+import {TuiChevron, TuiChip, TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 interface Item {
     firstName: string;
@@ -44328,7 +44829,6 @@ import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort, TuiValidator} from '@taiga-ui/cdk';
 import {
-    TuiFormatNumberPipe,
     TuiIcon,
     TuiNumberFormat,
     TuiScrollbar,
@@ -44337,6 +44837,7 @@ import {
 import {
     TuiChevron,
     TuiDataListWrapper,
+    TuiFormatNumberPipe,
     TuiInputDate,
     TuiInputNumber,
     TuiSelect,
@@ -45029,8 +45530,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiButtonSelect,
+    TuiDataListWrapper,
+    TuiFormatNumberPipe,
+    TuiPagination,
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -45323,8 +45829,8 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
-import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -47192,21 +47698,21 @@ export default class Example {
 
 **Template:**
 ```html
-<div role="table" class="table" >
-<div role="row" class="header" >
+<div role="table">
+<div role="row">
 <span aria-label="Reorder" role="columnheader" ></span>
 <span role="columnheader">Name</span>
 <span role="columnheader">Role</span>
 <span role="columnheader">Email</span>
 </div>
-<tui-tiles role="rowgroup" class="tiles" [(order)]="order" > @for (item of items; track item) { <tui-tile [style.order]="order.get($index)">
-<div role="row" class="row" >
+<tui-tiles role="rowgroup" [(order)]="order" > @for (item of items; track item) { <tui-tile [style.order]="order.get($index)">
+<div role="row">
 <span role="cell">
-<tui-icon icon="@tui.grip-vertical" tuiTileHandle class="handle" />
+<tui-icon icon="@tui.grip-vertical" tuiTileHandle />
 </span>
-<span role="cell" class="cell" > {{ item.name }} </span>
-<span role="cell" class="cell" > {{ item.role }} </span>
-<span role="cell" class="cell" > {{ item.email }} </span>
+<span role="cell">{{ item.name }}</span>
+<span role="cell">{{ item.role }}</span>
+<span role="cell">{{ item.email }}</span>
 </div>
 </tui-tile> } </tui-tiles>
 </div>
@@ -47241,58 +47747,55 @@ export default class Example {
 ```less
 @import '@taiga-ui/styles/utils';
 
-.table {
+[role='table'] {
     inline-size: 100%;
     min-inline-size: 35rem;
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-l);
     overflow: hidden;
+
+    > [role='row'] {
+        color: var(--tui-text-secondary);
+        background: var(--tui-background-neutral-1);
+        border: none;
+    }
 }
 
-.header,
-.row {
+[role='row'] {
+    .transition(box-shadow);
+
     display: grid;
     grid-template-columns: 2rem minmax(8rem, 1fr) minmax(8rem, 1fr) minmax(12rem, 1.5fr);
     min-block-size: var(--tui-height-m);
+    block-size: 100%;
+    border-block-start: 1px solid var(--tui-border-normal);
     align-items: center;
     padding: 0 1rem;
     box-sizing: border-box;
     column-gap: 0.75rem;
 }
 
-.header {
-    color: var(--tui-text-secondary);
-    background: var(--tui-background-neutral-1);
-}
-
-.tiles {
+[role='rowgroup'] {
     grid-auto-rows: minmax(var(--tui-height-m), auto);
 }
 
-.row {
-    .transition(box-shadow);
-
-    block-size: 100%;
-    background: var(--tui-background-base);
-    border-block-start: 1px solid var(--tui-border-normal);
-}
-
-.cell {
+[role='cell'] {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.handle {
+[tuiTileHandle] {
     color: var(--tui-text-secondary);
     cursor: grab;
 
-    tui-tile._dragged & {
+    &:active {
         cursor: grabbing;
     }
 }
 
-tui-tile._dragged .row {
+tui-tile._dragged [role='row'] {
+    background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-small-hover);
 }
 ```
@@ -47726,7 +48229,7 @@ export default class Page {
 
 ```html
 <button tuiButton type="button" (click)="toast.set(true)" > Show toast </button>
-<ng-template [tuiToast]="toast()" [tuiToastOptions]="{appearance: appearance, autoClose: autoClose, closable: closable}" (tuiToastChange)="toast.set($event)" >
+<ng-template [tuiToast]="toast()" [tuiToastOptions]="{appearance, autoClose, closable, block}" (tuiToastChange)="toast.set($event)" >
 <div tuiToast>I am a toast</div>
 </ng-template>
 ```
@@ -47738,6 +48241,7 @@ export default class Page {
 | [appearance] | `string` | appearance of a toast |
 | [autoClose] | `number` | automatic close timeout, 0 for a permanent toast |
 | [closable] | `boolean` | show close button on desktop and close on swipe on mobile |
+| [block] | `'start' | 'end'` | block position |
 | [data] | `I` |  |
 
 ### Usage Examples
@@ -48054,10 +48558,12 @@ export default class Example {
 
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected readonly blockVariants = ['start', 'end'] as const;
     protected autoClose = this.options.autoClose;
     protected content = 'Notification';
     protected appearance = '';
     protected closable = this.options.closable;
+    protected block = this.options.block;
     protected readonly routes = DemoRoute;
 }
 ```
@@ -49165,7 +49671,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDecimalSymbol, tuiFormatNumber, TuiInput} from '@taiga-ui/core';
+import {type TuiDecimalSymbol, TuiInput} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [ReactiveFormsModule, TuiInput],
@@ -54126,8 +54633,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFormatNumberPipe, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -57980,7 +58487,7 @@ export default class Page {
 
 ---
 # pipes/FormatNumber
-- **Package**: `CORE`
+- **Package**: `KIT`
 - **Type**: pipes
 Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
 
@@ -57991,15 +58498,15 @@ Pipe to format number values to separate thousands Number formatting can be cust
 **Template:**
 ```html
 <p>Formatted number by default: {{ 10500.33 | tuiFormatNumber }}</p>
-<p> Formatted number with custom params: {{ 10500.33 | tuiFormatNumber: {precision: 4, decimalSeparator: '.'} }} </p>
-<p> Formatted number with rounding: {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }} </p>
+<p> Formatted number with custom params: {{ 10500.33 | tuiFormatNumber: {maximumFractionDigits: 4, decimalSeparator: '.'} }} </p>
+<p> Formatted number with rounding: {{ 10500.334 | tuiFormatNumber: {maximumFractionDigits: 2, decimalSeparator: '.', rounding: 'ceil'} }} </p>
 ```
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiFormatNumberPipe],
@@ -58020,8 +58527,8 @@ import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [

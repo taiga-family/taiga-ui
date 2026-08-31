@@ -114,6 +114,7 @@
 - [List](https://taiga-ui.dev/components/list)
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
+- [Meter](https://taiga-ui.dev/components/meter) — Native styled Meter tag, using the same attributes as native version.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls on mobile devices if tuiMobileCalendar directive is applied. You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
 - [Navigation](https://taiga-ui.dev/components/navigation) — Taiga UI is a low level component library with many atomic components that provide great flexibility when combined together. An exception to the general rule is the Navigation component – an opinionated global wrapping navigation that exposes less customization options developed specifically to target data-heavy dashboards with minimal space lost and compact controls.
 - [Notification](https://taiga-ui.dev/components/notification) — A notification message that can be displayed inline or as an alert
@@ -137,6 +138,7 @@
 - [Scroll Wheel](https://taiga-ui.dev/components/scroll-wheel) — Work in progress, do not use! There are known issues in Safari, as always A component for spinning wheels or other infinitely scrollable containers, not to be confused with virtual scrolling which typically has ends.
 - [Scrollbar](https://taiga-ui.dev/components/scrollbar) — Scrollbar implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use TUI_SCROLL_REF token to get a scrollable container. For example, when working with virtual scroll.
 - [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table
+- [Search Bar](https://taiga-ui.dev/components/search-bar) — TuiSearchBar is a mobile search field. Put tuiSearchBar on any element — semantically that is &lt;search&gt; — project a native &lt;input tuiSearchBar&gt; into it and a &lt;button tuiButtonX&gt; next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field, on Android it moves inside the field on the leading side and turns into a back arrow.
 - [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element. example of [ 'Textfield customization', 'Items handlers', 'Customize content', 'With DataList', 'Choose form control output', 'Virtual scroll', 'Mobile', 'Native picker with disabled option', 'Native picker with grouping options', ]; track example ) {
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
 - [Shrink Wrap](https://taiga-ui.dev/components/shrink-wrap) — A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
