@@ -15,6 +15,10 @@
 
     --tui-from: translateY(-1rem);
 
+    &:has(tui-data-list[data-size='l']) {
+        border-radius: var(--tui-radius-l);
+    }
+
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiSlide;
