@@ -26,7 +26,7 @@ import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsElementEditable, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -194,6 +194,17 @@ export class TuiTextfieldBaseComponent<T>
 
     protected onResize({contentRect}: ResizeObserverEntry): void {
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    }
+
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor?.setValue(value);
+
+        if (
+            this.dropdown._content() &&
+            tuiIsElementEditable(this.dropdownOpen.nativeElement)
+        ) {
+            this.dropdownOpen.toggle(true);
+        }
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
