@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHeader, TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiList, TuiHeader],
+    imports: [TuiHeader, TuiList],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
