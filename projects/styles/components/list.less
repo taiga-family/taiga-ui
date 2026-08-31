@@ -134,9 +134,10 @@
 
         dt::after {
             content: '';
-            font-size: 1px;
+            display: inline-block;
+            block-size: 1px;
             margin-inline-start: 0.25rem;
-            vertical-align: 0.5px;
+            transform: scaleX(var(--tui-inline));
             border-image: repeating-linear-gradient(90deg, var(--tui-text-tertiary) 0 0.0625rem, transparent 0 0.125rem)
                 fill 0 / calc(100% - 1px) 0 0/0 100vw 0 0 repeat;
         }
