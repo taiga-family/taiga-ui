@@ -106,8 +106,7 @@ export class TuiDropdownHover extends TuiDriver {
 
     private isHovered(element: Element): boolean {
         const host = this.dropdownHost?.nativeElement || this.el;
-        // Only the dropdown's own content counts as a hovered area, not sibling
-        // overlays (e.g. a dialog) that attach to the same active zone as the host.
+        // Match the dropdown's own content zone, not the host's, so overlays (e.g. a dialog) don't count as hovered
         const zone = this.directive.ref()?.injector.get(TuiActiveZone, null);
         const hovered = host.contains(element);
         const child = !this.el.contains(element) && !!zone?.contains(element);
