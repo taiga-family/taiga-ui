@@ -1,43 +1,37 @@
-<div
-    waIntersectionObserver
-    waIntersectionRoot
-    class="container"
+<h2
+    class="title"
+    (waIntersectionObservee)="floating.set(!$event[0]?.isIntersecting)"
 >
-    <h2
-        class="title"
-        (waIntersectionObservee)="floating.set(!$event[0]?.isIntersecting)"
+    Search
+</h2>
+
+<search>
+    <form
+        tuiSearchBar
+        [appearance]="floating() ? 'floating' : 'neutral'"
     >
-        Search
-    </h2>
-
-    <search>
-        <form
+        <input
+            placeholder="Search"
             tuiSearchBar
-            [appearance]="floating() ? 'floating' : 'neutral'"
+        />
+        <button
+            tuiButtonX
+            type="reset"
         >
-            <input
-                placeholder="Search"
-                tuiSearchBar
-            />
-            <button
-                tuiButtonX
-                type="reset"
-            >
-                Cancel
-            </button>
-        </form>
-    </search>
+            Cancel
+        </button>
+    </form>
+</search>
 
-    @for (_ of '-'.repeat(12); track $index) {
-        <div tuiCell>
-            <div
-                appearance="secondary"
-                tuiAvatar="@tui.heart"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
-            </div>
+@for (_ of '-'.repeat(12); track $index) {
+    <div tuiCell>
+        <div
+            appearance="secondary"
+            tuiAvatar="@tui.heart"
+        ></div>
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
         </div>
-    }
-</div>
+    </div>
+}
