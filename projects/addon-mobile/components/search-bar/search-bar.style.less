@@ -1,0 +1,114 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    --t-translate: 3.75rem;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 1rem;
+
+    ::ng-deep [tuiButtonX] {
+        transition: margin var(--tui-duration);
+    }
+}
+
+.t-wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-inline-size: 0;
+}
+
+:host:not(:focus-within) ::ng-deep [tuiButtonX],
+:host-context([data-platform='ios']):not([data-appearance='floating']) ::ng-deep [tuiButtonX] {
+    opacity: 0;
+    visibility: hidden;
+}
+
+:host-context([data-platform='ios']) {
+    &[data-appearance='floating']:focus-within ::ng-deep [tuiButtonX] {
+        animation: tuiTranslateIn var(--tui-duration);
+    }
+
+    &:not(:focus-within) ::ng-deep [tuiButtonX],
+    &:not([data-appearance='floating']) ::ng-deep [tuiButtonX] {
+        margin-inline-start: -3.75rem;
+        animation: tuiTranslateOut var(--tui-duration);
+    }
+
+    &[data-appearance='floating'] {
+        .liquid-glass-vars();
+
+        ::ng-deep [tuiSearchBar] {
+            .liquid-glass();
+        }
+
+        .t-wrapper::after {
+            .liquid-glass-bevel();
+
+            border-radius: 3.125rem;
+        }
+
+        ::ng-deep [tuiButtonX] {
+            .liquid-glass();
+
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 100%;
+            color: var(--tui-text-primary);
+            transition-property: margin, opacity, visibility, transform;
+            transition-timing-function: ease, ease, ease, var(--tui-curve-expressive-entrance);
+
+            &:active {
+                transform: scale(1.25);
+                filter: brightness(3);
+            }
+
+            // `tuiIcons` reserves ::after for an end icon; the cancel button is
+            // icon-only, so the slot is repurposed for the ring — undo its sizing
+            &::after {
+                .liquid-glass-bevel();
+
+                display: block;
+                inline-size: auto;
+                block-size: auto;
+                margin: 0;
+                mask-size: auto;
+            }
+        }
+    }
+}
+
+@keyframes tuiTranslateIn {
+    from {
+        translate: var(--t-translate);
+    }
+}
+
+@keyframes tuiTranslateOut {
+    to {
+        translate: var(--t-translate);
+    }
+}
+
+:host-context([data-platform='android']) {
+    // TODO: Replace with :has([tuiButton]) when supported
+    &:focus-within .t-wrapper:not(:last-child) ::ng-deep [tuiSearchBar] {
+        background-image: none;
+    }
+
+    ::ng-deep [tuiButtonX] {
+        position: absolute;
+        inset-inline-start: 0.4375rem;
+    }
+
+    &:not(:focus-within) ::ng-deep [tuiButtonX] {
+        margin-inline-start: 0;
+    }
+}
+
+:host-context([tuiTheme='dark'])[data-appearance='floating'] {
+    .liquid-glass-dark();
+}

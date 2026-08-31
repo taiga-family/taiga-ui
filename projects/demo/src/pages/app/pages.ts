@@ -563,6 +563,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'SearchBar',
+                keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
+                route: DemoRoute.SearchBar,
+                meta: {name: 'tui-search-bar'},
+            },
+            {
+                section: 'Components',
                 title: 'SwipeActions',
                 keywords: 'swipe, action, свайп, card, действие',
                 route: DemoRoute.SwipeActions,
