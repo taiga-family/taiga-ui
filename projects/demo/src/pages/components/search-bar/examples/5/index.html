@@ -14,22 +14,17 @@
         <form
             tuiSearchBar
             [appearance]="floating() ? 'floating' : 'neutral'"
-            (tuiActiveZoneChange)="active.set($event)"
         >
             <input
                 placeholder="Search"
                 tuiSearchBar
             />
-            @if (active() && floating()) {
-                <button
-                    tuiAnimated
-                    tuiButtonX
-                    type="reset"
-                    (click)="active.set(false)"
-                >
-                    Cancel
-                </button>
-            }
+            <button
+                tuiButtonX
+                type="reset"
+            >
+                Cancel
+            </button>
         </form>
     </search>
 

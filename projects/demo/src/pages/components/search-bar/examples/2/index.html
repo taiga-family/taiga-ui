@@ -3,14 +3,11 @@
         placeholder="Search"
         tuiSearchBar
         [formControl]="query"
-        (tuiActiveZoneChange)="active.set($event)"
     />
-    @if (active()) {
-        <button
-            tuiButtonX
-            (click)="onCancel()"
-        >
-            Cancel
-        </button>
-    }
+    <button
+        tuiButtonX
+        (click)="query.reset()"
+    >
+        Cancel
+    </button>
 </search>

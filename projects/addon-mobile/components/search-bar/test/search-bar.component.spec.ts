@@ -1,15 +1,15 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
-import {TuiSearchbar} from '@taiga-ui/addon-mobile';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButtonX} from '@taiga-ui/core';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
-describe('Searchbar', () => {
+describe('SearchBar', () => {
     describe('on a search element', () => {
         @Component({
-            imports: [TuiButtonX, TuiPlatform, TuiSearchbar],
+            imports: [TuiButtonX, TuiPlatform, TuiSearchBar],
             template: `
                 <section tuiPlatform="android">
                     <search
@@ -29,7 +29,7 @@ describe('Searchbar', () => {
 
         let fixture: ComponentFixture<Test>;
 
-        const searchbar = (): HTMLElement =>
+        const searchBar = (): HTMLElement =>
             fixture.nativeElement.querySelector('search');
 
         const input = (): HTMLInputElement =>
@@ -55,17 +55,23 @@ describe('Searchbar', () => {
             );
         });
 
+        // Android drops the field's magnifier when a button follows it, which is the
+        // only thing that tells the two cases apart until `:has()` is supported
+        it('leaves the field wrapper followed by the projected button', () => {
+            expect(input().closest('.t-wrapper')?.nextElementSibling).toBe(cancel());
+        });
+
         it('turns the projected input into a native search field', () => {
             expect(input().type).toBe('search');
         });
 
         it('reflects the appearance for styling', () => {
-            expect(searchbar().getAttribute('data-appearance')).toBe('');
+            expect(searchBar().getAttribute('data-appearance')).toBe('');
 
             fixture.componentInstance.appearance.set('floating');
             fixture.detectChanges();
 
-            expect(searchbar().getAttribute('data-appearance')).toBe('floating');
+            expect(searchBar().getAttribute('data-appearance')).toBe('floating');
         });
 
         it('gives the cancel button platform-specific options', () => {
@@ -80,9 +86,39 @@ describe('Searchbar', () => {
         });
     });
 
+    describe('without a cancel button', () => {
+        @Component({
+            imports: [TuiSearchBar],
+            template: `
+                <search tuiSearchBar>
+                    <input tuiSearchBar />
+                </search>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {}
+
+        it('leaves the field wrapper last, so android keeps the magnifier', async () => {
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [provideEventPlugins()],
+            });
+            await TestBed.compileComponents();
+
+            const fixture = TestBed.createComponent(Test);
+
+            fixture.detectChanges();
+
+            const wrapper = fixture.nativeElement.querySelector('.t-wrapper');
+
+            expect(wrapper).toBeTruthy();
+            expect(wrapper?.nextElementSibling).toBeNull();
+        });
+    });
+
     describe('on a form', () => {
         @Component({
-            imports: [FormsModule, TuiButtonX, TuiSearchbar],
+            imports: [FormsModule, TuiButtonX, TuiSearchBar],
             template: `
                 <search>
                     <form tuiSearchBar>

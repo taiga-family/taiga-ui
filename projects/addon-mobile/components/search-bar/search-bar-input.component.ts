@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 @Component({
     selector: 'input[tuiSearchBar]',
     template: '',
-    styleUrl: './input-search-bar.style.less',
+    styleUrl: './search-bar-input.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         autocomplete: 'off',
@@ -12,4 +12,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
         type: 'search',
     },
 })
-export class TuiSearchbarInput {}
+export class TuiSearchBarInput {}

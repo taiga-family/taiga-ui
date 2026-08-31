@@ -1,4 +1,4 @@
-import {TuiSearchbarInput} from './input-search-bar.component';
-import {TuiSearchbarComponent} from './search-bar.component';
+import {TuiSearchBarComponent} from './search-bar.component';
+import {TuiSearchBarInput} from './search-bar-input.component';
 
-export const TuiSearchbar = [TuiSearchbarComponent, TuiSearchbarInput] as const;
+export const TuiSearchBar = [TuiSearchBarComponent, TuiSearchBarInput] as const;

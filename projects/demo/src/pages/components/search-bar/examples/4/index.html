@@ -21,16 +21,12 @@
                 placeholder="Search"
                 tuiSearchBar
             />
-            @if (active()) {
-                <button
-                    tuiAnimated
-                    tuiButtonX
-                    type="reset"
-                    (click)="active.set(false)"
-                >
-                    Cancel
-                </button>
-            }
+            <button
+                tuiButtonX
+                type="reset"
+            >
+                Cancel
+            </button>
         </form>
     </search>
 </header>

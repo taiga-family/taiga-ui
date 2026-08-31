@@ -1,8 +1,8 @@
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSearchbar} from '@taiga-ui/addon-mobile';
-import {TUI_PLATFORM, TuiActiveZone, TuiAnimated} from '@taiga-ui/cdk';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM, TuiActiveZone} from '@taiga-ui/cdk';
 import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
@@ -10,12 +10,11 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [
         TuiActiveZone,
-        TuiAnimated,
         TuiAppBar,
         TuiAvatar,
         TuiButtonX,
         TuiCell,
-        TuiSearchbar,
+        TuiSearchBar,
         TuiTitle,
     ],
     templateUrl: './index.html',

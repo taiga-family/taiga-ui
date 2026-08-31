@@ -3,7 +3,6 @@
         appearance="floating"
         tuiSearchBar
         (ngSubmit)="onSubmit()"
-        (tuiActiveZoneChange)="active.set($event)"
     >
         <input
             name="query"
@@ -11,15 +10,12 @@
             tuiSearchBar
             [(ngModel)]="query"
         />
-        @if (active()) {
-            <button
-                tuiAnimated
-                tuiButtonX
-                type="reset"
-                (click)="active.set(false)"
-            >
-                Cancel
-            </button>
-        }
+        <button
+            tuiButtonX
+            type="reset"
+            (click)="onCancel()"
+        >
+            Cancel
+        </button>
     </form>
 </search>

@@ -2,19 +2,17 @@ import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
-import {TuiSearchbar} from '@taiga-ui/addon-mobile';
-import {TUI_PLATFORM, TuiActiveZone, TuiAnimated} from '@taiga-ui/cdk';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
 import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        TuiActiveZone,
-        TuiAnimated,
         TuiAvatar,
         TuiButtonX,
         TuiCell,
-        TuiSearchbar,
+        TuiSearchBar,
         TuiTitle,
         WaIntersectionObserver,
     ],
@@ -33,6 +31,5 @@ import {TuiAvatar} from '@taiga-ui/kit';
     },
 })
 export default class Example {
-    protected readonly active = signal(false);
     protected readonly floating = signal(false);
 }

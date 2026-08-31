@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSearchbar} from '@taiga-ui/addon-mobile';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
 import {TUI_PLATFORM} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [TuiSearchbar],
+    imports: [TuiSearchBar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
