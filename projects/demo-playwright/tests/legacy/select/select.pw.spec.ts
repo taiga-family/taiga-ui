@@ -3,6 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto, waitIcons} from '@demo-playwright/utils
 import {expect, test} from '@playwright/test';
 
 import {TuiSelectPO} from '../../../utils/page-objects/select.po';
+import {TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Select', () => {
     test.describe('Examples', () => {
@@ -16,7 +17,7 @@ test.describe('Select', () => {
 
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#template');
-            const selectLocator = example.locator('tui-select').first();
+            const selectLocator = example.locator(TUI_SELECT_LOCATORS.LEGACY).first();
             const select = new TuiSelectPO(selectLocator);
 
             await selectLocator.scrollIntoViewIfNeeded();
@@ -34,7 +35,7 @@ test.describe('Select', () => {
 
         test('opens dropdown by click on icon', async ({page}) => {
             const example = documentationPage.getExample('#base');
-            const selectLocator = example.locator('tui-select').first();
+            const selectLocator = example.locator(TUI_SELECT_LOCATORS.LEGACY).first();
             const select = new TuiSelectPO(selectLocator);
 
             await selectLocator.scrollIntoViewIfNeeded();
