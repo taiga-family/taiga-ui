@@ -10,9 +10,21 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
+            [description]="index === 1 ? sizeDescription : null"
             [heading]="example"
             [id]="example | tuiKebab"
         />
+
+        <ng-template #sizeDescription>
+            The size can be left to the
+            <code>tuiAppBarSize</code>
+            directive — it picks
+            <code>l</code>
+            on desktop and
+            <code>m</code>
+            on mobile screens — or set explicitly through
+            <code>size="l"</code>
+        </ng-template>
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />
