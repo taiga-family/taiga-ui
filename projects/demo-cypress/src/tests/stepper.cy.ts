@@ -39,6 +39,8 @@ describe('Stepper', () => {
     beforeEach(() => cy.mount(Sandbox));
 
     it('does not inherit CardLarge cell spacing', () => {
+        cy.get('[tuiCardLarge]').compareSnapshot('stepper-card-large');
+
         cy.get('[tuiStep]').each(($step) => {
             cy.wrap($step)
                 .should('have.css', 'margin-left', '0px')
