@@ -9,7 +9,7 @@
     background: var(--tui-background-base);
     box-shadow: none;
 
-    --tui-width: min(45rem, calc(100vw - 2rem));
+    --tui-width: min(45rem, 100vw);
     --tui-from: translateY(2rem);
 
     &.tui-enter,
@@ -53,6 +53,10 @@
         border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
         border-inline-start: calc(50vw - var(--tui-width) / 2) solid transparent;
         margin: 0 calc(var(--tui-width) / 2 - 50vw) 2rem;
+
+        &[data-size='l'] {
+            border-width: max(calc(50vw - var(--tui-width) / 2), 1rem);
+        }
     }
 
     > header,
