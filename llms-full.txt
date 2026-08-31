@@ -3189,9 +3189,9 @@ tui-app-bar {
 
 **Template:**
 ```html
-<tui-app-bar size="l">
+<tui-app-bar tuiAppBarSize>
 <button iconStart="@tui.chevron-left" tuiButton tuiSlot="left" type="button" > Action </button> Taiga UI </tui-app-bar>
-<tui-app-bar size="l">
+<tui-app-bar tuiAppBarSize>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
 <button tuiButton tuiSlot="right" type="button" > Action </button>
@@ -3203,7 +3203,7 @@ tui-app-bar {
 <button iconStart="@tui.x" tuiIconButton tuiSlot="right" type="button" > Close </button>
 </tui-app-bar>
 <tui-app-bar size="l">
-<button iconStart="@tui.chevron-left" tuiIconButton tuiSlot="left" type="button" > Back </button>
+<button iconStart="@tui.chevron-left" size="xs" tuiIconButton tuiSlot="left" type="button" > Back </button>
 <progress size="s" tuiProgressBar [max]="100" [style.width.rem]="10" [value]="35" ></progress>
 <button tuiButton tuiSlot="right" type="button" > Action </button>
 </tui-app-bar>
@@ -58475,6 +58475,59 @@ import {TuiList} from '@taiga-ui/layout';
 export default class Example {}
 ```
 
+#### Definition
+
+**Template:**
+```html
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h1>Regular</h1>
+</hgroup>
+</header>
+<dl tuiList>
+<ng-container *ngFor="let item of data | keyvalue">
+<dt>{{ item.key }}</dt>
+<dd>{{ item.value }}</dd>
+</ng-container>
+</dl>
+<br />
+<header tuiHeader="h6">
+<hgroup tuiTitle>
+<h1>Compact</h1>
+</hgroup>
+</header>
+<dl compact tuiList="m" >
+<ng-container *ngFor="let item of data | keyvalue">
+<dt>{{ item.key }}</dt>
+<dd>{{ item.value }}</dd>
+</ng-container>
+</dl>
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe, NgForOf} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader, TuiList} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [KeyValuePipe, NgForOf, TuiHeader, TuiList, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data = {
+        Name: 'Taiga UI',
+        Version: '4.96.0',
+        Component: 'List',
+    };
+}
+```
+
 #### Nested
 
 **Template:**
@@ -58511,6 +58564,7 @@ export default class Example {}
 </li>
 <li>First level</li>
 </ol>
+<br />
 <header tuiHeader="h6">
 <hgroup tuiTitle>
 <h1>Header of second list</h1>
@@ -58543,19 +58597,10 @@ import {TuiHeader, TuiList} from '@taiga-ui/layout';
     standalone: true,
     imports: [TuiHeader, TuiList, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
 ```
 
 #### Long text
@@ -58585,20 +58630,10 @@ import {TuiList} from '@taiga-ui/layout';
     standalone: true,
     imports: [TuiList],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    max-inline-size: 20rem;
-    gap: 1rem;
-}
 ```
 
 
@@ -58616,7 +58651,13 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Bulleted', 'Numbered', 'Nested', 'Long text'];
+    protected readonly examples = [
+        'Bulleted',
+        'Numbered',
+        'Definition',
+        'Nested',
+        'Long text',
+    ];
 }
 ```
 

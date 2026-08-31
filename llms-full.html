@@ -3198,9 +3198,9 @@ tui-app-bar {
 
 **Template:**
 ```html
-&lt;tui-app-bar size=&quot;l&quot;&gt;
+&lt;tui-app-bar tuiAppBarSize&gt;
 &lt;button iconStart=&quot;@tui.chevron-left&quot; tuiButton tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt; Action &lt;/button&gt; Taiga UI &lt;/tui-app-bar&gt;
-&lt;tui-app-bar size=&quot;l&quot;&gt;
+&lt;tui-app-bar tuiAppBarSize&gt;
 &lt;label tuiTitle&gt; Taiga UI &lt;span tuiSubtitle&gt;Components library&lt;/span&gt;
 &lt;/label&gt;
 &lt;button tuiButton tuiSlot=&quot;right&quot; type=&quot;button&quot; &gt; Action &lt;/button&gt;
@@ -3212,7 +3212,7 @@ tui-app-bar {
 &lt;button iconStart=&quot;@tui.x&quot; tuiIconButton tuiSlot=&quot;right&quot; type=&quot;button&quot; &gt; Close &lt;/button&gt;
 &lt;/tui-app-bar&gt;
 &lt;tui-app-bar size=&quot;l&quot;&gt;
-&lt;button iconStart=&quot;@tui.chevron-left&quot; tuiIconButton tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
+&lt;button iconStart=&quot;@tui.chevron-left&quot; size=&quot;xs&quot; tuiIconButton tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt;
 &lt;progress size=&quot;s&quot; tuiProgressBar [max]=&quot;100&quot; [style.width.rem]=&quot;10&quot; [value]=&quot;35&quot; &gt;&lt;/progress&gt;
 &lt;button tuiButton tuiSlot=&quot;right&quot; type=&quot;button&quot; &gt; Action &lt;/button&gt;
 &lt;/tui-app-bar&gt;
@@ -58484,6 +58484,59 @@ import {TuiList} from &#039;@taiga-ui/layout&#039;;
 export default class Example {}
 ```
 
+#### Definition
+
+**Template:**
+```html
+&lt;header tuiHeader=&quot;h6&quot;&gt;
+&lt;hgroup tuiTitle&gt;
+&lt;h1&gt;Regular&lt;/h1&gt;
+&lt;/hgroup&gt;
+&lt;/header&gt;
+&lt;dl tuiList&gt;
+&lt;ng-container *ngFor=&quot;let item of data | keyvalue&quot;&gt;
+&lt;dt&gt;{{ item.key }}&lt;/dt&gt;
+&lt;dd&gt;{{ item.value }}&lt;/dd&gt;
+&lt;/ng-container&gt;
+&lt;/dl&gt;
+&lt;br /&gt;
+&lt;header tuiHeader=&quot;h6&quot;&gt;
+&lt;hgroup tuiTitle&gt;
+&lt;h1&gt;Compact&lt;/h1&gt;
+&lt;/hgroup&gt;
+&lt;/header&gt;
+&lt;dl compact tuiList=&quot;m&quot; &gt;
+&lt;ng-container *ngFor=&quot;let item of data | keyvalue&quot;&gt;
+&lt;dt&gt;{{ item.key }}&lt;/dt&gt;
+&lt;dd&gt;{{ item.value }}&lt;/dd&gt;
+&lt;/ng-container&gt;
+&lt;/dl&gt;
+```
+**TypeScript:**
+```ts
+import {KeyValuePipe, NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiHeader, TuiList} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [KeyValuePipe, NgForOf, TuiHeader, TuiList, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data = {
+        Name: &#039;Taiga UI&#039;,
+        Version: &#039;4.96.0&#039;,
+        Component: &#039;List&#039;,
+    };
+}
+```
+
 #### Nested
 
 **Template:**
@@ -58520,6 +58573,7 @@ export default class Example {}
 &lt;/li&gt;
 &lt;li&gt;First level&lt;/li&gt;
 &lt;/ol&gt;
+&lt;br /&gt;
 &lt;header tuiHeader=&quot;h6&quot;&gt;
 &lt;hgroup tuiTitle&gt;
 &lt;h1&gt;Header of second list&lt;/h1&gt;
@@ -58552,19 +58606,10 @@ import {TuiHeader, TuiList} from &#039;@taiga-ui/layout&#039;;
     standalone: true,
     imports: [TuiHeader, TuiList, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
-    styleUrls: [&#039;./index.less&#039;],
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
 ```
 
 #### Long text
@@ -58594,20 +58639,10 @@ import {TuiList} from &#039;@taiga-ui/layout&#039;;
     standalone: true,
     imports: [TuiList],
     templateUrl: &#039;./index.html&#039;,
-    styleUrls: [&#039;./index.less&#039;],
     encapsulation,
     changeDetection,
 })
 export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    max-inline-size: 20rem;
-    gap: 1rem;
-}
 ```
 
 
@@ -58625,7 +58660,13 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Bulleted&#039;, &#039;Numbered&#039;, &#039;Nested&#039;, &#039;Long text&#039;];
+    protected readonly examples = [
+        &#039;Bulleted&#039;,
+        &#039;Numbered&#039;,
+        &#039;Definition&#039;,
+        &#039;Nested&#039;,
+        &#039;Long text&#039;,
+    ];
 }
 ```
 
