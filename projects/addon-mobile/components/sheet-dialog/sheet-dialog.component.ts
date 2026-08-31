@@ -89,10 +89,7 @@ export class TuiSheetDialogComponent<I> {
     }
 
     protected onPointerChange(delta: number): void {
-        if (delta) {
-            this.interacted = true;
-        }
-
+        this.interacted = this.interacted || !!delta;
         this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!this.pointers && this.el.scrollTop <= 0) {
