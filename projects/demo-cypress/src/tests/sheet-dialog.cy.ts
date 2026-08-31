@@ -1,3 +1,4 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiSheetDialog,
@@ -5,6 +6,7 @@ import {
     TuiThemeColorService,
 } from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
+import {BehaviorSubject, delay} from 'rxjs';
 
 describe('TuiSheetDialog', () => {
     @Component({
@@ -58,6 +60,58 @@ describe('TuiSheetDialog', () => {
             });
 
         cy.get('tui-sheet-dialog').compareSnapshot('tui-sheet-dialog__1');
+    });
+});
+
+describe('TuiSheetDialog with async content', () => {
+    @Component({
+        imports: [AsyncPipe, TuiButton, TuiRoot, TuiSheetDialog],
+        template: `
+            <tui-root>
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="open = true"
+                >
+                    Show
+                </button>
+                <ng-template
+                    [tuiSheetDialogOptions]="{closable: true, bar: false}"
+                    [(tuiSheetDialog)]="open"
+                >
+                    @for (item of content$ | async; track item) {
+                        <div class="async-item">{{ item }}</div>
+                    }
+                </ng-template>
+            </tui-root>
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class Test {
+        protected open = false;
+
+        // Streams in after `ngAfterViewInit`, reproducing the reported scenario.
+        protected readonly content$ = new BehaviorSubject(
+            Array.from({length: 100}, (_, i) => i),
+        ).pipe(delay(500));
+    }
+
+    beforeEach(() => cy.mount(Test));
+
+    it('opens at the top of the sheet, not scrolled to the bottom', () => {
+        cy.get('button').click();
+        cy.get('.async-item').should('have.length', 100);
+
+        cy.get('tui-sheet-dialog').should(($el) => {
+            const el = $el[0]!;
+            const max = el.scrollHeight - el.clientHeight;
+
+            expect(max, 'content overflows and is scrollable').to.be.greaterThan(0);
+            expect(
+                el.scrollTop,
+                'sheet opens near the top, not snapped to the bottom',
+            ).to.be.lessThan(max / 2);
+        });
     });
 });
 
