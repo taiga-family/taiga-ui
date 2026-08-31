@@ -18,6 +18,7 @@
         "@angular/common": ">=16.0.0",
         "@angular/core": ">=16.0.0",
         "@ng-web-apis/common": "^4.14.0",
+        "@ng-web-apis/resize-observer": "^4.14.0",
         "@taiga-ui/cdk": "4.96.0",
         "@taiga-ui/core": "4.96.0",
         "@taiga-ui/kit": "4.96.0",
