@@ -2,14 +2,17 @@
     display: block;
     max-block-size: 20rem;
     inline-size: 20rem;
-    overflow-x: hidden;
     overscroll-behavior: none;
+    overflow-x: hidden;
 }
 
 .header {
     position: sticky;
     z-index: 1;
     inset-block-start: 0;
+    overflow: hidden;
+    margin-block-end: -2rem;
+    padding-block-end: 2rem;
 }
 
 search {
