@@ -41,18 +41,18 @@ export class TuiDropdownHover extends TuiDriver {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
+    private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
-    private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
     /**
      * Dropdown can be removed not only via click/touch –
      * swipe on mobile devices removes dropdown sheet without triggering new mouseover / mouseout events.
      */
-    private readonly dropdownExternalRemoval$ = toObservable(
-        inject(TuiDropdownDirective).ref,
-    ).pipe(filter((x) => !x && this.hovered));
+    private readonly dropdownExternalRemoval$ = toObservable(this.directive.ref).pipe(
+        filter((x) => !x && this.hovered),
+    );
 
     private readonly stream$ = merge(
         this.dropdownExternalRemoval$.pipe(
@@ -106,8 +106,11 @@ export class TuiDropdownHover extends TuiDriver {
 
     private isHovered(element: Element): boolean {
         const host = this.dropdownHost?.nativeElement || this.el;
+        // Only the dropdown's own content counts as a hovered area, not sibling
+        // overlays (e.g. a dialog) that attach to the same active zone as the host.
+        const zone = this.directive.ref()?.injector.get(TuiActiveZone, null);
         const hovered = host.contains(element);
-        const child = !this.el.contains(element) && this.activeZone.contains(element);
+        const child = !this.el.contains(element) && !!zone?.contains(element);
 
         return hovered || child;
     }
