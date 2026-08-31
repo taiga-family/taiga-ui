@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHeader, TuiList} from '@taiga-ui/layout';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiList, TuiHeader],
+    imports: [TuiList],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
