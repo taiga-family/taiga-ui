@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [5.22.0](https://github.com/taiga-family/taiga-ui/compare/v5.20.0...v5.22.0) (2026-08-31)
+## [5.22.0](https://github.com/taiga-family/taiga-ui/compare/v5.21.0...v5.22.0) (2026-08-31)
 
 ### 🐞 Bug Fixes
 
@@ -13,9 +13,6 @@ All notable changes to this project will be documented in this file. See
 - **addon-mobile:** `SheetDialog` opens at the top with async content
   ([#14859](https://github.com/taiga-family/taiga-ui/issues/14859))
   ([e31885c](https://github.com/taiga-family/taiga-ui/commit/e31885c55e7ab147e413b212fdaa6828818db763))
-- **addon-table:** `Table` fix infinite `tuiSortChange` loop on simultaneous sort change
-  ([#14801](https://github.com/taiga-family/taiga-ui/issues/14801))
-  ([109772a](https://github.com/taiga-family/taiga-ui/commit/109772a3a025596666c132b40b21205df65426ef))
 - **addon-table:** improve tuiCell selector specificity
   ([#14823](https://github.com/taiga-family/taiga-ui/issues/14823))
   ([4adb053](https://github.com/taiga-family/taiga-ui/commit/4adb05316b622b9875dd95136773d8a795582ce4))
@@ -34,21 +31,9 @@ All notable changes to this project will be documented in this file. See
 - **core:** `Dialog` fix minor fullscreen appearance issues
   ([#14848](https://github.com/taiga-family/taiga-ui/issues/14848))
   ([db6c554](https://github.com/taiga-family/taiga-ui/commit/db6c55408f7bb32393a09bc6f61ac708fdbd9047))
-- **core:** `DropdownHover` rollback broken changes ([#14782](https://github.com/taiga-family/taiga-ui/issues/14782))
-  ([8ed2faa](https://github.com/taiga-family/taiga-ui/commit/8ed2faa6f0d10409fc2a33889bcd29dc1a916be1))
 - **core:** `tuiDropdownHover` no longer opens when obscured by a dialog
   ([#14868](https://github.com/taiga-family/taiga-ui/issues/14868))
   ([6b22a41](https://github.com/taiga-family/taiga-ui/commit/6b22a418dd946d99b4f7da07916be979154e6ea3))
-- **core:** allow interactive `tuiDataList` empty content
-  ([#14808](https://github.com/taiga-family/taiga-ui/issues/14808))
-  ([83b73f8](https://github.com/taiga-family/taiga-ui/commit/83b73f8f4fe61cdcb65276b884376c5377ff4309))
-- **kit:** `CalendarRange` fix month display according to min/max limits
-  ([#14786](https://github.com/taiga-family/taiga-ui/issues/14786))
-  ([1a45ee8](https://github.com/taiga-family/taiga-ui/commit/1a45ee8fb57f8e247759b0db011e567190301e6d))
-- **kit:** `InputInline` fix for updateOn blur/submit ([#14792](https://github.com/taiga-family/taiga-ui/issues/14792))
-  ([8f6788c](https://github.com/taiga-family/taiga-ui/commit/8f6788cee5b8c631ac3325b32dd4edb422c1fb65))
-- **kit:** `InputNumber` add step support in tables ([#14747](https://github.com/taiga-family/taiga-ui/issues/14747))
-  ([ce0a8e5](https://github.com/taiga-family/taiga-ui/commit/ce0a8e5f516d5bfb1aae1af286d4db97540fe372))
 - **kit:** `Stepper` inside `CardLarge` ([#14846](https://github.com/taiga-family/taiga-ui/issues/14846))
   ([c4afa56](https://github.com/taiga-family/taiga-ui/commit/c4afa564a1be0d86ac8fe6a96759a3aeabe68cd1))
 - **kit:** `Tiles` fix SSR ([#14809](https://github.com/taiga-family/taiga-ui/issues/14809))
@@ -58,8 +43,6 @@ All notable changes to this project will be documented in this file. See
 - **kit:** close routable dialog after route params change
   ([#14866](https://github.com/taiga-family/taiga-ui/issues/14866))
   ([5f3cf4e](https://github.com/taiga-family/taiga-ui/commit/5f3cf4e691a23fbc7efad9329d44aa4ffe1fc452))
-- **kit:** empty InputSlider fix ([#14787](https://github.com/taiga-family/taiga-ui/issues/14787))
-  ([7686cef](https://github.com/taiga-family/taiga-ui/commit/7686cefc66e1278906f92c0ca6a39eb208671821))
 - **kit:** increase `Toast` block inset to prevent shadow clipping at screen edges
   ([#14838](https://github.com/taiga-family/taiga-ui/issues/14838))
   ([6af80d8](https://github.com/taiga-family/taiga-ui/commit/6af80d8438246ccc838ddf3bbd56b154f3c936cc))
@@ -67,45 +50,22 @@ All notable changes to this project will be documented in this file. See
   ([dc9727e](https://github.com/taiga-family/taiga-ui/commit/dc9727e1a54e101696e7e165708afdbfd4a8de8e))
 - **kit:** sync tabs when items change ([#14862](https://github.com/taiga-family/taiga-ui/issues/14862))
   ([b81f261](https://github.com/taiga-family/taiga-ui/commit/b81f261fc89a977e75006c2dbb22c44574dd56a5))
-- **kit:** textfield content overflow fix v5 ([#14798](https://github.com/taiga-family/taiga-ui/issues/14798))
-  ([c10561c](https://github.com/taiga-family/taiga-ui/commit/c10561c182fb6df7f0aafddf4926f0acdbad8b06))
 - **layout:** `AppBar` fix icon size according to specs
   ([#14837](https://github.com/taiga-family/taiga-ui/issues/14837))
   ([5ad616a](https://github.com/taiga-family/taiga-ui/commit/5ad616ad9082f607e583620790c80fd9090d0f8c))
-- **layout:** `BlockDetails` fix alignment in dialog ([#14741](https://github.com/taiga-family/taiga-ui/issues/14741))
-  ([a41ba02](https://github.com/taiga-family/taiga-ui/commit/a41ba020642f2f2a6b660467fa47d1e706fb3635))
 - **layout:** `FloatingContainer` fix width of actions nested in `tui-expand`
   ([#14813](https://github.com/taiga-family/taiga-ui/issues/14813))
   ([000f81d](https://github.com/taiga-family/taiga-ui/commit/000f81dbc4a7282b48b973eb65304011b3bce950))
-- **schematics:** skip templateUrl resolution for non-literal expressions
-  ([#14793](https://github.com/taiga-family/taiga-ui/issues/14793))
-  ([40bfc8b](https://github.com/taiga-family/taiga-ui/commit/40bfc8be900256ce73a85d2748ec6f83c875885a))
-- **schematics:** warn on removed legacy TuiTextarea/NativeFocusable/TableBarsHost in v5
-  ([#14776](https://github.com/taiga-family/taiga-ui/issues/14776))
-  ([4d72ec2](https://github.com/taiga-family/taiga-ui/commit/4d72ec26c4d353af3de01a9e17a35c87a91744a6))
 
 ### 🚀 Features
 
-- **addon-mobile:** `BottomSheet` add `bar` input to hide drag bar
-  ([#14777](https://github.com/taiga-family/taiga-ui/issues/14777))
-  ([136a1cb](https://github.com/taiga-family/taiga-ui/commit/136a1cb40040c4366908f59d748b18d1481aa8f6))
 - **addon-mobile:** `Searchbar` add new component ([#14803](https://github.com/taiga-family/taiga-ui/issues/14803))
   ([843e421](https://github.com/taiga-family/taiga-ui/commit/843e42111f0323a7590f38ffc33851956a0685f5))
-- **core:** support labels for buttons ([#14802](https://github.com/taiga-family/taiga-ui/issues/14802))
-  ([ea9c09f](https://github.com/taiga-family/taiga-ui/commit/ea9c09f1cbf48981265a2bbb47f143effdfe3dbc))
-- **experimental:** `ScrollWheel` add new component ([#14748](https://github.com/taiga-family/taiga-ui/issues/14748))
-  ([e1aaa80](https://github.com/taiga-family/taiga-ui/commit/e1aaa80eaafd83ce195ad887652a6d4f8a013a3e))
-- **kit:** `ComboBox` abstract value handling so it can be overridden
-  ([#14795](https://github.com/taiga-family/taiga-ui/issues/14795))
-  ([8a6a600](https://github.com/taiga-family/taiga-ui/commit/8a6a600e4fb5a2c82ef56cdddf3fbfa4bbef7eeb))
 - **kit:** `Meter` add new component ([#14818](https://github.com/taiga-family/taiga-ui/issues/14818))
   ([32f4ac2](https://github.com/taiga-family/taiga-ui/commit/32f4ac2d4f7117a2f38516117877b39fde8cfe3b))
 - **kit:** new version of `tuiFormatNumber` utility & `TuiFormatNumberPipe`
   ([#14692](https://github.com/taiga-family/taiga-ui/issues/14692))
   ([3cc8130](https://github.com/taiga-family/taiga-ui/commit/3cc8130dd8643e94616008482c7bceac2edadba4))
-- **kit:** update tests and documentation for tui-calendar-range component v5
-  ([#14774](https://github.com/taiga-family/taiga-ui/issues/14774))
-  ([336bbd6](https://github.com/taiga-family/taiga-ui/commit/336bbd62f2b792f49ec7c093f6937057c9ef3fd4))
 - **layout:** `List` add definition list support ([#14867](https://github.com/taiga-family/taiga-ui/issues/14867))
   ([7a2af14](https://github.com/taiga-family/taiga-ui/commit/7a2af1485dfc69890efa70142a779ed52f7bd9e0))
 
