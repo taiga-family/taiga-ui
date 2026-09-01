@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[69712],{69712:e=>{e.exports="<tui-scrollbar>\n    <p>Parent</p>\n    <child />\n</tui-scrollbar>\n"}}]);

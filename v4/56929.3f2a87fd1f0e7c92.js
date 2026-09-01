@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56929],{56929:e=>{e.exports='<header tuiHeader="h4">\n    <hgroup tuiTitle>\n        <h5 class="interactive-title">\n            Title\n            <tui-icon icon="@tui.chevron-right" />\n        </h5>\n        <p tuiSubtitle>Subtitle</p>\n    </hgroup>\n</header>\n'}}]);

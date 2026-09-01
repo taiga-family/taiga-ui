@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[2475],{2475:e=>{e.exports='<tui-reorder\n    class="list"\n    [(enabled)]="enabled"\n    [(items)]="items"\n></tui-reorder>\n<p>{{ items | json }}</p>\n<p>{{ enabled | json }}</p>\n'}}]);

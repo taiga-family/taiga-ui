@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32333],{32333:e=>{e.exports='<ng-container *ngFor="let index of 5 | tuiRepeatTimes">\n    {{ index }}\n</ng-container>\n'}}]);

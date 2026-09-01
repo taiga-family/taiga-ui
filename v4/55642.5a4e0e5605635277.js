@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[55642],{55642:e=>{e.exports=".field-large {\n    min-block-size: 9.375rem;\n}\n\n.field-small {\n    min-block-size: 3.5rem;\n}\n\n.field-medium {\n    min-block-size: 5rem;\n}\n"}}]);

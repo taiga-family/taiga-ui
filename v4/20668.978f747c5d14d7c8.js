@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[20668],{20668:e=>{e.exports="[tuiChip] {\n    max-inline-size: 6.25rem;\n}\n"}}]);

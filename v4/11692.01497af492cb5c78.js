@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11692],{11692:n=>{n.exports="p {\n    margin: 1.125rem;\n}\n\ntui-scrollbar {\n    outline: 1px solid;\n    resize: block;\n}\n"}}]);

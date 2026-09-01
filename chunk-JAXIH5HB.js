@@ -1,0 +1,32 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-textfield>
+    <label tuiLabel>Select date</label>
+    <input
+        tuiInputDate
+        [(ngModel)]="value"
+    />
+    <tui-calendar
+        *tuiDropdown
+        new
+        [contentDay]="day"
+        [contentMonth]="month"
+    />
+    <ng-template
+        #day
+        let-date
+    >
+        <span tuiTitle>
+            {{ date.day }}
+            <span tuiSubtitle>{{ getLabel(date) }}</span>
+        </span>
+    </ng-template>
+    <ng-template
+        #month
+        let-date
+    >
+        <span tuiTitle>
+            {{ date.toUtcNativeDate() | date: 'MMM' }}
+            <span tuiSubtitle>{{ date.year }}</span>
+        </span>
+    </ng-template>
+</tui-textfield>
+`;export{a as default};

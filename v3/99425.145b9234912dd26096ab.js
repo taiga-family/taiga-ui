@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[99425],{96857:n=>{n.exports='<tui-mobile-calendar\n    [max]="max"\n    [min]="min"\n></tui-mobile-calendar>\n'}}]);

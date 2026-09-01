@@ -1,0 +1,37 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page
+    header="BottomSheet"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A non-modal draggable sheet</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+            />
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <table tuiDocAPI>
+            <tr
+                name="[stops]"
+                tuiDocAPIItem
+                type="readonly string[]"
+            >
+                scroll snap stops
+            </tr>
+            <tr
+                name="[bar]"
+                tuiDocAPIItem
+                type="boolean"
+            >
+                shows/hides drag bar at the top of the sheet
+            </tr>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[73384],{73384:e=>{e.exports="<tui-badge>10 000 000 $</tui-badge>\n"}}]);

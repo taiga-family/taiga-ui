@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[57027],{17480:(_,a,c)=>{c.r(a),c.d(a,{TUI_CHINESE_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["号码","信用卡号码"],cardExpiry:["有效期","信用卡有效期"]}}}]);

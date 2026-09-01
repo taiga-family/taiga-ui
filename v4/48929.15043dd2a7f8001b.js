@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48929],{48929:e=>{e.exports='```html\n@for (index of 3 | tuiRepeatTimes; track index) {\n<div class="t-cell"></div>\n}\n```\n'}}]);

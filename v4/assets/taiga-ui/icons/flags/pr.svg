@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <rect width="40" height="40" fill="#F0F0F0" />
+    <rect y="32" width="40" height="8" fill="#D80027" />
+    <rect y="16" width="40" height="8" fill="#D80027" />
+    <rect width="40" height="8" fill="#D80027" />
+    <path d="M20 20L0 0V40L20 20Z" fill="#D9D9D9" />
+    <path d="M20 20L0 0V40L20 20Z" fill="#0052B4" />
+    <path
+        d="M8.15675 14.7826L9.44914 18.7682H13.6321L10.2482 21.2317L11.5405 25.2174L8.15675 22.7541L4.77281 25.2174L6.06544 21.2317L2.68158 18.7682H6.86419L8.15675 14.7826Z"
+        fill="#F0F0F0"
+    />
+</svg>

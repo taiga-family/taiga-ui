@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+    <g id="tuiIconColorLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path vector-effect="non-scaling-stroke" d="M0 18H24V22H0V18Z" fill="currentColor" stroke="none" />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M7 15L8.66667 11.16M17 15L15.3333 11.16M15.3333 11.16L12 3L8.66667 11.16M15.3333 11.16H8.66667"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

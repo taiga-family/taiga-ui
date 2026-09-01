@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40064],{40064:e=>{e.exports='<tui-counter\n    [step]="step"\n    [style.inline-size.rem]="10"\n    [(ngModel)]="value"\n>\n    <span [style.order]="-1">$</span>\n</tui-counter>\n'}}]);

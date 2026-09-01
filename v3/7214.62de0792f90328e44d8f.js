@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[7214],{7214:n=>{n.exports=".wrapper {\n    width: 20rem;\n}\n\n.buttons {\n    display: flex;\n    font: var(--tui-font-text-s);\n}\n"}}]);

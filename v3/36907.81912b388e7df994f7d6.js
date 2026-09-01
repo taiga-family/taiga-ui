@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[36907],{36907:a=>{a.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\nlabel {\n    cursor: pointer;\n}\n"}}]);

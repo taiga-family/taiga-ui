@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9706],{9706:e=>{e.exports='<tui-textfield *ngFor="let mode of supportedModes">\n    <label tuiLabel>{{ mode }}</label>\n\n    <input\n        tuiInputTime\n        type="time"\n        [mode]="mode"\n        [ngModel]="initialValue"\n    />\n</tui-textfield>\n'}}]);

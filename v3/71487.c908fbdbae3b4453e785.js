@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[71487],{71487:n=>{n.exports="```ts\nimport {TuiBottomSheetModule} from '@taiga-ui/addon-mobile';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiBottomSheetModule,\n  ],\n  // ...\n})\nexport class Example {}\n```\n"}}]);

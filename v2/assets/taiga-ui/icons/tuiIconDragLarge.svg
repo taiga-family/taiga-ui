@@ -1,0 +1,15 @@
+<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconDragLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <path
+                    d="M9 12a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM17 12a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM9 5a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM17 5a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM9 19a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM17 19a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[70233],{70233:e=>{e.exports="@sticky-header-height: 4.1875rem;\n\n:root {\n    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;\n}\n\nheader[tuiDocHeader] {\n    visibility: visible;\n}\n"}}]);

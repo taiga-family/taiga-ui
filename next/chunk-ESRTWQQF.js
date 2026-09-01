@@ -1,0 +1,15 @@
+import"./chunk-LQ6M4NCU.js";var i=`h4 {
+    display: flex;
+    block-size: 2rem;
+    align-items: center;
+    white-space: nowrap;
+    font: var(--tui-typography-heading-h5);
+    line-height: 2rem;
+    gap: 0.25rem;
+    margin: 0;
+}
+
+span {
+    color: var(--tui-text-tertiary);
+}
+`;export{i as default};

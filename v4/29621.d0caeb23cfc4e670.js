@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[29621],{29621:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.progress {\n    .transition(~'color, inline-size');\n\n    inline-size: 1rem;\n\n    &:not(&_active) {\n        inline-size: 0.5rem;\n        color: transparent;\n    }\n}\n"}}]);

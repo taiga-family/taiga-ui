@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26419],{26419:e=>{e.exports='<label tuiButton>\n    Upload file\n\n    <input type="file" />\n</label>\n'}}]);
