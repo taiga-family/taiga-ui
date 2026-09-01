@@ -22,7 +22,7 @@ import {TUI_BOTTOM_SHEET_OPTIONS} from './bottom-sheet.options';
         '[class._bar]': 'bar()',
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
-        // '(resize)': 'onScroll()',
+        '(resize)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
     },
 })
