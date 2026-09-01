@@ -75,6 +75,7 @@ jobs:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           publish_dir: ${{ env.DIST }}
           cname: taiga-ui.dev
+          force_orphan: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
