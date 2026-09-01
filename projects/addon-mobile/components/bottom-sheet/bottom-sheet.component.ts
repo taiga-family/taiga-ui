@@ -12,13 +12,6 @@ import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
 import {TUI_BOTTOM_SHEET_OPTIONS} from './bottom-sheet.options';
 
-const OPTIONS = {
-    duration: 20,
-    easing: 'ease-in',
-    fill: 'forwards',
-    composite: 'add',
-} as const;
-
 @Component({
     selector: 'tui-bottom-sheet',
     templateUrl: './bottom-sheet.template.html',
@@ -29,7 +22,7 @@ const OPTIONS = {
         '[class._bar]': 'bar()',
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
-        '(resize)': 'onScroll()',
+        // '(resize)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
     },
 })
@@ -49,9 +42,14 @@ export class TuiBottomSheet {
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
+        const css = this.el.getAnimations().some((a) => 'animationName' in a);
 
         this.el.style.setProperty('--t-height', `${scrollHeight}px`);
         this.el.style.setProperty('overflow', 'scroll');
-        this.el.animate([{transform}], OPTIONS);
+        this.el.animate([{transform}], {
+            duration: 20,
+            easing: 'ease-in',
+            fill: css ? 'none' : 'forwards',
+        });
     }
 }
