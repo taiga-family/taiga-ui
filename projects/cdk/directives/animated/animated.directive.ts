@@ -39,7 +39,7 @@ export class TuiAnimated {
     }
 
     protected remove(): void {
-        if (this.el.isConnected && !this.el.getAnimations?.().length) {
+        if (this.el.isConnected && !getAnimations(this.el).length) {
             this.el.classList.remove(TUI_ENTER);
         }
     }
@@ -63,11 +63,11 @@ function wrap(renderer: Renderer2): void {
 
         el.classList.remove(TUI_ENTER);
 
-        const {length} = el.getAnimations?.() || [];
+        const {length} = getAnimations(el);
 
         el.classList.add(TUI_LEAVE);
 
-        const animations = el.getAnimations?.() ?? [];
+        const animations = getAnimations(el);
         const last = animations[animations.length - 1];
 
         const finish = (): void => {
@@ -83,4 +83,8 @@ function wrap(renderer: Renderer2): void {
             finish();
         }
     };
+}
+
+function getAnimations(el: Element): Animation[] {
+    return el.getAnimations?.().filter((animation) => 'animationName' in animation) || [];
 }

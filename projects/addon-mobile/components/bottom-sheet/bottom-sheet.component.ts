@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
+    inject,
     input,
     viewChild,
     viewChildren,
@@ -9,10 +10,13 @@ import {
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
+import {TUI_BOTTOM_SHEET_OPTIONS} from './bottom-sheet.options';
+
 const OPTIONS = {
     duration: 20,
     easing: 'ease-in',
     fill: 'forwards',
+    composite: 'add',
 } as const;
 
 @Component({
@@ -33,9 +37,10 @@ export class TuiBottomSheet {
     private readonly elements = viewChildren<ElementRef<HTMLElement>>('stops');
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
+    private readonly options = inject(TUI_BOTTOM_SHEET_OPTIONS);
 
-    public readonly stops = input<readonly string[]>(['1.5rem']);
-    public readonly bar = input(true);
+    public readonly stops = input(this.options.stops);
+    public readonly bar = input(this.options.bar);
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;
