@@ -18,7 +18,7 @@ import {NgControl} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsElementEditable, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -174,6 +174,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected onResize({clientWidth}: HTMLElement): void {
         this.el.style.setProperty('--t-side', tuiPx(clientWidth));
+    }
+
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor()?.setValue(value);
+
+        if (this.dropdown.content() && tuiIsElementEditable(this.open.nativeElement)) {
+            this.open.toggle(true);
+        }
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
