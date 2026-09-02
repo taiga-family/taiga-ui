@@ -1,4 +1,5 @@
 import {
+    computed,
     Directive,
     inject,
     InjectionToken,
@@ -52,18 +53,27 @@ export function tuiTextfieldOptionsProvider(
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
-
-    public readonly appearance = input(this.options.appearance(), {
+    private readonly appearanceInput = input<string | undefined>(undefined, {
         alias: 'tuiTextfieldAppearance',
     });
-
-    public readonly size = input(this.options.size(), {
+    private readonly sizeInput = input<TuiSizeL | TuiSizeS | '' | undefined>(undefined, {
         alias: 'tuiTextfieldSize',
-        transform: (size: TuiSizeL | TuiSizeS | ''): TuiSizeL | TuiSizeS =>
-            size || DEFAULT.size,
     });
-
-    public readonly cleaner = input(this.options.cleaner(), {
+    private readonly cleanerInput = input<boolean | undefined>(undefined, {
         alias: 'tuiTextfieldCleaner',
     });
+
+    public readonly appearance = computed(
+        () => this.appearanceInput() ?? this.options.appearance(),
+    );
+
+    public readonly size = computed<TuiSizeL | TuiSizeS>(() => {
+        const size = this.sizeInput();
+
+        return size === undefined ? this.options.size() : size || DEFAULT.size;
+    });
+
+    public readonly cleaner = computed(
+        () => this.cleanerInput() ?? this.options.cleaner(),
+    );
 }
