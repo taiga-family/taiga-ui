@@ -1,0 +1,37 @@
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer {
+    display: flex;
+    max-block-size: 0;
+    align-items: flex-end;
+}
+
+[tuiFloatingContainer] {
+    inline-size: 100%;
+}
+
+tui-bottom-sheet {
+    position: fixed;
+    inset: auto 0 calc(max(1rem, env(safe-area-inset-bottom)) - 2rem);
+    block-size: fit-content;
+
+    --tui-from: translateY(100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
+
+    [tuiItemGroup] {
+        padding: 0 1rem;
+        margin: 0.25rem -1rem 0;
+    }
+
+    [tuiFloatingContainer] {
+        animation: none;
+        padding: 0;
+    }
+}

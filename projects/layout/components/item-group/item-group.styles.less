@@ -7,7 +7,7 @@
 
     --tui-item-margin: 0.25rem;
 
-    & > *:not(tui-items-with-more) {
+    & > :not(tui-items-with-more, :last-child) {
         margin-block-end: var(--tui-item-margin);
         margin-inline-end: var(--tui-item-margin);
     }
@@ -26,7 +26,7 @@
     &._initialized {
         tui-items-with-more {
             .t-item {
-                & > * {
+                & > :not(:last-child) {
                     margin-block-end: var(--tui-item-margin);
                     margin-inline-end: var(--tui-item-margin);
                 }
