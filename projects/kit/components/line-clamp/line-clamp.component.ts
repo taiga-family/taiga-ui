@@ -44,6 +44,8 @@ type Measure = Pick<Element, 'clientWidth' | 'scrollHeight' | 'scrollWidth'>;
     hostDirectives: [TuiTransitioned],
     host: {
         '[style.line-height.px]': 'line()',
+        // Declarative, so that SSR output is already clamped before hydration
+        '[style.max-height.px]': 'maxHeight()',
         '(mouseenter)': 'update()',
         '(transitionend)': 'update()',
     },
@@ -54,8 +56,9 @@ export class TuiLineClamp {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
-    private readonly maxHeight = computed(() => this.line() * this.linesLimit());
     private readonly overflown = signal(false);
+
+    protected readonly maxHeight = computed(() => this.line() * this.linesLimit());
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
@@ -115,8 +118,7 @@ export class TuiLineClamp {
         const maxHeight = this.maxHeight();
         const overflown = scrollHeight > maxHeight || scrollWidth > clientWidth;
 
-        this.el.style.height = tuiPx(scrollHeight);
-        this.el.style.maxHeight = tuiPx(maxHeight);
+        // this.el.style.height = tuiPx(scrollHeight);
         this.el.classList.toggle('_overflown', overflown);
         this.setOverflown(overflown);
     }
