@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {tuiDateClamp, TuiDay, TuiDayRange, type TuiMonth} from '@taiga-ui/cdk/date-time';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
