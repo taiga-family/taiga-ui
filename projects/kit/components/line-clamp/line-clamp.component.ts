@@ -16,8 +16,8 @@ import {
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {tuiPx} from '@taiga-ui/cdk/utils';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
