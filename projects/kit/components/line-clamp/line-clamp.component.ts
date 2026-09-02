@@ -1,41 +1,42 @@
 import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
-    type AfterViewChecked,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     ElementRef,
     inject,
+    INJECTOR,
     input,
+    output,
+    signal,
     viewChild,
 } from '@angular/core';
-import {outputFromObservable, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
 import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    filter,
-    fromEvent,
-    map,
-    of,
-    pairwise,
-    startWith,
-    Subject,
-    switchMap,
-} from 'rxjs';
+import {filter, fromEvent, map, of, pairwise, startWith, switchMap} from 'rxjs';
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
+type Measure = Pick<Element, 'clientWidth' | 'scrollHeight' | 'scrollWidth'>;
+
 @Component({
     selector: 'tui-line-clamp',
-    imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
+    imports: [
+        PolymorpheusOutlet,
+        TuiHint,
+        TuiLineClampPositionDirective,
+        WaResizeObserver,
+    ],
     templateUrl: './line-clamp.template.html',
     styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,17 +45,17 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     host: {
         '[style.line-height.px]': 'line()',
         '(mouseenter)': 'update()',
-        '(resize)': 'update()',
         '(transitionend)': 'update()',
     },
 })
-export class TuiLineClamp implements AfterViewChecked {
+export class TuiLineClamp {
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly isOverflown$ = new Subject<boolean>();
+    private readonly injector = inject(INJECTOR);
     private readonly maxHeight = computed(() => this.line() * this.linesLimit());
+    private readonly overflown = signal(false);
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
@@ -65,9 +66,20 @@ export class TuiLineClamp implements AfterViewChecked {
         transform: coerceBooleanProperty,
     });
 
-    public readonly overflownChange = outputFromObservable(
-        this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
-    );
+    public readonly overflownChange = output<boolean>();
+
+    protected readonly refresh = effect(() => {
+        this.content();
+        this.maxHeight();
+
+        afterNextRender(
+            {
+                earlyRead: () => this.measure(),
+                write: (measures) => this.apply(measures),
+            },
+            {injector: this.injector},
+        );
+    });
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -85,25 +97,34 @@ export class TuiLineClamp implements AfterViewChecked {
         {initialValue: 0},
     );
 
-    public ngAfterViewChecked(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
-    }
-
-    protected get overflown(): boolean {
-        const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
-        const {clientWidth} = this.el;
-
-        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
-    }
-
-    protected get computedContent(): PolymorpheusContent {
-        return this.showHint() && this.overflown ? this.content() : '';
-    }
+    protected readonly computedContent = computed(() =>
+        this.showHint() && this.overflown() ? this.content() : '',
+    );
 
     protected update(): void {
-        this.el.style.height = tuiPx(this.outlet().nativeElement.scrollHeight);
-        this.el.style.maxHeight = tuiPx(this.maxHeight());
-        this.el.classList.toggle('_overflown', this.overflown);
+        this.apply(this.measure());
+    }
+
+    private measure(): Measure {
+        const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
+
+        return {scrollHeight, scrollWidth, clientWidth: this.el.clientWidth};
+    }
+
+    private apply({scrollHeight, scrollWidth, clientWidth}: Measure): void {
+        const maxHeight = this.maxHeight();
+        const overflown = scrollHeight > maxHeight || scrollWidth > clientWidth;
+
+        this.el.style.height = tuiPx(scrollHeight);
+        this.el.style.maxHeight = tuiPx(maxHeight);
+        this.el.classList.toggle('_overflown', overflown);
+        this.setOverflown(overflown);
+    }
+
+    private setOverflown(overflown: boolean): void {
+        if (this.overflown() !== overflown) {
+            this.overflown.set(overflown);
+            this.overflownChange.emit(overflown);
+        }
     }
 }
