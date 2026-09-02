@@ -95,6 +95,7 @@
     <tui-calendar-mobile
         #calendar
         mode="range"
+        [min]="today"
         [value]="range()"
     />
     @if (calendar.value()) {

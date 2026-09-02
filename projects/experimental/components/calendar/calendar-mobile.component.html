@@ -12,6 +12,7 @@
                 type="button"
                 class="t-button"
                 [appearance]="getAppearance(month)"
+                [disabled]="month.monthBefore(min()) || month.monthAfter(max())"
                 (click)="setMonth(month)"
             >
                 {{ i18n()[month.month] }} {{ month.year }}
