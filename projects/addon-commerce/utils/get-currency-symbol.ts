@@ -5,6 +5,10 @@ import {
 } from '@taiga-ui/addon-commerce/types';
 
 export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | null {
+    if (typeof currency === 'number') {
+        return tuiGetCurrencySymbol(String(currency).padStart(3, '0'));
+    }
+
     switch (currency) {
         case TuiCurrency.ArmenianDram:
         case TuiCurrencyCode.ArmenianDram:

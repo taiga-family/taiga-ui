@@ -19,6 +19,20 @@ describe('getCurrencySymbol', () => {
         });
     });
 
+    describe('number', () => {
+        it('returns currency symbol by numeric currency code', () => {
+            expect(tuiGetCurrencySymbol(344)).toBe('HK$');
+        });
+
+        it('pads numeric currency code with leading zero', () => {
+            expect(tuiGetCurrencySymbol(36)).toBe('A$');
+        });
+
+        it('returns null if numeric currency code is not found', () => {
+            expect(tuiGetCurrencySymbol(999)).toBeNull();
+        });
+    });
+
     it('ruble', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Ruble)).toBe('₽');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Ruble)).toBe('₽');
