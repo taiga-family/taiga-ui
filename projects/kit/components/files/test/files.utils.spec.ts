@@ -9,44 +9,46 @@ import {
 const REJECTED = new File([], 'photo.png', {type: 'image/png'});
 const ACCEPTED = new File([], 'photo.jpg', {type: 'image/jpeg'});
 
-describe('tuiFilesRejected', () => {
-    it('returns an empty array for a missing control', () => {
-        expect(tuiFilesRejected(null)).toEqual([]);
-    });
-
-    it('reads both rejection reasons', () => {
-        const control = new FormControl([ACCEPTED, REJECTED]);
-
-        control.setErrors({
-            [TUI_FORMAT_ERROR]: {$implicit: [REJECTED]},
-            [TUI_SIZE_ERROR]: {$implicit: [ACCEPTED]},
+describe('File-related utils', () => {
+    describe('tuiFilesRejected', () => {
+        it('returns an empty array for a missing control', () => {
+            expect(tuiFilesRejected(null)).toEqual([]);
         });
 
-        expect(tuiFilesRejected(control)).toEqual([REJECTED, ACCEPTED]);
-    });
+        it('reads both rejection reasons', () => {
+            const control = new FormControl([ACCEPTED, REJECTED]);
 
-    it('deduplicates a file rejected for both reasons', () => {
-        const control = new FormControl([REJECTED]);
+            control.setErrors({
+                [TUI_FORMAT_ERROR]: {$implicit: [REJECTED]},
+                [TUI_SIZE_ERROR]: {$implicit: [ACCEPTED]},
+            });
 
-        control.setErrors({
-            [TUI_FORMAT_ERROR]: {$implicit: [REJECTED]},
-            [TUI_SIZE_ERROR]: {$implicit: [REJECTED]},
+            expect(tuiFilesRejected(control)).toEqual([REJECTED, ACCEPTED]);
         });
 
-        expect(tuiFilesRejected(control)).toEqual([REJECTED]);
+        it('deduplicates a file rejected for both reasons', () => {
+            const control = new FormControl([REJECTED]);
+
+            control.setErrors({
+                [TUI_FORMAT_ERROR]: {$implicit: [REJECTED]},
+                [TUI_SIZE_ERROR]: {$implicit: [REJECTED]},
+            });
+
+            expect(tuiFilesRejected(control)).toEqual([REJECTED]);
+        });
     });
-});
 
-describe('tuiFilesAccepted', () => {
-    it('returns an empty array for a missing control', () => {
-        expect(tuiFilesAccepted(null)).toEqual([]);
-    });
+    describe('tuiFilesAccepted', () => {
+        it('returns an empty array for a missing control', () => {
+            expect(tuiFilesAccepted(null)).toEqual([]);
+        });
 
-    it('drops the rejected files', () => {
-        const control = new FormControl([ACCEPTED, REJECTED]);
+        it('drops the rejected files', () => {
+            const control = new FormControl([ACCEPTED, REJECTED]);
 
-        control.setErrors({[TUI_FORMAT_ERROR]: {$implicit: [REJECTED]}});
+            control.setErrors({[TUI_FORMAT_ERROR]: {$implicit: [REJECTED]}});
 
-        expect(tuiFilesAccepted(control)).toEqual([ACCEPTED]);
+            expect(tuiFilesAccepted(control)).toEqual([ACCEPTED]);
+        });
     });
 });

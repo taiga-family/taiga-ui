@@ -17,8 +17,8 @@ const BYTES_PER_MIB = 1024 * BYTES_PER_KIB;
  */
 function getRejected(control: AbstractControl | null | undefined, key: string): File[] {
     /**
-     * `getError(key)` is not an option: 
-     * the fake `NgControl` signal forms provide has only the `errors` getter, 
+     * `getError(key)` is not an option:
+     * the fake `NgControl` signal forms provide has only the `errors` getter,
      * and calling the missing method throws
      */
     const error = control?.errors?.[key];

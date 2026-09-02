@@ -1,9 +1,10 @@
 import {Directive, inject, type OnChanges, type OnInit} from '@angular/core';
 import {
-    AbstractControl, NG_VALIDATORS,
+    type AbstractControl,
+    NG_VALIDATORS,
     type ValidationErrors,
     type ValidatorFn,
-    Validators
+    Validators,
 } from '@angular/forms';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -27,8 +28,8 @@ export class TuiInputFilesValidator extends TuiValidator implements OnInit, OnCh
     public accept = this.options.accept;
     public maxFileSize = this.options.maxFileSize;
 
-    public override validate = 
-        (control: AbstractControl): ValidationErrors | null => this.validator(control);
+    public override validate = (control: AbstractControl): ValidationErrors | null =>
+        this.validator(control);
 
     public override ngOnChanges(): void {
         this.update();
