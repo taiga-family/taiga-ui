@@ -30,7 +30,14 @@ import {TuiDatePicker} from './date-picker';
 export class TuiCalendarMobileComponent<
     T extends 'multi' | 'range' | 'single',
 > extends TuiDatePicker<T> {
-    protected override updateMonth(): void {}
+    private ready = false;
+
+    protected override updateMonth(day?: TuiDay | null): void {
+        if (!this.ready) {
+            super.updateMonth(day);
+            this.ready = true;
+        }
+    }
 
     protected override getMonth(month: number): TuiMonth {
         return this.month().append({month});

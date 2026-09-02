@@ -1,4 +1,7 @@
-<tui-month class="t-labels" />
+<tui-month
+    class="t-labels"
+    [showWeek]="showWeek()"
+/>
 <tui-scroll-wheel class="t-scroll">
     <ng-template let-index>
         @let month = getMonth(index);
