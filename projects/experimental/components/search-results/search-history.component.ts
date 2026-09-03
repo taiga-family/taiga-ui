@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, INJECTOR, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -9,7 +10,7 @@ import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiAvatar} from '@taiga-ui/kit/components/avatar';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
-import {filter, map} from 'rxjs';
+import {filter, map, skip} from 'rxjs';
 
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
@@ -34,8 +35,9 @@ export class TuiSearchHistory {
     protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
 
-    protected readonly $ = this.control.valueChanges
-        ?.pipe(
+    protected readonly $ = tuiControlValue<string>(this.control, inject(INJECTOR))
+        .pipe(
+            skip(1),
             map(String),
             filter((item) => !!item && !this.popular().includes(item)),
             takeUntilDestroyed(),
@@ -69,8 +71,7 @@ export class TuiSearchHistory {
     }
 
     protected select(item: string): void {
-        this.control.control?.setValue(item);
-        this.textfield.input()?.nativeElement.focus();
+        this.textfield.handleOption(item);
     }
 
     private get items(): readonly string[] {
