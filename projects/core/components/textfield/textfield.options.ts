@@ -46,16 +46,21 @@ export function tuiTextfieldOptionsProvider(
     };
 }
 
+function injectTextfieldOptions(): TuiTextfieldOptions {
+    return (
+        inject<TuiTextfieldOptions>(TuiTextfieldOptionsDirective, {
+            optional: true,
+            skipSelf: true,
+        }) ?? inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true})
+    );
+}
+
 @Directive({
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
-    private readonly options =
-        inject<TuiTextfieldOptions>(TuiTextfieldOptionsDirective, {
-            optional: true,
-            skipSelf: true,
-        }) ?? inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
+    private readonly options = injectTextfieldOptions();
 
     public readonly appearance = input(this.options.appearance(), {
         alias: 'tuiTextfieldAppearance',
