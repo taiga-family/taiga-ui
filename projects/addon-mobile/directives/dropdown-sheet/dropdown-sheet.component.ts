@@ -38,9 +38,9 @@ export class TuiDropdownSheetComponent {
     protected readonly sub = toObservable(this.content)
         .pipe(
             tuiIfMap((content) =>
-                this.dialogs.open(content, this.directive.tuiDropdownSheet()).pipe(
-                    finalize(() => this.dropdown.toggle(false)),
-                ),
+                this.dialogs
+                    .open(content, this.directive.tuiDropdownSheet())
+                    .pipe(finalize(() => this.dropdown.toggle(false))),
             ),
             takeUntilDestroyed(),
         )
