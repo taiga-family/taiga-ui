@@ -13,12 +13,12 @@ import {
     signal,
     viewChild,
 } from '@angular/core';
-import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
+import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
 import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent, map, of, pairwise, startWith, switchMap} from 'rxjs';
@@ -31,23 +31,20 @@ type Measure = Pick<Element, 'clientWidth' | 'scrollHeight' | 'scrollWidth'>;
 
 @Component({
     selector: 'tui-line-clamp',
-    imports: [
-        PolymorpheusOutlet,
-        TuiHint,
-        TuiLineClampPositionDirective,
-        WaResizeObserver,
-    ],
+    imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
     templateUrl: './line-clamp.template.html',
     styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
+    providers: [
+        {provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox},
+        WaResizeObserverService,
+    ],
     hostDirectives: [TuiTransitioned],
     host: {
+        '[class._overflown]': 'overflown()',
         '[style.line-height.px]': 'line()',
-        // Declarative, so that SSR output is already clamped before hydration
         '[style.max-height.px]': 'maxHeight()',
-        '(mouseenter)': 'update()',
-        '(transitionend)': 'update()',
+        '(mouseenter)': 'apply(measure())',
     },
 })
 export class TuiLineClamp {
@@ -56,8 +53,10 @@ export class TuiLineClamp {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
-    private readonly overflown = signal(false);
+    private readonly timeline = inject(TUI_TIMELINE_SUPPORT);
+    private readonly overflows = signal(0);
 
+    protected readonly overflown = signal(false);
     protected readonly maxHeight = computed(() => this.line() * this.linesLimit());
 
     public readonly line = computed(() => this.lineHeight() + this.offset());
@@ -71,18 +70,26 @@ export class TuiLineClamp {
 
     public readonly overflownChange = output<boolean>();
 
-    protected readonly refresh = effect(() => {
-        this.content();
-        this.maxHeight();
+    protected readonly refresh =
+        !this.timeline &&
+        effect(() => {
+            this.content();
+            this.maxHeight();
 
-        afterNextRender(
-            {
-                earlyRead: () => this.measure(),
-                write: (measures) => this.apply(measures),
-            },
-            {injector: this.injector},
-        );
-    });
+            afterNextRender(
+                {
+                    earlyRead: () => this.measure(),
+                    write: (measure) => this.apply(measure),
+                },
+                {injector: this.injector},
+            );
+        });
+
+    protected readonly resize =
+        !this.timeline &&
+        inject(WaResizeObserverService)
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => this.apply(this.measure()));
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -104,23 +111,20 @@ export class TuiLineClamp {
         this.showHint() && this.overflown() ? this.content() : '',
     );
 
-    protected update(): void {
-        this.apply(this.measure());
+    protected onOverflow(overflown: boolean): void {
+        this.overflows.update((val) => val + (overflown ? 1 : -1));
+
+        this.setOverflown(this.overflows() > 0);
     }
 
-    private measure(): Measure {
+    protected measure(): Measure {
         const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
 
         return {scrollHeight, scrollWidth, clientWidth: this.el.clientWidth};
     }
 
-    private apply({scrollHeight, scrollWidth, clientWidth}: Measure): void {
-        const maxHeight = this.maxHeight();
-        const overflown = scrollHeight > maxHeight || scrollWidth > clientWidth;
-
-        this.el.style.height = tuiPx(scrollHeight);
-        this.el.classList.toggle('_overflown', overflown);
-        this.setOverflown(overflown);
+    protected apply({scrollHeight, scrollWidth, clientWidth}: Measure): void {
+        this.setOverflown(scrollHeight > this.maxHeight() || scrollWidth > clientWidth);
     }
 
     private setOverflown(overflown: boolean): void {
