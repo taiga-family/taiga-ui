@@ -15,6 +15,7 @@ export * from '@taiga-ui/core/components/notification';
 export * from '@taiga-ui/core/components/radio';
 export * from '@taiga-ui/core/components/root';
 export * from '@taiga-ui/core/components/scrollbar';
+export * from '@taiga-ui/core/components/shrink-wrap';
 export * from '@taiga-ui/core/components/slider';
 export * from '@taiga-ui/core/components/spin-button';
 export * from '@taiga-ui/core/components/textfield';

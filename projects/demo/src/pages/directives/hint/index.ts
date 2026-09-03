@@ -12,7 +12,15 @@ import {TuiBadge} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly examples = ['Basic', 'Customizing', 'Nested', 'Auto', 'Form'];
+    protected readonly examples = [
+        'Basic',
+        'Customizing',
+        'Nested',
+        'Auto',
+        'Form',
+        'Balanced width',
+    ];
+
     protected showDelay = 500;
     protected hideDelay = 200;
     protected readonly routes = DemoRoute;

@@ -1,3 +1,1 @@
-export * from './shrink-wrap';
-export * from './shrink-wrap.component';
-export * from './shrink-wrap.directive';
+export * from '@taiga-ui/core/components/shrink-wrap';

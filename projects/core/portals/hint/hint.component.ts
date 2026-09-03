@@ -20,6 +20,7 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiShrinkWrap} from '@taiga-ui/core/components/shrink-wrap';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
@@ -51,17 +52,23 @@ const ARROW_OFFSET = 22;
 
 @Component({
     selector: 'tui-hint',
-    imports: [PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet, TuiShrinkWrap],
     template: `
-        <ng-content />
-        <span
-            *polymorpheusOutlet="content() as text; context: hint.context()"
-            [innerHTML]="text"
-        ></span>
+        <div tuiShrinkWrap="var(--t-hint-content-max-inline-size)">
+            <tui-shrink-wrap>
+                <ng-content />
+                <span
+                    *polymorpheusOutlet="content() as text; context: hint.context()"
+                    [innerHTML]="text"
+                ></span>
+            </tui-shrink-wrap>
+        </div>
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiGetHintProviders(), tuiButtonOptionsProvider({size: 's'})],
+    // Keep ShrinkWrap on an inner element because Hint enter/leave animations
+    // override its scroll-driven animation when both are applied to the host.
     hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
     host: {
         role: 'tooltip',
@@ -152,7 +159,6 @@ export class TuiHintComponent {
         const startY = Math.round(top) === Math.round(rect.top);
         const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
         const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
-
         const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
             rect.top + rect.height / 2 - top,
