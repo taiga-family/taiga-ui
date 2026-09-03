@@ -225,7 +225,7 @@ describe('tui-error + signal forms', () => {
         const UNFINISHED_MESSAGE = 'Finish the date';
 
         @Directive()
-        abstract class DisabledItemSandbox {
+        abstract class Sandbox {
             public readonly unfinishedMessage = UNFINISHED_MESSAGE;
 
             public readonly disabledItemHandler = (day: TuiDay): boolean =>
@@ -257,7 +257,7 @@ describe('tui-error + signal forms', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
             providers: [tuiValidationErrorsProvider({tuiDisabledItem: BANNED_MESSAGE})],
         })
-        class DisabledItemSignalFormsSandbox extends DisabledItemSandbox {
+        class DisabledItemSignalFormsSandbox extends Sandbox {
             private readonly value = signal<TuiDay | null>(null);
 
             public readonly f = form(this.value);
@@ -288,12 +288,12 @@ describe('tui-error + signal forms', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
             providers: [tuiValidationErrorsProvider({tuiDisabledItem: BANNED_MESSAGE})],
         })
-        class DisabledItemReactiveFormsSandbox extends DisabledItemSandbox {
+        class DisabledItemReactiveFormsSandbox extends Sandbox {
             public readonly control = new FormControl<TuiDay | null>(null);
         }
 
         const SANDBOXES: ReadonlyArray<{
-            readonly component: Type<DisabledItemSandbox>;
+            readonly component: Type<Sandbox>;
             readonly title: string;
         }> = [
             {
