@@ -16,6 +16,20 @@ export interface TuiSignalValidationError {
     readonly message?: string;
 }
 
+/**
+ * @deprecated use import {CompatValidationError} from '@angular/forms/signals'
+ * Just temporary copy-pasted types until Taiga UI supports Angular <22
+ * https://github.com/angular/angular/blob/f44bf0fe221288d03107cc78acfbe333a9a9b7b5/packages/forms/signals/src/compat/validation_errors.ts#L19
+ * TODO: replace all usages `TuiCompatValidationError` by built-in Angular alternative
+ */
+export interface TuiCompatValidationError extends TuiSignalValidationError {
+    /**
+     * Signal forms wrap a reactive error into `CompatValidationError`
+     * https://github.com/angular/angular/blob/f44bf0fe221288d03107cc78acfbe333a9a9b7b5/packages/forms/signals/src/compat/validation_errors.ts#L55-L65
+     */
+    readonly context?: unknown;
+}
+
 // TODO: delete when all usages of `TuiFormValueControl` will be replaced by built-in Angular alternative
 interface FormUiControl {
     readonly errors?:
