@@ -51,7 +51,7 @@ export function tuiTextfieldOptionsProvider(
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
-    private readonly options =
+    private readonly options: TuiTextfieldOptions =
         inject(TuiTextfieldOptionsDirective, {optional: true, skipSelf: true}) ??
         inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
