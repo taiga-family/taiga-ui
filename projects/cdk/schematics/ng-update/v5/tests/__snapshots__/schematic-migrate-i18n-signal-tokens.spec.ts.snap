@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update migrateI18nSignalTokens adds a TODO when useFactory has a block body: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return of(['Б']);
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+// TODO: (Taiga UI migration) i18n token is a Signal in v5, not an Observable. Provide the value via signal(...), or convert an existing stream with toSignal(...).
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return of(['Б']);
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens leaves an already signal-wrapped value untouched while migrating siblings: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, signal} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: signal(['Б'])},
+                        {provide: TUI_FILE_TEXTS, useValue: of({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component, signal} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: signal(['Б'])},
+                        {provide: TUI_FILE_TEXTS, useValue: signal({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens migrates a provider declared inside @NgModule: test.ts 1`] = `
+{
+  "0. Before": "
+                import {NgModule} from '@angular/core';
+                import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @NgModule({
+                    providers: [
+                        {
+                            provide: TUI_PAGINATION_TEXTS,
+                            useValue: of(['Назад', 'Вперёд']),
+                        },
+                    ],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "
+                import { NgModule, signal } from '@angular/core';
+                import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @NgModule({
+                    providers: [
+                        {
+                            provide: TUI_PAGINATION_TEXTS,
+                            useValue: signal(['Назад', 'Вперёд']),
+                        },
+                    ],
+                })
+                export class TestModule {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens promotes a stream useValue to a toSignal factory: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useValue: inject(SomeService).units$,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => toSignal(inject(SomeService).units$),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens reuses an existing signal import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, signal} from '@angular/core';
+                import {TUI_FILE_TEXTS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_FILE_TEXTS, useValue: of({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component, signal} from '@angular/core';
+                import {TUI_FILE_TEXTS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_FILE_TEXTS, useValue: signal({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens unwraps of() into signal() for TUI_DIGITAL_INFORMATION_UNITS: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useValue: of(['Б', 'КБ', 'МБ']),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import { Component, signal } from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useValue: signal(['Б', 'КБ', 'МБ']),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens unwraps of() with a referenced value into signal(): test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                const UNITS = ['Б', 'КБ', 'МБ'];
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: of(UNITS)},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import { Component, signal } from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                const UNITS = ['Б', 'КБ', 'МБ'];
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: signal(UNITS)},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens wraps a plain array literal useValue into signal(): test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_COUNTRIES} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_COUNTRIES, useValue: {RU: 'Россия'}}],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import { Component, signal } from '@angular/core';
+                import {TUI_COUNTRIES} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [{provide: TUI_COUNTRIES, useValue: signal({RU: 'Россия'})}],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens wraps a useFactory stream with toSignal: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => of(['Б']),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => toSignal(of(['Б'])),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens wraps a useFactory with dependencies and keeps its parameters: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_FILE_TEXTS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_FILE_TEXTS,
+                            useFactory: (service: SomeService) => service.fileTexts$,
+                            deps: [SomeService],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component} from '@angular/core';
+                import {TUI_FILE_TEXTS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_FILE_TEXTS,
+                            useFactory: (service: SomeService) => toSignal(service.fileTexts$),
+                            deps: [SomeService],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
