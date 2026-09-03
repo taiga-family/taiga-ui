@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
+import {TuiShrinkWrap} from '@taiga-ui/core';
+import {TuiMessage} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiMessage, TuiShrinkWrap],

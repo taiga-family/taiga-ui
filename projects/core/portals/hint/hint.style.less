@@ -2,8 +2,8 @@
 
 :host {
     position: absolute;
-    max-inline-size: ~'min(20rem, calc(100% - 1rem))';
-    padding: 0.75rem 1rem;
+    max-inline-size: ~'min(var(--t-hint-max-inline-size), calc(100% - 1rem))';
+    padding: 0.75rem var(--t-hint-padding-inline);
     background: var(--tui-background-accent-1);
     border-radius: var(--tui-radius-l);
     color: var(--tui-text-primary-on-accent-1);
@@ -13,6 +13,9 @@
     overflow-wrap: break-word;
     transform-origin: var(--t-left) var(--t-top);
 
+    --t-hint-max-inline-size: 20rem;
+    --t-hint-padding-inline: 1rem;
+    --t-hint-content-max-inline-size: calc(var(--t-hint-max-inline-size) - 2 * var(--t-hint-padding-inline));
     --tui-background-elevation-2: var(--tui-background-elevation-3);
     --tui-scale: 0.5;
 
