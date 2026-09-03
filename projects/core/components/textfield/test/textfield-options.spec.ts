@@ -56,7 +56,9 @@ describe('TuiTextfieldOptionsDirective', () => {
     });
 
     it('inherits parent options inside dropdown', () => {
-        const textfield = pageObject.getByAutomationId('textfield') as ElementRef<HTMLElement>;
+        const textfield = pageObject.getByAutomationId(
+            'textfield',
+        ) as ElementRef<HTMLElement>;
 
         expect(textfield.nativeElement.dataset.size).toBe('s');
 

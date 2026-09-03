@@ -53,13 +53,17 @@ export function tuiTextfieldOptionsProvider(
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
-    private readonly appearanceInput = input<string | undefined>(undefined, {
+
+    protected readonly appearanceInput = input<string | undefined>(undefined, {
         alias: 'tuiTextfieldAppearance',
     });
-    private readonly sizeInput = input<TuiSizeL | TuiSizeS | '' | undefined>(undefined, {
-        alias: 'tuiTextfieldSize',
-    });
-    private readonly cleanerInput = input<boolean | undefined>(undefined, {
+    protected readonly sizeInput = input<TuiSizeL | TuiSizeS | '' | undefined>(
+        undefined,
+        {
+            alias: 'tuiTextfieldSize',
+        },
+    );
+    protected readonly cleanerInput = input<boolean | undefined>(undefined, {
         alias: 'tuiTextfieldCleaner',
     });
 
