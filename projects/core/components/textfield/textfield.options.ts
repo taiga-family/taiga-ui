@@ -1,5 +1,4 @@
 import {
-    computed,
     Directive,
     inject,
     InjectionToken,
@@ -52,32 +51,21 @@ export function tuiTextfieldOptionsProvider(
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
+    private readonly options =
+        inject(TuiTextfieldOptionsDirective, {optional: true, skipSelf: true}) ??
+        inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
-    protected readonly appearanceInput = input<string | undefined>(undefined, {
+    public readonly appearance = input(this.options.appearance(), {
         alias: 'tuiTextfieldAppearance',
     });
-    protected readonly sizeInput = input<TuiSizeL | TuiSizeS | '' | undefined>(
-        undefined,
-        {
-            alias: 'tuiTextfieldSize',
-        },
-    );
-    protected readonly cleanerInput = input<boolean | undefined>(undefined, {
+
+    public readonly size = input(this.options.size(), {
+        alias: 'tuiTextfieldSize',
+        transform: (size: TuiSizeL | TuiSizeS | ''): TuiSizeL | TuiSizeS =>
+            size || DEFAULT.size,
+    });
+
+    public readonly cleaner = input(this.options.cleaner(), {
         alias: 'tuiTextfieldCleaner',
     });
-
-    public readonly appearance = computed(
-        () => this.appearanceInput() ?? this.options.appearance(),
-    );
-
-    public readonly size = computed<TuiSizeL | TuiSizeS>(() => {
-        const size = this.sizeInput();
-
-        return size === undefined ? this.options.size() : size || DEFAULT.size;
-    });
-
-    public readonly cleaner = computed(
-        () => this.cleanerInput() ?? this.options.cleaner(),
-    );
 }

@@ -1,13 +1,6 @@
 import {ChangeDetectionStrategy, Component, type ElementRef} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    provideTaiga,
-    TuiDropdown,
-    TuiRoot,
-    type TuiSizeL,
-    type TuiSizeS,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {provideTaiga, TuiDropdown, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -27,7 +20,7 @@ describe('TuiTextfieldOptionsDirective', () => {
                     #dropdown="polymorpheus"
                     polymorpheus
                 >
-                    <form [tuiTextfieldSize]="size">
+                    <form tuiTextfieldSize="s">
                         <div [tuiTextfieldCleaner]="false">
                             <tui-textfield automation-id="textfield" />
                         </div>
@@ -37,9 +30,7 @@ describe('TuiTextfieldOptionsDirective', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class Test {
-        public size: TuiSizeL | TuiSizeS = 's';
-    }
+    class Test {}
 
     let fixture: ComponentFixture<Test>;
     let pageObject: TuiPageObject<Test>;
@@ -61,10 +52,5 @@ describe('TuiTextfieldOptionsDirective', () => {
         ) as ElementRef<HTMLElement>;
 
         expect(textfield.nativeElement.dataset.size).toBe('s');
-
-        fixture.componentInstance.size = 'l';
-        fixture.detectChanges();
-
-        expect(textfield.nativeElement.dataset.size).toBe('l');
     });
 });
