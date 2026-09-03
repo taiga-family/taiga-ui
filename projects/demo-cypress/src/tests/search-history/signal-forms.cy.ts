@@ -86,14 +86,13 @@ describe('tuiSearchHistory + signal forms', () => {
                 cy.clearLocalStorage();
                 cy.viewport(600, 400);
                 cy.mount(component);
-                cy.get('input').as('input');
             });
 
             it('a query typed into the field is remembered in the search history', () => {
-                cy.get('@input').focus();
-                cy.get('@input').type(QUERY);
-                cy.get('@input').type('{esc}');
-                cy.get('@input').focus();
+                cy.get('input').focus();
+                cy.get('input').type(QUERY);
+                cy.get('input').type('{esc}');
+                cy.get('input').focus();
 
                 cy.get('tui-search-history button[tuiCell]')
                     .contains(QUERY)
@@ -101,13 +100,13 @@ describe('tuiSearchHistory + signal forms', () => {
             });
 
             it('picking an item from the list puts it into the field', () => {
-                cy.get('@input').focus();
+                cy.get('input').focus();
 
                 cy.get('tui-search-history button[tuiCell]')
                     .contains(POPULAR[0]!)
                     .click();
 
-                cy.get('@input').should('have.value', POPULAR[0]);
+                cy.get('input').should('have.value', POPULAR[0]);
             });
         });
     });
