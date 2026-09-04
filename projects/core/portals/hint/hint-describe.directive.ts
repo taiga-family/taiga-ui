@@ -1,21 +1,22 @@
 import {DOCUMENT} from '@angular/common';
 import {computed, Directive, inject, input} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiIfMap, tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
-    debounce,
     distinctUntilChanged,
     fromEvent,
     map,
-    merge,
     of,
+    race,
+    shareReplay,
     skip,
     startWith,
     switchMap,
+    take,
     timer,
 } from 'rxjs';
 
@@ -40,20 +41,44 @@ export class TuiHintDescribe extends TuiDriver {
         switchMap(() =>
             this.focused
                 ? of(false)
-                : merge(
-                      tuiTypedFromEvent(this.doc, 'keyup'),
-                      tuiTypedFromEvent(this.element(), 'blur'),
-                  ).pipe(map(() => this.focused)),
+                : race(
+                      tuiTypedFromEvent(this.element(), 'focus').pipe(
+                          switchMap(() =>
+                              tuiTypedFromEvent(this.element(), 'blur').pipe(
+                                  map(() => false),
+                                  startWith(true),
+                                  take(2),
+                              ),
+                          ),
+                      ),
+                      tuiTypedFromEvent(this.doc, 'keyup').pipe(
+                          map(() => false),
+                          take(1),
+                      ),
+                  ),
         ),
-        debounce((visible) => (visible ? timer(1000) : of(null))),
         startWith(false),
         distinctUntilChanged(),
-        skip(1),
         tuiZoneOptimized(),
+        shareReplay({bufferSize: 1, refCount: true}),
+    );
+
+    public readonly pending = toSignal(
+        this.stream$.pipe(
+            switchMap((visible) =>
+                visible
+                    ? timer(1000).pipe(
+                          map(() => false),
+                          startWith(true),
+                      )
+                    : of(false),
+            ),
+        ),
+        {initialValue: false},
     );
 
     constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.pipe(skip(1)).subscribe(subscriber));
     }
 
     private get focused(): boolean {
