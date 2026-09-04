@@ -10,7 +10,6 @@ import {
     type WritableSignal,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
@@ -35,6 +34,7 @@ import {
     tap,
 } from 'rxjs';
 
+import {TuiDropdownComponent} from './dropdown.component';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpen} from './dropdown-open.directive';
@@ -51,7 +51,6 @@ export class TuiDropdownHover extends TuiDriver {
     });
 
     private readonly directive = inject(TuiDropdownDirective);
-    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
@@ -79,8 +78,12 @@ export class TuiDropdownHover extends TuiDriver {
             tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
         ).pipe(
             map((element) => tuiIsElement(element) && this.isHovered(element)),
-            // Mobile sheet dismisses via its own backdrop — mouse hover may only open it, never close
-            filter((hovered) => hovered || !this.isMobile),
+            // Sheet dropdown dismisses via its own backdrop — mouse hover may only open it, never close
+            filter(
+                (hovered) =>
+                    hovered ||
+                    this.directive.component.component === TuiDropdownComponent,
+            ),
         ),
     ).pipe(
         distinctUntilChanged(),
