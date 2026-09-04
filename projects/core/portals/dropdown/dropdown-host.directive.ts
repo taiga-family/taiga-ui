@@ -1,5 +1,6 @@
 import {Directive, ElementRef} from '@angular/core';
-import {tuiGenerateId, tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TUI_DROPDOWN_ANCHOR, TUI_DROPDOWN_HOST} from './dropdown.providers';
 
