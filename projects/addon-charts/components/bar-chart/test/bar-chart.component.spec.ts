@@ -8,8 +8,9 @@ describe('BarChart', () => {
         template: `
             <tui-bar-chart
                 [collapsed]="collapsed()"
-                [max]="max"
-                [value]="value"
+                [max]="max()"
+                [min]="min()"
+                [value]="value()"
             />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,12 +18,13 @@ describe('BarChart', () => {
     class Test {
         public readonly component = viewChild.required(TuiBarChart);
 
-        public readonly value = [
+        public readonly value = signal<ReadonlyArray<readonly number[]>>([
             [1, 2, 3],
             [4, 5, 6],
-        ];
+        ]);
 
-        public max = Number.NaN;
+        public readonly max = signal(Number.NaN);
+        public readonly min = signal(Number.NaN);
         public readonly collapsed = signal(false);
     }
 
@@ -62,5 +64,34 @@ describe('BarChart', () => {
                     testComponent.component().computedMax(),
                 ),
         ).toBe(100);
+    });
+
+    describe('negative values', () => {
+        beforeEach(() => {
+            testComponent.value.set([[5000, -5000]]);
+            testComponent.max.set(10000);
+            testComponent.min.set(-10000);
+            fixture.detectChanges();
+        });
+
+        it('places the zero line in the middle of a symmetric range', () => {
+            expect(testComponent.component().zeroLineDistance()).toBe(50);
+        });
+
+        it('gives a negative-only column a positive height', () => {
+            const component = testComponent.component();
+
+            expect(
+                component.percentMapper([-5000], false, component.computedRange()),
+            ).toBe(25);
+        });
+
+        it('keeps the zero line at the bottom when there are no negatives', () => {
+            testComponent.value.set([[1, 2, 3]]);
+            testComponent.min.set(Number.NaN);
+            fixture.detectChanges();
+
+            expect(testComponent.component().zeroLineDistance()).toBe(0);
+        });
     });
 });
