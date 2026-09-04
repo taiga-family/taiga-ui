@@ -64,6 +64,11 @@ function migrateStructuralLet(
         return;
     }
 
+    // adoption-agency clones of nested formatting elements keep *tuiLet but have no source location
+    if (!element.sourceCodeLocation) {
+        return;
+    }
+
     const {expr, key} = parseLetExpression(attr.value);
 
     if (!expr || !key) {
