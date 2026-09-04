@@ -1,4 +1,5 @@
 import {
+    afterNextRender,
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
@@ -45,6 +46,7 @@ const OFFSET = 5_000_000;
     hostDirectives: [TuiScrollRef, WaIntersectionObserverDirective, WaIntersectionRoot],
     host: {
         waIntersectionThreshold: '0.1',
+        '(scroll.zoneless)': 'onScroll()',
         '(scrollend)': 'sync()',
     },
 })
@@ -59,7 +61,14 @@ export class TuiScrollWheel implements AfterViewInit {
     public readonly buffer = input(10);
     public readonly index = model(0);
 
+    constructor() {
+        // Safari does not always snap to a dynamically created item on initial load.
+        afterNextRender(() => this.el.scrollTo({top: OFFSET, behavior: 'instant'}));
+    }
+
     public ngAfterViewInit(): void {
+        this.update(0);
+
         for (let i = 0; i < this.buffer() * 2 + 1; i++) {
             this.createItem(this.index() - this.buffer() + i);
         }
@@ -77,6 +86,13 @@ export class TuiScrollWheel implements AfterViewInit {
     public update(offset: number): void {
         this.offset = this.offset + offset;
         this.el.style.setProperty('--t-offset', `${this.offset}px`);
+    }
+
+    protected onScroll(): void {
+        // Prevent momentum scrolling from outrunning rendered items and entering the spacer.
+        if (this.el.scrollTop < this.offset) {
+            this.el.scrollTo({top: this.offset, behavior: 'instant'});
+        }
     }
 
     protected sync(): void {
