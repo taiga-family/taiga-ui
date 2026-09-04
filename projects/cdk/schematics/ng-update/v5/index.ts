@@ -45,6 +45,7 @@ import {migrateEditorProviders} from './steps/migrate-editor-providers';
 import {migrateFilterByInput} from './steps/migrate-filter-by-input';
 import {migrateHintDirectiveBinding} from './steps/migrate-hint-directive-binding';
 import {migrateI18nLanguageSignal} from './steps/migrate-i18n-language-signal';
+import {migrateI18nSignalTokens} from './steps/migrate-i18n-signal-tokens';
 import {migrateInputTagComponent} from './steps/migrate-input-tag-component';
 import {migratePackages} from './steps/migrate-packages';
 import {migratePortals} from './steps/migrate-portals';
@@ -150,6 +151,10 @@ function main(options: TuiSchema, timings: MigrationStepTiming[]): Rule {
                 {
                     name: 'migrateI18nLanguageSignal',
                     step: () => migrateI18nLanguageSignal(tree, options),
+                },
+                {
+                    name: 'migrateI18nSignalTokens',
+                    step: () => migrateI18nSignalTokens(tree, options),
                 },
                 {
                     name: 'migrateEditorProviders',
