@@ -1,0 +1,25 @@
+
+<svg
+  
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  stroke="currentColor"
+  stroke-width="calc((100vw - 100vh) / 10)"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path vector-effect="non-scaling-stroke" d="M 19 3 L 5 3" />
+  <path vector-effect="non-scaling-stroke" d="M 21 13 L 21 5" />
+  <path vector-effect="non-scaling-stroke" d="M 21 5 A2 2 0 0 0 19 3" />
+  <path vector-effect="non-scaling-stroke" d="M 3 19 A2 2 0 0 0 5 21" />
+  <path vector-effect="non-scaling-stroke" d="M 3 5 L 3 19" />
+  <path vector-effect="non-scaling-stroke" d="M 5 3 A2 2 0 0 0 3 5" />
+  <path vector-effect="non-scaling-stroke" d="m16 19 2 2 4-4" />
+  <path vector-effect="non-scaling-stroke" d="M16 2v3" />
+  <path vector-effect="non-scaling-stroke" d="M3 9h18" />
+  <path vector-effect="non-scaling-stroke" d="M5 21 L12.5 21" />
+  <path vector-effect="non-scaling-stroke" d="M8 2v3" />
+</svg>
