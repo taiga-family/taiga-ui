@@ -10,6 +10,7 @@ import {
     type WritableSignal,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
@@ -50,6 +51,7 @@ export class TuiDropdownHover extends TuiDriver {
     });
 
     private readonly directive = inject(TuiDropdownDirective);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
@@ -70,11 +72,20 @@ export class TuiDropdownHover extends TuiDriver {
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
         ),
-        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
-        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        merge(
+            tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
+            tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        ).pipe(
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
+            // On mobile the dropdown renders as a touch sheet dismissed via its own
+            // backdrop/swipe. Mouse hover may only OPEN it — stray mouseover/mouseout
+            // from layout shifts must not toggle it closed (closing is driven by the
+            // ref-removal branch above).
+            filter((hovered) => hovered || !this.isMobile),
+        ),
     ).pipe(
-        map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
         switchMap((v) =>
             of(v).pipe(
