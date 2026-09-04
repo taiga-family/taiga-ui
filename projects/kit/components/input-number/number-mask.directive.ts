@@ -27,12 +27,12 @@ export class TuiNumberMask {
 
     public readonly min = input<
         TuiInputNumberOptions['min'],
-        TuiInputNumberOptions['min'] | null
+        TuiInputNumberOptions['min'] | null | undefined
     >(this.options.min, {transform: (x) => x ?? this.options.min});
 
     public readonly max = input<
         TuiInputNumberOptions['max'],
-        TuiInputNumberOptions['max'] | null
+        TuiInputNumberOptions['max'] | null | undefined
     >(this.options.max, {transform: (x) => x ?? this.options.max});
 
     public readonly params = computed(() => {
