@@ -79,10 +79,7 @@ export class TuiDropdownHover extends TuiDriver {
             tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
         ).pipe(
             map((element) => tuiIsElement(element) && this.isHovered(element)),
-            // On mobile the dropdown renders as a touch sheet dismissed via its own
-            // backdrop/swipe. Mouse hover may only OPEN it — stray mouseover/mouseout
-            // from layout shifts must not toggle it closed (closing is driven by the
-            // ref-removal branch above).
+            // Mobile sheet dismisses via its own backdrop — mouse hover may only open it, never close
             filter((hovered) => hovered || !this.isMobile),
         ),
     ).pipe(
