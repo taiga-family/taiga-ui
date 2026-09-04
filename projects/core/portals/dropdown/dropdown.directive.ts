@@ -5,7 +5,6 @@ import {
     type ComponentRef,
     Directive,
     effect,
-    ElementRef,
     inject,
     INJECTOR,
     input,
@@ -16,7 +15,6 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsVehicle,
@@ -34,18 +32,17 @@ import {
 import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT, TUI_DROPDOWN_HOST} from './dropdown.providers';
+import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownA11y} from './dropdown-a11y.directive';
+import {TuiDropdownHost} from './dropdown-host.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-    providers: [
-        tuiAsVehicle(TuiDropdownDirective),
-        tuiProvide(TUI_DROPDOWN_HOST, ElementRef),
-    ],
+    providers: [tuiAsVehicle(TuiDropdownDirective)],
     exportAs: 'tuiDropdown',
     hostDirectives: [
+        TuiDropdownHost,
         TuiDropdownDriverDirective,
         {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
         {
