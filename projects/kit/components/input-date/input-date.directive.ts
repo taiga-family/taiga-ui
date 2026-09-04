@@ -106,13 +106,7 @@ export abstract class TuiInputDateBase<
     });
 
     protected readonly calendarOut = effect((onCleanup) => {
-        const calendar = this.calendar();
-
-        if (!calendar) {
-            return;
-        }
-
-        const subscription = calendar.value.subscribe((value) => {
+        const sub = this.calendar()?.value.subscribe((value) => {
             const changed = value !== this.toCalendarValue(this.value());
             const same = value instanceof TuiDayRange && value.from === value.to;
 
@@ -121,7 +115,7 @@ export abstract class TuiInputDateBase<
             }
         });
 
-        onCleanup(() => subscription.unsubscribe());
+        onCleanup(() => sub?.unsubscribe());
     });
 
     public readonly native =
