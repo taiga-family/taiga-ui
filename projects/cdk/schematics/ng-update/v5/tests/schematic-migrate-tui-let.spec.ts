@@ -106,5 +106,18 @@ describe('ng-update tuiLet', () => {
         }),
     );
 
+    it(
+        'migrates nested anchors without crashing on reconstructed clones',
+        migration({
+            template: /* HTML */ `
+                <a *tuiLet="value as val">
+                    <p>
+                        <a>{{ val }}</a>
+                    </p>
+                </a>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

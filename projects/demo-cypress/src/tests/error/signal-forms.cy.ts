@@ -1,7 +1,15 @@
 /*
 // TODO: Uncomment the whole file when the `@angular/forms/signals` entry point becomes available,
 // when Taiga UI drops support of Angular below 22 (stable API for signal forms appeared in Angular 22)
-import {ChangeDetectionStrategy, Component, input, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    input,
+    signal,
+    type Type,
+} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     disabled,
     form,
@@ -12,7 +20,9 @@ import {
     required,
     validate,
 } from '@angular/forms/signals';
+import {TuiDay} from '@taiga-ui/cdk';
 import {TuiError, TuiInput, TuiRoot, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputDate, TuiUnfinishedValidator} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormField, TuiError, TuiInput, TuiRoot],
@@ -201,6 +211,140 @@ describe('tui-error + signal forms', () => {
             cy.get('tui-textfield input').type('ab').blur();
 
             cy.get('tui-error').should('be.visible').and('contain.text', 'Digits only');
+        });
+    });
+
+    // Everything above validates through the signal forms schema. A validator can also come from
+    // a DIRECTIVE providing `NG_VALIDATORS` — here it is `TuiItemsHandlersValidator`, a host
+    // directive of `tuiInputDate` that rejects a date banned by `[disabledItemHandler]`;
+    describe('Errors from a validator directive', () => {
+        const BANNED_DAY = 13;
+        const BANNED_DATE = '13.12.2024';
+        const ALLOWED_DATE = '14.12.2024';
+        const BANNED_MESSAGE = 'This date is not available';
+        const UNFINISHED_MESSAGE = 'Finish the date';
+
+        @Directive()
+        abstract class Sandbox {
+            public readonly unfinishedMessage = UNFINISHED_MESSAGE;
+
+            public readonly disabledItemHandler = (day: TuiDay): boolean =>
+                day.day === BANNED_DAY;
+        }
+
+        @Component({
+            imports: [
+                FormField,
+                TuiError,
+                TuiInputDate,
+                TuiRoot,
+                TuiUnfinishedValidator,
+            ],
+            template: `
+                <tui-root>
+                    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+                        <label tuiLabel>Date</label>
+                        <input
+                            tuiInputDate
+                            [formField]="$any(f)"
+                            [tuiUnfinishedValidator]="unfinishedMessage"
+                        />
+                    </tui-textfield>
+
+                    <tui-error [formField]="$any(f)" />
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+            providers: [tuiValidationErrorsProvider({tuiDisabledItem: BANNED_MESSAGE})],
+        })
+        class DisabledItemSignalFormsSandbox extends Sandbox {
+            private readonly value = signal<TuiDay | null>(null);
+
+            public readonly f = form(this.value);
+        }
+
+        @Component({
+            imports: [
+                ReactiveFormsModule,
+                TuiError,
+                TuiInputDate,
+                TuiRoot,
+                TuiUnfinishedValidator,
+            ],
+            template: `
+                <tui-root>
+                    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+                        <label tuiLabel>Date</label>
+                        <input
+                            tuiInputDate
+                            [formControl]="control"
+                            [tuiUnfinishedValidator]="unfinishedMessage"
+                        />
+                    </tui-textfield>
+
+                    <tui-error [formControl]="control" />
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+            providers: [tuiValidationErrorsProvider({tuiDisabledItem: BANNED_MESSAGE})],
+        })
+        class DisabledItemReactiveFormsSandbox extends Sandbox {
+            public readonly control = new FormControl<TuiDay | null>(null);
+        }
+
+        const SANDBOXES: ReadonlyArray<{
+            readonly component: Type<Sandbox>;
+            readonly title: string;
+        }> = [
+            {
+                component: DisabledItemSignalFormsSandbox,
+                title: '[formField] (signal forms)',
+            },
+            {
+                component: DisabledItemReactiveFormsSandbox,
+                title: '[formControl] (reactive forms)',
+            },
+        ];
+
+        SANDBOXES.forEach(({component, title}) => {
+            describe(title, () => {
+                beforeEach(() => {
+                    cy.mount(component);
+                    cy.get('[tuiInputDate]').as('input');
+                });
+
+                it('a banned date marks the field invalid', () => {
+                    cy.get('@input').type(BANNED_DATE).blur();
+
+                    cy.get('@input').should('have.attr', 'aria-invalid', 'true');
+                    cy.get('tui-textfield').should('have.class', 'tui-invalid');
+                });
+
+                it('a banned date shows the message of the validator', () => {
+                    cy.get('@input').type(BANNED_DATE).blur();
+
+                    cy.get('tui-error')
+                        .should('be.visible')
+                        .and('contain.text', BANNED_MESSAGE);
+                });
+
+                it('an allowed date hides the message again', () => {
+                    cy.get('@input').type(BANNED_DATE).blur();
+                    cy.get('tui-error').should('be.visible');
+
+                    cy.get('@input').clear().type(ALLOWED_DATE).blur();
+
+                    cy.get('tui-error').should('not.be.visible');
+                });
+
+                it('a message carried by the validator itself is shown', () => {
+                    cy.get('@input').type(ALLOWED_DATE).type('{backspace}').blur();
+
+                    cy.get('tui-error')
+                        .should('be.visible')
+                        .and('contain.text', UNFINISHED_MESSAGE);
+                });
+            });
         });
     });
 });
