@@ -5,6 +5,11 @@ import {
     TuiTextfieldWithDataListPO,
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {
+    TUI_HINT_LOCATORS,
+    TUI_INPUT_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
@@ -16,7 +21,7 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
         const example = document.demo;
-        const input = example.locator('input[tuiInput]');
+        const input = example.locator(TUI_INPUT_LOCATORS.HOST);
 
         await input.fill('123');
         await input.blur();
@@ -32,7 +37,7 @@ test.describe('Input', () => {
         await document.waitTuiIcons();
 
         const example = document.demo;
-        const input = example.locator('input[tuiInput]');
+        const input = example.locator(TUI_INPUT_LOCATORS.HOST);
 
         await input.fill(
             "You should not set 'text-overflow: ellipsis' for input because it can be horizontally scrolled",
@@ -60,7 +65,10 @@ test.describe('Input', () => {
         await tuiGoto(page, DemoRoute.Input);
 
         const example = new TuiDocumentationPagePO(page).getExample('#mask');
-        const inputs = example.locator('tui-textfield input[tuiInput]');
+
+        const inputs = example
+            .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+            .locator(TUI_INPUT_LOCATORS.HOST);
 
         await example.scrollIntoViewIfNeeded();
         await inputs.first().fill('111111111111');
@@ -97,7 +105,7 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const textfield = example.locator('input[tuiInput]').first();
+            const textfield = example.locator(TUI_INPUT_LOCATORS.HOST).first();
             const value = '123';
 
             await textfield.scrollIntoViewIfNeeded();
@@ -125,7 +133,7 @@ test.describe('Input', () => {
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
 
             const {textfield, dropdown} = new TuiTextfieldWithDataListPO(
-                example.locator('tui-textfield').first(),
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first(),
             );
 
             await textfield.scrollIntoViewIfNeeded();
@@ -155,9 +163,9 @@ test.describe('Input', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-icon[tuiTooltip]').first().hover();
+        await example.locator(TUI_INPUT_LOCATORS.TOOLTIP).first().hover();
 
-        await expect(page.locator('tui-hint')).toBeAttached();
+        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
         await expect.soft(example).toHaveScreenshot('input-hint.png');
     });
 
@@ -168,13 +176,13 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const tooltip = example.locator('tui-icon[tuiTooltip]').first();
-            const input = example.locator('input[tuiInput]').first();
+            const tooltip = example.locator(TUI_INPUT_LOCATORS.TOOLTIP).first();
+            const input = example.locator(TUI_INPUT_LOCATORS.HOST).first();
 
             await tooltip.scrollIntoViewIfNeeded();
             await tooltip.click();
 
-            await expect(page.locator('tui-hint')).toBeAttached();
+            await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
             await expect(input).not.toBeFocused();
         });
     });

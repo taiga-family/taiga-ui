@@ -5,6 +5,7 @@ import {
     TuiInputPhoneInternationalPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
@@ -38,14 +39,17 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await inputPhoneInternational.select.click();
 
             await expect(
-                inputPhoneInternational.dropdown.locator('tui-textfield input'),
+                inputPhoneInternational.dropdown
+                    .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                    .locator('input'),
             ).not.toBeFocused();
         });
 
         test('items is filtered by textfield inside dropdown', async () => {
             await inputPhoneInternational.select.click();
             await inputPhoneInternational.dropdown
-                .locator('tui-textfield input')
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .locator('input')
                 .fill('aust');
 
             const options = await inputPhoneInternational.getOptions();
@@ -62,7 +66,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             const example = new TuiDocumentationPagePO(page).demo;
 
             const inputPhoneInternational = new TuiInputPhoneInternationalPO(
-                example.locator('tui-textfield'),
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
 
             await inputPhoneInternational.textfield.focus();
@@ -88,7 +92,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
                 await inputPhoneInternational.select.click();
             }).rejects.toThrow();
 
-            await expect(page.locator('tui-dropdown')).not.toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
         });
     });
 });

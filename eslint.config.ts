@@ -31,6 +31,8 @@ export default [
         files: [
             'projects/demo/src/pages/components/icon/examples/4/index.ts',
             'projects/demo/src/pages/markup/breakpoints/index.ts',
+            '**/*.pw.spec.ts',
+            '**/*.po.ts',
         ],
     },
     {

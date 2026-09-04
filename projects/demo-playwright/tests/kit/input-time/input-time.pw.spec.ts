@@ -6,6 +6,7 @@ import {
     type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -155,7 +156,9 @@ test.describe('InputTime', () => {
                     '#strict-mode',
                 );
 
-                const inputTime = new TuiInputTimePO(example.locator('tui-textfield'));
+                const inputTime = new TuiInputTimePO(
+                    example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
+                );
 
                 await inputTime.textfield.click();
                 await inputTime.textfield.clear();
