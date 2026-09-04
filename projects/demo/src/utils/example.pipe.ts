@@ -10,11 +10,7 @@ export class TuiExamplePipe implements PipeTransform {
     public transform(
         index: number,
         formats:
-            | 'html,less'
-            | 'html,ts,less'
-            | 'html,ts'
-            | 'html'
-            | 'ts' = 'html,ts,less',
+            'html,less' | 'html,ts,less' | 'html,ts' | 'html' | 'ts' = 'html,ts,less',
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
         const directory = `${this.page.type()}/${tuiToKebab(this.page.header())}/examples/${index}`;

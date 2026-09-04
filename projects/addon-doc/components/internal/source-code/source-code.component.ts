@@ -24,14 +24,12 @@ export class TuiDocSourceCode {
     public readonly type = input('');
     public readonly path = input('');
 
-    protected readonly pathOptions = computed(
-        (): TuiDocSourceCodePathOptions => ({
-            header: this.header(),
-            package: this.package(),
-            type: this.type(),
-            path: this.path(),
-        }),
-    );
+    protected readonly pathOptions = computed((): TuiDocSourceCodePathOptions => ({
+        header: this.header(),
+        package: this.package(),
+        type: this.type(),
+        path: this.path(),
+    }));
 
     protected readonly pathIsUrl = computed(
         (): boolean => this.path()?.startsWith('http') ?? false,
