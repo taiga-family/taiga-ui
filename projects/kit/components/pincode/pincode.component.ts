@@ -60,7 +60,10 @@ export class TuiPincodeComponent extends TuiControl<string> {
         postprocessors: [(newState, initial) => (this.state() ? initial : newState)],
     });
 
-    public readonly maxLength = input(4);
+    public readonly maxLength = input(4, {
+        transform: (maxLength: number | undefined) => maxLength ?? 4,
+    });
+
     public readonly confirmed = output();
     public readonly finished = output();
 

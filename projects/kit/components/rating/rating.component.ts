@@ -39,7 +39,9 @@ export class TuiRating extends TuiControl<number> {
     protected readonly array = computed(() => Array.from({length: this.max()}));
 
     public readonly icon = input(this.options.icon);
-    public readonly max = input(this.options.max);
+    public readonly max = input(this.options.max, {
+        transform: (max: number | undefined) => max ?? this.options.max,
+    });
 
     protected onKeyDown(event: KeyboardEvent): void {
         if (!this.interactive()) {

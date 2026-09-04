@@ -123,15 +123,15 @@ export class TuiInputDateTimeDirective
 
     public readonly timeMode = input(this.options.timeMode);
 
-    public readonly minInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
-        this.options.min,
-        {alias: 'min'},
-    );
+    public readonly minInput = input<
+        TuiDay | readonly [TuiDay, TuiTime | null] | null,
+        TuiDay | readonly [TuiDay, TuiTime | null] | null | undefined
+    >(this.options.min, {alias: 'min', transform: (min) => min ?? null});
 
-    public readonly maxInput = input<TuiDay | readonly [TuiDay, TuiTime | null] | null>(
-        this.options.max,
-        {alias: 'max'},
-    );
+    public readonly maxInput = input<
+        TuiDay | readonly [TuiDay, TuiTime | null] | null,
+        TuiDay | readonly [TuiDay, TuiTime | null] | null | undefined
+    >(this.options.max, {alias: 'max', transform: (max) => max ?? null});
 
     public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
         this.onChange(value);
