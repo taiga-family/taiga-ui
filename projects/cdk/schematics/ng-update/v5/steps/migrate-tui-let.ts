@@ -22,9 +22,6 @@ const STRUCTURAL_ATTR = '*tuiLet';
 
 export function tuiLetMigration(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
-
-    removeModule('TuiLet', '@taiga-ui/cdk');
-
     const resources = getComponentTemplates(ALL_FILES);
 
     for (const resource of resources) {
@@ -32,6 +29,9 @@ export function tuiLetMigration(tree: Tree, options: TuiSchema): void {
     }
 
     fileSystem.commitEdits();
+
+    getFileSystem(tree);
+    removeModule('TuiLet', '@taiga-ui/cdk');
     saveActiveProject();
 }
 
