@@ -46,6 +46,37 @@ exports[`ng-update tuiLet keeps the alias when only an observable (foo$) shares 
 }
 `;
 
+exports[`ng-update tuiLet migrates *tuiLet inside an inline template and drops the import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiLet} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiLet],
+                    template: \`<test *tuiLet="value as val">{{ val }}</test>\`,
+                })
+                export class Test {
+                    readonly value = 'foo';
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [],
+                    template: \`@let val = value;
+ <test>{{ val }}</test>\`,
+                })
+                export class Test {
+                    readonly value = 'foo';
+                }
+            ",
+}
+`;
+
 exports[`ng-update tuiLet migrates nested anchors without crashing on reconstructed clones: test.html 1`] = `
 {
   "0. Before": "
