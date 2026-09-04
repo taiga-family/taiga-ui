@@ -34,6 +34,7 @@ import {
     tap,
 } from 'rxjs';
 
+import {TuiDropdownComponent} from './dropdown.component';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpen} from './dropdown-open.directive';
@@ -70,11 +71,21 @@ export class TuiDropdownHover extends TuiDriver {
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
         ),
-        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
-        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        merge(
+            tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
+            tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        ).pipe(
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
+            // Sheet dropdown dismisses via its own backdrop — mouse hover may only open it, never close
+            filter(
+                (hovered) =>
+                    hovered ||
+                    this.directive.component.component === TuiDropdownComponent,
+            ),
+        ),
     ).pipe(
-        map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
         switchMap((v) =>
             of(v).pipe(
