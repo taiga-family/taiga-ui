@@ -1,33 +1,25 @@
 import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
-    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
-    effect,
-    ElementRef,
     inject,
-    INJECTOR,
     input,
     output,
     signal,
-    viewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core/portals/hint';
-import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
+import {TUI_HINT_COMPONENT, TuiHint} from '@taiga-ui/core/portals/hint';
 import {TUI_FONT_OFFSET} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent, map, of, pairwise, startWith, switchMap} from 'rxjs';
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
+import {TuiLineClampFallback} from './line-clamp-fallback.directive';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
-
-type Measure = Pick<Element, 'clientWidth' | 'scrollHeight' | 'scrollWidth'>;
 
 @Component({
     selector: 'tui-line-clamp',
@@ -35,30 +27,23 @@ type Measure = Pick<Element, 'clientWidth' | 'scrollHeight' | 'scrollWidth'>;
     templateUrl: './line-clamp.template.html',
     styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox},
-        WaResizeObserverService,
-    ],
-    hostDirectives: [TuiTransitioned],
+    providers: [{provide: TUI_HINT_COMPONENT, useValue: TuiLineClampBox}],
+    hostDirectives: [TuiTransitioned, TuiLineClampFallback],
     host: {
         '[class._overflown]': 'overflown()',
         '[style.line-height.px]': 'line()',
         '[style.max-height.px]': 'maxHeight()',
-        '(mouseenter)': 'apply(measure())',
     },
 })
 export class TuiLineClamp {
     private readonly offset = inject(TUI_FONT_OFFSET);
-    private readonly outlet = viewChild.required(TuiHintDirective, {read: ElementRef});
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly injector = inject(INJECTOR);
-    private readonly timeline = inject(TUI_TIMELINE_SUPPORT);
     private readonly overflows = signal(0);
 
     protected readonly overflown = signal(false);
-    protected readonly maxHeight = computed(() => this.line() * this.linesLimit());
 
+    public readonly maxHeight = computed(() => this.line() * this.linesLimit());
     public readonly line = computed(() => this.lineHeight() + this.offset());
     public readonly lineHeight = input(24);
     public readonly linesLimit = input(1);
@@ -69,27 +54,6 @@ export class TuiLineClamp {
     });
 
     public readonly overflownChange = output<boolean>();
-
-    protected readonly refresh =
-        !this.timeline &&
-        effect(() => {
-            this.content();
-            this.maxHeight();
-
-            afterNextRender(
-                {
-                    earlyRead: () => this.measure(),
-                    write: (measure) => this.apply(measure),
-                },
-                {injector: this.injector},
-            );
-        });
-
-    protected readonly resize =
-        !this.timeline &&
-        inject(WaResizeObserverService)
-            .pipe(takeUntilDestroyed())
-            .subscribe(() => this.apply(this.measure()));
 
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
@@ -111,26 +75,20 @@ export class TuiLineClamp {
         this.showHint() && this.overflown() ? this.content() : '',
     );
 
-    protected onOverflow(overflown: boolean): void {
-        this.overflows.update((val) => val + (overflown ? 1 : -1));
-
-        this.setOverflown(this.overflows() > 0);
-    }
-
-    protected measure(): Measure {
-        const {scrollHeight, scrollWidth} = this.outlet().nativeElement;
-
-        return {scrollHeight, scrollWidth, clientWidth: this.el.clientWidth};
-    }
-
-    protected apply({scrollHeight, scrollWidth, clientWidth}: Measure): void {
-        this.setOverflown(scrollHeight > this.maxHeight() || scrollWidth > clientWidth);
-    }
-
-    private setOverflown(overflown: boolean): void {
+    public setOverflown(overflown: boolean): void {
         if (this.overflown() !== overflown) {
             this.overflown.set(overflown);
             this.overflownChange.emit(overflown);
         }
+    }
+
+    /**
+     * Both axes can overflow at once, and turning the clamp on can stop one of them,
+     * so a single axis going quiet does not mean the content fits
+     */
+    protected onOverflow(overflown: boolean): void {
+        this.overflows.update((val) => val + (overflown ? 1 : -1));
+
+        this.setOverflown(this.overflows() > 0);
     }
 }
