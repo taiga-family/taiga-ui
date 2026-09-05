@@ -30,10 +30,8 @@ export default class Example {
     ];
 
     protected readonly groupChips = ['January', 'February', 'March', 'April'];
-    protected readonly columnsVariants: readonly (number | null)[] = [null, 2, 3, 4];
-
+    protected readonly columnsVariants: ReadonlyArray<number | null> = [null, 2, 3, 4];
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
-
     protected columns: number | null = null;
     protected horizontal = false;
     protected autoscroll = false;
