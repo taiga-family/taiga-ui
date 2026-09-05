@@ -22,6 +22,13 @@ export default class Example {
         'Fade in complex designs',
     ];
 
+    protected readonly groupExamples = [
+        'Basic',
+        'Single choice',
+        'Multiple choice',
+        'Grid',
+    ];
+
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
     protected size = this.sizes[2]!;
 }

@@ -24,6 +24,19 @@
                 chip will be faded in
             </p>
         </ng-template>
+
+        <h2>ChipGroup</h2>
+        <p>
+            ChipGroup arranges chips with platform-specific spacing and supports horizontal scrolling or a fixed grid.
+        </p>
+
+        @for (example of groupExamples; track example) {
+            <tui-doc-example
+                [component]="$index + 7 | tuiComponent"
+                [content]="$index + 7 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
