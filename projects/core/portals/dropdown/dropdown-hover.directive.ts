@@ -10,6 +10,7 @@ import {
     type WritableSignal,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
@@ -52,6 +53,7 @@ export class TuiDropdownHover extends TuiDriver {
     private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
+    private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly open = inject(TuiDropdownOpen, {optional: true});
 
@@ -71,6 +73,9 @@ export class TuiDropdownHover extends TuiDriver {
                 ),
             ),
         ),
+        this.isMobile
+            ? tuiTypedFromEvent(this.el, 'click').pipe(map(() => this.el))
+            : EMPTY,
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
         tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
     ).pipe(
