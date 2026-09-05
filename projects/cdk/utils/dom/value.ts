@@ -79,7 +79,7 @@ export function tuiValue(
             return;
         }
 
-        if (element?.matches(':focus') && 'selectionStart' in element) {
+        if (element?.matches(':focus') && 'selectionStart' in element && element.value) {
             const {selectionStart, selectionEnd} = element;
 
             /**

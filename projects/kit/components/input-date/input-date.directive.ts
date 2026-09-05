@@ -105,14 +105,17 @@ export abstract class TuiInputDateBase<
         }
     });
 
-    protected readonly calendarOut = effect(() => {
-        const value = this.calendar()?.value();
-        const changed = untracked(() => value !== this.toCalendarValue(this.value()));
-        const same = value instanceof TuiDayRange && value.from === value.to;
+    protected readonly calendarOut = effect((onCleanup) => {
+        const sub = this.calendar()?.value.subscribe((value) => {
+            const changed = value !== this.toCalendarValue(this.value());
+            const same = value instanceof TuiDayRange && value.from === value.to;
 
-        if (value && changed && !same) {
-            this.setDate(value);
-        }
+            if (value && changed && !same) {
+                this.setDate(value);
+            }
+        });
+
+        onCleanup(() => sub?.unsubscribe());
     });
 
     public readonly native =
