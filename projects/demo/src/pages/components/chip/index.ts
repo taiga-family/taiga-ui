@@ -4,11 +4,11 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeXXS} from '@taiga-ui/core';
-import {TuiChip, TuiChipGroup} from '@taiga-ui/kit';
+import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-chip',
-    imports: [TuiChip, TuiChipGroup, TuiDemo, TuiDocAppearance, TuiDocIcons],
+    imports: [TuiChip, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -29,11 +29,6 @@ export default class Example {
         'Grid',
     ];
 
-    protected readonly groupChips = ['January', 'February', 'March', 'April'];
-    protected readonly columnsVariants: ReadonlyArray<number | null> = [null, 2, 3, 4];
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
-    protected columns: number | null = null;
-    protected horizontal = false;
-    protected autoscroll = false;
     protected size = this.sizes[2]!;
 }
