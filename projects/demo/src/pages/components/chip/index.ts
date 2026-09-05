@@ -22,9 +22,21 @@ export default class Example {
         'Fade in complex designs',
     ];
 
-    protected readonly groupExamples = ['Basic', 'Single choice', 'Multiple choice', 'Grid'];
+    protected readonly groupExamples = [
+        'Basic',
+        'Single choice',
+        'Multiple choice',
+        'Grid',
+    ];
+
     protected readonly groupChips = ['January', 'February', 'March', 'April'];
-    protected readonly columnsVariants: readonly (number | null)[] = [null, 2, 3, 4];
+    protected readonly columnsVariants: readonly (number | null)[] = [
+        null,
+        2,
+        3,
+        4,
+    ];
+
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
 
     protected columns: number | null = null;

@@ -10,5 +10,10 @@ import {TuiChip, TuiChipGroup} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly chips = ['Indian cuisine', 'Wi-Fi', 'Free parking', 'Pets allowed'];
+    protected readonly chips = [
+        'Indian cuisine',
+        'Wi-Fi',
+        'Free parking',
+        'Pets allowed',
+    ];
 }
