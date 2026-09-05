@@ -24,6 +24,19 @@
                 chip will be faded in
             </p>
         </ng-template>
+
+        <h2>ChipGroup</h2>
+        <p>
+            ChipGroup arranges chips with platform-specific spacing and supports horizontal scrolling or a fixed grid.
+        </p>
+
+        @for (example of groupExamples; track example) {
+            <tui-doc-example
+                [component]="$index + 7 | tuiComponent"
+                [content]="$index + 7 | tuiExample"
+                [heading]="example"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -55,6 +68,47 @@
                 #icons
                 tuiDocIcons
             ></tbody>
+        </table>
+
+        <h2>ChipGroup</h2>
+        <tui-doc-demo>
+            <div
+                tuiChipGroup
+                [autoscroll]="autoscroll"
+                [columns]="columns"
+                [horizontal]="horizontal"
+            >
+                @for (chip of groupChips; track chip) {
+                    <span tuiChip>{{ chip }}</span>
+                }
+            </div>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[columns]"
+                tuiDocAPIItem
+                type="number | null"
+                [items]="columnsVariants"
+                [(value)]="columns"
+            >
+                number of equal grid columns, or null for wrapping layout
+            </tr>
+            <tr
+                name="[horizontal]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="horizontal"
+            >
+                horizontal scroll layout for mobile interfaces
+            </tr>
+            <tr
+                name="[autoscroll]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="autoscroll"
+            >
+                scroll clicked chip into view in horizontal layout
+            </tr>
         </table>
     </ng-template>
 </tui-doc-page>
