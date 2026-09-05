@@ -6,3 +6,4 @@ export * from './liquid-glass';
 export * from './override-options';
 export * from './provide-taiga';
 export * from './size-bigger';
+export * from './storage-key-factory';

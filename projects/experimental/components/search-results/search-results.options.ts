@@ -1,8 +1,9 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
+import {tuiStorageKeyFactory} from '@taiga-ui/core/utils/miscellaneous';
 
 export const [TUI_SEARCH_RESULTS_OPTIONS, tuiSearchResultsOptionsProvider] =
     tuiCreateOptions({
-        key: 'taiga-search-history',
+        key: tuiStorageKeyFactory('search-history'),
         history: '@tui.clock',
         popular: '@tui.search',
         empty: '@tui.search',
