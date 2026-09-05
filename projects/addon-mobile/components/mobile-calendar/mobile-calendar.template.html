@@ -82,6 +82,7 @@
         <tui-mobile-calendar-sheet
             class="t-calendar"
             [disabledItemHandler]="disabledItemHandler() | tuiMapper: disabledItemHandlerMapper : min() : max()"
+            [markerHandler]="markerHandler()"
             [month]="month"
             [value]="value()"
             (dayClick)="onDayClick($event)"
