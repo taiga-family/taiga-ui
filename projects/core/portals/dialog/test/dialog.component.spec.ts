@@ -74,5 +74,23 @@ describe('Dialogs', () => {
             expect(fixture.componentInstance.onActive).toHaveBeenCalledTimes(1);
             expect(fixture.componentInstance.onActive).toHaveBeenCalledWith(true);
         });
+
+        it('detaches dialog when parent zone is activated again', () => {
+            const button = fixture.debugElement.query(By.css('button'));
+
+            button.nativeElement.focus();
+            button.nativeElement.click();
+            fixture.detectChanges();
+
+            const dialogButton = fixture.debugElement.query(By.css('tui-dialog button'));
+
+            dialogButton.nativeElement.focus();
+            button.nativeElement.focus();
+            dialogButton.nativeElement.focus();
+
+            expect(fixture.componentInstance.onActive).toHaveBeenCalledTimes(2);
+            expect(fixture.componentInstance.onActive).toHaveBeenNthCalledWith(1, true);
+            expect(fixture.componentInstance.onActive).toHaveBeenNthCalledWith(2, false);
+        });
     });
 });

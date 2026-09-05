@@ -8,10 +8,13 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
+import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {
@@ -19,6 +22,7 @@ import {
     type PolymorpheusContent,
     PolymorpheusOutlet,
 } from '@taiga-ui/polymorpheus';
+import {filter, take} from 'rxjs';
 
 @Component({
     selector: 'tui-modal',
@@ -54,6 +58,20 @@ export class TuiModalComponent<T> implements OnDestroy, OnInit {
         inject(TuiActiveZone, {skipSelf: true}),
         tuiGetFocused(inject(DOCUMENT)),
     );
+
+    protected readonly sub = inject(TUI_ACTIVE_ELEMENT)
+        .pipe(
+            filter(tuiIsElement),
+            filter(
+                (element) =>
+                    !!this.parent?.contains(element) && !this.current.contains(element),
+            ),
+            take(1),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => {
+            this.current.tuiActiveZoneParentSetter = null;
+        });
 
     public readonly context = injectContext<TuiPortalContext<T>>();
     public readonly component = signal<PolymorpheusContent<TuiPortalContext<T>>>(null);
