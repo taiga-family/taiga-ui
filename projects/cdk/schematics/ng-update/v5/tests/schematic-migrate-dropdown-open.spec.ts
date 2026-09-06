@@ -25,6 +25,13 @@ describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
     );
 
     it(
+        'should rename [tuiDropdownMobile] binding to [tuiDropdownSheet]',
+        migrate({
+            template: `<tui-textfield [tuiDropdownMobile]="'label'"></tui-textfield>`,
+        }),
+    );
+
+    it(
         'should rename [tuiSheet] to [tuiSheetDialog]',
         migrate({template: '<button [tuiSheet]="content">Open</button>'}),
     );
