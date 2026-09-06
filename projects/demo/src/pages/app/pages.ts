@@ -1103,6 +1103,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'ChipGroup',
+        keywords: 'chip, chips, group, tag, тэг, badge',
+        route: DemoRoute.ChipGroup,
+    },
+    {
+        section: 'Components',
         title: 'Message',
         keywords: 'message, sms, сообщение, смс',
         route: DemoRoute.Message,

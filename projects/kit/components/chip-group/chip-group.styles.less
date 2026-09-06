@@ -1,0 +1,68 @@
+@import '@taiga-ui/styles/utils';
+
+:where([tuiChipGroup]&) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+
+    --tui-item-margin: 0.25rem;
+
+    & > *:not(tui-items-with-more) {
+        margin-block-end: var(--tui-item-margin);
+        margin-inline-end: var(--tui-item-margin);
+    }
+
+    &:is([data-platform='android'], [data-platform='ios']) {
+        --tui-item-margin: 0.5rem;
+
+        [tuiChip] {
+            border-radius: 2rem;
+        }
+    }
+
+    &._horizontal {
+        .scrollbar-hidden();
+
+        flex-wrap: nowrap;
+        overflow: scroll;
+
+        & > *:not(tui-items-with-more) {
+            margin-block-end: 0;
+        }
+    }
+
+    &._grid {
+        display: grid;
+        gap: var(--tui-item-margin);
+        grid-template-columns: repeat(var(--tui-chip-group-columns), minmax(0, 1fr));
+
+        & > *:not(tui-items-with-more) {
+            margin: 0;
+        }
+
+        & > [tuiChip] {
+            inline-size: 100%;
+        }
+    }
+
+    &._initialized {
+        tui-items-with-more {
+            .t-item {
+                & > * {
+                    margin-block-end: var(--tui-item-margin);
+                    margin-inline-end: var(--tui-item-margin);
+                }
+
+                .transition(~'transform, opacity');
+
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .t-item_hidden {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+    }
+}
