@@ -13,6 +13,7 @@ describe('@taiga-ui/cdk collection.json references only existing files', () => {
     const collection: {schematics: Record<string, SchematicEntry>} = JSON.parse(
         readFileSync(join(schematicsDir, 'collection.json'), 'utf8'),
     );
+
     const entries = Object.entries(collection.schematics);
 
     const moduleExists = (modulePath: string): boolean =>

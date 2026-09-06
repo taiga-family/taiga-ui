@@ -1,7 +1,8 @@
-import {NodeModulesEngineHost} from '@angular-devkit/schematics/tools';
 import {mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+
+import {NodeModulesEngineHost} from '@angular-devkit/schematics/tools';
 
 // When npm nests @taiga-ui/cdk (mismatched @angular/cdk peer), the meta `schematics`
 // field must still resolve: a bare specifier does, a relative sibling path doesn't.
@@ -10,9 +11,9 @@ describe('taiga-ui meta package resolves its schematics collection when @taiga-u
         join(__dirname, '..', '..', '..', 'taiga-schematics', 'package.json'),
         'utf8',
     );
+
     const cdkManifest = readFileSync(join(__dirname, '..', '..', 'package.json'), 'utf8');
     const collection = readFileSync(join(__dirname, '..', 'collection.json'), 'utf8');
-
     let root = '';
 
     beforeEach(() => {
