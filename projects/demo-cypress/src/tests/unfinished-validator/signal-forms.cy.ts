@@ -111,7 +111,7 @@ describe('tuiUnfinishedValidator + signal forms', () => {
                     cy.get('@input').type(HALF_TYPED);
                 });
 
-                it('before the field is even blured', () => {
+                it('before the field is even blurred', () => {
                     cy.get('#invalid').should('have.text', 'true');
                     cy.get('#submit').should('be.disabled');
                     cy.get('tui-error').should('not.be.visible');
