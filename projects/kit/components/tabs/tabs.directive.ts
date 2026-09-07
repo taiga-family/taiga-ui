@@ -80,13 +80,11 @@ export class TuiTabsDirective implements AfterViewChecked {
         tabs.forEach((nativeElement) => {
             const active = nativeElement === activeElement;
             const anchor = nativeElement.dataset.tuiAnchor || '';
+            const name = [anchor, '--tui-tab-active'].filter(Boolean).join(', ');
 
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
-            nativeElement.style.setProperty(
-                'anchor-name',
-                active ? `${anchor}, --tui-tab-active` : anchor,
-            );
+            nativeElement.style.setProperty('anchor-name', active ? name : anchor);
         });
     }
 }
