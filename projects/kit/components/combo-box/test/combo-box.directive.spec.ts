@@ -68,7 +68,7 @@ describe('TuiComboBoxDirective', () => {
         fixture.detectChanges();
     });
 
-    it('Nested click listeners work', async () => {
+    it('Nested click listeners work', () => {
         fixture.debugElement.query(By.css('[tuiOption]')).nativeElement.click();
         fixture.detectChanges();
 
