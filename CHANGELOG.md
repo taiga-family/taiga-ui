@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.98.0](https://github.com/taiga-family/taiga-ui/compare/v4.97.0...v4.98.0) (2026-09-07)
+
+### 🐞 Bug Fixes
+
+- **layout:** `List` remove outer padding on definition list (`dl`)
+  ([#14906](https://github.com/taiga-family/taiga-ui/issues/14906))
+  ([081b39f](https://github.com/taiga-family/taiga-ui/commit/081b39f390d6235a279c0ef9fbffedaf94a86334))
+
 ## [4.97.0](https://github.com/taiga-family/taiga-ui/compare/v4.95.0...v4.97.0) (2026-08-31)
 
 ### 🐞 Bug Fixes
