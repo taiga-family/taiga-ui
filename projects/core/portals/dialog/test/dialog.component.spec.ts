@@ -62,6 +62,17 @@ describe('Dialogs', () => {
         });
     });
 
+    describe('size', () => {
+        it('supports content-driven width', () => {
+            service.open('Test', {size: null}).subscribe();
+            fixture.detectChanges();
+
+            const dialog = fixture.debugElement.query(By.css('tui-dialog'));
+
+            expect(dialog.nativeElement.getAttribute('data-size')).toBeNull();
+        });
+    });
+
     describe('active zone', () => {
         it('stays true when dialog is activated', () => {
             const button = fixture.debugElement.query(By.css('button'));
