@@ -4,17 +4,11 @@ import {tuiGetCurrencySymbol} from './get-currency-symbol';
 
 /**
  * @deprecated Use {@link tuiGetCurrencySymbol} instead.
+ * TODO(v6): delete
  */
 export function tuiFormatCurrency(currency: TuiCurrencyVariants): string {
-    const symbol = tuiGetCurrencySymbol(currency);
+    const fallback =
+        typeof currency === 'number' ? String(currency).padStart(3, '0') : currency;
 
-    if (symbol) {
-        return symbol;
-    }
-
-    if (currency === null) {
-        return '';
-    }
-
-    return typeof currency === 'number' ? String(currency).padStart(3, '0') : currency;
+    return tuiGetCurrencySymbol(currency) ?? fallback ?? '';
 }
