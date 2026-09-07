@@ -1,5 +1,15 @@
 import {withMigrationContext} from '../with-migration-context';
 
+function catchError(task: () => unknown): unknown {
+    try {
+        task();
+    } catch (error: unknown) {
+        return error;
+    }
+
+    return null;
+}
+
 describe('withMigrationContext', () => {
     it('returns the task result when nothing throws', () => {
         expect(withMigrationContext('ctx', () => 42)).toBe(42);
@@ -9,26 +19,28 @@ describe('withMigrationContext', () => {
         const original = new TypeError(
             "Cannot read properties of undefined (reading 'startOffset')",
         );
+
         const {stack} = original;
 
-        try {
+        const error = catchError(() =>
             withMigrationContext('Failed to migrate "src/app.html"', () => {
                 throw original;
-            });
-            throw new Error('should have rethrown');
-        } catch (error) {
-            expect(error).toBe(original);
-            expect((error as Error).message).toBe(
-                'Failed to migrate "src/app.html"\nCannot read properties of undefined (reading \'startOffset\')',
-            );
-            expect((error as Error).stack).toBe(stack);
-        }
+            }),
+        );
+
+        expect(error).toBe(original);
+        expect((error as Error).message).toBe(
+            'Failed to migrate "src/app.html"\nCannot read properties of undefined (reading \'startOffset\')',
+        );
+        expect((error as Error).stack).toBe(stack);
     });
 
     it('wraps a non-Error throwable into an Error carrying the context', () => {
+        const notAnError: unknown = 'boom';
+
         expect(() =>
             withMigrationContext('step "x" failed', () => {
-                throw 'boom';
+                throw notAnError;
             }),
         ).toThrow('step "x" failed\nboom');
     });
