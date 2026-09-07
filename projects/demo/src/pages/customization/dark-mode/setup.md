@@ -5,8 +5,8 @@ bootstrapApplication(AppComponent, {
   providers: [
     {
       provide: TUI_DARK_MODE_KEY,
-      // Override the default 'tuiDark' localStorage key
-      useValue: 'myAppTheme',
+      // Override the default '@tui[is-dark]' localStorage key
+      useValue: 'my-app-theme-key',
     },
   ],
 });
