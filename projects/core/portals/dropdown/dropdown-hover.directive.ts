@@ -85,6 +85,10 @@ export class TuiDropdownHover extends TuiDriver {
                     this.directive.component.component === TuiDropdownComponent,
             ),
         ),
+        // Touch has no native hover — a tap must open the sheet deterministically, not via a synthesized mouseover
+        this.directive.component.component === TuiDropdownComponent
+            ? EMPTY
+            : tuiTypedFromEvent(this.el, 'click').pipe(map(() => true)),
     ).pipe(
         distinctUntilChanged(),
         switchMap((v) =>
