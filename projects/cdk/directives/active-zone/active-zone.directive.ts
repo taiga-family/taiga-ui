@@ -55,6 +55,12 @@ export class TuiActiveZone implements OnDestroy {
         );
     }
 
+    public containsZone(selector: string): boolean {
+        return this.children.some(
+            (zone) => zone.el.matches(selector) || zone.containsZone(selector),
+        );
+    }
+
     // issue: https://github.com/typescript-eslint/typescript-eslint/issues/11770
     // eslint-disable-next-line @typescript-eslint/no-unused-private-class-members
     private addSubActiveZone(activeZone: TuiActiveZone): void {
