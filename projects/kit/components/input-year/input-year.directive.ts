@@ -86,8 +86,15 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = input((this.options.min ?? TUI_FIRST_DAY).year);
-    public readonly max = input((this.options.max ?? TUI_LAST_DAY).year);
+    public readonly min = input((this.options.min ?? TUI_FIRST_DAY).year, {
+        transform: (min: number | undefined) =>
+            min ?? (this.options.min ?? TUI_FIRST_DAY).year,
+    });
+
+    public readonly max = input((this.options.max ?? TUI_LAST_DAY).year, {
+        transform: (max: number | undefined) =>
+            max ?? (this.options.max ?? TUI_LAST_DAY).year,
+    });
 
     protected toggle(): void {
         if (this.interactive()) {
