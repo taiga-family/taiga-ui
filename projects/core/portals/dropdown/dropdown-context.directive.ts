@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    type AfterViewInit,
+    afterNextRender,
     computed,
     Directive,
     type ElementRef,
@@ -50,7 +50,7 @@ const STYLE: Partial<CSSStyleDeclaration> = {
 })
 export class TuiDropdownContext
     extends TuiRectAccessor
-    implements ElementRef<HTMLElement>, AfterViewInit, OnDestroy
+    implements ElementRef<HTMLElement>, OnDestroy
 {
     private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
@@ -87,13 +87,18 @@ export class TuiDropdownContext
     public readonly type = 'dropdown';
     public readonly nativeElement = this.doc.createElement('div');
 
-    public ngAfterViewInit(): void {
-        const anchorName = `--${tuiGenerateId()}`;
-        const positionAnchor = this.el.dataset.tuiAnchor;
+    constructor() {
+        super();
 
-        Object.assign(this.nativeElement.style, {...STYLE, positionAnchor, anchorName});
-        this.nativeElement.dataset.tuiAnchor = anchorName;
-        this.doc.body.appendChild(this.nativeElement);
+        afterNextRender(() => {
+            const anchorName = `--${tuiGenerateId()}`;
+            const positionAnchor = this.el.dataset.tuiAnchor;
+            const style = {...STYLE, positionAnchor, anchorName};
+
+            Object.assign(this.nativeElement.style, style);
+            this.nativeElement.dataset.tuiAnchor = anchorName;
+            this.doc.body.appendChild(this.nativeElement);
+        });
     }
 
     public ngOnDestroy(): void {
@@ -108,7 +113,8 @@ export class TuiDropdownContext
         const {top, left} = this.el.getBoundingClientRect();
 
         this.currentRect = tuiPointToClientRect(x, y);
-        this.nativeElement.style.inset = `calc(anchor(top) + ${y - top}px) calc(anchor(left) + ${x - left}px)`;
+        this.nativeElement.style.top = `calc(anchor(top) + ${y - top}px)`;
+        this.nativeElement.style.left = `calc(anchor(left) + ${x - left}px)`;
         this.driver.next(true);
     }
 }

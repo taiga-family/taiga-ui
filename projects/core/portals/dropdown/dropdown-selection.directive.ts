@@ -1,6 +1,6 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
-    type AfterViewInit,
+    afterNextRender,
     computed,
     Directive,
     type ElementRef,
@@ -18,6 +18,7 @@ import {
     TUI_TRUE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     tuiInjectElement,
     tuiIsElement,
@@ -47,17 +48,19 @@ import {
 } from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
 
 @Directive({
     selector: '[tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelection),
         tuiAsRectAccessor(TuiDropdownSelection),
+        tuiProvide(TUI_DROPDOWN_ANCHOR, TuiDropdownSelection),
     ],
 })
 export class TuiDropdownSelection
     extends TuiDriver
-    implements ElementRef<HTMLElement>, TuiRectAccessor, AfterViewInit, OnDestroy
+    implements ElementRef<HTMLElement>, TuiRectAccessor, OnDestroy
 {
     private ghost?: HTMLElement;
 
@@ -120,19 +123,19 @@ export class TuiDropdownSelection
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
-    }
 
-    public ngAfterViewInit(): void {
-        const anchorName = `--${tuiGenerateId()}`;
+        afterNextRender(() => {
+            const anchorName = `--${tuiGenerateId()}`;
 
-        Object.assign(this.nativeElement.style, {
-            position: 'fixed',
-            pointerEvents: 'none',
-            positionAnchor: this.el.dataset.tuiAnchor,
-            anchorName,
+            Object.assign(this.nativeElement.style, {
+                position: 'fixed',
+                pointerEvents: 'none',
+                positionAnchor: this.el.dataset.tuiAnchor,
+                anchorName,
+            });
+            this.nativeElement.dataset.tuiAnchor = anchorName;
+            this.doc.body.appendChild(this.nativeElement);
         });
-        this.nativeElement.dataset.tuiAnchor = anchorName;
-        this.doc.body.appendChild(this.nativeElement);
     }
 
     public ngOnDestroy(): void {
@@ -279,7 +282,8 @@ export class TuiDropdownSelection
         const {top, left} = this.el.getBoundingClientRect();
 
         Object.assign(this.nativeElement.style, {
-            inset: `calc(anchor(top) + ${rect.top - top}px) calc(anchor(left) + ${rect.left - left}px)`,
+            top: `calc(anchor(top) + ${rect.top - top}px)`,
+            left: `calc(anchor(left) + ${rect.left - left}px)`,
             blockSize: tuiPx(rect.height),
             inlineSize: tuiPx(rect.width),
         });
