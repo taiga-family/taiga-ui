@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSelectPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -18,7 +19,7 @@ describe('Select', () => {
                     );
                     example = new TuiDocumentationPagePO(page).apiPageExample;
                     select = new TuiSelectPO(
-                        example.locator('tui-textfield:has([tuiSelect])'),
+                        example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
                     );
 
                     await select.textfield.click();
@@ -54,7 +55,7 @@ describe('Select', () => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
                 example = new TuiDocumentationPagePO(page).apiPageExample;
                 select = new TuiSelectPO(
-                    example.locator('tui-textfield:has([tuiSelect])'),
+                    example.locator(TUI_SELECT_LOCATORS.TEXTFIELD_PARENT),
                 );
             });
 
@@ -62,7 +63,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -76,7 +77,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_SELECT_LOCATORS.LABEL).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
