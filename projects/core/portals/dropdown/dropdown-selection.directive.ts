@@ -139,7 +139,7 @@ export class TuiDropdownSelection
     }
 
     public ngOnDestroy(): void {
-        this.doc.body.removeChild(this.nativeElement);
+this.nativeElement.parentNode?.removeChild(this.nativeElement);
 
         if (this.ghost) {
             this.ghostHost.removeChild(this.ghost);
