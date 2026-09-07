@@ -411,7 +411,7 @@
 ### line-clamp
 
 ```text
-  TuiLineClamp, TuiLineClampBox, TuiLineClampOptions, TuiLineClampPositionDirective
+  TuiLineClamp, TuiLineClampBox, TuiLineClampFallback, TuiLineClampOptions, TuiLineClampPositionDirective
 ```
 ### message
 
@@ -839,8 +839,9 @@
 ### root
 
 ```text
-  TuiBooleanHandler, TuiContext, TuiHandler, TuiIdentityMatcher, TuiMapper
-  TuiMatcher, TuiNumberHandler, TuiRounding, TuiStringHandler, TuiStringMatcher
+  TuiBooleanHandler, TuiCompatValidationError, TuiContext, TuiHandler, TuiIdentityMatcher
+  TuiMapper, TuiMatcher, TuiNumberHandler, TuiRounding, TuiSignalValidationError
+  TuiStringHandler, TuiStringMatcher
 ```
 **Utilitys:**
 ### focus
@@ -852,7 +853,7 @@
 ### root
 
 ```text
-  TuiFormValueControl, TuiNonNullableValueTransformer, TuiSignalValidationError, TuiValidationError
+  TuiFormValueControl, TuiNonNullableValueTransformer, TuiValidationError
 ```
 ---
 ## @taiga-ui/experimental
@@ -860,7 +861,7 @@
 ### calendar
 
 ```text
-  TuiCalendar, TuiCalendarComponent, TuiCalendarHeader, TuiCalendarMultiComponent
+  TuiCalendar, TuiCalendarComponent, TuiCalendarHeader, TuiCalendarMobileComponent, TuiCalendarMultiComponent
 ```
 ### data-grid
 
@@ -1038,7 +1039,7 @@
 ### bottom-sheet
 
 ```text
-  TuiBottomSheet
+  TuiBottomSheet, TuiBottomSheetOptions
 ```
 ### keypad
 
@@ -8144,6 +8145,114 @@ export default class Example {
 }
 ```
 
+#### Example 6
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;sheet.set(true)&quot; &gt; {{ day() ?? &#039;Sheet&#039; }} &lt;/button&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;dialog.set(true)&quot; &gt; {{ range() ?? &#039;Dialog&#039; }} &lt;/button&gt;
+&lt;ng-template let-observer [tuiSheetDialogOptions]=&quot;{appearance: &#039;fullscreen&#039;, bar: false, closable: false}&quot; [(tuiSheetDialog)]=&quot;sheet&quot; &gt;
+&lt;header&gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Back &lt;/button&gt; Select date &lt;button tuiButton tuiSlot=&quot;end&quot; type=&quot;button&quot; (click)=&quot;day.set(today); observer.complete()&quot; &gt; Today &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;/header&gt;
+&lt;tui-calendar-mobile #calendar mode=&quot;single&quot; [value]=&quot;day()&quot; /&gt; @if (calendar.value(); as selected) { &lt;div class=&quot;footer&quot;&gt;
+&lt;footer tuiFloatingContainer=&quot;transparent&quot;&gt; @if (day() === selected) { &lt;button tuiButton type=&quot;button&quot; (click)=&quot;day.set(null); observer.complete()&quot; &gt; Clear &lt;/button&gt; } @else { &lt;button tuiButton type=&quot;button&quot; (click)=&quot;day.set(selected); observer.complete()&quot; &gt; Select {{ calendar.value() }} &lt;/button&gt; } &lt;/footer&gt;
+&lt;/div&gt; } &lt;/ng-template&gt;
+&lt;ng-template let-observer [tuiDialogOptions]=&quot;{appearance: &#039;fullscreen&#039;}&quot; [(tuiDialog)]=&quot;dialog&quot; &gt;
+&lt;tui-app-bar&gt;
+&lt;button tuiButton tuiSlot=&quot;start&quot; type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Back &lt;/button&gt; Select range &lt;button tuiButton tuiSlot=&quot;end&quot; type=&quot;button&quot; (click)=&quot;range.set(null); observer.complete()&quot; &gt; Clear &lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-calendar-mobile #calendar mode=&quot;range&quot; [min]=&quot;today&quot; [value]=&quot;range()&quot; /&gt; @if (calendar.value()) { &lt;tui-bottom-sheet tuiAnimated [bar]=&quot;false&quot; [stops]=&quot;[]&quot; &gt;
+&lt;div tuiItemGroup [horizontal]=&quot;true&quot; &gt; @for (item of items; track $index) { &lt;button tuiChip type=&quot;button&quot; (click)=&quot;range.set(item.range); observer.complete()&quot; &gt; {{ item }} &lt;/button&gt; } &lt;/div&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;range.set(calendar.value()); observer.complete()&quot; &gt; Select dates &lt;/button&gt;
+&lt;p&gt;{{ calendar.value() }}&lt;/p&gt;
+&lt;/footer&gt;
+&lt;/tui-bottom-sheet&gt; } &lt;/ng-template&gt;
+```
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiBottomSheet, TuiSheetDialog} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAnimated, TuiDay, type TuiDayRange} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiDialog} from &#039;@taiga-ui/core&#039;;
+import {TuiCalendar} from &#039;@taiga-ui/experimental&#039;;
+import {TuiChip, tuiCreateDefaultDayRangePeriods} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar, TuiFloatingContainer, TuiItemGroup} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [
+        TuiAnimated,
+        TuiAppBar,
+        TuiBottomSheet,
+        TuiButton,
+        TuiCalendar,
+        TuiChip,
+        TuiDialog,
+        TuiFloatingContainer,
+        TuiItemGroup,
+        TuiSheetDialog,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly today = TuiDay.currentLocal();
+    protected readonly sheet = signal(false);
+    protected readonly dialog = signal(false);
+    protected readonly day = signal&lt;TuiDay | null&gt;(null);
+    protected readonly range = signal&lt;TuiDayRange | null&gt;(null);
+    protected readonly items = tuiCreateDefaultDayRangePeriods();
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer {
+    display: flex;
+    max-block-size: 0;
+    align-items: flex-end;
+}
+
+[tuiFloatingContainer] {
+    inline-size: 100%;
+}
+
+tui-bottom-sheet {
+    position: fixed;
+    inset: auto 0 calc(max(1rem, env(safe-area-inset-bottom)) - 2rem);
+    margin: auto;
+    block-size: fit-content;
+
+    --tui-from: translateY(100%);
+
+    &amp;.tui-enter,
+    &amp;.tui-leave {
+        animation-name: tuiSlide;
+    }
+
+    [tuiItemGroup] {
+        padding: 0 1rem;
+        margin: 0.25rem -1rem 0;
+    }
+
+    [tuiFloatingContainer] {
+        animation: none;
+        padding: 0;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -14589,7 +14698,7 @@ Customizable modal dialogs
 | [data] | `string` |  |
 | [label] | `string` | heading of dialog |
 | [required] | `boolean` | (you can catch it with &quot;catch&quot; operator or onError handler) |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `null | TuiSizeS | TuiSizeL` | to make the dialog width fit its content. |
 
 ### Usage Examples
 
@@ -14983,6 +15092,37 @@ export default class Example {
 }
 ```
 
+#### Content width
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;show()&quot; &gt; Show content-sized dialog &lt;/button&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiButton, TuiDialogService} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Example {
+    private readonly dialogs = inject(TuiDialogService);
+
+    protected show(): void {
+        this.dialogs
+            .open(&#039;The width of this dialog is defined by its content.&#039;, {
+                label: &#039;Content-sized dialog&#039;,
+                size: null,
+            })
+            .subscribe();
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -15023,6 +15163,7 @@ export default class Page extends Array {
         &#039;Closing&#039;,
         &#039;Fullscreen&#039;,
         &#039;Customization&#039;,
+        &#039;Content width&#039;,
     ];
 
     protected readonly [2] = {
@@ -28382,7 +28523,6 @@ export default class Example {
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- dvh: vh spans behind the mobile browser UI and pushes the bottom actions offscreen */
     block-size: 100dvh;
     box-sizing: border-box;
 }

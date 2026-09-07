@@ -402,7 +402,7 @@
 ### line-clamp
 
 ```text
-  TuiLineClamp, TuiLineClampBox, TuiLineClampOptions, TuiLineClampPositionDirective
+  TuiLineClamp, TuiLineClampBox, TuiLineClampFallback, TuiLineClampOptions, TuiLineClampPositionDirective
 ```
 ### message
 
@@ -830,8 +830,9 @@
 ### root
 
 ```text
-  TuiBooleanHandler, TuiContext, TuiHandler, TuiIdentityMatcher, TuiMapper
-  TuiMatcher, TuiNumberHandler, TuiRounding, TuiStringHandler, TuiStringMatcher
+  TuiBooleanHandler, TuiCompatValidationError, TuiContext, TuiHandler, TuiIdentityMatcher
+  TuiMapper, TuiMatcher, TuiNumberHandler, TuiRounding, TuiSignalValidationError
+  TuiStringHandler, TuiStringMatcher
 ```
 **Utilitys:**
 ### focus
@@ -843,7 +844,7 @@
 ### root
 
 ```text
-  TuiFormValueControl, TuiNonNullableValueTransformer, TuiSignalValidationError, TuiValidationError
+  TuiFormValueControl, TuiNonNullableValueTransformer, TuiValidationError
 ```
 ---
 ## @taiga-ui/experimental
@@ -851,7 +852,7 @@
 ### calendar
 
 ```text
-  TuiCalendar, TuiCalendarComponent, TuiCalendarHeader, TuiCalendarMultiComponent
+  TuiCalendar, TuiCalendarComponent, TuiCalendarHeader, TuiCalendarMobileComponent, TuiCalendarMultiComponent
 ```
 ### data-grid
 
@@ -1029,7 +1030,7 @@
 ### bottom-sheet
 
 ```text
-  TuiBottomSheet
+  TuiBottomSheet, TuiBottomSheetOptions
 ```
 ### keypad
 
@@ -8135,6 +8136,114 @@ export default class Example {
 }
 ```
 
+#### Example 6
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="sheet.set(true)" > {{ day() ?? 'Sheet' }} </button>
+<button tuiButton type="button" (click)="dialog.set(true)" > {{ range() ?? 'Dialog' }} </button>
+<ng-template let-observer [tuiSheetDialogOptions]="{appearance: 'fullscreen', bar: false, closable: false}" [(tuiSheetDialog)]="sheet" >
+<header>
+<tui-app-bar>
+<button tuiButton tuiSlot="start" type="button" (click)="observer.complete()" > Back </button> Select date <button tuiButton tuiSlot="end" type="button" (click)="day.set(today); observer.complete()" > Today </button>
+</tui-app-bar>
+</header>
+<tui-calendar-mobile #calendar mode="single" [value]="day()" /> @if (calendar.value(); as selected) { <div class="footer">
+<footer tuiFloatingContainer="transparent"> @if (day() === selected) { <button tuiButton type="button" (click)="day.set(null); observer.complete()" > Clear </button> } @else { <button tuiButton type="button" (click)="day.set(selected); observer.complete()" > Select {{ calendar.value() }} </button> } </footer>
+</div> } </ng-template>
+<ng-template let-observer [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="dialog" >
+<tui-app-bar>
+<button tuiButton tuiSlot="start" type="button" (click)="observer.complete()" > Back </button> Select range <button tuiButton tuiSlot="end" type="button" (click)="range.set(null); observer.complete()" > Clear </button>
+</tui-app-bar>
+<tui-calendar-mobile #calendar mode="range" [min]="today" [value]="range()" /> @if (calendar.value()) { <tui-bottom-sheet tuiAnimated [bar]="false" [stops]="[]" >
+<div tuiItemGroup [horizontal]="true" > @for (item of items; track $index) { <button tuiChip type="button" (click)="range.set(item.range); observer.complete()" > {{ item }} </button> } </div>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="range.set(calendar.value()); observer.complete()" > Select dates </button>
+<p>{{ calendar.value() }}</p>
+</footer>
+</tui-bottom-sheet> } </ng-template>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBottomSheet, TuiSheetDialog} from '@taiga-ui/addon-mobile';
+import {TuiAnimated, TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
+import {TuiButton, TuiDialog} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/experimental';
+import {TuiChip, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiAppBar, TuiFloatingContainer, TuiItemGroup} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        TuiAnimated,
+        TuiAppBar,
+        TuiBottomSheet,
+        TuiButton,
+        TuiCalendar,
+        TuiChip,
+        TuiDialog,
+        TuiFloatingContainer,
+        TuiItemGroup,
+        TuiSheetDialog,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly today = TuiDay.currentLocal();
+    protected readonly sheet = signal(false);
+    protected readonly dialog = signal(false);
+    protected readonly day = signal<TuiDay | null>(null);
+    protected readonly range = signal<TuiDayRange | null>(null);
+    protected readonly items = tuiCreateDefaultDayRangePeriods();
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer {
+    display: flex;
+    max-block-size: 0;
+    align-items: flex-end;
+}
+
+[tuiFloatingContainer] {
+    inline-size: 100%;
+}
+
+tui-bottom-sheet {
+    position: fixed;
+    inset: auto 0 calc(max(1rem, env(safe-area-inset-bottom)) - 2rem);
+    margin: auto;
+    block-size: fit-content;
+
+    --tui-from: translateY(100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
+
+    [tuiItemGroup] {
+        padding: 0 1rem;
+        margin: 0.25rem -1rem 0;
+    }
+
+    [tuiFloatingContainer] {
+        animation: none;
+        padding: 0;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -14580,7 +14689,7 @@ Customizable modal dialogs
 | [data] | `string` |  |
 | [label] | `string` | heading of dialog |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `null | TuiSizeS | TuiSizeL` | to make the dialog width fit its content. |
 
 ### Usage Examples
 
@@ -14974,6 +15083,37 @@ export default class Example {
 }
 ```
 
+#### Content width
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="show()" > Show content-sized dialog </button>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButton, TuiDialogService} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    private readonly dialogs = inject(TuiDialogService);
+
+    protected show(): void {
+        this.dialogs
+            .open('The width of this dialog is defined by its content.', {
+                label: 'Content-sized dialog',
+                size: null,
+            })
+            .subscribe();
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -15014,6 +15154,7 @@ export default class Page extends Array {
         'Closing',
         'Fullscreen',
         'Customization',
+        'Content width',
     ];
 
     protected readonly [2] = {
@@ -28373,7 +28514,6 @@ export default class Example {
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    /* stylelint-disable-next-line plugin/use-baseline, unit-allowed-list -- dvh: vh spans behind the mobile browser UI and pushes the bottom actions offscreen */
     block-size: 100dvh;
     box-sizing: border-box;
 }
