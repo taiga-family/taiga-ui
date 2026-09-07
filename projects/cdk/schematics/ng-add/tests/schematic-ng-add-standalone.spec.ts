@@ -47,6 +47,7 @@ describe('ng-add [Standalone]', () => {
         expect(tree.readContent('package.json')).toBe(
             `{
   "dependencies": {
+    "@angular/cdk": "^13.0.0",
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",

@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, effect, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiCalendarRange, TuiInputDateRange} from '@taiga-ui/kit';
 
 describe('TuiInputDateRangeDirective', () => {
     @Component({
@@ -13,6 +14,7 @@ describe('TuiInputDateRangeDirective', () => {
                     tuiInputDateRange
                     [formControl]="control"
                 />
+                <tui-calendar-range />
             </tui-textfield>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -68,4 +70,32 @@ describe('TuiInputDateRangeDirective', () => {
         expect(input.value).toBe(newRange);
         expect(control.value?.getFormattedDayRange('dd/mm/yyyy', '.')).toBe(newRange);
     });
+
+    it('moves caret to the end after selecting first day in empty input', () => {
+        const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        const day = new TuiDay(2025, 0, 1);
+
+        input.focus();
+        getCalendar()['onDayClick'](day);
+        fixture.detectChanges();
+
+        expect(input.value).toBe(`01.01.2025${RANGE_SEPARATOR_CHAR}`);
+        expect(input.selectionStart).toBe(input.value.length);
+    });
+
+    it('commits unfinished single-day range synchronously on destroy', () => {
+        const day = new TuiDay(2025, 0, 1);
+        const range = new TuiDayRange(day, day);
+        const calendar = getCalendar();
+
+        calendar['onDayClick'](day);
+        calendar.ngOnDestroy();
+
+        expect(control.value?.daySame(range)).toBe(true);
+    });
+
+    function getCalendar(): TuiCalendarRange {
+        return fixture.debugElement.query(By.directive(TuiCalendarRange))
+            .componentInstance;
+    }
 });

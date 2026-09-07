@@ -165,7 +165,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public handleOption(option: T): void {
         this.accessor()?.setValue(option);
-        this.open.toggle(false);
+        this.open.open.set(false);
     }
 
     protected get hasLabel(): boolean {
