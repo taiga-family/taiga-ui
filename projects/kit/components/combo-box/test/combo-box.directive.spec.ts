@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {provideTaiga, TuiDataList, TuiRoot} from '@taiga-ui/core';
-import {TuiComboBox} from '@taiga-ui/kit';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {provideTaiga, TuiDataList, TuiRoot} from '@taiga-ui/core';
+import {TuiComboBox} from '@taiga-ui/kit';
 
 describe('TuiComboBoxDirective', () => {
     /**
@@ -13,7 +13,6 @@ describe('TuiComboBoxDirective', () => {
     @Component({
         selector: 'app-data-list',
         imports: [TuiDataList],
-        changeDetection: ChangeDetectionStrategy.OnPush,
         template: `
             <tui-data-list>
                 @for (item of items(); track item) {
@@ -27,6 +26,7 @@ describe('TuiComboBoxDirective', () => {
                 }
             </tui-data-list>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class DataListComponent {
         public readonly items = input<readonly string[]>([]);
@@ -34,7 +34,7 @@ describe('TuiComboBoxDirective', () => {
     }
 
     @Component({
-        imports: [TuiRoot, DataListComponent, TuiComboBox, FormsModule],
+        imports: [DataListComponent, FormsModule, TuiComboBox, TuiRoot],
         template: `
             <tui-root>
                 <tui-textfield [open]="true">
@@ -53,9 +53,9 @@ describe('TuiComboBoxDirective', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        value = '';
-        brands = ['Audi', 'BMW', 'Volkswagen'];
-        onPicked = jest.fn();
+        public value = '';
+        public brands = ['Audi', 'BMW', 'Volkswagen'];
+        public onPicked = jest.fn();
     }
 
     let fixture: ComponentFixture<Test>;
@@ -68,7 +68,7 @@ describe('TuiComboBoxDirective', () => {
         fixture.detectChanges();
     });
 
-    it('Nested click listeners work', () => {
+    it('nested click listeners work', () => {
         fixture.debugElement.query(By.css('[tuiOption]')).nativeElement.click();
         fixture.detectChanges();
 
