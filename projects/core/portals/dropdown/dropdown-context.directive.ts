@@ -102,7 +102,7 @@ export class TuiDropdownContext
     }
 
     public ngOnDestroy(): void {
-this.nativeElement.parentNode?.removeChild(this.nativeElement);
+        this.nativeElement.parentNode?.removeChild(this.nativeElement);
     }
 
     public getClientRect(): DOMRect {
