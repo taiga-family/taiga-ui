@@ -27,7 +27,7 @@ describe('ng-update tuiDropdownOpen to tuiDropdownAuto', () => {
     it(
         'should rename [tuiDropdownMobile] binding to [tuiDropdownSheet]',
         migrate({
-            template: `<tui-textfield [tuiDropdownMobile]="'label'"></tui-textfield>`,
+            template: '<tui-textfield [tuiDropdownMobile]="\'label\'"></tui-textfield>',
         }),
     );
 
