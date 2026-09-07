@@ -170,7 +170,9 @@ test.describe('InputDateRange', () => {
 
                 await calendarSheet.clickOnDay(15);
 
-                await expect(inputDateRange.textfield).toHaveValue('');
+                await expect(inputDateRange.textfield).toHaveValue(
+                    `15.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
+                );
 
                 await calendarSheet.clickOnDay(15);
 
@@ -202,7 +204,7 @@ test.describe('InputDateRange', () => {
                 await calendarSheet.clickOnDay(22);
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    '15.09.2020 – 15.09.2020',
+                    `22.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
                 );
 
                 await calendarSheet.clickOnDay(25);

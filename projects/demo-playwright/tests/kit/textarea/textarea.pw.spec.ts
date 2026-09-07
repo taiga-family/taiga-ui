@@ -21,6 +21,24 @@ test.describe('Textarea', () => {
         await expect.soft(textarea).toHaveScreenshot('textarea-line-break-disabled.png');
     });
 
+    test('does not have excessive end padding without content', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
+        const {demo} = new TuiDocumentationPagePO(page);
+        const textarea = demo.locator('textarea[tuiTextarea]');
+        const label = demo.locator('label[tuiLabel]');
+        const padding = await textarea.evaluate((element) => {
+            const {paddingInlineEnd, paddingInlineStart} = getComputedStyle(element);
+
+            return {
+                end: Number.parseFloat(paddingInlineEnd),
+                start: Number.parseFloat(paddingInlineStart),
+            };
+        });
+
+        await expect(label).toBeVisible();
+        expect(Math.abs(padding.end - padding.start)).toBeLessThanOrEqual(2);
+    });
+
     test('required textarea is not invalid before touched', async ({page}) => {
         await tuiGoto(page, DemoRoute.Textarea);
         const example = new TuiDocumentationPagePO(page).getExample('#icons');

@@ -18,3 +18,15 @@
     overflow: hidden;
     overflow-wrap: anywhere;
 }
+
+@supports (animation-timeline: --name) {
+    @keyframes tuiEmpty {
+        /* comment so that the preprocessor doesn't delete it */
+    }
+
+    .t-wrapper {
+        max-block-size: inherit; // makes the wrapper itself overflow, otherwise detection would depend on `_overflown` it sets
+        animation-name: tuiEmpty, tuiEmpty;
+        animation-timeline: scroll(self block), scroll(self inline);
+    }
+}
