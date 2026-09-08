@@ -212,7 +212,7 @@
             "options": {
                 "collectCoverage": false,
                 "jestConfig": "package.json",
-                "testMatch": ["<rootDir>/{projectRoot}/src/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             },
             "outputs": ["{workspaceRoot}/coverage/{projectName}"]
         }
