@@ -492,6 +492,7 @@ describe('InputNumber', () => {
 
                 describe('Keeps caret position on step', () => {
                     beforeEach(async () => {
+                        await inputNumber.textfield.focus();
                         await inputNumber.textfield.fill('42');
 
                         await expect(inputNumber.textfield).toHaveValue('42kg');
