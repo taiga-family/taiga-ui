@@ -25,10 +25,7 @@ describe('InputMonth', () => {
 
         describe('dropdown', () => {
             test('opens on click for NOT readonly input', async ({page}) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputMonth}/API?readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
-                );
+                await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=false`);
 
                 await expect(inputMonth.calendar).not.toBeAttached();
                 await inputMonth.textfield.click();
@@ -36,10 +33,7 @@ describe('InputMonth', () => {
             });
 
             test('does NOT open on click for readonly input', async ({page}) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputMonth}/API?readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
-                );
+                await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=true`);
 
                 await expect(inputMonth.calendar).not.toBeAttached();
                 await inputMonth.textfield.click();
@@ -96,7 +90,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=false`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
@@ -110,7 +104,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=true&readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=true&readonly=false`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
@@ -124,7 +118,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=true`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
