@@ -78,8 +78,23 @@ export class TuiInputRange extends TuiControl<readonly [number, number]> {
         this.contentStart() === this.content()[0] ? this.content()[1] : '',
     );
 
-    public readonly min = input(0);
-    public readonly max = input(100);
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `[number, number] | undefined` workaround and `transform`
+     */
+    public readonly min = input<number, number | readonly [number, number] | undefined>(
+        0,
+        {transform: (min) => (typeof min === 'number' ? min : 0)},
+    );
+
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `[number, number] | undefined` workaround and `transform`
+     */
+    public readonly max = input<number, number | readonly [number, number] | undefined>(
+        100,
+        {transform: (max) => (typeof max === 'number' ? max : 100)},
+    );
     public readonly step = input(1);
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();

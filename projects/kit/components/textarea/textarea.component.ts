@@ -35,8 +35,23 @@ export class TuiTextareaComponent implements OnInit {
 
     protected readonly isMobile = inject(WA_IS_MOBILE);
 
-    public readonly min = input(this.options.min);
-    public readonly max = input(this.options.max);
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * - Solved? Drop `string | undefined` workaround and `transform`
+     * - Not yet? Rename props to `minRows`
+     */
+    public readonly min = input<number, number | string | undefined>(this.options.min, {
+        transform: (min) => (typeof min === 'number' ? min : this.options.min),
+    });
+
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * - Solved? Drop `string | undefined` workaround and `transform`
+     * - Not yet? Rename props to `maxRows`
+     */
+    public readonly max = input<number, number | string | undefined>(this.options.max, {
+        transform: (max) => (typeof max === 'number' ? max : this.options.max),
+    });
     public readonly content = input(this.options.content);
     public readonly el = tuiInjectElement<HTMLTextAreaElement>();
 
