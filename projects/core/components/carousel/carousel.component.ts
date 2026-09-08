@@ -22,7 +22,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
-import {debounceTime, filter, fromEvent} from 'rxjs';
+import {debounceTime, fromEvent} from 'rxjs';
 
 @Component({
     selector: 'tui-carousel',
@@ -48,14 +48,18 @@ export class TuiCarouselComponent implements AfterViewInit {
     public readonly max = input(Infinity);
 
     constructor() {
-        fromEvent(this.el, 'scroll')
-            .pipe(
-                debounceTime(100),
-                filter(() => this.fallback),
-            )
-            .subscribe(() => {
+        const scrollEnd$ =
+            'onscrollend' in this.el
+                ? fromEvent(this.el, 'scrollend')
+                : fromEvent(this.el, 'scroll').pipe(debounceTime(100));
+
+        scrollEnd$.subscribe(() => {
+            if (this.fallback) {
                 this.onIntersection(true, 1);
-            });
+            }
+
+            this.snap();
+        });
     }
 
     public ngAfterViewInit(): void {
@@ -108,5 +112,22 @@ export class TuiCarouselComponent implements AfterViewInit {
             !!((this.win.devicePixelRatio * 100) % 1) &&
             this.el.scrollWidth - this.el.clientWidth - Math.abs(this.el.scrollLeft) < 1
         );
+    }
+
+    private snap(): void {
+        const width = this.el.clientWidth;
+
+        if (!width) {
+            return;
+        }
+
+        const current = Math.abs(this.el.scrollLeft);
+        const target = Math.round(current / width) * width;
+
+        if (Math.abs(current - target) < 1) {
+            return;
+        }
+
+        this.el.scrollTo({left: this.d * target});
     }
 }
