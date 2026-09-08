@@ -67,7 +67,7 @@ export class TuiRange extends TuiControl<[number, number]> {
     public readonly max = input<number, number | [number, number] | undefined>(100, {
         transform: (max) => (typeof max === 'number' ? max : 100),
     });
-    
+
     public readonly step = input(1);
     public readonly segments = input(1);
     public readonly keySteps = input<TuiKeySteps>();
