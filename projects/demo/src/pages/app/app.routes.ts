@@ -1076,15 +1076,40 @@ export const ROUTES: Routes = [
         title: 'Migration Guide',
     }),
     route({
-        path: DemoRoute.AISupport,
-        loadComponent: async () => import('../info/ai-support'),
+        path: DemoRoute.AiOverview,
+        loadComponent: async () => import('../info/ai/overview'),
         title: 'AI support',
+    }),
+    route({
+        path: DemoRoute.AiMcp,
+        loadComponent: async () => import('../info/ai/mcp'),
+        title: 'MCP server',
+    }),
+    route({
+        path: DemoRoute.AiSkills,
+        loadComponent: async () => import('../info/ai/skills'),
+        title: 'Agent skills',
+    }),
+    route({
+        path: DemoRoute.AiLlms,
+        loadComponent: async () => import('../info/ai/llms'),
+        title: 'llms.txt',
+    }),
+    route({
+        path: DemoRoute.AiBestPractices,
+        loadComponent: async () => import('../info/ai/best-practices'),
+        title: 'Best practices',
     }),
     route({
         path: DemoRoute.Obfuscate,
         loadComponent: async () => import('../pipes/obfuscate'),
         title: 'Obfuscate',
     }),
+    {
+        path: 'ai-support',
+        redirectTo: 'ai/overview',
+        pathMatch: 'full',
+    },
     {
         path: '**',
         redirectTo: '',

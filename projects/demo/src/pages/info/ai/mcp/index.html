@@ -1,0 +1,93 @@
+<tui-doc-page header="MCP server">
+    <p class="description">
+        The
+        <a
+            href="https://github.com/taiga-family/taiga-ui-mcp"
+            target="_blank"
+            tuiLink
+        >
+            Model Context Protocol (MCP) server
+        </a>
+        gives AI assistants structured, on-demand access to Taiga UI — full documentation plus ready-made Angular
+        examples, served from the live source. It is the fastest way to keep an agent aligned with the version you
+        actually have installed.
+    </p>
+
+    <section>
+        <h2>Key features</h2>
+        <ul tuiList>
+            <li>
+                <strong>Docs + code snippets:</strong>
+                full Taiga UI documentation in Markdown plus ready Angular examples, all in one place.
+            </li>
+
+            <li>
+                <strong>Configurable and lightweight:</strong>
+                swap the source URL (stable or
+                <code>next</code>
+                ) without installing Angular locally.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Available tools</h2>
+        <ul tuiList>
+            <li>
+                <strong><code>get_overview</code></strong>
+                — call this first: the structured documentation header as JSON, with the import map, code-generation
+                checklist, CDK types, common mistakes, and getting-started guides.
+            </li>
+
+            <li>
+                <strong><code>get_list_components</code></strong>
+                — list all documentation section IDs (with optional fuzzy filtering) plus basic metadata (category,
+                package, type).
+            </li>
+
+            <li>
+                <strong><code>get_component_example</code></strong>
+                — return the full documentation and code snippets for the requested section names.
+            </li>
+
+            <li>
+                <strong><code>get_migration_guide</code></strong>
+                — return the complete migration guide for version updates: checklist, schematics steps, snippets, and
+                troubleshooting.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Installation</h2>
+        <p class="description">
+            Standard config — works across most MCP clients (Cursor, Windsurf, Claude Desktop, …):
+        </p>
+        <tui-doc-code [code]="mcpStandard" />
+
+        <p class="description">
+            Using
+            <a
+                href="https://www.anthropic.com/claude-code"
+                target="_blank"
+                tuiLink
+            >
+                Claude Code
+            </a>
+            ? Add it straight from the terminal:
+        </p>
+        <tui-doc-code [code]="mcpClaudeCode" />
+
+        <div
+            appearance="warning"
+            tuiNotification
+        >
+            <strong>Gotcha worth saving:</strong>
+            the server needs
+            <code>--source-url</code>
+            . Start it without one and it comes up happily but fetches
+            <strong>zero</strong>
+            components, and every tool returns nothing.
+        </div>
+    </section>
+</tui-doc-page>

@@ -84,6 +84,29 @@
                 </span>
             </button>
         </article>
+
+        <header tuiHeader="h6">
+            <hgroup tuiTitle>
+                <h2>AI-Ready</h2>
+                <p>
+                    Taiga UI treats AI agents as first-class readers of its documentation. The same knowledge is
+                    published in AI-friendly shapes — a flat
+                    <code>llms.txt</code>
+                    context file, an MCP server, and reusable agent skills — so your assistant reads, understands, and
+                    generates components against the current, version-correct API instead of guessing from memory.
+                </p>
+            </hgroup>
+        </header>
+
+        <a
+            appearance="secondary-grayscale"
+            iconStart="@tui.sparkles"
+            routerLink="/ai/overview"
+            tuiButton
+            [style.margin-block-start.rem]="1"
+        >
+            Explore AI tools
+        </a>
     </ng-template>
     <ng-template pageTab="Manual">
         @for (example of examples; track example) {

@@ -1,0 +1,69 @@
+<tui-doc-page header="Agent skills">
+    <p class="description">
+        A skill teaches an agent a durable
+        <em>method</em>
+        — the workflow and the checks — that it triggers automatically by context. Ours live in
+        <a
+            href="https://github.com/taiga-family/skills"
+            target="_blank"
+            tuiLink
+        >
+            taiga-family/skills
+        </a>
+        .
+    </p>
+
+    <section>
+        <h2>Available skills</h2>
+        <ul tuiList>
+            <li>
+                <strong><code>tui-migration</code></strong>
+                — safely resolve the schematics migration TODOs left after
+                <code>ng update</code>
+                /
+                <code>nx migrate</code>
+                , clean up migration notes, and clear deprecation warnings without changing runtime behavior.
+            </li>
+
+            <li>
+                <strong><code>tui-write-migration</code></strong>
+                — for contributors: analyze API changes between majors, pick the right migration utility, and write the
+                schematics migrations (with snapshot tests) themselves.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>tui-developer</h2>
+        <p class="description">
+            A skill focused on
+            <em>building</em>
+            with Taiga UI — the architecture, the setup order, the categories of mistakes agents make, and one firm
+            rule: consult the live source before writing markup. It keeps only stable knowledge and delegates volatile
+            specifics — exact names, packages, per-symbol options — to
+            <code>llms.txt</code>
+            and the MCP server.
+        </p>
+        <div
+            appearance="info"
+            tuiNotification
+        >
+            <code>tui-developer</code>
+            is on the way — follow
+            <a
+                href="https://github.com/taiga-family/skills"
+                target="_blank"
+                tuiLink
+            >
+                taiga-family/skills
+            </a>
+            for its release.
+        </div>
+    </section>
+
+    <section>
+        <h2>Installation</h2>
+        <p class="description">Install a single skill, or all of them, with one command:</p>
+        <tui-doc-code [code]="skills" />
+    </section>
+</tui-doc-page>

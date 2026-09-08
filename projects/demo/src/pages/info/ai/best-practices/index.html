@@ -1,0 +1,25 @@
+<tui-doc-page header="Best practices">
+    <p class="description">Three habits that keep AI-generated Taiga UI code correct as the library evolves.</p>
+
+    <ul tuiList>
+        <li>
+            <strong>Compiles ≠ works.</strong>
+            A green build is necessary, not sufficient — the most expensive Taiga mistakes stay invisible until the page
+            renders (or refuses to). Run the app.
+        </li>
+
+        <li>
+            <strong>Prefer the live, version-correct API over the model's memory.</strong>
+            Symbols move between packages across majors;
+            <code>llms-full.txt</code>
+            and the MCP server always reflect the version you have installed.
+        </li>
+
+        <li>
+            <strong>Keep durable and volatile knowledge apart.</strong>
+            Method in the skill; exact names, packages, and options from
+            <code>llms.txt</code>
+            / MCP — so the guidance can't rot as the library evolves.
+        </li>
+    </ul>
+</tui-doc-page>

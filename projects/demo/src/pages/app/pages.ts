@@ -30,6 +30,42 @@ export const pages: DocRoutePages = [
         keywords: 'intro, how to, guide, main, главная, начало, инструкция',
         route: DemoRoute.GettingStarted,
     },
+    // AI tools
+    {
+        section: 'AI tools',
+        title: 'Overview',
+        keywords:
+            'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
+        route: DemoRoute.AiOverview,
+    },
+    {
+        section: 'AI tools',
+        title: 'MCP server',
+        keywords:
+            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
+        route: DemoRoute.AiMcp,
+    },
+    {
+        section: 'AI tools',
+        title: 'Agent skills',
+        keywords:
+            'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
+        route: DemoRoute.AiSkills,
+    },
+    {
+        section: 'AI tools',
+        title: 'llms.txt',
+        keywords:
+            'ai, llm, llms, llms.txt, llms-full, context, standard, контекст, модели',
+        route: DemoRoute.AiLlms,
+    },
+    {
+        section: 'AI tools',
+        title: 'Best practices',
+        keywords:
+            'ai, best practices, tips, guidance, лучшие практики, советы, рекомендации',
+        route: DemoRoute.AiBestPractices,
+    },
     // Documentation
     {
         section: 'Documentation',
@@ -174,12 +210,6 @@ export const pages: DocRoutePages = [
                 title: 'Server Side Rendering',
                 keywords: 'ssr, server, prerender, back, node, universal',
                 route: DemoRoute.SSR,
-            },
-            {
-                section: 'Documentation',
-                title: 'AI support',
-                keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-                route: DemoRoute.AISupport,
             },
             {
                 section: 'Documentation',
