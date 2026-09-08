@@ -7,7 +7,7 @@
     [class.tui-input-color_start]="host.align() === 'start'"
     [disabled]="!host.interactive()"
     [style.--t-opacity]="opacityRatio()"
-    [value]="host.value().length > 6 ? host.value().slice(0, 7) : ''"
+    [value]="color()"
     (input)="onInput(colorPicker.value)"
 />
 @if (host.format() === 'hexa' && host.interactive()) {
