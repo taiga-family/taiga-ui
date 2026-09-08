@@ -62,12 +62,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     public ngAfterViewChecked(): void {
-        afterNextRender(
-            () => {
-                this.markTabAsActive();
-            },
-            {injector: this.injector},
-        );
+        afterNextRender(() => this.markTabAsActive(), {injector: this.injector});
     }
 
     protected onActivate(element: HTMLElement): void {
@@ -79,7 +74,7 @@ export class TuiTabsDirective implements AfterViewChecked {
 
         tabs.forEach((nativeElement) => {
             const active = nativeElement === activeElement;
-            const anchor = nativeElement.dataset.tuiAnchor || '';
+            const anchor = nativeElement.getAttribute('data-tui-anchor');
             const name = [anchor, '--tui-tab-active'].filter(Boolean).join(', ');
 
             nativeElement.classList.toggle('_active', active);

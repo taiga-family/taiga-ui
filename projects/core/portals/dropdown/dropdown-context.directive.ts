@@ -89,11 +89,11 @@ export class TuiDropdownContext
 
     public ngAfterViewInit(): void {
         const anchorName = `--${tuiGenerateId()}`;
-        const positionAnchor = this.el.dataset.tuiAnchor;
+        const positionAnchor = this.el.getAttribute('data-tui-anchor');
         const style = {...STYLE, positionAnchor, anchorName};
 
         Object.assign(this.nativeElement.style, style);
-        this.nativeElement.dataset.tuiAnchor = anchorName;
+        this.nativeElement.setAttribute('data-tui-anchor', anchorName);
     }
 
     public ngOnDestroy(): void {
