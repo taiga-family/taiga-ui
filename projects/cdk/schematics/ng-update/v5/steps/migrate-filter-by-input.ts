@@ -5,6 +5,8 @@ import {ALL_TS_FILES} from '../../../constants';
 import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
+import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
+import {withMigrationContext} from '../../../utils/with-migration-context';
 import {type TemplateResource} from '../../interfaces/template-resource';
 
 const FILTER_BY_INPUT_PIPE_RE = /\|\s*tuiFilterByInput:\s*(\w+)(\s*\(([^)]*)\))?/g;
@@ -21,7 +23,10 @@ interface FilterPropDescriptor {
 
 export function migrateFilterByInput(tree: Tree, _options: TuiSchema): void {
     for (const resource of getComponentTemplates(ALL_TS_FILES)) {
-        migrateResource(resource, tree);
+        withMigrationContext(
+            `Failed to migrate tuiFilterByInput in "${getPathFromTemplateResource(resource)}"`,
+            () => migrateResource(resource, tree),
+        );
     }
 }
 

@@ -13,6 +13,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
+import {withMigrationContext} from '../../../utils/with-migration-context';
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {getFileSystem} from '../../utils/get-file-system';
 
@@ -41,14 +42,17 @@ function migrateTemplate(
     options: TuiSchema,
 ): void {
     const templatePath = fileSystem.resolve(getPathFromTemplateResource(resource));
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const recorder = fileSystem.edit(templatePath);
-    const offset = getTemplateOffset(resource);
-    const elements = findElementsWithAttribute(template, STRUCTURAL_ATTR);
 
-    for (const element of elements) {
-        migrateStructuralLet(element, template, recorder, offset, options);
-    }
+    withMigrationContext(`Failed to migrate *tuiLet in "${templatePath}"`, () => {
+        const template = getTemplateFromTemplateResource(resource, fileSystem);
+        const recorder = fileSystem.edit(templatePath);
+        const offset = getTemplateOffset(resource);
+        const elements = findElementsWithAttribute(template, STRUCTURAL_ATTR);
+
+        for (const element of elements) {
+            migrateStructuralLet(element, template, recorder, offset, options);
+        }
+    });
 }
 
 function migrateStructuralLet(

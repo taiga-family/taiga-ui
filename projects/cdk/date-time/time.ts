@@ -147,8 +147,7 @@ export class TuiTime implements TuiTimeLike {
     private static parseMeridiemPeriod(time: string): 'AM' | 'PM' | null {
         return (
             (/[AP]M/.exec(time.toUpperCase().replaceAll(/\W/g, ''))?.[0] as
-                | 'AM'
-                | 'PM') || null
+                'AM' | 'PM') || null
         );
     }
 
