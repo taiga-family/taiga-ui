@@ -12,7 +12,8 @@ tui-data-list:where(*&) {
     &[data-size='s'] [tuiOption] {
         min-block-size: 0;
         font: var(--tui-typography-ui-s);
-        padding: 0.375rem;
+        padding-block: 0.375rem;
+        padding-inline: ~'max(var(--tui-padding-inline, 0px), 0.375rem)';
 
         &::before,
         &::after {
@@ -23,7 +24,8 @@ tui-data-list:where(*&) {
     &[data-size='m'] [tuiOption] {
         min-block-size: 2.25rem;
         font: var(--tui-typography-ui-s);
-        padding: 0.5rem 0.375rem;
+        padding-block: 0.5rem;
+        padding-inline: ~'max(var(--tui-padding-inline, 0px), 0.375rem)';
     }
 
     &[data-size='l'] {
@@ -32,7 +34,7 @@ tui-data-list:where(*&) {
 
         [tuiOption] {
             font: var(--tui-typography-ui-m);
-            padding-inline: 0.5rem;
+            padding-inline: ~'max(var(--tui-padding-inline, 0px), 0.5rem)';
         }
 
         hr {
@@ -71,6 +73,11 @@ tui-data-list:where(*&) {
         &::after {
             margin-inline-start: auto;
         }
+
+        &[tuiCell] {
+            inline-size: auto;
+            margin-inline: 0;
+        }
     }
 
     > .t-empty {
@@ -103,6 +110,18 @@ tui-data-list:where(*&) {
             inline-size: 100%;
             background: var(--tui-border-normal);
         }
+    }
+
+    --tui-padding-inline: 0px;
+}
+
+[data-platform='ios'] tui-data-list:where(*&),
+[data-platform='android'] tui-data-list:where(*&) {
+    --tui-padding-inline: inherit;
+
+    [tuiOption][tuiCell] {
+        inline-size: unset;
+        margin-inline: unset;
     }
 }
 
