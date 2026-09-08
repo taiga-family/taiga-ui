@@ -18,7 +18,7 @@ import {NgControl} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement, tuiIsElementEditable, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -174,6 +174,13 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
+    protected get openable(): boolean {
+        return (
+            this.open.enabled() &&
+            !this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
+        );
+    }
+
     protected onResize({clientWidth}: HTMLElement): void {
         this.el.style.setProperty('--t-side', tuiPx(clientWidth));
     }
@@ -181,7 +188,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected onCleanerClick(value: T | T[] | null): void {
         this.accessor()?.setValue(value);
 
-        if (this.dropdown.content() && tuiIsElementEditable(this.open.nativeElement)) {
+        if (this.dropdown.content() && this.openable) {
             this.open.toggle(true);
         }
     }
@@ -190,10 +197,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected onIconClick(): void {
         this.input()?.nativeElement.focus();
 
-        if (
-            !this.open.enabled() ||
-            this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
-        ) {
+        if (!this.openable) {
             return;
         }
 
