@@ -6,6 +6,7 @@ export {getFoldersToScan, getPagesPath, setFoldersToScan, setPagesPath} from './
 
 // Route-based component extraction
 export {
+    buildFolderRouteMap,
     type ComponentInfo,
     extractComponentsFromRoutes,
     shouldIncludeComponent,

@@ -1,16 +1,21 @@
 /**
  * Additive generator: emits one Markdown file per documentation page into
- * `projects/demo/src/assets/llms-pages/<section>/<name>.md`, mirroring the page route.
+ * `projects/demo/src/assets/llms-pages/<route>.md`, mirroring the page URL.
  *
- * Reuses the same extraction utilities as `llms-full-generate.ts` but writes per-page
- * files instead of a single bundle — this powers the "Copy Page" action in the docs.
- * It does NOT touch `llms-full.txt`.
+ * Generation is driven by the route table (`buildFolderRouteMap`), not by folder
+ * scanning, so the output path always matches the URL the page is served at — even
+ * when the folder differs from the route (e.g. `components/action-bar` →
+ * `/components/actions-bar`, every `components/*-chart` → `/charts/...`). This is what
+ * lets the docs "Copy page" action fetch `/assets/llms-pages/<current-route>.md`.
+ *
+ * Reuses the same extraction utilities as `llms-full-generate.ts`. It does NOT touch
+ * `llms-full.txt`.
  */
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
 import {
-    getAllFolders,
+    buildFolderRouteMap,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
     getComponentDescription,
@@ -19,7 +24,6 @@ import {
     getImportExamples,
     getUsageExamples,
     readIndexHtml,
-    setFoldersToScan,
     setPagesPath,
 } from './utils';
 import {loadConfig} from './utils/config';
@@ -36,20 +40,22 @@ const OUTPUT_DIR = path.resolve(process.cwd(), 'projects/demo/src/assets/llms-pa
 async function buildPageMarkdown(
     folderPath: string,
     content: string,
-): Promise<{section: string; name: string; md: string} | null> {
+): Promise<string | null> {
     const headerData = getComponentHeader(content) as ComponentHeader;
 
     if (!headerData?.header || headerData.deprecated) {
         return null;
     }
 
-    const section = path.basename(path.dirname(folderPath));
-    const name = path.basename(folderPath);
-    const block = [
-        `# ${headerData.header}`,
-        `- **Package**: \`${headerData.package}\``,
-        `- **Type**: ${headerData.type}`,
-    ];
+    const block = [`# ${headerData.header}`];
+
+    if (headerData.package) {
+        block.push(`- **Package**: \`${headerData.package}\``);
+    }
+
+    if (headerData.type) {
+        block.push(`- **Type**: ${headerData.type}`);
+    }
 
     const description = getComponentDescription(content);
 
@@ -87,7 +93,7 @@ async function buildPageMarkdown(
         block.push(usageExamples);
     }
 
-    return {section, name, md: block.join('\n')};
+    return block.join('\n');
 }
 
 async function main(): Promise<void> {
@@ -97,33 +103,32 @@ async function main(): Promise<void> {
         setPagesPath(config.constants.defaultModulesPath);
     }
 
-    if (Array.isArray(config.constants.childFolders)) {
-        setFoldersToScan(config.constants.childFolders);
-    }
+    const folderToRoute = await buildFolderRouteMap();
 
-    const folders = await getAllFolders();
+    console.info(`Generating markdown for ${folderToRoute.size} routed pages...`);
 
-    console.info(`Scanning ${folders.length} page folders...`);
+    // Start from a clean slate so stale files from renamed routes never linger.
+    await fs.rm(OUTPUT_DIR, {recursive: true, force: true});
 
     let written = 0;
 
-    for (const folderPath of folders) {
+    for (const [folderPath, route] of folderToRoute) {
         const content = await readIndexHtml(folderPath);
 
         if (!content) {
             continue;
         }
 
-        const page = await buildPageMarkdown(folderPath, content);
+        const md = await buildPageMarkdown(folderPath, content);
 
-        if (!page) {
+        if (!md) {
             continue;
         }
 
-        const dir = path.join(OUTPUT_DIR, page.section);
+        const outFile = path.join(OUTPUT_DIR, `${route}.md`);
 
-        await fs.mkdir(dir, {recursive: true});
-        await fs.writeFile(path.join(dir, `${page.name}.md`), `${page.md}\n`);
+        await fs.mkdir(path.dirname(outFile), {recursive: true});
+        await fs.writeFile(outFile, `${md}\n`);
         written++;
     }
 
