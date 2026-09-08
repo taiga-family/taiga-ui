@@ -128,7 +128,7 @@
         "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npm run generate:llms && npm run generate:llms-full",
+                "command": "npm run generate:llms && npm run generate:llms-full && npm run generate:llms-pages",
                 "parallel": false
             }
         },

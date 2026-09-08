@@ -16,6 +16,18 @@
     margin-block-end: 2rem;
 }
 
+.t-copy {
+    align-self: start;
+    // Push to the right edge of the content column, clearing the sticky ToC rail
+    // (tui-doc-toc: 14rem width + 5rem gap). The ToC hides below @tui-desktop.
+    margin-inline-start: auto;
+    margin-inline-end: 20rem;
+
+    @media @tui-desktop {
+        margin-inline-end: 0;
+    }
+}
+
 .t-navigation:not(:empty) {
     .scrollbar-hidden();
 

@@ -19,6 +19,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocToc} from '../toc';
+import {TuiDocCopyPage} from './copy-page/copy-page.component';
 import {TUI_DOC_TABS} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
@@ -32,6 +33,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         RouterLinkActive,
         TuiAutoColorPipe,
         TuiBadge,
+        TuiDocCopyPage,
         TuiDocSourceCode,
         TuiDocToc,
         TuiFade,

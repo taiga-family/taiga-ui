@@ -41,3 +41,6 @@ blob-report
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 terminalOutput
+
+# Generated per-page markdown for the docs "Copy Page" action
+projects/demo/src/assets/llms-pages/
