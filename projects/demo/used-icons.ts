@@ -116,6 +116,7 @@ export const TUI_USED_ICONS = [
     '@tui.shopping-cart',
     '@tui.shower-head',
     '@tui.smile',
+    '@tui.sparkles',
     '@tui.square-plus',
     '@tui.star',
     '@tui.star-filled',
