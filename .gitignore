@@ -43,4 +43,4 @@ blob-report
 terminalOutput
 
 # Generated per-page markdown for the docs "Copy Page" action
-projects/demo/src/assets/llms-pages/
+projects/demo/src/markdown-pages/**/*.md

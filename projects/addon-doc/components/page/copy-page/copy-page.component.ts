@@ -14,8 +14,6 @@ import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 'rxjs';
 
-const BASE = 'assets/llms-pages';
-
 @Component({
     selector: 'tui-doc-copy-page',
     imports: [TuiActiveZone, TuiButton, TuiDataList, TuiDropdown],
@@ -58,7 +56,7 @@ export class TuiDocCopyPage {
 
     protected viewAsMarkdown(): void {
         this.open.set(false);
-        window.open(`/${BASE}${this.pagePath()}.md`, '_blank');
+        window.open(`${this.pagePath()}.md`, '_blank');
     }
 
     protected onActiveZone(active: boolean): void {
@@ -75,7 +73,7 @@ export class TuiDocCopyPage {
 
     private async fetchMarkdown(page: string): Promise<string | null> {
         try {
-            const response = await fetch(`/${BASE}${page}.md`);
+            const response = await fetch(`${page}.md`);
             // Static hosting (e.g. Firebase) answers a missing file with the SPA
             // fallback: `200` + `index.html`. Reject it so pages without markdown
             // don't show the action or copy the whole HTML document.

@@ -35,7 +35,7 @@
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
         "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",
         "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts",
-        "generate:llms-pages": "ts-node ./projects/demo/scripts/llms/llms-pages-generate.ts",
+        "generate:markdown-pages": "ts-node ./projects/demo/scripts/llms/markdown-pages-generate.ts",
         "knip": "knip",
         "lint": "eslint .",
         "prepare": "husky",
