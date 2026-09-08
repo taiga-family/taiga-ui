@@ -76,8 +76,14 @@ export class TuiDocCopyPage {
     private async fetchMarkdown(page: string): Promise<string | null> {
         try {
             const response = await fetch(`/${BASE}${page}.md`);
+            // Static hosting (e.g. Firebase) answers a missing file with the SPA
+            // fallback: `200` + `index.html`. Reject it so pages without markdown
+            // don't show the action or copy the whole HTML document.
+            const isHtml = (response.headers.get('content-type') ?? '').includes(
+                'text/html',
+            );
 
-            return response.ok ? await response.text() : null;
+            return response.ok && !isHtml ? await response.text() : null;
         } catch {
             return null;
         }
