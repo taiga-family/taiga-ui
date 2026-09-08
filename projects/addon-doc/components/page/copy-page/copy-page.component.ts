@@ -74,7 +74,7 @@ export class TuiDocCopyPage {
     private async fetchMarkdown(page: string): Promise<string | null> {
         try {
             const response = await fetch(`${page}.md`);
-           
+
             const isHtml = (response.headers.get('content-type') ?? '').includes(
                 'text/html',
             );
