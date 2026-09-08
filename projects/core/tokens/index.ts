@@ -17,4 +17,5 @@ export * from './scroll-ref';
 export * from './selection-stream';
 export * from './spin-icons';
 export * from './theme';
+export * from './timeline-support';
 export * from './viewport';
