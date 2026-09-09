@@ -37,6 +37,7 @@ const OFFSET = 5_000_000;
             &::before {
                 content: '';
                 display: block;
+                /* stylelint-disable-next-line rem-over-px/rem-over-px -- intentional pixel sentinel */
                 block-size: var(--t-offset, 1000000px);
             }
         }

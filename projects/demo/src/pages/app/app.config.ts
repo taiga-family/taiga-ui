@@ -267,6 +267,8 @@ export const config: ApplicationConfig = {
                     return import('@taiga-ui/i18n/languages/russian');
                 case 'spanish':
                     return import('@taiga-ui/i18n/languages/spanish');
+                case 'tajik':
+                    return import('@taiga-ui/i18n/languages/tajik');
                 case 'turkish':
                     return import('@taiga-ui/i18n/languages/turkish');
                 case 'ukrainian':

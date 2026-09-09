@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.23.0](https://github.com/taiga-family/taiga-ui/compare/v5.22.0...v5.23.0) (2026-09-07)
+
+### 🐞 Bug Fixes
+
+- **cdk:** `Animated` differentiate between CSS and JS animations
+  ([#14874](https://github.com/taiga-family/taiga-ui/issues/14874))
+  ([7c35aae](https://github.com/taiga-family/taiga-ui/commit/7c35aae08147a7ca3078e1eed9201e3d97b99b77))
+- **core:** `Error` supports errors from validator directives with signal forms
+  ([#14897](https://github.com/taiga-family/taiga-ui/issues/14897))
+  ([0193c78](https://github.com/taiga-family/taiga-ui/commit/0193c783e33de92d45b007801d4c27eb791598e9))
+- **core:** `Textfield` fix click listeners on options with values
+  ([#14922](https://github.com/taiga-family/taiga-ui/issues/14922))
+  ([3f1ab82](https://github.com/taiga-family/taiga-ui/commit/3f1ab8277f59267ddedc82aaf2dcd7e56ffe1a85))
+- **experimental:** `SearchHistory` supports signal forms
+  ([#14895](https://github.com/taiga-family/taiga-ui/issues/14895))
+  ([bf733a2](https://github.com/taiga-family/taiga-ui/commit/bf733a2112b732633940152b811010a80e46b452))
+- **kit:** `Confirm` make context public ([#14886](https://github.com/taiga-family/taiga-ui/issues/14886))
+  ([c66f388](https://github.com/taiga-family/taiga-ui/commit/c66f3888e410d619b1640d88e047f76e67a87901))
+- **kit:** `InputFiles` support `accept` / `maxFileSize` validation with signal forms
+  ([#14889](https://github.com/taiga-family/taiga-ui/issues/14889))
+  ([4f98807](https://github.com/taiga-family/taiga-ui/commit/4f9880750ff4dce595088079b05867918f9c86f9))
+- **kit:** `Textarea` remove excessive end padding ([#14841](https://github.com/taiga-family/taiga-ui/issues/14841))
+  ([a3a8f9c](https://github.com/taiga-family/taiga-ui/commit/a3a8f9c646c79a7e4e0e64f2c1a5e41b85d51a12))
+- **kit:** controls with `min` / `max` / `maxLength` input-properties support signal forms
+  ([#14905](https://github.com/taiga-family/taiga-ui/issues/14905))
+  ([601e621](https://github.com/taiga-family/taiga-ui/commit/601e621f2c55371ea205547b540e2157949b0949))
+- **kit:** reflect unfinished date range picking ([#14861](https://github.com/taiga-family/taiga-ui/issues/14861))
+  ([afed99a](https://github.com/taiga-family/taiga-ui/commit/afed99a9be9dca75f34f2395e3f5ba823010192a))
+- **schematics:** ng add fix collection error ([#14916](https://github.com/taiga-family/taiga-ui/issues/14916))
+  ([282d63b](https://github.com/taiga-family/taiga-ui/commit/282d63b6f7a0acaa5f9bf87024f1a664c76e26da))
+- **schematics:** prevent tuiLet migration crash on nested formatting elements
+  ([#14891](https://github.com/taiga-family/taiga-ui/issues/14891))
+  ([82beb8e](https://github.com/taiga-family/taiga-ui/commit/82beb8e49083bb1e679fe73e5b0f2655d6ad5de7))
+- **schematics:** remove dangling migrateTuiLet entry from collection
+  ([#14893](https://github.com/taiga-family/taiga-ui/issues/14893))
+  ([7c269e9](https://github.com/taiga-family/taiga-ui/commit/7c269e9ca7d9ce0d4c13fea7a624352c599feafb))
+- **schematics:** warn about removed TUI_DIALOGS token (v5)
+  ([#14854](https://github.com/taiga-family/taiga-ui/issues/14854))
+  ([63d971a](https://github.com/taiga-family/taiga-ui/commit/63d971a9e2ae57e5936327eeec24f1a5a80d06f9))
+
+### 🚀 Features
+
+- **core:** allow content-sized dialogs ([#14858](https://github.com/taiga-family/taiga-ui/issues/14858))
+  ([da77fba](https://github.com/taiga-family/taiga-ui/commit/da77fba15a22734780fa18a477d0b9baf83cb381))
+- **experimental:** `Calendar` add mobile version ([#14882](https://github.com/taiga-family/taiga-ui/issues/14882))
+  ([27b16bc](https://github.com/taiga-family/taiga-ui/commit/27b16bc5a64c84e42be16435953363d55af27618))
+- **kit:** `LineClamp` improve performance ([#14888](https://github.com/taiga-family/taiga-ui/issues/14888))
+  ([109301c](https://github.com/taiga-family/taiga-ui/commit/109301c9eb4444f8ef95c945625496674be6dccd))
+
 ## [5.22.0](https://github.com/taiga-family/taiga-ui/compare/v5.21.0...v5.22.0) (2026-08-31)
 
 ### 🐞 Bug Fixes

@@ -41,6 +41,7 @@ import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_CALENDAR_SHEET_OPTIONS,
+    type TuiMarkerHandler,
     TuiOrderWeekDaysPipe,
 } from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -194,6 +195,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly disabledItemHandler =
         input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
+    public readonly markerHandler = input<TuiMarkerHandler | null>(null);
     public readonly cancel = output();
     public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
     public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
