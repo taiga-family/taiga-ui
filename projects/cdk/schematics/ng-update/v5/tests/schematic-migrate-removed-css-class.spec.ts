@@ -11,9 +11,7 @@ describe('ng-update removed CSS classes', () => {
 
     it(
         'adds a TODO for the removed tui-group__auto-width-item class',
-        migrate({
-            template: '<div class="my-item tui-group__auto-width-item">x</div>',
-        }),
+        migrate({template: '<div class="my-item tui-group__auto-width-item">x</div>'}),
     );
 
     it(
