@@ -37,12 +37,26 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     hostDirectives: [TuiWithInput, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `TuiDayRange | undefined` workaround from `transform`
+     */
     public override readonly max = input(this.options.max ?? TUI_LAST_DAY, {
-        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
+        transform: (max: TuiDay | TuiDayRange | null | undefined): TuiDay =>
+            max && !(max instanceof TuiDayRange)
+                ? max
+                : (this.options.max ?? TUI_LAST_DAY),
     });
 
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `TuiDayRange | undefined` workaround from `transform`
+     */
     public override readonly min = input(this.options.min ?? TUI_FIRST_DAY, {
-        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
+        transform: (min: TuiDay | TuiDayRange | null | undefined): TuiDay =>
+            min && !(min instanceof TuiDayRange)
+                ? min
+                : (this.options.min ?? TUI_FIRST_DAY),
     });
 
     protected override readonly filler = tuiWithDateFiller(
@@ -62,8 +76,27 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         ),
     );
 
-    public readonly minLength = input<TuiDayLike | null>(null);
-    public readonly maxLength = input<TuiDayLike | null>(null);
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * - Solved? Drop `number | undefined` workaround and `transform`
+     * - Not yet? Rename props to `margin`
+     * * (to be similar to `Range[margin]`: https://taiga-ui.dev/components/range/API?margin=2)
+     */
+    public readonly minLength = input<
+        TuiDayLike | null,
+        TuiDayLike | number | null | undefined
+    >(null, {transform: (x) => (typeof x === 'object' ? x : null)});
+
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * - Solved? Drop `number | undefined` workaround and `transform`
+     * - Not yet? Rename props to `limit`
+     * (to be similar to `Range[limit]`: https://taiga-ui.dev/components/range/API?limit=10)
+     */
+    public readonly maxLength = input<
+        TuiDayLike | null,
+        TuiDayLike | number | null | undefined
+    >(null, {transform: (x) => (typeof x === 'object' ? x : null)});
 
     protected override processCalendar(
         calendar: AbstractTuiCalendar | TuiCalendarRange,
