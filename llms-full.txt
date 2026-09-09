@@ -448,7 +448,7 @@
 ### line-clamp
 
 ```text
-  TuiLineClamp, TuiLineClampBox, TuiLineClampOptions, TuiLineClampPositionDirective
+  TuiLineClamp, TuiLineClampBox, TuiLineClampFallback, TuiLineClampOptions, TuiLineClampPositionDirective
 ```
 ### message
 
