@@ -2,10 +2,27 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import {readIndexHtml} from './file-system';
+import {readIfExists, readIndexHtml} from './file-system';
 
 function escapeReg(value: string): string {
     return value.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
+}
+
+// Inner markup of a `<tui-doc-page>`; skips quoted attrs so a `>` inside e.g.
+// [header]="…v4 -> v5" doesn't close the tag early.
+function getDocPageInner(content: string): string {
+    return (
+        /<tui-doc-page\b(?:"[^"]*"|'[^']*'|[^>])*>([\s\S]*?)<\/tui-doc-page>/i.exec(
+            content,
+        )?.[1] ?? ''
+    );
+}
+
+// Reads a `[code]`/`[content]` import target (dropping any `?raw`-style query) as trimmed text.
+async function readSnippet(folderPath: string, importPath: string): Promise<string> {
+    const file = path.resolve(folderPath, importPath.split('?')[0] ?? '');
+
+    return (await readIfExists(file))?.trim() ?? '';
 }
 
 function decodeEntities(value: string): string {
@@ -28,14 +45,6 @@ function textOf(html: string): string {
 
 function isUrl(href: string): boolean {
     return /^(?:https?:)?\/\//.test(href) || href.startsWith('/');
-}
-
-async function readIfExists(filePath: string): Promise<string | null> {
-    try {
-        return await fs.readFile(filePath, 'utf-8');
-    } catch {
-        return null;
-    }
 }
 
 export function htmlToMarkdown(html: string): string {
@@ -288,30 +297,19 @@ function expandForLoops(html: string, ts: string): string {
     return result;
 }
 
-async function inlineDocCode(html: string, folderPath: string): Promise<string> {
-    if (
-        !/tui-doc-code/i.test(html) &&
-        !/<tui-doc-example\b[^>]*\[content\]/i.test(html)
-    ) {
-        return html;
-    }
-
-    const ts = await readIfExists(path.join(folderPath, 'index.ts'));
+async function inlineDocCode(
+    html: string,
+    folderPath: string,
+    ts: string | null,
+): Promise<string> {
     let result = html;
 
-    const matches = [
-        ...html.matchAll(
-            /<tui-doc-code\b[^>]*\[code\]="([^"]+)"[^>]*>(?:\s*<\/tui-doc-code>)?/gi,
-        ),
-    ];
-
-    for (const match of matches) {
-        const binding = match[1]?.trim() ?? '';
-        const importPath = ts ? resolveImportPath(ts, binding) : null;
-
-        const snippet = importPath
-            ? ((await readIfExists(path.resolve(folderPath, importPath)))?.trim() ?? '')
-            : '';
+    // <tui-doc-code [code]="binding" /> → the imported snippet.
+    for (const match of html.matchAll(
+        /<tui-doc-code\b[^>]*\[code\]="([^"]+)"[^>]*>(?:\s*<\/tui-doc-code>)?/gi,
+    )) {
+        const importPath = ts ? resolveImportPath(ts, match[1]?.trim() ?? '') : null;
+        const snippet = importPath ? await readSnippet(folderPath, importPath) : '';
 
         result = result.replace(match[0], snippet ? `\n\n${snippet}\n\n` : '');
     }
@@ -324,20 +322,8 @@ async function inlineDocCode(html: string, folderPath: string): Promise<string> 
             p.split('?')[0]?.endsWith('.md'),
         );
 
-        if (!files.length) {
-            continue;
-        }
-
         const snippets = (
-            await Promise.all(
-                files.map(async (file) =>
-                    (
-                        await readIfExists(
-                            path.resolve(folderPath, file.split('?')[0] ?? ''),
-                        )
-                    )?.trim(),
-                ),
-            )
+            await Promise.all(files.map(async (file) => readSnippet(folderPath, file)))
         )
             .filter(Boolean)
             .join('\n\n');
@@ -354,10 +340,7 @@ async function inlineDocCode(html: string, folderPath: string): Promise<string> 
 // paragraphs. Example previews and code blocks are dropped — they're captured separately — and
 // the caller dedupes each paragraph against the already-built body.
 export function getComponentProse(content: string): string[] {
-    const inner =
-        /<tui-doc-page\b(?:"[^"]*"|'[^']*'|[^>])*>([\s\S]*?)<\/tui-doc-page>/i.exec(
-            content,
-        )?.[1];
+    const inner = getDocPageInner(content);
 
     if (!inner) {
         return [];
@@ -405,11 +388,8 @@ export async function getInlineCodeSnippets(
             continue;
         }
 
-        const importPath = ts && resolveImportPath(ts, value);
-        const file =
-            importPath && path.resolve(folderPath, importPath.split('?')[0] ?? '');
-
-        const snippet = file ? (await readIfExists(file))?.trim() : '';
+        const importPath = ts ? resolveImportPath(ts, value) : null;
+        const snippet = importPath ? await readSnippet(folderPath, importPath) : '';
 
         if (snippet) {
             snippets.push(snippet);
@@ -469,20 +449,16 @@ async function resolveTemplate(
 ): Promise<string> {
     const ts = await readIfExists(path.join(folderPath, 'index.ts'));
     const expanded = ts ? expandForLoops(html, ts) : html;
-    const withCode = await inlineDocCode(expanded, folderPath);
+    const withCode = await inlineDocCode(expanded, folderPath, ts);
 
     return inlineChildComponents(withCode, folderPath, seen);
 }
 
 // Converts a prose page's projected template to Markdown; empty string when nothing to show.
 export async function getPageProse(folderPath: string, content: string): Promise<string> {
-    // Skip quoted attrs so a `>` inside e.g. [header]="...v4 -> v5" doesn't close the tag early.
-    const inner =
-        /<tui-doc-page\b(?:"[^"]*"|'[^']*'|[^>])*>([\s\S]*?)<\/tui-doc-page>/i.exec(
-            content,
-        )?.[1];
+    const inner = getDocPageInner(content);
 
-    if (!inner?.trim()) {
+    if (!inner.trim()) {
         return '';
     }
 

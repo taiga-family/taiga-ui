@@ -1,18 +1,11 @@
 // Rebuilds the Colors/Typography data tables from static token sources (the browser computes
 // these at runtime via getComputedStyle, so the generic prose converter can't see the values).
-import fs from 'node:fs/promises';
 import path from 'node:path';
+
+import {readIfExists} from './file-system';
 
 const THEME_DIR = path.resolve(process.cwd(), 'projects/styles/mixins/theme');
 const SAMPLE = 'Taiga UI is a modern UI kit for Angular';
-
-async function readIfExists(filePath: string): Promise<string | null> {
-    try {
-        return await fs.readFile(filePath, 'utf-8');
-    } catch {
-        return null;
-    }
-}
 
 function parseThemeBlock(source: string, mixin: string): Map<string, string> {
     const block =

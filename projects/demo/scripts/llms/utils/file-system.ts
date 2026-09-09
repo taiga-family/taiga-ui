@@ -20,6 +20,14 @@ export async function fileExists(filePath: string): Promise<boolean> {
     }
 }
 
+export async function readIfExists(filePath: string): Promise<string | null> {
+    try {
+        return await fs.readFile(filePath, 'utf-8');
+    } catch {
+        return null;
+    }
+}
+
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
