@@ -97,7 +97,7 @@
 
         background: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%) right;
         background-size: 225%;
-        animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
+        animation: tuiIndeterminateAnimation calc(var(--tui-duration) * 10) infinite ease-in-out;
     }
 
     &::-webkit-progress-inner-element {
