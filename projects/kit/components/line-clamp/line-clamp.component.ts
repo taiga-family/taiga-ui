@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    DestroyRef,
     inject,
     input,
     output,
@@ -36,6 +37,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     },
 })
 export class TuiLineClamp {
+    private readonly destroyRef = inject(DestroyRef);
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
@@ -76,10 +78,12 @@ export class TuiLineClamp {
     );
 
     public setOverflown(overflown: boolean): void {
-        if (this.overflown() !== overflown) {
-            this.overflown.set(overflown);
-            this.overflownChange.emit(overflown);
+        if (this.destroyRef.destroyed || this.overflown() === overflown) {
+            return;
         }
+
+        this.overflown.set(overflown);
+        this.overflownChange.emit(overflown);
     }
 
     /**
