@@ -10,5 +10,6 @@ import {TuiList} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Page {
-    protected readonly skills = import('./snippets/skills.md');
+    protected readonly skill = import('./snippets/skill.md');
+    protected readonly all = import('./snippets/all.md');
 }
