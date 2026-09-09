@@ -20,7 +20,7 @@ function parseThemeBlock(source: string, mixin: string): Map<string, string> {
     return map;
 }
 
-// The page renders opaque rgba(r, g, b, 1) as #rrggbb; alpha colors and literal hex stay as-is.
+// The page renders opaque rgba(r, g, b, 1) as a hex color; alpha colors and literal hex stay as-is.
 function normalizeColor(value: string): string {
     const opaque = /^rgba\(\s*(\d+),\s*(\d+),\s*(\d+),\s*1\)$/.exec(value);
 
