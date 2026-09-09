@@ -172,4 +172,15 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly `focused` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield',
     },
+    {
+        tag: '*',
+        withAttrs: ['class'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, 'class')?.value;
+
+            return !!value && value.split(/\s+/).includes('tui-group__auto-width-item');
+        },
+        comment:
+            '`tui-group__auto-width-item` was removed in v5. Re-create it on the child element with CSS: `flex: 0 0 auto; min-inline-size: auto;`.',
+    },
 ];
