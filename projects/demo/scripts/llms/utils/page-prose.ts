@@ -233,9 +233,10 @@ function resolveImportPaths(ts: string, binding: string): string[] {
         return [single];
     }
 
-    const block = new RegExp(
-        String.raw`\b${escapeReg(binding)}\s*=\s*\{([\s\S]*?)\n\s*\};`,
-    ).exec(ts)?.[1];
+    // Object body up to the first `}`; these config maps have no nested braces.
+    const block = new RegExp(String.raw`\b${escapeReg(binding)}\s*=\s*\{([^{}]*)\}`).exec(
+        ts,
+    )?.[1];
 
     return block
         ? [...block.matchAll(/import\(\s*['"]([^'"]+)['"]/g)].map(([, p = '']) => p)
@@ -328,12 +329,32 @@ async function inlineDocCode(
             .filter(Boolean)
             .join('\n\n');
 
+        // Keep the tag so its heading/description still become Markdown; append the snippets.
         if (snippets) {
-            result = result.replace(match[0], `\n\n${snippets}\n\n`);
+            result = result.replace(match[0], `${match[0]}\n\n${snippets}\n\n`);
         }
     }
 
     return result;
+}
+
+// First pageTab prose as Markdown — a description fallback for component pages whose structured
+// extraction finds none (e.g. pages with no `<tui-doc-example>` to anchor on).
+export function getFirstTabProse(content: string): string {
+    const tab = /<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<\/ng-template>/i.exec(
+        content,
+    )?.[1];
+
+    if (!tab) {
+        return '';
+    }
+
+    const withoutExamples = tab.replaceAll(
+        /<tui-doc-(code|example)\b[\s\S]*?(?:<\/tui-doc-\1>|\/>)/gi,
+        ' ',
+    );
+
+    return htmlToMarkdown(withoutExamples).trim();
 }
 
 // All descriptive prose in a component page's tabs (later tabs, notes, callouts), as Markdown

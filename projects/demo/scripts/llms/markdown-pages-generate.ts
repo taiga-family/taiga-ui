@@ -11,6 +11,7 @@ import {
     getComponentHeader,
     getComponentProse,
     getDesignTokenTables,
+    getFirstTabProse,
     getImportExamples,
     getInlineCodeSnippets,
     getPageProse,
@@ -68,7 +69,7 @@ async function buildPageMarkdown(
     }
 
     if (isComponentPage) {
-        const description = getComponentDescription(content);
+        const description = getComponentDescription(content) || getFirstTabProse(content);
 
         if (description) {
             body.push(description);
