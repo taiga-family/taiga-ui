@@ -63,6 +63,21 @@ describe('htmlToMarkdown', () => {
         expect(md).not.toContain('FENCE');
     });
 
+    it('captures a static example description under its heading', () => {
+        const md = htmlToMarkdown(
+            '<tui-doc-example heading="Setup" description="Do X first." [preview]="false" />',
+        );
+
+        expect(md).toContain('## Setup');
+        expect(md).toContain('Do X first.');
+    });
+
+    it('unwraps ng-template content (e.g. example descriptions)', () => {
+        const md = htmlToMarkdown('<ng-template #d>Mocked note.</ng-template>');
+
+        expect(md).toBe('Mocked note.');
+    });
+
     it('flattens card-style anchors into list items', () => {
         const md = htmlToMarkdown(
             '<a href="https://maskito.dev" tuiCardLarge><h3>Maskito</h3><div>Input masks.</div></a>',

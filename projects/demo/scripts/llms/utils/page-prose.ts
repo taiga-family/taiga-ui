@@ -54,10 +54,10 @@ export function htmlToMarkdown(html: string): string {
     // Keep pageTab content, drop other ng-templates (tooltips, hidden descriptions).
     result = result
         .replaceAll(
-            /<ng-template\b[^>]*?\spageTab\b[^>]*>([\s\S]*?)<\/ng-template>/gi,
+            /<ng-template\b[^>]*?[\s[]pageTab\b[^>]*>([\s\S]*?)<\/ng-template>/gi,
             '\n$1\n',
         )
-        .replaceAll(/<ng-template\b[\s\S]*?<\/ng-template>/gi, '')
+        .replaceAll(/<ng-template\b[^>]*>([\s\S]*?)<\/ng-template>/gi, '$1')
         .replaceAll(/<ng-content\b[^>]*>(?:\s*<\/ng-content>)?/gi, '');
 
     // Drop Angular control-flow openers/closers, keep their inner content.
@@ -66,13 +66,16 @@ export function htmlToMarkdown(html: string): string {
         .replaceAll(/^[^\S\n]*\}[^\S\n]*@[a-z]+\b[^\n{]*\{[^\S\n]*$/gim, '')
         .replaceAll(/^[^\S\n]*\}[^\S\n]*$/gm, '');
 
-    // <tui-doc-example heading="X"> becomes a section heading.
+    // <tui-doc-example heading> becomes a section heading (+ static description).
     result = result
-        .replaceAll(
-            /<tui-doc-example\b[^>]*?\sheading="([^"]*)"[^>]*>/gi,
-            (_match, heading: string) => `\n\n## ${heading.trim()}\n\n`,
-        )
-        .replaceAll(/<tui-doc-example\b[^>]*>/gi, '\n\n')
+        .replaceAll(/<tui-doc-example\b([^>]*)>/gi, (_match, attrs: string) => {
+            const heading = /\sheading="([^"]*)"/.exec(attrs)?.[1]?.trim();
+            const description = /\sdescription="([^"]*)"/.exec(attrs)?.[1]?.trim();
+
+            return heading
+                ? `\n\n## ${heading}\n\n${description ? `${description}\n\n` : ''}`
+                : '\n\n';
+        })
         .replaceAll(/<\/tui-doc-example>/gi, '\n\n');
 
     // Card-style anchors (an <a> wrapping a heading) become list items.

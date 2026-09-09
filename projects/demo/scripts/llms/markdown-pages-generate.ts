@@ -44,8 +44,8 @@ async function buildPageMarkdown(
         return null;
     }
 
-    // Component pages have package/type; prose pages don't and may bind [header], so fall back to the route.
-    const isComponentPage = Boolean(headerData.package || headerData.type);
+    // Only component pages carry a package; prose/markup pages don't and may bind [header].
+    const isComponentPage = Boolean(headerData.package);
     const header = headerData.header?.trim() || humanizeRoute(route);
     const body: string[] = [];
 
