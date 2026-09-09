@@ -26,6 +26,7 @@ import {
     getComponentExample,
     getComponentHeader,
     getImportExamples,
+    getPageProse,
     getUsageExamples,
     readIndexHtml,
     setPagesPath,
@@ -41,63 +42,86 @@ interface ComponentHeader {
 
 const OUTPUT_DIR = path.resolve(process.cwd(), 'projects/demo/src/markdown-pages');
 
+function humanizeRoute(route: string): string {
+    const segment = route.split('/').pop() ?? route;
+    const words = segment.replaceAll('-', ' ').trim();
+
+    return words ? `${words.charAt(0).toUpperCase()}${words.slice(1)}` : route;
+}
+
 async function buildPageMarkdown(
     folderPath: string,
     content: string,
+    route: string,
 ): Promise<string | null> {
     const headerData = getComponentHeader(content) as ComponentHeader;
 
-    if (!headerData?.header || headerData.deprecated) {
+    if (headerData.deprecated) {
         return null;
     }
 
-    const block = [`# ${headerData.header}`];
+    // Component pages carry `package`/`type`; info/prose pages (About, SSR, Migration
+    // guide, AI pages, …) do not. The bound `[header]` on some prose pages leaves the
+    // header empty, so fall back to a humanized route.
+    const isComponentPage = Boolean(headerData.package || headerData.type);
+    const header = headerData.header?.trim() || humanizeRoute(route);
+    const body: string[] = [];
 
     if (headerData.package) {
-        block.push(`- **Package**: \`${headerData.package}\``);
+        body.push(`- **Package**: \`${headerData.package}\``);
     }
 
     if (headerData.type) {
-        block.push(`- **Type**: ${headerData.type}`);
+        body.push(`- **Type**: ${headerData.type}`);
     }
 
-    const description = getComponentDescription(content);
+    if (isComponentPage) {
+        const description = getComponentDescription(content);
 
-    if (description) {
-        block.push(description);
-    }
+        if (description) {
+            body.push(description);
+        }
 
-    const importExample = await getImportExamples(folderPath);
+        const importExample = await getImportExamples(folderPath);
 
-    if (importExample) {
-        block.push(importExample);
-    }
+        if (importExample) {
+            body.push(importExample);
+        }
 
-    const example = getComponentExample(content);
+        const example = getComponentExample(content);
 
-    if (example) {
-        block.push(example);
-    }
+        if (example) {
+            body.push(example);
+        }
 
-    const apiFromTable = getComponentApiFromTable(content);
+        const apiFromTable = getComponentApiFromTable(content);
 
-    if (apiFromTable) {
-        block.push(apiFromTable);
-    }
+        if (apiFromTable) {
+            body.push(apiFromTable);
+        }
 
-    const apiFromTemplates = getComponentApiFromTemplates(content);
+        const apiFromTemplates = getComponentApiFromTemplates(content);
 
-    if (apiFromTemplates) {
-        block.push(apiFromTemplates);
+        if (apiFromTemplates) {
+            body.push(apiFromTemplates);
+        }
+    } else {
+        const prose = await getPageProse(folderPath, content);
+
+        if (prose) {
+            body.push(prose);
+        }
     }
 
     const usageExamples = await getUsageExamples(folderPath, true);
 
     if (usageExamples) {
-        block.push(usageExamples);
+        body.push(usageExamples);
     }
 
-    return block.join('\n');
+    // Skip pages that would render as just a title, so the "Copy page" action never
+    // offers an empty document.
+    return body.join('\n').trim() ? [`# ${header}`, ...body].join('\n') : null;
 }
 
 async function main(): Promise<void> {
@@ -127,7 +151,7 @@ async function main(): Promise<void> {
             continue;
         }
 
-        const md = await buildPageMarkdown(folderPath, content);
+        const md = await buildPageMarkdown(folderPath, content, route);
 
         if (!md) {
             continue;

@@ -28,3 +28,6 @@ export {
     processMarkdownFile,
     readIndexHtml,
 } from './file-system';
+
+// Prose-page markdown rendering
+export {getPageProse, htmlToMarkdown} from './page-prose';
