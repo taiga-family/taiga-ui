@@ -337,6 +337,21 @@ describe('InputPhoneInternational', () => {
                 });
             });
         });
+
+        it('paints an untouched control as well — the override does not wait for a touch', () => {
+            cy.mount(ManualInvalidSandbox, {
+                componentProperties: {control: ngControl},
+            });
+
+            initAliases();
+
+            cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
+
+            cy.get('tui-textfield').compareSnapshot({
+                name: 'phone-manual-invalid-untouched',
+                cypressScreenshotOptions: {padding: 8},
+            });
+        });
     });
 });
 

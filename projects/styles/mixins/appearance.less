@@ -44,13 +44,12 @@
 }
 
 .appearance-invalid(@content) {
-    &:is([data-mode~='invalid'], .tui-invalid, :invalid):not(
+    &:is([data-mode~='invalid'], .tui-invalid, :invalid:not(._untouched)):not(
             [data-mode~='readonly'],
             [data-mode~='valid'],
             [data-state='disabled'],
             :disabled,
-            ._disabled,
-            ._untouched
+            ._disabled
         ) {
         @content();
     }
