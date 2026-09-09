@@ -30,7 +30,12 @@ export {
 } from './file-system';
 
 // Prose-page markdown rendering
-export {getPageProse, htmlToMarkdown} from './page-prose';
+export {
+    getFirstTabProse,
+    getInlineCodeSnippets,
+    getPageProse,
+    htmlToMarkdown,
+} from './page-prose';
 
 // Colors/Typography token-table rendering
 export {getDesignTokenTables} from './design-token-pages';

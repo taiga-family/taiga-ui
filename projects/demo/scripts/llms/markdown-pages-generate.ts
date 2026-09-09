@@ -10,7 +10,9 @@ import {
     getComponentExample,
     getComponentHeader,
     getDesignTokenTables,
+    getFirstTabProse,
     getImportExamples,
+    getInlineCodeSnippets,
     getPageProse,
     getUsageExamples,
     readIndexHtml,
@@ -59,7 +61,7 @@ async function buildPageMarkdown(
     }
 
     if (isComponentPage) {
-        const description = getComponentDescription(content);
+        const description = getComponentDescription(content) || getFirstTabProse(content);
 
         if (description) {
             body.push(description);
@@ -87,6 +89,17 @@ async function buildPageMarkdown(
 
         if (apiFromTemplates) {
             body.push(apiFromTemplates);
+        }
+
+        for (const snippet of await getInlineCodeSnippets(content, folderPath)) {
+            const core = snippet
+                .replaceAll(/```\w*/g, '')
+                .replaceAll('```', '')
+                .trim();
+
+            if (core && !body.join('\n').includes(core)) {
+                body.push(snippet);
+            }
         }
     } else {
         const tokenTables = await getDesignTokenTables(content, folderPath);

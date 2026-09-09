@@ -197,6 +197,25 @@ async function buildSelectorMap(folderPath: string): Promise<Map<string, string>
     return map;
 }
 
+// Resolves a `[code]` binding to its imported file: `x = import('…')` or `obj.prop` → `prop: import('…')`.
+function resolveImportPath(ts: string, binding: string): string | null {
+    const direct = new RegExp(
+        String.raw`\b${escapeReg(binding)}\b\s*=\s*import\(\s*['"]([^'"]+)['"]`,
+    ).exec(ts)?.[1];
+
+    if (direct) {
+        return direct;
+    }
+
+    const key = binding.split('.').pop() ?? binding;
+
+    return (
+        new RegExp(
+            String.raw`\b${escapeReg(key)}\s*:\s*import\(\s*['"]([^'"]+)['"]`,
+        ).exec(ts)?.[1] ?? null
+    );
+}
+
 async function inlineDocCode(html: string, folderPath: string): Promise<string> {
     if (!/tui-doc-code/i.test(html)) {
         return html;
@@ -213,11 +232,7 @@ async function inlineDocCode(html: string, folderPath: string): Promise<string> 
 
     for (const match of matches) {
         const binding = match[1]?.trim() ?? '';
-        const importPath =
-            ts &&
-            new RegExp(
-                String.raw`\b${escapeReg(binding)}\b\s*=\s*import\(\s*['"]([^'"]+)['"]`,
-            ).exec(ts)?.[1];
+        const importPath = ts ? resolveImportPath(ts, binding) : null;
 
         const snippet = importPath
             ? ((await readIfExists(path.resolve(folderPath, importPath)))?.trim() ?? '')
@@ -227,6 +242,70 @@ async function inlineDocCode(html: string, folderPath: string): Promise<string> 
     }
 
     return result;
+}
+
+// First pageTab prose as Markdown — fallback for component pages whose structured description
+// extraction finds nothing (e.g. pages with no `<tui-doc-example>` to anchor on).
+export function getFirstTabProse(content: string): string {
+    const tab = /<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<\/ng-template>/i.exec(
+        content,
+    )?.[1];
+
+    if (!tab) {
+        return '';
+    }
+
+    const withoutExamples = tab.replaceAll(
+        /<tui-doc-(code|example)\b[\s\S]*?(?:<\/tui-doc-\1>|\/>)/gi,
+        '',
+    );
+
+    return htmlToMarkdown(withoutExamples).trim();
+}
+
+// Standalone `<tui-doc-code>` snippets as Markdown — for component pages, whose structured
+// extraction skips inline code blocks (setup, providers, service usage) shown in the prose.
+export async function getInlineCodeSnippets(
+    html: string,
+    folderPath: string,
+): Promise<string[]> {
+    if (!/tui-doc-code/i.test(html)) {
+        return [];
+    }
+
+    const ts = await readIfExists(path.join(folderPath, 'index.ts'));
+    const snippets: string[] = [];
+
+    for (const [, binding = ''] of html.matchAll(
+        /<tui-doc-code\b[^>]*\[code\]="([^"]+)"/gi,
+    )) {
+        const value = binding.trim();
+
+        if (value.startsWith('`') && value.endsWith('`')) {
+            const inline = value
+                .slice(1, -1)
+                .replaceAll(/\$\{[^}]*\}/g, '')
+                .trim();
+
+            if (inline) {
+                snippets.push(`\`\`\`html\n${inline}\n\`\`\``);
+            }
+
+            continue;
+        }
+
+        const importPath = ts && resolveImportPath(ts, value);
+        const file =
+            importPath && path.resolve(folderPath, importPath.split('?')[0] ?? '');
+
+        const snippet = file ? (await readIfExists(file))?.trim() : '';
+
+        if (snippet) {
+            snippets.push(snippet);
+        }
+    }
+
+    return snippets;
 }
 
 async function inlineChildComponents(
