@@ -26,6 +26,11 @@
     }
 }
 
+// Prose pages have no ToC, so don't reserve its rail.
+:host:not(:has(tui-doc-toc)) .t-copy {
+    margin-inline-end: 0;
+}
+
 .t-navigation:not(:empty) {
     .scrollbar-hidden();
 
