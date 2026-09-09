@@ -1,25 +1,22 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import {getFirstTabProse, getInlineCodeSnippets} from './page-prose';
+import {getComponentProse, getInlineCodeSnippets} from './page-prose';
 
 const I18N = path.resolve(process.cwd(), 'projects/demo/src/pages/customization/i18n');
 
 describe('component page content extraction', () => {
-    it('extracts first pageTab prose as a description fallback', () => {
-        const md = getFirstTabProse(
-            '<tui-doc-page><ng-template pageTab><p>A set of tools</p><tui-doc-code [code]="x" /></ng-template></tui-doc-page>',
+    it('collects prose from every tab and drops example/code blocks', () => {
+        const paragraphs = getComponentProse(
+            `<tui-doc-page>
+                <ng-template pageTab><p>Intro paragraph about the component.</p><tui-doc-example heading="Basic" /></ng-template>
+                <ng-template pageTab="Layers"><p>Second tab note describing extra layers.</p></ng-template>
+            </tui-doc-page>`,
         );
 
-        expect(md).toBe('A set of tools');
-    });
-
-    it('keeps a static link in the fallback prose', () => {
-        const md = getFirstTabProse(
-            '<ng-template pageTab>Visit <a href="https://x.dev">docs</a></ng-template>',
-        );
-
-        expect(md).toContain('[docs](https://x.dev)');
+        expect(paragraphs.some((p) => p.includes('Intro paragraph'))).toBe(true);
+        expect(paragraphs.some((p) => p.includes('Second tab note'))).toBe(true);
+        expect(paragraphs.join(' ')).not.toContain('Basic');
     });
 
     it('resolves object-property [code] bindings (e.g. example.base)', async () => {

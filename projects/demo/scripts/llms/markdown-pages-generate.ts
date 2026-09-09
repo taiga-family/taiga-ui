@@ -9,8 +9,8 @@ import {
     getComponentDescription,
     getComponentExample,
     getComponentHeader,
+    getComponentProse,
     getDesignTokenTables,
-    getFirstTabProse,
     getImportExamples,
     getInlineCodeSnippets,
     getPageProse,
@@ -28,6 +28,13 @@ interface ComponentHeader {
 }
 
 const OUTPUT_DIR = path.resolve(process.cwd(), 'projects/demo/src/markdown-pages');
+
+function plainText(value: string): string {
+    return value
+        .toLowerCase()
+        .replaceAll(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
 
 function humanizeRoute(route: string): string {
     const segment = route.split('/').pop() ?? route;
@@ -61,7 +68,7 @@ async function buildPageMarkdown(
     }
 
     if (isComponentPage) {
-        const description = getComponentDescription(content) || getFirstTabProse(content);
+        const description = getComponentDescription(content);
 
         if (description) {
             body.push(description);
@@ -119,6 +126,20 @@ async function buildPageMarkdown(
 
     if (usageExamples) {
         body.push(usageExamples);
+    }
+
+    // Component-page prose from other tabs / notes not already captured (incl. in usage examples).
+    if (isComponentPage) {
+        let seen = plainText(body.join(' '));
+
+        for (const paragraph of getComponentProse(content)) {
+            const plain = plainText(paragraph);
+
+            if (plain && !seen.includes(plain)) {
+                body.push(paragraph);
+                seen += ` ${plain}`;
+            }
+        }
     }
 
     // Skip title-only pages so the action never offers an empty document.

@@ -216,8 +216,83 @@ function resolveImportPath(ts: string, binding: string): string | null {
     );
 }
 
+// Every import a binding resolves to: a single `x = import(...)` or an object `x = {a: import(...)}`.
+function resolveImportPaths(ts: string, binding: string): string[] {
+    const single = resolveImportPath(ts, binding);
+
+    if (single) {
+        return [single];
+    }
+
+    const block = new RegExp(
+        String.raw`\b${escapeReg(binding)}\s*=\s*\{([\s\S]*?)\n\s*\};`,
+    ).exec(ts)?.[1];
+
+    return block
+        ? [...block.matchAll(/import\(\s*['"]([^'"]+)['"]/g)].map(([, p = '']) => p)
+        : [];
+}
+
+// Reads a `prop = ['a', 'b']` string array from a page's index.ts.
+function resolveStringArray(ts: string, prop: string): string[] {
+    const block = new RegExp(String.raw`\b${escapeReg(prop)}\s*=\s*\[([\s\S]*?)\]`).exec(
+        ts,
+    )?.[1];
+
+    return block ? [...block.matchAll(/'([^']+)'/g)].map(([, item = '']) => item) : [];
+}
+
+// Expands `@for (x of prop) { …{{ x }}… }` when prop is a static string array in index.ts,
+// so interpolated data lists (e.g. available mixins) survive into the Markdown.
+function expandForLoops(html: string, ts: string): string {
+    const opener = /@for\s*\(\s*(\w+)\s+of\s+(\w+)\s*[;)][^{]*\{/g;
+    let result = html;
+    let match = opener.exec(result);
+
+    while (match) {
+        const [head, variable = '', prop = ''] = match;
+        const values = resolveStringArray(ts, prop);
+
+        if (!values.length) {
+            match = opener.exec(result);
+            continue;
+        }
+
+        const bodyStart = match.index + head.length;
+        let depth = 1;
+        let cursor = bodyStart;
+
+        while (depth > 0 && cursor < result.length) {
+            if (result[cursor] === '{') {
+                depth += 1;
+            } else if (result[cursor] === '}') {
+                depth -= 1;
+            }
+
+            if (depth === 0) {
+                break;
+            }
+
+            cursor += 1;
+        }
+
+        const body = result.slice(bodyStart, cursor);
+        const token = new RegExp(String.raw`\{\{\s*${escapeReg(variable)}\s*\}\}`, 'g');
+        const expanded = values.map((value) => body.replaceAll(token, value)).join('');
+
+        result = `${result.slice(0, match.index)}${expanded}${result.slice(cursor + 1)}`;
+        opener.lastIndex = match.index + expanded.length;
+        match = opener.exec(result);
+    }
+
+    return result;
+}
+
 async function inlineDocCode(html: string, folderPath: string): Promise<string> {
-    if (!/tui-doc-code/i.test(html)) {
+    if (
+        !/tui-doc-code/i.test(html) &&
+        !/<tui-doc-example\b[^>]*\[content\]/i.test(html)
+    ) {
         return html;
     }
 
@@ -241,26 +316,62 @@ async function inlineDocCode(html: string, folderPath: string): Promise<string> 
         result = result.replace(match[0], snippet ? `\n\n${snippet}\n\n` : '');
     }
 
+    // <tui-doc-example [content]="obj"> where obj is a set of .md snippets (e.g. tabbed configs).
+    for (const match of html.matchAll(
+        /<tui-doc-example\b[^>]*\[content\]="(\w+)"[^>]*?\/?>/gi,
+    )) {
+        const files = (ts ? resolveImportPaths(ts, match[1] ?? '') : []).filter((p) =>
+            p.split('?')[0]?.endsWith('.md'),
+        );
+
+        if (!files.length) {
+            continue;
+        }
+
+        const snippets = (
+            await Promise.all(
+                files.map(async (file) =>
+                    (
+                        await readIfExists(
+                            path.resolve(folderPath, file.split('?')[0] ?? ''),
+                        )
+                    )?.trim(),
+                ),
+            )
+        )
+            .filter(Boolean)
+            .join('\n\n');
+
+        if (snippets) {
+            result = result.replace(match[0], `\n\n${snippets}\n\n`);
+        }
+    }
+
     return result;
 }
 
-// First pageTab prose as Markdown — fallback for component pages whose structured description
-// extraction finds nothing (e.g. pages with no `<tui-doc-example>` to anchor on).
-export function getFirstTabProse(content: string): string {
-    const tab = /<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<\/ng-template>/i.exec(
-        content,
-    )?.[1];
+// All descriptive prose in a component page's tabs (later tabs, notes, callouts), as Markdown
+// paragraphs. Example previews and code blocks are dropped — they're captured separately — and
+// the caller dedupes each paragraph against the already-built body.
+export function getComponentProse(content: string): string[] {
+    const inner =
+        /<tui-doc-page\b(?:"[^"]*"|'[^']*'|[^>])*>([\s\S]*?)<\/tui-doc-page>/i.exec(
+            content,
+        )?.[1];
 
-    if (!tab) {
-        return '';
+    if (!inner) {
+        return [];
     }
 
-    const withoutExamples = tab.replaceAll(
+    const withoutExamples = inner.replaceAll(
         /<tui-doc-(code|example)\b[\s\S]*?(?:<\/tui-doc-\1>|\/>)/gi,
-        '',
+        ' ',
     );
 
-    return htmlToMarkdown(withoutExamples).trim();
+    return htmlToMarkdown(withoutExamples)
+        .split(/\n{2,}/)
+        .map((paragraph) => paragraph.trim())
+        .filter((paragraph) => paragraph.split(/\s+/).filter(Boolean).length >= 4);
 }
 
 // Standalone `<tui-doc-code>` snippets as Markdown — for component pages, whose structured
@@ -356,7 +467,9 @@ async function resolveTemplate(
     folderPath: string,
     seen: ReadonlySet<string>,
 ): Promise<string> {
-    const withCode = await inlineDocCode(html, folderPath);
+    const ts = await readIfExists(path.join(folderPath, 'index.ts'));
+    const expanded = ts ? expandForLoops(html, ts) : html;
+    const withCode = await inlineDocCode(expanded, folderPath);
 
     return inlineChildComponents(withCode, folderPath, seen);
 }

@@ -31,7 +31,7 @@ export {
 
 // Prose-page markdown rendering
 export {
-    getFirstTabProse,
+    getComponentProse,
     getInlineCodeSnippets,
     getPageProse,
     htmlToMarkdown,
