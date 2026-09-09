@@ -1,17 +1,4 @@
-/**
- * Renders the *prose* of a documentation page (About, SSR, Migration guide, the AI
- * pages, …) to Markdown. Component pages keep their structured extraction
- * (`getComponentDescription` + API tables + `examples/`); this module is the fallback
- * for pages whose content is plain projected markup rather than API + example folders.
- *
- * It is deliberately dependency-free (no DOM parser) and handles only the constructs
- * that actually appear on these pages: headings, paragraphs, lists, checklists, links
- * with a static `href`, inline `code`/`strong`/`em`, `<tui-doc-example heading>`
- * sections, inlined `<tui-doc-code [code]>` snippets, and child components projected by
- * selector (e.g. Migration guide's prerequisites/actions/troubleshooting). Everything it
- * cannot resolve statically (bound `[href]`, `{{ interpolation }}`, control flow) is
- * dropped, keeping the readable text.
- */
+// Renders a prose doc page's projected template to Markdown (fallback for non-component pages).
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -292,13 +279,9 @@ async function resolveTemplate(
     return inlineChildComponents(withCode, folderPath, seen);
 }
 
-/**
- * Converts a prose page's projected template to Markdown, resolving inlined snippets
- * and projected child components. Returns an empty string when there is nothing to show.
- */
+// Converts a prose page's projected template to Markdown; empty string when nothing to show.
 export async function getPageProse(folderPath: string, content: string): Promise<string> {
-    // Skip quoted attribute values so a `>` inside e.g. `[header]="...v4 -> v5"` does
-    // not prematurely close the opening tag.
+    // Skip quoted attrs so a `>` inside e.g. [header]="...v4 -> v5" doesn't close the tag early.
     const inner =
         /<tui-doc-page\b(?:"[^"]*"|'[^']*'|[^>])*>([\s\S]*?)<\/tui-doc-page>/i.exec(
             content,

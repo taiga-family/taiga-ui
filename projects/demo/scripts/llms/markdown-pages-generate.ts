@@ -1,20 +1,4 @@
-/**
- * Additive generator: emits one Markdown file per documentation page into
- * `projects/demo/src/markdown-pages/<route>.md`, mirroring the page URL.
- *
- * These files are copied to the build output root via a Markdown asset glob in
- * `project.json`, so each page's Markdown is served at the page path plus `.md` —
- * e.g. `/components/button` → `/components/button.md` (shadcn-style URLs).
- *
- * Generation is driven by the route table (`buildFolderRouteMap`), not by folder
- * scanning, so the output path always matches the URL the page is served at — even
- * when the folder differs from the route (e.g. `components/action-bar` →
- * `/components/actions-bar`, every `components/*-chart` → `/charts/...`). This is what
- * lets the docs "Copy page" action fetch `/<current-route>.md`.
- *
- * Reuses the same extraction utilities as `llms-full-generate.ts`. It does NOT touch
- * `llms-full.txt`.
- */
+// Emits one Markdown file per doc page at its route path (e.g. /components/button.md) for the Copy page action.
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
@@ -60,9 +44,7 @@ async function buildPageMarkdown(
         return null;
     }
 
-    // Component pages carry `package`/`type`; info/prose pages (About, SSR, Migration
-    // guide, AI pages, …) do not. The bound `[header]` on some prose pages leaves the
-    // header empty, so fall back to a humanized route.
+    // Component pages have package/type; prose pages don't and may bind [header], so fall back to the route.
     const isComponentPage = Boolean(headerData.package || headerData.type);
     const header = headerData.header?.trim() || humanizeRoute(route);
     const body: string[] = [];
@@ -119,8 +101,7 @@ async function buildPageMarkdown(
         body.push(usageExamples);
     }
 
-    // Skip pages that would render as just a title, so the "Copy page" action never
-    // offers an empty document.
+    // Skip title-only pages so the action never offers an empty document.
     return body.join('\n').trim() ? [`# ${header}`, ...body].join('\n') : null;
 }
 
@@ -135,9 +116,7 @@ async function main(): Promise<void> {
 
     console.info(`Generating markdown for ${folderToRoute.size} routed pages...`);
 
-    // Start from a clean slate so stale files from renamed routes never linger, but
-    // keep the directory and its `.gitkeep` so `nx serve` — which does not run this
-    // generator — still finds the asset input folder.
+    // Clean slate for renamed routes, but keep the dir + .gitkeep so nx serve finds the asset folder.
     await fs.rm(OUTPUT_DIR, {recursive: true, force: true});
     await fs.mkdir(OUTPUT_DIR, {recursive: true});
     await fs.writeFile(path.join(OUTPUT_DIR, '.gitkeep'), '');
