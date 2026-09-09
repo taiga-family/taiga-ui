@@ -13,12 +13,14 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
 describe('Mobile calendar', () => {
     const today = new TuiDay(2020, 8, 20);
     const tomorrow = today.append({day: 1});
+    const markedDay = today.append({day: 2});
 
     beforeEach(() => {
         cy.clock(today.toLocalNativeDate(), ['Date']);
@@ -30,6 +32,7 @@ describe('Mobile calendar', () => {
             <tui-mobile-calendar
                 style="height: 800px"
                 [disabledItemHandler]="disabledItemHandler"
+                [markerHandler]="markerHandler"
                 [max]="max"
                 [min]="min"
                 [single]="single()"
@@ -54,6 +57,9 @@ describe('Mobile calendar', () => {
         public readonly single = input(true);
         public readonly cancel = output<boolean>();
         public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
+
+        protected readonly markerHandler: TuiMarkerHandler = (day) =>
+            day.daySame(markedDay) ? ['red'] : [];
     }
 
     it('the back button emits a cancel event', () => {
@@ -79,6 +85,12 @@ describe('Mobile calendar', () => {
             'contain.text',
             'Choose range',
         );
+    });
+
+    it('forwards markerHandler to calendar sheets', () => {
+        cy.mount(Test);
+
+        cy.get('.t-dot').should('have.css', 'background-color', 'rgb(255, 0, 0)');
     });
 
     describe('when the done button emits', () => {
