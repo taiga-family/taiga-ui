@@ -37,11 +37,11 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     },
 })
 export class TuiLineClamp {
-    private readonly destroyRef = inject(DestroyRef);
     private readonly offset = inject(TUI_FONT_OFFSET);
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly overflows = signal(0);
+    private readonly destroyed = signal(false);
 
     protected readonly overflown = signal(false);
 
@@ -77,8 +77,12 @@ export class TuiLineClamp {
         this.showHint() && this.overflown() ? this.content() : '',
     );
 
+    constructor() {
+        inject(DestroyRef).onDestroy(() => this.destroyed.set(true));
+    }
+
     public setOverflown(overflown: boolean): void {
-        if (this.destroyRef.destroyed || this.overflown() === overflown) {
+        if (this.destroyed() || this.overflown() === overflown) {
             return;
         }
 
