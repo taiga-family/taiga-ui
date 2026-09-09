@@ -50,7 +50,8 @@
             [data-mode~='valid'],
             [data-state='disabled'],
             :disabled,
-            ._disabled
+            ._disabled,
+            ._untouched
         ) {
         @content;
     }
