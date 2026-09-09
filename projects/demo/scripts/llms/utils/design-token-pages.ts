@@ -38,7 +38,7 @@ function normalizeColor(value: string): string {
 function parseBindings(componentTs: string): Map<string, string> {
     const map = new Map<string, string>();
 
-    for (const [, binding, constant] of componentTs.matchAll(
+    for (const [, binding = '', constant = ''] of componentTs.matchAll(
         /readonly (\w+) = (\w+);/g,
     )) {
         map.set(binding, constant);
@@ -50,7 +50,7 @@ function parseBindings(componentTs: string): Map<string, string> {
 function parseConstantArrays(source: string): Map<string, readonly string[]> {
     const map = new Map<string, readonly string[]>();
 
-    for (const [, name, body] of source.matchAll(
+    for (const [, name = '', body = ''] of source.matchAll(
         /export const (\w+)\s*=\s*\[([\s\S]*?)\];/g,
     )) {
         map.set(
@@ -100,11 +100,11 @@ export async function getColorsMarkdown(
     const arrays = parseConstantArrays(constantsTs);
     const sections: string[] = [];
 
-    for (const [, label, body] of content.matchAll(
+    for (const [, label = '', body = ''] of content.matchAll(
         /<ng-template\s+pageTab="([^"]+)">([\s\S]*?)<\/ng-template>/gi,
     )) {
         const binding = /\[colors\]="(\w+)"/.exec(body)?.[1];
-        const variables = binding && arrays.get(bindings.get(binding) ?? '');
+        const variables = binding ? arrays.get(bindings.get(binding) ?? '') : undefined;
 
         if (!variables?.length) {
             continue;
