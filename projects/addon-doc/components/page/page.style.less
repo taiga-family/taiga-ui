@@ -19,16 +19,16 @@
 .t-copy {
     align-self: start;
     margin-inline-start: auto;
+    margin-inline-end: 0;
+}
+
+// Reserve the rail only when the ToC actually shows.
+:host:has(tui-doc-toc:not(:empty)) .t-copy {
     margin-inline-end: 20rem;
 
     @media @tui-desktop {
         margin-inline-end: 0;
     }
-}
-
-// Prose pages have no ToC, so don't reserve its rail.
-:host:not(:has(tui-doc-toc)) .t-copy {
-    margin-inline-end: 0;
 }
 
 .t-navigation:not(:empty) {

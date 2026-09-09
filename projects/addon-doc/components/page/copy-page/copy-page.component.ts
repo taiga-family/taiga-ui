@@ -67,8 +67,16 @@ export class TuiDocCopyPage {
 
     private pagePath(): string {
         const [page = ''] = this.router.url.split(/[?#]/);
+        let route = this.router.routerState.snapshot.root;
 
-        return page;
+        while (route.firstChild) {
+            route = route.firstChild;
+        }
+
+        // Tabbed pages live under a ':tab' child but share one base .md.
+        return route.routeConfig?.path === ':tab'
+            ? page.slice(0, page.lastIndexOf('/'))
+            : page;
     }
 
     private async fetchMarkdown(page: string): Promise<string | null> {
