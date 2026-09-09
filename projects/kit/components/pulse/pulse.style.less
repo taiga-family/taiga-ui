@@ -36,7 +36,8 @@
 
     &._playing {
         &::before {
-            animation: tuiPulse 1s 1s ease-in-out infinite;
+            animation: tuiPulse calc(var(--tui-duration) * 10 / 3) calc(var(--tui-duration) * 10 / 3) ease-in-out
+                infinite;
         }
 
         &::after {
