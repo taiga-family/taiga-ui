@@ -1096,11 +1096,6 @@ export const ROUTES: Routes = [
         title: 'llms.txt',
     }),
     route({
-        path: DemoRoute.AiBestPractices,
-        loadComponent: async () => import('../info/ai/best-practices'),
-        title: 'Best practices',
-    }),
-    route({
         path: DemoRoute.Obfuscate,
         loadComponent: async () => import('../pipes/obfuscate'),
         title: 'Obfuscate',

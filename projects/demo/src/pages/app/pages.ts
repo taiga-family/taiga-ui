@@ -59,13 +59,6 @@ export const pages: DocRoutePages = [
             'ai, llm, llms, llms.txt, llms-full, context, standard, контекст, модели',
         route: DemoRoute.AiLlms,
     },
-    {
-        section: 'AI tools',
-        title: 'Best practices',
-        keywords:
-            'ai, best practices, tips, guidance, лучшие практики, советы, рекомендации',
-        route: DemoRoute.AiBestPractices,
-    },
     // Documentation
     {
         section: 'Documentation',

@@ -5,7 +5,6 @@ export const DemoRoute = {
     AiMcp: '/ai/mcp',
     AiSkills: '/ai/skills',
     AiLlms: '/ai/llms',
-    AiBestPractices: '/ai/best-practices',
     SSR: '/ssr',
     RTL: '/rtl',
     About: '/info/about',
