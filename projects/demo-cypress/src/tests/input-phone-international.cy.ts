@@ -339,9 +339,7 @@ describe('InputPhoneInternational', () => {
         });
 
         it('paints an untouched control as well — the override does not wait for a touch', () => {
-            cy.mount(ManualInvalidSandbox, {
-                componentProperties: {control: ngControl},
-            });
+            cy.mount(ManualInvalidSandbox, {componentProperties: {control: ngControl}});
 
             initAliases();
 
