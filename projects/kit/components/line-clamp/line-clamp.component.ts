@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     computed,
+    DestroyRef,
     inject,
     Input,
     Output,
@@ -55,6 +56,7 @@ export class TuiLineClamp {
     private readonly el = tuiInjectElement();
     private readonly isOverflown$ = new Subject<boolean>();
     private readonly overflows = signal(0);
+    private readonly destroyed = signal(false);
 
     protected readonly overflown = signal(false);
     protected readonly lineHeight = signal(24);
@@ -86,6 +88,10 @@ export class TuiLineClamp {
     public readonly content = signal<PolymorpheusContent>('');
     public readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
 
+    constructor() {
+        inject(DestroyRef).onDestroy(() => this.destroyed.set(true));
+    }
+
     @Input('content')
     public set contentSetter(content: PolymorpheusContent) {
         this.content.set(content);
@@ -102,11 +108,13 @@ export class TuiLineClamp {
     }
 
     public setOverflown(overflown: boolean): void {
-        if (this.overflown() !== overflown) {
-            this.overflown.set(overflown);
-            this.cdr.markForCheck();
-            this.isOverflown$.next(overflown);
+        if (this.destroyed() || this.overflown() === overflown) {
+            return;
         }
+
+        this.overflown.set(overflown);
+        this.cdr.markForCheck();
+        this.isOverflown$.next(overflown);
     }
 
     /**
