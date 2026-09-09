@@ -16,6 +16,12 @@
     }
 }
 
+.liquid-glass-only(@ruleset) {
+    @supports (-webkit-touch-callout: none) and (position-anchor: --value) {
+        @ruleset();
+    }
+}
+
 .chrome-only(@ruleset) {
     @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
         @ruleset();
