@@ -2,11 +2,19 @@
     <p class="description">
         The
         <a
+            href="https://www.npmjs.com/package/@taiga-ui/mcp"
+            target="_blank"
+            tuiLink
+        >
+            <code>&#64;taiga-ui/mcp</code>
+        </a>
+        Model Context Protocol (MCP)
+        <a
             href="https://github.com/taiga-family/taiga-ui-mcp"
             target="_blank"
             tuiLink
         >
-            Model Context Protocol (MCP) server
+            server
         </a>
         gives AI assistants structured, on-demand access to Taiga UI — full documentation plus ready-made Angular
         examples, served from the live source. It is the fastest way to keep an agent aligned with the version you
@@ -34,24 +42,60 @@
         <h2>Available tools</h2>
         <ul tuiList>
             <li>
-                <strong><code>get_overview</code></strong>
+                <strong>
+                    <a
+                        href="https://github.com/taiga-family/taiga-ui-mcp/tree/main/src/tools/get-overview.ts"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <code>get_overview</code>
+                    </a>
+                </strong>
                 — call this first: the structured documentation header as JSON, with the import map, code-generation
                 checklist, CDK types, common mistakes, and getting-started guides.
             </li>
 
             <li>
-                <strong><code>get_list_components</code></strong>
+                <strong>
+                    <a
+                        href="https://github.com/taiga-family/taiga-ui-mcp/tree/main/src/tools/get-list-components.ts"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <code>get_list_components</code>
+                    </a>
+                </strong>
                 — list all documentation section IDs (with optional fuzzy filtering) plus basic metadata (category,
                 package, type).
             </li>
 
             <li>
-                <strong><code>get_component_example</code></strong>
+                <strong>
+                    <a
+                        href="https://github.com/taiga-family/taiga-ui-mcp/tree/main/src/tools/get-component-example.ts"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <code>get_component_example</code>
+                    </a>
+                </strong>
                 — return the full documentation and code snippets for the requested section names.
             </li>
 
             <li>
-                <strong><code>get_migration_guide</code></strong>
+                <strong>
+                    <a
+                        href="https://github.com/taiga-family/taiga-ui-mcp/tree/main/src/tools/get-migration-guide.ts"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <code>get_migration_guide</code>
+                    </a>
+                </strong>
                 — return the complete migration guide for version updates: checklist, schematics steps, snippets, and
                 troubleshooting.
             </li>
@@ -60,27 +104,104 @@
 
     <section>
         <h2>Installation</h2>
-        <p class="description">
-            Using
-            <a
-                href="https://www.anthropic.com/claude-code"
-                target="_blank"
-                tuiLink
+        <p class="description">Pick your agent and connect the server:</p>
+        <tui-tabs [(activeItemIndex)]="activeItemIndex">
+            <button
+                tuiTab
+                type="button"
             >
                 Claude Code
-            </a>
-            ? Add it straight from the terminal:
-        </p>
-        <tui-doc-code [code]="mcpClaudeCode" />
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Cursor
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Windsurf
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                VS Code
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Other
+            </button>
+        </tui-tabs>
 
-        <p class="description">
-            Or use the standard config — it works across most MCP clients (Cursor, Windsurf, Claude Desktop, …):
-        </p>
-        <tui-doc-code [code]="mcpStandard" />
+        @if (activeItemIndex === 0) {
+            <p class="description">Add it straight from the terminal:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpClaudeCode"
+            />
+
+            <p class="description">
+                Or add the server to
+                <code>~/.claude/settings.json</code>
+                :
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpClaudeCodeConfig"
+            />
+        } @else if (activeItemIndex === 1) {
+            <p class="description">
+                Add to
+                <code>~/.cursor/mcp.json</code>
+                (or
+                <code>.cursor/mcp.json</code>
+                for a project):
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpCursor"
+            />
+        } @else if (activeItemIndex === 2) {
+            <p class="description">
+                Add to
+                <code>~/.codeium/windsurf/mcp_config.json</code>
+                :
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpWindsurf"
+            />
+        } @else if (activeItemIndex === 3) {
+            <p class="description">
+                Add to
+                <code>.vscode/mcp.json</code>
+                :
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpVscode"
+            />
+        } @else {
+            <p class="description">
+                Add the
+                <code>mcpServers</code>
+                block to your client's config file:
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpStandard"
+            />
+        }
 
         <div
             appearance="warning"
             tuiNotification
+            class="tui-space_top-4"
         >
             <strong>Gotcha worth saving:</strong>
             the server needs
