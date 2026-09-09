@@ -9,6 +9,7 @@ import {
     getComponentDescription,
     getComponentExample,
     getComponentHeader,
+    getDesignTokenTables,
     getImportExamples,
     getPageProse,
     getUsageExamples,
@@ -88,6 +89,12 @@ async function buildPageMarkdown(
             body.push(apiFromTemplates);
         }
     } else {
+        const tokenTables = await getDesignTokenTables(content, folderPath);
+
+        if (tokenTables) {
+            body.push(tokenTables);
+        }
+
         const prose = await getPageProse(folderPath, content);
 
         if (prose) {
