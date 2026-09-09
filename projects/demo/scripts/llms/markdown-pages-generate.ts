@@ -59,13 +59,18 @@ async function buildPageMarkdown(
     const isComponentPage = Boolean(headerData.package);
     const header = headerData.header?.trim() || humanizeRoute(route);
     const body: string[] = [];
+    const meta: string[] = [];
 
     if (headerData.package) {
-        body.push(`- **Package**: \`${headerData.package}\``);
+        meta.push(`- **Package**: \`${headerData.package}\``);
     }
 
     if (headerData.type) {
-        body.push(`- **Type**: ${headerData.type}`);
+        meta.push(`- **Type**: ${headerData.type}`);
+    }
+
+    if (meta.length) {
+        body.push(meta.join('\n'));
     }
 
     if (isComponentPage) {
@@ -143,8 +148,12 @@ async function buildPageMarkdown(
         }
     }
 
-    // Skip title-only pages so the action never offers an empty document.
-    return body.join('\n').trim() ? [`# ${header}`, ...body].join('\n') : null;
+    // Blank line between every section; skip title-only pages so the action never offers an empty document.
+    const sections = [`# ${header}`, ...body]
+        .map((section) => section.trim())
+        .filter(Boolean);
+
+    return sections.length > 1 ? sections.join('\n\n') : null;
 }
 
 async function main(): Promise<void> {
