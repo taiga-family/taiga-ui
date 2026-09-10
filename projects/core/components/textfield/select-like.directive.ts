@@ -1,5 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import {WA_IS_ANDROID, WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -15,8 +16,8 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '(beforeinput)':
             '(isMobile && $event.inputType.includes("insertText")) || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
-        '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
-        '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
+        '(keydown.backspace)': 'options.cleaner() && dispatchInputEvent(-1)', // No (input) event if caret is at the beginning
+        '(keydown.delete)': 'options.cleaner() && dispatchInputEvent(1)', // No (input) event if caret is at the end
         // Hide Android text select handle (bubble marker below transparent caret)
         '(mousedown)': 'prevent($event)',
     },
@@ -30,6 +31,22 @@ export class TuiSelectLike {
 
     protected clear(): void {
         this.el.value = '';
+    }
+
+    protected dispatchInputEvent(direction: -1 | 1): void {
+        const caret = this.el.selectionStart ?? 0;
+
+        if (
+            this.el.value &&
+            tuiClamp(caret + direction, 0, this.el.value.length) === caret
+        ) {
+            this.el.dispatchEvent(
+                new InputEvent('input', {
+                    bubbles: true,
+                    inputType: `deleteContent${direction === 1 ? 'Forward' : 'Backward'}`,
+                }),
+            );
+        }
     }
 
     protected prevent(event: MouseEvent): void {
