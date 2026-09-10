@@ -104,21 +104,7 @@
 
     <section>
         <h2>Installation</h2>
-
-        <p class="description">
-            Fastest path — scaffold the config with our CLI (supports Claude Code, Cursor and VS Code):
-        </p>
-        <tui-doc-code [code]="mcpInit" />
-
-        <p class="description">
-            Swap the client for your agent. Add
-            <code>--version next</code>
-            (or a previous major like
-            <code>--version v4</code>
-            ) to pin the docs source; the default is the latest stable docs.
-        </p>
-
-        <p class="description">Prefer to wire it up by hand? Pick your agent:</p>
+        <p class="description">Pick your agent and connect the server:</p>
         <tui-tabs [(activeItemIndex)]="activeItemIndex">
             <button
                 tuiTab
@@ -153,7 +139,13 @@
         </tui-tabs>
 
         @if (activeItemIndex === 0) {
-            <p class="description">Add it straight from the terminal:</p>
+            <p class="description">Scaffold it with one command:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitClaude"
+            />
+
+            <p class="description">Or add it with the Claude CLI:</p>
             <tui-doc-code
                 class="tui-space_top-4"
                 [code]="mcpClaudeCode"
@@ -169,8 +161,14 @@
                 [code]="mcpClaudeCodeConfig"
             />
         } @else if (activeItemIndex === 1) {
+            <p class="description">Scaffold it with one command:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitCursor"
+            />
+
             <p class="description">
-                Add to
+                Or add to
                 <code>~/.cursor/mcp.json</code>
                 (or
                 <code>.cursor/mcp.json</code>
@@ -191,8 +189,14 @@
                 [code]="mcpWindsurf"
             />
         } @else if (activeItemIndex === 3) {
+            <p class="description">Scaffold it with one command:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitVscode"
+            />
+
             <p class="description">
-                Add to
+                Or add to
                 <code>.vscode/mcp.json</code>
                 :
             </p>
@@ -211,6 +215,22 @@
                 [code]="mcpStandard"
             />
         }
+
+        <p class="description tui-space_top-4">
+            Want a specific docs version? Add
+            <code>--version</code>
+            to the
+            <code>init</code>
+            command:
+        </p>
+        <tui-doc-code
+            class="tui-space_top-4"
+            [code]="mcpInitNext"
+        />
+        <tui-doc-code
+            class="tui-space_top-4"
+            [code]="mcpInitV4"
+        />
 
         <div
             appearance="warning"

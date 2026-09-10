@@ -12,7 +12,11 @@ import {TuiList} from '@taiga-ui/layout';
 })
 export default class Page {
     protected activeItemIndex = 0;
-    protected readonly mcpInit = import('./snippets/mcp-init.md');
+    protected readonly mcpInitClaude = import('./snippets/mcp-init-claude.md');
+    protected readonly mcpInitCursor = import('./snippets/mcp-init-cursor.md');
+    protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');
+    protected readonly mcpInitNext = import('./snippets/mcp-init-next.md');
+    protected readonly mcpInitV4 = import('./snippets/mcp-init-v4.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
     protected readonly mcpClaudeCodeConfig =
         import('./snippets/mcp-claude-code-config.md');
