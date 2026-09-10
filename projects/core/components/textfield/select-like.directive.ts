@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {WA_IS_ANDROID, WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
