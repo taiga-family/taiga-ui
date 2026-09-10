@@ -37,7 +37,7 @@ export class InheritedDocumentation {
         ['bottom', 'left'] satisfies TuiHintDirection[],
     ];
 
-    protected readonly appearanceVariants = ['', 'error', 'dark'];
+    protected readonly appearanceVariants = ['', 'error', 'dark', 'floating'];
     protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
     @Input()
