@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiList} from '@taiga-ui/layout';
+
+const INIT_CLIENTS = ['claude', 'cursor', 'vscode', 'codex', 'opencode'] as const;
 
 @Component({
     imports: [TuiDemo, TuiList, TuiTabs],
@@ -11,14 +13,18 @@ import {TuiList} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Page {
-    protected activeItemIndex = 0;
+    protected readonly activeItemIndex = signal(0);
+    protected readonly versionClient = computed(
+        () => INIT_CLIENTS[this.activeItemIndex()] ?? null,
+    );
+
+    protected readonly mcpInitNext = computed(() => this.versionCommand('next'));
+    protected readonly mcpInitV4 = computed(() => this.versionCommand('v4'));
     protected readonly mcpInitClaude = import('./snippets/mcp-init-claude.md');
     protected readonly mcpInitCursor = import('./snippets/mcp-init-cursor.md');
     protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');
     protected readonly mcpInitCodex = import('./snippets/mcp-init-codex.md');
     protected readonly mcpInitOpencode = import('./snippets/mcp-init-opencode.md');
-    protected readonly mcpInitNext = import('./snippets/mcp-init-next.md');
-    protected readonly mcpInitV4 = import('./snippets/mcp-init-v4.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
     protected readonly mcpClaudeCodeConfig =
         import('./snippets/mcp-claude-code-config.md');
@@ -30,4 +36,14 @@ export default class Page {
     protected readonly mcpCodex = import('./snippets/mcp-codex.md');
     protected readonly mcpOpencode = import('./snippets/mcp-opencode.md');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md');
+
+    private versionCommand(version: string): string {
+        const client = this.versionClient() ?? '<client>';
+
+        return [
+            '```bash',
+            `npx @taiga-ui/mcp init --client ${client} --version ${version}`,
+            '```',
+        ].join('\n');
+    }
 }

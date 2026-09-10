@@ -150,7 +150,7 @@
             </button>
         </tui-tabs>
 
-        @if (activeItemIndex === 0) {
+        @if (activeItemIndex() === 0) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
@@ -172,7 +172,7 @@
                 class="tui-space_top-4"
                 [code]="mcpClaudeCodeConfig"
             />
-        } @else if (activeItemIndex === 1) {
+        } @else if (activeItemIndex() === 1) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
@@ -190,7 +190,7 @@
                 class="tui-space_top-4"
                 [code]="mcpCursor"
             />
-        } @else if (activeItemIndex === 2) {
+        } @else if (activeItemIndex() === 2) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
@@ -206,7 +206,7 @@
                 class="tui-space_top-4"
                 [code]="mcpVscode"
             />
-        } @else if (activeItemIndex === 3) {
+        } @else if (activeItemIndex() === 3) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
@@ -228,7 +228,7 @@
                 class="tui-space_top-4"
                 [code]="mcpCodex"
             />
-        } @else if (activeItemIndex === 4) {
+        } @else if (activeItemIndex() === 4) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
@@ -246,7 +246,7 @@
                 class="tui-space_top-4"
                 [code]="mcpOpencode"
             />
-        } @else if (activeItemIndex === 5) {
+        } @else if (activeItemIndex() === 5) {
             <p class="description">
                 Add to
                 <code>~/.codeium/windsurf/mcp_config.json</code>
@@ -268,21 +268,23 @@
             />
         }
 
-        <p class="description tui-space_top-4">
-            Want a specific docs version? Add
-            <code>--version</code>
-            to the
-            <code>init</code>
-            command:
-        </p>
-        <tui-doc-code
-            class="tui-space_top-4"
-            [code]="mcpInitNext"
-        />
-        <tui-doc-code
-            class="tui-space_top-4"
-            [code]="mcpInitV4"
-        />
+        @if (versionClient()) {
+            <p class="description tui-space_top-4">
+                Want a specific docs version? Add
+                <code>--version</code>
+                to the
+                <code>init</code>
+                command:
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitNext()"
+            />
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitV4()"
+            />
+        }
 
         <div
             appearance="warning"
