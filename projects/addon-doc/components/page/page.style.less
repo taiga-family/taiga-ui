@@ -15,9 +15,11 @@
 .t-header {
     margin-block-end: 2rem;
 
-    @media @tui-mobile {
-        flex-wrap: wrap;
-        gap: 0.25rem 1rem;
+    :host:has(tui-doc-copy-page) & {
+        @media @tui-mobile {
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+        }
     }
 }
 

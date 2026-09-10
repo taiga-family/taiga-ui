@@ -8,7 +8,7 @@ import {
     model,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
-import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_COPY_PAGE, TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
@@ -49,6 +49,7 @@ export class TuiDocPage {
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
+    protected readonly copyPage = inject(TUI_DOC_COPY_PAGE);
     protected readonly from = / /g;
     protected readonly to = '_';
 
