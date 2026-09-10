@@ -16,9 +16,9 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
             '(isMobile && $event.inputType.includes("insertText")) || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
         '(keydown.backspace.prevent)':
-            'options.cleaner() && el.value && dispatchInputEvent("deleteContentBackward")',
+            'options.cleaner() && el.value && dispatchInputEvent()',
         '(keydown.delete.prevent)':
-            'options.cleaner() && el.value && dispatchInputEvent("deleteContentForward")',
+            'options.cleaner() && el.value && dispatchInputEvent()',
         // Hide Android text select handle (bubble marker below transparent caret)
         '(mousedown)': 'prevent($event)',
     },
@@ -34,10 +34,10 @@ export class TuiSelectLike {
         this.el.value = '';
     }
 
-    protected dispatchInputEvent(inputType: string): void {
+    protected dispatchInputEvent(): void {
         this.el.dispatchEvent(
             new InputEvent('input', {
-                inputType,
+                inputType: 'deleteContentBackward',
                 bubbles: true,
             }),
         );
