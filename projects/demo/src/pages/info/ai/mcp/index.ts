@@ -1,13 +1,14 @@
 import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiNotification} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiList} from '@taiga-ui/layout';
 
 const INIT_CLIENTS = ['claude', 'cursor', 'vscode', 'codex', 'opencode'] as const;
 
 @Component({
-    imports: [TuiDemo, TuiList, TuiTabs],
+    imports: [TuiDemo, TuiList, TuiNotification, TuiTabs],
     templateUrl: './index.html',
     styleUrl: '../styles.less',
     changeDetection,
@@ -20,6 +21,7 @@ export default class Page {
 
     protected readonly mcpInitNext = computed(() => this.versionCommand('next'));
     protected readonly mcpInitV4 = computed(() => this.versionCommand('v4'));
+    protected readonly mcpInitInteractive = import('./snippets/mcp-init-interactive.md');
     protected readonly mcpInitClaude = import('./snippets/mcp-init-claude.md');
     protected readonly mcpInitCursor = import('./snippets/mcp-init-cursor.md');
     protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');

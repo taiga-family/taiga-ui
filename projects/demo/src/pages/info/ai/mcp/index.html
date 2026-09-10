@@ -104,7 +104,16 @@
 
     <section>
         <h2>Installation</h2>
-        <p class="description">Pick your agent and connect the server:</p>
+        <p class="description">
+            The quickest way is the same for every agent — run it with no flags and pick your agents (you can select
+            several) and the docs version interactively:
+        </p>
+        <tui-doc-code
+            class="tui-space_top-4"
+            [code]="mcpInitInteractive"
+        />
+
+        <p class="description tui-space_top-4">Prefer to wire it up yourself? Pick your agent:</p>
         <tui-tabs [(activeItemIndex)]="activeItemIndex">
             <button
                 tuiTab
@@ -228,6 +237,18 @@
                 class="tui-space_top-4"
                 [code]="mcpCodex"
             />
+
+            <div
+                appearance="info"
+                tuiNotification
+                class="tui-space_top-4"
+            >
+                Codex loads a project
+                <code>.codex/config.toml</code>
+                only in a trusted workspace. Trust this folder in Codex, or add the server to
+                <code>~/.codex/config.toml</code>
+                instead.
+            </div>
         } @else if (activeItemIndex() === 4) {
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
