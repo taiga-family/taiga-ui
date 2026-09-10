@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    DestroyRef,
     inject,
     input,
     output,
@@ -40,6 +41,7 @@ export class TuiLineClamp {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly overflows = signal(0);
+    private readonly destroyed = signal(false);
 
     protected readonly overflown = signal(false);
 
@@ -75,11 +77,17 @@ export class TuiLineClamp {
         this.showHint() && this.overflown() ? this.content() : '',
     );
 
+    constructor() {
+        inject(DestroyRef).onDestroy(() => this.destroyed.set(true));
+    }
+
     public setOverflown(overflown: boolean): void {
-        if (this.overflown() !== overflown) {
-            this.overflown.set(overflown);
-            this.overflownChange.emit(overflown);
+        if (this.destroyed() || this.overflown() === overflown) {
+            return;
         }
+
+        this.overflown.set(overflown);
+        this.overflownChange.emit(overflown);
     }
 
     /**

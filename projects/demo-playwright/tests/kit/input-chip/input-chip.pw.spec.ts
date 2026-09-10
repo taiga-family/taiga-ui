@@ -393,6 +393,27 @@ test.describe('InputChip', () => {
                     .toHaveScreenshot('multiselect-select-checkboxes.png');
             });
 
+            test('keeps dropdown open after textfield cleaner click', async () => {
+                const block = example.locator('label[tuiLabel]').filter({
+                    hasText:
+                        'Using checkboxes in the dropdown and making the textfield non-writable',
+                });
+
+                const multiselect = new TuiMultiSelectPO(block);
+
+                await block.locator('tui-textfield').click();
+                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.dropdown.locator('[tuiOption]').nth(0).click();
+                await expect(multiselect.chips).toHaveCount(1);
+                await expect(multiselect.dropdown).toBeAttached();
+
+                await multiselect.cleaner.click();
+
+                await expect(multiselect.chips).toHaveCount(0);
+                await expect(multiselect.dropdown).toBeAttached();
+            });
+
             test('working with objects', async ({page}) => {
                 const block = example
                     .locator('label[tuiLabel]')
