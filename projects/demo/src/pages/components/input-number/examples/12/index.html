@@ -1,9 +1,10 @@
 <tui-textfield>
-    <label tuiLabel>Amount in yen</label>
+    <label tuiLabel>Amount in rupees</label>
 
     <input
-        prefix="¥"
+        prefix="₹"
         tuiInputNumber
+        [min]="0"
         [tuiNumberFormat]="numberFormat"
         [(ngModel)]="value"
     />

@@ -55,7 +55,7 @@ export default class PageComponent {
     protected quantum = 0;
 
     protected readonly bigIntWithDecimalTransformer = import(
-        './examples/11/transformer.ts?raw',
+        './examples/13/transformer.ts?raw',
         {with: {loader: 'text'}}
     );
 }
