@@ -6,6 +6,7 @@
 
     --t-height: var(--tui-height-l);
     --t-padding: var(--tui-padding-l);
+    --t-radius: var(--tui-radius-l);
     --t-label-y: -0.75rem;
     --t-label-font: var(--tui-font-text-s);
     --t-end: ~'0rem';
@@ -19,7 +20,7 @@
     cursor: pointer;
     min-block-size: var(--t-height);
     padding: 0 var(--t-padding);
-    border-radius: var(--tui-radius-l);
+    border-radius: var(--t-radius);
     font: var(--tui-font-text-ui-m);
     line-height: 1.25rem;
     box-sizing: border-box;
@@ -97,8 +98,8 @@
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
         --t-padding: var(--tui-padding-s);
+        --t-radius: var(--tui-radius-m);
 
-        border-radius: var(--tui-radius-m);
         gap: 0;
         font: var(--tui-font-text-ui-s);
         line-height: 1rem;
@@ -137,10 +138,10 @@
     &[data-size='m'] {
         --t-height: var(--tui-height-m);
         --t-padding: var(--tui-padding-m);
+        --t-radius: var(--tui-radius-m);
         --t-label-font: var(--tui-font-text-xs);
         --t-label-y: -0.5625rem;
 
-        border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-ui-s);
         line-height: 1rem;
 
