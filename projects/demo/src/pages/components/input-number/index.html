@@ -57,6 +57,17 @@
                             <code>precision</code>
                             properties.
                         </p>
+
+                        <p>
+                            For a more complex case with both extremely large integer and decimal parts, see
+                            <a
+                                fragment="large-integer-and-large-decimal-parts"
+                                tuiLink
+                                [routerLink]="routes.InputNumber"
+                            >
+                                this example.
+                            </a>
+                        </p>
                     }
                     @case (2) {
                         Use all powers of
@@ -89,6 +100,19 @@
                             <strong>TuiNumberFormat</strong>
                         </a>
                         allows to customize separators specific for your locale.
+
+                        <p>
+                            <a
+                                fragment="thousand-separator-pattern"
+                                tuiLink
+                                [routerLink]="routes.InputNumber"
+                            >
+                                Explore
+                            </a>
+                            a more advanced use case of
+                            <code>TuiNumberFormat</code>
+                            — grouping digits of the integer part in any way.
+                        </p>
                     }
                     @case (4) {
                         Use
