@@ -40,17 +40,17 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'AI tools',
-        title: 'MCP server',
-        keywords:
-            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
-        route: DemoRoute.AiMcp,
-    },
-    {
-        section: 'AI tools',
         title: 'Skills',
         keywords:
             'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
         route: DemoRoute.AiSkills,
+    },
+    {
+        section: 'AI tools',
+        title: 'MCP server',
+        keywords:
+            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
+        route: DemoRoute.AiMcp,
     },
     {
         section: 'AI tools',

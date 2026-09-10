@@ -5,7 +5,14 @@ import {TuiNotification} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiList} from '@taiga-ui/layout';
 
-const INIT_CLIENTS = ['claude', 'cursor', 'vscode', 'codex', 'opencode'] as const;
+const INIT_CLIENTS = [
+    'claude',
+    'cursor',
+    'vscode',
+    'codex',
+    'opencode',
+    'windsurf',
+] as const;
 
 @Component({
     imports: [TuiDemo, TuiList, TuiNotification, TuiTabs],
@@ -27,6 +34,7 @@ export default class Page {
     protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');
     protected readonly mcpInitCodex = import('./snippets/mcp-init-codex.md');
     protected readonly mcpInitOpencode = import('./snippets/mcp-init-opencode.md');
+    protected readonly mcpInitWindsurf = import('./snippets/mcp-init-windsurf.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
     protected readonly mcpClaudeCodeConfig =
         import('./snippets/mcp-claude-code-config.md');
