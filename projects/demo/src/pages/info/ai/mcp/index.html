@@ -217,7 +217,13 @@
                 [code]="mcpVscode"
             />
         } @else if (activeItemIndex === 4) {
-            <p class="description">Add it with the Codex CLI:</p>
+            <p class="description">Scaffold it with one command:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitCodex"
+            />
+
+            <p class="description">Or with the Codex CLI:</p>
             <tui-doc-code
                 class="tui-space_top-4"
                 [code]="mcpCodexCli"
@@ -233,8 +239,14 @@
                 [code]="mcpCodex"
             />
         } @else if (activeItemIndex === 5) {
+            <p class="description">Scaffold it with one command:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpInitOpencode"
+            />
+
             <p class="description">
-                Add to
+                Or add to
                 <code>opencode.json</code>
                 (or
                 <code>~/.config/opencode/opencode.json</code>

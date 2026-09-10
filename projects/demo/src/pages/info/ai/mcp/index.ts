@@ -15,6 +15,8 @@ export default class Page {
     protected readonly mcpInitClaude = import('./snippets/mcp-init-claude.md');
     protected readonly mcpInitCursor = import('./snippets/mcp-init-cursor.md');
     protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');
+    protected readonly mcpInitCodex = import('./snippets/mcp-init-codex.md');
+    protected readonly mcpInitOpencode = import('./snippets/mcp-init-opencode.md');
     protected readonly mcpInitNext = import('./snippets/mcp-init-next.md');
     protected readonly mcpInitV4 = import('./snippets/mcp-init-v4.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
