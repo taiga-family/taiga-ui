@@ -8,15 +8,16 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router} from '@angular/router';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TUI_DOC_COPY_PAGE} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
+import {TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-doc-copy-page',
-    imports: [TuiActiveZone, TuiButton, TuiDataList, TuiDropdown],
+    imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownOpen, TuiGroup],
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +26,7 @@ export class TuiDocCopyPage {
     private readonly router = inject(Router);
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
+    protected readonly enabled = inject(TUI_DOC_COPY_PAGE);
     protected readonly open = signal(false);
     protected readonly copied = signal(false);
     protected readonly icons = {copy: '@tui.copy', chevron: '@tui.chevron-down'} as const;
@@ -54,15 +56,8 @@ export class TuiDocCopyPage {
         setTimeout(() => this.copied.set(false), 2000);
     }
 
-    protected viewAsMarkdown(): void {
-        this.open.set(false);
-        window.open(`${this.pagePath()}.md`, '_blank');
-    }
-
-    protected onActiveZone(active: boolean): void {
-        if (!active) {
-            this.open.set(false);
-        }
+    protected markdownUrl(): string {
+        return `${this.pagePath()}.md`;
     }
 
     private pagePath(): string {

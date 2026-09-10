@@ -1,5 +1,9 @@
-@if (markdown()) {
-    <div class="t-copy-page">
+@if (enabled() && markdown()) {
+    <div
+        tuiGroup
+        [tuiDropdown]="menu"
+        [(tuiDropdownOpen)]="open"
+    >
         <button
             appearance="flat-grayscale"
             size="s"
@@ -11,34 +15,28 @@
         >
             {{ copied() ? 'Copied!' : 'Copy page' }}
         </button>
-        <span
-            aria-hidden="true"
-            class="t-divider"
-        ></span>
         <button
+            #tuiDropdownHost
             appearance="flat-grayscale"
             size="s"
             tuiIconButton
             type="button"
             class="t-toggle"
             [iconStart]="icons.chevron"
-            [tuiDropdown]="menu"
-            [tuiDropdownManual]="open()"
-            (click)="open.set(!open())"
-            (tuiActiveZoneChange)="onActiveZone($event)"
         >
             More
         </button>
     </div>
     <ng-template #menu>
         <tui-data-list>
-            <button
+            <a
+                rel="noreferrer"
+                target="_blank"
                 tuiOption
-                type="button"
-                (click)="viewAsMarkdown()"
+                [href]="markdownUrl()"
             >
                 View as Markdown
-            </button>
+            </a>
         </tui-data-list>
     </ng-template>
 }
