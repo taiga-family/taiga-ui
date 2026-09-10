@@ -2,6 +2,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     PLATFORM_ID,
     signal,
@@ -29,7 +30,15 @@ export class TuiDocCopyPage {
     protected readonly enabled = inject(TUI_DOC_COPY_PAGE);
     protected readonly open = signal(false);
     protected readonly copied = signal(false);
-    protected readonly icons = {copy: '@tui.copy', chevron: '@tui.chevron-down'} as const;
+    protected readonly icons = {
+        copy: '@tui.copy',
+        chevron: '@tui.chevron-down',
+        check: '@tui.check',
+    } as const;
+
+    protected readonly icon = computed(() =>
+        this.copied() ? this.icons.check : this.icons.copy,
+    );
 
     protected readonly markdown = toSignal(
         this.router.events.pipe(
