@@ -1,6 +1,6 @@
 @if (enabled() && markdown()) {
     <div
-        tuiGroup
+        class="t-copy-page"
         [tuiDropdown]="menu"
         [(tuiDropdownOpen)]="open"
     >
@@ -15,6 +15,10 @@
         >
             {{ copied() ? 'Copied!' : 'Copy page' }}
         </button>
+        <span
+            aria-hidden="true"
+            class="t-divider"
+        ></span>
         <button
             #tuiDropdownHost
             appearance="flat-grayscale"
