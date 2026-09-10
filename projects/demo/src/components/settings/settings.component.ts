@@ -88,6 +88,7 @@ export class SettingsComponent {
         ['portuguese', 'PT'],
         ['russian', 'RU'],
         ['spanish', 'ES'],
+        ['tajik', 'TJ'],
         ['turkish', 'TR'],
         ['ukrainian', 'UA'],
         ['vietnamese', 'VN'],

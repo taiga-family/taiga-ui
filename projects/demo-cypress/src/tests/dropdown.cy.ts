@@ -18,8 +18,8 @@ describe('TuiDropdown', () => {
         styles: `
             .host {
                 display: block;
-                width: 0;
-                height: 0;
+                inline-size: 0;
+                block-size: 0;
             }
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

@@ -45,7 +45,7 @@ const EXPENSES = {
     templateUrl: './index.html',
     styles: `
         .control {
-            width: 320px;
+            inline-size: 20rem;
         }
     `,
     encapsulation,
