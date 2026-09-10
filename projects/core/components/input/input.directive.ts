@@ -32,6 +32,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
         tuiInput: '',
         '[attr.role]': 'dropdown.content() && !el.matches("select") ? "combobox" : null',
         '[class._empty]': 'value() === ""',
+        '[class._untouched]': 'control?.untouched',
         '[readOnly]': 'readOnly()',
         '(focusin)': '0',
         '(focusout)': '0',
