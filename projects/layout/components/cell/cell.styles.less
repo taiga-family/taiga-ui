@@ -215,8 +215,8 @@
 
     &[tuiCellStretch] {
         inline-size: 100%;
-        margin-inline-start: -1rem;
-        margin-inline-end: -1rem;
+        margin-inline-start: calc(-1 * var(--tui-padding-inline, 0px));
+        margin-inline-end: calc(-1 * var(--tui-padding-inline, 0px));
     }
 
     &:hover [tuiCellActions] ~ * {

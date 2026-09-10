@@ -1,16 +1,18 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiCardMediumV='@{tui-version}'] {
+    --tui-padding-inline: 0.75rem;
+
     inline-size: 8.75rem;
     block-size: 8.75rem;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0.75rem;
+    padding: 0.75rem var(--tui-padding-inline);
     border-radius: var(--tui-radius-l);
     box-sizing: border-box;
 
     &[tuiTitle] {
-        padding: 0.625rem 0.75rem;
+        padding: 0.625rem var(--tui-padding-inline);
     }
 
     [tuiTitle] {

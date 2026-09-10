@@ -75,6 +75,8 @@
 
     :host-context(tui-root._mobile) {
         &[data-size] {
+            --tui-padding-inline: 1rem;
+
             min-inline-size: 100%;
             inline-size: 100%;
             max-inline-size: 100%;
@@ -85,7 +87,7 @@
             padding-block-end: env(safe-area-inset-bottom);
 
             .t-content {
-                padding: 1rem;
+                padding: 1rem var(--tui-padding-inline);
             }
 
             .t-heading {
