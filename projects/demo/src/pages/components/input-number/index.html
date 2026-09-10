@@ -21,12 +21,13 @@
                 'Quantum',
                 'Thousand separator pattern',
                 'Thousand separator pattern using Intl',
+                'Large integer and large decimal parts',
             ];
             track example
         ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample"
+                [content]="$index + 1 | tuiExample: 'html,ts,less' : additionalFiles[$index + 1]"
                 [description]="description"
                 [heading]="example"
             />
@@ -206,37 +207,30 @@
                         <code>thousandSeparatorPattern</code>
                         for any locale, e.g. for the Indian numbering system.
                     }
+                    @case (12) {
+                        JavaScript’s built‑in
+                        <code>number</code>
+                        type loses precision when a value contains too many digits in either the integer part, the
+                        decimal part, or both.
+
+                        <p>
+                            The built‑in
+                            <code>bigint</code>
+                            type avoids this issue but supports only integers.
+                        </p>
+
+                        <p>
+                            If you need to preserve all extremely large digits of both parts, you can override the
+                            built‑in
+                            <code>TuiValueTransformer</code>
+                            and store the number as an
+                            <code>&#123;significand: bigint; exp: number&#125;</code>
+                            instead.
+                        </p>
+                    }
                 }
             </ng-template>
         }
-
-        <tui-doc-example
-            heading="Large integer and large decimal parts"
-            [component]="13 | tuiComponent"
-            [content]="13 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
-            [description]="largeIntDecimalPartsDescription"
-        >
-            <ng-template #largeIntDecimalPartsDescription>
-                JavaScript’s built‑in
-                <code>number</code>
-                type loses precision when a value contains too many digits in either the integer part, the decimal part,
-                or both.
-
-                <p>
-                    The built‑in
-                    <code>bigint</code>
-                    type avoids this issue but supports only integers.
-                </p>
-
-                <p>
-                    If you need to preserve all extremely large digits of both parts, you can override the built‑in
-                    <code>TuiValueTransformer</code>
-                    and store the number as an
-                    <code>&#123;significand: bigint; exp: number&#125;</code>
-                    instead.
-                </p>
-            </ng-template>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

@@ -9,6 +9,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
@@ -54,8 +55,19 @@ export default class PageComponent {
     protected postfix = '';
     protected quantum = 0;
 
-    protected readonly bigIntWithDecimalTransformer = import(
-        './examples/13/transformer.ts?raw',
-        {with: {loader: 'text'}}
-    );
+    protected readonly additionalFiles: Record<
+        number,
+        Record<string, TuiRawLoaderContent> | undefined
+    > = {
+        12: {
+            'intl-pattern.ts': import('./examples/12/intl-pattern.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+        13: {
+            'transformer.ts': import('./examples/13/transformer.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+    };
 }
