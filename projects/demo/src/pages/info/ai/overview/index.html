@@ -1,109 +1,117 @@
 <tui-doc-page header="AI support">
-    <p class="description">
-        We treat AI agents as first-class readers of our documentation. The same Taiga UI knowledge is published in a
-        few complementary shapes, so whatever your assistant can consume — a flat context file, a query server, or a
-        reusable skill — it can reach the current, version-correct API instead of guessing from memory.
-    </p>
-
-    <div
-        appearance="info"
-        tuiNotification
-    >
-        New to wiring AI into your editor? Drop
-        <code>llms-full.txt</code>
-        into your model's context for a zero-setup start, or connect the MCP server for on-demand queries.
-    </div>
-
-    <section>
-        <h2>Which layer do I need?</h2>
+    <ng-template pageTab>
         <p class="description">
-            These aren't competing options — they are a stack of roles over one body of knowledge.
+            We treat AI agents as first-class readers of our documentation. The same Taiga UI knowledge is published in
+            a few complementary shapes, so whatever your assistant can consume — a flat context file, a query server, or
+            a reusable skill — it can reach the current, version-correct API instead of guessing from memory.
         </p>
-        <ul tuiList>
-            <li>
-                <a
-                    routerLink="/ai/llms"
-                    tuiLink
-                >
-                    <code>llms.txt</code>
-                    /
-                    <code>llms-full.txt</code>
-                </a>
-                — reach for it when you just want to drop the current API into any model's context window.
-            </li>
 
-            <li>
-                <a
-                    routerLink="/ai/mcp"
-                    tuiLink
-                >
-                    <code>&#64;taiga-ui/mcp</code>
-                </a>
-                — reach for it when your agent can call tools and should ask for one component's exact, current API on
-                demand.
-            </li>
-
-            <li>
-                <a
-                    routerLink="/ai/skills"
-                    tuiLink
-                >
-                    Agent skills
-                </a>
-                — reach for them when you want the agent to follow a proven Taiga workflow and know what to
-                double-check.
-            </li>
-        </ul>
         <div
-            appearance="neutral"
+            appearance="info"
             tuiNotification
         >
+            New to wiring AI into your editor? Drop
             <code>llms-full.txt</code>
-            is the generated data,
-            <code>&#64;taiga-ui/mcp</code>
-            is a query interface over that same data, and skills are the method that consumes it. When they disagree,
-            the live source wins.
+            into your model's context for a zero-setup start, or connect the MCP server for on-demand queries.
         </div>
-    </section>
 
-    <section>
-        <h2>Start here</h2>
-        <ul tuiList>
-            <li>
-                <strong>Zero setup</strong>
-                — paste
-                <a
-                    routerLink="/ai/llms"
-                    tuiLink
-                >
-                    llms-full.txt
-                </a>
-                into your model's context and start prompting.
-            </li>
+        <tui-doc-example
+            heading="Choose a layer"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <p class="description">
+                These aren't competing options — they are a stack of roles over one body of knowledge.
+            </p>
+            <ul tuiList>
+                <li>
+                    <a
+                        routerLink="/ai/llms"
+                        tuiLink
+                    >
+                        <code>llms.txt</code>
+                        /
+                        <code>llms-full.txt</code>
+                    </a>
+                    — reach for it when you just want to drop the current API into any model's context window.
+                </li>
 
-            <li>
-                <strong>On-demand queries</strong>
-                — connect the
-                <a
-                    routerLink="/ai/mcp"
-                    tuiLink
-                >
-                    MCP server
-                </a>
-                so the agent fetches one component's exact API when it needs it.
-            </li>
+                <li>
+                    <a
+                        routerLink="/ai/mcp"
+                        tuiLink
+                    >
+                        <code>&#64;taiga-ui/mcp</code>
+                    </a>
+                    — reach for it when your agent can call tools and should ask for one component's exact, current API
+                    on demand.
+                </li>
 
-            <li>
-                <strong>Repeatable workflows</strong>
-                — install
-                <a
-                    routerLink="/ai/skills"
-                    tuiLink
-                >
-                    agent skills
-                </a>
-                to teach the agent proven Taiga methods.
-            </li>
-        </ul>
-    </section>
+                <li>
+                    <a
+                        routerLink="/ai/skills"
+                        tuiLink
+                    >
+                        Skills
+                    </a>
+                    — reach for them when you want the agent to follow a proven Taiga workflow and know what to
+                    double-check.
+                </li>
+            </ul>
+            <div
+                appearance="neutral"
+                tuiNotification
+            >
+                <code>llms-full.txt</code>
+                is the generated data,
+                <code>&#64;taiga-ui/mcp</code>
+                is a query interface over that same data, and skills are the method that consumes it. When they
+                disagree, the live source wins.
+            </div>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Start here"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <ul tuiList>
+                <li>
+                    <strong>Zero setup</strong>
+                    — paste
+                    <a
+                        routerLink="/ai/llms"
+                        tuiLink
+                    >
+                        llms-full.txt
+                    </a>
+                    into your model's context and start prompting.
+                </li>
+
+                <li>
+                    <strong>On-demand queries</strong>
+                    — connect the
+                    <a
+                        routerLink="/ai/mcp"
+                        tuiLink
+                    >
+                        MCP server
+                    </a>
+                    so the agent fetches one component's exact API when it needs it.
+                </li>
+
+                <li>
+                    <strong>Repeatable workflows</strong>
+                    — install
+                    <a
+                        routerLink="/ai/skills"
+                        tuiLink
+                    >
+                        skills
+                    </a>
+                    to teach the agent proven Taiga methods.
+                </li>
+            </ul>
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>

@@ -47,7 +47,7 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'AI tools',
-        title: 'Agent skills',
+        title: 'Skills',
         keywords:
             'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
         route: DemoRoute.AiSkills,

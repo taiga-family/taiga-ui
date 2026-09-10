@@ -1088,7 +1088,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.AiSkills,
         loadComponent: async () => import('../info/ai/skills'),
-        title: 'Agent skills',
+        title: 'Skills',
     }),
     route({
         path: DemoRoute.AiLlms,
