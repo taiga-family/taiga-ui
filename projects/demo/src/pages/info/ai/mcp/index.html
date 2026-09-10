@@ -104,7 +104,22 @@
 
     <section>
         <h2>Installation</h2>
-        <p class="description">Pick your agent and connect the server:</p>
+
+        <p class="description">
+            Fastest path — scaffold the config with our CLI (supports Claude Code, Cursor and VS
+            Code):
+        </p>
+        <tui-doc-code [code]="mcpInit" />
+
+        <p class="description">
+            Swap the client for your agent. Add
+            <code>--version next</code>
+            (or a previous major like
+            <code>--version v4</code>
+            ) to pin the docs source; the default is the latest stable docs.
+        </p>
+
+        <p class="description">Prefer to wire it up by hand? Pick your agent:</p>
         <tui-tabs [(activeItemIndex)]="activeItemIndex">
             <button
                 tuiTab
