@@ -80,6 +80,10 @@ export class TuiPieChart {
         return this.hintOptions?.content() || '';
     }
 
+    protected get hintAppearance(): string {
+        return this.hintOptions?.appearance() || '';
+    }
+
     protected get maskId(): string {
         return `tui-ring-chart-${this.autoId}`;
     }
