@@ -134,6 +134,18 @@
                 tuiTab
                 type="button"
             >
+                Codex
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                OpenCode
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
                 Other
             </button>
         </tui-tabs>
@@ -203,6 +215,34 @@
             <tui-doc-code
                 class="tui-space_top-4"
                 [code]="mcpVscode"
+            />
+        } @else if (activeItemIndex === 4) {
+            <p class="description">Add it with the Codex CLI:</p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpCodexCli"
+            />
+
+            <p class="description">
+                Or add to
+                <code>~/.codex/config.toml</code>
+                :
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpCodex"
+            />
+        } @else if (activeItemIndex === 5) {
+            <p class="description">
+                Add to
+                <code>opencode.json</code>
+                (or
+                <code>~/.config/opencode/opencode.json</code>
+                ):
+            </p>
+            <tui-doc-code
+                class="tui-space_top-4"
+                [code]="mcpOpencode"
             />
         } @else {
             <p class="description">

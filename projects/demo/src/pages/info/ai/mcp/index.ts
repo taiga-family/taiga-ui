@@ -24,5 +24,8 @@ export default class Page {
     protected readonly mcpCursor = import('./snippets/mcp-cursor.md');
     protected readonly mcpWindsurf = import('./snippets/mcp-windsurf.md');
     protected readonly mcpVscode = import('./snippets/mcp-vscode.md');
+    protected readonly mcpCodexCli = import('./snippets/mcp-codex-cli.md');
+    protected readonly mcpCodex = import('./snippets/mcp-codex.md');
+    protected readonly mcpOpencode = import('./snippets/mcp-opencode.md');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md');
 }
