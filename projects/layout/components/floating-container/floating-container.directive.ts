@@ -13,7 +13,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './floating-container.style.less';
+            @import '@taiga-ui/styles/components/floating-container.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

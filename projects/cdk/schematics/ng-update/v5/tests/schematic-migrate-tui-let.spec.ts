@@ -22,6 +22,10 @@ describe('ng-update tuiLet', () => {
         `,
     });
 
+    const inlineMigration = createMigration({
+        collection: join(__dirname, '../../../migration.json'),
+    });
+
     it(
         'migrates simple structural directive',
         migration({
@@ -102,6 +106,38 @@ describe('ng-update tuiLet', () => {
                 <test *tuiLet="isOrderCompleted$ | async as isOrderCompleted">
                     {{ isOrderCompleted }}
                 </test>
+            `,
+        }),
+    );
+
+    it(
+        'migrates nested anchors without crashing on reconstructed clones',
+        migration({
+            template: /* HTML */ `
+                <a *tuiLet="value as val">
+                    <p>
+                        <a>{{ val }}</a>
+                    </p>
+                </a>
+            `,
+        }),
+    );
+
+    it(
+        'migrates *tuiLet inside an inline template and drops the import',
+        inlineMigration({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiLet} from '@taiga-ui/cdk';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiLet],
+                    template: \`<test *tuiLet="value as val">{{ val }}</test>\`,
+                })
+                export class Test {
+                    readonly value = 'foo';
+                }
             `,
         }),
     );

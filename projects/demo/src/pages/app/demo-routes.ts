@@ -47,6 +47,7 @@ export const DemoRoute = {
     BottomSheet: '/components/bottom-sheet',
     Navigation: '/components/navigation',
     Search: '/components/search',
+    SearchBar: '/components/search-bar',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
     ButtonX: '/components/button-x',

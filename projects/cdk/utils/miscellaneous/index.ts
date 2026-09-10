@@ -15,6 +15,7 @@ export * from './is-string';
 export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
 export * from './obfuscate';
+export * from './override';
 export * from './px';
 export * from './sanitize-text';
 export * from './set-signal';

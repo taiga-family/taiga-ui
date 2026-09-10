@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update TUI_DIALOGS removal warning adds TODO comment when TUI_DIALOGS is injected: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIALOGS} from '@taiga-ui/core';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly dialogs = inject(TUI_DIALOGS);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_DIALOGS removed. Track each dialog via the stream returned by TuiDialogService/TuiAlertService.open() and unsubscribe to close it, instead of reading a global registry.
+                import {TUI_DIALOGS} from '@taiga-ui/core';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly dialogs = inject(TUI_DIALOGS);
+                }
+            ",
+}
+`;

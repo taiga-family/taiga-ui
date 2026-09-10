@@ -1,9 +1,8 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiCell} from '@taiga-ui/core/components/cell';
+import {TuiCell, tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {tuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAvatar} from '@taiga-ui/kit/components/avatar';
@@ -18,7 +17,8 @@ import {TuiStepperComponent} from './stepper.component';
     templateUrl: './step.template.html',
     styleUrl: './step.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiCell, TuiWithAppearance],
+    providers: [tuiCellOptionsProvider({size: 'm'})],
+    hostDirectives: [{directive: TuiCell, inputs: ['tuiCell: size']}, TuiWithAppearance],
     host: {
         type: 'button',
         '[class._active]': 'isActive()',
@@ -36,7 +36,6 @@ export class TuiStep {
         computed(() => (this.isActive() ? 'none' : 'action')),
     );
 
-    protected readonly size = tuiDirectiveBinding(TuiCell, 'size', 'm');
     protected readonly stepper = inject(TuiStepperComponent);
 
     protected readonly $ = (

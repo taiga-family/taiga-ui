@@ -31,7 +31,11 @@ jobs:
           git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
 
       - name: Cleanup after clone snapshots
-        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+        run: |
+          find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+          # snapshot branches keep symlinks of the default branch (e.g. CLAUDE.md -> AGENTS.md),
+          # they dangle after clone and break the publish step
+          find ${{ env.DIST }} -xtype l -delete
 
       - name: Replace baseHref for next
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
@@ -75,6 +79,7 @@ jobs:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           publish_dir: ${{ env.DIST }}
           cname: taiga-ui.dev
+          force_orphan: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

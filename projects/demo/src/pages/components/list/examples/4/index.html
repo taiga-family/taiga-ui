@@ -1,16 +1,62 @@
-<ul tuiList>
-    <li>If a list item is long, the bullet stays aligned to the top.</li>
-    <li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
-    <li>
-        <div>
-            This item uses
-            <strong>nested tags</strong>
-            inside which should not break
-        </div>
-    </li>
-</ul>
-
+<header tuiHeader="h6">
+    <hgroup tuiTitle>
+        <h1>Header of first list</h1>
+    </hgroup>
+</header>
 <ol tuiList>
-    <li>If a list item is long, the bullet stays aligned to the top.</li>
-    <li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
+    <li>
+        First level
+
+        <ol tuiList>
+            <li>Second level</li>
+            <li>
+                <span>Second level</span>
+
+                <ol tuiList>
+                    <li>Third level</li>
+                    <li>Third level</li>
+                </ol>
+            </li>
+            <li>
+                <span>Second level</span>
+
+                <ol tuiList>
+                    <li>Third level</li>
+                    <li>
+                        <span>Third level</span>
+
+                        <ol tuiList>
+                            <li>Fourth level</li>
+                            <li>Fourth level</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>First level</li>
 </ol>
+<br />
+<header tuiHeader="h6">
+    <hgroup tuiTitle>
+        <h1>Header of second list</h1>
+    </hgroup>
+</header>
+<ul tuiList>
+    <li>
+        First level
+
+        <ul tuiList>
+            <li>Second level</li>
+            <li>
+                <span>Second level</span>
+
+                <ul tuiList>
+                    <li>Third level</li>
+                    <li>Third level</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>First level</li>
+</ul>

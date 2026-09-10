@@ -34,8 +34,8 @@ to let you focus on your project features
 🦋 **Customizable**. We use CSS custom properties for all our styling and provide easy methods to customize all UI
 components with dark theme out of the box
 
-🛠 **Well engineered**. We are not afraid to use DI to the max. All our components use `OnPush`, and the whole project
-is developed with `strict` TypeScript mode
+🛠 **Well engineered**. We are not afraid to use DI to the max. All our components use `OnPush`, and the whole project is
+developed with `strict` TypeScript mode
 
 📦 **It's big!** We have 130+ components, 100+ directives, dozens of tokens, utils and tools. And it isn't over yet 🚀
 

@@ -492,6 +492,7 @@ describe('InputNumber', () => {
 
                 describe('Keeps caret position on step', () => {
                     beforeEach(async () => {
+                        await inputNumber.textfield.focus();
                         await inputNumber.textfield.fill('42');
 
                         await expect(inputNumber.textfield).toHaveValue('42kg');
@@ -665,7 +666,7 @@ describe('InputNumber', () => {
                     }) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
+                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true`,
                         );
                         await inputNumber.textfield.focus();
 

@@ -1,40 +1,256 @@
 name: 🚀 Deploy / preview
 on:
-  pull_request:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ['🏗️ Build / preview']
+    types: [completed]
 
-permissions:
-  checks: write
-  contents: read
-  pull-requests: write
+permissions: {}
 
 jobs:
-  build_and_preview:
-    if: ${{ !contains(github.head_ref, 'release/') }}
+  deploy-preview:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' &&
+      !contains(github.event.workflow_run.head_branch, 'release/')
     name: Firebase
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: taiga-family/actions/setup-variables@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
-      - uses: taiga-family/actions/setup-node@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
-      - run: npx nx build demo
-      - name: Debug output
-        run: tree dist/demo/browser -P '*.html'
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+          sparse-checkout: |
+            .firebaserc
+            firebase.json
+          sparse-checkout-cone-mode: false
+
+      - name: Download Firebase preview artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: firebase-preview-${{ github.event.workflow_run.id }}
+          path: ${{ runner.temp }}/firebase-preview-artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Validate preview artifact structure
+        env:
+          ARTIFACT_DIR: ${{ runner.temp }}/firebase-preview-artifact
+        run: |
+          test -f "$ARTIFACT_DIR/preview-metadata/metadata.json"
+          test -d "$ARTIFACT_DIR/dist/demo/browser"
+          test -f "$ARTIFACT_DIR/dist/demo/browser/index.html"
+
+          test -z "$(find "$ARTIFACT_DIR" -mindepth 1 -maxdepth 1 ! -name dist ! -name preview-metadata -print -quit)"
+          test -z "$(find "$ARTIFACT_DIR/dist" -mindepth 1 -maxdepth 1 ! -name demo -print -quit)"
+          test -z "$(find "$ARTIFACT_DIR/dist/demo" -mindepth 1 -maxdepth 1 ! -name browser -print -quit)"
+          test -z "$(find "$ARTIFACT_DIR/preview-metadata" -mindepth 1 -maxdepth 1 ! -name metadata.json -print -quit)"
+          test -z "$(find "$ARTIFACT_DIR" -type l -print -quit)"
+          test -z "$(find "$ARTIFACT_DIR" ! -type f ! -type d -print -quit)"
+
+      - name: Validate preview metadata
+        id: metadata
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          METADATA_PATH: ${{ runner.temp }}/firebase-preview-artifact/preview-metadata/metadata.json
+          WORKFLOW_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WORKFLOW_HEAD_REPOSITORY: ${{ github.event.workflow_run.head_repository.full_name }}
+          WORKFLOW_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const metadataPath = process.env.METADATA_PATH;
+
+            if (fs.statSync(metadataPath).size > 16_384) {
+              throw new Error('Preview metadata is unexpectedly large');
+            }
+
+            const rawMetadata = fs.readFileSync(metadataPath, 'utf8');
+            const metadata = JSON.parse(rawMetadata);
+            const requiredStringFields = [
+              'version',
+              'pr_number',
+              'head_ref',
+              'head_sha',
+              'head_repository',
+              'base_ref',
+              'workflow_run_id',
+            ];
+
+            if (
+              !metadata ||
+              typeof metadata !== 'object' ||
+              Array.isArray(metadata) ||
+              requiredStringFields.some(
+                (field) => typeof metadata[field] !== 'string' || metadata[field].length === 0,
+              )
+            ) {
+              throw new Error('Preview metadata has an invalid shape');
+            }
+
+            if (metadata.version !== '1' || !/^\d+$/.test(metadata.pr_number)) {
+              throw new Error('Preview metadata has an unsupported version or PR number');
+            }
+
+            const prNumber = Number(metadata.pr_number);
+
+            if (!Number.isSafeInteger(prNumber) || prNumber <= 0) {
+              throw new Error('Preview metadata contains an invalid PR number');
+            }
+
+            const workflowRun = context.payload.workflow_run;
+            const runPullRequestNumbers = (workflowRun.pull_requests || []).map(({number}) => number);
+
+            if (runPullRequestNumbers.length > 0 && !runPullRequestNumbers.includes(prNumber)) {
+              throw new Error('Preview metadata PR does not belong to this workflow run');
+            }
+
+            if (
+              metadata.workflow_run_id !== process.env.WORKFLOW_RUN_ID ||
+              metadata.head_sha !== process.env.WORKFLOW_HEAD_SHA ||
+              metadata.head_ref !== process.env.WORKFLOW_HEAD_BRANCH ||
+              metadata.head_repository !== process.env.WORKFLOW_HEAD_REPOSITORY
+            ) {
+              throw new Error('Preview metadata does not match this workflow run');
+            }
+
+            const {data: pullRequest} = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: prNumber,
+            });
+
+            if (
+              pullRequest.base.ref !== metadata.base_ref ||
+              pullRequest.base.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`
+            ) {
+              throw new Error('Preview metadata does not match the pull request');
+            }
+
+            if (pullRequest.state !== 'open') {
+              core.notice(`Skipping preview for closed PR #${prNumber}`);
+              core.setOutput('should_deploy', 'false');
+              return;
+            }
+
+            if (
+              pullRequest.head.ref !== metadata.head_ref ||
+              pullRequest.head.repo?.full_name !== metadata.head_repository
+            ) {
+              throw new Error('Preview metadata does not match the pull request head');
+            }
+
+            if (pullRequest.head.sha !== workflowRun.head_sha) {
+              core.notice(`Skipping stale preview run for PR #${prNumber}`);
+              core.setOutput('should_deploy', 'false');
+              return;
+            }
+
+            const channelPrefix = `pr${prNumber}-`;
+            const channelSuffix = '-demo';
+            const maxBranchLength = 63 - channelPrefix.length - channelSuffix.length;
+            const safeBranch = metadata.head_ref
+              .replace(/[^a-zA-Z0-9_.-]/g, '_')
+              .slice(0, maxBranchLength) || 'branch';
+
+            core.setOutput('channel_id', `${channelPrefix}${safeBranch}${channelSuffix}`);
+            core.setOutput('head_sha', metadata.head_sha);
+            core.setOutput('pr_number', String(prNumber));
+            core.setOutput('should_deploy', 'true');
+
+      - name: Prepare static preview files
+        if: steps.metadata.outputs.should_deploy == 'true'
+        env:
+          ARTIFACT_DIR: ${{ runner.temp }}/firebase-preview-artifact
+        run: |
+          mkdir -p dist/demo
+          cp -R -- "$ARTIFACT_DIR/dist/demo/browser" dist/demo/browser
+
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
-        if: env.IS_OWNER_MODE == 'true'
+        if: steps.metadata.outputs.should_deploy == 'true'
         with:
           node-version: 24.19 # https://github.com/firebase/firebase-tools/issues/10726
+
       - name: Deploy preview
+        id: firebase-preview
         uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0.11.0
-        if: env.IS_OWNER_MODE == 'true'
+        if: steps.metadata.outputs.should_deploy == 'true'
         with:
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
+          channelId: ${{ steps.metadata.outputs.channel_id }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-preview-demo
           target: taiga-preview-demo
           expires: 1d
+          disableComment: 'true'
+          firebaseToolsVersion: 15.26.0
+
+      - name: Update preview comment
+        if: steps.metadata.outputs.should_deploy == 'true'
+        continue-on-error: true
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          EXPIRES_AT: ${{ steps.firebase-preview.outputs.expire_time_formatted }}
+          HEAD_SHA: ${{ steps.metadata.outputs.head_sha }}
+          PREVIEW_URL: ${{ steps.firebase-preview.outputs.details_url }}
+          PR_NUMBER: ${{ steps.metadata.outputs.pr_number }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const marker = '<!-- taiga-ui-firebase-preview -->';
+            const legacyMarker = 'via [Firebase Hosting GitHub Action]';
+            const prNumber = Number(process.env.PR_NUMBER);
+            const previewUrl = process.env.PREVIEW_URL;
+            const parsedPreviewUrl = new URL(previewUrl);
+
+            if (
+              !Number.isSafeInteger(prNumber) ||
+              parsedPreviewUrl.protocol !== 'https:' ||
+              !/^taiga-preview-demo--[a-z0-9._-]+\.web\.app$/.test(parsedPreviewUrl.hostname)
+            ) {
+              throw new Error('Firebase preview outputs are invalid');
+            }
+
+            const body = [
+              marker,
+              `Visit the preview URL for this PR (updated for commit ${process.env.HEAD_SHA.slice(0, 7)}):`,
+              '',
+              `[${previewUrl}](${previewUrl})`,
+              '',
+              `<sub>(expires ${process.env.EXPIRES_AT})</sub>`,
+            ].join('\n');
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: prNumber,
+              per_page: 100,
+            });
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.type === 'Bot' &&
+                (comment.body?.includes(marker) || comment.body?.includes(legacyMarker)),
+            );
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: >-
+    ${{ github.workflow }}-${{
+      github.event.workflow_run.pull_requests[0].number ||
+      format('{0}-{1}', github.event.workflow_run.head_repository.id, github.event.workflow_run.head_branch)
+    }}
   cancel-in-progress: true

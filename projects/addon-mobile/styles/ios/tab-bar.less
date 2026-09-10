@@ -12,39 +12,28 @@
         block-size: 3.375rem;
         backdrop-filter: none;
 
+        .liquid-glass-vars();
+
         --t-tabbar-offset: max(env(safe-area-inset-bottom), 1.25rem);
-        --t-tabbar-bg: rgba(255, 255, 255, 0.7);
-        --t-tabbar-glow: rgba(255, 255, 255, 1);
         --t-tabbar-active: rgba(255, 255, 255, 0.9);
-        --t-tabbar-bevel: linear-gradient(227deg, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.35) 21%, rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 0.95) 45%, #fff 48%, #fff 50%, #fff 52%, rgba(255, 255, 255, 0.95) 55%, rgba(255, 255, 255, 0.85) 60%, rgba(255, 255, 255, 0.35) 80%, rgba(255, 255, 255, 0) 95%);
+        // the tab bar has its own bevel lighting angles and keeps
+        // the light backdrop filter in both themes
+        --t-glass-filter: blur(0.25rem) saturate(6) brightness(1.05);
+        --t-glass-bevel-filter: brightness(1.05);
+        --t-glass-bevel: linear-gradient(227deg, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.35) 21%, rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 0.95) 45%, #fff 48%, #fff 50%, #fff 52%, rgba(255, 255, 255, 0.95) 55%, rgba(255, 255, 255, 0.85) 60%, rgba(255, 255, 255, 0.35) 80%, rgba(255, 255, 255, 0) 95%);
 
         &::before {
+            .liquid-glass(0 0.5rem 2rem rgba(0, 0, 0, 0.1));
+
             content: '';
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: var(--t-tabbar-bg);
-            box-shadow:
-                0 0.5rem 2rem rgba(0, 0, 0, 0.1),
-                inset 0 0 0.75rem var(--t-tabbar-glow);
-            backdrop-filter: blur(0.25rem) saturate(6) brightness(1.05);
             opacity: 1;
         }
 
         &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            padding: 1px;
-            pointer-events: none;
-            border-radius: inherit;
-            background: var(--t-tabbar-bevel);
-            filter: brightness(1.05);
-            -webkit-mask:
-                linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            .liquid-glass-bevel();
         }
 
         [tuiTabBarItem] {
@@ -154,9 +143,11 @@
 &.tui-liquid-glass [tuiTheme='dark'] nav[tuiTabBar],
 [tuiTheme='dark'] &.tui-liquid-glass nav[tuiTabBar],
 &[tuiTheme='dark'].tui-liquid-glass nav[tuiTabBar] {
+    .liquid-glass-dark();
+
     --tui-active-color: var(--tui-text-primary);
-    --t-tabbar-bg: rgba(88, 88, 88, 0.31);
-    --t-tabbar-glow: rgba(31, 31, 31, 0.8);
     --t-tabbar-active: rgba(255, 255, 255, 0.18);
-    --t-tabbar-bevel: linear-gradient(-6deg, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.03) 55%, rgba(255, 255, 255, 0.04) 60%, rgba(255, 255, 255, 0.1) 80%, rgba(255, 255, 255, 0.15) 95%);
+    --t-glass-filter: blur(0.25rem) saturate(6) brightness(1.05);
+    --t-glass-bevel-filter: brightness(1.05);
+    --t-glass-bevel: linear-gradient(-6deg, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.03) 55%, rgba(255, 255, 255, 0.04) 60%, rgba(255, 255, 255, 0.1) 80%, rgba(255, 255, 255, 0.15) 95%);
 }

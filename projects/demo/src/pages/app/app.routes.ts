@@ -258,6 +258,11 @@ export const ROUTES: Routes = [
         title: 'Search',
     }),
     route({
+        path: DemoRoute.SearchBar,
+        loadComponent: async () => import('../components/search-bar'),
+        title: 'SearchBar',
+    }),
+    route({
         path: DemoRoute.Breadcrumbs,
         title: 'Breadcrumbs',
         loadComponent: async () => import('../components/breadcrumbs'),

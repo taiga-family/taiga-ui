@@ -814,4 +814,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead — it has a different API and no host container is required. See https://taiga-ui.dev/components/actions-bar',
     },
+    {
+        name: 'TUI_DIALOGS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DIALOGS removed. Track each dialog via the stream returned by TuiDialogService/TuiAlertService.open() and unsubscribe to close it, instead of reading a global registry.',
+    },
 ];

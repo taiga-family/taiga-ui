@@ -50,7 +50,7 @@
             </button>
             <ng-template
                 [tuiToast]="toast()"
-                [tuiToastOptions]="{appearance: appearance, autoClose: autoClose, closable: closable}"
+                [tuiToastOptions]="{appearance, autoClose, closable, block}"
                 (tuiToastChange)="toast.set($event)"
             >
                 <div tuiToast>I am a toast</div>
@@ -82,6 +82,15 @@
                 [(value)]="closable"
             >
                 show close button on desktop and close on swipe on mobile
+            </tr>
+            <tr
+                name="[block]"
+                tuiDocAPIItem
+                type="'start' | 'end'"
+                [items]="blockVariants"
+                [(value)]="block"
+            >
+                block position
             </tr>
             <tr
                 name="[data]"

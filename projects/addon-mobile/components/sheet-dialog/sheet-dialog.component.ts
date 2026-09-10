@@ -1,5 +1,5 @@
 import {
-    type AfterViewInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -7,6 +7,7 @@ import {
     viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
@@ -24,7 +25,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 
 @Component({
     selector: 'tui-sheet-dialog',
-    imports: [PolymorpheusOutlet, TuiButton],
+    imports: [PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,9 +40,10 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(scroll.zoneless)': 'onPointerChange(0)',
+        '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialogComponent<I> {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
     private pointers = 0;
@@ -50,6 +52,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
+    protected interacted = false;
 
     protected readonly $ = merge(
         this.close$,
@@ -74,11 +77,19 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         )
         .subscribe(() => this.close());
 
-    public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial || 0;
+    constructor() {
+        afterNextRender(() => this.onResize());
+    }
+
+    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
+    protected onResize(): void {
+        if (!this.interacted) {
+            this.el.scrollTop = this.initial || 0;
+        }
     }
 
     protected onPointerChange(delta: number): void {
+        this.interacted = this.interacted || !!delta;
         this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!this.pointers && this.el.scrollTop <= 0) {

@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
+    inject,
     input,
     viewChild,
     viewChildren,
@@ -9,11 +10,7 @@ import {
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
-const OPTIONS = {
-    duration: 20,
-    easing: 'ease-in',
-    fill: 'forwards',
-} as const;
+import {TUI_BOTTOM_SHEET_OPTIONS} from './bottom-sheet.options';
 
 @Component({
     selector: 'tui-bottom-sheet',
@@ -33,9 +30,10 @@ export class TuiBottomSheet {
     private readonly elements = viewChildren<ElementRef<HTMLElement>>('stops');
     private readonly content = viewChild<ElementRef<HTMLElement>>('content');
     private readonly el = tuiInjectElement();
+    private readonly options = inject(TUI_BOTTOM_SHEET_OPTIONS);
 
-    public readonly stops = input<readonly string[]>(['1.5rem']);
-    public readonly bar = input(true);
+    public readonly stops = input(this.options.stops);
+    public readonly bar = input(this.options.bar);
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;
@@ -44,9 +42,14 @@ export class TuiBottomSheet {
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
+        const css = this.el.getAnimations().some((a) => 'animationName' in a);
 
         this.el.style.setProperty('--t-height', `${scrollHeight}px`);
         this.el.style.setProperty('overflow', 'scroll');
-        this.el.animate([{transform}], OPTIONS);
+        this.el.animate([{transform}], {
+            duration: 20,
+            easing: 'ease-in',
+            fill: css ? 'none' : 'forwards',
+        });
     }
 }
