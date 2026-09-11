@@ -10,7 +10,6 @@ import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dia
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {finalize} from 'rxjs';
 
 import {TuiDropdownSheet} from './dropdown-sheet.directive';
 
@@ -38,11 +37,9 @@ export class TuiDropdownSheetComponent {
     protected readonly sub = toObservable(this.content)
         .pipe(
             tuiIfMap((content) =>
-                this.dialogs
-                    .open(content, this.directive.tuiDropdownSheet())
-                    .pipe(finalize(() => this.dropdown.toggle(false))),
+                this.dialogs.open(content, this.directive.tuiDropdownSheet()),
             ),
             takeUntilDestroyed(),
         )
-        .subscribe();
+        .subscribe({complete: () => this.dropdown.toggle(false)});
 }
