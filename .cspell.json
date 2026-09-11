@@ -20,6 +20,9 @@
         "longname",
         "longtapped",
         "initialises",
-        "tuihintcontent"
+        "tuihintcontent",
+        "opencode",
+        "скилл",
+        "скиллы"
     ]
 }

@@ -133,7 +133,7 @@ export const config: ApplicationConfig = {
             provide: TUI_DOC_PAGES,
             useValue: tuiSortPages(
                 pages,
-                new Set(['Documentation', 'Foundations', 'Icons']),
+                new Set(['AI tools', 'Documentation', 'Foundations', 'Icons']),
             ),
         },
         {
@@ -298,6 +298,7 @@ export const config: ApplicationConfig = {
             provide: TUI_DOC_PAGES_ICONS,
             useValue: {
                 'Getting Started': '@tui.rocket',
+                'AI tools': '@tui.sparkles',
                 Documentation: '@tui.file-code-corner',
                 Components: '@tui.puzzle',
                 Form: '@tui.form',
