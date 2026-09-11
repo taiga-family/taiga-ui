@@ -2,12 +2,9 @@
     <div
         tuiGroup
         class="t-copy-page"
-        [collapsed]="true"
-        [tuiDropdown]="menu"
-        [(tuiDropdownOpen)]="open"
     >
         <button
-            appearance="outline-grayscale"
+            appearance="secondary-grayscale"
             size="s"
             tuiButton
             type="button"
@@ -18,27 +15,30 @@
             {{ copied() ? 'Copied!' : 'Copy page' }}
         </button>
         <button
-            #tuiDropdownHost
-            appearance="outline-grayscale"
+            appearance="secondary-grayscale"
             size="s"
+            tuiDropdown
             tuiIconButton
             type="button"
             class="t-toggle"
             [iconStart]="icons.chevron"
+            [(tuiDropdownOpen)]="open"
         >
             More
+            <tui-data-list
+                *tuiDropdown
+                size="s"
+            >
+                <a
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiOption
+                    [href]="markdownUrl()"
+                    (click)="open.set(false)"
+                >
+                    View as Markdown
+                </a>
+            </tui-data-list>
         </button>
     </div>
-    <ng-template #menu>
-        <tui-data-list>
-            <a
-                rel="noreferrer"
-                target="_blank"
-                tuiOption
-                [href]="markdownUrl()"
-            >
-                View as Markdown
-            </a>
-        </tui-data-list>
-    </ng-template>
 }

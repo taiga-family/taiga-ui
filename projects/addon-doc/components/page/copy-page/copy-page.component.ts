@@ -13,12 +13,12 @@ import {TUI_DOC_COPY_PAGE} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
-import {TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
+import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-doc-copy-page',
-    imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownOpen, TuiGroup],
+    imports: [TuiButton, TuiDataList, TuiDropdown, TuiGroup],
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
