@@ -12,7 +12,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import '@taiga-ui/styles/components/card-collapsed.less';
+            @import './collapsed.style.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
