@@ -61,8 +61,7 @@ export function migrateSidebar({
     );
 
     const replacements = elements
-        .map((element) => buildReplacement(template, element))
-        .filter((x): x is Replacement => Boolean(x))
+        .flatMap((element) => buildReplacements(element))
         .sort((a, b) => b.startOffset - a.startOffset);
 
     replacements.forEach(({startOffset, endOffset, replacement}) => {
@@ -71,18 +70,18 @@ export function migrateSidebar({
     });
 }
 
-function buildReplacement(template: string, element: Element): Replacement | null {
+function buildReplacements(element: Element): Replacement[] {
     const loc = element.sourceCodeLocation;
     const startTag = loc?.startTag;
 
     if (!startTag) {
-        return null;
+        return [];
     }
 
     const sidebarAttr = element.attrs.find((attr) => attr.name === SIDEBAR_ATTR);
 
     if (!sidebarAttr) {
-        return null;
+        return [];
     }
 
     const parsed = parseBinding(sidebarAttr.value);
@@ -111,20 +110,29 @@ function buildReplacement(template: string, element: Element): Replacement | nul
     const endTag = loc?.endTag;
 
     if (!endTag) {
-        return {
-            startOffset: startTag.startOffset,
-            endOffset: startTag.endOffset,
-            replacement: `${comments}<tui-drawer${attrsStr}></tui-drawer>`,
-        };
+        return [
+            {
+                startOffset: startTag.startOffset,
+                endOffset: startTag.endOffset,
+                replacement: `${comments}<tui-drawer${attrsStr}></tui-drawer>`,
+            },
+        ];
     }
 
-    const innerContent = template.slice(startTag.endOffset, endTag.startOffset);
-
-    return {
-        startOffset: startTag.startOffset,
-        endOffset: endTag.endOffset,
-        replacement: `${comments}<tui-drawer${attrsStr}>${innerContent}</tui-drawer>`,
-    };
+    // Rewrite only the opening and closing tags, leaving the inner content untouched so
+    // migrations already applied to nested elements by earlier passes are preserved.
+    return [
+        {
+            startOffset: startTag.startOffset,
+            endOffset: startTag.endOffset,
+            replacement: `${comments}<tui-drawer${attrsStr}>`,
+        },
+        {
+            startOffset: endTag.startOffset,
+            endOffset: endTag.endOffset,
+            replacement: '</tui-drawer>',
+        },
+    ];
 }
 
 function parseBinding(value: string): ParsedBinding {
