@@ -1,0 +1,18 @@
+import"./chunk-LQ6M4NCU.js";var e=`:host {
+    display: flex;
+    gap: 1rem;
+}
+
+label:has(input:focus-visible) {
+    outline-color: var(--tui-border-focus);
+}
+
+input {
+    position: absolute;
+    inset: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+`;export{e as default};

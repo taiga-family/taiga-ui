@@ -1,0 +1,20 @@
+import"./chunk-LQ6M4NCU.js";var t=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        'Bulleted',
+        'Numbered',
+        'Definition',
+        'Nested',
+        'Long text',
+        'Custom color',
+    ];
+}
+`;export{t as default};
