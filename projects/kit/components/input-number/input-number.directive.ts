@@ -48,6 +48,7 @@ export class TuiInputNumberDirective extends TuiControl<string> {
         const {
             decimalSeparator,
             thousandSeparator,
+            thousandSeparatorPattern,
             maximumFractionDigits,
             prefix,
             postfix,
@@ -63,7 +64,11 @@ export class TuiInputNumberDirective extends TuiControl<string> {
             !!maximumFractionDigits && this.input.value().includes(decimalSeparator);
 
         const precision = decimalPart ? Math.min(maximumFractionDigits + 1, 20) : 0;
-        const takeThousand = thousandSeparator.repeat(5).length;
+        const digitGroups =
+            thousandSeparatorPattern?.('0'.repeat(DEFAULT_MAX_LENGTH)).length ??
+            DEFAULT_MAX_LENGTH / 3;
+
+        const takeThousand = thousandSeparator.length * (digitGroups - 1);
         const affixes = prefix.length + postfix.length;
 
         return DEFAULT_MAX_LENGTH + precision + takeThousand + affixes;
