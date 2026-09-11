@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {TuiHintComponent} from '@taiga-ui/core/portals/hint';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
