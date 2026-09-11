@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core'
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
@@ -39,6 +40,7 @@ export class TuiHintComponent {
     private readonly hover = inject(TuiHintHover);
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
+    protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
     protected readonly appearance = tuiAppearance(this.hint.appearance);
     protected readonly content =

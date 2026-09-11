@@ -16,7 +16,6 @@ import {TuiLineClamp} from './line-clamp.component';
 })
 export class TuiLineClampBox extends TuiHintComponent {
     protected readonly host = inject(TuiLineClamp);
-    protected readonly accessor = inject(TuiRectAccessor);
 
     protected get width(): number {
         return this.accessor.getClientRect().width;
