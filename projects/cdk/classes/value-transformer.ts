@@ -1,6 +1,11 @@
 import {type FactoryProvider, inject, type ProviderToken} from '@angular/core';
 import {identity} from 'rxjs';
 
+/**
+ * TODO(v6): use built-in Angular alternative – TransformedValueOptions
+ * https://angular.dev/guide/forms/signals/custom-controls#value-transformation
+ * import { TransformedValueOptions } from '@angular/forms/signals'
+ */
 export abstract class TuiValueTransformer<From, To = unknown> {
     public abstract toControlValue(componentValue: From): To;
     public abstract fromControlValue(controlValue: To): From;
