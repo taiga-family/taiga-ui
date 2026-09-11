@@ -63,6 +63,7 @@ export const TUI_USED_ICONS = [
     '@tui.eye',
     '@tui.file',
     '@tui.file-code-corner',
+    '@tui.file-text',
     '@tui.folder',
     '@tui.form',
     '@tui.frown',
@@ -111,6 +112,7 @@ export const TUI_USED_ICONS = [
     '@tui.scaling',
     '@tui.search',
     '@tui.send',
+    '@tui.server',
     '@tui.settings',
     '@tui.share',
     '@tui.shopping-cart',
@@ -141,6 +143,7 @@ export const TUI_USED_ICONS = [
     '@tui.wifi',
     '@tui.wifi-high',
     '@tui.wifi-low',
+    '@tui.workflow',
     '@tui.x',
     '@tui.zap',
 ] as const;
