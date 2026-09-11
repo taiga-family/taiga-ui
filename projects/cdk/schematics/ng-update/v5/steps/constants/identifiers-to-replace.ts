@@ -171,7 +171,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'tuiSwitchNgDevMode',
-            moduleSpecifier: '@taiga-ui/jest-config',
+            moduleSpecifier: '@taiga-ui/jest-config/angular',
         },
     },
     {

@@ -111,7 +111,7 @@
         }
     },
     "jest": {
-        "preset": "@taiga-ui/jest-config",
+        "preset": "@taiga-ui/jest-config/angular",
         "workerIdleMemoryLimit": "256MB"
     },
     "overrides": {
@@ -155,12 +155,15 @@
         "express": "4.22.2",
         "glob": "11.1.0",
         "husky": "9.1.7",
+        "jest-environment-jsdom": "29.7.0",
+        "jest-preset-angular": "14.6.2",
         "knip": "5.88.1",
         "libphonenumber-js": "1.13.11",
         "ng-morph": "5.0.1",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "14.0.1",
         "nx": "22.1.1",
+        "resize-observer-polyfill": "1.5.1",
         "rxjs": "7.8.2",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
