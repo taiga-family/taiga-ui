@@ -33,6 +33,13 @@ describe('ng-update dynamic tuiHeader (#13869)', () => {
     );
 
     it(
+        'adds a TODO for an opaque dynamic [tuiHeader] with no literal token (signal/input)',
+        migrate({
+            template: /* HTML */ '<h1 [tuiHeader]="size()">Title</h1>',
+        }),
+    );
+
+    it(
         'migrates a single bound literal without adding a TODO',
         migrate({
             template: /* HTML */ `
