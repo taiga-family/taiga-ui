@@ -41,7 +41,6 @@ const TRANSFORM = {
     viewProviders: [
         tuiHintOptionsProvider({
             direction: 'top-end',
-            appearance: 'floating',
             showDelay: 0,
             hideDelay: 0,
         }),
@@ -81,7 +80,7 @@ export class TuiPieChart {
     }
 
     protected get hintAppearance(): string {
-        return this.hintOptions?.appearance() || '';
+        return this.hintOptions?.appearance() || 'floating';
     }
 
     protected get maskId(): string {
