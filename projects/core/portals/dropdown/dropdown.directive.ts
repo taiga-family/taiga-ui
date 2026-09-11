@@ -34,7 +34,7 @@ import {Subject, throttleTime} from 'rxjs';
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownA11y} from './dropdown-a11y.directive';
-import {TuiDropdownHost} from './dropdown-host.directive';
+import {TuiDropdownAnchor} from './dropdown-anchor.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
@@ -42,7 +42,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [tuiAsVehicle(TuiDropdownDirective)],
     exportAs: 'tuiDropdown',
     hostDirectives: [
-        TuiDropdownHost,
+        TuiDropdownAnchor,
         TuiDropdownDriverDirective,
         {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
         {

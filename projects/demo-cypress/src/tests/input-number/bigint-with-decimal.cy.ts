@@ -7,7 +7,7 @@ import {type MountConfig} from 'cypress/angular';
 import {
     BigIntWithDecimal,
     type ControlValue,
-} from '../../../../demo/src/pages/components/input-number/examples/11/transformer';
+} from '../../../../demo/src/pages/components/input-number/examples/13/transformer';
 
 @Component({
     imports: [

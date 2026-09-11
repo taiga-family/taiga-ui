@@ -7,7 +7,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
-import {TuiDropdownAnchor} from './dropdown-anchor.directive';
+import {TuiDropdownAnchored} from './dropdown-anchored.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 /**
@@ -23,7 +23,7 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
     // @bad TODO: OnPush
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiActiveZone, TuiAnimated, TuiDropdownAnchor],
+    hostDirectives: [TuiActiveZone, TuiAnimated, TuiDropdownAnchored],
     host: {
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme()',

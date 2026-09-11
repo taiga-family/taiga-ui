@@ -26,6 +26,20 @@
     </tr>
 }
 
+@if (!hiddenOptions().includes('thousandSeparatorPattern')) {
+    <tr
+        name="[thousandSeparatorPattern]"
+        tuiDocAPIItem
+        type="(digits: string) => readonly string[]"
+        [items]="thousandSeparatorPatternVariants"
+        [(value)]="thousandSeparatorPattern"
+    >
+        splits digits of the integer part into groups which are separated by
+        <code>[thousandSeparator]</code>
+        (groups of three digits by default)
+    </tr>
+}
+
 @if (!hiddenOptions().includes('decimalSeparator')) {
     <tr
         name="[decimalSeparator]"
