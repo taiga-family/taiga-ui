@@ -18,10 +18,11 @@ import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 
 
 @Component({
     selector: 'tui-doc-copy-page',
-    imports: [TuiButton, TuiDataList, TuiDropdown, TuiGroup],
+    imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [{directive: TuiGroup, inputs: ['size']}],
 })
 export class TuiDocCopyPage {
     private readonly router = inject(Router);
