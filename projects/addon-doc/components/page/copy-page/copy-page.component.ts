@@ -12,7 +12,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_COPY_PAGE} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
+import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
 import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 'rxjs';
 
@@ -22,7 +22,8 @@ import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [{directive: TuiGroup, inputs: ['size']}],
+    hostDirectives: [TuiGroup],
+    providers: [tuiGroupOptionsProvider({size: 'm'})],
 })
 export class TuiDocCopyPage {
     private readonly router = inject(Router);
