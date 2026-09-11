@@ -20,6 +20,14 @@ export async function fileExists(filePath: string): Promise<boolean> {
     }
 }
 
+export async function readIfExists(filePath: string): Promise<string | null> {
+    try {
+        return await fs.readFile(filePath, 'utf-8');
+    } catch {
+        return null;
+    }
+}
+
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
@@ -435,12 +443,12 @@ export async function getUsageExamples(
     let result = '\n### Usage Examples\n';
 
     for (const example of examples) {
-        result += `\n#### ${example.heading}\n`;
+        const parts: string[] = [];
 
         if (example.description) {
             // Already cleaned by extractExampleDescriptions; re-stripping tags here
             // would eat decoded markup such as `<tui-textfield />`.
-            result += `\n${example.description}\n`;
+            parts.push(example.description);
         }
 
         if (example.html) {
@@ -451,18 +459,18 @@ export async function getUsageExamples(
                 .replaceAll(/\n\s+/g, '\n') // Remove leading spaces
                 .trim();
 
-            result += `\n**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``;
+            parts.push(`**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``);
         }
 
         if (example.ts) {
-            result += `\n**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``;
+            parts.push(`**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``);
         }
 
         if (example.less) {
-            result += `\n**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``;
+            parts.push(`**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``);
         }
 
-        result += '\n';
+        result += `\n#### ${example.heading}\n\n${parts.join('\n\n')}\n`;
     }
 
     return result;

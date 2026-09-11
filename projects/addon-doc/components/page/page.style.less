@@ -14,6 +14,33 @@
 
 .t-header {
     margin-block-end: 2rem;
+
+    :host:has(tui-doc-copy-page) & {
+        @media @tui-mobile {
+            flex-wrap: wrap;
+            gap: 0.75rem 1rem;
+        }
+    }
+}
+
+.t-copy {
+    align-self: start;
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+
+    @media @tui-mobile {
+        flex-basis: 100%;
+        margin-inline-start: 0;
+    }
+}
+
+// Reserve the rail only when the ToC actually shows.
+:host:has(tui-doc-toc:not(:empty)) .t-copy {
+    margin-inline-end: 20rem;
+
+    @media @tui-desktop {
+        margin-inline-end: 0;
+    }
 }
 
 .t-navigation:not(:empty) {

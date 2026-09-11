@@ -6,6 +6,7 @@ export {getFoldersToScan, getPagesPath, setFoldersToScan, setPagesPath} from './
 
 // Route-based component extraction
 export {
+    buildFolderRouteMap,
     type ComponentInfo,
     extractComponentsFromRoutes,
     shouldIncludeComponent,
@@ -27,3 +28,15 @@ export {
     processMarkdownFile,
     readIndexHtml,
 } from './file-system';
+
+// Prose-page markdown rendering
+export {
+    getComponentProse,
+    getFirstTabProse,
+    getInlineCodeSnippets,
+    getPageProse,
+    htmlToMarkdown,
+} from './page-prose';
+
+// Colors/Typography token-table rendering
+export {getDesignTokenTables} from './design-token-pages';

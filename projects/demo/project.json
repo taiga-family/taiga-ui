@@ -97,6 +97,11 @@
                         "glob": "llms-full.html",
                         "input": "{projectRoot}/src/",
                         "output": "./"
+                    },
+                    {
+                        "glob": "**/*.md",
+                        "input": "{projectRoot}/src/markdown-pages/",
+                        "output": "./"
                     }
                 ],
                 "baseHref": "/",
@@ -128,7 +133,7 @@
         "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npm run generate:llms && npm run generate:llms-full",
+                "command": "npm run generate:llms && npm run generate:llms-full && npm run generate:markdown-pages",
                 "parallel": false
             }
         },
