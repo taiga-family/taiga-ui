@@ -1,16 +1,20 @@
 import {expect, type Locator} from '@playwright/test';
+import {
+    TUI_SCROLLBAR_LOCATORS,
+    TUI_TEXTFIELD_WITH_DATA_LIST_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 import {TuiTextfieldPO} from './textfield.po';
 
 export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public readonly dropdown = this.host
         .page()
-        .locator('tui-dropdown,tui-dropdown-mobile,tui-sheet-dialog');
+        .locator(TUI_TEXTFIELD_WITH_DATA_LIST_LOCATORS.DROPDOWN);
 
     public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();
 
-        return this.dropdown.locator('[tuiOption]').all();
+        return this.dropdown.locator(TUI_TEXTFIELD_WITH_DATA_LIST_LOCATORS.OPTION).all();
     }
 
     public async selectOptions(indexes: number[]): Promise<void> {
@@ -25,7 +29,7 @@ export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public async scrollDropdown(options?: ScrollToOptions): Promise<void>;
     public async scrollDropdown(...args: any[]): Promise<void> {
         await this.dropdown
-            .locator('tui-scrollbar')
+            .locator(TUI_SCROLLBAR_LOCATORS.HOST)
             .evaluate((el, args) => el.scrollTo(...args), args);
 
         return this.host.page().waitForTimeout(100); // flaky free

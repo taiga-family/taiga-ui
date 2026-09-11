@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('PieChart', () => {
     test('should be show hints on charts', async ({page}) => {
@@ -19,8 +20,8 @@ test.describe('PieChart', () => {
         for (const [i, segment] of pieChartSegments.entries()) {
             await segment.hover();
 
-            await expect(page.locator('tui-hint')).toHaveCount(1);
-            await expect(page.locator('tui-hint')).toBeAttached();
+            await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toHaveCount(1);
+            await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
 
             await expect
                 .soft(example)
