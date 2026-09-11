@@ -23,41 +23,52 @@
             <p class="description">
                 These aren't competing options — they are a stack of roles over one body of knowledge.
             </p>
-            <ul tuiList>
-                <li>
-                    <a
-                        routerLink="/ai/skills"
-                        tuiLink
-                    >
+            <div class="t-cards">
+                <a
+                    appearance="secondary-grayscale"
+                    routerLink="/ai/skills"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
                         Skills
-                    </a>
-                    — reach for them when you want the agent to follow a proven Taiga workflow and know what to
-                    double-check.
-                </li>
+                        <span tuiSubtitle>Follow a proven Taiga workflow and know what to double-check.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.workflow"></div>
+                    </span>
+                </a>
 
-                <li>
-                    <a
-                        routerLink="/ai/mcp"
-                        tuiLink
-                    >
-                        <code>&#64;taiga-ui/mcp</code>
-                    </a>
-                    — reach for it when your agent can call tools and should ask for one component's exact, current API
-                    on demand.
-                </li>
+                <a
+                    appearance="secondary-grayscale"
+                    routerLink="/ai/mcp"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
+                        MCP server
+                        <span tuiSubtitle>Ask for one component's exact, current API on demand.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.server"></div>
+                    </span>
+                </a>
 
-                <li>
-                    <a
-                        routerLink="/ai/llms"
-                        tuiLink
-                    >
-                        <code>llms.txt</code>
-                        /
-                        <code>llms-full.txt</code>
-                    </a>
-                    — reach for it when you just want to drop the current API into any model's context window.
-                </li>
-            </ul>
+                <a
+                    appearance="secondary-grayscale"
+                    routerLink="/ai/llms"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
+                        llms.txt
+                        <span tuiSubtitle>Drop the current API into any model's context window.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.file-text"></div>
+                    </span>
+                </a>
+            </div>
             <div
                 appearance="neutral"
                 tuiNotification

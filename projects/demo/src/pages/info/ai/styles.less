@@ -51,6 +51,19 @@ tui-doc-code {
     }
 }
 
+// Card group (à la getting-started "Explore Taiga UI"): responsive grid of
+// linked cards that adapts to the narrower content column next to the TOC.
+.t-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+    margin-block: 0.75rem 0;
+
+    [tuiAvatar] {
+        background: var(--tui-background-base);
+    }
+}
+
 // Flatten tui-doc-example: keep the anchored heading + "On this page" TOC,
 // drop the framed box, and pull content up snugly under its heading.
 :host ::ng-deep tui-doc-example {

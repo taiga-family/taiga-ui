@@ -132,38 +132,53 @@
             [fullsize]="true"
             [preview]="false"
         >
-            <ul tuiList>
-                <li>
-                    <a
-                        href="https://github.com/taiga-family/skills"
-                        target="_blank"
-                        tuiLink
-                    >
+            <div class="t-cards">
+                <a
+                    appearance="secondary-grayscale"
+                    href="https://github.com/taiga-family/skills"
+                    target="_blank"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
                         taiga-family/skills
-                    </a>
-                    — source and the full skill definitions.
-                </li>
+                        <span tuiSubtitle>Source and the full skill definitions.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.github"></div>
+                    </span>
+                </a>
 
-                <li>
-                    <a
-                        routerLink="/ai/mcp"
-                        tuiLink
-                    >
+                <a
+                    appearance="secondary-grayscale"
+                    routerLink="/ai/mcp"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
                         MCP server
-                    </a>
-                    — live, on-demand Taiga UI docs and examples for your assistant.
-                </li>
+                        <span tuiSubtitle>Live, on-demand Taiga UI docs and examples.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.server"></div>
+                    </span>
+                </a>
 
-                <li>
-                    <a
-                        routerLink="/ai/llms"
-                        tuiLink
-                    >
-                        <code>llms.txt</code>
-                    </a>
-                    — always-fresh context files you can paste or point tools at.
-                </li>
-            </ul>
+                <a
+                    appearance="secondary-grayscale"
+                    routerLink="/ai/llms"
+                    tuiCardLarge="compact"
+                    tuiHeader="h6"
+                >
+                    <span tuiTitle>
+                        llms.txt
+                        <span tuiSubtitle>Always-fresh context files to paste or point tools at.</span>
+                    </span>
+                    <span tuiAccessories>
+                        <div tuiAvatar="@tui.file-text"></div>
+                    </span>
+                </a>
+            </div>
         </tui-doc-example>
     </ng-template>
 </tui-doc-page>

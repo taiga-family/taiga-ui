@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiList} from '@taiga-ui/layout';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader, TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiDemo, TuiList],
+    imports: [TuiAvatar, TuiCardLarge, TuiDemo, TuiHeader, TuiList, TuiTitle],
     templateUrl: './index.html',
     styleUrl: '../styles.less',
     changeDetection,
