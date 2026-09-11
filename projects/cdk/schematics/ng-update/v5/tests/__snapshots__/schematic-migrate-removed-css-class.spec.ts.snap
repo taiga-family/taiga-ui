@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed CSS classes adds a TODO for the removed tui-group__auto-width-item class: test.html 1`] = `
+{
+  "0. Before": "<div class="my-item tui-group__auto-width-item">x</div>",
+  "1. After": "<!-- TODO: (Taiga UI migration) \`tui-group__auto-width-item\` was removed in v5. Re-create it on the child element with CSS: \`flex: 0 0 auto; min-inline-size: auto;\`. -->
+<div class="my-item tui-group__auto-width-item">x</div>",
+}
+`;
