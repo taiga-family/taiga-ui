@@ -159,6 +159,31 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('');
             });
         });
+
+        describe('updates form control value', () => {
+            ['Backspace', 'Delete'].forEach((key) => {
+                test(`${key} => form control value is null`, async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.Select}/API?sandboxExpanded=true&tuiTextfieldCleaner=true`,
+                    );
+
+                    documentationPage = new TuiDocumentationPagePO(page);
+                    const select = new TuiSelectPO(
+                        documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+                    );
+
+                    await expect(select.textfield).toHaveValue('USA');
+                    await expect(documentationPage.value).toContainText('"name": "USA"');
+
+                    await select.textfield.click();
+                    await page.keyboard.press(key);
+
+                    await expect(select.textfield).toHaveValue('');
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
+            });
+        });
     });
 
     describe('updateOn=submit', () => {
