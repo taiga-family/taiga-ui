@@ -1,53 +1,17 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    forwardRef,
-    inject,
-    type Provider,
-    signal,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    tuiPositionAccessorFor,
-    TuiRectAccessor,
-    tuiRectAccessorFor,
-} from '@taiga-ui/core/classes';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
+import {TuiHintAnchored} from './hint-anchored.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TuiHintPointer} from './hint-pointer.directive';
-import {TuiHintPosition} from './hint-position.directive';
 import {TuiHintUnstyledComponent} from './hint-unstyled.component';
-
-/** @internal */
-export function tuiGetHintProviders(): Provider[] {
-    return [
-        TuiPositionService,
-        TuiHoveredService,
-        tuiPositionAccessorFor('hint', TuiHintPosition),
-        tuiRectAccessorFor(
-            'hint',
-            forwardRef(() => TuiHintDirective),
-        ),
-    ];
-}
-
-const GAP = 8;
-const ARROW_OFFSET = 22;
 
 @Component({
     selector: 'tui-hint',
@@ -61,8 +25,8 @@ const ARROW_OFFSET = 22;
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiGetHintProviders(), tuiButtonOptionsProvider({size: 's'})],
-    hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
+    providers: [tuiButtonOptionsProvider({size: 's'})],
+    hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone, TuiHintAnchored],
     host: {
         role: 'tooltip',
         '[attr.tuiTheme]': 'theme',
@@ -73,13 +37,10 @@ const ARROW_OFFSET = 22;
 export class TuiHintComponent {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
-    private readonly vvs = inject(TuiVisualViewportService);
-    private readonly viewport = inject(TUI_VIEWPORT);
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
-    protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
-
+    protected readonly appearance = tuiAppearance(this.hint.appearance);
     protected readonly content =
         this.hint.component.component === TuiHintUnstyledComponent
             ? signal('')
@@ -89,29 +50,6 @@ export class TuiHintComponent {
         .closest('[tuiTheme]')
         ?.getAttribute('tuiTheme');
 
-    protected readonly appearance = tuiAppearance(this.hint.appearance);
-
-    constructor() {
-        inject(TuiPositionService)
-            .pipe(
-                takeWhile(
-                    () =>
-                        this.hint.el.isConnected &&
-                        this.hint.el.getClientRects().length > 0,
-                ),
-                map((point) => this.vvs.correct(point)),
-                takeUntilDestroyed(),
-            )
-            .subscribe({
-                next: (point) => this.update(...point),
-                complete: () => this.hint.toggle(false),
-            });
-
-        inject(TuiHoveredService)
-            .pipe(takeUntilDestroyed())
-            .subscribe((hover) => this.hover.toggle(hover));
-    }
-
     protected onPointerDown(target: HTMLElement): void {
         if (
             (!target.closest(this.el.tagName) && !this.hint.el.contains(target)) ||
@@ -119,54 +57,5 @@ export class TuiHintComponent {
         ) {
             this.hover.toggle(false);
         }
-    }
-
-    private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.setProperty('top', top);
-        this.el.style.setProperty('left', left);
-        this.el.style.setProperty('--t-top', `${beakTop}%`);
-        this.el.style.setProperty('--t-left', `${beakLeft}%`);
-        this.el.style.setProperty(
-            '--t-rotate',
-            !beakLeft || Math.ceil(beakLeft) === 100 ? '90deg' : '0deg',
-        );
-    }
-
-    private update(left: number, top: number): void {
-        const {clientHeight, clientWidth} = this.el;
-        const rect = this.accessor.getClientRect();
-
-        if (rect === EMPTY_CLIENT_RECT || !clientHeight || !clientWidth) {
-            return;
-        }
-
-        const viewport = this.viewport.getClientRect();
-
-        const safeLeft = tuiClamp(
-            Math.max(GAP, left),
-            viewport.left + GAP,
-            Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
-        );
-
-        const startX = Math.round(safeLeft) === Math.round(rect.left);
-        const startY = Math.round(top) === Math.round(rect.top);
-        const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
-        const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
-
-        const [beakLeft, beakTop] = this.vvs.correct([
-            rect.left + rect.width / 2 - safeLeft,
-            rect.top + rect.height / 2 - top,
-        ]);
-
-        /* eslint-disable no-nested-ternary */
-        const x = startX ? ARROW_OFFSET : endX ? clientWidth - ARROW_OFFSET : beakLeft;
-        const y = startY ? ARROW_OFFSET : endY ? clientHeight - ARROW_OFFSET : beakTop;
-
-        this.apply(
-            tuiPx(Math.round(top)),
-            tuiPx(Math.round(safeLeft)),
-            Math.round((tuiClamp(y, 0, clientHeight) / clientHeight) * 100),
-            Math.round((tuiClamp(x, 0, clientWidth) / clientWidth) * 100),
-        );
     }
 }
