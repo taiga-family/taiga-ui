@@ -18,17 +18,16 @@
             [style.margin-block-end.rem]="2"
         />
 
-        <header tuiHeader="h6">
-            <hgroup tuiTitle>
-                <h2>Explore Taiga UI</h2>
-                <p>
-                    See
-                    <b>Components</b>
-                    section in the main navigation and check out UI elements broken into dedicated groups by their
-                    purpose
-                </p>
-            </hgroup>
-        </header>
+        <tui-doc-example
+            heading="Explore Taiga UI"
+            [preview]="false"
+        >
+            <p>
+                See
+                <b>Components</b>
+                section in the main navigation and check out UI elements broken into dedicated groups by their purpose
+            </p>
+        </tui-doc-example>
 
         <article class="explore">
             <button
@@ -85,18 +84,18 @@
             </button>
         </article>
 
-        <header tuiHeader="h6">
-            <hgroup tuiTitle>
-                <h2>AI-Ready</h2>
-                <p>
-                    Taiga UI treats AI agents as first-class readers of its documentation. The same knowledge is
-                    published in AI-friendly shapes — a flat
-                    <code>llms.txt</code>
-                    context file, an MCP server, and reusable agent skills — so your assistant reads, understands, and
-                    generates components against the current, version-correct API instead of guessing from memory.
-                </p>
-            </hgroup>
-        </header>
+        <tui-doc-example
+            heading="AI-Ready"
+            [preview]="false"
+        >
+            <p>
+                Taiga UI treats AI agents as first-class readers of its documentation. The same knowledge is published
+                in AI-friendly shapes — a flat
+                <code>llms.txt</code>
+                context file, an MCP server, and reusable agent skills — so your assistant reads, understands, and
+                generates components against the current, version-correct API instead of guessing from memory.
+            </p>
+        </tui-doc-example>
 
         <a
             appearance="secondary-grayscale"
