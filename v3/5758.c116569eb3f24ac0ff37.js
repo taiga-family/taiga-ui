@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[5758],{5758:n=>{n.exports=".actions {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: inherit;\n}\n"}}]);

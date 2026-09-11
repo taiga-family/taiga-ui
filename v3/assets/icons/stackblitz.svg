@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+    <g id="stackblitz" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+            <svg x="-8" y="-8">
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.48779 0.960358C2.38322 0.960358 1.48779 1.85579 1.48779 2.96036V12.9604C1.48779 14.0649 2.38322 14.9604 3.48779 14.9604H13.2021C14.3066 14.9604 15.2021 14.0649 15.2021 12.9604V2.96036C15.2021 1.85579 14.3066 0.960358 13.2021 0.960358H3.48779ZM7.73376 8.99262H4.52498L10.6586 2.375L8.77114 7.00737H11.9799L5.84633 13.625L7.73376 8.99262Z"
+                    fill="currentColor"
+                    fill-opacity="0.65"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

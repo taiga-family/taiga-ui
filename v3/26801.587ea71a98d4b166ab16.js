@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[26801],{26801:i=>{i.exports="<tui-notification>Works with token options</tui-notification>\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99896],{99896:n=>{n.exports='<form\n    tuiForm="l"\n    [formGroup]="form"\n>\n    <tui-input\n        formControlName="text"\n        class="input"\n    >\n        Enter some text\n    </tui-input>\n\n    <tui-error\n        formControlName="text"\n        [error]="[] | tuiFieldError | async"\n    />\n</form>\n'}}]);

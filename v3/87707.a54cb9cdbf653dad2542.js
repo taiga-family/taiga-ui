@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[87707],{87707:n=>{n.exports='```html\n<header tuiNavigationHeader>Header content</header>\n<aside [tuiNavigationAside]="expanded">Sidebar content</aside>\n<main tuiNavigationMain>\n  <nav tuiNavigationNav>Breadcrumbs, tabs, buttons</nav>\n  Main content\n</main>\n```\n'}}]);

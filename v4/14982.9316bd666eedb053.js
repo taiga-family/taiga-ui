@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14982],{14982:n=>{n.exports="h2 {\n    padding-block-start: 0.3125rem;\n    padding-block-end: 0.3125rem;\n}\n\nh6 {\n    margin: 0;\n}\n"}}]);

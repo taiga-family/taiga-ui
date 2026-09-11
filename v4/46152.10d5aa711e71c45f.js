@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46152],{46152:e=>{e.exports=".container {\n    max-inline-size: 37.5rem;\n}\n"}}]);

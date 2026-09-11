@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[82248],{82248:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 2rem;\n}\n"}}]);

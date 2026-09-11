@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[65499],{65499:t=>{t.exports='```html\n<form [formGroup]="testForm">\n  <tui-textarea formControlName="testValue">Bio</tui-textarea>\n</form>\n```\n'}}]);

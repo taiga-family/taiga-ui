@@ -1,0 +1,27 @@
+import"./chunk-LQ6M4NCU.js";var i=`<label tuiTitle="m">
+    Credit Score
+    <div
+        aria-hidden="true"
+        class="ticks-labels"
+    >
+        <span>300</span>
+        <span
+            appearance="floating"
+            tuiBadge
+            [style.inset-inline-start.%]="(100 * (666 - 300)) / (850 - 300)"
+        >
+            666
+        </span>
+        <span>850</span>
+    </div>
+    <meter
+        high="580"
+        low="300"
+        max="850"
+        min="300"
+        optimum="800"
+        tuiMeter
+        value="666"
+    ></meter>
+</label>
+`;export{i as default};

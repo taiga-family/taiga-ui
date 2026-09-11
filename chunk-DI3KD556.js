@@ -1,0 +1,16 @@
+import"./chunk-LQ6M4NCU.js";var l=`@import '@taiga-ui/styles/utils';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    position: relative;
+
+    [tuiBadge] {
+        position: absolute;
+        inset-block-end: 0.25rem;
+        font: var(--tui-typography-body-l);
+        font-weight: bold;
+        transform: translateX(calc(-50% * var(--tui-inline)));
+    }
+}
+`;export{l as default};

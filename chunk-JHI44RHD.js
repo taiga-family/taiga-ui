@@ -1,0 +1,64 @@
+import"./chunk-LQ6M4NCU.js";var o=`<tui-doc-page
+    header="SearchBar"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>TuiSearchBar</code>
+            is a mobile search field. Put
+            <code>tuiSearchBar</code>
+            on any element \u2014 semantically that is
+            <code>&lt;search&gt;</code>
+            \u2014 project a native
+            <code>&lt;input tuiSearchBar&gt;</code>
+            into it and a
+            <code>&lt;button tuiButtonX&gt;</code>
+            next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field,
+            on Android it moves inside the field on the leading side and turns into a back arrow.
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            >
+                <ng-template #description>
+                    @switch ($index + 1) {
+                        @case (2) {
+                            No form here, so the cancel button clears the field through a
+                            <code>FormControl</code>
+                        }
+                        @case (3) {
+                            An active field on iOS is
+                            <code>floating</code>
+                            : liquid glass with a round cancel button. The bar sits on a
+                            <code>&lt;form&gt;</code>
+                            , so clearing and
+                            <code>Enter</code>
+                            work on their own
+                        }
+                        @case (4) {
+                            Pinned along with the app bar, the field is
+                            <code>floating</code>
+                            from the start and keeps that look while the content scrolls under it. Pinning is up to you,
+                            the search bar only takes care of the look. Once the field becomes active, it takes the
+                            place of the app bar
+                        }
+                        @case (5) {
+                            Under a large heading the field starts inline and turns
+                            <code>floating</code>
+                            once the heading scrolls away \u2014 here the switch is driven by an
+                            <code>IntersectionObserver</code>
+                            watching the heading
+                        }
+                        @default {}
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{o as default};

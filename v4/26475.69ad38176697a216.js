@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26475],{26475:n=>{n.exports='```html\n<button\n  tuiButton\n  tuiButtonSelect\n  type="button"\n  [(ngModel)]="item"\n>\n  {{ item }}\n  <tui-data-list-wrapper\n    *tuiDropdown\n    new\n    [items]="items"\n  />\n</button>\n```\n'}}]);

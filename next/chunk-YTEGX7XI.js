@@ -1,0 +1,1 @@
+import{pd as o,za as e}from"./chunk-SWUGXM6P.js";function s(i=e(o)){let a=new Intl.NumberFormat(i,{maximumFractionDigits:0});return r=>{if(!r)return[];let n=0;return a.formatToParts(BigInt(`1${"0".repeat(r.length-1)}`)).filter(({type:t})=>t==="integer").map(({value:t})=>{let m=r.slice(n,n+t.length);return n+=t.length,m})}}export{s as a};

@@ -1,0 +1,28 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+    preserveAspectRatio="xMidYMid meet"
+>
+    <g id="tuiIconMaestroMono" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            overflow="visible"
+            viewBox="0 0 32 32"
+            style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+            preserveAspectRatio="xMidYMid meet"
+        >
+            <svg x="-16" y="-16">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    clip-rule="evenodd"
+                    d="M16.3333 9.77366C14.1 11.2686 12.6296 13.8144 12.6296 16.7037C12.6296 19.593 14.1 22.1388 16.3333 23.6338C15.0092 24.5201 13.4168 25.037 11.7037 25.037C7.10132 25.037 3.37036 21.3061 3.37036 16.7037C3.37036 12.1013 7.10132 8.37037 11.7037 8.37037C13.4168 8.37037 15.0092 8.88729 16.3333 9.77366ZM16.3333 9.77366C18.5666 11.2686 20.037 13.8144 20.037 16.7037C20.037 19.593 18.5666 22.1388 16.3333 23.6338C17.6575 24.5201 19.2498 25.037 20.9629 25.037C25.5653 25.037 29.2963 21.3061 29.2963 16.7037C29.2963 12.1013 25.5653 8.37037 20.9629 8.37037C19.2498 8.37037 17.6575 8.88729 16.3333 9.77366ZM16.3333 11.0161C14.6819 12.362 13.6296 14.4101 13.6296 16.7037C13.6296 18.9973 14.6819 21.0454 16.3333 22.3913C17.9848 21.0454 19.037 18.9973 19.037 16.7037C19.037 14.4101 17.9848 12.362 16.3333 11.0161Z"
+                    fill="currentColor"
+                    stroke="none"
+                    fill-rule="evenodd"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

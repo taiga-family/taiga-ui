@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57002],{57002:e=>{e.exports='```json\n{\n  "jest": {\n    "setupFilesAfterEnv": ["<rootDir>/setup-jest.js"]\n  }\n}\n```\n'}}]);

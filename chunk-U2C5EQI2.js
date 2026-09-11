@@ -1,0 +1,40 @@
+import"./chunk-LQ6M4NCU.js";var o=`:host {
+    display: block;
+    block-size: 100%;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    block-size: 100dvh;
+    box-sizing: border-box;
+}
+
+tui-keypad {
+    flex: 1;
+    min-block-size: 0;
+    grid-auto-rows: 1fr; // fill the flex height instead of the fixed default rows
+}
+
+.input {
+    flex: none;
+    inline-size: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: end;
+    border: none;
+    outline: none;
+    background: var(--tui-background-neutral-2);
+    border-radius: 0.5rem;
+    color: var(--tui-text-primary);
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--tui-text-secondary);
+    }
+}
+`;export{o as default};

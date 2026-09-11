@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[58778],{81476:(_,a,c)=>{c.r(a),c.d(a,{TUI_JAPAN_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["番号","カード番号"],cardExpiry:["期限切れ","有効期間"]}}}]);

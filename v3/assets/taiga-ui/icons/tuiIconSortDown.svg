@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1em" width="1em">
+    <g id="tuiIconSortDown" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            width="1em"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1z"
+                    fill="currentColor"
+                    stroke="none"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

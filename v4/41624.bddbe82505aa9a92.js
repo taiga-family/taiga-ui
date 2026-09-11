@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41624],{41624:n=>{n.exports='```html\n... Some content\n\n<footer\n  tuiFloatingContainer\n>\n  <button\n    tuiButton\n    type="button"\n  >\n    Main action\n  </button>\n  <button\n    appearance="flat"\n    tuiButton\n    type="button"\n  >\n     Secondary action\n  </button>\n</label>\n```\n'}}]);

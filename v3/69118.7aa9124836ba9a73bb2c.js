@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[69118],{69118:i=>{i.exports="/*\nThis duplication is artificial way to increase selector specificity.\nIn Taiga UI 4.0 you can delete it.\nTODO: remove in v4.0\n */\n[tuiProgressBar][tuiProgressBar] {\n    border-radius: 0;\n}\n"}}]);

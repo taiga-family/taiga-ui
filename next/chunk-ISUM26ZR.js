@@ -1,0 +1,7 @@
+import"./chunk-LQ6M4NCU.js";var e=`<progress
+    tuiProgressBar
+    [max]="5"
+    [segments]="5"
+    [value]="3"
+></progress>
+`;export{e as default};
