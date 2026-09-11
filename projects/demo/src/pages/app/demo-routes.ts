@@ -28,6 +28,7 @@ export const DemoRoute = {
     Appearances: '/appearances',
     FluidTypography: '/directives/fluid-typography',
     Chip: '/components/chip',
+    ChipGroup: '/components/chip-group',
     ItemGroup: '/components/item-group',
     Message: '/components/message',
     Meter: '/components/meter',
