@@ -26,6 +26,9 @@
 
     .t-wrapper {
         max-block-size: inherit; // makes the wrapper itself overflow, otherwise detection would depend on `_overflown` it sets
+    }
+
+    :host(:not([ngh])) .t-wrapper {
         animation-name: tuiEmpty, tuiEmpty;
         animation-timeline: scroll(self block), scroll(self inline);
     }
