@@ -1,14 +1,20 @@
 import {Location} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {By} from '@angular/platform-browser';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiHintDirective} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('PieChart', () => {
     @Component({
-        imports: [TuiPieChart],
+        imports: [TuiChartHint, TuiPieChart],
         template: `
-            <tui-pie-chart [value]="value" />
+            <tui-pie-chart
+                tuiHintAppearance="error"
+                tuiHintContent="Hint"
+                [value]="value"
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -37,5 +43,13 @@ describe('PieChart', () => {
 
     it('has segment for each item in value', () => {
         expect(pageObject.getAllByAutomationId('tui-pie-chart__segment').length).toBe(3);
+    });
+
+    it('supports custom hint appearance', () => {
+        const hint = fixture.debugElement
+            .query(By.directive(TuiHintDirective))
+            .injector.get(TuiHintDirective);
+
+        expect(hint.appearance()).toBe('error');
     });
 });
