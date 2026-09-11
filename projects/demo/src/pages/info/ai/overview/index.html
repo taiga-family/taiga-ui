@@ -2,18 +2,34 @@
     <ng-template pageTab>
         <p class="description">
             We treat AI agents as first-class readers of our documentation. The same Taiga UI knowledge is published in
-            a few complementary shapes, so whatever your assistant can consume — a flat context file, a query server, or
-            a reusable skill — it can reach the current, version-correct API instead of guessing from memory.
+            a few complementary shapes — a flat context file, a query server, and reusable skills — so whatever your
+            assistant can consume, it reaches the current, version-correct API instead of guessing from memory.
+        </p>
+        <p class="description">
+            That matters more than it sounds. An assistant can scaffold a screen in seconds, but it generates components
+            from training data frozen in time — so the code often compiles yet quietly targets an API that has moved on,
+            and a growing app drifts out of sync with itself. Point the agent at a live, versioned source and generated
+            code stays aligned with the components you actually ship.
         </p>
 
-        <div
-            appearance="info"
-            tuiNotification
+        <tui-doc-example
+            heading="Why it helps"
+            [fullsize]="true"
+            [preview]="false"
         >
-            New to wiring AI into your editor? Drop
-            <code>llms-full.txt</code>
-            into your model's context for a zero-setup start, or connect the MCP server for on-demand queries.
-        </div>
+            <ul tuiList>
+                <li>
+                    <strong>Current, not remembered</strong>
+                    — the agent reads today's API from a live source instead of recalling a stale one from its training
+                    cut-off.
+                </li>
+                <li>
+                    <strong>Generated from source</strong>
+                    — the same pipeline that builds these docs and their runnable examples, so what the agent reads is
+                    what you ship.
+                </li>
+            </ul>
+        </tui-doc-example>
 
         <tui-doc-example
             heading="Choose a layer"
@@ -79,50 +95,6 @@
                 is a query interface over that same data, and skills are the method that consumes it. When they
                 disagree, the live source wins.
             </div>
-        </tui-doc-example>
-
-        <tui-doc-example
-            heading="Start here"
-            [fullsize]="true"
-            [preview]="false"
-        >
-            <ul tuiList>
-                <li>
-                    <strong>Zero setup</strong>
-                    — paste
-                    <a
-                        routerLink="/ai/llms"
-                        tuiLink
-                    >
-                        llms-full.txt
-                    </a>
-                    into your model's context and start prompting.
-                </li>
-
-                <li>
-                    <strong>On-demand queries</strong>
-                    — connect the
-                    <a
-                        routerLink="/ai/mcp"
-                        tuiLink
-                    >
-                        MCP server
-                    </a>
-                    so the agent fetches one component's exact API when it needs it.
-                </li>
-
-                <li>
-                    <strong>Repeatable workflows</strong>
-                    — install
-                    <a
-                        routerLink="/ai/skills"
-                        tuiLink
-                    >
-                        skills
-                    </a>
-                    to teach the agent proven Taiga methods.
-                </li>
-            </ul>
         </tui-doc-example>
     </ng-template>
 </tui-doc-page>

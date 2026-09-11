@@ -26,15 +26,9 @@ export default class Page {
         () => INIT_CLIENTS[this.activeItemIndex()] ?? null,
     );
 
-    protected readonly mcpInitNext = computed(() => this.versionCommand('next'));
-    protected readonly mcpInitV4 = computed(() => this.versionCommand('v4'));
+    protected readonly mcpInit = computed(() => this.initCommand());
+    protected readonly mcpInitV4 = computed(() => this.initCommand('v4'));
     protected readonly mcpInitInteractive = import('./snippets/mcp-init-interactive.md');
-    protected readonly mcpInitClaude = import('./snippets/mcp-init-claude.md');
-    protected readonly mcpInitCursor = import('./snippets/mcp-init-cursor.md');
-    protected readonly mcpInitVscode = import('./snippets/mcp-init-vscode.md');
-    protected readonly mcpInitCodex = import('./snippets/mcp-init-codex.md');
-    protected readonly mcpInitOpencode = import('./snippets/mcp-init-opencode.md');
-    protected readonly mcpInitWindsurf = import('./snippets/mcp-init-windsurf.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
     protected readonly mcpClaudeCodeConfig =
         import('./snippets/mcp-claude-code-config.md');
@@ -47,12 +41,13 @@ export default class Page {
     protected readonly mcpOpencode = import('./snippets/mcp-opencode.md');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md');
 
-    private versionCommand(version: string): string {
+    private initCommand(version?: string): string {
         const client = this.versionClient() ?? '<client>';
+        const flag = version ? ` --version ${version}` : '';
 
         return [
             '```bash',
-            `npx @taiga-ui/mcp init --client ${client} --version ${version}`,
+            `npx @taiga-ui/mcp init --client ${client}${flag}`,
             '```',
         ].join('\n');
     }

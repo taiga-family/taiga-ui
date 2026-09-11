@@ -57,5 +57,26 @@
                 hosted URL so it always reads the current, version-correct API.
             </p>
         </tui-doc-example>
+
+        <tui-doc-example
+            heading=".md extension"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <p class="description">
+                Add
+                <code>.md</code>
+                to any documentation page's URL to get a clean Markdown version of that page — for example,
+                <a
+                    href="/components/button.md"
+                    target="_blank"
+                    tuiLink
+                >
+                    <code>/components/button.md</code>
+                </a>
+                renders the Button page as Markdown. Handy for dropping a single page into a model's context or pointing
+                an agent straight at one component's docs.
+            </p>
+        </tui-doc-example>
     </ng-template>
 </tui-doc-page>
