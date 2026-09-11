@@ -1,8 +1,10 @@
 import {type AfterViewInit, Directive, forwardRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
-import {TuiHoveredService} from '@taiga-ui/cdk/directives';
-import {tuiClamp, tuiInjectElement, tuiPx} from '@taiga-ui/cdk/utils';
+import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
