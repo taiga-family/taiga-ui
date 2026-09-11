@@ -111,6 +111,28 @@ test.describe('TuiHint', () => {
         });
     });
 
+    [true, false].forEach((enableNightMode) => {
+        const theme = enableNightMode ? 'dark' : 'light';
+
+        test(`floating hint in ${theme} theme`, async ({page}) => {
+            await page.setViewportSize({width: 750, height: 200});
+            await tuiGoto(
+                page,
+                `${DemoRoute.Hint}/API?tuiHintShowDelay=0&tuiHintAppearance=floating`,
+                {enableNightMode},
+            );
+            const example = new TuiDocumentationPagePO(page);
+
+            await example.prepareBeforeScreenshot();
+            await example.apiPageExample.locator('span').hover();
+            await page.waitForTimeout(0);
+
+            await expect
+                .soft(page)
+                .toHaveScreenshot(`08-hint-appearance-floating-${theme}.png`);
+        });
+    });
+
     test('Tooltip horizontal direction', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample('#example-base');
