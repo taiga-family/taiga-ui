@@ -22,8 +22,8 @@ import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiGroup],
     providers: [tuiGroupOptionsProvider({size: 'm'})],
+    hostDirectives: [TuiGroup],
 })
 export class TuiDocCopyPage {
     private readonly router = inject(Router);
