@@ -122,6 +122,12 @@ export class TuiDocNavigation {
         [],
     );
 
+    // First page of each section (last group is section-less pages) — its badge
+    // is shown on the section header, so it is not repeated on the page's row.
+    private readonly sectionLeads = new Set(
+        this.items.slice(0, -1).map((pages) => pages[0]),
+    );
+
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
     protected active = '';
@@ -186,6 +192,10 @@ export class TuiDocNavigation {
 
     protected sectionBadge(index: number): TuiDocRoutePageBadge | null {
         return this.items[index]?.[0]?.badge ?? null;
+    }
+
+    protected pageBadge(item: TuiDocRoutePage): TuiDocRoutePageBadge | null {
+        return this.sectionLeads.has(item) ? null : (item.badge ?? null);
     }
 
     protected onGroupClick(index: number): void {

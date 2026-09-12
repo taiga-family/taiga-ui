@@ -94,11 +94,7 @@
                         @for (item of items[$index]; track $index) {
                             <ng-container
                                 [ngTemplateOutlet]="pages"
-                                [ngTemplateOutletContext]="{
-                                    item: item,
-                                    index: index * 100 + $index,
-                                    first: $first,
-                                }"
+                                [ngTemplateOutletContext]="{item: item, index: index * 100 + $index}"
                             />
                         }
                     </div>
@@ -108,7 +104,6 @@
 
         <ng-template
             #page
-            let-first="first"
             let-item
         >
             @if (item.route.includes('://')) {
@@ -121,8 +116,8 @@
                     [target]="item.target || '_self'"
                 >
                     {{ item.title }}
-                    @if (item.badge && !first) {
-                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: item.badge}" />
+                    @if (pageBadge(item); as badge) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
             } @else {
@@ -138,8 +133,8 @@
                     (click)="closeMenu()"
                 >
                     {{ item.title }}
-                    @if (item.badge && !first) {
-                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: item.badge}" />
+                    @if (pageBadge(item); as badge) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
             }
@@ -147,14 +142,13 @@
 
         <ng-template
             #pages
-            let-first="first"
             let-index="index"
             let-item="item"
         >
             @if (!item.subPages) {
                 <ng-container
                     [ngTemplateOutlet]="page"
-                    [ngTemplateOutletContext]="{$implicit: item, first: first}"
+                    [ngTemplateOutletContext]="{$implicit: item}"
                 />
             } @else {
                 <div
@@ -196,8 +190,12 @@
                                         [attr.rel]="subPage.rel"
                                         [href]="subPage.route"
                                         [target]="subPage.target || '_self'"
-                                        [textContent]="subPage.title"
-                                    ></a>
+                                    >
+                                        {{ subPage.title }}
+                                        @if (subPage.badge; as badge) {
+                                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                                        }
+                                    </a>
                                 } @else {
                                     <a
                                         routerLinkActive="t-sublink_active"
@@ -207,10 +205,14 @@
                                         [fragment]="subPage.fragment"
                                         [routerLink]="subPage.route"
                                         [target]="subPage.target || '_self'"
-                                        [textContent]="subPage.title"
                                         [tuiDocScrollIntoViewLink]="isActive(subPage.route)"
                                         (click)="closeMenu()"
-                                    ></a>
+                                    >
+                                        {{ subPage.title }}
+                                        @if (subPage.badge; as badge) {
+                                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                                        }
+                                    </a>
                                 }
                             }
                         </div>
@@ -227,7 +229,7 @@
                 size="m"
                 tuiBadge
                 class="t-new"
-                [appearance]="badge.appearance ?? 'primary'"
+                [appearance]="badge.appearance"
             >
                 {{ badge.label }}
             </span>
