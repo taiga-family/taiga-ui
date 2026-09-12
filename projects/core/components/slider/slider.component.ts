@@ -35,10 +35,10 @@ export class TuiSliderComponent {
         this.getTicksGradient(segments),
     );
 
-    public readonly segments = input([1], {
+    public readonly segments = input<readonly number[], number | readonly number[]>([], {
         alias: 'segments',
-        transform: (x: number | readonly number[]): readonly number[] =>
-            tuiIsNumber(x) ? Array.from({length: x}, (_, i) => i / x) : x,
+        transform: (x): readonly number[] =>
+            tuiIsNumber(x) ? Array.from({length: x - 1}, (_, i) => (i + 1) / x) : x,
     });
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
@@ -126,21 +126,24 @@ export class TuiSliderComponent {
     }
 
     protected getTicksGradient(segments: readonly number[]): string {
-        if (segments.length <= 1) {
+        const ticks = segments.filter((s) => s >= 0 && s <= 1);
+
+        if (!ticks.length) {
             return 'linear-gradient(to right, transparent 0 100%)';
         }
 
-        const percentages = segments
-            .filter((segment) => segment > 0 && segment < 1)
-            .map((segment) => segment * 100);
+        const gradientStops = ticks.map((tick: number): string => {
+            const percentage = `${tick * 100}%`;
 
-        return percentages.reduce(
-            (acc, segment, index) =>
-                `${acc}
-                var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--t-tick-thickness)),
-                transparent ${segment}% ${percentages[index + 1] ?? 100}%${percentages[index + 1] ? ',' : ')'}
-                `,
-            `linear-gradient(to right, transparent 0 ${percentages[0]}%,`,
-        );
+            const start =
+                tick === 1 ? 'calc(100% - var(--t-tick-thickness))' : percentage;
+
+            const end =
+                tick === 1 ? '100%' : `calc(${percentage} + var(--t-tick-thickness))`;
+
+            return `transparent ${start}, var(--tui-text-tertiary) ${start} ${end}, transparent ${end}`;
+        });
+
+        return `linear-gradient(to right, transparent 0, ${gradientStops.join(', ')}, transparent 100%)`;
     }
 }
