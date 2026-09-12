@@ -73,7 +73,12 @@
                     [tuiAccordion]="!!openPagesArr[$index]"
                     (tuiAccordionChange)="openPagesArr[$index] = !!$event"
                 >
-                    <span class="t-label">{{ label }}</span>
+                    <span class="t-label">
+                        {{ label }}
+                        @for (badge of sectionBadge($index); track badge.label) {
+                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                        }
+                    </span>
                     <tui-icon
                         class="t-chevron"
                         [class.t-chevron_active]="!!openPagesArr[$index]"
@@ -109,8 +114,12 @@
                     [href]="item.route"
                     [iconStart]="item.section ? '' : pagesIcons[item.title]"
                     [target]="item.target || '_self'"
-                    [textContent]="item.title"
-                ></a>
+                >
+                    {{ item.title }}
+                    @for (badge of pageBadge(item); track badge.label) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                    }
+                </a>
             } @else {
                 <a
                     routerLinkActive="t-sublink_active"
@@ -120,10 +129,14 @@
                     [iconStart]="item.section ? '' : pagesIcons[item.title]"
                     [routerLink]="item.route"
                     [target]="item.target || '_self'"
-                    [textContent]="item.title"
                     [tuiDocScrollIntoViewLink]="isActive(item.route)"
                     (click)="closeMenu()"
-                ></a>
+                >
+                    {{ item.title }}
+                    @for (badge of pageBadge(item); track badge.label) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                    }
+                </a>
             }
         </ng-template>
 
@@ -156,6 +169,9 @@
                                 [icon]="icons.more"
                             />
                             {{ item.title }}
+                            @for (badge of groupBadge(item); track badge.label) {
+                                <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                            }
                             <tui-icon
                                 *polymorpheusOutlet="item.icon as icon"
                                 class="t-icon"
@@ -177,8 +193,12 @@
                                         [attr.rel]="subPage.rel"
                                         [href]="subPage.route"
                                         [target]="subPage.target || '_self'"
-                                        [textContent]="subPage.title"
-                                    ></a>
+                                    >
+                                        {{ subPage.title }}
+                                        @for (badge of pageBadge(subPage); track badge.label) {
+                                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                                        }
+                                    </a>
                                 } @else {
                                     <a
                                         routerLinkActive="t-sublink_active"
@@ -188,16 +208,34 @@
                                         [fragment]="subPage.fragment"
                                         [routerLink]="subPage.route"
                                         [target]="subPage.target || '_self'"
-                                        [textContent]="subPage.title"
                                         [tuiDocScrollIntoViewLink]="isActive(subPage.route)"
                                         (click)="closeMenu()"
-                                    ></a>
+                                    >
+                                        {{ subPage.title }}
+                                        @for (badge of pageBadge(subPage); track badge.label) {
+                                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                                        }
+                                    </a>
                                 }
                             }
                         </div>
                     </tui-expand>
                 </div>
             }
+        </ng-template>
+
+        <ng-template
+            #badgeTpl
+            let-badge
+        >
+            <span
+                size="m"
+                tuiBadge
+                class="t-new"
+                [appearance]="badge.appearance"
+            >
+                {{ badge.label }}
+            </span>
         </ng-template>
     </tui-scrollbar>
 </nav>

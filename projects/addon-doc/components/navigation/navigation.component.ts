@@ -19,7 +19,12 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {
+    type TuiDocRoutePage,
+    type TuiDocRoutePageBadge,
+    type TuiDocRoutePageGroup,
+    type TuiDocRoutePages,
+} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
@@ -31,6 +36,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
@@ -42,6 +48,11 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
+
+const UPDATED_BADGE = {
+    label: 'Updated',
+    appearance: 'info',
+} satisfies TuiDocRoutePageBadge;
 
 function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],
@@ -67,6 +78,7 @@ function tuiUniqBy<T extends Record<string, any>>(
         RouterLinkActive,
         TuiAccordion,
         TuiAutoFocus,
+        TuiBadge,
         TuiDataList,
         TuiDocScrollIntoViewLink,
         TuiExpand,
@@ -90,6 +102,12 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
+
+    private readonly sectionLeads = new Set(
+        inject(NAVIGATION_ITEMS)
+            .slice(0, -1)
+            .map((pages) => pages[0]),
+    );
 
     protected readonly open = signal(false);
     protected menuOpen = false;
@@ -178,6 +196,20 @@ export class TuiDocNavigation {
         return route === this.active;
     }
 
+    protected sectionBadge(index: number): readonly TuiDocRoutePageBadge[] {
+        const lead = this.items[index]?.[0]?.badges;
+
+        return lead?.length ? lead : this.aggregateBadge(this.flat[index]);
+    }
+
+    protected pageBadge(item: TuiDocRoutePage): readonly TuiDocRoutePageBadge[] {
+        return this.sectionLeads.has(item) ? [] : (item.badges ?? []);
+    }
+
+    protected groupBadge(item: TuiDocRoutePageGroup): readonly TuiDocRoutePageBadge[] {
+        return item.badges?.length ? item.badges : this.aggregateBadge(item.subPages);
+    }
+
     protected onGroupClick(index: number): void {
         this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
@@ -201,6 +233,12 @@ export class TuiDocNavigation {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
+    }
+
+    private aggregateBadge(
+        pages: readonly TuiDocRoutePage[] | undefined,
+    ): readonly TuiDocRoutePageBadge[] {
+        return pages?.some((page) => page.badges?.length) ? [UPDATED_BADGE] : [];
     }
 
     private filterItems(
