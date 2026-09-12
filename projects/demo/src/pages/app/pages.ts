@@ -1127,6 +1127,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
+        badge: {label: 'New', appearance: 'positive'},
     },
     {
         section: 'Components',
@@ -1640,6 +1641,7 @@ export const pages: DocRoutePages = [
         keywords:
             'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
         route: DemoRoute.AiOverview,
+        badge: {label: 'New', appearance: 'positive'},
     },
     {
         section: 'AI tools',

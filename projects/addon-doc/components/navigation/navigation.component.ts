@@ -19,7 +19,11 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {
+    type TuiDocRoutePage,
+    type TuiDocRoutePageBadge,
+    type TuiDocRoutePages,
+} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
@@ -31,6 +35,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
@@ -67,6 +72,7 @@ function tuiUniqBy<T extends Record<string, any>>(
         RouterLinkActive,
         TuiAccordion,
         TuiAutoFocus,
+        TuiBadge,
         TuiDataList,
         TuiDocScrollIntoViewLink,
         TuiExpand,
@@ -176,6 +182,10 @@ export class TuiDocNavigation {
 
     protected isActive(route: string): boolean {
         return route === this.active;
+    }
+
+    protected sectionBadge(index: number): TuiDocRoutePageBadge | null {
+        return this.items[index]?.[0]?.badge ?? null;
     }
 
     protected onGroupClick(index: number): void {

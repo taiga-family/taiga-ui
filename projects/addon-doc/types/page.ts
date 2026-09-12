@@ -1,8 +1,14 @@
 export type TuiDocRoutePages = ReadonlyArray<TuiDocRoutePage | TuiDocRoutePageGroup>;
 
+export interface TuiDocRoutePageBadge {
+    readonly label: string;
+    readonly appearance?: string;
+}
+
 export interface TuiDocRoutePageBase {
     readonly section?: string;
     readonly title: string;
+    readonly badge?: TuiDocRoutePageBadge;
 }
 
 export interface TuiDocRoutePage extends TuiDocRoutePageBase {

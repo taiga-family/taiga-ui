@@ -73,7 +73,12 @@
                     [tuiAccordion]="!!openPagesArr[$index]"
                     (tuiAccordionChange)="openPagesArr[$index] = !!$event"
                 >
-                    <span class="t-label">{{ label }}</span>
+                    <span class="t-label">
+                        {{ label }}
+                        @if (sectionBadge($index); as badge) {
+                            <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
+                        }
+                    </span>
                     <tui-icon
                         class="t-chevron"
                         [class.t-chevron_active]="!!openPagesArr[$index]"
@@ -89,7 +94,11 @@
                         @for (item of items[$index]; track $index) {
                             <ng-container
                                 [ngTemplateOutlet]="pages"
-                                [ngTemplateOutletContext]="{item: item, index: index * 100 + $index}"
+                                [ngTemplateOutletContext]="{
+                                    item: item,
+                                    index: index * 100 + $index,
+                                    first: $index === 0,
+                                }"
                             />
                         }
                     </div>
@@ -99,6 +108,7 @@
 
         <ng-template
             #page
+            let-first="first"
             let-item
         >
             @if (item.route.includes('://')) {
@@ -109,8 +119,12 @@
                     [href]="item.route"
                     [iconStart]="item.section ? '' : pagesIcons[item.title]"
                     [target]="item.target || '_self'"
-                    [textContent]="item.title"
-                ></a>
+                >
+                    {{ item.title }}
+                    @if (item.badge && !first) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: item.badge}" />
+                    }
+                </a>
             } @else {
                 <a
                     routerLinkActive="t-sublink_active"
@@ -120,22 +134,27 @@
                     [iconStart]="item.section ? '' : pagesIcons[item.title]"
                     [routerLink]="item.route"
                     [target]="item.target || '_self'"
-                    [textContent]="item.title"
                     [tuiDocScrollIntoViewLink]="isActive(item.route)"
                     (click)="closeMenu()"
-                ></a>
+                >
+                    {{ item.title }}
+                    @if (item.badge && !first) {
+                        <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: item.badge}" />
+                    }
+                </a>
             }
         </ng-template>
 
         <ng-template
             #pages
+            let-first="first"
             let-index="index"
             let-item="item"
         >
             @if (!item.subPages) {
                 <ng-container
                     [ngTemplateOutlet]="page"
-                    [ngTemplateOutletContext]="{$implicit: item}"
+                    [ngTemplateOutletContext]="{$implicit: item, first: first}"
                 />
             } @else {
                 <div
@@ -198,6 +217,20 @@
                     </tui-expand>
                 </div>
             }
+        </ng-template>
+
+        <ng-template
+            #badgeTpl
+            let-badge
+        >
+            <span
+                size="m"
+                tuiBadge
+                class="t-new"
+                [appearance]="badge.appearance ?? 'primary'"
+            >
+                {{ badge.label }}
+            </span>
         </ng-template>
     </tui-scrollbar>
 </nav>
