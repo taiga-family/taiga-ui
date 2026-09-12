@@ -10,15 +10,39 @@ describe('TuiDocNavigation badges', () => {
             section: 'New section',
             title: 'Overview',
             route: 'new/overview',
-            badge: {label: 'New', appearance: 'positive'},
+            badges: [{label: 'New', appearance: 'positive'}],
         },
         {section: 'New section', title: 'Details', route: 'new/details'},
         {section: 'Plain section', title: 'First', route: 'plain/first'},
+        {section: 'Plain section', title: 'Second', route: 'plain/second'},
+        {section: 'Lab section', title: 'Home', route: 'lab/home'},
         {
-            section: 'Plain section',
-            title: 'Beta page',
-            route: 'plain/beta',
-            badge: {label: 'Beta', appearance: 'warning'},
+            section: 'Lab section',
+            title: 'Beaker',
+            route: 'lab/beaker',
+            badges: [{label: 'Experimental', appearance: 'warning'}],
+        },
+        {section: 'Combo section', title: 'Intro', route: 'combo/intro'},
+        {
+            section: 'Combo section',
+            title: 'Widget',
+            route: 'combo/widget',
+            badges: [
+                {label: 'New', appearance: 'positive'},
+                {label: 'Experimental', appearance: 'warning'},
+            ],
+        },
+        {
+            section: 'Combo section',
+            title: 'Group',
+            subPages: [
+                {
+                    section: 'Combo section',
+                    title: 'Nested new',
+                    route: 'combo/nested',
+                    badges: [{label: 'New', appearance: 'positive'}],
+                },
+            ],
         },
     ];
 
@@ -43,32 +67,72 @@ describe('TuiDocNavigation badges', () => {
         return fixture.nativeElement as HTMLElement;
     }
 
-    function header(label: string): HTMLElement | undefined {
-        return Array.from(host().querySelectorAll<HTMLElement>('.t-accordion-item')).find(
-            (el) => el.textContent?.includes(label),
+    function expandAll(): void {
+        host()
+            .querySelectorAll('.t-accordion-item')
+            .forEach((button) => (button as HTMLElement).click());
+        fixture.detectChanges();
+    }
+
+    function labels(element: Element | undefined): Array<string | undefined> {
+        return Array.from(element?.querySelectorAll('.t-new') ?? []).map((badge) =>
+            badge.textContent?.trim(),
+        );
+    }
+
+    function header(label: string): Element | undefined {
+        return Array.from(host().querySelectorAll('.t-accordion-item')).find((el) =>
+            el.textContent?.includes(label),
         );
     }
 
     it("shows the badge on a section header, taken from the section's first page", () => {
-        expect(header('New section')?.querySelector('.t-new')?.textContent?.trim()).toBe(
-            'New',
-        );
+        expect(labels(header('New section'))).toEqual(['New']);
     });
 
-    it('does not badge a section whose first page has none', () => {
+    it('does not badge a section whose pages have none', () => {
         expect(header('Plain section')?.querySelector('.t-new')).toBeNull();
     });
 
-    it('badges a non-first page on its own row, but not the section-lead page', () => {
-        host()
-            .querySelectorAll<HTMLElement>('.t-accordion-item')
-            .forEach((button) => button.click());
-        fixture.detectChanges();
+    it('marks a section Updated when it holds an experimental page', () => {
+        expect(labels(header('Lab section'))).toEqual(['Updated']);
+    });
+
+    it('marks a section Updated when a nested subpage is new', () => {
+        expect(labels(header('Combo section'))).toEqual(['Updated']);
+    });
+
+    it('marks a group button Updated when it contains a badged subpage', () => {
+        expandAll();
+
+        const group = Array.from(
+            host().querySelectorAll('button.t-sublink_subsection'),
+        ).find((button) => button.textContent?.includes('Group'));
+
+        expect(labels(group)).toEqual(['Updated']);
+    });
+
+    it('renders multiple badges on one row, New before Experimental', () => {
+        expandAll();
+
+        const row = Array.from(host().querySelectorAll('a.t-sublink')).find((link) =>
+            link.textContent?.includes('Widget'),
+        );
+
+        expect(labels(row)).toEqual(['New', 'Experimental']);
+    });
+
+    it('badges pages on their own rows, but not the section-lead page', () => {
+        expandAll();
 
         const badgedRows = Array.from(host().querySelectorAll('a.t-sublink'))
             .filter((row) => row.querySelector('.t-new'))
             .map((row) => row.textContent?.replaceAll(/\s+/g, ' ').trim());
 
-        expect(badgedRows).toEqual(['Beta page Beta']);
+        expect(badgedRows).toEqual([
+            'Beaker Experimental',
+            'Widget New Experimental',
+            'Nested new New',
+        ]);
     });
 });

@@ -22,6 +22,7 @@ import {
 import {
     type TuiDocRoutePage,
     type TuiDocRoutePageBadge,
+    type TuiDocRoutePageGroup,
     type TuiDocRoutePages,
 } from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
@@ -47,6 +48,11 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
+
+const UPDATED_BADGE = {
+    label: 'Updated',
+    appearance: 'info',
+} satisfies TuiDocRoutePageBadge;
 
 function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],
@@ -190,12 +196,18 @@ export class TuiDocNavigation {
         return route === this.active;
     }
 
-    protected sectionBadge(index: number): TuiDocRoutePageBadge | null {
-        return this.items[index]?.[0]?.badge ?? null;
+    protected sectionBadge(index: number): readonly TuiDocRoutePageBadge[] {
+        const lead = this.items[index]?.[0]?.badges;
+
+        return lead?.length ? lead : this.aggregateBadge(this.flat[index]);
     }
 
-    protected pageBadge(item: TuiDocRoutePage): TuiDocRoutePageBadge | null {
-        return this.sectionLeads.has(item) ? null : (item.badge ?? null);
+    protected pageBadge(item: TuiDocRoutePage): readonly TuiDocRoutePageBadge[] {
+        return this.sectionLeads.has(item) ? [] : (item.badges ?? []);
+    }
+
+    protected groupBadge(item: TuiDocRoutePageGroup): readonly TuiDocRoutePageBadge[] {
+        return item.badges?.length ? item.badges : this.aggregateBadge(item.subPages);
     }
 
     protected onGroupClick(index: number): void {
@@ -221,6 +233,12 @@ export class TuiDocNavigation {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
+    }
+
+    private aggregateBadge(
+        pages: readonly TuiDocRoutePage[] | undefined,
+    ): readonly TuiDocRoutePageBadge[] {
+        return pages?.some((page) => page.badges?.length) ? [UPDATED_BADGE] : [];
     }
 
     private filterItems(

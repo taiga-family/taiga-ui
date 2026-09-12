@@ -287,7 +287,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker, date, day, week, month, year',
                 route: DemoRoute.CalendarExperimental,
-                badge: {label: 'Experimental', appearance: 'warning'},
+                badges: [{label: 'Experimental', appearance: 'warning'}],
             },
         ],
     },
@@ -422,7 +422,10 @@ export const pages: DocRoutePages = [
         title: 'ScrollWheel',
         keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
         route: DemoRoute.ScrollWheel,
-        badge: {label: 'Experimental', appearance: 'warning'},
+        badges: [
+            {label: 'New', appearance: 'positive'},
+            {label: 'Experimental', appearance: 'warning'},
+        ],
     },
     {
         section: 'Components',
@@ -482,7 +485,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
-        badge: {label: 'Experimental', appearance: 'warning'},
+        badges: [{label: 'Experimental', appearance: 'warning'}],
     },
     {
         section: 'Components',
@@ -564,7 +567,7 @@ export const pages: DocRoutePages = [
                 keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
                 route: DemoRoute.SearchBar,
                 meta: {name: 'tui-search-bar'},
-                badge: {label: 'New', appearance: 'positive'},
+                badges: [{label: 'New', appearance: 'positive'}],
             },
             {
                 section: 'Components',
@@ -600,7 +603,7 @@ export const pages: DocRoutePages = [
         title: 'Popout',
         keywords: 'portal, window, pip, picture-in-picture, popup, новая вкладка',
         route: DemoRoute.Popout,
-        badge: {label: 'Experimental', appearance: 'warning'},
+        badges: [{label: 'Experimental', appearance: 'warning'}],
     },
     {
         section: 'Components',
@@ -896,7 +899,7 @@ export const pages: DocRoutePages = [
                 title: 'Pincode',
                 keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
                 route: DemoRoute.Pincode,
-                badge: {label: 'New', appearance: 'positive'},
+                badges: [{label: 'New', appearance: 'positive'}],
             },
             {
                 section: 'Form',
@@ -1113,7 +1116,7 @@ export const pages: DocRoutePages = [
         title: 'Meter',
         keywords: 'progress, bar, value',
         route: DemoRoute.Meter,
-        badge: {label: 'New', appearance: 'positive'},
+        badges: [{label: 'New', appearance: 'positive'}],
     },
     {
         section: 'Components',
@@ -1134,7 +1137,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
-        badge: {label: 'New', appearance: 'positive'},
+        badges: [{label: 'New', appearance: 'positive'}],
     },
     {
         section: 'Components',
@@ -1648,7 +1651,7 @@ export const pages: DocRoutePages = [
         keywords:
             'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
         route: DemoRoute.AiOverview,
-        badge: {label: 'New', appearance: 'positive'},
+        badges: [{label: 'New', appearance: 'positive'}],
     },
     {
         section: 'AI tools',

@@ -8,7 +8,7 @@ export interface TuiDocRoutePageBadge {
 export interface TuiDocRoutePageBase {
     readonly section?: string;
     readonly title: string;
-    readonly badge?: TuiDocRoutePageBadge;
+    readonly badges?: readonly TuiDocRoutePageBadge[];
 }
 
 export interface TuiDocRoutePage extends TuiDocRoutePageBase {
