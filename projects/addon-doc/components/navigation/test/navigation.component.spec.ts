@@ -67,7 +67,7 @@ describe('TuiDocNavigation badges', () => {
 
         const badgedRows = Array.from(host().querySelectorAll('a.t-sublink'))
             .filter((row) => row.querySelector('.t-new'))
-            .map((row) => row.textContent?.replace(/\s+/g, ' ').trim());
+            .map((row) => row.textContent?.replaceAll(/\s+/g, ' ').trim());
 
         expect(badgedRows).toEqual(['Beta page Beta']);
     });
