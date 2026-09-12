@@ -97,6 +97,12 @@ export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
+    private readonly sectionLeads = new Set(
+        inject(NAVIGATION_ITEMS)
+            .slice(0, -1)
+            .map((pages) => pages[0]),
+    );
+
     protected readonly open = signal(false);
     protected menuOpen = false;
     protected readonly drawer = inject(TuiDrawer, {optional: true});
@@ -120,12 +126,6 @@ export class TuiDocNavigation {
             ),
         ],
         [],
-    );
-
-    // First page of each section (last group is section-less pages) — its badge
-    // is shown on the section header, so it is not repeated on the page's row.
-    private readonly sectionLeads = new Set(
-        this.items.slice(0, -1).map((pages) => pages[0]),
     );
 
     protected openPagesArr: boolean[] = [];
