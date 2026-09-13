@@ -107,7 +107,7 @@ async function main(): Promise<void> {
                 brief = '';
             }
 
-            output.push(`- [${prettifyTitle(c.name)}](${url})${brief}`);
+            output.push(`- [${prettifyTitle(c.name)}](${url}) ([md](${url}.md))${brief}`);
         }
 
         output.push('');

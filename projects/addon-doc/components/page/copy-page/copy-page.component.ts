@@ -7,14 +7,15 @@ import {
     PLATFORM_ID,
     signal,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {NavigationEnd, Router} from '@angular/router';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_DOC_COPY_PAGE} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
-import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 'rxjs';
+import {from, of, switchMap} from 'rxjs';
+
+import {TuiDocPageMarkdown} from '../page-markdown.service';
 
 @Component({
     selector: 'tui-doc-copy-page',
@@ -26,8 +27,8 @@ import {distinctUntilChanged, filter, from, map, of, startWith, switchMap} from 
     hostDirectives: [TuiGroup],
 })
 export class TuiDocCopyPage {
-    private readonly router = inject(Router);
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+    private readonly pageMarkdown = inject(TuiDocPageMarkdown);
 
     protected readonly enabled = inject(TUI_DOC_COPY_PAGE);
     protected readonly open = signal(false);
@@ -42,14 +43,12 @@ export class TuiDocCopyPage {
         this.copied() ? this.icons.check : this.icons.copy,
     );
 
+    protected readonly markdownUrl = this.pageMarkdown.url;
+
     protected readonly markdown = toSignal(
-        this.router.events.pipe(
-            filter((event) => event instanceof NavigationEnd),
-            map(() => this.pagePath()),
-            startWith(this.pagePath()),
-            distinctUntilChanged(),
-            switchMap((page) =>
-                this.isBrowser ? from(this.fetchMarkdown(page)) : of(null),
+        toObservable(this.markdownUrl).pipe(
+            switchMap((url) =>
+                this.isBrowser ? from(this.fetchMarkdown(url)) : of(null),
             ),
         ),
         {initialValue: null},
@@ -67,27 +66,9 @@ export class TuiDocCopyPage {
         setTimeout(() => this.copied.set(false), 2000);
     }
 
-    protected markdownUrl(): string {
-        return `${this.pagePath()}.md`;
-    }
-
-    private pagePath(): string {
-        const [page = ''] = this.router.url.split(/[?#]/);
-        let route = this.router.routerState.snapshot.root;
-
-        while (route.firstChild) {
-            route = route.firstChild;
-        }
-
-        // Tabbed pages live under a ':tab' child but share one base .md.
-        return route.routeConfig?.path === ':tab'
-            ? page.slice(0, page.lastIndexOf('/'))
-            : page;
-    }
-
-    private async fetchMarkdown(page: string): Promise<string | null> {
+    private async fetchMarkdown(url: string): Promise<string | null> {
         try {
-            const response = await fetch(`${page}.md`);
+            const response = await fetch(url);
 
             const isHtml = (response.headers.get('content-type') ?? '').includes(
                 'text/html',

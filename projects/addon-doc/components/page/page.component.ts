@@ -1,8 +1,9 @@
-import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     contentChildren,
+    effect,
     inject,
     input,
     model,
@@ -21,6 +22,7 @@ import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocToc} from '../toc';
 import {TuiDocCopyPage} from './copy-page/copy-page.component';
 import {TUI_DOC_TABS} from './page.providers';
+import {TuiDocPageMarkdown} from './page-markdown.service';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
@@ -59,4 +61,25 @@ export class TuiDocPage {
     public readonly tags = input<string[]>([]);
     public readonly path = input('');
     public readonly activeItemIndex = model(0);
+
+    constructor() {
+        // Advertise the page's Markdown twin via <link rel="alternate">; it is prerendered
+        // into the static HTML, so agents/crawlers discover it without running the app.
+        const doc = inject(DOCUMENT);
+        const pageMarkdown = inject(TuiDocPageMarkdown);
+        const link = doc.createElement('link');
+
+        link.rel = 'alternate';
+        link.type = 'text/markdown';
+
+        effect((onCleanup) => {
+            if (!this.copyPage()) {
+                return;
+            }
+
+            link.href = pageMarkdown.url();
+            doc.head.appendChild(link);
+            onCleanup(() => link.remove());
+        });
+    }
 }
