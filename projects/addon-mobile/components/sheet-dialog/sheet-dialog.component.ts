@@ -92,7 +92,7 @@ export class TuiSheetDialogComponent<I> {
         this.interacted = this.interacted || !!delta;
         this.pointers = Math.max(this.pointers + delta, 0);
 
-        if (!this.pointers && this.el.scrollTop <= 0) {
+        if (!this.pointers && this.el.scrollTop <= 0 && this.interacted) {
             this.close$.next();
         }
     }
