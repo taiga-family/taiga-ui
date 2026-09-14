@@ -1,31 +1,23 @@
-import {Component, computed, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNumberFormat} from '@taiga-ui/core';
+import {TuiNumberFormat, type TuiNumberFormatSettings} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
-import {BigIntWithDecimal, type ControlValue} from './transformer';
-
 @Component({
-    imports: [BigIntWithDecimal, FormsModule, TuiInputNumber, TuiNumberFormat],
+    imports: [FormsModule, TuiInputNumber, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly infinity = Infinity;
+    protected value: number | null = 123_456_789;
 
-    protected readonly value = signal<ControlValue>({
-        significand: 123456700042n,
-        exp: -5,
-    });
-
-    protected readonly stringified = computed(() =>
-        JSON.stringify(
-            this.value(),
-            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
-            2,
-        ),
-    );
+    protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        thousandSeparator: ',',
+        // 1,2345,6789
+        thousandSeparatorPattern: (digits) =>
+            digits.match(/\d{1,4}(?=(?:\d{4})*$)/g) ?? [],
+    };
 }

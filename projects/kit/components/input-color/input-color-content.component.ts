@@ -28,6 +28,9 @@ export class TuiInputColorContent {
     protected readonly host = inject(TuiInputColorComponent);
     protected readonly maxAlpha = 255;
     protected readonly hasRgb = computed(() => this.host.value().length >= 7);
+    protected readonly color = computed(() =>
+        this.hasRgb() ? this.host.value().slice(0, 7) : '#000000',
+    );
 
     protected readonly opacity = computed(() => {
         if (this.host.format() !== 'hexa' || this.host.value().length !== 9) {

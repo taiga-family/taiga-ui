@@ -202,6 +202,121 @@ describe('InputRange', () => {
         });
     });
 
+    describe('[thousandSeparatorPattern] prop', () => {
+        beforeEach(({page}) => {
+            example = new TuiDocumentationApiPagePO(page).demo;
+            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+        });
+
+        describe('Japanese grouping (by four digits)', () => {
+            const url = `${DemoRoute.InputRange}/API?min=0&max=10000000&thousandSeparatorPattern$=1&thousandSeparator=_`;
+
+            test('type 1234567 into END textfield => 123_4567', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.clear();
+                await inputRange.textfieldEnd.pressSequentially('1234567');
+
+                await expect(inputRange.textfieldEnd).toHaveValue('123_4567');
+            });
+
+            test('type 123456 into START textfield => 12_3456', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.fill('1234567');
+                await inputRange.textfieldStart.clear();
+                await inputRange.textfieldStart.pressSequentially('123456');
+
+                await expect(inputRange.textfieldStart).toHaveValue('12_3456');
+            });
+
+            test('keeps formatted values on blur', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.fill('1234567');
+                await inputRange.textfieldStart.fill('123456');
+                await inputRange.textfieldStart.blur();
+
+                await expect(inputRange.textfieldStart).toHaveValue('12_3456');
+                await expect(inputRange.textfieldEnd).toHaveValue('123_4567');
+            });
+
+            test('9_9999 => ArrowUp => 10_0000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1`);
+                await inputRange.textfieldEnd.fill('99999');
+                await expect(inputRange.textfieldEnd).toHaveValue('9_9999');
+
+                await inputRange.textfieldEnd.press('ArrowUp');
+
+                await expect(inputRange.textfieldEnd).toHaveValue('10_0000');
+            });
+
+            test('click on the END side of the track => 1000_0000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1000000`);
+
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
+
+                await page.mouse.click(
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
+                );
+
+                await expect(inputRange.textfieldEnd).toHaveValue('1000_0000');
+            });
+        });
+
+        describe('Indian grouping (the last three digits, then by two)', () => {
+            const url = `${DemoRoute.InputRange}/API?min=0&max=10000000&thousandSeparatorPattern$=2&thousandSeparator=_`;
+
+            test('type 1234567 into END textfield => 12_34_567', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.clear();
+                await inputRange.textfieldEnd.pressSequentially('1234567');
+
+                await expect(inputRange.textfieldEnd).toHaveValue('12_34_567');
+            });
+
+            test('type 123456 into START textfield => 1_23_456', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.fill('1234567');
+                await inputRange.textfieldStart.clear();
+                await inputRange.textfieldStart.pressSequentially('123456');
+
+                await expect(inputRange.textfieldStart).toHaveValue('1_23_456');
+            });
+
+            test('keeps formatted values on blur', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputRange.textfieldEnd.fill('1234567');
+                await inputRange.textfieldStart.fill('123456');
+                await inputRange.textfieldStart.blur();
+
+                await expect(inputRange.textfieldStart).toHaveValue('1_23_456');
+                await expect(inputRange.textfieldEnd).toHaveValue('12_34_567');
+            });
+
+            test('99_999 => ArrowUp => 1_00_000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1`);
+                await inputRange.textfieldEnd.fill('99999');
+                await expect(inputRange.textfieldEnd).toHaveValue('99_999');
+
+                await inputRange.textfieldEnd.press('ArrowUp');
+
+                await expect(inputRange.textfieldEnd).toHaveValue('1_00_000');
+            });
+
+            test('click on the END side of the track => 1_00_00_000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1000000`);
+
+                const track = await inputRange.range.host.boundingBox().then((x) => x!);
+
+                await page.mouse.click(
+                    track.width + track.x - 1,
+                    track.height / 2 + track.y,
+                );
+
+                await expect(inputRange.textfieldEnd).toHaveValue('1_00_00_000');
+            });
+        });
+    });
+
     describe('updateOn blur', () => {
         test('updates form control value on blur', async ({page}) => {
             await tuiGoto(

@@ -162,6 +162,75 @@ describe('InputMonth', () => {
                 });
             });
         });
+
+        describe('Keyboard clearing', () => {
+            const selectMonth = async (): Promise<void> => {
+                await inputMonth.textfield.click();
+                await new TuiCalendarMonthPO(inputMonth.calendar).month.nth(8).click();
+                await expect(inputMonth.textfield).toHaveValue('September 2020');
+            };
+
+            [true, false].forEach((cleanerEnabled) => {
+                describe(`tuiTextfieldCleaner=${cleanerEnabled}`, () => {
+                    beforeEach(async ({page}) => {
+                        await tuiGoto(
+                            page,
+                            `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
+                        );
+                        await selectMonth();
+                        await inputMonth.textfield.click();
+
+                        await expect(inputMonth.calendar).toBeAttached();
+                    });
+
+                    test('Backspace', async ({page}) => {
+                        await page.keyboard.press('Backspace');
+                        await expect(inputMonth.textfield).toHaveValue(
+                            cleanerEnabled ? '' : 'September 2020',
+                        );
+                    });
+
+                    test('Delete', async ({page}) => {
+                        await page.keyboard.press('ControlOrMeta+A');
+                        await page.keyboard.press('Delete');
+                        await expect(inputMonth.textfield).toHaveValue(
+                            cleanerEnabled ? '' : 'September 2020',
+                        );
+                    });
+                });
+            });
+
+            describe('updates form control value', () => {
+                (['Home', 'End'] as const).forEach((caret) => {
+                    ['Backspace', 'Delete'].forEach((key) => {
+                        test(`caret at ${caret} + ${key} => form control value is null`, async ({
+                            page,
+                        }) => {
+                            await tuiGoto(
+                                page,
+                                `${DemoRoute.InputMonth}/API?sandboxExpanded=true&tuiTextfieldCleaner=true`,
+                            );
+
+                            const documentationPage = new TuiDocumentationPagePO(page);
+
+                            await selectMonth();
+                            await expect(documentationPage.value).toContainText(
+                                '2020-09',
+                            );
+
+                            await inputMonth.textfield.click();
+                            await page.keyboard.press(caret);
+                            await page.keyboard.press(key);
+
+                            await expect(inputMonth.textfield).toHaveValue('');
+                            await expect(documentationPage.value).toContainText(
+                                '"value": null',
+                            );
+                        });
+                    });
+                });
+            });
+        });
     });
 
     describe('Examples', () => {
