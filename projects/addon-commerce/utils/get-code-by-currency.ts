@@ -46,6 +46,17 @@ export const TUI_CODE_DICTIONARY: Record<TuiCurrency, TuiCurrencyCode> = {
     [TuiCurrency.VietnameseDong]: TuiCurrencyCode.VietnameseDong,
     [TuiCurrency.NewTurkmenManat]: TuiCurrencyCode.NewTurkmenManat,
     [TuiCurrency.BrazilianReal]: TuiCurrencyCode.BrazilianReal,
+    [TuiCurrency.ArgentinePeso]: TuiCurrencyCode.ArgentinePeso,
+    [TuiCurrency.CambodianRiel]: TuiCurrencyCode.CambodianRiel,
+    [TuiCurrency.ChileanPeso]: TuiCurrencyCode.ChileanPeso,
+    [TuiCurrency.EgyptianPound]: TuiCurrencyCode.EgyptianPound,
+    [TuiCurrency.KenyanShilling]: TuiCurrencyCode.KenyanShilling,
+    [TuiCurrency.LaoKip]: TuiCurrencyCode.LaoKip,
+    [TuiCurrency.MaldivianRufiyaa]: TuiCurrencyCode.MaldivianRufiyaa,
+    [TuiCurrency.PeruvianSol]: TuiCurrencyCode.PeruvianSol,
+    [TuiCurrency.PhilippinePeso]: TuiCurrencyCode.PhilippinePeso,
+    [TuiCurrency.TanzanianShilling]: TuiCurrencyCode.TanzanianShilling,
+    [TuiCurrency.UnidadDeFomento]: TuiCurrencyCode.UnidadDeFomento,
 };
 
 export function tuiGetCodeByCurrency(code: TuiCurrency): TuiCurrencyCode | null {
