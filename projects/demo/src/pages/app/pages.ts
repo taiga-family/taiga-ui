@@ -303,6 +303,7 @@ export const pages: DocRoutePages = [
         title: 'Carousel',
         keywords: 'карусель, слайдер, slider, carousel',
         route: DemoRoute.Carousel,
+        version: '5.0.0',
     },
     {
         section: 'Components',
@@ -348,6 +349,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
                 route: DemoRoute.PdfViewer,
+                version: '5.0.0',
             },
             {
                 section: 'Components',
@@ -481,6 +483,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
+        version: '5.9.0',
     },
     {
         section: 'Components',
@@ -720,6 +723,7 @@ export const pages: DocRoutePages = [
         title: 'Timeline',
         keywords: 'row, column, week, day, event, order',
         route: DemoRoute.Timeline,
+        version: '5.0.0',
     },
     {
         section: 'Components',
