@@ -5,9 +5,9 @@ import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
+import {AbstractExampleTuiHint} from '../abstract/hint';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
