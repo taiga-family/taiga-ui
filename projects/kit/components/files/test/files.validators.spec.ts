@@ -209,5 +209,13 @@ describe('tuiCreateFileFormatValidator', () => {
 
             expect(validator(control)).toBeNull();
         });
+
+        it('does not throw when file has no name', () => {
+            const validator = tuiCreateFileFormatValidator('.jpg');
+            const file = {} as unknown as File;
+            const control = new FormControl([file]);
+
+            expect(validator(control)?.[TUI_FORMAT_ERROR]).toBeTruthy();
+        });
     });
 });
