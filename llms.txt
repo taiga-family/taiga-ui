@@ -14,7 +14,6 @@
 
 ### Documentation
 
-- [Ai Support](https://taiga-ui.dev/ai-support)
 - [Appearances](https://taiga-ui.dev/appearances)
 - [Breakpoints](https://taiga-ui.dev/breakpoints)
 - [Colors](https://taiga-ui.dev/colors)
@@ -30,6 +29,13 @@
 - [Typography](https://taiga-ui.dev/typography)
 - [Variables](https://taiga-ui.dev/variables)
 - [Viewport](https://taiga-ui.dev/viewport)
+
+### Ai
+
+- [Llms](https://taiga-ui.dev/ai/llms)
+- [Mcp](https://taiga-ui.dev/ai/mcp)
+- [Overview](https://taiga-ui.dev/ai/overview)
+- [Skills](https://taiga-ui.dev/ai/skills)
 
 ### Charts
 
@@ -96,7 +102,7 @@
 - [Input Files](https://taiga-ui.dev/components/input-files) — An input for uploading one or several files using native input file capabilities
 - [Input Inline](https://taiga-ui.dev/components/input-inline) — Inline input field
 - [Input Month](https://taiga-ui.dev/components/input-month) — InputMonth = Textfield + CalendarMonth + ❤️
-- [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', ]; track example ) {
+- [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', 'Thousand separator pattern', 'Thousand separator pattern using Intl', 'Large integer and large decimal parts', ]; track example ) {
 - [Input Phone](https://taiga-ui.dev/components/input-phone) — InputPhone allows to input a phone number
 - [Input Phone International](https://taiga-ui.dev/components/input-phone-international) — Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
 - [Input Pin](https://taiga-ui.dev/components/input-pin)

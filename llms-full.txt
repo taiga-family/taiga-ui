@@ -1645,7 +1645,9 @@ example of ['Basic', 'Custom', 'Single', 'Eager and Lazy', 'Nested', 'Connected'
 
 ### Usage Examples
 
-#### Example 1
+#### Basic
+
+Default use case for an accordion with exclusive expanded item.
 
 **Template:**
 ```html
@@ -1678,7 +1680,9 @@ export default class Example {
 }
 ```
 
-#### Example 2
+#### Custom
+
+Customizing appearance of the accordion with CSS.
 
 **Template:**
 ```html
@@ -1798,7 +1802,9 @@ export default class Example {
 }
 ```
 
-#### Example 3
+#### Single
+
+Using accordion with a single item akin to details + summary tags.
 
 **Template:**
 ```html
@@ -1823,7 +1829,9 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Example 4
+#### Eager and Lazy
+
+Choosing between eagerly instantiated and lazy instantiated content.
 
 **Template:**
 ```html
@@ -1854,7 +1862,9 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Example 5
+#### Nested
+
+Showing multiple nested accordion blocks.
 
 **Template:**
 ```html
@@ -1887,7 +1897,9 @@ import {TuiAccordion} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
-#### Example 6
+#### Connected
+
+Using Connected directive to implement stepper-like UI.
 
 **Template:**
 ```html
@@ -1980,7 +1992,9 @@ export default class Example {
 }
 ```
 
-#### Example 7
+#### With Action Button
+
+Adding action buttons to accordion header.
 
 **Template:**
 ```html
@@ -6505,6 +6519,8 @@ Button is a basic component used for both icon buttons and regular buttons with 
 
 #### Sizes
 
+Simple buttons with preset size options.
+
 **Template:**
 ```html
 <button size="l" tuiButton type="button" > Large </button>
@@ -6537,6 +6553,8 @@ export default class Example {}
 ```
 
 #### Appearance
+
+Buttons support all built-in appearances. See Appearance directive for more.
 
 **Template:**
 ```html
@@ -6577,6 +6595,8 @@ export default class Example {}
 ```
 
 #### Icons
+
+Using icons and other elements, such as an Avatar inside buttons in a variety of ways.
 
 **Template:**
 ```html
@@ -6621,6 +6641,8 @@ export default class Example {}
 
 #### Loading
 
+Buttons can show a loading indicator when performing an action. Dedicated TuiButtonLoading component helps with accessibility by keeping button focusable while preventing click events.
+
 **Template:**
 ```html
 <button iconStart="@tui.clock" tuiButton type="button" [loading]="loading$ | async" (click)="trigger$.next()" > Click to start </button>
@@ -6653,6 +6675,8 @@ export default class Example {
 
 #### Options with DI
 
+Default values for buttons can be configured using DI options.
+
 **Template:**
 ```html
 <button tuiButton type="button" > Options with DI </button>
@@ -6675,6 +6699,8 @@ export default class Example {}
 ```
 
 #### Vertical
+
+Use tuiButtonVertical attribute to set different layout.
 
 **Template:**
 ```html
@@ -6706,6 +6732,8 @@ export default class Example {}
 ```
 
 #### Two labels
+
+Nested elements with a little bit of CSS can make button appear to have sections.
 
 **Template:**
 ```html
@@ -6747,6 +6775,8 @@ export default class Example {}
 
 #### Link
 
+Using tuiButton on an <a> element preserves native link semantics — right-click, open in new tab, and URL preview all work as expected.
+
 **Template:**
 ```html
 <a href="https://taiga-ui.dev" rel="noopener noreferrer" target="_blank" tuiButton > Documents </a>
@@ -6778,6 +6808,8 @@ export default class Example {}
 ```
 
 #### Label
+
+Using tuiButton on a <label> element preserves native label semantics and can trigger associated controls, such as hidden file inputs.
 
 **Template:**
 ```html
@@ -7848,7 +7880,9 @@ This is a work in progress The APIs might change in the future, use with caution
 
 ### Usage Examples
 
-#### Example 1
+#### Basic
+
+Date picker can be used together with date controls.
 
 **Template:**
 ```html
@@ -7908,7 +7942,9 @@ export default class Example {
 }
 ```
 
-#### Example 2
+#### Labels
+
+You can customize content of date picker cells, with built-in extended spacing when Title is used.
 
 **Template:**
 ```html
@@ -7971,7 +8007,9 @@ export default class Example {
 }
 ```
 
-#### Example 3
+#### Accessibility
+
+When attacked to a non-input, for example, ButtonSelect , a hidden input is added that gets focused when user presses arrow down .
 
 **Template:**
 ```html
@@ -8016,7 +8054,9 @@ export default class Example {
 }
 ```
 
-#### Example 4
+#### Customization
+
+Adding hint, different colors and week numbers.
 
 **Template:**
 ```html
@@ -8108,7 +8148,9 @@ tui-date-picker .hint {
 }
 ```
 
-#### Example 5
+#### Multiple
+
+You can display 1-3 months at the same time.
 
 **Template:**
 ```html
@@ -8136,7 +8178,9 @@ export default class Example {
 }
 ```
 
-#### Example 6
+#### Mobile
+
+Using mobile version of the calendar inside SheetDialog and a fullscreen Dialog
 
 **Template:**
 ```html
@@ -9052,315 +9096,6 @@ section {
 }
 ```
 
-#### Image
-
-**Template:**
-```html
-<div tuiCardLarge tuiHeader class="image-1" >
-<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
-</h1>
-<aside tuiAccessories>
-<button appearance="secondary-grayscale" tuiButtonX tuiTheme="dark" > Close </button>
-</aside>
-</div>
-<div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
-<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
-</h1>
-<aside tuiAccessories>
-<button appearance="secondary-grayscale" tuiButtonX > Close </button>
-</aside>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonX, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-
-@Component({
-    imports: [TuiButtonX, TuiCardLarge, TuiHeader, TuiTitle],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.image-1 {
-    background: url('/assets/images/illustration.jpg') no-repeat top right / 250%;
-}
-
-.image-2 {
-    background: url('/assets/images/road-illustration.jpg') no-repeat center / cover;
-}
-
-.image-2,
-:host-context([tuiTheme='dark']) .image-1 {
-    &::before {
-        content: '';
-        position: absolute;
-        inset-block-start: 0;
-        inset-inline-start: 0;
-        inline-size: 100%;
-        block-size: 100%;
-        background: rgba(0, 0, 0, 0.5);
-    }
-}
-
-[tuiButtonX] {
-    backdrop-filter: blur(1rem) brightness(1.25);
-}
-
-[tuiButtonX][tuiTheme='dark'] {
-    backdrop-filter: blur(1rem) brightness(0.5);
-}
-```
-
-#### Cell with close
-
-**Template:**
-```html
-<div tuiPlatform="ios">
-<h4>iOS/Android</h4>
-<div appearance="floating" tuiCardLarge="compact" tuiCell >
-<div appearance="primary" tuiAvatar="@tui.star" ></div>
-<div tuiTitle>
-<div tuiFade tuiFadeHeight="1.2rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" [style.block-size.rem]="2.5" > Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. </div>
-<div tuiFade tuiFadeHeight="1rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" tuiSubtitle [style.align-items]="'flex-start'" [style.block-size.rem]="2" > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </div>
-</div>
-<aside tuiAccessories>
-<button tuiButtonX type="button" > Close </button>
-</aside>
-</div>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
-
-@Component({
-    imports: [
-        TuiAvatar,
-        TuiButtonX,
-        TuiCardLarge,
-        TuiCell,
-        TuiFade,
-        TuiPlatform,
-        TuiTitle,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-**LESS:**
-```less
-[tuiCardLarge] {
-    max-inline-size: 21.4375rem;
-}
-```
-
-#### Paddings and radii
-
-**Template:**
-```html
-<div tuiPlatform="web">
-<h4>Desktop</h4>
-<div appearance="floating" tuiCardLarge="normal" >
-<header tuiHeader>
-<h2 tuiTitle> Normal <span tuiSubtitle>Radius: 24, padding: 24</span>
-</h2>
-</header>
-<footer>
-<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
-</footer>
-</div>
-<div appearance="floating" tuiCardLarge="compact" class="tui-space_top-4" >
-<header tuiHeader>
-<h2 tuiTitle> Compact <span tuiSubtitle>Radius: 16, padding: 20</span>
-</h2>
-</header>
-<footer>
-<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
-</footer>
-</div>
-</div>
-<div tuiPlatform="ios">
-<h4>iOS/Android</h4>
-<div appearance="floating" tuiCardLarge="normal" >
-<header tuiHeader="h6">
-<h2 tuiTitle> Normal <span tuiSubtitle>Radius: 24, padding: 20</span>
-</h2>
-</header>
-<footer>
-<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
-</footer>
-</div>
-<div appearance="floating" tuiCardLarge="compact" class="tui-space_top-4" >
-<header tuiHeader="h6">
-<h2 tuiTitle> Compact <span tuiSubtitle>Radius: 16, padding: 16</span>
-</h2>
-</header>
-<footer>
-<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
-</footer>
-</div>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-
-@Component({
-    imports: [TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### Map
-
-**Template:**
-```html
-<div appearance="floating" tuiCardLarge >
-<header tuiHeader>
-<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
-</h1>
-</header>
-<section>
-<iframe height="450" loading="lazy" src="https://yandex.ru/map-widget/v1/?um=constructor%3A0ff7188173ceeea1b3c1d5b2ebeaca63ceb70dc60ebc79513c51bb855356a6ac&amp;source=constructor" title="map" width="100%" class="map" ></iframe>
-</section>
-<footer>
-<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
-</footer>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-
-@Component({
-    imports: [TuiButton, TuiCardLarge, TuiHeader, TuiTitle],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {}
-```
-
-#### In portal
-
-**Template:**
-```html
-<button tuiButton type="button" (click)="step.set(step() || 1)" > Show popover </button>
-<div *tuiPopup="!!step()" appearance="floating" tuiAnimated tuiCardLarge="compact" class="popover" > @if (step() === 1) { <h1 tuiTitle> Leave your feedback <span tuiSubtitle>It will only take 3 minutes</span>
-</h1>
-<tui-rating [(ngModel)]="rating" /> } @if (step() === 2) { <h1 tuiTitle>Why so?</h1>
-<tui-textfield tuiTextfieldSize="m">
-<textarea placeholder="Leave a few words" tuiAutoFocus tuiTextarea [max]="3" [min]="3" [(ngModel)]="comment" ></textarea>
-</tui-textfield> } <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" class="close" (click)="close()" > Close </button>
-<footer class="footer"> @if (step() === 2) { <button appearance="secondary" size="s" tuiButton type="button" (click)="step.set(1)" > Back </button> } <button appearance="primary" size="s" tuiButton type="button" (click)="step() === 1 ? step.set(2) : close()" > {{ step() === 1 ? 'Next' : 'Submit' }} </button>
-</footer>
-</div>
-```
-**TypeScript:**
-```ts
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAnimated, TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiPopup, TuiTitle} from '@taiga-ui/core';
-import {TuiRating, TuiTextarea} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiAnimated,
-        TuiAutoFocus,
-        TuiButton,
-        TuiCardLarge,
-        TuiPopup,
-        TuiRating,
-        TuiTextarea,
-        TuiTitle,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly step = signal(0);
-    protected rating = 0;
-    protected comment = '';
-
-    protected close(): void {
-        this.rating = 0;
-        this.comment = '';
-        this.step.set(0);
-    }
-}
-```
-**LESS:**
-```less
-.popover {
-    position: fixed;
-    inset-inline-end: 1.5rem;
-    inset-block-end: 1.5rem;
-    inline-size: 20rem;
-
-    --tui-from: translateX(100%);
-
-    &.tui-enter,
-    &.tui-leave {
-        animation-name: tuiFade, tuiSlide;
-    }
-}
-
-.close {
-    position: absolute;
-    inset-block-start: 0.5rem;
-    inset-inline-end: 0.75rem;
-}
-
-.footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-}
-```
-
 #### Avatar
 
 **Template:**
@@ -9722,7 +9457,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiTitle],
     templateUrl: './index.html',
-    styles: ':host { display: flex; flex-direction: column; gap: 2rem}',
+    styles: ':host { display: flex; flex-direction: column; gap: 2rem }',
     encapsulation,
     changeDetection,
 })
@@ -9814,6 +9549,315 @@ export default class Example {}
 
 [tuiSubtitle] {
     font: var(--tui-typography-body-m);
+}
+```
+
+#### Image
+
+**Template:**
+```html
+<div tuiCardLarge tuiHeader class="image-1" >
+<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
+</h1>
+<aside tuiAccessories>
+<button appearance="secondary-grayscale" tuiButtonX tuiTheme="dark" > Close </button>
+</aside>
+</div>
+<div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
+<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
+</h1>
+<aside tuiAccessories>
+<button appearance="secondary-grayscale" tuiButtonX > Close </button>
+</aside>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonX, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiButtonX, TuiCardLarge, TuiHeader, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.image-1 {
+    background: url('/assets/images/illustration.jpg') no-repeat top right / 250%;
+}
+
+.image-2 {
+    background: url('/assets/images/road-illustration.jpg') no-repeat center / cover;
+}
+
+.image-2,
+:host-context([tuiTheme='dark']) .image-1 {
+    &::before {
+        content: '';
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+[tuiButtonX] {
+    backdrop-filter: blur(1rem) brightness(1.25);
+}
+
+[tuiButtonX][tuiTheme='dark'] {
+    backdrop-filter: blur(1rem) brightness(0.5);
+}
+```
+
+#### Cell with close
+
+**Template:**
+```html
+<div tuiPlatform="ios">
+<h4>iOS/Android</h4>
+<div appearance="floating" tuiCardLarge="compact" tuiCell >
+<div appearance="primary" tuiAvatar="@tui.star" ></div>
+<div tuiTitle>
+<div tuiFade tuiFadeHeight="1.2rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" [style.block-size.rem]="2.5" > Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. </div>
+<div tuiFade tuiFadeHeight="1rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" tuiSubtitle [style.align-items]="'flex-start'" [style.block-size.rem]="2" > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </div>
+</div>
+<aside tuiAccessories>
+<button tuiButtonX type="button" > Close </button>
+</aside>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
+import {TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiButtonX,
+        TuiCardLarge,
+        TuiCell,
+        TuiFade,
+        TuiPlatform,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+**LESS:**
+```less
+[tuiCardLarge] {
+    max-inline-size: 21.4375rem;
+}
+```
+
+#### Paddings and radii
+
+**Template:**
+```html
+<div tuiPlatform="web">
+<h4>Desktop</h4>
+<div appearance="floating" tuiCardLarge="normal" >
+<header tuiHeader>
+<h2 tuiTitle> Normal <span tuiSubtitle>Radius: 24, padding: 24</span>
+</h2>
+</header>
+<footer>
+<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
+</footer>
+</div>
+<div appearance="floating" tuiCardLarge="compact" class="tui-space_top-4" >
+<header tuiHeader>
+<h2 tuiTitle> Compact <span tuiSubtitle>Radius: 16, padding: 20</span>
+</h2>
+</header>
+<footer>
+<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
+</footer>
+</div>
+</div>
+<div tuiPlatform="ios">
+<h4>iOS/Android</h4>
+<div appearance="floating" tuiCardLarge="normal" >
+<header tuiHeader="h6">
+<h2 tuiTitle> Normal <span tuiSubtitle>Radius: 24, padding: 20</span>
+</h2>
+</header>
+<footer>
+<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
+</footer>
+</div>
+<div appearance="floating" tuiCardLarge="compact" class="tui-space_top-4" >
+<header tuiHeader="h6">
+<h2 tuiTitle> Compact <span tuiSubtitle>Radius: 16, padding: 16</span>
+</h2>
+</header>
+<footer>
+<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
+</footer>
+</div>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Map
+
+**Template:**
+```html
+<div appearance="floating" tuiCardLarge >
+<header tuiHeader>
+<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
+</h1>
+</header>
+<section>
+<iframe height="450" loading="lazy" src="https://yandex.ru/map-widget/v1/?um=constructor%3A0ff7188173ceeea1b3c1d5b2ebeaca63ceb70dc60ebc79513c51bb855356a6ac&amp;source=constructor" title="map" width="100%" class="map" ></iframe>
+</section>
+<footer>
+<button appearance="secondary" size="m" tuiButton type="button" > Label </button>
+</footer>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiButton, TuiCardLarge, TuiHeader, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### In portal
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="step.set(step() || 1)" > Show popover </button>
+<div *tuiPopup="!!step()" appearance="floating" tuiAnimated tuiCardLarge="compact" class="popover" > @if (step() === 1) { <h1 tuiTitle> Leave your feedback <span tuiSubtitle>It will only take 3 minutes</span>
+</h1>
+<tui-rating [(ngModel)]="rating" /> } @if (step() === 2) { <h1 tuiTitle>Why so?</h1>
+<tui-textfield tuiTextfieldSize="m">
+<textarea placeholder="Leave a few words" tuiAutoFocus tuiTextarea [max]="3" [min]="3" [(ngModel)]="comment" ></textarea>
+</tui-textfield> } <button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" class="close" (click)="close()" > Close </button>
+<footer class="footer"> @if (step() === 2) { <button appearance="secondary" size="s" tuiButton type="button" (click)="step.set(1)" > Back </button> } <button appearance="primary" size="s" tuiButton type="button" (click)="step() === 1 ? step.set(2) : close()" > {{ step() === 1 ? 'Next' : 'Submit' }} </button>
+</footer>
+</div>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAnimated, TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiPopup, TuiTitle} from '@taiga-ui/core';
+import {TuiRating, TuiTextarea} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAnimated,
+        TuiAutoFocus,
+        TuiButton,
+        TuiCardLarge,
+        TuiPopup,
+        TuiRating,
+        TuiTextarea,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly step = signal(0);
+    protected rating = 0;
+    protected comment = '';
+
+    protected close(): void {
+        this.rating = 0;
+        this.comment = '';
+        this.step.set(0);
+    }
+}
+```
+**LESS:**
+```less
+.popover {
+    position: fixed;
+    inset-inline-end: 1.5rem;
+    inset-block-end: 1.5rem;
+    inline-size: 20rem;
+
+    --tui-from: translateX(100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+}
+
+.close {
+    position: absolute;
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.75rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }
 ```
 
@@ -10348,6 +10392,8 @@ Generic swipeable container to scroll through content
 
 #### Basic
 
+Minimal implementation with limits.
+
 **Template:**
 ```html
 <button appearance="action" iconStart="@tui.chevron-left" tuiIconButton type="button" [disabled]="index() === 0" (click)="carousel.prev()" > Previous </button>
@@ -10385,6 +10431,8 @@ export default class Example {
 ```
 
 #### Looped
+
+Infinite loop with seamless transitions.
 
 **Template:**
 ```html
@@ -10432,6 +10480,8 @@ export default class Example {
 ```
 
 #### Automatic
+
+Scrolling to the next slide after timeout.
 
 **Template:**
 ```html
@@ -10517,6 +10567,8 @@ export default class Example {
 
 #### Dynamic height
 
+Carousel automatically transitions height of the container.
+
 **Template:**
 ```html
 <tui-carousel [max]="4" [min]="0" [style.inline-size.rem]="17" >
@@ -10550,6 +10602,8 @@ export default class Example {
 ```
 
 #### Multiple
+
+Multiple items per slide.
 
 **Template:**
 ```html
@@ -10710,160 +10764,6 @@ export default class Example {
 
 [tuiCell] {
     max-inline-size: 25rem;
-}
-```
-
-#### Stretch
-
-**Template:**
-```html
-<button tuiButton type="button" (click)="open = true" > Open Sheet Dialog </button>
-<ng-template let-observer [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
-<nav>
-<button tuiCell="l" tuiCellStretch type="button" >
-<div appearance="primary" tuiAvatar="@tui.home" ></div>
-<div tuiTitle> Home <div tuiSubtitle>Main page</div>
-</div>
-</button>
-<button tuiCell="l" tuiCellStretch type="button" >
-<div appearance="accent" tuiAvatar="@tui.user" ></div>
-<div tuiTitle> Profile <div tuiSubtitle>Account settings</div>
-</div>
-</button>
-<button tuiCell="l" tuiCellStretch type="button" >
-<div appearance="positive" tuiAvatar="@tui.heart" ></div>
-<div tuiTitle> Favorites <div tuiSubtitle>Saved items</div>
-</div>
-<tui-badge-notification>3</tui-badge-notification>
-</button>
-<button tuiCell="l" tuiCellStretch type="button" >
-<div appearance="warning" tuiAvatar="@tui.star" ></div>
-<div tuiTitle> Premium <div tuiSubtitle>Upgrade your plan</div>
-</div>
-</button>
-</nav>
-<footer>
-<button size="m" tuiButton type="button" (click)="observer.complete()" > Close </button>
-</footer>
-</ng-template>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiCell, TuiCellStretch, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadgeNotification} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        TuiAvatar,
-        TuiBadgeNotification,
-        TuiButton,
-        TuiCell,
-        TuiCellStretch,
-        TuiSheetDialog,
-        TuiTitle,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected open = false;
-
-    protected readonly options: Partial<TuiSheetDialogOptions> = {
-        label: 'Navigation',
-        closable: true,
-    };
-}
-```
-
-#### Responsive
-
-**Template:**
-```html
-<div tuiCell tuiCellResponsive >
-<div tuiAvatar="@tui.star"></div>
-<div tuiTitle>
-<div tuiTitle>
-<span tuiFade>Works with fade on both sides</span>
-<span tuiFade>Proportions are controlled with flex</span>
-</div>
-<div tuiSubtitle>
-<span tuiFade>You can control proportions</span>
-<span tuiFade>Flex is set to 70-30 by default</span>
-</div>
-</div>
-</div>
-<div tuiCell tuiCellResponsive >
-<div tuiAvatar="@tui.star"></div>
-<div tuiTitle> Long title that's hard to read with long button <div tuiSubtitle>Button wraps to the next line</div>
-</div>
-<div tuiAccessories>
-<button tuiButton type="button" > Long button </button>
-</div>
-</div>
-<div tuiCell tuiCellResponsive >
-<div tuiTitle> A cell without avatar <div tuiSubtitle>Button wraps to the next line</div>
-</div>
-<div tuiAccessories>
-<button tuiButton type="button" > Long button </button>
-</div>
-</div>
-<label tuiCell tuiCellResponsive >
-<span tuiAvatar="@tui.star"></span>
-<span tuiTitle> For small accessories <span tuiSubtitle>Use grid-row: 1</span>
-</span>
-<span tuiAccessories>
-<input tuiSwitch type="checkbox" [(ngModel)]="value" />
-</span>
-</label>
-```
-**TypeScript:**
-```ts
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiCell, TuiCellResponsive, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFade, TuiSwitch} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiAvatar,
-        TuiButton,
-        TuiCell,
-        TuiCellResponsive,
-        TuiFade,
-        TuiSwitch,
-        TuiTitle,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly value = signal(false);
-}
-```
-**LESS:**
-```less
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-[tuiCell] {
-    max-inline-size: 25rem;
-
-    &:last-child [tuiAccessories] {
-        grid-row: 1;
-    }
 }
 ```
 
@@ -11551,6 +11451,162 @@ export default class Example {
 }
 ```
 
+#### Stretch
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="open = true" > Open Sheet Dialog </button>
+<ng-template let-observer [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
+<nav>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div appearance="primary" tuiAvatar="@tui.home" ></div>
+<div tuiTitle> Home <div tuiSubtitle>Main page</div>
+</div>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div appearance="accent" tuiAvatar="@tui.user" ></div>
+<div tuiTitle> Profile <div tuiSubtitle>Account settings</div>
+</div>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div appearance="positive" tuiAvatar="@tui.heart" ></div>
+<div tuiTitle> Favorites <div tuiSubtitle>Saved items</div>
+</div>
+<tui-badge-notification>3</tui-badge-notification>
+</button>
+<button tuiCell="l" tuiCellStretch type="button" >
+<div appearance="warning" tuiAvatar="@tui.star" ></div>
+<div tuiTitle> Premium <div tuiSubtitle>Upgrade your plan</div>
+</div>
+</button>
+</nav>
+<footer>
+<button size="m" tuiButton type="button" (click)="observer.complete()" > Close </button>
+</footer>
+</ng-template>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {TuiButton, TuiCell, TuiCellStretch, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiBadgeNotification} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiBadgeNotification,
+        TuiButton,
+        TuiCell,
+        TuiCellStretch,
+        TuiSheetDialog,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
+        label: 'Navigation',
+        closable: true,
+    };
+}
+```
+
+#### Responsive
+
+Open this example on the phone with OS font size increased by 150% to see cell rearrange for better readability.
+
+**Template:**
+```html
+<div tuiCell tuiCellResponsive >
+<div tuiAvatar="@tui.star"></div>
+<div tuiTitle>
+<div tuiTitle>
+<span tuiFade>Works with fade on both sides</span>
+<span tuiFade>Proportions are controlled with flex</span>
+</div>
+<div tuiSubtitle>
+<span tuiFade>You can control proportions</span>
+<span tuiFade>Flex is set to 70-30 by default</span>
+</div>
+</div>
+</div>
+<div tuiCell tuiCellResponsive >
+<div tuiAvatar="@tui.star"></div>
+<div tuiTitle> Long title that's hard to read with long button <div tuiSubtitle>Button wraps to the next line</div>
+</div>
+<div tuiAccessories>
+<button tuiButton type="button" > Long button </button>
+</div>
+</div>
+<div tuiCell tuiCellResponsive >
+<div tuiTitle> A cell without avatar <div tuiSubtitle>Button wraps to the next line</div>
+</div>
+<div tuiAccessories>
+<button tuiButton type="button" > Long button </button>
+</div>
+</div>
+<label tuiCell tuiCellResponsive >
+<span tuiAvatar="@tui.star"></span>
+<span tuiTitle> For small accessories <span tuiSubtitle>Use grid-row: 1</span>
+</span>
+<span tuiAccessories>
+<input tuiSwitch type="checkbox" [(ngModel)]="value" />
+</span>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiCell, TuiCellResponsive, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFade, TuiSwitch} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiAvatar,
+        TuiButton,
+        TuiCell,
+        TuiCellResponsive,
+        TuiFade,
+        TuiSwitch,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = signal(false);
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+[tuiCell] {
+    max-inline-size: 25rem;
+
+    &:last-child [tuiAccessories] {
+        grid-row: 1;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -11614,6 +11670,8 @@ A checkbox component that is able to imitate native control on mobile platforms.
 ### Usage Examples
 
 #### Example 1
+
+Add import of @taiga-ui/addon-mobile/styles/taiga-ui-mobile.less to your encapsulated global styles to enable power of TuiPlatform directive.
 
 **Template:**
 ```html
@@ -11694,6 +11752,8 @@ export default class Example implements OnInit {
 
 #### Example 2
 
+If you only want to show checkbox for decorative purpose, without it being interactive — use it without Angular forms.
+
 **Template:**
 ```html
 <p>
@@ -11726,6 +11786,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+Using with Angular forms: boolean is determinate and null is indeterminate state.
 
 **Template:**
 ```html
@@ -12273,6 +12335,8 @@ ComboBox is a form control for selecting a single value from a set of options. I
 
 #### Basic
 
+The main helper you’ll use with almost every ComboBox is the tuiFilterByInput pipe. It enables item filtering based on the user’s input as they type.
+
 **Template:**
 ```html
 <tui-textfield tuiChevron>
@@ -12315,200 +12379,9 @@ export default class Example {
 }
 ```
 
-#### Virtual scroll
-
-**Template:**
-```html
-<tui-textfield tuiChevron>
-<input placeholder="Country" tuiComboBox [(ngModel)]="value" />
-<ng-container *tuiDropdown>
-<!-- 42 = option height -->
-<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="42" [maxBufferPx]="42 * 10" [minBufferPx]="42 * 5" [style.height.px]="(items?.length || 1) * 42 + 8" >
-<tui-data-list withVirtualScroll>
-<button *cdkVirtualFor="let item of items" tuiOption type="button" [value]="item" > {{ item }} </button>
-</tui-data-list>
-</cdk-virtual-scroll-viewport>
-</ng-container>
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from '@taiga-ui/core';
-import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
-
-import {WithVirtualScroll} from './with-virtual-scroll';
-
-@Component({
-    imports: [
-        FormsModule,
-        ScrollingModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataList,
-        TuiFilterByInputPipe,
-        TuiScrollable,
-        WithVirtualScroll,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-    protected value = null;
-}
-```
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
-.scroll {
-    .scrollbar-hidden();
-
-    max-block-size: 100%;
-}
-```
-
-#### With DropdownMobile
-
-**Template:**
-```html
-<tui-textfield tuiChevron tuiDropdownMobile >
-<input placeholder="Select destination" tuiComboBox [(ngModel)]="value" />
-<tui-data-list-wrapper *tuiDropdown [items]="countries | tuiFilterByInput" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component, inject, ViewEncapsulation} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {TuiFilterByInputPipe} from '@taiga-ui/core';
-import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiDropdownMobile,
-        TuiFilterByInputPipe,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection,
-})
-export default class Example {
-    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
-    protected value: string | null = null;
-}
-```
-**LESS:**
-```less
-@sticky-header-height: 4.1875rem;
-
-:root {
-    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;
-}
-
-header[tuiDocHeader] {
-    visibility: visible;
-}
-```
-
-#### Override option component
-
-**Template:**
-```html
-<tui-textfield tuiChevron>
-<input placeholder="Select something" tuiComboBox [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiFilterByInputPipe} from '@taiga-ui/core';
-import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
-
-import {Option} from './option';
-
-@Component({
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiFilterByInputPipe,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-    providers: [tuiAsOptionContent(Option)],
-})
-export default class Example {
-    protected readonly items = Array.from(
-        {length: 5},
-        (_, index) => `Option ${index + 1}`,
-    );
-
-    protected readonly control = new FormControl<string | null>(this.items[2]!);
-}
-```
-
-#### Override option handling
-
-**Template:**
-```html
-<tui-textfield tuiChevron>
-<input customComboBox [(ngModel)]="value" (pick)="alerts.open($event).subscribe()" />
-<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFilterByInputPipe, TuiNotificationService} from '@taiga-ui/core';
-import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
-
-import {CustomComboBox} from './custom';
-
-@Component({
-    imports: [
-        CustomComboBox,
-        FormsModule,
-        TuiChevron,
-        TuiComboBox,
-        TuiDataListWrapper,
-        TuiFilterByInputPipe,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly alerts = inject(TuiNotificationService);
-    protected readonly items = inject<string[]>('Pythons' as any);
-    protected value: string | null = null;
-}
-```
-
 #### Non-strict mode
+
+By default, strict mode is enabled. This means the input value must match one of the options from the data list. If the value doesn't match, the form control is not updated and the input is cleared on blur. In non-strict mode, the form control can contain any value — even if it doesn’t match any item in the data list.
 
 **Template:**
 ```html
@@ -12550,6 +12423,8 @@ export default class Example {
 ```
 
 #### Client-side filtering
+
+You can configure any filtering logic by passing a custom matcher function as an argument to the tuiFilterByInput pipe.
 
 **Template:**
 ```html
@@ -12632,6 +12507,8 @@ export default class Example {
 
 #### Textfield customization
 
+Take full advantage of Textfield : add any number of Icons and Tooltips (with control over their order and color), adjust the size of the textbox, and more. Explore Input documentation page for more customization options.
+
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.search" tuiChevron tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
@@ -12678,6 +12555,8 @@ export default class Example {
 ```
 
 #### Server-side filtering
+
+Pass null as argument to tui-data-list-wrapper[items] to show loader inside the dropdown. Additionally, you can put Loader inside textfield's box. Pass empty array to tui-data-list-wrapper[items] to show tui-data-list-wrapper[emptyContent] (it accepts PolymorpheusContent ).
 
 **Template:**
 ```html
@@ -12732,6 +12611,8 @@ export default class Example {
 ```
 
 #### Items handlers
+
+Use tuiItemsHandlersProvider to override the default behavior of all ComboBox -s below the current DI scope. To customize a specific ComboBox , use the input properties [identityMatcher] / [stringify] / disabledItemHandler (inherited from Textfield ).
 
 **Template:**
 ```html
@@ -12800,6 +12681,8 @@ export default class Example {
 ```
 
 #### Customize content
+
+DataListWrapper lets you customize the appearance of options inside the dropdown by [itemContent] property. Also, Textfield has [content] property to customize appearance of selected option inside textbox. Both properties accept PolymorpheusContent – it empowers you with extremely large possibilities for customization.
 
 **Template:**
 ```html
@@ -12873,6 +12756,8 @@ export default class Example {
 ```
 
 #### With DataList
+
+DataListWrapper is just a helper to solve most popular use cases. Use DataList for more complex cases when great flexibility is required. DataList documentation page for more customization options.
 
 **Template:**
 ```html
@@ -12973,6 +12858,8 @@ export default class Example {
 
 #### Choose form control output
 
+DataList exposes Option -directives – it provides you with an opportunity to decide which data type put inside its [value] . This example demonstrates how every option can be a complex object with any structure but form control contains a single id-property as number -type.
+
 **Template:**
 ```html
 <tui-textfield tuiChevron [stringify]="stringify" >
@@ -13037,6 +12924,207 @@ export default class Example {
 
         return String(id) === query || name.toLowerCase() === query.toLowerCase();
     };
+}
+```
+
+#### Virtual scroll
+
+You can use ComboBox with virtual scrolling from @angular/cdk/scrolling . Virtual scroll renders only a small subset of options in the DOM at a time — the rest don't exist until scrolled into view. The custom WithVirtualScroll directive gives ComboBox access to the full list so it can match values typed manually into the textfield, even when the matching option is off-screen.
+
+**Template:**
+```html
+<tui-textfield tuiChevron>
+<input placeholder="Country" tuiComboBox [(ngModel)]="value" />
+<ng-container *tuiDropdown>
+<!-- 42 = option height -->
+<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="42" [maxBufferPx]="42 * 10" [minBufferPx]="42 * 5" [style.height.px]="(items?.length || 1) * 42 + 8" >
+<tui-data-list withVirtualScroll>
+<button *cdkVirtualFor="let item of items" tuiOption type="button" [value]="item" > {{ item }} </button>
+</tui-data-list>
+</cdk-virtual-scroll-viewport>
+</ng-container>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataList, TuiFilterByInputPipe, TuiScrollable} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox} from '@taiga-ui/kit';
+
+import {WithVirtualScroll} from './with-virtual-scroll';
+
+@Component({
+    imports: [
+        FormsModule,
+        ScrollingModule,
+        TuiChevron,
+        TuiComboBox,
+        TuiDataList,
+        TuiFilterByInputPipe,
+        TuiScrollable,
+        WithVirtualScroll,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
+    protected value = null;
+}
+```
+**LESS:**
+```less
+@import '@taiga-ui/styles/utils.less';
+
+.scroll {
+    .scrollbar-hidden();
+
+    max-block-size: 100%;
+}
+```
+
+#### With DropdownMobile
+
+Use real mobile device or enable mobile emulation in DevTools to explore this example! Put tuiDropdownMobile on <tui-textfield /> to enable a full-screen dialog instead of the default dropdown on mobile devices. By default, the full-screen dialog hides all other content using visibility: hidden and shifts the textfield to the top of the page. Use --tui-dropdown-mobile-offset css-variable option to control how far the textfield is shifted. If needed, manually set visibility: visible on any hidden elements (e.g., a sticky header) to make them visible again.
+
+**Template:**
+```html
+<tui-textfield tuiChevron tuiDropdownMobile >
+<input placeholder="Select destination" tuiComboBox [(ngModel)]="value" />
+<tui-data-list-wrapper *tuiDropdown [items]="countries | tuiFilterByInput" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiComboBox,
+        TuiDataListWrapper,
+        TuiDropdownMobile,
+        TuiFilterByInputPipe,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Example {
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
+    protected value: string | null = null;
+}
+```
+**LESS:**
+```less
+@sticky-header-height: 4.1875rem;
+
+:root {
+    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;
+}
+
+header[tuiDocHeader] {
+    visibility: visible;
+}
+```
+
+#### Override option component
+
+You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases <tui-data-list-wrapper [itemContent]="..." /> can be enough for your task. Explore this example for more details.
+
+**Template:**
+```html
+<tui-textfield tuiChevron>
+<input placeholder="Select something" tuiComboBox [formControl]="control" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiAsOptionContent, TuiFilterByInputPipe} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
+
+import {Option} from './option';
+
+@Component({
+    imports: [
+        ReactiveFormsModule,
+        TuiChevron,
+        TuiComboBox,
+        TuiDataListWrapper,
+        TuiFilterByInputPipe,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [tuiAsOptionContent(Option)],
+})
+export default class Example {
+    protected readonly items = Array.from(
+        {length: 5},
+        (_, index) => `Option ${index + 1}`,
+    );
+
+    protected readonly control = new FormControl<string | null>(this.items[2]!);
+}
+```
+
+#### Override option handling
+
+Provide your custom directive as a proxy value handler using tuiAsTextfieldAccessor if you need some custom logic upon picking an item.
+
+**Template:**
+```html
+<tui-textfield tuiChevron>
+<input customComboBox [(ngModel)]="value" (pick)="alerts.open($event).subscribe()" />
+<tui-data-list-wrapper *tuiDropdown [items]="items | tuiFilterByInput" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFilterByInputPipe, TuiNotificationService} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
+
+import {CustomComboBox} from './custom';
+
+@Component({
+    imports: [
+        CustomComboBox,
+        FormsModule,
+        TuiChevron,
+        TuiComboBox,
+        TuiDataListWrapper,
+        TuiFilterByInputPipe,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly alerts = inject(TuiNotificationService);
+    protected readonly items = inject<string[]>('Pythons' as any);
+    protected value: string | null = null;
 }
 ```
 
@@ -13288,6 +13376,8 @@ export default class Page {
 
 #### Example 1
 
+Direction isn't present (direction is NaN)
+
 **TypeScript:**
 ```ts
 import {Component} from '@angular/core';
@@ -13305,6 +13395,8 @@ export default class Example {}
 ```
 
 #### Example 2
+
+Following pointer on the page
 
 **TypeScript:**
 ```ts
@@ -13391,7 +13483,7 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 
 ### Usage Examples
 
-#### Example 1
+#### Basic
 
 **Template:**
 ```html
@@ -13497,6 +13589,8 @@ This component provides an easy way to copy text content to the clipboard. It di
 
 #### Basic
 
+Using component in various scenarios.
+
 **Template:**
 ```html
 <p tuiTitle>
@@ -13548,6 +13642,8 @@ span {
 
 #### Sizes
 
+Using size option for various font size cases.
+
 **Template:**
 ```html
 @for (font of fonts | keyvalue: orderBy; track font) { <p>
@@ -13594,6 +13690,8 @@ export default class Example {
 
 #### InputCopy
 
+Using tui-icon[tuiCopy] inside a textfield
+
 **Template:**
 ```html
 <tui-textfield>
@@ -13629,6 +13727,8 @@ export default class Example {
 ```
 
 #### With CopyProcessor
+
+Dedicated component for copying values inside tooltips
 
 **Template:**
 ```html
@@ -14227,7 +14327,7 @@ const EXPENSES = {
     templateUrl: './index.html',
     styles: `
         .control {
-            width: 320px;
+            inline-size: 20rem;
         }
     `,
     encapsulation,
@@ -14695,6 +14795,8 @@ Customizable modal dialogs
 
 #### String
 
+Basic string dialog with a customizable button.
+
 **Template:**
 ```html
 <button tuiButton type="button" (click)="default()" > Default button </button>
@@ -14741,6 +14843,8 @@ export default class Example {
 
 #### Directive
 
+Using declarative directive to layout and show a dialog.
+
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
@@ -14778,6 +14882,8 @@ export default class Example {
 ```
 
 #### Component
+
+Reusing a component to show a dialog.
 
 **Template:**
 ```html
@@ -14818,6 +14924,8 @@ export default class Example {
 ```
 
 #### Confirmation
+
+Using bundled component for action confirmation.
 
 **Template:**
 ```html
@@ -14892,6 +15000,8 @@ export default class Example {
 
 #### Closing
 
+Providing a custom stream to close dialogs.
+
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show dialog </button>
@@ -14939,6 +15049,8 @@ export default class Example {
 ```
 
 #### Fullscreen
+
+Using built-in fullscreen appearance
 
 **Template:**
 ```html
@@ -15009,6 +15121,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Customizing look and animations of dialogs by augmenting built-in appearance or completely overriding it.
 
 **Template:**
 ```html
@@ -15084,6 +15198,8 @@ export default class Example {
 ```
 
 #### Content width
+
+Passing null as size lets the dialog width be determined by its content.
 
 **Template:**
 ```html
@@ -15734,6 +15850,8 @@ Component for showing arbitrary messages styled as errors, with height and fade 
 
 #### Basic
 
+Using as standalone or to display validation errors from form control.
+
 **Template:**
 ```html
 <label tuiLabel>
@@ -15814,6 +15932,8 @@ export default class Example {
 ```
 
 #### DI
+
+Providing validation error messages for various errors with DI token.
 
 **Template:**
 ```html
@@ -15903,6 +16023,8 @@ export default class Example {
 
 #### Template
 
+Using ng-template to show rich HTML error messages.
+
 **Template:**
 ```html
 <form tuiForm="m" [formGroup]="form" (ngSubmit)="onSubmit()" >
@@ -15964,6 +16086,8 @@ export default class Example {
 ```
 
 #### Array
+
+Using with dynamic FormArray
 
 **Template:**
 ```html
@@ -16048,6 +16172,8 @@ export default class Example {
 
 #### Asynchronous
 
+Displaying error message via async validators.
+
 **Template:**
 ```html
 <form tuiForm [formGroup]="form" >
@@ -16100,6 +16226,8 @@ export default class Example {
 ```
 
 #### Pipe
+
+Using pipe to feed error message to the hint directive.
 
 **Template:**
 ```html
@@ -16167,6 +16295,8 @@ export default class Example {
 ```
 
 #### Component
+
+Reusable error messages with a dedicated component.
 
 **Template:**
 ```html
@@ -16451,6 +16581,8 @@ This component is based on Cell and therefore follows its rules on padding in ho
 
 #### Horizontal
 
+Cell view has 3 size presets, same as Cell component it is built upon.
+
 **Template:**
 ```html
 <tui-segmented> @for (item of ['s', 'm', 'l']; track $index) { <label> {{ item }} <input name="size" type="radio" [value]="item" [(ngModel)]="size" />
@@ -16546,6 +16678,8 @@ tui-segmented {
 
 #### Vertical
 
+Card size has min/max width built-in according to specs.
+
 **Template:**
 ```html
 <tui-segmented> @for (item of ['m', 'l']; track $index) { <label> {{ item }} <input name="size" type="radio" [value]="item" [(ngModel)]="size" />
@@ -16619,6 +16753,8 @@ tui-segmented {
 
 #### Texts
 
+Long file names are allowed by default but can be trimmed using line-clamp CSS.
+
 **Template:**
 ```html
 @for (orientation of orientations; track $index) { <div tuiFile [orientation]="orientation" >
@@ -16673,6 +16809,8 @@ export default class Example {
 ```
 
 #### Transitions
+
+Transitions are handled using Slides component which is built-in for the content but needs to be manually applied for text.
 
 **Template:**
 ```html
@@ -16735,6 +16873,8 @@ span {
 ```
 
 #### Preview
+
+Elements that follow an IMG tag automatically apply darkening and blur effect to the underlying image.
 
 **Template:**
 ```html
@@ -16801,6 +16941,8 @@ export default class Example {
 
 #### With file selector
 
+Using pipe for automatic image preview.
+
 **Template:**
 ```html
 <div tuiFile>
@@ -16856,6 +16998,8 @@ export default class Example {
 ```
 
 #### InputFiles
+
+Use extra CSS for the grid to allow height transition.
 
 **Template:**
 ```html
@@ -17406,6 +17550,8 @@ FloatingContainer is a special container for creating different animated sticky 
 
 #### Basic
 
+Appearing on scroll and toggling of secondary action.
+
 **Template:**
 ```html
 <h2>Scroll to see the floating</h2>
@@ -17483,6 +17629,8 @@ footer {
 ```
 
 #### Sheet
+
+Using inside a SheetDialog
 
 **Template:**
 ```html
@@ -17584,6 +17732,8 @@ export default class Example {
 
 #### Text
 
+Text block can be used together with a single button.
+
 **Template:**
 ```html
 <p>
@@ -17672,6 +17822,8 @@ footer {
 ```
 
 #### Content
+
+Any kind of content can be placed inside. Use animation: none to prevent pop-in animation.
 
 **Template:**
 ```html
@@ -17762,6 +17914,8 @@ footer {
 ```
 
 #### Overlay
+
+Overlay color can be customized.
 
 **Template:**
 ```html
@@ -17865,6 +18019,8 @@ footer {
 
 #### Crossfade
 
+Using Slides to crossfade a button.
+
 **Template:**
 ```html
 <p>
@@ -17942,6 +18098,8 @@ footer {
 ```
 
 #### Compact
+
+Shrink a single action with justify-self to pin it to the trailing edge.
 
 **Template:**
 ```html
@@ -18101,6 +18259,8 @@ footer {
 
 #### Basic
 
+Using ElasticContainer to animate dynamic content
+
 **Template:**
 ```html
 <form appearance="floating" tuiCardLarge tuiForm="m" [formGroup]="form" [style.max-width.rem]="32" >
@@ -18189,6 +18349,8 @@ export default class Example {
 ```
 
 #### Expansive
+
+Using multiple different components inside a big form.
 
 **Template:**
 ```html
@@ -18422,6 +18584,8 @@ export default class Example {
 ```
 
 #### Grouped
+
+Using multiple forms in several steps. See Slides for animating similar scenario.
 
 **Template:**
 ```html
@@ -18843,6 +19007,8 @@ export default class Page {
 
 #### Sizes
 
+Buttons/badges sizes according to the header size.
+
 **Template:**
 ```html
 @for (size of sizes; track $index) { <header [tuiHeader]="size">
@@ -18889,6 +19055,8 @@ export default class Example {
 ```
 
 #### Accessories
+
+Various content in the right side of the header.
 
 **Template:**
 ```html
@@ -18979,6 +19147,8 @@ export default class Example {}
 
 #### Interactive
 
+Header can contain interactive button or link.
+
 **Template:**
 ```html
 <header tuiHeader="h4">
@@ -19029,6 +19199,8 @@ export default class Example {}
 ```
 
 #### Wrapping
+
+Accessories are not meant to take up much space. You should try to keep it this way, but if you cannot – you can enable wrapping using flex-wrap: wrap . Watch for TUI_FONT_OFFSET signal token if you only want to enable it due to OS font scaling. This would only wrap if title has to shrink below 60% to accommodate long accessories section.
 
 **Template:**
 ```html
@@ -19115,6 +19287,8 @@ A component to show icons and color them with CSS. Taiga UI ships with Lucide ic
 
 #### Basic
 
+Using &commat;tui. , &commat;img. and &commat;font. prefixes to set icon resolution mode. Control font using --tui-font-icon variable.
+
 **Template:**
 ```html
 <tui-icon icon="@tui.heart" />
@@ -19149,6 +19323,8 @@ export default class Example {}
 ```
 
 #### Parameters
+
+By default icons follow font-size in both icon size and container size. You can set custom container size by explicit inline-size / block-size . Built-in Lucide icons also support setting thickness via --tui-stroke-width variable.
 
 **Template:**
 ```html
@@ -19208,6 +19384,8 @@ tui-icon {
 
 #### Features
 
+Combining icons for 2 colors or badge-like effect and using pipe to resolve icon URL by name.
+
 **Template:**
 ```html
 <tui-icon background="@tui.info-filled" icon="@tui.info" />
@@ -19258,6 +19436,8 @@ img {
 
 #### Bundled
 
+By default icons are loaded as assets when they first appear in the DOM and then cached according to your server policy, just like any image. You can also provide a dictionary of icons to be included in the bundle instead using tuiIconsProvider .
+
 **Template:**
 ```html
 <tui-icon icon="@tui.heart" />
@@ -19297,6 +19477,8 @@ export default class Example {}
 ```
 
 #### Resolver
+
+You can use tuiAssetsPathProvider helper to set a custom path for icon assets or use tuiIconResolverProvider to completely override name to path resolution logic. Keep in mind "/" symbol is not allowed in icon's name because then it is treated as URL.
 
 **Template:**
 ```html
@@ -19343,6 +19525,8 @@ export default class Example {}
 
 #### External
 
+You can pass external icons as URLs or base64 encoded strings. Set --tui-stroke-width to 0px if you are seeing skewed proportions, for example if your SVGs do not have viewBox or you are using PNGs.
+
 **Template:**
 ```html
 <tui-icon icon="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg" />
@@ -19381,6 +19565,8 @@ export default class Example {
 ```
 
 #### Background
+
+Using one icon as a background for another.
 
 **Template:**
 ```html
@@ -19426,6 +19612,8 @@ tui-icon {
 ```
 
 #### Icon fonts
+
+Make sure to include the actual font somewhere in your app as instructed by your icon font vendor.
 
 **Template:**
 ```html
@@ -19558,6 +19746,8 @@ Input is a basic string textfield. All other input components are built on its b
 
 #### Basic
 
+Basic string value input.
+
 **Template:**
 ```html
 <tui-textfield iconEnd="@tui.settings" iconStart="@tui.search" >
@@ -19609,6 +19799,8 @@ export default class Example {
 
 #### States
 
+You can change states of the component manually or it can follow state of a form control when Angular form directives are applied to it.
+
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.search">
@@ -19657,6 +19849,8 @@ export default class Example {
 ```
 
 #### Dropdown
+
+For more complex dropdown controls it is recommended to use dedicated components, such as Select or ComboBox
 
 **Template:**
 ```html
@@ -19725,6 +19919,8 @@ export default class Example {
 
 #### InputPassword
 
+An example of a password textfield with an interactive icon to toggle the input type.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -19754,6 +19950,8 @@ export default class Example {
 ```
 
 #### Custom cleaner
+
+If you need to perform some additional actions or logging when user clicks cleaner button.
 
 **Template:**
 ```html
@@ -19786,6 +19984,8 @@ export default class Example {
 ```
 
 #### Mask
+
+We recommends using Maskito for input masking. Maskito is supported by Taiga Family team and it is already peer-dependency of @taiga-ui/kit library. This example demonstrates how to use built-in Number mask with postfix and augment it by several Maskito plugins.
 
 **Template:**
 ```html
@@ -19844,6 +20044,8 @@ export default class Example {
 ```
 
 #### Long label
+
+On mobile, especially when font scaling is enabled for accessibility, you have limited space and might want to make sure the entire label is visible when the user fills it in. You can enable wrapping so it can wrap onto multiple lines.
 
 **Template:**
 ```html
@@ -19973,6 +20175,8 @@ InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCrea
 ### Usage Examples
 
 #### Form
+
+form tag is used for better autocomplete support
 
 **Template:**
 ```html
@@ -20584,6 +20788,8 @@ InputChip uses specifically modified Input to represent array of selectable item
 
 #### Basic
 
+Textfield[multi] is used to display array of items. By default they are presented as plain strings.
+
 **Template:**
 ```html
 <tui-textfield multi [rows]="1" >
@@ -20625,149 +20831,9 @@ export default class Example {
 }
 ```
 
-#### Virtual scroll
-
-**Template:**
-```html
-<tui-textfield multi tuiChevron [content]="content" >
-<label tuiLabel>Select items</label>
-<input tuiInputChip tuiSelectLike [(ngModel)]="value" />
-<ng-template tuiItem />
-<ng-container *tuiDropdown>
-<tui-textfield #filter tuiTextfieldSize="m" [style.margin.rem]="0.25" >
-<input placeholder="Type to filter" tuiInput />
-</tui-textfield>
-<cdk-virtual-scroll-viewport tuiScrollRef [itemSize]="42" [style.height.px]="filtered().length * 42 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
-<tui-scroll-controls />
-<tui-data-list tuiMultiSelectGroup>
-<button *cdkVirtualFor="let item of filtered()" tuiOption [value]="item" > {{ item }} </button>
-</tui-data-list>
-</cdk-virtual-scroll-viewport>
-</ng-container>
-</tui-textfield>
-<p>
-<button tuiButton type="button" (click)="onClick()" > Select bazillion </button>
-</p>
-```
-**TypeScript:**
-```ts
-import {
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    CdkVirtualScrollViewport,
-} from '@angular/cdk/scrolling';
-import {Component, computed, viewChild} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiInput,
-    TuiScrollControls,
-    TuiScrollRef,
-    TuiSelectLike,
-    type TuiTextfieldComponent,
-} from '@taiga-ui/core';
-import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        CdkFixedSizeVirtualScroll,
-        CdkVirtualForOf,
-        CdkVirtualScrollViewport,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiButton,
-        TuiChevron,
-        TuiDataList,
-        TuiInput,
-        TuiInputChip,
-        TuiMultiSelect,
-        TuiScrollControls,
-        TuiScrollRef,
-        TuiSelectLike,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly filter = viewChild<TuiTextfieldComponent<string>>('filter');
-
-    protected readonly items: string[] = Array.from({length: 3000}).map(
-        (_, i) => `Item #${i}`,
-    );
-
-    protected value: string[] = [];
-
-    protected readonly filtered = computed((value = this.filter()?.value()) =>
-        value
-            ? this.items.filter((item) => TUI_DEFAULT_MATCHER(item, value))
-            : this.items,
-    );
-
-    protected get content(): string {
-        return this.value.length
-            ? `Selected ${this.value.length} out of ${this.items.length}`
-            : '';
-    }
-
-    protected onClick(): void {
-        this.value = this.items.filter((_, i) => i < 2000);
-    }
-}
-```
-
-#### Stringify
-
-**Template:**
-```html
-<label tuiLabel>
-<tui-textfield multi tuiChevron [stringify]="stringify" >
-<input tuiInputChip [placeholder]="value.length ? '' : 'Picking users'" [(ngModel)]="value" />
-<tui-input-chip *tuiItem />
-<tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track $index) { <button tuiOption [value]="item.nickname" > {{ item.name }} ({{ item.nickname }}) </button> } </tui-data-list>
-</tui-textfield>
-</label>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiChevron,
-        TuiDataList,
-        TuiInputChip,
-        TuiMultiSelect,
-        TuiTextfield,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value: string[] = [];
-
-    protected items = [
-        {nickname: 'a.inkin', name: 'Alex Inkin'},
-        {nickname: 'r.sedov', name: 'Roman Sedov'},
-    ];
-
-    protected readonly stringify = (value: string): string =>
-        this.items.find((item) => item.nickname === value)?.name ?? '';
-}
-```
-
 #### Chips
+
+Use *tuiItem directive to provide custom representation. You can use tui-input-chip out of the box or implement your own. The context is TuiContext<{ item: T, index: number }>
 
 **Template:**
 ```html
@@ -20815,6 +20881,8 @@ export default class Example {
 
 #### Disabled items
 
+Individual tags can be disabled using disabledItemHandler , this would prevent them from being edited, removed or added. Note: keep in mind cleaner would still empty the control. If you want a different behavior, you can disable built-in cleaner and provide your own.
+
 **Template:**
 ```html
 <tui-textfield multi [disabledItemHandler]="handler" [style.width.rem]="19" [tuiTextfieldCleaner]="false" >
@@ -20850,6 +20918,8 @@ export default class Example {
 ```
 
 #### MultiSelect
+
+InputChip can be used together with dropdown in many variations showcased below, from multiple values input with suggestions to multi-select without writable input.
 
 **Template:**
 ```html
@@ -20966,6 +21036,8 @@ export default class Example {
 
 #### Customization
 
+You can customize many aspects of the component, from standard textfield options like icons and tooltips to changing the appearance of each individual chip.
+
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.heart" multi [style.width.rem]="19" >
@@ -20995,6 +21067,8 @@ export default class Example {
 ```
 
 #### Mask
+
+Component can be used with Maskito to facilitate input masking.
 
 **Template:**
 ```html
@@ -21026,6 +21100,8 @@ export default class Example {
 ```
 
 #### Direction
+
+Component can be used together with RTL direction.
 
 **Template:**
 ```html
@@ -21080,6 +21156,8 @@ export default class Example {
 ```
 
 #### Mobile
+
+You can improve UX on mobile devices in multiple ways, depending on your case.
 
 **Template:**
 ```html
@@ -21239,6 +21317,150 @@ export default class Example {
     display: flex;
     inline-size: 19rem;
     flex-direction: column;
+}
+```
+
+#### Virtual scroll
+
+Using virtual scroll to improve UX when working with large amount of items.
+
+**Template:**
+```html
+<tui-textfield multi tuiChevron [content]="content" >
+<label tuiLabel>Select items</label>
+<input tuiInputChip tuiSelectLike [(ngModel)]="value" />
+<ng-template tuiItem />
+<ng-container *tuiDropdown>
+<tui-textfield #filter tuiTextfieldSize="m" [style.margin.rem]="0.25" >
+<input placeholder="Type to filter" tuiInput />
+</tui-textfield>
+<cdk-virtual-scroll-viewport tuiScrollRef [itemSize]="42" [style.height.px]="filtered().length * 42 + 8" [style.max-height.px]="200" [style.min-height.px]="56" >
+<tui-scroll-controls />
+<tui-data-list tuiMultiSelectGroup>
+<button *cdkVirtualFor="let item of filtered()" tuiOption [value]="item" > {{ item }} </button>
+</tui-data-list>
+</cdk-virtual-scroll-viewport>
+</ng-container>
+</tui-textfield>
+<p>
+<button tuiButton type="button" (click)="onClick()" > Select bazillion </button>
+</p>
+```
+**TypeScript:**
+```ts
+import {
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    CdkVirtualScrollViewport,
+} from '@angular/cdk/scrolling';
+import {Component, computed, viewChild} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiInput,
+    TuiScrollControls,
+    TuiScrollRef,
+    TuiSelectLike,
+    type TuiTextfieldComponent,
+} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        CdkFixedSizeVirtualScroll,
+        CdkVirtualForOf,
+        CdkVirtualScrollViewport,
+        FormsModule,
+        ReactiveFormsModule,
+        TuiButton,
+        TuiChevron,
+        TuiDataList,
+        TuiInput,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiScrollControls,
+        TuiScrollRef,
+        TuiSelectLike,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly filter = viewChild<TuiTextfieldComponent<string>>('filter');
+
+    protected readonly items: string[] = Array.from({length: 3000}).map(
+        (_, i) => `Item #${i}`,
+    );
+
+    protected value: string[] = [];
+
+    protected readonly filtered = computed((value = this.filter()?.value()) =>
+        value
+            ? this.items.filter((item) => TUI_DEFAULT_MATCHER(item, value))
+            : this.items,
+    );
+
+    protected get content(): string {
+        return this.value.length
+            ? `Selected ${this.value.length} out of ${this.items.length}`
+            : '';
+    }
+
+    protected onClick(): void {
+        this.value = this.items.filter((_, i) => i < 2000);
+    }
+}
+```
+
+#### Stringify
+
+**Template:**
+```html
+<label tuiLabel>
+<tui-textfield multi tuiChevron [stringify]="stringify" >
+<input tuiInputChip [placeholder]="value.length ? '' : 'Picking users'" [(ngModel)]="value" />
+<tui-input-chip *tuiItem />
+<tui-data-list *tuiDropdown tuiMultiSelectGroup > @for (item of items; track $index) { <button tuiOption [value]="item.nickname" > {{ item.name }} ({{ item.nickname }}) </button> } </tui-data-list>
+</tui-textfield>
+</label>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiDataList,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: string[] = [];
+
+    protected items = [
+        {nickname: 'a.inkin', name: 'Alex Inkin'},
+        {nickname: 'r.sedov', name: 'Roman Sedov'},
+    ];
+
+    protected readonly stringify = (value: string): string =>
+        this.items.find((item) => item.nickname === value)?.name ?? '';
 }
 ```
 
@@ -21494,6 +21716,8 @@ export default class Example {
 
 #### Calendar customization
 
+Feel free to configure Calendar specific properties: disable adjacent months days, adds circled colored markers to some days, control initial opened month and etc. Explore Calendar documentation page for more customization options. Don't set [min] / [max] and [disabledItemHandler] properties for <tui-calendar /> ! Calendar automatically inherits these properties from <input tuiInputDate /> and <tui-textfield /> .
+
 **Template:**
 ```html
 <tui-textfield>
@@ -21530,6 +21754,8 @@ export default class Example {
 ```
 
 #### Custom dropdown
+
+You can customize dropdown content and change how particular dates display
 
 **Template:**
 ```html
@@ -21574,6 +21800,8 @@ export default class Example {
 ```
 
 #### Validation
+
+If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
 
 **Template:**
 ```html
@@ -21634,6 +21862,8 @@ export default class Example {
 
 #### Value transformer
 
+By default component works with our internal type called TuiDay . If you prefer to use anything else, like a string or native Date you can provide custom transformer in options to store value in different format in form control
+
 **Template:**
 ```html
 <tui-textfield>
@@ -21676,6 +21906,8 @@ export default class Example {
 
 #### Format
 
+Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+
 **Template:**
 ```html
 <tui-textfield>
@@ -21708,6 +21940,8 @@ export default class Example {
 ```
 
 #### Mobile
+
+You can use several different approaches to optimize UX on mobile devices when tapping the icon. Open this on a mobile device or enable emulation in DevTools and refresh the page
 
 **Template:**
 ```html
@@ -21763,6 +21997,8 @@ export default class Example {
 
 #### Limits
 
+Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
+
 **Template:**
 ```html
 <tui-textfield [disabledItemHandler]="handler">
@@ -21796,6 +22032,8 @@ export default class Example {
 ```
 
 #### Datalist
+
+Native mobile pickers have limited browser support for native datalist
 
 **Template:**
 ```html
@@ -21983,6 +22221,8 @@ export default class Example {
 
 #### Example 2
 
+Use *tuiItem directive to provide custom representation. You can use tui-input-chip out of the box or implement your own. The context is TuiContext<{ item: T, index: number }>
+
 **Template:**
 ```html
 <tui-textfield multi>
@@ -22059,6 +22299,8 @@ export default class Example {
 ```
 
 #### Example 4
+
+Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
 
 **Template:**
 ```html
@@ -22149,6 +22391,8 @@ export default class Example {
 ```
 
 #### Example 6
+
+By default component works with our internal type called TuiDay . If you prefer to use anything else, like a string or native Date you can provide custom transformer in options to store value in different format in form control
 
 **Template:**
 ```html
@@ -22321,6 +22565,8 @@ export default class Example {
 
 #### Example 2
 
+Currently not implemented on mobile devices
+
 **Template:**
 ```html
 <tui-textfield [content]="content">
@@ -22359,6 +22605,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
 
 **Template:**
 ```html
@@ -22419,6 +22667,8 @@ export default class Example {
 
 #### Example 4
 
+By default component works with our internal type called TuiDayRange . If you prefer to use anything else, like a string you can provide custom transformer in options to store value in different format in form control
+
 **Template:**
 ```html
 <tui-textfield>
@@ -22459,6 +22709,8 @@ export default class Example {
 
 #### Example 5
 
+Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+
 **Template:**
 ```html
 <label tuiLabel> Choose range <tui-textfield tuiTextfieldSize="s">
@@ -22490,6 +22742,8 @@ export default class Example {
 ```
 
 #### Example 6
+
+You can enable a different picker to improve UX on mobile devices when tapping the icon. Open this on a mobile device or enable emulation in DevTools and refresh the page
 
 **Template:**
 ```html
@@ -22702,6 +22956,8 @@ export default class Example {
 
 #### Example 2
 
+Feel free to configure Calendar specific properties: disable adjacent months days, adds circled colored markers to some days, control initial opened month and etc. Explore Calendar documentation page for more customization options. Don't set [min] / [max] and [disabledItemHandler] properties for <tui-calendar /> ! Calendar automatically inherits these properties from <input tuiInputDateTime /> and <tui-textfield /> .
+
 **Template:**
 ```html
 <tui-textfield>
@@ -22738,6 +22994,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+You can customize dropdown content and even extend its template
 
 **Template:**
 ```html
@@ -22792,6 +23050,8 @@ button {
 ```
 
 #### Example 4
+
+If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
 
 **Template:**
 ```html
@@ -22873,6 +23133,8 @@ export default class Example {
 
 #### Example 5
 
+By default component works with our internal types called TuiDay and TuiTime . If you prefer to use anything else, like a string or native Date you can provide custom transformer in options to store value in different format in form control
+
 **Template:**
 ```html
 <tui-textfield>
@@ -22923,6 +23185,8 @@ export default class Example {
 
 #### Example 6
 
+Formatting relies on TUI_DATE_FORMAT which you can override using tuiDateFormatProvider helper
+
 **Template:**
 ```html
 <tui-textfield>
@@ -22955,6 +23219,8 @@ export default class Example {
 ```
 
 #### Example 7
+
+Open this on a mobile device or enable emulation in DevTools and refresh the page to explore this example! You can use several different approaches to optimize UX on mobile devices when tapping the icon.
 
 **Template:**
 ```html
@@ -23013,6 +23279,8 @@ export default class Example {
 
 #### Example 8
 
+Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
+
 **Template:**
 ```html
 <tui-textfield [disabledItemHandler]="handler">
@@ -23057,6 +23325,8 @@ export default class Example {
 ```
 
 #### Example 9
+
+Native mobile pickers have limited browser support for native datalist
 
 **Template:**
 ```html
@@ -23232,6 +23502,8 @@ An input for uploading one or several files using native input file capabilities
 
 #### Single
 
+Selecting one file at a time
+
 **Template:**
 ```html
 @if (!control.value) { <label tuiInputFiles>
@@ -23298,6 +23570,8 @@ export default class Example {
 
 #### Multiple
 
+Selecting and processing multiple files at once
+
 **Template:**
 ```html
 <label tuiInputFiles>
@@ -23363,6 +23637,8 @@ export function maxFilesLength(maxLength: number): ValidatorFn {
 ```
 
 #### Standalone
+
+Displaying file-like items without the input
 
 **Template:**
 ```html
@@ -23450,6 +23726,8 @@ export default class Example {
 
 #### With button
 
+Collapsing files list when it's too long
+
 **Template:**
 ```html
 <tui-files [max]="3"> @for (file of files; track file) { <tui-file *tuiItem state="normal" [file]="file" /> } @for (file of rejectedFiles; track file) { <a *tuiItem rel="noreferrer" state="error" target="_blank" tuiFile [file]="file" ></a> } </tui-files>
@@ -23488,6 +23766,8 @@ export default class Example {
 ```
 
 #### Custom content
+
+Customizing drop area
 
 **Template:**
 ```html
@@ -23546,6 +23826,8 @@ export default class Example {
 
 #### Camera capture
 
+The capture attribute works only on mobile browsers
+
 **Template:**
 ```html
 @if (!control.value) { <label tuiInputFiles>
@@ -23577,6 +23859,8 @@ export default class Example {
 ```
 
 #### Model
+
+Using template driven forms
 
 **Template:**
 ```html
@@ -23620,6 +23904,8 @@ export default class Example {
 ```
 
 #### Accept
+
+Uploading files with accept attribute containing multiple extensions separated by spaces
 
 **Template:**
 ```html
@@ -24136,6 +24422,8 @@ export default class Example {
 
 #### Example 2
 
+Form control value is TuiMonth or null when empty
+
 **Template:**
 ```html
 <tui-textfield>
@@ -24158,7 +24446,7 @@ import {interval, map, startWith} from 'rxjs';
 @Component({
     imports: [ReactiveFormsModule, TuiError, TuiInputMonth],
     templateUrl: './index.html',
-    styles: ':host {display: block; min-height: 4rem}',
+    styles: ':host { display: block; min-block-size: 4rem }',
     encapsulation,
     changeDetection,
     providers: [
@@ -24179,6 +24467,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -24262,6 +24552,8 @@ export default class Example {
 
 #### Example 5
 
+Use [content] of Textfield to customize view of selected value inside textfield . To switch language inside calendar – read documentation page "Internationalization" .
+
 **Template:**
 ```html
 <tui-textfield [content]="stringify">
@@ -24300,6 +24592,8 @@ export default class Example {
 
 #### Example 6
 
+Add type="month" for <input /> to enable built-in browser picker for mobile devices. Browser support limitations! Native picker does not have [disabledItemHandler] feature. Also, we discourage to use [min] / [max] properties with enabled native picker – it has rather limited browser support.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -24328,6 +24622,8 @@ export default class Example {
 ```
 
 #### Example 7
+
+Use tuiInputMonthRange to enable possibility to select range of months. All features described above are applicable for it too. Moreover, it provides two additional features: minLength / maxLength – minimal / maximal length of the selected range. Form control value is TuiMonthRange or null (for uncompleted range or empty textfield) types.
 
 **Template:**
 ```html
@@ -24448,13 +24744,13 @@ export default class PageComponent {
 # components/InputNumber
 - **Package**: `KIT`
 - **Type**: components
-InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', ]; track example ) {
+InputNumber is a form field to provide numerical input. example of [ 'Number as form control value', 'BigInt as form control value', 'Textfield-based', 'Localization', 'Affixes', 'Step', 'Custom step buttons', 'Fluid typography', 'Value transformer', 'Quantum', 'Thousand separator pattern', 'Thousand separator pattern using Intl', 'Large integer and large decimal parts', ]; track example ) {
 
 ### Example
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), thousandSeparatorPattern: numberFormatDoc.thousandSeparatorPattern(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 </tui-textfield>
 </ng-template>
 ```
@@ -24472,7 +24768,9 @@ InputNumber is a form field to provide numerical input. example of [ 'Number as 
 
 ### Usage Examples
 
-#### Example 1
+#### Number as form control value
+
+By default, form control value is number or null when empty
 
 **Template:**
 ```html
@@ -24511,84 +24809,9 @@ export default class Example {
 }
 ```
 
-#### Example 10
+#### BigInt as form control value
 
-**Template:**
-```html
-<tui-textfield>
-<input tuiInputNumber [max]="1" [min]="0" [quantum]="0.05" [(ngModel)]="value" />
-</tui-textfield>
-<p><strong>Control value:</strong></p>
-<code>{{ value | json }}</code>
-```
-**TypeScript:**
-```ts
-import {JsonPipe} from '@angular/common';
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputNumber} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, JsonPipe, TuiInputNumber],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value = 0.5;
-}
-```
-
-#### Large integer and large decimal parts
-
-JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an &#123;significand: bigint; exp: number&#125; instead.
-
-**Template:**
-```html
-<tui-textfield>
-<input bigintWithDecimal postfix=" per day" prefix="$" tuiInputNumber [max]="infinity" [min]="0" [tuiNumberFormat]="{precision: infinity, decimalSeparator: '.'}" [(ngModel)]="value" />
-</tui-textfield>
-<p><strong>Control value:</strong></p>
-<pre><code>{{ stringified() }}</code></pre>
-```
-**TypeScript:**
-```ts
-import {Component, computed, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiInputNumber} from '@taiga-ui/kit';
-
-import {BigIntWithDecimal, type ControlValue} from './transformer';
-
-@Component({
-    imports: [BigIntWithDecimal, FormsModule, TuiInputNumber, TuiNumberFormat],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly infinity = Infinity;
-
-    protected readonly value = signal<ControlValue>({
-        significand: 123456700042n,
-        exp: -5,
-    });
-
-    protected readonly stringified = computed(() =>
-        JSON.stringify(
-            this.value(),
-            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
-            2,
-        ),
-    );
-}
-```
-
-#### Example 2
+Form control value type can be changed to bigint . Just put bigint attribute and set new values for min , max and precision properties. For a more complex case with both extremely large integer and decimal parts, see this example.
 
 **Template:**
 ```html
@@ -24634,7 +24857,9 @@ export default class Example {
 }
 ```
 
-#### Example 3
+#### Textfield-based
+
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore its documentation page for more customization options.
 
 **Template:**
 ```html
@@ -24665,7 +24890,9 @@ export default class Example {
 }
 ```
 
-#### Example 4
+#### Localization
+
+TuiNumberFormat allows to customize separators specific for your locale. Explore a more advanced use case of TuiNumberFormat — grouping digits of the integer part in any way.
 
 **Template:**
 ```html
@@ -24700,7 +24927,9 @@ export default class Example {
 }
 ```
 
-#### Example 5
+#### Affixes
+
+Use prefix / postfix parameters to set non-removable text before / after the number. For currency symbols, use the Currency pipe. TuiNumberFormat with negativePattern: 'minusFirst' allow to position the minus sign before the currency symbol.
 
 **Template:**
 ```html
@@ -24730,7 +24959,9 @@ export default class Example {
 }
 ```
 
-#### Example 6
+#### Step
+
+A positive value of the step property enables side buttons to increase / decrease the number by the specified step value. Additionally, the ArrowUp / ArrowDown keyboard keys provide the same functionality.
 
 **Template:**
 ```html
@@ -24758,7 +24989,7 @@ export default class Example {
 }
 ```
 
-#### Example 7
+#### Custom step buttons
 
 **Template:**
 ```html
@@ -24800,7 +25031,9 @@ export default class Example {
 }
 ```
 
-#### Example 8
+#### Fluid typography
+
+Use FluidTypography directive to adjusts font size for the textfield value to fit in the textfield box.
 
 **Template:**
 ```html
@@ -24827,7 +25060,9 @@ export default class Example {
 }
 ```
 
-#### Example 9
+#### Value transformer
+
+TuiValueTransformer is a great opportunity to override default form control's value format without breaking component's internal logic. This example demonstrates how to use NaN -value for empty textfield instead of default null -value to keep type strictly "number" .
 
 **Template:**
 ```html
@@ -24868,6 +25103,162 @@ export default class Example {
 }
 ```
 
+#### Quantum
+
+Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
+
+**Template:**
+```html
+<tui-textfield>
+<input tuiInputNumber [max]="1" [min]="0" [quantum]="0.05" [(ngModel)]="value" />
+</tui-textfield>
+<p><strong>Control value:</strong></p>
+<code>{{ value | json }}</code>
+```
+**TypeScript:**
+```ts
+import {JsonPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, JsonPipe, TuiInputNumber],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 0.5;
+}
+```
+
+#### Thousand separator pattern
+
+TuiNumberFormat with thousandSeparatorPattern allows to group digits of the integer part in any way. It is a function that takes a string of digits and returns an array of groups. For example, large numbers in Japan are grouped by four digits.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Amount in yen</label>
+<input prefix="¥" tuiInputNumber [tuiNumberFormat]="numberFormat" [(ngModel)]="value" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNumberFormat, type TuiNumberFormatSettings} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputNumber, TuiNumberFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: number | null = 123_456_789;
+
+    protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        thousandSeparator: ',',
+        // 1,2345,6789
+        thousandSeparatorPattern: (digits) =>
+            digits.match(/\d{1,4}(?=(?:\d{4})*$)/g) ?? [],
+    };
+}
+```
+
+#### Thousand separator pattern using Intl
+
+Built-in Intl.NumberFormat knows digit grouping rules of every locale. Use it to create thousandSeparatorPattern for any locale, e.g. for the Indian numbering system.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Amount in rupees</label>
+<input prefix="₹" tuiInputNumber [min]="0" [tuiNumberFormat]="numberFormat" [(ngModel)]="value" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component, LOCALE_ID} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNumberFormat, type TuiNumberFormatSettings} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+import {intlThousandSeparatorPattern} from './intl-pattern';
+
+@Component({
+    imports: [FormsModule, TuiInputNumber, TuiNumberFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [{provide: LOCALE_ID, useValue: 'en-IN'}],
+})
+export default class Example {
+    protected value: number | null = 123_456_789;
+
+    protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        thousandSeparator: ',',
+        thousandSeparatorPattern: intlThousandSeparatorPattern(),
+    };
+}
+```
+
+#### Large integer and large decimal parts
+
+JavaScript’s built‑in number type loses precision when a value contains too many digits in either the integer part, the decimal part, or both. The built‑in bigint type avoids this issue but supports only integers. If you need to preserve all extremely large digits of both parts, you can override the built‑in TuiValueTransformer and store the number as an {significand: bigint; exp: number} instead.
+
+**Template:**
+```html
+<tui-textfield>
+<input bigintWithDecimal postfix=" per day" prefix="$" tuiInputNumber [max]="infinity" [min]="0" [tuiNumberFormat]="{precision: infinity, decimalSeparator: '.'}" [(ngModel)]="value" />
+</tui-textfield>
+<p><strong>Control value:</strong></p>
+<pre><code>{{ stringified() }}</code></pre>
+```
+**TypeScript:**
+```ts
+import {Component, computed, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNumberFormat} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+import {BigIntWithDecimal, type ControlValue} from './transformer';
+
+@Component({
+    imports: [BigIntWithDecimal, FormsModule, TuiInputNumber, TuiNumberFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly infinity = Infinity;
+
+    protected readonly value = signal<ControlValue>({
+        significand: 123456700042n,
+        exp: -5,
+    });
+
+    protected readonly stringified = computed(() =>
+        JSON.stringify(
+            this.value(),
+            (_, x) => (typeof x === 'bigint' ? `${String(x)}n` : x),
+            2,
+        ),
+    );
+}
+```
+
 
 ### TypeScript
 
@@ -24883,6 +25274,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
@@ -24928,10 +25320,21 @@ export default class PageComponent {
     protected postfix = '';
     protected quantum = 0;
 
-    protected readonly bigIntWithDecimalTransformer = import(
-        './examples/11/transformer.ts?raw',
-        {with: {loader: 'text'}}
-    );
+    protected readonly additionalFiles: Record<
+        number,
+        Record<string, TuiRawLoaderContent> | undefined
+    > = {
+        12: {
+            'intl-pattern.ts': import('./examples/12/intl-pattern.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+        13: {
+            'transformer.ts': import('./examples/13/transformer.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+    };
 }
 ```
 
@@ -24962,6 +25365,8 @@ InputPhone allows to input a phone number
 ### Usage Examples
 
 #### Example 1
+
+If you support Safari pattern for correct work of browser autofill
 
 **Template:**
 ```html
@@ -24997,6 +25402,8 @@ export default class Example {
 ```
 
 #### Example 2
+
+By number and by name
 
 **Template:**
 ```html
@@ -25124,6 +25531,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+You can provide custom transformer in options to store value in different format in form control
 
 **Template:**
 ```html
@@ -25299,6 +25708,8 @@ Allows to input phone number in international format InputPhoneInternational is 
 
 #### Choose metadata
 
+The first step is to choose the size of metadata Google uses the word "metadata" to refer to all information about phone numbering in a particular country - what the country code, international and national dialling prefixes are, what carrier codes are operational, which phone numbers are possible or valid for a particular country, how to optimally format them, which prefixes represent a particular geographical area, etc. . The complete list of all phone rules is huge, so libphonenumber-js provides different "metadata" sets to provides a way to optimize bundle size by choosing between max , min (default value) and mobile sets. Read in-depth description about every set .
+
 **Template:**
 ```html
 <tui-textfield>
@@ -25362,6 +25773,8 @@ export default class Example {
 
 #### Choose any countries
 
+Parameter countries allows you to choose which countries user can select from the dropdown. You can even pick all possible countries by built-in utility getCountries from libphonenumber-js . Note: Importing utilities directly from the root of libphonenumber-js automatically includes the default (min) metadata in your bundle. To optimize bundle size and ensure consistency, it is recommended to import from specific entry points like libphonenumber-js/min , libphonenumber-js/max , or libphonenumber-js/mobile . Alternatively, you can use libphonenumber-js/core and provide the required metadata explicitly to the utility functions. Use TuiSortCountriesPipe to sort countries according to your current language.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -25405,6 +25818,8 @@ export default class Example {
 ```
 
 #### Mobile dropdown
+
+You can enable mobile specific dropdown design on mobile devices by adding TuiDropdownMobile directive.
 
 **Template:**
 ```html
@@ -25455,6 +25870,8 @@ export default class Example {
 ```
 
 #### Customize with icons
+
+You can put static Icon or even interactive Tooltip at the right side of the textfield.
 
 **Template:**
 ```html
@@ -25509,6 +25926,8 @@ export default class Example {
 
 #### Customize separator
 
+Using tuiInputPhoneInternationalOptionsProvider you can provide custom separator for input instead of the default - .
+
 **Template:**
 ```html
 <tui-textfield>
@@ -25552,6 +25971,8 @@ export default class Example {
 ```
 
 #### Use phone format helpers
+
+InputPhoneInternational internally uses Maskito to format phone number. Don't hesitate to use it too to manually format any phone number.
 
 **TypeScript:**
 ```ts
@@ -25672,6 +26093,8 @@ export default class PageComponent {
 
 #### Basic
 
+Default configuration with digits only
+
 **Template:**
 ```html
 <tui-textfield>
@@ -25699,6 +26122,8 @@ export default class Example {
 
 #### Alphanumeric
 
+Changing mask to allow letters
+
 **Template:**
 ```html
 <tui-textfield tuiTextfieldSize="m" [style.text-transform]="'uppercase'" >
@@ -25725,6 +26150,8 @@ export default class Example {
 ```
 
 #### Hidden
+
+Minimal gap is 0.25rem, additional spacing can be added using gap on tui-textfield
 
 **Template:**
 ```html
@@ -25779,7 +26206,7 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 
 ```html
 <ng-template>
-<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), negativePattern: numberFormatDoc.negativePattern(), }" [tuiTextfieldSize]="textfieldDoc.size" />
+<tui-input-range [content]="content" [formControl]="control" [invalid]="controlDoc.invalid" [keySteps]="keySteps || undefined" [max]="max" [min]="min" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), thousandSeparator: numberFormatDoc.thousandSeparator(), thousandSeparatorPattern: numberFormatDoc.thousandSeparatorPattern(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), negativePattern: numberFormatDoc.negativePattern(), }" [tuiTextfieldSize]="textfieldDoc.size" />
 </ng-template>
 ```
 
@@ -25801,6 +26228,8 @@ InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 ### Usage Examples
 
 #### Example 1
+
+TuiNumberFormat allows to customize separators specific for your locale.
 
 **Template:**
 ```html
@@ -25836,6 +26265,8 @@ export default class Example {
 
 #### Example 2
 
+Use prefix / postfix parameters to set non-removable text before / after the number. To get currency symbol use Currency pipe.
+
 **Template:**
 ```html
 @let currency = 'USD' | tuiCurrency; <tui-input-range [max]="999" [min]="0" [postfix]="[' per day', ' per day']" [prefix]="[currency, currency]" [(ngModel)]="value" />
@@ -25861,6 +26292,8 @@ export default class Example {
 ```
 
 #### Example 3
+
+Use mixin tui-slider-ticks-labels to arrange ticks' labels (it places them strictly below ticks).
 
 **Template:**
 ```html
@@ -25943,6 +26376,8 @@ export default class Example {
 
 #### Example 5
 
+Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
+
 **Template:**
 ```html
 <tui-input-range [keySteps]="keySteps" [max]="max" [min]="min" [segments]="segments" [step]="step" [(ngModel)]="value" > Not linear growing sliders </tui-input-range>
@@ -25999,6 +26434,8 @@ export default class Example {
 ```
 
 #### Example 6
+
+Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
 
 **Template:**
 ```html
@@ -26199,7 +26636,7 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 ```html
 <ng-template>
 <tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldDoc.content" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
+<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), thousandSeparatorPattern: numberFormatDoc.thousandSeparatorPattern(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), negativePattern: numberFormatDoc.negativePattern(), }" />
 <input tuiSlider type="range" [keySteps]="keySteps || undefined" [segments]="segments" [step]="step" [style.--tui-thumb-size.px]="thumbSize" />
 </tui-textfield>
 </ng-template>
@@ -26222,6 +26659,8 @@ InputSlider = Textfield + InputNumber + Slider + ❤️
 ### Usage Examples
 
 #### Textfield customization
+
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Textfield 's documentation page for more customization options.
 
 **Template:**
 ```html
@@ -26254,6 +26693,8 @@ export default class Example {
 
 #### InputNumber customization
 
+InputSlider is just a slight extension of InputNumber – it has completely the same customization: add [prefix] / [postfix] , configure separators specific for your locale via NumberFormat directive or etc.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -26282,6 +26723,8 @@ export default class Example {
 ```
 
 #### Slider customization
+
+Slider automatically inherits [min] / [max] properties from [tuiInputSlider] (don't set them for Slider to avoid any possible conflicts!). However, feel free to configure Slider 's-specific properties: [step] , [keySteps] and [segments] . Also, you can use mixin-helper tui-slider-ticks-labels to arrange ticks' labels (it places them strictly below ticks).
 
 **Template:**
 ```html
@@ -26345,6 +26788,8 @@ button {
 
 #### KeySteps
 
+Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -26399,6 +26844,8 @@ export default class Example {
 ```
 
 #### Quantum
+
+Property [quantum] allows to set minimum indivisible value. Form control value never contains a number that is not divisible by value of this property. Even if user enters any invalid number, it will be rounded to the nearest valid one on blur event. In this example, form control value can only contain 0 , 0.05 , 0.1 , 0.15 ... 0.9 , 0.95 , 1 .
 
 **Template:**
 ```html
@@ -26534,6 +26981,8 @@ InputTime allows users to enter and edit time values using a keyboard, dropdown 
 
 #### Mode
 
+InputTime supports all possible time segments: hours, minutes, seconds, and even milliseconds. Property mode allows to choose specific combination of the segments. Explore MaskitoTimeMode type to see all available modes.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -26562,40 +27011,9 @@ export default class Example {
 }
 ```
 
-#### Native picker with suggestions
-
-**Template:**
-```html
-<tui-textfield>
-<input list="suggestions" placeholder="Click on clock icon" tuiInputTime type="time" [(ngModel)]="value" />
-<datalist id="suggestions">
-<option value="08:00">Morning</option>
-<option value="12:00">Noon</option>
-<option value="18:00">Evening</option>
-</datalist>
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiTime} from '@taiga-ui/cdk';
-import {TuiInputTime} from '@taiga-ui/kit';
-
-@Component({
-    imports: [FormsModule, TuiInputTime],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected value: TuiTime | null = null;
-}
-```
-
 #### 12-hour format with AM/PM
+
+Any mode ending with AA is 12-hour time format with meridiem part.
 
 **Template:**
 ```html
@@ -26628,6 +27046,8 @@ export default class Example {
 ```
 
 #### Form control validation
+
+Form control value is TuiTime or null when empty If a field is optional, but unfinished field should be marked as invalid, use tuiUnfinishedValidator directive
 
 **Template:**
 ```html
@@ -26722,6 +27142,8 @@ export default class Example {
 
 #### Textfield customization
 
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
+
 **Template:**
 ```html
 <tui-textfield iconStart="@tui.alarm-clock" tuiTextfieldSize="m" [tuiTextfieldCleaner]="false" >
@@ -26752,6 +27174,8 @@ export default class Example {
 ```
 
 #### Strict mode
+
+Property accept allows to limit the set of allowed values. It is useful when you want to restrict user input to a specific set of time periods, for example, to allow only working hours with equally distant time intervals.
 
 **Template:**
 ```html
@@ -26788,6 +27212,8 @@ export default class Example {
 ```
 
 #### Dropdown with DataList
+
+Use tuiItemsHandlersProvider to override the default behavior of all InputTime -s below the current DI scope. To customize a specific InputTime , use the input properties [identityMatcher] / [stringify] / disabledItemHandler (inherited from Textfield ). Explore Dropdown and DataList documentation pages for more customization options.
 
 **Template:**
 ```html
@@ -26857,6 +27283,8 @@ export default class Example {
 
 #### Transformer
 
+TuiValueTransformer is a great opportunity to override default form control's value format without breaking component's internal logic. This example demonstrates how to use string -type instead of default TuiTime .
+
 **Template:**
 ```html
 <tui-textfield>
@@ -26905,6 +27333,8 @@ export default class Example {
 
 #### Native picker
 
+Add type="time" for <input /> to enable built-in browser picker for mobile devices . Touch clock icon to show the picker. Touch other parts of the textfield to show mobile device keyboard. Browser support limitations! IOS devices supports only HH:MM mode. Native picker supports only 24-hour format.
+
 **Template:**
 ```html
 @for (mode of supportedModes; track mode) { <tui-textfield>
@@ -26948,6 +27378,41 @@ export default class Example {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+```
+
+#### Native picker with suggestions
+
+Link your <input type="time" /> to a <datalist /> by list attribute to show a list of suggestions inside native picker. The values provided are suggestions, not requirements: users can select from this predefined list or provide a different value. Browser support limitations! IOS devices does not support <datalist /> for time picker.
+
+**Template:**
+```html
+<tui-textfield>
+<input list="suggestions" placeholder="Click on clock icon" tuiInputTime type="time" [(ngModel)]="value" />
+<datalist id="suggestions">
+<option value="08:00">Morning</option>
+<option value="12:00">Noon</option>
+<option value="18:00">Evening</option>
+</datalist>
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiTime} from '@taiga-ui/cdk';
+import {TuiInputTime} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputTime],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TuiTime | null = null;
 }
 ```
 
@@ -27505,6 +27970,8 @@ Component to hide overflown items behind custom content. Resize the screen to se
 
 #### Basic
 
+Hiding excessive items and showing text.
+
 **Template:**
 ```html
 <tui-items-with-more [required]="required"> @for (item of items; track item) { <span *tuiItem appearance="neutral" size="s" tuiChip class="tui-space_right-1" > {{ item }} </span> } <ng-template let-index tuiMore > and {{ getRemaining(index) }} more </ng-template>
@@ -27537,6 +28004,8 @@ export default class Example {
 ```
 
 #### Dropdown
+
+Putting extra items in a dropdown.
 
 **Template:**
 ```html
@@ -27603,6 +28072,8 @@ tui-icon {
 
 #### Side
 
+Handling excessive items at the beginning of the list.
+
 **Template:**
 ```html
 <tui-items-with-more side="start" [itemsLimit]="3" > @for (item of items; track item) { <ng-container *tuiItem> @if (!$first) { <tui-icon icon="@tui.chevron-right" [style.font-size.rem]="1" [style.opacity]="0.25" [style.width.rem]="1.5" /> } <button appearance="flat" size="xs" tuiButton type="button" > {{ item }} </button>
@@ -27634,6 +28105,8 @@ export default class Example {
 ```
 
 #### Multiline
+
+Hiding extra items in a multi line container.
 
 **Template:**
 ```html
@@ -27720,6 +28193,8 @@ export default class Example {
 ```
 
 #### Cell
+
+Showing compact version of text in a Cell in limited space.
 
 **Template:**
 ```html
@@ -27868,6 +28343,8 @@ TuiKeypad is an on-screen grid primitive for touch input. It only lays out and s
 
 #### Basic keypad
 
+A numeric pad — digits, clear and backspace wired via (click) .
+
 **Template:**
 ```html
 <tui-keypad class="keypad"> @for (digit of digits; track digit) { <button type="button" (click)="append(digit)" > {{ digit }} </button> } <button type="button" (click)="clear()" > C </button>
@@ -27918,6 +28395,8 @@ export default class Example {
 ```
 
 #### Custom keys
+
+A custom-font pad with a conditional backspace icon, driving a display.
 
 **Template:**
 ```html
@@ -27985,6 +28464,8 @@ export default class Example {
 ```
 
 #### Shuffled PIN
+
+Digit positions are randomized at runtime — the arbitrary, dynamic content a PIN terminal needs.
 
 **Template:**
 ```html
@@ -28058,6 +28539,8 @@ export default class Example {
 ```
 
 #### Collapsible
+
+The keypad expands while the amount field is focused, inside a sheet.
 
 **Template:**
 ```html
@@ -28245,6 +28728,8 @@ export default class Example {
 ```
 
 #### Calculator
+
+A calculator in a picture-in-picture window — icon keys and hardware-keyboard mapping.
 
 **Template:**
 ```html
@@ -30864,6 +31349,8 @@ Link component. It has focus highlight and can be customized with an icon Use te
 
 #### Basic
 
+Can be used on native a tag with routerLink or href
+
 **Template:**
 ```html
 <a tuiLink [routerLink]="routes.Link" > Link </a>
@@ -30890,6 +31377,8 @@ export default class Example {
 
 #### Icons
 
+Can also be used on buttons as well as with icons on either side.
+
 **Template:**
 ```html
 <button iconEnd="@tui.settings" tuiLink type="button" [textContent]="'Link with icon right'" ></button>
@@ -30915,6 +31404,8 @@ export default class Example {}
 ```
 
 #### Appearances
+
+Different color and underline styles.
 
 **Template:**
 ```html
@@ -30957,6 +31448,8 @@ export default class Example {}
 ```
 
 #### Long text
+
+Multi line wrapping also works with icons.
 
 **Template:**
 ```html
@@ -31458,6 +31951,8 @@ export default class Example {}
 
 #### Custom stroke width
 
+Use css-variable --tui-thickness to customize width of the circle stroke. By default, it is 1/12 of diameter.
+
 **Template:**
 ```html
 <tui-loader />
@@ -31513,6 +32008,8 @@ tui-loader {
 ```
 
 #### Custom size
+
+Use css-variable --tui-diameter to customize the loader size instead of one of the predefined [size] options.
 
 **Template:**
 ```html
@@ -31936,7 +32433,7 @@ Native styled Meter tag, using the same attributes as native version.
 
 ### Usage Examples
 
-#### Example 1
+#### Increasing
 
 **Template:**
 ```html
@@ -31984,7 +32481,7 @@ export default class Example {}
 }
 ```
 
-#### Example 2
+#### Decreasing
 
 **Template:**
 ```html
@@ -32072,7 +32569,7 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 ### Example
 
 ```html
-<tui-mobile-calendar class="calendar" [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [multi]="multi" [single]="single" />
+<tui-mobile-calendar class="calendar" [disabledItemHandler]="disabledItemHandler" [markerHandler]="markerHandler" [max]="max" [min]="min" [multi]="multi" [single]="single" />
 ```
 
 ### API - Inputs
@@ -32081,6 +32578,7 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 |----------|-----|----------|
 | [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | — |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
+| [markerHandler] | `TuiMarkerHandler | null` | a handler that returns marker colors for a date |
 | [max] | `TuiDay` | max date |
 | [min] | `TuiDay` | min date |
 | [multi] | `boolean` | array of single dates |
@@ -32231,6 +32729,8 @@ export default class Example {
 ```
 
 #### Localization
+
+Use tuiCalendarOptionsProvider to change start day of the week (Monday by default)
 
 **Template:**
 ```html
@@ -32526,6 +33026,7 @@ import {
     TuiDay,
     type TuiDayRange,
 } from '@taiga-ui/cdk';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {type Observable} from 'rxjs';
 
 @Component({
@@ -32565,6 +33066,12 @@ export default class Page {
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
+
+    protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
+        ({day}) => (day % 2 === 0 ? ['var(--tui-status-positive)'] : []),
+    ];
+
+    protected markerHandler: TuiMarkerHandler | null = null;
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;
@@ -32597,6 +33104,8 @@ Taiga UI is a low level component library with many atomic components that provi
 ### Usage Examples
 
 #### Full
+
+Full fledged example showcasing every section of the navigation filled with content, links, menus etc.
 
 **Template:**
 ```html
@@ -32822,6 +33331,8 @@ export default class Example extends TuiPortals {
 
 #### Subheader compact
 
+Navigation with page header in a compact mode.
+
 **Template:**
 ```html
 <header tuiNavigationHeader>
@@ -32922,6 +33433,8 @@ export default class Example {
 ```
 
 #### Subheader object
+
+Navigation with expanded page header including description and other page details.
 
 **Template:**
 ```html
@@ -33028,6 +33541,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Changing colors and mode.
 
 **Template:**
 ```html
@@ -33143,6 +33658,8 @@ header::after {
 ```
 
 #### InputSearch
+
+Using dedicated search component in a header for a spotlight global portal search pattern.
 
 **Template:**
 ```html
@@ -33377,6 +33894,8 @@ A notification message that can be displayed inline or as an alert
 
 #### Basic
 
+Various sizes, visual options and content examples
+
 **Template:**
 ```html
 <div size="l" tuiNotification > Hello world <button iconStart="@tui.x" tuiIconButton type="button" > Close </button>
@@ -33419,6 +33938,8 @@ export default class Example {}
 
 #### Options
 
+Using DI to set default values
+
 **Template:**
 ```html
 <div tuiNotification>Works with token options</div>
@@ -33447,6 +33968,8 @@ export default class Example {}
 ```
 
 #### Interactive
+
+Interactive tags and visual customization
 
 **Template:**
 ```html
@@ -33498,6 +34021,8 @@ button[tuiNotification]::before {
 
 #### Directive
 
+Using directive to show a popover notification
+
 **Template:**
 ```html
 <button size="m" tuiButton type="button" (click)="show.set(true)" > Show </button>
@@ -33525,6 +34050,8 @@ export default class Example {
 ```
 
 #### Service
+
+Using service to show a popover notification
 
 **Template:**
 ```html
@@ -33685,6 +34212,8 @@ A modal component to indicate an ongoing blocking action
 
 #### Default
 
+Basic empty loader.
+
 **Template:**
 ```html
 <ng-template [tuiNotificationMiddleOptions]="{closable: true}" [(tuiNotificationMiddle)]="open" />
@@ -33710,6 +34239,8 @@ export default class Example {
 ```
 
 #### Content
+
+Changing content and adding text to the card.
 
 **Template:**
 ```html
@@ -33740,6 +34271,8 @@ export default class Example {
 ```
 
 #### Transition
+
+Dynamically updating content and closing with timeout. Don't forget Animated directive!
 
 **Template:**
 ```html
@@ -33789,6 +34322,8 @@ export default class Example {
 ```
 
 #### Service
+
+Design specs require notification to be shown for a minimum of 600ms to prevent visual flickering for short requests.
 
 **Template:**
 ```html
@@ -34279,6 +34814,8 @@ Wrapper component for viewing PDF files in an iframe PDF display in browsers is 
 
 #### Basic
 
+Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
+
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Open </button>
@@ -34322,6 +34859,8 @@ export default class Example {
 ```
 
 #### With responsive dialog
+
+Use ResponsiveDialog to display iframe in a SheetDialog on mobile devices
 
 **Template:**
 ```html
@@ -34369,6 +34908,8 @@ export default class Example {
 ```
 
 #### Loading and error states
+
+Use Loader and BlockStatus to display additional states
 
 **Template:**
 ```html
@@ -34510,6 +35051,8 @@ export default class Example {
 ```
 
 #### With labels
+
+Use ChartHint directive to enable hints with tuiHintContent
 
 **Template:**
 ```html
@@ -34945,6 +35488,8 @@ export default class Example {
 
 #### Dots
 
+Masked mode via type="password" — entered digits render as filled dots
+
 **Template:**
 ```html
 <tui-textfield>
@@ -34971,6 +35516,8 @@ export default class Example {
 ```
 
 #### Fast loading
+
+Fast loading — response under 500ms. Enter 1234 for success, any other code for error
 
 **Template:**
 ```html
@@ -35025,6 +35572,8 @@ export default class Example {
 ```
 
 #### Long loading
+
+Long loading — response over 700ms, auto-bounce while waiting. Enter 1234 for success, any other code for error
 
 **Template:**
 ```html
@@ -35130,6 +35679,8 @@ tui-loader {
 
 #### Desktop
 
+Desktop dialog with auto-focused input and full verification flow. Same logic as Mobile, native keyboard input. Enter 1234 for successful validation
+
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open.set(true)" > Open dialog </button>
@@ -35226,6 +35777,8 @@ export default class Example {
 ```
 
 #### Mobile
+
+Mobile bottom sheet with a custom numeric pad and full verification flow — inputmode="none" suppresses the native keyboard. Enter 1234 for successful validation; wrong code triggers shake-clear-retry
 
 **Template:**
 ```html
@@ -36248,6 +36801,8 @@ export default class Example {}
 
 #### Indeterminate
 
+Indeterminate state expresses an unspecified amount of wait time. If there is no [value] attribute, the ProgressBar is indeterminate.
+
 **Template:**
 ```html
 <progress tuiProgressBar></progress>
@@ -36269,6 +36824,8 @@ export default class Example {}
 ```
 
 #### Customizable corners
+
+You can toggle off round corners of the progress bar by setting border-radius: 0 .
 
 **Template:**
 ```html
@@ -36628,6 +37185,8 @@ tui-progress-circle {
 
 #### Anti-clockwise direction
 
+Use power of CSS property transform to customize direction and starting point of progress circle.
+
 **Template:**
 ```html
 <tui-progress-circle size="xl" [max]="max" [value]="(value$ | async) || 0" />
@@ -36669,6 +37228,8 @@ tui-progress-circle {
 ```
 
 #### Thickness
+
+Use css-variable --tui-thickness to customize width of the circle's stroke.
 
 **Template:**
 ```html
@@ -36724,6 +37285,8 @@ tui-progress-circle {
 ```
 
 #### Arc mode
+
+Set arc attribute to transform default circular shape into arc with small bottom open arc sector (gap between arc ends).
 
 **Template:**
 ```html
@@ -37728,6 +38291,8 @@ A two-thumb slider for selecting a range of values
 
 #### Size
 
+Use css-variable --tui-thumb-size to customize radius of the thumb and track thickness.
+
 **Template:**
 ```html
 <tui-range [(ngModel)]="value" />
@@ -37745,7 +38310,7 @@ import {TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiRange],
     templateUrl: './index.html',
-    styles: ':host {display: flex; flex-direction: column;}',
+    styles: ':host { display: flex; flex-direction: column; }',
     encapsulation,
     changeDetection,
 })
@@ -37755,6 +38320,8 @@ export default class Example {
 ```
 
 #### Segments
+
+Use mixin tui-slider-ticks-labels to place labels strictly below ticks
 
 **Template:**
 ```html
@@ -37824,6 +38391,8 @@ tui-icon::before {
 ```
 
 #### KeySteps
+
+Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
 
 **Template:**
 ```html
@@ -38338,7 +38907,9 @@ Work in progress, do not use! There are known issues in Safari, as always A comp
 
 ### Usage Examples
 
-#### Example 1
+#### Basic
+
+Each item can have arbitrary height
 
 **Template:**
 ```html
@@ -38373,7 +38944,9 @@ export default class Example {
 }
 ```
 
-#### Example 2
+#### Scroll snapping
+
+Use bigger buffer for smaller items to avoid flickering at high speeds
 
 **Template:**
 ```html
@@ -39521,7 +40094,7 @@ Segmented is used for links and buttons to navigate within the application. It c
 
 ### Usage Examples
 
-#### Example 1
+#### Sizes
 
 **Template:**
 ```html
@@ -39563,7 +40136,7 @@ export default class Example {
 }
 ```
 
-#### Example 2
+#### Width
 
 **Template:**
 ```html
@@ -39613,7 +40186,7 @@ export default class Example {}
 }
 ```
 
-#### Example 3
+#### Customization
 
 **Template:**
 ```html
@@ -39678,7 +40251,7 @@ header {
 }
 ```
 
-#### Example 4
+#### Content
 
 **Template:**
 ```html
@@ -39772,7 +40345,7 @@ hr {
 }
 ```
 
-#### Example 5
+#### Disabled
 
 **Template:**
 ```html
@@ -39848,7 +40421,9 @@ Select is a form control for selecting a single value from a set of options, sim
 
 ### Usage Examples
 
-#### Example 1
+#### Textfield customization
+
+Use all powers of Textfield : put any number of Icons and Tooltips inside (and control their order and color), modify the size of the textbox and etc. Explore Input documentation page for more customization options.
 
 **Template:**
 ```html
@@ -39894,49 +40469,9 @@ export default class Example {
 }
 ```
 
-#### Override option component
+#### Items handlers
 
-You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases &lt;tui-data-list-wrapper [itemContent]="..." /&gt; can be enough for your task. Explore this example for more details.
-
-**Template:**
-```html
-<tui-textfield tuiChevron>
-<input placeholder="Select something" tuiSelect [formControl]="control" />
-<tui-data-list-wrapper *tuiDropdown [items]="items" />
-</tui-textfield>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-
-import {Option} from './option';
-
-@Component({
-    imports: [ReactiveFormsModule, TuiChevron, TuiDataListWrapper, TuiSelect],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-    providers: [tuiAsOptionContent(Option)],
-})
-export default class Example {
-    protected readonly items = [
-        'Option 1',
-        'Option 2',
-        'Option 3',
-        'Option 4',
-        'Option 5',
-    ] as const;
-
-    protected readonly control = new FormControl<string | null>(this.items[2]);
-}
-```
-
-#### Example 2
+Use tuiItemsHandlersProvider to override default behavior of all Select -s below the current DI scope. Use input properties [identityMatcher] / [stringify] / disabledItemHandler (from Textfield ) to do the same for the specific Select only.
 
 **Template:**
 ```html
@@ -39997,7 +40532,9 @@ export default class Example {
 }
 ```
 
-#### Example 3
+#### Customize content
+
+DataListWrapper provides an opportunity to customize appearance of options inside dropdown by [itemContent] -property. Also, Textfield has [content] -property to customize appearance of selected option inside textbox. Both properties accept PolymorpheusContent – it empowers you with extremely large possibilities for customization.
 
 **Template:**
 ```html
@@ -40054,7 +40591,9 @@ export default class Example {
 }
 ```
 
-#### Example 4
+#### With DataList
+
+DataListWrapper is just a helper to solve most popular use cases. Use DataList for more complex cases when great flexibility is required. DataList documentation page for more customization options.
 
 **Template:**
 ```html
@@ -40134,7 +40673,9 @@ export default class Example {
 }
 ```
 
-#### Example 5
+#### Choose form control output
+
+DataList exposes Option -directives – it provides you with an opportunity to decide which data type put inside its [value] . This example demonstrates how every option can be a complex object with any structure but form control contains a single id-property as number -type.
 
 **Template:**
 ```html
@@ -40186,7 +40727,9 @@ export default class Example {
 }
 ```
 
-#### Example 6
+#### Virtual scroll
+
+You can use Select with virtual scrolling from @angular/cdk/scrolling .
 
 **Template:**
 ```html
@@ -40230,7 +40773,9 @@ export default class Example {
 }
 ```
 
-#### Example 7
+#### Mobile
+
+Use real mobile device or enable mobile emulation in DevTools to explore this example! Put tuiDropdownSheet="Label" on <tui-textfield /> to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to native controls) for mobile devices . This example demonstrates different appearances of options for different platforms (using TuiPlatform directive). By default, it detects ios / android / web platforms automatically (by parsing user agent) – it is not required to specify it explicitly.
 
 **Template:**
 ```html
@@ -40272,7 +40817,9 @@ export default class Example {
 }
 ```
 
-#### Example 8
+#### Native picker with disabled option
+
+Put <select tuiSelect/> (instead of <input tuiSelect/> ) to enable native browser picker. This example demonstrates how enable this feature for mobile devices only.
 
 **Template:**
 ```html
@@ -40319,7 +40866,7 @@ export default class Example {
 }
 ```
 
-#### Example 9
+#### Native picker with grouping options
 
 **Template:**
 ```html
@@ -40349,6 +40896,48 @@ export default class Example {
 
     protected readonly labels = ['Salad', 'Soup'];
     protected readonly control = new FormControl<string | null>(null);
+}
+```
+
+#### Override option component
+
+You can override default behavior and appearance of all options inside dropdown. Just provide your custom component by tuiAsOptionContent -utility. Double check if you really need this feature! For the most cases <tui-data-list-wrapper [itemContent]="..." /> can be enough for your task. Explore this example for more details.
+
+**Template:**
+```html
+<tui-textfield tuiChevron>
+<input placeholder="Select something" tuiSelect [formControl]="control" />
+<tui-data-list-wrapper *tuiDropdown [items]="items" />
+</tui-textfield>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiAsOptionContent} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+
+import {Option} from './option';
+
+@Component({
+    imports: [ReactiveFormsModule, TuiChevron, TuiDataListWrapper, TuiSelect],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [tuiAsOptionContent(Option)],
+})
+export default class Example {
+    protected readonly items = [
+        'Option 1',
+        'Option 2',
+        'Option 3',
+        'Option 4',
+        'Option 5',
+    ] as const;
+
+    protected readonly control = new FormControl<string | null>(this.items[2]);
 }
 ```
 
@@ -41216,6 +41805,8 @@ A tight shrink wrapping implementation in modern browsers using progressive enha
 
 #### Chat
 
+Making sure chat messages only span as wide as they have to.
+
 **Template:**
 ```html
 <section tuiMessage class="incoming" > I'm a short message </section>
@@ -41279,6 +41870,8 @@ export default class Example {}
 
 #### Toasts
 
+Toasts already have tuiShrinkWrap directive on host.
+
 **Template:**
 ```html
 <h4 tuiHeader="body-l">With ShrinkWrap</h4>
@@ -41315,6 +41908,8 @@ export default class Example {}
 ```
 
 #### Custom width
+
+Any valid CSS size string can be used, including calc , different units, vars and math functions.
 
 **Template:**
 ```html
@@ -41403,6 +41998,8 @@ Taiga UI styling of native html tag '"> to choose a value from a limited range R
 
 #### Size
 
+Use css-variable --tui-thumb-size to customize radius of the thumb and track thickness.
+
 **Template:**
 ```html
 <input tuiSlider type="range" [formControl]="formControl" />
@@ -41429,6 +42026,8 @@ export default class Example {
 ```
 
 #### Colors
+
+Customizing colors of the filled track and thumb
 
 **Template:**
 ```html
@@ -41468,6 +42067,8 @@ export default class Example {}
 ```
 
 #### Segments
+
+Use mixin tui-slider-ticks-labels to place labels strictly below ticks
 
 **Template:**
 ```html
@@ -41518,6 +42119,8 @@ export default class Example {
 
 #### Disabled
 
+Non interactive state
+
 **Template:**
 ```html
 <input disabled tuiSlider type="range" value="80" />
@@ -41539,6 +42142,8 @@ export default class Example {}
 ```
 
 #### KeySteps
+
+Key steps – anchor points of non-uniform format between control's value and slider's position. When [keySteps] property is enabled, [step] means percentage of total track length.
 
 **Template:**
 ```html
@@ -41592,6 +42197,8 @@ export default class Example {
 ```
 
 #### Complex
+
+Use tuiSliderThumbLabel for positioning any content so it slides alongside the thumb.
 
 **Template:**
 ```html
@@ -41684,6 +42291,8 @@ export default class Example {
 ```
 
 #### Vertical
+
+Vertical orientation can be achieved using CSS transformations.
 
 **Template:**
 ```html
@@ -41811,6 +42420,8 @@ A component for displaying dynamic content animated between states. Use negative
 
 #### Crossfade
 
+Static crossfading of slides with slight delay for smoother overlap.
+
 **Template:**
 ```html
 <div tuiGroup>
@@ -41865,6 +42476,8 @@ export default class Example {
 ```
 
 #### Stepper
+
+Navigating back and forth using Stepper .
 
 **Template:**
 ```html
@@ -41978,6 +42591,8 @@ footer {
 
 #### Routing
 
+Animating nested routes, adding Animated to host directives of route component is required.
+
 **Template:**
 ```html
 <tui-tabs [activeItemIndex]="-1">
@@ -42026,6 +42641,8 @@ export default class Example {
 ```
 
 #### Dialog
+
+Using slides inside a dialog.
 
 **Template:**
 ```html
@@ -42448,6 +43065,8 @@ General purpose container used in Taiga UI interfaces. Often used in conjunction
 
 #### Behaviors
 
+You can enable hover effects only on devices with pointer: @media (hover: hover)
+
 **Template:**
 ```html
 <button tuiSurface type="button" class="scale" > Scale </button>
@@ -42548,6 +43167,8 @@ export default class Example {}
 
 #### Presets
 
+Note that padding and border-radius are not part of the surface. Take a look at component for that.
+
 **Template:**
 ```html
 <button tuiAppearance="floating" tuiSurface type="button" > Floating </button>
@@ -42585,6 +43206,8 @@ export default class Example {}
 ```
 
 #### Blur
+
+Text should have vertical compensation to look properly aligned, either with unequal padding or with negative margin . Typical value is 0.25rem , smaller line-height might require 0.125rem instead.
 
 **Template:**
 ```html
@@ -43761,6 +44384,8 @@ Component for creating mobile navigation.
 
 #### Buttons
 
+Fixed
+
 **Template:**
 ```html
 <nav tuiTabBar class="tabs" [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button> } </nav>
@@ -43833,6 +44458,8 @@ export default class Example {
 ```
 
 #### Links
+
+If you use routerLink you must also add routerLinkActive directive.
 
 **Template:**
 ```html
@@ -43913,6 +44540,8 @@ export default class Example {
 
 #### Skeleton
 
+When there are no TabBarItem children, the component shows skeleton for 4 items
+
 **Template:**
 ```html
 <p>
@@ -43969,6 +44598,8 @@ export default class Example {
 ```
 
 #### iOS Liquid glass
+
+To enable the liquid-glass mode on iOS devices, specify the option in provideTaiga({apis: {liquidGlass: true}}) Fixed
 
 **Template:**
 ```html
@@ -44043,6 +44674,8 @@ export default class Example {
 
 #### iOS Liquid glass fullwidth
 
+With more than three items the tab bar stretches to the full width of the screen; with fewer it stays a compact, centered pill. Fixed
+
 **Template:**
 ```html
 <nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [icon]="item.icon" > {{ item.text }} </button> } </nav>
@@ -44108,6 +44741,8 @@ export default class Example {
 ```
 
 #### Android
+
+On Android devices the tab bar takes on its updated appearance once the liquid-glass option is enabled in provideTaiga({apis: {liquidGlass: true}}) Fixed
 
 **Template:**
 ```html
@@ -44265,6 +44900,8 @@ This module allows you to create various tables, both static and editable.
 
 #### Basic
 
+Most minimalistic usage example.
+
 **Template:**
 ```html
 <table tuiTable>
@@ -44308,360 +44945,9 @@ export default class Example {
 }
 ```
 
-#### Toggle rows
-
-**Template:**
-```html
-<table size="l" tuiTable class="table" [columns]="columns" >
-<thead>
-<tr tuiThGroup>
-<th *tuiHead="'action'" tuiTh [sorter]="null" ></th>
-<th *tuiHead="'firstName'" tuiTh [sorter]="null" > First name </th>
-<th *tuiHead="'lastName'" tuiTh class="last-name-col" [sorter]="null" > Last name </th>
-<th *tuiHead="'role'" tuiTh [sorter]="null" > Role </th>
-<th *tuiHead="'balance'" tuiTh [sorter]="null" > Balance </th>
-</tr>
-</thead>
-<tbody tuiTbody>
-<tr tuiTr class="expand-heading-row" (click)="expand.toggle()" >
-<td *tuiCell="'action'" tuiTd >
-<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="expand.expanded()" > Toggle </button>
-</td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ basicData.length }} Developers (basic usage) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > dev </td>
-<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
-</tr>
-</tbody>
-<tbody #expand tuiTableExpand [expanded]="true" > @for (item of basicData; track item) { <tr tuiTr>
-<td *tuiCell="'action'" tuiTd ></td>
-<td *tuiCell="'firstName'" tuiTd >
-<div>
-<span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </span>
-</div>
-</td>
-<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
-<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
-</tr> } </tbody>
-<tbody tuiTbody>
-<tr tuiTr class="expand-heading-row" (click)="manualToggle()" >
-<td *tuiCell="'action'" tuiTd >
-<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="manualOpen" > Toggle </button>
-</td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ manualOpenData.length }} Designers (manual handling) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > design </td>
-<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
-</tr>
-</tbody>
-<tbody tuiTableExpand [expanded]="manualOpen" > @for (item of manualOpenData; track item) { <tr tuiTr>
-<td *tuiCell="'action'" tuiTd ></td>
-<td *tuiCell="'firstName'" tuiTd > {{ item.firstName }} </td>
-<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
-<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
-</tr> } </tbody>
-<tbody tuiTbody>
-<tr tuiTr>
-<td *tuiCell="'action'" tuiTd >
-<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" [tuiChevron]="customOpen" (click)="customToggle()" > Toggle </button>
-</td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > Custom content (click on chevron) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > all </td>
-<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
-</tr>
-<tr>
-<td [colSpan]="columns.length">
-<tui-expand [expanded]="customOpen">
-<div class="chips"> @for (item of customContentData; track item) { <span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </span> } </div>
-</tui-expand>
-</td>
-</tr>
-</tbody>
-</table>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand, TuiHint} from '@taiga-ui/core';
-import {TuiChevron, TuiChip, TuiFormatNumberPipe} from '@taiga-ui/kit';
-
-interface Item {
-    firstName: string;
-    lastName: string;
-    role: string;
-    balance: number;
-}
-
-@Component({
-    imports: [
-        TuiButton,
-        TuiChevron,
-        TuiChip,
-        TuiExpand,
-        TuiFormatNumberPipe,
-        TuiHint,
-        TuiMapperPipe,
-        TuiTable,
-    ],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly basicData: Item[] = [
-        {
-            firstName: 'Alex',
-            lastName: 'Inkin',
-            role: 'dev',
-            balance: 1323525,
-        },
-        {
-            firstName: 'Roman',
-            lastName: 'Sedov',
-            role: 'dev',
-            balance: 423242,
-        },
-        {
-            firstName: 'Andrei',
-            lastName: 'Serebrennikov',
-            role: 'dev',
-            balance: 4223242,
-        },
-    ];
-
-    protected manualOpenData: Item[] = [
-        {
-            firstName: 'Joe',
-            lastName: 'Wilson',
-            role: 'design',
-            balance: 423242,
-        },
-        {
-            firstName: 'Julia',
-            lastName: 'Johnson',
-            role: 'design',
-            balance: 4223242,
-        },
-    ];
-
-    protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
-    protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
-    protected manualOpen = false;
-    protected customOpen = false;
-
-    public getSumBalance(people: Item[]): number {
-        return people.reduce((res, item) => {
-            res += item.balance;
-
-            return res;
-        }, 0);
-    }
-
-    protected manualToggle(): void {
-        this.manualOpen = !this.manualOpen;
-    }
-
-    protected customToggle(): void {
-        this.customOpen = !this.customOpen;
-    }
-}
-```
-**LESS:**
-```less
-th {
-    white-space: nowrap;
-}
-
-.table {
-    inline-size: 36rem;
-}
-
-.chips {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    padding: 0.5rem;
-}
-
-.last-name-col {
-    inline-size: 10rem;
-}
-
-.expand-heading-row {
-    cursor: pointer;
-
-    td {
-        background: var(--tui-background-neutral-1);
-    }
-
-    &:hover td {
-        background: var(--tui-background-neutral-1-hover);
-    }
-}
-```
-
-#### Controls
-
-**Template:**
-```html
-<table tuiTable [style.width.%]="100" [tuiTextfieldCleaner]="false" >
-<thead>
-<tr>
-<th tuiTh [style.width.%]="50" > Growing height </th>
-<th tuiTh [style.width.%]="50" > Static height </th>
-</tr>
-</thead>
-<tbody tuiTbody>
-<tr>
-<td tuiTd>
-<tui-textfield>
-<textarea placeholder="Textarea" tuiTextarea [(ngModel)]="textarea" ></textarea>
-</tui-textfield>
-</td>
-<td tuiTd>
-<tui-textfield>
-<input placeholder="Default table style" tuiInput [(ngModel)]="input" />
-</tui-textfield>
-</td>
-</tr>
-<tr>
-<td tuiTd>
-<tui-textfield>
-<input placeholder="Number" tuiInputNumber [(ngModel)]="number" />
-</tui-textfield>
-</td>
-<td tuiTd>
-<tui-textfield>
-<input placeholder="Number with step" tuiInputNumber [step]="10" [(ngModel)]="numberStep" />
-</tui-textfield>
-</td>
-</tr>
-<tr>
-<td tuiTd>
-<tui-textfield multi>
-<input placeholder="InputChip" tuiInputChip [(ngModel)]="chip" />
-</tui-textfield>
-</td>
-<td tuiTd>
-<tui-textfield tuiChevron> @if (isMobile) { <select aria-label="Select" placeholder="Select" tuiSelect [items]="items" [(ngModel)]="select" ></select> } @if (!isMobile) { <input placeholder="Select" tuiSelect [(ngModel)]="select" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown [items]="items" /> } </tui-textfield>
-</td>
-</tr>
-<tr>
-<td tuiTd>
-<tui-textfield multi tuiChevron >
-<select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect [items]="items" [(ngModel)]="multiselect" ></select>
-<tui-input-chip *tuiItem />
-</tui-textfield>
-</td>
-<td tuiTd [style.z-index]="2" >
-<tui-textfield>
-<input placeholder="InputSlider" tuiInputSlider [max]="1000" [min]="0" [(ngModel)]="slider" />
-<input tuiSlider type="range" />
-</tui-textfield>
-</td>
-</tr>
-<tr>
-<td tuiTd>
-<tui-textfield multi>
-<input placeholder="InputDateMulti" tuiInputDateMulti [(ngModel)]="date" />
-<tui-calendar *tuiDropdown />
-</tui-textfield>
-</td>
-<td tuiTd [style.z-index]="1" >
-<tui-input-range [max]="1000" [min]="0" [(ngModel)]="range" />
-</td>
-</tr>
-<tr>
-<td colspan="2" tuiTd >
-<tui-input-card-group [(ngModel)]="card"> @if (!card) { InputCardGroup } </tui-input-card-group>
-</td>
-</tr>
-<tr>
-<td tuiTd>
-<tui-textfield [style.margin.rem]="0.5">
-<input placeholder="Default textfield style" tuiInput tuiTextfieldAppearance="textfield" [(ngModel)]="input" />
-</tui-textfield>
-</td>
-<td tuiTd>
-<tui-textfield multi tuiChevron [style.margin.rem]="0.5" >
-<select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect tuiTextfieldAppearance="textfield" [items]="items" [(ngModel)]="multiselect" ></select>
-<tui-input-chip *tuiItem />
-</tui-textfield>
-</td>
-</tr>
-</tbody>
-</table>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
-import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiInput} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiDataListWrapper,
-    TuiInputChip,
-    TuiInputDateMulti,
-    TuiInputNumber,
-    TuiInputRange,
-    TuiInputSlider,
-    TuiMultiSelect,
-    TuiSelect,
-    TuiTextarea,
-} from '@taiga-ui/kit';
-
-@Component({
-    imports: [
-        FormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiInput,
-        TuiInputCardGroup,
-        TuiInputChip,
-        TuiInputDateMulti,
-        TuiInputNumber,
-        TuiInputRange,
-        TuiInputSlider,
-        TuiMultiSelect,
-        TuiSelect,
-        TuiTable,
-        TuiTextarea,
-    ],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected textarea = '';
-    protected number = null;
-    protected numberStep = null;
-    protected input = '';
-    protected chip = [];
-    protected multiselect = [];
-    protected date = [];
-    protected select = null;
-    protected slider = null;
-    protected range = null;
-    protected card = null;
-    protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
-    protected readonly isMobile = inject(WA_IS_MOBILE);
-}
-```
-
 #### Custom
+
+Using various components within table cells.
 
 **Template:**
 ```html
@@ -44877,6 +45163,8 @@ export default class Example {
 ```
 
 #### Editable
+
+Using editable textfield controls inside a table.
 
 **Template:**
 ```html
@@ -45151,6 +45439,8 @@ export default class Example {
 ```
 
 #### Sorting
+
+Using SortBy directive to work with column titles instead of manual sorters.
 
 **Template:**
 ```html
@@ -45447,6 +45737,8 @@ export default class Example {
 
 #### Virtual scroll
 
+Using ScrollingModule from @angular/cdk/scrolling to implement virtual scroll and tuiSorter pipe for easy sorting by key.
+
 **Template:**
 ```html
 <cdk-virtual-scroll-viewport #viewport appendOnly tuiScrollRef class="viewport" [itemSize]="45" [maxBufferPx]="500" [minBufferPx]="400" >
@@ -45586,6 +45878,8 @@ table {
 
 #### Columns
 
+Using structural directives for dynamic columns.
+
 **Template:**
 ```html
 <button size="s" tuiButton type="button" (click)="addColumn()" > Add column </button>
@@ -45640,6 +45934,8 @@ export default class Example {
 ```
 
 #### Footer
+
+Using caption tag to place pagination at the bottom of the table.
 
 **Template:**
 ```html
@@ -45717,6 +46013,8 @@ export default class Example {
 
 #### Resizing
 
+Making column headers draggable at the edge and setting width limits.
+
 **Template:**
 ```html
 <table tuiTable>
@@ -45782,6 +46080,8 @@ export default class Example {
 ```
 
 #### Expandable rows
+
+Animated expandable sections of the table.
 
 **Template:**
 ```html
@@ -45890,6 +46190,363 @@ tr:hover td {
     min-inline-size: 3rem;
     border-inline: none;
     white-space: nowrap;
+}
+```
+
+#### Toggle rows
+
+More complex examples of expandable sections.
+
+**Template:**
+```html
+<table size="l" tuiTable class="table" [columns]="columns" >
+<thead>
+<tr tuiThGroup>
+<th *tuiHead="'action'" tuiTh [sorter]="null" ></th>
+<th *tuiHead="'firstName'" tuiTh [sorter]="null" > First name </th>
+<th *tuiHead="'lastName'" tuiTh class="last-name-col" [sorter]="null" > Last name </th>
+<th *tuiHead="'role'" tuiTh [sorter]="null" > Role </th>
+<th *tuiHead="'balance'" tuiTh [sorter]="null" > Balance </th>
+</tr>
+</thead>
+<tbody tuiTbody>
+<tr tuiTr class="expand-heading-row" (click)="expand.toggle()" >
+<td *tuiCell="'action'" tuiTd >
+<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="expand.expanded()" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ basicData.length }} Developers (basic usage) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > dev </td>
+<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
+</tr>
+</tbody>
+<tbody #expand tuiTableExpand [expanded]="true" > @for (item of basicData; track item) { <tr tuiTr>
+<td *tuiCell="'action'" tuiTd ></td>
+<td *tuiCell="'firstName'" tuiTd >
+<div>
+<span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </span>
+</div>
+</td>
+<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
+<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
+</tr> } </tbody>
+<tbody tuiTbody>
+<tr tuiTr class="expand-heading-row" (click)="manualToggle()" >
+<td *tuiCell="'action'" tuiTd >
+<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="manualOpen" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ manualOpenData.length }} Designers (manual handling) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > design </td>
+<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
+</tr>
+</tbody>
+<tbody tuiTableExpand [expanded]="manualOpen" > @for (item of manualOpenData; track item) { <tr tuiTr>
+<td *tuiCell="'action'" tuiTd ></td>
+<td *tuiCell="'firstName'" tuiTd > {{ item.firstName }} </td>
+<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
+<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
+</tr> } </tbody>
+<tbody tuiTbody>
+<tr tuiTr>
+<td *tuiCell="'action'" tuiTd >
+<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" [tuiChevron]="customOpen" (click)="customToggle()" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > Custom content (click on chevron) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > all </td>
+<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
+</tr>
+<tr>
+<td [colSpan]="columns.length">
+<tui-expand [expanded]="customOpen">
+<div class="chips"> @for (item of customContentData; track item) { <span size="s" tuiChip [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </span> } </div>
+</tui-expand>
+</td>
+</tr>
+</tbody>
+</table>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiButton, TuiExpand, TuiHint} from '@taiga-ui/core';
+import {TuiChevron, TuiChip, TuiFormatNumberPipe} from '@taiga-ui/kit';
+
+interface Item {
+    firstName: string;
+    lastName: string;
+    role: string;
+    balance: number;
+}
+
+@Component({
+    imports: [
+        TuiButton,
+        TuiChevron,
+        TuiChip,
+        TuiExpand,
+        TuiFormatNumberPipe,
+        TuiHint,
+        TuiMapperPipe,
+        TuiTable,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly basicData: Item[] = [
+        {
+            firstName: 'Alex',
+            lastName: 'Inkin',
+            role: 'dev',
+            balance: 1323525,
+        },
+        {
+            firstName: 'Roman',
+            lastName: 'Sedov',
+            role: 'dev',
+            balance: 423242,
+        },
+        {
+            firstName: 'Andrei',
+            lastName: 'Serebrennikov',
+            role: 'dev',
+            balance: 4223242,
+        },
+    ];
+
+    protected manualOpenData: Item[] = [
+        {
+            firstName: 'Joe',
+            lastName: 'Wilson',
+            role: 'design',
+            balance: 423242,
+        },
+        {
+            firstName: 'Julia',
+            lastName: 'Johnson',
+            role: 'design',
+            balance: 4223242,
+        },
+    ];
+
+    protected readonly customContentData = [...this.basicData, ...this.manualOpenData];
+    protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
+    protected manualOpen = false;
+    protected customOpen = false;
+
+    public getSumBalance(people: Item[]): number {
+        return people.reduce((res, item) => {
+            res += item.balance;
+
+            return res;
+        }, 0);
+    }
+
+    protected manualToggle(): void {
+        this.manualOpen = !this.manualOpen;
+    }
+
+    protected customToggle(): void {
+        this.customOpen = !this.customOpen;
+    }
+}
+```
+**LESS:**
+```less
+th {
+    white-space: nowrap;
+}
+
+.table {
+    inline-size: 36rem;
+}
+
+.chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.last-name-col {
+    inline-size: 10rem;
+}
+
+.expand-heading-row {
+    cursor: pointer;
+
+    td {
+        background: var(--tui-background-neutral-1);
+    }
+
+    &:hover td {
+        background: var(--tui-background-neutral-1-hover);
+    }
+}
+```
+
+#### Controls
+
+All unique textfield controls in their table representation.
+
+**Template:**
+```html
+<table tuiTable [style.width.%]="100" [tuiTextfieldCleaner]="false" >
+<thead>
+<tr>
+<th tuiTh [style.width.%]="50" > Growing height </th>
+<th tuiTh [style.width.%]="50" > Static height </th>
+</tr>
+</thead>
+<tbody tuiTbody>
+<tr>
+<td tuiTd>
+<tui-textfield>
+<textarea placeholder="Textarea" tuiTextarea [(ngModel)]="textarea" ></textarea>
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield>
+<input placeholder="Default table style" tuiInput [(ngModel)]="input" />
+</tui-textfield>
+</td>
+</tr>
+<tr>
+<td tuiTd>
+<tui-textfield>
+<input placeholder="Number" tuiInputNumber [(ngModel)]="number" />
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield>
+<input placeholder="Number with step" tuiInputNumber [step]="10" [(ngModel)]="numberStep" />
+</tui-textfield>
+</td>
+</tr>
+<tr>
+<td tuiTd>
+<tui-textfield multi>
+<input placeholder="InputChip" tuiInputChip [(ngModel)]="chip" />
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield tuiChevron> @if (isMobile) { <select aria-label="Select" placeholder="Select" tuiSelect [items]="items" [(ngModel)]="select" ></select> } @if (!isMobile) { <input placeholder="Select" tuiSelect [(ngModel)]="select" /> } @if (!isMobile) { <tui-data-list-wrapper *tuiDropdown [items]="items" /> } </tui-textfield>
+</td>
+</tr>
+<tr>
+<td tuiTd>
+<tui-textfield multi tuiChevron >
+<select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect [items]="items" [(ngModel)]="multiselect" ></select>
+<tui-input-chip *tuiItem />
+</tui-textfield>
+</td>
+<td tuiTd [style.z-index]="2" >
+<tui-textfield>
+<input placeholder="InputSlider" tuiInputSlider [max]="1000" [min]="0" [(ngModel)]="slider" />
+<input tuiSlider type="range" />
+</tui-textfield>
+</td>
+</tr>
+<tr>
+<td tuiTd>
+<tui-textfield multi>
+<input placeholder="InputDateMulti" tuiInputDateMulti [(ngModel)]="date" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+</td>
+<td tuiTd [style.z-index]="1" >
+<tui-input-range [max]="1000" [min]="0" [(ngModel)]="range" />
+</td>
+</tr>
+<tr>
+<td colspan="2" tuiTd >
+<tui-input-card-group [(ngModel)]="card"> @if (!card) { InputCardGroup } </tui-input-card-group>
+</td>
+</tr>
+<tr>
+<td tuiTd>
+<tui-textfield [style.margin.rem]="0.5">
+<input placeholder="Default textfield style" tuiInput tuiTextfieldAppearance="textfield" [(ngModel)]="input" />
+</tui-textfield>
+</td>
+<td tuiTd>
+<tui-textfield multi tuiChevron [style.margin.rem]="0.5" >
+<select aria-label="MultiSelect" placeholder="MultiSelect" tuiMultiSelect tuiTextfieldAppearance="textfield" [items]="items" [(ngModel)]="multiselect" ></select>
+<tui-input-chip *tuiItem />
+</tui-textfield>
+</td>
+</tr>
+</tbody>
+</table>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiInput} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputChip,
+    TuiInputDateMulti,
+    TuiInputNumber,
+    TuiInputRange,
+    TuiInputSlider,
+    TuiMultiSelect,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiInput,
+        TuiInputCardGroup,
+        TuiInputChip,
+        TuiInputDateMulti,
+        TuiInputNumber,
+        TuiInputRange,
+        TuiInputSlider,
+        TuiMultiSelect,
+        TuiSelect,
+        TuiTable,
+        TuiTextarea,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected textarea = '';
+    protected number = null;
+    protected numberStep = null;
+    protected input = '';
+    protected chip = [];
+    protected multiselect = [];
+    protected date = [];
+    protected select = null;
+    protected slider = null;
+    protected range = null;
+    protected card = null;
+    protected readonly items = ['One', 'Two', 'Three', 'Four', 'Five'];
+    protected readonly isMobile = inject(WA_IS_MOBILE);
 }
 ```
 
@@ -46242,6 +46899,8 @@ export default class Example {
 ```
 
 #### Custom size-option content
+
+You can customize the component via DI tuiTablePaginationOptionsProvider helper.
 
 **Template:**
 ```html
@@ -46968,6 +47627,8 @@ Textarea uses Textfield to create a multi-line string input.
 
 #### Basic
 
+Component would grow from minimal amount of rows until given maximum number of rows, after which scroll will be introduced.
+
 **Template:**
 ```html
 <tui-textfield>
@@ -47018,6 +47679,8 @@ export default class Example {}
 
 #### Limit
 
+You can pass limit to enable counter and extra characters highlight. This would also add validator. If you want to hard limit the field you can use native maxLength attribute.
+
 **Template:**
 ```html
 <tui-textfield [style.margin-block-end.rem]="1">
@@ -47053,6 +47716,8 @@ export default class Example {
 ```
 
 #### Custom highlight
+
+It is possible to override default behavior to introduce your own highlight or other cosmetics.
 
 **Template:**
 ```html
@@ -47105,6 +47770,8 @@ export default class Example {
 ```
 
 #### Icons
+
+Being built on top of Textfield , Textarea supports most of the same configurations, such as icons on both sides.
 
 **Template:**
 ```html
@@ -48388,6 +49055,8 @@ export default class Page {
 
 #### Basic
 
+Using inline with various content. Use ShrinkWrap for balanced tight wrapping.
+
 **Template:**
 ```html
 @for (platform of platforms; track $index) { <h2>{{ platform === 'web' ? 'Desktop' : 'Mobile' }}</h2>
@@ -48470,6 +49139,8 @@ section {
 
 #### Customization
 
+Custom styles and more component
+
 **Template:**
 ```html
 <h2>Desktop</h2>
@@ -48537,6 +49208,8 @@ section {
 ```
 
 #### Service
+
+Showing toast as notification on top of the screen. By default 2 toasts can be shown simultaneously on desktop and 1 on mobile, the rest are queued. This number is controlled by TUI_TOAST_CONCURRENCY token
 
 **Template:**
 ```html
@@ -48713,6 +49386,19 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Component to show icons with a hint by hover
+
+### Example
+
+```html
+<tui-icon [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintCentered]="hint.centered" [tuiHintDirection]="hint.direction" [tuiTooltip]="content" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiTooltip] | `PolymorpheusContent` | content of the hint |
+| [size] | `TuiSizeS` | size of the icon |
 
 ### Usage Examples
 
@@ -48902,16 +49588,45 @@ import {TuiTooltip} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
+#### Visibility
+
+**Template:**
+```html
+<p>Visible: {{ visible }}</p>
+<tui-icon tuiHintDirection="bottom" tuiTooltip="I am a hint" (tuiHintVisible)="visible = $event" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiIcon, TuiTooltip],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected visible = false;
+}
+```
+
 
 ### TypeScript
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiDocHint, TuiIcon, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -48921,7 +49636,12 @@ export default class Page {
         'Custom host',
         'Repeating template',
         'Options',
+        'Visibility',
     ];
+
+    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected size: TuiSizeS = 'm';
+    protected content = 'Tooltip text';
 }
 ```
 
@@ -49665,6 +50385,8 @@ A set of format utils
 
 #### px
 
+Adds 'px' to a number
+
 **Template:**
 ```html
 '{{ px }}' = px(value); <form [formGroup]="parametersForm">
@@ -49712,6 +50434,8 @@ export default class Example {
 ```
 
 #### getCurrencySymbol
+
+Returns a currency symbol from its three letter code or ISO 4217
 
 **Template:**
 ```html
@@ -49781,6 +50505,8 @@ export default class Example {
 ```
 
 #### formatNumber
+
+Formats a number with separators
 
 **Template:**
 ```html
@@ -49877,6 +50603,8 @@ A set of utils to calculate math
 
 #### round
 
+round, floor and ceil with fixed common problems of the native implementation
+
 **Template:**
 ```html
 <p>{{ rounded }} = round(value, precision);</p>
@@ -49947,6 +50675,8 @@ export default class Example {
 
 #### inRange
 
+Checks if the value is in range
+
 **Template:**
 ```html
 {{ ranged }} = inRange(value, fromInclude, toExclude); <form [formGroup]="parametersForm">
@@ -49996,6 +50726,8 @@ export default class Example {
 ```
 
 #### normalizeToIntNumber
+
+Normalizes any number to an integer within inclusive range
 
 **Template:**
 ```html
@@ -50047,6 +50779,8 @@ export default class Example {
 
 #### quantize
 
+Rounds a number to the closest value in a fixed discrete series
+
 **Template:**
 ```html
 {{ quantized }} = quantize(value, quantum); <form [formGroup]="parametersForm">
@@ -50095,6 +50829,8 @@ export default class Example {
 ```
 
 #### clamp
+
+Clamps a value between two inclusive limits
 
 **Template:**
 ```html
@@ -50180,6 +50916,8 @@ Some utils to simplify the development process
 
 #### assert
 
+Logs assert into console in dev mode
+
 **Template:**
 ```html
 <p [innerHTML]="assertResult"></p>
@@ -50210,6 +50948,8 @@ export default class Example {
 ```
 
 #### getPaymentSystem
+
+Card number to its payment system
 
 **Template:**
 ```html
@@ -50271,6 +51011,8 @@ export default class Example {
 
 #### isPresent
 
+Checks value not to be null or undefined
+
 **Template:**
 ```html
 {{ isPresent }} = isPresent(value); <tui-textfield tuiChevron class="parameters" >
@@ -50325,6 +51067,8 @@ export default class Example {
 ```
 
 #### markControlAsTouchedAndValidate
+
+Recursively marks form control as touched and triggers validation
 
 **Template:**
 ```html
@@ -53457,6 +54201,8 @@ Directive that uses masking to fade out overflown content
 
 #### Basic
 
+Single scrollable line with automatic fade on the edges.
+
 **Template:**
 ```html
 <div tuiFade class="fade" > I am a very long text that overflows with a single line fade </div>
@@ -53493,6 +54239,8 @@ export default class Example {}
 ```
 
 #### Multiline
+
+Fade on the last line. When applying custom line height, keep in mind that accessible font scaling can be applied. You can account for it using --tui-font-offset CSS variable or TUI_FONT_OFFSET signal DI token.
 
 **Template:**
 ```html
@@ -53559,6 +54307,8 @@ export default class Example {
 
 #### Vertical
 
+Scrollable vertical container with automatic fade on the edges.
+
 **Template:**
 ```html
 <div tuiFade="vertical" tuiScrollRef class="fade" >
@@ -53595,6 +54345,8 @@ export default class Example {}
 ```
 
 #### Hyphens
+
+In multiline mode you can use hyphen CSS rule to avoid long words wrapping to the next line entirely which can cause fade effect to not be visible at all due to last visible line becoming too short.
 
 **Template:**
 ```html
@@ -55638,6 +56390,8 @@ export default class Example {
 
 #### Components
 
+Buttons have gap style configured for icons, avatars and other similar content. Wrap your text in span so it does not affect you.
+
 **Template:**
 ```html
 <button appearance="secondary-destructive" size="m" tuiButton type="button" >
@@ -56103,6 +56857,8 @@ tui-textfield {
 ```
 
 #### Text
+
+You can pass boolean to toggle skeleton for elements. For multi line text you can use string to serve as a placeholder underneath the text skeleton or a number to generate this many random sized words, while your actual text is loading
 
 **Template:**
 ```html
