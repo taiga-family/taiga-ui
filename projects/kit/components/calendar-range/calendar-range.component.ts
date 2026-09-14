@@ -7,12 +7,14 @@ import {
     inject,
     Input,
     type OnChanges,
+    type OnDestroy,
     type OnInit,
     Output,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
+    RANGE_SEPARATOR_CHAR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
@@ -25,8 +27,6 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_COMMON_ICONS, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
     TuiCalendar,
     tuiCalendarSheetOptionsProvider,
@@ -34,6 +34,16 @@ import {
 } from '@taiga-ui/core/components/calendar';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    TuiTextfieldComponent,
+} from '@taiga-ui/core/components/textfield';
+import {
+    TUI_COMMON_ICONS,
+    TUI_DATE_FORMAT,
+    TUI_DEFAULT_DATE_FORMAT,
+    tuiAsAuxiliary,
+} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {type Observable} from 'rxjs';
@@ -53,20 +63,22 @@ import {type TuiDayRangePeriod} from './day-range-period';
         tuiAsAuxiliary(TuiCalendarRange),
         tuiCalendarSheetOptionsProvider({rangeMode: true}),
     ],
-    host: {
-        '[class._mobile]': 'mobile',
-        '(document:keydown.capture)': 'onEsc($event)',
-    },
+    host: {'[class._mobile]': 'mobile'},
 })
-export class TuiCalendarRange implements OnInit, OnChanges {
+export class TuiCalendarRange implements OnInit, OnChanges, OnDestroy {
     /**
      * @deprecated use `item`
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
+
     private readonly cdr = inject(ChangeDetectorRef);
+    private readonly format = toSignal(inject(TUI_DATE_FORMAT), {
+        initialValue: TUI_DEFAULT_DATE_FORMAT,
+    });
+
+    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
 
     protected currentValue: TuiDay | TuiDayRange | null = null;
-    protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected month: TuiMonth = TuiMonth.currentLocal();
 
@@ -167,21 +179,18 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         this.initDefaultViewedMonth();
     }
 
+    public ngOnDestroy(): void {
+        if (this.currentValue instanceof TuiDay) {
+            this.updateValue(new TuiDayRange(this.currentValue, this.currentValue));
+        }
+    }
+
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(
             this.disabledItemHandler,
             this.currentValue,
             this.minLength,
         );
-    }
-
-    protected onEsc(event: KeyboardEvent): void {
-        if (event.key !== 'Escape' || !(this.currentValue instanceof TuiDay)) {
-            return;
-        }
-
-        event.stopPropagation();
-        this.currentValue = this.previousValue;
     }
 
     protected readonly monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (
@@ -242,7 +251,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected onDayClick(day: TuiDay): void {
-        this.previousValue = this.currentValue;
         this.selectedActivePeriod = null;
 
         if (this.currentValue instanceof TuiDay) {
@@ -252,7 +260,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             this.itemChange.emit(this.findItemByDayRange(range));
             this.updateValue(range);
         } else {
+            const {mode, separator} = this.format();
+
             this.currentValue = day;
+            this.textfield?.value.set(
+                `${day.toString(mode, separator)}${RANGE_SEPARATOR_CHAR}`,
+            );
         }
     }
 
