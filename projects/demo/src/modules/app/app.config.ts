@@ -142,7 +142,7 @@ export const config: ApplicationConfig = {
             provide: TUI_DOC_PAGES,
             useValue: tuiSortPages(
                 pages,
-                new Set(['Documentation', 'Foundations', 'Icons']),
+                new Set(['AI tools', 'Documentation', 'Foundations', 'Icons']),
             ),
         },
         {
