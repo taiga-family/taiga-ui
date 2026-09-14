@@ -78,6 +78,16 @@ describe('htmlToMarkdown', () => {
         expect(md).toBe('Mocked note.');
     });
 
+    it('drops the tui-tabs bar (a live-only control) but keeps surrounding prose', () => {
+        const md = htmlToMarkdown(
+            '<tui-tabs><button tuiTab>Claude Code</button><button tuiTab>Cursor</button></tui-tabs><p>Pick your agent below.</p>',
+        );
+
+        expect(md).not.toContain('Claude Code');
+        expect(md).not.toContain('Cursor');
+        expect(md).toContain('Pick your agent below.');
+    });
+
     it('flattens card-style anchors into list items', () => {
         const md = htmlToMarkdown(
             '<a href="https://maskito.dev" tuiCardLarge><h3>Maskito</h3><div>Input masks.</div></a>',

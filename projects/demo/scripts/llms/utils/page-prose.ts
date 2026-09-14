@@ -58,7 +58,9 @@ export function htmlToMarkdown(html: string): string {
 
     result = result
         .replaceAll(/<!--[\s\S]*?-->/g, '')
-        .replaceAll(/<(script|style)\b[\s\S]*?<\/\1>/gi, '');
+        .replaceAll(/<(script|style)\b[\s\S]*?<\/\1>/gi, '')
+        // Drop the tab bar: labels are a live-only control, the panels live in sibling blocks.
+        .replaceAll(/<tui-tabs\b[\s\S]*?<\/tui-tabs>/gi, ' ');
 
     // Keep pageTab content, drop other ng-templates (tooltips, hidden descriptions).
     result = result
