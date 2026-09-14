@@ -2,12 +2,12 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
 import {TUI_DOC_PAGES, TuiDocNavigation} from '@taiga-ui/addon-doc';
 import {type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiDocNavigation version badges', () => {
     const WINDOW = 6;
-    const [major = NaN, minor = NaN] = TUI_VERSION.split('.').map(Number);
+    const [major = Number.NaN, minor = Number.NaN] = TUI_VERSION.split('.').map(Number);
     const recent = `${major}.${minor}.0`;
     const stale =
         minor >= WINDOW ? `${major}.${minor - WINDOW}.0` : `${major - 1}.${minor}.0`;

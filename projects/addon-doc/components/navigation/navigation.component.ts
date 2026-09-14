@@ -253,7 +253,10 @@ export class TuiDocNavigation {
     }
 
     private isRecent(version: string | undefined): boolean {
-        const [major = NaN, minor = NaN] = (version ?? '').split('.').map(Number);
+        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
+            .split('.')
+            .map(Number);
+
         const distance = this.currentMinor - minor;
 
         return (
