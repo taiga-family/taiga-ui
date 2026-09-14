@@ -10,6 +10,17 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
     }
 
     switch (currency) {
+        case TuiCurrency.ArgentinePeso:
+        case TuiCurrency.ChileanPeso:
+        case TuiCurrency.Dollar:
+        case TuiCurrency.MexicanPeso:
+        case TuiCurrency.UnidadDeFomento:
+        case TuiCurrencyCode.ArgentinePeso:
+        case TuiCurrencyCode.ChileanPeso:
+        case TuiCurrencyCode.Dollar:
+        case TuiCurrencyCode.MexicanPeso:
+        case TuiCurrencyCode.UnidadDeFomento:
+            return '$';
         case TuiCurrency.ArmenianDram:
         case TuiCurrencyCode.ArmenianDram:
             return '֏';
@@ -31,6 +42,9 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.BrazilianReal:
         case TuiCurrencyCode.BrazilianReal:
             return 'R$';
+        case TuiCurrency.CambodianRiel:
+        case TuiCurrencyCode.CambodianRiel:
+            return '៛';
         case TuiCurrency.CanadianDollar:
         case TuiCurrencyCode.CanadianDollar:
             return 'C$';
@@ -40,14 +54,12 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.Dirham:
         case TuiCurrencyCode.Dirham:
             return 'Dh';
-        case TuiCurrency.Dollar:
-        case TuiCurrency.MexicanPeso:
-        case TuiCurrencyCode.Dollar:
-        case TuiCurrencyCode.MexicanPeso:
-            return '$';
         case TuiCurrency.EastCaribbeanDollar:
         case TuiCurrencyCode.EastCaribbeanDollar:
             return 'EC$';
+        case TuiCurrency.EgyptianPound:
+        case TuiCurrencyCode.EgyptianPound:
+            return '£E';
         case TuiCurrency.Euro:
         case TuiCurrencyCode.Euro:
             return '€';
@@ -75,12 +87,21 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.IsraeliShekel:
         case TuiCurrencyCode.IsraeliShekel:
             return '₪';
+        case TuiCurrency.KenyanShilling:
+        case TuiCurrencyCode.KenyanShilling:
+            return 'KSh';
         case TuiCurrency.KyrgyzstanSom:
         case TuiCurrencyCode.KyrgyzstanSom:
             return 'c';
+        case TuiCurrency.LaoKip:
+        case TuiCurrencyCode.LaoKip:
+            return '₭';
         case TuiCurrency.MalaysianRinggit:
         case TuiCurrencyCode.MalaysianRinggit:
             return 'RM';
+        case TuiCurrency.MaldivianRufiyaa:
+        case TuiCurrencyCode.MaldivianRufiyaa:
+            return 'ރ';
         case TuiCurrency.MoldovanLeu:
         case TuiCurrencyCode.MoldovanLeu:
             return 'L';
@@ -90,6 +111,12 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.NewTurkmenManat:
         case TuiCurrencyCode.NewTurkmenManat:
             return 'TMT';
+        case TuiCurrency.PeruvianSol:
+        case TuiCurrencyCode.PeruvianSol:
+            return 'S/';
+        case TuiCurrency.PhilippinePeso:
+        case TuiCurrencyCode.PhilippinePeso:
+            return '₱';
         case TuiCurrency.PolandZloty:
         case TuiCurrencyCode.PolandZloty:
             return 'zł';
@@ -120,6 +147,9 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.TajikistaniSomoni:
         case TuiCurrencyCode.TajikistaniSomoni:
             return 'SM';
+        case TuiCurrency.TanzanianShilling:
+        case TuiCurrencyCode.TanzanianShilling:
+            return 'TSh';
         case TuiCurrency.Tenge:
         case TuiCurrencyCode.Tenge:
             return '₸';

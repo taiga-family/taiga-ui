@@ -10,6 +10,16 @@
 // eslint-disable-next-line no-restricted-syntax
 export enum TuiCurrency {
     /**
+     * Argentine peso
+     *
+     * @description Numeric code: 032
+     * @description Alphabetic code: ARS
+     * @description Countries and territories: Argentina
+     * @description Currency symbol: $
+     */
+    ArgentinePeso = 'ARS',
+
+    /**
      * Armenian dram
      *
      * @description Numeric code: 051
@@ -72,6 +82,16 @@ export enum TuiCurrency {
     BrazilianReal = 'BRL',
 
     /**
+     * Cambodian riel
+     *
+     * @description Numeric code: 116
+     * @description Alphabetic code: KHR
+     * @description Countries and territories: Cambodia
+     * @description Currency symbol: ៛
+     */
+    CambodianRiel = 'KHR',
+
+    /**
      * Canadian dollar
      *
      * @description Numeric code: 124
@@ -80,6 +100,16 @@ export enum TuiCurrency {
      * @description Currency symbol: C$
      */
     CanadianDollar = 'CAD',
+
+    /**
+     * Chilean peso
+     *
+     * @description Numeric code: 152
+     * @description Alphabetic code: CLP
+     * @description Countries and territories: Chile
+     * @description Currency symbol: $
+     */
+    ChileanPeso = 'CLP',
 
     /**
      * Czech Koruna
@@ -120,6 +150,16 @@ export enum TuiCurrency {
      * @description Currency symbol: EC$
      */
     EastCaribbeanDollar = 'XCD',
+
+    /**
+     * Egyptian pound
+     *
+     * @description Numeric code: 818
+     * @description Alphabetic code: EGP
+     * @description Countries and territories: Egypt
+     * @description Currency symbol: £E
+     */
+    EgyptianPound = 'EGP',
 
     /**
      * Euro
@@ -188,6 +228,16 @@ export enum TuiCurrency {
     IsraeliShekel = 'ILS',
 
     /**
+     * Kenyan shilling
+     *
+     * @description Numeric code: 404
+     * @description Alphabetic code: KES
+     * @description Countries and territories: Kenya
+     * @description Currency symbol: KSh
+     */
+    KenyanShilling = 'KES',
+
+    /**
      * Kyrgyzstani som
      *
      * @description Numeric code: 417
@@ -197,7 +247,27 @@ export enum TuiCurrency {
      */
     KyrgyzstanSom = 'KGS',
 
+    /**
+     * Lao kip
+     *
+     * @description Numeric code: 418
+     * @description Alphabetic code: LAK
+     * @description Countries and territories: Laos
+     * @description Currency symbol: ₭
+     */
+    LaoKip = 'LAK',
+
     MalaysianRinggit = 'MYR',
+
+    /**
+     * Maldivian rufiyaa
+     *
+     * @description Numeric code: 462
+     * @description Alphabetic code: MVR
+     * @description Countries and territories: Maldives
+     * @description Currency symbol: ރ
+     */
+    MaldivianRufiyaa = 'MVR',
 
     /**
      * Mexican peso
@@ -222,6 +292,26 @@ export enum TuiCurrency {
     MongolianTugrik = 'MNT',
 
     NewTurkmenManat = 'TMT',
+
+    /**
+     * Peruvian sol
+     *
+     * @description Numeric code: 604
+     * @description Alphabetic code: PEN
+     * @description Countries and territories: Peru
+     * @description Currency symbol: S/
+     */
+    PeruvianSol = 'PEN',
+
+    /**
+     * Philippine peso
+     *
+     * @description Numeric code: 608
+     * @description Alphabetic code: PHP
+     * @description Countries and territories: Philippines
+     * @description Currency symbol: ₱
+     */
+    PhilippinePeso = 'PHP',
 
     /**
      * Poland Zloty
@@ -348,6 +438,16 @@ export enum TuiCurrency {
      * @description Currency symbol: SM
      */
     TajikistaniSomoni = 'TJS',
+
+    /**
+     * Tanzanian shilling
+     *
+     * @description Numeric code: 834
+     * @description Alphabetic code: TZS
+     * @description Countries and territories: Tanzania
+     * @description Currency symbol: TSh
+     */
+    TanzanianShilling = 'TZS',
     /**
      * Mongolian tugrik
      *
@@ -384,6 +484,16 @@ export enum TuiCurrency {
      * @description Currency symbol: ₺
      */
     TurkishLira = 'TRY',
+
+    /**
+     * Unidad de Fomento
+     *
+     * @description Numeric code: 990
+     * @description Alphabetic code: CLF
+     * @description Countries and territories: Chile
+     * @description Currency symbol: $
+     */
+    UnidadDeFomento = 'CLF',
     /**
      * Iranian rial
      *
