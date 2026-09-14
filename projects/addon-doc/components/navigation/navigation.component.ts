@@ -229,24 +229,6 @@ export class TuiDocNavigation {
         }
     }
 
-    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
-        return !!pages?.some((page) => this.isRecent(page.version));
-    }
-
-    private isRecent(version: string | undefined): boolean {
-        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
-            .split('.')
-            .map(Number);
-
-        const distance = this.currentMinor - minor;
-
-        return (
-            major === this.currentMajor &&
-            distance >= 0 &&
-            distance < TUI_NEW_VERSION_RANGE
-        );
-    }
-
     @tuiPure
     private filterItems(
         items: ReadonlyArray<readonly TuiDocRoutePage[]>,
@@ -291,6 +273,24 @@ export class TuiDocNavigation {
                 ),
             ],
             [],
+        );
+    }
+
+    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
+        return !!pages?.some((page) => this.isRecent(page.version));
+    }
+
+    private isRecent(version: string | undefined): boolean {
+        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
+            .split('.')
+            .map(Number);
+
+        const distance = this.currentMinor - minor;
+
+        return (
+            major === this.currentMajor &&
+            distance >= 0 &&
+            distance < TUI_NEW_VERSION_RANGE
         );
     }
 

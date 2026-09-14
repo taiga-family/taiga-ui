@@ -90,11 +90,11 @@ export class TuiDocPage implements TuiDocPageOptions {
     public activeItemIndex = 0;
     public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
-    protected get version(): string {
-        return this.pages.get(this.header)?.version ?? '';
-    }
-
     public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
+    }
+
+    protected get version(): string {
+        return this.pages.get(this.header)?.version ?? '';
     }
 }
