@@ -29,10 +29,16 @@ jobs:
       - uses: taiga-family/actions/read-package-json@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
         id: info
 
+      - name: Allow self-signed certificate of the internal messenger
+        run: printf 'insecure\n' > "${{ runner.temp }}/.curlrc"
+
       - name: Announce to Time messenger
         uses: taiga-family/actions/messenger-mattermost-announce@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+        # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
+        env:
+          CURL_HOME: ${{ runner.temp }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
@@ -40,6 +46,7 @@ jobs:
 
       - name: Announce to Telegram messenger
         uses: taiga-family/actions/messenger-telegram-announce@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+        # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
