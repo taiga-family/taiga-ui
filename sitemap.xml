@@ -7,7 +7,16 @@
     <loc>https://taiga-ui.dev/browser-support/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/ai-support/</loc>
+    <loc>https://taiga-ui.dev/ai/overview/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/ai/mcp/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/ai/skills/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/ai/llms/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/ssr/</loc>

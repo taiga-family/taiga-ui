@@ -14,7 +14,6 @@
 
 ### Documentation
 
-- [Ai Support](https://taiga-ui.dev/ai-support)
 - [Appearances](https://taiga-ui.dev/appearances)
 - [Breakpoints](https://taiga-ui.dev/breakpoints)
 - [Browser Support](https://taiga-ui.dev/browser-support)
@@ -35,6 +34,13 @@
 - [Variables](https://taiga-ui.dev/variables)
 - [Viewport](https://taiga-ui.dev/viewport)
 - [Wrapper](https://taiga-ui.dev/wrapper)
+
+### Ai
+
+- [Llms](https://taiga-ui.dev/ai/llms)
+- [Mcp](https://taiga-ui.dev/ai/mcp)
+- [Overview](https://taiga-ui.dev/ai/overview)
+- [Skills](https://taiga-ui.dev/ai/skills)
 
 ### Charts
 

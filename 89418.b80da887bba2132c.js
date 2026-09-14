@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89418],{89418:e=>{e.exports="```bash\nnpx @taiga-ui/mcp init\n```\n"}}]);

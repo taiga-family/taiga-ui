@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[20563],{20563:i=>{i.exports='<p>Visible: {{ visible }}</p>\n<tui-icon\n    tuiHintDirection="bottom"\n    tuiTooltip="I am a hint"\n    (tuiHintVisible)="visible = $event"\n/>\n'}}]);

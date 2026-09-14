@@ -448,7 +448,7 @@
 ### line-clamp
 
 ```text
-  TuiLineClamp, TuiLineClampBox, TuiLineClampOptions, TuiLineClampPositionDirective
+  TuiLineClamp, TuiLineClampBox, TuiLineClampFallback, TuiLineClampOptions, TuiLineClampPositionDirective
 ```
 ### message
 
@@ -50400,7 +50400,7 @@ export default class Example {}
     background-color: #7c48c3;
     background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
     overflow: visible;
-    animation: spinCard 5s infinite;
+    animation: spinCard calc(var(--tui-duration) * 20) infinite;
 }
 ```
 
@@ -51384,6 +51384,19 @@ export class Example {}
 <tui-icon tuiTooltip="Please don't touch this" />
 ```
 
+### Example
+
+```html
+<tui-icon [size]="size" [tuiHintAppearance]="appearance" [tuiHintDirection]="direction" [tuiTooltip]="content" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| tuiTooltip | `PolymorpheusContent` | Content |
+| size | `TuiSizeS` | Size |
+
 ### Usage Examples
 
 #### Basic
@@ -51583,6 +51596,33 @@ import {TuiTooltip} from '@taiga-ui/kit';
 export default class Example {}
 ```
 
+#### Visibility
+
+**Template:**
+```html
+<p>Visible: {{ visible }}</p>
+<tui-icon tuiHintDirection="bottom" tuiTooltip="I am a hint" (tuiHintVisible)="visible = $event" />
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiIcon, TuiTooltip],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected visible = false;
+}
+```
+
 
 ### TypeScript
 
@@ -51590,14 +51630,26 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {tuiProvide} from '@taiga-ui/cdk';
+import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
+
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
+import {AbstractExampleTuiHint} from '../abstract/hint';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [InheritedDocumentation, TuiDemo, TuiIcon, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class Page {}
+export default class PageComponent extends AbstractExampleTuiHint {
+    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected size: TuiSizeS = 'm';
+    protected content = 'Tooltip text';
+}
 ```
 
 ---
