@@ -1,0 +1,16 @@
+<div tuiChipGroup>
+    @for (chip of chips; track chip) {
+        <label
+            tuiChip
+            [appearance]="checked[$index] ? 'accent' : 'secondary-grayscale'"
+        >
+            {{ chip }}
+            <input
+                appearance=""
+                tuiChip
+                type="checkbox"
+                [(ngModel)]="checked[$index]"
+            />
+        </label>
+    }
+</div>
