@@ -81,6 +81,12 @@
             >
                 <span class="t-label">
                     <strong>{{ label }}</strong>
+                    <ng-container *ngIf="sectionBadge(index) as badge">
+                        <ng-container
+                            [ngTemplateOutlet]="badgeTpl"
+                            [ngTemplateOutletContext]="{$implicit: badge}"
+                        />
+                    </ng-container>
                 </span>
                 <ng-template tuiAccordionItemContent>
                     <div class="t-section">
@@ -116,6 +122,12 @@
                     [target]="item.target || '_self'"
                 >
                     {{ item.title }}
+                    <ng-container *ngIf="pageBadge(item) as badge">
+                        <ng-container
+                            [ngTemplateOutlet]="badgeTpl"
+                            [ngTemplateOutletContext]="{$implicit: badge}"
+                        />
+                    </ng-container>
                     <tui-icon
                         *polymorpheusOutlet="item.icon as icon"
                         class="t-icon"
@@ -135,6 +147,12 @@
                         (click)="closeMenu()"
                     >
                         {{ item.title }}
+                        <ng-container *ngIf="pageBadge(item) as badge">
+                            <ng-container
+                                [ngTemplateOutlet]="badgeTpl"
+                                [ngTemplateOutletContext]="{$implicit: badge}"
+                            />
+                        </ng-container>
                         <tui-icon
                             *polymorpheusOutlet="item.icon as icon"
                             class="t-icon"
@@ -163,6 +181,12 @@
                             [icon]="icons.more"
                         />
                         {{ item.title }}
+                        <ng-container *ngIf="groupBadge(item) as badge">
+                            <ng-container
+                                [ngTemplateOutlet]="badgeTpl"
+                                [ngTemplateOutletContext]="{$implicit: badge}"
+                            />
+                        </ng-container>
                         <tui-icon
                             *polymorpheusOutlet="item.icon as icon"
                             class="t-icon"
@@ -184,6 +208,12 @@
                                     [target]="subPage.target || '_self'"
                                 >
                                     {{ subPage.title }}
+                                    <ng-container *ngIf="pageBadge(subPage) as badge">
+                                        <ng-container
+                                            [ngTemplateOutlet]="badgeTpl"
+                                            [ngTemplateOutletContext]="{$implicit: badge}"
+                                        />
+                                    </ng-container>
                                     <tui-icon
                                         *polymorpheusOutlet="subPage.icon as icon"
                                         class="t-icon"
@@ -204,6 +234,12 @@
                                         (click)="closeMenu()"
                                     >
                                         {{ subPage.title }}
+                                        <ng-container *ngIf="pageBadge(subPage) as badge">
+                                            <ng-container
+                                                [ngTemplateOutlet]="badgeTpl"
+                                                [ngTemplateOutletContext]="{$implicit: badge}"
+                                            />
+                                        </ng-container>
                                         <tui-icon
                                             *polymorpheusOutlet="subPage.icon as icon"
                                             class="t-icon"
@@ -216,6 +252,20 @@
                     </tui-expand>
                 </div>
             </ng-template>
+        </ng-template>
+
+        <ng-template
+            #badgeTpl
+            let-badge
+        >
+            <span
+                size="m"
+                tuiBadge
+                class="t-new"
+                [appearance]="badge.appearance"
+            >
+                {{ badge.label }}
+            </span>
         </ng-template>
     </tui-scrollbar>
 </nav>
