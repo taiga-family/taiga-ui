@@ -51393,6 +51393,19 @@ export class Example {}
 &lt;tui-icon tuiTooltip=&quot;Please don&#039;t touch this&quot; /&gt;
 ```
 
+### Example
+
+```html
+&lt;tui-icon [size]=&quot;size&quot; [tuiHintAppearance]=&quot;appearance&quot; [tuiHintDirection]=&quot;direction&quot; [tuiTooltip]=&quot;content&quot; /&gt;
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| tuiTooltip | `PolymorpheusContent` | Content |
+| size | `TuiSizeS` | Size |
+
 ### Usage Examples
 
 #### Basic
@@ -51592,6 +51605,33 @@ import {TuiTooltip} from &#039;@taiga-ui/kit&#039;;
 export default class Example {}
 ```
 
+#### Visibility
+
+**Template:**
+```html
+&lt;p&gt;Visible: {{ visible }}&lt;/p&gt;
+&lt;tui-icon tuiHintDirection=&quot;bottom&quot; tuiTooltip=&quot;I am a hint&quot; (tuiHintVisible)=&quot;visible = $event&quot; /&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiTooltip} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiIcon, TuiTooltip],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected visible = false;
+}
+```
+
 
 ### TypeScript
 
@@ -51599,14 +51639,26 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
+import {tuiProvide} from &#039;@taiga-ui/cdk&#039;;
+import {TuiIcon, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
+import {TuiTooltip} from &#039;@taiga-ui/kit&#039;;
+
+import {ABSTRACT_PROPS_ACCESSOR} from &#039;../abstract/abstract-props-accessor&#039;;
+import {AbstractExampleTuiHint} from &#039;../abstract/hint&#039;;
+import {InheritedDocumentation} from &#039;../abstract/inherited-documentation&#039;;
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [InheritedDocumentation, TuiDemo, TuiIcon, TuiTooltip],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class Page {}
+export default class PageComponent extends AbstractExampleTuiHint {
+    protected readonly sizeVariants: readonly TuiSizeS[] = [&#039;s&#039;, &#039;m&#039;];
+    protected size: TuiSizeS = &#039;m&#039;;
+    protected content = &#039;Tooltip text&#039;;
+}
 ```
 
 ---
