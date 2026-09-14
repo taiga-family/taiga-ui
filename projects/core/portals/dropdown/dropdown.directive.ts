@@ -16,12 +16,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiAsVehicle,
-    tuiFallbackAccessor,
-    TuiRectAccessor,
-    type TuiVehicle,
-} from '@taiga-ui/core/classes';
+import {tuiAsVehicle, TuiRectAccessor, type TuiVehicle} from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
 import {
