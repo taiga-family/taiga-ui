@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.99.0](https://github.com/taiga-family/taiga-ui/compare/v4.98.0...v4.99.0) (2026-09-14)
+
+### 🚀 Features
+
+- **core:** `Hint` add floating appearance ([#14960](https://github.com/taiga-family/taiga-ui/issues/14960))
+  ([f3de5ce](https://github.com/taiga-family/taiga-ui/commit/f3de5ceb928f82ac9d12027bc5f2d40f686b1fef))
+- **kit:** `LineClamp` improve performance ([#14942](https://github.com/taiga-family/taiga-ui/issues/14942))
+  ([3ab37b5](https://github.com/taiga-family/taiga-ui/commit/3ab37b548f5f8e8dd896f08aab02a203e4543f34))
+- **kit:** `Tooltip` add tuiHintVisible to tuiHintDirective
+  ([#14984](https://github.com/taiga-family/taiga-ui/issues/14984))
+  ([c593dc2](https://github.com/taiga-family/taiga-ui/commit/c593dc228ba521125218874732d02f0f463064ab))
+
+### 🐞 Bug Fixes
+
+- **core:** `Group` flatten adjacent `Textfield` corners for M/S
+  ([#14806](https://github.com/taiga-family/taiga-ui/issues/14806))
+  ([#14959](https://github.com/taiga-family/taiga-ui/issues/14959))
+  ([97e5764](https://github.com/taiga-family/taiga-ui/commit/97e5764f762f761a4028ae7fd4495ee9b5a0ef4c))
+- **experimental:** `Dialog` add max-width in fullscreen
+  ([#14981](https://github.com/taiga-family/taiga-ui/issues/14981))
+  ([9016b81](https://github.com/taiga-family/taiga-ui/commit/9016b81d3352d22850ebc6dbc71df7e95e632e22))
+- **kit:** `InputDateRange` reflect unfinished date range picking
+  ([#14966](https://github.com/taiga-family/taiga-ui/issues/14966))
+  ([646b25f](https://github.com/taiga-family/taiga-ui/commit/646b25f022c3cc604295ee5ca6d36e59064e44b2))
+- **kit:** file validator does not throw when filename is empty
+  ([#14985](https://github.com/taiga-family/taiga-ui/issues/14985))
+  ([78421b5](https://github.com/taiga-family/taiga-ui/commit/78421b5d3cdf468f2e6d42ed0acd21abfd55ee10))
+
 ## [4.98.0](https://github.com/taiga-family/taiga-ui/compare/v4.97.0...v4.98.0) (2026-09-07)
 
 ### 🐞 Bug Fixes
