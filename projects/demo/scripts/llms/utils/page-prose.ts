@@ -69,10 +69,14 @@ export function htmlToMarkdown(html: string): string {
         .replaceAll(/<ng-template\b[^>]*>([\s\S]*?)<\/ng-template>/gi, '$1')
         .replaceAll(/<ng-content\b[^>]*>(?:\s*<\/ng-content>)?/gi, '');
 
-    // Drop Angular control-flow openers/closers, keep their inner content.
+    // Drop Angular control-flow openers/closers, keep their inner content. Openers can span
+    // several lines (e.g. a @for over a wrapped array), so match the keyword + optional (...)
+    // across newlines; the keyword list keeps `@tui.*` icon names and the like untouched.
     result = result
-        .replaceAll(/^[^\S\n]*@[a-z]+\b[^\n{]*\{[^\S\n]*$/gim, '')
-        .replaceAll(/^[^\S\n]*\}[^\S\n]*@[a-z]+\b[^\n{]*\{[^\S\n]*$/gim, '')
+        .replaceAll(
+            /@(?:for|if|else\s+if|else|switch|case|default|empty|defer|placeholder|loading|error)(?:\s*\([^{}]*\))?\s*\{/gi,
+            ' ',
+        )
         .replaceAll(/^[^\S\n]*\}[^\S\n]*$/gm, '');
 
     // <tui-doc-example heading> becomes a section heading (+ static description).
@@ -252,6 +256,114 @@ function resolveStringArray(ts: string, prop: string): string[] {
     return block ? [...block.matchAll(/'([^']+)'/g)].map(([, item = '']) => item) : [];
 }
 
+// Content inside the delimiter pair opening at `openIndex` (`{…}` or `[…]`), respecting nesting.
+function readBalanced(source: string, openIndex: number): string | null {
+    const open = source[openIndex] ?? '';
+    const close = {'{': '}', '[': ']'}[open];
+
+    if (!close) {
+        return null;
+    }
+
+    let depth = 0;
+
+    for (let i = openIndex; i < source.length; i++) {
+        if (source[i] === open) {
+            depth += 1;
+        } else if (source[i] === close) {
+            depth -= 1;
+
+            if (depth === 0) {
+                return source.slice(openIndex + 1, i);
+            }
+        }
+    }
+
+    return null;
+}
+
+// Reads `prop = [ {label: import('a.md'), …}, … ]` from index.ts: each array element's
+// {label, importPath} pairs, in source order. Powers the examples-grid @for below.
+function resolveImportGrid(
+    ts: string,
+    prop: string,
+): Array<Array<{label: string; path: string}>> {
+    const assignment = new RegExp(String.raw`\b${escapeReg(prop)}\b[^=\n]*=\s*\[`).exec(
+        ts,
+    );
+
+    if (!assignment) {
+        return [];
+    }
+
+    const arrayInner = readBalanced(ts, assignment.index + assignment[0].length - 1);
+
+    if (arrayInner === null) {
+        return [];
+    }
+
+    const objects: string[] = [];
+
+    for (let i = 0; i < arrayInner.length; i++) {
+        if (arrayInner[i] !== '{') {
+            continue;
+        }
+
+        const objectInner = readBalanced(arrayInner, i);
+
+        if (objectInner === null) {
+            break;
+        }
+
+        objects.push(objectInner);
+        i += objectInner.length + 1;
+    }
+
+    const entryRegex =
+        /(?:'([^']+)'|"([^"]+)"|([A-Za-z_$][\w$]*))\s*:\s*import\(\s*['"]([^'"]+)['"]/g;
+
+    return objects.map((object) =>
+        [...object.matchAll(entryRegex)].map((entry) => ({
+            label: entry[1] ?? entry[2] ?? entry[3] ?? '',
+            path: entry[4] ?? '',
+        })),
+    );
+}
+
+// Raw HTML of each `@case (N)` body inside a `@switch ($index)` block, keyed by N.
+function extractSwitchCaseHtml(body: string): Record<string, string> {
+    const result: Record<string, string> = {};
+    const opener = /@switch\s*\(\s*\$index\s*\)\s*\{/.exec(body);
+
+    if (!opener) {
+        return result;
+    }
+
+    const switchBody = readBalanced(body, opener.index + opener[0].length - 1);
+
+    if (switchBody === null) {
+        return result;
+    }
+
+    const caseRegex = /@case\s*\(\s*(\d+)\s*\)\s*\{/g;
+    let match: RegExpExecArray | null;
+
+    while ((match = caseRegex.exec(switchBody)) !== null) {
+        const index = match[1];
+        const braceIndex = match.index + match[0].length - 1;
+        const caseBody = readBalanced(switchBody, braceIndex);
+
+        if (index === undefined || caseBody === null) {
+            continue;
+        }
+
+        result[index] = caseBody.trim();
+        caseRegex.lastIndex = braceIndex + caseBody.length + 2;
+    }
+
+    return result;
+}
+
 // Expands `@for (x of prop) { …{{ x }}… }` when prop is a static string array in index.ts,
 // so interpolated data lists (e.g. available mixins) survive into the Markdown.
 function expandForLoops(html: string, ts: string): string {
@@ -287,11 +399,76 @@ function expandForLoops(html: string, ts: string): string {
         }
 
         const body = result.slice(bodyStart, cursor);
-        const token = new RegExp(String.raw`\{\{\s*${escapeReg(variable)}\s*\}\}`, 'g');
+        const tokenSource = String.raw`\{\{\s*${escapeReg(variable)}\s*\}\}`;
+
+        // Only expand loops that interpolate the variable as text (data lists). A body that
+        // binds it instead (e.g. <tui-doc-example [heading]="x">) would just duplicate content.
+        if (!new RegExp(tokenSource).test(body)) {
+            opener.lastIndex = match.index + head.length;
+            match = opener.exec(result);
+            continue;
+        }
+
+        const token = new RegExp(tokenSource, 'g');
         const expanded = values.map((value) => body.replaceAll(token, value)).join('');
 
         result = `${result.slice(0, match.index)}${expanded}${result.slice(cursor + 1)}`;
         opener.lastIndex = match.index + expanded.length;
+        match = opener.exec(result);
+    }
+
+    return result;
+}
+
+// Expands an examples grid — `@for (item of headings) { <tui-doc-example [heading]="item"
+// [content]="grid[$index]" [description]="tpl" /> @switch ($index) … }` — into one Markdown
+// section per item, pulling snippets from the `grid` import array and notes from the @switch.
+async function expandExampleGrid(
+    html: string,
+    folderPath: string,
+    ts: string,
+): Promise<string> {
+    const opener = /@for\s*\(\s*(\w+)\s+of\s+(\w+)\s*[;)][^{]*\{/g;
+    let result = html;
+    let match = opener.exec(result);
+
+    while (match) {
+        const [head, , headingsProp = ''] = match;
+        const bodyStart = match.index + head.length - 1;
+        const body = readBalanced(result, bodyStart);
+        const gridProp = body && /\[content\]="(\w+)\s*\[\s*\$index\s*\]/.exec(body)?.[1];
+        const headings = resolveStringArray(ts, headingsProp);
+
+        if (!body || !gridProp || !headings.length || !/<tui-doc-example\b/i.test(body)) {
+            opener.lastIndex = match.index + head.length;
+            match = opener.exec(result);
+            continue;
+        }
+
+        const grid = resolveImportGrid(ts, gridProp);
+        const notes = extractSwitchCaseHtml(body);
+        const sections: string[] = [];
+
+        for (let index = 0; index < headings.length; index++) {
+            const parts: string[] = [];
+
+            for (const {label, path: snippetPath} of grid[index] ?? []) {
+                const snippet = await readSnippet(folderPath, snippetPath);
+
+                if (snippet) {
+                    parts.push(label ? `**${label}**\n\n${snippet}` : snippet);
+                }
+            }
+
+            sections.push(
+                `<tui-doc-example heading="${headings[index]}">${notes[index] ?? ''}</tui-doc-example>\n\n${parts.join('\n\n')}`,
+            );
+        }
+
+        const replacement = `\n\n${sections.join('\n\n')}\n\n`;
+
+        result = `${result.slice(0, match.index)}${replacement}${result.slice(bodyStart + body.length + 2)}`;
+        opener.lastIndex = match.index + replacement.length;
         match = opener.exec(result);
     }
 
@@ -367,10 +544,13 @@ export function getComponentProse(content: string): string[] {
         return [];
     }
 
-    const withoutExamples = inner.replaceAll(
-        /<tui-doc-(code|example)\b[\s\S]*?(?:<\/tui-doc-\1>|\/>)/gi,
-        ' ',
-    );
+    // Drop blocks captured by dedicated extractors: examples/code, the live demo, and the API
+    // table. The API table especially must go — its `type="Foo<Bar>"` attrs carry a `>` that
+    // breaks tag-stripping and leaks `[binding]="…"` fragments into the prose.
+    const withoutExamples = inner
+        .replaceAll(/<table\s[^>]*tuiDocAPI[\s\S]*?<\/table>/gi, ' ')
+        .replaceAll(/<tui-doc-demo\b[\s\S]*?<\/tui-doc-demo>/gi, ' ')
+        .replaceAll(/<tui-doc-(code|example)\b[\s\S]*?(?:<\/tui-doc-\1>|\/>)/gi, ' ');
 
     return htmlToMarkdown(withoutExamples)
         .split(/\n{2,}/)
@@ -469,7 +649,8 @@ async function resolveTemplate(
     seen: ReadonlySet<string>,
 ): Promise<string> {
     const ts = await readIfExists(path.join(folderPath, 'index.ts'));
-    const expanded = ts ? expandForLoops(html, ts) : html;
+    const withGrid = ts ? await expandExampleGrid(html, folderPath, ts) : html;
+    const expanded = ts ? expandForLoops(withGrid, ts) : withGrid;
     const withCode = await inlineDocCode(expanded, folderPath, ts);
 
     return inlineChildComponents(withCode, folderPath, seen);

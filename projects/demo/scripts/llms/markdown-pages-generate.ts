@@ -31,10 +31,15 @@ interface ComponentHeader {
 const OUTPUT_DIR = path.resolve(process.cwd(), 'projects/demo/src/markdown-pages');
 
 function plainText(value: string): string {
-    return value
-        .toLowerCase()
-        .replaceAll(/[^a-z0-9]+/g, ' ')
-        .trim();
+    return (
+        value
+            // Collapse markdown links to their text so a link URL can't defeat the dedupe below
+            // (e.g. an intro repeated as prose with a `[<select>](url)` link).
+            .replaceAll(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+            .toLowerCase()
+            .replaceAll(/[^a-z0-9]+/g, ' ')
+            .trim()
+    );
 }
 
 function humanizeRoute(route: string): string {
