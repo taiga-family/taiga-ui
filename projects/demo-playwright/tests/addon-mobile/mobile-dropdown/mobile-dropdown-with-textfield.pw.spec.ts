@@ -9,6 +9,23 @@ const {describe} = test;
 describe('DropdownMobile for textfields', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
+    test('keeps sheet open when textfield loses focus', async ({page}) => {
+        await page.goto(DemoRoute.Dropdown);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+        const input = example.locator('tui-textfield[tuiDropdownSheet] input');
+        const sheet = page.locator('tui-sheet-dialog');
+
+        await input.click();
+        await expect(sheet).toBeVisible();
+
+        await input.blur();
+        await expect(sheet).toBeVisible();
+
+        await sheet.dispatchEvent('click');
+        await expect(sheet).toBeHidden();
+    });
+
     test('with select', async ({page}) => {
         await page.goto(DemoRoute.Dropdown);
 
