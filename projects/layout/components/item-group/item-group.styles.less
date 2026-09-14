@@ -31,10 +31,12 @@
                     margin-inline-end: var(--tui-item-margin);
                 }
 
-                .transition(~'transform, opacity');
-
                 opacity: 1;
                 transform: scale(1);
+            }
+
+            &._initialized .t-item {
+                .transition(~'transform, opacity');
             }
 
             .t-item_hidden {
