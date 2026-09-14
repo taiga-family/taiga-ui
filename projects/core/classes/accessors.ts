@@ -26,7 +26,7 @@ export function tuiInjectAccessor<T extends TuiAccessor>(
     accessor: AbstractType<T>,
     type: string,
 ): T {
-    return inject<T[]>(accessor as any, {self: true}).find((a) => a.type === type)!;
+    return find(inject<readonly T[]>(accessor as any, {self: true}), type);
 }
 
 /** TODO: drop fallback in v6 */
@@ -44,8 +44,7 @@ export function tuiProvideAccessor<T extends TuiAccessor>(
         : {
               provide,
               deps: [[new SkipSelf(), provide]],
-              useFactory: (accessors: readonly T[]): T =>
-                  accessors.find((accessor) => accessor.type === type)!,
+              useFactory: (accessors: readonly T[]): T => find(accessors, type),
           };
 }
 
@@ -83,4 +82,8 @@ export function tuiAsPositionAccessor(
 
 export function tuiAsRectAccessor(accessor: Type<TuiRectAccessor>): ExistingProvider {
     return tuiProvide(TuiRectAccessor, accessor, true);
+}
+
+function find<T extends TuiAccessor>(accessors: readonly T[], type: string): T {
+    return [...accessors].reverse().find((accessor) => accessor.type === type)!;
 }
