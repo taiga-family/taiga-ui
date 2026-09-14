@@ -19,6 +19,7 @@ export const TUI_USED_ICONS = [
     '@tui.star',
     '@tui.square-filled',
     '@tui.zap-filled',
+    '@tui.sparkles',
     '@tui.calendar',
     '@tui.visa-mono',
     '@tui.mastercard-mono',
@@ -119,8 +120,7 @@ export const TUI_USED_ICONS = [
     '@tui.chevron-up',
     '@tui.pause',
     '@tui.rss',
-    '@tui.sparkles',
+    '@tui.workflow',
     '@tui.server',
     '@tui.file-text',
-    '@tui.workflow',
 ] as const;
