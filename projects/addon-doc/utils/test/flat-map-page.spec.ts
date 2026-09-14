@@ -1,5 +1,5 @@
 import {tuiToFlatMapPages} from '@taiga-ui/addon-doc';
-import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config';
+import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config/angular';
 
 describe('tuiToFlatMapPages', () => {
     const testPage1 = {
