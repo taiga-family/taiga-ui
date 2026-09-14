@@ -9,7 +9,7 @@
     background: var(--tui-background-base);
     box-shadow: none;
 
-    --tui-width: min(45rem, calc(100vw - 2 * var(--tui-padding-inline)));
+    --tui-width: min(45rem, 100vw);
     --tui-from: translateY(2rem);
     --tui-padding-inline: 1rem;
 
@@ -56,7 +56,7 @@
         margin: 0 calc(var(--tui-width) / 2 - 50vw) 2rem;
 
         &[data-size='l'] {
-            border-width: max(calc(50vw - var(--tui-width) / 2), 1rem);
+            border-width: max(calc(50vw - var(--tui-width) / 2), var(--tui-padding-inline));
         }
     }
 

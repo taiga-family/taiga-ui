@@ -20,19 +20,10 @@
         --t-image-size: 1.5rem;
     }
 
-    &[tuiCardLarge] {
-        &[data-space] [tuiCell] {
-            padding-block: 1rem;
-            margin-block: -1rem calc(1rem - var(--t-space));
-
-            &:not([tuiCellStretch]) {
-                padding-inline: 1rem;
-                margin-inline: -1rem;
-            }
-
-            &[tuiCellStretch] {
-                padding-inline: ~'max(1rem, var(--tui-padding-inline))';
-            }
+    &[tuiCardLarge][data-space] {
+        [tuiCell] {
+            padding: 1rem var(--tui-padding-inline);
+            margin: -1rem calc(-1 * var(--tui-padding-inline)) calc(1rem - var(--t-space));
 
             &:last-of-type {
                 margin-block-end: -1rem;
