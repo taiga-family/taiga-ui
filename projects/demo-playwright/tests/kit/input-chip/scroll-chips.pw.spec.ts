@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test('scroll to second chip in narrow container', async ({page}) => {
@@ -19,7 +20,7 @@ test.describe('InputChip', () => {
         await page.keyboard.press('Enter');
         await apiPage.waitStableState();
 
-        const textfield = example.locator('tui-textfield[multi]').first();
+        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.MULTI).first();
 
         await textfield.evaluate((el) => {
             el.scrollLeft = 50;
