@@ -2,6 +2,7 @@ import {
     afterNextRender,
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     inject,
     viewChildren,
@@ -36,17 +37,22 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         '[class._closeable]': 'context.closable',
         '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '(document:touchcancel.zoneless)': 'onTouchEnd()',
+        '(document:touchend.zoneless)': 'onTouchEnd()',
+        '(document:touchstart.passive.zoneless)': 'onTouchStart()',
+        '(scroll.zoneless)': 'onScroll()',
         '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
 export class TuiSheetDialogComponent<I> {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
+    private readonly destroyRef = inject(DestroyRef);
+    private firstStop = 0;
+    private lastScrollDelta = Number.NaN;
+    private lastScrollTop = Number.NaN;
     private pointers = 0;
+    private startScrollTop = Number.NaN;
 
     protected readonly context =
         injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
@@ -63,7 +69,7 @@ export class TuiSheetDialogComponent<I> {
             tuiZonefull(),
             exhaustMap(() => {
                 if (isObservable(this.context.closable)) {
-                    if (this.el.scrollTop <= 0) {
+                    if (this.el.scrollTop < this.initial) {
                         this.el.scrollTo({top: this.initial, behavior: 'smooth'});
                     }
 
@@ -73,7 +79,7 @@ export class TuiSheetDialogComponent<I> {
                 return of(this.context.closable);
             }),
             filter(Boolean),
-            takeUntilDestroyed(),
+            takeUntilDestroyed(this.destroyRef),
         )
         .subscribe(() => this.close());
 
@@ -84,25 +90,98 @@ export class TuiSheetDialogComponent<I> {
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
     protected onResize(): void {
         if (!this.interacted) {
-            this.el.scrollTop = this.initial || 0;
+            this.el.scrollTop = this.initial;
         }
     }
 
-    protected onPointerChange(delta: number): void {
-        this.interacted = this.interacted || !!delta;
-        this.pointers = Math.max(this.pointers + delta, 0);
+    protected onTouchStart(): void {
+        this.interacted = true;
 
-        if (!this.pointers && this.el.scrollTop <= 0) {
+        if (!this.pointers) {
+            this.resetScrollTracking();
+            this.startScrollTop = this.el.scrollTop;
+            this.firstStop = this.getFirstStop();
+        }
+
+        this.pointers += 1;
+    }
+
+    protected onTouchEnd(): void {
+        this.pointers = Math.max(this.pointers - 1, 0);
+
+        if (this.pointers) {
+            return;
+        }
+
+        if (this.el.scrollTop <= 0) {
             this.close$.next();
+        } else if (this.startScrollTop > this.el.scrollTop) {
+            this.lastScrollTop = this.el.scrollTop;
+        } else {
+            this.resetScrollTracking();
         }
     }
 
-    private get initial(): number | undefined {
+    protected onScroll(): void {
+        if (this.pointers) {
+            return;
+        }
+
+        const scrollTop = this.el.scrollTop;
+
+        if (scrollTop <= 0) {
+            this.close$.next();
+
+            return;
+        }
+
+        if (Number.isNaN(this.lastScrollTop)) {
+            return;
+        }
+
+        const delta = this.lastScrollTop - scrollTop;
+        const isSlowingDown =
+            !Number.isNaN(this.lastScrollDelta) && delta < this.lastScrollDelta;
+
+        if (delta <= 0 || isSlowingDown) {
+            this.resetScrollTracking();
+
+            return;
+        }
+
+        if (scrollTop < this.firstStop && !Number.isNaN(this.lastScrollDelta)) {
+            this.close$.next();
+
+            return;
+        }
+
+        this.lastScrollTop = scrollTop;
+        this.lastScrollDelta = delta;
+    }
+
+    private get initial(): number {
         return this.context.closable
             ? this.stops()
                   .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
             : 0;
+    }
+
+    private getFirstStop(): number {
+        return Math.max(
+            0,
+            Math.min(
+                ...this.stops().map(
+                    (e) => e.nativeElement.offsetTop - this.context.offset,
+                ),
+                this.el.clientHeight,
+            ),
+        );
+    }
+
+    private resetScrollTracking(): void {
+        this.lastScrollDelta = Number.NaN;
+        this.lastScrollTop = Number.NaN;
     }
 
     private close(): void {
