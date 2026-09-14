@@ -1,6 +1,6 @@
 import {resolve} from 'node:path';
 
-import {errorLog, infoLog, successLog} from 'ng-morph';
+import {infoLog, successLog} from 'ng-morph';
 
 import {getValueByFlag} from './shared/argv.utils';
 import {execute} from './shared/execute';
@@ -18,9 +18,9 @@ const path = getValueByFlag<string>('--path', '');
     const versions: string[] = getAllVersions(packageJson.name);
 
     if (versions.includes(version) && !isDryRun) {
-        errorLog(`${packageJson.name}@${version} is already published`);
+        successLog(`${packageJson.name}@${version} is already published, skip`);
 
-        process.exit(1);
+        return;
     }
 
     infoLog(`name: ${packageJson.name}`);
