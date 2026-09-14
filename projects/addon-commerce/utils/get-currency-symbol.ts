@@ -10,6 +10,17 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
     }
 
     switch (currency) {
+        case TuiCurrency.ArgentinePeso:
+        case TuiCurrency.ChileanPeso:
+        case TuiCurrency.Dollar:
+        case TuiCurrency.MexicanPeso:
+        case TuiCurrency.UnidadDeFomento:
+        case TuiCurrencyCode.ArgentinePeso:
+        case TuiCurrencyCode.ChileanPeso:
+        case TuiCurrencyCode.Dollar:
+        case TuiCurrencyCode.MexicanPeso:
+        case TuiCurrencyCode.UnidadDeFomento:
+            return '$';
         case TuiCurrency.ArmenianDram:
         case TuiCurrencyCode.ArmenianDram:
             return '֏';
@@ -43,17 +54,6 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.Dirham:
         case TuiCurrencyCode.Dirham:
             return 'Dh';
-        case TuiCurrency.ArgentinePeso:
-        case TuiCurrency.ChileanPeso:
-        case TuiCurrency.Dollar:
-        case TuiCurrency.MexicanPeso:
-        case TuiCurrency.UnidadDeFomento:
-        case TuiCurrencyCode.ArgentinePeso:
-        case TuiCurrencyCode.ChileanPeso:
-        case TuiCurrencyCode.Dollar:
-        case TuiCurrencyCode.MexicanPeso:
-        case TuiCurrencyCode.UnidadDeFomento:
-            return '$';
         case TuiCurrency.EastCaribbeanDollar:
         case TuiCurrencyCode.EastCaribbeanDollar:
             return 'EC$';
