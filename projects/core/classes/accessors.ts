@@ -2,6 +2,7 @@ import {
     type AbstractType,
     type ExistingProvider,
     type FactoryProvider,
+    inject,
     Optional,
     SkipSelf,
     type Type,
@@ -21,18 +22,34 @@ export abstract class TuiRectAccessor extends TuiAccessor {
     public abstract getClientRect(): DOMRect;
 }
 
+export function tuiInjectAccessor<T extends TuiAccessor>(
+    accessor: AbstractType<T>,
+    type: string,
+): T {
+    return inject<T[]>(accessor as any, {self: true}).find((a) => a.type === type)!;
+}
+
+/** TODO: drop fallback in v6 */
 export function tuiProvideAccessor<T extends TuiAccessor>(
     provide: AbstractType<T>,
     type: string,
-    fallback: Type<T>,
+    fallback?: Type<T>,
 ): FactoryProvider {
-    return {
-        provide,
-        deps: [[new SkipSelf(), new Optional(), provide], fallback],
-        useFactory: tuiFallbackAccessor<T>(type),
-    };
+    return fallback
+        ? {
+              provide,
+              deps: [[new SkipSelf(), new Optional(), provide], fallback],
+              useFactory: tuiFallbackAccessor<T>(type),
+          }
+        : {
+              provide,
+              deps: [[new SkipSelf(), provide]],
+              useFactory: (accessors: readonly T[]): T =>
+                  accessors.find((accessor) => accessor.type === type)!,
+          };
 }
 
+/** @deprecated */
 export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
 ): (accessors: readonly T[] | null, fallback: Omit<T, 'type'>) => T {
@@ -42,6 +59,7 @@ export function tuiFallbackAccessor<T extends TuiAccessor>(
         ) || Object.create(fallback, {type: {value: type}});
 }
 
+/** @deprecated */
 export function tuiPositionAccessorFor(
     type: string,
     fallback: Type<TuiPositionAccessor>,
@@ -49,6 +67,7 @@ export function tuiPositionAccessorFor(
     return tuiProvideAccessor(TuiPositionAccessor, type, fallback);
 }
 
+/** @deprecated */
 export function tuiRectAccessorFor(
     type: string,
     fallback: Type<TuiRectAccessor>,

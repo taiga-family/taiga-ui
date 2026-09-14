@@ -96,12 +96,13 @@ export class TuiDropdownDirective
                 : content,
     });
 
+    /** @deprecated remove in v6 */
     public get accessor(): TuiRectAccessor {
         const accessors = this.injector.get(TuiRectAccessor, null, {
             self: true,
         }) as readonly TuiRectAccessor[] | null;
 
-        return tuiFallbackAccessor<TuiRectAccessor>('dropdown')(accessors, this);
+        return accessors?.find(({type}) => type === 'dropdown') || this;
     }
 
     public get position(): 'absolute' | 'fixed' {

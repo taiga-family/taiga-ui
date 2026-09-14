@@ -9,7 +9,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdownSided]',
-    providers: [TuiDropdownPosition, tuiAsPositionAccessor(TuiDropdownPositionSided)],
+    providers: [tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
 export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
