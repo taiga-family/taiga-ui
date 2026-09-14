@@ -28,6 +28,16 @@
                         {{ tag }}
                     </span>
                 }
+                @if (version(); as version) {
+                    <span
+                        appearance="neutral"
+                        size="m"
+                        tuiBadge
+                        class="t-badge t-version"
+                    >
+                        v{{ version }}+
+                    </span>
+                }
             </h1>
             <p
                 tuiFade

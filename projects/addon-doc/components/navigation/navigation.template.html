@@ -75,7 +75,7 @@
                 >
                     <span class="t-label">
                         {{ label }}
-                        @for (badge of sectionBadge($index); track badge.label) {
+                        @if (sectionBadge($index); as badge) {
                             <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                         }
                     </span>
@@ -116,7 +116,7 @@
                     [target]="item.target || '_self'"
                 >
                     {{ item.title }}
-                    @for (badge of pageBadge(item); track badge.label) {
+                    @if (pageBadge(item); as badge) {
                         <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
@@ -133,7 +133,7 @@
                     (click)="closeMenu()"
                 >
                     {{ item.title }}
-                    @for (badge of pageBadge(item); track badge.label) {
+                    @if (pageBadge(item); as badge) {
                         <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
@@ -169,7 +169,7 @@
                                 [icon]="icons.more"
                             />
                             {{ item.title }}
-                            @for (badge of groupBadge(item); track badge.label) {
+                            @if (groupBadge(item); as badge) {
                                 <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                             }
                             <tui-icon
@@ -195,7 +195,7 @@
                                         [target]="subPage.target || '_self'"
                                     >
                                         {{ subPage.title }}
-                                        @for (badge of pageBadge(subPage); track badge.label) {
+                                        @if (pageBadge(subPage); as badge) {
                                             <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                                         }
                                     </a>
@@ -212,7 +212,7 @@
                                         (click)="closeMenu()"
                                     >
                                         {{ subPage.title }}
-                                        @for (badge of pageBadge(subPage); track badge.label) {
+                                        @if (pageBadge(subPage); as badge) {
                                             <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                                         }
                                     </a>

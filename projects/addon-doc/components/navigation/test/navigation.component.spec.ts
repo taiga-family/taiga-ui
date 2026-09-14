@@ -2,45 +2,44 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
 import {TUI_DOC_PAGES, TuiDocNavigation} from '@taiga-ui/addon-doc';
 import {type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {provideTaiga} from '@taiga-ui/core';
 
-describe('TuiDocNavigation badges', () => {
+describe('TuiDocNavigation version badges', () => {
+    const WINDOW = 6;
+    const [major = NaN, minor = NaN] = TUI_VERSION.split('.').map(Number);
+    const recent = `${major}.${minor}.0`;
+    const stale =
+        minor >= WINDOW ? `${major}.${minor - WINDOW}.0` : `${major - 1}.${minor}.0`;
+
     const pages: TuiDocRoutePages = [
         {
             section: 'New section',
             title: 'Overview',
             route: 'new/overview',
-            badges: [{label: 'New', appearance: 'positive'}],
+            version: recent,
         },
-        {section: 'New section', title: 'Details', route: 'new/details'},
-        {section: 'Plain section', title: 'First', route: 'plain/first'},
-        {section: 'Plain section', title: 'Second', route: 'plain/second'},
-        {section: 'Lab section', title: 'Home', route: 'lab/home'},
+        {section: 'New section', title: 'Detail', route: 'new/detail'},
+        {section: 'Updated section', title: 'Home', route: 'upd/home', version: stale},
+        {section: 'Updated section', title: 'Fresh', route: 'upd/fresh', version: recent},
+        {section: 'Old section', title: 'Alpha', route: 'old/alpha', version: stale},
+        {section: 'Old section', title: 'Beta', route: 'old/beta'},
+        {section: 'Group section', title: 'Intro', route: 'group/intro'},
         {
-            section: 'Lab section',
-            title: 'Beaker',
-            route: 'lab/beaker',
-            badges: [{label: 'Experimental', appearance: 'warning'}],
-        },
-        {section: 'Combo section', title: 'Intro', route: 'combo/intro'},
-        {
-            section: 'Combo section',
-            title: 'Widget',
-            route: 'combo/widget',
-            badges: [
-                {label: 'New', appearance: 'positive'},
-                {label: 'Experimental', appearance: 'warning'},
-            ],
-        },
-        {
-            section: 'Combo section',
+            section: 'Group section',
             title: 'Group',
             subPages: [
                 {
-                    section: 'Combo section',
+                    section: 'Group section',
                     title: 'Nested new',
-                    route: 'combo/nested',
-                    badges: [{label: 'New', appearance: 'positive'}],
+                    route: 'group/nested',
+                    version: recent,
+                },
+                {
+                    section: 'Group section',
+                    title: 'Nested old',
+                    route: 'group/nested-old',
+                    version: stale,
                 },
             ],
         },
@@ -74,7 +73,7 @@ describe('TuiDocNavigation badges', () => {
         fixture.detectChanges();
     }
 
-    function labels(element: Element | undefined): Array<string | undefined> {
+    function badges(element: Element | undefined): Array<string | undefined> {
         return Array.from(element?.querySelectorAll('.t-new') ?? []).map((badge) =>
             badge.textContent?.trim(),
         );
@@ -86,53 +85,44 @@ describe('TuiDocNavigation badges', () => {
         );
     }
 
-    it("shows the badge on a section header, taken from the section's first page", () => {
-        expect(labels(header('New section'))).toEqual(['New']);
+    function row(title: string): Element | undefined {
+        return Array.from(host().querySelectorAll('a.t-sublink')).find((link) =>
+            link.textContent?.includes(title),
+        );
+    }
+
+    it('marks a whole section New when its lead page is recent', () => {
+        expect(badges(header('New section'))).toEqual(['New']);
     });
 
-    it('does not badge a section whose pages have none', () => {
-        expect(header('Plain section')?.querySelector('.t-new')).toBeNull();
+    it('does not repeat New on the section-lead row', () => {
+        expandAll();
+        expect(row('Overview')?.querySelector('.t-new')).toBeNull();
     });
 
-    it('marks a section Updated when it holds an experimental page', () => {
-        expect(labels(header('Lab section'))).toEqual(['Updated']);
+    it('marks a section Updated when a non-lead page is recent', () => {
+        expect(badges(header('Updated section'))).toEqual(['Updated']);
     });
 
-    it('marks a section Updated when a nested subpage is new', () => {
-        expect(labels(header('Combo section'))).toEqual(['Updated']);
+    it('badges a recent non-lead page New on its own row', () => {
+        expandAll();
+        expect(badges(row('Fresh'))).toEqual(['New']);
+        expect(row('Home')?.querySelector('.t-new')).toBeNull();
     });
 
-    it('marks a group button Updated when it contains a badged subpage', () => {
+    it('does not badge a section with no recent pages', () => {
+        expect(header('Old section')?.querySelector('.t-new')).toBeNull();
+    });
+
+    it('marks a group Updated when it holds a recent subpage', () => {
         expandAll();
 
         const group = Array.from(
             host().querySelectorAll('button.t-sublink_subsection'),
         ).find((button) => button.textContent?.includes('Group'));
 
-        expect(labels(group)).toEqual(['Updated']);
-    });
-
-    it('renders multiple badges on one row, New before Experimental', () => {
-        expandAll();
-
-        const row = Array.from(host().querySelectorAll('a.t-sublink')).find((link) =>
-            link.textContent?.includes('Widget'),
-        );
-
-        expect(labels(row)).toEqual(['New', 'Experimental']);
-    });
-
-    it('badges pages on their own rows, but not the section-lead page', () => {
-        expandAll();
-
-        const badgedRows = Array.from(host().querySelectorAll('a.t-sublink'))
-            .filter((row) => row.querySelector('.t-new'))
-            .map((row) => row.textContent?.replaceAll(/\s+/g, ' ').trim());
-
-        expect(badgedRows).toEqual([
-            'Beaker Experimental',
-            'Widget New Experimental',
-            'Nested new New',
-        ]);
+        expect(badges(group)).toEqual(['Updated']);
+        expect(badges(row('Nested new'))).toEqual(['New']);
+        expect(row('Nested old')?.querySelector('.t-new')).toBeNull();
     });
 });

@@ -21,11 +21,11 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {
     type TuiDocRoutePage,
-    type TuiDocRoutePageBadge,
     type TuiDocRoutePageGroup,
     type TuiDocRoutePages,
 } from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -49,10 +49,14 @@ import {
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
-const UPDATED_BADGE = {
-    label: 'Updated',
-    appearance: 'info',
-} satisfies TuiDocRoutePageBadge;
+interface TuiDocNavigationBadge {
+    readonly label: string;
+    readonly appearance: string;
+}
+
+const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
+const UPDATED_BADGE: TuiDocNavigationBadge = {label: 'Updated', appearance: 'info'};
+const TUI_NEW_VERSION_RANGE = 6;
 
 function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],
@@ -102,7 +106,8 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
-
+    private readonly currentMajor = Number(TUI_VERSION.split('.')[0]);
+    private readonly currentMinor = Number(TUI_VERSION.split('.')[1]);
     private readonly sectionLeads = new Set(
         inject(NAVIGATION_ITEMS)
             .slice(0, -1)
@@ -196,18 +201,26 @@ export class TuiDocNavigation {
         return route === this.active;
     }
 
-    protected sectionBadge(index: number): readonly TuiDocRoutePageBadge[] {
-        const lead = this.items[index]?.[0]?.badges;
+    protected sectionBadge(index: number): TuiDocNavigationBadge | null {
+        if (this.isRecent(this.items[index]?.[0]?.version)) {
+            return NEW_BADGE;
+        }
 
-        return lead?.length ? lead : this.aggregateBadge(this.flat[index]);
+        return this.hasRecent(this.flat[index]) ? UPDATED_BADGE : null;
     }
 
-    protected pageBadge(item: TuiDocRoutePage): readonly TuiDocRoutePageBadge[] {
-        return this.sectionLeads.has(item) ? [] : (item.badges ?? []);
+    protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
+        return !this.sectionLeads.has(item) && this.isRecent(item.version)
+            ? NEW_BADGE
+            : null;
     }
 
-    protected groupBadge(item: TuiDocRoutePageGroup): readonly TuiDocRoutePageBadge[] {
-        return item.badges?.length ? item.badges : this.aggregateBadge(item.subPages);
+    protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
+        if (this.isRecent(item.version)) {
+            return NEW_BADGE;
+        }
+
+        return this.hasRecent(item.subPages) ? UPDATED_BADGE : null;
     }
 
     protected onGroupClick(index: number): void {
@@ -235,10 +248,19 @@ export class TuiDocNavigation {
         }
     }
 
-    private aggregateBadge(
-        pages: readonly TuiDocRoutePage[] | undefined,
-    ): readonly TuiDocRoutePageBadge[] {
-        return pages?.some((page) => page.badges?.length) ? [UPDATED_BADGE] : [];
+    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
+        return !!pages?.some((page) => this.isRecent(page.version));
+    }
+
+    private isRecent(version: string | undefined): boolean {
+        const [major = NaN, minor = NaN] = (version ?? '').split('.').map(Number);
+        const distance = this.currentMinor - minor;
+
+        return (
+            major === this.currentMajor &&
+            distance >= 0 &&
+            distance < TUI_NEW_VERSION_RANGE
+        );
     }
 
     private filterItems(
