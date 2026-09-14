@@ -30,6 +30,14 @@
         >
             {{ tag }}
         </tui-chip>
+        <tui-chip
+            *ngIf="version"
+            appearance="custom"
+            size="xs"
+            class="t-tag t-version"
+        >
+            v{{ version }}+
+        </tui-chip>
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"
