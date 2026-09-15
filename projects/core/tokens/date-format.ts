@@ -10,6 +10,15 @@ import {type TuiDateMode} from '@taiga-ui/cdk/date-time';
 
 /**
  * Formatting configuration for displayed dates
+ * TODO(v6): move to @taiga-ui/kit and refactor to
+ * ```ts
+ * import {type MaskitoDateParams} from '@maskito/kit';
+ *
+ * export type TuiDateFormatSettings = Pick<
+ *  Required<MaskitoDateParams>,
+ *  'mode' | 'separator'
+ * >;
+ * ```
  */
 export interface TuiDateFormatSettings {
     /**
@@ -23,6 +32,7 @@ export interface TuiDateFormatSettings {
     readonly separator: string;
 }
 
+// TODO(v6): delete
 export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
     mode: 'dd/mm/yyyy',
     separator: '.',
@@ -30,6 +40,16 @@ export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
 
 /**
  * Formatting configuration for displayed dates
+ * TODO(v6): move to @taiga-ui/kit and refactor to
+ * ```ts
+ * import {maskitoWithDateDefaults} from '@maskito/kit';
+ * import {LOCALE_ID} from '@angular/core';
+ *
+ * export const TUI_DATE_FORMAT = new InjectionToken<Signal<TuiDateFormatSettings>>(
+ *  ngDevMode ? 'TUI_DATE_FORMAT' : '',
+ *  {factory: () => signal(maskitoWithDateDefaults({locale: inject(LOCALE_ID)}))}
+ * );
+ * ```
  */
 export const TUI_DATE_FORMAT = new InjectionToken<Signal<TuiDateFormatSettings>>(
     ngDevMode ? 'TUI_DATE_FORMAT' : '',
