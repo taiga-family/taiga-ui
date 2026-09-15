@@ -1,5 +1,6 @@
 export * from './code-actions';
 export * from './code-editor';
+export * from './copy-page';
 export * from './default-tabs';
 export * from './doc-icons';
 export * from './example-content-processor';

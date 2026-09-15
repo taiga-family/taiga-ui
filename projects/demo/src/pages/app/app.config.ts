@@ -20,6 +20,7 @@ import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TUI_DOC_CODE_EDITOR,
+    TUI_DOC_COPY_PAGE,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
@@ -143,6 +144,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_DEFAULT_TABS,
             useValue: ['Examples', 'API', 'Setup', 'How to use'],
+        },
+        {
+            provide: TUI_DOC_COPY_PAGE,
+            useValue: signal(true),
         },
         {
             provide: TUI_DOC_LOGO,

@@ -33,7 +33,7 @@ describe('extractExampleDescriptions', () => {
 
         // Case N maps to example folder N + 1.
         expect(result['1']?.description).toBe('First example description.');
-        expect(result['2']?.description).toBe('Second one with code and a link.');
+        expect(result['2']?.description).toBe('Second one with `code` and a link.');
     });
 
     it('reads headings from an inline @for array', () => {
@@ -69,7 +69,7 @@ describe('extractExampleDescriptions', () => {
         expect(result['2']?.description).toBe('Custom description.');
     });
 
-    it('unescapes HTML entities in descriptions', () => {
+    it('keeps <code> as inline code and unescapes its entities', () => {
         const content = `
             <tui-doc-page header="ComboBox">
                 <ng-template pageTab>
@@ -95,7 +95,7 @@ describe('extractExampleDescriptions', () => {
         const result = extractExampleDescriptions(content);
 
         expect(result['1']?.description).toBe(
-            'Works with @angular/cdk/scrolling and <tui-textfield />.',
+            'Works with `@angular/cdk/scrolling` and `<tui-textfield />`.',
         );
     });
 

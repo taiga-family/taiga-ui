@@ -104,6 +104,66 @@ export async function extractComponentsFromRoutes(): Promise<ComponentInfo[]> {
     return components;
 }
 
+/**
+ * Maps each page folder on disk to the URL it is actually served at.
+ *
+ * The docs route is not always derivable from the folder path: e.g. the folder
+ * `components/action-bar` is served at `/components/actions-bar`, and every chart
+ * folder `components/*-chart` is served under `/charts/...`. The link lives in
+ * `app.routes.ts`, where a `path: DemoRoute.X` is paired with a lazy
+ * `import('../<folder>')`, and `demo-routes.ts`, where `DemoRoute.X` resolves to a URL.
+ */
+export async function buildFolderRouteMap(): Promise<Map<string, string>> {
+    const pagesPath = getPagesPath();
+    const appDir = path.join(pagesPath, 'app');
+    const demoRoutesContent = await fs.readFile(
+        path.join(appDir, 'demo-routes.ts'),
+        'utf-8',
+    );
+
+    const appRoutesContent = await fs.readFile(
+        path.join(appDir, 'app.routes.ts'),
+        'utf-8',
+    );
+
+    const urlByName = new Map<string, string>();
+
+    for (const match of demoRoutesContent.matchAll(/(\w+):\s*'([^']+)'/g)) {
+        const name = match[1];
+        const url = match[2];
+
+        if (name && url) {
+            urlByName.set(name, url);
+        }
+    }
+
+    const folderToRoute = new Map<string, string>();
+
+    // Each `route({...})` block pairs one `path: DemoRoute.X` with one lazy import.
+    // Imports are relative to `app.routes.ts` (the `app/` dir): `../components/x`
+    // for library pages, `./getting-started` for app-level guide pages.
+    for (const block of appRoutesContent.split('route({')) {
+        const nameMatch = /path:\s*DemoRoute\.(\w+)/.exec(block);
+        const importMatch = /import\('(\.\.?\/[^']+)'\)/.exec(block);
+        const name = nameMatch?.[1];
+        const folder = importMatch?.[1];
+
+        if (!name || !folder) {
+            continue;
+        }
+
+        const url = urlByName.get(name);
+
+        if (!url) {
+            continue;
+        }
+
+        folderToRoute.set(path.resolve(appDir, folder), url.replace(/^\/+/, ''));
+    }
+
+    return folderToRoute;
+}
+
 export function shouldIncludeComponent(
     component: ComponentInfo,
     excludeSections: string[],
