@@ -63,14 +63,18 @@ export class TuiDocPage {
     public readonly activeItemIndex = model(0);
 
     constructor() {
-        // Advertise the page's Markdown twin via <link rel="alternate">; it is prerendered
-        // into the static HTML, so agents/crawlers discover it without running the app.
+        // Advertise the page's Markdown twin via <link rel="alternate"> and the llms.txt
+        // overview via <link rel="describedby">; both are prerendered into the static HTML,
+        // so agents/crawlers discover them without running the app.
         const doc = inject(DOCUMENT);
         const pageMarkdown = inject(TuiDocPageMarkdown);
         const link = doc.createElement('link');
+        const describedBy = doc.createElement('link');
 
         link.rel = 'alternate';
         link.type = 'text/markdown';
+        describedBy.rel = 'describedby';
+        describedBy.href = '/llms.txt';
 
         effect((onCleanup) => {
             if (!this.copyPage()) {
@@ -79,7 +83,11 @@ export class TuiDocPage {
 
             link.href = pageMarkdown.url();
             doc.head.appendChild(link);
-            onCleanup(() => link.remove());
+            doc.head.appendChild(describedBy);
+            onCleanup(() => {
+                link.remove();
+                describedBy.remove();
+            });
         });
     }
 }
