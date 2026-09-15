@@ -11,11 +11,10 @@ const STRING_LITERAL_RE = /^'[^']*'$/;
 
 // tuiHeader: a value that is exactly one single-quoted literal is auto-migrated by
 // ATTR_WITH_VALUES_TO_REPLACE (single quotes only) or is already a v5 token — skip it.
+// Any other dynamic binding is opaque (a signal, variable or ternary): it cannot be
+// rewritten safely, so it gets a manual-migration TODO.
 const HEADER_SINGLE_LITERAL =
     /^'(?:xxl|xl|[lms]|xs|xxs|h1|h2|h3|h4|h5|h6|body-l|body-m|body-s)'$/;
-// tuiHeader: a v4 size token used as a quoted literal (single or double quotes) inside a
-// larger expression, e.g. `cond ? 'l' : 'm'` or `cond ? "l" : "m"`.
-const HEADER_OLD_TOKEN_LITERAL = /(['"])(?:xxl|xl|[lms]|xs|xxs)\1/;
 
 export const HTML_COMMENTS: HtmlComment[] = [
     {
@@ -145,14 +144,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         filterFn: (element) => {
             const value = findAttr(element.attrs, '[tuiHeader]')?.value?.trim();
 
-            return (
-                !!value &&
-                !HEADER_SINGLE_LITERAL.test(value) &&
-                HEADER_OLD_TOKEN_LITERAL.test(value)
-            );
+            return !!value && !HEADER_SINGLE_LITERAL.test(value);
         },
         comment:
-            '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding still contains old size tokens that cannot be migrated automatically — update them to the v5 tokens manually. See https://taiga-ui.dev/components/header',
+            '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding could not be migrated automatically — if it resolves to an old size token, update it to the v5 token manually. See https://taiga-ui.dev/components/header',
     },
     {
         tag: 'table',
