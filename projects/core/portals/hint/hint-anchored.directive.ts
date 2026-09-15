@@ -1,4 +1,4 @@
-import {type AfterViewInit, Directive, forwardRef, inject} from '@angular/core';
+import {type AfterViewInit, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -6,9 +6,9 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    tuiPositionAccessorFor,
+    TuiPositionAccessor,
+    tuiProvideAccessor,
     TuiRectAccessor,
-    tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
@@ -16,7 +16,6 @@ import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHover} from './hint-hover.directive';
-import {TuiHintPosition} from './hint-position.directive';
 
 const GAP = 8;
 const ARROW_OFFSET = 22;
@@ -25,11 +24,8 @@ const ARROW_OFFSET = 22;
     providers: [
         TuiPositionService,
         TuiHoveredService,
-        tuiPositionAccessorFor('hint', TuiHintPosition),
-        tuiRectAccessorFor(
-            'hint',
-            forwardRef(() => TuiHintDirective),
-        ),
+        tuiProvideAccessor(TuiPositionAccessor, 'hint'),
+        tuiProvideAccessor(TuiRectAccessor, 'hint'),
     ],
 })
 export class TuiHintAnchored implements AfterViewInit {

@@ -97,7 +97,9 @@ export class TuiDropdownDirective
             self: true,
         }) as readonly TuiRectAccessor[] | null;
 
-        return accessors?.find(({type}) => type === 'dropdown') || this;
+        return (
+            [...(accessors || [])].reverse().find(({type}) => type === 'dropdown') || this
+        );
     }
 
     public get position(): 'absolute' | 'fixed' {
