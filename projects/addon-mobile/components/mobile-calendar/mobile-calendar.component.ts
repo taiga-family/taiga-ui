@@ -67,6 +67,7 @@ import {
     mergeMap,
     type MonoTypeOperatorFunction,
     race,
+    Subject,
     switchMap,
     take,
     takeUntil,
@@ -120,6 +121,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly doc = inject(DOCUMENT);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
+    private readonly scrollMonth$ = new Subject<void>();
 
     private readonly getYearsViewportSize = computed(
         () => this.yearsScroll()?.getViewportSize() || 0,
@@ -201,6 +203,14 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly value = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
 
     constructor() {
+        this.scrollMonth$
+            .pipe(
+                switchMap(() => timer(0, tuiZonefreeScheduler(this.ngZone))),
+                tuiZonefree(this.ngZone),
+                takeUntilDestroyed(),
+            )
+            .subscribe(() => this.scrollToActiveMonth());
+
         inject(TUI_VALUE_STREAM)
             .pipe(takeUntilDestroyed())
             .subscribe((value) => {
@@ -224,10 +234,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         this.activeMonth += this.getMonthOffset(year);
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
-
-        timer(0, tuiZonefreeScheduler(this.ngZone))
-            .pipe(tuiZonefree(this.ngZone), takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => this.scrollToActiveMonth());
+        this.scrollMonth$.next();
     }
 
     protected get yearWidth(): number {
