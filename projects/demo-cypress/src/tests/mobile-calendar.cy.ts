@@ -93,6 +93,17 @@ describe('Mobile calendar', () => {
         cy.get('.t-dot').should('have.css', 'background-color', 'rgb(255, 0, 0)');
     });
 
+    it('keeps rendering months after changing year', () => {
+        cy.mount(Test)
+            .then((wrapper) => wrapper.component)
+            .then((component) => component.calendar().setYear(2023));
+
+        cy.get('[data-state="active"]').should('contain.text', '2023');
+        cy.get('.t-month-wrapper:visible').should(($months) => {
+            expect($months.length).to.be.greaterThan(0);
+        });
+    });
+
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
             cy.mount(Test, {
