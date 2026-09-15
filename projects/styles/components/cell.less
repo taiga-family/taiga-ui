@@ -9,11 +9,6 @@
 
     position: relative;
     display: flex;
-
-    // stylelint-disable-next-line -- fix linter
-    width: -moz-available;
-    // stylelint-disable-next-line -- fix linter
-    width: stretch;
     align-items: center;
     text-align: start;
     box-sizing: content-box;
@@ -245,6 +240,10 @@
     }
 
     &[tuiCellStretch] {
+        // stylelint-disable-next-line -- fix linter
+        width: -moz-available;
+        // stylelint-disable-next-line -- fix linter
+        width: stretch;
         margin-inline-start: calc(-1 * var(--tui-padding-inline, 0px));
         margin-inline-end: calc(-1 * var(--tui-padding-inline, 0px));
         padding-inline-start: var(--tui-padding-inline, 0);
