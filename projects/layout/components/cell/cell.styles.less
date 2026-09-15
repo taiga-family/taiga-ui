@@ -214,9 +214,14 @@
     }
 
     &[tuiCellStretch] {
-        inline-size: 100%;
-        margin-inline-start: -1rem;
-        margin-inline-end: -1rem;
+        // stylelint-disable-next-line
+        width: -moz-available;
+        // stylelint-disable-next-line
+        width: stretch;
+        margin-inline-start: calc(-1 * var(--tui-padding-inline, 0px));
+        margin-inline-end: calc(-1 * var(--tui-padding-inline, 0px));
+        padding-inline-start: var(--tui-padding-inline, 0);
+        padding-inline-end: var(--tui-padding-inline, 0);
     }
 
     &:hover [tuiCellActions] ~ * {
@@ -260,4 +265,9 @@
             cursor: pointer;
         }
     }
+}
+
+[data-platform='ios'] [tuiCellV='@{tui-version}'][tuiCellStretch],
+[data-platform='android'] [tuiCellV='@{tui-version}'][tuiCellStretch] {
+    border-radius: 0 !important;
 }
