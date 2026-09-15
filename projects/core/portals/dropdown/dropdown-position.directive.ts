@@ -2,7 +2,8 @@ import {Directive, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiFallbackAccessor,
+    tuiAsPositionAccessor,
+    tuiInjectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
@@ -12,7 +13,7 @@ import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
-@Directive()
+@Directive({providers: [tuiAsPositionAccessor(TuiDropdownPosition)]})
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -21,12 +22,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 
     public readonly direction = new Subject<TuiVerticalDirection>();
     public readonly type = 'dropdown';
-
-    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-        inject<any>(TuiRectAccessor, {self: true, optional: true}),
-        {getClientRect: () => this.el.getBoundingClientRect()},
-    );
-
+    public readonly accessor = tuiInjectAccessor(TuiRectAccessor, 'dropdown');
     public readonly tuiDropdownDirectionChange = outputFromObservable(
         this.direction.pipe(distinctUntilChanged()),
     );
