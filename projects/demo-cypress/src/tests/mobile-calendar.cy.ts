@@ -3,6 +3,7 @@ import {
     Component,
     input,
     output,
+    provideExperimentalZonelessChangeDetection,
     viewChild,
 } from '@angular/core';
 import {TUI_CALENDAR_DATE_STREAM, TuiMobileCalendar} from '@taiga-ui/addon-mobile';
@@ -91,6 +92,29 @@ describe('Mobile calendar', () => {
         cy.mount(Test);
 
         cy.get('.t-dot').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+    });
+
+    it('renders months with variable height', () => {
+        cy.mount(Test);
+
+        cy.get('.t-month-wrapper').should(($months) => {
+            const heights = Array.from(
+                $months,
+                (month) => month.getBoundingClientRect().height,
+            );
+
+            expect(heights.length).to.be.greaterThan(0);
+            expect(new Set(heights).size).to.be.greaterThan(1);
+        });
+    });
+
+    it('renders months while scrolling in zoneless mode', () => {
+        cy.mount(Test, {providers: [provideExperimentalZonelessChangeDetection()]});
+
+        cy.get('.t-months').scrollTo(0, 600);
+        cy.get('.t-month-wrapper:visible').should(($months) => {
+            expect($months.length).to.be.greaterThan(0);
+        });
     });
 
     describe('when the done button emits', () => {
