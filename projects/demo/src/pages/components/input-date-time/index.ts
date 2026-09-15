@@ -12,7 +12,7 @@ import {type MaskitoTimeMode} from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
-import {TuiInputDateTime} from '@taiga-ui/kit';
+import {TuiInputDateTime, type TuiInputTimeOptions} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -64,7 +64,16 @@ export default class Example {
         'HH:MM:SS.MSS AA',
     ] as const satisfies readonly MaskitoTimeMode[];
 
+    protected readonly dayPeriodVariants = [
+        ['', ''],
+        ['AM', 'PM'],
+        ['a.m.', 'p.m.'],
+        ['π.μ.', 'μ.μ.'],
+        ['上午', '下午'],
+    ] as const satisfies ReadonlyArray<TuiInputTimeOptions['dayPeriod']>;
+
     protected min: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates[0];
     protected max = this.dates[this.dates.length - 1] ?? null;
     protected timeMode: MaskitoTimeMode = this.timeModeVariants[0];
+    protected dayPeriod: TuiInputTimeOptions['dayPeriod'] = this.dayPeriodVariants[0];
 }
