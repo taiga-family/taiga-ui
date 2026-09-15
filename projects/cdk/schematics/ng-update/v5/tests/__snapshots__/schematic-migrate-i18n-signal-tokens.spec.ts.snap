@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update migrateI18nSignalTokens adds a TODO when useFactory has a block body: test.ts 1`] = `
+exports[`ng-update migrateI18nSignalTokens adds a TODO when a block-body useFactory has no returnable value: test.ts 1`] = `
 {
   "0. Before": "
-                import {Component} from '@angular/core';
+                import {Component, inject} from '@angular/core';
                 import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
-                import {of} from 'rxjs';
 
                 @Component({
                     standalone: true,
@@ -13,7 +12,7 @@ exports[`ng-update migrateI18nSignalTokens adds a TODO when useFactory has a blo
                         {
                             provide: TUI_DIGITAL_INFORMATION_UNITS,
                             useFactory: () => {
-                                return of(['Б']);
+                                inject(SomeService).setup();
                             },
                         },
                     ],
@@ -21,9 +20,8 @@ exports[`ng-update migrateI18nSignalTokens adds a TODO when useFactory has a blo
                 export class TestComponent {}
             ",
   "1. After": "
-                import {Component} from '@angular/core';
+                import {Component, inject} from '@angular/core';
                 import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
-                import {of} from 'rxjs';
 
                 @Component({
                     standalone: true,
@@ -32,7 +30,7 @@ exports[`ng-update migrateI18nSignalTokens adds a TODO when useFactory has a blo
 // TODO: (Taiga UI migration) i18n token is a Signal in v5, not an Observable. Provide the value via signal(...), or convert an existing stream with toSignal(...).
                             provide: TUI_DIGITAL_INFORMATION_UNITS,
                             useFactory: () => {
-                                return of(['Б']);
+                                inject(SomeService).setup();
                             },
                         },
                     ],
@@ -255,6 +253,92 @@ exports[`ng-update migrateI18nSignalTokens unwraps of() with a referenced value 
 }
 `;
 
+exports[`ng-update migrateI18nSignalTokens wraps a block-body useFactory return declared after local statements: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                const service = inject(SomeService);
+
+                                return service.units$;
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                const service = inject(SomeService);
+
+                                return toSignal(service.units$);
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens wraps a block-body useFactory return with toSignal: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return of(['Б']);
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return toSignal(of(['Б']));
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update migrateI18nSignalTokens wraps a plain array literal useValue into signal(): test.ts 1`] = `
 {
   "0. Before": "
@@ -348,6 +432,56 @@ exports[`ng-update migrateI18nSignalTokens wraps a useFactory with dependencies 
                             provide: TUI_FILE_TEXTS,
                             useFactory: (service: SomeService) => toSignal(service.fileTexts$),
                             deps: [SomeService],
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update migrateI18nSignalTokens wraps only the factory return, leaving nested callback returns untouched: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {map} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return inject(SomeService).units$.pipe(
+                                    map((units) => {
+                                        return units;
+                                    }),
+                                );
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { toSignal } from "@angular/core/rxjs-interop";
+
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {map} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return toSignal(inject(SomeService).units$.pipe(
+                                                                    map((units) => {
+                                                                        return units;
+                                                                    }),
+                                                                ));
+                            },
                         },
                     ],
                 })

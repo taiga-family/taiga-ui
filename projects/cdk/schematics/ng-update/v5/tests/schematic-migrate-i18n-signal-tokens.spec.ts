@@ -174,7 +174,7 @@ describe('ng-update migrateI18nSignalTokens', () => {
     );
 
     it(
-        'adds a TODO when useFactory has a block body',
+        'wraps a block-body useFactory return with toSignal',
         migrate({
             component: /* TypeScript */ `
                 import {Component} from '@angular/core';
@@ -188,6 +188,82 @@ describe('ng-update migrateI18nSignalTokens', () => {
                             provide: TUI_DIGITAL_INFORMATION_UNITS,
                             useFactory: () => {
                                 return of(['Б']);
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'wraps a block-body useFactory return declared after local statements',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                const service = inject(SomeService);
+
+                                return service.units$;
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'wraps only the factory return, leaving nested callback returns untouched',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+                import {map} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                return inject(SomeService).units$.pipe(
+                                    map((units) => {
+                                        return units;
+                                    }),
+                                );
+                            },
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    it(
+        'adds a TODO when a block-body useFactory has no returnable value',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => {
+                                inject(SomeService).setup();
                             },
                         },
                     ],

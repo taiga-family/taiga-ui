@@ -167,14 +167,14 @@ function migrateUseFactory(
     const body = initializer.getBody();
 
     if (Node.isBlock(body)) {
-        insertTodoOnce(provideProp);
+        migrateFactoryBlock(useFactoryProp, provideProp);
 
         return;
     }
 
     const bodyText = body.getText();
 
-    if (bodyText.startsWith(`${TO_SIGNAL}(`) || bodyText.startsWith(`${SIGNAL}(`)) {
+    if (isSignalWrapped(bodyText)) {
         return;
     }
 
@@ -189,6 +189,96 @@ function migrateUseFactory(
         TO_SIGNAL,
         RXJS_INTEROP,
     );
+}
+
+// Factory runs inside DI, so returned streams are wrapped; a block with nothing to return stays a TODO.
+function migrateFactoryBlock(
+    useFactoryProp: PropertyAssignment,
+    provideProp: PropertyAssignment,
+): void {
+    if (getFactoryReturnExpressions(useFactoryProp).length === 0) {
+        insertTodoOnce(provideProp);
+
+        return;
+    }
+
+    let wrapped = false;
+
+    for (
+        let target = nextUnwrappedReturn(useFactoryProp);
+        target;
+        target = nextUnwrappedReturn(useFactoryProp)
+    ) {
+        target.replaceWithText(`${TO_SIGNAL}(${target.getText()})`);
+        wrapped = true;
+    }
+
+    if (wrapped) {
+        addUniqueImport(
+            useFactoryProp.getSourceFile().getFilePath(),
+            TO_SIGNAL,
+            RXJS_INTEROP,
+        );
+    }
+}
+
+function nextUnwrappedReturn(useFactoryProp: PropertyAssignment): Node | undefined {
+    return getFactoryReturnExpressions(useFactoryProp).find(
+        (expression) => !isSignalWrapped(expression.getText()),
+    );
+}
+
+// Only returns owned by the factory arrow itself — returns inside nested functions/classes are their own scope.
+function getFactoryReturnExpressions(useFactoryProp: PropertyAssignment): Node[] {
+    const initializer = useFactoryProp.getInitializer();
+
+    if (!initializer || !Node.isArrowFunction(initializer)) {
+        return [];
+    }
+
+    const body = initializer.getBody();
+
+    if (!Node.isBlock(body)) {
+        return [];
+    }
+
+    const expressions: Node[] = [];
+
+    body.forEachDescendant((node, traversal) => {
+        if (isNestedFunctionScope(node)) {
+            traversal.skip();
+
+            return;
+        }
+
+        if (Node.isReturnStatement(node)) {
+            const expression = node.getExpression();
+
+            if (expression) {
+                expressions.push(expression);
+            }
+        }
+    });
+
+    return expressions;
+}
+
+function isNestedFunctionScope(node: Node): boolean {
+    return (
+        Node.isFunctionDeclaration(node) ||
+        Node.isFunctionExpression(node) ||
+        Node.isArrowFunction(node) ||
+        Node.isMethodDeclaration(node) ||
+        Node.isConstructorDeclaration(node) ||
+        Node.isGetAccessorDeclaration(node) ||
+        Node.isSetAccessorDeclaration(node) ||
+        Node.isClassDeclaration(node) ||
+        Node.isClassExpression(node)
+    );
+}
+
+function isSignalWrapped(text: string): boolean {
+    return text.startsWith(`${SIGNAL}(`) || text.startsWith(`${TO_SIGNAL}(`);
 }
 
 function wrapWithSignal(useValueProp: PropertyAssignment, valueText: string): void {
