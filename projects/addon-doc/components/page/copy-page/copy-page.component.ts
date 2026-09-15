@@ -1,3 +1,4 @@
+import {Clipboard} from '@angular/cdk/clipboard';
 import {isPlatformBrowser} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -29,6 +30,7 @@ import {TuiDocPageMarkdown} from '../page-markdown.service';
 export class TuiDocCopyPage {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly pageMarkdown = inject(TuiDocPageMarkdown);
+    private readonly clipboard = inject(Clipboard);
 
     protected readonly enabled = inject(TUI_DOC_COPY_PAGE);
     protected readonly open = signal(false);
@@ -54,14 +56,13 @@ export class TuiDocCopyPage {
         {initialValue: null},
     );
 
-    protected async copy(): Promise<void> {
+    protected copy(): void {
         const markdown = this.markdown();
 
-        if (!markdown) {
+        if (!markdown || !this.clipboard.copy(markdown)) {
             return;
         }
 
-        await navigator.clipboard.writeText(markdown);
         this.copied.set(true);
         setTimeout(() => this.copied.set(false), 2000);
     }
