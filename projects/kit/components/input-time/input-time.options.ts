@@ -4,13 +4,17 @@ import {type TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputTimeOptions extends Required<
-    Pick<MaskitoTimeParams, 'mode' | 'timeSegmentMaxValues' | 'timeSegmentMinValues'>
+    Pick<
+        MaskitoTimeParams,
+        'dayPeriod' | 'mode' | 'timeSegmentMaxValues' | 'timeSegmentMinValues'
+    >
 > {
     readonly icon: string;
     readonly valueTransformer: TuiValueTransformer<TuiTime | null, any> | null;
 }
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
+    dayPeriod: ['', ''],
     icon: '@tui.clock',
     mode: 'HH:MM',
     timeSegmentMaxValues: {},

@@ -9,7 +9,7 @@ import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
-import {TuiInputTime} from '@taiga-ui/kit';
+import {TuiInputTime, type TuiInputTimeOptions} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -30,7 +30,7 @@ export default class PageComponent {
 
     protected readonly examples = [
         'Mode',
-        '12-hour format with AM/PM',
+        '12-hour format',
         'Form control validation',
         'Options',
         'Textfield customization',
@@ -43,15 +43,23 @@ export default class PageComponent {
 
     protected readonly modeVariants = [
         'HH:MM',
-        'HH:MM AA',
+        'HH:MM AA', // TODO(v6): delete
         'HH:MM:SS',
-        'HH:MM:SS AA',
+        'HH:MM:SS AA', // TODO(v6): delete
         'HH:MM:SS.MSS',
-        'HH:MM:SS.MSS AA',
+        'HH:MM:SS.MSS AA', // TODO(v6): delete
         'MM:SS',
         'MM:SS.MSS',
         'SS.MSS',
     ] as const satisfies readonly MaskitoTimeMode[];
+
+    protected readonly dayPeriodVariants = [
+        ['', ''],
+        ['AM', 'PM'],
+        ['a.m.', 'p.m.'],
+        ['π.μ.', 'μ.μ.'],
+        ['上午', '下午'],
+    ] as const satisfies ReadonlyArray<TuiInputTimeOptions['dayPeriod']>;
 
     protected readonly acceptVariants = [
         [],
@@ -59,6 +67,7 @@ export default class PageComponent {
     ] as const satisfies ReadonlyArray<readonly TuiTime[]>;
 
     protected mode: MaskitoTimeMode = this.modeVariants[0];
+    protected dayPeriod: TuiInputTimeOptions['dayPeriod'] = this.dayPeriodVariants[0];
     protected accept: readonly TuiTime[] = this.acceptVariants[0];
     protected prefix = '';
     protected postfix = '';
