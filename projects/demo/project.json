@@ -133,7 +133,7 @@
         "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npm run generate:llms && npm run generate:llms-full && npm run generate:markdown-pages",
+                "command": "ts-node ./projects/demo/scripts/llms/llms-generate.ts && ts-node ./projects/demo/scripts/llms/llms-full-generate.ts && ts-node ./projects/demo/scripts/llms/markdown-pages-generate.ts",
                 "parallel": false
             }
         },
