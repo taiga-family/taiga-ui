@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[62229],{8620:(a,o,_)=>{_.r(o),_.d(o,{TUI_MALAY_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["Nombor","Nombor kad"],cardExpiry:["Tamat tempoh","Sah sehingga"]}}}]);

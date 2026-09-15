@@ -1,0 +1,24 @@
+<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconChartBar" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            fill="none"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            width="1em"
+            x="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            y="50%"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M12 13.333V6.666M8 13.333V2.667M4 13.334v-4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

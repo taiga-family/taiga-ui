@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[51606],{51606:n=>{n.exports=".footer {\n    display: flex;\n    justify-content: flex-end;\n    flex-wrap: wrap;\n    gap: 1rem;\n    margin-block-start: 1rem;\n\n    button {\n        flex: 1;\n        overflow: visible;\n    }\n}\n"}}]);

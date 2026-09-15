@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+    <g id="tuiIconOutdentLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M21 10H9"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M21 6H2.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M5 9.5L2 11.9L5 14.3"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M21 14H9"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M11 18H3"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

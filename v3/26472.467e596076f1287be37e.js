@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[26472],{26472:e=>{e.exports=".label-wrapper {\n    width: 100%;\n    text-shadow: 0 0 0.25rem #000;\n    color: var(--tui-primary-text);\n}\n"}}]);

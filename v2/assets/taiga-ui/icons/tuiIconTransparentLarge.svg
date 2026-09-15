@@ -1,0 +1,13 @@
+<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconTransparentLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <rect height="14" rx="3" stroke="currentColor" stroke-width="2" width="14" x="1" y="3" />
+                <path d="M8.5 10.5L13.5 15.5" stroke="currentColor" stroke-width="1.8" />
+                <path d="M11 9L15 13.5" stroke="currentColor" stroke-width="1.8" />
+                <path d="M7 13L11 17" stroke="currentColor" stroke-width="1.8" />
+                <rect height="14" rx="3" stroke="currentColor" stroke-width="2" width="14" x="7" y="9" />
+            </svg>
+        </svg>
+    </g>
+</svg>
