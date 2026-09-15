@@ -9,8 +9,9 @@ import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
     ANDROID_CYCLE,
-    BUFFER,
     IOS_CYCLE,
+    MAX_BUFFER,
+    MIN_BUFFER,
     RANGE,
     YEARLY_CYCLE,
 } from './mobile-calendar.const';
@@ -134,20 +135,20 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const firstVisibleIndex = this.getIndexForOffset(offset);
         const startBuffer = offset - this.getOffsetForIndex(start);
 
-        if (startBuffer < BUFFER && start !== 0) {
-            newRange.start = Math.max(0, this.getIndexForOffset(offset - BUFFER * 2));
+        if (startBuffer < MIN_BUFFER && start !== 0) {
+            newRange.start = Math.max(0, this.getIndexForOffset(offset - MAX_BUFFER));
             newRange.end = Math.min(
                 dataLength,
-                this.getIndexForOffset(offset + viewportSize + BUFFER),
+                this.getIndexForOffset(offset + viewportSize + MIN_BUFFER),
             );
         } else {
             const endBuffer = this.getOffsetForIndex(end) - offset - viewportSize;
 
-            if (endBuffer < BUFFER && end !== dataLength) {
-                newRange.start = Math.max(0, this.getIndexForOffset(offset - BUFFER));
+            if (endBuffer < MIN_BUFFER && end !== dataLength) {
+                newRange.start = Math.max(0, this.getIndexForOffset(offset - MIN_BUFFER));
                 newRange.end = Math.min(
                     dataLength,
-                    this.getIndexForOffset(offset + viewportSize + BUFFER * 2),
+                    this.getIndexForOffset(offset + viewportSize + MAX_BUFFER),
                 );
             }
         }
