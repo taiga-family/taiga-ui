@@ -303,6 +303,7 @@ export const pages: DocRoutePages = [
         title: 'Carousel',
         keywords: 'карусель, слайдер, slider, carousel',
         route: DemoRoute.Carousel,
+        version: '5.0.0',
     },
     {
         section: 'Components',
@@ -320,6 +321,7 @@ export const pages: DocRoutePages = [
                 title: 'Dialog',
                 keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
                 route: DemoRoute.Dialog,
+                version: '4.50.0',
                 meta: {},
             },
             {
@@ -340,6 +342,7 @@ export const pages: DocRoutePages = [
                 title: 'NotificationMiddle',
                 keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
                 route: DemoRoute.NotificationMiddle,
+                version: '4.52.0',
                 meta: {figmaVersion: '1.1.0'},
             },
             {
@@ -348,6 +351,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
                 route: DemoRoute.PdfViewer,
+                version: '5.0.0',
             },
             {
                 section: 'Components',
@@ -421,6 +425,7 @@ export const pages: DocRoutePages = [
         title: 'ScrollWheel',
         keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
         route: DemoRoute.ScrollWheel,
+        version: '5.21.0',
     },
     {
         section: 'Components',
@@ -433,6 +438,7 @@ export const pages: DocRoutePages = [
         title: 'Copy',
         keywords: 'копировать, copy, clipboard, буфер обмена, share',
         route: DemoRoute.Copy,
+        version: '4.48.0',
         meta: {},
     },
     {
@@ -480,6 +486,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
+        version: '5.9.0',
     },
     {
         section: 'Components',
@@ -492,6 +499,7 @@ export const pages: DocRoutePages = [
         title: 'Like',
         keywords: 'like, лайк, эмодзи, смайлик, стикер',
         route: DemoRoute.Like,
+        version: '4.8.0',
         meta: {name: 'tui-button-like'},
     },
     {
@@ -540,6 +548,7 @@ export const pages: DocRoutePages = [
                 title: 'BottomSheet',
                 keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
                 route: DemoRoute.BottomSheet,
+                version: '4.23.0',
             },
             {
                 section: 'Components',
@@ -561,6 +570,7 @@ export const pages: DocRoutePages = [
                 keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
                 route: DemoRoute.SearchBar,
                 meta: {name: 'tui-search-bar'},
+                version: '5.22.0',
             },
             {
                 section: 'Components',
@@ -631,6 +641,7 @@ export const pages: DocRoutePages = [
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
+        version: '4.0.0',
         meta: {name: 'tui-badge-t-client'},
     },
     {
@@ -644,6 +655,7 @@ export const pages: DocRoutePages = [
         title: 'ShrinkWrap',
         keywords: 'balance, wrap, перенос, tight, pretty',
         route: DemoRoute.ShrinkWrap,
+        version: '4.74.0',
     },
     {
         section: 'Components',
@@ -718,6 +730,7 @@ export const pages: DocRoutePages = [
         title: 'Timeline',
         keywords: 'row, column, week, day, event, order',
         route: DemoRoute.Timeline,
+        version: '5.0.0',
     },
     {
         section: 'Components',
@@ -773,6 +786,7 @@ export const pages: DocRoutePages = [
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',
         route: DemoRoute.Form,
+        version: '4.18.0',
         meta: {scheme: 'beaver', name: 'form'},
     },
     {
@@ -811,6 +825,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
                 route: DemoRoute.InputChip,
+                version: '4.42.0',
                 meta: [
                     {name: 'tui-input-chip'},
                     {name: 'tui-multi-select', anchor: 'multi-select'},
@@ -821,6 +836,7 @@ export const pages: DocRoutePages = [
                 title: 'InputColor',
                 keywords: 'input-color, picker, color, цвет, выбор, палитра',
                 route: DemoRoute.InputColor,
+                version: '4.45.0',
             },
             {
                 section: 'Form',
@@ -835,6 +851,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, неделя, месяц, год, дата, calendar, multiple',
                 route: DemoRoute.InputDateMulti,
+                version: '4.46.0',
             },
             {
                 section: 'Form',
@@ -872,6 +889,7 @@ export const pages: DocRoutePages = [
                 title: 'InputPhone',
                 keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
                 route: DemoRoute.InputPhone,
+                version: '4.49.0',
             },
             {
                 section: 'Form',
@@ -885,12 +903,14 @@ export const pages: DocRoutePages = [
                 title: 'InputPin',
                 keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
                 route: DemoRoute.InputPin,
+                version: '4.20.0',
             },
             {
                 section: 'Form',
                 title: 'Pincode',
                 keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
                 route: DemoRoute.Pincode,
+                version: '5.9.0',
             },
             {
                 section: 'Form',
@@ -940,6 +960,7 @@ export const pages: DocRoutePages = [
         title: 'Textarea',
         keywords: 'поле, инпут, форма, ввод, textarea, area',
         route: DemoRoute.Textarea,
+        version: '4.33.0',
         meta: {},
     },
     {
@@ -958,6 +979,7 @@ export const pages: DocRoutePages = [
                 title: 'Block',
                 keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
                 route: DemoRoute.Block,
+                version: '4.0.0',
                 meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
             },
             {
@@ -1053,6 +1075,7 @@ export const pages: DocRoutePages = [
         title: 'Cell',
         keywords: 'cell, feed, item, tuiAccessories, accessories',
         route: DemoRoute.Cell,
+        version: '4.0.0',
         meta: [
             {name: 'tui-cell', figmaVersion: '1.4.0'},
             {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
@@ -1066,6 +1089,7 @@ export const pages: DocRoutePages = [
         keywords:
             'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
         route: DemoRoute.Drawer,
+        version: '4.13.0',
         meta: {scheme: 'beaver', name: 'drawer'},
     },
     {
@@ -1087,6 +1111,7 @@ export const pages: DocRoutePages = [
         keywords:
             'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper, scroll',
         route: DemoRoute.Slides,
+        version: '4.51.0',
     },
     {
         section: 'Components',
@@ -1100,6 +1125,7 @@ export const pages: DocRoutePages = [
         title: 'Message',
         keywords: 'message, sms, сообщение, смс',
         route: DemoRoute.Message,
+        version: '4.15.0',
         meta: {name: 'tui-message-bubble'},
     },
     {
@@ -1107,12 +1133,14 @@ export const pages: DocRoutePages = [
         title: 'Meter',
         keywords: 'progress, bar, value',
         route: DemoRoute.Meter,
+        version: '5.22.0',
     },
     {
         section: 'Components',
         title: 'Comment',
         keywords: 'comment, tip, коммент',
         route: DemoRoute.Comment,
+        version: '4.0.0',
     },
     {
         section: 'Layout',
@@ -1127,6 +1155,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
+        version: '5.19.0',
     },
     {
         section: 'Components',
@@ -1196,6 +1225,7 @@ export const pages: DocRoutePages = [
         title: 'Search',
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
+        version: '4.4.0',
         meta: {scheme: 'beaver', name: 'filters'},
     },
     // Charts
@@ -1640,6 +1670,7 @@ export const pages: DocRoutePages = [
         keywords:
             'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
         route: DemoRoute.AiOverview,
+        version: '5.23.0',
     },
     {
         section: 'AI tools',

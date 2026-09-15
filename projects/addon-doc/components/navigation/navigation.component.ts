@@ -19,8 +19,13 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {
+    type TuiDocRoutePage,
+    type TuiDocRoutePageGroup,
+    type TuiDocRoutePages,
+} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -31,6 +36,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
@@ -42,6 +48,15 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
+
+interface TuiDocNavigationBadge {
+    readonly label: string;
+    readonly appearance: string;
+}
+
+const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
+const UPDATED_BADGE: TuiDocNavigationBadge = {label: 'Updated', appearance: 'info'};
+const TUI_NEW_VERSION_RANGE = 6;
 
 function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],
@@ -67,6 +82,7 @@ function tuiUniqBy<T extends Record<string, any>>(
         RouterLinkActive,
         TuiAccordion,
         TuiAutoFocus,
+        TuiBadge,
         TuiDataList,
         TuiDocScrollIntoViewLink,
         TuiExpand,
@@ -90,6 +106,13 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
+    private readonly currentMajor = Number(TUI_VERSION.split('.')[0]);
+    private readonly currentMinor = Number(TUI_VERSION.split('.')[1]);
+    private readonly sectionLeads = new Set(
+        inject(NAVIGATION_ITEMS)
+            .slice(0, -1)
+            .map((pages) => pages[0]),
+    );
 
     protected readonly open = signal(false);
     protected menuOpen = false;
@@ -178,6 +201,28 @@ export class TuiDocNavigation {
         return route === this.active;
     }
 
+    protected sectionBadge(index: number): TuiDocNavigationBadge | null {
+        if (this.isRecent(this.items[index]?.[0]?.version)) {
+            return NEW_BADGE;
+        }
+
+        return this.hasRecent(this.flat[index]) ? UPDATED_BADGE : null;
+    }
+
+    protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
+        return !this.sectionLeads.has(item) && this.isRecent(item.version)
+            ? NEW_BADGE
+            : null;
+    }
+
+    protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
+        if (this.isRecent(item.version)) {
+            return NEW_BADGE;
+        }
+
+        return this.hasRecent(item.subPages) ? UPDATED_BADGE : null;
+    }
+
     protected onGroupClick(index: number): void {
         this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
@@ -201,6 +246,24 @@ export class TuiDocNavigation {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
+    }
+
+    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
+        return !!pages?.some((page) => this.isRecent(page.version));
+    }
+
+    private isRecent(version: string | undefined): boolean {
+        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
+            .split('.')
+            .map(Number);
+
+        const distance = this.currentMinor - minor;
+
+        return (
+            major === this.currentMajor &&
+            distance >= 0 &&
+            distance < TUI_NEW_VERSION_RANGE
+        );
     }
 
     private filterItems(
