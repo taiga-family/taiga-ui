@@ -51,7 +51,7 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
 interface TuiDocNavigationBadge {
     readonly label: string;
-    readonly appearance: string;
+    readonly appearance: 'info' | 'positive';
 }
 
 const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
@@ -203,11 +203,7 @@ export class TuiDocNavigation {
     }
 
     protected sectionBadge(index: number): TuiDocNavigationBadge | null {
-        if (this.isRecent(this.items[index]?.[0]?.version)) {
-            return NEW_BADGE;
-        }
-
-        return this.hasRecent(this.flat[index]) ? UPDATED_BADGE : null;
+        return this.newOrUpdated(this.items[index]?.[0]?.version, this.flat[index]);
     }
 
     protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
@@ -217,11 +213,7 @@ export class TuiDocNavigation {
     }
 
     protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
-        if (this.isRecent(item.version)) {
-            return NEW_BADGE;
-        }
-
-        return this.hasRecent(item.subPages) ? UPDATED_BADGE : null;
+        return this.newOrUpdated(item.version, item.subPages);
     }
 
     protected onGroupClick(index: number): void {
@@ -247,6 +239,17 @@ export class TuiDocNavigation {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
+    }
+
+    private newOrUpdated(
+        version: string | undefined,
+        pages: readonly TuiDocRoutePage[] = [],
+    ): TuiDocNavigationBadge | null {
+        if (this.isRecent(version)) {
+            return NEW_BADGE;
+        }
+
+        return this.hasRecent(pages) ? UPDATED_BADGE : null;
     }
 
     private hasRecent(pages: readonly TuiDocRoutePage[] = []): boolean {
