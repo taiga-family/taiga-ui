@@ -75,6 +75,12 @@ function tuiUniqBy<T extends Record<string, any>>(
     );
 }
 
+function tuiVersionParts(version = ''): {major: number; minor: number} {
+    const [major = Number.NaN, minor = Number.NaN] = version.split('.').map(Number);
+
+    return {major, minor};
+}
+
 @Component({
     selector: 'tui-doc-navigation',
     imports: [
@@ -109,9 +115,7 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
-    private readonly currentVersion = inject(TUI_DOC_VERSION);
-    private readonly currentMajor = Number(this.currentVersion.split('.')[0]);
-    private readonly currentMinor = Number(this.currentVersion.split('.')[1]);
+    private readonly current = tuiVersionParts(inject(TUI_DOC_VERSION));
     private readonly sectionLeads = new Set(
         inject(NAVIGATION_ITEMS)
             .slice(0, -1)
@@ -260,10 +264,10 @@ export class TuiDocNavigation {
     }
 
     private isRecent(version = ''): boolean {
-        const [major = Number.NaN, minor = Number.NaN] = version.split('.').map(Number);
+        const {major, minor} = tuiVersionParts(version);
 
         return (
-            major === this.currentMajor && this.currentMinor - minor < NEW_VERSION_RANGE
+            major === this.current.major && this.current.minor - minor < NEW_VERSION_RANGE
         );
     }
 
