@@ -7,11 +7,17 @@
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-1);
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
+    overflow: auto;
     border: 1px solid var(--tui-border-normal);
     box-sizing: border-box;
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
+    overscroll-behavior: none;
+    // stylelint-disable-next-line -- graceful degradation
+    position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline;
 
     --tui-from: translateY(-1rem);
 
@@ -29,16 +35,4 @@
     &:not([style*='top']) {
         visibility: hidden;
     }
-}
-
-.t-scroll {
-    flex-grow: 1;
-    max-inline-size: calc(100% + 2px);
-    inline-size: max-content;
-    overscroll-behavior: none;
-    margin: -1px;
-}
-
-.t-primitive {
-    padding: 1rem;
 }
