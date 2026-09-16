@@ -75,7 +75,7 @@ describe('TuiDocNavigation version badges', () => {
     }
 
     function badges(element: Element | undefined): Array<string | undefined> {
-        return Array.from(element?.querySelectorAll('.t-new') ?? []).map((badge) =>
+        return Array.from(element?.querySelectorAll('.t-badge') ?? []).map((badge) =>
             badge.textContent?.trim(),
         );
     }
@@ -98,7 +98,7 @@ describe('TuiDocNavigation version badges', () => {
 
     it('does not repeat New on the section-lead row', () => {
         expandAll();
-        expect(row('Overview')?.querySelector('.t-new')).toBeNull();
+        expect(row('Overview')?.querySelector('.t-badge')).toBeNull();
     });
 
     it('marks a section Updated when a non-lead page is recent', () => {
@@ -108,11 +108,11 @@ describe('TuiDocNavigation version badges', () => {
     it('badges a recent non-lead page New on its own row', () => {
         expandAll();
         expect(badges(row('Fresh'))).toEqual(['New']);
-        expect(row('Home')?.querySelector('.t-new')).toBeNull();
+        expect(row('Home')?.querySelector('.t-badge')).toBeNull();
     });
 
     it('does not badge a section with no recent pages', () => {
-        expect(header('Old section')?.querySelector('.t-new')).toBeNull();
+        expect(header('Old section')?.querySelector('.t-badge')).toBeNull();
     });
 
     it('marks a group Updated when it holds a recent subpage', () => {
@@ -124,7 +124,7 @@ describe('TuiDocNavigation version badges', () => {
 
         expect(badges(group)).toEqual(['Updated']);
         expect(badges(row('Nested new'))).toEqual(['New']);
-        expect(row('Nested old')?.querySelector('.t-new')).toBeNull();
+        expect(row('Nested old')?.querySelector('.t-badge')).toBeNull();
     });
 
     it('drops New/Updated once the current major moves past every version', async () => {
@@ -163,7 +163,7 @@ describe('TuiDocNavigation version badges', () => {
         );
         bumped.detectChanges();
 
-        expect(el.querySelectorAll('.t-new').length).toBe(0);
+        expect(el.querySelectorAll('.t-badge').length).toBe(0);
     });
 
     it('never marks a long-standing (unversioned) page New a minor into a major', async () => {
@@ -197,6 +197,6 @@ describe('TuiDocNavigation version badges', () => {
         );
         bumped.detectChanges();
 
-        expect(el.querySelectorAll('.t-new').length).toBe(0);
+        expect(el.querySelectorAll('.t-badge').length).toBe(0);
     });
 });
