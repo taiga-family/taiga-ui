@@ -42,3 +42,4 @@ blob-report
 .github/instructions/nx.instructions.md
 terminalOutput
 projects/demo/src/markdown-pages/**/*.md
+.claude

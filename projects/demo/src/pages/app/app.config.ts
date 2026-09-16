@@ -33,13 +33,14 @@ import {
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
+    TUI_DOC_VERSION,
     tuiDocExampleOptionsProvider,
     tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
     TuiViewportScroller,
 } from '@taiga-ui/addon-doc';
-import {TUI_FALSE_HANDLER, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_PLATFORM, TUI_VERSION} from '@taiga-ui/cdk';
 import {
     provideTaiga,
     TUI_DIALOGS_CLOSE,
@@ -130,6 +131,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_TITLE,
             useValue: 'Taiga UI: ',
+        },
+        {
+            provide: TUI_DOC_VERSION,
+            useValue: TUI_VERSION,
         },
         {
             provide: TUI_DOC_PAGES,

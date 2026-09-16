@@ -8,7 +8,7 @@
 :host-context(tui-sheet-dialog) {
     .t-scroll,
     .t-labels {
-        inset: 2rem -1rem calc(-1 * max(1.5rem, env(safe-area-inset-bottom)));
+        inset: 2rem calc(-1 * var(--tui-padding-inline)) calc(-1 * max(1.5rem, env(safe-area-inset-bottom)));
     }
 
     .t-header {
@@ -19,7 +19,7 @@
 :host-context(tui-dialog) {
     .t-scroll,
     .t-labels {
-        inset: 2rem -1rem calc(-1 * max(1rem, env(safe-area-inset-bottom)));
+        inset: 2rem calc(-1 * var(--tui-padding-inline)) calc(-1 * max(1rem, env(safe-area-inset-bottom)));
     }
 }
 
@@ -29,7 +29,6 @@
 
 .t-labels {
     position: absolute;
-    inset: 0;
     inline-size: auto;
     inset-block-start: 0 !important;
     clip-path: inset(0 0 calc(100% - 2rem));

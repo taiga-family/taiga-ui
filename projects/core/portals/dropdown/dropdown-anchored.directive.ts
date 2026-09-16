@@ -1,39 +1,38 @@
-import {type AfterViewInit, Directive, forwardRef, inject} from '@angular/core';
+import {type AfterViewInit, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiPositionAccessorFor, tuiRectAccessorFor} from '@taiga-ui/core/classes';
+import {
+    TuiPositionAccessor,
+    tuiProvideAccessor,
+    TuiRectAccessor,
+} from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
-import {TuiDropdownPosition} from './dropdown-position.directive';
 
 const MAX_WIDTH_GAP = 16; // 8px min gap from each side
 
 @Directive({
     providers: [
         TuiPositionService,
-        tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
-        tuiRectAccessorFor(
-            'dropdown',
-            forwardRef(() => TuiDropdownDirective),
-        ),
+        tuiProvideAccessor(TuiPositionAccessor, 'dropdown'),
+        tuiProvideAccessor(TuiRectAccessor, 'dropdown'),
     ],
 })
 export class TuiDropdownAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly directive = inject(TuiDropdownDirective);
-    private readonly accessor = this.directive.accessor;
+    private readonly accessor = inject(TuiRectAccessor);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly position = this.directive.position;
-
     private readonly styles$ = inject(TuiPositionService).pipe(
         takeWhile(
             () =>
