@@ -127,3 +127,42 @@ describe('TuiDocNavigation version badges', () => {
         expect(row('Nested old')?.querySelector('.t-new')).toBeNull();
     });
 });
+
+describe('TuiDocNavigation version badges after a major bump', () => {
+    // Every annotated version belongs to major 5; the app now runs on major 6.
+    const pages: TuiDocRoutePages = [
+        {section: 'Alpha', title: 'Lead', route: 'alpha/lead', version: '5.23.0'},
+        {section: 'Alpha', title: 'Child', route: 'alpha/child', version: '5.20.0'},
+        {section: 'Beta', title: 'Bare lead', route: 'beta/lead'},
+        {section: 'Beta', title: 'Bare child', route: 'beta/child'},
+    ];
+
+    let fixture: ComponentFixture<TuiDocNavigation>;
+
+    beforeEach(async () => {
+        TestBed.configureTestingModule({
+            imports: [TuiDocNavigation],
+            providers: [
+                provideTaiga(),
+                provideRouter([]),
+                {provide: TUI_DOC_PAGES, useValue: pages},
+                {provide: TUI_DOC_VERSION, useValue: '6.0.0'},
+            ],
+        });
+
+        await TestBed.compileComponents();
+        fixture = TestBed.createComponent(TuiDocNavigation);
+        fixture.detectChanges();
+    });
+
+    it('never marks previous-major pages as New or Updated', () => {
+        const host = fixture.nativeElement as HTMLElement;
+
+        host.querySelectorAll('.t-accordion-item').forEach((button) =>
+            (button as HTMLElement).click(),
+        );
+        fixture.detectChanges();
+
+        expect(host.querySelectorAll('.t-new').length).toBe(0);
+    });
+});
