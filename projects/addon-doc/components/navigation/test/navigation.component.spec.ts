@@ -165,4 +165,38 @@ describe('TuiDocNavigation version badges', () => {
 
         expect(el.querySelectorAll('.t-new').length).toBe(0);
     });
+
+    it('never marks a long-standing (unversioned) page New a minor into a major', async () => {
+        // A component that already existed carries no version and only ever
+        // renders the baseline chip, so a minor bump must not light it up as New.
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            imports: [TuiDocNavigation],
+            providers: [
+                provideTaiga(),
+                provideRouter([]),
+                {
+                    provide: TUI_DOC_PAGES,
+                    useValue: [
+                        {section: 'Alpha', title: 'Old one', route: 'a/old'},
+                        {section: 'Beta', title: 'Old two', route: 'b/old'},
+                    ] satisfies TuiDocRoutePages,
+                },
+                {provide: TUI_DOC_VERSION, useValue: `${major + 1}.1.0`},
+            ],
+        });
+
+        await TestBed.compileComponents();
+
+        const bumped = TestBed.createComponent(TuiDocNavigation);
+        const el = bumped.nativeElement as HTMLElement;
+
+        bumped.detectChanges();
+        el.querySelectorAll('.t-accordion-item').forEach((button) =>
+            (button as HTMLElement).click(),
+        );
+        bumped.detectChanges();
+
+        expect(el.querySelectorAll('.t-new').length).toBe(0);
+    });
 });
