@@ -54,8 +54,11 @@ interface TuiDocNavigationBadge {
     readonly appearance: 'info' | 'positive';
 }
 
-const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
-const UPDATED_BADGE: TuiDocNavigationBadge = {label: 'Updated', appearance: 'info'};
+const BADGE = {
+    new: {label: 'New', appearance: 'positive'},
+    updated: {label: 'Updated', appearance: 'info'},
+} as const satisfies Record<string, TuiDocNavigationBadge>;
+
 const NEW_VERSION_RANGE = 6;
 
 function tuiUniqBy<T extends Record<string, any>>(
@@ -208,7 +211,7 @@ export class TuiDocNavigation {
 
     protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
         return !this.sectionLeads.has(item) && this.isRecent(item.version)
-            ? NEW_BADGE
+            ? BADGE.new
             : null;
     }
 
@@ -246,10 +249,10 @@ export class TuiDocNavigation {
         pages: readonly TuiDocRoutePage[] = [],
     ): TuiDocNavigationBadge | null {
         if (this.isRecent(version)) {
-            return NEW_BADGE;
+            return BADGE.new;
         }
 
-        return this.hasRecent(pages) ? UPDATED_BADGE : null;
+        return this.hasRecent(pages) ? BADGE.updated : null;
     }
 
     private hasRecent(pages: readonly TuiDocRoutePage[] = []): boolean {
