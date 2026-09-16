@@ -147,6 +147,12 @@ export class TuiDocNavigation {
         [],
     );
 
+    // Inputs (items/version) are static, so badges are resolved once up front.
+    protected readonly sectionBadges = this.items.map((section, index) =>
+        this.newOrUpdated(section[0]?.version, this.flat[index]),
+    );
+
+    protected readonly itemBadges = this.mapItemBadges();
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
     protected active = '';
@@ -210,17 +216,15 @@ export class TuiDocNavigation {
     }
 
     protected sectionBadge(index: number): TuiDocNavigationBadge | null {
-        return this.newOrUpdated(this.items[index]?.[0]?.version, this.flat[index]);
+        return this.sectionBadges[index] ?? null;
     }
 
     protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
-        return !this.sectionLeads.has(item) && this.isRecent(item.version)
-            ? BADGE.new
-            : null;
+        return this.itemBadges.get(item) ?? null;
     }
 
     protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
-        return this.newOrUpdated(item.version, item.subPages);
+        return this.itemBadges.get(item) ?? null;
     }
 
     protected onGroupClick(index: number): void {
@@ -246,6 +250,44 @@ export class TuiDocNavigation {
             this.searchInput()?.nativeElement?.focus();
             event.preventDefault();
         }
+    }
+
+    private mapItemBadges(): ReadonlyMap<
+        TuiDocRoutePage | TuiDocRoutePageGroup,
+        TuiDocNavigationBadge
+    > {
+        const badges = new Map<
+            TuiDocRoutePage | TuiDocRoutePageGroup,
+            TuiDocNavigationBadge
+        >();
+
+        const add = (
+            item: TuiDocRoutePage | TuiDocRoutePageGroup,
+            badge: TuiDocNavigationBadge | null,
+        ): void => {
+            if (badge) {
+                badges.set(item, badge);
+            }
+        };
+
+        for (const section of this.items) {
+            for (const item of section) {
+                if ('subPages' in item) {
+                    add(item, this.newOrUpdated(item.version, item.subPages));
+                    item.subPages.forEach((page) => add(page, this.leafBadge(page)));
+                } else {
+                    add(item, this.leafBadge(item));
+                }
+            }
+        }
+
+        return badges;
+    }
+
+    private leafBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
+        return !this.sectionLeads.has(item) && this.isRecent(item.version)
+            ? BADGE.new
+            : null;
     }
 
     private newOrUpdated(
