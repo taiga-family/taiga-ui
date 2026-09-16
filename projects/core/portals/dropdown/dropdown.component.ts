@@ -20,11 +20,14 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
     imports: [PolymorpheusOutlet, TuiScrollControls],
     template: `
         <tui-scroll-controls />
-        <div
-            *polymorpheusOutlet="directive.content() as text; context: {$implicit: close}"
-            [style.padding.rem]="1"
-        >
-            {{ text }}
+        <div class="t-wrapper">
+            <div
+                *polymorpheusOutlet="
+                    directive.content() as text;
+                    context: {$implicit: close}
+                "
+                [innerHTML]="text"
+            ></div>
         </div>
     `,
     styleUrl: './dropdown.style.less',
