@@ -31,7 +31,7 @@ import {
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_FORMAT, TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
@@ -62,6 +62,7 @@ export class TuiInputTimeDirective
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
+    private readonly format = inject(TUI_TIME_FORMAT);
 
     private readonly params = computed<Required<MaskitoTimeParams>>(() => ({
         ...this.options,
@@ -70,7 +71,7 @@ export class TuiInputTimeDirective
         prefix: this.prefix(),
         postfix: this.postfix(),
         separators: [],
-        dayPeriod: this.dayPeriod(),
+        dayPeriod: this.format().dayPeriod,
         locale: '', // TODO: add to public API
     }));
 
@@ -85,7 +86,7 @@ export class TuiInputTimeDirective
         'filler',
         computed(() => {
             const filler = this.fillers()?.[this.timeMode()] ?? '';
-            const [am] = this.dayPeriod();
+            const [am] = this.format().dayPeriod;
             const dayPeriodFiller = am && ` ${'A'.repeat(am.length)}`;
 
             return this.postfix() ? '' : `${this.prefix()}${filler}${dayPeriodFiller}`;
@@ -97,7 +98,6 @@ export class TuiInputTimeDirective
 
     public readonly accept = input<readonly TuiTime[]>([]);
     public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
-    public readonly dayPeriod = input(this.options.dayPeriod);
     public readonly prefix = input('');
     public readonly postfix = input('');
 
@@ -215,7 +215,7 @@ export class TuiInputTimeDirective
     }
 
     private isComplete(value: string): boolean {
-        const [am] = this.dayPeriod();
+        const [am] = this.format().dayPeriod;
         const dayPeriodLength = am ? ` ${am}`.length : 0;
 
         return value.length === this.timeMode().length + dayPeriodLength;

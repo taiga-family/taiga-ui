@@ -32,9 +32,9 @@
                         type to see all available modes.
                     }
                     @case (1) {
-                        Pass
-                        <code>dayPeriod</code>
-                        as a tuple of two locale-specific markers (e.g.
+                        Use
+                        <code>[tuiTimeFormat]="&#123;dayPeriod&#125;"</code>
+                        directive with a tuple of two locale-specific markers (e.g.
                         <code>['AM', 'PM']</code>
                         , chinese
                         <code>['上午', '下午']</code>
@@ -45,7 +45,9 @@
                         <p class="tui-space_bottom-0">
                             Use
                             <code>['', '']</code>
-                            (default) to keep the 24-hour format.
+                            (default) to keep the 24-hour format. Also available through
+                            <code>tuiTimeFormatProvider</code>
+                            .
                         </p>
                     }
                     @case (2) {
@@ -239,13 +241,13 @@
                         placeholder="Pick a time"
                         tuiInputTime
                         [accept]="accept"
-                        [dayPeriod]="dayPeriod"
                         [formControl]="control"
                         [mode]="mode"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}"
                     />
                 </tui-textfield>
             </ng-template>
@@ -259,22 +261,6 @@
                 [(value)]="mode"
             >
                 time format mode
-            </tr>
-
-            <tr
-                name="[dayPeriod]"
-                tuiDocAPIItem
-                type="readonly [string, string]"
-                [items]="dayPeriodVariants"
-                [(value)]="dayPeriod"
-            >
-                Tuple of two locale-specific day-period markers (AM-marker first, PM-marker second). When both are
-                non-empty, the mask switches to 12-hour format and appends the selected marker to the time.
-                <p class="tui-space_bottom-0">
-                    Default:
-                    <code>['', '']</code>
-                    (24-hour format)
-                </p>
             </tr>
 
             <tr
@@ -310,6 +296,11 @@
                 <code>TuiTime</code>
                 values to choose
             </tr>
+
+            <tbody
+                #timeFormatDoc
+                tuiDocTimeFormat
+            ></tbody>
 
             <tbody
                 #textfieldDoc

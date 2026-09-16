@@ -33,9 +33,8 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
-import {TUI_INPUT_TIME_OPTIONS} from '@taiga-ui/kit/components/input-time';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_FORMAT, TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {noop} from 'rxjs';
 
@@ -65,12 +64,13 @@ export class TuiInputDateTimeDirective
     implements TuiTextfieldAccessor<readonly [TuiDay, TuiTime | null]>
 {
     private readonly timeFillers = inject(TUI_TIME_TEXTS);
+    private readonly timeFormat = inject(TUI_TIME_FORMAT);
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
 
     protected override readonly filler = tuiWithDateFiller((date) => {
         const timeFiller = this.timeFillers()?.[this.timeMode()] ?? '';
-        const [am] = this.dayPeriod();
+        const [am] = this.timeFormat().dayPeriod;
         const dayPeriodFiller = am && ` ${'A'.repeat(am.length)}`;
 
         return `${date}${this.options.dateTimeSeparator}${timeFiller}${dayPeriodFiller}`;
@@ -104,7 +104,7 @@ export class TuiInputDateTimeDirective
                 dateSeparator: this.format().separator,
                 dateTimeSeparator: this.options.dateTimeSeparator,
                 timeStep: 0,
-                dayPeriod: this.dayPeriod(),
+                dayPeriod: this.timeFormat().dayPeriod,
                 locale: '', // TODO: add to public API
             }),
         ),
@@ -127,7 +127,6 @@ export class TuiInputDateTimeDirective
     );
 
     public readonly timeMode = input(this.options.timeMode);
-    public readonly dayPeriod = input(inject(TUI_INPUT_TIME_OPTIONS).dayPeriod);
 
     public readonly minInput = input<
         TuiDay | readonly [TuiDay, TuiTime | null] | null | undefined
@@ -205,8 +204,8 @@ export class TuiInputDateTimeDirective
         const timeString =
             time &&
             maskitoStringifyTime(time.toAbsoluteMilliseconds(), {
+                ...this.timeFormat(),
                 mode: this.timeMode(),
-                dayPeriod: this.dayPeriod(),
             });
 
         return timeString
@@ -282,7 +281,7 @@ export class TuiInputDateTimeDirective
     }
 
     private isTimeComplete(time: string): boolean {
-        const [am] = this.dayPeriod();
+        const [am] = this.timeFormat().dayPeriod;
         const dayPeriodLength = am ? ` ${am}`.length : 0;
 
         return time.length === this.timeMode().length + dayPeriodLength;
@@ -290,7 +289,10 @@ export class TuiInputDateTimeDirective
 
     private parseTime(time: string): TuiTime {
         return TuiTime.fromAbsoluteMilliseconds(
-            maskitoParseTime(time, {mode: this.timeMode(), dayPeriod: this.dayPeriod()}),
+            maskitoParseTime(time, {
+                ...this.timeFormat(),
+                mode: this.timeMode(),
+            }),
         );
     }
 }

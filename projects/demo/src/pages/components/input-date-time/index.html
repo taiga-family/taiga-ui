@@ -130,7 +130,6 @@
 
                     <input
                         tuiInputDateTime
-                        [dayPeriod]="dayPeriod"
                         [formControl]="control"
                         [max]="max"
                         [min]="min"
@@ -138,6 +137,7 @@
                         [readonly]="controlDoc.readonly"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}"
                     />
 
                     <tui-calendar *tuiDropdown />
@@ -153,22 +153,6 @@
                 [(value)]="timeMode"
             >
                 time format mode for SS and MS support
-            </tr>
-
-            <tr
-                name="[dayPeriod]"
-                tuiDocAPIItem
-                type="readonly [string, string]"
-                [items]="dayPeriodVariants"
-                [(value)]="dayPeriod"
-            >
-                Tuple of two locale-specific day-period markers (AM-marker first, PM-marker second). When both are
-                non-empty, the mask switches to 12-hour format and appends the selected marker to the time.
-                <p class="tui-space_bottom-0">
-                    Default:
-                    <code>['', '']</code>
-                    (24-hour format)
-                </p>
             </tr>
 
             <tr
@@ -189,6 +173,10 @@
             >
                 max date
             </tr>
+            <tbody
+                #timeFormatDoc
+                tuiDocTimeFormat
+            ></tbody>
             <tbody
                 #textfieldDoc
                 tuiDocTextfield

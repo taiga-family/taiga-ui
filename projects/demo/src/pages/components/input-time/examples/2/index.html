@@ -4,8 +4,8 @@
     <input
         mode="HH:MM"
         tuiInputTime
-        [dayPeriod]="['AM', 'PM']"
         [formControl]="control"
+        [tuiTimeFormat]="{dayPeriod: ['AM', 'PM']}"
     />
 </tui-textfield>
 

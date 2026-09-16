@@ -3,13 +3,14 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
+import {TuiDocTimeFormat} from '@demo/components/time-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
-import {TuiInputTime, type TuiInputTimeOptions} from '@taiga-ui/kit';
+import {TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -18,8 +19,10 @@ import {TuiInputTime, type TuiInputTimeOptions} from '@taiga-ui/kit';
         TuiDocAppearance,
         TuiDocControl,
         TuiDocTextfield,
+        TuiDocTimeFormat,
         TuiInput,
         TuiInputTime,
+        TuiTimeFormat,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -53,21 +56,12 @@ export default class PageComponent {
         'SS.MSS',
     ] as const satisfies readonly MaskitoTimeMode[];
 
-    protected readonly dayPeriodVariants = [
-        ['', ''],
-        ['AM', 'PM'],
-        ['a.m.', 'p.m.'],
-        ['π.μ.', 'μ.μ.'],
-        ['上午', '下午'],
-    ] as const satisfies ReadonlyArray<TuiInputTimeOptions['dayPeriod']>;
-
     protected readonly acceptVariants = [
         [],
         [12, 13, 14, 15, 16, 17, 18].map((x) => new TuiTime(x, 0)),
     ] as const satisfies ReadonlyArray<readonly TuiTime[]>;
 
     protected mode: MaskitoTimeMode = this.modeVariants[0];
-    protected dayPeriod: TuiInputTimeOptions['dayPeriod'] = this.dayPeriodVariants[0];
     protected accept: readonly TuiTime[] = this.acceptVariants[0];
     protected prefix = '';
     protected postfix = '';
