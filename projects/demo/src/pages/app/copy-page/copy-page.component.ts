@@ -1,15 +1,13 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     effect,
     inject,
-    PLATFORM_ID,
     signal,
 } from '@angular/core';
-import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {
     TuiButton,
     TuiDataList,
@@ -18,7 +16,6 @@ import {
     tuiGroupOptionsProvider,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import {from, of, switchMap} from 'rxjs';
 
 import {PageMarkdown} from './page-markdown.service';
 
@@ -31,9 +28,9 @@ import {PageMarkdown} from './page-markdown.service';
     hostDirectives: [TuiGroup],
 })
 export class CopyPage {
-    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly pageMarkdown = inject(PageMarkdown);
     private readonly clipboard = inject(Clipboard);
+    private readonly cache = new Map<string, string>();
 
     protected readonly open = signal(false);
     protected readonly copied = signal(false);
@@ -48,15 +45,6 @@ export class CopyPage {
     );
 
     protected readonly markdownUrl = this.pageMarkdown.url;
-
-    protected readonly markdown = toSignal(
-        toObservable(this.markdownUrl).pipe(
-            switchMap((url) =>
-                this.isBrowser ? from(this.fetchMarkdown(url)) : of(null),
-            ),
-        ),
-        {initialValue: null},
-    );
 
     constructor() {
         const doc = inject(DOCUMENT);
@@ -79,13 +67,16 @@ export class CopyPage {
         });
     }
 
-    protected copy(): void {
-        const markdown = this.markdown();
+    // Fetched lazily on click (not on every navigation) and cached per URL so a repeat click reuses it.
+    protected async copy(): Promise<void> {
+        const url = this.markdownUrl();
+        const markdown = this.cache.get(url) ?? (await this.fetchMarkdown(url));
 
         if (!markdown || !this.clipboard.copy(markdown)) {
             return;
         }
 
+        this.cache.set(url, markdown);
         this.copied.set(true);
         setTimeout(() => this.copied.set(false), 2000);
     }
