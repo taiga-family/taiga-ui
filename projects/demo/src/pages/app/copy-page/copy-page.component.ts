@@ -70,7 +70,8 @@ export class CopyPage {
 
         effect((onCleanup) => {
             link.href = this.markdownUrl();
-            doc.head.append(link, describedBy);
+            doc.head.appendChild(link);
+            doc.head.appendChild(describedBy);
             onCleanup(() => {
                 link.remove();
                 describedBy.remove();
