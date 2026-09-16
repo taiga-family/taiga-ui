@@ -114,8 +114,7 @@ export async function extractComponentsFromRoutes(): Promise<ComponentInfo[]> {
  * `import('../<folder>')`, and `demo-routes.ts`, where `DemoRoute.X` resolves to a URL.
  */
 export async function buildFolderRouteMap(): Promise<Map<string, string>> {
-    const pagesPath = getPagesPath();
-    const appDir = path.join(pagesPath, 'app');
+    const appDir = path.join(getPagesPath(), 'app');
     const demoRoutesContent = await fs.readFile(
         path.join(appDir, 'demo-routes.ts'),
         'utf-8',
@@ -126,6 +125,19 @@ export async function buildFolderRouteMap(): Promise<Map<string, string>> {
         'utf-8',
     );
 
+    return parseFolderRoutes(demoRoutesContent, appRoutesContent, appDir);
+}
+
+/**
+ * Pure parser behind {@link buildFolderRouteMap}: turns the raw `demo-routes.ts` and
+ * `app.routes.ts` sources into absolute-folder → served-URL pairs. Split out so the regex
+ * parsing can be unit-tested against formatting variations without reading from disk.
+ */
+export function parseFolderRoutes(
+    demoRoutesContent: string,
+    appRoutesContent: string,
+    appDir: string,
+): Map<string, string> {
     const urlByName = new Map<string, string>();
 
     for (const match of demoRoutesContent.matchAll(/(\w+):\s*'([^']+)'/g)) {
@@ -143,10 +155,8 @@ export async function buildFolderRouteMap(): Promise<Map<string, string>> {
     // Imports are relative to `app.routes.ts` (the `app/` dir): `../components/x`
     // for library pages, `./getting-started` for app-level guide pages.
     for (const block of appRoutesContent.split('route({')) {
-        const nameMatch = /path:\s*DemoRoute\.(\w+)/.exec(block);
-        const importMatch = /import\('(\.\.?\/[^']+)'\)/.exec(block);
-        const name = nameMatch?.[1];
-        const folder = importMatch?.[1];
+        const name = /path:\s*DemoRoute\.(\w+)/.exec(block)?.[1];
+        const folder = /import\('(\.\.?\/[^']+)'\)/.exec(block)?.[1];
 
         if (!name || !folder) {
             continue;
