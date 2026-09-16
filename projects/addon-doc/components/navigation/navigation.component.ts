@@ -25,7 +25,11 @@ import {
     type TuiDocRoutePageGroup,
     type TuiDocRoutePages,
 } from '@taiga-ui/addon-doc/types';
-import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
+import {
+    tuiIsRoutePageGroup,
+    tuiTransliterateKeyboardLayout,
+    tuiVersionParts,
+} from '@taiga-ui/addon-doc/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -73,12 +77,6 @@ function tuiUniqBy<T extends Record<string, any>>(
             )
             .values(),
     );
-}
-
-function tuiVersionParts(version = ''): {major: number; minor: number} {
-    const [major = Number.NaN, minor = Number.NaN] = version.split('.').map(Number);
-
-    return {major, minor};
 }
 
 @Component({
@@ -219,11 +217,9 @@ export class TuiDocNavigation {
         return this.sectionBadges[index] ?? null;
     }
 
-    protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
-        return this.itemBadges.get(item) ?? null;
-    }
-
-    protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
+    protected itemBadge(
+        item: TuiDocRoutePage | TuiDocRoutePageGroup,
+    ): TuiDocNavigationBadge | null {
         return this.itemBadges.get(item) ?? null;
     }
 
@@ -272,7 +268,7 @@ export class TuiDocNavigation {
 
         for (const section of this.items) {
             for (const item of section) {
-                if ('subPages' in item) {
+                if (tuiIsRoutePageGroup(item)) {
                     add(item, this.newOrUpdated(item.version, item.subPages));
                     item.subPages.forEach((page) => add(page, this.leafBadge(page)));
                 } else {

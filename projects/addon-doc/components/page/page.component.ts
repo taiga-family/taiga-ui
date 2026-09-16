@@ -14,6 +14,7 @@ import {
     TUI_DOC_MAP_PAGES,
     TUI_DOC_VERSION,
 } from '@taiga-ui/addon-doc/tokens';
+import {tuiVersionParts} from '@taiga-ui/addon-doc/utils';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
@@ -50,7 +51,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
 })
 export class TuiDocPage {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
-    private readonly currentMajor = inject(TUI_DOC_VERSION).split('.')[0] ?? '';
+    private readonly major = tuiVersionParts(inject(TUI_DOC_VERSION)).major;
 
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
@@ -64,7 +65,7 @@ export class TuiDocPage {
             return explicit;
         }
 
-        return this.package() && this.currentMajor ? `${this.currentMajor}.0.0` : '';
+        return this.package() && !Number.isNaN(this.major) ? `${this.major}.0.0` : '';
     });
 
     public readonly header = input('');

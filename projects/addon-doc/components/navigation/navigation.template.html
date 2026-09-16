@@ -116,7 +116,7 @@
                     [target]="item.target || '_self'"
                 >
                     {{ item.title }}
-                    @if (pageBadge(item); as badge) {
+                    @if (itemBadge(item); as badge) {
                         <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
@@ -133,7 +133,7 @@
                     (click)="closeMenu()"
                 >
                     {{ item.title }}
-                    @if (pageBadge(item); as badge) {
+                    @if (itemBadge(item); as badge) {
                         <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                     }
                 </a>
@@ -169,7 +169,7 @@
                                 [icon]="icons.more"
                             />
                             {{ item.title }}
-                            @if (groupBadge(item); as badge) {
+                            @if (itemBadge(item); as badge) {
                                 <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                             }
                             <tui-icon
@@ -195,7 +195,7 @@
                                         [target]="subPage.target || '_self'"
                                     >
                                         {{ subPage.title }}
-                                        @if (pageBadge(subPage); as badge) {
+                                        @if (itemBadge(subPage); as badge) {
                                             <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                                         }
                                     </a>
@@ -212,7 +212,7 @@
                                         (click)="closeMenu()"
                                     >
                                         {{ subPage.title }}
-                                        @if (pageBadge(subPage); as badge) {
+                                        @if (itemBadge(subPage); as badge) {
                                             <ng-container *ngTemplateOutlet="badgeTpl; context: {$implicit: badge}" />
                                         }
                                     </a>
