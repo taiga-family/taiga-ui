@@ -18,6 +18,7 @@ import {
     TUI_DOC_PAGES_ICONS,
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
+    TUI_DOC_VERSION,
 } from '@taiga-ui/addon-doc/tokens';
 import {
     type TuiDocRoutePage,
@@ -25,7 +26,6 @@ import {
     type TuiDocRoutePages,
 } from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -56,7 +56,7 @@ interface TuiDocNavigationBadge {
 
 const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
 const UPDATED_BADGE: TuiDocNavigationBadge = {label: 'Updated', appearance: 'info'};
-const TUI_NEW_VERSION_RANGE = 6;
+const NEW_VERSION_RANGE = 6;
 
 function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],
@@ -106,8 +106,9 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
-    private readonly currentMajor = Number(TUI_VERSION.split('.')[0]);
-    private readonly currentMinor = Number(TUI_VERSION.split('.')[1]);
+    private readonly currentVersion = inject(TUI_DOC_VERSION);
+    private readonly currentMajor = Number(this.currentVersion.split('.')[0]);
+    private readonly currentMinor = Number(this.currentVersion.split('.')[1]);
     private readonly sectionLeads = new Set(
         inject(NAVIGATION_ITEMS)
             .slice(0, -1)
@@ -248,21 +249,15 @@ export class TuiDocNavigation {
         }
     }
 
-    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
-        return !!pages?.some((page) => this.isRecent(page.version));
+    private hasRecent(pages: readonly TuiDocRoutePage[] = []): boolean {
+        return pages.some((page) => this.isRecent(page.version));
     }
 
-    private isRecent(version: string | undefined): boolean {
-        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
-            .split('.')
-            .map(Number);
-
-        const distance = this.currentMinor - minor;
+    private isRecent(version = ''): boolean {
+        const [major = Number.NaN, minor = Number.NaN] = version.split('.').map(Number);
 
         return (
-            major === this.currentMajor &&
-            distance >= 0 &&
-            distance < TUI_NEW_VERSION_RANGE
+            major === this.currentMajor && this.currentMinor - minor < NEW_VERSION_RANGE
         );
     }
 

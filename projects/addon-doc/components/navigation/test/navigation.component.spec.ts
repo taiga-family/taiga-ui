@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
-import {TUI_DOC_PAGES, TuiDocNavigation} from '@taiga-ui/addon-doc';
+import {TUI_DOC_PAGES, TUI_DOC_VERSION, TuiDocNavigation} from '@taiga-ui/addon-doc';
 import {type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
@@ -54,6 +54,7 @@ describe('TuiDocNavigation version badges', () => {
                 provideTaiga(),
                 provideRouter([]),
                 {provide: TUI_DOC_PAGES, useValue: pages},
+                {provide: TUI_DOC_VERSION, useValue: TUI_VERSION},
             ],
         });
 

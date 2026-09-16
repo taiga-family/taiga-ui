@@ -9,7 +9,11 @@ import {
     model,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
-import {TUI_DOC_DEFAULT_TABS, TUI_DOC_MAP_PAGES} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_MAP_PAGES,
+    TUI_DOC_VERSION,
+} from '@taiga-ui/addon-doc/tokens';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
@@ -46,15 +50,22 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
 })
 export class TuiDocPage {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    private readonly currentMajor = inject(TUI_DOC_VERSION).split('.')[0] ?? '';
 
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
     protected readonly from = / /g;
     protected readonly to = '_';
-    protected readonly version = computed(
-        () => this.pages.get(this.header())?.version ?? '',
-    );
+    protected readonly version = computed(() => {
+        const explicit = this.pages.get(this.header())?.version;
+
+        if (explicit) {
+            return explicit;
+        }
+
+        return this.package() && this.currentMajor ? `${this.currentMajor}.0.0` : '';
+    });
 
     public readonly header = input('');
     public readonly package = input('');
