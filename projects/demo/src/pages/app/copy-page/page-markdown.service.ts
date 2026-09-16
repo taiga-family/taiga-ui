@@ -4,7 +4,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class TuiDocPageMarkdown {
+export class PageMarkdown {
     private readonly router = inject(Router);
 
     public readonly url: Signal<string> = toSignal(

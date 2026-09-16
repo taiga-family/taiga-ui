@@ -1,25 +1,28 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {isPlatformBrowser} from '@angular/common';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
     PLATFORM_ID,
     signal,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {TUI_DOC_COPY_PAGE} from '@taiga-ui/addon-doc/tokens';
-import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
-import {TuiDropdown} from '@taiga-ui/core/portals/dropdown';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiGroup,
+    tuiGroupOptionsProvider,
+} from '@taiga-ui/core';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {from, of, switchMap} from 'rxjs';
 
-import {TuiDocPageMarkdown} from '../page-markdown.service';
+import {PageMarkdown} from './page-markdown.service';
 
 @Component({
-    selector: 'tui-doc-copy-page',
     imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
@@ -27,12 +30,11 @@ import {TuiDocPageMarkdown} from '../page-markdown.service';
     providers: [tuiGroupOptionsProvider({size: 'm'})],
     hostDirectives: [TuiGroup],
 })
-export class TuiDocCopyPage {
+export class CopyPage {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly pageMarkdown = inject(TuiDocPageMarkdown);
+    private readonly pageMarkdown = inject(PageMarkdown);
     private readonly clipboard = inject(Clipboard);
 
-    protected readonly enabled = inject(TUI_DOC_COPY_PAGE);
     protected readonly open = signal(false);
     protected readonly copied = signal(false);
     protected readonly icons = {
@@ -55,6 +57,26 @@ export class TuiDocCopyPage {
         ),
         {initialValue: null},
     );
+
+    constructor() {
+        const doc = inject(DOCUMENT);
+        const link = doc.createElement('link');
+        const describedBy = doc.createElement('link');
+
+        link.rel = 'alternate';
+        link.type = 'text/markdown';
+        describedBy.rel = 'describedby';
+        describedBy.href = '/llms.txt';
+
+        effect((onCleanup) => {
+            link.href = this.markdownUrl();
+            doc.head.append(link, describedBy);
+            onCleanup(() => {
+                link.remove();
+                describedBy.remove();
+            });
+        });
+    }
 
     protected copy(): void {
         const markdown = this.markdown();
@@ -81,3 +103,5 @@ export class TuiDocCopyPage {
         }
     }
 }
+
+export const PAGE_ACTIONS_CONTENT = new PolymorpheusComponent(CopyPage);

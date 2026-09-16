@@ -70,8 +70,10 @@
         </hgroup>
     }
 
-    @if (copyPage()) {
-        <tui-doc-copy-page class="t-copy" />
+    @if (actions) {
+        <div class="t-actions">
+            <ng-container *polymorpheusOutlet="actions" />
+        </div>
     }
 </header>
 <ng-content />

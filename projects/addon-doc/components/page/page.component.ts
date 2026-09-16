@@ -1,15 +1,14 @@
-import {DOCUMENT, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
+import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     contentChildren,
-    effect,
     inject,
     input,
     model,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
-import {TUI_DOC_COPY_PAGE, TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_ACTIONS, TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiSegmented} from '@taiga-ui/kit/components/segmented';
@@ -20,9 +19,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocToc} from '../toc';
-import {TuiDocCopyPage} from './copy-page/copy-page.component';
 import {TUI_DOC_TABS} from './page.providers';
-import {TuiDocPageMarkdown} from './page-markdown.service';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
@@ -35,7 +32,6 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         RouterLinkActive,
         TuiAutoColorPipe,
         TuiBadge,
-        TuiDocCopyPage,
         TuiDocSourceCode,
         TuiDocToc,
         TuiFade,
@@ -51,7 +47,7 @@ export class TuiDocPage {
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
-    protected readonly copyPage = inject(TUI_DOC_COPY_PAGE);
+    protected readonly actions = inject(TUI_DOC_ACTIONS);
     protected readonly from = / /g;
     protected readonly to = '_';
 
@@ -61,33 +57,4 @@ export class TuiDocPage {
     public readonly tags = input<string[]>([]);
     public readonly path = input('');
     public readonly activeItemIndex = model(0);
-
-    constructor() {
-        // Advertise the page's Markdown twin via <link rel="alternate"> and the llms.txt
-        // overview via <link rel="describedby">; both are prerendered into the static HTML,
-        // so agents/crawlers discover them without running the app.
-        const doc = inject(DOCUMENT);
-        const pageMarkdown = inject(TuiDocPageMarkdown);
-        const link = doc.createElement('link');
-        const describedBy = doc.createElement('link');
-
-        link.rel = 'alternate';
-        link.type = 'text/markdown';
-        describedBy.rel = 'describedby';
-        describedBy.href = '/llms.txt';
-
-        effect((onCleanup) => {
-            if (!this.copyPage()) {
-                return;
-            }
-
-            link.href = pageMarkdown.url();
-            doc.head.appendChild(link);
-            doc.head.appendChild(describedBy);
-            onCleanup(() => {
-                link.remove();
-                describedBy.remove();
-            });
-        });
-    }
 }
