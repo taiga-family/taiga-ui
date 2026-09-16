@@ -421,6 +421,7 @@ export const pages: DocRoutePages = [
         title: 'ScrollWheel',
         keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
         route: DemoRoute.ScrollWheel,
+        version: '5.21.0',
     },
     {
         section: 'Components',
@@ -480,6 +481,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
+        version: '5.9.0',
     },
     {
         section: 'Components',
@@ -561,6 +563,7 @@ export const pages: DocRoutePages = [
                 keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
                 route: DemoRoute.SearchBar,
                 meta: {name: 'tui-search-bar'},
+                version: '5.22.0',
             },
             {
                 section: 'Components',
@@ -891,6 +894,7 @@ export const pages: DocRoutePages = [
                 title: 'Pincode',
                 keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
                 route: DemoRoute.Pincode,
+                version: '5.9.0',
             },
             {
                 section: 'Form',
@@ -1107,6 +1111,7 @@ export const pages: DocRoutePages = [
         title: 'Meter',
         keywords: 'progress, bar, value',
         route: DemoRoute.Meter,
+        version: '5.22.0',
     },
     {
         section: 'Components',
@@ -1127,6 +1132,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
+        version: '5.19.0',
     },
     {
         section: 'Components',
@@ -1640,6 +1646,7 @@ export const pages: DocRoutePages = [
         keywords:
             'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
         route: DemoRoute.AiOverview,
+        version: '5.23.0',
     },
     {
         section: 'AI tools',
