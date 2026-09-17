@@ -7,20 +7,19 @@ import {
     type OnInit,
     ViewContainerRef,
 } from '@angular/core';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 
 import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 import {TuiTextareaContent} from './textarea-content.component';
 
 @Directive({
     selector: 'textarea[tuiTextarea]',
-    hostDirectives: [TuiWithInput],
+    hostDirectives: [TuiWithInput, TuiScrollRef],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[class._mobile]': 'isMobile',
         // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
         '(scroll.zoneless)': 'onScroll()',
@@ -32,8 +31,6 @@ export class TuiTextareaComponent implements OnInit {
     private readonly injector = inject(INJECTOR);
     private readonly options = inject(TUI_TEXTAREA_OPTIONS);
     private ref?: ComponentRef<TuiTextareaContent>;
-
-    protected readonly isMobile = inject(WA_IS_MOBILE);
 
     /**
      * TODO(v6): check https://github.com/angular/angular/issues/70600 status:

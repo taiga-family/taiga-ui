@@ -4,12 +4,15 @@
 
 // prettier-ignore
 [tuiFade]:where(*&) {
-    .scrollbar-hidden();
     .transition(mask-position);
 
     overflow: auto;
     text-overflow: unset !important;
     mask-repeat: no-repeat;
+
+    &:not(._native) {
+        .scrollbar-hidden();
+    }
 
     &:not([data-orientation='vertical']) {
         overflow-y: hidden;
