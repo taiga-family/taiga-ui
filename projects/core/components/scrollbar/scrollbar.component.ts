@@ -5,7 +5,6 @@ import {
     ElementRef,
     inject,
 } from '@angular/core';
-import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
 
