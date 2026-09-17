@@ -12,7 +12,9 @@ import {
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_MAP_PAGES,
     TUI_DOC_SUPPORT_LANGUAGE,
+    TUI_DOC_VERSION,
 } from '@taiga-ui/addon-doc/tokens';
+import {tuiVersionParts} from '@taiga-ui/addon-doc/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiReplacePipe} from '@taiga-ui/cdk/pipes/replace';
 import {TuiAutoColorPipe} from '@taiga-ui/core/pipes/auto-color';
@@ -58,6 +60,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
 })
 export class TuiDocPage implements TuiDocPageOptions {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    private readonly major = tuiVersionParts(inject(TUI_DOC_VERSION)).major;
 
     protected readonly options = inject(TUI_DOC_PAGE_OPTIONS);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
@@ -95,6 +98,12 @@ export class TuiDocPage implements TuiDocPageOptions {
     }
 
     protected get version(): string {
-        return this.pages.get(this.header)?.version ?? '';
+        const explicit = this.pages.get(this.header)?.version;
+
+        if (explicit) {
+            return explicit;
+        }
+
+        return this.package && !Number.isNaN(this.major) ? `${this.major}.0.0` : '';
     }
 }

@@ -122,7 +122,7 @@
                     [target]="item.target || '_self'"
                 >
                     {{ item.title }}
-                    <ng-container *ngIf="pageBadge(item) as badge">
+                    <ng-container *ngIf="itemBadge(item) as badge">
                         <ng-container
                             [ngTemplateOutlet]="badgeTpl"
                             [ngTemplateOutletContext]="{$implicit: badge}"
@@ -147,7 +147,7 @@
                         (click)="closeMenu()"
                     >
                         {{ item.title }}
-                        <ng-container *ngIf="pageBadge(item) as badge">
+                        <ng-container *ngIf="itemBadge(item) as badge">
                             <ng-container
                                 [ngTemplateOutlet]="badgeTpl"
                                 [ngTemplateOutletContext]="{$implicit: badge}"
@@ -181,7 +181,7 @@
                             [icon]="icons.more"
                         />
                         {{ item.title }}
-                        <ng-container *ngIf="groupBadge(item) as badge">
+                        <ng-container *ngIf="itemBadge(item) as badge">
                             <ng-container
                                 [ngTemplateOutlet]="badgeTpl"
                                 [ngTemplateOutletContext]="{$implicit: badge}"
@@ -208,7 +208,7 @@
                                     [target]="subPage.target || '_self'"
                                 >
                                     {{ subPage.title }}
-                                    <ng-container *ngIf="pageBadge(subPage) as badge">
+                                    <ng-container *ngIf="itemBadge(subPage) as badge">
                                         <ng-container
                                             [ngTemplateOutlet]="badgeTpl"
                                             [ngTemplateOutletContext]="{$implicit: badge}"
@@ -234,7 +234,7 @@
                                         (click)="closeMenu()"
                                     >
                                         {{ subPage.title }}
-                                        <ng-container *ngIf="pageBadge(subPage) as badge">
+                                        <ng-container *ngIf="itemBadge(subPage) as badge">
                                             <ng-container
                                                 [ngTemplateOutlet]="badgeTpl"
                                                 [ngTemplateOutletContext]="{$implicit: badge}"
@@ -261,7 +261,7 @@
             <span
                 size="m"
                 tuiBadge
-                class="t-new"
+                class="t-badge"
                 [appearance]="badge.appearance"
             >
                 {{ badge.label }}

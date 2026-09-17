@@ -240,7 +240,6 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
-        version: '4.0.0',
         meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
     },
     {
@@ -1047,7 +1046,6 @@ export const pages: DocRoutePages = [
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-        version: '4.0.0',
         meta: {
             name: 'tui-badge-t-client',
         },
@@ -1214,7 +1212,6 @@ export const pages: DocRoutePages = [
         title: 'Cell',
         keywords: 'cell, feed, item, tuiaccessories, accessories',
         route: DemoRoute.Cell,
-        version: '4.0.0',
         meta: [
             {name: 'tui-cell', figmaVersion: '1.3.1'},
             {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
@@ -1251,7 +1248,6 @@ export const pages: DocRoutePages = [
         title: 'Comment',
         keywords: 'comment, tip, коммент',
         route: DemoRoute.Comment,
-        version: '4.0.0',
     },
     {
         section: 'Layout',

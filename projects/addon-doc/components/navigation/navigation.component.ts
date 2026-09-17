@@ -16,15 +16,19 @@ import {
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
+    TUI_DOC_VERSION,
 } from '@taiga-ui/addon-doc/tokens';
 import {
     type TuiDocRoutePage,
     type TuiDocRoutePageGroup,
     type TuiDocRoutePages,
 } from '@taiga-ui/addon-doc/types';
-import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
+import {
+    tuiIsRoutePageGroup,
+    tuiTransliterateKeyboardLayout,
+    tuiVersionParts,
+} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiPure, tuiUniqBy} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -52,12 +56,15 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
 interface TuiDocNavigationBadge {
     readonly label: string;
-    readonly appearance: string;
+    readonly appearance: 'info' | 'positive';
 }
 
-const NEW_BADGE: TuiDocNavigationBadge = {label: 'New', appearance: 'positive'};
-const UPDATED_BADGE: TuiDocNavigationBadge = {label: 'Updated', appearance: 'info'};
-const TUI_NEW_VERSION_RANGE = 6;
+const BADGE = {
+    new: {label: 'New', appearance: 'positive'},
+    updated: {label: 'Updated', appearance: 'info'},
+} as const satisfies Record<string, TuiDocNavigationBadge>;
+
+const NEW_VERSION_RANGE = 6;
 
 @Component({
     standalone: true,
@@ -98,8 +105,7 @@ export class TuiDocNavigation {
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
-    private readonly currentMajor = Number(TUI_VERSION.split('.')[0]);
-    private readonly currentMinor = Number(TUI_VERSION.split('.')[1]);
+    private readonly current = tuiVersionParts(inject(TUI_DOC_VERSION));
     private readonly sectionLeads = new Set(
         inject(NAVIGATION_ITEMS)
             .slice(0, -1)
@@ -117,6 +123,26 @@ export class TuiDocNavigation {
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
+    protected readonly flat = this.items.reduce<
+        ReadonlyArray<readonly TuiDocRoutePage[]>
+    >(
+        (array, item) => [
+            ...array,
+            item.reduce<readonly TuiDocRoutePage[]>(
+                (pages, page) =>
+                    'subPages' in page ? [...pages, ...page.subPages] : [...pages, page],
+                [],
+            ),
+        ],
+        [],
+    );
+
+    // Inputs (items/version) are static, so badges are resolved once up front.
+    protected readonly sectionBadges = this.items.map((section, index) =>
+        this.newOrUpdated(section[0]?.version, this.flat[index]),
+    );
+
+    protected readonly itemBadges = this.mapItemBadges();
     protected openPagesArr: boolean[] = [];
     protected openPagesGroupsArr: boolean[] = [];
     protected active = '';
@@ -126,7 +152,7 @@ export class TuiDocNavigation {
     protected readonly filtered = toSignal(
         tuiControlValue<string>(this.search).pipe(
             filter((search) => search.trim().length > 2),
-            map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
+            map((search) => this.filterItems(this.flat, search)),
         ),
         {initialValue: []},
     );
@@ -181,27 +207,13 @@ export class TuiDocNavigation {
     }
 
     protected sectionBadge(index: number): TuiDocNavigationBadge | null {
-        if (this.isRecent(this.items[index]?.[0]?.version)) {
-            return NEW_BADGE;
-        }
-
-        return this.hasRecent(this.flattenSubPages(this.items)[index])
-            ? UPDATED_BADGE
-            : null;
+        return this.sectionBadges[index] ?? null;
     }
 
-    protected pageBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
-        return !this.sectionLeads.has(item) && this.isRecent(item.version)
-            ? NEW_BADGE
-            : null;
-    }
-
-    protected groupBadge(item: TuiDocRoutePageGroup): TuiDocNavigationBadge | null {
-        if (this.isRecent(item.version)) {
-            return NEW_BADGE;
-        }
-
-        return this.hasRecent(item.subPages) ? UPDATED_BADGE : null;
+    protected itemBadge(
+        item: TuiDocRoutePage | TuiDocRoutePageGroup,
+    ): TuiDocNavigationBadge | null {
+        return this.itemBadges.get(item) ?? null;
     }
 
     protected onGroupClick(index: number): void {
@@ -257,40 +269,64 @@ export class TuiDocNavigation {
         );
     }
 
-    @tuiPure
-    private flattenSubPages(
-        items: readonly TuiDocRoutePages[],
-    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
-        return items.reduce<ReadonlyArray<readonly TuiDocRoutePage[]>>(
-            (array, item) => [
-                ...array,
-                item.reduce<readonly TuiDocRoutePage[]>(
-                    (pages, page) =>
-                        'subPages' in page
-                            ? [...pages, ...page.subPages]
-                            : [...pages, page],
-                    [],
-                ),
-            ],
-            [],
-        );
+    private mapItemBadges(): ReadonlyMap<
+        TuiDocRoutePage | TuiDocRoutePageGroup,
+        TuiDocNavigationBadge
+    > {
+        const badges = new Map<
+            TuiDocRoutePage | TuiDocRoutePageGroup,
+            TuiDocNavigationBadge
+        >();
+
+        const add = (
+            item: TuiDocRoutePage | TuiDocRoutePageGroup,
+            badge: TuiDocNavigationBadge | null,
+        ): void => {
+            if (badge) {
+                badges.set(item, badge);
+            }
+        };
+
+        for (const section of this.items) {
+            for (const item of section) {
+                if (tuiIsRoutePageGroup(item)) {
+                    add(item, this.newOrUpdated(item.version, item.subPages));
+                    item.subPages.forEach((page) => add(page, this.leafBadge(page)));
+                } else {
+                    add(item, this.leafBadge(item));
+                }
+            }
+        }
+
+        return badges;
     }
 
-    private hasRecent(pages: readonly TuiDocRoutePage[] | undefined): boolean {
-        return !!pages?.some((page) => this.isRecent(page.version));
+    private leafBadge(item: TuiDocRoutePage): TuiDocNavigationBadge | null {
+        return !this.sectionLeads.has(item) && this.isRecent(item.version)
+            ? BADGE.new
+            : null;
     }
 
-    private isRecent(version: string | undefined): boolean {
-        const [major = Number.NaN, minor = Number.NaN] = (version ?? '')
-            .split('.')
-            .map(Number);
+    private newOrUpdated(
+        version: string | undefined,
+        pages: readonly TuiDocRoutePage[] = [],
+    ): TuiDocNavigationBadge | null {
+        if (this.isRecent(version)) {
+            return BADGE.new;
+        }
 
-        const distance = this.currentMinor - minor;
+        return this.hasRecent(pages) ? BADGE.updated : null;
+    }
+
+    private hasRecent(pages: readonly TuiDocRoutePage[] = []): boolean {
+        return pages.some((page) => this.isRecent(page.version));
+    }
+
+    private isRecent(version = ''): boolean {
+        const {major, minor} = tuiVersionParts(version);
 
         return (
-            major === this.currentMajor &&
-            distance >= 0 &&
-            distance < TUI_NEW_VERSION_RANGE
+            major === this.current.major && this.current.minor - minor < NEW_VERSION_RANGE
         );
     }
 
