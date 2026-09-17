@@ -248,6 +248,7 @@ export const pages: DocRoutePages = [
         keywords:
             'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
         route: DemoRoute.List,
+        version: '4.68.0',
     },
     {
         section: 'Layout',
@@ -261,6 +262,7 @@ export const pages: DocRoutePages = [
         title: 'Counter',
         keywords: 'кнопка, button, counter, счетчик',
         route: DemoRoute.Counter,
+        version: '4.74.0',
         meta: {name: 'tui-counter'},
     },
     {
@@ -298,6 +300,7 @@ export const pages: DocRoutePages = [
                 title: 'ButtonSelect',
                 keywords: 'кнопка, button, select, multiselect',
                 route: DemoRoute.ButtonSelect,
+                version: '4.3.0',
             },
         ],
     },
@@ -477,6 +480,7 @@ export const pages: DocRoutePages = [
         title: 'FloatingContainer',
         keywords: 'floating-container, sticky, плавающий, липкий, footer, футер',
         route: DemoRoute.FloatingContainer,
+        version: '4.34.0',
         meta: {},
     },
     {
@@ -994,6 +998,7 @@ export const pages: DocRoutePages = [
         title: 'Pager',
         keywords: 'pager, точка, dot',
         route: DemoRoute.Pager,
+        version: '4.31.0',
         meta: {figmaVersion: '1.1.0'},
     },
     {
@@ -1187,6 +1192,7 @@ export const pages: DocRoutePages = [
         title: 'Toast',
         keywords: 'toast, тост, нотификация',
         route: DemoRoute.Toast,
+        version: '4.55.0',
     },
     {
         section: 'Components',
@@ -1231,6 +1237,7 @@ export const pages: DocRoutePages = [
         title: 'ItemGroup',
         keywords: 'item, chip, group, list, tag, тэг, badge',
         route: DemoRoute.ItemGroup,
+        version: '4.31.0',
         meta: {
             name: 'tui-chip-group',
         },
@@ -1356,6 +1363,7 @@ export const pages: DocRoutePages = [
         title: 'InputSearch',
         keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
         route: DemoRoute.InputSearch,
+        version: '4.22.0',
         meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
@@ -1554,6 +1562,7 @@ export const pages: DocRoutePages = [
                 title: 'Shimmer',
                 keywords: 'shimmer, шиммер, fade, фейд, cache, кеш, кеширование',
                 route: DemoRoute.Shimmer,
+                version: '4.45.0',
             },
             {
                 section: 'Tools',
@@ -1729,6 +1738,7 @@ export const pages: DocRoutePages = [
                 title: 'Truncate',
                 keywords: 'truncate, middle, ellipsis, обрезка, по середине',
                 route: DemoRoute.Truncate,
+                version: '4.77.0',
             },
         ],
     },
@@ -1833,6 +1843,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'obfuscate, mask, sensitive, pipe, обфускация, преобразование, пайп, маска, чувствительные, критичные',
                 route: DemoRoute.Obfuscate,
+                version: '4.38.0',
             },
         ],
     },
