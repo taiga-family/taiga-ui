@@ -117,8 +117,8 @@ tui-modal:where(*&) {
         }
     }
 
-    &.tui-enter > [tuiScrollRef],
-    &.tui-leave > [tuiScrollRef] {
+    > [tuiScrollRef]:has(> .tui-enter),
+    > [tuiScrollRef]:has(> .tui-leave) {
         .scrollbar-hidden();
     }
 }
