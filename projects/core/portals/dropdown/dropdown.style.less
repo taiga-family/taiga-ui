@@ -3,15 +3,21 @@
 :host {
     position: absolute;
     display: flex;
-    box-shadow: var(--tui-shadow-medium);
+    box-shadow:
+        var(--tui-shadow-medium),
+        inset 0 0 0 1px var(--tui-border-normal);
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-1);
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
-    border: 1px solid var(--tui-border-normal);
-    box-sizing: border-box;
+    overflow: auto;
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
+    overscroll-behavior: none;
+    // stylelint-disable-next-line -- graceful degradation
+    position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline;
 
     --tui-from: translateY(-1rem);
 
@@ -31,14 +37,10 @@
     }
 }
 
-.t-scroll {
-    flex-grow: 1;
-    max-inline-size: calc(100% + 2px);
-    inline-size: max-content;
-    overscroll-behavior: none;
-    margin: -1px;
-}
+.t-wrapper {
+    flex: 1;
 
-.t-primitive {
-    padding: 1rem;
+    > * {
+        padding: 1rem;
+    }
 }
