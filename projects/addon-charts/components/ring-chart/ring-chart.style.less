@@ -14,23 +14,23 @@
     flex-shrink: 0;
     border-radius: 100%;
 
-    &[data-size='xs'] {
+    &:where([data-size='xs']) {
         --t-size: @size-xs;
     }
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         --t-size: @size-s;
     }
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         --t-size: @size-m;
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         --t-size: @size-l;
     }
 
-    &[data-size='xl'] {
+    &:where([data-size='xl']) {
         --t-size: @size-xl;
     }
 }

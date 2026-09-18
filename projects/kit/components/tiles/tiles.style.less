@@ -12,7 +12,7 @@ tui-tiles:where(*&) {
     }
 
     [dir='rtl'] &,
-    &[dir='rtl'] {
+    &:where([dir='rtl']) {
         animation: tuiPresent 1s infinite;
     }
 

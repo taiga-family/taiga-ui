@@ -7,17 +7,17 @@
 .rating {
     color: var(--tui-status-info);
 
-    &[data-value='1'] {
+    &:where([data-value='1']) {
         color: var(--tui-status-negative);
         background-color: var(--tui-status-negative-pale-hover);
     }
 
-    &[data-value='2'] {
+    &:where([data-value='2']) {
         color: var(--tui-status-warning);
         background-color: var(--tui-status-warning-pale-hover);
     }
 
-    &[data-value='3'] {
+    &:where([data-value='3']) {
         color: var(--tui-status-positive);
         background-color: var(--tui-status-positive-pale-hover);
     }

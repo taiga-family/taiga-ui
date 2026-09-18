@@ -16,7 +16,7 @@
     }
 
     [dir='rtl'] &,
-    &[dir='rtl'] {
+    &:where([dir='rtl']) {
         &::-moz-progress-bar {
             .fixed-gradient(calc(100% - var(--tui-progress-percent)), 0);
 
