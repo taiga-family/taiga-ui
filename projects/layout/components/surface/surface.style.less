@@ -14,7 +14,7 @@
     appearance: none;
     border: 0;
     text-decoration: none;
-    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform !important;
+    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, scale, transform !important;
 
     &:focus-visible {
         outline-color: var(--tui-border-focus);
@@ -161,10 +161,10 @@ input[tuiSurfaceLayer] {
     }
 
     .appearance-hover({
-        transform: scale(1.15);
+        scale: 1.15;
     });
 
     .appearance-active({
-        transform: scale(0.95);
+        scale: 0.95;
     });
 }
