@@ -11,11 +11,15 @@ import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 const {describe, beforeEach} = test;
 
 describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
-    test.describe('mobile', () => {
+    test.describe('iOS', () => {
         let example: Locator;
         let inputPhoneInternational: TuiInputPhoneInternationalPO;
 
-        test.use(TUI_PLAYWRIGHT_MOBILE);
+        test.use({
+            ...TUI_PLAYWRIGHT_MOBILE,
+            userAgent:
+                'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+        });
 
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
