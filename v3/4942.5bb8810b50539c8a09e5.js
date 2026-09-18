@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[4942],{4942:n=>{n.exports=".box {\n    width: 16rem;\n    height: 16rem;\n    border: 1px solid;\n}\n\n.content {\n    padding: 0 0.6875rem;\n}\n\np {\n    white-space: nowrap;\n}\n"}}]);

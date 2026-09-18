@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[51976],{51976:e=>{e.exports="```ts\nimport {NgModule} from '@angular/core';\nimport {TuiSegmentedModule} from '@taiga-ui/experimental';\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiSegmentedModule,\n  ],\n})\nexport class MyModule {}\n```\n"}}]);

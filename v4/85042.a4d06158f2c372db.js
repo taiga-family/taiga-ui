@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85042],{85042:e=>{e.exports='<tui-textfield>\n    <label tuiLabel>Percentage</label>\n\n    <input\n        postfix="%"\n        tuiInputNumber\n        [max]="100"\n        [min]="0"\n        [step]="1"\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n'}}]);

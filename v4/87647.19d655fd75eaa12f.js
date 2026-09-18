@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87647],{87647:e=>{e.exports=".inline-flex {\n    display: inline-flex;\n}\n"}}]);

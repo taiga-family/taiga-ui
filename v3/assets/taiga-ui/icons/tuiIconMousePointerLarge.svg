@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconMousePointerLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path vector-effect="non-scaling-stroke" d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
+                    <path vector-effect="non-scaling-stroke" d="M13 13l6 6" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>
