@@ -11,6 +11,7 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
     [DemoRoute.BottomSheet, ['[data-appearance="accent"]']],
     // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
     [DemoRoute.Button, ['[data-appearance="accent"]']],
+    [DemoRoute.ButtonGroup, ['[tuiButtonGroup] button']],
     // Opacity applied over text drops it below the threshold whatever the color is.
     // Adjacent-month cells are clickable, so they are NOT exempt as inactive controls.
     [DemoRoute.Calendar, ['.t-cell_unavailable']],
