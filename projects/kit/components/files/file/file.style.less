@@ -11,7 +11,7 @@
     border-radius: var(--tui-radius-m);
 
     &:hover .t-remove,
-    &[data-delete='always'] .t-remove {
+    &:where([data-delete='always']) .t-remove {
         opacity: 1;
     }
 }

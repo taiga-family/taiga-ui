@@ -3,11 +3,11 @@
 :host {
     cursor: pointer;
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         --t-size: ~'min(calc(1em + 1px), 1rem)';
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         --t-size: ~'max(calc(1em / 1.57), min(max(calc(1em / 1.18), 1.25rem), 1.5rem))';
     }
 

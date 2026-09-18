@@ -51,7 +51,7 @@ tui-accordion:where(*&) {
         box-shadow: none;
     }
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         font: var(--tui-typography-body-s);
 
         > tui-expand {
@@ -59,7 +59,7 @@ tui-accordion:where(*&) {
         }
     }
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         font: var(--tui-typography-body-s);
 
         > tui-expand {

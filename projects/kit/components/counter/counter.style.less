@@ -10,23 +10,23 @@
     border-radius: var(--tui-radius-l);
     gap: 0.25rem;
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         min-inline-size: min(8.125rem, 100%);
         border-radius: var(--tui-radius-m);
     }
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         min-inline-size: min(6rem, 100%);
         border-radius: var(--tui-radius-m);
     }
 
-    &[data-size='xs'] {
+    &:where([data-size='xs']) {
         min-inline-size: min(4.5rem, 100%);
         border-radius: var(--tui-radius-xs);
     }
 
-    &[data-size='s'],
-    &[data-size='xs'] {
+    &:where([data-size='s']),
+    &:where([data-size='xs']) {
         .t-button:first-child::after {
             inset-inline-end: 0;
         }
@@ -36,12 +36,12 @@
         }
     }
 
-    &[data-appearance='primary'] {
+    &:where([data-appearance='primary']) {
         background: var(--tui-background-accent-1);
         color: var(--tui-text-primary-on-accent-1);
     }
 
-    &[data-appearance='flat'] {
+    &:where([data-appearance='flat']) {
         background: var(--tui-background-neutral-1);
     }
 }

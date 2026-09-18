@@ -37,31 +37,31 @@
         #000 calc(100% - var(--t-stroke-width))
     );
 
-    &[data-size='xxs'] {
+    &:where([data-size='xxs']) {
         --t-diameter: @diameter[xxs];
     }
 
-    &[data-size='xs'] {
+    &:where([data-size='xs']) {
         --t-diameter: @diameter[xs];
     }
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         --t-diameter: @diameter[s];
     }
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         --t-diameter: @diameter[m];
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         --t-diameter: @diameter[l];
     }
 
-    &[data-size='xl'] {
+    &:where([data-size='xl']) {
         --t-diameter: @diameter[xl];
     }
 
-    &[data-size='xxl'] {
+    &:where([data-size='xxl']) {
         --t-diameter: @diameter[xxl];
     }
 }

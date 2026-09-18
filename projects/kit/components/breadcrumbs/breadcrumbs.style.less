@@ -4,13 +4,13 @@
     white-space: nowrap;
     color: var(--tui-text-secondary);
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         font: var(--tui-typography-body-s);
         line-height: 1.5rem;
         block-size: 1.5rem;
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         font: var(--tui-typography-body-m);
         line-height: 2.5rem;
         block-size: 2.5rem;
