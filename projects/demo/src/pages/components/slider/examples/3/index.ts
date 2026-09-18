@@ -13,6 +13,7 @@ import {TuiSlider} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly labels = [0, 250, 500, 750, 1000];
+    protected readonly segments = this.labels.map((_, i) => i / (this.labels.length - 1));
     protected readonly formControl = new FormControl(250);
 
     protected patchValue(newValue: number): void {
