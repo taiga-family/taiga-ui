@@ -4,7 +4,7 @@
 >
     <div
         class="t-zoomable"
-        [style.transform]="transform$ | async"
+        [style.scale]="scale$ | async"
     >
         <span>{{ scale$ | async | number: '1.0-3' }}</span>
     </div>

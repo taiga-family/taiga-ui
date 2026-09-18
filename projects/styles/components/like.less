@@ -35,13 +35,13 @@
         .fullsize();
 
         font-size: 1.25rem;
-        transition-property: transform, opacity;
+        transition-property: scale, opacity;
     }
 
     &::after {
         opacity: 0;
         color: var(--t-icon-color, inherit);
-        transform: scale(0);
+        scale: 0;
     }
 
     &:checked {
@@ -51,7 +51,7 @@
 
         &::after {
             opacity: 1;
-            transform: scale(1);
+            scale: 1;
             transition-timing-function: cubic-bezier(0.2, 0.6, 0.5, 1.8), ease-in-out;
         }
     }
