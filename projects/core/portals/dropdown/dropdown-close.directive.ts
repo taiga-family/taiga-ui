@@ -18,6 +18,7 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive()
 export class TuiDropdownClose {
+    private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly ref = inject(TuiDropdownDirective).ref;
     private readonly open = inject(TuiDropdownOpen);
@@ -31,7 +32,12 @@ export class TuiDropdownClose {
                     merge(
                         tuiCloseWatcher(),
                         this.obscured.tuiObscured$.pipe(filter(Boolean)),
-                        this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
+                        this.activeZone.tuiActiveZoneChange.pipe(
+                            filter(
+                                (active) =>
+                                    !active && !this.activeZone.containsZone('tui-modal'),
+                            ),
+                        ),
                         tuiTypedFromEvent(this.el, 'focusin').pipe(
                             filter(
                                 (event) =>
@@ -45,7 +51,7 @@ export class TuiDropdownClose {
             ),
             // @ts-ignore
             typeof CloseWatcher === 'undefined'
-                ? tuiTypedFromEvent(inject(DOCUMENT), 'keydown', {capture: true}).pipe(
+                ? tuiTypedFromEvent(this.doc, 'keydown', {capture: true}).pipe(
                       filter(
                           ({key}) =>
                               key === 'Escape' &&

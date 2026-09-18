@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {TuiActiveZone} from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
 
@@ -13,6 +14,7 @@ describe('TuiActiveZone', () => {
 
             <div
                 #parent="tuiActiveZone"
+                id="parent-zone"
                 class="active-zone"
                 [class.active-zone_active]="parentActive"
                 (tuiActiveZoneChange)="onParentActiveZone($event)"
@@ -36,6 +38,7 @@ describe('TuiActiveZone', () => {
             </div>
 
             <div
+                id="child-zone"
                 class="active-zone"
                 [class.active-zone_active]="childActive"
                 [tuiActiveZoneParent]="parent"
@@ -112,6 +115,15 @@ describe('TuiActiveZone', () => {
     it('initial composite zone', () => {
         expect(getZoneInfo('#parent-info')).toBe('Parent zone: false');
         expect(getZoneInfo('#child-info')).toBe('Child zone: false');
+    });
+
+    it('finds child zone by selector', () => {
+        const parent = fixture.debugElement
+            .query(By.css('#parent-zone'))
+            .injector.get(TuiActiveZone);
+
+        expect(parent.containsZone('#child-zone')).toBe(true);
+        expect(parent.containsZone('#missing-zone')).toBe(false);
     });
 
     it('mark parent zone when click on button inside zone', () => {
