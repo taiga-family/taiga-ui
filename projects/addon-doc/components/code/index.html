@@ -3,7 +3,7 @@
         {{ filename() }}
     </p>
 }
-@for (content of processor(); track content) {
+@for (content of processor(); track $index) {
     <pre class="t-code">
     @if (lineNumbers()) {
       <code [highlightAuto]="content" lineNumbers>{{isServer ? content : ''}}</code>
