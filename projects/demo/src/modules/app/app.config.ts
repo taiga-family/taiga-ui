@@ -34,11 +34,12 @@ import {
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
+    TUI_DOC_VERSION,
     tuiDocExampleOptionsProvider,
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TUI_PLATFORM, TUI_VERSION} from '@taiga-ui/cdk';
 import {
     TUI_DIALOGS_CLOSE,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
@@ -144,6 +145,10 @@ export const config: ApplicationConfig = {
                 pages,
                 new Set(['AI tools', 'Documentation', 'Foundations', 'Icons']),
             ),
+        },
+        {
+            provide: TUI_DOC_VERSION,
+            useValue: TUI_VERSION,
         },
         {
             provide: TUI_DOC_SEE_ALSO,

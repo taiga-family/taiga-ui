@@ -8,7 +8,13 @@ import {
     type QueryList,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
-import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_MAP_PAGES,
+    TUI_DOC_SUPPORT_LANGUAGE,
+    TUI_DOC_VERSION,
+} from '@taiga-ui/addon-doc/tokens';
+import {tuiVersionParts} from '@taiga-ui/addon-doc/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiReplacePipe} from '@taiga-ui/cdk/pipes/replace';
 import {TuiAutoColorPipe} from '@taiga-ui/core/pipes/auto-color';
@@ -53,6 +59,9 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPage implements TuiDocPageOptions {
+    private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    private readonly major = tuiVersionParts(inject(TUI_DOC_VERSION)).major;
+
     protected readonly options = inject(TUI_DOC_PAGE_OPTIONS);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly supportLanguage = inject(TUI_DOC_SUPPORT_LANGUAGE);
@@ -86,5 +95,15 @@ export class TuiDocPage implements TuiDocPageOptions {
 
     public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
+    }
+
+    protected get version(): string {
+        const explicit = this.pages.get(this.header)?.version;
+
+        if (explicit) {
+            return explicit;
+        }
+
+        return this.package && !Number.isNaN(this.major) ? `${this.major}.0.0` : '';
     }
 }
