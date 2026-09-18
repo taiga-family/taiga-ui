@@ -6,16 +6,22 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+import {
+    TUI_PLAYWRIGHT_IOS_USER_AGENT,
+    TUI_PLAYWRIGHT_MOBILE,
+} from '../../../playwright.options';
 
 const {describe, beforeEach} = test;
 
 describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
-    test.describe('mobile', () => {
+    test.describe('iOS', () => {
         let example: Locator;
         let inputPhoneInternational: TuiInputPhoneInternationalPO;
 
-        test.use(TUI_PLAYWRIGHT_MOBILE);
+        test.use({
+            ...TUI_PLAYWRIGHT_MOBILE,
+            userAgent: TUI_PLAYWRIGHT_IOS_USER_AGENT,
+        });
 
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
@@ -53,6 +59,28 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             expect(options).toHaveLength(2);
             await expect(options.at(0)!).toContainText('Australia');
             await expect(options.at(1)!).toContainText('Austria');
+        });
+    });
+
+    test.describe('Android', () => {
+        let example: Locator;
+        let inputPhoneInternational: TuiInputPhoneInternationalPO;
+
+        test.use(TUI_PLAYWRIGHT_MOBILE);
+
+        beforeEach(async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputPhoneInternational);
+            example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
+            inputPhoneInternational = new TuiInputPhoneInternationalPO(
+                example.locator('tui-textfield:has([tuiInputPhoneInternational])'),
+            );
+        });
+
+        test('textfield inside dropdown IS focused on dropdown open', async () => {
+            await inputPhoneInternational.select.click();
+            await expect(
+                inputPhoneInternational.dropdown.locator('tui-textfield input'),
+            ).toBeFocused(); // on android [tuiAutoFocus]="!ios" === true
         });
     });
 
