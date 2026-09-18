@@ -19,6 +19,7 @@ import {environment} from '@demo/environments/environment';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
+    TUI_DOC_ACTIONS,
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
@@ -58,6 +59,7 @@ import {TUI_PLATFORM_KEY} from '../../components/settings/platform-key';
 import {AuthService} from '../components/dialog/examples/5/service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
+import {PAGE_ACTIONS_CONTENT} from './copy-page/copy-page.component';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
@@ -148,6 +150,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_DEFAULT_TABS,
             useValue: ['Examples', 'API', 'Setup', 'How to use'],
+        },
+        {
+            provide: TUI_DOC_ACTIONS,
+            useValue: PAGE_ACTIONS_CONTENT,
         },
         {
             provide: TUI_DOC_LOGO,
