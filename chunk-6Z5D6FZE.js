@@ -1,0 +1,23 @@
+import"./chunk-LQ6M4NCU.js";var i=`<tui-scroll-wheel
+    waIntersectionThreshold="0.5"
+    [buffer]="50"
+    [(index)]="hours"
+>
+    <ng-template let-index>
+        <div [class._current]="index - 2 === hours()">{{ getHours(index) }}</div>
+    </ng-template>
+</tui-scroll-wheel>
+:
+<tui-scroll-wheel
+    waIntersectionThreshold="0.5"
+    [buffer]="50"
+    [(index)]="minutes"
+>
+    <ng-template let-index>
+        <div [class._current]="index - 2 === minutes()">{{ getMinutes(index) }}</div>
+    </ng-template>
+</tui-scroll-wheel>
+<p>
+    <output>Selected: {{ getHours(hours() + 2) }}:{{ getMinutes(minutes() + 2) }}</output>
+</p>
+`;export{i as default};
