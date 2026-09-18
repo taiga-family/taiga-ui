@@ -2,17 +2,14 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
     let example: Locator;
     let inputDate: TuiInputDatePO;
 
-    test.use({
-        viewport: {width: 430, height: 932},
-        userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-    });
+    test.use(TUI_PLAYWRIGHT_MOBILE);
 
     test('InputDate mobile dropdown', async ({page}) => {
         await tuiGoto(page, DemoRoute.InputDate, {date});
