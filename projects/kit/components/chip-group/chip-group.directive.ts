@@ -3,12 +3,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    inject,
     input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 
 const OPTIONS = {
     behavior: 'smooth',
@@ -21,30 +24,36 @@ const OPTIONS = {
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './item-group.styles.less';
+            @import './chip-group.styles.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: `tui-item-group-${TUI_VERSION}`,
+    exportAs: `tui-chip-group-${TUI_VERSION}`,
 })
 class Styles {}
 
 @Directive({
-    selector: '[tuiItemGroup]',
+    selector: '[tuiChipGroup]',
+    providers: [tuiChipOptionsProvider({appearance: 'secondary-grayscale'})],
     host: {
         'data-tui-version': TUI_VERSION,
+        '[attr.data-platform]': 'platform',
+        '[class._grid]': 'columns() !== null',
         '[class._horizontal]': 'horizontal()',
+        '[style.--tui-chip-group-columns]': 'columns()',
         '(click)': 'onClick($event.target)',
     },
 })
-export class TuiItemGroup implements AfterViewInit {
+export class TuiChipGroup implements AfterViewInit {
     private readonly el = tuiInjectElement();
 
     protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly platform = inject(TUI_PLATFORM);
 
-    public readonly horizontal = input(false);
     public readonly autoscroll = input(false);
+    public readonly columns = input<number | null>(null);
+    public readonly horizontal = input(false);
 
     public ngAfterViewInit(): void {
         this.el.classList.add('_initialized');

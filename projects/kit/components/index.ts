@@ -10,6 +10,7 @@ export * from '@taiga-ui/kit/components/button-loading';
 export * from '@taiga-ui/kit/components/calendar-month';
 export * from '@taiga-ui/kit/components/calendar-range';
 export * from '@taiga-ui/kit/components/chip';
+export * from '@taiga-ui/kit/components/chip-group';
 export * from '@taiga-ui/kit/components/combo-box';
 export * from '@taiga-ui/kit/components/comment';
 export * from '@taiga-ui/kit/components/compass';
