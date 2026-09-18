@@ -1,3 +1,4 @@
+import {type CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -16,6 +17,11 @@ import {
 import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
+
+interface CalendarInternals {
+    monthsScroll(): CdkVirtualScrollViewport | undefined;
+    scrollToActiveMonth(behavior?: ScrollBehavior): void;
+}
 
 describe('Mobile calendar', () => {
     const today = new TuiDay(2020, 8, 20);
@@ -91,6 +97,44 @@ describe('Mobile calendar', () => {
         cy.mount(Test);
 
         cy.get('.t-dot').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+    });
+
+    it('renders the entire visible range immediately after a large year jump', () => {
+        cy.mount(Test).then((wrapper) =>
+            cy
+                .get('.t-month-wrapper:visible')
+                .should('exist')
+                .then(() => {
+                    const calendar = wrapper.component.calendar();
+                    const internals = calendar as unknown as CalendarInternals;
+                    const viewport = internals.monthsScroll();
+
+                    if (!viewport) {
+                        throw new Error('Months viewport is not initialized');
+                    }
+
+                    const initialRange = viewport.getRenderedRange();
+                    const itemSize = viewport.measureRangeSize({
+                        start: initialRange.start,
+                        end: initialRange.start + 1,
+                    });
+
+                    calendar.setYear(2090);
+                    // Run the scheduled month jump now, before CDK can process its deferred scroll event.
+                    internals.scrollToActiveMonth('auto');
+
+                    const scrollOffset = viewport.measureScrollOffset();
+                    const firstVisibleIndex = Math.floor(scrollOffset / itemSize);
+                    const lastVisibleIndex = Math.ceil(
+                        (scrollOffset + viewport.getViewportSize()) / itemSize,
+                    );
+
+                    const {start, end} = viewport.getRenderedRange();
+
+                    expect(start).to.be.at.most(firstVisibleIndex);
+                    expect(end).to.be.at.least(lastVisibleIndex);
+                }),
+        );
     });
 
     describe('when the done button emits', () => {
