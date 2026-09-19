@@ -1,6 +1,6 @@
-import {type Type} from '@angular/core';
+import {type ProviderToken, type Type} from '@angular/core';
 import {type DefaultExport, type Route} from '@angular/router';
-import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
+import {TuiModalService} from '@taiga-ui/core';
 
 export function tuiGenerateDialogableRoute<I>(
     component: Type<any> | (() => Promise<DefaultExport<Type<any>> | Type<any>>),
@@ -8,7 +8,11 @@ export function tuiGenerateDialogableRoute<I>(
         path = '',
         outlet = '',
         ...dialogOptions
-    }: Partial<TuiDialogOptions<I>> & {path?: string; outlet?: string} = {},
+    }: Partial<I> & {
+        path?: string;
+        outlet?: string;
+        service?: ProviderToken<TuiModalService<I>>;
+    } = {},
 ): Route {
     return {
         path,
