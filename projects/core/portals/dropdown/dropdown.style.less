@@ -3,15 +3,17 @@
 :host {
     position: absolute;
     display: flex;
-    box-shadow:
-        var(--tui-shadow-medium),
-        inset 0 0 0 1px var(--tui-border-normal);
+    box-shadow: var(--tui-shadow-medium);
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-1);
     border-radius: var(--tui-radius-m);
     overflow: hidden;
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
+    outline-offset: -1px;
+    // stylelint-disable-next-line -- graceful degradation
+    outline: 1px solid
+        color-mix(in srgb, rgb(from var(--tui-border-normal) r g b / 1) 12%, var(--tui-background-elevation-1));
 
     --tui-from: translateY(-1rem);
 
