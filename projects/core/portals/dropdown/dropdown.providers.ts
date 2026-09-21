@@ -18,6 +18,6 @@ export const TUI_DROPDOWN_HOST = new InjectionToken<ElementRef<Element>>(
     ngDevMode ? 'TUI_DROPDOWN_HOST' : '',
 );
 
-export const TUI_DROPDOWN_ANCHOR = new InjectionToken<ElementRef<Element>>(
+export const TUI_DROPDOWN_ANCHOR = new InjectionToken<ElementRef<HTMLElement>>(
     ngDevMode ? 'TUI_DROPDOWN_ANCHOR' : '',
 );

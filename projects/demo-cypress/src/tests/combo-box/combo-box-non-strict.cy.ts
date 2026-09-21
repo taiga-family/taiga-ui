@@ -27,7 +27,6 @@ interface Country {
 
                 <tui-data-list-wrapper
                     *tuiDropdown
-                    new
                     [items]="countries"
                 />
             </tui-textfield>
