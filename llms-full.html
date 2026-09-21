@@ -12006,28 +12006,42 @@ export default class Example {
 &lt;button size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;observer.complete()&quot; &gt; Close &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/ng-template&gt;
+&lt;div tuiCardLarge tuiSurface=&quot;floating&quot; &gt;
+&lt;h3 tuiTitle=&quot;m&quot;&gt;Inside a card&lt;/h3&gt;
+&lt;button *ngFor=&quot;let item of items&quot; tuiCell tuiCellStretch type=&quot;button&quot; &gt;
+&lt;tui-avatar appearance=&quot;accent&quot; [src]=&quot;item.icon&quot; /&gt;
+&lt;span tuiTitle&gt; {{ item.title }} &lt;span tuiSubtitle&gt;{{ item.subtitle }}&lt;/span&gt;
+&lt;/span&gt;
+&lt;/button&gt;
+&lt;/div&gt;
 ```
 **TypeScript:**
 ```ts
+import {NgFor} from &#039;@angular/common&#039;;
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
-import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
-import {TuiCell, TuiCellStretch} from &#039;@taiga-ui/layout&#039;;
+import {TuiButton, TuiSurface, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiBadgeNotification} from &#039;@taiga-ui/kit&#039;;
+import {TuiCardLarge, TuiCell, TuiCellStretch} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
+        NgFor,
+        TuiAvatar,
         TuiBadgeNotification,
         TuiButton,
+        TuiCardLarge,
         TuiCell,
         TuiCellStretch,
         TuiSheetDialog,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
     encapsulation,
     changeDetection,
 })
@@ -12038,6 +12052,33 @@ export default class Example {
         label: &#039;Navigation&#039;,
         closeable: true,
     };
+
+    protected readonly items = [
+        {
+            icon: &#039;@tui.eye&#039;,
+            title: &#039;Show more&#039;,
+            subtitle: &#039;Ctrl + Shift + M&#039;,
+        },
+        {
+            icon: &#039;@tui.mail&#039;,
+            title: &#039;Send message&#039;,
+            subtitle: &#039;Keep it short&#039;,
+        },
+        {
+            icon: &#039;@tui.lock&#039;,
+            title: &#039;Access&#039;,
+            subtitle: &#039;Block your account&#039;,
+        },
+    ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 20rem;
+    gap: 1rem;
 }
 ```
 
