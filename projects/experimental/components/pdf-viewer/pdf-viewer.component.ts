@@ -27,9 +27,9 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider(() => ({
-            appearance: inject(TUI_IS_MOBILE) ? 'action' : 'glass',
-            size: 's',
+        tuiButtonOptionsProvider((mobile = inject(TUI_IS_MOBILE)) => ({
+            appearance: mobile ? 'action' : 'glass',
+            size: mobile ? 'l' : 's',
         })),
     ],
     host: {
