@@ -39,6 +39,11 @@
     &:not([style*='top']) {
         visibility: hidden;
     }
+
+    &._delegated {
+        // stylelint-disable-next-line plugin/use-baseline -- graceful degradation
+        scroll-timeline: none;
+    }
 }
 
 .t-wrapper {
