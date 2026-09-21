@@ -1,12 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Directive,
-    ElementRef,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
 import {TUI_SCROLL_REF, TuiScrollRef} from './scroll-ref.directive';
