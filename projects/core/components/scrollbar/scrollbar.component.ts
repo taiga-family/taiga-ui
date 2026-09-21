@@ -19,7 +19,10 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 @Component({
     selector: 'tui-scrollbar',
     imports: [TuiScrollControls],
-    templateUrl: './scrollbar.template.html',
+    template: `
+        <tui-scroll-controls [class.t-hover-mode]="options.mode === 'hover'" />
+        <div class="t-content"><ng-content /></div>
+    `,
     styleUrl: './scrollbar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
