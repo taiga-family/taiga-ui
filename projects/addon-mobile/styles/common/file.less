@@ -5,7 +5,7 @@
 }
 
 [tuiFile][data-orientation='vertical'] {
-    .transition(transform, @tui-duration-fastest);
+    .transition(scale, @tui-duration-fastest);
 
     min-inline-size: 6rem;
     max-inline-size: 10rem;
@@ -25,6 +25,6 @@
     }
 
     &:has(> label:active) {
-        transform: scale(0.95);
+        scale: 0.95;
     }
 }
