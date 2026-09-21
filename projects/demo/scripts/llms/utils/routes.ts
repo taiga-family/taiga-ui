@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+import {fileExists} from './file-system';
 import {getPagesPath} from './paths';
 
 export interface ComponentInfo {
@@ -125,7 +126,35 @@ export async function buildFolderRouteMap(): Promise<Map<string, string>> {
         'utf-8',
     );
 
-    return parseFolderRoutes(demoRoutesContent, appRoutesContent, appDir);
+    const parsed = parseFolderRoutes(demoRoutesContent, appRoutesContent, appDir);
+    const folderToRoute = new Map<string, string>();
+
+    for (const [folder, url] of parsed) {
+        folderToRoute.set(await resolvePageFolder(folder), url);
+    }
+
+    return folderToRoute;
+}
+
+/**
+ * Nearest ancestor of `folder` (itself included) that actually holds a page — a folder with an
+ * `index.html`. A `loadChildren` route imports a sub-router file (e.g. `.../tabs/routes`) rather
+ * than a page folder, so climbing to the first `index.html` lands on the folder that renders the
+ * page without hard-coding any file-name convention. Stays within the pages tree.
+ */
+async function resolvePageFolder(folder: string): Promise<string> {
+    const root = getPagesPath();
+    let current = folder;
+
+    while (
+        current.startsWith(root) &&
+        current !== root &&
+        !(await fileExists(path.join(current, 'index.html')))
+    ) {
+        current = path.dirname(current);
+    }
+
+    return current;
 }
 
 /**

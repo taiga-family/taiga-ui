@@ -9,6 +9,7 @@ export const DemoRoute = {
     ActionBar: '/components/actions-bar',
     PieChart: '/charts/pie-chart',
     GettingStarted: '/getting-started',
+    DialogRoutable: '/dialog/routable',
     NoImport: '/no-import',
 };
 `;
@@ -26,6 +27,10 @@ export const ROUTES = [
         path: DemoRoute.GettingStarted,
         loadComponent: async () =>
             import('./getting-started'),
+    }),
+    route({
+        path: DemoRoute.DialogRoutable,
+        loadChildren: async () => import('../components/dialog-routable/routes'),
     }),
     route({
         path: DemoRoute.NoImport,
@@ -59,9 +64,17 @@ describe('folder route map', () => {
             );
         });
 
+        it('keeps a loadChildren sub-router import as-is (folder resolved later)', () => {
+            // parseFolderRoutes stays pure: it maps the raw import target. Climbing to the
+            // folder that actually holds index.html happens in buildFolderRouteMap.
+            expect(
+                map.get(path.resolve(APP_DIR, '../components/dialog-routable/routes')),
+            ).toBe('dialog/routable');
+        });
+
         it('drops a block with no import or an unknown DemoRoute without throwing', () => {
             // NoImport has a path but no import; Unknown has an import but no URL in demo-routes.
-            expect(map.size).toBe(3);
+            expect(map.size).toBe(4);
             expect([...map.values()]).not.toContain('no-import');
         });
     });
@@ -75,6 +88,17 @@ describe('folder route map', () => {
             expect(map.size).toBeGreaterThan(180);
             expect([...map.values()]).toContain('components/actions-bar');
             expect([...map.values()].some((route) => route.startsWith('charts/'))).toBe(
+                true,
+            );
+        });
+
+        it('resolves a loadChildren sub-router route to the folder that holds the page', async () => {
+            const map = await buildFolderRouteMap();
+            const entry = [...map].find(([, route]) => route === 'dialog/routable');
+
+            // The route imports `.../dialog-routable/routes` (a sub-router); the resolved map
+            // must point at the folder with the page's index.html, not the routes file path.
+            expect(entry?.[0].endsWith(`components${path.sep}dialog-routable`)).toBe(
                 true,
             );
         });
