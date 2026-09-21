@@ -10,6 +10,7 @@
 }
 
 .t-header {
+    position: relative;
     display: flex;
     font: var(--tui-font-heading-3);
     flex-wrap: wrap;
@@ -110,12 +111,15 @@
 }
 
 .t-actions {
-    align-self: center;
-    margin-inline-start: auto;
+    position: absolute;
+    inset-block-start: 3.75rem;
+    inset-inline-end: 0;
 
     @media @tui-mobile {
-        flex-basis: 100%;
-        margin-inline-start: 0;
+        position: static;
+        inline-size: 100%;
+        inset-block-start: auto;
+        margin-block-start: 0.5rem;
     }
 }
 
