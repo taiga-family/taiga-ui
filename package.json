@@ -59,7 +59,8 @@
         "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail",
         "*** LLMS Generation ***": "",
         "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",
-        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts"
+        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts",
+        "generate:llms-pages": "ts-node ./projects/demo/scripts/llms/markdown-pages-generate.ts"
     },
     "commitlint": {
         "extends": [

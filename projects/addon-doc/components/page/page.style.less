@@ -109,6 +109,16 @@
     margin-inline-start: auto;
 }
 
+.t-actions {
+    align-self: center;
+    margin-inline-start: auto;
+
+    @media @tui-mobile {
+        flex-basis: 100%;
+        margin-inline-start: 0;
+    }
+}
+
 .t-source-code {
     block-size: 3.125rem;
 }
