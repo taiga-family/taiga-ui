@@ -16,7 +16,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
-import {TUI_VERSION} from '@taiga-ui/cdk';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 
 @Component({
     standalone: true,
