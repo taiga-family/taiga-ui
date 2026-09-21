@@ -49,21 +49,14 @@ export class CopyPage {
     constructor() {
         const doc = inject(DOCUMENT);
         const link = doc.createElement('link');
-        const describedBy = doc.createElement('link');
 
         link.rel = 'alternate';
         link.type = 'text/markdown';
-        describedBy.rel = 'describedby';
-        describedBy.href = '/llms.txt';
 
         effect((onCleanup) => {
             link.href = this.markdownUrl();
             doc.head.appendChild(link);
-            doc.head.appendChild(describedBy);
-            onCleanup(() => {
-                link.remove();
-                describedBy.remove();
-            });
+            onCleanup(() => link.remove());
         });
     }
 
