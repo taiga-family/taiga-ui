@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.100.0](https://github.com/taiga-family/taiga-ui/compare/v4.99.0...v4.100.0) (2026-09-21)
+
+### 🚀 Features
+
+- **addon-doc:** version-driven navigation badges and on-page version
+  ([#14988](https://github.com/taiga-family/taiga-ui/issues/14988))
+  ([fedad31](https://github.com/taiga-family/taiga-ui/commit/fedad31fad896f9681b46d1fb8949800c7f2f185))
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** keep badge glyph white for thumbnail-card size m
+  ([#15007](https://github.com/taiga-family/taiga-ui/issues/15007))
+  ([d8ca236](https://github.com/taiga-family/taiga-ui/commit/d8ca2364bb9431de0a1610cc3eedd0202c26c7f4))
+- **core:** refresh scrollbar after animation ([#15008](https://github.com/taiga-family/taiga-ui/issues/15008))
+  ([b360984](https://github.com/taiga-family/taiga-ui/commit/b36098491c8552016856e82a50115d8c9fa8c9a6))
+- **experimental:** `PdfViewer` fix style specificity ([#15022](https://github.com/taiga-family/taiga-ui/issues/15022))
+  ([874f8d3](https://github.com/taiga-family/taiga-ui/commit/874f8d3d11c9ae1631ed72f3711ec808b967a25d))
+
 ## [4.99.0](https://github.com/taiga-family/taiga-ui/compare/v4.98.0...v4.99.0) (2026-09-14)
 
 ### 🚀 Features
