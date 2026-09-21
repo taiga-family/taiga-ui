@@ -20,6 +20,14 @@ export async function fileExists(filePath: string): Promise<boolean> {
     }
 }
 
+export async function readIfExists(filePath: string): Promise<string | null> {
+    try {
+        return await fs.readFile(filePath, 'utf-8');
+    } catch {
+        return null;
+    }
+}
+
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
@@ -55,26 +63,11 @@ export function getComponentDescription(content: string): string | undefined {
         return '';
     }
 
-    const templateContent = templateMatch[1];
-
-    // Remove control flow tags
-    const withoutControlFlow = (templateContent || '')
-        .split(/\n+/)
-        .filter(
-            (line) =>
-                !/^\s*@(?:for|if|switch|else|case|default|defer|empty)\b/.test(line),
-        )
-        .join('\n');
-
-    const cleanContent = withoutControlFlow
+    const region = (templateMatch[1] || '')
         .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-        .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
-        .replaceAll(/<[^>]+>/g, '')
-        .replaceAll(/\s+/g, ' ')
-        .trim();
+        .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '');
 
-    return cleanContent;
+    return cleanTemplateText(region);
 }
 
 // parse example import.md and template.md
@@ -435,12 +428,12 @@ export async function getUsageExamples(
     let result = '\n### Usage Examples\n';
 
     for (const example of examples) {
-        result += `\n#### ${example.heading}\n`;
+        const parts: string[] = [];
 
         if (example.description) {
             // Already cleaned by extractExampleDescriptions; re-stripping tags here
             // would eat decoded markup such as `<tui-textfield />`.
-            result += `\n${example.description}\n`;
+            parts.push(example.description);
         }
 
         if (example.html) {
@@ -451,18 +444,18 @@ export async function getUsageExamples(
                 .replaceAll(/\n\s+/g, '\n') // Remove leading spaces
                 .trim();
 
-            result += `\n**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``;
+            parts.push(`**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``);
         }
 
         if (example.ts) {
-            result += `\n**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``;
+            parts.push(`**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``);
         }
 
         if (example.less) {
-            result += `\n**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``;
+            parts.push(`**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``);
         }
 
-        result += '\n';
+        result += `\n#### ${example.heading}\n\n${parts.join('\n\n')}\n`;
     }
 
     return result;
@@ -482,18 +475,29 @@ function decodeHtmlEntities(text: string): string {
 }
 
 // Turn a chunk of Angular template into plain prose: drop control-flow wrappers
-// (@if / @switch / @case …), strip HTML tags, decode entities, collapse whitespace.
+// (@if / @switch / @case …), keep <code> as inline code, strip other tags, decode entities.
+// Openers may span several lines (a @for over a wrapped array); the keyword list leaves
+// `@tui.*` icon names untouched.
 function cleanTemplateText(raw: string): string {
-    const withoutControlFlow = raw
+    const cleaned = raw
         .replaceAll(
-            /@(?:if|else|for|switch|case|default|empty|defer|placeholder|loading|error)\b[^{}]*\{/gi,
+            /@(?:for|if|else\s+if|else|switch|case|default|empty|defer|placeholder|loading|error)(?:\s*\([^{}]*\))?\s*\{/gi,
             ' ',
         )
-        .replaceAll(/[{}]/g, ' ');
+        .replaceAll(/[{}]/g, ' ')
+        // <code>x</code> → `x`, keeping entities encoded until the final decode so the
+        // tag-stripper below can't mistake a decoded `<select>` for a real tag and drop it.
+        .replaceAll(
+            /<code[^>]*>([\s\S]*?)<\/code>/gi,
+            (_match, code: string) =>
+                `\`${code
+                    .replaceAll(/<[^>]+>/g, '')
+                    .replaceAll('`', '')
+                    .trim()}\``,
+        )
+        .replaceAll(/<[^>]+>/g, '');
 
-    return decodeHtmlEntities(withoutControlFlow.replaceAll(/<[^>]+>/g, ''))
-        .replaceAll(/\s+/g, ' ')
-        .trim();
+    return decodeHtmlEntities(cleaned).replaceAll(/\s+/g, ' ').trim();
 }
 
 // Return the text inside the braces starting at `openBraceIndex`, respecting nesting.

@@ -79,6 +79,12 @@
             </p>
         </hgroup>
     }
+
+    @if (actions) {
+        <div class="t-actions">
+            <ng-container *polymorpheusOutlet="actions" />
+        </div>
+    }
 </header>
 <ng-content />
 @for (tab of tabConnectors(); track tab) {

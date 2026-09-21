@@ -26,8 +26,8 @@ export default class Page {
         () => INIT_CLIENTS[this.activeItemIndex()] ?? null,
     );
 
-    protected readonly mcpInit = computed(() => this.initCommand());
-    protected readonly mcpInitV4 = computed(() => this.initCommand('v4'));
+    protected readonly mcpInit = import('./snippets/mcp-init.md');
+    protected readonly mcpInitV4 = import('./snippets/mcp-init-v4.md');
     protected readonly mcpInitInteractive = import('./snippets/mcp-init-interactive.md');
     protected readonly mcpClaudeCode = import('./snippets/mcp-claude-code.md');
     protected readonly mcpClaudeCodeConfig =
@@ -40,15 +40,4 @@ export default class Page {
     protected readonly mcpCodex = import('./snippets/mcp-codex.md');
     protected readonly mcpOpencode = import('./snippets/mcp-opencode.md');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md');
-
-    private initCommand(version?: string): string {
-        const client = this.versionClient() ?? '<client>';
-        const flag = version ? ` --version ${version}` : '';
-
-        return [
-            '```bash',
-            `npx @taiga-ui/mcp init --client ${client}${flag}`,
-            '```',
-        ].join('\n');
-    }
 }

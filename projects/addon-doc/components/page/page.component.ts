@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {
+    TUI_DOC_ACTIONS,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_MAP_PAGES,
     TUI_DOC_VERSION,
@@ -56,6 +57,7 @@ export class TuiDocPage {
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
+    protected readonly actions = inject(TUI_DOC_ACTIONS);
     protected readonly from = / /g;
     protected readonly to = '_';
     protected readonly version = computed(() => {
