@@ -1,3 +1,4 @@
+import {Location} from '@angular/common';
 import {inject, Injectable, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router} from '@angular/router';
@@ -6,6 +7,7 @@ import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class PageMarkdown {
     private readonly router = inject(Router);
+    private readonly location = inject(Location);
 
     public readonly url: Signal<string> = toSignal(
         this.router.events.pipe(
@@ -31,6 +33,6 @@ export class PageMarkdown {
                 ? page.slice(0, page.lastIndexOf('/'))
                 : page;
 
-        return `${base}.md`;
+        return this.location.prepareExternalUrl(`${base}.md`);
     }
 }
