@@ -45,10 +45,10 @@ All notable changes to this project will be documented in this file. See
 - **schematics:** keep nested element migrations inside *tuiSidebar in v5
   ([#14920](https://github.com/taiga-family/taiga-ui/issues/14920))
   ([82f9053](https://github.com/taiga-family/taiga-ui/commit/82f90530db259eb24fa0ba630b4dbc1efb80519b))
-- **schematics:** migrate [tuiDropdownMobile] binding to [tuiDropdownSheet] in v5
+- **schematics:** migrate `[tuiDropdownMobile]` binding to `[tuiDropdownSheet]` in v5
   ([#14918](https://github.com/taiga-family/taiga-ui/issues/14918))
   ([63685aa](https://github.com/taiga-family/taiga-ui/commit/63685aa4d9fd02bfcc51926ed2ae129aace66c62))
-- **schematics:** warn on opaque dynamic [tuiHeader] bindings in v5 migration
+- **schematics:** warn on opaque dynamic `[tuiHeader]` bindings in v5 migration
   ([#14919](https://github.com/taiga-family/taiga-ui/issues/14919))
   ([e516f42](https://github.com/taiga-family/taiga-ui/commit/e516f42dec20a28d23299ca634c7bda32b69dc50))
 - **styles:** improve contrast ratio of light theme `text-positive` and `text-negative`
