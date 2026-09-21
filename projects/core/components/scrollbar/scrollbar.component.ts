@@ -1,12 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Directive,
-    ElementRef,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
 import {TUI_SCROLL_REF, TuiScrollRef} from './scroll-ref.directive';
@@ -23,29 +16,13 @@ export const TUI_SCROLL_INTO_VIEW = 'tui-scroll-into-view';
  */
 export const TUI_SCROLLABLE = 'tui-scrollable';
 
-/**
- * @deprecated
- * Cannot put it into viewProviders because of https://github.com/angular/angular/issues/65724
- * Cannot put it into providers because it shouldn't leak to content
- * TODO: Remove in v6 together with {@link TuiScrollable}
- */
-@Directive({
-    selector: '[tuiDelegateGuard]',
-    providers: [
-        {
-            provide: TUI_TIMELINE_SUPPORT,
-            useFactory: () =>
-                inject(TUI_TIMELINE_SUPPORT, {skipSelf: true}) &&
-                !inject(TuiScrollbar).delegated,
-        },
-    ],
-})
-class TuiDelegatedGuard {}
-
 @Component({
     selector: 'tui-scrollbar',
-    imports: [TuiDelegatedGuard, TuiScrollControls],
-    templateUrl: './scrollbar.template.html',
+    imports: [TuiScrollControls],
+    template: `
+        <tui-scroll-controls [class.t-hover-mode]="options.mode === 'hover'" />
+        <div class="t-content"><ng-content /></div>
+    `,
     styleUrl: './scrollbar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -56,6 +33,7 @@ class TuiDelegatedGuard {}
     ],
     hostDirectives: [TuiScrollRef],
     host: {
+        '[class._delegated]': 'delegated',
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
