@@ -18,6 +18,7 @@ import {
     getUsageExamples,
     readIndexHtml,
     setPagesPath,
+    stripDuplicateExampleProse,
 } from './utils';
 import {loadConfig} from './utils/config';
 
@@ -78,6 +79,9 @@ async function buildPageMarkdown(
         body.push(meta.join('\n'));
     }
 
+    // Computed up front so prose pages can drop example sections the usage block repeats.
+    const usageExamples = await getUsageExamples(folderPath, true);
+
     if (isComponentPage) {
         const description = getComponentDescription(content) || getFirstTabProse(content);
 
@@ -126,14 +130,15 @@ async function buildPageMarkdown(
             body.push(tokenTables);
         }
 
-        const prose = await getPageProse(folderPath, content);
+        const prose = stripDuplicateExampleProse(
+            await getPageProse(folderPath, content),
+            usageExamples,
+        );
 
         if (prose) {
             body.push(prose);
         }
     }
-
-    const usageExamples = await getUsageExamples(folderPath, true);
 
     if (usageExamples) {
         body.push(usageExamples);
