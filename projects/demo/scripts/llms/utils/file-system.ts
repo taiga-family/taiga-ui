@@ -461,6 +461,143 @@ export async function getUsageExamples(
     return result;
 }
 
+// <tui-doc-example [content]="exampleN" heading="..."> references, in document order.
+// Only bare identifiers are picked up (e.g. `example1`); pipe/number bindings such as
+// `1 | tuiExample` are handled by the examples/<N> folder scan instead.
+function extractContentExampleRefs(
+    content: string,
+): Array<{ref: string; heading: string}> {
+    const refs: Array<{ref: string; heading: string}> = [];
+    const tagRegex = /<tui-doc-example\b[^>]*>/gi;
+    let match: RegExpExecArray | null;
+
+    while ((match = tagRegex.exec(content)) !== null) {
+        const tag = match[0];
+        const refMatch = /\[content\]="([A-Za-z_$][\w$]*)"/.exec(tag);
+
+        if (!refMatch?.[1]) {
+            continue;
+        }
+
+        const headingMatch = /\bheading="([^"]+)"/i.exec(tag);
+        const idMatch = /\bid="([^"]+)"/i.exec(tag);
+        const heading =
+            headingMatch?.[1]?.trim() ||
+            (idMatch?.[1]
+                ? idMatch[1]
+                      .split('-')
+                      .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+                      .join(' ')
+                : refMatch[1]);
+
+        refs.push({ref: refMatch[1], heading});
+    }
+
+    return refs;
+}
+
+// Parse `<ref> = { Label: import('path'...), ... }` from index.ts, preserving key order.
+function parseExampleObjectFiles(
+    ts: string,
+    ref: string,
+): Array<{label: string; importPath: string}> {
+    // `ref` is a validated identifier from extractContentExampleRefs, so it's safe in RegExp.
+    const declMatch = new RegExp(String.raw`\b${ref}\s*=\s*\{`).exec(ts);
+
+    if (!declMatch) {
+        return [];
+    }
+
+    const body = readBalancedBraces(ts, declMatch.index + declMatch[0].length - 1);
+
+    if (body === null) {
+        return [];
+    }
+
+    const files: Array<{label: string; importPath: string}> = [];
+    const entryRegex = /([A-Za-z_$][\w$]*)\s*:\s*import\(\s*['"]([^'"]+)['"]/g;
+    let entry: RegExpExecArray | null;
+
+    while ((entry = entryRegex.exec(body)) !== null) {
+        if (entry[1] && entry[2]) {
+            files.push({label: entry[1], importPath: entry[2]});
+        }
+    }
+
+    return files;
+}
+
+// Code fence language for an example source file, or null for non-code imports
+// (e.g. `.md` prose snippets) which belong to the prose pipeline, not usage examples.
+function languageForFile(filePath: string): string | null {
+    switch (path.extname(filePath).toLowerCase()) {
+        case '.css':
+            return 'css';
+        case '.html':
+            return 'html';
+        case '.js':
+            return 'js';
+        case '.less':
+            return 'less';
+        case '.scss':
+            return 'scss';
+        case '.ts':
+            return 'ts';
+        default:
+            return null;
+    }
+}
+
+// Some pages (e.g. the Routable dialog) declare each example inline as a
+// `[content]="exampleN"` object of `import()`ed files instead of the standard
+// examples/<N> folder layout, so getUsageExamples finds nothing. Reconstruct the
+// blocks from index.ts + index.html so the exported markdown mirrors the page.
+export async function getContentObjectExamples(
+    folderPath: string,
+    content: string,
+): Promise<string> {
+    const tsPath = path.join(folderPath, 'index.ts');
+
+    if (!(await fileExists(tsPath))) {
+        return '';
+    }
+
+    const refs = extractContentExampleRefs(content);
+
+    if (refs.length === 0) {
+        return '';
+    }
+
+    const ts = await fs.readFile(tsPath, 'utf-8');
+    const blocks: string[] = [];
+
+    for (const {ref, heading} of refs) {
+        const parts: string[] = [];
+
+        for (const {label, importPath} of parseExampleObjectFiles(ts, ref)) {
+            // Drop the import query (e.g. `?raw`) before resolving to a real file.
+            const filePath = path.resolve(folderPath, importPath.replace(/\?.*$/, ''));
+            const language = languageForFile(filePath);
+
+            if (language === null || !(await fileExists(filePath))) {
+                continue;
+            }
+
+            const raw = (await fs.readFile(filePath, 'utf-8')).trim();
+
+            if (raw) {
+                parts.push(`**${label}:**\n\`\`\`${language}\n${raw}\n\`\`\``);
+            }
+        }
+
+        if (parts.length > 0) {
+            blocks.push(`\n#### ${heading}\n\n${parts.join('\n\n')}\n`);
+        }
+    }
+
+    return blocks.length > 0 ? `\n### Usage Examples\n${blocks.join('')}` : '';
+}
+
 function decodeHtmlEntities(text: string): string {
     return text
         .replaceAll(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
