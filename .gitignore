@@ -37,6 +37,7 @@ projects/demo/routes.txt
 projects/demo/src/llms.txt
 projects/demo/src/llms-full.txt
 projects/demo/src/llms-full.html
+projects/demo/src/markdown-pages/**/*.md
 migrations.json
 sitemap.xml
 blob-report
