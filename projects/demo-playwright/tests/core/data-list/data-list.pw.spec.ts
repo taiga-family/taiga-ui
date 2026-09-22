@@ -4,7 +4,6 @@ import {expect, test} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
     TUI_DROPDOWN_LOCATORS,
-    TUI_DROPDOWN_OPEN_LOCATORS,
     TUI_SELECT_LEGACY_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
@@ -34,7 +33,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#links');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator(TUI_DROPDOWN_OPEN_LOCATORS.HOST).click();
+        await example.locator('button[tuiDropdownOpen]').click();
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)

@@ -6,6 +6,7 @@ import {
     TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_MULTI_SELECT_LOCATORS,
     TUI_SELECT_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
@@ -55,7 +56,9 @@ describe('DropdownMobile for textfields', () => {
 
         const example = new TuiDocumentationPagePO(page).getExample('#mobile');
 
-        await example.locator('tui-textfield[multi][tuiDropdownMobile=""]').click();
+        await example
+            .locator(`${TUI_TEXTFIELD_LOCATORS.HOST}[multi][tuiDropdownMobile=""]`)
+            .click();
         await page
             .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
@@ -74,7 +77,9 @@ describe('DropdownMobile for textfields', () => {
         const example = documentation.getExample('#mobile');
 
         await example
-            .locator('tui-textfield[multi][tuiDropdownMobile="Select Pythons"]')
+            .locator(
+                `${TUI_TEXTFIELD_LOCATORS.HOST}[multi][tuiDropdownMobile="Select Pythons"]`,
+            )
             .click();
         await page
             .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)

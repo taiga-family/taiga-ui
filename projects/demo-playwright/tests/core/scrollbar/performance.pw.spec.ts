@@ -5,6 +5,7 @@ import {
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_SCROLLBAR_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Performance', () => {
     test.beforeEach(async ({page}, testInfo) => {
@@ -33,8 +34,8 @@ test.describe('Performance', () => {
 
             await firstExample.scrollIntoViewIfNeeded();
 
-            const scrollbar = firstExample.locator('tui-scrollbar');
-            const thumb = firstExample.locator('.t-thumb');
+            const scrollbar = firstExample.locator(TUI_SCROLLBAR_LOCATORS.HOST);
+            const thumb = firstExample.locator(TUI_SCROLLBAR_LOCATORS.THUMB);
 
             await expect(scrollbar).toBeVisible();
             await expect(thumb).toBeVisible();
@@ -63,10 +64,12 @@ test.describe('Performance', () => {
 
             await horizontalExample.scrollIntoViewIfNeeded();
 
-            const scrollContainer = horizontalExample.locator('tui-scrollbar');
-            const horizontalThumb = horizontalExample.locator(
-                '.t-bar_horizontal .t-thumb',
+            const scrollContainer = horizontalExample.locator(
+                TUI_SCROLLBAR_LOCATORS.HOST,
             );
+            const horizontalThumb = horizontalExample
+                .locator(TUI_SCROLLBAR_LOCATORS.HORIZONTAL_BAR)
+                .locator(TUI_SCROLLBAR_LOCATORS.THUMB);
 
             await expect(horizontalThumb).toBeVisible();
 
@@ -88,7 +91,7 @@ test.describe('Performance', () => {
 
             await example.scrollIntoViewIfNeeded();
 
-            const scrollbar = example.locator('tui-scrollbar');
+            const scrollbar = example.locator(TUI_SCROLLBAR_LOCATORS.HOST);
 
             // Programmatic scroll operations that trigger layout/recalc
             const scrollPositions = [0, 50, 100, 150, 200, 250, 100, 0];
@@ -124,7 +127,7 @@ test.describe('Performance', () => {
 
             await example.scrollIntoViewIfNeeded();
 
-            const scrollbar = example.locator('tui-scrollbar');
+            const scrollbar = example.locator(TUI_SCROLLBAR_LOCATORS.HOST);
 
             // Dynamic content operations that should generate significant layout/recalc metrics
             const elementCount = await scrollbar.evaluate((el) => {
@@ -176,7 +179,7 @@ test.describe('Performance', () => {
 
             await example.scrollIntoViewIfNeeded();
 
-            const scrollbar = example.locator('tui-scrollbar');
+            const scrollbar = example.locator(TUI_SCROLLBAR_LOCATORS.HOST);
 
             // Rapid changes that should stress the layout/recalc system
             const operationCount = await scrollbar.evaluate((el) => {
