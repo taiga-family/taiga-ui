@@ -34,6 +34,7 @@ export default class Page extends Array {
         'Closing',
         'Fullscreen',
         'Customization',
+        'Content width',
     ];
 
     protected readonly [2] = {

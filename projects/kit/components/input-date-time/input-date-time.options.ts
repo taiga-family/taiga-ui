@@ -16,7 +16,7 @@ export interface TuiInputDateTimeOptions extends Omit<
     TuiInputDateOptions,
     'valueTransformer'
 > {
-    readonly timeMode: MaskitoTimeMode;
+    readonly timeMode: MaskitoTimeMode; // TODO(v6): move to `TUI_TIME_FORMAT`
     readonly dateTimeSeparator: string;
     readonly valueTransformer: TuiValueTransformer<[TuiDay, TuiTime | null] | null, any>;
 }

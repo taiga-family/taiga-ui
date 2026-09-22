@@ -177,12 +177,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Documentation',
-                title: 'AI support',
-                keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-                route: DemoRoute.AISupport,
-            },
-            {
-                section: 'Documentation',
                 title: 'Direction: RTL',
                 keywords:
                     'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
@@ -427,6 +421,7 @@ export const pages: DocRoutePages = [
         title: 'ScrollWheel',
         keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
         route: DemoRoute.ScrollWheel,
+        version: '5.21.0',
     },
     {
         section: 'Components',
@@ -486,6 +481,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
+        version: '5.9.0',
     },
     {
         section: 'Components',
@@ -560,6 +556,14 @@ export const pages: DocRoutePages = [
                 keywords:
                     'mobile, потянуть, обновление, лоадер, loader, крутилка, загрузка',
                 route: DemoRoute.PullToRefresh,
+            },
+            {
+                section: 'Components',
+                title: 'SearchBar',
+                keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
+                route: DemoRoute.SearchBar,
+                meta: {name: 'tui-search-bar'},
+                version: '5.22.0',
             },
             {
                 section: 'Components',
@@ -890,6 +894,7 @@ export const pages: DocRoutePages = [
                 title: 'Pincode',
                 keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
                 route: DemoRoute.Pincode,
+                version: '5.9.0',
             },
             {
                 section: 'Form',
@@ -1106,6 +1111,7 @@ export const pages: DocRoutePages = [
         title: 'Meter',
         keywords: 'progress, bar, value',
         route: DemoRoute.Meter,
+        version: '5.22.0',
     },
     {
         section: 'Components',
@@ -1126,6 +1132,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
+        version: '5.19.0',
     },
     {
         section: 'Components',
@@ -1631,5 +1638,35 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Tokens,
             },
         ],
+    },
+    // AI tools
+    {
+        section: 'AI tools',
+        title: 'Overview',
+        keywords:
+            'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
+        route: DemoRoute.AiOverview,
+        version: '5.23.0',
+    },
+    {
+        section: 'AI tools',
+        title: 'Skills',
+        keywords:
+            'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
+        route: DemoRoute.AiSkills,
+    },
+    {
+        section: 'AI tools',
+        title: 'MCP server',
+        keywords:
+            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
+        route: DemoRoute.AiMcp,
+    },
+    {
+        section: 'AI tools',
+        title: 'llms.txt',
+        keywords:
+            'ai, llm, llms, llms.txt, llms-full, context, standard, контекст, модели',
+        route: DemoRoute.AiLlms,
     },
 ] as const;

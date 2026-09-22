@@ -23,19 +23,20 @@ tui-textfield[tuiChevron][tuiChevron][tuiIcons]:where(*&) {
     --t-stroke: var(--tui-stroke-width);
 
     &::after {
+        transform: rotate(0deg);
         /* scaling to avoid scrollbars and compensating mask size */
-        transform: rotate(0deg) scale(calc(2 / 3));
+        scale: calc(2 / 3);
         font-size: 1.5rem;
 
         --tui-stroke-width: calc(var(--t-stroke) / 2 * 3);
     }
 
     &._chevron-rotated::after {
-        transform: rotate(180deg) scale(calc(2 / 3));
+        transform: rotate(180deg);
     }
 
     // stylelint-disable-next-line -- graceful degradation
     &:has(select[tuiSelect]:open)::after {
-        transform: rotate(180deg) scale(calc(2 / 3));
+        transform: rotate(180deg);
     }
 }

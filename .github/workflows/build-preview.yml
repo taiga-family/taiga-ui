@@ -1,0 +1,56 @@
+name: 🏗️ Build / preview
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-preview:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    name: Build Firebase preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: taiga-family/actions/setup-variables@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - uses: taiga-family/actions/setup-node@9b6ebca664f44d0fc34a50bec5f85becdf27d388 # v2.12.0
+      - run: npx nx build demo
+
+      - name: Prepare preview metadata
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+        run: |
+          mkdir -p preview-metadata
+          jq -n \
+            --arg version "1" \
+            --arg pr_number "$PR_NUMBER" \
+            --arg head_ref "$HEAD_REF" \
+            --arg head_sha "$HEAD_SHA" \
+            --arg head_repository "$HEAD_REPOSITORY" \
+            --arg base_ref "$BASE_REF" \
+            --arg workflow_run_id "$WORKFLOW_RUN_ID" \
+            '{version: $version, pr_number: $pr_number, head_ref: $head_ref, head_sha: $head_sha, head_repository: $head_repository, base_ref: $base_ref, workflow_run_id: $workflow_run_id}' \
+            > preview-metadata/metadata.json
+
+      - name: Upload Firebase preview artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: firebase-preview-${{ github.run_id }}
+          path: |
+            dist/demo/browser
+            preview-metadata/metadata.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true

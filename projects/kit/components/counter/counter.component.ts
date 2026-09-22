@@ -38,8 +38,14 @@ export class TuiCounter extends TuiControl<number> {
 
     public readonly step = input(this.options.step);
     public readonly size = input(this.options.size);
-    public readonly min = input(this.options.min);
-    public readonly max = input(this.options.max);
+    public readonly min = input(this.options.min, {
+        transform: (min: number | undefined) => min ?? this.options.min,
+    });
+
+    public readonly max = input(this.options.max, {
+        transform: (max: number | undefined) => max ?? this.options.max,
+    });
+
     public readonly appearance = input(this.options.appearance);
 
     protected onStep(step: number): void {

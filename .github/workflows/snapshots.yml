@@ -34,6 +34,7 @@ jobs:
           FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          SQUASH_HISTORY: true
 
   production-snapshot:
     name: Push production snapshot

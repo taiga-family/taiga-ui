@@ -39,6 +39,16 @@ export class TuiDocNumberFormat implements Record<
         'floor',
     ];
 
+    protected readonly thousandSeparatorPatternVariants = [
+        TUI_DEFAULT_NUMBER_FORMAT.thousandSeparatorPattern,
+        // Japanese grouping: 1,2345,6789
+        (digits: string): readonly string[] =>
+            digits.match(/\d{1,4}(?=(?:\d{4})*$)/g) ?? [],
+        // Indian grouping: 12,34,56,789
+        (digits: string): readonly string[] =>
+            digits.match(/\d{1,2}(?=(?:\d{2})*\d{3}$)|\d{1,3}$/g) ?? [],
+    ];
+
     public readonly hiddenOptions = input<Array<string | keyof TuiNumberFormatSettings>>(
         [],
     );

@@ -1,6 +1,7 @@
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_TIMELINE_SUPPORT} from '@taiga-ui/core/tokens';
@@ -23,8 +24,10 @@ export class TuiScrollControls implements OnInit {
     private readonly scrollable = inject(CdkScrollable, {optional: true, host: true});
     private readonly el = tuiInjectElement();
 
-    protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
     protected readonly timeline = inject(TUI_TIMELINE_SUPPORT);
+    protected readonly hidden =
+        inject(WA_IS_IOS) ||
+        ['hidden', 'native'].includes(inject(TUI_SCROLLBAR_OPTIONS).mode);
 
     protected readonly refresh$: Observable<readonly [boolean, boolean]> = this.timeline
         ? of([true, true] as const)

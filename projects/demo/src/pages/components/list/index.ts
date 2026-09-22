@@ -11,6 +11,7 @@ export default class Page {
     protected readonly examples = [
         'Bulleted',
         'Numbered',
+        'Definition',
         'Nested',
         'Long text',
         'Custom color',

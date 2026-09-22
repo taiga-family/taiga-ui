@@ -1,7 +1,9 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
+    afterNextRender,
     computed,
     Directive,
+    type ElementRef,
     inject,
     input,
     type OnDestroy,
@@ -16,6 +18,7 @@ import {
     TUI_TRUE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     tuiInjectElement,
     tuiIsElement,
@@ -23,7 +26,7 @@ import {
     tuiIsTextNode,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDriver,
     tuiAsRectAccessor,
@@ -45,17 +48,19 @@ import {
 } from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
 
 @Directive({
     selector: '[tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelection),
         tuiAsRectAccessor(TuiDropdownSelection),
+        tuiProvide(TUI_DROPDOWN_ANCHOR, TuiDropdownSelection),
     ],
 })
 export class TuiDropdownSelection
     extends TuiDriver
-    implements TuiRectAccessor, OnDestroy
+    implements ElementRef<HTMLElement>, TuiRectAccessor, OnDestroy
 {
     private ghost?: HTMLElement;
 
@@ -96,10 +101,10 @@ export class TuiDropdownSelection
             const contained = this.el.contains(range.commonAncestorContainer);
             const valid = contained && handler(this.range);
             const visible = valid || this.inDropdown(range);
-            const active = tuiGetFocused(this.doc);
+            const focus = tuiGetFocused(this.doc);
+            const textfield = focus && tuiIsTextfield(focus) && this.el.contains(focus);
 
-            const textfield =
-                active && tuiIsTextfield(active) && this.el.contains(active);
+            this.updateAnchor();
 
             return visible && textfield ? this.isCaretVisible(this.range) : visible;
         }),
@@ -110,14 +115,35 @@ export class TuiDropdownSelection
         : ({} as unknown as Range);
 
     public readonly type = 'dropdown';
+    public readonly nativeElement = this.doc.createElement('div');
     public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
-
     public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
         'selection',
     );
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
+
+        afterNextRender(() => {
+            const anchorName = `--${tuiGenerateId()}`;
+
+            Object.assign(this.nativeElement.style, {
+                position: 'fixed',
+                pointerEvents: 'none',
+                positionAnchor: this.el.dataset.tuiAnchor,
+                anchorName,
+            });
+            this.nativeElement.dataset.tuiAnchor = anchorName;
+            this.doc.body.appendChild(this.nativeElement);
+        });
+    }
+
+    public ngOnDestroy(): void {
+        this.nativeElement.parentNode?.removeChild(this.nativeElement);
+
+        if (this.ghost) {
+            this.ghostHost.removeChild(this.ghost);
+        }
     }
 
     public getClientRect(): DOMRect {
@@ -137,12 +163,6 @@ export class TuiDropdownSelection
                 return tuiGetWordRange(this.range).getBoundingClientRect();
             default:
                 return this.range.getBoundingClientRect();
-        }
-    }
-
-    public ngOnDestroy(): void {
-        if (this.ghost) {
-            this.ghostHost.removeChild(this.ghost);
         }
     }
 
@@ -255,5 +275,17 @@ export class TuiDropdownSelection
         const threshold = lineHeight * 0.5;
 
         return visibleHeight >= threshold;
+    }
+
+    private updateAnchor(): void {
+        const rect = this.getClientRect();
+        const {top, left} = this.el.getBoundingClientRect();
+
+        Object.assign(this.nativeElement.style, {
+            top: `calc(anchor(top) + ${rect.top - top}px)`,
+            left: `calc(anchor(left) + ${rect.left - left}px)`,
+            blockSize: tuiPx(rect.height),
+            inlineSize: tuiPx(rect.width),
+        });
     }
 }

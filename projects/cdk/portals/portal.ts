@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiOverride} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     // eslint-disable-next-line no-restricted-imports
     POLYMORPHEUS_CONTEXT,
@@ -51,8 +51,7 @@ export abstract class TuiPortal<T, K = void> {
                             {
                                 provide: POLYMORPHEUS_CONTEXT,
                                 useValue: {
-                                    ...this.options,
-                                    ...options,
+                                    ...tuiOverride(this.options, options),
                                     content,
                                     $implicit,
                                     createdAt: Date.now(),

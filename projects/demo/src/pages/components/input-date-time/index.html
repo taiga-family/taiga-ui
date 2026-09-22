@@ -137,6 +137,7 @@
                         [readonly]="controlDoc.readonly"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}"
                     />
 
                     <tui-calendar *tuiDropdown />
@@ -172,6 +173,10 @@
             >
                 max date
             </tr>
+            <tbody
+                #timeFormatDoc
+                tuiDocTimeFormat
+            ></tbody>
             <tbody
                 #textfieldDoc
                 tuiDocTextfield

@@ -98,14 +98,18 @@
         background: var(--tui-background-accent-1);
     }
 
-    &_start {
-        border-start-start-radius: var(--tui-radius-s);
-        border-end-start-radius: var(--tui-radius-s);
+    &_start::before {
+        clip-path: inset(
+            0 calc(-10rem - var(--tui-inline) * 10rem) 0 calc(-10rem + var(--tui-inline) * 10rem) round
+                var(--tui-radius-s)
+        );
     }
 
-    &_end {
-        border-start-end-radius: var(--tui-radius-s);
-        border-end-end-radius: var(--tui-radius-s);
+    &_end::before {
+        clip-path: inset(
+            0 calc(-10rem + var(--tui-inline) * 10rem) 0 calc(-10rem - var(--tui-inline) * 10rem) round
+                var(--tui-radius-s)
+        );
     }
 
     &[data-range='single'],

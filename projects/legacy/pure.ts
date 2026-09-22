@@ -69,15 +69,12 @@ export function tuiPure<A extends unknown[], R>(
 export function tuiPure(
     target: object | ((...args: unknown[]) => unknown),
     propertyKeyOrContext:
-        | ClassGetterDecoratorContext
-        | ClassMethodDecoratorContext
-        | string,
+        ClassGetterDecoratorContext | ClassMethodDecoratorContext | string,
     descriptor?: TypedPropertyDescriptor<(...args: unknown[]) => unknown>,
 ): TypedPropertyDescriptor<unknown> | ((...args: unknown[]) => unknown) {
     if (typeof target === 'function') {
         const context = propertyKeyOrContext as
-            | ClassGetterDecoratorContext
-            | ClassMethodDecoratorContext;
+            ClassGetterDecoratorContext | ClassMethodDecoratorContext;
 
         if (context.kind === 'getter') {
             return decorateGetter(target as () => unknown, context.name);

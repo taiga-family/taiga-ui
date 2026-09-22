@@ -9,7 +9,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core/portals/dialog';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import {delay, from, of, switchMap} from 'rxjs';
+import {delay, from, of, switchMap, tap} from 'rxjs';
 
 @Component({
     selector: 'tui-routable-dialog',
@@ -20,7 +20,6 @@ export default class TuiRoutableDialog {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly injector = inject(INJECTOR);
-    private readonly initialUrl = this.router.url;
     private readonly dialog = inject(TuiDialogService);
 
     constructor() {
@@ -39,19 +38,14 @@ export default class TuiRoutableDialog {
                         this.route.snapshot.data['dialogOptions'],
                     ),
                 ),
+                tap({complete: () => this.navigateToParent()}),
                 takeUntilDestroyed(),
             )
-            .subscribe({complete: () => this.onDialogClosing()});
+            .subscribe();
     }
 
     private get lazyLoadedBackUrl(): string {
         return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
-    }
-
-    private onDialogClosing(): void {
-        if (this.initialUrl === this.router.url) {
-            this.navigateToParent();
-        }
     }
 
     private navigateToParent(): void {

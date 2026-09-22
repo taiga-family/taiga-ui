@@ -10,7 +10,7 @@ import {
 } from '@angular/router';
 import {provideTaiga, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import {EMPTY, NEVER} from 'rxjs';
+import {EMPTY, NEVER, Subject} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
 import TuiRoutableDialog from '../routable-dialog.component';
@@ -38,6 +38,7 @@ describe('TuiRoutableDialog', () => {
     async function createComponent(
         activatedRoute?: Partial<ActivatedRoute>,
         closeDialogImmediately = true,
+        dialogResult = closeDialogImmediately ? EMPTY : NEVER,
     ): Promise<void> {
         tuiDialogService = mock(TuiDialogService);
         router = mock(Router);
@@ -55,9 +56,7 @@ describe('TuiRoutableDialog', () => {
             ],
         }).compileComponents();
 
-        when(tuiDialogService.open(anything(), anything())).thenReturn(
-            closeDialogImmediately ? EMPTY : NEVER,
-        );
+        when(tuiDialogService.open(anything(), anything())).thenReturn(dialogResult);
 
         fixture = TestBed.createComponent(TuiRoutableDialog);
 
@@ -141,6 +140,32 @@ describe('TuiRoutableDialog', () => {
         // assert
         verify(router.navigate(deepEqual(['../../..']), anything())).once();
     }));
+
+    it('closing the dialog navigates back if only route parameters changed', async () => {
+        // arrange
+        const dialogResult = new Subject<never>();
+
+        await createComponent(
+            {
+                snapshot: {
+                    data: {
+                        dialog: Dialog,
+                        backUrl: '../../..',
+                    } as unknown as Data,
+                } as unknown as ActivatedRouteSnapshot,
+            },
+            false,
+            dialogResult,
+        );
+
+        when(router.url).thenReturn('/details/12');
+
+        // act
+        dialogResult.complete();
+
+        // assert
+        verify(router.navigate(deepEqual(['../../..']), anything())).once();
+    });
 
     it('if navigation occurs from a dialog, then the navigation to parent is not called', async () => {
         // arrange

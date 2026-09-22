@@ -16,7 +16,7 @@ import {TUI_CELL_OPTIONS} from './cell.options';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './cell.styles.less';
+            @import '@taiga-ui/styles/components/cell.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

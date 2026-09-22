@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_AUTOFOCUS_OPTIONS,
@@ -106,6 +107,63 @@ describe('TuiAutoFocus directive', () => {
 
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
+            tick(100);
+
+            expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(true);
+        }));
+    });
+
+    describe('iOS defers focus of non-text-field until the entrance animation finishes', () => {
+        @Component({
+            imports: [TuiAutoFocus],
+            template: `
+                <div class="tui-animated">
+                    <button
+                        tuiAutoFocus
+                        type="button"
+                    >
+                        Ok
+                    </button>
+                </div>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TestIosButton {
+            public readonly element = viewChild.required(TuiAutoFocus, {
+                read: ElementRef,
+            });
+        }
+
+        let fixture: ComponentFixture<TestIosButton>;
+        let testComponent: TestIosButton;
+        let finishAnimation!: () => void;
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [TestIosButton],
+                providers: [provideTaiga(), {provide: WA_IS_IOS, useValue: true}],
+            });
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(TestIosButton);
+            testComponent = fixture.componentInstance;
+
+            const animated: HTMLElement =
+                fixture.nativeElement.querySelector('.tui-animated');
+
+            const finished = new Promise<void>((resolve) => {
+                finishAnimation = resolve;
+            });
+
+            animated.getAnimations = () => [{finished} as unknown as Animation];
+        });
+
+        it('does not focus while the animation is running', fakeAsync(() => {
+            fixture.detectChanges();
+            tick(100);
+
+            expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(false);
+
+            finishAnimation();
             tick(100);
 
             expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(true);

@@ -19,8 +19,7 @@ export class TuiCalendarRangePO {
         const calendars = await this.host.locator('tui-calendar').all();
 
         return calendars.map((x) => new TuiCalendarPO(x)) as
-            | [TuiCalendarPO, TuiCalendarPO]
-            | [TuiCalendarPO];
+            [TuiCalendarPO, TuiCalendarPO] | [TuiCalendarPO];
     }
 
     public async getItems(): Promise<Locator[]> {

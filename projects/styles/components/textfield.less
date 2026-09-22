@@ -1,7 +1,6 @@
 @import '../utils.less';
 
 tui-textfield:where(*&) {
-    .scrollbar-hidden();
     .transition(color, @tui-duration-fast);
 
     --t-height: calc(var(--tui-height-l) + 2.5 * var(--t-label) * var(--tui-font-offset));
@@ -26,6 +25,7 @@ tui-textfield:where(*&) {
     font: var(--tui-typography-ui-m);
     box-sizing: border-box;
     isolation: isolate;
+    scrollbar-width: thin;
 
     &[tuiAppearance] {
         outline: none;
@@ -325,8 +325,12 @@ tui-textfield:where(*&) {
         border-radius: inherit;
     }
 
-    textarea ~ .t-content {
-        min-inline-size: 0.5rem;
+    textarea {
+        scrollbar-width: thin;
+
+        & ~ .t-content {
+            min-inline-size: 1px;
+        }
     }
 
     &:is([data-mode~='readonly'], [data-state='disabled'], ._empty) [tuiButtonX],

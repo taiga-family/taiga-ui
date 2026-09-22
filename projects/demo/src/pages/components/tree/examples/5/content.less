@@ -30,11 +30,9 @@
         border-inline-start: 1px solid var(--tui-border-normal);
     }
 
-    &._expandable {
-        &:hover {
-            cursor: pointer;
-            background: var(--tui-background-base-alt);
-        }
+    &._expandable:hover {
+        cursor: pointer;
+        background: var(--tui-background-base-alt);
     }
 }
 
@@ -42,4 +40,5 @@ tui-icon {
     position: relative;
     z-index: 1;
     background: inherit;
+    margin-inline-end: 0.5rem;
 }
