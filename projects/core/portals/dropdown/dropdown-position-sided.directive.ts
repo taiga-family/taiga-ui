@@ -13,7 +13,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
 export class TuiDropdownPositionSided extends TuiPositionAccessor {
-    private readonly anchor = inject(TUI_DROPDOWN_ANCHOR);
+    private readonly anchor = inject(TUI_DROPDOWN_ANCHOR, {optional: true});
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vertical = inject(TuiDropdownPosition, {optional: true});
@@ -30,7 +30,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         Object.assign(style, {
             position: 'fixed',
             visibility: 'visible',
-            positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
+            positionAnchor: this.anchor?.nativeElement.dataset.tuiAnchor,
             positionArea: `x-${horizontal} span-${direction || 'bottom'}`,
             minBlockSize: `calc-size(fit-content, min(size, ${minHeight}px))`,
             maxBlockSize: `min(calc-size(fit-content, size), ${maxHeight}px)`,
