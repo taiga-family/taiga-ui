@@ -28,3 +28,15 @@
     padding: 0.3125rem;
     padding-block-end: 0;
 }
+
+// Prose sections read as flat text, not boxed demos
+[heading='Explore Taiga UI']::ng-deep,
+[heading='AI-Ready']::ng-deep {
+    .t-example {
+        border: none;
+    }
+
+    .t-demo {
+        padding: 0;
+    }
+}

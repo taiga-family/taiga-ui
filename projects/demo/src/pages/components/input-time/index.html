@@ -32,11 +32,23 @@
                         type to see all available modes.
                     }
                     @case (1) {
-                        Any
-                        <code>mode</code>
-                        ending with
-                        <code>AA</code>
-                        is 12-hour time format with meridiem part.
+                        Use
+                        <code>[tuiTimeFormat]="&#123;dayPeriod&#125;"</code>
+                        directive with a tuple of two locale-specific markers (e.g.
+                        <code>['AM', 'PM']</code>
+                        , chinese
+                        <code>['上午', '下午']</code>
+                        , greek
+                        <code>['π.μ.', 'μ.μ.']</code>
+                        and etc.) to switch the mask to a 12-hour time format with a meridiem suffix.
+
+                        <p class="tui-space_bottom-0">
+                            Use
+                            <code>['', '']</code>
+                            (default) to keep the 24-hour format. Also available through
+                            <code>tuiTimeFormatProvider</code>
+                            .
+                        </p>
                     }
                     @case (2) {
                         <div>
@@ -235,6 +247,7 @@
                         [prefix]="prefix"
                         [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}"
                     />
                 </tui-textfield>
             </ng-template>
@@ -283,6 +296,11 @@
                 <code>TuiTime</code>
                 values to choose
             </tr>
+
+            <tbody
+                #timeFormatDoc
+                tuiDocTimeFormat
+            ></tbody>
 
             <tbody
                 #textfieldDoc

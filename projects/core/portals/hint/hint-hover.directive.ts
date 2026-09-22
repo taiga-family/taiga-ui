@@ -28,12 +28,10 @@ const MOBILE_HIDE_DELAY_MS = 100;
 })
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly el = tuiInjectElement();
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
-
     private readonly stream$ = merge(
         this.toggle$.pipe(
             switchMap((show) =>
@@ -69,6 +67,8 @@ export class TuiHintHover extends TuiDriver {
         optional: true,
         skipSelf: true,
     });
+
+    protected readonly el = tuiInjectElement();
 
     public readonly showDelay = input(this.options.showDelay, {
         alias: 'tuiHintShowDelay',

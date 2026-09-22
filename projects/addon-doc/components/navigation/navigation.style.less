@@ -12,7 +12,7 @@
 }
 
 .t-input {
-    margin: 1.25rem 1.25rem 0;
+    margin: 1.125rem 1.25rem 0;
 }
 
 .t-slash {
@@ -54,8 +54,15 @@
 }
 
 .t-label {
+    display: inline-flex;
+    align-items: center;
     margin-inline-start: 1.1875rem;
     font-weight: bold;
+}
+
+.t-badge {
+    margin-inline-start: 0.375rem;
+    font-size: 0.75rem;
 }
 
 .t-expand {
@@ -84,7 +91,9 @@
 
 .t-sublink {
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
+    max-inline-size: 100%;
     font: var(--tui-typography-body-s);
     padding-block: 0.5rem;
     padding-inline-start: 0.4375rem;

@@ -76,6 +76,13 @@ exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename *tuiDataList
 }
 `;
 
+exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename [tuiDropdownMobile] binding to [tuiDropdownSheet]: test.html 1`] = `
+{
+  "0. Before": "<tui-textfield [tuiDropdownMobile]="'label'"></tui-textfield>",
+  "1. After": "<tui-textfield [tuiDropdownSheet]="'label'"></tui-textfield>",
+}
+`;
+
 exports[`ng-update tuiDropdownOpen to tuiDropdownAuto should rename [tuiSheet] to [tuiSheetDialog]: test.html 1`] = `
 {
   "0. Before": "<button [tuiSheet]="content">Open</button>",

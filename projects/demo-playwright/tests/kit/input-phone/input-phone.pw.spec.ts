@@ -7,6 +7,7 @@ import {
     TuiInputPhonePO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputPhone', () => {
     test.describe('API page', () => {
@@ -17,7 +18,9 @@ test.describe('InputPhone', () => {
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
             value = new TuiDocumentationPagePO(page).value;
-            inputPhone = new TuiInputPhonePO(example.locator('tui-textfield').first());
+            inputPhone = new TuiInputPhonePO(
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first(),
+            );
         });
 
         test("Don't duplicate Code 52 When Inputting Digit '2' After Clearing", async ({

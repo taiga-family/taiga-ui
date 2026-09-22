@@ -22,7 +22,7 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './list.style.less';
+            @import '@taiga-ui/styles/components/list.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,
@@ -32,7 +32,7 @@ export const [TUI_LIST_OPTIONS, tuiListOptionsProvider] =
 class Styles {}
 
 @Directive({
-    selector: 'ul[tuiList], ol[tuiList]',
+    selector: 'ul[tuiList], ol[tuiList], dl[tuiList]',
     host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size() || options.size'},
 })
 export class TuiList {

@@ -169,6 +169,7 @@ exports[`ng-update TuiPopover migration TuiPopoverService → TuiPortal + warnin
 import { TuiPortal } from "@taiga-ui/cdk";
 
                     import {inject, Injectable} from '@angular/core';
+// TODO: (Taiga UI migration) TUI_DIALOGS removed. Track each dialog via the stream returned by TuiDialogService/TuiAlertService.open() and unsubscribe to close it, instead of reading a global registry.
                     import {TUI_DIALOGS} from '@taiga-ui/core';
 
                     import {PromptComponent} from './prompt.component';

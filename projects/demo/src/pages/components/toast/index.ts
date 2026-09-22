@@ -22,9 +22,11 @@ export default class Example {
 
     protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected readonly blockVariants = ['start', 'end'] as const;
     protected autoClose = this.options.autoClose;
     protected content = 'Notification';
     protected appearance = '';
     protected closable = this.options.closable;
+    protected block = this.options.block;
     protected readonly routes = DemoRoute;
 }

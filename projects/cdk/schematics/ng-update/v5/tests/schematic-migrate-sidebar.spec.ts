@@ -104,5 +104,17 @@ describe('ng-update sidebar to drawer', () => {
         }),
     );
 
+    it(
+        'migrates elements nested inside *tuiSidebar (no clobber of inner migrations)',
+        migrate({
+            template: [
+                '<section *tuiSidebar="open; autoWidth: true">',
+                '    <button tuiButtonClose></button>',
+                '    <tui-avatar src="x"></tui-avatar>',
+                '</section>',
+            ].join('\n'),
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

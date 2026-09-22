@@ -15,21 +15,32 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '(beforeinput)':
             '(isMobile && $event.inputType.includes("insertText")) || options.cleaner() && $event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear()',
-        '(keydown.backspace)': 'options.cleaner() && clear()', // No (input) event if caret is at the beginning
-        '(keydown.delete)': 'options.cleaner() && clear()', // No (input) event if caret is at the end
+        '(keydown.backspace.prevent)':
+            'options.cleaner() && el.value && dispatchInputEvent()',
+        '(keydown.delete.prevent)':
+            'options.cleaner() && el.value && dispatchInputEvent()',
         // Hide Android text select handle (bubble marker below transparent caret)
         '(mousedown)': 'prevent($event)',
     },
 })
 export class TuiSelectLike {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly isAndroid = inject(WA_IS_ANDROID);
 
+    protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected clear(): void {
         this.el.value = '';
+    }
+
+    protected dispatchInputEvent(): void {
+        this.el.dispatchEvent(
+            new InputEvent('input', {
+                inputType: 'deleteContentBackward',
+                bubbles: true,
+            }),
+        );
     }
 
     protected prevent(event: MouseEvent): void {

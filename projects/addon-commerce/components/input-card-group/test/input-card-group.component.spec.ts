@@ -144,6 +144,18 @@ describe('InputCardGroup', () => {
     });
 
     describe('Focus', () => {
+        it('marks control as touched only after focus leaves the group', () => {
+            expect(testComponent.control.touched).toBe(false);
+
+            inputCardPO.focus();
+
+            expect(testComponent.control.touched).toBe(false);
+
+            inputCardPO.blur();
+
+            expect(testComponent.control.touched).toBe(true);
+        });
+
         it('focus remains in card input when invalid card is entered', () => {
             inputCardPO.focus();
             inputCardPO.sendText('8888888888889999');

@@ -109,6 +109,10 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: 'tuiDropdownSheet'},
     },
     {
+        from: {attrName: '[tuiDropdownMobile]', withTagNames: ['*']},
+        to: {attrName: '[tuiDropdownSheet]'},
+    },
+    {
         from: {attrName: '[tuiSheet]', withTagNames: ['*']},
         to: {attrName: '[tuiSheetDialog]'},
     },

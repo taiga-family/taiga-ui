@@ -57,7 +57,7 @@
 }
 
 .t-item {
-    .transition(transform);
+    .transition(scale);
 
     position: relative;
     display: flex;
@@ -80,7 +80,7 @@
 
     .t-items:active &:hover,
     .t-items:active &:hover ~ & {
-        transform: scale(0.85);
+        scale: 0.85;
         transition-duration: @tui-duration-fast, @tui-duration-slow;
         transition-timing-function: ease-in-out;
     }
@@ -119,7 +119,7 @@
 @media (any-pointer: coarse) {
     :host._active {
         .t-item_active {
-            transform: scale(0.85);
+            scale: 0.85;
             transition-timing-function: var(--tui-curve-expressive-entrance);
         }
     }

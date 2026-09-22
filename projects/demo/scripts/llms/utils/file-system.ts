@@ -20,6 +20,14 @@ export async function fileExists(filePath: string): Promise<boolean> {
     }
 }
 
+export async function readIfExists(filePath: string): Promise<string | null> {
+    try {
+        return await fs.readFile(filePath, 'utf-8');
+    } catch {
+        return null;
+    }
+}
+
 export async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
@@ -55,26 +63,11 @@ export function getComponentDescription(content: string): string | undefined {
         return '';
     }
 
-    const templateContent = templateMatch[1];
-
-    // Remove control flow tags
-    const withoutControlFlow = (templateContent || '')
-        .split(/\n+/)
-        .filter(
-            (line) =>
-                !/^\s*@(?:for|if|switch|else|case|default|defer|empty)\b/.test(line),
-        )
-        .join('\n');
-
-    const cleanContent = withoutControlFlow
+    const region = (templateMatch[1] || '')
         .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-        .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replaceAll(/<(\/?(?:p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
-        .replaceAll(/<[^>]+>/g, '')
-        .replaceAll(/\s+/g, ' ')
-        .trim();
+        .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '');
 
-    return cleanContent;
+    return cleanTemplateText(region);
 }
 
 // parse example import.md and template.md
@@ -335,12 +328,19 @@ export async function getUsageExamples(
 
             examplesArray.forEach((example, index) => {
                 const exampleNumber = (index + 1).toString();
+                const existing = exampleDescriptions[exampleNumber];
 
-                if (!exampleDescriptions[exampleNumber]) {
+                if (!existing) {
                     exampleDescriptions[exampleNumber] = {
                         heading: example,
                         description: '',
                     };
+                } else if (
+                    !existing.heading ||
+                    existing.heading === `Example ${exampleNumber}`
+                ) {
+                    // Keep any description parsed from the template, fill the heading.
+                    existing.heading = example;
                 }
             });
         }
@@ -415,19 +415,25 @@ export async function getUsageExamples(
         return '';
     }
 
+    // Folders are read in filesystem order ("1", "10", "2"…); restore example order.
+    examples.sort((a, b) => {
+        const left = Number(a.name);
+        const right = Number(b.name);
+
+        return Number.isFinite(left) && Number.isFinite(right)
+            ? left - right
+            : a.name.localeCompare(b.name);
+    });
+
     let result = '\n### Usage Examples\n';
 
     for (const example of examples) {
-        result += `\n#### ${example.heading}\n`;
+        const parts: string[] = [];
 
         if (example.description) {
-            // Clean up the description HTML for better LLM consumption
-            const cleanDescription = example.description
-                .replaceAll(/<[^>]+>/g, '') // Remove HTML tags
-                .replaceAll(/\s+/g, ' ') // Replace multiple spaces with single space
-                .trim();
-
-            result += `\n${cleanDescription}\n`;
+            // Already cleaned by extractExampleDescriptions; re-stripping tags here
+            // would eat decoded markup such as `<tui-textfield />`.
+            parts.push(example.description);
         }
 
         if (example.html) {
@@ -438,19 +444,145 @@ export async function getUsageExamples(
                 .replaceAll(/\n\s+/g, '\n') // Remove leading spaces
                 .trim();
 
-            result += `\n**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``;
+            parts.push(`**Template:**\n\`\`\`html\n${cleanHtml}\n\`\`\``);
         }
 
         if (example.ts) {
-            result += `\n**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``;
+            parts.push(`**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``);
         }
 
         if (example.less) {
-            result += `\n**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``;
+            parts.push(`**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``);
         }
 
-        result += '\n';
+        result += `\n#### ${example.heading}\n\n${parts.join('\n\n')}\n`;
     }
+
+    return result;
+}
+
+function decodeHtmlEntities(text: string): string {
+    return text
+        .replaceAll(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
+        .replaceAll(/&#x([\da-f]+);/gi, (_, code: string) =>
+            String.fromCodePoint(Number.parseInt(code, 16)),
+        )
+        .replaceAll('&lt;', '<')
+        .replaceAll('&gt;', '>')
+        .replaceAll('&quot;', '"')
+        .replaceAll('&nbsp;', ' ')
+        .replaceAll('&amp;', '&');
+}
+
+// Turn a chunk of Angular template into plain prose: drop control-flow wrappers
+// (@if / @switch / @case …), keep <code> as inline code, strip other tags, decode entities.
+// Openers may span several lines (a @for over a wrapped array); the keyword list leaves
+// `@tui.*` icon names untouched.
+function cleanTemplateText(raw: string): string {
+    const cleaned = raw
+        .replaceAll(
+            /@(?:for|if|else\s+if|else|switch|case|default|empty|defer|placeholder|loading|error)(?:\s*\([^{}]*\))?\s*\{/gi,
+            ' ',
+        )
+        .replaceAll(/[{}]/g, ' ')
+        // <code>x</code> → `x`, keeping entities encoded until the final decode so the
+        // tag-stripper below can't mistake a decoded `<select>` for a real tag and drop it.
+        .replaceAll(
+            /<code[^>]*>([\s\S]*?)<\/code>/gi,
+            (_match, code: string) =>
+                `\`${code
+                    .replaceAll(/<[^>]+>/g, '')
+                    .replaceAll('`', '')
+                    .trim()}\``,
+        )
+        .replaceAll(/<[^>]+>/g, '');
+
+    return decodeHtmlEntities(cleaned).replaceAll(/\s+/g, ' ').trim();
+}
+
+// Return the text inside the braces starting at `openBraceIndex`, respecting nesting.
+function readBalancedBraces(source: string, openBraceIndex: number): string | null {
+    if (source[openBraceIndex] !== '{') {
+        return null;
+    }
+
+    let depth = 0;
+
+    for (let i = openBraceIndex; i < source.length; i++) {
+        const char = source[i];
+
+        if (char === '{') {
+            depth++;
+        } else if (char === '}') {
+            depth--;
+
+            if (depth === 0) {
+                return source.slice(openBraceIndex + 1, i);
+            }
+        }
+    }
+
+    return null;
+}
+
+// Descriptions rendered via `@switch ($index) { @case (N) { … } }` inside a
+// `@for` examples loop. Case N corresponds to example folder N + 1.
+function extractSwitchIndexDescriptions(content: string): Record<string, string> {
+    const result: Record<string, string> = {};
+    const switchMatch = /@switch\s*\(\s*\$index\s*\)\s*\{/i.exec(content);
+
+    if (!switchMatch) {
+        return result;
+    }
+
+    const switchBody = readBalancedBraces(
+        content,
+        switchMatch.index + switchMatch[0].length - 1,
+    );
+
+    if (switchBody === null) {
+        return result;
+    }
+
+    const caseRegex = /@case\s*\(\s*(\d+)\s*\)\s*\{/gi;
+    let caseMatch: RegExpExecArray | null;
+
+    while ((caseMatch = caseRegex.exec(switchBody)) !== null) {
+        const rawIndex = caseMatch[1];
+
+        if (!rawIndex) {
+            continue;
+        }
+
+        const braceIndex = caseMatch.index + caseMatch[0].length - 1;
+        const caseBody = readBalancedBraces(switchBody, braceIndex);
+
+        if (caseBody === null) {
+            continue;
+        }
+
+        result[(Number(rawIndex) + 1).toString()] = cleanTemplateText(caseBody);
+        // Skip past this case body so a nested @case is never matched as top-level.
+        caseRegex.lastIndex = braceIndex + caseBody.length + 2;
+    }
+
+    return result;
+}
+
+// Headings declared inline in the loop header, e.g. `@for (example of ['A', 'B']; …)`.
+function extractInlineForHeadings(content: string): Record<string, string> {
+    const result: Record<string, string> = {};
+    const forMatch = /@for\s*\(\s*\w+\s+of\s+(\[[\s\S]*?\])\s*;\s*track/i.exec(content);
+
+    if (!forMatch?.[1]) {
+        return result;
+    }
+
+    const items = forMatch[1].match(/(['"])(?:\\.|(?!\1).)*\1/g) ?? [];
+
+    items.forEach((quoted, index) => {
+        result[(index + 1).toString()] = quoted.slice(1, -1);
+    });
 
     return result;
 }
@@ -573,10 +705,7 @@ export function extractExampleDescriptions(
             );
 
             if (descriptionMatch?.[1]) {
-                description = descriptionMatch[1]
-                    .replaceAll(/<[^>]+>/g, '') // Remove HTML tags
-                    .replaceAll(/\s+/g, ' ') // Replace multiple spaces with single space
-                    .trim();
+                description = cleanTemplateText(descriptionMatch[1]);
             }
         }
 
@@ -584,6 +713,40 @@ export function extractExampleDescriptions(
             heading,
             description,
         };
+    }
+
+    // Modern pages render examples through a `@for` loop: headings come from an
+    // inline array (or the component's `examples` field) and descriptions from a
+    // `@switch ($index)` block. Neither is reachable by the tag scan above.
+    for (const [exampleNumber, heading] of Object.entries(
+        extractInlineForHeadings(content),
+    )) {
+        const existing = descriptions[exampleNumber];
+
+        if (!existing) {
+            descriptions[exampleNumber] = {heading, description: ''};
+        } else if (!existing.heading || existing.heading === `Example ${exampleNumber}`) {
+            existing.heading = heading;
+        }
+    }
+
+    for (const [exampleNumber, description] of Object.entries(
+        extractSwitchIndexDescriptions(content),
+    )) {
+        if (!description) {
+            continue;
+        }
+
+        const existing = descriptions[exampleNumber];
+
+        if (existing) {
+            existing.description = description;
+        } else {
+            descriptions[exampleNumber] = {
+                heading: `Example ${exampleNumber}`,
+                description,
+            };
+        }
     }
 
     // Also try to extract examples from TypeScript files for dynamic patterns

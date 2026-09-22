@@ -66,6 +66,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!items().length',
+        '[class._horizontal]': 'rows() === 1',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',
         '(click.prevent)': 'onClick($event.target)',

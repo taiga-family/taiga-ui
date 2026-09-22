@@ -5,6 +5,7 @@ import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
+import {TuiDocTimeFormat} from '@demo/components/time-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -12,7 +13,7 @@ import {type MaskitoTimeMode} from '@maskito/kit';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiDropdown} from '@taiga-ui/core';
-import {TuiInputDateTime} from '@taiga-ui/kit';
+import {TuiInputDateTime, TuiTimeFormat} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -23,8 +24,10 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
         TuiDocDropdown,
         TuiDocIcons,
         TuiDocTextfield,
+        TuiDocTimeFormat,
         TuiDropdown,
         TuiInputDateTime,
+        TuiTimeFormat,
     ],
     templateUrl: './index.html',
     changeDetection,

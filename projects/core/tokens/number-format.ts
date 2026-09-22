@@ -64,14 +64,7 @@ export interface TuiNumberFormatSettings extends MaskitoNumberParams {
     readonly decimalMode: TuiDecimalMode;
 }
 
-/**
- * TODO(v6): add required props
- * ```ts
- * minusSign: CHAR_MINUS,
- * maximumFractionDigits: Number.NaN,
- * minimumFractionDigits: 0,
- * ```
- */
+// TODO(v6): delete
 export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
     precision: Number.NaN,
     decimalSeparator: '.',
@@ -84,6 +77,24 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
 
 /**
  * Formatting configuration for displayed numbers
+ * TODO(v6): move to @taiga-ui/kit and refactor to
+ * ```ts
+ * import {maskitoWithNumberDefaults} from '@maskito/kit';
+ * import {LOCALE_ID} from '@angular/core';
+ *
+ * export const TUI_NUMBER_FORMAT = new InjectionToken<Signal<TuiNumberFormatSettings>>(
+ *  ngDevMode ? 'TUI_NUMBER_FORMAT' : '',
+ *  {
+ *      factory: () =>
+ *          signal({
+ *              ...maskitoWithNumberDefaults({locale: inject(LOCALE_ID)}),
+ *              maximumFractionDigits: Number.NaN,
+ *              rounding: 'truncate',
+ *              decimalMode: 'pad',
+ *          })
+ *  },
+);
+ * ```
  */
 export const TUI_NUMBER_FORMAT = new InjectionToken<Signal<TuiNumberFormatSettings>>(
     ngDevMode ? 'TUI_NUMBER_FORMAT' : '',

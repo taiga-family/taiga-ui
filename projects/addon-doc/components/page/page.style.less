@@ -14,6 +14,33 @@
 
 .t-header {
     margin-block-end: 2rem;
+
+    :host:has(.t-actions) & {
+        @media @tui-mobile {
+            flex-wrap: wrap;
+            gap: 0.75rem 1rem;
+        }
+    }
+}
+
+.t-actions {
+    align-self: start;
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+
+    @media @tui-mobile {
+        flex-basis: 100%;
+        margin-inline-start: 0;
+    }
+}
+
+// Reserve the rail only when the ToC actually shows.
+:host:has(tui-doc-toc:not(:empty)) .t-actions {
+    margin-inline-end: 20rem;
+
+    @media @tui-desktop {
+        margin-inline-end: 0;
+    }
 }
 
 .t-navigation:not(:empty) {
@@ -34,6 +61,10 @@
     text-transform: uppercase;
     margin-inline-end: 0.5rem;
     color: #000;
+}
+
+.t-version {
+    text-transform: none;
 }
 
 .t-content {

@@ -42,7 +42,11 @@ aside[tuiNavigationAside]:where(*&) {
     .t-nav-scrollbar {
         display: flex;
         block-size: 100%;
-        overflow: auto;
+        overflow: hidden auto;
+
+        &._native {
+            scrollbar-width: thin;
+        }
     }
 
     .t-nav-content {

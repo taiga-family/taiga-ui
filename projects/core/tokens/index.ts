@@ -1,3 +1,4 @@
+export * from './anchor-support';
 export * from './animations-speed';
 export * from './assets-path';
 export * from './auxiliary';

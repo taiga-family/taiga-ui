@@ -12,6 +12,7 @@ import {
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
+import {withMigrationContext} from '../../../utils/with-migration-context';
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {
     addHTMLCommentTags,
@@ -164,7 +165,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
             const isLastAction = actionIndex === actions.length - 1;
 
             !options['skip-logs'] && progressLog(action.name, isLastAction);
-            action({resource, fileSystem, recorder});
+            withMigrationContext(
+                `Failed to migrate "${path}" during "${action.name}"`,
+                () => action({resource, fileSystem, recorder}),
+            );
         });
     });
 

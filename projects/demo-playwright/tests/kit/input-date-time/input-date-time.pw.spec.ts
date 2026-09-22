@@ -4,6 +4,7 @@ import {
     tuiGoto,
     TuiInputDateTimePO,
     TuiSelectPO,
+    type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -233,6 +234,89 @@ test.describe('InputDateTime', () => {
                 await inputDateTime.textfield.pressSequentially('330p');
 
                 await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 PM');
+            });
+        });
+
+        test.describe('[dayPeriod]', () => {
+            function stringify(value: readonly [string, TuiTimeLike]): string {
+                return JSON.stringify({value}, null, 2);
+            }
+
+            test.describe('custom labels (a.m. / p.m.)', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=2&sandboxExpanded=true`,
+                    );
+                    await inputDateTime.textfield.pressSequentially('2092020');
+
+                    await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
+                });
+
+                test('330a => 03:30 a.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('330a');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30 a.m.',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 3, minutes: 30, seconds: 0, ms: 0},
+                        ]),
+                    );
+                });
+
+                test('330p => 03:30 p.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('330p');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30 p.m.',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                        ]),
+                    );
+                });
+
+                test('control value is null until day period is typed', async () => {
+                    await inputDateTime.textfield.pressSequentially('0330');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30',
+                    );
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
+
+                test('Type 0 => Blur => 12:00 a.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('0');
+                    await inputDateTime.textfield.blur();
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 12:00 a.m.',
+                    );
+                });
+            });
+
+            test('localized labels: 330μ => 03:30 μ.μ.', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=3&sandboxExpanded=true`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('2092020330μ');
+
+                await expect(inputDateTime.textfield).toHaveValue(
+                    '20.09.2020, 03:30 μ.μ.',
+                );
+                await expect(documentationPage.value).toContainText(
+                    stringify([
+                        '2020-09-20',
+                        {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                    ]),
+                );
             });
         });
 

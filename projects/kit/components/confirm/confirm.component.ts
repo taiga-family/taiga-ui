@@ -33,7 +33,8 @@ export class TuiConfirm {
     protected readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly words = inject(TUI_CONFIRM_WORDS);
     protected readonly data = inject(TUI_CONFIRM_OPTIONS);
-    protected readonly context =
+
+    public readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string | readonly [string, string] {

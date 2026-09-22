@@ -13,6 +13,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
+import {withMigrationContext} from '../../../utils/with-migration-context';
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {getFileSystem} from '../../utils/get-file-system';
 
@@ -22,9 +23,6 @@ const STRUCTURAL_ATTR = '*tuiLet';
 
 export function tuiLetMigration(tree: Tree, options: TuiSchema): void {
     const fileSystem = getFileSystem(tree);
-
-    removeModule('TuiLet', '@taiga-ui/cdk');
-
     const resources = getComponentTemplates(ALL_FILES);
 
     for (const resource of resources) {
@@ -32,6 +30,9 @@ export function tuiLetMigration(tree: Tree, options: TuiSchema): void {
     }
 
     fileSystem.commitEdits();
+
+    getFileSystem(tree);
+    removeModule('TuiLet', '@taiga-ui/cdk');
     saveActiveProject();
 }
 
@@ -41,14 +42,17 @@ function migrateTemplate(
     options: TuiSchema,
 ): void {
     const templatePath = fileSystem.resolve(getPathFromTemplateResource(resource));
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const recorder = fileSystem.edit(templatePath);
-    const offset = getTemplateOffset(resource);
-    const elements = findElementsWithAttribute(template, STRUCTURAL_ATTR);
 
-    for (const element of elements) {
-        migrateStructuralLet(element, template, recorder, offset, options);
-    }
+    withMigrationContext(`Failed to migrate *tuiLet in "${templatePath}"`, () => {
+        const template = getTemplateFromTemplateResource(resource, fileSystem);
+        const recorder = fileSystem.edit(templatePath);
+        const offset = getTemplateOffset(resource);
+        const elements = findElementsWithAttribute(template, STRUCTURAL_ATTR);
+
+        for (const element of elements) {
+            migrateStructuralLet(element, template, recorder, offset, options);
+        }
+    });
 }
 
 function migrateStructuralLet(
@@ -61,6 +65,11 @@ function migrateStructuralLet(
     const attr = element.attrs.find((a) => a.name === STRUCTURAL_ATTR.toLowerCase());
 
     if (!attr) {
+        return;
+    }
+
+    // adoption-agency clones of nested formatting elements keep *tuiLet but have no source location
+    if (!element.sourceCodeLocation) {
         return;
     }
 
