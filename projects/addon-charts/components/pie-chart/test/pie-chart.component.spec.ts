@@ -38,4 +38,14 @@ describe('PieChart', () => {
     it('has segment for each item in value', () => {
         expect(pageObject.getAllByAutomationId('tui-pie-chart__segment').length).toBe(3);
     });
+
+    it('scales hovered segment via CSS so the transition also works in Safari', () => {
+        const [, segment] = pageObject.getAllByAutomationId('tui-pie-chart__segment');
+
+        segment?.nativeElement.dispatchEvent(new Event('pointerenter'));
+        fixture.detectChanges();
+
+        expect(segment?.nativeElement.style.transform).toBe('scale(1.15)');
+        expect(segment?.nativeElement.hasAttribute('transform')).toBe(false);
+    });
 });

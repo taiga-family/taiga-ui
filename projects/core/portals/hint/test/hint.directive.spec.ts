@@ -147,6 +147,23 @@ describe('Hint', () => {
         }
     });
 
+    it('is shown when content arrives while host is hovered', fakeAsync(() => {
+        setHint('');
+        getHost().dispatchEvent(new Event('mouseenter'));
+        fixture.detectChanges();
+        tick(500);
+        fixture.detectChanges();
+
+        expect(getTooltip()).toBeNull();
+
+        setHint('Tooltip text');
+        tick();
+        fixture.detectChanges();
+        discardPeriodicTasks();
+
+        expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
+    }));
+
     function getHost(): Element {
         return document.querySelector('#hint-host')!;
     }
