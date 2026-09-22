@@ -3,9 +3,10 @@ import {TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
-    TUI_DROPDOWN_LOCATORS,
+    TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_SELECT_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
@@ -38,9 +39,9 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('tui-textfield[multi]').click();
+        await example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}[multi]`).click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .first()
             .click();
@@ -55,9 +56,11 @@ describe('DropdownMobile for textfields', () => {
 
         const example = new TuiDocumentationPagePO(page).getExample('#mobile');
 
-        await example.locator('tui-textfield[multi][tuiDropdownMobile]').click();
+        await example
+            .locator(`${TUI_TEXTFIELD_LOCATORS.HOST}[tuiDropdownMobile]`)
+            .click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .first()
             .click();
@@ -73,7 +76,7 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('tui-textfield[multi][tuiDropdownSheet]').click();
+        await example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}[tuiDropdownSheet]`).click();
         await page
             .locator(TUI_SHEET_DIALOG_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)

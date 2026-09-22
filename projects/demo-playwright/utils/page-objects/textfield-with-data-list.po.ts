@@ -2,6 +2,7 @@ import {expect, type Locator} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
     TUI_DROPDOWN_LOCATORS,
+    TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_SCROLLBAR_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
@@ -11,7 +12,9 @@ import {TuiTextfieldPO} from './textfield.po';
 export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
     public readonly dropdown = this.host
         .page()
-        .locator(`${TUI_DROPDOWN_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`);
+        .locator(
+            `${TUI_DROPDOWN_LOCATORS.HOST},${TUI_DROPDOWN_MOBILE_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`,
+        );
 
     public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();
