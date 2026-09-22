@@ -10,11 +10,16 @@ import {
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
+// TODO: remove in v6 when API is changed and position is no longer optional
+interface WithPosition extends TuiAccessor {
+    position?(element: HTMLElement): void;
+}
+
 export abstract class TuiAccessor {
     public abstract readonly type: string;
 }
 
-export abstract class TuiPositionAccessor extends TuiAccessor {
+export abstract class TuiPositionAccessor extends TuiAccessor implements WithPosition {
     public abstract getPosition(rect: DOMRect): TuiPoint;
 }
 
