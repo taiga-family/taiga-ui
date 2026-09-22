@@ -63,10 +63,10 @@ describe('Textfield cleaner', () => {
             await input.pressSequentially('two');
             await page.keyboard.press('Enter');
 
-            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(2);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS)).toHaveCount(2);
 
             await cleaner.click();
-            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.HOST)).toHaveCount(0);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS)).toHaveCount(0);
         });
 
         test('InputColor', async ({page}) => {

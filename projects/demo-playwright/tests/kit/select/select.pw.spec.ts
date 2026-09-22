@@ -1,8 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSelectPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
-import {TUI_LABEL_LOCATORS} from '@taiga-ui/testing/locators/label.locators';
+import {TUI_LABEL_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 

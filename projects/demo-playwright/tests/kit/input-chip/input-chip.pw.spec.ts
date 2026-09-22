@@ -6,8 +6,11 @@ import {
     TuiInputChipPO,
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {TUI_DROPDOWN_LOCATORS, TUI_INPUT_CHIP_LOCATORS} from '@taiga-ui/testing/locators';
-import {TUI_LABEL_LOCATORS} from '@taiga-ui/testing/locators/label.locators';
+import {
+    TUI_DROPDOWN_LOCATORS,
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_LABEL_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 test.describe('InputChip', () => {
     test.describe('Examples', () => {
@@ -71,7 +74,7 @@ test.describe('InputChip', () => {
             });
             const input = block
                 .locator(TUI_INPUT_CHIP_LOCATORS.HOST)
-                .locator(`input${TUI_INPUT_CHIP_LOCATORS.INPUT}`);
+                .locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
 

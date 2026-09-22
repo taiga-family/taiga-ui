@@ -117,6 +117,6 @@ export default process.env.HTML_ESLINT
           },
           {
               rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
-              files: ['**/*.pw.spec.ts'],
+              files: ['**/*.pw.spec.ts', '**/*.po.ts'],
           },
       ];

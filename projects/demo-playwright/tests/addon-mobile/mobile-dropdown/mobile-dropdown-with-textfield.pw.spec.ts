@@ -3,7 +3,7 @@ import {TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
-    TUI_DROPDOWN_LOCATORS,
+    TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_MULTI_SELECT_LOCATORS,
     TUI_SELECT_LOCATORS,
 } from '@taiga-ui/testing/locators';
@@ -21,9 +21,9 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator(TUI_SELECT_LOCATORS.HOST).click();
+        await example.locator(TUI_SELECT_LOCATORS.INPUT).click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .first()
             .hover();
@@ -40,7 +40,7 @@ describe('DropdownMobile for textfields', () => {
 
         await example.locator(TUI_MULTI_SELECT_LOCATORS.HOST).click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .first()
             .click();
@@ -57,7 +57,7 @@ describe('DropdownMobile for textfields', () => {
 
         await example.locator('tui-textfield[multi][tuiDropdownMobile=""]').click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .first()
             .click();
@@ -77,7 +77,7 @@ describe('DropdownMobile for textfields', () => {
             .locator('tui-textfield[multi][tuiDropdownMobile="Select Pythons"]')
             .click();
         await page
-            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST)
             .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .last()
             .click();
