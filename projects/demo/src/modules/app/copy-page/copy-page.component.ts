@@ -32,6 +32,7 @@ export class CopyPage {
     private readonly pageMarkdown = inject(PageMarkdown);
     private readonly clipboard = inject(Clipboard);
     private readonly cache = new Map<string, string>();
+    private readonly doc = inject(DOCUMENT);
 
     protected open = false;
     protected readonly copied = signal(false);
@@ -48,17 +49,22 @@ export class CopyPage {
     protected readonly markdownUrl = this.pageMarkdown.url;
 
     constructor() {
-        const doc = inject(DOCUMENT);
-        const link = doc.createElement('link');
+        const link = this.doc.createElement('link');
 
         link.rel = 'alternate';
         link.type = 'text/markdown';
 
         effect((onCleanup) => {
             link.href = this.markdownUrl();
-            doc.head.appendChild(link);
+            this.doc.head.appendChild(link);
             onCleanup(() => link.remove());
         });
+    }
+
+    protected view(event: MouseEvent): void {
+        event.preventDefault();
+        this.open = false;
+        this.doc.defaultView?.open(this.markdownUrl(), '_blank', 'noreferrer');
     }
 
     // Fetched lazily on click (not on every navigation) and cached per URL so a repeat click reuses it.
