@@ -1,3 +1,1 @@
-export const TUI_AVATAR_LOCATORS = {
-    HOST: 'tui-avatar',
-};
+export const TUI_AVATAR_LOCATORS = {HOST: 'tui-avatar'} as const;

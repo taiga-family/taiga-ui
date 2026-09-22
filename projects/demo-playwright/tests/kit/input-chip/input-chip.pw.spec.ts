@@ -6,11 +6,8 @@ import {
     TuiInputChipPO,
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {
-    TUI_DROPDOWN_LOCATORS,
-    TUI_INPUT_CHIP_LOCATORS,
-    TUI_TEXTFIELD_LOCATORS,
-} from '@taiga-ui/testing/locators';
+import {TUI_DROPDOWN_LOCATORS, TUI_INPUT_CHIP_LOCATORS} from '@taiga-ui/testing/locators';
+import {TUI_LABEL_LOCATORS} from '@taiga-ui/testing/locators/label.locators';
 
 test.describe('InputChip', () => {
     test.describe('Examples', () => {
@@ -69,12 +66,12 @@ test.describe('InputChip', () => {
         }) => {
             const doc = new TuiDocumentationPagePO(page);
             const example = doc.getExample('#multi-select');
-            const block = example.locator(TUI_INPUT_CHIP_LOCATORS.LABEL, {
+            const block = example.locator(TUI_LABEL_LOCATORS.HOST, {
                 hasText: 'Conditional input in textfield',
             });
             const input = block
-                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                .locator(`input${TUI_TEXTFIELD_LOCATORS.CHIP}`);
+                .locator(TUI_INPUT_CHIP_LOCATORS.HOST)
+                .locator(`input${TUI_INPUT_CHIP_LOCATORS.INPUT}`);
             const toggle = example.locator('input[type="checkbox"]');
             const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
 

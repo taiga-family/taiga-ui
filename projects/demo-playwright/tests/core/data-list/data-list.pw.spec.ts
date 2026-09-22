@@ -1,7 +1,12 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {TUI_DROPDOWN_LOCATORS, TUI_SELECT_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_DATA_LIST_LOCATORS,
+    TUI_DROPDOWN_LOCATORS,
+    TUI_DROPDOWN_OPEN_LOCATORS,
+    TUI_SELECT_LEGACY_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 test.describe('DataList', () => {
     test('Custom list', async ({page}) => {
@@ -11,10 +16,10 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#custom');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator(TUI_SELECT_LOCATORS.LEGACY).click();
+        await example.locator(TUI_SELECT_LEGACY_LOCATORS.HOST).click();
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .nth(0)
             .hover();
 
@@ -29,10 +34,10 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#links');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator(TUI_DROPDOWN_LOCATORS.OPEN).click();
+        await example.locator(TUI_DROPDOWN_OPEN_LOCATORS.HOST).click();
         await page
             .locator(TUI_DROPDOWN_LOCATORS.HOST)
-            .locator(TUI_DROPDOWN_LOCATORS.OPTION)
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .nth(0)
             .hover();
         await page.waitForTimeout(300);
@@ -69,9 +74,7 @@ test.describe('DataList', () => {
         await page.waitForTimeout(100);
 
         await expect(
-            page
-                .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                .locator(TUI_DROPDOWN_LOCATORS.DATA_LIST),
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
         ).toHaveCount(2);
         await expect.soft(page).toHaveScreenshot('03-2-data-list.png');
 
@@ -90,9 +93,7 @@ test.describe('DataList', () => {
         await page.waitForTimeout(100);
 
         await expect(
-            page
-                .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                .locator(TUI_DROPDOWN_LOCATORS.DATA_LIST),
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
         ).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-5-data-list.png');
 
@@ -104,9 +105,7 @@ test.describe('DataList', () => {
         await page.keyboard.down('ArrowDown');
 
         await expect(
-            page
-                .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                .locator(TUI_DROPDOWN_LOCATORS.DATA_LIST),
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
         ).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-7-data-list.png');
 
@@ -115,9 +114,7 @@ test.describe('DataList', () => {
         await page.waitForTimeout(100);
 
         await expect(
-            page
-                .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                .locator(TUI_DROPDOWN_LOCATORS.DATA_LIST),
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
         ).toHaveCount(0);
         await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });

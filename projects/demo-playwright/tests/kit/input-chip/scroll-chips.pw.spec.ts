@@ -20,7 +20,7 @@ test.describe('InputChip', () => {
         await page.keyboard.press('Enter');
         await apiPage.waitStableState();
 
-        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.MULTI).first();
+        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
 
         await textfield.evaluate((el) => {
             el.scrollLeft = 50;

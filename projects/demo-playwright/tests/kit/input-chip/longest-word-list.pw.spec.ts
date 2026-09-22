@@ -10,7 +10,7 @@ test.describe('InputChip', () => {
         const apiPage = new TuiDocumentationApiPagePO(page);
         const example = apiPage.apiPageExample;
         const input = example.locator('[tuiTextfield]').first();
-        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.MULTI).first();
+        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
 
         await input.focus();
         await input.fill('Incomprehensibilities');

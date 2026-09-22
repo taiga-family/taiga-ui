@@ -5,10 +5,7 @@ import {
     TuiMobileDropdownPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {
-    TUI_DROPDOWN_LOCATORS,
-    TUI_DROPDOWN_MOBILE_LOCATORS,
-} from '@taiga-ui/testing/locators';
+import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
@@ -68,7 +65,7 @@ test.describe('DropdownHover', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#dropdown-mobile');
                 mobileCalendar = new TuiMobileDropdownPO(
-                    page.locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST),
+                    page.locator(TUI_DROPDOWN_LOCATORS.HOST),
                 );
             });
 
@@ -78,9 +75,7 @@ test.describe('DropdownHover', () => {
                 await example.locator('button').hover();
 
                 await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
-                await expect(
-                    page.locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST),
-                ).toBeVisible();
+                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
                 await expect
                     .soft(page)
                     .toHaveScreenshot('mobile-dropdown-1st-time-time-click.png');
@@ -96,15 +91,11 @@ test.describe('DropdownHover', () => {
 
                 await example.locator('button').click();
 
-                await expect(
-                    page.locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST),
-                ).toBeVisible();
+                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
 
                 await mobileCalendar.overlay.click();
 
-                await expect(
-                    page.locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST),
-                ).not.toBeAttached();
+                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
             });
 
             test('Opens mobile version of dropdown on the 2nd time click', async ({
@@ -122,9 +113,7 @@ test.describe('DropdownHover', () => {
                 await mobileCalendar.overlay.click();
                 await example.locator('button').click();
 
-                await expect(
-                    page.locator(TUI_DROPDOWN_MOBILE_LOCATORS.HOST),
-                ).toBeVisible();
+                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
 
                 await expect
                     .soft(page)
