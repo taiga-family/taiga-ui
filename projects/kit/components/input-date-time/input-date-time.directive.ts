@@ -69,7 +69,11 @@ export class TuiInputDateTimeDirective
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
 
     protected override readonly filler = tuiWithDateFiller((date) => {
-        const timeFiller = this.timeFillers()?.[this.timeMode()] ?? '';
+        const timeFiller = applySeparators(
+            this.timeFillers()?.[this.timeMode()] ?? '',
+            this.timeFormat().separators,
+        );
+
         const [am] = this.timeFormat().dayPeriod;
         const dayPeriodFiller = am && ` ${'A'.repeat(am.length)}`;
 
@@ -106,7 +110,7 @@ export class TuiInputDateTimeDirective
                 timeStep: 0,
                 dayPeriod: this.timeFormat().dayPeriod,
                 locale: '', // TODO: add to public API
-                timeSeparators: [], // TODO: delete when `TUI_TIME_FORMAT` includes `separators`
+                timeSeparators: this.timeFormat().separators,
             }),
         ),
     );
@@ -251,7 +255,7 @@ export class TuiInputDateTimeDirective
 
     private computeMask(params: Required<MaskitoDateTimeParams>): MaskitoOptions {
         const options = maskitoDateTime(params);
-        const {timeMode, dateMode, dateTimeSeparator, dayPeriod} = params;
+        const {timeMode, dateMode, dateTimeSeparator, dayPeriod, timeSeparators} = params;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
@@ -259,7 +263,7 @@ export class TuiInputDateTimeDirective
                 dateMode!.length +
                     dateTimeSeparator.length +
                     // TODO(v6): delete `replace()`
-                    timeMode.replace(' AA', '').length
+                    applySeparators(timeMode.replace(' AA', ''), timeSeparators).length
                     ? 'text'
                     : 'numeric';
         });
@@ -284,8 +288,12 @@ export class TuiInputDateTimeDirective
     private isTimeComplete(time: string): boolean {
         const [am] = this.timeFormat().dayPeriod;
         const dayPeriodLength = am ? ` ${am}`.length : 0;
+        const timeLength = applySeparators(
+            this.timeMode(),
+            this.timeFormat().separators,
+        ).length;
 
-        return time.length === this.timeMode().length + dayPeriodLength;
+        return time.length === timeLength + dayPeriodLength;
     }
 
     private parseTime(time: string): TuiTime {
@@ -296,4 +304,10 @@ export class TuiInputDateTimeDirective
             }),
         );
     }
+}
+
+function applySeparators(template: string, separators: readonly string[]): string {
+    let index = 0;
+
+    return template.replaceAll(/[:.]/g, (separator) => separators[index++] ?? separator);
 }

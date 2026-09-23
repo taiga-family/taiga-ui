@@ -320,6 +320,100 @@ test.describe('InputDateTime', () => {
             });
         });
 
+        test.describe('tuiTimeFormat={separators}', () => {
+            function stringify(value: readonly [string, TuiTimeLike]): string {
+                return JSON.stringify({value}, null, 2);
+            }
+
+            test.describe('fr-CA: [" h ", " min ", ","]', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputDateTime}/API?timeMode=HH:MM:SS.MSS&separators$=3&sandboxExpanded=true`,
+                    );
+                });
+
+                test('20092020180505766 => 20.09.2020, 18 h 05 min 05,766', async () => {
+                    await inputDateTime.textfield.pressSequentially('20092020180505766');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,766',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 18, minutes: 5, seconds: 5, ms: 766},
+                        ]),
+                    );
+                });
+
+                test('control value is null until time is complete', async () => {
+                    await inputDateTime.textfield.pressSequentially('200920201805057');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,7',
+                    );
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
+
+                test('selection of a new date via calendar keeps time format', async () => {
+                    await inputDateTime.textfield.pressSequentially('20092020180505766');
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,766',
+                    );
+
+                    await inputDateTime.textfield.click();
+                    await inputDateTime.selectDayViaCalendar(15);
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '15.09.2020, 18 h 05 min 05,766',
+                    );
+                });
+
+                test('filler', async () => {
+                    await inputDateTime.textfield.focus();
+
+                    await expect(inputDateTime.filler).toHaveValue(
+                        'DD.MM.YYYY, HH h MM min SS,MSS',
+                    );
+                    await expect
+                        .soft(inputDateTime.host)
+                        .toHaveScreenshot('07-separators-filler.png');
+                });
+            });
+
+            test('Type 1 => Blur => 01 h 00', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=3`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('20.09.2020, 1');
+                await inputDateTime.textfield.blur();
+
+                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 01 h 00');
+            });
+
+            test('with [dayPeriod]: 330p => 03h30 p.m.', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=1&dayPeriod$=2&sandboxExpanded=true`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('2092020330p');
+
+                await expect(inputDateTime.textfield).toHaveValue(
+                    '20.09.2020, 03h30 p.m.',
+                );
+                await expect(documentationPage.value).toContainText(
+                    stringify([
+                        '2020-09-20',
+                        {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                    ]),
+                );
+            });
+        });
+
         test.describe('zero padding on blur', () => {
             const check = (typedCharacters: string, expectedFinalValue: string): void => {
                 test(`Type ${typedCharacters} => Blur => ${expectedFinalValue}`, async () => {

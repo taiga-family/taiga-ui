@@ -444,6 +444,81 @@ test.describe('InputTime', () => {
                 );
             });
         });
+
+        describe('tuiTimeFormat={separators}', () => {
+            describe('fr-CA: [" h ", " min ", ","]', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTime}/API?mode=HH:MM:SS.MSS&separators$=3&sandboxExpanded=true`,
+                    );
+                });
+
+                test('180505766 => 18 h 05 min 05,766', async () => {
+                    await inputTime.textfield.pressSequentially('180505766');
+
+                    await expect(inputTime.textfield).toHaveValue('18 h 05 min 05,766');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '18 h 05 min 05,766'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '18 h 05 min 05,766'.length,
+                    );
+                    await expect(controlValue).toContainText(
+                        stringify({hours: 18, minutes: 5, seconds: 5, ms: 766}),
+                    );
+                });
+
+                test('99 => 09 h 09', async () => {
+                    await inputTime.textfield.pressSequentially('99');
+
+                    await expect(inputTime.textfield).toHaveValue('09 h 09');
+                });
+
+                test('control value is null until time is complete', async () => {
+                    await inputTime.textfield.pressSequentially('1805057');
+
+                    await expect(inputTime.textfield).toHaveValue('18 h 05 min 05,7');
+                    await expect(controlValue).toContainText('"value": null');
+                });
+
+                test('Type 1 => Blur => 01 h 00 min 00,000', async () => {
+                    await inputTime.textfield.pressSequentially('1');
+                    await inputTime.textfield.blur();
+
+                    await expect(inputTime.textfield).toHaveValue('01 h 00 min 00,000');
+                    await expect(controlValue).toContainText(
+                        stringify({hours: 1, minutes: 0, seconds: 0, ms: 0}),
+                    );
+                });
+
+                test('filler', async () => {
+                    await inputTime.textfield.pressSequentially('18');
+
+                    await expect(inputTime.textfield).toHaveValue('18');
+                    await expect(inputTime.filler).toHaveValue('18 h MM min SS,MSS');
+                    await expect
+                        .soft(inputTime.host)
+                        .toHaveScreenshot('input-time-separators-filler.png');
+                });
+            });
+
+            test('with [dayPeriod]: 0330p => 03h30 p.m.', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputTime}/API?mode=HH:MM&separators$=1&dayPeriod$=2&sandboxExpanded=true`,
+                );
+
+                await inputTime.textfield.pressSequentially('0330p');
+
+                await expect(inputTime.textfield).toHaveValue('03h30 p.m.');
+                await expect(controlValue).toContainText(
+                    stringify({hours: 15, minutes: 30, seconds: 0, ms: 0}),
+                );
+            });
+        });
     });
 
     test.describe('Dropdown', () => {
