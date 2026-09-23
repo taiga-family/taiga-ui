@@ -666,7 +666,10 @@ export async function getPageProse(folderPath: string, content: string): Promise
         return '';
     }
 
-    const resolved = await resolveTemplate(inner, folderPath, new Set([folderPath]));
+    // The API table has its own extractor. Leaving it here would both duplicate it and leak
+    // markup: a `type="Foo<Bar>"` attribute carries a `>` that breaks tag-stripping.
+    const withoutApi = inner.replaceAll(/<table\s[^>]*tuiDocAPI[\s\S]*?<\/table>/gi, ' ');
+    const resolved = await resolveTemplate(withoutApi, folderPath, new Set([folderPath]));
 
     return htmlToMarkdown(resolved).trim();
 }

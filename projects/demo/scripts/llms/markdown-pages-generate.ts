@@ -80,6 +80,13 @@ async function buildPageMarkdown(
         body.push(meta.join('\n'));
     }
 
+    // `package` on <tui-doc-page> is optional, so it says what a page is about rather than
+    // what it holds: a guide page may document an API too. Read the tables off every page.
+    const apiTables = [
+        getComponentApiFromTable(content),
+        getComponentApiFromTemplates(content),
+    ].filter(Boolean);
+
     // Computed up front so prose pages can drop example sections the usage block repeats.
     const usageExamples =
         (await getUsageExamples(folderPath, true)) ||
@@ -104,17 +111,7 @@ async function buildPageMarkdown(
             body.push(example);
         }
 
-        const apiFromTable = getComponentApiFromTable(content);
-
-        if (apiFromTable) {
-            body.push(apiFromTable);
-        }
-
-        const apiFromTemplates = getComponentApiFromTemplates(content);
-
-        if (apiFromTemplates) {
-            body.push(apiFromTemplates);
-        }
+        body.push(...apiTables);
 
         for (const snippet of await getInlineCodeSnippets(content, folderPath)) {
             const core = snippet
@@ -141,6 +138,8 @@ async function buildPageMarkdown(
         if (prose) {
             body.push(prose);
         }
+
+        body.push(...apiTables);
     }
 
     if (usageExamples) {
