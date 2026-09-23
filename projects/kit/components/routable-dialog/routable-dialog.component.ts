@@ -3,6 +3,7 @@ import {
     Component,
     inject,
     INJECTOR,
+    type ProviderToken,
     type Type,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -20,10 +21,11 @@ export default class TuiRoutableDialog {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly injector = inject(INJECTOR);
-    private readonly dialog = inject(TuiDialogService);
 
     constructor() {
         const {dialog} = this.route.snapshot.data;
+        const {service = TuiDialogService, ...options} =
+            this.route.snapshot.data['dialogOptions'] ?? {};
 
         from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
             .pipe(
@@ -33,10 +35,12 @@ export default class TuiRoutableDialog {
                  */
                 delay(0),
                 switchMap((dialog: any) =>
-                    this.dialog.open(
-                        new PolymorpheusComponent<Type<any>>(dialog, this.injector),
-                        this.route.snapshot.data['dialogOptions'],
-                    ),
+                    this.injector
+                        .get(service as ProviderToken<TuiDialogService>)
+                        .open(
+                            new PolymorpheusComponent<Type<any>>(dialog, this.injector),
+                            options,
+                        ),
                 ),
                 tap({complete: () => this.navigateToParent()}),
                 takeUntilDestroyed(),

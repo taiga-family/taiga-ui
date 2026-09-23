@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, type Provider} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    InjectionToken,
+    type Provider,
+    type Type,
+} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {
     ActivatedRoute,
@@ -15,7 +21,10 @@ import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
 import TuiRoutableDialog from '../routable-dialog.component';
 
-function providerOf(serviceToken: any, mockedService: any): Provider {
+function providerOf<T>(
+    serviceToken: InjectionToken<T> | Type<T>,
+    mockedService: T,
+): Provider {
     return {
         provide: serviceToken,
         useFactory: () => instance(mockedService),
@@ -28,6 +37,10 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 })
 class Dialog {}
 
+const CUSTOM_DIALOG_SERVICE = new InjectionToken<Pick<TuiDialogService, 'open'>>(
+    'CUSTOM_DIALOG_SERVICE',
+);
+
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {snapshot: {data: {dialog: Dialog}}};
 
 describe('TuiRoutableDialog', () => {
@@ -39,6 +52,7 @@ describe('TuiRoutableDialog', () => {
         activatedRoute?: Partial<ActivatedRoute>,
         closeDialogImmediately = true,
         dialogResult = closeDialogImmediately ? EMPTY : NEVER,
+        providers: Provider[] = [],
     ): Promise<void> {
         tuiDialogService = mock(TuiDialogService);
         router = mock(Router);
@@ -53,6 +67,7 @@ describe('TuiRoutableDialog', () => {
                     provide: ActivatedRoute,
                     useValue: activatedRoute ?? DEFAULT_ACTIVATED_ROUTE_MOCK,
                 },
+                ...providers,
             ],
         }).compileComponents();
 
@@ -76,6 +91,14 @@ describe('TuiRoutableDialog', () => {
         ).once();
     });
 
+    it('opens with the default service when dialog options are absent', async () => {
+        // arrange
+        await createComponent();
+
+        // assert
+        verify(tuiDialogService.open(anything(), deepEqual({}))).once();
+    });
+
     it('dialog options are passed to the dialog open method', async () => {
         // arrange
         const dialogOptions = {dismissible: true};
@@ -91,6 +114,34 @@ describe('TuiRoutableDialog', () => {
 
         // assert
         verify(tuiDialogService.open(anything(), deepEqual(dialogOptions))).once();
+    });
+
+    it('opens with the service token from options without forwarding the service', async () => {
+        const customDialogService = mock<Pick<TuiDialogService, 'open'>>();
+
+        when(customDialogService.open(anything(), anything())).thenReturn(EMPTY);
+
+        await createComponent(
+            {
+                snapshot: {
+                    data: {
+                        dialog: Dialog,
+                        dialogOptions: {
+                            service: CUSTOM_DIALOG_SERVICE,
+                            dismissible: false,
+                        },
+                    } as unknown as Data,
+                } as unknown as ActivatedRouteSnapshot,
+            },
+            true,
+            EMPTY,
+            [providerOf(CUSTOM_DIALOG_SERVICE, customDialogService)],
+        );
+
+        verify(
+            customDialogService.open(anything(), deepEqual({dismissible: false})),
+        ).once();
+        verify(tuiDialogService.open(anything(), anything())).never();
     });
 
     it('closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(async () => {
