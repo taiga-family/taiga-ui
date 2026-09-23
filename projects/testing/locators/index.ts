@@ -1,5 +1,6 @@
 export * from './data-list.locators';
 export * from './dropdown.locators';
+export * from './dropdown-mobile.locators';
 export * from './hint.locators';
 export * from './input.locators';
 export * from './input-chip.locators';

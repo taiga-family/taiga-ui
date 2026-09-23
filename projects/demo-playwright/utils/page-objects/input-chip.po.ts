@@ -1,6 +1,7 @@
 import {expect, type Locator} from '@playwright/test';
 import {
     TUI_DROPDOWN_LOCATORS,
+    TUI_DROPDOWN_MOBILE_LOCATORS,
     TUI_INPUT_CHIP_LOCATORS,
     TUI_SHEET_DIALOG_LOCATORS,
     TUI_TEXTFIELD_LOCATORS,
@@ -13,7 +14,9 @@ export class TuiInputChipPO {
 
     public readonly dropdown = this.host
         .page()
-        .locator(`${TUI_DROPDOWN_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`);
+        .locator(
+            `${TUI_DROPDOWN_LOCATORS.HOST},${TUI_DROPDOWN_MOBILE_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`,
+        );
 
     constructor(public readonly host: Locator) {
         this.input = host
