@@ -10,6 +10,7 @@ import {
     getComponentExample,
     getComponentHeader,
     getComponentProse,
+    getContentObjectExamples,
     getDesignTokenTables,
     getFirstTabProse,
     getImportExamples,
@@ -133,7 +134,9 @@ async function buildPageMarkdown(
         }
     }
 
-    const usageExamples = await getUsageExamples(folderPath, true);
+    const usageExamples =
+        (await getUsageExamples(folderPath, true)) ||
+        (await getContentObjectExamples(folderPath, content));
 
     if (usageExamples) {
         body.push(usageExamples);
