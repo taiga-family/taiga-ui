@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiSliderEO} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
 import {expect, type Locator, test} from '@playwright/test';
 import {TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
@@ -13,7 +13,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
                 const {demo} = new TuiDocumentationPagePO(page);
-                const slider = new TuiSliderPO(demo.getByRole('slider'));
+                const slider = new TuiSliderEO(demo.getByRole('slider'));
 
                 await slider.setValue(value);
 
@@ -44,7 +44,7 @@ test.describe('Slider', () => {
 
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
-                const slider = new TuiSliderPO(example.getByRole('slider'));
+                const slider = new TuiSliderEO(example.getByRole('slider'));
 
                 await slider.setValue(inputStep);
 
@@ -86,7 +86,7 @@ test.describe('Slider', () => {
             test.use({viewport: {width: 350, height: 500}});
 
             let example!: Locator;
-            let slider!: TuiSliderPO;
+            let slider!: TuiSliderEO;
             let plusButton!: Locator;
             let minusButton!: Locator;
 
@@ -101,7 +101,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, DemoRoute.Slider);
 
                 example = page.locator('#complex .t-example');
-                slider = new TuiSliderPO(example.getByRole('slider'));
+                slider = new TuiSliderEO(example.getByRole('slider'));
                 plusButton = example.locator('button.plus');
                 minusButton = example.locator('button.minus');
             });
@@ -155,7 +155,7 @@ test.describe('Slider', () => {
 
         test.describe('formController', () => {
             let example!: Locator;
-            let slider!: TuiSliderPO;
+            let slider!: TuiSliderEO;
             let tickLabels!: Locator[];
 
             test.beforeEach(async ({page}) => {
@@ -164,7 +164,7 @@ test.describe('Slider', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#segments');
-                slider = new TuiSliderPO(example.getByRole('slider'));
+                slider = new TuiSliderEO(example.getByRole('slider'));
 
                 await page.waitForTimeout(300);
 

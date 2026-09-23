@@ -7,7 +7,7 @@ import {
     TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
-export class TuiInputChipPO {
+export class TuiInputChipEO {
     public readonly input: Locator;
     public readonly chips = this.host.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS);
     public readonly cleaner = this.host.getByRole('button', {name: 'Clear'}).first();

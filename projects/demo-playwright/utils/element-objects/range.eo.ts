@@ -1,7 +1,7 @@
 import {type Locator} from '@playwright/test';
 import {TUI_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiRangePO {
+export class TuiRangeEO {
     public readonly start = this.host.locator(TUI_RANGE_LOCATORS.THUMB_START);
     public readonly end = this.host.locator(TUI_RANGE_LOCATORS.THUMB_END);
 

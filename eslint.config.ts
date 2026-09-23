@@ -34,6 +34,7 @@ export default [
             'projects/demo/src/pages/markup/breakpoints/index.ts',
             '**/*.pw.spec.ts',
             '**/*.po.ts',
+            '**/*.eo.ts',
         ],
     },
     {

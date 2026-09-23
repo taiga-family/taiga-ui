@@ -1,6 +1,6 @@
-import {TuiTextfieldPO} from './textfield.po';
+import {TuiTextfieldEO} from './textfield.eo';
 
-export class TuiInputMonthPO extends TuiTextfieldPO {
+export class TuiInputMonthEO extends TuiTextfieldEO {
     public override readonly textfield = this.host.locator(
         '[tuiInputMonth], [tuiInputMonthRange]',
     );

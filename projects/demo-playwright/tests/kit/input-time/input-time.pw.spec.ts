@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputTimePO,
+    TuiInputTimeEO,
     type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
@@ -13,7 +13,7 @@ const {describe, beforeEach} = test;
 test.describe('InputTime', () => {
     test.describe('API', () => {
         let example: Locator;
-        let inputTime: TuiInputTimePO;
+        let inputTime: TuiInputTimeEO;
         let controlValue: Locator;
 
         function stringify(value: TuiTimeLike): string {
@@ -25,7 +25,7 @@ test.describe('InputTime', () => {
 
             example = documentation.demo;
             controlValue = documentation.value;
-            inputTime = new TuiInputTimePO(
+            inputTime = new TuiInputTimeEO(
                 example.locator('tui-textfield:has([tuiInputTime])'),
             );
         });
@@ -160,7 +160,7 @@ test.describe('InputTime', () => {
                     '#strict-mode',
                 );
 
-                const inputTime = new TuiInputTimePO(
+                const inputTime = new TuiInputTimeEO(
                     example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
                 );
 
