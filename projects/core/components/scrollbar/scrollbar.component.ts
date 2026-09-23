@@ -20,7 +20,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     selector: 'tui-scrollbar',
     imports: [TuiScrollControls],
     template: `
-        <tui-scroll-controls [class.t-hover-mode]="options.mode === 'hover'" />
+        <tui-scroll-controls class="t-scrollbar" />
         <div class="t-content"><ng-content /></div>
     `,
     styleUrl: './scrollbar.style.less',
@@ -34,6 +34,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     hostDirectives: [TuiScrollRef],
     host: {
         '[class._delegated]': 'delegated',
+        '[class._hover]': "mode === 'hover'",
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
@@ -41,11 +42,11 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 export class TuiScrollbar {
     private readonly el = tuiInjectElement();
 
-    protected readonly options = inject(TUI_SCROLLBAR_OPTIONS);
+    protected readonly mode = inject(TUI_SCROLLBAR_OPTIONS).mode;
     protected readonly browserScrollRef = new ElementRef(this.el);
 
     public get delegated(): boolean {
-        return this.scrollRef !== this.el || this.options.mode === 'native';
+        return this.scrollRef !== this.el || this.mode === 'native';
     }
 
     protected get scrollRef(): HTMLElement {

@@ -22,6 +22,7 @@ export {
     getComponentExample,
     getComponentHeader,
     getComponentSourceFiles,
+    getContentObjectExamples,
     getImportExamples,
     getMarkdownFiles,
     getUsageExamples,

@@ -312,6 +312,43 @@ describe('InputNumber', () => {
                 });
             });
 
+            describe('[step]=1 & [disabled]=true', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?step=1&disabled=true`,
+                    );
+
+                    await expect(inputNumber.textfield).toBeDisabled();
+                    await expect(inputNumber.textfield).toHaveValue('');
+                });
+
+                for (const button of ['stepUp', 'stepDown'] as const) {
+                    test(`${button} button does not change value on pointer press and hold`, async ({
+                        page,
+                    }) => {
+                        await expect(inputNumber[button]).toBeDisabled();
+
+                        const box = await inputNumber[button].boundingBox();
+
+                        expect(box).not.toBeNull();
+
+                        await page.mouse.move(
+                            box!.x + box!.width / 2,
+                            box!.y + box!.height / 2,
+                        );
+
+                        await page.mouse.down();
+
+                        await page.waitForTimeout(700);
+
+                        await page.mouse.up();
+
+                        await expect(inputNumber.textfield).toHaveValue('');
+                    });
+                }
+            });
+
             describe('[step]=3', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=3`);
@@ -517,6 +554,8 @@ describe('InputNumber', () => {
 
                     test('via button', async () => {
                         await inputNumber.stepUp.click();
+                        await expect(inputNumber.stepUp).toBeVisible();
+                        await expect(inputNumber.stepUp).toContainText('+');
                         await expect(inputNumber.textfield).toHaveValue('43kg');
                         // Caret should be at the end of value but before postfix ("kg")
                         await expect(inputNumber.textfield).toHaveJSProperty(

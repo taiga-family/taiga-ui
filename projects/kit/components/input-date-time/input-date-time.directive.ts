@@ -106,6 +106,7 @@ export class TuiInputDateTimeDirective
                 timeStep: 0,
                 dayPeriod: this.timeFormat().dayPeriod,
                 locale: '', // TODO: add to public API
+                timeSeparators: [], // TODO: delete when `TUI_TIME_FORMAT` includes `separators`
             }),
         ),
     );

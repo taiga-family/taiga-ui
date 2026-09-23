@@ -28,7 +28,7 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
 export class TuiDropdownAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly directive = inject(TuiDropdownDirective);
-    private readonly accessor = inject(TuiRectAccessor);
+    private readonly rect = inject(TuiRectAccessor);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -55,7 +55,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
         const parent = this.el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
-        const rect = this.accessor.getClientRect();
+        const rect = this.rect.getClientRect();
         const viewport = this.viewport.getClientRect();
         const zoom = this.directive.el.currentCSSZoom || 1;
         const above = rect.top - viewport.top - 2 * offset;

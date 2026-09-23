@@ -10,6 +10,7 @@ import {
     getComponentExample,
     getComponentHeader,
     getComponentProse,
+    getContentObjectExamples,
     getDesignTokenTables,
     getFirstTabProse,
     getImportExamples,
@@ -80,7 +81,9 @@ async function buildPageMarkdown(
     }
 
     // Computed up front so prose pages can drop example sections the usage block repeats.
-    const usageExamples = await getUsageExamples(folderPath, true);
+    const usageExamples =
+        (await getUsageExamples(folderPath, true)) ||
+        (await getContentObjectExamples(folderPath, content));
 
     if (isComponentPage) {
         const description = getComponentDescription(content) || getFirstTabProse(content);
