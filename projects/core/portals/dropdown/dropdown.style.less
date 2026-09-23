@@ -1,5 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
+// stylelint-disable plugin/use-baseline -- graceful degradation
+// stylelint-disable plugin/no-unsupported-browser-features -- graceful degradation
 :host {
     position: absolute;
     display: flex;
@@ -11,11 +13,9 @@
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
     outline-offset: -1px;
-    // stylelint-disable-next-line -- graceful degradation
     outline: 1px solid
         color-mix(in srgb, rgb(from var(--tui-border-normal) r g b / 1) 12%, var(--tui-background-elevation-1));
     overscroll-behavior: none;
-    // stylelint-disable-next-line -- graceful degradation
     position-try-fallbacks:
         flip-block,
         flip-inline,
@@ -39,7 +39,6 @@
     }
 
     &._delegated {
-        // stylelint-disable-next-line plugin/use-baseline -- graceful degradation
         scroll-timeline: none;
     }
 }
@@ -47,8 +46,20 @@
 .t-wrapper {
     z-index: -1;
     flex: 1;
+    block-size: fit-content;
 
     > * {
         padding: 1rem;
+    }
+}
+
+@supports (anchor-name: --t-scrollbar) {
+    .t-scrollbar {
+        position: fixed;
+        inset: anchor(top) anchor(right) anchor(bottom) anchor(left);
+        position-anchor: --t-scrollbar;
+        min-inline-size: 0;
+        min-block-size: 0;
+        margin: 0;
     }
 }
