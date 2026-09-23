@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises';
+import {tmpdir} from 'node:os';
 import path from 'node:path';
 
 import {buildFolderRouteMap, parseFolderRoutes} from './routes';
@@ -76,6 +78,147 @@ describe('folder route map', () => {
             // NoImport has a path but no import; Unknown has an import but no URL in demo-routes.
             expect(map.size).toBe(4);
             expect([...map.values()]).not.toContain('no-import');
+        });
+    });
+
+    // An app outside this repository names its route files and its route enum differently,
+    // and may spell a path out instead of referencing an enum at all.
+    describe('parseFolderRoutes (other apps)', () => {
+        const PATHS = `
+export const OtherRoute = {
+    Panel: '/panel',
+    Icons: '/other/icons',
+};
+`;
+
+        const ROUTES = `
+export const OTHER_ROUTES = [
+    route({
+        path: OtherRoute.Panel,
+        loadComponent: async () => import('../components/panel'),
+    }),
+    route({
+        path: 'getting-started',
+        loadComponent: async () => import('./home'),
+    }),
+    route({
+        path: '',
+        loadComponent: async () => import('./landing'),
+    }),
+    route({
+        path: '**',
+        loadComponent: async () => import('./not-found'),
+    }),
+];
+`;
+
+        const map = parseFolderRoutes(PATHS, ROUTES, APP_DIR);
+
+        it('resolves a path referencing any route enum, not just DemoRoute', () => {
+            expect(map.get(path.resolve(APP_DIR, '../components/panel'))).toBe('panel');
+        });
+
+        it('takes a path spelled out in place of an enum reference', () => {
+            expect(map.get(path.resolve(APP_DIR, './home'))).toBe('getting-started');
+        });
+
+        it('skips the empty route and the wildcard, which name no page', () => {
+            expect(map.size).toBe(2);
+            expect([...map.values()]).not.toContain('');
+        });
+
+        it('qualifies enum members so two apps sharing a name do not collide', () => {
+            // Both apps declare `Icons`, and the one read first would otherwise win.
+            const shared = parseFolderRoutes(
+                [
+                    "export const DemoRoute = {\n    Icons: '/icons',\n};",
+                    "export const OtherRoute = {\n    Icons: '/other/icons',\n};",
+                ].join('\n'),
+                `
+export const ROUTES = [
+    route({
+        path: OtherRoute.Icons,
+        loadComponent: async () => import('../other/icons'),
+    }),
+];
+`,
+                APP_DIR,
+            );
+
+            expect(shared.get(path.resolve(APP_DIR, '../other/icons'))).toBe(
+                'other/icons',
+            );
+        });
+    });
+
+    describe('buildFolderRouteMap (several roots)', () => {
+        let dir = '';
+
+        async function page(root: string, folder: string): Promise<void> {
+            await fs.mkdir(path.join(dir, root, folder), {recursive: true});
+            await fs.writeFile(path.join(dir, root, folder, 'index.html'), '<div></div>');
+        }
+
+        async function app(root: string, routes: string, paths: string): Promise<void> {
+            await fs.mkdir(path.join(dir, root, 'app'), {recursive: true});
+            await fs.writeFile(path.join(dir, root, 'app', 'own.routes.ts'), routes);
+            await fs.writeFile(path.join(dir, root, 'app', 'own.pages.ts'), paths);
+        }
+
+        beforeAll(async () => {
+            dir = await fs.mkdtemp(path.join(tmpdir(), 'tui-routes-'));
+
+            // Both apps serve /panel; only the private one also serves /secret.
+            await app(
+                'private',
+                `route({path: OwnRoute.Panel, loadComponent: async () => import('../panel')}),
+                 route({path: OwnRoute.Secret, loadComponent: async () => import('../secret')}),`,
+                "export const OwnRoute = {\n    Panel: '/panel',\n    Secret: '/secret',\n};",
+            );
+            await app(
+                'public',
+                "route({path: OwnRoute.Panel, loadComponent: async () => import('../panel')}),",
+                "export const OwnRoute = {\n    Panel: '/panel',\n};",
+            );
+
+            await page('private', 'panel');
+            await page('private', 'secret');
+            await page('public', 'panel');
+        });
+
+        afterAll(async () => {
+            await fs.rm(dir, {force: true, recursive: true});
+        });
+
+        it('serves both apps and lets the first root win a shared URL', async () => {
+            const map = await buildFolderRouteMap([
+                {
+                    pagesPath: path.join(dir, 'private'),
+                    routeFiles: ['own.routes.ts'],
+                    pathFiles: ['own.pages.ts'],
+                },
+                {
+                    pagesPath: path.join(dir, 'public'),
+                    routeFiles: ['own.routes.ts'],
+                    pathFiles: ['own.pages.ts'],
+                },
+            ]);
+
+            expect([...map.values()].sort()).toEqual(['panel', 'secret']);
+            expect(map.get(path.join(dir, 'private', 'panel'))).toBe('panel');
+            expect(map.has(path.join(dir, 'public', 'panel'))).toBe(false);
+        });
+
+        it('skips a route file an app does not have', async () => {
+            const map = await buildFolderRouteMap([
+                {
+                    pagesPath: path.join(dir, 'public'),
+                    routeFiles: ['own.routes.ts', 'absent.routes.ts'],
+                    pathFiles: ['own.pages.ts', 'absent.pages.ts'],
+                },
+            ]);
+
+            expect([...map.values()]).toEqual(['panel']);
         });
     });
 
