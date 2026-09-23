@@ -18,6 +18,10 @@ tui-textfield:where(*&) {
             min-block-size: 0;
             border-radius: 0;
 
+            &:disabled {
+                pointer-events: none;
+            }
+
             &:first-child {
                 border-top-right-radius: inherit;
             }
