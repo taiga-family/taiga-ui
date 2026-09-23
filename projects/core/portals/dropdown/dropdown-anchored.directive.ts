@@ -30,11 +30,11 @@ export class TuiDropdownAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly directive = inject(TuiDropdownDirective);
     private readonly rect = inject(TuiRectAccessor);
-    private readonly rect = inject(TuiPositionAccessor);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly position = this.directive.position;
+    private readonly accessor = inject(TuiPositionAccessor);
     private readonly anchor =
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
