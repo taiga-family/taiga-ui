@@ -2,7 +2,7 @@ import {type Type} from '@angular/core';
 import {type DefaultExport, type Route} from '@angular/router';
 import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
 
-export function tuiGenerateDialogableRoute<I>(
+export function tuiRouteDialog<I>(
     component: Type<any> | (() => Promise<DefaultExport<Type<any>> | Type<any>>),
     {
         path = '',
@@ -25,3 +25,8 @@ export function tuiGenerateDialogableRoute<I>(
         },
     };
 }
+
+/**
+ * @deprecated use {@link tuiRouteDialog} instead
+ */
+export const tuiGenerateDialogableRoute = tuiRouteDialog;
