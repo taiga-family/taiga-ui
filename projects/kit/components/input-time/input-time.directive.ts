@@ -70,7 +70,7 @@ export class TuiInputTimeDirective
         step: this.interactive() && !this.dropdown.content() ? 1 : 0,
         prefix: this.prefix(),
         postfix: this.postfix(),
-        separators: [],
+        separators: [], // TODO: delete when `TUI_TIME_FORMAT` includes `separators`
         dayPeriod: this.format().dayPeriod,
         locale: '', // TODO: add to public API
     }));
