@@ -30,6 +30,7 @@ export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
+    private visible = false;
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
@@ -77,7 +78,6 @@ export class TuiHintHover extends TuiDriver {
         alias: 'tuiHintHideDelay',
     });
 
-    public visible = false;
     public readonly type = 'hint';
     public enabled = true;
 

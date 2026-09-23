@@ -54,7 +54,6 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiPopupService);
-    private readonly hover = inject(TuiHintHover);
     private readonly ref = signal<ComponentRef<unknown> | null>(null);
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
@@ -75,8 +74,6 @@ export class TuiHintDirective<C>
     public ngOnChanges(): void {
         if (!this.content()) {
             this.toggle(false);
-        } else if (this.hover.visible) {
-            this.toggle(true);
         }
     }
 

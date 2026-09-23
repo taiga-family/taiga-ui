@@ -45,7 +45,7 @@
                 [style.color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
                 [style.transform]="getTransform($index)"
                 [tuiPieChart]="segments()[$index] || [0, 0]"
-                (pointerenter)="activeItemIndex.set($index)"
+                (mouseover)="activeItemIndex.set($index)"
             />
         }
     </g>
