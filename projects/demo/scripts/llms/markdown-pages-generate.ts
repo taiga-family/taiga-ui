@@ -19,6 +19,7 @@ import {
     getUsageExamples,
     readIndexHtml,
     setPagesPath,
+    stripDuplicateExampleProse,
 } from './utils';
 import {loadConfig} from './utils/config';
 
@@ -79,6 +80,18 @@ async function buildPageMarkdown(
         body.push(meta.join('\n'));
     }
 
+    // `package` on <tui-doc-page> is optional, so it says what a page is about rather than
+    // what it holds: a guide page may document an API too. Read the tables off every page.
+    const apiTables = [
+        getComponentApiFromTable(content),
+        getComponentApiFromTemplates(content),
+    ].filter(Boolean);
+
+    // Computed up front so prose pages can drop example sections the usage block repeats.
+    const usageExamples =
+        (await getUsageExamples(folderPath, true)) ||
+        (await getContentObjectExamples(folderPath, content));
+
     if (isComponentPage) {
         const description = getComponentDescription(content) || getFirstTabProse(content);
 
@@ -98,17 +111,7 @@ async function buildPageMarkdown(
             body.push(example);
         }
 
-        const apiFromTable = getComponentApiFromTable(content);
-
-        if (apiFromTable) {
-            body.push(apiFromTable);
-        }
-
-        const apiFromTemplates = getComponentApiFromTemplates(content);
-
-        if (apiFromTemplates) {
-            body.push(apiFromTemplates);
-        }
+        body.push(...apiTables);
 
         for (const snippet of await getInlineCodeSnippets(content, folderPath)) {
             const core = snippet
@@ -127,16 +130,17 @@ async function buildPageMarkdown(
             body.push(tokenTables);
         }
 
-        const prose = await getPageProse(folderPath, content);
+        const prose = stripDuplicateExampleProse(
+            await getPageProse(folderPath, content),
+            usageExamples,
+        );
 
         if (prose) {
             body.push(prose);
         }
-    }
 
-    const usageExamples =
-        (await getUsageExamples(folderPath, true)) ||
-        (await getContentObjectExamples(folderPath, content));
+        body.push(...apiTables);
+    }
 
     if (usageExamples) {
         body.push(usageExamples);
