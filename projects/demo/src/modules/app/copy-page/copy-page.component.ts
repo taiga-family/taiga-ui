@@ -8,20 +8,14 @@ import {
     inject,
     signal,
 } from '@angular/core';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiGroup,
-    tuiGroupOptionsProvider,
-} from '@taiga-ui/core';
+import {TuiButton, TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {PageMarkdown} from './page-markdown.service';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDataList, TuiDropdown],
+    imports: [TuiButton],
     templateUrl: './copy-page.template.html',
     styleUrls: ['./copy-page.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,11 +28,9 @@ export class CopyPage {
     private readonly cache = new Map<string, string>();
     private readonly doc = inject(DOCUMENT);
 
-    protected open = false;
     protected readonly copied = signal(false);
     protected readonly icons = {
         copy: '@tui.copy',
-        chevron: '@tui.chevron-down',
         check: '@tui.check',
     } as const;
 
@@ -59,12 +51,6 @@ export class CopyPage {
             this.doc.head.appendChild(link);
             onCleanup(() => link.remove());
         });
-    }
-
-    protected view(event: MouseEvent): void {
-        event.preventDefault();
-        this.open = false;
-        this.doc.defaultView?.open(this.markdownUrl(), '_blank', 'noreferrer');
     }
 
     // Fetched lazily on click (not on every navigation) and cached per URL so a repeat click reuses it.
