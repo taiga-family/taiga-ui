@@ -1,8 +1,8 @@
 import {type Locator} from '@playwright/test';
 
-import {TuiCalendarSheetPO} from './calendar-sheet.po';
+import {TuiCalendarSheetEO} from './calendar-sheet.eo';
 
-export class TuiCalendarPO {
+export class TuiCalendarEO {
     public readonly itemButton = this.host
         .page()
         .locator('tui-dropdown tui-calendar ~ * button');
@@ -10,16 +10,16 @@ export class TuiCalendarPO {
     constructor(private readonly host: Locator) {}
 
     public async getCalendarSheets(): Promise<
-        [TuiCalendarSheetPO, ...TuiCalendarSheetPO[]]
+        [TuiCalendarSheetEO, ...TuiCalendarSheetEO[]]
     > {
         const locators = await this.host
             .page()
             .locator('tui-calendar-sheet, tui-mobile-calendar-sheet')
             .all();
 
-        return locators.map((x) => new TuiCalendarSheetPO(x)) as [
-            TuiCalendarSheetPO,
-            ...TuiCalendarSheetPO[],
+        return locators.map((x) => new TuiCalendarSheetEO(x)) as [
+            TuiCalendarSheetEO,
+            ...TuiCalendarSheetEO[],
         ];
     }
 }

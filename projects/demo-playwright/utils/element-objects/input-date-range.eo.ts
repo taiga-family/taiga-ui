@@ -1,6 +1,6 @@
 import {expect, type Locator} from '@playwright/test';
 
-export class TuiInputDateRangePO {
+export class TuiInputDateRangeEO {
     public readonly textfield = this.host.getByRole('combobox');
 
     public readonly calendar = this.host

@@ -1,6 +1,6 @@
 import {type Locator} from '@playwright/test';
 
-export class TuiTabsPO {
+export class TuiTabsEO {
     public readonly more = this.host.locator('> button.t-more');
     public readonly moreDropdown = this.host.page().locator('tui-dropdown');
 
