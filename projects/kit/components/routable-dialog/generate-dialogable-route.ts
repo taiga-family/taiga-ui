@@ -27,6 +27,7 @@ export function tuiRouteDialog<I>(
 }
 
 /**
+ * @alias
  * @deprecated use {@link tuiRouteDialog} instead
  */
 export const tuiGenerateDialogableRoute = tuiRouteDialog;
