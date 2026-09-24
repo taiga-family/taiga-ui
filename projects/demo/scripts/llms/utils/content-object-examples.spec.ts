@@ -31,7 +31,7 @@ describe('getContentObjectExamples', () => {
         // separate dialog component the examples/<N> folder scan would have missed.
         expect(result).toContain('```html');
         expect(result).toContain('<router-outlet />');
-        expect(result).toContain('tuiGenerateDialogableRoute');
+        expect(result).toContain('tuiRouteDialog');
         expect(result).toContain('Lazy loaded dialog content');
     });
 
