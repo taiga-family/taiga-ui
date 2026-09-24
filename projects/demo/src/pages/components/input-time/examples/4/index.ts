@@ -1,23 +1,33 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTime} from '@taiga-ui/cdk';
-import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
+import {TuiButton, TuiError, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputTime, TuiUnfinishedValidator} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiInputTime],
+    imports: [
+        ReactiveFormsModule,
+        TuiButton,
+        TuiError,
+        TuiForm,
+        TuiInputTime,
+        TuiUnfinishedValidator,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputTimeOptionsProvider({
-            icon: '@tui.timer',
-            mode: 'HH:MM:SS.MSS',
-            timeSegmentMaxValues: {hours: 99},
+        tuiValidationErrorsProvider({
+            tuiUnfinished: 'Either fill this or leave blank',
+            required: 'This field is required',
         }),
     ],
 })
 export default class Example {
-    protected value: TuiTime | null = new TuiTime(99, 59, 59, 999);
+    protected readonly form = new FormGroup({
+        required: new FormControl(null, Validators.required),
+        optional: new FormControl(),
+    });
 }

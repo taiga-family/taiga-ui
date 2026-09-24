@@ -34,6 +34,7 @@ export default class PageComponent {
     protected readonly examples = [
         'Mode',
         '12-hour format',
+        'Separators',
         'Form control validation',
         'Options',
         'Textfield customization',
