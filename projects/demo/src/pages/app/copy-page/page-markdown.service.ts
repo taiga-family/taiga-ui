@@ -1,10 +1,10 @@
-import {Location} from '@angular/common';
-import {inject, Injectable, type Signal} from '@angular/core';
+import {DOCUMENT, Location} from '@angular/common';
+import {DestroyRef, effect, inject, Injectable, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router} from '@angular/router';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class PageMarkdown {
     private readonly router = inject(Router);
     private readonly location = inject(Location);
@@ -18,6 +18,24 @@ export class PageMarkdown {
         ),
         {requireSync: true},
     );
+
+    constructor() {
+        const doc = inject(DOCUMENT);
+        // Claim the server-rendered element: creating a second one orphans it in the head.
+        const link =
+            doc.head.querySelector<HTMLLinkElement>(
+                'link[rel="alternate"][type="text/markdown"]',
+            ) ?? doc.head.appendChild(doc.createElement('link'));
+
+        link.rel = 'alternate';
+        link.type = 'text/markdown';
+
+        effect(() => {
+            link.href = this.url();
+        });
+
+        inject(DestroyRef).onDestroy(() => link.remove());
+    }
 
     private resolve(): string {
         const [page = ''] = this.router.url.split(/[?#]/);
