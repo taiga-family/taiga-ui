@@ -4,6 +4,7 @@ import {
     Injectable,
     type TemplateRef,
 } from '@angular/core';
+import {tuiIsNode} from '@taiga-ui/cdk/utils/dom';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {type TuiPortals} from './portals';
@@ -27,7 +28,7 @@ export abstract class TuiPortalService {
             throw new TuiNoHostException();
         }
 
-        if (content instanceof Node) {
+        if (tuiIsNode(content)) {
             return this.host.addNode(content);
         }
 
