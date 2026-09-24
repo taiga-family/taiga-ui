@@ -9,6 +9,10 @@
     overscroll-behavior: none;
     scroll-snap-type: y mandatory;
 
+    &._initializing {
+        scroll-snap-type: none;
+    }
+
     &::before {
         content: '';
         display: block;

@@ -1,10 +1,15 @@
+import {isPlatformBrowser} from '@angular/common';
 import {
+    afterNextRender,
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     contentChild,
+    inject,
     input,
     model,
+    PLATFORM_ID,
+    signal,
     TemplateRef,
     viewChild,
     ViewContainerRef,
@@ -31,6 +36,7 @@ const OFFSET = 5_000_000;
     hostDirectives: [TuiScrollRef, WaIntersectionObserverDirective, WaIntersectionRoot],
     host: {
         waIntersectionThreshold: '0.1',
+        '[class._initializing]': 'initializing()',
         '(scrollend)': 'sync()',
     },
 })
@@ -40,10 +46,18 @@ export class TuiScrollWheel implements AfterViewInit {
     protected readonly wrapper = viewChild.required(TemplateRef);
     protected readonly template = contentChild.required(TemplateRef);
     protected readonly visible = new Set<number>();
+    protected readonly initializing = signal(isPlatformBrowser(inject(PLATFORM_ID)));
     protected offset = OFFSET;
 
     public readonly buffer = input(10);
     public readonly index = model(0);
+
+    constructor() {
+        afterNextRender(() => {
+            this.el.scrollTop = OFFSET;
+            this.initializing.set(false);
+        });
+    }
 
     public ngAfterViewInit(): void {
         for (let i = 0; i < this.buffer() * 2 + 1; i++) {
