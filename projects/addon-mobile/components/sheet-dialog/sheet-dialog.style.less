@@ -31,8 +31,8 @@
     }
 
     &.tui-enter {
-        animation-duration: @tui-duration-slow;
-        animation-timing-function: var(--tui-curve-expressive-standard);
+        animation-duration: calc(var(--tui-duration) / 6 * 7);
+        animation-timing-function: cubic-bezier(0.1, 0.8, 0.5, 1);
     }
 
     &::before {

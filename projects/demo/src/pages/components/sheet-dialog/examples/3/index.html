@@ -3,14 +3,8 @@
     type="button"
     (click)="open = true"
 >
-    Show/Hide
+    Show
 </button>
-<ng-template #label>
-    <label tuiTitle>
-        <span tuiSubtitle>Monty Python</span>
-        <b>And the Holy Grail</b>
-    </label>
-</ng-template>
 <ng-template
     [tuiSheetDialogOptions]="{stops: ['5.75rem', '13.875rem']}"
     [(tuiSheetDialog)]="open"
