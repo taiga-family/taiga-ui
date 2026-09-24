@@ -52,4 +52,14 @@ describe('PieChart', () => {
 
         expect(hint.appearance()).toBe('error');
     });
+
+    it('scales hovered segment via CSS so the transition also works in Safari', () => {
+        const [, segment] = pageObject.getAllByAutomationId('tui-pie-chart__segment');
+
+        segment?.nativeElement.dispatchEvent(new Event('mouseover'));
+        fixture.detectChanges();
+
+        expect(segment?.nativeElement.style.transform).toBe('scale(1.15)');
+        expect(segment?.nativeElement.hasAttribute('transform')).toBe(false);
+    });
 });

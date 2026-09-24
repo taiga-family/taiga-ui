@@ -25,6 +25,7 @@ export {
     getComponentExample,
     getComponentHeader,
     getComponentSourceFiles,
+    getContentObjectExamples,
     getImportExamples,
     getMarkdownFiles,
     getUsageExamples,
@@ -39,6 +40,7 @@ export {
     getInlineCodeSnippets,
     getPageProse,
     htmlToMarkdown,
+    stripDuplicateExampleProse,
 } from './page-prose';
 
 // Colors/Typography token-table rendering

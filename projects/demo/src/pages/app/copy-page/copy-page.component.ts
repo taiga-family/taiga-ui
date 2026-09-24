@@ -1,13 +1,13 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    effect,
     inject,
     signal,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -16,24 +16,36 @@ import {
     tuiGroupOptionsProvider,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {PageMarkdown} from './page-markdown.service';
+
+const COPIED_TIMEOUT = 1500;
 
 @Component({
     imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './copy-page.template.html',
     styleUrl: './copy-page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiGroupOptionsProvider({size: 'm'})],
+    providers: [tuiGroupOptionsProvider({size: 'm'}), PageMarkdown],
     hostDirectives: [TuiGroup],
 })
 export class CopyPage {
     private readonly pageMarkdown = inject(PageMarkdown);
     private readonly clipboard = inject(Clipboard);
     private readonly cache = new Map<string, string>();
+    private readonly copied$ = new Subject<void>();
 
     protected readonly open = signal(false);
-    protected readonly copied = signal(false);
+    protected readonly copied = toSignal(
+        this.copied$.pipe(
+            switchMap(() =>
+                timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
+            ),
+        ),
+        {initialValue: false},
+    );
+
     protected readonly icons = {
         copy: '@tui.copy',
         chevron: '@tui.chevron-down',
@@ -46,20 +58,6 @@ export class CopyPage {
 
     protected readonly markdownUrl = this.pageMarkdown.url;
 
-    constructor() {
-        const doc = inject(DOCUMENT);
-        const link = doc.createElement('link');
-
-        link.rel = 'alternate';
-        link.type = 'text/markdown';
-
-        effect((onCleanup) => {
-            link.href = this.markdownUrl();
-            doc.head.appendChild(link);
-            onCleanup(() => link.remove());
-        });
-    }
-
     // Fetched lazily on click (not on every navigation) and cached per URL so a repeat click reuses it.
     protected async copy(): Promise<void> {
         const url = this.markdownUrl();
@@ -70,8 +68,7 @@ export class CopyPage {
         }
 
         this.cache.set(url, markdown);
-        this.copied.set(true);
-        setTimeout(() => this.copied.set(false), 2000);
+        this.copied$.next();
     }
 
     private async fetchMarkdown(url: string): Promise<string | null> {
