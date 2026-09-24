@@ -2,15 +2,16 @@
 
 :host:not(._mobile) {
     display: flex;
-    align-items: flex-start;
-    block-size: 20.25rem;
     min-inline-size: 30rem;
 }
 
 .t-calendar {
-    position: sticky;
-    inset-block-start: 0;
     border-inline-end: 1px solid var(--tui-border-normal);
+}
+
+.t-menu {
+    max-block-size: 20.25rem;
+    overflow-y: auto;
 }
 
 .t-check {

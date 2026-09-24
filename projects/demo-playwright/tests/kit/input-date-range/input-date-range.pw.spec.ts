@@ -114,39 +114,35 @@ test.describe('InputDateRange', () => {
                 .toHaveScreenshot('06-calendar-maximum-month-with-items.png');
         });
 
-        test('uses dropdown scrolling for long period items', async ({page}) => {
+        test('scrolls period items without scrolling dropdown', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=2`);
             await inputDateRange.textfield.click();
 
             const dropdown = page.locator('tui-dropdown');
-            const calendar = inputDateRange.calendar.locator(
-                '[automation-id="tui-calendar-range__calendar"]',
-            );
 
             await expect
                 .poll(async () =>
-                    dropdown.evaluate(
+                    inputDateRange.items.evaluate(
                         ({clientHeight, scrollHeight}) => scrollHeight > clientHeight,
                     ),
                 )
                 .toBe(true);
 
             expect(
-                await inputDateRange.items.evaluate(
+                await dropdown.evaluate(
                     ({clientHeight, scrollHeight}) => scrollHeight === clientHeight,
                 ),
             ).toBe(true);
-            expect(
-                await calendar.evaluate((element) => getComputedStyle(element).position),
-            ).toBe('sticky');
 
-            await dropdown.evaluate((element) =>
+            await inputDateRange.items.evaluate((element) =>
                 element.scrollTo({top: element.scrollHeight}),
             );
 
             await expect
-                .poll(async () => dropdown.evaluate(({scrollTop}) => scrollTop))
+                .poll(async () => inputDateRange.items.evaluate(({scrollTop}) => scrollTop))
                 .toBeGreaterThan(0);
+
+            expect(await dropdown.evaluate(({scrollTop}) => scrollTop)).toBe(0);
         });
 
         describe('pads with zeroes if you enter an invalid date', () => {
