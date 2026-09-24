@@ -1,33 +1,17 @@
-<form
-    tuiForm="m"
-    [formGroup]="form"
->
-    <tui-textfield>
-        <label tuiLabel>Required field</label>
-        <input
-            formControlName="required"
-            tuiInputTime
-        />
-    </tui-textfield>
-    <tui-error formControlName="required" />
+<tui-textfield [tuiTextfieldCleaner]="false">
+    <label tuiLabel>fr-CA locale</label>
 
-    <tui-textfield>
-        <label tuiLabel>Optional field</label>
-        <input
-            formControlName="optional"
-            tuiInputTime
-            tuiUnfinishedValidator
-        />
-    </tui-textfield>
-    <tui-error formControlName="optional" />
+    <input
+        mode="HH:MM:SS.MSS"
+        tuiInputTime
+        [tuiTimeFormat]="{separators: [' h ', ' min ', ',']}"
+        [(ngModel)]="value"
+    />
 
-    <footer>
-        <button
-            tuiButton
-            type="submit"
-            [disabled]="form.invalid"
-        >
-            Submit
-        </button>
-    </footer>
-</form>
+    <img
+        alt="Flag of Canada"
+        width="28"
+        [src]="'CA' | tuiFlag"
+        [style.border-radius.%]="50"
+    />
+</tui-textfield>
