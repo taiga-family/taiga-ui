@@ -35,16 +35,15 @@
 
 .liquid-glass-vars() {
     --t-glass-background: rgba(255, 255, 255, 0.7);
-    --t-glass-glow: var(--tui-background-base);
-    --t-glass-filter: blur(0.25rem) saturate(6) brightness(1.05);
+    --t-glass-glow: rgba(255, 255, 255, 0.1);
+    --t-glass-filter: blur(0.25rem) saturate(1.3) brightness(1.05);
     --t-glass-bevel: @tui-glass-bevel-light;
     --t-glass-bevel-filter: none;
 }
 
 .liquid-glass-dark() {
-    --t-glass-background: rgba(88, 88, 88, 0.31);
-    --t-glass-glow: rgba(31, 31, 31, 0.8);
-    --t-glass-filter: blur(0.25rem) saturate(4);
+    --t-glass-background: rgba(255, 255, 255, 0.1);
+    --t-glass-glow: rgba(31, 31, 31, 0.08);
     --t-glass-bevel: @tui-glass-bevel-dark;
     --t-glass-bevel-filter: brightness(0.6);
 }
@@ -55,7 +54,7 @@
     background-color: var(--t-glass-background);
     box-shadow:
         @shadow,
-        inset 0 0 0.75rem var(--t-glass-glow);
+        inset 0 0 0.5rem var(--t-glass-glow);
 }
 
 // The bevel of the glass: a gradient clipped to a 1px ring by subtracting the
