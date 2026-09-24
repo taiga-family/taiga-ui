@@ -16,14 +16,19 @@ export abstract class TuiPortalService {
         this.host = host;
     }
 
+    public add<C extends Node>(content: C): C;
     public add<C>(content: PolymorpheusComponent<C>): ComponentRef<C>;
     public add<C>(content: TemplateRef<C>, context?: C): EmbeddedViewRef<C>;
     public add<C>(
-        content: PolymorpheusComponent<C> | TemplateRef<C>,
+        content: Node | PolymorpheusComponent<C> | TemplateRef<C>,
         context?: C,
-    ): ComponentRef<C> | EmbeddedViewRef<C> {
+    ): ComponentRef<C> | EmbeddedViewRef<C> | Node {
         if (!this.host) {
             throw new TuiNoHostException();
+        }
+
+        if (content instanceof Node) {
+            return this.host.addNode(content);
         }
 
         return content instanceof PolymorpheusComponent

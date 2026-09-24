@@ -1,6 +1,5 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
-    afterNextRender,
     computed,
     Directive,
     type ElementRef,
@@ -26,7 +25,7 @@ import {
     tuiIsTextNode,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiGenerateId, tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDriver,
     tuiAsRectAccessor,
@@ -34,7 +33,7 @@ import {
     type TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
-import {tuiGetWordRange} from '@taiga-ui/core/utils/dom';
+import {tuiAnchorDelegate, tuiGetWordRange} from '@taiga-ui/core/utils/dom';
 import {
     combineLatest,
     distinctUntilChanged,
@@ -68,7 +67,6 @@ export class TuiDropdownSelection
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
-
     protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
         tuiIsString(visible) ? TUI_TRUE_HANDLER : visible,
     );
@@ -116,7 +114,7 @@ export class TuiDropdownSelection
         : ({} as unknown as Range);
 
     public readonly type = 'dropdown';
-    public readonly nativeElement = this.doc.createElement('div');
+    public readonly nativeElement = tuiAnchorDelegate();
     public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
     public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
         'selection',
@@ -124,19 +122,6 @@ export class TuiDropdownSelection
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
-
-        afterNextRender(() => {
-            const anchorName = `--${tuiGenerateId()}`;
-
-            Object.assign(this.nativeElement.style, {
-                position: 'fixed',
-                pointerEvents: 'none',
-                positionAnchor: this.el.dataset.tuiAnchor,
-                anchorName,
-            });
-            this.nativeElement.dataset.tuiAnchor = anchorName;
-            this.doc.body.appendChild(this.nativeElement);
-        });
     }
 
     public ngOnDestroy(): void {
