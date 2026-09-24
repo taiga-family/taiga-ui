@@ -1,8 +1,8 @@
 import {expect, type Locator} from '@playwright/test';
 
-import {TuiCalendarPO} from './calendar.po';
+import {TuiCalendarEO} from './calendar.eo';
 
-export class TuiCalendarRangePO {
+export class TuiCalendarRangeEO {
     public previousMonth = this.host
         .locator('tui-calendar-spin tui-spin-button > button')
         .first();
@@ -14,12 +14,12 @@ export class TuiCalendarRangePO {
     constructor(public readonly host: Locator) {}
 
     public async getCalendars(): Promise<
-        [TuiCalendarPO, TuiCalendarPO] | [TuiCalendarPO]
+        [TuiCalendarEO, TuiCalendarEO] | [TuiCalendarEO]
     > {
         const calendars = await this.host.locator('tui-calendar').all();
 
-        return calendars.map((x) => new TuiCalendarPO(x)) as
-            [TuiCalendarPO, TuiCalendarPO] | [TuiCalendarPO];
+        return calendars.map((x) => new TuiCalendarEO(x)) as
+            [TuiCalendarEO, TuiCalendarEO] | [TuiCalendarEO];
     }
 
     public async getItems(): Promise<Locator[]> {

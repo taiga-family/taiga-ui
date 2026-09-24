@@ -2,8 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputDateTimePO,
-    TuiSelectPO,
+    TuiInputDateTimeEO,
+    TuiSelectEO,
     type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
@@ -12,19 +12,19 @@ import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('InputDateTime', () => {
     let example: Locator;
-    let inputDateTime: TuiInputDateTimePO;
+    let inputDateTime: TuiInputDateTimeEO;
 
     test.describe('API page', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
-        let inputDateTime: TuiInputDateTimePO;
+        let inputDateTime: TuiInputDateTimeEO;
 
         test.use({viewport: {width: 360, height: 500}});
 
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
-            inputDateTime = new TuiInputDateTimePO(
+            inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has([tuiInputDateTime])'),
             );
         });
@@ -175,7 +175,7 @@ test.describe('InputDateTime', () => {
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
 
-            const timeModeSelect = new TuiSelectPO(
+            const timeModeSelect = new TuiSelectEO(
                 (await documentationPage.getSelect(timeModeRow))!,
             );
 
@@ -409,12 +409,12 @@ test.describe('InputDateTime', () => {
 
     test.describe('invalid date', () => {
         test.describe('DMY mode', () => {
-            let inputDateTime!: TuiInputDateTimePO;
+            let inputDateTime!: TuiInputDateTimeEO;
 
             test.beforeEach(async ({page}) => {
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     demo.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
 
@@ -451,14 +451,14 @@ test.describe('InputDateTime', () => {
         });
 
         test.describe('YMD mode', () => {
-            let inputDateTime!: TuiInputDateTimePO;
+            let inputDateTime!: TuiInputDateTimeEO;
 
             test.beforeEach(async ({page}) => {
                 const example = new TuiDocumentationPagePO(page).getExample(
                     '#date-format',
                 );
 
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     example.locator('tui-textfield:has(input[tuiInputDateTime])'),
                 );
 
@@ -508,7 +508,7 @@ test.describe('InputDateTime', () => {
         test('With validator: enter incomplete date -> validator error', async () => {
             const example = documentationPage.getExample('#validation');
 
-            const inputDateTime = new TuiInputDateTimePO(
+            const inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])').first(),
             );
 
@@ -527,7 +527,7 @@ test.describe('InputDateTime', () => {
         test('Calendar customization', async () => {
             const example = documentationPage.getExample('#calendar-customization');
 
-            const inputDateTime = new TuiInputDateTimePO(
+            const inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])'),
             );
 
@@ -546,7 +546,7 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputDateTime);
                 example = new TuiDocumentationPagePO(page).getExample('#mobile');
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     example.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
             });

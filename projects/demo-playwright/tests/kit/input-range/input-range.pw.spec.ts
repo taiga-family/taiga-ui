@@ -4,7 +4,7 @@ import {
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputRangePO,
+    TuiInputRangeEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
@@ -16,7 +16,7 @@ const {describe, beforeEach} = test;
 
 describe('InputRange', () => {
     let example: Locator;
-    let inputRange: TuiInputRangePO;
+    let inputRange: TuiInputRangeEO;
 
     test.use({viewport: {width: 400, height: 800}});
 
@@ -27,7 +27,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-100&max=100&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
         });
@@ -178,7 +178,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5&precision=1`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
         });
@@ -210,7 +210,7 @@ describe('InputRange', () => {
     describe('[thousandSeparatorPattern] prop', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangeEO(example.locator('tui-input-range'));
         });
 
         describe('Japanese grouping (by four digits)', () => {
@@ -330,7 +330,7 @@ describe('InputRange', () => {
             );
 
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
 
@@ -360,7 +360,7 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=-100&max=100&step=10&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangePO(
+                inputRange = new TuiInputRangeEO(
                     example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
                 );
             });
@@ -406,7 +406,7 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=0&max=10&step=1&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangePO(
+                inputRange = new TuiInputRangeEO(
                     example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
                 );
             });
@@ -455,7 +455,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-20&max=20&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
         });
@@ -537,7 +537,7 @@ describe('InputRange', () => {
     describe('[content] property', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
         });
@@ -696,7 +696,7 @@ describe('InputRange', () => {
             example = new TuiDocumentationPagePO(page).getExample(
                 '#using-negative-values-with-hidden-minus-sign',
             );
-            inputRange = new TuiInputRangePO(
+            inputRange = new TuiInputRangeEO(
                 example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
             );
         });

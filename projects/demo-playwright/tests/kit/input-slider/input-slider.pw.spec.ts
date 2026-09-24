@@ -3,8 +3,8 @@ import {
     CHAR_MINUS,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputSliderPO,
-    TuiSliderPO,
+    TuiInputSliderEO,
+    TuiSliderEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -15,7 +15,7 @@ describe('InputSlider', () => {
 
     describe('[min] prop', () => {
         describe('positive numbers', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -23,7 +23,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -59,7 +59,7 @@ describe('InputSlider', () => {
         });
 
         describe('negative numbers', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -67,7 +67,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=-10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -90,7 +90,7 @@ describe('InputSlider', () => {
         });
 
         describe('if [min]-property equals to [max]-property', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -98,7 +98,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=25&max=25&precision=0`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -124,7 +124,7 @@ describe('InputSlider', () => {
     });
 
     describe('[quantum] prop', () => {
-        let inputSlider!: TuiInputSliderPO;
+        let inputSlider!: TuiInputSliderEO;
         let example!: Locator;
         let value!: Locator;
 
@@ -137,7 +137,7 @@ describe('InputSlider', () => {
 
                 example = new TuiDocumentationPagePO(page).demo;
                 value = new TuiDocumentationPagePO(page).value;
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     example.locator('tui-textfield:has([tuiInputSlider])'),
                 );
             });
@@ -218,10 +218,10 @@ describe('InputSlider', () => {
     });
 
     describe('[thousandSeparatorPattern] prop', () => {
-        let inputSlider!: TuiInputSliderPO;
+        let inputSlider!: TuiInputSliderEO;
 
         beforeEach(({page}) => {
-            inputSlider = new TuiInputSliderPO(
+            inputSlider = new TuiInputSliderEO(
                 new TuiDocumentationPagePO(page).demo.locator(
                     'tui-textfield:has([tuiInputSlider])',
                 ),
@@ -324,7 +324,7 @@ describe('InputSlider', () => {
 
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputSlider = new TuiInputSliderPO(
+            const inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
 
@@ -348,7 +348,7 @@ describe('InputSlider', () => {
 
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputSlider = new TuiInputSliderPO(
+            const inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
 
@@ -376,7 +376,7 @@ describe('InputSlider', () => {
 
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                const inputSlider = new TuiInputSliderPO(
+                const inputSlider = new TuiInputSliderEO(
                     demo.locator('tui-textfield:has([tuiInputSlider])'),
                 );
 
@@ -404,11 +404,11 @@ describe('InputSlider', () => {
 
     describe('textfield => slider synchronization', () => {
         let example!: Locator;
-        let inputSlider!: TuiInputSliderPO;
+        let inputSlider!: TuiInputSliderEO;
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputSlider = new TuiInputSliderPO(
+            inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
         });
@@ -471,7 +471,7 @@ describe('InputSlider', () => {
         });
 
         describe('min/max restraints also works for slider', () => {
-            let slider!: TuiSliderPO;
+            let slider!: TuiSliderEO;
             let track!: {x: number; y: number; width: number; height: number};
 
             beforeEach(async ({page}) => {
@@ -480,7 +480,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=5&max=10&step=1&keySteps=null`,
                 );
 
-                slider = new TuiSliderPO(inputSlider.slider);
+                slider = new TuiSliderEO(inputSlider.slider);
                 track = (await inputSlider.slider.boundingBox())!;
                 expect(track).toBeTruthy();
             });

@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiInputChipPO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputChipEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
@@ -7,13 +7,13 @@ const {beforeEach, describe} = test;
 
 describe('InputChip with Datalist (a.k.a MultiSelect) + FilterByInput pipe', () => {
     let example: Locator;
-    let inputChip: TuiInputChipPO;
+    let inputChip: TuiInputChipEO;
 
     beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.FilterByInput);
 
         example = new TuiDocumentationPagePO(page).getExample('#multiselect');
-        inputChip = new TuiInputChipPO(example);
+        inputChip = new TuiInputChipEO(example);
     });
 
     test('all items are visible for empty textfield', async () => {

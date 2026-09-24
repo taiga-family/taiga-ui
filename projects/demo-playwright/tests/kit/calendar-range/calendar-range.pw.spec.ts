@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiCalendarRangePO,
+    TuiCalendarRangeEO,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiSelectPO,
+    TuiSelectEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -12,7 +12,7 @@ const {describe, beforeEach} = test;
 describe('CalendarRange', () => {
     const today = new Date(2020, 8, 25);
     let example!: Locator;
-    let calendarRange!: TuiCalendarRangePO;
+    let calendarRange!: TuiCalendarRangeEO;
     let documentationPage!: TuiDocumentationPagePO;
 
     test.use({viewport: {width: 650, height: 650}});
@@ -28,7 +28,7 @@ describe('CalendarRange', () => {
 
         test('With another range switcher', async () => {
             example = documentationPage.getExample('#with-another-range-switcher');
-            calendarRange = new TuiCalendarRangePO(example.locator('tui-calendar-range'));
+            calendarRange = new TuiCalendarRangeEO(example.locator('tui-calendar-range'));
 
             const resetButton = example.locator('p button[data-appearance="action"]');
 
@@ -75,7 +75,7 @@ describe('CalendarRange', () => {
         describe('With value', () => {
             test('Month switching via chevron', async ({page}) => {
                 example = documentationPage.getExample('#with-value');
-                calendarRange = new TuiCalendarRangePO(
+                calendarRange = new TuiCalendarRangeEO(
                     example.locator('tui-calendar-range'),
                 );
 
@@ -97,7 +97,7 @@ describe('CalendarRange', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            calendarRange = new TuiCalendarRangePO(example.locator('tui-calendar-range'));
+            calendarRange = new TuiCalendarRangeEO(example.locator('tui-calendar-range'));
         });
 
         test('Maximum month when items not empty', async ({page}) => {
@@ -443,7 +443,7 @@ describe('CalendarRange', () => {
 
                 const pagePO = new TuiDocumentationPagePO(page);
 
-                const maxProperty = new TuiSelectPO(
+                const maxProperty = new TuiSelectEO(
                     (await pagePO.getSelect(pagePO.getRow('max')))!,
                 );
 

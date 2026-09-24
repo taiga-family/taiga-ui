@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputDateEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputDate', () => {
@@ -22,7 +22,7 @@ test.describe('InputDate', () => {
         test('Actual min/max in calendar', async () => {
             const example = documentationPage.getExample('#basic');
 
-            const inputDate = new TuiInputDatePO(
+            const inputDate = new TuiInputDateEO(
                 example.locator('tui-textfield:has(input[tuiInputDate])'),
             );
 
@@ -41,7 +41,7 @@ test.describe('InputDate', () => {
         }) => {
             const example = documentationPage.getExample('#validation');
 
-            const input = new TuiInputDatePO(
+            const input = new TuiInputDateEO(
                 example.locator('tui-textfield:has(input[formControlName="optional"])'),
             );
 
@@ -61,7 +61,7 @@ test.describe('InputDate', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
-        let inputDate!: TuiInputDatePO;
+        let inputDate!: TuiInputDateEO;
 
         test.use({
             viewport: {
@@ -74,7 +74,7 @@ test.describe('InputDate', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            inputDate = new TuiInputDatePO(
+            inputDate = new TuiInputDateEO(
                 example.locator('tui-textfield:has(input[tuiInputDate])'),
             );
         });
