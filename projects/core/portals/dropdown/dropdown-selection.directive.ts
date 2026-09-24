@@ -1,6 +1,5 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {
-    afterNextRender,
     computed,
     Directive,
     type ElementRef,
@@ -26,7 +25,7 @@ import {
     tuiIsTextNode,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiGenerateId, tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDriver,
     tuiAsRectAccessor,
@@ -34,7 +33,7 @@ import {
     type TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
-import {tuiGetWordRange} from '@taiga-ui/core/utils/dom';
+import {tuiAnchorDelegate, tuiGetWordRange} from '@taiga-ui/core/utils/dom';
 import {
     combineLatest,
     distinctUntilChanged,
@@ -68,7 +67,6 @@ export class TuiDropdownSelection
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
-
     protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
         tuiIsString(visible) ? TUI_TRUE_HANDLER : visible,
     );
@@ -103,10 +101,11 @@ export class TuiDropdownSelection
             const visible = valid || this.inDropdown(range);
             const focus = tuiGetFocused(this.doc);
             const textfield = focus && tuiIsTextfield(focus) && this.el.contains(focus);
+            const show = visible && textfield ? this.isCaretVisible(this.range) : visible;
 
             this.updateAnchor();
 
-            return visible && textfield ? this.isCaretVisible(this.range) : visible;
+            return show;
         }),
     );
 
@@ -115,7 +114,7 @@ export class TuiDropdownSelection
         : ({} as unknown as Range);
 
     public readonly type = 'dropdown';
-    public readonly nativeElement = this.doc.createElement('div');
+    public readonly nativeElement = tuiAnchorDelegate();
     public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>('');
     public readonly tuiDropdownSelectionPosition = input<'selection' | 'tag' | 'word'>(
         'selection',
@@ -123,19 +122,6 @@ export class TuiDropdownSelection
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
-
-        afterNextRender(() => {
-            const anchorName = `--${tuiGenerateId()}`;
-
-            Object.assign(this.nativeElement.style, {
-                position: 'fixed',
-                pointerEvents: 'none',
-                positionAnchor: this.el.dataset.tuiAnchor,
-                anchorName,
-            });
-            this.nativeElement.dataset.tuiAnchor = anchorName;
-            this.doc.body.appendChild(this.nativeElement);
-        });
     }
 
     public ngOnDestroy(): void {
@@ -218,13 +204,12 @@ export class TuiDropdownSelection
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
         const {ghost = this.initGhost(this.ghostHost)} = this;
-        const {top, left, width, height} = this.ghostHost.getBoundingClientRect();
+        const {width, height} = this.ghostHost.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
         const range = this.doc.createRange();
-        const hostRect = this.ghostHost.getBoundingClientRect();
 
-        ghost.style.top = tuiPx(top - hostRect.top);
-        ghost.style.left = tuiPx(left - hostRect.left);
+        ghost.style.top = '0px';
+        ghost.style.left = '0px';
         ghost.style.width = tuiPx(width);
         ghost.style.height = tuiPx(height);
         ghost.textContent = `${CHAR_ZERO_WIDTH_SPACE}${value}${CHAR_NO_BREAK_SPACE}`;

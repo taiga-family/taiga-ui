@@ -33,4 +33,8 @@ export abstract class TuiPortals {
     public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
         return this.anchor().vcr.createEmbeddedView(templateRef, context);
     }
+
+    public addNode<C extends Node>(node: C): C {
+        return this.anchor().vcr.element.nativeElement.parentElement.appendChild(node);
+    }
 }

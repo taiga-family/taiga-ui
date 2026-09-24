@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    type AfterViewInit,
     computed,
     Directive,
     type ElementRef,
@@ -18,19 +17,12 @@ import {
     tuiInjectElement,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
+import {tuiAnchorDelegate} from '@taiga-ui/core/utils/dom';
 import {filter, merge} from 'rxjs';
 
 import {TuiDropdownDriver} from './dropdown.driver';
 import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
-
-const STYLE: Partial<CSSStyleDeclaration> = {
-    position: 'fixed',
-    blockSize: '1px',
-    inlineSize: '1px',
-    pointerEvents: 'none',
-};
 
 @Directive({
     selector: '[tuiDropdownContext]',
@@ -50,7 +42,7 @@ const STYLE: Partial<CSSStyleDeclaration> = {
 })
 export class TuiDropdownContext
     extends TuiRectAccessor
-    implements ElementRef<HTMLElement>, AfterViewInit, OnDestroy
+    implements ElementRef<HTMLElement>, OnDestroy
 {
     private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
@@ -60,7 +52,6 @@ export class TuiDropdownContext
     protected readonly driver = inject(TuiDropdownDriver);
     protected readonly doc = inject(DOCUMENT);
     protected readonly el = tuiInjectElement();
-
     protected readonly sub = merge(
         tuiTypedFromEvent(this.doc, 'pointerdown'),
         tuiTypedFromEvent(this.doc, 'keydown').pipe(filter(({key}) => key === 'Escape')),
@@ -85,16 +76,7 @@ export class TuiDropdownContext
         });
 
     public readonly type = 'dropdown';
-    public readonly nativeElement = this.doc.createElement('div');
-
-    public ngAfterViewInit(): void {
-        const anchorName = `--${tuiGenerateId()}`;
-        const positionAnchor = this.el.getAttribute('data-tui-anchor');
-        const style = {...STYLE, positionAnchor, anchorName};
-
-        Object.assign(this.nativeElement.style, style);
-        this.nativeElement.setAttribute('data-tui-anchor', anchorName);
-    }
+    public readonly nativeElement = tuiAnchorDelegate({width: '1px', height: '1px'});
 
     public ngOnDestroy(): void {
         this.nativeElement.parentNode?.removeChild(this.nativeElement);
@@ -110,7 +92,6 @@ export class TuiDropdownContext
         this.currentRect = tuiPointToClientRect(x, y);
         this.nativeElement.style.top = `calc(anchor(top) + ${y - top}px)`;
         this.nativeElement.style.left = `calc(anchor(left) + ${x - left}px)`;
-        this.doc.body.appendChild(this.nativeElement);
         this.driver.next(true);
     }
 }

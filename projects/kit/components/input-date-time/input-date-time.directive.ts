@@ -7,6 +7,7 @@ import {
     maskitoParseTime,
     maskitoSelectionChangeHandler,
     maskitoStringifyTime,
+    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
@@ -33,8 +34,9 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
 import {TuiInputDateBase, tuiWithDateFiller} from '@taiga-ui/kit/components/input-date';
+import {tuiInjectTimeFiller} from '@taiga-ui/kit/components/input-time';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
-import {TUI_TIME_FORMAT, TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_FORMAT} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {noop} from 'rxjs';
 
@@ -63,18 +65,14 @@ export class TuiInputDateTimeDirective
     extends TuiInputDateBase<readonly [TuiDay, TuiTime | null]>
     implements TuiTextfieldAccessor<readonly [TuiDay, TuiTime | null]>
 {
-    private readonly timeFillers = inject(TUI_TIME_TEXTS);
     private readonly timeFormat = inject(TUI_TIME_FORMAT);
+    private readonly timeFiller = tuiInjectTimeFiller(computed(() => this.timeMode()));
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
 
-    protected override readonly filler = tuiWithDateFiller((date) => {
-        const timeFiller = this.timeFillers()?.[this.timeMode()] ?? '';
-        const [am] = this.timeFormat().dayPeriod;
-        const dayPeriodFiller = am && ` ${'A'.repeat(am.length)}`;
-
-        return `${date}${this.options.dateTimeSeparator}${timeFiller}${dayPeriodFiller}`;
-    });
+    protected override readonly filler = tuiWithDateFiller(
+        (date) => `${date}${this.options.dateTimeSeparator}${this.timeFiller()}`,
+    );
 
     protected override readonly valueEffect = effect(noop);
 
@@ -106,7 +104,7 @@ export class TuiInputDateTimeDirective
                 timeStep: 0,
                 dayPeriod: this.timeFormat().dayPeriod,
                 locale: '', // TODO: add to public API
-                timeSeparators: [], // TODO: delete when `TUI_TIME_FORMAT` includes `separators`
+                timeSeparators: this.timeFormat().separators,
             }),
         ),
     );
@@ -251,15 +249,17 @@ export class TuiInputDateTimeDirective
 
     private computeMask(params: Required<MaskitoDateTimeParams>): MaskitoOptions {
         const options = maskitoDateTime(params);
-        const {timeMode, dateMode, dateTimeSeparator, dayPeriod} = params;
+        const {timeMode, dateMode, dateTimeSeparator, dayPeriod, timeSeparators} = params;
+        const timeLength = maskitoStringifyTime(0, {
+            // TODO(v6): delete `replace()`
+            mode: timeMode.replace(' AA', '') as MaskitoTimeMode,
+            separators: timeSeparators,
+        }).length;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >=
-                dateMode!.length +
-                    dateTimeSeparator.length +
-                    // TODO(v6): delete `replace()`
-                    timeMode.replace(' AA', '').length
+                dateMode!.length + dateTimeSeparator.length + timeLength
                     ? 'text'
                     : 'numeric';
         });
@@ -282,10 +282,10 @@ export class TuiInputDateTimeDirective
     }
 
     private isTimeComplete(time: string): boolean {
-        const [am] = this.timeFormat().dayPeriod;
-        const dayPeriodLength = am ? ` ${am}`.length : 0;
-
-        return time.length === this.timeMode().length + dayPeriodLength;
+        return (
+            time.length ===
+            maskitoStringifyTime(0, {...this.timeFormat(), mode: this.timeMode()}).length
+        );
     }
 
     private parseTime(time: string): TuiTime {

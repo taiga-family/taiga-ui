@@ -44,6 +44,7 @@ export default class Example {
         'Validation',
         'Value transformer',
         'Date format',
+        'Time format',
         'Mobile',
         'Limits',
         'Datalist',

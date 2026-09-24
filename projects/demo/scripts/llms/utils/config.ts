@@ -36,14 +36,14 @@ export interface LlmsConfig {
 
 const CONFIG_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-config.json');
 
-export async function loadConfig(): Promise<LlmsConfig> {
+export async function loadConfig(file = CONFIG_FILE): Promise<LlmsConfig> {
     try {
-        const configContent = await fs.readFile(CONFIG_FILE, 'utf-8');
+        const configContent = await fs.readFile(file, 'utf-8');
 
         return JSON.parse(configContent) as LlmsConfig;
     } catch (error) {
         throw new Error(
-            `Required configuration file not found or invalid: ${CONFIG_FILE}. Ensure llms-config.json exists and is valid JSON. Original error: ${String(
+            `Required configuration file not found or invalid: ${file}. Ensure llms-config.json exists and is valid JSON. Original error: ${String(
                 error,
             )}`,
         );

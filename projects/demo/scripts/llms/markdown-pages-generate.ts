@@ -4,20 +4,26 @@ import * as path from 'node:path';
 
 import {
     buildFolderRouteMap,
+    DEFAULT_PATH_FILES,
+    DEFAULT_ROUTE_FILES,
     getComponentApiFromTable,
     getComponentApiFromTemplates,
     getComponentDescription,
     getComponentExample,
     getComponentHeader,
     getComponentProse,
+    getContentObjectExamples,
     getDesignTokenTables,
     getFirstTabProse,
     getImportExamples,
     getInlineCodeSnippets,
     getPageProse,
+    getPagesPath,
     getUsageExamples,
+    type PagesRoot,
     readIndexHtml,
     setPagesPath,
+    stripDuplicateExampleProse,
 } from './utils';
 import {loadConfig} from './utils/config';
 
@@ -29,6 +35,77 @@ interface ComponentHeader {
 }
 
 const OUTPUT_DIR = path.resolve(process.cwd(), 'projects/demo/src/markdown-pages');
+
+interface CliOptions {
+    /** Pages folders to read, in priority order: the first to claim a URL keeps it. */
+    roots: string[];
+    output: string;
+    config?: string;
+    routeFiles: string[];
+    pathFiles: string[];
+}
+
+function list(value: string): string[] {
+    return value
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean);
+}
+
+const FLAGS = ['config', 'output', 'pathFiles', 'root', 'routeFiles'] as const;
+
+/**
+ * `--root=a,b --output=dir --config=file --routeFiles=x.ts --pathFiles=y.ts`, matching the
+ * flags {@link ../llms-full-generate.ts} already takes, so an app outside this repository can
+ * drive the generator over its own pages instead of forking it.
+ *
+ * A malformed flag is fatal rather than ignored: `main` clears the output directory, so a
+ * typo that silently fell back to a default would take the caller's files with it.
+ */
+function parseArgs(argv: string[]): CliOptions {
+    const options: CliOptions = {
+        roots: [],
+        output: OUTPUT_DIR,
+        routeFiles: [...DEFAULT_ROUTE_FILES],
+        pathFiles: [...DEFAULT_PATH_FILES],
+    };
+
+    for (const arg of argv.slice(2).filter((item) => item.startsWith('--'))) {
+        const index = arg.indexOf('=');
+        const key = index === -1 ? arg.slice(2) : arg.slice(2, index);
+        const value = index === -1 ? '' : arg.slice(index + 1);
+
+        if (!FLAGS.includes(key as (typeof FLAGS)[number]) || !value) {
+            throw new Error(
+                `Unusable argument "${arg}". Expected ${FLAGS.map(
+                    (flag) => `--${flag}=<value>`,
+                ).join(', ')}.`,
+            );
+        }
+
+        switch (key) {
+            case 'config':
+                options.config = path.resolve(process.cwd(), value);
+                break;
+            case 'output':
+                options.output = path.resolve(process.cwd(), value);
+                break;
+            case 'pathFiles':
+                options.pathFiles = list(value);
+                break;
+            case 'root':
+                options.roots = list(value).map((root) =>
+                    path.resolve(process.cwd(), root),
+                );
+                break;
+            default:
+                options.routeFiles = list(value);
+                break;
+        }
+    }
+
+    return options;
+}
 
 function plainText(value: string): string {
     return (
@@ -78,6 +155,18 @@ async function buildPageMarkdown(
         body.push(meta.join('\n'));
     }
 
+    // `package` on <tui-doc-page> is optional, so it says what a page is about rather than
+    // what it holds: a guide page may document an API too. Read the tables off every page.
+    const apiTables = [
+        getComponentApiFromTable(content),
+        getComponentApiFromTemplates(content),
+    ].filter(Boolean);
+
+    // Computed up front so prose pages can drop example sections the usage block repeats.
+    const usageExamples =
+        (await getUsageExamples(folderPath, true)) ||
+        (await getContentObjectExamples(folderPath, content));
+
     if (isComponentPage) {
         const description = getComponentDescription(content) || getFirstTabProse(content);
 
@@ -97,17 +186,7 @@ async function buildPageMarkdown(
             body.push(example);
         }
 
-        const apiFromTable = getComponentApiFromTable(content);
-
-        if (apiFromTable) {
-            body.push(apiFromTable);
-        }
-
-        const apiFromTemplates = getComponentApiFromTemplates(content);
-
-        if (apiFromTemplates) {
-            body.push(apiFromTemplates);
-        }
+        body.push(...apiTables);
 
         for (const snippet of await getInlineCodeSnippets(content, folderPath)) {
             const core = snippet
@@ -126,14 +205,17 @@ async function buildPageMarkdown(
             body.push(tokenTables);
         }
 
-        const prose = await getPageProse(folderPath, content);
+        const prose = stripDuplicateExampleProse(
+            await getPageProse(folderPath, content),
+            usageExamples,
+        );
 
         if (prose) {
             body.push(prose);
         }
-    }
 
-    const usageExamples = await getUsageExamples(folderPath, true);
+        body.push(...apiTables);
+    }
 
     if (usageExamples) {
         body.push(usageExamples);
@@ -162,20 +244,31 @@ async function buildPageMarkdown(
 }
 
 async function main(): Promise<void> {
-    const config = await loadConfig();
+    const options = parseArgs(process.argv);
+    const config = await loadConfig(options.config);
 
-    if (config.constants.defaultModulesPath) {
+    if (config.constants?.defaultModulesPath) {
         setPagesPath(config.constants.defaultModulesPath);
     }
 
-    const folderToRoute = await buildFolderRouteMap();
+    // Examples and API tables are read relative to each page's own folder, so only the
+    // pages root differs between apps — the rest of the pipeline is root-agnostic.
+    const roots: PagesRoot[] = (
+        options.roots.length ? options.roots : [getPagesPath()]
+    ).map((pagesPath) => ({
+        pagesPath,
+        routeFiles: options.routeFiles,
+        pathFiles: options.pathFiles,
+    }));
+
+    const folderToRoute = await buildFolderRouteMap(roots);
 
     console.info(`Generating markdown for ${folderToRoute.size} routed pages...`);
 
     // Clean slate for renamed routes, but keep the dir + .gitkeep so nx serve finds the asset folder.
-    await fs.rm(OUTPUT_DIR, {recursive: true, force: true});
-    await fs.mkdir(OUTPUT_DIR, {recursive: true});
-    await fs.writeFile(path.join(OUTPUT_DIR, '.gitkeep'), '');
+    await fs.rm(options.output, {recursive: true, force: true});
+    await fs.mkdir(options.output, {recursive: true});
+    await fs.writeFile(path.join(options.output, '.gitkeep'), '');
 
     let written = 0;
 
@@ -192,14 +285,14 @@ async function main(): Promise<void> {
             continue;
         }
 
-        const outFile = path.join(OUTPUT_DIR, `${route}.md`);
+        const outFile = path.join(options.output, `${route}.md`);
 
         await fs.mkdir(path.dirname(outFile), {recursive: true});
         await fs.writeFile(outFile, `${md}\n`);
         written++;
     }
 
-    console.info(`Wrote ${written} per-page markdown files to ${OUTPUT_DIR}`);
+    console.info(`Wrote ${written} per-page markdown files to ${options.output}`);
 }
 
 main().catch((error: unknown) => {
