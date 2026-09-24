@@ -46,7 +46,7 @@ export class TuiHintHover extends TuiDriver {
             switchMap((show) =>
                 this.isMobile
                     ? of(show).pipe(
-                          filter((hovered) => !hovered),
+                          filter(() => !show),
                           delay(0),
                       )
                     : of(show).pipe(delay(show ? this.showDelay() : this.hideDelay())),
