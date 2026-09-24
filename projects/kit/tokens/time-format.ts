@@ -22,6 +22,26 @@ const TUI_DEFAULT_TIME_FORMAT: TuiTimeFormatSettings = {
     separators: [],
 };
 
+/**
+ * TODO(v6): refactor to
+ * ```ts
+ * import {maskitoWithTimeDefaults} from '@maskito/kit';
+ * import {LOCALE_ID} from '@angular/core';
+ *
+ * export const TUI_TIME_FORMAT = new InjectionToken<Signal<TuiTimeFormatSettings>>(
+ *     ngDevMode ? 'TUI_TIME_FORMAT' : '',
+ *     {
+ *         factory: () =>
+ *             signal(
+ *                 maskitoWithTimeDefaults({
+ *                     locale: inject(LOCALE_ID),
+ *                     mode: 'HH:MM',
+ *                 }),
+ *             ),
+ *     },
+ * );
+ * ```
+ */
 export const TUI_TIME_FORMAT = new InjectionToken<Signal<TuiTimeFormatSettings>>(
     ngDevMode ? 'TUI_TIME_FORMAT' : '',
     {factory: () => signal(TUI_DEFAULT_TIME_FORMAT)},
