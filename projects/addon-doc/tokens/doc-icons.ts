@@ -9,6 +9,12 @@ export interface TuiDocIcons {
     readonly expand: string;
     // TODO: drop optional in v6
     readonly resizer?: string;
+    // TODO: drop optional in v6
+    readonly copy?: string;
+    // TODO: drop optional in v6
+    readonly copied?: string;
+    // TODO: drop optional in v6
+    readonly dropdown?: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
@@ -19,6 +25,9 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     shrink: '@tui.shrink',
     expand: '@tui.expand',
     resizer: '@tui.grip-vertical',
+    copy: '@tui.copy',
+    copied: '@tui.check',
+    dropdown: '@tui.chevron-down',
 };
 
 export const [TUI_DOC_ICONS, tuiDocIconsProvider] =

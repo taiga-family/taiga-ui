@@ -8,4 +8,5 @@ export const TUI_POLISH_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Zobacz także',
     tocText: 'Na tej stronie',
     sourceCodeText: 'Kod źródłowy',
+    copyPageTexts: ['Kopiuj stronę', 'Skopiowano!', 'Więcej', 'Zobacz jako Markdown'],
 };

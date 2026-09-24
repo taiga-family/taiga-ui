@@ -8,4 +8,5 @@ export const TUI_BELARUSIAN_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Глядзіце таксама',
     tocText: 'На старонцы',
     sourceCodeText: 'Зыходны код',
+    copyPageTexts: ['Капіяваць старонку', 'Скапіявана!', 'Яшчэ', 'Адкрыць як Markdown'],
 };
