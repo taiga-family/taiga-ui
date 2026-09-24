@@ -182,7 +182,7 @@ jobs:
         with:
           channelId: ${{ steps.metadata.outputs.channel_id }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          projectId: taiga-preview-demo
+          projectId: taiga-previews-a7bbb
           target: taiga-preview-demo
           expires: 1d
           disableComment: 'true'
