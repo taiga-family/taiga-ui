@@ -8,4 +8,5 @@ export const TUI_MALAY_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Lihat juga',
     tocText: 'Di halaman ini',
     sourceCodeText: 'Kod sumber',
+    copyPageTexts: ['Salin halaman', 'Disalin!', 'Lagi', 'Lihat sebagai Markdown'],
 };

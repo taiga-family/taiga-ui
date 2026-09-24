@@ -8,4 +8,5 @@ export const TUI_HEBREW_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'ראה גם',
     tocText: 'בדף זה',
     sourceCodeText: 'קוד מקור',
+    copyPageTexts: ['העתקת הדף', 'הועתק!', 'עוד', 'הצגה כ-Markdown'],
 };

@@ -7,7 +7,7 @@
     [iconStart]="icon()"
     (click)="copy()"
 >
-    {{ copied() ? 'Copied!' : 'Copy page' }}
+    {{ copied() ? texts()[1] : texts()[0] }}
 </button>
 <button
     appearance="secondary-grayscale"
@@ -17,10 +17,10 @@
     tuiIconButton
     type="button"
     class="t-toggle"
-    [iconStart]="icons.chevron"
+    [iconStart]="icons.dropdown"
     [(tuiDropdownOpen)]="open"
 >
-    More
+    {{ texts()[2] }}
     <tui-data-list
         *tuiDropdown
         size="s"
@@ -29,10 +29,10 @@
             rel="noreferrer"
             target="_blank"
             tuiOption
-            [href]="markdownUrl()"
+            [href]="url()"
             (click)="open.set(false)"
         >
-            View as Markdown
+            {{ texts()[3] }}
         </a>
     </tui-data-list>
 </button>

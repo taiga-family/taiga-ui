@@ -8,4 +8,10 @@ export const TUI_GREEK_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Δείτε επίσης',
     tocText: 'Σε αυτή τη σελίδα',
     sourceCodeText: 'Πηγαίος κώδικας',
+    copyPageTexts: [
+        'Αντιγραφή σελίδας',
+        'Αντιγράφηκε!',
+        'Περισσότερα',
+        'Προβολή ως Markdown',
+    ],
 };
