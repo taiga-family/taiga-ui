@@ -24,7 +24,7 @@ jobs:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-preview-demo
+          projectId: taiga-previews-a7bbb
           target: taiga-preview-demo
           expires: 1d
 
