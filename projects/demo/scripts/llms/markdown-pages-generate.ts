@@ -52,10 +52,15 @@ function list(value: string): string[] {
         .filter(Boolean);
 }
 
+const FLAGS = ['config', 'output', 'pathFiles', 'root', 'routeFiles'] as const;
+
 /**
  * `--root=a,b --output=dir --config=file --routeFiles=x.ts --pathFiles=y.ts`, matching the
  * flags {@link ../llms-full-generate.ts} already takes, so an app outside this repository can
  * drive the generator over its own pages instead of forking it.
+ *
+ * A malformed flag is fatal rather than ignored: `main` clears the output directory, so a
+ * typo that silently fell back to a default would take the caller's files with it.
  */
 function parseArgs(argv: string[]): CliOptions {
     const options: CliOptions = {
@@ -65,10 +70,18 @@ function parseArgs(argv: string[]): CliOptions {
         pathFiles: [...DEFAULT_PATH_FILES],
     };
 
-    for (const arg of argv.slice(2)) {
-        const index = arg.startsWith('--') ? arg.indexOf('=') : -1;
-        const key = index === -1 ? '' : arg.slice(2, index);
+    for (const arg of argv.slice(2).filter((item) => item.startsWith('--'))) {
+        const index = arg.indexOf('=');
+        const key = index === -1 ? arg.slice(2) : arg.slice(2, index);
         const value = index === -1 ? '' : arg.slice(index + 1);
+
+        if (!FLAGS.includes(key as (typeof FLAGS)[number]) || !value) {
+            throw new Error(
+                `Unusable argument "${arg}". Expected ${FLAGS.map(
+                    (flag) => `--${flag}=<value>`,
+                ).join(', ')}.`,
+            );
+        }
 
         switch (key) {
             case 'config':
@@ -85,10 +98,8 @@ function parseArgs(argv: string[]): CliOptions {
                     path.resolve(process.cwd(), root),
                 );
                 break;
-            case 'routeFiles':
-                options.routeFiles = list(value);
-                break;
             default:
+                options.routeFiles = list(value);
                 break;
         }
     }

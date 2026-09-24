@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import {fileExists} from './file-system';
+import {fileExists, readIfExists} from './file-system';
 import {getPagesPath} from './paths';
 
 export interface ComponentInfo {
@@ -115,21 +115,15 @@ export interface PagesRoot {
     readonly pathFiles: readonly string[];
 }
 
-export const DEFAULT_ROUTE_FILES = ['app.routes.ts'];
-export const DEFAULT_PATH_FILES = ['demo-routes.ts'];
+export const DEFAULT_ROUTE_FILES = ['app.routes.ts'] as const;
+export const DEFAULT_PATH_FILES = ['demo-routes.ts'] as const;
 
 async function readAll(appDir: string, names: readonly string[]): Promise<string> {
-    const sources: string[] = [];
+    const sources = await Promise.all(
+        names.map(async (name) => readIfExists(path.join(appDir, name))),
+    );
 
-    for (const name of names) {
-        const file = path.join(appDir, name);
-
-        if (await fileExists(file)) {
-            sources.push(await fs.readFile(file, 'utf-8'));
-        }
-    }
-
-    return sources.join('\n');
+    return sources.filter(Boolean).join('\n');
 }
 
 /**
@@ -154,17 +148,39 @@ export async function buildFolderRouteMap(
         },
     ],
 ): Promise<Map<string, string>> {
+    const sources = await Promise.all(
+        roots.map(async (root) => {
+            const appDir = path.join(root.pagesPath, 'app');
+
+            return {
+                root,
+                appDir,
+                paths: await readAll(appDir, root.pathFiles),
+                routes: await readAll(appDir, root.routeFiles),
+            };
+        }),
+    );
+
+    // Route names are collected across every root before any block is read: a portal
+    // overriding a page it inherits spells the path as the *other* app's name
+    // (`path: DemoRoute.Typography` next to its own folder), which resolves only when both
+    // apps' names are in scope. Qualified keys keep the two from shadowing each other.
+    const urlByName = parseUrlMap(sources.map(({paths}) => paths).join('\n'));
     const folderToRoute = new Map<string, string>();
     const claimed = new Set<string>();
 
-    for (const root of roots) {
-        const appDir = path.join(root.pagesPath, 'app');
+    for (const {root, appDir, routes} of sources) {
+        const parsed = parseRouteBlocks(urlByName, routes, appDir);
 
-        const parsed = parseFolderRoutes(
-            await readAll(appDir, root.pathFiles),
-            await readAll(appDir, root.routeFiles),
-            appDir,
-        );
+        // Missing files are skipped by name, so a renamed or mistyped one would otherwise
+        // leave an empty map and let the caller wipe its output before noticing.
+        if (!parsed.size) {
+            throw new Error(
+                `No routed pages found under ${appDir}. Looked for route blocks in ${
+                    root.routeFiles.join(', ') || '(none)'
+                } and route names in ${root.pathFiles.join(', ') || '(none)'}.`,
+            );
+        }
 
         for (const [folder, url] of parsed) {
             if (claimed.has(url)) {
@@ -185,12 +201,11 @@ export async function buildFolderRouteMap(
  * than a page folder, so climbing to the first `index.html` lands on the folder that renders the
  * page without hard-coding any file-name convention. Stays within the pages tree.
  */
-async function resolvePageFolder(folder: string, root = getPagesPath()): Promise<string> {
+async function resolvePageFolder(folder: string, root: string): Promise<string> {
     let current = folder;
 
     while (
-        current.startsWith(root) &&
-        current !== root &&
+        isInside(root, current) &&
         !(await fileExists(path.join(current, 'index.html')))
     ) {
         current = path.dirname(current);
@@ -199,27 +214,48 @@ async function resolvePageFolder(folder: string, root = getPagesPath()): Promise
     return current;
 }
 
+/** Strictly below `root`. Compared as paths, so a `pages-internal` sibling of `pages` is out. */
+function isInside(root: string, candidate: string): boolean {
+    const relative = path.relative(root, candidate);
+
+    return !!relative && !relative.startsWith('..') && !path.isAbsolute(relative);
+}
+
 /**
  * `Name: '/url'` pairs of every `const X = {...}` in the source, recorded under both
  * `X.Name` and the bare `Name`. Two apps read together may each declare a route enum, and
  * qualifying the key keeps a shared member name (`Icons`, say) from shadowing the other's.
+ *
+ * Only direct members of such an object count. A route file also holds unrelated structures —
+ * a page tree whose entries carry `title: '...'` and `route: '...'` — and taking those in would
+ * both invent route names and, since a name is written once, let the first one win a real one.
+ * Nesting is tracked by counting brackets, which a bracket inside a string literal would
+ * confuse; route tables do not contain any.
  */
 function parseUrlMap(source: string): Map<string, string> {
     const urlByName = new Map<string, string>();
     let owner = '';
+    let depth = 0;
 
     for (const line of source.split('\n')) {
-        owner = /(?:const|enum)\s+(\w+)(?:\s*=)?\s*\{/.exec(line)?.[1] ?? owner;
+        // A route enum is an object literal opening at the end of its own declaration. The
+        // page tree next to it is an array, so its line ends in `[` and claims no name.
+        if (!depth) {
+            owner = /\{\s*$/.test(line)
+                ? (/\b(?:const|enum)\s+(\w+)/.exec(line)?.[1] ?? '')
+                : '';
+        }
 
-        const [, name = '', url = ''] = /^\s*(\w+):\s*'([^']+)'/.exec(line) ?? [];
+        const [, name = '', url = ''] =
+            (depth === 1 && owner ? /^\s*(\w+):\s*'([^']+)'/.exec(line) : null) ?? [];
+
+        depth += count(line, /[{[]/g) - count(line, /[}\]]/g);
 
         if (!name || !url) {
             continue;
         }
 
-        if (owner) {
-            urlByName.set(`${owner}.${name}`, url);
-        }
+        urlByName.set(`${owner}.${name}`, url);
 
         if (!urlByName.has(name)) {
             urlByName.set(name, url);
@@ -227,6 +263,10 @@ function parseUrlMap(source: string): Map<string, string> {
     }
 
     return urlByName;
+}
+
+function count(line: string, pattern: RegExp): number {
+    return [...line.matchAll(pattern)].length;
 }
 
 /**
@@ -239,7 +279,14 @@ export function parseFolderRoutes(
     routesContent: string,
     appDir: string,
 ): Map<string, string> {
-    const urlByName = parseUrlMap(pathsContent);
+    return parseRouteBlocks(parseUrlMap(pathsContent), routesContent, appDir);
+}
+
+function parseRouteBlocks(
+    urlByName: ReadonlyMap<string, string>,
+    routesContent: string,
+    appDir: string,
+): Map<string, string> {
     const folderToRoute = new Map<string, string>();
 
     // Each `route({...})` block pairs one path with one lazy import. The path is either a
@@ -248,7 +295,7 @@ export function parseFolderRoutes(
     // pages, `./getting-started` for app-level guide pages.
     for (const block of routesContent.split('route({')) {
         const [, reference = '', literal] =
-            /\bpath:\s*(?:(\w+(?:\.\w+)?)|'([^']*)')/.exec(block) ?? [];
+            /\bpath:\s*(?:([\w.]+)|'([^']*)')/.exec(block) ?? [];
 
         const folder = /import\('(\.\.?\/[^']+)'\)/.exec(block)?.[1];
 
@@ -256,13 +303,14 @@ export function parseFolderRoutes(
             continue;
         }
 
-        const url =
-            literal ??
-            urlByName.get(reference) ??
-            urlByName.get(reference.split('.').pop() ?? '');
+        // Looked up exactly as written: a qualified reference names its own enum, and
+        // falling back to the bare member would answer with whichever app declared that
+        // name first — the collision the qualified key exists to prevent.
+        const url = literal ?? urlByName.get(reference);
 
-        // A wildcard is a fallback, not a page, and an empty path has no name to write under.
-        if (!url || url.includes('*')) {
+        // A wildcard or a `:param` segment is a route shape rather than a page, and an
+        // empty path has no name to write under.
+        if (!url || /[*:]/.test(url)) {
             continue;
         }
 

@@ -127,6 +127,50 @@ export const OTHER_ROUTES = [
             expect([...map.values()]).not.toContain('');
         });
 
+        it('skips a path with a `:param` segment, which names no page of its own', () => {
+            // ':' is also illegal in a Windows filename, so writing the twin would throw.
+            const withParam = parseFolderRoutes(
+                '',
+                "route({path: 'edit/:id', loadComponent: async () => import('./edit')}),",
+                APP_DIR,
+            );
+
+            expect(withParam.size).toBe(0);
+        });
+
+        it('reads route names off enums only, not off other objects in the same file', () => {
+            // A route file also declares the page tree, whose entries carry `title` and a
+            // `route` of their own. Taken in, they would invent names and — since a name is
+            // written once — could answer a real lookup with a page title.
+            const withPageTree = parseFolderRoutes(
+                [
+                    "export const OwnRoute = {\n    Panel: '/panel',\n};",
+                    'export const PAGES: DocPages = [',
+                    '    {',
+                    "        title: 'Panel',",
+                    "        route: '/typo/panel',",
+                    '    },',
+                    '];',
+                ].join('\n'),
+                `
+export const ROUTES = [
+    route({
+        path: OwnRoute.Panel,
+        loadComponent: async () => import('../panel'),
+    }),
+    route({
+        path: title,
+        loadComponent: async () => import('../title'),
+    }),
+];
+`,
+                APP_DIR,
+            );
+
+            expect(withPageTree.get(path.resolve(APP_DIR, '../panel'))).toBe('panel');
+            expect(withPageTree.has(path.resolve(APP_DIR, '../title'))).toBe(false);
+        });
+
         it('qualifies enum members so two apps sharing a name do not collide', () => {
             // Both apps declare `Icons`, and the one read first would otherwise win.
             const shared = parseFolderRoutes(
@@ -219,6 +263,93 @@ export const ROUTES = [
             ]);
 
             expect([...map.values()]).toEqual(['panel']);
+        });
+    });
+
+    describe('buildFolderRouteMap (overriding an inherited page)', () => {
+        let dir = '';
+
+        async function write(file: string, content: string): Promise<void> {
+            await fs.mkdir(path.dirname(path.join(dir, file)), {recursive: true});
+            await fs.writeFile(path.join(dir, file), content);
+        }
+
+        beforeAll(async () => {
+            dir = await fs.mkdtemp(path.join(tmpdir(), 'tui-override-'));
+
+            // The portal serves the public app's /panel from a page of its own, so it spells
+            // the path as the public name. Only the public app declares that name.
+            await write(
+                'own/app/own.routes.ts',
+                "route({path: PublicRoute.Panel, loadComponent: async () => import('../panel')}),",
+            );
+            await write('own/app/own.pages.ts', 'export const OWN_PAGES = [];');
+            await write('own/panel/index.html', '<div>own</div>');
+
+            await write(
+                'public/app/app.routes.ts',
+                "route({path: PublicRoute.Panel, loadComponent: async () => import('../panel')}),",
+            );
+            await write(
+                'public/app/demo-routes.ts',
+                "export const PublicRoute = {\n    Panel: '/panel',\n};",
+            );
+            await write('public/panel/index.html', '<div>public</div>');
+        });
+
+        afterAll(async () => {
+            await fs.rm(dir, {force: true, recursive: true});
+        });
+
+        it('resolves a name declared only by the other root and serves the overriding page', async () => {
+            const map = await buildFolderRouteMap([
+                {
+                    pagesPath: path.join(dir, 'own'),
+                    routeFiles: ['own.routes.ts'],
+                    pathFiles: ['own.pages.ts'],
+                },
+                {
+                    pagesPath: path.join(dir, 'public'),
+                    routeFiles: ['app.routes.ts'],
+                    pathFiles: ['demo-routes.ts'],
+                },
+            ]);
+
+            expect(map.get(path.join(dir, 'own', 'panel'))).toBe('panel');
+            expect(map.has(path.join(dir, 'public', 'panel'))).toBe(false);
+        });
+
+        it('throws rather than let a root whose route file is misnamed pass as empty', async () => {
+            await expect(
+                buildFolderRouteMap([
+                    {
+                        pagesPath: path.join(dir, 'public'),
+                        routeFiles: ['app.route.ts'],
+                        pathFiles: ['demo-routes.ts'],
+                    },
+                ]),
+            ).rejects.toThrow('No routed pages found');
+        });
+
+        it('does not climb out of its root into a sibling folder sharing its name', async () => {
+            // `<dir>/public-internal` starts with `<dir>/public` as a string but is not inside
+            // it, and climbing on would reach a folder whose page belongs to another route.
+            await write('public-internal/panel/.gitkeep', '');
+            await write('index.html', '<div>stray</div>');
+            await write(
+                'public/app/sibling.routes.ts',
+                "route({path: PublicRoute.Panel, loadComponent: async () => import('../../public-internal/panel')}),",
+            );
+
+            const map = await buildFolderRouteMap([
+                {
+                    pagesPath: path.join(dir, 'public'),
+                    routeFiles: ['sibling.routes.ts'],
+                    pathFiles: ['demo-routes.ts'],
+                },
+            ]);
+
+            expect([...map.keys()]).toEqual([path.join(dir, 'public-internal', 'panel')]);
         });
     });
 
