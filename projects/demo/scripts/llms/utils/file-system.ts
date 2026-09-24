@@ -135,58 +135,98 @@ export function getComponentExample(content: string): string {
     return `\n### Example\n\n\`\`\`html\n${cleanHtml}\n\`\`\``;
 }
 
+/**
+ * Every `<table tuiDocAPI>` on the page, labelled by the heading that introduces it.
+ *
+ * A page documenting a family of components gives each member its own table under an `<h2>`
+ * ("MobileMenu"), and a component with styling knobs splits them off under "CSS customization".
+ * The first table documents the page's own component and keeps the plain `API` label whether or
+ * not a heading precedes it, which is what every single-table page reads.
+ */
+function readApiTables(content: string): Array<{label: string; body: string}> {
+    const tables: Array<{label: string; body: string}> = [];
+    let previousEnd = 0;
+
+    for (const match of content.matchAll(/<table tuiDocAPI[^>]*>([\s\S]*?)<\/table>/gi)) {
+        const before = [
+            ...content
+                .slice(previousEnd, match.index)
+                .matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/gi),
+        ];
+
+        const heading = before[before.length - 1]?.[1]?.replaceAll(/<[^>]+>/g, '').trim();
+
+        tables.push({
+            label: tables.length ? heading || `API ${tables.length + 1}` : 'API',
+            body: match[1] ?? '',
+        });
+
+        previousEnd = match.index + match[0].length;
+    }
+
+    return tables;
+}
+
+/**
+ * A pipe splits a Markdown table cell even inside a code span, so a union type
+ * (`TuiSizeM | TuiSizeL`) would silently add a column and push the description out of place.
+ * Escaping is the only thing that keeps it in one cell.
+ */
+function cell(value: string): string {
+    return value.replaceAll('|', String.raw`\|`);
+}
+
 // parse API properties from tuiDocAPI
 export function getComponentApiFromTable(content: string): string {
-    const tableMatch = /<table tuiDocAPI[^>]*>([\s\S]*?)<\/table>/i.exec(content);
-
-    if (!tableMatch) {
-        return '';
-    }
-
-    const tableContent = tableMatch[1];
-    const apiRows = tableContent?.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
-
-    if (!apiRows) {
-        return '';
-    }
-
-    const inputRows: string[] = [];
-    const outputRows: string[] = [];
-
-    for (const row of apiRows) {
-        const nameMatch = /name="([^"]+)"/i.exec(row);
-        const typeMatch = /type="([^"]+)"/i.exec(row);
-        const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
-
-        if (nameMatch && typeMatch) {
-            const name = nameMatch[1]?.trim();
-            const type = typeMatch[1]?.trim();
-            const description = descriptionMatch?.[1] ? descriptionMatch[1].trim() : '—';
-
-            // Check if it's an output (event): prioritize name starting with '(',
-            // then fall back to EventEmitter when it's not an input ('[').
-            const isOutput =
-                name?.startsWith('(') ||
-                (name?.startsWith('[') === false && type?.includes('EventEmitter'));
-
-            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
-
-            if (isOutput) {
-                outputRows.push(rowContent);
-            } else {
-                inputRows.push(rowContent);
-            }
-        }
-    }
-
     let result = '';
 
-    if (inputRows.length > 0) {
-        result += `\n### API - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
-    }
+    for (const {label, body} of readApiTables(content)) {
+        const apiRows = body.match(/<tr[^>]+name="[^"]+"[^>]*>[\s\S]*?<\/tr>/gi);
 
-    if (outputRows.length > 0) {
-        result += `\n\n### API - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+        if (!apiRows) {
+            continue;
+        }
+
+        const inputRows: string[] = [];
+        const outputRows: string[] = [];
+
+        for (const row of apiRows) {
+            const nameMatch = /name="([^"]+)"/i.exec(row);
+            const typeMatch = /type="([^"]+)"/i.exec(row);
+            const descriptionMatch = />([^<>]+)<\/tr>/i.exec(row);
+
+            if (nameMatch && typeMatch) {
+                const name = nameMatch[1]?.trim();
+                const type = typeMatch[1]?.trim();
+                const description = descriptionMatch?.[1]
+                    ? descriptionMatch[1].trim()
+                    : '—';
+
+                // Check if it's an output (event): prioritize name starting with '(',
+                // then fall back to EventEmitter when it's not an input ('[').
+                const isOutput =
+                    name?.startsWith('(') ||
+                    (name?.startsWith('[') === false && type?.includes('EventEmitter'));
+
+                const rowContent = `| ${cell(name ?? '')} | \`${cell(type ?? '')}\` | ${cell(description)} |`;
+
+                if (isOutput) {
+                    outputRows.push(rowContent);
+                } else {
+                    inputRows.push(rowContent);
+                }
+            }
+        }
+
+        if (inputRows.length > 0) {
+            // A following table opens after a blank line; the first one keeps the single
+            // leading newline the surrounding document already accounts for.
+            result += `${result ? '\n' : ''}\n### ${label} - Inputs\n\n| Property | Type | Description |\n|----------|-----|----------|\n${inputRows.join('\n')}`;
+        }
+
+        if (outputRows.length > 0) {
+            result += `\n\n### ${label} - Outputs\n\n| Event | Type | Description |\n|-------|------|-------------|\n${outputRows.join('\n')}`;
+        }
     }
 
     return result;
@@ -233,7 +273,7 @@ export function getComponentApiFromTemplates(content: string): string {
             const isOutput =
                 name?.startsWith('[') === false && type?.includes('EventEmitter');
 
-            const rowContent = `| ${name} | \`${type}\` | ${description} |`;
+            const rowContent = `| ${cell(name ?? '')} | \`${cell(type ?? '')}\` | ${cell(description)} |`;
 
             if (isOutput) {
                 outputRows.push(rowContent);
@@ -285,6 +325,94 @@ export async function getComponentSourceFiles(
 }
 
 // extract usage examples from demo folders
+/** A folder documents an example when it holds an `index.*` of its own. */
+async function isExampleFolder(folder: string): Promise<boolean> {
+    for (const name of ['index.html', 'index.ts', 'index.less']) {
+        if (await fileExists(path.join(folder, name))) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Example folder names under `examples/`, relative to it.
+ *
+ * Most pages keep one folder per example (`examples/1`). A page documenting several
+ * platforms groups them a level deeper (`examples/desktop/1`), so a child with no
+ * `index.*` of its own is descended into rather than skipped.
+ */
+async function readExampleFolders(examplesPath: string): Promise<string[]> {
+    const folders: string[] = [];
+
+    for (const entry of await fs.readdir(examplesPath, {withFileTypes: true})) {
+        // The import folder is rendered separately.
+        if (!entry.isDirectory() || entry.name === 'import') {
+            continue;
+        }
+
+        const folder = path.join(examplesPath, entry.name);
+
+        if (await isExampleFolder(folder)) {
+            folders.push(entry.name);
+            continue;
+        }
+
+        for (const nested of await fs.readdir(folder, {withFileTypes: true})) {
+            if (
+                nested.isDirectory() &&
+                (await isExampleFolder(path.join(folder, nested.name)))
+            ) {
+                folders.push(path.join(entry.name, nested.name));
+            }
+        }
+    }
+
+    return folders;
+}
+
+/**
+ * Folder an example binding points at, read from the component's own imports.
+ *
+ * `[content]="exampleD1"` names a field whose value imports `./examples/desktop/1/...`,
+ * which is the only link between the heading in the template and the folder on disk when
+ * the field is not named after the example's number.
+ */
+function folderForReference(tsContent: string, reference: string): string {
+    // Only a bare field name is looked up, so the name can go into the pattern as-is.
+    const declared = /^\w+$/.test(reference)
+        ? new RegExp(String.raw`\b${reference}\b`).exec(tsContent)?.index
+        : undefined;
+
+    return declared === undefined
+        ? ''
+        : (/\.\/examples\/([^'"]+?)\/index\.[a-z]+/.exec(
+              tsContent.slice(declared),
+          )?.[1] ?? '');
+}
+
+/** Natural order over folder names: numeric segments by value, the rest alphabetically. */
+function compareExampleFolders(a: string, b: string): number {
+    const left = a.split('/');
+    const right = b.split('/');
+
+    for (let i = 0; i < Math.max(left.length, right.length); i++) {
+        const one = left[i] ?? '';
+        const two = right[i] ?? '';
+
+        if (one === two) {
+            continue;
+        }
+
+        return Number.isFinite(Number(one)) && Number.isFinite(Number(two))
+            ? Number(one) - Number(two)
+            : one.localeCompare(two);
+    }
+
+    return 0;
+}
+
 export async function getUsageExamples(
     folderPath: string,
     includeAllExamples = true,
@@ -311,9 +439,25 @@ export async function getUsageExamples(
         exampleDescriptions = extractExampleDescriptions(mainContent);
     }
 
+    const tsContent = (await fileExists(mainIndexTsPath))
+        ? await fs.readFile(mainIndexTsPath, 'utf-8')
+        : '';
+
+    // A binding named after neither the example's number nor its folder (`[content]="exampleD1"`)
+    // keys its heading under the field name. Record it under the folder that field imports as
+    // well, which is how the loop below looks a heading up.
+    for (const [reference, info] of Object.entries(exampleDescriptions)) {
+        const folder = /^\d+$/.test(reference)
+            ? ''
+            : folderForReference(tsContent, reference);
+
+        if (folder && !exampleDescriptions[folder]) {
+            exampleDescriptions[folder] = info;
+        }
+    }
+
     // Also try to extract examples from TypeScript file for dynamic patterns
-    if (await fileExists(mainIndexTsPath)) {
-        const tsContent = await fs.readFile(mainIndexTsPath, 'utf-8');
+    if (tsContent) {
         // Try both readonly and non-readonly patterns
         const tsExamplesMatch =
             /(?:protected readonly |protected )examples = \[([\s\S]*?)\];/i.exec(
@@ -356,23 +500,11 @@ export async function getUsageExamples(
     }> = [];
 
     try {
-        const entries = await fs.readdir(examplesPath, {withFileTypes: true});
-
-        for (const entry of entries) {
-            if (!entry.isDirectory()) {
-                continue;
-            }
-
-            const exampleFolder = path.join(examplesPath, entry.name);
+        for (const name of await readExampleFolders(examplesPath)) {
+            const exampleFolder = path.join(examplesPath, name);
             const htmlPath = path.join(exampleFolder, 'index.html');
             const tsPath = path.join(exampleFolder, 'index.ts');
             const lessPath = path.join(exampleFolder, 'index.less');
-
-            // Skip import folder as it's handled separately
-            if (entry.name === 'import') {
-                continue;
-            }
-
             let html = '';
             let ts = '';
             let less = '';
@@ -390,13 +522,13 @@ export async function getUsageExamples(
             }
 
             if (html || ts || less) {
-                const exampleInfo = exampleDescriptions[entry.name] || {
-                    heading: `Example ${entry.name}`,
+                const exampleInfo = exampleDescriptions[name] || {
+                    heading: `Example ${name}`,
                     description: '',
                 };
 
                 examples.push({
-                    name: entry.name,
+                    name,
                     html: html.trim(),
                     ts: ts.trim(),
                     less: less.trim(),
@@ -416,14 +548,7 @@ export async function getUsageExamples(
     }
 
     // Folders are read in filesystem order ("1", "10", "2"…); restore example order.
-    examples.sort((a, b) => {
-        const left = Number(a.name);
-        const right = Number(b.name);
-
-        return Number.isFinite(left) && Number.isFinite(right)
-            ? left - right
-            : a.name.localeCompare(b.name);
-    });
+    examples.sort((a, b) => compareExampleFolders(a.name, b.name));
 
     let result = '\n### Usage Examples\n';
 
@@ -782,11 +907,17 @@ export function extractExampleDescriptions(
             );
         }
 
+        // A page may name its example fields freely (`[content]="exampleD1"`). The name
+        // then keys the entry, and the folder behind it is resolved from the component.
+        let reference = '';
+
         if (!contentMatch?.[1]) {
             // Try pattern: [content]="layerExample" or similar object references
             const objectMatch = /\[content\]="([^"]+)"/i.exec(exampleMatch);
 
             if (objectMatch?.[1]) {
+                reference = objectMatch[1].trim();
+
                 // For object references, we need to determine the example number differently
                 // Check if there's a component attribute that gives us the number
                 const componentMatch = /\[component\]="(\d+)\s*\|\s*tuiComponent"/i.exec(
@@ -799,11 +930,11 @@ export function extractExampleDescriptions(
             }
         }
 
-        if (!contentMatch?.[1]) {
+        if (!contentMatch?.[1] && !reference) {
             continue;
         }
 
-        const exampleNumber = contentMatch[1];
+        const exampleNumber = contentMatch?.[1] ?? reference;
 
         // Extract the heading - handle both static and dynamic patterns
         let heading = `Example ${exampleNumber}`;
@@ -844,6 +975,18 @@ export function extractExampleDescriptions(
             if (descriptionMatch?.[1]) {
                 description = cleanTemplateText(descriptionMatch[1]);
             }
+        }
+
+        if (!description) {
+            // `description` is an input like any other, so a page may pass the text as a plain
+            // attribute instead of projecting a template. Read it off the opening tag alone —
+            // a nested element inside the block may carry an attribute of the same name.
+            const [openingTag = ''] =
+                /^<tui-doc-example(?:[^>"']|"[^"]*"|'[^']*')*>/i.exec(exampleMatch) ?? [];
+
+            description = cleanTemplateText(
+                /\sdescription="([^"]+)"/i.exec(openingTag)?.[1] ?? '',
+            );
         }
 
         descriptions[exampleNumber] = {
