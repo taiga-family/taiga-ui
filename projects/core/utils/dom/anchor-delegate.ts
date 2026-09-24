@@ -9,10 +9,9 @@ const STYLE: Partial<CSSStyleDeclaration> = {position: 'fixed', pointerEvents: '
 export function tuiAnchorDelegate(
     styles: Partial<CSSStyleDeclaration> = {},
 ): HTMLElement {
-    const doc = inject(DOCUMENT);
-    const popups = inject(TuiPopupService);
     const el = tuiInjectElement();
-    const anchor = doc.createElement('div');
+    const popups = inject(TuiPopupService);
+    const anchor = inject(DOCUMENT).createElement('div');
 
     afterNextRender(() => {
         const anchorName = `--${tuiGenerateId()}`;
