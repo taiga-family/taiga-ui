@@ -103,10 +103,11 @@ export class TuiDropdownSelection
             const visible = valid || this.inDropdown(range);
             const focus = tuiGetFocused(this.doc);
             const textfield = focus && tuiIsTextfield(focus) && this.el.contains(focus);
+            const show = visible && textfield ? this.isCaretVisible(this.range) : visible;
 
             this.updateAnchor();
 
-            return visible && textfield ? this.isCaretVisible(this.range) : visible;
+            return show;
         }),
     );
 
@@ -218,13 +219,12 @@ export class TuiDropdownSelection
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
         const {ghost = this.initGhost(this.ghostHost)} = this;
-        const {top, left, width, height} = this.ghostHost.getBoundingClientRect();
+        const {width, height} = this.ghostHost.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
         const range = this.doc.createRange();
-        const hostRect = this.ghostHost.getBoundingClientRect();
 
-        ghost.style.top = tuiPx(top - hostRect.top);
-        ghost.style.left = tuiPx(left - hostRect.left);
+        ghost.style.top = '0px';
+        ghost.style.left = '0px';
         ghost.style.width = tuiPx(width);
         ghost.style.height = tuiPx(height);
         ghost.textContent = `${CHAR_ZERO_WIDTH_SPACE}${value}${CHAR_NO_BREAK_SPACE}`;
