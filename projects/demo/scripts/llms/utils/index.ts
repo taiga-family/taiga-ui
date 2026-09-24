@@ -8,7 +8,10 @@ export {getFoldersToScan, getPagesPath, setFoldersToScan, setPagesPath} from './
 export {
     buildFolderRouteMap,
     type ComponentInfo,
+    DEFAULT_PATH_FILES,
+    DEFAULT_ROUTE_FILES,
     extractComponentsFromRoutes,
+    type PagesRoot,
     shouldIncludeComponent,
 } from './routes';
 
