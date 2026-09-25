@@ -55,6 +55,6 @@ export class TuiDropdownClose {
                       tuiStopPropagation(),
                   )
                 : EMPTY,
-        ),
+        ).pipe(filter(() => this.open.enabled())),
     );
 }
