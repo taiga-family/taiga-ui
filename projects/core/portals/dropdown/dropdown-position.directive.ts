@@ -29,15 +29,20 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         this.direction.pipe(distinctUntilChanged()),
     );
 
-    public position({style}: HTMLElement): void {
+    public position(element: HTMLElement): void {
+        const {top, bottom} = this.viewport.getClientRect();
         const {direction, align, offset, limitWidth, minHeight, maxHeight} = this.options;
+        const rect = this.anchor.nativeElement.getBoundingClientRect();
         const horizontal = align === 'center' ? '' : `span-x-${invert(align)}`;
+        const height = Math.min(element.clientHeight, maxHeight) + offset * 2;
+        const available = direction === 'top' ? rect.top - top : bottom - rect.bottom;
+        const vertical = direction || 'bottom';
 
-        Object.assign(style, {
+        Object.assign(element.style, {
             position: 'fixed',
             visibility: 'visible',
             positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
-            positionArea: `${direction || 'bottom'} ${horizontal}`,
+            positionArea: `${available > height ? vertical : flip(vertical)} ${horizontal}`,
             marginBlock: `${offset}px`,
             minBlockSize: `calc-size(fit-content, min(size, ${minHeight}px))`,
             maxBlockSize: `calc-size(fit-content, min(size, ${maxHeight}px))`,
@@ -121,4 +126,8 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 // TODO: Review in v6 to possible sync alignment with native anchors
 function invert(align: TuiDropdownAlign): TuiDropdownAlign {
     return align === 'start' ? 'end' : 'start';
+}
+
+function flip(direction: TuiVerticalDirection): TuiVerticalDirection {
+    return direction === 'top' ? 'bottom' : 'top';
 }
