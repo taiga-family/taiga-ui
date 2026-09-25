@@ -34,18 +34,16 @@ export class TuiTextareaComponent implements OnInit {
     private ref?: ComponentRef<TuiTextareaContent>;
 
     /**
-     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
-     * - Solved? Drop `string | undefined` workaround and `transform`
-     * - Not yet? Rename props to `minRows`
+     * @deprecated use `minRows` instead
+     * TODO(v6): delete
      */
     public readonly min = input<number, number | string | undefined>(this.options.min, {
         transform: (min) => (typeof min === 'number' ? min : this.options.min),
     });
 
     /**
-     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
-     * - Solved? Drop `string | undefined` workaround and `transform`
-     * - Not yet? Rename props to `maxRows`
+     * @deprecated use `maxRows` instead
+     * TODO(v6): delete
      */
     public readonly max = input<number, number | string | undefined>(this.options.max, {
         transform: (max) => (typeof max === 'number' ? max : this.options.max),

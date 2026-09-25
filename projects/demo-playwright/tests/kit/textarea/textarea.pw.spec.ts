@@ -97,10 +97,9 @@ test.describe('Textarea', () => {
     });
 
     test('minRows and maxRows set the textarea height limits', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Textarea);
-        const docs = new TuiDocumentationPagePO(page);
-        const content = docs.getExample('#basic').locator('tui-textarea-content').first();
-        const legacy = docs.getExample('#icons').locator('tui-textarea-content');
+        await tuiGoto(page, `${DemoRoute.Textarea}/API?min=2&max=4`);
+        const {demo} = new TuiDocumentationPagePO(page);
+        const content = demo.locator('tui-textarea-content');
 
         expect(
             await content.evaluate((element) => [
@@ -108,6 +107,14 @@ test.describe('Textarea', () => {
                 element.style.maxHeight,
             ]),
         ).toEqual(['2.5em', '5em']);
+    });
+
+    test('legacy min and max still set the textarea height limits', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const legacy = new TuiDocumentationPagePO(page)
+            .getExample('#icons')
+            .locator('tui-textarea-content');
+
         expect(
             await legacy.evaluate((element) => [
                 element.style.minHeight,
