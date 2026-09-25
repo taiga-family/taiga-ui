@@ -25,4 +25,4 @@ test('ScrollWheel keeps the initial value after render and resize', async ({page
     await wheel.dispatchEvent('wheel', {deltaY: 100});
 
     await expect(wheel).toHaveClass(/_snapping/);
-}
+});
