@@ -8,8 +8,10 @@ import {
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {finalize} from 'rxjs';
 
 import {TuiDropdownSheet} from './dropdown-sheet.directive';
 
@@ -30,16 +32,28 @@ export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
     private readonly dialogs = inject(TuiSheetDialogService);
     private readonly directive = inject(TuiDropdownSheet);
+    private readonly open = inject(TuiDropdownOpen);
 
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 
     protected readonly sub = toObservable(this.content)
         .pipe(
-            tuiIfMap((content) =>
-                this.dialogs.open(content, this.directive.tuiDropdownSheet()),
-            ),
+            tuiIfMap((content) => {
+                const enabled = this.open.enabled();
+
+                tuiSetSignal(this.open.enabled, false);
+
+                return this.dialogs
+                    .open(content, this.directive.tuiDropdownSheet())
+                    .pipe(
+                        finalize(() => {
+                            tuiSetSignal(this.open.enabled, enabled);
+                            this.dropdown.toggle(false);
+                        }),
+                    );
+            }),
             takeUntilDestroyed(),
         )
-        .subscribe({complete: () => this.dropdown.toggle(false)});
+        .subscribe();
 }

@@ -24,6 +24,9 @@ describe('DropdownMobile for textfields', () => {
 
         await sheet.dispatchEvent('click');
         await expect(sheet).toBeHidden();
+
+        await input.click();
+        await expect(sheet).toBeVisible();
     });
 
     test('with select', async ({page}) => {
