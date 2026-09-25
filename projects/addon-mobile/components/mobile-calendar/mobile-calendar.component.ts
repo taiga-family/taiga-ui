@@ -456,10 +456,19 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private scrollToActiveMonth(behavior: ScrollBehavior = 'auto'): void {
-        this.monthsScroll()?.scrollToIndex(
-            this.activeMonth,
-            this.isE2E ? 'auto' : behavior,
-        );
+        const monthsScroll = this.monthsScroll();
+
+        if (!monthsScroll) {
+            return;
+        }
+
+        const scrollBehavior = this.isE2E ? 'auto' : behavior;
+
+        monthsScroll.scrollToIndex(this.activeMonth, scrollBehavior);
+
+        if (scrollBehavior === 'auto') {
+            monthsScroll.checkViewportSize();
+        }
     }
 
     private isYearActive(index: number): boolean {
