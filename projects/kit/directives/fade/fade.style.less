@@ -74,7 +74,7 @@
         }
     }
 
-    &[data-orientation='vertical'] {
+    &:where([data-orientation='vertical']) {
         overflow-x: hidden;
         mask-image:
             linear-gradient(to bottom, transparent var(--t-fade-offset), #000 calc(var(--t-fade-size) + var(--t-fade-offset))),

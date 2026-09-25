@@ -64,10 +64,10 @@
         animation-duration: @tui-duration-fast;
     }
 
-    &[data-orientation='horizontal'] {
+    &:where([data-orientation='horizontal']) {
         grid-column: 1 / -1;
 
-        &[data-size='m'] [tuiAvatar] {
+        &:where([data-size='m']) [tuiAvatar] {
             clip-path: inset(0 round var(--tui-radius-m));
 
             tui-progress-circle {
@@ -80,7 +80,7 @@
             }
         }
 
-        &[data-size='s'] [tuiAvatar] {
+        &:where([data-size='s']) [tuiAvatar] {
             clip-path: inset(0 round var(--tui-radius-m));
 
             tui-progress-circle {
@@ -99,7 +99,7 @@
         }
     }
 
-    &[data-orientation='vertical'] {
+    &:where([data-orientation='vertical']) {
         position: relative;
         padding: 0;
         min-inline-size: 5rem;
@@ -168,8 +168,8 @@
             overflow-wrap: break-word;
         }
 
-        &[data-size='s'] [tuiTitle],
-        &[data-size='m'] [tuiTitle] {
+        &:where([data-size='s']) [tuiTitle],
+        &:where([data-size='m']) [tuiTitle] {
             position: absolute;
             inset: 0.75rem;
             justify-content: space-between;

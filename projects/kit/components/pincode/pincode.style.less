@@ -131,20 +131,20 @@ input[tuiPincode] {
         scale: 1;
     }
 
-    &[type='password'] + .t-content .t-item_filled .t-dot_value {
+    &:where([type='password']) + .t-content .t-item_filled .t-dot_value {
         scale: 1;
         background: var(--tui-text-action);
     }
 
-    &[data-state='pending'] {
+    &:where([data-state='pending']) {
         &:not([type='password']) + .t-content .t-item_filled .t-value,
-        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        &:where([type='password']) + .t-content .t-item_filled .t-dot_value {
             animation: @pending-wave-anim;
             animation-delay: calc(var(--t-animation-cycle) / 2 + var(--t-animation-delay));
         }
     }
 
-    &[data-state='invalid'] {
+    &:where([data-state='invalid']) {
         & + .t-content {
             .t-value {
                 color: var(--tui-text-negative);
@@ -167,13 +167,13 @@ input[tuiPincode] {
         }
 
         &:not([type='password']) + .t-content .t-item_filled .t-value,
-        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        &:where([type='password']) + .t-content .t-item_filled .t-dot_value {
             animation: tuiScale calc(var(--tui-duration) * 4 / 3) var(--tui-curve-expressive-exit)
                 max(var(--t-animation-cycle), 1000ms) reverse forwards;
         }
     }
 
-    &[data-state='success'] {
+    &:where([data-state='success']) {
         & + .t-content {
             .t-value {
                 color: var(--tui-text-action);
@@ -200,7 +200,7 @@ input[tuiPincode] {
             animation: @success-dot-collapse-anim;
         }
 
-        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        &:where([type='password']) + .t-content .t-item_filled .t-dot_value {
             animation: @success-wave-anim, @success-dot-collapse-anim;
         }
     }
@@ -263,11 +263,11 @@ input[tuiPincode] {
 
     input[tuiPincode]:not([data-state]) {
         &:not([type='password']):not(._paste) + .t-content .t-item_filled .t-value,
-        &[type='password']:not(._paste) + .t-content .t-item_filled .t-dot_value {
+        &:where([type='password']):not(._paste) + .t-content .t-item_filled .t-dot_value {
             animation: tuiPincodeInput calc(var(--tui-duration) * 2) cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        &[type='password'] + .t-content .t-item_filled .t-dot_value {
+        &:where([type='password']) + .t-content .t-item_filled .t-dot_value {
             transition: background-color calc(var(--tui-duration) * 4 / 3) var(--tui-curve-expressive-standard);
         }
     }

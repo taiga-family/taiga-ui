@@ -28,7 +28,7 @@
         grid-row: 1;
     }
 
-    &[data-inline='center'] {
+    &:where([data-inline='center']) {
         --tui-from: translateY(-2rem);
     }
 
@@ -45,10 +45,10 @@
         }
     }
 
-    &[data-block='end'] {
+    &:where([data-block='end']) {
         inset: -@safe-area 0;
 
-        &[data-inline='center'] {
+        &:where([data-inline='center']) {
             --tui-from: translateY(6rem);
         }
     }

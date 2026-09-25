@@ -10,7 +10,7 @@ tui-segmented:where(*&) {
     /* Safari bug https://bugs.webkit.org/show_bug.cgi?id=68196 */
     mask-image: linear-gradient(black, black);
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         --t-padding: 0.5rem;
         --t-gap: 0.5rem;
         --t-margin: -0.125rem;
@@ -24,7 +24,7 @@ tui-segmented:where(*&) {
         }
     }
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         --t-padding: 0.875rem;
         --t-gap: 1rem;
         --t-margin: -0.375rem;
@@ -34,7 +34,7 @@ tui-segmented:where(*&) {
         border-radius: var(--tui-radius-m);
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         --t-padding: 1.25rem;
         --t-gap: 1rem;
         --t-margin: -0.375rem;
@@ -48,7 +48,7 @@ tui-segmented:where(*&) {
         }
     }
 
-    &[inert] {
+    &:where([inert]) {
         opacity: var(--tui-disabled-opacity);
         pointer-events: none;
     }

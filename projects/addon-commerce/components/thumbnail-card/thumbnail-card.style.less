@@ -43,30 +43,30 @@
         background: linear-gradient(to bottom, currentColor 0 20%, #959595 20% 40%, currentColor 40%);
     }
 
-    &[data-size='xs'],
-    &[data-size='s'] {
+    &:where([data-size='xs']),
+    &:where([data-size='s']) {
         font-size: 0;
         border-radius: 0.25rem;
     }
 
-    &[data-size='xs'] {
+    &:where([data-size='xs']) {
         inline-size: 2rem;
         block-size: 1.375rem;
     }
 
-    &[data-size='s'] {
+    &:where([data-size='s']) {
         inline-size: 2.5rem;
         block-size: 1.625rem;
     }
 
-    &[data-size='m'] {
+    &:where([data-size='m']) {
         inline-size: 3rem;
         block-size: 2rem;
         border-radius: 0.3125rem;
         font: normal 0.5625rem / var(--t-logo-height) var(--tui-typography-family-text);
     }
 
-    &[data-size='l'] {
+    &:where([data-size='l']) {
         inline-size: 3.375rem;
         block-size: 2.25rem;
         border-radius: 0.375rem;
