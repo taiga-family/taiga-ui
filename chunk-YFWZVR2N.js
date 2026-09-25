@@ -1,0 +1,54 @@
+import"./chunk-LQ6M4NCU.js";var e=`@import '@taiga-ui/styles/utils';
+
+[role='table'] {
+    inline-size: 100%;
+    min-inline-size: 35rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: var(--tui-radius-l);
+    overflow: hidden;
+
+    > [role='row'] {
+        color: var(--tui-text-secondary);
+        background: var(--tui-background-neutral-1);
+        border: none;
+    }
+}
+
+[role='row'] {
+    .transition(box-shadow);
+
+    display: grid;
+    grid-template-columns: 2rem minmax(8rem, 1fr) minmax(8rem, 1fr) minmax(12rem, 1.5fr);
+    min-block-size: var(--tui-height-m);
+    block-size: 100%;
+    border-block-start: 1px solid var(--tui-border-normal);
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    column-gap: 0.75rem;
+}
+
+[role='rowgroup'] {
+    grid-auto-rows: minmax(var(--tui-height-m), auto);
+}
+
+[role='cell'] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[tuiTileHandle] {
+    color: var(--tui-text-secondary);
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+tui-tile._dragged [role='row'] {
+    background: var(--tui-background-elevation-1);
+    box-shadow: var(--tui-shadow-small-hover);
+}
+`;export{e as default};
