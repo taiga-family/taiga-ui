@@ -40,8 +40,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     },
 })
 export class TuiScrollbar {
-    private readonly el = tuiInjectElement();
-
+    protected readonly el = tuiInjectElement();
     protected readonly mode = inject(TUI_SCROLLBAR_OPTIONS).mode;
     protected readonly browserScrollRef = new ElementRef(this.el);
 

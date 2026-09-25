@@ -13,7 +13,7 @@ export const TUI_VIEWPORT = new InjectionToken<TuiRectAccessor>(
             const win = inject(WA_WINDOW);
 
             return {
-                type: 'window',
+                type: 'viewport',
                 getClientRect() {
                     const {height = 0, offsetTop = 0} = win.visualViewport || {};
                     const rect = {

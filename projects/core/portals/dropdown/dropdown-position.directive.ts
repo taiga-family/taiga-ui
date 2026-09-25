@@ -29,7 +29,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         this.direction.pipe(distinctUntilChanged()),
     );
 
-    public position(element: HTMLElement): void {
+    public override position(element: HTMLElement): void {
         const {direction, align, offset, limitWidth, minHeight, maxHeight} = this.options;
         const rect = this.anchor.nativeElement.getBoundingClientRect();
         const viewport = this.viewport.getClientRect();

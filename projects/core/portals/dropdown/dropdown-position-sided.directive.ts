@@ -23,7 +23,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     public readonly tuiDropdownSidedOffset = input(4);
     public readonly type = 'dropdown';
 
-    public position(element: HTMLElement): void {
+    public override position(element: HTMLElement): void {
         if (this.tuiDropdownSided() === false) {
             this.vertical?.position(element);
 

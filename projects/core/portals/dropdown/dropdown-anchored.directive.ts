@@ -56,8 +56,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
 
     public ngAfterViewInit(): void {
         if (this.anchored) {
-            // @ts-ignore
-            this.accessor.position(this.el);
+            this.accessor.position?.(this.el);
         } else {
             this.styles$.subscribe({
                 next: (styles) => Object.assign(this.el.style, styles),
