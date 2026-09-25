@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1em" width="1em">
+    <g id="tuiIconRefresh" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            width="1em"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M15 3v4h-4M1 13V9h4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M2.597 6a6.025 6.025 0 0 1 1.595-2.484 5.639 5.639 0 0 1 2.54-1.368 5.475 5.475 0 0 1 2.856.088 5.68 5.68 0 0 1 2.46 1.523L15 6.666M1 9.334l2.953 2.907a5.678 5.678 0 0 0 2.46 1.523c.929.281 1.91.312 2.854.088a5.638 5.638 0 0 0 2.541-1.368 6.023 6.023 0 0 0 1.595-2.483"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

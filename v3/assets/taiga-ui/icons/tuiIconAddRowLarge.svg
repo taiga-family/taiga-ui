@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em">
+    <g id="tuiIconAddRowLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    clip-rule="evenodd"
+                    d="M5.15 1C5.15 0.447715 4.70228 0 4.15 0C3.59772 0 3.15 0.447715 3.15 1V3H1C0.447715 3 0 3.44772 0 4C0 4.55228 0.447715 5 1 5H3.15V7C3.15 7.55228 3.59772 8 4.15 8C4.70228 8 5.15 7.55228 5.15 7V5H7C7.55228 5 8 4.55228 8 4C8 3.44772 7.55228 3 7 3H5.15V1ZM11.6947 3C11.1425 3 10.6947 3.44772 10.6947 4C10.6947 4.55228 11.1425 5 11.6947 5H20V11.5H3C2.44772 11.5 2 11.9477 2 12.5V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V5C22 3.89543 21.1046 3 20 3H11.6947ZM4 13.5H20V20H4V13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                    fill-rule="evenodd"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

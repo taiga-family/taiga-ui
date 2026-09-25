@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9115],{9115:n=>{n.exports="```ts\nimport {isElementAtPoint} from '@taiga-ui/cdk';\n\n//...\nisAtPoint = isElementAtPoint(element, point.x, point.y);\n//...\n```\n"}}]);

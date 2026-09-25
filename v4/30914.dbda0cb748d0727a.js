@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30914],{30914:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n[tuiNotification]::before {\n    .center-top();\n\n    color: var(--tui-text-negative);\n}\n"}}]);

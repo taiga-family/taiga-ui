@@ -1,0 +1,83 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page header="llms.txt">
+    <ng-template pageTab>
+        <p class="description">
+            <code>llms.txt</code>
+            is a
+            <a
+                href="https://llmstxt.org"
+                target="_blank"
+                tuiLink
+            >
+                proposed standard
+            </a>
+            that helps LLMs understand and process a site's content. We generate two always-fresh flavours so tools that
+            lean on LLMs for code generation produce better Taiga UI code.
+        </p>
+
+        <tui-doc-example
+            heading="The files"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <ul tuiList>
+                <li>
+                    <a
+                        href="/llms.txt"
+                        target="_blank"
+                        tuiLink
+                    >
+                        llms.txt
+                    </a>
+                    \u2014 a table-of-contents file with links to the key resources.
+                </li>
+
+                <li>
+                    <a
+                        href="/llms-full.txt"
+                        target="_blank"
+                        tuiLink
+                    >
+                        llms-full.txt
+                    </a>
+                    \u2014 a detailed, compiled set of resources describing how to build with Taiga UI, with component
+                    examples.
+                </li>
+            </ul>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="How to use it"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <p class="description">
+                Paste
+                <code>llms-full.txt</code>
+                straight into your model's context for a zero-setup start, or point any llms.txt-aware tool at the
+                hosted URL so it always reads the current, version-correct API.
+            </p>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading=".md extension"
+            [fullsize]="true"
+            [preview]="false"
+        >
+            <p class="description">
+                Add
+                <code>.md</code>
+                to any documentation page's URL to get a clean Markdown version of that page \u2014 for example,
+                <a
+                    href="/components/button.md"
+                    target="_blank"
+                    tuiLink
+                >
+                    <code>/components/button.md</code>
+                </a>
+                renders the Button page as Markdown. Handy for dropping a single page into a model's context or pointing
+                an agent straight at one component's docs.
+            </p>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

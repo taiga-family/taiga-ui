@@ -1,0 +1,37 @@
+import"./chunk-LQ6M4NCU.js";var l=`<p>
+    <label tuiLabel>
+        <input
+            name="example"
+            tuiRadio
+            type="radio"
+            value="1"
+            [(ngModel)]="value"
+        />
+        example 1
+    </label>
+</p>
+<p>
+    <label tuiLabel>
+        <input
+            name="example"
+            tuiRadio
+            type="radio"
+            value="2"
+            [(ngModel)]="value"
+        />
+        example 2
+    </label>
+</p>
+<p>
+    <label tuiLabel>
+        <input
+            name="example"
+            tuiRadio
+            type="radio"
+            value="3"
+            [(ngModel)]="value"
+        />
+        example 3
+    </label>
+</p>
+`;export{l as default};

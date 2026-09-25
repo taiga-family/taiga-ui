@@ -1,0 +1,108 @@
+import"./chunk-LQ6M4NCU.js";var e=`<button
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Open form
+</button>
+
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="options"
+    [(tuiSheetDialog)]="open"
+>
+    <div class="sheet">
+        <div class="top">
+            <input
+                inputmode="none"
+                class="amount"
+                [size]="value().length + 1"
+                [(ngModel)]="value"
+                (blur)="focused.set(false)"
+                (focus)="focused.set(true)"
+            />
+
+            <div class="chips">
+                <span tuiChip>23 876 $</span>
+                <span tuiChip>10 000 $</span>
+                <span tuiChip>Auto-completion</span>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="card">
+                <div tuiCell>
+                    <tui-avatar
+                        appearance="primary"
+                        tuiAvatar="@tui.circle-user"
+                    />
+                    <div tuiTitle>
+                        23 876 $
+                        <div tuiSubtitle>from Card 1</div>
+                    </div>
+                </div>
+                <div tuiCell>
+                    <tui-avatar
+                        appearance="secondary"
+                        tuiAvatar="@tui.circle-dollar-sign"
+                    />
+                    <div tuiTitle>
+                        1 450 $
+                        <div tuiSubtitle>from Card 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="observer.complete()"
+            >
+                Send
+            </button>
+
+            <div class="clamp">Commission-free</div>
+
+            @if (focused()) {
+                <div
+                    tuiAnimated
+                    class="pad"
+                >
+                    <div class="pad-inner">
+                        <tui-keypad>
+                            @for (digit of digits; track digit) {
+                                <button
+                                    type="button"
+                                    (click)="append(digit)"
+                                >
+                                    {{ digit }}
+                                </button>
+                            }
+
+                            <div></div>
+
+                            <button
+                                type="button"
+                                (click)="append('0')"
+                            >
+                                0
+                            </button>
+
+                            <button
+                                aria-label="Backspace"
+                                type="button"
+                                (click)="backspace()"
+                                (longtap)="clear()"
+                            >
+                                <tui-icon icon="@tui.delete" />
+                            </button>
+                        </tui-keypad>
+                    </div>
+                </div>
+            }
+        </footer>
+    </div>
+</ng-template>
+`;export{e as default};

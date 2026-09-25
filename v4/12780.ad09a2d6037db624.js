@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12780],{12780:n=>{n.exports='```json\n{\n  "$schema": "https://opencode.ai/config.json",\n  "mcp": {\n    "taiga-ui": {\n      "type": "local",\n      "command": ["npx", "-y", "@taiga-ui/mcp@latest", "--source-url=https://taiga-ui.dev/llms-full.txt"],\n      "enabled": true\n    }\n  }\n}\n```\n'}}]);

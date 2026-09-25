@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[42682],{55902:(e,o,t)=>{t.r(o),t.d(o,{TUI_KOREAN_LANGUAGE_ADDON_PREVIEW:()=>_});const _={previewTexts:{rotate:"회전하다"},zoomTexts:{zoomOut:"축소",zoomIn:"확대하다",reset:"다시 놓기"}}}}]);
