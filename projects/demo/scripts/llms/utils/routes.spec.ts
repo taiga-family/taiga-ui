@@ -2,7 +2,14 @@ import fs from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 
-import {buildFolderRouteMap, parseFolderRoutes} from './routes';
+import {
+    buildFolderRouteMap,
+    getPageVersions,
+    getTaigaMajor,
+    parseFolderRoutes,
+    parsePageVersions,
+    resolveComponentVersion,
+} from './routes';
 
 const APP_DIR = '/pages/app';
 
@@ -375,6 +382,93 @@ export const ROUTES = [
             expect(entry?.[0].endsWith(`components${path.sep}dialog-routable`)).toBe(
                 true,
             );
+        });
+    });
+
+    describe('parsePageVersions', () => {
+        it('maps each page title to the version declared in its own object', () => {
+            const source = `
+export const pages = [
+    {section: 'Components', title: 'LegacyPage', meta: {figmaVersion: '1.0.0'}},
+    {
+        section: 'Components',
+        title: 'Group',
+        subPages: [
+            {section: 'Components', title: 'ChildOne', version: '5.22.0'},
+            {section: 'Components', title: 'ChildTwo', meta: {name: 'tui-child-two'}},
+        ],
+    },
+    {section: 'Components', title: 'ScrollWheel', version: '5.21.0'},
+];
+`;
+
+            expect(parsePageVersions(source)).toEqual(
+                new Map([
+                    ['ChildOne', '5.22.0'],
+                    ['ScrollWheel', '5.21.0'],
+                ]),
+            );
+        });
+
+        it('does not leak a sub-page version onto its parent group or sibling', () => {
+            const source = `
+export const pages = [
+    {
+        section: 'Components',
+        title: 'Group',
+        subPages: [
+            {section: 'Components', title: 'ChildOne', version: '5.22.0'},
+            {section: 'Components', title: 'ChildTwo'},
+        ],
+    },
+];
+`;
+
+            const versions = parsePageVersions(source);
+
+            expect(versions.get('Group')).toBeUndefined();
+            expect(versions.get('ChildTwo')).toBeUndefined();
+        });
+
+        it('ignores figmaVersion in meta (not the added-in version)', () => {
+            const source =
+                "{section: 'Components', title: 'X', meta: {figmaVersion: '1.0.0'}}";
+
+            expect(parsePageVersions(source).get('X')).toBeUndefined();
+        });
+    });
+
+    describe('getPageVersions (live sources)', () => {
+        it('parses the real pages.ts, including a versioned sub-page', async () => {
+            const versions = await getPageVersions();
+
+            expect(versions.size).toBeGreaterThan(0);
+            expect(versions.get('ScrollWheel')).toBe('5.21.0');
+            expect(versions.get('SearchBar')).toBe('5.22.0');
+        });
+    });
+
+    describe('resolveComponentVersion', () => {
+        it('prefers the explicit version declared in pages.ts', () => {
+            expect(resolveComponentVersion('5.21.0', 'KIT', 5)).toBe('5.21.0');
+        });
+
+        it('falls back to `${major}.0.0` when the component has a package', () => {
+            expect(resolveComponentVersion(undefined, 'KIT', 5)).toBe('5.0.0');
+        });
+
+        it('returns an empty string when there is no package', () => {
+            expect(resolveComponentVersion(undefined, undefined, 5)).toBe('');
+        });
+
+        it('returns an empty string when the major version is unavailable', () => {
+            expect(resolveComponentVersion(undefined, 'KIT', null)).toBe('');
+        });
+    });
+
+    describe('getTaigaMajor (live sources)', () => {
+        it('reads the current major release from the CDK version constant', async () => {
+            expect(await getTaigaMajor()).toBe(5);
         });
     });
 });

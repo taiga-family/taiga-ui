@@ -320,6 +320,108 @@ function parseRouteBlocks(
     return folderToRoute;
 }
 
+/**
+ * Scans the object starting at `openIndex` (the index of an opening `{`) and returns the
+ * value of the first `version:` property declared at the object's own level — i.e. nested
+ * objects (like `subPages` or `meta`) are skipped, so a sub-page's version never leaks into
+ * its parent group.
+ */
+function readOwnVersion(source: string, openIndex: number): string | undefined {
+    let depth = 0;
+
+    for (let i = openIndex; i < source.length; i++) {
+        const char = source[i];
+
+        if (char === '{') {
+            depth++;
+        } else if (char === '}') {
+            depth--;
+
+            if (depth === 0) {
+                return undefined;
+            }
+        } else if (depth === 1 && source.startsWith('version:', i)) {
+            const version = /version:\s*'([^']+)'/.exec(source.slice(i, i + 80))?.[1];
+
+            if (version) {
+                return version;
+            }
+        }
+    }
+
+    return undefined;
+}
+
+/**
+ * Builds a `page title → version` map from the raw `pages.ts` source, where each route page
+ * optionally declares the version it was added in. The key matches the `header` of the rendered
+ * `<tui-doc-page>`, so it can be looked up directly during markdown generation.
+ */
+export function parsePageVersions(source: string): Map<string, string> {
+    const versions = new Map<string, string>();
+
+    for (const titleMatch of source.matchAll(/\btitle:\s*'([^']*)'/g)) {
+        const title = titleMatch[1];
+
+        if (!title) {
+            continue;
+        }
+
+        const titleEnd = (titleMatch.index ?? 0) + titleMatch[0].length;
+        const objectOpen = source.lastIndexOf('{', titleEnd);
+
+        if (objectOpen === -1) {
+            continue;
+        }
+
+        const version = readOwnVersion(source, objectOpen);
+
+        if (version) {
+            versions.set(title, version);
+        }
+    }
+
+    return versions;
+}
+
+export async function getPageVersions(): Promise<Map<string, string>> {
+    const pagesPath = path.join(getPagesPath(), 'app', 'pages.ts');
+
+    return parsePageVersions(await fs.readFile(pagesPath, 'utf-8'));
+}
+
+/**
+ * Mirrors the version badge of the rendered demo page: the explicit version declared in
+ * `pages.ts` wins, otherwise the component falls back to the current major release
+ * (`${major}.0.0`) when it belongs to a package.
+ */
+export function resolveComponentVersion(
+    explicit: string | undefined,
+    packageName: string | undefined,
+    major: number | null,
+): string {
+    if (explicit) {
+        return explicit;
+    }
+
+    return packageName && major !== null ? `${major}.0.0` : '';
+}
+
+/** Reads the current Taiga major release (e.g. `5`) from the CDK `TUI_VERSION` constant. */
+export async function getTaigaMajor(): Promise<number | null> {
+    const versionPath = path.resolve(process.cwd(), 'projects/cdk/constants/version.ts');
+    const source = await fs.readFile(versionPath, 'utf-8');
+    const major = Number(/\bTUI_VERSION\s*=\s*'(\d+)\.\d+\.\d+'/.exec(source)?.[1]);
+
+    return Number.isNaN(major) ? null : major;
+}
+
+/** Data the generators need to resolve a page's display version. */
+export interface VersionInfo {
+    readonly pages: ReadonlyMap<string, string>;
+    readonly major: number | null;
+}
+
 export function shouldIncludeComponent(
     component: ComponentInfo,
     excludeSections: string[],

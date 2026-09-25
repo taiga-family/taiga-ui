@@ -11,8 +11,13 @@ export {
     DEFAULT_PATH_FILES,
     DEFAULT_ROUTE_FILES,
     extractComponentsFromRoutes,
+    getPageVersions,
+    getTaigaMajor,
     type PagesRoot,
+    parsePageVersions,
+    resolveComponentVersion,
     shouldIncludeComponent,
+    type VersionInfo,
 } from './routes';
 
 // File system operations - exclude fileExists to avoid conflict
