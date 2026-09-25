@@ -95,4 +95,31 @@ test.describe('Textarea', () => {
         await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
         await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
     });
+
+    test('minRows and maxRows set the textarea height limits', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Textarea}/API?minRows=2&maxRows=4`);
+        const {demo} = new TuiDocumentationPagePO(page);
+        const content = demo.locator('tui-textarea-content');
+
+        expect(
+            await content.evaluate((element) => [
+                element.style.minHeight,
+                element.style.maxHeight,
+            ]),
+        ).toEqual(['2.5em', '5em']);
+    });
+
+    test('legacy min and max still set the textarea height limits', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const legacy = new TuiDocumentationPagePO(page)
+            .getExample('#icons')
+            .locator('tui-textarea-content');
+
+        expect(
+            await legacy.evaluate((element) => [
+                element.style.minHeight,
+                element.style.maxHeight,
+            ]),
+        ).toEqual(['5em', '5em']);
+    });
 });

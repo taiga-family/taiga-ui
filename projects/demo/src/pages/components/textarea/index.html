@@ -70,8 +70,8 @@
                         placeholder="Placeholder"
                         tuiTextarea
                         [formControl]="control"
-                        [max]="max"
-                        [min]="min"
+                        [maxRows]="max"
+                        [minRows]="min"
                         [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     ></textarea>
@@ -81,7 +81,7 @@
         <table tuiDocAPI>
             <tbody>
                 <tr
-                    name="[min]"
+                    name="[minRows]"
                     tuiDocAPIItem
                     type="number"
                     [(value)]="min"
@@ -89,7 +89,7 @@
                     minimum number of rows in height
                 </tr>
                 <tr
-                    name="[max]"
+                    name="[maxRows]"
                     tuiDocAPIItem
                     type="number"
                     [(value)]="max"
