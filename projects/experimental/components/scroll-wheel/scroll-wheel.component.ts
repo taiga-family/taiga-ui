@@ -55,7 +55,6 @@ export class TuiScrollWheel implements AfterViewInit {
     constructor() {
         afterNextRender(() => {
             this.el.scrollTop = OFFSET;
-            this.snapping.set(true);
         });
     }
 

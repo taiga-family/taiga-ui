@@ -26,3 +26,24 @@ test('ScrollWheel keeps the initial value after render and resize', async ({page
 
     await expect(wheel).toHaveClass(/_snapping/);
 });
+
+test('ScrollWheel stays stable after switching between API and Examples', async ({page}) => {
+    await tuiGoto(page, DemoRoute.ScrollWheel);
+
+    const navigation = page.locator('tui-doc-page tui-segmented');
+    const api = navigation.getByRole('link', {name: 'API', exact: true});
+    const examples = navigation.getByRole('link', {name: 'Examples', exact: true});
+    const example = page.locator('[automation-id="tui-doc-example"]').nth(1);
+    const wheel = example.locator('tui-scroll-wheel').first();
+    const output = example.locator('output');
+
+    for (let i = 0; i < 3; i++) {
+        await api.click();
+        await expect(example).toHaveCount(0);
+
+        await examples.click();
+
+        await expect(output).toHaveText('Selected: 00:00');
+        await expect(wheel).not.toHaveClass(/_snapping/);
+    }
+});
