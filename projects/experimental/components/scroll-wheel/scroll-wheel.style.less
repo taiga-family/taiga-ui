@@ -7,10 +7,10 @@
     display: block;
     overflow: hidden scroll;
     overscroll-behavior: none;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: none;
 
-    &._initializing {
-        scroll-snap-type: none;
+    &._snapping {
+        scroll-snap-type: y mandatory;
     }
 
     &::before {

@@ -1,14 +1,11 @@
-import {isPlatformBrowser} from '@angular/common';
 import {
     afterNextRender,
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     contentChild,
-    inject,
     input,
     model,
-    PLATFORM_ID,
     signal,
     TemplateRef,
     viewChild,
@@ -36,7 +33,10 @@ const OFFSET = 5_000_000;
     hostDirectives: [TuiScrollRef, WaIntersectionObserverDirective, WaIntersectionRoot],
     host: {
         waIntersectionThreshold: '0.1',
-        '[class._initializing]': 'initializing()',
+        '[class._snapping]': 'snapping()',
+        '(pointerdown.zoneless)': 'snapping.set(true)',
+        '(wheel.passive.zoneless)': 'onWheel($event)',
+        '(window:resize)': 'snapping.set(false)',
         '(scrollend)': 'sync()',
     },
 })
@@ -46,7 +46,7 @@ export class TuiScrollWheel implements AfterViewInit {
     protected readonly wrapper = viewChild.required(TemplateRef);
     protected readonly template = contentChild.required(TemplateRef);
     protected readonly visible = new Set<number>();
-    protected readonly initializing = signal(isPlatformBrowser(inject(PLATFORM_ID)));
+    protected readonly snapping = signal(false);
     protected offset = OFFSET;
 
     public readonly buffer = input(10);
@@ -55,7 +55,7 @@ export class TuiScrollWheel implements AfterViewInit {
     constructor() {
         afterNextRender(() => {
             this.el.scrollTop = OFFSET;
-            this.initializing.set(false);
+            this.snapping.set(true);
         });
     }
 
@@ -77,6 +77,12 @@ export class TuiScrollWheel implements AfterViewInit {
     public update(offset: number): void {
         this.offset = this.offset + offset;
         this.el.style.setProperty('--t-offset', `${this.offset}px`);
+    }
+
+    protected onWheel(event: WheelEvent): void {
+        if (!event.ctrlKey && !event.metaKey) {
+            this.snapping.set(true);
+        }
     }
 
     protected sync(): void {
