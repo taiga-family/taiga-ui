@@ -1,4 +1,5 @@
 import {
+    afterNextRender,
     computed,
     contentChildren,
     Directive,
@@ -16,6 +17,7 @@ import {TuiTableDirective} from './table.directive';
 
 @Directive({selector: 'table[tuiTable][tuiSortBy]'})
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
+    private initialized = false;
     private readonly table = inject(TuiTableDirective<T>);
 
     private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
@@ -37,13 +39,21 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     });
 
     protected readonly sortOutput = effect(() => {
-        if (this.sortables().length) {
-            this.tuiSortChange.emit(this.sortChange());
+        const sortChange = this.sortChange();
+
+        if (this.initialized && this.sortables().length) {
+            this.tuiSortChange.emit(sortChange);
         }
     });
 
     public readonly tuiSortChange = output<TuiSortChange<T>>();
     public readonly tuiSortBy = input<string | keyof T | null>(null);
+
+    constructor() {
+        afterNextRender(() => {
+            this.initialized = true;
+        });
+    }
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
         return this.sortables().find((s) => s.sorter() === sorter)?.key || null;
