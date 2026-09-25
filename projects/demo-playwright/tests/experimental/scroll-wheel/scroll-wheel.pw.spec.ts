@@ -35,7 +35,9 @@ test('ScrollWheel stays stable after switching between API and Examples', async 
     const examples = navigation.getByRole('link', {name: 'Examples', exact: true});
     const example = page.locator('[automation-id="tui-doc-example"]').nth(1);
     const wheel = example.locator('tui-scroll-wheel').first();
+    const items = wheel.locator(':scope > div');
     const output = example.locator('output');
+    const initialItemCount = await items.count();
 
     for (let i = 0; i < 3; i++) {
         await api.click();
@@ -45,5 +47,6 @@ test('ScrollWheel stays stable after switching between API and Examples', async 
 
         await expect(output).toHaveText('Selected: 00:00');
         await expect(wheel).not.toHaveClass(/_snapping/);
+        await expect(items).toHaveCount(initialItemCount);
     }
 });
