@@ -35,9 +35,9 @@ const OFFSET = 5_000_000;
         waIntersectionThreshold: '0.1',
         '[class._snapping]': 'snapping()',
         '(pointerdown.zoneless)': 'snapping.set(true)',
+        '(scrollend)': 'sync()',
         '(wheel.passive.zoneless)': 'onWheel($event)',
         '(window:resize)': 'snapping.set(false)',
-        '(scrollend)': 'sync()',
     },
 })
 export class TuiScrollWheel implements AfterViewInit {
