@@ -23,11 +23,17 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     public readonly tuiDropdownSidedOffset = input(4);
     public readonly type = 'dropdown';
 
-    public position({style}: HTMLElement): void {
+    public position(element: HTMLElement): void {
+        if (this.tuiDropdownSided() === false) {
+            this.vertical?.position(element);
+
+            return;
+        }
+
         const {direction, align, offset, minHeight, maxHeight} = this.options;
         const horizontal = align === 'center' ? 'end' : align;
 
-        Object.assign(style, {
+        Object.assign(element.style, {
             position: 'fixed',
             visibility: 'visible',
             positionAnchor: this.anchor?.nativeElement.dataset.tuiAnchor,
