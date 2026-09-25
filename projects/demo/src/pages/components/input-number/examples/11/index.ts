@@ -15,6 +15,7 @@ export default class Example {
     protected value: number | null = 123_456_789;
 
     protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        decimalSeparator: '.',
         thousandSeparator: ',',
         // 1,2345,6789
         thousandSeparatorPattern: (digits) =>
