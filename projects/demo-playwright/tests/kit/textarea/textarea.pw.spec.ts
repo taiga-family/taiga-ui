@@ -97,7 +97,7 @@ test.describe('Textarea', () => {
     });
 
     test('minRows and maxRows set the textarea height limits', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.Textarea}/API?min=2&max=4`);
+        await tuiGoto(page, `${DemoRoute.Textarea}/API?minRows=2&maxRows=4`);
         const {demo} = new TuiDocumentationPagePO(page);
         const content = demo.locator('tui-textarea-content');
 
