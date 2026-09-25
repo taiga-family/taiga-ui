@@ -10,7 +10,10 @@ test.describe('Slider', () => {
     test.describe('correctly displays values with float percentage progress', () => {
         [4, 7, 13, 24, 39, 78].forEach((value) => {
             test(`value = ${value}`, async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.Slider}/API?max=89&maxValue=89&min=0&minValue=0&step=1`,
+                );
 
                 const {demo} = new TuiDocumentationPagePO(page);
                 const slider = new TuiSliderPO(demo.getByRole('slider'));
@@ -22,6 +25,16 @@ test.describe('Slider', () => {
                     .toHaveScreenshot(`01-slider-float-percentage-${value}.png`);
             });
         });
+    });
+
+    test('minValue and maxValue set native range limits', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Slider}/API?minValue=-5&maxValue=5`);
+
+        const {demo} = new TuiDocumentationPagePO(page);
+        const slider = demo.getByRole('slider');
+
+        await expect(slider).toHaveAttribute('min', '-5');
+        await expect(slider).toHaveAttribute('max', '5');
     });
 
     test.describe('correctly sets control value on input change (using TuiSliderKeyStepsDirective)', () => {
@@ -62,7 +75,10 @@ test.describe('Slider', () => {
     });
 
     test('with [min] > 0', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.Slider}/API?min=1&max=10&segments=9`);
+        await tuiGoto(
+            page,
+            `${DemoRoute.Slider}/API?min=1&minValue=1&max=10&maxValue=10&segments=9`,
+        );
 
         const {demo} = new TuiDocumentationPagePO(page);
 
@@ -72,7 +88,10 @@ test.describe('Slider', () => {
     });
 
     test('with [min] < 0 && [max] > 0', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.Slider}/API?min=-5&max=5&segments=5`);
+        await tuiGoto(
+            page,
+            `${DemoRoute.Slider}/API?min=-5&minValue=-5&max=5&maxValue=5&segments=5`,
+        );
 
         const {demo} = new TuiDocumentationPagePO(page);
 
