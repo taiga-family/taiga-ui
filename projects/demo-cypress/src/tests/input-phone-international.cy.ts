@@ -93,6 +93,20 @@ describe('InputPhoneInternational', () => {
             cy.get('@select').click();
             cy.get('tui-dropdown').should('not.exist');
         });
+
+        it('closes on second country selector click without moving focus from option', () => {
+            cy.get('@select').click();
+            cy.get('tui-dropdown input[tuiInput]')
+                .should('be.focused')
+                .type('{downArrow}');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').trigger('pointerdown');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('not.exist');
+        });
     });
 
     describe('Count form control updates', () => {

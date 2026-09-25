@@ -34,8 +34,6 @@
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
                 [tuiAutoFocus]="!ios"
-                (blur)="searchFocused.set(false)"
-                (focus)="searchFocused.set(true)"
                 (keydown.arrowDown)="list()[0]?.nativeElement?.focus()"
                 (ngModelChange)="host.search.set($event)"
             />

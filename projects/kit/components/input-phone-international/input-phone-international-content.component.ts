@@ -5,7 +5,6 @@ import {
     computed,
     ElementRef,
     inject,
-    signal,
     viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
@@ -59,7 +58,6 @@ import {
 })
 export class TuiInputPhoneInternationalContent {
     protected readonly host = inject(TuiInputPhoneInternationalComponent);
-    protected readonly searchFocused = signal(false);
     protected readonly list = viewChildren(TuiOption, {read: ElementRef});
     protected readonly ios = inject(WA_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -83,7 +81,7 @@ export class TuiInputPhoneInternationalContent {
     });
 
     protected onPointerDown(event: Event): void {
-        if (this.searchFocused()) {
+        if (this.host.open()) {
             event.preventDefault();
         }
     }
