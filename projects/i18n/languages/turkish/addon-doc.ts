@@ -8,4 +8,10 @@ export const TUI_TURKISH_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Ayrıca bakınız',
     tocText: 'Bu sayfada',
     sourceCodeText: 'Kaynak kodu',
+    copyPageTexts: [
+        'Sayfayı kopyala',
+        'Kopyalandı!',
+        'Daha fazla',
+        'Markdown olarak görüntüle',
+    ],
 };

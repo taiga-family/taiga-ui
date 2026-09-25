@@ -159,3 +159,37 @@ npm i @taiga-ui/addon-doc
      </ng-template>
    </tui-doc-page>
    ```
+
+## Copy page
+
+Portals that publish a Markdown twin of every page — `/components/button` served alongside `/components/button.md` — can
+offer it to readers and agents with one provider:
+
+```typescript
+import {tuiDocCopyPageProvider} from '@taiga-ui/addon-doc';
+
+export const config: ApplicationConfig = {
+  providers: [
+    // ...
+    tuiDocCopyPageProvider(),
+  ],
+};
+```
+
+It puts a "Copy page" button and a "View as Markdown" link in the page header, and keeps a
+`<link rel="alternate" type="text/markdown">` in the document head pointing at the twin of the page currently open.
+Nothing is fetched until the button is clicked, and a portal that answers with its SPA shell instead of a twin copies
+nothing rather than the shell.
+
+Labels come from `@taiga-ui/i18n` (`copyPageTexts`) and the glyphs from `TUI_DOC_ICONS` (`copy`, `copied`, `dropdown`).
+
+The twin is looked up at the route of the page with `.md` appended, under the app's base href. When a page answers at
+more than one URL — an empty route aliasing a named one, say, while the twin exists for the named route alone — map one
+to the other:
+
+```typescript
+{
+  provide: TUI_DOC_MARKDOWN_ROUTE_HANDLER,
+  useValue: (route: string) => route || '/getting-started',
+}
+```

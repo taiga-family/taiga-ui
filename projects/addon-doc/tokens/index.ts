@@ -7,6 +7,7 @@ export * from './example-content-processor';
 export * from './excluded-properties';
 export * from './i18n';
 export * from './logo';
+export * from './markdown-route-handler';
 export * from './page-loaded';
 export * from './pages';
 export * from './see-also';

@@ -242,6 +242,7 @@ export interface TuiLanguageDoc {
     seeAlsoText: string;
     tocText: string;
     sourceCodeText: string;
+    copyPageTexts: [copy: string, copied: string, more: string, view: string];
 }
 
 export interface TuiLanguageMeta {
