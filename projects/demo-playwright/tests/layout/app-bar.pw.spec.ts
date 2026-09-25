@@ -19,19 +19,29 @@ test.describe('AppBar', () => {
     test.describe('iOS', () => {
         test.use({viewport: {width: 375, height: 720}});
 
-        test('mobile appbar inside dialog', async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await page.addInitScript(() =>
                 globalThis.localStorage.setItem('tuiPlatform', 'ios'),
             );
 
             await tuiGoto(page, DemoRoute.AppBar);
+        });
 
+        test('mobile appbar inside dialog', async ({page}) => {
             const example = page.locator('#dialog');
             const button = example.locator('button[tuiButton]').last();
 
             await button.click();
 
             await expect.soft(page).toHaveScreenshot('02-app-bar-ios.png');
+        });
+
+        test('left-aligns overflowing title', async ({page}) => {
+            const example = page.locator('tui-doc-example').nth(5);
+            const content = example.locator('tui-app-bar').nth(1).locator('.t-content');
+
+            await expect(content).toHaveClass(/_end/);
+            await expect(content).toHaveCSS('text-align', 'start');
         });
     });
 });
