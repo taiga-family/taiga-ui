@@ -194,56 +194,57 @@ describe('Table sort', () => {
         expect(component.sortKey()).toBe('name');
         expect(component.direction()).toBe(TuiSortDirection.Desc);
     });
-});
 
-describe('Table sort SSR', () => {
-    @Component({
-        selector: 'tui-test-app',
-        imports: [TuiTable],
-        template: `
-            <table
-                tuiTable
-                [columns]="columns"
-                tuiSortBy="name"
-                (tuiSortChange)="change()"
-            >
-                <thead>
-                    <tr tuiThGroup>
-                        <th
-                            *tuiHead="'name'"
-                            tuiSortable
-                            tuiTh
-                        >
-                            Name
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-        `,
-        changeDetection: ChangeDetectionStrategy.OnPush,
-    })
-    class Test {
-        protected readonly columns = ['name'];
-        public static changeCount = 0;
+    describe('SSR', () => {
+        @Component({
+            selector: 'tui-test-app',
+            imports: [TuiTable],
+            template: `
+                <table
+                    tuiTable
+                    [columns]="columns"
+                    tuiSortBy="name"
+                    (tuiSortChange)="change()"
+                >
+                    <thead>
+                        <tr tuiThGroup>
+                            <th
+                                *tuiHead="'name'"
+                                tuiSortable
+                                tuiTh
+                            >
+                                Name
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {
+            public static changeCount = 0;
 
-        protected change(): void {
-            Test.changeCount++;
+            protected readonly columns = ['name'];
+
+            protected change(): void {
+                Test.changeCount++;
+            }
         }
-    }
 
-    it('does not emit tuiSortChange during server rendering', async () => {
-        Test.changeCount = 0;
+        it('does not emit tuiSortChange during server rendering', async () => {
+            Test.changeCount = 0;
 
-        await renderApplication(
-            (context: BootstrapContext) =>
-                bootstrapApplication(
-                    Test,
-                    {providers: [provideServerRendering()]},
-                    context,
-                ),
-            {document: '<tui-test-app></tui-test-app>'},
-        );
+            await renderApplication(
+                async (context: BootstrapContext) =>
+                    bootstrapApplication(
+                        Test,
+                        {providers: [provideServerRendering()]},
+                        context,
+                    ),
+                {document: '<tui-test-app></tui-test-app>'},
+            );
 
-        expect(Test.changeCount).toBe(0);
+            expect(Test.changeCount).toBe(0);
+        });
     });
 });
