@@ -40,6 +40,7 @@
             <tui-mobile-calendar
                 class="calendar"
                 [disabledItemHandler]="disabledItemHandler"
+                [markerHandler]="markerHandler"
                 [max]="max"
                 [min]="min"
                 [multi]="multi"
@@ -61,6 +62,15 @@
             >
                 a handler that gets a date and returns true if it is disabled.
                 <strong>Must be a pure function</strong>
+            </tr>
+            <tr
+                name="[markerHandler]"
+                tuiDocAPIItem
+                type="TuiMarkerHandler | null"
+                [items]="markerHandlerVariants"
+                [(value)]="markerHandler"
+            >
+                a handler that returns marker colors for a date
             </tr>
             <tr
                 name="[max]"

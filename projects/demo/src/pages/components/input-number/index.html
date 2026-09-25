@@ -19,12 +19,15 @@
                 'Fluid typography',
                 'Value transformer',
                 'Quantum',
+                'Thousand separator pattern',
+                'Thousand separator pattern using Intl',
+                'Large integer and large decimal parts',
             ];
             track example
         ) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
-                [content]="$index + 1 | tuiExample"
+                [content]="$index + 1 | tuiExample: 'html,ts,less' : additionalFiles[$index + 1]"
                 [description]="description"
                 [heading]="example"
             />
@@ -53,6 +56,17 @@
                             and
                             <code>precision</code>
                             properties.
+                        </p>
+
+                        <p>
+                            For a more complex case with both extremely large integer and decimal parts, see
+                            <a
+                                fragment="large-integer-and-large-decimal-parts"
+                                tuiLink
+                                [routerLink]="routes.InputNumber"
+                            >
+                                this example.
+                            </a>
                         </p>
                     }
                     @case (2) {
@@ -86,6 +100,19 @@
                             <strong>TuiNumberFormat</strong>
                         </a>
                         allows to customize separators specific for your locale.
+
+                        <p>
+                            <a
+                                fragment="thousand-separator-pattern"
+                                tuiLink
+                                [routerLink]="routes.InputNumber"
+                            >
+                                Explore
+                            </a>
+                            a more advanced use case of
+                            <code>TuiNumberFormat</code>
+                            — grouping digits of the integer part in any way.
+                        </p>
                     }
                     @case (4) {
                         Use
@@ -180,37 +207,54 @@
                             .
                         </p>
                     }
+                    @case (10) {
+                        <a
+                            target="_blank"
+                            tuiLink
+                            [routerLink]="routes.NumberFormat"
+                        >
+                            <strong>TuiNumberFormat</strong>
+                        </a>
+                        with
+                        <code>thousandSeparatorPattern</code>
+                        allows to group digits of the integer part in any way. It is a function that takes a string of
+                        digits and returns an array of groups.
+
+                        <p class="tui-space_bottom-0">
+                            For example, large numbers in Japan are grouped by four digits.
+                        </p>
+                    }
+                    @case (11) {
+                        Built-in
+                        <code>Intl.NumberFormat</code>
+                        knows digit grouping rules of every locale. Use it to create
+                        <code>thousandSeparatorPattern</code>
+                        for any locale, e.g. for the Indian numbering system.
+                    }
+                    @case (12) {
+                        JavaScript’s built‑in
+                        <code>number</code>
+                        type loses precision when a value contains too many digits in either the integer part, the
+                        decimal part, or both.
+
+                        <p>
+                            The built‑in
+                            <code>bigint</code>
+                            type avoids this issue but supports only integers.
+                        </p>
+
+                        <p>
+                            If you need to preserve all extremely large digits of both parts, you can override the
+                            built‑in
+                            <code>TuiValueTransformer</code>
+                            and store the number as an
+                            <code>&#123;significand: bigint; exp: number&#125;</code>
+                            instead.
+                        </p>
+                    }
                 }
             </ng-template>
         }
-
-        <tui-doc-example
-            heading="Large integer and large decimal parts"
-            [component]="11 | tuiComponent"
-            [content]="11 | tuiExample: 'html,ts' : {'transformer.ts': bigIntWithDecimalTransformer}"
-            [description]="largeIntDecimalPartsDescription"
-        >
-            <ng-template #largeIntDecimalPartsDescription>
-                JavaScript’s built‑in
-                <code>number</code>
-                type loses precision when a value contains too many digits in either the integer part, the decimal part,
-                or both.
-
-                <p>
-                    The built‑in
-                    <code>bigint</code>
-                    type avoids this issue but supports only integers.
-                </p>
-
-                <p>
-                    If you need to preserve all extremely large digits of both parts, you can override the built‑in
-                    <code>TuiValueTransformer</code>
-                    and store the number as an
-                    <code>&#123;significand: bigint; exp: number&#125;</code>
-                    instead.
-                </p>
-            </ng-template>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -243,6 +287,7 @@
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
                             thousandSeparator: numberFormatDoc.thousandSeparator(),
+                            thousandSeparatorPattern: numberFormatDoc.thousandSeparatorPattern(),
                             decimalSeparator: numberFormatDoc.decimalSeparator(),
                             precision: numberFormatDoc.precision(),
                             decimalMode: numberFormatDoc.decimalMode(),

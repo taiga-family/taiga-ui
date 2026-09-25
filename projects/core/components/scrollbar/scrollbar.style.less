@@ -1,5 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
+// stylelint-disable plugin/use-baseline -- graceful degradation
 :host {
     position: relative;
     display: flex;
@@ -7,16 +8,20 @@
     isolation: isolate;
     overflow: auto;
 
-    .t-hover-mode:not(:active) {
-        .transition(opacity);
-
+    &._hover:not(:active) > .t-scrollbar {
         opacity: 0;
     }
 
-    &:hover > .t-hover-mode {
-        .transition(opacity);
-
+    &._hover:hover > .t-scrollbar {
         opacity: 1;
+    }
+
+    &._delegated {
+        scroll-timeline: none;
+
+        .t-content {
+            block-size: 100%;
+        }
     }
 }
 
@@ -25,17 +30,16 @@
     flex: 1;
     flex-basis: auto;
     inline-size: 100%;
-    min-inline-size: fit-content;
     block-size: max-content;
-    view-timeline:
-        --t-scrollbar-x x,
-        --t-scrollbar-y y;
-
-    &_delegated {
-        block-size: 100%;
-    }
 }
 
-.t-bars {
-    color: var(--tui-text-primary);
+@supports (anchor-name: --t-scrollbar) {
+    .t-scrollbar {
+        position: fixed;
+        inset: anchor(top) anchor(right) anchor(bottom) anchor(left);
+        position-anchor: --t-scrollbar;
+        min-inline-size: 0;
+        min-block-size: 0;
+        margin: 0;
+    }
 }

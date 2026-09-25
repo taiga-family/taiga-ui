@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 env:
-  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Tests result", "E2E result" ]'
+  PR_JOBS_NAME: '[ "Build packages", "Lint", "Tests result", "E2E result" ]'
   RELEASE_JOBS_NAME: '[ "Publish" ]'
 
 jobs:

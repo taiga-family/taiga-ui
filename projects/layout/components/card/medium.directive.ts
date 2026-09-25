@@ -12,10 +12,10 @@ import {TuiSurface} from '@taiga-ui/layout/components/surface';
 
 @Component({
     template: '',
-    styleUrl: './card.style.less',
+    styleUrl: '../../../styles/components/card.less',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './medium.style.less';
+            @import '@taiga-ui/styles/components/card-medium.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

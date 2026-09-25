@@ -12,7 +12,7 @@
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.09);
     color: var(--tui-text-primary);
     transition:
-        transform var(--tui-duration) var(--tui-curve-expressive-entrance),
+        scale var(--tui-duration) var(--tui-curve-expressive-entrance),
         background-color @tui-duration-fast ease,
         color @tui-duration-fast ease,
         box-shadow @tui-duration-fast ease,
@@ -25,7 +25,7 @@
         inset: 0;
         box-sizing: border-box;
         border-radius: inherit;
-        box-shadow: inset 0 0 0.75rem var(--t-glass-glow);
+        box-shadow: inset 0 0 0.5rem var(--t-glass-glow);
     }
 
     &::after {
@@ -33,7 +33,7 @@
     }
 
     &:active {
-        transform: scale(1.25);
+        scale: 1.25;
         filter: brightness(3);
     }
 
@@ -52,10 +52,6 @@
 [tuiTheme='dark'] [data-platform='ios'].tui-liquid-glass [tuiAppBarButton]:where(*&),
 [data-platform='ios'][tuiTheme='dark'].tui-liquid-glass [tuiAppBarButton]:where(*&) {
     .liquid-glass-dark();
-
-    // the bar background is customizable and feeds the glow,
-    // see `--tui-appbar-background` in `progressive-blur.style.less`
-    --t-glass-glow: var(--tui-appbar-background, rgba(31, 31, 31, 0.8));
 }
 
 // A dark bar over light content keeps the bright bevel of its surroundings

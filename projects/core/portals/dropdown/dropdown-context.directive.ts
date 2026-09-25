@@ -1,19 +1,28 @@
 import {DOCUMENT} from '@angular/common';
-import {computed, Directive, inject} from '@angular/core';
+import {
+    computed,
+    Directive,
+    type ElementRef,
+    inject,
+    type OnDestroy,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_IS_TOUCH} from '@ng-web-apis/platform';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     tuiGetActualTarget,
     tuiInjectElement,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
+import {tuiAnchorDelegate} from '@taiga-ui/core/utils/dom';
 import {filter, merge} from 'rxjs';
 
 import {TuiDropdownDriver} from './dropdown.driver';
+import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
 
 @Directive({
     selector: '[tuiDropdownContext]',
@@ -22,6 +31,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
         TuiDropdownDriver,
         tuiAsDriver(TuiDropdownDriver),
         tuiAsRectAccessor(TuiDropdownContext),
+        tuiProvide(TUI_DROPDOWN_ANCHOR, TuiDropdownContext),
     ],
     host: {
         '[style.-webkit-touch-callout]': 'userSelect()',
@@ -30,7 +40,10 @@ import {TuiDropdownDriver} from './dropdown.driver';
         '(longtap)': 'onContextMenu($event.detail.clientX, $event.detail.clientY)',
     },
 })
-export class TuiDropdownContext extends TuiRectAccessor {
+export class TuiDropdownContext
+    extends TuiRectAccessor
+    implements ElementRef<HTMLElement>, OnDestroy
+{
     private readonly isTouch = inject(WA_IS_TOUCH);
     private currentRect = EMPTY_CLIENT_RECT;
 
@@ -39,7 +52,6 @@ export class TuiDropdownContext extends TuiRectAccessor {
     protected readonly driver = inject(TuiDropdownDriver);
     protected readonly doc = inject(DOCUMENT);
     protected readonly el = tuiInjectElement();
-
     protected readonly sub = merge(
         tuiTypedFromEvent(this.doc, 'pointerdown'),
         tuiTypedFromEvent(this.doc, 'keydown').pipe(filter(({key}) => key === 'Escape')),
@@ -64,13 +76,27 @@ export class TuiDropdownContext extends TuiRectAccessor {
         });
 
     public readonly type = 'dropdown';
+    public readonly nativeElement = tuiAnchorDelegate({
+        width: '1px',
+        height: '1px',
+        top: 'calc(anchor(top)',
+        left: 'calc(anchor(left)',
+    });
+
+    public ngOnDestroy(): void {
+        this.nativeElement.parentNode?.removeChild(this.nativeElement);
+    }
 
     public getClientRect(): DOMRect {
         return this.currentRect;
     }
 
     protected onContextMenu(x: number, y: number): void {
+        const {top, left} = this.el.getBoundingClientRect();
+
         this.currentRect = tuiPointToClientRect(x, y);
+        this.nativeElement.style.top = `calc(anchor(top) + ${y - top}px)`;
+        this.nativeElement.style.left = `calc(anchor(left) + ${x - left}px)`;
         this.driver.next(true);
     }
 }

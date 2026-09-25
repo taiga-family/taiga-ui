@@ -85,7 +85,7 @@ async function main(): Promise<void> {
             continue;
         }
 
-        output.push(`### ${prettifyTitle(group)}`, '');
+        output.push(`## ${prettifyTitle(group)}`, '');
         // Sort links alphabetically by title
         const sortedLinks = bySegment[group]!.sort((a, b) =>
             prettifyTitle(a.name).localeCompare(prettifyTitle(b.name)),
@@ -107,7 +107,7 @@ async function main(): Promise<void> {
                 brief = '';
             }
 
-            output.push(`- [${prettifyTitle(c.name)}](${url})${brief}`);
+            output.push(`- [${prettifyTitle(c.name)}](${url}.md)${brief}`);
         }
 
         output.push('');

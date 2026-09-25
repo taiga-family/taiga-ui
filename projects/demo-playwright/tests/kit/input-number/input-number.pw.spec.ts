@@ -312,6 +312,43 @@ describe('InputNumber', () => {
                 });
             });
 
+            describe('[step]=1 & [disabled]=true', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?step=1&disabled=true`,
+                    );
+
+                    await expect(inputNumber.textfield).toBeDisabled();
+                    await expect(inputNumber.textfield).toHaveValue('');
+                });
+
+                for (const button of ['stepUp', 'stepDown'] as const) {
+                    test(`${button} button does not change value on pointer press and hold`, async ({
+                        page,
+                    }) => {
+                        await expect(inputNumber[button]).toBeDisabled();
+
+                        const box = await inputNumber[button].boundingBox();
+
+                        expect(box).not.toBeNull();
+
+                        await page.mouse.move(
+                            box!.x + box!.width / 2,
+                            box!.y + box!.height / 2,
+                        );
+
+                        await page.mouse.down();
+
+                        await page.waitForTimeout(700);
+
+                        await page.mouse.up();
+
+                        await expect(inputNumber.textfield).toHaveValue('');
+                    });
+                }
+            });
+
             describe('[step]=3', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=3`);
@@ -492,6 +529,7 @@ describe('InputNumber', () => {
 
                 describe('Keeps caret position on step', () => {
                     beforeEach(async () => {
+                        await inputNumber.textfield.focus();
                         await inputNumber.textfield.fill('42');
 
                         await expect(inputNumber.textfield).toHaveValue('42kg');
@@ -516,6 +554,8 @@ describe('InputNumber', () => {
 
                     test('via button', async () => {
                         await inputNumber.stepUp.click();
+                        await expect(inputNumber.stepUp).toBeVisible();
+                        await expect(inputNumber.stepUp).toContainText('+');
                         await expect(inputNumber.textfield).toHaveValue('43kg');
                         // Caret should be at the end of value but before postfix ("kg")
                         await expect(inputNumber.textfield).toHaveJSProperty(
@@ -665,7 +705,7 @@ describe('InputNumber', () => {
                     }) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
+                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true`,
                         );
                         await inputNumber.textfield.focus();
 
@@ -887,6 +927,120 @@ describe('InputNumber', () => {
                 await inputNumber.textfield.pressSequentially('1234567890');
 
                 await expect(inputNumber.textfield).toHaveValue('1.234.567.890');
+            });
+        });
+
+        describe('[thousandSeparatorPattern] prop', () => {
+            describe('Japanese grouping (by four digits)', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=1&thousandSeparator=_&sandboxExpanded=true`,
+                    );
+                });
+
+                test('type 123456789 => 1_2345_6789', async () => {
+                    await inputNumber.textfield.pressSequentially('123456789');
+
+                    await expect(inputNumber.textfield).toHaveValue('1_2345_6789');
+                    await expect(value).toContainText('"value": 123456789');
+                });
+
+                test('does not separate number with four digits', async () => {
+                    await inputNumber.textfield.fill('1000');
+
+                    await expect(inputNumber.textfield).toHaveValue('1000');
+                });
+
+                test('keeps formatted value on blur', async () => {
+                    await inputNumber.textfield.fill('123456789');
+                    await inputNumber.textfield.blur();
+
+                    await expect(inputNumber.textfield).toHaveValue('1_2345_6789');
+                    await expect(value).toContainText('"value": 123456789');
+                });
+
+                test('1_|2345 => Backspace => 1|_2345 (caret navigation)', async ({
+                    page,
+                }) => {
+                    await inputNumber.textfield.fill('12345');
+                    await expect(inputNumber.textfield).toHaveValue('1_2345');
+
+                    await page.keyboard.press('Home');
+                    await page.keyboard.press('ArrowRight');
+                    await page.keyboard.press('ArrowRight');
+
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '1_'.length,
+                    );
+
+                    await page.keyboard.press('Backspace');
+
+                    await expect(inputNumber.textfield).toHaveValue('1_2345');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '1'.length,
+                    );
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '1'.length,
+                    );
+                });
+
+                test('9_9999 => ArrowUp ([step]=1) => 10_0000', async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=1&thousandSeparator=_&step=1`,
+                    );
+                    await inputNumber.textfield.fill('99999');
+                    await expect(inputNumber.textfield).toHaveValue('9_9999');
+
+                    await inputNumber.textfield.press('ArrowUp');
+
+                    await expect(inputNumber.textfield).toHaveValue('10_0000');
+                });
+            });
+
+            describe('Indian grouping (the last three digits, then by two)', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=2&thousandSeparator=_`,
+                    );
+                });
+
+                test('type 123456789 => 12_34_56_789', async () => {
+                    await inputNumber.textfield.pressSequentially('123456789');
+
+                    await expect(inputNumber.textfield).toHaveValue('12_34_56_789');
+                });
+
+                test('type 10000000 => 1_00_00_000', async () => {
+                    await inputNumber.textfield.pressSequentially('10000000');
+
+                    await expect(inputNumber.textfield).toHaveValue('1_00_00_000');
+                });
+
+                test('does not affect decimal part', async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=2&thousandSeparator=_&precision=5`,
+                    );
+                    await inputNumber.textfield.pressSequentially('1234567.89123');
+
+                    await expect(inputNumber.textfield).toHaveValue('12_34_567.89123');
+                });
+
+                test('allows to enter the whole default [min] value', async () => {
+                    await inputNumber.textfield.pressSequentially(
+                        String(Number.MIN_SAFE_INTEGER),
+                    );
+
+                    await expect(inputNumber.textfield).toHaveValue(
+                        `${CHAR_MINUS}9_00_71_99_25_47_40_991`,
+                    );
+                });
             });
         });
 

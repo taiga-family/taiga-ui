@@ -1,7 +1,10 @@
 export const DemoRoute = {
     GettingStarted: '/getting-started',
     BrowserSupport: '/info/browser-support',
-    AISupport: '/ai-support',
+    AiOverview: '/ai/overview',
+    AiMcp: '/ai/mcp',
+    AiSkills: '/ai/skills',
+    AiLlms: '/ai/llms',
     SSR: '/ssr',
     RTL: '/rtl',
     About: '/info/about',

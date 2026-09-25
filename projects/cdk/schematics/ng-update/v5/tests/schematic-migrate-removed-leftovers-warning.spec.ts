@@ -16,7 +16,6 @@ describe('ng-update leftover removed symbols warnings (#11917)', () => {
                 import {Component, inject} from '@angular/core';
                 import {
                     TUI_DATA_LIST_ACCESSOR,
-                    TUI_HINT_PROVIDERS,
                     TUI_THEME,
                     TuiDataListDirective,
                     type TuiLinkOptions,
@@ -24,9 +23,7 @@ describe('ng-update leftover removed symbols warnings (#11917)', () => {
                     tuiAsDataListAccessor,
                 } from '@taiga-ui/core';
 
-                @Component({
-                    providers: [TUI_HINT_PROVIDERS],
-                })
+                @Component({})
                 export class TestComponent {
                     protected readonly theme = inject(TUI_THEME);
                     protected readonly link: TuiLinkOptions | null = null;

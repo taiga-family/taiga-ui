@@ -63,6 +63,7 @@ class Styles {}
         {
             directive: TuiHintDirective,
             inputs: ['tuiHint: tuiTooltip', 'tuiHintAppearance', 'tuiHintContext'],
+            outputs: ['tuiHintVisible'],
         },
     ],
     host: {

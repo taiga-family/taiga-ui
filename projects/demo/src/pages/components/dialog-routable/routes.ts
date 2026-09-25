@@ -1,5 +1,5 @@
 import {type Routes} from '@angular/router';
-import {tuiGenerateDialogableRoute as tuiRouteDialog} from '@taiga-ui/kit';
+import {tuiRouteDialog} from '@taiga-ui/kit';
 
 import {DialogExample as EagerExample} from './2/dialog.component';
 import {DialogExample as NamedOutletExample} from './3/dialog.component';

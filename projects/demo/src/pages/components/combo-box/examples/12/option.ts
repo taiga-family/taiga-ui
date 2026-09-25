@@ -6,7 +6,7 @@ import {tuiInjectValue} from '@taiga-ui/kit';
 
 @Component({
     template: '<span>{{selected() ? "←" : ""}}</span>',
-    styles: ':host {flex-direction: row-reverse; justify-content: start}',
+    styles: ':host { flex-direction: row-reverse; justify-content: start }',
     encapsulation,
     changeDetection,
     host: {'[style.font-weight]': 'selected() ? "bold" : null'},

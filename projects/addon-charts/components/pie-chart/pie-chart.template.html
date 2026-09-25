@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<!--TODO: https://github.com/taiga-family/taiga-ui/issues/15055  -->
 <svg
     focusable="false"
     height="100%"
@@ -26,6 +28,7 @@
         tuiHintPointer
         [style.mask]="mask"
         [tuiHint]="activeItemIndex() >= 0 ? hintContent : ''"
+        [tuiHintAppearance]="hintAppearance"
         [tuiHintContext]="{$implicit: activeItemIndex()}"
         (mouseleave)="activeItemIndex.set(-1)"
     >
@@ -41,10 +44,10 @@
                 d=""
                 fill="currentColor"
                 class="t-segment"
-                [attr.transform]="getTransform($index)"
                 [style.color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
+                [style.transform]="getTransform($index)"
                 [tuiPieChart]="segments()[$index] || [0, 0]"
-                (pointerenter)="activeItemIndex.set($index)"
+                (mouseover)="activeItemIndex.set($index)"
             />
         }
     </g>

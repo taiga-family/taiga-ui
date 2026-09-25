@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -21,7 +22,7 @@ describe('TuiRange', () => {
         describe('change selected range on click', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#size');
-                range = new TuiRangePO(example.locator('tui-range').first());
+                range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST).first());
             });
 
             test('click on the beginning of the track changes only nearest (left) slider', async () => {
@@ -69,7 +70,7 @@ describe('TuiRange', () => {
             describe('basic range (from 0 to 100 with 25 steps). Initial value [0, 25]', () => {
                 beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#segments');
-                    range = new TuiRangePO(example.locator('tui-range'));
+                    range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST));
                 });
 
                 test('pressing of Arrow Right increases by one step (after focus on right slider)', async ({
@@ -242,7 +243,7 @@ describe('TuiRange', () => {
 
                 beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#key-steps');
-                    range = new TuiRangePO(example.locator('tui-range'));
+                    range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST));
                     output = example.locator('output code');
                 });
 
@@ -396,7 +397,7 @@ describe('TuiRange', () => {
     describe('API page', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            range = new TuiRangePO(example.locator('tui-range').first());
+            range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST).first());
         });
 
         test('click on the middle of the track | [min]="0" & [max]="1" & [step]="0.05"', async ({

@@ -1,5 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
+// stylelint-disable plugin/use-baseline -- graceful degradation
+// stylelint-disable plugin/no-unsupported-browser-features -- graceful degradation
 :host {
     position: absolute;
     display: flex;
@@ -7,11 +9,17 @@
     color: var(--tui-text-primary);
     background: var(--tui-background-elevation-1);
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
-    border: 1px solid var(--tui-border-normal);
-    box-sizing: border-box;
+    overflow: auto;
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
+    outline-offset: -1px;
+    outline: 1px solid
+        color-mix(in srgb, rgb(from var(--tui-border-normal) r g b / 1) 12%, var(--tui-background-elevation-1));
+    overscroll-behavior: none;
+    position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline;
 
     --tui-from: translateY(-1rem);
 
@@ -29,16 +37,28 @@
     &:not([style*='top']) {
         visibility: hidden;
     }
+
+    &._delegated {
+        scroll-timeline: none;
+    }
 }
 
-.t-scroll {
-    flex-grow: 1;
-    max-inline-size: calc(100% + 2px);
-    inline-size: max-content;
-    overscroll-behavior: none;
-    margin: -1px;
+.t-wrapper {
+    z-index: -1;
+    flex: 1;
+
+    > * {
+        padding: 1rem;
+    }
 }
 
-.t-primitive {
-    padding: 1rem;
+@supports (anchor-name: --t-scrollbar) {
+    .t-scrollbar {
+        position: fixed;
+        inset: anchor(top) anchor(right) anchor(bottom) anchor(left);
+        position-anchor: --t-scrollbar;
+        min-inline-size: 0;
+        min-block-size: 0;
+        margin: 0;
+    }
 }

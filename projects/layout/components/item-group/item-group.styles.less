@@ -7,7 +7,7 @@
 
     --tui-item-margin: 0.25rem;
 
-    & > *:not(tui-items-with-more) {
+    & > :not(tui-items-with-more, :last-child) {
         margin-block-end: var(--tui-item-margin);
         margin-inline-end: var(--tui-item-margin);
     }
@@ -31,15 +31,15 @@
                     margin-inline-end: var(--tui-item-margin);
                 }
 
-                .transition(~'transform, opacity');
+                .transition(~'scale, opacity');
 
                 opacity: 1;
-                transform: scale(1);
+                scale: 1;
             }
 
             .t-item_hidden {
                 opacity: 0;
-                transform: scale(0.9);
+                scale: 0.9;
             }
         }
     }

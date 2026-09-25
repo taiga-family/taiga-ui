@@ -172,18 +172,30 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
+    protected get openable(): boolean {
+        return (
+            this.open.enabled() &&
+            !this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
+        );
+    }
+
     protected onResize({clientWidth}: HTMLElement): void {
         this.el.style.setProperty('--t-side', tuiPx(clientWidth));
+    }
+
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor()?.setValue(value);
+
+        if (this.dropdown.content() && this.openable) {
+            this.open.toggle(true);
+        }
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
         this.input()?.nativeElement.focus();
 
-        if (
-            !this.open.enabled() ||
-            this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
-        ) {
+        if (!this.openable) {
             return;
         }
 

@@ -25,10 +25,7 @@ describe('InputMonth', () => {
 
         describe('dropdown', () => {
             test('opens on click for NOT readonly input', async ({page}) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputMonth}/API?readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
-                );
+                await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=false`);
 
                 await expect(inputMonth.calendar).not.toBeAttached();
                 await inputMonth.textfield.click();
@@ -36,10 +33,7 @@ describe('InputMonth', () => {
             });
 
             test('does NOT open on click for readonly input', async ({page}) => {
-                await tuiGoto(
-                    page,
-                    `${DemoRoute.InputMonth}/API?readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
-                );
+                await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=true`);
 
                 await expect(inputMonth.calendar).not.toBeAttached();
                 await inputMonth.textfield.click();
@@ -96,7 +90,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=false`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
@@ -110,7 +104,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=true&readonly=false&readOnly=false`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=true&readonly=false`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
@@ -124,7 +118,7 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=true&readOnly=true`, // TODO: delete `readOnly` param in next PR
+                    `${DemoRoute.InputMonth}/API?disabled=false&readonly=true`,
                 );
 
                 await expect(inputMonth.calendar).not.toBeAttached();
@@ -165,6 +159,75 @@ describe('InputMonth', () => {
                 test('does NOT open desktop dropdown on calendar icon click', async () => {
                     await inputMonth.clickOnIcon();
                     await expect(inputMonth.calendar).not.toBeAttached();
+                });
+            });
+        });
+
+        describe('Keyboard clearing', () => {
+            const selectMonth = async (): Promise<void> => {
+                await inputMonth.textfield.click();
+                await new TuiCalendarMonthPO(inputMonth.calendar).month.nth(8).click();
+                await expect(inputMonth.textfield).toHaveValue('September 2020');
+            };
+
+            [true, false].forEach((cleanerEnabled) => {
+                describe(`tuiTextfieldCleaner=${cleanerEnabled}`, () => {
+                    beforeEach(async ({page}) => {
+                        await tuiGoto(
+                            page,
+                            `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
+                        );
+                        await selectMonth();
+                        await inputMonth.textfield.click();
+
+                        await expect(inputMonth.calendar).toBeAttached();
+                    });
+
+                    test('Backspace', async ({page}) => {
+                        await page.keyboard.press('Backspace');
+                        await expect(inputMonth.textfield).toHaveValue(
+                            cleanerEnabled ? '' : 'September 2020',
+                        );
+                    });
+
+                    test('Delete', async ({page}) => {
+                        await page.keyboard.press('ControlOrMeta+A');
+                        await page.keyboard.press('Delete');
+                        await expect(inputMonth.textfield).toHaveValue(
+                            cleanerEnabled ? '' : 'September 2020',
+                        );
+                    });
+                });
+            });
+
+            describe('updates form control value', () => {
+                (['Home', 'End'] as const).forEach((caret) => {
+                    ['Backspace', 'Delete'].forEach((key) => {
+                        test(`caret at ${caret} + ${key} => form control value is null`, async ({
+                            page,
+                        }) => {
+                            await tuiGoto(
+                                page,
+                                `${DemoRoute.InputMonth}/API?sandboxExpanded=true&tuiTextfieldCleaner=true`,
+                            );
+
+                            const documentationPage = new TuiDocumentationPagePO(page);
+
+                            await selectMonth();
+                            await expect(documentationPage.value).toContainText(
+                                '2020-09',
+                            );
+
+                            await inputMonth.textfield.click();
+                            await page.keyboard.press(caret);
+                            await page.keyboard.press(key);
+
+                            await expect(inputMonth.textfield).toHaveValue('');
+                            await expect(documentationPage.value).toContainText(
+                                '"value": null',
+                            );
+                        });
+                    });
                 });
             });
         });

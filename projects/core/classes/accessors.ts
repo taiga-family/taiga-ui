@@ -2,6 +2,7 @@ import {
     type AbstractType,
     type ExistingProvider,
     type FactoryProvider,
+    inject,
     Optional,
     SkipSelf,
     type Type,
@@ -13,26 +14,48 @@ export abstract class TuiAccessor {
     public abstract readonly type: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export abstract class TuiPositionAccessor extends TuiAccessor {
     public abstract getPosition(rect: DOMRect): TuiPoint;
+}
+
+// TODO: fold into the class and drop the `?` in v6
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+export interface TuiPositionAccessor {
+    position?(element: HTMLElement): void;
 }
 
 export abstract class TuiRectAccessor extends TuiAccessor {
     public abstract getClientRect(): DOMRect;
 }
 
+export function tuiInjectAccessor<T extends TuiAccessor>(
+    accessor: AbstractType<T>,
+    type: string,
+): T {
+    return find(inject<readonly T[]>(accessor as any, {self: true}), type);
+}
+
+/** TODO: drop fallback in v6 */
 export function tuiProvideAccessor<T extends TuiAccessor>(
     provide: AbstractType<T>,
     type: string,
-    fallback: Type<T>,
+    fallback?: Type<T>,
 ): FactoryProvider {
-    return {
-        provide,
-        deps: [[new SkipSelf(), new Optional(), provide], fallback],
-        useFactory: tuiFallbackAccessor<T>(type),
-    };
+    return fallback
+        ? {
+              provide,
+              deps: [[new SkipSelf(), new Optional(), provide], fallback],
+              useFactory: tuiFallbackAccessor<T>(type),
+          }
+        : {
+              provide,
+              deps: [[new SkipSelf(), provide]],
+              useFactory: (accessors: readonly T[]): T => find(accessors, type),
+          };
 }
 
+/** @deprecated */
 export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
 ): (accessors: readonly T[] | null, fallback: Omit<T, 'type'>) => T {
@@ -42,6 +65,7 @@ export function tuiFallbackAccessor<T extends TuiAccessor>(
         ) || Object.create(fallback, {type: {value: type}});
 }
 
+/** @deprecated */
 export function tuiPositionAccessorFor(
     type: string,
     fallback: Type<TuiPositionAccessor>,
@@ -49,6 +73,7 @@ export function tuiPositionAccessorFor(
     return tuiProvideAccessor(TuiPositionAccessor, type, fallback);
 }
 
+/** @deprecated */
 export function tuiRectAccessorFor(
     type: string,
     fallback: Type<TuiRectAccessor>,
@@ -64,4 +89,8 @@ export function tuiAsPositionAccessor(
 
 export function tuiAsRectAccessor(accessor: Type<TuiRectAccessor>): ExistingProvider {
     return tuiProvide(TuiRectAccessor, accessor, true);
+}
+
+function find<T extends TuiAccessor>(accessors: readonly T[], type: string): T {
+    return [...accessors].reverse().find((accessor) => accessor.type === type)!;
 }
