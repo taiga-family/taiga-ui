@@ -1,5 +1,6 @@
 import {
     type ComponentRef,
+    computed,
     Directive,
     inject,
     INJECTOR,
@@ -50,6 +51,11 @@ export class TuiTextareaComponent implements OnInit {
         transform: (max) => (typeof max === 'number' ? max : this.options.max),
     });
 
+    /** Row limits for use with Signal Forms, which reserve min and max for field constraints. */
+    public readonly minRows = input<number>();
+    public readonly maxRows = input<number>();
+    public readonly minimumRows = computed(() => this.minRows() ?? this.min());
+    public readonly maximumRows = computed(() => this.maxRows() ?? this.max());
     public readonly content = input(this.options.content);
     public readonly el = tuiInjectElement<HTMLTextAreaElement>();
 
