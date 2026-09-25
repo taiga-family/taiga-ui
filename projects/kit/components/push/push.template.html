@@ -14,7 +14,10 @@
 >
     {{ closeWord$ | async }}
 </button>
-<div class="t-top">
+<div
+    class="t-top"
+    [class._empty]="!type && !timestamp"
+>
     <span class="t-icon">
         <ng-content select="tui-svg,tui-icon" />
     </span>

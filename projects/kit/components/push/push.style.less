@@ -41,6 +41,10 @@
     align-items: center;
     font: var(--tui-font-text-s);
     color: var(--tui-text-secondary);
+
+    &._empty:has(> .t-icon:empty) {
+        display: none;
+    }
 }
 
 .t-icon {
@@ -49,6 +53,10 @@
     transform: scale(0.833);
     transform-origin: top left;
     color: var(--tui-text-action);
+
+    &:empty {
+        display: none;
+    }
 }
 
 .t-time::before {
