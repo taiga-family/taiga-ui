@@ -35,6 +35,6 @@ export abstract class TuiPortals {
     }
 
     public addNode<C extends Node>(node: C): C {
-        return this.anchor().vcr.element.nativeElement.parentElement.appendChild(node);
+        return this.anchor().vcr.element.nativeElement.parentElement.prepend(node);
     }
 }

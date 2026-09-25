@@ -14,8 +14,15 @@ export abstract class TuiAccessor {
     public abstract readonly type: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export abstract class TuiPositionAccessor extends TuiAccessor {
     public abstract getPosition(rect: DOMRect): TuiPoint;
+}
+
+// TODO: fold into the class and drop the `?` in v6
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+export interface TuiPositionAccessor {
+    position?(element: HTMLElement): void;
 }
 
 export abstract class TuiRectAccessor extends TuiAccessor {

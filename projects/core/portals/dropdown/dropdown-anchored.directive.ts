@@ -10,7 +10,7 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import {TUI_ANCHOR_SUPPORT, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -24,6 +24,10 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
         tuiProvideAccessor(TuiPositionAccessor, 'dropdown'),
         tuiProvideAccessor(TuiRectAccessor, 'dropdown'),
     ],
+    host: {
+        '[class._anchored]': 'anchored',
+        '(window:scrollend.zoneless.capture)': 'retrigger()',
+    },
 })
 export class TuiDropdownAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -33,6 +37,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly position = this.directive.position;
+    private readonly accessor = inject(TuiPositionAccessor);
     private readonly styles$ = inject(TuiPositionService).pipe(
         takeWhile(
             () =>
@@ -44,11 +49,35 @@ export class TuiDropdownAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly anchored =
+        inject(TUI_ANCHOR_SUPPORT) &&
+        'position' in this.accessor &&
+        this.viewport.type === 'window';
+
     public ngAfterViewInit(): void {
-        this.styles$.subscribe({
-            next: (styles) => Object.assign(this.el.style, styles),
-            complete: () => this.directive.toggle(false),
-        });
+        if (this.anchored) {
+            this.accessor.position?.(this.el);
+        } else {
+            this.styles$.subscribe({
+                next: (styles) => Object.assign(this.el.style, styles),
+                complete: () => this.directive.toggle(false),
+            });
+        }
+    }
+
+    // https://github.com/w3c/csswg-drafts/issues/14112
+    protected retrigger(): void {
+        if (
+            !this.anchored ||
+            this.el.scrollHeight === this.el.clientHeight ||
+            this.el.clientHeight === this.options.maxHeight
+        ) {
+            return;
+        }
+
+        this.el.style.position = 'static';
+        void this.el.offsetHeight;
+        this.el.style.position = 'fixed';
     }
 
     private getStyles(x: number, y: number): Record<string, string> {
