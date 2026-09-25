@@ -24,7 +24,10 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
         tuiProvideAccessor(TuiPositionAccessor, 'dropdown'),
         tuiProvideAccessor(TuiRectAccessor, 'dropdown'),
     ],
-    host: {'(window:scrollend.zoneless.capture)': 'retrigger()'},
+    host: {
+        '[class._anchored]': 'anchored',
+        '(window:scrollend.zoneless.capture)': 'retrigger()',
+    },
 })
 export class TuiDropdownAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -35,11 +38,6 @@ export class TuiDropdownAnchored implements AfterViewInit {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly position = this.directive.position;
     private readonly accessor = inject(TuiPositionAccessor);
-    private readonly anchor =
-        inject(TUI_ANCHOR_SUPPORT) &&
-        'position' in this.accessor &&
-        this.viewport.type === 'window';
-
     private readonly styles$ = inject(TuiPositionService).pipe(
         takeWhile(
             () =>
@@ -51,8 +49,13 @@ export class TuiDropdownAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly anchored =
+        inject(TUI_ANCHOR_SUPPORT) &&
+        'position' in this.accessor &&
+        this.viewport.type === 'window';
+
     public ngAfterViewInit(): void {
-        if (this.anchor) {
+        if (this.anchored) {
             // @ts-ignore
             this.accessor.position(this.el);
         } else {
@@ -66,7 +69,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
     // https://github.com/w3c/csswg-drafts/issues/14112
     protected retrigger(): void {
         if (
-            !this.anchor ||
+            !this.anchored ||
             this.el.scrollHeight === this.el.clientHeight ||
             this.el.clientHeight === this.options.maxHeight
         ) {

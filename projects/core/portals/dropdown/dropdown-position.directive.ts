@@ -30,19 +30,22 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     );
 
     public position(element: HTMLElement): void {
-        const {top, bottom} = this.viewport.getClientRect();
         const {direction, align, offset, limitWidth, minHeight, maxHeight} = this.options;
         const rect = this.anchor.nativeElement.getBoundingClientRect();
+        const viewport = this.viewport.getClientRect();
         const horizontal = align === 'center' ? '' : `span-x-${invert(align)}`;
         const height = Math.min(element.clientHeight, maxHeight) + offset * 2;
-        const available = direction === 'top' ? rect.top - top : bottom - rect.bottom;
         const vertical = direction || 'bottom';
+        const top = rect.top - viewport.top;
+        const bottom = viewport.bottom - rect.bottom;
+        const available = vertical === 'top' ? top : bottom;
+        const max = Math.max(top, bottom);
 
         Object.assign(element.style, {
             position: 'fixed',
             visibility: 'visible',
             positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
-            positionArea: `${available > height ? vertical : flip(vertical)} ${horizontal}`,
+            positionArea: `${available < height && max !== available ? flip(vertical) : vertical} ${horizontal}`,
             marginBlock: `${offset}px`,
             minBlockSize: `calc-size(fit-content, min(size, ${minHeight}px))`,
             maxBlockSize: `calc-size(fit-content, min(size, ${maxHeight}px))`,
