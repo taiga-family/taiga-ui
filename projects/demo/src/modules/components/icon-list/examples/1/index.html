@@ -1,15 +1,13 @@
 <p class="t-picked">{{ picked?.value || '—' }} {{ picked?.name }}</p>
 
-<tui-scrollbar class="t-scroll">
-    <tui-icon-list>
-        <button
-            *ngFor="let item of emoji"
-            tuiIconOption
-            type="button"
-            [attr.aria-label]="item.name"
-            (click)="picked = item"
-        >
-            {{ item.value }}
-        </button>
-    </tui-icon-list>
-</tui-scrollbar>
+<tui-icon-list class="icon-list">
+    <button
+        *ngFor="let item of emoji"
+        tuiIconOption
+        type="button"
+        [attr.aria-label]="item.name"
+        (click)="picked = item"
+    >
+        {{ item.value }}
+    </button>
+</tui-icon-list>
