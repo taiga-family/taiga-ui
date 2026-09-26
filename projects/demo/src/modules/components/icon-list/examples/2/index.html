@@ -1,43 +1,72 @@
-<tui-textfield iconStart="@tui.search">
-    <input
-        placeholder="Search"
-        tuiTextfield
-        [(ngModel)]="query"
-    />
-</tui-textfield>
-
-<nav
-    tuiTabs
-    class="t-tabs"
-    [tuiIconTabs]="list"
+<tui-textfield
+    tuiChevron
+    class="t-field"
+    [stringify]="stringify"
+    [tuiDropdownLimitWidth]="'auto'"
 >
-    <button
-        *ngFor="let group of groups"
-        tuiTab
-        type="button"
-        [attr.aria-label]="group.label"
+    <input
+        placeholder="Pick an emoji"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <div
+        *tuiTextfieldDropdown
+        class="t-panel"
     >
-        <tui-icon [icon]="group.icon" />
-    </button>
-</nav>
-
-<tui-scrollbar class="t-scroll">
-    <tui-icon-list #list="tuiIconList">
-        <tui-icon-group
-            *ngFor="let group of groups"
-            [label]="group.label"
-        >
-            <button
-                *ngFor="let item of group.items"
-                tuiIconOption
-                type="button"
-                [attr.aria-label]="item.name"
-                (click)="picked = item"
+        <div class="nav-block">
+            <!--
+            Read through (input) rather than ngModel: inside the dropdown of
+            another textfield ngModel on the inner one never fires.
+        -->
+            <tui-textfield
+                iconStart="@tui.search"
+                tuiTextfieldSize="s"
             >
-                {{ item.value }}
-            </button>
-        </tui-icon-group>
-    </tui-icon-list>
-</tui-scrollbar>
+                <input
+                    placeholder="Search"
+                    tuiTextfield
+                    (input)="query.set($any($event.target).value)"
+                />
+            </tui-textfield>
 
-<p class="t-picked">{{ picked?.value || '—' }} {{ picked?.name }}</p>
+            <nav
+                size="m"
+                tuiTabs
+                class="t-tabs"
+                [tuiIconTabs]="list"
+            >
+                <button
+                    *ngFor="let group of groups()"
+                    tuiTab
+                    type="button"
+                    [attr.aria-label]="group.label"
+                >
+                    <tui-icon [icon]="group.icon" />
+                </button>
+            </nav>
+        </div>
+
+        <tui-icon-list
+            #list="tuiIconList"
+            class="list"
+        >
+            <tui-icon-group
+                *ngFor="let group of groups()"
+                [label]="group.label"
+            >
+                <button
+                    *ngFor="let item of group.items"
+                    new
+                    tuiIconOption
+                    tuiOption
+                    type="button"
+                    [attr.aria-label]="item.name"
+                    [value]="item"
+                >
+                    {{ item.value }}
+                </button>
+            </tui-icon-group>
+        </tui-icon-list>
+    </div>
+</tui-textfield>
