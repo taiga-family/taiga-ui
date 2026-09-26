@@ -66,7 +66,6 @@ export class StackblitzDepsService {
 
         return {
             '@taiga-ui/dompurify': demoDeps['@taiga-ui/dompurify'],
-            '@twemoji/api': demoDeps['@twemoji/api'],
             'unicode-emoji-json': demoDeps['unicode-emoji-json'],
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
