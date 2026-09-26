@@ -210,13 +210,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'IconPicker',
-        keywords:
-            'icon, picker, emoji, search, filter, groups, selection, иконка, выбор, эмодзи',
-        route: DemoRoute.IconPicker,
-    },
-    {
-        section: 'Components',
         title: 'Badges',
         subPages: [
             {
