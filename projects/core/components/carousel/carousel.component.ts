@@ -55,7 +55,7 @@ export class TuiCarouselComponent implements AfterViewInit {
             const min = this.min();
 
             if (this.initialized) {
-                this.syncScroll(index, min);
+                requestAnimationFrame(() => this.syncScroll(index, min));
             }
         });
 
@@ -110,7 +110,11 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     private syncScroll(index: number, min: number): void {
-        this.el.scrollLeft = index > min ? this.d * this.el.clientWidth : 0;
+        const scrollLeft = index > min ? this.d * this.el.clientWidth : 0;
+
+        if (this.el.scrollLeft !== scrollLeft) {
+            this.el.scrollLeft = scrollLeft;
+        }
     }
 
     private get d(): number {
