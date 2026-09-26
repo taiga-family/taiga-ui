@@ -1,8 +1,26 @@
 tui-icon-group {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(var(--t-columns, 8), minmax(var(--t-cell, 2.5rem), 1fr));
     /* Span every column of the parent list rather than sitting in one cell */
     grid-column: 1 / -1;
+
+    /**
+     * Divider between groups, as in tui-opt-group. The gap sits on the group
+     * rather than on the sticky heading, so a stuck heading stays compact.
+     */
+    & ~ & {
+        padding-block-start: 0.75rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset-inline: 0.5rem;
+            inset-block-start: var(--tui-data-list-padding);
+            block-size: 1px;
+            background: var(--tui-border-normal);
+        }
+    }
 }
 
 .t-label {
@@ -10,10 +28,13 @@ tui-icon-group {
     /* Rides along the top edge while the group is on screen, then leaves with it */
     inset-block-start: 0;
     grid-column: 1 / -1;
-    padding: 0.5rem 0;
-    margin: 0;
-    font: var(--tui-font-text-ui-m);
+    padding: var(--tui-data-list-padding) 0.375rem;
+    margin: var(--tui-data-list-margin) 0;
+    font: var(--tui-font-text-xs);
     font-weight: bold;
+    line-height: 1rem;
     color: var(--tui-text-primary);
+    white-space: normal;
+    word-break: break-word;
     background: var(--tui-background-base);
 }

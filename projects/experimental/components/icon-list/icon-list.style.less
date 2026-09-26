@@ -1,4 +1,10 @@
-tui-icon-list {
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiIconListV='@{tui-version}'] {
+    /* Same spacing tokens as tuiDataList, so both read as one family */
+    --tui-data-list-padding: 0.25rem;
+    --tui-data-list-margin: 0.0625rem;
+
     /**
      * Cells have an intrinsic size rather than a bare `1fr`, and the host has no
      * `inline-size: 100%`. That is what lets a shrink-to-fit container — an
@@ -8,25 +14,45 @@ tui-icon-list {
      */
     display: grid;
     grid-template-columns: repeat(var(--t-columns, 8), minmax(var(--t-cell, 2.5rem), 1fr));
+    padding: calc(var(--tui-data-list-padding) - var(--tui-data-list-margin)) var(--tui-data-list-padding);
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-tertiary);
 }
 
-[tuiIconOption] {
+[tuiIconOptionV='@{tui-version}'] {
+    .button-clear();
+    .transition(background);
+
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     aspect-ratio: 1;
-    border: none;
-    border-radius: var(--tui-radius-m);
-    background: transparent;
+    margin: var(--tui-data-list-margin);
+    color: var(--tui-text-primary);
+    border-radius: var(--tui-radius-s);
+    outline: none;
     cursor: pointer;
+    background-clip: padding-box;
     font-size: 1.5rem;
     line-height: 1;
     /* An emoji is a grapheme cluster, never let it break apart */
     white-space: nowrap;
 
-    &:hover,
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: default;
+    }
+
+    @media @tui-mouse {
+        &:hover:not(:disabled) {
+            background-color: var(--tui-background-neutral-1);
+        }
+    }
+
+    &:active:not(:disabled),
     &:focus-visible {
-        background: var(--tui-background-neutral-1);
+        background-color: var(--tui-background-neutral-1);
     }
 }
 
