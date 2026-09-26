@@ -53,11 +53,13 @@ export class TuiIconGroup {
 
     /**
      * Distance from the top of the scroll area, negative once scrolled past.
+     * Measured below whatever is stuck on top, see `--tui-icon-list-sticky-offset`.
      */
     public get offset(): number {
         return (
             this.el.getBoundingClientRect().top -
-            this.scroll.nativeElement.getBoundingClientRect().top
+            this.scroll.nativeElement.getBoundingClientRect().top -
+            this.margin
         );
     }
 
@@ -65,5 +67,13 @@ export class TuiIconGroup {
         const root = this.scroll.nativeElement;
 
         root.scrollTo({top: root.scrollTop + this.offset, behavior: 'smooth'});
+    }
+
+    /**
+     * The sticky offset, read back from `scroll-margin` so that any CSS length
+     * arrives already resolved to pixels.
+     */
+    private get margin(): number {
+        return parseFloat(getComputedStyle(this.el).scrollMarginTop) || 0;
     }
 }

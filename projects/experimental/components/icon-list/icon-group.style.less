@@ -7,6 +7,8 @@ tui-icon-group {
     );
     /* Span every column of the parent list rather than sitting in one cell */
     grid-column: 1 / -1;
+    /* Whatever is stuck above the list, a group scrolled to lands below it */
+    scroll-margin-block-start: var(--tui-icon-list-sticky-offset, 0);
 
     /**
      * Divider between groups, as in tui-opt-group. The gap sits on the group
