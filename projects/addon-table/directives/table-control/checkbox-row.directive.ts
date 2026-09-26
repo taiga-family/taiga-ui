@@ -29,7 +29,7 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
     protected readonly checked = computed((checked = this.parent
         .value()
         .includes(this.tuiCheckboxRow())) => {
-        setTimeout(() => this.control.control?.setValue(checked));
+        queueMicrotask(() => this.control.control?.setValue(checked));
 
         return checked;
     });
