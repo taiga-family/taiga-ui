@@ -88,7 +88,7 @@ test.describe('DropdownHover', () => {
                 ).not.toBeAttached();
             });
 
-            test.skip('Opens mobile version of dropdown on the 2nd time click', async ({
+            test('Opens mobile version of dropdown on the 2nd time click', async ({
                 page,
             }) => {
                 await example.locator('button').click();
