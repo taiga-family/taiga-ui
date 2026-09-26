@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     contentChild,
+    effect,
     ElementRef,
     inject,
     input,
@@ -38,6 +39,7 @@ export class TuiCarouselComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly win = inject(WA_WINDOW);
     private readonly behavior = inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth';
+    private initialized = false;
 
     protected readonly math = Math;
     protected readonly template = contentChild.required(TuiItem, {read: TemplateRef});
@@ -48,6 +50,15 @@ export class TuiCarouselComponent implements AfterViewInit {
     public readonly max = input(Infinity);
 
     constructor() {
+        effect(() => {
+            const index = this.index();
+            const min = this.min();
+
+            if (this.initialized) {
+                this.syncScroll(index, min);
+            }
+        });
+
         fromEvent(this.el, 'scroll')
             .pipe(
                 debounceTime(100),
@@ -59,9 +70,8 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        if (this.index() > this.min()) {
-            this.el.scrollLeft = this.d * this.el.clientWidth;
-        }
+        this.initialized = true;
+        this.syncScroll(this.index(), this.min());
     }
 
     public next(): void {
@@ -97,6 +107,10 @@ export class TuiCarouselComponent implements AfterViewInit {
         if (entry?.isIntersecting) {
             this.height.set(entry.target.parentElement?.clientHeight ?? Number.NaN);
         }
+    }
+
+    private syncScroll(index: number, min: number): void {
+        this.el.scrollLeft = index > min ? this.d * this.el.clientWidth : 0;
     }
 
     private get d(): number {
