@@ -4,16 +4,22 @@
     /* Same spacing tokens as tuiDataList, so both read as one family */
     --tui-data-list-padding: 0.25rem;
     --tui-data-list-margin: 0.0625rem;
+    /* Size of a cell; the glyph inside is 1.5rem */
+    --t-cell: 2rem;
 
     /**
      * Cells have an intrinsic size rather than a bare `1fr`, and the host has no
      * `inline-size: 100%`. That is what lets a shrink-to-fit container — an
      * `auto` dropdown or a `size="auto"` dialog — measure the grid instead of
      * collapsing it: a percentage width inside an auto-width parent is circular.
-     * In a container with a width of its own the cells still stretch to fill it.
+     * In a container with a width of its own the tracks stretch to fill it,
+     * while the cells keep their size and spread apart.
      */
     display: grid;
-    grid-template-columns: repeat(var(--t-columns, 8), minmax(var(--t-cell, 2.5rem), 1fr));
+    grid-template-columns: repeat(
+        var(--t-columns, 8),
+        minmax(calc(var(--t-cell) + 2 * var(--tui-data-list-margin)), 1fr)
+    );
     padding: calc(var(--tui-data-list-padding) - var(--tui-data-list-margin)) var(--tui-data-list-padding);
     font: var(--tui-font-text-m);
     color: var(--tui-text-tertiary);
@@ -27,7 +33,10 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    aspect-ratio: 1;
+    inline-size: var(--t-cell);
+    block-size: var(--t-cell);
+    /* A wider track does not stretch the cell, it only spaces cells apart */
+    justify-self: center;
     margin: var(--tui-data-list-margin);
     color: var(--tui-text-primary);
     border-radius: var(--tui-radius-s);

@@ -112,17 +112,21 @@
         <p>
             The grid has an intrinsic width — its cells are
             <code>minmax(var(--t-cell), 1fr)</code>
-            and the host sets no width of its own. That is what lets a shrink-to-fit container measure it: a dropdown
-            with
+            wide (plus the option margin) and the host sets no width of its own. That is what lets a shrink-to-fit
+            container measure it: a dropdown with
             <code>tuiDropdownLimitWidth="auto"</code>
             , or a
             <code>tui-dialog</code>
             with
             <code>size="auto"</code>
-            , wraps around the grid instead of collapsing it. Inside a container that has a width of its own the cells
-            stretch to fill it as before. Override
+            , wraps around the grid instead of collapsing it. Inside a container that has a width of its own the columns
+            stretch to fill it, while the cells keep their size and spread apart. A cell is
+            <code>2rem</code>
+            with a
+            <code>1.5rem</code>
+            glyph; override
             <code>--t-cell</code>
-            to change the minimum cell size.
+            to change it.
         </p>
         <p>
             Note that

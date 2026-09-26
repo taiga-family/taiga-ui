@@ -1,7 +1,10 @@
 tui-icon-group {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(var(--t-columns, 8), minmax(var(--t-cell, 2.5rem), 1fr));
+    grid-template-columns: repeat(
+        var(--t-columns, 8),
+        minmax(calc(var(--t-cell) + 2 * var(--tui-data-list-margin)), 1fr)
+    );
     /* Span every column of the parent list rather than sitting in one cell */
     grid-column: 1 / -1;
 
