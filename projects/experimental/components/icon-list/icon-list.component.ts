@@ -101,6 +101,10 @@ export class TuiIconList<T = unknown>
             .subscribe(() => this.recollect());
 
         this.update();
+        // A search that drops groups shifts everything below, so recount
+        this.groups.changes
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => this.update());
         tuiTypedFromEvent(this.scroll.nativeElement, 'scroll')
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => this.update());
@@ -150,14 +154,30 @@ export class TuiIconList<T = unknown>
      */
     private update(): void {
         const groups = this.groups.toArray();
-        const root = this.scroll.nativeElement;
-        // The last group is usually too short to ever reach the top edge
-        const bottom = root.scrollTop + root.clientHeight >= root.scrollHeight - 1;
-        const next = groups.findIndex(({offset}) => offset > 1);
-        const active = bottom
-            ? groups.length - 1
-            : Math.max((next < 0 ? groups.length : next) - 1, 0);
+        const active = this.findActive(groups);
 
         groups.forEach((group, index) => group.active.set(index === active));
+    }
+
+    private findActive(groups: readonly TuiIconGroup[]): number {
+        const {scrollTop, clientHeight, scrollHeight} = this.scroll.nativeElement;
+
+        /**
+         * Not scrolled means the first group, whatever the geometry says: in a
+         * dropdown this first runs before the panel is laid out, when every size
+         * is zero and would otherwise read as the bottom.
+         */
+        if (scrollTop <= 0) {
+            return 0;
+        }
+
+        // The last group is usually too short to ever reach the top edge
+        if (scrollTop + clientHeight >= scrollHeight - 1) {
+            return groups.length - 1;
+        }
+
+        const next = groups.findIndex(({offset}) => offset > 1);
+
+        return Math.max((next < 0 ? groups.length : next) - 1, 0);
     }
 }
