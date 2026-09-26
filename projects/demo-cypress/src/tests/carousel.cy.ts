@@ -19,13 +19,11 @@ describe('TuiCarousel', () => {
                 <ng-container *tuiItem="let index">{{ index }}</ng-container>
             </tui-carousel>
         `,
-        styles: [
-            `
-                tui-carousel {
-                    inline-size: 20rem;
-                }
-            `,
-        ],
+        styles: `
+            tui-carousel {
+                inline-size: 20rem;
+            }
+        `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {

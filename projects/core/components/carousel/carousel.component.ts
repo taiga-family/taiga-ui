@@ -109,14 +109,6 @@ export class TuiCarouselComponent implements AfterViewInit {
         }
     }
 
-    private syncScroll(index: number, min: number): void {
-        const scrollLeft = index > min ? this.d * this.el.clientWidth : 0;
-
-        if (this.el.scrollLeft !== scrollLeft) {
-            this.el.scrollLeft = scrollLeft;
-        }
-    }
-
     private get d(): number {
         return this.el.matches('[dir="rtl"] :scope') ? -1 : 1;
     }
@@ -126,5 +118,13 @@ export class TuiCarouselComponent implements AfterViewInit {
             !!((this.win.devicePixelRatio * 100) % 1) &&
             this.el.scrollWidth - this.el.clientWidth - Math.abs(this.el.scrollLeft) < 1
         );
+    }
+
+    private syncScroll(index: number, min: number): void {
+        const scrollLeft = index > min ? this.d * this.el.clientWidth : 0;
+
+        if (this.el.scrollLeft !== scrollLeft) {
+            this.el.scrollLeft = scrollLeft;
+        }
     }
 }
