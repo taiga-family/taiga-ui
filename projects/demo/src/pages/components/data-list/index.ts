@@ -10,7 +10,7 @@ import {delay, of} from 'rxjs';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page extends Array {
+export default class Page {
     private readonly items = ['Foo', 'Bar', 'Baz'];
 
     protected readonly items$ = inject(WA_IS_E2E)
@@ -22,7 +22,7 @@ export default class Page extends Array {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[0]!;
 
-    protected readonly [3] = {
+    protected readonly customList = {
         'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw', {
             with: {loader: 'text'},
         }),
