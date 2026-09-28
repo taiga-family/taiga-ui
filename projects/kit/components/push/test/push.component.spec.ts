@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -45,6 +46,33 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
             const labelElement = getLabelElement();
 
             expect(labelElement.nativeElement.textContent.trim()).toBe(heading);
+        });
+    });
+
+    describe('top row', () => {
+        it('does not render without type, timestamp or icon', () => {
+            tuiPushService.open('Test').subscribe();
+            fixture.detectChanges();
+
+            expect(getLabelElement()).not.toBeNull();
+            expect(fixture.debugElement.query(By.css('.t-top'))).toBeNull();
+        });
+
+        it.each([{type: 'News'}, {timestamp: '12:00'}, {icon: '@tui.star'}])(
+            'renders with %j',
+            (options) => {
+                tuiPushService.open('Test', options).subscribe();
+                fixture.detectChanges();
+
+                expect(fixture.debugElement.query(By.css('.t-top'))).not.toBeNull();
+            },
+        );
+
+        it('renders a zero timestamp', () => {
+            tuiPushService.open('Test', {timestamp: 0}).subscribe();
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css('.t-top .t-time'))).not.toBeNull();
         });
     });
 });
