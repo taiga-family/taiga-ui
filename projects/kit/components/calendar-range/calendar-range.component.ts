@@ -6,12 +6,20 @@ import {
     linkedSignal,
     model,
     type OnChanges,
+    type OnDestroy,
     type OnInit,
     type SimpleChanges,
     untracked,
 } from '@angular/core';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {TuiDay, type TuiDayLike, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {
+    RANGE_SEPARATOR_CHAR,
+    tuiDateClamp,
+    TuiDay,
+    type TuiDayLike,
+    TuiDayRange,
+    TuiMonth,
+} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -25,7 +33,12 @@ import {
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
-import {TUI_COMMON_ICONS, tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+import {
+    TUI_COMMON_ICONS,
+    TUI_DATE_FORMAT,
+    TUI_TEXTFIELD_VALUE,
+    tuiAsAuxiliary,
+} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 
@@ -44,21 +57,19 @@ import {type TuiDayRangePeriod} from './day-range-period';
         tuiProvide(AbstractTuiCalendar<TuiDayRange>, TuiCalendarRange),
         tuiCalendarSheetOptionsProvider({rangeMode: true}),
     ],
-    host: {
-        '[class._mobile]': 'mobile',
-        '(document:keydown.capture)': 'onEsc($event)',
-    },
+    host: {'[class._mobile]': 'mobile'},
 })
 export class TuiCalendarRange
     extends AbstractTuiCalendar<TuiDayRange>
-    implements OnInit, OnChanges
+    implements OnInit, OnChanges, OnDestroy
 {
     /**
      * @deprecated use `item`
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
+    private readonly format = inject(TUI_DATE_FORMAT);
+    private readonly textfieldValue = inject(TUI_TEXTFIELD_VALUE, {optional: true});
 
-    protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -78,9 +89,14 @@ export class TuiCalendarRange
         TuiDayRange | null,
         TuiDay | TuiDayRange | null
     >({
-        source: this.value,
+        source: () => {
+            this.min();
+            this.max();
+
+            return this.value();
+        },
         computation: (value, current) => {
-            if (value !== current?.value) {
+            if (value !== current?.value || !value) {
                 untracked(() => this.initDefaultViewedMonth(value));
             }
 
@@ -118,13 +134,12 @@ export class TuiCalendarRange
         this.initDefaultViewedMonth();
     }
 
-    protected onEsc(event: KeyboardEvent): void {
-        if (event.key !== 'Escape' || !(this.currentValue() instanceof TuiDay)) {
-            return;
-        }
+    public ngOnDestroy(): void {
+        const value = this.currentValue();
 
-        event.stopPropagation();
-        this.currentValue.set(this.previousValue);
+        if (value instanceof TuiDay) {
+            this.value.set(new TuiDayRange(value, value.append({})));
+        }
     }
 
     protected readonly monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (
@@ -189,7 +204,6 @@ export class TuiCalendarRange
     protected onDayClick(day: TuiDay): void {
         const value = this.currentValue();
 
-        this.previousValue = value;
         this.selectedActivePeriod = null;
 
         if (value instanceof TuiDay) {
@@ -199,7 +213,12 @@ export class TuiCalendarRange
             this.item.set(this.findItemByDayRange(range));
             this.value.set(range);
         } else {
+            const {mode, separator} = this.format();
+
             this.currentValue.set(day);
+            this.textfieldValue?.set(
+                `${day.toString(mode, separator)}${RANGE_SEPARATOR_CHAR}`,
+            );
         }
     }
 
@@ -223,18 +242,14 @@ export class TuiCalendarRange
     }
 
     private initDefaultViewedMonth(value = this.currentValue()): void {
+        const single = this.items().length || this.mobile;
         const min = this.min();
-        const max = this.max();
+        const max = single ? this.max() : this.max().append({month: -1});
+        const month = value instanceof TuiDay ? value : value?.from;
+        const current = this.month();
+        const visible = !single && month?.append({month: -1}).monthSame(current);
 
-        if (value instanceof TuiDay) {
-            this.month.set(value);
-        } else if (value) {
-            this.month.set(this.items().length ? value.to : value.from);
-        } else if (max && this.month().monthSameOrAfter(max)) {
-            this.month.set(this.items().length ? max : max.append({month: -1}));
-        } else if (min && this.month().monthSameOrBefore(min)) {
-            this.month.set(min);
-        }
+        this.month.set(tuiDateClamp(visible ? current : month || current, min, max));
     }
 
     private findItemByDayRange(dayRange: TuiDayRange): TuiDayRangePeriod | null {

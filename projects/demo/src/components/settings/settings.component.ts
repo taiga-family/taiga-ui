@@ -88,6 +88,7 @@ export class SettingsComponent {
         ['portuguese', 'PT'],
         ['russian', 'RU'],
         ['spanish', 'ES'],
+        ['tajik', 'TJ'],
         ['turkish', 'TR'],
         ['ukrainian', 'UA'],
         ['vietnamese', 'VN'],
@@ -110,6 +111,9 @@ export class SettingsComponent {
             this.switcher.setLanguage(language);
             this.doc.documentElement.setAttribute('dir', direction);
             this.doc.documentElement.setAttribute('data-platform', platform);
+            this.doc.querySelectorAll('tui-root').forEach((el) => {
+                el.setAttribute('data-platform', platform);
+            });
             this.storage?.setItem(TUI_PLATFORM_KEY, platform);
 
             if (theme === null) {

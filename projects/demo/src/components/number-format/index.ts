@@ -8,7 +8,7 @@ import {
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiRounding} from '@taiga-ui/cdk';
+import {CHAR_MINUS, type TuiRounding} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_NUMBER_FORMAT,
     type TuiDecimalMode,
@@ -39,6 +39,16 @@ export class TuiDocNumberFormat implements Record<
         'floor',
     ];
 
+    protected readonly thousandSeparatorPatternVariants = [
+        TUI_DEFAULT_NUMBER_FORMAT.thousandSeparatorPattern,
+        // Japanese grouping: 1,2345,6789
+        (digits: string): readonly string[] =>
+            digits.match(/\d{1,4}(?=(?:\d{4})*$)/g) ?? [],
+        // Indian grouping: 12,34,56,789
+        (digits: string): readonly string[] =>
+            digits.match(/\d{1,2}(?=(?:\d{2})*\d{3}$)|\d{1,3}$/g) ?? [],
+    ];
+
     public readonly hiddenOptions = input<Array<string | keyof TuiNumberFormatSettings>>(
         [],
     );
@@ -47,9 +57,16 @@ export class TuiDocNumberFormat implements Record<
         TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator,
     );
 
+    public readonly thousandSeparatorPattern = signal(
+        TUI_DEFAULT_NUMBER_FORMAT.thousandSeparatorPattern,
+    );
+
     public readonly decimalSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator);
     public readonly precision = signal(TUI_DEFAULT_NUMBER_FORMAT.precision);
     public readonly decimalMode = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalMode);
     public readonly rounding = signal(TUI_DEFAULT_NUMBER_FORMAT.rounding);
     public readonly negativePattern = signal(TUI_DEFAULT_NUMBER_FORMAT.negativePattern);
+    public readonly minusSign = signal(CHAR_MINUS);
+    public readonly maximumFractionDigits = signal(TUI_DEFAULT_NUMBER_FORMAT.precision);
+    public readonly minimumFractionDigits = signal(0);
 }

@@ -1,39 +1,14 @@
-<tui-textfield>
+<tui-textfield [disabledItemHandler]="handler">
+    <label tuiLabel>Choose a date</label>
     <input
-        list="dates"
-        placeholder="Pick a date"
         tuiInputDateTime
         type="datetime-local"
+        [max]="max"
+        [min]="min"
         [(ngModel)]="value"
     />
-
-    <datalist id="dates">
-        @for (date of dates | keyvalue: asIs; track date) {
-            <option [value]="toISOString(date.value)">
-                {{ date.key }}
-            </option>
-        }
-    </datalist>
-
-    <section *tuiDropdown>
-        <tui-calendar />
-
-        <tui-data-list>
-            @for (date of dates | keyvalue: asIs; track date) {
-                <button
-                    tuiOption
-                    [value]="date.value"
-                >
-                    {{ date.key }}
-                </button>
-            }
-
-            <button
-                tuiOption
-                [disabled]="true"
-            >
-                v5
-            </button>
-        </tui-data-list>
-    </section>
+    <tui-calendar
+        *tuiDropdown
+        [showAdjacent]="false"
+    />
 </tui-textfield>

@@ -1,5 +1,7 @@
 declare module 'highlight*';
 
+declare const strict: boolean;
+
 /* SystemJS module definition */
 declare var module: NodeModule;
 

@@ -1,7 +1,6 @@
 <section
     #contentWrapper
     attributeFilter="src"
-    characterData
     childList
     subtree
     class="t-wrapper"
@@ -12,7 +11,7 @@
     (resize)="onResize(contentWrapper)"
     (tuiPan)="onPan($event)"
     (tuiZoom)="onZoom($event)"
-    (waMutationObserver)="onResize(contentWrapper)"
+    (waMutationObserver)="onMutation(contentWrapper, $event)"
 >
     <ng-content />
 </section>

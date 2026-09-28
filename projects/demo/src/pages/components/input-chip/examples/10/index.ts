@@ -12,7 +12,8 @@ import {
     TuiButton,
     TuiDataList,
     TuiInput,
-    TuiScrollable,
+    TuiScrollControls,
+    TuiScrollRef,
     TuiSelectLike,
     type TuiTextfieldComponent,
 } from '@taiga-ui/core';
@@ -31,11 +32,11 @@ import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
         TuiInput,
         TuiInputChip,
         TuiMultiSelect,
-        TuiScrollable,
+        TuiScrollControls,
+        TuiScrollRef,
         TuiSelectLike,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

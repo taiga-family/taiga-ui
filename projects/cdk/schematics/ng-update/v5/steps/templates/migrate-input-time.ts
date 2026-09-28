@@ -14,6 +14,7 @@ import {
     removeControlStateAttrs,
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
+import {getOriginalAttrText} from '../../../utils/templates/get-original-attr-text';
 import {removeAttr} from '../../../utils/templates/remove-attr';
 import {replaceTag} from '../../../utils/templates/replace-tag';
 
@@ -196,11 +197,18 @@ export function migrateInputTime({
         );
 
         const baseAttrs = [...controlAttrs, ...inputAttrs].reduce((result, attr) => {
-            const name =
-                INPUT_ATTR_RENAMES.get(attr.name.toLowerCase()) ??
-                normalizeAttrName(attr.name);
+            const nameLower = attr.name.toLowerCase();
+            const renamed = INPUT_ATTR_RENAMES.get(nameLower);
 
-            return attr.value ? `${result} ${name}="${attr.value}"` : `${result} ${name}`;
+            if (renamed !== undefined) {
+                return attr.value
+                    ? `${result} ${renamed}="${attr.value}"`
+                    : `${result} ${renamed}`;
+            }
+
+            const original = getOriginalAttrText(template, element, attr);
+
+            return `${result} ${original}`;
         }, '');
 
         const migrationAttrs = `${baseAttrs}${stringifyControlStateAttrs(controlStateAttrs)}`;
@@ -231,23 +239,4 @@ export function migrateInputTime({
             });
         }
     });
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

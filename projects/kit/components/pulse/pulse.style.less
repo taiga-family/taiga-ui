@@ -3,7 +3,7 @@
 @keyframes tuiPulse {
     to {
         opacity: 0;
-        transform: scale(2.5);
+        scale: 2.5;
     }
 }
 
@@ -31,12 +31,13 @@
 
     &::before {
         opacity: 1;
-        transform: scale(0);
+        scale: 0;
     }
 
     &._playing {
         &::before {
-            animation: tuiPulse 1s 1s ease-in-out infinite;
+            animation: tuiPulse calc(var(--tui-duration) * 10 / 3) calc(var(--tui-duration) * 10 / 3) ease-in-out
+                infinite;
         }
 
         &::after {

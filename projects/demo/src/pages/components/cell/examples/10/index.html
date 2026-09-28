@@ -85,3 +85,26 @@
         </button>
     </footer>
 </ng-template>
+
+<div
+    appearance="floating"
+    tuiCardLarge
+>
+    <h3 tuiTitle="m">Inside a card</h3>
+    @for (item of items; track item) {
+        <button
+            tuiCell
+            tuiCellStretch
+            type="button"
+        >
+            <div
+                appearance="accent"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    }
+</div>

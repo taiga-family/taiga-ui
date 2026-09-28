@@ -9,6 +9,13 @@ import {TUI_THICKNESS_COMMENT} from '../migrate-css-variables';
 
 const STRING_LITERAL_RE = /^'[^']*'$/;
 
+// tuiHeader: a value that is exactly one single-quoted literal is auto-migrated by
+// ATTR_WITH_VALUES_TO_REPLACE (single quotes only) or is already a v5 token — skip it.
+// Any other dynamic binding is opaque (a signal, variable or ternary): it cannot be
+// rewritten safely, so it gets a manual-migration TODO.
+const HEADER_SINGLE_LITERAL =
+    /^'(?:xxl|xl|[lms]|xs|xxs|h1|h2|h3|h4|h5|h6|body-l|body-m|body-s)'$/;
+
 export const HTML_COMMENTS: HtmlComment[] = [
     {
         tag: '*',
@@ -76,6 +83,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'rounded input has been removed. The previous rounded look can still be achieved with CSS. See example https://taiga-ui.dev/components/accordion#custom',
     },
     {
+        tag: 'tui-thumbnail-card',
+        withAttrs: ['monoHandler'],
+        comment:
+            '`monoHandler` was removed from <tui-thumbnail-card> in v5. The payment-system logo now renders from a configured icon map — provide your own mono or colored icons via the `icons` field of TUI_THUMBNAIL_CARD_OPTIONS instead. See https://taiga-ui.dev/components/thumbnail-card#options',
+    },
+    {
         tag: 'timeline-steps',
         withAttrs: [],
         comment:
@@ -124,5 +137,45 @@ export const HTML_COMMENTS: HtmlComment[] = [
         },
         comment:
             'tui-svg/src migrated to tui-icon/icon. The icon input expects an icon name (e.g. @tui.search) or an SVG URL; raw inline SVG is no longer supported - replace it with an icon name or URL',
+    },
+    {
+        tag: '*',
+        withAttrs: ['[tuiHeader]'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, '[tuiHeader]')?.value?.trim();
+
+            return !!value && !HEADER_SINGLE_LITERAL.test(value);
+        },
+        comment:
+            '`tuiHeader` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding could not be migrated automatically — if it resolves to an old size token, update it to the v5 token manually. See https://taiga-ui.dev/components/header',
+    },
+    {
+        tag: 'table',
+        withAttrs: ['(tuiSortByChange)'],
+        comment:
+            'tuiSortByChange has been removed. Use (tuiSortChange) instead, but note its $event is now the full TuiSortChange object ({sortKey, sortDirection}), not the sort key string.',
+    },
+    {
+        tag: 'tui-scrollbar',
+        withAttrs: ['hidden'],
+        comment:
+            'The [hidden] input has been removed from <tui-scrollbar>. Configure a hidden scrollbar via tuiScrollbarOptionsProvider({mode: "hidden"}) (or TUI_SCROLLBAR_OPTIONS) instead — [hidden] now binds the native DOM attribute and would hide the whole element.',
+    },
+    {
+        tag: '*',
+        withAttrs: ['(focusedChange)', '[(focused)]'],
+        comment:
+            'focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly `focused` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield',
+    },
+    {
+        tag: '*',
+        withAttrs: ['class'],
+        filterFn: (element) => {
+            const value = findAttr(element.attrs, 'class')?.value;
+
+            return !!value && value.split(/\s+/).includes('tui-group__auto-width-item');
+        },
+        comment:
+            '`tui-group__auto-width-item` was removed in v5. Re-create it on the child element with CSS: `flex: 0 0 auto; min-inline-size: auto;`.',
     },
 ];

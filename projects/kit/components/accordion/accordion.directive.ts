@@ -24,8 +24,7 @@ import {TuiAccordionComponent} from './accordion.component';
     },
 })
 export class TuiAccordionDirective implements OnChanges {
-    private readonly accordion = inject(TuiAccordionComponent);
-
+    public readonly accordion = inject(TuiAccordionComponent);
     public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
     public readonly id = tuiGenerateId();
     public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);

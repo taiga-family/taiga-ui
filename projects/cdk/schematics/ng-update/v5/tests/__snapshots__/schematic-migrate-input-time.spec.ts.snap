@@ -103,7 +103,7 @@ exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.ts 1`] = `
   "1. After": "import { TuiInputTime } from "@taiga-ui/kit";
 
                                 @NgModule({
-                    imports: [TuiInputTime],
+                    imports: [...TuiInputTime],
                 })
                 export class MyModule {}
 
@@ -137,6 +137,31 @@ exports[`ng-update moves [mode] to <input tuiInputTime>: test.html 1`] = `
                 </label>
 
 <input tuiInputTime formControlName="time" [mode]="'HH:MM'" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-time
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose time
+                </tui-input-time>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose time
+                </label>
+
+<input tuiInputTime [formControlName]="control" (ngModelChange)="onChange($event)" />
 </tui-textfield>
             ",
 }

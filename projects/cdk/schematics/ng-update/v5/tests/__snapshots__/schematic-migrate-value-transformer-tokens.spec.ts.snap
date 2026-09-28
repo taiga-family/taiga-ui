@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update date/time value-transformer tokens warning adds TODO comments for the removed date/time value-transformer tokens: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_DATE_RANGE_VALUE_TRANSFORMER,
+                    TUI_DATE_TIME_VALUE_TRANSFORMER,
+                    TUI_DATE_VALUE_TRANSFORMER,
+                    TUI_TIME_VALUE_TRANSFORMER,
+                } from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly date = inject(TUI_DATE_VALUE_TRANSFORMER);
+                    protected readonly dateRange = inject(
+                        TUI_DATE_RANGE_VALUE_TRANSFORMER,
+                    );
+                    protected readonly dateTime = inject(TUI_DATE_TIME_VALUE_TRANSFORMER);
+                    protected readonly time = inject(TUI_TIME_VALUE_TRANSFORMER);
+                }
+            ",
+  "1. After": "
+                import {Component, inject} from '@angular/core';
+                import {
+// TODO: (Taiga UI migration) TUI_DATE_RANGE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-range options instead: tuiInputDateRangeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.
+                    TUI_DATE_RANGE_VALUE_TRANSFORMER,
+// TODO: (Taiga UI migration) TUI_DATE_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date-time options instead: tuiInputDateTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.
+                    TUI_DATE_TIME_VALUE_TRANSFORMER,
+// TODO: (Taiga UI migration) TUI_DATE_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-date options instead: tuiInputDateOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.
+                    TUI_DATE_VALUE_TRANSFORMER,
+// TODO: (Taiga UI migration) TUI_TIME_VALUE_TRANSFORMER has been removed. Provide the transformer through the input-time options instead: tuiInputTimeOptionsProvider({valueTransformer: ...}) from @taiga-ui/kit.
+                    TUI_TIME_VALUE_TRANSFORMER,
+                } from '@taiga-ui/kit';
+
+                @Component({})
+                export class TestComponent {
+                    protected readonly date = inject(TUI_DATE_VALUE_TRANSFORMER);
+                    protected readonly dateRange = inject(
+                        TUI_DATE_RANGE_VALUE_TRANSFORMER,
+                    );
+                    protected readonly dateTime = inject(TUI_DATE_TIME_VALUE_TRANSFORMER);
+                    protected readonly time = inject(TUI_TIME_VALUE_TRANSFORMER);
+                }
+            ",
+}
+`;
+
+exports[`ng-update date/time value-transformer tokens warning adds a TODO comment for the removed TUI_DATE_ADAPTER lookup: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_DATE_ADAPTER} from '@taiga-ui/kit';
+
+                export const maskitoMode = TUI_DATE_ADAPTER['DMY'];
+            ",
+  "1. After": "
+// TODO: (Taiga UI migration) TUI_DATE_ADAPTER has been removed. TuiDateMode and MaskitoDateMode are now compatible with each other; the adapter is no longer required.
+                import {TUI_DATE_ADAPTER} from '@taiga-ui/kit';
+
+                export const maskitoMode = TUI_DATE_ADAPTER['DMY'];
+            ",
+}
+`;

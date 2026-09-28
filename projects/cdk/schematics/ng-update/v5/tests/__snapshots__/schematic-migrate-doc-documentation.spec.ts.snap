@@ -167,6 +167,28 @@ exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames [documentat
 }
 `;
 
+exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames TuiDocDocumentation import to TuiDocAPI: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiDocDocumentation} from '@taiga-ui/addon-doc';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiDocDocumentation],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiDocAPI } from "@taiga-ui/addon-doc";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiDocAPI],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update tui-doc-documentation to table[tuiDocAPI] renames one-way [documentationPropertyValue] + (documentationPropertyValueChange) to [value] + (valueChange): test.html 1`] = `
 {
   "0. Before": "

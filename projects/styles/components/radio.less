@@ -34,18 +34,18 @@
     }
 
     &::before {
-        .fullsize(absolute, inset);
-
         content: '';
+        position: absolute;
+        inset: 0;
         margin: auto;
         border-radius: 100%;
         background: currentColor;
-        transform: scale(0);
-        transition-property: transform;
+        scale: 0;
+        transition-property: scale;
     }
 
     &:checked::before {
-        transform: scale(0.5);
+        scale: 0.5;
     }
 
     &[data-size='s'] {

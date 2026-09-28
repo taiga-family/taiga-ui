@@ -4,6 +4,7 @@ import {
     DestroyRef,
     type DoCheck,
     inject,
+    INJECTOR,
     input,
     type OnInit,
     ViewEncapsulation,
@@ -44,6 +45,7 @@ import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
 })
 export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, OnInit {
     private readonly destroyRef = inject(DestroyRef);
+    private readonly injector = inject(INJECTOR);
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly options = inject<T>(TUI_RADIO_OPTIONS);
@@ -53,7 +55,7 @@ export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, On
     public readonly size = input(this.options.size);
 
     public ngOnInit(): void {
-        tuiControlValue(this.control)
+        tuiControlValue(this.control, this.injector)
             .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
             .subscribe((value) => {
                 // https://github.com/angular/angular/issues/14988

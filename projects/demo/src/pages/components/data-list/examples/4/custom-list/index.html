@@ -1,16 +1,28 @@
 <div class="t-list-search">
-    <tui-textfield iconStart="@tui.search">
+    <tui-textfield
+        iconStart="@tui.search"
+        [tuiAppearanceFocus]="true"
+    >
         <input
             placeholder="Search categories"
             tuiAutoFocus
             tuiInput
-            [focused]="true"
             [(ngModel)]="value"
         />
     </tui-textfield>
 </div>
+<ng-template #emptyContent>
+    No results found.
+    <button
+        tuiLink
+        type="button"
+        (click)="value = ''"
+    >
+        Clear search
+    </button>
+</ng-template>
 <tui-data-list
-    emptyContent="No results found"
+    [emptyContent]="emptyContent"
     (keydown)="onKeyDown($event.key)"
 >
     @if (!value) {

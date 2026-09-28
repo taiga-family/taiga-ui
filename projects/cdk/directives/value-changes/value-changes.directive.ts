@@ -1,4 +1,4 @@
-import {Directive, type DoCheck, inject} from '@angular/core';
+import {Directive, type DoCheck, inject, INJECTOR} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {ControlContainer, NgControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
@@ -6,13 +6,14 @@ import {distinctUntilChanged, skip, Subject, switchMap} from 'rxjs';
 
 @Directive({selector: '[tuiValueChanges]'})
 export class TuiValueChanges<T> implements DoCheck {
+    private readonly injector = inject(INJECTOR);
     private readonly container = inject(ControlContainer, {optional: true});
     private readonly control = inject(NgControl, {optional: true});
     private readonly control$ = new Subject<ControlContainer | NgControl | null>();
 
     private readonly tuiValueChanges$ = this.control$.pipe(
         distinctUntilChanged(),
-        switchMap(tuiControlValue<T>),
+        switchMap((control) => tuiControlValue<T>(control, this.injector)),
         distinctUntilChanged(),
         skip(1),
     );

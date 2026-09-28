@@ -1,14 +1,15 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
@@ -16,9 +17,9 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiInputNumber,
@@ -54,8 +55,19 @@ export default class PageComponent {
     protected postfix = '';
     protected quantum = 0;
 
-    protected readonly bigIntWithDecimalTransformer = import(
-        './examples/11/transformer.ts?raw',
-        {with: {loader: 'text'}}
-    );
+    protected readonly additionalFiles: Record<
+        number,
+        Record<string, TuiRawLoaderContent> | undefined
+    > = {
+        12: {
+            'intl-pattern.ts': import('./examples/12/intl-pattern.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+        13: {
+            'transformer.ts': import('./examples/13/transformer.ts?raw', {
+                with: {loader: 'text'},
+            }),
+        },
+    };
 }

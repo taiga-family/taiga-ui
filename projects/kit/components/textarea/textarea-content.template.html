@@ -9,7 +9,6 @@
     aria-hidden="true"
     class="t-ghost"
 >
-    <ng-container *polymorpheusOutlet="host.content() as text; context: {$implicit: textfield.value()}">
-        {{ text }}
-    </ng-container>
+    @let context = {$implicit: textfield.value()};
+    <ng-container *polymorpheusOutlet="host.content() as text; context: context">{{ text }}</ng-container>
 </span>

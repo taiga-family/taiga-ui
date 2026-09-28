@@ -17,6 +17,6 @@ import {TuiInputMonthContent} from './input-month-content.component';
 })
 // TODO(v6): rename to TuiInputMonthNative
 export class TuiInputMonthComponent {
-    public readonly min = input<TuiMonth | null>(null);
-    public readonly max = input<TuiMonth | null>(null);
+    public readonly min = input<TuiMonth | null | undefined>(null);
+    public readonly max = input<TuiMonth | null | undefined>(null);
 }

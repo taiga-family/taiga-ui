@@ -22,6 +22,7 @@ export const TUI_TURKISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Çıkıntı',
         unorderedList: 'Noktalı liste',
         orderedList: 'Numerik liste',
+        taskList: 'Görev listesi',
         quote: 'Alıntı',
         foreColor: 'Renk',
         backColor: 'Arka plan rengi',

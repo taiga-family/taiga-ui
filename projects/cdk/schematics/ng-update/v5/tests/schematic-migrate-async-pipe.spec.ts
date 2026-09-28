@@ -97,5 +97,41 @@ describe('ng-update remove | async from signal-based pipes', () => {
         migrate({template: '{{ countries | tuiSortCountries | async }}'}),
     );
 
+    it(
+        'drops the now-unused AsyncPipe from imports when the last | async is removed',
+        migrate({
+            component: /* TypeScript */ `
+                import {AsyncPipe} from '@angular/common';
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [AsyncPipe],
+                })
+                export class Test {}
+            `,
+            template: '{{ 10728.9 | tuiAmount | async }}',
+        }),
+    );
+
+    it(
+        'keeps AsyncPipe in imports while an unrelated | async remains',
+        migrate({
+            component: /* TypeScript */ `
+                import {AsyncPipe} from '@angular/common';
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [AsyncPipe],
+                })
+                export class Test {}
+            `,
+            template: '{{ 10728.9 | tuiAmount | async }} {{ obs$ | async }}',
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update comment for removed CSS variables adds comment for removed data-list and textarea variables in styles: test.less 1`] = `
+{
+  "0. Before": "
+                @import '@taiga-ui/core/styles/taiga-ui-local';
+
+                tui-data-list {
+                    --tui-data-list-padding: 0.5rem;
+                    --tui-data-list-margin: 0.125rem;
+                }
+
+                tui-textarea {
+                    --tui-textarea-height: 8rem;
+                }
+            ",
+  "1. After": "
+                @import '@taiga-ui/styles/utils';
+
+                tui-data-list {
+// TODO: (Taiga UI migration) The tui-data-list spacing variables (padding and margin) have been removed. tui-data-list spacing is now fixed in the component and is no longer exposed as a CSS variable; restyle [tuiOption] (or tui-data-list) directly if you need different spacing.
+                    --tui-data-list-padding: 0.5rem;
+// TODO: (Taiga UI migration) The tui-data-list spacing variables (padding and margin) have been removed. tui-data-list spacing is now fixed in the component and is no longer exposed as a CSS variable; restyle [tuiOption] (or tui-data-list) directly if you need different spacing.
+                    --tui-data-list-margin: 0.125rem;
+                }
+
+                tui-textarea {
+// TODO: (Taiga UI migration) The tui-textarea height variable has been removed. The textarea moved to @taiga-ui/kit and auto-sizes to its content; control the height with the [min] and [max] row inputs (or set min-block-size on the element) instead.
+                    --tui-textarea-height: 8rem;
+                }
+            ",
+}
+`;

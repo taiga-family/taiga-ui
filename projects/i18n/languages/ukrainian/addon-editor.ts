@@ -22,6 +22,7 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Зменшити відступ',
         unorderedList: 'Маркований список',
         orderedList: 'Нумерований список',
+        taskList: 'Список завдань',
         quote: 'Цитата',
         foreColor: 'Колір: Текст',
         hiliteColor: 'Колір виділення',

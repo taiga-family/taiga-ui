@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update spread barrel arrays in NgModule imports does not spread a barrel replacement in a standalone component: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiTextareaModule} from '@taiga-ui/legacy';
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTextareaModule],
+                    template: '',
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiTextarea } from "@taiga-ui/kit";
+
+                                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiTextarea],
+                    template: '',
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
+exports[`ng-update spread barrel arrays in NgModule imports keeps neighbors and their order when spreading a barrel element: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputModule} from '@taiga-ui/legacy';
+                import {CommonModule} from '@angular/common';
+                import {NgModule} from '@angular/core';
+
+                class AaaModule {}
+                class ZzzModule {}
+
+                @NgModule({
+                    imports: [CommonModule, AaaModule, TuiInputModule, ZzzModule],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+
+                                import {CommonModule} from '@angular/common';
+                import {NgModule} from '@angular/core';
+
+                class AaaModule {}
+                class ZzzModule {}
+
+                @NgModule({
+                    imports: [CommonModule, AaaModule, ...TuiInput, ZzzModule],
+                })
+                export class TestModule {}
+            ",
+}
+`;
+
+exports[`ng-update spread barrel arrays in NgModule imports re-migrates a file that already contains spread barrels without doubling them: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TuiInputModule,
+                    TuiMultiSelectModule,
+                    TuiTextfieldControllerModule,
+                } from '@taiga-ui/legacy';
+                import {TuiTextfield} from '@taiga-ui/core';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [
+                        ...TuiTextfield,
+                        TuiInputModule,
+                        TuiTextfieldControllerModule,
+                        TuiMultiSelectModule,
+                    ],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiInput } from "@taiga-ui/core";
+import { TuiMultiSelect } from "@taiga-ui/kit";
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [
+                        ...TuiInput,
+                        ...TuiMultiSelect,
+                    ],
+                })
+                export class TestModule {}
+            ",
+}
+`;
+
+exports[`ng-update spread barrel arrays in NgModule imports spreads a barrel replacement inside @NgModule imports: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiTextareaModule} from '@taiga-ui/legacy';
+                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [TuiTextareaModule],
+                })
+                export class TestModule {}
+            ",
+  "1. After": "import { TuiTextarea } from "@taiga-ui/kit";
+
+                                import {NgModule} from '@angular/core';
+
+                @NgModule({
+                    imports: [...TuiTextarea],
+                })
+                export class TestModule {}
+            ",
+}
+`;

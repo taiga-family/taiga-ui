@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update remove | async from signal-based pipes drops the now-unused AsyncPipe from imports when the last | async is removed: test.html 1`] = `
+{
+  "0. Before": "{{ 10728.9 | tuiAmount | async }}",
+  "1. After": "{{ 10728.9 | tuiAmount }}",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes drops the now-unused AsyncPipe from imports when the last | async is removed: test.ts 1`] = `
+{
+  "0. Before": "
+                import {AsyncPipe} from '@angular/common';
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [AsyncPipe],
+                })
+                export class Test {}
+            ",
+  "1. After": "
+                import {AsyncPipe} from '@angular/common';
+                import {Component} from '@angular/core';
+
+                @Component({
+                    standalone: true,
+                    templateUrl: './test.html',
+                    imports: [],
+                })
+                export class Test {}
+            ",
+}
+`;
+
+exports[`ng-update remove | async from signal-based pipes keeps AsyncPipe in imports while an unrelated | async remains: test.html 1`] = `
+{
+  "0. Before": "{{ 10728.9 | tuiAmount | async }} {{ obs$ | async }}",
+  "1. After": "{{ 10728.9 | tuiAmount }} {{ obs$ | async }}",
+}
+`;
+
 exports[`ng-update remove | async from signal-based pipes should handle multiline template: test.html 1`] = `
 {
   "0. Before": "

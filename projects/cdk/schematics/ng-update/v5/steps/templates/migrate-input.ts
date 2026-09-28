@@ -15,6 +15,10 @@ import {
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
 import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -80,6 +84,12 @@ const LABEL_OUTSIDE_ATTRS = new Set([
 const LEGACY_INPUT_ATTRS = new Set([
     'tuiTextfield'.toLowerCase(),
     'tuiTextfieldLegacy'.toLowerCase(),
+]);
+
+const DROPDOWN_OPEN_RENAMES = new Map<string, string>([
+    ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
+    ['[(tuiDropdownOpen)]'.toLowerCase(), '[(open)]'],
+    ['[tuiDropdownOpen]'.toLowerCase(), '[open]'],
 ]);
 
 function isDropdownAttr(nameLower: string): boolean {
@@ -148,16 +158,6 @@ export function buildTuiInputReplacement(
     hintIconStr = '',
 ): {startOffset: number; endOffset: number; replacement: string} | null {
     return buildReplacement(template, element, hintIconStr);
-}
-
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 interface MigrationContext {
@@ -233,40 +233,32 @@ function buildReplacement(
         }
 
         if (ATTRS_WITH_NO_EQUIVALENT.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-            const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
+            const original = getOriginalAttrText(template, element, attr);
+            const originalName = /^[\w[\]()]+/.exec(original)?.[0] ?? attr.name;
 
             ctx.noEquivalentAttrs.push(originalName);
             // Still place it on the wrapper so the code at least compiles with a warning
-            textfieldAttrs.push(
-                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-            );
+            textfieldAttrs.push(original);
             continue;
         }
 
         if (isClassOrStyleAttr(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            textfieldAttrs.push(
-                original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name),
-            );
+            textfieldAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower) || isDropdownAttr(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-            const migratedValue = migrateAttrValue(nameLower, attr.value);
-            let attrText: string;
+            const original = getOriginalAttrText(template, element, attr);
+            const renamed = DROPDOWN_OPEN_RENAMES.get(nameLower);
 
-            if (original) {
-                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
-            } else if (attr.value) {
-                attrText = `${attr.name}="${migratedValue}"`;
-            } else {
-                attrText = attr.name;
+            if (renamed) {
+                textfieldAttrs.push(`${renamed}${original.slice(attr.name.length)}`);
+                continue;
             }
 
-            textfieldAttrs.push(attrText);
+            const migratedValue = migrateAttrValue(nameLower, attr.value);
+
+            textfieldAttrs.push(replaceAttrValue(original, migratedValue));
             continue;
         }
 
@@ -275,27 +267,16 @@ function buildReplacement(
         }
 
         if (CONTROL_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            inputAttrs.push(
-                original ??
-                    (attr.value
-                        ? `${normalizeAttrName(attr.name)}="${attr.value}"`
-                        : attr.name),
-            );
+            inputAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
         // Unrecognized attr — place on <tui-textfield> (the host replacement) with TODO
-        const original = getOriginalAttrText(template, element, nameLower);
-
-        const originalText =
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
-
-        const originalName = original?.match(/^[\w[\]()]+/)?.[0] ?? attr.name;
+        const original = getOriginalAttrText(template, element, attr);
+        const originalName = /^[\w[\]()]+/.exec(original)?.[0] ?? attr.name;
 
         ctx.unknownAttrs.push(originalName);
-        textfieldAttrs.push(originalText);
+        textfieldAttrs.push(original);
     }
 
     const controlStateStr = stringifyControlStateAttrs(controlStateAttrs);
@@ -391,6 +372,12 @@ function buildTodoComment(ctx: MigrationContext): string {
     return `${lines.join('\n')}\n`;
 }
 
+function renameDropdownContentDirective(html: string): string {
+    return html
+        .replaceAll(/\*tuiDataList\b/g, '*tuiDropdown')
+        .replaceAll(/\*tuiTextfieldDropdown\b/g, '*tuiDropdown');
+}
+
 function buildInnerContent({
     element,
     template,
@@ -448,7 +435,9 @@ function buildInnerContent({
             const childLoc = child.sourceCodeLocation;
 
             return childLoc
-                ? template.slice(childLoc.startOffset, childLoc.endOffset)
+                ? renameDropdownContentDirective(
+                      template.slice(childLoc.startOffset, childLoc.endOffset),
+                  )
                 : '';
         })
         .join('');
@@ -606,23 +595,4 @@ function getPlaceholderText(element: Element): string {
     );
 
     return (textNode as DefaultTreeAdapterTypes.TextNode | undefined)?.value.trim() ?? '';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

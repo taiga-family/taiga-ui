@@ -51,16 +51,66 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '*tuiDropdown'},
     },
     {
-        from: {attrName: 'tuiTextfield', withTagNames: ['*']},
+        from: {attrName: '*tuiActionBar', withTagNames: ['*']},
+        to: {attrName: '*tuiPopup'},
+    },
+    {
+        from: {attrName: 'tuiTextfield', withTagNames: ['input']},
         to: {attrName: 'tuiInput'},
+    },
+    // `select[tuiTextfield]` was the native select; its v5 successor is the native
+    // `select[tuiSelect]` (TuiNativeSelect), not `tuiInput` (there is no select[tuiInput]).
+    {
+        from: {attrName: 'tuiTextfield', withTagNames: ['select']},
+        to: {attrName: 'tuiSelect'},
     },
     {
         from: {attrName: 'tuiDropdownOpen', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownAuto'},
     },
     {
+        from: {
+            attrName: '[(tuiDropdownOpen)]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[(open)]'},
+    },
+    {
+        from: {
+            attrName: '[tuiDropdownOpen]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[open]'},
+    },
+    {
+        from: {
+            attrName: '(tuiDropdownOpenChange)',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '(openChange)'},
+    },
+    {
         from: {attrName: 'tuiDropdownMobile', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownSheet'},
+    },
+    {
+        from: {attrName: '[tuiDropdownMobile]', withTagNames: ['*']},
+        to: {attrName: '[tuiDropdownSheet]'},
     },
     {
         from: {attrName: '[tuiSheet]', withTagNames: ['*']},
@@ -79,11 +129,23 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: '[loading]'},
     },
     {
+        from: {attrName: 'exampleText', withTagNames: ['tui-input-card-group']},
+        to: {attrName: 'placeholder'},
+    },
+    {
+        from: {attrName: '[exampleText]', withTagNames: ['tui-input-card-group']},
+        to: {attrName: '[placeholder]'},
+    },
+    {
         from: {attrName: 'tuiStepper', withTagNames: ['nav']},
         to: {attrName: ''},
     },
     {
         from: {attrName: 'tuiTabs', withTagNames: ['nav']},
+        to: {attrName: ''},
+    },
+    {
+        from: {attrName: 'tuiTabsWithMore', withTagNames: ['nav']},
         to: {attrName: ''},
     },
     {

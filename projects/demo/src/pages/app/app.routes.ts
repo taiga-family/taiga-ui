@@ -163,6 +163,11 @@ export const ROUTES: Routes = [
         title: 'Message',
     }),
     route({
+        path: DemoRoute.Meter,
+        loadComponent: async () => import('../components/meter'),
+        title: 'Meter',
+    }),
+    route({
         path: DemoRoute.Title,
         title: 'Title',
         loadComponent: async () => import('../components/title'),
@@ -253,6 +258,11 @@ export const ROUTES: Routes = [
         title: 'Search',
     }),
     route({
+        path: DemoRoute.SearchBar,
+        loadComponent: async () => import('../components/search-bar'),
+        title: 'SearchBar',
+    }),
+    route({
         path: DemoRoute.Breadcrumbs,
         title: 'Breadcrumbs',
         loadComponent: async () => import('../components/breadcrumbs'),
@@ -288,9 +298,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar'),
     }),
     route({
-        path: DemoRoute.DatePicker,
-        title: 'DatePicker',
-        loadComponent: async () => import('../components/date-picker'),
+        path: DemoRoute.CalendarExperimental,
+        title: 'CalendarExperimental',
+        loadComponent: async () => import('../components/calendar-experimental'),
     }),
     route({
         path: DemoRoute.Carousel,
@@ -343,6 +353,11 @@ export const ROUTES: Routes = [
         title: 'Expand',
     }),
     route({
+        path: DemoRoute.ScrollWheel,
+        loadComponent: async () => import('../components/scroll-wheel'),
+        title: 'ScrollWheel',
+    }),
+    route({
         path: DemoRoute.ElasticContainer,
         loadComponent: async () => import('../components/elastic-container'),
         title: 'ElasticContainer',
@@ -361,6 +376,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Form,
         loadComponent: async () => import('../components/form'),
         title: 'Form',
+    }),
+    route({
+        path: DemoRoute.Keypad,
+        loadComponent: async () => import('../components/keypad'),
+        title: 'Keypad',
     }),
     route({
         path: DemoRoute.Group,
@@ -1056,15 +1076,35 @@ export const ROUTES: Routes = [
         title: 'Migration Guide',
     }),
     route({
-        path: DemoRoute.AISupport,
-        loadComponent: async () => import('../info/ai-support'),
+        path: DemoRoute.AiOverview,
+        loadComponent: async () => import('../info/ai/overview'),
         title: 'AI support',
+    }),
+    route({
+        path: DemoRoute.AiMcp,
+        loadComponent: async () => import('../info/ai/mcp'),
+        title: 'MCP server',
+    }),
+    route({
+        path: DemoRoute.AiSkills,
+        loadComponent: async () => import('../info/ai/skills'),
+        title: 'Skills',
+    }),
+    route({
+        path: DemoRoute.AiLlms,
+        loadComponent: async () => import('../info/ai/llms'),
+        title: 'llms.txt',
     }),
     route({
         path: DemoRoute.Obfuscate,
         loadComponent: async () => import('../pipes/obfuscate'),
         title: 'Obfuscate',
     }),
+    {
+        path: 'ai-support',
+        redirectTo: 'ai/overview',
+        pathMatch: 'full',
+    },
     {
         path: '**',
         redirectTo: '',

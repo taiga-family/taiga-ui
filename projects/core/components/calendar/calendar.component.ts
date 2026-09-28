@@ -30,7 +30,7 @@ import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
-    selector: 'tui-calendar:not([new])',
+    selector: 'tui-calendar:not([new]):not([months])',
     imports: [
         TuiCalendarSheet,
         TuiCalendarSpin,
@@ -91,8 +91,8 @@ export class TuiCalendar extends AbstractTuiCalendar {
     }
 
     public onDayClick(day: TuiDay): void {
-        this.dayClick.emit(day);
         this.value.set(day);
+        this.dayClick.emit(day);
     }
 
     public onHoveredItemChange(day: TuiDay | null): void {

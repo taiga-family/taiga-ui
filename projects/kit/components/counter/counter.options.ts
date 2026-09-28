@@ -1,9 +1,9 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiCounterOptions extends TuiAppearanceOptions {
-    size: TuiSizeL | TuiSizeS;
+    size: TuiSizeL | TuiSizeXS;
     readonly icons: Readonly<{
         decrease: string;
         increase: string;

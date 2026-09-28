@@ -1,20 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ng-update tui-pin tag to div tuiPin migrates self-closed tui-pin: test.html 1`] = `
+exports[`ng-update tui-pin to div tuiPin drops a redundant static open on a tuiPin attribute host: test.html 1`] = `
+{
+  "0. Before": "<button tuiPin open type="button">1</button>",
+  "1. After": "<button tuiPin type="button">1</button>",
+}
+`;
+
+exports[`ng-update tui-pin to div tuiPin migrates self-closed tui-pin: test.html 1`] = `
 {
   "0. Before": "<tui-pin/>",
   "1. After": "<div tuiPin></div>",
 }
 `;
 
-exports[`ng-update tui-pin tag to div tuiPin preserves attributes and content on tui-pin: test.html 1`] = `
+exports[`ng-update tui-pin to div tuiPin moves [open] on a tuiPin attribute host onto the aliased [tuiPin] input: test.html 1`] = `
+{
+  "0. Before": "<button tuiPin type="button" [open]="a" (click)="a = !a">1</button>",
+  "1. After": "<button [tuiPin]="a" type="button" (click)="a = !a">1</button>",
+}
+`;
+
+exports[`ng-update tui-pin to div tuiPin moves [open] on tui-pin onto the aliased [tuiPin] input: test.html 1`] = `
+{
+  "0. Before": "<tui-pin [open]="open">16</tui-pin>",
+  "1. After": "<div [tuiPin]="open">16</div>",
+}
+`;
+
+exports[`ng-update tui-pin to div tuiPin preserves attributes and content on tui-pin: test.html 1`] = `
 {
   "0. Before": "<tui-pin appearance="primary" size="m"><span>1</span></tui-pin>",
   "1. After": "<div tuiPin appearance="primary" size="m"><span>1</span></div>",
 }
 `;
 
-exports[`ng-update tui-pin tag to div tuiPin replaces tui-pin with div and tuiPin directive: test.html 1`] = `
+exports[`ng-update tui-pin to div tuiPin replaces tui-pin with div and tuiPin directive: test.html 1`] = `
 {
   "0. Before": "<tui-pin></tui-pin>",
   "1. After": "<div tuiPin></div>",

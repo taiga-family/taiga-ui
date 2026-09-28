@@ -10,7 +10,7 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
-import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
+import {filter, merge, Observable, switchMap, take} from 'rxjs';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_DIALOGS_CLOSE' : '',
@@ -45,28 +45,48 @@ export class TuiDialogCloseService extends Observable<unknown> {
             (event) =>
                 // Scrollbars
                 tuiGetViewportWidth(this.win) - event.clientX > 17 &&
-                this.isOutside(tuiGetActualTarget(event)),
+                this.shouldClose(event),
         ),
         switchMap(() =>
             tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
-                map(tuiGetActualTarget),
-                filter((target) => this.isOutside(target)),
+                filter((event) => this.shouldClose(event)),
             ),
         ),
     );
 
+    // `tuiZonefull()` → `inject(NgZone)` → requires injection context.
+    // Field initializer runs inside it, subscription might not
+    // (e.g. `outputFromObservable`) → NG0203 if called there
+    private readonly watcher$ = tuiCloseWatcher().pipe(tuiZonefull());
+
     constructor() {
         super((subscriber) =>
-            merge(
-                this.esc$,
-                this.mousedown$,
-                tuiCloseWatcher().pipe(tuiZonefull()),
-            ).subscribe(subscriber),
+            merge(this.esc$, this.mousedown$, this.watcher$).subscribe(subscriber),
         );
     }
 
     private isOutside(target: EventTarget): boolean {
         return tuiIsElement(target) && !tuiContainsOrAfter(this.el, target);
+    }
+
+    private shouldClose(event: MouseEvent): boolean {
+        const target = tuiGetActualTarget(event);
+
+        return (
+            this.isOutside(target) || (target === this.el && this.isOutsideRect(event))
+        );
+    }
+
+    // Host hit with coordinates outside its box → click landed on pseudo-element overlay
+    private isOutsideRect({clientX, clientY}: MouseEvent): boolean {
+        const rect = this.el.getBoundingClientRect();
+
+        return (
+            clientX < rect.left ||
+            clientX > rect.right ||
+            clientY < rect.top ||
+            clientY > rect.bottom
+        );
     }
 }

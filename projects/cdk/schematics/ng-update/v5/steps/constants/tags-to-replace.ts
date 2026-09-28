@@ -13,11 +13,6 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         addAttributes: ['tuiBadge'],
     },
     {
-        from: 'tui-pin',
-        to: 'div',
-        addAttributes: ['tuiPin'],
-    },
-    {
         from: 'tui-island',
         to: 'div',
         addAttributes: ['tuiCardLarge'],
@@ -35,5 +30,10 @@ export const TAGS_TO_REPLACE: readonly ReplacementTag[] = [
         from: 'nav',
         to: 'tui-tabs',
         filterFn: (element) => hasElementAttribute(element, 'tuiTabs'),
+    },
+    {
+        from: 'nav',
+        to: 'tui-tabs-with-more',
+        filterFn: (element) => hasElementAttribute(element, 'tuiTabsWithMore'),
     },
 ];

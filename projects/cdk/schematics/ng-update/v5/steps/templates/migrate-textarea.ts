@@ -15,6 +15,10 @@ import {
     stringifyControlStateAttrs,
 } from '../../../utils/templates/control-state-attrs';
 import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
+import {
     buildCustomContentIconStr,
     CUSTOM_CONTENT_ATTRS,
     type CustomContent,
@@ -112,16 +116,6 @@ export function migrateTextarea({
     });
 }
 
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
-}
-
 interface MigrationContext {
     expandableValue: string | null; // original value of expandable attr, null if absent
     rowsMigratedTo: string | null; // '[max]="N"' or 'max="N"' if rows was present
@@ -207,31 +201,15 @@ function buildReplacement(
         }
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
+            const original = getOriginalAttrText(template, element, attr);
             const migratedValue = migrateAttrValue(nameLower, attr.value);
-            let attrText: string;
 
-            if (original) {
-                attrText = original.replace(`="${attr.value}"`, `="${migratedValue}"`);
-            } else if (attr.value) {
-                attrText = `${attr.name}="${migratedValue}"`;
-            } else {
-                attrText = attr.name;
-            }
-
-            textfieldAttrs.push(attrText);
+            textfieldAttrs.push(replaceAttrValue(original, migratedValue));
             continue;
         }
 
         if (CONTROL_ATTRS.has(nameLower)) {
-            const original = getOriginalAttrText(template, element, nameLower);
-
-            textareaAttrs.push(
-                original ??
-                    (attr.value
-                        ? `${normalizeAttrName(attr.name)}="${attr.value}"`
-                        : attr.name),
-            );
+            textareaAttrs.push(getOriginalAttrText(template, element, attr));
             continue;
         }
 
@@ -251,10 +229,7 @@ function buildReplacement(
             continue;
         }
 
-        const original = getOriginalAttrText(template, element, nameLower);
-
-        const attrText =
-            original ?? (attr.value ? `${attr.name}="${attr.value}"` : attr.name);
+        const attrText = getOriginalAttrText(template, element, attr);
 
         // Unknown attrs go on <tui-textfield> (direct host replacement) with a TODO
         textfieldAttrs.push(attrText);
@@ -522,25 +497,4 @@ function getPlaceholderText(element: Element): string {
     );
 
     return textNode?.value.trim() ?? '';
-}
-
-function normalizeAttrName(name: string): string {
-    switch (name.toLowerCase()) {
-        case '(ngModelChange)'.toLowerCase():
-            return '(ngModelChange)';
-        case '[formControl]'.toLowerCase():
-            return '[formControl]';
-        case '[ngModel]'.toLowerCase():
-            return '[ngModel]';
-        case 'formControl'.toLowerCase():
-            return 'formControl';
-        case 'formControlName'.toLowerCase():
-            return 'formControlName';
-        case 'ngModel'.toLowerCase():
-            return 'ngModel';
-        case '[(ngmodel)]':
-            return '[(ngModel)]';
-        default:
-            return name;
-    }
 }

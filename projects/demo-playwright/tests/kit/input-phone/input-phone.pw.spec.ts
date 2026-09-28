@@ -7,6 +7,7 @@ import {
     TuiInputPhonePO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputPhone', () => {
     test.describe('API page', () => {
@@ -17,7 +18,9 @@ test.describe('InputPhone', () => {
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
             value = new TuiDocumentationPagePO(page).value;
-            inputPhone = new TuiInputPhonePO(example.locator('tui-textfield').first());
+            inputPhone = new TuiInputPhonePO(
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first(),
+            );
         });
 
         test("Don't duplicate Code 52 When Inputting Digit '2' After Clearing", async ({
@@ -25,7 +28,7 @@ test.describe('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputPhone}/API?mask=%2B52%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
+                `${DemoRoute.InputPhone}/API?mask=${encodeURIComponent('+52 (###) ###-##-##')}`,
             );
 
             await inputPhone.textfield.focus();
@@ -47,7 +50,7 @@ test.describe('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputPhone}/API?mask=%2B1%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
+                `${DemoRoute.InputPhone}/API?mask=${encodeURIComponent('+1 (###) ###-##-##')}`,
             );
 
             await inputPhone.textfield.focus();
@@ -76,11 +79,32 @@ test.describe('InputPhone', () => {
             await expect(inputPhone.textfield).toHaveValue('');
         });
 
+        test.describe('Insertion of the complete phone number (paste/autofill)', () => {
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputPhone}/API?mask=${encodeURIComponent('+7 (###) ###-##-##')}`,
+                );
+            });
+
+            test('+7 800 123-45-67 => +7 (800) 123-45-67', async () => {
+                await inputPhone.textfield.fill('+7 800 123-45-67');
+
+                await expect(inputPhone.textfield).toHaveValue('+7 (800) 123-45-67');
+            });
+
+            test('8 800 123-45-67 => +7 (800) 123-45-67', async () => {
+                await inputPhone.textfield.fill('8 800 123-45-67');
+
+                await expect(inputPhone.textfield).toHaveValue('+7 (800) 123-45-67');
+            });
+        });
+
         test.describe("Angular form control is empty is textfield's value is just country code", () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputPhone}/API?mask=%2B1%20(%23%23%23)%20%23%23%23-%23%23-%23%23&sandboxExpanded=true`,
+                    `${DemoRoute.InputPhone}/API?mask=${encodeURIComponent('+1 (###) ###-##-##')}&sandboxExpanded=true`,
                 );
             });
 
@@ -115,7 +139,7 @@ test.describe('InputPhone', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputPhone}/API?mask=%2B7%20(%23%23%23)%20%23%23%23-%23%23-%23%23`,
+                    `${DemoRoute.InputPhone}/API?mask=${encodeURIComponent('+7 (###) ###-##-##')}`,
                 );
 
                 example = new TuiDocumentationApiPagePO(page).demo;
@@ -1440,7 +1464,10 @@ test.describe('InputPhone', () => {
         });
 
         test('filler', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputPhone}/API?filler=%2B7%20999`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputPhone}/API?filler=${encodeURIComponent('+7 999')}`,
+            );
 
             example = new TuiDocumentationApiPagePO(page).demo;
             input = example.locator('input');

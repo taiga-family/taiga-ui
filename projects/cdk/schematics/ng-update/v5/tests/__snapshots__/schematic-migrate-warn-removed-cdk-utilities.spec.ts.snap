@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) replaces removed e2e-detection tokens with WA_IS_E2E: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TUI_IS_CYPRESS, TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly cypress = TUI_IS_CYPRESS;
+                    protected readonly playwright = TUI_IS_PLAYWRIGHT;
+                }
+            ",
+  "1. After": "import { WA_IS_E2E } from "@ng-web-apis/platform";
+
+                export class TestComponent {
+                    protected readonly cypress = WA_IS_E2E;
+                    protected readonly playwright = WA_IS_E2E;
+                }
+            ",
+}
+`;
+
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on removed cdk DOM utilities: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    tuiDirectiveListener,
+                    tuiGetElementPoint,
+                    tuiIsCurrentTarget,
+                    tuiIsInsideIframe,
+                    tuiIsNodeIn,
+                    tuiRetargetedBoundaryCrossing,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly listener = tuiDirectiveListener;
+                    protected readonly point = tuiGetElementPoint;
+                    protected readonly current = tuiIsCurrentTarget;
+                    protected readonly iframe = tuiIsInsideIframe;
+                    protected readonly nodeIn = tuiIsNodeIn;
+                    protected readonly retarget = tuiRetargetedBoundaryCrossing;
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) tuiDirectiveListener has been removed. Use Renderer2.listen() or a host listener instead.
+                    tuiDirectiveListener,
+// TODO: (Taiga UI migration) tuiGetElementPoint has been removed. Read coordinates from Element.getBoundingClientRect() instead.
+                    tuiGetElementPoint,
+// TODO: (Taiga UI migration) tuiIsCurrentTarget has been removed. Compare event.target === event.currentTarget inline.
+                    tuiIsCurrentTarget,
+// TODO: (Taiga UI migration) tuiIsInsideIframe has been removed. Check window.self !== window.top inline.
+                    tuiIsInsideIframe,
+// TODO: (Taiga UI migration) tuiIsNodeIn has been removed. Use Node.contains() inline.
+                    tuiIsNodeIn,
+// TODO: (Taiga UI migration) tuiRetargetedBoundaryCrossing has been removed with no direct replacement; inline the boundary-crossing logic if you relied on it.
+                    tuiRetargetedBoundaryCrossing,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly listener = tuiDirectiveListener;
+                    protected readonly point = tuiGetElementPoint;
+                    protected readonly current = tuiIsCurrentTarget;
+                    protected readonly iframe = tuiIsInsideIframe;
+                    protected readonly nodeIn = tuiIsNodeIn;
+                    protected readonly retarget = tuiRetargetedBoundaryCrossing;
+                }
+            ",
+}
+`;
+
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on removed cdk environment/platform tokens: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TUI_ALLOW_SIGNAL_WRITES,
+                    TUI_BASE_HREF,
+                    TUI_MOBILE_REGEXP,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly a = TUI_ALLOW_SIGNAL_WRITES;
+                    protected readonly b = TUI_BASE_HREF;
+                    protected readonly e = TUI_MOBILE_REGEXP;
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) TUI_ALLOW_SIGNAL_WRITES has been removed. Effects allow signal writes by default now, so this option is no longer needed.
+                    TUI_ALLOW_SIGNAL_WRITES,
+// TODO: (Taiga UI migration) TUI_BASE_HREF has been removed. Use APP_BASE_HREF from @angular/common instead.
+                    TUI_BASE_HREF,
+// TODO: (Taiga UI migration) TUI_MOBILE_REGEXP has been removed. Provide your own mobile user-agent RegExp if you still need it.
+                    TUI_MOBILE_REGEXP,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly a = TUI_ALLOW_SIGNAL_WRITES;
+                    protected readonly b = TUI_BASE_HREF;
+                    protected readonly e = TUI_MOBILE_REGEXP;
+                }
+            ",
+}
+`;
+
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on removed cdk miscellaneous and math utilities: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    tuiGetOriginalArrayFromQueryList,
+                    tuiInjectId,
+                    tuiIsValidUrl,
+                    tuiMustBePresent,
+                    tuiQueryListChanges,
+                    tuiToInteger,
+                    tuiToRadians,
+                    tuiUniqBy,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly arr = tuiGetOriginalArrayFromQueryList;
+                    protected readonly id = tuiInjectId;
+                    protected readonly url = tuiIsValidUrl;
+                    protected readonly present = tuiMustBePresent;
+                    protected readonly changes = tuiQueryListChanges;
+                    protected readonly int = tuiToInteger;
+                    protected readonly rad = tuiToRadians;
+                    protected readonly uniq = tuiUniqBy;
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) tuiGetOriginalArrayFromQueryList has been removed. Use QueryList.toArray() instead.
+                    tuiGetOriginalArrayFromQueryList,
+// TODO: (Taiga UI migration) tuiInjectId has been removed. Use tuiGenerateId() from @taiga-ui/cdk instead.
+                    tuiInjectId,
+// TODO: (Taiga UI migration) tuiIsValidUrl has been removed. Validate the URL yourself, e.g. via \`new URL(value)\` in a try/catch.
+                    tuiIsValidUrl,
+// TODO: (Taiga UI migration) tuiMustBePresent has been removed. Assert non-empty values yourself (e.g. filter(Boolean) or a custom operator).
+                    tuiMustBePresent,
+// TODO: (Taiga UI migration) tuiQueryListChanges has been removed. Use QueryList.changes directly (with startWith() if needed).
+                    tuiQueryListChanges,
+// TODO: (Taiga UI migration) tuiToInteger has been removed. Use Math.trunc(), parseInt() or Number() where you used it.
+                    tuiToInteger,
+// TODO: (Taiga UI migration) tuiToRadians has been removed. Compute radians inline: value * Math.PI / 180.
+                    tuiToRadians,
+// TODO: (Taiga UI migration) tuiUniqBy has been removed. Deduplicate by key yourself, e.g. via a Map keyed on the property.
+                    tuiUniqBy,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly arr = tuiGetOriginalArrayFromQueryList;
+                    protected readonly id = tuiInjectId;
+                    protected readonly url = tuiIsValidUrl;
+                    protected readonly present = tuiMustBePresent;
+                    protected readonly changes = tuiQueryListChanges;
+                    protected readonly int = tuiToInteger;
+                    protected readonly rad = tuiToRadians;
+                    protected readonly uniq = tuiUniqBy;
+                }
+            ",
+}
+`;
+
+exports[`ng-update warn on removed cdk utilities/tokens/types (#11917) warns on removed cdk types and directive contexts: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    type TuiLetContext,
+                    type TuiLooseUnion,
+                    type TuiRepeatTimesContext,
+                    type TuiSafeHtml,
+                    type TuiValuePresentException,
+                    type TuiValuesOf,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly html: TuiSafeHtml | null = null;
+                    protected readonly union: TuiLooseUnion<'a'> | null = null;
+                    protected readonly values: TuiValuesOf<
+                        Record<string, number>
+                    > | null = null;
+                    protected readonly letContext: TuiLetContext<unknown> | null = null;
+                    protected readonly repeatContext: TuiRepeatTimesContext | null = null;
+                    protected readonly error: TuiValuePresentException | null = null;
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) TuiLetContext has been removed together with TuiLet. Use Angular's built-in @let syntax.
+                    type TuiLetContext,
+// TODO: (Taiga UI migration) TuiLooseUnion has been removed. Inline the type where you used it, e.g. \`T | (string & {})\`.
+                    type TuiLooseUnion,
+// TODO: (Taiga UI migration) TuiRepeatTimesContext has been removed. Use the context of a native @for loop instead.
+                    type TuiRepeatTimesContext,
+// TODO: (Taiga UI migration) TuiSafeHtml has been removed. Use SafeHtml from @angular/platform-browser (or a plain string) instead.
+                    type TuiSafeHtml,
+// TODO: (Taiga UI migration) TuiValuePresentException has been removed together with tuiMustBePresent. Handle empty values yourself.
+                    type TuiValuePresentException,
+// TODO: (Taiga UI migration) TuiValuesOf has been removed. Inline \`T[keyof T]\` where you used it.
+                    type TuiValuesOf,
+                } from '@taiga-ui/cdk';
+
+                export class TestComponent {
+                    protected readonly html: TuiSafeHtml | null = null;
+                    protected readonly union: TuiLooseUnion<'a'> | null = null;
+                    protected readonly values: TuiValuesOf<
+                        Record<string, number>
+                    > | null = null;
+                    protected readonly letContext: TuiLetContext<unknown> | null = null;
+                    protected readonly repeatContext: TuiRepeatTimesContext | null = null;
+                    protected readonly error: TuiValuePresentException | null = null;
+                }
+            ",
+}
+`;

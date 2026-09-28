@@ -22,6 +22,7 @@ export const TUI_BELARUSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Паменшыць водступ',
         unorderedList: 'Маркіраваны спіс',
         orderedList: 'Нумараваны спіс',
+        taskList: 'Спіс задач',
         quote: 'Цытата',
         foreColor: 'Колер тэксту',
         hiliteColor: 'Колер вылучэння',

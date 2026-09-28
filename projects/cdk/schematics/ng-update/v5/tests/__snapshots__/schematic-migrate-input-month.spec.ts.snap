@@ -88,7 +88,7 @@ exports[`ng-update migrate TuiInputMonthModule to TuiInputMonth: test.ts 1`] = `
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputMonth,
+                        ...TuiInputMonth,
                     ],
                     // ...
                 })

@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     contentChildren,
     effect,
     ElementRef,
@@ -33,9 +34,20 @@ import {TuiAccordionDirective} from './accordion.directive';
     },
 })
 export class TuiAccordionComponent {
+    private readonly nestedDirectives = contentChildren(TuiAccordionDirective, {
+        descendants: true,
+    });
+
     protected readonly expands = contentChildren(TuiExpand);
-    protected readonly directives = contentChildren(TuiAccordionDirective);
     protected readonly elements = contentChildren(TuiExpand, {read: ElementRef});
+
+    // Trigger buttons may be wrapped in an arbitrary element (e.g. alongside a
+    // custom action button), so descendants search is required — but that also
+    // picks up triggers belonging to an accordion nested inside this one's
+    // tui-expand, which must be filtered out to keep index-based pairing intact.
+    protected readonly directives = computed(() =>
+        this.nestedDirectives().filter((directive) => directive.accordion === this),
+    );
 
     protected readonly sync = effect(() =>
         this.elements().forEach(({nativeElement}, index) => {

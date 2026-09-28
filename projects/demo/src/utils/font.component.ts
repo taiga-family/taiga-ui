@@ -30,11 +30,11 @@ import {tuiInjectElement, TuiPlatform} from '@taiga-ui/cdk';
             box-shadow: inset 0 0 0 1px var(--tui-border-normal);
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: auto 1fr 1fr;
-            margin-bottom: -1px;
+            margin-block-end: -1px;
             clip-path: inset(0 0 1px 0);
 
             &:last-child {
-                margin-bottom: 1rem;
+                margin-block-end: 1rem;
                 clip-path: none;
             }
 

@@ -66,6 +66,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     host: {
         '[attr.data-state]': 'disabled ? "disabled" : null',
         '[class._empty]': '!items().length',
+        '[class._horizontal]': 'rows() === 1',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows()',
         '(click.prevent)': 'onClick($event.target)',
@@ -73,12 +74,11 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     },
 })
 export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
-    protected readonly height = signal<number | null>(null);
+    protected readonly height = signal<number | undefined>(undefined);
     protected readonly win = inject(WA_WINDOW);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component = TUI_TEXTFIELD_ITEM;
     protected readonly items = computed<readonly T[]>(() => this.cva()?.value() ?? []);
-
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
             filter(() => this.rows() === 1),
@@ -109,9 +109,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     }
 
     protected onItems(target: HTMLElement): void {
-        this.height.update(
-            (h) => target.querySelector('tui-textfield-item')?.clientHeight || h,
-        );
+        this.height.set(target.querySelector('tui-textfield-item')?.clientHeight);
     }
 
     protected onLeft(event: any): void {

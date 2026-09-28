@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes, TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, tuiFormatNumber, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [

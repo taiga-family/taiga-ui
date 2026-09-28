@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update focusedChange removed from legacy controls adds TODO for (focusedChange) on tui-input (rebuilt element): test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    [(ngModel)]="value"
+                    (focusedChange)="onFocused($event)"
+                >
+                    Label
+                </tui-input>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly \`focused\` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield -->
+<!-- TODO: (Taiga UI migration) tui-input migration (see https://taiga-ui.dev/components/input):
+     - "(focusedChange)" is an unrecognized attribute and was placed on <tui-textfield>. Move it to <input tuiInput> if it targets the native element.
+-->
+                <tui-textfield (focusedChange)="onFocused($event)">
+                <label tuiLabel>Label</label>
+                <input tuiInput [(ngModel)]="value" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update focusedChange removed from legacy controls adds TODO for (focusedChange) on tui-input-tag: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    [(ngModel)]="tags"
+                    (focusedChange)="inputFocusChanged($event)"
+                />
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly \`focused\` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield -->
+<tui-textfield multi (focusedChange)="inputFocusChanged($event)">
+                <input tuiInputChip [(ngModel)]="tags" />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update focusedChange removed from legacy controls adds TODO for two-way [(focused)] on tui-select: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [(focused)]="focused"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) focusedChange was removed in v5 — legacy controls no longer emit a focus output. There is no drop-in: read the readonly \`focused\` signal on <tui-textfield>, or use native (focusin)/(focusout) on the <input>. See https://taiga-ui.dev/components/textfield -->
+<!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    [(focused)]="focused"
+                >
+                    
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;

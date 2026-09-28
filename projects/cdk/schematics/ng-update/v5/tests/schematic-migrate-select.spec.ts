@@ -135,5 +135,23 @@ describe('ng-update legacy select', () => {
         }),
     );
 
+    it(
+        'moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase',
+        migrate({
+            template: /* HTML */ `
+                <tui-select
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

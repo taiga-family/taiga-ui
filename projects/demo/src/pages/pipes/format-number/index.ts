@@ -4,8 +4,8 @@ import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [

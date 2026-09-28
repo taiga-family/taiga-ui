@@ -1,5 +1,11 @@
 import {Directive, inject, type OnChanges, type OnInit} from '@angular/core';
-import {NG_VALIDATORS, Validators} from '@angular/forms';
+import {
+    type AbstractControl,
+    NG_VALIDATORS,
+    type ValidationErrors,
+    type ValidatorFn,
+    Validators,
+} from '@angular/forms';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
@@ -17,9 +23,13 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 })
 export class TuiInputFilesValidator extends TuiValidator implements OnInit, OnChanges {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
+    private validator: ValidatorFn = Validators.nullValidator;
 
     public accept = this.options.accept;
     public maxFileSize = this.options.maxFileSize;
+
+    public override validate = (control: AbstractControl): ValidationErrors | null =>
+        this.validator(control);
 
     public override ngOnChanges(): void {
         this.update();
@@ -30,7 +40,7 @@ export class TuiInputFilesValidator extends TuiValidator implements OnInit, OnCh
     }
 
     private update(): void {
-        this.validate =
+        this.validator =
             Validators.compose([
                 tuiCreateFileFormatValidator(this.accept),
                 tuiCreateFileSizeValidator(this.maxFileSize),

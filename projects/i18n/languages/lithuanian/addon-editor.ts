@@ -22,6 +22,7 @@ export const TUI_LITHUANIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Ištraukti',
         unorderedList: 'Nenumeruotas sąrašas',
         orderedList: 'Numeruotas sąrašas',
+        taskList: 'Užduočių sąrašas',
         quote: 'Citata',
         foreColor: 'Spalva',
         backColor: 'Fono spalva',

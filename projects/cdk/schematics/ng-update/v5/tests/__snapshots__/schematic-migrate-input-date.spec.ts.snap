@@ -161,6 +161,32 @@ exports[`ng-update moves [min] and [max] to <input tuiInputDate>: test.html 1`] 
 }
 `;
 
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-date
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Choose a date
+                </tui-input-date>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Choose a date
+                </label>
+
+<input tuiInputDate [formControlName]="control" (ngModelChange)="onChange($event)" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+            ",
+}
+`;
+
 exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date: test.html 1`] = `
 {
   "0. Before": "

@@ -22,6 +22,7 @@ export const TUI_DUTCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Uitspringen',
         unorderedList: 'Ongesorteerde lijst',
         orderedList: 'Gesorteerde lijst',
+        taskList: 'Takenlijst',
         quote: 'Citeren',
         foreColor: 'Kleur',
         backColor: 'Achtergrondkleur',

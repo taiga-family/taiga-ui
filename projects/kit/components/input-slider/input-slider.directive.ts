@@ -39,14 +39,14 @@ class Styles {}
 @Directive({
     selector: 'input[tuiInputSlider]',
     providers: [
-        tuiInputNumberOptionsProvider({
+        tuiInputNumberOptionsProvider(() => ({
             valueTransformer: new TuiNonNullableValueTransformer(),
-        }),
+        })),
     ],
     hostDirectives: [
         {
             directive: TuiInputNumberDirective,
-            inputs: ['invalid', 'readOnly'],
+            inputs: ['invalid', 'readOnly', 'readonly'],
         },
         {
             directive: TuiQuantumValueTransformer,

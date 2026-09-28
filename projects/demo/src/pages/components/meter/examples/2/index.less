@@ -1,0 +1,18 @@
+@import '@taiga-ui/styles/utils';
+
+[tuiMeter] {
+    margin-block-start: 1rem;
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    position: relative;
+
+    [tuiBadge] {
+        position: absolute;
+        font: var(--tui-typography-body-l);
+        font-weight: bold;
+        transform: translateX(calc(-50% * var(--tui-inline)));
+    }
+}

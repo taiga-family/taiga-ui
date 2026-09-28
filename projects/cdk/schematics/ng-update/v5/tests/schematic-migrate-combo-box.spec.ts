@@ -294,5 +294,63 @@ describe('ng-update ComboBox', () => {
         }),
     );
 
+    it(
+        'moves [formControlName] and (ngModelChange) to the generated input, preserving camelCase',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Label
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'keeps valid nesting when the label is followed by @if control flow',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box [formControl]="control">
+                    Attribute @if (items === null) {
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="null"
+                    />
+                    } @if (items !== null) {
+                    <tui-data-list *tuiDataList>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                    }
+                </tui-combo-box>
+            `,
+        }),
+    );
+
+    it(
+        'keeps an interpolated label inside label[tuiLabel] (not truncated at `{`)',
+        migrate({
+            template: /* HTML */ `
+                <tui-combo-box [formControl]="control">
+                    {{ label }}
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-combo-box>
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

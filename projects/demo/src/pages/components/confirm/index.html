@@ -27,7 +27,7 @@
             to learn how to use confirm to prevent data loss on forms inside other modals
         </div>
 
-        @for (example of examples; track example) {
+        @for (example of ['Basic']; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -63,7 +63,7 @@
             <tr
                 name="[appearance]"
                 tuiDocAPIItem
-                type="string"
+                type="string | [string, string]"
                 [items]="appearances"
                 [(value)]="appearance"
             >

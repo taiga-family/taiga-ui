@@ -20,6 +20,7 @@ export default class Page {
         'With content overlay',
         'Options',
         'Custom stroke width',
+        'Custom size',
     ];
 
     protected loading = true;

@@ -1,0 +1,11 @@
+<tui-textfield>
+    <label tuiLabel>Amount in rupees</label>
+
+    <input
+        prefix="₹"
+        tuiInputNumber
+        [min]="0"
+        [tuiNumberFormat]="numberFormat"
+        [(ngModel)]="value"
+    />
+</tui-textfield>

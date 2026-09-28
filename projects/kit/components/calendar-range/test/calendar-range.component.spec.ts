@@ -34,6 +34,7 @@ describe('rangeCalendarComponent', () => {
                 [maxLength]="maxLength"
                 [min]="min"
                 [minLength]="minLength"
+                [(month)]="month"
                 [(value)]="value"
             />
         `,
@@ -50,6 +51,7 @@ describe('rangeCalendarComponent', () => {
         public value: TuiDayRange | null = null;
         public defaultViewedMonth = TuiMonth.currentLocal();
         public markerHandler: TuiMarkerHandler | null = null;
+        public month = TuiMonth.currentLocal();
     }
 
     let fixture: ComponentFixture<Test>;
@@ -294,7 +296,7 @@ describe('rangeCalendarComponent', () => {
             component.ngOnInit();
             fixture.detectChanges();
 
-            expect(component.month()).toEqual(maxDate);
+            expect(component.month().monthSame(maxDate)).toBe(true);
         });
 
         it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
@@ -358,7 +360,7 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
-            const newValue = TuiDay.currentLocal().append({month: 1});
+            const newValue = TuiDay.currentLocal().append({month: 2});
 
             testComponent.value = new TuiDayRange(newValue, newValue);
             fixture.detectChanges();
@@ -367,6 +369,15 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
 
             expect(component.month().toString()).toBe(newValue.toString());
+        });
+
+        it('if value selected is visible within the current view, month does not change', () => {
+            const newValue = TuiDay.currentLocal().append({month: 1});
+
+            testComponent.value = new TuiDayRange(newValue, newValue);
+            fixture.detectChanges();
+
+            expect(component.month().toString()).toBe(defaultMonth.toString());
         });
 
         it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
@@ -383,6 +394,38 @@ describe('rangeCalendarComponent', () => {
         });
     });
 
+    describe('month change', () => {
+        beforeEach(() => {
+            testComponent.items = [];
+            fixture.detectChanges();
+        });
+
+        it('append month by forward chevron', () => {
+            const month = TuiMonth.currentLocal();
+
+            clickNextMonth();
+
+            expect(testComponent.month.monthSame(month.append({month: 1}))).toBe(true);
+        });
+
+        it('reduce month by back chevron', () => {
+            const month = TuiMonth.currentLocal();
+
+            clickPreviousMonth();
+
+            expect(testComponent.month.monthSame(month.append({month: -1}))).toBe(true);
+        });
+
+        it('use month from value', () => {
+            const day = TuiDay.currentLocal().append({month: 5});
+
+            testComponent.value = new TuiDayRange(day, day);
+            fixture.detectChanges();
+
+            expect(testComponent.month.monthSame(day)).toBe(true);
+        });
+    });
+
     function getCalendar(): DebugElement | null {
         return pageObject.getByAutomationId('tui-calendar-range__calendar');
     }
@@ -394,5 +437,19 @@ describe('rangeCalendarComponent', () => {
 
     function getItems(): DebugElement[] {
         return pageObject.getAllByAutomationId('tui-calendar-range__menu__item');
+    }
+
+    function clickPreviousMonth(): void {
+        pageObject
+            .getAllByAutomationId('tui-spin-button__left')[0]!
+            .nativeElement.click();
+        fixture.detectChanges();
+    }
+
+    function clickNextMonth(): void {
+        pageObject
+            .getAllByAutomationId('tui-spin-button__right')[1]!
+            .nativeElement.click();
+        fixture.detectChanges();
     }
 });

@@ -37,6 +37,7 @@
                 [maxLength]="maxLength"
                 [min]="min"
                 [minLength]="minLength"
+                [(month)]="month"
                 (valueChange)="documentationPropertyRangeChange.emitEvent($event)"
             />
         </tui-doc-demo>
@@ -95,6 +96,15 @@
                 [(value)]="max"
             >
                 max date
+            </tr>
+            <tr
+                name="[(month)]"
+                tuiDocAPIItem
+                type="TuiMonth"
+                [items]="defaultViewedMonthVariants"
+                [(value)]="month"
+            >
+                currently viewed month, also updated when a year is picked
             </tr>
             <tr
                 name="[minLength]"
