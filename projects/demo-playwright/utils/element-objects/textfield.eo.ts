@@ -1,12 +1,16 @@
 import {expect, type Locator} from '@playwright/test';
 import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiTextfieldEO {
+import {TuiBaseEO} from './base.eo';
+
+export class TuiTextfieldEO extends TuiBaseEO {
     public readonly textfield = this.host.locator(TUI_TEXTFIELD_LOCATORS.INPUT);
     public readonly cleaner = this.host.locator(TUI_TEXTFIELD_LOCATORS.CLEANER);
     public readonly filler = this.host.locator(TUI_TEXTFIELD_LOCATORS.FILLER);
 
-    constructor(public readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_TEXTFIELD_LOCATORS.HOST);
+    }
 
     public async clickOnIcon(
         options: Parameters<Locator['click']>[0] = {},

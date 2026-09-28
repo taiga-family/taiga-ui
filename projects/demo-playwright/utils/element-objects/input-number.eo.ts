@@ -1,9 +1,14 @@
-import {type Locator} from '@playwright/test';
+import {Locator} from '@playwright/test';
+import {TUI_INPUT_NUMBER_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class InputNumberPO {
+import {TuiBaseEO} from './base.eo';
+
+export class InputNumberPO extends TuiBaseEO {
     public readonly textfield = this.host.getByRole('textbox');
     public readonly stepUp = this.host.locator('button', {hasText: '+'});
     public readonly stepDown = this.host.locator('button', {hasText: '-'});
 
-    constructor(public readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_INPUT_NUMBER_LOCATORS.HOST);
+    }
 }

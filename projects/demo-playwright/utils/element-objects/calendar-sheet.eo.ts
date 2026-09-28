@@ -1,7 +1,11 @@
-import {expect, type Locator} from '@playwright/test';
+import {expect, Locator} from '@playwright/test';
+import {TUI_CALENDAR_SHEET_LOCATORS} from '@taiga-ui/testing/locators';
+import {TuiBaseEO} from './base.eo';
 
-export class TuiCalendarSheetEO {
-    constructor(private readonly host: Locator) {}
+export class TuiCalendarSheetEO extends TuiBaseEO {
+    public get host(): Locator {
+        return this.page.locator(TUI_CALENDAR_SHEET_LOCATORS.HOST);
+    }
 
     public getCalendarDay(day: number): Locator {
         return this.cells
@@ -19,8 +23,8 @@ export class TuiCalendarSheetEO {
     private get cells(): Locator {
         return this.host.locator(
             [
-                '[automation-id="tui-calendar-sheet__cell"]',
-                '[automation-id="tui-primitive-calendar-mobile__cell"]',
+                TUI_CALENDAR_SHEET_LOCATORS.CELL,
+                TUI_CALENDAR_SHEET_LOCATORS.CELL_MOBILE,
             ].join(', '),
         );
     }
