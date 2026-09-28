@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.26.0](https://github.com/taiga-family/taiga-ui/compare/v5.25.0...v5.26.0) (2026-09-28)
+
+### 🚀 Features
+
+- **addon-mobile:** update liquid glass styles ([#15069](https://github.com/taiga-family/taiga-ui/issues/15069))
+  ([c41720c](https://github.com/taiga-family/taiga-ui/commit/c41720ca6230830bd61063c7a10726bf153814f1))
+- **cdk:** `Portals` allow Node addition ([#15068](https://github.com/taiga-family/taiga-ui/issues/15068))
+  ([2b008f8](https://github.com/taiga-family/taiga-ui/commit/2b008f84659545e584ba114273c88d0fa10c8189))
+- **core:** `Dropdown` use anchor positioning when possible
+  ([#15032](https://github.com/taiga-family/taiga-ui/issues/15032))
+  ([3fb67e2](https://github.com/taiga-family/taiga-ui/commit/3fb67e26b7716f6f340c72cd5f98cd714a44128f))
+- **kit:** `InputTime` & `InputDateTime` support `[tuiTimeFormat]="{separators}"`
+  ([#15057](https://github.com/taiga-family/taiga-ui/issues/15057))
+  ([21e3a70](https://github.com/taiga-family/taiga-ui/commit/21e3a7052c23dceb17ab8cb8932b66c412be2729))
+- **testing:** add dropdown mobile locators ([#15044](https://github.com/taiga-family/taiga-ui/issues/15044))
+  ([59f66d3](https://github.com/taiga-family/taiga-ui/commit/59f66d3bc24e65a35d735d080641b2afd47307b6))
+- **testing:** add radio harness ([#15091](https://github.com/taiga-family/taiga-ui/issues/15091))
+  ([65b0734](https://github.com/taiga-family/taiga-ui/commit/65b07348ce9c1f57ba35d8b2871aa4a2f87a36ff))
+- **testing:** implement locators to use in testing ([#14673](https://github.com/taiga-family/taiga-ui/issues/14673))
+  ([8492908](https://github.com/taiga-family/taiga-ui/commit/849290889541b30aedf57187b7b7795d8d2533aa))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** code fix text selection reset in firefox when pressing cmd/ctrl
+  ([#15054](https://github.com/taiga-family/taiga-ui/issues/15054))
+  ([6a7ee5d](https://github.com/taiga-family/taiga-ui/commit/6a7ee5d8ac7111302e79afb9b496ef3b9d8307a5))
+- **addon-mobile:** `SheetDialog` close immediately on fast swipe
+  ([#15067](https://github.com/taiga-family/taiga-ui/issues/15067))
+  ([cb3e040](https://github.com/taiga-family/taiga-ui/commit/cb3e04043cbf56b33ae341e295bf6155023bee88))
+- **addon-mobile:** reset BottomSheet height on resize ([#15094](https://github.com/taiga-family/taiga-ui/issues/15094))
+  ([ae2268c](https://github.com/taiga-family/taiga-ui/commit/ae2268caba47c5d36757391a079bbbbabd966d8d))
+- **addon-table:** `CheckboxRow` fix indeterminate flickering
+  ([#15076](https://github.com/taiga-family/taiga-ui/issues/15076))
+  ([b0d0662](https://github.com/taiga-family/taiga-ui/commit/b0d0662b77e7f48b44e50a48707d9e3859c4f417))
+- **core:** `Hint` should not close right after first tap on iOS
+  ([#15060](https://github.com/taiga-family/taiga-ui/issues/15060))
+  ([10c5f2a](https://github.com/taiga-family/taiga-ui/commit/10c5f2af8d29858e9cd109801dc292db6ad29a31))
+- **core:** `Scrollbar` fix bounce on rubberband overscroll
+  ([#15048](https://github.com/taiga-family/taiga-ui/issues/15048))
+  ([d2dbf0b](https://github.com/taiga-family/taiga-ui/commit/d2dbf0b3eff479f46947d76a0e8427e970de20d6))
+- **core:** safari animation fix for pie/ring charts ([#15039](https://github.com/taiga-family/taiga-ui/issues/15039))
+  ([ee619e8](https://github.com/taiga-family/taiga-ui/commit/ee619e8a25524d09d49fe71e1402c033e7a0bef9))
+- **kit:** `InputNumber` prevent press and hold on disabled buttons
+  ([#15035](https://github.com/taiga-family/taiga-ui/issues/15035))
+  ([405e17f](https://github.com/taiga-family/taiga-ui/commit/405e17fb9bc1e1453b3dcfe5df5f22787cf6f8e6))
+- **kit:** `Push` hide empty header ([#15098](https://github.com/taiga-family/taiga-ui/issues/15098))
+  ([d3ca9dc](https://github.com/taiga-family/taiga-ui/commit/d3ca9dc7d23d9470cf0ff787600292d697802148))
+- **kit:** `Tooltip` fix size selector ([#15095](https://github.com/taiga-family/taiga-ui/issues/15095))
+  ([65a15ff](https://github.com/taiga-family/taiga-ui/commit/65a15ffd015bd6a2bb1fb20baf38ed577d463067))
+- **kit:** scroll CalendarRange period items ([#15063](https://github.com/taiga-family/taiga-ui/issues/15063))
+  ([f9e00ed](https://github.com/taiga-family/taiga-ui/commit/f9e00ed987cda6b483c8705eac0ce9e38d562d24))
+
 ## [5.25.0](https://github.com/taiga-family/taiga-ui/compare/v5.24.0...v5.25.0) (2026-09-21)
 
 ### 🚀 Features
