@@ -8,4 +8,5 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Смотрите также',
     tocText: 'На странице',
     sourceCodeText: 'Исходный код',
+    copyPageTexts: ['Копировать страницу', 'Скопировано!', 'Ещё', 'Открыть как Markdown'],
 };

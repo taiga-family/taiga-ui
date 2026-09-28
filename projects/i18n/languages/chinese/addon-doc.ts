@@ -8,4 +8,5 @@ export const TUI_CHINESE_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: '另请参阅',
     tocText: '本页内容',
     sourceCodeText: '源代码',
+    copyPageTexts: ['复制页面', '已复制！', '更多', '以 Markdown 查看'],
 };

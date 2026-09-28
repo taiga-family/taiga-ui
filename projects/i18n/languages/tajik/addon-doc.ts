@@ -8,4 +8,10 @@ export const TUI_TAJIK_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Ҳамчунин нигаред',
     tocText: 'Дар саҳифа',
     sourceCodeText: 'Рамзи манбаъ',
+    copyPageTexts: [
+        'Нусхабардории саҳифа',
+        'Нусхабардорӣ шуд!',
+        'Бештар',
+        'Ҳамчун Markdown дидан',
+    ],
 };

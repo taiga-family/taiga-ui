@@ -8,4 +8,5 @@ export const TUI_KOREAN_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: '참고 항목',
     tocText: '이 페이지에서',
     sourceCodeText: '소스 코드',
+    copyPageTexts: ['페이지 복사', '복사됨!', '더 보기', 'Markdown으로 보기'],
 };

@@ -8,4 +8,5 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Дивіться також',
     tocText: 'На цій сторінці',
     sourceCodeText: 'Вихідний код',
+    copyPageTexts: ['Копіювати сторінку', 'Скопійовано!', 'Ще', 'Відкрити як Markdown'],
 };

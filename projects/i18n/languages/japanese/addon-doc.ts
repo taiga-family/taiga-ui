@@ -8,4 +8,5 @@ export const TUI_JAPANESE_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: '関連項目',
     tocText: 'このページの内容',
     sourceCodeText: 'ソースコード',
+    copyPageTexts: ['ページをコピー', 'コピーしました！', 'その他', 'Markdown で表示'],
 };

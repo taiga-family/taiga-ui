@@ -8,4 +8,10 @@ export const TUI_LITHUANIAN_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Taip pat žiūrėkite',
     tocText: 'Šiame puslapyje',
     sourceCodeText: 'Šaltinio kodas',
+    copyPageTexts: [
+        'Kopijuoti puslapį',
+        'Nukopijuota!',
+        'Daugiau',
+        'Peržiūrėti kaip Markdown',
+    ],
 };
