@@ -68,8 +68,8 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
             },
         );
 
-        it('renders a zero timestamp', () => {
-            tuiPushService.open('Test', {timestamp: 0}).subscribe();
+        it('renders a numeric timestamp', () => {
+            tuiPushService.open('Test', {timestamp: 1_700_000_000_000}).subscribe();
             fixture.detectChanges();
 
             expect(fixture.debugElement.query(By.css('.t-top .t-time'))).not.toBeNull();
