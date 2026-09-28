@@ -10,11 +10,9 @@
     (input)="width.set(slider.value)"
 />
 {{ width() }} %
-<div [style.inline-size.%]="width()">
-    <tui-arc-chart
-        style="--t-size: 100%"
-        [value]="value"
-    >
-        Total value
-    </tui-arc-chart>
-</div>
+<tui-arc-chart
+    [style.inline-size.%]="width()"
+    [value]="value"
+>
+    Total value
+</tui-arc-chart>
