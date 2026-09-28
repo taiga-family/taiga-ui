@@ -1,5 +1,8 @@
 @import '@taiga-ui/styles/utils';
 
+@line-number-width: 1rem;
+@line-number-gap: 1em;
+
 :host {
     display: block;
 }
@@ -19,11 +22,20 @@
     white-space: normal;
     outline: 1px solid var(--tui-border-normal);
 
+    // Firefox resets text selection on Ctrl/Cmd inside table layout (bugzilla #306641)
     ::ng-deep .hljs-ln {
+        display: grid;
+        grid-template-columns: minmax(min-content, calc(@line-number-width + @line-number-gap)) 1fr;
         inline-size: 100%;
+        min-inline-size: min-content;
+
+        tbody,
+        tr {
+            display: contents;
+        }
 
         .hljs-ln-numbers {
-            inline-size: 1rem;
+            padding-inline-end: @line-number-gap;
         }
 
         td {
