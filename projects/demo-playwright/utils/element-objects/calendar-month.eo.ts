@@ -1,7 +1,12 @@
 import {type Locator} from '@playwright/test';
+import {TUI_CALENDAR_MONTH_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiCalendarMonthEO {
-    public readonly month = this.host.locator('.t-cell');
+import {TuiBaseEO} from './base.eo';
 
-    constructor(private readonly host: Locator) {}
+export class TuiCalendarMonthEO extends TuiBaseEO {
+    public readonly month = this.host.locator(TUI_CALENDAR_MONTH_LOCATORS.MONTH);
+
+    public get host(): Locator {
+        return this.page.locator(TUI_CALENDAR_MONTH_LOCATORS.HOST);
+    }
 }

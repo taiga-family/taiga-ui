@@ -1,4 +1,4 @@
-import {expect, type Locator} from '@playwright/test';
+import {expect, Locator} from '@playwright/test';
 import {
     TUI_DROPDOWN_LOCATORS,
     TUI_DROPDOWN_MOBILE_LOCATORS,
@@ -7,8 +7,13 @@ import {
     TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
-export class TuiInputChipEO {
-    public readonly input: Locator;
+import {TuiBaseEO} from './base.eo';
+
+export class TuiInputChipEO extends TuiBaseEO {
+    public readonly input = this.host
+        .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+        .first()
+        .locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
     public readonly chips = this.host.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS);
     public readonly cleaner = this.host.getByRole('button', {name: 'Clear'}).first();
 
@@ -18,11 +23,8 @@ export class TuiInputChipEO {
             `${TUI_DROPDOWN_LOCATORS.HOST},${TUI_DROPDOWN_MOBILE_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`,
         );
 
-    constructor(public readonly host: Locator) {
-        this.input = host
-            .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-            .first()
-            .locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
+    public get host(): Locator {
+        return this.page.locator(TUI_INPUT_CHIP_LOCATORS.HOST);
     }
 
     public async addChip(value: string): Promise<void> {

@@ -17,8 +17,6 @@ export * from './input-phone-international.eo';
 export * from './input-range.eo';
 export * from './input-slider.eo';
 export * from './input-time.eo';
-export * from './mobile-calendar.eo';
-export * from './multi-select.eo';
 export * from './range.eo';
 export * from './select.eo';
 export * from './slider.eo';

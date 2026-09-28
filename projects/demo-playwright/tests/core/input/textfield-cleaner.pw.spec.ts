@@ -1,10 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiCalendarMonthEO,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiInputMonthEO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
     TUI_INPUT_CHIP_LOCATORS,
@@ -112,7 +107,7 @@ describe('Textfield cleaner', () => {
                 example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
 
-            const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
+            const calendarMonth = inputMonth.calendar;
 
             await inputMonth.textfield.click();
 

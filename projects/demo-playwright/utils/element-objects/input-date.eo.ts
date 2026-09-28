@@ -1,9 +1,17 @@
-import {type Locator} from '@playwright/test';
+import {Locator} from '@playwright/test';
+import {TUI_INPUT_DATE_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputDateEO {
+import {TuiBaseEO} from './base.eo';
+import {TuiCalendarEO} from './calendar.eo';
+
+export class TuiInputDateEO extends TuiBaseEO {
     public readonly textfield = this.host.getByRole('combobox');
-    public readonly calendar = this.host.page().locator('tui-calendar');
-    public readonly nativePicker = this.host.locator('input[type="date"]');
+    public readonly calendar = new TuiCalendarEO(this.host);
+    public readonly nativePicker = this.host.locator(
+        TUI_INPUT_DATE_LOCATORS.NATIVE_PICKER,
+    );
 
-    constructor(public readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_INPUT_DATE_LOCATORS.HOST);
+    }
 }

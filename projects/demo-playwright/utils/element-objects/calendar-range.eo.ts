@@ -1,8 +1,10 @@
-import {expect, type Locator} from '@playwright/test';
+import {expect, Locator} from '@playwright/test';
+import {TUI_CALENDAR_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
+import {TuiBaseEO} from './base.eo';
 import {TuiCalendarEO} from './calendar.eo';
 
-export class TuiCalendarRangeEO {
+export class TuiCalendarRangeEO extends TuiBaseEO {
     public previousMonth = this.host
         .locator('tui-calendar-spin tui-spin-button > button')
         .first();
@@ -11,7 +13,9 @@ export class TuiCalendarRangeEO {
         .locator('tui-calendar-spin tui-spin-button > button')
         .last();
 
-    constructor(public readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_CALENDAR_RANGE_LOCATORS.HOST);
+    }
 
     public async getCalendars(): Promise<
         [TuiCalendarEO, TuiCalendarEO] | [TuiCalendarEO]

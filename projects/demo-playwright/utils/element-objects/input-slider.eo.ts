@@ -1,8 +1,13 @@
-import {type Locator} from '@playwright/test';
+import {Locator} from '@playwright/test';
 
-export class TuiInputSliderEO {
+import {TuiBaseEO} from './base.eo';
+import {TUI_INPUT_SLIDER_LOCATORS} from '@taiga-ui/testing/locators';
+
+export class TuiInputSliderEO extends TuiBaseEO {
     public readonly textfield = this.host.getByRole('textbox');
     public readonly slider = this.host.getByRole('slider');
 
-    constructor(private readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_INPUT_SLIDER_LOCATORS.HOST);
+    }
 }
