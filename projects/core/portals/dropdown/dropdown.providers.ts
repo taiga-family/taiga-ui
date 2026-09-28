@@ -1,15 +1,8 @@
-import {type ElementRef, InjectionToken, type Type} from '@angular/core';
-
-import {TuiDropdownComponent} from './dropdown.component';
+import {type ElementRef, InjectionToken} from '@angular/core';
 
 /**
- * A component to display a dropdown
+ * @deprecated: remove in v6
  */
-export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
-    ngDevMode ? 'TUI_DROPDOWN_COMPONENT' : '',
-    {factory: () => TuiDropdownComponent},
-);
-
 export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>(
     ngDevMode ? 'TUI_DROPDOWN_CONTEXT' : '',
 );
