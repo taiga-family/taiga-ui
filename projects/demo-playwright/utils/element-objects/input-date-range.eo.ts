@@ -1,6 +1,8 @@
 import {expect, type Locator} from '@playwright/test';
+import {TuiBaseEO} from './base.eo';
+import {TUI_INPUT_DATE_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputDateRangeEO {
+export class TuiInputDateRangeEO extends TuiBaseEO {
     public readonly textfield = this.host.getByRole('combobox');
 
     public readonly calendar = this.host
@@ -13,7 +15,9 @@ export class TuiInputDateRangeEO {
 
     public readonly template = this.host.locator('.t-template');
 
-    constructor(public readonly host: Locator) {}
+    public get host(): Locator {
+        return this.page.locator(TUI_INPUT_DATE_RANGE_LOCATORS.HOST);
+    }
 
     public async getItems(): Promise<Locator[]> {
         const dataList = this.calendar.locator(
