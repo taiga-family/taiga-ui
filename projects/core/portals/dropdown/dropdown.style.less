@@ -16,6 +16,7 @@
     outline: 1px solid
         color-mix(in srgb, rgb(from var(--tui-border-normal) r g b / 1) 12%, var(--tui-background-elevation-1));
     overscroll-behavior: none;
+    position-visibility: anchors-valid;
     position-try-fallbacks:
         flip-block,
         flip-inline,
@@ -41,6 +42,10 @@
     &._delegated {
         scroll-timeline: none;
     }
+
+    &:not(._anchored) .t-detector {
+        display: none;
+    }
 }
 
 .t-wrapper {
@@ -50,6 +55,15 @@
     > * {
         padding: 1rem;
     }
+}
+
+.t-detector {
+    position: inherit;
+    inset: anchor(top) 1rem calc(anchor(--t-scrollbar top) - 1rem);
+    pointer-events: none;
+    inline-size: anchor-size(inline, 0);
+    position-anchor: inherit;
+    position-visibility: always;
 }
 
 @supports (anchor-name: --t-scrollbar) {
