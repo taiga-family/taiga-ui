@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.101.0](https://github.com/taiga-family/taiga-ui/compare/v4.100.0...v4.101.0) (2026-09-28)
+
+### 🐞 Bug Fixes
+
+- **kit:** `Push` hide empty header ([#15084](https://github.com/taiga-family/taiga-ui/issues/15084))
+  ([500ee09](https://github.com/taiga-family/taiga-ui/commit/500ee0997b0425234f3167b4f430db029786c815))
+
 ## [4.100.0](https://github.com/taiga-family/taiga-ui/compare/v4.99.0...v4.100.0) (2026-09-21)
 
 ### 🚀 Features
