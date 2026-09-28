@@ -3,16 +3,16 @@ import {expect, type Locator, test} from '@playwright/test';
 
 import {
     CHAR_NO_BREAK_SPACE,
-    TuiCalendarSheetPO,
+    TuiCalendarSheetEO,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputDateRangePO,
+    TuiInputDateRangeEO,
 } from '../../../utils';
 
 const {describe, beforeEach} = test;
 
 test.describe('InputDateRange', () => {
-    let inputDateRange!: TuiInputDateRangePO;
+    let inputDateRange!: TuiInputDateRangeEO;
     let documentationPage!: TuiDocumentationPagePO;
 
     test.use({viewport: {width: 650, height: 650}});
@@ -27,7 +27,7 @@ test.describe('InputDateRange', () => {
         beforeEach(() => {
             example = documentationPage.demo;
 
-            inputDateRange = new TuiInputDateRangePO(
+            inputDateRange = new TuiInputDateRangeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
         });
@@ -199,7 +199,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
 
-                const calendarSheet = new TuiCalendarSheetPO(
+                const calendarSheet = new TuiCalendarSheetEO(
                     inputDateRange.calendar.locator('tui-calendar-sheet'),
                 );
 
@@ -223,7 +223,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
 
-                const calendarSheet = new TuiCalendarSheetPO(
+                const calendarSheet = new TuiCalendarSheetEO(
                     inputDateRange.calendar.locator('tui-calendar-sheet'),
                 );
 
@@ -256,7 +256,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.textfield.click();
 
-                const calendarSheet = new TuiCalendarSheetPO(
+                const calendarSheet = new TuiCalendarSheetEO(
                     inputDateRange.calendar.locator('tui-calendar-sheet'),
                 );
 
@@ -294,7 +294,7 @@ test.describe('InputDateRange', () => {
         test('minLength=15', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
 
-            const calendarSheet = new TuiCalendarSheetPO(
+            const calendarSheet = new TuiCalendarSheetEO(
                 inputDateRange.calendar.locator('tui-calendar-sheet'),
             );
 
@@ -321,7 +321,7 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.textfield.click();
 
-            const calendarSheet = new TuiCalendarSheetPO(
+            const calendarSheet = new TuiCalendarSheetEO(
                 inputDateRange.calendar.locator('tui-calendar-sheet'),
             );
 
@@ -353,7 +353,7 @@ test.describe('InputDateRange', () => {
         test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
             const example = documentationPage.getExample('#data-list');
 
-            const inputDateRange = new TuiInputDateRangePO(
+            const inputDateRange = new TuiInputDateRangeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
 
@@ -378,7 +378,7 @@ test.describe('InputDateRange', () => {
 
         const example = documentationPage.getExample('#data-list');
 
-        const inputDateRange = new TuiInputDateRangePO(
+        const inputDateRange = new TuiInputDateRangeEO(
             example.locator('tui-textfield:has(input[tuiInputDateRange])'),
         );
 
@@ -419,11 +419,11 @@ test.describe('InputDateRange', () => {
 
             const example = documentationPage.getExample('#data-list');
 
-            const inputDateRange = new TuiInputDateRangePO(
+            const inputDateRange = new TuiInputDateRangeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
 
-            const calendarSheet = new TuiCalendarSheetPO(
+            const calendarSheet = new TuiCalendarSheetEO(
                 inputDateRange.calendar.locator('tui-calendar-sheet'),
             );
 
@@ -453,7 +453,7 @@ test.describe('InputDateRange', () => {
 
             const example = documentationPage.getExample('#data-list');
 
-            const inputDateRange = new TuiInputDateRangePO(
+            const inputDateRange = new TuiInputDateRangeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
 
@@ -474,7 +474,7 @@ test.describe('InputDateRange', () => {
 
             const example = documentationPage.getExample('#data-list');
 
-            const inputDateRange = new TuiInputDateRangePO(
+            const inputDateRange = new TuiInputDateRangeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateRange])'),
             );
 

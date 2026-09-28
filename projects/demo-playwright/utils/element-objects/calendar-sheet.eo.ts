@@ -1,6 +1,6 @@
 import {expect, type Locator} from '@playwright/test';
 
-export class TuiCalendarSheetPO {
+export class TuiCalendarSheetEO {
     constructor(private readonly host: Locator) {}
 
     public getCalendarDay(day: number): Locator {
