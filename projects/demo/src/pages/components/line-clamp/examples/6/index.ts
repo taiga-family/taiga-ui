@@ -6,7 +6,7 @@ import {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
@@ -15,8 +15,8 @@ import {TuiLineClamp} from '@taiga-ui/kit';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         TuiLineClamp,
-        TuiScrollable,
-        TuiScrollbar,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

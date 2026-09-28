@@ -22,6 +22,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Уменьшить отступ',
         unorderedList: 'Маркированный список',
         orderedList: 'Нумерованный список',
+        taskList: 'Список задач',
         quote: 'Цитата',
         foreColor: 'Цвет: Текст',
         hiliteColor: 'Цвет выделения',

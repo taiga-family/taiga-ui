@@ -1,0 +1,67 @@
+@import (once) '@taiga-ui/design-tokens/angular/mixins/animation.less';
+@import (once) '@taiga-ui/design-tokens/angular/mixins/shadow.less';
+@import 'theme/variables.less';
+@import 'theme/palette.less';
+
+// Scoped counterpart of `taiga-ui-theme.less`. Call it inside your own selector to keep
+// the theme out of `:root` / `:host`, e.g. when several micro frontends share a page:
+//
+//     [my-app] {
+//         .taiga-ui-theme();
+//     }
+.taiga-ui-theme() {
+    .tui-animation();
+    .tui-shadow-light();
+    .tui-theme-variables();
+
+    &[dir='rtl'],
+    [dir='rtl'] & {
+        .tui-theme-rtl();
+    }
+
+    @media screen {
+        & {
+            .tui-theme-light();
+        }
+
+        &[tuiTheme='light'],
+        & [tuiTheme='light'] {
+            color-scheme: light;
+
+            .tui-theme-light();
+        }
+
+        &[tuiTheme='dark'],
+        & [tuiTheme='dark'] {
+            color-scheme: dark;
+
+            .tui-theme-dark();
+        }
+    }
+
+    @media print {
+        &,
+        &[tuiTheme],
+        & [tuiTheme] {
+            color-scheme: light;
+
+            .tui-theme-light();
+        }
+    }
+
+    @import '../theme/appearance.less';
+    @import '../theme/appearance/textfield.less';
+
+    // `tuiTheme` can sit on the scoping element itself, which the selectors above do not cover
+    &[tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'] {
+        background-color: var(--tui-background-neutral-1);
+
+        .appearance-hover({
+            background-color: var(--tui-background-neutral-1-hover);
+        });
+
+        .appearance-focus({
+            background-color: transparent !important;
+        });
+    }
+}

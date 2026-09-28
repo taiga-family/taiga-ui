@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update input[tuiInputCard] [icon] (#11917) removes the dropped icon override from input[tuiInputCard] and keeps icon elsewhere: test.html 1`] = `
+{
+  "0. Before": "
+                <input
+                    tuiInputCard
+                    [icon]="card"
+                />
+                <input
+                    tuiInputCard
+                    icon="visa"
+                />
+                <input tuiInputCard />
+                <tui-icon icon="@tui.user" />
+            ",
+  "1. After": "
+                <input
+                    tuiInputCard
+                    
+                />
+                <input
+                    tuiInputCard
+                    
+                />
+                <input tuiInputCard />
+                <tui-icon icon="@tui.user" />
+            ",
+}
+`;

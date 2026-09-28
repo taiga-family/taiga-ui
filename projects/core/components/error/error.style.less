@@ -15,9 +15,10 @@
     }
 }
 
-.t-message-text {
+.t-content {
     white-space: pre-line;
     grid-area: 1 / 1 / span 2;
+    margin-block-end: -0.25rem;
 
     &.tui-enter {
         animation-name: tuiFade;
@@ -30,7 +31,12 @@
 
     &::before {
         content: '';
-        line-height: calc(24 / 14);
-        vertical-align: bottom;
+        line-height: 1.68125rem;
+        vertical-align: text-bottom;
+    }
+
+    &::after {
+        content: '';
+        vertical-align: text-top;
     }
 }

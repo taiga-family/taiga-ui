@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed default-options and leftover symbols warning adds TODO comments for removed default-options tokens and leftover symbols: test.ts 1`] = `
+{
+  "0. Before": "
+                import {
+                    TUI_MOBILE_CALENDAR,
+                    TUI_MOBILE_CALENDAR_PROVIDER,
+                } from '@taiga-ui/kit';
+                import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
+                import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiExpandContent, TuiMonthPipe],
+                })
+                export class TestComponent extends AbstractTuiMultipleControl<string> {
+                    protected readonly options = [
+                        TUI_MOBILE_CALENDAR,
+                        TUI_MOBILE_CALENDAR_PROVIDER,
+                    ];
+                }
+            ",
+  "1. After": "
+                import {
+// TODO: (Taiga UI migration) TUI_MOBILE_CALENDAR has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
+                    TUI_MOBILE_CALENDAR,
+// TODO: (Taiga UI migration) TUI_MOBILE_CALENDAR_PROVIDER has been removed. Explicitly import TuiMobileCalendarDropdown from @taiga-ui/addon-mobile and add the directive to your input-date fields. See https://taiga-ui.dev/components/input-date#mobile
+                    TUI_MOBILE_CALENDAR_PROVIDER,
+                } from '@taiga-ui/kit';
+// TODO: (Taiga UI migration) TuiExpandContent ([tuiExpandContent]) has been removed. Project expandable content with the *tuiItem structural directive (TuiItem from @taiga-ui/cdk) inside the new TuiExpand instead.
+// TODO: (Taiga UI migration) TuiMonthPipe (| tuiMonth) has been removed. Read localized month names from the TUI_MONTHS token from @taiga-ui/core instead.
+                import {TuiExpandContent, TuiMonthPipe} from '@taiga-ui/core';
+// TODO: (Taiga UI migration) AbstractTuiMultipleControl has been removed. Extend the signal-based TuiControl<T> from @taiga-ui/cdk instead (same signal API as AbstractTuiControl). Port your custom multi-value control manually — this cannot be migrated automatically.
+                import {AbstractTuiMultipleControl} from '@taiga-ui/legacy';
+
+                @Component({
+                    imports: [TuiExpandContent, TuiMonthPipe],
+                })
+                export class TestComponent extends AbstractTuiMultipleControl<string> {
+                    protected readonly options = [
+                        TUI_MOBILE_CALENDAR,
+                        TUI_MOBILE_CALENDAR_PROVIDER,
+                    ];
+                }
+            ",
+}
+`;

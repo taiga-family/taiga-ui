@@ -198,6 +198,52 @@ import { TuiDrawer } from "@taiga-ui/kit";
 }
 `;
 
+exports[`ng-update sidebar to drawer migrates elements nested inside *tuiSidebar (no clobber of inner migrations): test.html 1`] = `
+{
+  "0. Before": "<section *tuiSidebar="open; autoWidth: true">
+    <button tuiButtonClose></button>
+    <tui-avatar src="x"></tui-avatar>
+</section>",
+  "1. After": "<!-- TODO: (Taiga UI migration) tuiSidebarAutoWidth has no equivalent in TuiDrawer, adjust layout manually -->
+<tui-drawer *tuiPopup="open">
+    <button tuiButtonX></button>
+    <span tuiAvatar="x"></span>
+</tui-drawer>",
+}
+`;
+
+exports[`ng-update sidebar to drawer migrates elements nested inside *tuiSidebar (no clobber of inner migrations): test.ts 1`] = `
+{
+  "0. Before": "
+        import {Component} from '@angular/core';
+        import {TuiSidebar} from '@taiga-ui/addon-mobile';
+
+        @Component({
+            standalone: true,
+            imports: [TuiSidebar],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+  "1. After": "import { TuiPopup } from "@taiga-ui/core";
+import { TuiDrawer } from "@taiga-ui/kit";
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            standalone: true,
+            imports: [TuiDrawer, TuiPopup],
+            templateUrl: './test.html',
+        })
+        export class TestComponent {
+            protected open = false;
+        }
+    ",
+}
+`;
+
 exports[`ng-update sidebar to drawer migrates multiline content inside *tuiSidebar: test.html 1`] = `
 {
   "0. Before": "<div *tuiSidebar="open">

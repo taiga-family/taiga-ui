@@ -38,6 +38,7 @@ const config: KnipConfig = {
         '**/versions.constants.ts',
         '**/tokens/common-icons.ts',
         '**/app/logo/logo.component.ts',
+        '**/app/copy-page/copy-page.component.ts',
         '**/app/server-error-handler.ts',
         '**/app/getting-started/index.ts',
         '**/testing/visual-testing/**/*.ts',

@@ -1,0 +1,38 @@
+<tui-month
+    class="t-labels"
+    [showWeek]="showWeek()"
+/>
+<tui-scroll-wheel class="t-scroll">
+    <ng-template let-index>
+        @let month = getMonth(index);
+        @if (mode() === 'range') {
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                class="t-button"
+                [appearance]="getAppearance(month)"
+                [disabled]="month.monthBefore(min()) || month.monthAfter(max())"
+                (click)="setMonth(month)"
+            >
+                {{ i18n()[month.month] }} {{ month.year }}
+            </button>
+        } @else {
+            <div class="t-header">{{ i18n()[month.month] }} {{ month.year }}</div>
+        }
+        <tui-month
+            class="t-month"
+            [content]="contentDay()"
+            [dayType]="dayType()"
+            [disabledItemHandler]="disabledDay()"
+            [month]="month"
+            [showAdjacent]="false"
+            [showWeek]="showWeek()"
+            [value]="value()"
+            (pick)="onDay($event)"
+        />
+    </ng-template>
+</tui-scroll-wheel>
+@if (!dropdown?.nativeElement?.matches('input')) {
+    <tui-calendar-header [mode]="mode()" />
+}

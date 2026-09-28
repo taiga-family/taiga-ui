@@ -1,24 +1,33 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {UpperCasePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    inject,
     input,
-    output,
+    model,
     signal,
+    viewChild,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {FormsModule} from '@angular/forms';
+import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
-import {TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
-import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
+import {TuiCarousel, TuiCarouselComponent} from '@taiga-ui/core/components/carousel';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+import {TuiDataGrid} from '@taiga-ui/experimental/components/data-grid';
+import {TuiMonthComponent} from '@taiga-ui/experimental/components/month';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiElasticContainer} from '@taiga-ui/layout/components/elastic-container';
+import {TuiSlides} from '@taiga-ui/layout/components/slides';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TUI_CALENDAR_OPTIONS} from './calendar.options';
-import {TuiWeekPipe} from './week.pipe';
+import {TuiCalendarHeader} from './calendar-header.component';
+import {TuiDatePicker} from './date-picker';
 
 /**
  * @deprecated: work in progress, do not use!
@@ -26,77 +35,120 @@ import {TuiWeekPipe} from './week.pipe';
 @Component({
     selector: 'tui-calendar[new]',
     imports: [
-        PolymorpheusOutlet,
-        TuiCalendarSheetPipe,
+        FormsModule,
+        TuiButton,
+        TuiCalendarHeader,
+        TuiCarousel,
+        TuiChevron,
+        TuiDataGrid,
+        TuiElasticContainer,
+        TuiLink,
         TuiMapperPipe,
-        TuiWeekPipe,
-        UpperCasePipe,
+        // eslint-disable-next-line @taiga-ui/experience-next/short-tui-imports
+        TuiMonthComponent,
+        TuiSlides,
     ],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[class._ww]': 'showWeek()',
-        '(mouseleave)': 'hovered.set(null)',
-    },
+    providers: [
+        tuiAsAuxiliary(TuiCalendarComponent),
+        tuiProvide(AbstractTuiCalendar, TuiCalendarComponent),
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
+        tuiTextfieldOptionsProvider({size: signal('m'), cleaner: signal(false)}),
+    ],
 })
-export class TuiCalendar {
-    private readonly days = inject(TUI_SHORT_WEEK_DAYS);
-    private readonly options = inject(TUI_CALENDAR_OPTIONS);
+export class TuiCalendarComponent<
+    T extends 'multi' | 'range' | 'single',
+> extends TuiDatePicker<T> {
+    protected readonly carousel = viewChild(TuiCarouselComponent);
+    protected readonly content = computed<PolymorpheusContent<TuiContext<TuiMonth>>>(
+        () => (c) => this.i18n()[c.$implicit.month],
+    );
 
-    protected readonly today = TuiDay.currentLocal();
-    protected readonly hovered = signal<TuiDay | null>(null);
+    protected readonly years = computed((value = this.value()) =>
+        value instanceof TuiDayRange
+            ? Array.from(
+                  {length: value.to.year - value.from.year + 1},
+                  (_, index) => value.from.year + index,
+              )
+            : Array.from(new Set(coerceArray<TuiDay>(value ?? []).map(({year}) => year))),
+    );
 
-    protected readonly week = computed((week = convert(this.days())) => [
-        ...week.slice(this.options.weekFirstDay()),
-        ...week.slice(0, this.options.weekFirstDay()),
-    ]);
+    protected readonly year = computed(() =>
+        Array.from({length: 12}, (_, index) => new TuiMonth(this.month().year, index)),
+    );
 
-    public readonly pick = output<TuiDay>();
-    public readonly month = input(TuiMonth.currentLocal());
-    public readonly value = input<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
-    public readonly content = input<PolymorpheusContent<TuiContext<TuiDay>>>();
-    public readonly dayType = input(this.options.dayType);
+    protected readonly months = computed((value = this.value()) =>
+        this.year().filter((month) =>
+            value instanceof TuiDayRange
+                ? value.monthInRange(month)
+                : coerceArray<TuiDay>(value ?? []).some((day) => day.monthSame(month)),
+        ),
+    );
+
+    protected readonly button = computed(() =>
+        this.view() === 'day'
+            ? `${this.i18n()[this.month().month]} ${this.month().formattedYear}`
+            : this.month().formattedYear,
+    );
+
+    protected readonly yearMin = computed(() =>
+        Math.ceil((this.min().year - this.month().year - 5) / 12),
+    );
+
+    protected readonly yearMax = computed(() =>
+        Math.floor((this.max().year - this.month().year + 6) / 12),
+    );
+
+    protected readonly disabledMonth = computed<TuiBooleanHandler<TuiMonth>>(
+        () => (month) => month.monthBefore(this.min()) || month.monthAfter(this.max()),
+    );
+
+    protected readonly disabledYear = computed(
+        () => (year: number) => year < this.min().year || year > this.max().year,
+    );
+
+    protected readonly start = computed((carousel = this.carousel()) =>
+        this.view() === 'month'
+            ? this.month().year === this.min().year
+            : carousel?.index() === carousel?.min(),
+    );
+
+    protected readonly end = computed((carousel = this.carousel()) =>
+        this.view() === 'month'
+            ? this.month().year === this.max().year
+            : carousel?.index() === carousel?.max(),
+    );
+
+    protected readonly index = computed(
+        () => this.month().year * 12 + this.month().month,
+    );
+
+    public readonly view = model<'day' | 'month' | 'year'>('day');
+    public readonly contentMonth = input<PolymorpheusContent<TuiContext<TuiMonth>>>();
+    public readonly contentYear = input<PolymorpheusContent<TuiContext<number>>>();
     public readonly showAdjacent = input(this.options.showAdjacent);
-    public readonly showWeek = input(this.options.showWeek);
 
-    public readonly disabledItemHandler =
-        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
-
-    protected getRange(day: TuiDay): 'end' | 'middle' | 'single' | 'start' | null {
-        const value = this.value() || [];
-
-        if (!(value instanceof TuiDayRange)) {
-            return coerceArray(value).find((item) => day.daySame(item)) ? 'single' : null;
-        }
-
-        const hovered = this.hovered();
-
-        const range =
-            value.from === value.to && hovered
-                ? TuiDayRange.sort(hovered, value.to)
-                : value;
-
-        if (range.isSingleDay && day.daySame(range.from)) {
-            return 'single';
-        }
-
-        if (day.daySame(range.from)) {
-            return 'start';
-        }
-
-        if (day.daySame(range.to)) {
-            return 'end';
-        }
-
-        return range.dayInRange(day) ? 'middle' : null;
+    protected getItems(initial: number): readonly number[] {
+        return Array.from({length: 12}, (_, index) => initial + index);
     }
 
-    protected getType(day: string): string {
-        return day === this.days()[5] || day === this.days()[6] ? 'weekend' : '';
-    }
-}
+    protected onSpin(step: number): void {
+        this.carousel()?.[step > 0 ? 'next' : 'prev']();
 
-function convert(week: readonly string[]): readonly string[] {
-    return [week[week.length - 1] || '', ...week.slice(0, week.length - 1)];
+        if (this.view() === 'month') {
+            this.month.update((month) => month.append({year: step}));
+        }
+    }
+
+    protected onYear(year: number): void {
+        this.month.update(({month}) => new TuiMonth(year, month));
+        this.view.set('month');
+    }
+
+    protected onMonth(month: TuiMonth): void {
+        this.month.set(month);
+        this.view.set('day');
+    }
 }

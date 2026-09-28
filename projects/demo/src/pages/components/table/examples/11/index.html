@@ -42,6 +42,27 @@
         </tr>
         <tr>
             <td tuiTd>
+                <tui-textfield>
+                    <input
+                        placeholder="Number"
+                        tuiInputNumber
+                        [(ngModel)]="number"
+                    />
+                </tui-textfield>
+            </td>
+            <td tuiTd>
+                <tui-textfield>
+                    <input
+                        placeholder="Number with step"
+                        tuiInputNumber
+                        [step]="10"
+                        [(ngModel)]="numberStep"
+                    />
+                </tui-textfield>
+            </td>
+        </tr>
+        <tr>
+            <td tuiTd>
                 <tui-textfield multi>
                     <input
                         placeholder="InputChip"

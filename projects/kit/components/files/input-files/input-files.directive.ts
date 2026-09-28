@@ -1,5 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {Directive} from '@angular/core';
+import {Directive, inject, INJECTOR} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -42,13 +42,15 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
 export class TuiInputFilesDirective extends TuiControl<
     TuiFileLike | readonly TuiFileLike[]
 > {
+    private readonly injector = inject(INJECTOR);
+
     protected readonly m = tuiAppearanceMode(this.mode);
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public readonly reject = outputFromObservable(
         timer(0, tuiZonefreeScheduler()).pipe(
-            switchMap(() => tuiControlValue(this.control.control)),
+            switchMap(() => tuiControlValue(this.control.control, this.injector)),
             map(() => tuiFilesRejected(this.control.control)),
             filter(({length}) => !!length),
         ),

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update move mobile-dialog to legacy remaps the mobile-dialog symbols from addon-mobile to legacy: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
+                    TUI_MOBILE_DIALOG_OPTIONS,
+                    TuiMobileDialog,
+                    TuiMobileDialogOptions,
+                    TuiMobileDialogService,
+                    tuiMobileDialogOptionsProvider,
+                } from '@taiga-ui/addon-mobile';
+
+                @Component({
+                    imports: [TuiMobileDialog],
+                    providers: [tuiMobileDialogOptionsProvider({})],
+                })
+                export class TestComponent {
+                    protected readonly service = inject(TuiMobileDialogService);
+                    protected readonly options = inject(TUI_MOBILE_DIALOG_OPTIONS);
+                    protected readonly defaults: TuiMobileDialogOptions =
+                        TUI_MOBILE_DIALOG_DEFAULT_OPTIONS;
+                }
+            ",
+  "1. After": "import { TuiMobileDialog, TuiMobileDialogService, TuiMobileDialogOptions, TUI_MOBILE_DIALOG_OPTIONS, TUI_MOBILE_DIALOG_DEFAULT_OPTIONS, tuiMobileDialogOptionsProvider } from "@taiga-ui/legacy";
+
+                import {Component, inject} from '@angular/core';
+
+                @Component({
+                    imports: [TuiMobileDialog],
+                    providers: [tuiMobileDialogOptionsProvider({})],
+                })
+                export class TestComponent {
+                    protected readonly service = inject(TuiMobileDialogService);
+                    protected readonly options = inject(TUI_MOBILE_DIALOG_OPTIONS);
+                    protected readonly defaults: TuiMobileDialogOptions =
+                        TUI_MOBILE_DIALOG_DEFAULT_OPTIONS;
+                }
+            ",
+}
+`;

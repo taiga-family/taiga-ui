@@ -22,6 +22,35 @@ exports[`ng-update TuiTextfield to TuiInput identifier migration should rename T
 }
 `;
 
+exports[`ng-update TuiTextfield to TuiInput identifier migration should rename TuiTextfieldDirective to TuiInputDirective in imports and usages: test.ts 1`] = `
+{
+  "0. Before": "
+                    import {TuiTextfieldDirective} from '@taiga-ui/core';
+
+                    @Component({standalone: true})
+                    export class TestComponent {
+                        @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+                        protected readonly field!: ElementRef;
+                    }
+                ",
+  "1. After": "import { TuiInputDirective } from "@taiga-ui/core";
+
+                                        @Component({standalone: true})
+                    export class TestComponent {
+                        @ViewChild(TuiInputDirective, {read: ElementRef})
+                        protected readonly field!: ElementRef;
+                    }
+                ",
+}
+`;
+
+exports[`ng-update TuiTextfield to TuiInput template migration should rename native select tuiTextfield to tuiSelect (not tuiInput): test.html 1`] = `
+{
+  "0. Before": "<select tuiTextfield></select>",
+  "1. After": "<select tuiSelect></select>",
+}
+`;
+
 exports[`ng-update TuiTextfield to TuiInput template migration should rename tuiTextfield inside tui-textfield tag: test.html 1`] = `
 {
   "0. Before": "<tui-textfield><input tuiTextfield /></tui-textfield>",

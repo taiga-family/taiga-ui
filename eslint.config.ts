@@ -2,6 +2,7 @@ import taiga from '@taiga-ui/eslint-plugin-experience-next';
 
 export default [
     ...taiga.configs.recommended,
+    ...taiga.configs.jest,
     ...taiga.configs['taiga-specific'],
     {
         files: ['**/legacy/**/*.ts'],
@@ -31,6 +32,8 @@ export default [
         files: [
             'projects/demo/src/pages/components/icon/examples/4/index.ts',
             'projects/demo/src/pages/markup/breakpoints/index.ts',
+            '**/*.pw.spec.ts',
+            '**/*.po.ts',
         ],
     },
     {

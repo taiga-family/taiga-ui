@@ -6,4 +6,5 @@
  */
 export * from '@taiga-ui/testing/core';
 export * from '@taiga-ui/testing/exceptions';
+export * from '@taiga-ui/testing/locators';
 export * from '@taiga-ui/testing/utils';

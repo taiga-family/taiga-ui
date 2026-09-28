@@ -22,6 +22,7 @@ export const TUI_GERMAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         outdent: 'Ausrücken',
         unorderedList: 'Ungeordnete Liste',
         orderedList: 'Geordnete Liste',
+        taskList: 'Aufgabenliste',
         quote: 'Blockquote',
         foreColor: 'Farbe',
         backColor: 'Hintergrundfarbe',

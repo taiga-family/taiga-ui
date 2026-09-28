@@ -6,6 +6,10 @@ import {
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_INPUT_CHIP_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {beforeEach, describe} = test;
 
@@ -17,8 +21,14 @@ describe('Textfield cleaner', () => {
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            input = example.locator('tui-textfield input,textarea').first();
-            cleaner = example.locator('tui-textfield [tuiButtonX]');
+            input = example
+                .locator(
+                    `${TUI_TEXTFIELD_LOCATORS.HOST} ${TUI_TEXTFIELD_LOCATORS.INPUT},textarea`,
+                )
+                .first();
+            cleaner = example
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .locator(TUI_TEXTFIELD_LOCATORS.CLEANER);
         });
 
         test('ComboBox', async ({page}) => {
@@ -28,6 +38,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('Austria');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('Select', async ({page}) => {
@@ -36,6 +47,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('USA');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputCard', async ({page}) => {
@@ -55,10 +67,10 @@ describe('Textfield cleaner', () => {
             await input.pressSequentially('two');
             await page.keyboard.press('Enter');
 
-            await expect(example.locator('tui-input-chip')).toHaveCount(2);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS)).toHaveCount(2);
 
             await cleaner.click();
-            await expect(example.locator('tui-input-chip')).toHaveCount(0);
+            await expect(example.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS)).toHaveCount(0);
         });
 
         test('InputColor', async ({page}) => {
@@ -77,6 +89,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputDateRange', async ({page}) => {
@@ -89,12 +102,16 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025 – 09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthPO(example.locator('tui-textfield'));
+            const inputMonth = new TuiInputMonthPO(
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
+            );
+
             const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
 
             await inputMonth.textfield.click();
@@ -104,6 +121,7 @@ describe('Textfield cleaner', () => {
 
             await cleaner.click();
             await expect(input).toHaveValue('');
+            await expect(page.locator('tui-dropdown')).toBeVisible();
         });
 
         test('InputNumber', async ({page}) => {

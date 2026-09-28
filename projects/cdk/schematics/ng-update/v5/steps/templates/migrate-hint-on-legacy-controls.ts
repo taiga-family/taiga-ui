@@ -10,6 +10,10 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../../interfaces/template-resource';
+import {
+    getOriginalAttrText,
+    replaceAttrValue,
+} from '../../../utils/templates/get-original-attr-text';
 import {buildTuiInputReplacement} from './migrate-input';
 import {registerCustomContentImports} from './migrate-legacy-custom-content';
 import {buildTuiTextareaReplacement} from './migrate-textarea';
@@ -49,16 +53,6 @@ function hasHintContent(element: Element): boolean {
             lower === '[tuiHintContent]'.toLowerCase()
         );
     });
-}
-
-function getOriginalAttrText(
-    template: string,
-    element: Element,
-    attrNameLower: string,
-): string | null {
-    const attrLoc = element.sourceCodeLocation?.attrs?.[attrNameLower];
-
-    return attrLoc ? template.slice(attrLoc.startOffset, attrLoc.endOffset) : null;
 }
 
 export function buildTuiIconStr(element: Element, template: string): string {
@@ -102,40 +96,19 @@ export function buildTuiIconStr(element: Element, template: string): string {
     const extraAttrs: string[] = [];
 
     if (appearanceAttr) {
-        const original = getOriginalAttrText(
-            template,
-            element,
-            appearanceAttr.name.toLowerCase(),
-        );
-
-        extraAttrs.push(
-            original ??
-                (appearanceAttr.value
-                    ? `${appearanceAttr.name}="${appearanceAttr.value}"`
-                    : appearanceAttr.name),
-        );
+        extraAttrs.push(getOriginalAttrText(template, element, appearanceAttr));
     }
 
     if (directionAttr) {
         const nameLower = directionAttr.name.toLowerCase();
         const migratedValue = migrateAttrValue(nameLower, directionAttr.value);
-        const original = getOriginalAttrText(template, element, nameLower);
-        let attrText: string;
+        const original = getOriginalAttrText(template, element, directionAttr);
 
-        if (original && directionAttr.value !== migratedValue) {
-            attrText = original.replace(
-                `="${directionAttr.value}"`,
-                `="${migratedValue}"`,
-            );
-        } else {
-            attrText =
-                original ??
-                (directionAttr.value
-                    ? `${directionAttr.name}="${migratedValue}"`
-                    : directionAttr.name);
-        }
-
-        extraAttrs.push(attrText);
+        extraAttrs.push(
+            directionAttr.value === migratedValue
+                ? original
+                : replaceAttrValue(original, migratedValue),
+        );
     }
 
     const allAttrs = [tooltipAttr, ...extraAttrs];
@@ -293,18 +266,7 @@ export function migrateHintOnLegacyControls({
                             (n) => n.toLowerCase() === attr.name.toLowerCase(),
                         ),
                 )
-                .map((attr) => {
-                    const original = getOriginalAttrText(
-                        template,
-                        element,
-                        attr.name.toLowerCase(),
-                    );
-
-                    return (
-                        original ??
-                        (attr.value ? `${attr.name}="${attr.value}"` : attr.name)
-                    );
-                });
+                .map((attr) => getOriginalAttrText(template, element, attr));
 
             const attrsStr = nonHintAttrs.length > 0 ? ` ${nonHintAttrs.join(' ')}` : '';
             const replacement = `<${tagName}${attrsStr}>${tuiIconStr}</${tagName}>`;

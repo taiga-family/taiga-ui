@@ -197,7 +197,7 @@ exports[`ng-update migrate TuiInputNumberModule to TuiInputNumber: test.ts 1`] =
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputNumber,
+                        ...TuiInputNumber,
                     ],
                     // ...
                 })
@@ -213,6 +213,31 @@ exports[`ng-update migrate TuiInputNumberModule to TuiInputNumber: test.ts 1`] =
                     // ...
                 })
                 export class MyComponent {}
+            ",
+}
+`;
+
+exports[`ng-update preserves camelCase for [formControlName] and (ngModelChange) bindings: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-number
+                    [formControlName]="control"
+                    (ngModelChange)="onChange($event)"
+                >
+                    Enter a number
+                </tui-input-number>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    
+                >
+<label tuiLabel>
+                    Enter a number
+                </label>
+
+<input tuiInputNumber [formControlName]="control" (ngModelChange)="onChange($event)" />
+</tui-textfield>
             ",
 }
 `;

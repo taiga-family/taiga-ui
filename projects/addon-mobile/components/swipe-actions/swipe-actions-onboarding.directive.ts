@@ -24,6 +24,7 @@ class Styles {}
 @Directive({
     selector: 'tui-swipe-actions[onboarding]',
     host: {
+        'data-tui-version': TUI_VERSION,
         '[class._onboarding]': 'onboarding()',
         '(animationend)': 'onboarding.set($event.animationName !== "tuiOnboardingExit")',
     },

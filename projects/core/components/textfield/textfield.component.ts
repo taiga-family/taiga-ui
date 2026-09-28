@@ -43,7 +43,11 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_TEXTFIELD_VALUE} from '@taiga-ui/core/tokens';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {
+    type TuiInteractiveState,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -100,7 +104,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly open = inject(TuiDropdownOpen);
     protected readonly clear = inject(TUI_CLEAR_WORD);
-
     protected readonly label = contentChild(
         forwardRef(() => TuiLabel),
         {read: ElementRef},
@@ -135,12 +138,21 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
-
     public readonly input: Signal<ElementRef<HTMLInputElement> | undefined> =
         contentChild(TUI_TEXTFIELD_ACCESSOR, {read: ElementRef});
 
     public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
     public readonly filler = input('');
+    public readonly invalid = input<boolean | null>(null);
+    public readonly tuiAppearanceFocus = input<boolean | null>(null);
+    /**
+     * TODO(v6): expose tuiAppearanceState input using host directives API
+     * ```ts
+     * hostDirectives: [{directive: TuiAppearance, inputs: ['tuiAppearanceState']}]
+     * ```
+     * Temporary workaround while {@link TuiInputDirective} still binds tuiAppearanceState(...)
+     */
+    public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
 
     public get disabled(): boolean {
@@ -160,18 +172,30 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
     }
 
+    protected get openable(): boolean {
+        return (
+            this.open.enabled() &&
+            !this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
+        );
+    }
+
     protected onResize({clientWidth}: HTMLElement): void {
         this.el.style.setProperty('--t-side', tuiPx(clientWidth));
+    }
+
+    protected onCleanerClick(value: T | T[] | null): void {
+        this.accessor()?.setValue(value);
+
+        if (this.dropdown.content() && this.openable) {
+            this.open.toggle(true);
+        }
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
         this.input()?.nativeElement.focus();
 
-        if (
-            !this.open.enabled() ||
-            this.input()?.nativeElement.matches('input:read-only,textarea:read-only')
-        ) {
+        if (!this.openable) {
             return;
         }
 

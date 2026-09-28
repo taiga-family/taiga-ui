@@ -57,6 +57,13 @@ exports[`ng-update chip and badge selectors replaces nav[tuiStepper] with tui-st
 }
 `;
 
+exports[`ng-update chip and badge selectors replaces nav[tuiTabsWithMore] with tui-tabs-with-more: test.html 1`] = `
+{
+  "0. Before": "<nav tuiTabsWithMore></nav>",
+  "1. After": "<tui-tabs-with-more ></tui-tabs-with-more>",
+}
+`;
+
 exports[`ng-update chip and badge selectors replaces tui-badge with span and tuiBadge directive: test.html 1`] = `
 {
   "0. Before": "<tui-badge></tui-badge>",

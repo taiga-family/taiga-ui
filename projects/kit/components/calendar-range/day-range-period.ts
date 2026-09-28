@@ -9,6 +9,10 @@ export class TuiDayRangePeriod {
     constructor(
         public readonly range: TuiDayRange,
         private readonly name: string,
+        /**
+         * @deprecated
+         * TODO(v6): remove this unused property
+         */
         public readonly content?: PolymorpheusContent<TuiContext<TuiDayRange>>,
     ) {}
 

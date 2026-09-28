@@ -16,6 +16,12 @@
     }
 }
 
+@mixin liquid-glass-only {
+    @supports (-webkit-touch-callout: none) and (position-anchor: --value) {
+        @content;
+    }
+}
+
 @mixin chrome-only {
     @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
         @content;

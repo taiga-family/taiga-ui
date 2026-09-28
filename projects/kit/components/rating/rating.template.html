@@ -10,12 +10,12 @@
     (blur)="onTouched()"
     (ngModelChange)="onChange($event)"
 />
-<div class="t-items">
+<span class="t-items">
     @for (_ of array(); track $index) {
         @let $implicit = max() - $index;
         @let filled = $implicit - value() < 1;
 
-        <div
+        <span
             class="t-item"
             [class.t-item_active]="isActive($index)"
             (pointerup)="onClick($implicit)"
@@ -34,6 +34,6 @@
                 [background]="src.toString()"
                 [style.--t-cut.%]="getCut($index)"
             />
-        </div>
+        </span>
     }
-</div>
+</span>

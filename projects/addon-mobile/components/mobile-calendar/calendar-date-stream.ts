@@ -1,4 +1,4 @@
-import {InjectionToken, Optional, type Provider, Self} from '@angular/core';
+import {inject, InjectionToken, INJECTOR, type Provider} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-time';
@@ -10,29 +10,23 @@ export const TUI_CALENDAR_DATE_STREAM = new InjectionToken<
 >(ngDevMode ? 'TUI_CALENDAR_DATE_STREAM' : '');
 
 export function tuiDateStreamWithTransformer(
-    transformer: InjectionToken<TuiValueTransformer<any>>,
+    transformerToken: InjectionToken<TuiValueTransformer<any>>,
 ): Provider {
     return {
         provide: TUI_CALENDAR_DATE_STREAM,
-        deps: [
-            [new Optional(), new Self(), NgControl],
-            [new Optional(), transformer],
-        ],
-        useFactory: tuiControlValueFactory,
-    };
-}
+        useFactory: <T extends TuiDay | TuiDayRange | [TuiDay, TuiTime | null]>() => {
+            const control = inject(NgControl, {optional: true, self: true});
+            const transformer = inject(transformerToken, {optional: true});
 
-function tuiControlValueFactory<
-    T extends TuiDay | TuiDayRange | [TuiDay, TuiTime | null],
->(
-    control: NgControl | null,
-    transformer?: TuiValueTransformer<T> | null,
-): Observable<T | null> | null {
-    return control
-        ? tuiControlValue(control).pipe(
-              map((value) =>
-                  transformer ? transformer?.fromControlValue(value) : (value as T),
-              ),
-          )
-        : of(null);
+            return control
+                ? tuiControlValue(control, inject(INJECTOR)).pipe(
+                      map((value) =>
+                          transformer
+                              ? transformer?.fromControlValue(value)
+                              : (value as T),
+                      ),
+                  )
+                : of(null);
+        },
+    };
 }

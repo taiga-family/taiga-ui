@@ -2,11 +2,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFormatNumberPipe, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiChevron,
     TuiDataListWrapper,
+    TuiFormatNumberPipe,
     TuiItemsWithMore,
     TuiSelect,
 } from '@taiga-ui/kit';

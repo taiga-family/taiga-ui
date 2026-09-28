@@ -37,7 +37,12 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
             useValue: {childList: true},
         },
     ],
-    host: {'data-tui-version': TUI_VERSION, '(pointerleave.zoneless)': 'rearrange()'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '(animationcancel.self)': 'refresh()',
+        '(animationstart.self)': 'refresh()',
+        '(pointerleave.zoneless)': 'rearrange()',
+    },
 })
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
@@ -59,6 +64,10 @@ export class TuiTilesComponent {
 
     public rearrange(element?: Element): void {
         this.el$.next(element);
+    }
+
+    protected refresh(): void {
+        this.order.update((order) => new Map(order));
     }
 
     private filter(element?: Element): element is Element {

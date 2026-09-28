@@ -2,10 +2,10 @@
 
 <p>
     Formatted number with custom params:
-    {{ 10500.33 | tuiFormatNumber: {precision: 4, decimalSeparator: '.'} }}
+    {{ 10500.33 | tuiFormatNumber: {maximumFractionDigits: 4, decimalSeparator: '.'} }}
 </p>
 
 <p>
     Formatted number with rounding:
-    {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }}
+    {{ 10500.334 | tuiFormatNumber: {maximumFractionDigits: 2, decimalSeparator: '.', rounding: 'ceil'} }}
 </p>

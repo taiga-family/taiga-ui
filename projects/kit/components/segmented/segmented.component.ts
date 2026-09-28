@@ -46,7 +46,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     },
 })
 export class TuiSegmented implements OnChanges {
-    private readonly legacy = !inject(WA_CSS).supports('anchor-name', '--t-anchor');
+    private readonly legacy = !inject(WA_CSS)?.supports('anchor-name', '--t-anchor');
     private readonly el = tuiInjectElement();
 
     protected readonly anchorId = `--${tuiGenerateId()}`;

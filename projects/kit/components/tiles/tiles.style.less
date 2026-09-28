@@ -11,6 +11,11 @@ tui-tiles:where(*&) {
         pointer-events: none;
     }
 
+    [dir='rtl'] &,
+    &[dir='rtl'] {
+        animation: tuiPresent 1s infinite;
+    }
+
     &._dragged tui-tile:not(._dragged) > .t-wrapper,
     &:not(._dragged) tui-tile._dragged > .t-wrapper {
         .transition(all);
@@ -21,8 +26,8 @@ tui-tiles:where(*&) {
 
 tui-tile:where(*&) {
     & > .t-wrapper {
-        // don't use ".fullsize(absolute)" because it will break transition
         position: absolute;
+        inset: 0;
         z-index: 0;
         border-radius: inherit;
     }

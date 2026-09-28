@@ -3,12 +3,12 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiCardLarge, TuiDemo, TuiHeader, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiDemo, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

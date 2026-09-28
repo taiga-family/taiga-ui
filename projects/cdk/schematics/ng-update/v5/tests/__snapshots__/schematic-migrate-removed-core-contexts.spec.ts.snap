@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update removed @taiga-ui/core context types (#11917) adds TODO comments for removed TuiValueContentContext and TuiAlertContext: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {TuiAlertContext, TuiValueContentContext} from '@taiga-ui/core';
+                import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+                @Component({})
+                export class TestComponent {
+                    protected content: PolymorpheusContent<
+                        TuiValueContentContext<string>
+                    >;
+                    protected alert: TuiAlertContext<boolean>;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+// TODO: (Taiga UI migration) TuiValueContentContext has been removed. Type custom value content with TuiContext<T> from @taiga-ui/cdk instead — the \`active\` flag is no longer part of the content context.
+// TODO: (Taiga UI migration) TuiAlertContext has been removed. Type the injected alert content context with TuiPortalContext<TuiNotificationOptions, O> from @taiga-ui/cdk (TuiPopoverContext -> TuiPortalContext, TuiAlertOptions -> TuiNotificationOptions).
+                import {TuiAlertContext, TuiValueContentContext} from '@taiga-ui/core';
+                import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+                @Component({})
+                export class TestComponent {
+                    protected content: PolymorpheusContent<
+                        TuiValueContentContext<string>
+                    >;
+                    protected alert: TuiAlertContext<boolean>;
+                }
+            ",
+}
+`;

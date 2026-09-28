@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputColor} from '@taiga-ui/kit';
@@ -10,15 +10,15 @@ import {TuiInputColor} from '@taiga-ui/kit';
             <input
                 tuiInputColor
                 [(ngModel)]="value"
-                [format]="format"
+                [format]="format()"
             />
         </tui-textfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestInputColor {
-    public value = '#ffffff';
-    public format: 'hex' | 'hexa' = 'hexa';
+    public readonly value = model('#ffffff');
+    public readonly format = input<'hex' | 'hexa'>('hexa');
 }
 
 @Component({
@@ -40,6 +40,43 @@ class TestTransparentInputColor {
 }
 
 describe('InputColor', () => {
+    (['hex', 'hexa'] as const).forEach((format) => {
+        describe(`${format} mode`, () => {
+            it('keeps an initially empty form value when the native picker defaults to black', () => {
+                cy.mount(TestInputColor, {componentProperties: {format, value: ''}}).then(
+                    ({component}) => {
+                        cy.get('input[type="color"]').should('have.value', '#000000');
+                        cy.get('input[tuiInputColor]').should('have.value', '');
+                        cy.then(() => expect(component.value()).to.equal(''));
+                    },
+                );
+            });
+
+            it('clears the value and accepts a new color from the native picker', () => {
+                cy.mount(TestInputColor, {componentProperties: {format}}).then(
+                    ({component}) => {
+                        cy.get('input[tuiInputColor]').focus();
+                        cy.get('button[tuiButtonX]').click();
+                        cy.get('input[type="color"]').should('have.value', '#000000');
+                        cy.then(() => expect(component.value()).to.equal(''));
+
+                        cy.get('input[type="color"]').then(($input) => {
+                            const input = $input.get(0) as HTMLInputElement;
+
+                            input.value = '#123456';
+                            input.dispatchEvent(new Event('input', {bubbles: true}));
+                        });
+
+                        const expected = format === 'hexa' ? '#123456ff' : '#123456';
+
+                        cy.get('input[tuiInputColor]').should('have.value', expected);
+                        cy.then(() => expect(component.value()).to.equal(expected));
+                    },
+                );
+            });
+        });
+    });
+
     describe('hexa mode', () => {
         it('shows color preview when 7-char hex is entered without alpha', () => {
             cy.mount(TestInputColor);

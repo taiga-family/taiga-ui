@@ -63,10 +63,12 @@ class Styles {}
         {
             directive: TuiHintDirective,
             inputs: ['tuiHint: tuiTooltip', 'tuiHintAppearance', 'tuiHintContext'],
+            outputs: ['tuiHintVisible'],
         },
     ],
     host: {
         tuiTooltip: '',
+        class: 'tui-interactive',
         '[attr.data-size]': 'size()',
         '[attr.tabindex]': 'describe.id() ? null : 0',
         '(click.prevent)': '0',
@@ -77,7 +79,6 @@ class Styles {}
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly driver = inject(TuiHintHover);
 
     protected readonly describe = inject(TuiHintDescribe);
     protected readonly nothing = tuiWithStyles(Styles);
@@ -85,7 +86,7 @@ export class TuiTooltip implements DoCheck {
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
-                map((hover) => (hover ? 'hover' : null)),
+                map((hover) => (hover && this.tuiTooltip() ? 'hover' : null)),
                 tuiWatch(),
             ),
             {initialValue: null},
@@ -93,6 +94,7 @@ export class TuiTooltip implements DoCheck {
     );
 
     public readonly size = input<TuiSizeS>('m');
+    public readonly tuiTooltip = input<unknown>();
 
     public ngDoCheck(): void {
         if (this.textfield) {
@@ -106,6 +108,5 @@ export class TuiTooltip implements DoCheck {
         }
 
         event.stopPropagation();
-        this.driver.toggle();
     }
 }

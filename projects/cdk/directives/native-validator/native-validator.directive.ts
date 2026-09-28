@@ -1,41 +1,40 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, input} from '@angular/core';
-import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
+import {Directive, effect, inject, input} from '@angular/core';
+import {type AbstractControl, NgControl} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
+import {delay, of, startWith, switchMap, timer} from 'rxjs';
 
 @Directive({
     selector: '[tuiNativeValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
     host: {'(focusout)': 'handleValidation()'},
 })
-export class TuiNativeValidator implements Validator {
+export class TuiNativeValidator {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
-    private readonly control$ = new BehaviorSubject<AbstractControl | null>(null);
+    private readonly ngControl = inject(NgControl, {self: true, optional: true});
 
-    protected readonly sub = this.control$
+    protected readonly sub = timer(0) // https://github.com/angular/angular/issues/54418
         .pipe(
-            switchMap((control: any) => control?.events || of(null)),
+            switchMap(() => this.control?.events?.pipe(startWith(null)) ?? of(null)),
             delay(0),
             tuiZonefree(),
             tuiTakeUntilDestroyed(),
         )
         .subscribe(() => this.handleValidation());
 
+    /**
+     * There is no `InteropNgControl.events` for signal forms
+     * Their `InteropNgControl` state (getters `touched` / `invalid`) is backed by signals,
+     * so the effect tracks it instead
+     */
+    protected readonly ref = effect(() => this.handleValidation());
+
     public readonly tuiNativeValidator = input('Invalid');
     public id = '';
 
     public get control(): AbstractControl | null {
-        return this.control$.value;
-    }
-
-    public validate(control: AbstractControl): null {
-        this.control$.next(control);
-
-        return null;
+        return this.ngControl?.control ?? null;
     }
 
     protected handleValidation(): void {

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update EMPTY_ARRAY handles the @taiga-ui/cdk/constants sub-path import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly value = EMPTY_ARRAY;
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly value = [];
+                }
+            ",
+}
+`;
+
+exports[`ng-update EMPTY_ARRAY replaces EMPTY_ARRAY usages with [] and drops the @taiga-ui/cdk import: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component} from '@angular/core';
+                import {EMPTY_ARRAY, TuiDay} from '@taiga-ui/cdk';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly all = EMPTY_ARRAY;
+
+                    protected readonly handler = (day: TuiDay) =>
+                        day.isWeekend ? EMPTY_ARRAY : [1];
+                }
+            ",
+  "1. After": "
+                import {Component} from '@angular/core';
+                import {TuiDay} from '@taiga-ui/cdk';
+
+                @Component({
+                    templateUrl: './test.html',
+                })
+                export class TestComponent {
+                    protected readonly all = [];
+
+                    protected readonly handler = (day: TuiDay) =>
+                        day.isWeekend ? [] : [1];
+                }
+            ",
+}
+`;

@@ -5,7 +5,6 @@ import {
     type ComponentRef,
     Directive,
     effect,
-    ElementRef,
     inject,
     INJECTOR,
     input,
@@ -16,14 +15,8 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiAsVehicle,
-    tuiFallbackAccessor,
-    TuiRectAccessor,
-    type TuiVehicle,
-} from '@taiga-ui/core/classes';
+import {tuiAsVehicle, TuiRectAccessor, type TuiVehicle} from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/portals/popup';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
 import {
@@ -34,24 +27,20 @@ import {
 import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT, TUI_DROPDOWN_HOST} from './dropdown.providers';
+import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownA11y} from './dropdown-a11y.directive';
+import {TuiDropdownAnchor} from './dropdown-anchor.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-    providers: [
-        tuiAsVehicle(TuiDropdownDirective),
-        tuiProvide(TUI_DROPDOWN_HOST, ElementRef),
-    ],
+    providers: [tuiAsVehicle(TuiDropdownDirective)],
     exportAs: 'tuiDropdown',
     hostDirectives: [
+        TuiDropdownAnchor,
         TuiDropdownDriverDirective,
         {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
-        {
-            directive: TuiDropdownPosition,
-            outputs: ['tuiDropdownDirectionChange'],
-        },
+        {directive: TuiDropdownPosition, outputs: ['tuiDropdownDirectionChange']},
     ],
     host: {'[class.tui-dropdown-open]': 'ref()'},
 })
@@ -62,7 +51,6 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
-
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -99,12 +87,15 @@ export class TuiDropdownDirective
                 : content,
     });
 
+    /** @deprecated remove in v6 */
     public get accessor(): TuiRectAccessor {
         const accessors = this.injector.get(TuiRectAccessor, null, {
             self: true,
         }) as readonly TuiRectAccessor[] | null;
 
-        return tuiFallbackAccessor<TuiRectAccessor>('dropdown')(accessors, this);
+        return (
+            [...(accessors || [])].reverse().find(({type}) => type === 'dropdown') || this
+        );
     }
 
     public get position(): 'absolute' | 'fixed' {

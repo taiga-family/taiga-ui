@@ -1,9 +1,33 @@
-<tui-textfield>
-    <label tuiLabel>Sale</label>
+<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <tui-textfield>
+        <label tuiLabel>Required field</label>
+        <input
+            formControlName="required"
+            tuiInputTime
+        />
+    </tui-textfield>
+    <tui-error formControlName="required" />
 
-    <input
-        prefix="Ends in "
-        tuiInputTime
-        [(ngModel)]="value"
-    />
-</tui-textfield>
+    <tui-textfield>
+        <label tuiLabel>Optional field</label>
+        <input
+            formControlName="optional"
+            tuiInputTime
+            tuiUnfinishedValidator
+        />
+    </tui-textfield>
+    <tui-error formControlName="optional" />
+
+    <footer>
+        <button
+            tuiButton
+            type="submit"
+            [disabled]="form.invalid"
+        >
+            Submit
+        </button>
+    </footer>
+</form>

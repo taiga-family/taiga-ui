@@ -101,11 +101,27 @@ export interface TuiLanguageKit {
     time: {
         'MM:SS': string;
         'HH:MM': string;
+        /**
+         * @deprecated
+         * TODO(v6): delete
+         */
         'HH:MM AA': string;
         'HH:MM:SS': string;
+        /**
+         * @deprecated
+         * TODO(v6): delete
+         */
         'HH:MM:SS AA': string;
         'HH:MM:SS.MSS': string;
+        /**
+         * @deprecated
+         * TODO(v6): delete
+         */
         'HH:MM:SS.MSS AA': string;
+        /**
+         * @deprecated
+         * TODO(v6): delete
+         */
         'HH AA': string;
         HH: string;
         'MM:SS.MSS': string;
@@ -210,6 +226,7 @@ export interface TuiLanguageEditor {
         strikeThrough: string;
         subscript: string;
         superscript: string;
+        taskList: string;
         tex: string;
         underline: string;
         undo: string;
