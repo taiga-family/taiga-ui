@@ -61,7 +61,7 @@
     position: inherit;
     inset: anchor(top) 1rem calc(anchor(--t-scrollbar top) - 1rem);
     pointer-events: none;
-    inline-size: anchor-size(inline, 0);
+    inline-size: calc(anchor-size(inline, -1px) + 1px);
     position-anchor: inherit;
     position-visibility: always;
 }

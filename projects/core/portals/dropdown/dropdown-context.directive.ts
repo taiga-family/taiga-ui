@@ -77,8 +77,6 @@ export class TuiDropdownContext
 
     public readonly type = 'dropdown';
     public readonly nativeElement = tuiAnchorDelegate({
-        width: '1px',
-        height: '1px',
         top: 'calc(anchor(top)',
         left: 'calc(anchor(left)',
     });
