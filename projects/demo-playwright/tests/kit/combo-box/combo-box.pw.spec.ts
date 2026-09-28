@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {TuiComboBoxEO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 const {describe, beforeEach} = test;
@@ -11,7 +11,7 @@ describe('ComboBox', () => {
         let example!: Locator;
         let value!: Locator;
         let submit!: Locator;
-        let comboBox!: TuiComboBoxPO;
+        let comboBox!: TuiComboBoxEO;
 
         beforeEach(({page}) => {
             const documentationPage = new TuiDocumentationPagePO(page);
@@ -19,7 +19,7 @@ describe('ComboBox', () => {
             example = documentationPage.demo;
             value = documentationPage.value;
             submit = documentationPage.submitFormControlButton;
-            comboBox = new TuiComboBoxPO(
+            comboBox = new TuiComboBoxEO(
                 example.locator('tui-textfield:has([tuiComboBox])'),
             );
         });
@@ -187,7 +187,7 @@ describe('ComboBox', () => {
 
     describe('Examples', () => {
         let example!: Locator;
-        let comboBox!: TuiComboBoxPO;
+        let comboBox!: TuiComboBoxEO;
 
         describe('Client-side filtering', () => {
             beforeEach(async ({page}) => {
@@ -196,7 +196,7 @@ describe('ComboBox', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#client-side-filtering',
                 );
-                comboBox = new TuiComboBoxPO(
+                comboBox = new TuiComboBoxEO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );
             });
@@ -255,7 +255,7 @@ describe('ComboBox', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#choose-form-control-output');
-                comboBox = new TuiComboBoxPO(
+                comboBox = new TuiComboBoxEO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );
             });
@@ -327,7 +327,7 @@ describe('ComboBox', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#server-side-filtering');
-                comboBox = new TuiComboBoxPO(
+                comboBox = new TuiComboBoxEO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );
             });
@@ -355,14 +355,14 @@ describe('ComboBox', () => {
 
         describe('Virtual scroll', () => {
             let example!: Locator;
-            let comboBox!: TuiComboBoxPO;
+            let comboBox!: TuiComboBoxEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.ComboBox);
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#virtual-scroll');
-                comboBox = new TuiComboBoxPO(
+                comboBox = new TuiComboBoxEO(
                     example.locator('tui-textfield:has([tuiComboBox])'),
                 );
             });

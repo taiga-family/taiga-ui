@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiTextfieldWithDataListPO,
+    TuiTextfieldWithDataListEO,
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {TUI_HINT_LOCATORS, TUI_INPUT_LOCATORS} from '@taiga-ui/testing/locators';
@@ -135,7 +135,7 @@ test.describe('Input', () => {
 
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
 
-            const {textfield, dropdown} = new TuiTextfieldWithDataListPO(
+            const {textfield, dropdown} = new TuiTextfieldWithDataListEO(
                 example.locator(TUI_INPUT_LOCATORS.HOST).first(),
             );
 

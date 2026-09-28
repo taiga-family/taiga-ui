@@ -1,7 +1,7 @@
 import {type Locator} from '@playwright/test';
 import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputDateTimePO {
+export class TuiInputDateTimeEO {
     public readonly textfield = this.host.getByRole('combobox');
     public readonly calendar = this.host.page().locator('tui-calendar');
     public readonly nativePicker = this.host.locator('input[type="datetime-local"]');

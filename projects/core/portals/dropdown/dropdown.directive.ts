@@ -26,8 +26,8 @@ import {
 } from '@taiga-ui/polymorpheus';
 import {Subject, throttleTime} from 'rxjs';
 
+import {TUI_DROPDOWN_COMPONENT} from './dropdown.component';
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
-import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownA11y} from './dropdown-a11y.directive';
 import {TuiDropdownAnchor} from './dropdown-anchor.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';

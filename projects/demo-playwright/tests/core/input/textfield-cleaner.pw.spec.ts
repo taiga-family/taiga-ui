@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiCalendarMonthPO,
+    TuiCalendarMonthEO,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputMonthPO,
+    TuiInputMonthEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
@@ -108,11 +108,11 @@ describe('Textfield cleaner', () => {
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthPO(
+            const inputMonth = new TuiInputMonthEO(
                 example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
 
-            const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+            const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
 
             await inputMonth.textfield.click();
 

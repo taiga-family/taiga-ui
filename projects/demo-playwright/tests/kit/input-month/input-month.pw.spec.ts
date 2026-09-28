@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiCalendarMonthPO,
+    TuiCalendarMonthEO,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputMonthPO,
+    TuiInputMonthEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -13,12 +13,12 @@ const {describe, beforeEach} = test;
 
 describe('InputMonth', () => {
     let example: Locator;
-    let inputMonth: TuiInputMonthPO;
+    let inputMonth: TuiInputMonthEO;
 
     describe('API', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputMonth = new TuiInputMonthPO(
+            inputMonth = new TuiInputMonthEO(
                 example.locator('tui-textfield:has([tuiInputMonth])'),
             );
         });
@@ -74,7 +74,7 @@ describe('InputMonth', () => {
 
                 await inputMonth.textfield.click();
 
-                const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
 
                 await calendarMonth.month.nth(8).click();
                 await expect(inputMonth.textfield).toHaveValue('September 2020');
@@ -135,7 +135,7 @@ describe('InputMonth', () => {
                     example = new TuiDocumentationPagePO(page).getExample(
                         '#native-picker',
                     );
-                    inputMonth = new TuiInputMonthPO(
+                    inputMonth = new TuiInputMonthEO(
                         example.locator('tui-textfield:has([tuiInputMonth])'),
                     );
                 });
@@ -166,7 +166,7 @@ describe('InputMonth', () => {
         describe('Keyboard clearing', () => {
             const selectMonth = async (): Promise<void> => {
                 await inputMonth.textfield.click();
-                await new TuiCalendarMonthPO(inputMonth.calendar).month.nth(8).click();
+                await new TuiCalendarMonthEO(inputMonth.calendar).month.nth(8).click();
                 await expect(inputMonth.textfield).toHaveValue('September 2020');
             };
 
@@ -245,7 +245,7 @@ describe('InputMonth', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#dropdown-customization',
                 );
-                inputMonth = new TuiInputMonthPO(
+                inputMonth = new TuiInputMonthEO(
                     example.locator('tui-textfield:has([tuiInputMonth])'),
                 );
                 dropdown = page.locator('tui-dropdown');
@@ -272,7 +272,7 @@ describe('InputMonth', () => {
         describe('Month range', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#range-mode');
-                inputMonth = new TuiInputMonthPO(
+                inputMonth = new TuiInputMonthEO(
                     example.locator('tui-textfield:has([tuiInputMonthRange])'),
                 );
             });
@@ -280,7 +280,7 @@ describe('InputMonth', () => {
             test('range select', async () => {
                 await inputMonth.textfield.click();
 
-                const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
 
                 await calendarMonth.month.nth(1).click();
                 await calendarMonth.month.nth(4).click();
@@ -294,7 +294,7 @@ describe('InputMonth', () => {
             test('disabled items', async () => {
                 await inputMonth.textfield.click();
 
-                const calendarMonth = new TuiCalendarMonthPO(inputMonth.calendar);
+                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
 
                 await calendarMonth.month.nth(1).click();
                 await expect(async () => {
@@ -314,7 +314,7 @@ describe('InputMonth', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputMonth);
                 example = new TuiDocumentationPagePO(page).getExample('#native-picker');
-                inputMonth = new TuiInputMonthPO(
+                inputMonth = new TuiInputMonthEO(
                     example.locator('tui-textfield:has([tuiInputMonth])'),
                 );
             });
