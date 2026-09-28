@@ -70,7 +70,7 @@ describe('TuiTableControl + signal forms', () => {
     beforeEach(() => {
         cy.mount(Sandbox);
         cy.get('#all').as('all');
-        cy.get('[tuiCheckboxRow]').as('rows');
+        cy.get('[data-item]').as('rows');
     });
 
     it('reflects the initial model value in row and table checkboxes', () => {
