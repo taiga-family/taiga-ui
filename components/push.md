@@ -22,7 +22,7 @@ Notifications in style of native browser push
 | [heading] | `string` | heading of the push |
 | [type] | `string` | small text near icon, typically, category of the message |
 | [lines] | `number` | a number of visible lines |
-| [timestamp] | `number | string` | if the number is passed. |
+| [timestamp] | `number \| string` | if the number is passed. |
 | img | `Image` | image at the top (360×170px) |
 | tui-icon | `Icon` | icon in the corner |
 | tuiLink | `Link/Button` | single button |

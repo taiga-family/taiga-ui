@@ -25,7 +25,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [align] | `TuiHorizontalDirection` | alignment of the color picker |
-| [format] | `'hex' | 'hexa'` | color format |
+| [format] | `'hex' \| 'hexa'` | color format |
 
 ### Usage Examples
 

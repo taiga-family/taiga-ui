@@ -14,7 +14,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | selected fragment index |
-| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
 
 ### Usage Examples

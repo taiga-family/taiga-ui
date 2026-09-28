@@ -19,7 +19,7 @@ directive to enable hints with
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | selected fragment index |
-| [size] | `TuiSizeS | TuiSizeXL` | — |
+| [size] | `TuiSizeS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
 
 ### Usage Examples

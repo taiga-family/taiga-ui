@@ -18,12 +18,12 @@ Component for choosing date range in calendar
 | [defaultViewedMonth] | `TuiMonth` | default month to show |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
 | [items] | `TuiDayRangePeriod[]` | fixed intervals (shows 2 calendars with empty array) |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
-| [min] | `TuiDay | null` | min date |
-| [max] | `TuiDay | null` | max date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [min] | `TuiDay \| null` | min date |
+| [max] | `TuiDay \| null` | max date |
 | [(month)] | `TuiMonth` | currently viewed month, also updated when a year is picked |
-| [minLength] | `TuiDayLike | null` | minimal length of range |
-| [maxLength] | `TuiDayLike | null` | maximal length of range |
+| [minLength] | `TuiDayLike \| null` | minimal length of range |
+| [maxLength] | `TuiDayLike \| null` | maximal length of range |
 
 ### API - Outputs
 

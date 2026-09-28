@@ -22,7 +22,7 @@ A two-thumb slider for selecting a range of values
 | [max] | `number` |  |
 | [step] | `number` |  |
 | [segments] | `number` |  |
-| [keySteps] | `TuiKeySteps | null` |  |
+| [keySteps] | `TuiKeySteps \| null` |  |
 | [limit] | `number` |  |
 | [margin] | `number` |  |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |

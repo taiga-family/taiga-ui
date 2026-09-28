@@ -23,8 +23,8 @@
 | [x] | `number` | start of X axis |
 | [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
 | [value] | `TuiPoint[]` | array of data |
-| [xStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis Y hint |
+| [xStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 

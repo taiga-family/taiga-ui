@@ -15,9 +15,15 @@ Customizable credit card thumbnail
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [paymentSystem] | `TuiPaymentSystem | null` | — |
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [paymentSystem] | `TuiPaymentSystem \| null` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [style.background] | `string` | — |
+
+### Content projection - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [ng-content] | `string` | content inside |
 
 ```html
 <span tuiThumbnailCard></span>

@@ -29,7 +29,7 @@
 <tui-icon #dropdown="tuiDropdown" icon="@tui.settings" tuiDropdownContext class="icon" [tuiDropdown]="content" >
 <ng-template #content>
 <span class="text">Nothing special</span>
-<button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" (click)="dropdown.toggle(false)" > Close </button>
+<button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" class="button" (click)="dropdown.toggle(false)" > Close </button>
 </ng-template>
 </tui-icon>
 </p>
@@ -56,7 +56,12 @@ export default class Example {}
 ```less
 .text {
     display: inline-block;
-    margin: 0.4rem 1rem;
+    margin: 0.75rem 1rem;
+    vertical-align: middle;
+}
+
+.button {
+    margin-inline: -0.5rem 0.5rem;
 }
 
 .icon {

@@ -301,3 +301,83 @@ tui-avatar-labeled {
     scroll-snap-stop: always;
 }
 ```
+
+#### Scroll-driven animation
+
+Custom scroll-driven animation with CSS.
+
+**Template:**
+```html
+<button appearance="action" iconStart="@tui.chevron-left" tuiIconButton type="button" [disabled]="index() === 0" (click)="carousel.prev()" > Previous </button>
+<tui-carousel #carousel [max]="5" [min]="0" [(index)]="index" >
+<section *tuiItem="let index" class="item" > {{ index + 1 }} </section>
+</tui-carousel>
+<button appearance="action" iconStart="@tui.chevron-right" tuiIconButton type="button" [disabled]="index() === 5" (click)="carousel.next()" > Next </button>
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiCarousel} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton, TuiCarousel],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly index = signal(0);
+}
+```
+
+**LESS:**
+```less
+:host {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+    font: var(--tui-typography-heading-h3);
+}
+
+.item {
+    display: flex;
+    inline-size: 100%;
+    block-size: 10rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: var(--tui-background-neutral-1);
+    // Keep the name outside conditional rules so Angular scopes it in minified CSS.
+    animation-name: carousel-item;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view(inline)) {
+        .item {
+            animation-duration: 1ms;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-timeline: view(inline);
+            animation-range: cover;
+        }
+    }
+}
+
+@keyframes carousel-item {
+    0%,
+    100% {
+        transform: scale(0.85);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+```

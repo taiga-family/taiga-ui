@@ -131,13 +131,7 @@ export default class Example {
 
 **Template:**
 ```html
-<button tuiButton type="button" (click)="open = true" > Show/Hide </button>
-<ng-template #label>
-<label tuiTitle>
-<span tuiSubtitle>Monty Python</span>
-<b>And the Holy Grail</b>
-</label>
-</ng-template>
+<button tuiButton type="button" (click)="open = true" > Show </button>
 <ng-template [tuiSheetDialogOptions]="{stops: ['5.75rem', '13.875rem']}" [(tuiSheetDialog)]="open" >
 <header tuiHeader="body-m">
 <hgroup tuiTitle>
@@ -256,7 +250,7 @@ hr {
 
 **Template:**
 ```html
-<button tuiButton type="button" (click)="toggle(true)" > Show/Hide </button>
+<button tuiButton type="button" (click)="toggle(true)" > Show </button>
 <ng-template [tuiSheetDialog]="open" [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, appearance: 'fullscreen'}" (tuiSheetDialogChange)="toggle($event)" >
 <header class="header">
 <tui-textfield iconStart="@tui.search">

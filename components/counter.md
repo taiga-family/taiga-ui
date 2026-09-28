@@ -14,7 +14,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [appearance] | `string` | appearance of the counter itself |
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [step] | `number` | — |
 | [min] | `number` | minimum value |
 | [max] | `number` | maximum value |

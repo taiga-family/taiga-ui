@@ -17,7 +17,7 @@
 |----------|-----|----------|
 | [value] | `number` | is omitted. |
 | [max] | `number` | maximum value of the progress |
-| [size] | `TuiSizeXXL | TuiSizeXXS` | — |
+| [size] | `TuiSizeXXL \| TuiSizeXXS` | — |
 | [color] | `string` |  |
 | [arc] | `boolean` | use arc shape with small bottom open arc sector (instead of default circle). |
 | [style.--tui-thickness.px] | `number` | width of the circle's stroke |

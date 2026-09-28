@@ -17,7 +17,7 @@
 |----------|-----|----------|
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXXL` | — |
 | [color] | `string` |  |
 
 ### Usage Examples

@@ -20,8 +20,8 @@
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiMonth | null` | the lowest value in the range of permitted dates |
-| [max] | `TuiMonth | null` | the greatest value in the range of permitted dates |
+| [min] | `TuiMonth \| null` | the lowest value in the range of permitted dates |
+| [max] | `TuiMonth \| null` | the greatest value in the range of permitted dates |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiMonth>` |  |
 | [(year)] | `TuiYear` | current year |
 

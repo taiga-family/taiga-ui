@@ -16,7 +16,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
-| [size] | `TuiSizeS | TuiSizeL` | size of items |
+| [size] | `TuiSizeS \| TuiSizeL` | size of items |
 
 ### Usage Examples
 
@@ -322,7 +322,7 @@ export default class Example {
 <button automation-id="tui-data-list-range-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="range" > ⌛ Range: {{ rangeValue }} </button>
 </tui-data-list>
 <ng-template #money>
-<tui-textfield automation-id="tui-data-money-input">
+<tui-textfield>
 <input name="moneyValue" tuiInput [(ngModel)]="moneyValue" />
 <label tuiLabel>RUB</label>
 </tui-textfield>
@@ -334,7 +334,7 @@ export default class Example {
 <tui-calendar [value]="dateValue" (dayClick)="onDayClick($event)" (mousedown.zoneless.prevent)="(0)" />
 </ng-template>
 <ng-template #input>
-<tui-textfield automation-id="tui-data-list-email-field">
+<tui-textfield class="form">
 <input name="emailValue" tuiInput [(ngModel)]="emailValue" />
 <label tuiLabel>Email</label>
 </tui-textfield>

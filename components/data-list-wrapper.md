@@ -9,11 +9,11 @@
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [items] | `readonly T[] | ReadonlyArray<readonly T[]> | null` | items to select |
+| [items] | `readonly T[] \| ReadonlyArray<readonly T[]> \| null` | items to select |
 | [itemContent] | `PolymorpheusContent<TuiContext<T>>` | content of an item |
 | [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
 | [disabledItemHandler] | `TuiBooleanHandler<T>` |  |
-| [size] | `TuiSizeL | TuiSizeXS` | size of items |
+| [size] | `TuiSizeL \| TuiSizeXS` | size of items |
 | [labels] | `readonly string[]` | group labels |
 
 ### API - Outputs

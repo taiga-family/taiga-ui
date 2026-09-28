@@ -16,11 +16,11 @@ This is a work in progress The APIs might change in the future, use with caution
 | Property | Type | Description |
 |----------|-----|----------|
 | [(month)] | `TuiMonth` | current month |
-| [(view)] | `'day' | 'month' | 'year'` | current view |
-| [(value)] | `T | null` | a single day, array or a range |
-| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
-| [max] | `TuiDay | null` | maximal date to choose |
-| [min] | `TuiDay | null` | minimum date to choose |
+| [(view)] | `'day' \| 'month' \| 'year'` | current view |
+| [(value)] | `T \| null` | a single day, array or a range |
+| [mode] | `'single' \| 'multi' \| 'range'` | type of value for picking |
+| [max] | `TuiDay \| null` | maximal date to choose |
+| [min] | `TuiDay \| null` | minimum date to choose |
 | [showAdjacent] | `boolean` | display dates from adjacent months |
 | [showWeek] | `boolean` | display week number on each row |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |

@@ -13,7 +13,7 @@
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | ''` | direction of the comment mark |
+| [tuiComment] | `TuiHorizontalDirection \| TuiVerticalDirection \| ''` | direction of the comment mark |
 
 ### Usage Examples
 

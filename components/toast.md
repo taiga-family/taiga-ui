@@ -30,7 +30,7 @@ token
 | [appearance] | `string` | appearance of a toast |
 | [autoClose] | `number` | automatic close timeout, 0 for a permanent toast |
 | [closable] | `boolean` | show close button on desktop and close on swipe on mobile |
-| [block] | `'start' | 'end'` | block position |
+| [block] | `'start' \| 'end'` | block position |
 | [data] | `I` |  |
 
 ### Usage Examples

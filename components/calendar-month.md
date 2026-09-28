@@ -16,11 +16,11 @@ Month picker component. If you want a textfield, see InputMonth
 | Property | Type | Description |
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler<TuiMonth>` |  |
-| [max] | `TuiMonth | null` | maximal month |
-| [min] | `TuiMonth | null` | minimal month |
+| [max] | `TuiMonth \| null` | maximal month |
+| [min] | `TuiMonth \| null` | minimal month |
 | [maxLength] | `number` | maximum length |
 | [minLength] | `number` | minimum length |
-| [value] | `TuiMonth | TuiMonthRange | null` | a single month or a range of months |
+| [value] | `TuiMonth \| TuiMonthRange \| null` | a single month or a range of months |
 | [(year)] | `TuiYear` | current year |
 
 ### API - Outputs

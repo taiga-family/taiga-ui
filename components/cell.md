@@ -18,8 +18,8 @@ better readability.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiCell] | `'l' | 'm' | 's'` | layout size |
-| [tuiCellHeight] | `'normal' | 'compact' | 'spacious'` | height mode |
+| [tuiCell] | `'l' \| 'm' \| 's'` | layout size |
+| [tuiCellHeight] | `'normal' \| 'compact' \| 'spacious'` | height mode |
 
 ### Usage Examples
 

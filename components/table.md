@@ -10,9 +10,25 @@ This module allows you to create various tables, both static and editable.
 | Property | Type | Description |
 |----------|-----|----------|
 | [columns] | `readonly string[]` | an array of keys to set up columns order |
-| [size] | `TuiSizeS | TuiSizeL` | cells size |
+| [size] | `TuiSizeS \| TuiSizeL` | cells size |
 | [(sorter)] | `TuiComparator<T>` | sort function (basic JavaScript array sort API) |
-| [(direction)] | `-1 | 1` | direction for sorting |
+| [(direction)] | `-1 \| 1` | direction for sorting |
+
+### th[tuiTh] - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [resizable] | `boolean` | makes this column resizable |
+| [sorter] | `TuiComparator<T> \| null` | sorter function for this column |
+| [sticky] | `boolean` | makes heading cell horizontally sticky |
+
+### tbody[tuiTbody] - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [data] | `readonly T[]` | data to display |
+| [heading] | `PolymorpheusContent` | optional heading content for the group that makes it collapsable |
+| [(open)] | `boolean` | open/collapsed state of the group |
 
 ### Usage Examples
 

@@ -18,7 +18,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [cardValidator] | `TuiBooleanHandler<string>` | custom card validator for moving focus to the next field |
-| [codeLength] | `3 | 4` | code length |
+| [codeLength] | `3 \| 4` | code length |
 | [compact] | `boolean` | manually set compact mode (forced on mobile resolution) |
 | [icon] | `PolymorpheusContent` | custom card icon |
 | [id] | `string` | accordingly). Auto-generated when not provided. |
@@ -29,7 +29,7 @@
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (binChange) | `string | null` | BIN value (card first 6 symbols) |
+| (binChange) | `string \| null` | BIN value (card first 6 symbols) |
 
 ### Usage Examples
 

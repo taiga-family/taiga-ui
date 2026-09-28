@@ -17,7 +17,7 @@ Bar chart that can be used as a content to axes .
 |----------|-----|----------|
 | [collapsed] | `boolean` | shows data set in a single bar |
 | [max] | `number` | sets chart max manually |
-| [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
+| [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `ReadonlyArray<readonly number[]>` | array of segments |
 
 ### API - Outputs

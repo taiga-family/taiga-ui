@@ -43,7 +43,7 @@ for successful validation; wrong code triggers shake-clear-retry
 | Property | Type | Description |
 |----------|-----|----------|
 | type | `string` | masks each digit as a filled dot |
-| [invalid] | `boolean | null` | — shake and auto-clear |
+| [invalid] | `boolean \| null` | — shake and auto-clear |
 | maxLength | `number` | number of cells, pending animation triggers once value reaches this length |
 
 ### API - Outputs

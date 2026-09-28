@@ -16,7 +16,7 @@ Just axes for charts
 | Property | Type | Description |
 |----------|-----|----------|
 | [centeredXLabels] | `boolean` | center X axis labels |
-| [axisXLabels] | `ReadonlyArray<string | null>` | — no stroke |
+| [axisXLabels] | `ReadonlyArray<string \| null>` | — no stroke |
 | [axisYInset] | `boolean` | inset of labels on Y axis |
 | [axisYLabels] | `readonly string[]` | labels for Y axis |
 | [axisYName] | `string` | name of Y axis |

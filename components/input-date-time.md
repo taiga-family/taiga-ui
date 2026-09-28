@@ -9,7 +9,7 @@
 
 ```html
 <ng-template>
-<tui-textfield [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readonly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}" />
+<tui-textfield [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readonly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
@@ -20,8 +20,8 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [timeMode] | `MaskitoTimeMode` | time format mode for SS and MS support |
-| [min] | `TuiDay | [TuiDay, TuiTime] | null` | min date |
-| [max] | `TuiDay | [TuiDay, TuiTime] | null` | max date |
+| [min] | `TuiDay \| [TuiDay, TuiTime] \| null` | min date |
+| [max] | `TuiDay \| [TuiDay, TuiTime] \| null` | max date |
 
 ### Usage Examples
 
@@ -328,6 +328,39 @@ export default class Example {
 
 #### Example 7
 
+Use `[tuiTimeFormat]` directive (or `tuiTimeFormatProvider` ) to customize time part: pass `dayPeriod` with a tuple of two locale-specific markers to switch to a 12-hour format and `separators` to replace the characters between time segments.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Custom time format</label>
+<input timeMode="HH:MM" tuiInputDateTime [tuiTimeFormat]="{dayPeriod: ['AM', 'PM'], separators: ['h']}" [(ngModel)]="value" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {TuiInputDateTime, TuiTimeFormat} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputDateTime, TuiTimeFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = [new TuiDay(2026, 8, 23), new TuiTime(18, 5)];
+}
+```
+
+#### Example 8
+
 Open this on a mobile device or enable emulation in DevTools and refresh the page to explore this example! You can use several different approaches to optimize UX on mobile devices when tapping the icon.
 
 **Template:**
@@ -386,7 +419,7 @@ export default class Example {
 }
 ```
 
-#### Example 8
+#### Example 9
 
 Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
 
@@ -434,7 +467,7 @@ export default class Example {
 }
 ```
 
-#### Example 9
+#### Example 10
 
 Native mobile pickers have limited browser support for native datalist
 

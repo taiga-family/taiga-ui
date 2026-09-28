@@ -18,12 +18,12 @@ InputNumber is a form field to provide numerical input.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number | bigint | null` | value in the range of permitted values |
-| [max] | `number | bigint | null` | value in the range of permitted values |
-| [step] | `number | bigint` | step to increase/decrease value with keyboard and buttons on the side |
+| [min] | `number \| bigint \| null` | value in the range of permitted values |
+| [max] | `number \| bigint \| null` | value in the range of permitted values |
+| [step] | `number \| bigint` | step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number | bigint` |  |
+| [quantum] | `number \| bigint` |  |
 
 ### Usage Examples
 
@@ -436,6 +436,7 @@ export default class Example {
     protected value: number | null = 123_456_789;
 
     protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        decimalSeparator: '.',
         thousandSeparator: ',',
         // 1,2345,6789
         thousandSeparatorPattern: (digits) =>
@@ -478,6 +479,7 @@ export default class Example {
     protected value: number | null = 123_456_789;
 
     protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        decimalSeparator: '.',
         thousandSeparator: ',',
         thousandSeparatorPattern: intlThousandSeparatorPattern(),
     };

@@ -22,7 +22,7 @@ Components shows separated items that can be used to filter content on the page.
 | [disabledItemHandler] | `TuiBooleanHandler` |  |
 | [identityMatcher] | `TuiIdentityMatcher` |  |
 | [items] | `T[]` | for view |
-| [size] | `TuiSizeS | TuiSizeL` | size of items |
+| [size] | `TuiSizeS \| TuiSizeL` | size of items |
 
 ### API - Outputs
 

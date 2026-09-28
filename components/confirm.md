@@ -16,7 +16,7 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 | Property | Type | Description |
 |----------|-----|----------|
 | content | `PolymorpheusContent` | content of the confirm |
-| [appearance] | `string | [string, string]` | appearance of the confirming button |
+| [appearance] | `string \| [string, string]` | appearance of the confirming button |
 | [no] | `string` | button |
 | [yes] | `string` | button |
 

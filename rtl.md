@@ -7,13 +7,11 @@ Taiga UI supports setting
 to implement right-to-left (RTL) layouts. This is particularly useful for languages that are read from right to
 left, such as Arabic or Hebrew.
 
-## Variables
-
-There are a few CSS variables that would be helpful for you when implementing bidirectional interfaces
-
 ### Usage Examples
 
 #### Variables
+
+There are a few CSS variables that would be helpful for you when implementing bidirectional interfaces
 
 **Template:**
 ```html

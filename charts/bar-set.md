@@ -16,7 +16,7 @@ A group of bars for bar chart
 | Property | Type | Description |
 |----------|-----|----------|
 | [collapsed] | `boolean` | shows data set in a single bar |
-| [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
+| [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `readonly number[]` | array of segments |
 
 ### Usage Examples

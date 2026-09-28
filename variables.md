@@ -10,8 +10,6 @@ Besides colors there are also following variables that can be adjusted at any le
 
 —
 
-## Override example
-
 ### Usage Examples
 
 #### Override example

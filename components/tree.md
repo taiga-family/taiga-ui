@@ -11,6 +11,25 @@ Component to display tree-like data structure
 |----------|-----|----------|
 | [tuiTreeController] | `boolean` | input is the default state. |
 
+### Tree - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [childrenHandler] | `TuiHandler<T, readonly T[]>` | handler function to get children for a node |
+| [content] | `PolymorpheusContent<TuiTreeContext>` | content template for tree nodes |
+| [data] | `T` | data for the tree node |
+| [tuiTreeController] | `boolean` | input is the default state. |
+| [map] | `Map<T, boolean>` | a map used with controller directive for manual programmatic toggling. |
+| [trackBy] | `TrackByFunction<T>` | directive to render nested tree items. |
+
+### Tokens - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| TUI_TREE_CONTENT | `PolymorpheusContent<TuiTreeItemContext>` | ) |
+| TUI_TREE_CONTROLLER | `TuiTreeController` | provide your own open/closed controlling mechanism |
+| TUI_TREE_ACCESSOR | `TuiTreeAccessor<T>` | component with custom open/closed controller) |
+
 ### Usage Examples
 
 #### Manual

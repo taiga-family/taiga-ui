@@ -19,8 +19,8 @@
 |----------|-----|----------|
 | [min] | `number` | value in the range of permitted values |
 | [max] | `number` | value in the range of permitted values |
-| [prefix] | `readonly [string, string] | null` | number |
-| [postfix] | `readonly [string, string] | null` | number |
+| [prefix] | `readonly [string, string] \| null` | number |
+| [postfix] | `readonly [string, string] \| null` | number |
 | [content] | `[PolymorpheusContent, PolymorpheusContent]` | a template for custom view of the selected value. |
 | [quantum] | `number` |  |
 | [segments] | `number` | for no ticks) |

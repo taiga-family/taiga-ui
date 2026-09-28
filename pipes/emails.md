@@ -9,6 +9,8 @@ Pipe for creating autocomplete when entering email addresses
 
 #### Example
 
+Standard and custom addresses
+
 **Template:**
 ```html
 <p> @if (default | tuiEmails; as emails) { <tui-textfield>

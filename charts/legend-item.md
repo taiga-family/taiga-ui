@@ -20,7 +20,7 @@ A button for a legend of ring or pie charts
 | Property | Type | Description |
 |----------|-----|----------|
 | [active] | `boolean` | active state from outside |
-| [color] | `TuiColor | string | null` | indicator color |
+| [color] | `TuiColor \| string \| null` | indicator color |
 | [disabled] | `boolean` | disabled item (i.e. hidden from the related chart) |
 | [size] | `TuiSizeS` | — |
 | [value] | `string` | text inside |

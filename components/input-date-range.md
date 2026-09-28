@@ -21,8 +21,8 @@
 |----------|-----|----------|
 | [min] | `TuiDay` | min date |
 | [max] | `TuiDay` | max date |
-| [minLength] | `TuiDayLike | null` | min length of the range |
-| [maxLength] | `TuiDayLike | null` | max length of the range |
+| [minLength] | `TuiDayLike \| null` | min length of the range |
+| [maxLength] | `TuiDayLike \| null` | max length of the range |
 | [items] | `TuiDayRangePeriod[]` | period list items |
 | [listSize] | `TuiSizeL` | period list size |
 

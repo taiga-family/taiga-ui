@@ -19,7 +19,7 @@
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiBlock] | `TuiSizeL | TuiSizeS` | — |
+| [tuiBlock] | `TuiSizeL \| TuiSizeS` | — |
 
 ### Usage Examples
 

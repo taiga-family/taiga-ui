@@ -21,7 +21,7 @@ Taiga UI styling of native html tag `'">` to choose a value from a limited range
 | [max] | `number` |  |
 | [min] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` |  |
+| [segments] | `number[] \| number` |  |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples

@@ -23,8 +23,8 @@ Line chart but for days
 | [y] | `number` | start of Y axis |
 | [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
 | [value] | `[TuiDay, number][]` | array of data |
-| [xStringify] | `TuiStringHandler<TuiDay> | null` | function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis Y hint |
+| [xStringify] | `TuiStringHandler<TuiDay> \| null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 

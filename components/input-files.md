@@ -29,6 +29,29 @@ An input for uploading one or several files using native input file capabilities
 |-------|------|-------------|
 | (reject) | `TuiFileLike[]` | emits files that were rejected. |
 
+### TuiFiles - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [max] | `number` | maximum number of displayed files |
+| [(expanded)] | `boolean` | expanded/collapsed state for multiple files that are limited by the max property |
+
+### TuiFile - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [showDelete] | `boolean \| 'always'` | allow to delete file after attach it |
+| [file] | `TuiFileLike` | — |
+| [state] | `TuiFileState` | state of the file |
+| [showSize] | `boolean` | show file size |
+| [size] | `TuiSizeL` | — |
+
+### TuiFile - Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| (remove) | `void` | emits on click on close button. When subscribed to, close button appears. |
+
 ### Usage Examples
 
 #### Single

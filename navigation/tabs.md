@@ -16,7 +16,7 @@ Component for creating tabs. If you use `routerLink` you must also add `routerLi
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | — |
-| [size] | `TuiSizeM | TuiSizeL` | — |
+| [size] | `TuiSizeM \| TuiSizeL` | — |
 | [itemsLimit] | `number` |  |
 | [moreContent] | `PolymorpheusContent` |  |
 | [dropdownContent] | `PolymorpheusContent` |  |

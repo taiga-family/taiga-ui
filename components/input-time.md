@@ -10,7 +10,7 @@
 ```html
 <ng-template>
 <tui-textfield [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Pick a time" tuiInputTime [accept]="accept" [formControl]="control" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}" />
+<input placeholder="Pick a time" tuiInputTime [accept]="accept" [formControl]="control" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}" />
 </tui-textfield>
 </ng-template>
 ```
@@ -91,6 +91,39 @@ import {TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl<TuiTime | null>(new TuiTime(17, 0));
+}
+```
+
+#### Separators
+
+Use `[tuiTimeFormat]="{separators}"` directive to customize separators between time segments (from left to right), e.g. French Canadian `[' h ', ' min ', ',']` . Missing positions fall back to the canonical separators of the `mode` . Also available through `tuiTimeFormatProvider` .
+
+**Template:**
+```html
+<tui-textfield [tuiTextfieldCleaner]="false">
+<label tuiLabel>fr-CA locale</label>
+<input mode="HH:MM:SS.MSS" tuiInputTime [tuiTimeFormat]="{separators: [' h ', ' min ', ',']}" [(ngModel)]="value" />
+<img alt="Flag of Canada" width="28" [src]="'CA' | tuiFlag" [style.border-radius.%]="50" />
+</tui-textfield>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTime} from '@taiga-ui/cdk';
+import {TuiFlagPipe, TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiFlagPipe, TuiInputTime, TuiTimeFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = new TuiTime(18, 5, 5, 766);
 }
 ```
 
@@ -483,3 +516,12 @@ directive with a tuple of two locale-specific markers (e.g.
 , greek
 `['π.μ.', 'μ.μ.']`
 and etc.) to switch the mask to a 12-hour time format with a meridiem suffix.
+
+Use
+`[tuiTimeFormat]="&#123;separators&#125;"`
+directive to customize separators between time segments (from left to right), e.g. French
+Canadian
+`[' h ', ' min ', ',']`
+. Missing positions fall back to the canonical separators of the
+`mode`
+.

@@ -39,7 +39,7 @@ Adding action buttons to accordion header.
 | Property | Type | Description |
 |----------|-----|----------|
 | [closeOthers] | `boolean` | close other sections when user opens one |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 | [(tuiAccordion)] | `boolean` | individual item open state |
 
 ### Usage Examples

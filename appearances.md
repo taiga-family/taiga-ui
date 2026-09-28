@@ -34,8 +34,6 @@ for particular states:
 Don't forget to import
 `@import '@taiga-ui/styles/utils';`
 
-## Imitate material
-
 ### Usage Examples
 
 #### Imitate material

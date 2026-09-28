@@ -37,7 +37,7 @@ options.
 | [loading] | `boolean` | show/hide loader |
 | [inheritColor] | `boolean` | inherit parent color |
 | [overlay] | `boolean` | content overlay when loader is showed |
-| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXL` | — |
 | [textContent] | `PolymorpheusContent` | custom content under loader |
 
 ### Usage Examples

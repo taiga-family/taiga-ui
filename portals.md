@@ -3,8 +3,6 @@
 You can easily create your custom portals by extending our abstract classes and put your own portal-host on
 any layer
 
-## Custom portals
-
 ## Custom alerts host
 
 - Create your own portal service by extending

@@ -15,7 +15,7 @@ Button is a basic component used for both icon buttons and regular buttons with 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [loading] | `boolean` | ) |
 
 ### Usage Examples

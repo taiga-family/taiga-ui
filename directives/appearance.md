@@ -16,8 +16,8 @@ A directive for visual presets of interactive components
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiAppearance] | `string` | when host component already exposes it via hostDirectives) |
-| [tuiAppearanceFocus] | `boolean | null` | manual override of focused state |
-| [tuiAppearanceState] | `TuiInteractiveState | null` | manual override of interactive state |
+| [tuiAppearanceFocus] | `boolean \| null` | manual override of focused state |
+| [tuiAppearanceState] | `TuiInteractiveState \| null` | manual override of interactive state |
 
 ### Usage Examples
 

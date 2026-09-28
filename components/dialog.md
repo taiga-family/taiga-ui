@@ -21,7 +21,7 @@ Customizable modal dialogs
 | [data] | `string` |  |
 | [label] | `string` | heading of dialog |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
-| [size] | `null | TuiSizeS | TuiSizeL` | to make the dialog width fit its content. |
+| [size] | `null \| TuiSizeS \| TuiSizeL` | to make the dialog width fit its content. |
 
 ### Usage Examples
 

@@ -15,9 +15,9 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | — |
+| [(value)] | `TuiDay \| TuiDayRange \| readonly TuiDay[] \| null` | — |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that returns marker colors for a date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that returns marker colors for a date |
 | [max] | `TuiDay` | max date |
 | [min] | `TuiDay` | min date |
 | [multi] | `boolean` | array of single dates |
@@ -28,7 +28,7 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 | Event | Type | Description |
 |-------|------|-------------|
 | (cancel) | `void` | output when user clicks Cancel |
-| (confirm) | `TuiDayRange | TuiDay` | output when user clicks Confirm (range or single day) |
+| (confirm) | `TuiDayRange \| TuiDay` | output when user clicks Confirm (range or single day) |
 
 ### Usage Examples
 

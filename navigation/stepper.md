@@ -22,6 +22,14 @@
 | [orientation] | `TuiOrientation` | — |
 | [(activeItemIndex)] | `number` | — |
 
+### Step - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [size] | `TuiSizeL \| TuiSizeS` | — |
+| [stepState] | `'normal' \| 'pass' \| 'error'` | — |
+| [icon] | `string` | — |
+
 ### Usage Examples
 
 #### Basic

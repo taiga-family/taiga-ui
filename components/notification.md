@@ -21,14 +21,14 @@ A notification message that can be displayed inline or as an alert
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | — |
-| [icon] | `TuiStringHandler<string> | string` | icon name or a function to match appearance to the icon |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
+| [icon] | `TuiStringHandler<string> \| string` | icon name or a function to match appearance to the icon |
 | [label] | `string` | heading |
 | [data] | `I` | arbitrary input data for the notification |
-| [autoClose] | `TuiNumberHandler<string> | number` | auto close timeout, 0 for no auto close |
+| [autoClose] | `TuiNumberHandler<string> \| number` | auto close timeout, 0 for no auto close |
 | [closable] | `boolean` | display close button |
-| [block] | `'start' | 'end'` | block position |
-| [inline] | `'start' | 'center' | 'end'` | inline position |
+| [block] | `'start' \| 'end'` | block position |
+| [inline] | `'start' \| 'center' \| 'end'` | inline position |
 
 ### Usage Examples
 

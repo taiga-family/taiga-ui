@@ -22,7 +22,7 @@
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (binChange) | `string | null` | BIN value (card first 6 symbols) |
+| (binChange) | `string \| null` | BIN value (card first 6 symbols) |
 
 ### Usage Examples
 

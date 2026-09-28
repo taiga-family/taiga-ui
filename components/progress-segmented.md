@@ -18,7 +18,7 @@
 | [segments] | `number` |  |
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | height of the progress |
+| [size] | `TuiSizeXS \| TuiSizeXXL` | height of the progress |
 | [tuiProgressColorSegments] | `string[]` |  |
 
 ### Usage Examples

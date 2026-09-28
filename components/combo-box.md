@@ -21,7 +21,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [strict] | `boolean` |  |
-| [matcher] | `TuiStringMatcher | null` | function that compares search text and datalist's items to define a match between them. Lowercase string
+| [matcher] | `TuiStringMatcher \| null` | function that compares search text and datalist's items to define a match between them. Lowercase string
                 comparison function by default. |
 
 ### Usage Examples

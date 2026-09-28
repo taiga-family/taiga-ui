@@ -22,7 +22,7 @@
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiDropdownSelection] | `TuiBooleanHandler<Range>` | and returns show/close dropdown |
-| [tuiDropdownSelectionPosition] | `'selection' | 'word' | 'tag'` | position of dropdown near text selection |
+| [tuiDropdownSelectionPosition] | `'selection' \| 'word' \| 'tag'` | position of dropdown near text selection |
 
 ### Usage Examples
 

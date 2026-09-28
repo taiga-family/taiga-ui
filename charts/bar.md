@@ -15,7 +15,7 @@ A bar for bar chart
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 | [value] | `readonly number[]` | an array of segments |
 
 ### Usage Examples

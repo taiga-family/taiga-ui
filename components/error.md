@@ -15,7 +15,7 @@ Component for showing arbitrary messages styled as errors, with height and fade 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [error] | `TuiValidationError | string | null` | error value |
+| [error] | `TuiValidationError \| string \| null` | error value |
 
 ### Usage Examples
 

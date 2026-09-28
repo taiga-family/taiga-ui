@@ -17,14 +17,14 @@ A simple calendar. If you want a textfield with date, see InputDate and InputDat
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
 | [showAdjacent] | `boolean` | show adjacent months days |
-| [(hoveredItem)] | `TuiDay | null` | hovered date |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
-| [max] | `TuiDay | null` | maximal date to choose |
-| [maxViewedMonth] | `TuiMonth | null` | maximal month to access |
-| [min] | `TuiDay | null` | minimum date to choose |
-| [minViewedMonth] | `TuiMonth | null` | minimum month to access |
+| [(hoveredItem)] | `TuiDay \| null` | hovered date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [max] | `TuiDay \| null` | maximal date to choose |
+| [maxViewedMonth] | `TuiMonth \| null` | maximal month to access |
+| [min] | `TuiDay \| null` | minimum date to choose |
+| [minViewedMonth] | `TuiMonth \| null` | minimum month to access |
 | [(month)] | `TuiMonth` | current month |
-| [value] | `TuiDay | TuiDayRange | null` | selected day or range |
+| [value] | `TuiDay \| TuiDayRange \| null` | selected day or range |
 
 ### API - Outputs
 

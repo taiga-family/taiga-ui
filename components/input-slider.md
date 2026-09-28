@@ -26,8 +26,8 @@
 | [postfix] | `string` | number |
 | [quantum] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` |  |
-| [keySteps] | `TuiKeySteps | null` | anchor points of non-uniform format between value and position |
+| [segments] | `number[] \| number` |  |
+| [keySteps] | `TuiKeySteps \| null` | anchor points of non-uniform format between value and position |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples

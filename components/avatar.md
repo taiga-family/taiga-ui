@@ -18,7 +18,7 @@
 | [tuiAvatar] | `string` |  |
 | [badge] | `string` | color of the dot badge indicator |
 | [round] | `boolean` | circle shape |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 
 ### Usage Examples
 

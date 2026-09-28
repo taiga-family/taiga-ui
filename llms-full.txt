@@ -184,6 +184,12 @@
 ```text
   TuiOptions
 ```
+**Classs:**
+### root
+
+```text
+  TuiPositionAccessor
+```
 ---
 ## @taiga-ui/kit
 **Components:**
@@ -1076,7 +1082,7 @@
 ### sheet-dialog
 
 ```text
-  TuiSheetDialog, TuiSheetDialogComponent, TuiSheetDialogOptions, TuiSheetDialogService
+  TuiSheetDialog, TuiSheetDialogClose, TuiSheetDialogComponent, TuiSheetDialogOptions, TuiSheetDialogService
 ```
 ### swipe-actions
 
@@ -1633,6 +1639,7 @@ nx migrate --run-migrations
 # components/Accordion
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -1650,7 +1657,7 @@ nx migrate --run-migrations
 | Property | Type | Description |
 |----------|-----|----------|
 | [closeOthers] | `boolean` | close other sections when user opens one |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 | [(tuiAccordion)] | `boolean` | individual item open state |
 
 ### Usage Examples
@@ -2128,6 +2135,7 @@ export default class Page {
 # components/ActionBar
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom content.
 
 ### Usage Examples
@@ -2346,6 +2354,7 @@ export default class Page {
 # components/AppBar
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 Component for the main app header
 
 ### Usage Examples
@@ -2996,6 +3005,7 @@ export default class Page {
 # components/ArcChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -3186,6 +3196,7 @@ export default class Page {
 # components/Avatar
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -3202,7 +3213,7 @@ export default class Page {
 | [tuiAvatar] | `string` |  |
 | [badge] | `string` | color of the dot badge indicator |
 | [round] | `boolean` | circle shape |
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 
 ### Usage Examples
 
@@ -3575,6 +3586,7 @@ export default class Page {
 # components/Axes
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 Just axes for charts
 
 ### Example
@@ -3588,7 +3600,7 @@ Just axes for charts
 | Property | Type | Description |
 |----------|-----|----------|
 | [centeredXLabels] | `boolean` | center X axis labels |
-| [axisXLabels] | `ReadonlyArray<string | null>` | — no stroke |
+| [axisXLabels] | `ReadonlyArray<string \| null>` | — no stroke |
 | [axisYInset] | `boolean` | inset of labels on Y axis |
 | [axisYLabels] | `readonly string[]` | labels for Y axis |
 | [axisYName] | `string` | name of Y axis |
@@ -3893,6 +3905,7 @@ export default class Page {
 # components/Badge
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component for displaying text, pictures and icons.
 
 ### Example
@@ -4232,6 +4245,7 @@ export default class Page {
 # components/BadgeNotification
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages
 
 ### Example
@@ -4369,6 +4383,7 @@ export default class Example {
 # components/BadgedContent
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 BadgedContent is a wrapper for other components to add badges and notifications to them.
 
 ### Example
@@ -4603,6 +4618,7 @@ export default class Example {
 # components/Bar
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 A bar for bar chart
 
 ### Example
@@ -4615,7 +4631,7 @@ A bar for bar chart
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | — |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
 | [value] | `readonly number[]` | an array of segments |
 
 ### Usage Examples
@@ -4731,6 +4747,7 @@ export default class Page {
 # components/BarChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 Bar chart that can be used as a content to axes .
 
 ### Example
@@ -4745,7 +4762,7 @@ Bar chart that can be used as a content to axes .
 |----------|-----|----------|
 | [collapsed] | `boolean` | shows data set in a single bar |
 | [max] | `number` | sets chart max manually |
-| [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
+| [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `ReadonlyArray<readonly number[]>` | array of segments |
 
 ### API - Outputs
@@ -4951,6 +4968,7 @@ export default class Page {
 # components/BarSet
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 A group of bars for bar chart
 
 ### Example
@@ -4964,7 +4982,7 @@ A group of bars for bar chart
 | Property | Type | Description |
 |----------|-----|----------|
 | [collapsed] | `boolean` | shows data set in a single bar |
-| [size] | `TuiSizeS | TuiSizeL | null` | for autosize) |
+| [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `readonly number[]` | array of segments |
 
 ### Usage Examples
@@ -5217,6 +5235,7 @@ export default class Page {
 # components/Block
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `Block` is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
 
 ### Example
@@ -5233,7 +5252,7 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiBlock] | `TuiSizeL | TuiSizeS` | — |
+| [tuiBlock] | `TuiSizeL \| TuiSizeS` | — |
 
 ### Usage Examples
 
@@ -5510,6 +5529,7 @@ export default class Example {
 # components/BlockDetails
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 Layout directive for describing details. For example, transaction details
 
 ### Usage Examples
@@ -5695,6 +5715,7 @@ export default class Page {
 # components/BlockStatus
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 Component for status screens, result screens and zero screens
 
 ### Example
@@ -6103,6 +6124,7 @@ export default class Example {
 # components/BottomSheet
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 A non-modal draggable sheet
 
 ### API - Inputs
@@ -6431,6 +6453,7 @@ export default class Page {
 # components/Breadcrumbs
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Navigation element that shows a path from root page to the current
 
 ### Example
@@ -6632,6 +6655,7 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to `button` , `a` and `label` tags. When used as `tuiIconButton` don't forget to still put text label within the tag for accessibility.
 
 ### Example
@@ -6644,7 +6668,7 @@ Button is a basic component used for both icon buttons and regular buttons with 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [loading] | `boolean` | ) |
 
 ### Usage Examples
@@ -7042,6 +7066,7 @@ export default class Page {
 # components/ButtonGroup
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -7384,6 +7409,7 @@ export default class Page {
 # components/ButtonSelect
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `ButtonSelect` is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
 
 ### Usage Examples
@@ -7519,6 +7545,7 @@ export default class Page {
 # components/ButtonX
 - **Package**: `Core`
 - **Type**: components
+- **Version**: 5.0.0
 A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.
 
 ### Usage Examples
@@ -7578,6 +7605,7 @@ export default class Page {}
 # components/Calendar
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 
 ### Example
@@ -7592,14 +7620,14 @@ A simple calendar. If you want a textfield with date, see InputDate and InputDat
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
 | [showAdjacent] | `boolean` | show adjacent months days |
-| [(hoveredItem)] | `TuiDay | null` | hovered date |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
-| [max] | `TuiDay | null` | maximal date to choose |
-| [maxViewedMonth] | `TuiMonth | null` | maximal month to access |
-| [min] | `TuiDay | null` | minimum date to choose |
-| [minViewedMonth] | `TuiMonth | null` | minimum month to access |
+| [(hoveredItem)] | `TuiDay \| null` | hovered date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [max] | `TuiDay \| null` | maximal date to choose |
+| [maxViewedMonth] | `TuiMonth \| null` | maximal month to access |
+| [min] | `TuiDay \| null` | minimum date to choose |
+| [minViewedMonth] | `TuiMonth \| null` | minimum month to access |
 | [(month)] | `TuiMonth` | current month |
-| [value] | `TuiDay | TuiDayRange | null` | selected day or range |
+| [value] | `TuiDay \| TuiDayRange \| null` | selected day or range |
 
 ### API - Outputs
 
@@ -8022,6 +8050,7 @@ export default class Example {
 # components/CalendarExperimental
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+- **Version**: 5.0.0
 This is a work in progress The APIs might change in the future, use with caution
 
 ### Example
@@ -8035,11 +8064,11 @@ This is a work in progress The APIs might change in the future, use with caution
 | Property | Type | Description |
 |----------|-----|----------|
 | [(month)] | `TuiMonth` | current month |
-| [(view)] | `'day' | 'month' | 'year'` | current view |
-| [(value)] | `T | null` | a single day, array or a range |
-| [mode] | `'single' | 'multi' | 'range'` | type of value for picking |
-| [max] | `TuiDay | null` | maximal date to choose |
-| [min] | `TuiDay | null` | minimum date to choose |
+| [(view)] | `'day' \| 'month' \| 'year'` | current view |
+| [(value)] | `T \| null` | a single day, array or a range |
+| [mode] | `'single' \| 'multi' \| 'range'` | type of value for picking |
+| [max] | `TuiDay \| null` | maximal date to choose |
+| [min] | `TuiDay \| null` | minimum date to choose |
 | [showAdjacent] | `boolean` | display dates from adjacent months |
 | [showWeek] | `boolean` | display week number on each row |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
@@ -8534,6 +8563,7 @@ export default class Example {
 # components/CalendarMonth
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Month picker component. If you want a textfield, see InputMonth
 
 ### Example
@@ -8547,11 +8577,11 @@ Month picker component. If you want a textfield, see InputMonth
 | Property | Type | Description |
 |----------|-----|----------|
 | [disabledItemHandler] | `TuiBooleanHandler<TuiMonth>` |  |
-| [max] | `TuiMonth | null` | maximal month |
-| [min] | `TuiMonth | null` | minimal month |
+| [max] | `TuiMonth \| null` | maximal month |
+| [min] | `TuiMonth \| null` | minimal month |
 | [maxLength] | `number` | maximum length |
 | [minLength] | `number` | minimum length |
-| [value] | `TuiMonth | TuiMonthRange | null` | a single month or a range of months |
+| [value] | `TuiMonth \| TuiMonthRange \| null` | a single month or a range of months |
 | [(year)] | `TuiYear` | current year |
 
 ### API - Outputs
@@ -8715,6 +8745,7 @@ export default class Example {
 # components/CalendarRange
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component for choosing date range in calendar
 
 ### Example
@@ -8730,12 +8761,12 @@ Component for choosing date range in calendar
 | [defaultViewedMonth] | `TuiMonth` | default month to show |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
 | [items] | `TuiDayRangePeriod[]` | fixed intervals (shows 2 calendars with empty array) |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that gets date and returns null or a tuple with circled marker colors |
-| [min] | `TuiDay | null` | min date |
-| [max] | `TuiDay | null` | max date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that gets date and returns null or a tuple with circled marker colors |
+| [min] | `TuiDay \| null` | min date |
+| [max] | `TuiDay \| null` | max date |
 | [(month)] | `TuiMonth` | currently viewed month, also updated when a year is picked |
-| [minLength] | `TuiDayLike | null` | minimal length of range |
-| [maxLength] | `TuiDayLike | null` | maximal length of range |
+| [minLength] | `TuiDayLike \| null` | minimal length of range |
+| [maxLength] | `TuiDayLike \| null` | maximal length of range |
 
 ### API - Outputs
 
@@ -9050,6 +9081,7 @@ export default class Example {
 # components/CardCollapsed
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -9186,6 +9218,7 @@ export default class Example {
 # components/CardLarge
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -10108,6 +10141,7 @@ export default class Example {
 # components/CardMedium
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets. If you customize size, make sure to multiply by `--tui-font-scale` variable if you want to accommodate font scaling on mobile OS.
 
 ### Usage Examples
@@ -10601,6 +10635,7 @@ export default class Example {
 # components/Carousel
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Generic swipeable container to scroll through content
 
 ### API - Inputs
@@ -10900,6 +10935,86 @@ tui-avatar-labeled {
 }
 ```
 
+#### Scroll-driven animation
+
+Custom scroll-driven animation with CSS.
+
+**Template:**
+```html
+<button appearance="action" iconStart="@tui.chevron-left" tuiIconButton type="button" [disabled]="index() === 0" (click)="carousel.prev()" > Previous </button>
+<tui-carousel #carousel [max]="5" [min]="0" [(index)]="index" >
+<section *tuiItem="let index" class="item" > {{ index + 1 }} </section>
+</tui-carousel>
+<button appearance="action" iconStart="@tui.chevron-right" tuiIconButton type="button" [disabled]="index() === 5" (click)="carousel.next()" > Next </button>
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiCarousel} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton, TuiCarousel],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly index = signal(0);
+}
+```
+
+**LESS:**
+```less
+:host {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+    font: var(--tui-typography-heading-h3);
+}
+
+.item {
+    display: flex;
+    inline-size: 100%;
+    block-size: 10rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: var(--tui-background-neutral-1);
+    // Keep the name outside conditional rules so Angular scopes it in minified CSS.
+    animation-name: carousel-item;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view(inline)) {
+        .item {
+            animation-duration: 1ms;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-timeline: view(inline);
+            animation-range: cover;
+        }
+    }
+}
+
+@keyframes carousel-item {
+    0%,
+    100% {
+        transform: scale(0.85);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -10921,6 +11036,7 @@ export default class Page {
         'Automatic',
         'Dynamic height',
         'Multiple',
+        'Scroll-driven animation',
     ];
 }
 ```
@@ -10937,6 +11053,7 @@ export default class Page {
 # components/Cell
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -10950,8 +11067,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiCell] | `'l' | 'm' | 's'` | layout size |
-| [tuiCellHeight] | `'normal' | 'compact' | 'spacious'` | height mode |
+| [tuiCell] | `'l' \| 'm' \| 's'` | layout size |
+| [tuiCellHeight] | `'normal' \| 'compact' \| 'spacious'` | height mode |
 
 ### Usage Examples
 
@@ -11955,6 +12072,7 @@ export default class Example {
 # components/Checkbox
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A checkbox component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation
 
 ### Usage Examples
@@ -12201,6 +12319,7 @@ export default class Page {
 # components/Chip
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Chip component is used to display array data and can also be interactive depending on the tag used.
 
 ### Example
@@ -12618,6 +12737,7 @@ export default class Example {
 # components/ComboBox
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `ComboBox` is a form control for selecting a single value from a set of options. It is similar to Select but with a major difference – possibility to enter value manually .
 
 ### Example
@@ -12636,7 +12756,7 @@ export default class Example {
 | Property | Type | Description |
 |----------|-----|----------|
 | [strict] | `boolean` |  |
-| [matcher] | `TuiStringMatcher | null` | function that compares search text and datalist's items to define a match between them. Lowercase string
+| [matcher] | `TuiStringMatcher \| null` | function that compares search text and datalist's items to define a match between them. Lowercase string
                 comparison function by default. |
 
 ### Usage Examples
@@ -13573,6 +13693,7 @@ export default class PageComponent extends Array {
 # components/Comment
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -13584,7 +13705,7 @@ export default class PageComponent extends Array {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [tuiComment] | `TuiHorizontalDirection | TuiVerticalDirection | ''` | direction of the comment mark |
+| [tuiComment] | `TuiHorizontalDirection \| TuiVerticalDirection \| ''` | direction of the comment mark |
 
 ### Usage Examples
 
@@ -13686,6 +13807,7 @@ export default class Page {
 # components/Compass
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -13792,6 +13914,7 @@ export default class Page {
 # components/Confirm
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals
 
 ### Example
@@ -13805,7 +13928,7 @@ Confirm is a ready to use Dialog to ask user to confirm an action See this examp
 | Property | Type | Description |
 |----------|-----|----------|
 | content | `PolymorpheusContent` | content of the confirm |
-| [appearance] | `string | [string, string]` | appearance of the confirming button |
+| [appearance] | `string \| [string, string]` | appearance of the confirming button |
 | [no] | `string` | button |
 | [yes] | `string` | button |
 
@@ -13912,6 +14035,7 @@ export default class Example implements TuiConfirmData {
 # components/Copy
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.
 
 ### Usage Examples
@@ -14154,6 +14278,7 @@ export default class Example {
 # components/Counter
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -14166,7 +14291,7 @@ export default class Example {
 | Property | Type | Description |
 |----------|-----|----------|
 | [appearance] | `string` | appearance of the counter itself |
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [step] | `number` | — |
 | [min] | `number` | minimum value |
 | [max] | `number` | maximum value |
@@ -14395,6 +14520,7 @@ export default class Page {
 # components/DataList
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 `DataList` allows to make lists or menus
 
 ### Example
@@ -14408,7 +14534,7 @@ export default class Page {
 | Property | Type | Description |
 |----------|-----|----------|
 | [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
-| [size] | `TuiSizeS | TuiSizeL` | size of items |
+| [size] | `TuiSizeS \| TuiSizeL` | size of items |
 
 ### Usage Examples
 
@@ -14714,7 +14840,7 @@ export default class Example {
 <button automation-id="tui-data-list-range-option" iconEnd="@tui.chevron-right" tuiDropdownAlign="end" tuiDropdownDirection="top" tuiDropdownLimitWidth="auto" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="range" > ⌛ Range: {{ rangeValue }} </button>
 </tui-data-list>
 <ng-template #money>
-<tui-textfield automation-id="tui-data-money-input">
+<tui-textfield>
 <input name="moneyValue" tuiInput [(ngModel)]="moneyValue" />
 <label tuiLabel>RUB</label>
 </tui-textfield>
@@ -14726,7 +14852,7 @@ export default class Example {
 <tui-calendar [value]="dateValue" (dayClick)="onDayClick($event)" (mousedown.zoneless.prevent)="(0)" />
 </ng-template>
 <ng-template #input>
-<tui-textfield automation-id="tui-data-list-email-field">
+<tui-textfield class="form">
 <input name="emailValue" tuiInput [(ngModel)]="emailValue" />
 <label tuiLabel>Email</label>
 </tui-textfield>
@@ -14943,17 +15069,18 @@ export default class Page {
 # components/DataListWrapper
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `DataListWrapper` is an abstraction over `DataList` to simplify usage in common cases where precise control is not necessary.
 
 ### API - Inputs
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [items] | `readonly T[] | ReadonlyArray<readonly T[]> | null` | items to select |
+| [items] | `readonly T[] \| ReadonlyArray<readonly T[]> \| null` | items to select |
 | [itemContent] | `PolymorpheusContent<TuiContext<T>>` | content of an item |
 | [emptyContent] | `PolymorpheusContent` | content to display when there are no options inside |
 | [disabledItemHandler] | `TuiBooleanHandler<T>` |  |
-| [size] | `TuiSizeL | TuiSizeXS` | size of items |
+| [size] | `TuiSizeL \| TuiSizeXS` | size of items |
 | [labels] | `readonly string[]` | group labels |
 
 ### API - Outputs
@@ -15123,6 +15250,7 @@ export default class Page {
 # components/Dialog
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Customizable modal dialogs
 
 ### Example
@@ -15141,7 +15269,7 @@ Customizable modal dialogs
 | [data] | `string` |  |
 | [label] | `string` | heading of dialog |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
-| [size] | `null | TuiSizeS | TuiSizeL` | to make the dialog width fit its content. |
+| [size] | `null \| TuiSizeS \| TuiSizeL` | to make the dialog width fit its content. |
 
 ### Usage Examples
 
@@ -15720,6 +15848,7 @@ export default class Page {
 # components/Drawer
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -15964,6 +16093,7 @@ export default class Page {
 # components/ElasticContainer
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 A wrapper component that changes its height with transition, depending on the content
 
 ### Usage Examples
@@ -16203,6 +16333,7 @@ export default class Page {
 # components/Error
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls
 
 ### Example
@@ -16215,7 +16346,7 @@ Component for showing arbitrary messages styled as errors, with height and fade 
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [error] | `TuiValidationError | string | null` | error value |
+| [error] | `TuiValidationError \| string \| null` | error value |
 
 ### Usage Examples
 
@@ -16798,6 +16929,7 @@ export default class Page {
 # components/Expand
 - **Package**: `Core`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -16957,6 +17089,7 @@ export default class Page {
 # components/File
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+- **Version**: 5.9.0
 This component is based on Cell and therefore follows its rules on padding in horizontal mode. Reset `padding-inline` if you do not need it.
 
 ### Usage Examples
@@ -17494,6 +17627,7 @@ export default class Page {
 # components/Filter
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Components shows separated items that can be used to filter content on the page. There are also an option with badges.
 
 ### Example
@@ -17513,7 +17647,7 @@ Components shows separated items that can be used to filter content on the page.
 | [disabledItemHandler] | `TuiBooleanHandler` |  |
 | [identityMatcher] | `TuiIdentityMatcher` |  |
 | [items] | `T[]` | for view |
-| [size] | `TuiSizeS | TuiSizeL` | size of items |
+| [size] | `TuiSizeS \| TuiSizeL` | size of items |
 
 ### API - Outputs
 
@@ -17919,6 +18053,7 @@ export default class Page {
 # components/FloatingContainer
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 `FloatingContainer` is a special container for creating different animated sticky footers
 
 ### Example
@@ -18672,6 +18807,7 @@ footer {
 # components/Form
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -19153,6 +19289,7 @@ export default class Page {
 # components/Group
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A directive for grouping other components. For example, Input or Button .
 
 ### Example
@@ -19432,6 +19569,7 @@ export default class Page {
 # components/Header
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -19704,6 +19842,7 @@ export default class Page {
 # components/Icon
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all `iconStart` / `iconEnd` inputs across the library.
 
 ### Example
@@ -20178,6 +20317,7 @@ tui-icon {
 # components/Input
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Input is a basic string textfield. All other input components are built on its basis.
 
 ### Example
@@ -20615,6 +20755,7 @@ export default class Page {
 # components/InputCard
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
+- **Version**: 5.0.0
 `InputCard` can be used with `InputExpire` and `InputCVC` to input a card. Use `tuiCreateLuhnValidator(message)` to create a `Validator` that uses Luhn algorithm
 
 ### Example
@@ -20634,7 +20775,7 @@ export default class Page {
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (binChange) | `string | null` | BIN value (card first 6 symbols) |
+| (binChange) | `string \| null` | BIN value (card first 6 symbols) |
 
 ### Usage Examples
 
@@ -20785,6 +20926,7 @@ export default class Page {
 # components/InputCardGroup
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
+- **Version**: 5.0.0
 `InputCardGroup` is used to input a card as a separated control
 
 ### Example
@@ -20800,7 +20942,7 @@ export default class Page {
 | Property | Type | Description |
 |----------|-----|----------|
 | [cardValidator] | `TuiBooleanHandler<string>` | custom card validator for moving focus to the next field |
-| [codeLength] | `3 | 4` | code length |
+| [codeLength] | `3 \| 4` | code length |
 | [compact] | `boolean` | manually set compact mode (forced on mobile resolution) |
 | [icon] | `PolymorpheusContent` | custom card icon |
 | [id] | `string` | accordingly). Auto-generated when not provided. |
@@ -20811,7 +20953,7 @@ export default class Page {
 
 | Event | Type | Description |
 |-------|------|-------------|
-| (binChange) | `string | null` | BIN value (card first 6 symbols) |
+| (binChange) | `string \| null` | BIN value (card first 6 symbols) |
 
 ### Usage Examples
 
@@ -21238,6 +21380,7 @@ export default class PageComponent {
 # components/InputChip
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputChip` uses specifically modified Input to represent array of selectable items.
 
 ### Example
@@ -22011,6 +22154,7 @@ export default class PageComponent {
 # components/InputColor
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputColor` = `Textfield` + `type="color"` + `Maskito` + ❤️
 
 ### Example
@@ -22033,7 +22177,7 @@ export default class PageComponent {
 | Property | Type | Description |
 |----------|-----|----------|
 | [align] | `TuiHorizontalDirection` | alignment of the color picker |
-| [format] | `'hex' | 'hexa'` | color format |
+| [format] | `'hex' \| 'hexa'` | color format |
 
 ### Usage Examples
 
@@ -22157,6 +22301,7 @@ export default class PageComponent {
 # components/InputDate
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputDate` = `Textfield` + `Calendar` + ❤️
 
 ### Example
@@ -22671,6 +22816,7 @@ export default class Example {
 # components/InputDateMulti
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputDateMulti` uses specifically modified InputChip to represent array of dates.
 
 ### Example
@@ -23022,6 +23168,7 @@ export default class Example {
 # components/InputDateRange
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputDateRange` = `Textfield` + `CalendarRange` + ❤️
 
 ### Example
@@ -23040,8 +23187,8 @@ export default class Example {
 |----------|-----|----------|
 | [min] | `TuiDay` | min date |
 | [max] | `TuiDay` | max date |
-| [minLength] | `TuiDayLike | null` | min length of the range |
-| [maxLength] | `TuiDayLike | null` | max length of the range |
+| [minLength] | `TuiDayLike \| null` | min length of the range |
+| [maxLength] | `TuiDayLike \| null` | max length of the range |
 | [items] | `TuiDayRangePeriod[]` | period list items |
 | [listSize] | `TuiSizeL` | period list size |
 
@@ -23364,7 +23511,7 @@ import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cd
 import {TuiDropdown, TuiInput, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {
     tuiCreateDefaultDayRangePeriods,
-    type TuiDayRangePeriod,
+    TuiDayRangePeriod,
     TuiInputDateRange,
 } from '@taiga-ui/kit';
 
@@ -23409,10 +23556,16 @@ export default class Example {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected listSize = this.sizeVariants[2]!;
     protected readonly items = tuiCreateDefaultDayRangePeriods();
+    protected readonly longItems = Array.from({length: 20}, (_, index) => {
+        const item = this.items[index % this.items.length]!;
+
+        return new TuiDayRangePeriod(item.range, `${item} ${index + 1}`);
+    });
+
     protected min = this.dates[0];
     protected max = this.dates[4];
     protected readonly limits = [{day: 3}, {day: 5}] as const;
-    protected readonly periodListItems = [null, this.items];
+    protected readonly periodListItems = [null, this.items, this.longItems];
     protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
@@ -23424,13 +23577,14 @@ export default class Example {
 # components/InputDateTime
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputDateTime` = `Textfield` + `Calendar` + ❤️
 
 ### Example
 
 ```html
 <ng-template>
-<tui-textfield [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readonly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}" />
+<tui-textfield [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readonly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
@@ -23441,8 +23595,8 @@ export default class Example {
 | Property | Type | Description |
 |----------|-----|----------|
 | [timeMode] | `MaskitoTimeMode` | time format mode for SS and MS support |
-| [min] | `TuiDay | [TuiDay, TuiTime] | null` | min date |
-| [max] | `TuiDay | [TuiDay, TuiTime] | null` | max date |
+| [min] | `TuiDay \| [TuiDay, TuiTime] \| null` | min date |
+| [max] | `TuiDay \| [TuiDay, TuiTime] \| null` | max date |
 
 ### Usage Examples
 
@@ -23749,6 +23903,39 @@ export default class Example {
 
 #### Example 7
 
+Use `[tuiTimeFormat]` directive (or `tuiTimeFormatProvider` ) to customize time part: pass `dayPeriod` with a tuple of two locale-specific markers to switch to a 12-hour format and `separators` to replace the characters between time segments.
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Custom time format</label>
+<input timeMode="HH:MM" tuiInputDateTime [tuiTimeFormat]="{dayPeriod: ['AM', 'PM'], separators: ['h']}" [(ngModel)]="value" />
+<tui-calendar *tuiDropdown />
+</tui-textfield>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {TuiInputDateTime, TuiTimeFormat} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiInputDateTime, TuiTimeFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = [new TuiDay(2026, 8, 23), new TuiTime(18, 5)];
+}
+```
+
+#### Example 8
+
 Open this on a mobile device or enable emulation in DevTools and refresh the page to explore this example! You can use several different approaches to optimize UX on mobile devices when tapping the icon.
 
 **Template:**
@@ -23807,7 +23994,7 @@ export default class Example {
 }
 ```
 
-#### Example 8
+#### Example 9
 
 Individual disabled dates still can be typed in manually or picked on mobile in native picker but control will be automatically marked as invalid
 
@@ -23855,7 +24042,7 @@ export default class Example {
 }
 ```
 
-#### Example 9
+#### Example 10
 
 Native mobile pickers have limited browser support for native datalist
 
@@ -23975,6 +24162,7 @@ export default class Example {
         'Validation',
         'Value transformer',
         'Date format',
+        'Time format',
         'Mobile',
         'Limits',
         'Datalist',
@@ -24008,6 +24196,7 @@ export default class Example {
 # components/InputFiles
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 An input for uploading one or several files using native input file capabilities
 
 ### Example
@@ -24033,6 +24222,29 @@ An input for uploading one or several files using native input file capabilities
 | Event | Type | Description |
 |-------|------|-------------|
 | (reject) | `TuiFileLike[]` | emits files that were rejected. |
+
+### TuiFiles - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [max] | `number` | maximum number of displayed files |
+| [(expanded)] | `boolean` | expanded/collapsed state for multiple files that are limited by the max property |
+
+### TuiFile - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [showDelete] | `boolean \| 'always'` | allow to delete file after attach it |
+| [file] | `TuiFileLike` | — |
+| [state] | `TuiFileState` | state of the file |
+| [showSize] | `boolean` | show file size |
+| [size] | `TuiSizeL` | — |
+
+### TuiFile - Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| (remove) | `void` | emits on click on close button. When subscribed to, close button appears. |
 
 ### Usage Examples
 
@@ -24586,6 +24798,7 @@ export default class PageComponent {
 # components/InputInline
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Inline input field
 
 ### Usage Examples
@@ -24912,6 +25125,7 @@ export default class Page {
 # components/InputMonth
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputMonth` = `Textfield` + `CalendarMonth` + ❤️
 
 ### Example
@@ -24929,8 +25143,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `TuiMonth | null` | the lowest value in the range of permitted dates |
-| [max] | `TuiMonth | null` | the greatest value in the range of permitted dates |
+| [min] | `TuiMonth \| null` | the lowest value in the range of permitted dates |
+| [max] | `TuiMonth \| null` | the greatest value in the range of permitted dates |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiMonth>` |  |
 | [(year)] | `TuiYear` | current year |
 
@@ -25305,6 +25519,7 @@ export default class PageComponent {
 # components/InputNumber
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 InputNumber is a form field to provide numerical input.
 
 ### Example
@@ -25320,12 +25535,12 @@ InputNumber is a form field to provide numerical input.
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number | bigint | null` | value in the range of permitted values |
-| [max] | `number | bigint | null` | value in the range of permitted values |
-| [step] | `number | bigint` | step to increase/decrease value with keyboard and buttons on the side |
+| [min] | `number \| bigint \| null` | value in the range of permitted values |
+| [max] | `number \| bigint \| null` | value in the range of permitted values |
+| [step] | `number \| bigint` | step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number | bigint` |  |
+| [quantum] | `number \| bigint` |  |
 
 ### Usage Examples
 
@@ -25738,6 +25953,7 @@ export default class Example {
     protected value: number | null = 123_456_789;
 
     protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        decimalSeparator: '.',
         thousandSeparator: ',',
         // 1,2345,6789
         thousandSeparatorPattern: (digits) =>
@@ -25780,6 +25996,7 @@ export default class Example {
     protected value: number | null = 123_456_789;
 
     protected readonly numberFormat: Partial<TuiNumberFormatSettings> = {
+        decimalSeparator: '.',
         thousandSeparator: ',',
         thousandSeparatorPattern: intlThousandSeparatorPattern(),
     };
@@ -25917,6 +26134,7 @@ export default class PageComponent {
 # components/InputPhone
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputPhone` allows to input a phone number
 
 ### Example
@@ -26264,6 +26482,7 @@ export default class PageComponent {
 # components/InputPhoneInternational
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Allows to input phone number in international format `InputPhoneInternational` is based on @maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that `InputPhoneInternational` has the robust source of truth!
 
 ### Example
@@ -26672,6 +26891,7 @@ export default class PageComponent {
 # components/InputPin
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -26787,6 +27007,7 @@ export default class PageComponent {
 # components/InputRange
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputRange` = `Textfield` + `InputNumber` × 2 + `Range` + ❤️ 2
 
 ### Example
@@ -26803,8 +27024,8 @@ export default class PageComponent {
 |----------|-----|----------|
 | [min] | `number` | value in the range of permitted values |
 | [max] | `number` | value in the range of permitted values |
-| [prefix] | `readonly [string, string] | null` | number |
-| [postfix] | `readonly [string, string] | null` | number |
+| [prefix] | `readonly [string, string] \| null` | number |
+| [postfix] | `readonly [string, string] \| null` | number |
 | [content] | `[PolymorpheusContent, PolymorpheusContent]` | a template for custom view of the selected value. |
 | [quantum] | `number` |  |
 | [segments] | `number` | for no ticks) |
@@ -27225,6 +27446,7 @@ export default class PageComponent {
 # components/InputSlider
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputSlider` = `Textfield` + `InputNumber` + `Slider` + ❤️
 
 ### Example
@@ -27248,8 +27470,8 @@ export default class PageComponent {
 | [postfix] | `string` | number |
 | [quantum] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` |  |
-| [keySteps] | `TuiKeySteps | null` | anchor points of non-uniform format between value and position |
+| [segments] | `number[] \| number` |  |
+| [keySteps] | `TuiKeySteps \| null` | anchor points of non-uniform format between value and position |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
@@ -27559,6 +27781,7 @@ export default class PageComponent {
 # components/InputTime
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `InputTime` allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
 
 ### Example
@@ -27566,7 +27789,7 @@ export default class PageComponent {
 ```html
 <ng-template>
 <tui-textfield [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input placeholder="Pick a time" tuiInputTime [accept]="accept" [formControl]="control" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}" />
+<input placeholder="Pick a time" tuiInputTime [accept]="accept" [formControl]="control" [mode]="mode" [postfix]="postfix" [prefix]="prefix" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}" />
 </tui-textfield>
 </ng-template>
 ```
@@ -27647,6 +27870,39 @@ import {TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl<TuiTime | null>(new TuiTime(17, 0));
+}
+```
+
+#### Separators
+
+Use `[tuiTimeFormat]="{separators}"` directive to customize separators between time segments (from left to right), e.g. French Canadian `[' h ', ' min ', ',']` . Missing positions fall back to the canonical separators of the `mode` . Also available through `tuiTimeFormatProvider` .
+
+**Template:**
+```html
+<tui-textfield [tuiTextfieldCleaner]="false">
+<label tuiLabel>fr-CA locale</label>
+<input mode="HH:MM:SS.MSS" tuiInputTime [tuiTimeFormat]="{separators: [' h ', ' min ', ',']}" [(ngModel)]="value" />
+<img alt="Flag of Canada" width="28" [src]="'CA' | tuiFlag" [style.border-radius.%]="50" />
+</tui-textfield>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTime} from '@taiga-ui/cdk';
+import {TuiFlagPipe, TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiFlagPipe, TuiInputTime, TuiTimeFormat],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = new TuiTime(18, 5, 5, 766);
 }
 ```
 
@@ -28070,6 +28326,7 @@ export default class PageComponent {
     protected readonly examples = [
         'Mode',
         '12-hour format',
+        'Separators',
         'Form control validation',
         'Options',
         'Textfield customization',
@@ -28108,6 +28365,7 @@ export default class PageComponent {
 # components/InputYear
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component to input a single year
 
 ### Example
@@ -28290,6 +28548,7 @@ export default class PageComponent {
 # components/ItemGroup
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -28573,6 +28832,7 @@ export default class Example {
 # components/ItemsWithMore
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component to hide overflown items behind custom content. Resize the screen to see extra items disappear
 
 ### Example
@@ -28954,6 +29214,7 @@ export default class Page {
 # components/Keypad
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.19.0
 `TuiKeypad` is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own native `<button>` or `<a>` elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a shuffled PIN terminal, a calculator or a custom chooser. Each key stays a real element, so `(click)` , `aria-label` , `disabled` and `href` all work as usual. Each key updates your own state on `(click)` — display the running value however you like (the examples keep it in a signal shown in a `<div>` ).
 
 ### Example
@@ -29733,6 +29994,7 @@ tui-keypad {
 # components/Label
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 
 ### Usage Examples
@@ -29935,6 +30197,7 @@ export default class Page {
 # components/LegendItem
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 A button for a legend of ring or pie charts
 
 ### Example
@@ -29952,7 +30215,7 @@ A button for a legend of ring or pie charts
 | Property | Type | Description |
 |----------|-----|----------|
 | [active] | `boolean` | active state from outside |
-| [color] | `TuiColor | string | null` | indicator color |
+| [color] | `TuiColor \| string \| null` | indicator color |
 | [disabled] | `boolean` | disabled item (i.e. hidden from the related chart) |
 | [size] | `TuiSizeS` | — |
 | [value] | `string` | text inside |
@@ -30217,6 +30480,7 @@ export default class Page {
 # components/Like
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 A like component based on native checkbox with icons and custom color for icon when `:checked` state.
 
 ### Usage Examples
@@ -30408,6 +30672,7 @@ export default class Page {
 # components/LineChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -30429,8 +30694,8 @@ export default class Page {
 | [x] | `number` | start of X axis |
 | [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
 | [value] | `TuiPoint[]` | array of data |
-| [xStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis Y hint |
+| [xStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 
@@ -30814,6 +31079,7 @@ export default class Page {
 # components/LineClamp
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component cuts overflown text with "..." and shows it by hover
 
 ### Example
@@ -31547,6 +31813,7 @@ export default class Page {
 # components/LineDaysChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 Line chart but for days
 
 ### Example
@@ -31567,8 +31834,8 @@ Line chart but for days
 | [y] | `number` | start of Y axis |
 | [smoothingFactor] | `number` | smoothing factor from 0 to 99 |
 | [value] | `[TuiDay, number][]` | array of data |
-| [xStringify] | `TuiStringHandler<TuiDay> | null` | function to stringify a value number to a string in axis X hint |
-| [yStringify] | `TuiStringHandler<number> | null` | function to stringify a value number to a string in axis Y hint |
+| [xStringify] | `TuiStringHandler<TuiDay> \| null` | function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
 
 ### Usage Examples
 
@@ -32028,6 +32295,7 @@ export default class Page {
 # components/Link
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Link component. It has focus highlight and can be customized with an icon Use `textContent` binding or wrapping entire content with a `span` to avoid extra whitespace introduced by browser to `a` tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be
 
 ### Usage Examples
@@ -32184,6 +32452,7 @@ export default class Page {
 # components/List
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -32516,6 +32785,7 @@ export default class Page {
 # components/Loader
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -32541,7 +32811,7 @@ export default class Page {
 | [loading] | `boolean` | show/hide loader |
 | [inheritColor] | `boolean` | inherit parent color |
 | [overlay] | `boolean` | content overlay when loader is showed |
-| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXL` | — |
 | [textContent] | `PolymorpheusContent` | custom content under loader |
 
 ### Usage Examples
@@ -32824,6 +33094,7 @@ export default class Page {
 # components/Message
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Message component is used to display message block.
 
 ### Example
@@ -33128,6 +33399,7 @@ export default class Example {
 # components/Meter
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.22.0
 Native styled Meter tag, using the same attributes as native version.
 
 ### Example
@@ -33284,6 +33556,7 @@ export default class Example {
 # components/MobileCalendar
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 A calendar for mobile devices. It is used in date picker controls on mobile devices if `tuiMobileCalendar` directive is applied. You can use `TUI_CALENDAR_DATE_STREAM` token to set value from outside (see samples)
 
 ### Example
@@ -33296,9 +33569,9 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | — |
+| [(value)] | `TuiDay \| TuiDayRange \| readonly TuiDay[] \| null` | — |
 | [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
-| [markerHandler] | `TuiMarkerHandler | null` | a handler that returns marker colors for a date |
+| [markerHandler] | `TuiMarkerHandler \| null` | a handler that returns marker colors for a date |
 | [max] | `TuiDay` | max date |
 | [min] | `TuiDay` | min date |
 | [multi] | `boolean` | array of single dates |
@@ -33309,7 +33582,7 @@ A calendar for mobile devices. It is used in date picker controls on mobile devi
 | Event | Type | Description |
 |-------|------|-------------|
 | (cancel) | `void` | output when user clicks Cancel |
-| (confirm) | `TuiDayRange | TuiDay` | output when user clicks Confirm (range or single day) |
+| (confirm) | `TuiDayRange \| TuiDay` | output when user clicks Confirm (range or single day) |
 
 ### Usage Examples
 
@@ -33831,6 +34104,7 @@ export default class Page {
 # components/Navigation
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 Taiga UI is a low level component library with many atomic components that provide great flexibility when combined together. An exception to the general rule is the Navigation component – an opinionated global wrapping navigation that exposes less customization options developed specifically to target data-heavy dashboards with minimal space lost and compact controls.
 
 ### Usage Examples
@@ -34601,6 +34875,7 @@ export default class Page implements OnDestroy {
 # components/Notification
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A notification message that can be displayed inline or as an alert
 
 ### Example
@@ -34619,14 +34894,14 @@ A notification message that can be displayed inline or as an alert
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [size] | `TuiSizeS | TuiSizeL` | — |
-| [icon] | `TuiStringHandler<string> | string` | icon name or a function to match appearance to the icon |
+| [size] | `TuiSizeS \| TuiSizeL` | — |
+| [icon] | `TuiStringHandler<string> \| string` | icon name or a function to match appearance to the icon |
 | [label] | `string` | heading |
 | [data] | `I` | arbitrary input data for the notification |
-| [autoClose] | `TuiNumberHandler<string> | number` | auto close timeout, 0 for no auto close |
+| [autoClose] | `TuiNumberHandler<string> \| number` | auto close timeout, 0 for no auto close |
 | [closable] | `boolean` | display close button |
-| [block] | `'start' | 'end'` | block position |
-| [inline] | `'start' | 'center' | 'end'` | inline position |
+| [block] | `'start' \| 'end'` | block position |
+| [inline] | `'start' \| 'center' \| 'end'` | inline position |
 
 ### Usage Examples
 
@@ -34937,6 +35212,7 @@ export default class Page {
 # components/NotificationMiddle
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 A modal component to indicate an ongoing blocking action
 
 ### Example
@@ -35142,6 +35418,7 @@ export default class Page {
 # components/Pager
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -35355,6 +35632,7 @@ export default class Page {
 # components/Pagination
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Pagination component enables the user to select a specific page from a range of pages
 
 ### Example
@@ -35568,6 +35846,7 @@ export default class Page {
 # components/PdfViewer
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on `WA_IS_MOBILE` token to provide suitable alternative behavior. For example, you can use third-party service `https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF` or your own service to render PDF by pdf.js.
 
 ### Usage Examples
@@ -35757,6 +36036,7 @@ export default class Page {
 # components/PieChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -35769,7 +36049,7 @@ export default class Page {
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | selected fragment index |
-| [size] | `TuiSizeS | TuiSizeXL` | — |
+| [size] | `TuiSizeS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
 
 ### Usage Examples
@@ -35940,6 +36220,7 @@ export default class Page {
 # components/Pin
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Pins are used to show a location on a 2D plane. Use `color` , `background` , `border` and `box-shadow` to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
 
 ### Usage Examples
@@ -36208,6 +36489,7 @@ export default class Page {
 # components/Pincode
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.9.0
 
 ### Example
 
@@ -36222,7 +36504,7 @@ export default class Page {
 | Property | Type | Description |
 |----------|-----|----------|
 | type | `string` | masks each digit as a filled dot |
-| [invalid] | `boolean | null` | — shake and auto-clear |
+| [invalid] | `boolean \| null` | — shake and auto-clear |
 | maxLength | `number` | number of cells, pending animation triggers once value reaches this length |
 
 ### API - Outputs
@@ -36793,6 +37075,7 @@ export default class PageComponent {
 # components/Popout
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+- **Version**: 5.0.0
 Using service to show content in a new window.
 
 ### Usage Examples
@@ -36999,6 +37282,7 @@ export default class Page extends Array {
 # components/Preview
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
 
 ### Usage Examples
@@ -37352,6 +37636,7 @@ export default class Page {
 # components/ProgressBar
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `tuiProgressBar` – attribute component for native html tag `'">` . Usage: `'">` .
 
 ### Example
@@ -37366,7 +37651,7 @@ export default class Page {
 |----------|-----|----------|
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXXL` | — |
 | [color] | `string` |  |
 
 ### Usage Examples
@@ -37739,6 +38024,7 @@ dd {
 # components/ProgressCircle
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `'">` is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.
 
 ### Example
@@ -37753,7 +38039,7 @@ dd {
 |----------|-----|----------|
 | [value] | `number` | is omitted. |
 | [max] | `number` | maximum value of the progress |
-| [size] | `TuiSizeXXL | TuiSizeXXS` | — |
+| [size] | `TuiSizeXXL \| TuiSizeXXS` | — |
 | [color] | `string` |  |
 | [arc] | `boolean` | use arc shape with small bottom open arc sector (instead of default circle). |
 | [style.--tui-thickness.px] | `number` | width of the circle's stroke |
@@ -38220,6 +38506,7 @@ dd {
 # components/PullToRefresh
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits `(pulled)` event when the pull threshold is reached. You can set that threshold in pixels by `TUI_PULL_TO_REFRESH_THRESHOLD` DI token. You can finish loading with `TUI_PULL_TO_REFRESH_LOADED` stream token that can be provided in DI. While the scroll container is scrolled to the top, the component automatically applies `overscroll-behavior: none;` to it so elastic scrolling on iOS does not interfere with pulling. Once scrolled away from the top, the property is removed and the native bounce works as usual
 
 ### Usage Examples
@@ -38479,6 +38766,7 @@ export default class Page {
 # components/Pulse
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -38613,6 +38901,7 @@ export default class Page {
 # components/Push
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Notifications in style of native browser push
 
 ### Example
@@ -38632,7 +38921,7 @@ Notifications in style of native browser push
 | [heading] | `string` | heading of the push |
 | [type] | `string` | small text near icon, typically, category of the message |
 | [lines] | `number` | a number of visible lines |
-| [timestamp] | `number | string` | if the number is passed. |
+| [timestamp] | `number \| string` | if the number is passed. |
 | img | `Image` | image at the top (360×170px) |
 | tui-icon | `Icon` | icon in the corner |
 | tuiLink | `Link/Button` | single button |
@@ -38827,6 +39116,7 @@ export default class Page {
 # components/Radio
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A radio component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add `name` attribute to your `input` tag, unless you are using `formControlName`
 
 ### Usage Examples
@@ -39101,6 +39391,7 @@ export default class Page {
 # components/Range
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 A two-thumb slider for selecting a range of values
 
 ### Example
@@ -39120,7 +39411,7 @@ A two-thumb slider for selecting a range of values
 | [max] | `number` |  |
 | [step] | `number` |  |
 | [segments] | `number` |  |
-| [keySteps] | `TuiKeySteps | null` |  |
+| [keySteps] | `TuiKeySteps \| null` |  |
 | [limit] | `number` |  |
 | [margin] | `number` |  |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |
@@ -39363,6 +39654,7 @@ export default class Page {
 # components/Rating
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -39527,6 +39819,7 @@ export default class Page {
 # components/Reorder
 - **Package**: `ADDON-TABLE`
 - **Type**: components
+- **Version**: 5.0.0
 Component to change order of elements in an array
 
 ### Usage Examples
@@ -39588,6 +39881,7 @@ export default class Page {}
 # components/RingChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -39600,7 +39894,7 @@ export default class Page {}
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | selected fragment index |
-| [size] | `TuiSizeXS | TuiSizeXL` | — |
+| [size] | `TuiSizeXS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
 
 ### Usage Examples
@@ -39750,6 +40044,7 @@ export default class Page {
 # components/ScrollWheel
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+- **Version**: 5.21.0
 Work in progress, do not use! There are known issues in Safari, as always A component for spinning wheels or other infinitely scrollable containers, not to be confused with virtual scrolling which typically has ends.
 
 ### API - Inputs
@@ -39911,6 +40206,7 @@ export default class Page {}
 # components/Scrollbar
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 `Scrollbar` implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use `TUI_SCROLL_REF` token to get a scrollable container. For example, when working with virtual scroll.
 
 ### Usage Examples
@@ -40494,6 +40790,7 @@ export default class Page {
 # components/Search
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 A wrapping component for search or filtering the table
 
 ### Usage Examples
@@ -40664,6 +40961,7 @@ export default class Page {
 # components/SearchBar
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.22.0
 `TuiSearchBar` is a mobile search field. Put `tuiSearchBar` on any element — semantically that is `<search>` — project a native `<input tuiSearchBar>` into it and a `<button tuiButtonX>` next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field, on Android it moves inside the field on the leading side and turns into a back arrow.
 
 ### Usage Examples
@@ -40975,6 +41273,7 @@ export default class Page {
 # components/Segmented
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Segmented is used for links and buttons to navigate within the application. It can also work as a radio button to toggle between different states.
 
 ### Usage Examples
@@ -41303,6 +41602,7 @@ export default class Example {}
 # components/Select
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `Select` is a form control for selecting a single value from a set of options, similar to the native <select> element.
 
 ### Example
@@ -41926,6 +42226,7 @@ export default class PageComponent {
 # services/KeyboardService
 - **Package**: `ADDON-MOBILE`
 - **Type**: components/services
+- **Version**: 5.0.0
 A service that allows hiding and showing virtual keyboard programmatically on both Android and iOS devices Does nothing on devices with no virtual keyboard or when input is not focused
 
 ### Usage Examples
@@ -41986,6 +42287,7 @@ export default class Page {
 # components/SheetDialog
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 A mobile draggable sheet dialog
 
 ### Example
@@ -42098,13 +42400,7 @@ export default class Example {
 
 **Template:**
 ```html
-<button tuiButton type="button" (click)="open = true" > Show/Hide </button>
-<ng-template #label>
-<label tuiTitle>
-<span tuiSubtitle>Monty Python</span>
-<b>And the Holy Grail</b>
-</label>
-</ng-template>
+<button tuiButton type="button" (click)="open = true" > Show </button>
 <ng-template [tuiSheetDialogOptions]="{stops: ['5.75rem', '13.875rem']}" [(tuiSheetDialog)]="open" >
 <header tuiHeader="body-m">
 <hgroup tuiTitle>
@@ -42223,7 +42519,7 @@ hr {
 
 **Template:**
 ```html
-<button tuiButton type="button" (click)="toggle(true)" > Show/Hide </button>
+<button tuiButton type="button" (click)="toggle(true)" > Show </button>
 <ng-template [tuiSheetDialog]="open" [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, appearance: 'fullscreen'}" (tuiSheetDialogChange)="toggle($event)" >
 <header class="header">
 <tui-textfield iconStart="@tui.search">
@@ -42711,6 +43007,7 @@ export default class Page {
 # components/ShrinkWrap
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.
 
 ### API - Inputs
@@ -42897,6 +43194,7 @@ export default class Page {
 # components/Slider
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 Taiga UI styling of native html tag `'">` to choose a value from a limited range Read more about this input type in MDN Docs
 
 ### Example
@@ -42915,7 +43213,7 @@ Taiga UI styling of native html tag `'">` to choose a value from a limited range
 | [max] | `number` |  |
 | [min] | `number` |  |
 | [step] | `number` |  |
-| [segments] | `number[] | number` |  |
+| [segments] | `number[] \| number` |  |
 | [style.--tui-thumb-size.px] | `number` | size of thumb |
 
 ### Usage Examples
@@ -43334,6 +43632,7 @@ export default class Page {
 # components/Slides
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 A component for displaying dynamic content animated between states. Use negative value for `tuiSlides` to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 
 ### Example
@@ -43775,6 +44074,7 @@ export default class Page {
 # components/Status
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -43823,6 +44123,7 @@ export default class Page {}
 # components/Stepper
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -43842,6 +44143,14 @@ export default class Page {}
 |----------|-----|----------|
 | [orientation] | `TuiOrientation` | — |
 | [(activeItemIndex)] | `number` | — |
+
+### Step - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [size] | `TuiSizeL \| TuiSizeS` | — |
+| [stepState] | `'normal' \| 'pass' \| 'error'` | — |
+| [icon] | `string` | — |
 
 ### Usage Examples
 
@@ -44007,6 +44316,7 @@ export default class Page {
 # components/Surface
 - **Package**: `LAYOUT`
 - **Type**: components
+- **Version**: 5.0.0
 General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
 
 ### Usage Examples
@@ -44644,6 +44954,7 @@ export default class Example {
 # components/SwipeActions
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 Component should be used on mobile devices only.
 
 ### Usage Examples
@@ -45181,6 +45492,7 @@ export default class Page {
 # components/Switch
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 A switch component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation
 
 ### Usage Examples
@@ -45357,6 +45669,7 @@ export default class Page {
 # components/TabBar
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
+- **Version**: 5.0.0
 Component for creating mobile navigation.
 
 ### Usage Examples
@@ -45876,6 +46189,7 @@ export default class Page {
 # components/Table
 - **Package**: `ADDON-TABLE`
 - **Type**: components
+- **Version**: 5.0.0
 This module allows you to create various tables, both static and editable.
 
 ### API - Inputs
@@ -45883,9 +46197,25 @@ This module allows you to create various tables, both static and editable.
 | Property | Type | Description |
 |----------|-----|----------|
 | [columns] | `readonly string[]` | an array of keys to set up columns order |
-| [size] | `TuiSizeS | TuiSizeL` | cells size |
+| [size] | `TuiSizeS \| TuiSizeL` | cells size |
 | [(sorter)] | `TuiComparator<T>` | sort function (basic JavaScript array sort API) |
-| [(direction)] | `-1 | 1` | direction for sorting |
+| [(direction)] | `-1 \| 1` | direction for sorting |
+
+### th[tuiTh] - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [resizable] | `boolean` | makes this column resizable |
+| [sorter] | `TuiComparator<T> \| null` | sorter function for this column |
+| [sticky] | `boolean` | makes heading cell horizontally sticky |
+
+### tbody[tuiTbody] - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [data] | `readonly T[]` | data to display |
+| [heading] | `PolymorpheusContent` | optional heading content for the group that makes it collapsable |
+| [(open)] | `boolean` | open/collapsed state of the group |
 
 ### Usage Examples
 
@@ -47595,6 +47925,7 @@ export default class Page {
 # components/TableFilters
 - **Package**: `ADDON-TABLE`
 - **Type**: components
+- **Version**: 5.0.0
 This module allows you to filter table data in a flexible way.
 
 ### Usage Examples
@@ -47854,6 +48185,7 @@ export default class Page {
 # components/TablePagination
 - **Package**: `ADDON-TABLE`
 - **Type**: components
+- **Version**: 5.0.0
 Component to show pagination in table footer
 
 ### Example
@@ -48037,6 +48369,7 @@ export default class Page {
 # components/Tabs
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component for creating tabs. If you use `routerLink` you must also add `routerLinkActive` directive.
 
 ### Example
@@ -48050,7 +48383,7 @@ Component for creating tabs. If you use `routerLink` you must also add `routerLi
 | Property | Type | Description |
 |----------|-----|----------|
 | [(activeItemIndex)] | `number` | — |
-| [size] | `TuiSizeM | TuiSizeL` | — |
+| [size] | `TuiSizeM \| TuiSizeL` | — |
 | [itemsLimit] | `number` |  |
 | [moreContent] | `PolymorpheusContent` |  |
 | [dropdownContent] | `PolymorpheusContent` |  |
@@ -48633,6 +48966,7 @@ export default class Page {
 # components/Textarea
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `Textarea` uses `Textfield` to create a multi-line string input.
 
 ### Example
@@ -48875,6 +49209,7 @@ export default class PageComponent {
 # components/ThumbnailCard
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
+- **Version**: 5.0.0
 Customizable credit card thumbnail
 
 ### Example
@@ -48887,9 +49222,15 @@ Customizable credit card thumbnail
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [paymentSystem] | `TuiPaymentSystem | null` | — |
-| [size] | `TuiSizeXS | TuiSizeL` | — |
+| [paymentSystem] | `TuiPaymentSystem \| null` | — |
+| [size] | `TuiSizeXS \| TuiSizeL` | — |
 | [style.background] | `string` | — |
+
+### Content projection - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [ng-content] | `string` | content inside |
 
 ### Usage Examples
 
@@ -49263,6 +49604,7 @@ export default class Example {
 # components/Tiles
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 `Tiles` is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
 
 ### Example
@@ -49732,6 +50074,7 @@ export default class Page {
 # components/Timeline
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 An interactive timeline component for arranging events on a linear axis with no built-in styles
 
 ### API - Inputs
@@ -49933,6 +50276,7 @@ tr ::ng-deep td:last-child:not(:only-child) {
 # components/Title
 - **Package**: `CORE`
 - **Type**: components
+- **Version**: 5.0.0
 A directive for title with optional subtitle
 
 ### Usage Examples
@@ -50095,6 +50439,7 @@ export default class Page {
 # components/Toast
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 
 ### Example
 
@@ -50112,7 +50457,7 @@ export default class Page {
 | [appearance] | `string` | appearance of a toast |
 | [autoClose] | `number` | automatic close timeout, 0 for a permanent toast |
 | [closable] | `boolean` | show close button on desktop and close on swipe on mobile |
-| [block] | `'start' | 'end'` | block position |
+| [block] | `'start' \| 'end'` | block position |
 | [data] | `I` |  |
 
 ### Usage Examples
@@ -50456,6 +50801,7 @@ export default class Example {
 # components/Tooltip
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component to show icons with a hint by hover
 
 ### Example
@@ -50728,6 +51074,7 @@ export default class Page {
 # components/Tree
 - **Package**: `KIT`
 - **Type**: components
+- **Version**: 5.0.0
 Component to display tree-like data structure
 
 ### API - Inputs
@@ -50735,6 +51082,25 @@ Component to display tree-like data structure
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiTreeController] | `boolean` | input is the default state. |
+
+### Tree - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [childrenHandler] | `TuiHandler<T, readonly T[]>` | handler function to get children for a node |
+| [content] | `PolymorpheusContent<TuiTreeContext>` | content template for tree nodes |
+| [data] | `T` | data for the tree node |
+| [tuiTreeController] | `boolean` | input is the default state. |
+| [map] | `Map<T, boolean>` | a map used with controller directive for manual programmatic toggling. |
+| [trackBy] | `TrackByFunction<T>` | directive to render nested tree items. |
+
+### Tokens - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| TUI_TREE_CONTENT | `PolymorpheusContent<TuiTreeItemContext>` | ) |
+| TUI_TREE_CONTROLLER | `TuiTreeController` | provide your own open/closed controlling mechanism |
+| TUI_TREE_ACCESSOR | `TuiTreeAccessor<T>` | component with custom open/closed controller) |
 
 ### Usage Examples
 
@@ -51423,6 +51789,7 @@ export default class Page extends Array {
 # utils/DOM utils
 - **Package**: `CDK`
 - **Type**: components/utils
+- **Version**: 5.0.0
 
 ### How to Use (Import)
 
@@ -51470,6 +51837,7 @@ export default class Page {
 # utils/format
 - **Package**: `CDK / CORE`
 - **Type**: components/utils
+- **Version**: 5.0.0
 A set of format utils
 
 ### Usage Examples
@@ -51694,6 +52062,7 @@ export default class Page {
 # utils/Math
 - **Package**: `CDK`
 - **Type**: components/utils
+- **Version**: 5.0.0
 A set of utils to calculate math
 
 ### Usage Examples
@@ -52017,6 +52386,7 @@ export default class Page {
 # utils/Miscellaneous
 - **Package**: `CDK`
 - **Type**: components/utils
+- **Version**: 5.0.0
 Some utils to simplify the development process
 
 ### Usage Examples
@@ -52278,6 +52648,7 @@ export default class Page {
 # utils/Tokens
 - **Package**: `CDK`
 - **Type**: components/utils
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -52633,6 +53004,7 @@ export default class Page {
 # directives/ActiveZone
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiActiveZone` allows to track a scope that user interacts with. For example, for closing dropdown on blur
 
 ### Usage Examples
@@ -52816,6 +53188,7 @@ export default class Page {
 # directives/Animated
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `TuiAnimated` allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19. In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this, disabling animations under its control, and `TuiAnimated` will not play animations. To override this behavior, use `TUI_REDUCED_MOTION` injection token. However, this is not the recommended approach, as the user's system preferences would be ignored.
 
 ### How to Use (Import)
@@ -52923,6 +53296,7 @@ export default class Page {
 # directives/Appearance
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 A directive for visual presets of interactive components
 
 ### Example
@@ -52936,8 +53310,8 @@ A directive for visual presets of interactive components
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiAppearance] | `string` | when host component already exposes it via hostDirectives) |
-| [tuiAppearanceFocus] | `boolean | null` | manual override of focused state |
-| [tuiAppearanceState] | `TuiInteractiveState | null` | manual override of interactive state |
+| [tuiAppearanceFocus] | `boolean \| null` | manual override of focused state |
+| [tuiAppearanceState] | `TuiInteractiveState \| null` | manual override of interactive state |
 
 ### Usage Examples
 
@@ -53189,6 +53563,7 @@ export default class Page {
 # directives/AutoFocus
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiAutoFocus` allows to focus HTML-element right after its appearance. It works also with focusable Taiga UI components
 
 ### Usage Examples
@@ -53258,6 +53633,7 @@ export default class Page {}
 # directives/CopyProcessor
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive is used to processed text when coping
 
 ### Usage Examples
@@ -53331,6 +53707,7 @@ export default class Page {}
 # directives/DateFormat
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive allows to customize `TuiInputDate` , `TuiInputDateRange` , `TuiInputDateMulti` and `TuiInputDateTime` date format.
 
 ### Usage Examples
@@ -53397,6 +53774,7 @@ export default class Page {
 # directives/Dropdown
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiDropdown` shows a dropdown with custom template. Use ActiveZone directive to hide dropdown. See also DropdownOpen
 
 ### Example
@@ -53870,6 +54248,7 @@ export default class PageComponent {
 # directives/DropdownContext
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 `DropdownContext` allows to show custom right click context dropdown. To close dropdown: Use Esc Make mouse left/right click outside of dropdown content Manually toggle `tuiDropdown` to `false` using template reference variable (see first example)
 
 ### Example
@@ -53896,7 +54275,7 @@ export default class PageComponent {
 <tui-icon #dropdown="tuiDropdown" icon="@tui.settings" tuiDropdownContext class="icon" [tuiDropdown]="content" >
 <ng-template #content>
 <span class="text">Nothing special</span>
-<button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" (click)="dropdown.toggle(false)" > Close </button>
+<button appearance="icon" iconStart="@tui.x" size="xs" tuiIconButton type="button" class="button" (click)="dropdown.toggle(false)" > Close </button>
 </ng-template>
 </tui-icon>
 </p>
@@ -53923,7 +54302,12 @@ export default class Example {}
 ```less
 .text {
     display: inline-block;
-    margin: 0.4rem 1rem;
+    margin: 0.75rem 1rem;
+    vertical-align: middle;
+}
+
+.button {
+    margin-inline: -0.5rem 0.5rem;
 }
 
 .icon {
@@ -54136,6 +54520,7 @@ export default class PageComponent {}
 # directives/DropdownHover
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 `DropdownHover` shows dropdown with custom template upon hover
 
 ### Example
@@ -54395,6 +54780,7 @@ export default class PageComponent {
 # directives/DropdownOpen
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 `DropdownOpen` is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( `input` or `textarea` ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use `#tuiDropdownHost` reference. Use `tuiDropdownAuto` selector with no binding if you do not want to track open state
 
 ### Example
@@ -54823,6 +55209,7 @@ export default class PageComponent {
 # directives/DropdownSelection
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 `DropdownSelection` shows dropdown with custom template on selected text
 
 ### Example
@@ -54842,7 +55229,7 @@ export default class PageComponent {
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiDropdownSelection] | `TuiBooleanHandler<Range>` | and returns show/close dropdown |
-| [tuiDropdownSelectionPosition] | `'selection' | 'word' | 'tag'` | position of dropdown near text selection |
+| [tuiDropdownSelectionPosition] | `'selection' \| 'word' \| 'tag'` | position of dropdown near text selection |
 
 ### Usage Examples
 
@@ -55025,6 +55412,7 @@ export default class PageComponent {
 # directives/ElasticSticky
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive allows to scale "stuck" sticky heading. It can also be used as service `TuiElasticStickyService`
 
 ### Usage Examples
@@ -55290,6 +55678,7 @@ export default class Page {
 # directives/Element
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive is used to get a link to a native element as template reference variable (analogue of `@ViewChild('ref', {read: ElementRef}` for template)
 
 ### Usage Examples
@@ -55353,6 +55742,7 @@ export default class Page {}
 # directives/Fade
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive that uses masking to fade out overflown content
 
 ### Example
@@ -55641,6 +56031,7 @@ export default class Page {
 # directives/FluidTypography
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 A directive that adjusts font size for the text to fit in the container
 
 ### Usage Examples
@@ -55774,6 +56165,7 @@ export default class Page {
 # directives/Highlight
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive is used to highlight text in element. You can configure the directive with `TUI_HIGHLIGHT_OPTIONS` token. Allowed options: highlightColor: The default color for the highlight. Use function `tuiHighlightOptionsProvider` to provide new value of this token. Does not work with inline elements
 
 ### Usage Examples
@@ -55868,6 +56260,7 @@ export default class Page {}
 # directives/Hint
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive to show a hint by hover of an element
 
 ### Example
@@ -56150,6 +56543,7 @@ export default class PageComponent {
 # directives/HintDescribe
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive to show a hint in accessible way upon keyboard focus
 
 ### Example
@@ -56227,6 +56621,7 @@ export default class PageComponent {
 # directives/HintManual
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive to show a hint manually
 
 ### Example
@@ -56310,6 +56705,7 @@ export default class PageComponent {
 # directives/HintPointer
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 A directive to show a hint above the cursor
 
 ### Example
@@ -56388,6 +56784,7 @@ export default class PageComponent {
 # directives/HoveredChange
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiHoveredChange` is used for emitting true/false when users hovers over an element or moves cursor away from it.
 
 ### Usage Examples
@@ -56457,6 +56854,7 @@ export default class Page {}
 # directives/Media
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive for declarative work with HTML5 video and audio
 
 ### API - Inputs
@@ -56713,6 +57111,7 @@ export default class Page {
 # directives/NumberFormat
 - **Package**: `CORE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive allows to customize `TuiInputNumber` , `TuiInputSlider` , `TuiInputRange` number format.
 
 ### Usage Examples
@@ -56775,6 +57174,7 @@ export default class Page {}
 # directives/Pan
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiPan` The directive emits delta between mousemove / touchmove events. You can use it to change the coordinates of an element as in example below
 
 ### Usage Examples
@@ -56875,6 +57275,7 @@ export default class Page {}
 # directives/Present
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiPresent` allows to detect appearance of elements in DOM
 
 ### Usage Examples
@@ -56952,6 +57353,7 @@ export default class Page {}
 # directives/ProgressSegmented
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 `ProgressSegmented` is a component to visually represent the completion of a process or operation (as a segmented bar). It shows how much has been completed and how much remains. Actually, this component is the same `ProgressBar` processed by css-property `mask` .
 
 ### Example
@@ -56967,7 +57369,7 @@ export default class Page {}
 | [segments] | `number` |  |
 | [value] | `number` |  |
 | [max] | `number` |  |
-| [size] | `TuiSizeXS | TuiSizeXXL` | height of the progress |
+| [size] | `TuiSizeXS \| TuiSizeXXL` | height of the progress |
 | [tuiProgressColorSegments] | `string[]` |  |
 
 ### Usage Examples
@@ -57225,6 +57627,7 @@ export default class Page {
 # directives/Resizer
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive to resize container in multiple directions.
 
 ### Usage Examples
@@ -57435,6 +57838,7 @@ export default class Page {}
 # directives/Ripple
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive for «ripple» effect on mobile devices
 
 ### Usage Examples
@@ -57546,6 +57950,7 @@ export default class Example {
 # directives/Sensitive
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 A directive that allows you to hide sensitive data under a pixel mask. This can be account balances, write-off amounts and any other content
 
 ### Example
@@ -57688,6 +58093,7 @@ export default class Page {
 # directives/Shimmer
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiShimmer` directive visually implements the "Shimmer" UI pattern — an animated loading indicator that simulates content appearance while data is being fetched. This pattern enhances the user experience by providing visual feedback during loading states, helping users understand that the interface is active and content is on its way. When to Use To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have cached data that is currently being refreshed and if you have no data at all — a better choice would be Skeleton
 
 ### Example
@@ -57987,6 +58393,7 @@ footer {
 # directives/Skeleton
 - **Package**: `KIT`
 - **Type**: directives
+- **Version**: 5.0.0
 
 ### Usage Examples
 
@@ -58150,6 +58557,7 @@ export default class Page {
 # directives/Swipe
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiSwipe` directive allows detecting swipes on mobile devices. You can configure the directive with `TUI_SWIPE_OPTIONS` token. Allowed options: timeout: max time between touchstart and touchend threshold : min distance between touchstart and touchend.
 
 ### Usage Examples
@@ -58452,6 +58860,7 @@ export default class Page {
 # directives/Touchable
 - **Package**: `ADDON-MOBILE`
 - **Type**: directives
+- **Version**: 5.0.0
 Directive to emulate native iOS touches
 
 ### Usage Examples
@@ -58506,6 +58915,7 @@ export default class Page {}
 # directives/Truncate
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.
 
 ### Example
@@ -58684,6 +59094,7 @@ export default class Page {
 # directives/Validator
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiValidator` allows set validators for form control on the fly
 
 ### Usage Examples
@@ -58774,6 +59185,7 @@ export default class Page {}
 # directives/ValueChanges
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 This directive allows you to access reactive control or container value changes as an output
 
 ### Usage Examples
@@ -58886,6 +59298,7 @@ export default class Page {
 # directives/Zoom
 - **Package**: `CDK`
 - **Type**: directives
+- **Version**: 5.0.0
 `tuiZoom` directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
 
 ### Usage Examples
@@ -59268,6 +59681,8 @@ export default class Page {
 
 #### Language Switcher
 
+Making custom toggling between different languages
+
 **Template:**
 ```html
 <button appearance="secondary-grayscale" size="s" tuiButton tuiButtonSelect tuiChevron [(ngModel)]="language" (ngModelChange)="switcher.setLanguage($event)" > {{ language }} <tui-data-list-wrapper *tuiDropdown [items]="languages" />
@@ -59632,6 +60047,7 @@ export default class Page {
 # customization/Viewport
 - **Package**: `CORE`
 - **Type**: customization
+- **Version**: 5.0.0
 `TUI_VIEWPORT` - define the area relative to which the position constraints will be calculated. Also you can use `tuiAsViewport` helper instead of token.
 
 ### Usage Examples
@@ -59885,6 +60301,7 @@ export default class Page {
 # pipes/Amount
 - **Package**: `ADDON-COMMERCE`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe to format number values to show money sums Number formatting can be customized by using TUI_NUMBER_FORMAT
 
 ### Usage Examples
@@ -60054,6 +60471,7 @@ export default class Page {
 # pipes/Currency
 - **Package**: `ADDON-COMMERCE`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for transforming number into money. It is usually used with `InputNumber`
 
 ### Example
@@ -60168,11 +60586,14 @@ export default class Page {
 # pipes/Emails
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for creating autocomplete when entering email addresses
 
 ### Usage Examples
 
 #### Example
+
+Standard and custom addresses
 
 **Template:**
 ```html
@@ -60250,6 +60671,7 @@ export default class Page {}
 # pipes/Filter
 - **Package**: `CDK`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for filtering an array
 
 ### Usage Examples
@@ -60347,6 +60769,7 @@ export default class Page {}
 # pipes/FilterByInput
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for filtering an array by value entered in a textfield
 
 ### Usage Examples
@@ -60598,6 +61021,7 @@ export default class Page {
 # pipes/Flag
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for getting source path to image with flag
 
 ### Example
@@ -60667,6 +61091,7 @@ export default class Page {
 # pipes/FormatNumber
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT
 
 ### Usage Examples
@@ -60732,6 +61157,7 @@ export default class PageComponent {
 # pipes/Mapper
 - **Package**: `CDK`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe to transform a value with a function
 
 ### Usage Examples
@@ -60814,6 +61240,7 @@ export default class Page {
 # pipes/Obfuscate
 - **Package**: `CDK`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe for obfuscating sensitive data
 
 ### Usage Examples
@@ -60934,6 +61361,7 @@ export default class PageComponent {
 # pipes/Stringify
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe that creates `TuiStringHandler` by given key.
 
 ### Usage Examples
@@ -61017,6 +61445,7 @@ export default class Page {
 # pipes/StringifyContent
 - **Package**: `KIT`
 - **Type**: pipes
+- **Version**: 5.0.0
 Pipe that turns `TuiStringHandler` into content that works with `$implicit` .
 
 ### Usage Examples
