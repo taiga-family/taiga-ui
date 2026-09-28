@@ -114,6 +114,41 @@ test.describe('InputDateRange', () => {
                 .toHaveScreenshot('06-calendar-maximum-month-with-items.png');
         });
 
+        test('uses dropdown scrolling for long period items', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=2`);
+            await inputDateRange.textfield.click();
+
+            const dropdown = page.locator('tui-dropdown');
+            const calendar = inputDateRange.calendar.locator(
+                '[automation-id="tui-calendar-range__calendar"]',
+            );
+
+            await expect
+                .poll(async () =>
+                    dropdown.evaluate(
+                        ({clientHeight, scrollHeight}) => scrollHeight > clientHeight,
+                    ),
+                )
+                .toBe(true);
+
+            expect(
+                await inputDateRange.items.evaluate(
+                    ({clientHeight, scrollHeight}) => scrollHeight === clientHeight,
+                ),
+            ).toBe(true);
+            expect(
+                await calendar.evaluate((element) => getComputedStyle(element).position),
+            ).toBe('sticky');
+
+            await dropdown.evaluate((element) =>
+                element.scrollTo({top: element.scrollHeight}),
+            );
+
+            await expect
+                .poll(async () => dropdown.evaluate(({scrollTop}) => scrollTop))
+                .toBeGreaterThan(0);
+        });
+
         describe('pads with zeroes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
