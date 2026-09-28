@@ -1,21 +1,14 @@
-import {
-    ContentChildren,
-    Directive,
-    type QueryList,
-    signal,
-    type TemplateRef,
-} from '@angular/core';
+import {Directive, signal, type TemplateRef} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     WaIntersectionObserverDirective,
     WaIntersectionRoot,
 } from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, fromEvent, map, pairwise} from 'rxjs';
 
-import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive';
+import {type TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive';
 
 @Directive({
     standalone: true,
@@ -27,11 +20,7 @@ import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive
 })
 export class TuiDynamicHeaderContainerDirective {
     private readonly el = tuiInjectElement();
-
-    @ContentChildren(TuiDynamicHeaderAnchorDirective, {
-        descendants: true,
-    })
-    protected readonly headers: QueryList<TuiDynamicHeaderAnchorDirective> = EMPTY_QUERY;
+    private readonly headers = signal<TuiDynamicHeaderAnchorDirective[]>([]);
 
     public hiddenHeaders = signal<Array<TemplateRef<unknown>>>([]);
 
@@ -45,9 +34,19 @@ export class TuiDynamicHeaderContainerDirective {
         ),
     );
 
+    public register(anchor: TuiDynamicHeaderAnchorDirective): void {
+        this.headers.update((headers) => [...headers, anchor]);
+    }
+
+    public unregister(anchor: TuiDynamicHeaderAnchorDirective): void {
+        this.headers.update((headers) => headers.filter((h) => h !== anchor));
+    }
+
     public update(): void {
         this.hiddenHeaders.set(
-            this.headers.filter((h) => h.visible()).map((h) => h.templateRef),
+            this.headers()
+                .filter((h) => h.visible())
+                .map((h) => h.templateRef),
         );
     }
 }

@@ -39,6 +39,12 @@
     }
 }
 
+@keyframes tuiBlur {
+    from {
+        filter: blur(var(--tui-blur, 0.25rem));
+    }
+}
+
 .tui-enter,
 .tui-leave {
     animation-duration: var(--tui-duration);
