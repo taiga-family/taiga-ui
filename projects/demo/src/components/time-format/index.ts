@@ -20,7 +20,18 @@ export class TuiDocTimeFormat {
         ['上午', '下午'],
     ] as const satisfies ReadonlyArray<TuiTimeFormatSettings['dayPeriod']>;
 
+    protected readonly separatorsVariants = [
+        this.defaults().separators,
+        ['h'],
+        ['.', '.', ','],
+        [' h ', ' min ', ','],
+    ] as const satisfies ReadonlyArray<TuiTimeFormatSettings['separators']>;
+
     public readonly dayPeriod = signal<TuiTimeFormatSettings['dayPeriod']>(
         this.defaults().dayPeriod,
+    );
+
+    public readonly separators = signal<TuiTimeFormatSettings['separators']>(
+        this.defaults().separators,
     );
 }

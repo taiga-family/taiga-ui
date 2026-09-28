@@ -4,6 +4,7 @@ import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 export class TuiTextfieldPO {
     public readonly textfield = this.host.locator(TUI_TEXTFIELD_LOCATORS.INPUT);
     public readonly cleaner = this.host.locator(TUI_TEXTFIELD_LOCATORS.CLEANER);
+    public readonly filler = this.host.locator(TUI_TEXTFIELD_LOCATORS.FILLER);
 
     constructor(public readonly host: Locator) {}
 

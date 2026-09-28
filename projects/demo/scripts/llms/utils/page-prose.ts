@@ -666,7 +666,82 @@ export async function getPageProse(folderPath: string, content: string): Promise
         return '';
     }
 
-    const resolved = await resolveTemplate(inner, folderPath, new Set([folderPath]));
+    // The API table has its own extractor. Leaving it here would both duplicate it and leak
+    // markup: a `type="Foo<Bar>"` attribute carries a `>` that breaks tag-stripping.
+    const withoutApi = inner.replaceAll(/<table\s[^>]*tuiDocAPI[\s\S]*?<\/table>/gi, ' ');
+    const resolved = await resolveTemplate(withoutApi, folderPath, new Set([folderPath]));
 
     return htmlToMarkdown(resolved).trim();
+}
+
+// htmlToMarkdown renders every <tui-doc-example heading="X"> as a `## X` prose
+// section, which the `### Usage Examples` block then repeats as `#### X` with the
+// real code. Drop a prose section only when it is genuinely redundant: same heading
+// as a usage example, no code fence of its own, and every line already shown by the
+// usage block (an empty body, or just the demo's rendered markup). Sections with
+// their own prose or snippets (e.g. i18n's provider setup) are kept.
+export function stripDuplicateExampleProse(prose: string, usageExamples: string): string {
+    if (!prose.trim() || !usageExamples.trim()) {
+        return prose;
+    }
+
+    const usageHeadings = new Set(
+        [...usageExamples.matchAll(/^#### (.+)$/gm)].map((match) => match[1]!.trim()),
+    );
+
+    if (usageHeadings.size === 0) {
+        return prose;
+    }
+
+    const usageLines = new Set(
+        usageExamples
+            .split('\n')
+            .map((line) => line.trim())
+            .filter(Boolean),
+    );
+
+    const lines = prose.split('\n');
+    const kept: string[] = [];
+    let index = 0;
+
+    while (index < lines.length) {
+        const line = lines[index]!;
+        const headingMatch = /^## (.+)$/.exec(line);
+
+        if (!headingMatch) {
+            kept.push(line);
+            index++;
+            continue;
+        }
+
+        // Collect the section body up to the next `## ` heading (or end).
+        const body: string[] = [];
+        let cursor = index + 1;
+
+        while (cursor < lines.length && !lines[cursor]!.startsWith('## ')) {
+            body.push(lines[cursor]!);
+            cursor++;
+        }
+
+        const heading = headingMatch[1]!.trim();
+        const redundant =
+            usageHeadings.has(heading) &&
+            !body.some((bodyLine) => bodyLine.includes('```')) &&
+            body.every((bodyLine) => {
+                const trimmed = bodyLine.trim();
+
+                return trimmed === '' || usageLines.has(trimmed);
+            });
+
+        if (!redundant) {
+            kept.push(line, ...body);
+        }
+
+        index = cursor;
+    }
+
+    return kept
+        .join('\n')
+        .replaceAll(/\n{3,}/g, '\n\n')
+        .trim();
 }

@@ -12,10 +12,36 @@ import {type MaskitoTimeParams} from '@maskito/kit';
  * TODO(v6): move `mode`, `timeSegmentMinValues` and `timeSegmentMaxValues`
  * from `TUI_INPUT_TIME_OPTIONS` / `TUI_INPUT_DATE_TIME_OPTIONS` here
  */
-export type TuiTimeFormatSettings = Pick<Required<MaskitoTimeParams>, 'dayPeriod'>;
+export type TuiTimeFormatSettings = Pick<
+    Required<MaskitoTimeParams>,
+    'dayPeriod' | 'separators'
+>;
 
-const TUI_DEFAULT_TIME_FORMAT: TuiTimeFormatSettings = {dayPeriod: ['', '']};
+const TUI_DEFAULT_TIME_FORMAT: TuiTimeFormatSettings = {
+    dayPeriod: ['', ''],
+    separators: [],
+};
 
+/**
+ * TODO(v6): refactor to
+ * ```ts
+ * import {maskitoWithTimeDefaults} from '@maskito/kit';
+ * import {LOCALE_ID} from '@angular/core';
+ *
+ * export const TUI_TIME_FORMAT = new InjectionToken<Signal<TuiTimeFormatSettings>>(
+ *     ngDevMode ? 'TUI_TIME_FORMAT' : '',
+ *     {
+ *         factory: () =>
+ *             signal(
+ *                 maskitoWithTimeDefaults({
+ *                     locale: inject(LOCALE_ID),
+ *                     mode: 'HH:MM',
+ *                 }),
+ *             ),
+ *     },
+ * );
+ * ```
+ */
 export const TUI_TIME_FORMAT = new InjectionToken<Signal<TuiTimeFormatSettings>>(
     ngDevMode ? 'TUI_TIME_FORMAT' : '',
     {factory: () => signal(TUI_DEFAULT_TIME_FORMAT)},

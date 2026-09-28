@@ -3,4 +3,5 @@ export const TUI_TEXTFIELD_LOCATORS = {
     CLEANER: '[tuiButtonX]',
     TOOLTIP: 'tui-icon[tuiTooltip]',
     INPUT: '[tuiInput]',
+    FILLER: '.t-filler',
 } as const;

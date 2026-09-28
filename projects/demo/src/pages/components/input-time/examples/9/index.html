@@ -1,11 +1,10 @@
-@for (mode of supportedModes; track mode) {
-    <tui-textfield>
-        <label tuiLabel>{{ mode }}</label>
-        <input
-            tuiInputTime
-            type="time"
-            [mode]="mode"
-            [ngModel]="initialValue"
-        />
-    </tui-textfield>
-}
+<tui-textfield>
+    <input
+        placeholder="Enter time"
+        tuiInputTime
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+
+<p><strong>Control value:</strong></p>
+<code>{{ value | json }}</code>

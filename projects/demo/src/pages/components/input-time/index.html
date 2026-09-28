@@ -51,6 +51,22 @@
                         </p>
                     }
                     @case (2) {
+                        Use
+                        <code>[tuiTimeFormat]="&#123;separators&#125;"</code>
+                        directive to customize separators between time segments (from left to right), e.g. French
+                        Canadian
+                        <code>[' h ', ' min ', ',']</code>
+                        . Missing positions fall back to the canonical separators of the
+                        <code>mode</code>
+                        .
+
+                        <p class="tui-space_bottom-0">
+                            Also available through
+                            <code>tuiTimeFormatProvider</code>
+                            .
+                        </p>
+                    }
+                    @case (3) {
                         <div>
                             Form control value is
                             <a
@@ -72,7 +88,7 @@
                             directive
                         </p>
                     }
-                    @case (4) {
+                    @case (5) {
                         Use all powers of
                         <code>Textfield</code>
                         : put any number of
@@ -101,14 +117,14 @@
                         </a>
                         documentation page for more customization options.
                     }
-                    @case (5) {
+                    @case (6) {
                         Property
                         <code>accept</code>
                         allows to limit the set of allowed values. It is useful when you want to restrict user input to
                         a specific set of time periods, for example, to allow only working hours with equally distant
                         time intervals.
                     }
-                    @case (6) {
+                    @case (7) {
                         Use
                         <code>tuiItemsHandlersProvider</code>
                         to override the default behavior of all
@@ -147,7 +163,7 @@
                         </a>
                         documentation pages for more customization options.
                     }
-                    @case (7) {
+                    @case (8) {
                         <code>TuiValueTransformer</code>
                         is a great opportunity to override default form control's value format without breaking
                         component's internal logic.
@@ -160,7 +176,7 @@
                             .
                         </p>
                     }
-                    @case (8) {
+                    @case (9) {
                         <p class="tui-space_top-0">
                             Add
                             <code>type="time"</code>
@@ -193,7 +209,7 @@
                             </p>
                         </div>
                     }
-                    @case (9) {
+                    @case (10) {
                         <p class="tui-space_top-0">
                             Link your
                             <code>&lt;input type="time" /&gt;</code>
@@ -247,7 +263,7 @@
                         [prefix]="prefix"
                         [readonly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
-                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod()}"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}"
                     />
                 </tui-textfield>
             </ng-template>

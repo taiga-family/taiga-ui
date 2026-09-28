@@ -4,6 +4,7 @@ import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/classes
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
+import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
@@ -12,6 +13,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
 export class TuiDropdownPositionSided extends TuiPositionAccessor {
+    private readonly anchor = inject(TUI_DROPDOWN_ANCHOR, {optional: true});
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vertical = inject(TuiDropdownPosition, {optional: true});
@@ -20,6 +22,27 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     public readonly tuiDropdownSided = input<boolean | string>('');
     public readonly tuiDropdownSidedOffset = input(4);
     public readonly type = 'dropdown';
+
+    public override position(element: HTMLElement): void {
+        if (this.tuiDropdownSided() === false) {
+            this.vertical?.position(element);
+
+            return;
+        }
+
+        const {direction, align, offset, minHeight, maxHeight} = this.options;
+        const horizontal = align === 'center' ? 'end' : align;
+
+        Object.assign(element.style, {
+            position: 'fixed',
+            visibility: 'visible',
+            positionAnchor: this.anchor?.nativeElement.dataset.tuiAnchor,
+            positionArea: `x-${horizontal} span-${direction || 'bottom'}`,
+            minBlockSize: `calc-size(fit-content, min(size, ${minHeight}px))`,
+            maxBlockSize: `min(calc-size(fit-content, size), ${maxHeight}px)`,
+            margin: `${-offset}px ${offset}px`,
+        });
+    }
 
     public getPosition(rect: DOMRect): TuiPoint {
         if (this.tuiDropdownSided() === false && this.vertical) {

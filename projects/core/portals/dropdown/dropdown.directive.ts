@@ -40,10 +40,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         TuiDropdownAnchor,
         TuiDropdownDriverDirective,
         {directive: TuiDropdownA11y, inputs: ['tuiDropdownRole']},
-        {
-            directive: TuiDropdownPosition,
-            outputs: ['tuiDropdownDirectionChange'],
-        },
+        {directive: TuiDropdownPosition, outputs: ['tuiDropdownDirectionChange']},
     ],
     host: {'[class.tui-dropdown-open]': 'ref()'},
 })
@@ -54,7 +51,6 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
-
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );

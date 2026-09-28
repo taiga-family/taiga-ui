@@ -262,7 +262,7 @@ jobs:
           channelId: pr${{ github.event.number }}-${{ github.head_ref }}-e2e
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          projectId: taiga-preview-demo
+          projectId: taiga-previews-a7bbb
           expires: 1d
           target: taiga-preview-demo-e2e
           disableComment: 'true'

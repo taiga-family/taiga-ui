@@ -8,8 +8,16 @@ export {getFoldersToScan, getPagesPath, setFoldersToScan, setPagesPath} from './
 export {
     buildFolderRouteMap,
     type ComponentInfo,
+    DEFAULT_PATH_FILES,
+    DEFAULT_ROUTE_FILES,
     extractComponentsFromRoutes,
+    getPageVersions,
+    getTaigaMajor,
+    type PagesRoot,
+    parsePageVersions,
+    resolveComponentVersion,
     shouldIncludeComponent,
+    type VersionInfo,
 } from './routes';
 
 // File system operations - exclude fileExists to avoid conflict
@@ -22,6 +30,7 @@ export {
     getComponentExample,
     getComponentHeader,
     getComponentSourceFiles,
+    getContentObjectExamples,
     getImportExamples,
     getMarkdownFiles,
     getUsageExamples,
@@ -36,6 +45,7 @@ export {
     getInlineCodeSnippets,
     getPageProse,
     htmlToMarkdown,
+    stripDuplicateExampleProse,
 } from './page-prose';
 
 // Colors/Typography token-table rendering

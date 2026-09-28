@@ -3,6 +3,8 @@
 // stylelint-disable plugin/use-baseline -- graceful degradation
 [tuiScrollRef]:where(*&) {
     timeline-scope: --t-scrollbar-y, --t-scrollbar-x;
+    anchor-name: --t-scrollbar;
+    anchor-scope: --t-scrollbar;
     scroll-timeline:
         --t-scrollbar-x x,
         --t-scrollbar-y y;

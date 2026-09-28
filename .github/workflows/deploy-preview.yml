@@ -13,6 +13,9 @@ jobs:
       !contains(github.event.workflow_run.head_branch, 'release/')
     name: Firebase
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_PROJECT_ID: taiga-previews-a7bbb
+      FIREBASE_SITE: taiga-preview
     permissions:
       actions: read
       contents: read
@@ -182,7 +185,7 @@ jobs:
         with:
           channelId: ${{ steps.metadata.outputs.channel_id }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
-          projectId: taiga-preview-demo
+          projectId: ${{ env.FIREBASE_PROJECT_ID }}
           target: taiga-preview-demo
           expires: 1d
           disableComment: 'true'
@@ -209,7 +212,7 @@ jobs:
             if (
               !Number.isSafeInteger(prNumber) ||
               parsedPreviewUrl.protocol !== 'https:' ||
-              !/^taiga-preview-demo--[a-z0-9._-]+\.web\.app$/.test(parsedPreviewUrl.hostname)
+              !new RegExp(`^${process.env.FIREBASE_SITE}--[a-z0-9._-]+\\.web\\.app$`).test(parsedPreviewUrl.hostname)
             ) {
               throw new Error('Firebase preview outputs are invalid');
             }

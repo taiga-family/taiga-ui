@@ -21,7 +21,7 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
     selector: 'tui-dropdown',
     imports: [PolymorpheusOutlet, TuiScrollControls],
     template: `
-        <tui-scroll-controls />
+        <tui-scroll-controls class="t-scrollbar" />
         <div class="t-wrapper">
             <div
                 *polymorpheusOutlet="
@@ -44,12 +44,13 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
     ],
     hostDirectives: [TuiActiveZone, TuiAnimated, TuiDropdownAnchored],
     host: {
-        '[attr.data-appearance]': 'appearance',
+        '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme()',
+        '[style.max-block-size.px]': 'options.maxHeight',
     },
 })
 export class TuiDropdownComponent extends TuiScrollbar {
-    protected readonly appearance = inject(TUI_DROPDOWN_OPTIONS).appearance;
+    protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
     protected readonly darkMode = inject(TUI_DARK_MODE);

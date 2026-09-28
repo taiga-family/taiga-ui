@@ -179,10 +179,7 @@ test.describe('DataList', () => {
 
         await page.locator('[automation-id="tui-data-list-email-option"]').click();
 
-        const email = page
-            .locator('[automation-id="tui-data-list-email-field"]')
-            .locator('[name="emailValue"]')
-            .nth(0);
+        const email = page.locator('[name="emailValue"]').nth(0);
 
         await email.focus();
         await email.clear();

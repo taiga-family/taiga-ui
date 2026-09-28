@@ -4,20 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
-import {tuiCreateTimePeriods, TuiInputTime, TuiTooltip} from '@taiga-ui/kit';
+import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     imports: [FormsModule, TuiIcon, TuiInputTime, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    providers: [tuiInputTimeOptionsProvider({icon: ''})],
 })
 export default class Example {
-    protected value: TuiTime | null = null;
-
-    protected acceptableValues = [
-        // Array of TuiTime from 10:00 to 18:00 every half of hour
-        ...tuiCreateTimePeriods(10, 18, [0, 30]),
-        new TuiTime(18, 0),
-    ];
+    protected value: TuiTime | null = new TuiTime(9, 0);
 }

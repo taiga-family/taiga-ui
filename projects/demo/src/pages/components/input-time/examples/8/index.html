@@ -1,10 +1,12 @@
-<tui-textfield>
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
     <input
-        placeholder="Enter time"
+        placeholder="Click me to open dropdown"
         tuiInputTime
         [(ngModel)]="value"
     />
-</tui-textfield>
 
-<p><strong>Control value:</strong></p>
-<code>{{ value | json }}</code>
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [items]="items | tuiFilterByInput: filter"
+    />
+</tui-textfield>
