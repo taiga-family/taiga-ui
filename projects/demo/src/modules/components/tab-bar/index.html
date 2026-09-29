@@ -66,6 +66,62 @@
                 children, the component shows skeleton for 4 items
             </tui-notification>
         </tui-doc-example>
+        <tui-doc-example
+            id="ios-liquid-glass"
+            heading="iOS Liquid glass"
+            [content]="5 | tuiExample"
+        >
+            <p>
+                To enable the liquid-glass mode on iOS devices, provide
+                <code>TUI_LIQUID_GLASS</code>
+                token with
+                <code>true</code>
+                value
+            </p>
+            <label
+                tuiLabel
+                class="tui-space_bottom-4"
+            >
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [(ngModel)]="fixedLiquid"
+                />
+                Fixed
+            </label>
+            <tui-tab-bar-example-liquid *ngIf="!fixedLiquid" />
+            <tui-tab-bar-example-liquid
+                *tuiDropdown="fixedLiquid"
+                class="fixed"
+            />
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="ios-liquid-glass-fullwidth"
+            heading="iOS Liquid glass fullwidth"
+            [content]="6 | tuiExample"
+        >
+            <p>
+                With more than three items the tab bar stretches to the full width of the screen; with fewer it stays a
+                compact, centered pill.
+            </p>
+            <label
+                tuiLabel
+                class="tui-space_bottom-4"
+            >
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [(ngModel)]="fixedLiquidFull"
+                />
+                Fixed
+            </label>
+            <tui-tab-bar-example-liquid-full *ngIf="!fixedLiquidFull" />
+            <tui-tab-bar-example-liquid-full
+                *tuiDropdown="fixedLiquidFull"
+                class="fixed"
+            />
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab />
