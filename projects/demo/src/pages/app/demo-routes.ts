@@ -45,6 +45,7 @@ export const DemoRoute = {
     Header: '/layout/header',
     Icon: '/components/icon',
     Segmented: '/navigation/segmented',
+    Listbox: '/components/listbox',
     Surface: '/components/surface',
     SwipeActions: '/components/swipe-actions',
     BottomSheet: '/components/bottom-sheet',

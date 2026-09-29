@@ -1149,6 +1149,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Listbox',
+        keywords: 'listbox, selection, multiple, options, keyboard, список, выбор',
+        route: DemoRoute.Listbox,
+    },
+    {
+        section: 'Components',
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: DemoRoute.Surface,

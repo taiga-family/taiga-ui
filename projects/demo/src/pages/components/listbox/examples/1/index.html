@@ -1,0 +1,126 @@
+<div class="examples">
+    <div>
+        <p>Single: {{ single() }}</p>
+        <div
+            aria-label="Framework"
+            tuiListbox
+            [(value)]="single"
+        >
+            <button
+                tuiListboxOption
+                type="button"
+                value="Angular"
+            >
+                Angular
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="React"
+            >
+                React
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="Vue"
+            >
+                Vue
+            </button>
+        </div>
+    </div>
+    <div>
+        <p>Multiple: {{ multiple() }}</p>
+        <div
+            aria-label="Frameworks"
+            tuiListbox
+            [multiple]="true"
+            [(value)]="multiple"
+        >
+            <button
+                tuiListboxOption
+                type="button"
+                value="Angular"
+            >
+                Angular
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="React"
+            >
+                React
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="Vue"
+            >
+                Vue
+            </button>
+        </div>
+    </div>
+    <div>
+        <p>Disabled option and list</p>
+        <div
+            aria-label="Unavailable frameworks"
+            tuiListbox
+            [disabled]="true"
+        >
+            <button
+                tuiListboxOption
+                type="button"
+                value="Angular"
+            >
+                Angular
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="React"
+            >
+                React
+            </button>
+        </div>
+        <div
+            aria-label="Partly available"
+            tuiListbox
+        >
+            <button
+                tuiListboxOption
+                type="button"
+                value="Angular"
+            >
+                Angular
+            </button>
+            <button
+                tuiListboxOption
+                type="button"
+                value="React"
+                [disabled]="true"
+            >
+                React (disabled)
+            </button>
+        </div>
+    </div>
+    <div>
+        <p>Object values and custom content</p>
+        <div
+            aria-label="People"
+            tuiListbox
+            [identityMatcher]="samePerson"
+            [(value)]="person"
+        >
+            @for (item of people; track item.id) {
+                <button
+                    tuiListboxOption
+                    type="button"
+                    [value]="item"
+                >
+                    <strong>{{ item.name }}</strong>
+                    <span>Team member #{{ item.id }}</span>
+                </button>
+            }
+        </div>
+    </div>
+</div>

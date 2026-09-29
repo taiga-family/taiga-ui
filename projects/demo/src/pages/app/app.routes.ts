@@ -238,6 +238,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/segmented'),
     }),
     route({
+        path: DemoRoute.Listbox,
+        title: 'Listbox',
+        loadComponent: async () => import('../components/listbox'),
+    }),
+    route({
         path: DemoRoute.SwipeActions,
         loadComponent: async () => import('../components/swipe-actions'),
         title: 'SwipeActions',

@@ -41,6 +41,7 @@ export * from '@taiga-ui/kit/components/input-year';
 export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/like';
 export * from '@taiga-ui/kit/components/line-clamp';
+export * from '@taiga-ui/kit/components/listbox';
 export * from '@taiga-ui/kit/components/message';
 export * from '@taiga-ui/kit/components/meter';
 export * from '@taiga-ui/kit/components/multi-select';

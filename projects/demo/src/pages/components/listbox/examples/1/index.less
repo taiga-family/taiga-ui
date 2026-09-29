@@ -1,0 +1,43 @@
+.examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1.5rem;
+
+    [tuiListbox] {
+        display: grid;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        border: 1px solid var(--tui-border-normal);
+        border-radius: 0.75rem;
+
+        &:focus {
+            outline: 2px solid var(--tui-border-focus);
+        }
+    }
+
+    [tuiListboxOption] {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border: 0;
+        border-radius: 0.5rem;
+        background: transparent;
+        text-align: start;
+        cursor: pointer;
+
+        &[aria-selected='true'] {
+            background: var(--tui-background-accent-1);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--tui-border-focus);
+        }
+
+        &:disabled,
+        [aria-disabled='true'] & {
+            opacity: 0.5;
+            cursor: default;
+        }
+    }
+}
