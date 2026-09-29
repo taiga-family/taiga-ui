@@ -34,7 +34,9 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         const horizontal = align === 'center' ? 'end' : align;
 
         Object.assign(element.style, {
-            position: 'fixed',
+            position: element.parentElement?.matches('tui-popups-anchored')
+                ? 'absolute'
+                : 'fixed',
             visibility: 'visible',
             positionAnchor: this.anchor?.nativeElement.dataset.tuiAnchor,
             positionArea: `x-${horizontal} span-${direction || 'bottom'}`,

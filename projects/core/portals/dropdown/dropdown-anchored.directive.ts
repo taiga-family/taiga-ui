@@ -77,7 +77,9 @@ export class TuiDropdownAnchored implements AfterViewInit {
 
         this.el.style.position = 'static';
         void this.el.offsetHeight;
-        this.el.style.position = 'fixed';
+        this.el.style.position = this.el.parentElement?.matches('tui-popups-anchored')
+            ? 'absolute'
+            : 'fixed';
     }
 
     private getStyles(x: number, y: number): Record<string, string> {

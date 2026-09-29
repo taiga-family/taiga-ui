@@ -21,6 +21,29 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('01-dropdown.png');
     });
 
+    test('uses absolute positioning with CSS anchors', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+
+        const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        await expect(dropdown).toBeVisible();
+
+        const positionAnchor = await dropdown.evaluate((element) =>
+            element.style.getPropertyValue('position-anchor'),
+        );
+
+        test.skip(!positionAnchor, 'CSS anchor positioning is not supported');
+
+        await expect(dropdown).toHaveCSS('position', 'absolute');
+        expect(
+            await dropdown.evaluate((element) => element.parentElement?.localName),
+        ).toBe('tui-popups-anchored');
+    });
+
     test('Interesting', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#interesting');

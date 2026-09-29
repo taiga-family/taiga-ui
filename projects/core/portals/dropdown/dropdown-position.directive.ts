@@ -42,7 +42,9 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         const max = Math.max(top, bottom);
 
         Object.assign(element.style, {
-            position: 'fixed',
+            position: element.parentElement?.matches('tui-popups-anchored')
+                ? 'absolute'
+                : 'fixed',
             visibility: 'visible',
             positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
             positionArea: `${available < height && max !== available ? flip(vertical) : vertical} ${horizontal}`,

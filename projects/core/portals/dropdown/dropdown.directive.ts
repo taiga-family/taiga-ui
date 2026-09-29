@@ -16,8 +16,18 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiAsVehicle, TuiRectAccessor, type TuiVehicle} from '@taiga-ui/core/classes';
-import {TuiPopupService} from '@taiga-ui/core/portals/popup';
+import {
+    tuiAsVehicle,
+    tuiInjectAccessor,
+    TuiPositionAccessor,
+    TuiRectAccessor,
+    type TuiVehicle,
+} from '@taiga-ui/core/classes';
+import {
+    tuiAddAnchoredPopup,
+    TuiPopupService,
+} from '@taiga-ui/core/portals/popup';
+import {TUI_ANCHOR_SUPPORT, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils/dom';
 import {
     PolymorpheusComponent,
@@ -51,6 +61,14 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
+    private readonly positionAccessor = tuiInjectAccessor(
+        TuiPositionAccessor,
+        'dropdown',
+    );
+    private readonly anchored =
+        inject(TUI_ANCHOR_SUPPORT) &&
+        'position' in this.positionAccessor &&
+        inject(TUI_VIEWPORT).type === 'window';
     private readonly drivers = coerceArray(
         inject(TuiDropdownDriver, {self: true, optional: true}),
     );
@@ -120,7 +138,11 @@ export class TuiDropdownDirective
         const ref = this.ref();
 
         if (show && this.content() && !ref) {
-            this.ref.set(this.service.add(this.component));
+            this.ref.set(
+                this.anchored
+                    ? tuiAddAnchoredPopup(this.service, this.component)
+                    : this.service.add(this.component),
+            );
         } else if (!show && ref) {
             this.ref.set(null);
             ref.destroy();

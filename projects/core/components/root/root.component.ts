@@ -16,7 +16,7 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiPopups} from '@taiga-ui/core/portals/popup';
+import {TuiPopups, TuiPopupsAnchored} from '@taiga-ui/core/portals/popup';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_BREAKPOINT,
@@ -30,9 +30,12 @@ import {
 
 @Component({
     selector: 'tui-root',
-    imports: [TuiPopups, TuiScrollControls],
+    imports: [TuiPopups, TuiPopupsAnchored, TuiScrollControls],
     template: `
-        <div class="t-root-content"><ng-content /></div>
+        <div class="t-root-content">
+            <ng-content />
+            <tui-popups-anchored />
+        </div>
         @if (top()) {
             @if (scrollbars) {
                 <tui-scroll-controls class="t-root-scrollbar" />
