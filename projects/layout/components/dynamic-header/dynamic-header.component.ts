@@ -1,5 +1,11 @@
 import {NgForOf, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -30,8 +36,10 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
         </ng-template>
     `,
     styleUrls: ['./dynamic-header.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiDynamicHeaderV: TUI_VERSION,
         '[style.--t-dir]': 'container.scrollDir() || -1',
     },
 })
