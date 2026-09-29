@@ -1,18 +1,27 @@
-import {ChangeDetectionStrategy, Component, type Provider} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EnvironmentInjector,
+    InjectionToken,
+    type Provider,
+} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {
     ActivatedRoute,
     type ActivatedRouteSnapshot,
     type Data,
     type NavigationExtras,
+    provideRouter,
     Router,
     type UrlSegment,
 } from '@angular/router';
+import {RouterTestingHarness} from '@angular/router/testing';
 import {provideTaiga, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER, Subject} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
+import {tuiRouteDialog} from '../generate-dialogable-route';
 import TuiRoutableDialog from '../routable-dialog.component';
 
 function providerOf(serviceToken: any, mockedService: any): Provider {
@@ -29,6 +38,7 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 class Dialog {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {snapshot: {data: {dialog: Dialog}}};
+const ROUTE_PROVIDER = new InjectionToken<string>('ROUTE_PROVIDER');
 
 describe('TuiRoutableDialog', () => {
     let fixture: ComponentFixture<TuiRoutableDialog>;
@@ -74,6 +84,43 @@ describe('TuiRoutableDialog', () => {
                 anything(),
             ),
         ).once();
+    });
+
+    it('dialog content can inject route-scoped providers', async () => {
+        let content: PolymorpheusComponent<unknown> | undefined;
+
+        TestBed.configureTestingModule({
+            providers: [
+                provideTaiga(),
+                provideRouter([
+                    {
+                        ...tuiRouteDialog(Dialog, {path: 'dialog'}),
+                        providers: [{provide: ROUTE_PROVIDER, useValue: 'route'}],
+                    },
+                ]),
+                {
+                    provide: TuiDialogService,
+                    useValue: {
+                        open: (value: PolymorpheusComponent<unknown>) => {
+                            content = value;
+
+                            return NEVER;
+                        },
+                    },
+                },
+            ],
+        });
+
+        const harness = await RouterTestingHarness.create('/dialog');
+
+        await harness.fixture.whenStable();
+
+        expect(content).toBeDefined();
+        expect(
+            content
+                ?.createInjector(TestBed.inject(EnvironmentInjector))
+                .get(ROUTE_PROVIDER),
+        ).toBe('route');
     });
 
     it('dialog options are passed to the dialog open method', async () => {
