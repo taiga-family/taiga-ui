@@ -87,7 +87,10 @@ describe('TuiRoutableDialog', () => {
     });
 
     it('dialog content can inject route-scoped providers', async () => {
-        let content: PolymorpheusComponent<unknown> | undefined;
+        let resolveContent!: (content: PolymorpheusComponent<unknown>) => void;
+        const contentOpened = new Promise<PolymorpheusComponent<unknown>>((resolve) => {
+            resolveContent = resolve;
+        });
 
         TestBed.configureTestingModule({
             providers: [
@@ -101,8 +104,8 @@ describe('TuiRoutableDialog', () => {
                 {
                     provide: TuiDialogService,
                     useValue: {
-                        open: (value: PolymorpheusComponent<unknown>) => {
-                            content = value;
+                        open: (content: PolymorpheusComponent<unknown>) => {
+                            resolveContent(content);
 
                             return NEVER;
                         },
@@ -111,14 +114,13 @@ describe('TuiRoutableDialog', () => {
             ],
         });
 
-        const harness = await RouterTestingHarness.create('/dialog');
+        await RouterTestingHarness.create('/dialog');
 
-        await harness.fixture.whenStable();
+        const content = await contentOpened;
 
-        expect(content).toBeDefined();
         expect(
             content
-                ?.createInjector(TestBed.inject(EnvironmentInjector))
+                .createInjector(TestBed.inject(EnvironmentInjector))
                 .get(ROUTE_PROVIDER),
         ).toBe('route');
     });
