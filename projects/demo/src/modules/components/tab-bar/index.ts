@@ -8,6 +8,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 import TuiTabBarExample from './examples/1';
 import TuiTabBarLiquidExample from './examples/5';
 import TuiTabBarLiquidFullExample from './examples/6';
+import TuiTabBarLiquidAndroidExample from './examples/7';
 
 @Component({
     standalone: true,
@@ -18,6 +19,7 @@ import TuiTabBarLiquidFullExample from './examples/6';
         TuiDropdown,
         TuiLabel,
         TuiTabBarExample,
+        TuiTabBarLiquidAndroidExample,
         TuiTabBarLiquidExample,
         TuiTabBarLiquidFullExample,
     ],
@@ -31,4 +33,5 @@ export default class Page {
     protected fixed = false;
     protected fixedLiquid = false;
     protected fixedLiquidFull = false;
+    protected fixedLiquidAndroid = false;
 }

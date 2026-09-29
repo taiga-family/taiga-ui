@@ -122,6 +122,35 @@
                 class="fixed"
             />
         </tui-doc-example>
+        <tui-doc-example
+            id="android"
+            heading="Android"
+            [content]="7 | tuiExample"
+        >
+            <p>
+                On Android devices the tab bar takes on its updated appearance once the
+                <code>TUI_LIQUID_GLASS</code>
+                token is provided with
+                <code>true</code>
+                value
+            </p>
+            <label
+                tuiLabel
+                class="tui-space_bottom-4"
+            >
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [(ngModel)]="fixedLiquidAndroid"
+                />
+                Fixed
+            </label>
+            <tui-tab-bar-example-liquid-android *ngIf="!fixedLiquidAndroid" />
+            <tui-tab-bar-example-liquid-android
+                *tuiDropdown="fixedLiquidAndroid"
+                class="fixed"
+            />
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab />
