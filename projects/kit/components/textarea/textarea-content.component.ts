@@ -37,8 +37,8 @@ import {TuiTextareaComponent} from './textarea.component';
     hostDirectives: [TuiScrollRef],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.max-height.em]': '1.25 * host.max()',
-        '[style.min-height.em]': '1.25 * host.min()',
+        '[style.max-height.em]': '1.25 * host.maximumRows()',
+        '[style.min-height.em]': '1.25 * host.minimumRows()',
     },
 })
 export class TuiTextareaContent {
