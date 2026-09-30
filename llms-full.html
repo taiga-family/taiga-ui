@@ -1188,7 +1188,7 @@
 ### tab-bar
 
 ```text
-  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective
+  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective, TuiTabBarLiquidGlass
 ```
 **Directives:**
 ### dropdown-mobile
@@ -46369,8 +46369,8 @@ export class Example {}
 
 **Template:**
 ```html
-&lt;nav tuiTabBar class=&quot;tabs&quot; [(activeItemIndex)]=&quot;activeItemIndex&quot; &gt;
-&lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [badge]=&quot;item.badge&quot; [icon]=&quot;item.icon&quot; (click)=&quot;onClick(item)&quot; &gt; {{ item.text }} &lt;/button&gt;
+&lt;nav tuiTabBar class=&quot;tabs&quot; [activeItemIndex]=&quot;activeItemIndex&quot; (activeItemIndexChange)=&quot;onIndexChange($event)&quot; &gt;
+&lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [badge]=&quot;item.badge&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
 &lt;/nav&gt;
 ```
 **TypeScript:**
@@ -46402,7 +46402,7 @@ export default class Example {
 
     protected activeItemIndex = 1;
 
-    protected readonly items = [
+    protected readonly items: Item[] = [
         {
             text: &#039;Favorites&#039;,
             icon: &#039;@tui.heart&#039;,
@@ -46428,9 +46428,15 @@ export default class Example {
         },
     ];
 
-    protected onClick(item: Item): void {
-        item.badge = 0;
-        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
     }
 }
 ```
@@ -46587,11 +46593,242 @@ export default class Example {
 }
 ```
 
+#### iOS Liquid glass
+
+**Template:**
+```html
+&lt;nav tuiTabBar [activeItemIndex]=&quot;activeItemIndex&quot; (activeItemIndexChange)=&quot;onIndexChange($event)&quot; &gt;
+&lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [badge]=&quot;item.badge&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
+&lt;/nav&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTabBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiAlertService} from &#039;@taiga-ui/core&#039;;
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    standalone: true,
+    selector: &#039;tui-tab-bar-example-liquid&#039;,
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiAlertService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items: Item[] = [
+        {
+            text: &#039;Favorites&#039;,
+            icon: &#039;@tui.heart&#039;,
+            badge: 3,
+        },
+        {
+            text: &#039;Calls&#039;,
+            icon: &#039;@tui.phone&#039;,
+            badge: 1234,
+        },
+        {
+            text: &#039;Profile&#039;,
+            icon: &#039;@tui.user&#039;,
+        },
+    ];
+
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
+#### iOS Liquid glass fullwidth
+
+**Template:**
+```html
+&lt;nav tuiTabBar [(activeItemIndex)]=&quot;activeItemIndex&quot; &gt;
+&lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
+&lt;/nav&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTabBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    standalone: true,
+    selector: &#039;tui-tab-bar-example-liquid-full&#039;,
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    protected activeItemIndex = 2;
+
+    protected readonly items = [
+        {
+            text: &#039;Home&#039;,
+            icon: &#039;@tui.home&#039;,
+        },
+        {
+            text: &#039;Search&#039;,
+            icon: &#039;@tui.search&#039;,
+        },
+        {
+            text: &#039;Favorites&#039;,
+            icon: &#039;@tui.heart&#039;,
+        },
+        {
+            text: &#039;Notifications&#039;,
+            icon: &#039;@tui.bell&#039;,
+        },
+        {
+            text: &#039;Profile&#039;,
+            icon: &#039;@tui.user&#039;,
+        },
+    ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
+#### Android
+
+**Template:**
+```html
+&lt;nav tuiTabBar [activeItemIndex]=&quot;activeItemIndex&quot; (activeItemIndexChange)=&quot;onIndexChange($event)&quot; &gt;
+&lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [badge]=&quot;item.badge&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
+&lt;/nav&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component, inject} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTabBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAlertService} from &#039;@taiga-ui/core&#039;;
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    standalone: true,
+    selector: &#039;tui-tab-bar-example-liquid-android&#039;,
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;android&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiAlertService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items: Item[] = [
+        {
+            text: &#039;Favorites&#039;,
+            icon: &#039;@tui.heart&#039;,
+            badge: 3,
+        },
+        {
+            text: &#039;Calls&#039;,
+            icon: &#039;@tui.phone&#039;,
+            badge: 1234,
+        },
+        {
+            text: &#039;Profile&#039;,
+            icon: &#039;@tui.user&#039;,
+        },
+    ];
+
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
 
 ### TypeScript
 
 ```ts
-import {Component} from &#039;@angular/core&#039;;
+import {Component, ViewEncapsulation} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
@@ -46599,24 +46836,48 @@ import {TuiDropdown, TuiLabel} from &#039;@taiga-ui/core&#039;;
 import {TuiCheckbox} from &#039;@taiga-ui/kit&#039;;
 
 import TuiTabBarExample from &#039;./examples/1&#039;;
+import TuiTabBarLiquidExample from &#039;./examples/5&#039;;
+import TuiTabBarLiquidFullExample from &#039;./examples/6&#039;;
+import TuiTabBarLiquidAndroidExample from &#039;./examples/7&#039;;
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiDropdown, TuiLabel, TuiTabBarExample],
+    imports: [
+        FormsModule,
+        TuiCheckbox,
+        TuiDemo,
+        TuiDropdown,
+        TuiLabel,
+        TuiTabBarExample,
+        TuiTabBarLiquidAndroidExample,
+        TuiTabBarLiquidExample,
+        TuiTabBarLiquidFullExample,
+    ],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    host: {class: &#039;tui-tab-bar-demo&#039;},
 })
 export default class Page {
     protected fixed = false;
+    protected fixedLiquid = false;
+    protected fixedLiquidFull = false;
+    protected fixedLiquidAndroid = false;
 }
 ```
 
 ### LESS
 
 ```less
-.bar {
-    inline-size: 25rem;
+.tui-tab-bar-demo {
+    tui-doc-example .t-demo {
+        overflow: hidden;
+    }
+
+    .bar {
+        inline-size: 25rem;
+    }
 }
 
 .fixed {

@@ -1179,7 +1179,7 @@
 ### tab-bar
 
 ```text
-  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective
+  TuiTabBar, TuiTabBarComponent, TuiTabBarItem, TuiTabBarItemDirective, TuiTabBarLiquidGlass
 ```
 **Directives:**
 ### dropdown-mobile
@@ -46360,8 +46360,8 @@ export class Example {}
 
 **Template:**
 ```html
-<nav tuiTabBar class="tabs" [(activeItemIndex)]="activeItemIndex" >
-<button *ngFor="let item of items" tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button>
+<nav tuiTabBar class="tabs" [activeItemIndex]="activeItemIndex" (activeItemIndexChange)="onIndexChange($event)" >
+<button *ngFor="let item of items" tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" > {{ item.text }} </button>
 </nav>
 ```
 **TypeScript:**
@@ -46393,7 +46393,7 @@ export default class Example {
 
     protected activeItemIndex = 1;
 
-    protected readonly items = [
+    protected readonly items: Item[] = [
         {
             text: 'Favorites',
             icon: '@tui.heart',
@@ -46419,9 +46419,15 @@ export default class Example {
         },
     ];
 
-    protected onClick(item: Item): void {
-        item.badge = 0;
-        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
     }
 }
 ```
@@ -46578,11 +46584,242 @@ export default class Example {
 }
 ```
 
+#### iOS Liquid glass
+
+**Template:**
+```html
+<nav tuiTabBar [activeItemIndex]="activeItemIndex" (activeItemIndexChange)="onIndexChange($event)" >
+<button *ngFor="let item of items" tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" > {{ item.text }} </button>
+</nav>
+```
+**TypeScript:**
+```ts
+import {NgForOf} from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiAlertService} from '@taiga-ui/core';
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    standalone: true,
+    selector: 'tui-tab-bar-example-liquid',
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiAlertService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items: Item[] = [
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+            badge: 3,
+        },
+        {
+            text: 'Calls',
+            icon: '@tui.phone',
+            badge: 1234,
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
+#### iOS Liquid glass fullwidth
+
+**Template:**
+```html
+<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" >
+<button *ngFor="let item of items" tuiTabBarItem type="button" [icon]="item.icon" > {{ item.text }} </button>
+</nav>
+```
+**TypeScript:**
+```ts
+import {NgForOf} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    selector: 'tui-tab-bar-example-liquid-full',
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    protected activeItemIndex = 2;
+
+    protected readonly items = [
+        {
+            text: 'Home',
+            icon: '@tui.home',
+        },
+        {
+            text: 'Search',
+            icon: '@tui.search',
+        },
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+        },
+        {
+            text: 'Notifications',
+            icon: '@tui.bell',
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
+#### Android
+
+**Template:**
+```html
+<nav tuiTabBar [activeItemIndex]="activeItemIndex" (activeItemIndexChange)="onIndexChange($event)" >
+<button *ngFor="let item of items" tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" > {{ item.text }} </button>
+</nav>
+```
+**TypeScript:**
+```ts
+import {NgForOf} from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
+import {TuiAlertService} from '@taiga-ui/core';
+
+interface Item {
+    badge?: number;
+    icon: string;
+    text: string;
+}
+
+@Component({
+    standalone: true,
+    selector: 'tui-tab-bar-example-liquid-android',
+    imports: [NgForOf, TuiTabBar],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+    host: {
+        '[attr.data-platform]': '"android"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    private readonly alerts = inject(TuiAlertService);
+
+    protected activeItemIndex = 1;
+
+    protected readonly items: Item[] = [
+        {
+            text: 'Favorites',
+            icon: '@tui.heart',
+            badge: 3,
+        },
+        {
+            text: 'Calls',
+            icon: '@tui.phone',
+            badge: 1234,
+        },
+        {
+            text: 'Profile',
+            icon: '@tui.user',
+        },
+    ];
+
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    inline-size: 100%;
+}
+```
+
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -46590,24 +46827,48 @@ import {TuiDropdown, TuiLabel} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 import TuiTabBarExample from './examples/1';
+import TuiTabBarLiquidExample from './examples/5';
+import TuiTabBarLiquidFullExample from './examples/6';
+import TuiTabBarLiquidAndroidExample from './examples/7';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiDropdown, TuiLabel, TuiTabBarExample],
+    imports: [
+        FormsModule,
+        TuiCheckbox,
+        TuiDemo,
+        TuiDropdown,
+        TuiLabel,
+        TuiTabBarExample,
+        TuiTabBarLiquidAndroidExample,
+        TuiTabBarLiquidExample,
+        TuiTabBarLiquidFullExample,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    host: {class: 'tui-tab-bar-demo'},
 })
 export default class Page {
     protected fixed = false;
+    protected fixedLiquid = false;
+    protected fixedLiquidFull = false;
+    protected fixedLiquidAndroid = false;
 }
 ```
 
 ### LESS
 
 ```less
-.bar {
-    inline-size: 25rem;
+.tui-tab-bar-demo {
+    tui-doc-example .t-demo {
+        overflow: hidden;
+    }
+
+    .bar {
+        inline-size: 25rem;
+    }
 }
 
 .fixed {
