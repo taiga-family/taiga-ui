@@ -959,6 +959,13 @@ export const pages: DocRoutePages = [
                     'mobile, потянуть, обновление, лоадер, loader, крутилка, загрузка',
                 route: DemoRoute.PullToRefresh,
             },
+            {
+                section: 'Components',
+                title: 'SearchBar',
+                keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
+                route: DemoRoute.SearchBar,
+                version: '4.102.0',
+            },
         ],
     },
     {

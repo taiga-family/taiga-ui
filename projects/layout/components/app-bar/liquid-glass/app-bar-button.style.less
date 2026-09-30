@@ -12,7 +12,7 @@
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.09);
     color: var(--tui-text-primary);
     transition:
-        scale var(--tui-duration) cubic-bezier(0.35, 1.3, 0.25, 1),
+        scale var(--tui-duration) var(--tui-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
         background-color calc(var(--tui-duration) / 2) ease,
         color calc(var(--tui-duration) / 2) ease,
         box-shadow calc(var(--tui-duration) / 2) ease,
