@@ -1,0 +1,176 @@
+@t-tab-width: 5.875rem;
+
+&.tui-liquid-glass {
+    nav[tuiTabBar] {
+        justify-content: center;
+        isolation: isolate;
+        inline-size: fit-content;
+        margin: 0 auto var(--t-tabbar-offset);
+        padding: 0.25rem;
+        border-radius: 62.5rem;
+        block-size: 3.375rem;
+        backdrop-filter: none;
+
+        .liquid-glass-vars();
+
+        --t-tabbar-offset: max(env(safe-area-inset-bottom), 1.25rem);
+        --t-tabbar-active: rgba(255, 255, 255, 0.9);
+        // the tab bar has its own bevel lighting angles
+        --t-glass-bevel-filter: brightness(1.05);
+        --t-glass-bevel: linear-gradient(
+            227deg,
+            rgba(255, 255, 255, 0) 6%,
+            rgba(255, 255, 255, 0.35) 21%,
+            rgba(255, 255, 255, 0.85) 40%,
+            rgba(255, 255, 255, 0.95) 45%,
+            #fff 48%,
+            #fff 50%,
+            #fff 52%,
+            rgba(255, 255, 255, 0.95) 55%,
+            rgba(255, 255, 255, 0.85) 60%,
+            rgba(255, 255, 255, 0.35) 80%,
+            rgba(255, 255, 255, 0) 95%
+        );
+
+        &::before {
+            .liquid-glass(0 0.5rem 2rem rgba(0, 0, 0, 0.1));
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 1;
+        }
+
+        &::after {
+            .liquid-glass-bevel();
+        }
+
+        [tuiTabBarItem] {
+            position: relative;
+            // lift the buttons above the indicator so it highlights behind them
+            // (ng-content must stay first for the nth-child colour theme, which
+            // puts the indicator after the items in the DOM)
+            z-index: 1;
+            flex: none;
+            inline-size: @t-tab-width;
+            padding-inline-start: 0.375rem;
+            padding-inline-end: 0.375rem;
+
+            .t-icon {
+                inline-size: 1.5rem;
+                block-size: 1.5rem;
+                margin-block-end: 0.1875rem;
+                margin-block-start: 0.5rem;
+                border: 0;
+            }
+        }
+
+        .t-liquid-glass-indicator {
+            position: absolute;
+            inset-block: 0.25rem;
+            inset-inline-start: calc(0.25rem + var(--t-tab-active, 0) * @t-tab-width);
+            inline-size: @t-tab-width;
+            border-radius: 62.5rem;
+            pointer-events: none;
+            background: var(--tui-background-neutral-2);
+            transition:
+                inset-inline-start var(--tui-duration) cubic-bezier(0.4, 0.1, 0.2, 1),
+                inline-size var(--tui-duration) cubic-bezier(0.4, 0.1, 0.2, 1);
+        }
+
+        .t-skeletons {
+            inline-size: auto;
+        }
+
+        .t-skeleton {
+            flex: none;
+            inline-size: @t-tab-width;
+        }
+
+        &.tui-liquid-glass_fullwidth {
+            inline-size: auto;
+            margin: 0 1.25rem var(--t-tabbar-offset);
+
+            [tuiTabBarItem] {
+                flex: 1 0 3.375rem;
+                inline-size: auto;
+            }
+
+            .t-skeletons {
+                inline-size: 100%;
+            }
+
+            .t-skeleton {
+                flex: 1 0 3.375rem;
+                inline-size: auto;
+            }
+
+            // indicator matches the item width ((100% - padding) / count); middle
+            // positions additionally grow 0.25rem on each side for optical
+            // compensation (var(--t-tab-mid) is 1 for middle tabs, 0 for first/last)
+            .t-liquid-glass-indicator {
+                inline-size: calc((100% - 0.5rem) / var(--t-tab-count, 1) + var(--t-tab-mid, 0) * 0.5rem);
+                inset-inline-start: calc(
+                    0.25rem - var(--t-tab-mid, 0) * 0.25rem + var(--t-tab-active, 0) * (100% - 0.5rem) /
+                        var(--t-tab-count, 1)
+                );
+            }
+        }
+
+        .t-liquid-glass-overlay {
+            position: absolute;
+            z-index: -1;
+            inset-block: auto calc(-1 * var(--t-tabbar-offset));
+            inset-inline-start: 50%;
+            margin-inline-start: -50vw;
+            inline-size: 100vw;
+            block-size: 9.375rem;
+            background: var(--tui-background-base);
+            pointer-events: none;
+            mask-image: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0),
+                rgba(0, 0, 0, 0.01) 7%,
+                rgba(0, 0, 0, 0.04) 13%,
+                rgba(0, 0, 0, 0.08) 20%,
+                rgba(0, 0, 0, 0.15) 27%,
+                rgba(0, 0, 0, 0.23) 33%,
+                rgba(0, 0, 0, 0.33) 40%,
+                rgba(0, 0, 0, 0.44) 47%,
+                rgba(0, 0, 0, 0.56) 53%,
+                rgba(0, 0, 0, 0.67) 60%,
+                rgba(0, 0, 0, 0.77) 67%,
+                rgba(0, 0, 0, 0.85) 73%,
+                rgba(0, 0, 0, 0.92) 80%,
+                rgba(0, 0, 0, 0.96) 87%,
+                rgba(0, 0, 0, 0.99) 93%,
+                #000 100%
+            );
+        }
+    }
+}
+
+&.tui-liquid-glass [tuiTheme='dark'] nav[tuiTabBar],
+[tuiTheme='dark'] &.tui-liquid-glass nav[tuiTabBar],
+&[tuiTheme='dark'].tui-liquid-glass nav[tuiTabBar] {
+    .liquid-glass-dark();
+
+    --tui-active-color: var(--tui-text-primary);
+    --t-tabbar-active: rgba(255, 255, 255, 0.18);
+    --t-glass-bevel-filter: brightness(1.05);
+    --t-glass-bevel: linear-gradient(
+        -6deg,
+        rgba(255, 255, 255, 0.15) 5%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.04) 40%,
+        rgba(255, 255, 255, 0.03) 45%,
+        rgba(255, 255, 255, 0) 48%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 52%,
+        rgba(255, 255, 255, 0.03) 55%,
+        rgba(255, 255, 255, 0.04) 60%,
+        rgba(255, 255, 255, 0.1) 80%,
+        rgba(255, 255, 255, 0.15) 95%
+    );
+}

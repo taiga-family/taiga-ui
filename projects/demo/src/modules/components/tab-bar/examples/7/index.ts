@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 interface Item {
     badge?: number;
@@ -13,12 +13,16 @@ interface Item {
 
 @Component({
     standalone: true,
-    selector: 'tui-tab-bar-example',
-    imports: [NgForOf, TuiButton, TuiTabBar],
+    selector: 'tui-tab-bar-example-liquid-android',
+    imports: [NgForOf, TuiTabBar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    host: {
+        '[attr.data-platform]': '"android"',
+        '[class.tui-liquid-glass]': 'true',
+    },
 })
 export default class Example {
     private readonly alerts = inject(TuiAlertService);
@@ -39,15 +43,6 @@ export default class Example {
         {
             text: 'Profile',
             icon: '@tui.user',
-        },
-        {
-            text: 'Settings and configuration',
-            icon: '@tui.settings',
-            badge: 100,
-        },
-        {
-            text: 'More',
-            icon: '@tui.ellipsis',
         },
     ];
 
