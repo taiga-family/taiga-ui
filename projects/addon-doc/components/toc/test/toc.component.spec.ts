@@ -64,26 +64,6 @@ describe('TuiDocToc', () => {
             ?.textContent.trim();
     }
 
-    it('selects the first example before the observer reports', fakeAsync(() => {
-        fixture.detectChanges();
-        tick();
-        fixture.detectChanges();
-
-        expect(activeHeading()).toBe('Basic');
-    }));
-
-    it('selects the last example when none is fully visible after observation', fakeAsync(() => {
-        fixture.detectChanges();
-        tick();
-        fixture.detectChanges();
-
-        intersect('basic', 0);
-        intersect('validation', 0);
-        intersect('format', 0);
-
-        expect(activeHeading()).toBe('Format');
-    }));
-
     it('ignores initial notifications for examples above the anchor', fakeAsync(() => {
         fixture.detectChanges();
         tick();

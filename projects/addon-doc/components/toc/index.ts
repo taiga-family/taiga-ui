@@ -31,16 +31,14 @@ import {TuiDocPage} from '../page/page.component';
 export class TuiDocToc implements OnInit {
     private readonly el = tuiInjectElement();
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
-    // null means the observer has not reported yet; [] means no example is fully visible.
-    private readonly examples = signal<readonly string[] | null>(null);
+    private readonly examples = signal<readonly string[]>([]);
     private readonly active = computed(() => {
         const toc = this.toc();
         const examples = this.examples();
 
-        return examples
-            ? toc.find((item) => examples.includes(tuiToKebab(item))) ||
-                  toc[toc.length - 1]
-            : toc[0];
+        return (
+            toc.find((item) => examples.includes(tuiToKebab(item))) || toc[toc.length - 1]
+        );
     });
 
     protected readonly toc = signal<readonly string[]>([]);
@@ -74,7 +72,7 @@ export class TuiDocToc implements OnInit {
         const id = example.target.id;
 
         this.examples.update((examples) => {
-            const remaining = (examples || []).filter((item) => item !== id);
+            const remaining = examples.filter((item) => item !== id);
 
             return example.intersectionRatio === 1 ? [...remaining, id] : remaining;
         });
