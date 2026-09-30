@@ -77,8 +77,6 @@ export class TuiDropdownContext
 
     public readonly type = 'dropdown';
     public readonly nativeElement = tuiAnchorDelegate({
-        width: '1px',
-        height: '1px',
         top: 'calc(anchor(top)',
         left: 'calc(anchor(left)',
     });
@@ -96,7 +94,7 @@ export class TuiDropdownContext
 
         this.currentRect = tuiPointToClientRect(x, y);
         this.nativeElement.style.top = `calc(anchor(top) + ${y - top}px)`;
-        this.nativeElement.style.left = `calc(anchor(left) + ${x - left}px)`;
+        this.nativeElement.style.left = `calc(anchor(left, -100000px) + ${x - left}px)`;
         this.driver.next(true);
     }
 }

@@ -268,7 +268,7 @@ export class TuiDropdownSelection
 
         Object.assign(this.nativeElement.style, {
             top: `calc(anchor(top) + ${rect.top - top}px)`,
-            left: `calc(anchor(left) + ${rect.left - left}px)`,
+            left: `calc(anchor(left, -100000px) + ${rect.left - left}px)`,
             blockSize: tuiPx(rect.height),
             inlineSize: tuiPx(rect.width),
         });

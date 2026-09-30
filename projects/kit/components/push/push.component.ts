@@ -1,9 +1,17 @@
 import {DatePipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    contentChild,
+    inject,
+    input,
+    output,
+} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-push',
@@ -17,7 +25,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 export class TuiPushComponent {
     protected readonly isString = tuiIsString;
     protected readonly closeWord = inject(TUI_CLOSE_WORD);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly icon = contentChild(TuiIcon);
 
     public readonly heading = input('');
     public readonly type = input('');

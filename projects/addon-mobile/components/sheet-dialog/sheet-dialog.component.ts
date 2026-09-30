@@ -20,6 +20,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
+import {TuiSheetDialogClose} from './sheet-dialog-close.directive';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
@@ -29,31 +30,29 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated, TuiScrollRef],
+    hostDirectives: [
+        TuiAnimated,
+        TuiScrollRef,
+        {directive: TuiSheetDialogClose, outputs: ['tuiSheetDialogClose']},
+    ],
     host: {
         '[attr.data-appearance]': 'context.appearance',
         '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',
         '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '(document:touchstart.passive.zoneless)': 'interacted = true',
+        '(tuiSheetDialogClose)': 'close$.next()',
         '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
-export class TuiSheetDialogComponent<I> {
+export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
-    private pointers = 0;
 
-    protected readonly context =
-        injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
-
+    protected readonly context = injectContext<TuiPortalContext<TuiSheetDialogOptions>>();
     protected readonly close$ = new Subject<void>();
     protected interacted = false;
-
     protected readonly $ = merge(
         this.close$,
         tuiCloseWatcher(),
@@ -81,28 +80,17 @@ export class TuiSheetDialogComponent<I> {
         afterNextRender(() => this.onResize());
     }
 
-    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
-    protected onResize(): void {
-        if (!this.interacted) {
-            this.el.scrollTop = this.initial || 0;
-        }
-    }
-
-    protected onPointerChange(delta: number): void {
-        this.interacted = this.interacted || !!delta;
-        this.pointers = Math.max(this.pointers + delta, 0);
-
-        if (!this.pointers && this.el.scrollTop <= 0 && this.interacted) {
-            this.close$.next();
-        }
-    }
-
-    private get initial(): number | undefined {
+    public get initial(): number {
         return this.context.closable
             ? this.stops()
-                  .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+                  .map((e) => e.nativeElement.offsetTop)
+                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
             : 0;
+    }
+
+    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
+    protected onResize(): void {
+        this.el.scrollTop = this.interacted ? this.el.scrollTop : this.initial;
     }
 
     private close(): void {

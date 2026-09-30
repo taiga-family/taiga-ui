@@ -1,4 +1,4 @@
-import {existsSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 
 import {expect, type Page} from '@playwright/test';
 
@@ -7,6 +7,22 @@ import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
+
+interface FontStub {
+    filename: string;
+    contentType: string;
+}
+
+const FONT_MANIFEST = `${__dirname}/../stubs/fonts.json`;
+let fontStubs: Record<string, FontStub> | null = null;
+
+function getFontStub(url: string): FontStub | undefined {
+    fontStubs ??= existsSync(FONT_MANIFEST)
+        ? (JSON.parse(readFileSync(FONT_MANIFEST, 'utf8')) as Record<string, FontStub>)
+        : {};
+
+    return fontStubs[url];
+}
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date | null;
@@ -63,8 +79,18 @@ export async function tuiGoto(
             }),
     );
 
-    await page.route(/\.(woff2?|ttf)$/, async (route) => {
-        const filename = new URL(route.request().url()).pathname.split('/').pop() ?? '';
+    await page.route(/fonts\.gstatic\.com|\.(woff2?|ttf)$/, async (route) => {
+        const url = route.request().url();
+        const stub = getFontStub(url);
+
+        if (stub) {
+            return route.fulfill({
+                path: `${__dirname}/../stubs/${stub.filename}`,
+                contentType: stub.contentType,
+            });
+        }
+
+        const filename = new URL(url).pathname.split('/').pop() ?? '';
         const filePath = `${__dirname}/../stubs/${filename}`;
 
         return existsSync(filePath) ? route.fulfill({path: filePath}) : route.continue();

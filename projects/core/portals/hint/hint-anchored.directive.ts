@@ -11,7 +11,7 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import {TUI_ANCHOR_SUPPORT, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
@@ -33,7 +33,8 @@ export class TuiHintAnchored implements AfterViewInit {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-    private readonly accessor = inject(TuiRectAccessor);
+    private readonly rect = inject(TuiRectAccessor);
+    private readonly accessor = inject(TuiPositionAccessor);
     private readonly directive = inject(TuiHintDirective);
     private readonly styles$ = inject(TuiPositionService).pipe(
         takeWhile(
@@ -45,20 +46,29 @@ export class TuiHintAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly anchored =
+        inject(TUI_ANCHOR_SUPPORT) &&
+        'position' in this.accessor &&
+        this.viewport.type === 'window';
+
     protected readonly sub = inject(TuiHoveredService)
         .pipe(takeUntilDestroyed())
         .subscribe((hover) => this.hover.toggle(hover));
 
     public ngAfterViewInit(): void {
-        this.styles$.subscribe({
-            next: (point) => this.update(...point),
-            complete: () => this.directive.toggle(false),
-        });
+        if (this.anchored) {
+            this.accessor.position?.(this.el);
+        } else {
+            this.styles$.subscribe({
+                next: (point) => this.update(...point),
+                complete: () => this.directive.toggle(false),
+            });
+        }
     }
 
     private update(left: number, top: number): void {
         const {clientHeight, clientWidth} = this.el;
-        const rect = this.accessor.getClientRect();
+        const rect = this.rect.getClientRect();
 
         if (rect === EMPTY_CLIENT_RECT || !clientHeight || !clientWidth) {
             return;

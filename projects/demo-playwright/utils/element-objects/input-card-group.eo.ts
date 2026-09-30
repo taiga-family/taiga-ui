@@ -1,6 +1,6 @@
 import {type Locator} from '@playwright/test';
 
-export class TuiInputCardGroupPO {
+export class TuiInputCardGroupEO {
     public readonly numberTextfield = this.host.locator(
         '[automation-id="tui-input-card-group__card"]',
     );

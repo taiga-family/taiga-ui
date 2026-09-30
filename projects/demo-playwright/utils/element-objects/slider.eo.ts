@@ -1,6 +1,6 @@
 import {expect, type Locator} from '@playwright/test';
 
-export class TuiSliderPO {
+export class TuiSliderEO {
     constructor(private readonly host: Locator) {}
 
     public get value(): Promise<number> {

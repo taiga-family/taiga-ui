@@ -7,9 +7,9 @@ import {
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
-import {TuiTextfieldPO} from './textfield.po';
+import {TuiTextfieldEO} from './textfield.eo';
 
-export class TuiTextfieldWithDataListPO extends TuiTextfieldPO {
+export class TuiTextfieldWithDataListEO extends TuiTextfieldEO {
     public readonly dropdown = this.host
         .page()
         .locator(

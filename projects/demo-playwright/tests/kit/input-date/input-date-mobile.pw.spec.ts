@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiInputDatePO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputDateEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {TUI_SHEET_DIALOG_LOCATORS} from '@taiga-ui/testing/locators';
 
@@ -8,7 +8,7 @@ import {TUI_PLAYWRIGHT_ANDROID_USER_AGENT} from '../../../playwright.options';
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
     let example: Locator;
-    let inputDate: TuiInputDatePO;
+    let inputDate: TuiInputDateEO;
 
     test.use({
         viewport: {width: 430, height: 932},
@@ -22,7 +22,7 @@ test.describe('InputDate and mobile user agent', () => {
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-calendar-sheet__cell"]';
 
-        const inputDate = new TuiInputDatePO(
+        const inputDate = new TuiInputDateEO(
             example.locator('tui-textfield:has(input[tuiInputDate])').nth(1),
         );
 
@@ -46,7 +46,7 @@ test.describe('InputDate and mobile user agent', () => {
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
 
-        const inputDate = new TuiInputDatePO(
+        const inputDate = new TuiInputDateEO(
             example.locator('tui-textfield:has(input[tuiInputDate])').nth(2),
         );
 
@@ -71,7 +71,7 @@ test.describe('InputDate and mobile user agent', () => {
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDate);
             example = new TuiDocumentationPagePO(page).getExample('#mobile');
-            inputDate = new TuiInputDatePO(
+            inputDate = new TuiInputDateEO(
                 example.locator('tui-textfield:has([tuiInputDate])'),
             );
         });
