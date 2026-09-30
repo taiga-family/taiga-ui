@@ -16,7 +16,7 @@ import {
     type UrlSegment,
 } from '@angular/router';
 import {RouterTestingHarness} from '@angular/router/testing';
-import {provideTaiga, TuiDialogService} from '@taiga-ui/core';
+import {provideTaiga, TUI_OPTIONS, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER, Subject} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
@@ -117,12 +117,10 @@ describe('TuiRoutableDialog', () => {
         await RouterTestingHarness.create('/dialog');
 
         const content = await contentOpened;
+        const injector = content.createInjector(TestBed.inject(EnvironmentInjector));
 
-        expect(
-            content
-                .createInjector(TestBed.inject(EnvironmentInjector))
-                .get(ROUTE_PROVIDER),
-        ).toBe('route');
+        expect(injector.get(ROUTE_PROVIDER)).toBe('route');
+        expect(injector.get(TUI_OPTIONS)).toBe(TestBed.inject(TUI_OPTIONS));
     });
 
     it('dialog options are passed to the dialog open method', async () => {
