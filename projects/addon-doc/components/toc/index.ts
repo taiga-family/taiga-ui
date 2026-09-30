@@ -31,6 +31,7 @@ import {TuiDocPage} from '../page/page.component';
 export class TuiDocToc implements OnInit {
     private readonly el = tuiInjectElement();
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    // null means the observer has not reported yet; [] means no example is fully visible.
     private readonly examples = signal<readonly string[] | null>(null);
     private readonly active = computed(() => {
         const toc = this.toc();
