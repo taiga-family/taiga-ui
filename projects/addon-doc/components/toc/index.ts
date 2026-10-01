@@ -36,6 +36,10 @@ export class TuiDocToc implements OnInit {
         const toc = this.toc();
         const examples = this.examples();
 
+        if (!examples.length) {
+            return toc[0]; // Default to first entry when no intersection observer entries yet
+        }
+
         return (
             toc.find((item) => examples.includes(tuiToKebab(item))) || toc[toc.length - 1]
         );
