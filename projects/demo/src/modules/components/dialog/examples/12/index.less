@@ -1,0 +1,22 @@
+@app-bar-height-l: 2.75rem;
+
+:root {
+    --tui-dropdown-mobile-offset: calc(env(safe-area-inset-top) + @app-bar-height-l + 1rem);
+}
+
+tui-dialog[new] > {
+    tui-app-bar[data-size].app-bar-pinned {
+        position: fixed;
+        top: 0;
+        inset-inline: 0;
+        margin: 0;
+    }
+
+    .app-bar-pinned + header[tuiHeader].header {
+        margin-block-start: calc(env(safe-area-inset-top) + @app-bar-height-l + 2rem);
+    }
+
+    .app-bar-pinned {
+        visibility: visible;
+    }
+}

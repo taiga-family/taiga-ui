@@ -1,0 +1,62 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show dialog
+</button>
+
+<ng-template
+    let-id="id"
+    [tuiDialogOptions]="{appearance: 'fullscreen'}"
+    [(tuiDialog)]="open"
+>
+    <tui-app-bar
+        tuiAppBarSize
+        class="app-bar-pinned"
+    >
+        <button
+            iconStart="@tui.chevron-left"
+            tuiIconButton
+            tuiSlot="left"
+            type="button"
+            (click)="open = false"
+        >
+            Back
+        </button>
+        <progress
+            size="s"
+            tuiProgressBar
+            [max]="100"
+            [style.width.rem]="10"
+            [value]="35"
+        ></progress>
+    </tui-app-bar>
+
+    <header
+        tuiHeader
+        class="header"
+    >
+        <hgroup tuiTitle>
+            <h2 [id]="id">Where are you going?</h2>
+            <p>Choose a destination country to continue</p>
+        </hgroup>
+    </header>
+
+    <tui-textfield
+        tuiChevron
+        tuiDropdownMobile
+    >
+        <input
+            placeholder="Select destination"
+            tuiComboBox
+            [(ngModel)]="value"
+        />
+
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="countries$ | async | tuiFilterByInput"
+        />
+    </tui-textfield>
+</ng-template>
