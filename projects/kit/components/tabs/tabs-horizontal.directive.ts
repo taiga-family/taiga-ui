@@ -82,7 +82,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
 
     // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     protected refresh(): void {
-        if ('anchorName' in this.el.style) {
+        if (!this.underline() || 'anchorName' in this.el.style) {
             return;
         }
 
@@ -95,6 +95,6 @@ export class TuiTabsHorizontal implements AfterViewChecked {
         const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
 
         this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
+        this.el.style.setProperty('--t-scale', String(offsetWidth));
     }
 }
