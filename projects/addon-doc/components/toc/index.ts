@@ -36,9 +36,9 @@ export class TuiDocToc implements OnInit {
         const toc = this.toc();
         const examples = this.examples();
 
-        return (
-            toc.find((item) => examples.includes(tuiToKebab(item))) || toc[toc.length - 1]
-        );
+            return examples.length
+                ? toc.find((item) => examples.includes(tuiToKebab(item))) || toc[toc.length - 1]
+                : toc[0];
     });
 
     protected readonly toc = signal<readonly string[]>([]);
