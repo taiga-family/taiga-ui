@@ -279,22 +279,11 @@
     }
 }
 
-// Explicit appearance (e.g. floating card) owns its hover state
 @media @tui-mouse {
-    a[tuiCell]:where(*&):hover,
-    button[tuiCell]:where(*&):hover,
-    label[tuiCell]:where(*&):hover {
-        &:not(:disabled, [data-state='disabled'], [data-appearance]:not([data-appearance=''])) {
-            background: var(--tui-background-neutral-1);
-            cursor: pointer;
-        }
-    }
-
-    label[tuiCell]:where(*&):hover {
-        &:not(:has(input:disabled), [data-appearance]:not([data-appearance=''])) {
-            background: var(--tui-background-neutral-1);
-            cursor: pointer;
-        }
+    :where(:is(a, button, label)[tuiCell]:hover:not(:disabled, [data-state='disabled'])&),
+    :where(label[tuiCell]:hover:not(:has(input:disabled))&) {
+        background: var(--tui-background-neutral-1);
+        cursor: pointer;
     }
 }
 
