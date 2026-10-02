@@ -94,20 +94,25 @@ tui-tabs:where(*&) {
     }
 
     &::before {
-        .transition(~'inline-size, inset-inline-start');
+        .transition(transform);
 
         position: absolute;
         inset-block-end: 0;
-        inset-inline-start: var(--t-left);
+        inset-inline-start: 0;
         block-size: 0.125rem;
-        inline-size: var(--t-width);
+        inline-size: 1px;
         background: var(--t-color);
+        transform: translateX(calc(var(--t-left) * var(--tui-inline))) scaleX(var(--t-scale));
+        transform-origin: var(--tui-inline-start);
         animation: tuiPresent 1ms;
         contain: strict;
 
         @supports (anchor-name: --tui-tab-active) {
+            .transition(~'inline-size, inset-inline-start');
+
             inset-inline-start: anchor(start);
             inline-size: anchor-size(inline);
+            transform: none;
             position-anchor: --tui-tab-active;
         }
     }

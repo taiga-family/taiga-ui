@@ -108,5 +108,24 @@ describe('Tabs', () => {
             expect(firstTab?.classList.contains('_active')).toBeFalsy();
             expect(secondTab?.classList.contains('_active')).toBeTruthy();
         });
+
+        it('updates transform geometry when CSS anchors are unavailable', () => {
+            const tabs = fixture.nativeElement.querySelector('tui-tabs') as HTMLElement;
+            const secondTab = getTabs()[1]?.nativeElement as HTMLElement;
+
+            jest.spyOn(secondTab, 'offsetLeft', 'get').mockReturnValue(68);
+            const width = jest.spyOn(secondTab, 'offsetWidth', 'get').mockReturnValue(96);
+
+            component.activeItemIndex.set(1);
+            fixture.detectChanges();
+
+            expect(tabs.style.getPropertyValue('--t-left')).toBe('68px');
+            expect(tabs.style.getPropertyValue('--t-scale')).toBe('96');
+
+            width.mockReturnValue(114);
+            tabs.dispatchEvent(new Event('animationend'));
+
+            expect(tabs.style.getPropertyValue('--t-scale')).toBe('114');
+        });
     });
 });
