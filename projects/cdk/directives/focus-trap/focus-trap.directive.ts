@@ -44,7 +44,10 @@ export class TuiFocusTrap implements OnDestroy {
     public ngOnDestroy(): void {
         this.initialized = false;
 
-        if (tuiIsHTMLElement(this.activeElement)) {
+        const focused = tuiGetFocused(this.doc);
+        const valid = !focused || focused === this.doc.body;
+
+        if (tuiIsHTMLElement(this.activeElement) && valid) {
             this.activeElement.focus();
         }
     }
