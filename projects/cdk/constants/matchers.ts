@@ -14,7 +14,7 @@ export const TUI_DEFAULT_MATCHER = <T>(
     item: T,
     search: string,
     stringify: TuiHandler<T, string> = String,
-): boolean => stringify(item).toLowerCase().includes(search.toLowerCase());
+): boolean => stringify(item).toLowerCase().includes(search.trim().toLowerCase());
 
 /**
  * Default handler for strict matching stringified version of an item and a search query
