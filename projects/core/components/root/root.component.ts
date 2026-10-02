@@ -17,16 +17,8 @@ import {
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
 import {TuiPopups} from '@taiga-ui/core/portals/popup';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TUI_BREAKPOINT,
-    TUI_REDUCED_MOTION,
-} from '@taiga-ui/core/tokens';
-import {
-    TUI_LIQUID_GLASS,
-    TUI_OPTIONS,
-    tuiGetDuration,
-} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_BREAKPOINT} from '@taiga-ui/core/tokens';
+import {TUI_LIQUID_GLASS, TUI_OPTIONS} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     selector: 'tui-root',
