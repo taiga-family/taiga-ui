@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[487],{LcAH:function(n,o,t){"use strict";t.r(o),o.default="```ts\nimport {TuiBlockStatusModule} from '@taiga-ui/layout';\n// ...\n@NgModule({\n  imports: [\n    // ...\n    TuiBlockStatusModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

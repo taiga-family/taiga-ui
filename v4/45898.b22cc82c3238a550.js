@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45898],{45898:e=>{e.exports=".button {\n    inline-size: 15rem;\n    justify-content: space-between;\n}\n"}}]);

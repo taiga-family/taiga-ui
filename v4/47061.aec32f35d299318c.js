@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47061],{47061:t=>{t.exports='<tui-input [formControl]="control">\n    Account\n\n    <tui-data-list-wrapper\n        *tuiDataList\n        emptyContent="No results found"\n        size="s"\n        [disabledItemHandler]="disabledItemHandler"\n        [items]="items | tuiFilterByInput"\n    />\n</tui-input>\n'}}]);

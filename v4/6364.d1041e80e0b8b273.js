@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6364],{6364:n=>{n.exports=":host {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: min-content 1fr;\n    gap: 1rem;\n    inline-size: 30rem;\n\n    > :last-child {\n        grid-column: span 2;\n    }\n}\n\n[tuiSubtitle] {\n    font: var(--tui-font-text-m);\n}\n"}}]);

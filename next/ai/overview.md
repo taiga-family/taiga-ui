@@ -1,0 +1,36 @@
+# AI support
+
+We treat AI agents as first-class readers of our documentation. The same Taiga UI knowledge is published in
+a few complementary shapes — a flat context file, a query server, and reusable skills — so whatever your
+assistant can consume, it reaches the current, version-correct API instead of guessing from memory.
+
+That matters more than it sounds. An assistant can scaffold a screen in seconds, but it generates components
+from training data frozen in time — so the code often compiles yet quietly targets an API that has moved on,
+and a growing app drifts out of sync with itself. Point the agent at a live, versioned source and generated
+code stays aligned with the components you actually ship.
+
+## Why it helps
+
+- **Current, not remembered**
+— the agent reads today's API from a live source instead of recalling a stale one from its training
+cut-off.
+
+- **Generated from source**
+— the same pipeline that builds these docs and their runnable examples, so what the agent reads is
+what you ship.
+
+## Choose a layer
+
+These aren't competing options — they are a stack of roles over one body of knowledge.
+
+Skills Follow a proven Taiga workflow and know what to double-check.
+
+MCP server Ask for one component's exact, current API on demand.
+
+llms.txt Drop the current API into any model's context window.
+
+`llms-full.txt`
+is the generated data,
+`@taiga-ui/mcp`
+is a query interface over that same data, and skills are the method that consumes it. When they
+disagree, the live source wins.

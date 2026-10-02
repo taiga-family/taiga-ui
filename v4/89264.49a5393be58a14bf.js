@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89264],{89264:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\n.cell,\n[tuiCell] {\n    inline-size: 100%;\n    max-inline-size: 25rem;\n    box-sizing: border-box;\n}\n"}}]);

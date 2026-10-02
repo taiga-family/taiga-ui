@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+    <g id="tuiIconRefreshLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M23 4V10H17"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M20.49 15C19.8416 16.8404 18.6127 18.4202 16.9883 19.5014C15.364 20.5826 13.4323 21.1066 11.4843 20.9945C9.53625 20.8824 7.67742 20.1402 6.18787 18.8798C4.69832 17.6194 3.65875 15.909 3.22578 14.0064C2.79281 12.1038 2.98991 10.112 3.78738 8.33111C4.58484 6.55025 5.93947 5.0768 7.64717 4.13277C9.35486 3.18874 11.3231 2.82527 13.2553 3.09713C15.1875 3.36898 16.9791 4.26143 18.36 5.64001L23 10"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

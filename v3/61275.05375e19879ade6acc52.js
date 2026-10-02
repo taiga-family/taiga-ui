@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[61275],{61275:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n    width: 30rem;\n}\n\n.small {\n    font: var(--tui-font-text-s);\n}\n\n.medium {\n    font: var(--tui-font-heading-6);\n}\n\n.big {\n    font: var(--tui-font-heading-3);\n}\n"}}]);

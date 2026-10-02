@@ -1,0 +1,16 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path vector-effect="non-scaling-stroke" d="M12 6v6l1.56.78" />
+    <path vector-effect="non-scaling-stroke" d="M13.227 21.925a10 10 0 1 1 8.767-9.588" />
+    <path vector-effect="non-scaling-stroke" d="m14 18 4-4 4 4" />
+    <path vector-effect="non-scaling-stroke" d="M18 22v-8" />
+</svg>

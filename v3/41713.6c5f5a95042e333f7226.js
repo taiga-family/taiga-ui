@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[41713],{41713:n=>{n.exports='<a\n    href="http://www.montypython.com/"\n    icon="tuiIconImageLarge"\n    rel="noreferrer"\n    target="_blank"\n    tuiAction\n>\n    It\'s\n</a>\n'}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[445],{xKw6:function(n,o,p){"use strict";p.r(o),o.default="```ts\nimport {TuiAppBarModule} from '@taiga-ui/addon-mobile';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiAppBarModule,\n  ],\n  // ...\n})\nexport class AppModule {}\n```\n"}}]);

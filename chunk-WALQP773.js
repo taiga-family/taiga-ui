@@ -1,0 +1,1 @@
+import{c as i}from"./chunk-J2QLISJW.js";import{a as s}from"./chunk-2Y3RJUX6.js";import{Aa as e,xa as t}from"./chunk-EFBHF7AB.js";var c=new t(""),I=[{provide:c,useFactory:()=>{let o=e(s),E=(o.querySelector("base")?.href??"").replace(o.location.origin,""),r=e(i).reduce((T,n)=>T.set(n.baseHref,n),new Map);return r.get(E)??r.get("/")??null}}];export{c as a,I as b};
