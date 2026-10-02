@@ -6,9 +6,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils/miscellaneous';
 import {
     delay,
-    EMPTY,
     filter,
-    fromEvent,
     map,
     merge,
     of,
@@ -38,14 +36,7 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.pipe(
             switchMap((show) =>
                 this.isMobile
-                    ? of(show).pipe(
-                          delay(show ? this.showDelay() : MOBILE_HIDE_DELAY_MS),
-                          takeUntil(
-                              show
-                                  ? fromEvent(this.el.ownerDocument, 'pointerdown')
-                                  : EMPTY,
-                          ),
-                      )
+                    ? of(show).pipe(delay(show ? 0 : MOBILE_HIDE_DELAY_MS))
                     : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
             takeUntil(this.hovered$),
@@ -68,7 +59,8 @@ export class TuiHintHover extends TuiDriver {
         map(
             (value) =>
                 value &&
-                (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
+                (this.el.hasAttribute('tuiHintPointer') ||
+                    !tuiIsObscured(this.el, 'tui-popups > :not(tui-modal)')),
         ),
         tap((visible) => {
             this.visible = visible;
