@@ -40,7 +40,7 @@ export interface TuiHintOptions extends TuiAppearanceOptions {
 }
 
 /** Default values for hint options */
-export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
+export const TUI_HINT_DEFAULT_OPTIONS = {
     direction: 'bottom-start',
     centered: true,
     showDelay: 500,
@@ -48,11 +48,10 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     appearance: '',
     /** TODO @deprecated use {@link TUI_TOOLTIP_OPTIONS} instead **/
     icon: '@tui.circle-help',
-};
+} as const;
 
 /**
  * Default parameters for hint directive
  */
-export const [TUI_HINT_OPTIONS, tuiHintOptionsProvider] = tuiCreateOptions(
-    TUI_HINT_DEFAULT_OPTIONS,
-);
+export const [TUI_HINT_OPTIONS, tuiHintOptionsProvider] =
+    tuiCreateOptions<TuiHintOptions>(TUI_HINT_DEFAULT_OPTIONS);

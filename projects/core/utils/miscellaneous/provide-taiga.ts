@@ -9,10 +9,15 @@ import {
 } from '@angular/core';
 import {Meta, REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TUI_DARK_MODE,
+    TUI_REDUCED_MOTION,
+} from '@taiga-ui/core/tokens';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 import {tuiEnableFontScaling} from './font-scaling';
+import {tuiGetDuration} from './get-duration';
 
 interface ExperimentalAPIs {
     readonly all: boolean;
@@ -53,6 +58,14 @@ export function provideTaiga(
             const doc = inject(DOCUMENT);
             const meta = inject(Meta);
             const mode = inject(TUI_DARK_MODE);
+            const duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+            const reducedMotion = inject(TUI_REDUCED_MOTION);
+
+            doc.documentElement.style.setProperty('--tui-duration', `${duration}ms`);
+            doc.documentElement.style.setProperty(
+                '--tui-scroll-behavior',
+                reducedMotion ? 'auto' : 'smooth',
+            );
 
             if (options.scrollbars === 'custom') {
                 doc.documentElement.classList.add('tui-zero-scrollbar');

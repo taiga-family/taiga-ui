@@ -40,7 +40,7 @@ class Styles {}
         tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
-    host: {'[attr.data-size]': 'size()'},
+    host: {tuiNotification: '', '[attr.data-size]': 'size()'},
 })
 export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
