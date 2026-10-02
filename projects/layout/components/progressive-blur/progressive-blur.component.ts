@@ -1,5 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
+/**
+ * @internal
+ */
 @Component({
     selector: 'tui-progressive-blur',
     template: `

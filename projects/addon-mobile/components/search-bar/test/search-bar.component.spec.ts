@@ -2,9 +2,8 @@ import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {TuiSearchBar} from '@taiga-ui/addon-mobile';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButtonX} from '@taiga-ui/core';
-import {provideEventPlugins} from '@taiga-ui/event-plugins';
+import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
+import {provideTaiga, TUI_LIQUID_GLASS, TuiButtonX} from '@taiga-ui/core';
 
 describe('SearchBar', () => {
     describe('on a search element', () => {
@@ -41,7 +40,7 @@ describe('SearchBar', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [provideEventPlugins()],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
@@ -101,7 +100,7 @@ describe('SearchBar', () => {
         it('leaves the field wrapper last, so android keeps the magnifier', async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [provideEventPlugins()],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
 
@@ -153,7 +152,7 @@ describe('SearchBar', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [provideEventPlugins()],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
@@ -178,6 +177,58 @@ describe('SearchBar', () => {
 
             expect(input().value).toBe('');
             expect(fixture.componentInstance.query()).toBeNull();
+        });
+    });
+
+    describe('progressive blur', () => {
+        @Component({
+            imports: [TuiSearchBar],
+            template: `
+                <search tuiSearchBar>
+                    <input tuiSearchBar />
+                </search>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {}
+
+        const render = async (
+            platform: 'android' | 'ios',
+            liquidGlass: boolean,
+        ): Promise<HTMLElement> => {
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [
+                    provideTaiga(),
+                    {provide: TUI_PLATFORM, useValue: platform},
+                    {provide: TUI_LIQUID_GLASS, useValue: liquidGlass},
+                ],
+            });
+            await TestBed.compileComponents();
+
+            const fixture = TestBed.createComponent(Test);
+
+            fixture.detectChanges();
+
+            return fixture.nativeElement;
+        };
+
+        it('is rendered on iOS with liquid glass', async () => {
+            const element = await render('ios', true);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeTruthy();
+        });
+
+        it('is not rendered on iOS without liquid glass', async () => {
+            const element = await render('ios', false);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeNull();
+        });
+
+        it('is not rendered on android even with liquid glass', async () => {
+            const element = await render('android', true);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeNull();
         });
     });
 });
