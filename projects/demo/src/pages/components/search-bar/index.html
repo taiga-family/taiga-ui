@@ -54,6 +54,16 @@
                             <code>IntersectionObserver</code>
                             watching the heading
                         }
+                        @case (6) {
+                            On iOS with liquid glass, a progressive blur can be shown under the pinned field once the
+                            content scrolls beneath it. To activate it, apply the
+                            <code>tui-liquid-glass_blur</code>
+                            class to the
+                            <code>tuiSearchBar</code>
+                            element. If the background is colored, provide it via the
+                            <code>--tui-progressive-blur-background</code>
+                            CSS variable for correct fading
+                        }
                         @default {}
                     }
                 </ng-template>
