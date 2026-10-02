@@ -1,0 +1,45 @@
+<header class="header">
+    <tui-app-bar *ngIf="!active">
+        <button
+            title="Back"
+            tuiAppBarBack
+            tuiSlot="left"
+            type="button"
+        ></button>
+        Taiga UI
+    </tui-app-bar>
+
+    <div role="search">
+        <form
+            appearance="floating"
+            tuiSearchBar
+            (tuiActiveZoneChange)="active = $event"
+        >
+            <input
+                placeholder="Search"
+                tuiSearchBar
+            />
+            <button
+                tuiButtonClose
+                tuiIconButton
+                type="reset"
+            >
+                Cancel
+            </button>
+        </form>
+    </div>
+</header>
+
+<div
+    *tuiRepeatTimes="let index of 12"
+    tuiCell
+>
+    <tui-avatar
+        appearance="secondary"
+        src="@tui.heart"
+    />
+    <div tuiTitle>
+        Title
+        <div tuiSubtitle>Description</div>
+    </div>
+</div>

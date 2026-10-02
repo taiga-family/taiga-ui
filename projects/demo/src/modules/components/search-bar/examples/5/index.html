@@ -1,0 +1,39 @@
+<h2
+    class="title"
+    (waIntersectionObservee)="floating = !$event[0]?.isIntersecting"
+>
+    Search
+</h2>
+
+<div role="search">
+    <form
+        tuiSearchBar
+        [appearance]="floating ? 'floating' : 'neutral'"
+    >
+        <input
+            placeholder="Search"
+            tuiSearchBar
+        />
+        <button
+            tuiButtonClose
+            tuiIconButton
+            type="reset"
+        >
+            Cancel
+        </button>
+    </form>
+</div>
+
+<div
+    *tuiRepeatTimes="let index of 12"
+    tuiCell
+>
+    <tui-avatar
+        appearance="secondary"
+        src="@tui.heart"
+    />
+    <div tuiTitle>
+        Title
+        <div tuiSubtitle>Description</div>
+    </div>
+</div>

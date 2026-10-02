@@ -1,0 +1,15 @@
+<search tuiSearchBar>
+    <input
+        placeholder="Search"
+        tuiSearchBar
+        [formControl]="query"
+    />
+    <button
+        tuiButtonClose
+        tuiIconButton
+        type="button"
+        (click)="query.reset()"
+    >
+        Cancel
+    </button>
+</search>
