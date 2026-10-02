@@ -1175,6 +1175,11 @@
 ```text
   TuiMobileLoaderAndroid, TuiMobileLoaderIOS, TuiPullToRefresh, TuiPullToRefreshService
 ```
+### search-bar
+
+```text
+  TuiSearchBar, TuiSearchBarComponent, TuiSearchBarInput
+```
 ### sheet-dialog
 
 ```text
@@ -41616,6 +41621,366 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
 })
 export default class Page {
     protected readonly examples = [&#039;Filters&#039;, &#039;Small&#039;];
+}
+```
+
+---
+# components/SearchBar
+- **Package**: `ADDON-MOBILE`
+- **Type**: components
+TuiSearchBar is a mobile search field. Put tuiSearchBar on a &amp;lt;form&amp;gt; or a &amp;lt;search&amp;gt; element, project a native &amp;lt;input tuiSearchBar&amp;gt; into it and a &amp;lt;button tuiIconButton tuiButtonClose&amp;gt; next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field, on Android it moves inside the field on the leading side and turns into a back arrow.
+
+### How to Use (Import)
+
+```ts
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiButton,
+    TuiButtonClose,
+    TuiSearchBar,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+&lt;form tuiSearchBar&gt;
+  &lt;input
+    placeholder=&quot;Search&quot;
+    tuiSearchBar
+  /&gt;
+  &lt;button
+    tuiButtonClose
+    tuiIconButton
+    type=&quot;reset&quot;
+  &gt;
+    Cancel
+  &lt;/button&gt;
+&lt;/form&gt;
+```
+
+### Usage Examples
+
+#### Inline iOS
+
+**Template:**
+```html
+&lt;search tuiSearchBar&gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar /&gt;
+&lt;/search&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM} from &#039;@taiga-ui/cdk&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiSearchBar],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_PLATFORM, useValue: &#039;ios&#039;}],
+    host: {&#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;},
+})
+export default class Example {}
+```
+
+#### Android
+
+**Template:**
+```html
+&lt;search tuiSearchBar&gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar [formControl]=&quot;query&quot; /&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;button&quot; (click)=&quot;query.reset()&quot; &gt; Cancel &lt;/button&gt;
+&lt;/search&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormControl, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiButton, TuiButtonClose, TuiSearchBar],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_PLATFORM, useValue: &#039;android&#039;}],
+    host: {&#039;[attr.data-platform]&#039;: &#039;&quot;android&quot;&#039;},
+})
+export default class Example {
+    protected readonly query = new FormControl(&#039;&#039;);
+}
+```
+
+#### iOS floating
+
+**Template:**
+```html
+&lt;div role=&quot;search&quot;&gt;
+&lt;form appearance=&quot;floating&quot; tuiSearchBar (ngSubmit)=&quot;onSubmit()&quot; &gt;
+&lt;input name=&quot;query&quot; placeholder=&quot;Search&quot; tuiSearchBar [(ngModel)]=&quot;query&quot; /&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;reset&quot; &gt; Cancel &lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component, inject} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiAlertService, TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiButton, TuiButtonClose, TuiSearchBar],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    host: {&#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;},
+})
+export default class Example {
+    private readonly alert = inject(TuiAlertService);
+
+    protected query: string | null = &#039;&#039;;
+
+    protected onSubmit(): void {
+        this.alert.open(`Searching for ${this.query}`).subscribe();
+    }
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    box-sizing: border-box;
+    inline-size: 20rem;
+    padding: 1.5rem 1rem;
+    overflow-x: hidden;
+}
+```
+
+#### App bar
+
+**Template:**
+```html
+&lt;header class=&quot;header&quot;&gt;
+&lt;tui-app-bar *ngIf=&quot;!active&quot;&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI &lt;/tui-app-bar&gt;
+&lt;div role=&quot;search&quot;&gt;
+&lt;form appearance=&quot;floating&quot; tuiSearchBar (tuiActiveZoneChange)=&quot;active = $event&quot; &gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar /&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;reset&quot; &gt; Cancel &lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/header&gt;
+&lt;div *tuiRepeatTimes=&quot;let index of 12&quot; tuiCell &gt;
+&lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.heart&quot; /&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {NgIf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM, TuiActiveZone, TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+import {TuiAppBar, TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        NgIf,
+        TuiActiveZone,
+        TuiAppBar,
+        TuiAvatar,
+        TuiButton,
+        TuiButtonClose,
+        TuiCell,
+        TuiRepeatTimes,
+        TuiSearchBar,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    protected active = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+
+.header {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    overflow: hidden;
+    margin-block-end: -2rem;
+    padding-block-end: 2rem;
+}
+
+[role=&#039;search&#039;] {
+    padding: 0.75rem 1rem;
+}
+```
+
+#### Sticky
+
+**Template:**
+```html
+&lt;h2 class=&quot;title&quot; (waIntersectionObservee)=&quot;floating = !$event[0]?.isIntersecting&quot; &gt; Search &lt;/h2&gt;
+&lt;div role=&quot;search&quot;&gt;
+&lt;form tuiSearchBar [appearance]=&quot;floating ? &#039;floating&#039; : &#039;neutral&#039;&quot; &gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar /&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;reset&quot; &gt; Cancel &lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;div *tuiRepeatTimes=&quot;let index of 12&quot; tuiCell &gt;
+&lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.heart&quot; /&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    WaIntersectionObserver,
+    WaIntersectionObserverDirective,
+    WaIntersectionRoot,
+} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM, TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+import {TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiAvatar,
+        TuiButton,
+        TuiButtonClose,
+        TuiCell,
+        TuiRepeatTimes,
+        TuiSearchBar,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    hostDirectives: [WaIntersectionObserverDirective, WaIntersectionRoot],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    protected floating = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-font-heading-4);
+    font-weight: bold;
+}
+
+[role=&#039;search&#039;] {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    padding: 0.75rem 1rem;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        &#039;Inline iOS&#039;,
+        &#039;Android&#039;,
+        &#039;iOS floating&#039;,
+        &#039;App bar&#039;,
+        &#039;Sticky&#039;,
+    ];
 }
 ```
 
