@@ -1,6 +1,6 @@
 import {computed, Directive, effect, inject, INJECTOR, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_CONTROL_OPTIONS, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectFormField} from '@taiga-ui/cdk/utils/di';
@@ -40,6 +40,7 @@ import {type TuiInteractiveState} from '@taiga-ui/core/types';
     },
 })
 export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
+    private readonly options = inject(TUI_CONTROL_OPTIONS);
     private readonly field = tuiInjectFormField({self: true, optional: true});
     private readonly computedInvalid = computed(
         () => this.textfield.invalid() ?? (this.field() ? null : this.invalid()),
@@ -74,7 +75,10 @@ export class TuiInputDirective<T> implements TuiTextfieldAccessor<T> {
     /**
      * TODO(v6): delete, it's only for backward compatibility
      */
-    public readonly readOnly = computed(() => this.readonly() || this.readOnlyLegacy());
+    public readonly readOnly = computed(
+        () => this.readonly() || this.readOnlyLegacy() || this.options.readonly(),
+    );
+
     public readonly readonly = input(false);
 
     /**
