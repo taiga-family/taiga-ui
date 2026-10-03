@@ -94,5 +94,50 @@ describe('ng-update migrate packages', () => {
         }),
     );
 
+    it(
+        'adds introduced packages when their imports appear but they are missing',
+        migrate({
+            component: /* TypeScript */ `
+                import {tuiHexToRgb, TUI_IS_TOUCH} from '@taiga-ui/cdk';
+
+                export class Test {
+                    protected readonly rgb = tuiHexToRgb;
+                    protected readonly touch = TUI_IS_TOUCH;
+                }
+            `,
+            packageJson: `
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1"
+                 }
+             }
+            `,
+        }),
+    );
+
+    it(
+        'does not add introduced packages that are not imported',
+        migrate({
+            component: /* TypeScript */ `
+                import {TuiButton} from '@taiga-ui/core';
+
+                export class Test {
+                    protected readonly button = TuiButton;
+                }
+            `,
+            packageJson: `
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1"
+                 }
+             }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });
