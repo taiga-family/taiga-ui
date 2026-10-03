@@ -1,17 +1,22 @@
 import {type Locator} from '@playwright/test';
+import {
+    TUI_INPUT_RANGE_LEGACY_LOCATORS,
+    TUI_INPUT_RANGE_LOCATORS,
+    TUI_RANGE_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 import {TuiRangePO} from './range.po';
 
 export class TuiInputRangePO {
     public readonly textfieldStart = this.host.locator(
-        '[automation-id=tui-input-range__left-input] input, tui-textfield input:first-of-type',
+        `${TUI_INPUT_RANGE_LOCATORS.INPUT_START},${TUI_INPUT_RANGE_LEGACY_LOCATORS.INPUT_START}`,
     );
 
     public readonly textfieldEnd = this.host.locator(
-        '[automation-id=tui-input-range__right-input] input, tui-textfield input:last-of-type',
+        `${TUI_INPUT_RANGE_LOCATORS.INPUT_END},${TUI_INPUT_RANGE_LEGACY_LOCATORS.INPUT_END}`,
     );
 
-    public readonly range = new TuiRangePO(this.host.locator('tui-range'));
+    public readonly range = new TuiRangePO(this.host.locator(TUI_RANGE_LOCATORS.HOST));
 
     constructor(private readonly host: Locator) {}
 }
