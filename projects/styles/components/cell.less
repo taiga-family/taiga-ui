@@ -1,11 +1,14 @@
 @import '@taiga-ui/styles/utils';
 
+:where([tuiCell]&) {
+    .button-clear();
+}
+
 [tuiCell]:where(*&) {
     --t-pad: 0.125rem 1rem;
     --t-radius: var(--tui-radius-s);
 
     .transition(~'background');
-    .button-clear();
 
     position: relative;
     display: flex;
@@ -280,20 +283,10 @@
 }
 
 @media @tui-mouse {
-    a[tuiCell]:where(*&):hover,
-    button[tuiCell]:where(*&):hover,
-    label[tuiCell]:where(*&):hover {
-        &:not(:disabled, [data-state='disabled']) {
-            background: var(--tui-background-neutral-1);
-            cursor: pointer;
-        }
-    }
-
-    label[tuiCell]:where(*&):hover {
-        &:not(:has(input:disabled)) {
-            background: var(--tui-background-neutral-1);
-            cursor: pointer;
-        }
+    :where(:is(a, button, label)[tuiCell]:hover:not(:disabled, [data-state='disabled'])&),
+    :where(label[tuiCell]:hover:not(:has(input:disabled))&) {
+        background: var(--tui-background-neutral-1);
+        cursor: pointer;
     }
 }
 
