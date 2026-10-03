@@ -33,6 +33,7 @@ import {
     switchMap,
 } from 'rxjs';
 
+import {TUI_CONTROL_OPTIONS} from './control.options';
 import {TUI_IDENTITY_VALUE_TRANSFORMER, TuiValueTransformer} from './value-transformer';
 
 const FLAGS = {self: true, optional: true};
@@ -79,6 +80,7 @@ const FLAGS = {self: true, optional: true};
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
+    private readonly controlOptions = inject(TUI_CONTROL_OPTIONS);
     private readonly refresh$ = new Subject<void>();
     private readonly internal = signal(this.fallback);
 
@@ -99,7 +101,10 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     /**
      * TODO(v6): delete, it's only for backward compatibility
      */
-    public readonly readOnly = computed(() => this.readonly() || this.readOnlyLegacy());
+    public readonly readOnly = computed(
+        () => this.readonly() || this.readOnlyLegacy() || this.controlOptions.readonly(),
+    );
+
     public readonly readonly = input(false, {transform: coerceBooleanProperty});
     /**
      * @deprecated use `<tui-textfield [invalid]="..." />` instead
