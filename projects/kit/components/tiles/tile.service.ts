@@ -43,8 +43,10 @@ export class TuiTileService implements OnDestroy {
             this.el.style.removeProperty('position');
             this.sub.add(
                 this.position$.subscribe((offset) => {
+                    const rect = Number.isNaN(offset[0]) ? null : this.getRect(offset);
+
                     this.setPosition(element, offset);
-                    this.setRect(element, offset);
+                    this.setRect(element, rect ?? this.getRect(offset));
                 }),
             );
         } else {
@@ -81,9 +83,7 @@ export class TuiTileService implements OnDestroy {
         };
     }
 
-    private setRect({style}: HTMLElement, offset: readonly [number, number]): void {
-        const {top, left, width, height} = this.getRect(offset);
-
+    private setRect({style}: HTMLElement, {top, left, width, height}: DOMRect): void {
         style.top = tuiPx(top);
         style.left = tuiPx(left);
         style.width = tuiPx(width);
