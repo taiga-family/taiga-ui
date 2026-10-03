@@ -41,6 +41,12 @@ export class TuiBarChart {
             : this.value().reduce((max, value) => Math.max(...value, max), 0),
     );
 
+    private readonly getMin = computed(() =>
+        this.collapsed()
+            ? 0
+            : this.value().reduce((min, value) => Math.min(...value, min), 0),
+    );
+
     protected readonly transposed = computed(() =>
         this.value().reduce<ReadonlyArray<readonly number[]>>(
             (result, next) =>
@@ -53,16 +59,38 @@ export class TuiBarChart {
 
     public readonly value = input<ReadonlyArray<readonly number[]>>([]);
     public readonly max = input(Number.NaN);
+    public readonly min = input(Number.NaN);
     public readonly size = input<TuiSizeL | TuiSizeS | null>('m');
     public readonly collapsed = input(false);
     public readonly tapColumn = output<number>();
-    public readonly computedMax = computed(() => this.max() || this.getMax());
+    public readonly computedMax = computed(() =>
+        Number.isNaN(this.max()) ? this.getMax() : this.max(),
+    );
+    public readonly computedMin = computed(() =>
+        Number.isNaN(this.min()) ? this.getMin() : this.min(),
+    );
+
+    public readonly computedRange = computed(
+        () => this.computedMax() - this.computedMin() || 1,
+    );
+
+    public readonly zeroLineDistance = computed(
+        () =>
+            (this.collapsed() ? 0 : (100 * -this.computedMin()) / this.computedRange()) ||
+            0,
+    );
+
+    protected readonly denominator = computed(() =>
+        this.collapsed() ? this.computedMax() : this.computedRange(),
+    );
 
     public readonly percentMapper: TuiMapper<
         [readonly number[], boolean, number],
         number
-    > = (set, collapsed, max) =>
-        (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
+    > = (set, collapsed, denominator) =>
+        (100 *
+            (collapsed ? tuiSum(...set.map(Math.abs)) : this.getColumnExtension(set))) /
+        denominator;
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content() || '';
@@ -74,5 +102,11 @@ export class TuiBarChart {
 
     protected getHintId(index: number): string {
         return `${this.autoId}_${index}`;
+    }
+
+    private getColumnExtension(set: readonly number[]): number {
+        return set.some((value) => value > 0)
+            ? Math.max(...set)
+            : Math.abs(Math.min(...set, 0));
     }
 }
