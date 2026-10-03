@@ -1,8 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    EnvironmentInjector,
     inject,
-    INJECTOR,
     type Type,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -19,7 +19,7 @@ import {delay, from, of, switchMap, tap} from 'rxjs';
 export default class TuiRoutableDialog {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
-    private readonly injector = inject(INJECTOR);
+    private readonly injector = inject(EnvironmentInjector);
     private readonly dialog = inject(TuiDialogService);
 
     constructor() {
