@@ -46,6 +46,23 @@ test.describe('Navigation', () => {
     });
 
     test.describe('anchor links navigation works', () => {
+        test('selects the active example on the first visit to an anchor', async ({
+            page,
+        }) => {
+            await page.setViewportSize({width: 1920, height: 900});
+            await tuiGoto(page, `${DemoRoute.InputDate}#validation`, {hideHeader: false});
+
+            await expect(page.locator('tui-doc-toc a._active')).toHaveText('Validation');
+
+            await page.locator('tui-doc-toc a[href$="#format"]').click();
+
+            await expect(page.locator('tui-doc-toc a._active')).toHaveText('Format');
+
+            await page.locator('tui-doc-toc a[href$="#basic"]').click();
+
+            await expect(page.locator('tui-doc-toc a._active')).toHaveText('Basic');
+        });
+
         // TODO: migrate
         test.skip('scroll to "tui-doc-example"', async ({page, browserName}) => {
             // TODO: why does this test keep failing in safari
