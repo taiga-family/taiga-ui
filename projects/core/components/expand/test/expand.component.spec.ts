@@ -57,6 +57,7 @@ describe('Expand', () => {
         const collapsed = await loader.getHarness(
             TuiExpandHarness.with({selector: '#collapsed'}),
         );
+
         const expanded = await loader.getHarness(
             TuiExpandHarness.with({selector: '#expanded'}),
         );
