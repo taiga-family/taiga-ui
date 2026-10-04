@@ -40,29 +40,21 @@ describe('Expand', () => {
     });
 
     it('finds expand by selector', async () => {
-        const expand = await loader.getHarness(
-            TuiExpandHarness.with({selector: '#collapsed'}),
-        );
+        const expand = await loader.getHarness(TuiExpandHarness.with({selector: '#collapsed'}));
 
         expect(expand).toBeTruthy();
     });
 
     it('reads expanded state', async () => {
-        const collapsed = await loader.getHarness(
-            TuiExpandHarness.with({selector: '#collapsed'}),
-        );
-        const expanded = await loader.getHarness(
-            TuiExpandHarness.with({selector: '#expanded'}),
-        );
+        const collapsed = await loader.getHarness(TuiExpandHarness.with({selector: '#collapsed'}));
+        const expanded = await loader.getHarness(TuiExpandHarness.with({selector: '#expanded'}));
 
         expect(await collapsed.isExpanded()).toBe(false);
         expect(await expanded.isExpanded()).toBe(true);
     });
 
     it('updates expanded state', async () => {
-        const expand = await loader.getHarness(
-            TuiExpandHarness.with({selector: '#collapsed'}),
-        );
+        const expand = await loader.getHarness(TuiExpandHarness.with({selector: '#collapsed'}));
 
         expect(await expand.isExpanded()).toBe(false);
 
