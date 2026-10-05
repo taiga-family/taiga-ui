@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.102.0](https://github.com/taiga-family/taiga-ui/compare/v4.101.0...v4.102.0) (2026-10-05)
+
+### 🚀 Features
+
+- **addon-commerce:** `AmountPipe`, `CurrencyPipe` add currency token
+  ([#15116](https://github.com/taiga-family/taiga-ui/issues/15116))
+  ([3fcd60d](https://github.com/taiga-family/taiga-ui/commit/3fcd60db9a274c12a6f0945cb113b866c3e55062))
+- **addon-mobile:** `SearchBar` add new component ([#15122](https://github.com/taiga-family/taiga-ui/issues/15122))
+  ([397399b](https://github.com/taiga-family/taiga-ui/commit/397399b93d66ac8e06204247d17091bef4d08c98))
+- **addon-mobile:** `Tabbar` add liquid-glass support ([#15118](https://github.com/taiga-family/taiga-ui/issues/15118))
+  ([21da998](https://github.com/taiga-family/taiga-ui/commit/21da998257548bc76500c459c98bc8c719b20628))
+- **kit:** unshrink dot for status ([#15137](https://github.com/taiga-family/taiga-ui/issues/15137))
+  ([34d01d8](https://github.com/taiga-family/taiga-ui/commit/34d01d8cc7910831dc4acdaa9927aa7c753374ee))
+- **layout:** `AppBar` add liquid-glass support ([#15101](https://github.com/taiga-family/taiga-ui/issues/15101))
+  ([6171153](https://github.com/taiga-family/taiga-ui/commit/617115388bd4afceae96a39845665064bbcb15bc))
+
+### 🐞 Bug Fixes
+
+- **kit:** render long Copy text in Safari ([#15150](https://github.com/taiga-family/taiga-ui/issues/15150))
+  ([abf3d73](https://github.com/taiga-family/taiga-ui/commit/abf3d73be6c355808b23be5d2b5a2d56fef0de35))
+- **layout:** fixed mobile tui-list margin-inline ([#15130](https://github.com/taiga-family/taiga-ui/issues/15130))
+  ([555fd7e](https://github.com/taiga-family/taiga-ui/commit/555fd7e3d52d8fefff9733ba3677524607d4b6c9))
+
 ## [4.101.0](https://github.com/taiga-family/taiga-ui/compare/v4.100.0...v4.101.0) (2026-09-28)
 
 ### 🐞 Bug Fixes
