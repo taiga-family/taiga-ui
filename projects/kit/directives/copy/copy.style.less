@@ -16,6 +16,13 @@
             .t-content {
                 opacity: var(--tui-disabled-opacity);
                 mask-position: 0;
+                animation-name: tuiCopySafariOpacity;
+
+                .safari-only({
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;
+                });
             }
 
             .t-button {
@@ -27,11 +34,22 @@
     &:has(.t-button:focus-visible) .t-content {
         opacity: var(--tui-disabled-opacity);
         mask-position: 0;
+        animation-name: tuiCopySafariOpacity;
+
+        .safari-only({
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        });
     }
 }
 
 .t-content {
     .transition(~'opacity, mask');
+
+    .safari-only({
+        transition-property: mask;
+    });
 
     mask:
         linear-gradient(
@@ -72,4 +90,14 @@
     margin-inline-end: 0.25rem;
     vertical-align: sub;
     color: var(--tui-text-positive);
+}
+
+@keyframes tuiCopySafariOpacity {
+    from {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    to {
+        opacity: calc(var(--tui-disabled-opacity) + 0.001);
+    }
 }
