@@ -394,6 +394,9 @@
     <loc>https://taiga-ui.dev/components/pull-to-refresh/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/search-bar/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/calendar-month/</loc>
   </url>
   <url>
@@ -1412,6 +1415,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/pull-to-refresh/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/search-bar/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/search-bar/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/calendar-month/API/</loc>
