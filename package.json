@@ -147,7 +147,7 @@
         "@types/express": "4.17.25",
         "@types/glob": "9.0.0",
         "@types/markdown-it": "14.2.0",
-        "@types/node": "25.9.6",
+        "@types/node": "25.9.8",
         "cpy-cli": "5.0.0",
         "date-fns": "4.4.0",
         "express": "4.22.3",
