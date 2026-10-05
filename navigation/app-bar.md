@@ -537,7 +537,7 @@ tui-app-bar {
 **Template:**
 ```html
 <div tuiDynamicHeaderContainer tuiPlatform="ios" waIntersectionRootMargin="-120px 0px 1000000% 0px" class="container" >
-<tui-app-bar [attr.tuiTheme]="color() || mode() ? 'dark' : 'light'" [class.tui-liquid-glass_blur]="blur()" [style.--tui-appbar-background]="color()" >
+<tui-app-bar [attr.tuiTheme]="color() || mode() ? 'dark' : 'light'" [class.tui-liquid-glass_blur]="blur()" [style.--tui-progressive-blur-background]="color()" >
 <button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button>
 <div tuiDynamicHeader tuiHeader="h6" ></div>
 </tui-app-bar>

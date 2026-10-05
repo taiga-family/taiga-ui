@@ -9,7 +9,7 @@
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Label</label> } <textarea placeholder="Placeholder" tuiTextarea [formControl]="control" [max]="max" [min]="min" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" ></textarea>
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [invalid]="controlDoc.invalid" [tuiAppearanceFocus]="appearance.focus" [tuiAppearanceState]="appearance.state" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Label</label> } <textarea placeholder="Placeholder" tuiTextarea [formControl]="control" [maxRows]="max" [minRows]="min" [readonly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" ></textarea>
 </tui-textfield>
 </ng-template>
 ```
@@ -18,8 +18,8 @@
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number` | minimum number of rows in height |
-| [max] | `number` | maximum number of rows before scroll appears |
+| [minRows] | `number` | minimum number of rows in height |
+| [maxRows] | `number` | maximum number of rows before scroll appears |
 
 ### Usage Examples
 

@@ -24,16 +24,20 @@ imports left after
 
 ## Available skills
 
-- **`tui-migration`**
+- **`taiga-ui`**
+— build with Taiga UI.
+
+- **`taiga-ui-setup`**
+— set up Taiga UI in an Angular project: root component, styles, and providers via
+`ng add taiga-ui`
+.
+
+- **`taiga-ui-migration`**
 — safely resolve the schematics migration TODOs left after
 `ng update`
 /
 `nx migrate`
 , clean up migration notes, and clear deprecation warnings without changing runtime behavior.
-
-**`tui-developer` is on the way**
-— a skill for building apps with Taiga UI (setup, components, forms, dialogs, theming) is currently in
-the works and not part of the install yet.
 
 ## Install
 
@@ -42,7 +46,7 @@ Skills install with
 — no setup required. Install a specific skill:
 
 ```bash
-npx skills add taiga-family/skills --skill tui-migration
+npx skills add taiga-family/skills --skill taiga-ui-migration
 ```
 
 …or install everything at once:

@@ -79,7 +79,7 @@ export default class Example {
 
 **Template:**
 ```html
-<div size="l" tuiAvatar tuiHint tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" > ❤️ <tui-hint *tuiHint class="hint" [@.disabled]="true" > You can expose the bubble component with <code>*tuiHint</code> directive to customize it </tui-hint>
+<div size="l" tuiAvatar tuiHint tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" > ❤️ <tui-hint *tuiHint class="hint" > You can expose the bubble component with <code>*tuiHint</code> directive to customize it </tui-hint>
 </div>
 ```
 

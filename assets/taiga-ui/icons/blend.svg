@@ -11,6 +11,6 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <circle vector-effect="non-scaling-stroke" cx="9" cy="9" r="7" />
-  <circle vector-effect="non-scaling-stroke" cx="15" cy="15" r="7" />
+  <circle vector-effect="non-scaling-stroke" cx="15" cy="9" r="7" />
+  <circle vector-effect="non-scaling-stroke" cx="9" cy="15" r="7" />
 </svg>

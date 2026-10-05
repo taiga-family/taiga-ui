@@ -916,7 +916,7 @@
 ### app-bar
 
 ```text
-  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective, TuiProgressiveBlur
+  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective
 ```
 ### block-details
 
@@ -983,6 +983,11 @@
 
 ```text
   TuiPdfViewer
+```
+### progressive-blur
+
+```text
+  TuiProgressiveBlur
 ```
 ### search
 
@@ -2898,7 +2903,7 @@ tui-app-bar {
 **Template:**
 ```html
 &lt;div tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; &gt;
-&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-appbar-background]=&quot;color()&quot; &gt;
+&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-progressive-blur-background]=&quot;color()&quot; &gt;
 &lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
 &lt;div tuiDynamicHeader tuiHeader=&quot;h6&quot; &gt;&lt;/div&gt;
 &lt;/tui-app-bar&gt;
@@ -15044,7 +15049,7 @@ import {delay, of} from &#039;rxjs&#039;;
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
-export default class Page {
+export default class Page extends Array {
     private readonly items = [&#039;Foo&#039;, &#039;Bar&#039;, &#039;Baz&#039;];
 
     protected readonly items$ = inject(WA_IS_E2E)
@@ -15056,11 +15061,12 @@ export default class Page {
     protected readonly sizeVariants: ReadonlyArray&lt;TuiSizeL | TuiSizeS&gt; = [&#039;s&#039;, &#039;m&#039;, &#039;l&#039;];
     protected size = this.sizeVariants[0]!;
 
-    protected readonly customList = {
+    protected readonly [3] = {
         &#039;custom-list/index.ts&#039;: import(&#039;./examples/4/custom-list/index.ts?raw&#039;, {
             with: {loader: &#039;text&#039;},
         }),
         &#039;custom-list/index.html&#039;: import(&#039;./examples/4/custom-list/index.html&#039;),
+        &#039;custom-list/index.less&#039;: import(&#039;./examples/4/custom-list/index.less&#039;),
     };
 
     protected readonly examples = [
@@ -41254,6 +41260,94 @@ search {
 }
 ```
 
+#### Progressive blur
+
+**Template:**
+```html
+&lt;h2 class=&quot;title&quot; (waIntersectionObservee)=&quot;floating.set(!$event[0]?.isIntersecting)&quot; &gt; Search &lt;/h2&gt;
+&lt;search&gt;
+&lt;form tuiSearchBar [appearance]=&quot;floating() ? &#039;floating&#039; : &#039;neutral&#039;&quot; [class.tui-liquid-glass_blur]=&quot;floating()&quot; &gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar /&gt;
+&lt;button tuiButtonX type=&quot;reset&quot; &gt; Cancel &lt;/button&gt;
+&lt;/form&gt;
+&lt;/search&gt; @for (_ of &#039;-&#039;.repeat(12); track $index) { &lt;div tuiCell&gt;
+&lt;div appearance=&quot;secondary&quot; tuiAvatar=&quot;@tui.heart&quot; &gt;&lt;/div&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; }
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    WaIntersectionObserver,
+    WaIntersectionObserverDirective,
+    WaIntersectionRoot,
+} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiButtonX,
+        TuiCell,
+        TuiSearchBar,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    hostDirectives: [WaIntersectionObserverDirective, WaIntersectionRoot],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    protected readonly floating = signal(false);
+}
+```
+
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-typography-heading-h4);
+    font-weight: bold;
+}
+
+search {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+}
+
+form {
+    padding: 0.75rem 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -41274,6 +41368,7 @@ export default class Page {
         &#039;iOS floating&#039;,
         &#039;App bar&#039;,
         &#039;Sticky&#039;,
+        &#039;Progressive blur&#039;,
     ];
 }
 ```
@@ -48982,7 +49077,7 @@ export default class Page {
 
 ```html
 &lt;ng-template&gt;
-&lt;tui-textfield [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; [invalid]=&quot;controlDoc.invalid&quot; [tuiAppearanceFocus]=&quot;appearance.focus&quot; [tuiAppearanceState]=&quot;appearance.state&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; &gt; @if (textfieldDoc.size !== &#039;s&#039;) { &lt;label tuiLabel&gt;Label&lt;/label&gt; } &lt;textarea placeholder=&quot;Placeholder&quot; tuiTextarea [formControl]=&quot;control&quot; [max]=&quot;max&quot; [min]=&quot;min&quot; [readonly]=&quot;controlDoc.readonly&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; &gt;&lt;/textarea&gt;
+&lt;tui-textfield [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; [invalid]=&quot;controlDoc.invalid&quot; [tuiAppearanceFocus]=&quot;appearance.focus&quot; [tuiAppearanceState]=&quot;appearance.state&quot; [tuiTextfieldCleaner]=&quot;textfieldDoc.cleaner&quot; [tuiTextfieldSize]=&quot;textfieldDoc.size&quot; &gt; @if (textfieldDoc.size !== &#039;s&#039;) { &lt;label tuiLabel&gt;Label&lt;/label&gt; } &lt;textarea placeholder=&quot;Placeholder&quot; tuiTextarea [formControl]=&quot;control&quot; [maxRows]=&quot;max&quot; [minRows]=&quot;min&quot; [readonly]=&quot;controlDoc.readonly&quot; [tuiDisabled]=&quot;controlDoc.disabled&quot; &gt;&lt;/textarea&gt;
 &lt;/tui-textfield&gt;
 &lt;/ng-template&gt;
 ```
@@ -48991,8 +49086,8 @@ export default class Page {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number` | minimum number of rows in height |
-| [max] | `number` | maximum number of rows before scroll appears |
+| [minRows] | `number` | minimum number of rows in height |
+| [maxRows] | `number` | maximum number of rows before scroll appears |
 
 ### Usage Examples
 
@@ -56346,7 +56441,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;div size=&quot;l&quot; tuiAvatar tuiHint tuiHintDirection=&quot;end&quot; [style.background]=&quot;&#039;❤️&#039; | tuiAutoColor&quot; &gt; ❤️ &lt;tui-hint *tuiHint class=&quot;hint&quot; [@.disabled]=&quot;true&quot; &gt; You can expose the bubble component with &lt;code&gt;*tuiHint&lt;/code&gt; directive to customize it &lt;/tui-hint&gt;
+&lt;div size=&quot;l&quot; tuiAvatar tuiHint tuiHintDirection=&quot;end&quot; [style.background]=&quot;&#039;❤️&#039; | tuiAutoColor&quot; &gt; ❤️ &lt;tui-hint *tuiHint class=&quot;hint&quot; &gt; You can expose the bubble component with &lt;code&gt;*tuiHint&lt;/code&gt; directive to customize it &lt;/tui-hint&gt;
 &lt;/div&gt;
 ```
 

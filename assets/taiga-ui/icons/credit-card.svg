@@ -13,4 +13,5 @@
 >
   <rect vector-effect="non-scaling-stroke" width="20" height="14" x="2" y="5" rx="2" />
   <line vector-effect="non-scaling-stroke" x1="2" x2="22" y1="10" y2="10" />
+  <path vector-effect="non-scaling-stroke" d="M6 14h2" />
 </svg>

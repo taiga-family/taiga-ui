@@ -285,3 +285,91 @@ search {
     padding: 0.75rem 1rem;
 }
 ```
+
+#### Progressive blur
+
+**Template:**
+```html
+<h2 class="title" (waIntersectionObservee)="floating.set(!$event[0]?.isIntersecting)" > Search </h2>
+<search>
+<form tuiSearchBar [appearance]="floating() ? 'floating' : 'neutral'" [class.tui-liquid-glass_blur]="floating()" >
+<input placeholder="Search" tuiSearchBar />
+<button tuiButtonX type="reset" > Cancel </button>
+</form>
+</search> @for (_ of '-'.repeat(12); track $index) { <div tuiCell>
+<div appearance="secondary" tuiAvatar="@tui.heart" ></div>
+<div tuiTitle> Title <div tuiSubtitle>Description</div>
+</div>
+</div> }
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    WaIntersectionObserver,
+    WaIntersectionObserverDirective,
+    WaIntersectionRoot,
+} from '@ng-web-apis/intersection-observer';
+import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiButtonX, TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        TuiAvatar,
+        TuiButtonX,
+        TuiCell,
+        TuiSearchBar,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+    providers: [
+        // Not required if `provideTaiga({apis: {liquidGlass: true}})` is already set up
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: 'ios'},
+    ],
+    hostDirectives: [WaIntersectionObserverDirective, WaIntersectionRoot],
+    host: {
+        '[attr.data-platform]': '"ios"',
+        '[class.tui-liquid-glass]': 'true',
+    },
+})
+export default class Example {
+    protected readonly floating = signal(false);
+}
+```
+
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-typography-heading-h4);
+    font-weight: bold;
+}
+
+search {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+}
+
+form {
+    padding: 0.75rem 1rem;
+}
+```

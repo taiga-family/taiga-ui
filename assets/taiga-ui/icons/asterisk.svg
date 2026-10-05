@@ -11,7 +11,7 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <path vector-effect="non-scaling-stroke" d="M12 6v12" />
-  <path vector-effect="non-scaling-stroke" d="M17.196 9 6.804 15" />
-  <path vector-effect="non-scaling-stroke" d="m6.804 9 10.392 6" />
+  <path vector-effect="non-scaling-stroke" d="M12 5v14" />
+  <path vector-effect="non-scaling-stroke" d="m18.065 8.496-12.125 7" />
+  <path vector-effect="non-scaling-stroke" d="m5.94 8.504 12.125 7" />
 </svg>
