@@ -14,8 +14,10 @@ import {
 } from '@taiga-ui/cdk/utils/color';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {
     type TuiFocusableElementAccessor,
     type TuiNativeFocusableElement,
@@ -35,6 +37,7 @@ type MaskMode = 'gradient' | 'hex' | 'rgb';
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
     host: {
+        '[attr.data-size]': 'size',
         '(click)': 'onClick()',
     },
 })
@@ -46,11 +49,16 @@ export class TuiInputColorComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly domSanitizer = inject(DomSanitizer);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
     public colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     public open = false;
+
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
 
     public get focused(): boolean {
         return !!this.textfield?.focused;
