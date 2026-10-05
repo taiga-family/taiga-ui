@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {TuiSearchBar} from '@taiga-ui/addon-mobile';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiButton} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiButtonClose} from '@taiga-ui/kit';
 
@@ -189,6 +189,59 @@ describe('SearchBar', () => {
 
             expect(input().value).toBe('');
             expect(fixture.componentInstance.query).toBeNull();
+        });
+    });
+
+    describe('progressive blur', () => {
+        @Component({
+            standalone: true,
+            imports: [TuiSearchBar],
+            template: `
+                <search tuiSearchBar>
+                    <input tuiSearchBar />
+                </search>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {}
+
+        const render = async (
+            platform: 'android' | 'ios',
+            liquidGlass: boolean,
+        ): Promise<HTMLElement> => {
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [
+                    NG_EVENT_PLUGINS,
+                    {provide: TUI_PLATFORM, useValue: platform},
+                    {provide: TUI_LIQUID_GLASS, useValue: liquidGlass},
+                ],
+            });
+            await TestBed.compileComponents();
+
+            const fixture = TestBed.createComponent(Test);
+
+            fixture.detectChanges();
+
+            return fixture.nativeElement;
+        };
+
+        it('is rendered on iOS with liquid glass', async () => {
+            const element = await render('ios', true);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeTruthy();
+        });
+
+        it('is not rendered on iOS without liquid glass', async () => {
+            const element = await render('ios', false);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeNull();
+        });
+
+        it('is not rendered on android even with liquid glass', async () => {
+            const element = await render('android', true);
+
+            expect(element.querySelector('tui-progressive-blur')).toBeNull();
         });
     });
 });
