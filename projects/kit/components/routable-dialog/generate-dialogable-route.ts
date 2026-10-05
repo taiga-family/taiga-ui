@@ -1,4 +1,4 @@
-import {type Type} from '@angular/core';
+import {INJECTOR, type Injector, type ProviderToken, type Type} from '@angular/core';
 import {type DefaultExport, type Route} from '@angular/router';
 import {type TuiDialogOptions} from '@taiga-ui/core/portals/dialog';
 
@@ -7,8 +7,13 @@ export function tuiRouteDialog<I>(
     {
         path = '',
         outlet = '',
+        injector = INJECTOR,
         ...dialogOptions
-    }: Partial<TuiDialogOptions<I>> & {path?: string; outlet?: string} = {},
+    }: Partial<TuiDialogOptions<I>> & {
+        path?: string;
+        outlet?: string;
+        injector?: ProviderToken<Injector>;
+    } = {},
 ): Route {
     return {
         path,
@@ -16,6 +21,7 @@ export function tuiRouteDialog<I>(
         loadComponent: async () => import('./routable-dialog.component'),
         data: {
             dialog: component,
+            injector,
             backUrl: path
                 .split('/')
                 .map(() => '..')
