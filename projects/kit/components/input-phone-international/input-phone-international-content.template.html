@@ -11,7 +11,7 @@
     [size]="size()"
     [tuiAppearanceFocus]="host.open()"
     (click.prevent)="host.interactive() && host.open.set(!host.open())"
-    (pointerdown.stop)="(0)"
+    (pointerdown.stop)="onPointerDown($event)"
 >
     <img
         class="t-ipi-flag"
