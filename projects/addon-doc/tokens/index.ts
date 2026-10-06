@@ -1,3 +1,4 @@
+export * from './actions';
 export * from './code-actions';
 export * from './code-editor';
 export * from './default-tabs';
