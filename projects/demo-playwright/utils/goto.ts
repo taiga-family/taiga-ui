@@ -179,15 +179,16 @@ export async function tuiGoto(
         await page.addStyleTag({
             content: `
             *, *::before, *::after {
-                anchor-name: none !important;
-                position-anchor: none !important;
-                position-visibility: always !important;
-                position-try-fallbacks: none !important;
+              anchor-name: none !important;
+              position-anchor: none !important;
+              position-visibility: always !important;
+              position-try-fallbacks: none !important;
             }
+
             /* Reset @supports (anchor-name: ...) block overrides for scrollbar */
             .t-scrollbar, tui-scroll-controls {
-                position: sticky !important;
-                inset: 0 !important;
+              position: sticky !important;
+              inset: 0 !important;
             }
         `,
         });
