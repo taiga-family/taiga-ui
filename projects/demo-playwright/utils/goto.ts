@@ -169,5 +169,30 @@ export async function tuiGoto(
         });
     }
 
+    if (!anchorPositioning) {
+        /**
+         * The CSS.supports override above only affects JavaScript calls.
+         * CSS @supports rules are evaluated by the browser's CSS engine at parse time.
+         * This stylesheet neutralizes anchor-positioning CSS properties with !important
+         * to ensure the legacy JS positioning path is genuinely tested.
+         */
+        await page.addStyleTag({
+            content: `
+            *, *::before, *::after {
+              anchor-name: none !important;
+              position-anchor: none !important;
+              position-visibility: always !important;
+              position-try-fallbacks: none !important;
+            }
+
+            /* Reset @supports (anchor-name: ...) block overrides for scrollbar */
+            .t-scrollbar, tui-scroll-controls {
+              position: sticky !important;
+              inset: 0 !important;
+            }
+        `,
+        });
+    }
+
     return response;
 }

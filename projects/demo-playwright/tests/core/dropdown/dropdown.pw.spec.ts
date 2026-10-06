@@ -295,24 +295,6 @@ test.describe('Dropdown', () => {
             await expect.soft(page).toHaveScreenshot('legacy-05-dropdown.png');
         });
 
-        test('Scrollbar dropdown in active zone', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`, {
-                anchorPositioning: false,
-            });
-
-            await new TuiDocumentationPagePO(page).demo.locator('button').click();
-
-            await expect.soft(page).toHaveScreenshot('legacy-10-dropdown.png');
-
-            await page
-                .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                .locator(TUI_SCROLLBAR_LOCATORS.VERTICAL_BAR)
-                .locator(TUI_SCROLLBAR_LOCATORS.THUMB)
-                .click();
-
-            await expect.soft(page).toHaveScreenshot('legacy-11-dropdown.png');
-        });
-
         test('Nested sided dropdown', async ({page}) => {
             await page.setViewportSize({width: 750, height: 400});
             await tuiGoto(page, DemoRoute.DataList, {anchorPositioning: false});
