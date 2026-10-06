@@ -7,5 +7,24 @@
         block-size: calc(3.375rem + var(--t-padding));
         padding-block-start: var(--t-padding);
         padding-block-end: 0.625rem;
+
+        // Truncate with ellipsis instead of fading
+        > .t-content {
+            display: block;
+            block-size: auto;
+            inline-size: fit-content;
+            overflow: hidden;
+            text-overflow: ellipsis !important;
+            mask-image: none;
+        }
+
+        > .t-content_start {
+            position: static;
+            max-inline-size: none;
+            flex: 0 1 auto;
+            margin-inline-end: auto;
+            text-align: start;
+            transform: none;
+        }
     }
 }
