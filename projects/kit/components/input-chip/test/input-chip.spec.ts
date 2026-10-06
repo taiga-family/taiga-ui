@@ -22,7 +22,7 @@ describe('TuiInputChipDirective', () => {
     }
 
     let fixture: ComponentFixture<Test>;
-    let directive: TuiInputChipDirective<string>;
+    let directive: TuiInputChipDirective<unknown>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({imports: [Test]});
