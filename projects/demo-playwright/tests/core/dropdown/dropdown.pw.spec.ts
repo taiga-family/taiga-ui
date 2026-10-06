@@ -266,4 +266,80 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('21-dropdown-zoomed.png');
     });
+
+    test.describe('legacy positioning without CSS anchor support', () => {
+        test('base', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Dropdown, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await page.waitForTimeout(300);
+
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toHaveClass(
+                /_anchored/,
+            );
+            await expect.soft(page).toHaveScreenshot('legacy-01-dropdown.png');
+        });
+
+        test('DropdownOpen and custom position', async ({page}) => {
+            await tuiGoto(page, DemoRoute.DropdownOpen, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample(
+                '#custom-positioning',
+            );
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await page.waitForTimeout(300);
+
+            await expect.soft(page).toHaveScreenshot('legacy-05-dropdown.png');
+        });
+
+        test('Scrollbar dropdown in active zone', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`, {
+                anchorPositioning: false,
+            });
+
+            await new TuiDocumentationPagePO(page).demo.locator('button').click();
+
+            await expect.soft(page).toHaveScreenshot('legacy-10-dropdown.png');
+
+            await page
+                .locator(TUI_DROPDOWN_LOCATORS.HOST)
+                .locator(TUI_SCROLLBAR_LOCATORS.VERTICAL_BAR)
+                .locator(TUI_SCROLLBAR_LOCATORS.THUMB)
+                .click();
+
+            await expect.soft(page).toHaveScreenshot('legacy-11-dropdown.png');
+        });
+
+        test('Nested sided dropdown', async ({page}) => {
+            await page.setViewportSize({width: 750, height: 400});
+            await tuiGoto(page, DemoRoute.DataList, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample('#complex');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+
+            await expect
+                .soft(page)
+                .toHaveScreenshot('legacy-19-dropdown-sided-nested.png');
+        });
+
+        test('DropdownOpen closing when moved offscreen', async ({page}) => {
+            await tuiGoto(page, DemoRoute.DropdownOpen, {anchorPositioning: false});
+
+            const example = new TuiDocumentationPagePO(page).getExample('#menu');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await example.evaluate((element) => {
+                element.style.transform = 'translate3d(-12rem, 0, 0)';
+            });
+
+            await expect
+                .soft(page)
+                .toHaveScreenshot('legacy-20-dropdown-open-obscured.png');
+        });
+    });
 });

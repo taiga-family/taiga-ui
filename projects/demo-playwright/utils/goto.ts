@@ -31,6 +31,11 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
     hideText?: boolean;
+    /**
+     * Pass `false` to emulate browsers without CSS anchor positioning
+     * and cover the legacy JS positioning path
+     */
+    anchorPositioning?: boolean;
 }
 
 export async function tuiGoto(
@@ -42,6 +47,7 @@ export async function tuiGoto(
         enableNightMode = false,
         hideVersionManager = false,
         hideText = !!process.env.PW_HIDE_TEXT,
+        anchorPositioning = true,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -64,6 +70,22 @@ export async function tuiGoto(
             (lang) => globalThis.localStorage.setItem('tuiLanguage', lang),
             language,
         );
+    }
+
+    if (!anchorPositioning) {
+        await page.addInitScript(() => {
+            const supports = globalThis.CSS.supports.bind(globalThis.CSS);
+
+            globalThis.CSS.supports = (property: string, value?: string): boolean => {
+                if (property.includes('anchor')) {
+                    return false;
+                }
+
+                return value === undefined
+                    ? supports(property)
+                    : supports(property, value);
+            };
+        });
     }
 
     if (date) {
