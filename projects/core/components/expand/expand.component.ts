@@ -10,7 +10,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens/animations-speed';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-expand',
