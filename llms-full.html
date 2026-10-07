@@ -1017,7 +1017,7 @@
 ### app-bar
 
 ```text
-  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective, TuiProgressiveBlur
+  TuiAppBar, TuiAppBarBack, TuiAppBarButton, TuiAppBarComponent, TuiAppBarDirective, TuiAppBarSizeDirective
 ```
 ### block-details
 
@@ -1069,6 +1069,11 @@
 ```text
   TuiAsideComponent, TuiAsideGroupComponent, TuiAsideItemDirective, TuiDrawerDirective, TuiHeaderComponent, TuiHintAsideDirective, TuiLogoComponent, TuiMainComponent, TuiNavComponent, TuiNavigation
   TuiSubheaderCompactComponent, TuiSubheaderComponent
+```
+### progressive-blur
+
+```text
+  TuiProgressiveBlur
 ```
 ### search
 
@@ -3665,7 +3670,7 @@ tui-app-bar {
 **Template:**
 ```html
 &lt;div tuiDynamicHeaderContainer tuiPlatform=&quot;ios&quot; waIntersectionRootMargin=&quot;-120px 0px 1000000% 0px&quot; class=&quot;container&quot; &gt;
-&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-appbar-background]=&quot;color()&quot; &gt;
+&lt;tui-app-bar [attr.tuiTheme]=&quot;color() || mode() ? &#039;dark&#039; : &#039;light&#039;&quot; [class.tui-liquid-glass_blur]=&quot;blur()&quot; [style.--tui-progressive-blur-background]=&quot;color()&quot; &gt;
 &lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;left&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
 &lt;div tuiDynamicHeader tuiHeader=&quot;h6&quot; &gt;&lt;/div&gt;
 &lt;/tui-app-bar&gt;
@@ -41959,6 +41964,97 @@ export default class Example {
 }
 ```
 
+#### Progressive blur
+
+**Template:**
+```html
+&lt;h2 class=&quot;title&quot; (waIntersectionObservee)=&quot;floating = !$event[0]?.isIntersecting&quot; &gt; Search &lt;/h2&gt;
+&lt;div role=&quot;search&quot;&gt;
+&lt;form tuiSearchBar [appearance]=&quot;floating ? &#039;floating&#039; : &#039;neutral&#039;&quot; [class.tui-liquid-glass_blur]=&quot;floating&quot; &gt;
+&lt;input placeholder=&quot;Search&quot; tuiSearchBar /&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;reset&quot; &gt; Cancel &lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;div *tuiRepeatTimes=&quot;let index of 12&quot; tuiCell &gt;
+&lt;tui-avatar appearance=&quot;secondary&quot; src=&quot;@tui.heart&quot; /&gt;
+&lt;div tuiTitle&gt; Title &lt;div tuiSubtitle&gt;Description&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {
+    WaIntersectionObserver,
+    WaIntersectionObserverDirective,
+    WaIntersectionRoot,
+} from &#039;@ng-web-apis/intersection-observer&#039;;
+import {TuiSearchBar} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TUI_PLATFORM, TuiRepeatTimes} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
+import {TuiCell} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiAvatar,
+        TuiButton,
+        TuiButtonClose,
+        TuiCell,
+        TuiRepeatTimes,
+        TuiSearchBar,
+        TuiTitle,
+        WaIntersectionObserver,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+    providers: [
+        {provide: TUI_LIQUID_GLASS, useValue: true},
+        {provide: TUI_PLATFORM, useValue: &#039;ios&#039;},
+    ],
+    hostDirectives: [WaIntersectionObserverDirective, WaIntersectionRoot],
+    host: {
+        &#039;[attr.data-platform]&#039;: &#039;&quot;ios&quot;&#039;,
+        &#039;[class.tui-liquid-glass]&#039;: &#039;true&#039;,
+    },
+})
+export default class Example {
+    protected floating = false;
+}
+```
+**LESS:**
+```less
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-font-heading-4);
+    font-weight: bold;
+}
+
+[role=&#039;search&#039;] {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+}
+
+// The blur covers the search bar box, so the padding belongs to it
+form {
+    padding: 0.75rem 1rem;
+}
+```
+
 
 ### TypeScript
 
@@ -41980,6 +42076,7 @@ export default class Page {
         &#039;iOS floating&#039;,
         &#039;App bar&#039;,
         &#039;Sticky&#039;,
+        &#039;Progressive blur&#039;,
     ];
 }
 ```
