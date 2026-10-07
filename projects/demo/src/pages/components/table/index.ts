@@ -22,5 +22,6 @@ export default class Page {
         'Expandable rows',
         'Toggle rows',
         'Controls',
+        'Overlays from cells',
     ];
 }
