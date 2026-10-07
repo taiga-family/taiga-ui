@@ -137,7 +137,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * and then that dialog will be shaking
      */
     private insideDialog(): boolean {
-        return !!this.element.closest('tui-dialog');
+        return !!this.element.closest('tui-dialog, tui-sheet-dialog');
     }
 
     /**

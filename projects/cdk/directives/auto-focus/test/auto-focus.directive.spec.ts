@@ -1,12 +1,19 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    CUSTOM_ELEMENTS_SCHEMA,
     ElementRef,
     NgZone,
     Renderer2,
     viewChild,
 } from '@angular/core';
-import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    type ComponentFixture,
+    fakeAsync,
+    flushMicrotasks,
+    TestBed,
+    tick,
+} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {
@@ -110,6 +117,43 @@ describe('TuiAutoFocus directive', () => {
             tick(100);
 
             expect(tuiIsFocused(testComponent.element().nativeElement)).toBe(true);
+        }));
+    });
+
+    describe('iOS decoy method inside SheetDialog', () => {
+        @Component({
+            imports: [TuiAutoFocus],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+            template: `
+                <tui-sheet-dialog>
+                    <input tuiAutoFocus />
+                </tui-sheet-dialog>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TestIosSheetDialog {}
+
+        let fixture: ComponentFixture<TestIosSheetDialog>;
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [TestIosSheetDialog],
+                providers: [provideTaiga(), {provide: WA_IS_IOS, useValue: true}],
+            });
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(TestIosSheetDialog);
+        });
+
+        it('appends fake input outside of the sheet dialog', fakeAsync(() => {
+            fixture.detectChanges();
+            flushMicrotasks();
+
+            const sheet: HTMLElement =
+                fixture.nativeElement.querySelector('tui-sheet-dialog');
+
+            expect(sheet.querySelectorAll('input').length).toBe(1);
+
+            tick();
         }));
     });
 
