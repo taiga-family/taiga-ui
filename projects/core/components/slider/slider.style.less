@@ -37,7 +37,7 @@ The first tick should start at the center of thumb to set correct position for a
     transform: var(--tui-slider-thumb-transform, @transform-noop);
 
     :not(:disabled)& {
-        cursor: ew-resize;
+        cursor: var(--t-slider-cursor);
 
         &:hover,
         :active& {
@@ -47,6 +47,9 @@ The first tick should start at the center of thumb to set correct position for a
 }
 
 :host {
+    --t-slider-cursor: ew-resize;
+    --t-slider-ticks-position: @first-tick-offset;
+    --t-slider-ticks-size: calc(100% - @thumb-diameter);
     --t-tick-thickness: 0.25rem;
 
     position: relative;
@@ -56,22 +59,29 @@ The first tick should start at the center of thumb to set correct position for a
     cursor: pointer;
     appearance: none;
     block-size: max(@thumb-diameter, 1rem);
-    padding: calc((max(@thumb-diameter, 1rem) - @track-thickness) / 2) 0;
+    padding-block: calc((max(@thumb-diameter, 1rem) - @track-thickness) / 2);
+    padding-inline: 0;
     box-sizing: border-box;
     outline: none;
     border-radius: 1rem / 3rem;
     background:
-        var(--tui-ticks-gradient) no-repeat @first-tick-offset / calc(100% - @thumb-diameter),
+        var(--tui-ticks-gradient) no-repeat var(--t-slider-ticks-position) / var(--t-slider-ticks-size),
         linear-gradient(
-            to var(--tui-inline-end),
+            to var(--t-slider-track-end, var(--tui-inline-end)),
             currentColor calc(100% * var(--tui-slider-fill-ratio)),
             transparent calc(100% * var(--tui-slider-fill-ratio))
         ),
         var(--tui-background-neutral-2);
     background-clip: content-box;
 
+    &._vertical {
+        --t-slider-cursor: ns-resize;
+        --t-slider-ticks-position: 0 @first-tick-offset;
+        --t-slider-ticks-size: auto calc(100% - @thumb-diameter);
+    }
+
     &:active {
-        cursor: ew-resize;
+        cursor: var(--t-slider-cursor);
 
         &::before {
             opacity: 0.2;
