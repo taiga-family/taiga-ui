@@ -1,6 +1,9 @@
 import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
+/**
+ * @internal
+ */
 @Component({
     standalone: true,
     selector: 'tui-progressive-blur',

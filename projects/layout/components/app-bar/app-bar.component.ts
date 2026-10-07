@@ -19,11 +19,11 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
 import {map, merge} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
-import {TuiProgressiveBlur} from './liquid-glass/progressive-blur.component';
 
 @Component({
     standalone: true,
