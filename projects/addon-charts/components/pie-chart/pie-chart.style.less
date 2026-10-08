@@ -45,6 +45,13 @@
 .t-segment {
     .transition(transform);
 
+    outline: none;
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: 0.125rem;
+    }
+
     :host._empty & {
         display: none;
     }
