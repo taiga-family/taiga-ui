@@ -7,6 +7,7 @@ export * from './calendar.harness';
 export * from './calendar-sheet.harness';
 export * from './calendar-spin.harness';
 export * from './calendar-year.harness';
+export * from './checkbox.harness';
 export * from './dialog.harness';
 export * from './dropdown-open.harness';
 export * from './link.harness';
