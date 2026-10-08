@@ -125,9 +125,11 @@ describe('TuiAutoFocus directive', () => {
             imports: [TuiAutoFocus],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             template: `
-                <tui-sheet-dialog>
-                    <input tuiAutoFocus />
-                </tui-sheet-dialog>
+                <tui-modal>
+                    <tui-sheet-dialog>
+                        <input tuiAutoFocus />
+                    </tui-sheet-dialog>
+                </tui-modal>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
@@ -144,14 +146,13 @@ describe('TuiAutoFocus directive', () => {
             fixture = TestBed.createComponent(TestIosSheetDialog);
         });
 
-        it('appends fake input outside of the sheet dialog', fakeAsync(() => {
+        it('appends fake input outside of the modal', fakeAsync(() => {
             fixture.detectChanges();
             flushMicrotasks();
 
-            const sheet: HTMLElement =
-                fixture.nativeElement.querySelector('tui-sheet-dialog');
+            const modal: HTMLElement = fixture.nativeElement.querySelector('tui-modal');
 
-            expect(sheet.querySelectorAll('input').length).toBe(1);
+            expect(modal.querySelectorAll('input').length).toBe(1);
 
             tick();
         }));
