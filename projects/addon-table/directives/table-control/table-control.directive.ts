@@ -27,14 +27,14 @@ export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
     );
 
     public toggleAll(): void {
-        const disabled = this.children()
-            .filter((i) => i.disabled() && this.value().includes(i.tuiCheckboxRow()))
-            .map((i) => i.tuiCheckboxRow());
+        const checked = this.checked();
 
         this.onChange(
-            this.checked()
-                ? disabled
-                : [...disabled, ...this.enabled().map((i) => i.tuiCheckboxRow())],
+            this.children()
+                .filter((i) =>
+                    i.disabled() ? this.value().includes(i.tuiCheckboxRow()) : !checked,
+                )
+                .map((i) => i.tuiCheckboxRow()),
         );
     }
 

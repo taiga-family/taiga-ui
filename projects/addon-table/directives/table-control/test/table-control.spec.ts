@@ -50,7 +50,7 @@ describe('TuiTableControl', () => {
         public selected: readonly string[] = [];
     }
 
-    let fixture: ComponentFixture<Test>;
+    let fixture: ComponentFixture<unknown>;
     let component: Test;
 
     function getCheckbox(id: string): HTMLInputElement {
@@ -67,8 +67,10 @@ describe('TuiTableControl', () => {
         disabled: readonly string[] = [],
         selected: readonly string[] = [],
     ): Promise<void> {
-        fixture = TestBed.createComponent(Test);
-        component = fixture.componentInstance;
+        const created = TestBed.createComponent(Test);
+
+        fixture = created;
+        component = created.componentInstance;
         component.disabled.set(disabled);
         component.selected = selected;
 
@@ -153,7 +155,14 @@ describe('TuiTableControl', () => {
             await setup(['b'], ['b']);
             await click('all');
 
-            expect([...component.selected].sort()).toEqual(['a', 'b', 'c']);
+            expect(component.selected).toEqual(['a', 'b', 'c']);
+        });
+
+        it('keeps table order when selecting all with selected disabled row', async () => {
+            await setup(['b'], ['c', 'b']);
+            await click('all');
+
+            expect(component.selected).toEqual(['a', 'b', 'c']);
         });
 
         it('keeps selected disabled row when clearing all', async () => {
@@ -202,6 +211,71 @@ describe('TuiTableControl', () => {
             await click('all');
 
             expect(component.selected).toEqual(['a', 'c']);
+        });
+    });
+
+    describe('with disabled attribute without value', () => {
+        @Component({
+            imports: [FormsModule, TuiCheckbox, TuiTable, TuiTableControl],
+            template: `
+                <table
+                    tuiTable
+                    [(ngModel)]="selected"
+                >
+                    <thead>
+                        <tr>
+                            <th tuiTh>
+                                <input
+                                    id="all"
+                                    tuiCheckbox
+                                    tuiCheckboxTable
+                                    type="checkbox"
+                                />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody tuiTbody>
+                        <tr>
+                            <td tuiTd>
+                                <input
+                                    id="a"
+                                    tuiCheckbox
+                                    tuiCheckboxRow="a"
+                                    type="checkbox"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td tuiTd>
+                                <input
+                                    disabled
+                                    id="b"
+                                    tuiCheckbox
+                                    tuiCheckboxRow="b"
+                                    type="checkbox"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TestAttribute {
+            public selected: readonly string[] = [];
+        }
+
+        it('disables the row and skips it when selecting all', async () => {
+            const created = TestBed.createComponent(TestAttribute);
+
+            fixture = created;
+            await stable();
+
+            expect(getCheckbox('b').disabled).toBe(true);
+
+            await click('all');
+
+            expect(created.componentInstance.selected).toEqual(['a']);
         });
     });
 });

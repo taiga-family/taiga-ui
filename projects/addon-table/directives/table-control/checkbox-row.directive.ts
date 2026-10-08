@@ -1,4 +1,5 @@
 import {
+    booleanAttribute,
     computed,
     Directive,
     effect,
@@ -44,7 +45,7 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
     });
 
     public readonly tuiCheckboxRow = input.required<T>();
-    public readonly disabled = input(false);
+    public readonly disabled = input(false, {transform: booleanAttribute});
 
     public ngOnInit(): void {
         this.parent.process(this);
