@@ -1,0 +1,37 @@
+<button
+    appearance="secondary-grayscale"
+    size="s"
+    tuiButton
+    type="button"
+    class="t-action"
+    [iconStart]="icon()"
+    (click)="copy()"
+>
+    {{ copied() ? 'Copied!' : 'Copy page' }}
+</button>
+<button
+    appearance="secondary-grayscale"
+    size="s"
+    tuiDropdownAlign="right"
+    tuiIconButton
+    type="button"
+    class="t-toggle"
+    [iconStart]="icons.chevron"
+    [tuiDropdown]="dropdown"
+    [(tuiDropdownOpen)]="open"
+>
+    More
+</button>
+<ng-template #dropdown>
+    <tui-data-list size="s">
+        <a
+            rel="noreferrer"
+            target="_blank"
+            tuiOption
+            [href]="markdownUrl()"
+            (click)="view($event)"
+        >
+            View as Markdown
+        </a>
+    </tui-data-list>
+</ng-template>
