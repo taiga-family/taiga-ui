@@ -7,6 +7,7 @@ import {
     TuiSliderPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -25,7 +26,7 @@ describe('InputSlider', () => {
 
                 inputSlider = new TuiInputSliderPO(
                     new TuiDocumentationPagePO(page).apiPageExample.locator(
-                        'tui-textfield:has([tuiInputSlider])',
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`,
                     ),
                 );
 
@@ -69,7 +70,7 @@ describe('InputSlider', () => {
 
                 inputSlider = new TuiInputSliderPO(
                     new TuiDocumentationPagePO(page).apiPageExample.locator(
-                        'tui-textfield:has([tuiInputSlider])',
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`,
                     ),
                 );
 
@@ -100,7 +101,7 @@ describe('InputSlider', () => {
 
                 inputSlider = new TuiInputSliderPO(
                     new TuiDocumentationPagePO(page).apiPageExample.locator(
-                        'tui-textfield:has([tuiInputSlider])',
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`,
                     ),
                 );
 
@@ -136,7 +137,9 @@ describe('InputSlider', () => {
 
                 example = new TuiDocumentationPagePO(page).apiPageExample;
                 inputSlider = new TuiInputSliderPO(
-                    example.locator('tui-textfield:has([tuiInputSlider])'),
+                    example.locator(
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`,
+                    ),
                 );
             });
 
@@ -223,7 +226,7 @@ describe('InputSlider', () => {
 
             const example = new TuiDocumentationPagePO(page).apiPageExample;
             const inputSlider = new TuiInputSliderPO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`),
             );
 
             await expect(inputSlider.textfield).toBeDisabled();
@@ -246,7 +249,7 @@ describe('InputSlider', () => {
 
             const example = new TuiDocumentationPagePO(page).apiPageExample;
             const inputSlider = new TuiInputSliderPO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`),
             );
 
             await inputSlider.textfield.press('ArrowUp');
@@ -273,7 +276,9 @@ describe('InputSlider', () => {
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
                 const inputSlider = new TuiInputSliderPO(
-                    apiPageExample.locator('tui-textfield:has([tuiInputSlider])'),
+                    apiPageExample.locator(
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`,
+                    ),
                 );
 
                 await inputSlider.textfield.focus();
@@ -305,7 +310,7 @@ describe('InputSlider', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
             inputSlider = new TuiInputSliderPO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputSlider])`),
             );
         });
 

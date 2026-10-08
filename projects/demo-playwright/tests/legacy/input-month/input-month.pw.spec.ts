@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputMonth', () => {
     test.describe('API', () => {
@@ -16,7 +17,7 @@ test.describe('InputMonth', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputMonth = new TuiInputMonthPO(
-                example.locator('tui-textfield:has([tuiInputMonth])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputMonth])`),
             );
         });
 

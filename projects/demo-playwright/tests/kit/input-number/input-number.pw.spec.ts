@@ -10,6 +10,7 @@ import {
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -21,7 +22,7 @@ describe('InputNumber', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
             inputNumber = new InputNumberPO(
-                example.locator('tui-textfield:has([tuiInputNumber])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputNumber])`),
             );
         });
 
