@@ -20,7 +20,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_BUTTON_OPTIONS,
     tuiButtonOptionsProvider,
@@ -98,6 +98,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
+    private readonly autoId = tuiGenerateId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     protected readonly ghost = viewChild<ElementRef<HTMLElement>>('ghost');
@@ -154,6 +155,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
      */
     public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
+
+    public get id(): string {
+        return this.input()?.nativeElement.id || this.autoId;
+    }
 
     public get disabled(): boolean {
         return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
