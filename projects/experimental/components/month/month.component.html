@@ -1,8 +1,13 @@
 @if (showWeek()) {
-    <span>#</span>
+    <span class="t-label">#</span>
 }
 @for (day of week(); track $index) {
-    <span [attr.data-type]="getType(day)">{{ day.slice(0, 2) | uppercase }}</span>
+    <span
+        class="t-label"
+        [attr.data-type]="getType(day)"
+    >
+        {{ day.slice(0, 2) }}
+    </span>
 }
 @for (week of month() | tuiCalendarSheet: true; track week) {
     @for (day of week; track day) {

@@ -1,5 +1,5 @@
 import {
-    type AfterViewInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -7,52 +7,52 @@ import {
     viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
-import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
+import {TuiSheetDialogClose} from './sheet-dialog-close.directive';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
 @Component({
     selector: 'tui-sheet-dialog',
-    imports: [PolymorpheusOutlet, TuiButton],
+    imports: [PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './sheet-dialog.template.html',
     styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
-    hostDirectives: [TuiAnimated],
+    hostDirectives: [
+        TuiAnimated,
+        TuiScrollRef,
+        {directive: TuiSheetDialogClose, outputs: ['tuiSheetDialogClose']},
+    ],
     host: {
         '[attr.data-appearance]': 'context.appearance',
         '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',
         '[style.--tui-offset.px]': 'context.offset',
         '(click.self)': 'close$.next()',
-        '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
-        '(document:touchend.zoneless)': 'onPointerChange(-1)',
-        '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
-        '(scroll.zoneless)': 'onPointerChange(0)',
+        '(document:touchstart.passive.zoneless)': 'interacted = true',
+        '(tuiSheetDialogClose)': 'close$.next()',
+        '(wheel.passive.zoneless)': 'interacted = true',
     },
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
-    private pointers = 0;
 
-    protected readonly context =
-        injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
-
+    protected readonly context = injectContext<TuiPortalContext<TuiSheetDialogOptions>>();
     protected readonly close$ = new Subject<void>();
-
+    protected interacted = false;
     protected readonly $ = merge(
         this.close$,
         tuiCloseWatcher(),
@@ -76,24 +76,21 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         )
         .subscribe(() => this.close());
 
-    public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial || 0;
+    constructor() {
+        afterNextRender(() => this.onResize());
     }
 
-    protected onPointerChange(delta: number): void {
-        this.pointers = Math.max(this.pointers + delta, 0);
-
-        if (!this.pointers && this.el.scrollTop <= 0) {
-            this.close$.next();
-        }
-    }
-
-    private get initial(): number | undefined {
+    public get initial(): number {
         return this.context.closable
             ? this.stops()
-                  .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+                  .map((e) => e.nativeElement.offsetTop)
+                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
             : 0;
+    }
+
+    // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
+    protected onResize(): void {
+        this.el.scrollTop = this.interacted ? this.el.scrollTop : this.initial;
     }
 
     private close(): void {

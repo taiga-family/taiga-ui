@@ -104,7 +104,7 @@ export interface TuiCard {
         '[attr.data-size]': 'textfield.size()',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
-        '(tuiActiveZoneChange)': 'onTouched()',
+        '(tuiActiveZoneChange)': '!$event && onTouched()',
     },
 })
 export class TuiInputCardGroup
@@ -190,7 +190,7 @@ export class TuiInputCardGroup
     );
 
     protected readonly labelRaised = computed(
-        () => (this.focus() && !this.readOnly()) || !!this.card(),
+        () => (this.focus() && this.interactive()) || !!this.card(),
     );
 
     protected readonly hasCleaner = computed(

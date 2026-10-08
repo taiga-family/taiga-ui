@@ -14,14 +14,13 @@ env:
 jobs:
   lint:
     name: Lint
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+      - uses: taiga-family/actions/setup-node@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         with:
           audit: true
 
@@ -40,7 +39,7 @@ jobs:
               npm run prettier -- --check
               npm run lint
           fi
-      - uses: taiga-family/actions/auto-push@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/auto-push@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

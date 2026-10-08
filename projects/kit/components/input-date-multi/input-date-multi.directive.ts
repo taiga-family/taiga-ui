@@ -94,12 +94,22 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         }
     });
 
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `readonly TuiDay[] | undefined` workaround from `transform`
+     */
     public readonly min = input(this.dateMultiOptions.min ?? TUI_FIRST_DAY, {
-        transform: (min: TuiDay | null): TuiDay => min ?? TUI_FIRST_DAY,
+        transform: (min: TuiDay | readonly TuiDay[] | null | undefined): TuiDay =>
+            min instanceof TuiDay ? min : (this.dateMultiOptions.min ?? TUI_FIRST_DAY),
     });
 
+    /**
+     * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
+     * Solved? Drop `readonly TuiDay[] | undefined` workaround from `transform`
+     */
     public readonly max = input(this.dateMultiOptions.max ?? TUI_LAST_DAY, {
-        transform: (max: TuiDay | null): TuiDay => max ?? TUI_LAST_DAY,
+        transform: (max: TuiDay | readonly TuiDay[] | null | undefined): TuiDay =>
+            max instanceof TuiDay ? max : (this.dateMultiOptions.max ?? TUI_LAST_DAY),
     });
 
     protected processCalendar(calendar: AbstractTuiCalendar): void {

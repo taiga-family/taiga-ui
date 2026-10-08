@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
+import {TuiControl} from '@taiga-ui/cdk';
 import {TuiIcon, TuiRoot} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
@@ -26,6 +28,7 @@ import {createOutputSpy} from 'cypress/angular';
                 <input
                     tuiInputPhoneInternational
                     [countries]="countries()"
+                    [countrySearch]="countrySearch()"
                     [formControl]="control()"
                     [(countryIsoCode)]="countryIsoCode"
                     (countryIsoCodeChange)="countryIsoCodeChange.emit($event)"
@@ -46,6 +49,7 @@ export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
     public readonly control = input(new FormControl('', {nonNullable: true}));
+    public readonly countrySearch = input(false);
     public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 
     public readonly countries = input<readonly TuiCountryIsoCode[]>([
@@ -70,6 +74,39 @@ export class Test implements OnInit {
 describe('InputPhoneInternational', () => {
     beforeEach(() => {
         cy.viewport(400, 300);
+    });
+
+    describe('Dropdown', () => {
+        beforeEach(() => {
+            cy.mount(Test, {componentProperties: {countrySearch: true}});
+            initAliases();
+        });
+
+        it('closes on second country selector click without moving focus from search', () => {
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('be.visible');
+            cy.get('tui-dropdown input[tuiInput]').should('be.focused');
+
+            cy.get('@select').trigger('pointerdown');
+            cy.get('tui-dropdown input[tuiInput]').should('be.focused');
+
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('not.exist');
+        });
+
+        it('closes on second country selector click without moving focus from option', () => {
+            cy.get('@select').click();
+            cy.get('tui-dropdown input[tuiInput]')
+                .should('be.focused')
+                .type('{downArrow}');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').trigger('pointerdown');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('not.exist');
+        });
     });
 
     describe('Count form control updates', () => {
@@ -267,6 +304,85 @@ describe('InputPhoneInternational', () => {
 
                 cy.get('@input').should('have.value', '+375 12 345-67-89');
                 cy.get('@countryIsoCodeChange').should('have.been.calledWith', 'BY');
+            });
+        });
+    });
+
+    describe('Manual [invalid] override (template driven / reactive forms API)', () => {
+        let ngControl!: FormControl<string>;
+
+        @Component({
+            imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
+            template: `
+                <tui-root>
+                    <tui-textfield>
+                        <input
+                            tuiInputPhoneInternational
+                            [formControl]="control()"
+                            [invalid]="true"
+                        />
+                    </tui-textfield>
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+            providers: [
+                tuiInputPhoneInternationalOptionsProvider({
+                    metadata: import('libphonenumber-js/min/metadata').then(
+                        (m) => m.default,
+                    ),
+                }),
+            ],
+        })
+        class ManualInvalidSandbox {
+            public readonly control = input(new FormControl('', {nonNullable: true}));
+        }
+
+        beforeEach(() => {
+            ngControl = new FormControl('', {nonNullable: true});
+        });
+
+        it('paints the appearance but keeps native validity intact', () => {
+            cy.mount(ManualInvalidSandbox, {
+                componentProperties: {control: ngControl},
+            }).then(({fixture}) => {
+                initAliases();
+
+                cy.get('@input').focus().blur();
+
+                cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
+
+                cy.get('@input').should('have.attr', 'aria-invalid', 'false');
+
+                cy.get('@input').should(($input) => {
+                    expect(($input[0] as HTMLInputElement).validationMessage).to.equal(
+                        '',
+                    );
+
+                    const tuiControl = fixture.debugElement
+                        .query(By.css('input[tuiInputPhoneInternational]'))
+                        .injector.get(TuiControl);
+
+                    expect(tuiControl.invalid()).to.equal(true);
+                    expect(ngControl.status).to.equal('VALID');
+                });
+
+                cy.get('tui-textfield').compareSnapshot({
+                    name: 'phone-manual-invalid',
+                    cypressScreenshotOptions: {padding: 8},
+                });
+            });
+        });
+
+        it('paints an untouched control as well — the override does not wait for a touch', () => {
+            cy.mount(ManualInvalidSandbox, {componentProperties: {control: ngControl}});
+
+            initAliases();
+
+            cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
+
+            cy.get('tui-textfield').compareSnapshot({
+                name: 'phone-manual-invalid-untouched',
+                cypressScreenshotOptions: {padding: 8},
             });
         });
     });

@@ -76,7 +76,10 @@
             }
 
             @if (type() === 'number' || type() === 'bigint' || type() === 'number | bigint') {
-                <tui-textfield class="t-input">
+                <tui-textfield
+                    class="t-input"
+                    [tuiTextfieldCleaner]="false"
+                >
                     <input
                         tuiInputNumber
                         [id]="name()"

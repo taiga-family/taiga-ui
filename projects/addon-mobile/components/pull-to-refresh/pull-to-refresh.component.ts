@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    input,
+    type OnDestroy,
+} from '@angular/core';
 import {
     outputFromObservable,
     takeUntilDestroyed,
@@ -26,7 +33,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPullToRefreshService],
 })
-export class TuiPullToRefresh {
+export class TuiPullToRefresh implements OnDestroy {
     private readonly isIOS = inject(WA_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
     private readonly service = inject(TuiPullToRefreshService);
@@ -60,11 +67,16 @@ export class TuiPullToRefresh {
             tuiScrollFrom(this.el.nativeElement)
                 .pipe(startWith(null), tuiZonefree(), takeUntilDestroyed())
                 .subscribe(() => {
-                    this.el.nativeElement.style.setProperty(
-                        'touch-action',
-                        this.el.nativeElement.scrollTop ? '' : 'pan-down',
-                    );
+                    const {style, scrollTop} = this.el.nativeElement;
+
+                    style.setProperty('touch-action', scrollTop > 0 ? '' : 'pan-down');
+                    style.setProperty('overscroll-behavior', scrollTop > 0 ? '' : 'none');
                 });
         }
+    }
+
+    public ngOnDestroy(): void {
+        this.el.nativeElement.style.removeProperty('touch-action');
+        this.el.nativeElement.style.removeProperty('overscroll-behavior');
     }
 }

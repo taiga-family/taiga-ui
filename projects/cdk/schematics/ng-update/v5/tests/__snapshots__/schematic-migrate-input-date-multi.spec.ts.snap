@@ -117,7 +117,7 @@ exports[`ng-update migrate TuiInputDate[multiple] to TuiInputDateMulti: test.ts 
                                 @NgModule({
                     imports: [
                         // ...
-                        TuiInputDate,
+                        ...TuiInputDate,
                     ],
                     // ...
                 })
@@ -301,6 +301,28 @@ exports[`ng-update removes [tuiTextfieldLabelOutside] from tui-input-date (multi
 <input tuiInputDateMulti [formControl]="control" placeholder="Choose dates" />
 <tui-calendar *tuiDropdown />
 </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update renames TuiInputDateMultiModule import to TuiInputDateMulti: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputDateMultiModule],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputDateMulti } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiInputDateMulti],
+                })
+                export class TestComponent {}
             ",
 }
 `;

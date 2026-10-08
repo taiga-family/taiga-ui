@@ -1,11 +1,9 @@
-@if (nativeScrollbar) {
-} @else {
+@if (!hidden) {
     @if (refresh$ | async; as bars) {
         @if (bars[0]) {
             <div
                 tuiAnimated
                 class="t-bar t-bar_vertical"
-                [class.t-bar_has-horizontal]="bars[1]"
                 (mousedown.capture.prevent)="(0)"
             >
                 <div
@@ -18,7 +16,6 @@
             <div
                 tuiAnimated
                 class="t-bar t-bar_horizontal"
-                [class.t-bar_has-vertical]="bars[0]"
                 (mousedown.capture.prevent)="(0)"
             >
                 <div

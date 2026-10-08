@@ -6,7 +6,8 @@ import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiCheckboxRowDirective} from './checkbox-row.directive';
 
 @Directive({
-    selector: '[tuiTable][ngModel],[tuiTable][formControl],[tuiTable][formControlName]',
+    selector:
+        '[tuiTable][ngModel],[tuiTable][formControl],[tuiTable][formControlName],[tuiTable][formField]',
     providers: [tuiFallbackValueProvider([])],
 })
 export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {

@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames [(tuiDropdownOpen)] on tui-combo-box: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-combo-box
+                    [formControl]="control"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    <tui-data-list *tuiDataList>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                </tui-combo-box>
+            ",
+  "1. After": "
+                <tui-textfield
+                    [(open)]="open"
+                >
+                    <tui-data-list *tuiDropdown>
+                        <button
+                            tuiOption
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-data-list>
+                
+<input tuiComboBox [formControl]="control" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames [(tuiDropdownOpen)] on tui-input: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input
+                    [(ngModel)]="value"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    Label
+                    <tui-data-list *tuiDataList>
+                        <button tuiOption>A</button>
+                    </tui-data-list>
+                </tui-input>
+            ",
+  "1. After": "
+                <tui-textfield [(open)]="open">
+                <label tuiLabel>Label</label>
+                <input tuiInput [(ngModel)]="value" />
+<tui-data-list *tuiDropdown>
+                        <button tuiOption>A</button>
+                    </tui-data-list>                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames [(tuiDropdownOpen)] on tui-input-tag: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-input-tag
+                    [(ngModel)]="tags"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    <tui-data-list *tuiDataList>
+                        <button tuiOption>A</button>
+                    </tui-data-list>
+                </tui-input-tag>
+            ",
+  "1. After": "
+                <tui-textfield
+                    
+                    [(open)]="open"
+                 multi>
+                    <tui-data-list *tuiDropdown>
+                        <button tuiOption>A</button>
+                    </tui-data-list>
+                
+<input tuiInputChip [(ngModel)]="tags" />
+</tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames [(tuiDropdownOpen)] on tui-multi-select: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-multi-select
+                    [formControl]="control"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-multi-select>
+            ",
+  "1. After": "
+                <tui-textfield multi tuiChevron
+                    [(open)]="open"
+                >
+                    <input tuiInputChip [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames [(tuiDropdownOpen)] on tui-select: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [(tuiDropdownOpen)]="open"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    [(open)]="open"
+                >
+                    
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;
+
+exports[`ng-update [(tuiDropdownOpen)] -> [(open)] on textfield inputs renames the one-way [tuiDropdownOpen] and (tuiDropdownOpenChange) forms: test.html 1`] = `
+{
+  "0. Before": "
+                <tui-select
+                    [formControl]="control"
+                    [tuiDropdownOpen]="open"
+                    (tuiDropdownOpenChange)="onOpenChange($event)"
+                >
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            ",
+  "1. After": "
+                <!-- TODO: (Taiga UI migration) tui-select was partially migrated. Complete migration manually. See examples: https://taiga-ui.dev/components/select -->
+<tui-textfield tuiChevron
+                    [open]="open"
+                    (openChange)="onOpenChange($event)"
+                >
+                    
+<input tuiSelect [formControl]="control" />
+<tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            ",
+}
+`;

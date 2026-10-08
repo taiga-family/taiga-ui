@@ -5,9 +5,11 @@ import {
     effect,
     inject,
     input,
-    output,
+    untracked,
 } from '@angular/core';
+import {outputFromObservable, toObservable} from '@angular/core/rxjs-interop';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import {filter, skip} from 'rxjs';
 
 import {type TuiSortChange} from '../table.options';
 import {TuiTableSortable} from './sortable.directive';
@@ -26,13 +28,22 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
         sortDirection: this.table.direction(),
     }));
 
-    protected readonly sortOutput = effect(() => {
-        if (this.sortables().length) {
-            this.tuiSortChange.emit(this.sortChange());
+    protected readonly setTableSorter = effect(() => {
+        const key = this.tuiSortBy();
+        const sortable = this.sortables().find((item) => item.key === key);
+
+        if (sortable && untracked(this.table.sorter) !== sortable.sorter()) {
+            this.table.sorter.set(sortable.sorter());
         }
     });
 
-    public readonly tuiSortChange = output<TuiSortChange<T>>();
+    public readonly tuiSortChange = outputFromObservable(
+        toObservable(this.sortChange).pipe(
+            filter(() => Boolean(this.sortables().length)),
+            skip(1),
+        ),
+    );
+
     public readonly tuiSortBy = input<string | keyof T | null>(null);
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {

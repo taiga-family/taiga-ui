@@ -3,4 +3,6 @@ llms.txt
 llms-full.txt
 llms-full.html
 import-map.md
+migration-guide-generated.md
+migration-guide-parsed.md
 sitemap.xml

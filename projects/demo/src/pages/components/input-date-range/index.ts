@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,7 +12,7 @@ import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cd
 import {TuiDropdown, TuiInput, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {
     tuiCreateDefaultDayRangePeriods,
-    type TuiDayRangePeriod,
+    TuiDayRangePeriod,
     TuiInputDateRange,
 } from '@taiga-ui/kit';
 
@@ -20,10 +20,10 @@ import {
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -57,10 +57,16 @@ export default class Example {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected listSize = this.sizeVariants[2]!;
     protected readonly items = tuiCreateDefaultDayRangePeriods();
+    protected readonly longItems = Array.from({length: 20}, (_, index) => {
+        const item = this.items[index % this.items.length]!;
+
+        return new TuiDayRangePeriod(item.range, `${item} ${index + 1}`);
+    });
+
     protected min = this.dates[0];
     protected max = this.dates[4];
     protected readonly limits = [{day: 3}, {day: 5}] as const;
-    protected readonly periodListItems = [null, this.items];
+    protected readonly periodListItems = [null, this.items, this.longItems];
     protected selectedPeriodList: readonly TuiDayRangePeriod[] | null = null;
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;

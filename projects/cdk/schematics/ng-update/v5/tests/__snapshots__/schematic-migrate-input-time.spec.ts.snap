@@ -103,7 +103,7 @@ exports[`ng-update migrate TuiInputTimeModule to TuiInputTime: test.ts 1`] = `
   "1. After": "import { TuiInputTime } from "@taiga-ui/kit";
 
                                 @NgModule({
-                    imports: [TuiInputTime],
+                    imports: [...TuiInputTime],
                 })
                 export class MyModule {}
 

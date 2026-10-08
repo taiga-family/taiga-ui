@@ -2,10 +2,16 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiSelectPO,
+    TuiSelectEO,
     waitIcons,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {
+    TUI_DATA_LIST_LOCATORS,
+    TUI_LABEL_LOCATORS,
+    TUI_SELECT_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -21,8 +27,8 @@ describe('Select', () => {
         test('dropdown works after exiting fullscreen', async ({page}) => {
             const exampleContainer = page.locator('#textfield-customization');
             const example = documentationPage.getExample('#textfield-customization');
-            const host = example.locator('tui-textfield').first();
-            const select = new TuiSelectPO(host);
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
+            const select = new TuiSelectEO(host);
 
             await host.scrollIntoViewIfNeeded();
 
@@ -42,8 +48,8 @@ describe('Select', () => {
 
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#customize-content');
-            const host = example.locator('tui-textfield').first();
-            const select = new TuiSelectPO(host);
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
+            const select = new TuiSelectEO(host);
 
             await host.scrollIntoViewIfNeeded();
 
@@ -61,8 +67,8 @@ describe('Select', () => {
 
         test('opens dropdown by click on icon', async ({page}) => {
             const example = documentationPage.getExample('#items-handlers');
-            const host = example.locator('tui-textfield').first();
-            const select = new TuiSelectPO(host);
+            const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
+            const select = new TuiSelectEO(host);
 
             await host.scrollIntoViewIfNeeded();
             await select.textfield.click({position: {x: 200, y: 30}});
@@ -82,7 +88,7 @@ describe('Select', () => {
         [true, false].forEach((cleanerEnabled) => {
             describe(`tuiTextfieldCleaner=${cleanerEnabled}`, () => {
                 let example!: Locator;
-                let select!: TuiSelectPO;
+                let select!: TuiSelectEO;
 
                 beforeEach(async ({page}) => {
                     await tuiGoto(
@@ -90,8 +96,10 @@ describe('Select', () => {
                         `${DemoRoute.Select}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
                     );
                     example = new TuiDocumentationPagePO(page).demo;
-                    select = new TuiSelectPO(
-                        example.locator('tui-textfield:has([tuiSelect])'),
+                    select = new TuiSelectEO(
+                        example.locator(
+                            `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                        ),
                     );
 
                     await select.textfield.click();
@@ -121,13 +129,15 @@ describe('Select', () => {
 
         describe('[tuiTextfieldCleaner=true]', () => {
             let example!: Locator;
-            let select!: TuiSelectPO;
+            let select!: TuiSelectEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
                 example = new TuiDocumentationPagePO(page).demo;
-                select = new TuiSelectPO(
-                    example.locator('tui-textfield:has([tuiSelect])'),
+                select = new TuiSelectEO(
+                    example.locator(
+                        `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                    ),
                 );
             });
 
@@ -135,7 +145,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_LABEL_LOCATORS.HOST).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -149,7 +159,7 @@ describe('Select', () => {
                 await expect(select.textfield).toHaveValue('USA');
 
                 // eslint-disable-next-line playwright/no-force-option
-                await select.host.locator('[tuiLabel]').click({force: true});
+                await select.host.locator(TUI_LABEL_LOCATORS.HOST).click({force: true});
 
                 await expect(select.textfield).toBeFocused();
                 await expect(select.dropdown).toBeVisible();
@@ -157,6 +167,31 @@ describe('Select', () => {
                 await page.keyboard.press('Delete');
 
                 await expect(select.textfield).toHaveValue('');
+            });
+        });
+
+        describe('updates form control value', () => {
+            ['Backspace', 'Delete'].forEach((key) => {
+                test(`${key} => form control value is null`, async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.Select}/API?sandboxExpanded=true&tuiTextfieldCleaner=true`,
+                    );
+
+                    documentationPage = new TuiDocumentationPagePO(page);
+                    const select = new TuiSelectEO(
+                        documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+                    );
+
+                    await expect(select.textfield).toHaveValue('USA');
+                    await expect(documentationPage.value).toContainText('"name": "USA"');
+
+                    await select.textfield.click();
+                    await page.keyboard.press(key);
+
+                    await expect(select.textfield).toHaveValue('');
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
             });
         });
     });
@@ -171,14 +206,18 @@ describe('Select', () => {
             );
 
             documentationPage = new TuiDocumentationPagePO(page);
-            const select = new TuiSelectPO(
-                documentationPage.demo.locator('tui-textfield:has([tuiSelect])'),
+            const select = new TuiSelectEO(
+                documentationPage.demo.locator(
+                    `${TUI_SELECT_LOCATORS.HOST}:has(${TUI_SELECT_LOCATORS.INPUT})`,
+                ),
             );
 
             await expect(select.textfield).toHaveValue('USA');
 
             await select.textfield.click();
-            await select.dropdown.locator('[tuiOption]', {hasText: 'Austria'}).click();
+            await select.dropdown
+                .locator(TUI_DATA_LIST_LOCATORS.OPTION, {hasText: 'Austria'})
+                .click();
 
             await expect(select.textfield).toHaveValue('Austria');
             // Control value should stay intact until the form is submitted

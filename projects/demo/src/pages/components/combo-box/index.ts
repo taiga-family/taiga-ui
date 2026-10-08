@@ -1,9 +1,9 @@
 import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocIcons} from '@demo/components/icons';
-import {TuiDocInput} from '@demo/components/input';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -26,10 +26,10 @@ interface Country {
         TuiComboBox,
         TuiDataListWrapper,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
         TuiDocIcons,
-        TuiDocInput,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -57,6 +57,7 @@ export default class PageComponent extends Array {
         'Virtual scroll',
         'With DropdownMobile',
         'Override option component',
+        'Override option handling',
     ];
 
     protected readonly [5] = {
@@ -71,6 +72,10 @@ export default class PageComponent extends Array {
 
     protected readonly [12] = {
         'option.ts': import('./examples/12/option.ts?raw', {with: {loader: 'text'}}),
+    };
+
+    protected readonly [13] = {
+        'custom.ts': import('./examples/13/custom.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly control = new FormControl<Country | null>(null);

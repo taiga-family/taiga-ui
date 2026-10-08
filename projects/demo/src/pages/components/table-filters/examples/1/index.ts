@@ -4,8 +4,8 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
-import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     imports: [

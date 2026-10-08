@@ -30,4 +30,25 @@ describe('runSteps', () => {
             {name: 'second', durationMs: 10},
         ]);
     });
+
+    it('names the failing step when a step throws', () => {
+        const timings: MigrationStepTiming[] = [];
+
+        expect(() =>
+            runSteps(
+                [
+                    {name: 'first', step: jest.fn()},
+                    {
+                        name: 'migrateTuiLet',
+                        step: () => {
+                            throw new TypeError(
+                                "Cannot read properties of undefined (reading 'startOffset')",
+                            );
+                        },
+                    },
+                ],
+                timings,
+            ),
+        ).toThrow('Migration step "migrateTuiLet" failed');
+    });
 });

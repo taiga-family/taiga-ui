@@ -3,8 +3,8 @@ import {
     CHAR_MINUS,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputSliderPO,
-    TuiSliderPO,
+    TuiInputSliderEO,
+    TuiSliderEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -15,7 +15,7 @@ describe('InputSlider', () => {
 
     describe('[min] prop', () => {
         describe('positive numbers', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -23,7 +23,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -59,7 +59,7 @@ describe('InputSlider', () => {
         });
 
         describe('negative numbers', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -67,7 +67,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=-10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -90,7 +90,7 @@ describe('InputSlider', () => {
         });
 
         describe('if [min]-property equals to [max]-property', () => {
-            let inputSlider!: TuiInputSliderPO;
+            let inputSlider!: TuiInputSliderEO;
 
             beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -98,7 +98,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=25&max=25&precision=0`,
                 );
 
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     new TuiDocumentationPagePO(page).demo.locator(
                         'tui-textfield:has([tuiInputSlider])',
                     ),
@@ -124,7 +124,7 @@ describe('InputSlider', () => {
     });
 
     describe('[quantum] prop', () => {
-        let inputSlider!: TuiInputSliderPO;
+        let inputSlider!: TuiInputSliderEO;
         let example!: Locator;
         let value!: Locator;
 
@@ -137,7 +137,7 @@ describe('InputSlider', () => {
 
                 example = new TuiDocumentationPagePO(page).demo;
                 value = new TuiDocumentationPagePO(page).value;
-                inputSlider = new TuiInputSliderPO(
+                inputSlider = new TuiInputSliderEO(
                     example.locator('tui-textfield:has([tuiInputSlider])'),
                 );
             });
@@ -217,6 +217,105 @@ describe('InputSlider', () => {
         });
     });
 
+    describe('[thousandSeparatorPattern] prop', () => {
+        let inputSlider!: TuiInputSliderEO;
+
+        beforeEach(({page}) => {
+            inputSlider = new TuiInputSliderEO(
+                new TuiDocumentationPagePO(page).demo.locator(
+                    'tui-textfield:has([tuiInputSlider])',
+                ),
+            );
+        });
+
+        describe('Japanese grouping (by four digits)', () => {
+            const url = `${DemoRoute.InputSlider}/API?min=0&max=10000000&thousandSeparatorPattern$=1&thousandSeparator=_`;
+
+            test('type 1234567 => 123_4567 & slider is synchronized', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputSlider.textfield.clear();
+                await inputSlider.textfield.pressSequentially('1234567');
+
+                await expect(inputSlider.textfield).toHaveValue('123_4567');
+                await expect(inputSlider.slider).toHaveValue('1234567');
+            });
+
+            test('keeps formatted value on blur', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputSlider.textfield.fill('1234567');
+                await inputSlider.textfield.blur();
+
+                await expect(inputSlider.textfield).toHaveValue('123_4567');
+                await expect(inputSlider.slider).toHaveValue('1234567');
+            });
+
+            test('9_9999 => ArrowUp => 10_0000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1`);
+                await inputSlider.textfield.fill('99999');
+                await expect(inputSlider.textfield).toHaveValue('9_9999');
+
+                await inputSlider.textfield.press('ArrowUp');
+
+                await expect(inputSlider.textfield).toHaveValue('10_0000');
+                await expect(inputSlider.slider).toHaveValue('100000');
+            });
+
+            test('click on the middle of slider => 500_0000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1000000`);
+
+                const {width, height} = (await inputSlider.slider.boundingBox())!;
+
+                await inputSlider.slider.click({position: {x: width / 2, y: height / 2}});
+
+                await expect(inputSlider.slider).toHaveValue('5000000');
+                await expect(inputSlider.textfield).toHaveValue('500_0000');
+            });
+        });
+
+        describe('Indian grouping (the last three digits, then by two)', () => {
+            const url = `${DemoRoute.InputSlider}/API?min=0&max=10000000&thousandSeparatorPattern$=2&thousandSeparator=_`;
+
+            test('type 1234567 => 12_34_567 & slider is synchronized', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputSlider.textfield.clear();
+                await inputSlider.textfield.pressSequentially('1234567');
+
+                await expect(inputSlider.textfield).toHaveValue('12_34_567');
+                await expect(inputSlider.slider).toHaveValue('1234567');
+            });
+
+            test('keeps formatted value on blur', async ({page}) => {
+                await tuiGoto(page, url);
+                await inputSlider.textfield.fill('1234567');
+                await inputSlider.textfield.blur();
+
+                await expect(inputSlider.textfield).toHaveValue('12_34_567');
+            });
+
+            test('99_999 => ArrowUp => 1_00_000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1`);
+                await inputSlider.textfield.fill('99999');
+                await expect(inputSlider.textfield).toHaveValue('99_999');
+
+                await inputSlider.textfield.press('ArrowUp');
+
+                await expect(inputSlider.textfield).toHaveValue('1_00_000');
+                await expect(inputSlider.slider).toHaveValue('100000');
+            });
+
+            test('click on the middle of slider => 50_00_000', async ({page}) => {
+                await tuiGoto(page, `${url}&step=1000000`);
+
+                const {width, height} = (await inputSlider.slider.boundingBox())!;
+
+                await inputSlider.slider.click({position: {x: width / 2, y: height / 2}});
+
+                await expect(inputSlider.slider).toHaveValue('5000000');
+                await expect(inputSlider.textfield).toHaveValue('50_00_000');
+            });
+        });
+    });
+
     describe('[disabled] prop', () => {
         test('disables both textfield and slider when host component has disabled state', async ({
             page,
@@ -225,7 +324,7 @@ describe('InputSlider', () => {
 
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputSlider = new TuiInputSliderPO(
+            const inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
 
@@ -244,12 +343,12 @@ describe('InputSlider', () => {
         }) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.InputSlider}/API?min=-10&max=10&readOnly=true`,
+                `${DemoRoute.InputSlider}/API?min=-10&max=10&readonly=true`,
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputSlider = new TuiInputSliderPO(
+            const inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
 
@@ -277,7 +376,7 @@ describe('InputSlider', () => {
 
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                const inputSlider = new TuiInputSliderPO(
+                const inputSlider = new TuiInputSliderEO(
                     demo.locator('tui-textfield:has([tuiInputSlider])'),
                 );
 
@@ -305,11 +404,11 @@ describe('InputSlider', () => {
 
     describe('textfield => slider synchronization', () => {
         let example!: Locator;
-        let inputSlider!: TuiInputSliderPO;
+        let inputSlider!: TuiInputSliderEO;
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputSlider = new TuiInputSliderPO(
+            inputSlider = new TuiInputSliderEO(
                 example.locator('tui-textfield:has([tuiInputSlider])'),
             );
         });
@@ -372,7 +471,7 @@ describe('InputSlider', () => {
         });
 
         describe('min/max restraints also works for slider', () => {
-            let slider!: TuiSliderPO;
+            let slider!: TuiSliderEO;
             let track!: {x: number; y: number; width: number; height: number};
 
             beforeEach(async ({page}) => {
@@ -381,7 +480,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=5&max=10&step=1&keySteps=null`,
                 );
 
-                slider = new TuiSliderPO(inputSlider.slider);
+                slider = new TuiSliderEO(inputSlider.slider);
                 track = (await inputSlider.slider.boundingBox())!;
                 expect(track).toBeTruthy();
             });

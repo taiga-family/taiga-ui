@@ -69,8 +69,48 @@ export const ATTRS_TO_REPLACE: readonly ReplacementAttribute[] = [
         to: {attrName: 'tuiDropdownAuto'},
     },
     {
+        from: {
+            attrName: '[(tuiDropdownOpen)]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[(open)]'},
+    },
+    {
+        from: {
+            attrName: '[tuiDropdownOpen]',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '[open]'},
+    },
+    {
+        from: {
+            attrName: '(tuiDropdownOpenChange)',
+            withTagNames: [
+                'tui-input-tag',
+                'tui-select',
+                'tui-combo-box',
+                'tui-multi-select',
+            ],
+        },
+        to: {attrName: '(openChange)'},
+    },
+    {
         from: {attrName: 'tuiDropdownMobile', withTagNames: ['*']},
         to: {attrName: 'tuiDropdownSheet'},
+    },
+    {
+        from: {attrName: '[tuiDropdownMobile]', withTagNames: ['*']},
+        to: {attrName: '[tuiDropdownSheet]'},
     },
     {
         from: {attrName: '[tuiSheet]', withTagNames: ['*']},

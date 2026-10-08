@@ -4,14 +4,14 @@
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
 
 tui-textarea-content:where(*&) {
-    .scrollbar-hidden();
-
     order: 1;
     inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side));
     padding-inline-start: var(--t-start);
     padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-space));
     overflow: auto;
     pointer-events: none;
+    scrollbar-width: thin;
+    visibility: hidden;
     box-sizing: content-box;
 
     tui-textfield._with-label[data-size='m'] & {
@@ -43,6 +43,7 @@ tui-textarea-content:where(*&) {
         position: absolute;
         inset: 0.25rem 0;
         min-block-size: 0;
+        visibility: visible;
 
         tui-textfield._with-label[data-size='m'] & {
             inset-block-start: @top-m-label;
@@ -65,6 +66,7 @@ tui-textarea-content:where(*&) {
         overflow: hidden;
         color: transparent;
         view-timeline: --t-scrollbar-y y;
+        visibility: visible;
 
         &::after {
             content: ' ';
@@ -104,8 +106,5 @@ textarea[tuiTextarea][tuiTextarea]:where(*&) {
     overflow: auto;
     word-break: break-word;
     border: 0 solid transparent;
-
-    &:not(._mobile) {
-        .scrollbar-hidden();
-    }
+    clip-path: inset(0.125rem);
 }

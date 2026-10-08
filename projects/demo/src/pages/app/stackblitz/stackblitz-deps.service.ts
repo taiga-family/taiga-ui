@@ -60,19 +60,21 @@ export class StackblitzDepsService {
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');
 
+        // TODO: drop pin when StackBlitz resolves @ng-web-apis@5.4.0 (missing entrypoint in turbo_modules cache)
+        const ngWebApisVersion = '5.3.0';
+
         return {
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@taiga-ui/design-tokens': (await import('@taiga-ui/styles/package.json'))
                 .peerDependencies['@taiga-ui/design-tokens'],
-            '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
+            '@ng-web-apis/common': ngWebApisVersion,
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
             '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],
-            '@ng-web-apis/intersection-observer':
-                kitDeps['@ng-web-apis/intersection-observer'],
-            '@ng-web-apis/platform': cdkDeps['@ng-web-apis/platform'],
-            '@ng-web-apis/resize-observer': cdkDeps['@ng-web-apis/resize-observer'],
-            '@ng-web-apis/screen-orientation': cdkDeps['@ng-web-apis/screen-orientation'],
-            '@ng-web-apis/mutation-observer': cdkDeps['@ng-web-apis/mutation-observer'],
+            '@ng-web-apis/intersection-observer': ngWebApisVersion,
+            '@ng-web-apis/platform': ngWebApisVersion,
+            '@ng-web-apis/resize-observer': ngWebApisVersion,
+            '@ng-web-apis/screen-orientation': ngWebApisVersion,
+            '@ng-web-apis/mutation-observer': ngWebApisVersion,
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
             '@maskito/kit': kitDeps['@maskito/kit'],

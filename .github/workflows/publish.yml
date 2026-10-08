@@ -18,27 +18,32 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/setup-npm@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+      - uses: taiga-family/actions/setup-node@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+      - uses: taiga-family/actions/setup-npm@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
       - run: npx nx run-many -t publish
 
-      - uses: taiga-family/actions/read-package-json@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/read-package-json@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         id: info
 
       - name: Announce to Time messenger
-        uses: taiga-family/actions/messenger-mattermost-announce@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+        uses: taiga-family/actions/messenger-mattermost-announce@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+        # announcement is not a part of the release: never block merge of a release PR
+        continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
           version: v${{ steps.info.outputs.version }}
+          ca-cert: ${{ secrets.ANNOUNCE_CA_CERT }}
 
       - name: Announce to Telegram messenger
-        uses: taiga-family/actions/messenger-telegram-announce@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+        uses: taiga-family/actions/messenger-telegram-announce@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+        # announcement is not a part of the release: never block merge of a release PR
+        continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}

@@ -19,23 +19,24 @@ import {
 
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
+const MOBILE_HIDE_DELAY_MS = 100;
+
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
+    host: {'(click)': 'onClick()'},
 })
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly el = tuiInjectElement();
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
-
     private readonly stream$ = merge(
         this.toggle$.pipe(
             switchMap((show) =>
                 this.isMobile
-                    ? of(show).pipe(delay(0))
+                    ? of(show).pipe(delay(show ? 0 : MOBILE_HIDE_DELAY_MS))
                     : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
             takeUntil(this.hovered$),
@@ -44,7 +45,10 @@ export class TuiHintHover extends TuiDriver {
         this.hovered$.pipe(
             switchMap((show) =>
                 this.isMobile
-                    ? of(show).pipe(delay(0))
+                    ? of(show).pipe(
+                          filter(() => !show),
+                          delay(0),
+                      )
                     : of(show).pipe(delay(show ? this.showDelay() : this.hideDelay())),
             ),
             takeUntil(this.toggle$),
@@ -55,7 +59,8 @@ export class TuiHintHover extends TuiDriver {
         map(
             (value) =>
                 value &&
-                (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
+                (this.el.hasAttribute('tuiHintPointer') ||
+                    !tuiIsObscured(this.el, 'tui-popups > :not(tui-modal)')),
         ),
         tap((visible) => {
             this.visible = visible;
@@ -66,6 +71,8 @@ export class TuiHintHover extends TuiDriver {
         optional: true,
         skipSelf: true,
     });
+
+    protected readonly el = tuiInjectElement();
 
     public readonly showDelay = input(this.options.showDelay, {
         alias: 'tuiHintShowDelay',
@@ -89,5 +96,15 @@ export class TuiHintHover extends TuiDriver {
 
     public close(): void {
         this.toggle$.next(false);
+    }
+
+    /**
+     * Synthesized `mouseenter` is not fired again until another element is tapped, so showing on mobile
+     * cannot rely on it.
+     */
+    protected onClick(): void {
+        if (this.isMobile) {
+            this.toggle();
+        }
     }
 }

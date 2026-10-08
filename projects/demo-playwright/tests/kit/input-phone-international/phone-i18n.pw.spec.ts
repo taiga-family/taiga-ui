@@ -2,26 +2,33 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputPhoneInternationalPO,
+    TuiInputPhoneInternationalEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+import {
+    TUI_PLAYWRIGHT_IOS_USER_AGENT,
+    TUI_PLAYWRIGHT_MOBILE,
+} from '../../../playwright.options';
 
 const {describe, beforeEach} = test;
 
 describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
-    test.describe('mobile', () => {
+    test.describe('iOS', () => {
         let example: Locator;
-        let inputPhoneInternational: TuiInputPhoneInternationalPO;
+        let inputPhoneInternational: TuiInputPhoneInternationalEO;
 
-        test.use(TUI_PLAYWRIGHT_MOBILE);
+        test.use({
+            ...TUI_PLAYWRIGHT_MOBILE,
+            userAgent: TUI_PLAYWRIGHT_IOS_USER_AGENT,
+        });
 
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
 
             example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
-            inputPhoneInternational = new TuiInputPhoneInternationalPO(
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(
                 example.locator('tui-textfield:has([tuiInputPhoneInternational])'),
             );
         });
@@ -38,14 +45,17 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await inputPhoneInternational.select.click();
 
             await expect(
-                inputPhoneInternational.dropdown.locator('tui-textfield input'),
+                inputPhoneInternational.dropdown
+                    .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                    .locator(TUI_TEXTFIELD_LOCATORS.INPUT),
             ).not.toBeFocused();
         });
 
         test('items is filtered by textfield inside dropdown', async () => {
             await inputPhoneInternational.select.click();
             await inputPhoneInternational.dropdown
-                .locator('tui-textfield input')
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .locator(TUI_TEXTFIELD_LOCATORS.INPUT)
                 .fill('aust');
 
             const options = await inputPhoneInternational.getOptions();
@@ -56,13 +66,35 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         });
     });
 
+    test.describe('Android', () => {
+        let example: Locator;
+        let inputPhoneInternational: TuiInputPhoneInternationalEO;
+
+        test.use(TUI_PLAYWRIGHT_MOBILE);
+
+        beforeEach(async ({page}) => {
+            await tuiGoto(page, DemoRoute.InputPhoneInternational);
+            example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(
+                example.locator('tui-textfield:has([tuiInputPhoneInternational])'),
+            );
+        });
+
+        test('textfield inside dropdown IS focused on dropdown open', async () => {
+            await inputPhoneInternational.select.click();
+            await expect(
+                inputPhoneInternational.dropdown.locator('tui-textfield input'),
+            ).toBeFocused(); // on android [tuiAutoFocus]="!ios" === true
+        });
+    });
+
     test.describe('API', () => {
         test('basic', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API`);
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputPhoneInternational = new TuiInputPhoneInternationalPO(
-                example.locator('tui-textfield'),
+            const inputPhoneInternational = new TuiInputPhoneInternationalEO(
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
 
             await inputPhoneInternational.textfield.focus();
@@ -74,10 +106,10 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         });
 
         test('readonly', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readOnly=true`);
+            await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readonly=true`);
             const example = new TuiDocumentationPagePO(page).demo;
 
-            const inputPhoneInternational = new TuiInputPhoneInternationalPO(
+            const inputPhoneInternational = new TuiInputPhoneInternationalEO(
                 example.locator('input[tuiInputPhoneInternational]'),
             );
 
@@ -85,7 +117,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
                 await inputPhoneInternational.select.click();
             }).rejects.toThrow();
 
-            await expect(page.locator('tui-dropdown')).not.toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
         });
     });
 });

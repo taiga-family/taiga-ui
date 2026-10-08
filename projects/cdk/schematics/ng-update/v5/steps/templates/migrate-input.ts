@@ -86,6 +86,12 @@ const LEGACY_INPUT_ATTRS = new Set([
     'tuiTextfieldLegacy'.toLowerCase(),
 ]);
 
+const DROPDOWN_OPEN_RENAMES = new Map<string, string>([
+    ['(tuiDropdownOpenChange)'.toLowerCase(), '(openChange)'],
+    ['[(tuiDropdownOpen)]'.toLowerCase(), '[(open)]'],
+    ['[tuiDropdownOpen]'.toLowerCase(), '[open]'],
+]);
+
 function isDropdownAttr(nameLower: string): boolean {
     const prefix = 'TuiDropdown'.toLowerCase();
     const stripped = nameLower.replaceAll(/^\[|\]$|\(|\)/g, '');
@@ -243,6 +249,13 @@ function buildReplacement(
 
         if (TEXTFIELD_WRAPPER_ATTRS.has(nameLower) || isDropdownAttr(nameLower)) {
             const original = getOriginalAttrText(template, element, attr);
+            const renamed = DROPDOWN_OPEN_RENAMES.get(nameLower);
+
+            if (renamed) {
+                textfieldAttrs.push(`${renamed}${original.slice(attr.name.length)}`);
+                continue;
+            }
+
             const migratedValue = migrateAttrValue(nameLower, attr.value);
 
             textfieldAttrs.push(replaceAttrValue(original, migratedValue));
@@ -359,6 +372,12 @@ function buildTodoComment(ctx: MigrationContext): string {
     return `${lines.join('\n')}\n`;
 }
 
+function renameDropdownContentDirective(html: string): string {
+    return html
+        .replaceAll(/\*tuiDataList\b/g, '*tuiDropdown')
+        .replaceAll(/\*tuiTextfieldDropdown\b/g, '*tuiDropdown');
+}
+
 function buildInnerContent({
     element,
     template,
@@ -416,7 +435,9 @@ function buildInnerContent({
             const childLoc = child.sourceCodeLocation;
 
             return childLoc
-                ? template.slice(childLoc.startOffset, childLoc.endOffset)
+                ? renameDropdownContentDirective(
+                      template.slice(childLoc.startOffset, childLoc.endOffset),
+                  )
                 : '';
         })
         .join('');

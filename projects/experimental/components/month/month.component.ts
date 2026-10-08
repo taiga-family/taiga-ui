@@ -1,5 +1,4 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {UpperCasePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,13 +24,7 @@ import {TuiWeekPipe} from './week.pipe';
  */
 @Component({
     selector: 'tui-month',
-    imports: [
-        PolymorpheusOutlet,
-        TuiCalendarSheetPipe,
-        TuiMapperPipe,
-        TuiWeekPipe,
-        UpperCasePipe,
-    ],
+    imports: [PolymorpheusOutlet, TuiCalendarSheetPipe, TuiMapperPipe, TuiWeekPipe],
     templateUrl: './month.component.html',
     styleUrl: './month.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

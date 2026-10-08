@@ -12,5 +12,6 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
+    protected readonly max = new TuiDay(2017, 0, 30);
     protected value = new TuiDayRange(new TuiDay(2017, 0, 15), new TuiDay(2017, 0, 20));
 }

@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiTabsPO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiTabsEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 const {describe, beforeEach} = test;
@@ -10,15 +10,43 @@ describe('Tabs', () => {
             await tuiGoto(page, DemoRoute.Tabs);
         });
 
+        describe('closing', () => {
+            let example!: Locator;
+            let tabsPO!: TuiTabsEO;
+
+            beforeEach(async ({page}) => {
+                example = new TuiDocumentationPagePO(page).getExample('#closing');
+                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
+
+                await page.setViewportSize({width: 1500, height: 500});
+                await example.scrollIntoViewIfNeeded();
+            });
+
+            test('closes dropdown after removing the last hidden tab', async ({page}) => {
+                await expect(tabsPO.more).toBeVisible();
+
+                await tabsPO.more.click();
+                await expect(page.locator('tui-dropdown')).toBeVisible();
+
+                await page
+                    .locator('tui-dropdown button', {hasText: 'Item #3'})
+                    .locator('tui-icon')
+                    .click();
+
+                await expect(page.locator('tui-dropdown')).not.toBeAttached();
+                await expect(tabsPO.more).toBeHidden();
+            });
+        });
+
         describe('complex', () => {
             let example!: Locator;
-            let tabsPO!: TuiTabsPO;
+            let tabsPO!: TuiTabsEO;
             let pagePO!: TuiDocumentationPagePO;
 
             beforeEach(async ({page}) => {
                 pagePO = new TuiDocumentationPagePO(page);
                 example = pagePO.getExample('#complex');
-                tabsPO = new TuiTabsPO(example.locator('tui-tabs-with-more'));
+                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
 
                 await pagePO.hideScrollbars();
                 await example.scrollIntoViewIfNeeded();

@@ -1,12 +1,12 @@
 <tui-textfield
     tuiDropdownLimitWidth="auto"
     tuiDropdownSelectionPosition="word"
+    [tuiAppearanceFocus]="(driver() | async) || null"
     [tuiDropdownSelection]="predicate"
 >
     <label tuiLabel>Type a message</label>
     <textarea
         tuiTextarea
-        [focused]="(driver() | async) || null"
         [max]="4"
         [min]="4"
         [(ngModel)]="value"

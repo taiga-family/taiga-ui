@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
@@ -31,7 +31,11 @@ jobs:
           git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
 
       - name: Cleanup after clone snapshots
-        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+        run: |
+          find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+          # snapshot branches keep symlinks of the default branch (e.g. CLAUDE.md -> AGENTS.md),
+          # they dangle after clone and break the publish step
+          find ${{ env.DIST }} -xtype l -delete
 
       - name: Replace baseHref for next
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # 3.0.5
@@ -75,6 +79,7 @@ jobs:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           publish_dir: ${{ env.DIST }}
           cname: taiga-ui.dev
+          force_orphan: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

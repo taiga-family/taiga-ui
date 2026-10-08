@@ -12,18 +12,22 @@ export function tuiIsTextfield(
     return tuiIsInput(element) || tuiIsTextarea(element);
 }
 
-export function tuiIsElement(
-    node?: Element | EventTarget | Node | null,
-): node is Element {
-    return !!node && 'nodeType' in node && node.nodeType === Node.ELEMENT_NODE;
+export function tuiIsNode(node?: unknown): node is Node {
+    return !!node && typeof node === 'object' && 'nodeType' in node;
 }
 
-export function tuiIsHTMLElement(node: unknown): node is HTMLElement {
-    const defaultView = (node as Element | undefined)?.ownerDocument.defaultView;
-
-    return !!node && !!defaultView && node instanceof defaultView.HTMLElement;
+export function tuiIsElement(node?: unknown): node is Element {
+    return tuiIsNode(node) && node.nodeType === Node.ELEMENT_NODE;
 }
 
-export function tuiIsTextNode(node: Node): node is Text {
-    return node.nodeType === Node.TEXT_NODE;
+export function tuiIsHTMLElement(node?: unknown): node is HTMLElement {
+    return (
+        tuiIsElement(node) &&
+        !!node.ownerDocument.defaultView &&
+        node instanceof node.ownerDocument.defaultView.HTMLElement
+    );
+}
+
+export function tuiIsTextNode(node?: unknown): node is Text {
+    return tuiIsNode(node) && node.nodeType === Node.TEXT_NODE;
 }

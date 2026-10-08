@@ -2,6 +2,7 @@
     <label tuiLabel>Choose range</label>
     <input
         tuiInputDateRange
+        [max]="max"
         [(ngModel)]="value"
     />
     <tui-calendar-range *tuiDropdown />

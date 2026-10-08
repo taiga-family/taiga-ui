@@ -1,7 +1,6 @@
 @import '../utils.less';
 
 tui-textfield:where(*&) {
-    .scrollbar-hidden();
     .transition(color, @tui-duration-fast);
 
     --t-height: calc(var(--tui-height-l) + 2.5 * var(--t-label) * var(--tui-font-offset));
@@ -14,6 +13,7 @@ tui-textfield:where(*&) {
     --t-side: ~'0px';
     --t-max: 0.75rem;
     --t-space: ~'clamp(0px, calc(var(--t-side) + var(--t-end)), var(--t-max))';
+    --t-space-end: ~'calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space))';
 
     position: relative;
     display: flex;
@@ -25,6 +25,7 @@ tui-textfield:where(*&) {
     font: var(--tui-typography-ui-m);
     box-sizing: border-box;
     isolation: isolate;
+    scrollbar-width: thin;
 
     &[tuiAppearance] {
         outline: none;
@@ -218,7 +219,7 @@ tui-textfield:where(*&) {
         border-radius: inherit;
         border-width: 0;
         padding-inline-start: calc(var(--t-start) + var(--t-padding));
-        padding-inline-end: calc(var(--t-end) + var(--t-side) + var(--t-padding) + var(--t-space));
+        padding-inline-end: var(--t-space-end);
         white-space: nowrap;
         overflow: hidden;
 
@@ -239,6 +240,11 @@ tui-textfield:where(*&) {
         &::-webkit-outer-spin-button {
             appearance: none;
         }
+    }
+
+    & > .t-template {
+        padding-inline-end: 0;
+        border-inline-end: var(--t-space-end) solid transparent;
     }
 
     &._with-template [tuiInput]:first-of-type {
@@ -292,7 +298,7 @@ tui-textfield:where(*&) {
         optgroup,
         option {
             // Windows OS only
-            background-color: var(--tui-background-elevation-3);
+            background-color: var(--tui-background-elevation-1);
         }
 
         optgroup,
@@ -319,8 +325,12 @@ tui-textfield:where(*&) {
         border-radius: inherit;
     }
 
-    textarea ~ .t-content {
-        min-inline-size: 0.5rem;
+    textarea {
+        scrollbar-width: thin;
+
+        & ~ .t-content {
+            min-inline-size: 1px;
+        }
     }
 
     &:is([data-mode~='readonly'], [data-state='disabled'], ._empty) [tuiButtonX],

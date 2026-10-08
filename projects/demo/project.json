@@ -97,10 +97,18 @@
                         "glob": "llms-full.html",
                         "input": "{projectRoot}/src/",
                         "output": "./"
+                    },
+                    {
+                        "glob": "**/*.md",
+                        "input": "{projectRoot}/src/markdown-pages/",
+                        "output": "./"
                     }
                 ],
                 "baseHref": "/",
                 "browser": "{projectRoot}/src/main.ts",
+                "define": {
+                    "strict": "false"
+                },
                 "externalDependencies": ["ng-morph"],
                 "index": "{projectRoot}/src/index.html",
                 "inlineStyleLanguage": "less",
@@ -125,7 +133,7 @@
         "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npm run generate:llms && npm run generate:llms-full",
+                "command": "ts-node ./projects/demo/scripts/llms/llms-generate.ts && ts-node ./projects/demo/scripts/llms/llms-full-generate.ts && ts-node ./projects/demo/scripts/llms/markdown-pages-generate.ts",
                 "parallel": false
             }
         },
@@ -204,7 +212,7 @@
             "options": {
                 "collectCoverage": false,
                 "jestConfig": "package.json",
-                "testMatch": ["<rootDir>/{projectRoot}/src/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             },
             "outputs": ["{workspaceRoot}/coverage/{projectName}"]
         }

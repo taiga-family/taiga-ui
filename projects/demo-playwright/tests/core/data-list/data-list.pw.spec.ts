@@ -1,8 +1,27 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS, TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DataList', () => {
+    test('Custom list source files', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DataList);
+
+        const example = page.locator('tui-doc-example#custom-list');
+
+        await example.scrollIntoViewIfNeeded();
+
+        for (const [file, content] of [
+            ['custom-list/index.ts', 'export class CustomListComponent'],
+            ['custom-list/index.html', 'Search categories'],
+            ['custom-list/index.less', '.t-list-search'],
+        ] as const) {
+            await example.getByRole('button', {name: file, exact: true}).click();
+
+            await expect(example.locator('tui-doc-code:visible')).toContainText(content);
+        }
+    });
+
     test('Custom list', async ({page}) => {
         await tuiGoto(page, DemoRoute.DataList);
 
@@ -11,11 +30,33 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiSelectLike]').click();
-        await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
+        await page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
+            .nth(0)
+            .hover();
 
         await expect
-            .soft(page.locator('tui-dropdown'))
+            .soft(page.locator(TUI_DROPDOWN_LOCATORS.HOST))
             .toHaveScreenshot('01-data-list.png');
+    });
+
+    test('Interactive empty content', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DataList);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#custom-list');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('[tuiSelectLike]').click();
+
+        const dropdown = page.locator('tui-dropdown');
+        const search = dropdown.getByRole('textbox', {name: 'Search categories'});
+
+        await search.fill('Unknown');
+        await dropdown.getByRole('button', {name: 'Clear search'}).click();
+
+        await expect(search).toHaveValue('');
     });
 
     test('Links', async ({page}) => {
@@ -25,11 +66,15 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiDropdownAuto]').click();
-        await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
+        await page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
+            .nth(0)
+            .hover();
         await page.waitForTimeout(300);
 
         await expect
-            .soft(page.locator('tui-dropdown'))
+            .soft(page.locator(TUI_DROPDOWN_LOCATORS.HOST))
             .toHaveScreenshot('02-data-list.png');
     });
 
@@ -59,7 +104,9 @@ test.describe('DataList', () => {
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
-        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(2);
+        await expect(
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
+        ).toHaveCount(2);
         await expect.soft(page).toHaveScreenshot('03-2-data-list.png');
 
         await page.keyboard.down('ArrowRight');
@@ -76,7 +123,9 @@ test.describe('DataList', () => {
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
-        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
+        await expect(
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
+        ).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-5-data-list.png');
 
         await page.keyboard.down('ArrowRight');
@@ -86,14 +135,18 @@ test.describe('DataList', () => {
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
 
-        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
+        await expect(
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
+        ).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-7-data-list.png');
 
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
-        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
+        await expect(
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
+        ).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });
 
@@ -110,7 +163,7 @@ test.describe('DataList', () => {
         await documentationPagePO.prepareBeforeScreenshot();
 
         await expect
-            .soft(page.locator('tui-dropdown'))
+            .soft(page.locator(TUI_DROPDOWN_LOCATORS.HOST))
             .toHaveScreenshot('04-data-list.png');
     });
 
@@ -130,7 +183,10 @@ test.describe('DataList', () => {
 
         await expect.soft(page).toHaveScreenshot('05-data-list.png');
 
-        const money = page.locator('tui-dropdown').locator('[name="moneyValue"]').nth(0);
+        const money = page
+            .locator(TUI_DROPDOWN_LOCATORS.HOST)
+            .locator('[name="moneyValue"]')
+            .nth(0);
 
         await money.focus();
         await money.clear();
@@ -141,10 +197,7 @@ test.describe('DataList', () => {
 
         await page.locator('[automation-id="tui-data-list-email-option"]').click();
 
-        const email = page
-            .locator('[automation-id="tui-data-list-email-field"]')
-            .locator('[name="emailValue"]')
-            .nth(0);
+        const email = page.locator('[name="emailValue"]').nth(0);
 
         await email.focus();
         await email.clear();

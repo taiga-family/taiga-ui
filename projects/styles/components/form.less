@@ -1,0 +1,117 @@
+@import '@taiga-ui/styles/utils';
+
+// https://bugs.webkit.org/show_bug.cgi?id=311249
+@keyframes safariIsAJoke {
+    to {
+        opacity: 0.999;
+    }
+}
+
+[tuiForm]:where(*&) {
+    &[tuiForm] {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    &[data-size='s'] {
+        gap: 0.75rem;
+        font: var(--tui-typography-body-s);
+
+        tui-error,
+        tui-elastic-container {
+            margin-block-start: -0.75rem;
+        }
+
+        legend {
+            font: var(--tui-typography-ui-m);
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 1rem;
+        font: var(--tui-typography-body-s);
+
+        tui-error,
+        tui-elastic-container {
+            margin-block-start: -1rem;
+        }
+
+        legend {
+            font: var(--tui-typography-ui-l);
+        }
+    }
+
+    &[data-size='l'] {
+        gap: 1.25rem;
+        font: var(--tui-typography-body-m);
+
+        tui-error,
+        tui-elastic-container {
+            margin-block-start: -1.25rem;
+        }
+
+        legend {
+            font: var(--tui-typography-ui-l);
+        }
+    }
+
+    fieldset {
+        display: grid;
+        flex-wrap: wrap;
+        gap: inherit;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        border: none;
+        padding: 0;
+        margin: 0;
+        animation: safariIsAJoke 0.001s;
+
+        legend:defined {
+            position: relative;
+            inline-size: 100%;
+            padding: 0.5rem 0 0.75rem;
+            font-weight: bold;
+        }
+    }
+
+    > fieldset:first-child > legend {
+        inset-block-start: -0.25rem;
+        padding: 0 0 0.5rem;
+    }
+
+    > header {
+        padding-block-end: 0.25rem;
+    }
+
+    > footer {
+        display: flex;
+        gap: 0.75rem;
+        margin-block-start: 0.25rem;
+
+        tui-dialog & {
+            justify-content: flex-end;
+        }
+    }
+
+    > button,
+    > a {
+        align-self: flex-start;
+    }
+
+    tui-elastic-container {
+        display: flex;
+
+        > * > .tui-enter,
+        > * > .tui-leave {
+            animation-name: tuiFade;
+        }
+
+        &:not(:has(> * > *:not(.tui-leave))) {
+            block-size: 0 !important;
+        }
+    }
+
+    [tuiLabel]:not([data-orientation='vertical']) {
+        font: inherit;
+    }
+}

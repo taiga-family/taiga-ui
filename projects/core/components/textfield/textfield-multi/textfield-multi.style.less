@@ -2,12 +2,34 @@
 
 tui-textfield[multi][multi]:where(*&) {
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow: auto;
     align-items: stretch;
     cursor: text;
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
     overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
+
+    &._horizontal {
+        // stylelint-disable-next-line declaration-property-value-disallowed-list -- not for Firefox
+        min-block-size: fit-content;
+
+        .firefox-only({
+            min-block-size: var(--t-height);
+        });
+
+        > .t-items {
+            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
+            flex-wrap: nowrap;
+
+            [dir='rtl'] & {
+                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
+            }
+
+            > .t-input {
+                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
+            }
+        }
+    }
 
     &::before,
     &::after {
@@ -56,20 +78,9 @@ tui-textfield[multi][multi]:where(*&) {
             min-block-size: 1px;
         }
 
-        &_horizontal {
-            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
-            flex-wrap: nowrap;
-
-            [dir='rtl'] & {
-                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
-            }
-
-            > .t-input {
-                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
-            }
-        }
-
         > .t-input {
+            .transition(block-size, @tui-duration-fast);
+
             position: relative;
             display: flex;
             align-items: center;
@@ -106,7 +117,8 @@ tui-textfield[multi][multi]:where(*&) {
         &[data-size='l'] {
             --t-vertical: 0.5625rem;
 
-            tui-textfield-item:first-of-type {
+            tui-textfield-item:first-of-type,
+            label + .t-input {
                 margin-block-start: 1.125rem;
             }
         }
@@ -114,7 +126,8 @@ tui-textfield[multi][multi]:where(*&) {
         &[data-size='m'] {
             --t-vertical: 0.4375rem;
 
-            tui-textfield-item:first-of-type {
+            tui-textfield-item:first-of-type,
+            label + .t-input {
                 margin-block-start: 0.875rem;
             }
         }
@@ -174,6 +187,10 @@ tui-textfield[multi][multi]:where(*&) {
     &[data-size='m'] {
         --t-vertical: 0.5rem;
 
+        .t-input {
+            block-size: var(--t-item-height, 1.15em);
+        }
+
         &::before {
             inset-inline-start: -0.125rem;
         }
@@ -197,10 +214,6 @@ tui-textfield[multi][multi]:where(*&) {
 
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
-    }
-
-    input::placeholder {
-        .transition(color);
     }
 
     select {

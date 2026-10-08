@@ -6,6 +6,7 @@ import {
     Directive,
     ElementRef,
     inject,
+    INJECTOR,
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {NgControl, RadioControlValueAccessor} from '@angular/forms';
@@ -19,6 +20,7 @@ import {TuiSegmented} from './segmented.component';
 @Directive({host: {'(click)': 'update($event.target)'}})
 export class TuiSegmentedDirective implements AfterContentChecked, AfterContentInit {
     private readonly destroyRef = inject(DestroyRef);
+    private readonly injector = inject(INJECTOR);
     private readonly component = inject(TuiSegmented);
     private readonly el = tuiInjectElement();
     private readonly links = contentChildren(RouterLinkActive);
@@ -33,7 +35,9 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     public ngAfterContentInit(): void {
         this.controls$
             .pipe(
-                switchMap(([control]) => (control ? tuiControlValue(control) : EMPTY)),
+                switchMap(([control]) =>
+                    control ? tuiControlValue(control, this.injector) : EMPTY,
+                ),
                 map((value) => this.radios().findIndex((c) => c.value === value)),
                 takeUntilDestroyed(this.destroyRef),
             )

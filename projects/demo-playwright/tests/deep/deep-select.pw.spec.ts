@@ -75,11 +75,15 @@ test.describe('Deep / Select', () => {
                             .concat('.png');
 
                     await expect.soft(example).toHaveScreenshot(makeName('ltr'));
-                    await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
+                    await example.evaluate((node) =>
+                        node.ownerDocument.documentElement.setAttribute('dir', 'rtl'),
+                    );
                     await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
                     // note: revert to default mode after take screenshot
-                    await example.evaluate((node) => node.setAttribute('dir', 'auto'));
+                    await example.evaluate((node) =>
+                        node.ownerDocument.documentElement.setAttribute('dir', 'ltr'),
+                    );
 
                     await select.click();
 

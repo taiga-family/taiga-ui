@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 env:
-  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Tests result", "E2E result" ]'
+  PR_JOBS_NAME: '[ "Build packages", "Lint", "Tests result", "E2E result" ]'
   RELEASE_JOBS_NAME: '[ "Publish" ]'
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
       - id: matrix
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         run: |
@@ -36,7 +36,7 @@ jobs:
       matrix:
         value: ${{ fromJSON(needs.setup.outputs.matrix || '[]') }}
     steps:
-      - uses: taiga-family/actions/wait-job@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/wait-job@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           job: ${{ matrix.value }}
@@ -46,13 +46,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
-      - uses: taiga-family/actions/auto-approve-double@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-variables@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
+      - uses: taiga-family/actions/auto-approve-double@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true' && github.event.pull_request.commits == 1
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-      - uses: taiga-family/actions/auto-merge@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/auto-merge@ad2e311a6700d8fc7efab79f8b8a2165888ff968 # v2.20.0
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true' && github.event.pull_request.commits == 1
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

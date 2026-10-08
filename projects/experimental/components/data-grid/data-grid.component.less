@@ -5,6 +5,7 @@
     inline-size: 100%;
     grid-template-columns: repeat(3, calc(33% - 0.625rem));
     gap: 1rem 0.5rem;
+    font: var(--tui-typography-body-m);
     place-content: center;
     box-sizing: border-box;
 }
@@ -19,7 +20,7 @@
     border: none;
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-primary);
-    font: var(--tui-typography-ui-s);
+    font: inherit;
     white-space: nowrap;
 
     ::ng-deep [tuiTitle] {

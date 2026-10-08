@@ -1,3 +1,4 @@
+export * from './anchor-support';
 export * from './animations-speed';
 export * from './assets-path';
 export * from './auxiliary';
@@ -14,5 +15,6 @@ export * from './number-format';
 export * from './reduced-motion';
 export * from './selection-stream';
 export * from './textfield';
+export * from './timeline-support';
 export * from './validation-errors';
 export * from './viewport';

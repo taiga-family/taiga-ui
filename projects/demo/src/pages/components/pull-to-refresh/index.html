@@ -23,9 +23,10 @@
         </p>
 
         <div tuiNotification>
-            Use
+            While the scroll container is scrolled to the top, the component automatically applies
             <code>overscroll-behavior: none;</code>
-            CSS on your scrolling container to stop elastic scrolling on iOS
+            to it so elastic scrolling on iOS does not interfere with pulling. Once scrolled away from the top, the
+            property is removed and the native bounce works as usual
         </div>
 
         <tui-doc-example

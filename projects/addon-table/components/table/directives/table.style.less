@@ -3,7 +3,7 @@ table[tuiTable]:where(*&) {
     border-spacing: 0;
     isolation: isolate;
 
-    [tuiCell] {
+    [tuiCell]:not(tui-textfield [tuiCell]) {
         padding: 0;
     }
 

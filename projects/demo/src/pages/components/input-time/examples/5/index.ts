@@ -3,16 +3,21 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
-import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
+import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiIcon, TuiInputTime, TuiTooltip],
+    imports: [FormsModule, TuiInputTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiInputTimeOptionsProvider({icon: ''})],
+    providers: [
+        tuiInputTimeOptionsProvider({
+            icon: '@tui.timer',
+            mode: 'HH:MM:SS.MSS',
+            timeSegmentMaxValues: {hours: 99},
+        }),
+    ],
 })
 export default class Example {
-    protected value: TuiTime | null = new TuiTime(9, 0);
+    protected value: TuiTime | null = new TuiTime(99, 59, 59, 999);
 }

@@ -21,6 +21,24 @@ test.describe('Textarea', () => {
         await expect.soft(textarea).toHaveScreenshot('textarea-line-break-disabled.png');
     });
 
+    test('does not have excessive end padding without content', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
+        const {demo} = new TuiDocumentationPagePO(page);
+        const textarea = demo.locator('textarea[tuiTextarea]');
+        const label = demo.locator('label[tuiLabel]');
+        const padding = await textarea.evaluate((element) => {
+            const {paddingInlineEnd, paddingInlineStart} = getComputedStyle(element);
+
+            return {
+                end: Number.parseFloat(paddingInlineEnd),
+                start: Number.parseFloat(paddingInlineStart),
+            };
+        });
+
+        await expect(label).toBeVisible();
+        expect(Math.abs(padding.end - padding.start)).toBeLessThanOrEqual(2);
+    });
+
     test('required textarea is not invalid before touched', async ({page}) => {
         await tuiGoto(page, DemoRoute.Textarea);
         const example = new TuiDocumentationPagePO(page).getExample('#icons');
@@ -76,5 +94,33 @@ test.describe('Textarea', () => {
 
         await expect(basicTextarea).not.toHaveCSS('overscroll-behavior', 'none');
         await expect(limitTextarea).toHaveCSS('overscroll-behavior', 'none');
+    });
+
+    test('minRows and maxRows set the textarea height limits', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Textarea}/API?minRows=2&maxRows=4`);
+        const {demo} = new TuiDocumentationPagePO(page);
+        const content = demo.locator('tui-textarea-content');
+
+        expect(
+            await content.evaluate((element) => [
+                element.style.minHeight,
+                element.style.maxHeight,
+            ]),
+        ).toEqual(['2.5em', '5em']);
+        await expect.soft(demo).toHaveScreenshot('textarea-min-max-rows.png');
+    });
+
+    test('legacy min and max still set the textarea height limits', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        const example = new TuiDocumentationPagePO(page).getExample('#icons');
+        const content = example.locator('tui-textarea-content');
+
+        expect(
+            await content.evaluate((element) => [
+                element.style.minHeight,
+                element.style.maxHeight,
+            ]),
+        ).toEqual(['5em', '5em']);
+        await expect.soft(example).toHaveScreenshot('textarea-legacy-min-max-rows.png');
     });
 });

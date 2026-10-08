@@ -12,6 +12,7 @@ import {
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
+import {withMigrationContext} from '../../../utils/with-migration-context';
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {
     addHTMLCommentTags,
@@ -35,6 +36,7 @@ import {migrateChartHint} from './templates/migrate-chart-hint';
 import {migrateCloseable} from './templates/migrate-closeable';
 import {migrateComboBox} from './templates/migrate-combo-box';
 import {migrateDocDocumentation} from './templates/migrate-doc-documentation';
+import {migrateDropdownImport} from './templates/migrate-dropdown-import';
 import {migrateFieldError} from './templates/migrate-field-error';
 import {migrateFormatPhonePipe} from './templates/migrate-format-phone-pipe';
 import {migrateHintOnLegacyControls} from './templates/migrate-hint-on-legacy-controls';
@@ -59,6 +61,8 @@ import {migrateInputYear} from './templates/migrate-input-year';
 import {migrateLegacyCustomContent} from './templates/migrate-legacy-custom-content';
 import {migrateMultiSelect} from './templates/migrate-multi-select';
 import {migrateTuiNotification} from './templates/migrate-notification';
+import {migratePin} from './templates/migrate-pin';
+import {migratePrimitiveTextfield} from './templates/migrate-primitive-textfield';
 import {migrateRepeatTimes} from './templates/migrate-repeat-times';
 import {migrateSelect} from './templates/migrate-select';
 import {migrateSidebar} from './templates/migrate-sidebar';
@@ -128,6 +132,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateComboBox,
         migrateAccordionItem,
         migrateAvatarToDirective,
+        migratePin,
         migrateTooltip,
         migrateTuiNotification,
         migrateRepeatTimes,
@@ -146,6 +151,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLegacyCustomContent,
         migrateInput,
         migrateTextarea,
+        migratePrimitiveTextfield,
+        migrateDropdownImport,
     ] as const;
 
     const progressLog = setupProgressLogger({total: componentWithTemplatesPaths.length});
@@ -158,7 +165,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
             const isLastAction = actionIndex === actions.length - 1;
 
             !options['skip-logs'] && progressLog(action.name, isLastAction);
-            action({resource, fileSystem, recorder});
+            withMigrationContext(
+                `Failed to migrate "${path}" during "${action.name}"`,
+                () => action({resource, fileSystem, recorder}),
+            );
         });
     });
 

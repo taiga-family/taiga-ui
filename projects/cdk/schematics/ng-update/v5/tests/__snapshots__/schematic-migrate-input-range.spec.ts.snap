@@ -49,3 +49,25 @@ exports[`ng-update input-range removes label[tuiLabel] inside tui-input-range: t
             ",
 }
 `;
+
+exports[`ng-update input-range renames TuiInputRangeModule import to TuiInputRange: test.ts 1`] = `
+{
+  "0. Before": "
+                import {TuiInputRangeModule} from '@taiga-ui/legacy';
+
+                @Component({
+                    standalone: true,
+                    imports: [TuiInputRangeModule],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "import { TuiInputRange } from "@taiga-ui/kit";
+
+                                @Component({
+                    standalone: true,
+                    imports: [TuiInputRange],
+                })
+                export class TestComponent {}
+            ",
+}
+`;

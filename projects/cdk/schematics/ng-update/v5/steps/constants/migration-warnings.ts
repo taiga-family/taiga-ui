@@ -49,23 +49,99 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiFormatDatePipe has been removed. Use Angular built-in Date pipe instead. See https://angular.dev/api/common/DatePipe',
     },
-    {
-        name: 'TUI_SLIDER_OPTIONS',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'TUI_SLIDER_OPTIONS has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
-    },
-    {
-        name: 'tuiSliderOptionsProvider',
-        moduleSpecifier: '@taiga-ui/kit',
-        message:
-            'tuiSliderOptionsProvider has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider',
-    },
+    ...['TUI_SLIDER_OPTIONS', 'tuiSliderOptionsProvider', 'TuiSliderOptions'].map(
+        (name) => ({
+            name,
+            moduleSpecifier: '@taiga-ui/kit',
+            message: `${name} has been removed. Use CSS variables for slider configuration. See example https://taiga-ui.dev/components/slider`,
+        }),
+    ),
     {
         name: 'TuiToCountryCodePipe',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiToCountryCodePipe has been removed. Replace pipe usage `phone | tuiToCountryCode` with the maskitoGetCountryFromNumber(phone) function from @maskito/phone.',
+    },
+    {
+        name: 'TUI_THEME',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            "TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme=\"dark\" in a template); components resolve the nearest [tuiTheme] ancestor.",
+    },
+    {
+        name: 'TuiLinkOptions',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'The TuiLinkOptions interface has been removed. The TUI_LINK_OPTIONS token and tuiLinkOptionsProvider still exist in @taiga-ui/core for configuration — type your options via the tuiLinkOptionsProvider() argument instead of the standalone interface.',
+    },
+    {
+        name: 'TUI_DATA_LIST_ACCESSOR',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            "TUI_DATA_LIST_ACCESSOR has been removed. Read a custom option-list source through the auxiliary API instead of injecting the token: tuiInjectAuxiliary<TuiDataListAccessor>((x) => 'options' in x && isSignal(x.options)) (from @taiga-ui/core; isSignal from @angular/core). The interface changed too — getOptions() is gone, options are now a Signal<readonly T[]>.",
+    },
+    {
+        name: 'tuiAsDataList',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'tuiAsDataList has been removed together with the ng-template[tuiDataList] lazy-list mechanism. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select',
+    },
+    {
+        name: 'tuiAsDataListAccessor',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'tuiAsDataListAccessor has been removed. Provide a custom option-list source with tuiAsAuxiliary(component) from @taiga-ui/core; the component must implement TuiDataListAccessor exposing readonly options: Signal<readonly T[]> (the old getOptions() is gone).',
+    },
+    {
+        name: 'TuiDataListDirective',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiDataListDirective (ng-template[tuiDataList]) has been removed. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select',
+    },
+    {
+        name: 'TuiInputPassword',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiInputPassword has been removed. Use the TuiPassword directive from @taiga-ui/kit together with <tui-textfield>. See https://taiga-ui.dev/components/input#input-password',
+    },
+    {
+        name: 'TuiActionBarDirective',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiActionBarDirective has been removed. Use TuiActionBar from @taiga-ui/kit instead.',
+    },
+    ...['TuiSidebarComponent', 'TuiSidebarDirective'].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message: `${name} has been removed. Use TuiDrawer from @taiga-ui/kit together with TuiPopup from @taiga-ui/core instead.`,
+    })),
+    {
+        name: 'tuiFindTouchIndex',
+        moduleSpecifier: '@taiga-ui/addon-mobile',
+        message:
+            'tuiFindTouchIndex has been removed. Read TouchEvent.changedTouches directly to find the relevant touch point.',
+    },
+    {
+        name: 'TUI_TABLE_PROVIDER',
+        moduleSpecifier: '@taiga-ui/addon-table',
+        message:
+            'TUI_TABLE_PROVIDER has been removed. Table configuration providers are no longer required. See https://taiga-ui.dev/components/table',
+    },
+    ...[
+        'TuiIslandHarness',
+        'TuiSvgHarness',
+        'TuiThumbnailCardHarness',
+        'TuiPrimitiveTextfieldHarness',
+    ].map((name) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/testing',
+        message: `${name} has been removed. Component test harnesses were dropped in v5; query the component DOM directly in your tests.`,
+    })),
+    {
+        name: 'TuiMockEvent',
+        moduleSpecifier: '@taiga-ui/testing',
+        message:
+            'TuiMockEvent has been removed. Construct native Event/MouseEvent objects directly in your tests.',
     },
     {
         name: 'TuiStatus',
@@ -356,6 +432,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TUI_TOUCH_SUPPORTED has been removed. Use WA_IS_TOUCH from @ng-web-apis/platform instead — note it is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
     },
     {
+        name: 'WA_IS_TOUCH',
+        moduleSpecifier: '@ng-web-apis/platform',
+        message:
+            'TUI_IS_TOUCH was renamed to WA_IS_TOUCH from @ng-web-apis/platform, which is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().',
+    },
+    {
         name: 'TUI_IS_CHROMIUM',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -379,17 +461,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_IS_FIREFOX has been removed. Use isFirefox(inject(WA_NAVIGATOR).userAgent) — isFirefox from @ng-web-apis/platform, WA_NAVIGATOR from @ng-web-apis/common.',
     },
+    ...[
+        {
+            name: 'tuiInputCardOptionsProvider',
+            group: 'tuiInputCardGroupOptionsProvider',
+        },
+        {name: 'TUI_INPUT_CARD_OPTIONS', group: 'TUI_INPUT_CARD_GROUP_OPTIONS'},
+    ].map(({name, group}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message: `${name} has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use ${group} from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group`,
+    })),
     {
-        name: 'tuiInputCardOptionsProvider',
+        name: 'TuiInputCardOptions',
         moduleSpecifier: '@taiga-ui/addon-commerce',
         message:
-            'tuiInputCardOptionsProvider has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use tuiInputCardGroupOptionsProvider from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
-    },
-    {
-        name: 'TUI_INPUT_CARD_OPTIONS',
-        moduleSpecifier: '@taiga-ui/addon-commerce',
-        message:
-            'TUI_INPUT_CARD_OPTIONS has been removed with no direct replacement. The new input[tuiInputCard] has no DI options token — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup and use TUI_INPUT_CARD_GROUP_OPTIONS from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
+            'TuiInputCardOptions has been removed with no direct replacement. input[tuiInputCard] has no options token/interface in v5 — configure it per instance instead (placeholder and autocomplete as attributes on the <input>, validation via form validators). If you were using the grouped card input, migrate to InputCardGroup from @taiga-ui/addon-commerce. See https://taiga-ui.dev/components/input-card-group',
     },
     {
         name: 'TUI_ALERT_POSITION',
@@ -524,6 +611,24 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiFor has been removed. Use the native @for block with @empty instead of *ngFor with ngForEmpty. For the ngForElse case, wrap the @for block in @if/@else.',
     },
     {
+        name: 'TuiAccordionItem',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItem (<tui-accordion-item>) has been removed. Inside <tui-accordion>, declare each item as a `<button tuiAccordion>header</button>` followed by a `<tui-expand>content</tui-expand>` (bind the open state with `[tuiAccordion]="expr"`); render a dynamic list of items with a native `@for` block. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemContent ([tuiAccordionItemContent]) provided lazy content and has been removed. Wrap the lazy content in `<ng-container *tuiItem>` inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle, e.g. `<tui-expand><ng-container *tuiItem>...</ng-container></tui-expand>`. See https://taiga-ui.dev/components/accordion',
+    },
+    {
+        name: 'TuiAccordionItemEagerContent',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TuiAccordionItemEagerContent has been removed together with TuiAccordionItem. Eager content now lives directly inside the `<tui-expand>` that follows the `<button tuiAccordion>` toggle. See https://taiga-ui.dev/components/accordion',
+    },
+    {
         name: 'TUI_DATE_VALUE_TRANSFORMER',
         moduleSpecifier: '@taiga-ui/kit',
         message:
@@ -596,6 +701,42 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiTableBarComponent (<tui-table-bar>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead. See https://taiga-ui.dev/components/actions-bar',
     },
     {
+        name: 'TuiAlertComponent',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiAlertComponent has been removed. Alerts are rendered by TuiAlertService/TuiNotificationService; there is no standalone <tui-alert> component in v5.',
+    },
+    ...[
+        {name: 'TuiAlerts', host: 'alert'},
+        {name: 'TuiDialogs', host: 'dialog'},
+        {name: 'TuiDropdowns', host: 'dropdown'},
+        {name: 'TuiHints', host: 'hint'},
+    ].map(({name, host}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/core',
+        message: `${name} has been removed. The ${host} host is consolidated into TuiPopups (rendered by TuiRoot); you no longer place it manually.`,
+    })),
+    {
+        name: 'TuiHintService',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintService has been removed. Hints are shown via the tuiHint directive; the global hint stack is managed internally through the portal API.',
+    },
+    {
+        name: 'TuiHintOptionsDirective',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TuiHintOptionsDirective ([tuiHintContent]) has been removed. Configure hints via the tuiHint directive together with TUI_HINT_OPTIONS / tuiHintOptionsProvider.',
+    },
+    ...[
+        {name: 'TuiTextareaCounterComponent', feature: 'character counter'},
+        {name: 'TuiTextareaLimitComponent', feature: 'character limit overflow'},
+    ].map(({name, feature}) => ({
+        name,
+        moduleSpecifier: '@taiga-ui/kit',
+        message: `${name} has been removed. The ${feature} is now built into TuiTextarea from @taiga-ui/kit (configured via its limit input).`,
+    })),
+    {
         name: 'TuiInputCopyComponent',
         moduleSpecifier: '@taiga-ui/legacy',
         message:
@@ -648,5 +789,29 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/cdk',
         message:
             'tuiFlatLength has been removed. Inline the calculation instead: array.flat().length.',
+    },
+    {
+        name: 'TuiTextareaComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTextareaComponent has been removed with no drop-in class replacement. <tui-textarea> now migrates to <tui-textfield> with <textarea tuiTextfield>, so there is no component to @ViewChild/inject. Add a template ref to the migrated <textarea tuiTextfield>, query it with @ViewChild(ref, {read: ElementRef}) and replace .nativeFocusableElement with .nativeElement. See https://taiga-ui.dev/components/textarea',
+    },
+    {
+        name: 'TuiNativeFocusableElement',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiNativeFocusableElement has been removed. It was a type alias for the native focusable element; replace it with the concrete element type (HTMLInputElement / HTMLTextAreaElement) or HTMLElement.',
+    },
+    {
+        name: 'TuiTableBarsHostComponent',
+        moduleSpecifier: '@taiga-ui/legacy',
+        message:
+            'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead — it has a different API and no host container is required. See https://taiga-ui.dev/components/actions-bar',
+    },
+    {
+        name: 'TUI_DIALOGS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DIALOGS removed. Track each dialog via the stream returned by TuiDialogService/TuiAlertService.open() and unsubscribe to close it, instead of reading a global registry.',
     },
 ];

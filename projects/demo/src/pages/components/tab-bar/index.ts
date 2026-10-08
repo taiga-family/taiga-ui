@@ -7,6 +7,7 @@ import {TuiCheckbox, TuiLabel, TuiPopup} from '@taiga-ui/core';
 import TuiTabBarExample from './examples/1';
 import TuiTabBarLiquidExample from './examples/5';
 import TuiTabBarLiquidFullExample from './examples/6';
+import TuiTabBarLiquidAndroidExample from './examples/7';
 
 @Component({
     imports: [
@@ -16,6 +17,7 @@ import TuiTabBarLiquidFullExample from './examples/6';
         TuiLabel,
         TuiPopup,
         TuiTabBarExample,
+        TuiTabBarLiquidAndroidExample,
         TuiTabBarLiquidExample,
         TuiTabBarLiquidFullExample,
     ],
@@ -33,9 +35,11 @@ export default class Page {
         'Skeleton',
         'iOS Liquid glass',
         'iOS Liquid glass fullwidth',
+        'Android',
     ];
 
     protected fixed = false;
     protected fixedLiquid = false;
     protected fixedLiquidFull = false;
+    protected fixedLiquidAndroid = false;
 }

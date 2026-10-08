@@ -355,5 +355,28 @@ describe('ng-update closeable', () => {
         }),
     );
 
+    it(
+        'replaces closeable with closable in an options object typed apart from the open() call',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {TuiDialogOptions} from '@taiga-ui/core';
+                import {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+
+                @Component({standalone: true})
+                export class TestComponent {
+                    protected readonly sheetOptions: Partial<TuiSheetDialogOptions> = {
+                        closeable: true,
+                    };
+
+                    protected readonly dialogOptions: TuiDialogOptions = {
+                        closeable: false,
+                        label: 'Test',
+                    };
+                }
+            `,
+        }),
+    );
+
     afterEach(() => resetActiveProject());
 });

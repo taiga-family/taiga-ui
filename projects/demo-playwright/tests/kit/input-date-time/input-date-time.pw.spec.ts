@@ -2,8 +2,9 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputDateTimePO,
-    TuiSelectPO,
+    TuiInputDateTimeEO,
+    TuiSelectEO,
+    type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -11,19 +12,19 @@ import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('InputDateTime', () => {
     let example: Locator;
-    let inputDateTime: TuiInputDateTimePO;
+    let inputDateTime: TuiInputDateTimeEO;
 
     test.describe('API page', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
-        let inputDateTime: TuiInputDateTimePO;
+        let inputDateTime: TuiInputDateTimeEO;
 
         test.use({viewport: {width: 360, height: 500}});
 
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
-            inputDateTime = new TuiInputDateTimePO(
+            inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has([tuiInputDateTime])'),
             );
         });
@@ -174,7 +175,7 @@ test.describe('InputDateTime', () => {
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
 
-            const timeModeSelect = new TuiSelectPO(
+            const timeModeSelect = new TuiSelectEO(
                 (await documentationPage.getSelect(timeModeRow))!,
             );
 
@@ -233,6 +234,183 @@ test.describe('InputDateTime', () => {
                 await inputDateTime.textfield.pressSequentially('330p');
 
                 await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 PM');
+            });
+        });
+
+        test.describe('[dayPeriod]', () => {
+            function stringify(value: readonly [string, TuiTimeLike]): string {
+                return JSON.stringify({value}, null, 2);
+            }
+
+            test.describe('custom labels (a.m. / p.m.)', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=2&sandboxExpanded=true`,
+                    );
+                    await inputDateTime.textfield.pressSequentially('2092020');
+
+                    await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
+                });
+
+                test('330a => 03:30 a.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('330a');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30 a.m.',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 3, minutes: 30, seconds: 0, ms: 0},
+                        ]),
+                    );
+                });
+
+                test('330p => 03:30 p.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('330p');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30 p.m.',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                        ]),
+                    );
+                });
+
+                test('control value is null until day period is typed', async () => {
+                    await inputDateTime.textfield.pressSequentially('0330');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 03:30',
+                    );
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
+
+                test('Type 0 => Blur => 12:00 a.m.', async () => {
+                    await inputDateTime.textfield.pressSequentially('0');
+                    await inputDateTime.textfield.blur();
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 12:00 a.m.',
+                    );
+                });
+            });
+
+            test('localized labels: 330μ => 03:30 μ.μ.', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=3&sandboxExpanded=true`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('2092020330μ');
+
+                await expect(inputDateTime.textfield).toHaveValue(
+                    '20.09.2020, 03:30 μ.μ.',
+                );
+                await expect(documentationPage.value).toContainText(
+                    stringify([
+                        '2020-09-20',
+                        {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                    ]),
+                );
+            });
+        });
+
+        test.describe('tuiTimeFormat={separators}', () => {
+            function stringify(value: readonly [string, TuiTimeLike]): string {
+                return JSON.stringify({value}, null, 2);
+            }
+
+            test.describe('fr-CA: [" h ", " min ", ","]', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputDateTime}/API?timeMode=HH:MM:SS.MSS&separators$=3&sandboxExpanded=true`,
+                    );
+                });
+
+                test('20092020180505766 => 20.09.2020, 18 h 05 min 05,766', async () => {
+                    await inputDateTime.textfield.pressSequentially('20092020180505766');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,766',
+                    );
+                    await expect(documentationPage.value).toContainText(
+                        stringify([
+                            '2020-09-20',
+                            {hours: 18, minutes: 5, seconds: 5, ms: 766},
+                        ]),
+                    );
+                });
+
+                test('control value is null until time is complete', async () => {
+                    await inputDateTime.textfield.pressSequentially('200920201805057');
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,7',
+                    );
+                    await expect(documentationPage.value).toContainText('"value": null');
+                });
+
+                test('selection of a new date via calendar keeps time format', async () => {
+                    await inputDateTime.textfield.pressSequentially('20092020180505766');
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '20.09.2020, 18 h 05 min 05,766',
+                    );
+
+                    await inputDateTime.textfield.click();
+                    await inputDateTime.selectDayViaCalendar(15);
+
+                    await expect(inputDateTime.textfield).toHaveValue(
+                        '15.09.2020, 18 h 05 min 05,766',
+                    );
+                });
+
+                test('filler', async () => {
+                    await inputDateTime.textfield.focus();
+
+                    await expect(inputDateTime.filler).toHaveValue(
+                        'DD.MM.YYYY, HH h MM min SS,MSS',
+                    );
+                    await expect
+                        .soft(inputDateTime.host)
+                        .toHaveScreenshot('07-separators-filler.png');
+                });
+            });
+
+            test('Type 1 => Blur => 01 h 00', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=3`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('20.09.2020, 1');
+                await inputDateTime.textfield.blur();
+
+                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 01 h 00');
+            });
+
+            test('with [dayPeriod]: 330p => 03h30 p.m.', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=1&dayPeriod$=2&sandboxExpanded=true`,
+                );
+
+                await inputDateTime.textfield.pressSequentially('2092020330p');
+
+                await expect(inputDateTime.textfield).toHaveValue(
+                    '20.09.2020, 03h30 p.m.',
+                );
+                await expect(documentationPage.value).toContainText(
+                    stringify([
+                        '2020-09-20',
+                        {hours: 15, minutes: 30, seconds: 0, ms: 0},
+                    ]),
+                );
             });
         });
 
@@ -325,12 +503,12 @@ test.describe('InputDateTime', () => {
 
     test.describe('invalid date', () => {
         test.describe('DMY mode', () => {
-            let inputDateTime!: TuiInputDateTimePO;
+            let inputDateTime!: TuiInputDateTimeEO;
 
             test.beforeEach(async ({page}) => {
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     demo.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
 
@@ -367,14 +545,14 @@ test.describe('InputDateTime', () => {
         });
 
         test.describe('YMD mode', () => {
-            let inputDateTime!: TuiInputDateTimePO;
+            let inputDateTime!: TuiInputDateTimeEO;
 
             test.beforeEach(async ({page}) => {
                 const example = new TuiDocumentationPagePO(page).getExample(
                     '#date-format',
                 );
 
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     example.locator('tui-textfield:has(input[tuiInputDateTime])'),
                 );
 
@@ -424,7 +602,7 @@ test.describe('InputDateTime', () => {
         test('With validator: enter incomplete date -> validator error', async () => {
             const example = documentationPage.getExample('#validation');
 
-            const inputDateTime = new TuiInputDateTimePO(
+            const inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])').first(),
             );
 
@@ -443,7 +621,7 @@ test.describe('InputDateTime', () => {
         test('Calendar customization', async () => {
             const example = documentationPage.getExample('#calendar-customization');
 
-            const inputDateTime = new TuiInputDateTimePO(
+            const inputDateTime = new TuiInputDateTimeEO(
                 example.locator('tui-textfield:has(input[tuiInputDateTime])'),
             );
 
@@ -462,7 +640,7 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputDateTime);
                 example = new TuiDocumentationPagePO(page).getExample('#mobile');
-                inputDateTime = new TuiInputDateTimePO(
+                inputDateTime = new TuiInputDateTimeEO(
                     example.locator('tui-textfield:has([tuiInputDateTime])'),
                 );
             });

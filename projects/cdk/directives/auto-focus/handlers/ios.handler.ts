@@ -1,4 +1,5 @@
 import {type ElementRef, type NgZone, type Renderer2} from '@angular/core';
+import {TUI_ANIMATED} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {type TuiAutofocusOptions} from '../autofocus.options';
@@ -32,7 +33,13 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         if (this.isTextFieldElement) {
             this.zone.runOutsideAngular(() => this.iosWebkitAutofocus());
         } else {
-            this.element.focus({preventScroll: true});
+            // iOS scrolls to the focused element mid-animation despite preventScroll, jumping the dialog
+            void Promise.allSettled(
+                this.element
+                    .closest(`.${TUI_ANIMATED}`)
+                    ?.getAnimations?.()
+                    .map(async ({finished}) => finished) ?? [],
+            ).then(() => this.element.focus({preventScroll: true}));
         }
     }
 
