@@ -50,11 +50,9 @@ export class TuiCopyComponent {
             : this.notification.icon('positive');
     }
 
-    protected copy(value: string | null): void {
-        const text = value ?? '';
-
+    protected copy(value: string): void {
         this.copied$.next(
-            this.clipboard.copy(this.processor?.tuiCopyProcessor()(text) ?? text),
+            this.clipboard.copy(this.processor?.tuiCopyProcessor()(value) ?? value),
         );
     }
 }

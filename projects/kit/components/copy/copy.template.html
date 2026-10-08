@@ -5,7 +5,7 @@
     class="t-content"
     [tuiHint]="template"
     [tuiHintManual]="!!hint()"
-    (click)="copy(content.textContent)"
+    (click)="copy(content.textContent ?? '')"
 >
     <ng-content />
 </span>
@@ -17,7 +17,7 @@
     class="t-button"
     [attr.aria-label]="texts()[0]"
     [iconStart]="options.icon"
-    (click)="copy(content.textContent)"
+    (click)="copy(content.textContent ?? '')"
 ></button>
 <ng-template #template>
     <tui-icon
