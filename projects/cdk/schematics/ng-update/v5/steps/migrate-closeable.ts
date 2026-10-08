@@ -64,8 +64,8 @@ function migrateOpenOptions(sourceFile: SourceFile): void {
 }
 
 // An options object may be declared apart from the open()/provider call and passed by reference.
-// Rename it only when the declaration is explicitly typed as one of the dialog option types,
-// so plain objects that merely have a `closeable` key are left untouched.
+// Rename it only when the declaration or an `as`/`satisfies` assertion identifies one of the
+// dialog option types, so plain objects that merely have a `closeable` key are left untouched.
 function migrateTypedDeclarations(sourceFile: SourceFile): void {
     const declarations = [
         ...sourceFile.getDescendantsOfKind(SyntaxKind.PropertyDeclaration),
@@ -73,20 +73,49 @@ function migrateTypedDeclarations(sourceFile: SourceFile): void {
     ];
 
     declarations.forEach((declaration) => {
-        const typeNode = declaration.getTypeNode();
         const initializer = declaration.getInitializer();
 
-        if (
-            !typeNode ||
-            !initializer ||
-            !Node.isObjectLiteralExpression(initializer) ||
-            !referencesOptionType(typeNode.getText())
-        ) {
+        if (!initializer) {
             return;
         }
 
-        renameCloseableKey(initializer);
+        const options = getTypedOptionsObject(
+            initializer,
+            declaration.getTypeNode()?.getText(),
+        );
+
+        if (options) {
+            renameCloseableKey(options);
+        }
     });
+}
+
+function getTypedOptionsObject(
+    initializer: Node,
+    declaredType?: string,
+): ObjectLiteralExpression | null {
+    let expression = initializer;
+    let isDialogOptions = Boolean(declaredType && referencesOptionType(declaredType));
+
+    while (
+        Node.isAsExpression(expression) ||
+        Node.isSatisfiesExpression(expression) ||
+        Node.isParenthesizedExpression(expression)
+    ) {
+        if (Node.isAsExpression(expression) || Node.isSatisfiesExpression(expression)) {
+            const typeNode = expression.getTypeNode();
+
+            if (typeNode && referencesOptionType(typeNode.getText())) {
+                isDialogOptions = true;
+            }
+        }
+
+        expression = expression.getExpression();
+    }
+
+    return isDialogOptions && Node.isObjectLiteralExpression(expression)
+        ? expression
+        : null;
 }
 
 function referencesOptionType(typeText: string): boolean {
