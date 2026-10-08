@@ -8,7 +8,7 @@ import {
 } from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {merge, throttleTime} from 'rxjs';
+import {fromEvent, merge, throttleTime} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -49,6 +49,7 @@ export class TuiScrollbarDirective {
     protected readonly styleSub = merge(
         inject(WA_ANIMATION_FRAME).pipe(throttleTime(100, tuiZonefreeScheduler())),
         tuiScrollFrom(this.el),
+        fromEvent(this.el, 'animationend'),
     )
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {

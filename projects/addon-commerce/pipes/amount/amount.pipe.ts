@@ -1,4 +1,5 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {TUI_CURRENCY_SYMBOLS} from '@taiga-ui/addon-commerce/tokens';
 import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiFormatCurrency} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
@@ -15,6 +16,7 @@ const DEFAULT_PRECISION = 2;
 @Pipe({standalone: true, name: 'tuiAmount'})
 export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
+    private readonly currencySymbolHandler = inject(TUI_CURRENCY_SYMBOLS);
     private readonly format = inject(TUI_NUMBER_FORMAT);
 
     public transform(
@@ -24,7 +26,8 @@ export class TuiAmountPipe implements PipeTransform {
     ): Observable<string> {
         return this.format.pipe(
             map((format) => {
-                const currencySymbol = tuiFormatCurrency(currency);
+                const currencySymbol =
+                    this.currencySymbolHandler(currency) ?? tuiFormatCurrency(currency);
                 const formatted = tuiFormatNumber(Math.abs(value), {
                     ...format,
                     precision: Number.isNaN(format.precision)

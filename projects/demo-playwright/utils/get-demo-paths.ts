@@ -15,6 +15,7 @@ function flatPages(pages: TuiDocRoutePages): readonly TuiDocRoutePage[] {
 }
 
 export const EXCLUDED_SECTIONS = [
+    'AI tools',
     'Documentation',
     'Foundations',
     'Tools',

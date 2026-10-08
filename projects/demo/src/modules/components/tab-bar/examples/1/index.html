@@ -1,7 +1,8 @@
 <nav
     tuiTabBar
     class="tabs"
-    [(activeItemIndex)]="activeItemIndex"
+    [activeItemIndex]="activeItemIndex"
+    (activeItemIndexChange)="onIndexChange($event)"
 >
     <button
         *ngFor="let item of items"
@@ -9,7 +10,6 @@
         type="button"
         [badge]="item.badge"
         [icon]="item.icon"
-        (click)="onClick(item)"
     >
         {{ item.text }}
     </button>

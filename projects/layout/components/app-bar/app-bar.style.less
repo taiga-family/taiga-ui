@@ -74,11 +74,23 @@
 
         & > :first-child,
         & > :last-child {
-            margin: 0 -1em;
+            margin: 0 -1rem;
         }
 
         [tuiAppBarBack] {
             font: var(--tui-font-text-l);
+        }
+
+        > :first-child {
+            [tuiButton] {
+                &::before {
+                    font-size: 1rem;
+                }
+            }
+
+            [tuiIconButton][data-size='xs'] {
+                margin-inline-start: 0.5rem;
+            }
         }
     }
 

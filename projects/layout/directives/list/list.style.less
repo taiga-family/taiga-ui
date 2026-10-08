@@ -4,11 +4,11 @@
     list-style: none;
     padding: 0.25rem 0;
     counter-reset: item;
-    margin-inline-start: 1.5rem;
+    margin-inline-start: 1.625rem;
 
     [tuiListV='@{tui-version}'] {
         padding: 0;
-        margin-inline-start: 1.25rem;
+        margin-inline-start: 2.5rem;
     }
 
     & > li {
@@ -19,7 +19,18 @@
     & > li::before {
         content: counters(item, '.') '.';
         display: inline-flex;
-        margin: 0 0.5625rem 0 -1.5rem;
+        float: left;
+        unicode-bidi: plaintext;
+        font-variant-numeric: tabular-nums;
+        // physical shorthand margins keep the marker on the wrong side in RTL
+        margin-block: 0;
+        margin-inline-start: -1.5rem;
+        margin-inline-end: 0.5625rem;
+    }
+
+    [dir='rtl'] & > li::before,
+    &[dir='rtl'] > li::before {
+        float: right;
     }
 
     &:is(ul) > li::before {
@@ -30,8 +41,12 @@
     }
 
     &:is(ol) > li::before {
-        unicode-bidi: isolate;
-        font-variant-numeric: tabular-nums;
+        position: relative;
+        inset-inline-end: 0.75rem;
+        justify-content: flex-end;
+        inline-size: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
     }
 
     &[data-size='l'] {
@@ -39,7 +54,10 @@
 
         &:is(ul) > li::before {
             inline-size: 0.875rem;
-            margin: 0 0.5625rem 0 -1.4375rem;
+            // physical shorthand margins keep the marker on the wrong side in RTL
+            margin-block: 0;
+            margin-inline-start: -1.4375rem;
+            margin-inline-end: 0.5625rem;
         }
     }
 
@@ -53,5 +71,101 @@
         & > li {
             margin: 0.625rem 0;
         }
+    }
+}
+
+[tuiListV='@{tui-version}']:is(dl) {
+    display: grid;
+    grid-template-columns: minmax(20%, auto) auto;
+    margin: 0;
+    padding: 0;
+
+    &[data-size='s'] {
+        font: var(--tui-font-text-s);
+
+        dd,
+        dt {
+            padding: 0.25rem;
+        }
+    }
+
+    &[data-size='m'] {
+        font: var(--tui-font-text-s);
+
+        dd,
+        dt {
+            padding: 0.625rem 0.375rem;
+        }
+    }
+
+    &[data-size='l'] {
+        font: var(--tui-font-text-m);
+
+        dd,
+        dt {
+            padding: 1rem 0.5rem;
+        }
+    }
+
+    dt,
+    dd {
+        margin: 0;
+        font: inherit;
+
+        &:not(:last-of-type) {
+            box-shadow: 0 1px var(--tui-border-normal);
+        }
+    }
+
+    dt {
+        color: var(--tui-text-secondary);
+    }
+
+    &[data-size] dt {
+        padding-inline-start: 0;
+    }
+
+    &[data-size] dd {
+        padding-inline-end: 0;
+    }
+
+    &[compact] {
+        dt,
+        dd {
+            padding-block-end: 0;
+            box-shadow: none;
+            clip-path: inset(0);
+        }
+
+        dt {
+            white-space: nowrap;
+        }
+
+        dt::after {
+            content: '';
+            display: inline-block;
+            block-size: 1px;
+            margin-inline-start: 0.25rem;
+            transform: scaleX(var(--tui-inline));
+            border-image: repeating-linear-gradient(90deg, var(--tui-text-tertiary) 0 0.0625rem, transparent 0 0.125rem)
+                fill 0 / calc(100% - 1px) 0 0/0 100vw 0 0 repeat;
+        }
+    }
+}
+
+[data-platform='ios'] [tuiListV='@{tui-version}']:is(ul),
+[data-platform='android'] [tuiListV='@{tui-version}']:is(ul) {
+    margin-inline-start: 1.125rem;
+
+    & > li::before {
+        inline-size: 0.375rem;
+        margin-inline-start: -1rem;
+        margin-inline-end: 0.75rem;
+    }
+
+    &[data-size='l'] > li::before {
+        inline-size: 0.375rem;
+        margin-inline-start: -0.9375rem;
+        margin-inline-end: 0.75rem;
     }
 }

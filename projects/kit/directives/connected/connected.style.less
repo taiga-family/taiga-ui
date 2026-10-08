@@ -8,14 +8,16 @@
         padding: 1rem;
     }
 
-    &[tuiCardLarge] {
-        &[data-space] [tuiCell] {
-            padding: 1rem;
-            margin: -1rem -1rem calc(1rem - var(--t-space));
+    &[tuiCardLarge][data-space] > [tuiCell] {
+        padding: 1rem var(--tui-padding-inline);
+        margin: -1rem calc(-1 * var(--tui-padding-inline)) calc(1rem - var(--t-space));
 
-            &:last-of-type {
-                margin-block-end: -1rem;
-            }
+        &:last-of-type {
+            margin-block-end: -1rem;
+        }
+
+        [data-platform]:not([data-platform='ios'], [data-platform='android']) & {
+            --tui-padding-inline: 1rem;
         }
     }
 
