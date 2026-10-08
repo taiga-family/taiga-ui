@@ -18,7 +18,7 @@ export interface TuiTreeController {
 }
 
 export interface TuiTreeAccessor<T> {
-    register(item: TuiTreeItem, value: T): void;
+    register(item: TuiTreeItem, value: T, parent?: TuiTreeItem | null): void;
     unregister(item: TuiTreeItem): void;
 }
 

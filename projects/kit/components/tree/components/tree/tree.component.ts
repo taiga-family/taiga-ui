@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -21,7 +22,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
     selector: 'tui-tree',
-    imports: [PolymorpheusOutlet, TuiTreeItem, TuiTreeNode],
+    imports: [PolymorpheusOutlet, TuiItem, TuiTreeItem, TuiTreeNode],
     templateUrl: './tree.template.html',
     styleUrl: './tree.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

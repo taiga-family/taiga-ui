@@ -10,6 +10,13 @@
         class="t-children"
         [expanded]="expanded()"
     >
+        @if (children(); as children) {
+            <ng-template tuiItem>
+                <div>
+                    <ng-container [ngTemplateOutlet]="children" />
+                </div>
+            </ng-template>
+        }
         <div>
             <ng-content select="tui-tree-item" />
             <ng-content select="tui-tree" />
