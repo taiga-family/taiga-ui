@@ -1,7 +1,8 @@
-import {ClipboardModule} from '@angular/cdk/clipboard';
+import {Clipboard} from '@angular/cdk/clipboard';
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TuiCopyProcessor} from '@taiga-ui/cdk/directives/copy-processor';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -15,7 +16,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
 
 @Component({
     selector: 'tui-copy',
-    imports: [ClipboardModule, TuiButton, TuiHint, TuiIcon],
+    imports: [TuiButton, TuiHint, TuiIcon],
     templateUrl: './copy.template.html',
     styleUrl: './copy.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +26,9 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     },
 })
 export class TuiCopyComponent {
+    private readonly clipboard = inject(Clipboard);
+    private readonly processor = inject(TuiCopyProcessor, {optional: true});
+
     protected readonly notification = inject(TUI_NOTIFICATION_OPTIONS);
     protected readonly options = inject(TUI_COPY_OPTIONS);
     protected readonly copied$ = new BehaviorSubject(false);
@@ -44,5 +48,13 @@ export class TuiCopyComponent {
         return tuiIsString(this.notification.icon)
             ? this.notification.icon
             : this.notification.icon('positive');
+    }
+
+    protected copy(value: string | null): void {
+        const text = value ?? '';
+
+        this.copied$.next(
+            this.clipboard.copy(this.processor?.tuiCopyProcessor()(text) ?? text),
+        );
     }
 }
