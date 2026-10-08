@@ -80,8 +80,8 @@
                     tuiSlider
                     type="range"
                     [formControl]="control"
-                    [max]="max"
-                    [min]="min"
+                    [maxValue]="max"
+                    [minValue]="min"
                     [segments]="segments"
                     [step]="step"
                     [style.--tui-thumb-size.px]="thumbSize"
@@ -100,7 +100,7 @@
                 )
             </tr>
             <tr
-                name="[max]"
+                name="[maxValue]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="max"
@@ -118,7 +118,7 @@
                 <code>&lt;input type='range' /&gt;</code>
             </tr>
             <tr
-                name="[min]"
+                name="[minValue]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="min"
