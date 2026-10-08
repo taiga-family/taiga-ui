@@ -1,0 +1,60 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[data-platform='ios'].tui-liquid-glass [tuiAppBarButton] {
+    .liquid-glass-vars();
+
+    border-radius: 2.75rem;
+    margin: 0 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    backdrop-filter: var(--t-glass-filter);
+    background: var(--t-glass-background);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.09);
+    color: var(--tui-text-primary);
+    transition:
+        scale var(--tui-duration) var(--tui-curve-expressive-entrance, cubic-bezier(0.35, 1.3, 0.25, 1)),
+        background-color calc(var(--tui-duration) / 2) ease,
+        color calc(var(--tui-duration) / 2) ease,
+        box-shadow calc(var(--tui-duration) / 2) ease,
+        backdrop-filter calc(var(--tui-duration) / 2) ease;
+
+    // the glow sits on a pseudo element so it renders above the icons
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-sizing: border-box;
+        border-radius: inherit;
+        box-shadow: inset 0 0 0.5rem var(--t-glass-glow);
+    }
+
+    &::after {
+        .liquid-glass-bevel();
+    }
+
+    &:active {
+        scale: 1.25;
+        filter: brightness(3);
+    }
+
+    > [tuiIconButton] {
+        margin: 0;
+    }
+
+    &.tui-enter {
+        --tui-blur: 1rem;
+
+        animation-name: tuiFade, tuiBlur;
+    }
+}
+
+[data-platform='ios'].tui-liquid-glass [tuiTheme='dark'] [tuiAppBarButton],
+[tuiTheme='dark'] [data-platform='ios'].tui-liquid-glass [tuiAppBarButton],
+[data-platform='ios'][tuiTheme='dark'].tui-liquid-glass [tuiAppBarButton] {
+    .liquid-glass-dark();
+}
+
+// A dark bar over light content keeps the bright bevel of its surroundings
+[data-platform='ios'].tui-liquid-glass tui-app-bar[tuiTheme='dark'] [tuiAppBarButton] {
+    --t-glass-bevel: @tui-glass-bevel-light;
+}

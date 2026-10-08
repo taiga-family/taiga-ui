@@ -6,6 +6,7 @@
     @import 'android/checkbox.less';
     @import 'android/radio.less';
     @import 'android/switch.less';
+    @import 'android/tab-bar.less';
 
     tui-badge-notification[data-size='l'] {
         --t-size: 1.375rem;
@@ -13,8 +14,10 @@
 }
 
 [data-platform='ios'] {
+    @import 'ios/app-bar.less';
     @import 'ios/checkbox.less';
     @import 'ios/switch.less';
+    @import 'ios/tab-bar.less';
 
     tui-segmented > *:not(tui-segmented_active):active {
         background-color: var(--tui-background-neutral-1);

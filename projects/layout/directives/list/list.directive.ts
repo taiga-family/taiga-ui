@@ -30,7 +30,7 @@ class Styles {}
 
 @Directive({
     standalone: true,
-    selector: 'ul[tuiList], ol[tuiList]',
+    selector: 'ul[tuiList], ol[tuiList], dl[tuiList]',
     host: {
         tuiList: '',
         tuiListV: TUI_VERSION,

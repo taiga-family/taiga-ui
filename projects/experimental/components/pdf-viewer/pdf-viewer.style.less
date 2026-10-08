@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-pdf-viewer {
+[tuiPdfViewerV='@{tui-version}'] {
     position: relative;
     z-index: 1;
     display: flex;
@@ -63,12 +63,12 @@ tui-pdf-viewer {
         flex: 1;
         overflow: hidden;
         justify-content: center;
-    }
 
-    tui-loader,
-    tui-block-status {
-        inline-size: 100%;
-        margin-block-start: calc(-1 * var(--t-header));
+        > tui-loader,
+        > tui-block-status {
+            inline-size: 100%;
+            margin-block-start: calc(-1 * var(--t-header));
+        }
     }
 
     iframe {

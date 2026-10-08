@@ -1,0 +1,69 @@
+.description {
+    font: var(--tui-typography-body-m);
+}
+
+section {
+    margin-block-start: 2rem;
+}
+
+h3 {
+    margin-block-start: 1.5rem;
+}
+
+ul[tuiList] {
+    margin-block: 0.75rem 0;
+}
+
+tui-doc-code,
+tui-notification {
+    display: block;
+    margin-block-start: 0.75rem;
+}
+
+// Code blocks: one tidy bordered card (border + radius + subtle fill).
+// The inner <pre>.t-code already supplies 1rem padding and horizontal scroll,
+// so the host needs no padding; drop its outline to avoid a double border.
+tui-doc-code {
+    overflow: hidden;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: var(--tui-radius-m);
+    background: var(--tui-background-base);
+
+    ::ng-deep .t-code {
+        outline: none;
+    }
+}
+
+// Card group (à la getting-started "Explore Taiga UI"): responsive grid of
+// linked cards.
+.t-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+    margin-block: 0.75rem 0;
+
+    tui-avatar {
+        background: var(--tui-background-base);
+    }
+}
+
+// Flatten tui-doc-example: keep the anchored heading, drop the framed box, and
+// pull content up snugly under its heading.
+:host ::ng-deep tui-doc-example {
+    .t-example {
+        overflow: visible;
+        border: none !important;
+        border-radius: 0;
+        margin-block-start: 0.625rem !important;
+    }
+
+    .t-demo {
+        padding: 0;
+    }
+
+    // Zero the first element's own top margin so the header-to-content gap equals
+    // the .t-example margin for every section (list, paragraph, or code block).
+    .t-demo > :first-child {
+        margin-block-start: 0 !important;
+    }
+}

@@ -44,6 +44,7 @@
                 [maxLength]="maxLength"
                 [min]="min"
                 [minLength]="minLength"
+                (monthChange)="documentationPropertyMonthChange.emitEvent($event)"
                 (valueChange)="documentationPropertyRangeChange.emitEvent($event)"
             />
         </tui-doc-demo>
@@ -129,6 +130,14 @@
                 type="TuiDayRange"
             >
                 Selected date range
+            </tr>
+            <tr
+                #documentationPropertyMonthChange
+                name="(monthChange)"
+                tuiDocAPIItem
+                type="TuiMonth"
+            >
+                Month changed (also emitted when a year is picked)
             </tr>
         </table>
     </ng-template>

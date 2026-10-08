@@ -414,6 +414,42 @@ describe('rangeCalendarComponent', () => {
 
             expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
         });
+
+        it('emits monthChange when viewed month changes via chevron', () => {
+            const monthChangeSpy = jest.spyOn(component.monthChange, 'emit');
+
+            component['onMonthChange'](updatedMonth);
+            fixture.detectChanges();
+
+            expect(monthChangeSpy).toHaveBeenCalledWith(updatedMonth);
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+        });
+
+        it('does not emit monthChange when defaultViewedMonth is updated programmatically', () => {
+            const monthChangeSpy = jest.spyOn(component.monthChange, 'emit');
+
+            testComponent.defaultViewedMonth = updatedMonth;
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+            expect(monthChangeSpy).not.toHaveBeenCalled();
+        });
+
+        it('does not emit monthChange when selecting a period', () => {
+            testComponent.items = tuiCreateDefaultDayRangePeriods();
+            fixture.detectChanges();
+
+            const monthChangeSpy = jest.spyOn(component.monthChange, 'emit');
+            const [item] = testComponent.items;
+
+            if (item) {
+                component['onItemSelect'](item);
+            }
+
+            fixture.detectChanges();
+
+            expect(monthChangeSpy).not.toHaveBeenCalled();
+        });
     });
 
     function getCalendar(): DebugElement | null {

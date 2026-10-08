@@ -1,0 +1,87 @@
+<tui-doc-page
+    header="SearchBar"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>TuiSearchBar</code>
+            is a mobile search field. Put
+            <code>tuiSearchBar</code>
+            on a
+            <code>&lt;form&gt;</code>
+            or a
+            <code>&lt;search&gt;</code>
+            element, project a native
+            <code>&lt;input tuiSearchBar&gt;</code>
+            into it and a
+            <code>&lt;button tuiIconButton tuiButtonClose&gt;</code>
+            next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field,
+            on Android it moves inside the field on the leading side and turns into a back arrow.
+        </p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="
+                index === 1
+                    ? androidDescription
+                    : index === 2
+                      ? floatingDescription
+                      : index === 3
+                        ? appBarDescription
+                        : index === 4
+                          ? stickyDescription
+                          : index === 5
+                            ? blurDescription
+                            : null
+            "
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+
+        <ng-template #androidDescription>
+            No form here, so the cancel button clears the field through a
+            <code>FormControl</code>
+        </ng-template>
+
+        <ng-template #floatingDescription>
+            An active field on iOS is
+            <code>floating</code>
+            : liquid glass with a round cancel button. The bar sits on a
+            <code>&lt;form&gt;</code>
+            , so clearing and
+            <code>Enter</code>
+            work on their own
+        </ng-template>
+
+        <ng-template #appBarDescription>
+            Pinned along with the app bar, the field is
+            <code>floating</code>
+            from the start and keeps that look while the content scrolls under it. Pinning is up to you, the search bar
+            only takes care of the look. Once the field becomes active, it takes the place of the app bar
+        </ng-template>
+
+        <ng-template #stickyDescription>
+            Under a large heading the field starts inline and turns
+            <code>floating</code>
+            once the heading scrolls away — here the switch is driven by an
+            <code>IntersectionObserver</code>
+            watching the heading
+        </ng-template>
+
+        <ng-template #blurDescription>
+            On iOS with liquid glass, a progressive blur can be shown under the pinned field once the content scrolls
+            beneath it. To activate it, apply the
+            <code>tui-liquid-glass_blur</code>
+            class to the
+            <code>tuiSearchBar</code>
+            element. If the background is colored, provide it via the
+            <code>--tui-progressive-blur-background</code>
+            CSS variable for correct fading
+        </ng-template>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

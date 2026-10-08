@@ -112,12 +112,6 @@ export const pages: DocRoutePages = [
             },
         ],
     },
-    {
-        section: 'Documentation',
-        title: 'AI support',
-        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-        route: DemoRoute.AISupport,
-    },
     // Foundations
     {
         section: 'Foundations',
@@ -248,6 +242,7 @@ export const pages: DocRoutePages = [
         keywords:
             'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
         route: DemoRoute.List,
+        version: '4.68.0',
     },
     {
         section: 'Layout',
@@ -261,6 +256,7 @@ export const pages: DocRoutePages = [
         title: 'Counter',
         keywords: 'кнопка, button, counter, счетчик',
         route: DemoRoute.Counter,
+        version: '4.74.0',
         meta: {name: 'tui-counter'},
     },
     {
@@ -298,6 +294,7 @@ export const pages: DocRoutePages = [
                 title: 'ButtonSelect',
                 keywords: 'кнопка, button, select, multiselect',
                 route: DemoRoute.ButtonSelect,
+                version: '4.3.0',
             },
         ],
     },
@@ -376,6 +373,7 @@ export const pages: DocRoutePages = [
         title: 'Dialog',
         keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
         route: DemoRoute.Dialog,
+        version: '4.50.0',
         meta: {},
     },
     {
@@ -390,6 +388,7 @@ export const pages: DocRoutePages = [
         keywords:
             'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
         route: DemoRoute.Drawer,
+        version: '4.13.0',
         meta: {scheme: 'beaver', name: 'drawer'},
     },
     {
@@ -475,6 +474,7 @@ export const pages: DocRoutePages = [
         title: 'FloatingContainer',
         keywords: 'floating-container, sticky, плавающий, липкий, footer, футер',
         route: DemoRoute.FloatingContainer,
+        version: '4.34.0',
         meta: {},
     },
     {
@@ -482,6 +482,7 @@ export const pages: DocRoutePages = [
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',
         route: DemoRoute.Form,
+        version: '4.18.0',
         meta: {scheme: 'beaver', name: 'form'},
     },
     {
@@ -495,6 +496,7 @@ export const pages: DocRoutePages = [
         title: 'Copy',
         keywords: 'копировать, copy, clipboard, буфер обмена, share',
         route: DemoRoute.Copy,
+        version: '4.48.0',
         meta: {},
     },
     {
@@ -573,6 +575,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
                 route: DemoRoute.InputChip,
+                version: '4.42.0',
                 meta: [
                     {name: 'tui-input-chip'},
                     {name: 'tui-multi-select', anchor: 'multi-select'},
@@ -583,6 +586,7 @@ export const pages: DocRoutePages = [
                 title: 'InputColor',
                 keywords: 'input-color, picker, color, цвет, выбор, палитра',
                 route: DemoRoute.InputColor,
+                version: '4.45.0',
             },
             {
                 section: 'Components',
@@ -599,6 +603,7 @@ export const pages: DocRoutePages = [
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, multiple',
                 route: DemoRoute.InputDateMulti,
+                version: '4.46.0',
             },
             {
                 section: 'Components',
@@ -637,6 +642,7 @@ export const pages: DocRoutePages = [
                 title: 'InputPhone',
                 keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
                 route: DemoRoute.InputPhone,
+                version: '4.49.0',
             },
             {
                 section: 'Components',
@@ -650,6 +656,7 @@ export const pages: DocRoutePages = [
                 title: 'InputPin',
                 keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
                 route: DemoRoute.InputPin,
+                version: '4.20.0',
             },
             {
                 section: 'Components',
@@ -687,6 +694,7 @@ export const pages: DocRoutePages = [
                 title: 'Textarea',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.Textarea,
+                version: '4.33.0',
                 meta: {},
             },
             {
@@ -875,6 +883,7 @@ export const pages: DocRoutePages = [
         title: 'Like',
         keywords: 'like, лайк, эмодзи, смайлик, стикер',
         route: DemoRoute.Like,
+        version: '4.8.0',
         meta: {
             name: 'tui-button-like',
         },
@@ -922,6 +931,7 @@ export const pages: DocRoutePages = [
         title: 'NotificationMiddle',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.NotificationMiddle,
+        version: '4.52.0',
         meta: {
             figmaVersion: '1.1.0',
         },
@@ -957,6 +967,13 @@ export const pages: DocRoutePages = [
                     'mobile, потянуть, обновление, лоадер, loader, крутилка, загрузка',
                 route: DemoRoute.PullToRefresh,
             },
+            {
+                section: 'Components',
+                title: 'SearchBar',
+                keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
+                route: DemoRoute.SearchBar,
+                version: '4.102.0',
+            },
         ],
     },
     {
@@ -970,6 +987,7 @@ export const pages: DocRoutePages = [
         title: 'PdfViewer',
         keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
         route: DemoRoute.PdfViewer,
+        version: '4.53.0',
     },
     {
         section: 'Components',
@@ -989,6 +1007,7 @@ export const pages: DocRoutePages = [
         title: 'Pager',
         keywords: 'pager, точка, dot',
         route: DemoRoute.Pager,
+        version: '4.31.0',
         meta: {figmaVersion: '1.1.0'},
     },
     {
@@ -1062,6 +1081,7 @@ export const pages: DocRoutePages = [
         title: 'BottomSheet',
         keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
         route: DemoRoute.BottomSheet,
+        version: '4.23.0',
     },
     {
         section: 'Components',
@@ -1108,6 +1128,7 @@ export const pages: DocRoutePages = [
         title: 'Slides',
         keywords: 'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper',
         route: DemoRoute.Slides,
+        version: '4.51.0',
     },
     {
         section: 'Components',
@@ -1180,6 +1201,7 @@ export const pages: DocRoutePages = [
         title: 'Toast',
         keywords: 'toast, тост, нотификация',
         route: DemoRoute.Toast,
+        version: '4.55.0',
     },
     {
         section: 'Components',
@@ -1224,6 +1246,7 @@ export const pages: DocRoutePages = [
         title: 'ItemGroup',
         keywords: 'item, chip, group, list, tag, тэг, badge',
         route: DemoRoute.ItemGroup,
+        version: '4.31.0',
         meta: {
             name: 'tui-chip-group',
         },
@@ -1233,6 +1256,7 @@ export const pages: DocRoutePages = [
         title: 'Message',
         keywords: 'message, sms, сообщение, смс',
         route: DemoRoute.Message,
+        version: '4.15.0',
         meta: {name: 'tui-message-bubble'},
     },
     {
@@ -1340,6 +1364,7 @@ export const pages: DocRoutePages = [
         title: 'Search',
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
+        version: '4.4.0',
         meta: {scheme: 'beaver', name: 'filters'},
     },
     {
@@ -1347,6 +1372,7 @@ export const pages: DocRoutePages = [
         title: 'InputSearch',
         keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
         route: DemoRoute.InputSearch,
+        version: '4.22.0',
         meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
@@ -1545,6 +1571,7 @@ export const pages: DocRoutePages = [
                 title: 'Shimmer',
                 keywords: 'shimmer, шиммер, fade, фейд, cache, кеш, кеширование',
                 route: DemoRoute.Shimmer,
+                version: '4.45.0',
             },
             {
                 section: 'Tools',
@@ -1720,6 +1747,7 @@ export const pages: DocRoutePages = [
                 title: 'Truncate',
                 keywords: 'truncate, middle, ellipsis, обрезка, по середине',
                 route: DemoRoute.Truncate,
+                version: '4.77.0',
             },
         ],
     },
@@ -1824,6 +1852,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'obfuscate, mask, sensitive, pipe, обфускация, преобразование, пайп, маска, чувствительные, критичные',
                 route: DemoRoute.Obfuscate,
+                version: '4.38.0',
             },
         ],
     },
@@ -1906,5 +1935,34 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Pure,
             },
         ],
+    },
+    // AI tools
+    {
+        section: 'AI tools',
+        title: 'Overview',
+        keywords:
+            'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
+        route: DemoRoute.AiOverview,
+    },
+    {
+        section: 'AI tools',
+        title: 'Skills',
+        keywords:
+            'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
+        route: DemoRoute.AiSkills,
+    },
+    {
+        section: 'AI tools',
+        title: 'MCP server',
+        keywords:
+            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
+        route: DemoRoute.AiMcp,
+    },
+    {
+        section: 'AI tools',
+        title: 'llms.txt',
+        keywords:
+            'ai, llm, llms, llms.txt, llms-full, context, standard, контекст, модели',
+        route: DemoRoute.AiLlms,
     },
 ] as const;

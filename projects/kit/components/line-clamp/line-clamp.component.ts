@@ -1,28 +1,21 @@
 import {
-    type AfterViewChecked,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
-    ElementRef,
+    computed,
+    DestroyRef,
     inject,
     Input,
     Output,
-    ViewChild,
+    signal,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_HINT_COMPONENT,
-    TuiHint,
-    TuiHintDirective,
-} from '@taiga-ui/core/directives/hint';
+import {TUI_HINT_COMPONENT, TuiHint} from '@taiga-ui/core/directives/hint';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
-    BehaviorSubject,
-    debounceTime,
-    distinctUntilChanged,
     filter,
     map,
     type Observable,
@@ -35,6 +28,7 @@ import {
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
+import {TuiLineClampFallback} from './line-clamp-fallback.directive';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @Component({
@@ -50,24 +44,26 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
             useValue: TuiLineClampBox,
         },
     ],
-    hostDirectives: [TuiTransitioned],
+    hostDirectives: [TuiTransitioned, TuiLineClampFallback],
     host: {
-        '(transitionend)': 'update()',
-        '(mouseenter)': 'update()',
-        '(resize)': 'update()',
+        '[class._overflown]': 'overflown()',
+        '[style.max-height.px]': 'maxHeight()',
     },
 })
-export class TuiLineClamp implements AfterViewChecked {
-    @ViewChild(TuiHintDirective, {read: ElementRef})
-    private readonly outlet?: ElementRef<HTMLElement>;
-
+export class TuiLineClamp {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly el = tuiInjectElement();
-    private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
+    private readonly overflows = signal(0);
+    private readonly destroyed = signal(false);
 
-    protected lineClamp = toSignal(
-        this.linesLimit$.pipe(
+    protected readonly overflown = signal(false);
+    protected readonly lineHeight = signal(24);
+    protected readonly linesLimit = signal(1);
+
+    protected readonly lineClamp = toSignal(
+        toObservable(this.linesLimit).pipe(
             startWith(1),
             pairwise(),
             switchMap(([prev, next]) =>
@@ -78,59 +74,56 @@ export class TuiLineClamp implements AfterViewChecked {
                           map(() => next),
                       ),
             ),
-            takeUntilDestroyed(),
         ),
         {initialValue: 0},
     );
 
-    @Input()
-    public lineHeight = 24;
-
-    @Input()
-    public content: PolymorpheusContent;
-
-    @Output()
-    public readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(
-        debounceTime(0),
-        distinctUntilChanged(),
+    protected readonly computedContent = computed(() =>
+        this.options.showHint && this.overflown() ? this.content() : '',
     );
 
-    @Input()
-    public set linesLimit(linesLimit: number) {
-        this.linesLimit$.next(linesLimit);
+    @Output()
+    public readonly overflownChange: Observable<boolean> = this.isOverflown$;
+
+    public readonly content = signal<PolymorpheusContent>('');
+    public readonly maxHeight = computed(() => this.lineHeight() * this.linesLimit());
+
+    constructor() {
+        inject(DestroyRef).onDestroy(() => this.destroyed.set(true));
     }
 
-    public ngAfterViewChecked(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
+    @Input('content')
+    public set contentSetter(content: PolymorpheusContent) {
+        this.content.set(content);
     }
 
-    protected get overflown(): boolean {
-        if (!this.outlet) {
-            return false;
-        }
-
-        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
-        const {clientWidth} = this.el;
-
-        return scrollHeight > this.maxHeight || scrollWidth > clientWidth;
+    @Input('lineHeight')
+    public set lineHeightSetter(lineHeight: number) {
+        this.lineHeight.set(lineHeight);
     }
 
-    protected get computedContent(): PolymorpheusContent {
-        return this.options.showHint && this.overflown ? this.content : '';
+    @Input('linesLimit')
+    public set linesLimitSetter(linesLimit: number) {
+        this.linesLimit.set(linesLimit);
     }
 
-    protected update(): void {
-        if (!this.outlet) {
+    public setOverflown(overflown: boolean): void {
+        if (this.destroyed() || this.overflown() === overflown) {
             return;
         }
 
-        this.el.style.height = tuiPx(this.outlet.nativeElement.scrollHeight);
-        this.el.style.maxHeight = tuiPx(this.maxHeight);
-        this.el.classList.toggle('_overflown', this.overflown);
+        this.overflown.set(overflown);
+        this.cdr.markForCheck();
+        this.isOverflown$.next(overflown);
     }
 
-    private get maxHeight(): number {
-        return this.lineHeight * this.linesLimit$.value;
+    /**
+     * Both axes can overflow at once, and turning the clamp on can stop one of them,
+     * so a single axis going quiet does not mean the content fits
+     */
+    protected onOverflow(overflown: boolean): void {
+        this.overflows.update((val) => val + (overflown ? 1 : -1));
+
+        this.setOverflown(this.overflows() > 0);
     }
 }

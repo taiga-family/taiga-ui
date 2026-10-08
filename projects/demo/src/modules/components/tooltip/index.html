@@ -31,6 +31,46 @@
             [component]="4 | tuiComponent"
             [content]="4 | tuiExample"
         />
+        <tui-doc-example
+            id="visibility"
+            heading="Visibility"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-icon
+                [size]="size"
+                [tuiHintAppearance]="appearance"
+                [tuiHintDirection]="direction"
+                [tuiTooltip]="content"
+            />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiTooltip"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="content"
+            >
+                Content
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation
+            [withHint]="false"
+            [withTextFieldController]="false"
+        />
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

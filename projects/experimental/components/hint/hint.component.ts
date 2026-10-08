@@ -52,7 +52,7 @@ const GAP = 8;
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
         '[attr.tuiTheme]': 'theme',
-        '(document:click)': 'onClick($event.target)',
+        '(document:pointerdown)': 'onPointerDown($event.target)',
     },
 })
 export class TuiHintComponent<C = any> {
@@ -94,7 +94,7 @@ export class TuiHintComponent<C = any> {
             .subscribe((hover) => this.hover.toggle(hover));
     }
 
-    protected onClick(target: HTMLElement): void {
+    protected onPointerDown(target: HTMLElement): void {
         if (
             (!target.closest(this.el.tagName) && !this.hint.el.contains(target)) ||
             tuiIsObscured(this.hint.el)

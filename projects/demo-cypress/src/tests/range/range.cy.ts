@@ -56,6 +56,30 @@ describe('TuiRange', () => {
         expect(getFilledRangeOffset(component).right).to.equal('60%');
     });
 
+    it('does not emit valueChanges on pointerdown without pointermove', () => {
+        let valueChanges = 0;
+
+        component.control.valueChanges.subscribe(() => {
+            valueChanges += 1;
+        });
+
+        cy.get('@startThumb').then(($thumb) => {
+            const thumb = $thumb[0]!;
+
+            cy.stub(thumb, 'setPointerCapture');
+            thumb.dispatchEvent(
+                new PointerEvent('pointerdown', {bubbles: true, pointerId: 1}),
+            );
+            thumb.dispatchEvent(
+                new PointerEvent('pointerup', {bubbles: true, pointerId: 1}),
+            );
+        });
+
+        cy.then(() => {
+            expect(valueChanges).to.equal(0);
+        });
+    });
+
     describe('Changing values', () => {
         describe('Left point', () => {
             it('Pressing the left arrow decreases the value by one step', () => {

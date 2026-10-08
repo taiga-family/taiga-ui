@@ -63,6 +63,7 @@ class TuiTooltipStyles {}
         {
             directive: TuiHintDirective,
             inputs: ['tuiHint: tuiTooltip', 'tuiHintAppearance', 'tuiHintContext'],
+            outputs: ['tuiHintVisible'],
         },
     ],
     host: {
@@ -103,6 +104,8 @@ export class TuiTooltip implements DoCheck {
     protected onPointerDown(event: MouseEvent): void {
         if (this.isMobile) {
             event.stopPropagation();
+
+            return;
         }
 
         this.driver.toggle();

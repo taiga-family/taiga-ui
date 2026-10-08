@@ -19,10 +19,13 @@ import {
 
 import {TUI_HINT_OPTIONS, type TuiHintOptions} from './hint-options.directive';
 
+const MOBILE_HIDE_DELAY_MS = 100;
+
 @Directive({
     standalone: true,
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
+    host: {'(click)': 'onClick()'},
 })
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(TUI_IS_MOBILE);
@@ -35,7 +38,7 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.pipe(
             switchMap((visible) =>
                 this.isMobile
-                    ? of(visible).pipe(delay(0))
+                    ? of(visible).pipe(delay(visible ? 0 : MOBILE_HIDE_DELAY_MS))
                     : of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
             ),
             takeUntil(this.hovered$),
@@ -90,5 +93,11 @@ export class TuiHintHover extends TuiDriver {
 
     public close(): void {
         this.toggle$.next(false);
+    }
+
+    protected onClick(): void {
+        if (this.isMobile) {
+            this.toggle();
+        }
     }
 }

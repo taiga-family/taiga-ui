@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    max-block-size: 20rem;
+    inline-size: 20rem;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+.title {
+    margin: 0.5rem 0;
+    font: var(--tui-font-heading-4);
+    font-weight: bold;
+}
+
+[role='search'] {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+}
+
+// The blur covers the search bar box, so the padding belongs to it
+form {
+    padding: 0.75rem 1rem;
+}

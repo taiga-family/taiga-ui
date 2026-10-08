@@ -2,7 +2,7 @@
 
 :host {
     position: absolute;
-    max-inline-size: ~'min(18rem, calc(100% - 1rem))';
+    max-inline-size: ~'min(20rem, calc(100% - 1rem))';
     padding: 0.75rem 1rem;
     background: var(--tui-background-accent-1);
     border-radius: var(--tui-radius-l);
@@ -62,6 +62,12 @@
 
     &[data-appearance='dark'] {
         background: var(--tui-background-elevation-1);
+        color: var(--tui-text-primary);
+        box-shadow: var(--tui-shadow-small);
+    }
+
+    &[data-appearance='floating'] {
+        background: var(--tui-background-elevation-2);
         color: var(--tui-text-primary);
         box-shadow: var(--tui-shadow-small);
     }

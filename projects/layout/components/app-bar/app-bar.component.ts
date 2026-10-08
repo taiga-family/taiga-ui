@@ -1,4 +1,4 @@
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -14,17 +14,21 @@ import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
 import {map, merge} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
+import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-app-bar',
-    imports: [AsyncPipe, TuiFade],
+    imports: [AsyncPipe, NgIf, TuiAppBarButton, TuiFade, TuiProgressiveBlur],
     templateUrl: './app-bar.template.html',
     styleUrls: ['./app-bar.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -41,6 +45,9 @@ export class TuiAppBarComponent implements AfterViewInit {
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly el = tuiInjectElement();
+
+    protected readonly liquidGlass =
+        inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios';
 
     protected readonly width$ = merge(
         inject(WaResizeObserverService, {self: true}),

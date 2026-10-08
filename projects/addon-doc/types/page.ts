@@ -5,6 +5,7 @@ export type TuiDocRoutePages = ReadonlyArray<TuiDocRoutePage | TuiDocRoutePageGr
 export interface TuiDocRoutePageBase {
     readonly section?: string;
     readonly title: string;
+    readonly version?: string;
 }
 
 export interface TuiDocRoutePage extends TuiDocRoutePageBase {
