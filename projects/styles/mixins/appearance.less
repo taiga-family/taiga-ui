@@ -16,7 +16,7 @@
 
 .appearance-active(@content) {
     .interactive({
-        &:active:not([data-state]) {
+        &:active:hover:not([data-state]) {
             @content();
         }
     });
