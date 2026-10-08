@@ -16,7 +16,6 @@
             .t-content {
                 opacity: var(--tui-disabled-opacity);
                 mask-position: 0;
-                animation-name: tuiCopySafariOpacity;
 
                 .safari-only({
                     animation-duration: 1s;
@@ -34,7 +33,6 @@
     &:has(.t-button:focus-visible) .t-content {
         opacity: var(--tui-disabled-opacity);
         mask-position: 0;
-        animation-name: tuiCopySafariOpacity;
 
         .safari-only({
             animation-duration: 1s;
@@ -46,6 +44,8 @@
 
 .t-content {
     .transition(~'opacity, mask');
+
+    animation-name: tuiCopySafariOpacity;
 
     .safari-only({
         transition-property: mask;
