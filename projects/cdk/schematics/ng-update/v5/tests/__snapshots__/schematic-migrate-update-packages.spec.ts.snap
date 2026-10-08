@@ -1,5 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ng-update migrate packages adds introduced packages when their imports appear but they are missing: package.json 1`] = `
+{
+  "0. Before": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1"
+                 }
+             }
+            ",
+  "1. After": "
+             {
+                 "dependencies": {
+                    "@angular/core": "~19.0.0",
+                    "@ng-web-apis/platform": "^5.0.0",
+                    "@taiga-ui/cdk": "5.0.1",
+                    "@taiga-ui/core": "5.0.1",
+                    "@taiga-ui/editor": "^5.4.0"
+                 }
+             }
+            ",
+}
+`;
+
+exports[`ng-update migrate packages adds introduced packages when their imports appear but they are missing: test.ts 1`] = `
+{
+  "0. Before": "
+                import {tuiHexToRgb, TUI_IS_TOUCH} from '@taiga-ui/cdk';
+
+                export class Test {
+                    protected readonly rgb = tuiHexToRgb;
+                    protected readonly touch = TUI_IS_TOUCH;
+                }
+            ",
+  "1. After": "import { tuiHexToRgb } from "@taiga-ui/editor";
+// TODO: (Taiga UI migration) TUI_IS_TOUCH was renamed to WA_IS_TOUCH from @ng-web-apis/platform, which is a Signal<boolean> (the old token was a plain boolean), so read it with a call: inject(WA_IS_TOUCH)().
+import { WA_IS_TOUCH } from "@ng-web-apis/platform";
+
+                export class Test {
+                    protected readonly rgb = tuiHexToRgb;
+                    protected readonly touch = WA_IS_TOUCH;
+                }
+            ",
+}
+`;
+
 exports[`ng-update migrate packages update packages from v4: package.json 1`] = `
 {
   "0. Before": "
