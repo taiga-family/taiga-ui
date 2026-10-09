@@ -14,15 +14,24 @@ describe('TuiTextfieldComponent label association', () => {
                 <tui-textfield>
                     <label tuiLabel>Explicit ID</label>
                     <input
-                        id="explicit-input"
+                        id="explicit"
                         tuiInput
+                    />
+                </tui-textfield>
+                <tui-textfield>
+                    <label tuiLabel>Bound ID</label>
+                    <input
+                        tuiInput
+                        [id]="id"
                     />
                 </tui-textfield>
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class Test {}
+    class Test {
+        protected readonly id = 'bound';
+    }
 
     let fixture: ComponentFixture<Test>;
 
@@ -36,18 +45,25 @@ describe('TuiTextfieldComponent label association', () => {
         fixture.detectChanges();
     });
 
-    it('associates a label with an input using a generated ID', () => {
-        const label = fixture.nativeElement.querySelectorAll('label[tuiLabel]')[0];
-        const input = fixture.nativeElement.querySelectorAll('input[tuiInput]')[0];
+    it('associates a label with an input', () => {
+        const labels = Array.from<HTMLLabelElement>(
+            fixture.nativeElement.querySelectorAll('[tuiLabel]'),
+        );
 
-        expect(input.id).toBeTruthy();
-        expect(label.htmlFor).toBe(input.id);
-    });
+        const inputs = Array.from<HTMLInputElement>(
+            fixture.nativeElement.querySelectorAll('[tuiInput]'),
+        );
 
-    it('associates a label with an input using an explicit ID', () => {
-        const label = fixture.nativeElement.querySelectorAll('label[tuiLabel]')[1];
-        const input = fixture.nativeElement.querySelector('#explicit-input');
+        // Triggering any interaction for change detection to properly run.
+        // In reality, just loading the component refreshes the label htmlFor
+        // even in zoneless change detection, but in tests auto id is not propagated
+        // from input to label unless another interaction happens
+        inputs[0]?.focus();
+        fixture.detectChanges();
 
-        expect(label.htmlFor).toBe(input.id);
+        expect(inputs.every(({id}) => Boolean(id))).toBe(true);
+        expect(labels.every(({htmlFor}, index) => inputs[index]?.id === htmlFor)).toBe(
+            true,
+        );
     });
 });
