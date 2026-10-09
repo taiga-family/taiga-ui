@@ -30,7 +30,9 @@ export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
         this.onChange(
             this.children()
                 .filter((i) =>
-                    i.disabled() ? this.value().includes(i.tuiCheckboxRow()) : !this.checked(),
+                    i.disabled()
+                        ? this.value().includes(i.tuiCheckboxRow())
+                        : !this.checked(),
                 )
                 .map((i) => i.tuiCheckboxRow()),
         );
