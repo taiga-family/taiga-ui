@@ -6,6 +6,10 @@
     border-radius: var(--tui-radius-m);
     text-align: start;
 
+    &[data-size='l'] {
+        border-radius: var(--tui-radius-l);
+    }
+
     :host-context(*:disabled) {
         pointer-events: none;
     }

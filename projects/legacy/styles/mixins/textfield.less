@@ -10,19 +10,22 @@
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
+        line-height: 1rem;
     }
 
     &[data-size='m'] {
         --tui-height: var(--tui-height-m);
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
+        line-height: 1rem;
     }
 
     &[data-size='l'] {
         --tui-height: var(--tui-height-l);
 
-        font: var(--tui-font-text-m);
+        border-radius: var(--tui-radius-l);
+        font: var(--tui-font-text-ui-m);
         line-height: 1.25rem;
     }
 
@@ -95,7 +98,7 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-tertiary);
+        color: var(--tui-text-secondary);
         opacity: 0;
     }
 
@@ -150,16 +153,18 @@
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
-            font-size: 0.8156rem;
-            transform: translateY(-0.625rem);
+            font: var(--tui-font-text-s);
+            line-height: 1.25rem;
+            transform: translateY(-0.75rem);
         }
     }
 
     :host[data-size='m']:not(._label-outside) & {
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
-            font-size: 0.69rem;
-            transform: translateY(-0.5rem);
+            font: var(--tui-font-text-xs);
+            line-height: 1.25rem;
+            transform: translateY(-0.5625rem);
         }
     }
 
@@ -196,12 +201,12 @@
     transform: translateY(0);
 
     &_raised {
-        transform: translateY(-0.625rem);
+        transform: translateY(-0.75rem);
 
         :host[data-size='m'] & {
             font: var(--tui-font-text-xs);
             line-height: 1.25rem;
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.5625rem);
             letter-spacing: 0.025rem;
         }
 
@@ -218,11 +223,12 @@
     }
 
     :host[data-size='l'] & {
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-text-ui-m);
         line-height: 1.25rem;
 
         &_raised {
-            font-size: 0.8156rem;
+            font: var(--tui-font-text-s);
+            line-height: 1.25rem;
         }
     }
 
