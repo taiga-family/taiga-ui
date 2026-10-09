@@ -21,37 +21,37 @@
                     >
                         Edit
                     </button>
-                    <tui-drawer
-                        *tuiPopup="edited() === item"
-                        tuiTextfieldAppearance="textfield"
-                        tuiTextfieldSize="l"
-                        class="drawer"
-                    >
-                        <header>
-                            <h2 tuiHeader="body-l">
-                                <div tuiTitle>{{ item.name }}</div>
-                                <div tuiAccessories>
-                                    <button
-                                        appearance="icon"
-                                        iconStart="@tui.x"
-                                        tuiIconButton
-                                        type="button"
-                                        (click)="edited.set(null)"
-                                    >
-                                        Close
-                                    </button>
-                                </div>
-                            </h2>
-                        </header>
-                        <tui-textfield>
-                            <label tuiLabel>Name</label>
-                            <input
-                                tuiInput
-                                [ngModel]="item.name"
-                            />
-                        </tui-textfield>
-                    </tui-drawer>
                 </td>
+                <tui-drawer
+                    *tuiPopup="edited() === item"
+                    tuiTextfieldAppearance="textfield"
+                    tuiTextfieldSize="l"
+                    class="drawer"
+                >
+                    <header>
+                        <h2 tuiHeader="body-l">
+                            <div tuiTitle>{{ item.name }}</div>
+                            <div tuiAccessories>
+                                <button
+                                    appearance="icon"
+                                    iconStart="@tui.x"
+                                    tuiIconButton
+                                    type="button"
+                                    (click)="edited.set(null)"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </h2>
+                    </header>
+                    <tui-textfield>
+                        <label tuiLabel>Name</label>
+                        <input
+                            tuiInput
+                            [ngModel]="item.name"
+                        />
+                    </tui-textfield>
+                </tui-drawer>
             </tr>
         }
     </tbody>
