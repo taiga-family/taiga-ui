@@ -1,0 +1,159 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page header="Getting started">
+    <ng-template pageTab="Automatic">
+        <div>
+            To install the Taiga UI use the command below. This command will automatically add the library to your
+            project and configure it.
+        </div>
+
+        <tui-doc-example
+            heading="Install Taiga UI"
+            [content]="automatic"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            heading="Update to the latest version"
+            [content]="update"
+            [preview]="false"
+            [style.margin-block-end.rem]="2"
+        />
+
+        <tui-doc-example
+            heading="Explore Taiga UI"
+            [preview]="false"
+        >
+            <p>
+                See
+                <b>Components</b>
+                section in the main navigation and check out UI elements broken into dedicated groups by their purpose
+            </p>
+        </tui-doc-example>
+
+        <article class="explore">
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Form')"
+            >
+                <span tuiTitle>
+                    Form
+                    <span tuiSubtitle>
+                        Inputs, buttons, checkboxes, error messages and other components to build forms
+                    </span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.form"></div>
+                </span>
+            </button>
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Layout')"
+            >
+                <span tuiTitle>
+                    Layout
+                    <span tuiSubtitle>Cards, containers, lists and other components to build application layout</span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.layout-panel-left"></div>
+                </span>
+            </button>
+            <button
+                appearance="secondary-grayscale"
+                tuiCardLarge="compact"
+                tuiHeader="h6"
+                type="button"
+                (click)="toggle('Navigation')"
+            >
+                <span tuiTitle>
+                    Navigation
+                    <span tuiSubtitle>
+                        Tabs, breadcrumbs, pagination, stepper and other components that handle app navigation
+                    </span>
+                </span>
+
+                <span tuiAccessories>
+                    <div tuiAvatar="@tui.compass"></div>
+                </span>
+            </button>
+        </article>
+
+        <tui-doc-example
+            heading="AI-Ready"
+            [preview]="false"
+        >
+            <p>
+                Taiga UI treats AI agents as first-class readers of its documentation. The same knowledge is published
+                in AI-friendly shapes \u2014 a flat
+                <code>llms.txt</code>
+                context file, an MCP server, and reusable agent skills \u2014 so your assistant reads, understands, and
+                generates components against the current, version-correct API instead of guessing from memory.
+            </p>
+        </tui-doc-example>
+
+        <a
+            appearance="secondary-grayscale"
+            iconStart="@tui.sparkles"
+            routerLink="/ai/overview"
+            tuiButton
+            [style.margin-block-start.rem]="1"
+        >
+            Explore AI tools
+        </a>
+    </ng-template>
+    <ng-template pageTab="Manual">
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [content]="content[$index] || {}"
+                [description]="description"
+                [heading]="example"
+                [preview]="false"
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (5) {
+                        If you want to use SSR with Taiga UI you need to install
+                        <code>&#64;ng-web-apis/universal</code>
+                        package. It has advanced mocks and tools to extract user agent and location info from server
+                        side requests.
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+    <ng-template pageTab="Config">
+        Taiga UI is configured with the
+        <code>provideTaiga</code>
+        helper that you add to your global providers. It accepts the following object:
+
+        <tui-doc-example
+            [content]="config"
+            [preview]="false"
+        />
+
+        <tui-doc-example
+            description="To keep your theme consistent, especially with SSR, add the following script to your index.html"
+            heading="Dark theme"
+            [content]="index"
+            [preview]="false"
+        />
+    </ng-template>
+    <ng-template pageTab="Playground">
+        <tui-doc-example
+            heading="Stackblitz"
+            [fullsize]="true"
+        >
+            <iframe
+                src="stackblitz"
+                class="stackblitz"
+            ></iframe>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

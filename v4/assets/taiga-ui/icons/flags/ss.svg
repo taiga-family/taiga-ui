@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <rect y="28" width="40" height="12" fill="#496E2D" />
+    <rect width="40" height="12" fill="black" />
+    <rect width="40" height="3" transform="matrix(1 0 0 -1 0 28)" fill="#F0F0F0" />
+    <rect width="40" height="3" transform="matrix(1 0 0 -1 0 15)" fill="#F0F0F0" />
+    <rect y="15" width="40" height="10" fill="#A2001D" />
+    <path d="M20 20L0 0V40L20 20Z" fill="#0052B4" />
+    <path
+        d="M6.5798 15.0275L9.01606 18.4338L13.0027 17.1647L10.5223 20.5391L12.9585 23.9456L8.98908 22.6247L6.50861 25.9991L6.53591 21.8082L2.56631 20.4872L6.55259 19.2182L6.5798 15.0275Z"
+        fill="#FFDA44"
+    />
+</svg>

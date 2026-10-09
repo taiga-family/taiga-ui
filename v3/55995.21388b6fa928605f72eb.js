@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[55995],{55995:a=>{a.exports='<span tuiStatus="var(--tui-success-fill)">Success</span>\n<p>Status is automatically colored within some badge appearances</p>\n<tui-badge\n    appearance="success"\n    tuiStatus\n>\n    Success\n</tui-badge>\n'}}]);

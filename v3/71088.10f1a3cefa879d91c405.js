@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[71088],{71088:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\n.avatar {\n    background: var(--tui-accent);\n    color: var(--tui-text-01-night);\n}\n\n.text {\n    background: var(--tui-base-05);\n    color: var(--tui-text-01-night);\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53801],{53801:n=>{n.exports='```html\n<span\n  *ngIf="isOpen"\n  tuiAnimated\n>\n  Active\n</span>\n```\n'}}]);

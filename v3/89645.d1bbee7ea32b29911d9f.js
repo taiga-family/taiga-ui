@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[89645],{89645:n=>{n.exports="```html\n<div tuiSurface>\n  \x3c!-- Content --\x3e\n</div>\n```\n"}}]);

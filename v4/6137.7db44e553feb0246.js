@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6137],{6137:e=>{e.exports="button {\n    inline-size: 100%;\n    border-radius: 0;\n    box-shadow: 0 -1px var(--tui-border-normal);\n}\n"}}]);

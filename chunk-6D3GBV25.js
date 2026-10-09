@@ -1,0 +1,32 @@
+import"./chunk-LQ6M4NCU.js";var t=`<label tuiHeader>
+    <div tuiTitle>
+        Resting Heart Rate
+        <div tuiSubtitle>
+            The number of times your heart beats per minute when you are completely relaxed, still, and awake
+        </div>
+        <meter
+            high="100"
+            low="80"
+            max="100"
+            min="40"
+            optimum="60"
+            tuiMeter
+            value="60"
+        ></meter>
+        <div
+            aria-hidden="true"
+            class="ticks-labels"
+        >
+            <span>40</span>
+            <span
+                appearance="floating"
+                tuiBadge
+                [style.inset-inline-start.%]="(100 * (60 - 40)) / (100 - 40)"
+            >
+                60
+            </span>
+            <span>100</span>
+        </div>
+    </div>
+</label>
+`;export{t as default};

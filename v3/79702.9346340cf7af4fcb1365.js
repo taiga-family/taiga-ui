@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[79702],{79702:a=>{a.exports='<tui-bar-set\n    size="m"\n    class="bars"\n    [value]="value"\n></tui-bar-set>\n'}}]);

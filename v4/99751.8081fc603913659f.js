@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99751],{99751:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.stack {\n    display: flex;\n    gap: inherit;\n    flex-direction: column;\n}\n\n.ticks-labels {\n    .tui-slider-ticks-labels();\n\n    color: var(--tui-text-secondary);\n    margin-block-start: -1rem;\n}\n"}}]);
