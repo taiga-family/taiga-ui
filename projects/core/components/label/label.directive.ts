@@ -38,7 +38,6 @@ export class TuiLabel {
     protected readonly textfield = contentChild(forwardRef(() => TUI_DATA_LIST_HOST));
     protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(Styles);
-
     protected readonly parent = inject(
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},
