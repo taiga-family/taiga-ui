@@ -66,6 +66,14 @@
                     @case (10) {
                         All unique textfield controls in their table representation.
                     }
+                    @case (11) {
+                        Table provides its own textfield options, so drawers, dialogs and dropdowns created from a cell
+                        inherit the table appearance and size. Set
+                        <code>tuiTextfieldAppearance</code>
+                        and
+                        <code>tuiTextfieldSize</code>
+                        on the overlay to bring the defaults back for its content.
+                    }
                 }
             </ng-template>
         }

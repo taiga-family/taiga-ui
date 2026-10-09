@@ -1,0 +1,58 @@
+<table tuiTable>
+    <thead>
+        <tr>
+            <th tuiTh>Name</th>
+            <th tuiTh>Balance</th>
+            <th tuiTh></th>
+        </tr>
+    </thead>
+    <tbody tuiTbody>
+        @for (item of data; track item) {
+            <tr>
+                <td tuiTd>{{ item.name }}</td>
+                <td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
+                <td tuiTd>
+                    <button
+                        appearance="flat"
+                        iconStart="@tui.pencil"
+                        tuiIconButton
+                        type="button"
+                        (click)="edited.set(item)"
+                    >
+                        Edit
+                    </button>
+                </td>
+                <tui-drawer
+                    *tuiPopup="edited() === item"
+                    tuiTextfieldAppearance="textfield"
+                    tuiTextfieldSize="l"
+                    class="drawer"
+                >
+                    <header>
+                        <h2 tuiHeader="body-l">
+                            <div tuiTitle>{{ item.name }}</div>
+                            <div tuiAccessories>
+                                <button
+                                    appearance="icon"
+                                    iconStart="@tui.x"
+                                    tuiIconButton
+                                    type="button"
+                                    (click)="edited.set(null)"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </h2>
+                    </header>
+                    <tui-textfield>
+                        <label tuiLabel>Name</label>
+                        <input
+                            tuiInput
+                            [ngModel]="item.name"
+                        />
+                    </tui-textfield>
+                </tui-drawer>
+            </tr>
+        }
+    </tbody>
+</table>
