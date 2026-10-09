@@ -155,6 +155,16 @@
             background: var(--tui-background-accent-1-hover);
         }
     }
+
+    &:active::before {
+        background: var(--tui-background-neutral-1-pressed);
+    }
+
+    &[data-range='single']:active::before,
+    &[data-range='start']:active::before,
+    &[data-range='end']:active::before {
+        background: var(--tui-background-accent-1-pressed);
+    }
 }
 
 [data-type~='weekend'] {
