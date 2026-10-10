@@ -81,6 +81,30 @@ test.describe('Slider', () => {
             .toHaveScreenshot('04-min--5-max-5-value-1-segments_5.png');
     });
 
+    test('supports vertical writing mode', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Slider);
+
+        const documentationPage = new TuiDocumentationPagePO(page);
+        const slider = documentationPage.getExample('#vertical').getByRole('slider');
+
+        await expect(slider).toHaveCSS('writing-mode', 'vertical-rl');
+        await expect(slider).toHaveCSS('direction', 'rtl');
+        await expect
+            .poll(async () =>
+                slider.evaluate((element) =>
+                    getComputedStyle(element)
+                        .getPropertyValue('--t-slider-track-end')
+                        .trim(),
+                ),
+            )
+            .toBe('top');
+
+        const box = await slider.boundingBox();
+
+        expect(box).not.toBeNull();
+        expect(box!.height).toBeGreaterThan(box!.width);
+    });
+
     test.describe('programmatically change value', () => {
         test.describe('ngModel', () => {
             test.use({viewport: {width: 350, height: 500}});
