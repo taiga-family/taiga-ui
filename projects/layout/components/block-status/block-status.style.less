@@ -1,6 +1,6 @@
 @import '@taiga-ui/styles/utils';
 
-// Safari miscalculates percentage heights with margins inside a grid fieldset.
+// Let percentage-height BlockStatus shrink by its external margins.
 tui-loader > fieldset:has(> tui-block-status:where(*&)) {
     display: flex;
     flex-direction: column;
