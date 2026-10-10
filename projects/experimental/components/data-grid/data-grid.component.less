@@ -39,8 +39,8 @@
     }
 
     &_active {
-        background: var(--tui-background-accent-2);
-        color: var(--tui-text-primary-on-accent-2);
+        background: var(--tui-background-accent-1);
+        color: var(--tui-text-primary-on-accent-1);
 
         ::ng-deep [tuiTitle] [tuiSubtitle] {
             color: inherit;
@@ -54,7 +54,15 @@
         }
 
         &_active:hover {
-            background: var(--tui-background-accent-2-hover);
+            background: var(--tui-background-accent-1-hover);
         }
+    }
+
+    &:active {
+        background: var(--tui-background-neutral-1-pressed);
+    }
+
+    &_active:active {
+        background: var(--tui-background-accent-1-pressed);
     }
 }
