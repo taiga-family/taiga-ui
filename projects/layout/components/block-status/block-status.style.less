@@ -1,5 +1,11 @@
 @import '@taiga-ui/styles/utils';
 
+// Let percentage-height BlockStatus shrink by its external margins.
+tui-loader > fieldset:has(> tui-block-status:where(*&)) {
+    display: flex;
+    flex-direction: column;
+}
+
 tui-block-status:where(*&) {
     display: flex;
     flex-direction: column;
