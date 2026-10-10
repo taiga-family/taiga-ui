@@ -23,5 +23,6 @@ export default class Page {
         'Expandable rows',
         'Expandable rows: different ways to toggle rows',
         'Manual sorting',
+        'Disabled rows',
     ];
 }
