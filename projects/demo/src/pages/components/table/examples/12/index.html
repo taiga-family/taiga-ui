@@ -26,7 +26,6 @@
                     *tuiPopup="edited() === item"
                     tuiTextfieldAppearance="textfield"
                     tuiTextfieldSize="l"
-                    class="drawer"
                 >
                     <header>
                         <h2 tuiHeader="body-l">
@@ -48,7 +47,7 @@
                         <label tuiLabel>Name</label>
                         <input
                             tuiInput
-                            [ngModel]="item.name"
+                            [(ngModel)]="item.name"
                         />
                     </tui-textfield>
                 </tui-drawer>

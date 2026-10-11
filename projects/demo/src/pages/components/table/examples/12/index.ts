@@ -8,7 +8,7 @@ import {TuiDrawer, TuiFormatNumberPipe} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 interface Item {
-    readonly name: string;
+    name: string;
     readonly balance: number;
 }
 
@@ -25,7 +25,6 @@ interface Item {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styles: '.drawer { inline-size: 25rem; }',
     encapsulation,
     changeDetection,
 })
