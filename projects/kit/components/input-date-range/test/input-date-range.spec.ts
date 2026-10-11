@@ -2,7 +2,13 @@ import {ChangeDetectionStrategy, Component, effect, signal} from '@angular/core'
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {RANGE_SEPARATOR_CHAR, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {
+    RANGE_SEPARATOR_CHAR,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    TuiDayRange,
+} from '@taiga-ui/cdk';
 import {TuiCalendarRange, TuiInputDateRange} from '@taiga-ui/kit';
 
 describe('TuiInputDateRangeDirective', () => {
@@ -75,7 +81,6 @@ describe('TuiInputDateRangeDirective', () => {
         expect(control.value?.getFormattedDayRange('dd/mm/yyyy', '.')).toBe(newRange);
     });
 
-
     it.each([
         {
             description: 'before min',
@@ -87,7 +92,7 @@ describe('TuiInputDateRangeDirective', () => {
             value: `25.01.2025${RANGE_SEPARATOR_CHAR}30.01.2025`,
             expected: new TuiDay(2025, 0, 20),
         },
-    ])('emits only a corrected value for a range $description', async ({value, expected}) => {
+    ])('emits once for a range $description', async ({value, expected}) => {
         const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
         const emissions: Array<TuiDayRange | null> = [];
 

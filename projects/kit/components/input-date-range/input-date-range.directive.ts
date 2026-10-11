@@ -116,7 +116,10 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
                 : null;
 
         // Maskito dispatches another input event after clamping an out-of-bounds date.
-        if (range && (range.from.dayBefore(this.min()) || range.to.dayAfter(this.max()))) {
+        if (
+            range &&
+            (range.from.dayBefore(this.min()) || range.to.dayAfter(this.max()))
+        ) {
             return;
         }
 
