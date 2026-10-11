@@ -1,4 +1,4 @@
-import {computed, Directive, type Signal, signal} from '@angular/core';
+import {computed, Directive, signal} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -12,17 +12,17 @@ import {type TuiCheckboxRowDirective} from './checkbox-row.directive';
 })
 export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
     private readonly children = signal<ReadonlyArray<TuiCheckboxRowDirective<T>>>([]);
+    private readonly enabled = computed(() =>
+        this.children().filter((i) => !i.disabled()),
+    );
 
-    private readonly enabled: Signal<ReadonlyArray<TuiCheckboxRowDirective<T>>> =
-        computed(() => this.children().filter((i) => !i.disabled()));
-
-    public readonly checked: Signal<boolean> = computed(
+    public readonly checked = computed(
         () =>
             !!this.enabled().length &&
             this.enabled().every((i) => this.value().includes(i.tuiCheckboxRow())),
     );
 
-    public readonly indeterminate: Signal<boolean> = computed(
+    public readonly indeterminate = computed(
         () => !!this.value().length && !this.checked(),
     );
 
