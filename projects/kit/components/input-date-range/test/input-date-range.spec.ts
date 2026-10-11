@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, effect, signal} from '@angular/core'
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {RANGE_SEPARATOR_CHAR, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarRange, TuiInputDateRange} from '@taiga-ui/kit';
 
 describe('TuiInputDateRangeDirective', () => {
@@ -13,6 +13,8 @@ describe('TuiInputDateRangeDirective', () => {
                 <input
                     tuiInputDateRange
                     [formControl]="control"
+                    [max]="max()"
+                    [min]="min()"
                 />
                 <tui-calendar-range />
             </tui-textfield>
@@ -22,6 +24,8 @@ describe('TuiInputDateRangeDirective', () => {
     class Test {
         public syncRuns = 0;
         public readonly range = signal<TuiDayRange | null>(null);
+        public readonly min = signal(TUI_FIRST_DAY);
+        public readonly max = signal(TUI_LAST_DAY);
         public readonly control = new FormControl<TuiDayRange | null>(null);
 
         constructor() {
@@ -69,6 +73,37 @@ describe('TuiInputDateRangeDirective', () => {
         expect(testComponent.syncRuns).toBe(syncRuns);
         expect(input.value).toBe(newRange);
         expect(control.value?.getFormattedDayRange('dd/mm/yyyy', '.')).toBe(newRange);
+    });
+
+
+    it.each([
+        {
+            description: 'before min',
+            value: `01.01.2025${RANGE_SEPARATOR_CHAR}05.01.2025`,
+            expected: new TuiDay(2025, 0, 10),
+        },
+        {
+            description: 'after max',
+            value: `25.01.2025${RANGE_SEPARATOR_CHAR}30.01.2025`,
+            expected: new TuiDay(2025, 0, 20),
+        },
+    ])('emits only a corrected value for a range $description', async ({value, expected}) => {
+        const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        const emissions: Array<TuiDayRange | null> = [];
+
+        testComponent.min.set(new TuiDay(2025, 0, 10));
+        testComponent.max.set(new TuiDay(2025, 0, 20));
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        control.valueChanges.subscribe((range) => emissions.push(range));
+
+        input.value = value;
+        input.dispatchEvent(new Event('input', {bubbles: true}));
+        fixture.detectChanges();
+
+        expect(emissions).toHaveLength(1);
+        expect(emissions[0]?.daySame(new TuiDayRange(expected, expected))).toBe(true);
     });
 
     it('moves caret to the end after selecting first day in empty input', () => {
