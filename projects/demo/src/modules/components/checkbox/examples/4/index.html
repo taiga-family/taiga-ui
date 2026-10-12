@@ -1,0 +1,14 @@
+<p>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="checked"
+    />
+</p>
+<button
+    tuiButton
+    type="button"
+    (click)="checked = !checked"
+>
+    Toggle
+</button>

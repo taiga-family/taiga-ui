@@ -25,7 +25,7 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
-            [description]="index ? null : platformDescription"
+            [description]="index === 3 ? customizationDescription : index === 0 ? platformDescription : null"
             [heading]="example"
             [id]="example | tuiKebab"
         >
@@ -35,6 +35,14 @@
                 to your encapsulated global styles to enable power of
                 <code>TuiPlatform</code>
                 directive.
+            </ng-template>
+
+            <ng-template #customizationDescription>
+                <p>
+                    Use
+                    <code>tuiRadioOptionsProvider</code>
+                    to override the colors of the radio button with appearance colors
+                </p>
             </ng-template>
         </tui-doc-example>
     </ng-template>
