@@ -5,6 +5,27 @@
 
 Using service to show content in a new window.
 
+```ts
+import {TUI_POPOUT_CONFIG} from '@taiga-ui/experimental';
+// Use provideZonelessChangeDetection for Angular ^20.2
+import {provideExperimentalZonelessChangeDetection} from '@angular/core';
+
+@Component({
+  // ...
+  providers: [
+    {
+      provide: TUI_POPOUT_CONFIG,
+      useValue: {providers: [provideExperimentalZonelessChangeDetection()]},
+    },
+  ],
+})
+export default class Example {
+  private readonly popout = inject(TuiPopoutService);
+
+  // ...
+}
+```
+
 ### Usage Examples
 
 #### Popout window
@@ -182,3 +203,8 @@ section {
     text-align: center;
 }
 ```
+
+- Provide
+`TUI_POPOUT_CONFIG`
+with
+`provideZonelessChangeDetection()`

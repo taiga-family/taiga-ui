@@ -1702,6 +1702,69 @@ export default class Example {
 }
 ```
 
+#### Disabled rows
+
+Using `disabled` on a row checkbox to lock its state: select all skips disabled rows and keeps the ones that are already selected.
+
+**Template:**
+```html
+<table tuiTable [style.width.rem]="30" [(ngModel)]="selected" >
+<thead>
+<tr>
+<th tuiTh>
+<input tuiCheckbox tuiCheckboxTable type="checkbox" />
+</th>
+<th tuiTh>Name</th>
+<th tuiTh>Price</th>
+<th tuiTh>Status</th>
+</tr>
+</thead>
+<tbody tuiTbody> @for (item of data; track item) { <tr>
+<td tuiTd>
+<input tuiCheckbox type="checkbox" [disabled]="!item.available" [tuiCheckboxRow]="item" />
+</td>
+<td tuiTd>{{ item.name }}</td>
+<td tuiTd>${{ item.price }}</td>
+<td tuiTd>{{ item.available ? 'In stock' : 'Out of stock' }}</td>
+</tr> } </tbody>
+</table>
+<p>Selected: {{ selected.length }}</p>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
+import {TuiCheckbox} from '@taiga-ui/core';
+
+interface Item {
+    readonly name: string;
+    readonly price: number;
+    readonly available: boolean;
+}
+
+@Component({
+    imports: [FormsModule, TuiCheckbox, TuiTable, TuiTableControl],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data: readonly Item[] = [
+        {name: 'Apple', price: 3, available: true},
+        {name: 'Banana', price: 2, available: false},
+        {name: 'Kiwi', price: 5, available: true},
+        {name: 'Orange', price: 4, available: false},
+        {name: 'Grapes', price: 7, available: true},
+    ];
+
+    protected selected: readonly Item[] = [this.data[3]!];
+}
+```
+
 Parent directive that sets the table up.
 
 Optionally used on
