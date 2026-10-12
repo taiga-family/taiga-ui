@@ -47928,6 +47928,70 @@ export default class Example {
 }
 ```
 
+#### Disabled rows
+
+**Template:**
+```html
+&lt;table tuiTable [style.width.rem]=&quot;30&quot; [(ngModel)]=&quot;selected&quot; &gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th tuiTh&gt;
+&lt;input tuiCheckbox tuiCheckboxTable type=&quot;checkbox&quot; /&gt;
+&lt;/th&gt;
+&lt;th tuiTh&gt;Name&lt;/th&gt;
+&lt;th tuiTh&gt;Price&lt;/th&gt;
+&lt;th tuiTh&gt;Status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody tuiTbody&gt;
+&lt;tr *ngFor=&quot;let item of data&quot;&gt;
+&lt;td tuiTd&gt;
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [disabled]=&quot;!item.available&quot; [tuiCheckboxRow]=&quot;item&quot; /&gt;
+&lt;/td&gt;
+&lt;td tuiTd&gt;{{ item.name }}&lt;/td&gt;
+&lt;td tuiTd&gt;${{ item.price }}&lt;/td&gt;
+&lt;td tuiTd&gt;{{ item.available ? &#039;In stock&#039; : &#039;Out of stock&#039; }}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Selected: {{ selected.length }}&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTable, TuiTableControl} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiCheckbox} from &#039;@taiga-ui/kit&#039;;
+
+interface Item {
+    readonly name: string;
+    readonly price: number;
+    readonly available: boolean;
+}
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, NgForOf, TuiCheckbox, TuiTable, TuiTableControl],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data: readonly Item[] = [
+        {name: &#039;Apple&#039;, price: 3, available: true},
+        {name: &#039;Banana&#039;, price: 2, available: false},
+        {name: &#039;Kiwi&#039;, price: 5, available: true},
+        {name: &#039;Orange&#039;, price: 4, available: false},
+        {name: &#039;Grapes&#039;, price: 7, available: true},
+    ];
+
+    protected selected: readonly Item[] = [this.data[3]!];
+}
+```
+
 #### Custom
 
 **Template:**
@@ -49319,6 +49383,7 @@ export default class Page {
         &#039;Expandable rows&#039;,
         &#039;Expandable rows: different ways to toggle rows&#039;,
         &#039;Manual sorting&#039;,
+        &#039;Disabled rows&#039;,
     ];
 }
 ```
