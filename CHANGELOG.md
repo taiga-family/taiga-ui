@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.103.0](https://github.com/taiga-family/taiga-ui/compare/v4.102.0...v4.103.0) (2026-10-12)
+
+### 🚀 Features
+
+- **addon-mobile:** `SearchBar` support progressive blur
+  ([#15161](https://github.com/taiga-family/taiga-ui/issues/15161))
+  ([1bc372d](https://github.com/taiga-family/taiga-ui/commit/1bc372d805df1b956bec01de4f9c4ac779da7c54))
+- **addon-table:** `TableControl` add ability to disable row checkbox
+  ([#15184](https://github.com/taiga-family/taiga-ui/issues/15184))
+  ([39cefc5](https://github.com/taiga-family/taiga-ui/commit/39cefc5867e9342dbf02b58f1a259d4abbf18e1e))
+
+### 🐞 Bug Fixes
+
+- **experimental:** scope `PdfViewer` loader style to t-content
+  ([#15159](https://github.com/taiga-family/taiga-ui/issues/15159))
+  ([ac1a634](https://github.com/taiga-family/taiga-ui/commit/ac1a63404535178c06c5ec065b0b65a3a378a0a7))
+- **kit:** avoid duplicate InputDateRange value changes outside bounds
+  ([#15206](https://github.com/taiga-family/taiga-ui/issues/15206))
+  ([41698f9](https://github.com/taiga-family/taiga-ui/commit/41698f9ef9992ee8692bdf5852ebfcde10f1ba94))
+- **kit:** prevent InputChip from mutating value ([#15207](https://github.com/taiga-family/taiga-ui/issues/15207))
+  ([e417b24](https://github.com/taiga-family/taiga-ui/commit/e417b24dfd0b3e562d67b3bead9ff3c8896352b4))
+- **legacy:** align deprecated inputs with current textfield appearance
+  ([#15153](https://github.com/taiga-family/taiga-ui/issues/15153))
+  ([6b66203](https://github.com/taiga-family/taiga-ui/commit/6b662034f7ce918e93cc5be07ecec8f7d69b8a8b))
+
 ## [4.102.0](https://github.com/taiga-family/taiga-ui/compare/v4.101.0...v4.102.0) (2026-10-05)
 
 ### 🚀 Features
