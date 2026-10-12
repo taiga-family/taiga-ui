@@ -1,0 +1,37 @@
+<table
+    tuiTable
+    [style.width.rem]="30"
+    [(ngModel)]="selected"
+>
+    <thead>
+        <tr>
+            <th tuiTh>
+                <input
+                    tuiCheckbox
+                    tuiCheckboxTable
+                    type="checkbox"
+                />
+            </th>
+            <th tuiTh>Name</th>
+            <th tuiTh>Price</th>
+            <th tuiTh>Status</th>
+        </tr>
+    </thead>
+    <tbody tuiTbody>
+        <tr *ngFor="let item of data">
+            <td tuiTd>
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [disabled]="!item.available"
+                    [tuiCheckboxRow]="item"
+                />
+            </td>
+            <td tuiTd>{{ item.name }}</td>
+            <td tuiTd>${{ item.price }}</td>
+            <td tuiTd>{{ item.available ? 'In stock' : 'Out of stock' }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Selected: {{ selected.length }}</p>
