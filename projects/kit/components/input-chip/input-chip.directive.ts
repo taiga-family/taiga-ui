@@ -77,7 +77,7 @@ export class TuiInputChipBaseDirective<T>
     public setValue(value: T[]): void {
         this.textfield.value.set('');
         this.onChange(
-            this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
+            this.unique ? Array.from(new Set([...value].reverse())).reverse() : value,
         );
     }
 
