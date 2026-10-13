@@ -113,6 +113,7 @@ export default process.env.HTML_ESLINT
                   '@typescript-eslint/switch-exhaustiveness-check': 'off',
                   '@typescript-eslint/unbound-method': 'off',
                   '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
+                  '@typescript-eslint/no-unsafe-enum-assignment': 'off',
               },
           },
       ];
