@@ -72,7 +72,8 @@ export class TuiAppBarComponent implements AfterViewInit {
     protected readonly overflown$ = this.width$.pipe(
         map(
             (width) =>
-                (this.title?.nativeElement.scrollWidth ?? 0) > this.el.clientWidth - width,
+                (this.title?.nativeElement.scrollWidth ?? 0) >
+                this.el.clientWidth - width,
         ),
     );
 
