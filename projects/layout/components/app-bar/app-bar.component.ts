@@ -14,7 +14,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -42,7 +41,7 @@ import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
-    private readonly title = viewChild<ElementRef<HTMLElement>>('title');
+    private readonly title = viewChild.required<ElementRef<HTMLElement>>('title');
     private readonly el = tuiInjectElement();
 
     protected readonly liquidGlass =
@@ -53,7 +52,6 @@ export class TuiAppBarComponent implements AfterViewInit {
             inject(WaResizeObserverService, {self: true}),
             inject(WaMutationObserverService, {self: true}),
         ).pipe(
-            tuiZonefull(),
             map(
                 () =>
                     2 *
@@ -68,9 +66,7 @@ export class TuiAppBarComponent implements AfterViewInit {
     );
 
     protected readonly overflown = computed(
-        () =>
-            (this.title()?.nativeElement.scrollWidth ?? 0) >
-            this.el.clientWidth - this.width(),
+        () => this.title().nativeElement.scrollWidth > this.el.clientWidth - this.width(),
     );
 
     public readonly size = input<TuiSizeL>('m');
