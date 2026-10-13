@@ -1,38 +1,30 @@
-import {Component, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiButton, TuiInput, TuiPopup, TuiTitle} from '@taiga-ui/core';
-import {TuiDrawer, TuiFormatNumberPipe} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
+import {TuiCheckbox} from '@taiga-ui/core';
 
 interface Item {
-    name: string;
-    readonly balance: number;
+    readonly name: string;
+    readonly price: number;
+    readonly available: boolean;
 }
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiButton,
-        TuiDrawer,
-        TuiFormatNumberPipe,
-        TuiHeader,
-        TuiInput,
-        TuiPopup,
-        TuiTable,
-        TuiTitle,
-    ],
+    imports: [FormsModule, TuiCheckbox, TuiTable, TuiTableControl],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected readonly data: readonly Item[] = [
-        {name: 'Alex Inkin', balance: 1323525},
-        {name: 'Roman Sedov', balance: 423242},
+        {name: 'Apple', price: 3, available: true},
+        {name: 'Banana', price: 2, available: false},
+        {name: 'Kiwi', price: 5, available: true},
+        {name: 'Orange', price: 4, available: false},
+        {name: 'Grapes', price: 7, available: true},
     ];
 
-    protected readonly edited = signal<Item | null>(null);
+    protected selected: readonly Item[] = [this.data[3]!];
 }

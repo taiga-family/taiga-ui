@@ -155,6 +155,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
 
+    public get id(): string {
+        return this.input()?.nativeElement.id || '';
+    }
+
     public get disabled(): boolean {
         return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;
     }

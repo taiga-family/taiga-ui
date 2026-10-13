@@ -13,4 +13,6 @@ export default class Page extends Array {
     protected readonly [1] = {
         'popout.ts': import('./examples/2/popout.ts?raw', {with: {loader: 'text'}}),
     };
+
+    protected readonly exampleService = import('./examples/import/service.md');
 }

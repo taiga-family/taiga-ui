@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.28.0](https://github.com/taiga-family/taiga-ui/compare/v5.27.0...v5.28.0) (2026-10-12)
+
+### 🚀 Features
+
+- **addon-table:** `TableControl` add ability to disable row checkbox
+  ([#15185](https://github.com/taiga-family/taiga-ui/issues/15185))
+  ([124e51c](https://github.com/taiga-family/taiga-ui/commit/124e51c8f1206dfaa21c84472958e06cf855a087))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** add resize observer dependency ([#15154](https://github.com/taiga-family/taiga-ui/issues/15154))
+  ([269b10a](https://github.com/taiga-family/taiga-ui/commit/269b10abc26418a212fd8c6d7fc82038bad14c16))
+- **addon-mobile:** align invalid native Switch tint ([#15197](https://github.com/taiga-family/taiga-ui/issues/15197))
+  ([8b82617](https://github.com/taiga-family/taiga-ui/commit/8b826173e259543fb6ec2e3c1cd4c46366b180a9))
+- **cdk:** `tuiValue` keeps unparsed text of number inputs
+  ([#15181](https://github.com/taiga-family/taiga-ui/issues/15181))
+  ([9ae1a87](https://github.com/taiga-family/taiga-ui/commit/9ae1a87665d1e256fa8176b2c6edf6a42d7dc79f))
+- **cdk:** prevent SheetDialog jump on iOS autofocus ([#15179](https://github.com/taiga-family/taiga-ui/issues/15179))
+  ([7173290](https://github.com/taiga-family/taiga-ui/commit/7173290f255d6821a40bc79d285a47bd18a95c6e))
+- **core:** `Root` remove CSS inertness under modals ([#15193](https://github.com/taiga-family/taiga-ui/issues/15193))
+  ([02e91f6](https://github.com/taiga-family/taiga-ui/commit/02e91f6ef4b295560636c6af06ef19048b3d2b77))
+- **experimental:** use pressed colors for calendar cells
+  ([#15199](https://github.com/taiga-family/taiga-ui/issues/15199))
+  ([279d828](https://github.com/taiga-family/taiga-ui/commit/279d828747658799642eed2c89018967c58a5e64))
+- **kit:** avoid duplicate InputDateRange value changes outside bounds
+  ([#15205](https://github.com/taiga-family/taiga-ui/issues/15205))
+  ([9b9e89e](https://github.com/taiga-family/taiga-ui/commit/9b9e89e8c56c8e447f2c60b27f9822e55a98b821))
+- **kit:** prevent initial shimmer animation ([#15175](https://github.com/taiga-family/taiga-ui/issues/15175))
+  ([f2207e4](https://github.com/taiga-family/taiga-ui/commit/f2207e4d2dccaf14cbac064d3d59394c4b75c5ab))
+- **kit:** prevent InputChip from mutating value ([#15168](https://github.com/taiga-family/taiga-ui/issues/15168))
+  ([b524cd7](https://github.com/taiga-family/taiga-ui/commit/b524cd786cce4343b6b471cdc8f181ba735bc846))
+- **kit:** process Copy text before copying ([#15189](https://github.com/taiga-family/taiga-ui/issues/15189))
+  ([8a158e3](https://github.com/taiga-family/taiga-ui/commit/8a158e3b2d38307f32072a858b6df57c51f07ccf))
+- **layout:** elevate surface inside drawer ([#15198](https://github.com/taiga-family/taiga-ui/issues/15198))
+  ([75efc81](https://github.com/taiga-family/taiga-ui/commit/75efc8122fe6ad1d90f8c6c39b045dcccc83e43a))
+- **layout:** scope `PdfViewer` loader style to t-content
+  ([#15160](https://github.com/taiga-family/taiga-ui/issues/15160))
+  ([17c7950](https://github.com/taiga-family/taiga-ui/commit/17c79508051612084e147740aba0951c4491583b))
+- **styles:** minor styling fixes ([#15187](https://github.com/taiga-family/taiga-ui/issues/15187))
+  ([9d80d01](https://github.com/taiga-family/taiga-ui/commit/9d80d01e85c512e91b345184ad7a4007c13b43cc))
+
 ## [5.27.0](https://github.com/taiga-family/taiga-ui/compare/v5.26.0...v5.27.0) (2026-10-05)
 
 ### 🚀 Features
