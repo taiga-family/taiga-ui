@@ -1,18 +1,19 @@
-import {AsyncPipe} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    computed,
     type ElementRef,
     inject,
     input,
+    viewChild,
     viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {WaMutationObserverService} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -26,7 +27,7 @@ import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 
 @Component({
     selector: 'tui-app-bar',
-    imports: [AsyncPipe, TuiAppBarButton, TuiFade, TuiProgressiveBlur],
+    imports: [TuiAppBarButton, TuiFade, TuiProgressiveBlur],
     templateUrl: './app-bar.template.html',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
@@ -40,24 +41,32 @@ import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
 })
 export class TuiAppBarComponent implements AfterViewInit {
     private readonly side = viewChildren<ElementRef<HTMLElement>>('side');
+    private readonly title = viewChild.required<ElementRef<HTMLElement>>('title');
     private readonly el = tuiInjectElement();
 
     protected readonly liquidGlass =
         inject(TUI_LIQUID_GLASS) && inject(TUI_PLATFORM) === 'ios';
 
-    protected readonly width$ = merge(
-        inject(WaResizeObserverService, {self: true}),
-        inject(WaMutationObserverService, {self: true}),
-    ).pipe(
-        tuiZonefull(),
-        map(
-            () =>
-                2 *
-                Math.max(
-                    this.side()[0]?.nativeElement.clientWidth ?? 0,
-                    this.side()[this.side().length - 1]?.nativeElement.clientWidth ?? 0,
-                ),
+    protected readonly width = toSignal(
+        merge(
+            inject(WaResizeObserverService, {self: true}),
+            inject(WaMutationObserverService, {self: true}),
+        ).pipe(
+            map(
+                () =>
+                    2 *
+                    Math.max(
+                        this.side()[0]?.nativeElement.clientWidth ?? 0,
+                        this.side()[this.side().length - 1]?.nativeElement.clientWidth ??
+                            0,
+                    ),
+            ),
         ),
+        {initialValue: 0, equal: () => false},
+    );
+
+    protected readonly overflown = computed(
+        () => this.title().nativeElement.scrollWidth > this.el.clientWidth - this.width(),
     );
 
     public readonly size = input<TuiSizeL>('m');
