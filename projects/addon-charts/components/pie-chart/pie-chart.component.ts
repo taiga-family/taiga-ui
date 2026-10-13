@@ -10,7 +10,12 @@ import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
+import {
+    TUI_HINT_OPTIONS,
+    TuiHint,
+    type TuiHintOptions,
+    tuiHintOptionsProvider,
+} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -52,6 +57,7 @@ const TRANSFORM = {
 })
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiChartHint, {optional: true});
+    private readonly hintDefaults = inject(TUI_HINT_OPTIONS);
     private readonly autoId = tuiGenerateId();
 
     protected readonly getSum = computed(() => tuiSum(...this.value()));
@@ -81,6 +87,10 @@ export class TuiPieChart {
 
     protected get hintAppearance(): string {
         return this.hintOptions?.appearance() || 'floating';
+    }
+
+    protected get hintDirection(): TuiHintOptions['direction'] {
+        return this.hintOptions?.direction() ?? this.hintDefaults.direction;
     }
 
     protected get maskId(): string {
