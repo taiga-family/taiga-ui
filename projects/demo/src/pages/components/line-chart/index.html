@@ -21,10 +21,13 @@
                 [verticalLines]="5"
             >
                 <tui-line-chart
+                    [attr.tuiHintDirection]="hint.direction"
                     [dots]="dots"
                     [filled]="filled"
                     [height]="height"
                     [smoothingFactor]="smoothingFactor"
+                    [tuiHintAppearance]="hint.appearance"
+                    [tuiHintContent]="hintContent"
                     [value]="value"
                     [width]="width"
                     [x]="x"
@@ -116,6 +119,20 @@
             >
                 function to stringify a value number to a string in axis Y hint
             </tr>
+            <tr
+                name="[tuiHintContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent<TuiContext<TuiPoint>>"
+                [items]="hintContentVariants"
+                [(value)]="hintContent"
+            >
+                content of the hint bubble
+            </tr>
+            <tbody
+                #hint
+                tuiDocHint
+                [hiddenOptions]="['centered']"
+            ></tbody>
         </table>
     </ng-template>
 </tui-doc-page>
