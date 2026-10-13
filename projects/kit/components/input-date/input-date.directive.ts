@@ -71,7 +71,7 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
 export abstract class TuiInputDateBase<
     T extends TuiDay | TuiDayRange | readonly [TuiDay, TuiTime | null],
 > extends TuiControl<T | null> {
-    private readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
+    protected readonly calendar = tuiInjectAuxiliary<TuiCalendar | TuiCalendarRange>(
         (x) => x instanceof TuiCalendar || x instanceof TuiCalendarRange,
     );
 
