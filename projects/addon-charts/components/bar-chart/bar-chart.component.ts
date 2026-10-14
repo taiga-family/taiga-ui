@@ -83,6 +83,12 @@ export class TuiBarChart {
         return this.hintOptions?.direction() ?? this.hintDefaults.direction;
     }
 
+    protected get hintBelow(): boolean {
+        const [direction] = [this.hintDirection].flat();
+
+        return Boolean(direction?.startsWith('bottom'));
+    }
+
     protected getHintId(index: number): string {
         return `${this.autoId}_${index}`;
     }

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {type TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
@@ -10,7 +11,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [TuiDemo, TuiPieChart],
+    imports: [TuiChartHint, TuiDemo, TuiDocHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

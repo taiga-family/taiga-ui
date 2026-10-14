@@ -44,6 +44,9 @@
                 [collapsed]="collapsed"
                 [max]="max"
                 [size]="size"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hint.direction"
                 [value]="value"
                 (tapColumn)="documentationPropertyTapColumn.emitEvent($event)"
             />
@@ -93,6 +96,20 @@
             >
                 bar column click/enter event
             </tr>
+            <tr
+                name="[tuiHintContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent<TuiContext<number>>"
+                [items]="hintContentVariants"
+                [(value)]="hintContent"
+            >
+                content of the hint bubble
+            </tr>
+            <tbody
+                #hint
+                tuiDocHint
+                [hiddenOptions]="['centered', 'directionChange', 'visible']"
+            ></tbody>
         </table>
     </ng-template>
 </tui-doc-page>
