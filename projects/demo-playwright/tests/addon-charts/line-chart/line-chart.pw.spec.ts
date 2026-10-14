@@ -35,11 +35,11 @@ test.describe('LineChart', () => {
 
         const openHint = async (
             page: Page,
-            direction: keyof typeof directionIndex,
+            direction?: keyof typeof directionIndex,
         ): Promise<{hint: BoundingBox; point: BoundingBox}> => {
             await tuiGoto(
                 page,
-                `${DemoRoute.LineChart}/API?tuiLineChartHint$=0&tuiHintDirection$=${directionIndex[direction]}`,
+                `${DemoRoute.LineChart}/API?tuiLineChartHint$=0${direction ? `&tuiHintDirection$=${directionIndex[direction]}` : ''}`,
             );
 
             const {demo} = new TuiDocumentationPagePO(page);
@@ -90,6 +90,15 @@ test.describe('LineChart', () => {
             expect(hint.y).toBeGreaterThanOrEqual(point.y + point.height);
             await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
                 '07-line-chart-hint-bottom.png',
+            );
+        });
+
+        test('default === top', async ({page}) => {
+            const {hint, point} = await openHint(page);
+
+            expect(hint.y + hint.height).toBeLessThanOrEqual(point.y);
+            await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
+                '08-line-chart-hint-default-top.png',
             );
         });
     });

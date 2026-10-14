@@ -10,11 +10,11 @@ test.describe('BarChart', () => {
 
         const openHint = async (
             page: Page,
-            direction: keyof typeof directionIndex,
+            direction?: keyof typeof directionIndex,
         ): Promise<{bars: BoundingBox; hint: BoundingBox; point: BoundingBox}> => {
             await tuiGoto(
                 page,
-                `${DemoRoute.BarChart}/API?tuiHintContent$=0&tuiHintDirection$=${directionIndex[direction]}`,
+                `${DemoRoute.BarChart}/API?tuiHintContent$=0${direction ? `&tuiHintDirection$=${directionIndex[direction]}` : ''}`,
             );
 
             const {demo} = new TuiDocumentationPagePO(page);
@@ -68,6 +68,15 @@ test.describe('BarChart', () => {
             expect(hint.y).toBeGreaterThanOrEqual(bars.y + bars.height);
             // the hint is below the chart, outside of the demo area
             await expect(page).toHaveScreenshot('04-bar-chart-hint-bottom.png');
+        });
+
+        test('default === top', async ({page}) => {
+            const {hint, point} = await openHint(page);
+
+            expect(hint.y + hint.height).toBeLessThanOrEqual(point.y);
+            await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
+                '05-bar-chart-hint-default-top.png',
+            );
         });
     });
 });

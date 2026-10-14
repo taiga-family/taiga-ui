@@ -37,11 +37,11 @@ test.describe('PieChart', () => {
         // the hint follows the cursor, so the cursor position is the anchor point
         const openHint = async (
             page: Page,
-            direction: keyof typeof directionIndex,
+            direction?: keyof typeof directionIndex,
         ): Promise<{hint: BoundingBox; pointer: {x: number; y: number}}> => {
             await tuiGoto(
                 page,
-                `${DemoRoute.PieChart}/API?tuiHintContent$=1&tuiHintDirection$=${directionIndex[direction]}`,
+                `${DemoRoute.PieChart}/API?tuiHintContent$=1${direction ? `&tuiHintDirection$=${directionIndex[direction]}` : ''}`,
             );
 
             const {demo} = new TuiDocumentationPagePO(page);
@@ -92,6 +92,17 @@ test.describe('PieChart', () => {
             expect(hint.y).toBeGreaterThanOrEqual(pointer.y);
             await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
                 '05-pie-chart-hint-bottom.png',
+            );
+        });
+
+        test('default', async ({page}) => {
+            const {hint, pointer} = await openHint(page);
+
+            // top-end
+            expect(hint.y + hint.height).toBeLessThanOrEqual(pointer.y);
+            expect(hint.x + hint.width / 2).toBeGreaterThan(pointer.x);
+            await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
+                '06-pie-chart-hint-default-top-end.png',
             );
         });
     });
