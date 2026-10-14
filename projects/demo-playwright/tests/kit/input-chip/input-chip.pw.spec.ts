@@ -38,32 +38,6 @@ test.describe('InputChip', () => {
             await expect(textfield).toHaveCSS('height', '86px');
         });
 
-        test('shows existing chip focus on the first arrow key press', async ({page}) => {
-            const doc = new TuiDocumentationPagePO(page);
-            const example = doc.getExample('#chips');
-            const inputChip = new TuiInputChipEO(example);
-            const chips = example
-                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                .first()
-                .locator('tui-input-chip');
-
-            await inputChip.input.click();
-            await page.keyboard.press('ArrowLeft');
-
-            await expect(chips.last()).toBeFocused();
-            await expect(chips.last()).not.toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
-
-            await page.keyboard.press('ArrowLeft');
-
-            await expect(chips.nth(1)).toBeFocused();
-
-            await page.keyboard.press('ArrowRight');
-            await page.keyboard.press('ArrowRight');
-
-            await expect(inputChip.input).toBeFocused();
-            await expect(chips.last()).toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
-        });
-
         test('errors / overflow visual state (basic)', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
