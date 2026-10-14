@@ -1,8 +1,17 @@
+@import '@taiga-ui/styles/utils';
+
 :host {
     cursor: pointer;
     margin: 0.125rem 0;
     margin-inline-end: 0.25rem;
     pointer-events: auto;
+
+    .safari-only({
+        // Safari can delay :focus-visible when keyboard focus moves from the input to a chip.
+        &:focus:not([data-focus='false']) {
+            outline-color: var(--tui-border-focus);
+        }
+    });
 
     &[tuiChip][tuiChip][data-state='disabled'],
     :host-context(tui-textfield[data-state='disabled']) &[tuiChip][tuiChip] {
