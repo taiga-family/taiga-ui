@@ -39,7 +39,7 @@ test.describe('LineChart', () => {
         ): Promise<{hint: BoundingBox; point: BoundingBox}> => {
             await tuiGoto(
                 page,
-                `${DemoRoute.LineChart}/API?tuiHintContent$=0&tuiHintDirection$=${directionIndex[direction]}`,
+                `${DemoRoute.LineChart}/API?tuiLineChartHint$=0&tuiHintDirection$=${directionIndex[direction]}`,
             );
 
             const {demo} = new TuiDocumentationPagePO(page);

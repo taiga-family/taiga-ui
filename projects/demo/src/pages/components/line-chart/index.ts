@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiAxes, TuiChartHint, TuiLineChart} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineChart, TuiLineChartHint} from '@taiga-ui/addon-charts';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAxes, TuiChartHint, TuiDemo, TuiDocHint, TuiLineChart],
+    imports: [TuiAxes, TuiDemo, TuiDocHint, TuiLineChart, TuiLineChartHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -40,10 +40,15 @@ export default class Page {
     ];
 
     protected readonly hintContentVariants: ReadonlyArray<
-        TuiStringHandler<TuiContext<TuiPoint>>
-    > = [({$implicit: [x, y]}) => `Vertical: ${y}\nHorizontal: ${x}`];
+        TuiStringHandler<TuiContext<readonly TuiPoint[]>>
+    > = [
+        ({$implicit}) =>
+            $implicit.map(([x, y]) => `Vertical: ${y}\nHorizontal: ${x}`).join('\n'),
+    ];
 
-    protected hintContent: TuiStringHandler<TuiContext<TuiPoint>> | null = null;
+    protected hintContent: TuiStringHandler<TuiContext<readonly TuiPoint[]>> | null =
+        null;
+
     protected yStringify: TuiStringHandler<number> | null = null;
     protected xStringify: TuiStringHandler<number> | null = null;
     protected x = 0;

@@ -18,6 +18,8 @@
             <tui-axes
                 class="axes"
                 [horizontalLines]="3"
+                [tuiHintDirection]="hint.direction"
+                [tuiLineChartHint]="hintContent"
                 [verticalLines]="5"
             >
                 <tui-line-chart
@@ -25,9 +27,6 @@
                     [filled]="filled"
                     [height]="height"
                     [smoothingFactor]="smoothingFactor"
-                    [tuiHintAppearance]="hint.appearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hint.direction"
                     [value]="value"
                     [width]="width"
                     [x]="x"
@@ -120,18 +119,22 @@
                 function to stringify a value number to a string in axis Y hint
             </tr>
             <tr
-                name="[tuiHintContent]"
+                name="[tuiLineChartHint]"
                 tuiDocAPIItem
-                type="PolymorpheusContent<TuiContext<TuiPoint>>"
+                type="PolymorpheusContent<TuiContext<readonly TuiPoint[]>>"
                 [items]="hintContentVariants"
                 [(value)]="hintContent"
             >
                 content of the hint bubble
+
+                <p>
+                    <code>&lt;tui-axes tuiLineChartHint="..." /&gt;</code>
+                </p>
             </tr>
             <tbody
                 #hint
                 tuiDocHint
-                [hiddenOptions]="['centered', 'directionChange', 'visible']"
+                [hiddenOptions]="['appearance', 'centered', 'directionChange', 'visible']"
             ></tbody>
         </table>
     </ng-template>
