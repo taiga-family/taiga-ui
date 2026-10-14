@@ -15,6 +15,10 @@ tui-app-bar:where(*&) {
     background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
     backdrop-filter: blur(2rem);
 
+    > .t-side {
+        display: flex;
+    }
+
     > .t-content {
         .center-left();
 
