@@ -23,5 +23,6 @@ export default class Page {
         'Toggle rows',
         'Controls',
         'Disabled rows',
+        'Overlays from cells',
     ];
 }
