@@ -1,7 +1,8 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, type Page, test} from '@playwright/test';
-import {type BoundingBox} from 'playwright-core';
+import {expect, type Locator, type Page, test} from '@playwright/test';
+
+type BoundingBox = NonNullable<Awaited<ReturnType<Locator['boundingBox']>>>;
 
 test.describe('LineChart', () => {
     test('should not show hint', async ({page}) => {

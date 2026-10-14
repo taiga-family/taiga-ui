@@ -1,8 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, type Page, test} from '@playwright/test';
+import {expect, type Locator, type Page, test} from '@playwright/test';
 import {TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
-import {type BoundingBox} from 'playwright-core';
+
+type BoundingBox = NonNullable<Awaited<ReturnType<Locator['boundingBox']>>>;
 
 test.describe('PieChart', () => {
     test('should be show hints on charts', async ({page}) => {
