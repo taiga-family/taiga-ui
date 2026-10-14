@@ -7,6 +7,7 @@ import {
     inject,
     Input,
     type QueryList,
+    ViewChild,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
@@ -20,7 +21,7 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
-import {map, merge} from 'rxjs';
+import {map, merge, share} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 import {TuiAppBarButton} from './liquid-glass/app-bar-button.directive';
@@ -44,6 +45,9 @@ export class TuiAppBarComponent implements AfterViewInit {
     @ViewChildren('side')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    @ViewChild('title', {static: true})
+    private readonly title?: ElementRef<HTMLElement>;
+
     private readonly el = tuiInjectElement();
 
     protected readonly liquidGlass =
@@ -61,6 +65,15 @@ export class TuiAppBarComponent implements AfterViewInit {
                     this.side.first?.nativeElement.clientWidth,
                     this.side.last?.nativeElement.clientWidth,
                 ),
+        ),
+        share(),
+    );
+
+    protected readonly overflown$ = this.width$.pipe(
+        map(
+            (width) =>
+                (this.title?.nativeElement.scrollWidth ?? 0) >
+                this.el.clientWidth - width,
         ),
     );
 

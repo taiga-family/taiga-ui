@@ -6,8 +6,10 @@
     </div>
 </div>
 <div
+    #title
     tuiFade
     class="t-content"
+    [class.t-content_start]="overflown$ | async"
     [style.--t-sides.px]="width$ | async"
 >
     <ng-content />
