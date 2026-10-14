@@ -62,6 +62,39 @@
     </tui-app-bar>
 
     <tui-app-bar>
+        <button
+            title="Back"
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
+        ></button>
+        Taiga
+        <div
+            tuiAppBarButton
+            tuiSlot="end"
+        >
+            <button
+                iconStart="@tui.user"
+                tuiIconButton
+                type="button"
+            >
+                User
+            </button>
+        </div>
+        <div
+            tuiAppBarButton
+            tuiSlot="end"
+        >
+            <button
+                tuiButton
+                type="button"
+            >
+                Action
+            </button>
+        </div>
+    </tui-app-bar>
+
+    <tui-app-bar>
         <label tuiTitle>
             Taiga UI
             <span tuiSubtitle>Components library</span>

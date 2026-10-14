@@ -19,6 +19,15 @@
         padding-block-start: var(--t-padding);
         padding-block-end: 0.625rem;
 
+        > .t-side {
+            gap: 0.75rem;
+            padding-inline: var(--t-padding) 1rem;
+
+            &:last-child {
+                padding-inline: 1rem var(--t-padding);
+            }
+        }
+
         // Truncate with ellipsis instead of fading
         > .t-content {
             display: block;
