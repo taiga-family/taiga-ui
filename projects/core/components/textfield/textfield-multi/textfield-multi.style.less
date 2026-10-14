@@ -10,10 +10,14 @@ tui-textfield[multi][multi]:where(*&) {
     scroll-behavior: var(--tui-scroll-behavior);
 
     &._horizontal {
-        // stylelint-disable-next-line declaration-property-value-disallowed-list -- not for Firefox
+        // stylelint-disable-next-line declaration-property-value-disallowed-list -- fallbacks for Firefox and Safari below
         min-block-size: fit-content;
 
         .firefox-only({
+            min-block-size: var(--t-height);
+        });
+
+        .safari-only({
             min-block-size: var(--t-height);
         });
 
