@@ -21,6 +21,88 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('01-dropdown.png');
     });
 
+    for (const direction of ['ltr', 'rtl']) {
+        test(`preserves content width near the viewport edge (${direction})`, async ({
+            page,
+        }) => {
+            await tuiGoto(page, DemoRoute.Dropdown);
+            await page.locator('html').evaluate((element, dir) => {
+                element.setAttribute('dir', dir);
+            }, direction);
+
+            const button = new TuiDocumentationPagePO(page)
+                .getExample('#basic')
+                .locator('button');
+
+            const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+            await button.evaluate((element) => {
+                Object.assign(element.style, {
+                    position: 'fixed',
+                    insetBlockStart: '100px',
+                    insetInlineStart: '16px',
+                });
+            });
+            await button.click();
+            await expect(dropdown).toBeVisible();
+
+            const width = await dropdown.evaluate((element) => element.clientWidth);
+
+            expect(width).toBeGreaterThan(
+                await button.evaluate((element) => element.clientWidth),
+            );
+
+            await button.click();
+            await expect(dropdown).toBeHidden();
+            await button.evaluate((element) => {
+                Object.assign(element.style, {
+                    insetInlineStart: 'auto',
+                    insetInlineEnd: '16px',
+                });
+            });
+            await button.click();
+            await expect(dropdown).toBeVisible();
+
+            await expect
+                .poll(async () => dropdown.evaluate((element) => element.clientWidth))
+                .toBe(width);
+            await expect(dropdown).toBeInViewport({ratio: 1});
+        });
+    }
+
+    test('keeps oversized content within the viewport', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        const button = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('button');
+
+        const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        await button.click();
+        await dropdown
+            .locator('[tuiSubtitle]')
+            .first()
+            .evaluate((element) => {
+                element.textContent = 'Long menu description '.repeat(100);
+            });
+
+        await expect(dropdown).toBeInViewport({ratio: 1});
+    });
+
+    test('preserves fixed width', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        const example = new TuiDocumentationPagePO(page).getExample('#with-custom-host');
+        const host = example.locator('[tuiDropdownLimitWidth="fixed"]');
+        const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        await host.locator('button[tuiChevron]').click();
+        await expect(dropdown).toBeVisible();
+
+        expect(await dropdown.evaluate((element) => element.clientWidth)).toBe(
+            await host.evaluate((element) => element.clientWidth),
+        );
+    });
+
     test('Interesting', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#interesting');

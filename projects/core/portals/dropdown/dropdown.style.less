@@ -43,6 +43,11 @@
         scroll-timeline: none;
     }
 
+    &._anchored {
+        inline-size: max-content;
+        max-inline-size: calc(100vw - 1rem);
+    }
+
     &:not(._anchored) .t-detector {
         display: none;
     }
