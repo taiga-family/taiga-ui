@@ -2,19 +2,19 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader, TuiList} from '@taiga-ui/layout';
 import {TuiFormatNumberPipe} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader, TuiList} from '@taiga-ui/layout';
 
 @Component({
     selector: 'related',
     imports: [
+        TuiButton,
         TuiCardLarge,
         TuiDemo,
-        TuiList,
-        TuiHeader,
-        TuiTitle,
         TuiFormatNumberPipe,
-        TuiButton,
+        TuiHeader,
+        TuiList,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
