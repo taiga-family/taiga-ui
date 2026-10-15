@@ -1,6 +1,17 @@
+// Narrower than Pro Max iPhones (428px+)
+@tui-mobile-small: ~'(max-width: 427.4px)';
+
 &.tui-liquid-glass {
     tui-app-bar {
-        --t-padding: 1rem;
+        --t-padding: 1.25rem;
+
+        @media @tui-mobile-small {
+            --t-padding: 1rem;
+
+            [tuiAppBarButton] > [tuiButton] {
+                --t-padding: 0.375rem 0.75rem;
+            }
+        }
 
         background: transparent;
         backdrop-filter: none;
