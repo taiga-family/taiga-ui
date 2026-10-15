@@ -6,6 +6,7 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {DemoRoute} from '@demo/routes';
 
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiDemo, TuiHeader, TuiTitle],
@@ -28,7 +29,7 @@ export default class Page {
 
     protected readonly config = {provideTaiga: import('./examples/config.md')};
     protected readonly index = {'index.html': import('./examples/index.md')};
-
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Install libraries',
         'Include styles',
