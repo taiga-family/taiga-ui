@@ -18,6 +18,7 @@ export const EXCLUDED_SECTIONS = [
     'AI tools',
     'Documentation',
     'Foundations',
+    'Information',
     'Tools',
     'Testing',
     'Icons',
@@ -26,6 +27,7 @@ export const EXCLUDED_SECTIONS = [
 export const EXCLUDED_ROUTES = [
     DemoRoute.GettingStarted,
     DemoRoute.I18N,
+    DemoRoute.MigrationGuide,
     DemoRoute.Preview, // no need take screenshot of buttons
     DemoRoute.Dialog, // just buttons
     DemoRoute.DialogRoutable, // just buttons

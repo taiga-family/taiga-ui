@@ -19,14 +19,31 @@
         />
 
         <tui-doc-example
+            heading="Licensing"
+            [preview]="false"
+        >
+            <div class="text">
+                Taiga UI is fully open source licensed under the Apache 2.0 and is free for commercial use. If you want
+                to explore enterprise support options or purchase a Figma license for your design team, head over to
+                <a
+                    tuiLink
+                    [routerLink]="routes.Licensing"
+                >
+                    Licensing
+                </a>
+                page.
+            </div>
+        </tui-doc-example>
+
+        <tui-doc-example
             heading="Explore Taiga UI"
             [preview]="false"
         >
-            <p>
+            <div class="text">
                 See
                 <b>Components</b>
                 section in the main navigation and check out UI elements broken into dedicated groups by their purpose
-            </p>
+            </div>
         </tui-doc-example>
 
         <article class="explore">
@@ -88,13 +105,13 @@
             heading="AI-Ready"
             [preview]="false"
         >
-            <p>
+            <div class="text">
                 Taiga UI treats AI agents as first-class readers of its documentation. The same knowledge is published
                 in AI-friendly shapes — a flat
                 <code>llms.txt</code>
                 context file, an MCP server, and reusable agent skills — so your assistant reads, understands, and
                 generates components against the current, version-correct API instead of guessing from memory.
-            </p>
+            </div>
         </tui-doc-example>
 
         <a
