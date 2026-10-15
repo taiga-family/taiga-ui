@@ -26,11 +26,9 @@ import {TUI_SEARCH_BAR_OPTIONS} from './search-bar.options';
             appearance: platform === 'android' ? 'action' : '',
             size: platform === 'android' ? 's' : 'm',
         })),
-        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) => {
-            const close = inject(TUI_SEARCH_BAR_OPTIONS).closeIcon(platform);
-
-            return close ? {close} : {};
-        }),
+        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) => ({
+            close: inject(TUI_SEARCH_BAR_OPTIONS).closeIcon(platform) || undefined,
+        })),
     ],
     host: {'[attr.data-appearance]': 'appearance()'},
 })

@@ -210,7 +210,7 @@ describe('SearchBar', () => {
                     provideTaiga(),
                     tuiSearchBarOptionsProvider({
                         closeIcon: (platform) =>
-                            platform === 'ios' ? '@tui.circle-x' : null,
+                            platform === 'ios' ? '@tui.circle-x' : '',
                     }),
                 ],
             });

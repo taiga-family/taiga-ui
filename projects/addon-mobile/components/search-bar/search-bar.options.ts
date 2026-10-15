@@ -4,13 +4,13 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 export interface TuiSearchBarOptions {
     /**
      * Icon for `tuiButtonX` inside the search bar,
-     * `null` keeps the common close icon
+     * empty string keeps the common close icon
      */
-    readonly closeIcon: TuiHandler<'android' | 'ios' | 'web', string | null>;
+    readonly closeIcon: TuiHandler<'android' | 'ios' | 'web', string>;
 }
 
 export const TUI_SEARCH_BAR_DEFAULT_OPTIONS: TuiSearchBarOptions = {
-    closeIcon: (platform) => (platform === 'android' ? '@tui.arrow-left' : null),
+    closeIcon: (platform) => (platform === 'android' ? '@tui.arrow-left' : ''),
 };
 
 export const [TUI_SEARCH_BAR_OPTIONS, tuiSearchBarOptionsProvider] = tuiCreateOptions(
