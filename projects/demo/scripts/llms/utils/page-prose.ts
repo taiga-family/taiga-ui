@@ -494,7 +494,7 @@ async function inlineDocCode(
         const importPath = ts ? resolveImportPath(ts, match[1]?.trim() ?? '') : null;
         const snippet = importPath ? await readSnippet(folderPath, importPath) : '';
 
-        result = result.replace(match[0], snippet ? `\n\n${snippet}\n\n` : '');
+        result = result.replace(match[0], () => (snippet ? `\n\n${snippet}\n\n` : ''));
     }
 
     // <tui-doc-code code="literal" /> → the inline command shown verbatim (no import binding).
@@ -503,7 +503,9 @@ async function inlineDocCode(
     )) {
         const code = decodeEntities(match[1]?.trim() ?? '');
 
-        result = result.replace(match[0], code ? `\n\n\`\`\`\n${code}\n\`\`\`\n\n` : '');
+        result = result.replace(match[0], () =>
+            code ? `\n\n\`\`\`\n${code}\n\`\`\`\n\n` : '',
+        );
     }
 
     // <tui-doc-example [content]="obj"> where obj is a set of .md snippets (e.g. tabbed configs).
@@ -522,7 +524,7 @@ async function inlineDocCode(
 
         // Keep the tag so its heading/description still become Markdown; append the snippets.
         if (snippets) {
-            result = result.replace(match[0], `${match[0]}\n\n${snippets}\n\n`);
+            result = result.replace(match[0], (tag) => `${tag}\n\n${snippets}\n\n`);
         }
     }
 
@@ -657,8 +659,8 @@ async function inlineChildComponents(
         );
 
         result = result
-            .replace(paired, `\n${resolvedChild}\n`)
-            .replace(selfClosing, `\n${resolvedChild}\n`);
+            .replace(paired, () => `\n${resolvedChild}\n`)
+            .replace(selfClosing, () => `\n${resolvedChild}\n`);
     }
 
     return result;
@@ -742,7 +744,7 @@ async function inlineComponentOutlet(
             new Set([folderPath, ...seen]),
         );
 
-        result = result.replace(match[0], `\n${child}\n`);
+        result = result.replace(match[0], () => `\n${child}\n`);
     }
 
     return result;
