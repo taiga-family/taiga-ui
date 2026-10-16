@@ -1,13 +1,17 @@
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    contentChild,
     contentChildren,
     type DoCheck,
     forwardRef,
     inject,
     SkipSelf,
+    TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
@@ -23,7 +27,7 @@ import {TUI_TREE_CONTENT} from '../tree-item-content/tree-item-content.component
 
 @Component({
     selector: 'tui-tree-item',
-    imports: [PolymorpheusOutlet, TuiExpand],
+    imports: [NgTemplateOutlet, PolymorpheusOutlet, TuiExpand, TuiItem],
     templateUrl: './tree-item.template.html',
     styleUrl: './tree-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +55,11 @@ export class TuiTreeItem implements DoCheck {
 
     protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
 
+    protected readonly children = contentChild(TuiItem, {
+        read: TemplateRef,
+        descendants: false,
+    });
+
     protected readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
         forwardRef(() => TUI_TREE_CONTENT),
     );
@@ -73,7 +82,7 @@ export class TuiTreeItem implements DoCheck {
     );
 
     public get isExpandable(): boolean {
-        return !!this.nested().length;
+        return !!this.children() || !!this.nested().length;
     }
 
     public get isExpanded(): boolean {
