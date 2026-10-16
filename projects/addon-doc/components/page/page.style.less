@@ -11,7 +11,10 @@
 
 .t-header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas:
+        'title actions actions'
+        'tabs tabs side';
     align-items: center;
     column-gap: 1rem;
     padding-block-start: 3.75rem;
@@ -23,7 +26,6 @@
     margin: 0 ~'min(10vw, 8.75rem)';
 
     @media @tui-mobile {
-        grid-template-columns: minmax(0, 1fr);
         padding-block-start: 1.25rem;
         font: var(--tui-font-heading-4);
         margin: 0;
@@ -33,12 +35,12 @@
 .t-header:not(:empty) {
     @media @tui-mobile {
         min-block-size: 4.5rem;
-        padding: 1.25rem;
+        padding: 1.25rem 1.25rem 0;
     }
 }
 
 .t-title {
-    grid-area: 1 / 1;
+    grid-area: title;
     font-size: inherit;
     margin: 0;
 }
@@ -63,13 +65,12 @@
 }
 
 .t-tabs {
-    grid-area: 2 / 1;
+    grid-area: tabs;
     margin: 1.125rem 0.3125rem 0 0;
     box-shadow: none;
 
     @media @tui-mobile {
-        grid-area: auto;
-        margin-block-start: 0.75rem;
+        margin-block-start: 0.25rem;
     }
 }
 
@@ -104,27 +105,15 @@
 
 .t-right-side {
     display: flex;
-    grid-area: 2 / 2;
+    grid-area: side;
     gap: 1rem;
     align-items: center;
     justify-self: end;
-
-    @media @tui-mobile {
-        grid-area: auto;
-        justify-self: start;
-        margin-block-start: 0.75rem;
-    }
 }
 
 .t-actions {
-    grid-area: 1 / 2;
+    grid-area: actions;
     justify-self: end;
-
-    @media @tui-mobile {
-        grid-area: auto;
-        justify-self: start;
-        margin-block-start: 0.75rem;
-    }
 }
 
 .t-source-code {
