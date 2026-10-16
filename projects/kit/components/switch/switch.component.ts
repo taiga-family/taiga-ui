@@ -26,7 +26,11 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_RADIO_OPTIONS, TUI_SWITCH_OPTIONS)],
     hostDirectives: [TuiIcons],
-    host: {role: 'switch', switch: '', '[class._native]': 'native'},
+    host: {
+        role: 'switch',
+        '[attr.switch]': 'native ? "" : null',
+        '[class._native]': 'native',
+    },
 })
 export class TuiSwitch extends TuiRadioComponent<TuiSwitchOptions> {
     protected readonly native = inject(TUI_LIQUID_GLASS) && 'switch' in this.el;
