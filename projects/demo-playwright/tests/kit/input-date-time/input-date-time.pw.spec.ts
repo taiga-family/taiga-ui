@@ -5,6 +5,7 @@ import {
     TuiInputDateTimePO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputDateTime', () => {
     test.describe('API page', () => {
@@ -20,7 +21,7 @@ test.describe('InputDateTime', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-textfield:has([tuiInputDateTime])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputDateTime])`),
             );
         });
 
