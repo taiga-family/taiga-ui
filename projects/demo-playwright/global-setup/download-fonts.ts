@@ -2,6 +2,8 @@ import {createHash} from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
+import {Agent, fetch, type RequestInit, type Response} from 'undici';
+
 const STUBS_DIR = path.join(__dirname, '../stubs');
 const FONT_MANIFEST = path.join(STUBS_DIR, 'fonts.json');
 
@@ -67,6 +69,13 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
     fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts.at(0)!);
 }
 
+/**
+ * Skips TLS certificate verification:
+ * some font CDNs are signed by root CAs missing from Node's bundle.
+ * Acceptable here because the files are only used as test stubs.
+ */
+const dispatcher = new Agent({connect: {rejectUnauthorized: false}});
+
 interface FetchWithRetryOptions {
     url: string;
     options?: RequestInit;
@@ -80,7 +89,7 @@ async function fetchWithRetry({
     retries = 5,
     attempt = 0,
 }: FetchWithRetryOptions): Promise<Response> {
-    const response = await fetch(url, options).catch(() => null);
+    const response = await fetch(url, {...options, dispatcher}).catch(() => null);
 
     if (response?.ok) {
         return response;
