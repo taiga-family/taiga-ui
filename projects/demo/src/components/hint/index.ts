@@ -1,6 +1,17 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostAttributeToken,
+    inject,
+    input,
+} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {TUI_HINT_DIRECTIONS, type TuiHintDirection, TuiTitle} from '@taiga-ui/core';
+import {
+    TUI_HINT_DIRECTIONS,
+    type TuiHintDirection,
+    type TuiHintOptions,
+    TuiTitle,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tbody[tuiDocHint]',
@@ -16,11 +27,15 @@ export class TuiDocHint {
         ['bottom', 'start'] satisfies TuiHintDirection[],
     ];
 
-    public direction = this.directions[0]!;
+    public direction: TuiHintOptions['direction'] =
+        (inject(new HostAttributeToken('tuiHintDirection'), {
+            optional: true,
+        }) as TuiHintDirection | null) ?? this.directions[0]!;
+
     public appearance = this.appearances[0]!;
     public centered = true;
 
-    public readonly hiddenOptions = input<Array<'appearance' | 'centered' | 'direction'>>(
-        [],
-    );
+    public readonly hiddenOptions = input<
+        Array<'appearance' | 'centered' | 'direction' | 'directionChange' | 'visible'>
+    >([]);
 }

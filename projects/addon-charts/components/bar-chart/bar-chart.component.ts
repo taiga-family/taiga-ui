@@ -14,7 +14,13 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint, TuiHintHover, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
+import {
+    TUI_HINT_OPTIONS,
+    TuiHint,
+    TuiHintHover,
+    type TuiHintOptions,
+    tuiHintOptionsProvider,
+} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -28,6 +34,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export class TuiBarChart {
     private readonly hintOptions = inject(TuiChartHint, {optional: true});
+    private readonly hintDefaults = inject(TUI_HINT_OPTIONS);
     private readonly autoId = tuiGenerateId();
 
     private readonly getMax = computed(() =>
@@ -70,6 +77,16 @@ export class TuiBarChart {
 
     protected get hintAppearance(): string {
         return this.hintOptions?.appearance() || '';
+    }
+
+    protected get hintDirection(): TuiHintOptions['direction'] {
+        return this.hintOptions?.direction() ?? this.hintDefaults.direction;
+    }
+
+    protected get hintBelow(): boolean {
+        const [direction] = [this.hintDirection].flat();
+
+        return Boolean(direction?.startsWith('bottom'));
     }
 
     protected getHintId(index: number): string {

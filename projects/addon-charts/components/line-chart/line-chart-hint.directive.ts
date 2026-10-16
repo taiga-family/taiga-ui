@@ -5,12 +5,14 @@ import {
     DestroyRef,
     Directive,
     ElementRef,
+    forwardRef,
     inject,
     input,
     NgZone,
     Renderer2,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -31,10 +33,18 @@ import {TuiLineChart} from './line-chart.component';
 @Directive({
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
+    hostDirectives: [{directive: TuiChartHint, inputs: ['tuiHintDirection']}],
 })
 export class TuiLineChartHint implements AfterViewInit {
-    private readonly charts = contentChildren(TuiLineChart);
-    private readonly chartsRef = contentChildren(TuiLineChart, {read: ElementRef});
+    private readonly charts = contentChildren<TuiLineChart>(
+        forwardRef(() => TuiLineChart),
+    );
+
+    private readonly chartsRef = contentChildren<TuiLineChart, ElementRef<HTMLElement>>(
+        forwardRef(() => TuiLineChart),
+        {read: ElementRef},
+    );
+
     private readonly renderer = inject(Renderer2);
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);

@@ -30,6 +30,7 @@
         [tuiHint]="activeItemIndex() >= 0 ? hintContent : ''"
         [tuiHintAppearance]="hintAppearance"
         [tuiHintContext]="{$implicit: activeItemIndex()}"
+        [tuiHintDirection]="hintDirection"
         (mouseleave)="activeItemIndex.set(-1)"
     >
         <circle

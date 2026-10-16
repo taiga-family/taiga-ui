@@ -41,17 +41,21 @@
         towards which it unravels)
     </tr>
 }
-<tr
-    name="(tuiHintDirectionChange)"
-    tuiDocAPIItem
-    type="TuiHintDirection"
->
-    event notifying of direction change due to limited space
-</tr>
-<tr
-    name="(tuiHintVisible)"
-    tuiDocAPIItem
-    type="boolean"
->
-    event notifying of bubble being shown or hidden
-</tr>
+@if (!hiddenOptions().includes('directionChange')) {
+    <tr
+        name="(tuiHintDirectionChange)"
+        tuiDocAPIItem
+        type="TuiHintDirection"
+    >
+        event notifying of direction change due to limited space
+    </tr>
+}
+@if (!hiddenOptions().includes('visible')) {
+    <tr
+        name="(tuiHintVisible)"
+        tuiDocAPIItem
+        type="boolean"
+    >
+        event notifying of bubble being shown or hidden
+    </tr>
+}
