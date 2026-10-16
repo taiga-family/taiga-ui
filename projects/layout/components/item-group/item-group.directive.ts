@@ -10,7 +10,12 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
-const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as const;
+const OPTIONS = {
+    behavior: 'smooth',
+    block: 'nearest',
+    container: 'nearest',
+    inline: 'center',
+} as const;
 
 @Component({
     template: '',
