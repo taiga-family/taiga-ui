@@ -597,11 +597,11 @@ export async function getInlineCodeSnippets(
             continue;
         }
 
-        if (value.startsWith('`') && value.endsWith('`')) {
-            const inline = value
-                .slice(1, -1)
-                .replaceAll(/\$\{[^}]*\}/g, '')
-                .trim();
+        // A string-literal binding (`…` or '…') is the snippet itself.
+        const literal = /^([`'])([\s\S]*)\1$/.exec(value)?.[2];
+
+        if (literal !== undefined) {
+            const inline = literal.replaceAll(/\$\{[^}]*\}/g, '').trim();
 
             if (inline) {
                 snippets.push(`\`\`\`html\n${inline}\n\`\`\``);
