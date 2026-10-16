@@ -19,20 +19,11 @@ export class PageMarkdown {
         {requireSync: true},
     );
 
+    // Every doc page is a top-level route; its tabs, routable dialogs and outlets share one .md twin.
     private resolve(): string {
-        const [page = ''] = this.router.url.split(/[?#]/);
-        let route = this.router.routerState.snapshot.root;
+        const segments = this.router.routerState.snapshot.root.firstChild?.url ?? [];
+        const page = segments.map(({path}) => path).join('/');
 
-        while (route.firstChild) {
-            route = route.firstChild;
-        }
-
-        // Tabbed pages live under a ':tab' child but share one base .md.
-        const base =
-            route.routeConfig?.path === ':tab'
-                ? page.slice(0, page.lastIndexOf('/'))
-                : page;
-
-        return this.location.prepareExternalUrl(`${base}.md`);
+        return this.location.prepareExternalUrl(`/${page}.md`);
     }
 }
