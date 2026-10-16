@@ -80,7 +80,13 @@ export class TuiDropdownOpen implements ElementRef<Element> {
     public readonly enabled = input(true, {alias: 'tuiDropdownEnabled'});
     public readonly open = model(false, {alias: 'tuiDropdownOpen'});
 
-    protected readonly driveEffect = effect(() => this.drive(this.open()));
+    protected readonly driveEffect = effect(() => {
+        const open = this.open();
+
+        if (!open || this.enabled()) {
+            this.drive(open);
+        }
+    });
 
     protected readonly syncSub = this.driver
         .pipe(
@@ -163,7 +169,7 @@ export class TuiDropdownOpen implements ElementRef<Element> {
         this.drive();
     }
 
-    private drive(open = this.open() && this.enabled()): void {
+    private drive(open = this.open()): void {
         tuiSetSignal(this.obscured.tuiObscuredEnabled, open);
         this.driver.next(open);
     }
