@@ -49,7 +49,11 @@ export class CopyPage {
     protected readonly markdownUrl = this.pageMarkdown.url;
 
     constructor() {
-        const link = this.doc.createElement('link');
+        // Reuse the prerendered link: the client app does not hydrate, so a new one would leave a stale twin in <head>.
+        const link =
+            this.doc.head.querySelector<HTMLLinkElement>(
+                'link[rel="alternate"][type="text/markdown"]',
+            ) ?? this.doc.createElement('link');
 
         link.rel = 'alternate';
         link.type = 'text/markdown';
