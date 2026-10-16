@@ -30,6 +30,7 @@ process.env['AXE_CONFIG'] = JSON.stringify(AXE_CONFIG);
 
 const chromium = {
     name: 'chromium',
+    testIgnore: '**/webkit/**',
     use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
 };
 
@@ -82,10 +83,12 @@ export default defineConfig({
               chromium,
               {
                   name: 'webkit',
+                  testMatch: '**/webkit/**/*.pw.spec.ts',
                   use: {...devices['Desktop Safari'], viewport: DEFAULT_VIEWPORT},
               },
               {
                   name: 'firefox',
+                  testIgnore: '**/webkit/**',
                   use: {...devices['Desktop Firefox HiDPI'], viewport: DEFAULT_VIEWPORT},
               },
           ]
