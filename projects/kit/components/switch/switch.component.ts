@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    inject,
     input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -9,6 +10,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/core/components/radio';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
+import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
 
@@ -27,7 +29,7 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     host: {role: 'switch', switch: '', '[class._native]': 'native'},
 })
 export class TuiSwitch extends TuiRadioComponent<TuiSwitchOptions> {
-    protected readonly native = 'switch' in this.el;
+    protected readonly native = inject(TUI_LIQUID_GLASS) && 'switch' in this.el;
 
     protected readonly icon = tuiIconStart(
         computed(() => (this.showIcons() ? this.options.icon(this.size()) : '')),
