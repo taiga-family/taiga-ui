@@ -2,9 +2,10 @@
     <label tuiLabel>Enter 12-hour time format</label>
 
     <input
-        mode="HH:MM AA"
+        mode="HH:MM"
         tuiInputTime
         [formControl]="control"
+        [tuiTimeFormat]="{dayPeriod: ['AM', 'PM']}"
     />
 </tui-textfield>
 

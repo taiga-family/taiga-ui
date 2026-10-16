@@ -53,6 +53,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit/components/input-date-range';
         :host {
             position: absolute;
             inset: 0.125rem;
+            block-size: fit-content;
             opacity: 0;
             pointer-events: none;
             visibility: visible;

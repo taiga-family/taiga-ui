@@ -92,7 +92,6 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {Component, inject} from '@angular/core';
                 import {
                     TUI_DATA_LIST_ACCESSOR,
-                    TUI_HINT_PROVIDERS,
                     TUI_THEME,
                     TuiDataListDirective,
                     type TuiLinkOptions,
@@ -100,9 +99,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                     tuiAsDataListAccessor,
                 } from '@taiga-ui/core';
 
-                @Component({
-                    providers: [TUI_HINT_PROVIDERS],
-                })
+                @Component({})
                 export class TestComponent {
                     protected readonly theme = inject(TUI_THEME);
                     protected readonly link: TuiLinkOptions | null = null;
@@ -119,8 +116,6 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                 import {
 // TODO: (Taiga UI migration) TUI_DATA_LIST_ACCESSOR has been removed. Read a custom option-list source through the auxiliary API instead of injecting the token: tuiInjectAuxiliary<TuiDataListAccessor>((x) => 'options' in x && isSignal(x.options)) (from @taiga-ui/core; isSignal from @angular/core). The interface changed too — getOptions() is gone, options are now a Signal<readonly T[]>.
                     TUI_DATA_LIST_ACCESSOR,
-// TODO: (Taiga UI migration) TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.
-                    TUI_HINT_PROVIDERS,
 // TODO: (Taiga UI migration) TUI_THEME has been removed from @taiga-ui/core. There is no DI token for the theme anymore. Set it via the tuiTheme HTML attribute on a container element (e.g. document.body.setAttribute('tuiTheme', 'dark'), or tuiTheme="dark" in a template); components resolve the nearest [tuiTheme] ancestor.
                     TUI_THEME,
 // TODO: (Taiga UI migration) TuiDataListDirective (ng-template[tuiDataList]) has been removed. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select
@@ -133,9 +128,7 @@ exports[`ng-update leftover removed symbols warnings (#11917) adds TODO comments
                     tuiAsDataListAccessor,
                 } from '@taiga-ui/core';
 
-                @Component({
-                    providers: [TUI_HINT_PROVIDERS],
-                })
+                @Component({})
                 export class TestComponent {
                     protected readonly theme = inject(TUI_THEME);
                     protected readonly link: TuiLinkOptions | null = null;

@@ -3,7 +3,8 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiFallbackAccessor,
+    tuiAsPositionAccessor,
+    tuiInjectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
@@ -22,18 +23,13 @@ const ARROW_OFFSET = 22;
 const TOP = 1;
 const LEFT = 0;
 
-@Directive()
+@Directive({providers: [tuiAsPositionAccessor(TuiHintPosition)]})
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly directionChange = new Subject<TuiHintDirection>();
-
-    private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
-        inject<any>(TuiRectAccessor, {optional: true}),
-        {getClientRect: () => this.el.getBoundingClientRect()},
-    );
-
+    private readonly accessor = tuiInjectAccessor(TuiRectAccessor, 'hint');
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),

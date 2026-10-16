@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {bootstrapApplication, type BootstrapContext} from '@angular/platform-browser';
+import {provideServerRendering, renderApplication} from '@angular/platform-server';
 import {type TuiSortChange, TuiSortDirection, TuiTable} from '@taiga-ui/addon-table';
 
 interface User {
@@ -85,6 +87,12 @@ describe('Table sort', () => {
         fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         fixture.detectChanges();
+        await fixture.whenStable();
+    });
+
+    it('does not emit tuiSortChange on initial render', () => {
+        expect(component.changeCount).toBe(0);
+        expect(component.last).toBeNull();
     });
 
     it('reports a header click through tuiSortChange', () => {
@@ -185,5 +193,58 @@ describe('Table sort', () => {
         expect(component.changeCount).toBeLessThan(10);
         expect(component.sortKey()).toBe('name');
         expect(component.direction()).toBe(TuiSortDirection.Desc);
+    });
+
+    describe('SSR', () => {
+        @Component({
+            selector: 'tui-test-app',
+            imports: [TuiTable],
+            template: `
+                <table
+                    tuiTable
+                    [columns]="columns"
+                    tuiSortBy="name"
+                    (tuiSortChange)="change()"
+                >
+                    <thead>
+                        <tr tuiThGroup>
+                            <th
+                                *tuiHead="'name'"
+                                tuiSortable
+                                tuiTh
+                            >
+                                Name
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {
+            public static changeCount = 0;
+
+            protected readonly columns = ['name'];
+
+            protected change(): void {
+                Test.changeCount++;
+            }
+        }
+
+        it('does not emit tuiSortChange during server rendering', async () => {
+            Test.changeCount = 0;
+
+            await renderApplication(
+                async (context: BootstrapContext) =>
+                    bootstrapApplication(
+                        Test,
+                        {providers: [provideServerRendering()]},
+                        context,
+                    ),
+                {document: '<tui-test-app></tui-test-app>'},
+            );
+
+            expect(Test.changeCount).toBe(0);
+        });
     });
 });

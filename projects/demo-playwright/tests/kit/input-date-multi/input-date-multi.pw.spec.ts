@@ -1,6 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiCalendarSheetPO,
+    TuiCalendarSheetEO,
     TuiDocumentationApiPagePO,
     tuiGoto,
 } from '@demo-playwright/utils';
@@ -12,14 +12,14 @@ describe('InputDateMulti', () => {
     let api!: TuiDocumentationApiPagePO;
     let input!: Locator;
     let chips!: Locator;
-    let calendar!: TuiCalendarSheetPO;
+    let calendar!: TuiCalendarSheetEO;
     let submit!: Locator;
 
     beforeEach(({page}) => {
         api = new TuiDocumentationApiPagePO(page);
         input = api.demo.locator('input[tuiInputDateMulti]');
         chips = api.demo.locator('tui-textfield-item');
-        calendar = new TuiCalendarSheetPO(page.locator('tui-dropdown tui-calendar'));
+        calendar = new TuiCalendarSheetEO(page.locator('tui-dropdown tui-calendar'));
         submit = api.submitFormControlButton;
     });
 

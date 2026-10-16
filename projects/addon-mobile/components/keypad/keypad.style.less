@@ -30,7 +30,7 @@ tui-keypad:where(*&) {
         cursor: pointer;
         transition:
             background var(--tui-duration) ease-out,
-            transform var(--tui-duration) var(--tui-curve-expressive-entrance);
+            scale var(--tui-duration) var(--tui-curve-expressive-entrance);
 
         @media @tui-mouse {
             &:hover:not(:disabled) {
@@ -40,7 +40,7 @@ tui-keypad:where(*&) {
 
         &:active:not(:disabled) {
             background: var(--tui-background-neutral-1-pressed);
-            transform: scale(1.14);
+            scale: 1.14;
         }
 
         &:focus-visible {

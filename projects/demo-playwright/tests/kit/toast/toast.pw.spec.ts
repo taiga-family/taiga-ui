@@ -2,13 +2,10 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('Toast', () => {
-    test.use({
-        viewport: {width: 415, height: 812},
-        userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-    });
+    test.use(TUI_PLAYWRIGHT_MOBILE);
 
     test('should show toast in mobile resolution', async ({page}) => {
         await tuiGoto(page, DemoRoute.Toast);

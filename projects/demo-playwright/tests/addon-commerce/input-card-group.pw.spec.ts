@@ -3,7 +3,7 @@ import {
     CHAR_NO_BREAK_SPACE,
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputCardGroupPO,
+    TuiInputCardGroupEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
@@ -22,7 +22,7 @@ test.describe('InputCardGroup', () => {
         test('set value and clear after', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API`);
 
-            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(demo);
+            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupEO(demo);
             const entryValue = '1234 4567 8910 1112'.replaceAll(' ', CHAR_NO_BREAK_SPACE);
 
             await numberTextfield.pressSequentially(entryValue);
@@ -49,7 +49,7 @@ test.describe('InputCardGroup', () => {
         test('disabled input card grouped', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API?disabled=true`);
 
-            const {numberTextfield} = new TuiInputCardGroupPO(demo);
+            const {numberTextfield} = new TuiInputCardGroupEO(demo);
 
             await expect(numberTextfield).toHaveAttribute('disabled');
             await expect
@@ -78,7 +78,7 @@ test.describe('InputCardGroup', () => {
             const example = documentationPage.getExample('#with-validation');
 
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupPO(example);
+                new TuiInputCardGroupEO(example);
 
             const cardInfo = {
                 number: '5213 0000 4039 5834'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
@@ -140,7 +140,7 @@ test.describe('InputCardGroup', () => {
         test('input card grouped with saved cards', async () => {
             const example = documentationPage.getExample('#with-saved-cards');
 
-            const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupPO(
+            const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupEO(
                 example,
             );
 
@@ -179,7 +179,7 @@ test.describe('InputCardGroup', () => {
             const example = documentationPage.getExample('#custom-labels');
 
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupPO(example);
+                new TuiInputCardGroupEO(example);
 
             const cardInfo = {
                 number: '5586 2000 7149 2158'.replaceAll(' ', CHAR_NO_BREAK_SPACE),

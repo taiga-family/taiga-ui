@@ -91,8 +91,8 @@ export class TuiCalendar extends AbstractTuiCalendar {
     }
 
     public onDayClick(day: TuiDay): void {
-        this.dayClick.emit(day);
         this.value.set(day);
+        this.dayClick.emit(day);
     }
 
     public onHoveredItemChange(day: TuiDay | null): void {

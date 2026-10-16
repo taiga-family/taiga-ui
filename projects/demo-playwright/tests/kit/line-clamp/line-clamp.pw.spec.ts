@@ -140,4 +140,54 @@ test.describe('LineClamp', () => {
 
         await expect(page.locator('tui-popups .hint')).toHaveCount(0);
     });
+
+    test.describe('legacy positioning without CSS anchor support', () => {
+        test('linesLimit=2', async ({page}) => {
+            const pagePO = new TuiDocumentationPagePO(page);
+
+            await tuiGoto(
+                page,
+                `${DemoRoute.LineClamp}/API?content=Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici&linesLimit=2`,
+                {anchorPositioning: false},
+            );
+            await pagePO.prepareBeforeScreenshot();
+            await pagePO.demo.locator('tui-line-clamp').hover();
+
+            await expect.soft(page).toHaveScreenshot('legacy-02-2-line-clamp.png');
+        });
+
+        test('linesLimit=1 and only long word', async ({page}) => {
+            const pagePO = new TuiDocumentationPagePO(page);
+
+            await tuiGoto(
+                page,
+                `${DemoRoute.LineClamp}/API?content=The near incomprehensibility of the instructions made assembling the desk a nightmare.&linesLimit=1`,
+                {anchorPositioning: false},
+            );
+            await pagePO.prepareBeforeScreenshot();
+            await pagePO.demo.locator('tui-line-clamp').hover();
+
+            await expect.soft(page).toHaveScreenshot('legacy-03-2-line-clamp.png');
+        });
+
+        test('do not close after click in hint area', async ({page}) => {
+            await tuiGoto(page, DemoRoute.LineClamp, {anchorPositioning: false});
+
+            const example = new TuiDocumentationPagePO(page).getExample('#styles-change');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('tui-line-clamp').first().hover();
+
+            const hintElement = page.locator('tui-popups .hint');
+
+            await expect(hintElement).toBeInViewport();
+            await expect
+                .soft(example)
+                .toHaveScreenshot('legacy-06-1-line-clamp-basic.png');
+
+            await hintElement.click();
+
+            await expect(hintElement).toBeInViewport();
+        });
+    });
 });

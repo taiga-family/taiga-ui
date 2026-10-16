@@ -86,6 +86,17 @@
                         helper
                     }
                     @case (6) {
+                        Use
+                        <code>[tuiTimeFormat]</code>
+                        directive (or
+                        <code>tuiTimeFormatProvider</code>
+                        ) to customize time part: pass
+                        <code>dayPeriod</code>
+                        with a tuple of two locale-specific markers to switch to a 12-hour format and
+                        <code>separators</code>
+                        to replace the characters between time segments.
+                    }
+                    @case (7) {
                         @if (!isMobile) {
                             <div tuiNotification>
                                 Open this on a mobile device or enable emulation in DevTools and refresh the page to
@@ -97,11 +108,11 @@
                             icon.
                         </p>
                     }
-                    @case (7) {
+                    @case (8) {
                         Individual disabled dates still can be typed in manually or picked on mobile in native picker
                         but control will be automatically marked as invalid
                     }
-                    @case (8) {
+                    @case (9) {
                         Native mobile pickers have limited browser support for native datalist
                     }
                 }
@@ -137,6 +148,7 @@
                         [readonly]="controlDoc.readonly"
                         [timeMode]="timeMode"
                         [tuiDisabled]="controlDoc.disabled"
+                        [tuiTimeFormat]="{dayPeriod: timeFormatDoc.dayPeriod(), separators: timeFormatDoc.separators()}"
                     />
 
                     <tui-calendar *tuiDropdown />
@@ -172,6 +184,10 @@
             >
                 max date
             </tr>
+            <tbody
+                #timeFormatDoc
+                tuiDocTimeFormat
+            ></tbody>
             <tbody
                 #textfieldDoc
                 tuiDocTextfield

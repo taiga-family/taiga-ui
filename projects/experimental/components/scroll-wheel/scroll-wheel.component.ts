@@ -26,21 +26,7 @@ const OFFSET = 5_000_000;
 @Component({
     selector: 'tui-scroll-wheel',
     template: '<ng-container #vcr /><ng-content />',
-    styles: `
-        :host {
-            position: relative;
-            display: block;
-            overflow: hidden scroll;
-            overscroll-behavior: none;
-            scroll-snap-type: y mandatory;
-
-            &::before {
-                content: '';
-                display: block;
-                block-size: var(--t-offset, 1000000px);
-            }
-        }
-    `,
+    styleUrl: './scroll-wheel.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiScrollRef, WaIntersectionObserverDirective, WaIntersectionRoot],
     host: {

@@ -1,4 +1,5 @@
 export * from './common';
+export * from './element-objects';
 export * from './goto';
 export * from './hide-element';
 export * from './mock-date';

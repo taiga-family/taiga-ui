@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {computed, Directive, inject, input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -7,7 +7,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
 const STYLE = {
-    transform: 'scale(0.95)',
+    scale: '0.95',
     opacity: '0.6',
     background: 'rgba(146, 153, 162, 0.12)',
 } as const;
@@ -28,11 +28,10 @@ export class TuiTouchable {
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
 
-    protected readonly style = computed<'background' | 'opacity' | 'transform'>(
-        () => this.tuiTouchable() || 'transform',
-    );
-
-    public readonly tuiTouchable = input<'' | 'background' | 'opacity' | 'transform'>('');
+    /** @deprecated 'transform' is deprecated in favor of 'scale', remove 'transform' in v6 */
+    public readonly tuiTouchable = input<
+        '' | 'background' | 'opacity' | 'scale' | 'transform'
+    >('');
 
     constructor() {
         if (!this.isIOS) {
@@ -54,7 +53,7 @@ export class TuiTouchable {
                 takeUntilDestroyed(),
             )
             .subscribe(() => {
-                this.el.style.removeProperty('transform');
+                this.el.style.removeProperty('scale');
                 this.el.style.removeProperty('opacity');
                 this.el.style.removeProperty('background');
             });
@@ -68,12 +67,15 @@ export class TuiTouchable {
     }
 
     private onTouchStart(): void {
-        if (this.style() === 'transform') {
-            this.el.style.setProperty('transition', 'transform 0.2s');
+        const value = this.tuiTouchable() || 'scale';
+        const style = value === 'transform' ? 'scale' : value;
+
+        if (style === 'scale') {
+            this.el.style.setProperty('transition', 'scale 0.2s');
         } else {
             this.el.style.removeProperty('transition');
         }
 
-        this.el.style.setProperty(this.style(), STYLE[this.style()]);
+        this.el.style.setProperty(style, STYLE[style]);
     }
 }

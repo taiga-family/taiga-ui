@@ -29,8 +29,8 @@ describe('Matcher functions', () => {
             expect(defaultMatcher(item, search)).toBe(true);
         });
 
-        it('does not do the trimming', () => {
-            expect(defaultMatcher(item, `    ${search}  `)).toBe(false);
+        it('trims the search query', () => {
+            expect(defaultMatcher(item, `    ${search}  `)).toBe(true);
         });
 
         it('uses String if stringify function was not provided', () => {

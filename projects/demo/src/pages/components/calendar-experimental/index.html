@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        @for (example of ['Basic', 'Labels', 'Accessibility', 'Customization', 'Multiple']; track example) {
+        @for (example of ['Basic', 'Labels', 'Accessibility', 'Customization', 'Multiple', 'Mobile']; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
@@ -46,6 +46,22 @@
                     }
                     @case (4) {
                         You can display 1-3 months at the same time.
+                    }
+                    @case (5) {
+                        Using mobile version of the calendar inside
+                        <a
+                            tuiLink
+                            [routerLink]="routes.SheetDialog"
+                        >
+                            SheetDialog
+                        </a>
+                        and a fullscreen
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Dialog"
+                        >
+                            Dialog
+                        </a>
                     }
                 }
             </ng-template>

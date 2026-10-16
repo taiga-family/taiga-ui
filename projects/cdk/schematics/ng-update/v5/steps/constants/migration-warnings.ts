@@ -99,12 +99,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'TuiDataListDirective (ng-template[tuiDataList]) has been removed. Put the data list under the dropdown via the *tuiDropdown structural directive instead, e.g. <tui-data-list *tuiDropdown>...</tui-data-list> (or <tui-data-list-wrapper *tuiDropdown [items]="...">). See https://taiga-ui.dev/components/select',
     },
     {
-        name: 'TUI_HINT_PROVIDERS',
-        moduleSpecifier: '@taiga-ui/core',
-        message:
-            'TUI_HINT_PROVIDERS has been removed. Use the tuiGetHintProviders() function from @taiga-ui/core instead.',
-    },
-    {
         name: 'TuiInputPassword',
         moduleSpecifier: '@taiga-ui/kit',
         message:
@@ -813,5 +807,11 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         moduleSpecifier: '@taiga-ui/legacy',
         message:
             'TuiTableBarsHostComponent (<tui-table-bars-host>) has been removed. Use TuiActionBar (<tui-action-bar>) from @taiga-ui/kit instead — it has a different API and no host container is required. See https://taiga-ui.dev/components/actions-bar',
+    },
+    {
+        name: 'TUI_DIALOGS',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_DIALOGS removed. Track each dialog via the stream returned by TuiDialogService/TuiAlertService.open() and unsubscribe to close it, instead of reading a global registry.',
     },
 ];

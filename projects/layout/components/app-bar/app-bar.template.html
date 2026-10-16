@@ -2,20 +2,30 @@
     <tui-progressive-blur />
 }
 
-<div #side>
+<div
+    #side
+    class="t-side"
+>
     <div tuiAppBarButton>
-        <ng-content select="[tuiSlot='start']" />
+        <ng-content select="[tuiSlot='start']:not([tuiAppBarButton])" />
     </div>
+    <ng-content select="[tuiSlot='start'][tuiAppBarButton]" />
 </div>
 <div
+    #title
     tuiFade
     class="t-content"
-    [style.--t-sides.px]="width$ | async"
+    [class.t-content_start]="overflown()"
+    [style.--t-sides.px]="width()"
 >
     <ng-content />
 </div>
-<div #side>
+<div
+    #side
+    class="t-side"
+>
     <div tuiAppBarButton>
-        <ng-content select="[tuiSlot='end']" />
+        <ng-content select="[tuiSlot='end']:not([tuiAppBarButton])" />
     </div>
+    <ng-content select="[tuiSlot='end'][tuiAppBarButton]" />
 </div>

@@ -28,6 +28,16 @@
                         {{ tag }}
                     </span>
                 }
+                @if (version(); as version) {
+                    <span
+                        appearance="neutral"
+                        size="m"
+                        tuiBadge
+                        class="t-badge t-version"
+                    >
+                        v{{ version }}+
+                    </span>
+                }
             </h1>
             <p
                 tuiFade
@@ -68,6 +78,12 @@
                 }
             </p>
         </hgroup>
+    }
+
+    @if (actions) {
+        <div class="t-actions">
+            <ng-container *polymorpheusOutlet="actions" />
+        </div>
     }
 </header>
 <ng-content />

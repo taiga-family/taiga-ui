@@ -617,7 +617,8 @@ exports[`ng-update start/end instead of left/right replaces values for [tuiHeade
                 <h5 [tuiHeader]="'h5'"></h5>
                 <h6 [tuiHeader]="'h6'"></h6>
                 <p [tuiHeader]="'body-l'"></p>
-                <p [tuiHeader]="headerSize"></p>
+                <!-- TODO: (Taiga UI migration) \`tuiHeader\` values changed in v5 from size tokens to typography tokens (xxl->h1, xl->h2, l->h3, m->h4, s->h5, xs->h6, xxs->body-l). This dynamic binding could not be migrated automatically — if it resolves to an old size token, update it to the v5 token manually. See https://taiga-ui.dev/components/header -->
+<p [tuiHeader]="headerSize"></p>
             ",
 }
 `;

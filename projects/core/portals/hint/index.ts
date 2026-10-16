@@ -2,6 +2,8 @@ export * from './hint';
 export * from './hint.component';
 export * from './hint.directive';
 export * from './hint.providers';
+export * from './hint-anchor.directive';
+export * from './hint-anchored.directive';
 export * from './hint-describe.directive';
 export * from './hint-driver.directive';
 export * from './hint-host.directive';

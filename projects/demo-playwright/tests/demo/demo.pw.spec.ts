@@ -2,6 +2,7 @@ import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/u
 import {expect, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
+import {tuiGetContrastExclusions} from '../../utils/contrast-exclusions';
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
@@ -43,6 +44,10 @@ test.describe('Demo', () => {
                 const preventFlaky = path.includes('charts');
 
                 await page.waitForTimeout(preventFlaky ? 1000 : 150);
+                // JS-driven SVG updates are not tracked by toHaveScreenshot.
+                await expect(
+                    example.locator('path[automation-id="tui-pie-chart__segment"][d=""]'),
+                ).toHaveCount(0);
 
                 const makeName = (mode: string): string[] => [
                     path.replace('/', '').replaceAll('/', '-'),
@@ -76,7 +81,10 @@ test.describe('Demo', () => {
 
             await checkA11y(
                 page,
-                'tui-doc-example > .t-example',
+                {
+                    include: [['tui-doc-example > .t-example']],
+                    exclude: tuiGetContrastExclusions(path),
+                },
                 {detailedReport: true},
                 false,
                 'v2',

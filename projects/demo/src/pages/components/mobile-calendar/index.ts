@@ -13,6 +13,7 @@ import {
     TuiDay,
     type TuiDayRange,
 } from '@taiga-ui/cdk';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {type Observable} from 'rxjs';
 
 @Component({
@@ -52,6 +53,12 @@ export default class Page {
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
+
+    protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
+        ({day}) => (day % 2 === 0 ? ['var(--tui-status-positive)'] : []),
+    ];
+
+    protected markerHandler: TuiMarkerHandler | null = null;
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;

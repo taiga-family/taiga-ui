@@ -7,6 +7,7 @@ import {
     maskitoParseTime,
     maskitoRemoveOnBlurPlugin,
     maskitoSelectionChangeHandler,
+    maskitoStringifyTime,
     maskitoTime,
     type MaskitoTimeMode,
     type MaskitoTimeParams,
@@ -30,10 +31,11 @@ import {
     TuiDropdownOpen,
 } from '@taiga-ui/core/portals/dropdown';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_FORMAT} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
+import {tuiInjectTimeFiller} from './time-filler';
 
 @Directive({
     selector: 'input[tuiInputTime]',
@@ -60,16 +62,16 @@ export class TuiInputTimeDirective
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly open = inject(TuiDropdownOpen).open;
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
-    private readonly fillers = inject(TUI_TIME_TEXTS);
+    private readonly format = inject(TUI_TIME_FORMAT);
+    private readonly timeFiller = tuiInjectTimeFiller(computed(() => this.timeMode()));
 
     private readonly params = computed<Required<MaskitoTimeParams>>(() => ({
         ...this.options,
+        ...this.format(),
         mode: this.timeMode(),
         step: this.interactive() && !this.dropdown.content() ? 1 : 0,
         prefix: this.prefix(),
         postfix: this.postfix(),
-        separators: [],
-        dayPeriod: ['', ''],
         locale: '', // TODO: add to public API
     }));
 
@@ -82,9 +84,7 @@ export class TuiInputTimeDirective
     protected readonly filler = tuiDirectiveBinding(
         TuiTextfieldComponent,
         'filler',
-        computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
-            this.postfix() ? '' : `${this.prefix()}${filler}`,
-        ),
+        computed(() => (this.postfix() ? '' : `${this.prefix()}${this.timeFiller()}`)),
         {},
     );
 
@@ -127,7 +127,7 @@ export class TuiInputTimeDirective
             .replace(this.prefix(), '')
             .replace(this.postfix(), '');
 
-        const time = value.length === this.timeMode().length ? this.parse(value) : null;
+        const time = this.isComplete(value) ? this.parse(value) : null;
 
         const newValue =
             this.accept().length && time
@@ -170,10 +170,16 @@ export class TuiInputTimeDirective
     private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
         const options = maskitoTime(params);
         const {mode, prefix, postfix, dayPeriod} = params;
+        const timeLength = maskitoStringifyTime(0, {
+            ...params,
+            // TODO(v6): delete `replace()`
+            mode: mode.replace(' AA', '') as MaskitoTimeMode,
+            dayPeriod: ['', ''],
+        }).length;
 
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
-                element.selectionStart! >= mode.indexOf(' AA') ? 'text' : 'numeric';
+                element.selectionStart! >= timeLength ? 'text' : 'numeric';
         });
 
         const caretGuardPlugin = maskitoCaretGuard((value) => [
@@ -204,11 +210,19 @@ export class TuiInputTimeDirective
         );
     }
 
+    private isComplete(value: string): boolean {
+        return value.length === maskitoStringifyTime(0, this.params()).length;
+    }
+
     private parse(value: string): TuiTime {
         return TuiTime.fromAbsoluteMilliseconds(maskitoParseTime(value, this.params()));
     }
 
     private stringify(time: TuiTime | null): string {
-        return `${this.prefix()}${time?.toString(this.timeMode()) || ''}${this.postfix()}`;
+        const value = time
+            ? maskitoStringifyTime(time.toAbsoluteMilliseconds(), this.params())
+            : '';
+
+        return `${this.prefix()}${value}${this.postfix()}`;
     }
 }

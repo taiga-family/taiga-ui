@@ -7,7 +7,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFlat, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
-    TuiSelectLike,
     TuiTextfield,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
@@ -26,9 +25,11 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     templateUrl: './multi-select-native.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsOptionContent(TuiMultiSelectOption)],
-    hostDirectives: [TuiInputChipDirective, TuiSelectLike],
+    hostDirectives: [TuiInputChipDirective],
     host: {
+        autocomplete: 'off',
         multiple: '',
+        tuiSelectLike: '', // selector for styles
         '[size]': 'mobile ? 1 : 2',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',

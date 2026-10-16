@@ -3,13 +3,14 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
+import {TuiDocTimeFormat} from '@demo/components/time-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
 import {TuiInput} from '@taiga-ui/core';
-import {TuiInputTime} from '@taiga-ui/kit';
+import {TuiInputTime, TuiTimeFormat} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -18,8 +19,10 @@ import {TuiInputTime} from '@taiga-ui/kit';
         TuiDocAppearance,
         TuiDocControl,
         TuiDocTextfield,
+        TuiDocTimeFormat,
         TuiInput,
         TuiInputTime,
+        TuiTimeFormat,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -30,7 +33,8 @@ export default class PageComponent {
 
     protected readonly examples = [
         'Mode',
-        '12-hour format with AM/PM',
+        '12-hour format',
+        'Separators',
         'Form control validation',
         'Options',
         'Textfield customization',
@@ -43,11 +47,11 @@ export default class PageComponent {
 
     protected readonly modeVariants = [
         'HH:MM',
-        'HH:MM AA',
+        'HH:MM AA', // TODO(v6): delete
         'HH:MM:SS',
-        'HH:MM:SS AA',
+        'HH:MM:SS AA', // TODO(v6): delete
         'HH:MM:SS.MSS',
-        'HH:MM:SS.MSS AA',
+        'HH:MM:SS.MSS AA', // TODO(v6): delete
         'MM:SS',
         'MM:SS.MSS',
         'SS.MSS',

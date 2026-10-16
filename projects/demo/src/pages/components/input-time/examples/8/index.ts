@@ -1,34 +1,55 @@
-import {JsonPipe} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {maskitoParseTime} from '@maskito/kit';
-import {TuiTime} from '@taiga-ui/cdk';
-import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
+import {type TuiBooleanHandler, TuiTime} from '@taiga-ui/cdk';
+import {
+    type TuiFilterByInputOptions,
+    TuiFilterByInputPipe,
+    tuiItemsHandlersProvider,
+} from '@taiga-ui/core';
+import {tuiCreateTimePeriods, TuiDataListWrapper, TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, JsonPipe, TuiInputTime],
+    imports: [FormsModule, TuiDataListWrapper, TuiFilterByInputPipe, TuiInputTime],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputTimeOptionsProvider({
-            valueTransformer: {
-                fromControlValue(controlValue: string): TuiTime | null {
-                    return controlValue
-                        ? TuiTime.fromAbsoluteMilliseconds(
-                              maskitoParseTime(controlValue, {mode: 'HH:MM'}),
-                          )
-                        : null;
-                },
-                toControlValue(time: TuiTime | null): string {
-                    return time ? time.toString() : '';
-                },
-            },
+        /**
+         * You can also use input props of `Textfield`
+         * (they will have more priority):
+         * ```html
+         * <tui-textfield
+         *     [identityMatcher]="..."
+         *     [stringify]="..."
+         * />
+         * ```
+         */
+        tuiItemsHandlersProvider({
+            stringify: signal((x: TuiTime) => x.toString('HH:MM')),
+            identityMatcher: signal(
+                (a: TuiTime | null, b: TuiTime | null) => a?.valueOf() === b?.valueOf(),
+            ),
+            // disabledItemHandler: signal((x: TuiTime) => x.hours > 18),
         }),
     ],
 })
 export default class Example {
-    protected value = '';
+    protected value: TuiTime | null = null;
+
+    protected items: readonly TuiTime[] = [
+        new TuiTime(16, 20),
+        new TuiTime(16, 45),
+        new TuiTime(17, 0),
+        ...tuiCreateTimePeriods(18, 20, [0, 15, 30, 45]),
+    ];
+
+    protected readonly disabledItemHandler: TuiBooleanHandler<TuiTime> = (x) =>
+        x?.valueOf() === this.items[0]!.valueOf();
+
+    protected readonly filter: TuiFilterByInputOptions<TuiTime>['filter'] = (
+        items,
+        query,
+    ) => items.filter((time) => time.toString('HH:MM').startsWith(query));
 }

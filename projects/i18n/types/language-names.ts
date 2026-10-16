@@ -18,6 +18,7 @@ export type TuiLanguageName =
     | 'portuguese'
     | 'russian'
     | 'spanish'
+    | 'tajik'
     | 'turkish'
     | 'ukrainian'
     | 'vietnamese';

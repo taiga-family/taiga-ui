@@ -38,7 +38,6 @@ import {createOutputSpy} from 'cypress/angular';
                         <tui-data-list>
                             <button
                                 *cdkVirtualFor="let item of items"
-                                new
                                 tuiOption
                                 type="button"
                                 [value]="item"

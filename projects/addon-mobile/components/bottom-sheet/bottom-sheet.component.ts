@@ -22,7 +22,7 @@ import {TUI_BOTTOM_SHEET_OPTIONS} from './bottom-sheet.options';
         '[class._bar]': 'bar()',
         '[style.--t-initial]': 'stops()[0]',
         '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
-        '(resize)': 'onScroll()',
+        '(resize)': 'onResize()',
         '(scroll.zoneless)': 'onScroll()',
     },
 })
@@ -34,6 +34,11 @@ export class TuiBottomSheet {
 
     public readonly stops = input(this.options.stops);
     public readonly bar = input(this.options.bar);
+
+    protected onResize(): void {
+        this.el.style.removeProperty('--t-height');
+        this.onScroll();
+    }
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;

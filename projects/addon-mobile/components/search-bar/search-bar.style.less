@@ -21,6 +21,20 @@
     min-inline-size: 0;
 }
 
+.t-wrapper::before {
+    .fullsize();
+
+    content: '';
+    z-index: 1;
+    inset-inline-start: 0.625rem;
+    inline-size: 1.5rem;
+    pointer-events: none;
+    background: var(--tui-text-secondary);
+    mask-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M4%2010.4714C4%206.90319%206.93142%204%2010.5343%204C14.1372%204%2017.0686%206.90319%2017.0686%2010.4714C17.0686%2011.9473%2016.5691%2013.3016%2015.7257%2014.3882L19.7298%2018.3781C19.9017%2018.5484%2020%2018.7836%2020%2019.0431C20%2019.5864%2019.6151%2020%2019.0583%2020C18.7963%2020%2018.5507%2019.9108%2018.3623%2019.7243L14.3337%2015.7263C13.261%2016.4886%2011.9591%2016.9427%2010.5343%2016.9427C6.93142%2016.9427%204%2014.0395%204%2010.4714ZM5.4002%2010.4714C5.4002%2013.2772%207.70113%2015.556%2010.5343%2015.556C13.3675%2015.556%2015.6684%2013.2772%2015.6684%2010.4714C15.6684%207.66548%2013.3675%205.38672%2010.5343%205.38672C7.70113%205.38672%205.4002%207.66548%205.4002%2010.4714Z%22%20fill%3D%22black%22%2F%3E%3C%2Fsvg%3E');
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
 :host:not(:focus-within) ::ng-deep [tuiButtonX],
 :host-context([data-platform='ios']):not([data-appearance='floating']) ::ng-deep [tuiButtonX] {
     opacity: 0;
@@ -58,11 +72,11 @@
             box-sizing: border-box;
             border-radius: 100%;
             color: var(--tui-text-primary);
-            transition-property: margin, opacity, visibility, transform;
+            transition-property: margin, opacity, visibility, scale;
             transition-timing-function: ease, ease, ease, var(--tui-curve-expressive-entrance);
 
             &:active {
-                transform: scale(1.25);
+                scale: 1.25;
                 filter: brightness(3);
             }
 
@@ -95,8 +109,8 @@
 
 :host-context([data-platform='android']) {
     // TODO: Replace with :has([tuiButton]) when supported
-    &:focus-within .t-wrapper:not(:last-child) ::ng-deep [tuiSearchBar] {
-        background-image: none;
+    &:focus-within .t-wrapper:not(:last-child)::before {
+        display: none;
     }
 
     ::ng-deep [tuiButtonX] {

@@ -18,11 +18,11 @@ import {CustomPortalService} from './service';
         :host {
             position: fixed;
             display: flex;
+            inset-block-start: env(safe-area-inset-top);
             flex-direction: column;
             align-items: center;
-            top: env(safe-area-inset-top);
-            height: 0;
-            width: 100%;
+            block-size: 0;
+            inline-size: 100%;
         }
     `,
     changeDetection,

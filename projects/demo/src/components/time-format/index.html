@@ -1,0 +1,46 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>TuiTimeFormat</strong>
+            <div tuiSubtitle>
+                <code>[tuiTimeFormat]="&#123;dayPeriod, separators&#125;"</code>
+            </div>
+        </span>
+    </td>
+</tr>
+
+<tr
+    name="[dayPeriod]"
+    tuiDocAPIItem
+    type="readonly [string, string]"
+    [items]="dayPeriodVariants"
+    [(value)]="dayPeriod"
+>
+    Tuple of two locale-specific day-period markers (AM-marker first, PM-marker second). When both are non-empty, the
+    mask switches to 12-hour format and appends the selected marker to the time.
+    <p class="tui-space_bottom-0">
+        Default:
+        <code>['', '']</code>
+        (24-hour format)
+    </p>
+</tr>
+
+<tr
+    name="[separators]"
+    tuiDocAPIItem
+    type="readonly string[]"
+    [items]="separatorsVariants"
+    [(value)]="separators"
+>
+    Separators between time segments (from left to right). If there are fewer separators than positions in the time
+    mode, the remaining positions use the canonical separators of the mode (
+    <code>':'</code>
+    or
+    <code>'.'</code>
+    ).
+    <p class="tui-space_bottom-0">
+        Default:
+        <code>[]</code>
+        (canonical separators of the mode)
+    </p>
+</tr>

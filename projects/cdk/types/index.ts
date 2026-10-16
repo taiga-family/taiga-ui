@@ -3,3 +3,4 @@ export type * from './handler';
 export type * from './mapper';
 export type * from './matcher';
 export type * from './rounding';
+export type * from './signal-validation-error';

@@ -1,31 +1,31 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDropdownSheet, TuiMobileCalendarDropdown} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiInputDateTime} from '@taiga-ui/kit';
-
-const TODAY = TuiDay.currentLocal();
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiInputDateTime],
+    imports: [
+        ReactiveFormsModule,
+        TuiDropdownSheet,
+        TuiForm,
+        TuiInputDateTime,
+        TuiMobileCalendarDropdown,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: [TuiDay, TuiTime | null] | null = null;
-
-    protected readonly min = [
-        new TuiDay(TODAY.year, TODAY.month, 1),
-        new TuiTime(0, 0),
-    ] as const;
-
-    protected readonly max = [
-        this.min[0].append({month: 1, day: -1}),
-        new TuiTime(23, 59),
-    ] as const;
-
-    protected readonly handler = ([day]: [TuiDay, TuiTime | null]): boolean =>
-        day.daySame(TODAY);
+    protected readonly form = new FormGroup({
+        native: new FormControl([TuiDay.currentLocal(), new TuiTime(12, 34, 56, 789)]),
+        mobile: new FormControl([TuiDay.currentLocal().append({day: 1})]),
+        fullscreen: new FormControl([
+            TuiDay.currentLocal().append({day: 2}),
+            new TuiTime(23, 59),
+        ]),
+    });
 }

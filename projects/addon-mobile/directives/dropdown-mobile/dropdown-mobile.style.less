@@ -35,12 +35,18 @@ tui-dropdown-mobile:where(*&) {
         inset-block-start: 0;
         block-size: 100%;
         overflow: auto;
-        padding: 0 1rem;
+        padding: 0 var(--tui-padding-inline);
         touch-action: pan-y !important;
+
+        --tui-padding-inline: 1rem;
 
         tui-data-list {
             padding: 0;
-            margin: 0 -0.5rem;
+
+            [tuiOption] {
+                box-sizing: content-box;
+                border-radius: 0;
+            }
         }
     }
 
@@ -49,10 +55,6 @@ tui-dropdown-mobile:where(*&) {
         display: inline-flex;
         inset-inline-end: 1rem;
         inset-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
-    }
-
-    tui-data-list [tuiOption] {
-        box-sizing: content-box;
     }
 }
 

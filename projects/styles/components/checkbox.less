@@ -37,9 +37,9 @@
         inline-size: 100%;
         font-size: 1rem;
         mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>');
-        transform: scale(0);
+        scale: 0;
         transition:
-            transform var(--tui-duration) ease-in-out,
+            scale var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
     }
 
@@ -56,9 +56,9 @@
     &:indeterminate {
         &::before {
             mask-image: var(--t-icon-start);
-            transform: scale(1);
+            scale: 1;
             transition:
-                transform var(--tui-duration) ease-in-out,
+                scale var(--tui-duration) ease-in-out,
                 mask 0s ease-in-out;
             transition-duration: inherit;
         }

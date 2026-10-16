@@ -1,4 +1,4 @@
-import {existsSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 
 import {expect, type Page} from '@playwright/test';
 
@@ -8,6 +8,22 @@ import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
 
+interface FontStub {
+    filename: string;
+    contentType: string;
+}
+
+const FONT_MANIFEST = `${__dirname}/../stubs/fonts.json`;
+let fontStubs: Record<string, FontStub> | null = null;
+
+function getFontStub(url: string): FontStub | undefined {
+    fontStubs ??= existsSync(FONT_MANIFEST)
+        ? (JSON.parse(readFileSync(FONT_MANIFEST, 'utf8')) as Record<string, FontStub>)
+        : {};
+
+    return fontStubs[url];
+}
+
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date | null;
     language?: string;
@@ -15,6 +31,11 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
     hideText?: boolean;
+    /**
+     * Pass `false` to emulate browsers without CSS anchor positioning
+     * and cover the legacy JS positioning path
+     */
+    anchorPositioning?: boolean;
 }
 
 export async function tuiGoto(
@@ -26,6 +47,7 @@ export async function tuiGoto(
         enableNightMode = false,
         hideVersionManager = false,
         hideText = !!process.env.PW_HIDE_TEXT,
+        anchorPositioning = true,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -50,6 +72,22 @@ export async function tuiGoto(
         );
     }
 
+    if (!anchorPositioning) {
+        await page.addInitScript(() => {
+            const supports = globalThis.CSS.supports.bind(globalThis.CSS);
+
+            globalThis.CSS.supports = (property: string, value?: string): boolean => {
+                if (property.includes('anchor')) {
+                    return false;
+                }
+
+                return value === undefined
+                    ? supports(property)
+                    : supports(property, value);
+            };
+        });
+    }
+
     if (date) {
         await tuiMockDate(page, date);
     }
@@ -63,8 +101,18 @@ export async function tuiGoto(
             }),
     );
 
-    await page.route(/\.(woff2?|ttf)$/, async (route) => {
-        const filename = new URL(route.request().url()).pathname.split('/').pop() ?? '';
+    await page.route(/fonts\.gstatic\.com|\.(woff2?|ttf)$/, async (route) => {
+        const url = route.request().url();
+        const stub = getFontStub(url);
+
+        if (stub) {
+            return route.fulfill({
+                path: `${__dirname}/../stubs/${stub.filename}`,
+                contentType: stub.contentType,
+            });
+        }
+
+        const filename = new URL(url).pathname.split('/').pop() ?? '';
         const filePath = `${__dirname}/../stubs/${filename}`;
 
         return existsSync(filePath) ? route.fulfill({path: filePath}) : route.continue();
@@ -116,6 +164,31 @@ export async function tuiGoto(
 
             * {
               font-family: 'IgnoreTextFont', sans-serif !important;
+            }
+        `,
+        });
+    }
+
+    if (!anchorPositioning) {
+        /**
+         * The CSS.supports override above only affects JavaScript calls.
+         * CSS @supports rules are evaluated by the browser's CSS engine at parse time.
+         * This stylesheet neutralizes anchor-positioning CSS properties with !important
+         * to ensure the legacy JS positioning path is genuinely tested.
+         */
+        await page.addStyleTag({
+            content: `
+            *, *::before, *::after {
+              anchor-name: none !important;
+              position-anchor: none !important;
+              position-visibility: always !important;
+              position-try-fallbacks: none !important;
+            }
+
+            /* Reset @supports (anchor-name: ...) block overrides for scrollbar */
+            .t-scrollbar, tui-scroll-controls {
+              position: sticky !important;
+              inset: 0 !important;
             }
         `,
         });

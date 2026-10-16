@@ -95,6 +95,8 @@ tui-modal:where(*&) {
         block-size: 100%;
         overflow: auto;
         overscroll-behavior: none;
+        // stylelint-disable-next-line plugin/use-baseline -- graceful degradation
+        scrollbar-gutter: stable both-edges;
 
         > .t-scrollbars {
             position: fixed;
@@ -113,5 +115,10 @@ tui-modal:where(*&) {
         > .tui-leave + .t-scrollbars .t-bar_vertical {
             display: none;
         }
+    }
+
+    > [tuiScrollRef]:has(> .tui-enter),
+    > [tuiScrollRef]:has(> .tui-leave) {
+        .scrollbar-hidden();
     }
 }

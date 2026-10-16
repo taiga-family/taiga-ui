@@ -1,5 +1,4 @@
-@if (nativeScrollbar) {
-} @else {
+@if (!hidden) {
     @if (refresh$ | async; as bars) {
         @if (bars[0]) {
             <div

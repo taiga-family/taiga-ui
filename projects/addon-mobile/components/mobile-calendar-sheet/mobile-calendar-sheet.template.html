@@ -20,6 +20,20 @@
                     (click)="dayClick.emit(item)"
                 >
                     {{ item.day }}
+                    @if (toMarkers(item, itemIsToday(item), getItemRange(item), markerHandler()); as markers) {
+                        <div class="t-dots">
+                            <div
+                                class="t-dot"
+                                [style.background]="markers[0]"
+                            ></div>
+                            @if (markers.length > 1) {
+                                <div
+                                    class="t-dot"
+                                    [style.background]="markers[1] || ''"
+                                ></div>
+                            }
+                        </div>
+                    }
                 </div>
             }
         }

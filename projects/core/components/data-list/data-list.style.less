@@ -12,7 +12,7 @@ tui-data-list:where(*&) {
     &[data-size='s'] [tuiOption] {
         min-block-size: 0;
         font: var(--tui-typography-ui-s);
-        padding: 0.375rem;
+        padding: 0.375rem ~'max(var(--tui-padding-inline, 0px), 0.375rem)';
 
         &::before,
         &::after {
@@ -23,7 +23,7 @@ tui-data-list:where(*&) {
     &[data-size='m'] [tuiOption] {
         min-block-size: 2.25rem;
         font: var(--tui-typography-ui-s);
-        padding: 0.5rem 0.375rem;
+        padding: 0.5rem ~'max(var(--tui-padding-inline, 0px), 0.375rem)';
     }
 
     &[data-size='l'] {
@@ -31,8 +31,9 @@ tui-data-list:where(*&) {
         padding: 0.5rem;
 
         [tuiOption] {
+            min-block-size: 2.5rem;
             font: var(--tui-typography-ui-m);
-            padding-inline: 0.5rem;
+            padding: 0.5rem ~'max(var(--tui-padding-inline, 0px), 0.5rem)';
         }
 
         hr {
@@ -88,6 +89,7 @@ tui-data-list:where(*&) {
         block-size: 0.75rem;
         border: 0.375rem solid transparent;
         border-block: 0;
+        flex-shrink: 0;
 
         & + hr,
         &:first-child,

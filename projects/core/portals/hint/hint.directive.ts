@@ -20,6 +20,7 @@ import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymor
 import {map, skip} from 'rxjs';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
+import {TuiHintAnchor} from './hint-anchor.directive';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
@@ -36,6 +37,7 @@ import {TuiHintPosition} from './hint-position.directive';
         },
     ],
     hostDirectives: [
+        TuiHintAnchor,
         TuiHintDriver,
         {
             directive: TuiHintHover,
@@ -56,7 +58,6 @@ export class TuiHintDirective<C>
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
-
     public readonly appearance = input(inject(TUI_HINT_OPTIONS).appearance, {
         alias: 'tuiHintAppearance',
     });

@@ -11,7 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
     template: '',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './row.style.less';
+            @import '@taiga-ui/styles/components/card-row.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

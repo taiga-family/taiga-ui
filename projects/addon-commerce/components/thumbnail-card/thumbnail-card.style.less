@@ -1,7 +1,7 @@
 @import '@taiga-ui/styles/utils';
 
 :host {
-    .transition(transform);
+    .transition(~'scale, transform');
 
     position: relative;
     display: inline-block;
@@ -109,12 +109,12 @@
         font-size: 0.875rem;
 
         &::before {
-            transform: scale(0.5);
+            scale: 0.5;
         }
     }
 
     :host[data-size='l'] &::before {
-        transform: scale(0.625);
+        scale: 0.625;
     }
 
     &::after {

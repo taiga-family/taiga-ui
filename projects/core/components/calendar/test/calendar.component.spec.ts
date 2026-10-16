@@ -145,6 +145,20 @@ describe('Calendar', () => {
         expect(testComponent.dayClick).toHaveBeenCalledWith(day);
     });
 
+    it('updates value before day click can destroy calendar', () => {
+        const day = new TuiDay(2025, 0, 1);
+        let valueOnDayClick = component.value();
+
+        testComponent.dayClick = () => {
+            valueOnDayClick = component.value();
+            fixture.destroy();
+        };
+
+        component.onDayClick(day);
+
+        expect(valueOnDayClick).toBe(day);
+    });
+
     it('right button should not toggle after max value', async () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#max-case'}),

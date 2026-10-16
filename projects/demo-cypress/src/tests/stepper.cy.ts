@@ -1,35 +1,38 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {TuiStepper} from '@taiga-ui/kit';
 import {TuiCard} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiCard, TuiStepper],
+    imports: [TuiCard, TuiRoot, TuiStepper],
     template: `
-        <div tuiCardLarge>
-            <tui-stepper
-                orientation="vertical"
-                [activeItemIndex]="1"
-            >
-                <button
-                    size="s"
-                    tuiStep
+        <tui-root>
+            <div tuiCardLarge>
+                <tui-stepper
+                    orientation="vertical"
+                    [activeItemIndex]="1"
                 >
-                    Small
-                </button>
-                <button
-                    size="m"
-                    tuiStep
-                >
-                    Medium
-                </button>
-                <button
-                    size="l"
-                    tuiStep
-                >
-                    Large
-                </button>
-            </tui-stepper>
-        </div>
+                    <button
+                        size="s"
+                        tuiStep
+                    >
+                        Small
+                    </button>
+                    <button
+                        size="m"
+                        tuiStep
+                    >
+                        Medium
+                    </button>
+                    <button
+                        size="l"
+                        tuiStep
+                    >
+                        Large
+                    </button>
+                </tui-stepper>
+            </div>
+        </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

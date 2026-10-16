@@ -1,3 +1,4 @@
+export * from './actions';
 export * from './code-actions';
 export * from './code-editor';
 export * from './default-tabs';
@@ -13,3 +14,4 @@ export * from './source-code';
 export * from './title';
 export * from './type-reference-handler';
 export * from './url-state-handler';
+export * from './version';

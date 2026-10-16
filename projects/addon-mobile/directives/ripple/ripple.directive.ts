@@ -16,7 +16,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {first, fromEvent, merge, race, switchMap, tap} from 'rxjs';
 
-const TO = [{transform: 'scale(0)', opacity: '0.12'}, {opacity: '0.12'}];
+const TO = [{scale: '0', opacity: '0.12'}, {opacity: '0.12'}];
 const FROM = [{opacity: '0.12'}, {opacity: '0'}];
 
 @Component({

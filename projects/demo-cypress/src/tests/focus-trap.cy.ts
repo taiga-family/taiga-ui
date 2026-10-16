@@ -14,6 +14,13 @@ describe('FocusTrap', () => {
             >
                 Increase counter
             </button>
+            <button
+                id="outside"
+                type="button"
+                (focus)="i = -1"
+            >
+                Outside focus trap
+            </button>
 
             @if (i % 2 === 0) {
                 <div
@@ -86,6 +93,12 @@ describe('FocusTrap', () => {
         cy.get('.even button').click();
         cy.get('.even').should('not.exist');
         cy.get('#increase').should('be.focused');
+    });
+
+    it('does not restore focus on destruction if focus has moved elsewhere', () => {
+        cy.get('#outside').focus();
+        cy.get('.even').should('not.exist');
+        cy.get('#outside').should('be.focused');
     });
 
     it('synchronous closing already opened focus trap and opening another one dont cause race condition', () => {

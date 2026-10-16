@@ -3,6 +3,7 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiTextareaOptions {
+    // TODO(v6): rename to `minRows` / `maxRows`
     min: number;
     max: number;
     content: PolymorpheusContent<TuiContext<string>>;

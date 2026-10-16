@@ -1,0 +1,18 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    .scrollbar-hidden();
+
+    position: relative;
+    display: block;
+    overflow: hidden scroll;
+    overscroll-behavior: none;
+    scroll-snap-type: y mandatory;
+
+    &::before {
+        content: '';
+        display: block;
+        /* stylelint-disable-next-line rem-over-px/rem-over-px -- intentional pixel sentinel */
+        block-size: var(--t-offset, 1000000px);
+    }
+}

@@ -79,7 +79,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         waIntersectionThreshold: '1',
         '[attr.id]': 'resolvedId()',
         '[class._fullsize]': 'fullsize()',
-        '(waIntersectionObservee)': 'onIntersection()',
+        '(waIntersectionObservee)': 'onIntersection($event)',
     },
 })
 export class TuiDocExample implements OnChanges {
@@ -173,9 +173,11 @@ export class TuiDocExample implements OnChanges {
             .finally(() => this.loading.set(false));
     }
 
-    protected onIntersection(): void {
-        this.doc.dispatchEvent(
-            new CustomEvent('tui-example', {detail: this.resolvedId()}),
-        );
+    protected onIntersection(entries: readonly IntersectionObserverEntry[]): void {
+        const entry = entries[entries.length - 1];
+
+        if (entry) {
+            this.doc.dispatchEvent(new CustomEvent('tui-example', {detail: entry}));
+        }
     }
 }

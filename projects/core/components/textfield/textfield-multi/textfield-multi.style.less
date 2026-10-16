@@ -2,12 +2,34 @@
 
 tui-textfield[multi][multi]:where(*&) {
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow: auto;
     align-items: stretch;
     cursor: text;
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
     overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
+
+    &._horizontal {
+        // stylelint-disable-next-line declaration-property-value-disallowed-list -- not for Firefox
+        min-block-size: fit-content;
+
+        .firefox-only({
+            min-block-size: var(--t-height);
+        });
+
+        > .t-items {
+            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
+            flex-wrap: nowrap;
+
+            [dir='rtl'] & {
+                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
+            }
+
+            > .t-input {
+                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
+            }
+        }
+    }
 
     &::before,
     &::after {
@@ -54,19 +76,6 @@ tui-textfield[multi][multi]:where(*&) {
             content: '';
             min-inline-size: 1px;
             min-block-size: 1px;
-        }
-
-        &_horizontal {
-            clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem));
-            flex-wrap: nowrap;
-
-            [dir='rtl'] & {
-                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.5rem) 0 0);
-            }
-
-            > .t-input {
-                padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding) + 0.25rem);
-            }
         }
 
         > .t-input {

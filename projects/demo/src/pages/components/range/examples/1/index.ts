@@ -7,7 +7,7 @@ import {TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiRange],
     templateUrl: './index.html',
-    styles: ':host {display: flex; flex-direction: column;}',
+    styles: ':host { display: flex; flex-direction: column; }',
     encapsulation,
     changeDetection,
 })

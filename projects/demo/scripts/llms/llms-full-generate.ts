@@ -12,11 +12,15 @@ import {
     getComponentSourceFiles,
     getImportExamples,
     getMarkdownFiles,
+    getPageVersions,
+    getTaigaMajor,
     getUsageExamples,
     processMarkdownFile,
     readIndexHtml,
+    resolveComponentVersion,
     setFoldersToScan,
     setPagesPath,
+    type VersionInfo,
 } from './utils';
 import {getConfigValue, loadConfig, shouldIncludeSection} from './utils/config';
 import {escapeHTML} from './utils/escaped-html';
@@ -470,6 +474,7 @@ async function buildComponentBlock(
     content: string,
     cliOptions: CliOptions,
     llmsFull: LlmsFullConfig,
+    versionInfo: VersionInfo,
 ): Promise<string[] | null> {
     const headerData = getComponentHeader(content) as ComponentHeader;
 
@@ -486,6 +491,16 @@ async function buildComponentBlock(
         `- **Package**: \`${headerData.package}\``,
         `- **Type**: ${headerData.type}`,
     );
+
+    const version = resolveComponentVersion(
+        headerData.header ? versionInfo.pages.get(headerData.header) : undefined,
+        headerData.package,
+        versionInfo.major,
+    );
+
+    if (version) {
+        block.push(`- **Version**: ${version}`);
+    }
 
     const description = getComponentDescription(content);
 
@@ -660,6 +675,9 @@ async function main(): Promise<void> {
 
     console.info(`Total component folders found: ${allFolders.length}`);
 
+    const pageVersions = await getPageVersions();
+    const taigaMajor = await getTaigaMajor();
+    const versionInfo: VersionInfo = {pages: pageVersions, major: taigaMajor};
     const stats: ProcessingStats = {
         included: 0,
         skippedDeprecated: 0,
@@ -716,6 +734,7 @@ async function main(): Promise<void> {
             content,
             cliOptions,
             config.llmsFull,
+            versionInfo,
         );
 
         if (block) {

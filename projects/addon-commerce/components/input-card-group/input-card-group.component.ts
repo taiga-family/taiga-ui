@@ -104,7 +104,7 @@ export interface TuiCard {
         '[attr.data-size]': 'textfield.size()',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
-        '(tuiActiveZoneChange)': 'onTouched()',
+        '(tuiActiveZoneChange)': '!$event && onTouched()',
     },
 })
 export class TuiInputCardGroup

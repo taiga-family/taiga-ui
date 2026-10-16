@@ -15,5 +15,6 @@ export default class Page {
         'Automatic',
         'Dynamic height',
         'Multiple',
+        'Scroll-driven animation',
     ];
 }

@@ -28,6 +28,7 @@ import {createOutputSpy} from 'cypress/angular';
                 <input
                     tuiInputPhoneInternational
                     [countries]="countries()"
+                    [countrySearch]="countrySearch()"
                     [formControl]="control()"
                     [(countryIsoCode)]="countryIsoCode"
                     (countryIsoCodeChange)="countryIsoCodeChange.emit($event)"
@@ -48,6 +49,7 @@ export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
     public readonly control = input(new FormControl('', {nonNullable: true}));
+    public readonly countrySearch = input(false);
     public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 
     public readonly countries = input<readonly TuiCountryIsoCode[]>([
@@ -72,6 +74,39 @@ export class Test implements OnInit {
 describe('InputPhoneInternational', () => {
     beforeEach(() => {
         cy.viewport(400, 300);
+    });
+
+    describe('Dropdown', () => {
+        beforeEach(() => {
+            cy.mount(Test, {componentProperties: {countrySearch: true}});
+            initAliases();
+        });
+
+        it('closes on second country selector click without moving focus from search', () => {
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('be.visible');
+            cy.get('tui-dropdown input[tuiInput]').should('be.focused');
+
+            cy.get('@select').trigger('pointerdown');
+            cy.get('tui-dropdown input[tuiInput]').should('be.focused');
+
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('not.exist');
+        });
+
+        it('closes on second country selector click without moving focus from option', () => {
+            cy.get('@select').click();
+            cy.get('tui-dropdown input[tuiInput]')
+                .should('be.focused')
+                .type('{downArrow}');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').trigger('pointerdown');
+            cy.get('tui-dropdown [tuiOption]').first().should('be.focused');
+
+            cy.get('@select').click();
+            cy.get('tui-dropdown').should('not.exist');
+        });
     });
 
     describe('Count form control updates', () => {
@@ -335,6 +370,19 @@ describe('InputPhoneInternational', () => {
                     name: 'phone-manual-invalid',
                     cypressScreenshotOptions: {padding: 8},
                 });
+            });
+        });
+
+        it('paints an untouched control as well — the override does not wait for a touch', () => {
+            cy.mount(ManualInvalidSandbox, {componentProperties: {control: ngControl}});
+
+            initAliases();
+
+            cy.get('tui-textfield').should('have.attr', 'data-mode', 'invalid');
+
+            cy.get('tui-textfield').compareSnapshot({
+                name: 'phone-manual-invalid-untouched',
+                cypressScreenshotOptions: {padding: 8},
             });
         });
     });

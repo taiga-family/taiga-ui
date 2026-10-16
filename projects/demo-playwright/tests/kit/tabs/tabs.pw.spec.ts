@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiTabsPO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiTabsEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 const {describe, beforeEach} = test;
@@ -12,11 +12,11 @@ describe('Tabs', () => {
 
         describe('closing', () => {
             let example!: Locator;
-            let tabsPO!: TuiTabsPO;
+            let tabsPO!: TuiTabsEO;
 
             beforeEach(async ({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#closing');
-                tabsPO = new TuiTabsPO(example.locator('tui-tabs-with-more'));
+                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
 
                 await page.setViewportSize({width: 1500, height: 500});
                 await example.scrollIntoViewIfNeeded();
@@ -40,13 +40,13 @@ describe('Tabs', () => {
 
         describe('complex', () => {
             let example!: Locator;
-            let tabsPO!: TuiTabsPO;
+            let tabsPO!: TuiTabsEO;
             let pagePO!: TuiDocumentationPagePO;
 
             beforeEach(async ({page}) => {
                 pagePO = new TuiDocumentationPagePO(page);
                 example = pagePO.getExample('#complex');
-                tabsPO = new TuiTabsPO(example.locator('tui-tabs-with-more'));
+                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
 
                 await pagePO.hideScrollbars();
                 await example.scrollIntoViewIfNeeded();

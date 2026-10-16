@@ -15,6 +15,10 @@
         margin: 0.25rem 0 0;
         font: var(--tui-typography-body-m);
 
+        &:first-child {
+            margin: 0;
+        }
+
         &:empty {
             display: none;
         }
@@ -23,6 +27,7 @@
     [tuiTitle] {
         max-inline-size: fit-content;
         flex: 1 0 60%;
+        align-self: center;
         margin: 0;
         margin-inline-end: auto;
         font: inherit;

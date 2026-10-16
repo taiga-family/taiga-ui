@@ -1,0 +1,133 @@
+<button
+    tuiButton
+    type="button"
+    (click)="sheet.set(true)"
+>
+    {{ day() ?? 'Sheet' }}
+</button>
+<button
+    tuiButton
+    type="button"
+    (click)="dialog.set(true)"
+>
+    {{ range() ?? 'Dialog' }}
+</button>
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="{appearance: 'fullscreen', bar: false, closable: false}"
+    [(tuiSheetDialog)]="sheet"
+>
+    <header>
+        <tui-app-bar>
+            <button
+                tuiButton
+                tuiSlot="start"
+                type="button"
+                (click)="observer.complete()"
+            >
+                Back
+            </button>
+            Select date
+            <button
+                tuiButton
+                tuiSlot="end"
+                type="button"
+                (click)="day.set(today); observer.complete()"
+            >
+                Today
+            </button>
+        </tui-app-bar>
+    </header>
+    <tui-calendar-mobile
+        #calendar
+        mode="single"
+        [value]="day()"
+    />
+    @if (calendar.value(); as selected) {
+        <div class="footer">
+            <footer tuiFloatingContainer="transparent">
+                @if (day() === selected) {
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="day.set(null); observer.complete()"
+                    >
+                        Clear
+                    </button>
+                } @else {
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="day.set(selected); observer.complete()"
+                    >
+                        Select {{ calendar.value() }}
+                    </button>
+                }
+            </footer>
+        </div>
+    }
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{appearance: 'fullscreen'}"
+    [(tuiDialog)]="dialog"
+>
+    <tui-app-bar>
+        <button
+            tuiButton
+            tuiSlot="start"
+            type="button"
+            (click)="observer.complete()"
+        >
+            Back
+        </button>
+        Select range
+        <button
+            tuiButton
+            tuiSlot="end"
+            type="button"
+            (click)="range.set(null); observer.complete()"
+        >
+            Clear
+        </button>
+    </tui-app-bar>
+    <tui-calendar-mobile
+        #calendar
+        mode="range"
+        [min]="today"
+        [value]="range()"
+    />
+    @if (calendar.value()) {
+        <tui-bottom-sheet
+            tuiAnimated
+            [bar]="false"
+            [stops]="[]"
+        >
+            <div
+                tuiItemGroup
+                [horizontal]="true"
+            >
+                @for (item of items; track $index) {
+                    <button
+                        tuiChip
+                        type="button"
+                        (click)="range.set(item.range); observer.complete()"
+                    >
+                        {{ item }}
+                    </button>
+                }
+            </div>
+            <footer tuiFloatingContainer>
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="range.set(calendar.value()); observer.complete()"
+                >
+                    Select dates
+                </button>
+                <p>{{ calendar.value() }}</p>
+            </footer>
+        </tui-bottom-sheet>
+    }
+</ng-template>

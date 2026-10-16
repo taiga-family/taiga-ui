@@ -30,4 +30,8 @@ describe('tuiFormatCurrency', () => {
 
         expect(tuiFormatCurrency(australianDollar)).toBe('A$');
     });
+
+    it('pads unknown numeric currency code with leading zeros', () => {
+        expect(tuiFormatCurrency(1)).toBe('001');
+    });
 });

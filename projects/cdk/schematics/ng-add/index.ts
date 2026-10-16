@@ -29,9 +29,8 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
 
     removeTaigaSchematicsPackage(tree);
 
-    if (packages.includes('addon-table') || packages.includes('addon-mobile')) {
-        addAngularCdkDep(tree);
-    }
+    // Pin @angular/cdk (a @taiga-ui/cdk peer) to the app's major to avoid a version mismatch.
+    addAngularCdkDep(tree);
 }
 
 function addAngularCdkDep(tree: Tree): void {

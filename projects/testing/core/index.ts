@@ -11,6 +11,7 @@ export * from './dialog.harness';
 export * from './dropdown-open.harness';
 export * from './link.harness';
 export * from './loader.harness';
+export * from './radio.harness';
 export * from './select.harness';
 export * from './spin-button.harness';
 export * from './tag.harness';

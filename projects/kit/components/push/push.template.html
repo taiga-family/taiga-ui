@@ -11,18 +11,24 @@
         {{ closeWord() }}
     </button>
 }
-<div class="t-top">
-    <span class="t-icon">
-        <ng-content select="tui-icon" />
-    </span>
-    {{ type() }}
-    @if (timestamp()) {
-        <span
-            class="t-time"
-            [textContent]="isString(timestamp()) ? timestamp() : (timestamp() | date: 'h:mm a')"
-        ></span>
-    }
-</div>
+
+@if (type() || timestamp() || icon()) {
+    <div class="t-top">
+        @if (icon()) {
+            <span class="t-icon">
+                <ng-content select="tui-icon" />
+            </span>
+        }
+        {{ type() }}
+        @if (timestamp()) {
+            <span
+                class="t-time"
+                [textContent]="isString(timestamp()) ? timestamp() : (timestamp() | date: 'h:mm a')"
+            ></span>
+        }
+    </div>
+}
+
 <h3
     automation-id="tui-push__heading"
     class="t-heading"

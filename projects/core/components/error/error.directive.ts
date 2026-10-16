@@ -17,11 +17,7 @@ import {
     type ValidationErrors,
     type Validator,
 } from '@angular/forms';
-import {
-    type TuiFormValueControl,
-    type TuiSignalValidationError,
-    TuiValidationError,
-} from '@taiga-ui/cdk/classes';
+import {type TuiFormValueControl, TuiValidationError} from '@taiga-ui/cdk/classes';
 import {TuiId} from '@taiga-ui/cdk/directives/id';
 import {type TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {
@@ -159,12 +155,12 @@ export class TuiErrorField
     implements TuiFormValueControl<unknown>
 {
     private readonly field = tuiInjectFormField({self: true});
+    private readonly fieldErrors = computed(() => this.field()?.errors() ?? []);
 
-    public readonly errors = input<readonly TuiSignalValidationError[]>([]);
     public readonly touched = input(false);
     public readonly value = model<unknown>(null);
 
-    public readonly error = computed((errors = this.errors()) => {
+    public readonly error = computed((errors = this.fieldErrors()) => {
         if (!this.touched()) {
             return null;
         }
@@ -173,7 +169,10 @@ export class TuiErrorField
         const error = kind ? errors.find((x) => x.kind === kind) : errors[0];
 
         return error
-            ? this.getError(error, error.message ?? this.content[error.kind])
+            ? this.getError(
+                  error.context ?? error,
+                  error.message ?? this.content[error.kind],
+              )
             : null;
     });
 

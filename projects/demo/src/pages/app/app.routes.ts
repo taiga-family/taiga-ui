@@ -36,6 +36,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/about'),
     }),
     route({
+        path: DemoRoute.Licensing,
+        title: 'Licensing',
+        loadComponent: async () => import('../info/licensing'),
+    }),
+    route({
         path: DemoRoute.Jest,
         title: 'Jest',
         loadComponent: async () => import('../info/testing/jest'),
@@ -1076,15 +1081,35 @@ export const ROUTES: Routes = [
         title: 'Migration Guide',
     }),
     route({
-        path: DemoRoute.AISupport,
-        loadComponent: async () => import('../info/ai-support'),
+        path: DemoRoute.AiOverview,
+        loadComponent: async () => import('../info/ai/overview'),
         title: 'AI support',
+    }),
+    route({
+        path: DemoRoute.AiMcp,
+        loadComponent: async () => import('../info/ai/mcp'),
+        title: 'MCP server',
+    }),
+    route({
+        path: DemoRoute.AiSkills,
+        loadComponent: async () => import('../info/ai/skills'),
+        title: 'Skills',
+    }),
+    route({
+        path: DemoRoute.AiLlms,
+        loadComponent: async () => import('../info/ai/llms'),
+        title: 'llms.txt',
     }),
     route({
         path: DemoRoute.Obfuscate,
         loadComponent: async () => import('../pipes/obfuscate'),
         title: 'Obfuscate',
     }),
+    {
+        path: 'ai-support',
+        redirectTo: 'ai/overview',
+        pathMatch: 'full',
+    },
     {
         path: '**',
         redirectTo: '',

@@ -1,20 +1,30 @@
 import {isPlatformServer} from '@angular/common';
-import {Directive, inject, type OnDestroy, output, PLATFORM_ID} from '@angular/core';
+import {Directive, inject, type OnDestroy, PLATFORM_ID} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
+import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({
     selector: '[tuiPresent]',
     host: {
         '[style.animation]': 'isServer ? "" : "tuiPresent 1s infinite"',
-        '(animationcancel.self)': 'tuiPresent.emit(false)',
-        '(animationstart.self)': 'tuiPresent.emit(true)',
+        '(animationcancel.self)': 'onVisible(false)',
+        '(animationstart.self)': 'onVisible(true)',
     },
 })
 export class TuiPresent implements OnDestroy {
+    private readonly visible$ = new BehaviorSubject(false);
+
     protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
-    public readonly tuiPresent = output<boolean>();
+    public readonly tuiPresent = outputFromObservable(
+        this.visible$.pipe(distinctUntilChanged(), skip(1)),
+    );
 
     public ngOnDestroy(): void {
-        this.tuiPresent.emit(false);
+        this.visible$.next(false);
+    }
+
+    protected onVisible(visible: boolean): void {
+        this.visible$.next(visible);
     }
 }

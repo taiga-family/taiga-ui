@@ -18,10 +18,10 @@ import {TUI_CARD_OPTIONS} from './card.options';
 
 @Component({
     template: '',
-    styleUrl: './card.style.less',
+    styleUrl: '../../../styles/components/card.less',
     styles: `
         [data-tui-version='${TUI_VERSION}'] {
-            @import './large.style.less';
+            @import '@taiga-ui/styles/components/card-large.less';
         }
     `,
     encapsulation: ViewEncapsulation.None,

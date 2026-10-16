@@ -75,11 +75,11 @@ export function tuiValue(
          * select[multiple] elements have value of first selected option,
          * but there could be more, setting value resets other selected options
          */
-        if (element?.matches('select[multiple]')) {
+        if (element?.matches('select[multiple]') || element?.value === v) {
             return;
         }
 
-        if (element?.matches(':focus') && 'selectionStart' in element) {
+        if (element?.matches(':focus') && 'selectionStart' in element && element.value) {
             const {selectionStart, selectionEnd} = element;
 
             /**

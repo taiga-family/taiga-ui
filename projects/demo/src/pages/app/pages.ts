@@ -30,38 +30,39 @@ export const pages: DocRoutePages = [
         keywords: 'intro, how to, guide, main, главная, начало, инструкция',
         route: DemoRoute.GettingStarted,
     },
-    // Documentation
+    // Information
     {
-        section: 'Documentation',
-        title: 'Information',
-        subPages: [
-            {
-                section: 'Documentation',
-                title: 'About',
-                keywords: 'related, libraries, other, friendly, npm, packages',
-                route: DemoRoute.About,
-            },
-            {
-                section: 'Documentation',
-                title: 'Browser support',
-                keywords: 'chrome, safari, ie, edge, firefox',
-                route: DemoRoute.BrowserSupport,
-            },
-            {
-                section: 'Documentation',
-                title: 'Changelog',
-                keywords: 'release, change, changelog, archive, history',
-                route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
-                target: '_blank',
-            },
-            {
-                section: 'Documentation',
-                title: 'Migration Guide',
-                keywords: 'update, migrate, обновление, миграция',
-                route: DemoRoute.MigrationGuide,
-            },
-        ],
+        section: 'Information',
+        title: 'About',
+        keywords: 'related, libraries, other, friendly, npm, packages',
+        route: DemoRoute.About,
     },
+    {
+        section: 'Information',
+        title: 'Licensing',
+        keywords: 'support, enterprise, figma, commercial',
+        route: DemoRoute.Licensing,
+    },
+    {
+        section: 'Information',
+        title: 'Browser support',
+        keywords: 'chrome, safari, ie, edge, firefox',
+        route: DemoRoute.BrowserSupport,
+    },
+    {
+        section: 'Information',
+        title: 'Changelog',
+        keywords: 'release, change, changelog, archive, history',
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+        target: '_blank',
+    },
+    {
+        section: 'Information',
+        title: 'Migration Guide',
+        keywords: 'update, migrate, обновление, миграция',
+        route: DemoRoute.MigrationGuide,
+    },
+    // Documentation
     {
         section: 'Documentation',
         title: 'Styles',
@@ -91,6 +92,13 @@ export const pages: DocRoutePages = [
                 title: 'Shadows',
                 keywords: 'layout, markup, тень, shadows',
                 route: DemoRoute.Shadows,
+            },
+            {
+                section: 'Documentation',
+                title: 'Direction: RTL',
+                keywords:
+                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
+                route: DemoRoute.RTL,
             },
         ],
     },
@@ -174,19 +182,6 @@ export const pages: DocRoutePages = [
                 title: 'Server Side Rendering',
                 keywords: 'ssr, server, prerender, back, node, universal',
                 route: DemoRoute.SSR,
-            },
-            {
-                section: 'Documentation',
-                title: 'AI support',
-                keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
-                route: DemoRoute.AISupport,
-            },
-            {
-                section: 'Documentation',
-                title: 'Direction: RTL',
-                keywords:
-                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
-                route: DemoRoute.RTL,
             },
             {
                 section: 'Documentation',
@@ -427,6 +422,7 @@ export const pages: DocRoutePages = [
         title: 'ScrollWheel',
         keywords: 'carousel, скролл, infinite, карусель, барабан, wheel, spin',
         route: DemoRoute.ScrollWheel,
+        version: '5.21.0',
     },
     {
         section: 'Components',
@@ -486,6 +482,7 @@ export const pages: DocRoutePages = [
         title: 'File',
         keywords: 'File, uploader',
         route: DemoRoute.File,
+        version: '5.9.0',
     },
     {
         section: 'Components',
@@ -567,6 +564,7 @@ export const pages: DocRoutePages = [
                 keywords: 'search, searchbar, mobile, поиск, строка поиска, мобильный',
                 route: DemoRoute.SearchBar,
                 meta: {name: 'tui-search-bar'},
+                version: '5.22.0',
             },
             {
                 section: 'Components',
@@ -897,6 +895,7 @@ export const pages: DocRoutePages = [
                 title: 'Pincode',
                 keywords: 'поле, инпут, форма, ввод, input, pin, pincode, пин, код, otp',
                 route: DemoRoute.Pincode,
+                version: '5.9.0',
             },
             {
                 section: 'Form',
@@ -1113,6 +1112,7 @@ export const pages: DocRoutePages = [
         title: 'Meter',
         keywords: 'progress, bar, value',
         route: DemoRoute.Meter,
+        version: '5.22.0',
     },
     {
         section: 'Components',
@@ -1133,6 +1133,7 @@ export const pages: DocRoutePages = [
         keywords: 'keypad, pad, keyboard, numeric, digits, цифры, клавиатура, пин, код',
         route: DemoRoute.Keypad,
         meta: {name: 'tui-keypad'},
+        version: '5.19.0',
     },
     {
         section: 'Components',
@@ -1638,5 +1639,35 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Tokens,
             },
         ],
+    },
+    // AI tools
+    {
+        section: 'AI tools',
+        title: 'Overview',
+        keywords:
+            'ai, llm, llms, mcp, skill, agent, cursor, claude, copilot, model context protocol, искусственный интеллект, модели, агент, скилл',
+        route: DemoRoute.AiOverview,
+        version: '5.23.0',
+    },
+    {
+        section: 'AI tools',
+        title: 'Skills',
+        keywords:
+            'ai, skill, skills, agent, workflow, migration, claude, cursor, скилл, скиллы, агент, миграция',
+        route: DemoRoute.AiSkills,
+    },
+    {
+        section: 'AI tools',
+        title: 'MCP server',
+        keywords:
+            'ai, mcp, model context protocol, server, cursor, claude, windsurf, copilot, tools, агент, сервер',
+        route: DemoRoute.AiMcp,
+    },
+    {
+        section: 'AI tools',
+        title: 'llms.txt',
+        keywords:
+            'ai, llm, llms, llms.txt, llms-full, context, standard, контекст, модели',
+        route: DemoRoute.AiLlms,
     },
 ] as const;
