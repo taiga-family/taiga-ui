@@ -83,6 +83,13 @@
 
         <tui-doc-language-switcher *ngIf="supportLanguage.has(header)" />
     </div>
+
+    <div
+        *ngIf="actions"
+        class="t-actions"
+    >
+        <ng-container *polymorpheusOutlet="actions" />
+    </div>
 </header>
 <div class="t-content">
     <ng-content />
