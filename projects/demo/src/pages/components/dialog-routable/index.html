@@ -1,5 +1,16 @@
 <tui-doc-page header="Routable">
     <ng-template pageTab>
+        <p>
+            Dialog content uses the element injector by default, preserving providers from parent components and the
+            current
+            <code>ActivatedRoute</code>
+            . To access route-scoped providers, pass
+            <code>injector: EnvironmentInjector</code>
+            in the options of
+            <code>tuiRouteDialog</code>
+            .
+        </p>
+
         <tui-doc-example
             id="lazy-loading-dialog"
             heading="Lazy loading dialog"
