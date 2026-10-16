@@ -19,7 +19,9 @@ const COMPUTED = 'computed';
 const TO_SIGNAL = 'toSignal';
 const SIGNAL_FACTORIES: readonly string[] = [SIGNAL, COMPUTED, TO_SIGNAL];
 const MAX_REFERENCE_DEPTH = 5;
+const RXJS = 'rxjs';
 const RXJS_OF = 'of';
+const RXJS_PIPE = 'pipe';
 const TAIGA_KIT = '@taiga-ui/kit';
 
 /**
@@ -275,14 +277,14 @@ function isNestedFunctionScope(node: Node): boolean {
 
 // Schematics run without library typings, so values are classified by following their declarations.
 function classifyValue(node: Node, depth = 0): ValueKind {
-    const expression = unwrapParentheses(node);
+    const expression = unwrapExpression(node);
 
     if (isPlainLiteral(expression)) {
         return 'plain';
     }
 
     if (Node.isCallExpression(expression)) {
-        return isSignalFactory(expression.getExpression()) ? 'signal' : 'stream';
+        return classifyCall(expression.getExpression());
     }
 
     if (!Node.isIdentifier(expression) && !Node.isPropertyAccessExpression(expression)) {
@@ -302,35 +304,56 @@ function classifyValue(node: Node, depth = 0): ValueKind {
     return name.endsWith('$') ? 'stream' : 'unknown';
 }
 
-function unwrapParentheses(node: Node): Node {
-    return Node.isParenthesizedExpression(node)
-        ? unwrapParentheses(node.getExpression())
+function unwrapExpression(node: Node): Node {
+    return Node.isParenthesizedExpression(node) ||
+        Node.isAsExpression(node) ||
+        Node.isSatisfiesExpression(node) ||
+        Node.isNonNullExpression(node)
+        ? unwrapExpression(node.getExpression())
         : node;
 }
 
-function isSignalFactory(callee: Node): boolean {
-    const expression = unwrapParentheses(callee);
+// Only calls known to return a stream get `toSignal`, anything else may return a plain value.
+function classifyCall(callee: Node): ValueKind {
+    const expression = unwrapExpression(callee);
+
+    if (Node.isPropertyAccessExpression(expression)) {
+        const name = expression.getName();
+
+        return name === RXJS_PIPE || name.endsWith('$') ? 'stream' : 'unknown';
+    }
 
     if (!Node.isIdentifier(expression)) {
-        return false;
+        return 'unknown';
     }
 
     const declaration = expression.getSymbol()?.getDeclarations()[0];
 
     if (!declaration) {
-        return SIGNAL_FACTORIES.includes(expression.getText());
+        return getCallKindByName(expression.getText());
     }
 
     if (!Node.isImportSpecifier(declaration)) {
-        return false;
+        return 'unknown';
     }
 
     const moduleName = declaration.getImportDeclaration().getModuleSpecifierValue();
 
-    return (
-        SIGNAL_FACTORIES.includes(declaration.getName()) &&
-        (moduleName === ANGULAR_CORE || moduleName === RXJS_INTEROP)
-    );
+    if (moduleName === ANGULAR_CORE || moduleName === RXJS_INTEROP) {
+        return SIGNAL_FACTORIES.includes(declaration.getName()) ? 'signal' : 'unknown';
+    }
+
+    return moduleName === RXJS || moduleName.startsWith(`${RXJS}/`)
+        ? 'stream'
+        : 'unknown';
+}
+
+function getCallKindByName(name: string): ValueKind {
+    if (SIGNAL_FACTORIES.includes(name)) {
+        return 'signal';
+    }
+
+    return name === RXJS_OF || name.endsWith('$') ? 'stream' : 'unknown';
 }
 
 function getDeclaredInitializer(node: Node): Node | undefined {

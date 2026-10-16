@@ -496,6 +496,112 @@ describe('ng-update migrateI18nSignalTokens', () => {
             expect(result).toContain("return toSignal(of(['Байт']));");
         });
 
+        it('wraps a typed plain value into signal()', async () => {
+            const result = await migrateComponent(/* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useValue: ['Б'] as const,
+                        },
+                        {
+                            provide: TUI_FILE_TEXTS,
+                            useValue: {loading: 'x'} satisfies object,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `);
+
+            expect(result).toContain("useValue: signal(['Б'] as const)");
+            expect(result).toContain("useValue: signal({loading: 'x'} satisfies object)");
+            expect(result).not.toContain('toSignal(');
+        });
+
+        it('keeps a typed signal() value', async () => {
+            const component = /* TypeScript */ `
+                import {Component, type Signal, signal} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useValue: signal(['Б']) as Signal<readonly string[]>,
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `;
+
+            expect(await migrateComponent(component)).toBe(component);
+        });
+
+        it('adds a TODO for a call that is not known to return a stream', async () => {
+            const result = await migrateComponent(/* TypeScript */ `
+                import {Component} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () => Object.freeze(['Б']),
+                        },
+                        {provide: TUI_FILE_TEXTS, useFactory: () => buildTexts()},
+                    ],
+                })
+                export class TestComponent {}
+            `);
+
+            expect(result.match(/TODO/g)).toHaveLength(2);
+            expect(result).toContain("useFactory: () => Object.freeze(['Б'])");
+            expect(result).toContain('useFactory: () => buildTexts()');
+        });
+
+        it('wraps calls that are known to return a stream', async () => {
+            const result = await migrateComponent(/* TypeScript */ `
+                import {Component, inject} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {combineLatest, map} from 'rxjs';
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {
+                            provide: TUI_DIGITAL_INFORMATION_UNITS,
+                            useFactory: () =>
+                                inject(SomeService).units.pipe(map((units) => units)),
+                        },
+                        {
+                            provide: TUI_FILE_TEXTS,
+                            useFactory: () => combineLatest([inject(SomeService).texts]),
+                        },
+                    ],
+                })
+                export class TestComponent {}
+            `);
+
+            expect(result).toContain('() => toSignal(inject(SomeService).units.pipe(');
+            expect(result).toContain('() => toSignal(combineLatest(');
+            expect(result).not.toContain('TODO');
+        });
+
         it('adds a TODO for a reference whose value cannot be resolved', async () => {
             const result = await migrateComponent(/* TypeScript */ `
                 import {Component} from '@angular/core';
