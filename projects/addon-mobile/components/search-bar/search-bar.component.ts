@@ -6,6 +6,8 @@ import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {tuiButtonCloseOptionsProvider} from '@taiga-ui/kit/directives/button-close';
 import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
 
+import {TUI_SEARCH_BAR_OPTIONS} from './search-bar.options';
+
 @Component({
     standalone: true,
     selector: 'form[tuiSearchBar],search[tuiSearchBar]',
@@ -24,9 +26,11 @@ import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
             appearance: platform === 'android' ? 'action' : '',
             size: platform === 'android' ? 's' : 'm',
         })),
-        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) =>
-            platform === 'android' ? {close: '@tui.arrow-left'} : {},
-        ),
+        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) => {
+            const close = inject(TUI_SEARCH_BAR_OPTIONS).closeIcon(platform);
+
+            return close ? {close} : {};
+        }),
     ],
     host: {'[attr.data-appearance]': 'appearance'},
 })
