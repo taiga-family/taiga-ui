@@ -1,10 +1,15 @@
+import {isPlatformServer} from '@angular/common';
 import {
+    afterNextRender,
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     contentChild,
+    inject,
     input,
     model,
+    PLATFORM_ID,
+    signal,
     TemplateRef,
     viewChild,
     ViewContainerRef,
@@ -31,7 +36,11 @@ const OFFSET = 5_000_000;
     hostDirectives: [TuiScrollRef, WaIntersectionObserverDirective, WaIntersectionRoot],
     host: {
         waIntersectionThreshold: '0.1',
+        '[class._snapping]': 'snapping()',
+        '(pointerdown.zoneless)': 'snapping.set(true)',
         '(scrollend)': 'sync()',
+        '(wheel.passive.zoneless)': 'onWheel($event)',
+        '(window:resize)': 'snapping.set(false)',
     },
 })
 export class TuiScrollWheel implements AfterViewInit {
@@ -40,10 +49,17 @@ export class TuiScrollWheel implements AfterViewInit {
     protected readonly wrapper = viewChild.required(TemplateRef);
     protected readonly template = contentChild.required(TemplateRef);
     protected readonly visible = new Set<number>();
+    protected readonly snapping = signal(isPlatformServer(inject(PLATFORM_ID)));
     protected offset = OFFSET;
 
     public readonly buffer = input(10);
     public readonly index = model(0);
+
+    constructor() {
+        afterNextRender(() => {
+            this.el.scrollTop = OFFSET;
+        });
+    }
 
     public ngAfterViewInit(): void {
         for (let i = 0; i < this.buffer() * 2 + 1; i++) {
@@ -63,6 +79,10 @@ export class TuiScrollWheel implements AfterViewInit {
     public update(offset: number): void {
         this.offset = this.offset + offset;
         this.el.style.setProperty('--t-offset', `${this.offset}px`);
+    }
+
+    protected onWheel({ctrlKey, metaKey}: WheelEvent): void {
+        this.snapping.set(!ctrlKey && !metaKey);
     }
 
     protected sync(): void {
