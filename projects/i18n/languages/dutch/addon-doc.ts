@@ -8,4 +8,5 @@ export const TUI_DUTCH_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Zie ook',
     tocText: 'Op deze pagina',
     sourceCodeText: 'Broncode',
+    copyPageTexts: ['Pagina kopiëren', 'Gekopieerd!', 'Meer', 'Bekijken als Markdown'],
 };

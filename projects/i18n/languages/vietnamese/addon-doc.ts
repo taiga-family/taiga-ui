@@ -8,4 +8,5 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Xem thêm',
     tocText: 'Trên trang này',
     sourceCodeText: 'Mã nguồn',
+    copyPageTexts: ['Sao chép trang', 'Đã sao chép!', 'Thêm', 'Xem dưới dạng Markdown'],
 };

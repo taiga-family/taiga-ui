@@ -36,6 +36,10 @@ export const TUI_DOC_SOURCE_CODE_TEXT = new InjectionToken<Signal<string>>(
     {factory: tuiExtractI18n('sourceCodeText')},
 );
 
+export const TUI_DOC_COPY_PAGE_TEXTS = new InjectionToken<
+    Signal<[copy: string, copied: string, more: string, view: string]>
+>(ngDevMode ? 'TUI_DOC_COPY_PAGE_TEXTS' : '', {factory: tuiExtractI18n('copyPageTexts')});
+
 export const TUI_DOC_SEARCH_ENABLED = new InjectionToken(
     ngDevMode ? 'TUI_DOC_SEARCH_ENABLED' : '',
     {factory: () => signal(true)},
