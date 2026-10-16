@@ -63,9 +63,9 @@
     block-size: var(--t-height);
     color: var(--tui-background-accent-1);
     background: @track-color;
-    clip-path: inset(0 0.5px round var(--tui-radius-m)); // 0.5px is a hack to prevent jagged edges on low dpi screens
+    clip-path: inset(0 0.5px); // 0.5px is a hack to prevent jagged edges on low dpi screens
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: var(--tui-radius-m);
     flex-shrink: 0;
 
     &[data-size='xxs'] {
