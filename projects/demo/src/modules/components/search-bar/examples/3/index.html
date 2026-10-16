@@ -1,0 +1,21 @@
+<div role="search">
+    <form
+        appearance="floating"
+        tuiSearchBar
+        (ngSubmit)="onSubmit()"
+    >
+        <input
+            name="query"
+            placeholder="Search"
+            tuiSearchBar
+            [(ngModel)]="query"
+        />
+        <button
+            tuiButtonClose
+            tuiIconButton
+            type="reset"
+        >
+            Cancel
+        </button>
+    </form>
+</div>

@@ -26,23 +26,16 @@ jobs:
       - uses: taiga-family/ci/actions/run/read-package-json@v1.152.0
         id: info
 
-      # The messenger sits behind a corporate CA that GitHub runners do not trust.
-      # The announcement carries no secrets, so we let curl skip verification for
-      # this single step instead of provisioning the CA on every runner.
-      - name: Allow self-signed certificate of the internal messenger
-        run: printf 'insecure\n' > "${{ runner.temp }}/.curlrc"
-
       - name: Announce to Time messenger
-        uses: taiga-family/ci/actions/messenger/time/announce@v1.152.0
+        uses: taiga-family/actions/messenger-mattermost-announce@c3c5b1dafd967e96aadf1cd4d589bd57fab81d43 # v2.18.0
         # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-        env:
-          CURL_HOME: ${{ runner.temp }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
           version: v${{ steps.info.outputs.version }}
+          ca-cert: ${{ secrets.ANNOUNCE_CA_CERT }}
 
       - name: Announce to Telegram messenger
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.152.0

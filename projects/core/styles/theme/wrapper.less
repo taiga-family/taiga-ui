@@ -21,23 +21,13 @@
 }
 
 [tuiWrapper][data-appearance='textfield'] {
-    .transition(~'box-shadow, background');
+    .transition(~'box-shadow, background, outline-color');
 
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
-    outline: none !important;
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
-
-    &::after {
-        .transition(color);
-        .fullsize(absolute, inset);
-
-        content: '';
-        border-radius: inherit;
-        border: 1px solid currentColor;
-        pointer-events: none;
-        color: var(--tui-border-normal);
-    }
+    outline: 1px solid var(--tui-border-normal);
+    outline-offset: -1px;
 
     .wrapper-hover({
         box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
@@ -45,20 +35,14 @@
 
     .wrapper-focus({
         box-shadow: none;
-
-        &:after {
-            border-width: 2px;
-            color: var(--tui-background-accent-1);
-        }
+        outline: 0.125rem solid var(--tui-background-accent-1);
+        outline-offset: -0.125rem;
     });
 
     .wrapper-readonly({
         box-shadow: none;
         background: transparent;
-
-        &:after {
-            color: var(--tui-border-normal);
-        }
+        outline-color: var(--tui-border-normal);
     });
 
     .wrapper-disabled({
@@ -66,9 +50,7 @@
     });
 
     .wrapper-invalid({
-        &:after {
-            color: var(--tui-text-negative);
-        }
+        outline-color: var(--tui-status-negative);
     });
 }
 

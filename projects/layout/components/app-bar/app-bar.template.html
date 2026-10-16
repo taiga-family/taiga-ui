@@ -1,13 +1,21 @@
+<tui-progressive-blur *ngIf="liquidGlass" />
+
 <div #side>
-    <ng-content select="[tuiSlot='left']" />
+    <div tuiAppBarButton>
+        <ng-content select="[tuiSlot='left']" />
+    </div>
 </div>
 <div
+    #title
     tuiFade
     class="t-content"
+    [class.t-content_start]="overflown$ | async"
     [style.--t-sides.px]="width$ | async"
 >
     <ng-content />
 </div>
 <div #side>
-    <ng-content select="[tuiSlot='right']" />
+    <div tuiAppBarButton>
+        <ng-content select="[tuiSlot='right']" />
+    </div>
 </div>

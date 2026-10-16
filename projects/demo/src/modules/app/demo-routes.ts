@@ -130,6 +130,7 @@ export const DemoRoute = {
     MobileDialog: '/components/mobile-dialog',
     MobileCalendar: '/components/mobile-calendar',
     PullToRefresh: '/components/pull-to-refresh',
+    SearchBar: '/components/search-bar',
     CalendarMonth: '/components/calendar-month',
     MultiSelect: '/components/multi-select',
     Pagination: '/navigation/pagination',

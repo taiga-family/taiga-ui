@@ -1,7 +1,13 @@
 <ng-content />
+
 <div class="t-skeletons">
     <div
         *tuiRepeatTimes="let index of quantity"
         class="t-skeleton"
     ></div>
 </div>
+
+<ng-container *ngIf="liquidGlass">
+    <div class="t-liquid-glass-overlay"></div>
+    <div class="t-liquid-glass-indicator"></div>
+</ng-container>

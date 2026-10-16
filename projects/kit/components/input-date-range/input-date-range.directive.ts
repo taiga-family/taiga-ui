@@ -80,11 +80,20 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     }
 
     protected override onValueChange(value: string): void {
-        this.control?.control?.updateValueAndValidity({emitEvent: false});
-        this.onChange(
+        const range =
             value.length === DATE_RANGE_FILLER_LENGTH
                 ? TuiDayRange.normalizeParse(value, this.format().mode)
-                : null,
-        );
+                : null;
+
+        // Maskito dispatches another input event after clamping an out-of-bounds date.
+        if (
+            range &&
+            (range.from.dayBefore(this.min()) || range.to.dayAfter(this.max()))
+        ) {
+            return;
+        }
+
+        this.control?.control?.updateValueAndValidity({emitEvent: false});
+        this.onChange(range);
     }
 }

@@ -14,17 +14,19 @@
 >
     {{ closeWord$ | async }}
 </button>
+
 <div class="t-top">
     <span class="t-icon">
         <ng-content select="tui-svg,tui-icon" />
     </span>
-    {{ type }}
+    <span>{{ type }}</span>
     <span
         *ngIf="timestamp"
         class="t-time"
         [textContent]="isString(timestamp) ? timestamp : (timestamp | tuiFormatDate | async)"
     ></span>
 </div>
+
 <h3
     automation-id="tui-push__heading"
     class="t-heading"

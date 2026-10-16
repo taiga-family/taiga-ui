@@ -658,6 +658,11 @@ export const ROUTES: Routes = [
         title: 'PullToRefresh',
     }),
     route({
+        path: DemoRoute.SearchBar,
+        loadComponent: async () => import('../components/search-bar'),
+        title: 'SearchBar',
+    }),
+    route({
         path: DemoRoute.CalendarMonth,
         title: 'CalendarMonth',
         loadComponent: async () => import('../components/calendar-month'),

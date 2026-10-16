@@ -25,7 +25,7 @@ export default class Example {
 
     protected activeItemIndex = 1;
 
-    protected readonly items = [
+    protected readonly items: Item[] = [
         {
             text: 'Favorites',
             icon: '@tui.heart',
@@ -51,8 +51,14 @@ export default class Example {
         },
     ];
 
-    protected onClick(item: Item): void {
-        item.badge = 0;
-        this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
+    protected onIndexChange(index: number): void {
+        const item = this.items[index];
+
+        this.activeItemIndex = index;
+
+        if (item) {
+            item.badge = 0;
+            this.alerts.open(index, {label: item.text}).subscribe();
+        }
     }
 }

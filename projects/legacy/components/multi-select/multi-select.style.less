@@ -5,6 +5,10 @@
     display: block;
     border-radius: var(--tui-radius-m);
 
+    &[data-size='l'] {
+        border-radius: var(--tui-radius-l);
+    }
+
     &._disabled,
     :host-context(*:disabled) {
         pointer-events: none;

@@ -21,21 +21,25 @@
         --tui-height: var(--tui-height-s);
         --tui-textarea-height: 4.5625rem;
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
+        line-height: 1rem;
     }
 
     &[data-size='m'] {
         --tui-height: var(--tui-height-m);
         --tui-textarea-height: 5.5rem;
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
+        line-height: 1rem;
     }
 
     &[data-size='l'] {
         --tui-height: var(--tui-height-l);
         --tui-textarea-height: @height;
 
-        font: var(--tui-font-text-m);
+        border-radius: var(--tui-radius-l);
+        font: var(--tui-font-text-ui-m);
+        line-height: 1.25rem;
     }
 
     &[data-size='m']._has-counter {
@@ -205,7 +209,7 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-tertiary);
+        color: var(--tui-text-secondary);
         opacity: 0;
     }
 
@@ -216,12 +220,14 @@
     :host[data-size='s'] &,
     :host[data-size='m'] & {
         padding: 0 0.75rem;
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
+        line-height: 1rem;
     }
 
     :host[data-size='l'] & {
         padding: 0 1rem;
-        font: var(--tui-font-text-m);
+        font: var(--tui-font-text-ui-m);
+        line-height: 1.25rem;
     }
 
     /* Safari 9+, < 13.1 */

@@ -152,3 +152,20 @@
         }
     }
 }
+
+[data-platform='ios'] [tuiListV='@{tui-version}']:is(ul),
+[data-platform='android'] [tuiListV='@{tui-version}']:is(ul) {
+    margin-inline-start: 1.125rem;
+
+    & > li::before {
+        inline-size: 0.375rem;
+        margin-inline-start: -1rem;
+        margin-inline-end: 0.75rem;
+    }
+
+    &[data-size='l'] > li::before {
+        inline-size: 0.375rem;
+        margin-inline-start: -0.9375rem;
+        margin-inline-end: 0.75rem;
+    }
+}

@@ -5,6 +5,7 @@ import {
     Input,
     type OnDestroy,
     type OnInit,
+    signal,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -36,6 +37,19 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
 
     @Input()
     public tuiCheckboxRow!: T;
+
+    public readonly disabled = signal(false);
+
+    @Input('disabled')
+    public set disabledSetter(disabled: boolean) {
+        this.disabled.set(disabled);
+
+        if (disabled) {
+            this.control.control?.disable();
+        } else {
+            this.control.control?.enable();
+        }
+    }
 
     public ngOnInit(): void {
         this.parent.process(this);

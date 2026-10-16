@@ -24,6 +24,8 @@ export const TUI_COMMON_ICONS = new InjectionToken(ngDevMode ? 'TUI_COMMON_ICONS
     factory: () => COMMON_ICONS,
 });
 
-export function tuiCommonIconsProvider(icons: Partial<TuiCommonIcons>): Provider {
+export function tuiCommonIconsProvider(
+    icons: Partial<TuiCommonIcons> | (() => Partial<TuiCommonIcons>),
+): Provider {
     return tuiProvideOptions(TUI_COMMON_ICONS, icons, COMMON_ICONS);
 }

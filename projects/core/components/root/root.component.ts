@@ -29,7 +29,7 @@ import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils';
+import {TUI_LIQUID_GLASS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {PreventEventPlugin} from '@taiga-ui/event-plugins';
 import {map} from 'rxjs';
 
@@ -57,6 +57,7 @@ import {map} from 'rxjs';
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '[class._mobile]': 'isMobileRes()',
+        '[class.tui-liquid-glass]': 'liquidGlass',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
         '(document:fullscreenchange)': 'top.set(isTopLayer)',
@@ -77,6 +78,7 @@ export class TuiRoot {
         {initialValue: false},
     );
 
+    protected readonly liquidGlass = inject(TUI_LIQUID_GLASS);
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
 
     protected readonly scrollbars =

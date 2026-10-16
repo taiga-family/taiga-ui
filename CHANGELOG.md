@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.103.0](https://github.com/taiga-family/taiga-ui/compare/v4.102.0...v4.103.0) (2026-10-12)
+
+### 🚀 Features
+
+- **addon-mobile:** `SearchBar` support progressive blur
+  ([#15161](https://github.com/taiga-family/taiga-ui/issues/15161))
+  ([1bc372d](https://github.com/taiga-family/taiga-ui/commit/1bc372d805df1b956bec01de4f9c4ac779da7c54))
+- **addon-table:** `TableControl` add ability to disable row checkbox
+  ([#15184](https://github.com/taiga-family/taiga-ui/issues/15184))
+  ([39cefc5](https://github.com/taiga-family/taiga-ui/commit/39cefc5867e9342dbf02b58f1a259d4abbf18e1e))
+
+### 🐞 Bug Fixes
+
+- **experimental:** scope `PdfViewer` loader style to t-content
+  ([#15159](https://github.com/taiga-family/taiga-ui/issues/15159))
+  ([ac1a634](https://github.com/taiga-family/taiga-ui/commit/ac1a63404535178c06c5ec065b0b65a3a378a0a7))
+- **kit:** avoid duplicate InputDateRange value changes outside bounds
+  ([#15206](https://github.com/taiga-family/taiga-ui/issues/15206))
+  ([41698f9](https://github.com/taiga-family/taiga-ui/commit/41698f9ef9992ee8692bdf5852ebfcde10f1ba94))
+- **kit:** prevent InputChip from mutating value ([#15207](https://github.com/taiga-family/taiga-ui/issues/15207))
+  ([e417b24](https://github.com/taiga-family/taiga-ui/commit/e417b24dfd0b3e562d67b3bead9ff3c8896352b4))
+- **legacy:** align deprecated inputs with current textfield appearance
+  ([#15153](https://github.com/taiga-family/taiga-ui/issues/15153))
+  ([6b66203](https://github.com/taiga-family/taiga-ui/commit/6b662034f7ce918e93cc5be07ecec8f7d69b8a8b))
+
+## [4.102.0](https://github.com/taiga-family/taiga-ui/compare/v4.101.0...v4.102.0) (2026-10-05)
+
+### 🚀 Features
+
+- **addon-commerce:** `AmountPipe`, `CurrencyPipe` add currency token
+  ([#15116](https://github.com/taiga-family/taiga-ui/issues/15116))
+  ([3fcd60d](https://github.com/taiga-family/taiga-ui/commit/3fcd60db9a274c12a6f0945cb113b866c3e55062))
+- **addon-mobile:** `SearchBar` add new component ([#15122](https://github.com/taiga-family/taiga-ui/issues/15122))
+  ([397399b](https://github.com/taiga-family/taiga-ui/commit/397399b93d66ac8e06204247d17091bef4d08c98))
+- **addon-mobile:** `Tabbar` add liquid-glass support ([#15118](https://github.com/taiga-family/taiga-ui/issues/15118))
+  ([21da998](https://github.com/taiga-family/taiga-ui/commit/21da998257548bc76500c459c98bc8c719b20628))
+- **kit:** unshrink dot for status ([#15137](https://github.com/taiga-family/taiga-ui/issues/15137))
+  ([34d01d8](https://github.com/taiga-family/taiga-ui/commit/34d01d8cc7910831dc4acdaa9927aa7c753374ee))
+- **layout:** `AppBar` add liquid-glass support ([#15101](https://github.com/taiga-family/taiga-ui/issues/15101))
+  ([6171153](https://github.com/taiga-family/taiga-ui/commit/617115388bd4afceae96a39845665064bbcb15bc))
+
+### 🐞 Bug Fixes
+
+- **kit:** render long Copy text in Safari ([#15150](https://github.com/taiga-family/taiga-ui/issues/15150))
+  ([abf3d73](https://github.com/taiga-family/taiga-ui/commit/abf3d73be6c355808b23be5d2b5a2d56fef0de35))
+- **layout:** fixed mobile tui-list margin-inline ([#15130](https://github.com/taiga-family/taiga-ui/issues/15130))
+  ([555fd7e](https://github.com/taiga-family/taiga-ui/commit/555fd7e3d52d8fefff9733ba3677524607d4b6c9))
+
+## [4.101.0](https://github.com/taiga-family/taiga-ui/compare/v4.100.0...v4.101.0) (2026-09-28)
+
+### 🐞 Bug Fixes
+
+- **kit:** `Push` hide empty header ([#15084](https://github.com/taiga-family/taiga-ui/issues/15084))
+  ([500ee09](https://github.com/taiga-family/taiga-ui/commit/500ee0997b0425234f3167b4f430db029786c815))
+
 ## [4.100.0](https://github.com/taiga-family/taiga-ui/compare/v4.99.0...v4.100.0) (2026-09-21)
 
 ### 🚀 Features
