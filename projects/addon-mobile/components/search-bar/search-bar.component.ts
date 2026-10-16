@@ -5,6 +5,8 @@ import {tuiCommonIconsProvider} from '@taiga-ui/core/tokens';
 import {TUI_LIQUID_GLASS} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
 
+import {TUI_SEARCH_BAR_OPTIONS} from './search-bar.options';
+
 @Component({
     selector: 'form[tuiSearchBar],search[tuiSearchBar]',
     imports: [TuiProgressiveBlur],
@@ -24,9 +26,9 @@ import {TuiProgressiveBlur} from '@taiga-ui/layout/components/progressive-blur';
             appearance: platform === 'android' ? 'action' : '',
             size: platform === 'android' ? 's' : 'm',
         })),
-        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) =>
-            platform === 'android' ? {close: '@tui.arrow-left'} : {},
-        ),
+        tuiCommonIconsProvider((platform = inject(TUI_PLATFORM)) => ({
+            close: inject(TUI_SEARCH_BAR_OPTIONS).closeIcon(platform) || undefined,
+        })),
     ],
     host: {'[attr.data-appearance]': 'appearance()'},
 })

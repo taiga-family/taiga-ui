@@ -1,9 +1,14 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
-import {TuiSearchBar} from '@taiga-ui/addon-mobile';
+import {TuiSearchBar, tuiSearchBarOptionsProvider} from '@taiga-ui/addon-mobile';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
-import {provideTaiga, TUI_LIQUID_GLASS, TuiButtonX} from '@taiga-ui/core';
+import {
+    provideTaiga,
+    TUI_COMMON_ICONS,
+    TUI_LIQUID_GLASS,
+    TuiButtonX,
+} from '@taiga-ui/core';
 
 describe('SearchBar', () => {
     describe('on a search element', () => {
@@ -177,6 +182,52 @@ describe('SearchBar', () => {
 
             expect(input().value).toBe('');
             expect(fixture.componentInstance.query()).toBeNull();
+        });
+    });
+
+    describe('icons options', () => {
+        @Component({
+            imports: [TuiButtonX, TuiPlatform, TuiSearchBar],
+            template: `
+                <search
+                    tuiPlatform="ios"
+                    tuiSearchBar
+                >
+                    <input tuiSearchBar />
+                    <button tuiButtonX>Cancel</button>
+                </search>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Test {}
+
+        let fixture: ComponentFixture<Test>;
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [
+                    provideTaiga(),
+                    tuiSearchBarOptionsProvider({
+                        closeIcon: (platform) =>
+                            platform === 'ios' ? '@tui.circle-x' : '',
+                    }),
+                ],
+            });
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(Test);
+            fixture.detectChanges();
+        });
+
+        it('replaces the close icon for the current platform', () => {
+            const cancel: HTMLButtonElement =
+                fixture.nativeElement.querySelector('search button');
+
+            expect(cancel.style.getPropertyValue('--t-icon-start')).toContain('circle-x');
+        });
+
+        it('keeps common icons intact outside the search bar', () => {
+            expect(TestBed.inject(TUI_COMMON_ICONS).close).toBe('@tui.x');
         });
     });
 
