@@ -16,12 +16,24 @@ describe('TuiDropdownHover', () => {
         template: `
             <tui-root>
                 <button
+                    class="before"
+                    type="button"
+                >
+                    Before
+                </button>
+                <button
                     tuiDropdown="Dropdown content"
                     tuiDropdownHover
                     type="button"
                     (click)="dialogs.open('Dialog').subscribe()"
                 >
                     Hover me
+                </button>
+                <button
+                    class="after"
+                    type="button"
+                >
+                    After
                 </button>
             </tui-root>
         `,
@@ -52,12 +64,20 @@ describe('TuiDropdownHover', () => {
             .injector.get(TuiDropdownHover);
     }
 
+    function getTrigger(): HTMLButtonElement {
+        return fixture.debugElement.query(By.directive(TuiDropdownHover)).nativeElement;
+    }
+
+    function getButton(selector: string): HTMLButtonElement {
+        return fixture.nativeElement.querySelector(selector);
+    }
+
     function mouseover(element: Element): void {
         element.dispatchEvent(new MouseEvent('mouseover', {bubbles: true}));
     }
 
-    it('is not hovered when the pointer is over a dialog obscuring the dropdown', fakeAsync(() => {
-        const button = fixture.debugElement.query(By.css('button')).nativeElement;
+    function openDropdown(): void {
+        const button = getTrigger();
 
         button.focus();
         mouseover(button);
@@ -66,8 +86,11 @@ describe('TuiDropdownHover', () => {
 
         expect(getHover().hovered()).toBe(true);
         expect(fixture.nativeElement.querySelector('tui-dropdown')).not.toBeNull();
+    }
 
-        button.click();
+    it('is not hovered when the pointer is over a dialog obscuring the dropdown', fakeAsync(() => {
+        openDropdown();
+        getTrigger().click();
         fixture.detectChanges();
         tick();
 
@@ -82,5 +105,25 @@ describe('TuiDropdownHover', () => {
         expect(getHover().hovered()).toBe(false);
 
         fixture.destroy();
+    }));
+
+    it('closes when focus moves to the next element', fakeAsync(() => {
+        openDropdown();
+        getButton('.after').focus();
+        tick();
+        fixture.detectChanges();
+
+        expect(getHover().hovered()).toBe(false);
+        expect(fixture.nativeElement.querySelector('tui-dropdown')).toBeNull();
+    }));
+
+    it('closes when focus moves to the previous element', fakeAsync(() => {
+        openDropdown();
+        getButton('.before').focus();
+        tick();
+        fixture.detectChanges();
+
+        expect(getHover().hovered()).toBe(false);
+        expect(fixture.nativeElement.querySelector('tui-dropdown')).toBeNull();
     }));
 });
