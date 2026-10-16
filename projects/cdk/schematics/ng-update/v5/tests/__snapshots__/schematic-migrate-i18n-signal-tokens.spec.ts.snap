@@ -40,6 +40,49 @@ exports[`ng-update migrateI18nSignalTokens adds a TODO when a block-body useFact
 }
 `;
 
+exports[`ng-update migrateI18nSignalTokens leaves a signal referenced by name untouched while migrating siblings: test.ts 1`] = `
+{
+  "0. Before": "
+                import {Component, signal} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                const UNITS = signal(['Б', 'КБ', 'МБ']);
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: UNITS},
+                        {provide: TUI_FILE_TEXTS, useValue: of({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+  "1. After": "
+                import {Component, signal} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                const UNITS = signal(['Б', 'КБ', 'МБ']);
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: UNITS},
+                        {provide: TUI_FILE_TEXTS, useValue: signal({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            ",
+}
+`;
+
 exports[`ng-update migrateI18nSignalTokens leaves an already signal-wrapped value untouched while migrating siblings: test.ts 1`] = `
 {
   "0. Before": "

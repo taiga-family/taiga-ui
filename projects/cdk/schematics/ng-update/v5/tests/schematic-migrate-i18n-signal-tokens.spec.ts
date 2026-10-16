@@ -2,12 +2,12 @@ import {join} from 'node:path';
 
 import {resetActiveProject} from 'ng-morph';
 
-import {createMigration} from '../../../utils/run-migration';
+import {createMigration, runMigration} from '../../../utils/run-migration';
+
+const collection = join(__dirname, '../../../migration.json');
 
 describe('ng-update migrateI18nSignalTokens', () => {
-    const migrate = createMigration({
-        collection: join(__dirname, '../../../migration.json'),
-    });
+    const migrate = createMigration({collection});
 
     it(
         'unwraps of() into signal() for TUI_DIGITAL_INFORMATION_UNITS',
@@ -295,6 +295,78 @@ describe('ng-update migrateI18nSignalTokens', () => {
             `,
         }),
     );
+
+    it(
+        'leaves a signal referenced by name untouched while migrating siblings',
+        migrate({
+            component: /* TypeScript */ `
+                import {Component, signal} from '@angular/core';
+                import {
+                    TUI_DIGITAL_INFORMATION_UNITS,
+                    TUI_FILE_TEXTS,
+                } from '@taiga-ui/kit';
+                import {of} from 'rxjs';
+
+                const UNITS = signal(['Б', 'КБ', 'МБ']);
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: UNITS},
+                        {provide: TUI_FILE_TEXTS, useValue: of({loading: 'Загрузка'})},
+                    ],
+                })
+                export class TestComponent {}
+            `,
+        }),
+    );
+
+    // Snapshots only cover changed files, so untouched providers need explicit assertions.
+    describe('keeps signal-based providers as is', () => {
+        const migrateComponent = async (component: string): Promise<string> => {
+            const {component: result} = await runMigration({component, collection});
+
+            return result;
+        };
+
+        it('keeps a signal referenced by name', async () => {
+            const component = /* TypeScript */ `
+                import {Component, signal} from '@angular/core';
+                import {TUI_DIGITAL_INFORMATION_UNITS} from '@taiga-ui/kit';
+
+                const UNITS = signal(['Б', 'КБ', 'МБ']);
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_DIGITAL_INFORMATION_UNITS, useValue: UNITS},
+                    ],
+                })
+                export class TestComponent {}
+            `;
+
+            expect(await migrateComponent(component)).toBe(component);
+        });
+
+        it('keeps a computed() value', async () => {
+            const component = /* TypeScript */ `
+                import {Component, computed, signal} from '@angular/core';
+                import {TUI_FILE_TEXTS} from '@taiga-ui/kit';
+
+                const TEXTS = signal({loading: 'Загрузка'});
+
+                @Component({
+                    standalone: true,
+                    providers: [
+                        {provide: TUI_FILE_TEXTS, useValue: computed(() => TEXTS())},
+                    ],
+                })
+                export class TestComponent {}
+            `;
+
+            expect(await migrateComponent(component)).toBe(component);
+        });
+    });
 
     afterEach(() => resetActiveProject());
 });

@@ -15,7 +15,9 @@ import {insertTodo, TODO_MARK} from '../../../utils/insert-todo';
 const ANGULAR_CORE = '@angular/core';
 const RXJS_INTEROP = '@angular/core/rxjs-interop';
 const SIGNAL = 'signal';
+const COMPUTED = 'computed';
 const TO_SIGNAL = 'toSignal';
+const SIGNAL_FACTORIES = [SIGNAL, COMPUTED, TO_SIGNAL];
 const RXJS_OF = 'of';
 const TAIGA_KIT = '@taiga-ui/kit';
 
@@ -126,7 +128,7 @@ function migrateUseValue(
 
     const initText = initializer.getText();
 
-    if (initText.startsWith(`${SIGNAL}(`) || initText.startsWith(`${TO_SIGNAL}(`)) {
+    if (isSignalExpression(initializer)) {
         return;
     }
 
@@ -174,7 +176,7 @@ function migrateUseFactory(
 
     const bodyText = body.getText();
 
-    if (isSignalWrapped(bodyText)) {
+    if (isSignalExpression(body)) {
         return;
     }
 
@@ -224,7 +226,7 @@ function migrateFactoryBlock(
 
 function nextUnwrappedReturn(useFactoryProp: PropertyAssignment): Node | undefined {
     return getFactoryReturnExpressions(useFactoryProp).find(
-        (expression) => !isSignalWrapped(expression.getText()),
+        (expression) => !isSignalExpression(expression),
     );
 }
 
@@ -277,8 +279,25 @@ function isNestedFunctionScope(node: Node): boolean {
     );
 }
 
-function isSignalWrapped(text: string): boolean {
-    return text.startsWith(`${SIGNAL}(`) || text.startsWith(`${TO_SIGNAL}(`);
+function isSignalCall(text: string): boolean {
+    return SIGNAL_FACTORIES.some((factory) => text.startsWith(`${factory}(`));
+}
+
+// Schematics run without type information, so a signal behind an identifier is matched by its declaration.
+function isSignalExpression(node: Node): boolean {
+    const text = node.getText();
+
+    if (isSignalCall(text)) {
+        return true;
+    }
+
+    if (!Node.isIdentifier(node)) {
+        return false;
+    }
+
+    const declared = node.getSourceFile().getVariableDeclaration(text)?.getInitializer();
+
+    return !!declared && isSignalCall(declared.getText());
 }
 
 function wrapWithSignal(useValueProp: PropertyAssignment, valueText: string): void {
