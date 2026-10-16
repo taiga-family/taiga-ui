@@ -57,7 +57,7 @@ import {catchError, filter, map, merge, of} from 'rxjs';
 
 import {TUI_PLATFORM_KEY} from '../../components/settings/platform-key';
 import {AuthService} from '../components/dialog/examples/5/service';
-import {SEE_ALSO_GROUPS} from './app.const';
+import {DOC_PAGES_ICONS, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
 import {PAGE_ACTIONS_CONTENT} from './copy-page/copy-page.component';
 import {LOGO_CONTENT} from './logo/logo.component';
@@ -307,18 +307,7 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_PAGES_ICONS,
-            useValue: {
-                Information: '@tui.info',
-                'Getting Started': '@tui.rocket',
-                'AI tools': '@tui.sparkles',
-                Documentation: '@tui.file-code-corner',
-                Components: '@tui.puzzle',
-                Form: '@tui.form',
-                Layout: '@tui.layout-panel-left',
-                Navigation: '@tui.compass',
-                Charts: '@tui.chart-pie',
-                Tools: '@tui.hammer',
-            },
+            useValue: DOC_PAGES_ICONS,
         },
         {
             provide: TUI_DOC_SOURCE_CODE_TEXT,
