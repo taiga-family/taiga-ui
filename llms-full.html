@@ -2763,7 +2763,7 @@ tui-segmented {
 &lt;button tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt; Back &lt;/button&gt; Taiga UI — Components library &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
 &lt;/tui-app-bar&gt;
 &lt;tui-app-bar&gt;
-&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI dev &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
 &lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
 &lt;/tui-app-bar&gt;
 &lt;tui-app-bar&gt;
@@ -48058,6 +48058,86 @@ export default class Example {
 }
 ```
 
+#### Overlays from cells
+
+Table provides its own textfield options, so drawers, dialogs and dropdowns created from a cell inherit the table appearance and size. Set `tuiTextfieldAppearance` and `tuiTextfieldSize` on the overlay to bring the defaults back for its content.
+
+**Template:**
+```html
+&lt;table tuiTable&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th tuiTh&gt;Name&lt;/th&gt;
+&lt;th tuiTh&gt;Balance&lt;/th&gt;
+&lt;th tuiTh&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody tuiTbody&gt; @for (item of data; track item) { &lt;tr&gt;
+&lt;td tuiTd&gt;{{ item.name }}&lt;/td&gt;
+&lt;td tuiTd&gt;{{ item.balance | tuiFormatNumber }}&lt;/td&gt;
+&lt;td tuiTd&gt;
+&lt;button appearance=&quot;flat&quot; iconStart=&quot;@tui.pencil&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;edited.set(item)&quot; &gt; Edit &lt;/button&gt;
+&lt;/td&gt;
+&lt;tui-drawer *tuiPopup=&quot;edited() === item&quot; tuiTextfieldAppearance=&quot;textfield&quot; tuiTextfieldSize=&quot;l&quot; &gt;
+&lt;header&gt;
+&lt;h2 tuiHeader=&quot;body-l&quot;&gt;
+&lt;div tuiTitle&gt;{{ item.name }}&lt;/div&gt;
+&lt;div tuiAccessories&gt;
+&lt;button appearance=&quot;icon&quot; iconStart=&quot;@tui.x&quot; tuiIconButton type=&quot;button&quot; (click)=&quot;edited.set(null)&quot; &gt; Close &lt;/button&gt;
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;/header&gt;
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Name&lt;/label&gt;
+&lt;input tuiInput [(ngModel)]=&quot;item.name&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;/tui-drawer&gt;
+&lt;/tr&gt; } &lt;/tbody&gt;
+&lt;/table&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTable} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiButton, TuiInput, TuiPopup, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiDrawer, TuiFormatNumberPipe} from &#039;@taiga-ui/kit&#039;;
+import {TuiHeader} from &#039;@taiga-ui/layout&#039;;
+
+interface Item {
+    name: string;
+    readonly balance: number;
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiDrawer,
+        TuiFormatNumberPipe,
+        TuiHeader,
+        TuiInput,
+        TuiPopup,
+        TuiTable,
+        TuiTitle,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data: readonly Item[] = [
+        {name: &#039;Alex Inkin&#039;, balance: 1323525},
+        {name: &#039;Roman Sedov&#039;, balance: 423242},
+    ];
+
+    protected readonly edited = signal&lt;Item | null&gt;(null);
+}
+```
+
 
 ### TypeScript
 
@@ -48087,6 +48167,7 @@ export default class Page {
         &#039;Toggle rows&#039;,
         &#039;Controls&#039;,
         &#039;Disabled rows&#039;,
+        &#039;Overlays from cells&#039;,
     ];
 }
 ```

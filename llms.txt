@@ -215,6 +215,7 @@
 
 - [About](https://taiga-ui.dev/info/about.md)
 - [Browser Support](https://taiga-ui.dev/info/browser-support.md)
+- [Licensing](https://taiga-ui.dev/info/licensing.md)
 
 ## Layout
 

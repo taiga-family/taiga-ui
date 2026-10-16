@@ -2754,7 +2754,7 @@ tui-segmented {
 <button tuiAppBarBack tuiSlot="start" type="button" > Back </button> Taiga UI — Components library <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 </tui-app-bar>
 <tui-app-bar>
-<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button> Taiga UI dev <button iconStart="@tui.user" tuiIconButton tuiSlot="end" type="button" > User </button>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="end" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
@@ -48049,6 +48049,86 @@ export default class Example {
 }
 ```
 
+#### Overlays from cells
+
+Table provides its own textfield options, so drawers, dialogs and dropdowns created from a cell inherit the table appearance and size. Set `tuiTextfieldAppearance` and `tuiTextfieldSize` on the overlay to bring the defaults back for its content.
+
+**Template:**
+```html
+<table tuiTable>
+<thead>
+<tr>
+<th tuiTh>Name</th>
+<th tuiTh>Balance</th>
+<th tuiTh></th>
+</tr>
+</thead>
+<tbody tuiTbody> @for (item of data; track item) { <tr>
+<td tuiTd>{{ item.name }}</td>
+<td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
+<td tuiTd>
+<button appearance="flat" iconStart="@tui.pencil" tuiIconButton type="button" (click)="edited.set(item)" > Edit </button>
+</td>
+<tui-drawer *tuiPopup="edited() === item" tuiTextfieldAppearance="textfield" tuiTextfieldSize="l" >
+<header>
+<h2 tuiHeader="body-l">
+<div tuiTitle>{{ item.name }}</div>
+<div tuiAccessories>
+<button appearance="icon" iconStart="@tui.x" tuiIconButton type="button" (click)="edited.set(null)" > Close </button>
+</div>
+</h2>
+</header>
+<tui-textfield>
+<label tuiLabel>Name</label>
+<input tuiInput [(ngModel)]="item.name" />
+</tui-textfield>
+</tui-drawer>
+</tr> } </tbody>
+</table>
+```
+
+**TypeScript:**
+```ts
+import {Component, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiButton, TuiInput, TuiPopup, TuiTitle} from '@taiga-ui/core';
+import {TuiDrawer, TuiFormatNumberPipe} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+interface Item {
+    name: string;
+    readonly balance: number;
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiDrawer,
+        TuiFormatNumberPipe,
+        TuiHeader,
+        TuiInput,
+        TuiPopup,
+        TuiTable,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly data: readonly Item[] = [
+        {name: 'Alex Inkin', balance: 1323525},
+        {name: 'Roman Sedov', balance: 423242},
+    ];
+
+    protected readonly edited = signal<Item | null>(null);
+}
+```
+
 
 ### TypeScript
 
@@ -48078,6 +48158,7 @@ export default class Page {
         'Toggle rows',
         'Controls',
         'Disabled rows',
+        'Overlays from cells',
     ];
 }
 ```

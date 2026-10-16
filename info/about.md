@@ -1,10 +1,17 @@
 # About
 
 Taiga UI is a comprehensive Angular UI kit built and maintained by a dedicated team of passionate developers,
-including two Google Developer Experts.
+led by a Google Developer Expert.
 
 The library consists of several packages, such as CDK, Core, Kit and so on, building upon each other to provide
 a robust foundation for Angular applications.
+
+Licensing
+
+Taiga UI is fully open source licensed under the Apache 2.0 and is free for commercial use. If you want
+to explore enterprise support options or purchase a Figma license for your design team, head over to
+Licensing
+page.
 
 Visit our
 [Telegram](https://t.me/taiga_ui)

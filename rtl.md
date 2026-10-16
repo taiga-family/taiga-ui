@@ -19,14 +19,16 @@ There are a few CSS variables that would be helpful for you when implementing bi
 <tui-icon icon="@tui.chevron-right" />
 <div tuiTitle>
 <div> Use <code>--tui-inline</code> variable </div>
-<div tuiSubtitle> When you need to flip <code>calc()</code>
+<div tuiSubtitle>
+<span> When you need to flip <code>calc()</code>
+</span>
 </div>
 </div>
 </div>
 <div tuiCell>
 <div tuiTitle>
 <div> Use <code>--tui-inline-start/end</code> variable </div>
-<div tuiSubtitle>When you need direction in gradients etc</div>
+<div tuiSubtitle>When you need direction in gradients and other styles</div>
 </div>
 </div>
 ```

@@ -17,6 +17,13 @@ nx migrate @taiga-ui/cdk
 nx migrate --run-migrations=migrations.json
 ```
 
+## Licensing
+
+Taiga UI is fully open source licensed under the Apache 2.0 and is free for commercial use. If you want
+to explore enterprise support options or purchase a Figma license for your design team, head over to
+Licensing
+page.
+
 ## Explore Taiga UI
 
 See
