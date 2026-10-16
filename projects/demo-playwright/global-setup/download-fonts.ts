@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import * as tls from 'node:tls';
 
 import {Agent, fetch, type RequestInit, type Response} from 'undici';
 
@@ -38,12 +39,33 @@ function resolveUrls(cssText: string, cssUrl: string): string[] {
     });
 }
 
-export async function downloadFonts(cssUrl: string): Promise<void> {
+async function createDispatcher(caUrl: string): Promise<Agent> {
+    const response = await fetchWithRetry({url: caUrl});
+    const caBundle = await response.text();
+
+    return new Agent({connect: {ca: [...tls.rootCertificates, caBundle]}});
+}
+
+export async function downloadFonts(
+    cssUrl: string,
+    {
+        ca,
+    }: {
+        /**
+         * URL of a PEM bundle with root CAs to trust in addition to Node's defaults
+         * (for CDNs signed by CAs missing from Node's bundle).
+         * The bundle itself is downloaded with default certificate verification.
+         */
+        ca?: string;
+    } = {},
+): Promise<void> {
+    const dispatcher = ca ? await createDispatcher(ca) : undefined;
     const cssTexts = await Promise.all(
         USER_AGENTS.map(async (ua) =>
-            fetchWithRetry({url: cssUrl, options: {headers: {'User-Agent': ua}}}).then(
-                async (response) => response.text(),
-            ),
+            fetchWithRetry({
+                url: cssUrl,
+                options: {headers: {'User-Agent': ua}, dispatcher},
+            }).then(async (response) => response.text()),
         ),
     );
 
@@ -53,7 +75,7 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
     await Promise.allSettled(
         fontUrls.map(async (url) => {
             const filename = getFontFilename(url);
-            const response = await fetchWithRetry({url});
+            const response = await fetchWithRetry({url, options: {dispatcher}});
             const buffer = Buffer.from(await response.arrayBuffer());
 
             fs.writeFileSync(path.join(STUBS_DIR, filename), buffer);
@@ -69,13 +91,6 @@ export async function downloadFonts(cssUrl: string): Promise<void> {
     fs.writeFileSync(path.join(STUBS_DIR, 'fonts.css'), cssTexts.at(0)!);
 }
 
-/**
- * Skips TLS certificate verification:
- * some font CDNs are signed by root CAs missing from Node's bundle.
- * Acceptable here because the files are only used as test stubs.
- */
-const dispatcher = new Agent({connect: {rejectUnauthorized: false}});
-
 interface FetchWithRetryOptions {
     url: string;
     options?: RequestInit;
@@ -89,7 +104,7 @@ async function fetchWithRetry({
     retries = 5,
     attempt = 0,
 }: FetchWithRetryOptions): Promise<Response> {
-    const response = await fetch(url, {...options, dispatcher}).catch(() => null);
+    const response = await fetch(url, options).catch(() => null);
 
     if (response?.ok) {
         return response;
