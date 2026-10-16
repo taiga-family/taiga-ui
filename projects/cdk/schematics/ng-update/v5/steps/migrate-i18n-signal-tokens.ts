@@ -17,7 +17,8 @@ const RXJS_INTEROP = '@angular/core/rxjs-interop';
 const SIGNAL = 'signal';
 const COMPUTED = 'computed';
 const TO_SIGNAL = 'toSignal';
-const SIGNAL_FACTORIES = [SIGNAL, COMPUTED, TO_SIGNAL];
+const SIGNAL_FACTORIES: readonly string[] = [SIGNAL, COMPUTED, TO_SIGNAL];
+const MAX_REFERENCE_DEPTH = 5;
 const RXJS_OF = 'of';
 const TAIGA_KIT = '@taiga-ui/kit';
 
@@ -54,6 +55,10 @@ const KIT_I18N_TOKENS = [
     'TUI_INTERNATIONAL_SEARCH',
     'TUI_DAY_RANGE_PERIODS',
 ] as const;
+
+type ValueKind = 'plain' | 'signal' | 'stream' | 'unknown';
+
+type ConvertibleKind = Extract<ValueKind, 'plain' | 'stream'>;
 
 const TODO_MESSAGE =
     'i18n token is a Signal in v5, not an Observable. Provide the value via signal(...), or convert an existing stream with toSignal(...).';
@@ -126,12 +131,6 @@ function migrateUseValue(
         return;
     }
 
-    const initText = initializer.getText();
-
-    if (isSignalExpression(initializer)) {
-        return;
-    }
-
     if (
         Node.isCallExpression(initializer) &&
         initializer.getExpression().getText() === RXJS_OF &&
@@ -142,16 +141,20 @@ function migrateUseValue(
         return;
     }
 
-    if (isPlainLiteral(initializer)) {
-        wrapWithSignal(useValueProp, initText);
-
-        return;
+    switch (classifyValue(initializer)) {
+        case 'plain':
+            wrapWithSignal(useValueProp, initializer.getText());
+            break;
+        case 'signal':
+            break;
+        // `toSignal()` needs an injection context, which a static `useValue` is not.
+        case 'stream':
+            promoteToFactory(useValueProp, initializer.getText());
+            break;
+        case 'unknown':
+            insertTodoOnce(provideProp);
+            break;
     }
-
-    // Any other initializer is a real Observable. `toSignal()` needs an injection
-    // context, which a static `useValue` is not, so promote the provider to a
-    // `useFactory` where the factory body runs inside DI.
-    promoteToFactory(useValueProp, initText);
 }
 
 function migrateUseFactory(
@@ -174,9 +177,15 @@ function migrateUseFactory(
         return;
     }
 
-    const bodyText = body.getText();
+    const kind = classifyValue(body);
 
-    if (isSignalExpression(body)) {
+    if (kind === 'signal') {
+        return;
+    }
+
+    if (kind === 'unknown') {
+        insertTodoOnce(provideProp);
+
         return;
     }
 
@@ -185,12 +194,8 @@ function migrateUseFactory(
         .map((parameter) => parameter.getText())
         .join(', ');
 
-    useFactoryProp.setInitializer(`(${params}) => ${TO_SIGNAL}(${bodyText})`);
-    addUniqueImport(
-        useFactoryProp.getSourceFile().getFilePath(),
-        TO_SIGNAL,
-        RXJS_INTEROP,
-    );
+    useFactoryProp.setInitializer(`(${params}) => ${asSignalText(body, kind)}`);
+    addSignalImport(useFactoryProp, kind);
 }
 
 // Factory runs inside DI, so returned streams are wrapped; a block with nothing to return stays a TODO.
@@ -198,36 +203,25 @@ function migrateFactoryBlock(
     useFactoryProp: PropertyAssignment,
     provideProp: PropertyAssignment,
 ): void {
-    if (getFactoryReturnExpressions(useFactoryProp).length === 0) {
-        insertTodoOnce(provideProp);
+    // Replacing back to front keeps the earlier nodes valid.
+    for (const expression of getFactoryReturnExpressions(useFactoryProp).reverse()) {
+        const kind = classifyValue(expression);
 
-        return;
+        if (kind === 'plain' || kind === 'stream') {
+            expression.replaceWithText(asSignalText(expression, kind));
+            addSignalImport(useFactoryProp, kind);
+        }
     }
 
-    let wrapped = false;
+    const returns = getFactoryReturnExpressions(useFactoryProp);
 
-    for (
-        let target = nextUnwrappedReturn(useFactoryProp);
-        target;
-        target = nextUnwrappedReturn(useFactoryProp)
+    // Inserting a TODO re-creates the provider node, so it has to go last.
+    if (
+        returns.length === 0 ||
+        returns.some((expression) => classifyValue(expression) === 'unknown')
     ) {
-        target.replaceWithText(`${TO_SIGNAL}(${target.getText()})`);
-        wrapped = true;
+        insertTodoOnce(provideProp);
     }
-
-    if (wrapped) {
-        addUniqueImport(
-            useFactoryProp.getSourceFile().getFilePath(),
-            TO_SIGNAL,
-            RXJS_INTEROP,
-        );
-    }
-}
-
-function nextUnwrappedReturn(useFactoryProp: PropertyAssignment): Node | undefined {
-    return getFactoryReturnExpressions(useFactoryProp).find(
-        (expression) => !isSignalExpression(expression),
-    );
 }
 
 // Only returns owned by the factory arrow itself — returns inside nested functions/classes are their own scope.
@@ -279,25 +273,89 @@ function isNestedFunctionScope(node: Node): boolean {
     );
 }
 
-function isSignalCall(text: string): boolean {
-    return SIGNAL_FACTORIES.some((factory) => text.startsWith(`${factory}(`));
-}
+// Schematics run without library typings, so values are classified by following their declarations.
+function classifyValue(node: Node, depth = 0): ValueKind {
+    const expression = unwrapParentheses(node);
 
-// Schematics run without type information, so a signal behind an identifier is matched by its declaration.
-function isSignalExpression(node: Node): boolean {
-    const text = node.getText();
-
-    if (isSignalCall(text)) {
-        return true;
+    if (isPlainLiteral(expression)) {
+        return 'plain';
     }
 
-    if (!Node.isIdentifier(node)) {
+    if (Node.isCallExpression(expression)) {
+        return isSignalFactory(expression.getExpression()) ? 'signal' : 'stream';
+    }
+
+    if (!Node.isIdentifier(expression) && !Node.isPropertyAccessExpression(expression)) {
+        return 'stream';
+    }
+
+    const declared = depth < MAX_REFERENCE_DEPTH && getDeclaredInitializer(expression);
+
+    if (declared) {
+        return classifyValue(declared, depth + 1);
+    }
+
+    const name = Node.isIdentifier(expression)
+        ? expression.getText()
+        : expression.getName();
+
+    return name.endsWith('$') ? 'stream' : 'unknown';
+}
+
+function unwrapParentheses(node: Node): Node {
+    return Node.isParenthesizedExpression(node)
+        ? unwrapParentheses(node.getExpression())
+        : node;
+}
+
+function isSignalFactory(callee: Node): boolean {
+    const expression = unwrapParentheses(callee);
+
+    if (!Node.isIdentifier(expression)) {
         return false;
     }
 
-    const declared = node.getSourceFile().getVariableDeclaration(text)?.getInitializer();
+    const declaration = expression.getSymbol()?.getDeclarations()[0];
 
-    return !!declared && isSignalCall(declared.getText());
+    if (!declaration) {
+        return SIGNAL_FACTORIES.includes(expression.getText());
+    }
+
+    if (!Node.isImportSpecifier(declaration)) {
+        return false;
+    }
+
+    const moduleName = declaration.getImportDeclaration().getModuleSpecifierValue();
+
+    return (
+        SIGNAL_FACTORIES.includes(declaration.getName()) &&
+        (moduleName === ANGULAR_CORE || moduleName === RXJS_INTEROP)
+    );
+}
+
+function getDeclaredInitializer(node: Node): Node | undefined {
+    const symbol = node.getSymbol();
+    const declaration = (symbol?.getAliasedSymbol() ?? symbol)?.getDeclarations()[0];
+
+    return Node.isVariableDeclaration(declaration) ||
+        Node.isPropertyAssignment(declaration) ||
+        Node.isPropertyDeclaration(declaration)
+        ? declaration.getInitializer()
+        : undefined;
+}
+
+function asSignalText(node: Node, kind: ConvertibleKind): string {
+    return `${kind === 'plain' ? SIGNAL : TO_SIGNAL}(${node.getText()})`;
+}
+
+function addSignalImport(node: Node, kind: ConvertibleKind): void {
+    const filePath = node.getSourceFile().getFilePath();
+
+    if (kind === 'plain') {
+        addUniqueImport(filePath, SIGNAL, ANGULAR_CORE);
+    } else {
+        addUniqueImport(filePath, TO_SIGNAL, RXJS_INTEROP);
+    }
 }
 
 function wrapWithSignal(useValueProp: PropertyAssignment, valueText: string): void {
