@@ -1,0 +1,12 @@
+import"./chunk-LQ6M4NCU.js";var e=`<tui-textfield tuiChevron>
+    <input
+        tuiComboBox
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        [items]="users | tuiFilterByInput"
+    />
+</tui-textfield>
+`;export{e as default};
