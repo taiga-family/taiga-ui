@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ng-update closeable assertions keeps unrelated typed objects unchanged: test.ts 1`] = `
+{
+  "0. Before": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                interface CustomOptions {
+                    closeable: boolean;
+                }
+
+                const custom = {closeable: true} satisfies CustomOptions;
+                const dialog = {closeable: false} satisfies TuiDialogOptions;
+            ",
+  "1. After": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                interface CustomOptions {
+                    closeable: boolean;
+                }
+
+                const custom = {closeable: true} satisfies CustomOptions;
+                const dialog = {closable: false} satisfies TuiDialogOptions;
+            ",
+}
+`;
+
+exports[`ng-update closeable assertions replaces closeable in an \`as TuiDialogOptions\` assertion: test.ts 1`] = `
+{
+  "0. Before": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options = {closeable: true} as TuiDialogOptions;
+            ",
+  "1. After": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options = {closable: true} as TuiDialogOptions;
+            ",
+}
+`;
+
+exports[`ng-update closeable assertions replaces shorthand closeable in a \`satisfies TuiSheetDialogOptions\` assertion: test.ts 1`] = `
+{
+  "0. Before": "
+                import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+
+                const closeable = true;
+                const options = {closeable} satisfies Partial<TuiSheetDialogOptions>;
+            ",
+  "1. After": "
+                import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+
+                const closeable = true;
+                const options = {closable: closeable} satisfies Partial<TuiSheetDialogOptions>;
+            ",
+}
+`;
+
+exports[`ng-update closeable assertions unwraps \`as const\` before a dialog options assertion: test.ts 1`] = `
+{
+  "0. Before": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options = {closeable: false} as const satisfies TuiDialogOptions;
+            ",
+  "1. After": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options = {closable: false} as const satisfies TuiDialogOptions;
+            ",
+}
+`;
+
+exports[`ng-update closeable assertions unwraps \`as const\` for an explicitly typed dialog options declaration: test.ts 1`] = `
+{
+  "0. Before": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options: TuiDialogOptions = {closeable: true} as const;
+            ",
+  "1. After": "
+                import type {TuiDialogOptions} from '@taiga-ui/core';
+
+                const options: TuiDialogOptions = {closable: true} as const;
+            ",
+}
+`;
