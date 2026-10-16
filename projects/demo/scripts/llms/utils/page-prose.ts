@@ -214,16 +214,18 @@ async function buildSelectorMap(folderPath: string): Promise<Map<string, string>
 }
 
 // Resolves a `[code]` binding to its imported file: `x = import('…')` or `obj.prop` → `prop: import('…')`.
+// A piped binding (`x | tuiMapper: …`) resolves through its source `x`.
 function resolveImportPath(ts: string, binding: string): string | null {
+    const source = binding.split('|')[0]?.trim() ?? binding;
     const direct = new RegExp(
-        String.raw`\b${escapeReg(binding)}\b\s*=\s*import\(\s*['"]([^'"]+)['"]`,
+        String.raw`\b${escapeReg(source)}\b\s*=\s*import\(\s*['"]([^'"]+)['"]`,
     ).exec(ts)?.[1];
 
     if (direct) {
         return direct;
     }
 
-    const key = binding.split('.').pop() ?? binding;
+    const key = source.split('.').pop() ?? source;
 
     return (
         new RegExp(
@@ -583,10 +585,17 @@ export async function getInlineCodeSnippets(
     const ts = await readIfExists(path.join(folderPath, 'index.ts'));
     const snippets: string[] = [];
 
-    for (const [, binding = ''] of html.matchAll(
-        /<tui-doc-code\b[^>]*\[code\]="([^"]+)"/gi,
+    for (const [, attribute, binding = ''] of html.matchAll(
+        /<tui-doc-code\b[^>]*?\s(\[code\]|code)="([^"]+)"/gi,
     )) {
         const value = binding.trim();
+
+        // A static `code="…"` attribute is the command itself (e.g. a migration schematic).
+        if (attribute === 'code') {
+            snippets.push(`\`\`\`\n${decodeEntities(value)}\n\`\`\``);
+
+            continue;
+        }
 
         if (value.startsWith('`') && value.endsWith('`')) {
             const inline = value
