@@ -1,6 +1,7 @@
 import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiList} from '@taiga-ui/layout';
@@ -16,7 +17,7 @@ const INIT_CLIENTS = [
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiList, TuiNotification, TuiTabs],
+    imports: [TuiDemo, TuiList, TuiMapperPipe, TuiNotification, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['../styles.less'],
     changeDetection,
@@ -43,4 +44,11 @@ export default class Page {
     protected readonly mcpCodex = import('./snippets/mcp-codex.md?raw');
     protected readonly mcpOpencode = import('./snippets/mcp-opencode.md?raw');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md?raw');
+
+    protected readonly forClient = async (
+        snippet: Promise<{default: string}>,
+        client: string,
+    ): Promise<{default: string}> => ({
+        default: (await snippet).default.replace('<client>', client),
+    });
 }
