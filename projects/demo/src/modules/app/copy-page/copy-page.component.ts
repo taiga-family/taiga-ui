@@ -6,8 +6,9 @@ import {
     computed,
     effect,
     inject,
-    signal,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -16,8 +17,11 @@ import {
     tuiGroupOptionsProvider,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {PageMarkdown} from './page-markdown.service';
+
+const COPIED_TIMEOUT = 2000;
 
 @Component({
     standalone: true,
@@ -33,9 +37,19 @@ export class CopyPage {
     private readonly clipboard = inject(Clipboard);
     private readonly cache = new Map<string, string>();
     private readonly doc = inject(DOCUMENT);
+    private readonly copied$ = new Subject<void>();
 
     protected open = false;
-    protected readonly copied = signal(false);
+    // Each copy restarts the "Copied!" timeout; the subscription ends with the component.
+    protected readonly copied = toSignal(
+        this.copied$.pipe(
+            switchMap(() =>
+                timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
+            ),
+        ),
+        {initialValue: false},
+    );
+
     protected readonly icons = {
         copy: '@tui.copy',
         chevron: '@tui.chevron-down',
@@ -81,8 +95,7 @@ export class CopyPage {
         }
 
         this.cache.set(url, markdown);
-        this.copied.set(true);
-        setTimeout(() => this.copied.set(false), 2000);
+        this.copied$.next();
     }
 
     private async fetchMarkdown(url: string): Promise<string | null> {
