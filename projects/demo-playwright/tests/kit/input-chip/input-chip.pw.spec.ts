@@ -19,6 +19,25 @@ test.describe('InputChip', () => {
     test.describe('Examples', () => {
         test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.InputChip));
 
+        test('horizontal textfield keeps its label and values visible', async ({
+            page,
+        }) => {
+            const doc = new TuiDocumentationPagePO(page);
+            const textfield = doc
+                .getExample('#basic')
+                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
+                .first();
+
+            await expect(textfield).toHaveAttribute('style', /--t-item-height:/);
+            await expect(textfield).toHaveCSS('height', '56px');
+
+            await page.evaluate(() =>
+                document.documentElement.style.setProperty('--t-font-offset', '12'),
+            );
+
+            await expect(textfield).toHaveCSS('height', '86px');
+        });
+
         test('errors / overflow visual state (basic)', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
             const basic = doc.getExample('#basic');
@@ -113,6 +132,31 @@ test.describe('InputChip', () => {
     });
 
     test.describe('API', () => {
+        test.describe('horizontal mode', () => {
+            for (const [size, height] of [
+                ['s', 32],
+                ['m', 44],
+                ['l', 56],
+            ] as const) {
+                test(`keeps ${size} textfield height with chips`, async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputChip}/API?rows=1&tuiTextfieldSize=${size}`,
+                    );
+                    const example = new TuiDocumentationApiPagePO(page).demo;
+                    const inputChip = new TuiInputChipEO(example);
+                    const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST);
+
+                    await expect(textfield).toHaveCSS('height', `${height}px`);
+
+                    await inputChip.input.fill('one,two,three');
+                    await inputChip.input.press('Enter');
+                    await expect(inputChip.chips).toHaveCount(3);
+                    await expect(textfield).toHaveCSS('height', `${height}px`);
+                });
+            }
+        });
+
         test('custom separator', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputChip}/API?separator=-`);
             const example = new TuiDocumentationApiPagePO(page).demo;
