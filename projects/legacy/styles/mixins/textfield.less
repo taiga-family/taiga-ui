@@ -2,7 +2,7 @@
     position: relative;
     display: block;
     text-align: start;
-    border-radius: var(--tui-radius-m);
+    border-radius: var(--t-round, var(--tui-radius-m));
     block-size: var(--tui-height);
     min-block-size: var(--tui-height);
     max-block-size: var(--tui-height);
@@ -23,8 +23,8 @@
 
     &[data-size='l'] {
         --tui-height: var(--tui-height-l);
+        --t-round: var(--tui-radius-l);
 
-        border-radius: var(--tui-radius-l);
         font: var(--tui-font-text-ui-m);
         line-height: 1.25rem;
     }
