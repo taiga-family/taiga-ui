@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82830],{82830:n=>{n.exports='<nav\n    tuiTabBar\n    [(activeItemIndex)]="activeItemIndex"\n>\n    <button\n        *ngFor="let item of items"\n        tuiTabBarItem\n        type="button"\n        [icon]="item.icon"\n    >\n        {{ item.text }}\n    </button>\n</nav>\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57992],{57992:e=>{e.exports="<label>\n    <b>Your browser is:</b>\n</label>\n\n<p>{{ aboutMyBrowser }}</p>\n"}}]);

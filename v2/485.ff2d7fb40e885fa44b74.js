@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[485],{gzNp:function(n,o,a){"use strict";a.r(o),o.default=".card {\n    background-color: var(--tui-base-02);\n}\n"}}]);

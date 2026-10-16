@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75812],{75812:e=>{e.exports='```toml\n[mcp_servers.taiga-ui]\ncommand = "npx"\nargs = ["-y", "@taiga-ui/mcp@latest", "--source-url=https://taiga-ui.dev/llms-full.txt"]\n```\n'}}]);

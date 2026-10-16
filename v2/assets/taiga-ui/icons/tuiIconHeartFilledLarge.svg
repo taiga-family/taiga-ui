@@ -1,0 +1,15 @@
+<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconHeartFilledLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="currentColor" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <path
+                    d="M21.291 4.612a5.5 5.5 0 0 0-7.78 0l-1.06 1.06-1.06-1.06a5.501 5.501 0 0 0-7.78 7.78l1.06 1.06 7.78 7.78 7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

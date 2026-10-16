@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77181],{77181:n=>{n.exports='<button\n    appearance="outline"\n    tuiButton\n    type="button"\n    (click)="playing = !playing"\n>\n    Pulse\n    <tui-pulse [playing]="playing" />\n</button>\n'}}]);
