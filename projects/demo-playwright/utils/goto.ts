@@ -132,12 +132,8 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
-
-    await waitIcons({
-        page,
-        timeout: 200,
-        icons: await page.locator('tui-icon').all(),
-    });
+    await tuiWaitForRoutedPage(page);
+    await waitIcons({page});
 
     await tuiWaitForFonts(page);
     await waitStableState(app);
@@ -195,4 +191,15 @@ export async function tuiGoto(
     }
 
     return response;
+}
+
+/**
+ * `load` fires while only the app shell is rendered: the routed page arrives later
+ * through a waterfall of lazy chunks, which takes seconds on a busy CI runner
+ */
+async function tuiWaitForRoutedPage(page: Page): Promise<void> {
+    await expect(page.locator('router-outlet + *').first()).toBeAttached({
+        timeout: 30_000,
+    });
+    await page.waitForLoadState('networkidle', {timeout: 30_000});
 }
