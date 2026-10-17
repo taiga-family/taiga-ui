@@ -26,6 +26,7 @@ import {TuiDropdownSheet} from './dropdown-sheet.directive';
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiSheetDialogService],
 })
 export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
