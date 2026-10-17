@@ -26,6 +26,8 @@ import {TuiDropdownSheet} from './dropdown-sheet.directive';
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    // Own instance opens the sheet inside the dropdown injector, so it joins the dropdown active zone
+    providers: [TuiSheetDialogService],
 })
 export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);

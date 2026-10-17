@@ -78,4 +78,21 @@ describe('TuiDropdownSheet', () => {
 
         fixture.destroy();
     }));
+
+    // The opened sheet covers the trigger, so a still mouse pointer "leaves" it into the sheet
+    it('stays open when the pointer moves from the trigger into the sheet', fakeAsync(() => {
+        hover();
+        expect(sheet()).not.toBeNull();
+
+        button().dispatchEvent(
+            new MouseEvent('mouseout', {bubbles: true, relatedTarget: sheet()}),
+        );
+        tick();
+        fixture.detectChanges();
+        tick();
+
+        expect(sheet()).not.toBeNull();
+
+        fixture.destroy();
+    }));
 });
