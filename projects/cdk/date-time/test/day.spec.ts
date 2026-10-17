@@ -832,6 +832,34 @@ describe('TuiDay', () => {
                     expect(result.day).toBe(31);
                 });
 
+                it('clamps February 29 when changing years', () => {
+                    const day = new TuiDay(2024, 1, 29);
+
+                    expect(day.append({year: 1}).toJSON()).toBe('2025-02-28');
+                    expect(day.append({year: -1}).toJSON()).toBe('2023-02-28');
+                    expect(day.append({month: 12}).toJSON()).toBe('2025-02-28');
+                    expect(day.append({month: -12}).toJSON()).toBe('2023-02-28');
+                });
+
+                it('preserves February 29 when moving to a leap year', () => {
+                    const day = new TuiDay(2024, 1, 29);
+
+                    expect(day.append({year: 4}).toJSON()).toBe('2028-02-29');
+                });
+
+                it('applies day offsets after clamping February 29', () => {
+                    const day = new TuiDay(2024, 1, 29);
+
+                    expect(day.append({year: 1, day: 1}).toJSON()).toBe('2025-03-01');
+                    expect(day.append({year: 1, day: -1}).toJSON()).toBe('2025-02-27');
+                });
+
+                it('keeps February 28 when adding a year', () => {
+                    const day = new TuiDay(2024, 1, 28);
+
+                    expect(day.append({year: 1}).toJSON()).toBe('2025-02-28');
+                });
+
                 it('TuiDay {year: 2018, month: 1, day: 28} if {month: 1}', () => {
                     const result = new TuiDay(2018, 0, 31).append({month: 1});
 
