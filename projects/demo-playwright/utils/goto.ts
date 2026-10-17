@@ -36,6 +36,10 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
      * and cover the legacy JS positioning path
      */
     anchorPositioning?: boolean;
+    /**
+     * Pass `false` when the test keeps a request pending on purpose
+     */
+    networkIdle?: boolean;
 }
 
 export async function tuiGoto(
@@ -48,6 +52,7 @@ export async function tuiGoto(
         hideVersionManager = false,
         hideText = !!process.env.PW_HIDE_TEXT,
         anchorPositioning = true,
+        networkIdle = true,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -132,7 +137,7 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
-    await tuiWaitForRoutedPage(page);
+    await tuiWaitForRoutedPage(page, networkIdle);
     await waitIcons({page});
 
     await tuiWaitForFonts(page);
@@ -197,9 +202,12 @@ export async function tuiGoto(
  * `load` fires while only the app shell is rendered: the routed page arrives later
  * through a waterfall of lazy chunks, which takes seconds on a busy CI runner
  */
-async function tuiWaitForRoutedPage(page: Page): Promise<void> {
+async function tuiWaitForRoutedPage(page: Page, networkIdle: boolean): Promise<void> {
     await expect(page.locator('router-outlet + *').first()).toBeAttached({
         timeout: 30_000,
     });
-    await page.waitForLoadState('networkidle', {timeout: 30_000});
+
+    if (networkIdle) {
+        await page.waitForLoadState('networkidle', {timeout: 30_000});
+    }
 }
