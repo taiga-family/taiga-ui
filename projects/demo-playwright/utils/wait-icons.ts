@@ -22,24 +22,32 @@ export async function waitIcons({
         return;
     }
 
-    await page.evaluate(
-        async ({urls, timeout}) =>
-            Promise.race([
+    const decoded = await page.evaluate(
+        async ({urls, timeout}) => {
+            const done: string[] = [];
+
+            await Promise.race([
                 Promise.all(
                     urls.map(async (src) => {
                         const image = new Image();
 
                         image.src = src;
 
-                        return image.decode().catch(() => {});
+                        return image.decode().then(
+                            () => done.push(src),
+                            () => {},
+                        );
                     }),
                 ),
                 new Promise((resolve) => setTimeout(resolve, timeout)),
-            ]),
+            ]);
+
+            return done;
+        },
         {urls, timeout},
     );
 
-    urls.forEach((url) => cache.add(url));
+    decoded.forEach((url) => cache.add(url));
 }
 
 function getUrls(elements: Element[]): string[] {
