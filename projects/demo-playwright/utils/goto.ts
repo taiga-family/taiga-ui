@@ -204,10 +204,10 @@ async function tuiWaitForRoutedPage(page: Page, networkIdle: boolean): Promise<v
         return;
     }
 
-    await page.waitForLoadState('networkidle', {timeout: 10_000}).catch(() =>
+    await page.waitForLoadState('networkidle', {timeout: 10_000}).catch(() => {
         test.info().annotations.push({
             type: 'warning',
             description: `tuiGoto: network is still busy on ${page.url()}`,
-        }),
-    );
+        });
+    });
 }
