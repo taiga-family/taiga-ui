@@ -63,8 +63,14 @@ function getUrls(elements: Element[]): string[] {
 
         return values.flatMap((value) =>
             Array.from(
-                value.matchAll(/url\(["']?([^"')]+)["']?\)/g),
-                ([, url = '']) => new URL(url, document.baseURI).href,
+                value.matchAll(
+                    /url\((?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'|([^)\s]+))\)/g,
+                ),
+                ([, double, single, unquoted]) =>
+                    new URL(
+                        (double ?? single ?? unquoted ?? '').replaceAll(/\\(.)/g, '$1'),
+                        document.baseURI,
+                    ).href,
             ),
         );
     });
