@@ -1,6 +1,6 @@
 import {existsSync, readFileSync} from 'node:fs';
 
-import {expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
@@ -200,7 +200,14 @@ async function tuiWaitForRoutedPage(page: Page, networkIdle: boolean): Promise<v
         timeout: 30_000,
     });
 
-    if (networkIdle) {
-        await page.waitForLoadState('networkidle', {timeout: 30_000});
+    if (!networkIdle) {
+        return;
     }
+
+    await page.waitForLoadState('networkidle', {timeout: 10_000}).catch(() =>
+        test.info().annotations.push({
+            type: 'warning',
+            description: `tuiGoto: network is still busy on ${page.url()}`,
+        }),
+    );
 }
