@@ -1,6 +1,7 @@
 import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiList} from '@taiga-ui/layout';
@@ -16,7 +17,7 @@ const INIT_CLIENTS = [
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiList, TuiNotification, TuiTabs],
+    imports: [TuiDemo, TuiList, TuiMapperPipe, TuiNotification, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['../styles.less'],
     changeDetection,
@@ -27,8 +28,8 @@ export default class Page {
         () => INIT_CLIENTS[this.activeItemIndex()] ?? null,
     );
 
-    protected readonly mcpInit = computed(() => this.initCommand());
-    protected readonly mcpInitV4 = computed(() => this.initCommand('v4'));
+    protected readonly mcpInit = import('./snippets/mcp-init.md?raw');
+    protected readonly mcpInitV4 = import('./snippets/mcp-init-v4.md?raw');
     protected readonly mcpInitInteractive =
         import('./snippets/mcp-init-interactive.md?raw');
 
@@ -44,14 +45,10 @@ export default class Page {
     protected readonly mcpOpencode = import('./snippets/mcp-opencode.md?raw');
     protected readonly mcpStandard = import('./snippets/mcp-standard.md?raw');
 
-    private initCommand(version?: string): string {
-        const client = this.versionClient() ?? '<client>';
-        const flag = version ? ` --version ${version}` : '';
-
-        return [
-            '```bash',
-            `npx @taiga-ui/mcp init --client ${client}${flag}`,
-            '```',
-        ].join('\n');
-    }
+    protected readonly forClient = async (
+        snippet: Promise<{default: string}>,
+        client: string,
+    ): Promise<{default: string}> => ({
+        default: (await snippet).default.replace('<client>', client),
+    });
 }

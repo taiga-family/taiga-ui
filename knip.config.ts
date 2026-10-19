@@ -37,6 +37,7 @@ const config: KnipConfig = {
         '**/tokens/icon-resolver.ts',
         '**/tokens/common-icons.ts',
         '**/app/logo/logo.component.ts',
+        '**/app/copy-page/copy-page.component.ts',
         '**/app/server-error-handler.ts',
         '**/app/getting-started/index.ts',
         '**/demo-playwright/utils/**/*.ts',

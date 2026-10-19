@@ -22,6 +22,7 @@ import {
 } from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {
+    TUI_DOC_ACTIONS,
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_DIRECTION_ENABLED,
@@ -57,6 +58,7 @@ import {filter, merge} from 'rxjs';
 import {AuthService} from '../components/dialog-experimental/examples/5/service';
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
+import {PAGE_ACTIONS_CONTENT} from './copy-page/copy-page.component';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
@@ -161,6 +163,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_LOGO,
             useValue: LOGO_CONTENT,
+        },
+        {
+            provide: TUI_DOC_ACTIONS,
+            useValue: PAGE_ACTIONS_CONTENT,
         },
         {
             provide: TUI_DOC_DIRECTION_ENABLED,
