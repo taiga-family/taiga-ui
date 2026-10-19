@@ -1,6 +1,6 @@
 import {existsSync, readFileSync} from 'node:fs';
 
-import {expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
@@ -36,6 +36,7 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
      * and cover the legacy JS positioning path
      */
     anchorPositioning?: boolean;
+    networkIdle?: boolean;
 }
 
 export async function tuiGoto(
@@ -48,6 +49,7 @@ export async function tuiGoto(
         hideVersionManager = false,
         hideText = !!process.env.PW_HIDE_TEXT,
         anchorPositioning = true,
+        networkIdle = true,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -132,12 +134,8 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
-
-    await waitIcons({
-        page,
-        timeout: 200,
-        icons: await page.locator('tui-icon').all(),
-    });
+    await waitForRoutedPage(page, networkIdle);
+    await waitIcons({page});
 
     await tuiWaitForFonts(page);
     await waitStableState(app);
@@ -195,4 +193,21 @@ export async function tuiGoto(
     }
 
     return response;
+}
+
+async function waitForRoutedPage(page: Page, networkIdle: boolean): Promise<void> {
+    await expect(page.locator('router-outlet + *').first()).toBeAttached({
+        timeout: 30_000,
+    });
+
+    if (!networkIdle) {
+        return;
+    }
+
+    await page.waitForLoadState('networkidle', {timeout: 10_000}).catch(() => {
+        test.info().annotations.push({
+            type: 'warning',
+            description: `tuiGoto: network is still busy on ${page.url()}`,
+        });
+    });
 }
