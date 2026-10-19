@@ -43,7 +43,7 @@ async function createDispatcher(caUrl: string): Promise<Agent> {
     const response = await fetchWithRetry({url: caUrl});
     const caBundle = await response.text();
 
-    return new Agent({connect: {ca: [...tls.rootCertificates, caBundle]}});
+    return new Agent({connect: {ca: [...tls.getCACertificates('default'), caBundle]}});
 }
 
 export async function downloadFonts(
