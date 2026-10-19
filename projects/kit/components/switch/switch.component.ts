@@ -29,7 +29,6 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     host: {
         role: 'switch',
         '[attr.switch]': 'native ? "" : null',
-        '[class._native]': 'native',
     },
 })
 export class TuiSwitch extends TuiRadioComponent<TuiSwitchOptions> {
