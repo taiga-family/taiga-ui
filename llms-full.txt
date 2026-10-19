@@ -3520,6 +3520,14 @@ tui-segmented {
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
 </tui-app-bar>
 <tui-app-bar>
+<button title="Back" tuiAppBarBack tuiSlot="left" type="button" ></button> Taiga <div tuiAppBarButton tuiSlot="right" >
+<button iconStart="@tui.user" tuiIconButton type="button" > User </button>
+</div>
+<div tuiAppBarButton tuiSlot="right" >
+<button tuiButton type="button" > Action </button>
+</div>
+</tui-app-bar>
+<tui-app-bar>
 <label tuiTitle> Taiga UI <span tuiSubtitle>Components library</span>
 </label>
 <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" ></button>
