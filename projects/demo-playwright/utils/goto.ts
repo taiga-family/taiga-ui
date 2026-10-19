@@ -134,7 +134,7 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
-    await tuiWaitForRoutedPage(page, networkIdle);
+    await waitForRoutedPage(page, networkIdle);
     await waitIcons({page});
 
     await tuiWaitForFonts(page);
@@ -195,7 +195,7 @@ export async function tuiGoto(
     return response;
 }
 
-async function tuiWaitForRoutedPage(page: Page, networkIdle: boolean): Promise<void> {
+async function waitForRoutedPage(page: Page, networkIdle: boolean): Promise<void> {
     await expect(page.locator('router-outlet + *').first()).toBeAttached({
         timeout: 30_000,
     });
