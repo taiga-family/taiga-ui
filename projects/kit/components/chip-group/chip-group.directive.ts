@@ -1,0 +1,68 @@
+import {
+    type AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    input,
+    ViewEncapsulation,
+} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
+
+const OPTIONS = {
+    behavior: 'smooth',
+    block: 'nearest',
+    container: 'nearest',
+    inline: 'center',
+} as const;
+
+@Component({
+    template: '',
+    styles: `
+        [data-tui-version='${TUI_VERSION}'] {
+            @import './chip-group.styles.less';
+        }
+    `,
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs: `tui-chip-group-${TUI_VERSION}`,
+})
+class Styles {}
+
+@Directive({
+    selector: '[tuiChipGroup]',
+    providers: [tuiChipOptionsProvider({appearance: 'secondary-grayscale'})],
+    host: {
+        'data-tui-version': TUI_VERSION,
+        '[attr.data-platform]': 'platform',
+        '[class._grid]': 'columns() !== null',
+        '[class._horizontal]': 'horizontal()',
+        '[style.--tui-chip-group-columns]': 'columns()',
+        '(click)': 'onClick($event.target)',
+    },
+})
+export class TuiChipGroup implements AfterViewInit {
+    private readonly el = tuiInjectElement();
+
+    protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly platform = inject(TUI_PLATFORM);
+
+    public readonly autoscroll = input(false);
+    public readonly columns = input<number | null>(null);
+    public readonly horizontal = input(false);
+
+    public ngAfterViewInit(): void {
+        this.el.classList.add('_initialized');
+    }
+
+    protected onClick(target: HTMLElement): void {
+        if (this.autoscroll() && this.horizontal()) {
+            // Safari bug
+            setTimeout(() => target.scrollIntoView(OPTIONS));
+        }
+    }
+}
