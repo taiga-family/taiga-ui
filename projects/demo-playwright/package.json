@@ -4,6 +4,7 @@
     "devDependencies": {
         "@axe-core/playwright": "4.13.0",
         "@playwright/test": "1.62.1",
-        "axe-playwright": "2.2.2"
+        "axe-playwright": "2.2.2",
+        "undici": "*"
     }
 }
