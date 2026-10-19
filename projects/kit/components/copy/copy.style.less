@@ -33,12 +33,6 @@
 .t-content {
     .transition(~'opacity, mask');
 
-    .safari-only({
-        display: inline-block;
-        max-inline-size: 100%;
-        will-change: opacity;
-    });
-
     mask-image:
         linear-gradient(
             to var(--tui-inline-start),
@@ -53,6 +47,7 @@
         );
     mask-repeat: no-repeat;
     mask-position: calc(var(--tui-inline) * 2 * var(--t-size)), 0;
+    will-change: opacity;
 }
 
 .t-button {
