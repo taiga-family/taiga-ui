@@ -1,0 +1,234 @@
+# Radio
+
+- **Package**: `KIT`
+- **Type**: components
+
+A radio component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add `name` attribute to your `input` tag, unless you are using `formControlName`
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiRadio} from '@taiga-ui/kit';
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiRadio,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<input
+  tuiRadio
+  type="radio"
+  [(ngModel)]="value"
+/>
+```
+
+### Usage Examples
+
+#### Platforms
+
+**Template:**
+```html
+<div *ngFor="let platform of platforms; let first = first" class="wrapper" [class.wrapper_web]="platform === 'web'" [tuiPlatform]="platform" > {{ platform }} <input ngModel="checked" tuiRadio type="radio" value="checked" [size]="getSize(first)" />
+<input ngModel="checked" tuiRadio type="radio" value="checked" [disabled]="true" [size]="getSize(first)" />
+<input tuiRadio type="radio" [size]="getSize(first)" />
+<input ngModel="checked" tuiRadio type="radio" [disabled]="true" [size]="getSize(first)" />
+<input tuiRadio type="radio" [formControl]="invalidTrue" [size]="getSize(first)" [value]="true" />
+<input tuiRadio type="radio" [formControl]="invalidFalse" [size]="getSize(first)" [value]="true" />
+</div>
+```
+
+**TypeScript:**
+```ts
+import {NgForOf} from '@angular/common';
+import {Component, type OnInit} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
+import {type TuiSizeS} from '@taiga-ui/core';
+import {TuiRadio} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, NgForOf, ReactiveFormsModule, TuiPlatform, TuiRadio],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example implements OnInit {
+    protected readonly platforms: ReadonlyArray<'android' | 'ios' | 'web'> = [
+        'web',
+        'web',
+        'ios',
+        'android',
+    ];
+
+    protected readonly invalidTrue = new FormControl(true, () => ({invalid: true}));
+    protected readonly invalidFalse = new FormControl(false, () => ({invalid: true}));
+
+    public ngOnInit(): void {
+        this.invalidTrue.markAsTouched();
+        this.invalidFalse.markAsTouched();
+    }
+
+    protected getSize(first: boolean): TuiSizeS {
+        return first ? 'm' : 's';
+    }
+}
+```
+
+**LESS:**
+```less
+:host {
+    display: flex;
+
+    --tui-background-accent-2: var(--tui-status-info);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-border-normal);
+        border-inline-start-width: 0;
+
+        &:first-child {
+            border-inline-end-width: 0;
+            border-inline-start-width: 1px;
+        }
+    }
+}
+```
+
+#### Identity matcher
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="value = {test: 'value'}" > Set copy </button>
+<p>
+<label tuiLabel>
+<input name="test" tuiRadio type="radio" [identityMatcher]="identityMatcher" [value]="{test: 'value'}" [(ngModel)]="value" /> value </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="test" tuiRadio type="radio" [identityMatcher]="identityMatcher" [value]="{test: 'test'}" [(ngModel)]="value" /> test </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="test" tuiRadio type="radio" [identityMatcher]="identityMatcher" [value]="{test: 'item'}" [(ngModel)]="value" /> item </label>
+</p>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiLabel} from '@taiga-ui/core';
+import {TuiRadio} from '@taiga-ui/kit';
+
+interface TestValue {
+    test: string;
+}
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiButton, TuiLabel, TuiRadio],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value: TestValue | null = null;
+    protected identityMatcher = (a: TestValue, b: TestValue): boolean =>
+        a?.test === b?.test;
+}
+```
+
+#### List
+
+**Template:**
+```html
+<form [formGroup]="form">
+<tui-radio-list formControlName="vertical" [itemContent]="content" [items]="objects" />
+<ng-template #content let-data >
+<span tuiTitle> {{ data.name }} <span tuiSubtitle>{{ data.description }}</span>
+</span>
+</ng-template>
+<hr class="tui-space_vertical-4" />
+<tui-radio-list formControlName="disabled" [items]="strings" />
+<hr class="tui-space_vertical-4" />
+</form>
+<tui-radio-list size="s" [disabledItemHandler]="handler" [items]="strings" [style.flex-direction]="'row'" [style.width]="'max-content'" [(ngModel)]="horizontal" />
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiRadioList} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiRadioList, TuiTitle],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly form = new FormGroup({
+        vertical: new FormControl(null, Validators.required),
+        disabled: new FormControl({value: null, disabled: true}),
+    });
+
+    protected readonly objects = [
+        {
+            name: 'King Arthur',
+            description: 'Graham Chapman',
+        },
+        {
+            name: "It's Man",
+            description: 'Michael Palin',
+        },
+        {
+            name: 'Silly Walks',
+            description: 'John Cleese',
+        },
+    ];
+
+    protected readonly strings = ['King Arthur', "It's Man", 'Silly Walks'];
+
+    protected horizontal = this.strings[0]!;
+
+    protected readonly handler: TuiBooleanHandler<string> = (item) =>
+        item === this.strings[2]!;
+}
+```
