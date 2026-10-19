@@ -24,4 +24,22 @@
     &:has(> label:active) {
         scale: 0.95;
     }
+
+    &[data-size='m'] [tuiAvatar] {
+        tui-icon {
+            --tui-icon-size: 1.75rem;
+        }
+
+        [tuiIconButton] {
+            --tui-icon-size: 1.5rem;
+        }
+
+        tui-loader {
+            --t-diameter: 1.5em;
+        }
+
+        tui-progress-circle {
+            --t-diameter: 1.375rem;
+        }
+    }
 }
