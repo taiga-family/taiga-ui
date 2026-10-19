@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.29.0](https://github.com/taiga-family/taiga-ui/compare/v5.28.0...v5.29.0) (2026-10-19)
+
+### 🚀 Features
+
+- **addon-mobile:** `SearchBar` add options ([#15235](https://github.com/taiga-family/taiga-ui/issues/15235))
+  ([82afbe2](https://github.com/taiga-family/taiga-ui/commit/82afbe253cc4afb2f815c681e8cf82d454707819))
+- **addon-mobile:** add ability to use separate buttons in liquid glass app bar
+  ([#15226](https://github.com/taiga-family/taiga-ui/issues/15226))
+  ([1e9bb71](https://github.com/taiga-family/taiga-ui/commit/1e9bb7124d0950f68cebf5929afaf497b7c0524a))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** render SVG sectors synchronously with reduced motion
+  ([#15215](https://github.com/taiga-family/taiga-ui/issues/15215))
+  ([46a3d01](https://github.com/taiga-family/taiga-ui/commit/46a3d0191e47d611c9d9d656f92256741c0b8856))
+- **addon-mobile:** `AppBar` fix liquid glass button padding
+  ([#15223](https://github.com/taiga-family/taiga-ui/issues/15223))
+  ([7552778](https://github.com/taiga-family/taiga-ui/commit/7552778a5e1d3fefc3975bfd9d6d7bdb4c8b1f3a))
+- **addon-mobile:** `DropdownSheet` no longer closes and reopens in a loop under a hovering pointer
+  ([#15248](https://github.com/taiga-family/taiga-ui/issues/15248))
+  ([65b019c](https://github.com/taiga-family/taiga-ui/commit/65b019c3b76f10413ae85dd6048e5d5c325856c5))
+- **addon-mobile:** `Searchbar` sync icon color ([#15230](https://github.com/taiga-family/taiga-ui/issues/15230))
+  ([7d9f62f](https://github.com/taiga-family/taiga-ui/commit/7d9f62ff72edbd816bff67d4914241ddfdcdbb60))
+- **addon-mobile:** fix `LiquidGlass` button brightness
+  ([#15238](https://github.com/taiga-family/taiga-ui/issues/15238))
+  ([8249323](https://github.com/taiga-family/taiga-ui/commit/8249323a7f7c4175050501a413f6edcff43a06e0))
+- **cdk:** round negative values to the closest quantum
+  ([#15214](https://github.com/taiga-family/taiga-ui/issues/15214))
+  ([779b362](https://github.com/taiga-family/taiga-ui/commit/779b362bcd1b0a1cb56aa18d240a899594813c72))
+- **kit:** `Switch` use native safari switch only with liquid glass option
+  ([#15243](https://github.com/taiga-family/taiga-ui/issues/15243))
+  ([0938bc6](https://github.com/taiga-family/taiga-ui/commit/0938bc6a9fd78a03b3c563170cd39b44abecf6e6))
+- **kit:** fix Copy button and wrapped text rendering in Safari
+  ([#15183](https://github.com/taiga-family/taiga-ui/issues/15183))
+  ([238275f](https://github.com/taiga-family/taiga-ui/commit/238275f7de9cfbbbff0c70d1526afc506a1e7661))
+- **layout:** `AppBar` align title to start when it overflows on iOS liquid glass
+  ([#15166](https://github.com/taiga-family/taiga-ui/issues/15166))
+  ([d4850a6](https://github.com/taiga-family/taiga-ui/commit/d4850a6a469fa8ccef4bd9f9cb9840110906e64d))
+
 ## [5.28.0](https://github.com/taiga-family/taiga-ui/compare/v5.27.0...v5.28.0) (2026-10-12)
 
 ### 🚀 Features
