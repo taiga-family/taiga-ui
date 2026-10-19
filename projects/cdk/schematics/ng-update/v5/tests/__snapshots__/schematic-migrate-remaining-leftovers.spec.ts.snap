@@ -93,7 +93,7 @@ exports[`ng-update remaining v5 leftovers (#11917) renames leftover core/kit/tes
                     }
                 }
             ",
-  "1. After": "import { tuiSwitchNgDevMode } from "@taiga-ui/jest-config";
+  "1. After": "import { tuiSwitchNgDevMode } from "@taiga-ui/jest-config/angular";
 import { tuiAutoColor } from "@taiga-ui/kit";
 
                 import {Component} from '@angular/core';
