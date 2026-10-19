@@ -23,7 +23,7 @@ test.describe('TuiSwitch', () => {
 
                 // Exercise native iOS styles in browsers without native switches too.
                 await input.evaluate((element, value) => {
-                    element.classList.add('_native');
+                    element.setAttribute('switch', '');
                     element.setAttribute('data-size', value);
                 }, size);
 
