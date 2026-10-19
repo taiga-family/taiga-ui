@@ -7,11 +7,15 @@
             {{ text }}
         </ng-container>
     }
-    @for (child of children(); track trackBy()($index, child)) {
-        <tui-tree
-            [content]="content()"
-            [trackBy]="trackBy()"
-            [value]="child"
-        />
+    @if (children().length) {
+        <ng-template tuiItem>
+            @for (child of children(); track trackBy()($index, child)) {
+                <tui-tree
+                    [content]="content()"
+                    [trackBy]="trackBy()"
+                    [value]="child"
+                />
+            }
+        </ng-template>
     }
 </tui-tree-item>
