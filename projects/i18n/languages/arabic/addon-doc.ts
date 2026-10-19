@@ -8,4 +8,5 @@ export const TUI_ARABIC_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'انظر أيضاً',
     tocText: 'في هذه الصفحة',
     sourceCodeText: 'الكود المصدري',
+    copyPageTexts: ['نسخ الصفحة', 'تم النسخ!', 'المزيد', 'عرض بصيغة Markdown'],
 };

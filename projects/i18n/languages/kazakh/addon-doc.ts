@@ -8,4 +8,5 @@ export const TUI_KAZAKH_LANGUAGE_ADDON_DOC: TuiLanguageDoc = {
     seeAlsoText: 'Сондай-ақ қараңыз',
     tocText: 'Осы бетте',
     sourceCodeText: 'Бастапқы код',
+    copyPageTexts: ['Бетті көшіру', 'Көшірілді!', 'Тағы', 'Markdown түрінде қарау'],
 };
