@@ -9,6 +9,8 @@ A radio component that is able to imitate native control on mobile platforms. Us
 
 #### Platforms
 
+Add import of `@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less` to your encapsulated global styles to enable power of `TuiPlatform` directive.
+
 **Template:**
 ```html
 @for (platform of platforms; track $index) { <div class="wrapper" [class.wrapper_web]="platform === 'web'" [tuiPlatform]="platform" > {{ platform }} <input ngModel="checked" tuiRadio type="radio" value="checked" [size]="getSize($first)" />
@@ -209,6 +211,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Use `tuiRadioOptionsProvider` to override the colors of the radio button with appearance colors
 
 **Template:**
 ```html

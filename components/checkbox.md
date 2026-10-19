@@ -198,6 +198,8 @@ label {
 
 #### Example 4
 
+Use `tuiCheckboxOptionsProvider` to override the colors of the checkbox with appearance colors
+
 **Template:**
 ```html
 <input tuiCheckbox type="checkbox" [(ngModel)]="checked" />

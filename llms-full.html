@@ -1091,7 +1091,7 @@
 ### search-bar
 
 ```text
-  TuiSearchBar, TuiSearchBarComponent, TuiSearchBarInput
+  TuiSearchBar, TuiSearchBarComponent, TuiSearchBarInput, TuiSearchBarOptions
 ```
 ### sheet-dialog
 
@@ -2765,6 +2765,14 @@ tui-segmented {
 &lt;tui-app-bar&gt;
 &lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga UI dev &lt;button iconStart=&quot;@tui.user&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt; User &lt;/button&gt;
 &lt;button iconStart=&quot;@tui.settings&quot; title=&quot;Settings&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;tui-app-bar&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt; Taiga &lt;div tuiAppBarButton tuiSlot=&quot;end&quot; &gt;
+&lt;button iconStart=&quot;@tui.user&quot; tuiIconButton type=&quot;button&quot; &gt; User &lt;/button&gt;
+&lt;/div&gt;
+&lt;div tuiAppBarButton tuiSlot=&quot;end&quot; &gt;
+&lt;button tuiButton type=&quot;button&quot; &gt; Action &lt;/button&gt;
+&lt;/div&gt;
 &lt;/tui-app-bar&gt;
 &lt;tui-app-bar&gt;
 &lt;label tuiTitle&gt; Taiga UI &lt;span tuiSubtitle&gt;Components library&lt;/span&gt;
@@ -12281,6 +12289,8 @@ label {
 ```
 
 #### Example 4
+
+Use `tuiCheckboxOptionsProvider` to override the colors of the checkbox with appearance colors
 
 **Template:**
 ```html
@@ -39140,6 +39150,8 @@ A radio component that is able to imitate native control on mobile platforms. Us
 
 #### Platforms
 
+Add import of `@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less` to your encapsulated global styles to enable power of `TuiPlatform` directive.
+
 **Template:**
 ```html
 @for (platform of platforms; track $index) { &lt;div class=&quot;wrapper&quot; [class.wrapper_web]=&quot;platform === &#039;web&#039;&quot; [tuiPlatform]=&quot;platform&quot; &gt; {{ platform }} &lt;input ngModel=&quot;checked&quot; tuiRadio type=&quot;radio&quot; value=&quot;checked&quot; [size]=&quot;getSize($first)&quot; /&gt;
@@ -39340,6 +39352,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Use `tuiRadioOptionsProvider` to override the colors of the radio button with appearance colors
 
 **Template:**
 ```html
@@ -45605,6 +45619,8 @@ A switch component that is able to imitate native control on mobile platforms. U
 
 #### Platforms
 
+Add import of `@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less` to your encapsulated global styles to enable power of `TuiPlatform` directive.
+
 **Template:**
 ```html
 @for (platform of platforms; track $index) { &lt;div class=&quot;wrapper&quot; [class.wrapper_web]=&quot;platform === &#039;web&#039;&quot; [tuiPlatform]=&quot;platform&quot; &gt;
@@ -45723,6 +45739,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Use `tuiSwitchOptionsProvider` to override the colors of the switch with appearance colors
 
 **Template:**
 ```html

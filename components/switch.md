@@ -9,6 +9,8 @@ A switch component that is able to imitate native control on mobile platforms. U
 
 #### Platforms
 
+Add import of `@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less` to your encapsulated global styles to enable power of `TuiPlatform` directive.
+
 **Template:**
 ```html
 @for (platform of platforms; track $index) { <div class="wrapper" [class.wrapper_web]="platform === 'web'" [tuiPlatform]="platform" >
@@ -127,6 +129,8 @@ export default class Example {
 ```
 
 #### Customization
+
+Use `tuiSwitchOptionsProvider` to override the colors of the switch with appearance colors
 
 **Template:**
 ```html
