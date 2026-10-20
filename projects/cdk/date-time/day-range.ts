@@ -110,9 +110,9 @@ export class TuiDayRange extends TuiMonthRange {
         for (
             const day = from.toUtcNativeDate();
             day <= to.toUtcNativeDate();
-            day.setDate(day.getDate() + 1)
+            day.setUTCDate(day.getUTCDate() + 1)
         ) {
-            arr.push(TuiDay.fromLocalNativeDate(day));
+            arr.push(TuiDay.fromUtcNativeDate(day));
         }
 
         return arr;
