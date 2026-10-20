@@ -119,6 +119,10 @@
     ::ng-deep [tuiButtonClose] {
         position: absolute;
         inset-inline-start: 0.4375rem;
+
+        &&:not([tuiIconButton][data-appearance='link'])::before {
+            font-size: 1.5rem;
+        }
     }
 
     &:not(:focus-within) ::ng-deep [tuiButtonClose] {
