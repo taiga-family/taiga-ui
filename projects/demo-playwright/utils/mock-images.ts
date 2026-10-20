@@ -17,6 +17,7 @@ const DEFAULT_MOCKS = [
             /.*ng-web-apis.github.io.+svg$/,
             /.*youtube.com.*/,
             /.*flaticon.com.*/,
+            /https:\/\/raw\.githubusercontent\.com\/.+svg$/,
             /.+mp4/,
         ],
         mockImage: `${__dirname}/../stubs/web-api.svg`,
