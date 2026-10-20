@@ -21,23 +21,40 @@ test.describe('Preview', () => {
 
             await expect(preview).toBeAttached();
 
+            const content = preview.locator('.t-wrapper');
             const zoomHint = page.locator('tui-hint').filter({hasText: '%'});
+            const getScale = async (): Promise<number> => {
+                const [, scale] =
+                    /scale\(([\d.]+)\)/.exec(
+                        (await content.getAttribute('style')) ?? '',
+                    ) ?? [];
 
-            await preview.click(); // requires for mouse wheel
-            await page.mouse.wheel(0, -50);
+                return Number(scale ?? 0);
+            };
 
-            await expect(zoomHint).toBeVisible();
+            // the image is inserted through a portal and resets the zoom on arrival,
+            // so it has to be loaded before the wheel is scrolled
             await expect
                 .poll(async () =>
                     preview
                         .locator('img')
                         .evaluateAll((images: HTMLImageElement[]) =>
-                            images.every(
-                                (image) => image.complete && image.naturalWidth > 0,
-                            ),
+                            images.length
+                                ? images.every(
+                                      (image) => image.complete && image.naturalWidth > 0,
+                                  )
+                                : false,
                         ),
                 )
                 .toBe(true);
+
+            const scaleBefore = await getScale();
+
+            await preview.click(); // requires for mouse wheel
+            await page.mouse.wheel(0, -50);
+
+            await expect(zoomHint).toBeVisible();
+            await expect.poll(getScale).toBeGreaterThan(scaleBefore);
             // the zoom percentage hint hides itself one second after the last change
             await expect(zoomHint).toBeHidden();
 
