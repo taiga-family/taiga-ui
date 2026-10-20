@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('TuiRange', () => {
     test.beforeEach(async ({page, browserName}) => {
@@ -18,7 +19,7 @@ test.describe('TuiRange', () => {
         test.describe('change selected range on click', () => {
             test.beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#sizes');
-                range = new TuiRangePO(example.locator('tui-range').first());
+                range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST).first());
             });
 
             test('click on the beginning of the track changes only nearest (left) slider', async () => {
@@ -66,7 +67,7 @@ test.describe('TuiRange', () => {
             test.describe('basic range (from 0 to 100 with 25 steps). Initial value [0, 25]', () => {
                 test.beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#segments');
-                    range = new TuiRangePO(example.locator('tui-range'));
+                    range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST));
                 });
 
                 test('pressing of Arrow Right increases by one step (after focus on right slider)', async ({
@@ -239,7 +240,7 @@ test.describe('TuiRange', () => {
 
                 test.beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#key-steps');
-                    range = new TuiRangePO(example.locator('tui-range'));
+                    range = new TuiRangePO(example.locator(TUI_RANGE_LOCATORS.HOST));
                     output = example.locator('output code');
                 });
 
