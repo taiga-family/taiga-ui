@@ -25,6 +25,7 @@ export class TuiDocHint {
     public readonly directions = [
         ...TUI_HINT_DIRECTIONS,
         ['bottom', 'start'] satisfies TuiHintDirection[],
+        ['bottom', 'top'] satisfies TuiHintDirection[],
     ];
 
     public direction: TuiHintOptions['direction'] =
