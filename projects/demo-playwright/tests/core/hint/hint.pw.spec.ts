@@ -159,6 +159,54 @@ test.describe('TuiHint', () => {
         await expect.soft(example).toHaveScreenshot('07-hint.png');
     });
 
+    [
+        {id: 'arrow-offset-centered', description: 'centered on a 36px host'},
+        {id: 'arrow-offset-start', description: 'aligned to a 100px host'},
+    ].forEach(({id, description}) => {
+        test(`configurable arrow offset is respected when ${description}`, async ({
+            page,
+        }) => {
+            await page.setViewportSize({width: 1280, height: 720});
+            await tuiGoto(page, DemoRoute.Hint);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#arrow-offset');
+            const host = example.locator(`#${id}`);
+
+            await host.scrollIntoViewIfNeeded();
+            await host.hover();
+
+            const hint = page.locator('tui-hint');
+
+            await expect(hint).toBeVisible();
+            await expect
+                .poll(async () => {
+                    const hostRect = await host.boundingBox();
+                    const hintRect = await hint.boundingBox();
+                    const arrowPercent = await hint.evaluate((element) =>
+                        Number.parseFloat(element.style.getPropertyValue('--t-left')),
+                    );
+
+                    if (!hostRect || !hintRect || Number.isNaN(arrowPercent)) {
+                        return null;
+                    }
+
+                    const edgeOffset =
+                        id === 'arrow-offset-centered'
+                            ? hintRect.x + hintRect.width - hostRect.x - hostRect.width
+                            : hintRect.x - hostRect.x;
+
+                    const arrowPosition =
+                        hintRect.x + (hintRect.width * arrowPercent) / 100;
+
+                    return {
+                        edgeAligned: Math.abs(edgeOffset) < 1,
+                        arrowAligned: Math.abs(arrowPosition - hostRect.x - 18) < 1.5,
+                    };
+                })
+                .toEqual({edgeAligned: true, arrowAligned: true});
+        });
+    });
+
     test.describe('Mobile', () => {
         test.use(TUI_PLAYWRIGHT_MOBILE);
 

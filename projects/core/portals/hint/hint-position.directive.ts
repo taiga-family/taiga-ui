@@ -19,7 +19,6 @@ import {
 } from './hint-options.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 22;
 const TOP = 1;
 const LEFT = 0;
 
@@ -58,12 +57,13 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const leftCenter = rect.left + rect.width / 2;
         const topCenter = rect.top + rect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
-        const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
-        const short = rect.height < ARROW_OFFSET * 2 || this.centered();
-        const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
-        const end = narrow ? leftCenter - width + ARROW_OFFSET : rect.right - width;
-        const top = short ? topCenter - ARROW_OFFSET : rect.top;
-        const bottom = short ? topCenter - height + ARROW_OFFSET : rect.bottom - height;
+        const {arrowOffset} = this.options;
+        const narrow = rect.width < arrowOffset * 2 || this.centered();
+        const short = rect.height < arrowOffset * 2 || this.centered();
+        const start = narrow ? leftCenter - arrowOffset : rect.left;
+        const end = narrow ? leftCenter - width + arrowOffset : rect.right - width;
+        const top = short ? topCenter - arrowOffset : rect.top;
+        const bottom = short ? topCenter - height + arrowOffset : rect.bottom - height;
 
         this.points['top-start'][TOP] = rect.top - height - this.offset();
         this.points['top-start'][LEFT] = this.centered() ? end : start;
