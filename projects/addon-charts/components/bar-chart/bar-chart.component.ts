@@ -52,12 +52,6 @@ export class TuiBarChart {
         () => this.hintOptions?.direction() ?? 'top',
     );
 
-    protected readonly hintBelow = computed(() => {
-        const [direction] = [this.hintDirection()].flat();
-
-        return Boolean(direction?.startsWith('bottom'));
-    });
-
     protected readonly drivers = viewChildren(TuiHintHover);
 
     public readonly value = input<ReadonlyArray<readonly number[]>>([]);

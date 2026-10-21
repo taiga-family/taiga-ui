@@ -39,14 +39,15 @@ test.describe('BarChart', () => {
         };
 
         const getCenter = ({x, width}: BoundingBox): number => x + width / 2;
+        const getMiddle = ({y, height}: BoundingBox): number => y + height / 2;
 
         test('start', async ({page}) => {
             const {bars, hint} = await openHint(page, 'start');
 
             expect(hint.x + hint.width).toBeLessThanOrEqual(getCenter(bars));
-            // next to the top of the bars
-            expect(hint.y).toBeLessThan(bars.y);
-            expect(hint.y + hint.height).toBeGreaterThan(bars.y);
+            // next to the middle of the bars
+            expect(hint.y).toBeLessThan(getMiddle(bars));
+            expect(hint.y + hint.height).toBeGreaterThan(getMiddle(bars));
             await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
                 '01-bar-chart-hint-start.png',
             );
@@ -56,9 +57,9 @@ test.describe('BarChart', () => {
             const {bars, hint} = await openHint(page, 'end');
 
             expect(hint.x).toBeGreaterThanOrEqual(getCenter(bars));
-            // next to the top of the bars
-            expect(hint.y).toBeLessThan(bars.y);
-            expect(hint.y + hint.height).toBeGreaterThan(bars.y);
+            // next to the middle of the bars
+            expect(hint.y).toBeLessThan(getMiddle(bars));
+            expect(hint.y + hint.height).toBeGreaterThan(getMiddle(bars));
             await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
                 '02-bar-chart-hint-end.png',
             );
