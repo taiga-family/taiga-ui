@@ -14,7 +14,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint, TuiHintHover, type TuiHintOptions} from '@taiga-ui/core/portals/hint';
+import {TuiHint, TuiHintHover} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -26,7 +26,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarChart {
-    private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
 
     private readonly getMax = computed(() =>
@@ -48,10 +47,7 @@ export class TuiBarChart {
         ),
     );
 
-    protected readonly hintDirection = computed<TuiHintOptions['direction']>(
-        () => this.hintOptions?.direction() ?? 'top',
-    );
-
+    protected readonly hintOptions = inject(TuiChartHint, {optional: true});
     protected readonly drivers = viewChildren(TuiHintHover);
 
     public readonly value = input<ReadonlyArray<readonly number[]>>([]);
