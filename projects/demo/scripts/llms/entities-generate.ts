@@ -23,11 +23,15 @@ interface DocumentedEntity {
     readonly route: string;
 }
 
+/** Route → main export(s); `null` marks a page with no single main entity. */
+type MainExportOverrides = Readonly<Record<string, string | readonly string[] | null>>;
+
 interface CliOptions {
     roots: string[];
     output: string;
     routeFiles: string[];
     pathFiles: string[];
+    overrides: MainExportOverrides;
 }
 
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/assets/entities.json');
@@ -44,9 +48,11 @@ const PROJECTS_PATHS = [
 
 /**
  * Pages whose main export doesn't follow `Tui<Header>` (`Tui<Header>Pipe` for pipes), by route.
- * `null` marks a page that collects unrelated utilities rather than documenting one entity.
+ * A list emits one entity per export — for a page documenting several, e.g. desktop and mobile
+ * variants. `null` marks a page that collects unrelated utilities rather than documenting one
+ * entity.
  */
-const MAIN_EXPORT_OVERRIDES: Readonly<Record<string, string | null>> = {
+const MAIN_EXPORT_OVERRIDES: MainExportOverrides = {
     'components/calendar-experimental': 'TuiCalendar',
     'dialog/routable': 'tuiGenerateDialogableRoute',
     'directives/hovered-change': 'TuiHovered',
@@ -58,7 +64,7 @@ const MAIN_EXPORT_OVERRIDES: Readonly<Record<string, string | null>> = {
     'utils/tokens': null,
 };
 
-const FLAGS = ['output', 'pathFiles', 'root', 'routeFiles'] as const;
+const FLAGS = ['output', 'overrides', 'pathFiles', 'root', 'routeFiles'] as const;
 
 function list(value: string): string[] {
     return value
@@ -67,10 +73,42 @@ function list(value: string): string[] {
         .filter(Boolean);
 }
 
+function isMainExport(value: unknown): boolean {
+    return (
+        value === null ||
+        typeof value === 'string' ||
+        (Array.isArray(value) && value.every((item) => typeof item === 'string'))
+    );
+}
+
+/** `--overrides='{"panel": ["TuiPanelDesktop", "TuiPanelMobile"]}'`, merged over the defaults. */
+function parseOverrides(value: string): MainExportOverrides {
+    let parsed: unknown;
+
+    try {
+        parsed = JSON.parse(value);
+    } catch {
+        parsed = undefined;
+    }
+
+    if (
+        !parsed ||
+        typeof parsed !== 'object' ||
+        Array.isArray(parsed) ||
+        !Object.values(parsed).every(isMainExport)
+    ) {
+        throw new Error(
+            `Unusable --overrides="${value}". Expected a JSON object of route → export name, list of names or null, e.g. '{"component": ["TuiComponentDesktop", "TuiComponentMobile"]}'.`,
+        );
+    }
+
+    return {...MAIN_EXPORT_OVERRIDES, ...(parsed as MainExportOverrides)};
+}
+
 /**
  * `--root=a,b --output=file --routeFiles=x.ts --pathFiles=y.ts`, as
- * {@link ./markdown-pages-generate.ts} takes them. An app embedding this repository lists its
- * own pages root first.
+ * {@link ./markdown-pages-generate.ts} takes them, plus `--overrides` (see
+ * {@link parseOverrides}). An app embedding this repository lists its own pages root first.
  */
 function parseArgs(argv: string[]): CliOptions {
     const options: CliOptions = {
@@ -78,6 +116,7 @@ function parseArgs(argv: string[]): CliOptions {
         output: OUTPUT_FILE,
         routeFiles: [...DEFAULT_ROUTE_FILES],
         pathFiles: [...DEFAULT_PATH_FILES],
+        overrides: MAIN_EXPORT_OVERRIDES,
     };
 
     for (const arg of argv.slice(2).filter((item) => item.startsWith('--'))) {
@@ -97,6 +136,9 @@ function parseArgs(argv: string[]): CliOptions {
             case 'output':
                 options.output = path.resolve(process.cwd(), value);
                 break;
+            case 'overrides':
+                options.overrides = parseOverrides(value);
+                break;
             case 'pathFiles':
                 options.pathFiles = list(value);
                 break;
@@ -114,12 +156,15 @@ function parseArgs(argv: string[]): CliOptions {
     return options;
 }
 
-function mainExportOf(route: string, header: string, type: string | null): string | null {
-    if (route in MAIN_EXPORT_OVERRIDES) {
-        return MAIN_EXPORT_OVERRIDES[route] ?? null;
-    }
-
-    return type === 'pipes' ? `Tui${header}Pipe` : `Tui${header}`;
+function mainExportsOf(
+    route: string,
+    header: string,
+    type: string | null,
+    overrides: MainExportOverrides,
+): readonly string[] {
+    return route in overrides
+        ? [overrides[route] ?? []].flat()
+        : [type === 'pipes' ? `Tui${header}Pipe` : `Tui${header}`];
 }
 
 async function findPackageDir(folder: string): Promise<string | null> {
@@ -162,9 +207,9 @@ async function main(): Promise<void> {
             continue;
         }
 
-        const mainExport = mainExportOf(route, header, type);
+        const mainExports = mainExportsOf(route, header, type, options.overrides);
 
-        if (!mainExport) {
+        if (!mainExports.length) {
             continue;
         }
 
@@ -179,8 +224,14 @@ async function main(): Promise<void> {
             );
         }
 
-        if (!packageExports.get(packageFolder)!.has(mainExport)) {
-            missing.push(`${route} (${mainExport} from @taiga-ui/${packageFolder})`);
+        const absent = mainExports.filter(
+            (mainExport) => !packageExports.get(packageFolder)!.has(mainExport),
+        );
+
+        if (absent.length) {
+            missing.push(
+                `${route} (${absent.join(', ')} from @taiga-ui/${packageFolder})`,
+            );
             continue;
         }
 
@@ -188,18 +239,20 @@ async function main(): Promise<void> {
             ?.replaceAll(/\s+/g, ' ')
             .trim();
 
-        entities.push({
-            name: header,
-            export: mainExport,
-            package: `@taiga-ui/${packageFolder}`,
-            ...(description && {description}),
-            route,
-        });
+        for (const mainExport of mainExports) {
+            entities.push({
+                name: header,
+                export: mainExport,
+                package: `@taiga-ui/${packageFolder}`,
+                ...(description && {description}),
+                route,
+            });
+        }
     }
 
     if (missing.length) {
         throw new Error(
-            `Main export not found for ${missing.length} pages — fix \`header\` / \`package\` on their <tui-doc-page> or add them to MAIN_EXPORT_OVERRIDES:\n${missing.join('\n')}`,
+            `Main export not found for ${missing.length} pages — fix \`header\` / \`package\` on their <tui-doc-page> or add them to MAIN_EXPORT_OVERRIDES / --overrides:\n${missing.join('\n')}`,
         );
     }
 
