@@ -6,7 +6,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export class TuiChartHint {
     public readonly content = input<PolymorpheusContent>('', {alias: 'tuiHintContent'});
     public readonly appearance = input('', {alias: 'tuiHintAppearance'});
-    public readonly direction = input<TuiHintOptions['direction']>(undefined, {
+    public readonly direction = input<TuiHintOptions['direction'] | null>(null, {
         alias: 'tuiHintDirection',
     });
 }
