@@ -8,4 +8,5 @@ export * from './page-objects';
 export * from './performance-collector';
 export * from './wait-for-fonts';
 export * from './wait-icons';
+export * from './wait-images';
 export * from './wait-stable-state';

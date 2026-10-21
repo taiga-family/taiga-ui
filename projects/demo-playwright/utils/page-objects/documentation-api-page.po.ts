@@ -2,10 +2,12 @@ import {expect, type Locator, type Page} from '@playwright/test';
 
 import {tuiHideElement, tuiRemoveElement} from '../hide-element';
 import {waitIcons} from '../wait-icons';
+import {waitImages} from '../wait-images';
 import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
+    private readonly loadedImages = new Set<string>();
 
     public readonly examples = this.page.locator('tui-doc-example');
     public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
@@ -88,6 +90,8 @@ export class TuiDocumentationApiPagePO {
             await this.demo.evaluate((el) => el.scrollIntoView());
             await expect(this.demo).toBeInViewport();
         }
+
+        await waitImages({page: this.page, cache: this.loadedImages});
     }
 
     public getRow(rowName: string): Locator {
