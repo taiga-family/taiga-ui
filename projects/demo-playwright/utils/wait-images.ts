@@ -24,6 +24,7 @@ export async function waitImages({
     const found = await Promise.all(
         images.map(async (image) => image.evaluateAll(getUrls)),
     );
+
     const urls = [...new Set(found.flat())].filter((url) => !cache.has(url));
 
     if (!urls.length) {
