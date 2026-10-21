@@ -7,7 +7,7 @@
         [tuiHintAppearance]="hintAppearance"
         [tuiHintContext]="{$implicit: $index}"
         [tuiHintDescribe]="getHintId($index)"
-        [tuiHintDirection]="hintDirection"
+        [tuiHintDirection]="hintDirection()"
         [tuiHintHost]="hintHost"
         (click)="tapColumn.emit($index)"
         (keydown.enter)="tapColumn.emit($index)"
@@ -20,7 +20,7 @@
             <div
                 #hintHost
                 class="t-host"
-                [class.t-host_bottom]="hintBelow"
+                [class.t-host_bottom]="hintBelow()"
             ></div>
             <tui-bar-set
                 class="t-set"

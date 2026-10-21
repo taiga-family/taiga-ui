@@ -61,7 +61,7 @@
                 [tuiHint]="hint()"
                 [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
                 [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
-                [tuiHintDirection]="hintDirection"
+                [tuiHintDirection]="hintOptions?.direction() ?? 'top'"
                 [tuiHintHost]="hintHost"
                 (mouseenter)="onMouseEnter($index)"
             >

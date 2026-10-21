@@ -10,12 +10,7 @@ import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_HINT_OPTIONS,
-    TuiHint,
-    type TuiHintOptions,
-    tuiHintOptionsProvider,
-} from '@taiga-ui/core/portals/hint';
+import {TuiHint, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -45,7 +40,6 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
         tuiHintOptionsProvider({
-            direction: 'top-end',
             showDelay: 0,
             hideDelay: 0,
         }),
@@ -56,10 +50,9 @@ const TRANSFORM = {
     },
 })
 export class TuiPieChart {
-    private readonly hintOptions = inject(TuiChartHint, {optional: true});
-    private readonly hintDefaults = inject(TUI_HINT_OPTIONS);
     private readonly autoId = tuiGenerateId();
 
+    protected readonly hintOptions = inject(TuiChartHint, {optional: true});
     protected readonly getSum = computed(() => tuiSum(...this.value()));
 
     protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>
@@ -87,10 +80,6 @@ export class TuiPieChart {
 
     protected get hintAppearance(): string {
         return this.hintOptions?.appearance() || 'floating';
-    }
-
-    protected get hintDirection(): TuiHintOptions['direction'] {
-        return this.hintOptions?.direction() ?? this.hintDefaults.direction;
     }
 
     protected get maskId(): string {

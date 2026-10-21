@@ -15,13 +15,7 @@ import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiGenerateId, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_HINT_OPTIONS,
-    TuiHint,
-    TuiHintHover,
-    type TuiHintOptions,
-    tuiHintOptionsProvider,
-} from '@taiga-ui/core/portals/hint';
+import {TuiHint, TuiHintHover, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {filter, map} from 'rxjs';
@@ -36,12 +30,11 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     styleUrl: './line-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [WaResizeObserverService],
-    viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
+    viewProviders: [tuiHintOptionsProvider({hideDelay: 0})],
     host: {'(mouseleave)': 'onMouseLeave()'},
 })
 export class TuiLineChart {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly hintDefaults = inject(TUI_HINT_OPTIONS);
     private readonly autoId = tuiGenerateId();
 
     private readonly resize = toSignal(
@@ -123,10 +116,6 @@ export class TuiLineChart {
 
     protected get fill(): string {
         return this.filled() ? `url(#${this.fillId})` : 'none';
-    }
-
-    protected get hintDirection(): TuiHintOptions['direction'] {
-        return this.hintOptions?.direction() ?? this.hintDefaults.direction;
     }
 
     protected get isFocusable(): boolean {
