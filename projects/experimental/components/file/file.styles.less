@@ -124,7 +124,7 @@
     &[data-orientation='vertical'] {
         position: relative;
         padding: 0;
-        min-inline-size: 5rem;
+        min-inline-size: ~'calc(5rem * (1 - min(max(var(--t-font-offset, 0), 0) * 1000, 1)) + 6rem * max(1, min((var(--t-font-offset, 0) + 17) / 16 - 0.1, 2)) * min(max(var(--t-font-offset, 0), 0) * 1000, 1))';
         max-inline-size: 6rem;
         flex: 1 1 auto;
         border-radius: 1rem;

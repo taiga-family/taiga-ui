@@ -7,7 +7,7 @@
 [tuiFile][data-orientation='vertical'] {
     .transition(scale, @tui-duration-fastest);
 
-    min-inline-size: 6rem;
+    min-inline-size: ~'max(6rem, calc(6rem * max(1, min((var(--t-font-offset, 0) + 17) / 16 - 0.1, 2))))';
     max-inline-size: 10rem;
 
     [tuiButtonX]::after {
