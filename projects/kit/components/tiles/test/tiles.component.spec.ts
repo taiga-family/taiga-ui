@@ -4,13 +4,14 @@ import {By} from '@angular/platform-browser';
 import {
     TUI_TILES_REORDER,
     TuiTile,
+    TuiTiles,
     TuiTilesComponent,
     tuiTilesShift,
 } from '@taiga-ui/kit';
 
 describe('Tiles', () => {
     @Component({
-        imports: [TuiTile, TuiTilesComponent],
+        imports: [TuiTile, TuiTiles],
         template: `
             <tui-tiles
                 [debounce]="debounce()"
@@ -59,7 +60,19 @@ describe('Tiles', () => {
                 const top = Math.floor(slot / columns) * 60;
                 const left = (slot % columns) * 100;
 
-                return {top, left, width: 90, height: 50} as DOMRect;
+                const rect: DOMRect = {
+                    top,
+                    left,
+                    width: 90,
+                    height: 50,
+                    x: left,
+                    y: top,
+                    right: left + 90,
+                    bottom: top + 50,
+                    toJSON: () => ({}),
+                };
+
+                return rect;
             });
         });
     }
