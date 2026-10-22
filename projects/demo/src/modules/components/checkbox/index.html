@@ -42,6 +42,22 @@
             [component]="3 | tuiComponent"
             [content]="3 | tuiExample"
         />
+
+        <tui-doc-example
+            id="customization"
+            heading="Customization"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+            [description]="customizationDescription"
+        >
+            <ng-template #customizationDescription>
+                <p>
+                    Use
+                    <code>tuiCheckboxOptionsProvider</code>
+                    to override the colors of the checkbox with appearance colors
+                </p>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />
