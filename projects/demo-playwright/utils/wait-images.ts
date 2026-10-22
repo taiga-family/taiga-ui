@@ -57,11 +57,10 @@ export async function waitImages({
 
 function getUrls(elements: Element[]): string[] {
     return elements.flatMap((element) => {
-        if (!(element instanceof HTMLImageElement)) {
-            return [];
-        }
-
-        if (element.complete && element.naturalWidth > 0) {
+        if (
+            !(element instanceof HTMLImageElement) ||
+            (element.complete && element.naturalWidth > 0)
+        ) {
             return [];
         }
 
