@@ -13,11 +13,7 @@ export class TuiCalendarSheetEO {
         const cell = this.getCalendarDay(day);
 
         await expect(cell).toBeVisible();
-
-        // No `force`: it skips the stability wait, and the sheet re-renders
-        // after a day is picked, so a second click could land on a moving cell
-        // and get lost.
-        await cell.click();
+        await cell.click({force: true});
     }
 
     private get cells(): Locator {
