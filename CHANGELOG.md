@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.104.0](https://github.com/taiga-family/taiga-ui/compare/v4.103.0...v4.104.0) (2026-10-19)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `AppBar` fix liquid glass button padding
+  ([#15229](https://github.com/taiga-family/taiga-ui/issues/15229))
+  ([68b32fd](https://github.com/taiga-family/taiga-ui/commit/68b32fd6dfa0f4ac7fb0f06904a7635f49c10167))
+- **addon-mobile:** `Searchbar` sync icon color ([#15232](https://github.com/taiga-family/taiga-ui/issues/15232))
+  ([f4489d1](https://github.com/taiga-family/taiga-ui/commit/f4489d173513ca0bdfc01ffe21e9a4a5c91c1a38))
+- **addon-mobile:** fix `LiquidGlass` button brightness
+  ([#15239](https://github.com/taiga-family/taiga-ui/issues/15239))
+  ([c7312b5](https://github.com/taiga-family/taiga-ui/commit/c7312b528cf04436bc630025b3623a9f5a0a331b))
+- **layout:** `AppBar` align title to start when it overflows on iOS liquid glass
+  ([#15218](https://github.com/taiga-family/taiga-ui/issues/15218))
+  ([7a32d6b](https://github.com/taiga-family/taiga-ui/commit/7a32d6b332ce87fb59813f1e2edcfebae9739413))
+- **legacy:** `Textfield` keep grouped corner radius ([#15237](https://github.com/taiga-family/taiga-ui/issues/15237))
+  ([19e9174](https://github.com/taiga-family/taiga-ui/commit/19e9174830b2b26dbb3b37c109d4cac55a1c2038))
+
+### 🚀 Features
+
+- **addon-doc:** add "Copy page" action to documentation pages
+  ([#15025](https://github.com/taiga-family/taiga-ui/issues/15025))
+  ([b950301](https://github.com/taiga-family/taiga-ui/commit/b950301b29dcad589eab331f7c2d164c8d21ba83))
+- **addon-mobile:** `SearchBar` add options ([#15240](https://github.com/taiga-family/taiga-ui/issues/15240))
+  ([75973f9](https://github.com/taiga-family/taiga-ui/commit/75973f951236323718d25d4db6701e76e7c260fd))
+- **addon-mobile:** add ability to use separate buttons in liquid glass app bar
+  ([#15241](https://github.com/taiga-family/taiga-ui/issues/15241))
+  ([e725784](https://github.com/taiga-family/taiga-ui/commit/e7257849bdaba64c23fed886654dd8845863a429))
+
 ## [4.103.0](https://github.com/taiga-family/taiga-ui/compare/v4.102.0...v4.103.0) (2026-10-12)
 
 ### 🚀 Features

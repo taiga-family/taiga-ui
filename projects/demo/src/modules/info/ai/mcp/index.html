@@ -83,11 +83,11 @@
             </button>
         </tui-tabs>
 
-        <ng-container *ngIf="versionClient()">
+        <ng-container *ngIf="versionClient() as client">
             <p class="description">Scaffold it with one command:</p>
             <tui-doc-code
                 class="tui-space_top-4"
-                [code]="mcpInit()"
+                [code]="mcpInit | tuiMapper: forClient : client"
             />
 
             <p class="description tui-space_top-4">
@@ -99,7 +99,7 @@
             </p>
             <tui-doc-code
                 class="tui-space_top-4"
-                [code]="mcpInitV4()"
+                [code]="mcpInitV4 | tuiMapper: forClient : client"
             />
         </ng-container>
 

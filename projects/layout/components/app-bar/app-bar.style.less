@@ -15,6 +15,10 @@
     background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
     backdrop-filter: blur(2rem);
 
+    > .t-side {
+        display: flex;
+    }
+
     > .t-content {
         .center-left();
 
@@ -36,14 +40,17 @@
         }
     }
 
-    > :last-child [tuiIconButton] {
-        margin: 0 -0.375rem;
+    > :last-child {
+        [tuiIconButton] {
+            margin: 0 -0.375rem;
+        }
 
-        &:last-child {
+        > :last-child [tuiIconButton]:last-child {
             margin-inline-end: 0;
         }
 
-        &:only-child {
+        > :only-child [tuiIconButton]:only-child,
+        > :empty + :last-child [tuiIconButton]:only-child {
             margin: 0;
         }
     }

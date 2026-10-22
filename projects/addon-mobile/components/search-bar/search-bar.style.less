@@ -78,7 +78,9 @@
 
             &:active {
                 scale: 1.25;
-                filter: brightness(3);
+                filter: brightness(1.5);
+                // stylelint-disable plugin/no-unsupported-browser-features -- graceful degradation
+                background: rgb(from var(--t-glass-background) r g b / 0.3);
             }
 
             // `tuiIcons` reserves ::after for an end icon; the cancel button is

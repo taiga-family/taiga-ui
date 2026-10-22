@@ -5,7 +5,6 @@
 
     display: flex;
     border-radius: 2.75rem;
-    margin: 0 var(--t-padding);
     overflow: hidden;
     box-sizing: border-box;
     backdrop-filter: var(--t-glass-filter);
@@ -35,7 +34,13 @@
 
     &:active {
         scale: 1.25;
-        filter: brightness(3);
+        filter: brightness(1.5);
+        // stylelint-disable plugin/no-unsupported-browser-features -- graceful degradation
+        background: rgb(from var(--t-glass-background) r g b / 0.3);
+    }
+
+    &:empty {
+        display: none;
     }
 
     > [tuiIconButton] {

@@ -1,9 +1,13 @@
 <tui-progressive-blur *ngIf="liquidGlass" />
 
-<div #side>
+<div
+    #side
+    class="t-side"
+>
     <div tuiAppBarButton>
-        <ng-content select="[tuiSlot='left']" />
+        <ng-content select="[tuiSlot='left']:not([tuiAppBarButton])" />
     </div>
+    <ng-content select="[tuiSlot='left'][tuiAppBarButton]" />
 </div>
 <div
     #title
@@ -14,8 +18,12 @@
 >
     <ng-content />
 </div>
-<div #side>
+<div
+    #side
+    class="t-side"
+>
     <div tuiAppBarButton>
-        <ng-content select="[tuiSlot='right']" />
+        <ng-content select="[tuiSlot='right']:not([tuiAppBarButton])" />
     </div>
+    <ng-content select="[tuiSlot='right'][tuiAppBarButton]" />
 </div>
