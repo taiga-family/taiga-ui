@@ -82,8 +82,64 @@ export class TuiTilesComponent {
             ? new Map(this.order)
             : new Map(elements.map((_, index) => [index, index]));
 
-        this.order$.next(this.handler(order, currentIndex, newIndex));
+        this.order$.next(
+            this.debounce || !this.isSingleLine(elements)
+                ? this.handler(order, currentIndex, newIndex)
+                : this.move(order, currentIndex, newIndex),
+        );
 
         return this.order$.value;
+    }
+
+    private isSingleLine(elements: readonly Element[]): boolean {
+        const rects = elements.map((element) => element.getBoundingClientRect());
+        const columns = new Set(rects.map(({top}) => Math.round(top))).size;
+        const rows = new Set(rects.map(({left}) => Math.round(left))).size;
+
+        return columns === 1 || rows === 1;
+    }
+
+    /**
+     * In a single line every tile is a neighbour of the previous one, so reorder
+     * functions are applied one slot at a time. A fast pointer or a scroll skips
+     * tiles, otherwise the skipped ones keep their slots and lose their order.
+     * Multi column grids are left as is, a jump there is a regular reorder.
+     */
+    private move(
+        order: Map<number, number>,
+        currentIndex: number,
+        newIndex: number,
+    ): Map<number, number> {
+        if (currentIndex < 0 || newIndex < 0) {
+            return order;
+        }
+
+        let result = order;
+        const target = order.get(newIndex) ?? newIndex;
+
+        for (let guard = result.size; guard > 0; guard--) {
+            const slot = result.get(currentIndex) ?? currentIndex;
+            const step = Math.sign(target - slot);
+
+            if (!step) {
+                return result;
+            }
+
+            const neighbour = Array.from(result).find(
+                ([, value]) => value === slot + step,
+            )?.[0];
+            const next =
+                neighbour === undefined
+                    ? result
+                    : this.handler(result, currentIndex, neighbour);
+
+            if (next === result) {
+                return result;
+            }
+
+            result = next;
+        }
+
+        return result;
     }
 }
