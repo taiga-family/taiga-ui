@@ -34,8 +34,6 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async hideNotifications(): Promise<void> {
-        // Notifications render as `[tuiNotification]` inside `tui-notification-alert`:
-        // matching only the component tag found nothing and hid nothing.
         const notifications = await this.page
             .locator('tui-popups tui-notification-alert, tui-popups [tuiNotification]')
             .all();

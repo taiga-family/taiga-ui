@@ -8,12 +8,8 @@ interface Options {
 }
 
 /**
- * Waits until plain `<img>` elements are decoded and ready to paint.
- *
- * `waitIcons` only covers `tui-icon`: icons are CSS masks, so they never appear
- * as `<img>`. Images loaded by other components (avatars, remote SVGs, preview
- * content) are not covered, and a screenshot taken while one is still loading
- * captures a skeleton or an empty box instead of the image.
+ * Waits until plain `<img>` elements are decoded and ready to paint:
+ * `waitIcons` only covers CSS-mask icons and never sees them.
  */
 export async function waitImages({
     page,
@@ -65,7 +61,6 @@ function getUrls(elements: Element[]): string[] {
             return [];
         }
 
-        // Already painted, nothing to wait for
         if (element.complete && element.naturalWidth > 0) {
             return [];
         }
