@@ -1,0 +1,18 @@
+<input
+    #slider
+    aria-label="Container width"
+    max="100"
+    min="20"
+    tuiSlider
+    type="range"
+    class="slider"
+    [value]="width()"
+    (input)="width.set(slider.value)"
+/>
+{{ width() }} %
+<tui-arc-chart
+    [style.inline-size.%]="width()"
+    [value]="value"
+>
+    Total value
+</tui-arc-chart>
