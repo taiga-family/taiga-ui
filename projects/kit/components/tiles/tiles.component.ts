@@ -17,7 +17,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
-import {TUI_TILES_REORDER, tuiTilesSwap} from './tiles.tokens';
+import {TUI_TILES_REORDER, tuiTilesShift, tuiTilesSwap} from './tiles.tokens';
 
 @Component({
     selector: 'tui-tiles',
@@ -47,7 +47,6 @@ import {TUI_TILES_REORDER, tuiTilesSwap} from './tiles.tokens';
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
     private readonly handler = inject(TUI_TILES_REORDER);
-    private readonly stepwise = this.handler === tuiTilesSwap;
 
     protected readonly sub = this.el$
         .pipe(
@@ -84,9 +83,11 @@ export class TuiTilesComponent {
             ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));
 
-        return this.debounce() || !this.stepwise || !this.isSingleLine(elements)
-            ? this.handler(order, currentIndex, newIndex)
-            : this.move(order, currentIndex, newIndex);
+        return this.handler === tuiTilesSwap &&
+            !this.debounce() &&
+            this.isSingleLine(elements)
+            ? tuiTilesShift(order, currentIndex, newIndex)
+            : this.handler(order, currentIndex, newIndex);
     }
 
     private isSingleLine(elements: readonly Element[]): boolean {
@@ -95,33 +96,5 @@ export class TuiTilesComponent {
         const rows = new Set(rects.map(({left}) => Math.round(left))).size;
 
         return columns === 1 || rows === 1;
-    }
-
-    private move(
-        order: Map<number, number>,
-        currentIndex: number,
-        newIndex: number,
-    ): Map<number, number> {
-        const from = order.get(currentIndex);
-        const to = order.get(newIndex);
-
-        if (from === undefined || to === undefined) {
-            return order;
-        }
-
-        const step = Math.sign(to - from);
-        const shifted = Array.from(order)
-            .filter(([, slot]) => (slot - from) * step > 0 && (slot - to) * step <= 0)
-            .sort(([, a], [, b]) => (a - b) * step);
-
-        const result = new Map(order);
-        let previous = from;
-
-        for (const [index, slot] of shifted) {
-            result.set(index, previous);
-            previous = slot;
-        }
-
-        return result.set(currentIndex, to);
     }
 }
