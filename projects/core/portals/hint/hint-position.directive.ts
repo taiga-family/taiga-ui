@@ -83,7 +83,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['start-top'][LEFT] = rect.left - width - this.offset();
         this.points.start[TOP] = topCenter - height / 2;
         this.points.start[LEFT] = this.points['start-top'][LEFT];
-        this.points['start-bottom'][TOP] = this.centered() ? bottom : top;
+        this.points['start-bottom'][TOP] = this.centered() ? top : bottom;
         this.points['start-bottom'][LEFT] = this.points['start-top'][LEFT];
 
         this.points['end-top'][TOP] = this.points['start-top'][TOP];
