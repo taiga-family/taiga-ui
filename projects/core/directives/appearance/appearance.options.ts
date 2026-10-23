@@ -1,4 +1,9 @@
-import {type ExistingProvider, InjectionToken, type ProviderToken} from '@angular/core';
+import {
+    type ExistingProvider,
+    InjectionToken,
+    type ProviderToken,
+    type ValueProvider,
+} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 /**
@@ -42,8 +47,17 @@ export const TUI_APPEARANCE_OPTIONS = new InjectionToken(
     {factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS},
 );
 
+// TODO(v6): extract the token-based overload into tuiAsAppearanceOptions
 export function tuiAppearanceOptionsProvider(
     token: ProviderToken<TuiAppearanceOptions>,
-): ExistingProvider {
-    return tuiProvide(TUI_APPEARANCE_OPTIONS, token);
+): ExistingProvider;
+export function tuiAppearanceOptionsProvider(
+    options: TuiAppearanceOptions,
+): ValueProvider;
+export function tuiAppearanceOptionsProvider(
+    options: ProviderToken<TuiAppearanceOptions> | TuiAppearanceOptions,
+): ExistingProvider | ValueProvider {
+    return typeof options === 'function' || options instanceof InjectionToken
+        ? tuiProvide(TUI_APPEARANCE_OPTIONS, options)
+        : {provide: TUI_APPEARANCE_OPTIONS, useValue: options};
 }

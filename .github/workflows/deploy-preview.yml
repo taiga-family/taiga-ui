@@ -176,7 +176,7 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0 # https://github.com/FirebaseExtended/action-hosting-deploy/issues/440
         if: steps.metadata.outputs.should_deploy == 'true'
         with:
-          node-version: 24.21 # https://github.com/firebase/firebase-tools/issues/10726
+          node-version: 24.22 # https://github.com/firebase/firebase-tools/issues/10726
 
       - name: Deploy preview
         id: firebase-preview

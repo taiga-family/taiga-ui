@@ -151,6 +151,24 @@ describe('TuiDropdownSelection', () => {
         expect(visible).toEqual([true, false, true]);
     }));
 
+    it('does not reopen from a stale range when selection is cleared', () => {
+        const outside = document.createElement('p');
+
+        outside.textContent = 'Outside text';
+        document.body.append(outside);
+
+        selection$.next();
+        textarea.blur();
+        document.getSelection()?.selectAllChildren(outside);
+        selection$.next();
+        document.getSelection()?.removeAllRanges();
+        selection$.next();
+
+        expect(visible).toEqual([true, false]);
+
+        outside.remove();
+    });
+
     it('keeps the ghost at the host origin and preserves selection offsets', () => {
         jest.spyOn(Range.prototype, 'getBoundingClientRect').mockImplementation(function (
             this: Range,

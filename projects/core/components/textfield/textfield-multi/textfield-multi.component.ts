@@ -26,6 +26,7 @@ import {
 import {TuiCell} from '@taiga-ui/core/components/cell';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
+import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiFilterByInputOptionsProvider} from '@taiga-ui/core/pipes/filter-by-input';
@@ -49,6 +50,7 @@ import {TUI_TEXTFIELD_ITEM} from './textfield-item.component';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiAppearanceOptionsProvider({appearance: ''}),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
