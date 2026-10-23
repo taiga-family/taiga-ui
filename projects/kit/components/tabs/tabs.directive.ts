@@ -43,6 +43,8 @@ class TuiTabsStyles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
+    private marked: readonly HTMLElement[] | null = null;
+    private markedIndex = -1;
 
     protected readonly nothing = tuiWithStyles(TuiTabsStyles);
 
@@ -72,6 +74,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     public ngAfterViewChecked(): void {
         afterNextRender(
             () => {
+                this.syncActiveItemIndex();
                 this.markTabAsActive();
             },
             {injector: this.injector},
@@ -83,12 +86,16 @@ export class TuiTabsDirective implements AfterViewChecked {
 
         event.stopPropagation();
 
-        if (index === this.activeItemIndex) {
+        if (index === -1) {
             return;
         }
 
-        this.activeItemIndexChange.emit(index);
-        this.activeItemIndex = index;
+        this.marked = null;
+
+        if (index !== this.activeItemIndex) {
+            this.activeItemIndexChange.emit(index);
+            this.activeItemIndex = index;
+        }
     }
 
     protected markTabAsActive(): void {
@@ -100,5 +107,28 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
         });
+
+        this.marked = tabs;
+        this.markedIndex = this.activeItemIndex;
+    }
+
+    // Index becomes stale when tabs are added or removed, so the element marked on the previous pass wins
+    private syncActiveItemIndex(): void {
+        const {tabs} = this;
+        const isSame =
+            tabs.length === this.marked?.length &&
+            tabs.every((tab, i) => tab === this.marked?.[i]);
+
+        // The model is written from outside when it no longer matches the last mark
+        if (!this.marked || isSame || this.activeItemIndex !== this.markedIndex) {
+            return;
+        }
+
+        const index = tabs.findIndex((tab) => tab.classList.contains('_active'));
+
+        if (index !== -1 && index !== this.activeItemIndex) {
+            this.activeItemIndexChange.emit(index);
+            this.activeItemIndex = index;
+        }
     }
 }
