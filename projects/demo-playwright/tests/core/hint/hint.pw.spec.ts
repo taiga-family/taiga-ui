@@ -266,14 +266,15 @@ test.describe('TuiHint', () => {
     });
 
     test('Hint aligned to host with root html zoom', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Hint);
-        const example = new TuiDocumentationPagePO(page).getExample('#basic');
-        const host = example.locator('[tuiAvatar]');
+        await page.setViewportSize({width: 700, height: 900});
+
+        await tuiGoto(page, `${DemoRoute.Hint}/API`);
+        const example = new TuiDocumentationPagePO(page).demo;
+        const host = example.getByText('Hover me');
 
         await page.locator('html').evaluate((element) => {
             element.style.zoom = '1.5';
         });
-        await host.scrollIntoViewIfNeeded();
 
         await host.hover();
         await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeVisible();
@@ -296,6 +297,8 @@ test.describe('TuiHint', () => {
         expect(Math.max(gapX, gapY)).toBeLessThan(30);
         expect(Math.min(gapX, gapY)).toBeLessThan(0);
 
+        await new TuiDocumentationPagePO(page).hideScrollbars();
+        await new TuiDocumentationPagePO(page).hideDocumentation();
         await expect(page).toHaveScreenshot('11-hint-zoomed.png');
     });
 });
