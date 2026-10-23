@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiTile} from '../tile.component';
-import {TUI_TILES_REORDER, tuiTilesShift} from '../tiles.tokens';
+import {TUI_TILES_REORDER, type TuiReorderFunction, tuiTilesShift} from '../tiles.tokens';
 import {TuiTilesComponent} from '../tiles.component';
 
 describe('Tiles', () => {
@@ -149,5 +149,22 @@ describe('Tiles', () => {
         drag(0, 3);
 
         expect(slots()).toEqual([3, 0, 1, 2, 4, 5]);
+    });
+
+    it('applies a custom handler to the hovered tile', () => {
+        const handler: TuiReorderFunction = (order, currentIndex, newIndex) => {
+            const dragged = order.get(currentIndex) ?? currentIndex;
+
+            order.set(currentIndex, order.get(newIndex) ?? newIndex);
+            order.set(newIndex, dragged);
+
+            return order;
+        };
+
+        create({providers: [{provide: TUI_TILES_REORDER, useValue: handler}]});
+
+        drag(0, 3);
+
+        expect(slots()).toEqual([3, 1, 2, 0, 4, 5]);
     });
 });

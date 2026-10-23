@@ -16,7 +16,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
-import {TUI_TILES_REORDER} from './tiles.tokens';
+import {TUI_TILES_REORDER, tuiTilesSwap} from './tiles.tokens';
 
 @Component({
     standalone: true,
@@ -41,6 +41,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
     private readonly handler = inject(TUI_TILES_REORDER);
+    private readonly stepwise = this.handler === tuiTilesSwap;
 
     @Input()
     public debounce = 0;
@@ -83,7 +84,7 @@ export class TuiTilesComponent {
             : new Map(elements.map((_, index) => [index, index]));
 
         this.order$.next(
-            this.debounce || !this.isSingleLine(elements)
+            this.debounce || !this.stepwise || !this.isSingleLine(elements)
                 ? this.handler(order, currentIndex, newIndex)
                 : this.move(order, currentIndex, newIndex),
         );
