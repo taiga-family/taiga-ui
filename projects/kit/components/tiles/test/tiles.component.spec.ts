@@ -125,6 +125,23 @@ describe('Tiles', () => {
 
             expect(slots()).toEqual([0, 1, 2, 3, 4, 5]);
         });
+
+        it('moves skipped tiles when order values have gaps', () => {
+            tiles.order.set(
+                new Map([
+                    [0, 0],
+                    [1, 2],
+                    [2, 4],
+                    [3, 6],
+                    [4, 8],
+                    [5, 10],
+                ]),
+            );
+
+            drag(0, 2);
+
+            expect(slots()).toEqual([4, 0, 2, 6, 8, 10]);
+        });
     });
 
     it('swaps with the hovered tile in a multi column grid', () => {
