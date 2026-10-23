@@ -7,17 +7,14 @@
 [tuiFile][data-orientation='vertical'] {
     .transition(scale, @tui-duration-fastest);
 
-    min-inline-size: 6rem;
+    min-inline-size: ~'max(6rem, calc(6rem * max(1, min((var(--t-font-offset, 0) + 17) / 16 - 0.1, 2))))';
     max-inline-size: 10rem;
 
     [tuiButtonX]::after {
-        position: absolute;
-        display: block;
-        inset-inline-end: -0.25rem;
-        inset-block-start: -0.25rem;
         inline-size: 2.75rem;
         block-size: 2.75rem;
-        opacity: 0;
+        margin-block-start: 0.125rem;
+        margin-inline-start: -0.125rem;
     }
 
     [tuiSubtitle] {
@@ -26,5 +23,23 @@
 
     &:has(> label:active) {
         scale: 0.95;
+    }
+
+    &[data-size='m'] [tuiAvatar] {
+        tui-icon {
+            --tui-icon-size: 1.75rem;
+        }
+
+        [tuiIconButton] {
+            --tui-icon-size: 1.5rem;
+        }
+
+        tui-loader {
+            --t-diameter: 1.5em;
+        }
+
+        tui-progress-circle {
+            --t-diameter: 1.375rem;
+        }
     }
 }
