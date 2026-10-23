@@ -7,7 +7,6 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly loadedIcons = new Set<string>();
-    private readonly loadedImages = new Set<string>();
 
     public readonly examples = this.page.locator('tui-doc-example');
     public readonly demo = this.page.locator('tui-doc-demo > .t-wrapper');
@@ -91,7 +90,7 @@ export class TuiDocumentationApiPagePO {
             await expect(this.demo).toBeInViewport();
         }
 
-        await waitImages({page: this.page, cache: this.loadedImages});
+        await waitImages({page: this.page});
     }
 
     public getRow(rowName: string): Locator {

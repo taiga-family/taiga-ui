@@ -3,7 +3,6 @@ import {type Locator, type Page} from '@playwright/test';
 interface Options {
     page: Page;
     images?: Locator[];
-    cache?: Set<string>;
     timeout?: number;
 }
 
@@ -14,58 +13,41 @@ interface Options {
 export async function waitImages({
     page,
     images = [page.locator('img')],
-    cache = new Set(),
     timeout = 5_000,
 }: Options): Promise<void> {
-    const found = await Promise.all(
-        images.map(async (image) => image.evaluateAll(getUrls)),
-    );
-
-    const urls = [...new Set(found.flat())].filter((url) => !cache.has(url));
-
-    if (!urls.length) {
-        return;
-    }
-
-    const decoded = await page.evaluate(
-        async ({urls, timeout}) => {
-            const done: string[] = [];
-
-            await Promise.race([
-                Promise.all(
-                    urls.map(async (src) => {
-                        const image = new Image();
-
-                        image.src = src;
-
-                        return image.decode().then(
-                            () => done.push(src),
-                            () => {},
-                        );
-                    }),
-                ),
-                new Promise((resolve) => setTimeout(resolve, timeout)),
-            ]);
-
-            return done;
-        },
-        {urls, timeout},
-    );
-
-    decoded.forEach((url) => cache.add(url));
+    await Promise.all(images.map(async (image) => image.evaluateAll(decode, timeout)));
 }
 
-function getUrls(elements: Element[]): string[] {
-    return elements.flatMap((element) => {
+/**
+ * Decodes the elements on the page rather than a detached `new Image()`: before it loads, an
+ * `<img>` inside `<picture>` has no `currentSrc`, so its `src` fallback was decoded instead of
+ * the `<source>` it shows. An image that is already painted is skipped, so no URL cache is kept,
+ * and an off-screen lazy one never loads, so waiting for it would only run out the clock.
+ * A broken or stalled image gives up after `timeout` instead of failing the screenshot.
+ */
+async function decode(elements: Element[], timeout: number): Promise<void> {
+    const pending = elements.filter((element): element is HTMLImageElement => {
         if (
             !(element instanceof HTMLImageElement) ||
             (element.complete && element.naturalWidth > 0)
         ) {
-            return [];
+            return false;
         }
 
-        const src = element.currentSrc || element.src;
+        const {top, right, bottom, left} = element.getBoundingClientRect();
 
-        return src ? [src] : [];
+        return (
+            element.loading !== 'lazy' ||
+            (bottom >= 0 && right >= 0 && top <= innerHeight && left <= innerWidth)
+        );
     });
+
+    if (!pending.length) {
+        return;
+    }
+
+    await Promise.race([
+        Promise.all(pending.map(async (image) => image.decode().catch(() => {}))),
+        new Promise((resolve) => setTimeout(resolve, timeout)),
+    ]);
 }
