@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[70086],{70086:n=>{n.exports="<span tuiComment>Birthday gift</span>\n"}}]);

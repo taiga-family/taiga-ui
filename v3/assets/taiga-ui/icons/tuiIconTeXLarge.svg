@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+    <g id="tuiIconTeXLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M4 16V8H1H7"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M9 13H12.6667C12.8508 13 13 12.8508 13 12.6667V12C13 10.8954 12.1046 10 11 10V10C9.89543 10 9 10.8954 9 12V13.7835C9 15.0076 9.99237 16 11.2165 16V16C11.7904 16 12.342 15.7774 12.7551 15.379L13 15.1429"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M16 8L18.5 12M21 16L18.5 12M18.5 12L16 16M18.5 12L21 8"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

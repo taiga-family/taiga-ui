@@ -1,0 +1,39 @@
+import"./chunk-LQ6M4NCU.js";var n=`<button
+    appearance="secondary-grayscale"
+    size="s"
+    tuiButton
+    type="button"
+    class="t-action"
+    [iconStart]="icon()"
+    (click)="copy()"
+>
+    {{ copied() ? 'Copied!' : 'Copy page' }}
+</button>
+<button
+    appearance="secondary-grayscale"
+    size="s"
+    tuiDropdown
+    tuiDropdownAlign="end"
+    tuiIconButton
+    type="button"
+    class="t-toggle"
+    [iconStart]="icons.chevron"
+    [(tuiDropdownOpen)]="open"
+>
+    More
+    <tui-data-list
+        *tuiDropdown
+        size="s"
+    >
+        <a
+            rel="noreferrer"
+            target="_blank"
+            tuiOption
+            [href]="markdownUrl()"
+            (click)="open.set(false)"
+        >
+            View as Markdown
+        </a>
+    </tui-data-list>
+</button>
+`;export{n as default};

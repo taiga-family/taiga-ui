@@ -1,0 +1,17 @@
+import"./chunk-LQ6M4NCU.js";var e=`<ul tuiList>
+    <li>If a list item is long, the bullet stays aligned to the top.</li>
+    <li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
+    <li>
+        <div>
+            This item uses
+            <strong>nested tags</strong>
+            inside which should not break
+        </div>
+    </li>
+</ul>
+
+<ol tuiList>
+    <li>If a list item is long, the bullet stays aligned to the top.</li>
+    <li>There are no restrictions on the text length at all. You can write as much text as you want.</li>
+</ol>
+`;export{e as default};

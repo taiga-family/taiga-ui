@@ -1,0 +1,28 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+    preserveAspectRatio="xMidYMid meet"
+>
+    <g id="tuiIconMastercardMono" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            overflow="visible"
+            viewBox="0 0 32 32"
+            style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+            preserveAspectRatio="xMidYMid meet"
+        >
+            <svg x="-16" y="-16">
+                <path
+                    vector-effect="non-scaling-stroke"
+                    clip-rule="evenodd"
+                    d="M15.8333 9.37777C13.6224 10.8455 12.1667 13.3451 12.1667 16.1818C12.1667 19.0186 13.6224 21.5181 15.8333 22.9859C14.5224 23.8561 12.946 24.3636 11.25 24.3636C6.69365 24.3636 3 20.7005 3 16.1818C3 11.6631 6.69365 8 11.25 8C12.946 8 14.5224 8.50752 15.8333 9.37777ZM15.8333 22.9859C18.0443 21.5181 19.5 19.0186 19.5 16.1818C19.5 13.3451 18.0443 10.8455 15.8333 9.37777C17.1443 8.50752 18.7207 8 20.4167 8C24.973 8 28.6667 11.6631 28.6667 16.1818C28.6667 20.7005 24.973 24.3636 20.4167 24.3636C18.7207 24.3636 17.1443 23.8561 15.8333 22.9859ZM15.8333 10.6168C14.2028 11.9362 13.1667 13.9405 13.1667 16.1818C13.1667 18.4232 14.2028 20.4275 15.8333 21.7468C17.4639 20.4275 18.5 18.4232 18.5 16.1818C18.5 13.9405 17.4639 11.9362 15.8333 10.6168Z"
+                    fill="currentColor"
+                    stroke="none"
+                    fill-rule="evenodd"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

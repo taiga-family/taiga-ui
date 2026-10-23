@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67969],{67969:e=>{e.exports='```html\n<tui-arc-chart [value]="value"></tui-arc-chart>\n```\n'}}]);
