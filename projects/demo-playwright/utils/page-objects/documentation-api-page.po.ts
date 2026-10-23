@@ -2,6 +2,7 @@ import {expect, type Locator, type Page} from '@playwright/test';
 
 import {tuiHideElement, tuiRemoveElement} from '../hide-element';
 import {waitIcons} from '../wait-icons';
+import {waitImages} from '../wait-images';
 import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
@@ -33,7 +34,7 @@ export class TuiDocumentationApiPagePO {
 
     public async hideNotifications(): Promise<void> {
         const notifications = await this.page
-            .locator('tui-popups tui-notification-alert')
+            .locator('tui-popups tui-notification-alert, tui-popups [tuiNotification]')
             .all();
 
         for (const notification of notifications) {
@@ -88,6 +89,8 @@ export class TuiDocumentationApiPagePO {
             await this.demo.evaluate((el) => el.scrollIntoView());
             await expect(this.demo).toBeInViewport();
         }
+
+        await waitImages({page: this.page});
     }
 
     public getRow(rowName: string): Locator {
