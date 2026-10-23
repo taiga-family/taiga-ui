@@ -1,0 +1,30 @@
+<label tuiLabel>
+    <tui-textfield
+        multi
+        tuiChevron
+        [disabledItemHandler]="notInList"
+    >
+        <input
+            tuiInputChip
+            [clearOnSelect]="false"
+            [placeholder]="value.length ? '' : 'Type to filter, pick several'"
+            [(ngModel)]="value"
+        />
+
+        <tui-input-chip *tuiItem />
+
+        <tui-data-list
+            *tuiDropdown
+            tuiMultiSelectGroup
+        >
+            @for (item of items | tuiFilterByInput; track item) {
+                <button
+                    tuiOption
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
+        </tui-data-list>
+    </tui-textfield>
+</label>
