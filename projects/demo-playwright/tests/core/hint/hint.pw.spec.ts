@@ -264,4 +264,38 @@ test.describe('TuiHint', () => {
             }),
         ).toBeVisible();
     });
+
+    test('Hint aligned to host with root html zoom', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Hint);
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const host = example.locator('[tuiAvatar]');
+
+        await page.locator('html').evaluate((element) => {
+            element.style.zoom = '1.5';
+        });
+        await host.scrollIntoViewIfNeeded();
+
+        await host.hover();
+        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeVisible();
+        await page.waitForTimeout(300);
+
+        const hostBox = (await host.boundingBox())!;
+        const hintBox = (await page.locator(TUI_HINT_LOCATORS.HOST).boundingBox())!;
+        const gapX = Math.max(
+            hintBox.x - (hostBox.x + hostBox.width),
+            hostBox.x - (hintBox.x + hintBox.width),
+        );
+
+        const gapY = Math.max(
+            hintBox.y - (hostBox.y + hostBox.height),
+            hostBox.y - (hintBox.y + hintBox.height),
+        );
+
+        // hint is placed next to the host on one axis and overlaps it on the other
+        expect(Math.max(gapX, gapY)).toBeGreaterThanOrEqual(0);
+        expect(Math.max(gapX, gapY)).toBeLessThan(30);
+        expect(Math.min(gapX, gapY)).toBeLessThan(0);
+
+        await expect(page).toHaveScreenshot('11-hint-zoomed.png');
+    });
 });
