@@ -1,0 +1,51 @@
+import"./chunk-LQ6M4NCU.js";var a=`<form
+    tuiForm
+    [formGroup]="form"
+>
+    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+        <label tuiLabel>Single date</label>
+        <input
+            formControlName="single"
+            tuiInputDate
+            [max]="max"
+            [min]="min"
+        />
+        <tui-calendar
+            *tuiDropdown
+            new
+        />
+    </tui-textfield>
+
+    <tui-textfield
+        multi
+        [disabledItemHandler]="disabledItemHandler"
+    >
+        <label tuiLabel>Multiple dates</label>
+        <input
+            formControlName="multi"
+            tuiInputDateMulti
+            [max]="max"
+            [min]="min"
+        />
+        <tui-calendar
+            *tuiDropdown
+            new
+        />
+    </tui-textfield>
+
+    <tui-textfield [disabledItemHandler]="disabledItemHandler">
+        <label tuiLabel>Date range</label>
+        <input
+            formControlName="range"
+            tuiInputDateRange
+            [max]="max"
+            [min]="min"
+        />
+        <tui-calendar
+            *tuiDropdown
+            mode="range"
+            new
+        />
+    </tui-textfield>
+</form>
+`;export{a as default};
