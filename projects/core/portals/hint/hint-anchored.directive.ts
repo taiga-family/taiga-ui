@@ -16,9 +16,9 @@ import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHover} from './hint-hover.directive';
+import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 22;
 
 @Directive({
     providers: [
@@ -35,6 +35,7 @@ export class TuiHintAnchored implements AfterViewInit {
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly rect = inject(TuiRectAccessor);
     private readonly accessor = inject(TuiPositionAccessor);
+    private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly directive = inject(TuiHintDirective);
     private readonly styles$ = inject(TuiPositionService).pipe(
         takeWhile(
@@ -81,14 +82,15 @@ export class TuiHintAnchored implements AfterViewInit {
         const startY = Math.round(top) === Math.round(rect.top);
         const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
         const endY = Math.round(top + clientHeight) === Math.round(rect.bottom);
+        const {arrowOffset} = this.options;
         const [beakLeft, beakTop] = this.vvs.correct([
             rect.left + rect.width / 2 - safeLeft,
             rect.top + rect.height / 2 - top,
         ]);
 
         /* eslint-disable no-nested-ternary */
-        const x = startX ? ARROW_OFFSET : endX ? clientWidth - ARROW_OFFSET : beakLeft;
-        const y = startY ? ARROW_OFFSET : endY ? clientHeight - ARROW_OFFSET : beakTop;
+        const x = startX ? arrowOffset : endX ? clientWidth - arrowOffset : beakLeft;
+        const y = startY ? arrowOffset : endY ? clientHeight - arrowOffset : beakTop;
 
         this.apply(
             tuiPx(Math.round(top)),
