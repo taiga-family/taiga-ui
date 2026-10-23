@@ -105,6 +105,13 @@ function parseArgs(argv: string[]): CliOptions {
     return options;
 }
 
+/** `candidate` is `root` itself or lies below it. Compared as paths, not as strings. */
+function overlaps(root: string, candidate: string): boolean {
+    const relative = path.relative(root, candidate);
+
+    return !relative.startsWith('..') && !path.isAbsolute(relative);
+}
+
 function plainText(value: string): string {
     return (
         value
@@ -249,6 +256,18 @@ async function main(): Promise<void> {
         routeFiles: options.routeFiles,
         pathFiles: options.pathFiles,
     }));
+
+    // The output directory is cleared below, so it must not overlap a pages root it reads.
+    const clash = roots.find(
+        ({pagesPath}) =>
+            overlaps(pagesPath, options.output) || overlaps(options.output, pagesPath),
+    );
+
+    if (clash) {
+        throw new Error(
+            `Refusing to clear --output=${options.output}: it overlaps the pages root ${clash.pagesPath}.`,
+        );
+    }
 
     const folderToRoute = await buildFolderRouteMap(roots);
 
