@@ -30,6 +30,9 @@
             <tui-pie-chart
                 class="chart"
                 [size]="size"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hint.direction"
                 [value]="value"
                 [(activeItemIndex)]="activeItemIndex"
             />
@@ -58,6 +61,21 @@
                 [items]="valueVariants"
                 [(value)]="value"
             ></tr>
+            <tr
+                name="[tuiHintContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent<TuiContext<number>>"
+                [items]="contentVariants"
+                [(value)]="hintContent"
+            >
+                content of the hint bubble
+            </tr>
+            <tbody
+                #hint
+                tuiDocHint
+                tuiHintDirection="top-end"
+                [hiddenOptions]="['centered', 'directionChange', 'visible']"
+            ></tbody>
         </table>
     </ng-template>
 </tui-doc-page>
