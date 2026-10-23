@@ -43,7 +43,10 @@ describe('Tiles', () => {
         debounce?: number;
         providers?: unknown[];
     } = {}): void {
-        TestBed.configureTestingModule({imports: [Test], providers: providers as never[]});
+        TestBed.configureTestingModule({
+            imports: [Test],
+            providers: providers as never[],
+        });
         fixture = TestBed.createComponent(Test);
         fixture.componentInstance.debounce = debounce;
         fixture.detectChanges();
@@ -98,7 +101,7 @@ describe('Tiles', () => {
     describe('single column', () => {
         beforeEach(() => create());
 
-        it('swaps neighbouring tiles', () => {
+        it('swaps neighboring tiles', () => {
             drag(0, 1);
 
             expect(slots()).toEqual([1, 0, 2, 3, 4, 5]);

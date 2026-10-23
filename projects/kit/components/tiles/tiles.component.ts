@@ -99,12 +99,6 @@ export class TuiTilesComponent {
         return columns === 1 || rows === 1;
     }
 
-    /**
-     * In a single line every tile is a neighbour of the previous one, so reorder
-     * functions are applied one slot at a time. A fast pointer or a scroll skips
-     * tiles, otherwise the skipped ones keep their slots and lose their order.
-     * Multi column grids are left as is, a jump there is a regular reorder.
-     */
     private move(
         order: Map<number, number>,
         currentIndex: number,
@@ -125,13 +119,13 @@ export class TuiTilesComponent {
                 return result;
             }
 
-            const neighbour = Array.from(result).find(
+            const neighbor = Array.from(result).find(
                 ([, value]) => value === slot + step,
             )?.[0];
             const next =
-                neighbour === undefined
+                neighbor === undefined
                     ? result
-                    : this.handler(result, currentIndex, neighbour);
+                    : this.handler(result, currentIndex, neighbor);
 
             if (next === result) {
                 return result;
