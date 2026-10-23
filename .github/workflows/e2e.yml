@@ -259,7 +259,6 @@ jobs:
           expires: 1d
           target: taiga-preview-demo-e2e
           disableComment: 'true'
-          firebaseToolsVersion: 15.26.0
 
       - name: Create report comment
         id: report-summary
