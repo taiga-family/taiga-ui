@@ -42,10 +42,6 @@
     &._delegated {
         scroll-timeline: none;
     }
-
-    &:not(._anchored) .t-detector {
-        display: none;
-    }
 }
 
 .t-wrapper {
@@ -57,12 +53,15 @@
     }
 }
 
+:host:not(._anchored) + .t-detector {
+    display: none;
+}
+
 .t-detector {
-    position: inherit;
-    inset: anchor(top) 1rem calc(anchor(--t-scrollbar top) - 1rem);
+    position: fixed;
+    inset: anchor(top) 1rem calc(anchor(var(--tui-dropdown-anchor) top) - 1rem);
     pointer-events: none;
     inline-size: calc(anchor-size(inline, -1px) + 1px);
-    position-anchor: inherit;
     position-visibility: always;
 }
 

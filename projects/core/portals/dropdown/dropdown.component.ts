@@ -1,14 +1,20 @@
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
+    type EmbeddedViewRef,
     inject,
     InjectionToken,
     type OnDestroy,
+    type TemplateRef,
     type Type,
+    viewChild,
+    ViewContainerRef,
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_SCROLL_REF,
     TuiScrollbar,
@@ -45,10 +51,14 @@ export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
                 [innerHTML]="text"
             ></div>
         </div>
-        <div
-            class="t-detector"
-            (resize)="onResize($any($event)[0])"
-        ></div>
+        <ng-template #detector>
+            <div
+                class="t-detector"
+                [style.--tui-dropdown-anchor]="detectorAnchor"
+                [style.position-anchor]="anchor.nativeElement.dataset.tuiAnchor"
+                (resize)="onResize($any($event)[0])"
+            ></div>
+        </ng-template>
     `,
     styleUrl: './dropdown.style.less',
     // @bad TODO: OnPush
@@ -64,21 +74,36 @@ export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
     host: {
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme()',
+        '[style.anchor-name]': "'--t-scrollbar, ' + detectorAnchor",
         '[style.max-block-size.px]': 'options.maxHeight',
     },
 })
-export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
-    private readonly anchor = inject(TUI_DROPDOWN_ANCHOR);
+export class TuiDropdownComponent
+    extends TuiScrollbar
+    implements AfterViewInit, OnDestroy
+{
+    private readonly vcr = inject(ViewContainerRef);
+    private readonly detector = viewChild.required<TemplateRef<unknown>>('detector');
+    private detectorRef?: EmbeddedViewRef<unknown>;
     private readonly position = inject(TuiDropdownPosition);
     private readonly darkMode = inject(TUI_DARK_MODE);
 
+    protected readonly anchor = inject(TUI_DROPDOWN_ANCHOR);
+    protected readonly detectorAnchor = `--${tuiGenerateId()}`;
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly theme = computed((_ = this.darkMode()) =>
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
     );
 
+    public ngAfterViewInit(): void {
+        // Host styles can create a containing block that prevents the detector from resolving its anchors.
+        this.detectorRef = this.vcr.createEmbeddedView(this.detector());
+    }
+
     public ngOnDestroy(): void {
+        this.detectorRef?.destroy();
+
         if (!this.anchor.nativeElement.isConnected) {
             this.el.style.setProperty('visibility', 'hidden');
         }

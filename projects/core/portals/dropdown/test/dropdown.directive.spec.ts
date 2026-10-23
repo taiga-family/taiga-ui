@@ -78,6 +78,18 @@ describe('TuiDropdownDirective', () => {
         expect(getDropdown()?.nativeElement.textContent?.trim()).toBe('Droppy down');
     });
 
+    it('removes the position detector when the dropdown closes', () => {
+        testComponent.open = true;
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.querySelector('.t-detector')).not.toBeNull();
+
+        testComponent.open = false;
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.querySelector('.t-detector')).toBeNull();
+    });
+
     function getDropdown(): ElementRef<HTMLDivElement> | null {
         return pageObject.getByAutomationId(`${testContext.prefix}item`);
     }
