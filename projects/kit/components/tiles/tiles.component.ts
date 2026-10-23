@@ -17,7 +17,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
-import {TUI_TILES_REORDER} from './tiles.tokens';
+import {TUI_TILES_REORDER, tuiTilesSwap} from './tiles.tokens';
 
 @Component({
     selector: 'tui-tiles',
@@ -47,6 +47,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
 export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
     private readonly handler = inject(TUI_TILES_REORDER);
+    private readonly stepwise = this.handler === tuiTilesSwap;
 
     protected readonly sub = this.el$
         .pipe(
@@ -83,7 +84,7 @@ export class TuiTilesComponent {
             ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));
 
-        return this.debounce() || !this.isSingleLine(elements)
+        return this.debounce() || !this.stepwise || !this.isSingleLine(elements)
             ? this.handler(order, currentIndex, newIndex)
             : this.move(order, currentIndex, newIndex);
     }
