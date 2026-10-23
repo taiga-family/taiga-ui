@@ -27,6 +27,7 @@ jobs:
           projectId: taiga-previews-a7bbb
           target: taiga-preview-demo
           expires: 1d
+          firebaseToolsVersion: 15.26.0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
