@@ -14,6 +14,7 @@ import {TUI_DROPDOWN_ANCHOR, TUI_DROPDOWN_HOST} from './dropdown.providers';
     ],
     host: {
         '[attr.data-tui-anchor]': 'anchor',
+        '[style.--tui-anchor]': 'anchor',
         '[style.anchor-name]': 'anchor',
     },
 })

@@ -20,6 +20,7 @@ export class TuiHintHost extends TuiRectAccessor implements ElementRef<HTMLEleme
 
         this.nativeElement = this.tuiHintHost() || this.nativeElement;
         this.nativeElement.setAttribute('data-tui-anchor', anchorName);
+        this.nativeElement.style.setProperty('--tui-anchor', anchorName);
         this.nativeElement.style.setProperty('anchor-name', anchorName);
     });
 
