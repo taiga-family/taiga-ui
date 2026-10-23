@@ -105,36 +105,26 @@ export class TuiTilesComponent {
         currentIndex: number,
         newIndex: number,
     ): Map<number, number> {
-        if (currentIndex < 0 || newIndex < 0) {
+        const from = order.get(currentIndex);
+        const to = order.get(newIndex);
+
+        if (from === undefined || to === undefined) {
             return order;
         }
 
-        let result = order;
-        const target = order.get(newIndex) ?? newIndex;
+        const step = Math.sign(to - from);
+        const shifted = Array.from(order)
+            .filter(([, slot]) => (slot - from) * step > 0 && (slot - to) * step <= 0)
+            .sort(([, a], [, b]) => (a - b) * step);
 
-        for (let guard = result.size; guard > 0; guard--) {
-            const slot = result.get(currentIndex) ?? currentIndex;
-            const step = Math.sign(target - slot);
+        const result = new Map(order);
+        let previous = from;
 
-            if (!step) {
-                return result;
-            }
-
-            const neighbor = Array.from(result).find(
-                ([, value]) => value === slot + step,
-            )?.[0];
-            const next =
-                neighbor === undefined
-                    ? result
-                    : this.handler(result, currentIndex, neighbor);
-
-            if (next === result) {
-                return result;
-            }
-
-            result = next;
+        for (const [index, slot] of shifted) {
+            result.set(index, previous);
+            previous = slot;
         }
 
-        return result;
+        return result.set(currentIndex, to);
     }
 }
