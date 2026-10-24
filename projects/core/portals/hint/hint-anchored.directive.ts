@@ -1,4 +1,4 @@
-import {type AfterViewInit, Directive, inject} from '@angular/core';
+import {type AfterViewInit, DestroyRef, Directive, effect, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -27,9 +27,15 @@ const ARROW_OFFSET = 22;
         tuiProvideAccessor(TuiPositionAccessor, 'hint'),
         tuiProvideAccessor(TuiRectAccessor, 'hint'),
     ],
+    host: {
+        '(animationcancel.self)': 'onAnimation($event, false)',
+        '(animationend.self)': 'onAnimation($event, false)',
+        '(animationstart.self)': 'onAnimation($event, true)',
+    },
 })
 export class TuiHintAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
+    private readonly destroyRef = inject(DestroyRef);
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
@@ -48,22 +54,74 @@ export class TuiHintAnchored implements AfterViewInit {
 
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&
-        'position' in this.accessor &&
+        typeof this.accessor.position === 'function' &&
         this.viewport.type === 'window';
 
     protected readonly sub = inject(TuiHoveredService)
         .pipe(takeUntilDestroyed())
         .subscribe((hover) => this.hover.toggle(hover));
 
-    public ngAfterViewInit(): void {
+    protected readonly sync = effect(() => {
         if (this.anchored) {
             this.accessor.position?.(this.el);
+        }
+    });
+
+    public ngAfterViewInit(): void {
+        if (this.anchored) {
+            this.observeHost();
         } else {
             this.styles$.subscribe({
                 next: (point) => this.update(...point),
                 complete: () => this.directive.toggle(false),
             });
         }
+    }
+
+    protected onAnimation({animationName}: AnimationEvent, running: boolean): void {
+        if (!this.anchored || animationName !== 'tuiScale') {
+            return;
+        }
+
+        // A transform makes fixed arrows lose access to the external anchor.
+        // Use local coordinates only while the original scale animation runs.
+        if (running) {
+            this.update(this.el.offsetLeft, this.el.offsetTop);
+        }
+
+        this.el.classList.toggle('_animating', running);
+    }
+
+    // Projection can detach the host without destroying its directive.
+    // CSS positioning has no frame subscription to detect this and close the hint.
+    private observeHost(): void {
+        const host = this.directive.el;
+        const mutations = new MutationObserver((records) => {
+            if (
+                !host.isConnected &&
+                records.some(({removedNodes}) =>
+                    Array.from(removedNodes).some((node) => node.contains(host)),
+                )
+            ) {
+                this.directive.toggle(false);
+            }
+        });
+
+        const resize =
+            typeof ResizeObserver === 'undefined'
+                ? null
+                : new ResizeObserver(() => {
+                      if (!host.getClientRects().length) {
+                          this.directive.toggle(false);
+                      }
+                  });
+
+        mutations.observe(host.ownerDocument.body, {childList: true, subtree: true});
+        resize?.observe(host);
+        this.destroyRef.onDestroy(() => {
+            mutations.disconnect();
+            resize?.disconnect();
+        });
     }
 
     private update(left: number, top: number): void {
@@ -76,7 +134,10 @@ export class TuiHintAnchored implements AfterViewInit {
 
         const viewport = this.viewport.getClientRect();
         const max = Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP);
-        const safeLeft = tuiClamp(Math.max(GAP, left), viewport.left + GAP, max);
+        const safeLeft = this.anchored
+            ? left
+            : tuiClamp(Math.max(GAP, left), viewport.left + GAP, max);
+
         const startX = Math.round(safeLeft) === Math.round(rect.left);
         const startY = Math.round(top) === Math.round(rect.top);
         const endX = Math.round(safeLeft + clientWidth) === Math.round(rect.right);
@@ -99,8 +160,11 @@ export class TuiHintAnchored implements AfterViewInit {
     }
 
     private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.setProperty('top', top);
-        this.el.style.setProperty('left', left);
+        if (!this.anchored) {
+            this.el.style.setProperty('top', top);
+            this.el.style.setProperty('left', left);
+        }
+
         this.el.style.setProperty('--t-top', `${beakTop}%`);
         this.el.style.setProperty('--t-left', `${beakLeft}%`);
         this.el.style.setProperty(

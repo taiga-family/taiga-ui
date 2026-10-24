@@ -1,0 +1,105 @@
+// stylelint-disable plugin/use-baseline -- graceful degradation
+// stylelint-disable at-rule-allowed-list -- native anchor positioning fallbacks
+// stylelint-disable rem-over-px/rem-over-px -- match the JS viewport gap
+:host(._anchored) {
+    inline-size: max-content;
+    max-inline-size: ~'min(20rem, calc(100vw - 1rem))';
+    position-visibility: anchors-valid;
+    margin: 8px;
+
+    --t-arrow-offset: 22px;
+    // Keep the corner offset when the hint and host edges coincide.
+    --t-start-shift: ~'calc(abs(sign(anchor(self-start) - anchor(var(--t-self) self-start))) * anchor-size())';
+    --t-end-shift: ~'calc(abs(sign(anchor(self-end) - anchor(var(--t-self) self-end))) * anchor-size())';
+    --t-beak-start: ~'min(anchor(self-start) + var(--t-arrow-offset) + var(--t-start-shift), max(anchor(center), anchor(self-end) - var(--t-arrow-offset) - var(--t-end-shift)))';
+    --t-beak-end: ~'max(anchor(self-start) - var(--t-arrow-offset) - var(--t-start-shift), min(anchor(center), anchor(self-end) + var(--t-arrow-offset) + var(--t-end-shift)))';
+    --t-start-left: ~'calc(anchor(left, -100000rem) + min(0px, anchor-size(width) / 2 - var(--t-arrow-offset)) - 8px)';
+    --t-start-right: auto;
+    --t-end-left: auto;
+    --t-end-right: ~'calc(anchor(right, -100000rem) + min(0px, anchor-size(width) / 2 - var(--t-arrow-offset)) - 8px)';
+    --t-start-top: ~'calc(anchor(top, -100000rem) + min(0px, anchor-size(height) / 2 - var(--t-arrow-offset)) - 8px)';
+    --t-start-bottom: auto;
+    --t-end-top: auto;
+    --t-end-bottom: ~'calc(anchor(bottom, -100000rem) + min(0px, anchor-size(height) / 2 - var(--t-arrow-offset)) - 8px)';
+
+    &._centered {
+        --t-beak-start: anchor(center);
+        --t-beak-end: anchor(center);
+        --t-start-left: auto;
+        --t-start-right: ~'calc(anchor(center, -100000rem) - var(--t-arrow-offset) - 8px)';
+        --t-end-left: ~'calc(anchor(center, -100000rem) - var(--t-arrow-offset) - 8px)';
+        --t-end-right: auto;
+        --t-start-top: auto;
+        --t-start-bottom: ~'calc(anchor(center, -100000rem) - var(--t-arrow-offset) - 8px)';
+        --t-end-top: ~'calc(anchor(center, -100000rem) - var(--t-arrow-offset) - 8px)';
+        --t-end-bottom: auto;
+    }
+
+    // The arrow perpendicular to the chosen side collapses to zero size.
+    // This follows position-try fallbacks without reading layout in JavaScript.
+    &::before,
+    &::after {
+        content: '';
+        position: fixed;
+        direction: ltr;
+        position-anchor: inherit;
+        min-inline-size: 0;
+        min-block-size: 0;
+        background: inherit;
+        mask-image: var(--t-image);
+        transition: none;
+    }
+
+    &::before {
+        inset: ~'clamp(anchor(var(--t-self) top), var(--t-beak-start), anchor(var(--t-self) bottom)) max(anchor(var(--t-self) right), var(--t-beak-end) - var(--t-arrow-inline) / 2) auto max(anchor(var(--t-self) left), var(--t-beak-start) - var(--t-arrow-inline) / 2)';
+        inline-size: auto;
+        max-inline-size: var(--t-arrow-inline);
+        block-size: var(--t-arrow-block);
+        transform: translateY(-50%);
+    }
+
+    &::after {
+        inset: ~'max(anchor(var(--t-self) top), var(--t-beak-start) - var(--t-arrow-block) / 2) auto max(anchor(var(--t-self) bottom), var(--t-beak-end) - var(--t-arrow-block) / 2) clamp(anchor(var(--t-self) left), var(--t-beak-start), anchor(var(--t-self) right))';
+        inline-size: var(--t-arrow-inline);
+        block-size: auto;
+        max-block-size: var(--t-arrow-block);
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    &._animating::before {
+        position: absolute;
+        inset: var(--t-top) auto auto var(--t-left);
+        inline-size: var(--t-arrow-inline);
+        block-size: var(--t-arrow-block);
+        transform: translate(-50%, -50%) rotate(var(--t-rotate));
+    }
+
+    &._animating::after {
+        display: none;
+    }
+}
+
+.position(@name, @inset, @align: normal, @justify: normal) {
+    :host(._anchored[data-direction='@{name}']) {
+        inset: @inset;
+        place-self: @align @justify;
+    }
+
+    @position-try ~'--tui-hint-@{name}' {
+        inset: @inset;
+        place-self: @align @justify;
+    }
+}
+
+.position(bottom-start, calc(anchor(bottom, -100000rem) + var(--t-offset)) var(--t-start-right) auto var(--t-start-left));
+.position(bottom, calc(anchor(bottom, -100000rem) + var(--t-offset)) 0px auto 0px, normal, anchor-center);
+.position(bottom-end, calc(anchor(bottom, -100000rem) + var(--t-offset)) var(--t-end-right) auto var(--t-end-left));
+.position(top-start, auto var(--t-start-right) calc(anchor(top, -100000rem) + var(--t-offset)) var(--t-start-left));
+.position(top, auto 0px calc(anchor(top, -100000rem) + var(--t-offset)) 0px, normal, anchor-center);
+.position(top-end, auto var(--t-end-right) calc(anchor(top, -100000rem) + var(--t-offset)) var(--t-end-left));
+.position(start-top, var(--t-start-top) calc(anchor(left, -100000rem) + var(--t-offset)) var(--t-start-bottom) auto);
+.position(start, 0px calc(anchor(left, -100000rem) + var(--t-offset)) 0px auto, anchor-center);
+.position(start-bottom, var(--t-end-top) calc(anchor(left, -100000rem) + var(--t-offset)) var(--t-end-bottom) auto);
+.position(end-top, var(--t-start-top) auto var(--t-start-bottom) calc(anchor(right, -100000rem) + var(--t-offset)));
+.position(end, 0px auto 0px calc(anchor(right, -100000rem) + var(--t-offset)), anchor-center);
+.position(end-bottom, var(--t-end-top) auto var(--t-end-bottom) calc(anchor(right, -100000rem) + var(--t-offset)));

@@ -1,7 +1,9 @@
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
+import {WA_CSS} from '@ng-web-apis/common';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsPositionAccessor,
     tuiInjectAccessor,
@@ -12,6 +14,8 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
+import {TUI_HINT_ANCHOR, TuiHintAnchor} from './hint-anchor.directive';
+import {TuiHintHost} from './hint-host.directive';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
@@ -30,6 +34,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly directionChange = new Subject<TuiHintDirection>();
     private readonly accessor = tuiInjectAccessor(TuiRectAccessor, 'hint');
+    private readonly anchor = inject(TUI_HINT_ANCHOR);
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),
@@ -46,11 +51,20 @@ export class TuiHintPosition extends TuiPositionAccessor {
 
     public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
 
+    /** @deprecated CSS anchor positioning does not emit direction changes */
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
     );
 
     public readonly type = 'hint';
+
+    public override readonly position =
+        inject(WA_CSS)?.supports('left', 'calc(anchor-size() * abs(sign(1px)))') &&
+        // SVG graphics do not provide CSS anchor boxes for pointer delegates.
+        this.el instanceof HTMLElement &&
+        (this.accessor instanceof TuiHintAnchor || Object.is(this.accessor, this.anchor))
+            ? (element: HTMLElement): void => this.setPosition(element)
+            : undefined;
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
@@ -83,7 +97,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['start-top'][LEFT] = rect.left - width - this.offset();
         this.points.start[TOP] = topCenter - height / 2;
         this.points.start[LEFT] = this.points['start-top'][LEFT];
-        this.points['start-bottom'][TOP] = this.centered() ? bottom : top;
+        this.points['start-bottom'][TOP] = this.centered() ? top : bottom;
         this.points['start-bottom'][LEFT] = this.points['start-top'][LEFT];
 
         this.points['end-top'][TOP] = this.points['start-top'][TOP];
@@ -112,6 +126,33 @@ export class TuiHintPosition extends TuiPositionAccessor {
             this.viewport.getClientRect().bottom - this.points.bottom[TOP]
             ? 'top'
             : 'bottom';
+    }
+
+    private setPosition(element: HTMLElement): void {
+        const direction = this.direction();
+        const directions = Array.isArray(direction) ? direction : [direction];
+        const [primary, ...fallbacks] = new Set([...directions, ...TUI_HINT_DIRECTIONS]);
+        const anchorName =
+            element.style.getPropertyValue('--t-self') || `--${tuiGenerateId()}`;
+
+        const anchor =
+            (this.anchor instanceof TuiHintHost && this.anchor.tuiHintHost()) ||
+            this.anchor.nativeElement;
+
+        element.dataset.direction = primary;
+        element.classList.toggle('_centered', !!this.centered());
+        Object.assign(element.style, {
+            position: 'fixed',
+            visibility: 'visible',
+            positionAnchor: anchor.dataset.tuiAnchor,
+            anchorName,
+            positionTryFallbacks: fallbacks
+                .map((direction) => `--tui-hint-${direction}`)
+                .join(', '),
+        });
+        element.style.setProperty('--t-self', anchorName);
+        element.style.setProperty('--t-offset', `${this.offset() - GAP}px`);
+        element.classList.add('_anchored');
     }
 
     private checkPosition([left, top]: TuiPoint, width: number, height: number): boolean {
