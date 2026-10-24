@@ -21,6 +21,39 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('01-dropdown.png');
     });
 
+    for (const style of [
+        'backdrop-filter: blur(1px)',
+        'filter: blur(0px)',
+        'transform: translateX(0)',
+        'contain: paint',
+        'will-change: transform',
+    ]) {
+        test(`opens with ${style} and reduced motion`, async ({page}) => {
+            await tuiGoto(page, DemoRoute.Dropdown);
+            test.skip(
+                !(await page.evaluate(() => CSS.supports('anchor-name', '--anchor'))),
+                'Requires CSS anchor positioning',
+            );
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+            await page.addStyleTag({content: `tui-dropdown { ${style}; }`});
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+
+            await dropdown.click({trial: true});
+            await expect(dropdown).toBeVisible();
+            await expect(dropdown).toHaveCSS('visibility', 'visible');
+
+            await example.locator('button').evaluate((element) => {
+                element.style.display = 'none';
+            });
+
+            await expect(dropdown).toBeHidden();
+        });
+    }
+
     test('Interesting', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#interesting');
