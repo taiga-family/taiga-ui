@@ -399,7 +399,11 @@ export class TuiDay extends TuiMonth {
      * Returns native {@link Date} based on UTC
      */
     public override toUtcNativeDate(): Date {
-        return new Date(Date.UTC(this.year, this.month, this.day));
+        const date = new Date(0);
+
+        date.setUTCFullYear(this.year, this.month, this.day);
+
+        return date;
     }
 }
 
