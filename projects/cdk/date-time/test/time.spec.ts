@@ -409,6 +409,31 @@ describe('TuiTime', () => {
     });
 
     describe('toString(mode) method', () => {
+        it.each([
+            ['HH', '13'],
+            ['HH AA', '01\u00A0PM'],
+            ['HH:MM', '13:14'],
+            ['HH:MM AA', '01:14\u00A0PM'],
+            ['HH:MM:SS', '13:14:15'],
+            ['HH:MM:SS AA', '01:14:15\u00A0PM'],
+            ['HH:MM:SS.MSS', '13:14:15.123'],
+            ['HH:MM:SS.MSS AA', '01:14:15.123\u00A0PM'],
+            ['MM:SS', '14:15'],
+            ['MM:SS.MSS', '14:15.123'],
+            ['SS.MSS', '15.123'],
+        ] as const)('formats %s correctly', (mode, expected) => {
+            expect(new TuiTime(13, 14, 15, 123).toString(mode)).toBe(expected);
+        });
+
+        it.each([
+            [new TuiTime(13, 14), '13:14'],
+            [new TuiTime(13, 14, 15), '13:14:15'],
+            [new TuiTime(13, 14, 0, 123), '13:14:00.123'],
+            [new TuiTime(13, 14, 15, 123), '13:14:15.123'],
+        ])('preserves default formatting for %s', (time, expected) => {
+            expect(time.toString()).toBe(expected);
+        });
+
         it('without mode parameter', () => {
             const time = new TuiTime(6, 36, 1, 1);
 
