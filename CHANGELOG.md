@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.30.0](https://github.com/taiga-family/taiga-ui/compare/v5.29.0...v5.30.0) (2026-10-26)
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** `LineChart`, `PieChart`, `BarChart` respect `tuiHintDirection`
+  ([#15224](https://github.com/taiga-family/taiga-ui/issues/15224))
+  ([abcaa5a](https://github.com/taiga-family/taiga-ui/commit/abcaa5ad7903e09d67374991ec325a60ea884615))
+- **addon-mobile:** `AppBar` use `body-m` font for subtitle on Android
+  ([#15285](https://github.com/taiga-family/taiga-ui/issues/15285))
+  ([a04b709](https://github.com/taiga-family/taiga-ui/commit/a04b70928866bce82979b2b8558fa7ec2b2e495d))
+- **cdk:** `TuiDayRange` use UTC in `toArray` ([#15221](https://github.com/taiga-family/taiga-ui/issues/15221))
+  ([b02f655](https://github.com/taiga-family/taiga-ui/commit/b02f65516536d2eae550f13fae43c63f23c969ec))
+- **cdk:** respect short TuiTime format modes ([#15275](https://github.com/taiga-family/taiga-ui/issues/15275))
+  ([fedf07b](https://github.com/taiga-family/taiga-ui/commit/fedf07b3b60ceeefea9ed6b4dd740af072976d77))
+- **core:** `DropdownSelection` do not reopen from stale range when selection is cleared
+  ([#15278](https://github.com/taiga-family/taiga-ui/issues/15278))
+  ([fd58532](https://github.com/taiga-family/taiga-ui/commit/fd58532909efc3905858461c8d2ff4a140a8cfc5))
+- **core:** correct bottom-aligned hint positioning ([#15280](https://github.com/taiga-family/taiga-ui/issues/15280))
+  ([c244be7](https://github.com/taiga-family/taiga-ui/commit/c244be731856b7f9e80224de87253814f2ad1071))
+- **kit:** `InputNumber` preserve appearance with step in dropdowns
+  ([#15228](https://github.com/taiga-family/taiga-ui/issues/15228))
+  ([8833820](https://github.com/taiga-family/taiga-ui/commit/8833820c80e4faa460d751c9478e2f9b1a28df2e))
+- **kit:** `Tree` respect `hasChildren` for the start item
+  ([#15272](https://github.com/taiga-family/taiga-ui/issues/15272))
+  ([c46c5ca](https://github.com/taiga-family/taiga-ui/commit/c46c5caef398d2bb0d350825f064c6705175359e))
+
 ## [5.29.0](https://github.com/taiga-family/taiga-ui/compare/v5.28.0...v5.29.0) (2026-10-19)
 
 ### 🚀 Features
