@@ -13611,6 +13611,40 @@ label {
 }
 ```
 
+#### Customization
+
+Use `tuiCheckboxOptionsProvider` to override the colors of the checkbox with appearance colors
+
+**Template:**
+```html
+&lt;input tuiCheckbox type=&quot;checkbox&quot; [(ngModel)]=&quot;checked&quot; /&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiCheckbox, tuiCheckboxOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiCheckbox],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiCheckboxOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;primary-grayscale&#039; : &#039;outline-grayscale&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected checked = false;
+}
+```
+
 
 ### TypeScript
 
@@ -40728,6 +40762,50 @@ export default class Example {
 }
 ```
 
+#### Customization
+
+**Template:**
+```html
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;1&quot; [(ngModel)]=&quot;value&quot; /&gt; example 1 &lt;/label&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;2&quot; [(ngModel)]=&quot;value&quot; /&gt; example 2 &lt;/label&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label tuiLabel&gt;
+&lt;input name=&quot;example&quot; tuiRadio type=&quot;radio&quot; value=&quot;3&quot; [(ngModel)]=&quot;value&quot; /&gt; example 3 &lt;/label&gt;
+&lt;/p&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiLabel} from &#039;@taiga-ui/core&#039;;
+import {TuiRadio, tuiRadioOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiLabel, TuiRadio],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiRadioOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;primary-grayscale&#039; : &#039;outline-grayscale&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected value = &#039;1&#039;;
+}
+```
+
 
 ### TypeScript
 
@@ -40743,7 +40821,12 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Platforms&#039;, &#039;Identity matcher&#039;, &#039;List&#039;];
+    protected readonly examples = [
+        &#039;Platforms&#039;,
+        &#039;Identity matcher&#039;,
+        &#039;List&#039;,
+        &#039;Customization&#039;,
+    ];
 }
 ```
 
@@ -47620,6 +47703,38 @@ export default class Example {
 }
 ```
 
+#### Customization
+
+**Template:**
+```html
+&lt;input tuiSwitch type=&quot;checkbox&quot; [(ngModel)]=&quot;value&quot; /&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSwitch, tuiSwitchOptionsProvider} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiSwitch],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiSwitchOptionsProvider({
+            appearance: (el) =&gt; (el.checked ? &#039;accent&#039; : &#039;secondary&#039;),
+        }),
+    ],
+})
+export default class Example {
+    protected value = false;
+}
+```
+
 
 ### TypeScript
 
@@ -47635,7 +47750,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Platforms&#039;, &#039;Same color&#039;];
+    protected readonly examples = [&#039;Platforms&#039;, &#039;Same color&#039;, &#039;Customization&#039;];
 }
 ```
 
@@ -54211,7 +54326,7 @@ class TreeLoader implements TuiTreeLoader&lt;Item&gt; {
         TuiTreeService,
         {
             provide: TUI_TREE_START,
-            useValue: {text: &#039;Topmost&#039;},
+            useValue: {text: &#039;Topmost&#039;, children: true},
         },
         {
             provide: TUI_TREE_LOADER,

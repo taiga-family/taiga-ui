@@ -239,3 +239,37 @@ label {
     gap: 0.5rem;
 }
 ```
+
+#### Customization
+
+Use `tuiCheckboxOptionsProvider` to override the colors of the checkbox with appearance colors
+
+**Template:**
+```html
+<input tuiCheckbox type="checkbox" [(ngModel)]="checked" />
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, TuiCheckbox],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiCheckboxOptionsProvider({
+            appearance: (el) => (el.checked ? 'primary-grayscale' : 'outline-grayscale'),
+        }),
+    ],
+})
+export default class Example {
+    protected checked = false;
+}
+```
