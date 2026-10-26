@@ -133,6 +133,19 @@ describe('Tabs | dynamic tabs', () => {
             expect(added?.classList.contains('_active')).toBe(false);
             expect(fixture.componentInstance.activeItemIndex()).toBe(1);
         });
+
+        it('keeps active tab when tabs are reordered', async () => {
+            await activate('b');
+
+            fixture.componentInstance.tabs.set(['a', 'c', 'b']);
+            await settle(fixture);
+
+            const [, , active] = getTabs(fixture);
+
+            expect(active?.classList.contains('_active')).toBe(true);
+            expect(active?.getAttribute('tabindex')).toBe('0');
+            expect(fixture.componentInstance.activeItemIndex()).toBe(2);
+        });
     });
 
     describe('programmatic change', () => {
