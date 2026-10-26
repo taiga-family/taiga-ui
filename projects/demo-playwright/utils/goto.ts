@@ -6,6 +6,7 @@ import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
+import {waitImages} from './wait-images';
 import {waitStableState} from './wait-stable-state';
 
 interface FontStub {
@@ -136,6 +137,7 @@ export async function tuiGoto(
     await expect(app).toBeAttached();
     await waitForRoutedPage(page, networkIdle);
     await waitIcons({page});
+    await waitImages({page});
 
     await tuiWaitForFonts(page);
     await waitStableState(app);
