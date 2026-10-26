@@ -232,3 +232,47 @@ export default class Example {
         item === this.strings[2]!;
 }
 ```
+
+#### Customization
+
+**Template:**
+```html
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="1" [(ngModel)]="value" /> example 1 </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="2" [(ngModel)]="value" /> example 2 </label>
+</p>
+<p>
+<label tuiLabel>
+<input name="example" tuiRadio type="radio" value="3" [(ngModel)]="value" /> example 3 </label>
+</p>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLabel} from '@taiga-ui/core';
+import {TuiRadio, tuiRadioOptionsProvider} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiLabel, TuiRadio],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+    providers: [
+        tuiRadioOptionsProvider({
+            appearance: (el) => (el.checked ? 'primary-grayscale' : 'outline-grayscale'),
+        }),
+    ],
+})
+export default class Example {
+    protected value = '1';
+}
+```
