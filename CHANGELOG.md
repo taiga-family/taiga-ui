@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.105.0](https://github.com/taiga-family/taiga-ui/compare/v4.104.0...v4.105.0) (2026-10-26)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `SearchBar` fix icon size on android
+  ([#15269](https://github.com/taiga-family/taiga-ui/issues/15269))
+  ([c4c3b8d](https://github.com/taiga-family/taiga-ui/commit/c4c3b8d652dea6c9bae168a385ad6aec06eb1700))
+- **kit:** `Tree` respect `hasChildren` for the start item (v4.x)
+  ([#15273](https://github.com/taiga-family/taiga-ui/issues/15273))
+  ([710438a](https://github.com/taiga-family/taiga-ui/commit/710438a2d14671189c34c5853419feb262887329))
+- **kit:** prevent copy mask seam at fractional pixel ratios
+  ([#15301](https://github.com/taiga-family/taiga-ui/issues/15301))
+  ([88f3fe0](https://github.com/taiga-family/taiga-ui/commit/88f3fe03a609a66687f39108086ab7cf63b93233))
+
 ## [4.104.0](https://github.com/taiga-family/taiga-ui/compare/v4.103.0...v4.104.0) (2026-10-19)
 
 ### 🐞 Bug Fixes
