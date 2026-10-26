@@ -82,6 +82,7 @@ export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
 
     constructor() {
         super();
+        // The top layer keeps host filters and transforms from invalidating the trigger anchor.
         afterNextRender(() =>
             this.el.querySelector<HTMLElement>('.t-detector')?.showPopover?.(),
         );
