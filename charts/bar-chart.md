@@ -8,7 +8,7 @@ Bar chart that can be used as a content to axes .
 ### Example
 
 ```html
-<tui-bar-chart class="chart" [collapsed]="collapsed" [max]="max" [size]="size" [value]="value" (tapColumn)="documentationPropertyTapColumn.emitEvent($event)" />
+<tui-bar-chart class="chart" [collapsed]="collapsed" [max]="max" [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintContent]="hintContent" [tuiHintDirection]="hint.direction" [value]="value" (tapColumn)="documentationPropertyTapColumn.emitEvent($event)" />
 ```
 
 ### API - Inputs
@@ -19,6 +19,7 @@ Bar chart that can be used as a content to axes .
 | [max] | `number` | sets chart max manually |
 | [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `ReadonlyArray<readonly number[]>` | array of segments |
+| [tuiHintContent] | `PolymorpheusContent<TuiContext<number>>` | content of the hint bubble |
 
 ### API - Outputs
 

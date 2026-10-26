@@ -4775,7 +4775,7 @@ Bar chart that can be used as a content to axes .
 ### Example
 
 ```html
-&lt;tui-bar-chart class=&quot;chart&quot; [collapsed]=&quot;collapsed&quot; [max]=&quot;max&quot; [size]=&quot;size&quot; [value]=&quot;value&quot; (tapColumn)=&quot;documentationPropertyTapColumn.emitEvent($event)&quot; /&gt;
+&lt;tui-bar-chart class=&quot;chart&quot; [collapsed]=&quot;collapsed&quot; [max]=&quot;max&quot; [size]=&quot;size&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintContent]=&quot;hintContent&quot; [tuiHintDirection]=&quot;hint.direction&quot; [value]=&quot;value&quot; (tapColumn)=&quot;documentationPropertyTapColumn.emitEvent($event)&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -4786,6 +4786,7 @@ Bar chart that can be used as a content to axes .
 | [max] | `number` | sets chart max manually |
 | [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `ReadonlyArray&lt;readonly number[]&gt;` | array of segments |
+| [tuiHintContent] | `PolymorpheusContent&lt;TuiContext&lt;number&gt;&gt;` | content of the hint bubble |
 
 ### API - Outputs
 
@@ -4941,14 +4942,16 @@ export default class Example {
 
 ```ts
 import {Component} from &#039;@angular/core&#039;;
+import {TuiDocHint} from &#039;@demo/components/hint&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiBarChart} from &#039;@taiga-ui/addon-charts&#039;;
+import {TuiBarChart, TuiChartHint} from &#039;@taiga-ui/addon-charts&#039;;
+import {type TuiContext, type TuiStringHandler} from &#039;@taiga-ui/cdk&#039;;
 import {type TuiSizeL, type TuiSizeS} from &#039;@taiga-ui/core&#039;;
 
 @Component({
-    imports: [TuiBarChart, TuiDemo],
+    imports: [TuiBarChart, TuiChartHint, TuiDemo, TuiDocHint],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
@@ -4974,6 +4977,12 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
+
+    protected readonly hintContentVariants: ReadonlyArray&lt;
+        TuiStringHandler&lt;TuiContext&lt;number&gt;&gt;
+    &gt; = [({$implicit}) =&gt; this.value.map((set) =&gt; set[$implicit] ?? 0).join(&#039;\n&#039;)];
+
+    protected hintContent: TuiStringHandler&lt;TuiContext&lt;number&gt;&gt; | null = null;
     protected readonly routes = DemoRoute;
 }
 ```
@@ -15826,8 +15835,9 @@ export default class Page extends Array {
 
 ---
 # components/Routable
-- **Package**: `null`
+- **Package**: `KIT`
 - **Type**: null
+- **Version**: 5.0.0
 
 ### TypeScript
 
@@ -30702,7 +30712,7 @@ export default class Page {
 ### Example
 
 ```html
-&lt;tui-axes class=&quot;axes&quot; [horizontalLines]=&quot;3&quot; [verticalLines]=&quot;5&quot; &gt;
+&lt;tui-axes class=&quot;axes&quot; [horizontalLines]=&quot;3&quot; [tuiHintDirection]=&quot;hint.direction&quot; [tuiLineChartHint]=&quot;hintContent&quot; [verticalLines]=&quot;5&quot; &gt;
 &lt;tui-line-chart [dots]=&quot;dots&quot; [filled]=&quot;filled&quot; [height]=&quot;height&quot; [smoothingFactor]=&quot;smoothingFactor&quot; [value]=&quot;value&quot; [width]=&quot;width&quot; [x]=&quot;x&quot; [xStringify]=&quot;xStringify&quot; [y]=&quot;y&quot; [yStringify]=&quot;yStringify&quot; /&gt;
 &lt;/tui-axes&gt;
 ```
@@ -30721,6 +30731,7 @@ export default class Page {
 | [value] | `TuiPoint[]` | array of data |
 | [xStringify] | `TuiStringHandler&lt;number&gt; \| null` | function to stringify a value number to a string in axis X hint |
 | [yStringify] | `TuiStringHandler&lt;number&gt; \| null` | function to stringify a value number to a string in axis Y hint |
+| [tuiLineChartHint] | `PolymorpheusContent&lt;TuiContext&lt;readonly TuiPoint[]&gt;&gt;` |  |
 
 ### Usage Examples
 
@@ -31039,14 +31050,15 @@ export default class Example {
 
 ```ts
 import {Component} from &#039;@angular/core&#039;;
+import {TuiDocHint} from &#039;@demo/components/hint&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiAxes, TuiLineChart} from &#039;@taiga-ui/addon-charts&#039;;
-import {type TuiStringHandler} from &#039;@taiga-ui/cdk&#039;;
+import {TuiAxes, TuiLineChart, TuiLineChartHint} from &#039;@taiga-ui/addon-charts&#039;;
+import {type TuiContext, type TuiStringHandler} from &#039;@taiga-ui/cdk&#039;;
 import {type TuiPoint} from &#039;@taiga-ui/core&#039;;
 
 @Component({
-    imports: [TuiAxes, TuiDemo, TuiLineChart],
+    imports: [TuiAxes, TuiDemo, TuiDocHint, TuiLineChart, TuiLineChartHint],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
@@ -31077,6 +31089,16 @@ export default class Page {
     protected readonly xStringifyVariants: ReadonlyArray&lt;TuiStringHandler&lt;number&gt;&gt; = [
         (x) =&gt; `${100 * x}`,
     ];
+
+    protected readonly hintContentVariants: ReadonlyArray&lt;
+        TuiStringHandler&lt;TuiContext&lt;readonly TuiPoint[]&gt;&gt;
+    &gt; = [
+        ({$implicit}) =&gt;
+            $implicit.map(([x, y]) =&gt; `Vertical: ${y}\nHorizontal: ${x}`).join(&#039;\n&#039;),
+    ];
+
+    protected hintContent: TuiStringHandler&lt;TuiContext&lt;readonly TuiPoint[]&gt;&gt; | null =
+        null;
 
     protected yStringify: TuiStringHandler&lt;number&gt; | null = null;
     protected xStringify: TuiStringHandler&lt;number&gt; | null = null;
@@ -36066,7 +36088,7 @@ export default class Page {
 ### Example
 
 ```html
-&lt;tui-pie-chart class=&quot;chart&quot; [size]=&quot;size&quot; [value]=&quot;value&quot; [(activeItemIndex)]=&quot;activeItemIndex&quot; /&gt;
+&lt;tui-pie-chart class=&quot;chart&quot; [size]=&quot;size&quot; [tuiHintAppearance]=&quot;hint.appearance&quot; [tuiHintContent]=&quot;hintContent&quot; [tuiHintDirection]=&quot;hint.direction&quot; [value]=&quot;value&quot; [(activeItemIndex)]=&quot;activeItemIndex&quot; /&gt;
 ```
 
 ### API - Inputs
@@ -36076,6 +36098,7 @@ export default class Page {
 | [(activeItemIndex)] | `number` | selected fragment index |
 | [size] | `TuiSizeS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
+| [tuiHintContent] | `PolymorpheusContent&lt;TuiContext&lt;number&gt;&gt;` | content of the hint bubble |
 
 ### Usage Examples
 
@@ -36171,10 +36194,11 @@ export default class Example {
 
 ```ts
 import {Component} from &#039;@angular/core&#039;;
+import {TuiDocHint} from &#039;@demo/components/hint&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiPieChart} from &#039;@taiga-ui/addon-charts&#039;;
+import {TuiChartHint, TuiPieChart} from &#039;@taiga-ui/addon-charts&#039;;
 import {TuiCurrency, tuiGetCurrencySymbol} from &#039;@taiga-ui/addon-commerce&#039;;
 import {type TuiContext, tuiRound, tuiSum} from &#039;@taiga-ui/cdk&#039;;
 import {type TuiSizeXL, type TuiSizeXS} from &#039;@taiga-ui/core&#039;;
@@ -36182,7 +36206,7 @@ import {tuiFormatNumber} from &#039;@taiga-ui/kit&#039;;
 import {type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 
 @Component({
-    imports: [TuiDemo, TuiPieChart],
+    imports: [TuiChartHint, TuiDemo, TuiDocHint, TuiPieChart],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.less&#039;,
     changeDetection,
@@ -51828,7 +51852,7 @@ class TreeLoader implements TuiTreeLoader&lt;Item&gt; {
         TuiTreeService,
         {
             provide: TUI_TREE_START,
-            useValue: {text: &#039;Topmost&#039;},
+            useValue: {text: &#039;Topmost&#039;, children: true},
         },
         {
             provide: TUI_TREE_LOADER,
@@ -59056,6 +59080,8 @@ export default class Example {
 
 #### Toggling
 
+To keep the chosen theme between visits and prevent a flash of the wrong theme on load, see Dark theme setup
+
 **Template:**
 ```html
 Dark mode enabled: {{ darkMode() }} &lt;p&gt;
@@ -59113,6 +59139,7 @@ code {
 ```ts
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 
 @Component({
@@ -59121,7 +59148,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = [&#039;Themes&#039;, &#039;Toggling&#039;];
+    protected readonly routes = DemoRoute;
 }
 ```
 
@@ -61036,7 +61063,7 @@ export default class Page {}
 
 ---
 # pipes/FilterByInput
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: pipes
 - **Version**: 5.0.0
 Pipe for filtering an array by value entered in a textfield

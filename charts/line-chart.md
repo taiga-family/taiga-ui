@@ -6,7 +6,7 @@
 ### Example
 
 ```html
-<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
+<tui-axes class="axes" [horizontalLines]="3" [tuiHintDirection]="hint.direction" [tuiLineChartHint]="hintContent" [verticalLines]="5" >
 <tui-line-chart [dots]="dots" [filled]="filled" [height]="height" [smoothingFactor]="smoothingFactor" [value]="value" [width]="width" [x]="x" [xStringify]="xStringify" [y]="y" [yStringify]="yStringify" />
 </tui-axes>
 ```
@@ -25,6 +25,7 @@
 | [value] | `TuiPoint[]` | array of data |
 | [xStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis X hint |
 | [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
+| [tuiLineChartHint] | `PolymorpheusContent<TuiContext<readonly TuiPoint[]>>` |  |
 
 ### Usage Examples
 

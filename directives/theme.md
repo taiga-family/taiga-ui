@@ -9,6 +9,11 @@ and
 `light`
 are included. Importing is not required.
 
+## Toggling
+
+To keep the chosen theme between visits and prevent a flash of the wrong theme on load, see
+Dark theme setup
+
 ### Usage Examples
 
 #### Themes
@@ -92,6 +97,8 @@ export default class Example {
 ```
 
 #### Toggling
+
+To keep the chosen theme between visits and prevent a flash of the wrong theme on load, see Dark theme setup
 
 **Template:**
 ```html

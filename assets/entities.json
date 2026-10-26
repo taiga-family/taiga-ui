@@ -1,0 +1,1281 @@
+[
+    {
+        "name": "ArcChart",
+        "export": "TuiArcChart",
+        "package": "@taiga-ui/addon-charts",
+        "route": "charts/arc-chart"
+    },
+    {
+        "name": "Axes",
+        "export": "TuiAxes",
+        "package": "@taiga-ui/addon-charts",
+        "description": "Just axes for charts",
+        "route": "charts/axes"
+    },
+    {
+        "name": "Bar",
+        "export": "TuiBar",
+        "package": "@taiga-ui/addon-charts",
+        "description": "A bar for bar chart",
+        "route": "charts/bar"
+    },
+    {
+        "name": "BarChart",
+        "export": "TuiBarChart",
+        "package": "@taiga-ui/addon-charts",
+        "description": "Bar chart that can be used as a content to axes .",
+        "route": "charts/bar-chart"
+    },
+    {
+        "name": "BarSet",
+        "export": "TuiBarSet",
+        "package": "@taiga-ui/addon-charts",
+        "description": "A group of bars for bar chart",
+        "route": "charts/bar-set"
+    },
+    {
+        "name": "LegendItem",
+        "export": "TuiLegendItem",
+        "package": "@taiga-ui/addon-charts",
+        "description": "A button for a legend of ring or pie charts",
+        "route": "charts/legend-item"
+    },
+    {
+        "name": "LineChart",
+        "export": "TuiLineChart",
+        "package": "@taiga-ui/addon-charts",
+        "route": "charts/line-chart"
+    },
+    {
+        "name": "LineDaysChart",
+        "export": "TuiLineDaysChart",
+        "package": "@taiga-ui/addon-charts",
+        "description": "Line chart but for days",
+        "route": "charts/line-days-chart"
+    },
+    {
+        "name": "PieChart",
+        "export": "TuiPieChart",
+        "package": "@taiga-ui/addon-charts",
+        "route": "charts/pie-chart"
+    },
+    {
+        "name": "RingChart",
+        "export": "TuiRingChart",
+        "package": "@taiga-ui/addon-charts",
+        "route": "charts/ring-chart"
+    },
+    {
+        "name": "Amount",
+        "export": "TuiAmountPipe",
+        "package": "@taiga-ui/addon-commerce",
+        "description": "Pipe to format number values to show money sums Number formatting can be customized by using TUI_NUMBER_FORMAT",
+        "route": "pipes/amount"
+    },
+    {
+        "name": "Currency",
+        "export": "TuiCurrencyPipe",
+        "package": "@taiga-ui/addon-commerce",
+        "description": "Pipe for transforming number into money. It is usually used with `InputNumber`",
+        "route": "pipes/currency"
+    },
+    {
+        "name": "InputCard",
+        "export": "TuiInputCard",
+        "package": "@taiga-ui/addon-commerce",
+        "description": "`InputCard` can be used with `InputExpire` and `InputCVC` to input a card. Use `tuiCreateLuhnValidator(message)` to create a `Validator` that uses Luhn algorithm",
+        "route": "components/input-card"
+    },
+    {
+        "name": "InputCardGroup",
+        "export": "TuiInputCardGroup",
+        "package": "@taiga-ui/addon-commerce",
+        "description": "`InputCardGroup` is used to input a card as a separated control",
+        "route": "components/input-card-group"
+    },
+    {
+        "name": "ThumbnailCard",
+        "export": "TuiThumbnailCard",
+        "package": "@taiga-ui/addon-commerce",
+        "description": "Customizable credit card thumbnail",
+        "route": "components/thumbnail-card"
+    },
+    {
+        "name": "BottomSheet",
+        "export": "TuiBottomSheet",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "A non-modal draggable sheet",
+        "route": "components/bottom-sheet"
+    },
+    {
+        "name": "ElasticSticky",
+        "export": "TuiElasticSticky",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Directive allows to scale \"stuck\" sticky heading. It can also be used as service `TuiElasticStickyService`",
+        "route": "directives/elastic-sticky"
+    },
+    {
+        "name": "KeyboardService",
+        "export": "TuiKeyboardService",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "A service that allows hiding and showing virtual keyboard programmatically on both Android and iOS devices Does nothing on devices with no virtual keyboard or when input is not focused",
+        "route": "services/keyboard-service"
+    },
+    {
+        "name": "Keypad",
+        "export": "TuiKeypad",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "`TuiKeypad` is an on-screen grid primitive for touch input. It only lays out and styles the keys — you project your own native `<button>` or `<a>` elements and wire clicks, labels and disabled state yourself, so the pad can be anything: a numeric pad, a shuffled PIN terminal, a calculator or a custom chooser. Each key stays a real element, so `(click)` , `aria-label` , `disabled` and `href` all work as usual. Each key updates your own state on `(click)` — display the running value however you like (the examples keep it in a signal shown in a `<div>` ).",
+        "route": "components/keypad"
+    },
+    {
+        "name": "MobileCalendar",
+        "export": "TuiMobileCalendar",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "A calendar for mobile devices. It is used in date picker controls on mobile devices if `tuiMobileCalendar` directive is applied. You can use `TUI_CALENDAR_DATE_STREAM` token to set value from outside (see samples)",
+        "route": "components/mobile-calendar"
+    },
+    {
+        "name": "PullToRefresh",
+        "export": "TuiPullToRefresh",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Component to refresh content after pull top. It emulates appearance of native iOS and Android components It emits `(pulled)` event when the pull threshold is reached. You can set that threshold in pixels by `TUI_PULL_TO_REFRESH_THRESHOLD` DI token. You can finish loading with `TUI_PULL_TO_REFRESH_LOADED` stream token that can be provided in DI. While the scroll container is scrolled to the top, the component automatically applies `overscroll-behavior: none;` to it so elastic scrolling on iOS does not interfere with pulling. Once scrolled away from the top, the property is removed and the native bounce works as usual",
+        "route": "components/pull-to-refresh"
+    },
+    {
+        "name": "Ripple",
+        "export": "TuiRipple",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Directive for «ripple» effect on mobile devices",
+        "route": "directives/ripple"
+    },
+    {
+        "name": "SearchBar",
+        "export": "TuiSearchBar",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "`TuiSearchBar` is a mobile search field. Put `tuiSearchBar` on any element — semantically that is `<search>` — project a native `<input tuiSearchBar>` into it and a `<button tuiButtonX>` next to it. The searchbar only lays them out per platform: on iOS the button sits to the right of the field, on Android it moves inside the field on the leading side and turns into a back arrow.",
+        "route": "components/search-bar"
+    },
+    {
+        "name": "SheetDialog",
+        "export": "TuiSheetDialog",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "A mobile draggable sheet dialog",
+        "route": "components/sheet-dialog"
+    },
+    {
+        "name": "SwipeActions",
+        "export": "TuiSwipeActions",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Component should be used on mobile devices only.",
+        "route": "components/swipe-actions"
+    },
+    {
+        "name": "TabBar",
+        "export": "TuiTabBar",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Component for creating mobile navigation.",
+        "route": "navigation/tab-bar"
+    },
+    {
+        "name": "Touchable",
+        "export": "TuiTouchable",
+        "package": "@taiga-ui/addon-mobile",
+        "description": "Directive to emulate native iOS touches",
+        "route": "directives/touchable"
+    },
+    {
+        "name": "Reorder",
+        "export": "TuiReorder",
+        "package": "@taiga-ui/addon-table",
+        "description": "Component to change order of elements in an array",
+        "route": "components/reorder"
+    },
+    {
+        "name": "Table",
+        "export": "TuiTable",
+        "package": "@taiga-ui/addon-table",
+        "description": "This module allows you to create various tables, both static and editable.",
+        "route": "components/table"
+    },
+    {
+        "name": "TableFilters",
+        "export": "TuiTableFilters",
+        "package": "@taiga-ui/addon-table",
+        "description": "This module allows you to filter table data in a flexible way.",
+        "route": "components/table-filters"
+    },
+    {
+        "name": "TablePagination",
+        "export": "TuiTablePagination",
+        "package": "@taiga-ui/addon-table",
+        "description": "Component to show pagination in table footer",
+        "route": "components/table-pagination"
+    },
+    {
+        "name": "ActiveZone",
+        "export": "TuiActiveZone",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiActiveZone` allows to track a scope that user interacts with. For example, for closing dropdown on blur",
+        "route": "directives/active-zone"
+    },
+    {
+        "name": "Animated",
+        "export": "TuiAnimated",
+        "package": "@taiga-ui/cdk",
+        "description": "`TuiAnimated` allows adding animation to DOM elements in the same way as Angular's animate attribute but supported in Angular 19. In case the user's operating system has reduced motion settings turned on, Taiga UI will honor this, disabling animations under its control, and `TuiAnimated` will not play animations. To override this behavior, use `TUI_REDUCED_MOTION` injection token. However, this is not the recommended approach, as the user's system preferences would be ignored.",
+        "route": "directives/animated"
+    },
+    {
+        "name": "AutoFocus",
+        "export": "TuiAutoFocus",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiAutoFocus` allows to focus HTML-element right after its appearance. It works also with focusable Taiga UI components",
+        "route": "directives/auto-focus"
+    },
+    {
+        "name": "CopyProcessor",
+        "export": "TuiCopyProcessor",
+        "package": "@taiga-ui/cdk",
+        "description": "Directive is used to processed text when coping",
+        "route": "directives/copy-processor"
+    },
+    {
+        "name": "Element",
+        "export": "TuiElement",
+        "package": "@taiga-ui/cdk",
+        "description": "Directive is used to get a link to a native element as template reference variable (analogue of `@ViewChild('ref', {read: ElementRef}` for template)",
+        "route": "directives/element"
+    },
+    {
+        "name": "Filter",
+        "export": "TuiFilterPipe",
+        "package": "@taiga-ui/cdk",
+        "description": "Pipe for filtering an array",
+        "route": "pipes/filter"
+    },
+    {
+        "name": "HoveredChange",
+        "export": "TuiHovered",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiHoveredChange` is used for emitting true/false when users hovers over an element or moves cursor away from it.",
+        "route": "directives/hovered-change"
+    },
+    {
+        "name": "Mapper",
+        "export": "TuiMapperPipe",
+        "package": "@taiga-ui/cdk",
+        "description": "Pipe to transform a value with a function",
+        "route": "pipes/mapper"
+    },
+    {
+        "name": "Media",
+        "export": "TuiMedia",
+        "package": "@taiga-ui/cdk",
+        "description": "Directive for declarative work with HTML5 video and audio",
+        "route": "directives/media"
+    },
+    {
+        "name": "Obfuscate",
+        "export": "TuiObfuscatePipe",
+        "package": "@taiga-ui/cdk",
+        "description": "Pipe for obfuscating sensitive data",
+        "route": "pipes/obfuscate"
+    },
+    {
+        "name": "Pan",
+        "export": "TuiPan",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiPan` The directive emits delta between mousemove / touchmove events. You can use it to change the coordinates of an element as in example below",
+        "route": "directives/pan"
+    },
+    {
+        "name": "Resizer",
+        "export": "TuiResizer",
+        "package": "@taiga-ui/cdk",
+        "description": "Directive to resize container in multiple directions.",
+        "route": "directives/resizer"
+    },
+    {
+        "name": "Swipe",
+        "export": "TuiSwipe",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiSwipe` directive allows detecting swipes on mobile devices. You can configure the directive with `TUI_SWIPE_OPTIONS` token. Allowed options: timeout: max time between touchstart and touchend threshold : min distance between touchstart and touchend.",
+        "route": "directives/swipe"
+    },
+    {
+        "name": "Truncate",
+        "export": "TuiTruncate",
+        "package": "@taiga-ui/cdk",
+        "description": "Truncates text with an ellipsis in the middle. Useful when both start and end of the string are relevant, such as long file names with extension.",
+        "route": "directives/truncate"
+    },
+    {
+        "name": "Validator",
+        "export": "TuiValidator",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiValidator` allows set validators for form control on the fly",
+        "route": "directives/validator"
+    },
+    {
+        "name": "ValueChanges",
+        "export": "TuiValueChanges",
+        "package": "@taiga-ui/cdk",
+        "description": "This directive allows you to access reactive control or container value changes as an output",
+        "route": "directives/value-changes"
+    },
+    {
+        "name": "Zoom",
+        "export": "TuiZoom",
+        "package": "@taiga-ui/cdk",
+        "description": "`tuiZoom` directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below",
+        "route": "directives/zoom"
+    },
+    {
+        "name": "Viewport",
+        "export": "TUI_VIEWPORT",
+        "package": "@taiga-ui/core",
+        "description": "`TUI_VIEWPORT` - define the area relative to which the position constraints will be calculated. Also you can use `tuiAsViewport` helper instead of token.",
+        "route": "viewport"
+    },
+    {
+        "name": "Appearance",
+        "export": "TuiAppearance",
+        "package": "@taiga-ui/core",
+        "description": "A directive for visual presets of interactive components",
+        "route": "directives/appearance"
+    },
+    {
+        "name": "Button",
+        "export": "TuiButton",
+        "package": "@taiga-ui/core",
+        "description": "Button is a basic component used for both icon buttons and regular buttons with optional icons on either side. It can be applied to `button` , `a` and `label` tags. When used as `tuiIconButton` don't forget to still put text label within the tag for accessibility.",
+        "route": "components/button"
+    },
+    {
+        "name": "ButtonX",
+        "export": "TuiButtonX",
+        "package": "@taiga-ui/core",
+        "description": "A simple preset directive to configure a cleaner/close button, used in textfields, dialogs etc.",
+        "route": "components/button-x"
+    },
+    {
+        "name": "Calendar",
+        "export": "TuiCalendar",
+        "package": "@taiga-ui/core",
+        "description": "A simple calendar. If you want a textfield with date, see InputDate and InputDateRange",
+        "route": "components/calendar"
+    },
+    {
+        "name": "Carousel",
+        "export": "TuiCarousel",
+        "package": "@taiga-ui/core",
+        "description": "Generic swipeable container to scroll through content",
+        "route": "components/carousel"
+    },
+    {
+        "name": "Cell",
+        "export": "TuiCell",
+        "package": "@taiga-ui/core",
+        "route": "components/cell"
+    },
+    {
+        "name": "Checkbox",
+        "export": "TuiCheckbox",
+        "package": "@taiga-ui/core",
+        "description": "A checkbox component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation",
+        "route": "components/checkbox"
+    },
+    {
+        "name": "DataList",
+        "export": "TuiDataList",
+        "package": "@taiga-ui/core",
+        "description": "`DataList` allows to make lists or menus",
+        "route": "components/data-list"
+    },
+    {
+        "name": "DateFormat",
+        "export": "TuiDateFormat",
+        "package": "@taiga-ui/core",
+        "description": "Directive allows to customize `TuiInputDate` , `TuiInputDateRange` , `TuiInputDateMulti` and `TuiInputDateTime` date format.",
+        "route": "directives/date-format"
+    },
+    {
+        "name": "Dialog",
+        "export": "TuiDialog",
+        "package": "@taiga-ui/core",
+        "description": "Customizable modal dialogs",
+        "route": "components/dialog"
+    },
+    {
+        "name": "Dropdown",
+        "export": "TuiDropdown",
+        "package": "@taiga-ui/core",
+        "description": "`tuiDropdown` shows a dropdown with custom template. Use ActiveZone directive to hide dropdown. See also DropdownOpen",
+        "route": "directives/dropdown"
+    },
+    {
+        "name": "DropdownContext",
+        "export": "TuiDropdownContext",
+        "package": "@taiga-ui/core",
+        "description": "`DropdownContext` allows to show custom right click context dropdown. To close dropdown: Use Esc Make mouse left/right click outside of dropdown content Manually toggle `tuiDropdown` to `false` using template reference variable (see first example)",
+        "route": "directives/dropdown-context"
+    },
+    {
+        "name": "DropdownHover",
+        "export": "TuiDropdownHover",
+        "package": "@taiga-ui/core",
+        "description": "`DropdownHover` shows dropdown with custom template upon hover",
+        "route": "directives/dropdown-hover"
+    },
+    {
+        "name": "DropdownOpen",
+        "export": "TuiDropdownOpen",
+        "package": "@taiga-ui/core",
+        "description": "`DropdownOpen` is a composite dropdown directive, similar to manual dropdown, but it also takes care of opening and closing on its own. If an element is a textfield ( `input` or `textarea` ), arrow down press opens a dropdown. The next press focuses the first item from the list. If it is not a textfield, click opens and closes a dropdown. By default directive is applied to the first focusable element inside. If you want another element to be the host, use `#tuiDropdownHost` reference. Use `tuiDropdownAuto` selector with no binding if you do not want to track open state",
+        "route": "directives/dropdown-open"
+    },
+    {
+        "name": "DropdownSelection",
+        "export": "TuiDropdownSelection",
+        "package": "@taiga-ui/core",
+        "description": "`DropdownSelection` shows dropdown with custom template on selected text",
+        "route": "directives/dropdown-selection"
+    },
+    {
+        "name": "Error",
+        "export": "TuiError",
+        "package": "@taiga-ui/core",
+        "description": "Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls",
+        "route": "components/error"
+    },
+    {
+        "name": "Expand",
+        "export": "TuiExpand",
+        "package": "@taiga-ui/core",
+        "route": "components/expand"
+    },
+    {
+        "name": "FilterByInput",
+        "export": "TuiFilterByInputPipe",
+        "package": "@taiga-ui/core",
+        "description": "Pipe for filtering an array by value entered in a textfield",
+        "route": "pipes/filter-by-input"
+    },
+    {
+        "name": "Group",
+        "export": "TuiGroup",
+        "package": "@taiga-ui/core",
+        "description": "A directive for grouping other components. For example, Input or Button .",
+        "route": "components/group"
+    },
+    {
+        "name": "Hint",
+        "export": "TuiHint",
+        "package": "@taiga-ui/core",
+        "description": "Directive to show a hint by hover of an element",
+        "route": "directives/hint"
+    },
+    {
+        "name": "HintDescribe",
+        "export": "TuiHintDescribe",
+        "package": "@taiga-ui/core",
+        "description": "Directive to show a hint in accessible way upon keyboard focus",
+        "route": "directives/hint-describe"
+    },
+    {
+        "name": "HintManual",
+        "export": "TuiHintManual",
+        "package": "@taiga-ui/core",
+        "description": "Directive to show a hint manually",
+        "route": "directives/hint-manual"
+    },
+    {
+        "name": "HintPointer",
+        "export": "TuiHintPointer",
+        "package": "@taiga-ui/core",
+        "description": "A directive to show a hint above the cursor",
+        "route": "directives/hint-pointer"
+    },
+    {
+        "name": "Icon",
+        "export": "TuiIcon",
+        "package": "@taiga-ui/core",
+        "description": "A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all `iconStart` / `iconEnd` inputs across the library.",
+        "route": "components/icon"
+    },
+    {
+        "name": "Input",
+        "export": "TuiInput",
+        "package": "@taiga-ui/core",
+        "description": "Input is a basic string textfield. All other input components are built on its basis.",
+        "route": "components/input"
+    },
+    {
+        "name": "Label",
+        "export": "TuiLabel",
+        "package": "@taiga-ui/core",
+        "description": "Label is used to show text related to textfields, checkboxes, toggles and radio buttons",
+        "route": "components/label"
+    },
+    {
+        "name": "Link",
+        "export": "TuiLink",
+        "package": "@taiga-ui/core",
+        "description": "Link component. It has focus highlight and can be customized with an icon Use `textContent` binding or wrapping entire content with a `span` to avoid extra whitespace introduced by browser to `a` tag when closing tag wraps to a new line — otherwise distance to the icons will be bigger than it should be",
+        "route": "components/link"
+    },
+    {
+        "name": "Loader",
+        "export": "TuiLoader",
+        "package": "@taiga-ui/core",
+        "route": "components/loader"
+    },
+    {
+        "name": "Notification",
+        "export": "TuiNotification",
+        "package": "@taiga-ui/core",
+        "description": "A notification message that can be displayed inline or as an alert",
+        "route": "components/notification"
+    },
+    {
+        "name": "NumberFormat",
+        "export": "TuiNumberFormat",
+        "package": "@taiga-ui/core",
+        "description": "Directive allows to customize `TuiInputNumber` , `TuiInputSlider` , `TuiInputRange` number format.",
+        "route": "directives/number-format"
+    },
+    {
+        "name": "Radio",
+        "export": "TuiRadio",
+        "package": "@taiga-ui/core",
+        "description": "A radio component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation Due to internal Angular implementation of radio buttons, you are required to add `name` attribute to your `input` tag, unless you are using `formControlName`",
+        "route": "components/radio"
+    },
+    {
+        "name": "Scrollbar",
+        "export": "TuiScrollbar",
+        "package": "@taiga-ui/core",
+        "description": "`Scrollbar` implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use `TUI_SCROLL_REF` token to get a scrollable container. For example, when working with virtual scroll.",
+        "route": "components/scrollbar"
+    },
+    {
+        "name": "Slider",
+        "export": "TuiSlider",
+        "package": "@taiga-ui/core",
+        "description": "Taiga UI styling of native html tag `'\">` to choose a value from a limited range Read more about this input type in MDN Docs",
+        "route": "components/slider"
+    },
+    {
+        "name": "Title",
+        "export": "TuiTitle",
+        "package": "@taiga-ui/core",
+        "description": "A directive for title with optional subtitle",
+        "route": "components/title"
+    },
+    {
+        "name": "CalendarExperimental",
+        "export": "TuiCalendar",
+        "package": "@taiga-ui/experimental",
+        "description": "This is a work in progress The APIs might change in the future, use with caution",
+        "route": "components/calendar-experimental"
+    },
+    {
+        "name": "File",
+        "export": "TuiFile",
+        "package": "@taiga-ui/experimental",
+        "description": "This component is based on Cell and therefore follows its rules on padding in horizontal mode. Reset `padding-inline` if you do not need it.",
+        "route": "components/file"
+    },
+    {
+        "name": "Popout",
+        "export": "TuiPopout",
+        "package": "@taiga-ui/experimental",
+        "description": "Using service to show content in a new window.",
+        "route": "components/popout"
+    },
+    {
+        "name": "ScrollWheel",
+        "export": "TuiScrollWheel",
+        "package": "@taiga-ui/experimental",
+        "description": "Work in progress, do not use! There are known issues in Safari, as always A component for spinning wheels or other infinitely scrollable containers, not to be confused with virtual scrolling which typically has ends.",
+        "route": "components/scroll-wheel"
+    },
+    {
+        "name": "Accordion",
+        "export": "TuiAccordion",
+        "package": "@taiga-ui/kit",
+        "route": "components/accordion"
+    },
+    {
+        "name": "ActionBar",
+        "export": "TuiActionBar",
+        "package": "@taiga-ui/kit",
+        "description": "It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom content.",
+        "route": "components/actions-bar"
+    },
+    {
+        "name": "Avatar",
+        "export": "TuiAvatar",
+        "package": "@taiga-ui/kit",
+        "route": "components/avatar"
+    },
+    {
+        "name": "Badge",
+        "export": "TuiBadge",
+        "package": "@taiga-ui/kit",
+        "description": "Component for displaying text, pictures and icons.",
+        "route": "components/badge"
+    },
+    {
+        "name": "BadgedContent",
+        "export": "TuiBadgedContent",
+        "package": "@taiga-ui/kit",
+        "description": "BadgedContent is a wrapper for other components to add badges and notifications to them.",
+        "route": "components/badged-content"
+    },
+    {
+        "name": "BadgeNotification",
+        "export": "TuiBadgeNotification",
+        "package": "@taiga-ui/kit",
+        "description": "Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages",
+        "route": "components/badge-notification"
+    },
+    {
+        "name": "Block",
+        "export": "TuiBlock",
+        "package": "@taiga-ui/kit",
+        "description": "`Block` is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself",
+        "route": "components/block"
+    },
+    {
+        "name": "Breadcrumbs",
+        "export": "TuiBreadcrumbs",
+        "package": "@taiga-ui/kit",
+        "description": "Navigation element that shows a path from root page to the current",
+        "route": "navigation/breadcrumbs"
+    },
+    {
+        "name": "ButtonGroup",
+        "export": "TuiButtonGroup",
+        "package": "@taiga-ui/kit",
+        "route": "components/button-group"
+    },
+    {
+        "name": "ButtonSelect",
+        "export": "TuiButtonSelect",
+        "package": "@taiga-ui/kit",
+        "description": "`ButtonSelect` is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.",
+        "route": "components/button-select"
+    },
+    {
+        "name": "CalendarMonth",
+        "export": "TuiCalendarMonth",
+        "package": "@taiga-ui/kit",
+        "description": "Month picker component. If you want a textfield, see InputMonth",
+        "route": "components/calendar-month"
+    },
+    {
+        "name": "CalendarRange",
+        "export": "TuiCalendarRange",
+        "package": "@taiga-ui/kit",
+        "description": "Component for choosing date range in calendar",
+        "route": "components/calendar-range"
+    },
+    {
+        "name": "Chip",
+        "export": "TuiChip",
+        "package": "@taiga-ui/kit",
+        "description": "Chip component is used to display array data and can also be interactive depending on the tag used.",
+        "route": "components/chip"
+    },
+    {
+        "name": "ComboBox",
+        "export": "TuiComboBox",
+        "package": "@taiga-ui/kit",
+        "description": "`ComboBox` is a form control for selecting a single value from a set of options. It is similar to Select but with a major difference – possibility to enter value manually .",
+        "route": "components/combo-box"
+    },
+    {
+        "name": "Comment",
+        "export": "TuiComment",
+        "package": "@taiga-ui/kit",
+        "route": "components/comment"
+    },
+    {
+        "name": "Compass",
+        "export": "TuiCompass",
+        "package": "@taiga-ui/kit",
+        "route": "components/compass"
+    },
+    {
+        "name": "Confirm",
+        "export": "TuiConfirm",
+        "package": "@taiga-ui/kit",
+        "description": "Confirm is a ready to use Dialog to ask user to confirm an action See this example to learn how to use confirm to prevent data loss on forms inside other modals",
+        "route": "components/confirm"
+    },
+    {
+        "name": "Copy",
+        "export": "TuiCopy",
+        "package": "@taiga-ui/kit",
+        "description": "This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied.",
+        "route": "components/copy"
+    },
+    {
+        "name": "Counter",
+        "export": "TuiCounter",
+        "package": "@taiga-ui/kit",
+        "route": "components/counter"
+    },
+    {
+        "name": "DataListWrapper",
+        "export": "TuiDataListWrapper",
+        "package": "@taiga-ui/kit",
+        "description": "`DataListWrapper` is an abstraction over `DataList` to simplify usage in common cases where precise control is not necessary.",
+        "route": "components/data-list-wrapper"
+    },
+    {
+        "name": "Drawer",
+        "export": "TuiDrawer",
+        "package": "@taiga-ui/kit",
+        "route": "components/drawer"
+    },
+    {
+        "name": "Emails",
+        "export": "TuiEmailsPipe",
+        "package": "@taiga-ui/kit",
+        "description": "Pipe for creating autocomplete when entering email addresses",
+        "route": "pipes/emails"
+    },
+    {
+        "name": "Fade",
+        "export": "TuiFade",
+        "package": "@taiga-ui/kit",
+        "description": "Directive that uses masking to fade out overflown content",
+        "route": "directives/fade"
+    },
+    {
+        "name": "Filter",
+        "export": "TuiFilter",
+        "package": "@taiga-ui/kit",
+        "description": "Components shows separated items that can be used to filter content on the page. There are also an option with badges.",
+        "route": "components/filter"
+    },
+    {
+        "name": "Flag",
+        "export": "TuiFlagPipe",
+        "package": "@taiga-ui/kit",
+        "description": "Pipe for getting source path to image with flag",
+        "route": "pipes/flag"
+    },
+    {
+        "name": "FluidTypography",
+        "export": "TuiFluidTypography",
+        "package": "@taiga-ui/kit",
+        "description": "A directive that adjusts font size for the text to fit in the container",
+        "route": "directives/fluid-typography"
+    },
+    {
+        "name": "FormatNumber",
+        "export": "TuiFormatNumberPipe",
+        "package": "@taiga-ui/kit",
+        "description": "Pipe to format number values to separate thousands Number formatting can be customized by using TUI_NUMBER_FORMAT",
+        "route": "pipes/format-number"
+    },
+    {
+        "name": "Routable",
+        "export": "tuiGenerateDialogableRoute",
+        "package": "@taiga-ui/kit",
+        "route": "dialog/routable"
+    },
+    {
+        "name": "Highlight",
+        "export": "TuiHighlight",
+        "package": "@taiga-ui/kit",
+        "description": "Directive is used to highlight text in element. You can configure the directive with `TUI_HIGHLIGHT_OPTIONS` token. Allowed options: highlightColor: The default color for the highlight. Use function `tuiHighlightOptionsProvider` to provide new value of this token. Does not work with inline elements",
+        "route": "directives/highlight"
+    },
+    {
+        "name": "InputChip",
+        "export": "TuiInputChip",
+        "package": "@taiga-ui/kit",
+        "description": "`InputChip` uses specifically modified Input to represent array of selectable items.",
+        "route": "components/input-chip"
+    },
+    {
+        "name": "InputColor",
+        "export": "TuiInputColor",
+        "package": "@taiga-ui/kit",
+        "description": "`InputColor` = `Textfield` + `type=\"color\"` + `Maskito` + ❤️",
+        "route": "components/input-color"
+    },
+    {
+        "name": "InputDate",
+        "export": "TuiInputDate",
+        "package": "@taiga-ui/kit",
+        "description": "`InputDate` = `Textfield` + `Calendar` + ❤️",
+        "route": "components/input-date"
+    },
+    {
+        "name": "InputDateMulti",
+        "export": "TuiInputDateMulti",
+        "package": "@taiga-ui/kit",
+        "description": "`InputDateMulti` uses specifically modified InputChip to represent array of dates.",
+        "route": "components/input-date-multi"
+    },
+    {
+        "name": "InputDateRange",
+        "export": "TuiInputDateRange",
+        "package": "@taiga-ui/kit",
+        "description": "`InputDateRange` = `Textfield` + `CalendarRange` + ❤️",
+        "route": "components/input-date-range"
+    },
+    {
+        "name": "InputDateTime",
+        "export": "TuiInputDateTime",
+        "package": "@taiga-ui/kit",
+        "description": "`InputDateTime` = `Textfield` + `Calendar` + ❤️",
+        "route": "components/input-date-time"
+    },
+    {
+        "name": "InputFiles",
+        "export": "TuiInputFiles",
+        "package": "@taiga-ui/kit",
+        "description": "An input for uploading one or several files using native input file capabilities",
+        "route": "components/input-files"
+    },
+    {
+        "name": "InputInline",
+        "export": "TuiInputInline",
+        "package": "@taiga-ui/kit",
+        "description": "Inline input field",
+        "route": "components/input-inline"
+    },
+    {
+        "name": "InputMonth",
+        "export": "TuiInputMonth",
+        "package": "@taiga-ui/kit",
+        "description": "`InputMonth` = `Textfield` + `CalendarMonth` + ❤️",
+        "route": "components/input-month"
+    },
+    {
+        "name": "InputNumber",
+        "export": "TuiInputNumber",
+        "package": "@taiga-ui/kit",
+        "description": "InputNumber is a form field to provide numerical input.",
+        "route": "components/input-number"
+    },
+    {
+        "name": "InputPhone",
+        "export": "TuiInputPhone",
+        "package": "@taiga-ui/kit",
+        "description": "`InputPhone` allows to input a phone number",
+        "route": "components/input-phone"
+    },
+    {
+        "name": "InputPhoneInternational",
+        "export": "TuiInputPhoneInternational",
+        "package": "@taiga-ui/kit",
+        "description": "Allows to input phone number in international format `InputPhoneInternational` is based on @maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that `InputPhoneInternational` has the robust source of truth!",
+        "route": "components/input-phone-international"
+    },
+    {
+        "name": "InputPin",
+        "export": "TuiInputPin",
+        "package": "@taiga-ui/kit",
+        "route": "components/input-pin"
+    },
+    {
+        "name": "InputRange",
+        "export": "TuiInputRange",
+        "package": "@taiga-ui/kit",
+        "description": "`InputRange` = `Textfield` + `InputNumber` × 2 + `Range` + ❤️ 2",
+        "route": "components/input-range"
+    },
+    {
+        "name": "InputSlider",
+        "export": "TuiInputSlider",
+        "package": "@taiga-ui/kit",
+        "description": "`InputSlider` = `Textfield` + `InputNumber` + `Slider` + ❤️",
+        "route": "components/input-slider"
+    },
+    {
+        "name": "InputTime",
+        "export": "TuiInputTime",
+        "package": "@taiga-ui/kit",
+        "description": "`InputTime` allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.",
+        "route": "components/input-time"
+    },
+    {
+        "name": "InputYear",
+        "export": "TuiInputYear",
+        "package": "@taiga-ui/kit",
+        "description": "Component to input a single year",
+        "route": "components/input-year"
+    },
+    {
+        "name": "ItemsWithMore",
+        "export": "TuiItemsWithMore",
+        "package": "@taiga-ui/kit",
+        "description": "Component to hide overflown items behind custom content. Resize the screen to see extra items disappear",
+        "route": "components/items-with-more"
+    },
+    {
+        "name": "Like",
+        "export": "TuiLike",
+        "package": "@taiga-ui/kit",
+        "description": "A like component based on native checkbox with icons and custom color for icon when `:checked` state.",
+        "route": "components/like"
+    },
+    {
+        "name": "LineClamp",
+        "export": "TuiLineClamp",
+        "package": "@taiga-ui/kit",
+        "description": "Component cuts overflown text with \"...\" and shows it by hover",
+        "route": "components/line-clamp"
+    },
+    {
+        "name": "Message",
+        "export": "TuiMessage",
+        "package": "@taiga-ui/kit",
+        "description": "Message component is used to display message block.",
+        "route": "components/message"
+    },
+    {
+        "name": "Meter",
+        "export": "TuiMeter",
+        "package": "@taiga-ui/kit",
+        "description": "Native styled Meter tag, using the same attributes as native version.",
+        "route": "components/meter"
+    },
+    {
+        "name": "NotificationMiddle",
+        "export": "TuiNotificationMiddle",
+        "package": "@taiga-ui/kit",
+        "description": "A modal component to indicate an ongoing blocking action",
+        "route": "components/notification-middle"
+    },
+    {
+        "name": "Pager",
+        "export": "TuiPager",
+        "package": "@taiga-ui/kit",
+        "route": "components/pager"
+    },
+    {
+        "name": "Pagination",
+        "export": "TuiPagination",
+        "package": "@taiga-ui/kit",
+        "description": "Pagination component enables the user to select a specific page from a range of pages",
+        "route": "navigation/pagination"
+    },
+    {
+        "name": "Pin",
+        "export": "TuiPin",
+        "package": "@taiga-ui/kit",
+        "description": "Pins are used to show a location on a 2D plane. Use `color` , `background` , `border` and `box-shadow` to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.",
+        "route": "components/pin"
+    },
+    {
+        "name": "Pincode",
+        "export": "TuiPincode",
+        "package": "@taiga-ui/kit",
+        "route": "components/pincode"
+    },
+    {
+        "name": "Present",
+        "export": "TuiPresent",
+        "package": "@taiga-ui/kit",
+        "description": "`tuiPresent` allows to detect appearance of elements in DOM",
+        "route": "directives/present"
+    },
+    {
+        "name": "Preview",
+        "export": "TuiPreview",
+        "package": "@taiga-ui/kit",
+        "description": "Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device",
+        "route": "components/preview"
+    },
+    {
+        "name": "ProgressBar",
+        "export": "TuiProgressBar",
+        "package": "@taiga-ui/kit",
+        "description": "`tuiProgressBar` – attribute component for native html tag `'\">` . Usage: `'\">` .",
+        "route": "components/progress-bar"
+    },
+    {
+        "name": "ProgressCircle",
+        "export": "TuiProgressCircle",
+        "package": "@taiga-ui/kit",
+        "description": "`'\">` is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.",
+        "route": "components/progress-circle"
+    },
+    {
+        "name": "ProgressSegmented",
+        "export": "TuiProgressSegmented",
+        "package": "@taiga-ui/kit",
+        "description": "`ProgressSegmented` is a component to visually represent the completion of a process or operation (as a segmented bar). It shows how much has been completed and how much remains. Actually, this component is the same `ProgressBar` processed by css-property `mask` .",
+        "route": "components/progress-segmented"
+    },
+    {
+        "name": "Pulse",
+        "export": "TuiPulse",
+        "package": "@taiga-ui/kit",
+        "route": "components/pulse"
+    },
+    {
+        "name": "Push",
+        "export": "TuiPush",
+        "package": "@taiga-ui/kit",
+        "description": "Notifications in style of native browser push",
+        "route": "components/push"
+    },
+    {
+        "name": "Range",
+        "export": "TuiRange",
+        "package": "@taiga-ui/kit",
+        "description": "A two-thumb slider for selecting a range of values",
+        "route": "components/range"
+    },
+    {
+        "name": "Rating",
+        "export": "TuiRating",
+        "package": "@taiga-ui/kit",
+        "route": "components/rating"
+    },
+    {
+        "name": "Segmented",
+        "export": "TuiSegmented",
+        "package": "@taiga-ui/kit",
+        "description": "Segmented is used for links and buttons to navigate within the application. It can also work as a radio button to toggle between different states.",
+        "route": "navigation/segmented"
+    },
+    {
+        "name": "Select",
+        "export": "TuiSelect",
+        "package": "@taiga-ui/kit",
+        "description": "`Select` is a form control for selecting a single value from a set of options, similar to the native <select> element.",
+        "route": "components/select"
+    },
+    {
+        "name": "Sensitive",
+        "export": "TuiSensitive",
+        "package": "@taiga-ui/kit",
+        "description": "A directive that allows you to hide sensitive data under a pixel mask. This can be account balances, write-off amounts and any other content",
+        "route": "directives/sensitive"
+    },
+    {
+        "name": "Shimmer",
+        "export": "TuiShimmer",
+        "package": "@taiga-ui/kit",
+        "description": "`tuiShimmer` directive visually implements the \"Shimmer\" UI pattern — an animated loading indicator that simulates content appearance while data is being fetched. This pattern enhances the user experience by providing visual feedback during loading states, helping users understand that the interface is active and content is on its way. When to Use To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have cached data that is currently being refreshed and if you have no data at all — a better choice would be Skeleton",
+        "route": "directives/shimmer"
+    },
+    {
+        "name": "ShrinkWrap",
+        "export": "TuiShrinkWrap",
+        "package": "@taiga-ui/kit",
+        "description": "A tight shrink wrapping implementation in modern browsers using progressive enhancement concept, see examples below for visual explanation. Requires scroll-driven animations to work, gracefully ignored in older browsers.",
+        "route": "components/shrink-wrap"
+    },
+    {
+        "name": "Skeleton",
+        "export": "TuiSkeleton",
+        "package": "@taiga-ui/kit",
+        "route": "directives/skeleton"
+    },
+    {
+        "name": "Status",
+        "export": "TuiStatus",
+        "package": "@taiga-ui/kit",
+        "route": "components/status"
+    },
+    {
+        "name": "Stepper",
+        "export": "TuiStepper",
+        "package": "@taiga-ui/kit",
+        "route": "navigation/stepper"
+    },
+    {
+        "name": "StringifyContent",
+        "export": "TuiStringifyContentPipe",
+        "package": "@taiga-ui/kit",
+        "description": "Pipe that turns `TuiStringHandler` into content that works with `$implicit` .",
+        "route": "pipes/stringify-content"
+    },
+    {
+        "name": "Stringify",
+        "export": "TuiStringifyPipe",
+        "package": "@taiga-ui/kit",
+        "description": "Pipe that creates `TuiStringHandler` by given key.",
+        "route": "pipes/stringify"
+    },
+    {
+        "name": "Switch",
+        "export": "TuiSwitch",
+        "package": "@taiga-ui/kit",
+        "description": "A switch component that is able to imitate native control on mobile platforms. Use `--tui-background-accent-2` CSS variable to customize color of native control emulation",
+        "route": "components/switch"
+    },
+    {
+        "name": "Tabs",
+        "export": "TuiTabs",
+        "package": "@taiga-ui/kit",
+        "description": "Component for creating tabs. If you use `routerLink` you must also add `routerLinkActive` directive.",
+        "route": "navigation/tabs"
+    },
+    {
+        "name": "Textarea",
+        "export": "TuiTextarea",
+        "package": "@taiga-ui/kit",
+        "description": "`Textarea` uses `Textfield` to create a multi-line string input.",
+        "route": "components/textarea"
+    },
+    {
+        "name": "Tiles",
+        "export": "TuiTiles",
+        "package": "@taiga-ui/kit",
+        "description": "`Tiles` is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.",
+        "route": "components/tiles"
+    },
+    {
+        "name": "Timeline",
+        "export": "TuiTimeline",
+        "package": "@taiga-ui/kit",
+        "description": "An interactive timeline component for arranging events on a linear axis with no built-in styles",
+        "route": "components/timeline"
+    },
+    {
+        "name": "Toast",
+        "export": "TuiToast",
+        "package": "@taiga-ui/kit",
+        "route": "components/toast"
+    },
+    {
+        "name": "Tooltip",
+        "export": "TuiTooltip",
+        "package": "@taiga-ui/kit",
+        "description": "Component to show icons with a hint by hover",
+        "route": "components/tooltip"
+    },
+    {
+        "name": "Tree",
+        "export": "TuiTree",
+        "package": "@taiga-ui/kit",
+        "description": "Component to display tree-like data structure",
+        "route": "components/tree"
+    },
+    {
+        "name": "AppBar",
+        "export": "TuiAppBar",
+        "package": "@taiga-ui/layout",
+        "description": "Component for the main app header",
+        "route": "navigation/app-bar"
+    },
+    {
+        "name": "BlockDetails",
+        "export": "TuiBlockDetails",
+        "package": "@taiga-ui/layout",
+        "description": "Layout directive for describing details. For example, transaction details",
+        "route": "layout/block-details"
+    },
+    {
+        "name": "BlockStatus",
+        "export": "TuiBlockStatus",
+        "package": "@taiga-ui/layout",
+        "description": "Component for status screens, result screens and zero screens",
+        "route": "layout/block-status"
+    },
+    {
+        "name": "CardCollapsed",
+        "export": "TuiCardCollapsed",
+        "package": "@taiga-ui/layout",
+        "route": "layout/card-collapsed"
+    },
+    {
+        "name": "CardLarge",
+        "export": "TuiCardLarge",
+        "package": "@taiga-ui/layout",
+        "route": "layout/card-large"
+    },
+    {
+        "name": "CardMedium",
+        "export": "TuiCardMedium",
+        "package": "@taiga-ui/layout",
+        "description": "A layout component used to create various cards for the interface. Define visual styles of the cards yourself or combine with Surface for visual presets. If you customize size, make sure to multiply by `--tui-font-scale` variable if you want to accommodate font scaling on mobile OS.",
+        "route": "layout/card-medium"
+    },
+    {
+        "name": "ElasticContainer",
+        "export": "TuiElasticContainer",
+        "package": "@taiga-ui/layout",
+        "description": "A wrapper component that changes its height with transition, depending on the content",
+        "route": "components/elastic-container"
+    },
+    {
+        "name": "FloatingContainer",
+        "export": "TuiFloatingContainer",
+        "package": "@taiga-ui/layout",
+        "description": "`FloatingContainer` is a special container for creating different animated sticky footers",
+        "route": "components/floating-container"
+    },
+    {
+        "name": "Form",
+        "export": "TuiForm",
+        "package": "@taiga-ui/layout",
+        "route": "layout/form"
+    },
+    {
+        "name": "Header",
+        "export": "TuiHeader",
+        "package": "@taiga-ui/layout",
+        "route": "layout/header"
+    },
+    {
+        "name": "ItemGroup",
+        "export": "TuiItemGroup",
+        "package": "@taiga-ui/layout",
+        "route": "components/item-group"
+    },
+    {
+        "name": "List",
+        "export": "TuiList",
+        "package": "@taiga-ui/layout",
+        "route": "components/list"
+    },
+    {
+        "name": "Navigation",
+        "export": "TuiNavigation",
+        "package": "@taiga-ui/layout",
+        "description": "Taiga UI is a low level component library with many atomic components that provide great flexibility when combined together. An exception to the general rule is the Navigation component – an opinionated global wrapping navigation that exposes less customization options developed specifically to target data-heavy dashboards with minimal space lost and compact controls.",
+        "route": "components/navigation"
+    },
+    {
+        "name": "PdfViewer",
+        "export": "TuiPdfViewer",
+        "package": "@taiga-ui/layout",
+        "description": "Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on `WA_IS_MOBILE` token to provide suitable alternative behavior. For example, you can use third-party service `https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF` or your own service to render PDF by pdf.js.",
+        "route": "components/pdf-viewer"
+    },
+    {
+        "name": "Search",
+        "export": "TuiSearch",
+        "package": "@taiga-ui/layout",
+        "description": "A wrapping component for search or filtering the table",
+        "route": "components/search"
+    },
+    {
+        "name": "Slides",
+        "export": "TuiSlides",
+        "package": "@taiga-ui/layout",
+        "description": "A component for displaying dynamic content animated between states. Use negative value for `tuiSlides` to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.",
+        "route": "components/slides"
+    },
+    {
+        "name": "Surface",
+        "export": "TuiSurface",
+        "package": "@taiga-ui/layout",
+        "description": "General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.",
+        "route": "components/surface"
+    }
+]

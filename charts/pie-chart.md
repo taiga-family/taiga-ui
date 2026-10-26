@@ -11,7 +11,7 @@ directive to enable hints with
 ### Example
 
 ```html
-<tui-pie-chart class="chart" [size]="size" [value]="value" [(activeItemIndex)]="activeItemIndex" />
+<tui-pie-chart class="chart" [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintContent]="hintContent" [tuiHintDirection]="hint.direction" [value]="value" [(activeItemIndex)]="activeItemIndex" />
 ```
 
 ### API - Inputs
@@ -21,6 +21,7 @@ directive to enable hints with
 | [(activeItemIndex)] | `number` | selected fragment index |
 | [size] | `TuiSizeS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
+| [tuiHintContent] | `PolymorpheusContent<TuiContext<number>>` | content of the hint bubble |
 
 ### Usage Examples
 

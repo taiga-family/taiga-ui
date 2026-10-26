@@ -1,5 +1,7 @@
 # Routable
 
+- **Package**: `KIT`
+
 ### Usage Examples
 
 #### Lazy loading dialog

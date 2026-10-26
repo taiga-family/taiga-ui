@@ -1,6 +1,6 @@
 # FilterByInput
 
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: pipes
 
 Pipe for filtering an array by value entered in a textfield

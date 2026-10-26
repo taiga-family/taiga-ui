@@ -4766,7 +4766,7 @@ Bar chart that can be used as a content to axes .
 ### Example
 
 ```html
-<tui-bar-chart class="chart" [collapsed]="collapsed" [max]="max" [size]="size" [value]="value" (tapColumn)="documentationPropertyTapColumn.emitEvent($event)" />
+<tui-bar-chart class="chart" [collapsed]="collapsed" [max]="max" [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintContent]="hintContent" [tuiHintDirection]="hint.direction" [value]="value" (tapColumn)="documentationPropertyTapColumn.emitEvent($event)" />
 ```
 
 ### API - Inputs
@@ -4777,6 +4777,7 @@ Bar chart that can be used as a content to axes .
 | [max] | `number` | sets chart max manually |
 | [size] | `TuiSizeS \| TuiSizeL \| null` | for autosize) |
 | [value] | `ReadonlyArray<readonly number[]>` | array of segments |
+| [tuiHintContent] | `PolymorpheusContent<TuiContext<number>>` | content of the hint bubble |
 
 ### API - Outputs
 
@@ -4932,14 +4933,16 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiBarChart} from '@taiga-ui/addon-charts';
+import {TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiBarChart, TuiDemo],
+    imports: [TuiBarChart, TuiChartHint, TuiDemo, TuiDocHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -4965,6 +4968,12 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
+
+    protected readonly hintContentVariants: ReadonlyArray<
+        TuiStringHandler<TuiContext<number>>
+    > = [({$implicit}) => this.value.map((set) => set[$implicit] ?? 0).join('\n')];
+
+    protected hintContent: TuiStringHandler<TuiContext<number>> | null = null;
     protected readonly routes = DemoRoute;
 }
 ```
@@ -15817,8 +15826,9 @@ export default class Page extends Array {
 
 ---
 # components/Routable
-- **Package**: `null`
+- **Package**: `KIT`
 - **Type**: null
+- **Version**: 5.0.0
 
 ### TypeScript
 
@@ -30693,7 +30703,7 @@ export default class Page {
 ### Example
 
 ```html
-<tui-axes class="axes" [horizontalLines]="3" [verticalLines]="5" >
+<tui-axes class="axes" [horizontalLines]="3" [tuiHintDirection]="hint.direction" [tuiLineChartHint]="hintContent" [verticalLines]="5" >
 <tui-line-chart [dots]="dots" [filled]="filled" [height]="height" [smoothingFactor]="smoothingFactor" [value]="value" [width]="width" [x]="x" [xStringify]="xStringify" [y]="y" [yStringify]="yStringify" />
 </tui-axes>
 ```
@@ -30712,6 +30722,7 @@ export default class Page {
 | [value] | `TuiPoint[]` | array of data |
 | [xStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis X hint |
 | [yStringify] | `TuiStringHandler<number> \| null` | function to stringify a value number to a string in axis Y hint |
+| [tuiLineChartHint] | `PolymorpheusContent<TuiContext<readonly TuiPoint[]>>` |  |
 
 ### Usage Examples
 
@@ -31030,14 +31041,15 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
-import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiAxes, TuiLineChart, TuiLineChartHint} from '@taiga-ui/addon-charts';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAxes, TuiDemo, TuiLineChart],
+    imports: [TuiAxes, TuiDemo, TuiDocHint, TuiLineChart, TuiLineChartHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -31068,6 +31080,16 @@ export default class Page {
     protected readonly xStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         (x) => `${100 * x}`,
     ];
+
+    protected readonly hintContentVariants: ReadonlyArray<
+        TuiStringHandler<TuiContext<readonly TuiPoint[]>>
+    > = [
+        ({$implicit}) =>
+            $implicit.map(([x, y]) => `Vertical: ${y}\nHorizontal: ${x}`).join('\n'),
+    ];
+
+    protected hintContent: TuiStringHandler<TuiContext<readonly TuiPoint[]>> | null =
+        null;
 
     protected yStringify: TuiStringHandler<number> | null = null;
     protected xStringify: TuiStringHandler<number> | null = null;
@@ -36057,7 +36079,7 @@ export default class Page {
 ### Example
 
 ```html
-<tui-pie-chart class="chart" [size]="size" [value]="value" [(activeItemIndex)]="activeItemIndex" />
+<tui-pie-chart class="chart" [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintContent]="hintContent" [tuiHintDirection]="hint.direction" [value]="value" [(activeItemIndex)]="activeItemIndex" />
 ```
 
 ### API - Inputs
@@ -36067,6 +36089,7 @@ export default class Page {
 | [(activeItemIndex)] | `number` | selected fragment index |
 | [size] | `TuiSizeS \| TuiSizeXL` | — |
 | [value] | `readonly number[]` | — |
+| [tuiHintContent] | `PolymorpheusContent<TuiContext<number>>` | content of the hint bubble |
 
 ### Usage Examples
 
@@ -36162,10 +36185,11 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {type TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
@@ -36173,7 +36197,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [TuiDemo, TuiPieChart],
+    imports: [TuiChartHint, TuiDemo, TuiDocHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -51819,7 +51843,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
         TuiTreeService,
         {
             provide: TUI_TREE_START,
-            useValue: {text: 'Topmost'},
+            useValue: {text: 'Topmost', children: true},
         },
         {
             provide: TUI_TREE_LOADER,
@@ -59047,6 +59071,8 @@ export default class Example {
 
 #### Toggling
 
+To keep the chosen theme between visits and prevent a flash of the wrong theme on load, see Dark theme setup
+
 **Template:**
 ```html
 Dark mode enabled: {{ darkMode() }} <p>
@@ -59104,6 +59130,7 @@ code {
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
@@ -59112,7 +59139,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Themes', 'Toggling'];
+    protected readonly routes = DemoRoute;
 }
 ```
 
@@ -61027,7 +61054,7 @@ export default class Page {}
 
 ---
 # pipes/FilterByInput
-- **Package**: `KIT`
+- **Package**: `CORE`
 - **Type**: pipes
 - **Version**: 5.0.0
 Pipe for filtering an array by value entered in a textfield

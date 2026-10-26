@@ -487,7 +487,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
         TuiTreeService,
         {
             provide: TUI_TREE_START,
-            useValue: {text: 'Topmost'},
+            useValue: {text: 'Topmost', children: true},
         },
         {
             provide: TUI_TREE_LOADER,
