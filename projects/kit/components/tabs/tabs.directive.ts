@@ -41,7 +41,6 @@ class Styles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
-    private marked: HTMLElement | null = null;
     private markedIndex = -1;
 
     protected readonly nothing = tuiWithStyles(Styles);
@@ -79,8 +78,6 @@ export class TuiTabsDirective implements AfterViewChecked {
         if (index !== -1) {
             this.activeItemIndex.set(index);
         }
-
-        this.marked = null;
     }
 
     protected markTabAsActive(): void {
@@ -96,23 +93,23 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.style.setProperty('anchor-name', active ? name : anchor);
         });
 
-        this.marked = activeElement;
         this.markedIndex = this.activeItemIndex();
     }
 
-    // Index becomes stale when tabs are added or removed, so the element marked on the previous pass wins
     private syncActiveItemIndex(): void {
         const {tabs, activeItemIndex} = this;
+        const index = activeItemIndex();
 
-        // The model is written from outside when it no longer matches the last mark
-        if (!this.marked || activeItemIndex() !== this.markedIndex) {
+        // The tab under the current index is still marked as active, so nothing shifted
+        if (index !== this.markedIndex || tabs[index]?.classList.contains('_active')) {
             return;
         }
 
-        const index = tabs.indexOf(this.marked);
+        // The tab that is still marked as active gives the correct index
+        const marked = tabs.findIndex((tab) => tab.classList.contains('_active'));
 
-        if (index !== -1 && index !== activeItemIndex()) {
-            activeItemIndex.set(index);
+        if (marked !== -1) {
+            activeItemIndex.set(marked);
         }
     }
 }
