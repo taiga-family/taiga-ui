@@ -41,6 +41,7 @@ class Styles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
+    private markedIndex = -1;
 
     protected readonly nothing = tuiWithStyles(Styles);
 
@@ -62,11 +63,21 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     public ngAfterViewChecked(): void {
-        afterNextRender(() => this.markTabAsActive(), {injector: this.injector});
+        afterNextRender(
+            () => {
+                this.syncActiveItemIndex();
+                this.markTabAsActive();
+            },
+            {injector: this.injector},
+        );
     }
 
     protected onActivate(element: HTMLElement): void {
-        this.activeItemIndex.set(this.tabs.findIndex((tab) => tab === element));
+        const index = this.tabs.findIndex((tab) => tab === element);
+
+        if (index !== -1) {
+            this.activeItemIndex.set(index);
+        }
     }
 
     protected markTabAsActive(): void {
@@ -81,5 +92,24 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
             nativeElement.style.setProperty('anchor-name', active ? name : anchor);
         });
+
+        this.markedIndex = this.activeItemIndex();
+    }
+
+    private syncActiveItemIndex(): void {
+        const {tabs, activeItemIndex} = this;
+        const index = activeItemIndex();
+
+        // The tab under the current index is still marked as active, so nothing shifted
+        if (index !== this.markedIndex || tabs[index]?.classList.contains('_active')) {
+            return;
+        }
+
+        // The tab that is still marked as active gives the correct index
+        const marked = tabs.findIndex((tab) => tab.classList.contains('_active'));
+
+        if (marked !== -1) {
+            activeItemIndex.set(marked);
+        }
     }
 }
