@@ -1,0 +1,82 @@
+<div
+    class="scene"
+    [class.scene_transformed]="signedIn()"
+>
+    <form
+        appearance="floating"
+        tuiCardLarge
+        tuiForm="m"
+        class="form"
+        [formGroup]="form"
+        (ngSubmit)="toggle()"
+    >
+        <div
+            class="form__content"
+            [attr.aria-hidden]="signedIn()"
+            [attr.inert]="signedIn() ? '' : null"
+        >
+            <header tuiHeader>
+                <h2 tuiTitle>
+                    Taiga ID
+                    <span tuiSubtitle>Sign in to transform the form</span>
+                </h2>
+            </header>
+
+            <tui-textfield>
+                <label tuiLabel>Email</label>
+                <input
+                    autocomplete="email"
+                    formControlName="email"
+                    tuiInput
+                    type="email"
+                />
+            </tui-textfield>
+
+            <tui-textfield>
+                <label tuiLabel>Password</label>
+                <input
+                    autocomplete="current-password"
+                    formControlName="password"
+                    tuiInput
+                    type="password"
+                />
+            </tui-textfield>
+        </div>
+
+        <button
+            tuiButton
+            type="submit"
+            class="action"
+        >
+            {{ signedIn() ? 'Sign out' : 'Sign in' }}
+        </button>
+    </form>
+
+    <div
+        aria-hidden="true"
+        class="robot"
+    >
+        <span class="robot__antenna"></span>
+        <div class="robot__head">
+            <span class="robot__eye"></span>
+            <span class="robot__eye"></span>
+        </div>
+        <div class="robot__badge">
+            <img
+                alt=""
+                src="assets/images/taiga.svg"
+            />
+        </div>
+        <span class="robot__arm robot__arm_left"></span>
+        <span class="robot__arm robot__arm_right"></span>
+        <span class="robot__leg robot__leg_left"></span>
+        <span class="robot__leg robot__leg_right"></span>
+    </div>
+
+    <span
+        aria-live="polite"
+        class="status"
+    >
+        {{ status() }}
+    </span>
+</div>
