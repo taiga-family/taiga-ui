@@ -70,6 +70,19 @@ import {TuiCard} from '@taiga-ui/layout';
                 </tui-textfield>
             </div>
         </div>
+        
+        <tui-textfield
+            id="empty-item-template"
+            multi
+        >
+            <label tuiLabel>Hidden chips</label>
+            <input
+                placeholder="Enter"
+                tuiInputChip
+                [(ngModel)]="value"
+            />
+            <ng-template tuiItem />
+        </tui-textfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -99,5 +112,13 @@ describe('Textfield Multi', () => {
         cy.get('#empty-textfield-nested').compareSnapshot(
             'textfield-multi-card-large-nested',
         );
+    });
+
+    it('should keep the input visible when the item template is empty', () => {
+        cy.get('#empty-item-template').should(($textfield) => {
+            expect(
+                getComputedStyle($textfield[0]).getPropertyValue('--t-item-height'),
+            ).not.to.equal('0px');
+        });
     });
 });
