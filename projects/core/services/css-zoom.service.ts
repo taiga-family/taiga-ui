@@ -3,6 +3,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 /**
+ * @internal
  * Converts client coordinates (getBoundingClientRect, TuiPositionService etc.)
  * into local CSS pixels of the host element, compensating CSS `zoom`
  */
