@@ -18,19 +18,19 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: taiga-family/actions/setup-variables@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
-      - uses: taiga-family/actions/setup-node@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
-      - uses: taiga-family/actions/setup-npm@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
+      - uses: taiga-family/actions/setup-variables@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
+      - uses: taiga-family/actions/setup-node@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
+      - uses: taiga-family/actions/setup-npm@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
       - run: npx nx run-many -t publish
 
-      - uses: taiga-family/actions/read-package-json@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
+      - uses: taiga-family/actions/read-package-json@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
         id: info
 
       - name: Announce to Time messenger
-        uses: taiga-family/actions/messenger-mattermost-announce@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
+        uses: taiga-family/actions/messenger-mattermost-announce@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
         # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
@@ -41,7 +41,7 @@ jobs:
           ca-cert: ${{ secrets.ANNOUNCE_CA_CERT }}
 
       - name: Announce to Telegram messenger
-        uses: taiga-family/actions/messenger-telegram-announce@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
+        uses: taiga-family/actions/messenger-telegram-announce@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
         # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
