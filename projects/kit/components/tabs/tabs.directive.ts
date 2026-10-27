@@ -43,6 +43,7 @@ class TuiTabsStyles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
+    private markedIndex = -1;
 
     protected readonly nothing = tuiWithStyles(TuiTabsStyles);
 
@@ -72,6 +73,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     public ngAfterViewChecked(): void {
         afterNextRender(
             () => {
+                this.syncActiveItemIndex();
                 this.markTabAsActive();
             },
             {injector: this.injector},
@@ -83,12 +85,14 @@ export class TuiTabsDirective implements AfterViewChecked {
 
         event.stopPropagation();
 
-        if (index === this.activeItemIndex) {
+        if (index === -1) {
             return;
         }
 
-        this.activeItemIndexChange.emit(index);
-        this.activeItemIndex = index;
+        if (index !== this.activeItemIndex) {
+            this.activeItemIndexChange.emit(index);
+            this.activeItemIndex = index;
+        }
     }
 
     protected markTabAsActive(): void {
@@ -100,5 +104,25 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
         });
+
+        this.markedIndex = this.activeItemIndex;
+    }
+
+    private syncActiveItemIndex(): void {
+        const {tabs} = this;
+        const index = this.activeItemIndex;
+
+        // The tab under the current index is still marked as active, so nothing shifted
+        if (index !== this.markedIndex || tabs[index]?.classList.contains('_active')) {
+            return;
+        }
+
+        // The tab that is still marked as active gives the correct index
+        const marked = tabs.findIndex((tab) => tab.classList.contains('_active'));
+
+        if (marked !== -1) {
+            this.activeItemIndexChange.emit(marked);
+            this.activeItemIndex = marked;
+        }
     }
 }
