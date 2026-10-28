@@ -39,9 +39,21 @@
                         Card size has min/max width built-in according to specs.
                     }
                     @case (2) {
-                        Long file names are allowed by default but can be trimmed using
+                        Long file names are allowed by default but can be trimmed using basic CSS properties:
+                        <code>text-overflow</code>
+                        and
                         <code>line-clamp</code>
-                        CSS.
+                        .
+                        <p>
+                            To truncate text with an ellipsis in the middle, use
+                            <a
+                                tuiLink
+                                [routerLink]="routes.Truncate"
+                            >
+                                Truncate
+                            </a>
+                            directive.
+                        </p>
                     }
                     @case (3) {
                         Transitions are handled using
