@@ -15,8 +15,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: taiga-family/actions/setup-variables@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
-      - uses: taiga-family/actions/setup-node@9ef658ceb6608dab9d85124a80ab70087f9d62fa # v2.22.0
+      - uses: taiga-family/actions/setup-variables@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
+      - uses: taiga-family/actions/setup-node@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
       - run: npx nx build demo
 
       - name: Prepare preview metadata
