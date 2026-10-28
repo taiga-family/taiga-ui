@@ -2,7 +2,9 @@ name: ⚠️ Publish Taiga UI packages
 on:
   push:
     branches: ['release/*']
+  workflow_dispatch:
 
+# single workflow for all publish jobs: npm trusted publishing is configured per workflow file
 permissions:
   contents: read
   id-token: write
@@ -14,6 +16,7 @@ env:
 jobs:
   publish:
     name: Publish
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
@@ -49,6 +52,17 @@ jobs:
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: v${{ steps.info.outputs.version }}
           textLink: '@taiga-ui/cdk'
+
+  publish-canary:
+    name: Publish canary
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.152.0
+      - uses: taiga-family/ci/actions/setup/node@v1.152.0
+      - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
