@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
+permissions:
+  contents: read
+  id-token: write
+
 env:
   NX_DISABLE_NX_CACHE: true
   NX_DISABLE_REMOTE_CACHE: true
@@ -16,9 +20,7 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
       - uses: taiga-family/ci/actions/setup/node@v1.152.0
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.152.0
-        with:
-          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
+      - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
