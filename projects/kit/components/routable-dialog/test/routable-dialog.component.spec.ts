@@ -1,18 +1,30 @@
-import {ChangeDetectionStrategy, Component, type Provider} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EnvironmentInjector,
+    InjectionToken,
+    type Injector,
+    type Provider,
+} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {
     ActivatedRoute,
     type ActivatedRouteSnapshot,
     type Data,
     type NavigationExtras,
+    provideRouter,
     Router,
+    RouterOutlet,
+    type Routes,
     type UrlSegment,
 } from '@angular/router';
-import {provideTaiga, TuiDialogService} from '@taiga-ui/core';
+import {RouterTestingHarness} from '@angular/router/testing';
+import {provideTaiga, TUI_OPTIONS, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER, Subject} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
+import {tuiRouteDialog} from '../generate-dialogable-route';
 import TuiRoutableDialog from '../routable-dialog.component';
 
 function providerOf(serviceToken: any, mockedService: any): Provider {
@@ -29,6 +41,16 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 class Dialog {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {snapshot: {data: {dialog: Dialog}}};
+const ROUTE_PROVIDER = new InjectionToken<string>('ROUTE_PROVIDER');
+const PAGE_PROVIDER = new InjectionToken<string>('PAGE_PROVIDER');
+
+@Component({
+    imports: [RouterOutlet],
+    template: '<router-outlet />',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{provide: PAGE_PROVIDER, useValue: 'page'}],
+})
+class Page {}
 
 describe('TuiRoutableDialog', () => {
     let fixture: ComponentFixture<TuiRoutableDialog>;
@@ -74,6 +96,85 @@ describe('TuiRoutableDialog', () => {
                 anything(),
             ),
         ).once();
+    });
+
+    async function openDialog(routes: Routes, url = '/dialog'): Promise<Injector> {
+        let resolveContent!: (content: PolymorpheusComponent<unknown>) => void;
+        const contentOpened = new Promise<PolymorpheusComponent<unknown>>((resolve) => {
+            resolveContent = resolve;
+        });
+
+        TestBed.configureTestingModule({
+            providers: [
+                provideTaiga(),
+                provideRouter(routes),
+                {
+                    provide: TuiDialogService,
+                    useValue: {
+                        open: (content: PolymorpheusComponent<unknown>) => {
+                            resolveContent(content);
+
+                            return NEVER;
+                        },
+                    },
+                },
+            ],
+        });
+
+        await RouterTestingHarness.create(url);
+
+        const content = await contentOpened;
+
+        return content.createInjector(TestBed.inject(EnvironmentInjector));
+    }
+
+    it('dialog content can inject route-scoped providers with EnvironmentInjector', async () => {
+        const injector = await openDialog([
+            {
+                ...tuiRouteDialog(Dialog, {
+                    path: 'dialog',
+                    injector: EnvironmentInjector,
+                }),
+                providers: [{provide: ROUTE_PROVIDER, useValue: 'route'}],
+            },
+        ]);
+
+        expect(injector.get(ROUTE_PROVIDER)).toBe('route');
+        expect(injector.get(TUI_OPTIONS)).toBe(TestBed.inject(TUI_OPTIONS));
+    });
+
+    it('dialog content can inject providers from the parent component by default', async () => {
+        const injector = await openDialog(
+            [
+                {
+                    path: 'page',
+                    component: Page,
+                    children: [tuiRouteDialog(Dialog, {path: 'dialog'})],
+                },
+            ],
+            '/page/dialog',
+        );
+
+        expect(injector.get(PAGE_PROVIDER)).toBe('page');
+        expect(injector.get(TUI_OPTIONS)).toBe(TestBed.inject(TUI_OPTIONS));
+    });
+
+    it('dialog content can inject its own ActivatedRoute in a nested outlet by default', async () => {
+        const injector = await openDialog(
+            [
+                {
+                    path: 'page',
+                    component: Page,
+                    children: [tuiRouteDialog(Dialog, {path: 'dialog'})],
+                },
+            ],
+            '/page/dialog',
+        );
+
+        const route = injector.get(ActivatedRoute);
+
+        expect(route.snapshot.routeConfig?.path).toBe('dialog');
+        expect(route.parent?.snapshot.routeConfig?.path).toBe('page');
     });
 
     it('dialog options are passed to the dialog open method', async () => {
