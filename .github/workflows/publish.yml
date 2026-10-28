@@ -2,7 +2,11 @@ name: ⚠️ Publish Taiga UI packages
 on:
   push:
     branches: ['release/*']
+  workflow_dispatch:
+  schedule:
+    - cron: '0 20 * * 1-5' # Canary at UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
+# single workflow for all publish jobs: npm trusted publishing is configured per workflow file
 permissions:
   contents: read
   id-token: write
@@ -14,6 +18,7 @@ env:
 jobs:
   publish:
     name: Publish
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -50,6 +55,17 @@ jobs:
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: v${{ steps.info.outputs.version }}
           textLink: '@taiga-ui/cdk'
+
+  publish-canary:
+    name: Publish canary
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      - uses: taiga-family/actions/setup-node@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
