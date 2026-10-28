@@ -7,7 +7,6 @@ on:
 # single workflow for all publish jobs: npm trusted publishing is configured per workflow file
 permissions:
   contents: read
-  id-token: write
 
 env:
   NX_DISABLE_NX_CACHE: true
@@ -18,6 +17,11 @@ jobs:
     name: Publish
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      version: ${{ steps.info.outputs.version }}
     steps:
       - uses: actions/checkout@v4.3.0
         with:
@@ -34,32 +38,41 @@ jobs:
       - uses: taiga-family/ci/actions/run/read-package-json@v1.152.0
         id: info
 
+  # separate job without `id-token: write`: third-party steps must not be able to request the npm OIDC token
+  announce:
+    name: Announce
+    needs: publish
+    # announcement is not a part of the release: never block merge of a release PR
+    if: ${{ !contains(needs.publish.outputs.version, 'rc') }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
       - name: Announce to Time messenger
         uses: taiga-family/actions/messenger-mattermost-announce@c3c5b1dafd967e96aadf1cd4d589bd57fab81d43 # v2.18.0
-        # announcement is not a part of the release: never block merge of a release PR
         continue-on-error: true
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
-          version: v${{ steps.info.outputs.version }}
+          version: v${{ needs.publish.outputs.version }}
           ca-cert: ${{ secrets.ANNOUNCE_CA_CERT }}
 
       - name: Announce to Telegram messenger
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.152.0
         continue-on-error: true
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
-          version: v${{ steps.info.outputs.version }}
+          version: v${{ needs.publish.outputs.version }}
           textLink: '@taiga-ui/cdk'
 
   publish-canary:
     name: Publish canary
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
