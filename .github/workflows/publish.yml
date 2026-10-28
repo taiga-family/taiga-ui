@@ -24,6 +24,9 @@ jobs:
           fetch-depth: 0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
       - uses: taiga-family/ci/actions/setup/node@v1.152.0
+      # TODO: remove once `taiga-family/actions/setup-npm` restores TLS verification itself
+      - name: Restore TLS certificate validation
+        run: npm config set strict-ssl true
       - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
 
       - run: npx nx run-many -t publish
@@ -61,6 +64,9 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
       - uses: taiga-family/ci/actions/setup/node@v1.152.0
+      # TODO: remove once `taiga-family/actions/setup-npm` restores TLS verification itself
+      - name: Restore TLS certificate validation
+        run: npm config set strict-ssl true
       - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
       - run: npx ts-node ./scripts/publish-canary.ts
 
