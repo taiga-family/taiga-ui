@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   add-dist-tag:
@@ -18,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: taiga-family/actions/setup-node@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
-      - uses: taiga-family/actions/setup-npm@5dc7b6f26e61c065c886a16767862da3b9e4f329 # v2.23.0
-        with:
-          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
+      - uses: taiga-family/actions/setup-node@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      - uses: taiga-family/actions/setup-npm@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
+      # npm dist-tag via trusted publishing (OIDC) requires npm >= 11.21.0
+      - run: npm install --global npm@^11.21.0
 
       - name: Add dist-tag for all packages
         env:
