@@ -1,5 +1,6 @@
 {
     "name": "@taiga-ui/styles",
     "version": "4.105.0",
-    "description": "Global Styles for Taiga UI"
+    "description": "Global Styles for Taiga UI",
+    "repository": "https://github.com/taiga-family/taiga-ui"
 }

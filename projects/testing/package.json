@@ -2,6 +2,7 @@
     "name": "@taiga-ui/testing",
     "version": "4.105.0",
     "description": "Utils functions for testing Taiga UI packages",
+    "repository": "https://github.com/taiga-family/taiga-ui",
     "peerDependencies": {
         "@taiga-ui/cdk": "4.105.0",
         "resize-observer-polyfill": ">=1.5.1",
