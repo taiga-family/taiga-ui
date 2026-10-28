@@ -65,5 +65,6 @@ jobs:
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # separate groups: a canary run must never cancel an in-progress release on the same ref
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name == 'push' && 'release' || 'canary' }}
   cancel-in-progress: true
