@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {
+    afterNextRender,
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    input,
+    signal,
+} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,6 +25,8 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiSliderComponent)],
     host: {
+        '[class._vertical]': 'vertical()',
+        '[style.--t-slider-track-end]': 'trackEnd()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[style.--tui-ticks-gradient]': 'ticksGradient()',
         /**
@@ -31,6 +41,8 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
 export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
+    protected readonly trackEnd = signal<string | null>(null);
+    protected readonly vertical = signal(false);
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );
@@ -49,6 +61,15 @@ export class TuiSliderComponent {
     });
 
     constructor() {
+        afterNextRender(() => {
+            const {direction, writingMode} = getComputedStyle(this.el);
+
+            if (writingMode.startsWith('vertical')) {
+                this.vertical.set(true);
+                this.trackEnd.set(direction === 'rtl' ? 'top' : 'bottom');
+            }
+        });
+
         if (this.control instanceof NgModel) {
             /**
              * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
@@ -127,7 +148,7 @@ export class TuiSliderComponent {
 
     protected getTicksGradient(segments: readonly number[]): string {
         if (segments.length <= 1) {
-            return 'linear-gradient(to right, transparent 0 100%)';
+            return 'linear-gradient(to var(--t-slider-track-end, var(--tui-inline-end)), transparent 0 100%)';
         }
 
         const percentages = segments
@@ -140,7 +161,7 @@ export class TuiSliderComponent {
                 var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--t-tick-thickness)),
                 transparent ${segment}% ${percentages[index + 1] ?? 100}%${percentages[index + 1] ? ',' : ')'}
                 `,
-            `linear-gradient(to right, transparent 0 ${percentages[0]}%,`,
+            `linear-gradient(to var(--t-slider-track-end, var(--tui-inline-end)), transparent 0 ${percentages[0]}%,`,
         );
     }
 }
