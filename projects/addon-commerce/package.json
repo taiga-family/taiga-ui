@@ -37,7 +37,7 @@
         "@maskito/angular": "^5.6.1",
         "@maskito/core": "^5.6.1",
         "@maskito/kit": "^5.6.1",
-        "@ng-web-apis/common": "^5.4.0",
+        "@ng-web-apis/common": "^5.4.1",
         "@taiga-ui/cdk": "5.30.0",
         "@taiga-ui/core": "5.30.0",
         "@taiga-ui/i18n": "5.30.0",

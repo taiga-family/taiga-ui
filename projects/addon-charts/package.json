@@ -33,8 +33,8 @@
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
-        "@ng-web-apis/common": "^5.4.0",
-        "@ng-web-apis/resize-observer": "^5.4.0",
+        "@ng-web-apis/common": "^5.4.1",
+        "@ng-web-apis/resize-observer": "^5.4.1",
         "@taiga-ui/cdk": "5.30.0",
         "@taiga-ui/core": "5.30.0",
         "@taiga-ui/polymorpheus": "^5.0.1",
