@@ -70,12 +70,26 @@ import {TuiCard} from '@taiga-ui/layout';
                 </tui-textfield>
             </div>
         </div>
+
+        <tui-textfield
+            id="empty-item-template"
+            multi
+        >
+            <label tuiLabel>Hidden chips</label>
+            <input
+                placeholder="Enter"
+                tuiInputChip
+                [(ngModel)]="hiddenValue"
+            />
+            <ng-template tuiItem />
+        </tui-textfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sandbox {
     protected value = ['I', 'love', 'Angular'];
     protected emptyValue = [];
+    protected hiddenValue: string[] = [];
 }
 
 describe('Textfield Multi', () => {
@@ -99,5 +113,11 @@ describe('Textfield Multi', () => {
         cy.get('#empty-textfield-nested').compareSnapshot(
             'textfield-multi-card-large-nested',
         );
+    });
+
+    it('should keep the input visible after adding an item with an empty item template', () => {
+        cy.get('#empty-item-template input[tuiInputChip]')
+            .type('foo{enter}')
+            .should('be.visible');
     });
 });
