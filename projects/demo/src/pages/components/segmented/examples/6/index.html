@@ -1,0 +1,43 @@
+<tui-segmented [(activeItemIndex)]="active">
+    <tui-items-with-more [required]="active">
+        @for (item of items; track item) {
+            <button
+                *tuiItem
+                type="button"
+            >
+                {{ item }}
+            </button>
+        }
+        <ng-template
+            let-lastIndex
+            tuiMore
+        >
+            <button
+                tuiChevron
+                tuiDropdownAlign="end"
+                tuiDropdownAuto
+                type="button"
+                [tuiDropdown]="dropdown"
+                [(tuiDropdownOpen)]="open"
+            >
+                More
+                <div tuiBadge>{{ items.length - lastIndex - 1 - (active > lastIndex ? 1 : 0) }}</div>
+            </button>
+            <ng-template #dropdown>
+                <tui-data-list>
+                    @for (item of items; track item) {
+                        @if ($index > lastIndex && $index !== active) {
+                            <button
+                                tuiOption
+                                type="button"
+                                (click)="active = $index; open = false"
+                            >
+                                {{ item }}
+                            </button>
+                        }
+                    }
+                </tui-data-list>
+            </ng-template>
+        </ng-template>
+    </tui-items-with-more>
+</tui-segmented>

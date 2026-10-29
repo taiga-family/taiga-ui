@@ -53,10 +53,10 @@ tui-segmented:where(*&) {
         pointer-events: none;
     }
 
-    & > a,
-    & > button,
-    & > label,
-    & > label > input:not([tuiRadio]) {
+    & a,
+    & button,
+    & label,
+    & label > input:not([tuiRadio]) {
         .transition(~'color, background, opacity, border-image');
         .button-clear();
 
@@ -124,11 +124,27 @@ tui-segmented:where(*&) {
         }
     }
 
-    & > .tui-segmented_active {
+    tui-items-with-more,
+    .t-item {
+        border-radius: inherit;
+    }
+
+    .t-item:has(> :active) + .t-item > *,
+    .t-item:has(> .tui-segmented_active) + .t-item > * {
+        border-image: linear-gradient(var(--tui-border-normal), transparent) 1 / 0 0 25% 0.5 / 100 0 0 0.5;
+    }
+
+    @media @tui-mouse {
+        .t-item:has(> :hover) + .t-item > * {
+            border-image: linear-gradient(var(--tui-border-normal), transparent) 1 / 0 0 25% 0.5 / 100 0 0 0.5;
+        }
+    }
+
+    & .tui-segmented_active {
         anchor-name: var(--t-anchor);
     }
 
-    & > label > input:not([tuiRadio]) {
+    & label > input:not([tuiRadio]) {
         position: absolute;
         inset: -0.125rem;
         background: transparent !important;

@@ -1,10 +1,10 @@
 import {
+    type AfterViewChecked,
     ChangeDetectionStrategy,
     Component,
     inject,
     input,
     model,
-    type OnChanges,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -13,7 +13,7 @@ import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGenerateId, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
@@ -45,7 +45,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
         '[style.--t-anchor]': 'anchorId',
     },
 })
-export class TuiSegmented implements OnChanges {
+export class TuiSegmented implements AfterViewChecked {
     private readonly legacy = !inject(WA_CSS)?.supports('anchor-name', '--t-anchor');
     private readonly el = tuiInjectElement();
 
@@ -59,7 +59,13 @@ export class TuiSegmented implements OnChanges {
     public readonly activeItemIndex = model(0);
     public readonly disabled = input(false);
 
-    public ngOnChanges(): void {
+    public get items(): readonly HTMLElement[] {
+        return Array.from(
+            this.el.querySelectorAll<HTMLElement>('a, button, label'),
+        ).filter((item) => !item.closest('.t-item_more'));
+    }
+
+    public ngAfterViewChecked(): void {
         this.refresh();
     }
 
@@ -73,23 +79,19 @@ export class TuiSegmented implements OnChanges {
     }
 
     private refresh(): void {
-        const el = this.el.children.item(this.activeItemIndex());
+        const items = this.items;
+        const el = items[this.activeItemIndex()];
 
-        if (!tuiIsHTMLElement(el)) {
-            return;
-        }
-
-        Array.from(this.el.children).forEach((e) =>
-            e.classList.remove('tui-segmented_active'),
+        items.forEach((item) =>
+            item.classList.toggle('tui-segmented_active', item === el),
         );
 
-        el.classList.add('tui-segmented_active');
-
-        if (!this.legacy) {
+        if (!el || !this.legacy) {
             return;
         }
 
-        const {offsetWidth, offsetLeft, offsetTop} = el;
+        const {offsetWidth} = el;
+        const {offsetLeft, offsetTop} = tuiGetElementOffset(this.el, el);
 
         this.el.style.setProperty('--t-top', tuiPx(offsetTop));
         this.el.style.setProperty('--t-left', tuiPx(offsetLeft));

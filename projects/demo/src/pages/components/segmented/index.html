@@ -9,7 +9,7 @@
             button to toggle between different states.
         </p>
 
-        @for (example of ['Sizes', 'Width', 'Customization', 'Content', 'Disabled']; track example) {
+        @for (example of ['Sizes', 'Width', 'Customization', 'Content', 'Disabled', 'With more']; track example) {
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"

@@ -12,7 +12,6 @@ import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {NgControl, RadioControlValueAccessor} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {EMPTY, map, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
@@ -22,9 +21,12 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     private readonly destroyRef = inject(DestroyRef);
     private readonly injector = inject(INJECTOR);
     private readonly component = inject(TuiSegmented);
-    private readonly el = tuiInjectElement();
-    private readonly links = contentChildren(RouterLinkActive);
-    private readonly elements = contentChildren(RouterLinkActive, {read: ElementRef});
+    private readonly links = contentChildren(RouterLinkActive, {descendants: true});
+    private readonly elements = contentChildren(RouterLinkActive, {
+        read: ElementRef,
+        descendants: true,
+    });
+
     private readonly controls = contentChildren(NgControl, {descendants: true});
     private readonly controls$ = toObservable(this.controls);
 
@@ -54,9 +56,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
 
     protected update(target: EventTarget | null): void {
         this.component.update(
-            Array.from(this.el.children).findIndex((tab) =>
-                tab.contains(target as Node | null),
-            ),
+            this.component.items.findIndex((tab) => tab.contains(target as Node | null)),
         );
     }
 }
