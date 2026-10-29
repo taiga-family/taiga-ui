@@ -111,7 +111,9 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
     }
 
     protected onItems(target: HTMLElement): void {
-        this.height.set(target.querySelector('tui-textfield-item')?.clientHeight);
+        this.height.set(
+            target.querySelector('tui-textfield-item')?.clientHeight || undefined,
+        );
     }
 
     protected onLeft(event: any): void {
