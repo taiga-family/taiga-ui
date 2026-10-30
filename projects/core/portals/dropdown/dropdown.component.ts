@@ -1,4 +1,5 @@
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -47,6 +48,7 @@ export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
         </div>
         <div
             class="t-detector"
+            popover="manual"
             (resize)="onResize($any($event)[0])"
         ></div>
     `,
@@ -78,6 +80,14 @@ export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
     );
 
+    constructor() {
+        super();
+        // The top layer keeps host filters and transforms from invalidating the trigger anchor.
+        afterNextRender(() =>
+            this.el.querySelector<HTMLElement>('.t-detector')?.showPopover?.(),
+        );
+    }
+
     public ngOnDestroy(): void {
         if (!this.anchor.nativeElement.isConnected) {
             this.el.style.setProperty('visibility', 'hidden');
@@ -87,7 +97,7 @@ export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
     protected readonly close = (): void => this.directive.toggle(false);
 
     protected onResize({target, contentRect}: ResizeObserverEntry): void {
-        if (!target.checkVisibility({opacityProperty: true})) {
+        if (!target.checkVisibility()) {
             return;
         }
 
