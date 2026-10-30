@@ -85,12 +85,9 @@ export class TuiTabsDirective implements AfterViewChecked {
 
         tabs.forEach((nativeElement) => {
             const active = nativeElement === activeElement;
-            const anchor = nativeElement.getAttribute('data-tui-anchor');
-            const name = [anchor, '--tui-tab-active'].filter(Boolean).join(', ');
 
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
-            nativeElement.style.setProperty('anchor-name', active ? name : anchor);
         });
 
         this.markedIndex = this.activeItemIndex();

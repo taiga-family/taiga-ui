@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {provideTaiga} from '@taiga-ui/core';
+import {provideTaiga, TuiHint} from '@taiga-ui/core';
 import {TUI_TAB_ACTIVATE, TuiTabs, TuiTabsDirective} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
@@ -34,12 +34,28 @@ describe('Tabs', () => {
         public onTabActivate(): void {}
     }
 
+    @Component({
+        imports: [TuiHint, TuiTabs],
+        template: `
+            <tui-tabs>
+                <button
+                    tuiHint="Hint"
+                    tuiTab
+                >
+                    First
+                </button>
+                <button tuiTab>Second</button>
+            </tui-tabs>
+        `,
+    })
+    class WithHint {}
+
     let fixture: ComponentFixture<Test>;
     let component: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [Test],
+            imports: [Test, WithHint],
             providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
@@ -52,6 +68,28 @@ describe('Tabs', () => {
     function getTabs(): DebugElement[] {
         return fixture.debugElement.queryAll(By.css('[tuiTab]'));
     }
+
+    it('keeps hint anchor when selection changes', () => {
+        const hintFixture = TestBed.createComponent(WithHint);
+
+        hintFixture.detectChanges();
+
+        const root = hintFixture.nativeElement as HTMLElement;
+        const first = root.querySelector<HTMLElement>('[tuiHint]')!;
+        const second = first.nextElementSibling as HTMLElement;
+        const hintAnchor = first.getAttribute('data-tui-anchor');
+
+        expect(hintAnchor).toMatch(/^--/);
+        expect(first.style.getPropertyValue('--tui-anchor')).toBe(hintAnchor);
+        expect(first.classList.contains('_active')).toBe(true);
+
+        second.click();
+        hintFixture.detectChanges();
+
+        expect(first.classList.contains('_active')).toBe(false);
+        expect(second.classList.contains('_active')).toBe(true);
+        expect(first.style.getPropertyValue('--tui-anchor')).toMatch(/^--/);
+    });
 
     describe('Tabs component', () => {
         it('should render all tabs', () => {
