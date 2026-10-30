@@ -1,0 +1,42 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page
+    header="Routable"
+    package="KIT"
+>
+    <ng-template pageTab>
+        <p>
+            Dialog content uses the element injector by default, preserving providers from parent components and the
+            current
+            <code>ActivatedRoute</code>
+            . To access route-scoped providers, pass
+            <code>injector: EnvironmentInjector</code>
+            in the options of
+            <code>tuiRouteDialog</code>
+            .
+        </p>
+
+        <tui-doc-example
+            id="lazy-loading-dialog"
+            heading="Lazy loading dialog"
+            [content]="example1"
+        >
+            <tui-lazy-example />
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="eager-dialog"
+            heading="Eager dialog"
+            [content]="example2"
+        >
+            <tui-eager-example />
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="named-outlet"
+            heading="Named outlet"
+            [content]="example3"
+        >
+            <tui-named-outlet-example />
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};
