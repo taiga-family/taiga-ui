@@ -44,7 +44,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
-        '(input)': 'toggleDropdown(true)',
+        '(input)': 'onInput()',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -70,28 +70,27 @@ export class TuiComboBoxDirective<T>
                 .filter((x) => !this.handlers.disabledItemHandler()(x)) ?? [],
     );
 
-    protected readonly nonStrictControlEffect = effect(() => {
-        if (
-            !this.options().length &&
-            !this.strict() &&
-            this.stringify(this.value()) !== this.textfield.value()
-        ) {
-            this.onChange(this.textfield.value() || null);
-        }
-    });
+    private renderedText = '';
 
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
         const matcher = this.matcher();
+        const text = this.textfield.value();
+        const value = untracked(this.value);
+        const stringified = this.stringify(value);
+
+        if (text === this.renderedText && text !== stringified) {
+            this.updateText(value);
+
+            return;
+        }
 
         if (!options.length || !matcher) {
             return;
         }
 
-        const text = this.textfield.value();
         const option = options.find((x) => matcher(x, text, this.handlers.stringify()));
-        const value = untracked(this.value);
-        const unchanged = this.stringify(value) === text;
+        const unchanged = stringified === text;
         const fallback = this.strict() || !text ? null : text;
 
         if (option == null) {
@@ -105,12 +104,6 @@ export class TuiComboBoxDirective<T>
         } else if (option !== value) {
             this.textfield['accessor']()?.setValue(option);
         }
-    });
-
-    protected readonly newValueEffect = effect(() => {
-        const stringified = this.stringify(this.value());
-
-        this.textfield.value.update((x) => stringified || x);
     });
 
     protected readonly blurEffect = effect(() => {
@@ -131,6 +124,7 @@ export class TuiComboBoxDirective<T>
     public setValue(value: T | null): void {
         this.input.setValue(value);
         this.onChange(value);
+        this.updateText(value);
 
         if (!value) {
             this.toggleDropdown(true);
@@ -143,7 +137,22 @@ export class TuiComboBoxDirective<T>
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(value)));
+            untracked(() => this.updateText(value));
+        }
+    }
+
+    protected onInput(): void {
+        this.toggleDropdown(true);
+
+        const text = this.el.value;
+
+        const shouldUpdateControl =
+            !this.options().length &&
+            !this.strict() &&
+            this.stringify(this.value()) !== text;
+
+        if (shouldUpdateControl) {
+            this.onChange(text || null);
         }
     }
 
@@ -165,6 +174,14 @@ export class TuiComboBoxDirective<T>
         if (options.length === 1 && options[0]) {
             this.textfield.handleOption(options[0]);
         }
+    }
+
+    private updateText(value: T | string | null): void {
+        const text = this.stringify(value);
+
+        this.renderedText = text;
+        this.el.value = text;
+        this.textfield.value.set(text);
     }
 
     private stringify(value?: T | string | null): string {
