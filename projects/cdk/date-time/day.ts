@@ -312,7 +312,9 @@ export class TuiDay extends TuiMonth {
 
         let days = day;
 
-        if (this.day >= monthDaysCount) {
+        if (this.month === months && this.day > monthDaysCount) {
+            days += monthDaysCount;
+        } else if (this.day >= monthDaysCount) {
             days += this.day - (currentMonthDaysCount - monthDaysCount);
         } else if (
             currentMonthDaysCount < monthDaysCount &&
