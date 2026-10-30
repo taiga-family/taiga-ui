@@ -28,6 +28,10 @@ export default class Example {
         this.items = this.items.concat(`Item #${Date.now()}`);
     }
 
+    protected reverse(): void {
+        this.items = [...this.items].reverse();
+    }
+
     protected remove(removed: string): void {
         const index = this.items.indexOf(removed);
 
