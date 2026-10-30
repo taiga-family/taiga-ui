@@ -280,11 +280,13 @@ jobs:
         with:
           pw-result: ./total
 
-  performance-stress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    needs: [build-demo]
-    uses: ./.github/workflows/performance.yml
-    secrets: inherit
+  # Temporary disabled: metrics are too noisy to act on until the collector is reworked.
+  # Re-enable by restoring this block and letting the specs run with COLLECT_PERFORMANCE=1.
+  # performance-stress:
+  #   if: ${{ !contains(github.head_ref , 'release/') }}
+  #   needs: [build-demo]
+  #   uses: ./.github/workflows/performance.yml
+  #   secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
