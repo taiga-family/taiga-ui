@@ -1,0 +1,29 @@
+import"./chunk-LQ6M4NCU.js";var a=`<p class="pin">{{ masked() || '\u2014' }}</p>
+
+<tui-keypad class="keypad">
+    @for (digit of digits(); track digit) {
+        <button
+            type="button"
+            (click)="append(digit)"
+        >
+            {{ digit }}
+        </button>
+    }
+
+    <button
+        type="button"
+        (click)="clear()"
+    >
+        C
+    </button>
+
+    <button
+        aria-label="Backspace"
+        type="button"
+        (click)="backspace()"
+        (longtap)="clear()"
+    >
+        <tui-icon icon="@tui.delete" />
+    </button>
+</tui-keypad>
+`;export{a as default};

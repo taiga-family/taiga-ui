@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[101],{101:e=>{e.exports="tui-progress-circle {\n    transform: scaleX(-1) // reversed direction\n        rotate(-90deg); // top side starting point\n}\n"}}]);

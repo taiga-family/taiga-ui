@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18355],{18355:a=>{a.exports="```bash\ncodex mcp add taiga-ui -- \\\n  npx -y @taiga-ui/mcp@latest --source-url=https://taiga-ui.dev/llms-full.txt\n```\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[12726],{12726:t=>{t.exports="```html\n<tui-bottom-sheet>Content</tui-bottom-sheet>\n```\n"}}]);

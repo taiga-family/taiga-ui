@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78318],{78318:n=>{n.exports=".toggle {\n    display: flex;\n    align-items: center;\n    width: fit-content;\n    gap: 1rem;\n    margin: 1rem 0;\n}\n\n.table {\n    width: 100%;\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47664],{47664:n=>{n.exports='```html\n<form tuiSearchBar>\n  <input\n    placeholder="Search"\n    tuiSearchBar\n  />\n  <button\n    tuiButtonClose\n    tuiIconButton\n    type="reset"\n  >\n    Cancel\n  </button>\n</form>\n```\n'}}]);

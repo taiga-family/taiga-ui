@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1601],{1601:n=>{n.exports=".container {\n    max-block-size: 30rem;\n    inline-size: 20rem;\n    overflow: scroll;\n    overscroll-behavior: none;\n}\n\ntui-app-bar {\n    position: sticky;\n    z-index: 1;\n    inset-block-start: 0;\n    margin-block-end: 0.75rem;\n}\n"}}]);

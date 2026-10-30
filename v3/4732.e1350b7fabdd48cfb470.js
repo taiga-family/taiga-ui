@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[4732],{4732:a=>{a.exports='```html\n<tui-badge appearance="primary">{{ value }}</tui-badge>\n```\n'}}]);

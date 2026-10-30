@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14064],{14064:e=>{e.exports='```html\n<tui-expand [expanded]="expanded">Eager content</tui-expand>\n```\n'}}]);

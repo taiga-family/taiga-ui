@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11992],{11992:e=>{e.exports='<search tuiSearchBar>\n    <input\n        placeholder="Search"\n        tuiSearchBar\n    />\n</search>\n'}}]);
