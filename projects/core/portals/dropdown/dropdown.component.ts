@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {
     TUI_SCROLL_REF,
     TuiScrollbar,
@@ -16,6 +17,7 @@ import {
 } from '@taiga-ui/core/components/scrollbar';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {animationFrames, filter, startWith, take, takeWhile} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_ANCHOR} from './dropdown.providers';
@@ -71,6 +73,17 @@ export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
     private readonly anchor = inject(TUI_DROPDOWN_ANCHOR);
     private readonly position = inject(TuiDropdownPosition);
     private readonly darkMode = inject(TUI_DARK_MODE);
+    private readonly anchorHidden$ = animationFrames().pipe(
+        startWith(0),
+        takeWhile(() => this.el.isConnected),
+        filter(
+            () =>
+                !this.anchor.nativeElement.isConnected ||
+                !this.anchor.nativeElement.getClientRects().length,
+        ),
+        take(1),
+        tuiZonefree(),
+    );
 
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
@@ -79,9 +92,10 @@ export class TuiDropdownComponent extends TuiScrollbar implements OnDestroy {
     );
 
     public ngOnDestroy(): void {
-        if (!this.anchor.nativeElement.isConnected) {
-            this.el.style.setProperty('visibility', 'hidden');
-        }
+        // The leave animation can keep the element in the DOM after its view is destroyed.
+        this.anchorHidden$.subscribe(() =>
+            this.el.style.setProperty('visibility', 'hidden'),
+        );
     }
 
     protected readonly close = (): void => this.directive.toggle(false);
