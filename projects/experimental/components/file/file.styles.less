@@ -33,6 +33,22 @@
             clip-path: inset(50%);
         }
 
+        &:has(img)::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: block;
+            inline-size: auto;
+            block-size: auto;
+            border-radius: var(--tui-radius-l);
+            background: none;
+            box-shadow: inset 0 0 0 1px var(--tui-border-normal-pale, var(--tui-border-normal));
+            mask-image: none;
+            pointer-events: none;
+            zoom: 1;
+        }
+
         tui-loader {
             color: var(--tui-text-action);
         }
@@ -48,8 +64,6 @@
 
         img {
             object-fit: cover;
-            outline: 1px solid var(--tui-background-neutral-1);
-            outline-offset: -1px;
             grid-area: auto;
 
             & ~ * {
@@ -70,6 +84,10 @@
         &[data-size='m'] [tuiAvatar] {
             clip-path: inset(0 round var(--tui-radius-m));
 
+            &:has(img)::after {
+                border-radius: var(--tui-radius-m);
+            }
+
             tui-progress-circle {
                 --t-diameter: 1rem;
             }
@@ -82,6 +100,10 @@
 
         &[data-size='s'] [tuiAvatar] {
             clip-path: inset(0 round var(--tui-radius-m));
+
+            &:has(img)::after {
+                border-radius: var(--tui-radius-m);
+            }
 
             tui-progress-circle {
                 --t-diameter: 0.75rem;
@@ -102,7 +124,7 @@
     &[data-orientation='vertical'] {
         position: relative;
         padding: 0;
-        min-inline-size: 5rem;
+        min-inline-size: ~'calc(5rem * (1 - min(max(var(--t-font-offset, 0), 0) * 1000, 1)) + 6rem * max(1, min((var(--t-font-offset, 0) + 17) / 16 - 0.1, 2)) * min(max(var(--t-font-offset, 0), 0) * 1000, 1))';
         max-inline-size: 6rem;
         flex: 1 1 auto;
         border-radius: 1rem;
@@ -118,14 +140,32 @@
             padding: 0;
             clip-path: inset(0 round 1rem);
 
+            &:has(img)::after {
+                border-radius: 1rem;
+                box-shadow: inset 0 0 0 1px var(--tui-border-normal);
+            }
+
             tui-icon {
                 --tui-icon-size: 1.75rem;
             }
         }
 
-        [tuiButtonX] {
-            .tui-hitbox(2.375rem);
+        &[data-size='m'] [tuiAvatar] {
+            tui-icon,
+            [tuiIconButton] {
+                --tui-icon-size: 1rem;
+            }
 
+            tui-loader {
+                --t-diameter: 1em;
+            }
+
+            tui-progress-circle {
+                --t-diameter: 1rem;
+            }
+        }
+
+        [tuiButtonX] {
             position: absolute;
             inset-block-start: 0.375rem;
             inset-inline-end: 0.375rem;
@@ -158,6 +198,19 @@
             &::before {
                 color: #fff !important;
             }
+
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                inset-inline-start: 50%;
+                inset-block-start: 50%;
+                inline-size: 2rem;
+                block-size: 2rem;
+                margin: 0;
+                transform: translate(-50%, -50%) scale(calc(24 / 20));
+                background: transparent;
+            }
         }
 
         [tuiTitle] {
@@ -176,4 +229,8 @@
             flex-direction: column-reverse;
         }
     }
+}
+
+[data-platform='web'] [tuiFile]:where(*&)[data-orientation='vertical'] [tuiTitle] [tuiSubtitle] {
+    font: var(--tui-typography-ui-xs);
 }
