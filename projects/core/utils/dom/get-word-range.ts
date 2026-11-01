@@ -63,7 +63,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
 
         const offset = [
             content.indexOf(' '),
-            content.lastIndexOf('\n'),
+            content.indexOf('\n'),
             content.indexOf(CHAR_NO_BREAK_SPACE),
             content.indexOf(CHAR_ZERO_WIDTH_SPACE),
         ].reduce(
