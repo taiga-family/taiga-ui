@@ -73,7 +73,6 @@ export class TuiDocAPIItem<T> implements OnInit, OnDestroy {
     private readonly locationRef = inject(Location);
     private readonly copyRegistry = inject(TuiDocApiCopyRegistry, {optional: true});
     private copyEntry?: TuiDocApiItemCopyEntry;
-
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);

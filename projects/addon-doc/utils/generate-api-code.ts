@@ -26,10 +26,9 @@ export function tuiGenerateApiCode(
 function shouldIncludeApiItem({name, value, type}: TuiDocApiItemConfig): boolean {
     return (
         !name.startsWith('(') &&
-        value !== null &&
-        value !== undefined &&
-        !(type === 'boolean' && value === false) &&
-        !(type === 'string' && value === '')
+        value != null &&
+        (type !== 'boolean' || value !== false) &&
+        (type !== 'string' || value !== '')
     );
 }
 
