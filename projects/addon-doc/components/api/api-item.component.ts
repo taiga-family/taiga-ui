@@ -30,10 +30,14 @@ import {TuiTypeReferencePipe} from './type-reference.pipe';
 const SERIALIZED_SUFFIX = '$';
 const SERIALIZED_NULL = 'null';
 
+interface TuiDocApiItemCopySource {
+    name(): string;
+    type(): string;
+    value(): unknown;
+}
+
 class TuiDocApiItemCopyEntry implements TuiDocApiCopyEntry {
-    constructor(
-        private readonly item: Pick<TuiDocAPIItem<unknown>, 'name' | 'type' | 'value'>,
-    ) {}
+    constructor(private readonly item: TuiDocApiItemCopySource) {}
 
     public name(): string {
         return this.item.name();
