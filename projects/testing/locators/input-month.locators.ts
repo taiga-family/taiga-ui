@@ -1,5 +1,7 @@
+import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
+
 export const TUI_INPUT_MONTH_LOCATORS = {
-    HOST: '[tuiInputMonth]',
-    INPUT: 'input',
+    ...TUI_TEXTFIELD_LOCATORS,
+    INPUT: '[tuiInputMonth],[tuiInputMonthRange]',
     NATIVE_PICKER: 'input[type="month"]',
 };

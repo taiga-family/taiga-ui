@@ -1,12 +1,19 @@
-import {Locator} from '@playwright/test';
 import {TUI_INPUT_TIME_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TuiTextfieldWithDataListEO} from './textfield-with-data-list.eo';
+import {TuiTextfieldEO} from './textfield.eo';
+import {withDataList} from '../mixins';
 
-export class TuiInputTimeEO extends TuiTextfieldWithDataListEO {
-    public readonly nativePicker = this.host.locator('input[type="time"]');
+/**
+ * Element Object for a TuiInputTime component.
+ *
+ * Composes the textfield behavior with the data-list dropdown and the native
+ * time picker.
+ *
+ */
+export class TuiInputTimeEO extends withDataList(TuiTextfieldEO) {
+    /** Time text input of the field. */
+    public override readonly input = this.host.locator(TUI_INPUT_TIME_LOCATORS.INPUT);
 
-    public override get host(): Locator {
-        return this.page.locator(TUI_INPUT_TIME_LOCATORS.HOST);
-    }
+    /** Native time picker input. */
+    public readonly nativePicker = this.host.locator('.t-content input[type="time"]');
 }

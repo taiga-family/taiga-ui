@@ -103,16 +103,14 @@ describe('Textfield cleaner', () => {
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthEO(
-                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
-            );
+            const inputMonth = new TuiInputMonthEO(page, example);
 
             const calendarMonth = inputMonth.calendar;
 
-            await inputMonth.textfield.click();
+            await inputMonth.input.click();
 
             await calendarMonth.month.nth(8).click();
-            await expect(inputMonth.textfield).toHaveValue('September 2020');
+            await expect(inputMonth.input).toHaveValue('September 2020');
 
             await cleaner.click();
             await expect(input).toHaveValue('');

@@ -1,3 +1,6 @@
+import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
+
 export const TUI_INPUT_TIME_LOCATORS = {
-    HOST: 'input[tuiInputTime]',
+    ...TUI_TEXTFIELD_LOCATORS,
+    INPUT: 'input[tuiInputTime]',
 };

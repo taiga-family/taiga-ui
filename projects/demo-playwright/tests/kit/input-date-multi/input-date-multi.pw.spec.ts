@@ -5,6 +5,7 @@ import {
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -19,7 +20,7 @@ describe('InputDateMulti', () => {
         api = new TuiDocumentationApiPagePO(page);
         input = api.demo.locator('input[tuiInputDateMulti]');
         chips = api.demo.locator('tui-textfield-item');
-        calendar = new TuiCalendarSheetEO(page.locator('tui-dropdown tui-calendar'));
+        calendar = new TuiCalendarSheetEO(page, page.locator(TUI_DROPDOWN_LOCATORS.HOST));
         submit = api.submitFormControlButton;
     });
 
@@ -35,7 +36,7 @@ describe('InputDateMulti', () => {
             page,
         }) => {
             await input.click();
-            await expect(page.locator('tui-dropdown')).toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeAttached();
 
             await calendar.clickOnDay(3);
             await calendar.clickOnDay(4);
@@ -52,7 +53,7 @@ describe('InputDateMulti', () => {
 
         test('removes submitted date via chip remove button', async ({page}) => {
             await input.click();
-            await expect(page.locator('tui-dropdown')).toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeAttached();
 
             await calendar.clickOnDay(3);
             await calendar.clickOnDay(4);
@@ -77,7 +78,7 @@ describe('InputDateMulti', () => {
 
         test('unselects day via calendar after submit', async ({page}) => {
             await input.click();
-            await expect(page.locator('tui-dropdown')).toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeAttached();
 
             await calendar.clickOnDay(3);
             await calendar.clickOnDay(4);
@@ -86,7 +87,7 @@ describe('InputDateMulti', () => {
             await expect(chips).toHaveCount(2);
 
             await input.click();
-            await expect(page.locator('tui-dropdown')).toBeAttached();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeAttached();
 
             await calendar.clickOnDay(3);
 

@@ -5,7 +5,7 @@ import {
     CHAR_HYPHEN,
     CHAR_MINUS,
     CMD,
-    InputNumberPO,
+    TuiInputNumberEO,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -17,55 +17,41 @@ const {describe, beforeEach} = test;
 describe('InputNumber', () => {
     let example: Locator;
     let value: Locator;
-    let inputNumber: InputNumberPO;
+    let inputNumber: TuiInputNumberEO;
 
     describe('API', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
             value = new TuiDocumentationApiPagePO(page).value;
-            inputNumber = new InputNumberPO(
-                example.locator('tui-textfield:has([tuiInputNumber])'),
-            );
+            inputNumber = new TuiInputNumberEO(page, example);
         });
 
         describe('[min] prop', () => {
             describe('[min] property is positive number', () => {
                 test('rejects minus sign', async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=5`);
-                    await inputNumber.textfield.fill(
+                    await inputNumber.input.fill(
                         `${CHAR_MINUS}${CHAR_HYPHEN}${CHAR_EN_DASH}${CHAR_EM_DASH}9`,
                     );
 
-                    await expect(inputNumber.textfield).toHaveValue('9');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('9');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 1);
                 });
 
                 test('validates positive value (less than [min]) only on blur', async ({
                     page,
                 }) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=5`);
-                    await inputNumber.textfield.fill('2');
+                    await inputNumber.input.fill('2');
 
-                    await expect(inputNumber.textfield).toHaveValue('2');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('2');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 1);
 
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.blur();
 
-                    await expect(inputNumber.textfield).toHaveValue('5');
+                    await expect(inputNumber.input).toHaveValue('5');
                 });
 
                 test('allows to enter multi-length positive value (which is less than [min])', async ({
@@ -73,17 +59,17 @@ describe('InputNumber', () => {
                 }) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=100`);
 
-                    await inputNumber.textfield.fill('3'); // less than min
+                    await inputNumber.input.fill('3'); // less than min
 
-                    await expect(inputNumber.textfield).toHaveValue('3');
+                    await expect(inputNumber.input).toHaveValue('3');
 
-                    await inputNumber.textfield.pressSequentially('3'); // still less than min
+                    await inputNumber.input.pressSequentially('3'); // still less than min
 
-                    await expect(inputNumber.textfield).toHaveValue('33');
+                    await expect(inputNumber.input).toHaveValue('33');
 
-                    await inputNumber.textfield.fill('333'); // more than min
+                    await inputNumber.input.fill('333'); // more than min
 
-                    await expect(inputNumber.textfield).toHaveValue('333');
+                    await expect(inputNumber.input).toHaveValue('333');
                 });
             });
 
@@ -91,55 +77,37 @@ describe('InputNumber', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=-5`);
 
-                    await inputNumber.textfield.clear();
+                    await inputNumber.input.clear();
                 });
 
                 test('immediately validates negative value', async () => {
-                    await inputNumber.textfield.fill('-10'); // less than [min]
+                    await inputNumber.input.fill('-10'); // less than [min]
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}5`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}5`);
                 });
 
                 test('do not touch any positive value', async ({page}) => {
-                    await inputNumber.textfield.fill('1');
+                    await inputNumber.input.fill('1');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        1,
-                    );
-                    await expect(inputNumber.textfield).toHaveValue('1');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 1);
+                    await expect(inputNumber.input).toHaveValue('1');
 
-                    await inputNumber.textfield.pressSequentially('0');
+                    await inputNumber.input.pressSequentially('0');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveValue('10');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
+                    await expect(inputNumber.input).toHaveValue('10');
 
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.blur();
 
-                    await expect(inputNumber.textfield).toHaveValue('10');
+                    await expect(inputNumber.input).toHaveValue('10');
 
                     await page.waitForTimeout(100); // to be sure that value is not changed even in case of some async validation
 
-                    await expect(inputNumber.textfield).toHaveValue('10');
+                    await expect(inputNumber.input).toHaveValue('10');
                 });
             });
         });
@@ -151,30 +119,18 @@ describe('InputNumber', () => {
                 });
 
                 test('validates negative value only on blur', async ({page}) => {
-                    await inputNumber.textfield.fill('-1'); // more than [max]
+                    await inputNumber.input.fill('-1'); // more than [max]
                     await page.waitForTimeout(100); // to be sure that value is not changed even in case of some async validation
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}1`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
 
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.blur();
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}5`);
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}5`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
                 });
             });
 
@@ -184,55 +140,31 @@ describe('InputNumber', () => {
                 });
 
                 test('immediately validates positive value', async () => {
-                    await inputNumber.textfield.fill('19'); // more than max
+                    await inputNumber.input.fill('19'); // more than max
 
-                    await expect(inputNumber.textfield).toHaveValue('12');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
+                    await expect(inputNumber.input).toHaveValue('12');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
                 });
 
                 test('do not touch any negative value', async ({page}) => {
-                    await inputNumber.textfield.fill('-1');
+                    await inputNumber.input.fill('-1');
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}1`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
 
                     await page.keyboard.down('9');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        3,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        3,
-                    );
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}19`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 3);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 3);
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}19`);
 
                     await page.waitForTimeout(100); // to ensure that value is not changed even in case of some async validation
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}19`);
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        3,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        3,
-                    );
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}19`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 3);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 3);
                 });
             });
         });
@@ -244,31 +176,31 @@ describe('InputNumber', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=1`);
 
-                    await expect(inputNumber.textfield).toHaveValue('');
+                    await expect(inputNumber.input).toHaveValue('');
                 });
 
                 test('sets 1 on increase button click', async () => {
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('1');
+                    await expect(inputNumber.input).toHaveValue('1');
                 });
 
                 test('sets 1 on keyboard ArrowUp press', async () => {
-                    await inputNumber.textfield.press('ArrowUp');
+                    await inputNumber.input.press('ArrowUp');
 
-                    await expect(inputNumber.textfield).toHaveValue('1');
+                    await expect(inputNumber.input).toHaveValue('1');
                 });
 
                 test('sets -1 on decrease button click', async () => {
                     await inputNumber.stepDown.click();
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}1`);
                 });
 
                 test('sets -1 on keyboard ArrowDown press', async () => {
-                    await inputNumber.textfield.press('ArrowDown');
+                    await inputNumber.input.press('ArrowDown');
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}1`);
                 });
 
                 test('sets 2 on pointer press and hold', async ({page}) => {
@@ -287,12 +219,12 @@ describe('InputNumber', () => {
 
                     await page.mouse.up();
 
-                    await expect(inputNumber.textfield).toHaveValue('2');
+                    await expect(inputNumber.input).toHaveValue('2');
                 });
 
                 test('sets 0 from 2 on pointer press and hold', async ({page}) => {
-                    await inputNumber.textfield.fill('2');
-                    await expect(inputNumber.textfield).toHaveValue('2');
+                    await inputNumber.input.fill('2');
+                    await expect(inputNumber.input).toHaveValue('2');
 
                     const stepDownBox = await inputNumber.stepDown.boundingBox();
 
@@ -309,7 +241,7 @@ describe('InputNumber', () => {
 
                     await page.mouse.up();
 
-                    await expect(inputNumber.textfield).toHaveValue('0');
+                    await expect(inputNumber.input).toHaveValue('0');
                 });
             });
 
@@ -320,8 +252,8 @@ describe('InputNumber', () => {
                         `${DemoRoute.InputNumber}/API?step=1&disabled=true`,
                     );
 
-                    await expect(inputNumber.textfield).toBeDisabled();
-                    await expect(inputNumber.textfield).toHaveValue('');
+                    await expect(inputNumber.input).toBeDisabled();
+                    await expect(inputNumber.input).toHaveValue('');
                 });
 
                 for (const button of ['stepUp', 'stepDown'] as const) {
@@ -345,7 +277,7 @@ describe('InputNumber', () => {
 
                         await page.mouse.up();
 
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
                     });
                 }
             });
@@ -360,7 +292,7 @@ describe('InputNumber', () => {
                     await inputNumber.stepUp.click();
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('9');
+                    await expect(inputNumber.input).toHaveValue('9');
                 });
 
                 test('Click on decrease button x6 times => value is -18', async () => {
@@ -368,7 +300,7 @@ describe('InputNumber', () => {
                         await inputNumber.stepDown.click();
                     }
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}18`);
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}18`);
                 });
 
                 test('Click on decrease button x1 & click increase x2 time  => value is 3', async () => {
@@ -376,7 +308,7 @@ describe('InputNumber', () => {
                     await inputNumber.stepUp.click();
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('3');
+                    await expect(inputNumber.input).toHaveValue('3');
                 });
             });
 
@@ -390,19 +322,19 @@ describe('InputNumber', () => {
 
                 // 0.009 + 0.001 returns 0.009999999999999998 in JS
                 test('0.009 + 0.001', async () => {
-                    await inputNumber.textfield.fill('0.009');
+                    await inputNumber.input.fill('0.009');
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('0.010');
+                    await expect(inputNumber.input).toHaveValue('0.010');
                 });
 
                 // 1.001 + 0.001 returns 1.0019999999999998 in JS
                 test('1.001 + 0.001', async ({page}) => {
-                    await inputNumber.textfield.fill('1.001');
+                    await inputNumber.input.fill('1.001');
 
                     await page.keyboard.press('ArrowUp');
 
-                    await expect(inputNumber.textfield).toHaveValue('1.002');
+                    await expect(inputNumber.input).toHaveValue('1.002');
                 });
             });
 
@@ -416,13 +348,13 @@ describe('InputNumber', () => {
 
                 test('Maximum limit cannot be violated via steps', async () => {
                     await inputNumber.stepUp.click();
-                    await inputNumber.textfield.press('ArrowUp');
+                    await inputNumber.input.press('ArrowUp');
 
-                    await expect(inputNumber.textfield).toHaveValue('8');
+                    await expect(inputNumber.input).toHaveValue('8');
 
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('10');
+                    await expect(inputNumber.input).toHaveValue('10');
 
                     await expect(inputNumber.stepUp).toBeDisabled();
 
@@ -430,7 +362,7 @@ describe('InputNumber', () => {
                     await inputNumber.stepUp.click({force: true});
                     await inputNumber.stepUp.press('ArrowUp');
 
-                    await expect(inputNumber.textfield).toHaveValue('10');
+                    await expect(inputNumber.input).toHaveValue('10');
                     await expect
                         .soft(inputNumber.host)
                         .toHaveScreenshot('input-number-with-disabled-step-up.png');
@@ -438,17 +370,17 @@ describe('InputNumber', () => {
 
                 test('Minimum limit cannot be violated via steps', async () => {
                     await inputNumber.stepDown.click();
-                    await inputNumber.textfield.press('ArrowDown');
+                    await inputNumber.input.press('ArrowDown');
 
-                    await expect(inputNumber.textfield).toHaveValue('0');
+                    await expect(inputNumber.input).toHaveValue('0');
                     await expect
                         .soft(inputNumber.host)
                         .toHaveScreenshot('input-number-with-disabled-step-down.png');
 
-                    await inputNumber.textfield.fill('2');
+                    await inputNumber.input.fill('2');
                     await inputNumber.stepDown.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('0');
+                    await expect(inputNumber.input).toHaveValue('0');
                     await expect(inputNumber.stepDown).toBeDisabled();
                 });
             });
@@ -478,7 +410,7 @@ describe('InputNumber', () => {
                                 page,
                                 `${DemoRoute.InputNumber}/API?step=1&tuiTextfieldSize=${size}`,
                             );
-                            await inputNumber.textfield.fill('42');
+                            await inputNumber.input.fill('42');
 
                             await expect
                                 .soft(inputNumber.host)
@@ -494,60 +426,48 @@ describe('InputNumber', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=1&postfix=kg`);
 
-                    await expect(inputNumber.textfield).toHaveValue('');
-                    await expect(inputNumber.textfield).not.toBeFocused();
+                    await expect(inputNumber.input).toHaveValue('');
+                    await expect(inputNumber.input).not.toBeFocused();
                 });
 
                 test('Empty unfocused textfield => Click + => Textfield is focused & Caret is placed before postfix', async () => {
                     await inputNumber.stepUp.click();
 
-                    await expect(inputNumber.textfield).toHaveValue('1kg');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('1kg');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 1);
                 });
 
                 test('Focused textfield with postfix only => Press ArrowDown => Caret is placed before postfix', async () => {
-                    await inputNumber.textfield.focus();
-                    await expect(inputNumber.textfield).toHaveValue('kg');
-                    await inputNumber.textfield.press('ArrowDown');
+                    await inputNumber.input.focus();
+                    await expect(inputNumber.input).toHaveValue('kg');
+                    await inputNumber.input.press('ArrowDown');
 
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1kg`);
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        2,
-                    );
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}1kg`);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
                 });
 
                 describe('Keeps caret position on step', () => {
                     beforeEach(async () => {
-                        await inputNumber.textfield.focus();
-                        await inputNumber.textfield.fill('42');
+                        await inputNumber.input.focus();
+                        await inputNumber.input.fill('42');
 
-                        await expect(inputNumber.textfield).toHaveValue('42kg');
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveValue('42kg');
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionStart',
                             2,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionEnd',
                             2,
                         );
-                        await inputNumber.textfield.press('ArrowLeft');
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await inputNumber.input.press('ArrowLeft');
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionStart',
                             1,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionEnd',
                             1,
                         );
@@ -557,27 +477,27 @@ describe('InputNumber', () => {
                         await inputNumber.stepUp.click();
                         await expect(inputNumber.stepUp).toBeVisible();
                         await expect(inputNumber.stepUp).toContainText('+');
-                        await expect(inputNumber.textfield).toHaveValue('43kg');
+                        await expect(inputNumber.input).toHaveValue('43kg');
                         // Caret should be at the end of value but before postfix ("kg")
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionStart',
                             2,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionEnd',
                             2,
                         );
                     });
 
                     test('via keyboard arrow', async () => {
-                        await inputNumber.textfield.press('ArrowUp');
-                        await expect(inputNumber.textfield).toHaveValue('43kg');
+                        await inputNumber.input.press('ArrowUp');
+                        await expect(inputNumber.input).toHaveValue('43kg');
                         // Caret should be at the end of value but before postfix ("kg")
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionStart',
                             2,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionEnd',
                             2,
                         );
@@ -598,8 +518,8 @@ describe('InputNumber', () => {
                 describe('allows to enter number which IS NOT divisible by quantum value', () => {
                     ['3', '5', '7', '9', '11', '14', '19'].forEach((value) => {
                         test(value, async () => {
-                            await inputNumber.textfield.fill(value);
-                            await expect(inputNumber.textfield).toHaveValue(value);
+                            await inputNumber.input.fill(value);
+                            await expect(inputNumber.input).toHaveValue(value);
                         });
                     });
                 });
@@ -607,63 +527,63 @@ describe('InputNumber', () => {
                 describe('allows to enter number which IS divisible by quantum value', () => {
                     ['0', '10', '20', '30', '60', '90', '100'].forEach((value) => {
                         test(value, async () => {
-                            await inputNumber.textfield.fill(value);
-                            await expect(inputNumber.textfield).toHaveValue(value);
+                            await inputNumber.input.fill(value);
+                            await expect(inputNumber.input).toHaveValue(value);
                         });
                     });
                 });
 
                 describe('rounds invalid number on blur', () => {
                     test('4 => 0', async () => {
-                        await inputNumber.textfield.fill('4');
-                        await inputNumber.textfield.blur();
-                        await expect(inputNumber.textfield).toHaveValue('0');
+                        await inputNumber.input.fill('4');
+                        await inputNumber.input.blur();
+                        await expect(inputNumber.input).toHaveValue('0');
                     });
 
                     test('5 => 10', async () => {
-                        await inputNumber.textfield.fill('5');
-                        await inputNumber.textfield.blur();
-                        await expect(inputNumber.textfield).toHaveValue('10');
+                        await inputNumber.input.fill('5');
+                        await inputNumber.input.blur();
+                        await expect(inputNumber.input).toHaveValue('10');
                     });
 
                     test('6 => 10', async () => {
-                        await inputNumber.textfield.fill('6');
-                        await inputNumber.textfield.blur();
-                        await expect(inputNumber.textfield).toHaveValue('10');
+                        await inputNumber.input.fill('6');
+                        await inputNumber.input.blur();
+                        await expect(inputNumber.input).toHaveValue('10');
                     });
 
                     test('19 => 20', async () => {
-                        await inputNumber.textfield.fill('19');
-                        await inputNumber.textfield.blur();
-                        await expect(inputNumber.textfield).toHaveValue('20');
+                        await inputNumber.input.fill('19');
+                        await inputNumber.input.blur();
+                        await expect(inputNumber.input).toHaveValue('20');
                     });
 
                     test('77 => 80', async () => {
-                        await inputNumber.textfield.fill('77');
-                        await inputNumber.textfield.blur();
-                        await expect(inputNumber.textfield).toHaveValue('80');
+                        await inputNumber.input.fill('77');
+                        await inputNumber.input.blur();
+                        await expect(inputNumber.input).toHaveValue('80');
                     });
                 });
 
                 describe('form control always contains only number which IS divisible by quantum value', () => {
                     test('4 => 0', async () => {
-                        await inputNumber.textfield.fill('4');
+                        await inputNumber.input.fill('4');
                         await expect(value).toContainText('"value": 0');
-                        await inputNumber.textfield.blur();
+                        await inputNumber.input.blur();
                         await expect(value).toContainText('"value": 0');
                     });
 
                     test('5 => 10', async () => {
-                        await inputNumber.textfield.fill('5');
+                        await inputNumber.input.fill('5');
                         await expect(value).toContainText('"value": 10');
-                        await inputNumber.textfield.blur();
+                        await inputNumber.input.blur();
                         await expect(value).toContainText('"value": 10');
                     });
 
                     test('77 => 80', async () => {
-                        await inputNumber.textfield.fill('77');
+                        await inputNumber.input.fill('77');
                         await expect(value).toContainText('"value": 80');
-                        await inputNumber.textfield.blur();
+                        await inputNumber.input.blur();
                         await expect(value).toContainText('"value": 80');
                     });
                 });
@@ -692,36 +612,36 @@ describe('InputNumber', () => {
                     });
 
                     test('does not show suffixes for unfocused empty textfield', async () => {
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
                     });
 
                     test('shows suffixes for empty textfield on focus', async () => {
-                        await inputNumber.textfield.focus();
+                        await inputNumber.input.focus();
 
-                        await expect(inputNumber.textfield).toHaveValue(
+                        await expect(inputNumber.input).toHaveValue(
                             `${prefix}${postfix}`,
                         );
                     });
 
                     test('fills an empty unfocused textfield', async () => {
-                        await inputNumber.textfield.fill('42');
+                        await inputNumber.input.fill('42');
 
-                        await expect(inputNumber.textfield).toHaveValue(
+                        await expect(inputNumber.input).toHaveValue(
                             `${prefix}42${postfix}`,
                         );
                         await expect(value).toContainText('"value": 42');
                     });
 
                     test('fills a textfield after clearing and blurring', async () => {
-                        await inputNumber.textfield.fill('42');
-                        await inputNumber.textfield.clear();
-                        await inputNumber.textfield.blur();
+                        await inputNumber.input.fill('42');
+                        await inputNumber.input.clear();
+                        await inputNumber.input.blur();
 
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
 
-                        await inputNumber.textfield.fill('42');
+                        await inputNumber.input.fill('42');
 
-                        await expect(inputNumber.textfield).toHaveValue(
+                        await expect(inputNumber.input).toHaveValue(
                             `${prefix}42${postfix}`,
                         );
                         await expect(value).toContainText('"value": 42');
@@ -734,120 +654,120 @@ describe('InputNumber', () => {
                             page,
                             `${DemoRoute.InputNumber}/API?prefix=${encodeURIComponent(prefix)}&postfix=${encodeURIComponent(postfix)}&readonly=true`,
                         );
-                        await inputNumber.textfield.focus();
+                        await inputNumber.input.focus();
 
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
 
-                        await inputNumber.textfield.click();
+                        await inputNumber.input.click();
 
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
                     });
 
                     describe('forbids to erase prefix', () => {
                         test('using Backspace many times', async () => {
-                            await inputNumber.textfield.focus();
-                            await inputNumber.textfield.press('Backspace');
-                            await inputNumber.textfield.press('Backspace');
+                            await inputNumber.input.focus();
+                            await inputNumber.input.press('Backspace');
+                            await inputNumber.input.press('Backspace');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
 
-                            await inputNumber.textfield.pressSequentially('42');
+                            await inputNumber.input.pressSequentially('42');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}42${postfix}`,
                             );
 
-                            await inputNumber.textfield.press('Backspace');
-                            await inputNumber.textfield.press('Backspace');
-                            await inputNumber.textfield.press('Backspace');
-                            await inputNumber.textfield.press('Backspace');
-                            await inputNumber.textfield.press('Backspace');
+                            await inputNumber.input.press('Backspace');
+                            await inputNumber.input.press('Backspace');
+                            await inputNumber.input.press('Backspace');
+                            await inputNumber.input.press('Backspace');
+                            await inputNumber.input.press('Backspace');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
                         });
 
                         test('select all + Backspace', async ({page}) => {
-                            await inputNumber.textfield.focus();
+                            await inputNumber.input.focus();
                             await page.keyboard.press(`${CMD}+A`);
                             await page.keyboard.press('Backspace');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
 
-                            await inputNumber.textfield.clear();
+                            await inputNumber.input.clear();
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
 
-                            await inputNumber.textfield.pressSequentially('42');
+                            await inputNumber.input.pressSequentially('42');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}42${postfix}`,
                             );
 
                             await page.keyboard.press(`${CMD}+A`);
                             await page.keyboard.press('Backspace');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
                         });
 
                         test('select all + Delete', async ({page}) => {
-                            await inputNumber.textfield.focus();
+                            await inputNumber.input.focus();
                             await page.keyboard.press(`${CMD}+A`);
                             await page.keyboard.press('Delete');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
 
-                            await inputNumber.textfield.pressSequentially('42');
+                            await inputNumber.input.pressSequentially('42');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}42${postfix}`,
                             );
 
                             await page.keyboard.press(`${CMD}+A`);
                             await page.keyboard.press('Delete');
 
-                            await expect(inputNumber.textfield).toHaveValue(
+                            await expect(inputNumber.input).toHaveValue(
                                 `${prefix}${postfix}`,
                             );
                         });
                     });
 
-                    test('textfield does not contain any digit (only suffixes) => clear inputNumber.textfield value on blur', async () => {
-                        await inputNumber.textfield.focus();
+                    test('textfield does not contain any digit (only suffixes) => clear inputNumber.input value on blur', async () => {
+                        await inputNumber.input.focus();
 
-                        await expect(inputNumber.textfield).toHaveValue(
+                        await expect(inputNumber.input).toHaveValue(
                             `${prefix}${postfix}`,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionStart',
                             prefix.length,
                         );
-                        await expect(inputNumber.textfield).toHaveJSProperty(
+                        await expect(inputNumber.input).toHaveJSProperty(
                             'selectionEnd',
                             prefix.length,
                         );
 
-                        await inputNumber.textfield.blur();
+                        await inputNumber.input.blur();
 
-                        await expect(inputNumber.textfield).toHaveValue('');
+                        await expect(inputNumber.input).toHaveValue('');
                     });
 
                     test('allows to enter huge number', async () => {
-                        await inputNumber.textfield.focus();
-                        await inputNumber.textfield.pressSequentially('1234567890123456');
+                        await inputNumber.input.focus();
+                        await inputNumber.input.pressSequentially('1234567890123456');
 
-                        await expect(inputNumber.textfield).toHaveValue(
+                        await expect(inputNumber.input).toHaveValue(
                             `${prefix}1 234 567 890 123 456${postfix}`,
                         );
                     });
@@ -860,40 +780,40 @@ describe('InputNumber', () => {
                         page,
                         `${DemoRoute.InputNumber}/API?prefix=${CHAR_MINUS}&max=0`,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('');
+                    await expect(inputNumber.input).toHaveValue('');
                 });
 
                 test('shows minus sign on focus', async () => {
-                    await inputNumber.textfield.focus();
-                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
+                    await inputNumber.input.focus();
+                    await expect(inputNumber.input).toHaveValue(CHAR_MINUS);
                 });
 
                 test('hides minus sign on blur', async () => {
-                    await inputNumber.textfield.focus();
-                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
-                    await inputNumber.textfield.blur();
-                    await expect(inputNumber.textfield).toHaveValue('');
+                    await inputNumber.input.focus();
+                    await expect(inputNumber.input).toHaveValue(CHAR_MINUS);
+                    await inputNumber.input.blur();
+                    await expect(inputNumber.input).toHaveValue('');
                 });
 
                 test('forbids to enter more minuses', async () => {
-                    await inputNumber.textfield.focus();
-                    await inputNumber.textfield.pressSequentially(
+                    await inputNumber.input.focus();
+                    await inputNumber.input.pressSequentially(
                         `${CHAR_HYPHEN}${CHAR_MINUS}${CHAR_EN_DASH}${CHAR_EM_DASH}`,
                     );
-                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
+                    await expect(inputNumber.input).toHaveValue(CHAR_MINUS);
                 });
 
                 test('allows to enter 123 => Textfield value is -123', async () => {
-                    await inputNumber.textfield.focus();
-                    await inputNumber.textfield.pressSequentially('123');
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}123`);
+                    await inputNumber.input.focus();
+                    await inputNumber.input.pressSequentially('123');
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}123`);
                 });
 
                 test('Enter 123 and blur', async () => {
-                    await inputNumber.textfield.focus();
-                    await inputNumber.textfield.pressSequentially('123');
-                    await inputNumber.textfield.blur();
-                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}123`);
+                    await inputNumber.input.focus();
+                    await inputNumber.input.pressSequentially('123');
+                    await inputNumber.input.blur();
+                    await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}123`);
                 });
             });
 
@@ -902,47 +822,47 @@ describe('InputNumber', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.InputNumber}/API?postfix=cm3`);
 
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially('0');
-                await expect(inputNumber.textfield).toHaveValue('0cm3');
-                await inputNumber.textfield.blur();
-                await expect(inputNumber.textfield).toHaveValue('0cm3');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially('0');
+                await expect(inputNumber.input).toHaveValue('0cm3');
+                await inputNumber.input.blur();
+                await expect(inputNumber.input).toHaveValue('0cm3');
             });
         });
 
         describe('[precision] prop', () => {
             test('[precision]=0', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=0`);
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially(',.');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially(',.');
 
-                await expect(inputNumber.textfield).toHaveValue('');
+                await expect(inputNumber.input).toHaveValue('');
 
-                await inputNumber.textfield.pressSequentially('0,.');
+                await inputNumber.input.pressSequentially('0,.');
 
-                await expect(inputNumber.textfield).toHaveValue('0');
+                await expect(inputNumber.input).toHaveValue('0');
             });
 
             test('[precision]=2', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=2`);
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially(',.');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially(',.');
 
-                await expect(inputNumber.textfield).toHaveValue('0.');
+                await expect(inputNumber.input).toHaveValue('0.');
 
-                await inputNumber.textfield.pressSequentially('12345');
+                await inputNumber.input.pressSequentially('12345');
 
-                await expect(inputNumber.textfield).toHaveValue('0.12');
+                await expect(inputNumber.input).toHaveValue('0.12');
             });
         });
 
         describe('[thousandSeparator] prop', () => {
             test('_', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputNumber}/API?thousandSeparator=_`);
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially('1234567890');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially('1234567890');
 
-                await expect(inputNumber.textfield).toHaveValue('1_234_567_890');
+                await expect(inputNumber.input).toHaveValue('1_234_567_890');
             });
 
             test('.', async ({page}) => {
@@ -950,10 +870,10 @@ describe('InputNumber', () => {
                     page,
                     `${DemoRoute.InputNumber}/API?precision=0&thousandSeparator=.`,
                 );
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially('1234567890');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially('1234567890');
 
-                await expect(inputNumber.textfield).toHaveValue('1.234.567.890');
+                await expect(inputNumber.input).toHaveValue('1.234.567.890');
             });
         });
 
@@ -967,49 +887,49 @@ describe('InputNumber', () => {
                 });
 
                 test('type 123456789 => 1_2345_6789', async () => {
-                    await inputNumber.textfield.pressSequentially('123456789');
+                    await inputNumber.input.pressSequentially('123456789');
 
-                    await expect(inputNumber.textfield).toHaveValue('1_2345_6789');
+                    await expect(inputNumber.input).toHaveValue('1_2345_6789');
                     await expect(value).toContainText('"value": 123456789');
                 });
 
                 test('does not separate number with four digits', async () => {
-                    await inputNumber.textfield.fill('1000');
+                    await inputNumber.input.fill('1000');
 
-                    await expect(inputNumber.textfield).toHaveValue('1000');
+                    await expect(inputNumber.input).toHaveValue('1000');
                 });
 
                 test('keeps formatted value on blur', async () => {
-                    await inputNumber.textfield.fill('123456789');
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.fill('123456789');
+                    await inputNumber.input.blur();
 
-                    await expect(inputNumber.textfield).toHaveValue('1_2345_6789');
+                    await expect(inputNumber.input).toHaveValue('1_2345_6789');
                     await expect(value).toContainText('"value": 123456789');
                 });
 
                 test('1_|2345 => Backspace => 1|_2345 (caret navigation)', async ({
                     page,
                 }) => {
-                    await inputNumber.textfield.fill('12345');
-                    await expect(inputNumber.textfield).toHaveValue('1_2345');
+                    await inputNumber.input.fill('12345');
+                    await expect(inputNumber.input).toHaveValue('1_2345');
 
                     await page.keyboard.press('Home');
                     await page.keyboard.press('ArrowRight');
                     await page.keyboard.press('ArrowRight');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '1_'.length,
                     );
 
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('1_2345');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('1_2345');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '1'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '1'.length,
                     );
@@ -1020,12 +940,12 @@ describe('InputNumber', () => {
                         page,
                         `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=1&thousandSeparator=_&step=1`,
                     );
-                    await inputNumber.textfield.fill('99999');
-                    await expect(inputNumber.textfield).toHaveValue('9_9999');
+                    await inputNumber.input.fill('99999');
+                    await expect(inputNumber.input).toHaveValue('9_9999');
 
-                    await inputNumber.textfield.press('ArrowUp');
+                    await inputNumber.input.press('ArrowUp');
 
-                    await expect(inputNumber.textfield).toHaveValue('10_0000');
+                    await expect(inputNumber.input).toHaveValue('10_0000');
                 });
             });
 
@@ -1038,15 +958,15 @@ describe('InputNumber', () => {
                 });
 
                 test('type 123456789 => 12_34_56_789', async () => {
-                    await inputNumber.textfield.pressSequentially('123456789');
+                    await inputNumber.input.pressSequentially('123456789');
 
-                    await expect(inputNumber.textfield).toHaveValue('12_34_56_789');
+                    await expect(inputNumber.input).toHaveValue('12_34_56_789');
                 });
 
                 test('type 10000000 => 1_00_00_000', async () => {
-                    await inputNumber.textfield.pressSequentially('10000000');
+                    await inputNumber.input.pressSequentially('10000000');
 
-                    await expect(inputNumber.textfield).toHaveValue('1_00_00_000');
+                    await expect(inputNumber.input).toHaveValue('1_00_00_000');
                 });
 
                 test('does not affect decimal part', async ({page}) => {
@@ -1054,17 +974,17 @@ describe('InputNumber', () => {
                         page,
                         `${DemoRoute.InputNumber}/API?thousandSeparatorPattern$=2&thousandSeparator=_&precision=5`,
                     );
-                    await inputNumber.textfield.pressSequentially('1234567.89123');
+                    await inputNumber.input.pressSequentially('1234567.89123');
 
-                    await expect(inputNumber.textfield).toHaveValue('12_34_567.89123');
+                    await expect(inputNumber.input).toHaveValue('12_34_567.89123');
                 });
 
                 test('allows to enter the whole default [min] value', async () => {
-                    await inputNumber.textfield.pressSequentially(
+                    await inputNumber.input.pressSequentially(
                         String(Number.MIN_SAFE_INTEGER),
                     );
 
-                    await expect(inputNumber.textfield).toHaveValue(
+                    await expect(inputNumber.input).toHaveValue(
                         `${CHAR_MINUS}9_00_71_99_25_47_40_991`,
                     );
                 });
@@ -1077,16 +997,16 @@ describe('InputNumber', () => {
                     page,
                     `${DemoRoute.InputNumber}/API?precision=4&decimalSeparator=.`,
                 );
-                await inputNumber.textfield.focus();
-                await inputNumber.textfield.pressSequentially('.1234567890');
+                await inputNumber.input.focus();
+                await inputNumber.input.pressSequentially('.1234567890');
 
-                await expect(inputNumber.textfield).toHaveValue('0.1234');
+                await expect(inputNumber.input).toHaveValue('0.1234');
 
-                await inputNumber.textfield.clear();
+                await inputNumber.input.clear();
 
-                await inputNumber.textfield.pressSequentially(',42');
+                await inputNumber.input.pressSequentially(',42');
 
-                await expect(inputNumber.textfield).toHaveValue('0.42');
+                await expect(inputNumber.input).toHaveValue('0.42');
             });
         });
 
@@ -1097,12 +1017,12 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=not-zero`,
                 );
 
-                await inputNumber.textfield.fill('42');
+                await inputNumber.input.fill('42');
 
-                await expect(inputNumber.textfield).toHaveValue('42');
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 2);
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 2);
-                await expect(inputNumber.textfield).toHaveValue('42');
+                await expect(inputNumber.input).toHaveValue('42');
+                await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
+                await expect(inputNumber.input).toHaveValue('42');
             });
 
             test('decimalMode=not-zero | 42.1 => Blur => 42.1', async ({page}) => {
@@ -1111,15 +1031,15 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=not-zero`,
                 );
 
-                await inputNumber.textfield.fill('42.1');
+                await inputNumber.input.fill('42.1');
 
-                await expect(inputNumber.textfield).toHaveValue('42.1');
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 4);
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 4);
+                await expect(inputNumber.input).toHaveValue('42.1');
+                await expect(inputNumber.input).toHaveJSProperty('selectionStart', 4);
+                await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 4);
 
-                await inputNumber.textfield.blur();
+                await inputNumber.input.blur();
 
-                await expect(inputNumber.textfield).toHaveValue('42.1');
+                await expect(inputNumber.input).toHaveValue('42.1');
             });
 
             test('decimalMode=not-zero | 42.00 => Blur => 42', async ({page}) => {
@@ -1128,20 +1048,20 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=not-zero`,
                 );
 
-                await inputNumber.textfield.fill('42.00');
+                await inputNumber.input.fill('42.00');
 
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionStart',
                     '42.00'.length,
                 );
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionEnd',
                     '42.00'.length,
                 );
 
-                await inputNumber.textfield.blur();
+                await inputNumber.input.blur();
 
-                await expect(inputNumber.textfield).toHaveValue('42');
+                await expect(inputNumber.input).toHaveValue('42');
             });
 
             test('decimalMode=pad | 42.1 => Blur => 42.10', async ({page}) => {
@@ -1150,21 +1070,21 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=pad`,
                 );
 
-                await inputNumber.textfield.fill('42.1');
+                await inputNumber.input.fill('42.1');
 
-                await expect(inputNumber.textfield).toHaveValue('42.1');
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveValue('42.1');
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionStart',
                     '42.1'.length,
                 );
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionEnd',
                     '42.1'.length,
                 );
 
-                await inputNumber.textfield.blur();
+                await inputNumber.input.blur();
 
-                await expect(inputNumber.textfield).toHaveValue('42.10');
+                await expect(inputNumber.input).toHaveValue('42.10');
             });
 
             test('decimalMode=always | Enter 42 => 42.00', async ({page}) => {
@@ -1172,11 +1092,11 @@ describe('InputNumber', () => {
                     page,
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
                 );
-                await inputNumber.textfield.fill('42');
+                await inputNumber.input.fill('42');
 
-                await expect(inputNumber.textfield).toHaveValue('42.00');
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 2);
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 2);
+                await expect(inputNumber.input).toHaveValue('42.00');
+                await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+                await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
             });
 
             test('decimalMode=always | Enter 42 => Blur => 42.00', async ({page}) => {
@@ -1185,10 +1105,10 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
                 );
 
-                await inputNumber.textfield.fill('42');
-                await inputNumber.textfield.blur();
+                await inputNumber.input.fill('42');
+                await inputNumber.input.blur();
 
-                await expect(inputNumber.textfield).toHaveValue('42.00');
+                await expect(inputNumber.input).toHaveValue('42.00');
             });
 
             test('decimalMode=always | pressing Space in the middle of value does not delete a digit', async ({
@@ -1199,28 +1119,28 @@ describe('InputNumber', () => {
                     `${DemoRoute.InputNumber}/API?precision=2&decimalMode=always`,
                 );
 
-                await inputNumber.textfield.fill('123');
+                await inputNumber.input.fill('123');
                 await page.keyboard.press('ArrowLeft');
-                await expect(inputNumber.textfield).toHaveValue('123.00');
+                await expect(inputNumber.input).toHaveValue('123.00');
 
-                await inputNumber.textfield.blur();
-                await expect(inputNumber.textfield).toHaveValue('123.00');
+                await inputNumber.input.blur();
+                await expect(inputNumber.input).toHaveValue('123.00');
 
-                await inputNumber.textfield.focus();
+                await inputNumber.input.focus();
 
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionStart',
                     '12'.length,
                 );
 
                 await page.keyboard.press('Space');
 
-                await expect(inputNumber.textfield).toHaveValue('123.00');
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveValue('123.00');
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionStart',
                     '12'.length,
                 );
-                await expect(inputNumber.textfield).toHaveJSProperty(
+                await expect(inputNumber.input).toHaveJSProperty(
                     'selectionEnd',
                     '12'.length,
                 );
@@ -1237,18 +1157,15 @@ describe('InputNumber', () => {
 
             describe('adds minus before prefix even if caret is placed after prefix', () => {
                 test('focus empty input => type "-" => "-$"', async () => {
-                    await inputNumber.textfield.focus();
+                    await inputNumber.input.focus();
 
-                    await expect(inputNumber.textfield).toHaveValue('$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
 
-                    await inputNumber.textfield.pressSequentially('-');
+                    await inputNumber.input.pressSequentially('-');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
@@ -1257,21 +1174,18 @@ describe('InputNumber', () => {
                 test('$|100 => type "-" => -$|100 (caret stays before digits)', async ({
                     page,
                 }) => {
-                    await inputNumber.textfield.pressSequentially('100');
+                    await inputNumber.input.pressSequentially('100');
 
-                    await expect(inputNumber.textfield).toHaveValue('$100');
+                    await expect(inputNumber.input).toHaveValue('$100');
 
                     await page.keyboard.press(`${CMD}+ArrowLeft`);
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
 
-                    await inputNumber.textfield.pressSequentially('-');
+                    await inputNumber.input.pressSequentially('-');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$100');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$100');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
@@ -1280,14 +1194,14 @@ describe('InputNumber', () => {
                 describe('works with pseudo minus signs', () => {
                     [CHAR_MINUS, CHAR_EN_DASH, CHAR_EM_DASH].forEach((minus) => {
                         test(`"${minus}" (unicode ${minus.codePointAt(0)?.toString(16)})`, async () => {
-                            await inputNumber.textfield.focus();
+                            await inputNumber.input.focus();
 
-                            await expect(inputNumber.textfield).toHaveValue('$');
+                            await expect(inputNumber.input).toHaveValue('$');
 
-                            await inputNumber.textfield.pressSequentially(minus);
+                            await inputNumber.input.pressSequentially(minus);
 
-                            await expect(inputNumber.textfield).toHaveValue('−$');
-                            await expect(inputNumber.textfield).toHaveJSProperty(
+                            await expect(inputNumber.input).toHaveValue('−$');
+                            await expect(inputNumber.input).toHaveJSProperty(
                                 'selectionStart',
                                 '-$'.length,
                             );
@@ -1305,75 +1219,72 @@ describe('InputNumber', () => {
                 });
 
                 test('type -123456789 => -$123_456_789', async () => {
-                    await inputNumber.textfield.pressSequentially('-123456789');
+                    await inputNumber.input.pressSequentially('-123456789');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$123_456_789');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$123_456_789');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$123_456_789'.length,
                     );
                 });
 
                 test('-$123_456_789 => Backspace => -$12_345_678, then Backspace x2 => -$123_456', async () => {
-                    await inputNumber.textfield.pressSequentially('-123456789');
-                    await expect(inputNumber.textfield).toHaveValue('−$123_456_789');
-                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.input.pressSequentially('-123456789');
+                    await expect(inputNumber.input).toHaveValue('−$123_456_789');
+                    await inputNumber.input.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$12_345_678');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$12_345_678');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$12_345_678'.length,
                     );
 
-                    await inputNumber.textfield.press('Backspace');
-                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.input.press('Backspace');
+                    await inputNumber.input.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$123_456');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$123_456');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$123_456'.length,
                     );
                 });
 
                 test('-$|1_234 => Delete => -$|234', async ({page}) => {
-                    await inputNumber.textfield.pressSequentially('-1234');
+                    await inputNumber.input.pressSequentially('-1234');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$1_234');
+                    await expect(inputNumber.input).toHaveValue('−$1_234');
 
                     for (let i = 0; i < '−$1_234'.length; i++) {
                         await page.keyboard.press('ArrowLeft', {delay: i});
                     }
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        0,
-                    );
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 0);
                     await page.keyboard.press('ArrowRight');
                     await page.keyboard.press('ArrowRight');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
-                    await inputNumber.textfield.press('Delete');
+                    await inputNumber.input.press('Delete');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$234');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$234');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
                 });
 
                 test('-$1_2|34 => Backspace => -$1|34', async () => {
-                    await inputNumber.textfield.pressSequentially('-1234');
+                    await inputNumber.input.pressSequentially('-1234');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$1_234');
+                    await expect(inputNumber.input).toHaveValue('−$1_234');
 
-                    await inputNumber.textfield.press('ArrowLeft');
-                    await inputNumber.textfield.press('ArrowLeft');
-                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.input.press('ArrowLeft');
+                    await inputNumber.input.press('ArrowLeft');
+                    await inputNumber.input.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$134');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$134');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$1'.length,
                     );
@@ -1389,28 +1300,28 @@ describe('InputNumber', () => {
                 });
 
                 test('type "-." => "-$0." then type "42" => "-$0.42"', async () => {
-                    await inputNumber.textfield.pressSequentially('-.');
+                    await inputNumber.input.pressSequentially('-.');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$0.');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$0.');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$0.'.length,
                     );
 
-                    await inputNumber.textfield.pressSequentially('42');
+                    await inputNumber.input.pressSequentially('42');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$0.42');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$0.42');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$0.42'.length,
                     );
                 });
 
                 test('[precision] is respected: type "-.12345678" => "-$0.12"', async () => {
-                    await inputNumber.textfield.pressSequentially('-.12345678');
+                    await inputNumber.input.pressSequentially('-.12345678');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$0.12');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$0.12');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$0.12'.length,
                     );
@@ -1426,13 +1337,13 @@ describe('InputNumber', () => {
                 });
 
                 test('type -000005 => blur => -$5', async () => {
-                    await inputNumber.textfield.pressSequentially('-000005');
+                    await inputNumber.input.pressSequentially('-000005');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$000_005');
+                    await expect(inputNumber.input).toHaveValue('−$000_005');
 
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.blur();
 
-                    await expect(inputNumber.textfield).toHaveValue('−$5');
+                    await expect(inputNumber.input).toHaveValue('−$5');
                 });
             });
 
@@ -1440,116 +1351,98 @@ describe('InputNumber', () => {
                 test('Select all + Backspace => everything except non-erasable prefix is removed', async ({
                     page,
                 }) => {
-                    await inputNumber.textfield.pressSequentially('-123');
+                    await inputNumber.input.pressSequentially('-123');
                     await page.keyboard.press(`${CMD}+A`);
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('$');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '$'.length,
                     );
                 });
 
                 test('-$|42 => Backspace => $|42', async ({page}) => {
-                    await inputNumber.textfield.pressSequentially('-42');
+                    await inputNumber.input.pressSequentially('-42');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$42');
+                    await expect(inputNumber.input).toHaveValue('−$42');
 
                     await page.keyboard.press('ArrowLeft');
                     await page.keyboard.press('ArrowLeft');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
 
-                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.input.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('$42');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$42');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
                 });
 
                 test('$|42 => Backspace x5 => $|42 (prefix is non-removable)', async ({
                     page,
                 }) => {
-                    await inputNumber.textfield.pressSequentially('42');
+                    await inputNumber.input.pressSequentially('42');
 
-                    await expect(inputNumber.textfield).toHaveValue('$42');
+                    await expect(inputNumber.input).toHaveValue('$42');
 
                     await page.keyboard.press(`${CMD}+ArrowLeft`);
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
 
                     for (let i = 0; i < 5; i++) {
-                        await inputNumber.textfield.press('Backspace');
+                        await inputNumber.input.press('Backspace');
                     }
 
-                    await expect(inputNumber.textfield).toHaveValue('$42');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$42');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
                 });
 
                 test('$| => Backspace x5 => $| (empty input with prefix is stable)', async () => {
-                    await inputNumber.textfield.focus();
+                    await inputNumber.input.focus();
 
-                    await expect(inputNumber.textfield).toHaveValue('$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
 
                     for (let i = 0; i < 5; i++) {
-                        await inputNumber.textfield.press('Backspace');
+                        await inputNumber.input.press('Backspace');
                     }
 
-                    await expect(inputNumber.textfield).toHaveValue('$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
                 });
 
                 test('-$| => Backspace => $|', async () => {
-                    await inputNumber.textfield.focus();
-                    await inputNumber.textfield.pressSequentially('-');
+                    await inputNumber.input.focus();
+                    await inputNumber.input.pressSequentially('-');
 
-                    await expect(inputNumber.textfield).toHaveValue('−$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveValue('−$');
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '-$'.length,
                     );
 
-                    await inputNumber.textfield.press('Backspace');
+                    await inputNumber.input.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveValue('$');
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
+                    await expect(inputNumber.input).toHaveValue('$');
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
                 });
             });
 
             test('-$42 => ArrowLeft x3 => allows to put caret before prefix (e.g. user wants to erase minus)', async ({
                 page,
             }) => {
-                await inputNumber.textfield.pressSequentially('-42');
+                await inputNumber.input.pressSequentially('-42');
 
-                await expect(inputNumber.textfield).toHaveValue('−$42');
+                await expect(inputNumber.input).toHaveValue('−$42');
 
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('ArrowLeft');
 
-                await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 1);
+                await expect(inputNumber.input).toHaveJSProperty('selectionStart', 1);
             });
         });
 
@@ -1561,37 +1454,37 @@ describe('InputNumber', () => {
                         `${DemoRoute.InputNumber}/API?decimalMode=always&precision=2`,
                     );
 
-                    await inputNumber.textfield.clear();
-                    await inputNumber.textfield.fill('105.00');
+                    await inputNumber.input.clear();
+                    await inputNumber.input.fill('105.00');
                 });
 
                 test('105.00| => Backspace => 105.0|0', async ({page}) => {
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '105.0'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '105.0'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('105.00');
+                    await expect(inputNumber.input).toHaveValue('105.00');
                 });
 
                 test('105.0|0 => Backspace => 105.|00', async ({page}) => {
                     await page.keyboard.press('ArrowLeft');
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '105.'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '105.'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('105.00');
+                    await expect(inputNumber.input).toHaveValue('105.00');
                 });
 
                 test('105.|00 => Backspace => 105|.00', async ({page}) => {
@@ -1599,15 +1492,15 @@ describe('InputNumber', () => {
                     await page.keyboard.press('ArrowLeft');
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '105'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '105'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('105.00');
+                    await expect(inputNumber.input).toHaveValue('105.00');
                 });
 
                 test('105.|00 => Delete => 105.0|0', async ({page}) => {
@@ -1615,15 +1508,15 @@ describe('InputNumber', () => {
                     await page.keyboard.press('ArrowLeft');
                     await page.keyboard.press('Delete');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '105.0'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '105.0'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('105.00');
+                    await expect(inputNumber.input).toHaveValue('105.00');
                 });
             });
 
@@ -1634,68 +1527,56 @@ describe('InputNumber', () => {
                         `${DemoRoute.InputNumber}/API?decimalMode=not-zero`,
                     );
 
-                    await inputNumber.textfield.fill('1000');
+                    await inputNumber.input.fill('1000');
                 });
 
                 test('1| 000 => Delete => 1 |000', async ({page}) => {
-                    const {length} = await inputNumber.textfield.inputValue();
+                    const {length} = await inputNumber.input.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');
                     }
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        0,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        0,
-                    );
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 0);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 0);
 
                     await page.keyboard.press('ArrowRight');
                     await page.keyboard.press('Delete');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '1 '.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '1 '.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('1 000');
+                    await expect(inputNumber.input).toHaveValue('1 000');
                 });
 
                 test('1 |000 => Backspace => 1| 000', async ({page}) => {
-                    const {length} = await inputNumber.textfield.inputValue();
+                    const {length} = await inputNumber.input.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');
                     }
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        0,
-                    );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
-                        'selectionEnd',
-                        0,
-                    );
+                    await expect(inputNumber.input).toHaveJSProperty('selectionStart', 0);
+                    await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 0);
 
                     await page.keyboard.press('ArrowRight');
                     await page.keyboard.press('ArrowRight');
                     await page.keyboard.press('Backspace');
 
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionStart',
                         '1'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveJSProperty(
+                    await expect(inputNumber.input).toHaveJSProperty(
                         'selectionEnd',
                         '1'.length,
                     );
-                    await expect(inputNumber.textfield).toHaveValue('1 000');
+                    await expect(inputNumber.input).toHaveValue('1 000');
                 });
             });
         });
@@ -1710,14 +1591,14 @@ describe('InputNumber', () => {
                         `${DemoRoute.InputNumber}/API?tuiTextfieldSize=${size}`,
                     );
 
-                    await expect(inputNumber.textfield).toHaveValue('');
+                    await expect(inputNumber.input).toHaveValue('');
                     await expect
                         .soft(example)
                         .toHaveScreenshot(
                             `input-number-unfocused-empty-size-${size}.png`,
                         );
 
-                    await inputNumber.textfield.focus();
+                    await inputNumber.input.focus();
 
                     await expect
                         .soft(example)
@@ -1730,16 +1611,16 @@ describe('InputNumber', () => {
                         `${DemoRoute.InputNumber}/API?precision=2&tuiTextfieldSize=${size}`,
                     );
 
-                    await inputNumber.textfield.fill('12.34');
+                    await inputNumber.input.fill('12.34');
 
-                    await expect(inputNumber.textfield).toHaveValue('12.34');
+                    await expect(inputNumber.input).toHaveValue('12.34');
                     await expect
                         .soft(example)
                         .toHaveScreenshot(
                             `input-number-focused-with-value-size-${size}.png`,
                         );
 
-                    await inputNumber.textfield.blur();
+                    await inputNumber.input.blur();
 
                     await expect
                         .soft(example)
@@ -1755,36 +1636,36 @@ describe('InputNumber', () => {
                 page,
                 `${DemoRoute.InputNumber}/API?thousandSeparator=_&precision=2`,
             );
-            await inputNumber.textfield.focus();
-            await inputNumber.textfield.clear();
-            await inputNumber.textfield.pressSequentially('123456789012345.6789');
+            await inputNumber.input.focus();
+            await inputNumber.input.clear();
+            await inputNumber.input.pressSequentially('123456789012345.6789');
 
-            await expect(inputNumber.textfield).toHaveValue('123_456_789_012_345.67');
+            await expect(inputNumber.input).toHaveValue('123_456_789_012_345.67');
 
-            await inputNumber.textfield.blur();
+            await inputNumber.input.blur();
 
-            await expect(inputNumber.textfield).toHaveValue('123_456_789_012_345.67');
+            await expect(inputNumber.input).toHaveValue('123_456_789_012_345.67');
         });
 
         test('updates control value on minus insertion', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputNumber}/API?sandboxExpanded=true`);
 
-            await inputNumber.textfield.focus();
-            await inputNumber.textfield.pressSequentially('42');
-            await expect(inputNumber.textfield).toHaveValue('42');
+            await inputNumber.input.focus();
+            await inputNumber.input.pressSequentially('42');
+            await expect(inputNumber.input).toHaveValue('42');
             await expect(value).toContainText('"value": 42');
 
-            await inputNumber.textfield.press('ArrowLeft');
-            await inputNumber.textfield.press('ArrowLeft');
-            await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 0);
-            await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 0);
+            await inputNumber.input.press('ArrowLeft');
+            await inputNumber.input.press('ArrowLeft');
+            await expect(inputNumber.input).toHaveJSProperty('selectionStart', 0);
+            await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 0);
 
-            await inputNumber.textfield.pressSequentially('-');
-            await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}42`);
+            await inputNumber.input.pressSequentially('-');
+            await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}42`);
             await expect(value).toContainText('"value": -42');
 
-            await inputNumber.textfield.blur();
-            await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}42`);
+            await inputNumber.input.blur();
+            await expect(inputNumber.input).toHaveValue(`${CHAR_MINUS}42`);
             await expect(value).toContainText('"value": -42');
         });
 
@@ -1794,21 +1675,21 @@ describe('InputNumber', () => {
                 `${DemoRoute.InputNumber}/API?precision=2&sandboxExpanded=true`,
             );
 
-            await inputNumber.textfield.focus();
-            await inputNumber.textfield.pressSequentially('123');
-            await expect(inputNumber.textfield).toHaveValue('123');
+            await inputNumber.input.focus();
+            await inputNumber.input.pressSequentially('123');
+            await expect(inputNumber.input).toHaveValue('123');
             await expect(value).toContainText('"value": 123');
 
-            await inputNumber.textfield.press('ArrowLeft');
-            await expect(inputNumber.textfield).toHaveJSProperty('selectionStart', 2);
-            await expect(inputNumber.textfield).toHaveJSProperty('selectionEnd', 2);
+            await inputNumber.input.press('ArrowLeft');
+            await expect(inputNumber.input).toHaveJSProperty('selectionStart', 2);
+            await expect(inputNumber.input).toHaveJSProperty('selectionEnd', 2);
 
-            await inputNumber.textfield.pressSequentially('.');
-            await expect(inputNumber.textfield).toHaveValue('12.3');
+            await inputNumber.input.pressSequentially('.');
+            await expect(inputNumber.input).toHaveValue('12.3');
             await expect(value).toContainText('"value": 12.3');
 
-            await inputNumber.textfield.blur();
-            await expect(inputNumber.textfield).toHaveValue('12.30');
+            await inputNumber.input.blur();
+            await expect(inputNumber.input).toHaveValue('12.30');
             await expect(value).toContainText('"value": 12.3');
         });
     });
