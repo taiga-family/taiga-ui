@@ -2,6 +2,8 @@
 
 - **Package**: `KIT`
 
+Dialog content uses the element injector by default, preserving providers from parent components and the current `ActivatedRoute` . To access route-scoped providers, pass `injector: EnvironmentInjector` in the options of `tuiRouteDialog` .
+
 ### Usage Examples
 
 #### Lazy loading dialog
