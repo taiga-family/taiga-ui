@@ -1,18 +1,22 @@
 import {Injectable, signal} from '@angular/core';
 
-import {type TuiDocAPIItem} from './api-item.component';
+export interface TuiDocApiCopyEntry {
+    name: () => string;
+    type: () => string;
+    value: () => unknown;
+}
 
 @Injectable()
 export class TuiDocApiCopyRegistry {
-    private readonly items: TuiDocAPIItem<unknown>[] = [];
+    private readonly items: TuiDocApiCopyEntry[] = [];
     private readonly revision = signal(0);
 
-    public register(item: TuiDocAPIItem<unknown>): void {
+    public register(item: TuiDocApiCopyEntry): void {
         this.items.push(item);
         this.revision.update((value) => value + 1);
     }
 
-    public unregister(item: TuiDocAPIItem<unknown>): void {
+    public unregister(item: TuiDocApiCopyEntry): void {
         const index = this.items.indexOf(item);
 
         if (index >= 0) {
@@ -21,7 +25,7 @@ export class TuiDocApiCopyRegistry {
         }
     }
 
-    public snapshot(): readonly TuiDocAPIItem<unknown>[] {
+    public snapshot(): readonly TuiDocApiCopyEntry[] {
         this.revision();
 
         return this.items;
