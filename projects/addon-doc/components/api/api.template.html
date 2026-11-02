@@ -1,0 +1,26 @@
+<thead>
+    <tr>
+        <ng-content select="th" />
+    </tr>
+</thead>
+<tbody><ng-content /></tbody>
+<ng-content select="tbody" />
+@if (copyTag()) {
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <button
+                    appearance="secondary-grayscale"
+                    size="s"
+                    tuiButton
+                    type="button"
+                    class="t-copy-configuration"
+                    [iconStart]="copied() ? '@tui.check' : '@tui.copy'"
+                    (click)="copyConfiguration()"
+                >
+                    {{ copied() ? copyDoneLabel() : copyLabel() }}
+                </button>
+            </td>
+        </tr>
+    </tfoot>
+}
