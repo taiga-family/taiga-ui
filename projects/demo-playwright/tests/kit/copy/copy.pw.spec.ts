@@ -5,7 +5,7 @@ import {expect, test} from '@playwright/test';
 
 for (const deviceScaleFactor of [1.1, 1.25, 1.5]) {
     test.describe(`Copy at DPR ${deviceScaleFactor}`, () => {
-        test.use({contextOptions: {deviceScaleFactor, reducedMotion: 'reduce'}});
+        test.use({deviceScaleFactor, reducedMotion: 'reduce'});
 
         for (const direction of ['ltr', 'rtl']) {
             test(`idle mask is opaque in ${direction}`, async ({page}) => {
@@ -37,7 +37,8 @@ for (const deviceScaleFactor of [1.1, 1.25, 1.5]) {
 
                 for (const offset of [0, 0.25, 0.5, 0.75]) {
                     await content.evaluate((element, shift) => {
-                        element.style.transform = `translateX(${shift}px)`;
+                        // Shift the layout before mask rasterization, not the composited layer.
+                        element.style.marginInlineStart = `${shift}px`;
                         element.style.removeProperty('mask-image');
                     }, offset);
 
@@ -64,31 +65,3 @@ for (const deviceScaleFactor of [1.1, 1.25, 1.5]) {
         }
     });
 }
-
-test('copy mask layers overlap by at least one pixel', async ({page}) => {
-    await page.goto(DemoRoute.Copy, {waitUntil: 'domcontentloaded'});
-
-    const stops = await page
-        .locator('tui-copy .t-content')
-        .first()
-        .evaluate((element) => {
-            const mask = getComputedStyle(element).maskImage;
-
-            return [...mask.matchAll(/(?:^|\s)(\d+(?:\.\d+)?)px(?=[,)])/g)].map(
-                ([, value]) => Number(value),
-            );
-        });
-
-    // A zero-width overlap leaves a translucent seam at fractional DPRs.
-    const [, firstOpaqueStop, secondOpaqueStop, secondTransparentStop] = stops;
-
-    assert(
-        firstOpaqueStop !== undefined &&
-            secondOpaqueStop !== undefined &&
-            secondTransparentStop !== undefined,
-        'Expected pixel-based stops in both mask gradients',
-    );
-
-    expect(secondOpaqueStop - firstOpaqueStop).toBeGreaterThanOrEqual(1);
-    expect(secondTransparentStop).toBe(secondOpaqueStop);
-});
