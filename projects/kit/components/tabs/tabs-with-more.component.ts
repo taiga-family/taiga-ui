@@ -65,8 +65,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     protected readonly sync = effect(() => {
         const items = this.items();
         const index = this.activeItemIndex();
-        const moved = items.findIndex((item) => item === this.prevItem);
-        const current = index === this.prevIndex && moved >= 0 ? moved : index;
+        const prevItemIndex = items.findIndex((item) => item === this.prevItem);
+        const current =
+            index === this.prevIndex && prevItemIndex >= 0 ? prevItemIndex : index;
 
         this.prevIndex = current;
         this.prevItem = items[current];
