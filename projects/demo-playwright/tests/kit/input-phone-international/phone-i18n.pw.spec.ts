@@ -28,9 +28,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
 
             example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
-            inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                example.locator('tui-textfield:has([tuiInputPhoneInternational])'),
-            );
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(page, example);
         });
 
         test('opens mobile dropdown on select click', async ({page}) => {
@@ -58,11 +56,11 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
                 .locator(TUI_TEXTFIELD_LOCATORS.INPUT)
                 .fill('aust');
 
-            const options = await inputPhoneInternational.getOptions();
-
-            expect(options).toHaveLength(2);
-            await expect(options.at(0)!).toContainText('Australia');
-            await expect(options.at(1)!).toContainText('Austria');
+            await expect(inputPhoneInternational.options).toHaveCount(2);
+            await expect(inputPhoneInternational.options.nth(0)).toContainText(
+                'Australia',
+            );
+            await expect(inputPhoneInternational.options.nth(1)).toContainText('Austria');
         });
     });
 
@@ -75,9 +73,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
             example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
-            inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                example.locator('tui-textfield:has([tuiInputPhoneInternational])'),
-            );
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(page, example);
         });
 
         test('textfield inside dropdown IS focused on dropdown open', async () => {
@@ -94,15 +90,14 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             const example = new TuiDocumentationPagePO(page).demo;
 
             const inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
+                page,
+                example,
             );
 
-            await inputPhoneInternational.textfield.focus();
-            await inputPhoneInternational.textfield.fill('9991122333');
+            await inputPhoneInternational.input.focus();
+            await inputPhoneInternational.input.fill('9991122333');
 
-            await expect(inputPhoneInternational.textfield).toHaveValue(
-                '+7 999 112-23-33',
-            );
+            await expect(inputPhoneInternational.input).toHaveValue('+7 999 112-23-33');
         });
 
         test('readonly', async ({page}) => {
@@ -110,7 +105,8 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             const example = new TuiDocumentationPagePO(page).demo;
 
             const inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                example.locator('input[tuiInputPhoneInternational]'),
+                page,
+                example,
             );
 
             await expect(async () => {

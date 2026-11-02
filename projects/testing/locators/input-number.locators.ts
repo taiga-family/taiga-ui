@@ -1,3 +1,6 @@
+import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
+
 export const TUI_INPUT_NUMBER_LOCATORS = {
-    HOST: 'tui-input-number',
+    ...TUI_TEXTFIELD_LOCATORS,
+    INPUT: '[tuiInputNumber]',
 } as const;

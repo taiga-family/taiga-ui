@@ -1,5 +1,6 @@
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {type DocRoutePageGroup, pages} from '../../../demo/src/pages/app/pages';
 
@@ -35,7 +36,9 @@ test.describe('Inputs - updateOn', () => {
 
                 select = demo.getByTestId('tui-demo-select__expand-update-on');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
-                option = page.locator('tui-data-list [tuiOption]');
+                option = page
+                    .locator('tui-data-list')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION);
                 input = demo.locator('input:not([readonly]):not(:disabled)').first();
             });
 

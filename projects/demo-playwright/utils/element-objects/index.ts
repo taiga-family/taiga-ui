@@ -21,5 +21,6 @@ export * from './range.eo';
 export * from './select.eo';
 export * from './slider.eo';
 export * from './tabs.eo';
+export * from './tabs-with-more.eo';
 export * from './textfield.eo';
 export * from './textfield-with-data-list.eo';

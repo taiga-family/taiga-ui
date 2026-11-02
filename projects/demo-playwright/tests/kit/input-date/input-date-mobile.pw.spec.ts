@@ -22,12 +22,10 @@ test.describe('InputDate and mobile user agent', () => {
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-calendar-sheet__cell"]';
 
-        const inputDate = new TuiInputDateEO(
-            example.locator('tui-textfield:has(input[tuiInputDate])').nth(1),
-        );
+        const inputDate = new TuiInputDateEO(page, example, '', 1);
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.textfield.first().click({position: {x: 300, y: 20}, force: true});
+        await inputDate.input.nth(0).click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector(TUI_SHEET_DIALOG_LOCATORS.HOST, {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
@@ -46,12 +44,10 @@ test.describe('InputDate and mobile user agent', () => {
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
 
-        const inputDate = new TuiInputDateEO(
-            example.locator('tui-textfield:has(input[tuiInputDate])').nth(2),
-        );
+        const inputDate = new TuiInputDateEO(page, example);
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.textfield.first().click({position: {x: 300, y: 20}, force: true});
+        await inputDate.input.nth(2).click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector('tui-mobile-calendar-sheet', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
@@ -71,9 +67,7 @@ test.describe('InputDate and mobile user agent', () => {
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDate);
             example = new TuiDocumentationPagePO(page).getExample('#mobile');
-            inputDate = new TuiInputDateEO(
-                example.locator('tui-textfield:has([tuiInputDate])'),
-            );
+            inputDate = new TuiInputDateEO(page, example);
         });
 
         test('is clickable', async () => {

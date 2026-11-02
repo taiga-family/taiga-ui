@@ -19,6 +19,7 @@ test.describe('InputPhone', () => {
             example = new TuiDocumentationPagePO(page).demo;
             value = new TuiDocumentationPagePO(page).value;
             inputPhone = new TuiInputPhoneEO(
+                page,
                 example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first(),
             );
         });

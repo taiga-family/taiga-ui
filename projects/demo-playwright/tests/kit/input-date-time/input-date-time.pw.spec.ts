@@ -24,14 +24,12 @@ test.describe('InputDateTime', () => {
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
-            inputDateTime = new TuiInputDateTimeEO(
-                example.locator('tui-textfield:has([tuiInputDateTime])'),
-            );
+            inputDateTime = new TuiInputDateTimeEO(page, example);
         });
 
         test('Maximum month less than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=0`);
-            await inputDateTime.textfield.click();
+            await inputDateTime.input.click();
 
             await documentationPage.prepareBeforeScreenshot();
 
@@ -40,7 +38,7 @@ test.describe('InputDateTime', () => {
 
         test('Minimum month more than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=1`);
-            await inputDateTime.textfield.click();
+            await inputDateTime.input.click();
 
             await documentationPage.prepareBeforeScreenshot();
 
@@ -55,35 +53,35 @@ test.describe('InputDateTime', () => {
 
             const maxValue = '02.12.2025, 12:34';
 
-            await inputDateTime.textfield.fill(maxValue);
+            await inputDateTime.input.fill(maxValue);
 
-            await expect(inputDateTime.textfield).toHaveValue(maxValue);
+            await expect(inputDateTime.input).toHaveValue(maxValue);
 
-            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.12.2025, 12:3|4|
-            await inputDateTime.textfield.pressSequentially('5');
+            await inputDateTime.input.press('Shift+ArrowLeft'); // 02.12.2025, 12:3|4|
+            await inputDateTime.input.pressSequentially('5');
 
-            await expect(inputDateTime.textfield).toHaveValue(maxValue);
+            await expect(inputDateTime.input).toHaveValue(maxValue);
 
             // valid case
-            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2025, 12|:34
-            await inputDateTime.textfield.press('Shift+ArrowLeft');
-            await inputDateTime.textfield.pressSequentially('1');
+            await inputDateTime.input.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2025, 12|:34
+            await inputDateTime.input.press('Shift+ArrowLeft');
+            await inputDateTime.input.pressSequentially('1');
 
-            await expect(inputDateTime.textfield).toHaveValue('02.12.2025, 11:34');
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveValue('02.12.2025, 11:34');
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionStart',
                 '02.11.2018, 11:'.length,
             );
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionEnd',
                 '02.11.2018, 11:'.length,
             );
 
             // invalid case
-            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2025, 1|2:|34
-            await inputDateTime.textfield.pressSequentially('9');
+            await inputDateTime.input.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2025, 1|2:|34
+            await inputDateTime.input.pressSequentially('9');
 
-            await expect(inputDateTime.textfield).toHaveValue(maxValue);
+            await expect(inputDateTime.input).toHaveValue(maxValue);
         });
 
         test('[min] property cannot be bypassed via selection', async ({page}) => {
@@ -94,44 +92,44 @@ test.describe('InputDateTime', () => {
 
             const minValue = '02.11.2018, 12:34';
 
-            await inputDateTime.textfield.focus();
-            await inputDateTime.textfield.fill(minValue);
+            await inputDateTime.input.focus();
+            await inputDateTime.input.fill(minValue);
 
-            await expect(inputDateTime.textfield).toHaveValue(minValue);
+            await expect(inputDateTime.input).toHaveValue(minValue);
 
-            await inputDateTime.textfield.press('ArrowLeft+Shift+ArrowLeft'); // 02.11.2018, 12:|3|4
-            await inputDateTime.textfield.press('1');
+            await inputDateTime.input.press('ArrowLeft+Shift+ArrowLeft'); // 02.11.2018, 12:|3|4
+            await inputDateTime.input.press('1');
 
-            await expect(inputDateTime.textfield).toHaveValue(minValue);
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveValue(minValue);
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionStart',
                 '02.11.2018, 12:3'.length,
             );
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionEnd',
                 '02.11.2018, 12:3'.length,
             );
 
             // valid case
-            await inputDateTime.textfield.press('ArrowLeft+ArrowLeft'); // 02.11.2018, 12|:34
-            await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.11.2018, 1|2|:34
-            await inputDateTime.textfield.press('5');
+            await inputDateTime.input.press('ArrowLeft+ArrowLeft'); // 02.11.2018, 12|:34
+            await inputDateTime.input.press('Shift+ArrowLeft'); // 02.11.2018, 1|2|:34
+            await inputDateTime.input.press('5');
 
-            await expect(inputDateTime.textfield).toHaveValue('02.11.2018, 15:34');
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveValue('02.11.2018, 15:34');
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionStart',
                 '02.11.2018, 15:'.length,
             );
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionEnd',
                 '02.11.2018, 15:'.length,
             );
 
             // invalid case
-            await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|5:|34
-            await inputDateTime.textfield.press('1');
+            await inputDateTime.input.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|5:|34
+            await inputDateTime.input.press('1');
 
-            await expect(inputDateTime.textfield).toHaveValue(minValue);
+            await expect(inputDateTime.input).toHaveValue(minValue);
         });
 
         test('should place caret before time after selection of a new date via calendar', async ({
@@ -139,27 +137,27 @@ test.describe('InputDateTime', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
 
-            await inputDateTime.textfield.pressSequentially('191120181235');
+            await inputDateTime.input.pressSequentially('191120181235');
 
-            await expect(inputDateTime.textfield).toHaveValue('19.11.2018, 12:35');
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveValue('19.11.2018, 12:35');
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionStart',
                 '19.11.2018, 12:35'.length,
             );
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionEnd',
                 '19.11.2018, 12:35'.length,
             );
 
-            await inputDateTime.textfield.click();
+            await inputDateTime.input.click();
             await inputDateTime.selectDayViaCalendar(15);
 
-            await expect(inputDateTime.textfield).toHaveValue('15.11.2018, 12:35');
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveValue('15.11.2018, 12:35');
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionStart',
                 '15.11.2018, '.length,
             );
-            await expect(inputDateTime.textfield).toHaveJSProperty(
+            await expect(inputDateTime.input).toHaveJSProperty(
                 'selectionEnd',
                 '15.11.2018, '.length,
             );
@@ -167,7 +165,7 @@ test.describe('InputDateTime', () => {
 
         test('change filler on dynamic change of [timeMode] prop', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM`);
-            await inputDateTime.textfield.focus();
+            await inputDateTime.input.focus();
 
             await expect
                 .soft(inputDateTime.host)
@@ -176,6 +174,7 @@ test.describe('InputDateTime', () => {
             const timeModeRow = documentationPage.getRow('[timeMode]');
 
             const timeModeSelect = new TuiSelectEO(
+                page,
                 (await documentationPage.getSelect(timeModeRow))!,
             );
 
@@ -186,7 +185,7 @@ test.describe('InputDateTime', () => {
                 timeModeRow.locator('tui-textfield').getByRole('combobox'),
             ).toHaveValue('HH:MM:SS');
 
-            await inputDateTime.textfield.focus();
+            await inputDateTime.input.focus();
 
             await expect
                 .soft(inputDateTime.host)
@@ -199,7 +198,7 @@ test.describe('InputDateTime', () => {
                 timeModeRow.locator('tui-textfield').getByRole('combobox'),
             ).toHaveValue('HH:MM:SS.MSS');
 
-            await inputDateTime.textfield.focus();
+            await inputDateTime.input.focus();
 
             await expect
                 .soft(inputDateTime.host)
@@ -210,30 +209,30 @@ test.describe('InputDateTime', () => {
         test.skip('should time to pre-fill with zeros on blur', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM:SS.MSS`);
 
-            await inputDateTime.textfield.fill('07.06.2024, 23:59:59.');
-            await inputDateTime.textfield.blur();
+            await inputDateTime.input.fill('07.06.2024, 23:59:59.');
+            await inputDateTime.input.blur();
 
-            await expect(inputDateTime.textfield).toHaveValue('07.06.2024, 23:59:00.000');
+            await expect(inputDateTime.input).toHaveValue('07.06.2024, 23:59:00.000');
         });
 
         test.describe('AM / PM', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM%20AA`);
-                await inputDateTime.textfield.pressSequentially('2092020');
+                await inputDateTime.input.pressSequentially('2092020');
 
-                await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
+                await expect(inputDateTime.input).toHaveValue('20.09.2020');
             });
 
             test('330a => 03:30 AM', async () => {
-                await inputDateTime.textfield.pressSequentially('330a');
+                await inputDateTime.input.pressSequentially('330a');
 
-                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 AM');
+                await expect(inputDateTime.input).toHaveValue('20.09.2020, 03:30 AM');
             });
 
             test('330p => 03:30 PM', async () => {
-                await inputDateTime.textfield.pressSequentially('330p');
+                await inputDateTime.input.pressSequentially('330p');
 
-                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 PM');
+                await expect(inputDateTime.input).toHaveValue('20.09.2020, 03:30 PM');
             });
         });
 
@@ -248,15 +247,15 @@ test.describe('InputDateTime', () => {
                         page,
                         `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=2&sandboxExpanded=true`,
                     );
-                    await inputDateTime.textfield.pressSequentially('2092020');
+                    await inputDateTime.input.pressSequentially('2092020');
 
-                    await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
+                    await expect(inputDateTime.input).toHaveValue('20.09.2020');
                 });
 
                 test('330a => 03:30 a.m.', async () => {
-                    await inputDateTime.textfield.pressSequentially('330a');
+                    await inputDateTime.input.pressSequentially('330a');
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 03:30 a.m.',
                     );
                     await expect(documentationPage.value).toContainText(
@@ -268,9 +267,9 @@ test.describe('InputDateTime', () => {
                 });
 
                 test('330p => 03:30 p.m.', async () => {
-                    await inputDateTime.textfield.pressSequentially('330p');
+                    await inputDateTime.input.pressSequentially('330p');
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 03:30 p.m.',
                     );
                     await expect(documentationPage.value).toContainText(
@@ -282,19 +281,17 @@ test.describe('InputDateTime', () => {
                 });
 
                 test('control value is null until day period is typed', async () => {
-                    await inputDateTime.textfield.pressSequentially('0330');
+                    await inputDateTime.input.pressSequentially('0330');
 
-                    await expect(inputDateTime.textfield).toHaveValue(
-                        '20.09.2020, 03:30',
-                    );
+                    await expect(inputDateTime.input).toHaveValue('20.09.2020, 03:30');
                     await expect(documentationPage.value).toContainText('"value": null');
                 });
 
                 test('Type 0 => Blur => 12:00 a.m.', async () => {
-                    await inputDateTime.textfield.pressSequentially('0');
-                    await inputDateTime.textfield.blur();
+                    await inputDateTime.input.pressSequentially('0');
+                    await inputDateTime.input.blur();
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 12:00 a.m.',
                     );
                 });
@@ -306,11 +303,9 @@ test.describe('InputDateTime', () => {
                     `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&dayPeriod$=3&sandboxExpanded=true`,
                 );
 
-                await inputDateTime.textfield.pressSequentially('2092020330μ');
+                await inputDateTime.input.pressSequentially('2092020330μ');
 
-                await expect(inputDateTime.textfield).toHaveValue(
-                    '20.09.2020, 03:30 μ.μ.',
-                );
+                await expect(inputDateTime.input).toHaveValue('20.09.2020, 03:30 μ.μ.');
                 await expect(documentationPage.value).toContainText(
                     stringify([
                         '2020-09-20',
@@ -334,9 +329,9 @@ test.describe('InputDateTime', () => {
                 });
 
                 test('20092020180505766 => 20.09.2020, 18 h 05 min 05,766', async () => {
-                    await inputDateTime.textfield.pressSequentially('20092020180505766');
+                    await inputDateTime.input.pressSequentially('20092020180505766');
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 18 h 05 min 05,766',
                     );
                     await expect(documentationPage.value).toContainText(
@@ -348,30 +343,30 @@ test.describe('InputDateTime', () => {
                 });
 
                 test('control value is null until time is complete', async () => {
-                    await inputDateTime.textfield.pressSequentially('200920201805057');
+                    await inputDateTime.input.pressSequentially('200920201805057');
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 18 h 05 min 05,7',
                     );
                     await expect(documentationPage.value).toContainText('"value": null');
                 });
 
                 test('selection of a new date via calendar keeps time format', async () => {
-                    await inputDateTime.textfield.pressSequentially('20092020180505766');
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await inputDateTime.input.pressSequentially('20092020180505766');
+                    await expect(inputDateTime.input).toHaveValue(
                         '20.09.2020, 18 h 05 min 05,766',
                     );
 
-                    await inputDateTime.textfield.click();
+                    await inputDateTime.input.click();
                     await inputDateTime.selectDayViaCalendar(15);
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         '15.09.2020, 18 h 05 min 05,766',
                     );
                 });
 
                 test('filler', async () => {
-                    await inputDateTime.textfield.focus();
+                    await inputDateTime.input.focus();
 
                     await expect(inputDateTime.filler).toHaveValue(
                         'DD.MM.YYYY, HH h MM min SS,MSS',
@@ -388,10 +383,10 @@ test.describe('InputDateTime', () => {
                     `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=3`,
                 );
 
-                await inputDateTime.textfield.pressSequentially('20.09.2020, 1');
-                await inputDateTime.textfield.blur();
+                await inputDateTime.input.pressSequentially('20.09.2020, 1');
+                await inputDateTime.input.blur();
 
-                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 01 h 00');
+                await expect(inputDateTime.input).toHaveValue('20.09.2020, 01 h 00');
             });
 
             test('with [dayPeriod]: 330p => 03h30 p.m.', async ({page}) => {
@@ -400,11 +395,9 @@ test.describe('InputDateTime', () => {
                     `${DemoRoute.InputDateTime}/API?timeMode=HH:MM&separators$=1&dayPeriod$=2&sandboxExpanded=true`,
                 );
 
-                await inputDateTime.textfield.pressSequentially('2092020330p');
+                await inputDateTime.input.pressSequentially('2092020330p');
 
-                await expect(inputDateTime.textfield).toHaveValue(
-                    '20.09.2020, 03h30 p.m.',
-                );
+                await expect(inputDateTime.input).toHaveValue('20.09.2020, 03h30 p.m.');
                 await expect(documentationPage.value).toContainText(
                     stringify([
                         '2020-09-20',
@@ -417,14 +410,14 @@ test.describe('InputDateTime', () => {
         test.describe('zero padding on blur', () => {
             const check = (typedCharacters: string, expectedFinalValue: string): void => {
                 test(`Type ${typedCharacters} => Blur => ${expectedFinalValue}`, async () => {
-                    await expect(inputDateTime.textfield).toHaveValue('');
+                    await expect(inputDateTime.input).toHaveValue('');
 
-                    await inputDateTime.textfield.pressSequentially(
+                    await inputDateTime.input.pressSequentially(
                         `20.09.2020, ${typedCharacters}`,
                     );
-                    await inputDateTime.textfield.blur();
+                    await inputDateTime.input.blur();
 
-                    await expect(inputDateTime.textfield).toHaveValue(
+                    await expect(inputDateTime.input).toHaveValue(
                         `20.09.2020, ${expectedFinalValue}`,
                     );
                 });
@@ -508,36 +501,34 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                inputDateTime = new TuiInputDateTimeEO(
-                    demo.locator('tui-textfield:has([tuiInputDateTime])'),
-                );
+                inputDateTime = new TuiInputDateTimeEO(page, demo);
 
                 await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
             });
 
             test('does not accept day > 31', async () => {
-                await inputDateTime.textfield.pressSequentially('32');
+                await inputDateTime.input.pressSequentially('32');
 
-                await expect(inputDateTime.textfield).toHaveValue('03.02');
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveValue('03.02');
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionStart',
                     '03.02'.length,
                 );
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionEnd',
                     '03.02'.length,
                 );
             });
 
             test('does not accept month > 12', async () => {
-                await inputDateTime.textfield.pressSequentially('2413');
+                await inputDateTime.input.pressSequentially('2413');
 
-                await expect(inputDateTime.textfield).toHaveValue('24.1');
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveValue('24.1');
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionStart',
                     '24.1'.length,
                 );
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionEnd',
                     '24.1'.length,
                 );
@@ -552,37 +543,35 @@ test.describe('InputDateTime', () => {
                     '#date-format',
                 );
 
-                inputDateTime = new TuiInputDateTimeEO(
-                    example.locator('tui-textfield:has(input[tuiInputDateTime])'),
-                );
+                inputDateTime = new TuiInputDateTimeEO(page, example);
 
                 await tuiGoto(page, DemoRoute.InputDateTime);
-                await inputDateTime.textfield.clear();
+                await inputDateTime.input.clear();
             });
 
             test('does not accept day > 31', async () => {
-                await inputDateTime.textfield.pressSequentially('2023/05/35');
+                await inputDateTime.input.pressSequentially('2023/05/35');
 
-                await expect(inputDateTime.textfield).toHaveValue('2023-05-3');
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveValue('2023-05-3');
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionStart',
                     '2023-05-3'.length,
                 );
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionEnd',
                     '2023-05-3'.length,
                 );
             });
 
             test('does not accept month > 12', async () => {
-                await inputDateTime.textfield.pressSequentially('2023-13');
+                await inputDateTime.input.pressSequentially('2023-13');
 
-                await expect(inputDateTime.textfield).toHaveValue('2023-01-3');
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveValue('2023-01-3');
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionStart',
                     '2023-01-3'.length,
                 );
-                await expect(inputDateTime.textfield).toHaveJSProperty(
+                await expect(inputDateTime.input).toHaveJSProperty(
                     'selectionEnd',
                     '2023-01-3'.length,
                 );
@@ -599,16 +588,17 @@ test.describe('InputDateTime', () => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test('With validator: enter incomplete date -> validator error', async () => {
+        test('With validator: enter incomplete date -> validator error', async ({
+            page,
+        }) => {
             const example = documentationPage.getExample('#validation');
 
-            const inputDateTime = new TuiInputDateTimeEO(
-                example.locator('tui-textfield:has(input[tuiInputDateTime])').first(),
-            );
+            const inputDateTime = new TuiInputDateTimeEO(page, example);
+            const input = inputDateTime.input.first();
 
-            await inputDateTime.textfield.clear();
-            await inputDateTime.textfield.fill('11');
-            await inputDateTime.textfield.blur();
+            await input.clear();
+            await input.fill('11');
+            await input.blur();
 
             // allow animations to capture tui-error validation message on screenshot
             await expect
@@ -618,14 +608,12 @@ test.describe('InputDateTime', () => {
                 });
         });
 
-        test('Calendar customization', async () => {
+        test('Calendar customization', async ({page}) => {
             const example = documentationPage.getExample('#calendar-customization');
 
-            const inputDateTime = new TuiInputDateTimeEO(
-                example.locator('tui-textfield:has(input[tuiInputDateTime])'),
-            );
+            const inputDateTime = new TuiInputDateTimeEO(page, example);
 
-            await inputDateTime.textfield.click();
+            await inputDateTime.input.click();
 
             await expect
                 .soft(inputDateTime.calendar)
@@ -640,9 +628,7 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputDateTime);
                 example = new TuiDocumentationPagePO(page).getExample('#mobile');
-                inputDateTime = new TuiInputDateTimeEO(
-                    example.locator('tui-textfield:has([tuiInputDateTime])'),
-                );
+                inputDateTime = new TuiInputDateTimeEO(page, example);
             });
 
             test('native picker is clickable', async () => {

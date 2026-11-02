@@ -1,4 +1,5 @@
 import {expect, type Locator, type Page} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {tuiHideElement, tuiRemoveElement} from '../hide-element';
 import {waitIcons} from '../wait-icons';
@@ -115,7 +116,10 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getOptions(): Promise<Locator[]> {
-        return this.page.locator('tui-data-list-wrapper [tuiOption]').all();
+        return this.page
+            .locator('tui-data-list-wrapper')
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
+            .all();
     }
 
     public async focusOnBody(): Promise<void> {

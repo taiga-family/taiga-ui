@@ -18,9 +18,7 @@ describe('InputMonth', () => {
     describe('API', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputMonth = new TuiInputMonthEO(
-                example.locator('tui-textfield:has([tuiInputMonth])'),
-            );
+            inputMonth = new TuiInputMonthEO(page, example);
         });
 
         describe('dropdown', () => {
@@ -28,7 +26,7 @@ describe('InputMonth', () => {
                 await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=false`);
 
                 await expect(inputMonth.calendar.host).not.toBeAttached();
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).toBeAttached();
             });
 
@@ -36,7 +34,7 @@ describe('InputMonth', () => {
                 await tuiGoto(page, `${DemoRoute.InputMonth}/API?readonly=true`);
 
                 await expect(inputMonth.calendar.host).not.toBeAttached();
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).not.toBeAttached();
             });
 
@@ -45,7 +43,7 @@ describe('InputMonth', () => {
 
                 await expect(inputMonth.calendar.host).not.toBeAttached();
                 // eslint-disable-next-line playwright/no-force-option
-                await inputMonth.textfield.click({force: true});
+                await inputMonth.click({force: true});
                 await expect(inputMonth.calendar.host).not.toBeAttached();
             });
 
@@ -54,16 +52,16 @@ describe('InputMonth', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.InputMonth}/API`);
 
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).toBeAttached();
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).not.toBeAttached();
             });
 
             test('closes on Esc', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputMonth}/API`);
 
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).toBeAttached();
                 await page.keyboard.press('Escape');
                 await expect(inputMonth.calendar.host).not.toBeAttached();
@@ -72,16 +70,16 @@ describe('InputMonth', () => {
             test('opens dropdown after click on textfield cleaner', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputMonth}/API`);
 
-                await inputMonth.textfield.click();
+                await inputMonth.click();
 
-                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar.host);
+                const calendarMonth = new TuiCalendarMonthEO(page);
 
-                await calendarMonth.month.nth(8).click();
-                await expect(inputMonth.textfield).toHaveValue('September 2020');
+                await calendarMonth.selectMonth(8);
+                await expect(inputMonth.input).toHaveValue('September 2020');
                 await expect(inputMonth.calendar.host).not.toBeAttached();
 
                 await inputMonth.cleaner.click();
-                await expect(inputMonth.textfield).toHaveValue('');
+                await expect(inputMonth.input).toHaveValue('');
                 await expect(inputMonth.calendar.host).toBeAttached();
             });
 
@@ -135,24 +133,22 @@ describe('InputMonth', () => {
                     example = new TuiDocumentationPagePO(page).getExample(
                         '#native-picker',
                     );
-                    inputMonth = new TuiInputMonthEO(
-                        example.locator('tui-textfield:has([tuiInputMonth])'),
-                    );
+                    inputMonth = new TuiInputMonthEO(page, example);
                 });
 
                 test('does NOT open desktop dropdown on click', async () => {
-                    await inputMonth.host.click();
+                    await inputMonth.click();
                     await expect(inputMonth.calendar.host).not.toBeAttached();
                 });
 
                 test('does NOT open desktop dropdown on cleaner click', async () => {
-                    await inputMonth.host.click();
+                    await inputMonth.click();
                     await inputMonth.nativePicker.fill('2025-04');
-                    await expect(inputMonth.textfield).toHaveValue('April 2025');
+                    await expect(inputMonth.input).toHaveValue('April 2025');
                     await expect(inputMonth.calendar.host).not.toBeAttached();
 
                     await inputMonth.cleaner.click();
-                    await expect(inputMonth.textfield).toHaveValue('');
+                    await expect(inputMonth.input).toHaveValue('');
                     await expect(inputMonth.calendar.host).not.toBeAttached();
                 });
 
@@ -164,14 +160,6 @@ describe('InputMonth', () => {
         });
 
         describe('Keyboard clearing', () => {
-            const selectMonth = async (): Promise<void> => {
-                await inputMonth.textfield.click();
-                await new TuiCalendarMonthEO(inputMonth.calendar.host).month
-                    .nth(8)
-                    .click();
-                await expect(inputMonth.textfield).toHaveValue('September 2020');
-            };
-
             [true, false].forEach((cleanerEnabled) => {
                 describe(`tuiTextfieldCleaner=${cleanerEnabled}`, () => {
                     beforeEach(async ({page}) => {
@@ -179,15 +167,16 @@ describe('InputMonth', () => {
                             page,
                             `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
                         );
-                        await selectMonth();
-                        await inputMonth.textfield.click();
+                        await inputMonth.selectMonth(8);
+                        await expect(inputMonth.input).toHaveValue('September 2020');
+                        await inputMonth.click();
 
                         await expect(inputMonth.calendar.host).toBeAttached();
                     });
 
                     test('Backspace', async ({page}) => {
                         await page.keyboard.press('Backspace');
-                        await expect(inputMonth.textfield).toHaveValue(
+                        await expect(inputMonth.input).toHaveValue(
                             cleanerEnabled ? '' : 'September 2020',
                         );
                     });
@@ -195,7 +184,7 @@ describe('InputMonth', () => {
                     test('Delete', async ({page}) => {
                         await page.keyboard.press('ControlOrMeta+A');
                         await page.keyboard.press('Delete');
-                        await expect(inputMonth.textfield).toHaveValue(
+                        await expect(inputMonth.input).toHaveValue(
                             cleanerEnabled ? '' : 'September 2020',
                         );
                     });
@@ -215,16 +204,17 @@ describe('InputMonth', () => {
 
                             const documentationPage = new TuiDocumentationPagePO(page);
 
-                            await selectMonth();
+                            await inputMonth.selectMonth(8);
+                            await expect(inputMonth.input).toHaveValue('September 2020');
                             await expect(documentationPage.value).toContainText(
                                 '2020-09',
                             );
 
-                            await inputMonth.textfield.click();
+                            await inputMonth.click();
                             await page.keyboard.press(caret);
                             await page.keyboard.press(key);
 
-                            await expect(inputMonth.textfield).toHaveValue('');
+                            await expect(inputMonth.input).toHaveValue('');
                             await expect(documentationPage.value).toContainText(
                                 '"value": null',
                             );
@@ -247,14 +237,12 @@ describe('InputMonth', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#dropdown-customization',
                 );
-                inputMonth = new TuiInputMonthEO(
-                    example.locator('tui-textfield:has([tuiInputMonth])'),
-                );
+                inputMonth = new TuiInputMonthEO(page, example);
                 dropdown = page.locator('tui-dropdown');
             });
 
             test('displays custom option on dropdown', async () => {
-                await inputMonth.textfield.click();
+                await inputMonth.click();
 
                 await expect
                     .soft(dropdown)
@@ -262,48 +250,44 @@ describe('InputMonth', () => {
             });
 
             test('closes dropdown after click on custom option', async () => {
-                await inputMonth.textfield.click();
+                await inputMonth.click();
                 await expect(inputMonth.calendar.host).toBeAttached();
 
                 await dropdown.locator('button', {hasText: "My wife's birthday"}).click();
                 await expect(inputMonth.calendar.host).not.toBeAttached();
-                await expect(inputMonth.textfield).toHaveValue('March 1998');
+                await expect(inputMonth.input).toHaveValue('March 1998');
             });
         });
 
         describe('Month range', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#range-mode');
-                inputMonth = new TuiInputMonthEO(
-                    example.locator('tui-textfield:has([tuiInputMonthRange])'),
-                );
+                inputMonth = new TuiInputMonthEO(page, example);
             });
 
-            test('range select', async () => {
-                await inputMonth.textfield.click();
+            test('range select', async ({page}) => {
+                await inputMonth.click();
 
-                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar.host);
+                const calendarMonth = new TuiCalendarMonthEO(page);
 
-                await calendarMonth.month.nth(1).click();
-                await calendarMonth.month.nth(4).click();
+                await calendarMonth.selectMonth(1);
+                await calendarMonth.selectMonth(4);
 
-                await expect(inputMonth.textfield).toHaveValue(
-                    'February 2020 – May 2020',
-                );
+                await expect(inputMonth.input).toHaveValue('February 2020 – May 2020');
                 await expect(inputMonth.calendar.host).not.toBeAttached();
             });
 
-            test('disabled items', async () => {
-                await inputMonth.textfield.click();
+            test('disabled items', async ({page}) => {
+                await inputMonth.click();
 
-                const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar.host);
+                const calendarMonth = new TuiCalendarMonthEO(page);
 
-                await calendarMonth.month.nth(1).click();
+                await calendarMonth.selectMonth(1);
                 await expect(async () => {
-                    await calendarMonth.month.nth(3).click();
+                    await calendarMonth.selectMonth(3);
                 }).rejects.toThrow();
 
-                await expect(inputMonth.textfield).toHaveValue('');
+                await expect(inputMonth.input).toHaveValue('');
                 await expect(example).toHaveScreenshot(
                     'input-month-range-disabled-items.png',
                 );
@@ -316,9 +300,7 @@ describe('InputMonth', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputMonth);
                 example = new TuiDocumentationPagePO(page).getExample('#native-picker');
-                inputMonth = new TuiInputMonthEO(
-                    example.locator('tui-textfield:has([tuiInputMonth])'),
-                );
+                inputMonth = new TuiInputMonthEO(page, example);
             });
 
             test('is clickable', async () => {

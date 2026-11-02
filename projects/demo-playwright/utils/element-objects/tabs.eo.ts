@@ -1,16 +1,10 @@
-import {type Locator} from '@playwright/test';
+import {TUI_TABS_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiTabsEO {
-    public readonly more = this.host.locator('> button.t-more');
-    public readonly moreDropdown = this.host.page().locator('tui-dropdown');
+import {TuiBaseEO} from './base.eo';
 
-    constructor(private readonly host: Locator) {}
-
-    public getMoreOption(indexOrText: number | string): Locator {
-        if (typeof indexOrText === 'number') {
-            this.moreDropdown.locator('button[tuiTab]').locator(`nth=${indexOrText}`);
-        }
-
-        return this.moreDropdown.locator(`button[tuiTab]:has-text("${indexOrText}")`);
-    }
+/**
+ * Element Object for a TuiTabs component.
+ */
+export class TuiTabsEO extends TuiBaseEO {
+    protected override readonly hostSelector: string = TUI_TABS_LOCATORS.HOST;
 }
