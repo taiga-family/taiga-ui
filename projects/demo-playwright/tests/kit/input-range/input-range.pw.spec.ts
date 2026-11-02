@@ -27,9 +27,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-100&max=100&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         test('pressing Arrow Down decreases START value when START textfield is focused', async ({
@@ -178,9 +176,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5&precision=1`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         const testsConditions = [
@@ -210,7 +206,7 @@ describe('InputRange', () => {
     describe('[thousandSeparatorPattern] prop', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         describe('Japanese grouping (by four digits)', () => {
@@ -330,9 +326,7 @@ describe('InputRange', () => {
             );
 
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
 
             await expect
                 .soft(example)
@@ -360,9 +354,7 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=-100&max=100&step=10&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangeEO(
-                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-                );
+                inputRange = new TuiInputRangeEO(page, example);
             });
 
             test('clicking on the END side changes only the END value (+ focuses the END textfield)', async ({
@@ -406,9 +398,7 @@ describe('InputRange', () => {
                     `${DemoRoute.InputRange}/API?min=0&max=10&step=1&sandboxExpanded=true`,
                 );
                 example = new TuiDocumentationApiPagePO(page).demo;
-                inputRange = new TuiInputRangeEO(
-                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-                );
+                inputRange = new TuiInputRangeEO(page, example);
             });
 
             test('click on the START thumb (with NO value changes) => focuses the START textfield', async ({
@@ -455,9 +445,7 @@ describe('InputRange', () => {
                 `${DemoRoute.InputRange}/API?min=-20&max=20&step=5&sandboxExpanded=true`,
             );
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         describe('After Range interactions', () => {
@@ -537,9 +525,7 @@ describe('InputRange', () => {
     describe('[content] property', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         test('START textfield without content + END textfield has content', async ({
@@ -696,9 +682,7 @@ describe('InputRange', () => {
             example = new TuiDocumentationPagePO(page).getExample(
                 '#using-negative-values-with-hidden-minus-sign',
             );
-            inputRange = new TuiInputRangeEO(
-                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-            );
+            inputRange = new TuiInputRangeEO(page, example);
         });
 
         function control([start, end]: [number, number]): RegExp {
@@ -802,7 +786,7 @@ describe('InputRange', () => {
         test('interaction with slider changes control value', async () => {
             const {width} = await inputRange.range.host.boundingBox().then((x) => x!);
 
-            await inputRange.range.host.click({position: {x: width * 0.4, y: 0}});
+            await inputRange.range.click({position: {x: width * 0.4, y: 0}});
 
             await expect(inputRange.textfieldStart).toHaveValue(
                 `${CHAR_ZERO_WIDTH_SPACE}18 days ago`,

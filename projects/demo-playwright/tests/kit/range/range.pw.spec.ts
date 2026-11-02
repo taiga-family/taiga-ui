@@ -22,11 +22,11 @@ describe('TuiRange', () => {
         describe('change selected range on click', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#size');
-                range = new TuiRangeEO(example.locator(TUI_RANGE_LOCATORS.HOST).first());
+                range = new TuiRangeEO(page, example);
             });
 
             test('click on the beginning of the track changes only nearest (left) slider', async () => {
-                await range.host.click({position: {x: 0, y: 0}});
+                await range.click({position: {x: 0, y: 0}});
 
                 await expect(range.start).toHaveValue('0');
                 await expect(range.end).toHaveValue('60');
@@ -36,7 +36,7 @@ describe('TuiRange', () => {
             });
 
             test('click on the end of the track changes only nearest (right) slider', async () => {
-                await range.host.click({position: {x: 290, y: 0}});
+                await range.click({position: {x: 290, y: 0}});
 
                 await expect(range.start).toHaveValue('40');
                 await expect(range.end).toHaveValue('95');
@@ -46,8 +46,8 @@ describe('TuiRange', () => {
             });
 
             test('click between two thumbs triggers only nearest thumb', async () => {
-                await range.host.click({position: {x: 157, y: 0}});
-                await range.host.click({position: {x: 290, y: 0}});
+                await range.click({position: {x: 157, y: 0}});
+                await range.click({position: {x: 290, y: 0}});
 
                 await expect(range.start).toHaveValue('40');
                 await expect(range.end).toHaveValue('95');
@@ -55,8 +55,8 @@ describe('TuiRange', () => {
                     .soft(example)
                     .toHaveScreenshot('03-range-click-checks-4-10.png');
 
-                await range.host.click({position: {x: 163, y: 0}});
-                await range.host.click({position: {x: 290, y: 0}});
+                await range.click({position: {x: 163, y: 0}});
+                await range.click({position: {x: 290, y: 0}});
 
                 await expect(range.start).toHaveValue('54');
                 await expect(range.end).toHaveValue('95');
@@ -70,7 +70,7 @@ describe('TuiRange', () => {
             describe('basic range (from 0 to 100 with 25 steps). Initial value [0, 25]', () => {
                 beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#segments');
-                    range = new TuiRangeEO(example.locator(TUI_RANGE_LOCATORS.HOST));
+                    range = new TuiRangeEO(page, example);
                 });
 
                 test('pressing of Arrow Right increases by one step (after focus on right slider)', async ({
@@ -103,7 +103,7 @@ describe('TuiRange', () => {
                 test('pressing of Arrow Right increases by one step (after focus on left slider)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 290, y: 0}});
+                    await range.click({position: {x: 290, y: 0}});
 
                     await expect(range.start).toHaveValue('0');
                     await expect(range.end).toHaveValue('100');
@@ -138,7 +138,7 @@ describe('TuiRange', () => {
                 test('pressing of Arrow Left decreases by one step (after setting right thumb active via click)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 290, y: 0}});
+                    await range.click({position: {x: 290, y: 0}});
 
                     await expect(range.start).toHaveValue('0');
                     await expect(range.end).toHaveValue('100');
@@ -205,7 +205,7 @@ describe('TuiRange', () => {
                 test('cannot set right thumb less than left thumb (by ArrowLeft)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 290, y: 0}});
+                    await range.click({position: {x: 290, y: 0}});
                     await range.start.focus();
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
@@ -243,7 +243,7 @@ describe('TuiRange', () => {
 
                 beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#key-steps');
-                    range = new TuiRangeEO(example.locator(TUI_RANGE_LOCATORS.HOST));
+                    range = new TuiRangeEO(page, example);
                     output = example.locator('output code');
                 });
 
@@ -397,7 +397,7 @@ describe('TuiRange', () => {
     describe('API page', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            range = new TuiRangeEO(example.locator(TUI_RANGE_LOCATORS.HOST).first());
+            range = new TuiRangeEO(page, example);
         });
 
         test('click on the middle of the track | [min]="0" & [max]="1" & [step]="0.05"', async ({
@@ -409,7 +409,7 @@ describe('TuiRange', () => {
                 page,
                 `${DemoRoute.Range}/API?sandboxWidth=${width}&min=0&max=1&step=0.05&sandboxExpanded=true`,
             );
-            await range.host.click({position: {x: width / 2, y: 0}});
+            await range.click({position: {x: width / 2, y: 0}});
 
             await expect(range.start).toHaveValue('0');
             await expect(range.end).toHaveValue('0.5');

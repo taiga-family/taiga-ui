@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DropdownSelection', () => {
     test.use({viewport: {width: 400, height: 400}});
@@ -36,7 +37,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('03-dropdown-selection.png');
 
-        await page.locator('button[tuiOption]').first().click();
+        await page.locator(`button${TUI_DATA_LIST_LOCATORS.OPTION}`).first().click();
         await api.waitStableState();
         await page.waitForTimeout(300); // flaky in Safari
 

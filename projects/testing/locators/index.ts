@@ -26,4 +26,7 @@ export * from './range.locators';
 export * from './scrollbar.locators';
 export * from './select.locators';
 export * from './sheet-dialog.locators';
+export * from './slider.locators';
+export * from './tabs.locators';
+export * from './tabs-with-more.locators';
 export * from './textfield.locators';
