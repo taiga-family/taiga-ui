@@ -2,8 +2,8 @@ import {Directive} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TuiWithInput} from '@taiga-ui/core/components/input';
+import {tuiAsControl, TuiControl} from '@taiga-ui/cdk';
+import {TuiWithInput} from '@taiga-ui/core';
 import {TuiUnmaskHandler} from '@taiga-ui/kit';
 
 export const UNMASK_DATE_OPTIONS: MaskitoOptions = maskitoDateOptionsGenerator({
