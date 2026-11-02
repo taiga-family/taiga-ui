@@ -51,10 +51,12 @@ function formatApiAttribute({name, value, type}: TuiDocApiItemConfig): string {
         return `[${property}]="${Boolean(value)}"`;
     }
 
-    if (type === 'string') {
+    if (typeof value === 'string') {
+        const expression = `'${escapeAngularStringLiteral(value)}'`;
+
         return isInput
-            ? `[${property}]="'${String(value)}'"`
-            : `${property}="${String(value)}"`;
+            ? `[${property}]="${escapeHtmlAttribute(expression)}"`
+            : `${property}="${escapeHtmlAttribute(value)}"`;
     }
 
     if (typeof value === 'number' || type === 'number') {
@@ -65,15 +67,32 @@ function formatApiAttribute({name, value, type}: TuiDocApiItemConfig): string {
         return `[${property}]="${String(value)}n"`;
     }
 
-    if (typeof value === 'object') {
-        return `[${property}]="${stringifyApiValue(value)}"`;
+    if (typeof value === 'object' && value !== null) {
+        const json = stringifyApiValue(value);
+
+        return `[${property}]='${escapeSingleQuotedAttribute(json)}'`;
     }
 
     return `[${property}]="${value}"`;
 }
 
+function escapeAngularStringLiteral(value: string): string {
+    return value.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
+}
+
+function escapeHtmlAttribute(value: string): string {
+    return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('"', '&quot;')
+        .replaceAll('<', '&lt;');
+}
+
+function escapeSingleQuotedAttribute(value: string): string {
+    return value.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
+}
+
 function stringifyApiValue(value: object): string {
     return JSON.stringify(value, (_, item) =>
         typeof item === 'bigint' ? `${String(item)}n` : item,
-    ).replaceAll('"', "'");
+    );
 }

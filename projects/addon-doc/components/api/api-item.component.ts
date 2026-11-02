@@ -6,6 +6,7 @@ import {
     inject,
     input,
     model,
+    type OnDestroy,
     type OnInit,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -21,6 +22,7 @@ import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
+import {TuiDocApiCopyRegistry} from './api-copy-registry';
 import {TuiDocAPINumberItem} from './api-item-number.directive';
 import {TuiInspectPipe} from './inspect.pipe';
 import {TuiTypeReferencePipe} from './type-reference.pipe';
@@ -45,8 +47,9 @@ const SERIALIZED_NULL = 'null';
     styleUrl: './api-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocAPIItem<T> implements OnInit {
+export class TuiDocAPIItem<T> implements OnInit, OnDestroy {
     private readonly locationRef = inject(Location);
+    private readonly copyRegistry = inject(TuiDocApiCopyRegistry, {optional: true});
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
@@ -74,6 +77,11 @@ export class TuiDocAPIItem<T> implements OnInit {
 
     public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
+        this.copyRegistry?.register(this);
+    }
+
+    public ngOnDestroy(): void {
+        this.copyRegistry?.unregister(this);
     }
 
     public onValueChange(value: T): void {

@@ -2,7 +2,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {
     ChangeDetectionStrategy,
     Component,
-    contentChildren,
+    computed,
     inject,
     input,
     ViewEncapsulation,
@@ -12,12 +12,11 @@ import {tuiGenerateApiCode} from '@taiga-ui/addon-doc/utils';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiNotificationService} from '@taiga-ui/core/components/notification';
-import {TUI_DONE_WORD} from '@taiga-ui/core/tokens';
 import {tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_COPY_TEXTS, TUI_DONE_WORD} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
-import {TuiDocAPIItem} from './api-item.component';
+import {TuiDocApiCopyRegistry} from './api-copy-registry';
 
 const COPIED_TIMEOUT = 1500;
 
@@ -28,7 +27,7 @@ const COPIED_TIMEOUT = 1500;
     styleUrl: './api.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiHintOptionsProvider({appearance: 'floating'})],
+    providers: [tuiHintOptionsProvider({appearance: 'floating'}), TuiDocApiCopyRegistry],
 })
 export class TuiDocAPI {
     private readonly clipboard = inject(Clipboard);
@@ -36,18 +35,10 @@ export class TuiDocAPI {
     private readonly copy$ = new Subject<void>();
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly doneWord = inject(TUI_DONE_WORD);
+    private readonly copyRegistry = inject(TuiDocApiCopyRegistry);
 
-    protected readonly items = contentChildren(TuiDocAPIItem, {descendants: true});
-
-    protected readonly copyLabel = toSignal(
-        this.copyTexts.pipe(map(([copy]) => copy)),
-        {initialValue: 'Copy'},
-    );
-
-    protected readonly copyDoneLabel = toSignal(
-        this.copyTexts.pipe(map(([, done]) => done)),
-        {initialValue: 'Copied'},
-    );
+    protected readonly copyLabel = computed(() => this.copyTexts()[0]);
+    protected readonly copyDoneLabel = computed(() => this.copyTexts()[1]);
 
     protected readonly copied = toSignal(
         this.copy$.pipe(
@@ -71,7 +62,7 @@ export class TuiDocAPI {
 
         const code = tuiGenerateApiCode(
             tag,
-            this.items().map((item) => ({
+            this.copyRegistry.snapshot().map((item) => ({
                 name: item.name(),
                 type: item.type(),
                 value: item.value(),
@@ -80,7 +71,10 @@ export class TuiDocAPI {
             this.copyStaticAttributes(),
         );
 
-        this.clipboard.copy(code);
+        if (!this.clipboard.copy(code)) {
+            return;
+        }
+
         this.copy$.next();
         this.alerts
             .open(this.copyTexts()[1], {label: this.doneWord(), appearance: 'positive'})

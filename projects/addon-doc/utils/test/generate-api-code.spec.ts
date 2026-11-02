@@ -6,7 +6,7 @@ describe('tuiGenerateApiCode', () => {
             tuiGenerateApiCode(
                 'button',
                 [
-                    {name: '[size]', type: 'string', value: 'm'},
+                    {name: '[size]', type: 'TuiSizeXS | TuiSizeL', value: 'm'},
                     {name: '[loading]', type: 'boolean', value: true},
                     {name: '(click)', type: 'string', value: 'noop'},
                     {name: '[hidden]', type: 'boolean', value: false},
