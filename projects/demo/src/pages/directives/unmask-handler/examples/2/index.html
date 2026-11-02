@@ -1,0 +1,23 @@
+<tui-textfield class="tui-space_bottom-4">
+    <label tuiLabel>Date</label>
+    <input
+        tuiInput
+        [formControl]="control"
+        [maskito]="options"
+        [tuiUnmaskHandler]="unmask"
+    />
+</tui-textfield>
+
+<button
+    appearance="secondary"
+    tuiButton
+    type="button"
+    (click)="patch()"
+>
+    patchValue('01012000')
+</button>
+
+<p class="tui-space_top-4">
+    Form control value:
+    <code>{{ control.value }}</code>
+</p>
