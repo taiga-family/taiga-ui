@@ -116,4 +116,8 @@ export default process.env.HTML_ESLINT
                   '@typescript-eslint/no-unsafe-enum-assignment': 'off',
               },
           },
+          {
+              rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
+              files: ['**/*.pw.spec.ts', '**/*.po.ts'],
+          },
       ];

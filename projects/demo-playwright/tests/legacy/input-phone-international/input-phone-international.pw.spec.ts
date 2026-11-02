@@ -5,6 +5,7 @@ import {
     TuiInputPhoneInternationalPO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputPhoneInternational', () => {
     test.describe('API page', () => {
@@ -14,9 +15,9 @@ test.describe('InputPhoneInternational', () => {
 
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
-            dropdown = page.locator('tui-dropdown');
+            dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
             inputPhoneInternational = new TuiInputPhoneInternationalPO(
-                example.locator('tui-textfield'),
+                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
             );
         });
 

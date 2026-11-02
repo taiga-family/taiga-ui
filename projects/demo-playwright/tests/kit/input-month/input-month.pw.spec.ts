@@ -8,6 +8,7 @@ import {
 import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -19,7 +20,7 @@ describe('InputMonth', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
             inputMonth = new TuiInputMonthPO(
-                example.locator('tui-textfield:has([tuiInputMonth])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputMonth])`),
             );
         });
 
@@ -134,7 +135,9 @@ describe('InputMonth', () => {
                     await tuiGoto(page, DemoRoute.InputMonth);
                     example = new TuiDocumentationPagePO(page).getExample('#native');
                     inputMonth = new TuiInputMonthPO(
-                        example.locator('tui-textfield:has([tuiInputMonth])'),
+                        example.locator(
+                            `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputMonth])`,
+                        ),
                     );
                 });
 
@@ -175,7 +178,9 @@ describe('InputMonth', () => {
                     '#dropdown-customization',
                 );
                 inputMonth = new TuiInputMonthPO(
-                    example.locator('tui-textfield:has([tuiInputMonth])'),
+                    example.locator(
+                        `${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputMonth])`,
+                    ),
                 );
                 dropdown = page.locator('tui-dropdown');
             });
