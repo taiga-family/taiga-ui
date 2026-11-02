@@ -23,24 +23,19 @@
         }
     }
 
-    &._initialized {
-        tui-items-with-more {
-            .t-item {
-                & > * {
-                    margin-block-end: var(--tui-item-margin);
-                    margin-inline-end: var(--tui-item-margin);
-                }
-
-                .transition(~'scale, opacity');
-
-                opacity: 1;
-                scale: 1;
-            }
-
-            .t-item_hidden {
-                opacity: 0;
-                scale: 0.9;
-            }
+    tui-items-with-more {
+        .t-item > * {
+            margin-block-end: var(--tui-item-margin);
+            margin-inline-end: var(--tui-item-margin);
         }
+
+        .t-item_hidden {
+            opacity: 0;
+            scale: 0.9;
+        }
+    }
+
+    &._animated tui-items-with-more .t-item {
+        .transition(~'scale, opacity');
     }
 }

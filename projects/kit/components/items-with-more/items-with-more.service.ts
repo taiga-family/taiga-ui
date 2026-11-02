@@ -98,6 +98,9 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const {children} = this.el;
         const {linesLimit, itemsLimit} = this.directive;
         const items = Array.from(children) as HTMLElement[];
+
+        this.reserveMoreWidth(items);
+
         const rows = new Set(items.map((item) => item.offsetTop));
         const offset = Array.from(rows)[linesLimit() - 1];
         const firstItemLastRow = items.findIndex((i) => i.offsetTop === offset);
@@ -105,5 +108,18 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const index = firstItemLastRow + this.getOverflowIndex(lastRow);
 
         return Math.min(itemsLimit() - 1, index);
+    }
+
+    /**
+     * Extra pixel compensates for clientWidth rounding down fractional widths.
+     */
+    private reserveMoreWidth(items: readonly HTMLElement[]): void {
+        const widths = items
+            .filter(({tagName}) => tagName !== 'SPAN')
+            .map(({clientWidth}) => clientWidth);
+
+        const width = Math.min(Math.max(0, ...widths) + 1, this.el.clientWidth);
+
+        this.el.style.setProperty('--t-min-width', `${width}px`);
     }
 }
