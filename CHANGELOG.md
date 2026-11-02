@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.106.0](https://github.com/taiga-family/taiga-ui/compare/v4.105.0...v4.106.0) (2026-11-02)
+
+### 🐞 Bug Fixes
+
+- **kit:** `Tiles` keep order when drag skips lines ([#15288](https://github.com/taiga-family/taiga-ui/issues/15288))
+  ([d1ea123](https://github.com/taiga-family/taiga-ui/commit/d1ea1237a8a2dc7242975bd362420417c20c53b4))
+- **kit:** sync tabs active item index when items change
+  ([#15282](https://github.com/taiga-family/taiga-ui/issues/15282))
+  ([fa10c74](https://github.com/taiga-family/taiga-ui/commit/fa10c74ae7b4e702559d11bfa8447ae989088548))
+
 ## [4.105.0](https://github.com/taiga-family/taiga-ui/compare/v4.104.0...v4.105.0) (2026-10-26)
 
 ### 🐞 Bug Fixes
