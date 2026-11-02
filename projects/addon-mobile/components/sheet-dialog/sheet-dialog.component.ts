@@ -11,7 +11,6 @@ import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
-import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
@@ -19,7 +18,7 @@ import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
-import {type TuiSheetDialogOptions} from './sheet-dialog.options';
+import {type TuiSheetDialogContext} from './sheet-dialog.options';
 import {TuiSheetDialogClose} from './sheet-dialog-close.directive';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
@@ -50,7 +49,7 @@ export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
 
-    protected readonly context = injectContext<TuiPortalContext<TuiSheetDialogOptions>>();
+    protected readonly context = injectContext<TuiSheetDialogContext>();
     protected readonly close$ = new Subject<void>();
     protected interacted = false;
     protected readonly $ = merge(
@@ -77,15 +76,18 @@ export class TuiSheetDialogComponent {
         .subscribe(() => this.close());
 
     constructor() {
+        Object.assign(this.context, {scrollTo: this.scrollTo.bind(this)});
         afterNextRender(() => this.onResize());
     }
 
     public get initial(): number {
-        return this.context.closable
-            ? this.stops()
-                  .map((e) => e.nativeElement.offsetTop)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
-            : 0;
+        return this.context.closable ? this.getTop(this.context.initial) : 0;
+    }
+
+    public scrollTo(index: number, behavior: ScrollBehavior = 'smooth'): void {
+        // An explicit position must survive content resize, unlike the initial snap
+        this.interacted = true;
+        this.el.scrollTo({top: this.getTop(index), behavior});
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
@@ -99,5 +101,16 @@ export class TuiSheetDialogComponent {
         } else {
             this.context.$implicit.complete();
         }
+    }
+
+    // Stops are followed by the sheet content top, so index `stops.length` expands the sheet
+    private getTop(index: number): number {
+        const tops = this.stops().map(({nativeElement}) => nativeElement.offsetTop);
+
+        return (
+            tops.concat(this.el.clientHeight ?? Infinity)[
+                Math.min(Math.max(index, 0), tops.length)
+            ] ?? 0
+        );
     }
 }
