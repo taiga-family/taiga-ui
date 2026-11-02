@@ -24,27 +24,17 @@ export function tuiGenerateApiCode(
 }
 
 function shouldIncludeApiItem({name, value, type}: TuiDocApiItemConfig): boolean {
-    if (name.startsWith('(')) {
-        return false;
-    }
-
-    if (value === null || value === undefined) {
-        return false;
-    }
-
-    if (type === 'boolean' && value === false) {
-        return false;
-    }
-
-    if (type === 'string' && value === '') {
-        return false;
-    }
-
-    return true;
+    return (
+        !name.startsWith('(') &&
+        value !== null &&
+        value !== undefined &&
+        !(type === 'boolean' && value === false) &&
+        !(type === 'string' && value === '')
+    );
 }
 
 function formatApiAttribute({name, value, type}: TuiDocApiItemConfig): string {
-    const property = name.replace(/[[\]()]/g, '');
+    const property = name.replaceAll(/[[\]()]/g, '');
     const isInput = name.startsWith('[');
 
     if (type === 'boolean') {
@@ -77,7 +67,9 @@ function formatApiAttribute({name, value, type}: TuiDocApiItemConfig): string {
 }
 
 function escapeAngularStringLiteral(value: string): string {
-    return value.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
+    return value
+        .replaceAll('\\', String.raw`\\`)
+        .replaceAll("'", String.raw`\'`);
 }
 
 function escapeHtmlAttribute(value: string): string {
@@ -88,7 +80,9 @@ function escapeHtmlAttribute(value: string): string {
 }
 
 function escapeSingleQuotedAttribute(value: string): string {
-    return value.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
+    return value
+        .replaceAll('\\', String.raw`\\`)
+        .replaceAll("'", String.raw`\'`);
 }
 
 function stringifyApiValue(value: object): string {

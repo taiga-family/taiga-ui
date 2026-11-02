@@ -30,6 +30,24 @@ import {TuiTypeReferencePipe} from './type-reference.pipe';
 const SERIALIZED_SUFFIX = '$';
 const SERIALIZED_NULL = 'null';
 
+class TuiDocApiItemCopyEntry implements TuiDocApiCopyEntry {
+    constructor(
+        private readonly item: Pick<TuiDocAPIItem<unknown>, 'name' | 'type' | 'value'>,
+    ) {}
+
+    public name(): string {
+        return this.item.name();
+    }
+
+    public type(): string {
+        return this.item.type();
+    }
+
+    public value(): unknown {
+        return this.item.value();
+    }
+}
+
 @Component({
     selector: 'tr[tuiDocAPIItem]',
     imports: [
@@ -50,11 +68,7 @@ const SERIALIZED_NULL = 'null';
 export class TuiDocAPIItem<T> implements OnInit, OnDestroy {
     private readonly locationRef = inject(Location);
     private readonly copyRegistry = inject(TuiDocApiCopyRegistry, {optional: true});
-    private readonly copyEntry: TuiDocApiCopyEntry = {
-        name: () => this.name(),
-        type: () => this.type(),
-        value: () => this.value(),
-    };
+    private copyEntry?: TuiDocApiItemCopyEntry;
 
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -83,11 +97,17 @@ export class TuiDocAPIItem<T> implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
-        this.copyRegistry?.register(this.copyEntry);
+
+        if (this.copyRegistry) {
+            this.copyEntry = new TuiDocApiItemCopyEntry(this);
+            this.copyRegistry.register(this.copyEntry);
+        }
     }
 
     public ngOnDestroy(): void {
-        this.copyRegistry?.unregister(this.copyEntry);
+        if (this.copyRegistry && this.copyEntry) {
+            this.copyRegistry.unregister(this.copyEntry);
+        }
     }
 
     public onValueChange(value: T): void {

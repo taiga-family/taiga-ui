@@ -1,9 +1,9 @@
 import {Injectable, signal} from '@angular/core';
 
 export interface TuiDocApiCopyEntry {
-    name: () => string;
-    type: () => string;
-    value: () => unknown;
+    name(): string;
+    type(): string;
+    value(): unknown;
 }
 
 @Injectable()
