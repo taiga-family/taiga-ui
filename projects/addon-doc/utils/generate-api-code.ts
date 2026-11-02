@@ -67,22 +67,15 @@ function formatApiAttribute({name, value, type}: TuiDocApiItemConfig): string {
 }
 
 function escapeAngularStringLiteral(value: string): string {
-    return value
-        .replaceAll('\\', String.raw`\\`)
-        .replaceAll("'", String.raw`\'`);
+    return value.replaceAll('\\', String.raw`\\`).replaceAll("'", String.raw`\'`);
 }
 
 function escapeHtmlAttribute(value: string): string {
-    return value
-        .replaceAll('&', '&amp;')
-        .replaceAll('"', '&quot;')
-        .replaceAll('<', '&lt;');
+    return value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 }
 
 function escapeSingleQuotedAttribute(value: string): string {
-    return value
-        .replaceAll('\\', String.raw`\\`)
-        .replaceAll("'", String.raw`\'`);
+    return value.replaceAll('\\', String.raw`\\`).replaceAll("'", String.raw`\'`);
 }
 
 function stringifyApiValue(value: object): string {
