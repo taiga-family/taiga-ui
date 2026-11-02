@@ -44,6 +44,7 @@ const config: KnipConfig = {
         '**/testing/visual-testing/**/*.ts',
         '**/projects/cdk/date-time/test/helpers.ts',
         '**/demo/src/pages/components/data-list/examples/4/custom-list/index.ts',
+        '**/demo/src/pages/directives/unmask-handler/unmask-date-demo.directive.ts',
     ],
     workspaces: {
         'projects/demo-playwright': {

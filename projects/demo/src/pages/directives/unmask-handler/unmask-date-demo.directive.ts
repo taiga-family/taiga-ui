@@ -1,10 +1,10 @@
 import {Directive} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoOptions, maskitoDateOptionsGenerator} from '@maskito/kit';
+import {type MaskitoOptions} from '@maskito/core';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TuiInputDirective, TuiWithInput} from '@taiga-ui/core/components/input';
+import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiUnmaskHandler} from '@taiga-ui/kit';
-import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 export const UNMASK_DATE_OPTIONS: MaskitoOptions = maskitoDateOptionsGenerator({
     mode: 'dd/mm/yyyy',
@@ -16,13 +16,21 @@ export const unmaskDate = (value: string): string => value.replaceAll('/', '');
 @Directive({
     selector: 'input[tuiUnmaskDateDemo]',
     providers: [tuiAsControl(TuiUnmaskDateDemoDirective)],
-    hostDirectives: [TuiWithInput, MaskitoDirective, TuiUnmaskHandler],
+    hostDirectives: [
+        TuiWithInput,
+        MaskitoDirective,
+        {
+            directive: TuiUnmaskHandler,
+            inputs: ['tuiUnmaskHandler', 'maskito'],
+        },
+    ],
     host: {
+        '[maskito]': 'maskitoOptions',
         '(input)': 'onInput($any($event.target).value)',
     },
 })
 export class TuiUnmaskDateDemoDirective extends TuiControl<string> {
-    protected readonly maskito = tuiMaskito(UNMASK_DATE_OPTIONS);
+    protected readonly maskitoOptions = UNMASK_DATE_OPTIONS;
 
     protected onInput(value: string): void {
         this.onChange(value);
