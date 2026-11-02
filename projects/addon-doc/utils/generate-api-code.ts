@@ -71,7 +71,10 @@ function escapeAngularStringLiteral(value: string): string {
 }
 
 function escapeHtmlAttribute(value: string): string {
-    return value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+    return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('"', '&quot;')
+        .replaceAll('<', '&lt;');
 }
 
 function escapeSingleQuotedAttribute(value: string): string {
