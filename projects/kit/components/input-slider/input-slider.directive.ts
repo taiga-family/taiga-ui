@@ -120,7 +120,15 @@ export class TuiInputSliderDirective {
                     );
 
                     this.inputNumber.setValue(value);
-                    this.inputNumber.onChange(value);
+
+                    const parsed = this.inputNumber.parsed();
+
+                    if (
+                        Number.isNaN(parsed) ||
+                        (parsed >= this.mask.min() && parsed <= this.mask.max())
+                    ) {
+                        this.inputNumber.onChange(value);
+                    }
                 }),
                 filter(() => !this.isMobile),
                 switchMap(() =>
