@@ -1,5 +1,4 @@
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     Directive,
@@ -33,7 +32,7 @@ class Styles {}
         '(click)': 'onClick($event.target)',
     },
 })
-export class TuiItemGroup implements AfterViewInit {
+export class TuiItemGroup {
     private readonly el = tuiInjectElement();
 
     protected readonly nothing = tuiWithStyles(Styles);
@@ -41,11 +40,11 @@ export class TuiItemGroup implements AfterViewInit {
     public readonly horizontal = input(false);
     public readonly autoscroll = input(false);
 
-    public ngAfterViewInit(): void {
-        this.el.classList.add('_initialized');
-    }
-
     protected onClick(target: HTMLElement): void {
+        if (target.closest('.t-item_more')) {
+            this.el.classList.add('_animated');
+        }
+
         if (this.autoscroll() && this.horizontal()) {
             // Safari bug
             setTimeout(() => target.scrollIntoView(OPTIONS));
