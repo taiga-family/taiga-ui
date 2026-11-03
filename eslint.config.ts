@@ -35,6 +35,7 @@ export default [
             '**/*.pw.spec.ts',
             '**/*.po.ts',
             '**/*.eo.ts',
+            '**/*.mixin.ts',
         ],
     },
     {

@@ -1,8 +1,8 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TuiTabsWithMoreEO} from 'projects/demo-playwright/utils/element-objects/tabs-with-more.eo';
 import {TUI_DATA_LIST_LOCATORS, TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
+import {TuiTabsWithMoreEO} from 'projects/demo-playwright/utils/element-objects/tabs-with-more.eo';
 
 const {describe, beforeEach} = test;
 

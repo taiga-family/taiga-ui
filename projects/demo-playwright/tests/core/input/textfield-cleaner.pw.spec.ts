@@ -104,7 +104,6 @@ describe('Textfield cleaner', () => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
             const inputMonth = new TuiInputMonthEO(page, example);
-
             const calendarMonth = inputMonth.calendar;
 
             await inputMonth.input.click();

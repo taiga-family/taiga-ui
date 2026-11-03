@@ -1,10 +1,11 @@
-import type {Locator} from '@playwright/test';
-import {TuiBaseEO} from './base.eo';
+import {type Locator} from '@playwright/test';
 import {
     TUI_CALENDAR_RANGE_LOCATORS,
     TUI_DATA_LIST_LOCATORS,
     TUI_INPUT_DATE_RANGE_LOCATORS,
 } from '@taiga-ui/testing/locators';
+
+import {TuiBaseEO} from './base.eo';
 
 /**
  * Element Object for a TuiInputDateRange component.

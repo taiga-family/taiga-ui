@@ -1,5 +1,5 @@
-import {TuiTextfieldEO} from './textfield.eo';
 import {withDataList} from '../mixins';
+import {TuiTextfieldEO} from './textfield.eo';
 
 /**
  * Element Object for a textfield that opens a data-list dropdown

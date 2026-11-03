@@ -1,7 +1,7 @@
 import {TUI_CALENDAR_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TuiCalendarSheetEO} from './calendar-sheet.eo';
 import {TuiBaseEO} from './base.eo';
+import {TuiCalendarSheetEO} from './calendar-sheet.eo';
 
 /**
  * Element Object for a single TuiCalendar component.
@@ -14,7 +14,5 @@ export class TuiCalendarEO extends TuiBaseEO {
     /**
      * Returns an Element Object for the calendar sheet scoped to this calendar.
      */
-    public async getCalendarSheet(): Promise<TuiCalendarSheetEO> {
-        return new TuiCalendarSheetEO(this.page, this.host);
-    }
+    public readonly calendarSheet = new TuiCalendarSheetEO(this.page, this.host);
 }

@@ -1,8 +1,8 @@
 import {TUI_INPUT_MONTH_LOCATORS} from '@taiga-ui/testing/locators';
 
+import {withClickable} from '../mixins';
 import {TuiCalendarMonthEO} from './calendar-month.eo';
 import {TuiTextfieldEO} from './textfield.eo';
-import {withClickable} from '../mixins';
 
 /**
  * Element Object for a TuiInputMonth component.

@@ -1,7 +1,7 @@
 import {TUI_TABS_WITH_MORE_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TuiTabsEO} from './tabs.eo';
 import {withMore} from '../mixins';
+import {TuiTabsEO} from './tabs.eo';
 
 /**
  * Element Object for a TuiTabsWithMore component.

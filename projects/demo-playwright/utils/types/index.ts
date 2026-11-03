@@ -1,4 +1,4 @@
-export * from './blur-options';
-export * from './click-options';
-export * from './focus-options';
-export * from './mixin-constructor';
+export type * from './blur-options';
+export type * from './click-options';
+export type * from './focus-options';
+export type * from './mixin-constructor';

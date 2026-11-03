@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
     TUI_DROPDOWN_LOCATORS,
@@ -6,8 +6,18 @@ import {
     TUI_SHEET_DIALOG_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
-import {TuiMixinConstructor} from '../types';
-import {TuiBaseEO} from '../element-objects/base.eo';
+import {type TuiBaseEO} from '../element-objects/base.eo';
+import {type TuiMixinConstructor} from '../types';
+
+interface DataList {
+    readonly dropdown: Locator;
+    readonly options: Locator;
+    selectOptions(indexes: number[]): Promise<void>;
+    closeDropdown(): Promise<void>;
+    getOptionByText(text: RegExp | string): Promise<Locator>;
+}
+
+type WithDataList<T> = T & (new (...args: any[]) => DataList);
 
 /**
  * A mixin that adds data-list dropdown behavior to a textfield-based Element Object.
@@ -30,7 +40,9 @@ import {TuiBaseEO} from '../element-objects/base.eo';
  *   // Now has .dropdown, .options, .getOptionByText(), .selectOptions(), .closeDropdown()
  * }
  */
-export function withDataList<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
+export function withDataList<T extends TuiMixinConstructor<TuiBaseEO>>(
+    Base: T,
+): WithDataList<T> {
     return class extends Base {
         /** Dropdown container rendered on page level (desktop, mobile or sheet). */
         public readonly dropdown = this.host
@@ -79,12 +91,10 @@ export function withDataList<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) 
          *
          * @param text Text or regular expression to match against the option.
          */
-        public async getOptionByText(text: string | RegExp): Promise<Locator> {
+        public async getOptionByText(text: RegExp | string): Promise<Locator> {
             await this.dropdown.waitFor({state: 'attached'});
 
-            return this.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {
-                hasText: text,
-            });
+            return this.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {hasText: text});
         }
     };
 }

@@ -1,13 +1,8 @@
-import {
-    TUI_DROPDOWN_LOCATORS,
-    TUI_DROPDOWN_MOBILE_LOCATORS,
-    TUI_INPUT_CHIP_LOCATORS,
-    TUI_SHEET_DIALOG_LOCATORS,
-} from '@taiga-ui/testing/locators';
-
-import {TuiBaseEO} from './base.eo';
-import {withDataList} from '../mixins';
 import {expect} from '@playwright/test';
+import {TUI_INPUT_CHIP_LOCATORS} from '@taiga-ui/testing/locators';
+
+import {withDataList} from '../mixins';
+import {TuiBaseEO} from './base.eo';
 
 /**
  * Element Object for a TuiInputChip component.
@@ -36,6 +31,7 @@ export class TuiInputChipEO extends withDataList(TuiBaseEO) {
      */
     public async addChip(value: string): Promise<void> {
         const initialCount = await this.chips.count();
+
         await this.input.focus();
         await this.input.fill(value);
         await this.input.press('Enter');

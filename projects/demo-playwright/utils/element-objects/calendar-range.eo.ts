@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 import {
     TUI_CALENDAR_LOCATORS,
     TUI_CALENDAR_RANGE_LOCATORS,
@@ -7,7 +7,7 @@ import {
 
 import {TuiBaseEO} from './base.eo';
 import {TuiCalendarEO} from './calendar.eo';
-import {TuiCalendarSheetEO} from './calendar-sheet.eo';
+import {type TuiCalendarSheetEO} from './calendar-sheet.eo';
 
 /**
  * Element Object for a TuiCalendarRange component.
@@ -48,9 +48,7 @@ export class TuiCalendarRangeEO extends TuiBaseEO {
         [TuiCalendarSheetEO, TuiCalendarSheetEO] | [TuiCalendarSheetEO]
     > {
         const calendars = await this.getCalendars();
-        const calendarSheets = await Promise.all(
-            calendars.map((x) => x.getCalendarSheet()),
-        );
+        const calendarSheets = calendars.map((x) => x.calendarSheet);
 
         return calendarSheets as
             [TuiCalendarSheetEO, TuiCalendarSheetEO] | [TuiCalendarSheetEO];

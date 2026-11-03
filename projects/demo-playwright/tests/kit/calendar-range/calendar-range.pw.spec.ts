@@ -284,18 +284,18 @@ describe('CalendarRange', () => {
 
                 test('31.03.2018 => {month: 1} => 01.03.2018 // all days of March, a full month', async () => {
                     const [, endCalendar] = await calendarRange.getCalendars();
-                    const endSheet = await endCalendar!.getCalendarSheet();
+                    const endSheet = endCalendar!.calendarSheet;
 
-                    await endSheet!.clickOnDay(31);
+                    await endSheet.clickOnDay(31);
 
                     await expect(example).toHaveScreenshot(
                         '11-1-min-length-month-1-full-march.png',
                     );
 
-                    await endSheet!.clickOnDay(2);
+                    await endSheet.clickOnDay(2);
                     await expect(alert).not.toBeAttached();
 
-                    await endSheet!.clickOnDay(1);
+                    await endSheet.clickOnDay(1);
                     await expect(alert).toContainText('01.03.2018 – 31.03.2018');
                 });
 
@@ -426,7 +426,6 @@ describe('CalendarRange', () => {
                 await expect(calendarRange.host).toContainText('February 2026');
 
                 const pagePO = new TuiDocumentationPagePO(page);
-
                 const maxProperty = new TuiSelectEO(page, pagePO.getRow('max'));
 
                 await maxProperty.click();

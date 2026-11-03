@@ -1,1 +1,1 @@
-export type TuiMixinConstructor<T = {}> = new (...args: any[]) => T;
+export type TuiMixinConstructor<T = Record<string, unknown>> = new (...args: any[]) => T;

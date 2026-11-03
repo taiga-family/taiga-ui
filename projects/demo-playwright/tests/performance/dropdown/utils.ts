@@ -1,6 +1,5 @@
 import {PerformanceCollector, type TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {type Locator, type Page} from '@playwright/test';
-import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 export interface DropdownCtx {
     example: ReturnType<TuiDocumentationPagePO['getExample']>;
@@ -313,9 +312,7 @@ export async function measureMobileCountryOpen(
 
     await trigger.click({timeout: 2000}).catch(() => {});
 
-    const optionLocator = page.locator(
-        `tui-popups tui-dropdown button${TUI_DATA_LIST_LOCATORS.OPTION}`,
-    );
+    const optionLocator = page.locator('tui-popups tui-dropdown button[tuiOption]');
 
     await optionLocator.first().waitFor({state: 'visible', timeout: 10000});
 

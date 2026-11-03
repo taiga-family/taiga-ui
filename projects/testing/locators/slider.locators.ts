@@ -1,3 +1,1 @@
-export const TUI_SLIDER_LOCATORS = {
-    HOST: '[tuiSlider]',
-} as const;
+export const TUI_SLIDER_LOCATORS = {HOST: '[tuiSlider]'} as const;

@@ -1,5 +1,6 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 import {TUI_CALENDAR_SHEET_LOCATORS} from '@taiga-ui/testing/locators';
+
 import {TuiBaseEO} from './base.eo';
 
 /**

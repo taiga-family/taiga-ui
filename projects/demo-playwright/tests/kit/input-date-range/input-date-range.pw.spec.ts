@@ -351,7 +351,6 @@ test.describe('InputDateRange', () => {
             page,
         }) => {
             const example = documentationPage.getExample('#data-list');
-
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
             await inputDateRange.textfield.click();
@@ -359,6 +358,7 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.click();
 
             let checkmark = await inputDateRange.getCheckmark(1);
+
             await expect(checkmark!).toHaveCount(0);
             checkmark = await inputDateRange.getCheckmark(2);
             await expect(checkmark!).toHaveCount(1);
@@ -376,7 +376,6 @@ test.describe('InputDateRange', () => {
         await tuiGoto(page, DemoRoute.InputDateRange);
 
         const example = documentationPage.getExample('#data-list');
-
         const inputDateRange = new TuiInputDateRangeEO(page, example);
 
         await inputDateRange.textfield.focus();
@@ -415,9 +414,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-
             const inputDateRange = new TuiInputDateRangeEO(page, example);
-
             const calendarSheet = new TuiCalendarSheetEO(page, example);
 
             await inputDateRange.textfield.click();
@@ -451,7 +448,6 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
             await inputDateRange.textfield.click();
@@ -470,7 +466,6 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
             await inputDateRange.textfield.focus();
