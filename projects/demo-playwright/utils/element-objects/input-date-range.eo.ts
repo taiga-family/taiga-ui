@@ -17,7 +17,7 @@ export class TuiInputDateRangeEO extends TuiBaseEO {
     protected override readonly hostSelector = TUI_INPUT_DATE_RANGE_LOCATORS.HOST;
 
     /** Textfield combobox of the range field. */
-    public readonly textfield = this.host.getByRole('combobox');
+    public readonly input = this.host.locator(TUI_INPUT_DATE_RANGE_LOCATORS.INPUT);
 
     /** Calendar (desktop or mobile) attached to the field. */
     public readonly calendar = this.host

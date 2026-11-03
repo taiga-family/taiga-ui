@@ -1,4 +1,4 @@
-import {type Locator} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 import {TUI_CALENDAR_SHEET_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TuiBaseEO} from './base.eo';
@@ -32,7 +32,7 @@ export class TuiCalendarSheetEO extends TuiBaseEO {
     public async clickOnDay(day: number): Promise<void> {
         const cell = this.getCalendarDay(day);
 
-        await cell.waitFor({state: 'visible'});
+        await expect(cell).toBeVisible();
         await cell.click({force: true});
     }
 
