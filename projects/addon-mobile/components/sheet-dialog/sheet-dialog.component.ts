@@ -111,7 +111,9 @@ export class TuiSheetDialogComponent {
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
     protected onResize(): void {
-        this.el.scrollTop = this.interacted ? this.el.scrollTop : this.initial;
+        if (!this.interacted) {
+            this.el.scrollTop = this.initial;
+        }
     }
 
     private close(): void {

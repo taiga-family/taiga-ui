@@ -163,8 +163,13 @@ describe('TuiSheetDialogComponent scrollTo', () => {
 
         component().scrollTo(1);
         sheet().scrollTop = 123;
+
+        // Writing scrollTop would cancel an ongoing smooth scroll (CSSOM View)
+        const written = jest.spyOn(sheet(), 'scrollTop', 'set');
+
         component()['onResize']();
 
+        expect(written).not.toHaveBeenCalled();
         expect(sheet().scrollTop).toBe(123);
     });
 
