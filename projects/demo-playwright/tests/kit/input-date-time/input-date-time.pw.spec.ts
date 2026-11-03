@@ -592,7 +592,6 @@ test.describe('InputDateTime', () => {
             page,
         }) => {
             const example = documentationPage.getExample('#validation');
-
             const inputDateTime = new TuiInputDateTimeEO(page, example);
             const input = inputDateTime.input.first();
 
@@ -610,7 +609,6 @@ test.describe('InputDateTime', () => {
 
         test('Calendar customization', async ({page}) => {
             const example = documentationPage.getExample('#calendar-customization');
-
             const inputDateTime = new TuiInputDateTimeEO(page, example);
 
             await inputDateTime.input.click();

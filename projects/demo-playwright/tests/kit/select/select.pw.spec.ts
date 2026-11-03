@@ -9,7 +9,6 @@ import {expect, type Locator, test} from '@playwright/test';
 import {
     TUI_DATA_LIST_LOCATORS,
     TUI_LABEL_LOCATORS,
-    TUI_SELECT_LOCATORS,
     TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
 

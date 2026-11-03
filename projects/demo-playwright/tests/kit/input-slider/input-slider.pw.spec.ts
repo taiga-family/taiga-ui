@@ -317,7 +317,6 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
             const example = new TuiDocumentationPagePO(page).demo;
-
             const inputSlider = new TuiInputSliderEO(page, example);
 
             await expect(inputSlider.input).toBeDisabled();
@@ -339,7 +338,6 @@ describe('InputSlider', () => {
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
-
             const inputSlider = new TuiInputSliderEO(page, example);
 
             await inputSlider.input.press('ArrowUp');
@@ -365,7 +363,6 @@ describe('InputSlider', () => {
                 );
 
                 const {demo} = new TuiDocumentationPagePO(page);
-
                 const inputSlider = new TuiInputSliderEO(page, demo);
 
                 await inputSlider.input.focus();
@@ -479,6 +476,7 @@ describe('InputSlider', () => {
                 await expect(inputSlider.slider).toHaveValue('9');
                 await expect(async () => {
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(80);
                 }).toPass();
             });
@@ -495,6 +493,7 @@ describe('InputSlider', () => {
                 await expect(inputSlider.slider).toHaveValue('9');
                 await expect(async () => {
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(80);
                 }).toPass();
             });

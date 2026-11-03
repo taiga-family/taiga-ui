@@ -1,6 +1,14 @@
-import type {Locator} from '@playwright/test';
-import {BlurOptions, FocusOptions, TuiMixinConstructor} from '../types';
-import {TuiBaseEO} from '../element-objects/base.eo';
+import {type Locator} from '@playwright/test';
+
+import {type TuiBaseEO} from '../element-objects/base.eo';
+import {type BlurOptions, type FocusOptions, type TuiMixinConstructor} from '../types';
+
+interface Focusable {
+    focus(options?: FocusOptions): Promise<void>;
+    blur(options?: BlurOptions): Promise<void>;
+}
+
+type WithFocusable<T> = T & (new (...args: any[]) => Focusable);
 
 /**
  * A mixin that adds focus management capabilities to an ElementObject.
@@ -29,7 +37,9 @@ import {TuiBaseEO} from '../element-objects/base.eo';
  *   }
  * }
  */
-export function withFocusable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
+export function withFocusable<T extends TuiMixinConstructor<TuiBaseEO>>(
+    Base: T,
+): WithFocusable<T> {
     return class extends Base {
         /**
          * Focuses the specified element.
@@ -40,8 +50,9 @@ export function withFocusable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T)
          * await this.focus(); // focuses host
          * await this.focus(inputField); // focuses a specific input
          */
-        async focus(locator?: Locator, options?: FocusOptions): Promise<void> {
+        public async focus(locator?: Locator, options?: FocusOptions): Promise<void> {
             const target = locator || this.host;
+
             await target.waitFor({state: 'visible'});
             await target.focus(options);
         }
@@ -55,8 +66,9 @@ export function withFocusable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T)
          * await this.blur(); // blurs host
          * await this.blur(searchInput); // blurs a specific field
          */
-        async blur(locator?: Locator, options?: BlurOptions): Promise<void> {
+        public async blur(locator?: Locator, options?: BlurOptions): Promise<void> {
             const target = locator || this.host;
+
             await target.waitFor({state: 'visible'});
             await target.blur(options);
         }

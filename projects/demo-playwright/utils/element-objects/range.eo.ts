@@ -1,7 +1,7 @@
 import {TUI_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
+import {TuiBaseEO} from './base.eo';
 
 /**
  * Element Object for a TuiRange component.

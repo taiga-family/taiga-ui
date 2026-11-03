@@ -6,7 +6,6 @@ import {
     type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 

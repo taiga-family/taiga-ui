@@ -16,7 +16,6 @@ export * from './input-date-time.locators';
 export * from './input-month.locators';
 export * from './input-month-range.locators';
 export * from './input-number.locators';
-export * from './input-phone.locators';
 export * from './input-phone-international.locators';
 export * from './input-range.locators';
 export * from './input-slider.locators';

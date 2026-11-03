@@ -134,7 +134,6 @@ test.describe('Input', () => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
-
             const {input, dropdown} = new TuiTextfieldWithDataListEO(page, example);
 
             await input.scrollIntoViewIfNeeded();

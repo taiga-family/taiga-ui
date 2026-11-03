@@ -5,10 +5,10 @@ import {
     CHAR_HYPHEN,
     CHAR_MINUS,
     CMD,
-    TuiInputNumberEO,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
+    TuiInputNumberEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 

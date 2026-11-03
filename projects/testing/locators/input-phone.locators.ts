@@ -1,5 +1,0 @@
-import {TUI_TEXTFIELD_LOCATORS} from './textfield.locators';
-
-export const TUI_INPUT_PHONE_LOCATORS = {
-    ...TUI_TEXTFIELD_LOCATORS,
-} as const;

@@ -111,8 +111,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(0.75);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(17);
                 }).toPass();
 
@@ -128,8 +130,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(1.25);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(50);
                 }).toPass();
 
@@ -146,8 +150,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(1.5);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(67);
                 }).toPass();
 
@@ -182,8 +188,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(0);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(0);
                 }).toPass();
 
@@ -197,8 +205,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(500);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(50);
                 }).toPass();
 
@@ -212,8 +222,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(750);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(75);
                 }).toPass();
 
@@ -227,8 +239,10 @@ test.describe('Slider', () => {
 
                 await expect(async () => {
                     const value = await slider.getValue();
+
                     expect(value).toBe(1000);
                     const percentage = await slider.getFilledPercentage();
+
                     expect(percentage).toBe(100);
                 }).toPass();
 

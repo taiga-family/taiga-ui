@@ -1,4 +1,4 @@
-import {type Locator, Page} from '@playwright/test';
+import {type Locator, type Page} from '@playwright/test';
 
 /**
  * Base class for all Element Objects.
@@ -19,8 +19,8 @@ export class TuiBaseEO {
     constructor(
         protected readonly page: Page,
         protected readonly parent?: Locator,
-        protected readonly customSelector: string = '',
-        protected readonly index: number = 0,
+        protected readonly customSelector = '',
+        protected readonly index = 0,
     ) {}
 
     /**
