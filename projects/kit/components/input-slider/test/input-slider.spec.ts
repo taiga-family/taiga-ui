@@ -135,6 +135,54 @@ describe('InputSlider with event coalescing', () => {
         expect(slider.value).toBe('50');
     }));
 
+    it.each([0, 100])(
+        'does not propagate a key-step value outside min/max at slider position %s',
+        (position) => {
+            fixture.componentInstance.control.setValue(50);
+            fixture.componentInstance.keySteps.set([
+                [0, -20],
+                [100, 120],
+            ]);
+            fixture.detectChanges();
+
+            const onChange = jest.fn();
+
+            fixture.componentInstance.control.valueChanges.subscribe(onChange);
+            slider.value = String(position);
+            slider.dispatchEvent(new Event('input', {bubbles: true}));
+
+            expect(fixture.componentInstance.control.value).toBe(50);
+            expect(onChange).not.toHaveBeenCalled();
+
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.control.value).toBe(50);
+            expect(onChange).not.toHaveBeenCalled();
+        },
+    );
+
+    it('propagates valid key-step values when the mapping exceeds min/max', () => {
+        fixture.componentInstance.keySteps.set([
+            [0, -20],
+            [100, 120],
+        ]);
+        fixture.detectChanges();
+
+        const onChange = jest.fn();
+
+        fixture.componentInstance.control.valueChanges.subscribe(onChange);
+        slider.value = '50';
+        slider.dispatchEvent(new Event('input', {bubbles: true}));
+
+        expect(fixture.componentInstance.control.value).toBe(50);
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenCalledWith(50);
+
+        fixture.detectChanges();
+
+        expect(onChange).toHaveBeenCalledTimes(1);
+    });
+
     it('preserves quantum rounding with a pending blur timeout', fakeAsync(() => {
         fixture.componentInstance.quantum.set(10);
         fixture.detectChanges();
