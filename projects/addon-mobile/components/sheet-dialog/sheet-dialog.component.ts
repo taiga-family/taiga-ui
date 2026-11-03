@@ -4,6 +4,7 @@ import {
     Component,
     ElementRef,
     inject,
+    viewChild,
     viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -47,7 +48,10 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 })
 export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
+    private readonly sheet = viewChild('sheet', {read: ElementRef});
     private readonly el = tuiInjectElement();
+    private ready = false;
+    private pending: {index: number; behavior: ScrollBehavior} | null = null;
 
     protected readonly context = injectContext<TuiSheetDialogContext>();
     protected readonly close$ = new Subject<void>();
@@ -77,7 +81,16 @@ export class TuiSheetDialogComponent {
 
     constructor() {
         Object.assign(this.context, {scrollTo: this.scrollTo.bind(this)});
-        afterNextRender(() => this.onResize());
+        afterNextRender(() => {
+            this.ready = true;
+
+            if (this.pending) {
+                this.scrollTo(this.pending.index, this.pending.behavior);
+                this.pending = null;
+            } else {
+                this.onResize();
+            }
+        });
     }
 
     public get initial(): number {
@@ -85,6 +98,12 @@ export class TuiSheetDialogComponent {
     }
 
     public scrollTo(index: number, behavior: ScrollBehavior = 'smooth'): void {
+        if (!this.ready) {
+            this.pending = {index, behavior};
+
+            return;
+        }
+
         // An explicit position must survive content resize, unlike the initial snap
         this.interacted = true;
         this.el.scrollTo({top: this.getTop(index), behavior});
@@ -106,11 +125,8 @@ export class TuiSheetDialogComponent {
     // Stops are followed by the sheet content top, so index `stops.length` expands the sheet
     private getTop(index: number): number {
         const tops = this.stops().map(({nativeElement}) => nativeElement.offsetTop);
+        const top = this.sheet()?.nativeElement.offsetTop ?? 0;
 
-        return (
-            tops.concat(this.el.clientHeight ?? Infinity)[
-                Math.min(Math.max(index, 0), tops.length)
-            ] ?? 0
-        );
+        return tops.concat(top)[Math.min(Math.max(index, 0), tops.length)] ?? 0;
     }
 }

@@ -7,7 +7,11 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiSheetDialogComponent, TuiSheetDialogService} from '@taiga-ui/addon-mobile';
+import {
+    TuiSheetDialogComponent,
+    type TuiSheetDialogOptions,
+    TuiSheetDialogService,
+} from '@taiga-ui/addon-mobile';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
@@ -29,6 +33,7 @@ describe('TuiSheetDialogComponent scrollTo', () => {
 
     async function setup(
         content: Parameters<TuiSheetDialogService['open']>[0] = 'content',
+        options: Partial<TuiSheetDialogOptions> = {},
     ): Promise<void> {
         TestBed.configureTestingModule({
             imports: [Test],
@@ -38,7 +43,7 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         fixture = TestBed.createComponent(Test);
         service = TestBed.inject(TuiSheetDialogService);
         fixture.detectChanges();
-        service.open(content, {stops: ['100px', '200px']}).subscribe();
+        service.open(content, {stops: ['100px', '200px'], ...options}).subscribe();
         fixture.detectChanges();
     }
 
@@ -52,7 +57,11 @@ describe('TuiSheetDialogComponent scrollTo', () => {
             .componentInstance as TuiSheetDialogComponent;
     }
 
-    function stubLayout(offsets: readonly number[] = [100, 200], height = 500): void {
+    function stubLayout(
+        offsets: readonly number[] = [100, 200],
+        top = 500,
+        height = 500,
+    ): void {
         const host = sheet();
         const stops = host.querySelectorAll('.t-stop');
 
@@ -62,6 +71,10 @@ describe('TuiSheetDialogComponent scrollTo', () => {
                 value: offset,
             }),
         );
+        Object.defineProperty(host.querySelector('.t-sheet'), 'offsetTop', {
+            configurable: true,
+            value: top,
+        });
         Object.defineProperty(host, 'clientHeight', {
             configurable: true,
             value: height,
@@ -70,6 +83,47 @@ describe('TuiSheetDialogComponent scrollTo', () => {
             configurable: true,
             value: scrollTo,
         });
+    }
+
+    /**
+     * Global stand-in for layout, for calls that land before the sheet's own elements can be stubbed
+     * individually. Returns a restore function.
+     */
+    function stubPrototypes(): () => void {
+        const proto = HTMLElement.prototype;
+        const original = Object.getOwnPropertyDescriptor(proto, 'offsetTop');
+        const originalScrollTo = proto.scrollTo;
+
+        Object.defineProperty(proto, 'offsetTop', {
+            configurable: true,
+            get(this: HTMLElement) {
+                if (this.classList.contains('t-sheet')) {
+                    return 500;
+                }
+
+                return this.classList.contains('t-stop')
+                    ? Array.from(this.parentElement?.children ?? []).indexOf(this) * 100 +
+                          100
+                    : 0;
+            },
+        });
+        Object.defineProperty(proto, 'scrollTo', {
+            configurable: true,
+            value: scrollTo,
+            writable: true,
+        });
+
+        return () => {
+            if (original) {
+                Object.defineProperty(proto, 'offsetTop', original);
+            }
+
+            Object.defineProperty(proto, 'scrollTo', {
+                configurable: true,
+                value: originalScrollTo,
+                writable: true,
+            });
+        };
     }
 
     it('scrolls to a stop by index', async () => {
@@ -112,6 +166,52 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         component()['onResize']();
 
         expect(sheet().scrollTop).toBe(123);
+    });
+
+    it('pins to the content top when the initial index exceeds stops', async () => {
+        await setup('content', {initial: 2});
+        stubLayout();
+
+        component()['onResize']();
+
+        expect(sheet().scrollTop).toBe(500);
+    });
+
+    it('uses the sheet top, not the host height, as the content stop', async () => {
+        // A non-closable sheet starts at the very top, so its height is not the target
+        await setup('content', {closable: false});
+        stubLayout([100, 200], 0);
+
+        component().scrollTo(2);
+
+        expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 0});
+    });
+
+    it('applies a scrollTo requested before the first render', async () => {
+        @Component({
+            template: 'Content',
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class Content {
+            private readonly sheet = inject(TuiSheetDialogComponent);
+
+            constructor() {
+                this.sheet.scrollTo(1);
+            }
+        }
+
+        // The deferred call is applied as soon as the sheet renders, before a per-element stub could exist
+        const restore = stubPrototypes();
+
+        try {
+            await setup(new PolymorpheusComponent(Content));
+            fixture.detectChanges();
+            await fixture.whenStable();
+        } finally {
+            restore();
+        }
+
+        expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 200});
     });
 
     it('is injectable from the content component', async () => {
