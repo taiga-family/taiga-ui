@@ -104,7 +104,6 @@ export class TuiSheetDialogComponent {
             return;
         }
 
-        // An explicit position must survive content resize, unlike the initial snap
         this.interacted = true;
         this.el.scrollTo({top: this.getTop(index), behavior});
     }
@@ -124,7 +123,6 @@ export class TuiSheetDialogComponent {
         }
     }
 
-    // Stops are followed by the sheet content top, so index `stops.length` expands the sheet
     private getTop(index: number): number {
         const tops = this.stops().map(({nativeElement}) => nativeElement.offsetTop);
         const top = this.sheet()?.nativeElement.offsetTop ?? 0;

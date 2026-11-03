@@ -21,10 +21,6 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly themeColor: string;
 }
 
-/**
- * Context of a sheet dialog. Unlike regular options, `scrollTo` is available to the content
- * as `let-scrollTo="scrollTo"` and lets it drive the sheet's snap position.
- */
 export type TuiSheetDialogContext<I = undefined, O = void> = TuiPortalContext<
     TuiSheetDialogOptions<I>,
     O

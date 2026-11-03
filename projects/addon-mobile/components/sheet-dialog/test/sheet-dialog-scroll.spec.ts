@@ -85,10 +85,6 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         });
     }
 
-    /**
-     * Global stand-in for layout, for calls that land before the sheet's own elements can be stubbed
-     * individually. Returns a restore function.
-     */
     function stubPrototypes(): () => void {
         const proto = HTMLElement.prototype;
         const original = Object.getOwnPropertyDescriptor(proto, 'offsetTop');
@@ -157,7 +153,6 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         await setup();
         stubLayout();
 
-        // Without a programmatic scroll the sheet is re-pinned to the initial stop
         component()['onResize']();
         expect(sheet().scrollTop).toBe(100);
 
@@ -183,7 +178,6 @@ describe('TuiSheetDialogComponent scrollTo', () => {
     });
 
     it('uses the sheet top, not the host height, as the content stop', async () => {
-        // A non-closable sheet starts at the very top, so its height is not the target
         await setup('content', {closable: false});
         stubLayout([100, 200], 0);
 
@@ -205,7 +199,6 @@ describe('TuiSheetDialogComponent scrollTo', () => {
             }
         }
 
-        // The deferred call is applied as soon as the sheet renders, before a per-element stub could exist
         const restore = stubPrototypes();
 
         try {
