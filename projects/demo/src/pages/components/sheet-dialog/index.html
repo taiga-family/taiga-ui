@@ -100,7 +100,13 @@
                 [items]="stopsVariants"
                 [(value)]="stops"
             >
-                an array of stop points in any units for the sheet.
+                an array of stop points in any units for the sheet. To move between them programmatically, call
+                <code>scrollTo(index)</code>
+                from the template via
+                <code>let-scrollTo="scrollTo"</code>
+                or on
+                <code>inject(TuiSheetDialogComponent)</code>
+                inside a content component.
             </tr>
             <tr
                 name="[initial]"

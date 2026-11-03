@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
+import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiFloatingContainer, TuiHeader, TuiSheetDialog, TuiTitle],
+    imports: [TuiButton, TuiSheetDialog],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -14,10 +13,14 @@ import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     protected open = false;
-    protected readonly stops = ['5.75rem', '13.875rem'];
+    protected readonly stops = ['5rem', '13rem'];
+    protected readonly paragraphs = Array.from(
+        {length: 8},
+        (_, index) => `Paragraph ${index + 1} of the content`,
+    );
 
     protected readonly options: Partial<TuiSheetDialogOptions> = {
-        label: 'Programmatic snap',
+        label: 'Scroll to stop',
         stops: this.stops,
     };
 }
