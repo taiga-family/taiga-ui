@@ -38,7 +38,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const {clientWidth} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const index = align() === 'start' ? 0 : items.length - 1;
-        const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
+        const more = isMore(children[index]) ? (items[index] ?? 0) : 0;
         const total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && itemsLimit() >= items.length) {
@@ -115,11 +115,15 @@ export class TuiItemsWithMoreService extends Observable<number> {
      */
     private reserveMoreWidth(items: readonly HTMLElement[]): void {
         const widths = items
-            .filter(({tagName}) => tagName !== 'SPAN')
+            .filter((item) => !isMore(item))
             .map(({clientWidth}) => clientWidth);
 
-        const width = Math.min(Math.max(0, ...widths) + 1, this.el.clientWidth);
+        const width = tuiClamp(Math.max(...widths) + 1, 0, this.el.clientWidth);
 
         this.el.style.setProperty('--t-min-width', `${width}px`);
     }
+}
+
+function isMore(element?: Element): boolean {
+    return !!element?.classList.contains('t-item_more');
 }
