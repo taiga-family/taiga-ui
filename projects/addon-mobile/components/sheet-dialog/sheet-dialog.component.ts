@@ -12,6 +12,7 @@ import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
@@ -19,7 +20,10 @@ import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
-import {type TuiSheetDialogContext} from './sheet-dialog.options';
+import {
+    type TuiSheetDialogContext,
+    type TuiSheetDialogOptions,
+} from './sheet-dialog.options';
 import {TuiSheetDialogClose} from './sheet-dialog-close.directive';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
@@ -53,7 +57,10 @@ export class TuiSheetDialogComponent {
     private ready = false;
     private pending: {index: number; behavior: ScrollBehavior} | null = null;
 
-    protected readonly context = injectContext<TuiSheetDialogContext>();
+    protected readonly context: TuiSheetDialogContext = {
+        ...injectContext<TuiPortalContext<TuiSheetDialogOptions>>(),
+        scrollTo: (index, behavior) => this.scrollTo(index, behavior),
+    };
     protected readonly close$ = new Subject<void>();
     protected interacted = false;
     protected readonly $ = merge(
@@ -80,7 +87,6 @@ export class TuiSheetDialogComponent {
         .subscribe(() => this.close());
 
     constructor() {
-        Object.assign(this.context, {scrollTo: this.scrollTo.bind(this)});
         afterNextRender(() => {
             this.ready = true;
 
