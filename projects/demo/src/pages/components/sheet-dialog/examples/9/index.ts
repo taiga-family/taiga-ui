@@ -13,7 +13,7 @@ import {TuiButton} from '@taiga-ui/core';
 })
 export default class Example {
     protected open = false;
-    protected readonly stops = ['5rem', '13rem'];
+    protected readonly stops = ['9.5rem', '18rem'];
     protected readonly paragraphs = Array.from(
         {length: 8},
         (_, index) => `Paragraph ${index + 1} of the content`,
