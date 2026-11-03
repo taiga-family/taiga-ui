@@ -1,8 +1,8 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
-import {TuiBaseEO} from './base.eo';
 import {withClickable} from '../mixins';
+import {TuiBaseEO} from './base.eo';
 
 /**
  * Element Object for a TuiTextfield component.

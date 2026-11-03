@@ -21,7 +21,6 @@ test.describe('InputDate', () => {
 
         test('Actual min/max in calendar', async ({page}) => {
             const example = documentationPage.getExample('#basic');
-
             const inputDate = new TuiInputDateEO(page, example);
 
             await inputDate.input.click();

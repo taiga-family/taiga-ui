@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
 import {
     CHAR_MINUS,
-    TuiInputNumberEO,
     TuiDocumentationPagePO,
     tuiGoto,
+    TuiInputNumberEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 

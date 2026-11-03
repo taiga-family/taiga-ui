@@ -21,7 +21,6 @@ test.describe('InputDate and mobile user agent', () => {
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-calendar-sheet__cell"]';
-
         const inputDate = new TuiInputDateEO(page, example, '', 1);
 
         // eslint-disable-next-line playwright/no-force-option
@@ -43,7 +42,6 @@ test.describe('InputDate and mobile user agent', () => {
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
-
         const inputDate = new TuiInputDateEO(page, example);
 
         // eslint-disable-next-line playwright/no-force-option

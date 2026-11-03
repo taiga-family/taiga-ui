@@ -1,11 +1,19 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 import {
     TUI_DROPDOWN_LOCATORS,
     TUI_TABS_WITH_MORE_LOCATORS,
 } from '@taiga-ui/testing/locators';
 
-import {TuiMixinConstructor} from '../types';
-import {TuiBaseEO} from '../element-objects/base.eo';
+import {type TuiBaseEO} from '../element-objects/base.eo';
+import {type TuiMixinConstructor} from '../types';
+
+interface More {
+    readonly more: Locator;
+    readonly moreDropdown: Locator;
+    getMoreOption(indexOrText: number | string): Locator;
+}
+
+type WithMore<T> = T & (new (...args: any[]) => More);
 
 /**
  * A mixin that adds "more" dropdown behavior to a tabs-based Element Object.
@@ -23,17 +31,17 @@ import {TuiBaseEO} from '../element-objects/base.eo';
  *   // Now has .more, .moreDropdown, .getMoreOption()
  * }
  */
-export function withMore<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
+export function withMore<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T): WithMore<T> {
     return class extends Base {
-        /** Button that opens the overflow dropdown. */
-        public get more(): Locator {
-            return this.host.locator(TUI_TABS_WITH_MORE_LOCATORS.MORE_BUTTON);
-        }
-
         /** Dropdown container rendered on page level. */
         public readonly moreDropdown = this.host
             .page()
             .locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        /** Button that opens the overflow dropdown. */
+        public get more(): Locator {
+            return this.host.locator(TUI_TABS_WITH_MORE_LOCATORS.MORE_BUTTON);
+        }
 
         /**
          * Returns the locator of a tab option in the "more" dropdown.
@@ -41,13 +49,13 @@ export function withMore<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
          * @param indexOrText Zero-based index or text of the option.
          */
         public getMoreOption(indexOrText: number | string): Locator {
-            if (typeof indexOrText === 'number') {
-                return this.moreDropdown
-                    .locator('button[tuiTab]')
-                    .locator(`nth=${indexOrText}`);
-            }
-
-            return this.moreDropdown.locator(`button[tuiTab]:has-text("${indexOrText}")`);
+            return typeof indexOrText === 'number'
+                ? this.moreDropdown
+                      .locator('button[tuiTab]')
+                      .locator(`nth=${indexOrText}`)
+                : this.moreDropdown
+                      .locator('button[tuiTab]')
+                      .filter({hasText: indexOrText});
         }
     };
 }

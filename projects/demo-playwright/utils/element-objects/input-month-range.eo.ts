@@ -1,5 +1,6 @@
-import {TuiBaseEO} from './base.eo';
 import {TUI_INPUT_MONTH_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
+
+import {TuiBaseEO} from './base.eo';
 
 /**
  * Element Object for a TuiInputMonthRange component.

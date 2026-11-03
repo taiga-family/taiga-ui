@@ -1,5 +1,11 @@
-import {TuiBaseEO} from '../element-objects/base.eo';
-import {ClickOptions, TuiMixinConstructor} from '../types';
+import {type TuiBaseEO} from '../element-objects/base.eo';
+import {type ClickOptions, type TuiMixinConstructor} from '../types';
+
+interface Clickable {
+    click(options?: ClickOptions): Promise<void>;
+}
+
+type WithClickable<T> = T & (new (...args: any[]) => Clickable);
 
 /**
  * A mixin that adds basic click behavior to an ElementObject.
@@ -41,7 +47,9 @@ import {ClickOptions, TuiMixinConstructor} from '../types';
  *   }
  * }
  */
-export function withClickable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T) {
+export function withClickable<T extends TuiMixinConstructor<TuiBaseEO>>(
+    Base: T,
+): WithClickable<T> {
     return class extends Base {
         /**
          * Clicks the host element.
@@ -56,7 +64,7 @@ export function withClickable<T extends TuiMixinConstructor<TuiBaseEO>>(Base: T)
          * @example
          * await this.click(); // clicks the host
          */
-        async click(options?: ClickOptions): Promise<void> {
+        public async click(options?: ClickOptions): Promise<void> {
             await this.host.waitFor({state: 'visible'});
             await this.host.click(options);
         }
