@@ -39,37 +39,37 @@ test.describe('InputDateRange', () => {
                     `${DemoRoute.InputDateRange}/API?tuiTextfieldSize=${size}`,
                 );
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
 
                 await expect
-                    .soft(inputDateRange.textfield)
+                    .soft(inputDateRange.input)
                     .toHaveScreenshot(`01-textfield-size-${size}-empty.png`);
                 await expect
                     .soft(inputDateRange.calendar)
                     .toHaveScreenshot(`01-calendar-size-${size}-empty.png`);
 
-                await inputDateRange.textfield.pressSequentially('01');
+                await inputDateRange.input.pressSequentially('01');
 
                 await expect
-                    .soft(inputDateRange.textfield)
+                    .soft(inputDateRange.input)
                     .toHaveScreenshot(`02-textfield-size-${size}-set-day.png`);
                 await expect
                     .soft(inputDateRange.calendar)
                     .toHaveScreenshot(`02-calendar-size-${size}-set-day.png`);
 
-                await inputDateRange.textfield.pressSequentially('.06.1994');
+                await inputDateRange.input.pressSequentially('.06.1994');
 
                 await expect
-                    .soft(inputDateRange.textfield)
+                    .soft(inputDateRange.input)
                     .toHaveScreenshot(`03-textfield-size-${size}-set-from-date.png`);
                 await expect
                     .soft(inputDateRange.calendar)
                     .toHaveScreenshot(`03-calendar-size-${size}-set-from-date.png`);
 
-                await inputDateRange.textfield.pressSequentially('01.01.2022');
+                await inputDateRange.input.pressSequentially('01.01.2022');
 
                 await expect
-                    .soft(inputDateRange.textfield)
+                    .soft(inputDateRange.input)
                     .toHaveScreenshot(`04-textfield-size-${size}-set-to-date.png`);
                 await expect
                     .soft(inputDateRange.calendar)
@@ -79,10 +79,10 @@ test.describe('InputDateRange', () => {
 
         test('Maximum month less than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             await expect
-                .soft(inputDateRange.textfield)
+                .soft(inputDateRange.input)
                 .toHaveScreenshot('05-textfield-maximum-month.png');
             await expect
                 .soft(inputDateRange.calendar)
@@ -91,7 +91,7 @@ test.describe('InputDateRange', () => {
 
         test('Minimum month more than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             await expect
                 .soft(page)
@@ -102,10 +102,10 @@ test.describe('InputDateRange', () => {
 
         test('Maximum month when items not empty', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1&max$=7`);
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             await expect
-                .soft(inputDateRange.textfield)
+                .soft(inputDateRange.input)
                 .toHaveScreenshot('06-textfield-maximum-month-with-items.png');
             await expect
                 .soft(inputDateRange.calendar)
@@ -114,7 +114,7 @@ test.describe('InputDateRange', () => {
 
         test('uses dropdown scrolling for long period items', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=2`);
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             const dropdown = page.locator('tui-dropdown');
             const calendar = inputDateRange.calendar.locator(
@@ -151,29 +151,29 @@ test.describe('InputDateRange', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.pressSequentially('32');
+                await inputDateRange.input.pressSequentially('32');
 
-                await expect(inputDateRange.textfield).toHaveValue('03.02');
+                await expect(inputDateRange.input).toHaveValue('03.02');
             });
 
             test('month > 12', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.pressSequentially('2913');
+                await inputDateRange.input.pressSequentially('2913');
 
-                await expect(inputDateRange.textfield).toHaveValue('29.1');
+                await expect(inputDateRange.input).toHaveValue('29.1');
 
-                await inputDateRange.textfield.pressSequentially('0');
+                await inputDateRange.input.pressSequentially('0');
 
-                await expect(inputDateRange.textfield).toHaveValue('29.10');
+                await expect(inputDateRange.input).toHaveValue('29.10');
             });
 
             test('pads date range if it is less than [minLength]', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=0`); // minLength = {day: 3}
 
-                await inputDateRange.textfield.pressSequentially('21052023-22052023');
+                await inputDateRange.input.pressSequentially('21052023-22052023');
 
-                await expect(inputDateRange.textfield).toHaveValue(
+                await expect(inputDateRange.input).toHaveValue(
                     `21.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}23.05.2023`,
                 );
             });
@@ -181,9 +181,9 @@ test.describe('InputDateRange', () => {
             test('cuts date range if it is more than [maxLength]', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=1`); // maxLength = {day: 5}
 
-                await inputDateRange.textfield.pressSequentially('20052023-29052023');
+                await inputDateRange.input.pressSequentially('20052023-29052023');
 
-                await expect(inputDateRange.textfield).toHaveValue(
+                await expect(inputDateRange.input).toHaveValue(
                     `20.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}24.05.2023`,
                 );
             });
@@ -195,7 +195,7 @@ test.describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
 
                 const calendarSheet = new TuiCalendarSheetEO(
                     page,
@@ -204,15 +204,13 @@ test.describe('InputDateRange', () => {
 
                 await calendarSheet.clickOnDay(15);
 
-                await expect(inputDateRange.textfield).toHaveValue(
+                await expect(inputDateRange.input).toHaveValue(
                     `15.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
                 );
 
                 await calendarSheet.clickOnDay(15);
 
-                await expect(inputDateRange.textfield).toHaveValue(
-                    '15.09.2020 – 15.09.2020',
-                );
+                await expect(inputDateRange.input).toHaveValue('15.09.2020 – 15.09.2020');
             });
 
             test('allows to select new range start after double click on the same day', async ({
@@ -220,7 +218,7 @@ test.describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
 
                 const calendarSheet = new TuiCalendarSheetEO(
                     page,
@@ -232,21 +230,19 @@ test.describe('InputDateRange', () => {
 
                 await expect(inputDateRange.calendar).not.toBeAttached();
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
 
                 await expect(inputDateRange.calendar).toBeAttached();
 
                 await calendarSheet.clickOnDay(22);
 
-                await expect(inputDateRange.textfield).toHaveValue(
+                await expect(inputDateRange.input).toHaveValue(
                     `22.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
                 );
 
                 await calendarSheet.clickOnDay(25);
 
-                await expect(inputDateRange.textfield).toHaveValue(
-                    '22.09.2020 – 25.09.2020',
-                );
+                await expect(inputDateRange.input).toHaveValue('22.09.2020 – 25.09.2020');
             });
 
             test('no highlighting hover effect after double click on the same day', async ({
@@ -254,7 +250,7 @@ test.describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
 
                 const calendarSheet = new TuiCalendarSheetEO(
                     page,
@@ -270,12 +266,10 @@ test.describe('InputDateRange', () => {
 
                 await calendarSheet.clickOnDay(15);
 
-                await expect(inputDateRange.textfield).toHaveValue(
-                    '15.09.2020 – 15.09.2020',
-                );
+                await expect(inputDateRange.input).toHaveValue('15.09.2020 – 15.09.2020');
                 await expect(inputDateRange.calendar).not.toBeAttached();
 
-                await inputDateRange.textfield.click();
+                await inputDateRange.input.click();
                 await expect(inputDateRange.calendar).toBeAttached();
                 await calendarSheet.getCalendarDay(22).hover();
 
@@ -297,7 +291,7 @@ test.describe('InputDateRange', () => {
 
             const calendarSheet = new TuiCalendarSheetEO(page, inputDateRange.calendar);
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
             await calendarSheet.clickOnDay(1);
             await page.mouse.move(0, 0);
 
@@ -309,7 +303,7 @@ test.describe('InputDateRange', () => {
             await page.mouse.move(0, 0);
 
             await expect
-                .soft(inputDateRange.textfield)
+                .soft(inputDateRange.input)
                 .toHaveScreenshot('input-date-range-min-length-15-2.png');
         });
 
@@ -318,25 +312,25 @@ test.describe('InputDateRange', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=1`);
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             const calendarSheet = new TuiCalendarSheetEO(page, inputDateRange.calendar);
 
             await calendarSheet.clickOnDay(15);
             await calendarSheet.clickOnDay(15);
 
-            await expect(inputDateRange.textfield).toHaveValue(
+            await expect(inputDateRange.input).toHaveValue(
                 `15.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}15.09.2020`,
             );
 
             await expect(inputDateRange.calendar).not.toBeAttached();
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             await calendarSheet.clickOnDay(22);
             await calendarSheet.clickOnDay(25);
 
-            await expect(inputDateRange.textfield).toHaveValue(
+            await expect(inputDateRange.input).toHaveValue(
                 `22.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
             );
         });
@@ -353,9 +347,9 @@ test.describe('InputDateRange', () => {
             const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
             await inputDateRange.selectItem(2);
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
 
             let checkmark = await inputDateRange.getCheckmark(1);
 
@@ -378,8 +372,8 @@ test.describe('InputDateRange', () => {
         const example = documentationPage.getExample('#data-list');
         const inputDateRange = new TuiInputDateRangeEO(page, example);
 
-        await inputDateRange.textfield.focus();
-        await inputDateRange.textfield.click();
+        await inputDateRange.input.focus();
+        await inputDateRange.input.click();
         await inputDateRange.selectItem(2);
 
         await expect(inputDateRange.template).toHaveText('Yesterday');
@@ -387,14 +381,14 @@ test.describe('InputDateRange', () => {
             .soft(inputDateRange.host)
             .toHaveScreenshot('13-data-range-custom-period-yesterday-focused.png');
 
-        await inputDateRange.textfield.blur();
+        await inputDateRange.input.blur();
 
         await expect
             .soft(inputDateRange.host)
             .toHaveScreenshot('14-data-range-custom-period-yesterday-unfocused.png');
 
-        await inputDateRange.textfield.focus();
-        await inputDateRange.textfield.click();
+        await inputDateRange.input.focus();
+        await inputDateRange.input.click();
         await inputDateRange.selectItem(0);
 
         await expect(inputDateRange.template).toHaveText('For all the time');
@@ -402,7 +396,7 @@ test.describe('InputDateRange', () => {
             .soft(inputDateRange.host)
             .toHaveScreenshot('15-data-range-custom-period-today-focused.png');
 
-        await inputDateRange.textfield.blur();
+        await inputDateRange.input.blur();
 
         await expect
             .soft(inputDateRange.host)
@@ -415,19 +409,19 @@ test.describe('InputDateRange', () => {
 
             const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangeEO(page, example);
-            const calendarSheet = new TuiCalendarSheetEO(page, example);
+            const calendarSheet = new TuiCalendarSheetEO(page);
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
             await inputDateRange.selectItem(1);
 
             await expect(inputDateRange.template).toHaveText('Today');
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
             await expect(inputDateRange.calendar).toBeAttached();
             await calendarSheet.clickOnDay(21);
             await calendarSheet.clickOnDay(25);
 
-            await expect(inputDateRange.textfield).toHaveValue(
+            await expect(inputDateRange.input).toHaveValue(
                 `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
             );
             await expect
@@ -444,15 +438,15 @@ test.describe('InputDateRange', () => {
             const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
-            await inputDateRange.textfield.click();
+            await inputDateRange.input.click();
             await inputDateRange.selectItem(1);
 
-            await inputDateRange.textfield.focus();
-            await inputDateRange.textfield.press('Backspace');
+            await inputDateRange.input.focus();
+            await inputDateRange.input.press('Backspace');
 
-            await expect(inputDateRange.textfield).toHaveValue('');
+            await expect(inputDateRange.input).toHaveValue('');
             await expect
-                .soft(inputDateRange.textfield)
+                .soft(inputDateRange.input)
                 .toHaveScreenshot('10-input-date-range.png');
         });
 
@@ -462,12 +456,12 @@ test.describe('InputDateRange', () => {
             const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangeEO(page, example);
 
-            await inputDateRange.textfield.focus();
-            await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
+            await inputDateRange.input.focus();
+            await inputDateRange.input.fill('25.09.2020 - 25.09.2020');
 
             await expect(inputDateRange.template).toHaveText('Today');
             await expect
-                .soft(inputDateRange.textfield)
+                .soft(inputDateRange.input)
                 .toHaveScreenshot('11-input-date-range.png');
         });
     });
