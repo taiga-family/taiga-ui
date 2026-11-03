@@ -61,6 +61,7 @@ export class TuiSheetDialogComponent {
         ...injectContext<TuiPortalContext<TuiSheetDialogOptions>>(),
         scrollTo: (index, behavior) => this.scrollTo(index, behavior),
     };
+
     protected readonly close$ = new Subject<void>();
     protected interacted = false;
     protected readonly $ = merge(
