@@ -15,7 +15,7 @@ export default class Example {
     protected open = false;
     protected readonly stops = ['9.5rem', '18rem'];
     protected readonly paragraphs = Array.from(
-        {length: 8},
+        {length: 16},
         (_, index) => `Paragraph ${index + 1} of the content`,
     );
 
