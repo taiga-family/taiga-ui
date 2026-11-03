@@ -24,7 +24,7 @@ test.describe('InputDate and mobile user agent', () => {
         const inputDate = new TuiInputDateEO(page, example, '', 1);
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.input.nth(0).click({position: {x: 300, y: 20}, force: true});
+        await inputDate.input.click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector(TUI_SHEET_DIALOG_LOCATORS.HOST, {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
@@ -42,10 +42,10 @@ test.describe('InputDate and mobile user agent', () => {
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
-        const inputDate = new TuiInputDateEO(page, example);
+        const inputDate = new TuiInputDateEO(page, example, '', 2);
 
         // eslint-disable-next-line playwright/no-force-option
-        await inputDate.input.nth(2).click({position: {x: 300, y: 20}, force: true});
+        await inputDate.input.click({position: {x: 300, y: 20}, force: true});
 
         await page.waitForSelector('tui-mobile-calendar-sheet', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
