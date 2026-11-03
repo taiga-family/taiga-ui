@@ -8,6 +8,7 @@ export const DemoRoute = {
     SSR: '/ssr',
     RTL: '/rtl',
     About: '/info/about',
+    Licensing: '/info/licensing',
     Jest: '/testing/jest',
     DisableAnimation: '/testing/disable-animation',
     ScreenshotBot: '/testing/screenshot-bot',

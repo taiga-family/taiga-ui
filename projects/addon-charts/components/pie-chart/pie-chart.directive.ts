@@ -8,7 +8,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {map, pairwise, startWith, switchMap, takeWhile} from 'rxjs';
+import {map, of, pairwise, startWith, switchMap, takeWhile} from 'rxjs';
 
 @Directive({selector: 'path[tuiPieChart]'})
 export class TuiPieChartDirective {
@@ -24,6 +24,10 @@ export class TuiPieChartDirective {
             startWith([0, 0]),
             pairwise(),
             switchMap(([prev, cur]) => {
+                if (!this.speed) {
+                    return of(cur);
+                }
+
                 const now = this.performance.now();
                 const startDelta = cur[0] - prev[0];
                 const endDelta = cur[1] - prev[1];

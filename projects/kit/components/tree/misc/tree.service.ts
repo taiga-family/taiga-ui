@@ -1,4 +1,5 @@
 import {inject, Injectable} from '@angular/core';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map, mergeMap, startWith, Subject, tap} from 'rxjs';
 
 import {type TuiTreeLoader} from './tree.interfaces';
@@ -27,7 +28,13 @@ export class TuiTreeService<T> {
     );
 
     public getChildren(item: T): readonly T[] {
-        return this.map.get(item) || [this.loading];
+        const children = this.map.get(item);
+
+        if (children) {
+            return children;
+        }
+
+        return tuiIsPresent(item) && this.loader.hasChildren(item) ? [this.loading] : [];
     }
 
     public loadChildren(item: T): void {

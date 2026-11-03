@@ -4,6 +4,24 @@ import {expect, test} from '@playwright/test';
 import {TUI_DATA_LIST_LOCATORS, TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DataList', () => {
+    test('Custom list source files', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DataList);
+
+        const example = page.locator('tui-doc-example#custom-list');
+
+        await example.scrollIntoViewIfNeeded();
+
+        for (const [file, content] of [
+            ['custom-list/index.ts', 'export class CustomListComponent'],
+            ['custom-list/index.html', 'Search categories'],
+            ['custom-list/index.less', '.t-list-search'],
+        ] as const) {
+            await example.getByRole('button', {name: file, exact: true}).click();
+
+            await expect(example.locator('tui-doc-code:visible')).toContainText(content);
+        }
+    });
+
     test('Custom list', async ({page}) => {
         await tuiGoto(page, DemoRoute.DataList);
 

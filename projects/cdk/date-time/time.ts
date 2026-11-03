@@ -206,21 +206,26 @@ export class TuiTime implements TuiTimeLike {
             | 'MM:SS'
             | 'SS.MSS',
     ): string {
-        const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
+        if (mode) {
+            const {hours = this.hours, meridiem = ''} = mode.includes('AA')
+                ? this.toTwelveHour(this.hours)
+                : {};
 
-        const needAddSeconds =
-            needAddMs || mode?.startsWith('HH:MM:SS') || (!mode && this.seconds > 0);
+            return mode
+                .replace('MSS', this.formatTime(this.ms, 3))
+                .replace('HH', this.formatTime(hours))
+                .replace('MM', this.formatTime(this.minutes))
+                .replace('SS', this.formatTime(this.seconds))
+                .replace(' AA', `${CHAR_NO_BREAK_SPACE}${meridiem}`);
+        }
 
-        const {hours = this.hours, meridiem = ''} = mode?.includes('AA')
-            ? this.toTwelveHour(this.hours)
-            : {};
-
-        const hhMm = `${this.formatTime(hours)}:${this.formatTime(this.minutes)}`;
+        const needAddMs = this.ms > 0;
+        const needAddSeconds = needAddMs || this.seconds > 0;
+        const hhMm = `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}`;
         const ss = needAddSeconds ? `:${this.formatTime(this.seconds)}` : '';
         const mss = needAddMs ? `.${this.formatTime(this.ms, 3)}` : '';
-        const aa = meridiem && `${CHAR_NO_BREAK_SPACE}${meridiem}`;
 
-        return `${hhMm}${ss}${mss}${aa}`;
+        return `${hhMm}${ss}${mss}`;
     }
 
     public valueOf(): number {

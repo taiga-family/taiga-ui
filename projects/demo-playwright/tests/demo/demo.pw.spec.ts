@@ -44,6 +44,10 @@ test.describe('Demo', () => {
                 const preventFlaky = path.includes('charts');
 
                 await page.waitForTimeout(preventFlaky ? 1000 : 150);
+                // JS-driven SVG updates are not tracked by toHaveScreenshot.
+                await expect(
+                    example.locator('path[automation-id="tui-pie-chart__segment"][d=""]'),
+                ).toHaveCount(0);
 
                 const makeName = (mode: string): string[] => [
                     path.replace('/', '').replaceAll('/', '-'),

@@ -17,7 +17,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounce, filter, map, Subject, timer} from 'rxjs';
 
-import {TUI_TILES_REORDER} from './tiles.tokens';
+import {TUI_TILES_REORDER, tuiTilesShift, tuiTilesSwap} from './tiles.tokens';
 
 @Component({
     selector: 'tui-tiles',
@@ -83,6 +83,18 @@ export class TuiTilesComponent {
             ? new Map(this.order())
             : new Map(elements.map((_, index) => [index, index]));
 
-        return this.handler(order, currentIndex, newIndex);
+        return this.handler === tuiTilesSwap &&
+            !this.debounce() &&
+            this.isSingleLine(elements)
+            ? tuiTilesShift(order, currentIndex, newIndex)
+            : this.handler(order, currentIndex, newIndex);
+    }
+
+    private isSingleLine(elements: readonly Element[]): boolean {
+        const rects = elements.map((element) => element.getBoundingClientRect());
+        const columns = new Set(rects.map(({top}) => Math.round(top))).size;
+        const rows = new Set(rects.map(({left}) => Math.round(left))).size;
+
+        return columns === 1 || rows === 1;
     }
 }

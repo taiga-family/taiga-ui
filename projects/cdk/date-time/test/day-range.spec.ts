@@ -182,6 +182,40 @@ describe('TuiDayRange', () => {
     });
 
     describe('toArray', () => {
+        it('returns the original date for a single-day range', () => {
+            const day = new TuiDay(2026, 9, 13);
+
+            expect(new TuiDayRange(day, day).toArray()).toEqual([day]);
+        });
+
+        it('includes the last day across the European daylight saving time boundary', () => {
+            const range = new TuiDayRange(
+                new TuiDay(2026, 9, 24),
+                new TuiDay(2026, 9, 27),
+            );
+
+            expect(range.toArray()).toEqual([
+                new TuiDay(2026, 9, 24),
+                new TuiDay(2026, 9, 25),
+                new TuiDay(2026, 9, 26),
+                new TuiDay(2026, 9, 27),
+            ]);
+        });
+
+        it('includes the last day across the US daylight saving time boundary', () => {
+            const range = new TuiDayRange(
+                new TuiDay(2026, 9, 31),
+                new TuiDay(2026, 10, 3),
+            );
+
+            expect(range.toArray()).toEqual([
+                new TuiDay(2026, 9, 31),
+                new TuiDay(2026, 10, 1),
+                new TuiDay(2026, 10, 2),
+                new TuiDay(2026, 10, 3),
+            ]);
+        });
+
         it('returns array with all dates between `from` and `to` (including `from` and `to` day)', () => {
             const range = new TuiDayRange(
                 new TuiDay(2024, 11, 29),

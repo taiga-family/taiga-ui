@@ -14,5 +14,6 @@ export default class Page {
         'iOS floating',
         'App bar',
         'Sticky',
+        'Progressive blur',
     ];
 }

@@ -32,7 +32,10 @@ import {
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {
+    TuiAppearance,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core/directives/appearance';
 import {TuiButtonX, tuiButtonXOptionsProvider} from '@taiga-ui/core/directives/button-x';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
@@ -65,6 +68,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiAppearanceOptionsProvider({appearance: ''}),
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiButtonXOptionsProvider(() => inject(TUI_BUTTON_OPTIONS)),
         tuiAsDataListHost(TuiTextfieldComponent),
@@ -154,6 +158,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
      */
     public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
     public readonly value = tuiValue(this.input);
+
+    public get id(): string {
+        return this.input()?.nativeElement.id || '';
+    }
 
     public get disabled(): boolean {
         return this.control()?.disabled ?? this.input()?.nativeElement?.disabled ?? false;

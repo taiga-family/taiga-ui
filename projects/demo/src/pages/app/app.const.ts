@@ -1,3 +1,5 @@
+import {type TUI_USED_ICONS} from '../../../used-icons';
+
 export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Tooltip', 'Hint', 'HintManual', 'HintPointer'],
     ['LineChart', 'LineDaysChart'],
@@ -19,3 +21,16 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Table', 'TablePagination', 'TableFilters'],
     ['SheetDialog', 'Dialog', 'BottomSheet'],
 ];
+
+export const DOC_PAGES_ICONS: Record<string, (typeof TUI_USED_ICONS)[number]> = {
+    Information: '@tui.info',
+    'Getting Started': '@tui.rocket',
+    'AI tools': '@tui.sparkles',
+    Documentation: '@tui.file-code-corner',
+    Components: '@tui.puzzle',
+    Form: '@tui.form',
+    Layout: '@tui.layout-panel-left',
+    Navigation: '@tui.compass',
+    Charts: '@tui.chart-pie',
+    Tools: '@tui.hammer',
+};

@@ -10,16 +10,16 @@ import {TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
             tuiNotification
         >
             <div tuiTitle>
-                Taiga UI 5 is out!
+                Taiga Figma license is out!
                 <div tuiSubtitle>
                     See
                     <a
-                        href="https://dev.to/angular/whats-new-in-taiga-ui-v5-a-modern-angular-ui-kit-7lm"
+                        href="https://pineoptic.one/products"
                         rel="noreferrer noopener"
                         target="_blank"
                         tuiLink
                     >
-                        what's new
+                        our products page
                     </a>
                 </div>
             </div>

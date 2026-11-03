@@ -99,6 +99,44 @@ test.describe('DropdownSelection', () => {
         await expect.soft(page).toHaveScreenshot('06-dropdown-selection-keydown.png');
     });
 
+    test('only one dropdown is shown after re-clicking selected text in another example', async ({
+        page,
+    }) => {
+        const docPage = new TuiDocumentationPagePO(page);
+        const textareaExample = docPage.getExample('#textarea');
+        const textarea = textareaExample.locator('textarea');
+        const sampleText = docPage.getExample('#sample').locator('p');
+        const dropdowns = page.locator('tui-dropdown');
+
+        await textarea.click();
+        await textarea.evaluate((el: HTMLTextAreaElement) => {
+            const caret = el.value.indexOf('@') + 1;
+
+            el.setSelectionRange(caret, caret);
+        });
+
+        await expect(dropdowns).toHaveCount(1);
+
+        await textareaExample.click({position: {x: 1, y: 1}});
+
+        await expect(dropdowns).toHaveCount(0);
+
+        const {x, y, width, height} = (await sampleText.boundingBox())!;
+
+        await page.mouse.move(x + 2, y + height / 2);
+        await page.mouse.down();
+        await page.mouse.move(x + width / 2, y + height / 2, {steps: 10});
+        await page.mouse.up();
+
+        await expect(dropdowns).toHaveCount(1);
+        await expect(dropdowns).toContainText('Dropdown text');
+
+        await page.waitForTimeout(100);
+        await page.mouse.click(x + width / 4, y + height / 2);
+
+        await expect(dropdowns).toHaveCount(1);
+    });
+
     test('textarea with many line breaks and scroll', async ({page}) => {
         const api = new TuiDocumentationPagePO(page);
         const example = api.getExample('#textarea');

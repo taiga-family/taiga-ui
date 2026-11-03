@@ -30,7 +30,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     styleUrl: './line-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [WaResizeObserverService],
-    viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
+    viewProviders: [tuiHintOptionsProvider({hideDelay: 0})],
     host: {'(mouseleave)': 'onMouseLeave()'},
 })
 export class TuiLineChart {

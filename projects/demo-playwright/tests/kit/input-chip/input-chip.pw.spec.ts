@@ -52,6 +52,7 @@ test.describe('InputChip', () => {
             const chip = new TuiInputChipEO(basic);
 
             await chip.cleaner.click();
+            await expect(chip.chips).toHaveCount(0);
             await chip.addChip('repo\ttest\tseparator');
 
             await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator.png');
@@ -63,6 +64,7 @@ test.describe('InputChip', () => {
             const chip = new TuiInputChipEO(basic);
 
             await chip.cleaner.click();
+            await expect(chip.chips).toHaveCount(0);
             await chip.addChip('repo\ntest\nseparator');
 
             await expect.soft(basic).toHaveScreenshot('input-chip-basic-separator-2.png');

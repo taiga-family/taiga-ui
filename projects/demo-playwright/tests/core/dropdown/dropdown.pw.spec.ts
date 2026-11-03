@@ -266,4 +266,89 @@ test.describe('Dropdown', () => {
 
         await expect.soft(page).toHaveScreenshot('21-dropdown-zoomed.png');
     });
+
+    test.describe('legacy positioning without CSS anchor support', () => {
+        test('base', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Dropdown, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await page.waitForTimeout(300);
+
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toHaveClass(
+                /_anchored/,
+            );
+            await expect.soft(page).toHaveScreenshot('legacy-01-dropdown.png');
+        });
+
+        test('keeps max height from options with root html zoom', async ({page}) => {
+            await page.setViewportSize({width: 700, height: 1400});
+            await tuiGoto(page, DemoRoute.Dropdown, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const button = example.locator('button');
+
+            await page.locator('html').evaluate((element) => {
+                element.style.zoom = '1.5';
+            });
+            await button.scrollIntoViewIfNeeded();
+            await button.click();
+
+            const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+            await expect(dropdown).not.toHaveClass(/_anchored/);
+            await expect(dropdown).toHaveCSS('max-height', '400px');
+
+            const buttonBox = (await button.boundingBox())!;
+            const dropdownBox = (await dropdown.boundingBox())!;
+
+            expect(dropdownBox.x).toBeCloseTo(buttonBox.x, 0);
+            expect(dropdownBox.y).toBeGreaterThanOrEqual(buttonBox.y + buttonBox.height);
+            expect(dropdownBox.y).toBeLessThan(buttonBox.y + buttonBox.height + 20);
+
+            await expect(page).toHaveScreenshot('legacy-dropdown-zoomed.png');
+        });
+
+        test('DropdownOpen and custom position', async ({page}) => {
+            await tuiGoto(page, DemoRoute.DropdownOpen, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample(
+                '#custom-positioning',
+            );
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await page.waitForTimeout(300);
+
+            await expect.soft(page).toHaveScreenshot('legacy-05-dropdown.png');
+        });
+
+        test('Nested sided dropdown', async ({page}) => {
+            await page.setViewportSize({width: 750, height: 400});
+            await tuiGoto(page, DemoRoute.DataList, {anchorPositioning: false});
+            const example = new TuiDocumentationPagePO(page).getExample('#complex');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+
+            await expect
+                .soft(page)
+                .toHaveScreenshot('legacy-19-dropdown-sided-nested.png');
+        });
+
+        test('DropdownOpen closing when moved offscreen', async ({page}) => {
+            await tuiGoto(page, DemoRoute.DropdownOpen, {anchorPositioning: false});
+
+            const example = new TuiDocumentationPagePO(page).getExample('#menu');
+
+            await example.scrollIntoViewIfNeeded();
+            await example.locator('button').click();
+            await example.evaluate((element) => {
+                element.style.transform = 'translate3d(-12rem, 0, 0)';
+            });
+
+            await expect
+                .soft(page)
+                .toHaveScreenshot('legacy-20-dropdown-open-obscured.png');
+        });
+    });
 });

@@ -17,7 +17,7 @@
 
 @mixin appearance-active {
     @include interactive {
-        &:active:not([data-state]) {
+        &:active:not([data-state]):where(:hover, :focus-visible) {
             @content;
         }
     }

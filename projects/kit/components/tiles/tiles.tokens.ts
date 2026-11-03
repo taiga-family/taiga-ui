@@ -28,17 +28,19 @@ export const tuiTilesShift: TuiReorderFunction = (order, currentIndex, newIndex)
 
     const dragged = order.get(currentIndex) ?? currentIndex;
     const placement = order.get(newIndex) ?? newIndex;
-    const newOrder = new Map(order);
-    const flipped = new Map(Array.from(order).map(([a, b]) => [b, a]));
+    const step = Math.sign(placement - dragged);
+    const shifted = Array.from(order)
+        .filter(
+            ([, slot]) => (slot - dragged) * step > 0 && (slot - placement) * step <= 0,
+        )
+        .sort(([, a], [, b]) => (a - b) * step);
 
-    if ((placement - dragged) / Math.abs(placement - dragged) > 0) {
-        for (let i = placement; i > dragged; i--) {
-            newOrder.set(flipped.get(i) ?? i, i - 1);
-        }
-    } else {
-        for (let i = placement; i < dragged; i++) {
-            newOrder.set(flipped.get(i) ?? i, i + 1);
-        }
+    const newOrder = new Map(order);
+    let previous = dragged;
+
+    for (const [index, slot] of shifted) {
+        newOrder.set(index, previous);
+        previous = slot;
     }
 
     newOrder.set(currentIndex, placement);

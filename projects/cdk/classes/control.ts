@@ -168,8 +168,8 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 return;
             }
 
-            onChange(this.transformer.toControlValue(value));
             this.internal.set(value);
+            onChange(this.transformer.toControlValue(value));
             this.update();
         };
     }

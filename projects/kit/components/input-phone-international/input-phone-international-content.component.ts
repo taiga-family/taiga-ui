@@ -80,6 +80,12 @@ export class TuiInputPhoneInternationalContent {
             );
     });
 
+    protected onPointerDown(event: Event): void {
+        if (this.host.open()) {
+            event.preventDefault();
+        }
+    }
+
     protected onItemClick(code: TuiCountryIsoCode): void {
         this.host.el.focus();
         this.host.open.set(false);

@@ -9,7 +9,11 @@ import {
     tuiProvideAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
-import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
+import {
+    TuiCSSZoomService,
+    TuiPositionService,
+    TuiVisualViewportService,
+} from '@taiga-ui/core/services';
 import {TUI_ANCHOR_SUPPORT, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
 
@@ -21,6 +25,7 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
 @Directive({
     providers: [
         TuiPositionService,
+        TuiCSSZoomService,
         tuiProvideAccessor(TuiPositionAccessor, 'dropdown'),
         tuiProvideAccessor(TuiRectAccessor, 'dropdown'),
     ],
@@ -35,6 +40,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
     private readonly rect = inject(TuiRectAccessor);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
+    private readonly zoom = inject(TuiCSSZoomService);
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly position = this.directive.position;
     private readonly accessor = inject(TuiPositionAccessor);
@@ -45,7 +51,7 @@ export class TuiDropdownAnchored implements AfterViewInit {
                 this.directive.el.getClientRects().length > 0,
         ),
         map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
-        map((point) => this.getStyles(...point)),
+        map((point) => this.getStyles(...this.zoom.descale(point))),
         takeUntilDestroyed(),
     );
 
@@ -82,17 +88,20 @@ export class TuiDropdownAnchored implements AfterViewInit {
 
     private getStyles(x: number, y: number): Record<string, string> {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
-        const parent = this.el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+        const parent = this.zoom.descale(
+            this.el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT,
+        );
+
         const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
-        const rect = this.rect.getClientRect();
-        const viewport = this.viewport.getClientRect();
-        const zoom = this.directive.el.currentCSSZoom || 1;
+        const rect = this.zoom.descale(this.rect.getClientRect());
+        const viewport = this.zoom.descale(this.viewport.getClientRect());
         const above = rect.top - viewport.top - 2 * offset;
         const below = viewport.top + viewport.height - y - offset;
         const available = y > rect.bottom ? below : above;
 
         const height =
-            this.el.getBoundingClientRect().right <= rect.left || x >= rect.right
+            this.zoom.descale(this.el.getBoundingClientRect()).right <= rect.left ||
+            x >= rect.right
                 ? maxHeight
                 : tuiClamp(available, minHeight, maxHeight);
 
@@ -101,12 +110,12 @@ export class TuiDropdownAnchored implements AfterViewInit {
 
         return {
             position: this.position,
-            top: tuiPx(Math.round(Math.max(y, offset - top) / zoom)),
-            left: tuiPx(Math.round(x / zoom)),
-            maxHeight: tuiPx(Math.round(height / zoom)),
-            width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width / zoom)) : '',
-            minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width / zoom)) : '',
-            maxWidth: tuiPx(Math.round(viewport.width / zoom) - MAX_WIDTH_GAP),
+            top: tuiPx(Math.round(Math.max(y, offset - top))),
+            left: tuiPx(Math.round(x)),
+            maxHeight: tuiPx(Math.round(height)),
+            width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width)) : '',
+            minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width)) : '',
+            maxWidth: tuiPx(Math.round(viewport.width) - MAX_WIDTH_GAP),
         };
     }
 }

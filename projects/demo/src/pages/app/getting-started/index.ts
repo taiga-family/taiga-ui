@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
@@ -28,7 +29,7 @@ export default class Page {
 
     protected readonly config = {provideTaiga: import('./examples/config.md')};
     protected readonly index = {'index.html': import('./examples/index.md')};
-
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Install libraries',
         'Include styles',

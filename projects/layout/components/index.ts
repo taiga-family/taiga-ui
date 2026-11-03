@@ -12,6 +12,7 @@ export * from '@taiga-ui/layout/components/item-group';
 export * from '@taiga-ui/layout/components/list';
 export * from '@taiga-ui/layout/components/navigation';
 export * from '@taiga-ui/layout/components/pdf-viewer';
+export * from '@taiga-ui/layout/components/progressive-blur';
 export * from '@taiga-ui/layout/components/search';
 export * from '@taiga-ui/layout/components/slides';
 export * from '@taiga-ui/layout/components/surface';

@@ -4,7 +4,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 
-export const TUI_HINT_ANCHOR = new InjectionToken<ElementRef<Element>>(
+export const TUI_HINT_ANCHOR = new InjectionToken<ElementRef<HTMLElement>>(
     ngDevMode ? 'TUI_HINT_ANCHOR' : '',
 );
 

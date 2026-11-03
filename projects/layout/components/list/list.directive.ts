@@ -33,7 +33,11 @@ class Styles {}
 
 @Directive({
     selector: 'ul[tuiList], ol[tuiList], dl[tuiList]',
-    host: {'data-tui-version': TUI_VERSION, '[attr.data-size]': 'size() || options.size'},
+    host: {
+        'data-tui-version': TUI_VERSION,
+        tuiList: '',
+        '[attr.data-size]': 'size() || options.size',
+    },
 })
 export class TuiList {
     protected readonly nothing = tuiWithStyles(Styles);

@@ -1,3 +1,5 @@
+import {EnvironmentInjector, INJECTOR} from '@angular/core';
+
 import {tuiRouteDialog} from '../generate-dialogable-route';
 import TuiRoutableDialog from '../routable-dialog.component';
 
@@ -24,6 +26,22 @@ describe('tuiRouteDialog', () => {
         const result = tuiRouteDialog(Dialog, {path: 'path/to/dialog'});
 
         expect(result.path).toBe('path/to/dialog');
+    });
+
+    it('uses the element injector by default', () => {
+        const result = tuiRouteDialog(Dialog);
+
+        expect(result.data?.injector).toBe(INJECTOR);
+    });
+
+    it('passes the chosen injector separately from dialog options', () => {
+        const result = tuiRouteDialog(Dialog, {
+            injector: EnvironmentInjector,
+            dismissible: false,
+        });
+
+        expect(result.data?.injector).toBe(EnvironmentInjector);
+        expect(result.data?.dialogOptions).toEqual({dismissible: false});
     });
 
     it('dialog options are passed correctly', () => {

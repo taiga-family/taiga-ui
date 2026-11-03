@@ -118,7 +118,10 @@ export class TuiInputNumberDirective extends TuiControl<string> {
 
     protected onFocus(): void {
         if (!this.input.value() && this.interactive()) {
-            this.input.value.set(`${this.mask.prefix()}${this.mask.postfix()}`);
+            const prefix = this.mask.prefix();
+
+            this.element.value = `${prefix}${this.mask.postfix()}`;
+            this.element.setSelectionRange(prefix.length, prefix.length);
         }
     }
 

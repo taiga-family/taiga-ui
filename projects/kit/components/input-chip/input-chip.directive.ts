@@ -75,7 +75,7 @@ export class TuiInputChipDirective<T>
     public setValue(value: T[]): void {
         this.erase();
         this.onChange(
-            this.unique() ? Array.from(new Set(value.reverse())).reverse() : value,
+            this.unique() ? Array.from(new Set([...value].reverse())).reverse() : value,
         );
     }
 

@@ -7,6 +7,7 @@ import {
     input,
     type OnChanges,
     PLATFORM_ID,
+    type SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
@@ -47,8 +48,8 @@ export class TuiShimmer implements OnChanges {
 
     public readonly tuiShimmer = input(false);
 
-    public ngOnChanges(): void {
-        if (!this.isBrowser) {
+    public ngOnChanges({tuiShimmer}: SimpleChanges): void {
+        if (!this.isBrowser || (!tuiShimmer?.currentValue && tuiShimmer?.firstChange)) {
             return;
         }
 

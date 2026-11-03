@@ -93,6 +93,7 @@ export const TUI_USED_ICONS = [
     '@tui.minus',
     '@tui.monitor',
     '@tui.moon',
+    '@tui.move-down-right',
     '@tui.music',
     '@tui.paintbrush',
     '@tui.pause',

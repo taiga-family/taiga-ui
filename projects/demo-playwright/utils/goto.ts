@@ -1,11 +1,12 @@
 import {existsSync, readFileSync} from 'node:fs';
 
-import {expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
+import {waitImages} from './wait-images';
 import {waitStableState} from './wait-stable-state';
 
 interface FontStub {
@@ -31,6 +32,12 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
     hideText?: boolean;
+    /**
+     * Pass `false` to emulate browsers without CSS anchor positioning
+     * and cover the legacy JS positioning path
+     */
+    anchorPositioning?: boolean;
+    networkIdle?: boolean;
 }
 
 export async function tuiGoto(
@@ -42,6 +49,8 @@ export async function tuiGoto(
         enableNightMode = false,
         hideVersionManager = false,
         hideText = !!process.env.PW_HIDE_TEXT,
+        anchorPositioning = true,
+        networkIdle = true,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -64,6 +73,22 @@ export async function tuiGoto(
             (lang) => globalThis.localStorage.setItem('tuiLanguage', lang),
             language,
         );
+    }
+
+    if (!anchorPositioning) {
+        await page.addInitScript(() => {
+            const supports = globalThis.CSS.supports.bind(globalThis.CSS);
+
+            globalThis.CSS.supports = (property: string, value?: string): boolean => {
+                if (property.includes('anchor')) {
+                    return false;
+                }
+
+                return value === undefined
+                    ? supports(property)
+                    : supports(property, value);
+            };
+        });
     }
 
     if (date) {
@@ -110,12 +135,9 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
-
-    await waitIcons({
-        page,
-        timeout: 200,
-        icons: await page.locator('tui-icon').all(),
-    });
+    await waitForRoutedPage(page, networkIdle);
+    await waitIcons({page});
+    await waitImages({page});
 
     await tuiWaitForFonts(page);
     await waitStableState(app);
@@ -147,5 +169,47 @@ export async function tuiGoto(
         });
     }
 
+    if (!anchorPositioning) {
+        /**
+         * The CSS.supports override above only affects JavaScript calls.
+         * CSS @supports rules are evaluated by the browser's CSS engine at parse time.
+         * This stylesheet neutralizes anchor-positioning CSS properties with !important
+         * to ensure the legacy JS positioning path is genuinely tested.
+         */
+        await page.addStyleTag({
+            content: `
+            *, *::before, *::after {
+              anchor-name: none !important;
+              position-anchor: none !important;
+              position-visibility: always !important;
+              position-try-fallbacks: none !important;
+            }
+
+            /* Reset @supports (anchor-name: ...) block overrides for scrollbar */
+            .t-scrollbar, tui-scroll-controls {
+              position: sticky !important;
+              inset: 0 !important;
+            }
+        `,
+        });
+    }
+
     return response;
+}
+
+async function waitForRoutedPage(page: Page, networkIdle: boolean): Promise<void> {
+    await expect(page.locator('router-outlet + *').first()).toBeAttached({
+        timeout: 30_000,
+    });
+
+    if (!networkIdle) {
+        return;
+    }
+
+    await page.waitForLoadState('networkidle', {timeout: 10_000}).catch(() => {
+        test.info().annotations.push({
+            type: 'warning',
+            description: `tuiGoto: network is still busy on ${page.url()}`,
+        });
+    });
 }

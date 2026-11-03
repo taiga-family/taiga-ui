@@ -1,5 +1,7 @@
 playwright/.cache/
 stubs/fonts.css
+stubs/fonts.json
 stubs/*.woff2
 stubs/*.ttf
+stubs/font-*
 !stubs/blank.ttf

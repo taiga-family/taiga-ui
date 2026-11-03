@@ -3,10 +3,9 @@
     tuiHintAppearance="floating"
     tuiHintDirection="top"
     class="t-content"
-    [cdkCopyToClipboard]="content.textContent ?? ''"
     [tuiHint]="template"
     [tuiHintManual]="!!hint()"
-    (cdkCopyToClipboardCopied)="copied$.next($event)"
+    (click)="copy(content.textContent ?? '')"
 >
     <ng-content />
 </span>
@@ -17,9 +16,8 @@
     type="button"
     class="t-button"
     [attr.aria-label]="texts()[0]"
-    [cdkCopyToClipboard]="content.textContent ?? ''"
     [iconStart]="options.icon"
-    (cdkCopyToClipboardCopied)="copied$.next($event)"
+    (click)="copy(content.textContent ?? '')"
 ></button>
 <ng-template #template>
     <tui-icon

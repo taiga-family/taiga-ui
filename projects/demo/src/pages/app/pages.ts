@@ -30,38 +30,39 @@ export const pages: DocRoutePages = [
         keywords: 'intro, how to, guide, main, главная, начало, инструкция',
         route: DemoRoute.GettingStarted,
     },
-    // Documentation
+    // Information
     {
-        section: 'Documentation',
-        title: 'Information',
-        subPages: [
-            {
-                section: 'Documentation',
-                title: 'About',
-                keywords: 'related, libraries, other, friendly, npm, packages',
-                route: DemoRoute.About,
-            },
-            {
-                section: 'Documentation',
-                title: 'Browser support',
-                keywords: 'chrome, safari, ie, edge, firefox',
-                route: DemoRoute.BrowserSupport,
-            },
-            {
-                section: 'Documentation',
-                title: 'Changelog',
-                keywords: 'release, change, changelog, archive, history',
-                route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
-                target: '_blank',
-            },
-            {
-                section: 'Documentation',
-                title: 'Migration Guide',
-                keywords: 'update, migrate, обновление, миграция',
-                route: DemoRoute.MigrationGuide,
-            },
-        ],
+        section: 'Information',
+        title: 'About',
+        keywords: 'related, libraries, other, friendly, npm, packages',
+        route: DemoRoute.About,
     },
+    {
+        section: 'Information',
+        title: 'Licensing',
+        keywords: 'support, enterprise, figma, commercial',
+        route: DemoRoute.Licensing,
+    },
+    {
+        section: 'Information',
+        title: 'Browser support',
+        keywords: 'chrome, safari, ie, edge, firefox',
+        route: DemoRoute.BrowserSupport,
+    },
+    {
+        section: 'Information',
+        title: 'Changelog',
+        keywords: 'release, change, changelog, archive, history',
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+        target: '_blank',
+    },
+    {
+        section: 'Information',
+        title: 'Migration Guide',
+        keywords: 'update, migrate, обновление, миграция',
+        route: DemoRoute.MigrationGuide,
+    },
+    // Documentation
     {
         section: 'Documentation',
         title: 'Styles',
@@ -91,6 +92,13 @@ export const pages: DocRoutePages = [
                 title: 'Shadows',
                 keywords: 'layout, markup, тень, shadows',
                 route: DemoRoute.Shadows,
+            },
+            {
+                section: 'Documentation',
+                title: 'Direction: RTL',
+                keywords:
+                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
+                route: DemoRoute.RTL,
             },
         ],
     },
@@ -174,13 +182,6 @@ export const pages: DocRoutePages = [
                 title: 'Server Side Rendering',
                 keywords: 'ssr, server, prerender, back, node, universal',
                 route: DemoRoute.SSR,
-            },
-            {
-                section: 'Documentation',
-                title: 'Direction: RTL',
-                keywords:
-                    'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
-                route: DemoRoute.RTL,
             },
             {
                 section: 'Documentation',

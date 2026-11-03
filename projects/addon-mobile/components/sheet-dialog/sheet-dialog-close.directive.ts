@@ -38,6 +38,7 @@ export class TuiSheetDialogClose {
         map(([prev, curr]) => prev - curr),
         takeWhile((value) => value > 0),
         bufferCount(5),
+        filter(({length}) => length === 5),
         take(1),
     );
 

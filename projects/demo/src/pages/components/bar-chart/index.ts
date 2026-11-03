@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
+import {TuiDocHint} from '@demo/components/hint';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiBarChart} from '@taiga-ui/addon-charts';
+import {TuiBarChart, TuiChartHint} from '@taiga-ui/addon-charts';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiBarChart, TuiDemo],
+    imports: [TuiBarChart, TuiChartHint, TuiDemo, TuiDocHint],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -32,5 +34,11 @@ export default class Page {
     ];
 
     protected value = this.valueVariants[0]!;
+
+    protected readonly hintContentVariants: ReadonlyArray<
+        TuiStringHandler<TuiContext<number>>
+    > = [({$implicit}) => this.value.map((set) => set[$implicit] ?? 0).join('\n')];
+
+    protected hintContent: TuiStringHandler<TuiContext<number>> | null = null;
     protected readonly routes = DemoRoute;
 }

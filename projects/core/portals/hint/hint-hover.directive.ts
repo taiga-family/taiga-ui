@@ -59,7 +59,8 @@ export class TuiHintHover extends TuiDriver {
         map(
             (value) =>
                 value &&
-                (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
+                (this.el.hasAttribute('tuiHintPointer') ||
+                    !tuiIsObscured(this.el, 'tui-popups > :not(tui-modal)')),
         ),
         tap((visible) => {
             this.visible = visible;

@@ -30,13 +30,19 @@
 }
 
 // Prose sections read as flat text, not boxed demos
+[heading='Licensing']::ng-deep,
 [heading='Explore Taiga UI']::ng-deep,
 [heading='AI-Ready']::ng-deep {
     .t-example {
-        border: none;
+        border: none !important;
     }
 
     .t-demo {
         padding: 0;
     }
+}
+
+.text {
+    inline-size: max-content;
+    max-inline-size: 100%;
 }

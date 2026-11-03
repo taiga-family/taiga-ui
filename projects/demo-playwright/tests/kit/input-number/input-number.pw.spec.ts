@@ -7,6 +7,7 @@ import {
     CMD,
     InputNumberPO,
     TuiDocumentationApiPagePO,
+    TuiDocumentationPagePO,
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
@@ -673,6 +674,8 @@ describe('InputNumber', () => {
             (
                 [
                     {prefix: '$', postfix: ''},
+                    {prefix: '', postfix: '%'},
+                    {prefix: '', postfix: '€'},
                     {prefix: '', postfix: 'kg'},
                     {prefix: '$', postfix: 'kg'},
                     {prefix: '', postfix: 'Even too long postfix changes nothing'},
@@ -684,7 +687,7 @@ describe('InputNumber', () => {
                     beforeEach(async ({page}) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}`,
+                            `${DemoRoute.InputNumber}/API?prefix=${encodeURIComponent(prefix)}&postfix=${encodeURIComponent(postfix)}&sandboxExpanded=true`,
                         );
                     });
 
@@ -700,12 +703,36 @@ describe('InputNumber', () => {
                         );
                     });
 
+                    test('fills an empty unfocused textfield', async () => {
+                        await inputNumber.textfield.fill('42');
+
+                        await expect(inputNumber.textfield).toHaveValue(
+                            `${prefix}42${postfix}`,
+                        );
+                        await expect(value).toContainText('"value": 42');
+                    });
+
+                    test('fills a textfield after clearing and blurring', async () => {
+                        await inputNumber.textfield.fill('42');
+                        await inputNumber.textfield.clear();
+                        await inputNumber.textfield.blur();
+
+                        await expect(inputNumber.textfield).toHaveValue('');
+
+                        await inputNumber.textfield.fill('42');
+
+                        await expect(inputNumber.textfield).toHaveValue(
+                            `${prefix}42${postfix}`,
+                        );
+                        await expect(value).toContainText('"value": 42');
+                    });
+
                     test('does not shows prefix for READONLY empty textfield on focus', async ({
                         page,
                     }) => {
                         await tuiGoto(
                             page,
-                            `${DemoRoute.InputNumber}/API?prefix=${prefix}&postfix=${postfix}&readonly=true`,
+                            `${DemoRoute.InputNumber}/API?prefix=${encodeURIComponent(prefix)}&postfix=${encodeURIComponent(postfix)}&readonly=true`,
                         );
                         await inputNumber.textfield.focus();
 
@@ -1784,5 +1811,22 @@ describe('InputNumber', () => {
             await expect(inputNumber.textfield).toHaveValue('12.30');
             await expect(value).toContainText('"value": 12.3');
         });
+    });
+
+    test('fills the currency example after clearing and blurring', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputNumber);
+
+        const textfield = new TuiDocumentationPagePO(page)
+            .getExample('#fluid-typography')
+            .locator('input[tuiInputNumber]');
+
+        await textfield.clear();
+        await textfield.blur();
+
+        await expect(textfield).toHaveValue('');
+
+        await textfield.fill('42');
+
+        await expect(textfield).toHaveValue('42 €');
     });
 });

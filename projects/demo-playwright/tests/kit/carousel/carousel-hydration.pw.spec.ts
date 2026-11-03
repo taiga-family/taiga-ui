@@ -30,7 +30,7 @@ test.describe('Carousel hydration', () => {
             });
         });
 
-        await tuiGoto(page, DemoRoute.Carousel);
+        await tuiGoto(page, DemoRoute.Carousel, {networkIdle: false});
         await httpRequest;
 
         const example = new TuiDocumentationPagePO(page).getExample('#basic');

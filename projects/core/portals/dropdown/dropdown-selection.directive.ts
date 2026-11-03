@@ -25,7 +25,7 @@ import {
     tuiIsTextNode,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent, tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDriver,
     tuiAsRectAccessor,
@@ -75,6 +75,7 @@ export class TuiDropdownSelection
         toObservable(this.handler),
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
+            filter(tuiIsPresent),
             filter((range) => this.isValid(range)),
             distinctUntilChanged(
                 (x, y) =>
@@ -156,16 +157,15 @@ export class TuiDropdownSelection
         return this.el.querySelector('tui-textfield .t-ghost') || this.el;
     }
 
-    private getRange(): Range {
+    private getRange(): Range | null {
         const active = tuiGetFocused(this.doc);
         const selection = this.doc.getSelection();
 
-        const range =
-            active && tuiIsTextfield(active) && this.el.contains(active)
-                ? this.veryVerySadInputFix(active)
-                : (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
+        if (active && tuiIsTextfield(active) && this.el.contains(active)) {
+            return this.veryVerySadInputFix(active).cloneRange();
+        }
 
-        return range.cloneRange();
+        return selection?.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
     }
 
     /**

@@ -40,7 +40,6 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
         tuiHintOptionsProvider({
-            direction: 'top-end',
             showDelay: 0,
             hideDelay: 0,
         }),
@@ -51,9 +50,9 @@ const TRANSFORM = {
     },
 })
 export class TuiPieChart {
-    private readonly hintOptions = inject(TuiChartHint, {optional: true});
     private readonly autoId = tuiGenerateId();
 
+    protected readonly hintOptions = inject(TuiChartHint, {optional: true});
     protected readonly getSum = computed(() => tuiSum(...this.value()));
 
     protected readonly segments = computed<ReadonlyArray<[number, number]>>(() =>

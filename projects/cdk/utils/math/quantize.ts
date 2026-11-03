@@ -11,5 +11,9 @@ export function tuiQuantize(value: number, quantum: number): number {
 
     const remainder = value % quantum;
 
+    if (remainder < -quantum / 2) {
+        return value - quantum - remainder;
+    }
+
     return remainder < quantum / 2 ? value - remainder : value + quantum - remainder;
 }

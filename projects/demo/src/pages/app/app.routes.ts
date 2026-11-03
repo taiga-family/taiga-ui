@@ -36,6 +36,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/about'),
     }),
     route({
+        path: DemoRoute.Licensing,
+        title: 'Licensing',
+        loadComponent: async () => import('../info/licensing'),
+    }),
+    route({
         path: DemoRoute.Jest,
         title: 'Jest',
         loadComponent: async () => import('../info/testing/jest'),
