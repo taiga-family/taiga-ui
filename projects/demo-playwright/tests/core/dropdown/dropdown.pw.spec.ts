@@ -232,7 +232,59 @@ test.describe('Dropdown', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
 
+        const exchangeRates = page.getByRole('option', {name: 'Exchange Rates:'});
+        const dropdowns = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        await page.getByRole('option', {name: '💰 Money:'}).focus();
+        await expect(exchangeRates).toBeVisible();
+
+        await exchangeRates.focus();
+        await expect(exchangeRates).toBeFocused();
+        await expect(dropdowns).toHaveCount(3);
+        await expect(dropdowns.nth(2)).toBeVisible();
+
         await expect.soft(page).toHaveScreenshot('19-dropdown-sided-nested.png');
+    });
+
+    test('Nested dropdown follows its anchor', async ({page}) => {
+        await page.setViewportSize({width: 1500, height: 900});
+        await tuiGoto(page, DemoRoute.DataList);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#complex');
+        const dropdowns = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+        await example.scrollIntoViewIfNeeded();
+        await documentationPagePO.prepareBeforeScreenshot();
+        await example.locator('button').click();
+        await expect(dropdowns).toHaveCount(3);
+
+        const initialTop = await dropdowns
+            .last()
+            .evaluate((el) => el.getBoundingClientRect().top);
+
+        await example.locator('button').evaluate((el) => {
+            el.style.transform = 'translateY(-64px)';
+        });
+        await expect
+            .poll(async () =>
+                dropdowns.last().evaluate((el) => el.getBoundingClientRect().top),
+            )
+            .toBeLessThan(initialTop);
+
+        const money = dropdowns.locator('[name="moneyValue"]');
+        const dollars = dropdowns.nth(2).locator('input').first();
+
+        await money.click();
+        await money.fill('2000');
+        await expect(money).toBeFocused();
+        await dollars.click();
+        await dollars.fill('100');
+
+        await expect(dollars).toBeFocused();
+        await expect(dropdowns.nth(2).locator('.tui-list__item').first()).toHaveText(
+            '$20',
+        );
     });
 
     test('DropdownOpen closing when moved offscreen', async ({page}) => {
@@ -329,6 +381,17 @@ test.describe('Dropdown', () => {
 
             await example.scrollIntoViewIfNeeded();
             await example.locator('button').click();
+
+            const exchangeRates = page.getByRole('option', {name: 'Exchange Rates:'});
+            const dropdowns = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+
+            await page.getByRole('option', {name: '💰 Money:'}).focus();
+            await expect(exchangeRates).toBeVisible();
+
+            await exchangeRates.focus();
+            await expect(exchangeRates).toBeFocused();
+            await expect(dropdowns).toHaveCount(3);
+            await expect(dropdowns.nth(2)).toBeVisible();
 
             await expect
                 .soft(page)
