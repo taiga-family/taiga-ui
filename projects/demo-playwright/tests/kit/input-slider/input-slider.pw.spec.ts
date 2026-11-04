@@ -24,37 +24,36 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderEO(
-                    new TuiDocumentationPagePO(page).demo.locator(
-                        'tui-textfield:has([tuiInputSlider])',
-                    ),
+                    page,
+                    new TuiDocumentationPagePO(page).demo,
                 );
 
-                await inputSlider.textfield.clear();
+                await inputSlider.input.clear();
             });
 
             test('cannot type number less than [min] property', async () => {
-                await inputSlider.textfield.fill('9.999');
-                await inputSlider.textfield.blur();
+                await inputSlider.input.fill('9.999');
+                await inputSlider.input.blur();
 
-                await expect(inputSlider.textfield).toHaveValue('10');
+                await expect(inputSlider.input).toHaveValue('10');
             });
 
             test('cannot even type minus if [min] is positive', async () => {
-                await inputSlider.textfield.pressSequentially('-11');
+                await inputSlider.input.pressSequentially('-11');
 
-                await expect(inputSlider.textfield).toHaveValue('11');
+                await expect(inputSlider.input).toHaveValue('11');
             });
 
             test('cannot set value less than [min] using ArrowDown', async () => {
-                await inputSlider.textfield.fill('11');
+                await inputSlider.input.fill('11');
 
-                await inputSlider.textfield.press('ArrowDown');
+                await inputSlider.input.press('ArrowDown');
 
-                await expect(inputSlider.textfield).toHaveValue('10');
+                await expect(inputSlider.input).toHaveValue('10');
 
-                await inputSlider.textfield.press('ArrowDown');
+                await inputSlider.input.press('ArrowDown');
 
-                await expect(inputSlider.textfield).toHaveValue('10');
+                await expect(inputSlider.input).toHaveValue('10');
             });
         });
 
@@ -68,24 +67,23 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderEO(
-                    new TuiDocumentationPagePO(page).demo.locator(
-                        'tui-textfield:has([tuiInputSlider])',
-                    ),
+                    page,
+                    new TuiDocumentationPagePO(page).demo,
                 );
 
-                await inputSlider.textfield.clear();
+                await inputSlider.input.clear();
             });
 
             test('can type negative number more than [min]', async () => {
-                await inputSlider.textfield.pressSequentially('-5');
+                await inputSlider.input.pressSequentially('-5');
 
-                await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}5`);
+                await expect(inputSlider.input).toHaveValue(`${CHAR_MINUS}5`);
             });
 
             test('cannot type negative number less than [min]', async () => {
-                await inputSlider.textfield.pressSequentially('-11');
+                await inputSlider.input.pressSequentially('-11');
 
-                await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}10`);
+                await expect(inputSlider.input).toHaveValue(`${CHAR_MINUS}10`);
             });
         });
 
@@ -99,26 +97,25 @@ describe('InputSlider', () => {
                 );
 
                 inputSlider = new TuiInputSliderEO(
-                    new TuiDocumentationPagePO(page).demo.locator(
-                        'tui-textfield:has([tuiInputSlider])',
-                    ),
+                    page,
+                    new TuiDocumentationPagePO(page).demo,
                 );
 
-                await inputSlider.textfield.clear();
-                await inputSlider.textfield.fill('25');
-                await inputSlider.textfield.focus();
+                await inputSlider.input.clear();
+                await inputSlider.input.fill('25');
+                await inputSlider.input.focus();
             });
 
             test('pressing ArrowUp does not change value', async () => {
-                await inputSlider.textfield.press('ArrowUp');
+                await inputSlider.input.press('ArrowUp');
 
-                await expect(inputSlider.textfield).toHaveValue('25');
+                await expect(inputSlider.input).toHaveValue('25');
             });
 
             test('pressing ArrowDown does not change value', async () => {
-                await inputSlider.textfield.press('ArrowDown');
+                await inputSlider.input.press('ArrowDown');
 
-                await expect(inputSlider.textfield).toHaveValue('25');
+                await expect(inputSlider.input).toHaveValue('25');
             });
         });
     });
@@ -137,16 +134,14 @@ describe('InputSlider', () => {
 
                 example = new TuiDocumentationPagePO(page).demo;
                 value = new TuiDocumentationPagePO(page).value;
-                inputSlider = new TuiInputSliderEO(
-                    example.locator('tui-textfield:has([tuiInputSlider])'),
-                );
+                inputSlider = new TuiInputSliderEO(page, example);
             });
 
             describe('allows to enter number which IS NOT divisible by quantum value', () => {
                 ['3', '5', '7', '9', '11', '14', '19'].forEach((value) => {
                     test(value, async () => {
-                        await inputSlider.textfield.fill(value);
-                        await expect(inputSlider.textfield).toHaveValue(value);
+                        await inputSlider.input.fill(value);
+                        await expect(inputSlider.input).toHaveValue(value);
                     });
                 });
             });
@@ -154,63 +149,63 @@ describe('InputSlider', () => {
             describe('allows to enter number which IS divisible by quantum value', () => {
                 ['0', '10', '20', '30', '60', '90', '100'].forEach((value) => {
                     test(value, async () => {
-                        await inputSlider.textfield.fill(value);
-                        await expect(inputSlider.textfield).toHaveValue(value);
+                        await inputSlider.input.fill(value);
+                        await expect(inputSlider.input).toHaveValue(value);
                     });
                 });
             });
 
             describe('rounds invalid number on blur', () => {
                 test('4 => 0', async () => {
-                    await inputSlider.textfield.fill('4');
-                    await inputSlider.textfield.blur();
-                    await expect(inputSlider.textfield).toHaveValue('0');
+                    await inputSlider.input.fill('4');
+                    await inputSlider.input.blur();
+                    await expect(inputSlider.input).toHaveValue('0');
                 });
 
                 test('5 => 10', async () => {
-                    await inputSlider.textfield.fill('5');
-                    await inputSlider.textfield.blur();
-                    await expect(inputSlider.textfield).toHaveValue('10');
+                    await inputSlider.input.fill('5');
+                    await inputSlider.input.blur();
+                    await expect(inputSlider.input).toHaveValue('10');
                 });
 
                 test('6 => 10', async () => {
-                    await inputSlider.textfield.fill('6');
-                    await inputSlider.textfield.blur();
-                    await expect(inputSlider.textfield).toHaveValue('10');
+                    await inputSlider.input.fill('6');
+                    await inputSlider.input.blur();
+                    await expect(inputSlider.input).toHaveValue('10');
                 });
 
                 test('19 => 20', async () => {
-                    await inputSlider.textfield.fill('19');
-                    await inputSlider.textfield.blur();
-                    await expect(inputSlider.textfield).toHaveValue('20');
+                    await inputSlider.input.fill('19');
+                    await inputSlider.input.blur();
+                    await expect(inputSlider.input).toHaveValue('20');
                 });
 
                 test('77 => 80', async () => {
-                    await inputSlider.textfield.fill('77');
-                    await inputSlider.textfield.blur();
-                    await expect(inputSlider.textfield).toHaveValue('80');
+                    await inputSlider.input.fill('77');
+                    await inputSlider.input.blur();
+                    await expect(inputSlider.input).toHaveValue('80');
                 });
             });
 
             describe('form control always contains only number which IS divisible by quantum value', () => {
                 test('4 => 0', async () => {
-                    await inputSlider.textfield.fill('4');
+                    await inputSlider.input.fill('4');
                     await expect(value).toContainText('"value": 0');
-                    await inputSlider.textfield.blur();
+                    await inputSlider.input.blur();
                     await expect(value).toContainText('"value": 0');
                 });
 
                 test('5 => 10', async () => {
-                    await inputSlider.textfield.fill('5');
+                    await inputSlider.input.fill('5');
                     await expect(value).toContainText('"value": 10');
-                    await inputSlider.textfield.blur();
+                    await inputSlider.input.blur();
                     await expect(value).toContainText('"value": 10');
                 });
 
                 test('77 => 80', async () => {
-                    await inputSlider.textfield.fill('77');
+                    await inputSlider.input.fill('77');
                     await expect(value).toContainText('"value": 80');
-                    await inputSlider.textfield.blur();
+                    await inputSlider.input.blur();
                     await expect(value).toContainText('"value": 80');
                 });
             });
@@ -222,9 +217,8 @@ describe('InputSlider', () => {
 
         beforeEach(({page}) => {
             inputSlider = new TuiInputSliderEO(
-                new TuiDocumentationPagePO(page).demo.locator(
-                    'tui-textfield:has([tuiInputSlider])',
-                ),
+                page,
+                new TuiDocumentationPagePO(page).demo,
             );
         });
 
@@ -233,30 +227,30 @@ describe('InputSlider', () => {
 
             test('type 1234567 => 123_4567 & slider is synchronized', async ({page}) => {
                 await tuiGoto(page, url);
-                await inputSlider.textfield.clear();
-                await inputSlider.textfield.pressSequentially('1234567');
+                await inputSlider.input.clear();
+                await inputSlider.input.pressSequentially('1234567');
 
-                await expect(inputSlider.textfield).toHaveValue('123_4567');
+                await expect(inputSlider.input).toHaveValue('123_4567');
                 await expect(inputSlider.slider).toHaveValue('1234567');
             });
 
             test('keeps formatted value on blur', async ({page}) => {
                 await tuiGoto(page, url);
-                await inputSlider.textfield.fill('1234567');
-                await inputSlider.textfield.blur();
+                await inputSlider.input.fill('1234567');
+                await inputSlider.input.blur();
 
-                await expect(inputSlider.textfield).toHaveValue('123_4567');
+                await expect(inputSlider.input).toHaveValue('123_4567');
                 await expect(inputSlider.slider).toHaveValue('1234567');
             });
 
             test('9_9999 => ArrowUp => 10_0000', async ({page}) => {
                 await tuiGoto(page, `${url}&step=1`);
-                await inputSlider.textfield.fill('99999');
-                await expect(inputSlider.textfield).toHaveValue('9_9999');
+                await inputSlider.input.fill('99999');
+                await expect(inputSlider.input).toHaveValue('9_9999');
 
-                await inputSlider.textfield.press('ArrowUp');
+                await inputSlider.input.press('ArrowUp');
 
-                await expect(inputSlider.textfield).toHaveValue('10_0000');
+                await expect(inputSlider.input).toHaveValue('10_0000');
                 await expect(inputSlider.slider).toHaveValue('100000');
             });
 
@@ -268,7 +262,7 @@ describe('InputSlider', () => {
                 await inputSlider.slider.click({position: {x: width / 2, y: height / 2}});
 
                 await expect(inputSlider.slider).toHaveValue('5000000');
-                await expect(inputSlider.textfield).toHaveValue('500_0000');
+                await expect(inputSlider.input).toHaveValue('500_0000');
             });
         });
 
@@ -277,29 +271,29 @@ describe('InputSlider', () => {
 
             test('type 1234567 => 12_34_567 & slider is synchronized', async ({page}) => {
                 await tuiGoto(page, url);
-                await inputSlider.textfield.clear();
-                await inputSlider.textfield.pressSequentially('1234567');
+                await inputSlider.input.clear();
+                await inputSlider.input.pressSequentially('1234567');
 
-                await expect(inputSlider.textfield).toHaveValue('12_34_567');
+                await expect(inputSlider.input).toHaveValue('12_34_567');
                 await expect(inputSlider.slider).toHaveValue('1234567');
             });
 
             test('keeps formatted value on blur', async ({page}) => {
                 await tuiGoto(page, url);
-                await inputSlider.textfield.fill('1234567');
-                await inputSlider.textfield.blur();
+                await inputSlider.input.fill('1234567');
+                await inputSlider.input.blur();
 
-                await expect(inputSlider.textfield).toHaveValue('12_34_567');
+                await expect(inputSlider.input).toHaveValue('12_34_567');
             });
 
             test('99_999 => ArrowUp => 1_00_000', async ({page}) => {
                 await tuiGoto(page, `${url}&step=1`);
-                await inputSlider.textfield.fill('99999');
-                await expect(inputSlider.textfield).toHaveValue('99_999');
+                await inputSlider.input.fill('99999');
+                await expect(inputSlider.input).toHaveValue('99_999');
 
-                await inputSlider.textfield.press('ArrowUp');
+                await inputSlider.input.press('ArrowUp');
 
-                await expect(inputSlider.textfield).toHaveValue('1_00_000');
+                await expect(inputSlider.input).toHaveValue('1_00_000');
                 await expect(inputSlider.slider).toHaveValue('100000');
             });
 
@@ -311,7 +305,7 @@ describe('InputSlider', () => {
                 await inputSlider.slider.click({position: {x: width / 2, y: height / 2}});
 
                 await expect(inputSlider.slider).toHaveValue('5000000');
-                await expect(inputSlider.textfield).toHaveValue('50_00_000');
+                await expect(inputSlider.input).toHaveValue('50_00_000');
             });
         });
     });
@@ -323,12 +317,9 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
             const example = new TuiDocumentationPagePO(page).demo;
+            const inputSlider = new TuiInputSliderEO(page, example);
 
-            const inputSlider = new TuiInputSliderEO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
-            );
-
-            await expect(inputSlider.textfield).toBeDisabled();
+            await expect(inputSlider.input).toBeDisabled();
             await expect(inputSlider.slider).toBeHidden();
 
             await expect(new TuiDocumentationPagePO(page).demo).toHaveScreenshot(
@@ -347,21 +338,18 @@ describe('InputSlider', () => {
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
+            const inputSlider = new TuiInputSliderEO(page, example);
 
-            const inputSlider = new TuiInputSliderEO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
-            );
-
-            await inputSlider.textfield.press('ArrowUp');
+            await inputSlider.input.press('ArrowUp');
             await page.keyboard.down('ArrowUp');
 
-            await expect(inputSlider.textfield).toHaveValue('0');
+            await expect(inputSlider.input).toHaveValue('0');
             await expect(inputSlider.slider).toBeHidden();
 
-            await inputSlider.textfield.press('ArrowDown');
+            await inputSlider.input.press('ArrowDown');
             await page.keyboard.down('ArrowDown');
 
-            await expect(inputSlider.textfield).toHaveValue('0');
+            await expect(inputSlider.input).toHaveValue('0');
             await expect(inputSlider.slider).toBeHidden();
         });
     });
@@ -375,12 +363,9 @@ describe('InputSlider', () => {
                 );
 
                 const {demo} = new TuiDocumentationPagePO(page);
+                const inputSlider = new TuiInputSliderEO(page, demo);
 
-                const inputSlider = new TuiInputSliderEO(
-                    demo.locator('tui-textfield:has([tuiInputSlider])'),
-                );
-
-                await inputSlider.textfield.focus();
+                await inputSlider.input.focus();
 
                 await expect
                     .soft(demo)
@@ -408,9 +393,7 @@ describe('InputSlider', () => {
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputSlider = new TuiInputSliderEO(
-                example.locator('tui-textfield:has([tuiInputSlider])'),
-            );
+            inputSlider = new TuiInputSliderEO(page, example);
         });
 
         test('typing new value inside text input also change slider position', async ({
@@ -419,8 +402,8 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?min=5&max=20&step=1`);
 
             for (const value of [5, 9, 12, 18, 20].map(String)) {
-                await inputSlider.textfield.clear();
-                await inputSlider.textfield.fill(value);
+                await inputSlider.input.clear();
+                await inputSlider.input.fill(value);
 
                 await expect(inputSlider.slider).toHaveValue(value);
                 await expect
@@ -434,17 +417,17 @@ describe('InputSlider', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?min=0&max=10&step=1`);
 
-            await inputSlider.textfield.clear();
-            await inputSlider.textfield.fill('0');
+            await inputSlider.input.clear();
+            await inputSlider.input.fill('0');
 
             for (let i = 1; i <= 10; i++) {
-                await inputSlider.textfield.focus();
-                await inputSlider.textfield.press('ArrowUp');
-                await expect(inputSlider.textfield).toHaveValue(String(i));
+                await inputSlider.input.focus();
+                await inputSlider.input.press('ArrowUp');
+                await expect(inputSlider.input).toHaveValue(String(i));
 
-                await inputSlider.textfield.blur();
+                await inputSlider.input.blur();
 
-                await expect(inputSlider.textfield).toHaveValue(String(i));
+                await expect(inputSlider.input).toHaveValue(String(i));
                 await expect(inputSlider.slider).toHaveValue(String(i));
                 await expect
                     .soft(example)
@@ -454,13 +437,13 @@ describe('InputSlider', () => {
             }
 
             for (let i = 9; i >= 0; i--) {
-                await inputSlider.textfield.focus();
-                await inputSlider.textfield.press('ArrowDown');
-                await expect(inputSlider.textfield).toHaveValue(String(i));
+                await inputSlider.input.focus();
+                await inputSlider.input.press('ArrowDown');
+                await expect(inputSlider.input).toHaveValue(String(i));
 
-                await inputSlider.textfield.blur();
+                await inputSlider.input.blur();
 
-                await expect(inputSlider.textfield).toHaveValue(String(i));
+                await expect(inputSlider.input).toHaveValue(String(i));
                 await expect(inputSlider.slider).toHaveValue(String(i));
                 await expect
                     .soft(example)
@@ -480,7 +463,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=5&max=10&step=1&keySteps=null`,
                 );
 
-                slider = new TuiSliderEO(inputSlider.slider);
+                slider = new TuiSliderEO(page, inputSlider.host);
                 track = (await inputSlider.slider.boundingBox())!;
                 expect(track).toBeTruthy();
             });
@@ -492,7 +475,9 @@ describe('InputSlider', () => {
 
                 await expect(inputSlider.slider).toHaveValue('9');
                 await expect(async () => {
-                    expect(await slider.fillPercentage).toBe(80);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(80);
                 }).toPass();
             });
 
@@ -507,7 +492,9 @@ describe('InputSlider', () => {
 
                 await expect(inputSlider.slider).toHaveValue('9');
                 await expect(async () => {
-                    expect(await slider.fillPercentage).toBe(80);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(80);
                 }).toPass();
             });
         });

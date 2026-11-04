@@ -100,62 +100,59 @@ test.describe('Input', () => {
     });
 
     test.describe('ArrowUp/ArrowDown keyboard navigation', () => {
-        test('textfield without datalist', async ({page}) => {
+        test('input without datalist', async ({page}) => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const textfield = example
+            const input = example
                 .locator(TUI_INPUT_LOCATORS.HOST)
                 .locator(TUI_INPUT_LOCATORS.INPUT)
                 .first();
 
             const value = '123';
 
-            await textfield.scrollIntoViewIfNeeded();
-            await textfield.focus();
-            await textfield.fill(value);
+            await input.scrollIntoViewIfNeeded();
+            await input.focus();
+            await input.fill(value);
 
-            await expect(textfield).toHaveValue(value);
-            await expect(textfield).toHaveJSProperty('selectionStart', value.length);
-            await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
+            await expect(input).toHaveValue(value);
+            await expect(input).toHaveJSProperty('selectionStart', value.length);
+            await expect(input).toHaveJSProperty('selectionEnd', value.length);
 
             await page.keyboard.press('ArrowUp');
 
-            await expect(textfield).toHaveJSProperty('selectionStart', 0);
-            await expect(textfield).toHaveJSProperty('selectionEnd', 0);
+            await expect(input).toHaveJSProperty('selectionStart', 0);
+            await expect(input).toHaveJSProperty('selectionEnd', 0);
 
             await page.keyboard.press('ArrowDown');
 
-            await expect(textfield).toHaveJSProperty('selectionStart', value.length);
-            await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
+            await expect(input).toHaveJSProperty('selectionStart', value.length);
+            await expect(input).toHaveJSProperty('selectionEnd', value.length);
         });
 
-        test('textfield with datalist', async ({page}) => {
+        test('input with datalist', async ({page}) => {
             await tuiGoto(page, DemoRoute.Input);
 
             const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
+            const {input, dropdown} = new TuiTextfieldWithDataListEO(page, example);
 
-            const {textfield, dropdown} = new TuiTextfieldWithDataListEO(
-                example.locator(TUI_INPUT_LOCATORS.HOST).first(),
-            );
-
-            await textfield.scrollIntoViewIfNeeded();
-            await textfield.focus();
-            await textfield.fill('a');
-            await textfield.blur();
+            await input.scrollIntoViewIfNeeded();
+            await input.focus();
+            await input.fill('a');
+            await input.blur();
 
             await expect(dropdown).not.toBeAttached();
 
-            await textfield.focus();
+            await input.focus();
 
-            await expect(textfield).toHaveJSProperty('selectionStart', 1);
-            await expect(textfield).toHaveJSProperty('selectionEnd', 1);
+            await expect(input).toHaveJSProperty('selectionStart', 1);
+            await expect(input).toHaveJSProperty('selectionEnd', 1);
             await expect(dropdown).not.toBeAttached();
 
             await page.keyboard.press('ArrowUp');
 
-            await expect(textfield).toHaveJSProperty('selectionStart', 1);
-            await expect(textfield).toHaveJSProperty('selectionEnd', 1);
+            await expect(input).toHaveJSProperty('selectionStart', 1);
+            await expect(input).toHaveJSProperty('selectionEnd', 1);
             await expect(dropdown).toBeAttached();
         });
     });

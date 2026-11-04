@@ -1,30 +1,34 @@
-import {expect, type Locator} from '@playwright/test';
-import {
-    TUI_DROPDOWN_LOCATORS,
-    TUI_DROPDOWN_MOBILE_LOCATORS,
-    TUI_INPUT_CHIP_LOCATORS,
-    TUI_SHEET_DIALOG_LOCATORS,
-    TUI_TEXTFIELD_LOCATORS,
-} from '@taiga-ui/testing/locators';
+import {expect} from '@playwright/test';
+import {TUI_INPUT_CHIP_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputChipEO {
-    public readonly input: Locator;
+import {withDataList} from '../mixins';
+import {TuiBaseEO} from './base.eo';
+
+/**
+ * Element Object for a TuiInputChip component.
+ *
+ * Exposes the input, rendered chips, clear button and dropdown, plus a helper to
+ * add a chip by typing a value and pressing Enter.
+ */
+export class TuiInputChipEO extends withDataList(TuiBaseEO) {
+    protected override readonly hostSelector = TUI_INPUT_CHIP_LOCATORS.HOST;
+
+    /** Inner text input of the chip field. */
+    public readonly input = this.host.first().locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
+
+    /** Rendered chips of the field. */
     public readonly chips = this.host.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS);
+
+    /** Clear button shown when the field has chips. */
     public readonly cleaner = this.host.getByRole('button', {name: 'Clear'}).first();
 
-    public readonly dropdown = this.host
-        .page()
-        .locator(
-            `${TUI_DROPDOWN_LOCATORS.HOST},${TUI_DROPDOWN_MOBILE_LOCATORS.HOST},${TUI_SHEET_DIALOG_LOCATORS.HOST}`,
-        );
-
-    constructor(public readonly host: Locator) {
-        this.input = host
-            .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-            .first()
-            .locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
-    }
-
+    /**
+     * Adds a chip by focusing the input, typing the value and pressing Enter.
+     *
+     * Waits for the newly added chip to become visible.
+     *
+     * @param value Text of the chip to add.
+     */
     public async addChip(value: string): Promise<void> {
         const initialCount = await this.chips.count();
 

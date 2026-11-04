@@ -50,7 +50,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiSelectLike]').click();
 
-        const dropdown = page.locator('tui-dropdown');
+        const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
         const search = dropdown.getByRole('textbox', {name: 'Search categories'});
 
         await search.fill('Unknown');

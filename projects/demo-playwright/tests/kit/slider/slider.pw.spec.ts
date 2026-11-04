@@ -13,7 +13,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
                 const {demo} = new TuiDocumentationPagePO(page);
-                const slider = new TuiSliderEO(demo.getByRole('slider'));
+                const slider = new TuiSliderEO(page, demo);
 
                 await slider.setValue(value);
 
@@ -44,7 +44,7 @@ test.describe('Slider', () => {
 
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
-                const slider = new TuiSliderEO(example.getByRole('slider'));
+                const slider = new TuiSliderEO(page, example);
 
                 await slider.setValue(inputStep);
 
@@ -101,7 +101,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, DemoRoute.Slider);
 
                 example = page.locator('#complex .t-example');
-                slider = new TuiSliderEO(example.getByRole('slider'));
+                slider = new TuiSliderEO(page, example);
                 plusButton = example.locator('button.plus');
                 minusButton = example.locator('button.minus');
             });
@@ -110,8 +110,12 @@ test.describe('Slider', () => {
                 await minusButton.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(0.75);
-                    expect(await slider.fillPercentage).toBe(17);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(0.75);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(17);
                 }).toPass();
 
                 await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
@@ -125,8 +129,12 @@ test.describe('Slider', () => {
                 await plusButton.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(1.25);
-                    expect(await slider.fillPercentage).toBe(50);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(1.25);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(50);
                 }).toPass();
 
                 await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
@@ -141,8 +149,12 @@ test.describe('Slider', () => {
                 await plusButton.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(1.5);
-                    expect(await slider.fillPercentage).toBe(67);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(1.5);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(67);
                 }).toPass();
 
                 await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
@@ -164,7 +176,7 @@ test.describe('Slider', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#segments');
-                slider = new TuiSliderEO(example.getByRole('slider'));
+                slider = new TuiSliderEO(page, example);
 
                 await page.waitForTimeout(300);
 
@@ -175,8 +187,12 @@ test.describe('Slider', () => {
                 await tickLabels.at(0)?.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(0);
-                    expect(await slider.fillPercentage).toBe(0);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(0);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(0);
                 }).toPass();
 
                 await expect
@@ -188,8 +204,12 @@ test.describe('Slider', () => {
                 await tickLabels.at(2)?.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(500);
-                    expect(await slider.fillPercentage).toBe(50);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(500);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(50);
                 }).toPass();
 
                 await expect
@@ -201,8 +221,12 @@ test.describe('Slider', () => {
                 await tickLabels.at(3)?.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(750);
-                    expect(await slider.fillPercentage).toBe(75);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(750);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(75);
                 }).toPass();
 
                 await expect
@@ -214,8 +238,12 @@ test.describe('Slider', () => {
                 await tickLabels.at(-1)?.click();
 
                 await expect(async () => {
-                    expect(await slider.value).toBe(1000);
-                    expect(await slider.fillPercentage).toBe(100);
+                    const value = await slider.getValue();
+
+                    expect(value).toBe(1000);
+                    const percentage = await slider.getFilledPercentage();
+
+                    expect(percentage).toBe(100);
                 }).toPass();
 
                 await expect

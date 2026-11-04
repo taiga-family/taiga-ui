@@ -1,21 +1,32 @@
-import {type Locator} from '@playwright/test';
+import {TUI_INPUT_CARD_GROUP_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputCardGroupEO {
+import {TuiBaseEO} from './base.eo';
+
+/**
+ * Element Object for a TuiInputCardGroup component.
+ *
+ * Exposes the number, expiry and CVC textfields and the clear icon.
+ */
+export class TuiInputCardGroupEO extends TuiBaseEO {
+    protected override readonly hostSelector = TUI_INPUT_CARD_GROUP_LOCATORS.HOST;
+
+    /** Card number textfield. */
     public readonly numberTextfield = this.host.locator(
-        '[automation-id="tui-input-card-group__card"]',
+        TUI_INPUT_CARD_GROUP_LOCATORS.NUMBER_TEXTFIELD,
     );
 
+    /** Clear icon of the card group. */
     public readonly cleanerIcon = this.host.locator(
-        '[automation-id="tui-input-card-group__cleaner"]',
+        TUI_INPUT_CARD_GROUP_LOCATORS.CLEANER,
     );
 
+    /** Expiry date textfield. */
     public readonly expiryTextfield = this.host.locator(
-        '[automation-id="tui-input-card-group__expire"]',
+        TUI_INPUT_CARD_GROUP_LOCATORS.EXPIRY_TEXTFIELD,
     );
 
+    /** CVC textfield. */
     public readonly cvcTextfield = this.host.locator(
-        '[automation-id="tui-input-card-group__cvc"]',
+        TUI_INPUT_CARD_GROUP_LOCATORS.CVC_TEXTFIELD,
     );
-
-    constructor(private readonly host: Locator) {}
 }

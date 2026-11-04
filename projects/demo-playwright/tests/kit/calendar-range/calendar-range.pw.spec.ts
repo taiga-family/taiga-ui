@@ -26,9 +26,9 @@ describe('CalendarRange', () => {
             await tuiGoto(page, DemoRoute.CalendarRange, {date: today});
         });
 
-        test('With another range switcher', async () => {
+        test('With another range switcher', async ({page}) => {
             example = documentationPage.getExample('#with-another-range-switcher');
-            calendarRange = new TuiCalendarRangeEO(example.locator('tui-calendar-range'));
+            calendarRange = new TuiCalendarRangeEO(page, example);
 
             const resetButton = example.locator('p button[data-appearance="action"]');
 
@@ -39,7 +39,10 @@ describe('CalendarRange', () => {
                 );
 
             await calendarRange.selectItem(1);
-            await calendarRange.itemHasCheckmark(1);
+
+            const checkmark = await calendarRange.getCheckmark(1);
+
+            await expect(checkmark!).toBeVisible();
 
             await expect
                 .soft(example)
@@ -75,9 +78,7 @@ describe('CalendarRange', () => {
         describe('With value', () => {
             test('Month switching via chevron', async ({page}) => {
                 example = documentationPage.getExample('#with-value');
-                calendarRange = new TuiCalendarRangeEO(
-                    example.locator('tui-calendar-range'),
-                );
+                calendarRange = new TuiCalendarRangeEO(page, example);
 
                 await calendarRange.previousMonth.click();
 
@@ -97,7 +98,7 @@ describe('CalendarRange', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            calendarRange = new TuiCalendarRangeEO(example.locator('tui-calendar-range'));
+            calendarRange = new TuiCalendarRangeEO(page, example);
         });
 
         test('Maximum month when items not empty', async ({page}) => {
@@ -157,9 +158,7 @@ describe('CalendarRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.CalendarRange}/API`);
 
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
 
@@ -178,9 +177,7 @@ describe('CalendarRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.CalendarRange}/API`);
 
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.clickOnDay(15);
@@ -204,9 +201,7 @@ describe('CalendarRange', () => {
             }) => {
                 await tuiGoto(page, `${DemoRoute.CalendarRange}/API`);
 
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.getCalendarDay(20).hover();
@@ -236,9 +231,7 @@ describe('CalendarRange', () => {
             });
 
             test('click on the 1st date (beginning of date range) disables invalid cells for the 2nd date', async () => {
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
 
@@ -250,9 +243,7 @@ describe('CalendarRange', () => {
             });
 
             test('click on disabled cell does nothing', async () => {
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
 
@@ -268,9 +259,7 @@ describe('CalendarRange', () => {
             });
 
             test('selects valid 2nd date – date range is completed', async () => {
-                const [calendarSheet] = await calendarRange
-                    .getCalendars()
-                    .then(async ([x]) => x.getCalendarSheets());
+                const [calendarSheet] = await calendarRange.getCalendarSheets();
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.clickOnDay(19);
@@ -294,27 +283,25 @@ describe('CalendarRange', () => {
                 });
 
                 test('31.03.2018 => {month: 1} => 01.03.2018 // all days of March, a full month', async () => {
-                    const [, endSheet] = await calendarRange
-                        .getCalendars()
-                        .then(async ([x]) => x.getCalendarSheets());
+                    const [, endCalendar] = await calendarRange.getCalendars();
+                    const endSheet = endCalendar!.calendarSheet;
 
-                    await endSheet!.clickOnDay(31);
+                    await endSheet.clickOnDay(31);
 
                     await expect(example).toHaveScreenshot(
                         '11-1-min-length-month-1-full-march.png',
                     );
 
-                    await endSheet!.clickOnDay(2);
+                    await endSheet.clickOnDay(2);
                     await expect(alert).not.toBeAttached();
 
-                    await endSheet!.clickOnDay(1);
+                    await endSheet.clickOnDay(1);
                     await expect(alert).toContainText('01.03.2018 – 31.03.2018');
                 });
 
                 test('17.03.2018 => {month: 1} => 18.02.2018 // full month with from-day', async () => {
-                    const [startSheet, endSheet] = await calendarRange
-                        .getCalendars()
-                        .then(async ([x]) => x.getCalendarSheets());
+                    const [startSheet, endSheet] =
+                        await calendarRange.getCalendarSheets();
 
                     await endSheet!.clickOnDay(17);
 
@@ -330,9 +317,8 @@ describe('CalendarRange', () => {
                 });
 
                 test('30.03.2018 => {month: 1} => 28.02.2018 // full month, when current month has more days, then final', async () => {
-                    const [startSheet, endSheet] = await calendarRange
-                        .getCalendars()
-                        .then(async ([x]) => x.getCalendarSheets());
+                    const [startSheet, endSheet] =
+                        await calendarRange.getCalendarSheets();
 
                     await endSheet!.clickOnDay(30);
 
@@ -357,9 +343,8 @@ describe('CalendarRange', () => {
                 });
 
                 test('31.03.2018 => {month: 1, day: 1} => 28.02.2018 // all days of March plus one day', async () => {
-                    const [startSheet, endSheet] = await calendarRange
-                        .getCalendars()
-                        .then(async ([x]) => x.getCalendarSheets());
+                    const [startSheet, endSheet] =
+                        await calendarRange.getCalendarSheets();
 
                     await endSheet!.clickOnDay(31);
 
@@ -375,9 +360,8 @@ describe('CalendarRange', () => {
                 });
 
                 test('17.03.2018 => {month: 1, day: 1} => 17.02.2018 // full month with from-day plus one day', async () => {
-                    const [startSheet, endSheet] = await calendarRange
-                        .getCalendars()
-                        .then(async ([x]) => x.getCalendarSheets());
+                    const [startSheet, endSheet] =
+                        await calendarRange.getCalendarSheets();
 
                     await endSheet!.clickOnDay(17);
 
@@ -442,14 +426,11 @@ describe('CalendarRange', () => {
                 await expect(calendarRange.host).toContainText('February 2026');
 
                 const pagePO = new TuiDocumentationPagePO(page);
+                const maxProperty = new TuiSelectEO(page, pagePO.getRow('max'));
 
-                const maxProperty = new TuiSelectEO(
-                    (await pagePO.getSelect(pagePO.getRow('max')))!,
-                );
-
-                await maxProperty.host.click();
+                await maxProperty.click();
                 await maxProperty.selectOptions([3]);
-                await expect(maxProperty.host).toHaveValue('01.01.2300');
+                await expect(maxProperty.input).toHaveValue('01.01.2300');
 
                 await expect(calendarRange.host).toContainText('January 2026');
                 await expect(calendarRange.host).toContainText('February 2026');

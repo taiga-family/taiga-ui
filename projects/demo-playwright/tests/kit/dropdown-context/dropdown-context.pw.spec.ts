@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('DropdownContext', () => {
     test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.DropdownContext));
@@ -42,12 +43,12 @@ test.describe('DropdownContext', () => {
 
         await example.scrollIntoViewIfNeeded();
         await tr.nth(1).click({button: 'right', position: {x: 1, y: 1}});
-        await page.locator('[tuiOption]').last().click();
+        await page.locator(TUI_DATA_LIST_LOCATORS.OPTION).last().click();
         await api.waitStableState();
 
         await expect.soft(example).toHaveScreenshot('04-dropdown-context.png');
 
-        await page.locator('[tuiOption]').last().click();
+        await page.locator(TUI_DATA_LIST_LOCATORS.OPTION).last().click();
         await api.waitStableState();
 
         await expect.soft(example).toHaveScreenshot('05-dropdown-context.png');

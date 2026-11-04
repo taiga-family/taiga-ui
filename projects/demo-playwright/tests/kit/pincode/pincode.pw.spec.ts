@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -47,7 +48,8 @@ describe('Pincode', () => {
 
                 await validSelect.click();
                 await page
-                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .locator('tui-data-list-wrapper')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
                     .filter({hasText: 'false'})
                     .click();
 
@@ -68,7 +70,8 @@ describe('Pincode', () => {
 
                 await validSelect.click();
                 await page
-                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .locator('tui-data-list-wrapper')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
                     .filter({hasText: 'true'})
                     .click();
 
@@ -91,7 +94,8 @@ describe('Pincode', () => {
 
                 await validSelect.click();
                 await page
-                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .locator('tui-data-list-wrapper')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
                     .filter({hasText: 'true'})
                     .click();
 
@@ -110,7 +114,8 @@ describe('Pincode', () => {
 
                 await invalidSelect.click();
                 await page
-                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .locator('tui-data-list-wrapper')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
                     .filter({hasText: 'true'})
                     .click();
 
@@ -130,7 +135,8 @@ describe('Pincode', () => {
 
                 await typeSelect.click();
                 await page
-                    .locator('tui-data-list-wrapper [tuiOption]')
+                    .locator('tui-data-list-wrapper')
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
                     .filter({hasText: 'password'})
                     .click();
             });
