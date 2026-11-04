@@ -2,3 +2,8 @@ tui-loader > .t-loader .t-icon,
 tui-loader > .t-loader .t-circle {
     animation: none !important;
 }
+
+/* TODO: Remove when fixed: https://issues.chromium.org/issues/581484644 */
+tui-dropdown {
+    overscroll-behavior: auto !important;
+}
