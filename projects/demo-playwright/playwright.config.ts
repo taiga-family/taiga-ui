@@ -30,7 +30,12 @@ process.env['AXE_CONFIG'] = JSON.stringify(AXE_CONFIG);
 
 const chromium = {
     name: 'chromium',
-    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
+    use: {
+        ...devices['Desktop Chrome HiDPI'],
+        viewport: DEFAULT_VIEWPORT,
+        // TODO: Remove when fixed: https://issues.chromium.org/issues/581484644
+        launchOptions: {args: ['--force-device-scale-factor=2']},
+    },
 };
 
 const options = Object.fromEntries(
