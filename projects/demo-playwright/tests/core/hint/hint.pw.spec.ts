@@ -84,7 +84,8 @@ test.describe('TuiHint', () => {
 
             await example.prepareBeforeScreenshot();
 
-            await page.clock.install();
+            await page.clock.install({time: new Date(2020, 8, 25)});
+            await page.clock.pauseAt(new Date(2020, 8, 25, 0, 0, 1));
             await example.demo.locator('span').hover();
             await page.clock.runFor(0);
 
