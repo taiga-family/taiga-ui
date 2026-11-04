@@ -42,6 +42,7 @@ test.describe('DropdownContext', () => {
 
         await example.scrollIntoViewIfNeeded();
         await tr.nth(1).click({button: 'right', position: {x: 1, y: 1}});
+        await api.waitStableState();
         await page.locator('[tuiOption]').last().click();
         await api.waitStableState();
 
