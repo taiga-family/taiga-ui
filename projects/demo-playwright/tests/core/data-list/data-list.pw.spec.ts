@@ -90,63 +90,66 @@ test.describe('DataList', () => {
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#submenu');
+        const dropdowns = page.locator(TUI_DROPDOWN_LOCATORS.HOST);
+        const options = dropdowns.locator(TUI_DATA_LIST_LOCATORS.OPTION);
 
         await example.scrollIntoViewIfNeeded();
         await documentationPagePO.prepareBeforeScreenshot();
 
         await example.locator('button').click();
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
+        // Keep mouse movement from changing focus during keyboard navigation.
+        await page.mouse.move(0, 0);
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+
+        await expect(options.getByText('Burgers', {exact: true})).toBeFocused();
 
         await expect.soft(page).toHaveScreenshot('03-1-data-list.png');
 
-        await page.waitForTimeout(100);
-        await page.keyboard.down('Enter');
-        await page.waitForTimeout(100);
+        await page.keyboard.press('Enter');
 
-        await expect(
-            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
-        ).toHaveCount(2);
+        await expect(dropdowns).toHaveCount(2);
         await expect.soft(page).toHaveScreenshot('03-2-data-list.png');
 
-        await page.keyboard.down('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+
+        await expect(options.getByText('Classic', {exact: true})).toBeFocused();
 
         await expect.soft(page).toHaveScreenshot('03-3-data-list.png');
 
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+
+        await expect(options.getByText('Nested menu', {exact: true})).toBeFocused();
 
         await expect.soft(page).toHaveScreenshot('03-4-data-list.png');
 
-        await page.waitForTimeout(100);
-        await page.keyboard.down('Enter');
-        await page.waitForTimeout(100);
+        await page.keyboard.press('Enter');
 
-        await expect(
-            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
-        ).toHaveCount(3);
+        await expect(dropdowns).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-5-data-list.png');
 
-        await page.keyboard.down('ArrowRight');
+        await page.keyboard.press('ArrowRight');
+
+        await expect(options.getByText('Cola', {exact: true})).toBeFocused();
 
         await expect.soft(page).toHaveScreenshot('03-6-data-list.png');
 
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
 
-        await expect(
-            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
-        ).toHaveCount(3);
+        await expect(options.getByText('Coffee', {exact: true})).toBeFocused();
+        await expect(dropdowns).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-7-data-list.png');
 
-        await page.waitForTimeout(100);
-        await page.keyboard.down('Enter');
-        await page.waitForTimeout(100);
+        await page.keyboard.press('Enter');
 
-        await expect(
-            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator(TUI_DATA_LIST_LOCATORS.HOST),
-        ).toHaveCount(3);
+        const dialog = page.locator('tui-dialog');
+
+        await expect(dialog).toContainText('You selected Coffee');
+        await expect(dialog.getByRole('button', {name: 'OK', exact: true})).toBeFocused();
+        await expect(dropdowns).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });
 
@@ -202,8 +205,10 @@ test.describe('DataList', () => {
         await email.focus();
         await email.clear();
         await email.fill('demo@taiga-ui.io');
-        await email.press('Enter');
 
+        await expect(email).toHaveValue('demo@taiga-ui.io');
+        await expect(email).toBeVisible();
+        await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveCount(2);
         await expect.soft(page).toHaveScreenshot('07-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-range-option"]').click();
@@ -224,6 +229,12 @@ test.describe('DataList', () => {
         await page.locator('[automation-id="tui-data-list-calendar-option"]').click();
         await page.locator('[automation-id="tui-calendar-sheet__cell"]').nth(4).click();
 
+        await expect(
+            page.locator('[automation-id="tui-data-list-calendar-option"]'),
+        ).toContainText('03.01.2020');
+        await expect(
+            page.locator(TUI_DROPDOWN_LOCATORS.HOST).locator('tui-calendar'),
+        ).toBeVisible();
         await expect.soft(page).toHaveScreenshot('09-data-list.png');
     });
 

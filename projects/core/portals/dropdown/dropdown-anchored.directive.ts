@@ -55,10 +55,12 @@ export class TuiDropdownAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    // Chained native anchors can lose painted content when a parent is repositioned.
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
-        this.viewport.type === 'window';
+        this.viewport.type === 'window' &&
+        !this.directive.el.closest('tui-dropdown');
 
     public ngAfterViewInit(): void {
         if (this.anchored) {
