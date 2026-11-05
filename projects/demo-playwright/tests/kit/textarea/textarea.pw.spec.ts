@@ -5,6 +5,127 @@ import {expect, test} from '@playwright/test';
 test.describe('Textarea', () => {
     test.use({viewport: {width: 400, height: 500}});
 
+    test('does not show a horizontal scrollbar for wrapped text outside a dialog', async ({
+        page,
+    }) => {
+        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
+
+        test.skip(
+            !(await page.evaluate(() => CSS.supports('animation-timeline', '--name'))),
+            'Requires CSS scroll timelines',
+        );
+
+        const {demo} = new TuiDocumentationPagePO(page);
+        const textarea = demo.locator('textarea[tuiTextarea]');
+        const horizontal = demo.locator('.t-bar_horizontal .t-thumb');
+
+        await expect(horizontal).toHaveCSS('opacity', '0');
+        await textarea.fill('A line of wrapped text\n'.repeat(20));
+        await expect
+            .poll(async () =>
+                textarea.evaluate(
+                    (element) => element.scrollHeight > element.clientHeight,
+                ),
+            )
+            .toBe(true);
+        await expect(horizontal).toHaveCSS('opacity', '0');
+    });
+
+    test('only shows a scrollbar in a dialog when the textarea overflows', async ({
+        page,
+    }) => {
+        await tuiGoto(page, DemoRoute.Textarea);
+        await new TuiDocumentationPagePO(page)
+            .getExample('#dialog')
+            .getByRole('button', {name: 'Show dialog'})
+            .click();
+
+        const dialog = page.locator('tui-dialog');
+        const textarea = dialog.locator('textarea[tuiTextarea]');
+        const controls = dialog.locator('tui-textarea-content tui-scroll-controls');
+        const vertical = controls.locator('.t-bar_vertical .t-thumb');
+        const horizontal = controls.locator('.t-bar_horizontal .t-thumb');
+        const opacity = async (locator: typeof vertical): Promise<number> =>
+            locator.evaluateAll((elements) =>
+                Math.max(
+                    0,
+                    ...elements.map((element) =>
+                        Number(getComputedStyle(element).opacity),
+                    ),
+                ),
+            );
+
+        await expect(textarea).toBeVisible();
+
+        expect(
+            await controls.evaluate((element) => element.classList.contains('_timeline')),
+        ).toBe(await page.evaluate(() => CSS.supports('animation-timeline', '--name')));
+
+        await expect.poll(async () => opacity(vertical)).toBe(0);
+        await expect.poll(async () => opacity(horizontal)).toBe(0);
+
+        await textarea.fill('A line of text');
+
+        await expect.poll(async () => opacity(vertical)).toBe(0);
+        await expect.poll(async () => opacity(horizontal)).toBe(0);
+
+        await textarea.fill('A line of text\n'.repeat(20));
+
+        await expect.poll(async () => opacity(vertical)).toBeGreaterThan(0);
+        await expect.poll(async () => opacity(horizontal)).toBe(0);
+        await textarea.evaluate((element) => element.scrollTo({top: 0}));
+        await expect
+            .poll(async () =>
+                vertical.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBe(0);
+
+        await textarea.evaluate((element) =>
+            element.scrollTo({top: element.scrollHeight}),
+        );
+        await expect
+            .poll(async () => textarea.evaluate((element) => element.scrollTop))
+            .toBeGreaterThan(0);
+
+        await expect
+            .poll(async () =>
+                vertical.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBeGreaterThan(0);
+
+        await textarea.evaluate((element) => element.scrollTo({top: 0}));
+        await expect
+            .poll(async () =>
+                vertical.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBe(0);
+        await dialog.evaluate((element) => {
+            const filler = document.createElement('div');
+
+            filler.style.blockSize = '1000px';
+            element.append(filler);
+        });
+
+        const dialogScroll = dialog.locator('..');
+
+        await dialogScroll.evaluate((element) =>
+            element.scrollTo({top: element.scrollHeight, behavior: 'instant'}),
+        );
+        await expect
+            .poll(async () => dialogScroll.evaluate((element) => element.scrollTop))
+            .toBeGreaterThan(0);
+        await expect
+            .poll(async () =>
+                vertical.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBe(0);
+
+        await textarea.clear();
+
+        await expect.poll(async () => opacity(vertical)).toBe(0);
+        await expect.poll(async () => opacity(horizontal)).toBe(0);
+    });
+
     test('line break text', async ({page, browserName}) => {
         test.skip(browserName !== 'chromium', 'Font flaky');
 
