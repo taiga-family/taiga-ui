@@ -75,11 +75,15 @@ export class TuiScrollWheel implements AfterViewInit {
     }
 
     protected sync(): void {
+        const {scrollTop} = this.el;
         const offset = OFFSET - this.offset;
-        const top = Math.max(this.el.scrollTop + offset, OFFSET);
+        const top = Math.max(scrollTop + offset, OFFSET);
 
         this.update(offset);
-        this.el.scrollTo({top, behavior: 'instant'});
+
+        if (top !== scrollTop) {
+            this.el.scrollTo({top, behavior: 'instant'});
+        }
     }
 
     private refreshItems(delta: number): void {
