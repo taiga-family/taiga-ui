@@ -6,6 +6,7 @@ import {
     input,
     type TrackByFunction,
     viewChild,
+    viewChildren,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_STRINGIFY} from '@taiga-ui/cdk/constants';
@@ -32,7 +33,7 @@ export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
     protected readonly item = viewChild(TuiTreeItem);
-    protected readonly child = viewChild(TuiTreeComponent);
+    protected readonly nested = viewChildren(TuiTreeComponent);
 
     protected readonly children = toSignal(
         this.check$.pipe(
@@ -57,7 +58,7 @@ export class TuiTreeComponent<T> implements DoCheck {
     protected checkChanges(): void {
         this.check$.next();
         this.item()?.checkChanges();
-        this.child()?.checkChanges();
+        this.nested().forEach((tree) => tree.checkChanges());
     }
 
     private get handler(): TuiHandler<T, readonly T[]> {
