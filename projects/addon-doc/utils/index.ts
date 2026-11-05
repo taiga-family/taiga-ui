@@ -1,6 +1,7 @@
 export * from './clean-object';
 export * from './coerce-boolean';
 export * from './coerce-value';
+export * from './generate-api-code';
 export * from './inspect';
 export * from './is-page-group';
 export * from './parse-code-block';
