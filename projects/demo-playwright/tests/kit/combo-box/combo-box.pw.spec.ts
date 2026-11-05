@@ -7,6 +7,62 @@ const {describe, beforeEach} = test;
 describe('ComboBox', () => {
     test.use({viewport: {width: 400, height: 500}});
 
+    test('delegated scrollbar follows the tuiScrollable viewport', async ({page}) => {
+        await tuiGoto(page, DemoRoute.ComboBox);
+        await new TuiDocumentationPagePO(page)
+            .getExample('#virtual-scroll')
+            .locator('input[tuiComboBox]')
+            .click();
+
+        const dropdown = page.locator('tui-dropdown');
+        const viewport = dropdown.locator('[tuiScrollable]');
+        const thumb = dropdown.locator(
+            ':scope > tui-scroll-controls .t-bar_vertical .t-thumb',
+        );
+
+        await expect(viewport).toBeVisible();
+        await viewport.evaluate((element) => {
+            element.style.height = '160px';
+        });
+        await expect
+            .poll(async () =>
+                viewport.evaluate(
+                    (element) => element.scrollHeight - element.clientHeight,
+                ),
+            )
+            .toBeGreaterThan(0);
+        await expect(dropdown).toHaveClass(/_delegated/);
+        await expect(thumb).toHaveCSS('opacity', '0.2');
+        await expect
+            .poll(async () => viewport.evaluate((element) => element.scrollTop))
+            .toBe(0);
+        await expect
+            .poll(async () =>
+                thumb.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBe(0);
+
+        await viewport.evaluate((element) =>
+            element.scrollTo({top: element.scrollHeight, behavior: 'instant'}),
+        );
+
+        await expect
+            .poll(async () =>
+                thumb.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBeGreaterThan(0);
+
+        await viewport.evaluate((element) =>
+            element.scrollTo({top: 0, behavior: 'instant'}),
+        );
+
+        await expect
+            .poll(async () =>
+                thumb.evaluate((element) => (element as HTMLElement).offsetTop),
+            )
+            .toBe(0);
+    });
+
     describe('API', () => {
         let example!: Locator;
         let value!: Locator;
