@@ -1,3 +1,4 @@
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type Observable} from 'rxjs';
 
@@ -19,6 +20,13 @@ export interface TuiSheetDialogOptions<I = undefined> {
      */
     readonly themeColor: string;
 }
+
+export type TuiSheetDialogContext<I = undefined, O = void> = TuiPortalContext<
+    TuiSheetDialogOptions<I>,
+    O
+> & {
+    scrollTo(index: number, behavior?: ScrollBehavior): void;
+};
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     label: '',

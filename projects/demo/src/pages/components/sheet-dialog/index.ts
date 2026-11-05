@@ -30,6 +30,7 @@ export default class Page {
         'AppBar',
         'Fullscreen',
         'Address bar color',
+        'Scroll to stop',
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;

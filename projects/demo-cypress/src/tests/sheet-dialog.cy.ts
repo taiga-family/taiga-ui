@@ -1,11 +1,14 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {
     TuiSheetDialog,
+    type TuiSheetDialogContext,
     type TuiSheetDialogOptions,
+    TuiSheetDialogService,
     TuiThemeColorService,
 } from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, delay} from 'rxjs';
 
 describe('TuiSheetDialog', () => {
@@ -173,5 +176,138 @@ describe('TuiSheetDialog theme-color', () => {
         cy.get('tui-sheet-dialog').should('not.exist');
         // Reverts to the color that was set before opening, not a stale value.
         cy.get('head meta[name="theme-color"]').should('have.attr', 'content', '#000000');
+    });
+});
+
+describe('TuiSheetDialog scrollTo', () => {
+    @Component({
+        imports: [TuiButton],
+        template: `
+            @for (action of actions; track action.label) {
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="context.scrollTo(action.index)"
+                >
+                    {{ action.label }}
+                </button>
+            }
+            <button
+                tuiButton
+                type="button"
+                (click)="grow()"
+            >
+                Grow
+            </button>
+            @for (paragraph of paragraphs(); track paragraph) {
+                <p>{{ paragraph }}</p>
+            }
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class Content {
+        protected readonly context = injectContext<TuiSheetDialogContext>();
+        protected readonly paragraphs = signal(Array.from({length: 40}, (_, i) => i));
+        protected readonly actions = [
+            {label: 'Stop 1', index: 0},
+            {label: 'Stop 2', index: 1},
+            {label: 'Top', index: 2},
+            {label: 'Beyond', index: 99},
+        ];
+
+        protected grow(): void {
+            this.paragraphs.update((list) =>
+                list.concat(list.map((i) => i + list.length)),
+            );
+        }
+    }
+
+    @Component({
+        imports: [TuiButton, TuiRoot],
+        template: `
+            <tui-root>
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="open()"
+                >
+                    Show
+                </button>
+            </tui-root>
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class Test {
+        private readonly service = inject(TuiSheetDialogService);
+
+        protected open(): void {
+            this.service
+                .open(new PolymorpheusComponent(Content), {stops: ['9.5rem', '18rem']})
+                .subscribe();
+        }
+    }
+
+    // Native click: Cypress would scroll the button into view and move the sheet itself
+    function press(label: string): void {
+        cy.contains('tui-sheet-dialog button', label).then(($button) => {
+            $button[0]?.click();
+        });
+    }
+
+    function expectAt(selector: string, index = 0): void {
+        cy.get('tui-sheet-dialog').should(($sheet) => {
+            const sheet = $sheet[0]!;
+            const target = sheet.querySelectorAll<HTMLElement>(selector)[index]!;
+
+            expect(sheet.scrollTop).to.be.closeTo(target.offsetTop, 1);
+        });
+    }
+
+    beforeEach(() => {
+        cy.viewport(375, 900);
+        cy.mount(Test);
+        cy.contains('button', 'Show').click();
+        cy.get('tui-sheet-dialog').should('be.visible');
+    });
+
+    it('moves between stops by index', () => {
+        expectAt('.t-stop', 0);
+
+        press('Stop 2');
+        expectAt('.t-stop', 1);
+
+        press('Stop 1');
+        expectAt('.t-stop', 0);
+    });
+
+    it('reaches the content top from the last index and beyond', () => {
+        press('Top');
+        expectAt('.t-sheet');
+
+        press('Stop 1');
+        expectAt('.t-stop', 0);
+
+        press('Beyond');
+        expectAt('.t-sheet');
+    });
+
+    it('keeps scrolling when the content grows mid-scroll', () => {
+        cy.get('tui-sheet-dialog').then(($sheet) => {
+            const click = (label: string): void =>
+                Array.from($sheet[0]!.querySelectorAll('button'))
+                    .find((button) => button.textContent?.trim() === label)
+                    ?.click();
+
+            click('Top');
+
+            return new Cypress.Promise<void>((resolve) => {
+                setTimeout(() => {
+                    click('Grow');
+                    resolve();
+                }, 100);
+            });
+        });
+
+        expectAt('.t-sheet');
     });
 });
