@@ -38,12 +38,12 @@
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiSlide;
-        animation-duration: max(calc(var(--tui-duration) * 2), 300ms);
+        animation-duration: ~'min(calc(var(--tui-duration) * 2), 300ms)';
         animation-timing-function: var(--tui-curve-expressive-exit);
     }
 
     &.tui-enter {
-        animation-duration: max(calc(var(--tui-duration) / 3 * 7), 350ms);
+        animation-duration: ~'min(calc(var(--tui-duration) / 3 * 7), 350ms)';
         animation-timing-function: cubic-bezier(0.1, 0.8, 0.5, 1);
     }
 
