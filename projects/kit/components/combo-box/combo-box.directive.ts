@@ -44,7 +44,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
-        '(input)': 'toggleDropdown(true)',
+        '(input)': 'onInput()',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -69,16 +69,6 @@ export class TuiComboBoxDirective<T>
                 ?.options()
                 .filter((x) => !this.handlers.disabledItemHandler()(x)) ?? [],
     );
-
-    protected readonly nonStrictControlEffect = effect(() => {
-        if (
-            !this.options().length &&
-            !this.strict() &&
-            this.stringify(this.value()) !== this.textfield.value()
-        ) {
-            this.onChange(this.textfield.value() || null);
-        }
-    });
 
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
@@ -144,6 +134,14 @@ export class TuiComboBoxDirective<T>
         if (changed || reset) {
             super.writeValue(value);
             untracked(() => this.textfield.value.set(this.stringify(value)));
+        }
+    }
+
+    protected onInput(): void {
+        this.toggleDropdown(true);
+
+        if (!this.strict() && !this.options().length) {
+            this.onChange(this.el.value || null);
         }
     }
 

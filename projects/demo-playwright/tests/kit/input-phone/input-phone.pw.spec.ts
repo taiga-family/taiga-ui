@@ -1437,6 +1437,11 @@ test.describe('InputPhone', () => {
             });
 
             test.describe('New typed character is equal to the previous (already existing) fixed character', () => {
+                test.beforeEach(async () => {
+                    await input.focus();
+                    await expect(input).toHaveValue('+7 ');
+                });
+
                 test('+7 | => Type 7 => +7 (7', async () => {
                     await input.pressSequentially('7');
 
