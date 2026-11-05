@@ -36,14 +36,6 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - name: Upload demo dist artifact (for performance workflow reuse)
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: demo-dist-${{ github.sha }}
-          path: dist/demo
-          if-no-files-found: error
-          compression-level: 0
-
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
@@ -279,12 +271,6 @@ jobs:
       - uses: taiga-family/actions/playwright-diff-check@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
         with:
           pw-result: ./total
-
-  performance-stress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    needs: [build-demo]
-    uses: ./.github/workflows/performance.yml
-    secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
