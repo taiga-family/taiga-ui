@@ -1,4 +1,5 @@
 import {
+    afterNextRender,
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
@@ -45,6 +46,10 @@ export class TuiScrollWheel implements AfterViewInit {
     public readonly buffer = input(10);
     public readonly index = model(0);
 
+    constructor() {
+        afterNextRender(() => this.el.scrollTo({top: OFFSET, behavior: 'instant'}));
+    }
+
     public ngAfterViewInit(): void {
         for (let i = 0; i < this.buffer() * 2 + 1; i++) {
             this.createItem(this.index() - this.buffer() + i);
@@ -58,6 +63,10 @@ export class TuiScrollWheel implements AfterViewInit {
 
         this.refreshItems(current - this.index());
         this.index.set(current);
+
+        if (!this.visible.size && this.el.scrollTop < this.offset) {
+            this.sync();
+        }
     }
 
     public update(offset: number): void {
@@ -66,11 +75,15 @@ export class TuiScrollWheel implements AfterViewInit {
     }
 
     protected sync(): void {
+        const {scrollTop} = this.el;
         const offset = OFFSET - this.offset;
-        const top = Math.max(this.el.scrollTop + offset, OFFSET);
+        const top = Math.max(scrollTop + offset, OFFSET);
 
         this.update(offset);
-        this.el.scrollTo({top, behavior: 'instant'});
+
+        if (top !== scrollTop) {
+            this.el.scrollTo({top, behavior: 'instant'});
+        }
     }
 
     private refreshItems(delta: number): void {
