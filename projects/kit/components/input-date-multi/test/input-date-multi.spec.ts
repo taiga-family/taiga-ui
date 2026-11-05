@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {TuiDay} from '@taiga-ui/cdk';
-import {provideTaiga, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {provideTaiga, TuiCalendar, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {tuiInputDateOptionsProvider} from '@taiga-ui/kit/components/input-date';
 import {
     TuiInputDateMulti,
@@ -177,6 +178,57 @@ describe('TuiInputDateMultiDirective', () => {
 
         it('renders formatted values in items', () => {
             expect(getItemsText(fixture)).toEqual(['11.03.2026', '12.03.2026']);
+        });
+    });
+
+    @Component({
+        imports: [FormsModule, TuiCalendar, TuiInputDateMulti, TuiTextfield],
+        template: `
+            <tui-textfield multi>
+                <input
+                    tuiInputDateMulti
+                    [(ngModel)]="value"
+                />
+                <tui-calendar />
+            </tui-textfield>
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class CalendarTest {
+        public value: readonly TuiDay[] = [];
+    }
+
+    describe('calendar', () => {
+        let fixture: ComponentFixture<CalendarTest>;
+
+        beforeEach(async () => {
+            TestBed.resetTestingModule();
+            TestBed.configureTestingModule({
+                imports: [CalendarTest],
+                providers: [provideTaiga()],
+            });
+
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(CalendarTest);
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+            fixture.detectChanges();
+        });
+
+        it('keeps every day clicked before change detection runs', () => {
+            const calendar: TuiCalendar = fixture.debugElement.query(
+                By.directive(TuiCalendar),
+            ).componentInstance;
+
+            calendar.onDayClick(new TuiDay(2026, 2, 11));
+            calendar.onDayClick(new TuiDay(2026, 2, 12));
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.value).toEqual([
+                new TuiDay(2026, 2, 11),
+                new TuiDay(2026, 2, 12),
+            ]);
         });
     });
 

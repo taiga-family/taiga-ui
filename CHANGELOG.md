@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.31.0](https://github.com/taiga-family/taiga-ui/compare/v5.30.0...v5.31.0) (2026-11-02)
+
+### 🐞 Bug Fixes
+
+- **core:** `Hint` and `Dropdown` respect CSS zoom via shared `TuiCSSZoomService`
+  ([#15293](https://github.com/taiga-family/taiga-ui/issues/15293))
+  ([90c4bc1](https://github.com/taiga-family/taiga-ui/commit/90c4bc1fd4959ec78b669332e70bcf2e9e358d5f))
+- **core:** `TextfieldMulti` ignore zero item height ([#15309](https://github.com/taiga-family/taiga-ui/issues/15309))
+  ([e819bad](https://github.com/taiga-family/taiga-ui/commit/e819bad89a27ddc82b7d1dc27048a9b54a929e96))
+- declare jest-preset-angular as a direct dev dependency
+  ([#15307](https://github.com/taiga-family/taiga-ui/issues/15307))
+  ([0a91b3a](https://github.com/taiga-family/taiga-ui/commit/0a91b3a68c3a386bfe9e9af6594e9e18483b705c))
+- **kit:** `Tiles` keep order when drag skips lines ([#15287](https://github.com/taiga-family/taiga-ui/issues/15287))
+  ([e393eca](https://github.com/taiga-family/taiga-ui/commit/e393eca2e8f1e22b90e73c7b580f288b838800fd))
+- **kit:** preserve route injector in routable dialog ([#15114](https://github.com/taiga-family/taiga-ui/issues/15114))
+  ([afdf341](https://github.com/taiga-family/taiga-ui/commit/afdf341e56bc8cba37b1aa1756309b161a0d0e6a))
+- **kit:** round negative bigint values to the closest quantum
+  ([#15312](https://github.com/taiga-family/taiga-ui/issues/15312))
+  ([0f89460](https://github.com/taiga-family/taiga-ui/commit/0f89460538a5d87a6ce771be45b8949aba100b23))
+- **kit:** sync tabs active item index when items change
+  ([#15281](https://github.com/taiga-family/taiga-ui/issues/15281))
+  ([1ff20ee](https://github.com/taiga-family/taiga-ui/commit/1ff20eead66c36b86e4ae53929a6baf3fbdd5fdc))
+
 ## [5.30.0](https://github.com/taiga-family/taiga-ui/compare/v5.29.0...v5.30.0) (2026-10-26)
 
 ### 🐞 Bug Fixes

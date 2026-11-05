@@ -28,8 +28,11 @@ test.describe('DropdownContext', () => {
 
         await expect.soft(example).toHaveScreenshot('02-dropdown-context.png');
 
-        await api.focusOnBody();
-        await tr.nth(2).click({button: 'right', position: {x: 1, y: 1}});
+        await tr
+            .nth(2)
+            .locator('td')
+            .nth(1)
+            .click({button: 'right', position: {x: 1, y: 1}});
         await api.waitStableState();
 
         await expect.soft(example).toHaveScreenshot('03-dropdown-context.png');
@@ -42,6 +45,7 @@ test.describe('DropdownContext', () => {
 
         await example.scrollIntoViewIfNeeded();
         await tr.nth(1).click({button: 'right', position: {x: 1, y: 1}});
+        await api.waitStableState();
         await page.locator('[tuiOption]').last().click();
         await api.waitStableState();
 
