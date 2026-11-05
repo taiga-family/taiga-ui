@@ -1507,6 +1507,13 @@ export const pages: DocRoutePages = [
                 keywords: 'truncate, middle, ellipsis, обрезка, по середине',
                 route: DemoRoute.Truncate,
             },
+            {
+                section: 'Tools',
+                title: 'UnmaskHandler',
+                keywords:
+                    'mask, maskito, unmask, form, patchValue, setValue, маска, форма, значение',
+                route: DemoRoute.UnmaskHandler,
+            },
         ],
     },
     {

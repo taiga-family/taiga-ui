@@ -948,6 +948,11 @@ export const ROUTES: Routes = [
         title: 'Truncate',
     }),
     route({
+        path: DemoRoute.UnmaskHandler,
+        loadComponent: async () => import('../directives/unmask-handler'),
+        title: 'UnmaskHandler',
+    }),
+    route({
         path: DemoRoute.Validator,
         loadComponent: async () => import('../directives/validator'),
         title: 'Validator',
