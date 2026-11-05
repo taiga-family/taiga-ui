@@ -1,19 +1,14 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    TemplateRef,
-    viewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef, viewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {
     TuiSheetDialogComponent,
+    type TuiSheetDialogContext,
     type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 describe('TuiSheetDialogComponent scrollTo', () => {
     @Component({
@@ -57,6 +52,10 @@ describe('TuiSheetDialogComponent scrollTo', () => {
             .componentInstance as TuiSheetDialogComponent;
     }
 
+    function context(): TuiSheetDialogContext {
+        return component()['context'];
+    }
+
     function stubLayout(
         offsets: readonly number[] = [100, 200],
         top = 500,
@@ -85,48 +84,11 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         });
     }
 
-    function stubPrototypes(): () => void {
-        const proto = HTMLElement.prototype;
-        const original = Object.getOwnPropertyDescriptor(proto, 'offsetTop');
-        const originalScrollTo = proto.scrollTo;
-
-        Object.defineProperty(proto, 'offsetTop', {
-            configurable: true,
-            get(this: HTMLElement) {
-                if (this.classList.contains('t-sheet')) {
-                    return 500;
-                }
-
-                return this.classList.contains('t-stop')
-                    ? Array.from(this.parentElement?.children ?? []).indexOf(this) * 100 +
-                          100
-                    : 0;
-            },
-        });
-        Object.defineProperty(proto, 'scrollTo', {
-            configurable: true,
-            value: scrollTo,
-            writable: true,
-        });
-
-        return () => {
-            if (original) {
-                Object.defineProperty(proto, 'offsetTop', original);
-            }
-
-            Object.defineProperty(proto, 'scrollTo', {
-                configurable: true,
-                value: originalScrollTo,
-                writable: true,
-            });
-        };
-    }
-
     it('scrolls to a stop by index', async () => {
         await setup();
         stubLayout();
 
-        component().scrollTo(1);
+        context().scrollTo(1);
 
         expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 200});
     });
@@ -135,7 +97,7 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         await setup();
         stubLayout();
 
-        component().scrollTo(2);
+        context().scrollTo(2);
 
         expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 500});
     });
@@ -144,7 +106,7 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         await setup();
         stubLayout();
 
-        component().scrollTo(0, 'auto');
+        context().scrollTo(0, 'auto');
 
         expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'auto', top: 100});
     });
@@ -156,7 +118,7 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         component()['onResize']();
         expect(sheet().scrollTop).toBe(100);
 
-        component().scrollTo(1);
+        context().scrollTo(1);
         sheet().scrollTop = 123;
 
         // Writing scrollTop would cancel an ongoing smooth scroll (CSSOM View)
@@ -181,52 +143,29 @@ describe('TuiSheetDialogComponent scrollTo', () => {
         await setup('content', {closable: false});
         stubLayout([100, 200], 0);
 
-        component().scrollTo(2);
+        context().scrollTo(2);
 
         expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 0});
     });
 
-    it('applies a scrollTo requested before the first render', async () => {
+    it('exposes scrollTo to a content component', async () => {
         @Component({
             template: 'Content',
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class Content {
-            private readonly sheet = inject(TuiSheetDialogComponent);
-
-            constructor() {
-                this.sheet.scrollTo(1);
-            }
-        }
-
-        const restore = stubPrototypes();
-
-        try {
-            await setup(new PolymorpheusComponent(Content));
-            fixture.detectChanges();
-            await fixture.whenStable();
-        } finally {
-            restore();
-        }
-
-        expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 200});
-    });
-
-    it('is injectable from the content component', async () => {
-        @Component({
-            template: 'Content',
-            changeDetection: ChangeDetectionStrategy.OnPush,
-        })
-        class Content {
-            public readonly sheet = inject(TuiSheetDialogComponent);
+            public readonly context = injectContext<TuiSheetDialogContext>();
         }
 
         await setup(new PolymorpheusComponent(Content));
+        stubLayout();
 
         const content = fixture.debugElement.query(By.directive(Content))
             .componentInstance as Content;
 
-        expect(content.sheet).toBe(component());
+        content.context.scrollTo(1);
+
+        expect(scrollTo).toHaveBeenLastCalledWith({behavior: 'smooth', top: 200});
     });
 
     it('exposes scrollTo to the template context', async () => {

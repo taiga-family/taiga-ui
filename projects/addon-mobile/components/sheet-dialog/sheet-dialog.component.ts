@@ -54,8 +54,6 @@ export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly sheet = viewChild('sheet', {read: ElementRef});
     private readonly el = tuiInjectElement();
-    private ready = false;
-    private pending: {index: number; behavior: ScrollBehavior} | null = null;
 
     protected readonly context: TuiSheetDialogContext = {
         ...injectContext<TuiPortalContext<TuiSheetDialogOptions>>(),
@@ -88,31 +86,11 @@ export class TuiSheetDialogComponent {
         .subscribe(() => this.close());
 
     constructor() {
-        afterNextRender(() => {
-            this.ready = true;
-
-            if (this.pending) {
-                this.scrollTo(this.pending.index, this.pending.behavior);
-                this.pending = null;
-            } else {
-                this.onResize();
-            }
-        });
+        afterNextRender(() => this.onResize());
     }
 
     public get initial(): number {
         return this.context.closable ? this.getTop(this.context.initial) : 0;
-    }
-
-    public scrollTo(index: number, behavior: ScrollBehavior = 'smooth'): void {
-        if (!this.ready) {
-            this.pending = {index, behavior};
-
-            return;
-        }
-
-        this.interacted = true;
-        this.el.scrollTo({top: this.getTop(index), behavior});
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
@@ -128,6 +106,11 @@ export class TuiSheetDialogComponent {
         } else {
             this.context.$implicit.complete();
         }
+    }
+
+    private scrollTo(index: number, behavior: ScrollBehavior = 'smooth'): void {
+        this.interacted = true;
+        this.el.scrollTo({top: this.getTop(index), behavior});
     }
 
     private getTop(index: number): number {
