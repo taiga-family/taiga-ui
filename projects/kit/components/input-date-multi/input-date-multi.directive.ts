@@ -86,12 +86,14 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         }
     });
 
-    protected readonly calendarOut = effect(() => {
-        const value = this.calendar()?.value();
+    protected readonly calendarOut = effect((onCleanup) => {
+        const sub = this.calendar()?.value.subscribe((value) => {
+            if (value instanceof TuiDay) {
+                this.updateValue(value);
+            }
+        });
 
-        if (value instanceof TuiDay) {
-            this.updateValue(value);
-        }
+        onCleanup(() => sub?.unsubscribe());
     });
 
     /**
