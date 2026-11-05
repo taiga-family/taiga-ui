@@ -177,5 +177,22 @@ describe('reorder functions', () => {
             expect(result.get(2)).toBe(2);
             expect(result.size).toBe(source.size);
         });
+
+        it('should support gaps between order values', () => {
+            const source = new Map([
+                [0, 0],
+                [1, 2],
+                [2, 4],
+                [3, 6],
+            ]);
+
+            const result = tuiTilesShift(source, 0, 2);
+
+            expect(result.get(0)).toBe(4);
+            expect(result.get(1)).toBe(0);
+            expect(result.get(2)).toBe(2);
+            expect(result.get(3)).toBe(6);
+            expect(result.size).toBe(source.size);
+        });
     });
 });
