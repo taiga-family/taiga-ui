@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77088],{77088:e=>{e.exports='<tui-textfield\n    multi\n    tuiTextfieldSize="s"\n>\n    <input\n        placeholder="Enter"\n        tuiInputChip\n        [unique]="false"\n        [(ngModel)]="value"\n    />\n\n    <tui-input-chip *tuiItem />\n</tui-textfield>\n'}}]);

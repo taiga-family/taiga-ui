@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57685],{57685:e=>{e.exports='<section *ngFor="let size of sizes">\n    <tui-avatar [size]="size">{{ size | uppercase }}</tui-avatar>\n    <tui-avatar\n        src="@tui.user"\n        [size]="size"\n    />\n</section>\n'}}]);

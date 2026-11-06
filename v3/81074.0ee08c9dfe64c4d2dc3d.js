@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[81074],{81074:a=>{a.exports='<tui-calendar\n    [value]="value"\n    (dayClick)="onDayClick($event)"\n></tui-calendar>\n<div>Chosen dates: {{ value }}</div>\n'}}]);

@@ -1,0 +1,82 @@
+import"./chunk-LQ6M4NCU.js";var i=`<tui-doc-page
+    header="PieChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
+                        Use
+                        <code>ChartHint</code>
+                        directive to enable hints with
+                        <code>tuiHintContent</code>
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pie-chart
+                class="chart"
+                [size]="size"
+                [tuiHintAppearance]="hint.appearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hint.direction"
+                [value]="value"
+                [(activeItemIndex)]="activeItemIndex"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[(activeItemIndex)]"
+                tuiDocAPIItem
+                type="number"
+                [items]="activeItemIndexVariants"
+                [(value)]="activeItemIndex"
+            >
+                selected fragment index
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            ></tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="valueVariants"
+                [(value)]="value"
+            ></tr>
+            <tr
+                name="[tuiHintContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent<TuiContext<number>>"
+                [items]="contentVariants"
+                [(value)]="hintContent"
+            >
+                content of the hint bubble
+            </tr>
+            <tbody
+                #hint
+                tuiDocHint
+                tuiHintDirection="top-end"
+                [hiddenOptions]="['centered', 'directionChange', 'visible']"
+            ></tbody>
+        </table>
+    </ng-template>
+</tui-doc-page>
+`;export{i as default};

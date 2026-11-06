@@ -1,0 +1,21 @@
+import"./chunk-LQ6M4NCU.js";var t=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = [
+        'Basic',
+        'Looped',
+        'Automatic',
+        'Dynamic height',
+        'Multiple',
+        'Scroll-driven animation',
+    ];
+}
+`;export{t as default};

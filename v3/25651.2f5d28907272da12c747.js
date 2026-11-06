@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[25651],{25651:n=>{n.exports='<tui-thumbnail-card\n    paymentSystem="mir"\n    class="logo"\n>\n    7777\n</tui-thumbnail-card>\n'}}]);

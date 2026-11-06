@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[81059],{81059:e=>{e.exports="tui-textfield {\n    gap: 0.375rem;\n}\n\n[tuiButton] {\n    border-radius: 10rem;\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[555],{555:e=>{e.exports='<form\n    class="b-form"\n    [formGroup]="testForm"\n    [tuiTextfieldCleaner]="true"\n>\n    <tui-input-date formControlName="testValue">Choose a date</tui-input-date>\n</form>\n'}}]);

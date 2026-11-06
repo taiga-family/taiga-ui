@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[64792],{64792:n=>{n.exports='<tui-thumbnail-card\n    *ngFor="let size of sizes"\n    iconLeft="tuiIconLock"\n    iconRight="tuiIconCloud"\n    paymentSystem="mastercard"\n    [size]="size"\n>\n    4572\n</tui-thumbnail-card>\n'}}]);

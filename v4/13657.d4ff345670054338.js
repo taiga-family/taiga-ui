@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[13657],{13657:n=>{n.exports='<tui-textfield>\n    <input\n        placeholder="Form control contains NaN"\n        tuiInputNumber\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n\n<p>\n    Control value:\n    <code>{{ value.toString() }}</code>\n</p>\n'}}]);
