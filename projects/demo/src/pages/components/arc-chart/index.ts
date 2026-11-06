@@ -11,7 +11,7 @@ import {type TuiSizeXL} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Stacked'];
+    protected readonly examples = ['Sizes', 'Stacked', 'Responsive'];
 
     protected readonly valueVariants = [
         [42],
