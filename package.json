@@ -36,7 +36,7 @@
         "knip": "knip",
         "lint": "eslint .",
         "prepare": "husky",
-        "prettier": "prettier !package-lock.json . --ignore-path .gitignore",
+        "prettier": "prettier !package-lock.json . --ignore-path .gitignore --ignore-path .prettierignore",
         "release": "standard-version -a --no-verify",
         "release:major": "ts-node ./scripts/release.ts --release-as major",
         "release:minor": "ts-node ./scripts/release.ts --release-as minor",
@@ -113,6 +113,8 @@
         "workerIdleMemoryLimit": "256MB"
     },
     "overrides": {
+        "less": "$less",
+        "postcss-less": "$postcss-less",
         "rxjs": "$rxjs"
     },
     "devDependencies": {
@@ -155,11 +157,14 @@
         "husky": "9.1.7",
         "jest-preset-angular": "14.6.2",
         "knip": "5.88.1",
+        "less": "4.9.1",
         "libphonenumber-js": "1.13.15",
         "ng-morph": "5.0.2",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "14.0.1",
         "nx": "22.1.1",
+        "postcss": "8.5.32",
+        "postcss-less": "7.0.1",
         "rxjs": "7.8.2",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",

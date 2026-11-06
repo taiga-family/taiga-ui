@@ -36,7 +36,7 @@ tui-icon:where(*&) {
     mask-size: calc(100% + 10 * var(--tui-stroke-width)) 100%;
     zoom: ~'calc(100% * (clamp(0px, var(--tui-font-offset) - 10px, 1px) / 0.8px))';
 
-    @media @tui-mouse {
+    @media @{tui-mouse} {
         &[data-appearance='icon']:hover {
             color: var(--tui-text-secondary);
         }
