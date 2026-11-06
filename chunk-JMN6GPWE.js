@@ -1,0 +1,1 @@
+import"./chunk-LQ6M4NCU.js";var l='```toml\n[mcp_servers.taiga-ui]\ncommand = "npx"\nargs = ["-y", "@taiga-ui/mcp@latest", "--source-url=https://taiga-ui.dev/llms-full.txt"]\n```\n';export{l as default};
