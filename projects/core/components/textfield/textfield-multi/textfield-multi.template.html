@@ -24,7 +24,12 @@
         <ng-content select="input" />
         <ng-content select="select" />
         @if (placeholder) {
-            <span class="t-ghost">{{ placeholder }}</span>
+            <span
+                translate="no"
+                class="t-ghost"
+            >
+                {{ placeholder }}
+            </span>
         }
         <input
             aria-hidden="true"
