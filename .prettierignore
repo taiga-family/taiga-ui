@@ -1,0 +1,6 @@
+# Prettier cannot parse interpolated LESS media queries (prettier/prettier#20076).
+# Keep these files in Stylelint; remove the exclusions when Prettier supports them.
+projects/styles/components/cell.less
+projects/styles/components/icon.less
+projects/styles/mixins/date-picker.less
+projects/styles/mixins/hitbox.less
