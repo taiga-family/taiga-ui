@@ -18,20 +18,6 @@
     border-radius: 0.75rem 0.75rem 0 0;
     box-shadow: 0 5rem var(--tui-background-elevation-1);
 
-    :host-context(.tui-liquid-glass) {
-        border-radius: 2.25rem 2.25rem 0 0;
-
-        &._bar {
-            --t-top: 1rem;
-        }
-
-        .t-bar {
-            block-size: 2.25rem;
-            margin-block-end: -1.25rem;
-            clip-path: inset(0 0 1.25rem);
-        }
-    }
-
     .ios-only({
         overscroll-behavior: contain;
     });
@@ -187,5 +173,19 @@
         flex-direction: column-reverse;
         gap: 0.5rem;
         margin-block-start: 1rem;
+    }
+}
+
+:host-context(.tui-liquid-glass) {
+    border-radius: 2.25rem 2.25rem 0 0;
+
+    &._bar {
+        --t-top: 1rem;
+    }
+
+    .t-bar {
+        block-size: 2.25rem;
+        margin-block-end: -1.25rem;
+        clip-path: inset(0 0 1.25rem);
     }
 }
