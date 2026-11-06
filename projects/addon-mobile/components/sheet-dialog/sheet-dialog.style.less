@@ -15,26 +15,6 @@
     margin: ~'max(var(--tui-offset), env(safe-area-inset-top))' auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
 
-    :host-context(.tui-liquid-glass) {
-        border-radius: 2.25rem 2.25rem 0 0;
-
-        .t-heading {
-            top: 1rem;
-            border-radius: inherit;
-
-            &:not(:first-child) {
-                box-shadow: 0 -1rem var(--tui-background-elevation-1);
-            }
-        }
-
-        .t-top {
-            z-index: 2;
-            block-size: 2.25rem;
-            margin-block-end: -1.25rem;
-            clip-path: inset(0 0 1.25rem);
-        }
-    }
-
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiSlide;
@@ -192,4 +172,24 @@
 .t-button {
     inline-size: 100%;
     margin-block-start: 1rem;
+}
+
+:host-context(.tui-liquid-glass) {
+    border-radius: 2.25rem 2.25rem 0 0;
+
+    .t-heading {
+        top: 1rem;
+        border-radius: inherit;
+
+        &:not(:first-child) {
+            box-shadow: 0 -1rem var(--tui-background-elevation-1);
+        }
+    }
+
+    .t-top {
+        z-index: 2;
+        block-size: 2.25rem;
+        margin-block-end: -1.25rem;
+        clip-path: inset(0 0 1.25rem);
+    }
 }
