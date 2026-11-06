@@ -54,8 +54,8 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiPopupService);
-    private readonly ref = signal<ComponentRef<unknown> | null>(null);
 
+    public readonly ref = signal<ComponentRef<unknown> | null>(null);
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
     public readonly appearance = input(inject(TUI_HINT_OPTIONS).appearance, {
