@@ -11,7 +11,8 @@ export class StackblitzDepsService {
         return {
             ...this.getAngularPackages(),
             ...this.getTaigaPackages(),
-            ...(await this.getCommonPackages()),
+            less: '4.x.x',
+            rxjs: (await import('@demo/root-package')).devDependencies.rxjs,
         };
     }
 
@@ -19,9 +20,12 @@ export class StackblitzDepsService {
         const ngVersion = '21.x.x';
 
         return {
+            '@angular/build': ngVersion,
             '@angular/cdk': ngVersion,
+            '@angular/cli': ngVersion,
             '@angular/common': ngVersion,
             '@angular/compiler': ngVersion,
+            '@angular/compiler-cli': ngVersion,
             '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
@@ -52,36 +56,6 @@ export class StackblitzDepsService {
             '@taiga-ui/layout': version,
             '@taiga-ui/legacy': version,
             '@taiga-ui/styles': version,
-        };
-    }
-
-    private async getCommonPackages(): Promise<Record<string, string>> {
-        const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
-        const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
-        const {devDependencies: rootDevDeps} = await import('@demo/root-package');
-
-        // TODO: drop pin when StackBlitz resolves @ng-web-apis@5.4.0 (missing entrypoint in turbo_modules cache)
-        const ngWebApisVersion = '5.3.0';
-
-        return {
-            '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
-            '@taiga-ui/design-tokens': (await import('@taiga-ui/styles/package.json'))
-                .peerDependencies['@taiga-ui/design-tokens'],
-            '@ng-web-apis/common': ngWebApisVersion,
-            '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
-            '@taiga-ui/font-watcher': cdkDeps['@taiga-ui/font-watcher'],
-            '@ng-web-apis/intersection-observer': ngWebApisVersion,
-            '@ng-web-apis/platform': ngWebApisVersion,
-            '@ng-web-apis/resize-observer': ngWebApisVersion,
-            '@ng-web-apis/screen-orientation': ngWebApisVersion,
-            '@ng-web-apis/mutation-observer': ngWebApisVersion,
-            '@maskito/angular': kitDeps['@maskito/angular'],
-            '@maskito/core': kitDeps['@maskito/core'],
-            '@maskito/kit': kitDeps['@maskito/kit'],
-            '@maskito/phone': kitDeps['@maskito/phone'],
-            'libphonenumber-js': (await import('@maskito/phone/package.json'))
-                .peerDependencies['libphonenumber-js'],
-            rxjs: rootDevDeps.rxjs,
         };
     }
 }

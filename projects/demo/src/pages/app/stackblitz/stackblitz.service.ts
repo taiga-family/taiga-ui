@@ -34,7 +34,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         stackblitz.openProject(
             {
-                ...(await this.getStackblitzProjectConfig()),
+                template: 'node',
                 title: `${component}-${sampleId}`,
                 description: `Taiga UI example of the component ${component}`,
                 files: {
@@ -55,7 +55,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     ): Promise<void> {
         return stackblitz.openProject(
             {
-                ...(await this.getStackblitzProjectConfig()),
+                template: 'node',
                 title,
                 description,
                 files: {
@@ -72,21 +72,21 @@ export class TuiStackblitzService implements TuiCodeEditor {
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
         return {
+            'package.json': JSON.stringify(
+                {
+                    name: 'taiga-ui-starter',
+                    private: true,
+                    scripts: {start: 'ng serve --host 0.0.0.0'},
+                    dependencies: await this.deps.get(),
+                },
+                null,
+                2,
+            ),
             'tsconfig.json': tsconfig,
             'angular.json': angularJson,
             'src/main.ts': mainTs,
             'src/index.html': indexHtml,
             'src/styles.less': globalStyles,
-        };
-    }
-
-    private async getStackblitzProjectConfig(): Promise<
-        Pick<Project, 'dependencies' | 'tags' | 'template'>
-    > {
-        return {
-            template: 'angular-cli',
-            dependencies: await this.deps.get(),
-            tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
     }
 
