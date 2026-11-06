@@ -85,6 +85,18 @@
                         @case (9) {
                             <span>Using virtual scroll to improve UX when working with large amount of items.</span>
                         }
+                        @case (11) {
+                            <span>
+                                By default search text is cleared after picking an option. Set
+                                <code>[clearOnSelect]="false"</code>
+                                to keep it, so you can pick several filtered options in a row. Text is still cleared
+                                when it turns into a chip or when all chips are removed.
+                                <strong>Note:</strong>
+                                pressing Enter or leaving the field turns remaining search text into a chip. Use
+                                <code>disabledItemHandler</code>
+                                to only allow items from the list, as shown here.
+                            </span>
+                        }
                     }
                 </ng-template>
             </tui-doc-example>
@@ -108,6 +120,7 @@
                     <input
                         placeholder="Enter"
                         tuiInputChip
+                        [clearOnSelect]="clearOnSelect"
                         [formControl]="control"
                         [readonly]="controlDoc.readonly"
                         [separator]="separator"
@@ -135,6 +148,14 @@
                     [(value)]="separator"
                 >
                     string or RegExp to separate tags
+                </tr>
+                <tr
+                    name="[clearOnSelect]"
+                    tuiDocAPIItem
+                    type="boolean"
+                    [(value)]="clearOnSelect"
+                >
+                    clear search text after selecting an option from the dropdown
                 </tr>
             </tbody>
 
