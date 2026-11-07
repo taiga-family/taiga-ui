@@ -15,6 +15,7 @@ export const TUI_HINT_ANCHOR = new InjectionToken<ElementRef<HTMLElement>>(
     ],
     host: {
         '[attr.data-tui-anchor]': 'anchor',
+        '[style.--tui-anchor]': 'anchor',
         '[style.anchor-name]': 'anchor',
     },
 })
