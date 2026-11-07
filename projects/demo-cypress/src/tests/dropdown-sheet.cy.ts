@@ -152,6 +152,7 @@ describe('DropdownSheet', () => {
         cy.get('input').click();
         cy.get('tui-sheet-dialog').should('be.visible');
 
+        // The broken sheet closed ~300ms after opening, a retried assertion would pass before that
         cy.wait(1000);
         cy.get('tui-sheet-dialog')
             .should('be.visible')
