@@ -133,6 +133,22 @@ describe('DropdownHover', () => {
                 );
         });
 
+        it('keeps the sheet open while the pointer moves inside it', () => {
+            cy.mount(SheetSandbox, {
+                providers: [{provide: WA_IS_MOBILE, useValue: true}, NO_DELAYS],
+            });
+
+            movePointerTo('button');
+
+            cy.get('tui-sheet-dialog')
+                .should('be.visible')
+                .then(([sheet]) => {
+                    movePointerTo('tui-sheet-dialog .t-content');
+                    movePointerTo('tui-sheet-dialog');
+                    cy.wait(1000).then(() => expect(sheet?.isConnected).to.equal(true));
+                });
+        });
+
         it('does not open the sheet when the pointer only brushes past', () => {
             cy.mount(SheetSandbox, {
                 providers: [
