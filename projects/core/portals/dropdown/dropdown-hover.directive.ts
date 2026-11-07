@@ -110,12 +110,17 @@ export class TuiDropdownHover extends TuiDriver {
         }
     }
 
-    // A dropdown that renders nothing in its own element (e.g. a sheet) lives elsewhere and closes by its own means
+    // A dropdown with neither its own zone nor its own elements (e.g. a sheet) lives elsewhere and closes by its own means
     private get detached(): boolean {
-        const element: HTMLElement | undefined =
-            this.directive.ref()?.location.nativeElement;
+        const ref = this.directive.ref();
 
-        return element?.childElementCount === 0;
+        if (!ref || ref.injector.get(TuiActiveZone, null, {self: true})) {
+            return false;
+        }
+
+        const element: HTMLElement = ref.location.nativeElement;
+
+        return !element.childElementCount;
     }
 
     private isHovered(element: Element): boolean {

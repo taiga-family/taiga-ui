@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiDropdownSheet, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiRoot} from '@taiga-ui/core';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
+import {TuiPopupService, TuiRoot} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -42,6 +43,53 @@ export class Sandbox {
     public readonly options = input<Partial<TuiSheetDialogOptions> | string>(
         'Select platform',
     );
+}
+
+@Component({
+    selector: 'tui-test-portal-host',
+    imports: [TuiVCR],
+    template: '<ng-content /><ng-container tuiVCR />',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiPopupService, tuiProvide(TuiPortalService, TuiPopupService)],
+})
+class PortalHost extends TuiPortals {}
+
+@Component({
+    imports: [
+        FormsModule,
+        PortalHost,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdownSheet,
+        TuiRoot,
+        TuiSelect,
+    ],
+    template: `
+        <tui-root>
+            <tui-test-portal-host>
+                <tui-textfield
+                    tuiChevron
+                    tuiDropdownSheet="Select platform"
+                >
+                    <input
+                        tuiSelect
+                        placeholder="Platform"
+                        [(ngModel)]="value"
+                    />
+
+                    <tui-data-list-wrapper
+                        *tuiDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            </tui-test-portal-host>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class PortalHostSandbox {
+    protected readonly items = ['web', 'ios', 'android'];
+    protected value: string | null = null;
 }
 
 describe('DropdownSheet', () => {
@@ -94,5 +142,23 @@ describe('DropdownSheet', () => {
 
         cy.get('tui-sheet-dialog').should('be.visible');
         cy.get('[tuiOption]').should('have.length', 20);
+    });
+
+    it('works inside a custom portal host', () => {
+        cy.mount(PortalHostSandbox, {
+            providers: [{provide: WA_IS_MOBILE, useValue: true}],
+        });
+
+        cy.get('input').click();
+        cy.get('tui-sheet-dialog').should('be.visible');
+
+        cy.wait(1000);
+        cy.get('tui-sheet-dialog')
+            .should('be.visible')
+            .closest('[inert]')
+            .should('not.exist');
+
+        cy.get('[tuiOption]').contains('android').click();
+        cy.get('input').should('have.value', 'android');
     });
 });
