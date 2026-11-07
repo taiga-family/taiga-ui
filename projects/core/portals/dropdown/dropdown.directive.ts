@@ -1,4 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
+import {VIRTUAL_SCROLLABLE} from '@angular/cdk/scrolling';
 import {
     type AfterViewChecked,
     ChangeDetectorRef,
@@ -7,6 +8,7 @@ import {
     effect,
     inject,
     INJECTOR,
+    Injector,
     input,
     type OnDestroy,
     signal,
@@ -74,7 +76,10 @@ export class TuiDropdownDirective
 
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
-        inject(INJECTOR),
+        Injector.create({
+            parent: this.injector,
+            providers: [{provide: VIRTUAL_SCROLLABLE, useValue: null}],
+        }),
     );
 
     public readonly content = input(null, {
