@@ -13,6 +13,7 @@ export function tuiDropdownInjector(parent: Injector): Injector {
                 return null;
             }
 
+            // TODO: Drop the viewport check when Angular 22.2 is the minimum version: https://github.com/angular/angular/issues/70547
             return isVirtualScroll(token)
                 ? Injector.NULL.get(token, notFoundValue)
                 : parent.get(token, notFoundValue, options);
