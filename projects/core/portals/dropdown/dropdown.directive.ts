@@ -30,6 +30,7 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.component';
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TuiDropdownA11y} from './dropdown-a11y.directive';
 import {TuiDropdownAnchor} from './dropdown-anchor.directive';
+import {tuiDropdownInjector} from './dropdown-injector';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
@@ -74,7 +75,7 @@ export class TuiDropdownDirective
 
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
-        inject(INJECTOR),
+        tuiDropdownInjector(inject(INJECTOR)),
     );
 
     public readonly content = input(null, {
