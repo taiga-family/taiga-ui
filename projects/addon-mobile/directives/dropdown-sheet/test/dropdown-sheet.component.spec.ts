@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
@@ -21,6 +21,7 @@ describe('TuiDropdownSheet', () => {
                     tuiDropdownHover
                     tuiDropdownSheet
                     type="button"
+                    [tuiDropdownShowDelay]="showDelay()"
                 >
                     Open
                 </button>
@@ -28,7 +29,9 @@ describe('TuiDropdownSheet', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class Test {}
+    class Test {
+        public readonly showDelay = signal(0);
+    }
 
     let fixture: ComponentFixture<Test>;
 
@@ -91,6 +94,23 @@ describe('TuiDropdownSheet', () => {
         tick();
 
         expect(sheet()).not.toBeNull();
+
+        fixture.destroy();
+    }));
+
+    it('does not open when the pointer leaves before the show delay', fakeAsync(() => {
+        fixture.componentInstance.showDelay.set(200);
+        fixture.detectChanges();
+
+        button().dispatchEvent(new MouseEvent('mouseover', {bubbles: true}));
+        tick(50);
+        button().dispatchEvent(
+            new MouseEvent('mouseout', {bubbles: true, relatedTarget: document.body}),
+        );
+        tick(200);
+        fixture.detectChanges();
+
+        expect(sheet()).toBeNull();
 
         fixture.destroy();
     }));
