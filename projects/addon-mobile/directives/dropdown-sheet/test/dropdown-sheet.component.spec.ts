@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {By, Meta} from '@angular/platform-browser';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {TuiDropdownSheet} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet, TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {
     provideTaiga,
     TuiDropdown,
+    TuiDropdownDirective,
     TuiDropdownHover,
     tuiDropdownHoverOptionsProvider,
     TuiRoot,
@@ -92,6 +93,33 @@ describe('TuiDropdownSheet', () => {
 
         expect(sheet()).not.toBeNull();
 
+        fixture.destroy();
+    }));
+
+    it('keeps the theme color until the last sheet closes', fakeAsync(() => {
+        const meta = TestBed.inject(Meta);
+        const themeColor = (): string | undefined =>
+            meta.getTag('name="theme-color"')?.content;
+
+        meta.updateTag({name: 'theme-color', content: '#ffffff'});
+        hover();
+
+        const regular = TestBed.inject(TuiSheetDialogService).open('Regular').subscribe();
+
+        fixture.debugElement
+            .query(By.css('button'))
+            .injector.get(TuiDropdownDirective)
+            .toggle(false);
+        tick();
+        fixture.detectChanges();
+
+        expect(themeColor()).toBe('#404040');
+
+        regular.unsubscribe();
+
+        expect(themeColor()).toBe('#ffffff');
+
+        meta.removeTag('name="theme-color"');
         fixture.destroy();
     }));
 });
