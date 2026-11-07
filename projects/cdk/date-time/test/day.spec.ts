@@ -1001,6 +1001,26 @@ describe('TuiDay', () => {
                 expect(result.toUtcNativeDate()).toEqual(new Date(Date.UTC(2000, 0, 1)));
             });
 
+            it.each([
+                [0, 0, 1],
+                [0, 1, 29],
+                [1, 0, 1],
+                [42, 4, 27],
+                [99, 11, 31],
+                [100, 0, 1],
+                [2000, 1, 29],
+                [9999, 11, 31],
+            ])('preserves %i-%i-%i in UTC', (year, month, day) => {
+                const value = new TuiDay(year, month, day);
+                const date = value.toUtcNativeDate();
+
+                expect(TuiDay.fromUtcNativeDate(date)).toEqual(value);
+                expect(date.getUTCHours()).toBe(0);
+                expect(date.getUTCMinutes()).toBe(0);
+                expect(date.getUTCSeconds()).toBe(0);
+                expect(date.getUTCMilliseconds()).toBe(0);
+            });
+
             describe('dayLimit returns', () => {
                 it('minimal date if it is bigger than current', () => {
                     expect(y2000m6d15.dayLimit(y2100m6d15, null)).toBe(y2100m6d15);
