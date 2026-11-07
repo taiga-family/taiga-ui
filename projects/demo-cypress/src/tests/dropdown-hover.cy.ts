@@ -73,6 +73,8 @@ class Text {
     protected readonly dropdown = inject(TuiDropdownDirective);
 }
 
+const NO_DELAYS = tuiDropdownHoverOptionsProvider({showDelay: 0, hideDelay: 0});
+
 // Unlike `trigger`, a real pointer makes the browser fire its own mouseover / mouseout,
 // including the ones fired when content appears under a resting pointer
 function movePointer(x: number, y: number): void {
@@ -119,7 +121,7 @@ describe('DropdownHover', () => {
     describe('with DropdownSheet', () => {
         it('keeps the sheet open under a resting pointer', () => {
             cy.mount(SheetSandbox, {
-                providers: [{provide: WA_IS_MOBILE, useValue: true}],
+                providers: [{provide: WA_IS_MOBILE, useValue: true}, NO_DELAYS],
             });
 
             movePointerTo('button');
@@ -150,7 +152,10 @@ describe('DropdownHover', () => {
     describe('with a custom dropdown component', () => {
         it('closes a wrapper around tui-dropdown when the pointer leaves', () => {
             cy.mount(HoverSandbox, {
-                providers: [{provide: TUI_DROPDOWN_COMPONENT, useValue: Wrapper}],
+                providers: [
+                    {provide: TUI_DROPDOWN_COMPONENT, useValue: Wrapper},
+                    NO_DELAYS,
+                ],
             });
 
             movePointerTo('button');
@@ -166,7 +171,7 @@ describe('DropdownHover', () => {
 
         it('closes a text-only dropdown with its own zone when the pointer leaves', () => {
             cy.mount(HoverSandbox, {
-                providers: [{provide: TUI_DROPDOWN_COMPONENT, useValue: Text}],
+                providers: [{provide: TUI_DROPDOWN_COMPONENT, useValue: Text}, NO_DELAYS],
             });
 
             movePointerTo('button');
