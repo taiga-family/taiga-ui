@@ -11,7 +11,7 @@ import {
     type TuiTreeLoader,
     TuiTreeService,
 } from '@taiga-ui/kit';
-import {type Observable, of} from 'rxjs';
+import {type Observable, of, Subject} from 'rxjs';
 
 interface Item {
     readonly children?: boolean;
@@ -33,13 +33,31 @@ class TreeLoader implements TuiTreeLoader<Item> {
     }
 }
 
-describe('Tree with async loader', () => {
-    function createFixture(start: Item): {
-        fixture: ComponentFixture<unknown>;
-        loader: TreeLoader;
-    } {
-        const loader = new TreeLoader();
+@Injectable()
+class DeferredTreeLoader extends TreeLoader {
+    private readonly responses = new Map<string, Subject<Item[]>>();
 
+    public override loadChildren({text}: Item): Observable<Item[]> {
+        const response = new Subject<Item[]>();
+
+        this.responses.set(text, response);
+
+        return response;
+    }
+
+    public respond(text: string, children: Item[]): void {
+        this.responses.get(text)?.next(children);
+    }
+}
+
+describe('Tree with async loader', () => {
+    function createFixture<L extends TreeLoader = TreeLoader>(
+        start: Item,
+        loader: L = new TreeLoader() as L,
+    ): {
+        fixture: ComponentFixture<unknown>;
+        loader: L;
+    } {
         @Component({
             imports: [AsyncPipe, TuiLoader, TuiTree],
             template: `
@@ -103,6 +121,13 @@ describe('Tree with async loader', () => {
         return fixture.debugElement.queryAll(By.css('tui-tree-item._expandable')).length;
     }
 
+    function toggle(fixture: ComponentFixture<unknown>, index: number): void {
+        const buttons = fixture.debugElement.queryAll(By.css('tui-tree-item button'));
+
+        (buttons[index]?.nativeElement as HTMLElement).click();
+        fixture.detectChanges();
+    }
+
     it('topmost item without children is not expandable and is not loaded', () => {
         const {fixture, loader} = createFixture({text: 'Topmost'});
 
@@ -120,6 +145,26 @@ describe('Tree with async loader', () => {
         fixture.detectChanges();
 
         expect(loader.loaded).toEqual([{text: 'Topmost'}]);
+    });
+
+    it('renders children loaded for an item that is not the first among siblings', () => {
+        const {fixture, loader} = createFixture(
+            {text: 'Topmost', children: true},
+            new DeferredTreeLoader(),
+        );
+
+        toggle(fixture, 0);
+        loader.respond('Topmost', [
+            {text: 'First', children: true},
+            {text: 'Second', children: true},
+        ]);
+        fixture.detectChanges();
+
+        toggle(fixture, 2);
+        loader.respond('Second', [{text: 'Loaded'}]);
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.textContent).toContain('Loaded');
     });
 
     it('does not ask the loader about a null start item', () => {

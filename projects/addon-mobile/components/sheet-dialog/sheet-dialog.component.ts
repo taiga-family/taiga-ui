@@ -4,6 +4,7 @@ import {
     Component,
     ElementRef,
     inject,
+    viewChild,
     viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -19,7 +20,10 @@ import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/portals/dialog';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
-import {type TuiSheetDialogOptions} from './sheet-dialog.options';
+import {
+    type TuiSheetDialogContext,
+    type TuiSheetDialogOptions,
+} from './sheet-dialog.options';
 import {TuiSheetDialogClose} from './sheet-dialog-close.directive';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
@@ -48,9 +52,14 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 })
 export class TuiSheetDialogComponent {
     private readonly stops = viewChildren('stops', {read: ElementRef});
+    private readonly sheet = viewChild('sheet', {read: ElementRef});
     private readonly el = tuiInjectElement();
 
-    protected readonly context = injectContext<TuiPortalContext<TuiSheetDialogOptions>>();
+    protected readonly context: TuiSheetDialogContext = {
+        ...injectContext<TuiPortalContext<TuiSheetDialogOptions>>(),
+        scrollTo: (index, behavior) => this.scrollTo(index, behavior),
+    };
+
     protected readonly close$ = new Subject<void>();
     protected interacted = false;
     protected readonly $ = merge(
@@ -81,16 +90,14 @@ export class TuiSheetDialogComponent {
     }
 
     public get initial(): number {
-        return this.context.closable
-            ? this.stops()
-                  .map((e) => e.nativeElement.offsetTop)
-                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial] || 0
-            : 0;
+        return this.context.closable ? this.getTop(this.context.initial) : 0;
     }
 
     // Re-pin async content to the initial snap; mandatory scroll-snap jumps to the bottom otherwise.
     protected onResize(): void {
-        this.el.scrollTop = this.interacted ? this.el.scrollTop : this.initial;
+        if (!this.interacted) {
+            this.el.scrollTop = this.initial;
+        }
     }
 
     private close(): void {
@@ -99,5 +106,17 @@ export class TuiSheetDialogComponent {
         } else {
             this.context.$implicit.complete();
         }
+    }
+
+    private scrollTo(index: number, behavior: ScrollBehavior = 'smooth'): void {
+        this.interacted = true;
+        this.el.scrollTo({top: this.getTop(index), behavior});
+    }
+
+    private getTop(index: number): number {
+        const tops = this.stops().map(({nativeElement}) => nativeElement.offsetTop);
+        const top = this.sheet()?.nativeElement.offsetTop ?? 0;
+
+        return tops.concat(top)[Math.min(Math.max(index, 0), tops.length)] ?? 0;
     }
 }

@@ -10,6 +10,7 @@ import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 const THRESHOLD = Number.parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
 const MAX_DIFF_PIXEL_RATIO = Number.parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '');
+const COLLECT_PERFORMANCE = process.env.COLLECT_PERFORMANCE === '1';
 
 export const AXE_CONFIG: NonNullable<Parameters<typeof configureAxe>[1]> = {
     reporter: 'v2',
@@ -47,6 +48,7 @@ export default defineConfig({
     globalSetup: require.resolve('./global-setup'),
     testDir: __dirname,
     testMatch: '**/*.pw.spec.ts',
+    testIgnore: COLLECT_PERFORMANCE ? [] : ['**/tests/performance/**'],
     outputDir: 'tests-results',
     snapshotDir: 'snapshots',
     reporter: process.env.CI

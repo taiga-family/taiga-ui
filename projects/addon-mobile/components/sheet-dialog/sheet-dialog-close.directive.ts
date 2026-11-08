@@ -31,8 +31,8 @@ export class TuiSheetDialogClose {
 
     private readonly swipe$ = this.scroll$.pipe(
         map(() => this.el.scrollHeight - this.el.clientHeight - this.el.scrollTop),
-        // Excluding scroll due to content height changes when scrolled to the end
-        filter((scroll) => Math.abs(scroll) > 10),
+        // Excluding scroll due to content height changes when scrolled to the end and overscroll
+        filter((scroll) => scroll > 10),
         map(() => this.el.scrollTop),
         pairwise(),
         map(([prev, curr]) => prev - curr),
