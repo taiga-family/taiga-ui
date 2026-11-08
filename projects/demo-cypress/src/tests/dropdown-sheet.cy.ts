@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiDropdownSheet, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiPortals, TuiPortalService, tuiProvide, TuiVCR} from '@taiga-ui/cdk';
-import {TuiPopupService, TuiRoot} from '@taiga-ui/core';
+import {TuiDropdown, TuiPopupService, TuiRoot} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
@@ -92,6 +92,38 @@ class PortalHostSandbox {
     protected value: string | null = null;
 }
 
+// Cancelled mousedown keeps focus where it was, like Safari does for buttons
+@Component({
+    imports: [TuiDropdown, TuiDropdownSheet, TuiRoot],
+    template: `
+        <tui-root>
+            <button
+                tuiDropdownAuto
+                type="button"
+                class="outer"
+                [tuiDropdown]="outer"
+                (mousedown)="$event.preventDefault()"
+            >
+                Outer
+            </button>
+            <ng-template #outer>
+                <button
+                    tuiDropdownAuto
+                    tuiDropdownSheet="Nested"
+                    type="button"
+                    class="nested"
+                    tuiDropdown="Sheet content"
+                    (mousedown)="$event.preventDefault()"
+                >
+                    Nested
+                </button>
+            </ng-template>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class NestedSandbox {}
+
 describe('DropdownSheet', () => {
     beforeEach(() => cy.viewport(300, 350));
 
@@ -161,5 +193,16 @@ describe('DropdownSheet', () => {
 
         cy.get('[tuiOption]').contains('android').click();
         cy.get('input').should('have.value', 'android');
+    });
+
+    it('stays open inside a dropdown when the trigger does not take focus on click', () => {
+        cy.mount(NestedSandbox, {providers: [{provide: WA_IS_MOBILE, useValue: true}]});
+
+        cy.get('.outer').click();
+        cy.get('.nested').click();
+        cy.get('tui-sheet-dialog')
+            .should('be.visible')
+            .should('contain', 'Sheet content');
+        cy.get('.nested').should('exist');
     });
 });

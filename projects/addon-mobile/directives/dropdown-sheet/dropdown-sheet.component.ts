@@ -8,7 +8,7 @@ import {
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
+import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {finalize} from 'rxjs';
 
@@ -31,17 +31,21 @@ export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
     private readonly dialogs = inject(TuiSheetDialogService);
     private readonly directive = inject(TuiDropdownSheet);
+    private readonly open = inject(TuiDropdownOpen, {optional: true});
 
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 
     protected readonly sub = toObservable(this.content)
         .pipe(
-            tuiIfMap((content) =>
-                this.dialogs
+            tuiIfMap((content) => {
+                // The sheet joins the zone of the focused element, but Safari doesn't focus buttons on click
+                this.open?.nativeElement.focus({preventScroll: true});
+
+                return this.dialogs
                     .open(content, this.directive.tuiDropdownSheet())
-                    .pipe(finalize(() => this.dropdown.toggle(false))),
-            ),
+                    .pipe(finalize(() => this.dropdown.toggle(false)));
+            }),
             takeUntilDestroyed(),
         )
         .subscribe();
