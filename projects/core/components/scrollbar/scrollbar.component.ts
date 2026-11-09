@@ -34,7 +34,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     ],
     hostDirectives: [TuiScrollRef],
     host: {
-        '[class._anchored]': 'anchored',
+        '[class._scrollbar-anchored]': 'anchored',
         '[class._delegated]': 'delegated',
         '[class._hover]': "mode === 'hover'",
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
