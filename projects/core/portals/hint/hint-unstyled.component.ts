@@ -3,11 +3,10 @@ import {
     Component,
     Directive,
     inject,
-    INJECTOR,
     TemplateRef,
 } from '@angular/core';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
-import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 
@@ -16,6 +15,7 @@ import {TuiHintDirective} from './hint.directive';
     template: '<ng-container *polymorpheusOutlet="hint.content()" />',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+/** @deprecated Not used internally; kept for backwards compatibility. */
 export class TuiHintUnstyledComponent {
     protected readonly hint = inject(TuiHintDirective);
 }
@@ -26,9 +26,6 @@ export class TuiHintUnstyled<C> {
         const hint = inject(TuiHintDirective<C>);
 
         tuiSetSignal(hint.content, inject(TemplateRef<C>));
-        hint.component = new PolymorpheusComponent(
-            TuiHintUnstyledComponent,
-            inject(INJECTOR),
-        );
+        hint.component = null;
     }
 }

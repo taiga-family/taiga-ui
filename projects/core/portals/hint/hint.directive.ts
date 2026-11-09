@@ -1,12 +1,14 @@
 import {
     type ComponentRef,
     Directive,
+    type EmbeddedViewRef,
     inject,
     INJECTOR,
     input,
     type OnChanges,
     type OnDestroy,
     signal,
+    TemplateRef,
 } from '@angular/core';
 import {outputFromObservable, toObservable} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -54,7 +56,9 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiPopupService);
-    private readonly ref = signal<ComponentRef<unknown> | null>(null);
+    private readonly ref = signal<
+        ComponentRef<unknown> | EmbeddedViewRef<unknown> | null
+    >(null);
 
     public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
     public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
@@ -67,7 +71,8 @@ export class TuiHintDirective<C>
         {alias: 'tuiHintVisible'},
     );
 
-    public component = inject(PolymorpheusComponent<unknown>);
+    public component: PolymorpheusComponent<unknown> | null =
+        inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly type = 'hint';
 
@@ -86,8 +91,16 @@ export class TuiHintDirective<C>
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content() && !this.ref()) {
-            this.ref.set(this.service.add(this.component));
+        const content = this.content();
+
+        if (show && content && !this.ref()) {
+            this.ref.set(
+                this.component
+                    ? this.service.add(this.component)
+                    : content instanceof TemplateRef
+                      ? this.service.add(content)
+                      : null,
+            );
         } else if (!show) {
             this.ref()?.destroy();
             this.ref.set(null);
