@@ -1,5 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
+[tuiTheme='dark'] &,
+&[tuiTheme='dark'],
+[tuiTheme='dark'] {
+    input[tuiRadio] {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
 input[tuiRadio] {
     --t-size: 1.125rem;
 
@@ -8,11 +16,6 @@ input[tuiRadio] {
     color: rgba(0, 16, 36, 0.22);
     outline: 0.125rem solid;
     outline-offset: -0.125rem;
-
-    [tuiTheme='dark'] & {
-        color: rgba(255, 255, 255, 0.3);
-    }
-
     box-shadow: none !important;
     background: transparent !important;
 
