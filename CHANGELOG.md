@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.107.0](https://github.com/taiga-family/taiga-ui/compare/v4.106.0...v4.107.0) (2026-11-09)
+
+### 🚀 Features
+
+- **addon-mobile:** `BottomSheet` update radius for new iOS
+  ([#15376](https://github.com/taiga-family/taiga-ui/issues/15376))
+  ([a38f10f](https://github.com/taiga-family/taiga-ui/commit/a38f10f15cb63904e1bb407ae7c6550aab7a24b5))
+- **addon-mobile:** `SheetDialog` update radius for new iOS
+  ([#15359](https://github.com/taiga-family/taiga-ui/issues/15359))
+  ([3bae389](https://github.com/taiga-family/taiga-ui/commit/3bae389fcac54a4b7073cc8766e0d55f26d26ea9))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `radio` make android color styles independent from appearance
+  ([#15385](https://github.com/taiga-family/taiga-ui/issues/15385))
+  ([374c201](https://github.com/taiga-family/taiga-ui/commit/374c201fdf5dcaa7df5158e00908898639f633ec))
+- **addon-mobile:** bump contrast of checkbox and radio borders
+  ([#15378](https://github.com/taiga-family/taiga-ui/issues/15378))
+  ([ff6bc9a](https://github.com/taiga-family/taiga-ui/commit/ff6bc9a84a07428e4f905ed94262879e0f3cc21d))
+- **experimental:** `Expand` fix nested eager expands showing content when parent is expanded
+  ([#15365](https://github.com/taiga-family/taiga-ui/issues/15365))
+  ([b9da2ee](https://github.com/taiga-family/taiga-ui/commit/b9da2ee41922e64c05ded75887744a7b25b8a7bf))
+
 ## [4.106.0](https://github.com/taiga-family/taiga-ui/compare/v4.105.0...v4.106.0) (2026-11-02)
 
 ### 🐞 Bug Fixes
