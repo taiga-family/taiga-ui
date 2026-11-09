@@ -92,7 +92,7 @@ export class TuiComboBoxDirective<T>
              * Users are still able to patch form value with `null` on new items if they wish such behavior.
              */
             this.onChange(unchanged ? value : fallback);
-        } else if (option !== value) {
+        } else if (value == null || !this.handlers.identityMatcher()(option, value)) {
             this.textfield['accessor']()?.setValue(option);
         }
     });
