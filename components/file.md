@@ -185,13 +185,16 @@ tui-segmented {
 
 #### Texts
 
-Long file names are allowed by default but can be trimmed using `line-clamp` CSS.
+Long file names are allowed by default but can be trimmed using basic CSS properties: `text-overflow` and `line-clamp`
 
 **Template:**
 ```html
 @for (orientation of orientations; track $index) { <div tuiFile [orientation]="orientation" >
 <tui-icon icon="@tui.image" />
-<div tuiTitle> A very very long file name that spans many many lines.png <div tuiSubtitle>Some extra info about this file can also be very long and span multiple lines</div>
+<div tuiTitle>
+<div dir="rtl" class="truncate" > A very very long file name.png </div>
+<div tuiSubtitle class="truncate" >
+<strong>text-overflow: ellipsis</strong> CSS rule allows to truncate text with an ellipsis </div>
 </div>
 </div>
 <div tuiFile [orientation]="orientation" >
@@ -232,6 +235,13 @@ export default class Example {
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
     align-items: start;
+}
+
+.truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .clamp {

@@ -27,7 +27,7 @@ A mobile draggable sheet dialog
 | [bar] | `boolean` | show top bar |
 | [data] | `I` | optional data to be passed to the sheet. |
 | [label] | `string` | sheet heading. |
-| [stops] | `string[]` | an array of stop points in any units for the sheet. |
+| [stops] | `string[]` | in a content component. |
 | [initial] | `number` | means to stop on top of the sheet's content. |
 | [offset] | `number` | ) |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
@@ -651,6 +651,58 @@ export default class Example {
                 {label: 'Address bar color'},
             )
             .subscribe();
+    }
+}
+```
+
+#### Scroll to stop
+
+**Template:**
+```html
+<button tuiButton type="button" (click)="open = true" > Show </button>
+<ng-template let-scrollTo="scrollTo" [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
+<p class="buttons"> @for (stop of stops; track $index) { <button appearance="secondary" size="m" tuiButton type="button" (click)="scrollTo($index)" > Stop {{ $index + 1 }} </button> } <button appearance="secondary" size="m" tuiButton type="button" (click)="scrollTo(stops.length)" > Top </button>
+</p> @for (paragraph of paragraphs; track $index) { <p>{{ paragraph }}</p> } </ng-template>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {TuiButton} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiButton, TuiSheetDialog],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+    protected readonly stops = ['9.5rem', '18rem'];
+    protected readonly paragraphs = Array.from(
+        {length: 16},
+        (_, index) => `Paragraph ${index + 1} of the content`,
+    );
+
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
+        label: 'Scroll to stop',
+        stops: this.stops,
+    };
+}
+```
+
+**LESS:**
+```less
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    & button {
+        flex: 1;
     }
 }
 ```

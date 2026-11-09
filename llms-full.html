@@ -1096,7 +1096,7 @@
 ### sheet-dialog
 
 ```text
-  TuiSheetDialog, TuiSheetDialogClose, TuiSheetDialogComponent, TuiSheetDialogOptions, TuiSheetDialogService
+  TuiSheetDialog, TuiSheetDialogClose, TuiSheetDialogComponent, TuiSheetDialogContext, TuiSheetDialogOptions, TuiSheetDialogService
 ```
 ### swipe-actions
 
@@ -17308,13 +17308,16 @@ tui-segmented {
 
 #### Texts
 
-Long file names are allowed by default but can be trimmed using `line-clamp` CSS.
+Long file names are allowed by default but can be trimmed using basic CSS properties: `text-overflow` and `line-clamp`
 
 **Template:**
 ```html
 @for (orientation of orientations; track $index) { &lt;div tuiFile [orientation]=&quot;orientation&quot; &gt;
 &lt;tui-icon icon=&quot;@tui.image&quot; /&gt;
-&lt;div tuiTitle&gt; A very very long file name that spans many many lines.png &lt;div tuiSubtitle&gt;Some extra info about this file can also be very long and span multiple lines&lt;/div&gt;
+&lt;div tuiTitle&gt;
+&lt;div dir=&quot;rtl&quot; class=&quot;truncate&quot; &gt; A very very long file name.png &lt;/div&gt;
+&lt;div tuiSubtitle class=&quot;truncate&quot; &gt;
+&lt;strong&gt;text-overflow: ellipsis&lt;/strong&gt; CSS rule allows to truncate text with an ellipsis &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiFile [orientation]=&quot;orientation&quot; &gt;
@@ -17355,6 +17358,13 @@ export default class Example {
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
     align-items: start;
+}
+
+.truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .clamp {
@@ -42457,7 +42467,7 @@ A mobile draggable sheet dialog
 | [bar] | `boolean` | show top bar |
 | [data] | `I` | optional data to be passed to the sheet. |
 | [label] | `string` | sheet heading. |
-| [stops] | `string[]` | an array of stop points in any units for the sheet. |
+| [stops] | `string[]` | in a content component. |
 | [initial] | `number` | means to stop on top of the sheet&#039;s content. |
 | [offset] | `number` | ) |
 | [required] | `boolean` | (you can catch it with &quot;catch&quot; operator or onError handler) |
@@ -43069,6 +43079,58 @@ export default class Example {
 }
 ```
 
+#### Scroll to stop
+
+**Template:**
+```html
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open = true&quot; &gt; Show &lt;/button&gt;
+&lt;ng-template let-scrollTo=&quot;scrollTo&quot; [tuiSheetDialogOptions]=&quot;options&quot; [(tuiSheetDialog)]=&quot;open&quot; &gt;
+&lt;p class=&quot;buttons&quot;&gt; @for (stop of stops; track $index) { &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;scrollTo($index)&quot; &gt; Stop {{ $index + 1 }} &lt;/button&gt; } &lt;button appearance=&quot;secondary&quot; size=&quot;m&quot; tuiButton type=&quot;button&quot; (click)=&quot;scrollTo(stops.length)&quot; &gt; Top &lt;/button&gt;
+&lt;/p&gt; @for (paragraph of paragraphs; track $index) { &lt;p&gt;{{ paragraph }}&lt;/p&gt; } &lt;/ng-template&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiSheetDialog, type TuiSheetDialogOptions} from &#039;@taiga-ui/addon-mobile&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    imports: [TuiButton, TuiSheetDialog],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.less&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+    protected readonly stops = [&#039;9.5rem&#039;, &#039;18rem&#039;];
+    protected readonly paragraphs = Array.from(
+        {length: 16},
+        (_, index) =&gt; `Paragraph ${index + 1} of the content`,
+    );
+
+    protected readonly options: Partial&lt;TuiSheetDialogOptions&gt; = {
+        label: &#039;Scroll to stop&#039;,
+        stops: this.stops,
+    };
+}
+```
+
+**LESS:**
+```less
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    &amp; button {
+        flex: 1;
+    }
+}
+```
+
 
 ### TypeScript
 
@@ -43105,6 +43167,7 @@ export default class Page {
         &#039;AppBar&#039;,
         &#039;Fullscreen&#039;,
         &#039;Address bar color&#039;,
+        &#039;Scroll to stop&#039;,
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
