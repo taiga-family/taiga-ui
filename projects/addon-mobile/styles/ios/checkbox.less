@@ -4,9 +4,14 @@ input[tuiRadio] {
 
     border-radius: 100%;
     color: var(--tui-text-primary-on-accent-2) !important;
-    outline: 1px solid var(--tui-background-neutral-2);
+    outline: 1px solid rgba(0, 16, 36, 0.22);
     outline-offset: -1px;
     transition: none;
+
+    [tuiTheme='dark'] & {
+        outline: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
     box-shadow: none !important;
     background: var(--t-background) !important;
 
