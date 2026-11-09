@@ -47,6 +47,10 @@ export class TuiSelectDirective<T>
     });
 
     public setValue(value: T | null): void {
+        if (this.disabled()) {
+            return;
+        }
+
         this.onChange(value);
 
         if (!value) {
