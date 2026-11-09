@@ -34,7 +34,7 @@
 }
 
 @supports (anchor-name: --t-scrollbar) {
-    .t-scrollbar {
+    :host._anchored > .t-scrollbar {
         position: fixed;
         inset: anchor(top) anchor(right) anchor(bottom) anchor(left);
         position-anchor: --t-scrollbar;
