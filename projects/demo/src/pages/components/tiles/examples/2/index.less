@@ -6,18 +6,18 @@
     grid-auto-rows: minmax(var(--tui-height-m), auto);
 }
 
-@media @tui-mobile {
-    .tile_tall {
-        --tui-height: 2;
-    }
+.tall {
+    --tui-height: 2;
 }
 
 .content {
-    .transition(box-shadow);
-
     display: flex;
+    flex-direction: column;
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     align-items: center;
+    justify-content: center;
     padding: 0 1rem;
     background: var(--tui-background-base);
     border-radius: var(--tui-radius-l);

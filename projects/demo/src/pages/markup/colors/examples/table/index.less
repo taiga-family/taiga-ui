@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 :host {
     inline-size: 100%;
     color: var(--tui-text-primary);
@@ -36,10 +34,10 @@
 }
 
 .name {
-    .transition(color);
-
     position: relative;
     display: inline-block;
+    transition-property: color;
+    transition-duration: var(--tui-duration);
     min-block-size: 2rem;
     background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
@@ -65,9 +63,9 @@
 }
 
 .copy {
-    .transition(opacity);
-
     position: absolute;
+    transition-property: opacity;
+    transition-duration: var(--tui-duration);
     inset-block-start: 0;
     inset-inline-start: 0;
     background: var(--tui-background-base-alt);

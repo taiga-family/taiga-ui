@@ -8,8 +8,8 @@ tui-wrapper-example-1 {
 }
 
 [tuiAppearance][data-appearance='material-textfield'] {
-    .transition(~'background, box-shadow');
-
+    transition-property: background, box-shadow;
+    transition-duration: var(--tui-duration);
     background: #f5f5f5;
     outline: none;
     color: rgba(0, 0, 0, 0.87);
@@ -42,8 +42,8 @@ tui-wrapper-example-1 {
 }
 
 [tuiButton][tuiAppearance][data-appearance='material-button'] {
-    .transition(all);
-
+    transition-property: all;
+    transition-duration: var(--tui-duration);
     border-radius: 0.25rem;
     background: var(--tui-background-accent-1);
     color: var(--tui-text-primary-on-accent-1);
@@ -79,11 +79,11 @@ tui-wrapper-example-1 {
     outline: none;
 
     &::after {
-        .transition(all);
-
         content: '';
         position: absolute;
         inset: -0.625rem;
+        transition-property: all;
+        transition-duration: var(--tui-duration);
         border-radius: 100%;
         background: #000;
         opacity: 0;

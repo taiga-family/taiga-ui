@@ -36,7 +36,7 @@
             [(ngModel)]="search"
         />
     </header>
-    <div class="favorites">
+    <div class="favorites tui-scrollbar-hidden">
         @for (item of items | slice: 0 : 6; track item) {
             <tui-avatar-labeled [label]="item.name">
                 <div tuiAvatar="@tui.user">

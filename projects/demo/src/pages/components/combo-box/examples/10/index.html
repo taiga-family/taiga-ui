@@ -11,11 +11,12 @@
         @let items = countries | tuiFilterByInput;
         <cdk-virtual-scroll-viewport
             tuiScrollable
-            class="scroll"
+            class="tui-scrollbar-hidden"
             [itemSize]="42"
             [maxBufferPx]="42 * 10"
             [minBufferPx]="42 * 5"
             [style.height.px]="(items?.length || 1) * 42 + 8"
+            [style.max-height.%]="100"
         >
             <tui-data-list withVirtualScroll>
                 <button

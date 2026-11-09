@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 :host {
     --tui-chart-categorical-00: #c779d0;
     --tui-chart-categorical-01: #feac5e;
@@ -11,18 +9,11 @@
 .wrapper {
     display: flex;
     align-items: center;
-
-    @media @tui-mobile {
-        flex-direction: column;
-    }
+    flex-direction: column;
 }
 
 .legend {
-    margin: 0 0 0 2rem;
-
-    @media @tui-mobile {
-        margin: 2rem 0 0;
-    }
+    margin: 2rem 0 0;
 }
 
 .item {
