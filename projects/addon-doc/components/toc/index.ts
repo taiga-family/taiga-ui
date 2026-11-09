@@ -42,7 +42,6 @@ export class TuiDocToc implements OnInit {
             : toc[0];
     });
 
-    protected readonly toc = signal<readonly string[]>([]);
     protected readonly route = inject(ActivatedRoute);
     protected readonly seeAlso = getSeeAlso();
 
@@ -50,6 +49,8 @@ export class TuiDocToc implements OnInit {
         toc: inject(TUI_DOC_TOC_TEXT),
         seeAlso: inject(TUI_DOC_SEE_ALSO_TEXT),
     };
+
+    public readonly toc = signal<readonly string[]>([]);
 
     public ngOnInit(): void {
         setTimeout(() => {
