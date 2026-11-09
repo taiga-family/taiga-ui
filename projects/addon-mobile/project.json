@@ -21,12 +21,20 @@
             },
             "outputs": ["{workspaceRoot}/dist/{projectName}"]
         },
+        "build-css": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx ts-node ./scripts/compile-global-css.ts {projectRoot} styles/taiga-ui-mobile.less",
+                "forwardAllArgs": false
+            },
+            "outputs": ["{workspaceRoot}/dist/addon-mobile/styles/taiga-ui-mobile.css"]
+        },
         "publish": {
             "dependsOn": [
                 {
                     "dependencies": false,
                     "params": "ignore",
-                    "target": "build"
+                    "target": "build-css"
                 }
             ],
             "executor": "nx:run-commands",

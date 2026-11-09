@@ -28,6 +28,15 @@
             "cache": true,
             "inputs": ["default", "^default"]
         },
+        "build-css": {
+            "dependsOn": [
+                {
+                    "dependencies": false,
+                    "params": "ignore",
+                    "target": "build"
+                }
+            ]
+        },
         "e2e": {
             "inputs": ["default", "^default"]
         },

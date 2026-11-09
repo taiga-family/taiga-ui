@@ -13,12 +13,20 @@
             },
             "outputs": ["{workspaceRoot}/dist/{projectName}"]
         },
+        "build-css": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx ts-node ./scripts/compile-global-css.ts {projectRoot} taiga-ui-theme.less",
+                "forwardAllArgs": false
+            },
+            "outputs": ["{workspaceRoot}/dist/{projectName}/taiga-ui-theme.css"]
+        },
         "publish": {
             "dependsOn": [
                 {
                     "dependencies": false,
                     "params": "ignore",
-                    "target": "build"
+                    "target": "build-css"
                 }
             ],
             "executor": "nx:run-commands",
