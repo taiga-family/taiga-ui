@@ -17,11 +17,11 @@ input[tuiRadio] {
     background: transparent !important;
 
     &:disabled:not(._readonly) {
-        color: var(--tui-background-neutral-2);
+        color: var(--tui-background-neutral-2) !important;
     }
 
     &:checked {
-        color: var(--tui-background-accent-2);
+        color: var(--tui-background-accent-2) !important;
 
         &::after {
             transform: scale(0.555);
@@ -29,10 +29,10 @@ input[tuiRadio] {
     }
 
     &:invalid {
-        color: var(--tui-status-negative-pale-hover);
+        color: var(--tui-status-negative-pale-hover) !important;
 
         &:checked {
-            color: var(--tui-status-negative);
+            color: var(--tui-status-negative) !important;
         }
     }
 }
