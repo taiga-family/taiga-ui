@@ -46,7 +46,7 @@ describe('TuiSelect disabled while open', () => {
 
         const orange = Array.from(
             root.querySelectorAll<HTMLElement>('[role="option"]'),
-        ).find((option) => option.textContent.trim() === 'Orange');
+        ).find((option) => option.textContent?.trim() === 'Orange');
 
         expect(orange).toBeDefined();
         control.disable({emitEvent: false});
