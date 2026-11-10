@@ -26,12 +26,12 @@ for (const deviceScaleFactor of [1.1, 1.25, 1.5]) {
 
                 assert(bounds, 'Copy content must have a bounding box');
 
-                // Compare the actual text at the junction of the two mask layers.
+                // Compare screenshots of the original text, not the mask implementation.
                 const clip = {
-                    x: bounds.x + 28,
-                    y: bounds.y,
-                    width: 12,
-                    height: bounds.height,
+                    x: bounds.x + 4,
+                    y: bounds.y + 2,
+                    width: bounds.width - 8,
+                    height: bounds.height - 4,
                 };
 
                 const masked = await page.screenshot({clip});
