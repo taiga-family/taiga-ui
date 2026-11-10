@@ -18,6 +18,12 @@ import {TuiHint, TuiHintHover} from '@taiga-ui/core/portals/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+function getMagnitude(set: readonly number[], collapsed: boolean): number {
+    const magnitudes = set.map(Math.abs);
+
+    return collapsed ? tuiSum(...magnitudes) : Math.max(0, ...magnitudes);
+}
+
 @Component({
     selector: 'tui-bar-chart',
     imports: [AsyncPipe, TuiBarSet, TuiHint, TuiMapperPipe],
@@ -29,14 +35,10 @@ export class TuiBarChart {
     private readonly autoId = tuiGenerateId();
 
     private readonly getMax = computed(() =>
-        this.collapsed()
-            ? Math.max(
-                  // eslint-disable-next-line no-restricted-syntax
-                  ...this.value().reduce((result, next) =>
-                      result.map((value, index) => value + (next[index] || 0)),
-                  ),
-              )
-            : this.value().reduce((max, value) => Math.max(...value, max), 0),
+        Math.max(
+            0,
+            ...this.transposed().map((set) => getMagnitude(set, this.collapsed())),
+        ),
     );
 
     protected readonly transposed = computed(() =>
@@ -60,8 +62,7 @@ export class TuiBarChart {
     public readonly percentMapper: TuiMapper<
         [readonly number[], boolean, number],
         number
-    > = (set, collapsed, max) =>
-        (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
+    > = (set, collapsed, max) => (100 * getMagnitude(set, collapsed)) / max;
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content() || '';

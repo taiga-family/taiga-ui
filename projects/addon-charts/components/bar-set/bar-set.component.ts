@@ -12,9 +12,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 })
 export class TuiBarSet {
     private readonly largest = computed(() =>
-        this.computedValue().some((a) => a > 0)
-            ? this.computedValue().reduce((a, b) => (a > b ? a : b), 0)
-            : Math.abs(this.computedValue().reduce((a, b) => (a < b ? a : b), 0)),
+        Math.max(0, ...this.computedValue().map(Math.abs)),
     );
 
     public readonly value = input<readonly number[]>([]);
