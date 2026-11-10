@@ -188,6 +188,10 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns native {@link Date} based on UTC
      */
     public toUtcNativeDate(): Date {
-        return new Date(Date.UTC(this.year, this.month));
+        const date = new Date(0);
+
+        date.setUTCFullYear(this.year, this.month, 1);
+
+        return date;
     }
 }
