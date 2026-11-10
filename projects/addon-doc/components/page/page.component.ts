@@ -7,6 +7,7 @@ import {
     inject,
     input,
     model,
+    viewChild,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {
@@ -49,11 +50,16 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
     templateUrl: './page.template.html',
     styleUrl: './page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._with-actions]': 'actions',
+        '[class._with-toc]': 'toc()?.toc().length > 1',
+    },
 })
 export class TuiDocPage {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
     private readonly major = tuiVersionParts(inject(TUI_DOC_VERSION)).major;
 
+    protected readonly toc = viewChild(TuiDocToc);
     protected readonly tabConnectors = contentChildren(TuiDocPageTabConnector);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
