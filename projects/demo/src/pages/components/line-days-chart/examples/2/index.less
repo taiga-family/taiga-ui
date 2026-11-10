@@ -1,17 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
-.color() {
-    color: var(--tui-chart-categorical-01);
-
-    &:first-child {
-        color: var(--tui-chart-categorical-08);
-    }
-
-    &:last-child {
-        color: var(--tui-chart-categorical-12);
-    }
-}
-
 .axes {
     block-size: 12.5rem;
 }
@@ -31,11 +17,18 @@
 }
 
 .item {
-    .color();
-
     display: flex;
     align-items: center;
     margin: 0 0.75rem;
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
 
     &::before {
         content: '';
@@ -54,6 +47,15 @@
 }
 
 .chart {
-    .color();
-    .fullsize();
+    position: absolute;
+    inset: 0;
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
 }

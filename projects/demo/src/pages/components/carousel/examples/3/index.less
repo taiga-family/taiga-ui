@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 :host {
     display: flex;
     flex-direction: column;
@@ -9,12 +7,12 @@
 }
 
 .progress {
-    .transition(all);
-
+    transition-property: all;
+    transition-duration: var(--tui-duration);
     inline-size: 1rem;
+}
 
-    &:not(&_active) {
-        inline-size: 0.5rem;
-        color: transparent;
-    }
+.progress:not(.progress_active) {
+    inline-size: 0.5rem;
+    color: transparent;
 }
