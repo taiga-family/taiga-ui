@@ -115,7 +115,8 @@ export class TuiInputSliderDirective {
         const subscription = fromEvent(slider.el, 'input')
             .pipe(
                 tap(() => {
-                    const value = slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber;
+                    const value =
+                        slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber;
 
                     this.inputNumber.setValue(value);
                     this.inputNumber.onChange(this.mask.stringify(value));
