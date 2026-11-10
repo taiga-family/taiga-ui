@@ -1,67 +1,50 @@
 import assert from 'node:assert';
 
 import {DemoRoute} from '@demo/routes';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 for (const deviceScaleFactor of [1.1, 1.25, 1.5]) {
     test.describe(`Copy at DPR ${deviceScaleFactor}`, () => {
-        test.use({deviceScaleFactor, reducedMotion: 'reduce'});
+        test.use({deviceScaleFactor});
 
-        for (const direction of ['ltr', 'rtl']) {
-            test(`idle mask is opaque in ${direction}`, async ({page}) => {
-                await page.route('https://**', async (route) => route.abort());
-                await page.goto(DemoRoute.Copy, {waitUntil: 'domcontentloaded'});
-                await page.mouse.move(0, 0);
+        test('does not render a seam across the original text', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Copy);
 
-                const copy = page.locator('tui-copy').first();
-                const content = copy.locator('.t-content');
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const copy = example.locator('tui-copy').last();
+            const content = copy.locator('.t-content');
 
-                await copy.evaluate((element, dir) => {
-                    element.setAttribute('dir', dir);
-                    element.style.setProperty('--tui-inline', dir === 'rtl' ? '-1' : '1');
-                    element.style.setProperty(
-                        '--tui-inline-start',
-                        dir === 'rtl' ? 'right' : 'left',
-                    );
-                    element.style.setProperty(
-                        '--tui-inline-end',
-                        dir === 'rtl' ? 'left' : 'right',
-                    );
-                }, direction);
-                await content.evaluate((element) => {
-                    element.innerHTML =
-                        '<span style="display: inline-block; width: 200px; height: 20px; background: black"></span>';
-                    element.style.transition = 'none';
-                    element.style.display = 'inline-block';
+            await expect(content).toContainText('Very very long text');
+            await page.mouse.move(0, 0);
+
+            for (const width of [744, 745, 746, 747, 748, 749, 750, 751]) {
+                await page.setViewportSize({width, height: 700});
+                await copy.scrollIntoViewIfNeeded();
+
+                const bounds = await content.boundingBox();
+
+                assert(bounds, 'Copy content must have a bounding box');
+
+                // Compare the actual text at the junction of the two mask layers.
+                const clip = {
+                    x: bounds.x + 28,
+                    y: bounds.y,
+                    width: 12,
+                    height: bounds.height,
+                };
+
+                const masked = await page.screenshot({clip});
+                const unmasked = await page.screenshot({
+                    clip,
+                    style: 'tui-copy .t-content { mask-image: none !important; }',
                 });
 
-                for (const offset of [0, 0.25, 0.5, 0.75]) {
-                    await content.evaluate((element, shift) => {
-                        // Shift the layout before mask rasterization, not the composited layer.
-                        element.style.marginInlineStart = `${shift}px`;
-                        element.style.removeProperty('mask-image');
-                    }, offset);
-
-                    const bounds = await content.locator('span').boundingBox();
-
-                    assert(bounds, 'Copy content must have a bounding box');
-
-                    const clip = {
-                        x: bounds.x + 4,
-                        y: bounds.y + 4,
-                        width: bounds.width - 8,
-                        height: bounds.height - 8,
-                    };
-
-                    const masked = await page.screenshot({clip});
-
-                    await content.evaluate((element) => {
-                        element.style.maskImage = 'none';
-                    });
-
-                    expect(masked.equals(await page.screenshot({clip}))).toBe(true);
-                }
-            });
-        }
+                expect(
+                    masked.equals(unmasked),
+                    `Mask seam at DPR ${deviceScaleFactor} and viewport ${width}px`,
+                ).toBe(true);
+            }
+        });
     });
 }
