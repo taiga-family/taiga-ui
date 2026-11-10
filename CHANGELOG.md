@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.32.0](https://github.com/taiga-family/taiga-ui/compare/v5.31.0...v5.32.0) (2026-11-09)
+
+### 🚀 Features
+
+- **addon-mobile:** `BottomSheet` update radius for new iOS
+  ([#15375](https://github.com/taiga-family/taiga-ui/issues/15375))
+  ([d075891](https://github.com/taiga-family/taiga-ui/commit/d075891d0129c272464e94ff8f0d9efc2dbad182))
+- **addon-mobile:** `SheetDialog` scroll to stop ([#15343](https://github.com/taiga-family/taiga-ui/issues/15343))
+  ([06e7c2d](https://github.com/taiga-family/taiga-ui/commit/06e7c2d1ea4561cfab6975a884ead99029d43f21))
+- **addon-mobile:** `SheetDialog` update radius for new iOS
+  ([#15360](https://github.com/taiga-family/taiga-ui/issues/15360))
+  ([a6f3dc9](https://github.com/taiga-family/taiga-ui/commit/a6f3dc9bc75b49ff35af6a9bcb647945f155fadb))
+
+### 🐞 Bug Fixes
+
+- **cdk:** clamp leap day when changing years ([#15252](https://github.com/taiga-family/taiga-ui/issues/15252))
+  ([cd58c64](https://github.com/taiga-family/taiga-ui/commit/cd58c64833d59669f9650e49b5a4d9c36d312265))
+- **core:** `Dropdown` fix anchor positioning when GPU styles are used
+  ([#15373](https://github.com/taiga-family/taiga-ui/issues/15373))
+  ([30b92e6](https://github.com/taiga-family/taiga-ui/commit/30b92e604d6e4dc8b5d0db6f70eed5fa0abaaca1))
+- **core:** stop word range at the first newline ([#15333](https://github.com/taiga-family/taiga-ui/issues/15333))
+  ([e5327e7](https://github.com/taiga-family/taiga-ui/commit/e5327e7fe50259bfabd97d4a657dde7f2618f8ed))
+- **experimental:** `ScrollWheel` fix initial jitter and blank screen in safari
+  ([#15346](https://github.com/taiga-family/taiga-ui/issues/15346))
+  ([0bc74ea](https://github.com/taiga-family/taiga-ui/commit/0bc74eaf8bef0fe03044a3a57c608a0c862af876))
+- **kit:** `ComboBox` use `identityMatcher` when matching an option to the value
+  ([#15384](https://github.com/taiga-family/taiga-ui/issues/15384))
+  ([d4d1060](https://github.com/taiga-family/taiga-ui/commit/d4d106065a652304c7ba36a634efebf2f97c4646))
+- **kit:** `InputDateMulti` loses days picked in quick succession
+  ([#15347](https://github.com/taiga-family/taiga-ui/issues/15347))
+  ([0b728b2](https://github.com/taiga-family/taiga-ui/commit/0b728b2290f779de74b36d6bd3b01012b408c00d))
+- **kit:** `ItemsWithMore` fix items jumping in multiline mode
+  ([#15339](https://github.com/taiga-family/taiga-ui/issues/15339))
+  ([8281ae4](https://github.com/taiga-family/taiga-ui/commit/8281ae4d3a0bf1e57730bca35ebc5d387144084d))
+- **kit:** `Switch` fix visual artifacts in Firefox when page is zoomed
+  ([#15370](https://github.com/taiga-family/taiga-ui/issues/15370))
+  ([a859b25](https://github.com/taiga-family/taiga-ui/commit/a859b256b7d7d71320c657b0701304cc2bb3163f))
+- **kit:** `Tree` not updating non-first children after async load
+  ([#15358](https://github.com/taiga-family/taiga-ui/issues/15358))
+  ([4e47601](https://github.com/taiga-family/taiga-ui/commit/4e4760111275f2adfe408baa8aeb50d9b6e3ef28))
+- **kit:** preserve non-strict combo box reactive form initial value
+  ([#15277](https://github.com/taiga-family/taiga-ui/issues/15277))
+  ([e957425](https://github.com/taiga-family/taiga-ui/commit/e957425f097749a0c0eba9dc9f25c3873e0f2d55))
+- **schematics:** migrate kit i18n token providers to signal (v5)
+  ([#14894](https://github.com/taiga-family/taiga-ui/issues/14894))
+  ([e50833d](https://github.com/taiga-family/taiga-ui/commit/e50833dd79474e205a85402761d1b91eac219e9b))
+
 ## [5.31.0](https://github.com/taiga-family/taiga-ui/compare/v5.30.0...v5.31.0) (2026-11-02)
 
 ### 🐞 Bug Fixes
