@@ -228,6 +228,8 @@ export class TuiDropdownSelection
     ): HTMLElement {
         const ghost = this.doc.createElement('div');
 
+        ghost.translate = false;
+
         const {font, letterSpacing, textTransform, padding, borderTop} =
             getComputedStyle(element);
 

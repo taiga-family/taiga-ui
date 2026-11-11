@@ -184,6 +184,7 @@ describe('TuiDropdownSelection', () => {
         const range = document.createRange();
 
         range.selectNodeContents(ghost);
+        expect(ghost.getAttribute('translate')).toBe('no');
         expect(ghost.style.top).toBe('0px');
         expect(ghost.style.left).toBe('0px');
         expect(ghost.style.width).toBe('200px');
