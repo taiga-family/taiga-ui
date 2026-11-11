@@ -62,7 +62,7 @@ export abstract class TuiInputDateBase<
     public abstract readonly max: Signal<TuiDay>;
     public abstract readonly min: Signal<TuiDay>;
 
-    private readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
+    protected readonly calendar = tuiInjectAuxiliary<AbstractTuiCalendar>(
         (x) => x instanceof AbstractTuiCalendar,
     );
 
