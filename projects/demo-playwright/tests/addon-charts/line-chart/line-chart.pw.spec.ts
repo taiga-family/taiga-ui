@@ -71,6 +71,7 @@ test.describe('LineChart', () => {
 
             const chart = page.locator('#hint tui-axes').first();
 
+            await chart.hover({position: {x: 200, y: 100}});
             await chart.tap({position: {x: 200, y: 100}});
             await expect(page.locator('tui-hint')).toContainText('Vertical: 150');
             await chart.tap({position: {x: 200, y: 100}});
