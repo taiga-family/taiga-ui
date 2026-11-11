@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_ANCHOR_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
 import {TUI_SCROLL_REF, TuiScrollRef} from './scroll-ref.directive';
@@ -33,6 +34,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     ],
     hostDirectives: [TuiScrollRef],
     host: {
+        '[class._scrollbar-anchored]': 'anchored',
         '[class._delegated]': 'delegated',
         '[class._hover]': "mode === 'hover'",
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
@@ -40,6 +42,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     },
 })
 export class TuiScrollbar {
+    protected readonly anchored = inject(TUI_ANCHOR_SUPPORT);
     protected readonly el = tuiInjectElement();
     protected readonly mode = inject(TUI_SCROLLBAR_OPTIONS).mode;
     protected readonly browserScrollRef = new ElementRef(this.el);
