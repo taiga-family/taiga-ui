@@ -113,6 +113,7 @@
                 "index": "{projectRoot}/src/index.html",
                 "inlineStyleLanguage": "less",
                 "loader": {
+                    ".css": "text",
                     ".html": "text",
                     ".less": "text",
                     ".md": "text",

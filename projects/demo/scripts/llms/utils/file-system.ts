@@ -296,7 +296,21 @@ export function getComponentApiFromTemplates(content: string): string {
     return result;
 }
 
-// parse example index.ts and index.less files
+async function readExampleStyles(folderPath: string): Promise<{
+    language: 'css' | 'less';
+    source: string;
+}> {
+    const css = await readIfExists(path.join(folderPath, 'index.css'));
+
+    return css
+        ? {language: 'css', source: css.trim()}
+        : {
+              language: 'less',
+              source:
+                  (await readIfExists(path.join(folderPath, 'index.less')))?.trim() ?? '',
+          };
+}
+
 export async function getComponentSourceFiles(
     folderPath: string,
     hasExample: boolean,
@@ -306,7 +320,7 @@ export async function getComponentSourceFiles(
     }
 
     const tsPath = path.join(folderPath, 'index.ts');
-    const lessPath = path.join(folderPath, 'index.less');
+    const styles = await readExampleStyles(folderPath);
     let result = '';
 
     if (await fileExists(tsPath)) {
@@ -315,10 +329,8 @@ export async function getComponentSourceFiles(
         result += `\n### TypeScript\n\n\`\`\`ts\n${tsContent.trim()}\n\`\`\``;
     }
 
-    if (await fileExists(lessPath)) {
-        const lessContent = await fs.readFile(lessPath, 'utf-8');
-
-        result += `\n\n### LESS\n\n\`\`\`less\n${lessContent.trim()}\n\`\`\``;
+    if (styles.source) {
+        result += `\n\n### ${styles.language.toUpperCase()}\n\n\`\`\`${styles.language}\n${styles.source}\n\`\`\``;
     }
 
     return result;
@@ -327,7 +339,7 @@ export async function getComponentSourceFiles(
 // extract usage examples from demo folders
 /** A folder documents an example when it holds an `index.*` of its own. */
 async function isExampleFolder(folder: string): Promise<boolean> {
-    for (const name of ['index.html', 'index.ts', 'index.less']) {
+    for (const name of ['index.html', 'index.ts', 'index.css', 'index.less']) {
         if (await fileExists(path.join(folder, name))) {
             return true;
         }
@@ -494,7 +506,7 @@ export async function getUsageExamples(
         name: string;
         html: string;
         ts: string;
-        less: string;
+        styles: Awaited<ReturnType<typeof readExampleStyles>>;
         heading: string;
         description: string;
     }> = [];
@@ -504,10 +516,9 @@ export async function getUsageExamples(
             const exampleFolder = path.join(examplesPath, name);
             const htmlPath = path.join(exampleFolder, 'index.html');
             const tsPath = path.join(exampleFolder, 'index.ts');
-            const lessPath = path.join(exampleFolder, 'index.less');
+            const styles = await readExampleStyles(exampleFolder);
             let html = '';
             let ts = '';
-            let less = '';
 
             if (await fileExists(htmlPath)) {
                 html = await fs.readFile(htmlPath, 'utf-8');
@@ -517,11 +528,7 @@ export async function getUsageExamples(
                 ts = await fs.readFile(tsPath, 'utf-8');
             }
 
-            if (await fileExists(lessPath)) {
-                less = await fs.readFile(lessPath, 'utf-8');
-            }
-
-            if (html || ts || less) {
+            if (html || ts || styles.source) {
                 const exampleInfo = exampleDescriptions[name] || {
                     heading: `Example ${name}`,
                     description: '',
@@ -531,7 +538,7 @@ export async function getUsageExamples(
                     name,
                     html: html.trim(),
                     ts: ts.trim(),
-                    less: less.trim(),
+                    styles,
                     heading: exampleInfo.heading,
                     description: exampleInfo.description,
                 });
@@ -576,8 +583,12 @@ export async function getUsageExamples(
             parts.push(`**TypeScript:**\n\`\`\`ts\n${example.ts}\n\`\`\``);
         }
 
-        if (example.less) {
-            parts.push(`**LESS:**\n\`\`\`less\n${example.less}\n\`\`\``);
+        if (example.styles.source) {
+            const {language, source} = example.styles;
+
+            parts.push(
+                `**${language.toUpperCase()}:**\n\`\`\`${language}\n${source}\n\`\`\``,
+            );
         }
 
         result += `\n#### ${example.heading}\n\n${parts.join('\n\n')}\n`;
@@ -901,7 +912,7 @@ export function extractExampleDescriptions(
         }
 
         if (!contentMatch?.[1]) {
-            // Try complex pattern: [content]="X | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+            // Try complex pattern: [content]="X | tuiExample: 'html,ts,css' : {'option.ts': selectOptionExample}"
             contentMatch = /\[content\]="(\d+)\s*\|\s*tuiExample[^"]*"[^"]*"/i.exec(
                 exampleMatch,
             );
