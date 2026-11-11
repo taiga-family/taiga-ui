@@ -74,6 +74,7 @@ export class TuiHintDirective<C>
     public component: PolymorpheusComponent<unknown> | null = inject(
         PolymorpheusComponent<unknown>,
     );
+
     public readonly el = tuiInjectElement();
     public readonly type = 'hint';
 
@@ -94,17 +95,21 @@ export class TuiHintDirective<C>
     public toggle(show: boolean): void {
         const content = this.content();
 
-        if (show && content && !this.ref()) {
-            this.ref.set(
-                this.component
-                    ? this.service.add(this.component)
-                    : content instanceof TemplateRef
-                      ? this.service.add(content)
-                      : null,
-            );
-        } else if (!show) {
+        if (!show) {
             this.ref()?.destroy();
             this.ref.set(null);
+
+            return;
+        }
+
+        if (!content || this.ref()) {
+            return;
+        }
+
+        if (this.component) {
+            this.ref.set(this.service.add(this.component));
+        } else if (content instanceof TemplateRef) {
+            this.ref.set(this.service.add(content));
         }
     }
 }
