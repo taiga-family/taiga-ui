@@ -8,7 +8,7 @@ import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 @Component({
     imports: [ClipboardModule, KeyValuePipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiReorder} from '@taiga-ui/addon-table';
 @Component({
     imports: [JsonPipe, TuiReorder],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

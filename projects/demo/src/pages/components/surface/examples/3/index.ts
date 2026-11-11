@@ -6,7 +6,7 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiSurface],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

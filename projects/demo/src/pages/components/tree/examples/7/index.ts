@@ -39,7 +39,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
 @Component({
     imports: [AsyncPipe, TuiLoader, TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [

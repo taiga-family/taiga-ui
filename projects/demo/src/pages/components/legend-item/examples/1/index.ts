@@ -8,7 +8,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

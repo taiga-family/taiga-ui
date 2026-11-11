@@ -9,7 +9,7 @@ import {TUI_LIQUID_GLASS} from '@taiga-ui/core';
     selector: 'tui-tab-bar-example-liquid-full',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [

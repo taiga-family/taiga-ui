@@ -8,7 +8,7 @@ import {TuiDrawer} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

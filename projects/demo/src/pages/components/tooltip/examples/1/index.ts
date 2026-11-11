@@ -9,7 +9,7 @@ import {interval, map, startWith} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiIcon, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

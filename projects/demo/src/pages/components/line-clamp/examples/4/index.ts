@@ -21,7 +21,7 @@ function randomString(len: number): string {
 @Component({
     imports: [TuiChevron, TuiDataList, TuiDropdown, TuiLineClamp, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

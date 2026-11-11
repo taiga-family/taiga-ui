@@ -28,7 +28,7 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
         TuiInputDateRange,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

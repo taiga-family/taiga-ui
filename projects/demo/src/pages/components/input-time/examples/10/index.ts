@@ -9,7 +9,7 @@ import {TuiInputTime} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputTime],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -23,7 +23,7 @@ interface Card {
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

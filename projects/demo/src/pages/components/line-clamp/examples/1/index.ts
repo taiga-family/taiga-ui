@@ -11,7 +11,7 @@ import {map, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

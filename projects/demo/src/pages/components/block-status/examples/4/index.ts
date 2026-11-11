@@ -20,7 +20,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

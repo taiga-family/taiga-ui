@@ -7,7 +7,7 @@ import {TuiCopy} from '@taiga-ui/kit';
 @Component({
     imports: [TuiCopy, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

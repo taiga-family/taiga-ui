@@ -18,7 +18,7 @@ import {timer} from 'rxjs';
 @Component({
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

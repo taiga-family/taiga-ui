@@ -23,7 +23,7 @@ const COMPLETED = {
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

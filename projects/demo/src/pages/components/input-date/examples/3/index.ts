@@ -9,7 +9,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiInputDate],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

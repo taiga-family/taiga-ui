@@ -6,7 +6,7 @@ import {TuiAxes, TuiBar} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiAxes, TuiBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

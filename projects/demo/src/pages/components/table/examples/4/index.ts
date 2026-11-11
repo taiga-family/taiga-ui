@@ -124,7 +124,7 @@ function getAge(dob: TuiDay): number {
         TuiTablePagination,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

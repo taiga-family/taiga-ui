@@ -7,7 +7,7 @@ import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
 @Component({
     imports: [TuiActiveZone, TuiButton, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

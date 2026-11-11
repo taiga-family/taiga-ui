@@ -11,7 +11,7 @@ import {TuiNumberFormat} from '@taiga-ui/core';
 @Component({
     imports: [TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiAmountOptionsProvider({currencyAlign: 'start'})],

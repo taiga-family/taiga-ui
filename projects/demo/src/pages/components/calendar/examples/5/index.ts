@@ -14,7 +14,7 @@ const dayType: TuiHandler<TuiDay, string> = (day) => {
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [tuiCalendarOptionsProvider({dayType})],

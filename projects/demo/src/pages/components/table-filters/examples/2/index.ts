@@ -28,7 +28,7 @@ import {map} from 'rxjs';
         TuiTableFilters,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

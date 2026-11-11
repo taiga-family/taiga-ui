@@ -14,7 +14,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
 @Component({
     imports: [FormsModule, TuiLoader, TuiPincode],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

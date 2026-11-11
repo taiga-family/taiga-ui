@@ -10,7 +10,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiCardMedium, TuiFade, TuiRipple, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

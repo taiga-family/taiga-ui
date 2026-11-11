@@ -6,7 +6,7 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

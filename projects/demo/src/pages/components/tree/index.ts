@@ -11,7 +11,7 @@ import {TuiDemo} from '@demo/utils';
 export default class Page extends Array {
     protected readonly [4] = {
         'content.ts': import('./examples/5/content.ts?raw', {with: {loader: 'text'}}),
-        'content.less': import('./examples/5/content.less'),
+        'content.css': import('./examples/5/content.css'),
     };
 
     protected readonly routes = DemoRoute;

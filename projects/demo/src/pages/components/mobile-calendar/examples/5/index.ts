@@ -16,7 +16,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

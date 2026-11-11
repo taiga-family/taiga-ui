@@ -17,7 +17,7 @@ import {TuiChevron, TuiChip, TuiComboBox} from '@taiga-ui/kit';
         TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

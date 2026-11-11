@@ -7,7 +7,7 @@ import {TuiTextarea, tuiTextareaOptionsProvider} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiTextarea],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiTextareaOptionsProvider({min: 4, max: 4})],

@@ -17,7 +17,7 @@ import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
         TuiScrollRef,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

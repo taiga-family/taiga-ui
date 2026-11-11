@@ -18,7 +18,7 @@ import {interval, map} from 'rxjs';
         TuiSwitch,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

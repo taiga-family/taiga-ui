@@ -14,7 +14,7 @@ interface User {
 @Component({
     imports: [TuiHint, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

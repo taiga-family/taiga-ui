@@ -6,7 +6,7 @@ import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMessage, TuiShrinkWrap],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

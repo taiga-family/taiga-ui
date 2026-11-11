@@ -9,7 +9,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],

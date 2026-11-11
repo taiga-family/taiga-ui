@@ -6,7 +6,7 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiSwipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {'[class]': 'swiped'},

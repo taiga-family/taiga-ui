@@ -24,7 +24,7 @@ const OPERATORS = new Set(['-', '+', '÷', '×']);
 @Component({
     imports: [TuiAutoFocus, TuiButton, TuiIcon, TuiKeypad, TuiPopout],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

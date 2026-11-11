@@ -8,7 +8,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiButton, TuiInputNumber],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

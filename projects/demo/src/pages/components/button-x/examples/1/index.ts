@@ -6,7 +6,7 @@ import {TuiButtonX} from '@taiga-ui/core';
 @Component({
     imports: [TuiButtonX],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

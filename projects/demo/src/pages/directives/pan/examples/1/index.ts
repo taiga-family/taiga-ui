@@ -9,7 +9,7 @@ import {BehaviorSubject, map} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiPan],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

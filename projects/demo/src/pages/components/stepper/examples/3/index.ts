@@ -6,7 +6,7 @@ import {TuiStepper} from '@taiga-ui/kit';
 @Component({
     imports: [TuiStepper],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

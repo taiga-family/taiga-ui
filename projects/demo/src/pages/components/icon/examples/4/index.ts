@@ -8,7 +8,7 @@ import mastercard from '@taiga-ui/icons/src/mastercard.svg';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [

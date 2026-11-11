@@ -6,7 +6,7 @@ import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon, TuiIconPipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

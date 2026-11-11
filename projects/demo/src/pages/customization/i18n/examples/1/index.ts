@@ -16,7 +16,7 @@ import {TuiButtonSelect, TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
         TuiDropdown,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {

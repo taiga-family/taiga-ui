@@ -7,7 +7,7 @@ import {TuiFile} from '@taiga-ui/experimental';
 @Component({
     imports: [TuiFile, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

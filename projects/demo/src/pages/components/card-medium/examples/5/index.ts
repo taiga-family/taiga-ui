@@ -8,7 +8,7 @@ import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBadge, TuiCardMedium, TuiIcon, TuiSurface, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
