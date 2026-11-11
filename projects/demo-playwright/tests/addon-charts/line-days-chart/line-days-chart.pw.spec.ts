@@ -76,6 +76,37 @@ test.describe('LineDaysChart', () => {
         });
     }
 
+    test('positions the hint consistently on either side of a month boundary', async ({
+        page,
+    }) => {
+        await tuiGoto(page, `${DemoRoute.LineDaysChart}/API?hintContent$=1&value$=2`);
+
+        const {demo} = new TuiDocumentationPagePO(page);
+        const chart = demo.locator('tui-axes');
+        const hint = page.locator('tui-hint');
+
+        await hoverChart(chart, 0.335);
+        await expect(hint).toContainText('February, 1');
+
+        const initial = (await hint.boundingBox())!;
+
+        await page.mouse.move(0, 0);
+        await expect(hint).toBeHidden();
+        await hoverChart(chart, 0.27);
+        await expect(hint).toContainText('February, 1');
+        await expect(demo).toHaveScreenshot('hint-month-boundary.png');
+        await expect
+            .poll(async () => {
+                const current = (await hint.boundingBox())!;
+
+                return Math.max(
+                    Math.abs(current.x - initial.x),
+                    Math.abs(current.y - initial.y),
+                );
+            })
+            .toBeLessThan(1);
+    });
+
     test('shows values of all series in a grouped hint', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.LineDaysChart}#complex`);
 
