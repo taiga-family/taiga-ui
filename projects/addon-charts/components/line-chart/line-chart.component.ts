@@ -163,10 +163,6 @@ export class TuiLineChart {
         return (100 * this.computeWidth(index)) / this.width();
     }
 
-    protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
-    }
-
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
             this.hintDirective?.getContext(this.value().indexOf($implicit), this) ??
