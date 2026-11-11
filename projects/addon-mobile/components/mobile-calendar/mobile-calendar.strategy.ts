@@ -4,49 +4,29 @@ import {
 } from '@angular/cdk/scrolling';
 import {inject} from '@angular/core';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
-import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
+import {DAYS_IN_WEEK, MONTHS_IN_YEAR, TuiDay} from '@taiga-ui/cdk/date-time';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {TUI_CALENDAR_OPTIONS} from '@taiga-ui/core/components/calendar';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {
-    ANDROID_CYCLE,
+    ANDROID_LABEL,
+    ANDROID_WEEK,
     BUFFER,
-    IOS_CYCLE,
+    IOS_LABEL,
+    IOS_WEEK,
     RANGE,
-    YEARLY_CYCLE,
+    STARTING_YEAR,
 } from './mobile-calendar.const';
 
-const ANDROID_CYCLE_HEIGHT = reduceCycle(ANDROID_CYCLE);
-const IOS_CYCLE_HEIGHT = reduceCycle(IOS_CYCLE);
+const MONTH_COUNT = RANGE * MONTHS_IN_YEAR;
 
-function reduceCycle(
-    cycle: ReadonlyArray<readonly number[]>,
-    lastYear = 28,
-    lastMonth = 12,
-): number {
-    return cycle.reduce(
-        (total, year, yearIndex) =>
-            yearIndex <= lastYear
-                ? total +
-                  year.reduce(
-                      (sum, month, monthIndex) =>
-                          yearIndex < lastYear ||
-                          (yearIndex === lastYear && monthIndex < lastMonth)
-                              ? sum + month
-                              : sum,
-                      0,
-                  )
-                : total,
-        0,
-    );
-}
-
-/**
- * This scroll strategy is hard-wired with styles for iOS and Android.
- * It is dependent on month height on those platforms and is designed to
- * work for {@link TuiMobileCalendar} with years 1906 to 2102
- */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private readonly isIOS = inject(WA_IS_IOS);
+    private readonly monthOffsets = this.getMonthOffsets(
+        inject(TUI_CALENDAR_OPTIONS).weekStart(),
+        inject(WA_IS_IOS),
+    );
+
     private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
     private viewport: CdkVirtualScrollViewport | null = null;
@@ -54,11 +34,9 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
     public attach(viewport: CdkVirtualScrollViewport): void {
-        const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
-
         this.viewport = viewport;
-        this.viewport.setTotalContentSize(cycle * 7);
-        this.updateRenderedRange(this.viewport);
+        viewport.setTotalContentSize(this.getOffsetForIndex(MONTH_COUNT));
+        this.updateRenderedRange(viewport);
     }
 
     public detach(): void {
@@ -74,10 +52,14 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         }
     }
 
-    /** These do not matter for this case */
     public onDataLengthChanged(): void {}
 
-    public onContentRendered(): void {}
+    public onContentRendered(): void {
+        // In zoneless mode, CDK can apply the transform before the new months render.
+        this.viewport?.setRenderedContentOffset(
+            this.getOffsetForIndex(this.viewport?.getRenderedRange().start ?? 0),
+        );
+    }
 
     public onRenderedOffsetChanged(): void {}
 
@@ -85,44 +67,52 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         this.viewport?.scrollToOffset(this.getOffsetForIndex(index), behavior);
     }
 
-    private getOffsetForIndex(index: number): number {
-        const month = index % MONTHS_IN_YEAR;
-        const year = (index - month) / MONTHS_IN_YEAR;
+    private getMonthOffsets(weekStart: number, isIOS: boolean): readonly number[] {
+        const labelHeight = isIOS ? IOS_LABEL : ANDROID_LABEL;
+        const weekHeight = isIOS ? IOS_WEEK : ANDROID_WEEK;
+        const offsets = [0];
+        let offset = 0;
 
-        return this.computeHeight(year, month);
+        for (let index = 0; index < MONTH_COUNT; index++) {
+            const firstDay = new TuiDay(
+                STARTING_YEAR + Math.floor(index / MONTHS_IN_YEAR),
+                index % MONTHS_IN_YEAR,
+                1,
+            );
+
+            const leadingDays =
+                (firstDay.dayOfWeek(false) - weekStart + DAYS_IN_WEEK) % DAYS_IN_WEEK;
+
+            const weeks = Math.ceil((leadingDays + firstDay.daysCount) / DAYS_IN_WEEK);
+
+            offset += labelHeight + weeks * weekHeight;
+            offsets.push(offset);
+        }
+
+        return offsets;
+    }
+
+    private getOffsetForIndex(index: number): number {
+        return this.monthOffsets[tuiClamp(index, 0, MONTH_COUNT)]!;
     }
 
     private getIndexForOffset(offset: number): number {
-        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
-        const cycleHeight = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
-        const remainder = offset % cycleHeight;
-        const years = ((offset - remainder) / cycleHeight) * YEARLY_CYCLE;
-        let accumulator = 0;
+        let start = 0;
+        let end = MONTH_COUNT;
 
-        for (let year = 0; year < cycle.length; year++) {
-            for (let month = 0; month < (cycle[year]?.length ?? 0); month++) {
-                accumulator += cycle[year]?.[month] ?? 0;
+        while (start < end) {
+            const index = Math.floor((start + end) / 2);
+            const midpoint =
+                (this.monthOffsets[index]! + this.monthOffsets[index + 1]!) / 2;
 
-                if (accumulator - (cycle[year]?.[month] ?? 0) / 2 > remainder) {
-                    return Math.max((years + year) * MONTHS_IN_YEAR + month, 0);
-                }
+            if (offset < midpoint) {
+                end = index;
+            } else {
+                start = index + 1;
             }
         }
 
-        return RANGE;
-    }
-
-    private computeHeight(year: number, month?: number): number {
-        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
-        const remainder = year % YEARLY_CYCLE;
-        const remainderHeight = reduceCycle(cycle, remainder, month);
-        const fullCycles = (year - remainder) / YEARLY_CYCLE;
-
-        const fullCyclesHeight = this.isIOS
-            ? fullCycles * IOS_CYCLE_HEIGHT
-            : fullCycles * ANDROID_CYCLE_HEIGHT;
-
-        return fullCyclesHeight + remainderHeight;
+        return start;
     }
 
     private updateRenderedRange(viewport: CdkVirtualScrollViewport): void {
@@ -131,7 +121,11 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const viewportSize = viewport.getViewportSize();
         const dataLength = viewport.getDataLength();
         const newRange = {start, end};
-        const firstVisibleIndex = this.getIndexForOffset(offset);
+        const firstVisibleIndex = Math.min(
+            this.getIndexForOffset(offset),
+            MONTH_COUNT - 1,
+        );
+
         const startBuffer = offset - this.getOffsetForIndex(start);
 
         if (startBuffer < BUFFER && start !== 0) {
@@ -153,7 +147,6 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         }
 
         viewport.setRenderedRange(newRange);
-        viewport.setRenderedContentOffset(this.getOffsetForIndex(newRange.start));
         this.index$.next(firstVisibleIndex);
     }
 }
