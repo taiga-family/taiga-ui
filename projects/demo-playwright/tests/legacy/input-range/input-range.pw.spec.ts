@@ -8,6 +8,7 @@ import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';
+import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputRange', () => {
     let example: Locator;
@@ -22,7 +23,9 @@ test.describe('InputRange', () => {
                 `${DemoRoute.InputRangeLegacy}/API?min=-100&max=100&quantum=5`,
             );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         test('pressing Arrow Down decreases LEFT value when LEFT text input is focused', async ({
@@ -139,7 +142,9 @@ test.describe('InputRange', () => {
                 `${DemoRoute.InputRangeLegacy}/API?min=0&max=10&quantum=2.5`,
             );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         const testsConditions = [
@@ -174,7 +179,9 @@ test.describe('InputRange', () => {
                     `${DemoRoute.InputRangeLegacy}/API?min=-100&max=100&quantum=10`,
                 );
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
-                inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+                inputRange = new TuiInputRangePO(
+                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                );
             });
 
             test('clicking on the RIGHT side changes only the RIGHT value (+ focuses the RIGHT text input)', async ({
@@ -215,7 +222,9 @@ test.describe('InputRange', () => {
                     `${DemoRoute.InputRangeLegacy}/API?min=0&max=10&quantum=1`,
                 );
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
-                inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+                inputRange = new TuiInputRangePO(
+                    example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+                );
             });
 
             test('click on the LEFT thumb (with NO value changes) => focuses the LEFT text input', async ({
@@ -284,7 +293,9 @@ test.describe('InputRange', () => {
                 `${DemoRoute.InputRangeLegacy}/API?min=-20&max=20&quantum=5`,
             );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
-            inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
+            inputRange = new TuiInputRangePO(
+                example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
+            );
         });
 
         test.describe('After Range interactions', () => {

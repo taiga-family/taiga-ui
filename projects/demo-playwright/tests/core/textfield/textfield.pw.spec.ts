@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DROPDOWN_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {tuiGetPseudoElement} from '../../../utils/get-pseudo-element';
 
@@ -14,7 +15,9 @@ test.describe('Textfield', () => {
         });
 
         test('disable state', async () => {
-            const textfield = example.locator('tui-textfield:has(input:disabled)');
+            const textfield = example.locator(
+                `${TUI_TEXTFIELD_LOCATORS.HOST}:has(input:disabled)`,
+            );
 
             // Special check hover state
             // eslint-disable-next-line playwright/no-force-option
@@ -24,9 +27,12 @@ test.describe('Textfield', () => {
         });
 
         test('readonly state', async () => {
-            const textfield = example.locator('tui-textfield:has(input:read-only)', {
-                hasText: 'Read-only',
-            });
+            const textfield = example.locator(
+                `${TUI_TEXTFIELD_LOCATORS.HOST}:has(input:read-only)`,
+                {
+                    hasText: 'Read-only',
+                },
+            );
 
             await textfield.hover();
 
@@ -34,7 +40,7 @@ test.describe('Textfield', () => {
         });
 
         test('invalid state', async () => {
-            const textfield = example.locator('tui-textfield', {
+            const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST, {
                 hasText: 'Invalid',
             });
 
@@ -50,11 +56,11 @@ test.describe('Textfield', () => {
 
         const pseudo = await tuiGetPseudoElement(
             page,
-            '#dropdown tui-textfield[tuiChevron]',
+            `#dropdown ${TUI_TEXTFIELD_LOCATORS.HOST}[tuiChevron]`,
         );
 
         await page.mouse.click(pseudo.clickX, pseudo.clickY);
-        await expect.soft(page.locator('tui-dropdown')).toHaveCount(1);
+        await expect.soft(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveCount(1);
     });
 
     test('open dropdowns by click on chevron icon in InputChip page', async ({page}) => {
@@ -68,7 +74,7 @@ test.describe('Textfield', () => {
             );
 
             await page.mouse.click(pseudo.clickX, pseudo.clickY);
-            await expect.soft(page.locator('tui-dropdown')).toHaveCount(1);
+            await expect.soft(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveCount(1);
         }
     });
 });
