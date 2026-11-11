@@ -13,12 +13,20 @@
             },
             "outputs": ["{workspaceRoot}/dist/{projectName}"]
         },
+        "build-css": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx lessc --include-path=node_modules {projectRoot}/taiga-ui-theme.less dist/{projectName}/taiga-ui-theme.css",
+                "forwardAllArgs": false
+            },
+            "outputs": ["{workspaceRoot}/dist/{projectName}/taiga-ui-theme.css"]
+        },
         "publish": {
             "dependsOn": [
                 {
                     "dependencies": false,
                     "params": "ignore",
-                    "target": "build"
+                    "target": "build-css"
                 }
             ],
             "executor": "nx:run-commands",

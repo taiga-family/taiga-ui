@@ -20,6 +20,7 @@ jobs:
       - uses: taiga-family/actions/setup-variables@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
       - uses: taiga-family/actions/setup-node@81cb55a2c1685e45ea591772e6bc9fd1d6b83765 # v2.24.0
       - run: npm run run-many:build:libs
+      - run: npx nx run-many -t build-css --output-style=stream --nxBail
       - run: npx ts-node ./scripts/check-dist.ts
 
   demo:

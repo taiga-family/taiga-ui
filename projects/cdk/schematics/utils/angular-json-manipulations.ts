@@ -1,4 +1,6 @@
-import {type JsonArray} from '@angular-devkit/core';
+import {posix} from 'node:path';
+
+import {isJsonObject, type JsonArray, type JsonObject} from '@angular-devkit/core';
 import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
@@ -17,6 +19,34 @@ function hasTaigaIcons(assets: Asset[]): boolean {
             ? asset.includes('taiga-ui')
             : asset?.input?.includes('taiga-ui'),
     );
+}
+
+function mergeTaigaStyles(taigaStyles: string[], styles: JsonArray): JsonArray {
+    const bundles = new Map<string, JsonObject[]>(
+        taigaStyles.map((style) => [style, []]),
+    );
+
+    const otherStyles: JsonArray = [];
+
+    for (const style of new Set(styles)) {
+        const options = isJsonObject(style) ? style : null;
+        const input = options ? options['input'] : style;
+        const cssInput = tuiIsString(input) ? input.replace(/\.less$/, '.css') : '';
+        const path = posix.normalize(cssInput.replaceAll('\\', '/'));
+        const entries = bundles.get(path) ?? bundles.get(`node_modules/${path}`);
+
+        if (!entries) {
+            otherStyles.push(style);
+        } else if (options) {
+            entries.push({...options, input: cssInput});
+        }
+    }
+
+    const configuredStyles = Array.from(bundles).flatMap<JsonObject | string>(
+        ([input, entries]) => (entries.length ? entries : [input]),
+    );
+
+    return [...configuredStyles, ...otherStyles];
 }
 
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
@@ -94,9 +124,7 @@ export function addStylesToAngularJson(
 
                 targetOptions.styles = Array.from(new Set(orderList));
             } else {
-                const orderList = [...taigaStyles, ...(styles || [])];
-
-                targetOptions.styles = Array.from(new Set(orderList));
+                targetOptions.styles = mergeTaigaStyles(taigaStyles, styles ?? []);
             }
 
             if (tree && stylesToReplace) {

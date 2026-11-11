@@ -2,6 +2,7 @@ import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     createProject,
     createSourceFile,
@@ -126,8 +127,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
               "styles": [
-                "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
-                "node_modules/@taiga-ui/styles/taiga-ui-fonts.less"
+                "node_modules/@taiga-ui/styles/taiga-ui-theme.css",
+                "node_modules/@taiga-ui/styles/taiga-ui-fonts.css"
               ],
               "assets": [
                 {
@@ -165,8 +166,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.css",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.css",
               "some.style"
             ],
             "assets": [
@@ -183,6 +184,61 @@ describe('ng-add', () => {
   }
 }`);
     });
+
+    it.each(['less', 'css'])(
+        'should preserve style options for %s inputs',
+        async (ext) => {
+            const theme = {
+                input: `./node_modules/@taiga-ui/styles/taiga-ui-theme.${ext}`,
+                bundleName: 'taiga-theme',
+                inject: false,
+            };
+
+            const appStyle = {input: 'src/styles.less', bundleName: 'app-styles'};
+
+            host.overwrite(
+                'angular.json',
+                JSON.stringify({
+                    version: 1,
+                    projects: {
+                        demo: {
+                            root: '',
+                            architect: {
+                                build: {
+                                    options: {
+                                        main: 'test/main.ts',
+                                        styles: [
+                                            appStyle,
+                                            theme,
+                                            'node_modules/@taiga-ui/styles/taiga-ui-theme.css',
+                                            './node_modules/@taiga-ui/styles/taiga-ui-fonts.less',
+                                            '@taiga-ui/styles/taiga-ui-fonts.css',
+                                        ],
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
+            );
+
+            const tree = await runner.runSchematic(
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'},
+                host,
+            );
+
+            const workspace = await getWorkspace(tree);
+
+            expect(
+                workspace.projects.get('demo')?.targets.get('build')?.options?.['styles'],
+            ).toEqual([
+                {...theme, input: './node_modules/@taiga-ui/styles/taiga-ui-theme.css'},
+                'node_modules/@taiga-ui/styles/taiga-ui-fonts.css',
+                appStyle,
+            ]);
+        },
+    );
 
     it('should add global styles', async () => {
         createAngularJson({stylesExist: true});
@@ -205,8 +261,8 @@ describe('ng-add', () => {
             "options": {
               "main": "test/main.ts",
             "styles": [
-              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.css",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.css",
               "some.style"
             ],
             "assets": [
