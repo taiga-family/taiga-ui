@@ -10,12 +10,15 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 
+/**
+ * @deprecated Kept for backwards compatibility.
+ * TODO(v6): delete
+ */
 @Component({
     imports: [PolymorpheusOutlet],
     template: '<ng-container *polymorpheusOutlet="hint.content()" />',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-/** @deprecated Not used internally; kept for backwards compatibility. */
 export class TuiHintUnstyledComponent {
     protected readonly hint = inject(TuiHintDirective);
 }
