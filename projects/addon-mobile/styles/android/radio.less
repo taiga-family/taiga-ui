@@ -1,22 +1,30 @@
 @import '@taiga-ui/styles/utils.less';
 
+[tuiTheme='dark'] &,
+&[tuiTheme='dark'],
+[tuiTheme='dark'] {
+    input[tuiRadio] {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
 input[tuiRadio] {
     --t-size: 1.125rem;
 
     .transition(color);
 
-    color: var(--tui-background-neutral-2);
+    color: rgba(0, 16, 36, 0.22);
     outline: 0.125rem solid;
     outline-offset: -0.125rem;
     box-shadow: none !important;
     background: transparent !important;
 
     &:disabled:not(._readonly) {
-        color: var(--tui-background-neutral-2);
+        color: var(--tui-background-neutral-2) !important;
     }
 
     &:checked {
-        color: var(--tui-background-accent-2);
+        color: var(--tui-background-accent-2) !important;
 
         &::after {
             scale: 0.555;
@@ -24,10 +32,10 @@ input[tuiRadio] {
     }
 
     &:invalid {
-        color: var(--tui-status-negative-pale-hover);
+        color: var(--tui-status-negative-pale-hover) !important;
 
         &:checked {
-            color: var(--tui-status-negative);
+            color: var(--tui-status-negative) !important;
         }
     }
 }

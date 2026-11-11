@@ -541,9 +541,23 @@ describe('TuiMonth', () => {
                 );
             });
 
-            it('toUtcNativeDate returns Date(Date.UTC(2000, 0)) for TuiMonth {year: 2000, month: 0}', () => {
-                expect(new TuiMonth(2000, 0).toUtcNativeDate().toString()).toEqual(
-                    new Date(Date.UTC(2000, 0)).toString(),
+            describe('toUtcNativeDate', () => {
+                it('returns native UTC Date for year 2000', () => {
+                    expect(new TuiMonth(2000, 0).toUtcNativeDate().toString()).toEqual(
+                        new Date(Date.UTC(2000, 0)).toString(),
+                    );
+                });
+
+                it.each([0, 1, 42, 99, 100, 2000, 9999])(
+                    'preserves year %i in UTC',
+                    (year) => {
+                        const date = new TuiMonth(year, 1).toUtcNativeDate();
+
+                        expect(date.getUTCFullYear()).toBe(year);
+                        expect(date.getUTCMonth()).toBe(1);
+                        expect(date.getUTCDate()).toBe(1);
+                        expect(date.getUTCHours()).toBe(0);
+                    },
                 );
             });
 

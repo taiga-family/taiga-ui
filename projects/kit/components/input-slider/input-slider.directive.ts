@@ -114,11 +114,13 @@ export class TuiInputSliderDirective {
 
         const subscription = fromEvent(slider.el, 'input')
             .pipe(
-                tap(() =>
-                    this.inputNumber.setValue(
-                        slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber,
-                    ),
-                ),
+                tap(() => {
+                    const value =
+                        slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber;
+
+                    this.inputNumber.setValue(value);
+                    this.inputNumber.onChange(this.mask.stringify(value));
+                }),
                 filter(() => !this.isMobile),
                 switchMap(() =>
                     fromEvent(this.el.ownerDocument, 'pointerup', {once: true}),
