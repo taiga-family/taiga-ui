@@ -16,7 +16,7 @@
         "build-css": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx ts-node ./scripts/compile-global-css.ts {projectRoot} taiga-ui-theme.less",
+                "command": "npx lessc --include-path=node_modules {projectRoot}/taiga-ui-theme.less dist/{projectName}/taiga-ui-theme.css",
                 "forwardAllArgs": false
             },
             "outputs": ["{workspaceRoot}/dist/{projectName}/taiga-ui-theme.css"]

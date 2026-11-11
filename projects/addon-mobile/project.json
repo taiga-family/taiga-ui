@@ -24,10 +24,10 @@
         "build-css": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx ts-node ./scripts/compile-global-css.ts {projectRoot} styles/taiga-ui-mobile.less",
+                "command": "npx lessc --include-path=node_modules {projectRoot}/styles/taiga-ui-mobile.less dist/{projectName}/styles/taiga-ui-mobile.css",
                 "forwardAllArgs": false
             },
-            "outputs": ["{workspaceRoot}/dist/addon-mobile/styles/taiga-ui-mobile.css"]
+            "outputs": ["{workspaceRoot}/dist/{projectName}/styles/taiga-ui-mobile.css"]
         },
         "publish": {
             "dependsOn": [
