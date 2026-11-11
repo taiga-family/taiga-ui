@@ -3,7 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, type Page, test} from '@playwright/test';
 
 const PYTHONS = [
-    'John Cleese',
+    'John Cleese Silly walks',
     'Eric Idle',
     'Michael Palin',
     'Graham Chapman',
@@ -126,7 +126,7 @@ test.describe('Tiles', () => {
                 'Graham Chapman',
                 'Terry Gilliam',
                 'Terry Jones',
-                'John Cleese',
+                'John Cleese Silly walks',
             ]);
     });
 });

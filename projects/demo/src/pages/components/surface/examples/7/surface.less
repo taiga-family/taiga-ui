@@ -29,16 +29,14 @@
     background-image: url('/assets/images/restaurant-2.jpg');
     border-radius: 0;
     padding: 1.25rem;
-    clip-path: inset(0 round 5rem); // for crisp edges of blurred background
+    clip-path: inset(0 round 5rem); /* for crisp edges of blurred background */
 
     &::before {
         backdrop-filter: blur(1rem);
     }
 }
 
-.reviews {
-    // tuiSurface="floating" preset
-}
+/* .reviews uses the tuiSurface="floating" preset. */
 
 .mask {
     background: #333 radial-gradient(circle at 80% 70%, #aff218 -20%, transparent 60%);

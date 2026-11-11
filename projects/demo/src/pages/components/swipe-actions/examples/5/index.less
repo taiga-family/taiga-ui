@@ -1,12 +1,11 @@
-@import '@taiga-ui/styles/utils';
-
 :host {
     display: flex;
 }
 
 .fallback {
-    .center-top();
-
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translate(0, -50%);
     inset-inline-end: 2rem;
 }
 
@@ -22,7 +21,7 @@ button[tuiSwipeAction] {
     border-radius: 100%;
 }
 
-@media @tui-touch {
+@media (hover: none) and (pointer: coarse) {
     .fallback {
         display: none;
     }

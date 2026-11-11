@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 .tiles {
     gap: 1rem;
     grid-auto-rows: minmax(6.25rem, auto);
@@ -18,8 +16,8 @@
 }
 
 .content {
-    .transition(box-shadow);
-
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     padding: 1rem;
     background: var(--tui-background-base);
@@ -44,9 +42,9 @@
 }
 
 .handle {
-    .transition(opacity);
-
     position: absolute;
+    transition-property: opacity;
+    transition-duration: var(--tui-duration);
     inset-inline-end: 0.75rem;
     inset-block-start: 1rem;
     background: var(--tui-background-base);
