@@ -5,14 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 import {TuiMessage, TuiTextarea} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         FormsModule,
         TuiBottomSheet,
         TuiButton,
-        TuiCardLarge,
         TuiMessage,
         TuiScrollbar,
         TuiTextarea,
