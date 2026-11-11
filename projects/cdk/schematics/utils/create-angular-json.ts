@@ -20,6 +20,7 @@ export function createAngularJson({
                 stylesExist
                     ? `"styles": [
                   "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+                  "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
                   "some.style"
                 ]
                 `

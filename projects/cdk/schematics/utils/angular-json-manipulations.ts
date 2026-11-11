@@ -94,9 +94,15 @@ export function addStylesToAngularJson(
 
                 targetOptions.styles = Array.from(new Set(orderList));
             } else {
-                const orderList = [...taigaStyles, ...(styles || [])];
+                const existingStyles = (styles ?? []).filter(
+                    (style) =>
+                        !tuiIsString(style) ||
+                        !taigaStyles.includes(style.replace(/\.less$/, '.css')),
+                );
 
-                targetOptions.styles = Array.from(new Set(orderList));
+                targetOptions.styles = Array.from(
+                    new Set([...taigaStyles, ...existingStyles]),
+                );
             }
 
             if (tree && stylesToReplace) {
