@@ -1,10 +1,83 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, type Page, test} from '@playwright/test';
+import {TUI_PLAYWRIGHT_MOBILE} from 'projects/demo-playwright/playwright.options';
 
 type BoundingBox = NonNullable<Awaited<ReturnType<Locator['boundingBox']>>>;
 
 test.describe('LineChart', () => {
+    test.describe('Keyboard navigation', () => {
+        test.beforeEach(async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.LineChart}#hint`);
+            await page.mouse.move(0, 0);
+            await page
+                .locator('#hint')
+                .getByRole('button', {name: 'Fullscreen', exact: true})
+                .focus();
+            await page.keyboard.press('Tab');
+            await expect(page.locator('tui-hint')).toContainText('Vertical: 50');
+            await expect(page.locator('tui-hint')).toContainText('Horizontal: 50');
+        });
+
+        test('Tab shows the next point', async ({page}) => {
+            await page.keyboard.press('Tab');
+            await expect(page.locator('tui-hint')).toContainText('Vertical: 75');
+            await expect(page.locator('tui-hint')).toContainText('Horizontal: 100');
+        });
+
+        test('Shift+Tab shows the previous point', async ({page}) => {
+            await page.keyboard.press('Tab');
+            await expect(page.locator('tui-hint')).toContainText('Vertical: 75');
+            await page.keyboard.press('Shift+Tab');
+            await expect(page.locator('tui-hint')).toContainText('Vertical: 50');
+        });
+
+        test('Escape closes the hint', async ({page}) => {
+            await page.keyboard.press('Escape');
+            await expect(page.locator('tui-hint')).toBeHidden();
+        });
+
+        test('leaving the chart closes the hint', async ({page}) => {
+            await page.keyboard.press('Shift+Tab');
+            await expect(page.locator('tui-hint')).toBeHidden();
+        });
+    });
+
+    test('keeps the hint open when the mouse enters it', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.LineChart}#hint`);
+        await page
+            .locator('#hint tui-axes')
+            .first()
+            .hover({position: {x: 300, y: 100}});
+
+        const hint = page.locator('tui-hint');
+
+        await expect(hint).toContainText('Vertical: 190');
+        await hint.hover();
+        await expect(page.locator('#hint')).toHaveScreenshot('hovering-hint.png');
+        await expect(hint).toContainText('Vertical: 190');
+    });
+
+    test.describe('Touch', () => {
+        test.use({
+            ...TUI_PLAYWRIGHT_MOBILE,
+            isMobile: true,
+            hasTouch: true,
+        });
+
+        test('a second tap closes the hint', async ({page, browserName}) => {
+            test.skip(browserName !== 'chromium', 'Chrome touch emulation');
+            await tuiGoto(page, `${DemoRoute.LineChart}#hint`);
+
+            const chart = page.locator('#hint tui-axes').first();
+
+            await chart.tap({position: {x: 200, y: 100}});
+            await expect(page.locator('tui-hint')).toContainText('Vertical: 150');
+            await chart.tap({position: {x: 200, y: 100}});
+            await expect(page.locator('tui-hint')).toBeHidden();
+        });
+    });
+
     test('should not show hint', async ({page}) => {
         await tuiGoto(page, DemoRoute.LineChart);
         const example = new TuiDocumentationPagePO(page).getExample('#line');
@@ -53,7 +126,7 @@ test.describe('LineChart', () => {
                 hint: (await hint.boundingBox())!,
                 point: (await demo
                     .locator('tui-line-chart .t-host')
-                    .nth(3)
+                    .first()
                     .boundingBox())!,
             };
         };

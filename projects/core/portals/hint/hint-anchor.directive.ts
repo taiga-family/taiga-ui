@@ -1,8 +1,10 @@
-import {Directive, ElementRef, InjectionToken} from '@angular/core';
+import {computed, Directive, ElementRef, inject, InjectionToken} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
+
+import {TuiHintHost} from './hint-host.directive';
 
 export const TUI_HINT_ANCHOR = new InjectionToken<ElementRef<HTMLElement>>(
     ngDevMode ? 'TUI_HINT_ANCHOR' : '',
@@ -14,13 +16,18 @@ export const TUI_HINT_ANCHOR = new InjectionToken<ElementRef<HTMLElement>>(
         tuiProvide(TUI_HINT_ANCHOR, ElementRef),
     ],
     host: {
-        '[attr.data-tui-anchor]': 'anchor',
-        '[style.anchor-name]': 'anchor',
+        '[attr.data-tui-anchor]': 'anchor()',
+        '[style.anchor-name]': 'anchor()',
     },
 })
 export class TuiHintAnchor extends TuiRectAccessor {
+    private readonly id = `--${tuiGenerateId()}`;
+    private readonly external = inject(TuiHintHost, {self: true, optional: true});
+
     protected readonly el = tuiInjectElement();
-    protected readonly anchor = `--${tuiGenerateId()}`;
+    protected readonly anchor = computed((host = this.external?.tuiHintHost()) =>
+        host && host !== this.el ? null : this.id,
+    );
 
     public readonly type = 'hint';
 

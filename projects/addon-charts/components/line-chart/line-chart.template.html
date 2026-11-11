@@ -54,8 +54,10 @@
         @if ($count > 1 || dots()) {
             <div
                 class="t-column"
+                [attr.tabindex]="isFocusable ? 0 : null"
                 [class.t-column_hint_hovered]="drivers()[$index] | async"
                 [class.t-column_hovered]="hovered() === $index"
+                [id]="getHintId($index)"
                 [style.inset-inline-start.%]="getLeft(getX($index))"
                 [style.width.%]="getWidth($index)"
                 [tuiHint]="hint()"
@@ -63,47 +65,47 @@
                 [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
                 [tuiHintDirection]="hintOptions?.direction() ?? 'top'"
                 [tuiHintHost]="hintHost"
+                (focus)="onMouseEnter($index)"
                 (mouseenter)="onMouseEnter($index)"
-            >
-                <div
-                    class="t-line t-line_vertical"
-                    [style.inset-inline-start.%]="getOffset($index)"
-                ></div>
-                <div
-                    #hintHost
-                    class="t-host"
-                    [id]="getHintId($index)"
-                    [style.inset-block-end.%]="getBottom(point[1])"
-                    [style.inset-inline-start.%]="getOffset($index)"
-                    [tabIndex]="isFocusable ? 0 : -1"
-                ></div>
-            </div>
-        }
-        @if (isFocusable) {
-            <div
-                class="t-line t-line_horizontal"
-                [style.inset-block-end.%]="getBottom(point[1])"
             ></div>
         }
     }
+    @let anchor = hintPoint();
+    <div
+        class="t-line t-line_vertical"
+        [style.inset-inline-start.%]="anchor && getLeft(anchor[0])"
+    ></div>
+    @if (isFocusable) {
+        <div
+            class="t-line t-line_horizontal"
+            [style.inset-block-end.%]="anchor && getBottom(anchor[1])"
+        ></div>
+    }
+    <div
+        #hintHost
+        class="t-host"
+        [style.inset-block-end.%]="anchor && getBottom(anchor[1])"
+        [style.inset-inline-start.%]="anchor && getLeft(anchor[0])"
+    ></div>
 }
-@if (getHovered(hovered()); as point) {
-    @let xString = xStringify();
-    @let yString = yStringify();
-    @if (xString) {
-        <div
-            class="t-hint t-hint_x"
-            [style.inset-inline-start.%]="getLeft(point[0])"
-        >
-            {{ xString(point[0]) }}
-        </div>
-    }
-    @if (yString) {
-        <div
-            class="t-hint t-hint_y"
-            [style.inset-block-end.%]="getBottom(point[1])"
-        >
-            {{ yString(point[1]) }}
-        </div>
-    }
+@let point = hoveredPoint();
+@let xString = xStringify();
+@let yString = yStringify();
+@if (xString) {
+    <div
+        class="t-hint t-hint_x"
+        [hidden]="!point"
+        [style.inset-inline-start.%]="point && getLeft(point[0])"
+    >
+        {{ point && xString(point[0]) }}
+    </div>
+}
+@if (yString) {
+    <div
+        class="t-hint t-hint_y"
+        [hidden]="!point"
+        [style.inset-block-end.%]="point && getBottom(point[1])"
+    >
+        {{ point && yString(point[1]) }}
+    </div>
 }

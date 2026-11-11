@@ -1,4 +1,4 @@
-import {Directive, effect, type ElementRef, input} from '@angular/core';
+import {Directive, effect, type ElementRef, forwardRef, input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -8,17 +8,26 @@ import {TUI_HINT_ANCHOR} from './hint-anchor.directive';
 
 @Directive({
     selector: '[tuiHint][tuiHintHost]',
-    providers: [tuiAsRectAccessor(TuiHintHost), tuiProvide(TUI_HINT_ANCHOR, TuiHintHost)],
+    providers: [
+        tuiAsRectAccessor(TuiHintHost),
+        tuiProvide(
+            forwardRef(() => TUI_HINT_ANCHOR),
+            TuiHintHost,
+        ),
+    ],
 })
 export class TuiHintHost extends TuiRectAccessor implements ElementRef<HTMLElement> {
+    private readonly id = `--${tuiGenerateId()}`;
+
     public readonly tuiHintHost = input<HTMLElement>();
     public readonly type = 'hint';
     public nativeElement = tuiInjectElement();
 
     protected readonly sync = effect(() => {
-        const anchorName = `--${tuiGenerateId()}`;
-
         this.nativeElement = this.tuiHintHost() || this.nativeElement;
+
+        const anchorName = this.nativeElement.dataset.tuiAnchor || this.id;
+
         this.nativeElement.setAttribute('data-tui-anchor', anchorName);
         this.nativeElement.style.setProperty('anchor-name', anchorName);
     });
