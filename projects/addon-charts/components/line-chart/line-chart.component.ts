@@ -59,7 +59,7 @@ export class TuiLineChart {
     );
 
     protected readonly hintPoint = linkedSignal<TuiPoint | null, TuiPoint | null>({
-        source: () => this.hoveredPoint(),
+        source: this.hoveredPoint,
         computation: (hovered, previous) => hovered ?? previous?.value ?? null,
     });
 
