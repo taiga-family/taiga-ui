@@ -23,7 +23,7 @@ test.describe('LineChart', () => {
 
         await expect.soft(example).toHaveScreenshot('02-line-chart.png');
 
-        await tabs.filter({hasText: 'HTML'}).click();
+        await tabs.filter({hasText: 'Layout'}).click();
         await page.waitForTimeout(1000);
         await tabs.filter({hasText: 'Preview'}).click();
 

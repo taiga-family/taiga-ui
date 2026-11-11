@@ -22,6 +22,7 @@ export type TuiRawLoaderContent = Promise<{readonly default: unknown}> | string;
 
 export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
     TS: 'TypeScript',
+    CSS: 'CSS',
     LESS: 'LESS',
     HTML: 'HTML',
 } as const;

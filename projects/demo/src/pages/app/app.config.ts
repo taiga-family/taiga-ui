@@ -34,6 +34,7 @@ import {
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     TUI_DOC_VERSION,
+    TUI_EXAMPLE_PRIMARY_FILE_NAME,
     tuiDocExampleOptionsProvider,
     tuiDocIconsProvider,
     type TuiDocSourceCodePathOptions,
@@ -236,7 +237,15 @@ export const config: ApplicationConfig = {
                 }
             },
         },
-        tuiDocExampleOptionsProvider({fullsize: false}),
+        tuiDocExampleOptionsProvider({
+            fullsize: false,
+            tabTitles: new Map([
+                [TUI_EXAMPLE_PRIMARY_FILE_NAME.CSS, 'Styles'],
+                [TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML, 'Layout'],
+                [TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS, 'Styles'],
+                [TUI_EXAMPLE_PRIMARY_FILE_NAME.TS, 'Code'],
+            ]),
+        }),
         metrikaOptionsProvider({id: environment.ym}),
         tuiLanguageSwitcher(async (language: TuiLanguageName): Promise<unknown> => {
             switch (language) {

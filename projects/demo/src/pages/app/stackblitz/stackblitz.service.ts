@@ -12,7 +12,6 @@ import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './ut
 const APP_COMP_META = {
     SELECTOR: 'app',
     TEMPLATE_URL: './app.html',
-    STYLE_URL: './app.less',
     CLASS_NAME: 'App',
 } as const;
 
@@ -32,6 +31,8 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
+        const styleFile = content.CSS ? 'app.css' : 'app.less';
+
         stackblitz.openProject(
             {
                 ...(await this.getStackblitzProjectConfig()),
@@ -40,12 +41,20 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 files: {
                     ...(await this.getBaseAngularProjectFiles()),
                     ...prepareSupportFiles(getSupportFiles(content)),
-                    [appPrefix`app.ts`]: this.prepareAppComponent(content.TypeScript),
+                    [appPrefix`app.ts`]: this.prepareAppComponent(
+                        content.TypeScript,
+                        styleFile,
+                    ),
                     [appPrefix`app.html`]: content.HTML,
-                    [appPrefix`app.less`]: prepareLess(content.LESS || ''),
+                    [appPrefix`${styleFile}`]:
+                        content.CSS || prepareLess(content.LESS || ''),
                 },
             },
-            {openFile: ['html', 'less', 'ts'].map((x) => appPrefix`app.${x}`).join(',')},
+            {
+                openFile: ['app.html', styleFile, 'app.ts']
+                    .map((file) => appPrefix`${file}`)
+                    .join(','),
+            },
         );
     }
 
@@ -90,7 +99,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         };
     }
 
-    private prepareAppComponent(file: string): string {
+    private prepareAppComponent(file: string, styleFile: string): string {
         const parts = file.split(/(@Component)/i);
         const i = parts.findIndex((x) => x.includes('export default class'));
         const component = i > 0 ? parts.slice(i - 1).join('') : file;
@@ -99,7 +108,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
-        appCompTs.styleUrl = APP_COMP_META.STYLE_URL;
+        appCompTs.styleUrl = `./${styleFile}`;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
         appCompTs.defaultExport = false;
 
