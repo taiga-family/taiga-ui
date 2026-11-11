@@ -1,0 +1,9 @@
+```html
+<input
+  aria-label="Volume"
+  step="10"
+  tuiSlider
+  type="range"
+  [formField]="volume"
+/>
+```

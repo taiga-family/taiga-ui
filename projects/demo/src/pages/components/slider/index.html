@@ -71,6 +71,31 @@
                 </ng-template>
             </tui-doc-example>
         }
+
+        <tui-doc-example
+            heading="Signal Forms"
+            [content]="signalForms"
+            [description]="signalFormsDescription"
+            [preview]="false"
+        />
+        <ng-template #signalFormsDescription>
+            With
+            <code>[formField]</code>
+            (Angular 22+), define the slider limits with
+            <code>min()</code>
+            and
+            <code>max()</code>
+            in the
+            <a
+                href="https://angular.dev/guide/forms/signals/form-logic#associate-data-with-a-field-using-metadata"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                form schema
+            </a>
+            . Angular applies these limits to the native range input.
+        </ng-template>
     </ng-template>
 
     <ng-template pageTab>
@@ -80,8 +105,8 @@
                     tuiSlider
                     type="range"
                     [formControl]="control"
-                    [maxValue]="max"
-                    [minValue]="min"
+                    [max]="max"
+                    [min]="min"
                     [segments]="segments"
                     [step]="step"
                     [style.--tui-thumb-size.px]="thumbSize"
@@ -100,7 +125,7 @@
                 )
             </tr>
             <tr
-                name="[maxValue]"
+                name="[max]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="max"
@@ -118,7 +143,7 @@
                 <code>&lt;input type='range' /&gt;</code>
             </tr>
             <tr
-                name="[minValue]"
+                name="[min]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="min"
