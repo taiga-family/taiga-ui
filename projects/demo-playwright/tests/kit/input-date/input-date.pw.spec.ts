@@ -19,20 +19,17 @@ test.describe('InputDate', () => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test('Actual min/max in calendar', async () => {
+        test('Actual min/max in calendar', async ({page}) => {
             const example = documentationPage.getExample('#basic');
+            const inputDate = new TuiInputDateEO(page, example);
 
-            const inputDate = new TuiInputDateEO(
-                example.locator('tui-textfield:has(input[tuiInputDate])'),
-            );
-
-            await inputDate.textfield.click();
+            await inputDate.input.click();
 
             await expect
-                .soft(inputDate.textfield)
+                .soft(inputDate.input)
                 .toHaveScreenshot('05-input-actual-min-max.png');
             await expect
-                .soft(inputDate.calendar)
+                .soft(inputDate.calendar.host)
                 .toHaveScreenshot('05-calendar-actual-min-max.png');
         });
 
@@ -41,19 +38,21 @@ test.describe('InputDate', () => {
         }) => {
             const example = documentationPage.getExample('#validation');
 
-            const input = new TuiInputDateEO(
-                example.locator('tui-textfield:has(input[formControlName="optional"])'),
+            const inputDate = new TuiInputDateEO(
+                page,
+                example,
+                ':has(input[formControlName="optional"])',
             );
 
             await example.scrollIntoViewIfNeeded();
-            await input.textfield.click();
+            await inputDate.input.click();
             await page.keyboard.type('01.');
-            await input.textfield.blur();
+            await inputDate.input.blur();
             await expect.soft(example).toHaveScreenshot('06-input-with-error.png');
 
-            await input.textfield.click();
-            await input.textfield.clear();
-            await input.textfield.blur();
+            await inputDate.input.click();
+            await inputDate.input.clear();
+            await inputDate.input.blur();
             await expect.soft(example).toHaveScreenshot('06-input-without-error.png');
         });
     });
@@ -74,9 +73,7 @@ test.describe('InputDate', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            inputDate = new TuiInputDateEO(
-                example.locator('tui-textfield:has(input[tuiInputDate])'),
-            );
+            inputDate = new TuiInputDateEO(page, example);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -86,7 +83,7 @@ test.describe('InputDate', () => {
                     `${DemoRoute.InputDate}/API?tuiTextfieldSize=${size}`,
                 );
 
-                await inputDate.textfield.click();
+                await inputDate.input.click();
                 await documentationPage.prepareBeforeScreenshot();
 
                 await expect.soft(page).toHaveScreenshot(`02-01-input-date-${size}.png`);
@@ -104,8 +101,8 @@ test.describe('InputDate', () => {
         test('maximum month less than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDate}/API?max$=1`);
 
-            await inputDate.textfield.scrollIntoViewIfNeeded();
-            await inputDate.textfield.click();
+            await inputDate.input.scrollIntoViewIfNeeded();
+            await inputDate.input.click();
             await documentationPage.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('03-input-date.png');
@@ -114,8 +111,8 @@ test.describe('InputDate', () => {
         test('minimum month more than current month', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDate}/API?min$=3`);
 
-            await inputDate.textfield.scrollIntoViewIfNeeded();
-            await inputDate.textfield.click();
+            await inputDate.input.scrollIntoViewIfNeeded();
+            await inputDate.input.click();
             await documentationPage.prepareBeforeScreenshot();
 
             await expect.soft(page).toHaveScreenshot('04-input-date.png');
@@ -124,60 +121,54 @@ test.describe('InputDate', () => {
         test.describe('Invalid date cases', () => {
             test('does not accept day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDate}/API`);
-                await inputDate.textfield.scrollIntoViewIfNeeded();
-                await inputDate.textfield.focus();
+                await inputDate.input.scrollIntoViewIfNeeded();
+                await inputDate.input.focus();
                 await page.keyboard.type('35');
 
-                await expect(inputDate.textfield).toHaveValue('03.05');
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveValue('03.05');
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionStart',
                     '03.05'.length,
                 );
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionEnd',
                     '03.05'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('05-input-date.png');
+                await expect.soft(inputDate.input).toHaveScreenshot('05-input-date.png');
             });
 
             test('does not accept month > 12', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDate}/API`);
-                await inputDate.textfield.scrollIntoViewIfNeeded();
-                await inputDate.textfield.focus();
+                await inputDate.input.scrollIntoViewIfNeeded();
+                await inputDate.input.focus();
                 await page.keyboard.type('1715');
 
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionStart',
                     '17.1'.length,
                 );
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionEnd',
                     '17.1'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('06-input-date.png');
+                await expect.soft(inputDate.input).toHaveScreenshot('06-input-date.png');
             });
 
             test('Type 999999 => 09.09.9999', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDate}/API`);
-                await inputDate.textfield.scrollIntoViewIfNeeded();
-                await inputDate.textfield.focus();
+                await inputDate.input.scrollIntoViewIfNeeded();
+                await inputDate.input.focus();
                 await page.keyboard.type('999999');
 
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionStart',
                     '09.09.9999'.length,
                 );
-                await expect(inputDate.textfield).toHaveJSProperty(
+                await expect(inputDate.input).toHaveJSProperty(
                     'selectionEnd',
                     '09.09.9999'.length,
                 );
-                await expect
-                    .soft(inputDate.textfield)
-                    .toHaveScreenshot('07-input-date.png');
+                await expect.soft(inputDate.input).toHaveScreenshot('07-input-date.png');
             });
         });
     });

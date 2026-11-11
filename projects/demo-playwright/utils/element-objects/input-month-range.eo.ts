@@ -1,7 +1,15 @@
-import {type Locator} from '@playwright/test';
+import {TUI_INPUT_MONTH_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputMonthRangeEO {
-    public readonly textfield = this.host.getByRole('combobox');
+import {TuiBaseEO} from './base.eo';
 
-    constructor(private readonly host: Locator) {}
+/**
+ * Element Object for a TuiInputMonthRange component.
+ *
+ * Exposes the inner text input of the month range field.
+ */
+export class TuiInputMonthRangeEO extends TuiBaseEO {
+    protected override readonly hostSelector = TUI_INPUT_MONTH_RANGE_LOCATORS.HOST;
+
+    /** Inner text input of the month range field. */
+    public readonly input = this.host.locator(TUI_INPUT_MONTH_RANGE_LOCATORS.INPUT);
 }

@@ -6,7 +6,6 @@ import {
     type TuiTimeLike,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -25,68 +24,63 @@ test.describe('InputTime', () => {
 
             example = documentation.demo;
             controlValue = documentation.value;
-            inputTime = new TuiInputTimeEO(
-                example.locator('tui-textfield:has([tuiInputTime])'),
-            );
+            inputTime = new TuiInputTimeEO(page, example);
         });
 
         test.describe('Basic typing from keyboard', () => {
             test.describe('HH:MM', () => {
                 test.beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
-                    await inputTime.textfield.clear();
+                    await inputTime.input.clear();
 
-                    await expect(inputTime.textfield).toHaveValue('');
+                    await expect(inputTime.input).toHaveValue('');
                 });
 
                 test('3 => 03', async () => {
-                    await inputTime.textfield.pressSequentially('3');
+                    await inputTime.input.pressSequentially('3');
 
-                    await expect(inputTime.textfield).toHaveValue('03');
-                    await expect(inputTime.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 2);
+                    await expect(inputTime.input).toHaveValue('03');
+                    await expect(inputTime.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputTime.input).toHaveJSProperty('selectionEnd', 2);
                 });
 
                 test('1111 => 11:11', async () => {
-                    await inputTime.textfield.pressSequentially('1111');
+                    await inputTime.input.pressSequentially('1111');
 
-                    await expect(inputTime.textfield).toHaveValue('11:11');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('11:11');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '11:11'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '11:11'.length,
                     );
                 });
 
                 test('0130 => 01:30', async () => {
-                    await inputTime.textfield.pressSequentially('0130');
+                    await inputTime.input.pressSequentially('0130');
 
-                    await expect(inputTime.textfield).toHaveValue('01:30');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('01:30');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '01:30'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '01:30'.length,
                     );
                 });
 
                 test('99 => 09:09', async () => {
-                    await inputTime.textfield.pressSequentially('99');
+                    await inputTime.input.pressSequentially('99');
 
-                    await expect(inputTime.textfield).toHaveValue('09:09');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('09:09');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '09:09'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '09:09'.length,
                     );
@@ -96,56 +90,50 @@ test.describe('InputTime', () => {
             test.describe('HH:MM AA', () => {
                 test.beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM%20AA`);
-                    await inputTime.textfield.clear();
+                    await inputTime.input.clear();
 
-                    await expect(inputTime.textfield).toHaveValue('');
+                    await expect(inputTime.input).toHaveValue('');
                 });
 
                 test('2 => 02', async () => {
-                    await inputTime.textfield.pressSequentially('2');
+                    await inputTime.input.pressSequentially('2');
 
-                    await expect(inputTime.textfield).toHaveValue('02');
-                    await expect(inputTime.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        2,
-                    );
-                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 2);
+                    await expect(inputTime.input).toHaveValue('02');
+                    await expect(inputTime.input).toHaveJSProperty('selectionStart', 2);
+                    await expect(inputTime.input).toHaveJSProperty('selectionEnd', 2);
                 });
 
                 test('333a => 03:33 AM', async () => {
-                    await inputTime.textfield.pressSequentially('333a');
+                    await inputTime.input.pressSequentially('333a');
 
-                    await expect(inputTime.textfield).toHaveValue('03:33 AM');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('03:33 AM');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '03:33 AM'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '03:33 AM'.length,
                     );
                 });
 
                 test('00 => 0', async () => {
-                    await inputTime.textfield.pressSequentially('00');
+                    await inputTime.input.pressSequentially('00');
 
-                    await expect(inputTime.textfield).toHaveValue('0');
-                    await expect(inputTime.textfield).toHaveJSProperty(
-                        'selectionStart',
-                        1,
-                    );
-                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 1);
+                    await expect(inputTime.input).toHaveValue('0');
+                    await expect(inputTime.input).toHaveJSProperty('selectionStart', 1);
+                    await expect(inputTime.input).toHaveJSProperty('selectionEnd', 1);
                 });
 
                 test('1234p => 12:34 PM', async () => {
-                    await inputTime.textfield.pressSequentially('1234p');
+                    await inputTime.input.pressSequentially('1234p');
 
-                    await expect(inputTime.textfield).toHaveValue('12:34 PM');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('12:34 PM');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '12:34 PM'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '12:34 PM'.length,
                     );
@@ -160,27 +148,25 @@ test.describe('InputTime', () => {
                     '#strict-mode',
                 );
 
-                const inputTime = new TuiInputTimeEO(
-                    example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
-                );
+                const inputTime = new TuiInputTimeEO(page, example);
 
-                await inputTime.textfield.click();
-                await inputTime.textfield.clear();
-                await inputTime.textfield.fill('07:55');
+                await inputTime.input.click();
+                await inputTime.input.clear();
+                await inputTime.input.fill('07:55');
 
-                await expect(inputTime.textfield).toHaveValue('10:00');
+                await expect(inputTime.input).toHaveValue('10:00');
             });
         });
 
         test.describe('zero padding on blur', () => {
             const check = (typedCharacters: string, expectedFinalValue: string): void => {
                 test(`Type ${typedCharacters} => Blur => ${expectedFinalValue}`, async () => {
-                    await expect(inputTime.textfield).toHaveValue('');
+                    await expect(inputTime.input).toHaveValue('');
 
-                    await inputTime.textfield.pressSequentially(typedCharacters);
-                    await inputTime.textfield.blur();
+                    await inputTime.input.pressSequentially(typedCharacters);
+                    await inputTime.input.blur();
 
-                    await expect(inputTime.textfield).toHaveValue(expectedFinalValue);
+                    await expect(inputTime.input).toHaveValue(expectedFinalValue);
                 });
             };
 
@@ -255,9 +241,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 99 => new TuiTime(0, 9, 9)', async () => {
-                    await inputTime.textfield.pressSequentially('99');
+                    await inputTime.input.pressSequentially('99');
 
-                    await expect(inputTime.textfield).toHaveValue('09:09');
+                    await expect(inputTime.input).toHaveValue('09:09');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -269,9 +255,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 5959 => new TuiTime(0, 59, 59)', async () => {
-                    await inputTime.textfield.pressSequentially('5959');
+                    await inputTime.input.pressSequentially('5959');
 
-                    await expect(inputTime.textfield).toHaveValue('59:59');
+                    await expect(inputTime.input).toHaveValue('59:59');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -292,9 +278,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 99123 => new TuiTime(0, 9, 9, 123)', async () => {
-                    await inputTime.textfield.pressSequentially('99123');
+                    await inputTime.input.pressSequentially('99123');
 
-                    await expect(inputTime.textfield).toHaveValue('09:09.123');
+                    await expect(inputTime.input).toHaveValue('09:09.123');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -306,9 +292,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 5959999 => new TuiTime(0, 59, 59, 999)', async () => {
-                    await inputTime.textfield.pressSequentially('5959999');
+                    await inputTime.input.pressSequentially('5959999');
 
-                    await expect(inputTime.textfield).toHaveValue('59:59.999');
+                    await expect(inputTime.input).toHaveValue('59:59.999');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -329,9 +315,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 9999 => new TuiTime(0, 0, 9, 999)', async () => {
-                    await inputTime.textfield.pressSequentially('9999');
+                    await inputTime.input.pressSequentially('9999');
 
-                    await expect(inputTime.textfield).toHaveValue('09.999');
+                    await expect(inputTime.input).toHaveValue('09.999');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -343,9 +329,9 @@ test.describe('InputTime', () => {
                 });
 
                 test('Type 59999 => new TuiTime(0, 0, 59, 999)', async () => {
-                    await inputTime.textfield.pressSequentially('59999');
+                    await inputTime.input.pressSequentially('59999');
 
-                    await expect(inputTime.textfield).toHaveValue('59.999');
+                    await expect(inputTime.input).toHaveValue('59.999');
                     await expect(controlValue).toContainText(
                         stringify({
                             hours: 0,
@@ -368,10 +354,10 @@ test.describe('InputTime', () => {
                 });
 
                 test('333a => 03:33 a.m.', async () => {
-                    await inputTime.textfield.pressSequentially('333a');
+                    await inputTime.input.pressSequentially('333a');
 
-                    await expect(inputTime.textfield).toHaveValue('03:33 a.m.');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('03:33 a.m.');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '03:33 a.m.'.length,
                     );
@@ -381,52 +367,46 @@ test.describe('InputTime', () => {
                 });
 
                 test('333p => 03:33 p.m.', async () => {
-                    await inputTime.textfield.pressSequentially('333p');
+                    await inputTime.input.pressSequentially('333p');
 
-                    await expect(inputTime.textfield).toHaveValue('03:33 p.m.');
+                    await expect(inputTime.input).toHaveValue('03:33 p.m.');
                     await expect(controlValue).toContainText(
                         stringify({hours: 15, minutes: 33, seconds: 0, ms: 0}),
                     );
                 });
 
                 test('1234a => 12:34 a.m.', async () => {
-                    await inputTime.textfield.pressSequentially('1234a');
+                    await inputTime.input.pressSequentially('1234a');
 
-                    await expect(inputTime.textfield).toHaveValue('12:34 a.m.');
+                    await expect(inputTime.input).toHaveValue('12:34 a.m.');
                     await expect(controlValue).toContainText(
                         stringify({hours: 0, minutes: 34, seconds: 0, ms: 0}),
                     );
                 });
 
                 test('control value is null until day period is typed', async () => {
-                    await inputTime.textfield.pressSequentially('0333');
+                    await inputTime.input.pressSequentially('0333');
 
-                    await expect(inputTime.textfield).toHaveValue('03:33');
+                    await expect(inputTime.input).toHaveValue('03:33');
                     await expect(controlValue).toContainText('"value": null');
                 });
 
                 test('Type 0 => Blur => 12:00 a.m.', async () => {
-                    await inputTime.textfield.pressSequentially('0');
-                    await inputTime.textfield.blur();
+                    await inputTime.input.pressSequentially('0');
+                    await inputTime.input.blur();
 
-                    await expect(inputTime.textfield).toHaveValue('12:00 a.m.');
+                    await expect(inputTime.input).toHaveValue('12:00 a.m.');
                 });
 
                 test('switches inputmode to text only for day period part', async () => {
-                    await inputTime.textfield.pressSequentially('03');
+                    await inputTime.input.pressSequentially('03');
 
-                    await expect(inputTime.textfield).toHaveAttribute(
-                        'inputmode',
-                        'numeric',
-                    );
+                    await expect(inputTime.input).toHaveAttribute('inputmode', 'numeric');
 
-                    await inputTime.textfield.pressSequentially('33');
-                    await expect(inputTime.textfield).toHaveValue('03:33');
+                    await inputTime.input.pressSequentially('33');
+                    await expect(inputTime.input).toHaveValue('03:33');
 
-                    await expect(inputTime.textfield).toHaveAttribute(
-                        'inputmode',
-                        'text',
-                    );
+                    await expect(inputTime.input).toHaveAttribute('inputmode', 'text');
                 });
             });
 
@@ -436,9 +416,9 @@ test.describe('InputTime', () => {
                     `${DemoRoute.InputTime}/API?mode=HH:MM&dayPeriod$=3&sandboxExpanded=true`,
                 );
 
-                await inputTime.textfield.pressSequentially('0330μ');
+                await inputTime.input.pressSequentially('0330μ');
 
-                await expect(inputTime.textfield).toHaveValue('03:30 μ.μ.');
+                await expect(inputTime.input).toHaveValue('03:30 μ.μ.');
                 await expect(controlValue).toContainText(
                     stringify({hours: 15, minutes: 30, seconds: 0, ms: 0}),
                 );
@@ -455,14 +435,14 @@ test.describe('InputTime', () => {
                 });
 
                 test('180505766 => 18 h 05 min 05,766', async () => {
-                    await inputTime.textfield.pressSequentially('180505766');
+                    await inputTime.input.pressSequentially('180505766');
 
-                    await expect(inputTime.textfield).toHaveValue('18 h 05 min 05,766');
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveValue('18 h 05 min 05,766');
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionStart',
                         '18 h 05 min 05,766'.length,
                     );
-                    await expect(inputTime.textfield).toHaveJSProperty(
+                    await expect(inputTime.input).toHaveJSProperty(
                         'selectionEnd',
                         '18 h 05 min 05,766'.length,
                     );
@@ -472,32 +452,32 @@ test.describe('InputTime', () => {
                 });
 
                 test('99 => 09 h 09', async () => {
-                    await inputTime.textfield.pressSequentially('99');
+                    await inputTime.input.pressSequentially('99');
 
-                    await expect(inputTime.textfield).toHaveValue('09 h 09');
+                    await expect(inputTime.input).toHaveValue('09 h 09');
                 });
 
                 test('control value is null until time is complete', async () => {
-                    await inputTime.textfield.pressSequentially('1805057');
+                    await inputTime.input.pressSequentially('1805057');
 
-                    await expect(inputTime.textfield).toHaveValue('18 h 05 min 05,7');
+                    await expect(inputTime.input).toHaveValue('18 h 05 min 05,7');
                     await expect(controlValue).toContainText('"value": null');
                 });
 
                 test('Type 1 => Blur => 01 h 00 min 00,000', async () => {
-                    await inputTime.textfield.pressSequentially('1');
-                    await inputTime.textfield.blur();
+                    await inputTime.input.pressSequentially('1');
+                    await inputTime.input.blur();
 
-                    await expect(inputTime.textfield).toHaveValue('01 h 00 min 00,000');
+                    await expect(inputTime.input).toHaveValue('01 h 00 min 00,000');
                     await expect(controlValue).toContainText(
                         stringify({hours: 1, minutes: 0, seconds: 0, ms: 0}),
                     );
                 });
 
                 test('filler', async () => {
-                    await inputTime.textfield.pressSequentially('18');
+                    await inputTime.input.pressSequentially('18');
 
-                    await expect(inputTime.textfield).toHaveValue('18');
+                    await expect(inputTime.input).toHaveValue('18');
                     await expect(inputTime.filler).toHaveValue('18 h MM min SS,MSS');
                     await expect
                         .soft(inputTime.host)
@@ -511,9 +491,9 @@ test.describe('InputTime', () => {
                     `${DemoRoute.InputTime}/API?mode=HH:MM&separators$=1&dayPeriod$=2&sandboxExpanded=true`,
                 );
 
-                await inputTime.textfield.pressSequentially('0330p');
+                await inputTime.input.pressSequentially('0330p');
 
-                await expect(inputTime.textfield).toHaveValue('03h30 p.m.');
+                await expect(inputTime.input).toHaveValue('03h30 p.m.');
                 await expect(controlValue).toContainText(
                     stringify({hours: 15, minutes: 30, seconds: 0, ms: 0}),
                 );

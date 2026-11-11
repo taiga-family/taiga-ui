@@ -13,7 +13,7 @@ describe('InputChip with Datalist (a.k.a MultiSelect) + FilterByInput pipe', () 
         await tuiGoto(page, DemoRoute.FilterByInput);
 
         example = new TuiDocumentationPagePO(page).getExample('#multiselect');
-        inputChip = new TuiInputChipEO(example);
+        inputChip = new TuiInputChipEO(page, example);
     });
 
     test('all items are visible for empty textfield', async () => {

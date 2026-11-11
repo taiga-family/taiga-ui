@@ -1,17 +1,43 @@
-import {type Locator} from '@playwright/test';
-import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
+import {
+    TUI_CALENDAR_LOCATORS,
+    TUI_CALENDAR_SHEET_LOCATORS,
+    TUI_INPUT_DATE_TIME_LOCATORS,
+    TUI_TEXTFIELD_LOCATORS,
+} from '@taiga-ui/testing/locators';
 
-export class TuiInputDateTimeEO {
-    public readonly textfield = this.host.getByRole('combobox');
-    public readonly calendar = this.host.page().locator('tui-calendar');
-    public readonly nativePicker = this.host.locator('input[type="datetime-local"]');
+import {TuiBaseEO} from './base.eo';
+
+/**
+ * Element Object for a TuiInputDateTime component.
+ *
+ * Exposes the inner input, native picker, calendar and a helper to select a day
+ * via the attached calendar sheet.
+ */
+export class TuiInputDateTimeEO extends TuiBaseEO {
+    protected override readonly hostSelector = TUI_INPUT_DATE_TIME_LOCATORS.HOST;
+
+    /** Inner text input of the date-time field. */
+    public readonly input = this.host.locator(TUI_INPUT_DATE_TIME_LOCATORS.INPUT);
+
+    /** Placeholder text shown when the field is empty. */
     public readonly filler = this.host.locator(TUI_TEXTFIELD_LOCATORS.FILLER);
 
-    constructor(public readonly host: Locator) {}
+    /** Calendar attached to the field. */
+    public readonly calendar = this.host.page().locator(TUI_CALENDAR_LOCATORS.HOST);
 
+    /** Native date-time picker input. */
+    public readonly nativePicker = this.host.locator(
+        TUI_INPUT_DATE_TIME_LOCATORS.NATIVE_PICKER,
+    );
+
+    /**
+     * Selects a day via the attached calendar sheet.
+     *
+     * @param day Day of the month to select.
+     */
     public async selectDayViaCalendar(day: number): Promise<void> {
         return this.calendar
-            .locator('[automation-id="tui-calendar-sheet__cell"]')
+            .locator(TUI_CALENDAR_SHEET_LOCATORS.CELL)
             .filter({hasText: `${day}`})
             .click();
     }
