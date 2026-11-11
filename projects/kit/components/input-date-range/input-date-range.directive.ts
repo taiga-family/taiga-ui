@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -15,7 +15,10 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
-import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import {
+    TuiCalendarRange,
+    type TuiDayRangePeriod,
+} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
@@ -38,6 +41,41 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     hostDirectives: [TuiWithTextfield, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
+    private selectedItem: TuiDayRangePeriod | null = null;
+
+    protected readonly selectedItemChange = effect((onCleanup) => {
+        const value = this.value();
+        const selectedItem = this.selectedItem;
+        const calendar = this.calendar();
+
+        if (
+            selectedItem &&
+            !value?.daySame(selectedItem.range.dayLimit(this.min(), this.max()))
+        ) {
+            this.selectedItem = null;
+
+            if (calendar instanceof TuiCalendarRange) {
+                if (calendar.item === selectedItem) {
+                    calendar.item = null;
+                }
+
+                if (calendar.selectedActivePeriod === selectedItem) {
+                    calendar.selectedActivePeriod = null;
+                }
+            }
+        }
+
+        if (!(calendar instanceof TuiCalendarRange)) {
+            return;
+        }
+
+        const subscription = calendar.itemChange.subscribe((item) => {
+            this.selectedItem = item;
+        });
+
+        onCleanup(() => subscription.unsubscribe());
+    });
+
     protected readonly identity = inject<TuiItemsHandlers<TuiDayRange>>(
         TUI_ITEMS_HANDLERS,
     ).identityMatcher.set((a, b) => a.daySame(b));
@@ -77,6 +115,56 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
 
         calendar.minLength = this.minLength();
         calendar.maxLength = this.maxLength();
+
+        const selectedItem = this.selectedItem;
+
+        if (!selectedItem) {
+            return;
+        }
+
+        const value = this.value();
+        const min = this.min();
+        const max = this.max();
+
+        if (!value?.daySame(selectedItem.range.dayLimit(min, max))) {
+            this.selectedItem = null;
+
+            if (calendar.item === selectedItem) {
+                calendar.item = null;
+            }
+
+            if (calendar.selectedActivePeriod === selectedItem) {
+                calendar.selectedActivePeriod = null;
+            }
+
+            return;
+        }
+
+        const currentItem = calendar.items.find(
+            (item) =>
+                item === selectedItem ||
+                (item.toString() === selectedItem.toString() &&
+                    item.range.daySame(selectedItem.range)),
+        );
+
+        if (calendar.items.length && !currentItem) {
+            this.selectedItem = null;
+
+            if (calendar.item === selectedItem) {
+                calendar.item = null;
+            }
+
+            if (calendar.selectedActivePeriod === selectedItem) {
+                calendar.selectedActivePeriod = null;
+            }
+        } else if (currentItem && (!calendar.item || calendar.item === selectedItem)) {
+            this.selectedItem = currentItem;
+            calendar.item = currentItem;
+
+            if (calendar.selectedActivePeriod === selectedItem) {
+                calendar.selectedActivePeriod = currentItem;
+            }
+        }
     }
 
     protected override onValueChange(value: string): void {
