@@ -71,8 +71,9 @@ export class TuiHintDirective<C>
         {alias: 'tuiHintVisible'},
     );
 
-    public component: PolymorpheusComponent<unknown> | null =
-        inject(PolymorpheusComponent<unknown>);
+    public component: PolymorpheusComponent<unknown> | null = inject(
+        PolymorpheusComponent<unknown>,
+    );
     public readonly el = tuiInjectElement();
     public readonly type = 'hint';
 
