@@ -26,7 +26,7 @@ export class TuiHintHost extends TuiRectAccessor implements ElementRef<HTMLEleme
     protected readonly sync = effect(() => {
         this.nativeElement = this.tuiHintHost() || this.nativeElement;
 
-        const anchorName = this.nativeElement.dataset.tuiAnchor || this.id;
+        const anchorName = this.nativeElement.dataset?.tuiAnchor || this.id;
 
         this.nativeElement.setAttribute('data-tui-anchor', anchorName);
         this.nativeElement.style.setProperty('anchor-name', anchorName);
