@@ -22,7 +22,7 @@ import {TuiAppBar, TuiFloatingContainer, TuiItemGroup} from '@taiga-ui/layout';
         TuiSheetDialog,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

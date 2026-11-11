@@ -20,7 +20,7 @@ import {TuiCard} from '@taiga-ui/layout';
         TuiTruncate,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -8,7 +8,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

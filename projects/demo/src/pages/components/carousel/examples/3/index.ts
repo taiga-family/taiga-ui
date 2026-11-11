@@ -9,7 +9,7 @@ import {TuiCard} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiCard, TuiCarousel, TuiPager, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

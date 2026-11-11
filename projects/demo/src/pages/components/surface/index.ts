@@ -19,9 +19,6 @@ export default class Example {
         'Spacing compensation',
     ];
 
-    protected readonly layerExample = {
-        'surface.less': import('./examples/7/surface.less'),
-    };
-
+    protected readonly layerExample = {'surface.css': import('./examples/7/surface.css')};
     protected readonly routes = DemoRoute;
 }

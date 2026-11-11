@@ -19,7 +19,7 @@ import {TuiAvatar, TuiBadgeNotification, TuiSensitive, TuiTooltip} from '@taiga-
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

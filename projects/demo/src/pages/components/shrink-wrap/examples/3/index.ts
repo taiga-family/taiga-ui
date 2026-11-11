@@ -7,7 +7,7 @@ import {TuiAvatar, TuiShrinkWrap} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiCell, TuiShrinkWrap, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

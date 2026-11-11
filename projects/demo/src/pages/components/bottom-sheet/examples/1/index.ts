@@ -16,7 +16,7 @@ import {TuiMessage, TuiTextarea} from '@taiga-ui/kit';
         TuiTextarea,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

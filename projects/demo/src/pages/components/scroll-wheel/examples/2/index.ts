@@ -6,7 +6,7 @@ import {TuiScrollWheel} from '@taiga-ui/experimental';
 @Component({
     imports: [TuiScrollWheel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

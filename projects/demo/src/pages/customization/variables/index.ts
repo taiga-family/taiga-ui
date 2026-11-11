@@ -16,7 +16,7 @@ import Example from './examples/1';
 export default class Page {
     protected readonly example1 = {
         HTML: import('./examples/1/index.html'),
-        LESS: import('./examples/1/index.less'),
+        CSS: import('./examples/1/index.css'),
     };
 
     protected readonly vars: Record<string, string> = {

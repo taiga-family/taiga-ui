@@ -9,7 +9,7 @@ import {TuiInputMonth} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputMonth, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

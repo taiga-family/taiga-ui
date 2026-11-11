@@ -19,7 +19,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
         TuiScrollRef,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

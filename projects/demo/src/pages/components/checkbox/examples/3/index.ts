@@ -7,7 +7,7 @@ import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -44,7 +44,7 @@ export class Child {}
 @Component({
     imports: [Child, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'always'})],

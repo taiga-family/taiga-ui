@@ -13,7 +13,7 @@ import {
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],

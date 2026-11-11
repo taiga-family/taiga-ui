@@ -7,7 +7,7 @@ import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

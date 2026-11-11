@@ -32,7 +32,7 @@ import {TuiAvatar, TuiProgress, TuiSegmented, TuiSkeleton} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

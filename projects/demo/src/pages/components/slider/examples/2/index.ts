@@ -6,7 +6,7 @@ import {TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -30,7 +30,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less', './surface.less'],
+    styleUrls: ['./index.css', './surface.css'],
     encapsulation,
     changeDetection,
 })

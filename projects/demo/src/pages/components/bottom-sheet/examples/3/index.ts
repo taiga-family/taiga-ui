@@ -16,7 +16,7 @@ import {TuiAccordion, TuiBlock} from '@taiga-ui/kit';
         TuiCheckbox,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

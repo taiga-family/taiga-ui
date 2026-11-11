@@ -21,7 +21,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [

@@ -11,7 +11,7 @@ import {map, Subject, switchMap, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [TuiAnimated, TuiButton, TuiFile, TuiIcon, TuiSlides, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

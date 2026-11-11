@@ -12,7 +12,7 @@ import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

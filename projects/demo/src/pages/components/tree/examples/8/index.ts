@@ -12,7 +12,7 @@ interface TreeNode {
 @Component({
     imports: [TuiTiles, TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -28,7 +28,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

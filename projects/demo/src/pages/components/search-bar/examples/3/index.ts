@@ -8,7 +8,7 @@ import {TuiButtonX, TuiNotificationService} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButtonX, TuiSearchBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {'[attr.data-platform]': '"ios"'},

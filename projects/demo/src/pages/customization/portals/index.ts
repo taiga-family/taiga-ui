@@ -18,7 +18,7 @@ export default class Page {
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/1/index.html'),
-        LESS: import('./examples/1/index.less'),
+        CSS: import('./examples/1/index.css'),
         'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
         'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
     };

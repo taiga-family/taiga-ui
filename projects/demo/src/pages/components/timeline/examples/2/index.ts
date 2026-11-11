@@ -9,7 +9,7 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiButton, TuiForm, TuiHint, TuiRange, TuiTimeline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

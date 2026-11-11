@@ -25,7 +25,7 @@ const Department = {
 @Component({
     imports: [AsyncPipe, FormsModule, TuiButton, TuiFilter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiHeader, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

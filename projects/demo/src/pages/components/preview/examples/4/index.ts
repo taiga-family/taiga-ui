@@ -19,7 +19,7 @@ import {
 @Component({
     imports: [AsyncPipe, TuiButton, TuiIcon, TuiLoader, TuiPreview],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

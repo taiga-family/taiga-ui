@@ -8,7 +8,7 @@ import {TuiAppearance, TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiAnimated, TuiAppearance, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

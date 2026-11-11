@@ -10,7 +10,7 @@ import {TUI_FILE_OPTIONS, TuiFiles} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAnimated, TuiButtonX, TuiFile, TuiFiles, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

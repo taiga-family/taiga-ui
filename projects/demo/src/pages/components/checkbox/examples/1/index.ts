@@ -8,7 +8,7 @@ import {TuiCheckbox, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -8,7 +8,7 @@ import {TuiFade, TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiFade, TuiInput, TuiInputChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

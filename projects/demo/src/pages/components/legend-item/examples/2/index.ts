@@ -22,7 +22,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
         TuiRingChart,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

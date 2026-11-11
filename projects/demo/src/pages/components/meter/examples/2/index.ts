@@ -8,7 +8,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBadge, TuiHeader, TuiMeter, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

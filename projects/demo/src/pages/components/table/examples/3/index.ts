@@ -47,7 +47,7 @@ interface Item {
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],

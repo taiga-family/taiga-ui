@@ -8,7 +8,7 @@ import {TuiCounter} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, I18nPluralPipe, TuiCounter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

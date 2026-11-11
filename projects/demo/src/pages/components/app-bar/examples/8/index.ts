@@ -16,7 +16,7 @@ import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],

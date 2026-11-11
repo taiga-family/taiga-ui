@@ -17,7 +17,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAxes, TuiInputDateRange, TuiLineDaysChart, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

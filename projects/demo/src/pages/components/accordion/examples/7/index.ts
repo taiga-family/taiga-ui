@@ -13,7 +13,7 @@ interface Item {
 @Component({
     imports: [TuiAccordion, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

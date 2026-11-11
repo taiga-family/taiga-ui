@@ -8,7 +8,7 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [RouterLink, TuiAutoColorPipe, TuiAvatar, TuiHint, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

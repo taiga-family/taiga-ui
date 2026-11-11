@@ -8,7 +8,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiChip, TuiItemGroup, TuiItemsWithMore],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -6,7 +6,7 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taig
 @Component({
     imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

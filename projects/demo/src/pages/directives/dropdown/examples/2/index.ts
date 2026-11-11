@@ -8,7 +8,7 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAvatar, TuiDropdown, TuiLink, TuiSwitch],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

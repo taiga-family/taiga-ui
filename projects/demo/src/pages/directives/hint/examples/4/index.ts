@@ -6,7 +6,7 @@ import {TuiHint} from '@taiga-ui/core';
 @Component({
     imports: [TuiHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

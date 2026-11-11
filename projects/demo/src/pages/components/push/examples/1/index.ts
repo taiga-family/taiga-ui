@@ -7,7 +7,7 @@ import {TuiPush} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiIcon, TuiLink, TuiPush],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

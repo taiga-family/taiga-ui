@@ -9,7 +9,7 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
         <tui-icon [icon]="isExpandable ? '@tui.folder' : '@tui.file'" />
         <ng-container *ngTemplateOutlet="context.template" />
     `,
-    styleUrl: './content.less',
+    styleUrl: './content.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {'(click)': 'onClick()'},
 })

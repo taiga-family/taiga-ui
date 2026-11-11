@@ -7,7 +7,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     selector: 'example-7',
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],

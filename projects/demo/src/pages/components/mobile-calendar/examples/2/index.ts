@@ -8,7 +8,7 @@ import {tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})],

@@ -17,7 +17,7 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
         TuiInput,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

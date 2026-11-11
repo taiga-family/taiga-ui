@@ -7,7 +7,7 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

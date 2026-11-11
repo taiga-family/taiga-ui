@@ -7,7 +7,7 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiCell, TuiDataListWrapper, TuiDropdown, TuiGroup, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

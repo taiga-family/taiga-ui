@@ -15,7 +15,7 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
         TuiTabs,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

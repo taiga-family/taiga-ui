@@ -6,7 +6,7 @@ import {TuiButton, TuiDropdown, TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButton, TuiDropdown, TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

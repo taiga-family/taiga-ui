@@ -6,7 +6,7 @@ import {TuiRingChart} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiRingChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

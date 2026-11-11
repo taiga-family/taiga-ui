@@ -7,7 +7,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

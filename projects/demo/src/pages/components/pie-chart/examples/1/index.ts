@@ -6,7 +6,7 @@ import {TuiPieChart} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiPieChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

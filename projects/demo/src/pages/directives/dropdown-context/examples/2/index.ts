@@ -8,7 +8,7 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -8,7 +8,7 @@ import {TuiNotification, TuiTitle} from '@taiga-ui/core';
 @Component({
     imports: [RouterLink, TuiNotification, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -6,7 +6,7 @@ import {TuiTitle} from '@taiga-ui/core';
 @Component({
     imports: [TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

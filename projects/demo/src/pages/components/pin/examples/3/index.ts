@@ -7,7 +7,7 @@ import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
