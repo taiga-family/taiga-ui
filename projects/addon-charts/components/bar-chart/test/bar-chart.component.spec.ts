@@ -9,7 +9,7 @@ describe('BarChart', () => {
             <tui-bar-chart
                 [collapsed]="collapsed()"
                 [max]="max"
-                [value]="value"
+                [value]="value()"
             />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,10 +17,10 @@ describe('BarChart', () => {
     class Test {
         public readonly component = viewChild.required(TuiBarChart);
 
-        public readonly value = [
+        public readonly value = signal<number[][]>([
             [1, 2, 3],
             [4, 5, 6],
-        ];
+        ]);
 
         public max = Number.NaN;
         public readonly collapsed = signal(false);
@@ -62,5 +62,45 @@ describe('BarChart', () => {
                     testComponent.component().computedMax(),
                 ),
         ).toBe(100);
+    });
+
+    describe('negative values', () => {
+        it('computes max by absolute value for a single group of negative values', () => {
+            testComponent.value.set([[-1, -4, -2]]);
+            fixture.detectChanges();
+
+            expect(testComponent.component().computedMax()).toBe(4);
+        });
+
+        it('computes percent by absolute value', () => {
+            testComponent.value.set([[-1, -4, -2]]);
+            fixture.detectChanges();
+
+            expect(
+                testComponent
+                    .component()
+                    .percentMapper([-2], false, testComponent.component().computedMax()),
+            ).toBe(50);
+        });
+
+        it('computes max and percent by absolute values in collapsed mode', () => {
+            testComponent.value.set([
+                [-1, 2],
+                [-3, -6],
+            ]);
+            testComponent.collapsed.set(true);
+            fixture.detectChanges();
+
+            expect(testComponent.component().computedMax()).toBe(8);
+            expect(
+                testComponent
+                    .component()
+                    .percentMapper(
+                        [-1, -3],
+                        true,
+                        testComponent.component().computedMax(),
+                    ),
+            ).toBe(50);
+        });
     });
 });

@@ -17,7 +17,7 @@ describe('BarSet', () => {
     })
     class Test {
         public readonly component = viewChild(TuiBarSet);
-        public readonly value = [10, 20, 30, 40];
+        public value = [10, 20, 30, 40];
         public collapsed = false;
     }
 
@@ -50,6 +50,19 @@ describe('BarSet', () => {
                     By.css('[automation-id="tui-bar-set__bar"]'),
                 ).length,
             ).toBe(1);
+        });
+    });
+
+    describe('negative values', () => {
+        it('scales bars by the largest absolute value', () => {
+            testComponent.value = [10, -40, 20];
+            fixture.detectChanges();
+
+            const heights = fixture.debugElement
+                .queryAll(By.css('[automation-id="tui-bar-set__bar"]'))
+                .map(({nativeElement}) => (nativeElement as HTMLElement).style.height);
+
+            expect(heights).toEqual(['25%', '100%', '50%']);
         });
     });
 });
