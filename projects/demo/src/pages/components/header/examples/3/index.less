@@ -1,12 +1,11 @@
-@import '@taiga-ui/styles/utils';
-
 [tuiLink] {
     text-decoration: none;
 
     --tui-icon-size: 1.5rem;
 
     &::after {
-        .transition(margin-inline-start);
+        transition-property: margin-inline-start;
+        transition-duration: var(--tui-duration);
     }
 
     &:hover {

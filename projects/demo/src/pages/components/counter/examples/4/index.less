@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 .footer {
     position: relative;
     display: flex;
@@ -10,16 +8,16 @@
 }
 
 .counter {
-    .transition(inline-size);
-
     position: absolute;
+    transition-property: inline-size;
+    transition-duration: var(--tui-duration);
     inline-size: 100%;
     min-inline-size: var(--tui-height-m);
     inset-inline-end: 0;
     overflow: hidden;
+}
 
-    &_minimized {
-        inline-size: var(--tui-height-m);
-        color: transparent;
-    }
+.counter_minimized {
+    inline-size: var(--tui-height-m);
+    color: transparent;
 }
