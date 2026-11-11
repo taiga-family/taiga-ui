@@ -16,7 +16,8 @@ tui-textarea-content:where(*&) {
     box-sizing: content-box;
 
     &[tuiScrollRef] {
-        timeline-scope: --t-textarea-x, --t-textarea-y;
+        // The controls are descendants of this scroller and can use its timelines directly.
+        timeline-scope: none;
         scroll-timeline:
             --t-textarea-x x,
             --t-textarea-y y;
