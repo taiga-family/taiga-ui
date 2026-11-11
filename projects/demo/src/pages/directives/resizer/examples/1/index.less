@@ -1,4 +1,4 @@
-@import '@taiga-ui/styles/utils';
+/* stylelint-disable csstools/use-logical, logical-css/require-logical-properties -- Offsets match the physical axes used by translate(). */
 
 :host {
     position: relative;
@@ -36,8 +36,9 @@
 }
 
 .top-middle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-start: 0;
 }
 
@@ -57,8 +58,9 @@
 }
 
 .middle-right {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-end: 0;
 }
 
@@ -78,8 +80,9 @@
 }
 
 .middle-bottom {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-end: 0;
 }
 
@@ -110,29 +113,35 @@
 }
 
 .middle-middle {
-    .center-all();
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
 }
 
 .middle-middle-top-handle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-start: 0;
 }
 
 .middle-middle-right-handle {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-end: 0;
 }
 
 .middle-middle-bottom-handle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-end: 0;
 }
 
 .middle-middle-left-handle {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-start: 0;
 }

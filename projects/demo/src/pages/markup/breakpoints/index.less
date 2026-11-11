@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 .table-caption {
     text-align: start;
     margin-block-end: 0.5rem;
@@ -10,9 +8,10 @@
 }
 
 .copy {
-    .fullsize();
-    .transition(opacity);
-
+    position: absolute;
+    inset: 0;
+    transition-property: opacity;
+    transition-duration: var(--tui-duration);
     opacity: 0;
 
     ::ng-deep button {
@@ -20,7 +19,8 @@
         block-size: 100%;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-within {
         opacity: 1;
     }
 }

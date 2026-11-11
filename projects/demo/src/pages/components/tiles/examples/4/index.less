@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 [role='table'] {
     inline-size: 100%;
     min-inline-size: 35rem;
@@ -15,9 +13,9 @@
 }
 
 [role='row'] {
-    .transition(box-shadow);
-
     display: grid;
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     grid-template-columns: 2rem minmax(8rem, 1fr) minmax(8rem, 1fr) minmax(12rem, 1.5fr);
     min-block-size: var(--tui-height-m);
     block-size: 100%;

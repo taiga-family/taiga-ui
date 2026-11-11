@@ -20,7 +20,6 @@ import {WithVirtualScroll} from './with-virtual-scroll';
         WithVirtualScroll,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -68,7 +68,7 @@ export function provideTaiga(
             );
 
             if (options.scrollbars === 'custom') {
-                doc.documentElement.classList.add('tui-zero-scrollbar');
+                doc.documentElement.classList.add('tui-scrollbar-hidden');
             }
 
             if (tuiIsPresent(options.mode)) {

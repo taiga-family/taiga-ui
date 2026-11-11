@@ -1,5 +1,3 @@
-@import '@taiga-ui/styles/utils';
-
 .tiles {
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
@@ -25,8 +23,8 @@
 }
 
 .content {
-    .transition(box-shadow);
-
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     padding: 1rem;
     background: var(--tui-background-base);

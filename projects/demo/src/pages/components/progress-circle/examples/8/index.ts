@@ -11,5 +11,5 @@ import {TuiProgress} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+    protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'] as const;
 }

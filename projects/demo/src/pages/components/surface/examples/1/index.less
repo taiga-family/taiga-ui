@@ -1,7 +1,5 @@
-@import '@taiga-ui/styles/utils';
-
 .scale {
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover {
             transform: scale(1.15);
         }
@@ -25,7 +23,7 @@
         );
     }
 
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover::after {
             opacity: 0.5;
         }
@@ -37,7 +35,7 @@
 }
 
 .highlight {
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover::before {
             backdrop-filter: brightness(1.1);
         }
