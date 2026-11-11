@@ -188,6 +188,8 @@ export class TuiLineChart {
         } else {
             this.onHovered(index);
         }
+
+        this.hintPoint.set(this.value()[index] ?? null);
     }
 
     private get isSinglePoint(): boolean {
