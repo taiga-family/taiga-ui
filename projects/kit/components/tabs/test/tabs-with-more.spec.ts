@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {provideTaiga} from '@taiga-ui/core';
 import {tuiSwitchNgDevMode} from '@taiga-ui/jest-config';
-import {TuiTabs} from '@taiga-ui/kit';
+import {TuiTabs, TuiTabsWithMore} from '@taiga-ui/kit';
 
 describe('TabsWithMore | active tab across overflow boundary', () => {
     @Component({
@@ -31,6 +32,7 @@ describe('TabsWithMore | active tab across overflow boundary', () => {
     }
 
     let fixture: ComponentFixture<Test>;
+    let emitted: number[];
 
     function getActiveTab(): string | undefined {
         const element: HTMLElement | null = fixture.nativeElement.querySelector(
@@ -62,6 +64,13 @@ describe('TabsWithMore | active tab across overflow boundary', () => {
 
         fixture = TestBed.createComponent(Test);
         await settle();
+
+        emitted = [];
+        fixture.debugElement
+            .query(By.directive(TuiTabsWithMore))
+            .componentInstance.activeItemIndex.subscribe((index: number) =>
+                emitted.push(index),
+            );
     });
 
     afterEach(() => {
@@ -169,5 +178,33 @@ describe('TabsWithMore | active tab across overflow boundary', () => {
 
         expect(fixture.componentInstance.activeItemIndex()).toBe(0);
         expect(getActiveTab()).toBe('A');
+    });
+
+    it('emits the new index once when active tab is reordered', async () => {
+        reverse();
+        await settle();
+
+        expect(emitted).toEqual([4]);
+    });
+
+    it('does not emit when index is written from outside', async () => {
+        fixture.componentInstance.activeItemIndex.set(4);
+        await settle();
+
+        expect(emitted).toEqual([]);
+    });
+
+    it('does not emit when items change without moving the active tab', async () => {
+        fixture.componentInstance.items.update((items) => [...items, 'New']);
+        await settle();
+
+        expect(emitted).toEqual([]);
+    });
+
+    it('does not emit when active item is removed', async () => {
+        fixture.componentInstance.items.update((items) => items.slice(1));
+        await settle();
+
+        expect(emitted).toEqual([]);
     });
 });
