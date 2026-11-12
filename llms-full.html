@@ -48044,7 +48044,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;nav tuiTabBar [activeItemIndex]=&quot;activeItemIndex&quot; (activeItemIndexChange)=&quot;onIndexChange($event)&quot; &gt;
+&lt;nav tuiTabBar class=&quot;tui-liquid-glass_overlay&quot; [activeItemIndex]=&quot;activeItemIndex&quot; (activeItemIndexChange)=&quot;onIndexChange($event)&quot; &gt;
 &lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [badge]=&quot;item.badge&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
 &lt;/nav&gt;
 ```
@@ -48129,7 +48129,7 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;nav tuiTabBar [(activeItemIndex)]=&quot;activeItemIndex&quot; &gt;
+&lt;nav tuiTabBar class=&quot;tui-liquid-glass_overlay&quot; [(activeItemIndex)]=&quot;activeItemIndex&quot; &gt;
 &lt;button *ngFor=&quot;let item of items&quot; tuiTabBarItem type=&quot;button&quot; [icon]=&quot;item.icon&quot; &gt; {{ item.text }} &lt;/button&gt;
 &lt;/nav&gt;
 ```
