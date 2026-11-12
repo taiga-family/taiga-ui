@@ -47,6 +47,7 @@ export default class Example {
         'Custom content',
         'Custom background color',
         'Primary button change',
+        'Max width',
     ];
 
     protected readonly colors = [
