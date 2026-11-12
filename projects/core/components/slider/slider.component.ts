@@ -7,13 +7,16 @@ import {
     input,
     signal,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
+import {WaIntersectionObserverService} from '@ng-web-apis/intersection-observer';
+import {tuiWatch, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {take} from 'rxjs';
+import {EMPTY, startWith, switchMap, take} from 'rxjs';
 
 import {TUI_FLOATING_PRECISION} from './helpers/key-steps';
 import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
@@ -23,7 +26,7 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
     template: '',
     styleUrl: './slider.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsAuxiliary(TuiSliderComponent)],
+    providers: [tuiAsAuxiliary(TuiSliderComponent), WaIntersectionObserverService],
     host: {
         '[class._vertical]': 'vertical()',
         '[style.--t-slider-track-end]': 'trackEnd()',
@@ -41,8 +44,14 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
 export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
-    protected readonly trackEnd = signal<string | null>(null);
-    protected readonly vertical = signal(false);
+    protected readonly trackEnd = signal<'bottom' | 'left' | 'right' | 'top' | null>(
+        null,
+    );
+
+    protected readonly vertical = computed(
+        () => this.trackEnd() === 'top' || this.trackEnd() === 'bottom',
+    );
+
     protected readonly ticksGradient = computed((segments = this.segments()) =>
         this.getTicksGradient(segments),
     );
@@ -61,13 +70,28 @@ export class TuiSliderComponent {
     });
 
     constructor() {
-        afterNextRender(() => {
-            const {direction, writingMode} = getComputedStyle(this.el);
+        const animationFrame$ = inject(WA_ANIMATION_FRAME);
+        const orientation$ = inject(WaIntersectionObserverService, {self: true}).pipe(
+            // CSS can change outside Angular. Read it on animation frames while visible.
+            switchMap(([entry]) => (entry?.isIntersecting ? animationFrame$ : EMPTY)),
+            startWith(null),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        );
 
-            if (writingMode.startsWith('vertical')) {
-                this.vertical.set(true);
-                this.trackEnd.set(direction === 'rtl' ? 'top' : 'bottom');
-            }
+        afterNextRender({
+            read: () => {
+                orientation$.subscribe(() => {
+                    const style = getComputedStyle(this.el);
+                    const rtl = style.direction === 'rtl';
+
+                    if (style.getPropertyValue('writing-mode').startsWith('vertical')) {
+                        this.trackEnd.set(rtl ? 'top' : 'bottom');
+                    } else {
+                        this.trackEnd.set(rtl ? 'left' : 'right');
+                    }
+                });
+            },
         });
 
         if (this.control instanceof NgModel) {

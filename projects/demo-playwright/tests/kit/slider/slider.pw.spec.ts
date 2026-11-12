@@ -105,6 +105,40 @@ test.describe('Slider', () => {
         expect(box!.height).toBeGreaterThan(box!.width);
     });
 
+    test('updates orientation when computed styles change', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Slider);
+
+        const documentationPage = new TuiDocumentationPagePO(page);
+        const slider = documentationPage.getExample('#vertical').getByRole('slider');
+
+        await slider.scrollIntoViewIfNeeded();
+        await slider.evaluate((element) => {
+            element.style.direction = 'inherit';
+            element.parentElement?.setAttribute('dir', 'rtl');
+        });
+
+        await expect(slider).toHaveCSS('--t-slider-track-end', 'top');
+
+        await slider.evaluate((element) => {
+            element.parentElement?.setAttribute('dir', 'ltr');
+        });
+
+        await expect(slider).toHaveCSS('direction', 'ltr');
+        await expect(slider).toHaveCSS('--t-slider-track-end', 'bottom');
+
+        await page.addStyleTag({
+            content: `@media (min-width: 600px) {
+                input[tuiSlider][aria-label='Volume'] { writing-mode: horizontal-tb; }
+            }`,
+        });
+        await page.setViewportSize({width: 650, height: 500});
+        await slider.scrollIntoViewIfNeeded();
+
+        await expect(slider).toHaveCSS('writing-mode', 'horizontal-tb');
+        await expect(slider).toHaveCSS('--t-slider-track-end', 'right');
+        await expect(slider).toHaveCSS('--t-slider-cursor', 'ew-resize');
+    });
+
     test.describe('programmatically change value', () => {
         test.describe('ngModel', () => {
             test.use({viewport: {width: 350, height: 500}});
