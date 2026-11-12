@@ -5,6 +5,7 @@ import {
     computed,
     inject,
     input,
+    linkedSignal,
     signal,
     viewChildren,
 } from '@angular/core';
@@ -14,7 +15,8 @@ import {TuiChartHint} from '@taiga-ui/addon-charts/components/chart-hint';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiGenerateId, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGenerateId} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiHint, TuiHintHover, tuiHintOptionsProvider} from '@taiga-ui/core/portals/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -31,11 +33,12 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [WaResizeObserverService],
     viewProviders: [tuiHintOptionsProvider({hideDelay: 0})],
-    host: {'(mouseleave)': 'onMouseLeave()'},
+    host: {'(focusout)': 'onBlur()', '(mouseleave)': 'onMouseLeave()'},
 })
 export class TuiLineChart {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly autoId = tuiGenerateId();
+    private readonly el = tuiInjectElement();
 
     private readonly resize = toSignal(
         inject(WaResizeObserverService, {self: true}).pipe(
@@ -51,6 +54,14 @@ export class TuiLineChart {
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiChartHint, {optional: true});
+    protected readonly hoveredPoint = computed(
+        () => this.value()[this.hovered()] ?? null,
+    );
+
+    protected readonly hintPoint = linkedSignal<TuiPoint | null, TuiPoint | null>({
+        source: this.hoveredPoint,
+        computation: (hovered, previous) => hovered ?? previous?.value ?? null,
+    });
 
     protected readonly viewBox = computed(() => {
         if (Number.isNaN(this.resize())) {
@@ -126,6 +137,12 @@ export class TuiLineChart {
         return !!this.xStringify() || !!this.yStringify() || !!this.hint();
     }
 
+    protected onBlur(): void {
+        if (!this.el.matches(':hover')) {
+            this.onMouseLeave();
+        }
+    }
+
     protected onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(Number.NaN);
@@ -146,22 +163,11 @@ export class TuiLineChart {
         return (100 * this.computeWidth(index)) / this.width();
     }
 
-    protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
-    }
-
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
             this.hintDirective?.getContext(this.value().indexOf($implicit), this) ??
             $implicit
         );
-    }
-
-    protected getHovered(hovered: number | null): TuiPoint | null {
-        // This checks for NaN and null too since async pipe returns null before first item
-        return tuiIsPresent(hovered) && Number.isInteger(hovered)
-            ? (this.value()[hovered] ?? null)
-            : null;
     }
 
     protected getBottom(y: number): number {
@@ -172,18 +178,14 @@ export class TuiLineChart {
         return (100 * (x - this.x())) / this.width();
     }
 
-    protected getOffset(x: number): number {
-        return (
-            (100 * ((this.value()[x]?.[0] || 0) - this.getX(x))) / this.computeWidth(x)
-        );
-    }
-
     protected onMouseEnter(index: number): void {
         if (this.hintDirective) {
             this.hintDirective.raise(index, this);
         } else {
             this.onHovered(index);
         }
+
+        this.hintPoint.set(this.value()[index] ?? null);
     }
 
     private get isSinglePoint(): boolean {
