@@ -12,7 +12,6 @@ import {TuiHintDirective} from './hint.directive';
 import {TuiHintAnchored} from './hint-anchored.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TuiHintPointer} from './hint-pointer.directive';
-import {TuiHintUnstyledComponent} from './hint-unstyled.component';
 
 @Component({
     selector: 'tui-hint',
@@ -43,10 +42,7 @@ export class TuiHintComponent {
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = inject(TuiHintDirective);
     protected readonly appearance = tuiAppearance(this.hint.appearance);
-    protected readonly content =
-        this.hint.component.component === TuiHintUnstyledComponent
-            ? signal('')
-            : this.hint.content;
+    protected readonly content = this.hint.component ? this.hint.content : signal('');
 
     protected readonly theme = this.hint.el
         .closest('[tuiTheme]')
