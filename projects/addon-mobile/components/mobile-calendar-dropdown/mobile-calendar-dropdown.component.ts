@@ -54,7 +54,10 @@ export class TuiMobileCalendarDropdown {
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
 
-    private readonly context = injectContext<Record<string, any>>({optional: true});
+    // As a dropdown we own no context — the ambient one belongs to the enclosing dialog
+    private readonly context = this.dropdown
+        ? null
+        : injectContext<Record<string, any>>({optional: true});
     private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
