@@ -1,4 +1,4 @@
-@let sheet = month() | tuiCalendarSheet;
+@let sheet = month() | tuiCalendarSheet: false : weekStart();
 @for (_ of '-'.repeat(sheet.length); track $index) {
     @let rowIndex = $index;
     <div

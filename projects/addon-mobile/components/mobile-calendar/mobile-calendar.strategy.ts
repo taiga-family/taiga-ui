@@ -2,7 +2,13 @@ import {
     type CdkVirtualScrollViewport,
     type VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
-import {inject} from '@angular/core';
+import {
+    afterNextRender,
+    afterRenderEffect,
+    computed,
+    inject,
+    INJECTOR,
+} from '@angular/core';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {DAYS_IN_WEEK, MONTHS_IN_YEAR, TuiDay} from '@taiga-ui/cdk/date-time';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -22,19 +28,36 @@ import {
 const MONTH_COUNT = RANGE * MONTHS_IN_YEAR;
 
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private readonly monthOffsets = this.getMonthOffsets(
-        inject(TUI_CALENDAR_OPTIONS).weekStart(),
-        inject(WA_IS_IOS),
-    );
-
+    private readonly injector = inject(INJECTOR);
+    private readonly isIOS = inject(WA_IS_IOS);
+    private readonly weekStart = inject(TUI_CALENDAR_OPTIONS).weekStart;
+    private readonly offsets = computed(() => this.getMonthOffsets(this.weekStart()));
     private readonly destroy$ = new Subject<void>();
     private readonly index$ = new Subject<number>();
+    private monthOffsets = this.offsets();
+    private firstVisibleIndex = 0;
     private viewport: CdkVirtualScrollViewport | null = null;
 
     public readonly scrolledIndexChange = this.index$.pipe(distinctUntilChanged());
 
+    constructor() {
+        afterRenderEffect({
+            write: () => {
+                const offsets = this.offsets();
+
+                if (!this.viewport || offsets === this.monthOffsets) {
+                    return;
+                }
+
+                // Let CDK finish any pending render before changing the spacer.
+                queueMicrotask(() => this.updateMonthOffsets(offsets));
+            },
+        });
+    }
+
     public attach(viewport: CdkVirtualScrollViewport): void {
         this.viewport = viewport;
+        this.monthOffsets = this.offsets();
         viewport.setTotalContentSize(this.getOffsetForIndex(MONTH_COUNT));
         this.updateRenderedRange(viewport);
     }
@@ -67,9 +90,9 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         this.viewport?.scrollToOffset(this.getOffsetForIndex(index), behavior);
     }
 
-    private getMonthOffsets(weekStart: number, isIOS: boolean): readonly number[] {
-        const labelHeight = isIOS ? IOS_LABEL : ANDROID_LABEL;
-        const weekHeight = isIOS ? IOS_WEEK : ANDROID_WEEK;
+    private getMonthOffsets(weekStart: number): readonly number[] {
+        const labelHeight = this.isIOS ? IOS_LABEL : ANDROID_LABEL;
+        const weekHeight = this.isIOS ? IOS_WEEK : ANDROID_WEEK;
         const offsets = [0];
         let offset = 0;
 
@@ -94,6 +117,25 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
     private getOffsetForIndex(index: number): number {
         return this.monthOffsets[tuiClamp(index, 0, MONTH_COUNT)]!;
+    }
+
+    private updateMonthOffsets(offsets: readonly number[]): void {
+        const viewport = this.viewport;
+
+        if (!viewport) {
+            return;
+        }
+
+        const index = this.firstVisibleIndex;
+
+        this.monthOffsets = offsets;
+        viewport.setTotalContentSize(this.getOffsetForIndex(MONTH_COUNT));
+        this.onContentRendered();
+
+        afterNextRender(
+            {write: () => this.scrollToIndex(index, 'instant')},
+            {injector: this.injector},
+        );
     }
 
     private getIndexForOffset(offset: number): number {
@@ -121,7 +163,8 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         const viewportSize = viewport.getViewportSize();
         const dataLength = viewport.getDataLength();
         const newRange = {start, end};
-        const firstVisibleIndex = Math.min(
+
+        this.firstVisibleIndex = Math.min(
             this.getIndexForOffset(offset),
             MONTH_COUNT - 1,
         );
@@ -147,6 +190,6 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         }
 
         viewport.setRenderedRange(newRange);
-        this.index$.next(firstVisibleIndex);
+        this.index$.next(this.firstVisibleIndex);
     }
 }
