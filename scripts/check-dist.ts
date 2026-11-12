@@ -10,10 +10,13 @@ import {checkPrivateExports} from './shared/check-private-exports';
 import {checkRequireWithSrc} from './shared/check-require-with-src';
 
 (async function main(): Promise<void> {
+    const initial = resolve('./dist');
     const path = resolve(getValueByFlag('--path', './dist'));
 
     try {
-        checkGlobalStyles(path);
+        if (path === initial) {
+            checkGlobalStyles(path);
+        }
 
         await Promise.all([
             checkIncorrectImports(path),
