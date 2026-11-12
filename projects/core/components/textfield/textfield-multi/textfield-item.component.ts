@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {
     injectContext,
@@ -29,8 +29,8 @@ export interface TuiTextfieldItem<T> {
     host: {
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
         '[class._string]': '!textfield.item()',
-        '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
-        '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
+        '(keydown.arrowLeft.prevent)': 'focus(el.previousElementSibling)',
+        '(keydown.arrowRight.prevent)': 'focus(el.nextElementSibling)',
         '(pointerdown.self)': 'prevent($event)',
     },
 })
@@ -45,6 +45,14 @@ export class TuiTextfieldItemComponent<T> {
             this.textfield.item() ??
             this.handlers.stringify()(this.context.$implicit.item),
     );
+
+    protected focus(sibling: Element | null): void {
+        const element = sibling?.firstElementChild;
+
+        if (tuiIsHTMLElement(element)) {
+            element.focus();
+        }
+    }
 
     protected prevent(e: Event): void {
         this.textfield.focused() && e.preventDefault();
