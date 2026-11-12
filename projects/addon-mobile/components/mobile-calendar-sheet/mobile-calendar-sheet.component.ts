@@ -1,7 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_IS_IOS} from '@ng-web-apis/platform';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives/ripple';
-import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/calendar';
+import {
+    TUI_CALENDAR_OPTIONS,
+    TuiCalendarSheet,
+    TuiCalendarSheetPipe,
+} from '@taiga-ui/core/components/calendar';
 
 @Component({
     selector: 'tui-mobile-calendar-sheet',
@@ -13,4 +17,5 @@ import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core/components/
 })
 export class TuiMobileCalendarSheet extends TuiCalendarSheet {
     protected readonly isIOS = inject(WA_IS_IOS);
+    protected readonly weekStart = inject(TUI_CALENDAR_OPTIONS).weekStart;
 }
