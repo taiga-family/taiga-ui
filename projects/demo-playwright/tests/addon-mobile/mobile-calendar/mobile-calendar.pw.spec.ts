@@ -57,6 +57,14 @@ test.describe('MobileCalendar', () => {
                     );
 
             await expect(calendar.locator('.t-day').first()).toHaveText('Sun');
+            await expect(
+                viewport
+                    .locator('.t-month-wrapper')
+                    .filter({
+                        has: page.getByRole('heading', {name: 'August', exact: true}),
+                    })
+                    .locator('.t-cell_today'),
+            ).toHaveCount(1);
             await expect.poll(async () => monthOffset('August')).toBeCloseTo(10, 0);
 
             await viewport.evaluate((el) => {

@@ -60,7 +60,7 @@
     </div>
 </cdk-virtual-scroll-viewport>
 <div class="t-week">
-    @for (day of unorderedWeekDays$ | tuiOrderWeekDays | async; track day) {
+    @for (day of unorderedWeekDays$ | tuiOrderWeekDays: weekStart() | async; track day) {
         <div class="t-day">
             {{ day }}
         </div>

@@ -40,6 +40,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
+    TUI_CALENDAR_OPTIONS,
     TUI_CALENDAR_SHEET_OPTIONS,
     type TuiMarkerHandler,
     TuiOrderWeekDaysPipe,
@@ -166,6 +167,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly doneWord = inject(TUI_DONE_WORD);
     protected readonly monthNames = inject(TUI_MONTHS);
     protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
+    protected readonly weekStart = inject(TUI_CALENDAR_OPTIONS).weekStart;
 
     protected readonly chooseDayOrRangeTexts = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,
