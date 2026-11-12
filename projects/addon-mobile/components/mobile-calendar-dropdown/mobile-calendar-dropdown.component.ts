@@ -58,6 +58,7 @@ export class TuiMobileCalendarDropdown {
     private readonly context = this.dropdown
         ? null
         : injectContext<Record<string, any>>({optional: true});
+
     private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
