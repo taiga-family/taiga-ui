@@ -16,12 +16,18 @@ describe('Hint host', () => {
         template: `
             <tui-root>
                 <span id="target"></span>
+                <span id="next"></span>
                 <button
                     id="trigger"
                     tuiHint="Hint"
                     type="button"
                     [style.anchor-name]="customAnchor()"
                     [tuiHintHost]="host()"
+                ></button>
+                <button
+                    tuiHint="Shared hint"
+                    type="button"
+                    [tuiHintHost]="sharedHost()"
                 ></button>
                 <button
                     id="default"
@@ -34,6 +40,7 @@ describe('Hint host', () => {
     })
     class Test {
         public readonly host = signal<HTMLElement | undefined>(undefined);
+        public readonly sharedHost = signal<HTMLElement | undefined>(undefined);
         public readonly customAnchor = signal<string | null>(null);
     }
 
@@ -86,6 +93,43 @@ describe('Hint host', () => {
 
         expect(accessor.nativeElement).toBe(trigger);
         expect(trigger.dataset.tuiAnchor).toBe(anchor);
+    });
+
+    it('uses distinct anchors when switching between delegated hosts', () => {
+        const next: HTMLElement = fixture.nativeElement.querySelector('#next');
+
+        fixture.componentInstance.host.set(target);
+        fixture.detectChanges();
+
+        const anchor = target.dataset.tuiAnchor;
+
+        fixture.componentInstance.host.set(next);
+        fixture.detectChanges();
+
+        expect(next.dataset.tuiAnchor).toMatch(/^--/);
+        expect(next.dataset.tuiAnchor).not.toBe(anchor);
+
+        fixture.componentInstance.host.set(target);
+        fixture.detectChanges();
+
+        expect(target.dataset.tuiAnchor).toBe(anchor);
+    });
+
+    it('preserves the previous host anchor while another hint uses it', () => {
+        const next: HTMLElement = fixture.nativeElement.querySelector('#next');
+
+        fixture.componentInstance.host.set(target);
+        fixture.detectChanges();
+        fixture.componentInstance.sharedHost.set(target);
+        fixture.detectChanges();
+
+        const anchor = target.dataset.tuiAnchor;
+
+        fixture.componentInstance.host.set(next);
+        fixture.detectChanges();
+
+        expect(target.dataset.tuiAnchor).toBe(anchor);
+        expect(next.dataset.tuiAnchor).not.toBe(anchor);
     });
 
     it('preserves a custom anchor on the trigger', () => {
