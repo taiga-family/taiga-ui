@@ -50,7 +50,7 @@ test.describe('FloatingContainer', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#max-width');
         const content = example.locator('.content');
         const container = example.locator('[tuiFloatingContainer]');
-        const action = container.getByRole('button', {name: 'Main action'});
+        const action = container.getByRole('button', {name: 'Accept'});
 
         await example.scrollIntoViewIfNeeded();
 
@@ -79,7 +79,7 @@ test.describe('FloatingContainer', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#max-width');
         const content = example.locator('.content');
         const container = example.locator('[tuiFloatingContainer]');
-        const action = container.getByRole('button', {name: 'Main action'});
+        const action = container.getByRole('button', {name: 'Accept'});
 
         await example.scrollIntoViewIfNeeded();
 

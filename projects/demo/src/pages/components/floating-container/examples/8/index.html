@@ -1,30 +1,31 @@
 <div class="content">
-    @for (_ of '-'.repeat(30); track $index) {
-        <div tuiCell>
-            <div
-                appearance="primary"
-                tuiAvatar="@tui.star"
-            ></div>
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
-            </div>
-        </div>
-    }
+    <article class="article">
+        <header tuiHeader>
+            <h2 tuiTitle>Terms of service</h2>
+        </header>
+        @for (_ of '-'.repeat(6); track $index) {
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.
+            </p>
+        }
+    </article>
 
     <footer tuiFloatingContainer>
         <button
             tuiButton
             type="button"
         >
-            Main action
+            Accept
         </button>
         <button
             appearance="flat"
             tuiButton
             type="button"
         >
-            Secondary action
+            Decline
         </button>
     </footer>
 </div>
