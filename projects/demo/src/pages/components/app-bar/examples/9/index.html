@@ -1,0 +1,39 @@
+<section
+    tuiPlatform="ios"
+    tuiTheme="light"
+>
+    <iframe
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d318007.389194818!2d-0.1506732382812497!3d51.48692612252592!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1738141112584!5m2!1sen!2sae"
+        title="map"
+        class="map"
+    ></iframe>
+    <tui-app-bar class="tui-liquid-glass_blur">
+        <button
+            title="Back"
+            tuiAppBarBack
+            tuiSlot="start"
+            type="button"
+        ></button>
+        <span tuiTitle>
+            London
+            <span tuiSubtitle>United Kingdom</span>
+        </span>
+        <button
+            iconStart="@tui.search"
+            title="Search"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        ></button>
+        <button
+            iconStart="@tui.navigation"
+            title="My location"
+            tuiIconButton
+            tuiSlot="end"
+            type="button"
+        ></button>
+    </tui-app-bar>
+</section>
