@@ -34,6 +34,12 @@ describe('Slider', () => {
                 [min]="min"
                 [(ngModel)]="ngModelValue"
             />
+            <input
+                #ticks
+                tuiSlider
+                type="range"
+                [segments]="segments"
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -52,11 +58,15 @@ describe('Slider', () => {
             read: TuiSliderComponent,
         });
 
+        public readonly ticksElementRef: Signal<ElementRef<HTMLInputElement>> =
+            viewChild.required('ticks', {read: ElementRef});
+
         public readonly nativeUsageAllDefaultsComponentRef = viewChild.required(
             'nativeUsageAllDefaults',
             {read: TuiSliderComponent},
         );
 
+        public segments: number | readonly number[] = 1;
         public ngModelValue = 5;
         public formController = new FormControl(5);
         public max = 11;
@@ -216,6 +226,52 @@ describe('Slider', () => {
                 0.5,
             );
         });
+    });
+
+    describe('ticks', () => {
+        const setSegments = async (
+            segments: number | readonly number[],
+        ): Promise<void> => {
+            testComponent.segments = segments;
+            fixture.detectChanges();
+            await fixture.whenStable();
+        };
+
+        it('draws no ticks by default', () => {
+            expect(getTicksGradient()).toBe(
+                'linear-gradient(to right, transparent 0 100%)',
+            );
+        });
+
+        it('draws ticks at min and max', async () => {
+            await setSegments([0, 0.5, 1]);
+
+            expect(getTicksGradient()).toBe(
+                'linear-gradient(to right, transparent 0, transparent 0%, var(--tui-text-tertiary) 0% calc(0% + var(--t-tick-thickness)), transparent calc(0% + var(--t-tick-thickness)), transparent 50%, var(--tui-text-tertiary) 50% calc(50% + var(--t-tick-thickness)), transparent calc(50% + var(--t-tick-thickness)), transparent calc(100% - var(--t-tick-thickness)), var(--tui-text-tertiary) calc(100% - var(--t-tick-thickness)) 100%, transparent 100%, transparent 100%)',
+            );
+        });
+
+        it('keeps a single inner tick for numeric segments', async () => {
+            await setSegments(2);
+
+            expect(getTicksGradient()).toBe(
+                'linear-gradient(to right, transparent 0, transparent 50%, var(--tui-text-tertiary) 50% calc(50% + var(--t-tick-thickness)), transparent calc(50% + var(--t-tick-thickness)), transparent 100%)',
+            );
+        });
+
+        it('draws no ticks for a single numeric segment', async () => {
+            await setSegments(1);
+
+            expect(getTicksGradient()).toBe(
+                'linear-gradient(to right, transparent 0 100%)',
+            );
+        });
+
+        function getTicksGradient(): string {
+            return testComponent
+                .ticksElementRef()
+                .nativeElement.style.getPropertyValue('--tui-ticks-gradient');
+        }
     });
 
     it('max can be 0', async () => {
