@@ -1,0 +1,51 @@
+import"./chunk-LQ6M4NCU.js";var i=`.dropdowns {
+    position: relative;
+    display: block;
+    block-size: 18.75rem;
+    inline-size: ~'min(100%, 30rem)';
+    resize: both;
+    overflow: hidden;
+    outline: 0.125rem dotted var(--tui-border-normal);
+}
+
+.t1,
+.t2,
+.t3,
+.t4 {
+    position: absolute;
+    inline-size: 3.125rem;
+    block-size: 3.125rem;
+    background: var(--tui-background-accent-1);
+}
+
+.t1 {
+    inset-block-start: 0.625rem;
+    inset-inline-start: 0.625rem;
+}
+
+.t2 {
+    inset-block-start: 0.625rem;
+    inset-inline-end: 0.625rem;
+}
+
+.t3 {
+    inset-inline-end: 0.625rem;
+    inset-block-end: 0.625rem;
+}
+
+.t4 {
+    inset-inline-start: 0.625rem;
+    inset-block-end: 0.625rem;
+}
+
+.t-centered-axis-xy {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+}
+
+.t-direction {
+    inline-size: max-content;
+    margin-block-end: 1rem;
+}
+`;export{i as default};

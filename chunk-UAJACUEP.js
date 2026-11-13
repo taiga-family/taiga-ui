@@ -1,0 +1,9 @@
+import"./chunk-LQ6M4NCU.js";var n=`:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21.5625rem;
+    min-inline-size: 100%;
+    max-inline-size: 100%;
+}
+`;export{n as default};
