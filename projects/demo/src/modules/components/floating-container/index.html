@@ -13,9 +13,18 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
+            [description]="index === 6 && maxWidth"
             [heading]="example"
             [id]="example | tuiKebab"
         />
+
+        <ng-template #maxWidth>
+            Limit content width with
+            <code>max-inline-size</code>
+            on the children and center them with
+            <code>align-self</code>
+            on large screens, such as foldable phones. Background still stretches to full width.
+        </ng-template>
     </ng-template>
 
     <ng-template pageTab>
