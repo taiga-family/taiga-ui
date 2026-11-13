@@ -10,11 +10,10 @@ import {checkPrivateExports} from './shared/check-private-exports';
 import {checkRequireWithSrc} from './shared/check-require-with-src';
 
 (async function main(): Promise<void> {
-    const initial = resolve('./dist');
     const path = resolve(getValueByFlag('--path', './dist'));
 
     try {
-        if (path === initial) {
+        if (!hasFlag('--skip-check-global-styles')) {
             checkGlobalStyles(path);
         }
 
