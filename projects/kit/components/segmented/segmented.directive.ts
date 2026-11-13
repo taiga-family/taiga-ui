@@ -32,6 +32,11 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         descendants: true,
     });
 
+    private readonly radioElements = contentChildren(RadioControlValueAccessor, {
+        descendants: true,
+        read: ElementRef,
+    });
+
     public ngAfterContentInit(): void {
         this.controls$
             .pipe(
@@ -41,7 +46,9 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
                 map((value) => this.radios().findIndex((c) => c.value === value)),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe((index) => this.component.update(index));
+            .subscribe((index) =>
+                this.update(this.radioElements()[index]?.nativeElement ?? null),
+            );
     }
 
     public ngAfterContentChecked(): void {
