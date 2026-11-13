@@ -44,6 +44,7 @@ export class TuiPagination {
     private readonly lastElementIndex = computed(() => this.elementsLength() - 1);
     private readonly itemsFit = computed(() => this.length() <= this.maxElementsLength());
     private readonly lastIndex = computed(() => this.length() - 1);
+    private readonly arrowsDisabled = computed(() => this.disabled() || !this.length());
 
     private readonly reverseIndex = computed(
         (): number => this.lastIndex() - this.index(),
@@ -66,8 +67,13 @@ export class TuiPagination {
     public readonly sidePadding = input(1);
     public readonly content = input<PolymorpheusContent<TuiContext<number>>>();
     public readonly index = model(0);
-    public readonly arrowIsDisabledRight = computed(() => this.reverseIndex() === 0);
-    public readonly arrowIsDisabledLeft = computed(() => this.index() === 0);
+    public readonly arrowIsDisabledRight = computed(
+        () => this.arrowsDisabled() || this.reverseIndex() === 0,
+    );
+
+    public readonly arrowIsDisabledLeft = computed(
+        () => this.arrowsDisabled() || this.index() === 0,
+    );
 
     public readonly nativeFocusableElement = computed((): HTMLElement | null => {
         if (this.disabled()) {

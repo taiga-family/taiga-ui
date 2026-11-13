@@ -21,6 +21,7 @@ describe('TuiPaginationComponent', () => {
         template: `
             <tui-pagination
                 [activePadding]="activePadding"
+                [disabled]="disabled"
                 [length]="length"
                 [sidePadding]="sidePadding"
                 [(index)]="index"
@@ -31,6 +32,7 @@ describe('TuiPaginationComponent', () => {
     })
     class Test {
         public readonly component = viewChild.required(TuiPagination);
+        public disabled = false;
         public index = 0;
         public length = 50;
         public activePadding = 1;
@@ -190,6 +192,29 @@ describe('TuiPaginationComponent', () => {
     });
 
     describe('Page switching arrow behavior', () => {
+        it.each([
+            {disabled: true, index: 1, length: 3},
+            {disabled: false, index: 0, length: 0},
+        ])(
+            'disables both arrows with disabled=$disabled and length=$length',
+            ({disabled, index, length}) => {
+                testComponent.disabled = disabled;
+                setParams({index, length});
+
+                const root: HTMLElement = fixture.nativeElement;
+                const arrows = Array.from(
+                    root.querySelectorAll<HTMLButtonElement>('button[tuiIconButton]'),
+                );
+
+                for (const arrow of arrows) {
+                    arrow.click();
+                    expect(testComponent.index).toBe(index);
+                }
+
+                expect(arrows.map((arrow) => arrow.disabled)).toEqual([true, true]);
+            },
+        );
+
         it('if the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
             setParams({index: 0});
 
