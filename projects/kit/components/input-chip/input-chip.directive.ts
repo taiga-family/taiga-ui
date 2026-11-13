@@ -70,10 +70,14 @@ export class TuiInputChipDirective<T>
 
     public readonly separator = input(this.options.separator);
     public readonly unique = input(this.options.unique);
+    public readonly clearOnSelect = input(this.options.clearOnSelect);
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
-        this.erase();
+        if (this.clearOnSelect() || !value.length) {
+            this.erase();
+        }
+
         this.onChange(
             this.unique() ? Array.from(new Set([...value].reverse())).reverse() : value,
         );
@@ -86,6 +90,7 @@ export class TuiInputChipDirective<T>
             return;
         }
 
+        this.erase();
         this.setValue([...this.value(), ...valid]);
         this.scrollTo();
     }
