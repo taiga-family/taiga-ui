@@ -117,12 +117,12 @@ export class TuiInputDateTimeDirective
         Array.isArray(max) ? max[0] : (max ?? this.options.max ?? TUI_LAST_DAY),
     );
 
-    public readonly minTime = computed((min = this.minInput()) =>
-        Array.isArray(min) ? min[1] : MIN_TIME,
+    public readonly minTime = computed(
+        (min = this.minInput()) => (Array.isArray(min) ? min[1] : null) ?? MIN_TIME,
     );
 
-    public readonly maxTime = computed((max = this.maxInput()) =>
-        Array.isArray(max) ? max[1] : MAX_TIME,
+    public readonly maxTime = computed(
+        (max = this.maxInput()) => (Array.isArray(max) ? max[1] : null) ?? MAX_TIME,
     );
 
     public readonly timeMode = input(this.options.timeMode);
