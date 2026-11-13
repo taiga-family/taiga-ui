@@ -19,6 +19,11 @@ export default class Page {
         'Vertical',
     ];
 
+    protected readonly signalForms = {
+        'slider-example.ts': import('./examples/signal-forms/component.md'),
+        'slider-example.html': import('./examples/signal-forms/template.md'),
+    };
+
     protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
     protected readonly control = new FormControl(1);
     protected max = 5;
