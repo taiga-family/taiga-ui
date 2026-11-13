@@ -1,0 +1,7 @@
+import"./chunk-LQ6M4NCU.js";var i=`.input1 {
+    border: 2px solid var(--tui-status-negative);
+    padding: 0.625rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+`;export{i as default};

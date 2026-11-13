@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[20594],{20594:e=>{e.exports='<tui-input-number\n    tuiTextfieldPrefix="$"\n    class="input"\n    [(ngModel)]="value"\n>\n    Type a sum\n</tui-input-number>\n'}}]);

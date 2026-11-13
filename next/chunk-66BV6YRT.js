@@ -1,0 +1,29 @@
+import"./chunk-LQ6M4NCU.js";var i=`:host {
+    display: flex;
+}
+
+.fallback {
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translate(0, -50%);
+    inset-inline-end: 2rem;
+}
+
+tui-swipe-actions {
+    margin: -3rem -1.5rem;
+}
+
+[tuiCardLarge] {
+    margin: 3rem 1.5rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .fallback {
+        display: none;
+    }
+}
+`;export{i as default};

@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78610],{74392:(_,n,t)=>{t.r(n),t.d(n,{TUI_VIETNAMESE_LANGUAGE_ADDON_COMMERCE:()=>a});const a={cardNumber:["Số thẻ","Số thẻ"],cardExpiry:["Hết hạn","Ngày hết hạn"]}}}]);

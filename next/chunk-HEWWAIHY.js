@@ -1,0 +1,16 @@
+import"./chunk-LQ6M4NCU.js";var o=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiProgress} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiProgress],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'] as const;
+}
+`;export{o as default};

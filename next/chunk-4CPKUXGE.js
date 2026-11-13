@@ -1,0 +1,11 @@
+import"./chunk-LQ6M4NCU.js";var n=`.progress {
+    transition-property: color, inline-size;
+    transition-duration: var(--tui-duration);
+    inline-size: 1rem;
+}
+
+.progress:not(.progress_active) {
+    inline-size: 0.5rem;
+    color: transparent;
+}
+`;export{n as default};

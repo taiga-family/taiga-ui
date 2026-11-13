@@ -1,0 +1,3 @@
+import"./chunk-LQ6M4NCU.js";var t=`<div>{{ -12.3 | tuiAmount }}</div>
+<div>{{ 3000 | tuiAmount }}</div>
+`;export{t as default};

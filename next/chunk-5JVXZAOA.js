@@ -1,0 +1,19 @@
+import"./chunk-LQ6M4NCU.js";var r=`[tuiLink] {
+    text-decoration: none;
+
+    --tui-icon-size: 1.5rem;
+
+    &::after {
+        transition-property: margin-inline-start;
+        transition-duration: var(--tui-duration);
+    }
+
+    &:hover {
+        color: var(--tui-text-action);
+
+        &::after {
+            margin-inline-start: 0.5rem;
+        }
+    }
+}
+`;export{r as default};

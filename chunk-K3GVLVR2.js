@@ -1,0 +1,87 @@
+import"./chunk-LQ6M4NCU.js";var o=`@import '@taiga-ui/styles/utils';
+
+.description {
+    font: var(--tui-typography-body-m);
+}
+
+// Content sitting directly in \`pageTab\` (the lede + callouts outside a
+// \`tui-doc-example\`) is a full-width block sibling of the floated \`tui-doc-toc\`,
+// so its box slides under the TOC. Reserve the same 20rem the examples do via
+// \`:host-context(tui-doc-toc ~)\` (TOC = 14rem width + 5rem gap) so outside- and
+// inside-example content share one content-column width. The TOC hides on
+// \`@tui-desktop\`, so reclaim the full width there just like the examples.
+tui-doc-page > .description,
+tui-doc-page > [tuiNotification] {
+    inline-size: calc(100% - 20rem);
+
+    @media @tui-desktop {
+        inline-size: 100%;
+    }
+}
+
+section {
+    margin-block-start: 2rem;
+}
+
+h3 {
+    margin-block-start: 1.5rem;
+}
+
+ul[tuiList] {
+    margin-block: 0.75rem 0;
+}
+
+tui-doc-code,
+[tuiNotification] {
+    display: block;
+    margin-block-start: 0.75rem;
+}
+
+// Code blocks: one tidy bordered card (border + radius + subtle fill).
+// The inner <pre>.t-code already supplies 1rem padding and horizontal scroll,
+// so the host needs no padding; drop its outline to avoid a double border.
+tui-doc-code {
+    overflow: hidden;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: var(--tui-radius-m);
+    background: var(--tui-background-base);
+
+    ::ng-deep .t-code {
+        outline: none;
+    }
+}
+
+// Card group (\xE0 la getting-started "Explore Taiga UI"): responsive grid of
+// linked cards that adapts to the narrower content column next to the TOC.
+.t-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+    margin-block: 0.75rem 0;
+
+    [tuiAvatar] {
+        background: var(--tui-background-base);
+    }
+}
+
+// Flatten tui-doc-example: keep the anchored heading + "On this page" TOC,
+// drop the framed box, and pull content up snugly under its heading.
+:host ::ng-deep tui-doc-example {
+    .t-example {
+        overflow: visible;
+        border: none !important;
+        border-radius: 0;
+        margin-block-start: 0.625rem !important;
+    }
+
+    .t-demo {
+        padding: 0;
+    }
+
+    // Zero the first element's own top margin so the header-to-content gap equals
+    // the .t-example margin for every section (list, paragraph, or code block).
+    .t-demo > :first-child {
+        margin-block-start: 0 !important;
+    }
+}
+`;export{o as default};

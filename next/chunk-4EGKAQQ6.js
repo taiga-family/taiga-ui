@@ -1,0 +1,12 @@
+import"./chunk-LQ6M4NCU.js";var r=`.flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-block-start: 1rem;
+}
+
+.dropdown {
+    max-inline-size: 20rem;
+    padding: 1rem;
+}
+`;export{r as default};

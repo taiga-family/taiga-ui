@@ -1,0 +1,17 @@
+import"./chunk-LQ6M4NCU.js";var a=`label {
+    margin-block-end: 0.5rem;
+}
+
+section {
+    display: grid;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiCollapse;
+    }
+}
+
+[tuiFile] {
+    padding-inline: 0;
+}
+`;export{a as default};

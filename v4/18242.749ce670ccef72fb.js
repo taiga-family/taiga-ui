@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18242],{18242:e=>{e.exports='<tui-textfield\n    tuiTextfieldSize="s"\n    [style.-webkit-text-security]="\'disc\'"\n    [style.gap.rem]="1"\n    [style.width.rem]="9"\n>\n    <input\n        maxlength="3"\n        tuiInputPin\n        [formControl]="control"\n    />\n</tui-textfield>\n'}}]);

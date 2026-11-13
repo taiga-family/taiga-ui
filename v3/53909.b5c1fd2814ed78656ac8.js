@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[53909],{53909:n=>{n.exports='```html\n<tui-rating [(ngModel)]="value"></tui-rating>\n```\n'}}]);

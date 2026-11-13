@@ -1,0 +1,34 @@
+import"./chunk-LQ6M4NCU.js";var n=`<button
+    appearance="action"
+    iconStart="@tui.chevron-left"
+    tuiIconButton
+    type="button"
+    [disabled]="index() === 0"
+    (click)="carousel.prev()"
+>
+    Previous
+</button>
+<tui-carousel
+    #carousel
+    [max]="5"
+    [min]="0"
+    [(index)]="index"
+>
+    <section
+        *tuiItem="let index"
+        class="item"
+    >
+        {{ index + 1 }}
+    </section>
+</tui-carousel>
+<button
+    appearance="action"
+    iconStart="@tui.chevron-right"
+    tuiIconButton
+    type="button"
+    [disabled]="index() === 5"
+    (click)="carousel.next()"
+>
+    Next
+</button>
+`;export{n as default};
