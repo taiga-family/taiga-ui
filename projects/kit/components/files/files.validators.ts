@@ -35,12 +35,12 @@ export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
 }
 
 function checkFormat({name, type}: TuiFileLike, formats: readonly string[]): boolean {
-    const extension = `.${(name?.split('.').pop() || '').toLowerCase()}`;
+    const normalizedName = name?.toLowerCase() || '';
     const normalizedType = type?.toLowerCase() || '';
 
     return formats.some(
         (format) =>
-            format === extension ||
+            (format.startsWith('.') && normalizedName.endsWith(format)) ||
             format === normalizedType ||
             (format.split('/')[1] === '*' &&
                 normalizedType.split('/')[0] === format.split('/')[0]),

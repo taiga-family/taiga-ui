@@ -42,6 +42,18 @@ describe('tuiCreateFileFormatValidator', () => {
         });
     });
 
+    it('matches a compound extension against the end of the file name', () => {
+        const validator = tuiCreateFileFormatValidator('.tar.gz');
+        const archive = makeFile('backup.TAR.GZ', 'application/gzip');
+        const gzip = makeFile('backup.gz', 'application/gzip');
+        const renamedArchive = makeFile('backup.tar.gz.txt', 'text/plain');
+        const control = new FormControl([archive, gzip, renamedArchive]);
+
+        expect(
+            validator(control)?.[TUI_FORMAT_ERROR].$implicit.map(({name}: File) => name),
+        ).toEqual([gzip.name, renamedArchive.name]);
+    });
+
     describe('accept string with spaces after commas (.jpeg, .jpg, .png, .pdf, .doc, .docx, .zip, .tif)', () => {
         const accept = '.jpeg, .jpg, .png, .pdf, .doc, .docx, .zip, .tif';
         const validator = tuiCreateFileFormatValidator(accept);
