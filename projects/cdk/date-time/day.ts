@@ -1,7 +1,7 @@
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
-import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
+import {MILLISECONDS_IN_DAY, MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiDayOfWeek} from './day-of-week';
 import {TuiMonth} from './month';
 import {TuiMonthNumber} from './month-number';
@@ -106,9 +106,9 @@ export class TuiDay extends TuiMonth {
     }
 
     public static override lengthBetween(from: TuiDay, to: TuiDay): number {
-        return Math.round(
-            (to.toLocalNativeDate().getTime() - from.toLocalNativeDate().getTime()) /
-                (1000 * 60 * 60 * 24),
+        return (
+            (to.toUtcNativeDate().getTime() - from.toUtcNativeDate().getTime()) /
+            MILLISECONDS_IN_DAY
         );
     }
 
