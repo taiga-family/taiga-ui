@@ -57,6 +57,10 @@ export class TuiInputFilesDirective extends TuiControl<
     );
 
     public process(files: FileList): void {
+        if (!files.length) {
+            return;
+        }
+
         const fileOrFiles = this.el.multiple
             ? [...toArray(this.value()), ...Array.from(files)]
             : files[0];
