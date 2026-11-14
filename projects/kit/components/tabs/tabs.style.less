@@ -21,9 +21,18 @@
         pointer-events: none;
     }
 
+    &[data-tui-anchor] {
+        anchor-name: var(--tui-anchor) !important;
+    }
+
     &._active {
         color: var(--tui-text-primary);
         box-shadow: none;
+        anchor-name: --tui-tab-active !important;
+
+        &[data-tui-anchor] {
+            anchor-name: --tui-tab-active, var(--tui-anchor) !important;
+        }
     }
 
     &:focus-visible {
