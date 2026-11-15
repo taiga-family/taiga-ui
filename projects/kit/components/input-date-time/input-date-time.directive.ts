@@ -187,7 +187,10 @@ export class TuiInputDateTimeDirective
 
         const [prevDate, prevTime = null] = this.value() ?? [];
 
-        if (!prevDate?.daySame(parsedDate) || Number(parsedTime) !== Number(prevTime)) {
+        if (
+            !prevDate?.daySame(parsedDate) ||
+            parsedTime?.toAbsoluteMilliseconds() !== prevTime?.toAbsoluteMilliseconds()
+        ) {
             this.onChange([parsedDate, parsedTime]);
         }
     }
