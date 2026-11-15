@@ -160,7 +160,7 @@ export class TuiComboBoxDirective<T>
 
         const options = this.options();
 
-        if (options.length === 1 && options[0]) {
+        if (options.length === 1 && options[0] != null) {
             this.textfield.handleOption(options[0]);
         }
     }
