@@ -29,8 +29,10 @@ export interface TuiTextfieldItem<T> {
     host: {
         '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
         '[class._string]': '!textfield.item()',
-        '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
-        '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
+        '(keydown.arrowLeft.prevent)':
+            'el.previousElementSibling?.firstChild?.focus({focusVisible: true})',
+        '(keydown.arrowRight.prevent)':
+            'el.nextElementSibling?.firstChild?.focus({focusVisible: true})',
         '(pointerdown.self)': 'prevent($event)',
     },
 })
