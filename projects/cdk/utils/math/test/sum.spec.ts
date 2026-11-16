@@ -27,6 +27,8 @@ describe('tuiSum', () => {
     it('handles scientific notation with mixed decimal precision', () => {
         expect(tuiSum(0.1, 2e-7, 3e-8)).toBe(0.10000023);
         expect(tuiSum(1, 1e-7)).toBe(1.0000001);
+        expect(tuiSum(67_108_864.1, 1e-8)).toBe(67_108_864.10000001);
+        expect(tuiSum(-67_108_864.1, -1e-8)).toBe(-67_108_864.10000001);
     });
 
     it('handles large values in scientific notation', () => {
@@ -54,7 +56,7 @@ describe('tuiSum', () => {
         expect(tuiSum(-Number.MAX_SAFE_INTEGER, -2, Number.MAX_SAFE_INTEGER)).toBe(-2);
     });
 
-    it('preserves large integer operands in the fallback', () => {
+    it('preserves large integer operands', () => {
         expect(tuiSum(1_000_000_000_000_000_128, -1e18)).toBe(128);
         expect(tuiSum(-1_000_000_000_000_000_128, 1e18)).toBe(-128);
         expect(tuiSum(1_000_000_000_000_000_128, -1e18, 0.1, 0.2)).toBe(128.3);

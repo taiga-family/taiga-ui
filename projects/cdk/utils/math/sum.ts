@@ -20,23 +20,7 @@ export function tuiSum(...args: ReadonlyArray<bigint | number>): bigint | number
         return numbers.reduce((acc, n) => acc + n, 0);
     }
 
-    const decimal = numbers.map((n) => {
-        const [mantissa = '', exponent = '0'] = n.toString().split('e');
-
-        return Math.max(0, (mantissa.split('.')[1] ?? '').length - Number(exponent));
-    });
-
-    const maxDecimal = Math.max(0, ...decimal);
-    const precision = 10 ** maxDecimal;
-    const scaled = numbers.map((n) => Math.round(n * precision));
-    const sumInt = scaled.reduce((acc, n) => acc + n, 0);
-    const absoluteSum = scaled.reduce((acc, n) => acc + Math.abs(n), 0);
-
-    if (Number.isSafeInteger(absoluteSum)) {
-        return Number(`${sumInt}e-${maxDecimal}`);
-    }
-
-    // Fall back to exact decimal arithmetic when scaling is unsafe.
+    // Scaling a number can round its decimal coefficient even within the safe integer range.
     const parts = numbers.map((n) => {
         if (Number.isInteger(n)) {
             return {value: BigInt(n), exponent: 0};
@@ -51,7 +35,7 @@ export function tuiSum(...args: ReadonlyArray<bigint | number>): bigint | number
         };
     });
 
-    const minExponent = Math.min(...parts.map(({exponent}) => exponent));
+    const minExponent = parts.reduce((min, {exponent}) => Math.min(min, exponent), 0);
     const sum = parts.reduce(
         (acc, {value, exponent}) =>
             acc + value * BigInt(10) ** BigInt(exponent - minExponent),
