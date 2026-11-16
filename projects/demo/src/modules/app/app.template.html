@@ -1,6 +1,11 @@
 <router-outlet *ngIf="isLanding(); else portal" />
 <ng-template #portal>
     <tui-doc-main #main>
+        <news
+            ngProjectAs="tuiDocNavigation"
+            class="news"
+        />
+
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
