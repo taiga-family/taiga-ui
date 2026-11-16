@@ -4,7 +4,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Pagination', () => {
     test('disables both arrows when disabled', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Pagination + '/API?disabled=true&index=1&length=3');
+        await tuiGoto(page, `${DemoRoute.Pagination}/API?disabled=true&index=1&length=3`);
 
         const pagination = new TuiDocumentationPagePO(page).demo.locator('tui-pagination');
         const arrows = pagination.locator('button[tuiIconButton]');
@@ -18,7 +18,7 @@ test.describe('Pagination', () => {
     });
 
     test('disables both arrows when length is zero', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Pagination + '/API?length=0');
+        await tuiGoto(page, `${DemoRoute.Pagination}/API?length=0`);
 
         const pagination = new TuiDocumentationPagePO(page).demo.locator('tui-pagination');
         const arrows = pagination.locator('button[tuiIconButton]');
