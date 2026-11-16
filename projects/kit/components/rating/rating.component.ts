@@ -44,7 +44,7 @@ export class TuiRating extends TuiControl<number> {
     });
 
     protected onKeyDown(event: KeyboardEvent): void {
-        if (!this.interactive()) {
+        if (!this.interactive() && event.key !== 'Tab') {
             event.preventDefault();
         }
     }
