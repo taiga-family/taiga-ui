@@ -26,6 +26,8 @@ test.describe('Pagination', () => {
         await expect(arrows).toHaveCount(2);
         await expect(arrows.first()).toBeDisabled();
         await expect(arrows.last()).toBeDisabled();
-        await expect(pagination.locator('[automation-id="tui-pagination__element"]')).toHaveCount(0);
+        await expect(
+            pagination.locator('[automation-id="tui-pagination__element"]'),
+        ).toHaveCount(0);
     });
 });
