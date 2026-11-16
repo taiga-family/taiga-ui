@@ -98,7 +98,7 @@ test.describe('InputFiles', () => {
             element.addEventListener('drop', (event) => {
                 element.setAttribute(
                     'data-drop-file-count',
-                    String(event.dataTransfer?.files.length),
+                    String((event as DragEvent).dataTransfer?.files.length),
                 );
             });
 
