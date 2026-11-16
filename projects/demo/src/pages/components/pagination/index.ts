@@ -9,6 +9,7 @@ import {TuiPagination} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected disabled = false;
     protected focusable = true;
     protected index = 0;
     protected length = 8;
