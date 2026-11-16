@@ -5,7 +5,7 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/core/components/slider';
-import {identity, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
+import {identity, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';
 
@@ -45,7 +45,12 @@ export class TuiRangeChange {
                     ),
                 ),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
-                takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
+                takeUntil(
+                    merge(
+                        tuiTypedFromEvent(this.doc, 'pointerup', {passive: true}),
+                        tuiTypedFromEvent(this.doc, 'pointercancel', {passive: true}),
+                    ),
+                ),
                 repeat(),
                 takeUntilDestroyed(),
             )
