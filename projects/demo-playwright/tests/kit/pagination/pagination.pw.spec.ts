@@ -3,10 +3,11 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Pagination', () => {
-    test('skips page buttons on Tab when focusable is false', async ({page}) => {
+    test('skips pagination when focusable is false', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Pagination}/API?focusable=false`);
 
-        const pagination = new TuiDocumentationPagePO(page).demo.locator('tui-pagination');
+        const demo = new TuiDocumentationPagePO(page).demo;
+        const pagination = demo.locator('tui-pagination');
 
         await pagination.evaluate((element) => {
             const before = document.createElement('button');
