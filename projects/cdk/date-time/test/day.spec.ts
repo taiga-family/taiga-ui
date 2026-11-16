@@ -5,6 +5,27 @@ import {tuiMockDateInside} from './helpers';
 
 describe('TuiDay', () => {
     describe('static method', () => {
+        it('counts calendar days across a skipped local day', () => {
+            const from = new TuiDay(2011, 11, 29);
+            const to = new TuiDay(2011, 11, 31);
+            // Pacific/Apia skipped December 30, 2011.
+            const fromLocal = jest
+                .spyOn(from, 'toLocalNativeDate')
+                .mockReturnValue(new Date('2011-12-29T00:00:00-10:00'));
+
+            const toLocal = jest
+                .spyOn(to, 'toLocalNativeDate')
+                .mockReturnValue(new Date('2011-12-31T00:00:00+14:00'));
+
+            try {
+                expect(TuiDay.lengthBetween(from, to)).toBe(2);
+                expect(TuiDay.lengthBetween(to, from)).toBe(-2);
+            } finally {
+                fromLocal.mockRestore();
+                toLocal.mockRestore();
+            }
+        });
+
         describe('isValidDay returns', () => {
             describe('false if invalid date is passed', () => {
                 it('NaN', () => {

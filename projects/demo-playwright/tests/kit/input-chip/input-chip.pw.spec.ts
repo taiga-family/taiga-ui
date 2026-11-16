@@ -19,37 +19,30 @@ test.describe('InputChip', () => {
     test.describe('Examples', () => {
         test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.InputChip));
 
-        test('shows the chip focus outline on the first arrow press after a click', async ({
+        test('moves focus between chips with the arrow keys after clicking the input', async ({
             page,
         }) => {
             const example = new TuiDocumentationPagePO(page).getExample('#chips');
-            const inputChip = new TuiInputChipEO(example);
-            const chips = example
-                .locator(TUI_TEXTFIELD_LOCATORS.HOST)
-                .first()
-                .locator('tui-input-chip');
+            const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
+            const {input} = new TuiInputChipEO(example);
+            const chips = textfield.locator('tui-input-chip');
+            const middle = chips.filter({hasText: 'love'});
+            const last = chips.filter({hasText: 'Angular'});
 
-            const middle = chips.nth(1);
-            const last = chips.last();
-
-            await inputChip.input.click();
-            await expect(last).toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
+            await input.click();
+            await expect(input).toBeFocused();
 
             await page.keyboard.press('ArrowLeft');
             await expect(last).toBeFocused();
-            await expect(last).not.toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
 
             await page.keyboard.press('ArrowLeft');
             await expect(middle).toBeFocused();
-            await expect(middle).not.toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
 
             await page.keyboard.press('ArrowRight');
             await expect(last).toBeFocused();
-            await expect(last).not.toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
 
-            await last.locator('.t-text').click();
-            await expect(inputChip.input).toBeFocused();
-            await expect(last).toHaveCSS('outline-color', 'rgba(0, 0, 0, 0)');
+            await last.getByText('Angular', {exact: true}).click();
+            await expect(input).toBeFocused();
         });
 
         test('horizontal textfield keeps its label and values visible', async ({

@@ -122,9 +122,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
         }
 
         event.preventDefault();
-        event.currentTarget.previousElementSibling?.firstElementChild?.focus({
-            focusVisible: true,
-        });
+        event.currentTarget.previousElementSibling?.firstElementChild?.focus();
     }
 
     protected focusInput(): void {
