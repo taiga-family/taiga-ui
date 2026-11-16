@@ -1,4 +1,5 @@
 import {inject, Injectable} from '@angular/core';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, merge, Observable, switchMap, takeUntil} from 'rxjs';
@@ -45,7 +46,7 @@ export class TuiScrollbarService extends Observable<
         const rect = this.el.parentElement!.getBoundingClientRect();
         const {top, left, right, width, height} = rect;
         const {offsetHeight, offsetWidth} = this.el;
-        const rtl = this.el.matches('[dir="rtl"] :scope');
+        const rtl = this.el.matches(TUI_RTL_SELECTOR);
         const inline = rtl ? right : left;
         const multiplier = rtl ? -1 : 1;
         const maxTop = this.element.scrollHeight - height;

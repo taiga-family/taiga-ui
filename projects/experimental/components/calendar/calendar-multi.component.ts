@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WaIntersectionObservee} from '@ng-web-apis/intersection-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
@@ -90,7 +91,7 @@ export class TuiCalendarMultiComponent<
 
     protected onSpin(step: number): void {
         const el: HTMLElement = this.scroll().nativeElement;
-        const sign = el.matches('[dir="rtl"] :scope') ? -1 : 1;
+        const sign = el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
         const left = el.offsetWidth / this.months();
 
         el.scrollTo({left: el.scrollLeft + left * sign * step, behavior: 'smooth'});
