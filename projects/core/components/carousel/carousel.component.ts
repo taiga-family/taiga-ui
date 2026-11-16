@@ -100,7 +100,9 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     private get d(): number {
-        return this.win.getComputedStyle(this.el).direction === 'rtl' ? -1 : 1;
+        return this.el.matches('[dir="rtl"], [dir="rtl"] :scope:not([dir="ltr"])')
+            ? -1
+            : 1;
     }
 
     private get fallback(): boolean {
