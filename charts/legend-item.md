@@ -54,7 +54,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -74,10 +74,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     --tui-chart-categorical-00: #c779d0;
     --tui-chart-categorical-01: #feac5e;
@@ -89,18 +87,11 @@ export default class Example {
 .wrapper {
     display: flex;
     align-items: center;
-
-    @media @tui-mobile {
-        flex-direction: column;
-    }
+    flex-direction: column;
 }
 
 .legend {
-    margin: 0 0 0 2rem;
-
-    @media @tui-mobile {
-        margin: 2rem 0 0;
-    }
+    margin: 2rem 0 0;
 }
 
 .item {
@@ -149,7 +140,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
         TuiRingChart,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -187,10 +178,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     --tui-chart-categorical-00: #c779d0;
     --tui-chart-categorical-01: #feac5e;
@@ -207,15 +196,12 @@ export default class Example {
     display: flex;
     align-items: center;
     margin-block-start: 1rem;
-
-    @media @tui-mobile {
-        flex-direction: column;
-    }
+    flex-direction: column;
 }
 
 .disable {
-    .transition(~'transform, color');
-
+    transition-property: transform, color;
+    transition-duration: var(--tui-duration);
     margin-inline-start: 0.5rem;
     will-change: transform;
     color: var(--tui-text-secondary);
@@ -228,19 +214,15 @@ export default class Example {
     &:hover {
         color: var(--tui-text-primary);
     }
+}
 
-    &_rotated {
-        transform: rotate(45deg);
-    }
+.disable_rotated {
+    transform: rotate(45deg);
 }
 
 .legend {
-    margin: 0 0 0 2rem;
     justify-content: center;
-
-    @media @tui-mobile {
-        margin: 2rem 0 0;
-    }
+    margin: 2rem 0 0;
 }
 
 .item {

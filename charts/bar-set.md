@@ -38,7 +38,7 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBarSet],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -47,8 +47,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bars {
     block-size: 6.25rem;
     inline-size: 10rem;
@@ -73,7 +73,7 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBarSet],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -82,8 +82,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bars {
     block-size: 6.25rem;
     inline-size: 10rem;
@@ -108,7 +108,7 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBarSet],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -117,8 +117,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bars {
     block-size: 6.25rem;
     inline-size: 3.75rem;
@@ -148,7 +148,7 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBarSet],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -157,8 +157,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     block-size: 6.25rem;
 }
@@ -197,7 +197,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBarSet, TuiFormatNumberPipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -207,8 +207,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bars {
     block-size: 7.5rem;
     inline-size: 5rem;

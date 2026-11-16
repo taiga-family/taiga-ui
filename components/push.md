@@ -66,7 +66,7 @@ import {TuiPush} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiIcon, TuiLink, TuiPush],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -81,10 +81,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
 }

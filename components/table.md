@@ -208,7 +208,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -285,8 +285,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiTh],
 [tuiTd] {
     border-inline-start: none;
@@ -436,7 +436,7 @@ interface Item {
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
@@ -537,8 +537,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .table {
     table-layout: fixed;
 }
@@ -562,8 +562,7 @@ export default class Example {
     padding-block-start: 1rem;
 }
 
-// Due to rowSpan this item appears to be the first child
-// but it shouldn't have the left border in reality
+/* Due to rowSpan this item appears to be the first child, but it shouldn't have the left border in reality */
 .border {
     border-inline-start: none;
 }
@@ -753,7 +752,7 @@ function getAge(dob: TuiDay): number {
         TuiTablePagination,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -850,8 +849,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .table {
     inline-size: 100%;
 }
@@ -976,7 +975,7 @@ function getAge({dob}: User): number {
         TuiTable,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -989,8 +988,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 table {
     inline-size: 100%;
 
@@ -1045,7 +1044,7 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -1071,8 +1070,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .table {
     inline-size: 100%;
 }
@@ -1271,7 +1270,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiChevron, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -1312,10 +1311,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-table-expand {
     td {
         background: var(--tui-background-base-alt);
@@ -1448,7 +1445,7 @@ interface Item {
         TuiTable,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -1512,8 +1509,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 th {
     white-space: nowrap;
 }

@@ -34,7 +34,7 @@ interface Item {
     selector: 'tui-tab-bar-example',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -76,8 +76,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .tabs {
     min-inline-size: 25rem;
     padding-block-end: env(safe-area-inset-bottom);
@@ -136,7 +136,7 @@ import {TuiTabBar} from '@taiga-ui/addon-mobile';
 @Component({
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -158,8 +158,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .tabs {
     min-inline-size: 25rem;
     color: var(--tui-text-action);
@@ -230,11 +230,11 @@ export default class Example {
 
 #### iOS Liquid glass
 
-To enable the liquid-glass mode on iOS devices, specify the option in `provideTaiga({apis: {liquidGlass: true}})` Fixed
+To enable the liquid-glass mode on iOS devices, specify the option in `provideTaiga({apis: {liquidGlass: true}})` To fade the content scrolled underneath the tab bar, apply the `tui-liquid-glass_overlay` class to the tab bar or any of its ancestors. Fixed
 
 **Template:**
 ```html
-<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button> } </nav>
+<nav tuiTabBar class="tui-liquid-glass_overlay" [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [badge]="item.badge" [icon]="item.icon" (click)="onClick(item)" > {{ item.text }} </button> } </nav>
 ```
 
 **TypeScript:**
@@ -256,7 +256,7 @@ interface Item {
     selector: 'tui-tab-bar-example-liquid',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -298,8 +298,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     inline-size: 100%;
 }
@@ -307,11 +307,11 @@ export default class Example {
 
 #### iOS Liquid glass fullwidth
 
-With more than three items the tab bar stretches to the full width of the screen; with fewer it stays a compact, centered pill. Fixed
+With more than three items the tab bar grows wider, but its width is capped rather than stretching to the full width of the screen; with fewer it stays a compact, centered pill. Fixed
 
 **Template:**
 ```html
-<nav tuiTabBar [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [icon]="item.icon" > {{ item.text }} </button> } </nav>
+<nav tuiTabBar class="tui-liquid-glass_overlay" [(activeItemIndex)]="activeItemIndex" > @for (item of items; track item) { <button tuiTabBarItem type="button" [icon]="item.icon" > {{ item.text }} </button> } </nav>
 ```
 
 **TypeScript:**
@@ -327,7 +327,7 @@ import {TUI_LIQUID_GLASS} from '@taiga-ui/core';
     selector: 'tui-tab-bar-example-liquid-full',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -368,8 +368,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     inline-size: 100%;
 }
@@ -402,7 +402,7 @@ interface Item {
     selector: 'tui-tab-bar-example-liquid-android',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {
@@ -440,8 +440,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     inline-size: 100%;
 }

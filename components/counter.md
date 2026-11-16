@@ -43,7 +43,7 @@ import {TuiCounter} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiCounter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -52,8 +52,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@ import {TuiCounter} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, I18nPluralPipe, TuiCounter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -97,8 +97,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -164,7 +164,7 @@ import {TuiCard} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiCard, TuiCounter, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -173,10 +173,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .footer {
     position: relative;
     display: flex;
@@ -187,17 +185,17 @@ export default class Example {
 }
 
 .counter {
-    .transition(inline-size);
-
     position: absolute;
+    transition-property: inline-size;
+    transition-duration: var(--tui-duration);
     inline-size: 100%;
     min-inline-size: var(--tui-height-m);
     inset-inline-end: 0;
     overflow: hidden;
+}
 
-    &_minimized {
-        inline-size: var(--tui-height-m);
-        color: transparent;
-    }
+.counter_minimized {
+    inline-size: var(--tui-height-m);
+    color: transparent;
 }
 ```

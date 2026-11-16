@@ -127,7 +127,7 @@ interface Operation {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -183,8 +183,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .accordion {
     inline-size: 20rem;
     border-radius: 0;
@@ -339,7 +339,7 @@ import {TuiAccordion, TuiAvatar, TuiConnected} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -377,8 +377,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .accordion {
     inline-size: 20rem;
     color: var(--tui-text-secondary);
@@ -429,7 +429,7 @@ interface Item {
 @Component({
     imports: [TuiAccordion, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -466,8 +466,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-accordion {
     .t-header {
         display: flex;

@@ -422,7 +422,7 @@ interface Card {
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -447,8 +447,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .card {
     display: flex;
     align-items: center;
@@ -465,7 +465,7 @@ export default class Example {
 <tui-textfield tuiChevron>
 <input placeholder="Select film" tuiComboBox [(ngModel)]="value" />
 <tui-data-list *tuiDropdown size="s" >
-<section class="filters"> @for (category of categories; track category) { <label tuiChip [appearance]="filters[category] ? 'accent' : 'neutral'" (pointerdown.prevent)="(0)" > {{ category }} <input hidden type="checkbox" [(ngModel)]="filters[category]" />
+<section class="filters tui-scrollbar-hidden"> @for (category of categories; track category) { <label tuiChip [appearance]="filters[category] ? 'accent' : 'neutral'" (pointerdown.prevent)="(0)" > {{ category }} <input hidden type="checkbox" [(ngModel)]="filters[category]" />
 </label> } </section> @for (group of filmDatabase | keyvalue; track group) { @if (filters[group.key]) { <tui-opt-group [label]="group.key"> @for (film of group.value | tuiFilterByInput; track film) { <button tuiOption type="button" [value]="film" > {{ film }} </button> } </tui-opt-group> } } </tui-data-list>
 </tui-textfield>
 ```
@@ -491,7 +491,7 @@ import {TuiChevron, TuiChip, TuiComboBox} from '@taiga-ui/kit';
         TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -539,13 +539,9 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .filters {
-    .scrollbar-hidden();
-
     position: sticky;
     z-index: 1;
     display: flex;
@@ -641,7 +637,7 @@ You can use `ComboBox` with virtual scrolling from @angular/cdk/scrolling . Virt
 <input placeholder="Country" tuiComboBox [(ngModel)]="value" />
 <ng-container *tuiDropdown>
 <!-- 42 = option height -->
-<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="42" [maxBufferPx]="42 * 10" [minBufferPx]="42 * 5" [style.height.px]="(items?.length || 1) * 42 + 8" >
+<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="tui-scrollbar-hidden" [itemSize]="42" [maxBufferPx]="42 * 10" [minBufferPx]="42 * 5" [style.height.px]="(items?.length || 1) * 42 + 8" [style.max-height.%]="100" >
 <tui-data-list withVirtualScroll>
 <button *cdkVirtualFor="let item of items" tuiOption type="button" [value]="item" > {{ item }} </button>
 </tui-data-list>
@@ -674,24 +670,12 @@ import {WithVirtualScroll} from './with-virtual-scroll';
         WithVirtualScroll,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
     protected value = null;
-}
-```
-
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
-.scroll {
-    .scrollbar-hidden();
-
-    max-block-size: 100%;
 }
 ```
 
@@ -726,7 +710,7 @@ import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga
         TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -736,12 +720,10 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@sticky-header-height: 4.1875rem;
-
+**CSS:**
+```css
 :root {
-    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;
+    --tui-dropdown-mobile-offset: 5.25rem;
 }
 
 header[tuiDocHeader] {

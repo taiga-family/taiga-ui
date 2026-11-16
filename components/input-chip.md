@@ -52,7 +52,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -62,8 +62,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 19rem;
@@ -103,7 +103,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -112,8 +112,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 19rem;
@@ -245,7 +245,7 @@ interface User {
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -270,8 +270,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 19rem;
@@ -378,7 +378,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {dir: 'rtl'},
@@ -395,8 +395,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -463,7 +463,7 @@ interface User {
         TuiSelectLike,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -479,8 +479,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 19rem;
@@ -548,7 +548,7 @@ import {
         TuiTable,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -565,8 +565,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 19rem;

@@ -34,7 +34,7 @@ import {TuiRadio, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -60,8 +60,8 @@ export default class Example implements OnInit {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
 
@@ -76,15 +76,15 @@ export default class Example implements OnInit {
     flex: 1;
     gap: 1rem;
     padding: 1rem;
+}
 
-    &_web {
-        border: 1px solid var(--tui-border-normal);
-        border-inline-start-width: 0;
+.wrapper_web {
+    border: 1px solid var(--tui-border-normal);
+    border-inline-start-width: 0;
 
-        &:first-child {
-            border-inline-end-width: 0;
-            border-inline-start-width: 1px;
-        }
+    &:first-child {
+        border-inline-end-width: 0;
+        border-inline-start-width: 1px;
     }
 }
 ```

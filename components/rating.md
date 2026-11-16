@@ -24,7 +24,7 @@ import {TuiRating} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiRating],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -33,8 +33,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .rating {
     font-size: 1.5rem;
     inline-size: 10rem;
@@ -62,7 +62,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [FormsModule, TuiButton, TuiRating],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -82,8 +82,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .rating,
 .button {
     display: inline-block;

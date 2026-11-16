@@ -132,7 +132,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton, TuiMapperPipe, TuiPager, TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -160,18 +160,16 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .progress {
-    .transition(~'color, inline-size');
-
+    transition-property: color, inline-size;
+    transition-duration: var(--tui-duration);
     inline-size: 1rem;
+}
 
-    &:not(&_active) {
-        inline-size: 0.5rem;
-        color: transparent;
-    }
+.progress:not(.progress_active) {
+    inline-size: 0.5rem;
+    color: transparent;
 }
 ```

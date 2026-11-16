@@ -68,15 +68,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -119,8 +119,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -159,15 +159,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAmountPipe, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .description {
     display: flex;
     justify-content: space-between;
@@ -203,15 +203,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiProgressBar]._segmented {
     --tui-segment-gap: 0.25rem;
 

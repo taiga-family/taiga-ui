@@ -65,7 +65,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAxes, TuiInputDateRange, TuiLineDaysChart, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -115,8 +115,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 50rem;
@@ -199,7 +199,7 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -332,22 +332,8 @@ function even<T>(array: readonly T[]): readonly T[] {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
-.color() {
-    color: var(--tui-chart-categorical-01);
-
-    &:first-child {
-        color: var(--tui-chart-categorical-08);
-    }
-
-    &:last-child {
-        color: var(--tui-chart-categorical-12);
-    }
-}
-
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
 }
@@ -367,11 +353,18 @@ function even<T>(array: readonly T[]): readonly T[] {
 }
 
 .item {
-    .color();
-
     display: flex;
     align-items: center;
     margin: 0 0.75rem;
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
 
     &::before {
         content: '';
@@ -390,7 +383,16 @@ function even<T>(array: readonly T[]): readonly T[] {
 }
 
 .chart {
-    .color();
-    .fullsize();
+    position: absolute;
+    inset: 0;
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
 }
 ```

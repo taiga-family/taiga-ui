@@ -62,7 +62,7 @@ import {TuiAvatar, TuiProgress, TuiSegmented, TuiSkeleton} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -91,10 +91,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-segmented {
     inline-size: fit-content;
     text-transform: uppercase;
@@ -149,7 +147,7 @@ import {TuiProgress, TuiSegmented} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -167,8 +165,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     gap: 1rem;
@@ -217,7 +215,7 @@ import {TuiFile} from '@taiga-ui/experimental';
 @Component({
     imports: [TuiFile, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -226,10 +224,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -280,7 +276,7 @@ import {map, Subject, switchMap, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [TuiAnimated, TuiButton, TuiFile, TuiIcon, TuiSlides, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -302,10 +298,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -357,7 +351,7 @@ import {TuiSlides} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -375,10 +369,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -414,7 +406,7 @@ import {TuiFile, TuiFilePipe} from '@taiga-ui/experimental';
 @Component({
     imports: [FormsModule, TuiButtonX, TuiFile, TuiFilePipe, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -431,10 +423,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-wrap: wrap;
@@ -481,7 +471,7 @@ import {TUI_FILE_OPTIONS, TuiFiles} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAnimated, TuiButtonX, TuiFile, TuiFiles, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -495,10 +485,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 label {
     margin-block-end: 0.5rem;
 }

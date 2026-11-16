@@ -62,15 +62,15 @@ import {TuiButton, TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiLink, TuiNotification, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -138,7 +138,7 @@ import {TuiNotification, TuiTitle} from '@taiga-ui/core';
 @Component({
     imports: [RouterLink, TuiNotification, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -147,10 +147,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -158,8 +156,9 @@ export default class Example {
 }
 
 button[tuiNotification]::before {
-    .center-top();
-
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translate(0, -50%);
     color: var(--tui-text-negative);
 }
 ```

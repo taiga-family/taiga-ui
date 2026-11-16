@@ -28,7 +28,7 @@ Native styled Meter tag, using the same attributes as native version.
 
 **Template:**
 ```html
-<label tuiTitle="m"> Credit Score <div aria-hidden="true" class="ticks-labels" >
+<label tuiTitle="m"> Credit Score <div aria-hidden="true" class="labels" >
 <span>300</span>
 <span appearance="floating" tuiBadge [style.inset-inline-start.%]="(100 * (666 - 300)) / (850 - 300)" > 666 </span>
 <span>850</span>
@@ -48,21 +48,22 @@ import {TuiBadge, TuiMeter} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiMeter, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
-.ticks-labels {
-    .tui-slider-ticks-labels();
-
+**CSS:**
+```css
+.labels {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
+    margin: 0.25rem 0;
 
     [tuiBadge] {
         position: absolute;
@@ -81,7 +82,7 @@ export default class Example {}
 <label tuiHeader>
 <div tuiTitle> Resting Heart Rate <div tuiSubtitle> The number of times your heart beats per minute when you are completely relaxed, still, and awake </div>
 <meter high="100" low="80" max="100" min="40" optimum="60" tuiMeter value="60" ></meter>
-<div aria-hidden="true" class="ticks-labels" >
+<div aria-hidden="true" class="labels" >
 <span>40</span>
 <span appearance="floating" tuiBadge [style.inset-inline-start.%]="(100 * (60 - 40)) / (100 - 40)" > 60 </span>
 <span>100</span>
@@ -102,25 +103,26 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBadge, TuiHeader, TuiMeter, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 [tuiMeter] {
     margin-block-start: 1rem;
 }
 
-.ticks-labels {
-    .tui-slider-ticks-labels();
-
+.labels {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
+    margin: 0.25rem 0;
 
     [tuiBadge] {
         position: absolute;

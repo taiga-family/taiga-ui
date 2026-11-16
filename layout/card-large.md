@@ -77,15 +77,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 section {
     display: flex;
     block-size: 3.125rem;
@@ -208,15 +208,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -262,15 +262,15 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiButton, TuiCardLarge, TuiCardMedium, TuiHeader, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 section {
     display: flex;
     gap: 0.75rem;
@@ -354,15 +354,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -427,15 +427,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .actions {
     display: flex;
     flex-direction: column;
@@ -544,15 +544,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -686,15 +686,15 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiCardLarge] {
     max-inline-size: 21.4375rem;
 }
@@ -841,7 +841,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -858,8 +858,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .popover {
     position: fixed;
     inset-inline-end: 1.5rem;

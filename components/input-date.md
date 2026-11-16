@@ -124,7 +124,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiInputDate],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -134,8 +134,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .button {
     inline-size: 100%;
     border-radius: 0;
@@ -411,7 +411,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, KeyValuePipe, TuiDataList, TuiInputDate],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -436,8 +436,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 section {
     display: flex;
 }

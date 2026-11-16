@@ -63,15 +63,15 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
 @Component({
     imports: [TuiElasticContainer],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     border: 2px solid var(--tui-text-tertiary);
     overflow: visible;
@@ -107,7 +107,7 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
 @Component({
     imports: [TuiButton, TuiElasticContainer],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -124,8 +124,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .visible {
     overflow: visible;
 }
@@ -170,7 +170,7 @@ import {TuiElasticContainer} from '@taiga-ui/layout';
         TuiInput,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -196,10 +196,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .wrapper:not(:last-child) {
     margin-block-end: 1rem;
 }

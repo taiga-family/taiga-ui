@@ -39,7 +39,7 @@ import {TuiButton, TuiHint, TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [RouterLink, TuiButton, TuiHint, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -51,8 +51,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
 }

@@ -42,15 +42,15 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -85,15 +85,15 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -129,15 +129,15 @@ import {TuiAvatar, TuiChevron} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiChevron, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -272,15 +272,15 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .button {
     inline-size: 15rem;
     justify-content: space-between;
@@ -308,15 +308,15 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -343,15 +343,15 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

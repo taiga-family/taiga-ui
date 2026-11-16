@@ -32,19 +32,17 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiSurface],
     templateUrl: './index.html',
-    styleUrls: ['./base.less', './index.less'],
+    styleUrls: ['./base.css', './index.css'],
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .scale {
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover {
             transform: scale(1.15);
         }
@@ -68,7 +66,7 @@ export default class Example {}
         );
     }
 
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover::after {
             opacity: 0.5;
         }
@@ -80,7 +78,7 @@ export default class Example {}
 }
 
 .highlight {
-    @media @tui-mouse {
+    @media (hover: hover) and (pointer: fine) {
         &:hover::before {
             backdrop-filter: brightness(1.1);
         }
@@ -132,15 +130,15 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiSurface],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: repeat(3, 8rem);
@@ -174,15 +172,15 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiSurface],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     background: url('/assets/images/big-wallpaper.jpg');
@@ -227,15 +225,15 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiSurface],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .surface {
     display: flex;
     align-items: flex-end;
@@ -323,15 +321,15 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiAvatar, TuiSurface],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .button {
     display: flex;
     inline-size: 20rem;
@@ -465,7 +463,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less', './surface.less'],
+    styleUrls: ['./index.css', './surface.css'],
     encapsulation,
     changeDetection,
 })
@@ -490,8 +488,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: repeat(6, 6.5rem);

@@ -82,7 +82,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -91,8 +91,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 20rem;
@@ -122,7 +122,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -132,8 +132,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 20rem;
@@ -170,7 +170,7 @@ import {TuiInputDateMulti} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiDateFormatProvider({mode: 'mm/dd/yyyy', separator: '/'})],
@@ -180,8 +180,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -216,7 +216,7 @@ const DOT: [string] = ['var(--tui-status-positive)'];
 @Component({
     imports: [FormsModule, TuiInputDateMulti],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -228,8 +228,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 22rem;

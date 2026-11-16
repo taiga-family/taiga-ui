@@ -39,7 +39,7 @@ import {TuiHighDpi, TuiMedia} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiHighDpi, TuiMedia],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -50,8 +50,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
 }
@@ -60,7 +60,7 @@ export default class Example {
     float: left;
     margin-inline-end: 1.5rem;
 
-    // Safari 15+
+    /* Safari 15+ */
     @supports (float: inline-start) {
         float: inline-start;
     }
@@ -97,7 +97,7 @@ import {TuiButton, TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButton, TuiMedia, TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -131,8 +131,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
 }
@@ -194,7 +194,7 @@ import {TuiButton, TuiLink, TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButton, TuiLink, TuiMedia, TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -212,8 +212,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .tui-player {
     display: flex;
     inline-size: 20rem;

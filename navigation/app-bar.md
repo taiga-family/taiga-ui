@@ -72,15 +72,15 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-app-bar {
     box-shadow: var(--tui-shadow-small);
     inline-size: 20rem;
@@ -124,15 +124,15 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppBar, TuiButton, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-app-bar {
     box-shadow: var(--tui-shadow-small);
     inline-size: 30rem;
@@ -196,17 +196,15 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppBar, TuiButton, TuiFade, TuiPlatform, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-app-bar {
     box-shadow: var(--tui-shadow-small);
     inline-size: 20rem;
@@ -232,8 +230,9 @@ tui-app-bar {
 }
 
 section tui-app-bar [tuiTitle] {
-    .center-all();
-
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 ```
@@ -349,7 +348,7 @@ import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -358,8 +357,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     max-block-size: 30rem;
     inline-size: 20rem;
@@ -435,7 +434,7 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppBar, TuiButton, TuiPlatform, TuiProgressBar, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
@@ -443,8 +442,8 @@ import {TuiAppBar} from '@taiga-ui/layout';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-app-bar {
     inline-size: 20rem;
     margin-block-end: 1rem;
@@ -513,7 +512,7 @@ import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
@@ -523,8 +522,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     max-block-size: 30rem;
     inline-size: 20rem;
@@ -580,7 +579,7 @@ import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [{provide: TUI_LIQUID_GLASS, useValue: signal(true)}],
@@ -601,8 +600,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     max-block-size: 30rem;
     inline-size: 20rem;

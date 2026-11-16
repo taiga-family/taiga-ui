@@ -91,7 +91,7 @@ import {TuiAvatar, TuiBadge, TuiShrinkWrap, TuiToast} from '@taiga-ui/kit';
         TuiToast,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -100,8 +100,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -160,7 +160,7 @@ import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 @Component({
     imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -176,8 +176,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -236,7 +236,7 @@ export class Toast {}
 @Component({
     imports: [TuiButton, TuiToast],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -259,8 +259,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

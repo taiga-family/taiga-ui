@@ -82,7 +82,7 @@ import {TuiScrollWheel} from '@taiga-ui/experimental';
 @Component({
     imports: [TuiScrollWheel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -100,10 +100,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -122,9 +120,9 @@ tui-scroll-wheel {
 }
 
 div {
-    .transition(color);
-
     display: flex;
+    transition-property: color;
+    transition-duration: var(--tui-duration);
     align-items: center;
     justify-content: center;
     block-size: 3rem;

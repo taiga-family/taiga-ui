@@ -78,27 +78,20 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+    protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'] as const;
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1rem;
-
-    @media @tui-desktop-min {
-        flex-direction: row-reverse;
-    }
 }
 ```
 
@@ -178,15 +171,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-wrap: wrap;
@@ -228,7 +221,7 @@ import {map, of, repeat, share, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -256,8 +249,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-progress-circle {
     transition: color 2s;
 }
@@ -285,7 +278,7 @@ import {of, repeat, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -302,8 +295,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-progress-circle {
     transform: scaleX(-1);
 }
@@ -328,17 +321,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-progress-circle {
     &:nth-child(1) {
         --tui-thickness: 0.125rem;
@@ -358,13 +349,8 @@ tui-progress-circle {
 }
 
 :host {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1rem;
-
-    @media @tui-desktop-min {
-        flex-direction: row;
-    }
 }
 ```
 
@@ -387,27 +373,19 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+    protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'] as const;
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
-    display: flex;
-    flex-direction: row-reverse;
+    display: grid;
     gap: 1rem;
-
-    @media @tui-mobile {
-        flex-direction: column;
-        margin-block-end: 1rem;
-    }
 }
 ```

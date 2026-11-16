@@ -35,7 +35,7 @@ import {TuiCheckbox, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -61,8 +61,8 @@ export default class Example implements OnInit {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
 
@@ -77,15 +77,15 @@ export default class Example implements OnInit {
     flex: 1;
     gap: 1rem;
     padding: 1rem;
+}
 
-    &_web {
-        border: 1px solid var(--tui-border-normal);
-        border-inline-start-width: 0;
+.wrapper_web {
+    border: 1px solid var(--tui-border-normal);
+    border-inline-start-width: 0;
 
-        &:first-child {
-            border-inline-end-width: 0;
-            border-inline-start-width: 1px;
-        }
+    &:first-child {
+        border-inline-end-width: 0;
+        border-inline-start-width: 1px;
     }
 }
 ```
@@ -151,7 +151,7 @@ import {TuiButton, TuiCheckbox} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -187,8 +187,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 label {
     display: flex;
     align-items: center;

@@ -47,7 +47,7 @@ import {interval, map, startWith} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiIcon, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -59,10 +59,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .tooltip {
     block-size: 1.25rem;
     min-inline-size: 6.25rem;
@@ -112,15 +110,15 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [RouterLink, TuiAutoColorPipe, TuiAvatar, TuiHint, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     background: #3e4757;
@@ -159,15 +157,15 @@ import {TuiTooltip} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiInput, TuiTooltip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 25rem;

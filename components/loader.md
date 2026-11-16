@@ -59,15 +59,15 @@ import {TuiLoader} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     background: var(--tui-background-accent-1);
@@ -93,15 +93,15 @@ import {TuiLoader} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     background: #3e4757;
@@ -127,7 +127,7 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -141,8 +141,8 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .inline-flex {
     display: inline-flex;
 }
@@ -169,7 +169,7 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiLoaderOptionsProvider({size: 'xl'})],
@@ -177,8 +177,8 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-loader {
     min-inline-size: 3.5rem;
 
@@ -229,15 +229,15 @@ import {TuiLoader} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     align-items: center;

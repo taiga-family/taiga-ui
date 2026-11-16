@@ -30,7 +30,7 @@ import {scan, startWith, Subject} from 'rxjs';
 @Component({
     imports: [AsyncPipe, DecimalPipe, TuiZoom],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -47,8 +47,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .t-container,
 .t-zoomable {
     display: flex;

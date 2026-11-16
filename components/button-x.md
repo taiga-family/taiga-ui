@@ -27,15 +27,15 @@ import {TuiButtonX} from '@taiga-ui/core';
 @Component({
     imports: [TuiButtonX],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

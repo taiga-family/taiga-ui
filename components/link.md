@@ -94,15 +94,15 @@ import {TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiTheme='dark'] {
     background: var(--tui-background-base);
     color: var(--tui-text-secondary);

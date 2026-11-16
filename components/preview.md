@@ -46,7 +46,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 @Component({
     imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiSwipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -97,10 +97,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .content {
     font: var(--tui-typography-body-l);
     background-color: var(--tui-background-base);
@@ -182,7 +180,7 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -197,8 +195,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     inline-size: 80%;
     block-size: 80%;
@@ -245,7 +243,7 @@ import {
 @Component({
     imports: [AsyncPipe, TuiButton, TuiIcon, TuiLoader, TuiPreview],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -302,8 +300,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     background-color: rgb(245, 241, 241);
     inline-size: 25rem;

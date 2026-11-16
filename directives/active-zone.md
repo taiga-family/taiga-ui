@@ -50,7 +50,7 @@ import {TuiButton, TuiInput} from '@taiga-ui/core';
 @Component({
     imports: [ReactiveFormsModule, TuiActiveZone, TuiButton, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -74,15 +74,15 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .active-zone {
     padding: 1.25rem;
     border: 2px solid;
+}
 
-    &_active {
-        border-color: var(--tui-background-accent-1);
-    }
+.active-zone_active {
+    border-color: var(--tui-background-accent-1);
 }
 ```
 
@@ -117,7 +117,7 @@ import {TuiButton, TuiDialogService, TuiInput} from '@taiga-ui/core';
 @Component({
     imports: [TuiActiveZone, TuiButton, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -142,14 +142,14 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .active-zone {
     padding: 1.25rem;
     border: 2px solid;
+}
 
-    &_active {
-        border-color: var(--tui-background-accent-1);
-    }
+.active-zone_active {
+    border-color: var(--tui-background-accent-1);
 }
 ```

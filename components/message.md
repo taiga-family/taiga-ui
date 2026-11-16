@@ -31,15 +31,15 @@ import {TuiMessage} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMessage],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -72,17 +72,15 @@ import {TuiMessage} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMessage],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -170,17 +168,15 @@ import {TuiFade, TuiMessage} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiMessage],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -257,15 +253,15 @@ import {TuiAvatar, TuiMessage} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiCell, TuiMessage, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;

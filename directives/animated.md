@@ -61,7 +61,7 @@ import {TuiAppearance, TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiAnimated, TuiAppearance, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -70,18 +70,16 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@width: 15rem;
-
+**CSS:**
+```css
 .button {
-    inline-size: @width;
+    inline-size: 15rem;
     border-radius: 1rem 1rem 0 0;
 }
 
 .container {
     block-size: 6rem;
-    inline-size: @width;
+    inline-size: 15rem;
     overflow: hidden;
     background: #222;
     color: var(--tui-status-warning);

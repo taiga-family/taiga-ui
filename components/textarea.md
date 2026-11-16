@@ -61,15 +61,15 @@ import {TuiTextarea} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTextarea],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -142,7 +142,7 @@ import {TuiTextarea, tuiTextareaOptionsProvider} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiTextarea],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiTextareaOptionsProvider({min: 4, max: 4})],
@@ -159,8 +159,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     ::ng-deep .width {
         background: var(--tui-status-info-pale);

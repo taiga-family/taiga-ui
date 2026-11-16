@@ -208,7 +208,7 @@ import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -217,8 +217,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .buttons {
     display: flex;
     margin: 0 0 1rem;
@@ -422,7 +422,7 @@ export default class Example {
 <button tuiButton tuiSlot="start" type="button" (click)="open.set(false)" > Close </button> Search contacts </tui-app-bar>
 <input placeholder="Search contacts" tuiSearch type="search" class="input" [(ngModel)]="search" />
 </header>
-<div class="favorites"> @for (item of items | slice: 0 : 6; track item) { <tui-avatar-labeled [label]="item.name">
+<div class="favorites tui-scrollbar-hidden"> @for (item of items | slice: 0 : 6; track item) { <tui-avatar-labeled [label]="item.name">
 <div tuiAvatar="@tui.user">
 <img alt="" [src]="item.avatar" />
 </div>
@@ -537,8 +537,6 @@ export default class Example {
 }
 
 .favorites {
-    .scrollbar-hidden();
-
     display: flex;
     gap: 0.75rem;
     margin: 1rem -1rem;
@@ -559,7 +557,8 @@ export default class Example {
 }
 
 .button {
-    .transition(inset-block-end);
+    transition-property: inset-block-end;
+    transition-duration: var(--tui-duration);
 }
 ```
 
@@ -676,7 +675,7 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiSheetDialog],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -695,8 +694,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .buttons {
     display: flex;
     gap: 0.5rem;

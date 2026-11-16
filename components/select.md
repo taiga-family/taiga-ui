@@ -164,7 +164,7 @@ interface Card {
 @Component({
     imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -181,8 +181,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .card {
     display: flex;
     align-items: center;

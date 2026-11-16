@@ -27,7 +27,7 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiHovered],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -40,8 +40,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .text-style {
     font-size: 16px;
     color: #f00;

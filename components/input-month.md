@@ -175,7 +175,7 @@ import {TuiInputMonth} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputMonth, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -190,8 +190,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .option {
     border-block-start: 1px solid var(--tui-border-normal);
     inline-size: 100%;

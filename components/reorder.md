@@ -27,7 +27,7 @@ import {TuiReorder} from '@taiga-ui/addon-table';
 @Component({
     imports: [JsonPipe, TuiReorder],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -37,8 +37,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .list {
     inline-size: 12.5rem;
 }

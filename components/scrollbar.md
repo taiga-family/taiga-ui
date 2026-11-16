@@ -44,15 +44,15 @@ import {TuiScrollbar} from '@taiga-ui/core';
 @Component({
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 9.75rem;
@@ -87,15 +87,15 @@ import {TuiScrollbar} from '@taiga-ui/core';
 @Component({
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -147,7 +147,7 @@ const SOME_OFFSET_CONST = 20;
 @Component({
     imports: [TuiButton, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -179,8 +179,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -226,7 +226,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'hidden'})],
@@ -234,8 +234,8 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -281,17 +281,15 @@ import {TuiScrollbar} from '@taiga-ui/core';
 @Component({
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -303,7 +301,7 @@ export default class Example {}
 }
 
 p {
-    color: fade(#fff, 72%);
+    color: rgba(255, 255, 255, 0.72);
     white-space: nowrap;
 }
 ```
@@ -340,7 +338,7 @@ import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core';
         TuiScrollRef,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -353,8 +351,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .example-viewport {
     block-size: 12.5rem;
     border: 1px solid;
@@ -396,7 +394,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
     selector: 'example-7',
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
@@ -404,8 +402,8 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -451,7 +449,7 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'native'})],
@@ -459,8 +457,8 @@ import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     inline-size: 16rem;
     block-size: 16rem;
@@ -534,7 +532,7 @@ export class Child {}
 @Component({
     imports: [Child, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiScrollbarOptionsProvider({mode: 'always'})],
@@ -542,8 +540,8 @@ export class Child {}
 export default class Parent {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 p {
     margin: 1.125rem;
 }

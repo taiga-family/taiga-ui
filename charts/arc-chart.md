@@ -62,7 +62,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -76,8 +76,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -116,7 +116,7 @@ import {tuiSum} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiArcChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -126,10 +126,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .wrapper {
     position: relative;
 
@@ -137,7 +135,8 @@ export default class Example {
 }
 
 .stacked {
-    .fullsize();
+    position: absolute;
+    inset: 0;
 
     --tui-background-neutral-1: transparent;
     --tui-chart-0: var(--tui-chart-categorical-04);

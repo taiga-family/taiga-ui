@@ -277,7 +277,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiButton, TuiInputNumber],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -290,8 +290,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiButton] {
     border-radius: 10rem;
     margin-inline-start: 0.125rem;

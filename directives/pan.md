@@ -29,7 +29,7 @@ import {BehaviorSubject, map} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiPan],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -59,8 +59,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     justify-content: center;

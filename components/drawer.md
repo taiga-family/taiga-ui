@@ -157,7 +157,7 @@ import {filter} from 'rxjs';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -188,8 +188,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .drawer {
     inline-size: 20rem;
 }

@@ -62,7 +62,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -116,8 +116,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -125,10 +125,10 @@ export default class Example {
 
 .date {
     margin-inline-start: 1rem;
+}
 
-    &_empty {
-        color: var(--tui-text-tertiary);
-    }
+.date_empty {
+    color: var(--tui-text-tertiary);
 }
 ```
 
@@ -153,7 +153,7 @@ import {tuiCalendarSheetOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})],
@@ -164,8 +164,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .example {
     block-size: 35rem;
 }
@@ -192,7 +192,7 @@ import {tuiCalendarOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiCalendarOptionsProvider({weekStart: signal(TuiDayOfWeek.Sunday)})],
@@ -202,8 +202,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-mobile-calendar {
     max-inline-size: 20rem;
     block-size: 30rem;
@@ -240,7 +240,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -297,8 +297,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -306,10 +306,10 @@ export default class Example {
 
 .date {
     margin-inline-start: 1rem;
+}
 
-    &_empty {
-        color: var(--tui-text-tertiary);
-    }
+.date_empty {
+    color: var(--tui-text-tertiary);
 }
 ```
 
@@ -343,7 +343,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -399,8 +399,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -408,10 +408,10 @@ export default class Example {
 
 .date {
     margin-inline-start: 1rem;
+}
 
-    &_empty {
-        color: var(--tui-text-tertiary);
-    }
+.date_empty {
+    color: var(--tui-text-tertiary);
 }
 ```
 
@@ -434,7 +434,7 @@ import {TUI_CHOOSE_DAY_OR_RANGE_TEXTS} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -450,8 +450,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     block-size: 35rem;

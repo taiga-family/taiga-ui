@@ -47,7 +47,7 @@ import {TuiAxes, type TuiLineHandler} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiAxes],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -61,8 +61,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 18.75rem;
     inline-size: 37.5rem;
@@ -101,7 +101,7 @@ import {tuiCeil} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiAmountPipe, TuiAxes, TuiBarChart, TuiChartHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -140,8 +140,8 @@ function getMax(value: ReadonlyArray<[number, number, number, number]>): number 
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host,
 .hint {
     --tui-chart-categorical-00: #c779d0;
@@ -210,7 +210,7 @@ import {TuiAxes, TuiBar} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiAxes, TuiBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -225,8 +225,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 18.75rem;
     inline-size: 37.5rem;

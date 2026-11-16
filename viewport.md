@@ -80,20 +80,14 @@ export default class Example extends TuiRectAccessor {
 
 **LESS:**
 ```less
-@import '@taiga-ui/styles/utils';
-
 .dropdowns {
     position: relative;
     display: block;
     block-size: 18.75rem;
-    inline-size: 50%;
+    inline-size: ~'min(100%, 30rem)';
     resize: both;
     overflow: hidden;
     outline: 0.125rem dotted var(--tui-border-normal);
-
-    @media @tui-tablet {
-        inline-size: 100%;
-    }
 }
 
 .t1,
@@ -127,7 +121,9 @@ export default class Example extends TuiRectAccessor {
 }
 
 .t-centered-axis-xy {
-    .center-all();
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
 }
 
 .t-direction {

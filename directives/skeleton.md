@@ -94,7 +94,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -103,8 +103,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 p {
     display: flex;
     gap: 1rem;

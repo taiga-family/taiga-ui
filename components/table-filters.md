@@ -60,7 +60,7 @@ import {TuiFormatNumberPipe, TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -88,8 +88,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .toggle {
     display: flex;
     align-items: center;
@@ -173,7 +173,7 @@ import {map} from 'rxjs';
         TuiTableFilters,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -225,8 +225,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .toggle {
     display: flex;
     align-items: center;

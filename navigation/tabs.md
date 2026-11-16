@@ -143,7 +143,7 @@ import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
         TuiTabs,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -178,10 +178,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     margin: -2rem;
@@ -210,19 +208,19 @@ export default class Example {
 }
 
 .tabs {
-    inline-size: ~'calc(100% - 15.625rem)';
+    inline-size: calc(100% - 15.625rem);
     justify-content: flex-end;
     box-shadow: none;
 }
 
 .icon {
-    .transition(transform);
-
+    transition-property: transform;
+    transition-duration: var(--tui-duration);
     margin-inline-start: 0.25rem;
+}
 
-    &_rotated {
-        transform: rotate(180deg);
-    }
+.icon_rotated {
+    transform: rotate(180deg);
 }
 ```
 
@@ -261,7 +259,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -277,8 +275,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .step {
     margin: 0;
     color: var(--tui-text-action);
@@ -398,7 +396,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [RouterLink, RouterLinkActive, TuiTabs],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -407,8 +405,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     display: flex;
     margin: 2rem 0;
@@ -450,7 +448,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTabs],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -459,8 +457,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .custom {
     font: var(--tui-typography-heading-h5);
     box-shadow: none;

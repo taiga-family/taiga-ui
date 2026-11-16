@@ -140,7 +140,7 @@ export default class Example {
 
 **Template:**
 ```html
-<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef class="example-viewport tui-zero-scrollbar" >
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" tuiScrollRef class="example-viewport tui-scrollbar-hidden" >
 <tui-scroll-controls />
 <tui-pull-to-refresh (pulled)="onPull()">
 <div *cdkVirtualFor="let item of items" class="example-item" > {{ item }} </div>
@@ -178,7 +178,7 @@ import {Subject} from 'rxjs';
         TuiScrollRef,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -211,8 +211,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .example-viewport {
     block-size: 12.5rem;
     border: 1px solid;

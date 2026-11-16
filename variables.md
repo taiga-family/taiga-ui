@@ -39,7 +39,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     selector: 'tui-variables-example-1',
     imports: [FormsModule, TuiCardLarge, TuiCheckbox, TuiInput, TuiLabel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -49,8 +49,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     --tui-typography-family-text: 'Comic Sans MS', cursive;
     --tui-typography-body-m: bold 1rem/1.5rem var(--tui-typography-family-text);

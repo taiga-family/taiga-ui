@@ -39,7 +39,7 @@ import {TuiHighlight} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiHighlight, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -56,8 +56,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
 }

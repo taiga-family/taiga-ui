@@ -92,7 +92,7 @@ import {TuiButtonX, TuiNotificationService} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButtonX, TuiSearchBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {'[attr.data-platform]': '"ios"'},
@@ -108,8 +108,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     box-sizing: border-box;
@@ -159,7 +159,7 @@ import {TuiAppBar} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -177,8 +177,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-block-size: 20rem;
@@ -243,7 +243,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -262,8 +262,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-block-size: 20rem;
@@ -328,7 +328,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -347,8 +347,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-block-size: 20rem;

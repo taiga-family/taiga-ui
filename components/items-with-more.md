@@ -103,7 +103,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
         TuiItemsWithMore,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -113,8 +113,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .item {
     border-radius: inherit;
     font-weight: normal;
@@ -188,7 +188,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 @Component({
     imports: [TuiChip, TuiItem, TuiItemsWithMore],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -219,10 +219,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 30rem;
@@ -231,23 +229,23 @@ export default class Example {
 .container {
     max-block-size: 4.5rem;
     overflow: hidden;
+}
 
-    &_expanded {
-        max-block-size: 100%;
-    }
+.container_expanded {
+    max-block-size: 100%;
 }
 
 .item {
-    .transition(~'transform, opacity');
-
+    transition-property: transform, opacity;
+    transition-duration: var(--tui-duration);
     opacity: 0;
     transform: scale(0.9);
     margin: 0 0.25rem 0.25rem 0;
+}
 
-    &_visible {
-        opacity: 1;
-        transform: scale(1);
-    }
+.item_visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .more {
@@ -306,7 +304,7 @@ import {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -333,8 +331,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiCell],
 [tuiTitle] {
     flex: 1;

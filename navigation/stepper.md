@@ -103,7 +103,7 @@ import {TuiStepper} from '@taiga-ui/kit';
 @Component({
     imports: [TuiStepper],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -112,8 +112,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .stepper {
     max-block-size: 10rem;
     border: 1px solid var(--tui-border-normal);

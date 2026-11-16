@@ -24,7 +24,7 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiSwipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {'[class]': 'swiped'},
@@ -38,8 +38,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .box {
     display: flex;
     inline-size: 12.5rem;
@@ -88,7 +88,7 @@ import {TuiDrawer} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -109,8 +109,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     justify-content: center;

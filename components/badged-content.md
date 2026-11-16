@@ -57,15 +57,15 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taig
 @Component({
     imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -104,15 +104,15 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taig
 @Component({
     imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -147,15 +147,15 @@ import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiBadgedContent, TuiBadgeNotification, TuiButton, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -190,15 +190,15 @@ import {TuiAvatar, TuiBadgedContent} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiBadgedContent],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

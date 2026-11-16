@@ -83,7 +83,7 @@ import {TuiBlock, TuiTooltip} from '@taiga-ui/kit';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -98,8 +98,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 form {
     display: flex;
     inline-size: max-content;
@@ -156,7 +156,7 @@ import {TuiBlock, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiBlock, TuiFade, TuiGroup, TuiRadio],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -165,10 +165,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .group {
     max-inline-size: 33rem;
     margin-block-end: 1.5rem;
@@ -231,7 +229,7 @@ import {TuiAvatar, TuiBlock, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -245,10 +243,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 form {
     display: flex;
     flex-direction: column;

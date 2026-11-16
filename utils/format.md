@@ -36,7 +36,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -51,8 +51,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -95,7 +95,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -124,8 +124,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -172,7 +172,7 @@ import {tuiFormatNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInput],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -197,8 +197,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;

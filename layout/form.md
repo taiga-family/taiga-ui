@@ -151,7 +151,7 @@ Using multiple different components inside a big form.
 <input formControlName="quantityValue" tuiInputSlider [max]="3000000" [min]="50000" />
 <input tuiSlider type="range" />
 </tui-textfield>
-<div class="ticks-labels">
+<div class="labels">
 <span>from 50 000 ₽</span>
 <span>to 3 000 000 ₽</span>
 </div>
@@ -277,7 +277,7 @@ class Account {
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -327,19 +327,19 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .stack {
     display: flex;
     gap: inherit;
     flex-direction: column;
 }
 
-.ticks-labels {
-    .tui-slider-ticks-labels();
-
+.labels {
+    display: flex;
+    justify-content: space-between;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
     margin-block-start: -1rem;
 }
 ```
@@ -419,7 +419,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -441,10 +441,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 32rem;

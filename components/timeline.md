@@ -35,7 +35,7 @@ import {TuiTimeline} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTimeline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -48,8 +48,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-timeline {
     inline-size: 18rem;
     block-size: 3rem;
@@ -97,7 +97,7 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiButton, TuiForm, TuiHint, TuiRange, TuiTimeline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -125,10 +125,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-timeline {
     inline-size: 18rem;
     block-size: 10rem;
@@ -138,10 +136,10 @@ tui-timeline {
     filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.25));
 
     button {
-        .transition(opacity);
-
         position: absolute;
         inset: 50%;
+        transition-property: opacity;
+        transition-duration: var(--tui-duration);
         opacity: 0;
         transform: translate(-50%, -50%);
     }

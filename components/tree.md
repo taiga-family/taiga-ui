@@ -81,7 +81,7 @@ import {TuiTree} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -96,8 +96,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-tree {
     margin-inline-start: -3.5rem;
 }
@@ -131,7 +131,7 @@ interface TreeNode {
 @Component({
     imports: [TuiIcon, TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -166,8 +166,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -284,7 +284,7 @@ interface TreeNode {
 @Component({
     imports: [TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -324,8 +324,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-tree {
     overflow: hidden;
 }
@@ -480,7 +480,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
 @Component({
     imports: [AsyncPipe, TuiLoader, TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -509,8 +509,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .loader {
     inline-size: 2rem;
     margin: 1rem 0;
@@ -550,7 +550,7 @@ interface TreeNode {
 @Component({
     imports: [TuiTiles, TuiTree],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -638,8 +638,8 @@ function findParent(item: TreeNode, node: TreeNode): TreeNode | null {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .tree._dragged {
     .drop {
         pointer-events: auto;

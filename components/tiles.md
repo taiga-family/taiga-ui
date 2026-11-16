@@ -53,7 +53,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiTiles],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -74,10 +74,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .tiles {
     gap: 1rem;
     grid-auto-rows: minmax(6.25rem, auto);
@@ -96,8 +94,8 @@ export default class Example {
 }
 
 .content {
-    .transition(box-shadow);
-
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     padding: 1rem;
     background: var(--tui-background-base);
@@ -122,9 +120,9 @@ export default class Example {
 }
 
 .handle {
-    .transition(opacity);
-
     position: absolute;
+    transition-property: opacity;
+    transition-duration: var(--tui-duration);
     inset-inline-end: 0.75rem;
     inset-block-start: 1rem;
     background: var(--tui-background-base);
@@ -142,8 +140,8 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-tiles class="tiles" [(order)]="order" > @for (item of items; track item) { <tui-tile tuiTileHandle class="tile" [class.tile_tall]="item === 'John Cleese'" [style.order]="order.get($index)" >
-<div class="content">{{ item }}</div>
+<tui-tiles class="tiles" [(order)]="order" > @for (item of items; track item) { <tui-tile tuiTileHandle [class.tall]="item === 'John Cleese'" [style.order]="order.get($index)" >
+<div class="content"> {{ item }} @if (item === 'John Cleese') { <b>Silly walks</b> } </div>
 </tui-tile> } </tui-tiles>
 ```
 
@@ -157,7 +155,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTiles],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -167,28 +165,26 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .tiles {
     inline-size: 10rem;
     gap: 1rem;
     grid-auto-rows: minmax(var(--tui-height-m), auto);
 }
 
-@media @tui-mobile {
-    .tile_tall {
-        --tui-height: 2;
-    }
+.tall {
+    --tui-height: 2;
 }
 
 .content {
-    .transition(box-shadow);
-
     display: flex;
+    flex-direction: column;
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     align-items: center;
+    justify-content: center;
     padding: 0 1rem;
     background: var(--tui-background-base);
     border-radius: var(--tui-radius-l);
@@ -228,7 +224,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiTiles],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -244,10 +240,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .tiles {
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
@@ -273,8 +267,8 @@ export default class Example {
 }
 
 .content {
-    .transition(box-shadow);
-
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     block-size: 100%;
     padding: 1rem;
     background: var(--tui-background-base);
@@ -328,7 +322,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiTiles],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -344,10 +338,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 [role='table'] {
     inline-size: 100%;
     min-inline-size: 35rem;
@@ -363,9 +355,9 @@ export default class Example {
 }
 
 [role='row'] {
-    .transition(box-shadow);
-
     display: grid;
+    transition-property: box-shadow;
+    transition-duration: var(--tui-duration);
     grid-template-columns: 2rem minmax(8rem, 1fr) minmax(8rem, 1fr) minmax(12rem, 1.5fr);
     min-block-size: var(--tui-height-m);
     block-size: 100%;

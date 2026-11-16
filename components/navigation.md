@@ -525,7 +525,7 @@ import {
         TuiVCR,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -540,15 +540,15 @@ export default class Example extends TuiPortals {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
-    // Use TuiThemeColorService instead, this is just for demo purposes
+    /* Use TuiThemeColorService instead, this is just for demo purposes */
     --tui-theme-color: #87ceeb;
 }
 
 .drawer {
-    // Unnecessary when TuiThemeColorService is instead
+    /* Unnecessary when TuiThemeColorService is instead */
     background: rgb(135, 206, 235);
     color: var(--tui-text-primary);
 }

@@ -86,7 +86,7 @@ import {TuiCalendar} from '@taiga-ui/core';
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -125,8 +125,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
 }
@@ -161,7 +161,7 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -204,8 +204,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
 }
@@ -263,7 +263,7 @@ const dayType: TuiHandler<TuiDay, string> = (day) => {
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [tuiCalendarOptionsProvider({dayType})],
@@ -271,8 +271,8 @@ const dayType: TuiHandler<TuiDay, string> = (day) => {
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-calendar-sheet [data-type='holiday']::before {
     background-color: var(--tui-chart-categorical-09);
 }

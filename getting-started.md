@@ -82,9 +82,9 @@ npm i @taiga-ui/layout          // Layout components
         "build": {
           "options": {
             "styles": [
-              "@taiga-ui/styles/taiga-ui-theme.less",
-              "@taiga-ui/styles/taiga-ui-fonts.less",
-              "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less" // optional
+              "@taiga-ui/styles/taiga-ui-theme.css",
+              "@taiga-ui/styles/taiga-ui-fonts.css",
+              "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.css" // optional
             ]
           }
         }
@@ -102,9 +102,9 @@ npm i @taiga-ui/layout          // Layout components
     "build": {
       "options": {
         "styles": [
-          "@taiga-ui/styles/taiga-ui-theme.less",
-          "@taiga-ui/styles/taiga-ui-fonts.less",
-          "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less" // optional
+          "@taiga-ui/styles/taiga-ui-theme.css",
+          "@taiga-ui/styles/taiga-ui-fonts.css",
+          "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.css" // optional
         ]
       }
     }

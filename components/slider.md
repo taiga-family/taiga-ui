@@ -77,15 +77,15 @@ import {TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .first {
     color: var(--tui-chart-categorical-01);
 }
@@ -145,8 +145,11 @@ export default class Example {
 }
 
 .tick-label {
-    .button-clear();
-
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
     outline: 0;
     cursor: pointer;
 }
@@ -241,12 +244,12 @@ Use `tuiSliderThumbLabel` for positioning any content so it slides alongside the
 **Template:**
 ```html
 <section class="zoom-controller">
-<button appearance="icon" iconStart="@tui.minus" size="xs" tuiIconButton type="button" class="minus" (click)="change(-0.25)" > Minus </button>
+<button appearance="icon" iconStart="@tui.minus" size="xs" tuiIconButton type="button" (click)="change(-0.25)" > Minus </button>
 <label tuiSliderThumbLabel class="slider-wrapper" >
 <div [tuiHint]="value | percent" [tuiHintManual]="!!(showHint$ | async)" ></div>
 <input step="any" tuiSlider type="range" [max]="max" [min]="min" [(ngModel)]="value" />
 </label>
-<button appearance="icon" iconStart="@tui.plus" size="xs" tuiIconButton type="button" class="plus" (click)="change(+0.25)" > Plus </button>
+<button appearance="icon" iconStart="@tui.plus" size="xs" tuiIconButton type="button" (click)="change(+0.25)" > Plus </button>
 </section>
 ```
 
@@ -264,7 +267,7 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
 @Component({
     imports: [AsyncPipe, FormsModule, PercentPipe, TuiButton, TuiHint, TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {
@@ -295,38 +298,21 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
-@border-radius: 1rem;
-
+**CSS:**
+```css
 .zoom-controller {
     display: flex;
-    border-radius: @border-radius;
+    border-radius: 1rem;
     background: var(--tui-background-neutral-1-pressed);
     block-size: var(--tui-height-s);
-    justify-content: space-between;
     align-items: center;
     max-inline-size: 18rem;
     padding: 0 0.25rem;
     gap: 0.5rem;
-
-    @media @tui-mobile {
-        max-inline-size: 100%;
-    }
 }
 
 .slider-wrapper {
     flex: 1;
-}
-
-.minus {
-    border-radius: @border-radius 0 0 @border-radius;
-}
-
-.plus {
-    border-radius: 0 @border-radius @border-radius 0;
 }
 ```
 
@@ -350,7 +336,7 @@ import {TuiButton, TuiDropdown, TuiSlider} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiButton, TuiDropdown, TuiSlider],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -359,8 +345,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-dropdown[data-appearance] {
     min-block-size: 8rem;
     background: var(--tui-background-neutral-1);
@@ -374,12 +360,12 @@ tui-dropdown[data-appearance] {
         transform-origin: left;
         transform: rotate(-90deg) translate(-100%, 1rem);
 
-        // chromium browsers
+        /* chromium browsers */
         &::-webkit-slider-thumb {
             cursor: ns-resize;
         }
 
-        // firefox
+        /* firefox */
         &::-moz-range-thumb {
             cursor: ns-resize;
         }

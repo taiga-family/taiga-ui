@@ -146,15 +146,15 @@ import {TuiHeader} from '@taiga-ui/layout';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -187,24 +187,23 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiHeader, TuiLink, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 [tuiLink] {
     text-decoration: none;
 
     --tui-icon-size: 1.5rem;
 
     &::after {
-        .transition(margin-inline-start);
+        transition-property: margin-inline-start;
+        transition-duration: var(--tui-duration);
     }
 
     &:hover {
@@ -244,7 +243,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [KeyValuePipe, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -257,8 +256,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiHeader] {
     flex-wrap: wrap;
 }

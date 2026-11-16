@@ -249,7 +249,7 @@ import {TuiAvatar, TuiInitialsPipe, TuiInputDateMulti} from '@taiga-ui/kit';
         TuiInputDateMulti,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -292,8 +292,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-date-picker [data-type~='other']::before {
     opacity: var(--tui-disabled-opacity);
 }
@@ -391,7 +391,7 @@ import {TuiAppBar, TuiFloatingContainer, TuiItemGroup} from '@taiga-ui/layout';
         TuiSheetDialog,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -405,8 +405,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

@@ -34,15 +34,15 @@ import {TuiCopy} from '@taiga-ui/kit';
 @Component({
     imports: [TuiCopy, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: 17rem;

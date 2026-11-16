@@ -79,7 +79,7 @@ import {map, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -101,10 +101,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .island {
     inline-size: 20rem;
     margin-block-end: 1rem;
@@ -166,7 +164,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -183,8 +181,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .island {
     max-inline-size: 20rem;
     padding: 1rem;
@@ -220,7 +218,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 @Component({
     imports: [TuiLineClamp],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -247,8 +245,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .example {
     min-block-size: 15rem;
     max-block-size: 15rem;
@@ -303,7 +301,7 @@ function randomString(len: number): string {
 @Component({
     imports: [TuiChevron, TuiDataList, TuiDropdown, TuiLineClamp, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -318,8 +316,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .dropdown-button {
     inline-size: 16rem;
 }
@@ -363,7 +361,7 @@ interface User {
 @Component({
     imports: [TuiHint, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -377,8 +375,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .island {
     inline-size: 20rem;
     margin-block-end: 1rem;
@@ -439,7 +437,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
         TuiScrollRef,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -635,8 +633,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 cdk-virtual-scroll-viewport {
     block-size: 12.5rem;
     border: 1px solid;

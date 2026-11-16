@@ -172,7 +172,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiHeader, TuiPopout, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -180,8 +180,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 main {
     display: grid;
     block-size: 100vh;

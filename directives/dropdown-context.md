@@ -45,15 +45,15 @@ import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiDropdown, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .text {
     display: inline-block;
     margin: 0.75rem 1rem;
@@ -116,7 +116,7 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -163,10 +163,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .context-menu {
     inline-size: 8rem;
 }
@@ -225,7 +223,7 @@ import {TuiTextarea} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiDropdown, TuiTextarea],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -238,8 +236,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     inline-size: 20rem;

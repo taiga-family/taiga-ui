@@ -39,14 +39,14 @@ import {TuiHint} from '@taiga-ui/core';
 @Component({
     imports: [TuiHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .block {
     border: 1px solid var(--tui-border-normal);
     border-radius: 1rem;

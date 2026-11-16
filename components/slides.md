@@ -50,7 +50,7 @@ import {TuiElasticContainer, TuiSlides} from '@taiga-ui/layout';
 @Component({
     imports: [TuiButton, TuiElasticContainer, TuiGroup, TuiSlides, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -60,8 +60,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiGroup] {
     inline-size: fit-content;
     margin: 0 auto 1rem;
@@ -143,7 +143,7 @@ import {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -185,8 +185,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-elastic-container {
     padding: 2rem;
     margin: 0 -2rem;

@@ -37,15 +37,15 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bar {
     block-size: 6.25rem;
     background: var(--tui-background-accent-1);
@@ -69,7 +69,7 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiBar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -78,8 +78,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .bar {
     block-size: 6.25rem;
 

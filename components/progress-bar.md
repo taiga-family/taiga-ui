@@ -87,7 +87,7 @@ import {of, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -108,8 +108,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .progress {
     margin-block-end: 1rem;
     color: var(--tui-chart-categorical-09);
@@ -147,15 +147,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -184,7 +184,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -202,8 +202,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .label-wrapper {
     inline-size: 100%;
     text-shadow: 0 0 0.25rem #000;
@@ -231,15 +231,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .label-wrapper {
     inline-size: 100%;
 }
@@ -299,15 +299,15 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiProgressBar] {
     border-radius: 0;
 }

@@ -48,7 +48,7 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -57,8 +57,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -82,15 +82,15 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 @keyframes spinCard {
     0% {
         transform: rotateY(0);
@@ -160,15 +160,15 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -229,15 +229,15 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -266,7 +266,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputCard, TuiSegmented, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -280,8 +280,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -311,7 +311,7 @@ import {
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -328,8 +328,8 @@ import {
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .star {
     color: #000;
     background:

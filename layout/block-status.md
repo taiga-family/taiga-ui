@@ -109,7 +109,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -122,8 +122,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     gap: 1rem;
@@ -183,7 +183,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -197,8 +197,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     gap: 1rem;
@@ -247,15 +247,15 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBlockStatus, TuiButton, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     gap: 1rem;
@@ -353,15 +353,15 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .container {
     display: flex;
     gap: 1rem;

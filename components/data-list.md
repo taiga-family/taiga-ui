@@ -409,7 +409,7 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
         TuiInputDateRange,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -433,8 +433,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .example {
     margin-block-end: 0.5rem;
     min-inline-size: 20.25rem;

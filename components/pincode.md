@@ -144,7 +144,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
 @Component({
     imports: [FormsModule, TuiPincode],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -160,8 +160,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -203,7 +203,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
 @Component({
     imports: [FormsModule, TuiLoader, TuiPincode],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -225,8 +225,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -334,7 +334,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -350,8 +350,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     display: flex;
     flex-direction: column;
@@ -443,7 +443,7 @@ async function fakeApiInvalidate(pin: string): Promise<boolean> {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -500,8 +500,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .header {
     margin-block-end: 1.5rem;
 }

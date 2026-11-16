@@ -49,7 +49,7 @@ import {tuiCeil} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiAxes, TuiBarChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -68,8 +68,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 18.75rem;
     inline-size: 37.5rem;
@@ -118,7 +118,7 @@ import {TuiChevron, TuiDataListWrapper, tuiFormatNumber, TuiSelect} from '@taiga
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -143,8 +143,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 18.75rem;
     inline-size: 37.5rem;
@@ -167,5 +167,52 @@ export default class Example {
 
 .select {
     max-inline-size: 20rem;
+}
+```
+
+#### Example 3
+
+**Template:**
+```html
+<tui-axes class="axes" [axisXLabels]="labelsX" [axisYLabels]="labelsY" [horizontalLines]="3" >
+<tui-bar-chart class="chart" [max]="10000" [value]="value" />
+</tui-axes>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
+
+@Component({
+    imports: [TuiAxes, TuiBarChart],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = [
+        [4000, -3000, 7000, -5000, 8000, -2000, 7000],
+        [-2000, 5000, -7000, 3000, -1000, 6000, -4000],
+    ];
+
+    protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', 'Apr', ''];
+    protected readonly labelsY = ['-10 000', '0', '10 000'];
+}
+```
+
+**LESS:**
+```less
+.axes {
+    block-size: 18.75rem;
+    inline-size: 37.5rem;
+}
+
+.chart {
+    align-self: flex-start;
+    block-size: 50%;
 }
 ```

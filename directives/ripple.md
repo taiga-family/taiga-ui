@@ -28,15 +28,15 @@ import {TuiRipple} from '@taiga-ui/addon-mobile';
 @Component({
     imports: [TuiRipple],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiRipple] {
     position: relative;
     padding: 1rem;
@@ -69,15 +69,15 @@ import {TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiRipple],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .block {
     inline-size: 10rem;
     block-size: 5rem;

@@ -42,15 +42,15 @@ import {TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -96,7 +96,7 @@ import {TuiInputSlider} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiIcon, TuiInputSlider, TuiNumberFormat, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -107,8 +107,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -143,15 +143,15 @@ import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon, TuiIconPipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -198,7 +198,7 @@ import mastercard from '@taiga-ui/icons/src/mastercard.svg';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -211,8 +211,8 @@ import mastercard from '@taiga-ui/icons/src/mastercard.svg';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -241,7 +241,7 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [
@@ -260,8 +260,8 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -333,15 +333,15 @@ import {TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -389,15 +389,15 @@ import {TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .material {
     --tui-font-icon: 'Material Symbols Outlined';
 }

@@ -51,7 +51,7 @@ import {TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon, TuiKeypad],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -73,8 +73,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .keypad {
     inline-size: 15rem;
 }
@@ -104,7 +104,7 @@ import {TuiIcon} from '@taiga-ui/core';
 @Component({
     imports: [TuiIcon, TuiKeypad],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -126,8 +126,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -179,7 +179,7 @@ const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 @Component({
     imports: [TuiIcon, TuiKeypad],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -213,8 +213,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .pin {
     margin: 0;
     font: bold 2.5rem/1.4 var(--tui-typography-family-display);
@@ -306,7 +306,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -336,10 +336,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
+**CSS:**
+```css
 .sheet {
     display: flex;
     flex-direction: column;
@@ -361,7 +359,7 @@ export default class Example {
     font: bold 2.5rem var(--tui-typography-family-display);
     text-align: center;
     color: var(--tui-text-primary);
-    // auto width via [size] so a centered <input> never scrolls/clips its text on iOS Safari
+    /* auto width via [size] so a centered <input> never scrolls/clips its text on iOS Safari */
     max-inline-size: 100%;
     border: none;
     outline: none;
@@ -391,22 +389,15 @@ export default class Example {
 }
 
 .clamp {
-    .tui-line-clamp();
-
     margin-block-start: 0.5rem;
     min-block-size: 2rem;
-
-    &.tui-enter,
-    &.tui-leave {
-        animation-name: tuiFade;
-    }
 }
 
 .pad {
     display: grid;
     grid-area: auto / 1;
 
-    // clip only while collapsing/expanding, so pressed keys aren't cut off at rest
+    /* clip only while collapsing/expanding, so pressed keys aren't cut off at rest */
     &.tui-enter .pad-inner,
     &.tui-leave .pad-inner {
         overflow: hidden;
@@ -483,7 +474,7 @@ const OPERATORS = new Set(['-', '+', '÷', '×']);
 @Component({
     imports: [TuiAutoFocus, TuiButton, TuiIcon, TuiKeypad, TuiPopout],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -680,8 +671,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     block-size: 100%;
@@ -700,7 +691,7 @@ export default class Example {
 tui-keypad {
     flex: 1;
     min-block-size: 0;
-    grid-auto-rows: 1fr; // fill the flex height instead of the fixed default rows
+    grid-auto-rows: 1fr; /* fill the flex height instead of the fixed default rows */
 }
 
 .input {

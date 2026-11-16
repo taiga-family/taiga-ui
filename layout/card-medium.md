@@ -38,15 +38,15 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiAvatar, TuiCardMedium, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -85,15 +85,15 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiCardMedium, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -136,15 +136,15 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppearance, TuiBadge, TuiCardMedium, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -188,7 +188,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiCardMedium, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -201,8 +201,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -243,15 +243,15 @@ import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBadge, TuiCardMedium, TuiIcon, TuiSurface, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -342,17 +342,15 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [TuiCardMedium, TuiFade, TuiHint, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -416,7 +414,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiCardMedium, TuiFade, TuiRipple, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -425,10 +423,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

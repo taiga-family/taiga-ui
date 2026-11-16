@@ -50,7 +50,7 @@ import {type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -73,8 +73,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
     inline-size: 25rem;
@@ -102,7 +102,7 @@ import {type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiLineChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -119,8 +119,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
     inline-size: 25rem;
@@ -150,7 +150,7 @@ import {type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiLineChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -175,8 +175,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
     inline-size: 25rem;
@@ -187,14 +187,14 @@ export default class Example {
     position: absolute;
     inset-block-start: 0;
     inset-inline-start: 0;
+}
 
-    &_dotted {
-        stroke-dasharray: 2;
-    }
+.chart_dotted {
+    stroke-dasharray: 2;
+}
 
-    &_dashed {
-        stroke-dasharray: 4;
-    }
+.chart_dashed {
+    stroke-dasharray: 4;
 }
 ```
 
@@ -227,7 +227,7 @@ import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiChartHint, TuiHint, TuiLineChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -249,8 +249,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
     inline-size: 25rem;
@@ -277,7 +277,7 @@ import {type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -318,8 +318,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .axes {
     block-size: 12.5rem;
     inline-size: 25rem;

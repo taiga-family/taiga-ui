@@ -68,7 +68,7 @@ interface ExampleAction {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -115,10 +115,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 tui-data-list {
     gap: 0.25rem;
     padding: 0.5rem;
@@ -158,7 +156,7 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAvatar, TuiDropdown, TuiLink, TuiSwitch],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -167,10 +165,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .dropdown {
     display: flex;
     inline-size: 14rem;
@@ -245,7 +241,7 @@ import {interval, map} from 'rxjs';
         TuiSwitch,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -256,10 +252,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .flex {
     display: flex;
     align-items: center;
@@ -295,7 +289,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiDropdown, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -304,8 +298,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-dropdown[data-appearance='round'] {
     border-radius: 10rem;
 }

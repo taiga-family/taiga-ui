@@ -41,7 +41,7 @@ export interface Item {
 @Component({
     imports: [TuiFilterPipe, TuiTable],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -66,10 +66,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 [tuiTh],
 [tuiTd] {
     border: none;

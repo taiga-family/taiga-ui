@@ -59,7 +59,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -68,8 +68,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -112,7 +112,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiIcon, TuiInput, TuiTooltip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -121,8 +121,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -182,7 +182,7 @@ import {TuiChevron, TuiDataListWrapper, TuiTooltip} from '@taiga-ui/kit';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -192,8 +192,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -358,7 +358,7 @@ import {TuiFade, TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiFade, TuiInput, TuiInputChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -368,8 +368,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     inline-size: 17rem;

@@ -32,7 +32,7 @@ import {TuiBadgeNotification, TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadgeNotification, TuiIcon, TuiSegmented],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -41,8 +41,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -77,15 +77,15 @@ import {TuiFade, TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiSegmented],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -132,7 +132,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiSegmented],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -142,8 +142,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -231,7 +231,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
         TuiSegmented,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -249,8 +249,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -294,15 +294,15 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiSegmented],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;

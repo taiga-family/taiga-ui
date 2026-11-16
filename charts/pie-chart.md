@@ -48,7 +48,7 @@ import {TuiPieChart} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiPieChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -58,8 +58,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;
@@ -91,7 +91,7 @@ import {TuiHint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAmountPipe, TuiChartHint, TuiHint, TuiPieChart],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -101,8 +101,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     --tui-chart-categorical-00: #c779d0;
     --tui-chart-categorical-01: #feac5e;

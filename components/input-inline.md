@@ -39,7 +39,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -69,10 +69,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .input1,
 .input2,
 .input3 {
@@ -97,10 +95,8 @@ export default class Example {
     background: var(--tui-border-normal);
 }
 
-.input4 {
-    &_empty {
-        opacity: 0.3;
-    }
+.input4_empty {
+    opacity: 0.3;
 }
 ```
 
@@ -132,7 +128,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -149,8 +145,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 h4 {
     display: flex;
     block-size: 2rem;
@@ -198,7 +194,7 @@ import {timer} from 'rxjs';
 @Component({
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -228,10 +224,8 @@ export default class Example implements OnInit {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .input1 {
     border: 2px solid var(--tui-status-negative);
     padding: 0.625rem;
@@ -281,7 +275,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -290,8 +284,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .task:first-child input:not(:placeholder-shown) {
     text-decoration: underline;
     text-align: center;

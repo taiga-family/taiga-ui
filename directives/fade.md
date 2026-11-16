@@ -28,7 +28,7 @@ Single scrollable line with automatic fade on the edges.
 
 **Template:**
 ```html
-<div tuiFade class="fade" > I am a very long text that overflows with a single line fade </div>
+<div tuiFade class="fade tui-scrollbar-hidden" > I am a very long text that overflows with a single line fade </div>
 ```
 
 **TypeScript:**
@@ -41,20 +41,16 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .fade {
-    .scrollbar-hidden();
-
     inline-size: 20rem;
     block-size: 2rem;
     font: var(--tui-typography-heading-h6);
@@ -86,7 +82,7 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -99,36 +95,34 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .wrapper {
     position: relative;
 }
 
 .fade {
-    .transition(max-block-size);
-
+    transition-property: max-block-size;
+    transition-duration: var(--tui-duration);
     max-block-size: calc(3 * (1.25rem + var(--tui-font-offset)));
+}
 
-    &_expanded {
-        max-block-size: 15rem;
-    }
+.fade_expanded {
+    max-block-size: 15rem;
 }
 
 .expand {
-    .transition(opacity, visibility);
-
     position: absolute;
+    transition-property: opacity, visibility;
+    transition-duration: var(--tui-duration);
     inset-block-end: 0;
     inset-inline-end: 0;
     transition-delay: var(--tui-duration);
+}
 
-    &_hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
+.expand_hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 ```
 
@@ -153,17 +147,15 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiScrollControls, TuiScrollRef],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .fade {
     display: flex;
     inline-size: 17rem;
@@ -194,15 +186,15 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiFade] {
     inline-size: 25rem;
     block-size: 2.5rem;
@@ -232,7 +224,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -241,8 +233,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiChip] {
     max-inline-size: 6.25rem;
 }

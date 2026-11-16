@@ -91,7 +91,7 @@ import {TUI_DARK_MODE, TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -100,8 +100,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .buttons {
     display: flex;
     gap: 0.5rem;

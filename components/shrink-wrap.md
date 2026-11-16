@@ -41,15 +41,15 @@ import {TuiMessage, TuiShrinkWrap} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMessage, TuiShrinkWrap],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -105,15 +105,15 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiHeader, TuiShrinkWrap, TuiToast],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -147,15 +147,15 @@ import {TuiAvatar, TuiShrinkWrap} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiCell, TuiShrinkWrap, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;

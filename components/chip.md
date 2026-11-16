@@ -44,15 +44,15 @@ import {TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [TuiChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiChip] {
     margin: 0.5rem;
 }
@@ -89,7 +89,7 @@ import {TuiAvatar, TuiBadge, TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [SlicePipe, TuiAvatar, TuiBadge, TuiButton, TuiChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -98,8 +98,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -150,7 +150,7 @@ import {TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -172,8 +172,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -230,7 +230,7 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
         TuiFade,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -239,10 +239,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -256,7 +254,9 @@ export default class Example {
 
 .ellipsis {
     max-inline-size: 7rem;
-    .text-overflow();
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 [data-appearance='custom'] {
@@ -266,8 +266,8 @@ export default class Example {
 }
 
 .toggle {
-    .transition(transform);
-
+    transition-property: transform;
+    transition-duration: var(--tui-duration);
     color: inherit !important;
 }
 ```
@@ -289,7 +289,7 @@ import {TuiAutoColorPipe, TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAutoColorPipe, TuiChip],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -319,8 +319,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiChip] {
     margin: 0.5rem;
 }
@@ -362,15 +362,15 @@ import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiChip] {
     margin: 0.5rem;
     max-inline-size: 9rem;

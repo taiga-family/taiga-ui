@@ -56,7 +56,7 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -70,8 +70,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiButton]::after {
     font-size: 1rem;
 }
@@ -123,7 +123,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -139,8 +139,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     inline-size: max-content;
@@ -173,7 +173,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 @Component({
     imports: [TuiChevron, TuiDataList, TuiDropdown, TuiIcon, TuiLink],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -208,10 +208,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     text-align: end;
@@ -334,15 +332,15 @@ class TopRightDirective extends TuiPositionAccessor {
 @Component({
     imports: [TopRightDirective, TuiButton, TuiDropdown, TuiDropdownOpen],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .dropdown {
     inline-size: 13rem;
     padding: 0 1rem 1rem;

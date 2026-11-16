@@ -23,9 +23,9 @@ A non-modal draggable sheet
 <div tuiMessage>What's up?</div> @for (message of messages; track message) { <div appearance="accent" tuiMessage class="message" [textContent]="message" ></div> } </tui-scrollbar>
 <tui-bottom-sheet>
 <div class="actions">
-<button appearance="floating" tuiCardLarge type="button" (click)="onClick('Ok')" > Ok </button>
-<button appearance="floating" tuiCardLarge type="button" (click)="onClick('Bye!')" > Bye! </button>
-<button appearance="floating" tuiCardLarge type="button" (click)="onClick('Taiga UI is awesome!')" > Taiga UI is awesome! </button>
+<button appearance="floating" tuiButton type="button" (click)="onClick('Ok')" > Ok </button>
+<button appearance="floating" tuiButton type="button" (click)="onClick('Bye!')" > Bye! </button>
+<button appearance="floating" tuiButton type="button" (click)="onClick('Taiga UI is awesome!')" > Taiga UI is awesome! </button>
 </div>
 </tui-bottom-sheet>
 </div>
@@ -47,20 +47,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 import {TuiMessage, TuiTextarea} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         FormsModule,
         TuiBottomSheet,
         TuiButton,
-        TuiCardLarge,
         TuiMessage,
         TuiScrollbar,
         TuiTextarea,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -82,8 +80,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -174,7 +172,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiBottomSheet, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -192,10 +190,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     position: relative;
     display: block;
@@ -209,8 +205,8 @@ export default class Example {
 }
 
 .buttons {
-    .fullsize();
-
+    position: absolute;
+    inset: 0;
     display: flex;
     gap: 1rem;
     padding: 1rem 1rem 8rem;
@@ -272,7 +268,7 @@ import {TuiAccordion, TuiBlock} from '@taiga-ui/kit';
         TuiCheckbox,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -281,8 +277,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     position: relative;
     display: flex;

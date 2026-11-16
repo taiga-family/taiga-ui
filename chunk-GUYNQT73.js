@@ -1,0 +1,148 @@
+import"./chunk-LQ6M4NCU.js";var i=`/* stylelint-disable csstools/use-logical, logical-css/require-logical-properties -- Offsets match the physical axes used by translate(). */
+
+:host {
+    position: relative;
+    display: block;
+    block-size: 30rem;
+}
+
+.item {
+    position: absolute;
+    display: flex;
+    background: #87ceeb;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    inline-size: 5rem;
+    block-size: 5rem;
+}
+
+.handle {
+    position: absolute;
+    background: #ffc0cb;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    transform: inherit;
+}
+
+.left-top {
+    inset-inline-start: 0;
+    inset-block-start: 0;
+}
+
+.right-bottom-handle {
+    inset-inline-end: 0;
+    inset-block-end: 0;
+}
+
+.top-middle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    inset-block-start: 0;
+}
+
+.top-middle-handle {
+    inset-inline-start: 50%;
+    inset-block-end: 0;
+}
+
+.top-right {
+    inset-block-start: 0;
+    inset-inline-end: 0;
+}
+
+.top-right-handle {
+    inset-inline-start: 0;
+    inset-block-end: 0;
+}
+
+.middle-right {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    inset-inline-end: 0;
+}
+
+.middle-right-handle {
+    inset-inline-start: 0;
+    inset-block-start: 50%;
+}
+
+.bottom-right {
+    inset-block-end: 0;
+    inset-inline-end: 0;
+}
+
+.bottom-right-handle {
+    inset-inline-start: 0;
+    inset-block-start: 0;
+}
+
+.middle-bottom {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    inset-block-end: 0;
+}
+
+.middle-bottom-handle {
+    inset-inline-start: 50%;
+    inset-block-start: 0;
+}
+
+.bottom-left {
+    inset-block-end: 0;
+    inset-inline-start: 0;
+}
+
+.bottom-left-handle {
+    inset-inline-end: 0;
+    inset-block-start: 0;
+}
+
+.left-middle {
+    inset-inline-start: 0;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+}
+
+.left-middle-handle {
+    inset-inline-end: 0;
+    inset-block-start: 50%;
+}
+
+.middle-middle {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+}
+
+.middle-middle-top-handle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    inset-block-start: 0;
+}
+
+.middle-middle-right-handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    inset-inline-end: 0;
+}
+
+.middle-middle-bottom-handle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    inset-block-end: 0;
+}
+
+.middle-middle-left-handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    inset-inline-start: 0;
+}
+`;export{i as default};

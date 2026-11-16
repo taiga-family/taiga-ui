@@ -192,8 +192,7 @@ export default class Example {
 
     /* (Optionally) expand clickable area as you wish */
     &::after {
-        inset-block-start: -0.5rem;
-        inset-block-end: -1.5rem;
+        inset-block: -0.5rem -1.5rem;
     }
 }
 

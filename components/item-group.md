@@ -6,7 +6,7 @@
 ### Example
 
 ```html
-<div tuiItemGroup [autoscroll]="autoscroll" [horizontal]="horizontal" > @for (chip of chips; track chip) { <label tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="radio" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
+<div tuiItemGroup [autoscroll]="autoscroll" [horizontal]="horizontal" > @for (chip of chips; track chip) { <label tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="item-group-demo" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
 </label> } </div>
 ```
 
@@ -65,7 +65,7 @@ export default class Example {
 **Template:**
 ```html
 <div tuiPlatform="ios">
-<div tuiItemGroup [autoscroll]="true" [horizontal]="true" > @for (chip of chips; track chip) { <label tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="radio" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
+<div tuiItemGroup [autoscroll]="true" [horizontal]="true" > @for (chip of chips; track chip) { <label tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="single-choice" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
 </label> } </div>
 </div>
 ```
@@ -83,7 +83,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiChip, TuiItemGroup, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -109,8 +109,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 30rem;
@@ -138,7 +138,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiChip, TuiItemGroup],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -164,8 +164,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 30rem;
@@ -177,7 +177,7 @@ export default class Example {
 **Template:**
 ```html
 <div tuiItemGroup>
-<tui-items-with-more [linesLimit]="linesLimit"> @for (chip of chips; track chip) { <label *tuiItem tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="radio" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
+<tui-items-with-more [linesLimit]="linesLimit"> @for (chip of chips; track chip) { <label *tuiItem tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="with-more" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
 </label> } <ng-template let-index tuiMore >
 <button appearance="neutral" iconEnd="@tui.chevron-down" size="s" tuiChip type="button" class="more" (click)="linesLimit = 100" > More {{ chips.length - index - 1 }} </button>
 </ng-template>
@@ -197,7 +197,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiChip, TuiItemGroup, TuiItemsWithMore],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -225,8 +225,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 30rem;

@@ -69,7 +69,7 @@ import {CustomPortalService} from './service';
     selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {
@@ -87,10 +87,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .wrapper {
     display: flex;
     align-items: center;

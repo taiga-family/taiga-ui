@@ -51,7 +51,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiNumberFormat, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -81,8 +81,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -116,7 +116,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -135,8 +135,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -170,7 +170,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -189,8 +189,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -224,7 +224,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -242,8 +242,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;
@@ -277,7 +277,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -296,8 +296,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .parameters {
     margin-block-start: 0.75rem;
     inline-size: 13.75rem;

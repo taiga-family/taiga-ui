@@ -54,15 +54,15 @@ import {TuiBadge, TuiStatus} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiStatus],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 [tuiBadge] {
     margin: 0.5rem;
 }
@@ -88,15 +88,15 @@ import {TuiBadge} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 0.25rem;
@@ -142,15 +142,15 @@ import {TuiBadge} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
     min-inline-size: 18rem;
@@ -192,15 +192,15 @@ import {TuiBadge, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     gap: 1rem;
@@ -234,30 +234,27 @@ import {TuiBadge} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 0.75rem;
 }
 
 .custom-1 {
-    .gradient(#0094cf, #24c0ff);
-
+    background-image: linear-gradient(45deg, #0094cf 0%, #24c0ff 100%);
     box-shadow: var(--tui-shadow-small);
 }
 
 .custom-2 {
-    .gradient(#c86dd7, #3023ae);
+    background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
 }
 ```
 

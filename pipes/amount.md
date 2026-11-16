@@ -133,7 +133,7 @@ import {TuiNumberFormat} from '@taiga-ui/core';
 @Component({
     imports: [TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiAmountOptionsProvider({currencyAlign: 'start'})],
@@ -141,8 +141,8 @@ import {TuiNumberFormat} from '@taiga-ui/core';
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     font: var(--tui-typography-body-l);
 }

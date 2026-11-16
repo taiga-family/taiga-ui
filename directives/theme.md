@@ -68,7 +68,7 @@ import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInput, TuiInputNumber, TuiSwitch],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -79,8 +79,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .dark {
     inline-size: 18.75rem;
     padding: 0.625rem 1.25rem 1.25rem;
@@ -121,7 +121,7 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -139,8 +139,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 p {
     display: flex;
     gap: 1rem;

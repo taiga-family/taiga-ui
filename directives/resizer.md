@@ -44,16 +44,16 @@ import {TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiResizable, TuiResizer],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
+**CSS:**
+```css
+/* stylelint-disable csstools/use-logical, logical-css/require-logical-properties -- Offsets match the physical axes used by translate(). */
 
 :host {
     position: relative;
@@ -91,8 +91,9 @@ export default class Example {}
 }
 
 .top-middle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-start: 0;
 }
 
@@ -112,8 +113,9 @@ export default class Example {}
 }
 
 .middle-right {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-end: 0;
 }
 
@@ -133,8 +135,9 @@ export default class Example {}
 }
 
 .middle-bottom {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-end: 0;
 }
 
@@ -165,30 +168,36 @@ export default class Example {}
 }
 
 .middle-middle {
-    .center-all();
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
 }
 
 .middle-middle-top-handle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-start: 0;
 }
 
 .middle-middle-right-handle {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-end: 0;
 }
 
 .middle-middle-bottom-handle {
-    .center-left();
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     inset-block-end: 0;
 }
 
 .middle-middle-left-handle {
-    .center-top();
-
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     inset-inline-start: 0;
 }
 ```

@@ -69,7 +69,7 @@ import {
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputCard],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
@@ -89,8 +89,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 form {
     display: flex;
     flex-direction: column;

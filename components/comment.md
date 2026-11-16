@@ -60,15 +60,15 @@ import {TuiComment} from '@taiga-ui/kit';
 @Component({
     imports: [TuiComment],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1.25rem;

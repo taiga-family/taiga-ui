@@ -90,7 +90,7 @@ import {
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -105,8 +105,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .group {
     max-inline-size: 30.25rem;
 }
@@ -133,15 +133,15 @@ import {TuiButton, TuiGroup} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiGroup],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .group {
     max-inline-size: 30rem;
     white-space: nowrap;
@@ -214,7 +214,7 @@ import {TuiBlock} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiBlock, TuiGroup, TuiRadio, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -223,8 +223,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     padding: 0.5rem 0;
     white-space: normal;

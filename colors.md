@@ -147,7 +147,7 @@ interface ColorRow {
     selector: 'table[colors]',
     imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     changeDetection,
 })
 export class TableColors {
@@ -176,10 +176,8 @@ export class TableColors {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     inline-size: 100%;
     color: var(--tui-text-primary);
@@ -216,10 +214,10 @@ export class TableColors {
 }
 
 .name {
-    .transition(color);
-
     position: relative;
     display: inline-block;
+    transition-property: color;
+    transition-duration: var(--tui-duration);
     min-block-size: 2rem;
     background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
@@ -245,9 +243,9 @@ export class TableColors {
 }
 
 .copy {
-    .transition(opacity);
-
     position: absolute;
+    transition-property: opacity;
+    transition-duration: var(--tui-duration);
     inset-block-start: 0;
     inset-inline-start: 0;
     background: var(--tui-background-base-alt);

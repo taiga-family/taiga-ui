@@ -86,7 +86,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -101,8 +101,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     position: relative;
     display: block;
@@ -379,7 +379,7 @@ import {TuiCardLarge, TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -388,8 +388,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     position: relative;
     display: block;
@@ -569,7 +569,7 @@ import {TuiFloatingContainer, TuiSlides} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -580,8 +580,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     position: relative;
     display: block;
@@ -638,7 +638,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -647,8 +647,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .content {
     position: relative;
     display: block;
@@ -660,7 +660,7 @@ export default class Example {
 }
 
 footer {
-    // inset the footer so the container's bleeding background stays within the scroll area
+    /* inset the footer so the container's bleeding background stays within the scroll area */
     margin-inline: 1rem;
 }
 
@@ -669,7 +669,66 @@ footer {
 }
 
 .action {
-    // shrink the single action to its content and pin it to the trailing edge
+    /* shrink the single action to its content and pin it to the trailing edge */
     justify-self: end;
+}
+```
+
+#### Max width
+
+Limit content width with `grid-template-columns` and center it with `justify-content` on large screens, such as foldable phones. Background still stretches to full width.
+
+**Template:**
+```html
+<div class="content">
+<article class="article">
+<header tuiHeader>
+<h2 tuiTitle>Terms of service</h2>
+</header> @for (_ of '-'.repeat(6); track $index) { <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p> } </article>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" > Accept </button>
+<button appearance="flat" tuiButton type="button" > Decline </button>
+</footer>
+</div>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiFloatingContainer, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiButton, TuiFloatingContainer, TuiHeader, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+**CSS:**
+```css
+.content {
+    position: relative;
+    inline-size: 40rem;
+    max-inline-size: 100%;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+.article {
+    padding: 1rem 1rem 0;
+}
+
+footer {
+    grid-template-columns: min(100%, 20rem);
+    justify-content: center;
+    margin-inline: 1rem;
 }
 ```

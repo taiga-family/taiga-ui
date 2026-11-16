@@ -73,13 +73,13 @@ export default class Example {
 ```html
 <h3 tuiTitle>
 <strong>Truncate</strong>
-<span tuiSubtitle> Using <code>.text-truncate()</code> mixin </span>
+<span tuiSubtitle>Using ellipsis</span>
 </h3>
 <tui-breadcrumbs> @for (item of items; track item) { <button *tuiItem tuiHintOverflow tuiLink type="button" class="link" [class.link_last]="$last" > {{ item }} </button> } </tui-breadcrumbs>
 <hr />
 <h3 tuiTitle>
 <strong>Fade</strong>
-<span tuiSubtitle> Combining <code>.text-truncate()</code> mixin with <code>
+<span tuiSubtitle> Using <code>
 <a tuiLink [routerLink]="fade" > Fade </a>
 </code> directive </span>
 </h3>
@@ -115,7 +115,7 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/
 @Component({
     imports: [RouterLink, TuiBreadcrumbs, TuiFade, TuiHint, TuiItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],
@@ -132,10 +132,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     max-inline-size: 30rem;
@@ -153,11 +151,14 @@ hr {
 }
 
 .link {
-    .text-truncate();
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    max-inline-size: max-content;
+}
 
-    &_last {
-        font-weight: bold;
-        color: var(--tui-text-primary);
-    }
+.link_last {
+    font-weight: bold;
+    color: var(--tui-text-primary);
 }
 ```

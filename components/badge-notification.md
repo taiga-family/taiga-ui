@@ -57,15 +57,15 @@ import {TuiBadgeNotification} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadgeNotification, TuiPlatform],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-badge-notification {
     margin: 0.2rem;
 }
@@ -91,19 +91,17 @@ import {TuiBadgeNotification} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadgeNotification],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils.less';
-
+**CSS:**
+```css
 tui-badge-notification {
     margin: 0.2rem;
-    .gradient(#c86dd7, #3023ae);
+    background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
 }
 ```

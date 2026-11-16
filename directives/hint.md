@@ -51,7 +51,7 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiButton, TuiHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -64,10 +64,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: block;
     background: #3e4757;
@@ -94,15 +92,15 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .hint {
     color: #fff;
     background: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
@@ -159,20 +157,19 @@ import {TuiHint} from '@taiga-ui/core';
 @Component({
     imports: [TuiHint],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 div {
-    .text-overflow();
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     resize: horizontal;
 }
 ```

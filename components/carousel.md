@@ -39,7 +39,7 @@ import {TuiButton, TuiCarousel} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiCarousel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -48,8 +48,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     gap: 1rem;
@@ -139,7 +139,7 @@ import {TuiCard} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiCard, TuiCarousel, TuiPager, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -172,10 +172,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -185,14 +183,14 @@ export default class Example {
 }
 
 .progress {
-    .transition(all);
-
+    transition-property: all;
+    transition-duration: var(--tui-duration);
     inline-size: 1rem;
+}
 
-    &:not(&_active) {
-        inline-size: 0.5rem;
-        color: transparent;
-    }
+.progress:not(.progress_active) {
+    inline-size: 0.5rem;
+    color: transparent;
 }
 ```
 
@@ -259,7 +257,7 @@ import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiAvatarLabeled, TuiCarousel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -289,8 +287,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 tui-carousel {
     inline-size: 16rem;
 }
@@ -325,7 +323,7 @@ import {TuiButton, TuiCarousel} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiCarousel],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -334,8 +332,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     gap: 1rem;
@@ -352,7 +350,7 @@ export default class Example {
     justify-content: center;
     border-radius: 1rem;
     background: var(--tui-background-neutral-1);
-    // Keep the name outside conditional rules so Angular scopes it in minified CSS.
+    /* Keep the name outside conditional rules so Angular scopes it in minified CSS. */
     animation-name: carousel-item;
 }
 

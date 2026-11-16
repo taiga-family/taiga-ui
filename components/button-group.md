@@ -40,26 +40,22 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAppearance, TuiButtonGroup, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     inline-size: 21.5625rem;
-
-    @media @tui-mobile {
-        inline-size: 100%;
-    }
+    min-inline-size: 100%;
+    max-inline-size: 100%;
 }
 
 .custom {
@@ -106,26 +102,22 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAppearance, TuiButtonGroup, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     inline-size: 21.5625rem;
-
-    @media @tui-mobile {
-        inline-size: 100%;
-    }
+    min-inline-size: 100%;
+    max-inline-size: 100%;
 }
 ```
 
@@ -164,26 +156,22 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButtonGroup, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     inline-size: 21.5625rem;
-
-    @media @tui-mobile {
-        inline-size: 100%;
-    }
+    min-inline-size: 100%;
+    max-inline-size: 100%;
 }
 
 [tuiButtonGroup] {
@@ -243,7 +231,7 @@ import {TuiCardMedium, TuiElasticContainer} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -285,20 +273,16 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     inline-size: 21rem;
     block-size: 21rem;
-
-    @media @tui-mobile {
-        inline-size: 100%;
-    }
+    min-inline-size: 100%;
+    max-inline-size: 100%;
 }
 
 [tuiButtonGroup] button {

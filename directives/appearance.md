@@ -40,7 +40,7 @@ import {TuiAppearance, TuiDropdown} from '@taiga-ui/core';
 @Component({
     imports: [TuiAppearance, TuiDropdown],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -49,8 +49,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     grid-auto-rows: 3rem;
@@ -139,17 +139,15 @@ import {TuiAppearance} from '@taiga-ui/core';
 @Component({
     imports: [TuiAppearance],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .like {
     inline-size: var(--tui-height-m);
     block-size: var(--tui-height-m);
@@ -157,9 +155,9 @@ export default class Example {}
     cursor: pointer;
 
     &::before {
-        .fullsize();
-
         content: '';
+        position: absolute;
+        inset: 0;
         background: currentColor;
         mask-image: url('/assets/taiga-ui/icons/heart.svg');
         mask-repeat: no-repeat;
@@ -196,7 +194,7 @@ import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 @Component({
     imports: [ClipboardModule, KeyValuePipe, TuiButton],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -225,8 +223,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .section {
     display: flex;
     gap: 1rem;

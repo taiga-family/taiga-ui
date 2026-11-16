@@ -100,15 +100,15 @@ import {TuiAutoColorPipe, TuiAvatar, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAutoColorPipe, TuiAvatar, TuiFade],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -141,7 +141,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, UpperCasePipe],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -151,8 +151,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;
@@ -273,15 +273,15 @@ import {TuiAvatar, TuiAvatarLabeled} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiAvatarLabeled],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;
@@ -313,15 +313,15 @@ import {TuiAvatar, TuiAvatarOutline} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiAvatarOutline],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 1rem;

@@ -48,7 +48,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -63,8 +63,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .slider {
     inline-size: 12.5rem;
     margin-block-end: 1em;
@@ -95,7 +95,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -104,8 +104,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .slider {
     inline-size: 12.5rem;
     margin-block-end: 1em;
@@ -136,7 +136,7 @@ import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputSlider, TuiPagination, TuiTextfield],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -145,8 +145,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 .slider {
     inline-size: 12.5rem;
     margin-block-end: 1em;

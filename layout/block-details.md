@@ -92,7 +92,7 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAmountPipe, TuiAvatar, TuiBadge, TuiBlockDetails, TuiFade, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [tuiAmountOptionsProvider({sign: 'always'})],
@@ -102,8 +102,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     flex-direction: column;

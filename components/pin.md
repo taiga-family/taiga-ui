@@ -39,15 +39,15 @@ import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 2rem;
@@ -82,15 +82,15 @@ import {TuiPin} from '@taiga-ui/kit';
 @Component({
     imports: [TuiPin],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
 export default class Example {}
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: flex;
     gap: 2rem;
@@ -147,7 +147,7 @@ import {TuiBadge, TuiPin} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiIcon, TuiPin],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -159,8 +159,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     position: relative;
     display: block;
@@ -220,7 +220,7 @@ import {TuiBadge, TuiFade, TuiPin} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiFade, TuiIcon, TuiPin, TuiTitle],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -232,8 +232,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: grid;
     gap: 1rem;

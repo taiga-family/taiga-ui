@@ -45,7 +45,7 @@ import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -71,8 +71,8 @@ export default class Example implements AfterViewInit {
 }
 ```
 
-**LESS:**
-```less
+**CSS:**
+```css
 :host {
     display: block;
 }
@@ -227,7 +227,7 @@ import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrl: '../1/index.less',
+    styleUrl: '../1/index.css',
     encapsulation,
     changeDetection,
 })

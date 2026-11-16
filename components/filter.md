@@ -57,7 +57,7 @@ import {TuiFilter} from '@taiga-ui/kit';
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -79,10 +79,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     max-inline-size: 34.375rem;
 }
@@ -141,7 +139,7 @@ const COMPLETED = {
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -183,10 +181,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     max-inline-size: 34.375rem;
 }
@@ -240,7 +236,7 @@ const getIcon: Record<string, string> = {
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter, TuiIcon],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -254,10 +250,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 :host {
     max-inline-size: 34.375rem;
 }
@@ -316,7 +310,7 @@ const Department = {
 @Component({
     imports: [AsyncPipe, FormsModule, TuiButton, TuiFilter],
     templateUrl: './index.html',
-    styleUrl: './index.less',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
@@ -344,10 +338,8 @@ export default class Example {
 }
 ```
 
-**LESS:**
-```less
-@import '@taiga-ui/styles/utils';
-
+**CSS:**
+```css
 .item {
     display: inline;
     vertical-align: bottom;
