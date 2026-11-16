@@ -19,6 +19,7 @@
         <tui-doc-demo>
             <tui-pagination
                 [activePadding]="activePadding"
+                [disabled]="disabled"
                 [focusable]="focusable"
                 [length]="length"
                 [sidePadding]="sidePadding"
@@ -27,6 +28,14 @@
             />
         </tui-doc-demo>
         <table tuiDocAPI>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
+            >
+                disables pagination controls
+            </tr>
             <tr
                 name="[focusable]"
                 tuiDocAPIItem
