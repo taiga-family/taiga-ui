@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.109.0](https://github.com/taiga-family/taiga-ui/compare/v4.108.0...v4.109.0) (2026-11-16)
+
+### 🚀 Features
+
+- **addon-mobile:** `TabBar` enable liquid glass overlay by class and limit width
+  ([#15409](https://github.com/taiga-family/taiga-ui/issues/15409))
+  ([ecb942b](https://github.com/taiga-family/taiga-ui/commit/ecb942b69b5d692a724b4eae13b30caf27ad81ab))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `Header` fix description line height for small sizes
+  ([#15407](https://github.com/taiga-family/taiga-ui/issues/15407))
+  ([7774c81](https://github.com/taiga-family/taiga-ui/commit/7774c81e75af316cd6afaee835641540820e2fd0))
+- **addon-mobile:** MobileCalendar closes only its own dropdown, not the enclosing dialog
+  ([#15413](https://github.com/taiga-family/taiga-ui/issues/15413))
+  ([9ae7c9f](https://github.com/taiga-family/taiga-ui/commit/9ae7c9fd9ec0e07ad9f8d90fa55a2249e707bab5))
+
 ## [4.108.0](https://github.com/taiga-family/taiga-ui/compare/v4.107.0...v4.108.0) (2026-11-12)
 
 ## [4.107.0](https://github.com/taiga-family/taiga-ui/compare/v4.106.0...v4.107.0) (2026-11-09)
