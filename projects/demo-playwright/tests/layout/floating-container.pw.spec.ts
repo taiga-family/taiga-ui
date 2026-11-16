@@ -19,7 +19,7 @@ test.describe('FloatingContainer', () => {
             .toHaveScreenshot('01-floating-container.png');
     });
 
-    test('compact example does not produce horizontal scroll', async ({page}) => {
+    test('full-width footer does not produce horizontal scroll', async ({page}) => {
         await tuiGoto(page, DemoRoute.FloatingContainer);
 
         const example = new TuiDocumentationPagePO(page).getExample('#compact');
@@ -27,18 +27,23 @@ test.describe('FloatingContainer', () => {
         await example.scrollIntoViewIfNeeded();
 
         const content = example.locator('.content');
+        const footer = content.locator('[tuiFloatingContainer]');
 
-        await expect(content).toBeVisible();
+        await expect(footer).toHaveCSS('position', 'sticky');
 
         // Retry until the lazily-rendered example settles: on the production build its
-        // component styles stream in after the DOM, briefly leaving the footer full-width.
+        // component styles can stream in after the DOM.
         await expect(async () => {
-            const {scrollWidth, clientWidth} = await content.evaluate((el) => ({
-                scrollWidth: el.scrollWidth,
-                clientWidth: el.clientWidth,
-            }));
+            const {scrollWidth, clientWidth, footerWidth} = await content.evaluate(
+                (el) => ({
+                    scrollWidth: el.scrollWidth,
+                    clientWidth: el.clientWidth,
+                    footerWidth: el.querySelector('[tuiFloatingContainer]')?.clientWidth,
+                }),
+            );
 
-            expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
+            expect(footerWidth).toBe(clientWidth);
+            expect(scrollWidth).toBe(clientWidth);
         }).toPass({timeout: 15_000});
     });
 });
