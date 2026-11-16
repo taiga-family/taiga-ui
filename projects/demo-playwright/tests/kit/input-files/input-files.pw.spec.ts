@@ -77,6 +77,40 @@ test.describe('InputFiles', () => {
         }),
     );
 
+    test('ignores a real text drop without files', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.InputFiles}/API`);
+
+        const label = example.locator('label[tuiInputFiles]');
+        const input = label.locator('input[tuiInputFiles]');
+
+        await expect(input).toHaveClass(/ng-pristine/);
+
+        await label.evaluate((element) => {
+            const source = document.createElement('div');
+
+            source.textContent = 'Drag plain text';
+            source.draggable = true;
+            source.style.padding = '12px';
+            source.addEventListener('dragstart', (event) => {
+                event.dataTransfer?.setData('text/plain', 'not a file');
+            });
+
+            element.addEventListener('drop', (event) => {
+                element.setAttribute(
+                    'data-drop-file-count',
+                    String(event.dataTransfer?.files.length),
+                );
+            });
+
+            element.parentElement?.append(source);
+        });
+
+        await example.getByText('Drag plain text').dragTo(label);
+
+        await expect(label).toHaveAttribute('data-drop-file-count', '0');
+        await expect(input).toHaveClass(/ng-pristine/);
+    });
+
     test('With button', async ({page}) => {
         await tuiGoto(page, DemoRoute.InputFiles);
         const example = new TuiDocumentationPagePO(page).getExample('#with-button');
