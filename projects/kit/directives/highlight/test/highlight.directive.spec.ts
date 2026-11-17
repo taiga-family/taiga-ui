@@ -60,15 +60,13 @@ describe('TuiHighlight directive', () => {
         expect(element.style.background).toBe('yellow');
     });
 
-    it.each([
-        {source: 'İx', query: 'X', expected: 'x'},
-        {source: 'İx', query: 'i', expected: 'İ'},
-        {source: 'i\u0307x', query: 'İ', expected: 'i\u0307'},
-    ])('highlights $expected in $source for $query', ({source, query, expected}) => {
+    it('highlights the original text when lowercasing changes offsets', () => {
         @Component({
             imports: [TuiHighlight],
             template: `
-                <div tuiHighlight="${query}">${source}</div>
+                <div tuiHighlight="X">İx</div>
+                <div tuiHighlight="i">İx</div>
+                <div tuiHighlight="İ">i&#x0307;x</div>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
@@ -80,7 +78,11 @@ describe('TuiHighlight directive', () => {
         try {
             fixture.detectChanges();
 
-            expect(setEnd.mock.contexts[0]?.toString()).toBe(expected);
+            expect(setEnd.mock.contexts.map((range) => range.toString())).toEqual([
+                'x',
+                'İ',
+                'i\u0307',
+            ]);
         } finally {
             setEnd.mockRestore();
         }
