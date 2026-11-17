@@ -100,7 +100,7 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     private get d(): number {
-        return this.el.matches('[dir="rtl"] :scope') ? -1 : 1;
+        return this.el.closest('[dir]')?.getAttribute('dir') === 'rtl' ? -1 : 1;
     }
 
     private get fallback(): boolean {
