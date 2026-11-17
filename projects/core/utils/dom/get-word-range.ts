@@ -59,7 +59,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
         const textContent = container.textContent || '';
 
         const content =
-            container === endContainer ? textContent.slice(endOffset + 1) : textContent;
+            container === endContainer ? textContent.slice(endOffset) : textContent;
 
         const offset = [
             content.indexOf(' '),
