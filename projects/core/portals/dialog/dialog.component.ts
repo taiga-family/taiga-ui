@@ -54,8 +54,12 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         'data-tui-version': TUI_VERSION,
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
+        '[attr.data-zone-top]': 'fullscreen ? "var(--tui-background-base)" : null',
+        '[attr.data-zone-left]': 'fullscreen ? "var(--tui-background-base)" : null',
+        '[attr.data-zone-right]': 'fullscreen ? "var(--tui-background-base)" : null',
+        '[attr.data-zone-bottom]': 'fullscreen ? "var(--tui-background-base)" : null',
         '[class._closable]': 'context.closable',
-        '[class.tui-backdrop-hidden]': 'context.appearance.includes("fullscreen")',
+        '[class.tui-backdrop-hidden]': 'fullscreen',
     },
 })
 export class TuiDialogComponent<O, I> {
@@ -63,7 +67,7 @@ export class TuiDialogComponent<O, I> {
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiDialogContext<I, O>>();
-
+    protected readonly fullscreen = this.context.appearance.includes('fullscreen');
     protected readonly primitive =
         typeof this.context.content === 'function' ||
         Object(this.context.content) !== this.context.content;

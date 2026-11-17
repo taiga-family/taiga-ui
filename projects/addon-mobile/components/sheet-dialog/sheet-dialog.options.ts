@@ -38,7 +38,8 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     data: undefined,
     bar: true,
     required: false,
-    themeColor: '#404040',
+    /** @deprecated add 2 <meta name="theme-color"> tags for (prefers-color-scheme: light/dark) in #rrggbb format TODO: remove in v6 */
+    themeColor: '',
 };
 
 /**
