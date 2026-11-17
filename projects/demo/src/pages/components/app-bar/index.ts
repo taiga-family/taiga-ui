@@ -17,5 +17,6 @@ export default class Page {
         'iOS Liquid glass',
         'Liquid glass dynamic header',
         'Color background',
+        'Liquid glass over map',
     ];
 }
