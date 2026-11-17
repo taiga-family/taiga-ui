@@ -21,7 +21,7 @@ const SELECTOR =
     'tui-modal:not(:has(.tui-backdrop-hidden)),[data-zone-top],[data-zone-bottom],[data-zone-left],[data-zone-right]';
 
 const COMMON =
-    'position:fixed;z-index:1000;mask-image:linear-gradient(black,transparent 0.01%);';
+    'position:fixed;z-index:1000;mask-image:linear-gradient(black,transparent 0.01%);pointer-events:none;';
 
 @Directive({
     providers: [
@@ -39,7 +39,7 @@ export class TuiPopupsDirective {
         .getTags('name="theme-color"')
         .filter(
             ({media, content}) =>
-                media.includes('prefers-color-scheme') && content.length === 7,
+                media?.includes('prefers-color-scheme') && content.length === 7,
         );
 
     private readonly element = toSignal(
@@ -63,7 +63,7 @@ export class TuiPopupsDirective {
 
         this.themes.forEach((tag) => this.meta.removeTagElement(tag));
 
-        const meta = this.themes.find((t) => t.media.includes(dark ? 'dark' : 'light'))!;
+        const meta = this.themes.find((t) => t.media?.includes(dark ? 'dark' : 'light'))!;
         const color = element
             ? meta.content.replaceAll(/\w\w/g, (m) =>
                   Math.round(Number.parseInt(m, 16) / 4)
