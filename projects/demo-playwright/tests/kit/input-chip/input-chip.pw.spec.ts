@@ -19,13 +19,12 @@ test.describe('InputChip', () => {
     test.describe('Examples', () => {
         test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.InputChip));
 
-        test('moves focus between chips with the arrow keys after clicking the input', async ({
-            page,
-        }) => {
+        test('shows keyboard focus on chips after clicking the input', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#chips');
             const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
             const {input} = new TuiInputChipEO(example);
             const chips = textfield.locator('tui-input-chip');
+            const focusVisible = page.locator(':focus-visible');
             const middle = chips.filter({hasText: 'love'});
             const last = chips.filter({hasText: 'Angular'});
 
@@ -33,16 +32,17 @@ test.describe('InputChip', () => {
             await expect(input).toBeFocused();
 
             await page.keyboard.press('ArrowLeft');
-            await expect(last).toBeFocused();
+            await expect(last.and(focusVisible)).toBeFocused();
 
             await page.keyboard.press('ArrowLeft');
-            await expect(middle).toBeFocused();
+            await expect(middle.and(focusVisible)).toBeFocused();
 
             await page.keyboard.press('ArrowRight');
-            await expect(last).toBeFocused();
+            await expect(last.and(focusVisible)).toBeFocused();
 
             await last.getByText('Angular', {exact: true}).click();
             await expect(input).toBeFocused();
+            await expect(chips.and(focusVisible)).toHaveCount(0);
         });
 
         test('horizontal textfield keeps its label and values visible', async ({
