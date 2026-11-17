@@ -4,7 +4,13 @@ const FLAKY_EXAMPLES = new Map<
     string,
     Array<{exampleIndex: number; browserName?: string}>
 >([
-    [DemoRoute.AppBar, [{exampleIndex: 0, browserName: 'webkit'}]], // Flaky in safari, need to investigate a problem
+    [
+        DemoRoute.AppBar,
+        [
+            {exampleIndex: 0, browserName: 'webkit'}, // Flaky in safari, need to investigate a problem
+            {exampleIndex: 8}, // Google maps
+        ],
+    ],
     [DemoRoute.Avatar, [{exampleIndex: 5, browserName: 'safari'}]], // Flaky
     [DemoRoute.BottomSheet, [{exampleIndex: 1}]], // Google maps
     [DemoRoute.Breadcrumbs, [{exampleIndex: 1, browserName: 'webkit'}]],
