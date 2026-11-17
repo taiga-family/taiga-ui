@@ -59,4 +59,30 @@ describe('TuiHighlight directive', () => {
 
         expect(element.style.background).toBe('yellow');
     });
+
+    it.each([
+        {source: 'İx', query: 'X', expected: 'x'},
+        {source: 'İx', query: 'i', expected: 'İ'},
+        {source: 'i\u0307x', query: 'İ', expected: 'i\u0307'},
+    ])('highlights $expected in $source for $query', ({source, query, expected}) => {
+        @Component({
+            imports: [TuiHighlight],
+            template: `
+                <div tuiHighlight="${query}">${source}</div>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class UnicodeTest {}
+
+        const fixture = TestBed.createComponent(UnicodeTest);
+        const setEnd = jest.spyOn(Range.prototype, 'setEnd');
+
+        try {
+            fixture.detectChanges();
+
+            expect(setEnd.mock.contexts[0]?.toString()).toBe(expected);
+        } finally {
+            setEnd.mockRestore();
+        }
+    });
 });
