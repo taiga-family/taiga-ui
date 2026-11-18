@@ -153,10 +153,9 @@ describe('Tabs', () => {
             element.style.width = '133px';
             element.setAttribute('dir', 'rtl');
         });
-        await tabs
-            .locator('[tuiTab]')
-            .last()
-            .evaluate((element: HTMLElement) => element.click());
+        const lastTab = tabs.locator('[tuiTab]').last();
+
+        await lastTab.evaluate((element: HTMLElement) => element.click());
 
         await expect
             .poll(() => tabs.evaluate((element) => element.scrollLeft))
@@ -165,9 +164,7 @@ describe('Tabs', () => {
         await expect
             .poll(() =>
                 tabs.evaluate((element) => {
-                    const active = element.querySelector<HTMLElement>(
-                        '[tuiTab]._active',
-                    );
+                    const active = element.querySelector<HTMLElement>('[tuiTab]._active');
 
                     if (!active) {
                         return false;

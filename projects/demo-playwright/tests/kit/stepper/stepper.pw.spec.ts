@@ -41,10 +41,9 @@ test.describe('Stepper', () => {
         const stepper = new TuiDocumentationPagePO(page).demo.locator('tui-stepper');
 
         await stepper.evaluate((element) => element.setAttribute('dir', 'rtl'));
-        await stepper
-            .locator('[tuiStep]')
-            .last()
-            .evaluate((element: HTMLElement) => element.click());
+        const lastStep = stepper.locator('[tuiStep]').last();
+
+        await lastStep.evaluate((element: HTMLElement) => element.click());
 
         await expect
             .poll(() => stepper.evaluate((element) => element.scrollLeft))
@@ -53,9 +52,7 @@ test.describe('Stepper', () => {
         await expect
             .poll(() =>
                 stepper.evaluate((element) => {
-                    const active = element.querySelector<HTMLElement>(
-                        '[tuiStep]._active',
-                    );
+                    const active = element.querySelector<HTMLElement>('[tuiStep]._active');
 
                     if (!active) {
                         return false;
