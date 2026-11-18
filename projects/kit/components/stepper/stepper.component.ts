@@ -11,7 +11,11 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetCenteredScrollLeft,
+    tuiInjectElement,
+    tuiIsElement,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
 
@@ -107,16 +111,11 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const {clientHeight, clientWidth, offsetTop} = this.el;
-        const {offsetHeight, offsetWidth, offsetTop: stepOffsetTop} = step;
+        const {clientHeight, offsetTop} = this.el;
+        const {offsetHeight, offsetTop: stepOffsetTop} = step;
 
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
-        const left =
-            this.el.scrollLeft +
-            step.getBoundingClientRect().left -
-            this.el.getBoundingClientRect().left -
-            clientWidth / 2 +
-            offsetWidth / 2;
+        const left = tuiGetCenteredScrollLeft(this.el, step);
 
         this.el.scrollTo?.({left, top: Math.max(0, top)});
     }

@@ -1,5 +1,9 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetCenteredScrollLeft,
+    tuiGetElementOffset,
+    tuiInjectElement,
+} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ANCHOR_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
@@ -64,15 +68,10 @@ export class TuiScrollbar {
             return;
         }
 
-        const {offsetHeight, offsetWidth} = detail;
+        const {offsetHeight} = detail;
         const {offsetTop} = tuiGetElementOffset(this.scrollRef, detail);
         const scrollTop = offsetTop + offsetHeight / 2 - this.scrollRef.clientHeight / 2;
-        const scrollLeft =
-            this.scrollRef.scrollLeft +
-            detail.getBoundingClientRect().left -
-            this.scrollRef.getBoundingClientRect().left +
-            offsetWidth / 2 -
-            this.scrollRef.clientWidth / 2;
+        const scrollLeft = tuiGetCenteredScrollLeft(this.scrollRef, detail);
 
         this.scrollRef.scrollTo?.(scrollLeft, scrollTop);
     }
