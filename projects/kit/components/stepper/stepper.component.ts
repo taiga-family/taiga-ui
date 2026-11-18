@@ -113,7 +113,6 @@ export class TuiStepperComponent implements OnChanges {
 
         const {clientHeight, offsetTop} = this.el;
         const {offsetHeight, offsetTop: stepOffsetTop} = step;
-
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = tuiGetCenteredScrollLeft(this.el, step);
 
