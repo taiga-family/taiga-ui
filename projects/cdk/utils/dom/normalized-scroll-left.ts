@@ -1,5 +1,25 @@
-import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+
+/**
+ * Whether the element's effective direction is RTL.
+ * The nearest `dir` attribute wins, so an intervening `dir="ltr"` ancestor
+ * overrides an outer `dir="rtl"` (unlike a selector match, which still matches
+ * the scroller in that case). With no explicit `dir` (`dir="auto"` included),
+ * the computed direction decides.
+ */
+export function tuiIsRtl(element: HTMLElement): boolean {
+    const dir = element.closest('[dir]')?.getAttribute('dir');
+
+    if (dir === 'rtl') {
+        return true;
+    }
+
+    return dir === 'ltr'
+        ? false
+        : typeof Element !== 'undefined' &&
+              element instanceof Element &&
+              getComputedStyle(element).direction === 'rtl';
+}
 
 /**
  * Horizontal scroll position measured from the start edge of the scrollable content:
@@ -9,9 +29,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
  * value is its absolute value.
  */
 export function tuiGetNormalizedScrollLeft(element: HTMLElement): number {
-    return element.matches(TUI_RTL_SELECTOR)
-        ? Math.abs(element.scrollLeft)
-        : element.scrollLeft;
+    return tuiIsRtl(element) ? Math.abs(element.scrollLeft) : element.scrollLeft;
 }
 
 /**
@@ -23,7 +41,5 @@ export function tuiToNativeScrollLeft(element: HTMLElement, value: number): numb
     const max = Math.max(0, element.scrollWidth - element.clientWidth);
     const normalized = tuiClamp(value, 0, max);
 
-    return element.matches(TUI_RTL_SELECTOR) && normalized !== 0
-        ? -normalized
-        : normalized;
+    return tuiIsRtl(element) && normalized !== 0 ? -normalized : normalized;
 }

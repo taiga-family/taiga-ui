@@ -21,9 +21,24 @@ test.describe('TuiScrollbar RTL', () => {
         await scrollbar.evaluate((element) => element.setAttribute('dir', 'rtl'));
         await expect(scrollbar).toHaveCSS('direction', 'rtl');
 
+        // `.line` boxes are as wide as the viewport, so centering one requires no
+        // scrolling. Use a narrow target in the middle of the last line's text
+        // instead: it sits off-center in the overflowing content, so centering it
+        // requires scrolling away from the start edge. (A target at the very end
+        // of the line cannot be centered at all: it already sits at the far edge
+        // of the content, past the maximum scroll position.)
         await scrollbar.evaluate((element) => {
-            const target = element.querySelector('.line:last-child')!;
+            const line = element.querySelector('.line:last-child')!;
+            const target = document.createElement('span');
 
+            target.className = 't-rtl-target';
+            target.style.display = 'inline-block';
+            target.style.inlineSize = '2rem';
+
+            const text = line.firstChild as Text;
+            const secondHalf = text.splitText(Math.floor(text.length / 2));
+
+            line.insertBefore(target, secondHalf);
             target.dispatchEvent(
                 new CustomEvent('tui-scroll-into-view', {
                     bubbles: true,
@@ -35,7 +50,7 @@ test.describe('TuiScrollbar RTL', () => {
         await expect
             .poll(async () =>
                 scrollbar.evaluate((element) => {
-                    const target = element.querySelector('.line:last-child')!;
+                    const target = element.querySelector('.t-rtl-target')!;
                     const scrollbarRect = element.getBoundingClientRect();
                     const targetRect = target.getBoundingClientRect();
                     const center = (targetRect.left + targetRect.right) / 2;
