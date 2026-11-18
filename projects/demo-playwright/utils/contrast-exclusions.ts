@@ -1,4 +1,5 @@
 import {DemoRoute} from '@demo/routes';
+import {type Rule} from 'axe-core';
 
 /**
  * Known `color-contrast` violations, reported by axe-core.
@@ -45,9 +46,14 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
     [DemoRoute.Tree, ['.wrapper']],
 ]);
 
-export function tuiGetContrastExclusions(path: string): string[][] {
-    // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
-    return [...(CONTRAST_EXCLUSIONS.get(path) ?? []), '[data-appearance="accent"]'].map(
-        (selector) => [selector],
-    );
+export function tuiGetContrastRule(path: string): Rule {
+    const exclusions = [
+        ...(CONTRAST_EXCLUSIONS.get(path) ?? []),
+        // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
+        '[data-appearance="accent"]',
+    ];
+
+    const excluded = `:is(${exclusions.join(',')})`;
+
+    return {id: 'color-contrast', selector: `:not(${excluded}, ${excluded} *)`};
 }
