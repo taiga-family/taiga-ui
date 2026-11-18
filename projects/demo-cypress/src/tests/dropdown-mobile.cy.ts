@@ -23,12 +23,12 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 // Note: webpack compilation error
 // Do not change to @demo/utils
 // noinspection ES6PreferShortImport
 import {assets} from '../../../demo/src/utils/load-assets';
-import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly url?: string;
@@ -47,6 +47,7 @@ interface User {
         TuiDropdownMobile,
         TuiDropdownSheet,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputChip,
         TuiMultiSelect,
@@ -55,7 +56,6 @@ interface User {
         TuiSelect,
         TuiTextfield,
         TuiTitle,
-        TuiFloatingContainer,
     ],
     template: `
         <tui-root>
