@@ -215,6 +215,12 @@ export class TuiCalendarRange
         } else {
             const {mode, separator} = this.format();
 
+            this.item.set(null);
+
+            if (this.textfieldValue) {
+                this.value.set(null);
+            }
+
             this.currentValue.set(day);
             this.textfieldValue?.set(
                 `${day.toString(mode, separator)}${RANGE_SEPARATOR_CHAR}`,

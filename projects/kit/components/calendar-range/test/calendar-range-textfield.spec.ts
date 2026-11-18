@@ -44,6 +44,19 @@ describe('TuiCalendarRange textfield integration', () => {
         expect(calendar.value()).toBeNull();
     });
 
+    it('clears the previous range when starting a new one', () => {
+        const previous = new TuiDayRange(new TuiDay(2025, 0, 1), new TuiDay(2025, 0, 5));
+        const day = new TuiDay(2025, 0, 10);
+
+        calendar.value.set(previous);
+        fixture.detectChanges();
+        calendar['onDayClick'](day);
+
+        expect(calendar.value()).toBeNull();
+        expect(calendar['currentValue']()).toBe(day);
+        expect(TEXTFIELD_VALUE()).toBe(`10.01.2025${RANGE_SEPARATOR_CHAR}`);
+    });
+
     it('commits unfinished range as single day on destroy', () => {
         const day = new TuiDay(2025, 0, 1);
         const range = new TuiDayRange(day, day);

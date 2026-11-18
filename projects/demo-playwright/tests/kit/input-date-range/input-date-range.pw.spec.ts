@@ -435,6 +435,12 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.click();
             await expect(inputDateRange.calendar).toBeAttached();
             await calendarSheet.clickOnDay(21);
+
+            await expect(inputDateRange.textfield).toHaveValue(
+                `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
+            );
+            await expect(inputDateRange.template).not.toBeAttached();
+
             await calendarSheet.clickOnDay(25);
 
             await expect(inputDateRange.textfield).toHaveValue(

@@ -110,8 +110,12 @@ export abstract class TuiInputDateBase<
             const changed = value !== this.toCalendarValue(this.value());
             const same = value instanceof TuiDayRange && value.from === value.to;
 
-            if (value && changed && !same) {
-                this.setDate(value);
+            if (changed && !same) {
+                if (value) {
+                    this.setDate(value);
+                } else {
+                    this.onChange(null);
+                }
             }
         });
 
