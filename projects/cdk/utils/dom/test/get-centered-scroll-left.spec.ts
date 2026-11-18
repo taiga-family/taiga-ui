@@ -4,7 +4,7 @@ describe('tuiGetCenteredScrollLeft', () => {
     it.each([
         {direction: 'LTR', current: 40, elementLeft: 360, expected: 238},
         {direction: 'RTL', current: -40, elementLeft: -120, expected: -322},
-    ])('calculates the centered scroll position in $direction', ({current, elementLeft, expected}) => {
+    ])('centers an element in $direction', ({current, elementLeft, expected}) => {
         const container = document.createElement('div');
         const element = document.createElement('div');
 
