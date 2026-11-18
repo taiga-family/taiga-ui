@@ -52,15 +52,13 @@ test.describe('Stepper', () => {
         await expect
             .poll(() =>
                 stepper.evaluate((element) => {
-                    const active = element.querySelector<HTMLElement>(
-                        '[tuiStep]._active',
-                    );
+                    const item = element.querySelector<HTMLElement>('[tuiStep]._active');
 
-                    if (!active) {
+                    if (!item) {
                         return false;
                     }
 
-                    const step = active.getBoundingClientRect();
+                    const step = item.getBoundingClientRect();
                     const host = element.getBoundingClientRect();
 
                     return step.left >= host.left - 1 && step.right <= host.right + 1;
