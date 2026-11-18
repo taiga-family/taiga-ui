@@ -11,6 +11,7 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsOptionContent,
     type TuiDataListAccessor,
@@ -160,7 +161,7 @@ export class TuiComboBoxDirective<T>
 
         const options = this.options();
 
-        if (options.length === 1 && options[0]) {
+        if (options.length === 1 && tuiIsPresent(options[0])) {
             this.textfield.handleOption(options[0]);
         }
     }

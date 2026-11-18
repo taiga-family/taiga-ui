@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
@@ -122,7 +123,7 @@ export class TuiRange extends TuiControl<[number, number]> {
     }
 
     protected get rtl(): boolean {
-        return this.el.matches('[dir="rtl"] :scope');
+        return this.el.matches(TUI_RTL_SELECTOR);
     }
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {

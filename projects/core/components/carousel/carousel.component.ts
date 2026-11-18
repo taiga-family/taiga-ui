@@ -17,6 +17,7 @@ import {
     WaIntersectionObserver,
     WaIntersectionObserverDirective,
 } from '@ng-web-apis/intersection-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -100,7 +101,7 @@ export class TuiCarouselComponent implements AfterViewInit {
     }
 
     private get d(): number {
-        return this.el.matches('[dir="rtl"] :scope') ? -1 : 1;
+        return this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
     }
 
     private get fallback(): boolean {

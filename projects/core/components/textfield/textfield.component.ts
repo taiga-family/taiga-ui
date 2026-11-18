@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TUI_RTL_SELECTOR, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -120,7 +120,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
             return '';
         }
 
-        return this.input()?.nativeElement.matches('[dir="rtl"] :scope')
+        return this.input()?.nativeElement.matches(TUI_RTL_SELECTOR)
             ? `${filler.slice(0, filler.length - value.length)}${value}`
             : `${value}${filler.slice(value.length)}`;
     });
