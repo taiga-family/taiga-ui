@@ -158,11 +158,11 @@ describe('Tabs', () => {
         await lastTab.evaluate((element: HTMLElement) => element.click());
 
         await expect
-            .poll(() => tabs.evaluate((element) => element.scrollLeft))
+            .poll(async () => tabs.evaluate((element) => element.scrollLeft))
             .toBeLessThan(0);
 
         await expect
-            .poll(() =>
+            .poll(async () =>
                 tabs.evaluate((element) => {
                     const active = element.querySelector<HTMLElement>('[tuiTab]._active');
 

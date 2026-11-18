@@ -46,11 +46,11 @@ test.describe('Stepper', () => {
         await lastStep.evaluate((element: HTMLElement) => element.click());
 
         await expect
-            .poll(() => stepper.evaluate((element) => element.scrollLeft))
+            .poll(async () => stepper.evaluate((element) => element.scrollLeft))
             .toBeLessThan(0);
 
         await expect
-            .poll(() =>
+            .poll(async () =>
                 stepper.evaluate((element) => {
                     const item = element.querySelector<HTMLElement>('[tuiStep]._active');
 

@@ -37,11 +37,11 @@ test.describe('TuiScrollbar', () => {
         });
 
         await expect
-            .poll(() => scrollbar.evaluate((element) => element.scrollLeft))
+            .poll(async () => scrollbar.evaluate((element) => element.scrollLeft))
             .toBeLessThan(0);
 
         await expect
-            .poll(() =>
+            .poll(async () =>
                 scrollbar.evaluate((element) => {
                     const target = element.querySelector('#rtl-scroll-target');
 
