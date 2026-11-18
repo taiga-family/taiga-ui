@@ -84,9 +84,7 @@ test.describe('Demo', () => {
 
             await checkA11y(
                 page,
-                {
-                    include: [['tui-doc-example > .t-example']],
-                },
+                {include: [['tui-doc-example > .t-example']]},
                 {detailedReport: true},
                 false,
                 'v2',
