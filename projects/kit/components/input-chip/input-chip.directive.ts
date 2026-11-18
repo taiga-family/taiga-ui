@@ -2,6 +2,7 @@ import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -132,7 +133,7 @@ export class TuiInputChipDirective<T>
     }
 
     protected scrollTo(): void {
-        const sign = this.textfield.el.matches('[dir="rtl"] :scope') ? -1 : 1;
+        const sign = this.textfield.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
 
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {

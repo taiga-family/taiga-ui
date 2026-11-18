@@ -1,5 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsPositionAccessor,
@@ -108,7 +109,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     }
 
     public getAlign(align: TuiDropdownAlign): 'center' | 'left' | 'right' {
-        const rtl = this.el.matches('[dir="rtl"] :scope');
+        const rtl = this.el.matches(TUI_RTL_SELECTOR);
 
         if (rtl && align === 'start') {
             return 'right';

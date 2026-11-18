@@ -1,6 +1,7 @@
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsPositionAccessor,
@@ -57,7 +58,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const rect = this.accessor.getClientRect();
         const leftCenter = rect.left + rect.width / 2;
         const topCenter = rect.top + rect.height / 2;
-        const rtl = this.el.matches('[dir="rtl"] :scope');
+        const rtl = this.el.matches(TUI_RTL_SELECTOR);
         const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
         const short = rect.height < ARROW_OFFSET * 2 || this.centered();
         const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
