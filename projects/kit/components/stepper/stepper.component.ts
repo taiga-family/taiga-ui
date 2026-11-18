@@ -107,18 +107,17 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
-
-        const {
-            offsetHeight,
-            offsetWidth,
-            offsetTop: stepOffsetTop,
-            offsetLeft: stepOffsetLeft,
-        } = step;
+        const {clientHeight, clientWidth, offsetTop} = this.el;
+        const {offsetHeight, offsetWidth, offsetTop: stepOffsetTop} = step;
 
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
-        const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
+        const left =
+            this.el.scrollLeft +
+            step.getBoundingClientRect().left -
+            this.el.getBoundingClientRect().left -
+            clientWidth / 2 +
+            offsetWidth / 2;
 
-        this.el.scrollTo?.({left: Math.max(0, left), top: Math.max(0, top)});
+        this.el.scrollTo?.({left, top: Math.max(0, top)});
     }
 }

@@ -65,9 +65,14 @@ export class TuiScrollbar {
         }
 
         const {offsetHeight, offsetWidth} = detail;
-        const {offsetTop, offsetLeft} = tuiGetElementOffset(this.scrollRef, detail);
+        const {offsetTop} = tuiGetElementOffset(this.scrollRef, detail);
         const scrollTop = offsetTop + offsetHeight / 2 - this.scrollRef.clientHeight / 2;
-        const scrollLeft = offsetLeft + offsetWidth / 2 - this.scrollRef.clientWidth / 2;
+        const scrollLeft =
+            this.scrollRef.scrollLeft +
+            detail.getBoundingClientRect().left -
+            this.scrollRef.getBoundingClientRect().left +
+            offsetWidth / 2 -
+            this.scrollRef.clientWidth / 2;
 
         this.scrollRef.scrollTo?.(scrollLeft, scrollTop);
     }

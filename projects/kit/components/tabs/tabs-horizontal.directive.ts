@@ -60,14 +60,13 @@ export class TuiTabsHorizontal implements AfterViewChecked {
                 return;
             }
 
-            const {offsetLeft, offsetWidth} = element;
+            const {left: hostLeft, right: hostRight} = this.el.getBoundingClientRect();
+            const {left, right} = element.getBoundingClientRect();
 
-            if (offsetLeft < this.el.scrollLeft) {
-                this.el.scrollLeft = offsetLeft;
-            }
-
-            if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
-                this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
+            if (left < hostLeft) {
+                this.el.scrollLeft += left - hostLeft;
+            } else if (right > hostRight) {
+                this.el.scrollLeft += right - hostRight;
             }
         });
     }

@@ -143,6 +143,46 @@ describe('Tabs', () => {
         });
     });
 
+    test('scrolls the active tab into view in RTL', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Tabs);
+
+        const tabs = new TuiDocumentationPagePO(page)
+            .getExample('#basic')
+            .locator('tui-tabs');
+
+        await tabs.evaluate((element) => {
+            element.style.width = '133px';
+            element.setAttribute('dir', 'rtl');
+        });
+        await tabs
+            .locator('[tuiTab]')
+            .last()
+            .evaluate((element: HTMLElement) => element.click());
+
+        await expect
+            .poll(() => tabs.evaluate((element) => element.scrollLeft))
+            .toBeLessThan(0);
+
+        await expect
+            .poll(() =>
+                tabs.evaluate((element) => {
+                    const active = element.querySelector<HTMLElement>(
+                        '[tuiTab]._active',
+                    );
+
+                    if (!active) {
+                        return false;
+                    }
+
+                    const tab = active.getBoundingClientRect();
+                    const host = element.getBoundingClientRect();
+
+                    return tab.left >= host.left - 1 && tab.right <= host.right + 1;
+                }),
+            )
+            .toBe(true);
+    });
+
     describe('API', () => {
         let example!: Locator;
 

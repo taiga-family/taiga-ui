@@ -34,4 +34,39 @@ test.describe('Stepper', () => {
 
         await expect.soft(po.demo).toHaveScreenshot('04-stepper.png');
     });
+
+    test('scrolls the active step into view in RTL', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Stepper}/API?orientation=horizontal`);
+
+        const stepper = new TuiDocumentationPagePO(page).demo.locator('tui-stepper');
+
+        await stepper.evaluate((element) => element.setAttribute('dir', 'rtl'));
+        await stepper
+            .locator('[tuiStep]')
+            .last()
+            .evaluate((element: HTMLElement) => element.click());
+
+        await expect
+            .poll(() => stepper.evaluate((element) => element.scrollLeft))
+            .toBeLessThan(0);
+
+        await expect
+            .poll(() =>
+                stepper.evaluate((element) => {
+                    const active = element.querySelector<HTMLElement>(
+                            '[tuiStep]._active',
+                        );
+
+                    if (!active) {
+                        return false;
+                    }
+
+                    const step = active.getBoundingClientRect();
+                    const host = element.getBoundingClientRect();
+
+                    return step.left >= host.left - 1 && step.right <= host.right + 1;
+                }),
+            )
+            .toBe(true);
+    });
 });
