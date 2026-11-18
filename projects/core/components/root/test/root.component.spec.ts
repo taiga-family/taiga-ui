@@ -11,13 +11,20 @@ class VideoContentComponent {}
 
 @Component({
     imports: [TuiRoot],
+    template: '<tui-root />',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class RootHostComponent {}
+
+@Component({
+    imports: [TuiRoot],
     template: '<tui-root><tui-root><video></video></tui-root></tui-root>',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class NestedRootsComponent {}
 
 describe('root', () => {
-    let fixture: ComponentFixture<TuiRoot>;
+    let fixture: ComponentFixture<RootHostComponent>;
     let root: HTMLElement;
     let fullscreen: Element | null;
     let descriptor: PropertyDescriptor | undefined;
@@ -31,12 +38,12 @@ describe('root', () => {
         });
 
         TestBed.configureTestingModule({
-            imports: [TuiRoot],
+            imports: [RootHostComponent],
             providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TuiRoot);
-        root = fixture.nativeElement;
+        fixture = TestBed.createComponent(RootHostComponent);
+        root = fixture.nativeElement.querySelector('tui-root');
 
         fixture.detectChanges();
     });
