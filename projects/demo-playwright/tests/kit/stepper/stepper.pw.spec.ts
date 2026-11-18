@@ -52,7 +52,9 @@ test.describe('Stepper', () => {
         await expect
             .poll(() =>
                 stepper.evaluate((element) => {
-                    const active = element.querySelector<HTMLElement>('[tuiStep]._active');
+                    const active = element.querySelector<HTMLElement>(
+                        '[tuiStep]._active',
+                    );
 
                     if (!active) {
                         return false;
