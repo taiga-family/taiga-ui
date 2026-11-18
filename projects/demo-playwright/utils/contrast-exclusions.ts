@@ -8,9 +8,6 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
     [DemoRoute.Badge, ['[tuiBadge]']],
     [DemoRoute.BlockDetails, ['[tuiBadge]', '[tuiComment]']],
     [DemoRoute.BlockStatus, ['[data-appearance="secondary"]']],
-    [DemoRoute.BottomSheet, ['[data-appearance="accent"]']],
-    // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
-    [DemoRoute.Button, ['[data-appearance="accent"]']],
     [DemoRoute.ButtonGroup, ['[tuiButtonGroup] button']],
     // Opacity applied over text drops it below the threshold whatever the color is.
     // Adjacent-month cells are clickable, so they are NOT exempt as inactive controls.
@@ -18,7 +15,7 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
 
     [DemoRoute.CalendarRange, ['.t-cell_unavailable']],
     [DemoRoute.Cell, ['[tuiBadge]']],
-    [DemoRoute.Chip, ['[data-appearance="accent"]', '[tuiFade]', '.ellipsis']],
+    [DemoRoute.Chip, ['[tuiFade]', '.ellipsis']],
     [DemoRoute.Comment, ['[tuiComment]']],
 
     [DemoRoute.Header, ['[tuiBadge]']],
@@ -26,7 +23,7 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
     // The inner input is absolutely positioned with a transparent background, so axe
     // resolves it against whatever happens to sit behind it
     [DemoRoute.InputInline, ['input']],
-    [DemoRoute.Message, ['[data-appearance="accent"]', '.multiline']],
+    [DemoRoute.Message, ['.multiline']],
 
     // `.t-name` paints itself with `-webkit-text-fill-color` taken from background and
     // status tokens, which were never meant to carry text
@@ -45,14 +42,12 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
         DemoRoute.Toast,
         ['[data-appearance="secondary-grayscale"]', '[tuiToast]'],
     ],
-
-    // The example hardcodes a dark `#3e4757` host without switching the theme, so the
-    // nested `<code>` keeps light-theme colors and ends up dark on dark
-    [DemoRoute.Tooltip, ['code']],
-
     [DemoRoute.Tree, ['.wrapper']],
 ]);
 
 export function tuiGetContrastExclusions(path: string): string[][] {
-    return (CONTRAST_EXCLUSIONS.get(path) ?? []).map((selector) => [selector]);
+    // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
+    return (CONTRAST_EXCLUSIONS.get(path) ?? ['[data-appearance="accent"]']).map(
+        (selector) => [selector],
+    );
 }

@@ -11,5 +11,6 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
     styleUrl: './index.css',
     encapsulation,
     changeDetection,
+    host: {tuiTheme: 'dark'},
 })
 export default class Example {}
