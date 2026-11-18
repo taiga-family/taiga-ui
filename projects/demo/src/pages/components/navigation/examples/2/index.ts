@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 import {
     TUI_DARK_MODE,
     TuiButton,
@@ -35,14 +34,9 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from '@taiga-ui/layout'
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    host: {'[style.--tui-theme-color]': 'color ? "purple" : null'},
 })
 export default class Example {
-    private readonly theme = inject(TuiThemeColorService);
-
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
-
-    protected onColor(color: boolean): void {
-        this.theme.color = color ? 'purple' : 'black';
-    }
 }

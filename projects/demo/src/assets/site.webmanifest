@@ -1,6 +1,9 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Taiga UI",
+    "short_name": "Taiga UI",
+    "description": "A powerful set of open source components for Angular",
+    "start_url": "../",
+    "scope": "../",
     "icons": [
         {
             "src": "assets/android-chrome-192x192.png",
@@ -13,7 +16,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#f6f6f6",
+    "background_color": "#f6f6f6",
     "display": "standalone"
 }

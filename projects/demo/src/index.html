@@ -61,7 +61,13 @@
             property="og:description"
         />
         <meta
-            content="#ff7043"
+            content="#f6f6f6"
+            media="(prefers-color-scheme: light)"
+            name="theme-color"
+        />
+        <meta
+            content="#2e2e2e"
+            media="(prefers-color-scheme: dark)"
             name="theme-color"
         />
         <link
@@ -153,9 +159,6 @@
         />
         <title>Taiga UI</title>
     </head>
-    <body>
-        <app></app>
-    </body>
     <script>
         // Or whatever key you provided to TUI_DARK_MODE_KEY
         const theme = localStorage?.getItem('tuiDark');
@@ -164,4 +167,7 @@
             document.body.setAttribute('tuiTheme', 'dark');
         }
     </script>
+    <body>
+        <app></app>
+    </body>
 </html>
