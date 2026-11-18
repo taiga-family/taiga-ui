@@ -34,6 +34,10 @@ export interface TuiTablePaginationEvent {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePagination {
+    private readonly currentPage = computed(() =>
+        Math.max(0, Math.min(this.page(), this.pages() - 1)),
+    );
+
     protected readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
@@ -70,18 +74,16 @@ export class TuiTablePagination {
     }
 
     protected get start(): number {
-        return (
-            Math.min(this.page(), Math.floor(this.total() / this.size())) * this.size()
-        );
+        return this.currentPage() * this.size();
     }
 
     protected back(): void {
-        this.page.update((page) => page - 1);
+        this.page.set(this.currentPage() - 1);
         this.paginationChange.emit(this.pagination());
     }
 
     protected forth(): void {
-        this.page.update((page) => page + 1);
+        this.page.set(this.currentPage() + 1);
         this.paginationChange.emit(this.pagination());
     }
 }
