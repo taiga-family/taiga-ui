@@ -47,7 +47,8 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
 
 export function tuiGetContrastExclusions(path: string): string[][] {
     // `--tui-text-primary-on-accent-2` on `--tui-background-accent-2` — 2.74:1
-    return (CONTRAST_EXCLUSIONS.get(path) ?? ['[data-appearance="accent"]']).map(
-        (selector) => [selector],
-    );
+    return [
+        ...(CONTRAST_EXCLUSIONS.get(path) ?? []),
+        '[data-appearance="accent"]',
+    ].map((selector) => [selector]);
 }
