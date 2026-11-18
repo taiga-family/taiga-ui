@@ -29,6 +29,7 @@
     }
 
     .appearance-focus({
+        background-color: transparent !important;
         box-shadow: none;
         outline: 0.125rem solid var(--tui-background-accent-1);
         outline-offset: -0.125rem;
@@ -73,8 +74,9 @@
     .appearance-hover({
         background-color: var(--tui-background-neutral-1-hover);
     });
+}
 
-    .appearance-focus({
-        background-color: transparent !important;
-    });
+[tuiTheme='light'] [tuiAppearance][data-appearance='textfield'],
+[tuiTheme='light'][tuiAppearance][data-appearance='textfield'] {
+    background-color: transparent !important;
 }
