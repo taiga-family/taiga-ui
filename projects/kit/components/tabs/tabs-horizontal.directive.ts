@@ -56,7 +56,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             const index = this.tabs.activeItemIndex();
             const element = this.tabs.tabs[index];
 
-            if (!element) {
+            if (!element || !this.el.getBoundingClientRect) {
                 return;
             }
 

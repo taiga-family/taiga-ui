@@ -54,8 +54,8 @@ test.describe('Stepper', () => {
             .poll(() =>
                 stepper.evaluate((element) => {
                     const active = element.querySelector<HTMLElement>(
-                            '[tuiStep]._active',
-                        );
+                        '[tuiStep]._active',
+                    );
 
                     if (!active) {
                         return false;

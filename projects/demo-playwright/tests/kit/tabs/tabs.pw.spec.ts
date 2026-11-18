@@ -146,9 +146,8 @@ describe('Tabs', () => {
     test('scrolls the active tab into view in RTL', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tabs);
 
-        const tabs = new TuiDocumentationPagePO(page)
-            .getExample('#basic')
-            .locator('tui-tabs');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const tabs = example.locator('tui-tabs');
 
         await tabs.evaluate((element) => {
             element.style.width = '133px';
