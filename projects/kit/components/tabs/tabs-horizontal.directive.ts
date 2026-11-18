@@ -4,8 +4,13 @@ import {
     WA_MUTATION_OBSERVER_INIT,
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetNormalizedScrollLeft,
+    tuiInjectElement,
+    tuiToNativeScrollLeft,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiTabsDirective} from './tabs.directive';
@@ -61,13 +66,24 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             }
 
             const {offsetLeft, offsetWidth} = element;
+            // `offsetLeft` is measured from the left edge while the scroll position
+            // is measured from the start edge, which is the right edge in RTL
+            const start = this.el.matches(TUI_RTL_SELECTOR)
+                ? this.el.scrollWidth - offsetLeft - offsetWidth
+                : offsetLeft;
 
-            if (offsetLeft < this.el.scrollLeft) {
-                this.el.scrollLeft = offsetLeft;
+            if (start < tuiGetNormalizedScrollLeft(this.el)) {
+                this.el.scrollLeft = tuiToNativeScrollLeft(this.el, start);
             }
 
-            if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
-                this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
+            if (
+                start + offsetWidth >
+                tuiGetNormalizedScrollLeft(this.el) + this.el.offsetWidth
+            ) {
+                this.el.scrollLeft = tuiToNativeScrollLeft(
+                    this.el,
+                    start + offsetWidth - this.el.offsetWidth,
+                );
             }
         });
     }
