@@ -16,6 +16,7 @@ export default class Page {
         'Vertical',
         'Hyphens',
         'InputChip',
+        'Tooltip on overflow',
     ];
 
     protected lineHeight = '100%';

@@ -1,0 +1,8 @@
+.fade {
+    inline-size: 13rem;
+    min-inline-size: 10rem;
+    max-inline-size: 100%;
+    font: var(--tui-typography-body-l);
+    white-space: nowrap;
+    resize: horizontal;
+}
