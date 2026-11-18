@@ -21,16 +21,15 @@
                     tuiMultiSelectGroup
                     [items]="items"
                 />
-                <button
-                    appearance="accent"
-                    size="m"
-                    tuiButton
-                    tuiDropdownButton
-                    type="button"
-                    (click)="close()"
-                >
-                    Done
-                </button>
+                <footer tuiFloatingContainer>
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="close()"
+                    >
+                        Done
+                    </button>
+                </footer>
             </ng-template>
         }
     </tui-textfield>

@@ -32,6 +32,8 @@ tui-dropdown-mobile:where(*&) {
         .scrollbar-hidden();
 
         position: sticky;
+        display: flex;
+        flex-direction: column;
         inset-block-start: 0;
         block-size: 100%;
         overflow: auto;
@@ -40,7 +42,9 @@ tui-dropdown-mobile:where(*&) {
 
         --tui-padding-inline: 1rem;
 
-        tui-data-list {
+        tui-data-list,
+        tui-data-list-wrapper {
+            flex: 1;
             padding: 0;
 
             [tuiOption] {
@@ -48,8 +52,17 @@ tui-dropdown-mobile:where(*&) {
                 border-radius: 0;
             }
         }
+
+        [tuiFloatingContainer] {
+            --t-background: transparent;
+
+            [tuiButton] {
+                justify-self: end;
+            }
+        }
     }
 
+    /** @deprecated: TODO remove in 6.0 */
     [tuiDropdownButton][tuiDropdownButton] {
         position: fixed;
         display: inline-flex;

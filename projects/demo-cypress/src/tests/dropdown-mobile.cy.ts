@@ -28,6 +28,7 @@ import {
 // Do not change to @demo/utils
 // noinspection ES6PreferShortImport
 import {assets} from '../../../demo/src/utils/load-assets';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly url?: string;
@@ -54,6 +55,7 @@ interface User {
         TuiSelect,
         TuiTextfield,
         TuiTitle,
+        TuiFloatingContainer,
     ],
     template: `
         <tui-root>
@@ -98,16 +100,15 @@ interface User {
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
                         />
-                        <button
-                            appearance="accent"
-                            size="m"
-                            tuiButton
-                            tuiDropdownButton
-                            type="button"
-                            (click)="open.set(false)"
-                        >
-                            Done
-                        </button>
+                        <footer tuiFloatingContainer>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="open.set(false)"
+                            >
+                                Done
+                            </button>
+                        </footer>
                     </ng-container>
                 </tui-textfield>
             </ng-template>
@@ -200,7 +201,7 @@ describe('DropdownMobile', () => {
             cy.get('input[tuiInputChip]').type('Alex');
 
             cy.get('[tuiOption]').first().click();
-            cy.get('button[tuiDropdownButton]').click();
+            cy.get('button[tuiButton]').click();
 
             cy.compareSnapshot('type-view-closed');
         });
