@@ -1,5 +1,5 @@
 .fade {
-    inline-size: 12rem;
+    inline-size: 6rem;
     max-inline-size: 100%;
     margin-block-start: 1rem;
     font: var(--tui-typography-body-l);
@@ -7,5 +7,5 @@
 }
 
 .fade_expanded {
-    inline-size: 30rem;
+    inline-size: 12rem;
 }
