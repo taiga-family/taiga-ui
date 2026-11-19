@@ -195,3 +195,69 @@ describe('DropdownMobile', () => {
         });
     });
 });
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdownMobile,
+        TuiFloatingContainer,
+        TuiRoot,
+        TuiSelect,
+        TuiTextfield,
+    ],
+    template: `
+        <tui-root>
+            <tui-textfield
+                tuiChevron
+                [tuiDropdownMobile]="title"
+            >
+                <input
+                    placeholder="Select user"
+                    tuiSelect
+                    [(ngModel)]="value"
+                />
+                <ng-container *tuiTextfieldDropdown>
+                    <tui-data-list-wrapper
+                        new
+                        [items]="items"
+                    />
+                    <footer tuiFloatingContainer>
+                        <button
+                            tuiButton
+                            type="button"
+                        >
+                            Done
+                        </button>
+                    </footer>
+                </ng-container>
+            </tui-textfield>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TestBoundDropdownMobile {
+    protected readonly title = '';
+    protected readonly items = ['Alex Inkin', 'Roman Sedov'];
+    protected value: string | null = null;
+}
+
+describe('DropdownMobile on desktop', () => {
+    it('hides floating container when directive input is bound', () => {
+        cy.mount(TestBoundDropdownMobile, {
+            providers: [
+                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
+                {provide: TUI_IS_MOBILE, useValue: false},
+            ],
+        });
+
+        cy.get('input[tuiSelect]').click();
+        cy.get('tui-dropdown [tuiOption]').should('be.visible');
+        cy.get('tui-dropdown [tuiFloatingContainer]')
+            .should('exist')
+            .and('not.be.visible');
+    });
+});

@@ -21,6 +21,7 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
         },
     ],
     host: {
+        '[attr.tuiDropdownMobile]': 'tuiDropdownMobile',
         '[style.visibility]': 'visible() ? "visible" : ""',
         '(mousedown)': 'onMouseDown($event)',
     },
