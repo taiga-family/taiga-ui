@@ -1,12 +1,12 @@
-@import '@taiga-ui/styles/utils';
-
-@safe-area: 0.875rem;
+@safe-area: ~'min(0.875rem, 4.875rem - var(--t-safe-area-inset))';
 
 :host:host {
-    inset: @safe-area 0;
+    inset: @safe-area 0 auto;
     margin: 0 auto;
     touch-action: none;
     animation-fill-mode: both;
+
+    --t-safe-area-inset: env(safe-area-inset-top);
 
     &:nth-of-type(1) {
         grid-row: 5;
@@ -46,7 +46,9 @@
     }
 
     &[data-block='end'] {
-        inset: -@safe-area 0;
+        inset: auto 0 @safe-area;
+
+        --t-safe-area-inset: env(safe-area-inset-bottom);
 
         &[data-inline='center'] {
             --tui-from: translateY(6rem);

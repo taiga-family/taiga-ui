@@ -23,4 +23,52 @@ test.describe('Toast', () => {
 
         await expect(page).toHaveScreenshot('toast-mobile.png');
     });
+
+    for (const [block, edge] of [
+        ['start', 'top'],
+        ['end', 'bottom'],
+    ] as const) {
+        test(`should cap the ${edge} offset at 5.25rem including the safe area`, async ({
+            browserName,
+            page,
+        }) => {
+            test.skip(
+                browserName !== 'chromium',
+                'Safe area emulation requires Chromium',
+            );
+
+            await tuiGoto(page, `${DemoRoute.Toast}/API?block=${block}&autoClose=0`);
+            await page.getByRole('button', {name: 'Show toast', exact: true}).click();
+
+            const toast = page.locator('tui-toast [tuiToast]');
+            const cdp = await page.context().newCDPSession(page);
+
+            for (const [inset, offset] of [
+                [0, 20],
+                [44, 64],
+                [80, 84],
+                [100, 84],
+            ]) {
+                await cdp.send('Emulation.setSafeAreaInsetsOverride', {
+                    insets: {[edge]: inset},
+                });
+
+                await expect
+                    .poll(
+                        async () =>
+                            toast.evaluate((element, viewportEdge) => {
+                                const {top, bottom} = element.getBoundingClientRect();
+
+                                return viewportEdge === 'top'
+                                    ? top
+                                    : globalThis.innerHeight - bottom;
+                            }, edge),
+                        {
+                            message: `Toast ${edge} offset with a ${inset}px safe area inset`,
+                        },
+                    )
+                    .toBe(offset);
+            }
+        });
+    }
 });
