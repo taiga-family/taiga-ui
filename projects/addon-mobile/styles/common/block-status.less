@@ -31,7 +31,8 @@ tui-block-status {
         }
     }
 
-    img {
+    :where(.t-block-image) > img,
+    :where(.t-block-image) > picture > img {
         inline-size: 8rem;
         block-size: 8rem;
     }
