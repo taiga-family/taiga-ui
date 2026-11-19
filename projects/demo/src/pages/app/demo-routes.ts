@@ -20,6 +20,7 @@ export const DemoRoute = {
     Viewport: '/viewport',
     DarkMode: '/dark-mode',
     Truncate: '/directives/truncate',
+    UnmaskHandler: '/directives/unmask-handler',
     Accordion: '/components/accordion',
     Avatar: '/components/avatar',
     Badge: '/components/badge',
