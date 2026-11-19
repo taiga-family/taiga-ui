@@ -2,7 +2,7 @@
     appearance="secondary"
     tuiButton
     type="button"
-    (click)="expanded.update((value) => !value)"
+    (click)="expanded.set(!expanded())"
 >
     {{ expanded() ? 'Show overflow' : 'Show full text' }}
 </button>
