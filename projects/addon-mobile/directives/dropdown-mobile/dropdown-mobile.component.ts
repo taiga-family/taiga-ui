@@ -15,6 +15,7 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -30,6 +31,7 @@ const GAP = 16;
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiButtonOptionsProvider({size: 'm', appearance: 'accent'})],
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
         '[class._sheet]': 'directive.tuiDropdownMobile',

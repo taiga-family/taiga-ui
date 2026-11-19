@@ -34,10 +34,42 @@ tui-dropdown-mobile:not(._sheet) {
 
         position: sticky;
         top: 0;
+        display: flex;
         block-size: 100%;
+        flex-direction: column;
         overflow: auto;
         margin: 0 0.75rem;
         touch-action: pan-y !important;
+
+        > .t-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        tui-data-list,
+        tui-data-list-wrapper {
+            flex: 1;
+        }
+
+        [tuiFloatingContainer] {
+            bottom: 0;
+            padding-inline-start: 0.25rem;
+            padding-inline-end: 0.25rem;
+            padding-block-end: ~'max(0px, calc(1rem - env(safe-area-inset-bottom)))';
+
+            --t-background: transparent;
+
+            &:has(> *:only-child:not(tui-elastic-container)),
+            &:has(*.ng-animating:first-child ~ .ng-animating:last-child) {
+                padding-block-end: ~'max(0px, calc(1.5rem - env(safe-area-inset-bottom)))';
+            }
+
+            [tuiButton] {
+                align-self: flex-end;
+                inline-size: auto;
+            }
+        }
     }
 
     [tuiDropdownButton][tuiDropdownButton] {

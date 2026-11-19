@@ -16,6 +16,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
@@ -45,6 +46,7 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiMultiSelectModule,
         TuiResponsiveDialog,
         TuiRoot,
@@ -90,16 +92,15 @@ interface User {
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
                         />
-                        <button
-                            appearance="accent"
-                            size="m"
-                            tuiButton
-                            tuiDropdownButton
-                            type="button"
-                            (click)="open.set(false)"
-                        >
-                            Done
-                        </button>
+                        <footer tuiFloatingContainer>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="open.set(false)"
+                            >
+                                Done
+                            </button>
+                        </footer>
                     </ng-container>
                 </tui-multi-select>
             </ng-template>
@@ -188,7 +189,7 @@ describe('DropdownMobile', () => {
             cy.get('tui-multi-select input').click();
             cy.get('tui-multi-select input').type('Alex');
             cy.get('[tuiOption]').first().click();
-            cy.get('button[tuiDropdownButton]').click();
+            cy.get('[tuiFloatingContainer] button').click();
 
             cy.compareSnapshot('type-view-closed');
         });

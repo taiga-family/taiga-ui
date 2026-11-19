@@ -36,6 +36,26 @@ describe('DropdownMobile for textfields', () => {
             .toHaveScreenshot('dropdown-mobile-with-legacy-multi-select.png');
     });
 
+    test('with floating container and bottom safe area', async ({page, browserName}) => {
+        test.skip(browserName !== 'chromium', 'Safe area is emulated through CDP');
+
+        const cdp = await page.context().newCDPSession(page);
+
+        await cdp.send('Emulation.setSafeAreaInsetsOverride', {
+            insets: {top: 0, bottom: 34, left: 0, right: 0},
+        });
+        await page.goto(DemoRoute.Dropdown);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+
+        await example.locator('tui-multi-select').click();
+        await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
+
+        await expect
+            .soft(page)
+            .toHaveScreenshot('dropdown-mobile-with-floating-container-safe-area.png');
+    });
+
     test('with multi-select (full screen mode)', async ({page}) => {
         await page.goto(DemoRoute.InputChip);
 

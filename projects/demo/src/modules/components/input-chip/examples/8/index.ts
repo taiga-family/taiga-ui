@@ -10,6 +10,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
@@ -29,6 +30,7 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
