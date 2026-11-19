@@ -13,6 +13,7 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiDropdownDirective} from '@taiga-ui/core/portals/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -35,6 +36,7 @@ const GAP = 16;
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiButtonOptionsProvider({size: 'm', appearance: 'accent'})],
     hostDirectives: [TuiAnimated, TuiActiveZone],
     host: {
         'data-tui-version': TUI_VERSION,

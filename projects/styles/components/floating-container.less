@@ -34,6 +34,11 @@
     font: var(--tui-typography-ui-s);
     color: var(--tui-text-secondary);
 
+    // TODO: remove attribute in 6.0
+    tui-dropdown[tuiDropdownMobile] & {
+        display: none;
+    }
+
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiSlide;
