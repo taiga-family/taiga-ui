@@ -8,9 +8,8 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
+import {TUI_OPTIONS} from '@taiga-ui/core/utils/miscellaneous';
 import {catchError, EMPTY, map, tap} from 'rxjs';
-
-import {TUI_OPTIONS} from '../../utils/miscellaneous/provide-taiga';
 
 const STYLES: Record<string, string> = {
     left: 'inset: 0 calc(100% - 0.5rem) 10% -0.5rem;',
