@@ -36,11 +36,6 @@ const CONTRAST_EXCLUSIONS = new Map<string, string[]>([
         DemoRoute.TablePagination,
         ['.t-pages', '[automation-id$="lines-per-page-wrapper"]'],
     ],
-    [
-        // Grayscale appearances on an elevated background
-        DemoRoute.Toast,
-        ['[data-appearance="secondary-grayscale"]', '[tuiToast]'],
-    ],
     [DemoRoute.Tree, ['.wrapper']],
 ]);
 
