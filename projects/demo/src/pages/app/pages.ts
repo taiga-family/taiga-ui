@@ -1032,6 +1032,7 @@ export const pages: DocRoutePages = [
         keywords:
             'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
         route: DemoRoute.List,
+        meta: {name: 'tui-list-item [bulleted]', figmaVersion: '1.2.0'},
     },
     {
         section: 'Layout',

@@ -23,6 +23,7 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 // Note: webpack compilation error
 // Do not change to @demo/utils
@@ -46,6 +47,7 @@ interface User {
         TuiDropdownMobile,
         TuiDropdownSheet,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputChip,
         TuiMultiSelect,
@@ -98,16 +100,15 @@ interface User {
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
                         />
-                        <button
-                            appearance="accent"
-                            size="m"
-                            tuiButton
-                            tuiDropdownButton
-                            type="button"
-                            (click)="open.set(false)"
-                        >
-                            Done
-                        </button>
+                        <footer tuiFloatingContainer>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="open.set(false)"
+                            >
+                                Done
+                            </button>
+                        </footer>
                     </ng-container>
                 </tui-textfield>
             </ng-template>
@@ -200,7 +201,7 @@ describe('DropdownMobile', () => {
             cy.get('input[tuiInputChip]').type('Alex');
 
             cy.get('[tuiOption]').first().click();
-            cy.get('button[tuiDropdownButton]').click();
+            cy.get('button[tuiButton]').click();
 
             cy.compareSnapshot('type-view-closed');
         });

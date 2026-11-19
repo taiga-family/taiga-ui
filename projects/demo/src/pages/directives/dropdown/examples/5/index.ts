@@ -19,6 +19,7 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly url?: string;
@@ -40,6 +41,7 @@ interface User {
         TuiDropdownSheet,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputChip,
         TuiInputNumber,

@@ -8,10 +8,18 @@
         [(ngModel)]="country"
     />
 
-    <tui-data-list-wrapper
-        *tuiDropdown
-        [items]="countries | tuiFilterByInput"
-    />
+    <ng-container *tuiDropdown="let close">
+        <tui-data-list-wrapper [items]="countries | tuiFilterByInput" />
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="close()"
+            >
+                Close
+            </button>
+        </footer>
+    </ng-container>
 </tui-textfield>
 
 <tui-textfield
@@ -55,16 +63,15 @@
             [itemContent]="template"
             [items]="users | tuiFilterByInput"
         />
-        <button
-            appearance="accent"
-            size="m"
-            tuiButton
-            tuiDropdownButton
-            type="button"
-            (click)="open.set(false)"
-        >
-            Done
-        </button>
+        <footer tuiFloatingContainer>
+            <button
+                tuiButton
+                type="button"
+                (click)="open.set(false)"
+            >
+                Done
+            </button>
+        </footer>
     </ng-container>
 </tui-textfield>
 

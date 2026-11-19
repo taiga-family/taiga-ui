@@ -32,6 +32,10 @@ code:not(pre code) {
 
         a & {
             color: var(--tui-text-action);
+
+            [tuiTheme='dark'] & {
+                color: var(--tui-text-primary);
+            }
         }
     }
 
@@ -217,8 +221,12 @@ tui-doc-code[tuiTheme='dark'] {
     }
 }
 
-tui-root > tui-scroll-controls .t-bar.t-bar_vertical {
-    inset-block: 4.5rem 1rem;
-    transform: translateX(-0.75rem);
-    opacity: 0.5;
+tui-root {
+    background: var(--tui-background-base);
+
+    > tui-scroll-controls .t-bar.t-bar_vertical {
+        inset-block: 4.5rem 1rem;
+        transform: translateX(-0.75rem);
+        opacity: 0.5;
+    }
 }

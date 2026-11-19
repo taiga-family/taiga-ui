@@ -12,7 +12,7 @@
 >
     <div
         class="wrapper"
-        [style.opacity]="1 / node.level"
+        [style.opacity]="1 - node.level * 0.1"
     >
         @if (value.icon) {
             <tui-icon
