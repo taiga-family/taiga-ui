@@ -52,6 +52,7 @@ const MAX_WIDTH_GAP = 16; // 8px min gap from each side
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
         '[attr.data-appearance]': 'options.appearance',
+        '[attr.tuiDropdownMobile]': 'mobile || null',
         '[attr.tuiTheme]': 'theme()',
     },
 })
@@ -74,6 +75,10 @@ export class TuiDropdownComponent implements AfterViewInit {
 
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
+    protected readonly mobile = !!this.directive.el.closest(
+        '[tuiDropdownMobile]:not(tui-dropdown)',
+    );
+
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly position = this.directive.position;

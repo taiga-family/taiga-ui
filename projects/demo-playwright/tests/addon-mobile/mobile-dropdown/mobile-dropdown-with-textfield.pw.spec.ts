@@ -86,3 +86,31 @@ describe('DropdownMobile for textfields', () => {
             .toHaveScreenshot('dropdown-mobile-with-multi-select-sheet.png');
     });
 });
+
+describe('DropdownMobile on desktop', () => {
+    test('hides floating container in legacy multi-select', async ({page}) => {
+        await page.goto(DemoRoute.Dropdown);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+        const footer = page.locator('tui-dropdown [tuiFloatingContainer]');
+
+        await example.locator('tui-multi-select').click();
+
+        await expect(page.locator('tui-dropdown [tuiOption]').first()).toBeVisible();
+        await expect(footer).toBeAttached();
+        await expect(footer).toBeHidden();
+    });
+
+    test('hides floating container in textfield', async ({page}) => {
+        await page.goto(DemoRoute.InputChip);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+        const footer = page.locator('tui-dropdown [tuiFloatingContainer]');
+
+        await example.locator('tui-textfield[multi][tuiDropdownMobile=""]').click();
+
+        await expect(page.locator('tui-dropdown [tuiOption]').first()).toBeVisible();
+        await expect(footer).toBeAttached();
+        await expect(footer).toBeHidden();
+    });
+});
