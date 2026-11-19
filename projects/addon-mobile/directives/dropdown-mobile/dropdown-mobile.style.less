@@ -65,6 +65,11 @@ tui-dropdown-mobile:not(._sheet) {
                 padding-block-end: ~'max(0px, calc(1.5rem - env(safe-area-inset-bottom)))';
             }
 
+            &::before {
+                left: 0;
+                right: 0;
+            }
+
             [tuiButton] {
                 align-self: flex-end;
                 inline-size: auto;

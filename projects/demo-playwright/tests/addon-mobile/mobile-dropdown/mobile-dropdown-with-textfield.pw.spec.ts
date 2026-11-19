@@ -56,6 +56,20 @@ describe('DropdownMobile for textfields', () => {
             .toHaveScreenshot('dropdown-mobile-with-floating-container-safe-area.png');
     });
 
+    test('with floating container does not scroll sideways', async ({page}) => {
+        await page.goto(DemoRoute.Dropdown);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+        const container = page.locator('tui-dropdown-mobile .t-container');
+
+        await example.locator('tui-multi-select').click();
+        await expect(
+            page.locator('tui-dropdown-mobile [tuiFloatingContainer]'),
+        ).toBeVisible();
+
+        expect(await container.evaluate((el) => el.scrollWidth - el.clientWidth)).toBe(0);
+    });
+
     test('with multi-select (full screen mode)', async ({page}) => {
         await page.goto(DemoRoute.InputChip);
 
