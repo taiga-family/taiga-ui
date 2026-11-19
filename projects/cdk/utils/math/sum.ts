@@ -15,10 +15,32 @@ export function tuiSum(...args: ReadonlyArray<bigint | number>): bigint | number
     }
 
     const numbers = args.map((arg) => Number(arg));
-    const decimal = numbers.map((n) => (n.toString().split('.')[1] ?? '').length);
-    const maxDecimal = Math.max(0, ...decimal);
-    const precision = 10 ** maxDecimal;
-    const sumInt = numbers.reduce((acc, n) => acc + Math.round(n * precision), 0);
 
-    return sumInt / precision;
+    if (numbers.some((n) => !Number.isFinite(n))) {
+        return numbers.reduce((acc, n) => acc + n, 0);
+    }
+
+    // Scaling a number can round its decimal coefficient even within the safe integer range.
+    const parts = numbers.map((n) => {
+        if (Number.isInteger(n)) {
+            return {value: BigInt(n), exponent: 0};
+        }
+
+        const [mantissa = '', exponent = '0'] = n.toString().split('e');
+        const [integer = '', fraction = ''] = mantissa.split('.');
+
+        return {
+            value: BigInt(`${integer}${fraction}`),
+            exponent: Number(exponent) - fraction.length,
+        };
+    });
+
+    const minExponent = parts.reduce((min, {exponent}) => Math.min(min, exponent), 0);
+    const sum = parts.reduce(
+        (acc, {value, exponent}) =>
+            acc + value * BigInt(10) ** BigInt(exponent - minExponent),
+        BigInt(0),
+    );
+
+    return Number(`${sum}e${minExponent}`);
 }
