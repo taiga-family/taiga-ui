@@ -1,14 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintOverflow} from '@taiga-ui/core';
+import {TuiButton, TuiHintOverflow} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiFade, TuiHintOverflow],
+    imports: [TuiButton, TuiFade, TuiHintOverflow],
     templateUrl: './index.html',
     styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly expanded = signal(false);
+}
