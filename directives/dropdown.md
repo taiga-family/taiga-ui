@@ -322,7 +322,9 @@ tui-dropdown[data-appearance='round'] {
 </tui-textfield>
 <tui-multi-select tuiDropdownMobile class="tui-space_vertical-4" [stringify]="stringify" [tuiDropdownOpen]="open()" [tuiTextfieldCleaner]="true" [tuiTextfieldLabelOutside]="true" [(ngModel)]="selected" (tuiDropdownOpenChange)="open.set($event)" > Pick more users <ng-container *tuiDataList>
 <tui-data-list-wrapper tuiMultiSelectGroup [itemContent]="template" [items]="users | tuiFilterByInput" />
-<button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="open.set(false)" > Done </button>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="open.set(false)" > Done </button>
+</footer>
 </ng-container>
 </tui-multi-select>
 <tui-textfield class="tui-space_vertical-4">
@@ -358,6 +360,7 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
@@ -391,6 +394,7 @@ interface User {
         TuiDropdownMobile,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputNumber,
         TuiMultiSelectModule,
         TuiSelect,
