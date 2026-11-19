@@ -40,7 +40,7 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
         return () => {
             cleanup();
 
-            if (--this.count || !this.options.themeColor) {
+            if (--this.count || !this.options.themeColor || this.themeColors) {
                 return;
             }
 
