@@ -16,6 +16,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
@@ -45,6 +46,7 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiMultiSelectModule,
         TuiResponsiveDialog,
         TuiRoot,
@@ -90,16 +92,15 @@ interface User {
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
                         />
-                        <button
-                            appearance="accent"
-                            size="m"
-                            tuiButton
-                            tuiDropdownButton
-                            type="button"
-                            (click)="open.set(false)"
-                        >
-                            Done
-                        </button>
+                        <footer tuiFloatingContainer>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="open.set(false)"
+                            >
+                                Done
+                            </button>
+                        </footer>
                     </ng-container>
                 </tui-multi-select>
             </ng-template>
@@ -188,9 +189,75 @@ describe('DropdownMobile', () => {
             cy.get('tui-multi-select input').click();
             cy.get('tui-multi-select input').type('Alex');
             cy.get('[tuiOption]').first().click();
-            cy.get('button[tuiDropdownButton]').click();
+            cy.get('[tuiFloatingContainer] button').click();
 
             cy.compareSnapshot('type-view-closed');
         });
+    });
+});
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdownMobile,
+        TuiFloatingContainer,
+        TuiRoot,
+        TuiSelect,
+        TuiTextfield,
+    ],
+    template: `
+        <tui-root>
+            <tui-textfield
+                tuiChevron
+                [tuiDropdownMobile]="title"
+            >
+                <input
+                    placeholder="Select user"
+                    tuiSelect
+                    [(ngModel)]="value"
+                />
+                <ng-container *tuiTextfieldDropdown>
+                    <tui-data-list-wrapper
+                        new
+                        [items]="items"
+                    />
+                    <footer tuiFloatingContainer>
+                        <button
+                            tuiButton
+                            type="button"
+                        >
+                            Done
+                        </button>
+                    </footer>
+                </ng-container>
+            </tui-textfield>
+        </tui-root>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TestBoundDropdownMobile {
+    protected readonly title = '';
+    protected readonly items = ['Alex Inkin', 'Roman Sedov'];
+    protected value: string | null = null;
+}
+
+describe('DropdownMobile on desktop', () => {
+    it('hides floating container when directive input is bound', () => {
+        cy.mount(TestBoundDropdownMobile, {
+            providers: [
+                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
+                {provide: TUI_IS_MOBILE, useValue: false},
+            ],
+        });
+
+        cy.get('input[tuiSelect]').click();
+        cy.get('tui-dropdown [tuiOption]').should('be.visible');
+        cy.get('tui-dropdown [tuiFloatingContainer]')
+            .should('exist')
+            .and('not.be.visible');
     });
 });

@@ -14,6 +14,7 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
@@ -47,6 +48,7 @@ interface User {
         TuiDropdownMobile,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputNumber,
         TuiMultiSelectModule,
         TuiSelect,
