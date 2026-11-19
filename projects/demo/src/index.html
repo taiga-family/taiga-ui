@@ -163,20 +163,16 @@
         />
         <title>Taiga UI</title>
     </head>
-    <body style="display: none">
+    <body>
+        <span tuiTheme="dark"></span>
         <script>
-            debugger;
-
             try {
                 const dark = localStorage.getItem('tuiDark') || `${matchMedia('(prefers-color-scheme: dark)').matches}`;
 
                 if (dark === 'true') {
                     document.body.setAttribute('tuiTheme', 'dark');
                 }
-            } catch {
-            } finally {
-                document.body.style.display = '';
-            }
+            } catch {}
         </script>
         <app></app>
     </body>

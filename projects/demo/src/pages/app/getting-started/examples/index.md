@@ -8,7 +8,9 @@
       name="color-scheme"
     />
   </head>
-  <body style="display: none">
+  <body>
+    <!-- Make sure Angular SSR considers dark mode critical CSS and inlines it -->
+    <span tuiTheme="dark"></span>
     <script>
       try {
         // Or whatever key you provided to TUI_DARK_MODE_KEY
@@ -17,10 +19,7 @@
         if (dark === 'true') {
           document.body.setAttribute('tuiTheme', 'dark');
         }
-      } catch {
-      } finally {
-        document.body.style.display = '';
-      }
+      } catch {}
     </script>
     ...
   </body>
