@@ -37,7 +37,7 @@ export default class Example {
             title: 'USD Account',
             content: '2 000 000 $',
             gradient: 'linear-gradient(-90deg, #cf77f3 0%, #009bff 47%, #2ac9db 100%)',
-            color: 'rgb(0, 155, 255)',
+            color: '#0776df',
         },
         {
             title: 'EUR Account',
