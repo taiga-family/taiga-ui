@@ -4,14 +4,13 @@
         <input
             tuiSwitch
             type="checkbox"
-            [ngModel]="color"
-            (ngModelChange)="onColor($event)"
+            [(ngModel)]="color"
         />
     </label>
     <button
         tuiButton
         tuiChevron
-        tuiDropdown="Use TuiThemeColorService to control color"
+        tuiDropdown="Use --tui-theme-color var to control color"
         tuiDropdownAuto
         type="button"
     >

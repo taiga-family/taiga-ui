@@ -15,5 +15,5 @@ Dark mode enabled: {{ darkMode() }}
         Reset
     </button>
 </p>
-<p>Add to Root to enable:</p>
-<code>&lt;tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null"&gt;&lt;/tui-root&gt;</code>
+Global dark theme is automatic and based on OS settings, unless you provide explicit value into
+<code>provideTaiga()</code>
