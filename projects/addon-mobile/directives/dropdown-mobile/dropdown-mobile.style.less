@@ -60,9 +60,8 @@ tui-dropdown-mobile:not(._sheet) {
 
             --t-background: transparent;
 
-            &:has(> *:only-child:not(tui-elastic-container)),
-            &:has(*.ng-animating:first-child ~ .ng-animating:last-child) {
-                padding-block-end: ~'max(0px, calc(1.5rem - env(safe-area-inset-bottom)))';
+            > *:only-child:not(tui-elastic-container) {
+                margin-block-end: 0.5rem;
             }
 
             &::before {
