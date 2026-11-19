@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('Textfield content', () => {
     test('does not overflow icons in LTR and RTL', async ({page}) => {
@@ -10,11 +11,13 @@ test.describe('Textfield content', () => {
         );
 
         const example = new TuiDocumentationApiPagePO(page).apiPageExample;
-        const textfield = example.locator('tui-textfield');
+        const textfield = example.locator(TUI_TEXTFIELD_LOCATORS.HOST);
 
         await textfield.locator('input').click();
         await page
-            .locator('button[tuiOption]', {hasText: 'Federated States of Micronesia'})
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION, {
+                hasText: 'Federated States of Micronesia',
+            })
             .first()
             .click();
 

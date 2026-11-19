@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputTimePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 test.describe('InputTime', () => {
     test.describe('API', () => {
@@ -10,7 +11,7 @@ test.describe('InputTime', () => {
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
             inputTime = new TuiInputTimePO(
-                example.locator('tui-textfield:has([tuiInputTime])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiInputTime])`),
             );
         });
 
