@@ -26,6 +26,7 @@ interface ExperimentalAPIs {
 
 export interface TuiOptions {
     readonly mode?: 'dark' | 'light';
+    readonly themeColors?: [light: string, dark: string];
     readonly apis: Partial<ExperimentalAPIs> | 'stable';
     readonly fontScaling: boolean;
     readonly scrollbars: 'custom' | 'native';
@@ -39,6 +40,18 @@ const DEFAULT: TuiOptions = {
 
 export const TUI_OPTIONS = new InjectionToken<TuiOptions>(ngDevMode ? 'TUI_OPTIONS' : '');
 
+/**
+ * Provides Taiga UI configuration
+ *
+ * @param config - options object
+ * @param config.mode - mode that the app uses, defaults to system configuration
+ * @param config.themeColors - theme colors in 6-digit hex code for light and dark mode for mobile devices UI color
+ * @param config.fontScaling - enable font scaling based on OS configuration, defaults to true
+ * @param config.scrollbars - scrollbars mode for document.scrollingElement, defaults to 'custom'
+ * @param config.apis - experimental APIs, defaults to 'stable'
+ * @param config.apis.all - enable all experimental APIs, defaults to false
+ * @param config.apis.liquidGlass - enable liquid glass effect, defaults to false
+ */
 export function provideTaiga(
     config: Partial<TuiOptions> = {},
 ): Array<EnvironmentProviders | Provider> {

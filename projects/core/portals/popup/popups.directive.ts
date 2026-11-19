@@ -10,6 +10,8 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {catchError, EMPTY, map, tap} from 'rxjs';
 
+import {TUI_OPTIONS} from '../../utils/miscellaneous/provide-taiga';
+
 const STYLES: Record<string, string> = {
     left: 'inset: 0 calc(100% - 0.5rem) 10% -0.5rem;',
     top: 'inset: -0.5rem 0 calc(100% - 0.5rem);',
@@ -35,13 +37,7 @@ export class TuiPopupsDirective {
     private readonly doc = inject(DOCUMENT);
     private readonly meta = inject(Meta);
     private readonly mode = inject(TUI_DARK_MODE);
-    private readonly themes = this.meta
-        .getTags('name="theme-color"')
-        .filter(
-            ({media, content}) =>
-                media?.includes('prefers-color-scheme') && content.length === 7,
-        );
-
+    private readonly themeColors = inject(TUI_OPTIONS).themeColors;
     private readonly element = toSignal(
         inject(WaMutationObserverService).pipe(
             map(() => this.el.querySelectorAll(SELECTOR)),
@@ -57,20 +53,23 @@ export class TuiPopupsDirective {
         const dark = this.mode();
         const element = this.element();
 
-        if (this.themes.length !== 2) {
+        if (!this.themeColors) {
             return;
         }
 
-        this.themes.forEach((tag) => this.meta.removeTagElement(tag));
+        this.meta
+            .getTags('name="theme-color"')
+            .filter(({media}) => media?.includes('prefers-color-scheme'))
+            .forEach((tag) => this.meta.removeTagElement(tag));
 
-        const meta = this.themes.find((t) => t.media?.includes(dark ? 'dark' : 'light'))!;
+        const meta = this.themeColors[dark ? 1 : 0];
         const color = element
-            ? meta.content.replaceAll(/\w\w/g, (m) =>
+            ? meta.replaceAll(/\w\w/g, (m) =>
                   Math.round(Number.parseInt(m, 16) / 4)
                       .toString(16)
                       .padStart(2, '0'),
               )
-            : meta.content;
+            : meta;
 
         this.update({
             top: element?.getAttribute('data-zone-top') ?? color,

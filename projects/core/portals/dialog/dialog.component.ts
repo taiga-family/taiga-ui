@@ -8,6 +8,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
@@ -30,6 +31,12 @@ import {type TuiDialogContext} from './dialog.options';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
+const ZONES = {
+    zoneTop: 'var(--tui-background-base)',
+    zoneLeft: 'var(--tui-background-base)',
+    zoneBottom: 'var(--tui-background-base)',
+    zoneRight: 'var(--tui-background-base)',
+};
 
 function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
@@ -87,4 +94,10 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
+
+    constructor() {
+        if (this.fullscreen) {
+            Object.assign(tuiInjectElement().dataset ?? {}, ZONES);
+        }
+    }
 }
