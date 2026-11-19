@@ -10,14 +10,17 @@
   </head>
   <body style="display: none">
     <script>
-      // Or whatever key you provided to TUI_DARK_MODE_KEY
-      const theme = localStorage?.getItem('tuiDark');
+      try {
+        // Or whatever key you provided to TUI_DARK_MODE_KEY
+        const dark = localStorage.getItem('tuiDark') || `${matchMedia('(prefers-color-scheme: dark)').matches}`;
 
-      if (theme === 'true' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.setAttribute('tuiTheme', 'dark');
+        if (dark === 'true') {
+          document.body.setAttribute('tuiTheme', 'dark');
+        }
+      } catch {
+      } finally {
+        document.body.style.display = '';
       }
-
-      document.body.style.display = '';
     </script>
     ...
   </body>
