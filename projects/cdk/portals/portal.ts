@@ -40,13 +40,14 @@ export abstract class TuiPortal<T, K = void> {
     public open<G = void>(
         content: PolymorpheusContent<TuiPortalContext<T, K extends void ? G : K>>,
         options: Partial<T> = {},
+        injector: Injector = this.injector,
     ): Observable<K extends void ? G : K> {
         return new Observable(($implicit) =>
             this.add(
                 new PolymorpheusComponent(
                     this.component,
                     Injector.create({
-                        parent: this.injector,
+                        parent: injector,
                         providers: [
                             {
                                 provide: POLYMORPHEUS_CONTEXT,
