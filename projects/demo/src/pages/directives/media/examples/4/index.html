@@ -1,0 +1,51 @@
+<div class="player">
+    <audio
+        #audio
+        controls
+        src="assets/media/strays.mp3"
+        tuiMedia
+        [(paused)]="paused"
+        (canplay)="buffering = false"
+        (emptied)="paused = audio.paused; buffering = false; seeking = false"
+        (error)="error = true"
+        (loadstart)="error = false"
+        (pause)="buffering = false"
+        (playing)="buffering = false"
+        (seeked)="seeking = false"
+        (seeking)="seeking = true"
+        (waiting)="buffering = true"
+    ></audio>
+    <div
+        aria-live="polite"
+        class="status"
+    >
+        @if (error) {
+            <span class="error">Unable to load audio</span>
+        } @else {
+            <span
+                class="paused"
+                [class.fallback]="paused && !seeking"
+            >
+                Paused
+            </span>
+            <span
+                class="playing"
+                [class.fallback]="!paused && !buffering && !seeking"
+            >
+                Playing
+            </span>
+            <span
+                class="buffering"
+                [class.fallback]="!paused && buffering && !seeking"
+            >
+                Buffering
+            </span>
+            <span
+                class="seeking"
+                [class.fallback]="seeking"
+            >
+                Seeking
+            </span>
+        }
+    </div>
+</div>

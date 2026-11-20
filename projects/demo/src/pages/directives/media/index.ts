@@ -14,5 +14,10 @@ export default class Page {
     protected currentTime = 0;
     protected volume = this.volumeVariants[0]!;
     protected paused = true;
-    protected readonly examples = ['Native controls', 'Video', 'Audio'];
+    protected readonly examples = [
+        'Native controls',
+        'Video',
+        'Audio',
+        'CSS playback states',
+    ];
 }

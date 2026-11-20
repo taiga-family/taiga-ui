@@ -1,0 +1,40 @@
+.player {
+    display: grid;
+    gap: 0.75rem;
+    max-inline-size: 25rem;
+}
+
+.player audio {
+    inline-size: 100%;
+}
+
+.status {
+    min-block-size: 1.5rem;
+}
+
+.status span {
+    display: none;
+}
+
+.status .error {
+    display: inline;
+}
+
+/* Native media states are mutually prioritized: seeking, buffering, then playback. */
+@supports selector(audio:playing) and selector(audio:paused) and selector(audio:buffering) and selector(audio:seeking) {
+    .player audio:paused:not(:seeking) + .status .paused,
+    .player audio:playing:not(:buffering):not(:seeking) + .status .playing,
+    .player audio:buffering:not(:seeking) + .status .buffering,
+    .player audio:seeking + .status .seeking {
+        display: inline;
+    }
+}
+
+/* Older browsers use TuiMedia.paused and standard HTMLMediaElement events. */
+@supports not (
+    selector(audio:playing) and selector(audio:paused) and selector(audio:buffering) and selector(audio:seeking)
+) {
+    .status .fallback {
+        display: inline;
+    }
+}
