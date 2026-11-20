@@ -50,7 +50,7 @@ export class TuiTextfieldItemComponent<T> {
         const element = sibling?.firstElementChild;
 
         if (tuiIsHTMLElement(element)) {
-            element.focus();
+            element.focus({focusVisible: true} as FocusOptions);
         }
     }
 
