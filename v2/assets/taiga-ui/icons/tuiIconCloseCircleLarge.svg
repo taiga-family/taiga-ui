@@ -1,0 +1,15 @@
+<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+    <g id="tuiIconCloseCircleLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+                <path
+                    d="M4.929 19.071c3.905 3.905 10.237 3.905 14.142 0 3.905-3.905 3.905-10.237 0-14.142-3.905-3.905-10.237-3.905-14.142 0-3.905 3.905-3.905 10.237 0 14.142zM14.828 9.171l-5.656 5.657M9.172 9.171l5.656 5.657"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

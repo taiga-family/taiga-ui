@@ -1,0 +1,7 @@
+import"./chunk-LQ6M4NCU.js";var e=`[tuiTheme='dark'] {
+    background: var(--tui-background-base);
+    color: var(--tui-text-secondary);
+    padding: 1rem;
+    margin: 1rem -1rem;
+}
+`;export{e as default};

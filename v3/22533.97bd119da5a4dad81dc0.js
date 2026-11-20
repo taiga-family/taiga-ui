@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[22533],{22533:n=>{n.exports='<div tuiComment="top">Good job</div>\n\n<div\n    tuiComment="bottom"\n    class="success"\n>\n    Cashback\n</div>\n\n<div\n    tuiComment="left"\n    class="primary"\n>\n    Extra payment\n</div>\n\n<div tuiComment="right">Check it out</div>\n'}}]);

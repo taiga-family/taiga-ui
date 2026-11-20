@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42619],{42619:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\nlabel:has(input:focus-visible) {\n    outline-color: var(--tui-border-focus);\n}\n\ninput {\n    position: absolute;\n    inset: 0;\n    block-size: 100%;\n    inline-size: 100%;\n    cursor: pointer;\n    opacity: 0;\n}\n"}}]);

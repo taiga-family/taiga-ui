@@ -1,0 +1,9 @@
+import"./chunk-LQ6M4NCU.js";var r=`.active-zone {
+    padding: 1.25rem;
+    border: 2px solid;
+}
+
+.active-zone_active {
+    border-color: var(--tui-background-accent-1);
+}
+`;export{r as default};

@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[97010],{97010:n=>{n.exports="```ts\nimport {TuiPreviewModule} from '@taiga-ui/addon-preview';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiRootModule,\n    TuiPreviewModule,\n  ],\n  // ...\n})\nexport class AppModule {}\n```\n"}}]);

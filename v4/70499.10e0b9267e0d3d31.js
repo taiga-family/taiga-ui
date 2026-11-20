@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[70499],{70499:e=>{e.exports="```html\n<span tuiMessage>{{ value }}</span>\n```\n"}}]);

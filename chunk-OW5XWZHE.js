@@ -1,0 +1,13 @@
+import"./chunk-LQ6M4NCU.js";var e=`.filters {
+    position: sticky;
+    z-index: 1;
+    display: flex;
+    inset-block-start: 0;
+    overflow: scroll;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-block-end: 1rem;
+    border-block-end: 1px solid var(--tui-border-normal);
+    background: var(--tui-background-elevation-1);
+}
+`;export{e as default};

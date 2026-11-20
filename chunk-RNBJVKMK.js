@@ -1,0 +1,41 @@
+import"./chunk-LQ6M4NCU.js";var n=`:host {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.map {
+    inline-size: 18rem;
+    block-size: 30rem;
+    border: none;
+}
+
+.buttons {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1rem 8rem;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    & > * {
+        position: relative;
+        pointer-events: auto;
+    }
+}
+
+.sheet {
+    block-size: 25.75rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+`;export{n as default};

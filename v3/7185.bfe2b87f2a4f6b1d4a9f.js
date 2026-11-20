@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[7185],{7185:n=>{n.exports='```html\n<span [tuiSkeleton]="true">Loading..</span>\n```\n'}}]);

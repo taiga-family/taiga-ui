@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75519],{75519:n=>{n.exports="<p>\n    Obfuscate \"+7(900)500-40-20\" by default:\n    <br />\n    {{ '+7(900)500-40-20' | tuiObfuscate }}\n</p>\n\n<p>\n    Obfuscate \"2200 4400\" with \"#\":\n    <br />\n    {{ '2200 4400' | tuiObfuscate: '#' }}\n</p>\n"}}]);

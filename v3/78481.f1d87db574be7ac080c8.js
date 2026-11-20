@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78481],{78481:n=>{n.exports="```ts\nimport {TuiBlockStatusModule} from '@taiga-ui/layout';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiBlockStatusModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

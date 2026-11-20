@@ -1,0 +1,28 @@
+import"./chunk-LQ6M4NCU.js";var r=`:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+hr,
+h3 {
+    margin: 1rem 0;
+}
+
+hr {
+    block-size: 1px;
+    background: var(--tui-border-normal);
+    border: 0;
+}
+
+.link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    max-inline-size: max-content;
+}
+
+.link_last {
+    font-weight: bold;
+    color: var(--tui-text-primary);
+}
+`;export{r as default};

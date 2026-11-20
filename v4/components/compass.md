@@ -1,0 +1,98 @@
+# Compass
+
+- **Package**: `KIT`
+- **Type**: components
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiCompass} from '@taiga-ui/kit';
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiCompass,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<tui-compass [degrees]="degrees"></tui-compass>
+```
+
+### Example
+
+```html
+<tui-compass [degrees]="degrees" [style.color]="color" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [degrees] | `number` | Pointer direction in degrees |
+| [style.color] | `string` | Custom color |
+
+### Usage Examples
+
+#### Basic
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCompass} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiCompass],
+    template: '<tui-compass />',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+```
+
+#### Direction
+
+**TypeScript:**
+```ts
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
+import {TuiCompass} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiCompass],
+    template: '<tui-compass [degrees]="degrees" />',
+    encapsulation,
+    changeDetection,
+    host: {
+        '(document:mousemove)': 'calculate($event)',
+    },
+})
+export default class Example {
+    @ViewChild(TuiCompass, {read: ElementRef})
+    private readonly compass?: ElementRef<HTMLElement>;
+
+    protected degrees = 0;
+
+    protected calculate(event: MouseEvent): void {
+        const rect =
+            this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
+        const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
+        const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
+
+        this.degrees = Math.atan2(y, x) * (180 / Math.PI) + 90;
+    }
+}
+```

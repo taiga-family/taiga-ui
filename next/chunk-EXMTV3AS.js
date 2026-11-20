@@ -1,0 +1,49 @@
+import"./chunk-LQ6M4NCU.js";var e=`:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+
+.chart {
+    pointer-events: none;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-block-start: 1rem;
+    flex-direction: column;
+}
+
+.disable {
+    transition-property: transform, color;
+    transition-duration: var(--tui-duration);
+    margin-inline-start: 0.5rem;
+    will-change: transform;
+    color: var(--tui-text-secondary);
+    pointer-events: auto;
+
+    &::before {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        color: var(--tui-text-primary);
+    }
+}
+
+.disable_rotated {
+    transform: rotate(45deg);
+}
+
+.legend {
+    justify-content: center;
+    margin: 2rem 0 0;
+}
+
+.item {
+    margin: 0 0.5rem 0.75rem 0;
+}
+`;export{e as default};

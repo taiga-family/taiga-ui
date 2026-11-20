@@ -1,0 +1,13 @@
+import"./chunk-LQ6M4NCU.js";var n=`:host {
+    display: block;
+    text-align: end;
+}
+
+.link {
+    font-size: 1.0625rem;
+}
+
+.item {
+    min-inline-size: 12.5rem;
+}
+`;export{n as default};

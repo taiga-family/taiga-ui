@@ -1,0 +1,20 @@
+import"./chunk-LQ6M4NCU.js";var e=`[tuiMeter] {
+    margin-block-start: 1rem;
+}
+
+.labels {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
+    margin: 0.25rem 0;
+
+    [tuiBadge] {
+        position: absolute;
+        font: var(--tui-typography-body-l);
+        font-weight: bold;
+        transform: translateX(calc(-50% * var(--tui-inline)));
+    }
+}
+`;export{e as default};
