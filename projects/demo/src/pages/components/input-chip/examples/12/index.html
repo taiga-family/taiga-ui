@@ -1,0 +1,18 @@
+<tui-textfield
+    multi
+    tuiChevron
+    tuiDropdownMobile
+>
+    <input
+        placeholder="Select fruits"
+        tuiInputChip
+        tuiSelectLike
+        [formControl]="control"
+    />
+    <tui-data-list-wrapper
+        *tuiDropdown
+        tuiMultiSelectGroup
+        [items]="[items]"
+        [labels]="[]"
+    />
+</tui-textfield>
