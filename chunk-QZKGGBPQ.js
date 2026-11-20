@@ -1,0 +1,22 @@
+import"./chunk-LQ6M4NCU.js";var r=`section {
+    position: relative;
+    inline-size: 20rem;
+    block-size: 30rem;
+    overflow: hidden;
+}
+
+.map {
+    inline-size: 100%;
+    block-size: calc(100% + 4rem);
+    margin-block-start: -4rem;
+    border: none;
+}
+
+tui-app-bar {
+    --tui-progressive-blur-background: transparent;
+
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 1;
+}
+`;export{r as default};
