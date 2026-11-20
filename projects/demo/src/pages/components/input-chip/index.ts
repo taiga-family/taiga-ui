@@ -42,5 +42,6 @@ export default class PageComponent {
         'Table',
         'Virtual scroll',
         'Stringify',
+        'Select all',
     ];
 }

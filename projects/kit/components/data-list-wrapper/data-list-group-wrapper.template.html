@@ -4,13 +4,15 @@
         [size]="size()"
     >
         @for (group of items(); track group) {
-            @if (!labels()[$index] && group.length) {
+            @let label = labels()[$index] || '';
+
+            @if (!label && group.length) {
                 <hr />
             }
             @if (multi && group.length) {
                 <tui-opt-group
                     tuiMultiSelectGroup
-                    [label]="labels()[$index] || ''"
+                    [label]="items()?.length === 1 && !labels().length ? undefined : label"
                 >
                     @for (item of group; track $index) {
                         <button
@@ -27,7 +29,7 @@
                     }
                 </tui-opt-group>
             } @else if (group.length) {
-                <tui-opt-group [label]="labels()[$index]">
+                <tui-opt-group [label]="label">
                     @for (item of group; track item) {
                         <button
                             tuiOption
@@ -43,7 +45,7 @@
                     }
                 </tui-opt-group>
             }
-            @if (!labels()[$index] && group.length) {
+            @if (!label && group.length) {
                 <hr />
             }
         }
