@@ -254,6 +254,7 @@ tui-textfield:where(*&) {
     [tuiInput]:-webkit-autofill,
     [tuiInput][chrome-autofilled], /* Chrome on IOS */
     [tuiInput]:not(._empty, :placeholder-shown),
+    &._filled,
     &[multi][multi]:not(._empty) {
         [tuiLabel],
         &:not(tui-textfield) ~ [tuiLabel] {
@@ -281,6 +282,11 @@ tui-textfield:where(*&) {
         + .t-content {
             margin-inline-start: 0;
         }
+    }
+
+    // Override the resting font when the form control value is NaN
+    &._filled > [tuiLabel][tuiLabel][tuiLabel] {
+        font: var(--t-label-font);
     }
 
     [tuiLabel],

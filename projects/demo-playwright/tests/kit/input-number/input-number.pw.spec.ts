@@ -1813,6 +1813,43 @@ describe('InputNumber', () => {
         });
     });
 
+    test('floats the label for a NaN form value', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputNumber);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#value-transformer');
+        const textfield = example.locator('tui-textfield');
+        const input = example.locator('input[tuiInputNumber]');
+        const label = example.locator('label[tuiLabel]');
+        const value = example.locator('p code');
+
+        await expect(input).toHaveValue('');
+        await expect(value).toHaveText('NaN');
+        await expect(textfield).toHaveClass(/_filled/);
+        await expect(label).toHaveCSS('transform', /matrix\(1, 0, 0, 1, 0, -/);
+
+        const labelSize = await label.evaluate((el) => getComputedStyle(el).fontSize);
+        const inputSize = await textfield.evaluate((el) => getComputedStyle(el).fontSize);
+
+        expect(Number.parseFloat(labelSize)).toBeLessThan(Number.parseFloat(inputSize));
+
+        await input.fill('42');
+        await input.blur();
+
+        await expect(value).toHaveText('42');
+        await expect(textfield).not.toHaveClass(/_filled/);
+        await expect(label).toHaveCSS('transform', /matrix\(1, 0, 0, 1, 0, -/);
+        await expect(label).toHaveCSS('font-size', labelSize);
+
+        await input.clear();
+        await input.blur();
+
+        await expect(input).toHaveValue('');
+        await expect(value).toHaveText('NaN');
+        await expect(textfield).toHaveClass(/_filled/);
+        await expect(label).toHaveCSS('transform', /matrix\(1, 0, 0, 1, 0, -/);
+        await expect(label).toHaveCSS('font-size', labelSize);
+    });
+
     test('fills the currency example after clearing and blurring', async ({page}) => {
         await tuiGoto(page, DemoRoute.InputNumber);
 

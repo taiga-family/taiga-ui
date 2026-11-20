@@ -90,6 +90,7 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
         class: 'tui-interactive',
         '[attr.data-size]': 'options.size()',
         '[class._disabled]': 'disabled', // TODO :has([tuiInput]:disabled)
+        '[class._filled]': 'hasNaNValue',
         '[class._with-label]': 'hasLabel', // TODO :has([tuiLabel]
         '[class._with-template]': 'content() && control()?.value != null',
         '(animationcancel)': '0', // TODO :has([tuiInput]:disabled)
@@ -178,6 +179,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected get hasLabel(): boolean {
         return Boolean(this.label()?.nativeElement?.childNodes.length);
+    }
+
+    protected get hasNaNValue(): boolean {
+        return Number.isNaN(this.control()?.value);
     }
 
     protected get openable(): boolean {
