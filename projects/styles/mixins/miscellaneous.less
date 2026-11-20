@@ -6,13 +6,14 @@
     }
 }
 
+// TODO: Replace transform with translate for easier composition in v6
 // TODO: rename to center-horizontal
 // centering with translate
 .center-left() {
     position: absolute;
     // stylelint-disable-next-line -- TODO: fix later
     left: 50%;
-    translate: -50% 0;
+    transform: translate(-50%, 0);
 }
 
 // TODO: rename to center-vertical
@@ -20,13 +21,13 @@
     position: absolute;
     // stylelint-disable-next-line -- TODO: fix later
     top: 50%;
-    translate: 0 -50%;
+    transform: translate(0, -50%);
 }
 
 .center-all() {
     position: absolute;
     inset: 50% auto auto 50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
 }
 
 //.fullsize
