@@ -1,0 +1,16 @@
+<button
+    appearance="secondary"
+    tuiButton
+    type="button"
+    (click)="expanded.set(!expanded())"
+>
+    {{ expanded() ? 'Show overflow' : 'Show full text' }}
+</button>
+<div
+    tuiFade
+    tuiHintOverflow
+    class="fade"
+    [class.fade_expanded]="expanded()"
+>
+    Tooltip on overflow
+</div>
