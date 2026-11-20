@@ -3,17 +3,10 @@
         <button
             tuiOption
             type="button"
-            [attr.aria-checked]="indeterminate() ? 'mixed' : checked()"
+            [indeterminate]="indeterminate()"
+            [tuiMultiSelectOption]="checked()"
             (click)="toggle()"
         >
-            <input
-                aria-hidden="true"
-                tuiCheckbox
-                type="checkbox"
-                [checked]="checked()"
-                [indeterminate]="indeterminate()"
-                [size]="size() === 'l' ? 'm' : 's'"
-            />
             {{ texts().all }}
         </button>
     } @else {

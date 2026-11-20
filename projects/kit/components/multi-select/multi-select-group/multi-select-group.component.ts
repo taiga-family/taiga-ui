@@ -8,13 +8,9 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCheckbox} from '@taiga-ui/core/components/checkbox';
 import {TuiOption, TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
@@ -22,9 +18,11 @@ import {
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
+import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
+
 @Component({
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
-    imports: [TuiCheckbox, TuiLink, TuiOption],
+    imports: [TuiLink, TuiMultiSelectOption, TuiOption],
     templateUrl: './multi-select-group.template.html',
     styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,7 +36,6 @@ export class TuiMultiSelectGroupComponent<T> {
         this.textfield?.control() || inject(NgControl, {optional: true});
 
     protected readonly values = computed(() => this.options().map(({value}) => value()));
-    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
     protected readonly checked = computed(() => this.values().every(this.isSelected));
