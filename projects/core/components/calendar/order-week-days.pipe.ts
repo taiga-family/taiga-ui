@@ -1,7 +1,7 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {map, type Observable} from 'rxjs';
 
-import {TUI_CALENDAR_OPTIONS} from './calendar.options';
+import {TUI_CALENDAR_OPTIONS, type TuiCalendarOptions} from './calendar.options';
 
 function convertToSundayFirstWeekFormat(
     weekDaysNames: readonly string[],
@@ -17,13 +17,15 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
 
     public transform(
         mondayFirstWeekDays$: Observable<readonly string[]>,
+        weekStart?: ReturnType<TuiCalendarOptions['weekStart']>,
     ): Observable<readonly string[]> {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
-            map((weekDays) => [
-                ...weekDays.slice(this.options.weekStart()),
-                ...weekDays.slice(0, this.options.weekStart()),
-            ]),
+            map((weekDays) => {
+                const start = weekStart ?? this.options.weekStart();
+
+                return [...weekDays.slice(start), ...weekDays.slice(0, start)];
+            }),
         );
     }
 }

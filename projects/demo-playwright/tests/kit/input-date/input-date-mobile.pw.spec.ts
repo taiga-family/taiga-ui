@@ -44,7 +44,11 @@ test.describe('InputDate and mobile user agent', () => {
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
-        const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
+        const november12 = page
+            .locator('tui-mobile-calendar .t-month-wrapper')
+            .filter({has: page.locator('.t-cell_today')})
+            .getByTestId('tui-primitive-calendar-mobile__cell')
+            .filter({hasText: /^\s*12\s*$/});
 
         const inputDate = new TuiInputDateEO(
             example.locator('tui-textfield:has(input[tuiInputDate])').nth(2),
@@ -60,7 +64,8 @@ test.describe('InputDate and mobile user agent', () => {
             .soft(page)
             .toHaveScreenshot('03-input-date-range-mobile-calendar-1.png');
 
-        await page.locator(november).nth(11).click();
+        await november12.click();
+        await expect(november12).toHaveAttribute('data-range', 'active');
 
         await expect
             .soft(page)

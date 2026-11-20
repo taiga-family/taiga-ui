@@ -93,6 +93,20 @@ describe('Mobile calendar', () => {
         cy.get('.t-dot').should('have.css', 'background-color', 'rgb(255, 0, 0)');
     });
 
+    it('renders months with variable height', () => {
+        cy.mount(Test);
+
+        cy.get('.t-month-wrapper').should(($months) => {
+            const heights = Array.from(
+                $months,
+                (month) => month.getBoundingClientRect().height,
+            );
+
+            expect(heights.length).to.be.greaterThan(0);
+            expect(new Set(heights).size).to.be.greaterThan(1);
+        });
+    });
+
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
             cy.mount(Test, {

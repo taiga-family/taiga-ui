@@ -11,12 +11,19 @@ export class TuiCalendarSheetPipe implements PipeTransform {
     private readonly options = inject(TUI_CALENDAR_OPTIONS);
     private currentMonth: TuiMonth | null = null;
     private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
+    private currentWeekStart: number | null = null;
+    private currentShowAdjacentDays = false;
 
     public transform(
         month: TuiMonth,
         showAdjacentDays = false,
+        weekStart = this.options.weekStart(),
     ): ReadonlyArray<readonly TuiDay[]> {
-        if (this.currentMonth?.monthSame(month)) {
+        if (
+            this.currentMonth?.monthSame(month) &&
+            this.currentWeekStart === weekStart &&
+            this.currentShowAdjacentDays === showAdjacentDays
+        ) {
             return this.currentSheet;
         }
 
@@ -30,7 +37,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     month,
                     rowIndex,
                     colIndex,
-                    firstDayOfWeek: this.options.weekStart(),
+                    firstDayOfWeek: weekStart,
                 });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
@@ -55,6 +62,8 @@ export class TuiCalendarSheetPipe implements PipeTransform {
 
         this.currentSheet = sheet.filter((row) => row.length);
         this.currentMonth = month;
+        this.currentWeekStart = weekStart;
+        this.currentShowAdjacentDays = showAdjacentDays;
 
         return this.currentSheet;
     }
