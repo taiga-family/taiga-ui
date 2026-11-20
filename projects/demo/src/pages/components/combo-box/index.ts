@@ -36,6 +36,7 @@ interface Country {
         TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent extends Array {

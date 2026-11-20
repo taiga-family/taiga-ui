@@ -7,6 +7,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 @Component({
     imports: [TuiChip, TuiItem, TuiItemsWithMore],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

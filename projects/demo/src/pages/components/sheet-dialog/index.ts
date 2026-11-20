@@ -6,11 +6,11 @@ import {
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
 import {TuiButton, type TuiDialogContext, TuiNotificationService} from '@taiga-ui/core';
-import {TuiFloatingContainer} from '@taiga-ui/layout';
+import {TuiFloatingContainer, TuiList} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiButton, TuiDemo, TuiFloatingContainer],
+    imports: [TuiButton, TuiDemo, TuiFloatingContainer, TuiList],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

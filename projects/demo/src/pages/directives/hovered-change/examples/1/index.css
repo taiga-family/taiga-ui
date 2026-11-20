@@ -6,3 +6,7 @@
 .hidden {
     display: none;
 }
+
+button {
+    margin-block-end: 1.25rem;
+}

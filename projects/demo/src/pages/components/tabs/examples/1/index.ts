@@ -8,6 +8,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputNumber, TuiTabs, TuiTextfield],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

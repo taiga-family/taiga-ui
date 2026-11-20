@@ -3,3 +3,7 @@ tui-app-bar {
     inline-size: 20rem;
     margin-block-end: 1rem;
 }
+
+.platform-heading {
+    margin-block-start: 2rem;
+}

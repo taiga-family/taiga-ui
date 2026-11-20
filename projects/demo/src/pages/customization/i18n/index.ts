@@ -10,6 +10,7 @@ import Example from './examples/1';
 @Component({
     imports: [Example, TuiAccordion, TuiDemo, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Page {

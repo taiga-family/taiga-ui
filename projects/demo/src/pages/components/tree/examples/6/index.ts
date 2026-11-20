@@ -20,6 +20,7 @@ function flatten(item: TreeNode): readonly TreeNode[] {
 @Component({
     imports: [FormsModule, TuiCheckbox, TuiLabel, TuiMapperPipe, TuiTree],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -1,5 +1,6 @@
 .description {
     display: flex;
+    margin-block-start: 0.5rem;
     justify-content: space-between;
 
     & > *:first-child {

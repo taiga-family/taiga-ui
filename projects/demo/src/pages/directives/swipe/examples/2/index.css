@@ -9,3 +9,8 @@
 .drawer {
     inline-size: 17.25rem;
 }
+
+.container,
+.drawer {
+    font: var(--tui-typography-body-l);
+}

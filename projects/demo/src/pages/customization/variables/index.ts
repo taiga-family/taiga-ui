@@ -5,11 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
+import {TuiList} from '@taiga-ui/layout';
 
 import Example from './examples/1';
 
 @Component({
-    imports: [ClipboardModule, Example, KeyValuePipe, TuiDemo, TuiLink],
+    imports: [ClipboardModule, Example, KeyValuePipe, TuiDemo, TuiLink, TuiList],
     templateUrl: './index.html',
     changeDetection,
 })

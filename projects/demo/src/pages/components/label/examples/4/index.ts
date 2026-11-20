@@ -7,6 +7,7 @@ import {TuiInput} from '@taiga-ui/core';
 @Component({
     imports: [ReactiveFormsModule, TuiInput],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

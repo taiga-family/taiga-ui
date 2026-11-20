@@ -20,3 +20,7 @@
 .match {
     background: var(--tui-service-selection-background);
 }
+
+tui-table-pagination {
+    margin-block-start: 0.5rem;
+}

@@ -9,6 +9,7 @@ import {finalize, map, type Observable, of, Subject, switchMap, timer} from 'rxj
 @Component({
     imports: [AsyncPipe, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

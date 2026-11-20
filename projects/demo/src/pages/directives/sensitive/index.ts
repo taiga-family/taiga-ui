@@ -6,6 +6,7 @@ import {TuiSensitive} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiSensitive],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Page {

@@ -1,0 +1,11 @@
+.details {
+    margin-block-start: 0;
+}
+
+.note {
+    margin-block-end: 0;
+}
+
+.notice {
+    margin-block-start: 1rem;
+}

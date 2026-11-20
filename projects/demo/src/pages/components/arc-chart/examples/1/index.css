@@ -12,3 +12,7 @@
 .index-controller {
     max-inline-size: 20rem;
 }
+
+tui-arc-chart {
+    margin-inline-end: 1rem;
+}

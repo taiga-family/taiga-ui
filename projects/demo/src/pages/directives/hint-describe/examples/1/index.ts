@@ -7,6 +7,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiInput, TuiTooltip],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {

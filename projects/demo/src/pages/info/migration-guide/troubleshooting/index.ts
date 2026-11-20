@@ -6,6 +6,7 @@ import {TuiDemo} from '@demo/utils';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core';
 import {TuiAccordion, TuiBadge} from '@taiga-ui/kit';
+import {TuiList} from '@taiga-ui/layout';
 
 import {TuiAccordionTarget} from '../target';
 
@@ -17,6 +18,7 @@ import {TuiAccordionTarget} from '../target';
         TuiAccordionTarget,
         TuiBadge,
         TuiDemo,
+        TuiList,
         TuiNotification,
     ],
     templateUrl: './index.html',

@@ -8,6 +8,7 @@ import {TuiFiles} from '@taiga-ui/kit';
 @Component({
     imports: [AsyncPipe, FormsModule, TuiFiles],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

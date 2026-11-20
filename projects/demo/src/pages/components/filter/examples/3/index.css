@@ -14,3 +14,7 @@
 .tag {
     margin: 0 0.25rem 0.25rem 0;
 }
+
+tui-icon {
+    margin-inline-start: 0.5rem;
+}

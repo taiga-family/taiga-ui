@@ -17,3 +17,7 @@
 .label {
     margin: 0 auto 0 0.75rem;
 }
+
+[tuiButton] {
+    margin-block-end: 1rem;
+}

@@ -24,6 +24,7 @@ import {TuiInputSlider} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

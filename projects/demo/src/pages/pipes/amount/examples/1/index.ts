@@ -6,6 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiAmountPipe],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

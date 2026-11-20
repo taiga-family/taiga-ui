@@ -10,6 +10,7 @@ import {map, startWith} from 'rxjs';
     standalone: true,
     imports: [AsyncPipe, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     providers: [

@@ -11,3 +11,12 @@
 .remove {
     margin-inline-start: auto;
 }
+
+tui-elastic-container,
+tui-textfield {
+    margin-block-start: 1rem;
+}
+
+.expand {
+    margin-inline-end: 0.5rem;
+}

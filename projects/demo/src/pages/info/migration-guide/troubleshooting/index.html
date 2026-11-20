@@ -172,7 +172,7 @@
             followed by
             <tui-doc-code
                 code="npm_config_legacy_peer_deps=false nx migrate --run-migrations"
-                class="tui-space_top-2"
+                class="command"
             />
         </div>
     </tui-expand>
@@ -203,7 +203,7 @@
             size="l"
             tuiNotification
         >
-            <div class="tui-space_bottom-4">
+            <div class="description">
                 Migration schematics recursively traverse every file and directory. This operation can be
                 memory-intensive. If you encounter this error, try increasing the memory limit for the Node.js process.
             </div>
@@ -264,8 +264,8 @@
             size="l"
             tuiNotification
         >
-            <ol class="tui-list tui-list_ordered">
-                <li class="tui-list__item">
+            <ol tuiList="m">
+                <li>
                     Manually update all Taiga UI's packages to
                     <code>v{{ tuiMajor }}</code>
                     (i.e. just change versions inside your
@@ -274,12 +274,12 @@
                     <code>npm install</code>
                     ).
                 </li>
-                <li class="tui-list__item">
+                <li>
                     Check that
                     <code>node_modules/&#64;taiga-ui/cdk/package.json</code>
                     contains the {{ tuiMajor }}th major version
                 </li>
-                <li class="tui-list__item">
+                <li>
                     Execute:
                     <tui-doc-code
                         [code]="`ng update @taiga-ui/cdk --migrate-only --from=${tuiMajor - 1} --to=${tuiMajor}`"

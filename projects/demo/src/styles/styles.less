@@ -3,10 +3,10 @@
 @import '@taiga-ui/styles/taiga-ui-fonts.less';
 @import '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less';
 @import '@docsearch/css/dist/style.css';
-@import '@taiga-ui/legacy/styles/taiga-ui-global.less';
 
 html,
 body {
+    block-size: 100%;
     scroll-behavior: smooth;
     font: var(--tui-typography-body-m);
     padding: 0;
@@ -21,4 +21,8 @@ body {
     @media (prefers-reduced-motion) {
         scroll-behavior: auto;
     }
+}
+
+iframe {
+    border: 0;
 }

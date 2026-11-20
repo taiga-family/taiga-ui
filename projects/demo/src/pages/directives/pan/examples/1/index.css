@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    font: var(--tui-typography-body-l);
     justify-content: center;
     align-items: center;
     inline-size: 12rem;

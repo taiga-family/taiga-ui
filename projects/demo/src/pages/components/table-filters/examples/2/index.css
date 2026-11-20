@@ -9,3 +9,7 @@
 .table {
     inline-size: 100%;
 }
+
+button {
+    margin-block-start: 0.5rem;
+}

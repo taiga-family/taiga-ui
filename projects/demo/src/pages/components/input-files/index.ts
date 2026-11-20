@@ -10,6 +10,7 @@ import {map} from 'rxjs';
 @Component({
     imports: [ReactiveFormsModule, TuiDemo, TuiDocControl, TuiFiles],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

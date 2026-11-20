@@ -24,6 +24,7 @@ import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-u
         TuiValidator,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

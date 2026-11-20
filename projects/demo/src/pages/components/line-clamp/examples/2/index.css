@@ -8,3 +8,7 @@
 .clamp {
     pointer-events: none;
 }
+
+button {
+    margin-block-start: 1rem;
+}

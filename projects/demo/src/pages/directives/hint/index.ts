@@ -9,6 +9,7 @@ import {TuiBadge} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadge, TuiDemo, TuiDocHint, TuiHint],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {
