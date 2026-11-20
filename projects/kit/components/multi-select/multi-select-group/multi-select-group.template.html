@@ -1,14 +1,33 @@
 @if (values().length) {
-    <span class="t-label">
-        {{ label() }}
+    @if (label() == null) {
         <button
-            tuiLink
+            tuiOption
             type="button"
-            class="t-button"
+            [attr.aria-checked]="indeterminate() ? 'mixed' : checked()"
             (click)="toggle()"
         >
-            {{ texts()[checked() ? 'none' : 'all'] }}
+            <input
+                aria-hidden="true"
+                tuiCheckbox
+                type="checkbox"
+                [checked]="checked()"
+                [indeterminate]="indeterminate()"
+                [size]="size() === 'l' ? 'm' : 's'"
+            />
+            {{ texts().all }}
         </button>
-    </span>
+    } @else {
+        <span class="t-label">
+            {{ label() }}
+            <button
+                tuiLink
+                type="button"
+                class="t-button"
+                (click)="toggle()"
+            >
+                {{ texts()[checked() ? 'none' : 'all'] }}
+            </button>
+        </span>
+    }
 }
 <ng-content />

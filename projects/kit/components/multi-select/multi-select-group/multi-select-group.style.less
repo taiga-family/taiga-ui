@@ -4,6 +4,16 @@
     display: none;
 }
 
+[data-size='m'] > [tuiCheckbox] {
+    margin-inline-start: 0.25rem;
+}
+
+:host-context(tui-dropdown-mobile) [tuiCheckbox],
+:host-context(tui-sheet-dialog) [tuiCheckbox] {
+    order: 1;
+    margin-inline-start: auto;
+}
+
 .t-label {
     display: flex;
     align-items: flex-start;
