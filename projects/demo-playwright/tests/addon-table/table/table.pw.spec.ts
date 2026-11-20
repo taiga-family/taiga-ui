@@ -89,6 +89,41 @@ test.describe('Table', () => {
         }
     });
 
+    test('Reorder columns using the keyboard without losing items', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Table);
+        const example = new TuiDocumentationPagePO(page).getExample('#sorting');
+
+        await example.getByRole('button', {name: 'Columns'}).click();
+
+        const reorder = page.locator('tui-reorder');
+        const buttons = reorder.locator('button');
+
+        await expect(reorder.locator('tui-tile')).toHaveCount(3);
+        await expect(example.locator('thead th')).toHaveText([
+            'Name',
+            'Date of Birth',
+            'Age',
+        ]);
+
+        await buttons.first().focus();
+        await buttons.first().press('ArrowDown');
+
+        await expect(reorder.locator('tui-tile')).toHaveCount(3);
+        await expect(example.locator('thead th')).toHaveText([
+            'Date of Birth',
+            'Name',
+            'Age',
+        ]);
+
+        await buttons.first().press('ArrowUp');
+
+        await expect(example.locator('thead th')).toHaveText([
+            'Name',
+            'Date of Birth',
+            'Age',
+        ]);
+    });
+
     test('Checkboxes', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
         const example = new TuiDocumentationPagePO(page).getExample('#custom');
