@@ -56,14 +56,23 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
+    private prevIndex = -1;
+    private prevItem?: TemplateRef<unknown>;
 
     protected readonly items = contentChildren(TuiItem, {read: TemplateRef});
     protected readonly moreWord = inject(TUI_MORE_WORD);
 
     protected readonly sync = effect(() => {
-        void this.items();
-        void this.activeItemIndex();
+        const items = this.items();
+        const index = this.activeItemIndex();
+        const prevItemIndex = items.findIndex((item) => item === this.prevItem);
+        const current =
+            index === this.prevIndex && prevItemIndex >= 0 ? prevItemIndex : index;
 
+        this.prevIndex = current;
+        this.prevItem = items[current];
+
+        this.activeItemIndex.set(current);
         this.maxIndex = this.getMaxIndex();
         this.open = false;
     });

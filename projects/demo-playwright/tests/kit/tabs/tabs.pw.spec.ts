@@ -13,10 +13,16 @@ describe('Tabs', () => {
         describe('closing', () => {
             let example!: Locator;
             let tabsPO!: TuiTabsEO;
+            let activeIndexInput!: Locator;
+            let reverseButton!: Locator;
+            let activeTab!: Locator;
 
             beforeEach(async ({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#closing');
                 tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
+                activeIndexInput = example.locator('input');
+                reverseButton = example.locator('button', {hasText: 'Reverse'});
+                activeTab = example.locator('tui-tabs [tuiTab]._active');
 
                 await page.setViewportSize({width: 1500, height: 500});
                 await example.scrollIntoViewIfNeeded();
@@ -35,6 +41,27 @@ describe('Tabs', () => {
 
                 await expect(page.locator('tui-dropdown')).not.toBeAttached();
                 await expect(tabsPO.more).toBeHidden();
+            });
+
+            test('keeps active tab when reordered from overflow to visible part', async () => {
+                await tabsPO.more.click();
+                await tabsPO.getMoreOption('Item #4').click();
+
+                await expect(activeIndexInput).toHaveValue('4');
+
+                await reverseButton.click();
+
+                await expect(activeIndexInput).toHaveValue('0');
+                await expect(activeTab).toHaveText(/Item #4/);
+            });
+
+            test('keeps active tab when reordered from visible to overflow part', async () => {
+                await expect(activeIndexInput).toHaveValue('0');
+
+                await reverseButton.click();
+
+                await expect(activeIndexInput).toHaveValue('4');
+                await expect(activeTab).toHaveText(/Item #0/);
             });
         });
 
