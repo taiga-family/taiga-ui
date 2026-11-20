@@ -21,10 +21,6 @@
     :host-context(tui-doc-toc:empty ~) {
         inline-size: 100%;
     }
-
-    ::ng-deep :fullscreen .t-header {
-        padding: 0.25rem;
-    }
 }
 
 .t-link.t-link {
@@ -71,6 +67,10 @@
     padding-block-end: 0.25rem;
     padding-inline-end: 0.125rem;
     background: var(--tui-background-base-alt);
+
+    &:where(:fullscreen *) {
+        padding: 0.25rem;
+    }
 
     :host-context([tuiTheme='dark']) & {
         background: var(--tui-background-elevation-2);
