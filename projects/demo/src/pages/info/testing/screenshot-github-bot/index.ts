@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
+import {TuiList} from '@taiga-ui/layout';
 
 export const SCREENSHOT_BOT_NAME = 'Lumberjack';
 export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiList],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

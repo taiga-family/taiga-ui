@@ -8,6 +8,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiCheckbox, TuiIcon, TuiLabel, TuiTitle, TuiTooltip],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

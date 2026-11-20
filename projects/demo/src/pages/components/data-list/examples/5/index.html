@@ -136,11 +136,14 @@
                 </tui-textfield>
             </div>
 
-            <ul class="exchange tui-list tui-list_large">
-                <li class="tui-list__item">
+            <ul
+                tuiList="l"
+                class="exchange"
+            >
+                <li>
                     <span>{{ moneyValue / dollar | tuiAmount: 'USD' }}</span>
                 </li>
-                <li class="tui-list__item">
+                <li>
                     <span>{{ moneyValue / euro | tuiAmount: 'EUR' }}</span>
                 </li>
             </ul>

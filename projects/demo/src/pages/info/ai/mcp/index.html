@@ -31,12 +31,9 @@
                 The quickest way is the same for every agent — run it with no flags and pick your agents (you can select
                 several) and the docs version interactively:
             </p>
-            <tui-doc-code
-                class="tui-space_top-4"
-                [code]="mcpInitInteractive"
-            />
+            <tui-doc-code [code]="mcpInitInteractive" />
 
-            <p class="description tui-space_top-4">Prefer to wire it up yourself? Pick your agent:</p>
+            <p class="description">Prefer to wire it up yourself? Pick your agent:</p>
             <tui-tabs [(activeItemIndex)]="activeItemIndex">
                 <button
                     tuiTab
@@ -84,40 +81,28 @@
 
             @if (versionClient()) {
                 <p class="description">Scaffold it with one command:</p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpInit"
-                />
+                <tui-doc-code [code]="mcpInit" />
 
-                <p class="description tui-space_top-4">
+                <p class="description">
                     Want a specific docs version? Add
                     <code>--version</code>
                     to the
                     <code>init</code>
                     command:
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpInitV4"
-                />
+                <tui-doc-code [code]="mcpInitV4" />
             }
 
             @if (activeItemIndex() === 0) {
                 <p class="description">Or add it with the Claude CLI:</p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpClaudeCode"
-                />
+                <tui-doc-code [code]="mcpClaudeCode" />
 
                 <p class="description">
                     Or add the server to
                     <code>~/.claude/settings.json</code>
                     :
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpClaudeCodeConfig"
-                />
+                <tui-doc-code [code]="mcpClaudeCodeConfig" />
             } @else if (activeItemIndex() === 1) {
                 <p class="description">
                     Or add to
@@ -126,41 +111,28 @@
                     <code>.cursor/mcp.json</code>
                     for a project):
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpCursor"
-                />
+                <tui-doc-code [code]="mcpCursor" />
             } @else if (activeItemIndex() === 2) {
                 <p class="description">
                     Or add to
                     <code>.vscode/mcp.json</code>
                     :
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpVscode"
-                />
+                <tui-doc-code [code]="mcpVscode" />
             } @else if (activeItemIndex() === 3) {
                 <p class="description">Or with the Codex CLI:</p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpCodexCli"
-                />
+                <tui-doc-code [code]="mcpCodexCli" />
 
                 <p class="description">
                     Or add to
                     <code>~/.codex/config.toml</code>
                     :
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpCodex"
-                />
+                <tui-doc-code [code]="mcpCodex" />
 
                 <div
                     appearance="info"
                     tuiNotification
-                    class="tui-space_top-4"
                 >
                     Codex loads a project
                     <code>.codex/config.toml</code>
@@ -176,33 +148,24 @@
                     <code>~/.config/opencode/opencode.json</code>
                     ):
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpOpencode"
-                />
+                <tui-doc-code [code]="mcpOpencode" />
             } @else if (activeItemIndex() === 5) {
                 <p class="description">
                     Or add to
                     <code>~/.codeium/windsurf/mcp_config.json</code>
                     :
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpWindsurf"
-                />
+                <tui-doc-code [code]="mcpWindsurf" />
             } @else {
                 <p class="description">
                     Add the
                     <code>mcpServers</code>
                     block to your client's config file:
                 </p>
-                <tui-doc-code
-                    class="tui-space_top-4"
-                    [code]="mcpStandard"
-                />
+                <tui-doc-code [code]="mcpStandard" />
             }
 
-            <p class="description tui-space_top-4">
+            <p class="description">
                 Confirm the client picked it up: most CLIs list configured servers (for example
                 <code>claude mcp list</code>
                 ), and many show live status with

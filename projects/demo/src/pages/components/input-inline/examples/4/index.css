@@ -1,3 +1,9 @@
+.task {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .task:first-child input:not(:placeholder-shown) {
     text-decoration: underline;
     text-align: center;

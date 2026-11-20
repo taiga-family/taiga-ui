@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiList],
     templateUrl: './index.html',
     changeDetection,
 })

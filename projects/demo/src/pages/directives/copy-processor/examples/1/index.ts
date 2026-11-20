@@ -9,6 +9,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
     host: {'(copy)': 'onCopy($event)'},

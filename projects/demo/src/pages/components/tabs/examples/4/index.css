@@ -17,3 +17,7 @@
     margin: 0 1rem;
     font-size: 1rem;
 }
+
+tui-textfield {
+    margin-block-start: 1rem;
+}

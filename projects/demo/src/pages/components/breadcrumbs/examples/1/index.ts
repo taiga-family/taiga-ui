@@ -9,6 +9,7 @@ import {TuiBreadcrumbs} from '@taiga-ui/kit';
 @Component({
     imports: [RouterLink, TuiBreadcrumbs, TuiItem, TuiLink],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -26,6 +26,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiNumberFormat,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

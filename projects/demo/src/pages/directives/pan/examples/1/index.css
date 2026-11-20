@@ -1,4 +1,5 @@
 .container {
+    font: var(--tui-typography-body-l);
     display: flex;
     justify-content: center;
     align-items: center;

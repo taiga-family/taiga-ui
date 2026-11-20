@@ -1,4 +1,5 @@
 .box {
+    font: var(--tui-typography-body-l);
     display: flex;
     inline-size: 12.5rem;
     block-size: 12.5rem;

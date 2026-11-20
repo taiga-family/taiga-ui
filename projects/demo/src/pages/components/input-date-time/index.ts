@@ -30,6 +30,7 @@ import {TuiInputDateTime, TuiTimeFormat} from '@taiga-ui/kit';
         TuiTimeFormat,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {

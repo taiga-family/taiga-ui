@@ -59,3 +59,11 @@
         color: var(--tui-chart-categorical-12);
     }
 }
+
+.range {
+    margin-inline-start: 1rem;
+}
+
+.dates {
+    margin-block-end: 0.5rem;
+}

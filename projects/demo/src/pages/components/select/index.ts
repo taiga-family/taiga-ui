@@ -35,6 +35,7 @@ interface Country {
         TuiSelect,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

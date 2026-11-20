@@ -28,3 +28,7 @@ section tui-app-bar [tuiTitle] {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.platform-heading {
+    margin-block-start: 2rem;
+}

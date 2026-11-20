@@ -1,5 +1,5 @@
 <div
-    class="container tui-text_body-l"
+    class="container"
     (tuiSwipe)="onSwipe($event)"
 >
     Swipe left to open
@@ -7,7 +7,7 @@
     <tui-drawer
         *tuiPopup="open()"
         direction="end"
-        class="drawer tui-text_body-l"
+        class="drawer"
         [overlay]="true"
         (click.self)="open.set(false)"
         (tuiSwipe)="onSwipe($event)"

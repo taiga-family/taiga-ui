@@ -16,6 +16,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

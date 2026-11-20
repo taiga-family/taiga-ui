@@ -27,6 +27,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
         TuiInputDate,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class Example {

@@ -3,3 +3,8 @@ label {
     align-items: center;
     gap: 0.5rem;
 }
+
+button,
+div {
+    margin-block-start: 1rem;
+}

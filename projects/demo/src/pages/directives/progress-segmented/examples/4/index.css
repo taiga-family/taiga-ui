@@ -1,4 +1,5 @@
 .description {
+    margin-block-start: 0.5rem;
     display: flex;
     justify-content: space-between;
 

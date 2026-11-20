@@ -8,6 +8,7 @@
 }
 
 tui-icon {
+    margin-inline-start: 0.5rem;
     inline-size: 1rem;
     block-size: 1rem;
 }

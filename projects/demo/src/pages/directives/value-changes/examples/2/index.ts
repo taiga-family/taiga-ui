@@ -9,6 +9,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiInput, TuiInputNumber, TuiValueChanges],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

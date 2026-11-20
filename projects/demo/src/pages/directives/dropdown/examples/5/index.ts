@@ -50,6 +50,7 @@ interface User {
         TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -13,6 +13,7 @@ import {
     TuiInput,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -26,6 +27,7 @@ import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
         TuiGroup,
         TuiInput,
         TuiInputDateRange,
+        TuiList,
     ],
     templateUrl: './index.html',
     styleUrl: './index.css',

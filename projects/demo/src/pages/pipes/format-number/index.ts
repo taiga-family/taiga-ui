@@ -17,6 +17,7 @@ import {TuiFormatNumberPipe, TuiInputNumber} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

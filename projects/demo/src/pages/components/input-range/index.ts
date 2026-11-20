@@ -30,6 +30,7 @@ import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymor
         TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

@@ -3,9 +3,10 @@ import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown} from '@taiga-ui/core';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiDemo, TuiDocDropdown, TuiDropdown],
+    imports: [TuiDemo, TuiDocDropdown, TuiDropdown, TuiList],
     templateUrl: './index.html',
     changeDetection,
 })

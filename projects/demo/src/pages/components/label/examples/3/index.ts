@@ -8,6 +8,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

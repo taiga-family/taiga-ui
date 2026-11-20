@@ -3,3 +3,7 @@
     padding: 0 1rem 1rem;
     line-height: 2;
 }
+
+h2 {
+    font: var(--tui-typography-heading-h6);
+}

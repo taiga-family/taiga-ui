@@ -11,3 +11,7 @@ section {
 [tuiLink].label {
     font: var(--tui-typography-body-l);
 }
+
+.floating-card {
+    margin-block-start: 1rem;
+}
