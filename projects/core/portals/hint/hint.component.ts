@@ -43,7 +43,6 @@ export class TuiHintComponent {
     protected readonly hint = inject(TuiHintDirective);
     protected readonly appearance = tuiAppearance(this.hint.appearance);
     protected readonly content = this.hint.component ? this.hint.content : signal('');
-
     protected readonly theme = this.hint.el
         .closest('[tuiTheme]')
         ?.getAttribute('tuiTheme');
