@@ -1,0 +1,15 @@
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiDialog} from '@taiga-ui/core';
+import {TuiTextarea} from '@taiga-ui/kit';
+
+@Component({
+    imports: [TuiButton, TuiDialog, TuiTextarea],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected open = false;
+}

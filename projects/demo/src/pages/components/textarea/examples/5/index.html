@@ -1,0 +1,16 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show dialog
+</button>
+<ng-template
+    [tuiDialogOptions]="{label: 'Leave a comment'}"
+    [(tuiDialog)]="open"
+>
+    <tui-textfield>
+        <label tuiLabel>Comment</label>
+        <textarea tuiTextarea></textarea>
+    </tui-textfield>
+</ng-template>
