@@ -2,16 +2,16 @@
 @tui-mobile-small: ~'(max-width: 427.4px)';
 
 &.tui-liquid-glass {
-    // Available to consumers that align their layout to the glass app bar
-    --tui-appbar-padding: 1.25rem;
-    --tui-appbar-height: calc(3.375rem + var(--tui-appbar-padding));
+    // Used by layouts that align to the glass app bar
+    --t-appbar-padding: 1.25rem;
+    --t-appbar-height: calc(3.375rem + var(--t-appbar-padding));
 
     @media @tui-mobile-small {
-        --tui-appbar-padding: 1rem;
+        --t-appbar-padding: 1rem;
     }
 
     tui-app-bar {
-        --t-padding: var(--tui-appbar-padding);
+        --t-padding: var(--t-appbar-padding);
 
         @media @tui-mobile-small {
             [tuiAppBarButton] > [tuiButton] {
@@ -21,7 +21,7 @@
 
         background: transparent;
         backdrop-filter: none;
-        block-size: var(--tui-appbar-height);
+        block-size: var(--t-appbar-height);
         padding-block-start: var(--t-padding);
         padding-block-end: 0.625rem;
 
