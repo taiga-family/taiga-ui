@@ -15,4 +15,11 @@ export default class Example {
     protected buffering = false;
     protected error = false;
     protected seeking = false;
+
+    protected syncBuffering(audio: HTMLAudioElement): void {
+        this.buffering =
+            !audio.paused &&
+            audio.networkState === audio.NETWORK_LOADING &&
+            audio.readyState <= audio.HAVE_CURRENT_DATA;
+    }
 }

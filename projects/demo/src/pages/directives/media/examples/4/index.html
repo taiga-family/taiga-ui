@@ -13,7 +13,8 @@
         (playing)="buffering = false"
         (seeked)="seeking = false"
         (seeking)="seeking = true"
-        (waiting)="buffering = true"
+        (suspend)="syncBuffering(audio)"
+        (waiting)="syncBuffering(audio)"
     ></audio>
     <div
         aria-live="polite"
