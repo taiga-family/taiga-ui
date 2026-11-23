@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.110.0](https://github.com/taiga-family/taiga-ui/compare/v4.109.0...v4.110.0) (2026-11-23)
+
+### 🚀 Features
+
+- **addon-mobile:** `DropdownMobile` improve `FloatingContainer` DX
+  ([#15479](https://github.com/taiga-family/taiga-ui/issues/15479))
+  ([000573c](https://github.com/taiga-family/taiga-ui/commit/000573c81da2e1ce1dfcba84e921057f5fcfe948))
+
 ## [4.109.0](https://github.com/taiga-family/taiga-ui/compare/v4.108.0...v4.109.0) (2026-11-16)
 
 ### 🚀 Features
