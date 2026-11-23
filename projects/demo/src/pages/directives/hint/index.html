@@ -5,7 +5,12 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p>Directive to show a hint by hover of an element</p>
+        <p>Directive to show a hint over an element, by pointer hover as default trigger</p>
+        <p>
+            Use
+            <code>TUI_HINT_OFFSET</code>
+            token to configure bubble and pointing arrow offsets
+        </p>
 
         @for (example of examples; track example) {
             <tui-doc-example

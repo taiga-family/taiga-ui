@@ -40,6 +40,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
         {directive: TuiSheetDialogClose, outputs: ['tuiSheetDialogClose']},
     ],
     host: {
+        'data-zone-bottom': 'var(--tui-background-elevation-1)',
         '[attr.data-appearance]': 'context.appearance',
         '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',

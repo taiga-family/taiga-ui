@@ -19,10 +19,10 @@ import {TUI_ANCHOR_SUPPORT, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
+import {TUI_HINT_OFFSET} from './hint.providers';
 import {TuiHintHover} from './hint-hover.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 22;
 
 @Directive({
     providers: [
@@ -32,6 +32,7 @@ const ARROW_OFFSET = 22;
         tuiProvideAccessor(TuiPositionAccessor, 'hint'),
         tuiProvideAccessor(TuiRectAccessor, 'hint'),
     ],
+    host: {'[style.--t-arrow.px]': 'offset.arrow * 2'},
 })
 export class TuiHintAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -52,6 +53,7 @@ export class TuiHintAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly offset = inject(TUI_HINT_OFFSET);
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
@@ -97,10 +99,11 @@ export class TuiHintAnchored implements AfterViewInit {
 
         const beakLeft = centerX - safeLeft;
         const beakTop = centerY - top;
+        const {arrow} = this.offset;
 
         /* eslint-disable no-nested-ternary */
-        const x = startX ? ARROW_OFFSET : endX ? clientWidth - ARROW_OFFSET : beakLeft;
-        const y = startY ? ARROW_OFFSET : endY ? clientHeight - ARROW_OFFSET : beakTop;
+        const x = startX ? arrow : endX ? clientWidth - arrow : beakLeft;
+        const y = startY ? arrow : endY ? clientHeight - arrow : beakTop;
 
         this.apply(
             tuiPx(Math.round(top)),

@@ -21,7 +21,7 @@
     --t-icon-start: none;
     --t-icon-end: none;
     // Equals to 1 if the font offset is over 10px (150% OS scaling)
-    --t-zoom: ~'calc(clamp(0, var(--t-font-offset, 0) - 10, 1))';
+    --t-zoom: ~'clamp(0, (var(--tui-font-scale-factor, 1) - 1.4999) * 10000, 1)';
 
     &::before,
     &::after {

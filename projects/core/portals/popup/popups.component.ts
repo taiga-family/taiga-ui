@@ -10,6 +10,7 @@ import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk/portals';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TuiPopupService} from './popup.service';
+import {TuiPopupsDirective} from './popups.directive';
 
 export const TUI_CDR = '_tuiCdr' as const;
 
@@ -21,6 +22,7 @@ export const TUI_CDR = '_tuiCdr' as const;
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [tuiProvide(TuiPortalService, TuiPopupService)],
+    hostDirectives: [TuiPopupsDirective],
 })
 export class TuiPopups extends TuiPortals implements AfterViewChecked {
     public ngAfterViewChecked(): void {

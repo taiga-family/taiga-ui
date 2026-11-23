@@ -15,8 +15,9 @@ export interface TuiSheetDialogOptions<I = undefined> {
     /**
      * Address-bar (`<meta name="theme-color">`) color applied while the sheet is
      * open, matching the dimmed backdrop. Pass an empty string to leave the
-     * address bar untouched (e.g. apps that manage `theme-color` themselves, or
+     * address bar untouched (e.g., apps that manage `theme-color` themselves or
      * need a value that tracks dark mode).
+     * @deprecated use provideTaiga({themeColors: [light, dark]}) instead, remove in v6
      */
     readonly themeColor: string;
 }
