@@ -23,10 +23,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderEO(
-                    page,
-                    new TuiDocumentationPagePO(page).demo,
-                );
+                inputSlider = new TuiInputSliderEO(new TuiDocumentationPagePO(page).demo);
 
                 await inputSlider.input.clear();
             });
@@ -66,10 +63,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=-10&max=100&precision=3&step=1`,
                 );
 
-                inputSlider = new TuiInputSliderEO(
-                    page,
-                    new TuiDocumentationPagePO(page).demo,
-                );
+                inputSlider = new TuiInputSliderEO(new TuiDocumentationPagePO(page).demo);
 
                 await inputSlider.input.clear();
             });
@@ -96,10 +90,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=25&max=25&precision=0`,
                 );
 
-                inputSlider = new TuiInputSliderEO(
-                    page,
-                    new TuiDocumentationPagePO(page).demo,
-                );
+                inputSlider = new TuiInputSliderEO(new TuiDocumentationPagePO(page).demo);
 
                 await inputSlider.input.clear();
                 await inputSlider.input.fill('25');
@@ -134,7 +125,7 @@ describe('InputSlider', () => {
 
                 example = new TuiDocumentationPagePO(page).demo;
                 value = new TuiDocumentationPagePO(page).value;
-                inputSlider = new TuiInputSliderEO(page, example);
+                inputSlider = new TuiInputSliderEO(example);
             });
 
             describe('allows to enter number which IS NOT divisible by quantum value', () => {
@@ -216,10 +207,7 @@ describe('InputSlider', () => {
         let inputSlider!: TuiInputSliderEO;
 
         beforeEach(({page}) => {
-            inputSlider = new TuiInputSliderEO(
-                page,
-                new TuiDocumentationPagePO(page).demo,
-            );
+            inputSlider = new TuiInputSliderEO(new TuiDocumentationPagePO(page).demo);
         });
 
         describe('Japanese grouping (by four digits)', () => {
@@ -317,7 +305,7 @@ describe('InputSlider', () => {
             await tuiGoto(page, `${DemoRoute.InputSlider}/API?disabled=true`);
 
             const example = new TuiDocumentationPagePO(page).demo;
-            const inputSlider = new TuiInputSliderEO(page, example);
+            const inputSlider = new TuiInputSliderEO(example);
 
             await expect(inputSlider.input).toBeDisabled();
             await expect(inputSlider.slider).toBeHidden();
@@ -338,7 +326,7 @@ describe('InputSlider', () => {
             );
 
             const example = new TuiDocumentationPagePO(page).demo;
-            const inputSlider = new TuiInputSliderEO(page, example);
+            const inputSlider = new TuiInputSliderEO(example);
 
             await inputSlider.input.press('ArrowUp');
             await page.keyboard.down('ArrowUp');
@@ -363,7 +351,7 @@ describe('InputSlider', () => {
                 );
 
                 const {demo} = new TuiDocumentationPagePO(page);
-                const inputSlider = new TuiInputSliderEO(page, demo);
+                const inputSlider = new TuiInputSliderEO(demo);
 
                 await inputSlider.input.focus();
 
@@ -393,7 +381,7 @@ describe('InputSlider', () => {
 
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputSlider = new TuiInputSliderEO(page, example);
+            inputSlider = new TuiInputSliderEO(example);
         });
 
         test('typing new value inside text input also change slider position', async ({
@@ -463,7 +451,7 @@ describe('InputSlider', () => {
                     `${DemoRoute.InputSlider}/API?min=5&max=10&step=1&keySteps=null`,
                 );
 
-                slider = new TuiSliderEO(page, inputSlider.host);
+                slider = new TuiSliderEO(inputSlider.host);
                 track = (await inputSlider.slider.boundingBox())!;
                 expect(track).toBeTruthy();
             });

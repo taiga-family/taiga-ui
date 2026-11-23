@@ -103,7 +103,7 @@ describe('Textfield cleaner', () => {
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthEO(page, example);
+            const inputMonth = new TuiInputMonthEO(example);
             const calendarMonth = inputMonth.calendar;
 
             await inputMonth.input.click();

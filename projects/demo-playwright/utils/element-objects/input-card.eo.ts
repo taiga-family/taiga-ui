@@ -11,5 +11,5 @@ export class TuiInputCardEO extends TuiBaseEO {
     protected override readonly hostSelector = TUI_INPUT_CARD_LOCATORS.HOST;
 
     /** Expiry date textfield of the card field. */
-    public readonly expiryTextfield = this.page.locator('input[tuiInputExpire]').first();
+    public readonly expiryTextfield = this.root.locator('input[tuiInputExpire]').first();
 }

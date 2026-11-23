@@ -4,8 +4,8 @@ import {type TuiBaseEO} from '../element-objects/base.eo';
 import {type BlurOptions, type FocusOptions, type TuiMixinConstructor} from '../types';
 
 interface Focusable {
-    focus(options?: FocusOptions): Promise<void>;
-    blur(options?: BlurOptions): Promise<void>;
+    focus(locator?: Locator, options?: FocusOptions): Promise<void>;
+    blur(locator?: Locator, options?: BlurOptions): Promise<void>;
 }
 
 type WithFocusable<T> = T & (new (...args: any[]) => Focusable);

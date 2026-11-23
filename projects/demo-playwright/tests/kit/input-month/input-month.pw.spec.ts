@@ -18,7 +18,7 @@ describe('InputMonth', () => {
     describe('API', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
-            inputMonth = new TuiInputMonthEO(page, example);
+            inputMonth = new TuiInputMonthEO(example);
         });
 
         describe('dropdown', () => {
@@ -133,7 +133,7 @@ describe('InputMonth', () => {
                     example = new TuiDocumentationPagePO(page).getExample(
                         '#native-picker',
                     );
-                    inputMonth = new TuiInputMonthEO(page, example);
+                    inputMonth = new TuiInputMonthEO(example);
                 });
 
                 test('does NOT open desktop dropdown on click', async () => {
@@ -237,7 +237,7 @@ describe('InputMonth', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#dropdown-customization',
                 );
-                inputMonth = new TuiInputMonthEO(page, example);
+                inputMonth = new TuiInputMonthEO(example);
                 dropdown = page.locator('tui-dropdown');
             });
 
@@ -262,7 +262,7 @@ describe('InputMonth', () => {
         describe('Month range', () => {
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#range-mode');
-                inputMonth = new TuiInputMonthEO(page, example);
+                inputMonth = new TuiInputMonthEO(example);
             });
 
             test('range select', async ({page}) => {
@@ -300,7 +300,7 @@ describe('InputMonth', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputMonth);
                 example = new TuiDocumentationPagePO(page).getExample('#native-picker');
-                inputMonth = new TuiInputMonthEO(page, example);
+                inputMonth = new TuiInputMonthEO(example);
             });
 
             test('is clickable', async () => {

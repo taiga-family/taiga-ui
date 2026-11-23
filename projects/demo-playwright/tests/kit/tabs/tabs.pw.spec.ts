@@ -18,7 +18,7 @@ describe('Tabs', () => {
 
             beforeEach(async ({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#closing');
-                tabsEO = new TuiTabsWithMoreEO(page, example);
+                tabsEO = new TuiTabsWithMoreEO(example);
 
                 await page.setViewportSize({width: 1500, height: 500});
                 await example.scrollIntoViewIfNeeded();
@@ -49,7 +49,7 @@ describe('Tabs', () => {
             beforeEach(async ({page}) => {
                 pagePO = new TuiDocumentationPagePO(page);
                 example = pagePO.getExample('#complex');
-                tabsEO = new TuiTabsWithMoreEO(page, example);
+                tabsEO = new TuiTabsWithMoreEO(example);
 
                 await pagePO.hideScrollbars();
                 await example.scrollIntoViewIfNeeded();

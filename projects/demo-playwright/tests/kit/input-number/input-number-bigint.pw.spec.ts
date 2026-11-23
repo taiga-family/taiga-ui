@@ -28,7 +28,7 @@ describe('InputNumber | BigInt', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#big-int-as-form-control-value',
                 );
-                inputNumber = new TuiInputNumberEO(page, example);
+                inputNumber = new TuiInputNumberEO(example);
                 controlValue = example.locator('code');
             });
 
@@ -133,7 +133,7 @@ describe('InputNumber | BigInt', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#large-integer-and-large-decimal-parts',
                 );
-                inputNumber = new TuiInputNumberEO(page, example);
+                inputNumber = new TuiInputNumberEO(example);
                 controlValue = example.locator('code');
             });
 

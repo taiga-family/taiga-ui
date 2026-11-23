@@ -23,7 +23,7 @@ describe('InputNumber', () => {
         beforeEach(({page}) => {
             example = new TuiDocumentationApiPagePO(page).demo;
             value = new TuiDocumentationApiPagePO(page).value;
-            inputNumber = new TuiInputNumberEO(page, example);
+            inputNumber = new TuiInputNumberEO(example);
         });
 
         describe('[min] prop', () => {

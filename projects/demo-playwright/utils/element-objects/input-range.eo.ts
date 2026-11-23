@@ -20,5 +20,5 @@ export class TuiInputRangeEO extends TuiBaseEO {
     public readonly textfieldEnd = this.host.locator(TUI_INPUT_RANGE_LOCATORS.INPUT_END);
 
     /** Range slider Element Object scoped to the field. */
-    public readonly range = new TuiRangeEO(this.page, this.host);
+    public readonly range = new TuiRangeEO(this.host);
 }

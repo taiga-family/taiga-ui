@@ -26,9 +26,9 @@ describe('CalendarRange', () => {
             await tuiGoto(page, DemoRoute.CalendarRange, {date: today});
         });
 
-        test('With another range switcher', async ({page}) => {
+        test('With another range switcher', async () => {
             example = documentationPage.getExample('#with-another-range-switcher');
-            calendarRange = new TuiCalendarRangeEO(page, example);
+            calendarRange = new TuiCalendarRangeEO(example);
 
             const resetButton = example.locator('p button[data-appearance="action"]');
 
@@ -78,7 +78,7 @@ describe('CalendarRange', () => {
         describe('With value', () => {
             test('Month switching via chevron', async ({page}) => {
                 example = documentationPage.getExample('#with-value');
-                calendarRange = new TuiCalendarRangeEO(page, example);
+                calendarRange = new TuiCalendarRangeEO(example);
 
                 await calendarRange.previousMonth.click();
 
@@ -98,7 +98,7 @@ describe('CalendarRange', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            calendarRange = new TuiCalendarRangeEO(page, example);
+            calendarRange = new TuiCalendarRangeEO(example);
         });
 
         test('Maximum month when items not empty', async ({page}) => {
@@ -426,7 +426,7 @@ describe('CalendarRange', () => {
                 await expect(calendarRange.host).toContainText('February 2026');
 
                 const pagePO = new TuiDocumentationPagePO(page);
-                const maxProperty = new TuiSelectEO(page, pagePO.getRow('max'));
+                const maxProperty = new TuiSelectEO(pagePO.getRow('max'));
 
                 await maxProperty.click();
                 await maxProperty.selectOptions([3]);

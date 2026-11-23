@@ -14,7 +14,7 @@ export class TuiInputChipEO extends withDataList(TuiBaseEO) {
     protected override readonly hostSelector = TUI_INPUT_CHIP_LOCATORS.HOST;
 
     /** Inner text input of the chip field. */
-    public readonly input = this.host.first().locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
+    public readonly input = this.host.locator(TUI_INPUT_CHIP_LOCATORS.INPUT);
 
     /** Rendered chips of the field. */
     public readonly chips = this.host.locator(TUI_INPUT_CHIP_LOCATORS.CHIPS);

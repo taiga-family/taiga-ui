@@ -13,7 +13,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
                 const {demo} = new TuiDocumentationPagePO(page);
-                const slider = new TuiSliderEO(page, demo);
+                const slider = new TuiSliderEO(demo);
 
                 await slider.setValue(value);
 
@@ -44,7 +44,7 @@ test.describe('Slider', () => {
 
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
-                const slider = new TuiSliderEO(page, example);
+                const slider = new TuiSliderEO(example);
 
                 await slider.setValue(inputStep);
 
@@ -101,7 +101,7 @@ test.describe('Slider', () => {
                 await tuiGoto(page, DemoRoute.Slider);
 
                 example = page.locator('#complex .t-example');
-                slider = new TuiSliderEO(page, example);
+                slider = new TuiSliderEO(example);
                 plusButton = example.locator('.zoom-controller button').last();
                 minusButton = example.locator('.zoom-controller button').first();
             });
@@ -176,7 +176,7 @@ test.describe('Slider', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#segments');
-                slider = new TuiSliderEO(page, example);
+                slider = new TuiSliderEO(example);
 
                 await page.waitForTimeout(300);
 

@@ -28,7 +28,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
 
             example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
-            inputPhoneInternational = new TuiInputPhoneInternationalEO(page, example);
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(example);
         });
 
         test('opens mobile dropdown on select click', async ({page}) => {
@@ -73,7 +73,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputPhoneInternational);
             example = new TuiDocumentationPagePO(page).getExample('#mobile-dropdown');
-            inputPhoneInternational = new TuiInputPhoneInternationalEO(page, example);
+            inputPhoneInternational = new TuiInputPhoneInternationalEO(example);
         });
 
         test('textfield inside dropdown IS focused on dropdown open', async () => {
@@ -88,11 +88,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         test('basic', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API`);
             const example = new TuiDocumentationPagePO(page).demo;
-
-            const inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                page,
-                example,
-            );
+            const inputPhoneInternational = new TuiInputPhoneInternationalEO(example);
 
             await inputPhoneInternational.input.focus();
             await inputPhoneInternational.input.fill('9991122333');
@@ -103,11 +99,7 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         test('readonly', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputPhoneInternational}/API?readonly=true`);
             const example = new TuiDocumentationPagePO(page).demo;
-
-            const inputPhoneInternational = new TuiInputPhoneInternationalEO(
-                page,
-                example,
-            );
+            const inputPhoneInternational = new TuiInputPhoneInternationalEO(example);
 
             await expect(async () => {
                 await inputPhoneInternational.select.click();

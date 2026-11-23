@@ -19,7 +19,7 @@ describe('ComboBox', () => {
             example = documentationPage.demo;
             value = documentationPage.value;
             submit = documentationPage.submitFormControlButton;
-            comboBox = new TuiComboBoxEO(page, example);
+            comboBox = new TuiComboBoxEO(example);
         });
 
         test("Don't allow disabled options to be selected by typing them", async ({
@@ -194,7 +194,7 @@ describe('ComboBox', () => {
                 example = new TuiDocumentationPagePO(page).getExample(
                     '#client-side-filtering',
                 );
-                comboBox = new TuiComboBoxEO(page, example);
+                comboBox = new TuiComboBoxEO(example);
             });
 
             test('all items are visible for empty textfield', async () => {
@@ -251,7 +251,7 @@ describe('ComboBox', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#choose-form-control-output');
-                comboBox = new TuiComboBoxEO(page, example);
+                comboBox = new TuiComboBoxEO(example);
             });
 
             test('match option by typing complete name', async () => {
@@ -321,7 +321,7 @@ describe('ComboBox', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#server-side-filtering');
-                comboBox = new TuiComboBoxEO(page, example);
+                comboBox = new TuiComboBoxEO(example);
             });
 
             test('matched textfield value with datalist options even if items are loaded later user typing', async ({
@@ -354,7 +354,7 @@ describe('ComboBox', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#virtual-scroll');
-                comboBox = new TuiComboBoxEO(page, example);
+                comboBox = new TuiComboBoxEO(example);
             });
 
             test('textfield keeps already selected option even if option disappears from datalist by scroll', async () => {

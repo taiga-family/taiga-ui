@@ -19,9 +19,9 @@ test.describe('InputDate', () => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test('Actual min/max in calendar', async ({page}) => {
+        test('Actual min/max in calendar', async () => {
             const example = documentationPage.getExample('#basic');
-            const inputDate = new TuiInputDateEO(page, example);
+            const inputDate = new TuiInputDateEO(example);
 
             await inputDate.input.click();
 
@@ -38,11 +38,9 @@ test.describe('InputDate', () => {
         }) => {
             const example = documentationPage.getExample('#validation');
 
-            const inputDate = new TuiInputDateEO(
-                page,
-                example,
-                ':has(input[formControlName="optional"])',
-            );
+            const inputDate = new TuiInputDateEO(example, {
+                customSelector: ':has(input[formControlName="optional"])',
+            });
 
             await example.scrollIntoViewIfNeeded();
             await inputDate.input.click();
@@ -73,7 +71,7 @@ test.describe('InputDate', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
 
-            inputDate = new TuiInputDateEO(page, example);
+            inputDate = new TuiInputDateEO(example);
         });
 
         ['s', 'm', 'l'].forEach((size) => {

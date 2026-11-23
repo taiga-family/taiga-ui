@@ -24,7 +24,7 @@ test.describe('InputTime', () => {
 
             example = documentation.demo;
             controlValue = documentation.value;
-            inputTime = new TuiInputTimeEO(page, example);
+            inputTime = new TuiInputTimeEO(example);
         });
 
         test.describe('Basic typing from keyboard', () => {
@@ -148,7 +148,7 @@ test.describe('InputTime', () => {
                     '#strict-mode',
                 );
 
-                const inputTime = new TuiInputTimeEO(page, example);
+                const inputTime = new TuiInputTimeEO(example);
 
                 await inputTime.input.click();
                 await inputTime.input.clear();

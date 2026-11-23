@@ -15,7 +15,7 @@ export class TuiInputDateEO extends TuiBaseEO {
     public readonly input = this.host.locator(TUI_INPUT_DATE_LOCATORS.INPUT);
 
     /** Calendar Element Object attached to the field. */
-    public readonly calendar = new TuiCalendarEO(this.page);
+    public readonly calendar = new TuiCalendarEO(this.root);
 
     /** Native date picker input. */
     public readonly nativePicker = this.host.locator(

@@ -27,7 +27,7 @@ describe('Select', () => {
             const exampleContainer = page.locator('#textfield-customization');
             const example = documentationPage.getExample('#textfield-customization');
             const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
-            const select = new TuiSelectEO(page, example);
+            const select = new TuiSelectEO(example);
 
             await host.scrollIntoViewIfNeeded();
 
@@ -48,7 +48,7 @@ describe('Select', () => {
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#customize-content');
             const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
-            const select = new TuiSelectEO(page, example);
+            const select = new TuiSelectEO(example);
 
             await host.scrollIntoViewIfNeeded();
 
@@ -67,7 +67,7 @@ describe('Select', () => {
         test('opens dropdown by click on icon', async ({page}) => {
             const example = documentationPage.getExample('#items-handlers');
             const host = example.locator(TUI_TEXTFIELD_LOCATORS.HOST).first();
-            const select = new TuiSelectEO(page, example);
+            const select = new TuiSelectEO(example);
 
             await host.scrollIntoViewIfNeeded();
             await select.input.click({position: {x: 200, y: 30}});
@@ -95,7 +95,7 @@ describe('Select', () => {
                         `${DemoRoute.Select}/API?tuiTextfieldCleaner=${cleanerEnabled}`,
                     );
                     example = new TuiDocumentationPagePO(page).demo;
-                    select = new TuiSelectEO(page, example);
+                    select = new TuiSelectEO(example);
 
                     await select.input.click();
                     await select.selectOptions([1]);
@@ -129,7 +129,7 @@ describe('Select', () => {
             beforeEach(async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.Select}/API?tuiTextfieldCleaner=true`);
                 example = new TuiDocumentationPagePO(page).demo;
-                select = new TuiSelectEO(page, example);
+                select = new TuiSelectEO(example);
             });
 
             test('click on label + Backspace => Empty textfield', async ({page}) => {
@@ -170,7 +170,7 @@ describe('Select', () => {
                     );
 
                     documentationPage = new TuiDocumentationPagePO(page);
-                    const select = new TuiSelectEO(page, documentationPage.demo);
+                    const select = new TuiSelectEO(documentationPage.demo);
 
                     await expect(select.input).toHaveValue('USA');
                     await expect(documentationPage.value).toContainText('"name": "USA"');
@@ -195,7 +195,7 @@ describe('Select', () => {
             );
 
             documentationPage = new TuiDocumentationPagePO(page);
-            const select = new TuiSelectEO(page, documentationPage.demo);
+            const select = new TuiSelectEO(documentationPage.demo);
 
             await expect(select.input).toHaveValue('USA');
 

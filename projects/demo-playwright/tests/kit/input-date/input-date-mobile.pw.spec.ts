@@ -21,7 +21,7 @@ test.describe('InputDate and mobile user agent', () => {
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-calendar-sheet__cell"]';
-        const inputDate = new TuiInputDateEO(page, example, '', 1);
+        const inputDate = new TuiInputDateEO(example, {index: 1});
 
         // eslint-disable-next-line playwright/no-force-option
         await inputDate.input.click({position: {x: 300, y: 20}, force: true});
@@ -42,7 +42,7 @@ test.describe('InputDate and mobile user agent', () => {
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#mobile');
         const november = '[automation-id="tui-primitive-calendar-mobile__cell"]';
-        const inputDate = new TuiInputDateEO(page, example, '', 2);
+        const inputDate = new TuiInputDateEO(example, {index: 2});
 
         // eslint-disable-next-line playwright/no-force-option
         await inputDate.input.click({position: {x: 300, y: 20}, force: true});
@@ -65,7 +65,7 @@ test.describe('InputDate and mobile user agent', () => {
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDate);
             example = new TuiDocumentationPagePO(page).getExample('#mobile');
-            inputDate = new TuiInputDateEO(page, example);
+            inputDate = new TuiInputDateEO(example);
         });
 
         test('is clickable', async () => {

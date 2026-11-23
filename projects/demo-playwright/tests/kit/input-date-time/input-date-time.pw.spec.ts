@@ -24,7 +24,7 @@ test.describe('InputDateTime', () => {
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.demo;
-            inputDateTime = new TuiInputDateTimeEO(page, example);
+            inputDateTime = new TuiInputDateTimeEO(example);
         });
 
         test('Maximum month less than current month', async ({page}) => {
@@ -174,7 +174,6 @@ test.describe('InputDateTime', () => {
             const timeModeRow = documentationPage.getRow('[timeMode]');
 
             const timeModeSelect = new TuiSelectEO(
-                page,
                 (await documentationPage.getSelect(timeModeRow))!,
             );
 
@@ -501,7 +500,7 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 const {demo} = new TuiDocumentationPagePO(page);
 
-                inputDateTime = new TuiInputDateTimeEO(page, demo);
+                inputDateTime = new TuiInputDateTimeEO(demo);
 
                 await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
             });
@@ -543,7 +542,7 @@ test.describe('InputDateTime', () => {
                     '#date-format',
                 );
 
-                inputDateTime = new TuiInputDateTimeEO(page, example);
+                inputDateTime = new TuiInputDateTimeEO(example);
 
                 await tuiGoto(page, DemoRoute.InputDateTime);
                 await inputDateTime.input.clear();
@@ -588,11 +587,9 @@ test.describe('InputDateTime', () => {
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test('With validator: enter incomplete date -> validator error', async ({
-            page,
-        }) => {
+        test('With validator: enter incomplete date -> validator error', async () => {
             const example = documentationPage.getExample('#validation');
-            const inputDateTime = new TuiInputDateTimeEO(page, example);
+            const inputDateTime = new TuiInputDateTimeEO(example);
             const input = inputDateTime.input.first();
 
             await input.clear();
@@ -607,9 +604,9 @@ test.describe('InputDateTime', () => {
                 });
         });
 
-        test('Calendar customization', async ({page}) => {
+        test('Calendar customization', async () => {
             const example = documentationPage.getExample('#calendar-customization');
-            const inputDateTime = new TuiInputDateTimeEO(page, example);
+            const inputDateTime = new TuiInputDateTimeEO(example);
 
             await inputDateTime.input.click();
 
@@ -626,7 +623,7 @@ test.describe('InputDateTime', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputDateTime);
                 example = new TuiDocumentationPagePO(page).getExample('#mobile');
-                inputDateTime = new TuiInputDateTimeEO(page, example);
+                inputDateTime = new TuiInputDateTimeEO(example);
             });
 
             test('native picker is clickable', async () => {

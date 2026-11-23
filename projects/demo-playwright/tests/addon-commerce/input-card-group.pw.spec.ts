@@ -22,7 +22,7 @@ test.describe('InputCardGroup', () => {
         test('set value and clear after', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API`);
 
-            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupEO(page, demo);
+            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupEO(demo);
             const entryValue = '1234 4567 8910 1112'.replaceAll(' ', CHAR_NO_BREAK_SPACE);
 
             await numberTextfield.pressSequentially(entryValue);
@@ -49,7 +49,7 @@ test.describe('InputCardGroup', () => {
         test('disabled input card grouped', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGroup}/API?disabled=true`);
 
-            const {numberTextfield} = new TuiInputCardGroupEO(page, demo);
+            const {numberTextfield} = new TuiInputCardGroupEO(demo);
 
             await expect(numberTextfield).toHaveAttribute('disabled');
             await expect
@@ -74,11 +74,11 @@ test.describe('InputCardGroup', () => {
             );
         });
 
-        test('input card grouped with validation', async ({page}) => {
+        test('input card grouped with validation', async () => {
             const example = documentationPage.getExample('#with-validation');
 
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupEO(page, example);
+                new TuiInputCardGroupEO(example);
 
             const cardInfo = {
                 number: '5213 0000 4039 5834'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
@@ -137,11 +137,10 @@ test.describe('InputCardGroup', () => {
                 .toHaveScreenshot('12-default-state-input-card.png');
         });
 
-        test('input card grouped with saved cards', async ({page}) => {
+        test('input card grouped with saved cards', async () => {
             const example = documentationPage.getExample('#with-saved-cards');
 
             const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupEO(
-                page,
                 example,
             );
 
@@ -176,13 +175,11 @@ test.describe('InputCardGroup', () => {
                 .toHaveScreenshot('17-default-prefilled-state-input-card.png');
         });
 
-        test('expired field should be clickable after reset of prefilled value', async ({
-            page,
-        }) => {
+        test('expired field should be clickable after reset of prefilled value', async () => {
             const example = documentationPage.getExample('#custom-labels');
 
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupEO(page, example);
+                new TuiInputCardGroupEO(example);
 
             const cardInfo = {
                 number: '5586 2000 7149 2158'.replaceAll(' ', CHAR_NO_BREAK_SPACE),

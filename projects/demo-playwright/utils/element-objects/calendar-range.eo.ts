@@ -36,9 +36,8 @@ export class TuiCalendarRangeEO extends TuiBaseEO {
     > {
         const calendars = await this.host.locator(TUI_CALENDAR_LOCATORS.HOST).all();
 
-        return calendars.map(
-            (_, index) => new TuiCalendarEO(this.page, this.host, '', index),
-        ) as [TuiCalendarEO, TuiCalendarEO] | [TuiCalendarEO];
+        return calendars.map((_, index) => new TuiCalendarEO(this.host, {index})) as
+            [TuiCalendarEO, TuiCalendarEO] | [TuiCalendarEO];
     }
 
     /**

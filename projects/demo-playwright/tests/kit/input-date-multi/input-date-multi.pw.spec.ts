@@ -20,7 +20,7 @@ describe('InputDateMulti', () => {
         api = new TuiDocumentationApiPagePO(page);
         input = api.demo.locator('input[tuiInputDateMulti]');
         chips = api.demo.locator('tui-textfield-item');
-        calendar = new TuiCalendarSheetEO(page, page.locator(TUI_DROPDOWN_LOCATORS.HOST));
+        calendar = new TuiCalendarSheetEO(page.locator(TUI_DROPDOWN_LOCATORS.HOST));
         submit = api.submitFormControlButton;
     });
 

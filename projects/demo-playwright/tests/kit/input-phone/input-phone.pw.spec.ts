@@ -17,7 +17,7 @@ test.describe('InputPhone', () => {
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).demo;
             value = new TuiDocumentationPagePO(page).value;
-            inputPhone = new TuiInputPhoneEO(page, example);
+            inputPhone = new TuiInputPhoneEO(example);
         });
 
         test("Don't duplicate Code 52 When Inputting Digit '2' After Clearing", async ({

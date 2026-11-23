@@ -24,10 +24,10 @@ test.describe('InputDateRange', () => {
     describe('API', () => {
         let example!: Locator;
 
-        beforeEach(({page}) => {
+        beforeEach(() => {
             example = documentationPage.demo;
 
-            inputDateRange = new TuiInputDateRangeEO(page, example);
+            inputDateRange = new TuiInputDateRangeEO(example);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -197,10 +197,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(
-                    page,
-                    inputDateRange.calendar,
-                );
+                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
 
                 await calendarSheet.clickOnDay(15);
 
@@ -220,10 +217,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(
-                    page,
-                    inputDateRange.calendar,
-                );
+                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.clickOnDay(15);
@@ -252,10 +246,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(
-                    page,
-                    inputDateRange.calendar,
-                );
+                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.getCalendarDay(20).hover();
@@ -289,7 +280,7 @@ test.describe('InputDateRange', () => {
         test('minLength=15', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
 
-            const calendarSheet = new TuiCalendarSheetEO(page, inputDateRange.calendar);
+            const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
 
             await inputDateRange.input.click();
             await calendarSheet.clickOnDay(1);
@@ -314,7 +305,7 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.input.click();
 
-            const calendarSheet = new TuiCalendarSheetEO(page, inputDateRange.calendar);
+            const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
 
             await calendarSheet.clickOnDay(15);
             await calendarSheet.clickOnDay(15);
@@ -341,11 +332,9 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
         });
 
-        test('Select second same range => after close/open calendar displays selected period displays correctly', async ({
-            page,
-        }) => {
+        test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
             const example = documentationPage.getExample('#data-list');
-            const inputDateRange = new TuiInputDateRangeEO(page, example);
+            const inputDateRange = new TuiInputDateRangeEO(example);
 
             await inputDateRange.input.click();
             await inputDateRange.selectItem(2);
@@ -370,7 +359,7 @@ test.describe('InputDateRange', () => {
         await tuiGoto(page, DemoRoute.InputDateRange);
 
         const example = documentationPage.getExample('#data-list');
-        const inputDateRange = new TuiInputDateRangeEO(page, example);
+        const inputDateRange = new TuiInputDateRangeEO(example);
 
         await inputDateRange.input.focus();
         await inputDateRange.input.click();
@@ -408,7 +397,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-            const inputDateRange = new TuiInputDateRangeEO(page, example);
+            const inputDateRange = new TuiInputDateRangeEO(example);
             const calendarSheet = new TuiCalendarSheetEO(page);
 
             await inputDateRange.input.click();
@@ -442,7 +431,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-            const inputDateRange = new TuiInputDateRangeEO(page, example);
+            const inputDateRange = new TuiInputDateRangeEO(example);
 
             await inputDateRange.input.click();
             await inputDateRange.selectItem(1);
@@ -460,7 +449,7 @@ test.describe('InputDateRange', () => {
             await tuiGoto(page, DemoRoute.InputDateRange);
 
             const example = documentationPage.getExample('#data-list');
-            const inputDateRange = new TuiInputDateRangeEO(page, example);
+            const inputDateRange = new TuiInputDateRangeEO(example);
 
             await inputDateRange.input.focus();
             await inputDateRange.input.fill('25.09.2020 - 25.09.2020');
