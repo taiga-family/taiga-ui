@@ -2,7 +2,7 @@ import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/u
 import {expect, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
-import {tuiGetContrastExclusions} from '../../utils/contrast-exclusions';
+import {tuiGetContrastRule} from '../../utils/contrast-exclusions';
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
@@ -16,7 +16,10 @@ test.describe('Demo', () => {
             await tuiMockImages(page);
             await tuiGoto(page, path);
             await injectAxe(page);
-            await configureAxe(page, axeConfig);
+            await configureAxe(page, {
+                ...axeConfig,
+                rules: [...axeConfig.rules, tuiGetContrastRule(path)],
+            });
             await documentation.waitTuiIcons();
             await documentation.waitStableState();
 
@@ -81,10 +84,7 @@ test.describe('Demo', () => {
 
             await checkA11y(
                 page,
-                {
-                    include: [['tui-doc-example > .t-example']],
-                    exclude: tuiGetContrastExclusions(path),
-                },
+                {include: [['tui-doc-example > .t-example']]},
                 {detailedReport: true},
                 false,
                 'v2',

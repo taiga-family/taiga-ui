@@ -1,11 +1,12 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/core/components/slider';
-import {identity, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
+import {identity, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';
 
@@ -45,7 +46,12 @@ export class TuiRangeChange {
                     ),
                 ),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
-                takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
+                takeUntil(
+                    merge(
+                        tuiTypedFromEvent(this.doc, 'pointerup', {passive: true}),
+                        tuiTypedFromEvent(this.doc, 'pointercancel', {passive: true}),
+                    ),
+                ),
                 repeat(),
                 takeUntilDestroyed(),
             )
@@ -58,7 +64,7 @@ export class TuiRangeChange {
 
     private getFractionFromEvents(clickClientX: number): number {
         const {left, right, width} = this.el.getBoundingClientRect();
-        const start = this.el.matches('[dir="rtl"] :scope') ? right : left;
+        const start = this.el.matches(TUI_RTL_SELECTOR) ? right : left;
         const value = Math.abs(tuiClamp(clickClientX, left, right) - start);
 
         return tuiRound(value / width, TUI_FLOATING_PRECISION);

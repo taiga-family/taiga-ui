@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
 import {type TuiModalComponent, TuiModalService} from '@taiga-ui/core/portals/modal';
+import {TUI_OPTIONS} from '@taiga-ui/core/utils/miscellaneous';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
@@ -13,6 +14,7 @@ const THEME_COLOR = 'name="theme-color"';
 
 @Injectable({providedIn: 'root'})
 export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
+    private readonly themeColors = inject(TUI_OPTIONS).themeColors;
     private readonly meta = inject(Meta);
     private initial = '';
     private count = 0;
@@ -25,7 +27,7 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
     ): () => void {
         // Read the live tag at open time, not at construction: a color set later
         // (an app-level dark mode effect) would otherwise be lost on revert.
-        if (!this.count++ && this.options.themeColor) {
+        if (!this.count++ && this.options.themeColor && !this.themeColors) {
             this.initial = this.meta.getTag(THEME_COLOR)?.content ?? '';
             this.meta.updateTag({
                 name: 'theme-color',
@@ -38,7 +40,7 @@ export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions
         return () => {
             cleanup();
 
-            if (--this.count || !this.options.themeColor) {
+            if (--this.count || !this.options.themeColor || this.themeColors) {
                 return;
             }
 

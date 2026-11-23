@@ -11,6 +11,7 @@ import {
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly name: string;
@@ -26,6 +27,7 @@ interface User {
         TuiDropdownMobile,
         TuiDropdownSheet,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,

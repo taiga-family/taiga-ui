@@ -8,6 +8,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiTitle} from '@taiga-ui/core/components/title';
 import {TuiButtonX} from '@taiga-ui/core/directives/button-x';
@@ -30,6 +31,12 @@ import {type TuiDialogContext} from './dialog.options';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
+const ZONES = {
+    zoneTop: 'var(--tui-background-base)',
+    zoneLeft: 'var(--tui-background-base)',
+    zoneBottom: 'var(--tui-background-base)',
+    zoneRight: 'var(--tui-background-base)',
+};
 
 function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
@@ -55,7 +62,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
         '[class._closable]': 'context.closable',
-        '[class.tui-backdrop-hidden]': 'context.appearance.includes("fullscreen")',
+        '[class.tui-backdrop-hidden]': 'fullscreen',
     },
 })
 export class TuiDialogComponent<O, I> {
@@ -63,7 +70,7 @@ export class TuiDialogComponent<O, I> {
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiDialogContext<I, O>>();
-
+    protected readonly fullscreen = this.context.appearance.includes('fullscreen');
     protected readonly primitive =
         typeof this.context.content === 'function' ||
         Object(this.context.content) !== this.context.content;
@@ -83,4 +90,10 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
+
+    constructor() {
+        if (this.fullscreen) {
+            Object.assign(tuiInjectElement().dataset ?? {}, ZONES);
+        }
+    }
 }

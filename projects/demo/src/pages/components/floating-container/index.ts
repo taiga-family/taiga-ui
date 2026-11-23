@@ -37,6 +37,7 @@ export default class Example {
         'Overlay',
         'Crossfade',
         'Compact',
+        'Max width',
     ];
 
     protected readonly colors = [

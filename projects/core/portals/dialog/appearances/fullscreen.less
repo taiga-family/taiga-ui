@@ -128,6 +128,10 @@
         > ng-component > footer {
             padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
+
+            &::before {
+                --tui-background-elevation-1: var(--tui-background-base);
+            }
         }
     }
 

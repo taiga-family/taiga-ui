@@ -78,7 +78,7 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        provideTaiga(),
+        provideTaiga({themeColors: ['#f6f6f6', '#333333']}),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(withFetch()),
         {

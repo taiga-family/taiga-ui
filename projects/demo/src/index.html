@@ -61,7 +61,17 @@
             property="og:description"
         />
         <meta
-            content="#ff7043"
+            content="light dark"
+            name="color-scheme"
+        />
+        <meta
+            content="#f6f6f6"
+            media="(prefers-color-scheme: light)"
+            name="theme-color"
+        />
+        <meta
+            content="#2e2e2e"
+            media="(prefers-color-scheme: dark)"
             name="theme-color"
         />
         <link
@@ -154,14 +164,16 @@
         <title>Taiga UI</title>
     </head>
     <body>
+        <span tuiTheme="dark"></span>
+        <script>
+            try {
+                const dark = localStorage.getItem('tuiDark') || `${matchMedia('(prefers-color-scheme: dark)').matches}`;
+
+                if (dark === 'true') {
+                    document.body.setAttribute('tuiTheme', 'dark');
+                }
+            } catch {}
+        </script>
         <app></app>
     </body>
-    <script>
-        // Or whatever key you provided to TUI_DARK_MODE_KEY
-        const theme = localStorage?.getItem('tuiDark');
-
-        if (theme === 'true' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.body.setAttribute('tuiTheme', 'dark');
-        }
-    </script>
 </html>

@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.33.0](https://github.com/taiga-family/taiga-ui/compare/v5.32.0...v5.33.0) (2026-11-16)
+
+### 🚀 Features
+
+- **addon-mobile:** `TabBar` enable liquid glass overlay by class and limit width
+  ([#15408](https://github.com/taiga-family/taiga-ui/issues/15408))
+  ([562173e](https://github.com/taiga-family/taiga-ui/commit/562173e455c1ee6701a5478f2b0c33054918a4ca))
+- **styles:** ship precompiled theme and mobile CSS ([#15392](https://github.com/taiga-family/taiga-ui/issues/15392))
+  ([eb45a97](https://github.com/taiga-family/taiga-ui/commit/eb45a97ad679e21ae4e6bb86f14ca4b337fb59dd))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** `BarChart` support negative values ([#15397](https://github.com/taiga-family/taiga-ui/issues/15397))
+  ([3cbb0df](https://github.com/taiga-family/taiga-ui/commit/3cbb0df173491a44dd772baa3c6154ea79cc03e0))
+- **addon-doc:** optimize CSS performance for `DocPage`
+  ([#15393](https://github.com/taiga-family/taiga-ui/issues/15393))
+  ([9dcdce3](https://github.com/taiga-family/taiga-ui/commit/9dcdce3ca0682cde1dab412a7a48cb4b0e057443))
+- **addon-mobile:** `Header` fix description line height for small sizes
+  ([#15406](https://github.com/taiga-family/taiga-ui/issues/15406))
+  ([c120405](https://github.com/taiga-family/taiga-ui/commit/c120405d62c4d01f6db483d496ef4b3407ff8a37))
+- **addon-mobile:** `radio` make android color styles independent from appearance
+  ([#15386](https://github.com/taiga-family/taiga-ui/issues/15386))
+  ([9bd72d1](https://github.com/taiga-family/taiga-ui/commit/9bd72d1416550c3f360f69c567a7257b429f57a9))
+- **addon-mobile:** bump contrast of checkbox and radio borders
+  ([#15380](https://github.com/taiga-family/taiga-ui/issues/15380))
+  ([a3141dd](https://github.com/taiga-family/taiga-ui/commit/a3141ddd16eecc195b723538733746d1a9047d2f))
+- **cdk:** count calendar days in UTC in `TuiDay.lengthBetween`
+  ([#15424](https://github.com/taiga-family/taiga-ui/issues/15424))
+  ([bb8e528](https://github.com/taiga-family/taiga-ui/commit/bb8e52857c6af775c34afe40bf71a166cc67ac60))
+- **cdk:** preserve years below 100 in UTC dates ([#15250](https://github.com/taiga-family/taiga-ui/issues/15250))
+  ([a4419f2](https://github.com/taiga-family/taiga-ui/commit/a4419f220211ff1d13688127653d710c19caf2b1))
+- **core:** `Hint` animate custom hint closing ([#15245](https://github.com/taiga-family/taiga-ui/issues/15245))
+  ([86554c0](https://github.com/taiga-family/taiga-ui/commit/86554c0f09490dbc1fa6cb06296c30221630c3f4))
+- **core:** prevent textfield chip arrow navigation error with internal label
+  ([#15404](https://github.com/taiga-family/taiga-ui/issues/15404))
+  ([c288de0](https://github.com/taiga-family/taiga-ui/commit/c288de04c95d4af873c0febea943dff6a1de71cc))
+- **core:** prevent translation of textfield measuring elements
+  ([#15366](https://github.com/taiga-family/taiga-ui/issues/15366))
+  ([8c86a15](https://github.com/taiga-family/taiga-ui/commit/8c86a154db3796ed135f7ab70c5f2dc99b9fa83d))
+- **core:** scrollbar respect TUI_ANCHOR_SUPPORT ([#15382](https://github.com/taiga-family/taiga-ui/issues/15382))
+  ([dff7aa6](https://github.com/taiga-family/taiga-ui/commit/dff7aa656989bf00e1d3df2c281ef4ef3be81985))
+- **kit:** `InputFiles` accept compound file extensions
+  ([#15417](https://github.com/taiga-family/taiga-ui/issues/15417))
+  ([bcff101](https://github.com/taiga-family/taiga-ui/commit/bcff1011706f6db1e0b650ba3cddb0e9b20c5045))
+- **kit:** `InputSlider` preserve value with event coalescing
+  ([#15336](https://github.com/taiga-family/taiga-ui/issues/15336))
+  ([b4f6220](https://github.com/taiga-family/taiga-ui/commit/b4f6220917e93b10ac998e2a82ead888a5641266))
+- **kit:** allow Tab navigation in read-only `Rating` ([#15441](https://github.com/taiga-family/taiga-ui/issues/15441))
+  ([c4d6e4e](https://github.com/taiga-family/taiga-ui/commit/c4d6e4e98e04854b32204db7181ac22926fad49a))
+- **kit:** distinguish midnight from empty time in `InputDateTime`
+  ([#15434](https://github.com/taiga-family/taiga-ui/issues/15434))
+  ([c3933c3](https://github.com/taiga-family/taiga-ui/commit/c3933c3b0135a466e1e2d6722a9d86993c73c87d))
+- **kit:** handle null time in `InputDateTime` bounds ([#15426](https://github.com/taiga-family/taiga-ui/issues/15426))
+  ([371ae7b](https://github.com/taiga-family/taiga-ui/commit/371ae7be16706b717a11fcc0e4e24bccea55cbda))
+- **kit:** preserve horizontal InputChip height in Safari
+  ([#15225](https://github.com/taiga-family/taiga-ui/issues/15225))
+  ([54316fb](https://github.com/taiga-family/taiga-ui/commit/54316fb2a4e91889250f41c94fe0dd4c2f49c6b3))
+- **kit:** preserve Tree expansion state for falsy values
+  ([#15331](https://github.com/taiga-family/taiga-ui/issues/15331))
+  ([e0a019c](https://github.com/taiga-family/taiga-ui/commit/e0a019c4816644a4c1356bce88d28600377978f4))
+- **kit:** prevent copy mask seam at fractional pixel ratios
+  ([#15290](https://github.com/taiga-family/taiga-ui/issues/15290))
+  ([e69c845](https://github.com/taiga-family/taiga-ui/commit/e69c8453fac4b61d3137329cfc0066cfa89b0f53))
+- **kit:** stop `Range` drag on pointer cancellation ([#15444](https://github.com/taiga-family/taiga-ui/issues/15444))
+  ([b04d91d](https://github.com/taiga-family/taiga-ui/commit/b04d91def99135fe4c3282ffd75475f0866bda86))
+- **layout:** `FloatingContainer` fix hole underneath iOS26 actions
+  ([#15422](https://github.com/taiga-family/taiga-ui/issues/15422))
+  ([8a04a2e](https://github.com/taiga-family/taiga-ui/commit/8a04a2e67c0b34129cfe3489e8a6a96e3ff28855))
+- **schematics:** migrate closeable in typed assertions
+  ([#14873](https://github.com/taiga-family/taiga-ui/issues/14873))
+  ([ee28b39](https://github.com/taiga-family/taiga-ui/commit/ee28b395272612b8af5280b97c0db10de34c99e7))
+
 ## [5.32.0](https://github.com/taiga-family/taiga-ui/compare/v5.31.0...v5.32.0) (2026-11-09)
 
 ### 🚀 Features

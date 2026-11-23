@@ -61,6 +61,7 @@ export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
     hostDirectives: [TuiActiveZone, TuiAnimated, TuiDropdownAnchored],
     host: {
         '[attr.data-appearance]': 'options.appearance',
+        '[attr.tuiDropdownMobile]': 'mobile || null',
         '[attr.tuiTheme]': 'theme()',
         '[style.max-block-size.px]': 'options.maxHeight',
     },
@@ -71,6 +72,8 @@ export class TuiDropdownComponent extends TuiScrollbar {
 
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
+    // TODO: Remove in v6
+    protected readonly mobile = this.directive.el.hasAttribute('tuiDropdownMobile');
     protected readonly theme = computed((_ = this.darkMode()) =>
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
     );

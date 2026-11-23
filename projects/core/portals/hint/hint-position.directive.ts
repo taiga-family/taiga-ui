@@ -1,6 +1,6 @@
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
-import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiAsPositionAccessor,
@@ -12,6 +12,7 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
+import {TUI_HINT_OFFSET} from './hint.providers';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
@@ -19,7 +20,6 @@ import {
 } from './hint-options.directive';
 
 const GAP = 8;
-const ARROW_OFFSET = 22;
 const TOP = 1;
 const LEFT = 0;
 
@@ -28,6 +28,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly options = inject(TUI_HINT_OPTIONS);
+    private readonly offsets = inject(TUI_HINT_OFFSET);
     private readonly directionChange = new Subject<TuiHintDirection>();
     private readonly accessor = tuiInjectAccessor(TuiRectAccessor, 'hint');
     private readonly points: Record<TuiHintDirection, [number, number]> =
@@ -36,15 +37,12 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
+    /** @deprecated: use {@link TUI_HINT_OFFSET} instead TODO: drop in v6.0 */
+    public readonly offset = input(this.offsets.bubble, {alias: 'tuiHintOffset'});
+    public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
     public readonly direction = input(this.options.direction, {
         alias: 'tuiHintDirection',
     });
-
-    public readonly offset = input(inject(WA_IS_MOBILE) ? 16 : 8, {
-        alias: 'tuiHintOffset',
-    });
-
-    public readonly centered = input(this.options.centered, {alias: 'tuiHintCentered'});
 
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
@@ -57,13 +55,14 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const rect = this.accessor.getClientRect();
         const leftCenter = rect.left + rect.width / 2;
         const topCenter = rect.top + rect.height / 2;
-        const rtl = this.el.matches('[dir="rtl"] :scope');
-        const narrow = rect.width < ARROW_OFFSET * 2 || this.centered();
-        const short = rect.height < ARROW_OFFSET * 2 || this.centered();
-        const start = narrow ? leftCenter - ARROW_OFFSET : rect.left;
-        const end = narrow ? leftCenter - width + ARROW_OFFSET : rect.right - width;
-        const top = short ? topCenter - ARROW_OFFSET : rect.top;
-        const bottom = short ? topCenter - height + ARROW_OFFSET : rect.bottom - height;
+        const rtl = this.el.matches(TUI_RTL_SELECTOR);
+        const {arrow} = this.offsets;
+        const narrow = rect.width < arrow * 2 || this.centered();
+        const short = rect.height < arrow * 2 || this.centered();
+        const start = narrow ? leftCenter - arrow : rect.left;
+        const end = narrow ? leftCenter - width + arrow : rect.right - width;
+        const top = short ? topCenter - arrow : rect.top;
+        const bottom = short ? topCenter - height + arrow : rect.bottom - height;
 
         this.points['top-start'][TOP] = rect.top - height - this.offset();
         this.points['top-start'][LEFT] = this.centered() ? end : start;

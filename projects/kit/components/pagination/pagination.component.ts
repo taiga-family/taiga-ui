@@ -105,7 +105,7 @@ export class TuiPagination {
     }
 
     protected elementIsFocusable(index: number): boolean {
-        return this.index() === index && !this.focused;
+        return this.focusable() && this.index() === index && !this.focused;
     }
 
     /**

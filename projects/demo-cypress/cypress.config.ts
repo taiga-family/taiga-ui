@@ -80,6 +80,7 @@ export default defineConfig({
                             'projects/styles/components/like.less',
                             'projects/styles/components/card.less',
                             'projects/styles/components/card-large.less',
+                            'projects/styles/components/floating-container.less',
                             'projects/styles/components/list.less',
                             'projects/styles/components/message.less',
                             'projects/styles/components/pin.less',

@@ -5,12 +5,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiLoader} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TuiProgressCircle, TuiToast} from '@taiga-ui/kit';
 import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 
 @Component({
-    imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
+    imports: [
+        TuiAppearance,
+        TuiButton,
+        TuiLoader,
+        TuiPlatform,
+        TuiProgressCircle,
+        TuiToast,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.css',
     encapsulation,

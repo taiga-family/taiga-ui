@@ -1,8 +1,7 @@
-import {Component, inject, type OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
-import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 
 @Component({
     imports: [TuiDemo],
@@ -11,9 +10,7 @@ import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
     encapsulation,
     changeDetection,
 })
-export default class Page implements OnDestroy {
-    protected readonly theme = inject(TuiThemeColorService);
-
+export default class Page {
     protected readonly examples = [
         'Full',
         'Subheader compact',
@@ -21,12 +18,4 @@ export default class Page implements OnDestroy {
         'Customization',
         'InputSearch',
     ];
-
-    constructor() {
-        this.theme.color = 'black';
-    }
-
-    public ngOnDestroy(): void {
-        this.theme.color = '#ff7043';
-    }
 }

@@ -22,6 +22,7 @@ describe('TuiPaginationComponent', () => {
             <tui-pagination
                 [activePadding]="activePadding"
                 [disabled]="disabled"
+                [focusable]="focusable"
                 [length]="length"
                 [sidePadding]="sidePadding"
                 [(index)]="index"
@@ -33,6 +34,7 @@ describe('TuiPaginationComponent', () => {
     class Test {
         public readonly component = viewChild.required(TuiPagination);
         public disabled = false;
+        public focusable = true;
         public index = 0;
         public length = 50;
         public activePadding = 1;
@@ -95,6 +97,23 @@ describe('TuiPaginationComponent', () => {
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component();
+    });
+
+    it('removes page buttons from the tab order when focusable is false', () => {
+        setParams({index: 1, length: 3});
+
+        const buttons = pageObject.getAllByAutomationId(`${testContext.prefix}element`);
+
+        expect(buttons.map(({nativeElement}) => nativeElement.tabIndex)).toEqual([
+            -1, 0, -1,
+        ]);
+
+        testComponent.focusable = false;
+        fixture.detectChanges();
+
+        expect(buttons.map(({nativeElement}) => nativeElement.tabIndex)).toEqual([
+            -1, -1, -1,
+        ]);
     });
 
     describe('number of points', () => {

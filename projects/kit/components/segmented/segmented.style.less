@@ -126,6 +126,10 @@ tui-segmented:where(*&) {
 
     & > .tui-segmented_active {
         anchor-name: var(--t-anchor);
+
+        &[data-tui-anchor] {
+            anchor-name: var(--t-anchor), var(--tui-anchor) !important;
+        }
     }
 
     & > label > input:not([tuiRadio]) {
