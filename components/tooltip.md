@@ -3,7 +3,7 @@
 - **Package**: `KIT`
 - **Type**: components
 
-Component to show icons with a hint by hover
+A help icon component, showing hint bubble on hover
 
 ### Example
 
@@ -86,10 +86,10 @@ export default class Example {
 
 **Template:**
 ```html
-<p> Custom host can be set with <a tuiLink [routerLink]="['/tui-hint']" >
-<code>tuiHint</code>
-</a> directive </p>
-<div size="l" tabindex="0" tuiAvatar tuiHintAppearance="floating" tuiHintDirection="end" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
+<p> Tooltip is a hint on a question mark icon. If you need something else as a host, use <a tuiLink [routerLink]="['/tui-hint']" >
+<code>Hint</code>
+</a> directive directly. </p>
+<div size="l" tabindex="0" tuiAvatar tuiHintAppearance="floating" tuiHintDirection="end" tuiTheme="light" [style.background]="'❤️' | tuiAutoColor" [tuiHint]="tooltip" > ❤️ </div>
 <ng-template #tooltip>
 <div> What is <strong>love</strong> ? </div>
 <div>Baby don't hurt me</div>
@@ -113,6 +113,7 @@ import {TuiAutoColorPipe, TuiAvatar} from '@taiga-ui/kit';
     styleUrl: './index.css',
     encapsulation,
     changeDetection,
+    host: {tuiTheme: 'dark'},
 })
 export default class Example {}
 ```
@@ -123,7 +124,7 @@ export default class Example {}
     display: block;
     background: #3e4757;
     box-shadow: 0 0 0 100rem #3e4757;
-    color: var(--tui-background-base);
+    color: var(--tui-text-primary);
 }
 ```
 

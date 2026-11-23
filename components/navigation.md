@@ -241,9 +241,9 @@ Navigation with page header in a compact mode.
 **Template:**
 ```html
 <header tuiNavigationHeader>
-<label tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [ngModel]="color" (ngModelChange)="onColor($event)" />
+<label tuiNavigationLogo> Custom color <input tuiSwitch type="checkbox" [(ngModel)]="color" />
 </label>
-<button tuiButton tuiChevron tuiDropdown="Use TuiThemeColorService to control color" tuiDropdownAuto type="button" > How to? </button>
+<button tuiButton tuiChevron tuiDropdown="Use --tui-theme-color var to control color" tuiDropdownAuto type="button" > How to? </button>
 <div tuiDropdown tuiDropdownAppearance="" tuiDropdownAuto [attr.tuiTheme]="dark() ? 'dark' : 'light'" >
 <button tuiButton tuiChevron tuiTheme="dark" type="button" > Keep dropdowns color? </button>
 <ol *tuiDropdown tuiList="s" [style.padding-inline.rem]="1" >
@@ -292,7 +292,6 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiThemeColorService} from '@taiga-ui/addon-mobile';
 import {
     TUI_DARK_MODE,
     TuiButton,
@@ -325,16 +324,11 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from '@taiga-ui/layout'
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    host: {'[style.--tui-theme-color]': 'color ? "purple" : null'},
 })
 export default class Example {
-    private readonly theme = inject(TuiThemeColorService);
-
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
-
-    protected onColor(color: boolean): void {
-        this.theme.color = color ? 'purple' : 'black';
-    }
 }
 ```
 

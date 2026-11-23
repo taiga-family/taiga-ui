@@ -139,7 +139,7 @@ Custom styles and more component
 <section tuiPlatform="ios">
 <div tuiToast>
 <tui-loader /> Updating... </div>
-<div iconStart="@tui.circle-check" tuiTheme="dark" tuiToast [style.background]="'var(--tui-text-action)'" > Added <button appearance="secondary-grayscale" size="s" tuiButton type="button" > Label </button>
+<div iconStart="@tui.circle-check" tuiAppearance="accent" tuiTheme="dark" tuiToast > Added <button appearance="secondary-grayscale" size="s" tuiButton type="button" > Label </button>
 </div>
 </section>
 ```
@@ -153,12 +153,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiLoader} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TuiProgressCircle, TuiToast} from '@taiga-ui/kit';
 import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 
 @Component({
-    imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
+    imports: [
+        TuiAppearance,
+        TuiButton,
+        TuiLoader,
+        TuiPlatform,
+        TuiProgressCircle,
+        TuiToast,
+    ],
     templateUrl: './index.html',
     styleUrl: './index.css',
     encapsulation,

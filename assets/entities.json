@@ -473,7 +473,7 @@
         "name": "Hint",
         "export": "TuiHint",
         "package": "@taiga-ui/core",
-        "description": "Directive to show a hint by hover of an element",
+        "description": "Directive to show a hint over an element, by pointer hover as default trigger Use `TUI_HINT_OFFSET` token to configure bubble and pointing arrow offsets",
         "route": "directives/hint"
     },
     {
@@ -1156,7 +1156,7 @@
         "name": "Tooltip",
         "export": "TuiTooltip",
         "package": "@taiga-ui/kit",
-        "description": "Component to show icons with a hint by hover",
+        "description": "A help icon component, showing hint bubble on hover",
         "route": "components/tooltip"
     },
     {

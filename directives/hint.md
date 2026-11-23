@@ -3,7 +3,7 @@
 - **Package**: `CORE`
 - **Type**: directives
 
-Directive to show a hint by hover of an element
+Directive to show a hint over an element, by pointer hover as default trigger Use `TUI_HINT_OFFSET` token to configure bubble and pointing arrow offsets
 
 ### Example
 

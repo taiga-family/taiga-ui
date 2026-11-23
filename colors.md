@@ -9,9 +9,9 @@
 | `--tui-text-tertiary` | rgba(27, 31, 59, 0.4) | rgba(255, 255, 255, 0.6) |
 | `--tui-text-primary-on-accent-1` | #fff | #fff |
 | `--tui-text-primary-on-accent-2` | #fff | #fff |
-| `--tui-text-action` | #4c66c3 | #6788ff |
+| `--tui-text-action` | #4c65c2 | #7693ff |
 | `--tui-text-action-hover` | #6c86e2 | #526ed3 |
-| `--tui-text-negative` | #eb1700 | #ff4d4d |
+| `--tui-text-negative` | #e01600 | #ff4d4d |
 | `--tui-text-negative-hover` | #ff4d4d | #f66 |
 | `--tui-text-positive` | #008764 | #44c596 |
 | `--tui-text-positive-hover` | #7ac5aa | #3aa981 |

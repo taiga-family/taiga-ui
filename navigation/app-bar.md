@@ -628,3 +628,63 @@ tui-app-bar {
     block-size: 20rem;
 }
 ```
+
+#### Liquid glass over map
+
+**Template:**
+```html
+<section tuiPlatform="ios" tuiTheme="light" >
+<iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d318007.389194818!2d-0.1506732382812497!3d51.48692612252592!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1738141112584!5m2!1sen!2sae" title="map" class="map" ></iframe>
+<tui-app-bar class="tui-liquid-glass_blur">
+<button title="Back" tuiAppBarBack tuiSlot="start" type="button" ></button>
+<span tuiTitle>London</span>
+<button iconStart="@tui.search" title="Search" tuiIconButton tuiSlot="end" type="button" ></button>
+<button iconStart="@tui.navigation" title="My location" tuiIconButton tuiSlot="end" type="button" ></button>
+</tui-app-bar>
+</section>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiAppBar} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {}
+```
+
+**CSS:**
+```css
+section {
+    position: relative;
+    inline-size: 20rem;
+    block-size: 30rem;
+    overflow: hidden;
+}
+
+.map {
+    inline-size: 100%;
+    block-size: calc(100% + 4rem);
+    margin-block-start: -4rem;
+    border: none;
+}
+
+tui-app-bar {
+    --tui-progressive-blur-background: transparent;
+
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 1;
+}
+```

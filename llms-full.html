@@ -1469,17 +1469,25 @@ export interface TuiOptions {
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     ...
+    &lt;meta
+      content=&quot;light dark&quot;
+      name=&quot;color-scheme&quot;
+    /&gt;
   &lt;/head&gt;
   &lt;body&gt;
+    &lt;!-- Make sure Angular SSR considers dark mode critical CSS and inlines it --&gt;
+    &lt;span tuiTheme=&quot;dark&quot;&gt;&lt;/span&gt;
+    &lt;script&gt;
+      try {
+        // Or whatever key you provided to TUI_DARK_MODE_KEY
+        const dark = localStorage.getItem(&#039;tuiDark&#039;) || `${matchMedia(&#039;(prefers-color-scheme: dark)&#039;).matches}`;
+        if (dark === &#039;true&#039;) {
+          document.body.setAttribute(&#039;tuiTheme&#039;, &#039;dark&#039;);
+        }
+      } catch {}
+    &lt;/script&gt;
     ...
   &lt;/body&gt;
-  &lt;script&gt;
-    // Or whatever key you provided to TUI_DARK_MODE_KEY
-    const theme = localStorage?.getItem(&#039;tuiDark&#039;);
-    if (theme === &#039;true&#039; || (!theme &amp;&amp; matchMedia(&#039;(prefers-color-scheme: dark)&#039;).matches)) {
-      document.body.setAttribute(&#039;tuiTheme&#039;, &#039;dark&#039;);
-    }
-  &lt;/script&gt;
 &lt;/html&gt;
 ```
 
@@ -2995,6 +3003,66 @@ tui-app-bar {
 }
 ```
 
+#### Liquid glass over map
+
+**Template:**
+```html
+&lt;section tuiPlatform=&quot;ios&quot; tuiTheme=&quot;light&quot; &gt;
+&lt;iframe allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot; src=&quot;https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d318007.389194818!2d-0.1506732382812497!3d51.48692612252592!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1738141112584!5m2!1sen!2sae&quot; title=&quot;map&quot; class=&quot;map&quot; &gt;&lt;/iframe&gt;
+&lt;tui-app-bar class=&quot;tui-liquid-glass_blur&quot;&gt;
+&lt;button title=&quot;Back&quot; tuiAppBarBack tuiSlot=&quot;start&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;span tuiTitle&gt;London&lt;/span&gt;
+&lt;button iconStart=&quot;@tui.search&quot; title=&quot;Search&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;button iconStart=&quot;@tui.navigation&quot; title=&quot;My location&quot; tuiIconButton tuiSlot=&quot;end&quot; type=&quot;button&quot; &gt;&lt;/button&gt;
+&lt;/tui-app-bar&gt;
+&lt;/section&gt;
+```
+
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
+import {TUI_LIQUID_GLASS, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiAppBar} from &#039;@taiga-ui/layout&#039;;
+
+@Component({
+    imports: [TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrl: &#039;./index.css&#039;,
+    encapsulation,
+    changeDetection,
+    providers: [{provide: TUI_LIQUID_GLASS, useValue: true}],
+})
+export default class Example {}
+```
+
+**CSS:**
+```css
+section {
+    position: relative;
+    inline-size: 20rem;
+    block-size: 30rem;
+    overflow: hidden;
+}
+
+.map {
+    inline-size: 100%;
+    block-size: calc(100% + 4rem);
+    margin-block-start: -4rem;
+    border: none;
+}
+
+tui-app-bar {
+    --tui-progressive-blur-background: transparent;
+
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 1;
+}
+```
+
 
 ### TypeScript
 
@@ -3018,6 +3086,7 @@ export default class Page {
         &#039;iOS Liquid glass&#039;,
         &#039;Liquid glass dynamic header&#039;,
         &#039;Color background&#039;,
+        &#039;Liquid glass over map&#039;,
     ];
 }
 ```
@@ -5619,7 +5688,7 @@ Layout directive for describing details. For example, transaction details
 &lt;span tuiComment&gt;Birthday gift&lt;/span&gt;
 &lt;div tuiAccessories&gt;
 &lt;div appearance=&quot;neutral&quot; tuiBadge &gt; private &lt;/div&gt;
-&lt;div appearance=&quot;default&quot; tuiBadge &gt; fast &lt;/div&gt;
+&lt;div tuiBadge&gt;fast&lt;/div&gt;
 &lt;/div&gt;
 &lt;div tuiDetailsStatus&gt;
 &lt;tui-icon icon=&quot;@tui.clock&quot; [style.font-size.rem]=&quot;1&quot; /&gt; Pending &lt;/div&gt;
@@ -7384,7 +7453,7 @@ export default class Example {
             title: &#039;USD Account&#039;,
             content: &#039;2 000 000 $&#039;,
             gradient: &#039;linear-gradient(-90deg, #cf77f3 0%, #009bff 47%, #2ac9db 100%)&#039;,
-            color: &#039;rgb(0, 155, 255)&#039;,
+            color: &#039;#0776df&#039;,
         },
         {
             title: &#039;EUR Account&#039;,
@@ -21868,7 +21937,9 @@ You can improve UX on mobile devices in multiple ways, depending on your case.
 &lt;label tuiLabel&gt; Mobile dropdown with writable input &lt;tui-textfield multi tuiChevron tuiDropdownMobile [disabledItemHandler]=&quot;disabled&quot; &gt;
 &lt;input placeholder=&quot;Type something&quot; tuiInputChip [(ngModel)]=&quot;writable&quot; /&gt; @if (items | tuiFilterByInput; as items) { &lt;ng-template let-close tuiDropdown &gt;
 &lt;tui-data-list-wrapper tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
-&lt;button appearance=&quot;accent&quot; size=&quot;m&quot; tuiButton tuiDropdownButton type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Done &lt;/button&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
 &lt;/ng-template&gt; } &lt;/tui-textfield&gt;
 &lt;/label&gt;
 &lt;label tuiLabel&gt; Mobile sheet with options &lt;tui-textfield multi tuiChevron tuiDropdownSheet &gt;
@@ -21897,6 +21968,7 @@ import {
     TuiInputChip,
     TuiMultiSelect,
 } from &#039;@taiga-ui/kit&#039;;
+import {TuiFloatingContainer} from &#039;@taiga-ui/layout&#039;;
 
 interface User {
     readonly name: string;
@@ -21912,6 +21984,7 @@ interface User {
         TuiDropdownMobile,
         TuiDropdownSheet,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
@@ -34394,9 +34467,9 @@ Navigation with page header in a compact mode.
 **Template:**
 ```html
 &lt;header tuiNavigationHeader&gt;
-&lt;label tuiNavigationLogo&gt; Custom color &lt;input tuiSwitch type=&quot;checkbox&quot; [ngModel]=&quot;color&quot; (ngModelChange)=&quot;onColor($event)&quot; /&gt;
+&lt;label tuiNavigationLogo&gt; Custom color &lt;input tuiSwitch type=&quot;checkbox&quot; [(ngModel)]=&quot;color&quot; /&gt;
 &lt;/label&gt;
-&lt;button tuiButton tuiChevron tuiDropdown=&quot;Use TuiThemeColorService to control color&quot; tuiDropdownAuto type=&quot;button&quot; &gt; How to? &lt;/button&gt;
+&lt;button tuiButton tuiChevron tuiDropdown=&quot;Use --tui-theme-color var to control color&quot; tuiDropdownAuto type=&quot;button&quot; &gt; How to? &lt;/button&gt;
 &lt;div tuiDropdown tuiDropdownAppearance=&quot;&quot; tuiDropdownAuto [attr.tuiTheme]=&quot;dark() ? &#039;dark&#039; : &#039;light&#039;&quot; &gt;
 &lt;button tuiButton tuiChevron tuiTheme=&quot;dark&quot; type=&quot;button&quot; &gt; Keep dropdowns color? &lt;/button&gt;
 &lt;ol *tuiDropdown tuiList=&quot;s&quot; [style.padding-inline.rem]=&quot;1&quot; &gt;
@@ -34445,7 +34518,6 @@ import {Component, inject} from &#039;@angular/core&#039;;
 import {FormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiThemeColorService} from &#039;@taiga-ui/addon-mobile&#039;;
 import {
     TUI_DARK_MODE,
     TuiButton,
@@ -34478,16 +34550,11 @@ import {TuiCardLarge, TuiHeader, TuiList, TuiNavigation} from &#039;@taiga-ui/la
     templateUrl: &#039;./index.html&#039;,
     encapsulation,
     changeDetection,
+    host: {&#039;[style.--tui-theme-color]&#039;: &#039;color ? &quot;purple&quot; : null&#039;},
 })
 export default class Example {
-    private readonly theme = inject(TuiThemeColorService);
-
     protected readonly dark = inject(TUI_DARK_MODE);
     protected color = false;
-
-    protected onColor(color: boolean): void {
-        this.theme.color = color ? &#039;purple&#039; : &#039;black&#039;;
-    }
 }
 ```
 
@@ -34864,11 +34931,10 @@ export default class ExampleComponent {
 ### TypeScript
 
 ```ts
-import {Component, inject, type OnDestroy} from &#039;@angular/core&#039;;
+import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiThemeColorService} from &#039;@taiga-ui/addon-mobile&#039;;
 
 @Component({
     imports: [TuiDemo],
@@ -34877,9 +34943,7 @@ import {TuiThemeColorService} from &#039;@taiga-ui/addon-mobile&#039;;
     encapsulation,
     changeDetection,
 })
-export default class Page implements OnDestroy {
-    protected readonly theme = inject(TuiThemeColorService);
-
+export default class Page {
     protected readonly examples = [
         &#039;Full&#039;,
         &#039;Subheader compact&#039;,
@@ -34887,14 +34951,6 @@ export default class Page implements OnDestroy {
         &#039;Customization&#039;,
         &#039;InputSearch&#039;,
     ];
-
-    constructor() {
-        this.theme.color = &#039;black&#039;;
-    }
-
-    public ngOnDestroy(): void {
-        this.theme.color = &#039;#ff7043&#039;;
-    }
 }
 ```
 
@@ -35745,7 +35801,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -35786,7 +35843,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -35827,7 +35885,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -41401,7 +41460,7 @@ Segmented is used for links and buttons to navigate within the application. It c
 &lt;tui-icon icon=&quot;@tui.sun&quot; /&gt; All &lt;tui-badge-notification [size]=&quot;size&quot;&gt;3&lt;/tui-badge-notification&gt;
 &lt;tui-icon icon=&quot;@tui.moon&quot; /&gt;
 &lt;/button&gt;
-&lt;button type=&quot;button&quot;&gt;Incoming&lt;/button&gt;
+&lt;button tuiHint=&quot;Hint on segmented button&quot; type=&quot;button&quot; &gt; Incoming &lt;/button&gt;
 &lt;button type=&quot;button&quot;&gt;Outgoing&lt;/button&gt;
 &lt;/tui-segmented&gt; }
 ```
@@ -41411,11 +41470,11 @@ Segmented is used for links and buttons to navigate within the application. It c
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiHint, TuiIcon} from &#039;@taiga-ui/core&#039;;
 import {TuiBadgeNotification, TuiSegmented} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
-    imports: [TuiBadgeNotification, TuiIcon, TuiSegmented],
+    imports: [TuiBadgeNotification, TuiHint, TuiIcon, TuiSegmented],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.css&#039;,
     encapsulation,
@@ -50846,7 +50905,7 @@ Custom styles and more component
 &lt;section tuiPlatform=&quot;ios&quot;&gt;
 &lt;div tuiToast&gt;
 &lt;tui-loader /&gt; Updating... &lt;/div&gt;
-&lt;div iconStart=&quot;@tui.circle-check&quot; tuiTheme=&quot;dark&quot; tuiToast [style.background]=&quot;&#039;var(--tui-text-action)&#039;&quot; &gt; Added &lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
+&lt;div iconStart=&quot;@tui.circle-check&quot; tuiAppearance=&quot;accent&quot; tuiTheme=&quot;dark&quot; tuiToast &gt; Added &lt;button appearance=&quot;secondary-grayscale&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
 &lt;/div&gt;
 &lt;/section&gt;
 ```
@@ -50860,12 +50919,19 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {WA_IS_E2E} from &#039;@ng-web-apis/platform&#039;;
 import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton, TuiLoader} from &#039;@taiga-ui/core&#039;;
+import {TuiAppearance, TuiButton, TuiLoader} from &#039;@taiga-ui/core&#039;;
 import {TuiProgressCircle, TuiToast} from &#039;@taiga-ui/kit&#039;;
 import {BehaviorSubject, of, switchMap, take, timer} from &#039;rxjs&#039;;
 
 @Component({
-    imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
+    imports: [
+        TuiAppearance,
+        TuiButton,
+        TuiLoader,
+        TuiPlatform,
+        TuiProgressCircle,
+        TuiToast,
+    ],
     templateUrl: &#039;./index.html&#039;,
     styleUrl: &#039;./index.css&#039;,
     encapsulation,
@@ -51082,7 +51148,7 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 - **Version**: 5.0.0
-Component to show icons with a hint by hover
+A help icon component, showing hint bubble on hover
 
 ### Example
 
@@ -51165,10 +51231,10 @@ export default class Example {
 
 **Template:**
 ```html
-&lt;p&gt; Custom host can be set with &lt;a tuiLink [routerLink]=&quot;[&#039;/tui-hint&#039;]&quot; &gt;
-&lt;code&gt;tuiHint&lt;/code&gt;
-&lt;/a&gt; directive &lt;/p&gt;
-&lt;div size=&quot;l&quot; tabindex=&quot;0&quot; tuiAvatar tuiHintAppearance=&quot;floating&quot; tuiHintDirection=&quot;end&quot; [style.background]=&quot;&#039;❤️&#039; | tuiAutoColor&quot; [tuiHint]=&quot;tooltip&quot; &gt; ❤️ &lt;/div&gt;
+&lt;p&gt; Tooltip is a hint on a question mark icon. If you need something else as a host, use &lt;a tuiLink [routerLink]=&quot;[&#039;/tui-hint&#039;]&quot; &gt;
+&lt;code&gt;Hint&lt;/code&gt;
+&lt;/a&gt; directive directly. &lt;/p&gt;
+&lt;div size=&quot;l&quot; tabindex=&quot;0&quot; tuiAvatar tuiHintAppearance=&quot;floating&quot; tuiHintDirection=&quot;end&quot; tuiTheme=&quot;light&quot; [style.background]=&quot;&#039;❤️&#039; | tuiAutoColor&quot; [tuiHint]=&quot;tooltip&quot; &gt; ❤️ &lt;/div&gt;
 &lt;ng-template #tooltip&gt;
 &lt;div&gt; What is &lt;strong&gt;love&lt;/strong&gt; ? &lt;/div&gt;
 &lt;div&gt;Baby don&#039;t hurt me&lt;/div&gt;
@@ -51192,6 +51258,7 @@ import {TuiAutoColorPipe, TuiAvatar} from &#039;@taiga-ui/kit&#039;;
     styleUrl: &#039;./index.css&#039;,
     encapsulation,
     changeDetection,
+    host: {tuiTheme: &#039;dark&#039;},
 })
 export default class Example {}
 ```
@@ -51202,7 +51269,7 @@ export default class Example {}
     display: block;
     background: #3e4757;
     box-shadow: 0 0 0 100rem #3e4757;
-    color: var(--tui-background-base);
+    color: var(--tui-text-primary);
 }
 ```
 
@@ -51459,7 +51526,7 @@ tui-tree {
 ```html
 &lt;tui-tree [childrenHandler]=&quot;handler&quot; [content]=&quot;content&quot; [tuiTreeController]=&quot;true&quot; [value]=&quot;data&quot; /&gt;
 &lt;ng-template #content let-node=&quot;node&quot; let-value &gt;
-&lt;div class=&quot;wrapper&quot; [style.opacity]=&quot;1 / node.level&quot; &gt; @if (value.icon) { &lt;tui-icon class=&quot;t-icon&quot; [icon]=&quot;value.icon&quot; /&gt; } {{ value.text }} &lt;/div&gt;
+&lt;div class=&quot;wrapper&quot; [style.opacity]=&quot;1 - node.level * 0.1&quot; &gt; @if (value.icon) { &lt;tui-icon class=&quot;t-icon&quot; [icon]=&quot;value.icon&quot; /&gt; } {{ value.text }} &lt;/div&gt;
 &lt;/ng-template&gt;
 ```
 
@@ -54357,7 +54424,12 @@ tui-dropdown[data-appearance=&#039;round&#039;] {
 ```html
 &lt;tui-textfield tuiChevron tuiDropdownMobile &gt;
 &lt;input placeholder=&quot;Country&quot; tuiComboBox [(ngModel)]=&quot;country&quot; /&gt;
-&lt;tui-data-list-wrapper *tuiDropdown [items]=&quot;countries | tuiFilterByInput&quot; /&gt;
+&lt;ng-container *tuiDropdown=&quot;let close&quot;&gt;
+&lt;tui-data-list-wrapper [items]=&quot;countries | tuiFilterByInput&quot; /&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Close &lt;/button&gt;
+&lt;/footer&gt;
+&lt;/ng-container&gt;
 &lt;/tui-textfield&gt;
 &lt;tui-textfield tuiChevron tuiDropdownSheet=&quot;Select user&quot; class=&quot;tui-space_vertical-4&quot; [content]=&quot;template&quot; &gt;
 &lt;input placeholder=&quot;Select user&quot; tuiSelect [(ngModel)]=&quot;user&quot; /&gt;
@@ -54368,7 +54440,9 @@ tui-dropdown[data-appearance=&#039;round&#039;] {
 &lt;tui-input-chip *tuiItem /&gt;
 &lt;ng-container *tuiDropdown&gt;
 &lt;tui-data-list-wrapper tuiMultiSelectGroup [itemContent]=&quot;template&quot; [items]=&quot;users | tuiFilterByInput&quot; /&gt;
-&lt;button appearance=&quot;accent&quot; size=&quot;m&quot; tuiButton tuiDropdownButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Done &lt;/button&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
 &lt;/ng-container&gt;
 &lt;/tui-textfield&gt;
 &lt;tui-textfield class=&quot;tui-space_vertical-4&quot;&gt;
@@ -54407,6 +54481,7 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from &#039;@taiga-ui/kit&#039;;
+import {TuiFloatingContainer} from &#039;@taiga-ui/layout&#039;;
 
 interface User {
     readonly url?: string;
@@ -54428,6 +54503,7 @@ interface User {
         TuiDropdownSheet,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputChip,
         TuiInputNumber,
@@ -56517,7 +56593,7 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: directives
 - **Version**: 5.0.0
-Directive to show a hint by hover of an element
+Directive to show a hint over an element, by pointer hover as default trigger Use `TUI_HINT_OFFSET` token to configure bubble and pointing arrow offsets
 
 ### Example
 
@@ -59056,9 +59132,7 @@ To keep the chosen theme between visits and prevent a flash of the wrong theme o
 Dark mode enabled: {{ darkMode() }} &lt;p&gt;
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;darkMode.set(!darkMode())&quot; &gt; Toggle &lt;/button&gt;
 &lt;button tuiButton type=&quot;button&quot; (click)=&quot;darkMode.reset()&quot; &gt; Reset &lt;/button&gt;
-&lt;/p&gt;
-&lt;p&gt;Add to Root to enable:&lt;/p&gt;
-&lt;code&gt;&amp;lt;tui-root [attr.tuiTheme]=&quot;darkMode() ? &#039;dark&#039; : null&quot;&amp;gt;&amp;lt;/tui-root&amp;gt;&lt;/code&gt;
+&lt;/p&gt; Global dark theme is automatic and based on OS settings, unless you provide explicit value into &lt;code&gt;provideTaiga()&lt;/code&gt;
 ```
 
 **TypeScript:**
@@ -59066,8 +59140,7 @@ Dark mode enabled: {{ darkMode() }} &lt;p&gt;
 import {Component, inject} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {WA_LOCAL_STORAGE, WA_WINDOW} from &#039;@ng-web-apis/common&#039;;
-import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TUI_DARK_MODE, TuiButton} from &#039;@taiga-ui/core&#039;;
 
 @Component({
     imports: [TuiButton],
@@ -59077,16 +59150,7 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from &#039;@taiga-ui/core&#
     changeDetection,
 })
 export default class Example {
-    private readonly key = inject(TUI_DARK_MODE_KEY);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly media = inject(WA_WINDOW).matchMedia(&#039;(prefers-color-scheme: dark)&#039;);
-
     protected readonly darkMode = inject(TUI_DARK_MODE);
-
-    protected reset(): void {
-        this.darkMode.set(this.media.matches);
-        this.storage?.removeItem(this.key);
-    }
 }
 ```
 

@@ -163,7 +163,7 @@
 - [Timeline](https://taiga-ui.dev/components/timeline.md) — An interactive timeline component for arranging events on a linear axis with no built-in styles
 - [Title](https://taiga-ui.dev/components/title.md) — A directive for title with optional subtitle
 - [Toast](https://taiga-ui.dev/components/toast.md)
-- [Tooltip](https://taiga-ui.dev/components/tooltip.md) — Component to show icons with a hint by hover
+- [Tooltip](https://taiga-ui.dev/components/tooltip.md) — A help icon component, showing hint bubble on hover
 - [Tree](https://taiga-ui.dev/components/tree.md) — Component to display tree-like data structure
 
 ## Dialog
@@ -188,7 +188,7 @@
 - [Fade](https://taiga-ui.dev/directives/fade.md) — Directive that uses masking to fade out overflown content
 - [Fluid Typography](https://taiga-ui.dev/directives/fluid-typography.md) — A directive that adjusts font size for the text to fit in the container
 - [Highlight](https://taiga-ui.dev/directives/highlight.md) — Directive is used to highlight text in element. You can configure the directive with `TUI_HIGHLIGHT_OPTIONS` token. Allowed options: highlightColor: The default color for the highlight. Use function `tuiHighlightOptionsProvider` to provide new value of this token. Does not work with inline elements
-- [Hint](https://taiga-ui.dev/directives/hint.md) — Directive to show a hint by hover of an element
+- [Hint](https://taiga-ui.dev/directives/hint.md) — Directive to show a hint over an element, by pointer hover as default trigger Use `TUI_HINT_OFFSET` token to configure bubble and pointing arrow offsets
 - [Hint Describe](https://taiga-ui.dev/directives/hint-describe.md) — Directive to show a hint in accessible way upon keyboard focus
 - [Hint Manual](https://taiga-ui.dev/directives/hint-manual.md) — Directive to show a hint manually
 - [Hint Pointer](https://taiga-ui.dev/directives/hint-pointer.md) — A directive to show a hint above the cursor

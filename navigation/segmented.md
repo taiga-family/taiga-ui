@@ -16,7 +16,7 @@ Segmented is used for links and buttons to navigate within the application. It c
 <tui-icon icon="@tui.sun" /> All <tui-badge-notification [size]="size">3</tui-badge-notification>
 <tui-icon icon="@tui.moon" />
 </button>
-<button type="button">Incoming</button>
+<button tuiHint="Hint on segmented button" type="button" > Incoming </button>
 <button type="button">Outgoing</button>
 </tui-segmented> }
 ```
@@ -26,11 +26,11 @@ Segmented is used for links and buttons to navigate within the application. It c
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgeNotification, TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiBadgeNotification, TuiIcon, TuiSegmented],
+    imports: [TuiBadgeNotification, TuiHint, TuiIcon, TuiSegmented],
     templateUrl: './index.html',
     styleUrl: './index.css',
     encapsulation,

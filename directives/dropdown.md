@@ -311,7 +311,12 @@ tui-dropdown[data-appearance='round'] {
 ```html
 <tui-textfield tuiChevron tuiDropdownMobile >
 <input placeholder="Country" tuiComboBox [(ngModel)]="country" />
-<tui-data-list-wrapper *tuiDropdown [items]="countries | tuiFilterByInput" />
+<ng-container *tuiDropdown="let close">
+<tui-data-list-wrapper [items]="countries | tuiFilterByInput" />
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="close()" > Close </button>
+</footer>
+</ng-container>
 </tui-textfield>
 <tui-textfield tuiChevron tuiDropdownSheet="Select user" class="tui-space_vertical-4" [content]="template" >
 <input placeholder="Select user" tuiSelect [(ngModel)]="user" />
@@ -322,7 +327,9 @@ tui-dropdown[data-appearance='round'] {
 <tui-input-chip *tuiItem />
 <ng-container *tuiDropdown>
 <tui-data-list-wrapper tuiMultiSelectGroup [itemContent]="template" [items]="users | tuiFilterByInput" />
-<button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="open.set(false)" > Done </button>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="open.set(false)" > Done </button>
+</footer>
 </ng-container>
 </tui-textfield>
 <tui-textfield class="tui-space_vertical-4">
@@ -361,6 +368,7 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly url?: string;
@@ -382,6 +390,7 @@ interface User {
         TuiDropdownSheet,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputChip,
         TuiInputNumber,

@@ -105,9 +105,7 @@ To keep the chosen theme between visits and prevent a flash of the wrong theme o
 Dark mode enabled: {{ darkMode() }} <p>
 <button tuiButton type="button" (click)="darkMode.set(!darkMode())" > Toggle </button>
 <button tuiButton type="button" (click)="darkMode.reset()" > Reset </button>
-</p>
-<p>Add to Root to enable:</p>
-<code>&lt;tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null"&gt;&lt;/tui-root&gt;</code>
+</p> Global dark theme is automatic and based on OS settings, unless you provide explicit value into <code>provideTaiga()</code>
 ```
 
 **TypeScript:**
@@ -115,8 +113,7 @@ Dark mode enabled: {{ darkMode() }} <p>
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
+import {TUI_DARK_MODE, TuiButton} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiButton],
@@ -126,16 +123,7 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly key = inject(TUI_DARK_MODE_KEY);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
-    private readonly media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
-
     protected readonly darkMode = inject(TUI_DARK_MODE);
-
-    protected reset(): void {
-        this.darkMode.set(this.media.matches);
-        this.storage?.removeItem(this.key);
-    }
 }
 ```
 

@@ -67,7 +67,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -108,7 +109,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 
@@ -149,7 +151,8 @@ export default class Example {
 ```css
 .slider {
     inline-size: 12.5rem;
-    margin-block-end: 1em;
+    margin-block-end: 1rem;
+    color: var(--tui-text-secondary);
 }
 ```
 

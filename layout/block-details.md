@@ -21,7 +21,7 @@ Layout directive for describing details. For example, transaction details
 <span tuiComment>Birthday gift</span>
 <div tuiAccessories>
 <div appearance="neutral" tuiBadge > private </div>
-<div appearance="default" tuiBadge > fast </div>
+<div tuiBadge>fast</div>
 </div>
 <div tuiDetailsStatus>
 <tui-icon icon="@tui.clock" [style.font-size.rem]="1" /> Pending </div>

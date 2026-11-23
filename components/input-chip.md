@@ -414,7 +414,9 @@ You can improve UX on mobile devices in multiple ways, depending on your case.
 <label tuiLabel> Mobile dropdown with writable input <tui-textfield multi tuiChevron tuiDropdownMobile [disabledItemHandler]="disabled" >
 <input placeholder="Type something" tuiInputChip [(ngModel)]="writable" /> @if (items | tuiFilterByInput; as items) { <ng-template let-close tuiDropdown >
 <tui-data-list-wrapper tuiMultiSelectGroup [items]="items" />
-<button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="close()" > Done </button>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="close()" > Done </button>
+</footer>
 </ng-template> } </tui-textfield>
 </label>
 <label tuiLabel> Mobile sheet with options <tui-textfield multi tuiChevron tuiDropdownSheet >
@@ -443,6 +445,7 @@ import {
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/layout';
 
 interface User {
     readonly name: string;
@@ -458,6 +461,7 @@ interface User {
         TuiDropdownMobile,
         TuiDropdownSheet,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,

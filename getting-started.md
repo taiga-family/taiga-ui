@@ -255,18 +255,26 @@ To keep your theme consistent, especially with SSR, add the following script to 
 <html lang="en">
   <head>
     ...
+    <meta
+      content="light dark"
+      name="color-scheme"
+    />
   </head>
   <body>
+    <!-- Make sure Angular SSR considers dark mode critical CSS and inlines it -->
+    <span tuiTheme="dark"></span>
+    <script>
+      try {
+        // Or whatever key you provided to TUI_DARK_MODE_KEY
+        const dark = localStorage.getItem('tuiDark') || `${matchMedia('(prefers-color-scheme: dark)').matches}`;
+
+        if (dark === 'true') {
+          document.body.setAttribute('tuiTheme', 'dark');
+        }
+      } catch {}
+    </script>
     ...
   </body>
-  <script>
-    // Or whatever key you provided to TUI_DARK_MODE_KEY
-    const theme = localStorage?.getItem('tuiDark');
-
-    if (theme === 'true' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.body.setAttribute('tuiTheme', 'dark');
-    }
-  </script>
 </html>
 ```
 
