@@ -473,7 +473,9 @@ export default class Example {
 <input placeholder="Type something" tuiInputChip [(ngModel)]="writable" />
 <ng-template *ngIf="items | tuiFilterByInput as items" let-close tuiTextfieldDropdown >
 <tui-data-list-wrapper new tuiMultiSelectGroup [items]="items" />
-<button appearance="accent" size="m" tuiButton tuiDropdownButton type="button" (click)="close()" > Done </button>
+<footer tuiFloatingContainer>
+<button tuiButton type="button" (click)="close()" > Done </button>
+</footer>
 </ng-template>
 </tui-textfield>
 </label>
@@ -502,6 +504,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
@@ -521,6 +524,7 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,

@@ -23522,7 +23522,9 @@ export default class Example {
 &lt;input placeholder=&quot;Type something&quot; tuiInputChip [(ngModel)]=&quot;writable&quot; /&gt;
 &lt;ng-template *ngIf=&quot;items | tuiFilterByInput as items&quot; let-close tuiTextfieldDropdown &gt;
 &lt;tui-data-list-wrapper new tuiMultiSelectGroup [items]=&quot;items&quot; /&gt;
-&lt;button appearance=&quot;accent&quot; size=&quot;m&quot; tuiButton tuiDropdownButton type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Done &lt;/button&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;close()&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
 &lt;/ng-template&gt;
 &lt;/tui-textfield&gt;
 &lt;/label&gt;
@@ -23551,6 +23553,7 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputChip,
     TuiMultiSelect,
 } from &#039;@taiga-ui/kit&#039;;
@@ -23570,6 +23573,7 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
@@ -57400,7 +57404,9 @@ tui-dropdown[data-appearance=&#039;round&#039;] {
 &lt;/tui-textfield&gt;
 &lt;tui-multi-select tuiDropdownMobile class=&quot;tui-space_vertical-4&quot; [stringify]=&quot;stringify&quot; [tuiDropdownOpen]=&quot;open()&quot; [tuiTextfieldCleaner]=&quot;true&quot; [tuiTextfieldLabelOutside]=&quot;true&quot; [(ngModel)]=&quot;selected&quot; (tuiDropdownOpenChange)=&quot;open.set($event)&quot; &gt; Pick more users &lt;ng-container *tuiDataList&gt;
 &lt;tui-data-list-wrapper tuiMultiSelectGroup [itemContent]=&quot;template&quot; [items]=&quot;users | tuiFilterByInput&quot; /&gt;
-&lt;button appearance=&quot;accent&quot; size=&quot;m&quot; tuiButton tuiDropdownButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Done &lt;/button&gt;
+&lt;footer tuiFloatingContainer&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;open.set(false)&quot; &gt; Done &lt;/button&gt;
+&lt;/footer&gt;
 &lt;/ng-container&gt;
 &lt;/tui-multi-select&gt;
 &lt;tui-textfield class=&quot;tui-space_vertical-4&quot;&gt;
@@ -57436,6 +57442,7 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiFloatingContainer,
     TuiInputNumber,
     TuiSelect,
 } from &#039;@taiga-ui/kit&#039;;
@@ -57469,6 +57476,7 @@ interface User {
         TuiDropdownMobile,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiFloatingContainer,
         TuiInputNumber,
         TuiMultiSelectModule,
         TuiSelect,
