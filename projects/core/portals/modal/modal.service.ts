@@ -23,6 +23,7 @@ export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
 
         el.closest('tui-root')?.firstElementChild?.setAttribute('inert', '');
         ref.instance.component.set(new PolymorpheusComponent(this.content));
+        ref.changeDetectorRef.detectChanges();
 
         return () => {
             ref.instance.component.set(null);
