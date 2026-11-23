@@ -3,6 +3,7 @@
 @scroll-width: 0.75rem;
 @scroll-width-large: 0.875rem;
 @scroll-min-size: 1.25rem;
+@scroll-inset: 0.25rem;
 
 @property --t-scroll-start {
     syntax: '<number>';
@@ -76,7 +77,6 @@
     pointer-events: none;
     overflow: hidden;
     color: var(--tui-text-primary);
-    container-type: size;
     animation-name: tuiScrollbarX, tuiScrollbarY;
     animation-timeline: --t-scrollbar-x, --t-scrollbar-y;
 
@@ -100,9 +100,11 @@
 .t-bar {
     position: absolute;
     inset-inline-end: 0;
-    inset-block: 0.25rem;
+    inset-block: @scroll-inset;
     inline-size: @scroll-width-large;
     pointer-events: var(--t-events-y);
+    // WebKit can resolve the anchored controls' query size to zero.
+    container-type: size;
 
     &.tui-enter,
     &.tui-leave {
@@ -146,8 +148,8 @@
     animation-timing-function: linear;
     animation-timeline: --t-scrollbar-y;
     animation-range:
-        0 calc(100% + 100cqb),
-        calc(0% - 100cqb) 100%;
+        0 calc(100% + 100cqb + 2 * @scroll-inset),
+        calc(0% - 100cqb - 2 * @scroll-inset) 100%;
     animation-fill-mode: both;
 
     --t-opacity: 0;
