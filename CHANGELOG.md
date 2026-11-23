@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.34.0](https://github.com/taiga-family/taiga-ui/compare/v5.33.0...v5.34.0) (2026-11-23)
+
+### 🚀 Features
+
+- **addon-mobile:** `DropdownMobile` improve `FloatingContainer` DX
+  ([#15465](https://github.com/taiga-family/taiga-ui/issues/15465))
+  ([add0be1](https://github.com/taiga-family/taiga-ui/commit/add0be1b9de2bfa30e71a1ebbdc9f838a5eaa07d))
+- **addon-mobile:** expose liquid glass app bar height as CSS variable
+  ([#15496](https://github.com/taiga-family/taiga-ui/issues/15496))
+  ([9f20921](https://github.com/taiga-family/taiga-ui/commit/9f2092112e64c5bacecda1fbde9dc36a0ef921a3))
+- **core:** `Hint` make arrow offset configurable ([#15490](https://github.com/taiga-family/taiga-ui/issues/15490))
+  ([5eeb9c8](https://github.com/taiga-family/taiga-ui/commit/5eeb9c8949f4ac3e5180eec4217ddf5006045072))
+- **core:** `Popups` handle theme color automatically for modals
+  ([#15450](https://github.com/taiga-family/taiga-ui/issues/15450))
+  ([ab285cd](https://github.com/taiga-family/taiga-ui/commit/ab285cd4dbd29341eacf019a8dd03231bccd6b2b))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `Example` fullscreen padding no longer leaks into example content
+  ([#15487](https://github.com/taiga-family/taiga-ui/issues/15487))
+  ([5a1a2e1](https://github.com/taiga-family/taiga-ui/commit/5a1a2e114dfbfab7b95f20259e8517bdfd73e18f))
+- **addon-table:** `Reorder` hide action after mouse focus
+  ([#15467](https://github.com/taiga-family/taiga-ui/issues/15467))
+  ([e63175e](https://github.com/taiga-family/taiga-ui/commit/e63175ed57584e3876d32f229a983d10286c0777))
+- **addon-table:** `TablePagination` improve text contrast for a11y
+  ([#15484](https://github.com/taiga-family/taiga-ui/issues/15484))
+  ([73a069b](https://github.com/taiga-family/taiga-ui/commit/73a069b5fc0e1a7ac54fb57b0b40ecf72ad4452d))
+- **addon-table:** clamp `TablePagination` to the last available page
+  ([#15454](https://github.com/taiga-family/taiga-ui/issues/15454))
+  ([3aa3a4f](https://github.com/taiga-family/taiga-ui/commit/3aa3a4f6f7ef140a202ef699e630f01fe5cdc9e7))
+- **core:** `Form` increase min width inside fieldset ([#15497](https://github.com/taiga-family/taiga-ui/issues/15497))
+  ([e8f907c](https://github.com/taiga-family/taiga-ui/commit/e8f907ca998bb51fa595b5ce185692e40b959527))
+- **core:** improve action text contrast for a11y ([#15482](https://github.com/taiga-family/taiga-ui/issues/15482))
+  ([42cb320](https://github.com/taiga-family/taiga-ui/commit/42cb320925ec5cad294cd36fbcb659c33ca0adae))
+- **core:** improve dark mode action color contrast for a11y
+  ([#15473](https://github.com/taiga-family/taiga-ui/issues/15473))
+  ([0ec89de](https://github.com/taiga-family/taiga-ui/commit/0ec89dec40190e4d70acaffa02098ee99af805bb))
+- **core:** improve negative text contrast for a11y ([#15461](https://github.com/taiga-family/taiga-ui/issues/15461))
+  ([9727970](https://github.com/taiga-family/taiga-ui/commit/97279708d47aa54cf1db334a7476c5b9ac9f16e8))
+- **core:** respect local dir in RTL detection ([#15439](https://github.com/taiga-family/taiga-ui/issues/15439))
+  ([78be653](https://github.com/taiga-family/taiga-ui/commit/78be653a3ba4676400c04ad09905377530e72b9a))
+- **kit:** `File` improve size contrast for a11y ([#15485](https://github.com/taiga-family/taiga-ui/issues/15485))
+  ([3358df0](https://github.com/taiga-family/taiga-ui/commit/3358df0f0d2aee96bd5f05361f0a44c5e0a118f6))
+- **kit:** `Pagination` honor the `focusable` input ([#15415](https://github.com/taiga-family/taiga-ui/issues/15415))
+  ([ec856a4](https://github.com/taiga-family/taiga-ui/commit/ec856a4bf61261b14e17c9c9ef90dd4380289e14))
+- **kit:** `Toast` prevents excessive offsets on devices with large safe areas
+  ([#15483](https://github.com/taiga-family/taiga-ui/issues/15483))
+  ([d657069](https://github.com/taiga-family/taiga-ui/commit/d65706913c4c6dc0a5ecc16e9484683c8d3d78e8))
+- **kit:** ignore empty file lists in `InputFiles` ([#15431](https://github.com/taiga-family/taiga-ui/issues/15431))
+  ([eac5cd2](https://github.com/taiga-family/taiga-ui/commit/eac5cd26d649410f0a0385e9709e8f6bf6f8e572))
+- **kit:** preserve selection anchors with hints ([#15233](https://github.com/taiga-family/taiga-ui/issues/15233))
+  ([7ca29e1](https://github.com/taiga-family/taiga-ui/commit/7ca29e1ca63a643b869289220d0e80e2246683b7))
+- **kit:** select zero and false on Enter in `ComboBox`
+  ([#15436](https://github.com/taiga-family/taiga-ui/issues/15436))
+  ([87090b5](https://github.com/taiga-family/taiga-ui/commit/87090b55bcfa2f8eea64cc8b5d978b2d9fe00ea7))
+- **layout:** `BlockStatus` do not resize images inside nested components
+  ([#15481](https://github.com/taiga-family/taiga-ui/issues/15481))
+  ([a0c685e](https://github.com/taiga-family/taiga-ui/commit/a0c685eba986465bfdba6478e12aa93b60496b56))
+- **layout:** `FloatingContainer` has unexpected scroll inside fullscreen dialog
+  ([#15460](https://github.com/taiga-family/taiga-ui/issues/15460))
+  ([36e8a3f](https://github.com/taiga-family/taiga-ui/commit/36e8a3f02acb71a35ace7a96b6c79bc8ad9934b2))
+
 ## [5.33.0](https://github.com/taiga-family/taiga-ui/compare/v5.32.0...v5.33.0) (2026-11-16)
 
 ### 🚀 Features
