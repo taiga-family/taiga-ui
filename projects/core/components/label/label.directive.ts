@@ -1,10 +1,12 @@
 import {
+    booleanAttribute,
     ChangeDetectionStrategy,
     Component,
     contentChild,
     Directive,
     forwardRef,
     inject,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
@@ -30,6 +32,7 @@ class Styles {}
     selector: 'label[tuiLabel]',
     host: {
         'data-tui-version': TUI_VERSION,
+        '[attr.data-label-reverse]': 'tuiLabelReverse() ? "" : null',
         '[attr.data-orientation]': 'textfield() ? "vertical" : "horizontal"',
         '[attr.for]': 'el.htmlFor || parent?.id',
     },
@@ -42,4 +45,6 @@ export class TuiLabel {
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},
     );
+
+    public readonly tuiLabelReverse = input(false, {transform: booleanAttribute});
 }
