@@ -14,5 +14,7 @@ export class TuiCalendarEO extends TuiBaseEO {
     /**
      * Returns an Element Object for the calendar sheet scoped to this calendar.
      */
-    public readonly calendarSheet = new TuiCalendarSheetEO(this.root);
+    public readonly calendarSheet = new TuiCalendarSheetEO(this.root, {
+        index: this.params.index,
+    });
 }

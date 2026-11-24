@@ -43,6 +43,10 @@ export class TuiBaseEO {
         return this.params.index ?? defaultOptions.index;
     }
 
+    protected get page(): Page {
+        return 'page' in this.root ? this.root.page() : this.root;
+    }
+
     protected get customSelector(): string {
         return this.params.customSelector ?? defaultOptions.customSelector;
     }

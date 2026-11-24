@@ -17,7 +17,7 @@ export class TuiInputMonthEO extends withClickable(TuiTextfieldEO) {
     public override readonly input = this.host.locator(TUI_INPUT_MONTH_LOCATORS.INPUT);
 
     /** Month calendar Element Object attached to the field. */
-    public readonly calendar = new TuiCalendarMonthEO(this.root);
+    public readonly calendar = new TuiCalendarMonthEO(this.page);
 
     /** Native month picker input. */
     public readonly nativePicker = this.host.locator(
