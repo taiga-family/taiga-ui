@@ -1,3 +1,4 @@
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,6 +6,7 @@ import {
     Directive,
     forwardRef,
     inject,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
@@ -28,8 +30,9 @@ class TuiLabelStyles {}
     selector: 'label[tuiLabel]',
     host: {
         tuiLabelV: TUI_VERSION,
-        '[attr.for]': 'el.htmlFor || parent?.id',
+        '[attr.data-label-reverse]': 'tuiLabelReverse ? "" : null',
         '[attr.data-orientation]': 'textfield ? "vertical" : "horizontal"',
+        '[attr.for]': 'el.htmlFor || parent?.id',
     },
 })
 export class TuiLabel {
@@ -42,4 +45,7 @@ export class TuiLabel {
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},
     );
+
+    @Input({transform: coerceBooleanProperty})
+    public tuiLabelReverse = false;
 }

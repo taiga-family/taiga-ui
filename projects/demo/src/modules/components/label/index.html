@@ -6,6 +6,12 @@
     <ng-template pageTab>
         Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 
+        <p>
+            Add
+            <code>tuiLabelReverse</code>
+            to move the label text before a checkbox, radio button or switch.
+        </p>
+
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"

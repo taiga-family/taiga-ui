@@ -25,6 +25,16 @@
         flex-direction: row;
         inline-size: fit-content;
         font: var(--tui-font-text-m);
+
+        &[data-label-reverse] > input:is([type='checkbox'], [type='radio']) {
+            order: 1;
+            margin-inline-start: 0.5rem;
+            margin-inline-end: 0;
+
+            &[data-size='s'] {
+                margin-inline-start: 0.25rem;
+            }
+        }
     }
 
     // TODO: Remove after legacy inputs are dropped
