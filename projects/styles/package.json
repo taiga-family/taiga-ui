@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/styles",
-    "version": "5.34.0",
+    "version": "5.34.1",
     "description": "Framework-agnostic package with styles for Taiga UI",
     "repository": {
         "type": "git",
