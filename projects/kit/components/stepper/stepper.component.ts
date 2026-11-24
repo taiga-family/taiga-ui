@@ -108,7 +108,7 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const {clientHeight, clientWidth, offsetTop, offsetLeft, scrollWidth} = this.el;
+        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
 
         const {
             offsetHeight,
@@ -118,14 +118,15 @@ export class TuiStepperComponent implements OnChanges {
         } = step;
 
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
-        // `offsetLeft` is measured from the left edge while the scroll position
-        // is measured from the start edge, which is the right edge in RTL
+        // `offsetLeft` is measured from the left edge of the host while the scroll
+        // position is measured from the start edge, which is the right edge in RTL.
+        // The step can sit left of the host edge (negative offset) when the content
+        // overflows, so the distance from the start edge is derived from
+        // `clientWidth`, not `scrollWidth`.
         const center = stepOffsetLeft - offsetLeft + offsetWidth / 2;
         const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
         const left =
-            direction === -1
-                ? scrollWidth - center - clientWidth / 2
-                : center - clientWidth / 2;
+            direction === -1 ? clientWidth / 2 - center : center - clientWidth / 2;
 
         this.el.scrollTo?.({
             left: direction * Math.max(0, left),

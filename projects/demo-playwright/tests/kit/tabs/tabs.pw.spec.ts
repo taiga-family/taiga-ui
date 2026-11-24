@@ -178,9 +178,12 @@ describe('Tabs', () => {
             const tabs = example.locator('tui-tabs');
 
             await example.scrollIntoViewIfNeeded();
-            // Narrow the example so the tabs overflow horizontally
+            // Narrow the example so the tabs overflow horizontally.
+            // On mobile viewports the demo forces `.t-demo {min-inline-size: 100% !important}`,
+            // so the width alone would be ignored — override the minimum as well.
             await example.evaluate((element) => {
-                element.style.width = '220px';
+                element.style.setProperty('width', '220px');
+                element.style.setProperty('min-width', '220px', 'important');
             });
             await expect
                 .poll(async () =>

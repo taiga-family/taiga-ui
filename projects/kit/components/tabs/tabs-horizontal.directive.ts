@@ -62,12 +62,15 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             }
 
             const {offsetLeft, offsetWidth} = element;
-            // `offsetLeft` is measured from the left edge while the scroll position
-            // is measured from the start edge, which is the right edge in RTL
+            // `offsetLeft` is measured from the left edge of the host while the scroll
+            // position is measured from the start edge, which is the right edge in RTL.
+            // The tab can sit left of the host edge (negative `offsetLeft`) when the
+            // content overflows, so the distance from the start edge is derived from
+            // `clientWidth`, not `scrollWidth`.
             const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
             const start =
                 direction === -1
-                    ? this.el.scrollWidth - offsetLeft - offsetWidth
+                    ? this.el.clientWidth - offsetLeft - offsetWidth
                     : offsetLeft;
 
             const scrollLeft = direction * this.el.scrollLeft;
@@ -76,9 +79,9 @@ export class TuiTabsHorizontal implements AfterViewChecked {
                 this.el.scrollLeft = direction * start;
             }
 
-            if (start + offsetWidth > scrollLeft + this.el.offsetWidth) {
+            if (start + offsetWidth > scrollLeft + this.el.clientWidth) {
                 this.el.scrollLeft =
-                    direction * (start + offsetWidth - this.el.offsetWidth);
+                    direction * (start + offsetWidth - this.el.clientWidth);
             }
         });
     }

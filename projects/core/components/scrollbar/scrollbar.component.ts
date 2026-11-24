@@ -67,16 +67,17 @@ export class TuiScrollbar {
 
         const {offsetHeight, offsetWidth} = detail;
         const {offsetTop, offsetLeft} = tuiGetElementOffset(this.scrollRef, detail);
-        const {clientHeight, clientWidth, scrollWidth} = this.scrollRef;
+        const {clientHeight, clientWidth} = this.scrollRef;
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
-        // `offsetLeft` is measured from the left edge while the scroll position
-        // is measured from the start edge, which is the right edge in RTL
+        // `offsetLeft` is measured from the left edge of the host while the scroll
+        // position is measured from the start edge, which is the right edge in RTL.
+        // The target can sit left of the host edge (negative `offsetLeft`) when the
+        // content overflows, so the distance from the start edge is derived from
+        // `clientWidth`, not `scrollWidth`.
         const center = offsetLeft + offsetWidth / 2;
         const direction = this.scrollRef.matches(TUI_RTL_SELECTOR) ? -1 : 1;
         const scrollLeft =
-            direction === -1
-                ? scrollWidth - center - clientWidth / 2
-                : center - clientWidth / 2;
+            direction === -1 ? clientWidth / 2 - center : center - clientWidth / 2;
 
         this.scrollRef.scrollTo?.(direction * scrollLeft, scrollTop);
     }
