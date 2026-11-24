@@ -4,13 +4,9 @@ import {
     WA_MUTATION_OBSERVER_INIT,
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {
-    tuiGetNormalizedScrollLeft,
-    tuiInjectElement,
-    tuiIsRtl,
-    tuiToNativeScrollLeft,
-} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiTabsDirective} from './tabs.directive';
@@ -68,22 +64,21 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             const {offsetLeft, offsetWidth} = element;
             // `offsetLeft` is measured from the left edge while the scroll position
             // is measured from the start edge, which is the right edge in RTL
-            const start = tuiIsRtl(this.el)
-                ? this.el.clientWidth - offsetLeft - offsetWidth
-                : offsetLeft;
+            const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
+            const start =
+                direction === -1
+                    ? this.el.scrollWidth - offsetLeft - offsetWidth
+                    : offsetLeft;
 
-            if (start < tuiGetNormalizedScrollLeft(this.el)) {
-                this.el.scrollLeft = tuiToNativeScrollLeft(this.el, start);
+            const scrollLeft = direction * this.el.scrollLeft;
+
+            if (start < scrollLeft) {
+                this.el.scrollLeft = direction * start;
             }
 
-            if (
-                start + offsetWidth >
-                tuiGetNormalizedScrollLeft(this.el) + this.el.offsetWidth
-            ) {
-                this.el.scrollLeft = tuiToNativeScrollLeft(
-                    this.el,
-                    start + offsetWidth - this.el.offsetWidth,
-                );
+            if (start + offsetWidth > scrollLeft + this.el.offsetWidth) {
+                this.el.scrollLeft =
+                    direction * (start + offsetWidth - this.el.offsetWidth);
             }
         });
     }

@@ -1,10 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import {
-    tuiGetElementOffset,
-    tuiInjectElement,
-    tuiIsRtl,
-    tuiToNativeScrollLeft,
-} from '@taiga-ui/cdk/utils/dom';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
+import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ANCHOR_SUPPORT} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
@@ -71,18 +67,17 @@ export class TuiScrollbar {
 
         const {offsetHeight, offsetWidth} = detail;
         const {offsetTop, offsetLeft} = tuiGetElementOffset(this.scrollRef, detail);
-        const {clientHeight, clientWidth} = this.scrollRef;
+        const {clientHeight, clientWidth, scrollWidth} = this.scrollRef;
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
         // `offsetLeft` is measured from the left edge while the scroll position
         // is measured from the start edge, which is the right edge in RTL
         const center = offsetLeft + offsetWidth / 2;
-        const scrollLeft = tuiIsRtl(this.scrollRef)
-            ? clientWidth / 2 - center
-            : center - clientWidth / 2;
+        const direction = this.scrollRef.matches(TUI_RTL_SELECTOR) ? -1 : 1;
+        const scrollLeft =
+            direction === -1
+                ? scrollWidth - center - clientWidth / 2
+                : center - clientWidth / 2;
 
-        this.scrollRef.scrollTo?.(
-            tuiToNativeScrollLeft(this.scrollRef, scrollLeft),
-            scrollTop,
-        );
+        this.scrollRef.scrollTo?.(direction * scrollLeft, scrollTop);
     }
 }

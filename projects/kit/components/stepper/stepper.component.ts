@@ -11,12 +11,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
-import {
-    tuiInjectElement,
-    tuiIsElement,
-    tuiIsRtl,
-    tuiToNativeScrollLeft,
-} from '@taiga-ui/cdk/utils/dom';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
 
@@ -112,7 +108,7 @@ export class TuiStepperComponent implements OnChanges {
             return;
         }
 
-        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
+        const {clientHeight, clientWidth, offsetTop, offsetLeft, scrollWidth} = this.el;
 
         const {
             offsetHeight,
@@ -125,12 +121,14 @@ export class TuiStepperComponent implements OnChanges {
         // `offsetLeft` is measured from the left edge while the scroll position
         // is measured from the start edge, which is the right edge in RTL
         const center = stepOffsetLeft - offsetLeft + offsetWidth / 2;
-        const left = tuiIsRtl(this.el)
-            ? clientWidth / 2 - center
-            : center - clientWidth / 2;
+        const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
+        const left =
+            direction === -1
+                ? scrollWidth - center - clientWidth / 2
+                : center - clientWidth / 2;
 
         this.el.scrollTo?.({
-            left: tuiToNativeScrollLeft(this.el, Math.max(0, left)),
+            left: direction * Math.max(0, left),
             top: Math.max(0, top),
         });
     }

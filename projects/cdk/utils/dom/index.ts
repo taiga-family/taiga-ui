@@ -9,7 +9,6 @@ export * from './get-element-offset';
 export * from './get-selected-text';
 export * from './inject-element';
 export * from './is-element-editable';
-export * from './normalized-scroll-left';
 export * from './point-to-client-rect';
 export * from './value';
 export * from './window-size';
