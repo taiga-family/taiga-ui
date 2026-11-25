@@ -17,6 +17,7 @@ import {
     tap,
 } from 'rxjs';
 
+import {TuiHintMobile} from './hint-mobile.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 const MOBILE_HIDE_DELAY_MS = 100;
@@ -24,9 +25,10 @@ const MOBILE_HIDE_DELAY_MS = 100;
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
-    host: {'(click)': 'onClick()'},
+    hostDirectives: [TuiHintMobile],
 })
 export class TuiHintHover extends TuiDriver {
+    private readonly parent = inject(TuiHintHover, {optional: true, skipSelf: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
@@ -43,6 +45,7 @@ export class TuiHintHover extends TuiDriver {
             repeat(),
         ),
         this.hovered$.pipe(
+            filter(() => !this.isMobile || !this.el.matches('a,button')),
             switchMap((show) =>
                 this.isMobile
                     ? of(show).pipe(
@@ -67,11 +70,6 @@ export class TuiHintHover extends TuiDriver {
         }),
     );
 
-    private readonly parent = inject(TuiHintHover, {
-        optional: true,
-        skipSelf: true,
-    });
-
     protected readonly el = tuiInjectElement();
 
     public readonly showDelay = input(this.options.showDelay, {
@@ -94,17 +92,8 @@ export class TuiHintHover extends TuiDriver {
         this.parent?.toggle(visible);
     }
 
+    /** @deprecated TODO remove in v6 */
     public close(): void {
         this.toggle$.next(false);
-    }
-
-    /**
-     * Synthesized `mouseenter` is not fired again until another element is tapped, so showing on mobile
-     * cannot rely on it.
-     */
-    protected onClick(): void {
-        if (this.isMobile) {
-            this.toggle();
-        }
     }
 }

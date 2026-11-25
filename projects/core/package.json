@@ -42,7 +42,7 @@
         "@ng-web-apis/mutation-observer": "^5.4.1",
         "@ng-web-apis/platform": "^5.4.1",
         "@taiga-ui/cdk": "5.34.1",
-        "@taiga-ui/event-plugins": "^5.1.0",
+        "@taiga-ui/event-plugins": "^5.2.0",
         "@taiga-ui/i18n": "5.34.1",
         "@taiga-ui/polymorpheus": "^5.0.1",
         "@taiga-ui/styles": "5.34.1",

@@ -9,6 +9,7 @@ export * from './hint-driver.directive';
 export * from './hint-host.directive';
 export * from './hint-hover.directive';
 export * from './hint-manual.directive';
+export * from './hint-mobile.directive';
 export * from './hint-options.directive';
 export * from './hint-overflow.directive';
 export * from './hint-pointer.directive';
