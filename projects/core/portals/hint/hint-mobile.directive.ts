@@ -1,7 +1,7 @@
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {EventManager} from '@angular/platform-browser';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiHintHover} from './hint-hover.directive';
 
