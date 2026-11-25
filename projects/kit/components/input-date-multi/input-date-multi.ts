@@ -14,7 +14,8 @@ import {
 
 import {TuiInputDateMultiDirective} from './input-date-multi.directive';
 
-// Explicit imports keep the published tuple statically analyzable by Angular.
+// TODO: restore `...TuiInputChip` after updating to Angular 21+
+// https://github.com/angular/angular/issues/65686
 export const TuiInputDateMulti = [
     TuiInputDateMultiDirective,
     TuiCalendar,
