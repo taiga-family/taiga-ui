@@ -27,4 +27,34 @@ test.describe('Pagination', () => {
 
         await expect(page.locator('#after-pagination')).toBeFocused();
     });
+
+    test('disables both arrows when disabled', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Pagination}/API?disabled=true&index=1&length=3`);
+
+        const {demo} = new TuiDocumentationPagePO(page);
+        const pagination = demo.locator('tui-pagination');
+        const arrows = pagination.locator('button[tuiIconButton]');
+
+        await expect(arrows).toHaveCount(2);
+        await expect(arrows.first()).toBeDisabled();
+        await expect(arrows.last()).toBeDisabled();
+        await expect(
+            pagination.locator('[automation-id="tui-pagination__element"][tabindex="0"]'),
+        ).toHaveText('2');
+    });
+
+    test('disables both arrows when length is zero', async ({page}) => {
+        await tuiGoto(page, `${DemoRoute.Pagination}/API?length=0`);
+
+        const {demo} = new TuiDocumentationPagePO(page);
+        const pagination = demo.locator('tui-pagination');
+        const arrows = pagination.locator('button[tuiIconButton]');
+
+        await expect(arrows).toHaveCount(2);
+        await expect(arrows.first()).toBeDisabled();
+        await expect(arrows.last()).toBeDisabled();
+        await expect(
+            pagination.locator('[automation-id="tui-pagination__element"]'),
+        ).toHaveCount(0);
+    });
 });
