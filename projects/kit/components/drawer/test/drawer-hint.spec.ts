@@ -108,6 +108,10 @@ describe('Drawer with a hint and a confirmation dialog', () => {
         );
 
         trigger.focus();
+        trigger.dispatchEvent(new Event('longtap'));
+        tick(0);
+        fixture.detectChanges();
+
         trigger.click();
         fixture.detectChanges();
         tick(0);

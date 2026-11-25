@@ -30,7 +30,7 @@ const MOBILE_HIDE_DELAY_MS = 100;
 export class TuiHintHover extends TuiDriver {
     private readonly parent = inject(TuiHintHover, {optional: true, skipSelf: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly hovered$ = inject(TuiHoveredService);
+    private readonly hovered$ = inject(TuiHoveredService).pipe(filter(() => this.click));
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
@@ -45,7 +45,6 @@ export class TuiHintHover extends TuiDriver {
             repeat(),
         ),
         this.hovered$.pipe(
-            filter(() => !this.isMobile || !this.el.matches('a,button')),
             switchMap((show) =>
                 this.isMobile
                     ? of(show).pipe(
@@ -71,6 +70,7 @@ export class TuiHintHover extends TuiDriver {
     );
 
     protected readonly el = tuiInjectElement();
+    protected readonly click = !this.isMobile || !this.el.matches('a,button');
 
     public readonly showDelay = input(this.options.showDelay, {
         alias: 'tuiHintShowDelay',
@@ -91,7 +91,7 @@ export class TuiHintHover extends TuiDriver {
                 // @ts-ignore
                 inject(EventManager).addEventListener(
                     this.el,
-                    this.el.matches('a,button') ? 'longtap' : 'click',
+                    this.click ? 'click' : 'longtap',
                     () => this.toggle(),
                 ),
             );
