@@ -11,3 +11,7 @@
 p {
     white-space: nowrap;
 }
+
+button {
+    margin-block: 0.75rem;
+}

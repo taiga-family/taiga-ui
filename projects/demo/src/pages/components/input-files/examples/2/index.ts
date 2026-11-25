@@ -16,6 +16,7 @@ import {map} from 'rxjs';
 @Component({
     imports: [AsyncPipe, ReactiveFormsModule, TuiError, TuiFiles],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

@@ -66,7 +66,7 @@
             <ng-template #description>
                 @switch ($index) {
                     @case (0) {
-                        <p class="tui-space_top-0">
+                        <p class="details">
                             The first step is to choose the size of
                             <code>
                                 metadata
@@ -111,7 +111,7 @@
                             sets.
                         </p>
 
-                        <p class="tui-space_bottom-0">
+                        <p class="note">
                             Read in-depth
                             <a
                                 href="https://github.com/catamphetamine/libphonenumber-js?tab=readme-ov-file#min-vs-max-vs-mobile-vs-core"
@@ -128,7 +128,7 @@
                         <code>countries</code>
                         allows you to choose which countries user can select from the dropdown.
 
-                        <p class="tui-space_top-0">
+                        <p class="details">
                             You can even pick all possible countries by built-in utility
                             <code>getCountries</code>
                             from
@@ -138,7 +138,7 @@
 
                         <div
                             tuiNotification
-                            class="tui-space_top-4"
+                            class="notice"
                         >
                             <strong>Note:</strong>
                             Importing utilities directly from the root of
@@ -155,7 +155,7 @@
                             and provide the required metadata explicitly to the utility functions.
                         </div>
 
-                        <p class="tui-space_bottom-0">
+                        <p class="note">
                             Use
                             <code>TuiSortCountriesPipe</code>
                             to sort countries according to your current language.

@@ -8,6 +8,7 @@ import {TuiBadge, TuiSensitive, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiBadge, TuiButton, TuiLabel, TuiSensitive, TuiSwitch],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

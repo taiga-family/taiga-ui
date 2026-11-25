@@ -20,6 +20,7 @@ const texts = computed(() =>
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiInputCardGroup, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
     providers: [
         {

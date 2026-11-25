@@ -4,9 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiLink} from '@taiga-ui/core';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
-    imports: [RouterLink, TuiLink],
+    imports: [RouterLink, TuiLink, TuiList],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

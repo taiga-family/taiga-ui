@@ -3,3 +3,7 @@
     inline-size: 25rem;
     color: #bc71c9;
 }
+
+.secondary-chart {
+    margin-block-start: 2.5rem;
+}

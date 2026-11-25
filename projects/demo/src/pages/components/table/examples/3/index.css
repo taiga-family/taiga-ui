@@ -33,3 +33,7 @@
 .scrollbar {
     max-block-size: 18.75rem;
 }
+
+tui-icon {
+    margin-inline-end: 0.75rem;
+}

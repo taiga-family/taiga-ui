@@ -21,3 +21,7 @@
 .t-loader {
     inline-size: 4rem;
 }
+
+[tuiButton] {
+    margin-block-end: 1rem;
+}

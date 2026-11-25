@@ -16,6 +16,7 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
         TuiObscured,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
 })
 export default class PageComponent {

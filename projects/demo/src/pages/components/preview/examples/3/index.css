@@ -2,3 +2,7 @@
     inline-size: 80%;
     block-size: 80%;
 }
+
+[tuiButton] {
+    margin-block-end: 1rem;
+}

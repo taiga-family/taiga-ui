@@ -25,7 +25,6 @@
 <tui-textfield
     tuiChevron
     tuiDropdownSheet="Select user"
-    class="tui-space_vertical-4"
     [content]="template"
 >
     <input
@@ -44,7 +43,7 @@
     multi
     tuiChevron
     tuiDropdownMobile
-    class="tui-space_vertical-4"
+    class="field"
     [open]="open()"
     [stringify]="stringify"
     (openChange)="open.set($event)"
@@ -75,7 +74,7 @@
     </ng-container>
 </tui-textfield>
 
-<tui-textfield class="tui-space_vertical-4">
+<tui-textfield class="field">
     <label tuiLabel>Sum</label>
     <input
         prefix="$"

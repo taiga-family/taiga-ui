@@ -8,6 +8,7 @@ import {TuiFloatingContainer} from '@taiga-ui/layout';
 @Component({
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

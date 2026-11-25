@@ -8,6 +8,7 @@ import {TuiButton, TuiInput} from '@taiga-ui/core';
 @Component({
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiInput],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

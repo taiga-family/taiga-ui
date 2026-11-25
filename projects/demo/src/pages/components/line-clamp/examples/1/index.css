@@ -36,3 +36,8 @@
         padding: 0 1rem;
     }
 }
+
+.preview,
+[tuiNotification] {
+    margin-block-end: 1rem;
+}

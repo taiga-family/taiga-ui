@@ -8,6 +8,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

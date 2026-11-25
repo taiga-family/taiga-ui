@@ -30,6 +30,7 @@ import {getCountries} from 'libphonenumber-js';
         TuiTooltip,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection,
     providers: [
         tuiInputPhoneInternationalOptionsProvider({

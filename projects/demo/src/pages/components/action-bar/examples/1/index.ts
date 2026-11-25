@@ -27,6 +27,7 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
         TuiPopup,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

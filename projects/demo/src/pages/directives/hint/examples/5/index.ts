@@ -16,6 +16,7 @@ import {
     TuiStringifyContentPipe,
     TuiTooltip,
 } from '@taiga-ui/kit';
+import {TuiList} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -26,12 +27,14 @@ import {
         TuiHint,
         TuiIcon,
         TuiLink,
+        TuiList,
         TuiSelect,
         TuiStringifyContentPipe,
         TuiTextfield,
         TuiTooltip,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

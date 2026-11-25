@@ -7,6 +7,7 @@ import {TuiPager} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiPager],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })

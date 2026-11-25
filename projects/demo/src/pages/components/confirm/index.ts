@@ -4,10 +4,11 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDialogService, TuiNotificationService} from '@taiga-ui/core';
 import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
+import {TuiList} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiButton, TuiDemo],
+    imports: [TuiButton, TuiDemo, TuiList],
     templateUrl: './index.html',
     changeDetection,
 })

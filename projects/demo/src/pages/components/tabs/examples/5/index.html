@@ -13,7 +13,6 @@
             {{ item }}
             <tui-icon
                 icon="@tui.x"
-                class="tui-space_left-2"
                 [style.font-size.rem]="1"
                 (click.stop)="remove(item)"
             />
@@ -29,7 +28,7 @@
     Add one more
 </button>
 
-<tui-textfield class="tui-space_top-4">
+<tui-textfield>
     <label tuiLabel>activeItemIndex</label>
 
     <input

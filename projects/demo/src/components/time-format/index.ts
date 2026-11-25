@@ -7,6 +7,7 @@ import {TUI_TIME_FORMAT, type TuiTimeFormatSettings} from '@taiga-ui/kit';
     selector: 'tbody[tuiDocTimeFormat]',
     imports: [TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocTimeFormat {

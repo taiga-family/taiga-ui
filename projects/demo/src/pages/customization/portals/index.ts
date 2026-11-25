@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiList} from '@taiga-ui/layout';
 
 import Example1 from './examples/1';
 import Example2 from './examples/2';
 
 @Component({
-    imports: [Example1, Example2, TuiDemo],
+    imports: [Example1, Example2, TuiDemo, TuiList],
     templateUrl: './index.html',
     changeDetection,
 })

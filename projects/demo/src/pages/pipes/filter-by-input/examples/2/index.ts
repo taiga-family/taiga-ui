@@ -26,6 +26,7 @@ interface User {
         TuiStringifyContentPipe,
     ],
     templateUrl: './index.html',
+    styleUrl: './index.css',
     encapsulation,
     changeDetection,
 })
