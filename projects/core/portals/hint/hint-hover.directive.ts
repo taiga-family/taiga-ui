@@ -1,4 +1,5 @@
-import {Directive, inject, input} from '@angular/core';
+import {DestroyRef, Directive, inject, input} from '@angular/core';
+import {EventManager} from '@angular/platform-browser';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,7 +18,6 @@ import {
     tap,
 } from 'rxjs';
 
-import {TuiHintMobile} from './hint-mobile.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 const MOBILE_HIDE_DELAY_MS = 100;
@@ -25,7 +25,7 @@ const MOBILE_HIDE_DELAY_MS = 100;
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
-    hostDirectives: [TuiHintMobile],
+    host: {style: '-webkit-touch-callout: none'},
 })
 export class TuiHintHover extends TuiDriver {
     private readonly parent = inject(TuiHintHover, {optional: true, skipSelf: true});
@@ -85,6 +85,17 @@ export class TuiHintHover extends TuiDriver {
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
+
+        if (this.isMobile) {
+            inject(DestroyRef).onDestroy(
+                // @ts-ignore
+                inject(EventManager).addEventListener(
+                    this.el,
+                    this.el.matches('a,button') ? 'longtap' : 'click',
+                    () => this.toggle(),
+                ),
+            );
+        }
     }
 
     public toggle(visible = !this.visible): void {
