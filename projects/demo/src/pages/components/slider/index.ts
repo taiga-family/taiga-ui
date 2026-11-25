@@ -19,7 +19,15 @@ export default class Page {
         'Vertical',
     ];
 
-    protected readonly segmentsVariants = [1, 5, 3, [0.2, 0.5], [0.1, 0.3]];
+    protected readonly segmentsVariants = [
+        1,
+        5,
+        3,
+        [0.2, 0.5],
+        [0.1, 0.3],
+        [0, 0.25, 0.5, 0.75, 1],
+    ];
+
     protected readonly control = new FormControl(1);
     protected max = 5;
     protected min = 0;
