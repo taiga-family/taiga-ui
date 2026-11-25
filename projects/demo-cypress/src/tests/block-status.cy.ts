@@ -24,12 +24,14 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
             </tui-block-status>
         </div>
     `,
-    styles: `
-        .image {
-            inline-size: 88px;
-            block-size: 88px;
-        }
-    `,
+    styles: [
+        `
+            .image {
+                inline-size: 88px;
+                block-size: 88px;
+            }
+        `,
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestBlockStatus {}
