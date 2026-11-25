@@ -38,6 +38,11 @@ export default [
         ],
     },
     {
+        // standard-version emits patch releases as `###` right after the top-level `#`
+        files: ['**/CHANGELOG.md'],
+        rules: {'markdown/heading-increment': 'off'},
+    },
+    {
         files: ['**/*.html'],
         rules: {
             '@taiga-ui/experience-next/no-nested-interactive': 'off', // TODO: fix later

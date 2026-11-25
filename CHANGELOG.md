@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.34.1](https://github.com/taiga-family/taiga-ui/compare/v5.34.0...v5.34.1) (2026-11-24)
+
+### 🐞 Bug Fixes
+
+- **core:** `Hint` announce content on screen reader ([#15500](https://github.com/taiga-family/taiga-ui/issues/15500))
+  ([c4718f9](https://github.com/taiga-family/taiga-ui/commit/c4718f940412cf5c899e548ea7cf60c4ca990db6))
+- **core:** `Hint` fix incorrect pointer capture ([#15503](https://github.com/taiga-family/taiga-ui/issues/15503))
+  ([327d228](https://github.com/taiga-family/taiga-ui/commit/327d2284f3f4d6d4c344de57ddae44ef6126d5d3))
+- **core:** `Textfield` fix light mode background ([#15511](https://github.com/taiga-family/taiga-ui/issues/15511))
+  ([221a2b6](https://github.com/taiga-family/taiga-ui/commit/221a2b63bc5c051409691c1830a3c8eed3e13f72))
+
 ## [5.34.0](https://github.com/taiga-family/taiga-ui/compare/v5.33.0...v5.34.0) (2026-11-23)
 
 ### 🚀 Features
