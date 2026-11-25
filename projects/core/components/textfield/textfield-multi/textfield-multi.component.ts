@@ -17,7 +17,7 @@ import {TUI_DEFAULT_MATCHER, TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
-import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_BUTTON_OPTIONS,
@@ -116,13 +116,18 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldComponent<T> {
         );
     }
 
-    protected onLeft(event: any): void {
+    protected onLeft(event: Event): void {
         if (this.value() || !tuiIsElement(event.currentTarget)) {
             return;
         }
 
         event.preventDefault();
-        event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+
+        const element = event.currentTarget.previousElementSibling?.firstElementChild;
+
+        if (tuiIsHTMLElement(element)) {
+            element.focus({focusVisible: true} as FocusOptions);
+        }
     }
 
     protected focusInput(): void {
