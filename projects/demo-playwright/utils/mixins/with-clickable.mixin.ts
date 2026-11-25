@@ -65,7 +65,6 @@ export function withClickable<T extends TuiMixinConstructor<TuiBaseEO>>(
          * await this.click(); // clicks the host
          */
         public async click(options?: ClickOptions): Promise<void> {
-            await this.host.waitFor({state: 'visible'});
             await this.host.click(options);
         }
     };

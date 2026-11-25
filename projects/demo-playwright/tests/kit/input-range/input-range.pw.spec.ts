@@ -7,7 +7,6 @@ import {
     TuiInputRangeEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_INPUT_RANGE_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';
@@ -601,9 +600,7 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=1&${nonInteractiveProp}=true`,
                     );
-                    await expect(
-                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-                    ).toContainText('START – END');
+                    await expect(inputRange.host).toContainText('START – END');
                     await expect(example).toHaveScreenshot(
                         `30-input-range-${nonInteractiveProp}-start-has-content--end-has-content.png`,
                     );
@@ -616,9 +613,7 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=2&${nonInteractiveProp}=true&max=10`,
                     );
-                    await expect(
-                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-                    ).toContainText('0 – MAX');
+                    await expect(inputRange.host).toContainText('0 – MAX');
                     await expect(example).toHaveScreenshot(
                         `31-input-range-${nonInteractiveProp}-start-no-content--end-has-content.png`,
                     );
@@ -631,9 +626,7 @@ describe('InputRange', () => {
                         page,
                         `${DemoRoute.InputRange}/API?content$=3&${nonInteractiveProp}=true`,
                     );
-                    await expect(
-                        example.locator(TUI_INPUT_RANGE_LOCATORS.HOST),
-                    ).toContainText('MIN – 10');
+                    await expect(inputRange.host).toContainText('MIN – 10');
                     await expect(example).toHaveScreenshot(
                         `32-input-range-${nonInteractiveProp}-start-has-content--end-no-content.png`,
                     );

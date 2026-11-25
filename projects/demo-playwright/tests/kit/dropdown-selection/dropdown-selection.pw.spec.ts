@@ -37,7 +37,7 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('03-dropdown-selection.png');
 
-        await page.locator(`button${TUI_DATA_LIST_LOCATORS.OPTION}`).first().click();
+        await page.locator(TUI_DATA_LIST_LOCATORS.OPTION).first().click();
         await api.waitStableState();
         await page.waitForTimeout(300); // flaky in Safari
 

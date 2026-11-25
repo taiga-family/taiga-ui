@@ -3,7 +3,6 @@ import {expect, type Locator, test} from '@playwright/test';
 
 import {
     CHAR_NO_BREAK_SPACE,
-    TuiCalendarSheetEO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateRangeEO,
@@ -130,7 +129,7 @@ test.describe('InputDateRange', () => {
                 .toBe(true);
 
             expect(
-                await inputDateRange.items.evaluate(
+                await inputDateRange.menu.evaluate(
                     ({clientHeight, scrollHeight}) => scrollHeight === clientHeight,
                 ),
             ).toBe(true);
@@ -197,7 +196,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
+                const calendarSheet = inputDateRange.calendarSheet;
 
                 await calendarSheet.clickOnDay(15);
 
@@ -217,7 +216,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
+                const calendarSheet = inputDateRange.calendarSheet;
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.clickOnDay(15);
@@ -246,7 +245,7 @@ test.describe('InputDateRange', () => {
 
                 await inputDateRange.input.click();
 
-                const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
+                const calendarSheet = inputDateRange.calendarSheet;
 
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.getCalendarDay(20).hover();
@@ -280,7 +279,7 @@ test.describe('InputDateRange', () => {
         test('minLength=15', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
 
-            const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
+            const calendarSheet = inputDateRange.calendarSheet;
 
             await inputDateRange.input.click();
             await calendarSheet.clickOnDay(1);
@@ -305,7 +304,7 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.input.click();
 
-            const calendarSheet = new TuiCalendarSheetEO(inputDateRange.calendar);
+            const calendarSheet = inputDateRange.calendarSheet;
 
             await calendarSheet.clickOnDay(15);
             await calendarSheet.clickOnDay(15);
@@ -340,13 +339,10 @@ test.describe('InputDateRange', () => {
             await inputDateRange.selectItem(2);
             await inputDateRange.input.click();
 
-            let checkmark = await inputDateRange.getCheckmark(1);
+            await expect(inputDateRange.getCheckmark(1)).toHaveCount(0);
+            await expect(inputDateRange.getCheckmark(2)).toHaveCount(1);
 
-            await expect(checkmark!).toHaveCount(0);
-            checkmark = await inputDateRange.getCheckmark(2);
-            await expect(checkmark!).toHaveCount(1);
-
-            await expect(inputDateRange.template).toHaveText(' Yesterday ');
+            await expect(inputDateRange.template).toHaveText('Yesterday');
             await expect
                 .soft(inputDateRange.calendar)
                 .toHaveScreenshot(
@@ -398,7 +394,7 @@ test.describe('InputDateRange', () => {
 
             const example = documentationPage.getExample('#data-list');
             const inputDateRange = new TuiInputDateRangeEO(example);
-            const calendarSheet = new TuiCalendarSheetEO(page);
+            const calendarSheet = inputDateRange.calendarSheet;
 
             await inputDateRange.input.click();
             await inputDateRange.selectItem(1);
@@ -409,7 +405,7 @@ test.describe('InputDateRange', () => {
             await expect(inputDateRange.calendar).toBeAttached();
             await calendarSheet.clickOnDay(21);
 
-            await expect(inputDateRange.textfield).toHaveValue(
+            await expect(inputDateRange.input).toHaveValue(
                 `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}`,
             );
             await expect(inputDateRange.template).not.toBeAttached();

@@ -1,6 +1,6 @@
 import {type Locator, type Page} from '@playwright/test';
 
-import {type EOConstructorOptions} from '../types/eo-constructor-options';
+import {type EOConstructorOptions} from '../types';
 
 const defaultOptions = {
     customSelector: '',

@@ -40,9 +40,7 @@ describe('CalendarRange', () => {
 
             await calendarRange.selectItem(1);
 
-            const checkmark = await calendarRange.getCheckmark(1);
-
-            await expect(checkmark!).toBeVisible();
+            await expect(calendarRange.getCheckmark(1)).toBeVisible();
 
             await expect
                 .soft(example)
@@ -283,19 +281,18 @@ describe('CalendarRange', () => {
                 });
 
                 test('31.03.2018 => {month: 1} => 01.03.2018 // all days of March, a full month', async () => {
-                    const [, endCalendar] = await calendarRange.getCalendars();
-                    const endSheet = endCalendar!.calendarSheet;
+                    const [, endSheet] = await calendarRange.getCalendarSheets();
 
-                    await endSheet.clickOnDay(31);
+                    await endSheet!.clickOnDay(31);
 
                     await expect(example).toHaveScreenshot(
                         '11-1-min-length-month-1-full-march.png',
                     );
 
-                    await endSheet.clickOnDay(2);
+                    await endSheet!.clickOnDay(2);
                     await expect(alert).not.toBeAttached();
 
-                    await endSheet.clickOnDay(1);
+                    await endSheet!.clickOnDay(1);
                     await expect(alert).toContainText('01.03.2018 – 31.03.2018');
                 });
 

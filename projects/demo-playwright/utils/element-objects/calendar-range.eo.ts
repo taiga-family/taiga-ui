@@ -28,6 +28,11 @@ export class TuiCalendarRangeEO extends TuiBaseEO {
         .locator('tui-calendar-spin tui-spin-button > button')
         .last();
 
+    /** Range switcher items (options inside the switcher menu). */
+    public readonly items = this.host.locator(
+        `${TUI_CALENDAR_RANGE_LOCATORS.MENU} ${TUI_DATA_LIST_LOCATORS.OPTION}`,
+    );
+
     /**
      * Returns the calendar Element Objects rendered inside the range.
      */
@@ -54,27 +59,12 @@ export class TuiCalendarRangeEO extends TuiBaseEO {
     }
 
     /**
-     * Returns the range switcher items of the calendar range.
-     *
-     * Waits for the items menu to be attached before resolving them.
-     */
-    public async getItems(): Promise<Locator[]> {
-        const dataList = this.host.locator(TUI_CALENDAR_RANGE_LOCATORS.MENU);
-
-        await dataList.waitFor({state: 'attached'});
-
-        return dataList.locator(TUI_DATA_LIST_LOCATORS.OPTION).all();
-    }
-
-    /**
      * Selects the range switcher item at the given index.
      *
      * @param index Zero-based index of the item to select.
      */
     public async selectItem(index: number): Promise<void> {
-        const items = await this.getItems();
-
-        await items[index]?.click();
+        await this.items.nth(index).click();
     }
 
     /**
@@ -82,9 +72,7 @@ export class TuiCalendarRangeEO extends TuiBaseEO {
      *
      * @param index Zero-based index of the item.
      */
-    public async getCheckmark(index: number): Promise<Locator | undefined> {
-        const items = await this.getItems();
-
-        return items[index]?.locator(TUI_CALENDAR_RANGE_LOCATORS.CHECKMARK);
+    public getCheckmark(index: number): Locator {
+        return this.items.nth(index).locator(TUI_CALENDAR_RANGE_LOCATORS.CHECKMARK);
     }
 }

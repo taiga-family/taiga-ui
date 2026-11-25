@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
-import {TUI_DATA_LIST_LOCATORS, TUI_DROPDOWN_LOCATORS} from '@taiga-ui/testing/locators';
 import {TuiTabsWithMoreEO} from 'projects/demo-playwright/utils/element-objects/tabs-with-more.eo';
 
 const {describe, beforeEach} = test;
@@ -24,19 +23,16 @@ describe('Tabs', () => {
                 await example.scrollIntoViewIfNeeded();
             });
 
-            test('closes dropdown after removing the last hidden tab', async ({page}) => {
+            test('closes dropdown after removing the last hidden tab', async () => {
                 await expect(tabsEO.more).toBeVisible();
 
                 await tabsEO.more.click();
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
 
-                await page
-                    .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                    .locator('button', {hasText: 'Item #3'})
-                    .locator('tui-icon')
-                    .click();
+                await tabsEO.removeTab('Item #3');
 
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect(tabsEO.more).toBeHidden();
             });
         });
@@ -62,13 +58,13 @@ describe('Tabs', () => {
 
                 await page.locator('button:has-text("Collaborators")').click();
 
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
                 await expect.soft(example).toHaveScreenshot('01-tabs-2.png');
 
                 await page.locator('button:has-text("Neil Innes")').click();
 
                 await expect(example).toContainText('Currently active: Neil Innes');
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-3.png');
 
                 await page.setViewportSize({width: 560, height: 500});
@@ -77,18 +73,18 @@ describe('Tabs', () => {
 
                 await tabsEO.more.click();
 
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
                 await expect.soft(example).toHaveScreenshot('01-tabs-5.png');
 
                 await page.keyboard.down('ArrowDown');
                 await page.keyboard.down('Enter');
 
                 await expect(example).toContainText('Currently active: John Cleese');
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-6.png');
 
                 await tabsEO.more.click();
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
 
                 await page.locator('button:has-text("Collaborators")').nth(1).focus();
                 await page.keyboard.down('Enter');
@@ -98,14 +94,14 @@ describe('Tabs', () => {
 
                 // Still previous one
                 await expect(example).toContainText('Currently active: John Cleese');
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveCount(2);
+                await expect(tabsEO.moreDropdown).toHaveCount(2);
                 await expect.soft(example).toHaveScreenshot('01-tabs-7.png');
 
                 await page.locator('button:has-text("Neil Innes")').nth(0).focus();
                 await page.keyboard.down('Enter');
 
                 await expect(example).toContainText('Currently active: Neil Innes');
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-8.png');
             });
 
@@ -128,15 +124,12 @@ describe('Tabs', () => {
                 await tabsEO.more.click();
                 await tabsEO.getMoreOption('Collaborators').click();
 
-                await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toHaveCount(2);
+                await expect(tabsEO.moreDropdown).toHaveCount(2);
                 await expect
                     .soft(page)
                     .toHaveScreenshot('tabs-dropdown-inside-more-dropdown.png');
 
-                await page
-                    .locator(TUI_DROPDOWN_LOCATORS.HOST)
-                    .locator(TUI_DATA_LIST_LOCATORS.OPTION, {hasText: 'Carol Cleveland'})
-                    .hover();
+                await tabsEO.getOptionByText('Carol Cleveland').hover();
 
                 await expect
                     .soft(page)

@@ -32,7 +32,7 @@ describe('ComboBox', () => {
 
             await comboBox.input.fill('austria');
 
-            const option = await comboBox.getOptionByText('Austria');
+            const option = comboBox.getOptionByText('Austria');
 
             await expect
                 .soft(option)
@@ -48,7 +48,7 @@ describe('ComboBox', () => {
 
             await comboBox.input.fill('austria');
 
-            const option = await comboBox.getOptionByText('Austria');
+            const option = comboBox.getOptionByText('Austria');
 
             await expect
                 .soft(option)
@@ -168,7 +168,7 @@ describe('ComboBox', () => {
                 );
 
                 await comboBox.input.fill('austri');
-                const option = await comboBox.getOptionByText('Austria');
+                const option = comboBox.getOptionByText('Austria');
 
                 await option.click();
 
@@ -228,12 +228,8 @@ describe('ComboBox', () => {
                 await comboBox.input.fill('George V');
 
                 await expect(comboBox.options).toHaveCount(2);
-                await expect(
-                    comboBox.getOptionByText(/George V\b/),
-                ).resolves.toBeVisible();
-                await expect(
-                    comboBox.getOptionByText('George VI'),
-                ).resolves.toBeVisible();
+                await expect(comboBox.getOptionByText(/George V\b/)).toBeVisible();
+                await expect(comboBox.getOptionByText('George VI')).toBeVisible();
                 await expect(comboBox.dropdown).toHaveScreenshot(
                     'george-5-checked-two-options-only.png',
                 );
@@ -270,7 +266,7 @@ describe('ComboBox', () => {
 
             test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.input.click();
-                const option = await comboBox.getOptionByText('Eric Idle');
+                const option = comboBox.getOptionByText('Eric Idle');
 
                 await option.click();
 
@@ -360,7 +356,7 @@ describe('ComboBox', () => {
             test('textfield keeps already selected option even if option disappears from datalist by scroll', async () => {
                 await comboBox.input.click();
 
-                const option = await comboBox.getOptionByText('Afghanistan');
+                const option = comboBox.getOptionByText('Afghanistan');
 
                 await expect(async () => {
                     const count = await comboBox.options.count();
@@ -401,9 +397,7 @@ describe('ComboBox', () => {
 
                 await expect(comboBox.input).toHaveValue('Russia');
 
-                await expect(
-                    comboBox.getOptionByText('Russia'),
-                ).resolves.not.toBeAttached();
+                await expect(comboBox.getOptionByText('Russia')).not.toBeAttached();
 
                 await comboBox.input.blur();
                 await page.waitForTimeout(100);

@@ -14,7 +14,7 @@ interface DataList {
     readonly options: Locator;
     selectOptions(indexes: number[]): Promise<void>;
     closeDropdown(): Promise<void>;
-    getOptionByText(text: RegExp | string): Promise<Locator>;
+    getOptionByText(text: RegExp | string): Locator;
 }
 
 type WithDataList<T> = T & (new (...args: any[]) => DataList);
@@ -68,10 +68,7 @@ export function withDataList<T extends TuiMixinConstructor<TuiBaseEO>>(
          */
         public async selectOptions(indexes: number[]): Promise<void> {
             for (const optionIndex of indexes) {
-                await this.dropdown
-                    .locator(TUI_DATA_LIST_LOCATORS.OPTION)
-                    .nth(optionIndex)
-                    .click();
+                await this.options.nth(optionIndex).click();
             }
         }
 
@@ -87,14 +84,10 @@ export function withDataList<T extends TuiMixinConstructor<TuiBaseEO>>(
         /**
          * Returns the locator of the dropdown option matching the given text.
          *
-         * Waits for the dropdown to be attached before resolving the option.
-         *
          * @param text Text or regular expression to match against the option.
          */
-        public async getOptionByText(text: RegExp | string): Promise<Locator> {
-            await this.dropdown.waitFor({state: 'attached'});
-
-            return this.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {hasText: text});
+        public getOptionByText(text: RegExp | string): Locator {
+            return this.options.getByText(text);
         }
     };
 }
