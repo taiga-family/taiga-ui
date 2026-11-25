@@ -1,4 +1,5 @@
-import {Directive, inject, input} from '@angular/core';
+import {DestroyRef, Directive, inject, input} from '@angular/core';
+import {EventManager} from '@angular/platform-browser';
 import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -24,11 +25,12 @@ const MOBILE_HIDE_DELAY_MS = 100;
 @Directive({
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
-    host: {'(click)': 'onClick()'},
+    host: {style: '-webkit-touch-callout: none'},
 })
 export class TuiHintHover extends TuiDriver {
+    private readonly parent = inject(TuiHintHover, {optional: true, skipSelf: true});
     private readonly isMobile = inject(WA_IS_MOBILE);
-    private readonly hovered$ = inject(TuiHoveredService);
+    private readonly hovered$ = inject(TuiHoveredService).pipe(filter(() => this.click));
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
@@ -67,12 +69,8 @@ export class TuiHintHover extends TuiDriver {
         }),
     );
 
-    private readonly parent = inject(TuiHintHover, {
-        optional: true,
-        skipSelf: true,
-    });
-
     protected readonly el = tuiInjectElement();
+    protected readonly click = !this.isMobile || !this.el.matches('a,button');
 
     public readonly showDelay = input(this.options.showDelay, {
         alias: 'tuiHintShowDelay',
@@ -87,6 +85,17 @@ export class TuiHintHover extends TuiDriver {
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
+
+        if (this.isMobile) {
+            inject(DestroyRef).onDestroy(
+                // @ts-ignore
+                inject(EventManager).addEventListener(
+                    this.el,
+                    this.click ? 'click' : 'longtap',
+                    () => this.toggle(),
+                ),
+            );
+        }
     }
 
     public toggle(visible = !this.visible): void {
@@ -94,17 +103,8 @@ export class TuiHintHover extends TuiDriver {
         this.parent?.toggle(visible);
     }
 
+    /** @deprecated TODO remove in v6 */
     public close(): void {
         this.toggle$.next(false);
-    }
-
-    /**
-     * Synthesized `mouseenter` is not fired again until another element is tapped, so showing on mobile
-     * cannot rely on it.
-     */
-    protected onClick(): void {
-        if (this.isMobile) {
-            this.toggle();
-        }
     }
 }

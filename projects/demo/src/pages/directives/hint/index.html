@@ -16,19 +16,25 @@
             <tui-doc-example
                 [component]="$index + 1 | tuiComponent"
                 [content]="$index + 1 | tuiExample"
+                [description]="description"
                 [fullsize]="$first"
                 [heading]="example"
-            >
-                @if ($index === 1) {
-                    <div tuiNotification>
+            />
+            <ng-template #description>
+                @switch ($index) {
+                    @case (1) {
                         Make sure
                         <code>*tuiHint</code>
                         directive is nested inside
                         <code>tuiHint</code>
                         directive so that dependency injection works properly
-                    </div>
+                    }
+                    @case (5) {
+                        On mobile, a tap activates the button or link immediately. Press and hold to show its hint
+                        without obscuring the primary tap action.
+                    }
                 }
-            </tui-doc-example>
+            </ng-template>
         }
     </ng-template>
 

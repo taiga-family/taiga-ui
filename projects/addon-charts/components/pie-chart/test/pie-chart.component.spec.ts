@@ -4,19 +4,26 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
-import {TUI_ANIMATIONS_SPEED, TuiHintDirective} from '@taiga-ui/core';
+import {
+    provideTaiga,
+    TUI_ANIMATIONS_SPEED,
+    TuiHintDirective,
+    TuiRoot,
+} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NEVER} from 'rxjs';
 
 describe('PieChart', () => {
     @Component({
-        imports: [TuiChartHint, TuiPieChart],
+        imports: [TuiChartHint, TuiPieChart, TuiRoot],
         template: `
-            <tui-pie-chart
-                tuiHintAppearance="error"
-                tuiHintContent="Hint"
-                [value]="value"
-            />
+            <tui-root>
+                <tui-pie-chart
+                    tuiHintAppearance="error"
+                    tuiHintContent="Hint"
+                    [value]="value"
+                />
+            </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -31,6 +38,7 @@ describe('PieChart', () => {
         TestBed.configureTestingModule({
             imports: [Test],
             providers: [
+                provideTaiga(),
                 {
                     provide: Location,
                     useValue: {path: () => ''},

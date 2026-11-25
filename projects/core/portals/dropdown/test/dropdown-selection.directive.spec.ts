@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {
     TuiDropdownDirective,
     TuiDropdownSelection,
@@ -11,14 +12,16 @@ import {Subject, type Subscription} from 'rxjs';
 
 describe('TuiDropdownSelection', () => {
     @Component({
-        imports: [TuiDropdownSelection],
+        imports: [TuiDropdownSelection, TuiRoot],
         template: `
-            <div
-                tuiDropdownSelection
-                style="line-height: 20px"
-            >
-                <textarea>Selected text</textarea>
-            </div>
+            <tui-root>
+                <div
+                    tuiDropdownSelection
+                    style="line-height: 20px"
+                >
+                    <textarea>Selected text</textarea>
+                </div>
+            </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -75,6 +78,7 @@ describe('TuiDropdownSelection', () => {
         TestBed.configureTestingModule({
             imports: [Test],
             providers: [
+                provideTaiga(),
                 {provide: TUI_SELECTION_STREAM, useValue: selection$},
                 {provide: TuiDropdownDirective, useValue: {ref: () => null}},
             ],

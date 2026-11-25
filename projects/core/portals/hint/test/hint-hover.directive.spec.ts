@@ -31,6 +31,12 @@ describe('Hint on mobile', () => {
                 >
                     Tooltip host
                 </button>
+                <span
+                    id="non-interactive-hint-host"
+                    tuiHint="Hint on a non-interactive host"
+                >
+                    Tooltip host without a primary action
+                </span>
                 <ng-template #dialogContent>
                     <button
                         id="dialog-hint-host"
@@ -77,12 +83,12 @@ describe('Hint on mobile', () => {
     });
 
     it.each([0, 500, 750])(
-        'shows immediately on tap when tuiHintShowDelay is %i',
+        'shows immediately on longtap when tuiHintShowDelay is %i',
         fakeAsync((showDelay: number) => {
             fixture.componentInstance.showDelay.set(showDelay);
             fixture.detectChanges();
 
-            document.querySelector<HTMLElement>('#hint-host')!.click();
+            document.querySelector('#hint-host')!.dispatchEvent(new Event('longtap'));
             tick(0);
             fixture.detectChanges();
             discardPeriodicTasks();
@@ -118,10 +124,10 @@ describe('Hint on mobile', () => {
         expect(document.querySelector('tui-hint')).toBeNull();
     }));
 
-    it('hides on pointerdown outside and can show again on the next tap', fakeAsync(() => {
+    it('hides on outside pointerdown and reopens on longtap', fakeAsync(() => {
         const host = document.querySelector<HTMLElement>('#hint-host')!;
 
-        host.click();
+        host.dispatchEvent(new Event('longtap'));
         tick(0);
         fixture.detectChanges();
 
@@ -133,7 +139,7 @@ describe('Hint on mobile', () => {
 
         expect(document.querySelector('tui-hint')).toBeNull();
 
-        host.click();
+        host.dispatchEvent(new Event('longtap'));
         tick(0);
         fixture.detectChanges();
         discardPeriodicTasks();
@@ -163,7 +169,7 @@ describe('Hint on mobile', () => {
         });
         jest.spyOn(document, 'elementFromPoint').mockReturnValue(modal);
 
-        host.click();
+        host.dispatchEvent(new Event('longtap'));
         tick(0);
         fixture.detectChanges();
         discardPeriodicTasks();
@@ -173,16 +179,16 @@ describe('Hint on mobile', () => {
         );
     }));
 
-    it('hides after the second tap with the mobile hide delay', fakeAsync(() => {
+    it('hides after the second longtap with the mobile hide delay', fakeAsync(() => {
         const host = document.querySelector<HTMLElement>('#hint-host')!;
 
-        host.click();
+        host.dispatchEvent(new Event('longtap'));
         tick(0);
         fixture.detectChanges();
 
         expect(document.querySelector('tui-hint')).not.toBeNull();
 
-        host.click();
+        host.dispatchEvent(new Event('longtap'));
         tick(99);
         fixture.detectChanges();
 
@@ -196,7 +202,7 @@ describe('Hint on mobile', () => {
     }));
 
     it('stays open after the first tap which also emulates mouseenter', fakeAsync(() => {
-        const host = document.querySelector('#hint-host')!;
+        const host = document.querySelector('#non-interactive-hint-host')!;
 
         host.dispatchEvent(new Event('mouseenter'));
         tick(0);

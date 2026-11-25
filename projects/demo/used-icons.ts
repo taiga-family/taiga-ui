@@ -53,6 +53,7 @@ export const TUI_USED_ICONS = [
     '@tui.divide',
     '@tui.dollar-sign',
     '@tui.download',
+    '@tui.drama',
     '@tui.droplet',
     '@tui.edit',
     '@tui.ellipsis',
