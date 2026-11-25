@@ -1,0 +1,52 @@
+<tui-doc-page
+    header="UnmaskHandler"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            Use with
+            <a
+                href="https://maskito.dev"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                Maskito
+            </a>
+            on Taiga UI inputs to keep an
+            <strong>unmasked</strong>
+            value in the form control while the field shows the mask.
+        </p>
+        <p>
+            When you set the control programmatically (
+            <code>setValue</code>
+            ,
+            <code>patchValue</code>
+            ), pass the raw unmasked value — the directive applies the mask for display automatically.
+        </p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        The form control stores digits only; the textfield shows
+                        <code>dd/mm/yyyy</code>
+                        separators.
+                    }
+                    @case (1) {
+                        <code>patchValue</code>
+                        with an unmasked string updates both the control and the visible mask.
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
