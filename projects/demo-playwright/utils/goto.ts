@@ -82,7 +82,7 @@ export async function tuiGoto(
             globalThis.CSS.supports = (property: string, value?: string): boolean => {
                 if (
                     property.includes('anchor') ||
-                    (property === 'position-visibility' && value === 'anchors-valid')
+                    (property === 'position-visibility' && value === 'anchor-valid')
                 ) {
                     return false;
                 }

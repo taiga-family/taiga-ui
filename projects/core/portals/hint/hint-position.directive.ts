@@ -47,6 +47,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         alias: 'tuiHintDirection',
     });
 
+    /** @deprecated impossible to support with CSS anchor positioning so it's phased out TODO: drop in v6.0 */
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
     );
@@ -54,6 +55,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
     public readonly type = 'hint';
 
     public override position(element: HTMLElement): void {
+        // TODO: Remove in v6
+        element.style.setProperty('--t-offset', `${this.offset()}px`);
         Object.assign(element.style, {
             position: 'fixed',
             visibility: 'visible',
