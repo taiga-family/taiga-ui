@@ -1,4 +1,4 @@
-import {computed, Directive, input} from '@angular/core';
+import {computed, Directive, effect, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRange} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -16,7 +16,10 @@ import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type AbstractTuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiWithInput} from '@taiga-ui/core/components/input';
 import {TuiDropdownAuto} from '@taiga-ui/core/portals/dropdown';
-import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import {
+    TuiCalendarRange,
+    type TuiDayRangePeriod,
+} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_INPUT_DATE_OPTIONS,
     TuiInputDateBase,
@@ -37,6 +40,69 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     hostDirectives: [TuiWithInput, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
+    private selectedItem: TuiDayRangePeriod | null = null;
+
+    /**
+     * Keeps the selected preset in sync with form values, range limits, and calendar items.
+     * Preserves equivalent presets when the calendar is recreated and clears stale selection.
+     */
+    protected readonly syncSelectedItem = effect((onCleanup) => {
+        const value = this.value();
+        const min = this.min();
+        const max = this.max();
+        const calendar = this.calendar();
+        const selectedItem = this.selectedItem;
+
+        if (selectedItem && !value?.daySame(selectedItem.range.dayLimit(min, max))) {
+            this.selectedItem = null;
+        }
+
+        if (!(calendar instanceof TuiCalendarRange)) {
+            return;
+        }
+
+        const items = calendar.items();
+
+        if (selectedItem) {
+            const currentItem = items.find(
+                (item) =>
+                    item === selectedItem ||
+                    (item.toString() === selectedItem.toString() &&
+                        item.range.daySame(selectedItem.range)),
+            );
+
+            const activeItem = untracked(calendar.item);
+
+            if (!this.selectedItem || (items.length > 0 && !currentItem)) {
+                this.selectedItem = null;
+
+                if (activeItem === selectedItem) {
+                    tuiSetSignal(calendar.item, null);
+                }
+
+                if (calendar.selectedActivePeriod === selectedItem) {
+                    calendar.selectedActivePeriod = null;
+                }
+            } else if (currentItem && (!activeItem || activeItem === selectedItem)) {
+                this.selectedItem = currentItem;
+
+                if (activeItem !== currentItem) {
+                    tuiSetSignal(calendar.item, currentItem);
+                }
+
+                if (calendar.selectedActivePeriod === selectedItem) {
+                    calendar.selectedActivePeriod = currentItem;
+                }
+            }
+        }
+
+        const subscription = calendar.item.subscribe((item) => {
+            this.selectedItem = item;
+        });
+
+        onCleanup(() => subscription.unsubscribe());
+    });
+
     /**
      * TODO(v6): check https://github.com/angular/angular/issues/70600 status:
      * Solved? Drop `TuiDayRange | undefined` workaround from `transform`
