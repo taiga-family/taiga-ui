@@ -21,7 +21,7 @@ describe('Tabs', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#tabs-with-more');
         const tabs = example.locator('tui-tabs');
 
-        await tabs.evaluate((element) => {
+        await tabs.evaluate((element: HTMLElement) => {
             let transitions = 0;
 
             element.addEventListener('transitionend', ({propertyName, pseudoElement}) => {
