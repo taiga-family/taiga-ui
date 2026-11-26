@@ -70,11 +70,16 @@ export class TuiDropdownHover extends TuiDriver {
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
         ),
-        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
-        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        merge(
+            tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
+            tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
+        ).pipe(
+            map((element) => tuiIsElement(element) && this.isHovered(element)),
+            filter((hovered) => hovered || !this.detached),
+        ),
     ).pipe(
-        map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
         switchMap((v) =>
             of(v).pipe(
@@ -103,6 +108,19 @@ export class TuiDropdownHover extends TuiDriver {
         if (this.hovered() && this.open) {
             event.preventDefault();
         }
+    }
+
+    // A dropdown with neither its own zone nor its own elements (e.g. a sheet) lives elsewhere and closes by its own means
+    private get detached(): boolean {
+        const ref = this.directive.ref();
+
+        if (!ref || ref.injector.get(TuiActiveZone, null, {self: true})) {
+            return false;
+        }
+
+        const element: HTMLElement = ref.location.nativeElement;
+
+        return !element.childElementCount;
     }
 
     private isHovered(element: Element): boolean {
