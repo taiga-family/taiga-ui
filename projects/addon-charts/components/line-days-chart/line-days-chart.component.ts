@@ -21,14 +21,12 @@ import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
-
-const DUMMY: TuiPoint = [Number.NaN, Number.NaN];
 
 @Component({
     selector: 'tui-line-days-chart',
@@ -52,31 +50,20 @@ export class TuiLineDaysChart implements AfterViewInit {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hintDirective = inject(TuiLineDaysChartHint, {optional: true});
 
-    private readonly brokenMonths = computed(() => {
+    private readonly days = computed(
+        () => new Map(this.value().map((point) => [this.getX(point[0]), point])),
+    );
+
+    protected readonly points = computed<readonly TuiPoint[]>(() =>
+        Array.from(this.days(), ([x, [, y]]) => [x, y]),
+    );
+
+    protected readonly width = computed(() => {
         const value = this.value();
-        const offset = (value[0]?.[0].day || 1) - 1;
         const start = value[0]?.[0];
         const end = value[value.length - 1]?.[0];
 
-        return Array.from(
-            {length: start && end ? TuiMonth.lengthBetween(start, end) + 1 : 0},
-            (_, i) => i + (start?.month || 0) + (start?.year || 0) * 12,
-        )
-            .map((absoluteMonth) =>
-                value
-                    .map<TuiPoint | null>(([{month, year}, y], index) =>
-                        month + year * 12 === absoluteMonth ? [index + offset, y] : null,
-                    )
-                    .filter(tuiIsPresent),
-            )
-            .map((month, index, array) =>
-                index === array.length - 1
-                    ? month
-                    : [
-                          ...month,
-                          array[index + 1]?.find((day) => !Number.isNaN(day[1])) || DUMMY,
-                      ],
-            );
+        return start && end ? TuiMonth.lengthBetween(start, end) + 1 : 0;
     });
 
     public readonly charts = viewChildren(TuiLineChart);
@@ -146,17 +133,10 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
-        const start = this.value()[0]?.[0];
-        const index = start && day ? TuiMonth.lengthBetween(start, day) : 0;
-        const x = start && day ? TuiDay.lengthBetween(start, day) + start.day - 1 : 0;
-        const current = this.charts()[index];
+        const x = this.getX(day);
 
         this.charts().forEach((chart) => {
-            if (chart === current) {
-                current.onHovered(current.value().findIndex((point) => point[0] === x));
-            } else {
-                chart.onHovered(Number.NaN);
-            }
+            chart.onHovered(chart.value().findIndex((point) => point[0] === x));
         });
     }
 
@@ -181,22 +161,11 @@ export class TuiLineDaysChart implements AfterViewInit {
 
         return this.hintDirective && day
             ? this.hintDirective.getContext(day)
-            : this.getHintContext(x, this.value());
+            : this.getHintContext(x);
     }
 
-    protected get months(): ReadonlyArray<readonly TuiPoint[]> {
-        return this.value().length ? this.brokenMonths() : [];
-    }
-
-    protected get firstWidth(): number {
-        return this.months.length * (this.value()[0]?.[0].daysCount || 0);
-    }
-
-    protected getHintContext(
-        x: number,
-        value: ReadonlyArray<[TuiDay, number]>,
-    ): [TuiDay, number] | null {
-        return value[x - (value[0]?.[0]?.day || 0) + 1] ?? null;
+    protected getHintContext(x: number): [TuiDay, number] | null {
+        return this.days().get(x) ?? null;
     }
 
     protected readonly daysStringify: TuiStringHandler<number> = (index) => {
@@ -206,22 +175,16 @@ export class TuiLineDaysChart implements AfterViewInit {
         return xStringify && day ? xStringify(day) : '';
     };
 
-    protected getX(index: number): number {
-        const start = this.value()[0]?.[0];
-        const current = this.getDay(index);
-        const months = start && current ? TuiMonth.lengthBetween(start, current) : 0;
-        const offset = months * (current?.daysCount || 0);
-
-        return index - offset;
-    }
-
-    protected getWidth(index: number): number {
-        return (this.getDay(index)?.daysCount || 0) * this.months.length;
-    }
-
-    private getDay(index: number): TuiDay | undefined {
+    private getX(day: TuiDay): number {
         const start = this.value()[0]?.[0];
 
-        return this.value()[index - (start?.day || 0) + 1]?.[0];
+        // Each calendar month occupies the same width, regardless of its day count.
+        return start
+            ? TuiMonth.lengthBetween(start, day) + (day.day - 1) / day.daysCount
+            : 0;
+    }
+
+    private getDay(x: number): TuiDay | undefined {
+        return this.days().get(x)?.[0];
     }
 }
