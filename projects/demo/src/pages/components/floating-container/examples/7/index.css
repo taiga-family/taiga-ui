@@ -9,8 +9,7 @@
 }
 
 footer {
-    /* inset the footer so the container's bleeding background stays within the scroll area */
-    margin-inline: 1rem;
+    padding-inline: 1rem;
 }
 
 .field {
