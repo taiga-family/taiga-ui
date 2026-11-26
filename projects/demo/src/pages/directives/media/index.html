@@ -5,6 +5,18 @@
 >
     <ng-template pageTab>
         <p>Directive for declarative work with HTML5 video and audio</p>
+        <p>
+            Media state pseudo-classes
+            <code>:playing</code>
+            ,
+            <code>:paused</code>
+            ,
+            <code>:buffering</code>
+            , and
+            <code>:seeking</code>
+            can style playback without extra Angular state. The CSS playback states example also uses native media
+            events as a fallback for browsers that do not support these selectors.
+        </p>
 
         @for (example of examples; track example) {
             <tui-doc-example
