@@ -1,0 +1,11 @@
+label[tuiLabel].reverse {
+    flex-direction: row-reverse;
+}
+
+label[tuiLabel].reverse > input {
+    margin-inline: 0.5rem 0;
+}
+
+label[tuiLabel].reverse > input[data-size='s'] {
+    margin-inline-start: 0.25rem;
+}

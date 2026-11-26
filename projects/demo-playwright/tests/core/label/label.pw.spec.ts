@@ -9,7 +9,7 @@ test.describe('TuiLabel', () => {
 
     test('keeps the switch spacing when reversed', async ({page}) => {
         const labels = new TuiDocumentationPagePO(page)
-            .getExample('#switch')
+            .getExample('#reverse')
             .locator('label');
 
         const regular = labels.first();
@@ -19,13 +19,9 @@ test.describe('TuiLabel', () => {
             [regular, '8px'],
             [small, '4px'],
         ] as const) {
-            await label.evaluate((element) => {
-                element.setAttribute('tuiLabel', 'reverse');
-            });
-
             const control = label.locator('input');
 
-            await expect(control).toHaveCSS('order', '1');
+            await expect(label).toHaveCSS('flex-direction', 'row-reverse');
             await expect(control).toHaveCSS('margin-inline-start', margin);
             await expect(control).toHaveCSS('margin-inline-end', '0px');
         }

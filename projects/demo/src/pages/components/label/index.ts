@@ -8,5 +8,11 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Small size', 'Switch', 'Textfield'];
+    protected readonly examples = [
+        'Basic',
+        'Small size',
+        'Switch',
+        'Textfield',
+        'Reverse',
+    ];
 }
