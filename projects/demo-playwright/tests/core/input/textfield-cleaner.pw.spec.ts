@@ -1,12 +1,8 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiCalendarMonthEO,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiInputMonthEO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthEO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
+    TUI_DROPDOWN_LOCATORS,
     TUI_INPUT_CHIP_LOCATORS,
     TUI_TEXTFIELD_LOCATORS,
 } from '@taiga-ui/testing/locators';
@@ -38,7 +34,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('Austria');
             await cleaner.click();
             await expect(input).toHaveValue('');
-            await expect(page.locator('tui-dropdown')).toBeVisible();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
         });
 
         test('Select', async ({page}) => {
@@ -47,7 +43,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('USA');
             await cleaner.click();
             await expect(input).toHaveValue('');
-            await expect(page.locator('tui-dropdown')).toBeVisible();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
         });
 
         test('InputCard', async ({page}) => {
@@ -89,7 +85,7 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
-            await expect(page.locator('tui-dropdown')).toBeVisible();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
         });
 
         test('InputDateRange', async ({page}) => {
@@ -102,26 +98,23 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09.09.2025 – 09.09.2025');
             await cleaner.click();
             await expect(input).toHaveValue('');
-            await expect(page.locator('tui-dropdown')).toBeVisible();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
         });
 
         test('InputMonth', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputMonth}/API?tuiTextfieldCleaner=true`);
 
-            const inputMonth = new TuiInputMonthEO(
-                example.locator(TUI_TEXTFIELD_LOCATORS.HOST),
-            );
+            const inputMonth = new TuiInputMonthEO(example);
+            const calendarMonth = inputMonth.calendar;
 
-            const calendarMonth = new TuiCalendarMonthEO(inputMonth.calendar);
-
-            await inputMonth.textfield.click();
+            await inputMonth.input.click();
 
             await calendarMonth.month.nth(8).click();
-            await expect(inputMonth.textfield).toHaveValue('September 2020');
+            await expect(inputMonth.input).toHaveValue('September 2020');
 
             await cleaner.click();
             await expect(input).toHaveValue('');
-            await expect(page.locator('tui-dropdown')).toBeVisible();
+            await expect(page.locator(TUI_DROPDOWN_LOCATORS.HOST)).toBeVisible();
         });
 
         test('InputNumber', async ({page}) => {

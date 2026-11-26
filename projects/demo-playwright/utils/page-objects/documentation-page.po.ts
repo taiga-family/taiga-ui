@@ -1,4 +1,5 @@
 import {type Locator} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TuiDocumentationApiPagePO} from './documentation-api-page.po';
 
@@ -18,7 +19,8 @@ export class TuiDocumentationPagePO extends TuiDocumentationApiPagePO {
 
         await selector.click();
         await this.page
-            .locator('tui-data-list[role=listbox] [tuiOption]')
+            .locator('tui-data-list[role=listbox]')
+            .locator(TUI_DATA_LIST_LOCATORS.OPTION)
             .filter({hasText: method})
             .click();
     }

@@ -1,7 +1,15 @@
-import {type Page} from '@playwright/test';
+import {TUI_INPUT_CARD_LOCATORS} from '@taiga-ui/testing/locators';
 
-export class TuiInputCardEO {
-    public readonly expiryTextfield = this.page.locator('input[tuiInputExpire]').first();
+import {TuiBaseEO} from './base.eo';
 
-    constructor(private readonly page: Page) {}
+/**
+ * Element Object for a TuiInputCard component.
+ *
+ * Exposes the expiry textfield rendered on page level.
+ */
+export class TuiInputCardEO extends TuiBaseEO {
+    protected override readonly hostSelector = TUI_INPUT_CARD_LOCATORS.HOST;
+
+    /** Expiry date textfield of the card field. */
+    public readonly expiryTextfield = this.root.locator('input[tuiInputExpire]').first();
 }

@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiTabsEO} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TuiTabsWithMoreEO} from 'projects/demo-playwright/utils/element-objects/tabs-with-more.eo';
 
 const {describe, beforeEach} = test;
 
@@ -12,41 +13,39 @@ describe('Tabs', () => {
 
         describe('closing', () => {
             let example!: Locator;
-            let tabsPO!: TuiTabsEO;
+            let tabsEO!: TuiTabsWithMoreEO;
 
             beforeEach(async ({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#closing');
-                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
+                tabsEO = new TuiTabsWithMoreEO(example);
 
                 await page.setViewportSize({width: 1500, height: 500});
                 await example.scrollIntoViewIfNeeded();
             });
 
-            test('closes dropdown after removing the last hidden tab', async ({page}) => {
-                await expect(tabsPO.more).toBeVisible();
+            test('closes dropdown after removing the last hidden tab', async () => {
+                await expect(tabsEO.more).toBeVisible();
 
-                await tabsPO.more.click();
-                await expect(page.locator('tui-dropdown')).toBeVisible();
+                await tabsEO.more.click();
+                await expect(tabsEO.moreDropdown).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
 
-                await page
-                    .locator('tui-dropdown button', {hasText: 'Item #3'})
-                    .locator('tui-icon')
-                    .click();
+                await tabsEO.removeTab('Item #3');
 
-                await expect(page.locator('tui-dropdown')).not.toBeAttached();
-                await expect(tabsPO.more).toBeHidden();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
+                await expect(tabsEO.more).toBeHidden();
             });
         });
 
         describe('complex', () => {
             let example!: Locator;
-            let tabsPO!: TuiTabsEO;
+            let tabsEO!: TuiTabsWithMoreEO;
             let pagePO!: TuiDocumentationPagePO;
 
             beforeEach(async ({page}) => {
                 pagePO = new TuiDocumentationPagePO(page);
                 example = pagePO.getExample('#complex');
-                tabsPO = new TuiTabsEO(example.locator('tui-tabs-with-more'));
+                tabsEO = new TuiTabsWithMoreEO(example);
 
                 await pagePO.hideScrollbars();
                 await example.scrollIntoViewIfNeeded();
@@ -59,33 +58,33 @@ describe('Tabs', () => {
 
                 await page.locator('button:has-text("Collaborators")').click();
 
-                await expect(page.locator('tui-dropdown')).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
                 await expect.soft(example).toHaveScreenshot('01-tabs-2.png');
 
                 await page.locator('button:has-text("Neil Innes")').click();
 
                 await expect(example).toContainText('Currently active: Neil Innes');
-                await expect(page.locator('tui-dropdown')).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-3.png');
 
                 await page.setViewportSize({width: 560, height: 500});
 
                 await expect.soft(example).toHaveScreenshot('01-tabs-4.png');
 
-                await example.locator('tui-tabs-with-more .t-more').click();
+                await tabsEO.more.click();
 
-                await expect(page.locator('tui-dropdown')).toBeVisible();
+                await expect(tabsEO.moreDropdown).toBeVisible();
                 await expect.soft(example).toHaveScreenshot('01-tabs-5.png');
 
                 await page.keyboard.down('ArrowDown');
                 await page.keyboard.down('Enter');
 
                 await expect(example).toContainText('Currently active: John Cleese');
-                await expect(page.locator('tui-dropdown')).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-6.png');
 
-                await example.locator('tui-tabs-with-more .t-more').click();
-                await expect(page.locator('tui-dropdown')).toBeVisible();
+                await tabsEO.more.click();
+                await expect(tabsEO.moreDropdown).toBeVisible();
 
                 await page.locator('button:has-text("Collaborators")').nth(1).focus();
                 await page.keyboard.down('Enter');
@@ -95,14 +94,14 @@ describe('Tabs', () => {
 
                 // Still previous one
                 await expect(example).toContainText('Currently active: John Cleese');
-                await expect(page.locator('tui-dropdown')).toHaveCount(2);
+                await expect(tabsEO.moreDropdown).toHaveCount(2);
                 await expect.soft(example).toHaveScreenshot('01-tabs-7.png');
 
                 await page.locator('button:has-text("Neil Innes")').nth(0).focus();
                 await page.keyboard.down('Enter');
 
                 await expect(example).toContainText('Currently active: Neil Innes');
-                await expect(page.locator('tui-dropdown')).not.toBeAttached();
+                await expect(tabsEO.moreDropdown).not.toBeAttached();
                 await expect.soft(example).toHaveScreenshot('01-tabs-8.png');
             });
 
@@ -118,21 +117,19 @@ describe('Tabs', () => {
 
                 await page.setViewportSize({width: 550, height: 700});
 
-                await expect(tabsPO.more).toBeVisible();
+                await expect(tabsEO.more).toBeVisible();
 
-                await tabsPO.more.click();
-                await tabsPO.getMoreOption('Eric Idle').click();
-                await tabsPO.more.click();
-                await tabsPO.getMoreOption('Collaborators').click();
+                await tabsEO.more.click();
+                await tabsEO.getMoreOption('Eric Idle').click();
+                await tabsEO.more.click();
+                await tabsEO.getMoreOption('Collaborators').click();
 
-                await expect(page.locator('tui-dropdown')).toHaveCount(2);
+                await expect(tabsEO.moreDropdown).toHaveCount(2);
                 await expect
                     .soft(page)
                     .toHaveScreenshot('tabs-dropdown-inside-more-dropdown.png');
 
-                await page
-                    .locator('tui-dropdown [tuiOption]', {hasText: 'Carol Cleveland'})
-                    .hover();
+                await tabsEO.getOptionByText('Carol Cleveland').hover();
 
                 await expect
                     .soft(page)

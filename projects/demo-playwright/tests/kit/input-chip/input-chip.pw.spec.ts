@@ -4,7 +4,6 @@ import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputChipEO,
-    TuiMultiSelectEO,
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 import {
@@ -409,7 +408,7 @@ test.describe('InputChip', () => {
 
         test.describe('dropdown', () => {
             test('any value', async () => {
-                const multiselect = new TuiMultiSelectEO(example);
+                const multiselect = new TuiInputChipEO(example);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -425,7 +424,7 @@ test.describe('InputChip', () => {
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -443,7 +442,7 @@ test.describe('InputChip', () => {
                         'Only allowing items from the list and hiding values when not focused behind a custom content',
                 });
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
                 await multiselect.input.fill('eric');
                 await expect(multiselect.dropdown).toBeAttached();
@@ -464,7 +463,7 @@ test.describe('InputChip', () => {
                         'Using checkboxes in the dropdown and making the textfield non-writable',
                 });
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
                 await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
                 await expect(multiselect.dropdown).toBeAttached();
@@ -485,12 +484,13 @@ test.describe('InputChip', () => {
                         'Using checkboxes in the dropdown and making the textfield non-writable',
                 });
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
-                await block.locator('tui-textfield').click();
+                await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
                 await expect(multiselect.dropdown).toBeAttached();
 
-                await multiselect.dropdown.locator('[tuiOption]').nth(0).click();
+                await multiselect.selectOptions([0]);
+
                 await expect(multiselect.chips).toHaveCount(1);
                 await expect(multiselect.dropdown).toBeAttached();
 
@@ -505,7 +505,7 @@ test.describe('InputChip', () => {
                     .locator(TUI_LABEL_LOCATORS.HOST)
                     .filter({hasText: 'Working with objects'});
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
                 await example.scrollIntoViewIfNeeded();
                 await block.locator(TUI_TEXTFIELD_LOCATORS.HOST).click();
@@ -535,7 +535,7 @@ test.describe('InputChip', () => {
                     .locator(TUI_LABEL_LOCATORS.HOST)
                     .filter({hasText: 'Working with objects'});
 
-                const multiselect = new TuiMultiSelectEO(block);
+                const multiselect = new TuiInputChipEO(block);
 
                 const checked = multiselect.dropdown.locator(
                     'input[type="checkbox"]:checked',
