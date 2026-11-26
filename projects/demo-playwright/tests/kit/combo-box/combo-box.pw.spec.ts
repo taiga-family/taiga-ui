@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
+import {TUI_DATA_LIST_LOCATORS, TUI_TEXTFIELD_LOCATORS} from '@taiga-ui/testing/locators';
 
 const {describe, beforeEach} = test;
 
@@ -16,7 +17,7 @@ describe('ComboBox', () => {
 
             example = documentationPage.apiPageExample;
             comboBox = new TuiComboBoxPO(
-                example.locator('tui-textfield:has([tuiComboBox])'),
+                example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiComboBox])`),
             );
         });
 
@@ -30,7 +31,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
+            const option = comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {
                 hasText: 'Austria',
             });
 
@@ -48,7 +49,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austria');
 
-            const option = comboBox.dropdown.locator('[tuiOption]', {
+            const option = comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {
                 hasText: 'Austria',
             });
 
@@ -85,7 +86,9 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.fill('austr');
 
-            await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
+            await expect(
+                comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
+            ).toHaveCount(2);
 
             await page.keyboard.press('Enter');
 
@@ -94,7 +97,9 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.pressSequentially('i');
 
-            await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
+            await expect(
+                comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
+            ).toHaveCount(1);
 
             await page.keyboard.press('Enter');
 
@@ -165,7 +170,7 @@ describe('ComboBox', () => {
 
                 example = documentationPage.getExample('#form-control-output');
                 comboBox = new TuiComboBoxPO(
-                    example.locator('tui-textfield:has([tuiComboBox])'),
+                    example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiComboBox])`),
                 );
             });
 
@@ -186,7 +191,7 @@ describe('ComboBox', () => {
             test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.textfield.click();
                 await comboBox.dropdown
-                    .locator('[tuiOption]', {
+                    .locator(TUI_DATA_LIST_LOCATORS.OPTION, {
                         hasText: 'Eric Idle',
                     })
                     .click();
@@ -210,7 +215,7 @@ describe('ComboBox', () => {
 
                 example = documentationPage.getExample('#server-side-filtering');
                 comboBox = new TuiComboBoxPO(
-                    example.locator('tui-textfield:has([tuiComboBox])'),
+                    example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiComboBox])`),
                 );
             });
 
@@ -220,12 +225,16 @@ describe('ComboBox', () => {
                 await comboBox.textfield.focus();
                 await comboBox.textfield.fill('aUsTrIa');
 
-                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(0);
+                await expect(
+                    comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
+                ).toHaveCount(0);
                 await expect(comboBox.dropdown.locator('tui-loader')).toBeAttached();
 
                 await page.clock.runFor(5_000);
 
-                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
+                await expect(
+                    comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
+                ).toHaveCount(1);
 
                 await expect
                     .soft(comboBox.dropdown)
@@ -245,19 +254,21 @@ describe('ComboBox', () => {
 
                 example = documentationPage.getExample('#virtual-scroll');
                 comboBox = new TuiComboBoxPO(
-                    example.locator('tui-textfield:has([tuiComboBox])'),
+                    example.locator(`${TUI_TEXTFIELD_LOCATORS.HOST}:has([tuiComboBox])`),
                 );
             });
 
             test('textfield keeps already selected option even if option disappears from datalist by scroll', async () => {
-                const option = comboBox.dropdown.locator('[tuiOption]', {
+                const option = comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION, {
                     hasText: 'Afghanistan',
                 });
 
                 await comboBox.textfield.click();
 
                 await expect(async () => {
-                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+                    const count = await comboBox.dropdown
+                        .locator(TUI_DATA_LIST_LOCATORS.OPTION)
+                        .count();
 
                     // assertion for the exact number of options is not reliable
                     expect(count).toBeGreaterThan(10);
@@ -268,7 +279,9 @@ describe('ComboBox', () => {
 
                 await expect(comboBox.textfield).toHaveValue('Afghanistan');
 
-                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(0);
+                await expect(
+                    comboBox.dropdown.locator(TUI_DATA_LIST_LOCATORS.OPTION),
+                ).toHaveCount(0);
                 await expect(comboBox.dropdown).not.toBeAttached();
 
                 await comboBox.textfield.click();
@@ -277,7 +290,9 @@ describe('ComboBox', () => {
                     .evaluate((el) => el.scrollTo(0, 500));
 
                 await expect(async () => {
-                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+                    const count = await comboBox.dropdown
+                        .locator(TUI_DATA_LIST_LOCATORS.OPTION)
+                        .count();
 
                     expect(count).toBeGreaterThan(10);
                     expect(count).toBeLessThan(30);

@@ -2,6 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {type TuiHintOptions} from '@taiga-ui/core';
+import {TUI_AVATAR_LOCATORS, TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
@@ -10,7 +11,7 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.Hint);
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
-        await example.locator('tui-avatar').hover();
+        await example.locator(TUI_AVATAR_LOCATORS.HOST).hover();
 
         await expect.soft(example).toHaveScreenshot('01-hint.png');
     });
@@ -174,7 +175,7 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.Hint);
         const example = new TuiDocumentationPagePO(page).getExample('#customizing');
 
-        await example.locator('tui-avatar').hover();
+        await example.locator(TUI_AVATAR_LOCATORS.HOST).hover();
         await page.waitForTimeout(300);
 
         await expect.soft(example).toHaveScreenshot('07-hint.png');
@@ -188,18 +189,18 @@ test.describe('TuiHint', () => {
 
             await tuiGoto(page, DemoRoute.Hint);
             await example.scrollIntoViewIfNeeded();
-            await example.locator('tui-avatar').click();
+            await example.locator(TUI_AVATAR_LOCATORS.HOST).click();
 
-            const button = page.locator('tui-hint button');
+            const button = page.locator(TUI_HINT_LOCATORS.HOST).locator('button');
 
             await button.click();
             await button.click();
             await button.click();
-            await page.locator('tui-hint').click();
+            await page.locator(TUI_HINT_LOCATORS.HOST).click();
             await expect.soft(page).toHaveScreenshot('09-hint-on-mobile.png');
 
             await example.click();
-            await expect(page.locator('tui-hint')).not.toBeAttached();
+            await expect(page.locator(TUI_HINT_LOCATORS.HOST)).not.toBeAttached();
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
 
@@ -209,10 +210,10 @@ test.describe('TuiHint', () => {
             await tuiGoto(page, DemoRoute.Hint);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const hint = page.locator('tui-hint');
+            const hint = page.locator(TUI_HINT_LOCATORS.HOST);
 
             await example.scrollIntoViewIfNeeded();
-            await example.locator('tui-avatar').click();
+            await example.locator(TUI_AVATAR_LOCATORS.HOST).click();
             await expect(hint).toBeAttached();
 
             await page.locator('body').dispatchEvent('pointerdown');
@@ -224,8 +225,8 @@ test.describe('TuiHint', () => {
             await tuiGoto(page, DemoRoute.Hint);
 
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
-            const avatar = example.locator('tui-avatar');
-            const hint = page.locator('tui-hint');
+            const avatar = example.locator(TUI_AVATAR_LOCATORS.HOST);
+            const hint = page.locator(TUI_HINT_LOCATORS.HOST);
 
             await example.scrollIntoViewIfNeeded();
             await avatar.click();
@@ -243,7 +244,7 @@ test.describe('TuiHint', () => {
 
             const example = new TuiDocumentationPagePO(page).getExample('#example-base');
             const tooltip = example.locator('[tuiTooltip]').first();
-            const hint = page.locator('tui-hint');
+            const hint = page.locator(TUI_HINT_LOCATORS.HOST);
 
             await example.scrollIntoViewIfNeeded();
             await tooltip.click();
