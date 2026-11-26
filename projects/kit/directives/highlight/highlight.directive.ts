@@ -45,7 +45,9 @@ export class TuiHighlight implements OnChanges {
     }
 
     protected get match(): boolean {
-        return this.indexOf(this.el.textContent) !== -1;
+        const query = this.tuiHighlight().toLowerCase();
+
+        return !!query && !!this.el.textContent?.toLowerCase().includes(query);
     }
 
     private updateStyles(): void {
@@ -58,16 +60,17 @@ export class TuiHighlight implements OnChanges {
         this.treeWalker.currentNode = this.el;
 
         do {
-            const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
+            const node = this.treeWalker.currentNode;
+            const offsets = this.getOffsets(node.nodeValue ?? '');
 
-            if (index === -1) {
+            if (!offsets) {
                 continue;
             }
 
             const range = this.doc.createRange();
 
-            range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight().length);
+            range.setStart(node, offsets[0]);
+            range.setEnd(node, offsets[1]);
 
             const hostRect = this.el.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
@@ -84,10 +87,45 @@ export class TuiHighlight implements OnChanges {
         } while (this.treeWalker.nextNode());
     }
 
-    private indexOf(source: string | null): number {
-        return !source || !this.tuiHighlight()
-            ? -1
-            : source.toLowerCase().indexOf(this.tuiHighlight().toLowerCase());
+    private getOffsets(source: string): readonly [number, number] | null {
+        const text = source.toLowerCase();
+        const query = this.tuiHighlight().toLowerCase();
+        const start = text.indexOf(query);
+        const end = start + query.length;
+
+        if (!query || start === -1) {
+            return null;
+        }
+
+        return text.length === source.length
+            ? [start, end]
+            : [
+                  this.toSourceOffset(source, start),
+                  this.toSourceOffset(source, end, true),
+              ];
+    }
+
+    private toSourceOffset(source: string, position: number, roundUp = false): number {
+        let offset = 0;
+        let remaining = position;
+
+        for (const char of source) {
+            const length = char.toLowerCase().length;
+
+            if (remaining < length) {
+                if (!remaining || length === char.length) {
+                    return offset + remaining;
+                }
+
+                // A boundary within an expanded character must include the entire source character.
+                return roundUp ? offset + char.length : offset;
+            }
+
+            remaining -= length;
+            offset += char.length;
+        }
+
+        return offset;
     }
 
     private setUpHighlight(): HTMLElement {
