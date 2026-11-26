@@ -5,6 +5,42 @@ import {expect, type Locator, test} from '@playwright/test';
 const {describe, beforeEach} = test;
 
 describe('Tabs', () => {
+    test('animates the underline when returning from the last visible tab', async ({
+        browserName,
+        page,
+    }) => {
+        test.skip(
+            browserName !== 'chromium',
+            'Regression in Chromium anchor positioning',
+        );
+
+        await page.setViewportSize({width: 1500, height: 700});
+        await page.emulateMedia({reducedMotion: 'no-preference'});
+        await page.goto(DemoRoute.Tabs);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#tabs-with-more');
+        const tabs = example.locator('tui-tabs');
+
+        await tabs.evaluate((element) => {
+            let transitions = 0;
+
+            element.addEventListener('transitionend', ({propertyName, pseudoElement}) => {
+                if (propertyName === 'left' && pseudoElement === '::before') {
+                    element.setAttribute(
+                        'data-underline-transitions',
+                        String(++transitions),
+                    );
+                }
+            });
+        });
+
+        await tabs.getByRole('button', {name: 'Settings'}).click();
+        await expect(tabs).toHaveAttribute('data-underline-transitions', '1');
+
+        await tabs.getByRole('button', {name: 'Maps'}).click();
+        await expect(tabs).toHaveAttribute('data-underline-transitions', '2');
+    });
+
     describe('Examples', () => {
         beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.Tabs);

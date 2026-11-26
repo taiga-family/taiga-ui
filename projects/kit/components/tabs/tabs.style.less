@@ -45,7 +45,7 @@
         margin-inline-start: 0;
     }
 
-    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
+    tui-tabs > :is([tuiTab], .t-tab:not(.t-overflown)) ~ :not(.t-overflown) > &:first-child {
         margin-inline-start: var(--tui-tab-margin, 1.5rem);
     }
 

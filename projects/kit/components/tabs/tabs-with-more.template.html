@@ -6,16 +6,12 @@
     (keydown.arrowRight)="onArrowRight($event)"
 >
     @for (item of items(); track item) {
-        @if ($index <= lastVisibleIndex) {
+        <div
+            class="t-tab"
+            [class.t-overflown]="shouldShow($index)"
+        >
             <ng-container [ngTemplateOutlet]="item" />
-        } @else {
-            <div
-                class="t-flex"
-                [class.t-overflown]="isOverflown($index)"
-            >
-                <ng-container [ngTemplateOutlet]="item" />
-            </div>
-        }
+        </div>
     }
 </tui-tabs>
 
