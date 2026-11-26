@@ -16,6 +16,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintAnchored} from './hint-anchored.directive';
+import {TuiHintArrow} from './hint-arrow.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TuiHintPointer} from './hint-pointer.directive';
 
@@ -28,11 +29,21 @@ import {TuiHintPointer} from './hint-pointer.directive';
             *polymorpheusOutlet="content() as text; context: hint.context()"
             [innerHTML]="text"
         ></span>
+        <span class="t-arrow t-arrow_top"></span>
+        <span class="t-arrow t-arrow_left t-arrow_horizontal"></span>
+        <span class="t-arrow t-arrow_right t-arrow_horizontal"></span>
+        <span class="t-arrow t-arrow_bottom"></span>
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's'})],
-    hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone, TuiHintAnchored],
+    hostDirectives: [
+        TuiAppearance,
+        TuiAnimated,
+        TuiActiveZone,
+        TuiHintAnchored,
+        TuiHintArrow,
+    ],
     host: {
         role: 'tooltip',
         '[attr.tuiTheme]': 'theme',

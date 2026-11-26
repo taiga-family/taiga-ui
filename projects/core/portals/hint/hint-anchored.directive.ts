@@ -21,6 +21,7 @@ import {map, takeWhile} from 'rxjs';
 import {TuiHintDirective} from './hint.directive';
 import {TUI_HINT_OFFSET} from './hint.providers';
 import {TuiHintHover} from './hint-hover.directive';
+import {TuiHintPosition} from './hint-position.directive';
 
 const GAP = 8;
 
@@ -32,7 +33,12 @@ const GAP = 8;
         tuiProvideAccessor(TuiPositionAccessor, 'hint'),
         tuiProvideAccessor(TuiRectAccessor, 'hint'),
     ],
-    host: {'[style.--t-arrow.px]': 'offset.arrow * 2'},
+    host: {
+        '[class._anchored]': 'anchored',
+        '[style.--t-arrow.px]': 'offset.arrow * 2',
+        '[style.--t-centered]': 'position.centered() ? "anchor(center)" : "initial"',
+        '[style.--t-offset.px]': 'offset.bubble',
+    },
 })
 export class TuiHintAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -53,6 +59,7 @@ export class TuiHintAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly position = inject(TuiHintPosition);
     protected readonly offset = inject(TUI_HINT_OFFSET);
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&

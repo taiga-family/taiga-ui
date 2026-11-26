@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
@@ -13,6 +14,7 @@ import {type TuiPoint} from '@taiga-ui/core/types';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_HINT_OFFSET} from './hint.providers';
+import {TUI_HINT_ANCHOR} from './hint-anchor.directive';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
@@ -26,6 +28,7 @@ const LEFT = 0;
 @Directive({providers: [tuiAsPositionAccessor(TuiHintPosition)]})
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
+    private readonly anchor = inject(TUI_HINT_ANCHOR);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly offsets = inject(TUI_HINT_OFFSET);
@@ -49,6 +52,20 @@ export class TuiHintPosition extends TuiPositionAccessor {
     );
 
     public readonly type = 'hint';
+
+    public override position(element: HTMLElement): void {
+        Object.assign(element.style, {
+            position: 'fixed',
+            visibility: 'visible',
+            top: '10000rem',
+            positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
+            positionTryFallbacks: [
+                ...new Set(coerceArray(this.direction()).concat(TUI_HINT_DIRECTIONS)),
+            ]
+                .map((direction) => `--t-${direction}`)
+                .join(', '),
+        });
+    }
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
