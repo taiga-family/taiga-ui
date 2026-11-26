@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    INJECTOR,
     TemplateRef,
     viewChild,
 } from '@angular/core';
@@ -26,12 +27,12 @@ import {TuiDropdownSheet} from './dropdown-sheet.directive';
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiSheetDialogService],
 })
 export class TuiDropdownSheetComponent {
     private readonly content = viewChild(TemplateRef);
     private readonly dialogs = inject(TuiSheetDialogService);
     private readonly directive = inject(TuiDropdownSheet);
+    private readonly injector = inject(INJECTOR);
 
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
@@ -40,7 +41,7 @@ export class TuiDropdownSheetComponent {
         .pipe(
             tuiIfMap((content) =>
                 this.dialogs
-                    .open(content, this.directive.tuiDropdownSheet())
+                    .open(content, this.directive.tuiDropdownSheet(), this.injector)
                     .pipe(finalize(() => this.dropdown.toggle(false))),
             ),
             takeUntilDestroyed(),
