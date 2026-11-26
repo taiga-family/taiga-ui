@@ -189,4 +189,27 @@
             </tbody>
         </table>
     </ng-template>
+
+    <ng-template pageTab="Signal Forms">
+        <p>
+            With
+            <code>[formField]</code>
+            (Angular 22+), define the slider limits with
+            <code>min()</code>
+            and
+            <code>max()</code>
+            in the
+            <a
+                href="https://angular.dev/guide/forms/signals/form-logic#associate-data-with-a-field-using-metadata"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                form schema
+            </a>
+            . Angular applies these limits to the native range input.
+        </p>
+
+        <tui-doc-code [code]="signalFormsDemo" />
+    </ng-template>
 </tui-doc-page>
