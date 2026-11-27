@@ -1,5 +1,6 @@
-import {Node, ts} from 'ng-morph';
+import {getImports, type ImportSpecifier, Node, ts} from 'ng-morph';
 
+import {ALL_TS_FILES} from '../../constants';
 import {type TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
@@ -39,37 +40,34 @@ export function replaceIdentifiers(
 }
 
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
-    const references = toArray(from)
-        .map(({name, moduleSpecifier}) => getNamedImportReferences(name, moduleSpecifier))
-        .flat();
+    toArray(from).forEach(({name, moduleSpecifier}) => {
+        const references = getNamedImportReferences(name, moduleSpecifier);
+        let hasStaleReference = false;
 
-    references.forEach((ref) => {
-        if (ref.wasForgotten()) {
-            return;
-        }
-
-        const parent = ref.getParent();
-
-        if (Node.isImportSpecifier(parent)) {
-            const targets = toArray(to);
-            const [target] = targets;
-
-            const alreadyImported =
-                targets.length === 1 &&
-                !!target &&
-                !target.namedImport &&
-                target.name === parent.getName() &&
-                target.moduleSpecifier ===
-                    parent.getImportDeclaration().getModuleSpecifierValue();
-
-            // A `removeSpread` entry keeps the same name and module, so the import
-            // is already correct — only the `...` usage needs rewriting. Skip the
-            // remove/re-add churn that would otherwise relocate an untouched import.
-            if (!alreadyImported) {
-                removeImport(parent);
-                addImports(to, parent.getSourceFile().getFilePath());
+        references.forEach((ref) => {
+            if (ref.wasForgotten()) {
+                return;
             }
-        } else {
+
+            const parent = ref.getParent();
+
+            if (Node.isImportSpecifier(parent)) {
+                moveImportSpecifier(parent, to);
+
+                return;
+            }
+
+            // A stale reference from an earlier edit (e.g. addUniqueImport on the same
+            // declaration) can report its parent as NamedImports/ImportClause instead of
+            // ImportSpecifier, with unreliable ancestor navigation. Defer to a fresh lookup
+            // below instead of rewriting it in place — the case that left TuiMultiSelect /
+            // TuiComboBox stuck in @taiga-ui/legacy.
+            if (isImportContext(parent)) {
+                hasStaleReference = true;
+
+                return;
+            }
+
             const decorator = ref.getParentWhile(
                 (node) => node.getKindName() !== 'Decorator',
             );
@@ -81,6 +79,66 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
             const removeSpread = toArray(to).some((x) => x.removeSpread);
 
             replaceReference(ref, getReplacements(to, inModule), removeSpread);
+        });
+
+        // Pay the whole-project scan only when a stale reference actually blocked the cheap
+        // path above; otherwise the reference loop already moved the import. Keeps the common
+        // case reference-local instead of re-reading every file's imports per entry.
+        if (hasStaleReference && moduleSpecifier) {
+            rewriteImportDeclarations(name, moduleSpecifier, to);
+        }
+    });
+}
+
+function isImportContext(parent: Node | undefined): boolean {
+    const kind = parent?.getKindName();
+
+    return kind === 'NamedImports' || kind === 'ImportClause';
+}
+
+function moveImportSpecifier(
+    specifier: ImportSpecifier,
+    to: ReplacementIdentifierMulti['to'],
+): void {
+    const targets = toArray(to);
+    const [target] = targets;
+
+    const alreadyImported =
+        targets.length === 1 &&
+        !!target &&
+        !target.namedImport &&
+        target.name === specifier.getName() &&
+        target.moduleSpecifier ===
+            specifier.getImportDeclaration().getModuleSpecifierValue();
+
+    // A `removeSpread` entry keeps the same name and module, so the import is already
+    // correct — only the `...` usage needs rewriting. Skip the remove/re-add churn that
+    // would otherwise relocate an untouched import.
+    if (!alreadyImported) {
+        removeImport(specifier);
+        addImports(to, specifier.getSourceFile().getFilePath());
+    }
+}
+
+function rewriteImportDeclarations(
+    name: string,
+    moduleSpecifier: string[] | string,
+    to: ReplacementIdentifierMulti['to'],
+): void {
+    const declarations = getImports(ALL_TS_FILES, {
+        namedImports: [name],
+        moduleSpecifier: Array.isArray(moduleSpecifier)
+            ? moduleSpecifier
+            : [moduleSpecifier, `${moduleSpecifier}/**`],
+    });
+
+    declarations.forEach((declaration) => {
+        const specifier = declaration
+            .getNamedImports()
+            .find((namedImport) => namedImport.getName() === name);
+
+        if (specifier) {
+            moveImportSpecifier(specifier, to);
         }
     });
 }
