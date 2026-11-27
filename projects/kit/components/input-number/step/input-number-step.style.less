@@ -104,4 +104,12 @@ tui-textfield {
     [tuiInputNumberV='@{tui-version}']._with-buttons ~ .t-content {
         margin-inline-end: var(--t-input-number-offset-end);
     }
+
+    &[style*='--t-icon-end:']:has(> [tuiInputNumberV='@{tui-version}']._with-buttons) {
+        padding-inline-end: calc(var(--t-padding) + var(--t-input-number-offset-end));
+
+        > .t-content {
+            margin-inline-end: 0;
+        }
+    }
 }
