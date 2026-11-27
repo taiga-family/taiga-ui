@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
+import {TuiOption, TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
@@ -18,9 +18,11 @@ import {
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
+import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
+
 @Component({
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
-    imports: [TuiLink],
+    imports: [TuiLink, TuiMultiSelectOption, TuiOption],
     templateUrl: './multi-select-group.template.html',
     styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,16 +38,14 @@ export class TuiMultiSelectGroupComponent<T> {
     protected readonly values = computed(() => this.options().map(({value}) => value()));
     protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
+    protected readonly checked = computed(() => this.values().every(this.isSelected));
 
-    protected readonly checked = computed(() =>
-        this.values().every((item) =>
-            this.value()?.some(
-                (v) => tuiIsPresent(item) && this.handlers.identityMatcher()(item, v),
-            ),
-        ),
+    protected readonly indeterminate = computed(
+        () => !this.checked() && this.values().some(this.isSelected),
     );
 
-    public readonly label = input('');
+    // Omitted or undefined `label` renders the select-all checkbox.
+    public readonly label = input<string | undefined>();
 
     protected toggle(): void {
         const values = this.values().filter(tuiIsPresent);
@@ -61,4 +61,10 @@ export class TuiMultiSelectGroupComponent<T> {
             this.control?.control?.setValue(next);
         }
     }
+
+    private readonly isSelected = (item: T | undefined): boolean => {
+        const matcher = this.handlers.identityMatcher();
+
+        return tuiIsPresent(item) && !!this.value()?.some((v) => matcher(item, v));
+    };
 }

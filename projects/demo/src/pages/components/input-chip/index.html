@@ -85,6 +85,13 @@
                         @case (9) {
                             <span>Using virtual scroll to improve UX when working with large amount of items.</span>
                         }
+                        @case (11) {
+                            Pass an empty array with
+                            <code>[labels]="[]"</code>
+                            and wrap the single group in an outer array with
+                            <code>[items]="[items]"</code>
+                            to provide a checkbox for selecting the entire group.
+                        }
                     }
                 </ng-template>
             </tui-doc-example>
