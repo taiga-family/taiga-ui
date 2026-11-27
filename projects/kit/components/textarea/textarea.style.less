@@ -3,6 +3,7 @@
 @top-m-label: calc(0.5rem + var(--t-height) / 3);
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
 
+// stylelint-disable plugin/use-baseline -- graceful degradation
 tui-textarea-content:where(*&) {
     order: 1;
     inline-size: calc(100% - var(--t-start) - var(--t-end) - var(--t-side));
@@ -13,6 +14,14 @@ tui-textarea-content:where(*&) {
     scrollbar-width: thin;
     visibility: hidden;
     box-sizing: content-box;
+
+    &[tuiScrollRef] {
+        // The controls are descendants of this scroller and can use its timelines directly.
+        timeline-scope: none;
+        scroll-timeline:
+            --t-textarea-x x,
+            --t-textarea-y y;
+    }
 
     tui-textfield._with-label[data-size='m'] & {
         margin-block-start: calc(-1.25 * var(--tui-font-offset) - 1.375rem);
@@ -44,6 +53,15 @@ tui-textarea-content:where(*&) {
         inset: 0.25rem 0;
         min-block-size: 0;
         visibility: visible;
+        animation-timeline: --t-textarea-x, --t-textarea-y;
+
+        .t-bar_vertical .t-thumb {
+            animation-timeline: --t-textarea-y;
+        }
+
+        .t-bar.t-bar_horizontal .t-thumb {
+            animation-timeline: --t-textarea-x;
+        }
 
         tui-textfield._with-label[data-size='m'] & {
             inset-block-start: @top-m-label;
@@ -65,7 +83,6 @@ tui-textarea-content:where(*&) {
         box-sizing: content-box;
         overflow: hidden;
         color: transparent;
-        view-timeline: --t-scrollbar-y y;
         visibility: visible;
 
         &::after {

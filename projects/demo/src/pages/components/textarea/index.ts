@@ -25,7 +25,14 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    protected readonly examples = ['Basic', 'Limit', 'Custom highlight', 'Icons'];
+    protected readonly examples = [
+        'Basic',
+        'Limit',
+        'Custom highlight',
+        'Icons',
+        'Dialog',
+    ];
+
     protected readonly control = new FormControl(null);
     protected min = this.options.min;
     protected max = this.options.max;
