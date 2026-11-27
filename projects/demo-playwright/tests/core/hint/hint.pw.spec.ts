@@ -245,11 +245,21 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.HintManual);
 
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const hint = page.locator(TUI_HINT_LOCATORS.HOST);
+        const isRendered = async (): Promise<boolean> =>
+            hint.evaluate((el) => {
+                const {x, y, width, height} = el.getBoundingClientRect();
+
+                return el.contains(
+                    document.elementFromPoint(x + width / 2, y + height / 2),
+                );
+            });
 
         await example.locator('button').click();
-        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
+        await expect.poll(isRendered).toBe(true);
+
         await page.locator('#basic tui-segmented button').last().click();
-        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).not.toBeAttached();
+        await expect.poll(isRendered).toBe(false);
     });
 
     test('works with a zero-sized host', async ({page}) => {

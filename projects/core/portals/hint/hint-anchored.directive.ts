@@ -65,7 +65,7 @@ export class TuiHintAnchored implements AfterViewInit {
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
         this.viewport.type === 'window' &&
-        tuiIsHTMLElement(this.directive.el);
+        (this.directive.el.matches('svg') || tuiIsHTMLElement(this.directive.el));
 
     protected readonly sub = inject(TuiHoveredService)
         .pipe(takeUntilDestroyed())
