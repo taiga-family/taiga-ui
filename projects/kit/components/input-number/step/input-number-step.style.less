@@ -1,9 +1,8 @@
-/*
-TODO: if :has() is supported by all browsers
- - use tui-textfield:has([tuiInputNumber]) .t-input-number {...}
- - rename .t-input-number-buttons => .t-buttons
- */
 tui-textfield:where(*&) {
+    &:has(> [tuiInputNumber]._with-buttons) {
+        padding-inline-end: calc(var(--t-padding) + var(--t-input-number-offset-end));
+    }
+
     .t-input-number-buttons.t-input-number-buttons {
         position: absolute;
         display: flex;
@@ -44,11 +43,6 @@ tui-textfield:where(*&) {
         }
     }
 
-    /*
-TODO: if :has() is supported by all browsers
- - use tui-textfield:has([tuiInputNumber]) {...}
- - rename --t-input-number-offset-end => --t-offset-end
- */
     &[data-size='l'] {
         .t-input-number-buttons.t-input-number-buttons {
             > * {
@@ -98,9 +92,5 @@ TODO: if :has() is supported by all browsers
 [tuiInputNumber]._with-buttons:where(*&),
 [tuiInputNumber]._with-buttons ~ .t-template {
     inline-size: calc(100% - var(--t-input-number-offset-end));
-    margin-inline-end: var(--t-input-number-offset-end);
-}
-
-[tuiInputNumber]:where(*&)._with-buttons ~ .t-content {
     margin-inline-end: var(--t-input-number-offset-end);
 }
