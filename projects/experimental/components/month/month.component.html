@@ -23,6 +23,7 @@
                 </button>
             }
             <button
+                #button
                 tabindex="-1"
                 type="button"
                 class="t-day"
@@ -31,10 +32,11 @@
                 [class.t-day_adjacent]="day.month !== month().month"
                 [class.t-day_end]="$last"
                 [class.t-day_hidden]="day.monthBefore(month()) && !showAdjacent()"
+                [class.t-day_hover]="isPreliminary(day)"
                 [class.t-day_start]="$first"
                 [class.t-day_today]="day.daySame(today)"
                 [disabled]="disabledItemHandler()(day)"
-                (click)="pick.emit(day)"
+                (click)="onClick(day, button)"
                 (mouseenter)="hovered.set(day)"
                 (pointerdown.prevent.zoneless)="(0)"
             >
