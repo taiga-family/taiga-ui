@@ -209,3 +209,9 @@
     inset-block: min(var(--t-centered, anchor(start)), calc(anchor(center) - var(--t-arrow) / 2)) auto;
     inset-inline: auto anchor(start);
 }
+
+@position-try --t-fallback {
+    margin: var(--t-offset) var(--t-offset) -10000rem;
+    inset-block: anchor(end) auto;
+    justify-self: anchor-center;
+}

@@ -24,6 +24,22 @@ import {
 const GAP = 8;
 const TOP = 1;
 const LEFT = 0;
+const COMPLEMENTARY: Record<TuiHintDirection, readonly TuiHintDirection[]> = {
+    'bottom-start': ['top-start', 'bottom-end', 'top-end'],
+    'bottom-end': ['top-end', 'bottom-start', 'top-start'],
+    'top-start': ['bottom-start', 'top-end', 'bottom-end'],
+    'top-end': ['bottom-end', 'top-start', 'bottom-start'],
+
+    'end-top': ['start-top', 'end-bottom', 'start-bottom'],
+    'end-bottom': ['start-bottom', 'end-top', 'start-top'],
+    'start-top': ['end-top', 'start-bottom', 'end-bottom'],
+    'start-bottom': ['end-bottom', 'start-top', 'end-top'],
+
+    bottom: ['top', 'end', 'start'],
+    top: ['bottom', 'end', 'start'],
+    end: ['start', 'bottom', 'top'],
+    start: ['end', 'bottom', 'top'],
+};
 
 @Directive({providers: [tuiAsPositionAccessor(TuiHintPosition)]})
 export class TuiHintPosition extends TuiPositionAccessor {
@@ -62,11 +78,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             visibility: 'visible',
             top: '10000rem',
             positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
-            positionTryFallbacks: [
-                ...new Set(coerceArray(this.direction()).concat(TUI_HINT_DIRECTIONS)),
-            ]
-                .map((direction) => `--t-${direction}`)
-                .join(', '),
+            positionTryFallbacks: getFallbacks(coerceArray(this.direction())),
         });
     }
 
@@ -153,4 +165,17 @@ function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
     return rtl && direction.includes('right')
         ? (direction.replace('right', 'left') as TuiHintDirection)
         : direction;
+}
+
+function getFallbacks(fallbacks: readonly TuiHintDirection[]): string {
+    const preferred = fallbacks.slice(0, 4);
+    const complementary = ([0, 1, 2] as const).flatMap((i) =>
+        preferred.map((direction) => COMPLEMENTARY[direction][i]),
+    );
+
+    return [...new Set([...preferred, ...complementary])]
+        .slice(0, 4)
+        .map((direction) => `--t-${direction}`)
+        .concat('--t-fallback')
+        .join(', ');
 }
