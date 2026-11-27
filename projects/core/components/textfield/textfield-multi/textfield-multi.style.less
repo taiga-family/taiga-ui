@@ -8,6 +8,8 @@ tui-textfield[multi][multi]:where(*&) {
     max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
     overscroll-behavior-x: none;
     scroll-behavior: var(--tui-scroll-behavior);
+    // stylelint-disable-next-line plugin/use-baseline -- graceful degradation
+    scroll-timeline: --t-textfield-y y;
 
     &._horizontal {
         // stylelint-disable-next-line declaration-property-value-disallowed-list -- fallbacks for Firefox and Safari below
@@ -53,10 +55,15 @@ tui-textfield[multi][multi]:where(*&) {
         transform: translateX(calc(var(--t-padding) * var(--tui-inline)));
         margin-inline-start: calc(-1 * var(--t-start));
         margin-inline-end: calc(1px - 100% + var(--t-start));
+        animation-timeline: none, --t-textfield-y;
 
         .t-bar_horizontal {
             // Safari shows horizontal scrollbar in vertical mode
             display: none;
+        }
+
+        .t-bar_vertical .t-thumb {
+            animation-timeline: --t-textfield-y;
         }
     }
 
@@ -74,7 +81,6 @@ tui-textfield[multi][multi]:where(*&) {
         padding: var(--t-vertical) 0;
         transition-duration: inherit;
         box-sizing: border-box;
-        view-timeline: --t-scrollbar-y y;
 
         &::after {
             content: '';
