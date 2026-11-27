@@ -32,6 +32,20 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('02-dropdown.png');
     });
 
+    test('closes regular dropdown when textfield loses focus', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Input);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
+        const input = example.locator('tui-textfield').nth(1).locator('input');
+        const dropdown = page.locator(TUI_DROPDOWN_LOCATORS.HOST).filter({visible: true});
+
+        await input.click();
+        await expect(dropdown).toHaveCount(1);
+
+        await input.blur();
+        await expect(dropdown).toHaveCount(0);
+    });
+
     test('Appearance', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#appearance');
