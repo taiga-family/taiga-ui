@@ -237,6 +237,34 @@ describe('InputNumber', () => {
         describe('[step] prop', () => {
             test.use({viewport: {width: 350, height: 500}});
 
+            test('keeps the end icon inside the readonly input', async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputNumber}/API?iconEnd=@tui.search&step=1&readonly=true`,
+                );
+                await inputNumber.textfield.scrollIntoViewIfNeeded();
+
+                await expect
+                    .poll(async () =>
+                        inputNumber.textfield.evaluate((input) => {
+                            const host = input.closest('tui-textfield');
+                            const {right, top, height} = input.getBoundingClientRect();
+                            const iconWidth = Number.parseFloat(
+                                getComputedStyle(host!, '::after').width,
+                            );
+
+                            // Hit-testing the ::after icon returns its host.
+                            return (
+                                document.elementFromPoint(
+                                    right - iconWidth / 2,
+                                    top + height / 2,
+                                ) === host
+                            );
+                        }),
+                    )
+                    .toBe(true);
+            });
+
             describe('[step]=1 & initially empty textfield', () => {
                 beforeEach(async ({page}) => {
                     await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=1`);
