@@ -64,7 +64,6 @@ export class TuiMonthComponent {
         }
 
         const hovered = this.hovered();
-
         const range =
             value.from === value.to && hovered
                 ? TuiDayRange.sort(hovered, value.to)
@@ -87,6 +86,25 @@ export class TuiMonthComponent {
 
     protected getType(day: string): string {
         return day === this.days()[5] || day === this.days()[6] ? 'weekend' : '';
+    }
+
+    protected isPreliminary(day: TuiDay): boolean {
+        const hovered = this.hovered();
+        const value = this.value();
+
+        return (
+            !!hovered &&
+            day.daySame(hovered) &&
+            value instanceof TuiDayRange &&
+            value.isSingleDay &&
+            !value.from.daySame(day)
+        );
+    }
+
+    protected onClick(day: TuiDay, button: HTMLElement): void {
+        button.classList.remove('t-day_hover');
+        this.hovered.set(null);
+        this.pick.emit(day);
     }
 }
 

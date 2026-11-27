@@ -62,6 +62,8 @@
     }
 
     &::before {
+        .transition(~'background, box-shadow', @tui-duration-fastest);
+
         content: '';
         position: absolute;
         inset: 50%;
@@ -113,8 +115,8 @@
     }
 
     &[data-range='single'],
-    &[data-range='start'],
-    &[data-range='end'] {
+    &[data-range='start']:not(.t-day_hover),
+    &[data-range='end']:not(.t-day_hover) {
         color: var(--tui-text-primary-on-accent-1);
 
         ::ng-deep [tuiSubtitle] {
@@ -145,13 +147,17 @@
     }
 
     @media @tui-mouse {
+        &.t-day_hover::before {
+            background: var(--tui-background-neutral-1);
+        }
+
         &:hover::before {
             background: var(--tui-background-neutral-1-hover);
         }
 
         &[data-range='single']:hover::before,
-        &[data-range='start']:hover::before,
-        &[data-range='end']:hover::before {
+        &[data-range='start']:not(.t-day_hover):hover::before,
+        &[data-range='end']:not(.t-day_hover):hover::before {
             background: var(--tui-background-accent-1-hover);
         }
     }
@@ -161,8 +167,8 @@
     }
 
     &[data-range='single']:active::before,
-    &[data-range='start']:active::before,
-    &[data-range='end']:active::before {
+    &[data-range='start']:not(.t-day_hover):active::before,
+    &[data-range='end']:not(.t-day_hover):active::before {
         background: var(--tui-background-accent-1-pressed);
     }
 }
