@@ -161,6 +161,7 @@
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "14.0.1",
         "nx": "22.1.1",
+        "postcss-less": "7.0.1",
         "rxjs": "7.8.2",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
