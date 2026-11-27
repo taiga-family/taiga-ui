@@ -25,8 +25,8 @@ export class TuiHintArrow implements AfterViewInit {
         const rotate = arrow.classList.contains('t-arrow_horizontal') ? '90deg' : '0deg';
         const rect = arrow.getBoundingClientRect();
         const {left, top} = this.el.getBoundingClientRect();
-        const x = rect.left + arrow.clientWidth / 2 - left;
-        const y = rect.top + arrow.clientHeight / 2 - top;
+        const x = rect.left + rect.width / 2 - left;
+        const y = rect.top + rect.height / 2 - top;
 
         this.el.style.setProperty('--t-top', `${y}px`);
         this.el.style.setProperty('--t-left', `${x}px`);
