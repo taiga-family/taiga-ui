@@ -62,6 +62,7 @@ function wrap(renderer: Renderer2): void {
         }
 
         el.classList.remove(TUI_ENTER);
+        el.dispatchEvent(new CustomEvent(TUI_LEAVE));
 
         const {length} = getAnimations(el);
 
@@ -69,7 +70,6 @@ function wrap(renderer: Renderer2): void {
 
         const animations = getAnimations(el);
         const last = animations[animations.length - 1];
-
         const finish = (): void => {
             if (!parent || parent.contains(el)) {
                 removeChild.call(renderer, parent, el, host);

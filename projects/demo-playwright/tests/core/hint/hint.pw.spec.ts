@@ -1,10 +1,23 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 import {type TuiHintOptions} from '@taiga-ui/core';
 import {TUI_HINT_LOCATORS} from '@taiga-ui/testing/locators';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
+async function isRendered(hint: Locator): Promise<boolean> {
+    // CSS position-visibility can hide a hint while leaving it in the DOM.
+    return hint.evaluateAll((elements) =>
+        elements.some((el) => {
+            const {x, y, width, height} = el.getBoundingClientRect();
+
+            return el.contains(
+                el.ownerDocument.elementFromPoint(x + width / 2, y + height / 2),
+            );
+        }),
+    );
+}
 
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {
@@ -182,8 +195,10 @@ test.describe('TuiHint', () => {
             await page.locator(TUI_HINT_LOCATORS.HOST).click();
             await expect.soft(page).toHaveScreenshot('09-hint-on-mobile.png');
 
-            await example.click();
-            await expect(page.locator('tui-hint')).not.toBeAttached();
+            await page.locator('body').dispatchEvent('pointerdown');
+            await expect
+                .poll(async () => isRendered(page.locator('tui-hint')))
+                .toBe(false);
             await expect.soft(page).toHaveScreenshot('10-hint-on-mobile.png');
         });
 
@@ -197,11 +212,11 @@ test.describe('TuiHint', () => {
 
             await example.scrollIntoViewIfNeeded();
             await example.locator('[tuiAvatar]').click();
-            await expect(hint).toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(true);
 
             await page.locator('body').dispatchEvent('pointerdown');
 
-            await expect(hint).not.toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(false);
         });
 
         test('Shows again after being hidden without hover out', async ({page}) => {
@@ -213,13 +228,13 @@ test.describe('TuiHint', () => {
 
             await example.scrollIntoViewIfNeeded();
             await avatar.click();
-            await expect(hint).toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(true);
 
             await page.locator('body').dispatchEvent('pointerdown');
-            await expect(hint).not.toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(false);
 
             await avatar.click();
-            await expect(hint).toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(true);
         });
 
         test('Tooltip opens on tap and hides on tap outside', async ({page}) => {
@@ -231,13 +246,13 @@ test.describe('TuiHint', () => {
 
             await example.scrollIntoViewIfNeeded();
             await tooltip.click();
-            await expect(hint).toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(true);
 
             await page.locator('body').dispatchEvent('pointerdown');
-            await expect(hint).not.toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(false);
 
             await tooltip.click();
-            await expect(hint).toBeAttached();
+            await expect.poll(async () => isRendered(hint)).toBe(true);
         });
     });
 
@@ -245,11 +260,13 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.HintManual);
 
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const hint = page.locator(TUI_HINT_LOCATORS.HOST);
 
         await example.locator('button').click();
-        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).toBeAttached();
+        await expect.poll(async () => isRendered(hint)).toBe(true);
+
         await page.locator('#basic tui-segmented button').last().click();
-        await expect(page.locator(TUI_HINT_LOCATORS.HOST)).not.toBeAttached();
+        await expect.poll(async () => isRendered(hint)).toBe(false);
     });
 
     test('works with a zero-sized host', async ({page}) => {

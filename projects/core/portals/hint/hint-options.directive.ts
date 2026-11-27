@@ -32,7 +32,7 @@ export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
 
 /** TODO: remove optionality in v6 */
 export interface TuiHintOptions extends TuiAppearanceOptions {
-    readonly direction: TuiHintDirection | TuiHintDirection[];
+    readonly direction: TuiHintDirection | readonly TuiHintDirection[];
     readonly centered?: boolean;
     readonly hideDelay: number;
     readonly icon: string;
@@ -41,7 +41,7 @@ export interface TuiHintOptions extends TuiAppearanceOptions {
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS = {
-    direction: 'bottom-start',
+    direction: ['bottom-start', 'top-start', 'bottom-end', 'top-end'] as const,
     centered: true,
     showDelay: 500,
     hideDelay: 200,

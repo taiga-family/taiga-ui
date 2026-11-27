@@ -2,7 +2,7 @@ import {type AfterViewInit, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -21,6 +21,7 @@ import {map, takeWhile} from 'rxjs';
 import {TuiHintDirective} from './hint.directive';
 import {TUI_HINT_OFFSET} from './hint.providers';
 import {TuiHintHover} from './hint-hover.directive';
+import {TuiHintPosition} from './hint-position.directive';
 
 const GAP = 8;
 
@@ -32,7 +33,12 @@ const GAP = 8;
         tuiProvideAccessor(TuiPositionAccessor, 'hint'),
         tuiProvideAccessor(TuiRectAccessor, 'hint'),
     ],
-    host: {'[style.--t-arrow.px]': 'offset.arrow * 2'},
+    host: {
+        '[class._anchored]': 'anchored',
+        '[style.--t-arrow.px]': 'offset.arrow * 2',
+        '[style.--t-centered]': 'position.centered() ? "anchor(center)" : "initial"',
+        '[style.--t-offset.px]': 'offset.bubble',
+    },
 })
 export class TuiHintAnchored implements AfterViewInit {
     private readonly el = tuiInjectElement();
@@ -53,11 +59,13 @@ export class TuiHintAnchored implements AfterViewInit {
         takeUntilDestroyed(),
     );
 
+    protected readonly position = inject(TuiHintPosition);
     protected readonly offset = inject(TUI_HINT_OFFSET);
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
-        this.viewport.type === 'window';
+        this.viewport.type === 'window' &&
+        (this.directive.el.matches('svg') || tuiIsHTMLElement(this.directive.el));
 
     protected readonly sub = inject(TuiHoveredService)
         .pipe(takeUntilDestroyed())

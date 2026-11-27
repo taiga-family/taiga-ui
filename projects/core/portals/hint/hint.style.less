@@ -1,7 +1,10 @@
 @import '@taiga-ui/styles/utils';
 
+// stylelint-disable plugin/use-baseline -- graceful degradation
+// stylelint-disable at-rule-allowed-list -- graceful degradation
 :host {
     position: absolute;
+    position-visibility: anchor-valid;
     inline-size: max-content;
     max-inline-size: ~'min(20rem, calc(100% - 1rem))';
     padding: 0.75rem 1rem;
@@ -14,6 +17,7 @@
     overflow-wrap: break-word;
     transform-origin: var(--t-left) var(--t-top);
     isolation: isolate;
+    anchor-name: --t-hint;
 
     --tui-background-elevation-2: var(--tui-background-elevation-3);
     --tui-scale: 0.5;
@@ -31,19 +35,18 @@
             tuiScale @tui-duration-fast var(--tui-curve-expressive-standard) reverse;
     }
 
+    .t-arrow,
     &::before {
         content: '';
         position: absolute;
+        inset: var(--t-top) auto auto var(--t-left);
         z-index: -1;
-        inset-block-start: var(--t-top);
-        inset-inline-start: var(--t-left);
         inline-size: var(--t-arrow);
         block-size: var(--t-arrow);
         background-color: inherit;
         mask-image: var(--t-image);
         mask-repeat: no-repeat;
         mask-position: center;
-        transition: none;
         margin: calc(-0.5 * var(--t-arrow));
         rotate: var(--t-rotate);
         pointer-events: none;
@@ -90,4 +93,124 @@
             margin: 1rem 0 0.25rem;
         }
     }
+
+    .t-arrow {
+        position: fixed;
+        position-anchor: inherit;
+        margin: 0;
+
+        --start: ~'calc(1 - sign(abs(anchor(start) - anchor(--t-hint start))))';
+        --end: ~'calc(1 - sign(abs(anchor(end) - anchor(--t-hint end))))';
+        --position: calc((anchor(start) + var(--t-arrow) / 2) * var(--start) + (anchor(end) - var(--t-arrow) / 2) * var(--end) * (1 - var(--start)) + anchor(center) * (1 - var(--start)) * (1 - var(--end)));
+
+        &_top,
+        &_bottom {
+            block-size: auto;
+            translate: calc(var(--tui-inline) * -50%) 0;
+            rotate: none;
+            inset-block: calc(2 * anchor(--t-hint bottom) - anchor(top)) anchor(top);
+            inset-inline: var(--position) auto;
+        }
+
+        &_top {
+            inset-block: anchor(bottom) calc(2 * anchor(--t-hint top) - anchor(bottom));
+        }
+
+        &_left,
+        &_right {
+            inset: var(--position) anchor(left) auto calc(2 * anchor(--t-hint right) - anchor(left));
+            inline-size: auto;
+            translate: 0 -50%;
+            rotate: 90deg;
+        }
+
+        &_left {
+            inset: var(--position) calc(2 * anchor(--t-hint left) - anchor(right)) auto anchor(right);
+        }
+    }
+
+    &:not(._anchored) .t-arrow,
+    &._anchored:not(.tui-enter, .tui-leave)::before {
+        display: none;
+    }
+}
+
+@position-try --t-top-start {
+    margin: var(--t-offset) 0;
+    inset-block: auto anchor(start);
+    inset-inline: auto min(var(--t-centered, anchor(end)), calc(anchor(center) - var(--t-arrow) / 2));
+}
+
+@position-try --t-top {
+    margin: var(--t-offset);
+    inset-block: auto anchor(start);
+    justify-self: anchor-center;
+}
+
+@position-try --t-top-end {
+    margin: var(--t-offset) 0;
+    inset-block: auto anchor(start);
+    inset-inline: min(var(--t-centered, anchor(start)), calc(anchor(center) - var(--t-arrow) / 2)) auto;
+}
+
+@position-try --t-bottom-start {
+    margin: var(--t-offset) 0;
+    inset-block: anchor(end) auto;
+    inset-inline: auto min(var(--t-centered, anchor(end)), calc(anchor(center) - var(--t-arrow) / 2));
+}
+
+@position-try --t-bottom {
+    margin: var(--t-offset);
+    inset-block: anchor(end) auto;
+    justify-self: anchor-center;
+}
+
+@position-try --t-bottom-end {
+    margin: var(--t-offset) 0;
+    inset-block: anchor(end) auto;
+    inset-inline: min(var(--t-centered, anchor(start)), calc(anchor(center) - var(--t-arrow) / 2)) auto;
+}
+
+@position-try --t-end-top {
+    margin: 0 var(--t-offset);
+    inset-block: auto min(var(--t-centered, anchor(end)), calc(anchor(center) - var(--t-arrow) / 2));
+    inset-inline: anchor(end) auto;
+}
+
+@position-try --t-end {
+    margin: 0 var(--t-offset);
+    inset-block: auto;
+    inset-inline: anchor(end) auto;
+    align-self: anchor-center;
+}
+
+@position-try --t-end-bottom {
+    margin: 0 var(--t-offset);
+    inset-block: min(var(--t-centered, anchor(start)), calc(anchor(center) - var(--t-arrow) / 2)) auto;
+    inset-inline: anchor(end) auto;
+}
+
+@position-try --t-start-top {
+    margin: 0 var(--t-offset);
+    inset-block: auto min(var(--t-centered, anchor(end)), calc(anchor(center) - var(--t-arrow) / 2));
+    inset-inline: auto anchor(start);
+}
+
+@position-try --t-start {
+    margin: 0 var(--t-offset);
+    inset-block: auto;
+    inset-inline: auto anchor(start);
+    align-self: anchor-center;
+}
+
+@position-try --t-start-bottom {
+    margin: 0 var(--t-offset);
+    inset-block: min(var(--t-centered, anchor(start)), calc(anchor(center) - var(--t-arrow) / 2)) auto;
+    inset-inline: auto anchor(start);
+}
+
+@position-try --t-fallback {
+    margin: var(--t-offset) var(--t-offset) -10000rem;
+    inset-block: anchor(end) auto;
+    justify-self: anchor-center;
 }

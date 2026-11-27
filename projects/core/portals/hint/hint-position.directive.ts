@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
@@ -13,6 +14,7 @@ import {type TuiPoint} from '@taiga-ui/core/types';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_HINT_OFFSET} from './hint.providers';
+import {TUI_HINT_ANCHOR} from './hint-anchor.directive';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
@@ -22,10 +24,27 @@ import {
 const GAP = 8;
 const TOP = 1;
 const LEFT = 0;
+const COMPLEMENTARY: Record<TuiHintDirection, readonly TuiHintDirection[]> = {
+    'bottom-start': ['top-start', 'bottom-end', 'top-end'],
+    'bottom-end': ['top-end', 'bottom-start', 'top-start'],
+    'top-start': ['bottom-start', 'top-end', 'bottom-end'],
+    'top-end': ['bottom-end', 'top-start', 'bottom-start'],
+
+    'end-top': ['start-top', 'end-bottom', 'start-bottom'],
+    'end-bottom': ['start-bottom', 'end-top', 'start-top'],
+    'start-top': ['end-top', 'start-bottom', 'end-bottom'],
+    'start-bottom': ['end-bottom', 'start-top', 'end-top'],
+
+    bottom: ['top', 'end', 'start'],
+    top: ['bottom', 'end', 'start'],
+    end: ['start', 'bottom', 'top'],
+    start: ['end', 'bottom', 'top'],
+};
 
 @Directive({providers: [tuiAsPositionAccessor(TuiHintPosition)]})
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
+    private readonly anchor = inject(TUI_HINT_ANCHOR);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly offsets = inject(TUI_HINT_OFFSET);
@@ -44,11 +63,24 @@ export class TuiHintPosition extends TuiPositionAccessor {
         alias: 'tuiHintDirection',
     });
 
+    /** @deprecated impossible to support with CSS anchor positioning so it's phased out TODO: drop in v6.0 */
     public readonly tuiHintDirectionChange = outputFromObservable(
         this.directionChange.pipe(distinctUntilChanged()),
     );
 
     public readonly type = 'hint';
+
+    public override position(element: HTMLElement): void {
+        // TODO: Remove in v6
+        element.style.setProperty('--t-offset', `${this.offset()}px`);
+        Object.assign(element.style, {
+            position: 'fixed',
+            visibility: 'visible',
+            top: '10000rem',
+            positionAnchor: this.anchor.nativeElement.dataset.tuiAnchor,
+            positionTryFallbacks: getFallbacks(coerceArray(this.direction())),
+        });
+    }
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         const direction = this.direction();
@@ -133,4 +165,17 @@ function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
     return rtl && direction.includes('right')
         ? (direction.replace('right', 'left') as TuiHintDirection)
         : direction;
+}
+
+function getFallbacks(fallbacks: readonly TuiHintDirection[]): string {
+    const preferred = fallbacks.slice(0, 4);
+    const complementary = ([0, 1, 2] as const).flatMap((i) =>
+        preferred.map((direction) => COMPLEMENTARY[direction][i]),
+    );
+
+    return [...new Set([...preferred, ...complementary])]
+        .slice(0, 4)
+        .map((direction) => `--t-${direction}`)
+        .concat('--t-fallback')
+        .join(', ');
 }
