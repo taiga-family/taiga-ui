@@ -28,6 +28,7 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl();
     protected unique = true;
+    protected clearOnSelect = true;
     protected separator = ',';
 
     protected readonly examples = [
@@ -42,5 +43,6 @@ export default class PageComponent {
         'Table',
         'Virtual scroll',
         'Stringify',
+        'Keep search text',
     ];
 }
