@@ -1,0 +1,30 @@
+<tui-doc-page
+    header="StringifyValues"
+    package="KIT"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe that transforms an array of objects using two keys — the control value key and the data value key — into a
+        <code>TuiStringHandler</code>
+        . Designed to work in pair with the
+        <a
+            target="_blank"
+            tuiLink
+            [routerLink]="routes.Values"
+        >
+            <code>Values</code>
+        </a>
+        pipe.
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
