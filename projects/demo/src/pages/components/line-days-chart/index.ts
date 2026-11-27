@@ -35,6 +35,15 @@ export default class Page {
             [new TuiDay(2020, 1, 25), 150],
             [new TuiDay(2020, 1, 27), 10],
         ],
+        [
+            [new TuiDay(2020, 0, 1), 100],
+            [new TuiDay(2020, 0, 11), 80],
+            [new TuiDay(2020, 1, 1), 50],
+            [new TuiDay(2020, 1, 2), 60],
+            [new TuiDay(2020, 1, 29), 70],
+            [new TuiDay(2020, 2, 1), 80],
+            [new TuiDay(2020, 2, 31), 100],
+        ],
     ];
 
     protected value = this.valueVariants[0]!;
