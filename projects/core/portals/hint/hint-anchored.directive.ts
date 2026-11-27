@@ -2,7 +2,7 @@ import {type AfterViewInit, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -64,7 +64,8 @@ export class TuiHintAnchored implements AfterViewInit {
     protected readonly anchored =
         inject(TUI_ANCHOR_SUPPORT) &&
         'position' in this.accessor &&
-        this.viewport.type === 'window';
+        this.viewport.type === 'window' &&
+        tuiIsHTMLElement(this.directive.el);
 
     protected readonly sub = inject(TuiHoveredService)
         .pipe(takeUntilDestroyed())
