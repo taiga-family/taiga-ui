@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';
 import {type MountResponse} from 'cypress/angular';
 
@@ -48,15 +49,27 @@ describe('TuiHint', () => {
         }),
     );
 
-    it('hint should hidden when detached from dom', () => {
+    it('hint should be hidden when host is detached from DOM', () => {
+        const isRendered = ([el]: JQuery): boolean => {
+            const {x, y, width, height} =
+                el?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+
+            return (
+                !!el &&
+                el.contains(
+                    el.ownerDocument.elementFromPoint(x + width / 2, y + height / 2),
+                )
+            );
+        };
+
         cy.get('button').trigger('mouseenter');
         cy.get('tui-hint')
-            .should('exist')
+            .should((hint) => expect(isRendered(hint)).to.be.true)
             .then(() => {
                 component.hide = true;
                 wrapper.fixture.detectChanges();
-
-                cy.get('tui-hint').should('not.exist');
             });
+
+        cy.get('tui-hint').should((hint) => expect(isRendered(hint)).to.be.false);
     });
 });

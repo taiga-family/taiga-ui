@@ -98,7 +98,6 @@
         position: fixed;
         position-anchor: inherit;
         margin: 0;
-        rotate: none;
 
         --start: ~'calc(1 - sign(abs(anchor(start) - anchor(--t-hint start))))';
         --end: ~'calc(1 - sign(abs(anchor(end) - anchor(--t-hint end))))';
@@ -107,26 +106,26 @@
         &_top,
         &_bottom {
             block-size: auto;
-            translate: calc(var(--tui-inline) * -50%) -50%;
-            inset-block: anchor(--t-hint bottom) anchor(top);
+            translate: calc(var(--tui-inline) * -50%) 0;
+            rotate: none;
+            inset-block: calc(2 * anchor(--t-hint bottom) - anchor(top)) anchor(top);
             inset-inline: var(--position) auto;
         }
 
         &_top {
-            translate: calc(var(--tui-inline) * -50%) 50%;
-            inset-block: anchor(bottom) anchor(--t-hint top);
+            inset-block: anchor(bottom) calc(2 * anchor(--t-hint top) - anchor(bottom));
         }
 
         &_left,
         &_right {
-            inset: var(--position) anchor(left) auto anchor(--t-hint right);
+            inset: var(--position) anchor(left) auto calc(2 * anchor(--t-hint right) - anchor(left));
             inline-size: auto;
-            translate: -50% -50%;
+            translate: 0 -50%;
+            rotate: 90deg;
         }
 
         &_left {
-            inset: var(--position) anchor(--t-hint left) auto anchor(right);
-            translate: 50% -50%;
+            inset: var(--position) calc(2 * anchor(--t-hint left) - anchor(right)) auto anchor(right);
         }
     }
 

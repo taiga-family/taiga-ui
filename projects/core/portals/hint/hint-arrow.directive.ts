@@ -1,11 +1,11 @@
-import {type AfterViewInit, Directive, type OnDestroy} from '@angular/core';
+import {type AfterViewInit, Directive} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 // Enter animation uses scale which breaks anchor positioning for an arrow inside
 // We need to disable animation, read position and enable it back immediately
 // Then while animation is disabled, a fallback ::before arrow is shown
-@Directive()
-export class TuiHintArrow implements AfterViewInit, OnDestroy {
+@Directive({host: {'(tui-leave)': 'sync()'}})
+export class TuiHintArrow implements AfterViewInit {
     private readonly el = tuiInjectElement();
 
     public ngAfterViewInit(): void {
@@ -14,11 +14,7 @@ export class TuiHintArrow implements AfterViewInit, OnDestroy {
         this.el.classList.add('tui-enter');
     }
 
-    public ngOnDestroy(): void {
-        this.sync();
-    }
-
-    private sync(): void {
+    protected sync(): void {
         const arrows = Array.from(this.el.querySelectorAll<HTMLElement>('.t-arrow'));
         const arrow = arrows.find((e) => e.clientWidth && e.clientHeight);
 
@@ -26,7 +22,7 @@ export class TuiHintArrow implements AfterViewInit, OnDestroy {
             return;
         }
 
-        const rotate = arrow?.classList.contains('t-arrow_horizontal') ? '90deg' : '0deg';
+        const rotate = arrow.classList.contains('t-arrow_horizontal') ? '90deg' : '0deg';
         const rect = arrow.getBoundingClientRect();
         const {left, top} = this.el.getBoundingClientRect();
         const x = rect.left + arrow.clientWidth / 2 - left;
