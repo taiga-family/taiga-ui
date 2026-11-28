@@ -1,0 +1,35 @@
+import"./chunk-LQ6M4NCU.js";var n=`<button
+    #component
+    tuiAvatar
+    type="button"
+>
+    C
+</button>
+<button
+    #element="elementRef"
+    tuiAvatar
+    tuiElement
+    type="button"
+>
+    E
+</button>
+<p>
+    component instanceof
+    <code>TuiAvatar</code>
+    :
+    <b>{{ isLink(component) }}</b>
+</p>
+<p>
+    element instanceof
+    <code>ElementRef</code>
+    :
+    <b>{{ isElement(element) }}</b>
+</p>
+<button
+    tuiButton
+    type="button"
+    (click)="element.nativeElement.focus()"
+>
+    Focus element
+</button>
+`;export{n as default};

@@ -1,0 +1,16 @@
+import"./chunk-LQ6M4NCU.js";var o=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTouchable} from '@taiga-ui/addon-mobile';
+import {TuiAppearance} from '@taiga-ui/core';
+import {TuiCardLarge} from '@taiga-ui/layout';
+
+@Component({
+    imports: [TuiAppearance, TuiCardLarge, TuiTouchable],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {}
+`;export{o as default};

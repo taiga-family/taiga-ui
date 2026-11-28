@@ -1,0 +1,28 @@
+import"./chunk-LQ6M4NCU.js";var t=`import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocNumberFormat} from '@demo/components/number-format';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiInputNumber} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocNumberFormat,
+        TuiFormatNumberPipe,
+        TuiInputNumber,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly routes = DemoRoute;
+
+    public readonly control = new FormControl(100);
+}
+`;export{t as default};

@@ -1,0 +1,27 @@
+import"./chunk-LQ6M4NCU.js";var r=`<p>{{ rounded }} = round(value, precision);</p>
+<p>{{ floored }} = floor(value, precision);</p>
+<p>{{ ceiled }} = ceil(value, precision);</p>
+
+<form [formGroup]="parametersForm">
+    <div class="parameters">
+        <tui-textfield>
+            <label tuiLabel>value</label>
+
+            <input
+                formControlName="value"
+                tuiInputNumber
+                [tuiNumberFormat]="{precision: 3}"
+            />
+        </tui-textfield>
+
+        <tui-textfield>
+            <label tuiLabel>precision</label>
+
+            <input
+                formControlName="precision"
+                tuiInputNumber
+            />
+        </tui-textfield>
+    </div>
+</form>
+`;export{r as default};

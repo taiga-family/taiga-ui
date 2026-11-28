@@ -1,0 +1,36 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page
+    header="DOM utils"
+    package="CDK"
+    path="cdk/utils/dom"
+    type="components/utils"
+>
+    <ng-template pageTab>
+        <p>A set of tools for easy DOM manipulations</p>
+
+        <!-- TODO: update documentation here -->
+        Visit
+        <a
+            href="https://github.com/taiga-family/taiga-ui/wiki/DOM"
+            rel="noreferrer"
+            target="_blank"
+            tuiLink
+        >
+            CDK wiki
+        </a>
+        to see docs
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol tuiList="m">
+            <li>
+                <p>Import into component and use:</p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="component"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

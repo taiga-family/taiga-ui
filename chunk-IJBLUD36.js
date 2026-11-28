@@ -1,0 +1,53 @@
+import"./chunk-LQ6M4NCU.js";var a=`<tui-doc-page header="Licensing">
+    <p>
+        Taiga UI is fully open source licensed under the Apache 2.0 and is free for commercial use. There are paid
+        services which you can explore, such as Enterprise support, consulting and other partnerships which we can
+        tailor to your specific needs. Head over to our company's
+        <a
+            href="https://pineoptic.one/products"
+            rel="noreferrer noopener"
+            target="_blank"
+            tuiLink
+        >
+            <b>Products</b>
+        </a>
+        page to know more and reach out.
+    </p>
+    <section>
+        @for (p of licenses; track $index) {
+            <article
+                appearance="neutral"
+                tuiCardLarge
+            >
+                <header tuiHeader>
+                    <hgroup tuiTitle>
+                        <p tuiCaption>
+                            <small>{{ p.category }}</small>
+                        </p>
+                        <h3>{{ p.name }}</h3>
+                    </hgroup>
+                </header>
+                <p tuiDescription>{{ p.description }}</p>
+                <data [value]="p.price">
+                    {{ \`$\${p.price | tuiFormatNumber: {thousandSeparator: ','}}\` }}
+                    <small>{{ p.unit }}</small>
+                </data>
+                <ul tuiList="m">
+                    @for (feature of p.features; track feature) {
+                        <li>{{ feature }}</li>
+                    }
+                </ul>
+                <a
+                    iconEnd="@tui.move-down-right"
+                    size="m"
+                    tuiButton
+                    [appearance]="p.id === 'premium' ? 'primary' : 'outline'"
+                    [href]="\`https://pineoptic.one/products?interest=\${p.name}#contact\`"
+                >
+                    Enquire about {{ p.name }}
+                </a>
+            </article>
+        }
+    </section>
+</tui-doc-page>
+`;export{a as default};

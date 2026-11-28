@@ -1,0 +1,38 @@
+import"./chunk-LQ6M4NCU.js";var e=`<tui-pager
+    [count]="count"
+    [index]="activeIndex"
+    [valueContent]="content"
+/>
+
+<ng-template
+    #content
+    let-index
+>
+    @if (index === count - 2) {
+        <tui-icon icon="@tui.view" />
+    }
+
+    @if (index === count - 1) {
+        <tui-icon icon="@tui.square-plus" />
+    }
+</ng-template>
+
+<div class="controls">
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="prev()"
+    >
+        prev
+    </button>
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="next()"
+    >
+        next
+    </button>
+</div>
+`;export{e as default};

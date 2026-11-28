@@ -1,0 +1,31 @@
+import"./chunk-LQ6M4NCU.js";var t=`<div
+    appearance="floating"
+    tuiCardLarge
+    tuiTouchable="scale"
+>
+    <h2 [style.margin]="0">scale</h2>
+    I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams
+    glitter in the dark near the Tannhauser gate. All those moments will be lost in time... like tears in rain... Time
+    to die.
+</div>
+<div
+    appearance="floating"
+    tuiCardLarge
+    tuiTouchable="opacity"
+>
+    <h2 [style.margin]="0">opacity</h2>
+    I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams
+    glitter in the dark near the Tannhauser gate. All those moments will be lost in time... like tears in rain... Time
+    to die.
+</div>
+<div
+    appearance="floating"
+    tuiCardLarge
+    tuiTouchable="background"
+>
+    <h2 [style.margin]="0">background</h2>
+    I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams
+    glitter in the dark near the Tannhauser gate. All those moments will be lost in time... like tears in rain... Time
+    to die.
+</div>
+`;export{t as default};

@@ -1,0 +1,23 @@
+import"./chunk-LQ6M4NCU.js";var t=`<tui-range
+    id="range-with-key-steps"
+    size="m"
+    class="range"
+    [keySteps]="keySteps"
+    [segments]="segments"
+    [step]="stepPercentage"
+    [(ngModel)]="value"
+/>
+
+<div class="ticks-labels">
+    @for (label of ticksLabels; track label) {
+        <span>{{ label }}</span>
+    }
+</div>
+
+<p>
+    Control value:
+    <output for="range-with-key-steps">
+        <code>{{ value | json }}</code>
+    </output>
+</p>
+`;export{t as default};

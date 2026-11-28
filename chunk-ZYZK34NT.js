@@ -1,0 +1,17 @@
+import"./chunk-LQ6M4NCU.js";var n=`:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 21.5625rem;
+    min-inline-size: 100%;
+    max-inline-size: 100%;
+}
+
+[tuiButtonGroup] {
+    background: linear-gradient(334.83deg, #7d8ca0 0%, #647382 100%);
+
+    button {
+        color: #fff;
+    }
+}
+`;export{n as default};

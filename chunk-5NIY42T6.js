@@ -1,0 +1,33 @@
+import"./chunk-LQ6M4NCU.js";var i=`tui-accordion {
+    border-radius: 0;
+
+    [tuiAccordion] {
+        white-space: normal;
+        block-size: fit-content;
+        padding-block: 1rem;
+        font-weight: normal;
+        box-shadow: none;
+        padding-inline-start: 0;
+        padding-block-start: 0;
+
+        [tuiBadge] {
+            align-self: flex-start;
+            margin-block-start: 0;
+            margin-inline-start: 0;
+        }
+    }
+
+    tui-expand {
+        padding-block-start: 0.125rem;
+        box-shadow: none;
+    }
+}
+
+.command {
+    margin-block-start: 0.5rem;
+}
+
+.description {
+    margin-block-end: 1rem;
+}
+`;export{i as default};

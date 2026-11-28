@@ -1,0 +1,40 @@
+import"./chunk-LQ6M4NCU.js";var t=`.table {
+    table-layout: fixed;
+}
+
+.number {
+    text-align: end;
+    flex-direction: row-reverse;
+}
+
+.first {
+    min-inline-size: 11rem;
+    max-inline-size: 11rem;
+}
+
+.second {
+    inset-inline-start: 11rem;
+}
+
+.text {
+    vertical-align: top;
+    padding-block-start: 1rem;
+}
+
+/* Due to rowSpan this item appears to be the first child, but it shouldn't have the left border in reality */
+.border {
+    border-inline-start: none;
+}
+
+.select {
+    inline-size: 6.25rem;
+}
+
+.scrollbar {
+    max-block-size: 18.75rem;
+}
+
+tui-icon {
+    margin-inline-end: 0.75rem;
+}
+`;export{t as default};

@@ -1,0 +1,46 @@
+import"./chunk-LQ6M4NCU.js";var n=`<form [formGroup]="form">
+    <tui-textfield
+        tuiChevron
+        tuiTextfieldSize="m"
+        [content]="stringify | tuiStringifyContent"
+    >
+        <label tuiLabel>Term</label>
+
+        <input
+            formControlName="period"
+            tuiSelect
+        />
+        <tui-data-list-wrapper
+            *tuiDropdown
+            [itemContent]="stringify | tuiStringifyContent"
+            [items]="items | tuiFilterByInput"
+        />
+
+        <tui-icon
+            tuiHintDirection="top-start"
+            [tuiTooltip]="periodHint"
+        />
+    </tui-textfield>
+    <ng-template #periodHint>
+        You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis
+    </ng-template>
+</form>
+
+<button
+    tuiHintAppearance="floating"
+    tuiHintDirection="top-start"
+    tuiLink
+    type="button"
+    [tuiHint]="howToBuyTooltip"
+>
+    How to buy
+
+    <ng-template #howToBuyTooltip>
+        <ol tuiList="s">
+            <li>Choose an installment plan</li>
+            <li>Fill in the application</li>
+            <li>When the bank approves, sign the contract via SMS or get it delivered to sign</li>
+        </ol>
+    </ng-template>
+</button>
+`;export{n as default};

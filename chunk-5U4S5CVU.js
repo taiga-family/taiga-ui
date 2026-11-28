@@ -1,0 +1,18 @@
+import"./chunk-LQ6M4NCU.js";var t=`<div
+    class="container"
+    (tuiSwipe)="onSwipe($event)"
+>
+    Swipe left to open
+
+    <tui-drawer
+        *tuiPopup="open()"
+        direction="end"
+        class="drawer"
+        [overlay]="true"
+        (click.self)="open.set(false)"
+        (tuiSwipe)="onSwipe($event)"
+    >
+        Swipe right to close
+    </tui-drawer>
+</div>
+`;export{t as default};

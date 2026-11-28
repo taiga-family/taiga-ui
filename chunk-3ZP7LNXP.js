@@ -1,0 +1,20 @@
+import"./chunk-LQ6M4NCU.js";var t=`.task {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task:first-child input:not(:placeholder-shown) {
+    text-decoration: underline;
+    text-align: center;
+}
+
+tui-input-inline._empty,
+tui-input-inline:has(input:placeholder-shown) {
+    color: var(--tui-text-tertiary);
+}
+
+tui-input-inline:has(input[placeholder]) {
+    min-inline-size: 3ch;
+}
+`;export{t as default};

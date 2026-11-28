@@ -1,0 +1,23 @@
+import"./chunk-LQ6M4NCU.js";var e=`<button
+    tuiHint="Add to favorites"
+    tuiHintDescribe
+    tuiIconButton
+    type="button"
+    [iconStart]="favorite() ? '@tui.heart-filled' : '@tui.heart'"
+    (click)="favorite.set(!favorite())"
+>
+    Favorites
+</button>
+&ngsp;
+<a
+    href="https://maskito.dev"
+    iconStart="@tui.drama"
+    rel="noreferrer noopener"
+    target="_blank"
+    tuiHint="Read Maskito documentation"
+    tuiHintDescribe
+    tuiIconButton
+>
+    Maskito
+</a>
+`;export{e as default};
