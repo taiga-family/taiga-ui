@@ -169,4 +169,59 @@ describe('Tabs', () => {
             await expect.soft(example).toHaveScreenshot('03-tabs-single-item-01.png');
         });
     });
+
+    describe('RTL', () => {
+        test('scrolls the active tab into view', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Tabs);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#basic');
+            const tabs = example.locator('tui-tabs');
+
+            await example.scrollIntoViewIfNeeded();
+            // Narrow the example so the tabs overflow horizontally.
+            // On mobile viewports the demo forces `.t-demo {min-inline-size: 100% !important}`,
+            // so the width alone would be ignored — override the minimum as well.
+            await example.evaluate((element) => {
+                element.style.setProperty('width', '220px');
+                element.style.setProperty('min-width', '220px', 'important');
+            });
+            await expect
+                .poll(async () =>
+                    tabs.evaluate((element) => element.scrollWidth > element.clientWidth),
+                )
+                .toBe(true);
+
+            await tabs.evaluate((element) => element.setAttribute('dir', 'rtl'));
+            await expect(tabs).toHaveCSS('direction', 'rtl');
+
+            // `dispatchEvent` avoids Playwright scrolling the off-screen tab into view itself,
+            // the scroll must come from the tabs directive
+            await tabs.locator('[tuiTab]').last().dispatchEvent('click');
+
+            await expect
+                .poll(async () =>
+                    tabs.evaluate((element) => {
+                        const tab = element.querySelectorAll(
+                            '[tuiTab]',
+                        )[2] as HTMLElement;
+
+                        const tabsRect = element.getBoundingClientRect();
+                        const tabRect = tab.getBoundingClientRect();
+
+                        return {
+                            visible:
+                                tabRect.left >= tabsRect.left - 1 &&
+                                tabRect.right <= tabsRect.right + 1,
+                            scrollLeft: element.scrollLeft,
+                        };
+                    }),
+                )
+                .toMatchObject({visible: true});
+
+            // In RTL Chromium `scrollLeft` is negative once scrolled away from the start edge
+            await expect
+                .poll(async () => tabs.evaluate((element) => element.scrollLeft))
+                .toBeLessThan(0);
+        });
+    });
 });

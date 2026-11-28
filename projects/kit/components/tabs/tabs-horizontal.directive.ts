@@ -4,6 +4,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
     WaMutationObserverService,
 } from '@ng-web-apis/mutation-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -61,13 +62,26 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             }
 
             const {offsetLeft, offsetWidth} = element;
+            // `offsetLeft` is measured from the left edge of the host while the scroll
+            // position is measured from the start edge, which is the right edge in RTL.
+            // The tab can sit left of the host edge (negative `offsetLeft`) when the
+            // content overflows, so the distance from the start edge is derived from
+            // `clientWidth`, not `scrollWidth`.
+            const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
+            const start =
+                direction === -1
+                    ? this.el.clientWidth - offsetLeft - offsetWidth
+                    : offsetLeft;
 
-            if (offsetLeft < this.el.scrollLeft) {
-                this.el.scrollLeft = offsetLeft;
+            const scrollLeft = direction * this.el.scrollLeft;
+
+            if (start < scrollLeft) {
+                this.el.scrollLeft = direction * start;
             }
 
-            if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
-                this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
+            if (start + offsetWidth > scrollLeft + this.el.clientWidth) {
+                this.el.scrollLeft =
+                    direction * (start + offsetWidth - this.el.clientWidth);
             }
         });
     }

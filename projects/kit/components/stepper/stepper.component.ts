@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_RTL_SELECTOR} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {type TuiOrientation} from '@taiga-ui/core/types';
@@ -117,8 +118,19 @@ export class TuiStepperComponent implements OnChanges {
         } = step;
 
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
-        const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
+        // `offsetLeft` is measured from the left edge of the host while the scroll
+        // position is measured from the start edge, which is the right edge in RTL.
+        // The step can sit left of the host edge (negative offset) when the content
+        // overflows, so the distance from the start edge is derived from
+        // `clientWidth`, not `scrollWidth`.
+        const center = stepOffsetLeft - offsetLeft + offsetWidth / 2;
+        const direction = this.el.matches(TUI_RTL_SELECTOR) ? -1 : 1;
+        const left =
+            direction === -1 ? clientWidth / 2 - center : center - clientWidth / 2;
 
-        this.el.scrollTo?.({left: Math.max(0, left), top: Math.max(0, top)});
+        this.el.scrollTo?.({
+            left: direction * Math.max(0, left),
+            top: Math.max(0, top),
+        });
     }
 }
