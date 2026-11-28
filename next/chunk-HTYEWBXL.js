@@ -1,0 +1,19 @@
+import"./chunk-LQ6M4NCU.js";var r=`:host {
+    display: block;
+}
+
+table {
+    margin-block-start: 1rem;
+    inline-size: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: start;
+    border: 1px solid var(--tui-border-normal);
+    block-size: 3.375rem;
+    padding: 0 1rem;
+    vertical-align: middle;
+}
+`;export{r as default};

@@ -1,0 +1,16 @@
+import"./chunk-LQ6M4NCU.js";var a=`{{ normalized }} = normalizeToIntNumber(value, min, max);
+
+<form [formGroup]="parametersForm">
+    <div class="parameters">
+        @for (parameter of ['value', 'min', 'max']; track parameter) {
+            <tui-textfield>
+                <label tuiLabel>{{ parameter }}</label>
+                <input
+                    tuiInputNumber
+                    [formControlName]="parameter"
+                />
+            </tui-textfield>
+        }
+    </div>
+</form>
+`;export{a as default};

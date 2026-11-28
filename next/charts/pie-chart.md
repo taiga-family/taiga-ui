@@ -1,0 +1,117 @@
+# PieChart
+
+- **Package**: `ADDON-CHARTS`
+- **Type**: components
+
+Use
+`ChartHint`
+directive to enable hints with
+`tuiHintContent`
+
+### Example
+
+```html
+<tui-pie-chart class="chart" [size]="size" [tuiHintAppearance]="hint.appearance" [tuiHintContent]="hintContent" [tuiHintDirection]="hint.direction" [value]="value" [(activeItemIndex)]="activeItemIndex" />
+```
+
+### API - Inputs
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [(activeItemIndex)] | `number` | selected fragment index |
+| [size] | `TuiSizeS \| TuiSizeXL` | — |
+| [value] | `readonly number[]` | — |
+| [tuiHintContent] | `PolymorpheusContent<TuiContext<number>>` | content of the hint bubble |
+
+### Usage Examples
+
+#### Sizes
+
+**Template:**
+```html
+<div class="wrapper">
+<tui-pie-chart size="xs" [value]="value" />
+<tui-pie-chart size="s" [value]="value" />
+<tui-pie-chart size="m" [value]="value" />
+<tui-pie-chart size="l" [value]="value" />
+<tui-pie-chart size="xl" [value]="value" />
+</div>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPieChart} from '@taiga-ui/addon-charts';
+
+@Component({
+    imports: [TuiPieChart],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = [40, 30, 20, 10];
+    protected index = 1;
+}
+```
+
+**CSS:**
+```css
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+tui-pie-chart {
+    margin-inline-end: 1rem;
+}
+```
+
+#### With labels
+
+Use `ChartHint` directive to enable hints with `tuiHintContent`
+
+**Template:**
+```html
+<tui-pie-chart [tuiHintContent]="content" [value]="value" />
+<ng-template #content let-index >
+<span>{{ value[index] || 0 | tuiAmount: 'RUB' }}</span>
+<div>{{ labels[index] }}</div>
+</ng-template>
+```
+
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiChartHint, TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiHint} from '@taiga-ui/core';
+
+@Component({
+    imports: [TuiAmountPipe, TuiChartHint, TuiHint, TuiPieChart],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly value = [13769, 12367, 10172, 3018, 2592];
+    protected readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
+}
+```
+
+**CSS:**
+```css
+:host {
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
+}
+```

@@ -1,0 +1,33 @@
+import"./chunk-LQ6M4NCU.js";var r=`<div role="table">
+    <div role="row">
+        <span
+            aria-label="Reorder"
+            role="columnheader"
+        ></span>
+        <span role="columnheader">Name</span>
+        <span role="columnheader">Role</span>
+        <span role="columnheader">Email</span>
+    </div>
+
+    <tui-tiles
+        role="rowgroup"
+        [(order)]="order"
+    >
+        @for (item of items; track item) {
+            <tui-tile [style.order]="order.get($index)">
+                <div role="row">
+                    <span role="cell">
+                        <tui-icon
+                            icon="@tui.grip-vertical"
+                            tuiTileHandle
+                        />
+                    </span>
+                    <span role="cell">{{ item.name }}</span>
+                    <span role="cell">{{ item.role }}</span>
+                    <span role="cell">{{ item.email }}</span>
+                </div>
+            </tui-tile>
+        }
+    </tui-tiles>
+</div>
+`;export{r as default};

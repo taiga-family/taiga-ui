@@ -1,0 +1,11 @@
+import"./chunk-LQ6M4NCU.js";var a=`:host {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+}
+
+[tuiFile]:first-child tui-icon {
+    color: var(--tui-text-action);
+}
+`;export{a as default};

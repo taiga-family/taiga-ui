@@ -1,0 +1,39 @@
+import"./chunk-LQ6M4NCU.js";var n=`<tui-pager
+    [count]="count"
+    [index]="activeIndex()"
+    [valueContent]="content"
+/>
+
+<ng-template
+    #content
+    let-index
+>
+    <progress
+        max="100"
+        size="s"
+        tuiProgressBar
+        class="progress"
+        [class.progress_active]="activeIndex() === index"
+        [value]="activeIndex() === index | tuiMapper: toProgress | async"
+    ></progress>
+</ng-template>
+
+<div class="controls">
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="prev()"
+    >
+        prev
+    </button>
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="next()"
+    >
+        next
+    </button>
+</div>
+`;export{n as default};

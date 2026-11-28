@@ -1,0 +1,13 @@
+import"./chunk-LQ6M4NCU.js";var r=`.note {
+    margin-block-end: 0;
+}
+
+.details {
+    margin-block-start: 0;
+}
+
+.picker-description {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+`;export{r as default};

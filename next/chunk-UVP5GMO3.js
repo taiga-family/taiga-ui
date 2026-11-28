@@ -1,0 +1,28 @@
+import"./chunk-LQ6M4NCU.js";var a=`.wrapper {
+    position: relative;
+}
+
+.fade {
+    transition-property: max-block-size;
+    transition-duration: var(--tui-duration);
+    max-block-size: calc(3 * (1.25rem + var(--tui-font-offset)));
+}
+
+.fade_expanded {
+    max-block-size: 15rem;
+}
+
+.expand {
+    position: absolute;
+    transition-property: opacity, visibility;
+    transition-duration: var(--tui-duration);
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    transition-delay: var(--tui-duration);
+}
+
+.expand_hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+`;export{a as default};

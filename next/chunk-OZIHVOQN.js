@@ -1,0 +1,15 @@
+import"./chunk-LQ6M4NCU.js";var r=`.box {
+    inline-size: 16rem;
+    block-size: 16rem;
+    background: var(--tui-background-base-alt);
+}
+
+.content {
+    padding: 0 0.6875rem;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+}
+`;export{r as default};

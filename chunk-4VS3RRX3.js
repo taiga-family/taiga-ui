@@ -1,0 +1,54 @@
+import"./chunk-LQ6M4NCU.js";var t=`<tui-doc-page
+    header="Radio"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A radio component that is able to imitate native control on mobile platforms.</p>
+
+        <p tuiNotification>
+            Use
+            <code>--tui-background-accent-2</code>
+            CSS variable to customize color of native control emulation
+        </p>
+
+        <div
+            appearance="warning"
+            tuiNotification
+        >
+            Due to internal Angular implementation of radio buttons, you are required to add
+            <code>name</code>
+            attribute to your
+            <code>input</code>
+            tag, unless you are using
+            <code>formControlName</code>
+        </div>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+            />
+
+            <ng-template #description>
+                @switch ($index) {
+                    @case (0) {
+                        Add import of
+                        <code>&#64;taiga-ui/addon-mobile/styles/taiga-ui-mobile.less</code>
+                        to your encapsulated global styles to enable power of
+                        <code>TuiPlatform</code>
+                        directive.
+                    }
+                    @case (3) {
+                        Use
+                        <code>tuiRadioOptionsProvider</code>
+                        to override the colors of the radio button with appearance colors
+                    }
+                }
+            </ng-template>
+        }
+    </ng-template>
+</tui-doc-page>
+`;export{t as default};

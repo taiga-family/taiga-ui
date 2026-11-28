@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84922],{51513:(e,c,d)=>{d.r(c),d.d(c,{TUI_ARABIC_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["الرقم","رقم البطاقة"],cardExpiry:["ينتهي","صالح حتى"]}}}]);

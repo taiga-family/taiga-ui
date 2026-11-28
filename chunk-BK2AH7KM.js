@@ -1,0 +1,14 @@
+import"./chunk-LQ6M4NCU.js";var s=`@import '@taiga-ui/styles/utils';
+
+.t-list-search {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    background: var(--tui-background-elevation-1);
+    padding: 0.375rem 0.375rem 0;
+
+    input {
+        .tui-prevent-ios-scroll();
+    }
+}
+`;export{s as default};

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[477],{foZG:function(n,t,o){"use strict";o.r(t),t.default='<tui-block-status>\n    <img\n        tuiSlot="top"\n        alt="not found"\n        src="./assets/images/not-found.svg"\n        class="image"\n    />\n\n    <h4>Not found</h4>\n\n    Try to find by number\n</tui-block-status>\n'}}]);

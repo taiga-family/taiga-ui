@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48857],{48857:s=>{s.exports="```bash\nnpx skills add taiga-family/skills --skill tui-migration\n```\n"}}]);

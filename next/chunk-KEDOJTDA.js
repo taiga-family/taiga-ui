@@ -1,0 +1,24 @@
+import"./chunk-LQ6M4NCU.js";var l=`<div class="prompt">Choose a department:</div>
+
+<div class="filters-with-all">
+    <button
+        appearance="outline-grayscale"
+        size="m"
+        tuiButton
+        type="button"
+        class="item"
+        [tuiAppearanceMode]="checked$ | async"
+        (click)="toggleAll()"
+    >
+        All
+    </button>
+
+    <tui-filter
+        size="m"
+        class="item"
+        [items]="items"
+        [ngModel]="model$ | async"
+        (ngModelChange)="onModelChange($event)"
+    />
+</div>
+`;export{l as default};

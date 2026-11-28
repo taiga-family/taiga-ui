@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[27170],{27170:n=>{n.exports="tui-app-bar {\n    inline-size: 20rem;\n    margin-block-end: 1rem;\n}\n\nsection {\n    padding: 1rem;\n    margin: -1rem;\n    overflow: hidden;\n}\n"}}]);

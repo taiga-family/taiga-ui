@@ -1,0 +1,15 @@
+import"./chunk-LQ6M4NCU.js";var t=`import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    styleUrl: './index.css',
+    changeDetection,
+})
+export default class Page {
+    protected readonly routes = DemoRoute;
+}
+`;export{t as default};

@@ -1,0 +1,34 @@
+import"./chunk-LQ6M4NCU.js";var i=`<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open = !open"
+>
+    Show preview
+</button>
+
+<ng-template [(tuiPreviewDialog)]="open">
+    <tui-preview>
+        <tui-preview-title>{{ titles[index] }}</tui-preview-title>
+        <tui-preview-pagination
+            [length]="length"
+            [(index)]="index"
+        />
+
+        <button
+            iconStart="@tui.x"
+            tuiIconButton
+            tuiPreviewAction
+            type="button"
+            (click)="open = false"
+        >
+            Close
+        </button>
+
+        <img
+            alt="preview"
+            [src]="content[index]"
+        />
+    </tui-preview>
+</ng-template>
+`;export{i as default};

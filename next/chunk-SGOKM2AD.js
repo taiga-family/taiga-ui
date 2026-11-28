@@ -1,0 +1,18 @@
+import"./chunk-LQ6M4NCU.js";var i=`.description {
+    display: flex;
+    margin-block-start: 0.5rem;
+    justify-content: space-between;
+
+    & > *:first-child {
+        text-align: start;
+    }
+
+    & > *:last-child {
+        text-align: end;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+    }
+}
+`;export{i as default};

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85878],{85878:e=>{e.exports="<p>\n    Obfuscate \"Moscow\" by recipe 'city':\n    <br />\n    {{ 'Moscow' | tuiObfuscate: 'city' }}\n</p>\n\n<p>\n    Obfuscate \"+7(900)500-40-20\" by recipe 'phone':\n    <br />\n    {{ '+7(900)500-40-20' | tuiObfuscate: 'phone' }}\n</p>\n"}}]);

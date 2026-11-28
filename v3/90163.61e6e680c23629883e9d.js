@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[90163],{90163:n=>{n.exports=".slider {\n    width: 12.5rem;\n    margin-bottom: 1em;\n}\n"}}]);

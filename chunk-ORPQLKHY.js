@@ -1,0 +1,14 @@
+import"./chunk-LQ6M4NCU.js";var e=`:host {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.custom-1 {
+    background-image: linear-gradient(45deg, #0094cf 0%, #24c0ff 100%);
+    box-shadow: var(--tui-shadow-small);
+}
+
+.custom-2 {
+    background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
+}
+`;export{e as default};

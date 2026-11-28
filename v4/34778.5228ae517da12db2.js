@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34778],{34778:n=>{n.exports="<tui-accordion>\n    <button tuiAccordion>Taiga UI cdk</button>\n    <tui-expand>\n        Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities\n    </tui-expand>\n</tui-accordion>\n"}}]);

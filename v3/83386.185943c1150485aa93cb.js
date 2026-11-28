@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[83386],{83386:n=>{n.exports='```html\n<input\n  tuiRadio\n  type="radio"\n  [(ngModel)]="value"\n/>\n```\n'}}]);

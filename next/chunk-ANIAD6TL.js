@@ -1,0 +1,25 @@
+import"./chunk-LQ6M4NCU.js";var l=`@for (item of data.children; track item) {
+    <tui-tree
+        [childrenHandler]="handler"
+        [content]="content"
+        [tuiTreeController]="true"
+        [value]="item"
+    />
+}
+
+<ng-template
+    #content
+    let-item
+>
+    <label tuiLabel>
+        <input
+            size="s"
+            tuiCheckbox
+            type="checkbox"
+            [ngModel]="item | tuiMapper: getValue : map"
+            (ngModelChange)="onChecked(item, $event)"
+        />
+        <small>{{ item.text }}</small>
+    </label>
+</ng-template>
+`;export{l as default};
